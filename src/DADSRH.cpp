@@ -51,12 +51,12 @@ struct DADSRH : Module {
 	};
 
 	DADSRHCore _core;
+	float lights[NUM_LIGHTS] = {};
 
 	DADSRH() : Module(
 		NUM_PARAMS,
 		NUM_INPUTS,
-		NUM_OUTPUTS,
-		NUM_LIGHTS
+		NUM_OUTPUTS
 	)
 	, _core(
 		params[DELAY_PARAM],
@@ -109,7 +109,7 @@ struct DADSRH : Module {
 		reset();
 	}
 
-  virtual void reset() override {
+	void reset() {
 		_core.reset();
 	}
 
@@ -195,18 +195,18 @@ DADSRHWidget::DADSRHWidget() {
 	addOutput(createOutput<PJ301MPort>(invOutputPosition, module, DADSRH::INV_OUTPUT));
 	addOutput(createOutput<PJ301MPort>(triggerOutputPosition, module, DADSRH::TRIGGER_OUTPUT));
 
-	addChild(createLight<TinyLight<GreenLight>>(delayLightPosition, module, DADSRH::DELAY_LIGHT));
-	addChild(createLight<TinyLight<GreenLight>>(attackLightPosition, module, DADSRH::ATTACK_LIGHT));
-	addChild(createLight<TinyLight<GreenLight>>(decayLightPosition, module, DADSRH::DECAY_LIGHT));
-	addChild(createLight<TinyLight<GreenLight>>(sustainLightPosition, module, DADSRH::SUSTAIN_LIGHT));
-	addChild(createLight<TinyLight<GreenLight>>(releaseLightPosition, module, DADSRH::RELEASE_LIGHT));
-	addChild(createLight<TinyLight<GreenLight>>(attackShape1LightPosition, module, DADSRH::ATTACK_SHAPE1_LIGHT));
-	addChild(createLight<TinyLight<GreenLight>>(attackShape2LightPosition, module, DADSRH::ATTACK_SHAPE2_LIGHT));
-	addChild(createLight<TinyLight<GreenLight>>(attackShape3LightPosition, module, DADSRH::ATTACK_SHAPE3_LIGHT));
-	addChild(createLight<TinyLight<GreenLight>>(decayShape1LightPosition, module, DADSRH::DECAY_SHAPE1_LIGHT));
-	addChild(createLight<TinyLight<GreenLight>>(decayShape2LightPosition, module, DADSRH::DECAY_SHAPE2_LIGHT));
-	addChild(createLight<TinyLight<GreenLight>>(decayShape3LightPosition, module, DADSRH::DECAY_SHAPE3_LIGHT));
-	addChild(createLight<TinyLight<GreenLight>>(releaseShape1LightPosition, module, DADSRH::RELEASE_SHAPE1_LIGHT));
-	addChild(createLight<TinyLight<GreenLight>>(releaseShape2LightPosition, module, DADSRH::RELEASE_SHAPE2_LIGHT));
-	addChild(createLight<TinyLight<GreenLight>>(releaseShape3LightPosition, module, DADSRH::RELEASE_SHAPE3_LIGHT));
+	addChild(createValueLight<MicroLight<GreenValueLight>>(delayLightPosition, &module->lights[DADSRH::DELAY_LIGHT]));
+	addChild(createValueLight<MicroLight<GreenValueLight>>(attackLightPosition, &module->lights[DADSRH::ATTACK_LIGHT]));
+	addChild(createValueLight<MicroLight<GreenValueLight>>(decayLightPosition, &module->lights[DADSRH::DECAY_LIGHT]));
+	addChild(createValueLight<MicroLight<GreenValueLight>>(sustainLightPosition, &module->lights[DADSRH::SUSTAIN_LIGHT]));
+	addChild(createValueLight<MicroLight<GreenValueLight>>(releaseLightPosition, &module->lights[DADSRH::RELEASE_LIGHT]));
+	addChild(createValueLight<MicroLight<GreenValueLight>>(attackShape1LightPosition, &module->lights[DADSRH::ATTACK_SHAPE1_LIGHT]));
+	addChild(createValueLight<MicroLight<GreenValueLight>>(attackShape2LightPosition, &module->lights[DADSRH::ATTACK_SHAPE2_LIGHT]));
+	addChild(createValueLight<MicroLight<GreenValueLight>>(attackShape3LightPosition, &module->lights[DADSRH::ATTACK_SHAPE3_LIGHT]));
+	addChild(createValueLight<MicroLight<GreenValueLight>>(decayShape1LightPosition, &module->lights[DADSRH::DECAY_SHAPE1_LIGHT]));
+	addChild(createValueLight<MicroLight<GreenValueLight>>(decayShape2LightPosition, &module->lights[DADSRH::DECAY_SHAPE2_LIGHT]));
+	addChild(createValueLight<MicroLight<GreenValueLight>>(decayShape3LightPosition, &module->lights[DADSRH::DECAY_SHAPE3_LIGHT]));
+	addChild(createValueLight<MicroLight<GreenValueLight>>(releaseShape1LightPosition, &module->lights[DADSRH::RELEASE_SHAPE1_LIGHT]));
+	addChild(createValueLight<MicroLight<GreenValueLight>>(releaseShape2LightPosition, &module->lights[DADSRH::RELEASE_SHAPE2_LIGHT]));
+	addChild(createValueLight<MicroLight<GreenValueLight>>(releaseShape3LightPosition, &module->lights[DADSRH::RELEASE_SHAPE3_LIGHT]));
 }

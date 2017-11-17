@@ -62,3 +62,10 @@ struct Button9Toggle3 : SVGSwitch, ToggleSwitch {
 		box.size = Vec(9, 9);
 	}
 };
+
+template <typename BASE>
+struct MicroLight : BASE {
+	MicroLight() {
+		this->box.size = Vec(3, 3);
+	}
+};

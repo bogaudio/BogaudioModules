@@ -13,6 +13,7 @@ struct ShaperPlus : Module {
 		LOOP_PARAM,
 		NUM_PARAMS
 	};
+
 	enum InputIds {
 		SIGNAL_INPUT,
 		TRIGGER_INPUT,
@@ -24,6 +25,7 @@ struct ShaperPlus : Module {
 		SIGNALCV_INPUT,
 		NUM_INPUTS
 	};
+
 	enum OutputIds {
 		SIGNAL_OUTPUT,
 		ENV_OUTPUT,
@@ -35,6 +37,7 @@ struct ShaperPlus : Module {
 		OFF_OUTPUT,
 		NUM_OUTPUTS
 	};
+
 	enum LightIds {
 		ATTACK_LIGHT,
 		ON_LIGHT,
@@ -43,21 +46,13 @@ struct ShaperPlus : Module {
 		NUM_LIGHTS
 	};
 
-	enum Stage {
-		STOPPED_STAGE,
-		ATTACK_STAGE,
-		ON_STAGE,
-		DECAY_STAGE,
-		OFF_STAGE
-	};
-
 	ShaperCore _core;
+	float lights[NUM_LIGHTS] = {};
 
 	ShaperPlus() : Module(
 		NUM_PARAMS,
 		NUM_INPUTS,
-		NUM_OUTPUTS,
-		NUM_LIGHTS
+		NUM_OUTPUTS
 	)
 	, _core(
 		params[ATTACK_PARAM],
@@ -97,7 +92,7 @@ struct ShaperPlus : Module {
 		reset();
 	}
 
-	virtual void reset() override {
+	void reset() {
 		_core.reset();
 	}
 
@@ -190,8 +185,8 @@ ShaperPlusWidget::ShaperPlusWidget() {
 	addOutput(createOutput<PJ301MPort>(decayOutputPosition, module, ShaperPlus::DECAY_OUTPUT));
 	addOutput(createOutput<PJ301MPort>(offOutputPosition, module, ShaperPlus::OFF_OUTPUT));
 
-	addChild(createLight<TinyLight<GreenLight>>(attackLightPosition, module, ShaperPlus::ATTACK_LIGHT));
-	addChild(createLight<TinyLight<GreenLight>>(onLightPosition, module, ShaperPlus::ON_LIGHT));
-	addChild(createLight<TinyLight<GreenLight>>(decayLightPosition, module, ShaperPlus::DECAY_LIGHT));
-	addChild(createLight<TinyLight<GreenLight>>(offLightPosition, module, ShaperPlus::OFF_LIGHT));
+	addChild(createValueLight<MicroLight<GreenValueLight>>(attackLightPosition, &module->lights[ShaperPlus::ATTACK_LIGHT]));
+	addChild(createValueLight<MicroLight<GreenValueLight>>(onLightPosition, &module->lights[ShaperPlus::ON_LIGHT]));
+	addChild(createValueLight<MicroLight<GreenValueLight>>(decayLightPosition, &module->lights[ShaperPlus::DECAY_LIGHT]));
+	addChild(createValueLight<MicroLight<GreenValueLight>>(offLightPosition, &module->lights[ShaperPlus::OFF_LIGHT]));
 }

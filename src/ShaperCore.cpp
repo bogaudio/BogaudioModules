@@ -6,6 +6,10 @@ void ShaperCore::reset() {
 	_trigger.reset();
 	_stage = STOPPED_STAGE;
 	_stageProgress = 0.0;
+	_attackLight = 0.0;
+	_onLight = 0.0;
+	_decayLight = 0.0;
+	_offLight = 0.0;
 }
 
 void ShaperCore::step() {
@@ -101,10 +105,10 @@ void ShaperCore::step() {
 	  _offOutput->value = _stage == OFF_STAGE ? 5.0 : 0.0;
 	}
 
-	_attackLight.value = _stage == ATTACK_STAGE;
-	_onLight.value = _stage == ON_STAGE;
-	_decayLight.value = _stage == DECAY_STAGE;
-	_offLight.value = _stage == OFF_STAGE;
+	_attackLight = _stage == ATTACK_STAGE;
+	_onLight = _stage == ON_STAGE;
+	_decayLight = _stage == DECAY_STAGE;
+	_offLight = _stage == OFF_STAGE;
 }
 
 bool ShaperCore::stepStage(const Param& knob, const Input* cv, bool slow) {
@@ -112,7 +116,7 @@ bool ShaperCore::stepStage(const Param& knob, const Input* cv, bool slow) {
 	t = pow(t, 2);
 	t = fmaxf(t, 0.001);
 	t *= slow ? 100.0 : 10.0;
-  _stageProgress += engineGetSampleTime() / t;
+  _stageProgress += (1.0 / gSampleRate) / t;
 	return _stageProgress > 1.0;
 }
 

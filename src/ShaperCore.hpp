@@ -38,10 +38,10 @@ struct ShaperCore {
   Output* _decayOutput;
   Output* _offOutput;
 
-  Light& _attackLight;
-  Light& _onLight;
-  Light& _decayLight;
-  Light& _offLight;
+  float& _attackLight;
+  float& _onLight;
+  float& _decayLight;
+  float& _offLight;
 
 	SchmittTrigger _trigger;
 	Stage _stage;
@@ -76,10 +76,10 @@ struct ShaperCore {
     Output* decayOutput,
     Output* offOutput,
 
-    Light& attackLight,
-    Light& onLight,
-    Light& decayLight,
-    Light& offLight
+    float& attackLight,
+    float& onLight,
+    float& decayLight,
+    float& offLight
   ) : _attackParam(attackParam)
   , _onParam(onParam)
   , _decayParam(decayParam)

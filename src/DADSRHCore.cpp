@@ -4,8 +4,23 @@
 
 void DADSRHCore::reset() {
 	_trigger.reset();
-  _stage = STOPPED_STAGE;
-  _releaseLevel = _holdProgress = _stageProgress = _envelope = 0.0;
+	_stage = STOPPED_STAGE;
+	_releaseLevel = _holdProgress = _stageProgress = _envelope = 0.0;
+
+	_delayLight = 0.0;
+	_attackLight = 0.0;
+	_decayLight = 0.0;
+	_sustainLight = 0.0;
+	_releaseLight = 0.0;
+	_attackShape1Light = 0.0;
+	_attackShape2Light = 0.0;
+	_attackShape3Light = 0.0;
+	_decayShape1Light = 0.0;
+	_decayShape2Light = 0.0;
+	_decayShape3Light = 0.0;
+	_releaseShape1Light = 0.0;
+	_releaseShape2Light = 0.0;
+	_releaseShape3Light = 0.0;
 }
 
 void DADSRHCore::step() {
@@ -218,25 +233,25 @@ void DADSRHCore::step() {
 	  _releaseOutput->value = _stage == RELEASE_STAGE ? 5.0 : 0.0;
 	}
 
-	_delayLight.value = _stage == DELAY_STAGE;
-	_attackLight.value = _stage == ATTACK_STAGE;
-	_decayLight.value = _stage == DECAY_STAGE;
-	_sustainLight.value = _stage == SUSTAIN_STAGE;
-	_releaseLight.value = _stage == RELEASE_STAGE;
+	_delayLight = _stage == DELAY_STAGE;
+	_attackLight = _stage == ATTACK_STAGE;
+	_decayLight = _stage == DECAY_STAGE;
+	_sustainLight = _stage == SUSTAIN_STAGE;
+	_releaseLight = _stage == RELEASE_STAGE;
 
-  _attackShape1Light.value = (int)_attackShapeParam.value == SHAPE1;
-  _attackShape2Light.value = (int)_attackShapeParam.value == SHAPE2;
-  _attackShape3Light.value = (int)_attackShapeParam.value == SHAPE3;
-  _decayShape1Light.value = (int)_decayShapeParam.value == SHAPE1;
-  _decayShape2Light.value = (int)_decayShapeParam.value == SHAPE2;
-  _decayShape3Light.value = (int)_decayShapeParam.value == SHAPE3;
-  _releaseShape1Light.value = (int)_releaseShapeParam.value == SHAPE1;
-  _releaseShape2Light.value = (int)_releaseShapeParam.value == SHAPE2;
-  _releaseShape3Light.value = (int)_releaseShapeParam.value == SHAPE3;
+	_attackShape1Light = ((int)_attackShapeParam.value) == SHAPE1;
+	_attackShape2Light = ((int)_attackShapeParam.value) == SHAPE2;
+	_attackShape3Light = ((int)_attackShapeParam.value) == SHAPE3;
+	_decayShape1Light = ((int)_decayShapeParam.value) == SHAPE1;
+	_decayShape2Light = ((int)_decayShapeParam.value) == SHAPE2;
+	_decayShape3Light = ((int)_decayShapeParam.value) == SHAPE3;
+	_releaseShape1Light = ((int)_releaseShapeParam.value) == SHAPE1;
+	_releaseShape2Light = ((int)_releaseShapeParam.value) == SHAPE2;
+	_releaseShape3Light = ((int)_releaseShapeParam.value) == SHAPE3;
 }
 
 float DADSRHCore::stepAmount(const Param& knob, const Input* cv, bool slow, bool allowZero) {
-  return engineGetSampleTime() / knobTime(knob, cv, slow, allowZero);
+	return (1.0 / gSampleRate) / knobTime(knob, cv, slow, allowZero);
 }
 
 float DADSRHCore::knobTime(const Param& knob, const Input* cv, bool slow, bool allowZero) {
