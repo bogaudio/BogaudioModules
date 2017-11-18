@@ -13,6 +13,13 @@ You'll need to be set up to build [VCV Rack](https://github.com/VCVRack/Rack) it
   make
   ```
 
+To build for a particular version of Rack, check out the corresponding tag or branch:
+
+  ```
+  git checkout v0.4.0
+  make
+  ```
+
 ## Modules
 
 ### Envelopes
