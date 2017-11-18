@@ -10,6 +10,6 @@ void init(rack::Plugin *p) {
 	createModel<ShaperPlusWidget>(plugin, "Bogaudio-ShaperPlus", "Shaper+");
 	createModel<DADSRHWidget>(plugin, "Bogaudio-DADSRH", "DADSR(H)");
 	createModel<DADSRHPlusWidget>(plugin, "Bogaudio-DADSRHPlus", "DADSR(H)+");
-	createModel<OffsetWidget>(plugin, "Bogaudio-Offset", "Offset/Attenuverter");
-	createModel<SampleHoldWidget>(plugin, "Bogaudio-SampleHold", "Sample & Hold");
+	createModel<OffsetWidget>(plugin, "Bogaudio-Offset", "Offset");
+	createModel<SampleHoldWidget>(plugin, "Bogaudio-SampleHold", "S&H");
 }

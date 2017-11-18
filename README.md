@@ -51,7 +51,7 @@ DADSRH+ is a DADSRH, with the addition of CV inputs for each knob, and gate outp
 
 #### OFFSET
 
-A 3-HP CV offset and attenuverter.  The OFFSET and ATTEN knobs have CV inputs.
+A 3-HP CV offset and scaler.  The OFFSET and SCALE knobs have CV inputs.  With an input signal, output is `(input + offset) * scale`.  With no input connected, the output is constant in the value of `offset * scale`.
 
 #### S&H
 
