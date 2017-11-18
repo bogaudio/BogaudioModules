@@ -59,7 +59,7 @@ struct DADSRHCore {
   Light& _releaseShape2Light;
   Light& _releaseShape3Light;
 
-	SchmittTrigger _trigger;//, _attackShapeTrigger, _decayShapeTrigger, _releaseShapeTrigger;
+	SchmittTrigger _trigger;
 	Stage _stage;
 	float _envelope, _stageProgress, _holdProgress, _releaseLevel;
 
@@ -163,7 +163,6 @@ struct DADSRHCore {
   void reset();
   void step();
 
-  // float nextShaper(float shape);
   float stepAmount(const Param& knob, const Input* cv, bool slow, bool allowZero = false);
 	float knobTime(const Param& knob, const Input* cv, bool slow, bool allowZero = false);
 	float knobAmount(const Param& knob, const Input* cv) const;

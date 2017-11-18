@@ -43,14 +43,6 @@ struct ShaperPlus : Module {
 		NUM_LIGHTS
 	};
 
-	enum Stage {
-		STOPPED_STAGE,
-		ATTACK_STAGE,
-		ON_STAGE,
-		DECAY_STAGE,
-		OFF_STAGE
-	};
-
 	ShaperCore _core;
 
 	ShaperPlus() : Module(
