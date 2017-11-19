@@ -32,6 +32,10 @@ struct ManualWidget : ModuleWidget {
 	ManualWidget();
 };
 
+struct NoiseWidget : ModuleWidget {
+	NoiseWidget();
+};
+
 
 struct Knob29 : RoundKnob {
 	Knob29() {
