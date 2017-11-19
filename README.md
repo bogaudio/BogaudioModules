@@ -64,6 +64,10 @@ A 3-HP CV offset and scaler.  The OFFSET and SCALE knobs have CV inputs.  With a
 
 A 3-HP, dual sample-and-hold.  Sampling may be triggered by CV or button press.  If nothing is connected to an IN port, sampling for that channel is from an internal white noise source (range 0-10).
 
+#### Manual
+
+A 3-HP, manual trigger/gate with 8 outputs.  A constant high value is sent from each output for as long as the TRIG button is held.
+
 ## Issues and Feedback
 
 Bug reports and feedback are welcome: please use the [issue tracker](https://github.com/bogaudio/BogaudioModules/issues).

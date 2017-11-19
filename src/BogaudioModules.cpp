@@ -14,4 +14,5 @@ void init(rack::Plugin *p) {
 	p->addModel(createModel<DADSRHPlusWidget>("Bogaudio", "Bogaudio-DADSRHPlus", "DADSR(H)+", ENVELOPE_GENERATOR_TAG));
 	p->addModel(createModel<OffsetWidget>("Bogaudio", "Bogaudio-Offset", "Offset", ATTENUATOR_TAG));
 	p->addModel(createModel<SampleHoldWidget>("Bogaudio", "Bogaudio-SampleHold", "S&H", SAMPLE_AND_HOLD_TAG, DUAL_TAG));
+	p->addModel(createModel<ManualWidget>("Bogaudio", "Bogaudio-Manual", "Manual"));
 }

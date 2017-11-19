@@ -28,8 +28,8 @@ struct SampleHoldWidget : ModuleWidget {
 	SampleHoldWidget();
 };
 
-struct GaussWidget : ModuleWidget {
-	GaussWidget();
+struct ManualWidget : ModuleWidget {
+	ManualWidget();
 };
 
 
