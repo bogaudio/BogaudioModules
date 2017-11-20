@@ -5,7 +5,8 @@ include ../../plugin.mk
 
 
 dist: all
-	mkdir -p dist/Fundamental
-	cp LICENSE* dist/Fundamental/
-	cp plugin.* dist/Fundamental/
-	cp -R res dist/Fundamental/
+	mkdir -p dist/BogaudioModules
+	cp LICENSE* dist/BogaudioModules/
+	cp plugin.* dist/BogaudioModules/
+	cp -R res dist/BogaudioModules/
+	rm dist/BogaudioModules/res/*-src.svg
