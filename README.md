@@ -1,7 +1,7 @@
 # BogaudioModules
 Modules for [VCV Rack](https://github.com/VCVRack/Rack), an open-source Eurorack modular synthesizer.
 
-![Modules screenshot](./res/www/modules.png)
+![Modules screenshot](./doc/www/modules.png)
 
 ## Building
 
