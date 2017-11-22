@@ -7,8 +7,6 @@ Modules for [VCV Rack](https://github.com/VCVRack/Rack), an open-source Eurorack
 
 Find downloadable builds on on the [releases page](https://github.com/bogaudio/BogaudioModules/releases).  Generally there will be a new release for each "major" (binary-incompatible) version of Rack.
 
-Currently there are Mac and Linux builds; Windows coming soon.
-
 ## Building
 
 You'll need to be set up to build [VCV Rack](https://github.com/VCVRack/Rack) itself.  Switch to the `plugins/` directory there, then:
