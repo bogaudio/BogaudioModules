@@ -3,6 +3,12 @@ Modules for [VCV Rack](https://github.com/VCVRack/Rack), an open-source Eurorack
 
 ![Modules screenshot](./doc/www/modules.png)
 
+## Builds/Releases
+
+Find downloadable builds on on the [releases page](https://github.com/bogaudio/BogaudioModules/releases).  Generally there will be a new release for each "major" (binary-incompatible) version of Rack.
+
+Currently there are Mac and Linux builds; Windows coming soon.
+
 ## Building
 
 You'll need to be set up to build [VCV Rack](https://github.com/VCVRack/Rack) itself.  Switch to the `plugins/` directory there, then:
@@ -13,9 +19,11 @@ You'll need to be set up to build [VCV Rack](https://github.com/VCVRack/Rack) it
   make
   ```
 
-To build for a particular version of Rack, check out the corresponding tag or branch:
+To build for a particular version of Rack, check out the corresponding branch:
 
   ```
+  (in plugins/BogaudioModules:)
+  git fetch
   git checkout v0.4.0
   make
   ```
