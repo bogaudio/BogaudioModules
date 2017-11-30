@@ -3,6 +3,7 @@ SOURCES = $(wildcard src/*.cpp)
 
 include ../../plugin.mk
 
+CXXFLAGS += -Isrc/dsp
 
 dist: all
 	mkdir -p dist/BogaudioModules

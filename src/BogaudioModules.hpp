@@ -20,6 +20,11 @@ struct DADSRHPlusWidget : ModuleWidget {
 	DADSRHPlusWidget();
 };
 
+struct AnalyzerWidget : ModuleWidget {
+	AnalyzerWidget();
+};
+
+
 struct OffsetWidget : ModuleWidget {
 	OffsetWidget();
 };
