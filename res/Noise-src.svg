@@ -23,6 +23,13 @@
   </style>
 
   <defs>
+    <symbol id="input" viewBox="0 0 24px 24px">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0" />
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none" />
+      </g>
+    </symbol>
+
     <symbol id="output" viewBox="0 0 24px 24px">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00" />
@@ -45,28 +52,32 @@
   </g>
 
   <g transform="translate(0 25)">
-    <text font-size="6pt" letterspacing="2px" transform="translate(10 0)">0 / +10</text>
-
-    <g transform="translate(0 5)">
-      <g transform="translate(7.5 0)">
-        <rect width="30" height="84" rx="5" fill="#bbb" />
-        <use id="WHITE_OUTPUT" xlink:href="#output" transform="translate(3 4)" />
-        <text font-size="5pt" letter-spacing="2px" transform="translate(1 37)">WHITE</text>
-        <use id="PINK_OUTPUT" xlink:href="#output" transform="translate(3 45)" />
-        <text font-size="5pt" letter-spacing="2px" transform="translate(4.5 78)">PINK</text>
-      </g>
+    <g transform="translate(7.5 0)">
+      <rect width="34" height="168" rx="5" fill="#bbb" transform="translate(-2 0)" />
+      <use id="WHITE_OUTPUT" xlink:href="#output" transform="translate(3 6)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(0.5 39)">WHITE</text>
+      <use id="PINK_OUTPUT" xlink:href="#output" transform="translate(3 47)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(4 80)">PINK</text>
+      <use id="RED_OUTPUT" xlink:href="#output" transform="translate(3 88)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(6 121)">RED</text>
+      <use id="GAUSS_OUTPUT" xlink:href="#output" transform="translate(3 129)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(-1 162)">GAUSS</text>
     </g>
   </g>
 
-  <g transform="translate(0 135)">
-    <text font-size="6pt" letterspacing="2px" transform="translate(14 0)">- / +</text>
-
-    <g transform="translate(0 5)">
-      <g transform="translate(7.5 0)">
-        <rect width="30" height="42" rx="5" fill="#bbb" />
-        <use id="GAUSS_OUTPUT" xlink:href="#output" transform="translate(3 4)" />
-        <text font-size="5pt" letter-spacing="2px" transform="translate(0 37)">GAUSS</text>
-      </g>
+  <g transform="translate(0 240)">
+    <text font-size="6pt" letter-spacing="2px" transform="translate(12 -4)">ABS</text>
+    <g transform="translate(7.5 0)">
+      <rect width="30" height="10" fill="#fafafa" transform="translate(0 28)" />
+      <rect width="30" height="35" rx="5" fill="#fafafa" />
+      <use id="ABS_INPUT" xlink:href="#input" transform="translate(3 3)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(10.5 35)">IN</text>
+    </g>
+    <g transform="translate(7.5 41)">
+      <rect width="30" height="10" fill="#bbb" transform="translate(0 -3)" />
+      <rect width="30" height="35" rx="5" fill="#bbb" />
+      <use id="ABS_OUTPUT" xlink:href="#output" transform="translate(3 0)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(6.5 32)">OUT</text>
     </g>
   </g>
 </svg>

@@ -2,53 +2,51 @@
 namespace bogaudio {
 namespace dsp {
 
-struct NoiseGenerator : Generator {
-	NoiseGenerator() {}
-};
+struct NoiseGenerator : Generator {};
 
 struct WhiteNoiseGenerator : NoiseGenerator {
-	WhiteNoiseGenerator() {}
+	const uint32_t _mask = -1;
+	const float _randMax = powf(2.0, 31) - 1;
+	int _last = 0; // rack::randomu32();
 
-	virtual float next() {
-		return rack::randomf();
+	virtual float _next() {
+		// don't use this for cryptography.
+		_last = ((_last * 1103515245) + 12345) & _mask;
+		return _last / _randMax;
 	}
 };
 
-struct PinkNoiseGenerator : NoiseGenerator {
+template<typename G>
+struct BasePinkNoiseGenerator : NoiseGenerator {
 	static const int _n = 7;
-	uint64_t _g;
-	uint64_t _gs[_n];
-	uint32_t _count;
-	uint64_t _sum;
+	G _g;
+	G _gs[_n];
+	uint32_t _count = rack::randomu32();
 
-	PinkNoiseGenerator() {
-		_sum = _g = rack::randomu64();
-		for (int i = 0; i < _n; ++i) {
-			_sum += _gs[i] = rack::randomu64();
-		}
-		_count = rack::randomu32();
-	}
-
-	virtual float next() {
+	virtual float _next() {
 		// See: http://www.firstpr.com.au/dsp/pink-noise/
-		_sum -= _g;
-		_sum += _g = rack::randomu64();
+		float sum = _g.next();
 		for (int i = 0, bit = 1; i < _n; ++i, bit <<= 1) {
 			if (_count & bit) {
-				_sum -= _gs[i];
-				_sum += _gs[i] = rack::randomu64();
-				break;
+				sum += _gs[i].next();
+			}
+			else {
+				sum += _gs[i].current();
 			}
 		}
 		++_count;
-		return (_sum >> (64 - 24)) / powf(2, 24);
+		return sum / (float)(_n + 1);
 	}
 };
+
+struct PinkNoiseGenerator : BasePinkNoiseGenerator<WhiteNoiseGenerator> {};
+
+struct RedNoiseGenerator : BasePinkNoiseGenerator<PinkNoiseGenerator> {};
 
 struct GaussianNoiseGenerator : NoiseGenerator {
 	GaussianNoiseGenerator() {}
 
-	virtual float next() {
+	virtual float _next() {
 		return rack::randomNormal();
 	}
 };
