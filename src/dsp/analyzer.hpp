@@ -1,7 +1,7 @@
 
 #include <math.h>
 
- #include "ffft/FFTReal.h"
+#include "ffft/FFTReal.h"
 
 namespace bogaudio {
 namespace dsp {
@@ -46,6 +46,15 @@ struct HammingWindow : HanningWindow {
 };
 
 
+struct FFT1024 {
+  void* _fft = NULL;
+  FFT1024();
+  ~FFT1024();
+
+  void do_fft(float* out, float* in);
+};
+
+
 struct SpectrumAnalyzer : OverlappingBuffer<float> {
   enum Size {
     SIZE_128 = 128,
@@ -70,7 +79,8 @@ struct SpectrumAnalyzer : OverlappingBuffer<float> {
   };
 
   const float _sampleRate;
-  ffft::FFTReal<float> _fft;
+  ffft::FFTReal<float>* _fft;
+  FFT1024* _fft1024;
   Window* _window;
   float* _windowOut;
   float* _fftOut;
@@ -83,12 +93,23 @@ struct SpectrumAnalyzer : OverlappingBuffer<float> {
   )
   : OverlappingBuffer(size, overlap)
   , _sampleRate(sampleRate)
-  , _fft(_size)
+  , _fft(NULL)
+  , _fft1024(NULL)
   , _window(NULL)
   , _windowOut(NULL)
   , _fftOut(new float[_size])
   {
     assert(_sampleRate > size);
+
+    switch (size) {
+      case SIZE_1024: {
+        _fft1024 = new FFT1024();
+        break;
+      }
+      default: {
+        _fft = new ffft::FFTReal<float>(size);
+      }
+    }
 
     switch (windowType) {
       case WINDOW_NONE: {
@@ -108,20 +129,32 @@ struct SpectrumAnalyzer : OverlappingBuffer<float> {
   }
 
   virtual ~SpectrumAnalyzer() {
-    delete[] _fftOut;
+    if (_fft) {
+      delete _fft;
+    }
+    if (_fft1024) {
+      delete _fft1024;
+    }
+
     if (_window) {
       delete _window;
       delete[] _windowOut;
     }
+
+    delete[] _fftOut;
   }
 
   virtual void process(float* samples) {
+    float* input = samples;
     if (_window) {
       _window->apply(samples, _windowOut);
-      _fft.do_fft(_fftOut, _windowOut);
+      input = _windowOut;
+    }
+    if (_fft1024) {
+      _fft1024->do_fft(_fftOut, input);
     }
     else {
-      _fft.do_fft(_fftOut, samples);
+      _fft->do_fft(_fftOut, input);
     }
   }
 

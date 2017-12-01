@@ -1,5 +1,5 @@
 
-SOURCES = $(wildcard src/*.cpp)
+SOURCES = $(wildcard src/*.cpp src/dsp/*cpp)
 
 include ../../plugin.mk
 
