@@ -57,16 +57,16 @@
       <use id="WHITE_OUTPUT" xlink:href="#output" transform="translate(3 6)" />
       <text font-size="5pt" letter-spacing="2px" transform="translate(0.5 39)">WHITE</text>
       <use id="PINK_OUTPUT" xlink:href="#output" transform="translate(3 47)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(4 80)">PINK</text>
+      <text font-size="5pt" letter-spacing="2px" transform="translate(4.5 80)">PINK</text>
       <use id="RED_OUTPUT" xlink:href="#output" transform="translate(3 88)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6 121)">RED</text>
+      <text font-size="5pt" letter-spacing="2px" transform="translate(7 121)">RED</text>
       <use id="GAUSS_OUTPUT" xlink:href="#output" transform="translate(3 129)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(-1 162)">GAUSS</text>
+      <text font-size="5pt" letter-spacing="2px" transform="translate(0 162)">GAUSS</text>
     </g>
   </g>
 
   <g transform="translate(0 240)">
-    <text font-size="6pt" letter-spacing="2px" transform="translate(12 -4)">ABS</text>
+    <text font-size="6pt" letter-spacing="2px" transform="translate(13 -4)">ABS</text>
     <g transform="translate(7.5 0)">
       <rect width="30" height="10" fill="#fafafa" transform="translate(0 28)" />
       <rect width="30" height="35" rx="5" fill="#fafafa" />
