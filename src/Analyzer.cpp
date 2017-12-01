@@ -58,7 +58,6 @@ struct Analyzer : Module {
 	enum ParamsIds {
 		RANGE_PARAM,
 		SMOOTH_PARAM,
-		// TYPE_PARAM,
 		POWER_PARAM,
 		NUM_PARAMS
 	};
@@ -79,13 +78,7 @@ struct Analyzer : Module {
 		NUM_LIGHTS
 	};
 
-	enum DisplayType {
-		DISPLAYTYPE_LINE,
-		DISPLAYTYPE_BAR
-	};
-
 	const bogaudio::dsp::SpectrumAnalyzer::Size _size = bogaudio::dsp::SpectrumAnalyzer::SIZE_1024;
-	DisplayType _displayType;
 	int _averageN;
 	ChannelAnalyzer* _channelA = NULL;
 	ChannelAnalyzer* _channelB = NULL;
@@ -106,7 +99,6 @@ struct Analyzer : Module {
 };
 
 void Analyzer::reset() {
-	_displayType = DISPLAYTYPE_LINE;
 	resetChannels();
 }
 
@@ -196,7 +188,6 @@ struct AnalyzerDisplay : TransparentWidget {
 	void drawXAxis(NVGcontext* vg);
 	void drawXAxisLine(NVGcontext* vg, float hz, float maxHz);
 	void drawLine(NVGcontext* vg, float* bins, int binsN, NVGcolor color);
-	void drawBars(NVGcontext* vg, float* bins, int binsN, NVGcolor color);
 
 	int binValueToHeight(float value);
 };
@@ -206,25 +197,11 @@ void AnalyzerDisplay::draw(NVGcontext* vg) {
 	drawYAxis(vg);
 	drawXAxis(vg);
 
-	switch(_module->_displayType) {
-		case Analyzer::DISPLAYTYPE_LINE: {
-			if (_module->_channelA) {
-				drawLine(vg, _module->_channelA->_bins, _module->_channelA->_binsN, _channelAColor);
-			}
-			if (_module->_channelB) {
-				drawLine(vg, _module->_channelB->_bins, _module->_channelB->_binsN, _channelBColor);
-			}
-			break;
-		}
-		case Analyzer::DISPLAYTYPE_BAR: {
-			if (_module->_channelA) {
-				drawBars(vg, _module->_channelA->_bins, _module->_channelA->_binsN, _channelAColor);
-			}
-			if (_module->_channelB) {
-				drawBars(vg, _module->_channelB->_bins, _module->_channelB->_binsN, _channelBColor);
-			}
-			break;
-		}
+	if (_module->_channelA) {
+		drawLine(vg, _module->_channelA->_bins, _module->_channelA->_binsN, _channelAColor);
+	}
+	if (_module->_channelB) {
+		drawLine(vg, _module->_channelB->_bins, _module->_channelB->_binsN, _channelBColor);
 	}
 }
 
@@ -325,34 +302,6 @@ void AnalyzerDisplay::drawLine(NVGcontext* vg, float* bins, int binsN, NVGcolor 
 	nvgRestore(vg);
 }
 
-void AnalyzerDisplay::drawBars(NVGcontext* vg, float* bins, int binsN, NVGcolor color) {
-	// nvgSave(vg);
-	// int n = std::min(_module->_displayBins, 100) - 2; // FIXME
-	// nvgFillColor(vg, color);
-  //
-	// for (int i = 0; i < n; ++i) {
-	// 	float value = bins[i];
-	// 	value /= refDB0;
-	// 	value = log10(value);
-	// 	value = std::max(-5.0f, value);
-	// 	value = std::min(1.0f, value);
-	// 	value *= 20.0;
-	// 	value = (value + displayDB - 20.0) / displayDB;
-  //
-	// 	int height = round(_levelHeight * value);
-	// 	nvgBeginPath(vg);
-	// 	nvgRect(
-	// 		vg,
-	// 		_levelsInset.x + i*(_levelWidth + _levelSpace),
-	// 		_levelsInset.y + (_levelHeight - height),
-	// 		_levelWidth,
-	// 		height
-	// 	);
-	// 	nvgFill(vg);
-	//  nvgRestore(vg);
-	// }
-}
-
 int AnalyzerDisplay::binValueToHeight(float value) {
 	value /= _refDB0;
 	value = log10(value);
@@ -362,6 +311,7 @@ int AnalyzerDisplay::binValueToHeight(float value) {
 	value = (value + _displayDB - 20.0) / _displayDB;
 	return round(_graphSize.y * value);
 }
+
 
 struct OneTenKnob : Knob38 {
 	OneTenKnob() : Knob38() {
@@ -417,7 +367,6 @@ AnalyzerWidget::AnalyzerWidget() {
 
 	addParam(createParam<OneTenKnob>(rangeParamPosition, module, Analyzer::RANGE_PARAM, 0.1, 1.0, 0.5));
 	addParam(createParam<IntegerOneTenKnob>(smoothParamPosition, module, Analyzer::SMOOTH_PARAM, 1.0, 10.0, 5.0));
-	// addParam(createParam<CKSS>(typeParamPosition, module, Analyzer::TYPE_PARAM, 0.0, 1.0, 1.0));
 	addParam(createParam<CKSS>(powerParamPosition, module, Analyzer::POWER_PARAM, 0.0, 1.0, 1.0));
 
 	addInput(createInput<PJ301MPort>(signalaInputPosition, module, Analyzer::SIGNALA_INPUT));

@@ -166,14 +166,18 @@
       <rect width="20" height="40" fill="#bbb" transform="translate(29)" />
       <use id="SIGNALA_INPUT" xlink:href="#input" transform="translate(2.5 3)" />
       <use id="SIGNALA_OUTPUT" xlink:href="#output" transform="translate(31.5 3)" />
-      <text font-size="6pt" letter-spacing="2px" transform="translate(10 36)">IN</text>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(33 36)">OUT</text>
+      <text font-size="6pt" letter-spacing="2px" transform="translate(9.5 36)">IN</text>
+      <text font-size="6pt" letter-spacing="2px" transform="translate(30 36)">THRU</text>
     </g>
   </g>
 
   <!-- <polyline points="10,0 10,380" stroke="#0f0" stroke-width="1" /> -->
   <!-- <polyline points="290,0 290,380" stroke="#0f0" stroke-width="1" /> -->
   <!-- <polyline points="0,315.5 300,315.5" stroke="#0f0" stroke-width="1" /> -->
+
+  <!-- <polyline points="0,280 70,280" stroke="#0f0" stroke-width="1" transform="translate(25 0)" /> -->
+  <!-- <polyline points="0,0 0,60" stroke="#0f0" stroke-width="1" transform="translate(130 290)" /> -->
+  <!-- <polyline points="0,0 0,60" stroke="#0f0" stroke-width="1" transform="translate(80 255)" /> -->
 
   <g transform="translate(0 320)">
     <text font-size="8pt" letter-spacing="2px" transform="translate(19 36.5) rotate(-90)">CH B</text>
@@ -183,13 +187,12 @@
       <rect width="20" height="40" fill="#bbb" transform="translate(29)" />
       <use id="SIGNALB_INPUT" xlink:href="#input" transform="translate(2.5 3)" />
       <use id="SIGNALB_OUTPUT" xlink:href="#output" transform="translate(31.5 3)" />
-      <text font-size="6pt" letter-spacing="2px" transform="translate(10 36)">IN</text>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(33 36)">OUT</text>
+      <text font-size="6pt" letter-spacing="2px" transform="translate(9.5 36)">IN</text>
+      <text font-size="6pt" letter-spacing="2px" transform="translate(30 36)">THRU</text>
     </g>
   </g>
 
   <g transform="translate(0 300.5)">
-    <!-- <rect x="0" y="0" width="3" height="70" fill="#0f0" transform="translate(80 -24)" /> -->
     <g transform="translate(100 0)">
       <use id="RANGE_PARAM" xlink:href="#knob" transform="translate(0 0) scale(0.38)" />
       <text font-size="8pt" letter-spacing="2px" transform="translate(-2 -12)">RANGE</text>
@@ -197,12 +200,6 @@
     <g transform="translate(164 0)">
       <use id="SMOOTH_PARAM" xlink:href="#knob" transform="translate(0 0) scale(0.38)" />
       <text font-size="8pt" letter-spacing="2px" transform="translate(-10 -12)">SMOOTH</text>
-    </g>
-    <g transform="translate(232 -2)">
-      <!-- <text font-size="5pt" letter-spacing="2px" transform="translate(-8 26.5) rotate(270)">TYPE</text> -->
-      <!-- <text font-size="5pt" letter-spacing="2px" transform="translate(-4 0)">LINE</text> -->
-      <!-- <use id="TYPE_PARAM" xlink:href="#switch" transform="translate(0 4) scale(0.2)" /> -->
-      <!-- <text font-size="5pt" letter-spacing="2px" transform="translate(-1.5 34)">BAR</text> -->
     </g>
     <g transform="translate(273 -2)">
       <text font-size="5pt" letter-spacing="2px" transform="translate(-8 30.5) rotate(270)">POWER</text>
