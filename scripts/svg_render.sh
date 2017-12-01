@@ -16,7 +16,7 @@ fi
 
 TMP_FILE="/tmp/svg_render_tmp.svg"
 
-< "$1" perl -e '$s = do { local $/; <STDIN> }; $s =~ s/<use[^<>\/]+id="\w+_(PARAM|INPUT|OUTPUT|LIGHT)"[^<>\/]+(\/\>|<\/use>)//gs; print $s' > "$TMP_FILE" && \
+< "$1" perl -e '$s = do { local $/; <STDIN> }; $s =~ s/<use[^<>\/]+id="\w+_(PARAM|INPUT|OUTPUT|LIGHT|WIDGET)"[^<>\/]+(\/\>|<\/use>)//gs; print $s' > "$TMP_FILE" && \
   "$INKSCAPE" -f "$TMP_FILE" \
   --verb EditSelectAll --verb SelectionUnGroup \
   --verb EditSelectAll --verb EditUnlinkClone \
