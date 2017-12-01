@@ -27,7 +27,7 @@ struct OverlappingBuffer {
 
   virtual void process(T* samples) = 0;
 
-  bool step(T sample) {
+  virtual bool step(T sample) {
     _samples[_sample++] = sample;
     assert(_sample <= _samplesN);
 
