@@ -159,8 +159,8 @@
       <text font-size="8pt" letter-spacing="2px" transform="translate(-2 -12)">RANGE</text>
     </g>
     <g transform="translate(164 0)">
-      <!-- <use id="SMOOTH_PARAM" xlink:href="#knob" transform="translate(0 0) scale(0.38)" /> -->
-      <!-- <text font-size="8pt" letter-spacing="2px" transform="translate(-10 -12)">SMOOTH</text> -->
+      <use id="SMOOTH_PARAM" xlink:href="#knob" transform="translate(0 0) scale(0.38)" />
+      <text font-size="8pt" letter-spacing="2px" transform="translate(-10 -12)">SMOOTH</text>
     </g>
     <g transform="translate(232 -2)">
       <!-- <text font-size="5pt" letter-spacing="2px" transform="translate(-8 26.5) rotate(270)">TYPE</text> -->
@@ -177,5 +177,5 @@
   </g>
 
   <use xlink:href="#knobguide" transform=" translate(81.5 285) scale(0.75)" />
-  <!-- <use xlink:href="#knobguide" transform=" translate(145 285) scale(0.75)" /> -->
+  <use xlink:href="#knobguide" transform=" translate(145 285) scale(0.75)" />
 </svg>
