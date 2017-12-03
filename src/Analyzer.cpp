@@ -18,11 +18,12 @@ struct ChannelAnalyzer : SpectrumAnalyzer {
 		SpectrumAnalyzer::Overlap overlap,
 		SpectrumAnalyzer::WindowType windowType,
 		float sampleRate,
-		int averageN
+		int averageN,
+		int binSize
 	)
 	: SpectrumAnalyzer(size, overlap, windowType, sampleRate)
 	, _averageN(averageN)
-	, _binsN(size / 2)
+	, _binsN(size / binSize)
 	, _bins(new float[size] {})
 	, _frames(new float[_averageN * _binsN] {})
 	, _currentFrame(0)
@@ -30,11 +31,11 @@ struct ChannelAnalyzer : SpectrumAnalyzer {
 	}
 	virtual ~ChannelAnalyzer() {
 		delete[] _bins;
-
 		delete[] _frames;
 	}
 
 	virtual bool step(float sample) override;
+	float getPeak();
 };
 
 bool ChannelAnalyzer::step(float sample) {
@@ -54,6 +55,21 @@ bool ChannelAnalyzer::step(float sample) {
 		return true;
 	}
 	return false;
+}
+
+float ChannelAnalyzer::getPeak() {
+	float max = 0.0;
+	float sum = 0.0;
+	int maxBin = 0;
+	for (int bin = 0; bin < _binsN; ++bin) {
+		if( _bins[bin] > max) {
+			max = _bins[bin];
+			maxBin = bin;
+		}
+		sum += _bins[bin];
+	}
+	const float fWidth = _sampleRate / (float)(_size / (_size / _binsN));
+	return (maxBin + 1)*fWidth - fWidth/2.0;
 }
 
 
@@ -87,6 +103,7 @@ struct Analyzer : Module {
 	ChannelAnalyzer* _channelB = NULL;
 	float _range = 0.0;
 	float _smooth = 0.0;
+	const int _binAverageN = 2;
 
 	Analyzer() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 		reset();
@@ -138,7 +155,8 @@ void Analyzer::stepChannel(ChannelAnalyzer*& channelPointer, bool running, Input
 				SpectrumAnalyzer::OVERLAP_2,
 				SpectrumAnalyzer::WINDOW_HAMMING,
 				engineGetSampleRate(),
-				_averageN
+				_averageN,
+				_binAverageN
 			);
 		}
 
@@ -157,10 +175,11 @@ void Analyzer::stepChannel(ChannelAnalyzer*& channelPointer, bool running, Input
 
 
 struct AnalyzerDisplay : TransparentWidget {
-	const int _insetLeft = 14;
-	const int _insetRight = 4;
-	const int _insetTop = 2;
-	const int _insetBottom = 11;
+	const int _insetAround = 2;
+	const int _insetLeft = _insetAround + 12;
+	const int _insetRight = _insetAround + 2;
+	const int _insetTop = _insetAround + 13;
+	const int _insetBottom = _insetAround + 9;
 
 	const float _refDB0 = 20.0; // arbitrary; makes a 10.0-amplitude sine wave reach to about 0db on the output.
 	const float _displayDB = 120.0;
@@ -190,24 +209,34 @@ struct AnalyzerDisplay : TransparentWidget {
 
 	void draw(NVGcontext* vg) override;
 	void drawBackground(NVGcontext* vg);
+	void drawHeader(NVGcontext* vg);
 	void drawYAxis(NVGcontext* vg);
 	void drawXAxis(NVGcontext* vg);
 	void drawXAxisLine(NVGcontext* vg, float hz, float maxHz);
-	void drawLine(NVGcontext* vg, float* bins, int binsN, NVGcolor color);
-	void drawText(NVGcontext* vg, const char* s, float x, float y, float rotation = 0.0);
+	void drawGraph(NVGcontext* vg, float* bins, int binsN, NVGcolor color);
+	void drawText(NVGcontext* vg, const char* s, float x, float y, float rotation = 0.0, const NVGcolor* color = NULL);
 	int binValueToHeight(float value);
 };
 
 void AnalyzerDisplay::draw(NVGcontext* vg) {
 	drawBackground(vg);
-	drawYAxis(vg);
-	drawXAxis(vg);
 
-	if (_module->_channelA) {
-		drawLine(vg, _module->_channelA->_bins, _module->_channelA->_binsN, _channelAColor);
-	}
-	if (_module->_channelB) {
-		drawLine(vg, _module->_channelB->_bins, _module->_channelB->_binsN, _channelBColor);
+	if (_module->_channelA || _module->_channelB) {
+		nvgSave(vg);
+		nvgScissor(vg, _insetAround, _insetAround, _size.x - _insetAround, _size.y - _insetAround);
+		{
+			drawHeader(vg);
+			drawYAxis(vg);
+			drawXAxis(vg);
+
+			if (_module->_channelA) {
+				drawGraph(vg, _module->_channelA->_bins, _module->_channelA->_binsN, _channelAColor);
+			}
+			if (_module->_channelB) {
+				drawGraph(vg, _module->_channelB->_bins, _module->_channelB->_binsN, _channelBColor);
+			}
+		}
+		nvgRestore(vg);
 	}
 }
 
@@ -222,6 +251,34 @@ void AnalyzerDisplay::drawBackground(NVGcontext* vg) {
 	nvgRestore(vg);
 }
 
+void AnalyzerDisplay::drawHeader(NVGcontext* vg) {
+	nvgSave(vg);
+
+	const int textY = -4;
+	const int charPx = 5;
+	const int sLen = 100;
+	char s[sLen];
+	int x = _insetAround + 2;
+
+	int n = snprintf(s, sLen, "Peaks (+/-%0.1f):", engineGetSampleRate() / (float)(_module->_size / (2 * _module->_binAverageN)));
+	drawText(vg, s, x, _insetTop + textY);
+	x += n * charPx - 2;
+
+	if (_module->_channelA) {
+		n = snprintf(s, sLen, "A:%7.1f", _module->_channelA->getPeak());
+		drawText(vg, s, x, _insetTop + textY, 0.0, &_channelAColor);
+		x += n * charPx + 3;
+	}
+
+	if (_module->_channelB) {
+		n = snprintf(s, sLen, "B:%7.1f", _module->_channelB->getPeak());
+		drawText(vg, s, x, _insetTop + textY, 0.0, &_channelBColor);
+		x += n * charPx + 3;
+	}
+
+	nvgRestore(vg);
+}
+
 void AnalyzerDisplay::drawYAxis(NVGcontext* vg) {
 	nvgSave(vg);
 	nvgStrokeColor(vg, _axisColor);
@@ -230,7 +287,13 @@ void AnalyzerDisplay::drawYAxis(NVGcontext* vg) {
 	const float textR = -M_PI/2.0;
 
 	nvgBeginPath(vg);
-	int lineY = _insetTop + (_graphSize.y - _graphSize.y*(_displayDB - 20.0)/_displayDB);
+	int lineY = _insetTop;
+	nvgMoveTo(vg, lineX, lineY);
+	nvgLineTo(vg, _size.x - _insetRight, lineY);
+	nvgStroke(vg);
+
+	nvgBeginPath(vg);
+	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_displayDB - 20.0)/_displayDB);
 	nvgMoveTo(vg, lineX, lineY);
 	nvgLineTo(vg, _size.x - _insetRight, lineY);
 	nvgStroke(vg);
@@ -324,9 +387,10 @@ void AnalyzerDisplay::drawXAxisLine(NVGcontext* vg, float hz, float maxHz) {
 	}
 }
 
-void AnalyzerDisplay::drawLine(NVGcontext* vg, float* bins, int binsN, NVGcolor color) {
+void AnalyzerDisplay::drawGraph(NVGcontext* vg, float* bins, int binsN, NVGcolor color) {
   const int pointsN = roundf(_module->_range*(_module->_size/2));
 	nvgSave(vg);
+	nvgScissor(vg, _insetLeft, _insetTop, _graphSize.x, _graphSize.y);
 	nvgStrokeColor(vg, color);
 	nvgBeginPath(vg);
 	for (int i = 0; i < pointsN; ++i) {
@@ -343,13 +407,13 @@ void AnalyzerDisplay::drawLine(NVGcontext* vg, float* bins, int binsN, NVGcolor 
 	nvgRestore(vg);
 }
 
-void AnalyzerDisplay::drawText(NVGcontext* vg, const char* s, float x, float y, float rotation) {
+void AnalyzerDisplay::drawText(NVGcontext* vg, const char* s, float x, float y, float rotation, const NVGcolor* color) {
 	nvgSave(vg);
 	nvgTranslate(vg, x, y);
 	nvgRotate(vg, rotation);
 	nvgFontSize(vg, 10);
 	nvgFontFaceId(vg, _font->handle);
-	nvgFillColor(vg, _textColor);
+	nvgFillColor(vg, color ? *color : _textColor);
 	nvgText(vg, 0, 0, s, NULL);
 	nvgRestore(vg);
 }
