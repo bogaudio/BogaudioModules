@@ -2,6 +2,8 @@
 #include "BogaudioModules.hpp"
 #include "dsp/dsp.hpp"
 
+using namespace bogaudio::dsp;
+
 struct Noise : Module {
 	enum ParamsIds {
 		NUM_PARAMS
@@ -25,10 +27,10 @@ struct Noise : Module {
 		NUM_LIGHTS
 	};
 
-	bogaudio::dsp::WhiteNoiseGenerator _white;
-	bogaudio::dsp::PinkNoiseGenerator _pink;
-	bogaudio::dsp::RedNoiseGenerator _red;
-	bogaudio::dsp::GaussianNoiseGenerator _gauss;
+	WhiteNoiseGenerator _white;
+	PinkNoiseGenerator _pink;
+	RedNoiseGenerator _red;
+	GaussianNoiseGenerator _gauss;
 
 	Noise() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {}
 

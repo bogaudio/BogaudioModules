@@ -4,7 +4,9 @@
 #include "dsp/dsp.hpp"
 #include "BogaudioModules.hpp"
 
-struct ChannelAnalyzer : bogaudio::dsp::SpectrumAnalyzer {
+using namespace bogaudio::dsp;
+
+struct ChannelAnalyzer : SpectrumAnalyzer {
 	const int _averageN;
 	const int _binsN;
 	float* _bins;
@@ -12,13 +14,13 @@ struct ChannelAnalyzer : bogaudio::dsp::SpectrumAnalyzer {
 	int _currentFrame;
 
 	ChannelAnalyzer(
-		bogaudio::dsp::SpectrumAnalyzer::Size size,
-		bogaudio::dsp::SpectrumAnalyzer::Overlap overlap,
-		bogaudio::dsp::SpectrumAnalyzer::WindowType windowType,
+		SpectrumAnalyzer::Size size,
+		SpectrumAnalyzer::Overlap overlap,
+		SpectrumAnalyzer::WindowType windowType,
 		float sampleRate,
 		int averageN
 	)
-	: bogaudio::dsp::SpectrumAnalyzer(size, overlap, windowType, sampleRate)
+	: SpectrumAnalyzer(size, overlap, windowType, sampleRate)
 	, _averageN(averageN)
 	, _binsN(size / 2)
 	, _bins(new float[size] {})
@@ -28,6 +30,7 @@ struct ChannelAnalyzer : bogaudio::dsp::SpectrumAnalyzer {
 	}
 	virtual ~ChannelAnalyzer() {
 		delete[] _bins;
+
 		delete[] _frames;
 	}
 
@@ -35,7 +38,7 @@ struct ChannelAnalyzer : bogaudio::dsp::SpectrumAnalyzer {
 };
 
 bool ChannelAnalyzer::step(float sample) {
-	if (bogaudio::dsp::SpectrumAnalyzer::step(sample)) {
+	if (SpectrumAnalyzer::step(sample)) {
 		float* frame = _frames + _currentFrame*_binsN;
 		getMagnitudes(frame, _binsN);
 
@@ -78,7 +81,7 @@ struct Analyzer : Module {
 		NUM_LIGHTS
 	};
 
-	const bogaudio::dsp::SpectrumAnalyzer::Size _size = bogaudio::dsp::SpectrumAnalyzer::SIZE_1024;
+	const SpectrumAnalyzer::Size _size = SpectrumAnalyzer::SIZE_1024;
 	int _averageN;
 	ChannelAnalyzer* _channelA = NULL;
 	ChannelAnalyzer* _channelB = NULL;
@@ -132,8 +135,8 @@ void Analyzer::stepChannel(ChannelAnalyzer*& channelPointer, bool running, Input
 		if (!channelPointer) {
 			channelPointer = new ChannelAnalyzer(
 				_size,
-				bogaudio::dsp::SpectrumAnalyzer::OVERLAP_2,
-				bogaudio::dsp::SpectrumAnalyzer::WINDOW_HAMMING,
+				SpectrumAnalyzer::OVERLAP_2,
+				SpectrumAnalyzer::WINDOW_HAMMING,
 				engineGetSampleRate(),
 				_averageN
 			);
