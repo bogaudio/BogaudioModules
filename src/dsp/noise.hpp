@@ -7,7 +7,7 @@ struct NoiseGenerator : Generator {};
 struct WhiteNoiseGenerator : NoiseGenerator {
 	const uint32_t _mask = -1;
 	const float _randMax = powf(2.0, 31) - 1;
-	int _last = 0; // rack::randomu32();
+	int _last = rack::randomu32();
 
 	virtual float _next() {
 		// don't use this for cryptography.

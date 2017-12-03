@@ -21,10 +21,10 @@ struct ChannelAnalyzer : bogaudio::dsp::SpectrumAnalyzer {
 	: bogaudio::dsp::SpectrumAnalyzer(size, overlap, windowType, sampleRate)
 	, _averageN(averageN)
 	, _binsN(size / 2)
+	, _bins(new float[size] {})
+	, _frames(new float[_averageN * _binsN] {})
 	, _currentFrame(0)
 	{
-		_bins = new float[size] { 0.0 };
-		_frames = new float[_averageN * _binsN] { 0.0 };
 	}
 	virtual ~ChannelAnalyzer() {
 		delete[] _bins;

@@ -13,18 +13,18 @@ struct Window {
 
   Window(int size)
   : _size(size)
-  , _window(new float[_size] { 0.0 })
+  , _window(new float[_size] {})
   , _sum(0.0)
   {}
   virtual ~Window() {
     delete[] _window;
   }
 
-  virtual float sum() {
+  float sum() {
     return _sum;
   }
 
-  virtual void apply(float* in, float* out) {
+  void apply(float* in, float* out) {
     for (int i = 0; i < _size; ++i) {
       out[i] = in[i] * _window[i];
     }
@@ -164,31 +164,29 @@ struct SpectrumAnalyzer : OverlappingBuffer<float> {
 
     const int bands = _size / 2;
     const int binWidth = bands / nBins;
-    const float normalization = powf(_window ? _window->sum() : _size, 2.0);
+    const float invBinWidth = 1.0 / (float)binWidth;
+    const float normalization = 2.0 / powf(_window ? _window->sum() : _size, 2.0);
     for (int bin = 0; bin < nBins; ++bin) {
       float sum = 0.0;
       int binEnd = bin * binWidth + binWidth;
       for (int i = binEnd - binWidth; i < binEnd; ++i) {
-        float power = powf(_fftOut[i], 2.0) + powf(_fftOut[i + bands], 2.0);
-        power *= 2.0;
-        power /= normalization;
-        sum += power;
+        sum += (_fftOut[i]*_fftOut[i] + _fftOut[i + bands]*_fftOut[i + bands]) * normalization;
       }
-      bins[bin] = sum / (float)binWidth; // FIXME: averaging is the way to go?
+      bins[bin] = sum * invBinWidth;
     }
   }
 
-  void getFrequencies(float* bins, int nBins) {
-    assert(nBins <= _size / 2);
-    assert(_size % nBins == 0);
-
-    const int bands = _size / 2;
-    const int binWidth = bands / nBins;
-    const float fundamental = _sampleRate / (float)_size;
-    for (int bin = 0; bin < nBins; ++bin) {
-      bins[bin] = roundf(bin*binWidth*fundamental + binWidth*fundamental/2.0);
-    }
-  }
+  // void getFrequencies(float* bins, int nBins) {
+  //   assert(nBins <= _size / 2);
+  //   assert(_size % nBins == 0);
+  //
+  //   const int bands = _size / 2;
+  //   const int binWidth = bands / nBins;
+  //   const float fundamental = _sampleRate / (float)_size;
+  //   for (int bin = 0; bin < nBins; ++bin) {
+  //     bins[bin] = roundf(bin*binWidth*fundamental + binWidth*fundamental/2.0);
+  //   }
+  // }
 };
 
 } // namespace dsp

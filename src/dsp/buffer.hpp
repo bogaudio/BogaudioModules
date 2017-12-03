@@ -1,6 +1,9 @@
 
 #include <algorithm>
 
+namespace bogaudio {
+namespace dsp {
+
 template<typename T>
 struct OverlappingBuffer {
   const int _size;
@@ -47,3 +50,6 @@ struct OverlappingBuffer {
     return false;
   }
 };
+
+} // namespace dsp
+} // namespace bogaudio
