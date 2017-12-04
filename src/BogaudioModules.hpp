@@ -63,6 +63,14 @@ struct Button18 : SVGSwitch, MomentarySwitch {
 	}
 };
 
+struct Button9Toggle2 : SVGSwitch, ToggleSwitch {
+	Button9Toggle2() {
+		addFrame(SVG::load(assetPlugin(plugin, "res/button_9px.svg")));
+		addFrame(SVG::load(assetPlugin(plugin, "res/button_9px.svg")));
+		box.size = Vec(9, 9);
+	}
+};
+
 struct Button9Toggle3 : SVGSwitch, ToggleSwitch {
 	Button9Toggle3() {
 		addFrame(SVG::load(assetPlugin(plugin, "res/button_9px.svg")));

@@ -208,6 +208,8 @@
   <!-- <polyline points="0,280 70,280" stroke="#0f0" stroke-width="1" transform="translate(25 0)" /> -->
   <!-- <polyline points="0,0 0,60" stroke="#0f0" stroke-width="1" transform="translate(130 290)" /> -->
   <!-- <polyline points="0,0 0,70" stroke="#0f0" stroke-width="1" transform="translate(128 255)" /> -->
+  <!-- <polyline points="0,0 0,70" stroke="#0f0" stroke-width="1" transform="translate(201 255)" /> -->
+  <!-- <polyline points="0,0 0,70" stroke="#0f0" stroke-width="1" transform="translate(274 255)" /> -->
 
   <g transform="translate(0 271)">
     <!-- <polyline points="0,0 380,0" stroke="#0f0" stroke-width="1" transform="translate(0, 19)" /> -->
@@ -215,15 +217,40 @@
       <use id="RANGE_PARAM" xlink:href="#knob" transform="translate(0 0) scale(0.38)" />
       <text font-size="7pt" letter-spacing="2px" transform="rotate(-90) translate(-38 -11)">RANGE</text>
     </g>
+
     <g transform="translate(109 0)">
       <use id="SMOOTH_PARAM" xlink:href="#knob" transform="translate(0 0) scale(0.38)" />
       <text font-size="7pt" letter-spacing="2px" transform="rotate(-90) translate(-44 -11)">SMOOTH</text>
     </g>
-    <g transform="translate(273 5)">
-      <text font-size="5pt" letter-spacing="2px" transform="translate(-8 30.5) rotate(270)">POWER</text>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(1 0)">ON</text>
-      <use id="POWER_PARAM" xlink:href="#switch" transform="translate(0 4) scale(0.2)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(-1 34)">OFF</text>
+
+    <g transform="translate(182 0)">
+      <g transform="translate(-3 0)">
+        <g transform="translate(0 3)">
+          <use id="QUALITY_HIGH_LIGHT" xlink:href="#light" transform="translate(0 0)" />
+          <text font-size="5pt" letter-spacing="2px" transform="translate(7 3.5)">HIGH</text>
+        </g>
+        <g transform="translate(0 18)">
+          <use id="QUALITY_GOOD_LIGHT" xlink:href="#light" transform="translate(0 0)" />
+          <text font-size="5pt" letter-spacing="2px" transform="translate(7 3.5)">GOOD</text>
+        </g>
+        <g transform="translate(7 27)">
+          <use id="QUALITY_PARAM" xlink:href="#button" transform="scale(0.1)" />
+        </g>
+      </g>
+      <text font-size="7pt" letter-spacing="2px" transform="rotate(-90) translate(-45 -11)">QUALITY</text>
+    </g>
+
+    <g transform="translate(255 0)">
+      <g transform="translate(-3 0)">
+        <g transform="translate(0 18)">
+          <use id="POWER_ON_LIGHT" xlink:href="#light" transform="translate(0 0)" />
+          <text font-size="5pt" letter-spacing="2px" transform="translate(7 3.5)">ON</text>
+        </g>
+        <g transform="translate(7 27)">
+          <use id="POWER_PARAM" xlink:href="#button" transform="scale(0.1)" />
+        </g>
+      </g>
+      <text font-size="7pt" letter-spacing="2px" transform="rotate(-90) translate(-40 -11)">POWER</text>
     </g>
   </g>
 

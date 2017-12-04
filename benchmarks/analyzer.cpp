@@ -25,6 +25,18 @@ static void BM_HanningWindowApply(benchmark::State& state) {
 }
 BENCHMARK(BM_HanningWindowApply);
 
+static void BM_RuntimeFFT1024(benchmark::State& state) {
+  const int n = 1024;
+  ffft::FFTReal<float> fft(n);
+  float in[n];
+  std::fill_n(in, n, 1.1);
+  float out[n] {};
+  for (auto _ : state) {
+    fft.do_fft(out, in);
+  }
+}
+BENCHMARK(BM_RuntimeFFT1024);
+
 static void BM_CompileTimeFFT1024(benchmark::State& state) {
   FFT1024 fft;
   const int n = 1024;
@@ -37,8 +49,8 @@ static void BM_CompileTimeFFT1024(benchmark::State& state) {
 }
 BENCHMARK(BM_CompileTimeFFT1024);
 
-static void BM_RuntimeFFT1024(benchmark::State& state) {
-  const int n = 1024;
+static void BM_RuntimeFFT4096(benchmark::State& state) {
+  const int n = 4096;
   ffft::FFTReal<float> fft(n);
   float in[n];
   std::fill_n(in, n, 1.1);
@@ -47,7 +59,19 @@ static void BM_RuntimeFFT1024(benchmark::State& state) {
     fft.do_fft(out, in);
   }
 }
-BENCHMARK(BM_RuntimeFFT1024);
+BENCHMARK(BM_RuntimeFFT4096);
+
+static void BM_CompileTimeFFT4096(benchmark::State& state) {
+  FFT4096 fft;
+  const int n = 4096;
+  float in[n];
+  std::fill_n(in, n, 1.1);
+  float out[n] {};
+  for (auto _ : state) {
+    fft.do_fft(out, in);
+  }
+}
+BENCHMARK(BM_CompileTimeFFT4096);
 
 static void BM_SpectrumAnalyzerStep(benchmark::State& state) {
   SpectrumAnalyzer sa(
