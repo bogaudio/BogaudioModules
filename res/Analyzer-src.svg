@@ -35,7 +35,7 @@
       </g>
     </symbol>
 
-    <symbol id="knobguide-decimal" viewBox="0 0 100px 100px">
+    <symbol id="knobguide-range" viewBox="0 0 100px 100px">
       <g transform="translate(50.5 50.5)">
         <g transform="rotate(-210) translate(30 0)">
           <g transform="translate(2 0) rotate(210)">
@@ -74,12 +74,15 @@
       </g>
     </symbol>
 
-    <symbol id="knobguide-integer" viewBox="0 0 100px 100px">
+    <symbol id="knobguide-smooth" viewBox="0 0 100px 100px">
       <g transform="translate(50.5 50.5)">
-        <g transform="rotate(-210) translate(30 0)">
-          <g transform="translate(2 0) rotate(210)">
-            <text font-size="7pt" transform="translate(-3 3.5)">1</text>
+        <g transform="rotate(-240) translate(30 0)">
+          <g transform="translate(2 0) rotate(240)">
+            <text font-size="7pt" transform="translate(-3.2 4)">0</text>
           </g>
+        </g>
+        <g transform="rotate(-210) translate(30 0)">
+          <polyline points="0,0 4,0" stroke-width="0.5" stroke="#333" />
         </g>
         <g transform="rotate(-180) translate(30 0)">
           <polyline points="0,0 4,0" stroke-width="0.5" stroke="#333" />
@@ -107,7 +110,7 @@
         </g>
         <g transform="rotate(60) translate(30 0)">
           <g transform="translate(2 0) rotate(-60)">
-            <text font-size="7pt" transform="translate(-5.3 3.3)">10</text>
+            <text font-size="7pt" transform="translate(-7 4.3)">0.5s</text>
           </g>
         </g>
       </g>
@@ -207,8 +210,8 @@
 
   <!-- <polyline points="0,280 70,280" stroke="#0f0" stroke-width="1" transform="translate(25 0)" /> -->
   <!-- <polyline points="0,0 0,60" stroke="#0f0" stroke-width="1" transform="translate(130 290)" /> -->
-  <!-- <polyline points="0,0 0,70" stroke="#0f0" stroke-width="1" transform="translate(128 255)" /> -->
-  <!-- <polyline points="0,0 0,70" stroke="#0f0" stroke-width="1" transform="translate(201 255)" /> -->
+  <!-- <polyline points="0,0 0,70" stroke="#0f0" stroke-width="1" transform="translate(128.3 255)" /> -->
+  <!-- <polyline points="0,0 0,70" stroke="#0f0" stroke-width="1" transform="translate(54.3 255)" /> -->
   <!-- <polyline points="0,0 0,70" stroke="#0f0" stroke-width="1" transform="translate(274 255)" /> -->
 
   <g transform="translate(0 271)">
@@ -254,6 +257,6 @@
     </g>
   </g>
 
-  <use xlink:href="#knobguide-decimal" transform=" translate(17 252) scale(0.75)" />
-  <use xlink:href="#knobguide-integer" transform=" translate(90 252) scale(0.75)" />
+  <use xlink:href="#knobguide-range" transform=" translate(16.3 252) scale(0.75)" />
+  <use xlink:href="#knobguide-smooth" transform=" translate(90.3 252) scale(0.75)" />
 </svg>
