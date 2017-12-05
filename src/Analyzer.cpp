@@ -158,14 +158,10 @@ void Analyzer::resetChannels() {
 }
 
 SpectrumAnalyzer::Size Analyzer::size() {
-	switch (_quality) {
-		case QUALITY_HIGH: {
-			return SpectrumAnalyzer::SIZE_4096;
-		}
-		case QUALITY_GOOD: {
-			return SpectrumAnalyzer::SIZE_1024;
-		}
+	if (_quality == QUALITY_HIGH) {
+		return SpectrumAnalyzer::SIZE_4096;
 	}
+	return SpectrumAnalyzer::SIZE_1024;
 }
 
 void Analyzer::step() {
@@ -454,7 +450,7 @@ void AnalyzerDisplay::drawXAxisLine(NVGcontext* vg, float hz, float maxHz) {
 }
 
 void AnalyzerDisplay::drawGraph(NVGcontext* vg, float* bins, int binsN, NVGcolor color, float strokeWidth) {
-  const int pointsN = roundf(_module->_range*(_module->size()/2));
+	const int pointsN = roundf(_module->_range*(_module->size()/2));
 	nvgSave(vg);
 	nvgScissor(vg, _insetLeft, _insetTop, _graphSize.x, _graphSize.y);
 	nvgStrokeColor(vg, color);

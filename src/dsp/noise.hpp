@@ -9,7 +9,7 @@ struct WhiteNoiseGenerator : NoiseGenerator {
 	const float _randMax = powf(2.0, 31) - 1;
 	int _last = rack::randomu32();
 
-	virtual float _next() {
+	virtual float _next() override {
 		// don't use this for cryptography.
 		_last = ((_last * 1103515245) + 12345) & _mask;
 		return _last / _randMax;
@@ -23,7 +23,7 @@ struct BasePinkNoiseGenerator : NoiseGenerator {
 	G _gs[_n];
 	uint32_t _count = rack::randomu32();
 
-	virtual float _next() {
+	virtual float _next() override {
 		// See: http://www.firstpr.com.au/dsp/pink-noise/
 		float sum = _g.next();
 		for (int i = 0, bit = 1; i < _n; ++i, bit <<= 1) {
@@ -46,7 +46,7 @@ struct RedNoiseGenerator : BasePinkNoiseGenerator<PinkNoiseGenerator> {};
 struct GaussianNoiseGenerator : NoiseGenerator {
 	GaussianNoiseGenerator() {}
 
-	virtual float _next() {
+	virtual float _next() override {
 		return rack::randomNormal();
 	}
 };
