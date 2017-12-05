@@ -6,6 +6,8 @@ include ../../plugin.mk
 
 BENCHMARK_SOURCES = $(wildcard benchmarks/*.cpp src/dsp/*cpp)
 BENCHMARK_OBJECTS = $(patsubst %, build/%.o, $(BENCHMARK_SOURCES))
+BENCHMARK_DEPS = $(patsubst %, build/%.d, $(BENCHMARK_SOURCES))
+-include $(BENCHMARK_DEPS)
 benchmark: $(BENCHMARK_OBJECTS)
 	$(CXX) -o $@ $^ ../../build/src/util.cpp.o -lbenchmark
 benchmark_clean:
