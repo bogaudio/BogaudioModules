@@ -259,10 +259,10 @@ struct AnalyzerDisplay : TransparentWidget {
 	void draw(NVGcontext* vg) override;
 	void drawBackground(NVGcontext* vg);
 	void drawHeader(NVGcontext* vg);
-	void drawYAxis(NVGcontext* vg);
-	void drawXAxis(NVGcontext* vg);
+	void drawYAxis(NVGcontext* vg, float strokeWidth);
+	void drawXAxis(NVGcontext* vg, float strokeWidth);
 	void drawXAxisLine(NVGcontext* vg, float hz, float maxHz);
-	void drawGraph(NVGcontext* vg, float* bins, int binsN, NVGcolor color);
+	void drawGraph(NVGcontext* vg, float* bins, int binsN, NVGcolor color, float strokeWidth);
 	void drawText(NVGcontext* vg, const char* s, float x, float y, float rotation = 0.0, const NVGcolor* color = NULL);
 	int binValueToHeight(float value);
 };
@@ -271,25 +271,24 @@ void AnalyzerDisplay::draw(NVGcontext* vg) {
 	drawBackground(vg);
 
 	if (_module->_channelA || _module->_channelB || _module->_channelC || _module->_channelD) {
+		float strokeWidth = 2.5 - gRackScene->zoomWidget->zoom;
 		nvgSave(vg);
 		nvgScissor(vg, _insetAround, _insetAround, _size.x - _insetAround, _size.y - _insetAround);
-		{
-			drawHeader(vg);
-			drawYAxis(vg);
-			drawXAxis(vg);
+		drawHeader(vg);
+		drawYAxis(vg, strokeWidth);
+		drawXAxis(vg, strokeWidth);
 
-			if (_module->_channelA) {
-				drawGraph(vg, _module->_channelA->_bins, _module->_channelA->_binsN, _channelAColor);
-			}
-			if (_module->_channelB) {
-				drawGraph(vg, _module->_channelB->_bins, _module->_channelB->_binsN, _channelBColor);
-			}
-			if (_module->_channelC) {
-				drawGraph(vg, _module->_channelC->_bins, _module->_channelC->_binsN, _channelCColor);
-			}
-			if (_module->_channelD) {
-				drawGraph(vg, _module->_channelD->_bins, _module->_channelD->_binsN, _channelDColor);
-			}
+		if (_module->_channelA) {
+			drawGraph(vg, _module->_channelA->_bins, _module->_channelA->_binsN, _channelAColor, strokeWidth);
+		}
+		if (_module->_channelB) {
+			drawGraph(vg, _module->_channelB->_bins, _module->_channelB->_binsN, _channelBColor, strokeWidth);
+		}
+		if (_module->_channelC) {
+			drawGraph(vg, _module->_channelC->_bins, _module->_channelC->_binsN, _channelCColor, strokeWidth);
+		}
+		if (_module->_channelD) {
+			drawGraph(vg, _module->_channelD->_bins, _module->_channelD->_binsN, _channelDColor, strokeWidth);
 		}
 		nvgRestore(vg);
 	}
@@ -317,7 +316,7 @@ void AnalyzerDisplay::drawHeader(NVGcontext* vg) {
 
 	int n = snprintf(s, sLen, "Peaks (+/-%0.1f):", engineGetSampleRate() / (float)(_module->size() / (2 * _module->_binAverageN)));
 	drawText(vg, s, x, _insetTop + textY);
-	x += n * charPx - 2;
+	x += n * charPx - 0;
 
 	if (_module->_channelA) {
 		snprintf(s, sLen, "A:%7.1f", _module->_channelA->getPeak());
@@ -345,9 +344,10 @@ void AnalyzerDisplay::drawHeader(NVGcontext* vg) {
 	nvgRestore(vg);
 }
 
-void AnalyzerDisplay::drawYAxis(NVGcontext* vg) {
+void AnalyzerDisplay::drawYAxis(NVGcontext* vg, float strokeWidth) {
 	nvgSave(vg);
 	nvgStrokeColor(vg, _axisColor);
+	nvgStrokeWidth(vg, strokeWidth);
 	const int lineX = _insetLeft - 2;
 	const int textX = 9;
 	const float textR = -M_PI/2.0;
@@ -390,10 +390,10 @@ void AnalyzerDisplay::drawYAxis(NVGcontext* vg) {
 	nvgRestore(vg);
 }
 
-void AnalyzerDisplay::drawXAxis(NVGcontext* vg) {
+void AnalyzerDisplay::drawXAxis(NVGcontext* vg, float strokeWidth) {
 	nvgSave(vg);
 	nvgStrokeColor(vg, _axisColor);
-	nvgStrokeWidth(vg, 0.8);
+	nvgStrokeWidth(vg, strokeWidth);
 
 	const float maxHz = _module->_range * (engineGetSampleRate() / 2.0);
 	float hz = 100.0;
@@ -453,11 +453,12 @@ void AnalyzerDisplay::drawXAxisLine(NVGcontext* vg, float hz, float maxHz) {
 	}
 }
 
-void AnalyzerDisplay::drawGraph(NVGcontext* vg, float* bins, int binsN, NVGcolor color) {
+void AnalyzerDisplay::drawGraph(NVGcontext* vg, float* bins, int binsN, NVGcolor color, float strokeWidth) {
   const int pointsN = roundf(_module->_range*(_module->size()/2));
 	nvgSave(vg);
 	nvgScissor(vg, _insetLeft, _insetTop, _graphSize.x, _graphSize.y);
 	nvgStrokeColor(vg, color);
+	nvgStrokeWidth(vg, strokeWidth);
 	nvgBeginPath(vg);
 	for (int i = 0; i < pointsN; ++i) {
 		int height = binValueToHeight(bins[i]);
