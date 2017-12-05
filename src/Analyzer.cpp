@@ -164,14 +164,10 @@ void Analyzer::resetChannels() {
 }
 
 SpectrumAnalyzer::Size Analyzer::size() {
-	switch (_quality) {
-		case QUALITY_HIGH: {
-			return SpectrumAnalyzer::SIZE_4096;
-		}
-		case QUALITY_GOOD: {
-			return SpectrumAnalyzer::SIZE_1024;
-		}
+	if (_quality == QUALITY_HIGH) {
+		return SpectrumAnalyzer::SIZE_4096;
 	}
+	return SpectrumAnalyzer::SIZE_1024;
 }
 
 void Analyzer::step() {
