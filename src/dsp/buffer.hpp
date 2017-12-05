@@ -51,5 +51,72 @@ struct OverlappingBuffer {
   }
 };
 
+
+template<typename T>
+struct AveragingBuffer {
+  const int _size;
+  const int _framesN;
+  const float _inverseFramesN;
+  T* _sums;
+  T* _averages;
+  T* _frames;
+  int _currentFrame;
+  const int _resetsPerCommit;
+  int _currentReset;
+
+  AveragingBuffer(
+    int size,
+    int framesToAverage
+  )
+  : _size(size)
+  , _framesN(framesToAverage)
+  , _inverseFramesN(1.0 / (float)_framesN)
+  , _sums(new T[_size] {})
+  , _averages(new T[_size] {})
+  , _frames(new T[_size * _framesN] {})
+  , _currentFrame(0)
+  , _resetsPerCommit(_size / 1000)
+  , _currentReset(0)
+  {
+    assert(framesToAverage > 0);
+  }
+  ~AveragingBuffer() {
+    delete[] _sums;
+    delete[] _averages;
+    delete[] _frames;
+  }
+
+  T* getInputFrame() {
+    float* frame = _frames + _currentFrame*_size;
+    for (int i = 0; i < _size; ++i) {
+      _sums[i] -= frame[i];
+    }
+    return frame;
+  }
+
+  void commitInputFrame() {
+    float* frame = _frames + _currentFrame*_size;
+    for (int i = 0; i < _size; ++i) {
+      _sums[i] += frame[i];
+      _averages[i] = _sums[i] * _inverseFramesN;
+    }
+
+    // Reset the average for some bins, such that reset overhead is even between calls -- avoids buildup of floating point error.
+    for (int i = 0; i < _resetsPerCommit; ++i) {
+      _sums[_currentReset] = 0.0;
+      for (int j = 0; j < _framesN; ++j) {
+        _sums[_currentReset] += _frames[j*_size + _currentReset];
+      }
+      _currentReset = (_currentReset + 1) % _size;
+    }
+
+		_currentFrame = (_currentFrame + 1) % _framesN;
+  }
+
+  const T* getAverages() {
+    return _averages;
+  }
+};
+
 } // namespace dsp
 } // namespace bogaudio

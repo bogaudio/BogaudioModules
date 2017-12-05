@@ -7,11 +7,9 @@
 using namespace bogaudio::dsp;
 
 struct ChannelAnalyzer : SpectrumAnalyzer {
-	const int _averageN;
-	const int _binsN;
+	int _binsN;
 	float* _bins;
-	float* _frames;
-	int _currentFrame;
+	AveragingBuffer<float>* _averagedBins;
 
 	ChannelAnalyzer(
 		SpectrumAnalyzer::Size size,
@@ -22,16 +20,27 @@ struct ChannelAnalyzer : SpectrumAnalyzer {
 		int binSize
 	)
 	: SpectrumAnalyzer(size, overlap, windowType, sampleRate)
-	, _averageN(averageN)
 	, _binsN(size / binSize)
-	, _bins(new float[size] {})
-	, _frames(new float[_averageN * _binsN] {})
-	, _currentFrame(0)
+	, _bins(averageN == 1 ? new float[_binsN] {} : NULL)
+	, _averagedBins(averageN == 1 ? NULL : new AveragingBuffer<float>(_binsN, averageN))
 	{
+		assert(averageN >= 1);
+		assert(binSize >= 1);
 	}
 	virtual ~ChannelAnalyzer() {
-		delete[] _bins;
-		delete[] _frames;
+		if (_bins) {
+			delete[] _bins;
+		}
+		if (_averagedBins) {
+			delete _averagedBins;
+		}
+	}
+
+	const float* getBins() {
+		if (_bins) {
+			return _bins;
+		}
+		return _averagedBins->getAverages();
 	}
 
 	virtual bool step(float sample) override;
@@ -40,18 +49,14 @@ struct ChannelAnalyzer : SpectrumAnalyzer {
 
 bool ChannelAnalyzer::step(float sample) {
 	if (SpectrumAnalyzer::step(sample)) {
-		float* frame = _frames + _currentFrame*_binsN;
-		getMagnitudes(frame, _binsN);
-
-		for (int bin = 0; bin < _binsN; ++bin) {
-			_bins[bin] = 0.0;
-			for (int i = 0; i < _averageN; ++i) {
-				_bins[bin] += _frames[i*_binsN + bin];
-			}
-			_bins[bin] /= (float)_averageN;
-			// FIXME: still unclear if should or should not take the root here: _bins[bin] = sqrtf(_bins[bin]);
+		if (_bins) {
+			getMagnitudes(_bins, _binsN);
 		}
-		_currentFrame = (_currentFrame + 1) % _averageN;
+		else {
+			float* frame = _averagedBins->getInputFrame();
+			getMagnitudes(frame, _binsN);
+			_averagedBins->commitInputFrame();
+		}
 		return true;
 	}
 	return false;
@@ -61,12 +66,13 @@ float ChannelAnalyzer::getPeak() {
 	float max = 0.0;
 	float sum = 0.0;
 	int maxBin = 0;
+	const float* bins = getBins();
 	for (int bin = 0; bin < _binsN; ++bin) {
-		if( _bins[bin] > max) {
-			max = _bins[bin];
+		if (bins[bin] > max) {
+			max = bins[bin];
 			maxBin = bin;
 		}
-		sum += _bins[bin];
+		sum += bins[bin];
 	}
 	const float fWidth = _sampleRate / (float)(_size / (_size / _binsN));
 	return (maxBin + 1)*fWidth - fWidth/2.0;
@@ -262,7 +268,7 @@ struct AnalyzerDisplay : TransparentWidget {
 	void drawYAxis(NVGcontext* vg, float strokeWidth);
 	void drawXAxis(NVGcontext* vg, float strokeWidth);
 	void drawXAxisLine(NVGcontext* vg, float hz, float maxHz);
-	void drawGraph(NVGcontext* vg, float* bins, int binsN, NVGcolor color, float strokeWidth);
+	void drawGraph(NVGcontext* vg, const float* bins, int binsN, NVGcolor color, float strokeWidth);
 	void drawText(NVGcontext* vg, const char* s, float x, float y, float rotation = 0.0, const NVGcolor* color = NULL);
 	int binValueToHeight(float value);
 };
@@ -279,16 +285,16 @@ void AnalyzerDisplay::draw(NVGcontext* vg) {
 		drawXAxis(vg, strokeWidth);
 
 		if (_module->_channelA) {
-			drawGraph(vg, _module->_channelA->_bins, _module->_channelA->_binsN, _channelAColor, strokeWidth);
+			drawGraph(vg, _module->_channelA->getBins(), _module->_channelA->_binsN, _channelAColor, strokeWidth);
 		}
 		if (_module->_channelB) {
-			drawGraph(vg, _module->_channelB->_bins, _module->_channelB->_binsN, _channelBColor, strokeWidth);
+			drawGraph(vg, _module->_channelB->getBins(), _module->_channelB->_binsN, _channelBColor, strokeWidth);
 		}
 		if (_module->_channelC) {
-			drawGraph(vg, _module->_channelC->_bins, _module->_channelC->_binsN, _channelCColor, strokeWidth);
+			drawGraph(vg, _module->_channelC->getBins(), _module->_channelC->_binsN, _channelCColor, strokeWidth);
 		}
 		if (_module->_channelD) {
-			drawGraph(vg, _module->_channelD->_bins, _module->_channelD->_binsN, _channelDColor, strokeWidth);
+			drawGraph(vg, _module->_channelD->getBins(), _module->_channelD->_binsN, _channelDColor, strokeWidth);
 		}
 		nvgRestore(vg);
 	}
@@ -453,7 +459,7 @@ void AnalyzerDisplay::drawXAxisLine(NVGcontext* vg, float hz, float maxHz) {
 	}
 }
 
-void AnalyzerDisplay::drawGraph(NVGcontext* vg, float* bins, int binsN, NVGcolor color, float strokeWidth) {
+void AnalyzerDisplay::drawGraph(NVGcontext* vg, const float* bins, int binsN, NVGcolor color, float strokeWidth) {
   const int pointsN = roundf(_module->_range*(_module->size()/2));
 	nvgSave(vg);
 	nvgScissor(vg, _insetLeft, _insetTop, _graphSize.x, _graphSize.y);
