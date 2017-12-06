@@ -1,18 +1,23 @@
 
+#include <random>
+
 namespace bogaudio {
 namespace dsp {
 
-struct NoiseGenerator : Generator {};
+struct NoiseGenerator : Generator {
+	std::random_device _seed;
+	std::minstd_rand _generator; // one of the faster options.
+
+	NoiseGenerator() : _generator(_seed()) {}
+};
 
 struct WhiteNoiseGenerator : NoiseGenerator {
-	const uint32_t _mask = -1;
-	const float _randMax = powf(2.0, 31) - 1;
-	int _last = rack::randomu32();
+	std::uniform_real_distribution<float> _uniform;
+
+	WhiteNoiseGenerator() : _uniform(-1.0, 1.0) {}
 
 	virtual float _next() override {
-		// don't use this for cryptography.
-		_last = ((_last * 1103515245) + 12345) & _mask;
-		return _last / _randMax;
+		return _uniform(_generator);
 	}
 };
 
@@ -21,7 +26,7 @@ struct BasePinkNoiseGenerator : NoiseGenerator {
 	static const int _n = 7;
 	G _g;
 	G _gs[_n];
-	uint32_t _count = rack::randomu32();
+	uint32_t _count = _g.next();
 
 	virtual float _next() override {
 		// See: http://www.firstpr.com.au/dsp/pink-noise/
@@ -44,10 +49,12 @@ struct PinkNoiseGenerator : BasePinkNoiseGenerator<WhiteNoiseGenerator> {};
 struct RedNoiseGenerator : BasePinkNoiseGenerator<PinkNoiseGenerator> {};
 
 struct GaussianNoiseGenerator : NoiseGenerator {
-	GaussianNoiseGenerator() {}
+	std::normal_distribution<float> _normal;
+
+	GaussianNoiseGenerator() : _normal(0, 1.0) {}
 
 	virtual float _next() override {
-		return rack::randomNormal();
+		return _normal(_generator);
 	}
 };
 
