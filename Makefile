@@ -1,4 +1,8 @@
 
+ifdef REQUIRE_VERSION
+FLAGS += -DREQUIRE_VERSION=$(REQUIRE_VERSION)
+endif
+
 SOURCES = $(wildcard src/*.cpp src/dsp/*cpp)
 CXXFLAGS += -Isrc/dsp
 
@@ -14,7 +18,11 @@ benchmark_clean:
 	rm -f benchmark
 clean: benchmark_clean
 
-dist: all
+distprep:
+	rm -f build/src/BogaudioModules.cpp*
+
+dist: distprep
+	@$(MAKE) all REQUIRE_VERSION=1
 	mkdir -p dist/BogaudioModules
 	cp LICENSE* dist/BogaudioModules/
 	cp plugin.* dist/BogaudioModules/

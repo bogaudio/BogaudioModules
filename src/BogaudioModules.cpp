@@ -5,8 +5,10 @@ Plugin *plugin;
 void init(rack::Plugin *p) {
 	plugin = p;
 	p->slug = "Bogaudio";
-#ifdef VERSION
+#if defined(VERSION)
 	p->version = TOSTRING(VERSION);
+#elif defined(REQUIRE_VERSION)
+#error define VERSION=0.N.M to make dist
 #endif
 
 	p->addModel(createModel<ShaperWidget>("Bogaudio", "Bogaudio-Shaper", "Shaper", ENVELOPE_GENERATOR_TAG, AMPLIFIER_TAG));
