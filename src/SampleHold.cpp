@@ -1,6 +1,9 @@
 
 #include "dsp/digital.hpp"
 #include "BogaudioModules.hpp"
+#include "dsp/dsp.hpp"
+
+using namespace bogaudio::dsp;
 
 struct SampleHold : Module {
 	enum ParamIds {
@@ -25,6 +28,7 @@ struct SampleHold : Module {
 
 	SchmittTrigger _trigger1, _trigger2;
 	float _value1, _value2;
+	WhiteNoiseGenerator _noise;
 
 	SampleHold() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {
 		reset();
@@ -82,7 +86,7 @@ void SampleHold::step(
 			value = in.value;
 		}
 		else {
-			value = randomf() * 10.0;
+			value = abs(_noise.next()) * 10.0;
 		}
 	}
 	out.value = value;
