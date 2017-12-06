@@ -1,11 +1,13 @@
 # BogaudioModules
-Modules for [VCV Rack](https://github.com/VCVRack/Rack), an open-source Eurorack modular synthesizer.
+Modules for [VCV Rack](https://github.com/VCVRack/Rack), an open-source Eurorack-style virtual modular synthesizer.
 
 ![Modules screenshot](./doc/www/modules.png)
 
+Jump to [envelopes](#envelopes), the [spectrum analyzer](#analyzer), or the [utilities](#utilities).
+
 ## Builds/Releases
 
-Find downloadable builds on on the [releases page](https://github.com/bogaudio/BogaudioModules/releases).  Generally there will be a new release for each "major" (binary-incompatible) version of Rack.
+Find downloadable builds for **Mac**, **Windows** and **Linux** on on the [releases page](https://github.com/bogaudio/BogaudioModules/releases).
 
 ## Building
 
@@ -28,11 +30,14 @@ To build for a particular version of Rack, check out the corresponding branch:
 
 ## Modules
 
-### Envelopes
+### <a name="envelopes"></a> Envelopes
 
 #### SHAPER
 
 SHAPER emulates the function of the Envelope Generator section of the classic [EMS VC3](https://en.wikipedia.org/wiki/EMS_VCS_3) and related synths.  It combines an envelope with a VCA.  Unlike an ADSR, the envelope stages are Attack, On, Decay and Off -- with linear movement in the attack and decay stages, this produces a signature trapezoidal envelope shape.
+
+![DADSHR envelopes screenshot](doc/www/shaper.png)
+
 
 Features:
   - The ATTACK, ON, DECAY and OFF knobs specify times from nearly zero to 10 seconds.  The Speed switch allows these times to be multiplied by 10.
@@ -48,6 +53,8 @@ SHAPER+ is a SHAPER, with the addition of CV inputs for each knob, and gate outp
 
 DADSRH (Delay Attack Decay Sustain Release Hold) augments a standard ADSR with a delay stage and a self-gating (hold) mode.
 
+![DADSHR envelopes screenshot](doc/www/dadsrh.png)
+
 Features:
   - When the MODE switch is set to GATE, DADSRH is a more-or-less standard ADSR envelope generator, with an additional pre-attack delay stage.  The envelope is controlled by a gate CV at the trigger port, or by holding the TRIGGER button.
   - When MODE is TRIG, a trigger CV or press of the TRIGGER button will start a normal DADSR cycle, but controlled by an internal gate CV.  The internal gate persists for the time set by the HOLD knob.
@@ -60,20 +67,47 @@ Features:
 
 DADSRH+ is a DADSRH, with the addition of CV inputs for each knob, and gate outputs for each stage (a stage's gate output will be high for the duration of the stage).
 
-### Utils
+### <a name="analyzer"></a> Analyzer
+
+A four-channel spectrum analyzer.
+
+![Analyzer screenshot](doc/www/analyzer.png)
+
+Features:
+  - Range setting: smoothly scrolls the displayed frequency range, from just the lower tenth, to the entire range (up to half the sampling rate).
+  - Smooth setting: controls how many analysis frames will be averaged to drive the display.  A higher setting reduces jitter, at the expense of time lag.  For convenience, the knob setting is time-valued, from zero to half a second (internally this is converted to an integer averaging factor based on the sample rate and other settings).
+  - Quality setting: switch between good (1024-sample) and better (4096-sample) FFT window sizes.  The higher setting yields finer frequency resolution at a higher CPU cost.
+  - Off button: turn the unit off to save some CPU without unpatching.
+
+
+### <a name="utilities"></a> Utilities
+
+A collection of compact 3-HP utility modules.
+
+![Utilities screenshot](doc/www/utilities.png)
+
+#### MANUAL
+
+A manual trigger/gate with 8 outputs.  A constant high value is sent from each output for as long as the TRIG button is held.
+
+#### NOISE
+
+A noise source, in types White, Pink (1/f), Red (aka Brown, 1/f^2) and Gauss (normal with mean 0 and variance 1).
+
+Additionally, NOISE has an absolute value circuit.  Patch audio into ABS to get positive CV.  For example, patch White into ABS to get uniform values in the range 0 to 10.
 
 #### OFFSET
 
-A 3-HP CV offset and scaler.  The OFFSET and SCALE knobs have CV inputs.  With an input signal, output is `(input + offset) * scale`.  With no input connected, the output is constant in the value of `offset * scale`.
+An offset and scaler.  The OFFSET and SCALE knobs have CV inputs.  With an input signal, output is `(input + offset) * scale`.  With no input connected, the output is constant in the value of `offset * scale`.
 
 #### S&H
 
-A 3-HP, dual sample-and-hold.  Sampling may be triggered by CV or button press.  If nothing is connected to an IN port, sampling for that channel is from an internal white noise source (range 0-10).
-
-#### Manual
-
-A 3-HP, manual trigger/gate with 8 outputs.  A constant high value is sent from each output for as long as the TRIG button is held.
+A dual sample-and-hold.  Sampling may be triggered by CV or button press.  If nothing is connected to an IN port, sampling for that channel is from an internal white noise source (range 0-10).
 
 ## Issues and Feedback
 
 Bug reports and feedback are welcome: please use the [issue tracker](https://github.com/bogaudio/BogaudioModules/issues).
+
+## Acknowledgements
+
+Uses [FFTReal](https://github.com/cyrilcode/fft-real) under the DWTFYWT Public License.
