@@ -21,10 +21,13 @@ clean: benchmark_clean
 distprep:
 	rm -f build/src/BogaudioModules.cpp*
 
+SLUG=Bogaudio
 dist: distprep
 	@$(MAKE) all REQUIRE_VERSION=1
-	mkdir -p dist/BogaudioModules
-	cp LICENSE* dist/BogaudioModules/
-	cp plugin.* dist/BogaudioModules/
-	cp -R res dist/BogaudioModules/
-	rm dist/BogaudioModules/res/*-src.svg
+	mkdir -p dist/$(SLUG)
+	cp README* dist/$(SLUG)/
+	cp LICENSE* dist/$(SLUG)/
+	cp plugin.* dist/$(SLUG)/
+	cp -R res dist/$(SLUG)/
+	rm dist/$(SLUG)/res/*-src.svg
+	(cd dist && zip -r $(SLUG)-$(VERSION)-$(ARCH).zip $(SLUG))
