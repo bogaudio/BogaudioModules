@@ -79,9 +79,9 @@ OffsetWidget::OffsetWidget() {
 	addParam(createParam<Knob29>(offsetParamPosition, module, Offset::OFFSET_PARAM, -1.0, 1.0, 0.0));
 	addParam(createParam<Knob29>(scaleParamPosition, module, Offset::SCALE_PARAM, -1.0, 1.0, 0.316));
 
-	addInput(createInput<PJ301MPort>(offsetInputPosition, module, Offset::OFFSET_INPUT));
-	addInput(createInput<PJ301MPort>(scaleInputPosition, module, Offset::SCALE_INPUT));
-	addInput(createInput<PJ301MPort>(inInputPosition, module, Offset::IN_INPUT));
+	addInput(createInput<Port24>(offsetInputPosition, module, Offset::OFFSET_INPUT));
+	addInput(createInput<Port24>(scaleInputPosition, module, Offset::SCALE_INPUT));
+	addInput(createInput<Port24>(inInputPosition, module, Offset::IN_INPUT));
 
-	addOutput(createOutput<PJ301MPort>(outOutputPosition, module, Offset::OUT_OUTPUT));
+	addOutput(createOutput<Port24>(outOutputPosition, module, Offset::OUT_OUTPUT));
 }

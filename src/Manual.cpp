@@ -86,12 +86,12 @@ ManualWidget::ManualWidget() {
 
 	addParam(createParam<Button18>(triggerParamPosition, module, Manual::TRIGGER_PARAM, 0.0, 1.0, 0.0));
 
-	addOutput(createOutput<PJ301MPort>(out1OutputPosition, module, Manual::OUT1_OUTPUT));
-	addOutput(createOutput<PJ301MPort>(out2OutputPosition, module, Manual::OUT2_OUTPUT));
-	addOutput(createOutput<PJ301MPort>(out3OutputPosition, module, Manual::OUT3_OUTPUT));
-	addOutput(createOutput<PJ301MPort>(out4OutputPosition, module, Manual::OUT4_OUTPUT));
-	addOutput(createOutput<PJ301MPort>(out5OutputPosition, module, Manual::OUT5_OUTPUT));
-	addOutput(createOutput<PJ301MPort>(out6OutputPosition, module, Manual::OUT6_OUTPUT));
-	addOutput(createOutput<PJ301MPort>(out7OutputPosition, module, Manual::OUT7_OUTPUT));
-	addOutput(createOutput<PJ301MPort>(out8OutputPosition, module, Manual::OUT8_OUTPUT));
+	addOutput(createOutput<Port24>(out1OutputPosition, module, Manual::OUT1_OUTPUT));
+	addOutput(createOutput<Port24>(out2OutputPosition, module, Manual::OUT2_OUTPUT));
+	addOutput(createOutput<Port24>(out3OutputPosition, module, Manual::OUT3_OUTPUT));
+	addOutput(createOutput<Port24>(out4OutputPosition, module, Manual::OUT4_OUTPUT));
+	addOutput(createOutput<Port24>(out5OutputPosition, module, Manual::OUT5_OUTPUT));
+	addOutput(createOutput<Port24>(out6OutputPosition, module, Manual::OUT6_OUTPUT));
+	addOutput(createOutput<Port24>(out7OutputPosition, module, Manual::OUT7_OUTPUT));
+	addOutput(createOutput<Port24>(out8OutputPosition, module, Manual::OUT8_OUTPUT));
 }

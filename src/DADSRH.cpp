@@ -189,11 +189,11 @@ DADSRHWidget::DADSRHWidget() {
 	addParam(createParam<CKSS>(speedParamPosition, module, DADSRH::SPEED_PARAM, 0.0, 1.0, 1.0));
 	addParam(createParam<CKSS>(retriggerParamPosition, module, DADSRH::RETRIGGER_PARAM, 0.0, 1.0, 1.0));
 
-	addInput(createInput<PJ301MPort>(triggerInputPosition, module, DADSRH::TRIGGER_INPUT));
+	addInput(createInput<Port24>(triggerInputPosition, module, DADSRH::TRIGGER_INPUT));
 
-	addOutput(createOutput<PJ301MPort>(envOutputPosition, module, DADSRH::ENV_OUTPUT));
-	addOutput(createOutput<PJ301MPort>(invOutputPosition, module, DADSRH::INV_OUTPUT));
-	addOutput(createOutput<PJ301MPort>(triggerOutputPosition, module, DADSRH::TRIGGER_OUTPUT));
+	addOutput(createOutput<Port24>(envOutputPosition, module, DADSRH::ENV_OUTPUT));
+	addOutput(createOutput<Port24>(invOutputPosition, module, DADSRH::INV_OUTPUT));
+	addOutput(createOutput<Port24>(triggerOutputPosition, module, DADSRH::TRIGGER_OUTPUT));
 
 	addChild(createLight<TinyLight<GreenLight>>(delayLightPosition, module, DADSRH::DELAY_LIGHT));
 	addChild(createLight<TinyLight<GreenLight>>(attackLightPosition, module, DADSRH::ATTACK_LIGHT));

@@ -142,17 +142,17 @@ ShaperWidget::ShaperWidget() {
 	addParam(createParam<Knob38>(signalParamPosition, module, Shaper::SIGNAL_PARAM, 0.0, 1.0, 0.5));
 
 	addParam(createParam<Button18>(triggerParamPosition, module, Shaper::TRIGGER_PARAM, 0.0, 1.0, 0.0));
-	addInput(createInput<PJ301MPort>(triggerInputPosition, module, Shaper::TRIGGER_INPUT));
+	addInput(createInput<Port24>(triggerInputPosition, module, Shaper::TRIGGER_INPUT));
 
 	addParam(createParam<CKSS>(speedParamPosition, module, Shaper::SPEED_PARAM, 0.0, 1.0, 1.0));
 	addParam(createParam<CKSS>(loopParamPosition, module, Shaper::LOOP_PARAM, 0.0, 1.0, 1.0));
-	addOutput(createOutput<PJ301MPort>(triggerOutputPosition, module, Shaper::TRIGGER_OUTPUT));
+	addOutput(createOutput<Port24>(triggerOutputPosition, module, Shaper::TRIGGER_OUTPUT));
 
-	addOutput(createOutput<PJ301MPort>(envOutputPosition, module, Shaper::ENV_OUTPUT));
-	addOutput(createOutput<PJ301MPort>(invOutputPosition, module, Shaper::INV_OUTPUT));
+	addOutput(createOutput<Port24>(envOutputPosition, module, Shaper::ENV_OUTPUT));
+	addOutput(createOutput<Port24>(invOutputPosition, module, Shaper::INV_OUTPUT));
 
-	addInput(createInput<PJ301MPort>(signalInputPosition, module, Shaper::SIGNAL_INPUT));
-	addOutput(createOutput<PJ301MPort>(signalOutputPosition, module, Shaper::SIGNAL_OUTPUT));
+	addInput(createInput<Port24>(signalInputPosition, module, Shaper::SIGNAL_INPUT));
+	addOutput(createOutput<Port24>(signalOutputPosition, module, Shaper::SIGNAL_OUTPUT));
 
 	addChild(createLight<TinyLight<GreenLight>>(attackLightPosition, module, Shaper::ATTACK_LIGHT));
 	addChild(createLight<TinyLight<GreenLight>>(onLightPosition, module, Shaper::ON_LIGHT));

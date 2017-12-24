@@ -123,11 +123,11 @@ SampleHoldWidget::SampleHoldWidget() {
 	addParam(createParam<Button18>(trigger1ParamPosition, module, SampleHold::TRIGGER1_PARAM, 0.0, 1.0, 0.0));
 	addParam(createParam<Button18>(trigger2ParamPosition, module, SampleHold::TRIGGER2_PARAM, 0.0, 1.0, 0.0));
 
-	addInput(createInput<PJ301MPort>(trigger1InputPosition, module, SampleHold::TRIGGER1_INPUT));
-	addInput(createInput<PJ301MPort>(in1InputPosition, module, SampleHold::IN1_INPUT));
-	addInput(createInput<PJ301MPort>(trigger2InputPosition, module, SampleHold::TRIGGER2_INPUT));
-	addInput(createInput<PJ301MPort>(in2InputPosition, module, SampleHold::IN2_INPUT));
+	addInput(createInput<Port24>(trigger1InputPosition, module, SampleHold::TRIGGER1_INPUT));
+	addInput(createInput<Port24>(in1InputPosition, module, SampleHold::IN1_INPUT));
+	addInput(createInput<Port24>(trigger2InputPosition, module, SampleHold::TRIGGER2_INPUT));
+	addInput(createInput<Port24>(in2InputPosition, module, SampleHold::IN2_INPUT));
 
-	addOutput(createOutput<PJ301MPort>(out1OutputPosition, module, SampleHold::OUT1_OUTPUT));
-	addOutput(createOutput<PJ301MPort>(out2OutputPosition, module, SampleHold::OUT2_OUTPUT));
+	addOutput(createOutput<Port24>(out1OutputPosition, module, SampleHold::OUT1_OUTPUT));
+	addOutput(createOutput<Port24>(out2OutputPosition, module, SampleHold::OUT2_OUTPUT));
 }

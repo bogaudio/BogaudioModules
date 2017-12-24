@@ -158,29 +158,29 @@ ShaperPlusWidget::ShaperPlusWidget() {
 	addParam(createParam<Knob38>(signalParamPosition, module, ShaperPlus::SIGNAL_PARAM, 0.0, 1.0, 0.5));
 
 	addParam(createParam<Button18>(triggerParamPosition, module, ShaperPlus::TRIGGER_PARAM, 0.0, 1.0, 0.0));
-	addInput(createInput<PJ301MPort>(triggerInputPosition, module, ShaperPlus::TRIGGER_INPUT));
+	addInput(createInput<Port24>(triggerInputPosition, module, ShaperPlus::TRIGGER_INPUT));
 
 	addParam(createParam<CKSS>(speedParamPosition, module, ShaperPlus::SPEED_PARAM, 0.0, 1.0, 1.0));
 	addParam(createParam<CKSS>(loopParamPosition, module, ShaperPlus::LOOP_PARAM, 0.0, 1.0, 1.0));
-	addOutput(createOutput<PJ301MPort>(triggerOutputPosition, module, ShaperPlus::TRIGGER_OUTPUT));
+	addOutput(createOutput<Port24>(triggerOutputPosition, module, ShaperPlus::TRIGGER_OUTPUT));
 
-	addOutput(createOutput<PJ301MPort>(envOutputPosition, module, ShaperPlus::ENV_OUTPUT));
-	addOutput(createOutput<PJ301MPort>(invOutputPosition, module, ShaperPlus::INV_OUTPUT));
+	addOutput(createOutput<Port24>(envOutputPosition, module, ShaperPlus::ENV_OUTPUT));
+	addOutput(createOutput<Port24>(invOutputPosition, module, ShaperPlus::INV_OUTPUT));
 
-	addInput(createInput<PJ301MPort>(signalInputPosition, module, ShaperPlus::SIGNAL_INPUT));
-	addOutput(createOutput<PJ301MPort>(signalOutputPosition, module, ShaperPlus::SIGNAL_OUTPUT));
+	addInput(createInput<Port24>(signalInputPosition, module, ShaperPlus::SIGNAL_INPUT));
+	addOutput(createOutput<Port24>(signalOutputPosition, module, ShaperPlus::SIGNAL_OUTPUT));
 
-	addInput(createInput<PJ301MPort>(attackInputPosition, module, ShaperPlus::ATTACK_INPUT));
-	addInput(createInput<PJ301MPort>(onInputPosition, module, ShaperPlus::ON_INPUT));
-	addInput(createInput<PJ301MPort>(decayInputPosition, module, ShaperPlus::DECAY_INPUT));
-	addInput(createInput<PJ301MPort>(offInputPosition, module, ShaperPlus::OFF_INPUT));
-	addInput(createInput<PJ301MPort>(envInputPosition, module, ShaperPlus::ENV_INPUT));
-	addInput(createInput<PJ301MPort>(signalcvInputPosition, module, ShaperPlus::SIGNALCV_INPUT));
+	addInput(createInput<Port24>(attackInputPosition, module, ShaperPlus::ATTACK_INPUT));
+	addInput(createInput<Port24>(onInputPosition, module, ShaperPlus::ON_INPUT));
+	addInput(createInput<Port24>(decayInputPosition, module, ShaperPlus::DECAY_INPUT));
+	addInput(createInput<Port24>(offInputPosition, module, ShaperPlus::OFF_INPUT));
+	addInput(createInput<Port24>(envInputPosition, module, ShaperPlus::ENV_INPUT));
+	addInput(createInput<Port24>(signalcvInputPosition, module, ShaperPlus::SIGNALCV_INPUT));
 
-	addOutput(createOutput<PJ301MPort>(attackOutputPosition, module, ShaperPlus::ATTACK_OUTPUT));
-	addOutput(createOutput<PJ301MPort>(onOutputPosition, module, ShaperPlus::ON_OUTPUT));
-	addOutput(createOutput<PJ301MPort>(decayOutputPosition, module, ShaperPlus::DECAY_OUTPUT));
-	addOutput(createOutput<PJ301MPort>(offOutputPosition, module, ShaperPlus::OFF_OUTPUT));
+	addOutput(createOutput<Port24>(attackOutputPosition, module, ShaperPlus::ATTACK_OUTPUT));
+	addOutput(createOutput<Port24>(onOutputPosition, module, ShaperPlus::ON_OUTPUT));
+	addOutput(createOutput<Port24>(decayOutputPosition, module, ShaperPlus::DECAY_OUTPUT));
+	addOutput(createOutput<Port24>(offOutputPosition, module, ShaperPlus::OFF_OUTPUT));
 
 	addChild(createLight<TinyLight<GreenLight>>(attackLightPosition, module, ShaperPlus::ATTACK_LIGHT));
 	addChild(createLight<TinyLight<GreenLight>>(onLightPosition, module, ShaperPlus::ON_LIGHT));

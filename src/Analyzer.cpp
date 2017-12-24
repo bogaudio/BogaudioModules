@@ -566,15 +566,15 @@ AnalyzerWidget::AnalyzerWidget() {
 	addParam(createParam<Button9Toggle2>(qualityParamPosition, module, Analyzer::QUALITY_PARAM, 1.0, 2.0, 1.0));
 	addParam(createParam<Button9Toggle2>(powerParamPosition, module, Analyzer::POWER_PARAM, 0.0, 1.0, 1.0));
 
-	addInput(createInput<PJ301MPort>(signalaInputPosition, module, Analyzer::SIGNALA_INPUT));
-	addInput(createInput<PJ301MPort>(signalbInputPosition, module, Analyzer::SIGNALB_INPUT));
-	addInput(createInput<PJ301MPort>(signalcInputPosition, module, Analyzer::SIGNALC_INPUT));
-	addInput(createInput<PJ301MPort>(signaldInputPosition, module, Analyzer::SIGNALD_INPUT));
+	addInput(createInput<Port24>(signalaInputPosition, module, Analyzer::SIGNALA_INPUT));
+	addInput(createInput<Port24>(signalbInputPosition, module, Analyzer::SIGNALB_INPUT));
+	addInput(createInput<Port24>(signalcInputPosition, module, Analyzer::SIGNALC_INPUT));
+	addInput(createInput<Port24>(signaldInputPosition, module, Analyzer::SIGNALD_INPUT));
 
-	addOutput(createOutput<PJ301MPort>(signalaOutputPosition, module, Analyzer::SIGNALA_OUTPUT));
-	addOutput(createOutput<PJ301MPort>(signalbOutputPosition, module, Analyzer::SIGNALB_OUTPUT));
-	addOutput(createOutput<PJ301MPort>(signalcOutputPosition, module, Analyzer::SIGNALC_OUTPUT));
-	addOutput(createOutput<PJ301MPort>(signaldOutputPosition, module, Analyzer::SIGNALD_OUTPUT));
+	addOutput(createOutput<Port24>(signalaOutputPosition, module, Analyzer::SIGNALA_OUTPUT));
+	addOutput(createOutput<Port24>(signalbOutputPosition, module, Analyzer::SIGNALB_OUTPUT));
+	addOutput(createOutput<Port24>(signalcOutputPosition, module, Analyzer::SIGNALC_OUTPUT));
+	addOutput(createOutput<Port24>(signaldOutputPosition, module, Analyzer::SIGNALD_OUTPUT));
 
 	addChild(createLight<TinyLight<GreenLight>>(qualityHighLightPosition, module, Analyzer::QUALITY_HIGH_LIGHT));
 	addChild(createLight<TinyLight<GreenLight>>(qualityGoodLightPosition, module, Analyzer::QUALITY_GOOD_LIGHT));

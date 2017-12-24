@@ -79,3 +79,11 @@ struct Button9Toggle3 : SVGSwitch, ToggleSwitch {
 		box.size = Vec(9, 9);
 	}
 };
+
+struct Port24 : SVGPort {
+	Port24() {
+		background->svg = SVG::load(assetPlugin(plugin, "res/port.svg"));
+		background->wrap();
+		box.size = Vec(24, 24);
+	}
+};

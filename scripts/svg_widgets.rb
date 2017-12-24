@@ -63,8 +63,8 @@ options = {
   manufacturer: 'MANUFACTURER',
   hp: '10',
   param_class: 'RoundBlackKnob',
-  input_class: 'PJ301MPort',
-  output_class: 'PJ301MPort',
+  input_class: 'Port24',
+  output_class: 'Port24',
   light_class: 'TinyLight<GreenLight>',
   comments: false,
   sort: nil
