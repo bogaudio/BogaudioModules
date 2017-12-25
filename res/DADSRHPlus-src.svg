@@ -127,9 +127,9 @@
       </g>
     </symbol>
 
-    <symbol id="switch" viewBox="0 0 70px 100px">
-      <polyline points="1,1 69,1 69,99 1,99 1,1" stroke="#000" stroke-width="3" fill="none" />
-      <rect x="0" y="0" width="70px" height="50px" stroke-width="0" fill="#000" />
+    <symbol id="switch" viewBox="0 0 14px 24px">
+      <rect width="14px" height="24px" stroke-width="1" stroke="#000" fill="#ddd" />
+      <rect width="14px" height="12px" stroke-width="0" fill="#000" />
     </symbol>
 
     <symbol id="input" viewBox="0 0 24px 24px">
@@ -309,30 +309,30 @@
 
   <g transform="translate(120 93)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(-8 27.5) rotate(270)">MODE</text>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(-5 0)">GATE</text>
-    <use id="MODE_PARAM" xlink:href="#switch" transform="translate(0 4) scale(0.2)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(-5 -1)">GATE</text>
+    <use id="MODE_PARAM" xlink:href="#switch" transform="translate(0 2)" />
     <text font-size="5pt" letter-spacing="2px" transform="translate(-4 34)">TRIG</text>
   </g>
 
   <g transform="translate(120 143)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(-8 28.5) rotate(270)">CYCLE</text>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(-4.5 0)">STOP</text>
-    <use id="LOOP_PARAM" xlink:href="#switch" transform="translate(0 4) scale(0.2)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(-4.5 -1)">STOP</text>
+    <use id="LOOP_PARAM" xlink:href="#switch" transform="translate(0 2)" />
     <text font-size="5pt" letter-spacing="2px" transform="translate(-4 34)">LOOP</text>
   </g>
 
   <g transform="translate(20 319)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(-7 28.5) rotate(270)">SPEED</text>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(2 1)">1X</text>
-    <use id="SPEED_PARAM" xlink:href="#switch" transform="translate(0 4) scale(0.2)" />
-    <text font-size="5pt" letter-spacing="2px" transform="translate(-1 32)">10X</text>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(2 -1)">1X</text>
+    <use id="SPEED_PARAM" xlink:href="#switch" transform="translate(0 2)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(-1 34)">10X</text>
   </g>
 
   <g transform="translate(55 319)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(-7 31) rotate(270)">RETRIG</text>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(-1.5 1)">ATT</text>
-    <use id="RETRIGGER_PARAM" xlink:href="#switch" transform="translate(0 4) scale(0.2)" />
-    <text font-size="5pt" letter-spacing="2px" transform="translate(-1.5 32)">RST</text>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(-1.5 -1)">ATT</text>
+    <use id="RETRIGGER_PARAM" xlink:href="#switch" transform="translate(0 2)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(-1.5 34)">RST</text>
   </g>
 
   <g transform="translate(112 187)">

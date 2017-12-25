@@ -119,9 +119,9 @@ ShaperPlusWidget::ShaperPlusWidget() {
 	auto attackParamPosition = Vec(29.08, 33.08);
 	auto triggerParamPosition = Vec(89.04, 43.04);
 	auto onParamPosition = Vec(29.08, 89.08);
-	auto speedParamPosition = Vec(118.9, 97.9);
+	auto speedParamPosition = Vec(119.0, 96.0);
 	auto decayParamPosition = Vec(29.08, 145.08);
-	auto loopParamPosition = Vec(118.9, 153.9);
+	auto loopParamPosition = Vec(119.0, 152.0);
 	auto offParamPosition = Vec(29.08, 201.08);
 	auto envParamPosition = Vec(82.38, 257.08);
 	auto signalParamPosition = Vec(82.38, 313.08);
@@ -160,8 +160,8 @@ ShaperPlusWidget::ShaperPlusWidget() {
 	addParam(createParam<Button18>(triggerParamPosition, module, ShaperPlus::TRIGGER_PARAM, 0.0, 1.0, 0.0));
 	addInput(createInput<Port24>(triggerInputPosition, module, ShaperPlus::TRIGGER_INPUT));
 
-	addParam(createParam<CKSS>(speedParamPosition, module, ShaperPlus::SPEED_PARAM, 0.0, 1.0, 1.0));
-	addParam(createParam<CKSS>(loopParamPosition, module, ShaperPlus::LOOP_PARAM, 0.0, 1.0, 1.0));
+	addParam(createParam<SliderSwitch2State14>(speedParamPosition, module, ShaperPlus::SPEED_PARAM, 0.0, 1.0, 1.0));
+	addParam(createParam<SliderSwitch2State14>(loopParamPosition, module, ShaperPlus::LOOP_PARAM, 0.0, 1.0, 1.0));
 	addOutput(createOutput<Port24>(triggerOutputPosition, module, ShaperPlus::TRIGGER_OUTPUT));
 
 	addOutput(createOutput<Port24>(envOutputPosition, module, ShaperPlus::ENV_OUTPUT));

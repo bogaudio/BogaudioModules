@@ -157,10 +157,10 @@ DADSRHPlusWidget::DADSRHPlusWidget() {
 	auto decayShapeParamPosition = Vec(77.02, 180.52);
 	auto releaseShapeParamPosition = Vec(77.02, 292.52);
 	auto triggerParamPosition = Vec(90.04, 43.04);
-	auto modeParamPosition = Vec(119.9, 96.9);
-	auto loopParamPosition = Vec(119.9, 146.9);
-	auto speedParamPosition = Vec(19.9, 322.9);
-	auto retriggerParamPosition = Vec(54.9, 322.9);
+	auto modeParamPosition = Vec(120.0, 95.0);
+	auto loopParamPosition = Vec(120.0, 145.0);
+	auto speedParamPosition = Vec(20.0, 321.0);
+	auto retriggerParamPosition = Vec(55.0, 321.0);
 
 	auto delayInputPosition = Vec(152.0, 40.0);
 	auto attackInputPosition = Vec(152.0, 96.0);
@@ -205,10 +205,10 @@ DADSRHPlusWidget::DADSRHPlusWidget() {
 	addParam(createParam<Button9Toggle3>(decayShapeParamPosition, module, DADSRHPlus::DECAY_SHAPE_PARAM, 1.0, 3.0, 1.0));
 	addParam(createParam<Button9Toggle3>(releaseShapeParamPosition, module, DADSRHPlus::RELEASE_SHAPE_PARAM, 1.0, 3.0, 1.0));
 	addParam(createParam<Button18>(triggerParamPosition, module, DADSRHPlus::TRIGGER_PARAM, 0.0, 1.0, 0.0));
-	addParam(createParam<CKSS>(modeParamPosition, module, DADSRHPlus::MODE_PARAM, 0.0, 1.0, 1.0));
-	addParam(createParam<CKSS>(loopParamPosition, module, DADSRHPlus::LOOP_PARAM, 0.0, 1.0, 1.0));
-	addParam(createParam<CKSS>(speedParamPosition, module, DADSRHPlus::SPEED_PARAM, 0.0, 1.0, 1.0));
-	addParam(createParam<CKSS>(retriggerParamPosition, module, DADSRHPlus::RETRIGGER_PARAM, 0.0, 1.0, 1.0));
+	addParam(createParam<SliderSwitch2State14>(modeParamPosition, module, DADSRHPlus::MODE_PARAM, 0.0, 1.0, 1.0));
+	addParam(createParam<SliderSwitch2State14>(loopParamPosition, module, DADSRHPlus::LOOP_PARAM, 0.0, 1.0, 1.0));
+	addParam(createParam<SliderSwitch2State14>(speedParamPosition, module, DADSRHPlus::SPEED_PARAM, 0.0, 1.0, 1.0));
+	addParam(createParam<SliderSwitch2State14>(retriggerParamPosition, module, DADSRHPlus::RETRIGGER_PARAM, 0.0, 1.0, 1.0));
 
 	addInput(createInput<Port24>(delayInputPosition, module, DADSRHPlus::DELAY_INPUT));
 	addInput(createInput<Port24>(attackInputPosition, module, DADSRHPlus::ATTACK_INPUT));

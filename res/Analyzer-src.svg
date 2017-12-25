@@ -122,11 +122,6 @@
       </g>
     </symbol>
 
-    <symbol id="switch" viewBox="0 0 70px 100px">
-      <polyline points="1,1 69,1 69,99 1,99 1,1" stroke="#000" stroke-width="3" fill="none" />
-      <rect x="0" y="0" width="70px" height="50px" stroke-width="0" fill="#000" />
-    </symbol>
-
     <symbol id="input" viewBox="0 0 24px 24px">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0" />

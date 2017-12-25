@@ -342,18 +342,17 @@
     </symbol>
     <symbol
        id="switch"
-       viewBox="0 0 70px 100px">
-      <polyline
-         points="1,1 69,1 69,99 1,99 1,1"
-         stroke="#000"
-         stroke-width="3"
-         fill="none"
-         id="polyline126" />
+       viewBox="0 0 14px 24px">
       <rect
-         x="0"
-         y="0"
-         width="70px"
-         height="50px"
+         width="14px"
+         height="24px"
+         stroke-width="1"
+         stroke="#000"
+         fill="#ddd"
+         id="rect126" />
+      <rect
+         width="14px"
+         height="12px"
          stroke-width="0"
          fill="#000"
          id="rect128" />
@@ -632,7 +631,7 @@
       </g>
       <g
          aria-label="1X"
-         transform="translate(2,1)"
+         transform="translate(2,-1)"
          style="font-weight:bold;font-size:6.66666651px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333"
          id="text184">
         <path
@@ -646,7 +645,7 @@
       </g>
       <g
          aria-label="10X"
-         transform="translate(-1,32)"
+         transform="translate(-1,34)"
          style="font-weight:bold;font-size:6.66666651px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333"
          id="text186">
         <path
@@ -727,7 +726,7 @@
       </g>
       <g
          aria-label="STOP"
-         transform="translate(-4.5)"
+         transform="translate(-4.5,-1)"
          style="font-weight:bold;font-size:6.66666651px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333"
          id="text198">
         <path

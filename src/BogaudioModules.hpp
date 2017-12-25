@@ -87,3 +87,10 @@ struct Port24 : SVGPort {
 		box.size = Vec(24, 24);
 	}
 };
+
+struct SliderSwitch2State14 : SVGSwitch, ToggleSwitch {
+	SliderSwitch2State14() {
+		addFrame(SVG::load(assetPlugin(plugin, "res/slider_switch_2_14px_0.svg")));
+		addFrame(SVG::load(assetPlugin(plugin, "res/slider_switch_2_14px_1.svg")));
+	}
+};

@@ -147,10 +147,10 @@ DADSRHWidget::DADSRHWidget() {
 	auto decayShapeParamPosition = Vec(77.02, 180.52);
 	auto releaseShapeParamPosition = Vec(77.02, 292.52);
 	auto triggerParamPosition = Vec(90.04, 43.04);
-	auto modeParamPosition = Vec(119.9, 96.9);
-	auto loopParamPosition = Vec(119.9, 146.9);
-	auto speedParamPosition = Vec(19.9, 322.9);
-	auto retriggerParamPosition = Vec(54.9, 322.9);
+	auto modeParamPosition = Vec(120.0, 95.0);
+	auto loopParamPosition = Vec(120.0, 145.0);
+	auto speedParamPosition = Vec(20.0, 321.0);
+	auto retriggerParamPosition = Vec(55.0, 321.0);
 
 	auto triggerInputPosition = Vec(115.0, 40.0);
 
@@ -184,10 +184,10 @@ DADSRHWidget::DADSRHWidget() {
 	addParam(createParam<Button9Toggle3>(decayShapeParamPosition, module, DADSRH::DECAY_SHAPE_PARAM, 1.0, 3.0, 1.0));
 	addParam(createParam<Button9Toggle3>(releaseShapeParamPosition, module, DADSRH::RELEASE_SHAPE_PARAM, 1.0, 3.0, 1.0));
 	addParam(createParam<Button18>(triggerParamPosition, module, DADSRH::TRIGGER_PARAM, 0.0, 1.0, 0.0));
-	addParam(createParam<CKSS>(modeParamPosition, module, DADSRH::MODE_PARAM, 0.0, 1.0, 1.0));
-	addParam(createParam<CKSS>(loopParamPosition, module, DADSRH::LOOP_PARAM, 0.0, 1.0, 1.0));
-	addParam(createParam<CKSS>(speedParamPosition, module, DADSRH::SPEED_PARAM, 0.0, 1.0, 1.0));
-	addParam(createParam<CKSS>(retriggerParamPosition, module, DADSRH::RETRIGGER_PARAM, 0.0, 1.0, 1.0));
+	addParam(createParam<SliderSwitch2State14>(modeParamPosition, module, DADSRH::MODE_PARAM, 0.0, 1.0, 1.0));
+	addParam(createParam<SliderSwitch2State14>(loopParamPosition, module, DADSRH::LOOP_PARAM, 0.0, 1.0, 1.0));
+	addParam(createParam<SliderSwitch2State14>(speedParamPosition, module, DADSRH::SPEED_PARAM, 0.0, 1.0, 1.0));
+	addParam(createParam<SliderSwitch2State14>(retriggerParamPosition, module, DADSRH::RETRIGGER_PARAM, 0.0, 1.0, 1.0));
 
 	addInput(createInput<Port24>(triggerInputPosition, module, DADSRH::TRIGGER_INPUT));
 
