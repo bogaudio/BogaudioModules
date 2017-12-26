@@ -58,7 +58,8 @@ struct Knob38 : RoundKnob {
 
 struct Button18 : SVGSwitch, MomentarySwitch {
 	Button18() {
-		addFrame(SVG::load(assetPlugin(plugin, "res/button_18px.svg")));
+		addFrame(SVG::load(assetPlugin(plugin, "res/button_18px_0.svg")));
+		addFrame(SVG::load(assetPlugin(plugin, "res/button_18px_1.svg")));
 		box.size = Vec(18, 18);
 	}
 };
