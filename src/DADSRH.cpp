@@ -180,9 +180,9 @@ DADSRHWidget::DADSRHWidget() {
 	addParam(createParam<Knob38>(sustainParamPosition, module, DADSRH::SUSTAIN_PARAM, 0.0, 1.0, 0.5));
 	addParam(createParam<Knob38>(releaseParamPosition, module, DADSRH::RELEASE_PARAM, 0.0, 1.0, 0.32));
 	addParam(createParam<Knob38>(holdParamPosition, module, DADSRH::HOLD_PARAM, 0.0, 1.0, 0.45));
-	addParam(createParam<Button9Toggle3>(attackShapeParamPosition, module, DADSRH::ATTACK_SHAPE_PARAM, 1.0, 3.0, 1.0));
-	addParam(createParam<Button9Toggle3>(decayShapeParamPosition, module, DADSRH::DECAY_SHAPE_PARAM, 1.0, 3.0, 1.0));
-	addParam(createParam<Button9Toggle3>(releaseShapeParamPosition, module, DADSRH::RELEASE_SHAPE_PARAM, 1.0, 3.0, 1.0));
+	addParam(createParam<StatefulButton9>(attackShapeParamPosition, module, DADSRH::ATTACK_SHAPE_PARAM, 1.0, 3.0, 1.0));
+	addParam(createParam<StatefulButton9>(decayShapeParamPosition, module, DADSRH::DECAY_SHAPE_PARAM, 1.0, 3.0, 1.0));
+	addParam(createParam<StatefulButton9>(releaseShapeParamPosition, module, DADSRH::RELEASE_SHAPE_PARAM, 1.0, 3.0, 1.0));
 	addParam(createParam<Button18>(triggerParamPosition, module, DADSRH::TRIGGER_PARAM, 0.0, 1.0, 0.0));
 	addParam(createParam<SliderSwitch2State14>(modeParamPosition, module, DADSRH::MODE_PARAM, 0.0, 1.0, 1.0));
 	addParam(createParam<SliderSwitch2State14>(loopParamPosition, module, DADSRH::LOOP_PARAM, 0.0, 1.0, 1.0));

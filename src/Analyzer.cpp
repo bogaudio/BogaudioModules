@@ -563,8 +563,8 @@ AnalyzerWidget::AnalyzerWidget() {
 
 	addParam(createParam<OneTenKnob>(rangeParamPosition, module, Analyzer::RANGE_PARAM, 0.1, 1.0, 0.5));
 	addParam(createParam<Knob38>(smoothParamPosition, module, Analyzer::SMOOTH_PARAM, 0.0, 1.0, 0.5));
-	addParam(createParam<Button9Toggle2>(qualityParamPosition, module, Analyzer::QUALITY_PARAM, 1.0, 2.0, 1.0));
-	addParam(createParam<Button9Toggle2>(powerParamPosition, module, Analyzer::POWER_PARAM, 0.0, 1.0, 1.0));
+	addParam(createParam<StatefulButton9>(qualityParamPosition, module, Analyzer::QUALITY_PARAM, 1.0, 2.0, 1.0));
+	addParam(createParam<StatefulButton9>(powerParamPosition, module, Analyzer::POWER_PARAM, 0.0, 1.0, 1.0));
 
 	addInput(createInput<Port24>(signalaInputPosition, module, Analyzer::SIGNALA_INPUT));
 	addInput(createInput<Port24>(signalbInputPosition, module, Analyzer::SIGNALB_INPUT));
