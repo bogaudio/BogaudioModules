@@ -282,7 +282,7 @@ void AnalyzerDisplay::draw(NVGcontext* vg) {
 	drawBackground(vg);
 
 	if (_module->_channelA || _module->_channelB || _module->_channelC || _module->_channelD) {
-		float strokeWidth = 2.5 - gRackScene->zoomWidget->zoom;
+		float strokeWidth = 3 - gRackScene->zoomWidget->zoom;
 		nvgSave(vg);
 		nvgScissor(vg, _insetAround, _insetAround, _size.x - _insetAround, _size.y - _insetAround);
 		drawHeader(vg);
