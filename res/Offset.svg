@@ -938,14 +938,14 @@
   </g>
   <g
      id="g265"
-     transform="translate(7.5,78)">
+     transform="translate(5.5,78)">
     <path
        style="fill:#fafafa"
-       d="m 5,0 h 20 c 2.77,0 5,2.23 5,5 v 29 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,39 0,36.77 0,34 V 5 C 0,2.23 2.23,0 5,0 Z"
+       d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 29 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,39 0,36.77 0,34 V 5 C 0,2.23 2.23,0 5,0 Z"
        id="rect261" />
     <g
        aria-label="CV"
-       transform="translate(9,35)"
+       transform="translate(11,35)"
        style="font-weight:bold;font-size:6.66666651px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333"
        id="text263">
       <path
@@ -1226,14 +1226,14 @@
   </g>
   <g
      id="g277"
-     transform="translate(7.5,190)">
+     transform="translate(5.5,190)">
     <path
        style="fill:#fafafa"
-       d="m 5,0 h 20 c 2.77,0 5,2.23 5,5 v 28 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,38 0,35.77 0,33 V 5 C 0,2.23 2.23,0 5,0 Z"
+       d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 28 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,38 0,35.77 0,33 V 5 C 0,2.23 2.23,0 5,0 Z"
        id="rect273" />
     <g
        aria-label="CV"
-       transform="translate(9,35)"
+       transform="translate(11,35)"
        style="font-weight:bold;font-size:6.66666651px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333"
        id="text275">
       <path
@@ -1248,19 +1248,19 @@
   </g>
   <g
      id="g287"
-     transform="translate(7.5,240)">
+     transform="translate(5.5,240)">
     <path
        transform="translate(0,28)"
        style="fill:#fafafa"
-       d="M 0,0 H 30 V 10 H 0 Z"
+       d="M 0,0 H 34 V 10 H 0 Z"
        id="rect281" />
     <path
        style="fill:#fafafa"
-       d="m 5,0 h 20 c 2.77,0 5,2.23 5,5 v 25 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,35 0,32.77 0,30 V 5 C 0,2.23 2.23,0 5,0 Z"
+       d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 25 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,35 0,32.77 0,30 V 5 C 0,2.23 2.23,0 5,0 Z"
        id="rect283" />
     <g
        aria-label="IN"
-       transform="translate(10.5,35)"
+       transform="translate(12.5,35)"
        style="font-weight:bold;font-size:6.66666651px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333"
        id="text285">
       <path
@@ -1275,19 +1275,19 @@
   </g>
   <g
      id="g295"
-     transform="translate(7.5,281)">
+     transform="translate(5.5,281)">
     <path
        transform="translate(0,-3)"
        style="fill:#bbbbbb"
-       d="M 0,0 H 30 V 10 H 0 Z"
+       d="M 0,0 H 34 V 10 H 0 Z"
        id="rect289" />
     <path
        style="fill:#bbbbbb"
-       d="m 5,0 h 20 c 2.77,0 5,2.23 5,5 v 25 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,35 0,32.77 0,30 V 5 C 0,2.23 2.23,0 5,0 Z"
+       d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 25 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,35 0,32.77 0,30 V 5 C 0,2.23 2.23,0 5,0 Z"
        id="rect291" />
     <g
        aria-label="OUT"
-       transform="translate(6.5,32)"
+       transform="translate(8.5,32)"
        style="font-weight:bold;font-size:6.66666651px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333"
        id="text293">
       <path

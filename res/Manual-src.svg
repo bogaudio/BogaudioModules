@@ -52,20 +52,20 @@
 
   <g transform="translate(0 25)">
     <g transform="translate(0 0)">
-      <g transform="translate(7.5 0)">
-        <rect width="30" height="10" fill="#fafafa" transform="translate(0 25)" />
-        <rect width="30" height="33" rx="5" fill="#fafafa" />
-        <use id="TRIGGER_PARAM" xlink:href="#button" transform="translate(6 3)" />
-        <text font-size="5pt" letter-spacing="2px" transform="translate(4.6 30)">TRIG</text>
+      <g transform="translate(5.5 0)">
+        <rect width="34" height="10" fill="#fafafa" transform="translate(0 25)" />
+        <rect width="34" height="33" rx="5" fill="#fafafa" />
+        <use id="TRIGGER_PARAM" xlink:href="#button" transform="translate(8 3)" />
+        <text font-size="5pt" letter-spacing="2px" transform="translate(6.6 30)">TRIG</text>
       </g>
     </g>
 
     <g transform="translate(0 37)">
-      <g transform="translate(7.5 0)">
-        <rect width="30" height="10" fill="#bbb" transform="translate(0 -3)" />
-        <rect width="30" height="252" rx="5" fill="#bbb" />
+      <g transform="translate(5.5 0)">
+        <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)" />
+        <rect width="34" height="252" rx="5" fill="#bbb" />
 
-        <g transform="translate(0 2)">
+        <g transform="translate(2 2)">
           <use id="OUT1_OUTPUT" xlink:href="#output" transform="translate(3 0)" />
           <use id="OUT2_OUTPUT" xlink:href="#output" transform="translate(3 30)" />
           <use id="OUT3_OUTPUT" xlink:href="#output" transform="translate(3 60)" />

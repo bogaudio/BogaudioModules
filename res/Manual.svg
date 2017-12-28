@@ -181,19 +181,19 @@
      transform="translate(0,25)">
     <g
        id="g42"
-       transform="translate(7.5)">
+       transform="translate(5.5)">
       <path
          transform="translate(0,25)"
          style="fill:#fafafa"
-         d="M 0,0 H 30 V 10 H 0 Z"
+         d="M 0,0 H 34 V 10 H 0 Z"
          id="rect36" />
       <path
          style="fill:#fafafa"
-         d="m 5,0 h 20 c 2.77,0 5,2.23 5,5 v 23 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,33 0,30.77 0,28 V 5 C 0,2.23 2.23,0 5,0 Z"
+         d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 23 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,33 0,30.77 0,28 V 5 C 0,2.23 2.23,0 5,0 Z"
          id="rect38" />
       <g
          aria-label="TRIG"
-         transform="translate(4.6,30)"
+         transform="translate(6.6,30)"
          style="font-weight:bold;font-size:6.66666651px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333"
          id="text40">
         <path
@@ -220,19 +220,19 @@
      transform="translate(0,62)">
     <g
        id="g54"
-       transform="translate(7.5)">
+       transform="translate(5.5)">
       <path
          transform="translate(0,-3)"
          style="fill:#bbbbbb"
-         d="M 0,0 H 30 V 10 H 0 Z"
+         d="M 0,0 H 34 V 10 H 0 Z"
          id="rect46" />
       <path
          style="fill:#bbbbbb"
-         d="m 5,0 h 20 c 2.77,0 5,2.23 5,5 v 242 c 0,2.77 -2.23,5 -5,5 H 5 c -2.77,0 -5,-2.23 -5,-5 V 5 C 0,2.23 2.23,0 5,0 Z"
+         d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 242 c 0,2.77 -2.23,5 -5,5 H 5 c -2.77,0 -5,-2.23 -5,-5 V 5 C 0,2.23 2.23,0 5,0 Z"
          id="rect48" />
       <g
          id="g52"
-         transform="translate(0,2)">
+         transform="translate(2,2)">
         <g
            aria-label="OUT"
            transform="translate(6.5,244)"

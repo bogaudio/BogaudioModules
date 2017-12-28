@@ -241,10 +241,10 @@
     <text font-size="6pt" letter-spacing="2px" transform="translate(3 0)">OFFSET</text>
     <use id="OFFSET_PARAM" xlink:href="#knob" transform="translate(0 7)" />
     <use xlink:href="#knobguide" transform="scale(1) translate(0 7)" />
-    <g transform="translate(7.5 53)">
-      <rect width="30" height="39" rx="5" fill="#fafafa" />
-      <use id="OFFSET_INPUT" xlink:href="#input" transform="translate(3 3)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(9 35)">CV</text>
+    <g transform="translate(5.5 53)">
+      <rect width="34" height="39" rx="5" fill="#fafafa" />
+      <use id="OFFSET_INPUT" xlink:href="#input" transform="translate(5 3)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
     </g>
   </g>
 
@@ -252,25 +252,25 @@
     <text font-size="6pt" letter-spacing="2px" transform="translate(6 0)">SCALE</text>
     <use id="SCALE_PARAM" xlink:href="#knob" transform="translate(0 7)" />
     <use xlink:href="#knobguide-exp" transform="scale(1) translate(0 7)" />
-    <g transform="translate(7.5 53)">
-      <rect width="30" height="38" rx="5" fill="#fafafa" />
-      <use id="SCALE_INPUT" xlink:href="#input" transform="translate(3 3)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(9 35)">CV</text>
+    <g transform="translate(5.5 53)">
+      <rect width="34" height="38" rx="5" fill="#fafafa" />
+      <use id="SCALE_INPUT" xlink:href="#input" transform="translate(5 3)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
     </g>
   </g>
 
   <g transform="translate(0 240)">
-    <g transform="translate(7.5 0)">
-      <rect width="30" height="10" fill="#fafafa" transform="translate(0 28)" />
-      <rect width="30" height="35" rx="5" fill="#fafafa" />
-      <use id="IN_INPUT" xlink:href="#input" transform="translate(3 3)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(10.5 35)">IN</text>
+    <g transform="translate(5.5 0)">
+      <rect width="34" height="10" fill="#fafafa" transform="translate(0 28)" />
+      <rect width="34" height="35" rx="5" fill="#fafafa" />
+      <use id="IN_INPUT" xlink:href="#input" transform="translate(5 3)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
     </g>
-    <g transform="translate(7.5 41)">
-      <rect width="30" height="10" fill="#bbb" transform="translate(0 -3)" />
-      <rect width="30" height="35" rx="5" fill="#bbb" />
-      <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(3 0)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6.5 32)">OUT</text>
+    <g transform="translate(5.5 41)">
+      <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)" />
+      <rect width="34" height="35" rx="5" fill="#bbb" />
+      <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 32)">OUT</text>
     </g>
   </g>
 

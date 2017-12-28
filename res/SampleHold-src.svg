@@ -58,60 +58,60 @@
   </g>
 
   <g transform="translate(0 25)">
-    <text font-size="6pt" letterspacing="2px" transform="translate(9 0)">1</text>
+    <text font-size="6pt" letterspacing="2px" transform="translate(8 0)">1</text>
     <!-- <polyline points="0,0 21,0" stroke-width="1" stroke="#333" transform="translate(14 -3)" /> -->
 
     <g transform="translate(0 5)">
-      <g transform="translate(7.5 0)">
-        <rect width="30" height="10" fill="#fafafa" transform="translate(0 58)" />
-        <rect width="30" height="62" rx="5" fill="#fafafa" />
-        <use id="TRIGGER1_PARAM" xlink:href="#button" transform="translate(6 3)" />
-        <use id="TRIGGER1_INPUT" xlink:href="#input" transform="translate(3 26)" />
-        <text font-size="5pt" letter-spacing="2px" transform="translate(4.6 58)">TRIG</text>
+      <g transform="translate(5.5 0)">
+        <rect width="34" height="10" fill="#fafafa" transform="translate(0 58)" />
+        <rect width="34" height="62" rx="5" fill="#fafafa" />
+        <use id="TRIGGER1_PARAM" xlink:href="#button" transform="translate(8 3)" />
+        <use id="TRIGGER1_INPUT" xlink:href="#input" transform="translate(5 26)" />
+        <text font-size="5pt" letter-spacing="2px" transform="translate(6.6 58)">TRIG</text>
       </g>
     </g>
 
     <g transform="translate(0 65)">
-      <g transform="translate(7.5 0)">
-        <rect width="30" height="10" fill="#fafafa" transform="translate(0 28)" />
-        <rect width="30" height="35" rx="5" fill="#fafafa" />
-        <use id="IN1_INPUT" xlink:href="#input" transform="translate(3 3)" />
-        <text font-size="5pt" letter-spacing="2px" transform="translate(10.5 35)">IN</text>
+      <g transform="translate(5.5 0)">
+        <rect width="34" height="10" fill="#fafafa" transform="translate(0 28)" />
+        <rect width="34" height="35" rx="5" fill="#fafafa" />
+        <use id="IN1_INPUT" xlink:href="#input" transform="translate(5 3)" />
+        <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
       </g>
-      <g transform="translate(7.5 41)">
-        <rect width="30" height="10" fill="#bbb" transform="translate(0 -3)" />
-        <rect width="30" height="35" rx="5" fill="#bbb" />
-        <use id="OUT1_OUTPUT" xlink:href="#output" transform="translate(3 0)" />
-        <text font-size="5pt" letter-spacing="2px" transform="translate(6.5 32)">OUT</text>
+      <g transform="translate(5.5 41)">
+        <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)" />
+        <rect width="34" height="35" rx="5" fill="#bbb" />
+        <use id="OUT1_OUTPUT" xlink:href="#output" transform="translate(5 0)" />
+        <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 32)">OUT</text>
       </g>
     </g>
   </g>
 
   <g transform="translate(0 185)">
-    <text font-size="6pt" letterspacing="2px" transform="translate(9 0)">2</text>
+    <text font-size="6pt" letterspacing="2px" transform="translate(8 0)">2</text>
 
     <g transform="translate(0 5)">
-      <g transform="translate(7.5 0)">
-        <rect width="30" height="10" fill="#fafafa" transform="translate(0 58)" />
-        <rect width="30" height="62" rx="5" fill="#fafafa" />
-        <use id="TRIGGER2_PARAM" xlink:href="#button" transform="translate(6 3)" />
-        <use id="TRIGGER2_INPUT" xlink:href="#input" transform="translate(3 26)" />
-        <text font-size="5pt" letter-spacing="2px" transform="translate(4.6 58)">TRIG</text>
+      <g transform="translate(5.5 0)">
+        <rect width="34" height="10" fill="#fafafa" transform="translate(0 58)" />
+        <rect width="34" height="62" rx="5" fill="#fafafa" />
+        <use id="TRIGGER2_PARAM" xlink:href="#button" transform="translate(8 3)" />
+        <use id="TRIGGER2_INPUT" xlink:href="#input" transform="translate(5 26)" />
+        <text font-size="5pt" letter-spacing="2px" transform="translate(6.6 58)">TRIG</text>
       </g>
     </g>
 
     <g transform="translate(0 65)">
-      <g transform="translate(7.5 0)">
-        <rect width="30" height="10" fill="#fafafa" transform="translate(0 28)" />
-        <rect width="30" height="35" rx="5" fill="#fafafa" />
-        <use id="IN2_INPUT" xlink:href="#input" transform="translate(3 3)" />
-        <text font-size="5pt" letter-spacing="2px" transform="translate(10.5 35)">IN</text>
+      <g transform="translate(5.5 0)">
+        <rect width="34" height="10" fill="#fafafa" transform="translate(0 28)" />
+        <rect width="34" height="35" rx="5" fill="#fafafa" />
+        <use id="IN2_INPUT" xlink:href="#input" transform="translate(5 3)" />
+        <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
       </g>
-      <g transform="translate(7.5 41)">
-        <rect width="30" height="10" fill="#bbb" transform="translate(0 -3)" />
-        <rect width="30" height="35" rx="5" fill="#bbb" />
-        <use id="OUT2_OUTPUT" xlink:href="#output" transform="translate(3 0)" />
-        <text font-size="5pt" letter-spacing="2px" transform="translate(6.5 32)">OUT</text>
+      <g transform="translate(5.5 41)">
+        <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)" />
+        <rect width="34" height="35" rx="5" fill="#bbb" />
+        <use id="OUT2_OUTPUT" xlink:href="#output" transform="translate(5 0)" />
+        <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 32)">OUT</text>
       </g>
     </g>
   </g>

@@ -193,7 +193,7 @@
      style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;fill:#333333"
      id="text43">
     <path
-       d="M 12.128906,25 H 11 v -4.351563 l -1.3476562,0.417969 v -0.917969 l 2.3554692,-0.84375 h 0.121093 z"
+       d="M 11.128906,25 H 10 v -4.351563 l -1.3476562,0.417969 v -0.917969 l 2.3554692,-0.84375 h 0.121093 z"
        style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;fill:#333333"
        id="path166" />
   </g>
@@ -202,19 +202,19 @@
      transform="translate(0,30)">
     <g
        id="g51"
-       transform="translate(7.5)">
+       transform="translate(5.5)">
       <path
          transform="translate(0,58)"
          style="fill:#fafafa"
-         d="M 0,0 H 30 V 10 H 0 Z"
+         d="M 0,0 H 34 V 10 H 0 Z"
          id="rect45" />
       <path
          style="fill:#fafafa"
-         d="m 5,0 h 20 c 2.77,0 5,2.23 5,5 v 52 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,62 0,59.77 0,57 V 5 C 0,2.23 2.23,0 5,0 Z"
+         d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 52 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,62 0,59.77 0,57 V 5 C 0,2.23 2.23,0 5,0 Z"
          id="rect47" />
       <g
          aria-label="TRIG"
-         transform="translate(4.6,58)"
+         transform="translate(6.6,58)"
          style="font-weight:bold;font-size:6.66666651px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333"
          id="text49">
         <path
@@ -241,19 +241,19 @@
      transform="translate(0,90)">
     <g
        id="g61"
-       transform="translate(7.5)">
+       transform="translate(5.5)">
       <path
          transform="translate(0,28)"
          style="fill:#fafafa"
-         d="M 0,0 H 30 V 10 H 0 Z"
+         d="M 0,0 H 34 V 10 H 0 Z"
          id="rect55" />
       <path
          style="fill:#fafafa"
-         d="m 5,0 h 20 c 2.77,0 5,2.23 5,5 v 25 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,35 0,32.77 0,30 V 5 C 0,2.23 2.23,0 5,0 Z"
+         d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 25 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,35 0,32.77 0,30 V 5 C 0,2.23 2.23,0 5,0 Z"
          id="rect57" />
       <g
          aria-label="IN"
-         transform="translate(10.5,35)"
+         transform="translate(12.5,35)"
          style="font-weight:bold;font-size:6.66666651px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333"
          id="text59">
         <path
@@ -268,19 +268,19 @@
     </g>
     <g
        id="g69"
-       transform="translate(7.5,41)">
+       transform="translate(5.5,41)">
       <path
          transform="translate(0,-3)"
          style="fill:#bbbbbb"
-         d="M 0,0 H 30 V 10 H 0 Z"
+         d="M 0,0 H 34 V 10 H 0 Z"
          id="rect63" />
       <path
          style="fill:#bbbbbb"
-         d="m 5,0 h 20 c 2.77,0 5,2.23 5,5 v 25 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,35 0,32.77 0,30 V 5 C 0,2.23 2.23,0 5,0 Z"
+         d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 25 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,35 0,32.77 0,30 V 5 C 0,2.23 2.23,0 5,0 Z"
          id="rect65" />
       <g
          aria-label="OUT"
-         transform="translate(6.5,32)"
+         transform="translate(8.5,32)"
          style="font-weight:bold;font-size:6.66666651px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333"
          id="text67">
         <path
@@ -303,7 +303,7 @@
      style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;fill:#333333"
      id="text75">
     <path
-       d="M 13.285156,185 H 9.3867188 v -0.77344 l 1.8398442,-1.96094 q 0.378906,-0.41406 0.558593,-0.72265 0.183594,-0.3086 0.183594,-0.58594 0,-0.37891 -0.191406,-0.59375 -0.191406,-0.21875 -0.546875,-0.21875 -0.382813,0 -0.605469,0.26563 -0.21875,0.26171 -0.21875,0.6914 H 9.2734375 q 0,-0.51953 0.2460938,-0.94922 0.25,-0.42968 0.7031247,-0.67187 0.453125,-0.2461 1.027344,-0.2461 0.878906,0 1.363281,0.42188 0.488282,0.42187 0.488282,1.19141 0,0.42187 -0.21875,0.85937 -0.21875,0.4375 -0.75,1.01953 l -1.292969,1.36328 h 2.445312 z"
+       d="M 12.285156,185 H 8.3867188 v -0.77344 l 1.8398442,-1.96094 q 0.378906,-0.41406 0.558593,-0.72265 0.183594,-0.3086 0.183594,-0.58594 0,-0.37891 -0.191406,-0.59375 -0.191406,-0.21875 -0.546875,-0.21875 -0.3828127,0 -0.605469,0.26563 -0.21875,0.26171 -0.21875,0.6914 H 8.2734375 q 0,-0.51953 0.2460938,-0.94922 0.25,-0.42968 0.703125,-0.67187 0.453125,-0.2461 1.0273437,-0.2461 0.878906,0 1.363281,0.42188 0.488282,0.42187 0.488282,1.19141 0,0.42187 -0.21875,0.85937 -0.21875,0.4375 -0.75,1.01953 l -1.2929692,1.36328 h 2.4453122 z"
        style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;fill:#333333"
        id="path196" />
   </g>
@@ -312,19 +312,19 @@
      transform="translate(0,190)">
     <g
        id="g83"
-       transform="translate(7.5)">
+       transform="translate(5.5)">
       <path
          transform="translate(0,58)"
          style="fill:#fafafa"
-         d="M 0,0 H 30 V 10 H 0 Z"
+         d="M 0,0 H 34 V 10 H 0 Z"
          id="rect77" />
       <path
          style="fill:#fafafa"
-         d="m 5,0 h 20 c 2.77,0 5,2.23 5,5 v 52 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,62 0,59.77 0,57 V 5 C 0,2.23 2.23,0 5,0 Z"
+         d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 52 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,62 0,59.77 0,57 V 5 C 0,2.23 2.23,0 5,0 Z"
          id="rect79" />
       <g
          aria-label="TRIG"
-         transform="translate(4.6,58)"
+         transform="translate(6.6,58)"
          style="font-weight:bold;font-size:6.66666651px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333"
          id="text81">
         <path
@@ -351,19 +351,19 @@
      transform="translate(0,250)">
     <g
        id="g93"
-       transform="translate(7.5)">
+       transform="translate(5.5)">
       <path
          transform="translate(0,28)"
          style="fill:#fafafa"
-         d="M 0,0 H 30 V 10 H 0 Z"
+         d="M 0,0 H 34 V 10 H 0 Z"
          id="rect87" />
       <path
          style="fill:#fafafa"
-         d="m 5,0 h 20 c 2.77,0 5,2.23 5,5 v 25 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,35 0,32.77 0,30 V 5 C 0,2.23 2.23,0 5,0 Z"
+         d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 25 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,35 0,32.77 0,30 V 5 C 0,2.23 2.23,0 5,0 Z"
          id="rect89" />
       <g
          aria-label="IN"
-         transform="translate(10.5,35)"
+         transform="translate(12.5,35)"
          style="font-weight:bold;font-size:6.66666651px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333"
          id="text91">
         <path
@@ -378,19 +378,19 @@
     </g>
     <g
        id="g101"
-       transform="translate(7.5,41)">
+       transform="translate(5.5,41)">
       <path
          transform="translate(0,-3)"
          style="fill:#bbbbbb"
-         d="M 0,0 H 30 V 10 H 0 Z"
+         d="M 0,0 H 34 V 10 H 0 Z"
          id="rect95" />
       <path
          style="fill:#bbbbbb"
-         d="m 5,0 h 20 c 2.77,0 5,2.23 5,5 v 25 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,35 0,32.77 0,30 V 5 C 0,2.23 2.23,0 5,0 Z"
+         d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 25 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,35 0,32.77 0,30 V 5 C 0,2.23 2.23,0 5,0 Z"
          id="rect97" />
       <g
          aria-label="OUT"
-         transform="translate(6.5,32)"
+         transform="translate(8.5,32)"
          style="font-weight:bold;font-size:6.66666651px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333"
          id="text99">
         <path
