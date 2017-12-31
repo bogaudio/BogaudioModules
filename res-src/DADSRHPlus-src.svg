@@ -80,6 +80,9 @@
             <text font-size="7pt" transform="translate(-2.8 3.3)">0</text>
           </g>
         </g>
+        <g transform="rotate(-172.92) translate(30 0)">
+          <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" />
+        </g>
         <g transform="rotate(-145.13) translate(30 0)">
           <g transform="translate(2 0) rotate(145.13)">
             <text font-size="7pt" transform="translate(-2.8 3.3)">1</text>
