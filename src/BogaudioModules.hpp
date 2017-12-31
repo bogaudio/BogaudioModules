@@ -26,6 +26,10 @@ struct AnalyzerWidget : ModuleWidget {
 };
 
 
+struct DGateWidget : ModuleWidget {
+	DGateWidget();
+};
+
 struct OffsetWidget : ModuleWidget {
 	OffsetWidget();
 };
