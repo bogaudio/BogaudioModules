@@ -30,7 +30,7 @@ struct DGate : Module {
 
 	enum Stage {
 		STOPPED_STAGE,
-    DELAY_STAGE,
+		DELAY_STAGE,
 		ON_STAGE
 	};
 

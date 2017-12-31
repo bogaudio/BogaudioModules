@@ -93,17 +93,17 @@ void ShaperCore::step() {
 	}
 	_triggerOutput.value = _triggerOuptutPulseGen.process(engineGetSampleTime()) ? 5.0 : 0.0;
 
-  if (_attackOutput) {
-    _attackOutput->value = _stage == ATTACK_STAGE ? 5.0 : 0.0;
+	if (_attackOutput) {
+		_attackOutput->value = _stage == ATTACK_STAGE ? 5.0 : 0.0;
 	}
-  if (_onOutput) {
-    _onOutput->value = _stage == ON_STAGE ? 5.0 : 0.0;
+	if (_onOutput) {
+		_onOutput->value = _stage == ON_STAGE ? 5.0 : 0.0;
 	}
-  if (_decayOutput) {
-    _decayOutput->value = _stage == DECAY_STAGE ? 5.0 : 0.0;
+	if (_decayOutput) {
+		_decayOutput->value = _stage == DECAY_STAGE ? 5.0 : 0.0;
 	}
-  if (_offOutput) {
-	  _offOutput->value = _stage == OFF_STAGE ? 5.0 : 0.0;
+	if (_offOutput) {
+		_offOutput->value = _stage == OFF_STAGE ? 5.0 : 0.0;
 	}
 
 	_attackLight.value = _stage == ATTACK_STAGE;
@@ -117,14 +117,14 @@ bool ShaperCore::stepStage(const Param& knob, const Input* cv, bool slow) {
 	t = pow(t, 2);
 	t = fmaxf(t, 0.001);
 	t *= slow ? 100.0 : 10.0;
-  _stageProgress += engineGetSampleTime() / t;
+	_stageProgress += engineGetSampleTime() / t;
 	return _stageProgress > 1.0;
 }
 
 float ShaperCore::levelParam(const Param& knob, const Input* cv) const {
-  float v = clampf(knob.value, 0.0, 1.0);
-  if (cv && cv->active) {
-    v *= clampf(cv->value / 10.0, 0.0, 1.0);
+	float v = clampf(knob.value, 0.0, 1.0);
+	if (cv && cv->active) {
+		v *= clampf(cv->value / 10.0, 0.0, 1.0);
 	}
-  return v;
+	return v;
 }

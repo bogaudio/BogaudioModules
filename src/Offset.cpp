@@ -22,7 +22,7 @@ struct Offset : Module {
 
 	Offset() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {}
 
-  virtual void step() override;
+	virtual void step() override;
 
 	float knobValue(const Param& knob, const Input& cv) const;
 };
@@ -32,7 +32,7 @@ void Offset::step() {
 	float scale = knobValue(params[SCALE_PARAM], inputs[SCALE_INPUT]);
 	scale = scale < 0.0 ? -pow(scale, 2.0) : pow(scale, 2.0);
 	scale *= 10.0;
-  if (inputs[IN_INPUT].active) {
+	if (inputs[IN_INPUT].active) {
 		outputs[OUT_OUTPUT].value = clampf((inputs[IN_INPUT].value + 10.0 * offset) * scale, -10.0, 10.0);
 	}
 	else {

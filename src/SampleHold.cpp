@@ -34,8 +34,8 @@ struct SampleHold : Module {
 		reset();
 	}
 
-  virtual void reset() override;
-  virtual void step() override;
+	virtual void reset() override;
+	virtual void step() override;
 	void step(
 		Param& triggerParam,
 		Input& triggerInput,

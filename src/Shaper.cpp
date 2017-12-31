@@ -82,11 +82,11 @@ struct Shaper : Module {
 		reset();
 	}
 
-  virtual void reset() override {
+	virtual void reset() override {
 		_core.reset();
 	}
 
-  virtual void step() override {
+	virtual void step() override {
 		_core.step();
 	}
 };
