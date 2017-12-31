@@ -4,11 +4,24 @@
 namespace bogaudio {
 namespace dsp {
 
+class Seeds {
+private:
+	std::mt19937 _generator;
+	Seeds();
+	unsigned int _next();
+
+public:
+	Seeds(const Seeds&) = delete;
+	void operator=(const Seeds&) = delete;
+	static Seeds& getInstance();
+
+	static unsigned int next();
+};
+
 struct NoiseGenerator : Generator {
-	std::random_device _seed;
 	std::minstd_rand _generator; // one of the faster options.
 
-	NoiseGenerator() : _generator(_seed()) {}
+	NoiseGenerator() : _generator(Seeds::next()) {}
 };
 
 struct WhiteNoiseGenerator : NoiseGenerator {
