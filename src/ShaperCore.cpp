@@ -4,6 +4,7 @@
 
 void ShaperCore::reset() {
 	_trigger.reset();
+	_triggerOuptutPulseGen.process(10.0);
 	_stage = STOPPED_STAGE;
 	_stageProgress = 0.0;
 }
@@ -86,7 +87,11 @@ void ShaperCore::step() {
 	float envOutput = clampf(envLevel * envelope, 0.0, 10.0);
 	_envOutput.value = envOutput;
 	_invOutput.value = 10.0 - envOutput;
-	_triggerOutput.value = complete ? 5.0 : 0.0;
+
+	if (complete) {
+		_triggerOuptutPulseGen.trigger(0.001);
+	}
+	_triggerOutput.value = _triggerOuptutPulseGen.process(engineGetSampleTime()) ? 5.0 : 0.0;
 
   if (_attackOutput) {
     _attackOutput->value = _stage == ATTACK_STAGE ? 5.0 : 0.0;

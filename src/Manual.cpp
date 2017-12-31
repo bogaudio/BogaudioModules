@@ -29,6 +29,7 @@ struct Manual : Module {
 	};
 
 	SchmittTrigger _trigger;
+	PulseGenerator _pulse;
 
 	Manual() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 		reset();
@@ -40,10 +41,19 @@ struct Manual : Module {
 
 void Manual::reset() {
 	_trigger.reset();
+	_pulse.process(10.0);
 }
 
 void Manual::step() {
 	bool high = _trigger.process(params[TRIGGER_PARAM].value) || _trigger.isHigh();
+	if (high) {
+		_pulse.trigger(0.001);
+		_pulse.process(engineGetSampleTime());
+	}
+	else {
+		high = _pulse.process(engineGetSampleTime());
+	}
+
 	float out = high ? 5.0 : 0.0;
 	outputs[OUT1_OUTPUT].value = out;
 	outputs[OUT2_OUTPUT].value = out;

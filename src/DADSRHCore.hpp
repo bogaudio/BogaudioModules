@@ -60,6 +60,7 @@ struct DADSRHCore {
   Light& _releaseShape3Light;
 
 	SchmittTrigger _trigger;
+	PulseGenerator _triggerOuptutPulseGen;
 	Stage _stage;
 	float _envelope, _stageProgress, _holdProgress, _releaseLevel;
 

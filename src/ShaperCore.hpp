@@ -44,6 +44,7 @@ struct ShaperCore {
   Light& _offLight;
 
 	SchmittTrigger _trigger;
+	PulseGenerator _triggerOuptutPulseGen;
 	Stage _stage;
 	float _stageProgress;
 

@@ -4,6 +4,7 @@
 
 void DADSRHCore::reset() {
 	_trigger.reset();
+	_triggerOuptutPulseGen.process(10.0);
   _stage = STOPPED_STAGE;
   _releaseLevel = _holdProgress = _stageProgress = _envelope = 0.0;
 }
@@ -185,7 +186,7 @@ void DADSRHCore::step() {
 			if (_envelope <= 0.001) {
 				complete = true;
         _envelope = 0.0;
-				if (_loopParam.value <= 0.5) {
+				if (_modeParam.value < 0.5 && _loopParam.value <= 0.5) {
 					_stage = DELAY_STAGE;
 					_holdProgress = _stageProgress = 0.0;
 				}
@@ -200,7 +201,11 @@ void DADSRHCore::step() {
   float env = _envelope * 10.0;
 	_envOutput.value = env;
 	_invOutput.value = 10.0 - env;
-	_triggerOutput.value = complete ? 5.0 : 0.0;
+
+	if (complete) {
+		_triggerOuptutPulseGen.trigger(0.001);
+	}
+	_triggerOutput.value = _triggerOuptutPulseGen.process(engineGetSampleTime()) ? 5.0 : 0.0;
 
   if (_delayOutput) {
     _delayOutput->value = _stage == DELAY_STAGE ? 5.0 : 0.0;
