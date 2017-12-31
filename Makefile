@@ -3,6 +3,10 @@ ifdef REQUIRE_VERSION
 FLAGS += -DREQUIRE_VERSION=$(REQUIRE_VERSION)
 endif
 
+ifdef EXPERIMENTAL
+FLAGS += -DEXPERIMENTAL=1
+endif
+
 SOURCES = $(wildcard src/*.cpp src/dsp/*cpp)
 CXXFLAGS += -Isrc/dsp
 
