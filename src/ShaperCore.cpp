@@ -45,7 +45,7 @@ void ShaperCore::step() {
 			case OFF_STAGE: {
 				if (stepStage(_offParam, _offInput, slow)) {
 					complete = true;
-					if (_loopParam.value <= 0.0) {
+					if (_loopParam.value <= 0.0 || _trigger.isHigh()) {
 						_stage = ATTACK_STAGE;
 						_stageProgress = 0.0;
 					}

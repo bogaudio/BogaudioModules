@@ -186,7 +186,7 @@ void DADSRHCore::step() {
 			if (_envelope <= 0.001) {
 				complete = true;
 				_envelope = 0.0;
-				if (_modeParam.value < 0.5 && _loopParam.value <= 0.5) {
+				if (_modeParam.value < 0.5 && (_loopParam.value <= 0.5 || _trigger.isHigh())) {
 					_stage = DELAY_STAGE;
 					_holdProgress = _stageProgress = 0.0;
 				}
