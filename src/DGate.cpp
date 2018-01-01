@@ -101,7 +101,7 @@ void DGate::step() {
 
 	outputs[GATE_OUTPUT].value = envelope * 10.0;
 	if (complete) {
-		_triggerOuptutPulseGen.trigger(0.1);
+		_triggerOuptutPulseGen.trigger(0.001);
 	}
 	outputs[END_OUTPUT].value = _triggerOuptutPulseGen.process(engineGetSampleTime()) ? 5.0 : 0.0;
 
