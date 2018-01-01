@@ -31,10 +31,11 @@ struct DGate : Module {
 	enum Stage {
 		STOPPED_STAGE,
 		DELAY_STAGE,
-		ON_STAGE
+		GATE_STAGE
 	};
 
 	SchmittTrigger _trigger;
+	PulseGenerator _triggerOuptutPulseGen;
 	Stage _stage;
 	float _stageProgress;
 
@@ -44,17 +45,77 @@ struct DGate : Module {
 
 	virtual void reset() override;
 	virtual void step() override;
+	bool stepStage(Param& knob);
 };
 
 void DGate::reset() {
 	_trigger.reset();
+	_triggerOuptutPulseGen.process(10.0);
 	_stage = STOPPED_STAGE;
 	_stageProgress = 0.0;
 }
 
 void DGate::step() {
-	outputs[GATE_OUTPUT].value = 0.0;
-	outputs[END_OUTPUT].value = 0.0;
+	float envelope = 0.0;
+	bool complete = false;
+	if (_trigger.process(params[TRIGGER_PARAM].value + inputs[TRIGGER_INPUT].value)) {
+		_stage = DELAY_STAGE;
+		_stageProgress = 0.0;
+	}
+	else {
+		switch (_stage) {
+			case STOPPED_STAGE: {
+				break;
+			}
+			case DELAY_STAGE: {
+				if (stepStage(params[DELAY_PARAM])) {
+					_stage = GATE_STAGE;
+					_stageProgress = 0.0;
+				}
+				break;
+			}
+			case GATE_STAGE: {
+				if (stepStage(params[GATE_PARAM])) {
+					complete = true;
+					if (params[LOOP_PARAM].value <= 0.0 || _trigger.isHigh()) {
+						if (params[DELAY_PARAM].value > 0.0) {
+							_stage = DELAY_STAGE;
+						}
+						else {
+							// _stage = GATE_STAGE;
+							envelope = 1.0;
+						}
+						_stageProgress = 0.0;
+					}
+					else {
+						_stage = STOPPED_STAGE;
+					}
+				}
+				else {
+					envelope = 1.0;
+				}
+				break;
+			}
+		}
+	}
+
+	outputs[GATE_OUTPUT].value = envelope * 10.0;
+	if (complete) {
+		_triggerOuptutPulseGen.trigger(0.1);
+	}
+	outputs[END_OUTPUT].value = _triggerOuptutPulseGen.process(engineGetSampleTime()) ? 5.0 : 0.0;
+
+	lights[DELAY_LIGHT].value = _stage == DELAY_STAGE;
+	lights[GATE_LIGHT].value = _stage == GATE_STAGE;
+}
+
+bool DGate::stepStage(Param& knob) {
+	float t = clampf(knob.value, 0.0, 1.0);
+	t = pow(t, 2);
+	t = fmaxf(t, 0.001);
+	t *= 10.0;
+	_stageProgress += engineGetSampleTime() / t;
+	return _stageProgress > 1.0;
 }
 
 
