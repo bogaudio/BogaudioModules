@@ -55,7 +55,7 @@
       <g transform="translate(5.5 0)">
         <rect width="34" height="10" fill="#fafafa" transform="translate(0 25)" />
         <rect width="34" height="33" rx="5" fill="#fafafa" />
-        <use id="TRIGGER_PARAM" xlink:href="#button" transform="translate(8 3)" />
+        <use id="TRIGGER_PARAM" xlink:href="#button" transform="translate(8 4)" />
         <text font-size="5pt" letter-spacing="2px" transform="translate(6.6 30)">TRIG</text>
       </g>
     </g>
