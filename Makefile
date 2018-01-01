@@ -33,5 +33,4 @@ dist: distprep
 	cp LICENSE* dist/$(SLUG)/
 	cp plugin.* dist/$(SLUG)/
 	cp -R res dist/$(SLUG)/
-	rm dist/$(SLUG)/res/*-src.svg
 	(cd dist && zip -r $(SLUG)-$(VERSION)-$(ARCH).zip $(SLUG))
