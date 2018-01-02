@@ -45,3 +45,7 @@ struct ManualWidget : ModuleWidget {
 struct NoiseWidget : ModuleWidget {
 	NoiseWidget();
 };
+
+struct ReftoneWidget : ModuleWidget {
+	ReftoneWidget();
+};
