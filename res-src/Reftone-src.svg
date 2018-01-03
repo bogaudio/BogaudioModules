@@ -24,61 +24,105 @@
 
   <defs>
     <symbol id="display" viewBox="0 0 45px 34px">
-      <rect width="38" height="34" fill="#222" transform="translate(3.5 0)" />
+      <rect width="38" height="48" fill="#222" transform="translate(3.5 0)" />
     </symbol>
 
     <symbol id="knob" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f" />
         <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f" />
-        <circle cx="0" cy="0" r="14.5" stroke-width="1" stroke="#00f" fill="none" />
+        <circle r="12.5" stroke-width="1" stroke="#00f" fill="none" />
       </g>
     </symbol>
 
-    <symbol id="knobguide" viewBox="0 0 45px 45px">
+    <symbol id="knobguide-pitch" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
-        <g transform="rotate(-240) translate(17 0)">
-          <g transform="translate(3 0) rotate(240)">
-            <text font-size="6.5pt" transform="translate(-2.8 3.3)">0</text>
-          </g>
+        <g transform="rotate(-240) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(240) translate(-2.2 2.2)">C</text>
         </g>
-        <g transform="rotate(-172.92) translate(17 0)">
-          <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" />
+        <g transform="rotate(-212.73) translate(15 0)">
+          <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" />
         </g>
-        <g transform="rotate(-145.13) translate(17 0)">
-          <g transform="translate(3 0) rotate(145.13)">
-            <text font-size="6.5pt" transform="translate(-2.8 3.3)">1</text>
-          </g>
+        <g transform="rotate(-185.45) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(185.45) translate(-2.2 2.2)">D</text>
         </g>
-        <g transform="rotate(-105.84) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" />
+        <g transform="rotate(-158.18) translate(15 0)">
+          <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" />
         </g>
-        <g transform="rotate(-75.68) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" />
+        <g transform="rotate(-130.91) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(130.91) translate(-2.2 2.2)">E</text>
         </g>
-        <g transform="rotate(-50.26) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" />
+        <g transform="rotate(-103.64) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(103.64) translate(-2.2 2.2)">F</text>
         </g>
-        <g transform="rotate(-27.87) translate(17 0)">
-          <g transform="translate(3 0) rotate(27.87)">
-            <text font-size="6.5pt" transform="translate(-2.8 3.3)">5</text>
-          </g>
+        <g transform="rotate(-76.36) translate(15 0)">
+          <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" />
         </g>
-        <g transform="rotate(-7.62) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" />
+        <g transform="rotate(-49.09) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(49.09) translate(-2.2 2.2)">G</text>
         </g>
-        <g transform="rotate(11) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" />
+        <g transform="rotate(-21.82) translate(15 0)">
+          <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" />
         </g>
-        <g transform="rotate(28.33) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" />
+        <g transform="rotate(5.45) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(-5.45) translate(-2.2 2.2)">A</text>
         </g>
-        <g transform="rotate(44.6) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" />
+        <g transform="rotate(32.73) translate(15 0)">
+          <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" />
         </g>
-        <g transform="rotate(60) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" />
+        <g transform="rotate(60) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(-60) translate(-2.2 2.2)">B</text>
         </g>
+      </g>
+    </symbol>
+
+    <symbol id="knobguide-octave" viewBox="0 0 45px 45px">
+      <g transform="translate(22.5 22.5)">
+        <g transform="rotate(-240) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(240) translate(-2.2 2.2)">1</text>
+        </g>
+        <g transform="rotate(-197.14) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(197.14) translate(-2.2 2.2)">2</text>
+        </g>
+        <g transform="rotate(-154.29) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(154.29) translate(-2.2 2.2)">3</text>
+        </g>
+        <g transform="rotate(-111.43) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(111.43) translate(-2.2 2.2)">4</text>
+        </g>
+        <g transform="rotate(-68.57) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(68.57) translate(-2.2 2.2)">5</text>
+        </g>
+        <g transform="rotate(-25.71) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(25.71) translate(-2.2 2.2)">6</text>
+        </g>
+        <g transform="rotate(17.14) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(-17.14) translate(-2.2 2.2)">7</text>
+        </g>
+        <g transform="rotate(60) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(-60) translate(-2.2 2.2)">8</text>
+        </g>
+      </g>
+    </symbol>
+
+    <symbol id="knobguide-fine" viewBox="0 0 45px 45px">
+      <g transform="translate(22.5 22.5)">
+        <g transform="rotate(-240) translate(15 0)">
+          <!-- <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" /> -->
+          <text font-size="5.0pt" transform="translate(2.5 0) rotate(240) translate(-1.5 2.2)">-</text>
+        </g>
+        <g transform="rotate(-90) translate(15 0)">
+          <!-- <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" /> -->
+          <text font-size="5.0pt" transform="translate(2 0) rotate(90) translate(-1.9 2.2)">0</text>
+        </g>
+        <g transform="rotate(60) translate(15 0)">
+          <!-- <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" /> -->
+          <text font-size="5.0pt" transform="translate(2.5 0) rotate(-60) translate(-1.9 2.2)">+</text>
+        </g>
+        <path d="M 0 -17.5 A 17.5 17.5 0 0 1 17.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)" />
+        <path d="M 0 -17.5 A 17.5 17.5 0 0 1 17.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" />
+        <path d="M 0 -17.5 A 17.5 17.5 0 0 0 -17.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)" />
+        <path d="M 0 -17.5 A 17.5 17.5 0 0 0 -17.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" />
       </g>
     </symbol>
 
@@ -111,26 +155,27 @@
   <g transform="translate(0 18)">
     <use id="DISPLAY_WIDGET" xlink:href="#display" />
 
-    <g transform="translate(0 47)">
+    <g transform="translate(0 62)">
       <g transform="translate(0 0)">
         <text font-size="6pt" letter-spacing="2px" transform="translate(7 0)">PITCH</text>
         <use id="PITCH_PARAM" xlink:href="#knob" transform="translate(0 0)" />
-        <!-- <use xlink:href="#knobguide" transform="translate(0 0)" /> -->
       </g>
 
-      <g transform="translate(0 59)">
+      <g transform="translate(0 55)">
         <text font-size="6pt" letter-spacing="2px" transform="translate(2.5 0)">OCTAVE</text>
         <use id="OCTAVE_PARAM" xlink:href="#knob" transform="translate(0 0)" />
-        <!-- <use xlink:href="#knobguide" transform="translate(0 0)" /> -->
       </g>
 
-      <g transform="translate(0 118)">
+      <g transform="translate(0 108)">
         <text font-size="6pt" letter-spacing="2px" transform="translate(11 0)">FINE</text>
         <use id="FINE_PARAM" xlink:href="#knob" transform="translate(0 0)" />
-        <!-- <use xlink:href="#knobguide" transform="translate(0 0)" /> -->
       </g>
     </g>
   </g>
+
+  <use xlink:href="#knobguide-pitch" transform="translate(0 80)" />
+  <use xlink:href="#knobguide-octave" transform="translate(0 135)" />
+  <use xlink:href="#knobguide-fine" transform="translate(0 188)" />
 
   <g transform="translate(0 235)">
     <g transform="translate(0 0)">
