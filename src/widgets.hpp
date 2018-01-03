@@ -13,6 +13,13 @@ struct Button18 : SVGSwitch, MomentarySwitch {
 	}
 };
 
+struct Knob26 : RoundKnob {
+	Knob26() {
+		setSVG(SVG::load(assetPlugin(plugin, "res/knob_26px.svg")));
+		box.size = Vec(26, 26);
+	}
+};
+
 struct Knob29 : RoundKnob {
 	Knob29() {
 		setSVG(SVG::load(assetPlugin(plugin, "res/knob_29px.svg")));
