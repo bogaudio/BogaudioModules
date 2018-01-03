@@ -79,15 +79,16 @@ struct ReftoneDisplay : TransparentWidget {
 };
 
 void ReftoneDisplay::draw(NVGcontext* vg) {
-	char octave[2];
-	snprintf(octave, 2, "%d", _module->_octave);
+	const int n = 20;
+	char octave[n];
+	snprintf(octave, n, "%d", _module->_octave);
 
-	char fine[4];
+	char fine[n];
 	fine[0] = _module->_fine < 0.0 ? '-' : '+';
-	snprintf(fine + 1, 3, "%02d", abs((int)(_module->_fine * 100)));
+	snprintf(fine + 1, n - 1, "%02d", abs((int)(_module->_fine * 100)));
 
 	char frequency[20];
-	snprintf(frequency, 20, "%0.0fhz", _module->_frequency);
+	snprintf(frequency, n, "%0.0fhz", _module->_frequency);
 
 	const char* pitch = NULL;
 	const char* sharpFlat = NULL;
