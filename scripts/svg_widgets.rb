@@ -150,7 +150,7 @@ exit unless lines =~ /_(PARAM|INPUT|OUTPUT|LIGHT)/
 
 Widget = Struct.new(:id, :x, :y, :width, :height) do
   def to_s
-    "#{id} x=#{x} y=#{y} width=#{width} x=#{height}"
+    "#{id} x=#{x} y=#{y} width=#{width} height=#{height}"
   end
 end
 widgets_by_type = {}
