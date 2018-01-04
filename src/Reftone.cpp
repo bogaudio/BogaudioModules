@@ -1,5 +1,6 @@
 
 #include <string.h>
+#include <algorithm>
 #include "BogaudioModules.hpp"
 
 struct Reftone : Module {
@@ -69,13 +70,15 @@ struct ReftoneDisplay : TransparentWidget {
 	)
 	: _module(module)
 	, _size(size)
-	, _font(Font::load(assetPlugin(plugin, "res/fonts/inconsolata.ttf")))
+	, _font(Font::load(assetPlugin(plugin, "res/fonts/inconsolata-bold.ttf")))
 	{
 	}
 
 	void draw(NVGcontext* vg) override;
 	void drawBackground(NVGcontext* vg);
 	void drawText(NVGcontext* vg, const char* s, float x, float y, int size);
+	void drawCenteredText(NVGcontext* vg, const char* s, float y, int size);
+	float textRenderWidth(NVGcontext* vg, const char* s, int size);
 };
 
 void ReftoneDisplay::draw(NVGcontext* vg) {
@@ -88,7 +91,7 @@ void ReftoneDisplay::draw(NVGcontext* vg) {
 	snprintf(fine + 1, n - 1, "%02d", abs((int)(_module->_fine * 100)));
 
 	char frequency[20];
-	snprintf(frequency, n, "%0.0fhz", _module->_frequency);
+	snprintf(frequency, n, "%0.0f", _module->_frequency);
 
 	const char* pitch = NULL;
 	const char* sharpFlat = NULL;
@@ -150,24 +153,17 @@ void ReftoneDisplay::draw(NVGcontext* vg) {
 
 	drawBackground(vg);
 	if (sharpFlat) {
-		drawText(vg, pitch, 2, 17, 23);
-		drawText(vg, sharpFlat, 13, 13, 18);
-		drawText(vg, octave, 21, 17, 23);
+		drawText(vg, pitch, 3, 20, 28);
+		drawText(vg, sharpFlat, 16, 12, 16);
+		drawText(vg, octave, 22, 20, 28);
 	}
 	else {
-		drawText(vg, pitch, 5, 17, 23);
-		drawText(vg, octave, 18, 17, 23);
+		char s[n];
+		snprintf(s, n, "%s%s", pitch, octave);
+		drawCenteredText(vg, s, 20, 28);
 	}
-	drawText(vg, fine, 8, 30, 12);
-
-	int x = 2;
-	if (strlen(frequency) < 5) {
-		x += 4;
-	}
-	else if (strlen(frequency) < 6) {
-		x += 2;
-	}
-	drawText(vg, frequency, x, 42, 10);
+	drawCenteredText(vg, fine, 33, 16);
+	drawCenteredText(vg, frequency, 45, 16);
 }
 
 void ReftoneDisplay::drawBackground(NVGcontext* vg) {
@@ -189,6 +185,21 @@ void ReftoneDisplay::drawText(NVGcontext* vg, const char* s, float x, float y, i
 	nvgRestore(vg);
 }
 
+void ReftoneDisplay::drawCenteredText(NVGcontext* vg, const char* s, float y, int size) {
+	float x = textRenderWidth(vg, s, size);
+	x = std::max(0.0f, _size.x - x);
+	x /= 2.0;
+	drawText(vg, s, x, y, size);
+}
+
+float ReftoneDisplay::textRenderWidth(NVGcontext* vg, const char* s, int size) {
+	nvgSave(vg);
+	nvgFontSize(vg, size);
+	float w = nvgTextBounds(vg, 0, 0, s, NULL, NULL);
+	nvgRestore(vg);
+	return w - size/4.0;
+}
+
 
 ReftoneWidget::ReftoneWidget() {
 	Reftone *module = new Reftone();
@@ -203,8 +214,8 @@ ReftoneWidget::ReftoneWidget() {
 	}
 
 	{
-		auto inset = Vec(5.5, 18);
-		auto size = Vec(34, 48);
+		auto inset = Vec(3.5, 18);
+		auto size = Vec(38, 48);
 		auto display = new ReftoneDisplay(module, size);
 		display->box.pos = inset;
 		display->box.size = size;
