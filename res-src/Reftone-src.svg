@@ -140,9 +140,10 @@
   <polyline points="0,0 45,0 45,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none" />
 
   <!-- <polyline points="22.5,0 22.5,380" stroke-width="0.5" stroke="#0f0" /> -->
-  <!-- <rect width="45" height="10" fill="#0f0" transform="translate(0 68)" /> -->
-  <!-- <rect width="45" height="10" fill="#0f0" transform="translate(0 127)" /> -->
-  <!-- <rect width="45" height="10" fill="#0f0" transform="translate(0 177)" /> -->
+  <!-- <rect width="45" height="8" fill="#0f0" transform="translate(0 66)" /> -->
+  <!-- <rect width="45" height="8" fill="#0f0" transform="translate(0 120)" /> -->
+  <!-- <rect width="45" height="8" fill="#0f0" transform="translate(0 174)" /> -->
+  <!-- <rect width="45" height="8" fill="#0f0" transform="translate(0 227)" /> -->
 
   <g transform="rotate(-90) translate(-376 13)">
     <text class="title" font-size="7pt" letter-spacing="2.5px">REFTONE</text>
@@ -161,7 +162,7 @@
         <use id="PITCH_PARAM" xlink:href="#knob" transform="translate(0 0)" />
       </g>
 
-      <g transform="translate(0 55)">
+      <g transform="translate(0 54)">
         <text font-size="6pt" letter-spacing="2px" transform="translate(2.5 0)">OCTAVE</text>
         <use id="OCTAVE_PARAM" xlink:href="#knob" transform="translate(0 0)" />
       </g>
@@ -174,7 +175,7 @@
   </g>
 
   <use xlink:href="#knobguide-pitch" transform="translate(0 80)" />
-  <use xlink:href="#knobguide-octave" transform="translate(0 135)" />
+  <use xlink:href="#knobguide-octave" transform="translate(0 134)" />
   <use xlink:href="#knobguide-fine" transform="translate(0 188)" />
 
   <g transform="translate(0 235)">

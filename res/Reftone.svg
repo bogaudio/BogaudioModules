@@ -34,8 +34,8 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="468"
-     inkscape:window-height="449"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
      id="namedview190"
      showgrid="false"
      inkscape:zoom="0.62105263"
@@ -387,9 +387,10 @@
      d="M 0,0 H 45 V 380 H 0 V 0"
      id="polyline140" />
   <!-- <polyline points="22.5,0 22.5,380" stroke-width="0.5" stroke="#0f0" /> -->
-  <!-- <rect width="45" height="10" fill="#0f0" transform="translate(0 68)" /> -->
-  <!-- <rect width="45" height="10" fill="#0f0" transform="translate(0 127)" /> -->
-  <!-- <rect width="45" height="10" fill="#0f0" transform="translate(0 177)" /> -->
+  <!-- <rect width="45" height="8" fill="#0f0" transform="translate(0 66)" /> -->
+  <!-- <rect width="45" height="8" fill="#0f0" transform="translate(0 120)" /> -->
+  <!-- <rect width="45" height="8" fill="#0f0" transform="translate(0 174)" /> -->
+  <!-- <rect width="45" height="8" fill="#0f0" transform="translate(0 227)" /> -->
   <g
      aria-label="REFTONE"
      transform="rotate(-90)"
@@ -484,7 +485,7 @@
     </g>
     <g
        id="g158"
-       transform="translate(0,55)">
+       transform="translate(0,54)">
       <g
          aria-label="OCTAVE"
          transform="translate(2.5)"
@@ -691,7 +692,7 @@
   </g>
   <g
      id="use170"
-     transform="translate(0,135)">
+     transform="translate(0,134)">
     <g
        id="g267"
        transform="translate(22.5,22.5)">
