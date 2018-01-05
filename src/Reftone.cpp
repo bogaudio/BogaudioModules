@@ -58,10 +58,21 @@ void Reftone::step() {
 	_octave = clampf(params[OCTAVE_PARAM].value, 1.0, 8.0);
 	_fine = clampf(params[FINE_PARAM].value, -0.99, 0.99);
 	_frequency = f0*powf(twelfthRootTwo, 12*(_octave - f0Octave) + (_pitch - f0Pitch) + _fine);
-	_sine.setFrequency(_frequency);
 
-	outputs[CV_OUTPUT].value = log2f(_frequency / f0);
-	outputs[OUT_OUTPUT].value = _sine.next();
+	if (outputs[CV_OUTPUT].active) {
+		outputs[CV_OUTPUT].value = log2f(_frequency / f0);
+	}
+	else {
+		outputs[CV_OUTPUT].value = 0.0;
+	}
+
+	if (outputs[OUT_OUTPUT].active) {
+		_sine.setFrequency(_frequency);
+		outputs[OUT_OUTPUT].value = _sine.next();
+	}
+	else {
+		outputs[OUT_OUTPUT].value = 0.0;
+	}
 }
 
 
