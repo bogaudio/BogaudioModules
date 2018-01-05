@@ -37,7 +37,7 @@ struct Reftone : Module {
 
 	Reftone()
 	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
-	, _sine(engineGetSampleRate(), _frequency)
+	, _sine(engineGetSampleRate(), _frequency, 5.0)
 	{
 	}
 
@@ -61,7 +61,7 @@ void Reftone::step() {
 	_sine.setFrequency(_frequency);
 
 	outputs[CV_OUTPUT].value = log2f(_frequency / f0);
-	outputs[OUT_OUTPUT].value = _sine.next() * 5.0;
+	outputs[OUT_OUTPUT].value = _sine.next();
 }
 
 

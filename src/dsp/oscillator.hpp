@@ -35,16 +35,19 @@ struct OscillatorGenerator : Generator {
 };
 
 struct SineOscillator : OscillatorGenerator {
-	float _x = 1.0;
-	float _y = 0.0;
+	float _x;
+	float _y;
 	float _sinDeltaTheta;
 	float _cosDeltaTheta;
 
 	SineOscillator(
 		float sampleRate,
-		float frequency
+		float frequency,
+		float amplitude = 1.0
 	)
 	: OscillatorGenerator(sampleRate, frequency)
+	, _x(amplitude)
+	, _y(0.0)
 	{
 		updateDeltaTheta();
 	}
