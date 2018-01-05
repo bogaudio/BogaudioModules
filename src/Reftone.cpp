@@ -1,7 +1,4 @@
 
-#include <string.h>
-#include <algorithm>
-
 #include "BogaudioModules.hpp"
 #include "dsp/dsp.hpp"
 

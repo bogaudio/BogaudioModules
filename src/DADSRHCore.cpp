@@ -1,5 +1,4 @@
 
-#include <math.h>
 #include "DADSRHCore.hpp"
 
 void DADSRHCore::reset() {

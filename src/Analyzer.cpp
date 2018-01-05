@@ -1,8 +1,6 @@
 
-#include <algorithm>
-
-#include "dsp/dsp.hpp"
 #include "BogaudioModules.hpp"
+#include "dsp/dsp.hpp"
 
 using namespace bogaudio::dsp;
 

@@ -1,5 +1,4 @@
 
-#include <math.h>
 #include "ShaperCore.hpp"
 
 void ShaperCore::reset() {
