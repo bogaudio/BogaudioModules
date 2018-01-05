@@ -78,13 +78,7 @@ void DGate::step() {
 				if (stepStage(params[GATE_PARAM])) {
 					complete = true;
 					if (params[LOOP_PARAM].value <= 0.0 || _trigger.isHigh()) {
-						if (params[DELAY_PARAM].value > 0.0) {
-							_stage = DELAY_STAGE;
-						}
-						else {
-							// _stage = GATE_STAGE;
-							envelope = 1.0;
-						}
+						_stage = DELAY_STAGE;
 						_stageProgress = 0.0;
 					}
 					else {
