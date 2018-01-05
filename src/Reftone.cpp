@@ -1,7 +1,11 @@
 
 #include <string.h>
 #include <algorithm>
+
 #include "BogaudioModules.hpp"
+#include "dsp/dsp.hpp"
+
+using namespace bogaudio::dsp;
 
 struct Reftone : Module {
 	enum ParamsIds {
@@ -29,17 +33,20 @@ struct Reftone : Module {
 	int _octave = 4;
 	float _fine = 0.0;
 	float _frequency = 440.0;
+	SineOscillator _sine;
 
-	Reftone() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
-		reset();
+	Reftone()
+	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
+	, _sine(engineGetSampleRate(), _frequency)
+	{
 	}
 
-	virtual void reset() override;
+	virtual void onSampleRateChange() override {
+		_sine.setSampleRate(engineGetSampleRate());
+	}
+
 	virtual void step() override;
 };
-
-void Reftone::reset() {
-}
 
 void Reftone::step() {
 	const float f0 = 261.626;
@@ -51,9 +58,10 @@ void Reftone::step() {
 	_octave = clampf(params[OCTAVE_PARAM].value, 1.0, 8.0);
 	_fine = clampf(params[FINE_PARAM].value, -0.99, 0.99);
 	_frequency = f0*powf(twelfthRootTwo, 12*(_octave - f0Octave) + (_pitch - f0Pitch) + _fine);
+	_sine.setFrequency(_frequency);
 
 	outputs[CV_OUTPUT].value = log2f(_frequency / f0);
-	outputs[OUT_OUTPUT].value = 0.0; // FIXME: sine out.
+	outputs[OUT_OUTPUT].value = _sine.next() * 5.0;
 }
 
 
