@@ -77,7 +77,7 @@ void Reftone::step() {
 
 
 struct ReftoneDisplay : TransparentWidget {
-	const NVGcolor _textColor = nvgRGBA(0x00, 0xff, 0x00, 0xff);
+	const NVGcolor _textColor = nvgRGBA(0x00, 0xff, 0x00, 0xee);
 
 	Reftone* _module;
 	const Vec _size;
@@ -110,7 +110,7 @@ void ReftoneDisplay::draw(NVGcontext* vg) {
 	snprintf(fine + 1, n - 1, "%02d", abs((int)(_module->_fine * 100)));
 
 	char frequency[20];
-	snprintf(frequency, n, "%0.0f", _module->_frequency);
+	snprintf(frequency, n, _module->_frequency >= 1000.0 ? "%0.0f" : "%0.1f", _module->_frequency);
 
 	const char* pitch = NULL;
 	const char* sharpFlat = NULL;
@@ -181,8 +181,8 @@ void ReftoneDisplay::draw(NVGcontext* vg) {
 		snprintf(s, n, "%s%s", pitch, octave);
 		drawCenteredText(vg, s, 20, 28);
 	}
-	drawCenteredText(vg, fine, 33, 16);
-	drawCenteredText(vg, frequency, 45, 16);
+	drawCenteredText(vg, fine, 32.5, 14);
+	drawCenteredText(vg, frequency, 45, 14);
 }
 
 void ReftoneDisplay::drawBackground(NVGcontext* vg) {
@@ -212,11 +212,12 @@ void ReftoneDisplay::drawCenteredText(NVGcontext* vg, const char* s, float y, in
 }
 
 float ReftoneDisplay::textRenderWidth(NVGcontext* vg, const char* s, int size) {
-	nvgSave(vg);
-	nvgFontSize(vg, size);
-	float w = nvgTextBounds(vg, 0, 0, s, NULL, NULL);
-	nvgRestore(vg);
-	return w - size/4.0;
+	// nvgSave(vg);
+	// nvgFontSize(vg, size);
+	// float w = nvgTextBounds(vg, 0, 0, s, NULL, NULL);
+	// nvgRestore(vg);
+	// return w - size/4.0;
+	return strlen(s) * (size / 2.1);
 }
 
 
