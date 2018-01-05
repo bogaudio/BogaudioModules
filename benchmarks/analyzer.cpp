@@ -84,7 +84,8 @@ static void BM_SpectrumAnalyzerStep(benchmark::State& state) {
   int i = 0;
   for (auto _ : state) {
     sa.step(in[i]);
-    i = ++i % 8;
+    ++i;
+    i %= 8;
   }
 }
 BENCHMARK(BM_SpectrumAnalyzerStep);

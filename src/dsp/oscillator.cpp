@@ -30,6 +30,7 @@ float SineOscillator::_next() {
 		}
 	}
 	float out = _y[_step];
-	_step = ++_step % _n;
+	++_step;
+	_step %= _n;
 	return out;
 }
