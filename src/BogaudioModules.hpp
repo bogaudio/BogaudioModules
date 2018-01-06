@@ -10,8 +10,11 @@
 #include "widgets.hpp"
 
 using namespace rack;
+using namespace bogaudio;
 
 extern Plugin *plugin;
+
+namespace bogaudio {
 
 struct ShaperWidget : ModuleWidget {
 	ShaperWidget();
@@ -57,3 +60,5 @@ struct NoiseWidget : ModuleWidget {
 struct ReftoneWidget : ModuleWidget {
 	ReftoneWidget();
 };
+
+} // namespae bogaudio

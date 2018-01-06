@@ -1,6 +1,8 @@
 
 #include "BogaudioModules.hpp"
 
+namespace bogaudio {
+
 struct DADSRHCore {
 	enum Stage {
 		STOPPED_STAGE,
@@ -167,3 +169,5 @@ struct DADSRHCore {
 	float knobTime(const Param& knob, const Input* cv, bool slow, bool allowZero = false);
 	float knobAmount(const Param& knob, const Input* cv) const;
 };
+
+} // namespace bogaudio

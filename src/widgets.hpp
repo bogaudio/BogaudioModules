@@ -4,6 +4,7 @@ using namespace rack;
 
 extern Plugin *plugin;
 
+namespace bogaudio {
 
 struct Button18 : SVGSwitch, MomentarySwitch {
 	Button18() {
@@ -62,3 +63,5 @@ struct StatefulButton : ParamWidget, FramebufferWidget {
 struct StatefulButton9 : StatefulButton {
 	StatefulButton9() : StatefulButton("res/button_9px_0.svg", "res/button_9px_1.svg") {}
 };
+
+} // namespace bogaudio

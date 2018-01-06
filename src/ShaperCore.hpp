@@ -1,6 +1,8 @@
 
 #include "BogaudioModules.hpp"
 
+namespace bogaudio {
+
 struct ShaperCore {
 	enum Stage {
 		STOPPED_STAGE,
@@ -123,3 +125,5 @@ struct ShaperCore {
 	bool stepStage(const Param& knob, const Input* cv, bool slow);
 	float levelParam(const Param& knob, const Input* cv) const;
 };
+
+} // namespace bogaudio

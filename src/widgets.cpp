@@ -1,4 +1,7 @@
+
 #include "widgets.hpp"
+
+using namespace bogaudio;
 
 StatefulButton::StatefulButton(const char* offSVGPath, const char* onSVGPath) {
 	_svgWidget = new SVGWidget();
