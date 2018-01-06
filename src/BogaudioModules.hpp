@@ -61,4 +61,8 @@ struct ReftoneWidget : ModuleWidget {
 	ReftoneWidget();
 };
 
+struct SwitchWidget : ModuleWidget {
+	SwitchWidget();
+};
+
 } // namespae bogaudio
