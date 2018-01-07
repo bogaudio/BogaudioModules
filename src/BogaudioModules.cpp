@@ -25,4 +25,7 @@ void init(rack::Plugin *p) {
 	p->addModel(createModel<ReftoneWidget>("Bogaudio", "Bogaudio-Reftone", "Reftone", UTILITY_TAG));
 	p->addModel(createModel<SampleHoldWidget>("Bogaudio", "Bogaudio-SampleHold", "S&H", SAMPLE_AND_HOLD_TAG, DUAL_TAG, UTILITY_TAG));
 	p->addModel(createModel<SwitchWidget>("Bogaudio", "Bogaudio-Switch", "Switch", UTILITY_TAG));
+#ifdef EXPERIMENTAL
+	p->addModel(createModel<VCAWidget>("Bogaudio", "Bogaudio-VCA", "VCA", UTILITY_TAG, AMPLIFIER_TAG));
+#endif
 }
