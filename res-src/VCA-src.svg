@@ -27,46 +27,44 @@
       <g transform="translate(22.5 22.5)">
         <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f" />
         <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f" />
-        <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none" />
+        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none" />
       </g>
     </symbol>
 
     <symbol id="knobguide" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
-        <g transform="rotate(-240) translate(17 0)">
-          <!-- <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" /> -->
-          <text font-size="6.5pt" transform="translate(4 0) rotate(240) translate(-2.5 3)">0</text>
+        <g transform="rotate(-240) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(240) translate(-2.2 2.2)">0</text>
         </g>
-        <g transform="rotate(-210) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" />
+        <g transform="rotate(-210) translate(15 0)">
+          <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" />
         </g>
-        <g transform="rotate(-180) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" />
+        <g transform="rotate(-180) translate(15 0)">
+          <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" />
         </g>
-        <g transform="rotate(-150) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" />
+        <g transform="rotate(-150) translate(15 0)">
+          <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" />
         </g>
-        <g transform="rotate(-120) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" />
+        <g transform="rotate(-120) translate(15 0)">
+          <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" />
         </g>
-        <g transform="rotate(-90) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" />
+        <g transform="rotate(-90) translate(15 0)">
+          <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" />
         </g>
-        <g transform="rotate(-60) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" />
+        <g transform="rotate(-60) translate(15 0)">
+          <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" />
         </g>
-        <g transform="rotate(-30) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" />
+        <g transform="rotate(-30) translate(15 0)">
+          <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" />
         </g>
-        <g transform="rotate(0) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" />
+        <g transform="rotate(0) translate(15 0)">
+          <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" />
         </g>
-        <g transform="rotate(30) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" />
+        <g transform="rotate(30) translate(15 0)">
+          <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" />
         </g>
-        <g transform="rotate(60) translate(17 0)">
-          <!-- <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" /> -->
-          <text font-size="6.5pt" transform="translate(4 0) rotate(-60) translate(-5 3)">10</text>
+        <g transform="rotate(60) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(-60) translate(-4 2.2)">10</text>
         </g>
       </g>
     </symbol>
@@ -105,26 +103,47 @@
   </g>
 
   <g transform="translate(0 25)">
-    <text font-size="6pt" letter-spacing="2px" transform="translate(7 0)">LEVEL</text>
-    <use id="LEVEL_PARAM" xlink:href="#knob" transform="translate(0 1)" />
-    <use xlink:href="#knobguide" transform="translate(0 1)" />
+    <text font-size="6pt" letter-spacing="2px" transform="translate(7 0)">1</text>
+    <use id="LEVEL1_PARAM" xlink:href="#knob" transform="translate(0 -2)" />
+    <use xlink:href="#knobguide" transform="translate(0 -2)" />
   </g>
 
-  <g transform="translate(0 180)">
+  <g transform="translate(0 67)">
     <g transform="translate(5.5 0)">
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 98)" />
-      <rect width="34" height="105" rx="5" fill="#fafafa" />
-      <use id="EXP_INPUT" xlink:href="#input" transform="translate(5 3)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(9 35)">EXP</text>
-      <use id="LIN_INPUT" xlink:href="#input" transform="translate(5 38)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(10 70)">LIN</text>
-      <use id="IN_INPUT" xlink:href="#input" transform="translate(5 73)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
+      <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)" />
+      <rect width="34" height="70" rx="5" fill="#fafafa" />
+      <use id="CV1_INPUT" xlink:href="#input" transform="translate(5 3)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">CV</text>
+      <use id="IN1_INPUT" xlink:href="#input" transform="translate(5 38)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 70)">IN</text>
     </g>
-    <g transform="translate(5.5 111)">
+    <g transform="translate(5.5 76)">
       <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)" />
       <rect width="34" height="35" rx="5" fill="#bbb" />
-      <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)" />
+      <use id="OUT1_OUTPUT" xlink:href="#output" transform="translate(5 0)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 32)">OUT</text>
+    </g>
+  </g>
+
+  <g transform="translate(0 191)">
+    <text font-size="6pt" letter-spacing="2px" transform="translate(7 0)">2</text>
+    <use id="LEVEL2_PARAM" xlink:href="#knob" transform="translate(0 -2)" />
+    <use xlink:href="#knobguide" transform="translate(0 -2)" />
+  </g>
+
+  <g transform="translate(0 232)">
+    <g transform="translate(5.5 0)">
+      <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)" />
+      <rect width="34" height="70" rx="5" fill="#fafafa" />
+      <use id="CV2_INPUT" xlink:href="#input" transform="translate(5 3)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">CV</text>
+      <use id="IN2_INPUT" xlink:href="#input" transform="translate(5 38)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 70)">IN</text>
+    </g>
+    <g transform="translate(5.5 76)">
+      <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)" />
+      <rect width="34" height="35" rx="5" fill="#bbb" />
+      <use id="OUT2_OUTPUT" xlink:href="#output" transform="translate(5 0)" />
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 32)">OUT</text>
     </g>
   </g>
