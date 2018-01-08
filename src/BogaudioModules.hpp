@@ -39,6 +39,7 @@ struct AnalyzerWidget : ModuleWidget {
 
 struct DGateWidget : ModuleWidget {
 	DGateWidget();
+	virtual Menu* createContextMenu() override;
 };
 
 struct OffsetWidget : ModuleWidget {
