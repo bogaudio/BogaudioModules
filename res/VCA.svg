@@ -100,7 +100,7 @@
            id="g15">
           <text
              font-size="5.0pt"
-             transform="translate(2 0) rotate(240) translate(-2.2 2.2)"
+             transform="translate(3 0) rotate(240) translate(-2.2 2.2)"
              id="text13">0</text>
         </g>
         <g
@@ -189,7 +189,7 @@
            id="g55">
           <text
              font-size="5.0pt"
-             transform="translate(2 0) rotate(-60) translate(-4 2.2)"
+             transform="translate(3 0) rotate(-60) translate(-4 2.2)"
              id="text53">10</text>
         </g>
       </g>
@@ -312,13 +312,13 @@
      style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333"
      id="text94">
     <path
-       d="M 10.128906,25 H 9 v -4.351563 l -1.3476563,0.417969 v -0.917969 l 2.3554693,-0.84375 h 0.121093 z"
+       d="M 8.6289063,25 H 7.5 v -4.351563 l -1.3476563,0.417969 v -0.917969 l 2.3554688,-0.84375 h 0.1210938 z"
        style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333"
        id="path289" />
   </g>
   <g
      id="use96"
-     transform="translate(0,23)">
+     transform="translate(0,19)">
     <g
        id="g270"
        transform="translate(22.5,22.5)">
@@ -327,7 +327,7 @@
          transform="rotate(120,-7.5,4.330127)">
         <g
            aria-label="0"
-           transform="rotate(-120,2.7350853,-1.042265)"
+           transform="rotate(-120,3.2350853,-1.3309401)"
            style="font-weight:bold;font-size:6.66666651px;font-family:Roboto, sans-serif;fill:#333333"
            id="text226">
           <path
@@ -413,7 +413,7 @@
          transform="rotate(60,-7.5,12.990381)">
         <g
            aria-label="10"
-           transform="rotate(-60,4.9052559,0.63205081)"
+           transform="rotate(-60,5.4052559,-0.2339746)"
            style="font-weight:bold;font-size:6.66666651px;font-family:Roboto, sans-serif;fill:#333333"
            id="text266">
           <path
@@ -430,7 +430,7 @@
   </g>
   <g
      id="g108"
-     transform="translate(5.5,67)">
+     transform="translate(5.5,63)">
     <path
        transform="translate(0,63)"
        style="fill:#fafafa"
@@ -471,7 +471,7 @@
   </g>
   <g
      id="g116"
-     transform="translate(5.5,143)">
+     transform="translate(5.5,139)">
     <path
        transform="translate(0,-3)"
        style="fill:#bbbbbb"
@@ -505,13 +505,13 @@
      style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333"
      id="text120">
     <path
-       d="M 11.285156,191 H 7.3867187 v -0.77344 l 1.8398438,-1.96094 q 0.3789063,-0.41406 0.5585938,-0.72265 0.1835937,-0.3086 0.1835937,-0.58594 0,-0.37891 -0.1914062,-0.59375 -0.1914063,-0.21875 -0.546875,-0.21875 -0.3828125,0 -0.6054688,0.26563 -0.21875,0.26171 -0.21875,0.6914 H 7.2734375 q 0,-0.51953 0.2460937,-0.94922 0.25,-0.42968 0.7031251,-0.67187 0.453125,-0.2461 1.0273437,-0.2461 0.878906,0 1.363281,0.42188 0.488282,0.42187 0.488282,1.19141 0,0.42187 -0.21875,0.85937 -0.21875,0.4375 -0.75,1.01953 l -1.2929692,1.36328 h 2.4453122 z"
+       d="M 9.7851563,186 H 5.8867187 v -0.77344 l 1.8398438,-1.96094 q 0.3789063,-0.41406 0.5585938,-0.72265 0.1835937,-0.3086 0.1835937,-0.58594 0,-0.37891 -0.1914062,-0.59375 -0.1914063,-0.21875 -0.5468751,-0.21875 -0.3828125,0 -0.6054687,0.26563 -0.21875,0.26171 -0.21875,0.6914 H 5.7734375 q 0,-0.51953 0.2460937,-0.94922 0.25,-0.42968 0.703125,-0.67187 0.453125,-0.2461 1.0273438,-0.2461 0.8789063,0 1.3632813,0.42188 0.4882812,0.42187 0.4882812,1.19141 0,0.42187 -0.21875,0.85937 -0.21875,0.4375 -0.75,1.01953 l -1.2929688,1.36328 h 2.4453126 z"
        style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333"
        id="path330" />
   </g>
   <g
      id="use122"
-     transform="translate(0,189)">
+     transform="translate(0,180)">
     <g
        id="g222"
        transform="translate(22.5,22.5)">
@@ -520,7 +520,7 @@
          transform="rotate(120,-7.5,4.330127)">
         <g
            aria-label="0"
-           transform="rotate(-120,2.7350853,-1.042265)"
+           transform="rotate(-120,3.2350853,-1.3309401)"
            style="font-weight:bold;font-size:6.66666651px;font-family:Roboto, sans-serif;fill:#333333"
            id="text178">
           <path
@@ -606,7 +606,7 @@
          transform="rotate(60,-7.5,12.990381)">
         <g
            aria-label="10"
-           transform="rotate(-60,4.9052559,0.63205081)"
+           transform="rotate(-60,5.4052559,-0.2339746)"
            style="font-weight:bold;font-size:6.66666651px;font-family:Roboto, sans-serif;fill:#333333"
            id="text218">
           <path
@@ -623,7 +623,7 @@
   </g>
   <g
      id="g134"
-     transform="translate(5.5,232)">
+     transform="translate(5.5,224)">
     <path
        transform="translate(0,63)"
        style="fill:#fafafa"
@@ -664,7 +664,7 @@
   </g>
   <g
      id="g142"
-     transform="translate(5.5,308)">
+     transform="translate(5.5,300)">
     <path
        transform="translate(0,-3)"
        style="fill:#bbbbbb"

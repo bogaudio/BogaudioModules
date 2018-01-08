@@ -51,7 +51,7 @@
     </g>
   </g>
 
-  <g transform="translate(0 25)">
+  <g transform="translate(0 18)">
     <g transform="translate(7.5 0)">
       <rect width="34" height="168" rx="5" fill="#bbb" transform="translate(-2 0)" />
       <use id="WHITE_OUTPUT" xlink:href="#output" transform="translate(3 6)" />
@@ -65,7 +65,7 @@
     </g>
   </g>
 
-  <g transform="translate(0 240)">
+  <g transform="translate(0 242)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(13 -4)">ABS</text>
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 28)" />

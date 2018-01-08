@@ -34,7 +34,7 @@
     <symbol id="knobguide" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <g transform="rotate(-240) translate(15 0)">
-          <text font-size="5.0pt" transform="translate(2 0) rotate(240) translate(-2.2 2.2)">0</text>
+          <text font-size="5.0pt" transform="translate(3 0) rotate(240) translate(-2.2 2.2)">0</text>
         </g>
         <g transform="rotate(-210) translate(15 0)">
           <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" />
@@ -64,7 +64,7 @@
           <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" />
         </g>
         <g transform="rotate(60) translate(15 0)">
-          <text font-size="5.0pt" transform="translate(2 0) rotate(-60) translate(-4 2.2)">10</text>
+          <text font-size="5.0pt" transform="translate(3 0) rotate(-60) translate(-4 2.2)">10</text>
         </g>
       </g>
     </symbol>
@@ -103,12 +103,12 @@
   </g>
 
   <g transform="translate(0 25)">
-    <text font-size="6pt" letter-spacing="2px" transform="translate(7 0)">1</text>
-    <use id="LEVEL1_PARAM" xlink:href="#knob" transform="translate(0 -2)" />
-    <use xlink:href="#knobguide" transform="translate(0 -2)" />
+    <text font-size="6pt" letter-spacing="2px" transform="translate(5.5 0)">1</text>
+    <use id="LEVEL1_PARAM" xlink:href="#knob" transform="translate(0 -6)" />
+    <use xlink:href="#knobguide" transform="translate(0 -6)" />
   </g>
 
-  <g transform="translate(0 67)">
+  <g transform="translate(0 63)">
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)" />
       <rect width="34" height="70" rx="5" fill="#fafafa" />
@@ -125,13 +125,13 @@
     </g>
   </g>
 
-  <g transform="translate(0 191)">
-    <text font-size="6pt" letter-spacing="2px" transform="translate(7 0)">2</text>
-    <use id="LEVEL2_PARAM" xlink:href="#knob" transform="translate(0 -2)" />
-    <use xlink:href="#knobguide" transform="translate(0 -2)" />
+  <g transform="translate(0 186)">
+    <text font-size="6pt" letter-spacing="2px" transform="translate(5.5 0)">2</text>
+    <use id="LEVEL2_PARAM" xlink:href="#knob" transform="translate(0 -6)" />
+    <use xlink:href="#knobguide" transform="translate(0 -6)" />
   </g>
 
-  <g transform="translate(0 232)">
+  <g transform="translate(0 224)">
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)" />
       <rect width="34" height="70" rx="5" fill="#fafafa" />

@@ -58,7 +58,7 @@
   </g>
 
   <g transform="translate(0 25)">
-    <text font-size="6pt" letterspacing="2px" transform="translate(8 0)">1</text>
+    <text font-size="6pt" letterspacing="2px" transform="translate(5.5 0)">1</text>
     <!-- <polyline points="0,0 21,0" stroke-width="1" stroke="#333" transform="translate(14 -3)" /> -->
 
     <g transform="translate(0 5)">
@@ -88,7 +88,7 @@
   </g>
 
   <g transform="translate(0 185)">
-    <text font-size="6pt" letterspacing="2px" transform="translate(8 0)">2</text>
+    <text font-size="6pt" letterspacing="2px" transform="translate(4.4 0)">2</text>
 
     <g transform="translate(0 5)">
       <g transform="translate(5.5 0)">
