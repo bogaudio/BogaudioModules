@@ -60,6 +60,9 @@ struct DADSRHCore {
 	Light& _releaseShape2Light;
 	Light& _releaseShape3Light;
 
+	bool _firstStep = true;
+	bool& _triggerOnLoad;
+	bool& _shouldTriggerOnLoad;
 	SchmittTrigger _trigger;
 	PulseGenerator _triggerOuptutPulseGen;
 	Stage _stage;
@@ -111,7 +114,10 @@ struct DADSRHCore {
 		Light& decayShape3Light,
 		Light& releaseShape1Light,
 		Light& releaseShape2Light,
-		Light& releaseShape3Light
+		Light& releaseShape3Light,
+
+		bool& triggerOnLoad,
+		bool& shouldTriggerOnLoad
 	) : _delayParam(delayParam)
 	, _attackParam(attackParam)
 	, _decayParam(decayParam)
@@ -158,6 +164,9 @@ struct DADSRHCore {
 	, _releaseShape1Light(releaseShape1Light)
 	, _releaseShape2Light(releaseShape2Light)
 	, _releaseShape3Light(releaseShape3Light)
+
+	, _triggerOnLoad(triggerOnLoad)
+	, _shouldTriggerOnLoad(shouldTriggerOnLoad)
 	{
 		reset();
 	}

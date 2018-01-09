@@ -1,7 +1,7 @@
 
 #include "BogaudioModules.hpp"
 
-struct DGate : Module {
+struct DGate : TriggerOnLoadModule {
 	enum ParamsIds {
 		DELAY_PARAM,
 		GATE_PARAM,
@@ -34,41 +34,22 @@ struct DGate : Module {
 	};
 
 	bool _firstStep = true;
-	bool _loopOnLoad = true;
-	bool _shouldLoopOnLoad = true;
 	SchmittTrigger _trigger;
 	PulseGenerator _triggerOuptutPulseGen;
 	Stage _stage;
 	float _stageProgress;
 
-	DGate() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	DGate() : TriggerOnLoadModule(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 		reset();
 	}
 
-	virtual json_t* toJson() override;
-	virtual void fromJson(json_t* root) override;
 	virtual void reset() override;
 	virtual void step() override;
 	bool stepStage(Param& knob);
+	virtual bool shouldTriggerOnNextLoad() override {
+		return _stage != STOPPED_STAGE;
+	};
 };
-
-json_t* DGate::toJson() {
-	json_t* root = json_object();
-	json_object_set_new(root, "loopOnLoad", json_boolean(_loopOnLoad));
-	json_object_set_new(root, "shouldLoopOnLoad", json_boolean(_stage != STOPPED_STAGE));
-	return root;
-}
-
-void DGate::fromJson(json_t* root) {
-	json_t* loopOnLoad = json_object_get(root, "loopOnLoad");
-	if (loopOnLoad) {
-		_loopOnLoad = json_is_true(loopOnLoad);
-	}
-	json_t* shouldLoopOnLoad = json_object_get(root, "shouldLoopOnLoad");
-	if (shouldLoopOnLoad) {
-		_shouldLoopOnLoad = json_is_true(shouldLoopOnLoad);
-	}
-}
 
 void DGate::reset() {
 	_trigger.reset();
@@ -82,7 +63,7 @@ void DGate::step() {
 	bool complete = false;
 	if (
 		_trigger.process(params[TRIGGER_PARAM].value + inputs[TRIGGER_INPUT].value) ||
-		(_firstStep && _loopOnLoad && _shouldLoopOnLoad && params[LOOP_PARAM].value <= 0.0)
+		(_firstStep && _triggerOnLoad && _shouldTriggerOnLoad && params[LOOP_PARAM].value <= 0.0)
 	) {
 		_stage = DELAY_STAGE;
 		_stageProgress = 0.0;
@@ -184,26 +165,11 @@ DGateWidget::DGateWidget() {
 	addChild(createLight<TinyLight<GreenLight>>(gateLightPosition, module, DGate::GATE_LIGHT));
 }
 
-struct DGateWidgetAutoloopMenuItem : MenuItem {
-	DGate* _module;
-	DGateWidgetAutoloopMenuItem(DGate* module, const char* label) : _module(module) {
-		this->text = label;
-	}
-
-	void onAction(EventAction &e) override {
-		_module->_loopOnLoad = !_module->_loopOnLoad;
-	}
-
-	void step() override {
-		rightText = _module->_loopOnLoad ? "✔" : "";
-	}
-};
-
 Menu* DGateWidget::createContextMenu() {
 	DGate* dgate = dynamic_cast<DGate*>(module);
 	assert(dgate);
 	Menu* menu = ModuleWidget::createContextMenu();
 	menu->addChild(new MenuLabel());
-	menu->addChild(new DGateWidgetAutoloopMenuItem(dgate, "Loop on Patch Load"));
+	menu->addChild(new TriggerOnLoadMenuItem(dgate, "Resume Loop on Load"));
 	return menu;
 }

@@ -45,6 +45,9 @@ struct ShaperCore {
 	Light& _decayLight;
 	Light& _offLight;
 
+	bool _firstStep = true;
+	bool& _triggerOnLoad;
+	bool& _shouldTriggerOnLoad;
 	SchmittTrigger _trigger;
 	PulseGenerator _triggerOuptutPulseGen;
 	Stage _stage;
@@ -82,7 +85,10 @@ struct ShaperCore {
 		Light& attackLight,
 		Light& onLight,
 		Light& decayLight,
-		Light& offLight
+		Light& offLight,
+
+		bool& triggerOnLoad,
+		bool& shouldTriggerOnLoad
 	) : _attackParam(attackParam)
 	, _onParam(onParam)
 	, _decayParam(decayParam)
@@ -115,6 +121,9 @@ struct ShaperCore {
 	, _onLight(onLight)
 	, _decayLight(decayLight)
 	, _offLight(offLight)
+
+	, _triggerOnLoad(triggerOnLoad)
+	, _shouldTriggerOnLoad(shouldTriggerOnLoad)
 	{
 		reset();
 	}

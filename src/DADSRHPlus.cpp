@@ -1,7 +1,7 @@
 
 #include "DADSRHCore.hpp"
 
-struct DADSRHPlus : Module {
+struct DADSRHPlus : TriggerOnLoadModule {
 	enum ParamsIds {
 		DELAY_PARAM,
 		ATTACK_PARAM,
@@ -63,7 +63,7 @@ struct DADSRHPlus : Module {
 
 	DADSRHCore _core;
 
-	DADSRHPlus() : Module(
+	DADSRHPlus() : TriggerOnLoadModule(
 		NUM_PARAMS,
 		NUM_INPUTS,
 		NUM_OUTPUTS,
@@ -115,7 +115,10 @@ struct DADSRHPlus : Module {
 		lights[DECAY_SHAPE3_LIGHT],
 		lights[RELEASE_SHAPE1_LIGHT],
 		lights[RELEASE_SHAPE2_LIGHT],
-		lights[RELEASE_SHAPE3_LIGHT]
+		lights[RELEASE_SHAPE3_LIGHT],
+
+		_triggerOnLoad,
+		_shouldTriggerOnLoad
 	) {
 		reset();
 	}
@@ -126,6 +129,10 @@ struct DADSRHPlus : Module {
 
 	virtual void step() override {
 		_core.step();
+	}
+
+	virtual bool shouldTriggerOnNextLoad() override {
+		return _core._stage != _core.STOPPED_STAGE;
 	}
 };
 
@@ -241,4 +248,13 @@ DADSRHPlusWidget::DADSRHPlusWidget() {
 	addChild(createLight<TinyLight<GreenLight>>(releaseShape1LightPosition, module, DADSRHPlus::RELEASE_SHAPE1_LIGHT));
 	addChild(createLight<TinyLight<GreenLight>>(releaseShape2LightPosition, module, DADSRHPlus::RELEASE_SHAPE2_LIGHT));
 	addChild(createLight<TinyLight<GreenLight>>(releaseShape3LightPosition, module, DADSRHPlus::RELEASE_SHAPE3_LIGHT));
+}
+
+Menu* DADSRHPlusWidget::createContextMenu() {
+	DADSRHPlus* dadsrhPlus = dynamic_cast<DADSRHPlus*>(module);
+	assert(dadsrhPlus);
+	Menu* menu = ModuleWidget::createContextMenu();
+	menu->addChild(new MenuLabel());
+	menu->addChild(new TriggerOnLoadMenuItem(dadsrhPlus, "Resume Loop on Load"));
+	return menu;
 }

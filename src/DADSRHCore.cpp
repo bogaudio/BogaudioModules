@@ -16,7 +16,10 @@ void DADSRHCore::step() {
 	const float shapeInverseExponent = 0.5;
 
 	bool slow = _speedParam.value <= 0.5;
-	if (_trigger.process(_triggerParam.value + _triggerInput.value)) {
+	if (
+		_trigger.process(_triggerParam.value + _triggerInput.value) ||
+		(_firstStep && _triggerOnLoad && _shouldTriggerOnLoad && _loopParam.value < 0.5 && _modeParam.value < 0.5)
+	) {
 		if (_stage == STOPPED_STAGE || _retriggerParam.value <= 0.5) {
 			_stage = DELAY_STAGE;
 			_holdProgress = _stageProgress = _envelope = 0.0;
@@ -237,6 +240,8 @@ void DADSRHCore::step() {
 	_releaseShape1Light.value = (int)_releaseShapeParam.value == SHAPE1;
 	_releaseShape2Light.value = (int)_releaseShapeParam.value == SHAPE2;
 	_releaseShape3Light.value = (int)_releaseShapeParam.value == SHAPE3;
+
+	_firstStep = false;
 }
 
 float DADSRHCore::stepAmount(const Param& knob, const Input* cv, bool slow, bool allowZero) {

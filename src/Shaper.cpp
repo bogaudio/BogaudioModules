@@ -1,6 +1,7 @@
+
 #include "ShaperCore.hpp"
 
-struct Shaper : Module {
+struct Shaper : TriggerOnLoadModule {
 	enum ParamIds {
 		ATTACK_PARAM,
 		ON_PARAM,
@@ -38,7 +39,7 @@ struct Shaper : Module {
 
 	ShaperCore _core;
 
-	Shaper() : Module(
+	Shaper() : TriggerOnLoadModule(
 		NUM_PARAMS,
 		NUM_INPUTS,
 		NUM_OUTPUTS,
@@ -76,7 +77,10 @@ struct Shaper : Module {
 		lights[ATTACK_LIGHT],
 		lights[ON_LIGHT],
 		lights[DECAY_LIGHT],
-		lights[OFF_LIGHT]
+		lights[OFF_LIGHT],
+
+		_triggerOnLoad,
+		_shouldTriggerOnLoad
 	)
 	{
 		reset();
@@ -88,6 +92,10 @@ struct Shaper : Module {
 
 	virtual void step() override {
 		_core.step();
+	}
+
+	virtual bool shouldTriggerOnNextLoad() override {
+		return _core._stage != _core.STOPPED_STAGE;
 	}
 };
 
@@ -158,4 +166,13 @@ ShaperWidget::ShaperWidget() {
 	addChild(createLight<TinyLight<GreenLight>>(onLightPosition, module, Shaper::ON_LIGHT));
 	addChild(createLight<TinyLight<GreenLight>>(decayLightPosition, module, Shaper::DECAY_LIGHT));
 	addChild(createLight<TinyLight<GreenLight>>(offLightPosition, module, Shaper::OFF_LIGHT));
+}
+
+Menu* ShaperWidget::createContextMenu() {
+	Shaper* shaper = dynamic_cast<Shaper*>(module);
+	assert(shaper);
+	Menu* menu = ModuleWidget::createContextMenu();
+	menu->addChild(new MenuLabel());
+	menu->addChild(new TriggerOnLoadMenuItem(shaper, "Resume Loop on Load"));
+	return menu;
 }

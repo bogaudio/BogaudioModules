@@ -11,7 +11,10 @@ void ShaperCore::reset() {
 void ShaperCore::step() {
 	bool complete = false;
 	bool slow = _speedParam.value <= 0.0;
-	if (_trigger.process(_triggerParam.value + _triggerInput.value)) {
+	if (
+		_trigger.process(_triggerParam.value + _triggerInput.value) ||
+		(_firstStep && _triggerOnLoad && _shouldTriggerOnLoad && _loopParam.value <= 0.0)
+	) {
 		_stage = ATTACK_STAGE;
 		_stageProgress = 0.0;
 	}
@@ -109,6 +112,8 @@ void ShaperCore::step() {
 	_onLight.value = _stage == ON_STAGE;
 	_decayLight.value = _stage == DECAY_STAGE;
 	_offLight.value = _stage == OFF_STAGE;
+
+	_firstStep = false;
 }
 
 bool ShaperCore::stepStage(const Param& knob, const Input* cv, bool slow) {
