@@ -86,6 +86,10 @@ A collection of compact 3-HP utility modules.
 
 ![Utilities screenshot](doc/www/utilities.png)
 
+#### DGATE
+
+A triggerable gate with duration up to 10 seconds, with an optional pre-delay of up to 10 seconds.  A trigger pulse is output at END when a delay/gate cycle ends.  If the STOP/LOOP switch is set to LOOP, or if the trigger is high when the cycle ends, the cycle repeats.
+
 #### MANUAL
 
 A manual trigger/gate with 8 outputs.  A constant high value is sent from each output for as long as the TRIG button is held.
@@ -100,9 +104,31 @@ Additionally, NOISE has an absolute value circuit.  Patch audio into ABS to get 
 
 An offset and scaler.  The OFFSET and SCALE knobs have CV inputs.  With an input signal, output is `(input + offset) * scale`.  With no input connected, the output is constant in the value of `offset * scale`.
 
+#### REFTONE
+
+A tuner that outputs a selectable (Western, chromatic) pitch as CV (1v/octave, for controlling an oscillator) or as a pure sine tone.  The base pitch is selected with the PITCH and OCTAVE knobs, while the FINE knob allows the output to be fine-tuned up or down a full semitone.  The LED-style display indicates the selected pitch, octave and fine tuning (in cents), and the corresponding frequency (in hertz).
+
 #### S&H
 
 A dual sample-and-hold.  Sampling may be triggered by CV or button press.  If nothing is connected to an IN port, sampling for that channel is from an internal white noise source (range 0-10).
+
+#### SWITCH
+
+A signal-routing module with two through channels.  If the button is held or the GATE input is high, the HIGH input for each channel is routed to the corresponding OUT.  Otherwise, each LOW input is routed to each OUT.
+
+#### VCA
+
+A compact, two-channel VCA.
+
+## Other Notes
+
+#### <a name="resumeloop"></a> Loop Behavior on Patch Load
+
+Modules Shaper, Shaper+, DADSRH, DADSHR+ and DGATE can each be set to loop.  As of release 0.5.3, these modules will automatically being running (looping) when the patch loads if they were looping when the patch was saved.  (Previously, they would require a trigger to resume looping.)
+
+This behavior can be disabled on a per-module basis by right-clicking the module and unchecking "Resume Loop on Load".
+
+![Resume Loop on Load menu screenshot](doc/www/resumeloop.png)
 
 ## Issues and Feedback
 
