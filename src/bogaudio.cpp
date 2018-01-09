@@ -5,10 +5,10 @@ Plugin *plugin;
 void init(rack::Plugin *p) {
 	plugin = p;
 	p->slug = "Bogaudio";
-#if defined(VERSION)
-	p->version = TOSTRING(VERSION);
 	p->website = "https://github.com/bogaudio/BogaudioModules";
 	p->manual = "https://github.com/bogaudio/BogaudioModules/blob/master/README.md";
+#if defined(VERSION)
+	p->version = TOSTRING(VERSION);
 #elif defined(REQUIRE_VERSION)
 #error define VERSION=0.N.M to make dist
 #endif
