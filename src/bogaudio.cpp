@@ -1,4 +1,4 @@
-#include "BogaudioModules.hpp"
+#include "bogaudio.hpp"
 
 Plugin *plugin;
 

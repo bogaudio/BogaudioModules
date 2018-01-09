@@ -1,5 +1,5 @@
 
-#include "ShaperCore.hpp"
+#include "shaper_core.hpp"
 
 void ShaperCore::reset() {
 	_trigger.reset();

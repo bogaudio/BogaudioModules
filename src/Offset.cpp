@@ -1,5 +1,5 @@
 
-#include "BogaudioModules.hpp"
+#include "bogaudio.hpp"
 
 struct Offset : Module {
 	enum ParamIds {

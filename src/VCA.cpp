@@ -1,5 +1,5 @@
 
-#include "BogaudioModules.hpp"
+#include "bogaudio.hpp"
 
 struct VCA : Module {
 	enum ParamsIds {

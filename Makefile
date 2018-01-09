@@ -23,7 +23,7 @@ benchmark_clean:
 clean: benchmark_clean
 
 distprep:
-	rm -f build/src/BogaudioModules.cpp*
+	rm -f build/src/bogaudio.cpp*
 
 SLUG=Bogaudio
 dist: distprep

@@ -1,5 +1,5 @@
 
-#include "DADSRHCore.hpp"
+#include "dadsrh_core.hpp"
 
 void DADSRHCore::reset() {
 	_trigger.reset();

@@ -1,5 +1,5 @@
 
-#include "BogaudioModules.hpp"
+#include "bogaudio.hpp"
 #include "dsp/dsp.hpp"
 
 using namespace bogaudio::dsp;

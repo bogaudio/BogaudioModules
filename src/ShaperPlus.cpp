@@ -1,5 +1,5 @@
 
-#include "ShaperCore.hpp"
+#include "shaper_core.hpp"
 
 struct ShaperPlus : TriggerOnLoadModule {
 	enum ParamIds {
