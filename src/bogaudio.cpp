@@ -28,4 +28,8 @@ void init(rack::Plugin *p) {
 	p->addModel(createModel<SampleHoldWidget>("Bogaudio", "Bogaudio-SampleHold", "S&H", SAMPLE_AND_HOLD_TAG, DUAL_TAG, UTILITY_TAG));
 	p->addModel(createModel<SwitchWidget>("Bogaudio", "Bogaudio-Switch", "Switch", SWITCH_TAG, UTILITY_TAG));
 	p->addModel(createModel<VCAWidget>("Bogaudio", "Bogaudio-VCA", "VCA", AMPLIFIER_TAG, DUAL_TAG, UTILITY_TAG));
+
+#ifdef EXPERIMENTAL
+  p->addModel(createModel<TestWidget>("Bogaudio", "Bogaudio-Test", "Test"));
+#endif
 }

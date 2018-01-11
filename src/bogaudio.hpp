@@ -76,4 +76,9 @@ struct VCAWidget : ModuleWidget {
 	VCAWidget();
 };
 
+
+struct TestWidget : ModuleWidget {
+	TestWidget();
+};
+
 } // namespae bogaudio
