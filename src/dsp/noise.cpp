@@ -1,5 +1,5 @@
 
-#include "dsp.hpp"
+#include "noise.hpp"
 
 using namespace bogaudio::dsp;
 

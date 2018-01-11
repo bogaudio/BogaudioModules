@@ -1,7 +1,7 @@
 
 #include <benchmark/benchmark.h>
 
-#include <dsp.hpp>
+#include "dsp/buffer.hpp"
 
 using namespace bogaudio::dsp;
 

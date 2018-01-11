@@ -1,6 +1,6 @@
 #include <math.h>
 
-#include "dsp.hpp"
+#include "oscillator.hpp"
 
 using namespace bogaudio::dsp;
 

@@ -1,5 +1,8 @@
+#pragma once
 
 #include <random>
+
+#include "base.hpp"
 
 namespace bogaudio {
 namespace dsp {

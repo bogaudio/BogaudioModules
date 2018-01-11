@@ -1,3 +1,6 @@
+#pragma once
+
+#include "base.hpp"
 
 namespace bogaudio {
 namespace dsp {

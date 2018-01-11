@@ -1,7 +1,11 @@
+#pragma once
 
+#include "assert.h"
 #include <math.h>
 
 #include "ffft/FFTReal.h"
+
+#include "buffer.hpp"
 
 namespace bogaudio {
 namespace dsp {

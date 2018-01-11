@@ -1,6 +1,6 @@
 
 #include "bogaudio.hpp"
-#include "dsp/dsp.hpp"
+#include "dsp/filter.hpp"
 
 using namespace bogaudio::dsp;
 

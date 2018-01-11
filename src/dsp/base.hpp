@@ -1,3 +1,4 @@
+#pragma once
 
 namespace bogaudio {
 namespace dsp {

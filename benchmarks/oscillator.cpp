@@ -1,7 +1,7 @@
 
 #include <benchmark/benchmark.h>
 
-#include <dsp.hpp>
+#include "dsp/oscillator.hpp"
 
 using namespace bogaudio::dsp;
 

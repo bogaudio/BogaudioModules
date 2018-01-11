@@ -8,7 +8,7 @@ FLAGS += -DEXPERIMENTAL=1
 endif
 
 SOURCES = $(wildcard src/*.cpp src/dsp/*cpp)
-CXXFLAGS += -Isrc/dsp
+CXXFLAGS += -Isrc -Isrc/dsp
 
 include ../../plugin.mk
 
@@ -19,7 +19,7 @@ BENCHMARK_DEPS = $(patsubst %, build/%.d, $(BENCHMARK_SOURCES))
 benchmark: $(BENCHMARK_OBJECTS)
 	$(CXX) -o $@ $^ ../../build/src/util.cpp.o -lbenchmark -lpthread
 benchmark_clean:
-	rm -f benchmark
+	rm -f benchmark $(BENCHMARK_OBJECTS)
 clean: benchmark_clean
 
 distprep:

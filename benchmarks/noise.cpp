@@ -1,7 +1,7 @@
 
 #include <benchmark/benchmark.h>
 
-#include <dsp.hpp>
+#include "dsp/noise.hpp"
 
 using namespace bogaudio::dsp;
 

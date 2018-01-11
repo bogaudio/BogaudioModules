@@ -1,7 +1,7 @@
 
 #include <math.h>
 
-#include "dsp.hpp"
+#include "filter.hpp"
 
 using namespace bogaudio::dsp;
 
