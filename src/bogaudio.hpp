@@ -43,6 +43,10 @@ struct AnalyzerWidget : ModuleWidget {
 };
 
 
+struct DetuneWidget : ModuleWidget {
+	DetuneWidget();
+};
+
 struct DGateWidget : ModuleWidget {
 	DGateWidget();
 	virtual Menu* createContextMenu() override;
