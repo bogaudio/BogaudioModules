@@ -1,6 +1,7 @@
 
 #include "bogaudio.hpp"
 #include "dsp/oscillator.hpp"
+#include "dsp/pitch.hpp"
 
 using namespace bogaudio::dsp;
 
@@ -46,18 +47,17 @@ struct Reftone : Module {
 };
 
 void Reftone::step() {
-	const float f0 = 261.626;
-	const int f0Pitch = 0;
-	const int f0Octave = 4;
-	const float twelfthRootTwo = 1.0594630943592953;
+	// C4 -- the pitch.hpp reference frequency -- in knob values:
+	const int referencePitch = 0;
+	const int referenceOctave = 4;
 
 	_pitch = clampf(params[PITCH_PARAM].value, 0.0, 11.0);
 	_octave = clampf(params[OCTAVE_PARAM].value, 1.0, 8.0);
 	_fine = clampf(params[FINE_PARAM].value, -0.99, 0.99);
-	_frequency = f0*powf(twelfthRootTwo, 12*(_octave - f0Octave) + (_pitch - f0Pitch) + _fine);
+	_frequency = semitoneToFrequency(referenceSemitone + 12*(_octave - referenceOctave) + (_pitch - referencePitch) + _fine);
 
 	if (outputs[CV_OUTPUT].active) {
-		outputs[CV_OUTPUT].value = log2f(_frequency / f0);
+		outputs[CV_OUTPUT].value = frequencyToCV(_frequency);
 	}
 	else {
 		outputs[CV_OUTPUT].value = 0.0;
