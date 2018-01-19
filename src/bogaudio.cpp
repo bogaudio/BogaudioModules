@@ -34,5 +34,6 @@ void init(rack::Plugin *p) {
 
 #ifdef EXPERIMENTAL
 	p->addModel(createModel<TestWidget>("Bogaudio", "Bogaudio-Test", "Test"));
+	p->addModel(createModel<SixHPWidget>("Bogaudio", "Bogaudio-SixHP", "6HP"));
 #endif
 }

@@ -85,4 +85,8 @@ struct TestWidget : ModuleWidget {
 	TestWidget();
 };
 
+struct SixHPWidget : ModuleWidget {
+	SixHPWidget();
+};
+
 } // namespae bogaudio
