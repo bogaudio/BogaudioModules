@@ -22,6 +22,7 @@ void init(rack::Plugin *p) {
 
 #ifdef EXPERIMENTAL
 	p->addModel(createModel<DetuneWidget>("Bogaudio", "Bogaudio-Detune", "Detune"));
+	p->addModel(createModel<DoubleWidget>("Bogaudio", "Bogaudio-Double", "Double"));
 #endif
 	p->addModel(createModel<DGateWidget>("Bogaudio", "Bogaudio-DGate", "DGate", UTILITY_TAG));
 	p->addModel(createModel<ManualWidget>("Bogaudio", "Bogaudio-Manual", "Manual", UTILITY_TAG));
