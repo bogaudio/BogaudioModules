@@ -14,7 +14,7 @@ struct %MODULE%Widget : ModuleWidget {
 p->addModel(createModel<%MODULE%Widget>("%MANUFACTURER%", "%MANUFACTURER%-%MODULE%", "%MODULE%"));
 */
 
-#include "%PLUGIN%.hpp"
+#include "%HEADER%.hpp"
 
 struct %MODULE% : Module {
 %ENUMS%
@@ -146,7 +146,7 @@ end
 svg_file = File.absolute_path(svg_file)
 
 lines = `#{INKSCAPE} -z -S #{svg_file}`
-exit unless lines =~ /_(PARAM|INPUT|OUTPUT|LIGHT)/
+# FIXME: check for error.
 
 Widget = Struct.new(:id, :x, :y, :width, :height) do
   def to_s
@@ -259,7 +259,7 @@ end
 def make_screws(hp, comments, indent)
   i1 = indent ? "\t" : ''
   ss = []
-  if hp < 5
+  if hp <= 6
     ss << 'addChild(createScrew<ScrewSilver>(Vec(0, 0)));'
 	  ss << 'addChild(createScrew<ScrewSilver>(Vec(box.size.x - 15, 365)));'
   elsif hp <= 10
@@ -282,14 +282,21 @@ end
 def make_stub(widgets_by_type, template, options)
   comments = options[:comments]
   s = template
-  s = s.gsub(/%MODULE%/, options[:module])
-  s = s.gsub(/%PLUGIN%/, options[:plugin])
-  s = s.gsub(/%MANUFACTURER%/, options[:manufacturer])
-  s = s.gsub(/%HP%/, options[:hp])
-  s = s.gsub(/%ENUMS%/, make_enums(widgets_by_type, false, true))
-  s = s.gsub(/%SCREWS%/, make_screws(options[:hp].to_i, false, true))
-  s = s.gsub(/%POSITIONS%/, make_variables(widgets_by_type, 'positions', !comments, true))
-  s = s.gsub(/%CREATES%/, make_creates(widgets_by_type, false, true, options))
+  s.gsub!(/%MODULE%/, options[:module])
+  s.gsub!(/%PLUGIN%/, options[:plugin])
+  s.gsub!(/%HEADER%/, options[:plugin].downcase)
+  s.gsub!(/%MANUFACTURER%/, options[:manufacturer])
+  s.gsub!(/%HP%/, options[:hp])
+  s.gsub!(/%ENUMS%/, make_enums(widgets_by_type, false, true))
+  s.gsub!(/%SCREWS%/, make_screws(options[:hp].to_i, false, true))
+  if widgets_by_type.empty?
+    s.gsub!(/%POSITIONS%/, '')
+    s.gsub!(/%CREATES%/, '')
+  else
+    s.gsub!(/%POSITIONS%/, make_variables(widgets_by_type, 'positions', !comments, true))
+    s.gsub!(/%CREATES%/, make_creates(widgets_by_type, false, true, options))
+  end
+  s.sub!(/\s*\}\s*\Z/, "\n}\n")
   s = [make_comment(true, false), s, make_comment(false, false)].join("\n") if comments
   s
 end
