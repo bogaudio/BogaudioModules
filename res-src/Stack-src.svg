@@ -205,7 +205,7 @@
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 28)" />
       <rect width="34" height="35" rx="5" fill="#fafafa" />
       <use id="IN_INPUT" xlink:href="#input" transform="translate(5 3)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
+      <text font-size="5pt" letter-spacing="2px" transform="translate(3 35)">V/OCT</text>
     </g>
     <g transform="translate(5.5 41)">
       <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)" />
