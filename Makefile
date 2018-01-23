@@ -7,6 +7,10 @@ ifdef EXPERIMENTAL
 FLAGS += -DEXPERIMENTAL=1
 endif
 
+ifdef TEST
+FLAGS += -DTEST=1
+endif
+
 SOURCES = $(wildcard src/*.cpp src/dsp/*cpp)
 CXXFLAGS += -Isrc -Isrc/dsp
 

@@ -33,7 +33,7 @@ void init(rack::Plugin *p) {
 	p->addModel(createModel<SwitchWidget>("Bogaudio", "Bogaudio-Switch", "Switch", SWITCH_TAG, UTILITY_TAG));
 	p->addModel(createModel<VCAWidget>("Bogaudio", "Bogaudio-VCA", "VCA", AMPLIFIER_TAG, DUAL_TAG, UTILITY_TAG));
 
-#ifdef EXPERIMENTAL
+#ifdef TEST
 	p->addModel(createModel<TestWidget>("Bogaudio", "Bogaudio-Test", "Test"));
 	p->addModel(createModel<SixHPWidget>("Bogaudio", "Bogaudio-SixHP", "6HP"));
 #endif
