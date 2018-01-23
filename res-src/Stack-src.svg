@@ -213,7 +213,7 @@
       <use id="THRU_OUTPUT" xlink:href="#output" transform="translate(5 0)" />
       <text font-size="5pt" letter-spacing="2px" transform="translate(5.5 32)">THRU</text>
       <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 36)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 68)">OUT</text>
+      <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 68)">OUT</text>
     </g>
   </g>
 </svg>

@@ -63,7 +63,7 @@
     <g transform="translate(0 37)">
       <g transform="translate(5.5 0)">
         <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)" />
-        <rect width="34" height="252" rx="5" fill="#bbb" />
+        <rect width="34" height="250" rx="5" fill="#bbb" />
 
         <g transform="translate(2 2)">
           <use id="OUT1_OUTPUT" xlink:href="#output" transform="translate(3 0)" />

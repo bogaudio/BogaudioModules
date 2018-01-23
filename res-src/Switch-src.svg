@@ -87,7 +87,7 @@
         <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)" />
         <rect width="34" height="35" rx="5" fill="#bbb" />
         <use id="OUT1_OUTPUT" xlink:href="#output" transform="translate(5 0)" />
-        <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 32)">OUT</text>
+        <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
       </g>
     </g>
 
@@ -108,7 +108,7 @@
         <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)" />
         <rect width="34" height="35" rx="5" fill="#bbb" />
         <use id="OUT2_OUTPUT" xlink:href="#output" transform="translate(5 0)" />
-        <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 32)">OUT</text>
+        <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
       </g>
     </g>
   </g>
