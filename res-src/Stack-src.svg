@@ -158,13 +158,13 @@
   <polyline points="0,0 45,0 45,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none" />
 
   <!-- <polyline points="22.5,0 22.5,380" stroke-width="0.5" stroke="#0f0" /> -->
-  <!-- <rect width="45" height="6" fill="#0f0" transform="translate(0 63)" /> -->
-  <!-- <rect width="45" height="6" fill="#0f0" transform="translate(0 100)" /> -->
-  <!-- <rect width="45" height="6" fill="#0f0" transform="translate(0 141)" /> -->
-  <!-- <rect width="45" height="6" fill="#0f0" transform="translate(0 197)" /> -->
+  <!-- <rect width="45" height="8" fill="#0f0" transform="translate(0 63)" /> -->
+  <!-- <rect width="45" height="8" fill="#0f0" transform="translate(0 103)" /> -->
+  <!-- <rect width="45" height="8" fill="#0f0" transform="translate(0 146)" /> -->
+  <!-- <rect width="45" height="8" fill="#0f0" transform="translate(0 204)" /> -->
 
   <g transform="rotate(-90) translate(-376 13)">
-    <text class="title" font-size="7pt" letter-spacing="2.5px">DOUBLE</text>
+    <text class="title" font-size="7pt" letter-spacing="2.5px">STACK</text>
     <g transform="translate(0 12)">
       <text class="brand" font-size="7pt" letter-spacing="2px">BGA</text>
       <rect width="3.0" height="3" fill="#ddd" transform="translate(11.5 -5)" />
@@ -172,24 +172,24 @@
   </g>
 
   <g transform="translate(0 25)">
-    <text font-size="6pt" letter-spacing="2px" transform="translate(4 0)">INTRVL</text>
-    <use id="INTERVAL_PARAM" xlink:href="#knob" transform="translate(0 -3)" />
-    <use xlink:href="#knobguide-interval" transform="translate(0 -3)" />
+    <text font-size="6pt" letter-spacing="2px" transform="translate(6.4 0)">SEMIS</text>
+    <use id="SEMIS_PARAM" xlink:href="#knob" transform="translate(0 -2)" />
+    <use xlink:href="#knobguide-interval" transform="translate(0 -2)" />
   </g>
 
-  <g transform="translate(0 74)">
+  <g transform="translate(0 77)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(2.2 0)">OCTAVE</text>
-    <use id="OCTAVE_PARAM" xlink:href="#knob-small" transform="translate(0 -6)" />
-    <use xlink:href="#knobguide-octave" transform="translate(0 -6)" />
+    <use id="OCTAVE_PARAM" xlink:href="#knob-small" transform="translate(0 -5)" />
+    <use xlink:href="#knobguide-octave" transform="translate(0 -5)" />
   </g>
 
-  <g transform="translate(0 111)">
+  <g transform="translate(0 117)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(11 0)">FINE</text>
-    <use id="FINE_PARAM" xlink:href="#knob-small" transform="translate(0 -6)" />
-    <use xlink:href="#knobguide-fine" transform="translate(0 -6)" />
+    <use id="FINE_PARAM" xlink:href="#knob-small" transform="translate(0 -5)" />
+    <use xlink:href="#knobguide-fine" transform="translate(0 -5)" />
   </g>
 
-  <g transform="translate(5.5 146)">
+  <g transform="translate(5.5 154)">
     <rect width="34" height="50" rx="5" fill="#fafafa" />
     <use id="CV_INPUT" xlink:href="#input" transform="translate(5 3)" />
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
@@ -200,7 +200,7 @@
     </g>
   </g>
 
-  <g transform="translate(0 202)">
+  <g transform="translate(0 212)">
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 28)" />
       <rect width="34" height="35" rx="5" fill="#fafafa" />

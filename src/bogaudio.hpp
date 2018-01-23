@@ -47,8 +47,8 @@ struct DetuneWidget : ModuleWidget {
 	DetuneWidget();
 };
 
-struct DoubleWidget : ModuleWidget {
-	DoubleWidget();
+struct StackWidget : ModuleWidget {
+	StackWidget();
 };
 
 struct DGateWidget : ModuleWidget {
