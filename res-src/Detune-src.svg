@@ -100,9 +100,8 @@
   <polyline points="0,0 45,0 45,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none" />
 
   <!-- <polyline points="22.5,0 22.5,380" stroke-width="0.5" stroke="#0f0" /> -->
-  <!-- <rect width="45" height="15" fill="#0f0" transform="translate(0 63)" /> -->
-  <!-- <rect width="45" height="15" fill="#0f0" transform="translate(0 129)" /> -->
-  <!-- <rect width="45" height="7" fill="#0f0" transform="translate(0 159)" /> -->
+  <!-- <rect width="45" height="10" fill="#0f0" transform="translate(0 64)" /> -->
+  <!-- <rect width="45" height="10" fill="#0f0" transform="translate(0 125)" /> -->
 
   <g transform="rotate(-90) translate(-376 13)">
     <text class="title" font-size="7pt" letter-spacing="2.5px">DETUNE</text>
@@ -114,11 +113,11 @@
 
   <g transform="translate(0 25)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(5.5 0)">CENTS</text>
-    <use id="CENTS_PARAM" xlink:href="#knob" transform="translate(0 -3)" />
-    <use xlink:href="#knobguide" transform="translate(0 -3)" />
+    <use id="CENTS_PARAM" xlink:href="#knob" transform="translate(0 -2)" />
+    <use xlink:href="#knobguide" transform="translate(0 -2)" />
   </g>
 
-  <g transform="translate(5.5 73)">
+  <g transform="translate(5.5 74)">
     <rect width="34" height="51" rx="5" fill="#fafafa" />
     <use id="CV_INPUT" xlink:href="#input" transform="translate(5 3)" />
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
@@ -129,7 +128,7 @@
     </g>
   </g>
 
-  <g transform="translate(0 134)">
+  <g transform="translate(0 135)">
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 28)" />
       <rect width="34" height="35" rx="5" fill="#fafafa" />
