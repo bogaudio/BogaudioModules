@@ -129,7 +129,7 @@ DGateWidget::DGateWidget() {
 	{
 		SVGPanel *panel = new SVGPanel();
 		panel->box.size = box.size;
-		panel->setBackground(SVG::load(assetPlugin(plugin, "res/DGATE.svg")));
+		panel->setBackground(SVG::load(assetPlugin(plugin, "res/DGate.svg")));
 		addChild(panel);
 	}
 
