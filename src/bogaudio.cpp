@@ -21,13 +21,13 @@ void init(rack::Plugin *p) {
 	p->addModel(createModel<AnalyzerWidget>("Bogaudio", "Bogaudio-Analyzer", "Analyzer", VISUAL_TAG));
 
 	p->addModel(createModel<DetuneWidget>("Bogaudio", "Bogaudio-Detune", "Detune"));
-	p->addModel(createModel<StackWidget>("Bogaudio", "Bogaudio-Stack", "Stack"));
 	p->addModel(createModel<DGateWidget>("Bogaudio", "Bogaudio-DGate", "DGate", UTILITY_TAG));
 	p->addModel(createModel<ManualWidget>("Bogaudio", "Bogaudio-Manual", "Manual", UTILITY_TAG));
 	p->addModel(createModel<NoiseWidget>("Bogaudio", "Bogaudio-Noise", "Noise", NOISE_TAG, UTILITY_TAG));
 	p->addModel(createModel<OffsetWidget>("Bogaudio", "Bogaudio-Offset", "Offset", ATTENUATOR_TAG, UTILITY_TAG));
 	p->addModel(createModel<ReftoneWidget>("Bogaudio", "Bogaudio-Reftone", "Reftone", TUNER_TAG, UTILITY_TAG));
 	p->addModel(createModel<SampleHoldWidget>("Bogaudio", "Bogaudio-SampleHold", "S&H", SAMPLE_AND_HOLD_TAG, DUAL_TAG, UTILITY_TAG));
+	p->addModel(createModel<StackWidget>("Bogaudio", "Bogaudio-Stack", "Stack"));
 	p->addModel(createModel<SwitchWidget>("Bogaudio", "Bogaudio-Switch", "Switch", SWITCH_TAG, UTILITY_TAG));
 	p->addModel(createModel<VCAWidget>("Bogaudio", "Bogaudio-VCA", "VCA", AMPLIFIER_TAG, DUAL_TAG, UTILITY_TAG));
 
