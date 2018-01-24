@@ -69,16 +69,6 @@
       </g>
     </symbol>
 
-    <symbol id="button" viewBox="0 0 9px 9px">
-      <g transform="translate(4.5 4.5)">
-        <circle cx="0" cy="0" r="4.1" stroke-width="1" stroke="#00f" fill="#f00" />
-      </g>
-    </symbol>
-
-    <symbol id="light" viewBox="0 0 1.1px 1.1px">
-      <rect width="3.2" height="3.2" fill="#0f0" />
-    </symbol>
-
     <symbol id="input" viewBox="0 0 24px 24px">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0" />
@@ -101,7 +91,7 @@
 
   <!-- <polyline points="22.5,0 22.5,380" stroke-width="0.5" stroke="#0f0" /> -->
   <!-- <rect width="45" height="10" fill="#0f0" transform="translate(0 64)" /> -->
-  <!-- <rect width="45" height="10" fill="#0f0" transform="translate(0 125)" /> -->
+  <!-- <rect width="45" height="10" fill="#0f0" transform="translate(0 113)" /> -->
 
   <g transform="rotate(-90) translate(-376 13)">
     <text class="title" font-size="7pt" letter-spacing="2.5px">DETUNE</text>
@@ -118,17 +108,12 @@
   </g>
 
   <g transform="translate(5.5 74)">
-    <rect width="34" height="51" rx="5" fill="#fafafa" />
+    <rect width="34" height="39" rx="5" fill="#fafafa" />
     <use id="CV_INPUT" xlink:href="#input" transform="translate(5 3)" />
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
-    <g transform="translate(3 39)">
-      <text font-size="5pt" letter-spacing="1px" transform="translate(0 7)">QZ</text>
-      <use id="QUANTIZE_LIGHT" xlink:href="#light" transform="translate(12.5 3)" />
-      <use id="QUANTIZE_PARAM" xlink:href="#button" transform="translate(18.5 0)" />
-    </g>
   </g>
 
-  <g transform="translate(0 135)">
+  <g transform="translate(0 123)">
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 28)" />
       <rect width="34" height="35" rx="5" fill="#fafafa" />
