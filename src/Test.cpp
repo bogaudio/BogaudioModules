@@ -1,6 +1,25 @@
 
+// #define LPF 1
+// #define SINE 1
+// #define SQUARE 1
+#define SAW 1
+// #define TRIANGLE 1
+
 #include "bogaudio.hpp"
+#include "pitch.hpp"
+#ifdef LPF
 #include "dsp/filter.hpp"
+#elif SINE
+#include "dsp/oscillator.hpp"
+#elif SQUARE
+#include "dsp/oscillator.hpp"
+#elif SAW
+#include "dsp/oscillator.hpp"
+#elif TRIANGLE
+#include "dsp/oscillator.hpp"
+#else
+#error what
+#endif
 
 using namespace bogaudio::dsp;
 
@@ -27,33 +46,91 @@ struct Test : Module {
 		NUM_LIGHTS
 	};
 
+#ifdef LPF
 	LowPassFilter _lpf;
+#elif SINE
+	SineOscillator _sine;
+#elif SQUARE
+	SquareOscillator _square;
+#elif SAW
+	SawOscillator _saw;
+#elif TRIANGLE
+	TriangleOscillator _triangle;
+#endif
 
 	Test()
 	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
+#ifdef LPF
 	, _lpf(44100.0, 1000.0, 1.0)
+#elif SINE
+	, _sine(44100.0, 1000.0, 5.0)
+#elif SQUARE
+	, _square(44100.0, 1000.0, 5.0)
+#elif SAW
+	, _saw(44100.0, 1000.0, 5.0)
+#elif TRIANGLE
+	, _triangle(44100.0, 1000.0, 5.0)
+#endif
 	{
 		reset();
 	}
 
 	virtual void reset() override;
 	virtual void step() override;
+	float oscillatorPitch();
 };
 
 void Test::reset() {
 }
 
 void Test::step() {
-	if (!inputs[IN_INPUT].active || !outputs[OUT_OUTPUT].active) {
+	if (!outputs[OUT_OUTPUT].active) {
 		return;
 	}
 
+#ifdef LPF
+	if (!inputs[IN_INPUT].active) {
+		return;
+	}
 	_lpf.setParams(
 		engineGetSampleRate(),
 		10000.0 * clampf(params[PARAM1_PARAM].value, 0.0, 1.0),
 		std::max(10.0 * clampf(params[PARAM2_PARAM].value, 0.0, 1.0), 0.1)
 	);
 	outputs[OUT_OUTPUT].value = _lpf.next(inputs[IN_INPUT].value);
+
+#elif SINE
+	_sine.setSampleRate(engineGetSampleRate());
+	_sine.setFrequency(oscillatorPitch());
+	outputs[OUT_OUTPUT].value = _sine.next();
+
+#elif SQUARE
+	_square.setSampleRate(engineGetSampleRate());
+	_square.setFrequency(oscillatorPitch());
+	float pw = params[PARAM2_PARAM].value;
+	if (inputs[CV2_INPUT].active) {
+		pw += clampf(inputs[CV2_INPUT].value, -5.0, 5.0) / 10.0;
+	}
+	_square.setPulseWidth(pw);
+	outputs[OUT_OUTPUT].value = _square.next();
+
+#elif SAW
+	_saw.setSampleRate(engineGetSampleRate());
+	_saw.setFrequency(oscillatorPitch());
+	outputs[OUT_OUTPUT].value = _saw.next();
+
+#elif TRIANGLE
+	_triangle.setSampleRate(engineGetSampleRate());
+	_triangle.setFrequency(oscillatorPitch());
+	outputs[OUT_OUTPUT].value = _triangle.next();
+#endif
+}
+
+float Test::oscillatorPitch() {
+	if (inputs[CV1_INPUT].active) {
+		return cvToFrequency(inputs[CV1_INPUT].value);
+	}
+	return 10000.0 * powf(params[PARAM1_PARAM].value, 2.0);
 }
 
 

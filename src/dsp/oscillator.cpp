@@ -4,6 +4,21 @@
 
 using namespace bogaudio::dsp;
 
+void Phasor::updateDelta() {
+	float sampleTime = 1.0 / _sampleRate;
+	float cycleTime = 1.0 / _frequency;
+	_delta = (sampleTime / cycleTime) * 2.0f;
+}
+
+float Phasor::_next() {
+	_phase += _delta;
+	if (_phase >= 2.0) {
+		_phase -= 2.0;
+	}
+	return _phase;
+}
+
+
 void SineOscillator::updateDeltaTheta() {
 	float sampleTime = 1.0 / _sampleRate;
 	float cycleTime = 1.0 / _frequency;
@@ -29,8 +44,58 @@ float SineOscillator::_next() {
 			_x[i] = t[i];
 		}
 	}
+
 	float out = _y[_step];
 	++_step;
 	_step %= _n;
 	return out;
+}
+
+
+float SawOscillator::_next() {
+	Phasor::_next();
+	return _amplitude * (_phase - 1.0f);
+}
+
+
+void SquareOscillator::setPulseWidth(float pw) {
+	if (pw >= 0.9) {
+		_pulseWidth = 0.9;
+	}
+	else if (pw <= 0.1) {
+		_pulseWidth = 0.1;
+	}
+	else {
+		_pulseWidth = pw;
+	}
+	_pulseWidth *= 2.0;
+}
+
+float SquareOscillator::_next() {
+	Phasor::_next();
+	if (positive) {
+		if (_phase >= _pulseWidth) {
+			positive = false;
+			return _negativeAmplitude;
+		}
+		return _amplitude;
+	}
+	if (_phase < _pulseWidth) {
+		positive = true;
+		return _amplitude;
+	}
+	return _negativeAmplitude;
+}
+
+
+float TriangleOscillator::_next() {
+	Phasor::_next();
+	float p = 2.0 * _phase;
+	if (_phase < 0.5) {
+		return _amplitude * p;
+	}
+	if (_phase < 1.5) {
+		return _amplitude * (2.0 - p);
+	}
+	return _amplitude * (p - 4.0);
 }

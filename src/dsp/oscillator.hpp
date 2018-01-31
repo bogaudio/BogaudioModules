@@ -37,6 +37,31 @@ struct OscillatorGenerator : Generator {
 	virtual void _frequencyChanged() {}
 };
 
+struct Phasor : OscillatorGenerator {
+	float _delta;
+	double _phase = 0.0;
+
+	Phasor(
+		float sampleRate,
+		float frequency
+	)
+	: OscillatorGenerator(sampleRate, frequency)
+	{
+		updateDelta();
+	}
+
+	virtual void _sampleRateChanged() override {
+		updateDelta();
+	}
+
+	virtual void _frequencyChanged() override {
+		updateDelta();
+	}
+
+	void updateDelta();
+	virtual float _next() override;
+};
+
 struct SineOscillator : OscillatorGenerator {
 	static const int _n = 4;
 	int _step = 0;
@@ -68,6 +93,60 @@ struct SineOscillator : OscillatorGenerator {
 	}
 
 	void updateDeltaTheta();
+	virtual float _next() override;
+};
+
+struct SawOscillator : Phasor {
+	float _amplitude;
+
+	SawOscillator(
+		float sampleRate,
+		float frequency,
+		float amplitude = 1.0
+	)
+	: Phasor(sampleRate, frequency)
+	, _amplitude(amplitude)
+	{
+	}
+
+	virtual float _next() override;
+};
+
+struct SquareOscillator : Phasor {
+	float _amplitude;
+	float _negativeAmplitude;
+	float _pulseWidth = 0.5;
+	bool positive = true;
+
+	SquareOscillator(
+		float sampleRate,
+		float frequency,
+		float amplitude = 1.0
+	)
+	: Phasor(sampleRate, frequency)
+	, _amplitude(amplitude)
+	, _negativeAmplitude(-amplitude)
+	{
+	}
+
+	void setPulseWidth(float pw);
+
+	virtual float _next() override;
+};
+
+struct TriangleOscillator : Phasor {
+	float _amplitude;
+
+	TriangleOscillator(
+		float sampleRate,
+		float frequency,
+		float amplitude = 1.0
+	)
+	: Phasor(sampleRate, frequency)
+	, _amplitude(amplitude)
+	{
+	}
+
 	virtual float _next() override;
 };
 
