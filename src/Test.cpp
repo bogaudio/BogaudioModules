@@ -2,8 +2,9 @@
 // #define LPF 1
 // #define SINE 1
 // #define SQUARE 1
-#define SAW 1
+// #define SAW 1
 // #define TRIANGLE 1
+#define SINEBANK 1
 
 #include "bogaudio.hpp"
 #include "pitch.hpp"
@@ -16,6 +17,8 @@
 #elif SAW
 #include "dsp/oscillator.hpp"
 #elif TRIANGLE
+#include "dsp/oscillator.hpp"
+#elif SINEBANK
 #include "dsp/oscillator.hpp"
 #else
 #error what
@@ -56,6 +59,8 @@ struct Test : Module {
 	SawOscillator _saw;
 #elif TRIANGLE
 	TriangleOscillator _triangle;
+#elif SINEBANK
+	SineBankOscillator _sineBank;
 #endif
 
 	Test()
@@ -70,9 +75,49 @@ struct Test : Module {
 	, _saw(44100.0, 1000.0, 5.0)
 #elif TRIANGLE
 	, _triangle(44100.0, 1000.0, 5.0)
+#elif SINEBANK
+	, _sineBank(44101.0, 1000.0, 100)
 #endif
 	{
 		reset();
+
+#ifdef SINEBANK
+    const float baseAmplitude = 5.0;
+		switch (4) {
+			case 1: {
+				// saw
+				for (int i = 1, n = _sineBank.partialCount(); i <= n; ++i) {
+					_sineBank.setPartial(i, i, baseAmplitude / (float)i);
+				}
+				break;
+			}
+
+			case 2: {
+				// square
+				for (int i = 1, n = _sineBank.partialCount(); i <= n; ++i) {
+					_sineBank.setPartial(i, i, i % 2 == 1 ? baseAmplitude / (float)i : 0.0);
+				}
+				break;
+			}
+
+			case 3: {
+				// triangle
+				float phase = M_PI / 2.0;
+				for (int i = 1, n = _sineBank.partialCount(); i <= n; ++i) {
+					_sineBank.setPartial(i, i, i % 2 == 1 ? baseAmplitude / (float)(i * i) : 0.0, &phase);
+				}
+				break;
+			}
+
+			case 4: {
+				// saw-square
+				for (int i = 1, n = _sineBank.partialCount(); i <= n; ++i) {
+					_sineBank.setPartial(i, i, i % 2 == 1 ? baseAmplitude / (float)i : baseAmplitude / (float)(2 * i));
+				}
+				break;
+			}
+		}
+#endif
 	}
 
 	virtual void reset() override;
@@ -123,6 +168,11 @@ void Test::step() {
 	_triangle.setSampleRate(engineGetSampleRate());
 	_triangle.setFrequency(oscillatorPitch());
 	outputs[OUT_OUTPUT].value = _triangle.next();
+
+#elif SINEBANK
+	_sineBank.setSampleRate(engineGetSampleRate());
+	_sineBank.setFrequency(oscillatorPitch());
+	outputs[OUT_OUTPUT].value = _sineBank.next();
 #endif
 }
 

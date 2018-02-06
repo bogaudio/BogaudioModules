@@ -4,6 +4,10 @@
 
 using namespace bogaudio::dsp;
 
+void Phasor::setPhase(float phase) {
+	_phase = phase / (2.0 * M_PI);
+}
+
 void Phasor::updateDelta() {
 	float sampleTime = 1.0 / _sampleRate;
 	float cycleTime = 1.0 / _frequency;
@@ -19,13 +23,26 @@ float Phasor::_next() {
 }
 
 
-void SineOscillator::updateDeltaTheta() {
-	float sampleTime = 1.0 / _sampleRate;
-	float cycleTime = 1.0 / _frequency;
-	float _deltaTheta = (sampleTime / cycleTime) * 2.0f * M_PI;
+void SineOscillator::setPhase(float phase) {
+	float x = cosf(phase) * _amplitude;
+	float y = sinf(phase) * _amplitude;
 	for (int i = 0; i < _n; ++i) {
-		_sinDeltaTheta[i] = sinf((i + 1) * _deltaTheta);
-		_cosDeltaTheta[i] = cosf((i + 1) * _deltaTheta);
+		_x[i] = x;
+		_y[i] = y;
+	}
+	_step = 0;
+}
+
+void SineOscillator::updateDeltaTheta() {
+	float deltaTheta = 0.0f;
+	if (_sampleRate > 0.0f && _frequency > 0.0f) {
+		float sampleTime = 1.0f / _sampleRate;
+		float cycleTime = 1.0f / _frequency;
+		deltaTheta = (sampleTime / cycleTime) * 2.0f * M_PI;
+	}
+	for (int i = 0; i < _n; ++i) {
+		_sinDeltaTheta[i] = sinf((i + 1) * deltaTheta);
+		_cosDeltaTheta[i] = cosf((i + 1) * deltaTheta);
 	}
 }
 
@@ -98,4 +115,59 @@ float TriangleOscillator::_next() {
 		return _amplitude * (2.0 - p);
 	}
 	return _amplitude * (p - 4.0);
+}
+
+
+void SineBankOscillator::setPartial(int i, float frequencyRatio, float amplitude, float* phase) {
+	if (i > (int)_partials.size()) {
+		return;
+	}
+
+	if (amplitude > 0.01) {
+		_partials[i - 1].enabled = true;
+		_partials[i - 1].frequencyRatio = frequencyRatio;
+		_partials[i - 1].frequency = _frequency * frequencyRatio;
+		_partials[i - 1].sine.setFrequency(_frequency * frequencyRatio);
+		_partials[i - 1].amplitude = amplitude;
+		if (phase) {
+			_partials[i - 1].sine.setPhase(*phase);
+		}
+	}
+	else {
+		_partials[i - 1].enabled = false;
+	}
+}
+
+void SineBankOscillator::disablePartial(int i) {
+	if (i > (int)_partials.size()) {
+		return;
+	}
+	_partials[i - 1].enabled = false;
+}
+
+void SineBankOscillator::_sampleRateChanged() {
+	_maxPartialFrequency = _maxPartialFrequencySRRatio * _sampleRate;
+	for (Partial& p : _partials) {
+		p.sine.setSampleRate(_sampleRate);
+	}
+}
+
+void SineBankOscillator::_frequencyChanged() {
+	for (Partial& p : _partials) {
+		p.frequency = _frequency * p.frequencyRatio;
+		p.sine.setFrequency(_frequency * p.frequencyRatio);
+	}
+}
+
+float SineBankOscillator::_next() {
+	float next = 0.0;
+	for (Partial& p : _partials) {
+		if (p.enabled && p.frequency < _maxPartialFrequency) {
+			next += p.sine.next() * p.amplitude;
+		}
+		else {
+			p.sine.next(); // keep spinning, maintain phase.
+		}
+	}
+	return next;
 }

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <vector>
+
 #include "base.hpp"
 
 namespace bogaudio {
@@ -43,10 +45,12 @@ struct Phasor : OscillatorGenerator {
 
 	Phasor(
 		float sampleRate,
-		float frequency
+		float frequency,
+		float initialPhase = 0.0
 	)
 	: OscillatorGenerator(sampleRate, frequency)
 	{
+		setPhase(initialPhase);
 		updateDelta();
 	}
 
@@ -58,6 +62,7 @@ struct Phasor : OscillatorGenerator {
 		updateDelta();
 	}
 
+	void setPhase(float phase);
 	void updateDelta();
 	virtual float _next() override;
 };
@@ -70,17 +75,18 @@ struct SineOscillator : OscillatorGenerator {
 	float _sinDeltaTheta[_n];
 	float _cosDeltaTheta[_n];
 
+	float _amplitude;
+
 	SineOscillator(
 		float sampleRate,
 		float frequency,
-		float amplitude = 1.0
+		float amplitude = 1.0,
+		float initialPhase = 0.0
 	)
 	: OscillatorGenerator(sampleRate, frequency)
+	, _amplitude(amplitude)
 	{
-		for (int i = 0; i < _n; ++i) {
-			_x[i] = amplitude;
-			_y[i] = 0.0;
-		}
+		setPhase(initialPhase);
 		updateDeltaTheta();
 	}
 
@@ -92,6 +98,7 @@ struct SineOscillator : OscillatorGenerator {
 		updateDeltaTheta();
 	}
 
+	void setPhase(float phase);
 	void updateDeltaTheta();
 	virtual float _next() override;
 };
@@ -147,6 +154,53 @@ struct TriangleOscillator : Phasor {
 	{
 	}
 
+	virtual float _next() override;
+};
+
+struct SineBankOscillator : OscillatorGenerator {
+	struct Partial {
+		bool enabled;
+		float frequency;
+		float frequencyRatio;
+		float amplitude;
+		SineOscillator sine;
+
+		Partial()
+		: enabled(false)
+		, frequency(0.0)
+		, frequencyRatio(0.0)
+		, amplitude(0.0)
+		, sine(0.0, 0.0, 1.0)
+		{}
+	};
+
+	const float _maxPartialFrequencySRRatio = 0.48;
+	float _maxPartialFrequency;
+	std::vector<Partial> _partials;
+
+	SineBankOscillator(
+		float sampleRate,
+		float frequency,
+		int partialCount
+	)
+	: OscillatorGenerator(sampleRate, frequency)
+	, _maxPartialFrequency(0.0)
+	, _partials(partialCount)
+	{
+		_sampleRateChanged();
+		_frequencyChanged();
+	}
+
+	int partialCount() {
+		return _partials.size();
+	}
+
+	// one-based indexes.
+	void setPartial(int i, float frequencyRatio, float amplitude, float* phase = NULL);
+	void disablePartial(int i);
+
+	virtual void _sampleRateChanged() override;
+	virtual void _frequencyChanged() override;
 	virtual float _next() override;
 };
 
