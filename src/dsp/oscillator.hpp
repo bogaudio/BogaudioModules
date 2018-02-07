@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "base.hpp"
+#include "noise.hpp"
 
 namespace bogaudio {
 namespace dsp {
@@ -75,7 +76,8 @@ struct SineOscillator : OscillatorGenerator {
 	float _y[_n];
 	float _sinDeltaTheta[_n];
 	float _cosDeltaTheta[_n];
-
+	unsigned int _sampleCount = 0;
+	unsigned int _maxSamplesBeforeNormalize = 1000 + (Seeds::next() % 100);
 	float _amplitude;
 
 	SineOscillator(

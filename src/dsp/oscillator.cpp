@@ -1,5 +1,7 @@
 #include <math.h>
 
+#include "rack.hpp"
+
 #include "oscillator.hpp"
 
 using namespace bogaudio::dsp;
@@ -47,8 +49,20 @@ void SineOscillator::updateDeltaTheta() {
 }
 
 float SineOscillator::_next() {
+	++_sampleCount;
+
 	if (_step == 0) {
 		const int n1 = _n - 1;
+		if (_sampleCount > _maxSamplesBeforeNormalize) {
+			_sampleCount = 0;
+
+			// https://dsp.stackexchange.com/questions/124/how-to-implement-a-digital-oscillator
+			// float g = (3.0f - (_x[n1]*_x[n1] + _y[n1]*_y[n1])) / 2.0f; // would work if _amplitude was always 1.0?
+			float g = _amplitude / sqrtf(_x[n1]*_x[n1] + _y[n1]*_y[n1]);
+			_x[n1] *= g;
+			_y[n1] *= g;
+		}
+
 		for (int i = 0; i < n1; ++i) {
 			_x[i] = _x[n1];
 			_y[i] = _y[n1];
