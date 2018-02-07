@@ -72,8 +72,9 @@ float ChannelAnalyzer::getPeak() {
 		}
 		sum += bins[bin];
 	}
-	const float fWidth = _sampleRate / (float)(_size / (_size / _binsN));
-	return (maxBin + 1)*fWidth - fWidth/2.0;
+	const int bandsPerBin = _size / _binsN;
+	const float fWidth = (_sampleRate / 2.0f) / (float)(_size / bandsPerBin);
+	return (maxBin + 0.5f)*fWidth;
 }
 
 
@@ -323,7 +324,7 @@ void AnalyzerDisplay::drawHeader(NVGcontext* vg) {
 	char s[sLen];
 	int x = _insetAround + 2;
 
-	int n = snprintf(s, sLen, "Peaks (+/-%0.1f):", engineGetSampleRate() / (float)(_module->size() / (2 * _module->_binAverageN)));
+	int n = snprintf(s, sLen, "Peaks (+/-%0.1f):", (engineGetSampleRate() / 2.0f) / (float)(_module->size() / _module->_binAverageN));
 	drawText(vg, s, x, _insetTop + textY);
 	x += n * charPx - 0;
 
