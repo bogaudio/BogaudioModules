@@ -156,6 +156,8 @@ void SineBankOscillator::disablePartial(int i) {
 }
 
 void SineBankOscillator::_sampleRateChanged() {
+	Phasor::_sampleRateChanged();
+
 	_maxPartialFrequency = _maxPartialFrequencySRRatio * _sampleRate;
 	for (Partial& p : _partials) {
 		p.sine.setSampleRate(_sampleRate);
@@ -163,6 +165,8 @@ void SineBankOscillator::_sampleRateChanged() {
 }
 
 void SineBankOscillator::_frequencyChanged() {
+	Phasor::_frequencyChanged();
+
 	for (Partial& p : _partials) {
 		p.frequency = _frequency * p.frequencyRatio;
 		p.sine.setFrequency(_frequency * p.frequencyRatio);
@@ -170,6 +174,16 @@ void SineBankOscillator::_frequencyChanged() {
 }
 
 float SineBankOscillator::_next() {
+	Phasor::_next();
+
+	if (++_steps >= _stepsToReset) {
+		_steps = 0;
+		float phase = _phase * M_PI;
+		for (Partial& p : _partials) {
+			p.sine.setPhase(phase * p.frequencyRatio);
+		}
+	}
+
 	float next = 0.0;
 	for (Partial& p : _partials) {
 		if (p.enabled && p.frequency < _maxPartialFrequency) {

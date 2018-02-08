@@ -160,7 +160,7 @@ struct TriangleOscillator : Phasor {
 	virtual float _next() override;
 };
 
-struct SineBankOscillator : OscillatorGenerator {
+struct SineBankOscillator : Phasor {
 	struct Partial {
 		bool enabled;
 		float frequency;
@@ -178,7 +178,9 @@ struct SineBankOscillator : OscillatorGenerator {
 	};
 
 	const float _maxPartialFrequencySRRatio = 0.48;
-	float _maxPartialFrequency;
+	float _maxPartialFrequency = 0.0;
+	unsigned _steps = 0;
+	unsigned _stepsToReset = 1000;
 	std::vector<Partial> _partials;
 
 	SineBankOscillator(
@@ -186,8 +188,7 @@ struct SineBankOscillator : OscillatorGenerator {
 		float frequency,
 		int partialCount
 	)
-	: OscillatorGenerator(sampleRate, frequency)
-	, _maxPartialFrequency(0.0)
+	: Phasor(sampleRate, frequency)
 	, _partials(partialCount)
 	{
 		_sampleRateChanged();

@@ -83,11 +83,12 @@ struct Test : Module {
 
 #ifdef SINEBANK
     const float baseAmplitude = 5.0;
-		switch (4) {
+		switch (1) {
 			case 1: {
 				// saw
+				float phase = M_PI;
 				for (int i = 1, n = _sineBank.partialCount(); i <= n; ++i) {
-					_sineBank.setPartial(i, i, baseAmplitude / (float)i);
+					_sineBank.setPartial(i, i, baseAmplitude / (float)i, &phase);
 				}
 				break;
 			}
@@ -113,6 +114,17 @@ struct Test : Module {
 				// saw-square
 				for (int i = 1, n = _sineBank.partialCount(); i <= n; ++i) {
 					_sineBank.setPartial(i, i, i % 2 == 1 ? baseAmplitude / (float)i : baseAmplitude / (float)(2 * i));
+				}
+				break;
+			}
+
+			case 5: {
+				// ?
+				float phase = M_PI;
+				float multiple = 1.0;
+				for (int i = 1, n = _sineBank.partialCount(); i <= n; ++i) {
+					_sineBank.setPartial(i, multiple, baseAmplitude / multiple, &phase);
+					multiple += 0.9;
 				}
 				break;
 			}
