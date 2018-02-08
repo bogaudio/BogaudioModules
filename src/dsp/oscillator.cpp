@@ -7,13 +7,11 @@
 using namespace bogaudio::dsp;
 
 void Phasor::setPhase(float phase) {
-	_phase = phase / (2.0 * M_PI);
+	_phase = phase / M_PI;
 }
 
 void Phasor::updateDelta() {
-	float sampleTime = 1.0 / _sampleRate;
-	float cycleTime = 1.0 / _frequency;
-	_delta = (sampleTime / cycleTime) * 2.0f;
+	_delta = (_frequency / _sampleRate) * 2.0f;
 }
 
 float Phasor::_next() {
@@ -38,9 +36,7 @@ void SineOscillator::setPhase(float phase) {
 void SineOscillator::updateDeltaTheta() {
 	float deltaTheta = 0.0f;
 	if (_sampleRate > 0.0f && _frequency > 0.0f) {
-		float sampleTime = 1.0f / _sampleRate;
-		float cycleTime = 1.0f / _frequency;
-		deltaTheta = (sampleTime / cycleTime) * 2.0f * M_PI;
+		deltaTheta = (_frequency / _sampleRate) * 2.0f * M_PI;
 	}
 	for (int i = 0; i < _n; ++i) {
 		_sinDeltaTheta[i] = sinf((i + 1) * deltaTheta);
