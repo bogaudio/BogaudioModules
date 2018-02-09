@@ -17,13 +17,13 @@ struct OscillatorGenerator : Generator {
 		float sampleRate,
 		float frequency
 	)
-	: _sampleRate(sampleRate)
+	: _sampleRate(sampleRate > 1.0 ? sampleRate : 1.0)
 	, _frequency(frequency)
 	{
 	}
 
 	void setSampleRate(float sampleRate) {
-		if (_sampleRate != sampleRate) {
+		if (_sampleRate != sampleRate && sampleRate >= 1.0) {
 			_sampleRate = sampleRate;
 			_sampleRateChanged();
 		}

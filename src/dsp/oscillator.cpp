@@ -19,6 +19,9 @@ float Phasor::_next() {
 	if (_phase >= 2.0) {
 		_phase -= 2.0;
 	}
+	else if (_phase <= -2.0) {
+		_phase += 2.0;
+	}
 	return _phase;
 }
 
@@ -34,10 +37,7 @@ void SineOscillator::setPhase(float phase) {
 }
 
 void SineOscillator::updateDeltaTheta() {
-	float deltaTheta = 0.0f;
-	if (_sampleRate > 0.0f && _frequency > 0.0f) {
-		deltaTheta = (_frequency / _sampleRate) * 2.0f * M_PI;
-	}
+	float deltaTheta = (_frequency / _sampleRate) * 2.0f * M_PI;
 	for (int i = 0; i < _n; ++i) {
 		_sinDeltaTheta[i] = sinf((i + 1) * deltaTheta);
 		_cosDeltaTheta[i] = cosf((i + 1) * deltaTheta);
@@ -81,7 +81,7 @@ float SineOscillator::_next() {
 
 float SawOscillator::_next() {
 	Phasor::_next();
-	return _amplitude * (_phase - 1.0f);
+	return _amplitude * (abs(_phase) - 1.0f);
 }
 
 
@@ -100,14 +100,16 @@ void SquareOscillator::setPulseWidth(float pw) {
 
 float SquareOscillator::_next() {
 	Phasor::_next();
+
+	float phase = abs(_phase);
 	if (positive) {
-		if (_phase >= _pulseWidth) {
+		if (phase >= _pulseWidth) {
 			positive = false;
 			return _negativeAmplitude;
 		}
 		return _amplitude;
 	}
-	if (_phase < _pulseWidth) {
+	if (phase < _pulseWidth) {
 		positive = true;
 		return _amplitude;
 	}
@@ -117,11 +119,12 @@ float SquareOscillator::_next() {
 
 float TriangleOscillator::_next() {
 	Phasor::_next();
-	float p = 2.0 * _phase;
-	if (_phase < 0.5) {
+	float phase = abs(_phase);
+	float p = 2.0 * phase;
+	if (phase < 0.5) {
 		return _amplitude * p;
 	}
-	if (_phase < 1.5) {
+	if (phase < 1.5) {
 		return _amplitude * (2.0 - p);
 	}
 	return _amplitude * (p - 4.0);
