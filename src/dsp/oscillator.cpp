@@ -179,10 +179,10 @@ float SineBankOscillator::_next() {
 
 	if (++_steps >= _stepsToReset) {
 		_steps = 0;
-		float phase = _phase * M_PI;
-		for (Partial& p : _partials) {
-			p.sine.setPhase(phase * p.frequencyRatio);
-		}
+		// float phase = _phase * M_PI;
+		// for (Partial& p : _partials) {
+		// 	p.sine.setPhase(phase * p.frequencyRatio);
+		// }
 	}
 
 	float next = 0.0;
@@ -192,6 +192,63 @@ float SineBankOscillator::_next() {
 		}
 		else {
 			p.sine.next(); // keep spinning, maintain phase.
+		}
+	}
+	return next;
+}
+
+
+void SineBankOscillator2::setPartial(int i, float frequencyRatio, float amplitude, float* phase) {
+	if (i > (int)_partials.size()) {
+		return;
+	}
+
+	Partial& p = _partials[i - 1];
+	if (amplitude > 0.01) {
+		p.enabled = true;
+		p.frequencyRatio = frequencyRatio;
+		p.amplitude = amplitude;
+		if (phase) {
+			p.phase = _radiansToPhase(*phase);
+		}
+		_updatePartial(p);
+	}
+	else {
+		p.enabled = false;
+	}
+}
+
+void SineBankOscillator2::_updatePartial(Partial& p) {
+	const float d = (float)pow(10, resolution);
+	p.frequency = _frequency * p.frequencyRatio;
+	p.frequency *= d;
+	p.frequency = roundf(p.frequency);
+	p.deltaPhase = (phase_t)p.frequency;
+	p.frequency /= d;
+	// printf("UPDATE fr=%f f=%f dp=%u k=%d mp=%u f0=%f\n", p.frequencyRatio, p.frequency, p.deltaPhase, resolution, _maxPhase, _frequency);
+}
+
+void SineBankOscillator2::_sampleRateChanged() {
+	_maxPartialFrequency = _maxPartialFrequencySRRatio * _sampleRate;
+	_maxPhase = pow(10, resolution) * _sampleRate;
+	for (Partial& p : _partials) {
+		_updatePartial(p);
+		// need to scale phase?
+	}
+}
+
+void SineBankOscillator2::_frequencyChanged() {
+	for (Partial& p : _partials) {
+		_updatePartial(p);
+	}
+}
+
+float SineBankOscillator2::_next() {
+	float next = 0.0;
+	for (Partial& p : _partials) {
+		p.phase = (p.phase + p.deltaPhase) % _maxPhase;
+		if (p.enabled && p.frequencyRatio * _frequency < _maxPartialFrequency) {
+			next += p.amplitude * sinf(_phaseToRadians(p.phase));
 		}
 	}
 	return next;

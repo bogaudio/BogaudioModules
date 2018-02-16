@@ -56,3 +56,15 @@ static void BM_SineBankOscillator(benchmark::State& state) {
   }
 }
 BENCHMARK(BM_SineBankOscillator);
+
+static void BM_SineBankOscillator2(benchmark::State& state) {
+  SineBankOscillator2 o(44100.0, 440.0, 100);
+  for (int i = 1, n = o.partialCount(); i <= n; ++i) {
+    o.setPartial(i, i, 1.0 / (float)i);
+  }
+
+  for (auto _ : state) {
+    o.next();
+  }
+}
+BENCHMARK(BM_SineBankOscillator2);

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdlib.h>
+#include <stdint.h>
 #include <vector>
 
 #include "base.hpp"
@@ -203,6 +204,55 @@ struct SineBankOscillator : Phasor {
 	void setPartial(int i, float frequencyRatio, float amplitude, float* phase = NULL);
 	void disablePartial(int i);
 
+	virtual void _sampleRateChanged() override;
+	virtual void _frequencyChanged() override;
+	virtual float _next() override;
+};
+
+struct SineBankOscillator2 : OscillatorGenerator {
+	typedef uint64_t phase_t;
+	const int resolution = 2;
+
+	struct Partial {
+		bool enabled = false;
+		float frequencyRatio = 1.0;
+		float frequency = 1.0;
+		float amplitude = 1.0;
+		phase_t phase = 0.0;
+		phase_t deltaPhase = 0.0;
+	};
+
+	phase_t _maxPhase = 0.0;
+	const float _maxPartialFrequencySRRatio = 0.48;
+	float _maxPartialFrequency = 0.0;
+	std::vector<Partial> _partials;
+
+	SineBankOscillator2(
+		float sampleRate,
+		float frequency,
+		int partialCount
+	)
+	: OscillatorGenerator(sampleRate, frequency)
+	, _partials(partialCount)
+	{
+		_sampleRateChanged();
+		_frequencyChanged();
+	}
+
+	int partialCount() {
+		return _partials.size();
+	}
+
+	// one-based indexes.
+	void setPartial(int i, float frequencyRatio, float amplitude, float* phase = NULL);
+
+	void _updatePartial(Partial& p);
+	float _phaseToRadians(phase_t p) {
+		return (p / (float)_maxPhase) * 2.0f * M_PI;
+	}
+	phase_t _radiansToPhase(float r) {
+		return ((phase_t)roundf(_maxPhase * (r / (2.0f * M_PI)))) % _maxPhase;
+	}
 	virtual void _sampleRateChanged() override;
 	virtual void _frequencyChanged() override;
 	virtual float _next() override;
