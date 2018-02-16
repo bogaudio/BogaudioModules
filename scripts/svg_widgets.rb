@@ -6,12 +6,10 @@ OUTPUT_DECIMAL_PLACES=2
 class_template = <<TEMPLATE
 /*
 // For %PLUGIN%.hpp:
-struct %MODULE%Widget : ModuleWidget {
-	%MODULE%Widget();
-};
+extern Model* model%MODULE%;
 
 // For %PLUGIN%.cpp:
-p->addModel(createModel<%MODULE%Widget>("%MANUFACTURER%", "%MANUFACTURER%-%MODULE%", "%MODULE%"));
+p->addModel(model%MODULE%);
 */
 
 #include "%HEADER%.hpp"
@@ -20,23 +18,25 @@ struct %MODULE% : Module {
 %ENUMS%
 
 	%MODULE%() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
-		reset();
+		onReset();
 	}
 
-	virtual void reset() override;
+	virtual void onReset() override;
 	virtual void step() override;
 };
 
-void %MODULE%::reset() {
+void %MODULE%::onReset() {
 }
 
 void %MODULE%::step() {
 }
 
 
-%MODULE%Widget::%MODULE%Widget() {
-	%MODULE% *module = new %MODULE%();
-	setModule(module);
+struct %MODULE%Widget : ModuleWidget {
+	%MODULE%Widget(%MODULE%* module);
+};
+
+%MODULE%Widget::%MODULE%Widget(%MODULE%* module) : ModuleWidget(module) {
 	box.size = Vec(RACK_GRID_WIDTH * %HP%, RACK_GRID_HEIGHT);
 
 	{
@@ -52,6 +52,9 @@ void %MODULE%::step() {
 
 %CREATES%
 }
+
+
+Model* model%MODULE% = Model::create<%MODULE%, %MODULE%Widget>("%MANUFACTURER%", "%MANUFACTURER%-%MODULE%", "%MODULE%");
 TEMPLATE
 
 require 'optparse'
@@ -81,7 +84,7 @@ option_parser = OptionParser.new do |opts|
     options[:output] = 'variables'
     options[:variable_style] = v if v
   end
-  opts.on('--creates', 'Output createParam, etc, lines for each widget') do
+  opts.on('--creates', 'Output ParamWidget::create, etc, lines for each widget') do
     options[:output] = 'creates'
   end
   opts.on('--enums', 'Output param/input/output/light ID enums') do
@@ -227,16 +230,16 @@ def make_creates(widgets_by_type, comments, indent, options)
   i1 = indent ? "\t" : ''
   groups = []
   groups << (widgets_by_type['params'] || []).map do |w|
-    "#{i1}addParam(createParam<#{options[:param_class]}>(#{titleize(w.id)}Position, module, #{options[:module]}::#{w.id}, 0.0, 1.0, 0.0));"
+    "#{i1}addParam(ParamWidget::create<#{options[:param_class]}>(#{titleize(w.id)}Position, module, #{options[:module]}::#{w.id}, 0.0, 1.0, 0.0));"
   end.join("\n")
   groups << (widgets_by_type['inputs'] || []).map do |w|
-    "#{i1}addInput(createInput<#{options[:input_class]}>(#{titleize(w.id)}Position, module, #{options[:module]}::#{w.id}));"
+    "#{i1}addInput(Port::create<#{options[:input_class]}>(#{titleize(w.id)}Position, Port::INPUT, module, #{options[:module]}::#{w.id}));"
   end.join("\n")
   groups << (widgets_by_type['outputs'] || []).map do |w|
-    "#{i1}addOutput(createOutput<#{options[:output_class]}>(#{titleize(w.id)}Position, module, #{options[:module]}::#{w.id}));"
+    "#{i1}addOutput(Port::create<#{options[:output_class]}>(#{titleize(w.id)}Position, Port::OUTPUT, module, #{options[:module]}::#{w.id}));"
   end.join("\n")
   groups << (widgets_by_type['lights'] || []).map do |w|
-    "#{i1}addChild(createLight<#{options[:light_class]}>(#{titleize(w.id)}Position, module, #{options[:module]}::#{w.id}));"
+    "#{i1}addChild(ModuleLightWidget::create<#{options[:light_class]}>(#{titleize(w.id)}Position, module, #{options[:module]}::#{w.id}));"
   end.join("\n")
   s = groups.reject(&:empty?).join("\n\n")
   s = [make_comment(true, indent), s, make_comment(false, indent)].join("\n") if comments
@@ -260,18 +263,18 @@ def make_screws(hp, comments, indent)
   i1 = indent ? "\t" : ''
   ss = []
   if hp <= 6
-    ss << 'addChild(createScrew<ScrewSilver>(Vec(0, 0)));'
-	  ss << 'addChild(createScrew<ScrewSilver>(Vec(box.size.x - 15, 365)));'
+    ss << 'addChild(Widget::create<ScrewSilver>(Vec(0, 0)));'
+    ss << 'addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 15, 365)));'
   elsif hp <= 10
-    ss << 'addChild(createScrew<ScrewSilver>(Vec(0, 0)));'
-    ss << 'addChild(createScrew<ScrewSilver>(Vec(box.size.x - 15, 0)));'
-    ss << 'addChild(createScrew<ScrewSilver>(Vec(0, 365)));'
-    ss << 'addChild(createScrew<ScrewSilver>(Vec(box.size.x - 15, 365)));'
+    ss << 'addChild(Widget::create<ScrewSilver>(Vec(0, 0)));'
+    ss << 'addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 15, 0)));'
+    ss << 'addChild(Widget::create<ScrewSilver>(Vec(0, 365)));'
+    ss << 'addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 15, 365)));'
   else
-    ss << 'addChild(createScrew<ScrewSilver>(Vec(15, 0)));'
-    ss << 'addChild(createScrew<ScrewSilver>(Vec(box.size.x - 30, 0)));'
-    ss << 'addChild(createScrew<ScrewSilver>(Vec(15, 365)));'
-    ss << 'addChild(createScrew<ScrewSilver>(Vec(box.size.x - 30, 365)));'
+    ss << 'addChild(Widget::create<ScrewSilver>(Vec(15, 0)));'
+    ss << 'addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 30, 0)));'
+    ss << 'addChild(Widget::create<ScrewSilver>(Vec(15, 365)));'
+    ss << 'addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 30, 365)));'
   end
   ss = ss.map { |s| "#{i1}#{s}" }
   s = ss.join("\n")
@@ -296,7 +299,7 @@ def make_stub(widgets_by_type, template, options)
     s.gsub!(/%POSITIONS%/, make_variables(widgets_by_type, 'positions', !comments, true))
     s.gsub!(/%CREATES%/, make_creates(widgets_by_type, false, true, options))
   end
-  s.sub!(/\s*\}\s*\Z/, "\n}\n")
+  s.sub!(/\s*\}\s*(Model\*.*)\Z/, "\n}\n\n\n\\1")
   s = [make_comment(true, false), s, make_comment(false, false)].join("\n") if comments
   s
 end

@@ -256,9 +256,9 @@ float DADSRHCore::knobTime(const Param& knob, const Input* cv, bool slow, bool a
 }
 
 float DADSRHCore::knobAmount(const Param& knob, const Input* cv) const {
-	float v = clampf(knob.value, 0.0, 1.0);
+	float v = clamp(knob.value, 0.0f, 1.0f);
 	if (cv && cv->active) {
-		v *= clampf(cv->value / 10.0, 0.0, 1.0);
+		v *= clamp(cv->value / 10.0f, 0.0f, 1.0f);
 	}
 	return v;
 }

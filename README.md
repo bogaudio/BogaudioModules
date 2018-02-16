@@ -19,12 +19,14 @@ You'll need to be set up to build [VCV Rack](https://github.com/VCVRack/Rack) it
   make
   ```
 
-To build for a particular version of Rack, check out the corresponding branch:
+**The master branch of this module currently builds against Rack's master branch**, which has changes that will be released as Rack 0.6.
+
+To build Bogaudio for the current production version of Rack (0.5), check out the corresponding branch:
 
   ```
   (in plugins/BogaudioModules:)
   git fetch
-  git checkout v0.4.0
+  git checkout v0.5.x
   make
   ```
 

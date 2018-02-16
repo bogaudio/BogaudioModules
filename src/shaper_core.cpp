@@ -86,7 +86,7 @@ void ShaperCore::step() {
 	_signalOutput.value = signalLevel * envelope * _signalInput.normalize(0.0);
 
 	float envLevel = levelParam(_envParam, _envInput);
-	float envOutput = clampf(envLevel * envelope, 0.0, 10.0);
+	float envOutput = clamp(envLevel * envelope, 0.0f, 10.0f);
 	_envOutput.value = envOutput;
 	_invOutput.value = 10.0 - envOutput;
 
@@ -126,9 +126,9 @@ bool ShaperCore::stepStage(const Param& knob, const Input* cv, bool slow) {
 }
 
 float ShaperCore::levelParam(const Param& knob, const Input* cv) const {
-	float v = clampf(knob.value, 0.0, 1.0);
+	float v = clamp(knob.value, 0.0f, 1.0f);
 	if (cv && cv->active) {
-		v *= clampf(cv->value / 10.0, 0.0, 1.0);
+		v *= clamp(cv->value / 10.0f, 0.0f, 1.0f);
 	}
 	return v;
 }

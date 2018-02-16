@@ -1,7 +1,5 @@
 #include <math.h>
 
-#include "rack.hpp"
-
 #include "oscillator.hpp"
 
 using namespace bogaudio::dsp;

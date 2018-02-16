@@ -19,23 +19,25 @@ struct SixHP : Module {
 	};
 
 	SixHP() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
-		reset();
+		onReset();
 	}
 
-	virtual void reset() override;
+	virtual void onReset() override;
 	virtual void step() override;
 };
 
-void SixHP::reset() {
+void SixHP::onReset() {
 }
 
 void SixHP::step() {
 }
 
 
-SixHPWidget::SixHPWidget() {
-	SixHP *module = new SixHP();
-	setModule(module);
+struct SixHPWidget : ModuleWidget {
+	SixHPWidget(SixHP* module);
+};
+
+SixHPWidget::SixHPWidget(SixHP* module) : ModuleWidget(module) {
 	box.size = Vec(RACK_GRID_WIDTH * 6, RACK_GRID_HEIGHT);
 
 	{
@@ -45,6 +47,9 @@ SixHPWidget::SixHPWidget() {
 		addChild(panel);
 	}
 
-	addChild(createScrew<ScrewSilver>(Vec(0, 0)));
-	addChild(createScrew<ScrewSilver>(Vec(box.size.x - 15, 365)));
+	addChild(Widget::create<ScrewSilver>(Vec(0, 0)));
+	addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 15, 365)));
 }
+
+
+Model* modelSixHP = Model::create<SixHP, SixHPWidget>("Bogaudio", "Bogaudio-SixHP", "6HP");

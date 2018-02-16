@@ -16,81 +16,23 @@ using namespace bogaudio;
 
 extern Plugin *plugin;
 
-namespace bogaudio {
+extern Model* modelShaper;
+extern Model* modelShaperPlus;
+extern Model* modelDADSRH;
+extern Model* modelDADSRHPlus;
 
-struct ShaperWidget : ModuleWidget {
-	ShaperWidget();
-	virtual Menu* createContextMenu() override;
-};
+extern Model* modelAnalyzer;
 
-struct ShaperPlusWidget : ModuleWidget {
-	ShaperPlusWidget();
-	virtual Menu* createContextMenu() override;
-};
+extern Model* modelDetune;
+extern Model* modelDGate;
+extern Model* modelManual;
+extern Model* modelNoise;
+extern Model* modelOffset;
+extern Model* modelReftone;
+extern Model* modelSampleHold;
+extern Model* modelStack;
+extern Model* modelSwitch;
+extern Model* modelVCA;
 
-struct DADSRHWidget : ModuleWidget {
-	DADSRHWidget();
-	virtual Menu* createContextMenu() override;
-};
-
-struct DADSRHPlusWidget : ModuleWidget {
-	DADSRHPlusWidget();
-	virtual Menu* createContextMenu() override;
-};
-
-struct AnalyzerWidget : ModuleWidget {
-	AnalyzerWidget();
-};
-
-
-struct DetuneWidget : ModuleWidget {
-	DetuneWidget();
-};
-
-struct StackWidget : ModuleWidget {
-	StackWidget();
-};
-
-struct DGateWidget : ModuleWidget {
-	DGateWidget();
-	virtual Menu* createContextMenu() override;
-};
-
-struct OffsetWidget : ModuleWidget {
-	OffsetWidget();
-};
-
-struct SampleHoldWidget : ModuleWidget {
-	SampleHoldWidget();
-};
-
-struct ManualWidget : ModuleWidget {
-	ManualWidget();
-};
-
-struct NoiseWidget : ModuleWidget {
-	NoiseWidget();
-};
-
-struct ReftoneWidget : ModuleWidget {
-	ReftoneWidget();
-};
-
-struct SwitchWidget : ModuleWidget {
-	SwitchWidget();
-};
-
-struct VCAWidget : ModuleWidget {
-	VCAWidget();
-};
-
-
-struct TestWidget : ModuleWidget {
-	TestWidget();
-};
-
-struct SixHPWidget : ModuleWidget {
-	SixHPWidget();
-};
-
-} // namespae bogaudio
+extern Model* modelTest;
+extern Model* modelSixHP;
