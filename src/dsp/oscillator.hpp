@@ -71,39 +71,34 @@ struct Phasor : OscillatorGenerator {
 };
 
 struct SineOscillator : OscillatorGenerator {
-	static const int _n = 4;
-	int _step = 0;
-	float _x[_n];
-	float _y[_n];
-	float _sinDeltaTheta[_n];
-	float _cosDeltaTheta[_n];
-	unsigned int _sampleCount = 0;
-	unsigned int _maxSamplesBeforeNormalize = 1000 + (Seeds::next() % 100);
-	float _amplitude;
+	double _k1, _k2;
+	double _x;
+	double _y;
+	double _amplitude;
 
 	SineOscillator(
-		float sampleRate,
-		float frequency,
-		float amplitude = 1.0,
-		float initialPhase = 0.0
+		double sampleRate,
+		double frequency,
+		double amplitude = 1.0,
+		double initialPhase = 0.0
 	)
 	: OscillatorGenerator(sampleRate, frequency)
 	, _amplitude(amplitude)
 	{
 		setPhase(initialPhase);
-		updateDeltaTheta();
+		update();
 	}
 
 	virtual void _sampleRateChanged() override {
-		updateDeltaTheta();
+		update();
 	}
 
 	virtual void _frequencyChanged() override {
-		updateDeltaTheta();
+		update();
 	}
 
-	void setPhase(float phase);
-	void updateDeltaTheta();
+	void setPhase(double phase);
+	void update();
 	virtual float _next() override;
 };
 
@@ -161,7 +156,7 @@ struct TriangleOscillator : Phasor {
 	virtual float _next() override;
 };
 
-struct SineBankOscillator : Phasor {
+struct SineBankOscillator : OscillatorGenerator {
 	struct Partial {
 		bool enabled;
 		float frequency;
@@ -180,54 +175,9 @@ struct SineBankOscillator : Phasor {
 
 	const float _maxPartialFrequencySRRatio = 0.48;
 	float _maxPartialFrequency = 0.0;
-	unsigned _steps = 0;
-	unsigned _stepsToReset = 1000;
 	std::vector<Partial> _partials;
 
 	SineBankOscillator(
-		float sampleRate,
-		float frequency,
-		int partialCount
-	)
-	: Phasor(sampleRate, frequency)
-	, _partials(partialCount)
-	{
-		_sampleRateChanged();
-		_frequencyChanged();
-	}
-
-	int partialCount() {
-		return _partials.size();
-	}
-
-	// one-based indexes.
-	void setPartial(int i, float frequencyRatio, float amplitude, float* phase = NULL);
-	void disablePartial(int i);
-
-	virtual void _sampleRateChanged() override;
-	virtual void _frequencyChanged() override;
-	virtual float _next() override;
-};
-
-struct SineBankOscillator2 : OscillatorGenerator {
-	typedef uint64_t phase_t;
-	const int resolution = 2;
-
-	struct Partial {
-		bool enabled = false;
-		float frequencyRatio = 1.0;
-		float frequency = 1.0;
-		float amplitude = 1.0;
-		phase_t phase = 0.0;
-		phase_t deltaPhase = 0.0;
-	};
-
-	phase_t _maxPhase = 0.0;
-	const float _maxPartialFrequencySRRatio = 0.48;
-	float _maxPartialFrequency = 0.0;
-	std::vector<Partial> _partials;
-
-	SineBankOscillator2(
 		float sampleRate,
 		float frequency,
 		int partialCount
@@ -243,16 +193,9 @@ struct SineBankOscillator2 : OscillatorGenerator {
 		return _partials.size();
 	}
 
-	// one-based indexes.
+	// one-based index.
 	void setPartial(int i, float frequencyRatio, float amplitude, float* phase = NULL);
 
-	void _updatePartial(Partial& p);
-	float _phaseToRadians(phase_t p) {
-		return (p / (float)_maxPhase) * 2.0f * M_PI;
-	}
-	phase_t _radiansToPhase(float r) {
-		return ((phase_t)roundf(_maxPhase * (r / (2.0f * M_PI)))) % _maxPhase;
-	}
 	virtual void _sampleRateChanged() override;
 	virtual void _frequencyChanged() override;
 	virtual float _next() override;

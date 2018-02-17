@@ -62,7 +62,6 @@ struct Test : Module {
 	TriangleOscillator _triangle;
 #elif SINEBANK
 	SineBankOscillator _sineBank;
-	SineBankOscillator2 _sineBank2;
 #endif
 
 	Test()
@@ -79,7 +78,6 @@ struct Test : Module {
 	, _triangle(44100.0, 1000.0, 5.0)
 #elif SINEBANK
 	, _sineBank(44101.0, 1000.0, 50)
-	, _sineBank2(44101.0, 1000.0, 50)
 #endif
 	{
 		onReset();
@@ -93,9 +91,6 @@ struct Test : Module {
 				for (int i = 1, n = _sineBank.partialCount(); i <= n; ++i) {
 					_sineBank.setPartial(i, i, baseAmplitude / (float)i, &phase);
 				}
-				for (int i = 1, n = _sineBank2.partialCount(); i <= n; ++i) {
-					_sineBank2.setPartial(i, i, baseAmplitude / (float)i, &phase);
-				}
 				break;
 			}
 
@@ -104,20 +99,24 @@ struct Test : Module {
 				for (int i = 1, n = _sineBank.partialCount(); i <= n; ++i) {
 					_sineBank.setPartial(i, i, i % 2 == 1 ? baseAmplitude / (float)i : 0.0);
 				}
-				for (int i = 1, n = _sineBank2.partialCount(); i <= n; ++i) {
-					_sineBank2.setPartial(i, i, i % 2 == 1 ? baseAmplitude / (float)i : 0.0);
-				}
 				break;
 			}
 
 			case 3: {
 				// triangle
-				float phase = M_PI / 2.0;
-				for (int i = 1, n = _sineBank.partialCount(); i <= n; ++i) {
-					_sineBank.setPartial(i, i, i % 2 == 1 ? baseAmplitude / (float)(i * i) : 0.0, &phase);
+				if (false) {
+					float phase = M_PI / 2.0;
+					for (int i = 1, n = _sineBank.partialCount(); i <= n; ++i) {
+						_sineBank.setPartial(i, i, i % 2 == 1 ? baseAmplitude / (float)(i * i) : 0.0, &phase);
+					}
 				}
-				for (int i = 1, n = _sineBank2.partialCount(); i <= n; ++i) {
-					_sineBank2.setPartial(i, i, i % 2 == 1 ? baseAmplitude / (float)(i * i) : 0.0, &phase);
+				else {
+					float phase = 0.0f;
+					_sineBank.setPartial(1, 1.0f, baseAmplitude, &phase);
+					for (int i = 2, n = _sineBank.partialCount(); i < n; ++i) {
+						float k = 2*i - 1;
+						_sineBank.setPartial(i, k, powf(-1.0f, k) * baseAmplitude/(k * k), &phase);
+					}
 				}
 				break;
 			}
@@ -127,9 +126,6 @@ struct Test : Module {
 				for (int i = 1, n = _sineBank.partialCount(); i <= n; ++i) {
 					_sineBank.setPartial(i, i, i % 2 == 1 ? baseAmplitude / (float)i : baseAmplitude / (float)(2 * i));
 				}
-				for (int i = 1, n = _sineBank2.partialCount(); i <= n; ++i) {
-					_sineBank2.setPartial(i, i, i % 2 == 1 ? baseAmplitude / (float)i : baseAmplitude / (float)(2 * i));
-				}
 				break;
 			}
 
@@ -138,19 +134,10 @@ struct Test : Module {
 				float phase = 0.0;
 				float factor = 0.717;
 				float factor2 = factor;
-				{
-					float multiple = 1.0;
-					for (int i = 1, n = _sineBank.partialCount(); i <= n; ++i) {
-						_sineBank.setPartial(i, multiple, baseAmplitude / multiple, &phase);
-						multiple += i % 2 == 1 ? factor : factor2;
-					}
-				}
-				{
-					float multiple = 1.0;
-					for (int i = 1, n = _sineBank2.partialCount(); i <= n; ++i) {
-						_sineBank2.setPartial(i, multiple, baseAmplitude / multiple, &phase);
-						multiple += i % 2 == 1 ? factor : factor2;
-					}
+				float multiple = 1.0;
+				for (int i = 1, n = _sineBank.partialCount(); i <= n; ++i) {
+					_sineBank.setPartial(i, multiple, baseAmplitude / multiple, &phase);
+					multiple += i % 2 == 1 ? factor : factor2;
 				}
 				break;
 			}
@@ -211,9 +198,6 @@ void Test::step() {
 	_sineBank.setSampleRate(engineGetSampleRate());
 	_sineBank.setFrequency(oscillatorPitch());
 	outputs[OUT_OUTPUT].value = _sineBank.next();
-	_sineBank2.setSampleRate(engineGetSampleRate());
-	_sineBank2.setFrequency(oscillatorPitch());
-	outputs[OUT2_OUTPUT].value = _sineBank2.next();
 #endif
 }
 
