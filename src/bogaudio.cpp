@@ -1,4 +1,26 @@
+
 #include "bogaudio.hpp"
+
+#include "Shaper.hpp"
+#include "ShaperPlus.hpp"
+#include "DADSRH.hpp"
+#include "DADSRHPlus.hpp"
+
+#include "Analyzer.hpp"
+
+#include "Detune.hpp"
+#include "DGate.hpp"
+#include "Manual.hpp"
+#include "Noise.hpp"
+#include "Offset.hpp"
+#include "Reftone.hpp"
+#include "SampleHold.hpp"
+#include "Stack.hpp"
+#include "Switch.hpp"
+#include "VCA.hpp"
+
+#include "Test.hpp"
+#include "template_panels.hpp"
 
 Plugin *plugin;
 
