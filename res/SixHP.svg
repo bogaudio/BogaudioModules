@@ -73,11 +73,11 @@
      id="polyline8" />
   <path
      style="fill:none;stroke:#ebebeb;stroke-width:0.80000001"
-     d="m 0.5,0.5 h 149 v 379 H 0.5 V 0.5"
+     d="m 0.5,0.5 h 89 v 379 H 0.5 V 0.5"
      id="polyline10" />
   <path
      style="fill:none;stroke:#f2f2f2;stroke-width:1"
-     d="M 0,0 H 150 V 380 H 0 V 0"
+     d="M 0,0 H 90 V 380 H 0 V 0"
      id="polyline12" />
   <g
      aria-label="6HP6HP"
@@ -147,6 +147,6 @@
   </g>
   <path
      style="fill:#dddddd"
-     d="m 26,370 h 1.5 v 2 H 26 Z"
+     d="M 26.5,370 H 28 v 2 h -1.5 z"
      id="rect18" />
 </svg>

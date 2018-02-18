@@ -265,7 +265,7 @@ def make_screws(hp, comments, indent)
   if hp <= 6
     ss << 'addChild(Widget::create<ScrewSilver>(Vec(0, 0)));'
     ss << 'addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 15, 365)));'
-  elsif hp <= 10
+  elsif hp <= 13
     ss << 'addChild(Widget::create<ScrewSilver>(Vec(0, 0)));'
     ss << 'addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 15, 0)));'
     ss << 'addChild(Widget::create<ScrewSilver>(Vec(0, 365)));'

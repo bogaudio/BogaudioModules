@@ -29,6 +29,18 @@ void init(rack::Plugin *p) {
 
 #ifdef TEST
 	p->addModel(modelTest);
+
+	p->addModel(modelThreeHP);
 	p->addModel(modelSixHP);
+	p->addModel(modelEightHP);
+	p->addModel(modelTenHP);
+	p->addModel(modelTwelveHP);
+	p->addModel(modelThirteenHP);
+	p->addModel(modelFifteenHP);
+	p->addModel(modelEighteenHP);
+	p->addModel(modelTwentyHP);
+	p->addModel(modelTwentyTwoHP);
+	p->addModel(modelTwentyFiveHP);
+	p->addModel(modelThirtyHP);
 #endif
 }
