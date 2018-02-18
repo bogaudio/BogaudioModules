@@ -4,7 +4,7 @@ Plugin *plugin;
 
 void init(rack::Plugin *p) {
 	plugin = p;
-	p->slug = "Bogaudio"; // TOSTRING(SLUG);
+	p->slug = TOSTRING(SLUG);
 	p->version = TOSTRING(VERSION);
 	p->website = "https://github.com/bogaudio/BogaudioModules";
 	p->manual = "https://github.com/bogaudio/BogaudioModules/blob/master/README.md";
