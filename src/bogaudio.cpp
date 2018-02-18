@@ -22,6 +22,8 @@
 #include "Test.hpp"
 #include "template_panels.hpp"
 
+//NEW_INCLUDES_HERE
+
 Plugin *plugin;
 
 void init(rack::Plugin *p) {
@@ -65,4 +67,6 @@ void init(rack::Plugin *p) {
 	p->addModel(modelTwentyFiveHP);
 	p->addModel(modelThirtyHP);
 #endif
+
+	//NEW_MODELS_HERE
 }
