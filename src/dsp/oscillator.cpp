@@ -94,24 +94,29 @@ float TriangleOscillator::_next() {
 }
 
 
-void SineBankOscillator::setPartial(int i, float frequencyRatio, float amplitude, float* phase) {
-	if (i > (int)_partials.size()) {
-		return;
-	}
+void SineBankOscillator::setPartial(int i, float frequencyRatio, float amplitude) {
+	setPartialFrequencyRatio(i, frequencyRatio);
+	setPartialAmplitude(i, amplitude);
+}
 
-	Partial& p = _partials[i - 1];
-	if (amplitude > 0.01f || amplitude < -0.01f) {
-		p.enabled = true;
+void SineBankOscillator::setPartialFrequencyRatio(int i, float frequencyRatio) {
+	if (i <= (int)_partials.size()) {
+		Partial& p = _partials[i - 1];
 		p.frequencyRatio = frequencyRatio;
 		p.frequency = _frequency * frequencyRatio;
 		p.sine.setFrequency((double)_frequency * (double)frequencyRatio);
-		p.amplitude = amplitude;
-		if (phase) {
-			p.sine.setPhase(*phase);
-		}
 	}
-	else {
-		p.enabled = false;
+}
+
+void SineBankOscillator::setPartialAmplitude(int i, float amplitude) {
+	if (i <= (int)_partials.size()) {
+		_partials[i - 1].amplitude = amplitude;
+	}
+}
+
+void SineBankOscillator::syncToPhase(float phase) {
+	for (Partial& p : _partials) {
+		p.sine.setPhase(phase);
 	}
 }
 
@@ -132,7 +137,7 @@ void SineBankOscillator::_frequencyChanged() {
 float SineBankOscillator::_next() {
 	float next = 0.0;
 	for (Partial& p : _partials) {
-		if (p.enabled && p.frequency < _maxPartialFrequency) {
+		if (p.frequency < _maxPartialFrequency && (p.amplitude > 0.001 || p.amplitude < -0.001)) {
 			next += p.sine.next() * p.amplitude;
 		}
 		else {

@@ -1,6 +1,8 @@
 
 #include "bogaudio.hpp"
 
+#include "Additator.hpp"
+
 #include "Shaper.hpp"
 #include "ShaperPlus.hpp"
 #include "DADSRH.hpp"
@@ -32,6 +34,8 @@ void init(rack::Plugin *p) {
 	p->version = TOSTRING(VERSION);
 	p->website = "https://github.com/bogaudio/BogaudioModules";
 	p->manual = "https://github.com/bogaudio/BogaudioModules/blob/master/README.md";
+
+	p->addModel(modelAdditator);
 
 	p->addModel(modelShaper);
 	p->addModel(modelShaperPlus);

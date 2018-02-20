@@ -158,15 +158,13 @@ struct TriangleOscillator : Phasor {
 
 struct SineBankOscillator : OscillatorGenerator {
 	struct Partial {
-		bool enabled;
 		float frequency;
 		float frequencyRatio;
 		float amplitude;
 		SineOscillator sine;
 
 		Partial()
-		: enabled(false)
-		, frequency(0.0)
+		: frequency(0.0)
 		, frequencyRatio(0.0)
 		, amplitude(0.0)
 		, sine(0.0, 0.0, 1.0)
@@ -193,8 +191,12 @@ struct SineBankOscillator : OscillatorGenerator {
 		return _partials.size();
 	}
 
-	// one-based index.
-	void setPartial(int i, float frequencyRatio, float amplitude, float* phase = NULL);
+	// one-based indexes.
+	void setPartial(int i, float frequencyRatio, float amplitude);
+	void setPartialFrequencyRatio(int i, float frequencyRatio);
+	void setPartialAmplitude(int i, float amplitude);
+
+	void syncToPhase(float phase);
 
 	virtual void _sampleRateChanged() override;
 	virtual void _frequencyChanged() override;

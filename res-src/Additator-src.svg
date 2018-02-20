@@ -1,0 +1,134 @@
+<svg
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="300"
+  height="380"
+  viewBox="0 0 300 380"
+>
+  <style>
+    text {
+      fill: #333;
+      font-family: 'Roboto', sans-serif;
+      font-weight: bold;
+    }
+    text.title {
+      font-family: 'Comfortaa', sans-serif;
+      font-weight: normal;
+    }
+    text.brand {
+      font-family: 'Audiowide', sans-serif;
+      font-weight: bold;
+    }
+  </style>
+
+  <defs>
+    <symbol id="knob" viewBox="0 0 38px 38px">
+      <g transform="translate(19 19)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f" />
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f" />
+        <circle cx="0" cy="0" r="18" stroke-width="1" stroke="#00f" fill="none" />
+      </g>
+    </symbol>
+
+    <symbol id="knob-medium" viewBox="0 0 26px 26px">
+      <g transform="translate(13 13)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f" />
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f" />
+        <circle cx="0" cy="0" r="12" stroke-width="1" stroke="#00f" fill="none" />
+      </g>
+    </symbol>
+
+    <symbol id="input" viewBox="0 0 24px 24px">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0" />
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none" />
+      </g>
+    </symbol>
+
+    <symbol id="output" viewBox="0 0 24px 24px">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00" />
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none" />
+      </g>
+    </symbol>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ddd" />
+  <polyline points="1,1 299,1 299,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none" />
+  <polyline points="0.5,0.5 299.5,0.5 299.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none" />
+  <polyline points="0,0 300,0 300,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none" />
+
+  <!-- <rect width="80" height="20" fill="#0f0" transform="translate(0 0)" /> -->
+  <!-- <rect width="80" height="20" fill="#0f0" transform="translate(220 0)" /> -->
+
+  <text class="title" x="86" y="19" font-size="12pt" letter-spacing="4px">ADDITATOR</text>
+  <g transform="translate(110 374)">
+    <text class="brand" font-size="8pt" letter-spacing="2px">BOGAUDIO</text>
+    <rect width="3.0" height="3" fill="#ddd" transform="translate(24 -5)" />
+  </g>
+
+  <g transform="translate(10 50)">
+    <g transform="translate(10 0)">
+      <!-- <polyline points="0,19 70,19" stroke="#0f0" stroke-width="1" fill="none" /> -->
+      <text font-size="8pt" letter-spacing="2px" transform="translate(8 57) rotate(270)">FREQUENCY</text>
+      <use id="FREQUENCY_PARAM" xlink:href="#knob" transform="translate(20 0)" />
+    </g>
+    <g transform="translate(90 0)">
+      <!-- <polyline points="0,19 68,19" stroke="#0f0" stroke-width="1" fill="none" /> -->
+      <text font-size="8pt" letter-spacing="2px" transform="translate(8 50) rotate(270)">PARTIALS</text>
+      <use id="PARTIALS_PARAM" xlink:href="#knob" transform="translate(20 0)" />
+    </g>
+    <g transform="translate(170 0)">
+      <!-- <polyline points="0,19 68,19" stroke="#0f0" stroke-width="1" fill="none" /> -->
+      <text font-size="8pt" letter-spacing="2px" transform="translate(8 39) rotate(270)">WIDTH</text>
+      <use id="WIDTH_PARAM" xlink:href="#knob" transform="translate(20 0)" />
+    </g>
+    <g transform="translate(220 0)">
+      <!-- <polyline points="0,19 68,19" stroke="#0f0" stroke-width="1" fill="none" /> -->
+      <!-- <text font-size="8pt" letter-spacing="2px" transform="translate(8 39) rotate(270)">WIDTH</text> -->
+      <use id="EVEN_WIDTH_PARAM" xlink:href="#knob-medium" transform="translate(20 6)" />
+    </g>
+  </g>
+
+  <g transform="translate(10 130)">
+    <g transform="translate(10 0)">
+      <!-- <polyline points="0,19 70,19" stroke="#0f0" stroke-width="1" fill="none" /> -->
+      <text font-size="8pt" letter-spacing="2px" transform="translate(8 40) rotate(270)">DECAY</text>
+      <use id="DECAY_PARAM" xlink:href="#knob" transform="translate(20 0)" />
+    </g>
+    <g transform="translate(90 0)">
+      <!-- <polyline points="0,19 68,19" stroke="#0f0" stroke-width="1" fill="none" /> -->
+      <text font-size="8pt" letter-spacing="2px" transform="translate(8 36) rotate(270)">ODDS</text>
+      <use id="ODD_SCALE_PARAM" xlink:href="#knob-medium" transform="translate(20 6)" />
+    </g>
+    <g transform="translate(150 0)">
+      <!-- <polyline points="0,19 68,19" stroke="#0f0" stroke-width="1" fill="none" /> -->
+      <text font-size="8pt" letter-spacing="2px" transform="translate(8 38) rotate(270)">EVENS</text>
+      <use id="EVEN_SCALE_PARAM" xlink:href="#knob-medium" transform="translate(20 6)" />
+    </g>
+  </g>
+
+  <g transform="translate(0 320)">
+    <g transform="translate(10 0)">
+      <rect width="30" height="40" rx="5" fill="#fafafa" />
+      <use id="PITCH_INPUT" xlink:href="#input" transform="translate(3 3)" />
+      <text font-size="6pt" letter-spacing="1px" transform="translate(1 36)">V/OCT</text>
+    </g>
+    <g transform="translate(50 0)">
+      <rect width="30" height="40" rx="5" fill="#fafafa" />
+      <use id="SYNC_INPUT" xlink:href="#input" transform="translate(3 3)" />
+      <text font-size="6pt" letter-spacing="2px" transform="translate(1 36)">SYNC</text>
+    </g>
+    <g transform="translate(150 0)">
+      <!-- <polyline points="0,19 68,19" stroke="#0f0" stroke-width="1" fill="none" /> -->
+      <text font-size="8pt" letter-spacing="2px" transform="translate(8 40) rotate(270)">PHASE</text>
+      <use id="PHASE_PARAM" xlink:href="#knob-medium" transform="translate(20 6)" />
+    </g>
+    <g transform="translate(260 0)">
+      <rect width="30" height="40" rx="5" fill="#bbb" />
+      <use id="AUDIO_OUTPUT" xlink:href="#output" transform="translate(3 3)" />
+      <text font-size="6pt" letter-spacing="2px" transform="translate(5 36)">OUT</text>
+    </g>
+  </g>
+</svg>
