@@ -20,6 +20,16 @@ void Test::step() {
 	);
 	outputs[OUT_OUTPUT].value = _lpf.next(inputs[IN_INPUT].value);
 
+#elif LPFNOISE
+	_lpf.setParams(
+		engineGetSampleRate(),
+		22000.0 * clamp(params[PARAM1_PARAM].value, 0.0f, 1.0f),
+		0.717f
+	);
+	float noise = _noise.next();
+	outputs[OUT_OUTPUT].value = _lpf.next(noise) * 10.0;;
+	outputs[OUT2_OUTPUT].value = noise * 10.0;;
+
 #elif SINE
 	_sine.setSampleRate(engineGetSampleRate());
 	_sine.setFrequency(oscillatorPitch());

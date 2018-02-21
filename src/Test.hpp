@@ -5,15 +5,19 @@
 extern Model* modelTest;
 
 // #define LPF 1
+#define LPFNOISE 1
 // #define SINE 1
 // #define SQUARE 1
 // #define SAW 1
 // #define TRIANGLE 1
-#define SINEBANK 1
+// #define SINEBANK 1
 
 #include "pitch.hpp"
 #ifdef LPF
 #include "dsp/filter.hpp"
+#elif LPFNOISE
+#include "dsp/filter.hpp"
+#include "dsp/noise.hpp"
 #elif SINE
 #include "dsp/oscillator.hpp"
 #elif SQUARE
@@ -59,6 +63,9 @@ struct Test : Module {
 
 #ifdef LPF
 	LowPassFilter _lpf;
+#elif LPFNOISE
+	WhiteNoiseGenerator _noise;
+	LowPassFilter _lpf;
 #elif SINE
 	SineOscillator _sine;
 #elif SQUARE
@@ -75,6 +82,8 @@ struct Test : Module {
 	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
 #ifdef LPF
 	, _lpf(44100.0, 1000.0, 1.0)
+#elif LPFNOISE
+	, _lpf(44100.0, 1000.0, 1.0)
 #elif SINE
 	, _sine(44100.0, 1000.0, 5.0)
 #elif SQUARE
@@ -90,7 +99,7 @@ struct Test : Module {
 		onReset();
 
 #ifdef SINEBANK
-    const float baseAmplitude = 5.0;
+		const float baseAmplitude = 5.0;
 		switch (5) {
 			case 1: {
 				// saw
