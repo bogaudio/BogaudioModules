@@ -87,7 +87,7 @@ struct Additator : Module {
 
 	virtual void onReset() override;
 	virtual void onSampleRateChange() override;
-	float cvValue(Input& cv);
+	float cvValue(Input& cv, bool dc = false);
 	virtual void step() override;
 };
 

@@ -11,9 +11,12 @@ void Additator::onSampleRateChange() {
 	_phase = PHASE_RESET;
 }
 
-float Additator::cvValue(Input& cv) {
+float Additator::cvValue(Input& cv, bool dc) {
 	if (!cv.active) {
-		return 0.0f;
+		return dc ? 1.0f : 0.0f;
+	}
+	if (dc) {
+		return clamp(cv.value / 10.0f, 0.0f, 1.0f);
 	}
 	return clamp(cv.value / 5.0f, -1.0f, 1.0f);
 }
@@ -51,7 +54,7 @@ void Additator::step() {
 		}
 	}
 
-	int partials = clamp((int)roundf(params[PARTIALS_PARAM].value + (maxPartials / 2.0f) * cvValue(inputs[PARTIALS_INPUT])), 0, maxPartials);
+	int partials = clamp((int)roundf(params[PARTIALS_PARAM].value * cvValue(inputs[PARTIALS_INPUT], true)), 0, maxPartials);
 	float amplitudeNormalization = clamp(params[GAIN_PARAM].value + ((maxAmplitudeNormalization - minAmplitudeNormalization) / 2.0f) * cvValue(inputs[GAIN_INPUT]), minAmplitudeNormalization, maxAmplitudeNormalization);
 	float decay = clamp(params[DECAY_PARAM].value + ((maxDecay - minDecay) / 2.0f) * cvValue(inputs[DECAY_INPUT]), minDecay, maxDecay);
 	float balance = clamp(params[BALANCE_PARAM].value + cvValue(inputs[BALANCE_INPUT]), -1.0f, 1.0f);
@@ -63,6 +66,7 @@ void Additator::step() {
 		_balance != balance ||
 		_filter != filter
 	) {
+		int envelopes = _partials != partials ? std::max(_partials, partials) : 0;
 		_partials = partials;
 		_amplitudeNormalization = amplitudeNormalization;
 		_decay = decay;
@@ -92,7 +96,7 @@ void Additator::step() {
 		total /= _amplitudeNormalization;
 		for (int i = 1, n = _oscillator.partialCount(); i <= n; ++i) {
 			as[i] /= total;
-			_oscillator.setPartialAmplitude(i, as[i]);
+			_oscillator.setPartialAmplitude(i, as[i], i <= envelopes);
 		}
 	}
 

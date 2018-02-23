@@ -108,9 +108,21 @@ void SineBankOscillator::setPartialFrequencyRatio(int i, float frequencyRatio) {
 	}
 }
 
-void SineBankOscillator::setPartialAmplitude(int i, float amplitude) {
+void SineBankOscillator::setPartialAmplitude(int i, float amplitude, bool envelope) {
 	if (i <= (int)_partials.size()) {
-		_partials[i - 1].amplitude = amplitude;
+		Partial& p = _partials[i - 1];
+		if (envelope) {
+			p.amplitudeTarget = amplitude;
+			p.amplitudeStepDelta = (amplitude - p.amplitude) / (float)_amplitudeEnvelopeSamples;
+			p.amplitudeSteps = _amplitudeEnvelopeSamples;
+		}
+		else if (p.amplitudeSteps > 0) {
+			p.amplitudeTarget = amplitude;
+			p.amplitudeStepDelta = (amplitude - p.amplitude) / (float)p.amplitudeSteps;
+		}
+		else {
+			p.amplitude = amplitude;
+		}
 	}
 }
 
@@ -122,6 +134,7 @@ void SineBankOscillator::syncToPhase(float phase) {
 
 void SineBankOscillator::_sampleRateChanged() {
 	_maxPartialFrequency = _maxPartialFrequencySRRatio * _sampleRate;
+	_amplitudeEnvelopeSamples = _sampleRate * (_amplitudeEnvelopeMS / 1000.0f);
 	for (Partial& p : _partials) {
 		p.sine.setSampleRate(_sampleRate);
 	}
@@ -137,7 +150,16 @@ void SineBankOscillator::_frequencyChanged() {
 float SineBankOscillator::_next() {
 	float next = 0.0;
 	for (Partial& p : _partials) {
-		if (p.frequency < _maxPartialFrequency && (p.amplitude > 0.001 || p.amplitude < -0.001)) {
+		if (p.frequency < _maxPartialFrequency && (p.amplitude > 0.001 || p.amplitude < -0.001 || p.amplitudeSteps > 0)) {
+			if (p.amplitudeSteps > 0) {
+				if (p.amplitudeSteps == 1) {
+					p.amplitude = p.amplitudeTarget;
+				}
+				else {
+					p.amplitude += p.amplitudeStepDelta;
+				}
+				--p.amplitudeSteps;
+			}
 			next += p.sine.next() * p.amplitude;
 		}
 		else {

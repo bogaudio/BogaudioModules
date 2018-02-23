@@ -161,18 +161,26 @@ struct SineBankOscillator : OscillatorGenerator {
 		float frequency;
 		float frequencyRatio;
 		float amplitude;
+		float amplitudeTarget;
+		float amplitudeStepDelta;
+		int amplitudeSteps;
 		SineOscillator sine;
 
 		Partial()
 		: frequency(0.0)
 		, frequencyRatio(0.0)
 		, amplitude(0.0)
+		, amplitudeTarget(0.0)
+		, amplitudeStepDelta(0.0)
+		, amplitudeSteps(0)
 		, sine(0.0, 0.0, 1.0)
 		{}
 	};
 
 	const float _maxPartialFrequencySRRatio = 0.48;
 	float _maxPartialFrequency = 0.0;
+	const int _amplitudeEnvelopeMS = 10;
+	int _amplitudeEnvelopeSamples = 0;
 	std::vector<Partial> _partials;
 
 	SineBankOscillator(
@@ -194,7 +202,7 @@ struct SineBankOscillator : OscillatorGenerator {
 	// one-based indexes.
 	void setPartial(int i, float frequencyRatio, float amplitude);
 	void setPartialFrequencyRatio(int i, float frequencyRatio);
-	void setPartialAmplitude(int i, float amplitude);
+	void setPartialAmplitude(int i, float amplitude, bool envelope = false);
 
 	void syncToPhase(float phase);
 
