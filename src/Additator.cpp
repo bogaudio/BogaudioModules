@@ -3,11 +3,13 @@
 
 void Additator::onReset() {
 	_syncTrigger.reset();
+	_steps = 0;
 	_phase = PHASE_RESET;
 }
 
 void Additator::onSampleRateChange() {
 	_oscillator.setSampleRate(engineGetSampleRate());
+	_steps = 0;
 	_phase = PHASE_RESET;
 }
 
@@ -27,93 +29,97 @@ void Additator::step() {
 	if (!outputs[AUDIO_OUTPUT].active) {
 		return;
 	}
+	++_steps;
+	if (_steps >= modulationSteps) {
+		_steps = 0;
 
-	float width = clamp(params[WIDTH_PARAM].value + (maxWidth / 2.0f) * cvValue(inputs[WIDTH_INPUT]), 0.0f, maxWidth);
-	float oddSkew = clamp(params[ODD_SKEW_PARAM].value + cvValue(inputs[ODD_SKEW_INPUT]), -maxSkew, maxSkew);
-	float evenSkew = clamp(params[EVEN_SKEW_PARAM].value + cvValue(inputs[EVEN_SKEW_INPUT]), -maxSkew, maxSkew);
-	if (
-		_width != width ||
-		_oddSkew != oddSkew ||
-		_evenSkew != evenSkew
-	) {
-		_width = width;
-		_oddSkew = oddSkew;
-		_evenSkew = evenSkew;
+		float width = clamp(params[WIDTH_PARAM].value + (maxWidth / 2.0f) * cvValue(inputs[WIDTH_INPUT]), 0.0f, maxWidth);
+		float oddSkew = clamp(params[ODD_SKEW_PARAM].value + cvValue(inputs[ODD_SKEW_INPUT]), -maxSkew, maxSkew);
+		float evenSkew = clamp(params[EVEN_SKEW_PARAM].value + cvValue(inputs[EVEN_SKEW_INPUT]), -maxSkew, maxSkew);
+		if (
+			_width != width ||
+			_oddSkew != oddSkew ||
+			_evenSkew != evenSkew
+		) {
+			_width = width;
+			_oddSkew = oddSkew;
+			_evenSkew = evenSkew;
 
-		float multiple = 1.0f;
-		_oscillator.setPartialFrequencyRatio(1, multiple);
-		for (int i = 2, n = _oscillator.partialCount(); i <= n; ++i) {
-			float ii = i;
-			if (i % 2 == 0) {
-				ii += _evenSkew;
-			}
-			else {
-				ii += _oddSkew;
-			}
-			_oscillator.setPartialFrequencyRatio(i, powf(ii, _width));
-		}
-	}
-
-	int partials = clamp((int)roundf(params[PARTIALS_PARAM].value * cvValue(inputs[PARTIALS_INPUT], true)), 0, maxPartials);
-	float amplitudeNormalization = clamp(params[GAIN_PARAM].value + ((maxAmplitudeNormalization - minAmplitudeNormalization) / 2.0f) * cvValue(inputs[GAIN_INPUT]), minAmplitudeNormalization, maxAmplitudeNormalization);
-	float decay = clamp(params[DECAY_PARAM].value + ((maxDecay - minDecay) / 2.0f) * cvValue(inputs[DECAY_INPUT]), minDecay, maxDecay);
-	float balance = clamp(params[BALANCE_PARAM].value + cvValue(inputs[BALANCE_INPUT]), -1.0f, 1.0f);
-	float filter = clamp(params[FILTER_PARAM].value + cvValue(inputs[FILTER_INPUT]), minFilter, maxFilter);
-	if (
-		_partials != partials ||
-		_amplitudeNormalization != amplitudeNormalization ||
-		_decay != decay ||
-		_balance != balance ||
-		_filter != filter
-	) {
-		int envelopes = _partials != partials ? std::max(_partials, partials) : 0;
-		_partials = partials;
-		_amplitudeNormalization = amplitudeNormalization;
-		_decay = decay;
-		_balance = balance;
-		_filter = filter;
-
-		float as[maxPartials + 1];
-		float total = as[1] = 1.0f;
-		filter = log10f(_filter) + 1.0f;
-		for (int i = 2, n = _oscillator.partialCount(); i <= n; ++i) {
-			as[i] = 0.0f;
-			if (i <= _partials) {
-				as[i] = powf(i, -_decay) * powf(_filter, i);
+			float multiple = 1.0f;
+			_oscillator.setPartialFrequencyRatio(1, multiple);
+			for (int i = 2, n = _oscillator.partialCount(); i <= n; ++i) {
+				float ii = i;
 				if (i % 2 == 0) {
-					if (_balance > 0.0f) {
-						as[i] *= 1.0f - _balance;
-					}
+					ii += _evenSkew;
 				}
 				else {
-					if (_balance < 0.0f) {
-						as[i] *= 1.0f + _balance;
-					}
+					ii += _oddSkew;
 				}
-				total += as[i];
+				_oscillator.setPartialFrequencyRatio(i, powf(ii, _width));
 			}
 		}
-		total /= _amplitudeNormalization;
-		for (int i = 1, n = _oscillator.partialCount(); i <= n; ++i) {
-			as[i] /= total;
-			_oscillator.setPartialAmplitude(i, as[i], i <= envelopes);
+
+		int partials = clamp((int)roundf(params[PARTIALS_PARAM].value * cvValue(inputs[PARTIALS_INPUT], true)), 0, maxPartials);
+		float amplitudeNormalization = clamp(params[GAIN_PARAM].value + ((maxAmplitudeNormalization - minAmplitudeNormalization) / 2.0f) * cvValue(inputs[GAIN_INPUT]), minAmplitudeNormalization, maxAmplitudeNormalization);
+		float decay = clamp(params[DECAY_PARAM].value + ((maxDecay - minDecay) / 2.0f) * cvValue(inputs[DECAY_INPUT]), minDecay, maxDecay);
+		float balance = clamp(params[BALANCE_PARAM].value + cvValue(inputs[BALANCE_INPUT]), -1.0f, 1.0f);
+		float filter = clamp(params[FILTER_PARAM].value + cvValue(inputs[FILTER_INPUT]), minFilter, maxFilter);
+		if (
+			_partials != partials ||
+			_amplitudeNormalization != amplitudeNormalization ||
+			_decay != decay ||
+			_balance != balance ||
+			_filter != filter
+		) {
+			int envelopes = _partials != partials ? std::max(_partials, partials) : 0;
+			_partials = partials;
+			_amplitudeNormalization = amplitudeNormalization;
+			_decay = decay;
+			_balance = balance;
+			_filter = filter;
+
+			float as[maxPartials + 1];
+			float total = as[1] = 1.0f;
+			filter = log10f(_filter) + 1.0f;
+			for (int i = 2, n = _oscillator.partialCount(); i <= n; ++i) {
+				as[i] = 0.0f;
+				if (i <= _partials) {
+					as[i] = powf(i, -_decay) * powf(_filter, i);
+					if (i % 2 == 0) {
+						if (_balance > 0.0f) {
+							as[i] *= 1.0f - _balance;
+						}
+					}
+					else {
+						if (_balance < 0.0f) {
+							as[i] *= 1.0f + _balance;
+						}
+					}
+					total += as[i];
+				}
+			}
+			total /= _amplitudeNormalization;
+			for (int i = 1, n = _oscillator.partialCount(); i <= n; ++i) {
+				as[i] /= total;
+				_oscillator.setPartialAmplitude(i, as[i], i <= envelopes);
+			}
 		}
-	}
 
-	float frequency = params[FREQUENCY_PARAM].value;
-	if (inputs[PITCH_INPUT].active) {
-		frequency += inputs[PITCH_INPUT].value;
-	}
-	frequency = clamp(cvToFrequency(frequency), 50.0f, 10000.0f);
-	_oscillator.setFrequency(frequency);
+		float frequency = params[FREQUENCY_PARAM].value;
+		if (inputs[PITCH_INPUT].active) {
+			frequency += inputs[PITCH_INPUT].value;
+		}
+		frequency = clamp(cvToFrequency(frequency), 50.0f, 10000.0f);
+		_oscillator.setFrequency(frequency);
 
-	if (_syncTrigger.process(inputs[SYNC_INPUT].value)) {
-		_oscillator.syncToPhase(_phase == PHASE_SINE ? 0.0f : M_PI / 2.0f);
-	}
-	Phase phase = ((int)params[PHASE_PARAM].value) == 2 ? PHASE_COSINE : PHASE_SINE;
-	if (_phase != phase) {
-		_phase = phase;
-		_oscillator.syncToPhase(_phase == PHASE_SINE ? 0.0f : M_PI / 2.0f);
+		if (_syncTrigger.process(inputs[SYNC_INPUT].value)) {
+			_oscillator.syncToPhase(_phase == PHASE_SINE ? 0.0f : M_PI / 2.0f);
+		}
+		Phase phase = ((int)params[PHASE_PARAM].value) == 2 ? PHASE_COSINE : PHASE_SINE;
+		if (_phase != phase) {
+			_phase = phase;
+			_oscillator.syncToPhase(_phase == PHASE_SINE ? 0.0f : M_PI / 2.0f);
+		}
 	}
 
 	outputs[AUDIO_OUTPUT].value = _oscillator.next() * 5.0;

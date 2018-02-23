@@ -56,6 +56,7 @@ struct Additator : Module {
 		PHASE_COSINE
 	};
 
+	const int modulationSteps = 100;
 	const int maxPartials = 100;
 	const float maxWidth = 2.0f;
 	const float maxSkew = 0.99f;
@@ -66,6 +67,7 @@ struct Additator : Module {
 	const float minFilter = 0.1;
 	const float maxFilter = 1.9;
 
+	int _steps = 0;
 	int _partials = 0;
 	float _width = 0.0f;
 	float _oddSkew = 0.0f;
