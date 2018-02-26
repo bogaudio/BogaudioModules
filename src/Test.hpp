@@ -5,12 +5,13 @@
 extern Model* modelTest;
 
 // #define LPF 1
-#define LPFNOISE 1
+// #define LPFNOISE 1
 // #define SINE 1
 // #define SQUARE 1
 // #define SAW 1
 // #define TRIANGLE 1
 // #define SINEBANK 1
+#define OVERSAMPLING 1
 
 #include "pitch.hpp"
 #ifdef LPF
@@ -28,6 +29,11 @@ extern Model* modelTest;
 #include "dsp/oscillator.hpp"
 #elif SINEBANK
 #include "dsp/oscillator.hpp"
+#elif OVERSAMPLING
+#include "dsp/oscillator.hpp"
+#include "dsp/decimator.hpp" // rack
+#include "dsp/filter.hpp"
+#define OVERSAMPLEN 16
 #else
 #error what
 #endif
@@ -76,6 +82,12 @@ struct Test : Module {
 	TriangleOscillator _triangle;
 #elif SINEBANK
 	SineBankOscillator _sineBank;
+#elif OVERSAMPLING
+	SawOscillator _saw1;
+	rack::Decimator<OVERSAMPLEN, OVERSAMPLEN> _rackDecimator;
+	SawOscillator _saw2;
+	LowPassFilter _lpf;
+	LowPassFilter _lpf2;
 #endif
 
 	Test()
@@ -94,6 +106,11 @@ struct Test : Module {
 	, _triangle(44100.0, 1000.0, 5.0)
 #elif SINEBANK
 	, _sineBank(44101.0, 1000.0, 50)
+#elif OVERSAMPLING
+	, _saw1(44100.0, 1000.0, 5.0)
+	, _saw2(44100.0, 1000.0, 1.0)
+	, _lpf(44100.0, 1000.0, 1.0)
+	, _lpf2(44100.0, 1000.0, 1.0)
 #endif
 	{
 		onReset();

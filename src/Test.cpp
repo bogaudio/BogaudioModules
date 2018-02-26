@@ -59,6 +59,35 @@ void Test::step() {
 	_sineBank.setSampleRate(engineGetSampleRate());
 	_sineBank.setFrequency(oscillatorPitch());
 	outputs[OUT_OUTPUT].value = _sineBank.next();
+
+#elif OVERSAMPLING
+	_saw1.setSampleRate(engineGetSampleRate());
+	_saw1.setFrequency(oscillatorPitch() / (float)OVERSAMPLEN);
+	float buf[OVERSAMPLEN];
+	for (int i = 0; i < OVERSAMPLEN; ++i) {
+		buf[i] = _saw1.next();
+	}
+	outputs[OUT_OUTPUT].value = _rackDecimator.process(buf);
+
+	_saw2.setSampleRate(engineGetSampleRate());
+	_saw2.setFrequency(oscillatorPitch() / (float)OVERSAMPLEN);
+	_lpf.setParams(
+		engineGetSampleRate(),
+		engineGetSampleRate() / 4.0f,
+		0.03
+	);
+	_lpf2.setParams(
+		engineGetSampleRate(),
+		engineGetSampleRate() / 4.0f,
+		0.03
+	);
+	float s = 0.0f;
+	for (int i = 0; i < OVERSAMPLEN; ++i) {
+	  // s = _lpf2.next(_lpf.next(_saw2.next()));
+		s = _lpf.next(_saw2.next());
+		// s = _saw2.next();
+	}
+	outputs[OUT2_OUTPUT].value = s * 5.0;
 #endif
 }
 
