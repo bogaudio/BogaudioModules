@@ -6,12 +6,12 @@ extern Model* modelTest;
 
 // #define LPF 1
 // #define LPFNOISE 1
-// #define SINE 1
+#define SINE 1
 // #define SQUARE 1
 // #define SAW 1
 // #define TRIANGLE 1
 // #define SINEBANK 1
-#define OVERSAMPLING 1
+// #define OVERSAMPLING 1
 
 #include "pitch.hpp"
 #ifdef LPF
@@ -74,6 +74,7 @@ struct Test : Module {
 	LowPassFilter _lpf;
 #elif SINE
 	SineOscillator _sine;
+	SineOscillator _sine2;
 #elif SQUARE
 	SquareOscillator _square;
 #elif SAW
@@ -98,6 +99,7 @@ struct Test : Module {
 	, _lpf(44100.0, 1000.0, 1.0)
 #elif SINE
 	, _sine(44100.0, 1000.0, 5.0)
+	, _sine2(44100.0, 1000.0, 1.0, M_PI/1.0f)
 #elif SQUARE
 	, _square(44100.0, 1000.0, 5.0)
 #elif SAW

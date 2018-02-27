@@ -35,6 +35,10 @@ void Test::step() {
 	_sine.setFrequency(oscillatorPitch());
 	outputs[OUT_OUTPUT].value = _sine.next();
 
+	_sine2.setSampleRate(engineGetSampleRate());
+	_sine2.setFrequency(oscillatorPitch());
+	outputs[OUT2_OUTPUT].value = 5.0f * powf(_sine2.next(), 5.0f);
+
 #elif SQUARE
 	_square.setSampleRate(engineGetSampleRate());
 	_square.setFrequency(oscillatorPitch());
