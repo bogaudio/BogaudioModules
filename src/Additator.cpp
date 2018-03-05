@@ -3,13 +3,13 @@
 
 void Additator::onReset() {
 	_syncTrigger.reset();
-	_steps = 0;
+	_steps = modulationSteps;
 	_phase = PHASE_RESET;
 }
 
 void Additator::onSampleRateChange() {
 	_oscillator.setSampleRate(engineGetSampleRate());
-	_steps = 0;
+	_steps = modulationSteps;
 	_phase = PHASE_RESET;
 }
 
@@ -29,6 +29,7 @@ void Additator::step() {
 	if (!outputs[AUDIO_OUTPUT].active) {
 		return;
 	}
+
 	++_steps;
 	if (_steps >= modulationSteps) {
 		_steps = 0;

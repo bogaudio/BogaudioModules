@@ -43,6 +43,8 @@ struct OscillatorGenerator : Generator {
 };
 
 struct Phasor : OscillatorGenerator {
+	static constexpr float maxPhase = 2.0f;
+
 	float _delta;
 	double _phase = 0.0;
 
@@ -54,20 +56,24 @@ struct Phasor : OscillatorGenerator {
 	: OscillatorGenerator(sampleRate, frequency)
 	{
 		setPhase(initialPhase);
-		updateDelta();
+		_updateDelta();
 	}
 
 	virtual void _sampleRateChanged() override {
-		updateDelta();
+		_updateDelta();
 	}
 
 	virtual void _frequencyChanged() override {
-		updateDelta();
+		_updateDelta();
 	}
 
-	void setPhase(float phase);
-	void updateDelta();
-	virtual float _next() override;
+	void setPhase(float radians);
+	float nextFromPhasor(const Phasor& phasor, float offset = 0.0f); // offset is not radians, but local phase.
+	void _updateDelta();
+	virtual float _next() final;
+	virtual float _nextForPhase(float phase);
+
+	static float radiansToPhase(float radians) { return radians / M_PI; }
 };
 
 struct SineOscillator : OscillatorGenerator {
@@ -103,6 +109,7 @@ struct SineOscillator : OscillatorGenerator {
 };
 
 struct SawOscillator : Phasor {
+	const float halfMaxPhase = 0.5f * maxPhase;
 	float _amplitude;
 
 	SawOscillator(
@@ -115,7 +122,7 @@ struct SawOscillator : Phasor {
 	{
 	}
 
-	virtual float _next() override;
+	virtual float _nextForPhase(float phase) override;
 };
 
 struct SquareOscillator : Phasor {
@@ -137,10 +144,13 @@ struct SquareOscillator : Phasor {
 
 	void setPulseWidth(float pw);
 
-	virtual float _next() override;
+	virtual float _nextForPhase(float phase) override;
 };
 
 struct TriangleOscillator : Phasor {
+	const float quarterMaxPhase = 0.25f * maxPhase;
+	const float threeQuartersMaxPhase = 0.75f * maxPhase;
+	const float twiceMaxPhase = 2.0f * maxPhase;
 	float _amplitude;
 
 	TriangleOscillator(
@@ -153,7 +163,7 @@ struct TriangleOscillator : Phasor {
 	{
 	}
 
-	virtual float _next() override;
+	virtual float _nextForPhase(float phase) override;
 };
 
 struct SineBankOscillator : OscillatorGenerator {

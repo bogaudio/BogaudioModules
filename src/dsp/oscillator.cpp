@@ -4,23 +4,38 @@
 
 using namespace bogaudio::dsp;
 
-void Phasor::setPhase(float phase) {
-	_phase = phase / M_PI;
+void Phasor::setPhase(float radians) {
+	_phase = radiansToPhase(radians);
 }
 
-void Phasor::updateDelta() {
-	_delta = (_frequency / _sampleRate) * 2.0f;
+float Phasor::nextFromPhasor(const Phasor& phasor, float offset) {
+	float p = phasor._phase + offset;
+	while (p >= maxPhase) {
+		p -= maxPhase;
+	}
+	while (p < 0.0f) {
+		p += maxPhase;
+	}
+	return _nextForPhase(p);
+}
+
+void Phasor::_updateDelta() {
+	_delta = (_frequency / _sampleRate) * maxPhase;
 }
 
 float Phasor::_next() {
 	_phase += _delta;
-	if (_phase >= 2.0f) {
-		_phase -= 2.0f;
+	if (_phase >= maxPhase) {
+		_phase -= maxPhase;
 	}
-	else if (_phase <= 0.0f) {
-		_phase += 2.0f;
+	else if (_phase <= 0.0f && _delta != 0.0f) {
+		_phase += maxPhase;
 	}
-	return _phase;
+	return _nextForPhase(_phase);
+}
+
+float Phasor::_nextForPhase(float phase) {
+	return phase;
 }
 
 
@@ -44,9 +59,8 @@ float SineOscillator::_next() {
 }
 
 
-float SawOscillator::_next() {
-	Phasor::_next();
-	return _amplitude * (_phase - 1.0f);
+float SawOscillator::_nextForPhase(float phase) {
+	return _amplitude * (phase - halfMaxPhase);
 }
 
 
@@ -60,20 +74,18 @@ void SquareOscillator::setPulseWidth(float pw) {
 	else {
 		_pulseWidth = pw;
 	}
-	_pulseWidth *= 2.0f;
+	_pulseWidth *= maxPhase;
 }
 
-float SquareOscillator::_next() {
-	Phasor::_next();
-
+float SquareOscillator::_nextForPhase(float phase) {
 	if (positive) {
-		if (_phase >= _pulseWidth) {
+		if (phase >= _pulseWidth) {
 			positive = false;
 			return _negativeAmplitude;
 		}
 		return _amplitude;
 	}
-	if (_phase < _pulseWidth) {
+	if (phase < _pulseWidth) {
 		positive = true;
 		return _amplitude;
 	}
@@ -81,16 +93,15 @@ float SquareOscillator::_next() {
 }
 
 
-float TriangleOscillator::_next() {
-	Phasor::_next();
-	float p = 2.0f * _phase;
-	if (_phase < 0.5f) {
+float TriangleOscillator::_nextForPhase(float phase) {
+	float p = maxPhase * phase;
+	if (phase < quarterMaxPhase) {
 		return _amplitude * p;
 	}
-	if (_phase < 1.5f) {
-		return _amplitude * (2.0f - p);
+	if (phase < threeQuartersMaxPhase) {
+		return _amplitude * (maxPhase - p);
 	}
-	return _amplitude * (p - 4.0f);
+	return _amplitude * (p - twiceMaxPhase);
 }
 
 
