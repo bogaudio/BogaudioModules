@@ -74,6 +74,7 @@ struct Phasor : OscillatorGenerator {
 	virtual float _nextForPhase(float phase);
 
 	static float radiansToPhase(float radians) { return radians / M_PI; }
+	static float phaseToRadians(float phase) { return phase * M_PI; }
 };
 
 struct SineOscillator : OscillatorGenerator {

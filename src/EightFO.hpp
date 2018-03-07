@@ -23,6 +23,8 @@ struct EightFO : Module {
 		PHASE1_PARAM,
 		PHASE0_PARAM,
 		SLOW_PARAM,
+		OFFSET_PARAM,
+		SCALE_PARAM,
 		NUM_PARAMS
 	};
 
@@ -38,6 +40,8 @@ struct EightFO : Module {
 		PHASE0_INPUT,
 		PITCH_INPUT,
 		RESET_INPUT,
+		OFFSET_INPUT,
+		SCALE_INPUT,
 		NUM_INPUTS
 	};
 
@@ -86,6 +90,8 @@ struct EightFO : Module {
 	bool _slowMode = false;
 	int _sampleSteps = 1;
 	int _sampleStep = 0;
+	float _offset = 0.0f;
+	float _scale = 0.0f;
 	SchmittTrigger _resetTrigger;
 
 	Phasor _phasor;
