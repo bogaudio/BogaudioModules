@@ -95,6 +95,7 @@ struct EightFO : Module {
 	SchmittTrigger _resetTrigger;
 
 	Phasor _phasor;
+	SineTableOscillator _sine;
 	TriangleOscillator _triangle;
 	SawOscillator _ramp;
 	SquareOscillator _square;
@@ -129,6 +130,7 @@ struct EightFO : Module {
 	EightFO()
 	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
 	, _phasor(engineGetSampleRate(), 1.0f)
+	, _sine(0.0f, 0.0f)
 	, _triangle(0.0f, 0.0f)
 	, _ramp(0.0f, 0.0f)
 	, _square(0.0f, 0.0f)

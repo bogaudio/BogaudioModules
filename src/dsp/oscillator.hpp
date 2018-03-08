@@ -2,6 +2,7 @@
 
 #include <stdlib.h>
 #include <stdint.h>
+#include <assert.h>
 #include <vector>
 
 #include "base.hpp"
@@ -77,6 +78,36 @@ struct Phasor : OscillatorGenerator {
 	static float phaseToRadians(float phase) { return phase * M_PI; }
 };
 
+struct TablePhasor : Phasor {
+	int _length = 0;
+	float* _table = NULL;
+	float _amplitude;
+
+	TablePhasor(
+		double sampleRate,
+		double frequency,
+		float amplitude = 1.0f,
+		int n = 10
+	)
+	: Phasor(sampleRate, frequency)
+	, _amplitude(amplitude)
+	{
+		assert(n > 0);
+		assert(n <= 16);
+		_length = 1 << n;
+	}
+	virtual ~TablePhasor() {
+		if (_table) {
+			delete[] _table;
+		}
+	}
+
+	void generate();
+	virtual void _generate() = 0;
+
+	virtual float _nextForPhase(float phase) override;
+};
+
 struct SineOscillator : OscillatorGenerator {
 	double _k1, _k2;
 	double _x;
@@ -107,6 +138,19 @@ struct SineOscillator : OscillatorGenerator {
 	void setPhase(double phase);
 	void update();
 	virtual float _next() override;
+};
+
+struct SineTableOscillator : TablePhasor {
+	SineTableOscillator(
+		float sampleRate,
+		float frequency,
+		float amplitude = 1.0
+	)
+	: TablePhasor(sampleRate, frequency, amplitude)
+	{
+	}
+
+	virtual void _generate() override;
 };
 
 struct SawOscillator : Phasor {

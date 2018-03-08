@@ -116,7 +116,7 @@ void EightFO::updateOutput(bool useSample, Output& output, float& offset, float&
 					assert(false);
 				}
 				case SINE_WAVE: {
-					v = sinf((_phasor._phase + offset) * M_PI); // FIXME
+					v = _sine.nextFromPhasor(_phasor, offset);
 					break;
 				}
 				case TRIANGLE_WAVE: {

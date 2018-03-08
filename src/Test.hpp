@@ -74,7 +74,7 @@ struct Test : Module {
 	LowPassFilter _lpf;
 #elif SINE
 	SineOscillator _sine;
-	SineOscillator _sine2;
+	SineTableOscillator _sine2;
 #elif SQUARE
 	SquareOscillator _square;
 #elif SAW
@@ -99,7 +99,7 @@ struct Test : Module {
 	, _lpf(44100.0, 1000.0, 1.0)
 #elif SINE
 	, _sine(44100.0, 1000.0, 5.0)
-	, _sine2(44100.0, 1000.0, 1.0, M_PI/1.0f)
+	, _sine2(44100.0, 1000.0, 5.0)
 #elif SQUARE
 	, _square(44100.0, 1000.0, 5.0)
 #elif SAW
@@ -117,7 +117,10 @@ struct Test : Module {
 	{
 		onReset();
 
-#ifdef SINEBANK
+#ifdef SINE
+		_sine2.setPhase(M_PI);
+
+#elif SINEBANK
 		const float baseAmplitude = 5.0;
 		switch (5) {
 			case 1: {
