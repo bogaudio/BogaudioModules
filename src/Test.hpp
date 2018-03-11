@@ -6,12 +6,14 @@ extern Model* modelTest;
 
 // #define LPF 1
 // #define LPFNOISE 1
-#define SINE 1
+// #define SINE 1
 // #define SQUARE 1
 // #define SAW 1
 // #define TRIANGLE 1
 // #define SINEBANK 1
 // #define OVERSAMPLING 1
+#define FM 1
+// #define PM 1
 
 #include "pitch.hpp"
 #ifdef LPF
@@ -34,6 +36,10 @@ extern Model* modelTest;
 #include "dsp/decimator.hpp" // rack
 #include "dsp/filter.hpp"
 #define OVERSAMPLEN 16
+#elif FM
+#include "dsp/oscillator.hpp"
+#elif PM
+#include "dsp/oscillator.hpp"
 #else
 #error what
 #endif
@@ -42,17 +48,18 @@ using namespace bogaudio::dsp;
 
 namespace bogaudio {
 
-
 struct Test : Module {
 	enum ParamsIds {
 		PARAM1_PARAM,
 		PARAM2_PARAM,
+		PARAM3_PARAM,
 		NUM_PARAMS
 	};
 
 	enum InputsIds {
 		CV1_INPUT,
 		CV2_INPUT,
+		CV3_INPUT,
 		IN_INPUT,
 		NUM_INPUTS
 	};
@@ -89,6 +96,13 @@ struct Test : Module {
 	SawOscillator _saw2;
 	LowPassFilter _lpf;
 	LowPassFilter _lpf2;
+#elif FM
+	SineTableOscillator _modulator;
+	SineTableOscillator _carrier;
+#elif PM
+	SineTableOscillator _modulator;
+	Phasor _carrier;
+	SineTableOscillator _carrierOutput;
 #endif
 
 	Test()
@@ -113,6 +127,13 @@ struct Test : Module {
 	, _saw2(44100.0, 1000.0, 1.0)
 	, _lpf(44100.0, 1000.0, 1.0)
 	, _lpf2(44100.0, 1000.0, 1.0)
+#elif FM
+	, _modulator(44100.0, 1000.0, 1.0)
+	, _carrier(44100.0, 1000.0, 1.0)
+#elif PM
+	, _modulator(44100.0, 1000.0, 1.0)
+	, _carrier(44100.0, 1000.0)
+	, _carrierOutput(44100.0, 1000.0)
 #endif
 	{
 		onReset();
@@ -184,6 +205,7 @@ struct Test : Module {
 	virtual void onReset() override;
 	virtual void step() override;
 	float oscillatorPitch();
+	float oscillatorPitch2();
 };
 
 } // namespace bogaudio

@@ -102,13 +102,12 @@
     </g>
   </g>
 
-  <g transform="translate(0 25)">
-    <text font-size="6pt" letter-spacing="2px" transform="translate(5.5 0)">P1</text>
+  <g transform="translate(0 10)">
+    <!-- <text font-size="6pt" letter-spacing="2px" transform="translate(5.5 0)">P1</text> -->
     <use id="PARAM1_PARAM" xlink:href="#knob" transform="translate(0 -6)" />
     <use xlink:href="#knobguide" transform="translate(0 -6)" />
   </g>
-
-  <g transform="translate(0 63)">
+  <g transform="translate(0 50)">
     <g transform="translate(5.5 0)">
       <rect width="34" height="38" rx="5" fill="#fafafa" />
       <use id="CV1_INPUT" xlink:href="#input" transform="translate(5 3)" />
@@ -116,20 +115,33 @@
     </g>
   </g>
 
-  <g transform="translate(0 125)">
-    <text font-size="6pt" letter-spacing="2px" transform="translate(5.5 0)">P2</text>
+  <g transform="translate(0 95)">
+    <!-- <text font-size="6pt" letter-spacing="2px" transform="translate(5.5 0)">P2</text> -->
     <use id="PARAM2_PARAM" xlink:href="#knob" transform="translate(0 -6)" />
     <use xlink:href="#knobguide" transform="translate(0 -6)" />
   </g>
-
-  <g transform="translate(0 165)">
+  <g transform="translate(0 135)">
     <g transform="translate(5.5 0)">
       <rect width="34" height="38" rx="5" fill="#fafafa" />
       <use id="CV2_INPUT" xlink:href="#input" transform="translate(5 3)" />
       <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">CV</text>
     </g>
   </g>
-  <g transform="translate(0 255)">
+
+  <g transform="translate(0 180)">
+    <!-- <text font-size="6pt" letter-spacing="2px" transform="translate(5.5 0)">P3</text> -->
+    <use id="PARAM3_PARAM" xlink:href="#knob" transform="translate(0 -6)" />
+    <use xlink:href="#knobguide" transform="translate(0 -6)" />
+  </g>
+  <g transform="translate(0 220)">
+    <g transform="translate(5.5 0)">
+      <rect width="34" height="38" rx="5" fill="#fafafa" />
+      <use id="CV3_INPUT" xlink:href="#input" transform="translate(5 3)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">CV</text>
+    </g>
+  </g>
+
+  <g transform="translate(0 265)">
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)" />
       <rect width="34" height="70" rx="5" fill="#fafafa" />
