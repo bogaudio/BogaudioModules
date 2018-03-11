@@ -12,8 +12,9 @@ extern Model* modelTest;
 // #define TRIANGLE 1
 // #define SINEBANK 1
 // #define OVERSAMPLING 1
-#define FM 1
+// #define FM 1
 // #define PM 1
+#define EG 1
 
 #include "pitch.hpp"
 #ifdef LPF
@@ -40,6 +41,8 @@ extern Model* modelTest;
 #include "dsp/oscillator.hpp"
 #elif PM
 #include "dsp/oscillator.hpp"
+#elif EG
+#include "dsp/envelope.hpp"
 #else
 #error what
 #endif
@@ -103,6 +106,8 @@ struct Test : Module {
 	SineTableOscillator _modulator;
 	Phasor _carrier;
 	SineTableOscillator _carrierOutput;
+#elif EG
+	ADSR _envelope;
 #endif
 
 	Test()
@@ -134,6 +139,8 @@ struct Test : Module {
 	, _modulator(44100.0, 1000.0, 1.0)
 	, _carrier(44100.0, 1000.0)
 	, _carrierOutput(44100.0, 1000.0)
+#elif EG
+	, _envelope(44100.0)
 #endif
 	{
 		onReset();

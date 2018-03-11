@@ -87,7 +87,7 @@ void Test::step() {
 	);
 	float s = 0.0f;
 	for (int i = 0; i < OVERSAMPLEN; ++i) {
-	  // s = _lpf2.next(_lpf.next(_saw2.next()));
+		// s = _lpf2.next(_lpf.next(_saw2.next()));
 		s = _lpf.next(_saw2.next());
 		// s = _saw2.next();
 	}
@@ -126,6 +126,14 @@ void Test::step() {
 		_carrier._phase += Phasor::maxPhase;
 	}
 	outputs[OUT_OUTPUT].value = _carrierOutput.nextFromPhasor(_carrier) * 5.0f;
+
+#elif EG
+	_envelope.setAttack(params[PARAM1_PARAM].value);
+	_envelope.setDecay(params[PARAM2_PARAM].value);
+	_envelope.setSustain(params[PARAM3_PARAM].value);
+	_envelope.setRelease(params[PARAM2_PARAM].value);
+	_envelope.setGate(inputs[CV1_INPUT].value > 0.1f);
+	outputs[OUT_OUTPUT].value = _envelope.next();
 #endif
 }
 
