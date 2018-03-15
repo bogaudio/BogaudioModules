@@ -14,7 +14,8 @@ extern Model* modelTest;
 // #define OVERSAMPLING 1
 // #define FM 1
 // #define PM 1
-#define EG 1
+#define FEEDBACK_PM 1
+// #define EG 1
 
 #include "pitch.hpp"
 #ifdef LPF
@@ -40,6 +41,8 @@ extern Model* modelTest;
 #elif FM
 #include "dsp/oscillator.hpp"
 #elif PM
+#include "dsp/oscillator.hpp"
+#elif FEEDBACK_PM
 #include "dsp/oscillator.hpp"
 #elif EG
 #include "dsp/envelope.hpp"
@@ -106,6 +109,10 @@ struct Test : Module {
 	SineTableOscillator _modulator;
 	Phasor _carrier;
 	SineTableOscillator _carrierOutput;
+#elif FEEDBACK_PM
+	Phasor _carrier;
+	SineTableOscillator _carrierOutput;
+	float _feedbackSample = 0.0f;
 #elif EG
 	ADSR _envelope;
 #endif
@@ -137,6 +144,9 @@ struct Test : Module {
 	, _carrier(44100.0, 1000.0, 1.0)
 #elif PM
 	, _modulator(44100.0, 1000.0, 1.0)
+	, _carrier(44100.0, 1000.0)
+	, _carrierOutput(44100.0, 1000.0)
+#elif FEEDBACK_PM
 	, _carrier(44100.0, 1000.0)
 	, _carrierOutput(44100.0, 1000.0)
 #elif EG
@@ -213,6 +223,8 @@ struct Test : Module {
 	virtual void step() override;
 	float oscillatorPitch();
 	float oscillatorPitch2();
+	float ratio2();
+	float index3();
 };
 
 } // namespace bogaudio

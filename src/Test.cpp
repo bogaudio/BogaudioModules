@@ -94,38 +94,54 @@ void Test::step() {
 	outputs[OUT2_OUTPUT].value = s * 5.0;
 
 #elif FM
+	float baseHz = oscillatorPitch();
+	float ratio = ratio2();
 	_modulator.setSampleRate(engineGetSampleRate());
-	_modulator.setFrequency(oscillatorPitch2());
-	float index = params[PARAM3_PARAM].value;
-	if (inputs[CV3_INPUT].active) {
-		index *= clamp(inputs[CV3_INPUT].value, 0.0f, 10.0f) / 10.0f;
-	}
-	float hz = _modulator.next() * index * 10000.0f;
+	_modulator.setFrequency(baseHz * ratio2());
+	float hz = _modulator.next() * index3() * ratio * baseHz;
 	_carrier.setSampleRate(engineGetSampleRate());
-	_carrier.setFrequency(oscillatorPitch() + hz);
-	float v1 = _carrier.next() * 5.0f;
-	outputs[OUT_OUTPUT].value = v1;
+	_carrier.setFrequency(baseHz + hz);
+	outputs[OUT_OUTPUT].value = _carrier.next() * 5.0f;
+
+	_carrier2.setSampleRate(engineGetSampleRate());
+	_carrier2.setFrequency(oscillatorPitch());
+	_modulator2.setSampleRate(engineGetSampleRate());
+	_modulator2.setFrequency(_carrier2._frequency * ratio);
+	_carrier2.next();
+	outputs[OUT2_OUTPUT].value = _carrierOutput2.nextFromPhasor(_carrier2, Phasor::radiansToPhase(index3() * _modulator2.next())) * 5.0f;
 
 #elif PM
 	_carrier.setSampleRate(engineGetSampleRate());
 	_carrier.setFrequency(oscillatorPitch());
 	_modulator.setSampleRate(engineGetSampleRate());
-	_modulator.setFrequency(oscillatorPitch2());
+	_modulator.setFrequency(_carrier._frequency * ratio2());
 	// _carrierOutput.setSampleRate(engineGetSampleRate());
-	float index = params[PARAM3_PARAM].value;
-	if (inputs[CV3_INPUT].active) {
-		index *= clamp(inputs[CV3_INPUT].value, 0.0f, 10.0f) / 10.0f;
-	}
-	float hz = _modulator.next() * index * 10000.0f;
 	_carrier.next();
-	_carrier._phase += Phasor::maxPhase * (hz / _carrier._sampleRate);
-	if (_carrier._phase >= Phasor::maxPhase) {
-		_carrier._phase -= Phasor::maxPhase;
+	outputs[OUT_OUTPUT].value = _carrierOutput.nextFromPhasor(_carrier, Phasor::radiansToPhase(index3() * _modulator.next())) * 5.0f;
+
+#elif FEEDBACK_PM
+	_carrier.setSampleRate(engineGetSampleRate());
+	_carrier.setFrequency(oscillatorPitch());
+	float feedback = params[PARAM3_PARAM].value;
+	if (inputs[CV3_INPUT].active) {
+		feedback *= clamp(inputs[CV3_INPUT].value, 0.0f, 10.0f) / 10.0f;
 	}
-	else if (_carrier._phase <= 0.0f) {
-		_carrier._phase += Phasor::maxPhase;
-	}
-	outputs[OUT_OUTPUT].value = _carrierOutput.nextFromPhasor(_carrier) * 5.0f;
+	// feedback *= 10.0f;
+
+	// no delay:
+	feedback *= _carrier.next();
+
+	// // 1 sample:
+	// feedback *= _carrier.current();
+	// _carrier.next();
+
+	// // 2 samples averaged:
+	// float feedbackSample = _carrier.current();
+	// _carrier.next();
+	// feedback *= (_feedbackSample + feedbackSample) / 2.0f;
+	// _feedbackSample = feedbackSample;
+
+	outputs[OUT_OUTPUT].value = _carrierOutput.nextFromPhasor(_carrier, Phasor::radiansToPhase(feedback)) * 5.0f;
 
 #elif EG
 	_envelope.setAttack(params[PARAM1_PARAM].value);
@@ -133,7 +149,7 @@ void Test::step() {
 	_envelope.setSustain(params[PARAM3_PARAM].value);
 	_envelope.setRelease(params[PARAM2_PARAM].value);
 	_envelope.setGate(inputs[CV1_INPUT].value > 0.1f);
-	outputs[OUT_OUTPUT].value = _envelope.next();
+	outputs[OUT_OUTPUT].value = _envelope.next() * 10.0f;
 #endif
 }
 
@@ -149,6 +165,25 @@ float Test::oscillatorPitch2() {
 		return cvToFrequency(inputs[CV2_INPUT].value);
 	}
 	return 10000.0 * powf(params[PARAM2_PARAM].value, 2.0);
+}
+
+float Test::ratio2() {
+	float ratio = (params[PARAM2_PARAM].value * 2.0f) - 1.0f;
+	if (inputs[CV2_INPUT].active) {
+		ratio *= clamp(inputs[CV2_INPUT].value / 5.0f, -1.0f, 1.0f);
+	}
+	if (ratio < 0.0f) {
+		return 1.0f + ratio;
+	}
+	return 1.0f + 9.0f*ratio;
+}
+
+float Test::index3() {
+	float index = params[PARAM3_PARAM].value;
+	if (inputs[CV3_INPUT].active) {
+		index *= clamp(inputs[CV3_INPUT].value, 0.0f, 10.0f) / 10.0f;
+	}
+	return index * 10.0f;
 }
 
 
