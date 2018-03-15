@@ -1,0 +1,206 @@
+<svg
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="300"
+  height="380"
+  viewBox="0 0 300 380"
+>
+  <style>
+    text {
+      fill: #333;
+      font-family: 'Roboto', sans-serif;
+      font-weight: bold;
+    }
+    text.title {
+      font-family: 'Comfortaa', sans-serif;
+      font-weight: normal;
+    }
+    text.brand {
+      font-family: 'Audiowide', sans-serif;
+      font-weight: bold;
+    }
+  </style>
+
+  <defs>
+    <symbol id="knob" viewBox="0 0 38px 38px">
+      <g transform="translate(19 19)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f" />
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f" />
+        <circle cx="0" cy="0" r="18" stroke-width="1" stroke="#00f" fill="none" />
+      </g>
+    </symbol>
+
+    <symbol id="knob-medium" viewBox="0 0 26px 26px">
+      <g transform="translate(13 13)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f" />
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f" />
+        <circle cx="0" cy="0" r="12" stroke-width="1" stroke="#00f" fill="none" />
+      </g>
+    </symbol>
+
+    <symbol id="knob-smallest" viewBox="0 0 16px 16px">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f" />
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f" />
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none" />
+      </g>
+    </symbol>
+
+    <symbol id="input" viewBox="0 0 24px 24px">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0" />
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none" />
+      </g>
+    </symbol>
+
+    <symbol id="output" viewBox="0 0 24px 24px">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00" />
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none" />
+      </g>
+    </symbol>
+
+    <symbol id="button-small" viewBox="0 0 9px 9px">
+      <g transform="translate(4.5 4.5)">
+        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00" />
+      </g>
+    </symbol>
+
+    <symbol id="light" viewBox="0 0 1.1px 1.1px">
+      <rect width="3.2" height="3.2" fill="#0f0" />
+    </symbol>
+
+    <symbol id="light-red" viewBox="0 0 1.1px 1.1px">
+      <rect width="3.2" height="3.2" fill="#f00" />
+    </symbol>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ddd" />
+  <polyline points="1,1 299,1 299,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none" />
+  <polyline points="0.5,0.5 299.5,0.5 299.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none" />
+  <polyline points="0,0 300,0 300,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none" />
+
+  <!-- <rect width="115" height="20" fill="#0f0" transform="translate(0 0)" /> -->
+  <!-- <rect width="115" height="20" fill="#0f0" transform="translate(185 0)" /> -->
+
+  <text class="title" x="114" y="19" font-size="12pt" letter-spacing="4px">FM-OP</text>
+  <g transform="translate(110 374)">
+    <text class="brand" font-size="8pt" letter-spacing="2px">BOGAUDIO</text>
+    <rect width="3.0" height="3" fill="#ddd" transform="translate(24 -5)" />
+  </g>
+
+  <g transform="translate(10 50)">
+    <g transform="translate(10 0)">
+      <text font-size="8pt" letter-spacing="2px" transform="translate(8 40) rotate(270)">RATIO</text>
+      <use id="RATIO_PARAM" xlink:href="#knob" transform="translate(20 0)" />
+    </g>
+    <g transform="translate(90 0)">
+      <text font-size="8pt" letter-spacing="2px" transform="translate(8 35) rotate(270)">FINE</text>
+      <use id="FINE_PARAM" xlink:href="#knob-smallest" transform="translate(20 12)" />
+    </g>
+  </g>
+
+  <g transform="translate(10 130)">
+    <g transform="translate(10 0)">
+      <text font-size="8pt" letter-spacing="2px" transform="translate(8 40) rotate(270)">ATTACK</text>
+      <use id="ATTACK_PARAM" xlink:href="#knob-medium" transform="translate(20 0)" />
+    </g>
+    <g transform="translate(65 0)">
+      <text font-size="8pt" letter-spacing="2px" transform="translate(8 35) rotate(270)">DECAY</text>
+      <use id="DECAY_PARAM" xlink:href="#knob-medium" transform="translate(20 0)" />
+    </g>
+    <g transform="translate(120 0)">
+      <text font-size="8pt" letter-spacing="2px" transform="translate(8 40) rotate(270)">SUSTAIN</text>
+      <use id="SUSTAIN_PARAM" xlink:href="#knob-medium" transform="translate(20 0)" />
+    </g>
+    <g transform="translate(175 0)">
+      <text font-size="8pt" letter-spacing="2px" transform="translate(8 40) rotate(270)">RELEASE</text>
+      <use id="RELEASE_PARAM" xlink:href="#knob-medium" transform="translate(20 0)" />
+    </g>
+  </g>
+
+  <g transform="translate(20 160)">
+    <g transform="translate(0 17.5)">
+      <use id="BYPASS_LIGHT" xlink:href="#light" transform="translate(0 0)" />
+      <text font-size="7pt" letter-spacing="2px" transform="translate(7 5)">BYPASS</text>
+    </g>
+    <use id="BYPASS_PARAM" xlink:href="#button-small" transform="translate(58 14.5)" />
+  </g>
+
+  <g transform="translate(10 215)">
+    <g transform="translate(10 0)">
+      <text font-size="8pt" letter-spacing="2px" transform="translate(8 35) rotate(270)">DEPTH</text>
+      <use id="DEPTH_PARAM" xlink:href="#knob-medium" transform="translate(20 0)" />
+    </g>
+    <g transform="translate(65 0)">
+      <text font-size="8pt" letter-spacing="2px" transform="translate(8 45) rotate(270)">FEEDBACK</text>
+      <use id="FEEDBACK_PARAM" xlink:href="#knob-medium" transform="translate(20 0)" />
+    </g>
+    <g transform="translate(120 0)">
+      <text font-size="8pt" letter-spacing="2px" transform="translate(8 35) rotate(270)">LEVEL</text>
+      <use id="LEVEL_PARAM" xlink:href="#knob-medium" transform="translate(20 0)" />
+    </g>
+  </g>
+
+  <g transform="translate(0 270)">
+    <g transform="translate(10 0)">
+      <rect width="30" height="40" rx="5" fill="#fafafa" />
+      <use id="SUSTAIN_INPUT" xlink:href="#input" transform="translate(3 3)" />
+      <text font-size="6pt" letter-spacing="1px" transform="translate(11.5 36)">S</text>
+    </g>
+    <g transform="translate(50 0)">
+      <rect width="30" height="40" rx="5" fill="#fafafa" />
+      <use id="DEPTH_INPUT" xlink:href="#input" transform="translate(3 3)" />
+      <text font-size="6pt" letter-spacing="2px" transform="translate(11.5 36)">D</text>
+    </g>
+    <g transform="translate(90 0)">
+      <rect width="30" height="40" rx="5" fill="#fafafa" />
+      <use id="FEEDBACK_INPUT" xlink:href="#input" transform="translate(3 3)" />
+      <text font-size="6pt" letter-spacing="2px" transform="translate(9 36)">FB</text>
+    </g>
+    <g transform="translate(130 0)">
+      <rect width="30" height="40" rx="5" fill="#fafafa" />
+      <use id="LEVEL_INPUT" xlink:href="#input" transform="translate(3 3)" />
+      <text font-size="6pt" letter-spacing="2px" transform="translate(11.5 36)">L</text>
+    </g>
+    <g transform="translate(255 17.5)">
+      <use id="NEGATIVE_LIGHT" xlink:href="#light-red" transform="translate(0 0)" />
+      <text font-size="7pt" letter-spacing="2px" transform="translate(7 5)">NEG</text>
+    </g>
+  </g>
+
+  <g transform="translate(0 320)">
+    <g transform="translate(10 0)">
+      <rect width="30" height="40" rx="5" fill="#fafafa" />
+      <use id="PITCH_INPUT" xlink:href="#input" transform="translate(3 3)" />
+      <text font-size="6pt" letter-spacing="1px" transform="translate(1 36)">V/OCT</text>
+    </g>
+    <g transform="translate(50 0)">
+      <rect width="30" height="40" rx="5" fill="#fafafa" />
+      <use id="GATE_INPUT" xlink:href="#input" transform="translate(3 3)" />
+      <text font-size="6pt" letter-spacing="1px" transform="translate(3 36)">GATE</text>
+    </g>
+    <g transform="translate(90 0)">
+      <rect width="30" height="40" rx="5" fill="#fafafa" />
+      <use id="FM_INPUT" xlink:href="#input" transform="translate(3 3)" />
+      <text font-size="6pt" letter-spacing="1px" transform="translate(8.5 36)">FM</text>
+    </g>
+
+    <g transform="translate(180 0)">
+      <rect width="30" height="40" rx="5" fill="#bbb" />
+      <use id="PITCH_OUTPUT" xlink:href="#output" transform="translate(3 3)" />
+      <text font-size="6pt" letter-spacing="1px" transform="translate(1 36)">V/OCT</text>
+    </g>
+    <g transform="translate(220 0)">
+      <rect width="30" height="40" rx="5" fill="#bbb" />
+      <use id="GATE_OUTPUT" xlink:href="#output" transform="translate(3 3)" />
+      <text font-size="6pt" letter-spacing="1px" transform="translate(3 36)">GATE</text>
+    </g>
+    <g transform="translate(260 0)">
+      <rect width="30" height="40" rx="5" fill="#bbb" />
+      <use id="AUDIO_OUTPUT" xlink:href="#output" transform="translate(3 3)" />
+      <text font-size="6pt" letter-spacing="1px" transform="translate(6 36)">OUT</text>
+    </g>
+  </g>
+</svg>

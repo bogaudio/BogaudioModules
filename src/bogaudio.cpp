@@ -3,6 +3,7 @@
 
 #include "Additator.hpp"
 #include "EightFO.hpp"
+#include "FMOp.hpp"
 
 #include "Shaper.hpp"
 #include "ShaperPlus.hpp"
@@ -39,6 +40,7 @@ void init(rack::Plugin *p) {
 #ifdef EXPERIMENTAL
 	p->addModel(modelAdditator);
 	p->addModel(modelEightFO);
+	p->addModel(modelFMOp);
 #endif
 
 	p->addModel(modelShaper);

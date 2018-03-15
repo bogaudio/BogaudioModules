@@ -45,6 +45,7 @@ struct ADSR : EnvelopeGenerator {
 	{
 	}
 
+	void reset();
 	void setGate(bool high);
 	void setAttack(float seconds);
 	void setDecay(float seconds);

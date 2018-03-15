@@ -14,6 +14,11 @@ void EnvelopeGenerator::setSampleRate(float sampleRate) {
 	}
 }
 
+void ADSR::reset() {
+	_stage = STOPPED_STAGE;
+	_gated = false;
+	_envelope = 0.0f;
+}
 
 void ADSR::setGate(bool high) {
 	_gated = high;
@@ -127,5 +132,5 @@ float ADSR::_next() {
 		}
 	}
 
-	return 10.0f * _envelope;
+	return _envelope;
 }
