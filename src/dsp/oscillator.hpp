@@ -1,11 +1,10 @@
 #pragma once
 
 #include <stdlib.h>
-#include <assert.h>
 #include <vector>
 
 #include "base.hpp"
-#include "noise.hpp"
+#include "table.hpp"
 
 namespace bogaudio {
 namespace dsp {
@@ -78,31 +77,20 @@ struct Phasor : OscillatorGenerator {
 };
 
 struct TablePhasor : Phasor {
-	int _length = 0;
-	float* _table = NULL;
+	const Table& _table;
 	float _amplitude;
 
 	TablePhasor(
+		const Table& table,
 		double sampleRate,
 		double frequency,
-		float amplitude = 1.0f,
-		int n = 10
+		float amplitude = 1.0f
 	)
 	: Phasor(sampleRate, frequency)
+	, _table(table)
 	, _amplitude(amplitude)
 	{
-		assert(n > 0);
-		assert(n <= 16);
-		_length = 1 << n;
 	}
-	virtual ~TablePhasor() {
-		if (_table) {
-			delete[] _table;
-		}
-	}
-
-	void generate();
-	virtual void _generate() = 0;
 
 	virtual float _nextForPhase(float phase) override;
 };
@@ -145,11 +133,9 @@ struct SineTableOscillator : TablePhasor {
 		float frequency,
 		float amplitude = 1.0
 	)
-	: TablePhasor(sampleRate, frequency, amplitude)
+	: TablePhasor(StaticSineTable::table(), sampleRate, frequency, amplitude)
 	{
 	}
-
-	virtual void _generate() override;
 };
 
 struct SawOscillator : Phasor {

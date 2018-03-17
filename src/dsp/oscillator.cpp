@@ -39,28 +39,17 @@ float Phasor::_nextForPhase(float phase) {
 }
 
 
-void TablePhasor::generate() {
-	if (!_table) {
-		_table = new float[_length] {};
-		_generate();
-	}
-}
-
 float TablePhasor::_nextForPhase(float phase) {
-	if (!_table) {
-		generate();
-	}
-
 	while (phase >= maxPhase) {
 		phase -= maxPhase;
 	}
 	while (phase < 0.0f) {
 		phase += maxPhase;
 	}
-	float fi = phase * (_length / 2);
+	float fi = phase * (_table.length() / 2);
 	int i = (int)fi;
-	float v1 = _table[i];
-	float v2 = _table[i + 1 == _length ? 0 : i + 1];
+	float v1 = _table.value(i);
+	float v2 = _table.value(i + 1 == _table.length() ? 0 : i + 1);
 	return _amplitude * (v1 + (fi - i)*(v2 - v1));
 }
 
@@ -82,14 +71,6 @@ float SineOscillator::_next() {
 	_y = _y + _k2*t;
 	_x = t - _k1*_y;
 	return _amplitude * _y;
-}
-
-
-void SineTableOscillator::_generate() {
-	const float twoPI = 2.0f * M_PI;
-	for (int i = 0; i < _length; ++i) {
-		_table[i] = sinf(twoPI * (i / (float)_length));
-	}
 }
 
 
