@@ -1,5 +1,7 @@
 #pragma once
 
+#include <math.h>
+
 namespace bogaudio {
 namespace dsp {
 
@@ -24,6 +26,27 @@ struct BiquadFilter : Filter {
 
 	void setParams(float b0, float b1, float b2, float a0, float a1, float a2);
 	virtual float next(float sample) override;
+};
+
+struct ComplexBiquadFilter : BiquadFilter {
+	float _gain = 1.0f;
+	float _zeroRadius = 1.0f;
+	float _zeroTheta = M_PI;
+	float _poleRadius = 0.9f;
+	float _poleTheta = 0.0f;
+
+	ComplexBiquadFilter() {
+		updateParams();
+	}
+
+	void setComplexParams(
+		float gain,
+		float zeroRadius,
+		float zeroTheta,
+		float poleRadius,
+		float poleTheta
+	);
+	void updateParams();
 };
 
 struct LowPassFilter : Filter {

@@ -24,6 +24,7 @@
 #include "VCA.hpp"
 
 #include "Test.hpp"
+#include "Test2.hpp"
 #include "template_panels.hpp"
 
 //NEW_INCLUDES_HERE
@@ -63,6 +64,7 @@ void init(rack::Plugin *p) {
 
 #ifdef TEST
 	p->addModel(modelTest);
+	p->addModel(modelTest2);
 
 	p->addModel(modelThreeHP);
 	p->addModel(modelSixHP);

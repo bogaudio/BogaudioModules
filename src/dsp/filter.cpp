@@ -1,5 +1,6 @@
 
 #include <math.h>
+#include <assert.h>
 
 #include "filter.hpp"
 
@@ -30,6 +31,46 @@ float BiquadFilter::next(float sample) {
 	_y[0] -= _a2 * _y[2];
 
 	return _y[0];
+}
+
+
+void ComplexBiquadFilter::setComplexParams(
+	float gain,
+	float zeroRadius,
+	float zeroTheta,
+	float poleRadius,
+	float poleTheta
+) {
+	if (
+		_gain != gain ||
+		_zeroRadius != zeroRadius ||
+		_zeroTheta != zeroTheta ||
+		_poleRadius != poleRadius ||
+		_poleTheta != poleTheta
+	) {
+		assert(gain >= 0.0f && gain <= 1.0f);
+		assert(zeroRadius >= 0.0f && zeroRadius <= 1.0f);
+		assert(zeroTheta >= 0.0f && zeroTheta <= 2.0f*M_PI);
+		assert(poleRadius >= 0.0f && poleRadius <= 1.0f);
+		assert(poleTheta >= 0.0f && poleTheta <= 2.0f*M_PI);
+		_gain = gain;
+		_zeroRadius = zeroRadius;
+		_zeroTheta = zeroTheta;
+		_poleRadius = poleRadius;
+		_poleTheta = poleTheta;
+		updateParams();
+	}
+}
+
+void ComplexBiquadFilter::updateParams() {
+	setParams(
+		_gain,
+		-2.0f * _zeroRadius * cosf(_zeroTheta) * _gain,
+		_zeroRadius * _zeroRadius * _gain,
+		1.0f,
+		-2.0f * _poleRadius * cosf(_poleTheta),
+		_poleRadius * _poleRadius
+	);
 }
 
 
