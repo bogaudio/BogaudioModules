@@ -6,8 +6,8 @@ extern Model* modelTest;
 
 // #define LPF 1
 // #define LPFNOISE 1
-#define SINE 1
-// #define SQUARE 1
+// #define SINE 1
+#define SQUARE 1
 // #define SAW 1
 // #define TRIANGLE 1
 // #define SINEBANK 1
@@ -16,6 +16,7 @@ extern Model* modelTest;
 // #define PM 1
 // #define FEEDBACK_PM 1
 // #define EG 1
+// #define TABLES 1
 
 #include "pitch.hpp"
 #ifdef LPF
@@ -46,6 +47,8 @@ extern Model* modelTest;
 #include "dsp/oscillator.hpp"
 #elif EG
 #include "dsp/envelope.hpp"
+#elif TABLES
+#include "dsp/oscillator.hpp"
 #else
 #error what
 #endif
@@ -90,8 +93,10 @@ struct Test : Module {
 	SineTableOscillator _sine2;
 #elif SQUARE
 	SquareOscillator _square;
+	BandLimitedSquareOscillator _square2;
 #elif SAW
 	SawOscillator _saw;
+	BandLimitedSawOscillator _saw2;
 #elif TRIANGLE
 	TriangleOscillator _triangle;
 #elif SINEBANK
@@ -115,6 +120,9 @@ struct Test : Module {
 	float _feedbackSample = 0.0f;
 #elif EG
 	ADSR _envelope;
+#elif TABLES
+	SineTableOscillator _sine;
+	TablePhasor _table;
 #endif
 
 	Test()
@@ -128,8 +136,10 @@ struct Test : Module {
 	, _sine2(44100.0, 1000.0, 5.0)
 #elif SQUARE
 	, _square(44100.0, 1000.0, 5.0)
+	, _square2(44100.0, 1000.0, 5.0)
 #elif SAW
 	, _saw(44100.0, 1000.0, 5.0)
+	, _saw2(44100.0, 1000.0, 5.0, 8)
 #elif TRIANGLE
 	, _triangle(44100.0, 1000.0, 5.0)
 #elif SINEBANK
@@ -151,12 +161,18 @@ struct Test : Module {
 	, _carrierOutput(44100.0, 1000.0)
 #elif EG
 	, _envelope(44100.0)
+#elif TABLES
+  , _sine(44100.0, 1000.0, 5.0)
+  , _table(StaticBlepTable::table(), 44100.0, 1000.0, 5.0)
 #endif
 	{
 		onReset();
 
 #ifdef SINE
 		_sine2.setPhase(M_PI);
+
+#elif SAW
+		_saw2.setPhase(M_PI);
 
 #elif SINEBANK
 		const float baseAmplitude = 5.0;

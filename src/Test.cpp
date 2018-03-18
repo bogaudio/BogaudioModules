@@ -49,10 +49,21 @@ void Test::step() {
 	_square.setPulseWidth(pw);
 	outputs[OUT_OUTPUT].value = _square.next();
 
+	_square2.setSampleRate(engineGetSampleRate());
+	_square2.setFrequency(oscillatorPitch());
+	_square2.setPulseWidth(pw);
+	_square2.setQuality(params[PARAM3_PARAM].value * 200);
+	outputs[OUT2_OUTPUT].value = _square2.next();
+
 #elif SAW
 	_saw.setSampleRate(engineGetSampleRate());
 	_saw.setFrequency(oscillatorPitch());
 	outputs[OUT_OUTPUT].value = _saw.next();
+
+	_saw2.setSampleRate(engineGetSampleRate());
+	_saw2.setFrequency(oscillatorPitch());
+	_saw2.setQuality(params[PARAM2_PARAM].value * 200);
+	outputs[OUT2_OUTPUT].value = _saw2.next();
 
 #elif TRIANGLE
 	_triangle.setSampleRate(engineGetSampleRate());
@@ -150,6 +161,15 @@ void Test::step() {
 	_envelope.setRelease(params[PARAM2_PARAM].value);
 	_envelope.setGate(inputs[CV1_INPUT].value > 0.1f);
 	outputs[OUT_OUTPUT].value = _envelope.next() * 10.0f;
+
+#elif TABLES
+	_sine.setSampleRate(engineGetSampleRate());
+	_sine.setFrequency(oscillatorPitch());
+	outputs[OUT_OUTPUT].value = _sine.next();
+
+	_table.setSampleRate(engineGetSampleRate());
+	_table.setFrequency(oscillatorPitch());
+	outputs[OUT2_OUTPUT].value = _table.next();
 #endif
 }
 

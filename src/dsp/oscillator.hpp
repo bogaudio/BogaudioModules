@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdlib.h>
+#include <math.h>
 #include <vector>
 
 #include "base.hpp"
@@ -55,20 +56,20 @@ struct Phasor : OscillatorGenerator {
 	: OscillatorGenerator(sampleRate, frequency)
 	{
 		setPhase(initialPhase);
-		_updateDelta();
+		_update();
 	}
 
 	virtual void _sampleRateChanged() override {
-		_updateDelta();
+		_update();
 	}
 
 	virtual void _frequencyChanged() override {
-		_updateDelta();
+		_update();
 	}
 
 	void setPhase(float radians);
 	float nextFromPhasor(const Phasor& phasor, float offset = 0.0f); // offset is not radians, but local phase.
-	void _updateDelta();
+	virtual void _update();
 	virtual float _next() override final;
 	virtual float _nextForPhase(float phase);
 
@@ -145,7 +146,7 @@ struct SawOscillator : Phasor {
 	SawOscillator(
 		float sampleRate,
 		float frequency,
-		float amplitude = 1.0
+		float amplitude = 1.0f
 	)
 	: Phasor(sampleRate, frequency)
 	, _amplitude(amplitude)
@@ -155,9 +156,37 @@ struct SawOscillator : Phasor {
 	virtual float _nextForPhase(float phase) override;
 };
 
+struct BandLimitedSawOscillator : SawOscillator {
+	int _quality;
+	const Table& _table;
+	float _qd = 0.0f;
+	float _halfTableLen;
+
+	BandLimitedSawOscillator(
+		float sampleRate,
+		float frequency,
+		float amplitude = 1.0f,
+		int quality = 5,
+		const Table& table = StaticBlepTable::table()
+	)
+	: SawOscillator(sampleRate, frequency, amplitude)
+	, _quality(quality)
+	, _table(table)
+	, _halfTableLen(_table.length() / 2)
+	{
+		setQuality(quality);
+	}
+
+	void setQuality(int quality);
+
+	virtual void _update() override;
+	virtual float _nextForPhase(float phase) override;
+};
+
 struct SquareOscillator : Phasor {
 	float _amplitude;
 	float _negativeAmplitude;
+	float _pulseWidthInput;
 	float _pulseWidth = 0.5;
 	bool positive = true;
 
@@ -170,6 +199,28 @@ struct SquareOscillator : Phasor {
 	, _amplitude(amplitude)
 	, _negativeAmplitude(-amplitude)
 	{
+	}
+
+	void setPulseWidth(float pw);
+
+	virtual float _nextForPhase(float phase) override;
+};
+
+struct BandLimitedSquareOscillator : BandLimitedSawOscillator {
+	float _pulseWidthInput;
+	float _pulseWidth;
+	float _offset;
+
+	BandLimitedSquareOscillator(
+		float sampleRate,
+		float frequency,
+		float amplitude = 1.0f,
+		int quality = 5,
+		const Table& table = StaticBlepTable::table()
+	)
+	: BandLimitedSawOscillator(sampleRate, frequency, amplitude, quality, table)
+	{
+		setPulseWidth(0.05f);
 	}
 
 	void setPulseWidth(float pw);

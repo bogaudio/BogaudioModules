@@ -64,12 +64,17 @@ public:
 	}
 };
 
-
 struct SineTable : Table {
 	SineTable(int n = 10) : Table(n) {}
 	virtual void _generate() override;
 };
 struct StaticSineTable : StaticTable<SineTable, 12> {};
+
+struct BlepTable : Table {
+	BlepTable(int n = 10) : Table(n) {}
+	virtual void _generate() override;
+};
+struct StaticBlepTable : StaticTable<BlepTable, 12> {};
 
 } // namespace dsp
 } // namespace bogaudio

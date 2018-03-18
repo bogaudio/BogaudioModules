@@ -19,7 +19,7 @@ float Phasor::nextFromPhasor(const Phasor& phasor, float offset) {
 	return _nextForPhase(p);
 }
 
-void Phasor::_updateDelta() {
+void Phasor::_update() {
 	_delta = (_frequency / _sampleRate) * maxPhase;
 }
 
@@ -79,7 +79,43 @@ float SawOscillator::_nextForPhase(float phase) {
 }
 
 
+void BandLimitedSawOscillator::setQuality(int quality) {
+	if (_quality != quality) {
+		assert(quality >= 0);
+		_quality = quality;
+		_update();
+	}
+}
+
+void BandLimitedSawOscillator::_update() {
+	Phasor::_update();
+	int q = std::min(_quality, (int)(0.5f * (_sampleRate / _frequency)));
+	_qd = q * _delta;
+}
+
+float BandLimitedSawOscillator::_nextForPhase(float phase) {
+	float sample = SawOscillator::_nextForPhase(phase);
+	if (phase > maxPhase - _qd) {
+		float i = (maxPhase - phase) / _qd;
+		i = (1.0f - i) * _halfTableLen;
+		sample -= _amplitude * _table.value((int)i);
+	}
+	else if (phase < _qd) {
+		float i = phase / _qd;
+		i *= _halfTableLen - 1;
+		i += _halfTableLen;
+		sample -= _amplitude * _table.value((int)i);
+	}
+	return sample;
+}
+
+
 void SquareOscillator::setPulseWidth(float pw) {
+	if (_pulseWidthInput == pw) {
+		return;
+	}
+	_pulseWidthInput = pw;
+
 	if (pw >= 0.97f) {
 		_pulseWidth = 0.97f;
 	}
@@ -105,6 +141,42 @@ float SquareOscillator::_nextForPhase(float phase) {
 		return _amplitude;
 	}
 	return _negativeAmplitude;
+}
+
+
+void BandLimitedSquareOscillator::setPulseWidth(float pw) {
+	if (_pulseWidthInput == pw) {
+		return;
+	}
+	_pulseWidthInput = pw;
+
+	if (pw >= 0.97f) {
+		_pulseWidth = 0.97f;
+	}
+	else if (pw <= 0.03f) {
+		_pulseWidth = 0.03f;
+	}
+	else {
+		_pulseWidth = pw;
+	}
+	_pulseWidth *= maxPhase;
+
+	if (_pulseWidth >= 1.0f) {
+		_offset = (_pulseWidth - 1.0f) * _amplitude;
+	}
+	else {
+		_offset = -(1.0f - _pulseWidth) * _amplitude;
+	}
+}
+
+float BandLimitedSquareOscillator::_nextForPhase(float phase) {
+	float sample = -BandLimitedSawOscillator::_nextForPhase(phase);
+	phase -= _pulseWidth;
+	if (phase < 0.0f) {
+		phase += maxPhase;
+	}
+	sample += BandLimitedSawOscillator::_nextForPhase(phase);
+	return sample + _offset;
 }
 
 
