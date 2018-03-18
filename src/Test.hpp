@@ -6,15 +6,16 @@ extern Model* modelTest;
 
 // #define LPF 1
 // #define LPFNOISE 1
-#define SINE 1
+// #define SINE 1
 // #define SQUARE 1
 // #define SAW 1
 // #define SATSAW 1
 // #define TRIANGLE 1
 // #define SINEBANK 1
 // #define OVERSAMPLING 1
+// #define OVERSAMPLED_BL 1
 // #define FM 1
-// #define PM 1
+#define PM 1
 // #define FEEDBACK_PM 1
 // #define EG 1
 // #define TABLES 1
@@ -42,6 +43,9 @@ extern Model* modelTest;
 #include "dsp/decimator.hpp" // rack
 #include "dsp/filter.hpp"
 #define OVERSAMPLEN 16
+#elif OVERSAMPLED_BL
+#include "dsp/oscillator.hpp"
+#include "dsp/filter.hpp"
 #elif FM
 #include "dsp/oscillator.hpp"
 #elif PM
@@ -109,13 +113,18 @@ struct Test : Module {
 	SineBankOscillator _sineBank;
 #elif OVERSAMPLING
 	SawOscillator _saw1;
-	rack::Decimator<OVERSAMPLEN, OVERSAMPLEN> _rackDecimator;
 	SawOscillator _saw2;
 	LowPassFilter _lpf;
 	LowPassFilter _lpf2;
+#elif OVERSAMPLED_BL
+	BandLimitedSawOscillator _saw1;
+	BandLimitedSawOscillator _saw2;
+	LowPassFilter _lpf;
 #elif FM
 	SineTableOscillator _modulator;
 	SineTableOscillator _carrier;
+	// SineTableOscillator _modulator2;
+	// SineTableOscillator _carrier2;
 #elif PM
 	SineTableOscillator _modulator;
 	SineTableOscillator _carrier;
@@ -145,9 +154,9 @@ struct Test : Module {
 #elif SAW
 	, _saw(44100.0, 1000.0, 5.0)
 	, _saw2(44100.0, 1000.0, 5.0, 8)
-	#elif SATSAW
-		, _saw(44100.0, 1000.0, 5.0)
-		, _saw2(44100.0, 1000.0, 5.0, 8)
+#elif SATSAW
+	, _saw(44100.0, 1000.0, 5.0)
+	, _saw2(44100.0, 1000.0, 5.0, 8)
 #elif TRIANGLE
 	, _triangle(44100.0, 1000.0, 5.0)
 #elif SINEBANK
@@ -157,9 +166,15 @@ struct Test : Module {
 	, _saw2(44100.0, 1000.0, 1.0)
 	, _lpf(44100.0, 1000.0, 1.0)
 	, _lpf2(44100.0, 1000.0, 1.0)
+#elif OVERSAMPLED_BL
+	, _saw1(44100.0, 1000.0, 5.0)
+	, _saw2(44100.0, 1000.0, 5.0)
+	, _lpf(44100.0, 1000.0, 1.0)
 #elif FM
 	, _modulator(44100.0, 1000.0, 1.0)
 	, _carrier(44100.0, 1000.0, 1.0)
+	// , _modulator2(44100.0, 1000.0, 1.0)
+	// , _carrier2(44100.0, 1000.0, 1.0)
 #elif PM
 	, _modulator(44100.0, 1000.0, 1.0)
 	, _carrier(44100.0, 1000.0)

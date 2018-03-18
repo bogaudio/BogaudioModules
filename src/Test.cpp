@@ -117,6 +117,36 @@ void Test::step() {
 	}
 	outputs[OUT2_OUTPUT].value = s * 5.0;
 
+#elif OVERSAMPLED_BL
+	int quality = params[PARAM2_PARAM].value * 100;
+	const int maxOversample = 16;
+	int oversample = params[PARAM3_PARAM].value * maxOversample;
+
+	_saw1.setSampleRate(engineGetSampleRate());
+	_saw1.setFrequency(oscillatorPitch());
+	_saw1.setQuality(quality);
+	outputs[OUT_OUTPUT].value = _saw1.next();
+
+	_saw2.setSampleRate(engineGetSampleRate());
+	_saw2.setQuality(quality);
+	if (oversample < 1) {
+		_saw2.setFrequency(oscillatorPitch());
+		outputs[OUT2_OUTPUT].value = _saw2.next();
+	}
+	else {
+		_saw2.setFrequency(oscillatorPitch() / (float)oversample);
+		_lpf.setParams(
+			engineGetSampleRate(),
+			engineGetSampleRate() / 4.0f,
+			0.03
+		);
+		float s = 0.0f;
+		for (int i = 0; i < oversample; ++i) {
+			s = _lpf.next(_saw2.next());
+		}
+		outputs[OUT2_OUTPUT].value = s;
+	}
+
 #elif FM
 	float baseHz = oscillatorPitch();
 	float ratio = ratio2();
@@ -126,6 +156,13 @@ void Test::step() {
 	_carrier.setSampleRate(engineGetSampleRate());
 	_carrier.setFrequency(baseHz + hz);
 	outputs[OUT_OUTPUT].value = _carrier.next() * 5.0f;
+
+	// _modulator2.setSampleRate(engineGetSampleRate());
+	// _modulator2.setFrequency(baseHz * ratio2());
+	// float hz2 = _modulator2.next() * index3() * ratio * baseHz;
+	// _carrier2.setSampleRate(engineGetSampleRate());
+	// _carrier2.setFrequency(std::max(baseHz + hz2, 0.0f));
+	// outputs[OUT2_OUTPUT].value = _carrier2.next() * 5.0f;
 
 #elif PM
 	_carrier.setSampleRate(engineGetSampleRate());
