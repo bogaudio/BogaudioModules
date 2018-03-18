@@ -70,6 +70,7 @@ struct Phasor : OscillatorGenerator {
 	void setPhase(float radians);
 	float nextFromPhasor(const Phasor& phasor, float offset = 0.0f); // offset is not radians, but local phase.
 	virtual void _update();
+	void advancePhase();
 	virtual float _next() override final;
 	virtual float _nextForPhase(float phase);
 

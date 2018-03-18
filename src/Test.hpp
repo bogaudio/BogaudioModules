@@ -6,10 +6,10 @@ extern Model* modelTest;
 
 // #define LPF 1
 // #define LPFNOISE 1
-// #define SINE 1
+#define SINE 1
 // #define SQUARE 1
 // #define SAW 1
-#define SATSAW 1
+// #define SATSAW 1
 // #define TRIANGLE 1
 // #define SINEBANK 1
 // #define OVERSAMPLING 1
@@ -118,8 +118,7 @@ struct Test : Module {
 	SineTableOscillator _carrier;
 #elif PM
 	SineTableOscillator _modulator;
-	Phasor _carrier;
-	SineTableOscillator _carrierOutput;
+	SineTableOscillator _carrier;
 #elif FEEDBACK_PM
 	Phasor _carrier;
 	SineTableOscillator _carrierOutput;
@@ -164,7 +163,6 @@ struct Test : Module {
 #elif PM
 	, _modulator(44100.0, 1000.0, 1.0)
 	, _carrier(44100.0, 1000.0)
-	, _carrierOutput(44100.0, 1000.0)
 #elif FEEDBACK_PM
 	, _carrier(44100.0, 1000.0)
 	, _carrierOutput(44100.0, 1000.0)

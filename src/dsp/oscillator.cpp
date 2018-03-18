@@ -23,7 +23,7 @@ void Phasor::_update() {
 	_delta = (_frequency / _sampleRate) * maxPhase;
 }
 
-float Phasor::_next() {
+void Phasor::advancePhase() {
 	_phase += _delta;
 	if (_phase >= maxPhase) {
 		_phase -= maxPhase;
@@ -31,6 +31,10 @@ float Phasor::_next() {
 	else if (_phase <= 0.0f && _delta != 0.0f) {
 		_phase += maxPhase;
 	}
+}
+
+float Phasor::_next() {
+	advancePhase();
 	return _nextForPhase(_phase);
 }
 
@@ -49,6 +53,9 @@ float TablePhasor::_nextForPhase(float phase) {
 	float fi = phase * (_table.length() / 2);
 	int i = (int)fi;
 	float v1 = _table.value(i);
+	if (_table.length() >= 1024) {
+		return v1 * _amplitude;
+	}
 	float v2 = _table.value(i + 1 == _table.length() ? 0 : i + 1);
 	return _amplitude * (v1 + (fi - i)*(v2 - v1));
 }

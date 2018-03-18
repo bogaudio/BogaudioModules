@@ -21,6 +21,35 @@ static void BM_SineOscillator(benchmark::State& state) {
 }
 BENCHMARK(BM_SineOscillator);
 
+static void BM_SineTableOscillator(benchmark::State& state) {
+  SineTableOscillator o(44100.0, 440.0);
+  for (auto _ : state) {
+    o.next();
+  }
+}
+BENCHMARK(BM_SineTableOscillator);
+
+static void BM_SineOscillatorFM(benchmark::State& state) {
+  const float baseHz = 440.0;
+  SineOscillator m(44100.0, baseHz);
+  SineOscillator c(44100.0, baseHz);
+  for (auto _ : state) {
+    c.setFrequency(baseHz + m.next());
+    c.next();
+  }
+}
+BENCHMARK(BM_SineOscillatorFM);
+
+static void BM_SineTableOscillatorPM(benchmark::State& state) {
+  SineTableOscillator m(44100.0, 440.0);
+  SineTableOscillator c(44100.0, 440.0);
+  for (auto _ : state) {
+    c.advancePhase();
+    c.nextFromPhasor(c, Phasor::radiansToPhase(m.next()));
+  }
+}
+BENCHMARK(BM_SineTableOscillatorPM);
+
 static void BM_SawOscillator(benchmark::State& state) {
   SawOscillator o(44100.0, 440.0);
   for (auto _ : state) {
@@ -29,6 +58,24 @@ static void BM_SawOscillator(benchmark::State& state) {
 }
 BENCHMARK(BM_SawOscillator);
 
+static void BM_SaturatingSawOscillator(benchmark::State& state) {
+  SaturatingSawOscillator o(44100.0, 440.0);
+  o.setSaturation(0.9);
+  for (auto _ : state) {
+    o.next();
+  }
+}
+BENCHMARK(BM_SaturatingSawOscillator);
+
+static void BM_BandLimitedSawOscillator(benchmark::State& state) {
+  BandLimitedSawOscillator o(44100.0, 440.0);
+  o.setQuality(12);
+  for (auto _ : state) {
+    o.next();
+  }
+}
+BENCHMARK(BM_BandLimitedSawOscillator);
+
 static void BM_SquareOscillator(benchmark::State& state) {
   SquareOscillator o(44100.0, 440.0);
   for (auto _ : state) {
@@ -36,6 +83,15 @@ static void BM_SquareOscillator(benchmark::State& state) {
   }
 }
 BENCHMARK(BM_SquareOscillator);
+
+static void BM_BandLimitedSquareOscillator(benchmark::State& state) {
+  BandLimitedSquareOscillator o(44100.0, 440.0);
+  o.setQuality(12);
+  for (auto _ : state) {
+    o.next();
+  }
+}
+BENCHMARK(BM_BandLimitedSquareOscillator);
 
 static void BM_TriangleOscillator(benchmark::State& state) {
   TriangleOscillator o(44100.0, 440.0);

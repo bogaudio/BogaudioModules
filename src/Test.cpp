@@ -127,21 +127,13 @@ void Test::step() {
 	_carrier.setFrequency(baseHz + hz);
 	outputs[OUT_OUTPUT].value = _carrier.next() * 5.0f;
 
-	_carrier2.setSampleRate(engineGetSampleRate());
-	_carrier2.setFrequency(oscillatorPitch());
-	_modulator2.setSampleRate(engineGetSampleRate());
-	_modulator2.setFrequency(_carrier2._frequency * ratio);
-	_carrier2.next();
-	outputs[OUT2_OUTPUT].value = _carrierOutput2.nextFromPhasor(_carrier2, Phasor::radiansToPhase(index3() * _modulator2.next())) * 5.0f;
-
 #elif PM
 	_carrier.setSampleRate(engineGetSampleRate());
 	_carrier.setFrequency(oscillatorPitch());
 	_modulator.setSampleRate(engineGetSampleRate());
 	_modulator.setFrequency(_carrier._frequency * ratio2());
-	// _carrierOutput.setSampleRate(engineGetSampleRate());
-	_carrier.next();
-	outputs[OUT_OUTPUT].value = _carrierOutput.nextFromPhasor(_carrier, Phasor::radiansToPhase(index3() * _modulator.next())) * 5.0f;
+	_carrier.advancePhase();
+	outputs[OUT_OUTPUT].value = _carrier.nextFromPhasor(_carrier, Phasor::radiansToPhase(index3() * _modulator.next())) * 5.0f;
 
 #elif FEEDBACK_PM
 	_carrier.setSampleRate(engineGetSampleRate());
