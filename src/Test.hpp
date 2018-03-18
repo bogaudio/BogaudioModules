@@ -7,8 +7,9 @@ extern Model* modelTest;
 // #define LPF 1
 // #define LPFNOISE 1
 // #define SINE 1
-#define SQUARE 1
+// #define SQUARE 1
 // #define SAW 1
+#define SATSAW 1
 // #define TRIANGLE 1
 // #define SINEBANK 1
 // #define OVERSAMPLING 1
@@ -29,6 +30,8 @@ extern Model* modelTest;
 #elif SQUARE
 #include "dsp/oscillator.hpp"
 #elif SAW
+#include "dsp/oscillator.hpp"
+#elif SATSAW
 #include "dsp/oscillator.hpp"
 #elif TRIANGLE
 #include "dsp/oscillator.hpp"
@@ -97,6 +100,9 @@ struct Test : Module {
 #elif SAW
 	SawOscillator _saw;
 	BandLimitedSawOscillator _saw2;
+#elif SATSAW
+	SaturatingSawOscillator _saw;
+	BandLimitedSawOscillator _saw2;
 #elif TRIANGLE
 	TriangleOscillator _triangle;
 #elif SINEBANK
@@ -140,6 +146,9 @@ struct Test : Module {
 #elif SAW
 	, _saw(44100.0, 1000.0, 5.0)
 	, _saw2(44100.0, 1000.0, 5.0, 8)
+	#elif SATSAW
+		, _saw(44100.0, 1000.0, 5.0)
+		, _saw2(44100.0, 1000.0, 5.0, 8)
 #elif TRIANGLE
 	, _triangle(44100.0, 1000.0, 5.0)
 #elif SINEBANK
@@ -172,6 +181,9 @@ struct Test : Module {
 		_sine2.setPhase(M_PI);
 
 #elif SAW
+		_saw2.setPhase(M_PI);
+
+#elif SATSAW
 		_saw2.setPhase(M_PI);
 
 #elif SINEBANK

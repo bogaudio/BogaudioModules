@@ -156,7 +156,27 @@ struct SawOscillator : Phasor {
 	virtual float _nextForPhase(float phase) override;
 };
 
-struct BandLimitedSawOscillator : SawOscillator {
+struct SaturatingSawOscillator : SawOscillator {
+	float _saturation;
+	float _saturationNormalization;
+
+	SaturatingSawOscillator(
+		float sampleRate,
+		float frequency,
+		float amplitude = 1.0f
+	)
+	: SawOscillator(sampleRate, frequency, amplitude)
+	, _saturation(0.0f)
+	, _saturationNormalization(1.0f)
+	{
+	}
+
+	void setSaturation(float saturation);
+
+	virtual float _nextForPhase(float phase) override;
+};
+
+struct BandLimitedSawOscillator : SaturatingSawOscillator {
 	int _quality;
 	const Table& _table;
 	float _qd = 0.0f;
@@ -169,7 +189,7 @@ struct BandLimitedSawOscillator : SawOscillator {
 		int quality = 5,
 		const Table& table = StaticBlepTable::table()
 	)
-	: SawOscillator(sampleRate, frequency, amplitude)
+	: SaturatingSawOscillator(sampleRate, frequency, amplitude)
 	, _quality(quality)
 	, _table(table)
 	, _halfTableLen(_table.length() / 2)

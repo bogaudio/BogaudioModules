@@ -79,6 +79,31 @@ float SawOscillator::_nextForPhase(float phase) {
 }
 
 
+void SaturatingSawOscillator::setSaturation(float saturation) {
+	if (_saturation != saturation) {
+		assert(saturation >= 0.0f);
+		_saturation = saturation;
+		if (_saturation < 1.0f) {
+			_saturationNormalization = 1.0f / tanhf(_saturation * M_PI);
+		}
+		else {
+			_saturationNormalization = 1.0f;
+		}
+	}
+}
+
+float SaturatingSawOscillator::_nextForPhase(float phase) {
+	float sample = SawOscillator::_nextForPhase(phase);
+	if (_saturation >= 0.1f) {
+		// FIXME: amplitudes, tanh approximation or table.
+		sample /= _amplitude;
+		sample = tanhf(sample * _saturation * M_PI) * _saturationNormalization;
+		sample *= _amplitude;
+	}
+	return sample;
+}
+
+
 void BandLimitedSawOscillator::setQuality(int quality) {
 	if (_quality != quality) {
 		assert(quality >= 0);
@@ -94,7 +119,7 @@ void BandLimitedSawOscillator::_update() {
 }
 
 float BandLimitedSawOscillator::_nextForPhase(float phase) {
-	float sample = SawOscillator::_nextForPhase(phase);
+	float sample = SaturatingSawOscillator::_nextForPhase(phase);
 	if (phase > maxPhase - _qd) {
 		float i = (maxPhase - phase) / _qd;
 		i = (1.0f - i) * _halfTableLen;

@@ -65,6 +65,19 @@ void Test::step() {
 	_saw2.setQuality(params[PARAM2_PARAM].value * 200);
 	outputs[OUT2_OUTPUT].value = _saw2.next();
 
+#elif SATSAW
+	float saturation = params[PARAM2_PARAM].value * 10.0f;
+	_saw.setSampleRate(engineGetSampleRate());
+	_saw.setFrequency(oscillatorPitch());
+	_saw.setSaturation(saturation);
+	outputs[OUT_OUTPUT].value = _saw.next();
+
+	_saw2.setSampleRate(engineGetSampleRate());
+	_saw2.setFrequency(oscillatorPitch());
+	_saw2.setSaturation(saturation);
+	_saw2.setQuality(params[PARAM3_PARAM].value * 200);
+	outputs[OUT2_OUTPUT].value = _saw2.next();
+
 #elif TRIANGLE
 	_triangle.setSampleRate(engineGetSampleRate());
 	_triangle.setFrequency(oscillatorPitch());
