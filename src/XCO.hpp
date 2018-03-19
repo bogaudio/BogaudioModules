@@ -1,0 +1,70 @@
+#pragma once
+
+#include "bogaudio.hpp"
+
+extern Model* modelXCO;
+
+namespace bogaudio {
+
+struct XCO : Module {
+	enum ParamsIds {
+		FREQUENCY_PARAM,
+		FINE_PARAM,
+		SLOW_PARAM,
+		FM_PARAM,
+		FM_TYPE_PARAM,
+		SQUARE_PWM_PARAM,
+		SQUARE_PHASE_PARAM,
+		SQUARE_MIX_PARAM,
+		SAW_SATURATION_PARAM,
+		SAW_PHASE_PARAM,
+		SAW_MIX_PARAM,
+		TRIANGLE_PHASE_PARAM,
+		TRIANGLE_MIX_PARAM,
+		SINE_PHASE_PARAM,
+		SINE_MIX_PARAM,
+		NUM_PARAMS
+	};
+
+	enum InputsIds {
+		FM_INPUT,
+		SQUARE_PWM_INPUT,
+		SQUARE_PHASE_INPUT,
+		SQUARE_MIX_INPUT,
+		SAW_SATURATION_INPUT,
+		SAW_PHASE_INPUT,
+		SAW_MIX_INPUT,
+		TRIANGLE_PHASE_INPUT,
+		TRIANGLE_MIX_INPUT,
+		SINE_PHASE_INPUT,
+		SINE_MIX_INPUT,
+		PITCH_INPUT,
+		SYNC_INPUT,
+		NUM_INPUTS
+	};
+
+	enum OutputsIds {
+		SQUARE_OUTPUT,
+		SAW_OUTPUT,
+		TRIANGLE_OUTPUT,
+		SINE_OUTPUT,
+		MIX_OUTPUT,
+		NUM_OUTPUTS
+	};
+
+	enum LightsIds {
+		SLOW_LIGHT,
+		FM_EXP_LIGHT,
+		FM_LIN_LIGHT,
+		NUM_LIGHTS
+	};
+
+	XCO() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+		onReset();
+	}
+
+	virtual void onReset() override;
+	virtual void step() override;
+};
+
+} // namespace bogaudio

@@ -1,9 +1,10 @@
 
 #include "bogaudio.hpp"
 
+#include "XCO.hpp"
 #include "Additator.hpp"
-#include "EightFO.hpp"
 #include "FMOp.hpp"
+#include "EightFO.hpp"
 
 #include "Shaper.hpp"
 #include "ShaperPlus.hpp"
@@ -39,9 +40,10 @@ void init(rack::Plugin *p) {
 	p->manual = "https://github.com/bogaudio/BogaudioModules/blob/master/README.md";
 
 #ifdef EXPERIMENTAL
+	p->addModel(modelXCO);
 	p->addModel(modelAdditator);
-	p->addModel(modelEightFO);
 	p->addModel(modelFMOp);
+	p->addModel(modelEightFO);
 #endif
 
 	p->addModel(modelShaper);

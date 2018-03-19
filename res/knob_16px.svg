@@ -58,6 +58,6 @@
   <path
      transform="translate(8,8)"
      style="stroke:#ffffff;stroke-width:2;stroke-linecap:round"
-     d="M 0,0 V -7"
+     d="M 0,0 V -6.5"
      id="polyline6" />
 </svg>

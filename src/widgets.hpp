@@ -42,6 +42,13 @@ struct Knob38 : RoundKnob {
 	}
 };
 
+struct Knob68 : RoundKnob {
+	Knob68() {
+		setSVG(SVG::load(assetPlugin(plugin, "res/knob_68px.svg")));
+		box.size = Vec(68, 68);
+	}
+};
+
 struct Port24 : SVGPort {
 	Port24() {
 		background->svg = SVG::load(assetPlugin(plugin, "res/port.svg"));
