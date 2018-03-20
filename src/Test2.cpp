@@ -26,6 +26,32 @@ void Test2::step() {
 		in = inputs[IN_INPUT].value;
 	}
 	outputs[OUT_OUTPUT].value = _complexBiquad.next(in);
+
+#elif MULTIPOLE
+	++_steps;
+	if (_steps >= maxSteps) {
+		_steps = 0;
+
+		_filter.setParams(
+			params[PARAM2A_PARAM].value <= 0.5f ? MultipoleFilter::LP_TYPE : MultipoleFilter::HP_TYPE,
+			2 * clamp((int)(params[PARAM1B_PARAM].value * (MultipoleFilter::maxPoles / 2)), 1, MultipoleFilter::maxPoles / 2),
+			engineGetSampleRate(),
+			params[PARAM1A_PARAM].value * engineGetSampleRate() / 2.0f,
+			params[PARAM2B_PARAM].value * MultipoleFilter::maxRipple
+		);
+		// _filter.setParams(
+		// 	MultipoleFilter::HP_TYPE,
+		// 	4,
+		// 	engineGetSampleRate(),
+		// 	0.1f * engineGetSampleRate(),
+		// 	0.1f
+		// );
+	}
+	float in = 0.0f;
+	if (inputs[IN_INPUT].active) {
+		in = inputs[IN_INPUT].value;
+	}
+	outputs[OUT_OUTPUT].value = _filter.next(in);
 #endif
 }
 

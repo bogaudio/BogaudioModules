@@ -4,7 +4,7 @@
 
 extern Model* modelTest;
 
-// #define LPF 1
+#define LPF 1
 // #define LPFNOISE 1
 // #define SINE 1
 // #define SQUARE 1
@@ -15,7 +15,7 @@ extern Model* modelTest;
 // #define OVERSAMPLING 1
 // #define OVERSAMPLED_BL 1
 // #define FM 1
-#define PM 1
+// #define PM 1
 // #define FEEDBACK_PM 1
 // #define EG 1
 // #define TABLES 1

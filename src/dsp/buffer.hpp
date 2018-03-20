@@ -121,5 +121,40 @@ struct AveragingBuffer {
 	}
 };
 
+template<typename T>
+struct HistoryBuffer {
+	int _size, _i;
+	T* _buf;
+
+	HistoryBuffer(int size, T initialValue)
+	: _size(size)
+	, _i(size)
+	{
+		assert(size > 0);
+		_buf = new T[size];
+		std::fill(_buf, _buf + size, initialValue);
+	}
+	~HistoryBuffer() {
+		delete[] _buf;
+	}
+
+	inline void push(T s) {
+		++_i;
+		if (_i >= _size) {
+			_i = 0;
+		}
+		_buf[_i] = s;
+	}
+
+	inline T value(int i) {
+		assert(i <= 0 && -i <= _size);
+		int j = _i - i;
+		if (j < 0) {
+			j += _size;
+		}
+		return _buf[j];
+	}
+};
+
 } // namespace dsp
 } // namespace bogaudio

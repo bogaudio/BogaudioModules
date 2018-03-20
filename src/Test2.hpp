@@ -4,9 +4,12 @@
 
 extern Model* modelTest2;
 
-#define COMPLEX_BIQUAD 1
+// #define COMPLEX_BIQUAD 1
+#define MULTIPOLE 1
 
 #ifdef COMPLEX_BIQUAD
+#include "dsp/filter.hpp"
+#elif MULTIPOLE
 #include "dsp/filter.hpp"
 #elif
 #error what
@@ -49,6 +52,10 @@ struct Test2 : Module {
 
 #ifdef COMPLEX_BIQUAD
 	ComplexBiquadFilter _complexBiquad;
+#elif MULTIPOLE
+	MultipoleFilter _filter;
+	const int maxSteps = 10;
+	int _steps = maxSteps;
 #endif
 
 	Test2() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
