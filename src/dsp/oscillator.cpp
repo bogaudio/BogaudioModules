@@ -148,11 +148,11 @@ void SquareOscillator::setPulseWidth(float pw) {
 	}
 	_pulseWidthInput = pw;
 
-	if (pw >= 0.97f) {
-		_pulseWidth = 0.97f;
+	if (pw >= maxPulseWidth) {
+		_pulseWidth = maxPulseWidth;
 	}
-	else if (pw <= 0.03f) {
-		_pulseWidth = 0.03f;
+	else if (pw <= minPulseWidth) {
+		_pulseWidth = minPulseWidth;
 	}
 	else {
 		_pulseWidth = pw;
@@ -182,11 +182,11 @@ void BandLimitedSquareOscillator::setPulseWidth(float pw) {
 	}
 	_pulseWidthInput = pw;
 
-	if (pw >= 0.97f) {
-		_pulseWidth = 0.97f;
+	if (pw >= maxPulseWidth) {
+		_pulseWidth = maxPulseWidth;
 	}
-	else if (pw <= 0.03f) {
-		_pulseWidth = 0.03f;
+	else if (pw <= minPulseWidth) {
+		_pulseWidth = minPulseWidth;
 	}
 	else {
 		_pulseWidth = pw;

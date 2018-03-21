@@ -205,6 +205,8 @@ struct BandLimitedSawOscillator : SaturatingSawOscillator {
 };
 
 struct SquareOscillator : Phasor {
+	const float minPulseWidth = 0.03f;
+	const float maxPulseWidth = 1.0f - minPulseWidth;
 	float _amplitude;
 	float _negativeAmplitude;
 	float _pulseWidthInput;
@@ -228,6 +230,8 @@ struct SquareOscillator : Phasor {
 };
 
 struct BandLimitedSquareOscillator : BandLimitedSawOscillator {
+	const float minPulseWidth = 0.03f;
+	const float maxPulseWidth = 1.0f - minPulseWidth;
 	float _pulseWidthInput;
 	float _pulseWidth;
 	float _offset;

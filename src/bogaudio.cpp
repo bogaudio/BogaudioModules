@@ -1,6 +1,7 @@
 
 #include "bogaudio.hpp"
 
+#include "VCO.hpp"
 #include "XCO.hpp"
 #include "Additator.hpp"
 #include "FMOp.hpp"
@@ -40,6 +41,7 @@ void init(rack::Plugin *p) {
 	p->manual = "https://github.com/bogaudio/BogaudioModules/blob/master/README.md";
 
 #ifdef EXPERIMENTAL
+	p->addModel(modelVCO);
 	p->addModel(modelXCO);
 	p->addModel(modelAdditator);
 	p->addModel(modelFMOp);
