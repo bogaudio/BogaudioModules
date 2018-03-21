@@ -31,14 +31,6 @@
       </g>
     </symbol>
 
-    <symbol id="knob" viewBox="0 0 38px 38px">
-      <g transform="translate(19 19)">
-        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f" />
-        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f" />
-        <circle cx="0" cy="0" r="18" stroke-width="1" stroke="#00f" fill="none" />
-      </g>
-    </symbol>
-
     <symbol id="knob-medium" viewBox="0 0 26px 26px">
       <g transform="translate(13 13)">
         <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f" />
@@ -249,32 +241,30 @@
     <rect width="3.0" height="3" fill="#ddd" transform="translate(24 -5)" />
   </g>
 
-  <g transform="translate(10 30)">
-    <g transform="translate(10 0)">
-      <!-- <rect width="108" height="98" fill="none" stroke="#0f0" /> -->
-      <!-- <polyline points="0,54 54,54" stroke="#0f0" stroke-width="1" fill="none" /> -->
-      <!-- <polyline points="54,54 54,354" stroke="#0f0" stroke-width="1" fill="none" /> -->
-      <use id="FREQUENCY_PARAM" xlink:href="#knob-large" transform="translate(20 20)" />
-    </g>
+  <g transform="translate(20 25)">
+    <!-- <rect width="108" height="98" fill="none" stroke="#0f0" /> -->
+    <!-- <polyline points="0,54 54,54" stroke="#0f0" stroke-width="1" fill="none" /> -->
+    <!-- <polyline points="54,54 54,354" stroke="#0f0" stroke-width="1" fill="none" /> -->
+    <use id="FREQUENCY_PARAM" xlink:href="#knob-large" transform="translate(20 20)" />
   </g>
-  <use xlink:href="#knobguide-frequency" transform="translate(20 30)" />
+  <use xlink:href="#knobguide-frequency" transform="translate(20 25)" />
 
-  <text font-size="6pt" letter-spacing="1px" transform="translate(29 142)">0V = C4 = 261.63HZ</text>
+  <text font-size="6pt" letter-spacing="1px" transform="translate(29 136)">0V = C4 = 261.63HZ</text>
   <!-- <rect width="90" height="10" fill="#0f0" transform="translate(0 143)" /> -->
 
-  <g transform="translate(45.5 160)">
+  <g transform="translate(45.5 156)">
     <!-- <polyline points="0,8 70,8" stroke="#0f0" stroke-width="1" fill="none" /> -->
-    <text font-size="8pt" letter-spacing="2px" transform="translate(5.7 24) rotate(270)">FINE</text>
+    <text font-size="8pt" letter-spacing="2px" transform="translate(5.7 22) rotate(270)">FINE</text>
     <use id="FINE_PARAM" xlink:href="#knob-smallest" transform="translate(20 0)" />
     <!-- <rect width="90" height="10" fill="#0f0" transform="translate(0 17)" /> -->
   </g>
-  <use xlink:href="#knobguide-centertick" transform="translate(53.7 148)" />
+  <use xlink:href="#knobguide-centertick" transform="translate(53.7 144)" />
 
-  <g transform="translate(45.5 195)">
+  <g transform="translate(50 193)">
     <!-- <polyline points="0,3.2 70,3.2" stroke="#0f0" stroke-width="1" fill="none" /> -->
+    <use id="SLOW_PARAM" xlink:href="#button-small" transform="translate(40 -1.3)" />
     <use id="SLOW_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
-    <text font-size="7pt" letter-spacing="2px" transform="translate(11 6.5)">SLOW</text>
-    <use id="SLOW_PARAM" xlink:href="#button-small" transform="translate(48 -1.5)" />
+    <text font-size="6pt" letter-spacing="2px" transform="translate(9 6.1)">SLOW</text>
     <!-- <rect width="90" height="10" fill="#0f0" transform="translate(0 7)" /> -->
   </g>
 
@@ -293,22 +283,22 @@
         <use id="FM_INPUT" xlink:href="#input" transform="translate(3 5)" />
         <text font-size="6pt" letter-spacing="1px" transform="translate(9 40)">FM</text>
       </g>
-      <g transform="translate(40 11.5)">
-        <g transform="translate(0 0)">
+      <g transform="translate(42 11.5)">
+        <use id="FM_TYPE_PARAM" xlink:href="#button-small" transform="translate(30 7.5)" />
+        <g transform="translate(0 2)">
           <use id="FM_EXP_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
-          <text font-size="7pt" letter-spacing="2px" transform="translate(11 6.7)">EXP</text>
+          <text font-size="6pt" letter-spacing="2px" transform="translate(9 6.2)">EXP</text>
         </g>
-        <g transform="translate(0 17)">
+        <g transform="translate(0 15.3)">
           <use id="FM_LIN_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
-          <text font-size="7pt" letter-spacing="2px" transform="translate(11 6.7)">LIN</text>
+          <text font-size="6pt" letter-spacing="2px" transform="translate(9 6.2)">LIN</text>
         </g>
-        <use id="FM_TYPE_PARAM" xlink:href="#button-small" transform="translate(38 7.5)" />
       </g>
     </g>
   </g>
   <use xlink:href="#knobguide-fm" transform="translate(51.5 209.5)" />
 
-  <rect width="190" height="47" rx="5" fill="#bbb" transform="translate(100 313)" />
+  <rect width="191" height="47" rx="5" fill="#bbb" transform="translate(99 313)" />
 
   <g transform="translate(140 30)">
     <rect width="30" height="330" rx="5" fill="#fafafa" />
@@ -316,11 +306,11 @@
     <!-- <rect width="30" height="20" fill="#0f0" transform="translate(0 90)" /> -->
     <!-- <rect width="30" height="20" fill="#0f0" transform="translate(0 177)" /> -->
     <!-- <rect width="30" height="20" fill="#0f0" transform="translate(0 267)" /> -->
-    <text font-size="6pt" letter-spacing="2px" transform="translate(5 15)">SQR</text>
+    <text font-size="6pt" letter-spacing="2px" transform="translate(5.2 15)">SQR</text>
     <g transform="translate(3 30)">
-      <use id="SQUARE_PWM_PARAM" xlink:href="#knob-smallest" transform="translate(4 0)" />
-      <text font-size="6pt" letter-spacing="2px" transform="translate(1 30)">PWM</text>
-      <use id="SQUARE_PWM_INPUT" xlink:href="#input" transform="translate(0 35)" />
+      <use id="SQUARE_PW_PARAM" xlink:href="#knob-smallest" transform="translate(4 0)" />
+      <text font-size="6pt" letter-spacing="2px" transform="translate(5 30)">PW</text>
+      <use id="SQUARE_PW_INPUT" xlink:href="#input" transform="translate(0 35)" />
     </g>
     <g transform="translate(3 118)">
       <use id="SQUARE_PHASE_PARAM" xlink:href="#knob-smallest" transform="translate(4 0)" />
@@ -329,12 +319,12 @@
     </g>
     <g transform="translate(3 207)">
       <use id="SQUARE_MIX_PARAM" xlink:href="#knob-smallest" transform="translate(4 0)" />
-      <text font-size="6pt" letter-spacing="2px" transform="translate(2 30)">MIX</text>
+      <text font-size="6pt" letter-spacing="2px" transform="translate(2.5 30)">MIX</text>
       <use id="SQUARE_MIX_INPUT" xlink:href="#input" transform="translate(0 35)" />
     </g>
     <g transform="translate(0 288)">
-      <rect width="30" height="5" fill="#bbb" transform="translate(0 -5)" />
-      <rect width="30" height="47" rx="5" fill="#bbb" transform="translate(0 -5)" />
+      <rect width="32" height="5" fill="#bbb" transform="translate(-1 -5)" />
+      <rect width="32" height="47" rx="5" fill="#bbb" transform="translate(-1 -5)" />
       <g transform="translate(3 0)">
         <use id="SQUARE_OUTPUT" xlink:href="#output" transform="translate(0 0)" />
         <text font-size="6pt" letter-spacing="2px" transform="translate(2 36)">OUT</text>
@@ -351,10 +341,10 @@
     <!-- <rect width="30" height="20" fill="#0f0" transform="translate(0 90)" /> -->
     <!-- <rect width="30" height="20" fill="#0f0" transform="translate(0 177)" /> -->
     <!-- <rect width="30" height="20" fill="#0f0" transform="translate(0 267)" /> -->
-    <text font-size="6pt" letter-spacing="2px" transform="translate(5 15)">SAW</text>
+    <text font-size="6pt" letter-spacing="2px" transform="translate(4.3 15)">SAW</text>
     <g transform="translate(3 30)">
       <use id="SAW_SATURATION_PARAM" xlink:href="#knob-smallest" transform="translate(4 0)" />
-      <text font-size="6pt" letter-spacing="2px" transform="translate(2 30)">SAT</text>
+      <text font-size="6pt" letter-spacing="2px" transform="translate(2.5 30)">SAT</text>
       <use id="SAW_SATURATION_INPUT" xlink:href="#input" transform="translate(0 35)" />
     </g>
     <g transform="translate(3 118)">
@@ -364,12 +354,12 @@
     </g>
     <g transform="translate(3 207)">
       <use id="SAW_MIX_PARAM" xlink:href="#knob-smallest" transform="translate(4 0)" />
-      <text font-size="6pt" letter-spacing="2px" transform="translate(2 30)">MIX</text>
+      <text font-size="6pt" letter-spacing="2px" transform="translate(2.5 30)">MIX</text>
       <use id="SAW_MIX_INPUT" xlink:href="#input" transform="translate(0 35)" />
     </g>
     <g transform="translate(0 288)">
-      <rect width="30" height="5" fill="#bbb" transform="translate(0 -5)" />
-      <rect width="30" height="47" rx="5" fill="#bbb" transform="translate(0 -5)" />
+      <rect width="32" height="5" fill="#bbb" transform="translate(-1 -5)" />
+      <rect width="32" height="47" rx="5" fill="#bbb" transform="translate(-1 -5)" />
       <g transform="translate(3 0)">
         <use id="SAW_OUTPUT" xlink:href="#output" transform="translate(0 0)" />
         <text font-size="6pt" letter-spacing="2px" transform="translate(2 36)">OUT</text>
@@ -386,7 +376,7 @@
     <!-- <rect width="30" height="20" fill="#0f0" transform="translate(0 90)" /> -->
     <!-- <rect width="30" height="20" fill="#0f0" transform="translate(0 177)" /> -->
     <!-- <rect width="30" height="20" fill="#0f0" transform="translate(0 267)" /> -->
-    <text font-size="6pt" letter-spacing="2px" transform="translate(5 15)">TRI</text>
+    <text font-size="6pt" letter-spacing="2px" transform="translate(7 15)">TRI</text>
     <g transform="translate(3 118)">
       <use id="TRIANGLE_PHASE_PARAM" xlink:href="#knob-smallest" transform="translate(4 0)" />
       <text font-size="6pt" letter-spacing="2px" transform="translate(2 30)">PHS</text>
@@ -394,12 +384,12 @@
     </g>
     <g transform="translate(3 207)">
       <use id="TRIANGLE_MIX_PARAM" xlink:href="#knob-smallest" transform="translate(4 0)" />
-      <text font-size="6pt" letter-spacing="2px" transform="translate(2 30)">MIX</text>
+      <text font-size="6pt" letter-spacing="2px" transform="translate(2.5 30)">MIX</text>
       <use id="TRIANGLE_MIX_INPUT" xlink:href="#input" transform="translate(0 35)" />
     </g>
     <g transform="translate(0 288)">
-      <rect width="30" height="5" fill="#bbb" transform="translate(0 -5)" />
-      <rect width="30" height="47" rx="5" fill="#bbb" transform="translate(0 -5)" />
+      <rect width="32" height="5" fill="#bbb" transform="translate(-1 -5)" />
+      <rect width="32" height="47" rx="5" fill="#bbb" transform="translate(-1 -5)" />
       <g transform="translate(3 0)">
         <use id="TRIANGLE_OUTPUT" xlink:href="#output" transform="translate(0 0)" />
         <text font-size="6pt" letter-spacing="2px" transform="translate(2 36)">OUT</text>
@@ -415,7 +405,7 @@
     <!-- <rect width="30" height="20" fill="#0f0" transform="translate(0 90)" /> -->
     <!-- <rect width="30" height="20" fill="#0f0" transform="translate(0 177)" /> -->
     <!-- <rect width="30" height="20" fill="#0f0" transform="translate(0 267)" /> -->
-    <text font-size="6pt" letter-spacing="2px" transform="translate(5 15)">SIN</text>
+    <text font-size="6pt" letter-spacing="2px" transform="translate(6.5 15)">SIN</text>
     <g transform="translate(3 118)">
       <use id="SINE_PHASE_PARAM" xlink:href="#knob-smallest" transform="translate(4 0)" />
       <text font-size="6pt" letter-spacing="2px" transform="translate(2 30)">PHS</text>
@@ -423,12 +413,12 @@
     </g>
     <g transform="translate(3 207)">
       <use id="SINE_MIX_PARAM" xlink:href="#knob-smallest" transform="translate(4 0)" />
-      <text font-size="6pt" letter-spacing="2px" transform="translate(2 30)">MIX</text>
+      <text font-size="6pt" letter-spacing="2px" transform="translate(2.5 30)">MIX</text>
       <use id="SINE_MIX_INPUT" xlink:href="#input" transform="translate(0 35)" />
     </g>
     <g transform="translate(0 288)">
-      <rect width="30" height="5" fill="#bbb" transform="translate(0 -5)" />
-      <rect width="30" height="47" rx="5" fill="#bbb" transform="translate(0 -5)" />
+      <rect width="31" height="5" fill="#bbb" transform="translate(-1 -5)" />
+      <rect width="31" height="47" rx="5" fill="#bbb" transform="translate(-1 -5)" />
       <g transform="translate(3 0)">
         <use id="SINE_OUTPUT" xlink:href="#output" transform="translate(0 0)" />
         <text font-size="6pt" letter-spacing="2px" transform="translate(2 36)">OUT</text>
@@ -443,13 +433,13 @@
     <rect width="70" height="47" rx="5" fill="#fafafa" transform="translate(10 0)" />
     <g transform="translate(10 0)">
       <rect width="30" height="47" rx="5" fill="#fafafa" />
-      <use id="PITCH_INPUT" xlink:href="#input" transform="translate(3 5)" />
-      <text font-size="6pt" letter-spacing="1px" transform="translate(1 40)">V/OCT</text>
+      <use id="PITCH_INPUT" xlink:href="#input" transform="translate(4 5)" />
+      <text font-size="6pt" letter-spacing="1px" transform="translate(2 40)">V/OCT</text>
     </g>
     <g transform="translate(50 0)">
       <rect width="30" height="47" rx="5" fill="#fafafa" />
-      <use id="SYNC_INPUT" xlink:href="#input" transform="translate(3 5)" />
-      <text font-size="6pt" letter-spacing="2px" transform="translate(1 40)">SYNC</text>
+      <use id="SYNC_INPUT" xlink:href="#input" transform="translate(2 5)" />
+      <text font-size="6pt" letter-spacing="2px" transform="translate(0 40)">SYNC</text>
     </g>
     <g transform="translate(100 0)">
       <rect width="30" height="47" rx="5" fill="#bbb" transform="translate(0 0)" />

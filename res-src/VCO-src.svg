@@ -236,7 +236,7 @@
     <use id="FINE_PARAM" xlink:href="#knob-smallest" transform="translate(13 0)" />
     <!-- <rect width="90" height="10" fill="#0f0" transform="translate(0 17)" /> -->
   </g>
-  <use xlink:href="#knobguide-centertick" transform="translate(21 140)" />
+  <use xlink:href="#knobguide-centertick" transform="translate(21 139)" />
 
   <g transform="translate(90 156.5)">
     <!-- <polyline points="0,3.2 70,3.2" stroke="#0f0" stroke-width="1" fill="none" /> -->
@@ -268,11 +268,11 @@
     <!-- <rect width="90" height="10" fill="#0f0" transform="translate(0 26)" /> -->
     <g transform="translate(52 1)">
       <use id="FM_TYPE_PARAM" xlink:href="#button-small" transform="translate(30 7.5)" />
-      <g transform="translate(0 3)">
+      <g transform="translate(0 2)">
         <use id="FM_EXP_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
         <text font-size="6pt" letter-spacing="2px" transform="translate(9 6.2)">EXP</text>
       </g>
-      <g transform="translate(0 14.3)">
+      <g transform="translate(0 15.3)">
         <use id="FM_LIN_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
         <text font-size="6pt" letter-spacing="2px" transform="translate(9 6.2)">LIN</text>
       </g>
