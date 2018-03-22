@@ -160,15 +160,17 @@ struct SawOscillator : Phasor {
 struct SaturatingSawOscillator : SawOscillator {
 	float _saturation;
 	float _saturationNormalization;
+	float _amplitude2;
 
 	SaturatingSawOscillator(
 		float sampleRate,
 		float frequency,
 		float amplitude = 1.0f
 	)
-	: SawOscillator(sampleRate, frequency, amplitude)
+	: SawOscillator(sampleRate, frequency)
 	, _saturation(0.0f)
 	, _saturationNormalization(1.0f)
+	, _amplitude2(amplitude)
 	{
 	}
 

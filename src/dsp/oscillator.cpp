@@ -102,12 +102,9 @@ void SaturatingSawOscillator::setSaturation(float saturation) {
 float SaturatingSawOscillator::_nextForPhase(float phase) {
 	float sample = SawOscillator::_nextForPhase(phase);
 	if (_saturation >= 0.1f) {
-		// FIXME: amplitudes, tanh approximation or table.
-		sample /= _amplitude;
-		sample = tanhf(sample * _saturation * M_PI) * _saturationNormalization;
-		sample *= _amplitude;
+		sample = tanhf(-sample * _saturation * M_PI) * _saturationNormalization;
 	}
-	return sample;
+	return _amplitude2 * sample;
 }
 
 

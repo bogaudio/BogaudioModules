@@ -67,6 +67,9 @@ void Test::step() {
 
 #elif SATSAW
 	float saturation = params[PARAM2_PARAM].value * 10.0f;
+	if (inputs[CV2_INPUT].active) {
+		saturation *= clamp(inputs[CV2_INPUT].value / 10.0f, 0.0f, 1.0f);
+	}
 	_saw.setSampleRate(engineGetSampleRate());
 	_saw.setFrequency(oscillatorPitch());
 	_saw.setSaturation(saturation);
