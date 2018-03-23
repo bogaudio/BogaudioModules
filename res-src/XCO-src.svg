@@ -432,17 +432,17 @@
   <g transform="translate(0 313)">
     <rect width="70" height="47" rx="5" fill="#fafafa" transform="translate(10 0)" />
     <g transform="translate(10 0)">
-      <rect width="30" height="47" rx="5" fill="#fafafa" />
+      <!-- <rect width="30" height="47" rx="5" fill="#fafafa" /> -->
       <use id="PITCH_INPUT" xlink:href="#input" transform="translate(4 5)" />
       <text font-size="6pt" letter-spacing="1px" transform="translate(2 40)">V/OCT</text>
     </g>
     <g transform="translate(50 0)">
-      <rect width="30" height="47" rx="5" fill="#fafafa" />
+      <!-- <rect width="30" height="47" rx="5" fill="#fafafa" /> -->
       <use id="SYNC_INPUT" xlink:href="#input" transform="translate(2 5)" />
       <text font-size="6pt" letter-spacing="2px" transform="translate(0 40)">SYNC</text>
     </g>
     <g transform="translate(100 0)">
-      <rect width="30" height="47" rx="5" fill="#bbb" transform="translate(0 0)" />
+      <!-- <rect width="30" height="47" rx="5" fill="#bbb" transform="translate(0 0)" /> -->
       <use id="MIX_OUTPUT" xlink:href="#output" transform="translate(3 5)" />
       <text font-size="6pt" letter-spacing="2px" transform="translate(5 40)">MIX</text>
     </g>

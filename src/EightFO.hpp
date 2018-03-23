@@ -72,6 +72,7 @@ struct EightFO : Module {
 	};
 
 	const int modulationSteps = 100;
+	const float frequencyExponent = 1.9385f;
 	const float maxFrequency = 1000.0f;
 	const float minFrequency = 1.0f;
 	const float slowModeFactor = 0.01f;
