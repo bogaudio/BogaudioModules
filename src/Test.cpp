@@ -151,29 +151,48 @@ void Test::step() {
 	}
 
 #elif FM
+	const float amplitude = 5.0f;
 	float baseHz = oscillatorPitch();
 	float ratio = ratio2();
-	_modulator.setSampleRate(engineGetSampleRate());
-	_modulator.setFrequency(baseHz * ratio2());
-	float hz = _modulator.next() * index3() * ratio * baseHz;
-	_carrier.setSampleRate(engineGetSampleRate());
-	_carrier.setFrequency(baseHz + hz);
-	outputs[OUT_OUTPUT].value = _carrier.next() * 5.0f;
+	float index = index3();
+	float sampleRate = engineGetSampleRate();
+	if (_baseHz != baseHz || _ratio != ratio || _index != index || _sampleRate != sampleRate) {
+		_baseHz = baseHz;
+		_ratio = ratio;
+		_index = index;
+		_sampleRate = sampleRate;
+		float modHz = _ratio * _baseHz;
+		// printf("baseHz=%f ratio=%f modHz=%f index=%f\n", _baseHz, _ratio, modHz, _index);
 
-	// _modulator2.setSampleRate(engineGetSampleRate());
-	// _modulator2.setFrequency(baseHz * ratio2());
-	// float hz2 = _modulator2.next() * index3() * ratio * baseHz;
-	// _carrier2.setSampleRate(engineGetSampleRate());
-	// _carrier2.setFrequency(std::max(baseHz + hz2, 0.0f));
-	// outputs[OUT2_OUTPUT].value = _carrier2.next() * 5.0f;
+		_modulator.setFrequency(modHz);
+		_modulator.setSampleRate(_sampleRate);
+		_carrier.setSampleRate(_sampleRate);
+
+		_carrier2.setSampleRate(engineGetSampleRate());
+		_carrier2.setFrequency(baseHz);
+		_modulator2.setSampleRate(engineGetSampleRate());
+		_modulator2.setFrequency(modHz);
+	}
+
+	// linear FM.
+	float modHz = _ratio * _baseHz;
+	_carrier.setFrequency(_baseHz + _index * _modulator.next() * modHz); // linear FM requires knowing the modulator's frequency.
+	outputs[OUT_OUTPUT].value = _carrier.next() * amplitude;
+
+	// PM for comparison - identical output.
+	_carrier2.advancePhase();
+	outputs[OUT2_OUTPUT].value = _carrier2.nextFromPhasor(_carrier2, Phasor::radiansToPhase(_index * _modulator2.next())) * amplitude;
 
 #elif PM
+	const float amplitude = 5.0f;
+	float baseHz = oscillatorPitch();
+	float modHz = ratio2() * baseHz;
 	_carrier.setSampleRate(engineGetSampleRate());
-	_carrier.setFrequency(oscillatorPitch());
+	_carrier.setFrequency(baseHz);
 	_modulator.setSampleRate(engineGetSampleRate());
-	_modulator.setFrequency(_carrier._frequency * ratio2());
+	_modulator.setFrequency(modHz);
 	_carrier.advancePhase();
-	outputs[OUT_OUTPUT].value = _carrier.nextFromPhasor(_carrier, Phasor::radiansToPhase(index3() * _modulator.next())) * 5.0f;
+	outputs[OUT_OUTPUT].value = _carrier.nextFromPhasor(_carrier, Phasor::radiansToPhase(index3() * _modulator.next())) * amplitude;
 
 #elif FEEDBACK_PM
 	_carrier.setSampleRate(engineGetSampleRate());

@@ -18,7 +18,7 @@ void FMOp::onSampleRateChange() {
 void FMOp::step() {
 	lights[ENV_TO_LEVEL_LIGHT].value = _levelEnvelopeOn;
 	lights[ENV_TO_FEEDBACK_LIGHT].value = _feedbackEnvelopeOn;
-	if (outputs[AUDIO_OUTPUT].active) {
+	if (!outputs[AUDIO_OUTPUT].active) {
 		return;
 	}
 
@@ -48,14 +48,18 @@ void FMOp::step() {
 		_baseHZ = cvToFrequency(_baseHZ);
 		_baseHZ *= ratio;
 
-		bool levelEnvelopeOn = params[ENV_TO_LEVEL_PARAM].value < 0.5f;
-		if (_levelEnvelopeOn != levelEnvelopeOn) {
-			if (_levelEnvelopeOn) {
+		bool levelEnvelopeOn = params[ENV_TO_LEVEL_PARAM].value > 0.5f;
+		bool feedbackEnvelopeOn = params[ENV_TO_FEEDBACK_PARAM].value > 0.5f;
+		if (_levelEnvelopeOn != levelEnvelopeOn || _feedbackEnvelopeOn != feedbackEnvelopeOn) {
+			_levelEnvelopeOn = levelEnvelopeOn;
+			_feedbackEnvelopeOn = feedbackEnvelopeOn;
+			bool envelopeOn = _levelEnvelopeOn || _feedbackEnvelopeOn;
+			if (envelopeOn && !_envelopeOn) {
 				_envelope.reset();
 			}
-			_levelEnvelopeOn = levelEnvelopeOn;
+			_envelopeOn = envelopeOn;
 		}
-		if (_levelEnvelopeOn) {
+		if (_envelopeOn) {
 			float sustain = params[SUSTAIN_PARAM].value;
 			if (inputs[SUSTAIN_INPUT].active) {
 				sustain *= clamp(inputs[SUSTAIN_INPUT].value / 10.0f, 0.0f, 1.0f);
@@ -82,20 +86,29 @@ void FMOp::step() {
 		}
 	}
 
+	float envelope = 0.0f;
+	if (_envelopeOn) {
+		_gateTrigger.process(gateIn);
+		_envelope.setGate(_gateTrigger.isHigh());
+		envelope = _envelope.next();
+	}
+
+	float feedback = _feedback;
+	if (_feedbackEnvelopeOn) {
+		feedback *= envelope;
+	}
+
 	_phasor.setFrequency(_baseHZ);
-	float offset = _feedback * _phasor.next();
+	float offset = feedback * _phasor.next();
 	if (inputs[FM_INPUT].active) {
-		offset += clamp(inputs[FM_INPUT].value / 5.0f, -1.0f, 1.0f) * _depth * 10.0f;
+		offset += inputs[FM_INPUT].value * _depth * 2.0f;
 	}
 	float out = _sineTable.nextFromPhasor(_phasor, Phasor::radiansToPhase(offset));
 	out *= _level;
 	if (_levelEnvelopeOn) {
-		_gateTrigger.process(gateIn);
-		_envelope.setGate(_gateTrigger.isHigh());
-		out *= _envelope.next();
+		out *= envelope;
 	}
-
-	outputs[AUDIO_OUTPUT].value = out * 5.0f;
+	outputs[AUDIO_OUTPUT].value = amplitude * out;
 }
 
 struct FMOpWidget : ModuleWidget {
@@ -147,7 +160,7 @@ struct FMOpWidget : ModuleWidget {
 		addParam(ParamWidget::create<Knob26>(decayParamPosition, module, FMOp::DECAY_PARAM, 0.0, 1.0, 0.1));
 		addParam(ParamWidget::create<Knob26>(sustainParamPosition, module, FMOp::SUSTAIN_PARAM, 0.0, 1.0, 1.0));
 		addParam(ParamWidget::create<Knob26>(releaseParamPosition, module, FMOp::RELEASE_PARAM, 0.0, 1.0, 0.3));
-		addParam(ParamWidget::create<Knob26>(depthParamPosition, module, FMOp::DEPTH_PARAM, 0.0, 1.0, 0.5));
+		addParam(ParamWidget::create<Knob26>(depthParamPosition, module, FMOp::DEPTH_PARAM, 0.0, 1.0, 0.0));
 		addParam(ParamWidget::create<Knob26>(feedbackParamPosition, module, FMOp::FEEDBACK_PARAM, 0.0, 1.0, 0.0));
 		addParam(ParamWidget::create<Knob26>(levelParamPosition, module, FMOp::LEVEL_PARAM, 0.0, 1.0, 1.0));
 		addParam(ParamWidget::create<StatefulButton9>(envToLevelParamPosition, module, FMOp::ENV_TO_LEVEL_PARAM, 0.0, 1.0, 0.0));

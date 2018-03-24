@@ -73,10 +73,12 @@ void XCO::step() {
 		_sineMix = level(params[SINE_MIX_PARAM], inputs[SINE_MIX_INPUT]);
 	}
 
-	if (inputs[FM_INPUT].active) {
+	float phaseOffset = 0.0f;
+	if (inputs[FM_INPUT].active && _fmDepth > 0.01f) {
 		float fm = inputs[FM_INPUT].value * _fmDepth;
 		if (_fmLinearMode) {
-			_phasor.setFrequency(_baseHz + fm * _baseHz);
+			_phasor.setFrequency(_baseHz);
+			phaseOffset = Phasor::radiansToPhase(2.0f * fm);
 		}
 		else {
 			_phasor.setFrequency(cvToFrequency(_baseVOct + fm));
@@ -88,16 +90,16 @@ void XCO::step() {
 	_phasor.advancePhase();
 	float mix = 0.0f;
 	if (outputs[MIX_OUTPUT].active || outputs[SQUARE_OUTPUT].active) {
-		mix += outputs[SQUARE_OUTPUT].value = amplitude * _squareMix * _square.nextFromPhasor(_phasor, _squarePhaseOffset);
+		mix += outputs[SQUARE_OUTPUT].value = amplitude * _squareMix * _square.nextFromPhasor(_phasor, _squarePhaseOffset + phaseOffset);
 	}
 	if (outputs[MIX_OUTPUT].active || outputs[SAW_OUTPUT].active) {
-		mix += outputs[SAW_OUTPUT].value = amplitude * _sawMix * _saw.nextFromPhasor(_phasor, _sawPhaseOffset);
+		mix += outputs[SAW_OUTPUT].value = amplitude * _sawMix * _saw.nextFromPhasor(_phasor, _sawPhaseOffset + phaseOffset);
 	}
 	if (outputs[MIX_OUTPUT].active || outputs[TRIANGLE_OUTPUT].active) {
-		mix += outputs[TRIANGLE_OUTPUT].value = amplitude * _triangleMix * _triangle.nextFromPhasor(_phasor, _trianglePhaseOffset);
+		mix += outputs[TRIANGLE_OUTPUT].value = amplitude * _triangleMix * _triangle.nextFromPhasor(_phasor, _trianglePhaseOffset + phaseOffset);
 	}
 	if (outputs[MIX_OUTPUT].active || outputs[SINE_OUTPUT].active) {
-		mix += outputs[SINE_OUTPUT].value = amplitude * _sineMix * _sine.nextFromPhasor(_phasor, _sinePhaseOffset);
+		mix += outputs[SINE_OUTPUT].value = amplitude * _sineMix * _sine.nextFromPhasor(_phasor, _sinePhaseOffset + phaseOffset);
 	}
 	if (outputs[MIX_OUTPUT].active) {
 		outputs[MIX_OUTPUT].value = mix;

@@ -9,12 +9,12 @@ extern Model* modelTest;
 // #define SINE 1
 // #define SQUARE 1
 // #define SAW 1
-#define SATSAW 1
+// #define SATSAW 1
 // #define TRIANGLE 1
 // #define SINEBANK 1
 // #define OVERSAMPLING 1
 // #define OVERSAMPLED_BL 1
-// #define FM 1
+#define FM 1
 // #define PM 1
 // #define FEEDBACK_PM 1
 // #define EG 1
@@ -121,10 +121,14 @@ struct Test : Module {
 	BandLimitedSawOscillator _saw2;
 	LowPassFilter _lpf;
 #elif FM
+	float _baseHz = 0.0f;
+	float _ratio = 0.0f;
+	float _index = 0.0f;
+	float _sampleRate = 0.0f;
 	SineTableOscillator _modulator;
 	SineTableOscillator _carrier;
-	// SineTableOscillator _modulator2;
-	// SineTableOscillator _carrier2;
+	SineTableOscillator _modulator2;
+	SineTableOscillator _carrier2;
 #elif PM
 	SineTableOscillator _modulator;
 	SineTableOscillator _carrier;
@@ -173,8 +177,8 @@ struct Test : Module {
 #elif FM
 	, _modulator(44100.0, 1000.0, 1.0)
 	, _carrier(44100.0, 1000.0, 1.0)
-	// , _modulator2(44100.0, 1000.0, 1.0)
-	// , _carrier2(44100.0, 1000.0, 1.0)
+	, _modulator2(44100.0, 1000.0, 1.0)
+	, _carrier2(44100.0, 1000.0, 1.0)
 #elif PM
 	, _modulator(44100.0, 1000.0, 1.0)
 	, _carrier(44100.0, 1000.0)

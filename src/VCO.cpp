@@ -56,10 +56,12 @@ void VCO::step() {
 		_fmLinearMode = ((int)params[FM_TYPE_PARAM].value) == 1;
 	}
 
-	if (inputs[FM_INPUT].active) {
+	float phaseOffset = 0.0f;
+	if (inputs[FM_INPUT].active && _fmDepth > 0.01f) {
 		float fm = inputs[FM_INPUT].value * _fmDepth;
 		if (_fmLinearMode) {
-			_phasor.setFrequency(_baseHz + fm * _baseHz);
+			_phasor.setFrequency(_baseHz);
+			phaseOffset = Phasor::radiansToPhase(2.0f * fm);
 		}
 		else {
 			_phasor.setFrequency(cvToFrequency(_baseVOct + fm));
@@ -70,16 +72,16 @@ void VCO::step() {
 	}
 	_phasor.advancePhase();
 	if (outputs[SQUARE_OUTPUT].active) {
-		outputs[SQUARE_OUTPUT].value = amplitude * _square.nextFromPhasor(_phasor);
+		outputs[SQUARE_OUTPUT].value = amplitude * _square.nextFromPhasor(_phasor, phaseOffset);
 	}
 	if (outputs[SAW_OUTPUT].active) {
-		outputs[SAW_OUTPUT].value = amplitude * _saw.nextFromPhasor(_phasor);
+		outputs[SAW_OUTPUT].value = amplitude * _saw.nextFromPhasor(_phasor, phaseOffset);
 	}
 	if (outputs[TRIANGLE_OUTPUT].active) {
-		outputs[TRIANGLE_OUTPUT].value = amplitude * _triangle.nextFromPhasor(_phasor);
+		outputs[TRIANGLE_OUTPUT].value = amplitude * _triangle.nextFromPhasor(_phasor, phaseOffset);
 	}
 	if (outputs[SINE_OUTPUT].active) {
-		outputs[SINE_OUTPUT].value = amplitude * _sine.nextFromPhasor(_phasor);
+		outputs[SINE_OUTPUT].value = amplitude * _sine.nextFromPhasor(_phasor, phaseOffset);
 	}
 }
 
@@ -126,7 +128,7 @@ struct VCOWidget : ModuleWidget {
 		addParam(ParamWidget::create<Knob16>(fineParamPosition, module, VCO::FINE_PARAM, -1.0, 1.0, 0.0));
 		addParam(ParamWidget::create<StatefulButton9>(slowParamPosition, module, VCO::SLOW_PARAM, 0.0, 1.0, 0.0));
 		addParam(ParamWidget::create<Knob26>(pwParamPosition, module, VCO::PW_PARAM, -1.0, 1.0, 0.0));
-		addParam(ParamWidget::create<Knob26>(fmParamPosition, module, VCO::FM_PARAM, -1.0, 1.0, 0.0));
+		addParam(ParamWidget::create<Knob26>(fmParamPosition, module, VCO::FM_PARAM, 0.0, 1.0, 0.0));
 		addParam(ParamWidget::create<StatefulButton9>(fmTypeParamPosition, module, VCO::FM_TYPE_PARAM, 0.0, 1.0, 0.0));
 
 		addInput(Port::create<Port24>(pitchInputPosition, Port::INPUT, module, VCO::PITCH_INPUT));
