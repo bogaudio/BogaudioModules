@@ -21,6 +21,18 @@ float Phasor::nextFromPhasor(const Phasor& phasor, float offset) {
 
 void Phasor::_update() {
 	_delta = (_frequency / _sampleRate) * maxPhase;
+	if (_delta >= maxPhase) {
+		_delta -= maxPhase;
+		if (_delta >= maxPhase) {
+			_delta = fmodf(_delta, maxPhase);
+		}
+	}
+	else if (_delta < 0.0f) {
+		_delta += maxPhase;
+		if (_delta < 0.0f) {
+			_delta = maxPhase - fmodf(-_delta, maxPhase);
+		}
+	}
 }
 
 void Phasor::advancePhase() {
@@ -28,9 +40,20 @@ void Phasor::advancePhase() {
 	if (_phase >= maxPhase) {
 		_phase -= maxPhase;
 	}
-	else if (_phase <= 0.0f && _delta != 0.0f) {
+	if (_phase < 0.0f) {
 		_phase += maxPhase;
 	}
+	assert(_phase >= 0.0f);
+	assert(_phase < maxPhase);
+}
+
+void Phasor::advancePhasePositive() {
+	assert(_delta >= 0.0f);
+	_phase += _delta;
+	if (_phase >= maxPhase) {
+		_phase -= maxPhase;
+	}
+	assert(_phase < maxPhase);
 }
 
 float Phasor::_next() {
@@ -50,14 +73,15 @@ float TablePhasor::_nextForPhase(float phase) {
 	while (phase < 0.0f) {
 		phase += maxPhase;
 	}
-	float fi = phase * (_table.length() / 2);
+
+	float fi = phase * (_tableLength / 2);
 	int i = (int)fi;
 	float v1 = _table.value(i);
-	if (_table.length() >= 1024) {
-		return v1 * _amplitude;
+	if (_tableLength >= 1024) {
+		return v1;
 	}
-	float v2 = _table.value(i + 1 == _table.length() ? 0 : i + 1);
-	return _amplitude * (v1 + (fi - i)*(v2 - v1));
+	float v2 = _table.value(i + 1 == _tableLength ? 0 : i + 1);
+	return v1 + (fi - i)*(v2 - v1);
 }
 
 
@@ -77,12 +101,12 @@ float SineOscillator::_next() {
 	double t = _x - _k1*_y;
 	_y = _y + _k2*t;
 	_x = t - _k1*_y;
-	return _amplitude * _y;
+	return _y;
 }
 
 
 float SawOscillator::_nextForPhase(float phase) {
-	return _amplitude * (phase - halfMaxPhase);
+	return phase - halfMaxPhase;
 }
 
 
@@ -104,7 +128,7 @@ float SaturatingSawOscillator::_nextForPhase(float phase) {
 	if (_saturation >= 0.1f) {
 		sample = tanhf(-sample * _saturation * M_PI) * _saturationNormalization;
 	}
-	return _amplitude2 * sample;
+	return sample;
 }
 
 
@@ -127,13 +151,13 @@ float BandLimitedSawOscillator::_nextForPhase(float phase) {
 	if (phase > maxPhase - _qd) {
 		float i = (maxPhase - phase) / _qd;
 		i = (1.0f - i) * _halfTableLen;
-		sample -= _amplitude * _table.value((int)i);
+		sample -= _table.value((int)i);
 	}
 	else if (phase < _qd) {
 		float i = phase / _qd;
 		i *= _halfTableLen - 1;
 		i += _halfTableLen;
-		sample -= _amplitude * _table.value((int)i);
+		sample -= _table.value((int)i);
 	}
 	return sample;
 }
@@ -161,15 +185,15 @@ float SquareOscillator::_nextForPhase(float phase) {
 	if (positive) {
 		if (phase >= _pulseWidth) {
 			positive = false;
-			return _negativeAmplitude;
+			return -1.0f;
 		}
-		return _amplitude;
+		return 1.0f;
 	}
 	if (phase < _pulseWidth) {
 		positive = true;
-		return _amplitude;
+		return 1.0f;
 	}
-	return _negativeAmplitude;
+	return -1.0f;
 }
 
 
@@ -191,10 +215,10 @@ void BandLimitedSquareOscillator::setPulseWidth(float pw) {
 	_pulseWidth *= maxPhase;
 
 	if (_pulseWidth >= 1.0f) {
-		_offset = (_pulseWidth - 1.0f) * _amplitude;
+		_offset = _pulseWidth - 1.0f;
 	}
 	else {
-		_offset = -(1.0f - _pulseWidth) * _amplitude;
+		_offset = -(1.0f - _pulseWidth);
 	}
 }
 
@@ -212,12 +236,12 @@ float BandLimitedSquareOscillator::_nextForPhase(float phase) {
 float TriangleOscillator::_nextForPhase(float phase) {
 	float p = maxPhase * phase;
 	if (phase < quarterMaxPhase) {
-		return _amplitude * p;
+		return p;
 	}
 	if (phase < threeQuartersMaxPhase) {
-		return _amplitude * (maxPhase - p);
+		return maxPhase - p;
 	}
-	return _amplitude * (p - twiceMaxPhase);
+	return p - twiceMaxPhase;
 }
 
 
@@ -274,9 +298,10 @@ void SineBankOscillator::_frequencyChanged() {
 	}
 }
 
-float SineBankOscillator::_next() {
+float SineBankOscillator::next(float phaseOffset) {
 	float next = 0.0;
 	for (Partial& p : _partials) {
+		p.sine.advancePhasePositive();
 		if (p.frequency < _maxPartialFrequency && (p.amplitude > 0.001 || p.amplitude < -0.001 || p.amplitudeSteps > 0)) {
 			if (p.amplitudeSteps > 0) {
 				if (p.amplitudeSteps == 1) {
@@ -287,10 +312,7 @@ float SineBankOscillator::_next() {
 				}
 				--p.amplitudeSteps;
 			}
-			next += p.sine.next() * p.amplitude;
-		}
-		else {
-			p.sine.next(); // keep spinning, maintain phase.
+			next += p.sine.nextFromPhasor(p.sine, phaseOffset) * p.amplitude;
 		}
 	}
 	return next;

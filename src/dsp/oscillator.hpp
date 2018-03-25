@@ -10,11 +10,11 @@
 namespace bogaudio {
 namespace dsp {
 
-struct OscillatorGenerator : Generator {
+struct Oscillator {
 	float _sampleRate;
 	float _frequency;
 
-	OscillatorGenerator(
+	Oscillator(
 		float sampleRate,
 		float frequency
 	)
@@ -22,6 +22,7 @@ struct OscillatorGenerator : Generator {
 	, _frequency(frequency)
 	{
 	}
+	virtual ~Oscillator() {}
 
 	void setSampleRate(float sampleRate) {
 		if (_sampleRate != sampleRate && sampleRate >= 1.0) {
@@ -40,6 +41,16 @@ struct OscillatorGenerator : Generator {
 	}
 
 	virtual void _frequencyChanged() {}
+};
+
+struct OscillatorGenerator : Oscillator, Generator {
+	OscillatorGenerator(
+		float sampleRate,
+		float frequency
+	)
+	: Oscillator(sampleRate, frequency)
+	{
+	}
 };
 
 struct Phasor : OscillatorGenerator {
@@ -71,26 +82,26 @@ struct Phasor : OscillatorGenerator {
 	float nextFromPhasor(const Phasor& phasor, float offset = 0.0f); // offset is not radians, but local phase.
 	virtual void _update();
 	void advancePhase();
+	void advancePhasePositive();
 	virtual float _next() override final;
 	virtual float _nextForPhase(float phase);
 
-	static float radiansToPhase(float radians) { return radians / M_PI; }
-	static float phaseToRadians(float phase) { return phase * M_PI; }
+	inline static float radiansToPhase(float radians) { return radians / M_PI; }
+	inline static float phaseToRadians(float phase) { return phase * M_PI; }
 };
 
 struct TablePhasor : Phasor {
 	const Table& _table;
-	float _amplitude;
+	int _tableLength;
 
 	TablePhasor(
 		const Table& table,
 		double sampleRate,
-		double frequency,
-		float amplitude = 1.0f
+		double frequency
 	)
 	: Phasor(sampleRate, frequency)
 	, _table(table)
-	, _amplitude(amplitude)
+	, _tableLength(table.length())
 	{
 	}
 
@@ -101,16 +112,13 @@ struct SineOscillator : OscillatorGenerator {
 	double _k1, _k2;
 	double _x;
 	double _y;
-	double _amplitude;
 
 	SineOscillator(
 		double sampleRate,
 		double frequency,
-		double amplitude = 1.0,
 		double initialPhase = 0.0
 	)
 	: OscillatorGenerator(sampleRate, frequency)
-	, _amplitude(amplitude)
 	{
 		setPhase(initialPhase);
 		update();
@@ -132,25 +140,21 @@ struct SineOscillator : OscillatorGenerator {
 struct SineTableOscillator : TablePhasor {
 	SineTableOscillator(
 		float sampleRate,
-		float frequency,
-		float amplitude = 1.0
+		float frequency
 	)
-	: TablePhasor(StaticSineTable::table(), sampleRate, frequency, amplitude)
+	: TablePhasor(StaticSineTable::table(), sampleRate, frequency)
 	{
 	}
 };
 
 struct SawOscillator : Phasor {
 	const float halfMaxPhase = 0.5f * maxPhase;
-	float _amplitude;
 
 	SawOscillator(
 		float sampleRate,
-		float frequency,
-		float amplitude = 1.0f
+		float frequency
 	)
 	: Phasor(sampleRate, frequency)
-	, _amplitude(amplitude)
 	{
 	}
 
@@ -160,17 +164,14 @@ struct SawOscillator : Phasor {
 struct SaturatingSawOscillator : SawOscillator {
 	float _saturation;
 	float _saturationNormalization;
-	float _amplitude2;
 
 	SaturatingSawOscillator(
 		float sampleRate,
-		float frequency,
-		float amplitude = 1.0f
+		float frequency
 	)
 	: SawOscillator(sampleRate, frequency)
 	, _saturation(0.0f)
 	, _saturationNormalization(1.0f)
-	, _amplitude2(amplitude)
 	{
 	}
 
@@ -188,11 +189,10 @@ struct BandLimitedSawOscillator : SaturatingSawOscillator {
 	BandLimitedSawOscillator(
 		float sampleRate,
 		float frequency,
-		float amplitude = 1.0f,
 		int quality = 5,
 		const Table& table = StaticBlepTable::table()
 	)
-	: SaturatingSawOscillator(sampleRate, frequency, amplitude)
+	: SaturatingSawOscillator(sampleRate, frequency)
 	, _quality(quality)
 	, _table(table)
 	, _halfTableLen(_table.length() / 2)
@@ -209,20 +209,15 @@ struct BandLimitedSawOscillator : SaturatingSawOscillator {
 struct SquareOscillator : Phasor {
 	const float minPulseWidth = 0.03f;
 	const float maxPulseWidth = 1.0f - minPulseWidth;
-	float _amplitude;
-	float _negativeAmplitude;
 	float _pulseWidthInput;
 	float _pulseWidth = 0.5;
 	bool positive = true;
 
 	SquareOscillator(
 		float sampleRate,
-		float frequency,
-		float amplitude = 1.0
+		float frequency
 	)
 	: Phasor(sampleRate, frequency)
-	, _amplitude(amplitude)
-	, _negativeAmplitude(-amplitude)
 	{
 	}
 
@@ -241,11 +236,10 @@ struct BandLimitedSquareOscillator : BandLimitedSawOscillator {
 	BandLimitedSquareOscillator(
 		float sampleRate,
 		float frequency,
-		float amplitude = 1.0f,
 		int quality = 5,
 		const Table& table = StaticBlepTable::table()
 	)
-	: BandLimitedSawOscillator(sampleRate, frequency, amplitude, quality, table)
+	: BandLimitedSawOscillator(sampleRate, frequency, quality, table)
 	{
 		setPulseWidth(0.05f);
 	}
@@ -259,22 +253,19 @@ struct TriangleOscillator : Phasor {
 	const float quarterMaxPhase = 0.25f * maxPhase;
 	const float threeQuartersMaxPhase = 0.75f * maxPhase;
 	const float twiceMaxPhase = 2.0f * maxPhase;
-	float _amplitude;
 
 	TriangleOscillator(
 		float sampleRate,
-		float frequency,
-		float amplitude = 1.0
+		float frequency
 	)
 	: Phasor(sampleRate, frequency)
-	, _amplitude(amplitude)
 	{
 	}
 
 	virtual float _nextForPhase(float phase) override;
 };
 
-struct SineBankOscillator : OscillatorGenerator {
+struct SineBankOscillator : Oscillator {
 	struct Partial {
 		float frequency;
 		float frequencyRatio;
@@ -282,7 +273,7 @@ struct SineBankOscillator : OscillatorGenerator {
 		float amplitudeTarget;
 		float amplitudeStepDelta;
 		int amplitudeSteps;
-		SineOscillator sine;
+		SineTableOscillator sine;
 
 		Partial()
 		: frequency(0.0)
@@ -291,7 +282,7 @@ struct SineBankOscillator : OscillatorGenerator {
 		, amplitudeTarget(0.0)
 		, amplitudeStepDelta(0.0)
 		, amplitudeSteps(0)
-		, sine(0.0, 0.0, 1.0)
+		, sine(0.0, 0.0)
 		{}
 	};
 
@@ -306,7 +297,7 @@ struct SineBankOscillator : OscillatorGenerator {
 		float frequency,
 		int partialCount
 	)
-	: OscillatorGenerator(sampleRate, frequency)
+	: Oscillator(sampleRate, frequency)
 	, _partials(partialCount)
 	{
 		_sampleRateChanged();
@@ -326,7 +317,7 @@ struct SineBankOscillator : OscillatorGenerator {
 
 	virtual void _sampleRateChanged() override;
 	virtual void _frequencyChanged() override;
-	virtual float _next() override;
+	float next(float phaseOffset = 0.0f); // Phasor "phase", not radians.
 };
 
 } // namespace dsp

@@ -11,10 +11,10 @@ extern Model* modelTest;
 // #define SAW 1
 // #define SATSAW 1
 // #define TRIANGLE 1
-// #define SINEBANK 1
+#define SINEBANK 1
 // #define OVERSAMPLING 1
 // #define OVERSAMPLED_BL 1
-#define FM 1
+// #define FM 1
 // #define PM 1
 // #define FEEDBACK_PM 1
 // #define EG 1
@@ -150,37 +150,37 @@ struct Test : Module {
 #elif LPFNOISE
 	, _lpf(44100.0, 1000.0, 1.0)
 #elif SINE
-	, _sine(44100.0, 1000.0, 5.0)
-	, _sine2(44100.0, 1000.0, 5.0)
+	, _sine(44100.0, 1000.0)
+	, _sine2(44100.0, 1000.0)
 #elif SQUARE
-	, _square(44100.0, 1000.0, 5.0)
-	, _square2(44100.0, 1000.0, 5.0)
+	, _square(44100.0, 1000.0)
+	, _square2(44100.0, 1000.0)
 #elif SAW
-	, _saw(44100.0, 1000.0, 5.0)
-	, _saw2(44100.0, 1000.0, 5.0, 8)
+	, _saw(44100.0, 1000.0)
+	, _saw2(44100.0, 1000.0, 8)
 #elif SATSAW
-	, _saw(44100.0, 1000.0, 5.0)
-	, _saw2(44100.0, 1000.0, 5.0, 8)
+	, _saw(44100.0, 1000.0)
+	, _saw2(44100.0, 1000.0, 8)
 #elif TRIANGLE
-	, _triangle(44100.0, 1000.0, 5.0)
+	, _triangle(44100.0, 1000.0)
 #elif SINEBANK
 	, _sineBank(44101.0, 1000.0, 50)
 #elif OVERSAMPLING
-	, _saw1(44100.0, 1000.0, 5.0)
-	, _saw2(44100.0, 1000.0, 1.0)
+	, _saw1(44100.0, 1000.0)
+	, _saw2(44100.0, 1000.0)
 	, _lpf(44100.0, 1000.0, 1.0)
 	, _lpf2(44100.0, 1000.0, 1.0)
 #elif OVERSAMPLED_BL
-	, _saw1(44100.0, 1000.0, 5.0)
-	, _saw2(44100.0, 1000.0, 5.0)
+	, _saw1(44100.0, 1000.0)
+	, _saw2(44100.0, 1000.0)
 	, _lpf(44100.0, 1000.0, 1.0)
 #elif FM
-	, _modulator(44100.0, 1000.0, 1.0)
-	, _carrier(44100.0, 1000.0, 1.0)
-	, _modulator2(44100.0, 1000.0, 1.0)
-	, _carrier2(44100.0, 1000.0, 1.0)
+	, _modulator(44100.0, 1000.0)
+	, _carrier(44100.0, 1000.0)
+	, _modulator2(44100.0, 1000.0)
+	, _carrier2(44100.0, 1000.0)
 #elif PM
-	, _modulator(44100.0, 1000.0, 1.0)
+	, _modulator(44100.0, 1000.0)
 	, _carrier(44100.0, 1000.0)
 #elif FEEDBACK_PM
 	, _carrier(44100.0, 1000.0)
@@ -188,8 +188,8 @@ struct Test : Module {
 #elif EG
 	, _envelope(44100.0)
 #elif TABLES
-  , _sine(44100.0, 1000.0, 5.0)
-  , _table(StaticBlepTable::table(), 44100.0, 1000.0, 5.0)
+  , _sine(44100.0, 1000.0)
+  , _table(StaticBlepTable::table(), 44100.0, 1000.0)
 #endif
 	{
 		onReset();

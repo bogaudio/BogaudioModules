@@ -101,8 +101,8 @@ static void BM_TriangleOscillator(benchmark::State& state) {
 }
 BENCHMARK(BM_TriangleOscillator);
 
-static void BM_SineBankOscillator(benchmark::State& state) {
-  SineBankOscillator o(44100.0, 440.0, 100);
+static void BM_SineBankOscillator100(benchmark::State& state) {
+  SineBankOscillator o(44100.0, 100.0, 100);
   for (int i = 1, n = o.partialCount(); i <= n; ++i) {
     o.setPartial(i, i, 1.0 / (float)i);
   }
@@ -111,4 +111,40 @@ static void BM_SineBankOscillator(benchmark::State& state) {
     o.next();
   }
 }
-BENCHMARK(BM_SineBankOscillator);
+BENCHMARK(BM_SineBankOscillator100);
+
+static void BM_SineBankOscillator500(benchmark::State& state) {
+  SineBankOscillator o(44100.0, 500.0, 100);
+  for (int i = 1, n = o.partialCount(); i <= n; ++i) {
+    o.setPartial(i, i, 1.0 / (float)i);
+  }
+
+  for (auto _ : state) {
+    o.next();
+  }
+}
+BENCHMARK(BM_SineBankOscillator500);
+
+static void BM_SineBankOscillator5000(benchmark::State& state) {
+  SineBankOscillator o(44100.0, 5000.0, 100);
+  for (int i = 1, n = o.partialCount(); i <= n; ++i) {
+    o.setPartial(i, i, 1.0 / (float)i);
+  }
+
+  for (auto _ : state) {
+    o.next();
+  }
+}
+BENCHMARK(BM_SineBankOscillator5000);
+
+static void BM_SineBankOscillator15000(benchmark::State& state) {
+  SineBankOscillator o(44100.0, 15000.0, 100);
+  for (int i = 1, n = o.partialCount(); i <= n; ++i) {
+    o.setPartial(i, i, 1.0 / (float)i);
+  }
+
+  for (auto _ : state) {
+    o.next();
+  }
+}
+BENCHMARK(BM_SineBankOscillator15000);

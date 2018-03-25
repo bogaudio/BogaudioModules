@@ -33,11 +33,11 @@ void Test::step() {
 #elif SINE
 	_sine.setSampleRate(engineGetSampleRate());
 	_sine.setFrequency(oscillatorPitch());
-	outputs[OUT_OUTPUT].value = _sine.next();
+	outputs[OUT_OUTPUT].value = _sine.next() * 5.0f;
 
 	_sine2.setSampleRate(engineGetSampleRate());
 	_sine2.setFrequency(oscillatorPitch());
-	outputs[OUT2_OUTPUT].value = _sine2.next();
+	outputs[OUT2_OUTPUT].value = _sine2.next() * 5.0f;
 
 #elif SQUARE
 	_square.setSampleRate(engineGetSampleRate());
@@ -47,23 +47,23 @@ void Test::step() {
 		pw += clamp(inputs[CV2_INPUT].value, -5.0f, 5.0f) / 10.0f;
 	}
 	_square.setPulseWidth(pw);
-	outputs[OUT_OUTPUT].value = _square.next();
+	outputs[OUT_OUTPUT].value = _square.next() * 5.0f;
 
 	_square2.setSampleRate(engineGetSampleRate());
 	_square2.setFrequency(oscillatorPitch());
 	_square2.setPulseWidth(pw);
 	_square2.setQuality(params[PARAM3_PARAM].value * 200);
-	outputs[OUT2_OUTPUT].value = _square2.next();
+	outputs[OUT2_OUTPUT].value = _square2.next() * 5.0f;
 
 #elif SAW
 	_saw.setSampleRate(engineGetSampleRate());
 	_saw.setFrequency(oscillatorPitch());
-	outputs[OUT_OUTPUT].value = _saw.next();
+	outputs[OUT_OUTPUT].value = _saw.next() * 5.0f;
 
 	_saw2.setSampleRate(engineGetSampleRate());
 	_saw2.setFrequency(oscillatorPitch());
 	_saw2.setQuality(params[PARAM2_PARAM].value * 200);
-	outputs[OUT2_OUTPUT].value = _saw2.next();
+	outputs[OUT2_OUTPUT].value = _saw2.next() * 5.0f;
 
 #elif SATSAW
 	float saturation = params[PARAM2_PARAM].value * 10.0f;
@@ -73,18 +73,18 @@ void Test::step() {
 	_saw.setSampleRate(engineGetSampleRate());
 	_saw.setFrequency(oscillatorPitch());
 	_saw.setSaturation(saturation);
-	outputs[OUT_OUTPUT].value = _saw.next();
+	outputs[OUT_OUTPUT].value = _saw.next() * 5.0f;
 
 	_saw2.setSampleRate(engineGetSampleRate());
 	_saw2.setFrequency(oscillatorPitch());
 	_saw2.setSaturation(saturation);
 	_saw2.setQuality(params[PARAM3_PARAM].value * 200);
-	outputs[OUT2_OUTPUT].value = _saw2.next();
+	outputs[OUT2_OUTPUT].value = _saw2.next() * 5.0f;
 
 #elif TRIANGLE
 	_triangle.setSampleRate(engineGetSampleRate());
 	_triangle.setFrequency(oscillatorPitch());
-	outputs[OUT_OUTPUT].value = _triangle.next();
+	outputs[OUT_OUTPUT].value = _triangle.next() * 5.0f;
 
 #elif SINEBANK
 	_sineBank.setSampleRate(engineGetSampleRate());
@@ -98,7 +98,7 @@ void Test::step() {
 	for (int i = 0; i < OVERSAMPLEN; ++i) {
 		buf[i] = _saw1.next();
 	}
-	outputs[OUT_OUTPUT].value = _rackDecimator.process(buf);
+	outputs[OUT_OUTPUT].value = _rackDecimator.process(buf) * 5.0f;
 
 	_saw2.setSampleRate(engineGetSampleRate());
 	_saw2.setFrequency(oscillatorPitch() / (float)OVERSAMPLEN);
@@ -128,13 +128,13 @@ void Test::step() {
 	_saw1.setSampleRate(engineGetSampleRate());
 	_saw1.setFrequency(oscillatorPitch());
 	_saw1.setQuality(quality);
-	outputs[OUT_OUTPUT].value = _saw1.next();
+	outputs[OUT_OUTPUT].value = _saw1.next() * 5.0f;
 
 	_saw2.setSampleRate(engineGetSampleRate());
 	_saw2.setQuality(quality);
 	if (oversample < 1) {
 		_saw2.setFrequency(oscillatorPitch());
-		outputs[OUT2_OUTPUT].value = _saw2.next();
+		outputs[OUT2_OUTPUT].value = _saw2.next() * 5.0f;
 	}
 	else {
 		_saw2.setFrequency(oscillatorPitch() / (float)oversample);
@@ -147,7 +147,7 @@ void Test::step() {
 		for (int i = 0; i < oversample; ++i) {
 			s = _lpf.next(_saw2.next());
 		}
-		outputs[OUT2_OUTPUT].value = s;
+		outputs[OUT2_OUTPUT].value = s * 5.0f;
 	}
 
 #elif FM
@@ -229,11 +229,11 @@ void Test::step() {
 #elif TABLES
 	_sine.setSampleRate(engineGetSampleRate());
 	_sine.setFrequency(oscillatorPitch());
-	outputs[OUT_OUTPUT].value = _sine.next();
+	outputs[OUT_OUTPUT].value = _sine.next() * 5.0f;
 
 	_table.setSampleRate(engineGetSampleRate());
 	_table.setFrequency(oscillatorPitch());
-	outputs[OUT2_OUTPUT].value = _table.next();
+	outputs[OUT2_OUTPUT].value = _table.next() * 5.0f;
 #endif
 }
 
