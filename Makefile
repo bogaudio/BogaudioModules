@@ -31,4 +31,14 @@ benchmark: $(BENCHMARK_OBJECTS)
 	$(CXX) -o $@ $^ ../../build/src/util.cpp.o -lbenchmark -lpthread
 benchmark_clean:
 	rm -f benchmark $(BENCHMARK_OBJECTS)
-clean: benchmark_clean
+
+TESTMAIN_SOURCES = $(wildcard test/testmain.cpp src/dsp/*cpp)
+TESTMAIN_OBJECTS = $(patsubst %, build/%.o, $(TESTMAIN_SOURCES))
+TESTMAIN_DEPS = $(patsubst %, build/%.d, $(TESTMAIN_SOURCES))
+-include $(TESTMAIN_DEPS)
+testmain: $(TESTMAIN_OBJECTS)
+	$(CXX) -o $@ $^ ../../build/src/util.cpp.o
+testmain_clean:
+	rm -f testmain $(TESTMAIN_OBJECTS)
+
+clean: benchmark_clean testmain_clean
