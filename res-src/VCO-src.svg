@@ -35,7 +35,7 @@
       <g transform="translate(13 13)">
         <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f" />
         <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f" />
-        <circle cx="0" cy="0" r="12" stroke-width="1" stroke="#00f" fill="none" />
+        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none" />
       </g>
     </symbol>
 
@@ -304,8 +304,8 @@
       <use id="FM_PARAM" xlink:href="#knob-medium" transform="translate(18 0)" />
     </g>
     <!-- <rect width="90" height="10" fill="#0f0" transform="translate(0 26)" /> -->
-    <g transform="translate(52 1)">
-      <use id="FM_TYPE_PARAM" xlink:href="#button-small" transform="translate(30 7.5)" />
+    <g transform="translate(53 -3)">
+      <use id="FM_TYPE_PARAM" xlink:href="#button-small" transform="translate(9 26)" />
       <g transform="translate(0 2)">
         <use id="FM_EXP_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
         <text font-size="6pt" letter-spacing="2px" transform="translate(9 6.2)">EXP</text>

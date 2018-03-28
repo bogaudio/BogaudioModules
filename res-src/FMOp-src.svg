@@ -27,7 +27,7 @@
       <g transform="translate(19 19)">
         <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f" />
         <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f" />
-        <circle cx="0" cy="0" r="18" stroke-width="1" stroke="#00f" fill="none" />
+        <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none" />
       </g>
     </symbol>
 
@@ -35,7 +35,7 @@
       <g transform="translate(13 13)">
         <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f" />
         <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f" />
-        <circle cx="0" cy="0" r="12" stroke-width="1" stroke="#00f" fill="none" />
+        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none" />
       </g>
     </symbol>
 

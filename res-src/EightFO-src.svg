@@ -411,7 +411,7 @@
     <g transform="translate(50 0)">
       <!-- <rect width="30" height="47" rx="5" fill="#fafafa" /> -->
       <use id="RESET_INPUT" xlink:href="#input" transform="translate(2 5)" />
-      <text font-size="6pt" letter-spacing="2px" transform="translate(4.5 40)">RST</text>
+      <text font-size="6pt" letter-spacing="1px" transform="translate(0 40)">RESET</text>
     </g>
   </g>
 </svg>

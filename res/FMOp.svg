@@ -82,7 +82,7 @@
         <circle
            cx="0"
            cy="0"
-           r="18"
+           r="18.5"
            stroke-width="1"
            stroke="#00f"
            fill="none"
@@ -108,7 +108,7 @@
         <circle
            cx="0"
            cy="0"
-           r="12"
+           r="12.5"
            stroke-width="1"
            stroke="#00f"
            fill="none"

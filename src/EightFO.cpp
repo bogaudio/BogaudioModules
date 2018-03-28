@@ -15,7 +15,7 @@ void EightFO::onSampleRateChange() {
 }
 
 void EightFO::step() {
-	lights[SLOW_LIGHT].value = _slowMode;
+	lights[SLOW_LIGHT].value = _slowMode = ((int)params[SLOW_PARAM].value) == 1;
 	if (!(
 		outputs[PHASE7_OUTPUT].active ||
 		outputs[PHASE6_OUTPUT].active ||
@@ -33,7 +33,6 @@ void EightFO::step() {
 	if (_modulationStep >= modulationSteps) {
 		_modulationStep = 0;
 
-		_slowMode = ((int)params[SLOW_PARAM].value) == 1;
 		float frequency = powf(params[FREQUENCY_PARAM].value, frequencyExponent);
 		frequency *= maxFrequency - minFrequency;
 		frequency += minFrequency;

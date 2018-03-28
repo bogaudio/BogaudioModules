@@ -108,7 +108,7 @@
         <circle
            cx="0"
            cy="0"
-           r="12"
+           r="12.5"
            stroke-width="1"
            stroke="#00f"
            fill="none"
@@ -1380,7 +1380,7 @@
   </g>
   <g
      id="g315"
-     transform="translate(62,232)">
+     transform="translate(63,228)">
     <g
        id="g309"
        transform="translate(0,2)">
