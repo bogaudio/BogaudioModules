@@ -22,6 +22,7 @@ struct Additator : Module {
 		BALANCE_PARAM,
 		FILTER_PARAM,
 		PHASE_PARAM,
+		FINE_PARAM,
 		NUM_PARAMS
 	};
 
