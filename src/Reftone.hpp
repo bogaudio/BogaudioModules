@@ -40,7 +40,7 @@ struct Reftone : Module {
 
 	Reftone()
 	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
-	, _sine(engineGetSampleRate(), _frequency, 5.0)
+	, _sine(engineGetSampleRate(), _frequency)
 	{
 	}
 

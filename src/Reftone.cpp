@@ -20,7 +20,7 @@ void Reftone::step() {
 
 	if (outputs[OUT_OUTPUT].active) {
 		_sine.setFrequency(_frequency);
-		outputs[OUT_OUTPUT].value = _sine.next();
+		outputs[OUT_OUTPUT].value = _sine.next() * 5.0f;
 	}
 	else {
 		outputs[OUT_OUTPUT].value = 0.0;
