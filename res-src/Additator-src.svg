@@ -136,19 +136,19 @@
       </g>
     </symbol>
 
-    <symbol id="knobguide-partials" viewBox="0 0 60px 60px">
-      <g transform="translate(30 30)">
-        <text font-size="5.0pt" transform="rotate(-240) translate(24 0) rotate(240) translate(-2 2)">1</text>
+    <symbol id="knobguide-partials" viewBox="0 0 70px 70px">
+      <g transform="translate(35 35)">
+        <text font-size="6.0pt" transform="rotate(-240) translate(25.5 0) rotate(240) translate(-2.5 2.5)">1</text>
         <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" transform="rotate(-210) translate(21 0)" />
-        <text font-size="5.0pt" transform="rotate(-180) translate(24 0) rotate(180) translate(-4 2)">20</text>
+        <text font-size="6.0pt" transform="rotate(-180) translate(25 0) rotate(180) translate(-7 2.5)">20</text>
         <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" transform="rotate(-150) translate(21 0)" />
-        <text font-size="5.0pt" transform="rotate(-120) translate(24 0) rotate(120) translate(-4 2)">40</text>
+        <text font-size="6.0pt" transform="rotate(-120) translate(25 0) rotate(120) translate(-7 2.5)">40</text>
         <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" transform="rotate(-90) translate(21 0)" />
-        <text font-size="5.0pt" transform="rotate(-60) translate(24 0) rotate(60) translate(-4 2)">60</text>
+        <text font-size="6.0pt" transform="rotate(-60) translate(25 0) rotate(60) translate(-3 2.5)">60</text>
         <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" transform="rotate(-30) translate(21 0)" />
-        <text font-size="5.0pt" transform="rotate(0) translate(24 0) rotate(0) translate(-4 2)">80</text>
+        <text font-size="6.0pt" transform="rotate(0) translate(25 0) rotate(0) translate(-2.5 2.5)">80</text>
         <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" transform="rotate(30) translate(21 0)" />
-        <text font-size="5.0pt" transform="rotate(60) translate(24 0) rotate(-60) translate(-2 2)">100</text>
+        <text font-size="6.0pt" transform="rotate(60) translate(25.5 0) rotate(-60) translate(-2 2.5)">100</text>
       </g>
     </symbol>
 
@@ -275,12 +275,12 @@
 
   <text font-size="6pt" letter-spacing="1px" transform="translate(29 135)">0V = C4 = 261.63HZ</text>
 
-  <g transform="translate(143 60)">
+  <g transform="translate(144 60)">
     <!-- <polyline points="0,19 68,19" stroke="#0f0" stroke-width="1" fill="none" /> -->
     <!-- <polyline points="39,-20 39,50" stroke="#0f0" stroke-width="1" fill="none" /> -->
-    <text font-size="8pt" letter-spacing="2px" transform="translate(5 50) rotate(270)">PARTIALS</text>
-    <use id="PARTIALS_PARAM" xlink:href="#knob" transform="translate(20 0)" />
-    <use xlink:href="#knobguide-partials" transform="translate(9 -11)" />
+    <text font-size="8pt" letter-spacing="2px" transform="translate(4 50) rotate(270)">PARTIALS</text>
+    <use id="PARTIALS_PARAM" xlink:href="#knob" transform="translate(21 0)" />
+    <use xlink:href="#knobguide-partials" transform="translate(5 -16)" />
   </g>
 
   <g transform="translate(10 155)">
