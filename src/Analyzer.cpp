@@ -127,15 +127,15 @@ void Analyzer::step() {
 		resetChannels();
 	}
 
-	bool running = params[POWER_PARAM].value == 1.0;
-	stepChannel(_channelA, running, inputs[SIGNALA_INPUT], outputs[SIGNALA_OUTPUT]);
-	stepChannel(_channelB, running, inputs[SIGNALB_INPUT], outputs[SIGNALB_OUTPUT]);
-	stepChannel(_channelC, running, inputs[SIGNALC_INPUT], outputs[SIGNALC_OUTPUT]);
-	stepChannel(_channelD, running, inputs[SIGNALD_INPUT], outputs[SIGNALD_OUTPUT]);
+	_running = params[POWER_PARAM].value == 1.0;
+	stepChannel(_channelA, _running, inputs[SIGNALA_INPUT], outputs[SIGNALA_OUTPUT]);
+	stepChannel(_channelB, _running, inputs[SIGNALB_INPUT], outputs[SIGNALB_OUTPUT]);
+	stepChannel(_channelC, _running, inputs[SIGNALC_INPUT], outputs[SIGNALC_OUTPUT]);
+	stepChannel(_channelD, _running, inputs[SIGNALD_INPUT], outputs[SIGNALD_OUTPUT]);
 
-	lights[QUALITY_HIGH_LIGHT].value = running && quality == QUALITY_HIGH;
-	lights[QUALITY_GOOD_LIGHT].value = running && quality == QUALITY_GOOD;
-	lights[POWER_ON_LIGHT].value = running;
+	lights[QUALITY_HIGH_LIGHT].value = _running && quality == QUALITY_HIGH;
+	lights[QUALITY_GOOD_LIGHT].value = _running && quality == QUALITY_GOOD;
+	lights[POWER_ON_LIGHT].value = _running;
 }
 
 void Analyzer::stepChannel(ChannelAnalyzer*& channelPointer, bool running, Input& input, Output& output) {
@@ -160,7 +160,7 @@ void Analyzer::stepChannel(ChannelAnalyzer*& channelPointer, bool running, Input
 			channelPointer = NULL;
 		}
 
-		output.value = 0.0;
+		output.value = input.value;
 	}
 }
 
@@ -213,8 +213,7 @@ struct AnalyzerDisplay : TransparentWidget {
 
 void AnalyzerDisplay::draw(NVGcontext* vg) {
 	drawBackground(vg);
-
-	if (_module->_channelA || _module->_channelB || _module->_channelC || _module->_channelD) {
+	if (_module->_running) {
 		float strokeWidth = std::max(1.0f, 3 - gRackScene->zoomWidget->zoom);
 		nvgSave(vg);
 		nvgScissor(vg, _insetAround, _insetAround, _size.x - _insetAround, _size.y - _insetAround);

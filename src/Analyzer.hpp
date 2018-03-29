@@ -48,6 +48,7 @@ struct Analyzer : Module {
 		QUALITY_GOOD
 	};
 
+	bool _running = false;
 	int _averageN;
 	ChannelAnalyzer* _channelA = NULL;
 	ChannelAnalyzer* _channelB = NULL;
