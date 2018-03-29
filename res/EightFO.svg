@@ -325,49 +325,49 @@
       </g>
       <g
          transform="translate(14 8)"
-         id="g102">
-        <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
-        <path
-           d="M 0 4 A 2 3 0 0 1 6 4"
-           stroke="#333"
-           stroke-width="1"
-           fill="none"
-           id="path98" />
-        <path
-           d="M 6 4 A 2 3 0 0 0 12 4"
-           stroke="#333"
-           stroke-width="1"
-           fill="none"
-           id="path100" />
-      </g>
-      <g
-         transform="translate(33.5 13.5)"
-         id="g106">
-        <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
-        <polyline
-           points="0,4 3,0 9,8 12,4"
-           stroke-width="1"
-           stroke="#333"
-           fill="none"
-           id="polyline104" />
-      </g>
-      <g
-         transform="translate(39 31)"
-         id="g110">
+         id="g100">
         <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
         <polyline
            points="0,8 12,0 12,8"
            stroke-width="1"
            stroke="#333"
            fill="none"
-           id="polyline108" />
+           id="polyline98" />
+      </g>
+      <g
+         transform="translate(33.5 13.5)"
+         id="g104">
+        <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
+        <polyline
+           points="0,8 0,0 12,8"
+           stroke-width="1"
+           stroke="#333"
+           fill="none"
+           id="polyline102" />
+      </g>
+      <g
+         transform="translate(39 31)"
+         id="g110">
+        <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
+        <path
+           d="M 0 4 A 2 3 0 0 1 6 4"
+           stroke="#333"
+           stroke-width="1"
+           fill="none"
+           id="path106" />
+        <path
+           d="M 6 4 A 2 3 0 0 0 12 4"
+           stroke="#333"
+           stroke-width="1"
+           fill="none"
+           id="path108" />
       </g>
       <g
          transform="translate(33.5 48.5)"
          id="g114">
         <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
         <polyline
-           points="0,8 0,0 12,8"
+           points="0,4 3,0 9,8 12,4"
            stroke-width="1"
            stroke="#333"
            fill="none"
@@ -1067,7 +1067,9 @@
   <!-- <rect width="230" height="10" fill="#0f0" transform="translate(0 137)" /> -->
   <g
      id="g280"
-     transform="translate(20,162)" />
+     transform="translate(20,162)">
+    <!-- <rect width="60" height="60" fill="none" stroke="#0f0" transform="translate(-10 -30) translate(8 13)" /> -->
+  </g>
   <g
      id="g284"
      transform="translate(80,162)">
@@ -1251,37 +1253,37 @@
          id="polyline505" />
     </g>
     <g
-       id="g513"
+       id="g511"
        transform="translate(14,8)">
       <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
       <path
-         id="path509"
-         d="M 0,4 A 3,4.5 0 0 1 6,4"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#333333;stroke-width:1" />
-      <path
-         id="path511"
-         d="m 6,4 a 3,4.5 0 0 0 6,0"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#333333;stroke-width:1" />
+         style="fill:none;stroke:#333333;stroke-width:1"
+         d="M 0,8 12,0 v 8"
+         id="polyline509" />
     </g>
     <g
-       id="g517"
+       id="g515"
        transform="translate(33.5,13.5)">
       <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
       <path
          style="fill:none;stroke:#333333;stroke-width:1"
-         d="M 0,4 3,0 9,8 12,4"
-         id="polyline515" />
+         d="M 0,8 V 0 l 12,8"
+         id="polyline513" />
     </g>
     <g
        id="g521"
        transform="translate(39,31)">
       <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
       <path
-         style="fill:none;stroke:#333333;stroke-width:1"
-         d="M 0,8 12,0 v 8"
-         id="polyline519" />
+         id="path517"
+         d="M 0,4 A 3,4.5 0 0 1 6,4"
+         inkscape:connector-curvature="0"
+         style="fill:none;stroke:#333333;stroke-width:1" />
+      <path
+         id="path519"
+         d="m 6,4 a 3,4.5 0 0 0 6,0"
+         inkscape:connector-curvature="0"
+         style="fill:none;stroke:#333333;stroke-width:1" />
     </g>
     <g
        id="g525"
@@ -1289,7 +1291,7 @@
       <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
       <path
          style="fill:none;stroke:#333333;stroke-width:1"
-         d="M 0,8 V 0 l 12,8"
+         d="M 0,4 3,0 9,8 12,4"
          id="polyline523" />
     </g>
     <g

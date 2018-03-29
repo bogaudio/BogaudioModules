@@ -101,20 +101,20 @@
       </g>
       <g transform="translate(14 8)">
         <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
-        <path d="M 0 4 A 2 3 0 0 1 6 4" stroke="#333" stroke-width="1" fill="none" />
-        <path d="M 6 4 A 2 3 0 0 0 12 4" stroke="#333" stroke-width="1" fill="none" />
+        <polyline points="0,8 12,0 12,8" stroke-width="1" stroke="#333" fill="none" />
       </g>
       <g transform="translate(33.5 13.5)">
         <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
-        <polyline points="0,4 3,0 9,8 12,4" stroke-width="1" stroke="#333" fill="none" />
+        <polyline points="0,8 0,0 12,8" stroke-width="1" stroke="#333" fill="none" />
       </g>
       <g transform="translate(39 31)">
         <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
-        <polyline points="0,8 12,0 12,8" stroke-width="1" stroke="#333" fill="none" />
+        <path d="M 0 4 A 2 3 0 0 1 6 4" stroke="#333" stroke-width="1" fill="none" />
+        <path d="M 6 4 A 2 3 0 0 0 12 4" stroke="#333" stroke-width="1" fill="none" />
       </g>
       <g transform="translate(33.5 48.5)">
         <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
-        <polyline points="0,8 0,0 12,8" stroke-width="1" stroke="#333" fill="none" />
+        <polyline points="0,4 3,0 9,8 12,4" stroke-width="1" stroke="#333" fill="none" />
       </g>
       <g transform="translate(14 54)">
         <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
@@ -276,6 +276,7 @@
     <!-- <polyline points="0,0 170,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(10 13)" /> -->
     <g transform="translate(10 0)">
       <use id="WAVE_PARAM" xlink:href="#knob-smallest" transform="translate(0 5)" />
+      <!-- <rect width="60" height="60" fill="none" stroke="#0f0" transform="translate(-10 -30) translate(8 13)" /> -->
     </g>
     <g transform="translate(70 0)">
       <!-- <polyline points="0,0 170,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(-10 -10)" /> -->
@@ -332,6 +333,7 @@
         <use id="PHASE1_PARAM" xlink:href="#knob-smallest" transform="translate(4 4)" />
       </g>
       <g transform="translate(0 280)">
+        <!-- <polyline points="0,0 200,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 12)" /> -->
         <use id="PHASE0_PARAM" xlink:href="#knob-smallest" transform="translate(4 4)" />
       </g>
     </g>

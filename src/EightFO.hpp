@@ -64,10 +64,10 @@ struct EightFO : Module {
 
 	enum Wave {
 		NO_WAVE,
-		SINE_WAVE,
-		TRIANGLE_WAVE,
 		RAMP_UP_WAVE,
 		RAMP_DOWN_WAVE,
+		SINE_WAVE,
+		TRIANGLE_WAVE,
 		SQUARE_WAVE
 	};
 

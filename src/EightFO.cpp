@@ -210,11 +210,12 @@ struct EightFOWidget : ModuleWidget {
 
 		addParam(ParamWidget::create<Knob68>(frequencyParamPosition, module, EightFO::FREQUENCY_PARAM, 0.0f, 1.0f, 0.5f));
 		{
-			auto w = ParamWidget::create<Knob16>(waveParamPosition, module, EightFO::WAVE_PARAM, 1.0, 5.0, 5.0);
+			auto w = ParamWidget::create<Knob16>(waveParamPosition, module, EightFO::WAVE_PARAM, 1.0, 5.0, 3.0);
 			auto k = dynamic_cast<SVGKnob*>(w);
 			k->snap = true;
 			k->minAngle = 0.0;
 			k->maxAngle = M_PI;
+			k->speed = 2.0;
 			addParam(w);
 		}
 		addParam(ParamWidget::create<StatefulButton9>(slowParamPosition, module, EightFO::SLOW_PARAM, 0.0, 1.0, 0.0));
