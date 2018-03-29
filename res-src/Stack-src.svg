@@ -133,8 +133,8 @@
       </g>
     </symbol>
 
-    <symbol id="light" viewBox="0 0 1.1px 1.1px">
-      <rect width="3.2" height="3.2" fill="#0f0" />
+    <symbol id="light-small" viewBox="0 0 6.4px 6.4px">
+      <rect width="6.4" height="6.4" fill="#0f0" />
     </symbol>
 
     <symbol id="input" viewBox="0 0 24px 24px">
@@ -193,10 +193,10 @@
     <rect width="34" height="50" rx="5" fill="#fafafa" />
     <use id="CV_INPUT" xlink:href="#input" transform="translate(5 3)" />
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
-    <g transform="translate(3 38)">
-      <text font-size="5pt" letter-spacing="1px" transform="translate(0 7)">QZ</text>
-      <use id="QUANTIZE_LIGHT" xlink:href="#light" transform="translate(12.5 3)" />
-      <use id="QUANTIZE_PARAM" xlink:href="#button" transform="translate(18.5 0)" />
+    <g transform="translate(3 39)">
+      <use id="QUANTIZE_LIGHT" xlink:href="#light-small" transform="translate(0 0.5)" />
+      <text font-size="5pt" letter-spacing="1px" transform="translate(8 6)">QZ</text>
+      <use id="QUANTIZE_PARAM" xlink:href="#button" transform="translate(20 -1)" />
     </g>
   </g>
 

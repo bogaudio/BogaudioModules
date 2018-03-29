@@ -74,7 +74,7 @@ options = {
   param_class: 'RoundBlackKnob',
   input_class: 'Port24',
   output_class: 'Port24',
-  light_class: 'TinyLight<GreenLight>',
+  light_class: 'SmallLight<GreenLight>',
   comments: false,
   sort: nil
 }

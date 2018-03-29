@@ -379,11 +379,11 @@
       </g>
     </symbol>
     <symbol
-       id="light"
-       viewBox="0 0 1.1px 1.1px">
+       id="light-small"
+       viewBox="0 0 6.4px 6.4px">
       <rect
-         width="3.2"
-         height="3.2"
+         width="6.4"
+         height="6.4"
          fill="#0f0"
          id="rect132" />
     </symbol>
@@ -898,10 +898,10 @@
   </g>
   <g
      id="g193"
-     transform="translate(8.5,192)">
+     transform="translate(8.5,193)">
     <g
        aria-label="QZ"
-       transform="translate(0,7)"
+       transform="translate(8,6)"
        style="font-weight:bold;font-size:6.66666651px;font-family:Roboto, sans-serif;letter-spacing:1px;fill:#333333"
        id="text191">
       <path

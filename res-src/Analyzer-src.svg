@@ -136,8 +136,8 @@
       </g>
     </symbol>
 
-    <symbol id="light" viewBox="0 0 1.1px 1.1px">
-      <rect width="3.2" height="3.2" fill="#0f0" />
+    <symbol id="light-small" viewBox="0 0 6.4px 6.4px">
+      <rect width="6.4" height="6.4" fill="#0f0" />
     </symbol>
   </defs>
 
@@ -210,16 +210,16 @@
     </g>
 
     <g transform="translate(182 0)">
-      <g transform="translate(-3 0)">
+      <g transform="translate(-3 -1)">
         <g transform="translate(0 3)">
-          <use id="QUALITY_HIGH_LIGHT" xlink:href="#light" transform="translate(0 0)" />
-          <text font-size="5pt" letter-spacing="2px" transform="translate(7 3.5)">HIGH</text>
+          <use id="QUALITY_HIGH_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
+          <text font-size="6pt" letter-spacing="2px" transform="translate(9 6.1)">HIGH</text>
         </g>
         <g transform="translate(0 18)">
-          <use id="QUALITY_GOOD_LIGHT" xlink:href="#light" transform="translate(0 0)" />
-          <text font-size="5pt" letter-spacing="2px" transform="translate(7 3.5)">GOOD</text>
+          <use id="QUALITY_GOOD_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
+          <text font-size="6pt" letter-spacing="2px" transform="translate(9 6.1)">GOOD</text>
         </g>
-        <g transform="translate(7 27)">
+        <g transform="translate(9 30)">
           <use id="QUALITY_PARAM" xlink:href="#button" transform="scale(0.1)" />
         </g>
       </g>
@@ -227,12 +227,12 @@
     </g>
 
     <g transform="translate(255 0)">
-      <g transform="translate(-3 0)">
+      <g transform="translate(-3 -1)">
         <g transform="translate(0 18)">
-          <use id="POWER_ON_LIGHT" xlink:href="#light" transform="translate(0 0)" />
-          <text font-size="5pt" letter-spacing="2px" transform="translate(7 3.5)">ON</text>
+          <use id="POWER_ON_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
+          <text font-size="6pt" letter-spacing="2px" transform="translate(9 6.1)">ON</text>
         </g>
-        <g transform="translate(7 27)">
+        <g transform="translate(9 30)">
           <use id="POWER_PARAM" xlink:href="#button" transform="scale(0.1)" />
         </g>
       </g>
