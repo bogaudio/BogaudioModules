@@ -6,7 +6,7 @@ extern Model* modelManual;
 
 namespace bogaudio {
 
-struct Manual : Module {
+struct Manual : TriggerOnLoadModule {
 	enum ParamsIds {
 		TRIGGER_PARAM,
 		NUM_PARAMS
@@ -32,15 +32,20 @@ struct Manual : Module {
 		NUM_LIGHTS
 	};
 
+	bool _firstStep = true;
 	SchmittTrigger _trigger;
 	PulseGenerator _pulse;
 
-	Manual() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	Manual() : TriggerOnLoadModule(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+		_triggerOnLoad = false;
 		onReset();
 	}
 
 	virtual void onReset() override;
 	virtual void step() override;
+	virtual bool shouldTriggerOnNextLoad() override {
+		return true;
+	}
 };
 
 } // namespace bogaudio

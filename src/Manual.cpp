@@ -7,7 +7,7 @@ void Manual::onReset() {
 }
 
 void Manual::step() {
-	bool high = _trigger.process(params[TRIGGER_PARAM].value) || _trigger.isHigh();
+	bool high = _trigger.process(params[TRIGGER_PARAM].value) || _trigger.isHigh() || (_firstStep && _triggerOnLoad && _shouldTriggerOnLoad);
 	if (high) {
 		_pulse.trigger(0.001);
 		_pulse.process(engineGetSampleTime());
@@ -25,6 +25,8 @@ void Manual::step() {
 	outputs[OUT6_OUTPUT].value = out;
 	outputs[OUT7_OUTPUT].value = out;
 	outputs[OUT8_OUTPUT].value = out;
+
+	_firstStep = false;
 }
 
 struct ManualWidget : ModuleWidget {
@@ -64,6 +66,15 @@ struct ManualWidget : ModuleWidget {
 		addOutput(Port::create<Port24>(out6OutputPosition, Port::OUTPUT, module, Manual::OUT6_OUTPUT));
 		addOutput(Port::create<Port24>(out7OutputPosition, Port::OUTPUT, module, Manual::OUT7_OUTPUT));
 		addOutput(Port::create<Port24>(out8OutputPosition, Port::OUTPUT, module, Manual::OUT8_OUTPUT));
+	}
+
+	virtual Menu* createContextMenu() override {
+		Manual* manual = dynamic_cast<Manual*>(module);
+		assert(manual);
+		Menu* menu = ModuleWidget::createContextMenu();
+		menu->addChild(new MenuLabel());
+		menu->addChild(new TriggerOnLoadMenuItem(manual, "Trigger on Load"));
+		return menu;
 	}
 };
 
