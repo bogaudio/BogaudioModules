@@ -79,4 +79,4 @@ struct DetuneWidget : ModuleWidget {
 	}
 };
 
-Model* modelDetune = Model::create<Detune, DetuneWidget>("Bogaudio", "Bogaudio-Detune", "Detune");
+Model* modelDetune = Model::create<Detune, DetuneWidget>("Bogaudio", "Bogaudio-Detune", "Detune", TUNER_TAG, UTILITY_TAG);

@@ -82,4 +82,4 @@ struct StackWidget : ModuleWidget {
 	}
 };
 
-Model* modelStack = Model::create<Stack, StackWidget>("Bogaudio", "Bogaudio-Stack", "Stack");
+Model* modelStack = Model::create<Stack, StackWidget>("Bogaudio", "Bogaudio-Stack", "Stack", TUNER_TAG, UTILITY_TAG);

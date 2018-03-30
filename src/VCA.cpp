@@ -60,4 +60,4 @@ struct VCAWidget : ModuleWidget {
 	}
 };
 
-Model* modelVCA = Model::create<VCA, VCAWidget>("Bogaudio", "Bogaudio-VCA", "VCA", AMPLIFIER_TAG, DUAL_TAG, UTILITY_TAG);
+Model* modelVCA = Model::create<VCA, VCAWidget>("Bogaudio", "Bogaudio-VCA", "VCA", AMPLIFIER_TAG, ATTENUATOR_TAG, DUAL_TAG, UTILITY_TAG);

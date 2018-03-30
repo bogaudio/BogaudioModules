@@ -59,4 +59,4 @@ struct NoiseWidget : ModuleWidget {
 	}
 };
 
-Model* modelNoise = Model::create<Noise, NoiseWidget>("Bogaudio", "Bogaudio-Noise", "Noise", NOISE_TAG, UTILITY_TAG);
+Model* modelNoise = Model::create<Noise, NoiseWidget>("Bogaudio", "Bogaudio-Noise", "Noise", NOISE_TAG, RANDOM_TAG, UTILITY_TAG);
