@@ -19,16 +19,7 @@ You'll need to be set up to build [VCV Rack](https://github.com/VCVRack/Rack) it
   make
   ```
 
-**The master branch of this module currently builds against Rack's master branch**, which has changes that will be released as Rack 0.6.
-
-To build Bogaudio for the current production version of Rack (0.5), check out the corresponding branch:
-
-  ```
-  (in plugins/BogaudioModules:)
-  git fetch
-  git checkout v0.5.x
-  make
-  ```
+The master branch of this module currently builds against Rack's master and v0.6 branches.
 
 ## Modules
 
@@ -98,7 +89,9 @@ A triggerable gate with duration up to 10 seconds, with an optional pre-delay of
 
 #### MANUAL
 
-A manual trigger/gate with 8 outputs.  A constant high value is sent from each output for as long as the TRIG button is held.
+A manual trigger/gate with 8 outputs.  A constant high value is sent from each output for as long as the TRIG button is held.  
+
+Manual may be set to output a trigger pulse on patch load (akin to a Max/Msp or Pd loadbang).  This is off by default; enable clicking "Trigger on Load" on the module's context (right-click) menu.
 
 #### NOISE
 
