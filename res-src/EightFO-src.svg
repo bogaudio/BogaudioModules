@@ -162,39 +162,17 @@
 
     <symbol id="knobguide-linear" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
-        <g transform="rotate(-240) translate(15 0)">
-          <text font-size="5.0pt" transform="translate(3 0) rotate(240) translate(-2.2 2.2)">0</text>
-        </g>
-        <g transform="rotate(-210) translate(15 0)">
-          <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" />
-        </g>
-        <g transform="rotate(-180) translate(15 0)">
-          <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" />
-        </g>
-        <g transform="rotate(-150) translate(15 0)">
-          <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" />
-        </g>
-        <g transform="rotate(-120) translate(15 0)">
-          <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" />
-        </g>
-        <g transform="rotate(-90) translate(15 0)">
-          <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" />
-        </g>
-        <g transform="rotate(-60) translate(15 0)">
-          <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" />
-        </g>
-        <g transform="rotate(-30) translate(15 0)">
-          <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" />
-        </g>
-        <g transform="rotate(0) translate(15 0)">
-          <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" />
-        </g>
-        <g transform="rotate(30) translate(15 0)">
-          <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" />
-        </g>
-        <g transform="rotate(60) translate(15 0)">
-          <text font-size="5.0pt" transform="translate(3 0) rotate(-60) translate(-2.2 2.2)">1</text>
-        </g>
+        <text font-size="5.0pt" transform="rotate(-240) translate(18 0) rotate(240) translate(-2 2)">0</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-210) translate(15 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-180) translate(15 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-150) translate(15 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-120) translate(15 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-90) translate(15 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-60) translate(15 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-30) translate(15 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(0) translate(15 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(30) translate(15 0)" />
+        <polyline points="0,0 3.5,0" stroke-width="1" stroke="#333" transform="rotate(60) translate(15 0)" />
       </g>
     </symbol>
 
@@ -261,7 +239,7 @@
 
   <!-- <rect width="20" height="10" fill="#0f0" transform="translate(20 130)" /> -->
   <!-- <rect width="20" height="10" fill="#0f0" transform="translate(108 130)" /> -->
-  <text font-size="6pt" letter-spacing="1px" transform="translate(41 136)">0V = 261.63HZ</text>
+  <text font-size="6pt" letter-spacing="1px" transform="translate(41 137)">0V = 261.63HZ</text>
 
   <g transform="translate(86 335)">
     <!-- <rect width="230" height="15" fill="#0f0" transform="translate(-30 -17)" /> -->
@@ -272,7 +250,7 @@
   </g>
 
   <!-- <rect width="230" height="10" fill="#0f0" transform="translate(0 137)" /> -->
-  <g transform="translate(10 162)">
+  <g transform="translate(10 163)">
     <!-- <polyline points="0,0 170,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(10 13)" /> -->
     <g transform="translate(10 0)">
       <use id="WAVE_PARAM" xlink:href="#knob-smallest" transform="translate(0 5)" />
@@ -291,7 +269,7 @@
   </g>
 
   <!-- <rect width="230" height="10" fill="#0f0" transform="translate(0 203)" /> -->
-  <g transform="translate(10 225)">
+  <g transform="translate(10 226)">
     <!-- <polyline points="0,0 170,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(10 -10)" /> -->
     <!-- <polyline points="0,0 170,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(10 13)" /> -->
     <!-- <polyline points="0,0 0,170" stroke="#0f0" stroke-width="1" fill="none" transform="translate(43 -13)" /> -->
@@ -393,17 +371,17 @@
     <g transform="translate(10 -40)">
       <!-- <rect width="30" height="40" rx="5" fill="#fafafa" /> -->
       <use id="SAMPLE_PWM_INPUT" xlink:href="#input" transform="translate(4 4)" />
-      <text font-size="6pt" letter-spacing="1px" transform="translate(1.3 36)">SP/PW</text>
+      <text font-size="6pt" letter-spacing="0.5px" transform="translate(1 38)">SH/PW</text>
     </g>
     <g transform="translate(50 -40)">
       <!-- <rect width="30" height="40" rx="5" fill="#fafafa" /> -->
       <use id="OFFSET_INPUT" xlink:href="#input" transform="translate(2 4)" />
-      <text font-size="6pt" letter-spacing="2px" transform="translate(4.5 36)">OFF</text>
+      <text font-size="6pt" letter-spacing="2px" transform="translate(4.5 38)">OFF</text>
     </g>
     <g transform="translate(90 -40)">
       <!-- <rect width="30" height="40" rx="5" fill="#fafafa" /> -->
       <use id="SCALE_INPUT" xlink:href="#input" transform="translate(0 4)" />
-      <text font-size="6pt" letter-spacing="2px" transform="translate(2.5 36)">SCL</text>
+      <text font-size="6pt" letter-spacing="2px" transform="translate(2.5 38)">SCL</text>
     </g>
     <g transform="translate(10 0)">
       <!-- <rect width="30" height="47" rx="5" fill="#fafafa" /> -->

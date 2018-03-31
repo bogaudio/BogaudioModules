@@ -5,6 +5,7 @@
 #include "XCO.hpp"
 #include "Additator.hpp"
 #include "FMOp.hpp"
+#include "LFO.hpp"
 #include "EightFO.hpp"
 
 #include "Shaper.hpp"
@@ -45,6 +46,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelXCO);
 	p->addModel(modelAdditator);
 	p->addModel(modelFMOp);
+	p->addModel(modelLFO);
 	p->addModel(modelEightFO);
 #endif
 

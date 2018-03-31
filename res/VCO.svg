@@ -1479,7 +1479,7 @@
      transform="translate(12,269)">
     <g
        aria-label="PW"
-       transform="translate(9,40)"
+       transform="translate(8,40)"
        style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333"
        id="text305">
       <path
@@ -1497,7 +1497,7 @@
      transform="translate(44,269)">
     <g
        aria-label="FM"
-       transform="translate(7,40)"
+       transform="translate(8,40)"
        style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333"
        id="text309">
       <path
@@ -1546,7 +1546,7 @@
        transform="translate(2)">
       <g
          aria-label="V/OCT"
-         transform="translate(2,40)"
+         transform="translate(1,40)"
          style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;letter-spacing:1px;fill:#333333"
          id="text325">
         <path
@@ -1576,7 +1576,7 @@
        transform="translate(34)">
       <g
          aria-label="SYNC"
-         transform="translate(0,40)"
+         transform="translate(3,40)"
          style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;letter-spacing:1px;fill:#333333"
          id="text329">
         <path

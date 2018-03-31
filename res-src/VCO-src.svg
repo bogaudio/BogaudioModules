@@ -307,12 +307,12 @@
     <rect width="10" height="8" fill="#fafafa" transform="translate(65 83)" />
 
     <g transform="translate(12 0)">
-      <use id="PW_INPUT" xlink:href="#input" transform="translate(4 5)" />
-      <text font-size="6pt" letter-spacing="2px" transform="translate(9 40)">PW</text>
+      <use id="PW_INPUT" xlink:href="#input" transform="translate(3 5)" />
+      <text font-size="6pt" letter-spacing="2px" transform="translate(8 40)">PW</text>
     </g>
     <g transform="translate(44 0)">
-      <use id="FM_INPUT" xlink:href="#input" transform="translate(2 5)" />
-      <text font-size="6pt" letter-spacing="2px" transform="translate(7 40)">FM</text>
+      <use id="FM_INPUT" xlink:href="#input" transform="translate(3 5)" />
+      <text font-size="6pt" letter-spacing="2px" transform="translate(8 40)">FM</text>
     </g>
     <g transform="translate(76 0)">
       <use id="SQUARE_OUTPUT" xlink:href="#output" transform="translate(3 5)" />
@@ -333,12 +333,12 @@
 
     <g transform="translate(10 44)">
       <g transform="translate(2 0)">
-        <use id="PITCH_INPUT" xlink:href="#input" transform="translate(4 5)" />
-        <text font-size="6pt" letter-spacing="1px" transform="translate(2 40)">V/OCT</text>
+        <use id="PITCH_INPUT" xlink:href="#input" transform="translate(3 5)" />
+        <text font-size="6pt" letter-spacing="1px" transform="translate(1 40)">V/OCT</text>
       </g>
       <g transform="translate(34 0)">
-        <use id="SYNC_INPUT" xlink:href="#input" transform="translate(2 5)" />
-        <text font-size="6pt" letter-spacing="1px" transform="translate(0 40)">SYNC</text>
+        <use id="SYNC_INPUT" xlink:href="#input" transform="translate(3 5)" />
+        <text font-size="6pt" letter-spacing="1px" transform="translate(3 40)">SYNC</text>
       </g>
       <g transform="translate(66 0)">
         <use id="TRIANGLE_OUTPUT" xlink:href="#output" transform="translate(3 5)" />

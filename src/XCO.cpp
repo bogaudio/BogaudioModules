@@ -111,7 +111,7 @@ float XCO::phaseOffset(Param& param, Input& input) {
 	if (input.active) {
 		v *= clamp(input.value / 5.0f, -1.0f, 1.0f);
 	}
-	return v;
+	return -v;
 }
 
 float XCO::level(Param& param, Input& input) {

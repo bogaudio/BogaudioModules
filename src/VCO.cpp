@@ -109,10 +109,10 @@ struct VCOWidget : ModuleWidget {
 		auto fmParamPosition = Vec(52.5, 230.0);
 		auto fmTypeParamPosition = Vec(96.5, 253.0);
 
-		auto pwInputPosition = Vec(16.0, 274.0);
-		auto fmInputPosition = Vec(46.0, 274.0);
-		auto pitchInputPosition = Vec(16.0, 318.0);
-		auto syncInputPosition = Vec(46.0, 318.0);
+		auto pwInputPosition = Vec(15.0, 274.0);
+		auto fmInputPosition = Vec(47.0, 274.0);
+		auto pitchInputPosition = Vec(15.0, 318.0);
+		auto syncInputPosition = Vec(47.0, 318.0);
 
 		auto squareOutputPosition = Vec(79.0, 274.0);
 		auto sawOutputPosition = Vec(111.0, 274.0);
