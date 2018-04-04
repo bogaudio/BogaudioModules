@@ -11,7 +11,8 @@ extern Model* modelTest;
 // #define SAW 1
 // #define SATSAW 1
 // #define TRIANGLE 1
-#define SINEBANK 1
+#define SAMPLED_TRIANGLE 1
+// #define SINEBANK 1
 // #define OVERSAMPLING 1
 // #define OVERSAMPLED_BL 1
 // #define FM 1
@@ -35,6 +36,8 @@ extern Model* modelTest;
 #elif SATSAW
 #include "dsp/oscillator.hpp"
 #elif TRIANGLE
+#include "dsp/oscillator.hpp"
+#elif SAMPLED_TRIANGLE
 #include "dsp/oscillator.hpp"
 #elif SINEBANK
 #include "dsp/oscillator.hpp"
@@ -109,6 +112,12 @@ struct Test : Module {
 	BandLimitedSawOscillator _saw2;
 #elif TRIANGLE
 	TriangleOscillator _triangle;
+#elif SAMPLED_TRIANGLE
+	TriangleOscillator _triangle;
+	TriangleOscillator _triangle2;
+	int _sampleSteps = 1 << 20;
+	int _sampleStep = 0;
+	float _sample = 0.0f;
 #elif SINEBANK
 	SineBankOscillator _sineBank;
 #elif OVERSAMPLING
@@ -163,6 +172,9 @@ struct Test : Module {
 	, _saw2(44100.0, 1000.0, 8)
 #elif TRIANGLE
 	, _triangle(44100.0, 1000.0)
+#elif SAMPLED_TRIANGLE
+	, _triangle(44100.0, 1000.0)
+	, _triangle2(44100.0, 1000.0)
 #elif SINEBANK
 	, _sineBank(44101.0, 1000.0, 50)
 #elif OVERSAMPLING
@@ -202,6 +214,9 @@ struct Test : Module {
 
 #elif SATSAW
 		_saw2.setPhase(M_PI);
+
+#elif SAMPLED_TRIANGLE
+		_triangle2.setPhase(M_PI);
 
 #elif SINEBANK
 		const float baseAmplitude = 5.0;

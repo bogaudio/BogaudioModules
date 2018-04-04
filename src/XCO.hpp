@@ -74,9 +74,6 @@ struct XCO : Module {
 	bool _slowMode = false;
 	float _fmDepth = 0.0f;
 	bool _fmLinearMode = false;
-	int _triangleSampleStep = 0;
-	int _triangleSampleSteps = 0;
-	float _triangleSample = 0.0f;
 	float _sineFeedback = 0.0f;
 	float _squarePhaseOffset = 0.0f;
 	float _sawPhaseOffset = 0.0f;

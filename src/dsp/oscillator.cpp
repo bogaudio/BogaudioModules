@@ -4,6 +4,24 @@
 
 using namespace bogaudio::dsp;
 
+void Phasor::setSampleWidth(float sw) {
+	if (sw < 0.0f) {
+		sw = 0.0f;
+	}
+	else if (sw > maxSampleWidth) {
+		sw = maxSampleWidth;
+	}
+	if (_sampleWidth != sw) {
+		_sampleWidth = sw;
+		if (_sampleWidth > 0.001f) {
+			_samplePhase = _sampleWidth * maxPhase;
+		}
+		else {
+			_samplePhase = 0.0f;
+		}
+	}
+}
+
 void Phasor::setPhase(float radians) {
 	_phase = radiansToPhase(radians);
 }
@@ -15,6 +33,10 @@ float Phasor::nextFromPhasor(const Phasor& phasor, float offset) {
 	}
 	while (p < 0.0f) {
 		p += maxPhase;
+	}
+
+	if (_samplePhase > 0.0f) {
+		p -= fmodf(p, _samplePhase);
 	}
 	return _nextForPhase(p);
 }
@@ -68,6 +90,9 @@ void Phasor::advancePhasePositive() {
 
 float Phasor::_next() {
 	advancePhase();
+	if (_samplePhase > 0.0f) {
+		return _nextForPhase(_phase - fmodf(_phase, _samplePhase));
+	}
 	return _nextForPhase(_phase);
 }
 

@@ -86,6 +86,30 @@ void Test::step() {
 	_triangle.setFrequency(oscillatorPitch());
 	outputs[OUT_OUTPUT].value = _triangle.next() * 5.0f;
 
+#elif SAMPLED_TRIANGLE
+	float sample = params[PARAM2_PARAM].value * Phasor::maxSampleWidth;
+	if (inputs[CV2_INPUT].active) {
+		sample *= clamp(inputs[CV2_INPUT].value / 10.0f, 0.0f, 1.0f);
+	}
+	_triangle.setSampleRate(engineGetSampleRate());
+	_triangle.setFrequency(oscillatorPitch());
+	_triangle.setSampleWidth(sample);
+	outputs[OUT_OUTPUT].value = _triangle.next() * 5.0f;
+
+	_triangle2.setSampleRate(engineGetSampleRate());
+	_triangle2.setFrequency(oscillatorPitch());
+	float maxSampleSteps = (_triangle2._sampleRate / _triangle2._frequency) / 4.0f;
+	_sampleSteps = clamp((int)((4.0f * sample) * maxSampleSteps), 1, (int)maxSampleSteps);
+	++_sampleStep;
+	if (_sampleStep >= _sampleSteps) {
+		_sampleStep = 0;
+		_sample = _triangle2.next() * 5.0f;
+	}
+	else {
+		_triangle2.advancePhase();
+	}
+	outputs[OUT2_OUTPUT].value = _sample;
+
 #elif SINEBANK
 	_sineBank.setSampleRate(engineGetSampleRate());
 	_sineBank.setFrequency(oscillatorPitch());

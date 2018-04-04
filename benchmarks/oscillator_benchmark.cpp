@@ -101,6 +101,15 @@ static void BM_TriangleOscillator(benchmark::State& state) {
 }
 BENCHMARK(BM_TriangleOscillator);
 
+static void BM_SampledTriangleOscillator(benchmark::State& state) {
+  TriangleOscillator o(44100.0, 440.0);
+  o.setSampleWidth(Phasor::maxSampleWidth / 2.0);
+  for (auto _ : state) {
+    o.next();
+  }
+}
+BENCHMARK(BM_SampledTriangleOscillator);
+
 static void BM_SineBankOscillator100(benchmark::State& state) {
   SineBankOscillator o(44100.0, 100.0, 100);
   for (int i = 1, n = o.partialCount(); i <= n; ++i) {

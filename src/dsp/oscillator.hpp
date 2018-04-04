@@ -55,14 +55,17 @@ struct OscillatorGenerator : Oscillator, Generator {
 
 struct Phasor : OscillatorGenerator {
 	static constexpr float maxPhase = 2.0f;
+	static constexpr float maxSampleWidth = 0.25f;
 
 	float _delta;
 	double _phase = 0.0;
+	float _sampleWidth = 0.0f;
+	float _samplePhase = 0.0f;
 
 	Phasor(
 		float sampleRate,
 		float frequency,
-		float initialPhase = 0.0
+		float initialPhase = 0.0f
 	)
 	: OscillatorGenerator(sampleRate, frequency)
 	{
@@ -78,6 +81,7 @@ struct Phasor : OscillatorGenerator {
 		_update();
 	}
 
+	void setSampleWidth(float sw); // fraction of maxPhase.
 	void setPhase(float radians);
 	float nextFromPhasor(const Phasor& phasor, float offset = 0.0f); // offset is not radians, but local phase.
 	float nextForPhase(float phase); // local phase, not radians.

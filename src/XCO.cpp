@@ -5,13 +5,11 @@
 void XCO::onReset() {
 	_syncTrigger.reset();
 	_modulationStep = modulationSteps;
-	_triangleSampleStep = _phasor._sampleRate;
 }
 
 void XCO::onSampleRateChange() {
 	_phasor.setSampleRate(engineGetSampleRate());
 	_modulationStep = modulationSteps;
-	_triangleSampleStep = _phasor._sampleRate;
 }
 
 void XCO::step() {
@@ -62,17 +60,16 @@ void XCO::step() {
 		}
 		_saw.setSaturation(saturation * 10.f);
 
+		float sample = params[TRIANGLE_SAMPLE_PARAM].value * Phasor::maxSampleWidth;
+		if (inputs[TRIANGLE_SAMPLE_INPUT].active) {
+			sample *= clamp(inputs[TRIANGLE_SAMPLE_INPUT].value / 10.0f, 0.0f, 1.0f);
+		}
+		_triangle.setSampleWidth(sample);
+
 		_sineFeedback = params[SINE_FEEDBACK_PARAM].value;
 		if (inputs[SINE_FEEDBACK_INPUT].active) {
 			_sineFeedback *= clamp(inputs[SINE_FEEDBACK_INPUT].value / 10.0f, 0.0f, 1.0f);
 		}
-
-		float sample = params[TRIANGLE_SAMPLE_PARAM].value;
-		if (inputs[TRIANGLE_SAMPLE_INPUT].active) {
-			sample *= clamp(inputs[TRIANGLE_SAMPLE_INPUT].value / 10.0f, 0.0f, 1.0f);
-		}
-		float maxSampleSteps = (_phasor._sampleRate / _phasor._frequency) / 4.0f;
-		_triangleSampleSteps = clamp((int)(sample * maxSampleSteps), 1, (int)maxSampleSteps);
 
 		_fmDepth = params[FM_PARAM].value;
 
@@ -118,31 +115,7 @@ void XCO::step() {
 		mix += outputs[SAW_OUTPUT].value = amplitude * _sawMix * _saw.nextFromPhasor(_phasor, _sawPhaseOffset + phaseOffset);
 	}
 	if (outputs[MIX_OUTPUT].active || outputs[TRIANGLE_OUTPUT].active) {
-		bool useSample = false;
-		if (_triangleSampleSteps > 1) {
-			++_triangleSampleStep;
-			if (_triangleSampleStep < _triangleSampleSteps) {
-				useSample = true;
-			}
-			else {
-				_triangleSampleStep = 0;
-			}
-		}
-
-		if (fmOn && _fmLinearMode) {
-			if (!useSample) {
-				_triangleSample = _phasor._phase;
-			}
-			mix += outputs[TRIANGLE_OUTPUT].value = amplitude * _triangleMix * _triangle.nextForPhase(_triangleSample + _trianglePhaseOffset + phaseOffset);
-		}
-		else {
-			if (useSample) {
-				mix += outputs[TRIANGLE_OUTPUT].value = _triangleSample;
-			}
-			else {
-				mix += outputs[TRIANGLE_OUTPUT].value = _triangleSample = amplitude * _triangleMix * _triangle.nextFromPhasor(_phasor, _trianglePhaseOffset + phaseOffset);
-			}
-		}
+		mix += outputs[TRIANGLE_OUTPUT].value = amplitude * _triangleMix * _triangle.nextFromPhasor(_phasor, _trianglePhaseOffset + phaseOffset);
 	}
 	if (outputs[MIX_OUTPUT].active || outputs[SINE_OUTPUT].active) {
 		mix += outputs[SINE_OUTPUT].value = amplitude * _sineMix * _sine.nextFromPhasor(_phasor, sineFeedbackOffset + _sinePhaseOffset + phaseOffset);
