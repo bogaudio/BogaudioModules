@@ -80,6 +80,7 @@ struct Phasor : OscillatorGenerator {
 
 	void setPhase(float radians);
 	float nextFromPhasor(const Phasor& phasor, float offset = 0.0f); // offset is not radians, but local phase.
+	float nextForPhase(float phase); // local phase, not radians.
 	virtual void _update();
 	void advancePhase();
 	void advancePhasePositive();

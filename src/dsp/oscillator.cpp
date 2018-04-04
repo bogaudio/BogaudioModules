@@ -35,6 +35,16 @@ void Phasor::_update() {
 	}
 }
 
+float Phasor::nextForPhase(float phase) {
+	while (phase >= maxPhase) {
+		phase -= maxPhase;
+	}
+	while (phase < 0.0f) {
+		phase += maxPhase;
+	}
+	return _nextForPhase(phase);
+}
+
 void Phasor::advancePhase() {
 	_phase += _delta;
 	if (_phase >= maxPhase) {

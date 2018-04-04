@@ -5,11 +5,13 @@
 void XCO::onReset() {
 	_syncTrigger.reset();
 	_modulationStep = modulationSteps;
+	_triangleSampleStep = _phasor._sampleRate;
 }
 
 void XCO::onSampleRateChange() {
 	_phasor.setSampleRate(engineGetSampleRate());
 	_modulationStep = modulationSteps;
+	_triangleSampleStep = _phasor._sampleRate;
 }
 
 void XCO::step() {
@@ -60,6 +62,18 @@ void XCO::step() {
 		}
 		_saw.setSaturation(saturation * 10.f);
 
+		_sineFeedback = params[SINE_FEEDBACK_PARAM].value;
+		if (inputs[SINE_FEEDBACK_INPUT].active) {
+			_sineFeedback *= clamp(inputs[SINE_FEEDBACK_INPUT].value / 10.0f, 0.0f, 1.0f);
+		}
+
+		float sample = params[TRIANGLE_SAMPLE_PARAM].value;
+		if (inputs[TRIANGLE_SAMPLE_INPUT].active) {
+			sample *= clamp(inputs[TRIANGLE_SAMPLE_INPUT].value / 10.0f, 0.0f, 1.0f);
+		}
+		float maxSampleSteps = (_phasor._sampleRate / _phasor._frequency) / 4.0f;
+		_triangleSampleSteps = clamp((int)(sample * maxSampleSteps), 1, (int)maxSampleSteps);
+
 		_fmDepth = params[FM_PARAM].value;
 
 		_squarePhaseOffset = phaseOffset(params[SQUARE_PHASE_PARAM], inputs[SQUARE_PHASE_INPUT]);
@@ -73,8 +87,10 @@ void XCO::step() {
 		_sineMix = level(params[SINE_MIX_PARAM], inputs[SINE_MIX_INPUT]);
 	}
 
+	bool fmOn = false;
 	float phaseOffset = 0.0f;
 	if (inputs[FM_INPUT].active && _fmDepth > 0.01f) {
+		fmOn = true;
 		float fm = inputs[FM_INPUT].value * _fmDepth;
 		if (_fmLinearMode) {
 			_phasor.setFrequency(_baseHz);
@@ -87,7 +103,13 @@ void XCO::step() {
 	else {
 		_phasor.setFrequency(_baseHz);
 	}
-	_phasor.advancePhase();
+	float sineFeedbackOffset = 0.0f;
+	if (_sineFeedback > 0.001f) {
+		sineFeedbackOffset = Phasor::radiansToPhase(_sineFeedback * _phasor.next());
+	}
+	else {
+		_phasor.advancePhase();
+	}
 	float mix = 0.0f;
 	if (outputs[MIX_OUTPUT].active || outputs[SQUARE_OUTPUT].active) {
 		mix += outputs[SQUARE_OUTPUT].value = amplitude * _squareMix * _square.nextFromPhasor(_phasor, _squarePhaseOffset + phaseOffset);
@@ -96,10 +118,34 @@ void XCO::step() {
 		mix += outputs[SAW_OUTPUT].value = amplitude * _sawMix * _saw.nextFromPhasor(_phasor, _sawPhaseOffset + phaseOffset);
 	}
 	if (outputs[MIX_OUTPUT].active || outputs[TRIANGLE_OUTPUT].active) {
-		mix += outputs[TRIANGLE_OUTPUT].value = amplitude * _triangleMix * _triangle.nextFromPhasor(_phasor, _trianglePhaseOffset + phaseOffset);
+		bool useSample = false;
+		if (_triangleSampleSteps > 1) {
+			++_triangleSampleStep;
+			if (_triangleSampleStep < _triangleSampleSteps) {
+				useSample = true;
+			}
+			else {
+				_triangleSampleStep = 0;
+			}
+		}
+
+		if (fmOn && _fmLinearMode) {
+			if (!useSample) {
+				_triangleSample = _phasor._phase;
+			}
+			mix += outputs[TRIANGLE_OUTPUT].value = amplitude * _triangleMix * _triangle.nextForPhase(_triangleSample + _trianglePhaseOffset + phaseOffset);
+		}
+		else {
+			if (useSample) {
+				mix += outputs[TRIANGLE_OUTPUT].value = _triangleSample;
+			}
+			else {
+				mix += outputs[TRIANGLE_OUTPUT].value = _triangleSample = amplitude * _triangleMix * _triangle.nextFromPhasor(_phasor, _trianglePhaseOffset + phaseOffset);
+			}
+		}
 	}
 	if (outputs[MIX_OUTPUT].active || outputs[SINE_OUTPUT].active) {
-		mix += outputs[SINE_OUTPUT].value = amplitude * _sineMix * _sine.nextFromPhasor(_phasor, _sinePhaseOffset + phaseOffset);
+		mix += outputs[SINE_OUTPUT].value = amplitude * _sineMix * _sine.nextFromPhasor(_phasor, sineFeedbackOffset + _sinePhaseOffset + phaseOffset);
 	}
 	if (outputs[MIX_OUTPUT].active) {
 		outputs[MIX_OUTPUT].value = mix;
@@ -150,8 +196,10 @@ struct XCOWidget : ModuleWidget {
 		auto sawSaturationParamPosition = Vec(187.0, 60.0);
 		auto sawPhaseParamPosition = Vec(187.0, 148.0);
 		auto sawMixParamPosition = Vec(187.0, 237.0);
+		auto triangleSampleParamPosition = Vec(227.0, 60.0);
 		auto trianglePhaseParamPosition = Vec(227.0, 148.0);
 		auto triangleMixParamPosition = Vec(227.0, 237.0);
+		auto sineFeedbackParamPosition = Vec(267.0, 60.0);
 		auto sinePhaseParamPosition = Vec(267.0, 148.0);
 		auto sineMixParamPosition = Vec(267.0, 237.0);
 
@@ -162,8 +210,10 @@ struct XCOWidget : ModuleWidget {
 		auto sawSaturationInputPosition = Vec(183.0, 95.0);
 		auto sawPhaseInputPosition = Vec(183.0, 183.0);
 		auto sawMixInputPosition = Vec(183.0, 272.0);
+		auto triangleSampleInputPosition = Vec(223.0, 95.0);
 		auto trianglePhaseInputPosition = Vec(223.0, 183.0);
 		auto triangleMixInputPosition = Vec(223.0, 272.0);
+		auto sineFeedbackInputPosition = Vec(263.0, 95.0);
 		auto sinePhaseInputPosition = Vec(263.0, 183.0);
 		auto sineMixInputPosition = Vec(263.0, 272.0);
 		auto pitchInputPosition = Vec(14.0, 318.0);
@@ -191,8 +241,10 @@ struct XCOWidget : ModuleWidget {
 		addParam(ParamWidget::create<Knob16>(sawSaturationParamPosition, module, XCO::SAW_SATURATION_PARAM, 0.0, 1.0, 0.0));
 		addParam(ParamWidget::create<Knob16>(sawPhaseParamPosition, module, XCO::SAW_PHASE_PARAM, -1.0, 1.0, 0.0));
 		addParam(ParamWidget::create<Knob16>(sawMixParamPosition, module, XCO::SAW_MIX_PARAM, 0.0, 1.0, 1.0));
+		addParam(ParamWidget::create<Knob16>(triangleSampleParamPosition, module, XCO::TRIANGLE_SAMPLE_PARAM, 0.0, 1.0, 0.0));
 		addParam(ParamWidget::create<Knob16>(trianglePhaseParamPosition, module, XCO::TRIANGLE_PHASE_PARAM, -1.0, 1.0, 0.0));
 		addParam(ParamWidget::create<Knob16>(triangleMixParamPosition, module, XCO::TRIANGLE_MIX_PARAM, 0.0, 1.0, 1.0));
+		addParam(ParamWidget::create<Knob16>(sineFeedbackParamPosition, module, XCO::SINE_FEEDBACK_PARAM, 0.0, 1.0, 0.0));
 		addParam(ParamWidget::create<Knob16>(sinePhaseParamPosition, module, XCO::SINE_PHASE_PARAM, -1.0, 1.0, 0.0));
 		addParam(ParamWidget::create<Knob16>(sineMixParamPosition, module, XCO::SINE_MIX_PARAM, 0.0, 1.0, 1.0));
 
@@ -203,8 +255,10 @@ struct XCOWidget : ModuleWidget {
 		addInput(Port::create<Port24>(sawSaturationInputPosition, Port::INPUT, module, XCO::SAW_SATURATION_INPUT));
 		addInput(Port::create<Port24>(sawPhaseInputPosition, Port::INPUT, module, XCO::SAW_PHASE_INPUT));
 		addInput(Port::create<Port24>(sawMixInputPosition, Port::INPUT, module, XCO::SAW_MIX_INPUT));
+		addInput(Port::create<Port24>(triangleSampleInputPosition, Port::INPUT, module, XCO::TRIANGLE_SAMPLE_INPUT));
 		addInput(Port::create<Port24>(trianglePhaseInputPosition, Port::INPUT, module, XCO::TRIANGLE_PHASE_INPUT));
 		addInput(Port::create<Port24>(triangleMixInputPosition, Port::INPUT, module, XCO::TRIANGLE_MIX_INPUT));
+		addInput(Port::create<Port24>(sineFeedbackInputPosition, Port::INPUT, module, XCO::SINE_FEEDBACK_INPUT));
 		addInput(Port::create<Port24>(sinePhaseInputPosition, Port::INPUT, module, XCO::SINE_PHASE_INPUT));
 		addInput(Port::create<Port24>(sineMixInputPosition, Port::INPUT, module, XCO::SINE_MIX_INPUT));
 		addInput(Port::create<Port24>(pitchInputPosition, Port::INPUT, module, XCO::PITCH_INPUT));

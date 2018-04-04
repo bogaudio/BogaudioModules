@@ -22,8 +22,10 @@ struct XCO : Module {
 		SAW_SATURATION_PARAM,
 		SAW_PHASE_PARAM,
 		SAW_MIX_PARAM,
+		TRIANGLE_SAMPLE_PARAM,
 		TRIANGLE_PHASE_PARAM,
 		TRIANGLE_MIX_PARAM,
+		SINE_FEEDBACK_PARAM,
 		SINE_PHASE_PARAM,
 		SINE_MIX_PARAM,
 		NUM_PARAMS
@@ -37,8 +39,10 @@ struct XCO : Module {
 		SAW_SATURATION_INPUT,
 		SAW_PHASE_INPUT,
 		SAW_MIX_INPUT,
+		TRIANGLE_SAMPLE_INPUT,
 		TRIANGLE_PHASE_INPUT,
 		TRIANGLE_MIX_INPUT,
+		SINE_FEEDBACK_INPUT,
 		SINE_PHASE_INPUT,
 		SINE_MIX_INPUT,
 		PITCH_INPUT,
@@ -70,6 +74,10 @@ struct XCO : Module {
 	bool _slowMode = false;
 	float _fmDepth = 0.0f;
 	bool _fmLinearMode = false;
+	int _triangleSampleStep = 0;
+	int _triangleSampleSteps = 0;
+	float _triangleSample = 0.0f;
+	float _sineFeedback = 0.0f;
 	float _squarePhaseOffset = 0.0f;
 	float _sawPhaseOffset = 0.0f;
 	float _trianglePhaseOffset = 0.0f;

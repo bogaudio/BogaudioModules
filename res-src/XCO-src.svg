@@ -367,6 +367,11 @@
       <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
       <polyline points="0,4 3,0 9,8 12,4" stroke-width="1" stroke="#333" fill="none" />
     </g>
+    <g transform="translate(3 30)">
+      <use id="TRIANGLE_SAMPLE_PARAM" xlink:href="#knob-smallest" transform="translate(4 0)" />
+      <text font-size="6pt" letter-spacing="2px" transform="translate(2 30)">S&amp;H</text>
+      <use id="TRIANGLE_SAMPLE_INPUT" xlink:href="#input" transform="translate(0 35)" />
+    </g>
     <g transform="translate(3 118)">
       <use id="TRIANGLE_PHASE_PARAM" xlink:href="#knob-smallest" transform="translate(4 0)" />
       <text font-size="6pt" letter-spacing="2px" transform="translate(2 30)">PHS</text>
@@ -386,6 +391,7 @@
       </g>
     </g>
   </g>
+  <use xlink:href="#knobguide-mintick" transform="translate(215 48)" />
   <use xlink:href="#knobguide-centertick" transform="translate(215 136)" />
   <use xlink:href="#knobguide-maxtick" transform="translate(215 225)" />
 
@@ -400,6 +406,11 @@
       <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
       <path d="M 0 4 A 2 3 0 0 1 6 4" stroke="#333" stroke-width="1" fill="none" />
       <path d="M 6 4 A 2 3 0 0 0 12 4" stroke="#333" stroke-width="1" fill="none" />
+    </g>
+    <g transform="translate(3 30)">
+      <use id="SINE_FEEDBACK_PARAM" xlink:href="#knob-smallest" transform="translate(4 0)" />
+      <text font-size="6pt" letter-spacing="1px" transform="translate(0.5 30)">FDBK</text>
+      <use id="SINE_FEEDBACK_INPUT" xlink:href="#input" transform="translate(0 35)" />
     </g>
     <g transform="translate(3 118)">
       <use id="SINE_PHASE_PARAM" xlink:href="#knob-smallest" transform="translate(4 0)" />
@@ -420,6 +431,7 @@
       </g>
     </g>
   </g>
+  <use xlink:href="#knobguide-mintick" transform="translate(255 48)" />
   <use xlink:href="#knobguide-centertick" transform="translate(255 136)" />
   <use xlink:href="#knobguide-maxtick" transform="translate(255 225)" />
 
