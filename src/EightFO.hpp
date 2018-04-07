@@ -72,10 +72,6 @@ struct EightFO : Module {
 	};
 
 	const int modulationSteps = 100;
-	const float frequencyExponent = 1.9385f;
-	const float maxFrequency = 1000.0f;
-	const float minFrequency = 1.0f;
-	const float slowModeFactor = 0.01f;
 	const float amplitude = 5.0f;
 	const float basePhase7Offset = Phasor::radiansToPhase(1.75f * M_PI);
 	const float basePhase6Offset = Phasor::radiansToPhase(1.5f * M_PI);
