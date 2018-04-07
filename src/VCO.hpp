@@ -38,8 +38,6 @@ struct VCO : Module {
 
 	enum LightsIds {
 		SLOW_LIGHT,
-		FM_EXP_LIGHT,
-		FM_LIN_LIGHT,
 		NUM_LIGHTS
 	};
 

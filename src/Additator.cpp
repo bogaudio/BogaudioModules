@@ -25,7 +25,7 @@ float Additator::cvValue(Input& cv, bool dc) {
 
 void Additator::step() {
 	if (!outputs[AUDIO_OUTPUT].active) {
-		Phase phase = ((int)params[PHASE_PARAM].value) == 2 ? PHASE_COSINE : PHASE_SINE;
+		Phase phase = params[PHASE_PARAM].value > 1.5f ? PHASE_COSINE : PHASE_SINE;
 		lights[SINE_LIGHT].value = phase == PHASE_SINE;
 		lights[COSINE_LIGHT].value = phase == PHASE_COSINE;
 		return;
@@ -120,7 +120,7 @@ void Additator::step() {
 		if (_syncTrigger.process(inputs[SYNC_INPUT].value)) {
 			_oscillator.syncToPhase(_phase == PHASE_SINE ? 0.0f : M_PI / 2.0f);
 		}
-		Phase phase = ((int)params[PHASE_PARAM].value) == 2 ? PHASE_COSINE : PHASE_SINE;
+		Phase phase = params[PHASE_PARAM].value > 1.5f ? PHASE_COSINE : PHASE_SINE;
 		if (_phase != phase) {
 			_phase = phase;
 			_oscillator.syncToPhase(_phase == PHASE_SINE ? 0.0f : M_PI / 2.0f);

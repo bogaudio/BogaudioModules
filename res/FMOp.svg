@@ -1131,7 +1131,7 @@
   </g>
   <g
      id="g247"
-     transform="translate(87,133)">
+     transform="translate(87,132)">
     <!-- <polyline points="0,0 200,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(-140 -10)" /> -->
     <g
        aria-label="DEC"
@@ -1155,7 +1155,7 @@
   </g>
   <g
      id="use249"
-     transform="translate(97.5,123.5)">
+     transform="translate(97.5,122.5)">
     <g
        id="g611"
        transform="translate(22.5,22.5)">
@@ -1287,7 +1287,7 @@
   </g>
   <g
      id="g253"
-     transform="translate(87,176)">
+     transform="translate(87,174)">
     <!-- <polyline points="0,0 200,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(-140 -10)" /> -->
     <g
        aria-label="SUS"
@@ -1311,7 +1311,7 @@
   </g>
   <g
      id="use255"
-     transform="translate(97.5,166.5)">
+     transform="translate(97.5,164.5)">
     <g
        id="g559"
        transform="translate(22.5,22.5)">
@@ -1379,7 +1379,7 @@
   </g>
   <g
      id="g259"
-     transform="translate(87,219)">
+     transform="translate(87,216)">
     <!-- <polyline points="0,0 200,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(-140 -10)" /> -->
     <g
        aria-label="REL"
@@ -1403,7 +1403,7 @@
   </g>
   <g
      id="use261"
-     transform="translate(97.5,209.5)">
+     transform="translate(97.5,206.5)">
     <g
        id="g533"
        transform="translate(22.5,22.5)">
@@ -1633,10 +1633,10 @@
   </g>
   <g
      id="g273"
-     transform="translate(16,162)">
+     transform="translate(16,161)">
     <g
        aria-label="FDBK"
-       transform="rotate(-90,18.5,10.5)"
+       transform="rotate(-90,19,11)"
        style="font-weight:bold;font-size:10.66666698px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333"
        id="text271">
       <path
@@ -1659,7 +1659,7 @@
   </g>
   <g
      id="use275"
-     transform="translate(26.5,152.5)">
+     transform="translate(26.5,151.5)">
     <g
        id="g455"
        transform="translate(22.5,22.5)">
@@ -1727,10 +1727,10 @@
   </g>
   <g
      id="g279"
-     transform="translate(16,211)">
+     transform="translate(16,209)">
     <g
        aria-label="LEVEL"
-       transform="rotate(-90,20.5,12.5)"
+       transform="rotate(-90,20.75,12.75)"
        style="font-weight:bold;font-size:10.66666698px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333"
        id="text277">
       <path
@@ -1757,7 +1757,7 @@
   </g>
   <g
      id="use281"
-     transform="translate(26.5,201.5)">
+     transform="translate(26.5,199.5)">
     <g
        id="g429"
        transform="translate(22.5,22.5)">
@@ -1825,7 +1825,7 @@
   </g>
   <g
      id="g295"
-     transform="translate(13,256.5)">
+     transform="translate(13,255)">
     <!-- <polyline points="0,0 200,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 3.3)" /> -->
     <g
        aria-label="ENV:"

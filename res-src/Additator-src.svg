@@ -273,7 +273,7 @@
   </g>
   <use xlink:href="#knobguide-frequency" transform="translate(20 25)" />
 
-  <text font-size="6pt" letter-spacing="1px" transform="translate(29 135)">0V = C4 = 261.63HZ</text>
+  <text font-size="6pt" letter-spacing="1px" transform="translate(32 135)">0V = C4 = 261.6HZ</text>
 
   <g transform="translate(144 60)">
     <!-- <polyline points="0,19 68,19" stroke="#0f0" stroke-width="1" fill="none" /> -->

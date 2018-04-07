@@ -15,7 +15,7 @@ void EightFO::onSampleRateChange() {
 }
 
 void EightFO::step() {
-	lights[SLOW_LIGHT].value = _slowMode = ((int)params[SLOW_PARAM].value) == 1;
+	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].value > 0.5f;
 	if (!(
 		outputs[PHASE7_OUTPUT].active ||
 		outputs[PHASE6_OUTPUT].active ||

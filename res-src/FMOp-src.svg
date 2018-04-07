@@ -228,27 +228,27 @@
       <!-- <rect width="30" height="18" fill="#0f0" transform="translate(20 26)" /> -->
     </g>
     <use xlink:href="#knobguide-time" transform="translate(10.5 -9.5)" />
-    <g transform="translate(0 43)">
+    <g transform="translate(0 42)">
       <!-- <polyline points="0,0 200,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(-140 -10)" /> -->
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 25) rotate(270)">DEC</text>
       <use id="DECAY_PARAM" xlink:href="#knob-medium" transform="translate(20 0)" />
       <!-- <rect width="30" height="18" fill="#0f0" transform="translate(20 26)" /> -->
     </g>
-    <use xlink:href="#knobguide-time" transform="translate(10.5 33.5)" />
-    <g transform="translate(0 86)">
+    <use xlink:href="#knobguide-time" transform="translate(10.5 32.5)" />
+    <g transform="translate(0 84)">
       <!-- <polyline points="0,0 200,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(-140 -10)" /> -->
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 25) rotate(270)">SUS</text>
       <use id="SUSTAIN_PARAM" xlink:href="#knob-medium" transform="translate(20 0)" />
       <!-- <rect width="30" height="18" fill="#0f0" transform="translate(20 26)" /> -->
     </g>
-    <use xlink:href="#knobguide-linear" transform="translate(10.5 76.5)" />
-    <g transform="translate(0 129)">
+    <use xlink:href="#knobguide-linear" transform="translate(10.5 74.5)" />
+    <g transform="translate(0 126)">
       <!-- <polyline points="0,0 200,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(-140 -10)" /> -->
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 25) rotate(270)">REL</text>
       <use id="RELEASE_PARAM" xlink:href="#knob-medium" transform="translate(20 0)" />
       <!-- <rect width="30" height="18" fill="#0f0" transform="translate(20 26)" /> -->
     </g>
-    <use xlink:href="#knobguide-time" transform="translate(10.5 119.5)" />
+    <use xlink:href="#knobguide-time" transform="translate(10.5 116.5)" />
   </g>
 
   <g transform="translate(16 113)">
@@ -257,19 +257,19 @@
       <use id="DEPTH_PARAM" xlink:href="#knob-medium" transform="translate(20 0)" />
     </g>
     <use xlink:href="#knobguide-linear" transform="translate(10.5 -9.5)" />
-    <g transform="translate(0 49)">
-      <text font-size="8pt" letter-spacing="2px" transform="translate(8 29) rotate(270)">FDBK</text>
+    <g transform="translate(0 48)">
+      <text font-size="8pt" letter-spacing="2px" transform="translate(8 30) rotate(270)">FDBK</text>
       <use id="FEEDBACK_PARAM" xlink:href="#knob-medium" transform="translate(20 0)" />
     </g>
-    <use xlink:href="#knobguide-linear" transform="translate(10.5 39.5)" />
-    <g transform="translate(0 98)">
-      <text font-size="8pt" letter-spacing="2px" transform="translate(8 33) rotate(270)">LEVEL</text>
+    <use xlink:href="#knobguide-linear" transform="translate(10.5 38.5)" />
+    <g transform="translate(0 96)">
+      <text font-size="8pt" letter-spacing="2px" transform="translate(8 33.5) rotate(270)">LEVEL</text>
       <use id="LEVEL_PARAM" xlink:href="#knob-medium" transform="translate(20 0)" />
     </g>
-    <use xlink:href="#knobguide-linear" transform="translate(10.5 88.5)" />
+    <use xlink:href="#knobguide-linear" transform="translate(10.5 86.5)" />
   </g>
 
-  <g transform="translate(13 239)">
+  <g transform="translate(13 237.5)">
     <g transform="translate(0 17.5)">
       <!-- <polyline points="0,0 200,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 3.3)" /> -->
       <text font-size="6pt" letter-spacing="1px" transform="translate(0 6.2)">ENV:</text>
@@ -281,7 +281,7 @@
       <g transform="translate(81 0)">
         <use id="ENV_TO_FEEDBACK_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
         <text font-size="6pt" letter-spacing="1px" transform="translate(9 6.2)">FDBK</text>
-        <use id="ENV_TO_FEEDBACK_PARAM" xlink:href="#button-small" transform="translate(34 -1.2)" />
+        <use id="ENV_TO_FEEDBACK_PARAM" xlink:href="#button-small" transform="translate(34.5 -1.2)" />
       </g>
     </g>
   </g>

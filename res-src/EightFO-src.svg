@@ -239,7 +239,7 @@
 
   <!-- <rect width="20" height="10" fill="#0f0" transform="translate(20 130)" /> -->
   <!-- <rect width="20" height="10" fill="#0f0" transform="translate(108 130)" /> -->
-  <text font-size="6pt" letter-spacing="1px" transform="translate(41 137)">0V = 261.63HZ</text>
+  <text font-size="6pt" letter-spacing="1px" transform="translate(44.5 137)">0V = 261.6HZ</text>
 
   <g transform="translate(86 335)">
     <!-- <rect width="230" height="15" fill="#0f0" transform="translate(-30 -17)" /> -->
@@ -261,7 +261,7 @@
       <!-- <polyline points="0,0 170,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(-10 13)" /> -->
       <!-- <polyline points="0,0 0,170" stroke="#0f0" stroke-width="1" fill="none" transform="translate(33 -13)" /> -->
       <!-- <polyline points="0,0 170,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(-10 33)" /> -->
-      <text font-size="8pt" letter-spacing="2px" transform="translate(8 33) rotate(270)">SH/PW</text>
+      <text font-size="8pt" letter-spacing="2px" transform="translate(8 38) rotate(270)">SAM/PW</text>
       <use id="SAMPLE_PWM_PARAM" xlink:href="#knob-medium" transform="translate(20 0)" />
     </g>
     <use xlink:href="#knobguide-attenuverter" transform="translate(80.5 -9.6)" />
@@ -371,7 +371,7 @@
     <g transform="translate(10 -40)">
       <!-- <rect width="30" height="40" rx="5" fill="#fafafa" /> -->
       <use id="SAMPLE_PWM_INPUT" xlink:href="#input" transform="translate(4 4)" />
-      <text font-size="6pt" letter-spacing="0.5px" transform="translate(1 38)">SH/PW</text>
+      <text font-size="6pt" letter-spacing="1px" transform="translate(4 38)">S/PW</text>
     </g>
     <g transform="translate(50 -40)">
       <!-- <rect width="30" height="40" rx="5" fill="#fafafa" /> -->
