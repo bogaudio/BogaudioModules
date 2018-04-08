@@ -8,7 +8,7 @@ void VCO::onReset() {
 }
 
 void VCO::onSampleRateChange() {
-	_phasor.setSampleRate(engineGetSampleRate());
+	setSampleRate(engineGetSampleRate());
 	_modulationStep = modulationSteps;
 }
 
@@ -58,15 +58,15 @@ void VCO::step() {
 	if (inputs[FM_INPUT].active && _fmDepth > 0.01f) {
 		float fm = inputs[FM_INPUT].value * _fmDepth;
 		if (_fmLinearMode) {
-			_phasor.setFrequency(_baseHz);
+			setFrequency(_baseHz);
 			phaseOffset = Phasor::radiansToPhase(2.0f * fm);
 		}
 		else {
-			_phasor.setFrequency(cvToFrequency(_baseVOct + fm));
+			setFrequency(cvToFrequency(_baseVOct + fm));
 		}
 	}
 	else {
-		_phasor.setFrequency(_baseHz);
+		setFrequency(_baseHz);
 	}
 	_phasor.advancePhase();
 	if (outputs[SQUARE_OUTPUT].active) {
@@ -81,6 +81,18 @@ void VCO::step() {
 	if (outputs[SINE_OUTPUT].active) {
 		outputs[SINE_OUTPUT].value = amplitude * _sine.nextFromPhasor(_phasor, phaseOffset);
 	}
+}
+
+void VCO::setSampleRate(float sampleRate) {
+	_phasor.setSampleRate(sampleRate);
+	_square.setSampleRate(sampleRate);
+	_saw.setSampleRate(sampleRate);
+}
+
+void VCO::setFrequency(float frequency) {
+	_phasor.setFrequency(frequency);
+	_square.setFrequency(frequency);
+	_saw.setFrequency(frequency);
 }
 
 struct VCOWidget : ModuleWidget {

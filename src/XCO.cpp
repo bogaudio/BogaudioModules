@@ -8,7 +8,7 @@ void XCO::onReset() {
 }
 
 void XCO::onSampleRateChange() {
-	_phasor.setSampleRate(engineGetSampleRate());
+	setSampleRate(engineGetSampleRate());
 	_modulationStep = modulationSteps;
 }
 
@@ -88,15 +88,15 @@ void XCO::step() {
 		fmOn = true;
 		float fm = inputs[FM_INPUT].value * _fmDepth;
 		if (_fmLinearMode) {
-			_phasor.setFrequency(_baseHz);
+			setFrequency(_baseHz);
 			phaseOffset = Phasor::radiansToPhase(2.0f * fm);
 		}
 		else {
-			_phasor.setFrequency(cvToFrequency(_baseVOct + fm));
+			setFrequency(cvToFrequency(_baseVOct + fm));
 		}
 	}
 	else {
-		_phasor.setFrequency(_baseHz);
+		setFrequency(_baseHz);
 	}
 	float sineFeedbackOffset = 0.0f;
 	if (_sineFeedback > 0.001f) {
@@ -137,6 +137,18 @@ float XCO::level(Param& param, Input& input) {
 		v *= clamp(input.value / 10.0f, 0.0f, 1.0f);
 	}
 	return v;
+}
+
+void XCO::setSampleRate(float sampleRate) {
+	_phasor.setSampleRate(sampleRate);
+	_square.setSampleRate(sampleRate);
+	_saw.setSampleRate(sampleRate);
+}
+
+void XCO::setFrequency(float frequency) {
+	_phasor.setFrequency(frequency);
+	_square.setFrequency(frequency);
+	_saw.setFrequency(frequency);
 }
 
 struct XCOWidget : ModuleWidget {

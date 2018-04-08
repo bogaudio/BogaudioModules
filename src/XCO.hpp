@@ -91,13 +91,14 @@ struct XCO : Module {
 
 	XCO()
 	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
-	, _phasor(engineGetSampleRate(), 1.0f)
+	, _phasor(0.0f, 1.0f)
 	, _square(0.0f, 0.0f)
 	, _saw(0.0f, 0.0f)
 	, _triangle(0.0f, 0.0f)
 	, _sine(0.0f, 0.0f)
 	{
 		onReset();
+		setSampleRate(engineGetSampleRate());
 		_saw.setQuality(12);
 		_square.setQuality(12);
 	}
@@ -107,6 +108,8 @@ struct XCO : Module {
 	virtual void step() override;
 	float phaseOffset(Param& param, Input& input);
 	float level(Param& param, Input& input);
+	void setSampleRate(float sampleRate);
+	void setFrequency(float frequency);
 };
 
 } // namespace bogaudio
