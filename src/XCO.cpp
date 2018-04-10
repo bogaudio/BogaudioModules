@@ -48,8 +48,9 @@ void XCO::step() {
 		if (inputs[SQUARE_PW_INPUT].active) {
 			pw *= clamp(inputs[SQUARE_PW_INPUT].value / 5.0f, -1.0f, 1.0f);
 		}
-		pw = (pw + 1.0f) / 2.0f;
 		pw *= 1.0f - 2.0f * _square.minPulseWidth;
+		pw *= 0.5f;
+		pw += 0.5f;
 		_square.setPulseWidth(pw);
 
 		float saturation = params[SAW_SATURATION_PARAM].value;
@@ -82,22 +83,44 @@ void XCO::step() {
 		_sineMix = level(params[SINE_MIX_PARAM], inputs[SINE_MIX_INPUT]);
 	}
 
-	bool fmOn = false;
+	float frequency = _baseHz;
 	float phaseOffset = 0.0f;
 	if (inputs[FM_INPUT].active && _fmDepth > 0.01f) {
-		fmOn = true;
 		float fm = inputs[FM_INPUT].value * _fmDepth;
 		if (_fmLinearMode) {
-			setFrequency(_baseHz);
 			phaseOffset = Phasor::radiansToPhase(2.0f * fm);
 		}
 		else {
-			setFrequency(cvToFrequency(_baseVOct + fm));
+			frequency = cvToFrequency(_baseVOct + fm);
+		}
+	}
+	setFrequency(frequency);
+
+	const float oversampleWidth = 100.0f;
+	float mix, oMix;
+	if (frequency > _oversampleThreshold) {
+		if (frequency > _oversampleThreshold + oversampleWidth) {
+			mix = 0.0f;
+			oMix = 1.0f;
+		}
+		else {
+			oMix = (frequency - _oversampleThreshold) / oversampleWidth;
+			mix = 1.0f - oMix;
 		}
 	}
 	else {
-		setFrequency(_baseHz);
+		mix = 1.0f;
+		oMix = 0.0f;
 	}
+
+	bool squareActive = outputs[MIX_OUTPUT].active || outputs[SQUARE_OUTPUT].active;
+	bool sawActive = outputs[MIX_OUTPUT].active || outputs[SAW_OUTPUT].active;
+	bool triangleActive = outputs[MIX_OUTPUT].active || outputs[TRIANGLE_OUTPUT].active;
+	bool sineActive = outputs[MIX_OUTPUT].active || outputs[SINE_OUTPUT].active;
+	float squareOut = 0.0f;
+	float sawOut = 0.0f;
+	float triangleOut = 0.0f;
+	float sineOut = 0.0f;
 	float sineFeedbackOffset = 0.0f;
 	if (_sineFeedback > 0.001f) {
 		sineFeedbackOffset = Phasor::radiansToPhase(_sineFeedback * _phasor.next());
@@ -105,22 +128,62 @@ void XCO::step() {
 	else {
 		_phasor.advancePhase();
 	}
-	float mix = 0.0f;
-	if (outputs[MIX_OUTPUT].active || outputs[SQUARE_OUTPUT].active) {
-		mix += outputs[SQUARE_OUTPUT].value = amplitude * _squareMix * _square.nextFromPhasor(_phasor, _squarePhaseOffset + phaseOffset);
+
+	if (mix > 0.0f) {
+		if (squareActive) {
+			squareOut += mix * amplitude * _squareMix * _square.nextFromPhasor(_phasor, _squarePhaseOffset + phaseOffset);
+		}
+		if (sawActive) {
+			sawOut += mix * amplitude * _sawMix * _saw.nextFromPhasor(_phasor, _sawPhaseOffset + phaseOffset);
+		}
+		if (triangleActive) {
+			triangleOut += mix * amplitude * _triangleMix * _triangle.nextFromPhasor(_phasor, _trianglePhaseOffset + phaseOffset);
+		}
+		if (sineActive) {
+			sineOut += mix * amplitude * _sineMix * _sine.nextFromPhasor(_phasor, sineFeedbackOffset + _sinePhaseOffset + phaseOffset);
+		}
 	}
-	if (outputs[MIX_OUTPUT].active || outputs[SAW_OUTPUT].active) {
-		mix += outputs[SAW_OUTPUT].value = amplitude * _sawMix * _saw.nextFromPhasor(_phasor, _sawPhaseOffset + phaseOffset);
+
+	if (oMix > 0.0f) {
+		for (int i = 0; i < oversample; ++i) {
+			_oversamplePhasor.advancePhase();
+			if (squareActive) {
+				_squareBuffer[i] = _square.nextFromPhasor(_oversamplePhasor, _squarePhaseOffset + phaseOffset);
+			}
+			if (sawActive) {
+				_sawBuffer[i] = _saw.nextFromPhasor(_oversamplePhasor, _sawPhaseOffset + phaseOffset);
+			}
+			if (triangleActive) {
+				_triangleBuffer[i] = _triangle.nextFromPhasor(_oversamplePhasor, _trianglePhaseOffset + phaseOffset);
+			}
+			if (sineActive) {
+				_sineBuffer[i] = _sine.nextFromPhasor(_oversamplePhasor, sineFeedbackOffset + _sinePhaseOffset + phaseOffset);
+			}
+		}
+		if (squareActive) {
+			squareOut += oMix * amplitude * _squareDecimator.next(oversample, _squareBuffer);
+		}
+		if (sawActive) {
+			sawOut += oMix * amplitude * _sawDecimator.next(oversample, _sawBuffer);
+		}
+		if (triangleActive) {
+			triangleOut += oMix * amplitude * _triangleDecimator.next(oversample, _triangleBuffer);
+		}
+		if (sineActive) {
+			sineOut += oMix * amplitude * _sineDecimator.next(oversample, _sineBuffer);
+		}
 	}
-	if (outputs[MIX_OUTPUT].active || outputs[TRIANGLE_OUTPUT].active) {
-		mix += outputs[TRIANGLE_OUTPUT].value = amplitude * _triangleMix * _triangle.nextFromPhasor(_phasor, _trianglePhaseOffset + phaseOffset);
+	else {
+		for (int i = 0; i < oversample; ++i) {
+			_oversamplePhasor.advancePhase();
+		}
 	}
-	if (outputs[MIX_OUTPUT].active || outputs[SINE_OUTPUT].active) {
-		mix += outputs[SINE_OUTPUT].value = amplitude * _sineMix * _sine.nextFromPhasor(_phasor, sineFeedbackOffset + _sinePhaseOffset + phaseOffset);
-	}
-	if (outputs[MIX_OUTPUT].active) {
-		outputs[MIX_OUTPUT].value = mix;
-	}
+
+	outputs[SQUARE_OUTPUT].value = squareOut;
+	outputs[SAW_OUTPUT].value = sawOut;
+	outputs[TRIANGLE_OUTPUT].value = triangleOut;
+	outputs[SINE_OUTPUT].value = sineOut;
+	outputs[MIX_OUTPUT].value = squareOut + sawOut + triangleOut + sineOut;
 }
 
 float XCO::phaseOffset(Param& param, Input& input) {
@@ -140,15 +203,25 @@ float XCO::level(Param& param, Input& input) {
 }
 
 void XCO::setSampleRate(float sampleRate) {
+	_oversampleThreshold = 0.06f * sampleRate;
 	_phasor.setSampleRate(sampleRate);
+	_oversamplePhasor.setSampleRate(sampleRate);
 	_square.setSampleRate(sampleRate);
 	_saw.setSampleRate(sampleRate);
+	_squareDecimator.setParams(sampleRate, oversample);
+	_sawDecimator.setParams(sampleRate, oversample);
+	_triangleDecimator.setParams(sampleRate, oversample);
+	_sineDecimator.setParams(sampleRate, oversample);
 }
 
 void XCO::setFrequency(float frequency) {
-	_phasor.setFrequency(frequency);
-	_square.setFrequency(frequency);
-	_saw.setFrequency(frequency);
+	if (_frequency != frequency && frequency < 0.47f * _phasor._sampleRate) {
+		_frequency = frequency;
+		_phasor.setFrequency(_frequency);
+		_oversamplePhasor.setFrequency(_frequency / (float)oversample);
+		_square.setFrequency(_frequency);
+		_saw.setFrequency(_frequency);
+	}
 }
 
 struct XCOWidget : ModuleWidget {

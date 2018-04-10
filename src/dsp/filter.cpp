@@ -51,10 +51,10 @@ void LowPassFilter::setParams(float sampleRate, float cutoff, float q) {
 	if (_sampleRate == sampleRate && _cutoff == cutoff && _q == q) {
 		return;
 	}
-	// printf("\nLPF set param: sr=%f c=%f q=%f\n", _sampleRate, _cutoff, _q);
 	_sampleRate = sampleRate;
 	_cutoff = cutoff;
 	_q = q;
+	// printf("\nLPF set param: sr=%f c=%f q=%f\n", _sampleRate, _cutoff, _q);
 
 	float w0 = 2.0 * M_PI * _cutoff / _sampleRate;
 	float cosw0 = cosf(w0);
@@ -174,4 +174,23 @@ float MultipoleFilter::next(float sample) {
 		sample = _biquads[p].next(sample);
 	}
 	return sample;
+}
+
+
+void Decimator::setParams(float sampleRate, int oversample) {
+	_filter.setParams(
+		MultipoleFilter::LP_TYPE,
+		4,
+		oversample * sampleRate,
+		0.45f * sampleRate,
+		0
+	);
+}
+
+float Decimator::next(int n, const float* buf) {
+	float s = 0.0f;
+	for (int i = 0; i < n; ++i) {
+		s = _filter.next(buf[i]);
+	}
+	return s;
 }

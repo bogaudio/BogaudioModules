@@ -11,10 +11,11 @@ extern Model* modelTest;
 // #define SAW 1
 // #define SATSAW 1
 // #define TRIANGLE 1
-#define SAMPLED_TRIANGLE 1
+// #define SAMPLED_TRIANGLE 1
 // #define SINEBANK 1
 // #define OVERSAMPLING 1
 // #define OVERSAMPLED_BL 1
+#define ANTIALIASING 1
 // #define FM 1
 // #define PM 1
 // #define FEEDBACK_PM 1
@@ -48,6 +49,10 @@ extern Model* modelTest;
 #define OVERSAMPLEN 16
 #elif OVERSAMPLED_BL
 #include "dsp/oscillator.hpp"
+#include "dsp/filter.hpp"
+#elif ANTIALIASING
+#include "dsp/oscillator.hpp"
+#include "dsp/decimator.hpp" // rack
 #include "dsp/filter.hpp"
 #elif FM
 #include "dsp/oscillator.hpp"
@@ -125,10 +130,21 @@ struct Test : Module {
 	SawOscillator _saw2;
 	LowPassFilter _lpf;
 	LowPassFilter _lpf2;
+	rack::Decimator<OVERSAMPLEN, OVERSAMPLEN> _rackDecimator;
 #elif OVERSAMPLED_BL
 	BandLimitedSawOscillator _saw1;
 	BandLimitedSawOscillator _saw2;
 	LowPassFilter _lpf;
+#elif ANTIALIASING
+	#define OVERSAMPLEN 8
+	Phasor _phasor;
+	Phasor _oversampledPhasor;
+	BandLimitedSawOscillator _saw;
+	BandLimitedSquareOscillator _square;
+	bogaudio::dsp::Decimator _sawDecimator;
+	bogaudio::dsp::Decimator _squareDecimator;
+	rack::Decimator<OVERSAMPLEN, OVERSAMPLEN> _sawRackDecimator;
+	rack::Decimator<OVERSAMPLEN, OVERSAMPLEN> _squareRackDecimator;
 #elif FM
 	float _baseHz = 0.0f;
 	float _ratio = 0.0f;
@@ -186,6 +202,11 @@ struct Test : Module {
 	, _saw1(44100.0, 1000.0)
 	, _saw2(44100.0, 1000.0)
 	, _lpf(44100.0, 1000.0, 1.0)
+#elif ANTIALIASING
+	, _phasor(44100.0, 1000.0)
+	, _oversampledPhasor(44100.0, 1000.0)
+	, _saw(44100.0, 1000.0)
+	, _square(44100.0, 1000.0)
 #elif FM
 	, _modulator(44100.0, 1000.0)
 	, _carrier(44100.0, 1000.0)
@@ -276,13 +297,16 @@ struct Test : Module {
 				break;
 			}
 		}
+
+#elif OVERSAMPLED_BL
+		_saw2.setPhase(M_PI);
 #endif
 	}
 
 	virtual void onReset() override;
 	virtual void step() override;
-	float oscillatorPitch();
-	float oscillatorPitch2();
+	float oscillatorPitch(float max = 10000.0);
+	float oscillatorPitch2(float max = 10000.0);
 	float ratio2();
 	float index3();
 };

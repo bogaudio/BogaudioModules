@@ -246,7 +246,7 @@ struct BandLimitedSquareOscillator : BandLimitedSawOscillator {
 	)
 	: BandLimitedSawOscillator(sampleRate, frequency, quality, table)
 	{
-		setPulseWidth(0.05f);
+		setPulseWidth(0.5f);
 	}
 
 	void setPulseWidth(float pw);

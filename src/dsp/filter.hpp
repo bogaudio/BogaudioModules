@@ -83,17 +83,15 @@ struct ComplexBiquadFilter : BiquadFilter<float> {
 };
 
 struct LowPassFilter : Filter {
-	float _sampleRate;
-	float _cutoff;
-	float _q;
+	float _sampleRate = 1;
+	float _cutoff = 0.0f;
+	float _q = 0.0f;
 
 	BiquadFilter<float> _biquad;
 
-	LowPassFilter(float sampleRate, float cutoff, float q)
-	: _sampleRate(sampleRate)
-	, _cutoff(cutoff)
-	, _q(q)
-	{
+	LowPassFilter() {}
+	LowPassFilter(float sampleRate, float cutoff, float q) {
+		setParams(sampleRate, cutoff, q);
 	}
 
 	void setParams(float sampleRate, float cutoff, float q);
@@ -127,6 +125,18 @@ struct MultipoleFilter : Filter {
 		float ripple // FIXME: using this with more than two poles creates large gain, need compensation.
 	);
 	virtual float next(float sample) override;
+};
+
+struct Decimator {
+	MultipoleFilter _filter;
+
+	Decimator() {}
+	Decimator(float sampleRate, int oversample) {
+		setParams(sampleRate, oversample);
+	}
+
+	void setParams(float sampleRate, int oversample);
+	float next(int n, const float* buf);
 };
 
 } // namespace dsp

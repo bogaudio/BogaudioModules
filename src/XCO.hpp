@@ -1,6 +1,7 @@
 #pragma once
 
 #include "bogaudio.hpp"
+#include "dsp/filter.hpp"
 #include "dsp/oscillator.hpp"
 
 using namespace bogaudio::dsp;
@@ -66,7 +67,10 @@ struct XCO : Module {
 
 	const int modulationSteps = 100;
 	const float amplitude = 5.0f;
+	static constexpr int oversample = 8;
 	int _modulationStep = 0;
+	float _oversampleThreshold = 0.0f;
+	float _frequency = 0.0f;
 	float _baseVOct = 0.0f;
 	float _baseHz = 0.0f;
 	bool _slowMode = false;
@@ -84,14 +88,24 @@ struct XCO : Module {
 	SchmittTrigger _syncTrigger;
 
 	Phasor _phasor;
+	Phasor _oversamplePhasor;
 	BandLimitedSquareOscillator _square;
 	BandLimitedSawOscillator _saw;
 	TriangleOscillator _triangle;
 	SineTableOscillator _sine;
+	Decimator _squareDecimator;
+	Decimator _sawDecimator;
+	Decimator _triangleDecimator;
+	Decimator _sineDecimator;
+	float _squareBuffer[oversample];
+	float _sawBuffer[oversample];
+	float _triangleBuffer[oversample];
+	float _sineBuffer[oversample];
 
 	XCO()
 	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
 	, _phasor(0.0f, 1.0f)
+	, _oversamplePhasor(0.0f, 1.0f)
 	, _square(0.0f, 0.0f)
 	, _saw(0.0f, 0.0f)
 	, _triangle(0.0f, 0.0f)

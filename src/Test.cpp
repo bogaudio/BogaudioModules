@@ -5,7 +5,7 @@ void Test::onReset() {
 }
 
 void Test::step() {
-	if (!outputs[OUT_OUTPUT].active) {
+	if (!(outputs[OUT_OUTPUT].active || outputs[OUT2_OUTPUT].active)) {
 		return;
 	}
 
@@ -156,15 +156,15 @@ void Test::step() {
 
 	_saw2.setSampleRate(engineGetSampleRate());
 	_saw2.setQuality(quality);
-	if (oversample < 1) {
+	if (oversample < 2) {
 		_saw2.setFrequency(oscillatorPitch());
 		outputs[OUT2_OUTPUT].value = _saw2.next() * 5.0f;
 	}
 	else {
 		_saw2.setFrequency(oscillatorPitch() / (float)oversample);
 		_lpf.setParams(
-			engineGetSampleRate(),
-			engineGetSampleRate() / 4.0f,
+			oversample * engineGetSampleRate(),
+			0.95f * engineGetSampleRate(),
 			0.03
 		);
 		float s = 0.0f;
@@ -173,6 +173,82 @@ void Test::step() {
 		}
 		outputs[OUT2_OUTPUT].value = s * 5.0f;
 	}
+
+#elif ANTIALIASING
+	const int quality = 12;
+	const float oversampleThreshold = 0.06f;
+	const float oversampleMixWidth = 100.0f;
+	float sampleRate = engineGetSampleRate();
+	float frequency = oscillatorPitch(15000.0);
+
+	float otf = oversampleThreshold * sampleRate;
+	float mix, oMix;
+	if (frequency > otf) {
+		if (frequency > otf + oversampleMixWidth) {
+			mix = 0.0f;
+			oMix = 1.0f;
+		}
+		else {
+			oMix = (frequency - otf) / oversampleMixWidth;
+			mix = 1.0f - oMix;
+		}
+	}
+	else {
+		mix = 1.0f;
+		oMix = 0.0f;
+	}
+	assert(mix >= 0.0f);
+	assert(mix <= 1.0f);
+	assert(oMix >= 0.0f);
+	assert(oMix <= 1.0f);
+
+	_phasor.setSampleRate(sampleRate);
+	_phasor.setFrequency(frequency);
+	_oversampledPhasor.setSampleRate(sampleRate);
+	_oversampledPhasor.setFrequency(frequency / (float)OVERSAMPLEN);
+	_saw.setSampleRate(sampleRate);
+	_saw.setQuality(quality);
+	_sawDecimator.setParams(sampleRate, OVERSAMPLEN);
+	_square.setSampleRate(sampleRate);
+	_square.setQuality(quality);
+	_squareDecimator.setParams(sampleRate, OVERSAMPLEN);
+
+	float out = 0.0f;
+	float out2 = 0.0f;
+	_phasor.advancePhase();
+	if (mix > 0.0f) {
+		_saw.setFrequency(frequency);
+		_square.setFrequency(frequency);
+		out += _saw.nextFromPhasor(_phasor) * mix;
+		out2 += _square.nextFromPhasor(_phasor) * mix;
+	}
+
+	if (oMix > 0.0f) {
+		float sawBuf[OVERSAMPLEN] {};
+		float squareBuf[OVERSAMPLEN] {};
+		_saw.setFrequency(frequency / (float)OVERSAMPLEN);
+		_square.setFrequency(frequency / (float)OVERSAMPLEN);
+
+		for (int i = 0; i < OVERSAMPLEN; ++i) {
+			_oversampledPhasor.advancePhase();
+			sawBuf[i] = _saw.nextFromPhasor(_oversampledPhasor);
+			squareBuf[i] = _square.nextFromPhasor(_oversampledPhasor);
+		}
+
+		out += _sawDecimator.next(OVERSAMPLEN, sawBuf) * oMix;
+		// out += _sawRackDecimator.process(sawBuf) * oMix;
+
+		out2 += _squareDecimator.next(OVERSAMPLEN, squareBuf) * oMix;
+		// out2 += _squareRackDecimator.process(squareBuf) * oMix;
+	}
+	else {
+		for (int i = 0; i < OVERSAMPLEN; ++i) {
+			_oversampledPhasor.advancePhase();
+		}
+	}
+
+	outputs[OUT_OUTPUT].value = out * 5.0f;
+	outputs[OUT2_OUTPUT].value = out2 * 5.0f;
 
 #elif FM
 	const float amplitude = 5.0f;
@@ -261,18 +337,18 @@ void Test::step() {
 #endif
 }
 
-float Test::oscillatorPitch() {
+float Test::oscillatorPitch(float max) {
 	if (inputs[CV1_INPUT].active) {
 		return cvToFrequency(inputs[CV1_INPUT].value);
 	}
-	return 10000.0 * powf(params[PARAM1_PARAM].value, 2.0);
+	return max * powf(params[PARAM1_PARAM].value, 2.0);
 }
 
-float Test::oscillatorPitch2() {
+float Test::oscillatorPitch2(float max) {
 	if (inputs[CV2_INPUT].active) {
 		return cvToFrequency(inputs[CV2_INPUT].value);
 	}
-	return 10000.0 * powf(params[PARAM2_PARAM].value, 2.0);
+	return max * powf(params[PARAM2_PARAM].value, 2.0);
 }
 
 float Test::ratio2() {
