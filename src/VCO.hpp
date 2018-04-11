@@ -56,7 +56,6 @@ struct VCO : Module {
 	SchmittTrigger _syncTrigger;
 
 	Phasor _phasor;
-	Phasor _oversamplePhasor;
 	BandLimitedSquareOscillator _square;
 	BandLimitedSawOscillator _saw;
 	TriangleOscillator _triangle;
@@ -71,7 +70,6 @@ struct VCO : Module {
 	VCO()
 	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
 	, _phasor(0.0f, 1.0f)
-	, _oversamplePhasor(0.0f, 1.0f)
 	, _square(0.0f, 0.0f)
 	, _saw(0.0f, 0.0f)
 	, _triangle(0.0f, 0.0f)

@@ -79,6 +79,19 @@ void Phasor::advancePhase() {
 	assert(_phase < maxPhase);
 }
 
+void Phasor::advancePhase(int n) {
+	assert(n > 0);
+	_phase += n * _delta;
+	if (_phase >= maxPhase) {
+		_phase -= maxPhase;
+	}
+	if (_phase < 0.0f) {
+		_phase += maxPhase;
+	}
+	assert(_phase >= 0.0f);
+	assert(_phase < maxPhase);
+}
+
 void Phasor::advancePhasePositive() {
 	assert(_delta >= 0.0f);
 	_phase += _delta;
@@ -161,7 +174,7 @@ void SaturatingSawOscillator::setSaturation(float saturation) {
 float SaturatingSawOscillator::_nextForPhase(float phase) {
 	float sample = SawOscillator::_nextForPhase(phase);
 	if (_saturation >= 0.1f) {
-		sample = tanhf(-sample * _saturation * M_PI) * _saturationNormalization;
+		sample = tanhf(sample * _saturation * M_PI) * _saturationNormalization;
 	}
 	return sample;
 }

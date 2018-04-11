@@ -87,6 +87,7 @@ struct Phasor : OscillatorGenerator {
 	float nextForPhase(float phase); // local phase, not radians.
 	virtual void _update();
 	void advancePhase();
+	void advancePhase(int n);
 	void advancePhasePositive();
 	virtual float _next() override final;
 	virtual float _nextForPhase(float phase);

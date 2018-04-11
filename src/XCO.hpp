@@ -76,6 +76,7 @@ struct XCO : Module {
 	bool _slowMode = false;
 	float _fmDepth = 0.0f;
 	bool _fmLinearMode = false;
+	float _triangleSampleWidth = 0.0f;
 	float _sineFeedback = 0.0f;
 	float _squarePhaseOffset = 0.0f;
 	float _sawPhaseOffset = 0.0f;
@@ -88,7 +89,6 @@ struct XCO : Module {
 	SchmittTrigger _syncTrigger;
 
 	Phasor _phasor;
-	Phasor _oversamplePhasor;
 	BandLimitedSquareOscillator _square;
 	BandLimitedSawOscillator _saw;
 	TriangleOscillator _triangle;
@@ -105,7 +105,6 @@ struct XCO : Module {
 	XCO()
 	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
 	, _phasor(0.0f, 1.0f)
-	, _oversamplePhasor(0.0f, 1.0f)
 	, _square(0.0f, 0.0f)
 	, _saw(0.0f, 0.0f)
 	, _triangle(0.0f, 0.0f)

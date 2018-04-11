@@ -35,7 +35,7 @@ void VCO::step() {
 			_baseVOct += clamp(inputs[PITCH_INPUT].value, -5.0f, 5.0f);
 		}
 		if (_slowMode) {
-			_baseVOct -= 5.0f;
+			_baseVOct -= 7.0f;
 		}
 		_baseHz = cvToFrequency(_baseVOct);
 
@@ -88,29 +88,17 @@ void VCO::step() {
 	float squareOut = 0.0f;
 	float sawOut = 0.0f;
 	float triangleOut = 0.0f;
-	_phasor.advancePhase();
-	if (mix > 0.0f) {
-		if (outputs[SQUARE_OUTPUT].active) {
-			squareOut += mix * amplitude * _square.nextFromPhasor(_phasor, phaseOffset);
-		}
-		if (outputs[SAW_OUTPUT].active) {
-			sawOut += mix * amplitude * _saw.nextFromPhasor(_phasor, phaseOffset);
-		}
-		if (outputs[TRIANGLE_OUTPUT].active) {
-			triangleOut += mix * amplitude * _triangle.nextFromPhasor(_phasor, phaseOffset);
-		}
-	}
 	if (oMix > 0.0f) {
 		for (int i = 0; i < oversample; ++i) {
-			_oversamplePhasor.advancePhase();
+			_phasor.advancePhase();
 			if (outputs[SQUARE_OUTPUT].active) {
-				_squareBuffer[i] = _square.nextFromPhasor(_oversamplePhasor, phaseOffset);
+				_squareBuffer[i] = _square.nextFromPhasor(_phasor, phaseOffset);
 			}
 			if (outputs[SAW_OUTPUT].active) {
-				_sawBuffer[i] = _saw.nextFromPhasor(_oversamplePhasor, phaseOffset);
+				_sawBuffer[i] = _saw.nextFromPhasor(_phasor, phaseOffset);
 			}
 			if (outputs[TRIANGLE_OUTPUT].active) {
-				_triangleBuffer[i] = _saw.nextFromPhasor(_oversamplePhasor, phaseOffset);
+				_triangleBuffer[i] = _triangle.nextFromPhasor(_phasor, phaseOffset);
 			}
 		}
 		if (outputs[SQUARE_OUTPUT].active) {
@@ -124,8 +112,17 @@ void VCO::step() {
 		}
 	}
 	else {
-		for (int i = 0; i < oversample; ++i) {
-			_oversamplePhasor.advancePhase();
+		_phasor.advancePhase(oversample);
+	}
+	if (mix > 0.0f) {
+		if (outputs[SQUARE_OUTPUT].active) {
+			squareOut += mix * amplitude * _square.nextFromPhasor(_phasor, phaseOffset);
+		}
+		if (outputs[SAW_OUTPUT].active) {
+			sawOut += mix * amplitude * _saw.nextFromPhasor(_phasor, phaseOffset);
+		}
+		if (outputs[TRIANGLE_OUTPUT].active) {
+			triangleOut += mix * amplitude * _triangle.nextFromPhasor(_phasor, phaseOffset);
 		}
 	}
 
@@ -138,7 +135,6 @@ void VCO::step() {
 void VCO::setSampleRate(float sampleRate) {
 	_oversampleThreshold = 0.06f * sampleRate;
 	_phasor.setSampleRate(sampleRate);
-	_oversamplePhasor.setSampleRate(sampleRate);
 	_square.setSampleRate(sampleRate);
 	_saw.setSampleRate(sampleRate);
 	_squareDecimator.setParams(sampleRate, oversample);
@@ -149,8 +145,7 @@ void VCO::setSampleRate(float sampleRate) {
 void VCO::setFrequency(float frequency) {
 	if (_frequency != frequency && frequency < 0.47f * _phasor._sampleRate) {
 		_frequency = frequency;
-		_phasor.setFrequency(_frequency);
-		_oversamplePhasor.setFrequency(_frequency / (float)oversample);
+		_phasor.setFrequency(_frequency / (float)oversample);
 		_square.setFrequency(_frequency);
 		_saw.setFrequency(_frequency);
 	}
