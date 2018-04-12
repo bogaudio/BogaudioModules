@@ -68,13 +68,11 @@ struct ShaperWidget : ModuleWidget {
 		addChild(ModuleLightWidget::create<TinyLight<GreenLight>>(offLightPosition, module, Shaper::OFF_LIGHT));
 	}
 
-	virtual Menu* createContextMenu() override {
+	virtual void appendContextMenu(Menu* menu) override {
 		Shaper* shaper = dynamic_cast<Shaper*>(module);
 		assert(shaper);
-		Menu* menu = ModuleWidget::createContextMenu();
 		menu->addChild(new MenuLabel());
 		menu->addChild(new TriggerOnLoadMenuItem(shaper, "Resume Loop on Load"));
-		return menu;
 	}
 };
 

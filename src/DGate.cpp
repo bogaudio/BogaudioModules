@@ -113,13 +113,11 @@ struct DGateWidget : ModuleWidget {
 		addChild(ModuleLightWidget::create<TinyLight<GreenLight>>(gateLightPosition, module, DGate::GATE_LIGHT));
 	}
 
-	virtual Menu* createContextMenu() override {
+	virtual void appendContextMenu(Menu* menu) override {
 	  DGate* dgate = dynamic_cast<DGate*>(module);
 		assert(dgate);
-		Menu* menu = ModuleWidget::createContextMenu();
 		menu->addChild(new MenuLabel());
 		menu->addChild(new TriggerOnLoadMenuItem(dgate, "Resume Loop on Load"));
-		return menu;
 	}
 };
 

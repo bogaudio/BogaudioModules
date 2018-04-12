@@ -92,13 +92,11 @@ struct DADSRHWidget : ModuleWidget {
 		addChild(ModuleLightWidget::create<TinyLight<GreenLight>>(releaseShape3LightPosition, module, DADSRH::RELEASE_SHAPE3_LIGHT));
 	}
 
-	virtual Menu* createContextMenu() override {
+	virtual void appendContextMenu(Menu* menu) override {
 		DADSRH* dadsrh = dynamic_cast<DADSRH*>(module);
 		assert(dadsrh);
-		Menu* menu = ModuleWidget::createContextMenu();
 		menu->addChild(new MenuLabel());
 		menu->addChild(new TriggerOnLoadMenuItem(dadsrh, "Resume Loop on Load"));
-		return menu;
 	}
 };
 

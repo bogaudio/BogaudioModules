@@ -68,13 +68,11 @@ struct ManualWidget : ModuleWidget {
 		addOutput(Port::create<Port24>(out8OutputPosition, Port::OUTPUT, module, Manual::OUT8_OUTPUT));
 	}
 
-	virtual Menu* createContextMenu() override {
+	virtual void appendContextMenu(Menu* menu) override {
 		Manual* manual = dynamic_cast<Manual*>(module);
 		assert(manual);
-		Menu* menu = ModuleWidget::createContextMenu();
 		menu->addChild(new MenuLabel());
 		menu->addChild(new TriggerOnLoadMenuItem(manual, "Trigger on Load"));
-		return menu;
 	}
 };
 
