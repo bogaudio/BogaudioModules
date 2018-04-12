@@ -121,7 +121,7 @@ void Analyzer::step() {
 		resetChannels();
 	}
 
-	Quality quality = ((int)params[QUALITY_PARAM].value) == 2 ? QUALITY_HIGH : QUALITY_GOOD;
+	Quality quality = params[QUALITY_PARAM].value > 1.5 ? QUALITY_HIGH : QUALITY_GOOD;
 	if (_quality != quality) {
 		_quality = quality;
 		resetChannels();
@@ -495,7 +495,11 @@ struct AnalyzerWidget : ModuleWidget {
 		addParam(ParamWidget::create<OneTenKnob>(rangeParamPosition, module, Analyzer::RANGE_PARAM, 0.1, 1.0, 0.5));
 		addParam(ParamWidget::create<Knob38>(smoothParamPosition, module, Analyzer::SMOOTH_PARAM, 0.0, 1.0, 0.5));
 		addParam(ParamWidget::create<StatefulButton9>(qualityParamPosition, module, Analyzer::QUALITY_PARAM, 1.0, 2.0, 1.0));
-		addParam(ParamWidget::create<StatefulButton9>(powerParamPosition, module, Analyzer::POWER_PARAM, 0.0, 1.0, 1.0));
+		{
+			auto w = ParamWidget::create<StatefulButton9>(powerParamPosition, module, Analyzer::POWER_PARAM, 0.0, 1.0, 1.0);
+			w->randomizable = false;
+			addParam(w);
+		}
 
 		addInput(Port::create<Port24>(signalaInputPosition, Port::INPUT, module, Analyzer::SIGNALA_INPUT));
 		addInput(Port::create<Port24>(signalbInputPosition, Port::INPUT, module, Analyzer::SIGNALB_INPUT));
