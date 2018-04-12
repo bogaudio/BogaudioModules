@@ -246,7 +246,7 @@
   </g>
   <use xlink:href="#knobguide-frequency" transform="translate(20 25)" />
 
-  <text font-size="6pt" letter-spacing="1px" transform="translate(32 135)">0V = C4 = 261.6HZ</text>
+  <text font-size="6pt" letter-spacing="1px" transform="translate(30 135)">0V = C4 = 261.63HZ</text>
 
   <!-- <rect width="100" height="7" fill="#0f0" transform="translate(10 136)" /> -->
 

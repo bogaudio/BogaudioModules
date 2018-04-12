@@ -47,7 +47,7 @@
       </g>
     </symbol>
 
-    <symbol id="knobguide-frequency" viewBox="0 0 128px 128px">
+    <symbol id="knobguide-frequency-lfo" viewBox="0 0 128px 128px">
       <g transform="translate(64 64)">
         <g transform="rotate(-225.08) translate(34 0)">
           <polyline points="0,0 5,0" stroke-width="1" stroke="#333" transform="translate(3 0)" />
@@ -224,7 +224,7 @@
     <!-- <polyline points="54,54 54,354" stroke="#0f0" stroke-width="1" fill="none" /> -->
     <use id="FREQUENCY_PARAM" xlink:href="#knob-large" transform="translate(20 20)" />
   </g>
-  <use xlink:href="#knobguide-frequency" transform="translate(11 15)" />
+  <use xlink:href="#knobguide-frequency-lfo" transform="translate(11 15)" />
 
   <!-- <rect width="20" height="10" fill="#0f0" transform="translate(20 130)" /> -->
   <!-- <rect width="20" height="10" fill="#0f0" transform="translate(108 130)" /> -->

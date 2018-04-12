@@ -2,6 +2,7 @@
 
 #include "bogaudio.hpp"
 #include "dsp/envelope.hpp"
+#include "dsp/filter.hpp"
 #include "dsp/oscillator.hpp"
 
 using namespace bogaudio::dsp;
@@ -50,17 +51,20 @@ struct FMOp : Module {
 
 	const float amplitude = 5.0f;
 	const int modulationSteps = 100;
+	static constexpr int oversample = 8;
 	int _steps = 0;
-	float _baseHZ = 0.0f;
 	float _feedback = 0.0f;
 	float _depth = 0.0f;
 	float _level = 0.0f;
 	bool _envelopeOn = false;
 	bool _levelEnvelopeOn = false;
 	bool _feedbackEnvelopeOn = false;
+	float _maxFrequency = 0.0f;
+	float _buffer[oversample];
 	ADSR _envelope;
 	Phasor _phasor;
 	SineTableOscillator _sineTable;
+	Decimator _decimator;
 	SchmittTrigger _gateTrigger;
 
 	FMOp()
@@ -70,6 +74,7 @@ struct FMOp : Module {
 	, _sineTable(engineGetSampleRate(), 0.0f)
 	{
 		onReset();
+		onSampleRateChange();
 	}
 
 	virtual void onReset() override;

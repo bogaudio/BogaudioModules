@@ -43,7 +43,11 @@ void EightFO::step() {
 		else {
 			frequency -= 4.0f;
 		}
-		_phasor.setFrequency(cvToFrequency(frequency));
+		frequency = cvToFrequency(frequency);
+		if (frequency > 2000.0f) {
+			frequency = 2000.0f;
+		}
+		_phasor.setFrequency(frequency);
 
 		_wave = (Wave)params[WAVE_PARAM].value;
 		if (_wave == SQUARE_WAVE) {

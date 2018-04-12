@@ -10,9 +10,12 @@ void FMOp::onReset() {
 
 void FMOp::onSampleRateChange() {
 	_steps = modulationSteps;
-	_envelope.setSampleRate(engineGetSampleRate());
-	_phasor.setSampleRate(engineGetSampleRate());
-	_sineTable.setSampleRate(engineGetSampleRate());
+	float sampleRate = engineGetSampleRate();
+	_envelope.setSampleRate(sampleRate);
+	_phasor.setSampleRate(sampleRate);
+	_sineTable.setSampleRate(sampleRate);
+	_decimator.setParams(sampleRate, oversample);
+	_maxFrequency = 0.47f * sampleRate;
 }
 
 void FMOp::step() {
@@ -45,10 +48,12 @@ void FMOp::step() {
 			ratio *= 9.0f;
 			ratio += 1.0f;
 		}
-		_baseHZ = pitchIn;
-		_baseHZ += params[FINE_PARAM].value;
-		_baseHZ = cvToFrequency(_baseHZ);
-		_baseHZ *= ratio;
+		float frequency = pitchIn;
+		frequency += params[FINE_PARAM].value;
+		frequency = cvToFrequency(frequency);
+		frequency *= ratio;
+		frequency = clamp(frequency, -_maxFrequency, _maxFrequency);
+		_phasor.setFrequency(frequency / (float)oversample);
 
 		bool levelEnvelopeOn = params[ENV_TO_LEVEL_PARAM].value > 0.5f;
 		bool feedbackEnvelopeOn = params[ENV_TO_FEEDBACK_PARAM].value > 0.5f;
@@ -100,12 +105,16 @@ void FMOp::step() {
 		feedback *= envelope;
 	}
 
-	_phasor.setFrequency(_baseHZ);
-	float offset = feedback * _phasor.next();
+	float offset = feedback * _phasor._phase;
 	if (inputs[FM_INPUT].active) {
 		offset += inputs[FM_INPUT].value * _depth * 2.0f;
 	}
-	float out = _sineTable.nextFromPhasor(_phasor, Phasor::radiansToPhase(offset));
+	offset = Phasor::radiansToPhase(offset);
+	for (int i = 0; i < oversample; ++i) {
+		_phasor.advancePhase();
+		_buffer[i] = _sineTable.nextFromPhasor(_phasor, offset);
+	}
+	float out = _decimator.next(oversample, _buffer);
 	out *= _level;
 	if (_levelEnvelopeOn) {
 		out *= envelope;

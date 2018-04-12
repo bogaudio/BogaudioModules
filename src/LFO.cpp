@@ -40,7 +40,11 @@ void LFO::step() {
 		else {
 			frequency -= 4.0f;
 		}
-		_phasor.setFrequency(cvToFrequency(frequency));
+		frequency = cvToFrequency(frequency);
+		if (frequency > 2000.0f) {
+			frequency = 2000.0f;
+		}
+		_phasor.setFrequency(frequency);
 
 		float pw = params[PW_PARAM].value;
 		if (inputs[PW_INPUT].active) {

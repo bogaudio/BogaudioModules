@@ -9,6 +9,7 @@ void Additator::onReset() {
 
 void Additator::onSampleRateChange() {
 	_oscillator.setSampleRate(engineGetSampleRate());
+	_maxFrequency = 0.47f * _oscillator._sampleRate;
 	_steps = modulationSteps;
 	_phase = PHASE_RESET;
 }
@@ -114,7 +115,7 @@ void Additator::step() {
 		if (inputs[PITCH_INPUT].active) {
 			frequency += clamp(inputs[PITCH_INPUT].value, -5.0f, 5.0f);
 		}
-		frequency = clamp(cvToFrequency(frequency), 20.0f, 20000.0f);
+		frequency = clamp(cvToFrequency(frequency), 20.0f, _maxFrequency);
 		_oscillator.setFrequency(frequency);
 
 		if (_syncTrigger.process(inputs[SYNC_INPUT].value)) {

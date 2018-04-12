@@ -78,6 +78,7 @@ struct Additator : Module {
 	float _balance = 0.0f;
 	float _filter = 0.0f;
 	Phase _phase = PHASE_RESET;
+	float _maxFrequency = 0.0f;
 	SineBankOscillator _oscillator;
 	SchmittTrigger _syncTrigger;
 
@@ -86,6 +87,7 @@ struct Additator : Module {
 	, _oscillator(engineGetSampleRate(), 1000.0, maxPartials)
 	{
 		onReset();
+		onSampleRateChange();
 	}
 
 	virtual void onReset() override;
