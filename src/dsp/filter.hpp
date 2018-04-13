@@ -83,14 +83,13 @@ struct ComplexBiquadFilter : BiquadFilter<float> {
 };
 
 struct LowPassFilter : Filter {
-	float _sampleRate = 1;
+	float _sampleRate = 0.0f;
 	float _cutoff = 0.0f;
 	float _q = 0.0f;
 
 	BiquadFilter<float> _biquad;
 
-	LowPassFilter() {}
-	LowPassFilter(float sampleRate, float cutoff, float q) {
+	LowPassFilter(float sampleRate = 1000.0f, float cutoff = 100.0f, float q = 0.001f) {
 		setParams(sampleRate, cutoff, q);
 	}
 
@@ -130,8 +129,7 @@ struct MultipoleFilter : Filter {
 struct Decimator {
 	MultipoleFilter _filter;
 
-	Decimator() {}
-	Decimator(float sampleRate, int oversample) {
+	Decimator(float sampleRate = 1000.0f, int oversample = 4) {
 		setParams(sampleRate, oversample);
 	}
 

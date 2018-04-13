@@ -67,12 +67,7 @@ struct FMOp : Module {
 	Decimator _decimator;
 	SchmittTrigger _gateTrigger;
 
-	FMOp()
-	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
-	, _envelope(engineGetSampleRate())
-	, _phasor(engineGetSampleRate(), 0.0f)
-	, _sineTable(engineGetSampleRate(), 0.0f)
-	{
+	FMOp() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 		onReset();
 		onSampleRateChange();
 	}

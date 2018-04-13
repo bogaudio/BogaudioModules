@@ -102,14 +102,7 @@ struct XCO : Module {
 	float _triangleBuffer[oversample];
 	float _sineBuffer[oversample];
 
-	XCO()
-	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
-	, _phasor(0.0f, 1.0f)
-	, _square(0.0f, 0.0f)
-	, _saw(0.0f, 0.0f)
-	, _triangle(0.0f, 0.0f)
-	, _sine(0.0f, 0.0f)
-	{
+	XCO() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 		onReset();
 		setSampleRate(engineGetSampleRate());
 		_saw.setQuality(12);

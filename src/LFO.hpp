@@ -73,15 +73,9 @@ struct LFO : Module {
 	bool _rampDownActive = false;
 	bool _squareActive = false;
 
-	LFO()
-	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
-	, _phasor(engineGetSampleRate(), 1.0f)
-	, _sine(0.0f, 0.0f)
-	, _triangle(0.0f, 0.0f)
-	, _ramp(0.0f, 0.0f)
-	, _square(0.0f, 0.0f)
-	{
+	LFO() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 		onReset();
+		onSampleRateChange();
 	}
 
 	virtual void onReset() override;

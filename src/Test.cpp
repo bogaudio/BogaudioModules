@@ -319,6 +319,7 @@ void Test::step() {
 	outputs[OUT_OUTPUT].value = _carrierOutput.nextFromPhasor(_carrier, Phasor::radiansToPhase(feedback)) * 5.0f;
 
 #elif EG
+	_envelope.setSampleRate(engineGetSampleRate());
 	_envelope.setAttack(params[PARAM1_PARAM].value);
 	_envelope.setDecay(params[PARAM2_PARAM].value);
 	_envelope.setSustain(params[PARAM3_PARAM].value);

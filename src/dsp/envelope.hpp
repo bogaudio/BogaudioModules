@@ -11,7 +11,7 @@ struct EnvelopeGenerator : Generator {
 	float _sampleRate;
 	float _sampleTime;
 
-	EnvelopeGenerator(float sampleRate)
+	EnvelopeGenerator(float sampleRate = 1000.0f)
 	: _sampleRate(sampleRate > 1.0 ? sampleRate : 1.0)
 	, _sampleTime(1.0f / _sampleRate)
 	{
@@ -40,7 +40,7 @@ struct ADSR : EnvelopeGenerator {
 	float _releaseLevel = 0.0f;
 	float _envelope = 0.0f;
 
-	ADSR(float sampleRate)
+	ADSR(float sampleRate = 1000.0f)
 	: EnvelopeGenerator(sampleRate)
 	{
 	}

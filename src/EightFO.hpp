@@ -124,15 +124,9 @@ struct EightFO : Module {
 	bool _phase1Active = false;
 	bool _phase0Active = false;
 
-	EightFO()
-	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
-	, _phasor(engineGetSampleRate(), 1.0f)
-	, _sine(0.0f, 0.0f)
-	, _triangle(0.0f, 0.0f)
-	, _ramp(0.0f, 0.0f)
-	, _square(0.0f, 0.0f)
-	{
+	EightFO() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 		onReset();
+		onSampleRateChange();
 	}
 
 	virtual void onReset() override;

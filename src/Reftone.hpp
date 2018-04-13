@@ -38,10 +38,8 @@ struct Reftone : Module {
 	float _frequency = 440.0;
 	SineOscillator _sine;
 
-	Reftone()
-	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
-	, _sine(engineGetSampleRate(), _frequency)
-	{
+	Reftone() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+		onSampleRateChange();
 	}
 
 	virtual void onSampleRateChange() override {
