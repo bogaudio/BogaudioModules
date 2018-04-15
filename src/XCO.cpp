@@ -131,7 +131,7 @@ void XCO::step() {
 	float sawOut = 0.0f;
 	float triangleOut = 0.0f;
 	float sineOut = 0.0f;
-	float sineFeedbackOffset = sineFeedback ? Phasor::radiansToPhase(_sineFeedback * _phasor._phase) : 0.0f;
+	float sineFeedbackOffset = sineFeedback ? Phasor::radiansToPhase(_sineFeedback * _sineFeedbackDelayedSample) : 0.0f;
 
 	if (squareOversample || sawOversample || triangleOversample || sineOversample) {
 		for (int i = 0; i < oversample; ++i) {
@@ -185,7 +185,7 @@ void XCO::step() {
 	outputs[SQUARE_OUTPUT].value = squareOut;
 	outputs[SAW_OUTPUT].value = sawOut;
 	outputs[TRIANGLE_OUTPUT].value = triangleOut;
-	outputs[SINE_OUTPUT].value = sineOut;
+	outputs[SINE_OUTPUT].value = _sineFeedbackDelayedSample = sineOut;
 	outputs[MIX_OUTPUT].value = squareOut + sawOut + triangleOut + sineOut;
 }
 

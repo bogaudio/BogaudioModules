@@ -15,10 +15,10 @@ extern Model* modelTest;
 // #define SINEBANK 1
 // #define OVERSAMPLING 1
 // #define OVERSAMPLED_BL 1
-#define ANTIALIASING 1
+// #define ANTIALIASING 1
 // #define FM 1
 // #define PM 1
-// #define FEEDBACK_PM 1
+#define FEEDBACK_PM 1
 // #define EG 1
 // #define TABLES 1
 
@@ -158,8 +158,7 @@ struct Test : Module {
 	SineTableOscillator _modulator;
 	SineTableOscillator _carrier;
 #elif FEEDBACK_PM
-	Phasor _carrier;
-	SineTableOscillator _carrierOutput;
+	SineTableOscillator _carrier;
 	float _feedbackSample = 0.0f;
 #elif EG
 	ADSR _envelope;

@@ -316,12 +316,12 @@
         <text font-size="6pt" letter-spacing="1px" transform="translate(1 40)">V/OCT</text>
       </g>
       <g transform="translate(34 0)">
-        <use id="GATE_INPUT" xlink:href="#input" transform="translate(3 5)" />
-        <text font-size="6pt" letter-spacing="1px" transform="translate(3 40)">GATE</text>
-      </g>
-      <g transform="translate(66 0)">
         <use id="FM_INPUT" xlink:href="#input" transform="translate(3 5)" />
         <text font-size="6pt" letter-spacing="1px" transform="translate(8.5 40)">FM</text>
+      </g>
+      <g transform="translate(66 0)">
+        <use id="GATE_INPUT" xlink:href="#input" transform="translate(3 5)" />
+        <text font-size="6pt" letter-spacing="1px" transform="translate(3 40)">GATE</text>
       </g>
       <g transform="translate(98 0)">
         <use id="AUDIO_OUTPUT" xlink:href="#output" transform="translate(3 5)" />

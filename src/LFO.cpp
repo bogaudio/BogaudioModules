@@ -77,7 +77,7 @@ void LFO::step() {
 		}
 	}
 
-	_phasor.next();
+	_phasor.advancePhase();
 	bool useSample = true;
 	++_sampleStep;
 	if (_sampleStep >= _sampleSteps) {

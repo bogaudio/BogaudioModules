@@ -92,7 +92,7 @@ void EightFO::step() {
 		_phase0Offset = phaseOffset(params[PHASE0_PARAM], inputs[PHASE0_INPUT], basePhase0Offset);
 	}
 
-	_phasor.next();
+	_phasor.advancePhase();
 	bool useSample = true;
 	++_sampleStep;
 	if (_sampleStep >= _sampleSteps) {

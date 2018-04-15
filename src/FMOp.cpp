@@ -105,7 +105,10 @@ void FMOp::step() {
 		feedback *= envelope;
 	}
 
-	float offset = feedback * _phasor._phase;
+	float offset = 0.0f;
+	if (feedback > 0.001f) {
+		offset = feedback * _feedbackDelayedSample;
+	}
 	if (inputs[FM_INPUT].active) {
 		offset += inputs[FM_INPUT].value * _depth * 2.0f;
 	}
@@ -119,7 +122,7 @@ void FMOp::step() {
 	if (_levelEnvelopeOn) {
 		out *= envelope;
 	}
-	outputs[AUDIO_OUTPUT].value = amplitude * out;
+	outputs[AUDIO_OUTPUT].value = _feedbackDelayedSample = amplitude * out;
 }
 
 struct FMOpWidget : ModuleWidget {
@@ -156,8 +159,8 @@ struct FMOpWidget : ModuleWidget {
 		auto levelInputPosition = Vec(79.0, 274.0);
 		auto sustainInputPosition = Vec(111.0, 274.0);
 		auto pitchInputPosition = Vec(15.0, 318.0);
-		auto gateInputPosition = Vec(47.0, 318.0);
-		auto fmInputPosition = Vec(79.0, 318.0);
+		auto fmInputPosition = Vec(47.0, 318.0);
+		auto gateInputPosition = Vec(79.0, 318.0);
 
 		auto audioOutputPosition = Vec(111.0, 318.0);
 

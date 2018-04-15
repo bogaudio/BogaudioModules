@@ -297,26 +297,12 @@ void Test::step() {
 #elif FEEDBACK_PM
 	_carrier.setSampleRate(engineGetSampleRate());
 	_carrier.setFrequency(oscillatorPitch());
-	float feedback = params[PARAM3_PARAM].value;
-	if (inputs[CV3_INPUT].active) {
-		feedback *= clamp(inputs[CV3_INPUT].value, 0.0f, 10.0f) / 10.0f;
+	float feedback = params[PARAM2_PARAM].value;
+	if (inputs[CV2_INPUT].active) {
+		feedback *= clamp(inputs[CV2_INPUT].value, 0.0f, 10.0f) / 10.0f;
 	}
-	// feedback *= 10.0f;
-
-	// no delay:
-	feedback *= _carrier.next();
-
-	// // 1 sample:
-	// feedback *= _carrier.current();
-	// _carrier.next();
-
-	// // 2 samples averaged:
-	// float feedbackSample = _carrier.current();
-	// _carrier.next();
-	// feedback *= (_feedbackSample + feedbackSample) / 2.0f;
-	// _feedbackSample = feedbackSample;
-
-	outputs[OUT_OUTPUT].value = _carrierOutput.nextFromPhasor(_carrier, Phasor::radiansToPhase(feedback)) * 5.0f;
+	_carrier.advancePhase();
+	outputs[OUT_OUTPUT].value = _feedbackSample = _carrier.nextFromPhasor(_carrier, Phasor::radiansToPhase(feedback * _feedbackSample)) * 5.0f;
 
 #elif EG
 	_envelope.setSampleRate(engineGetSampleRate());

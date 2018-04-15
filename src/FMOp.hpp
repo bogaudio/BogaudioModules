@@ -54,6 +54,7 @@ struct FMOp : Module {
 	static constexpr int oversample = 8;
 	int _steps = 0;
 	float _feedback = 0.0f;
+	float _feedbackDelayedSample = 0.0f;
 	float _depth = 0.0f;
 	float _level = 0.0f;
 	bool _envelopeOn = false;
