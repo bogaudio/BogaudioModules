@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdlib.h>
+#include <stdint.h>
 #include <math.h>
 #include <vector>
 
@@ -54,13 +55,16 @@ struct OscillatorGenerator : Oscillator, Generator {
 };
 
 struct Phasor : OscillatorGenerator {
-	static constexpr float maxPhase = 2.0f;
+	typedef uint32_t phase_t;
+	typedef int64_t phase_delta_t;
+	static constexpr phase_t maxPhase = UINT32_MAX;
+	static constexpr float twoPI = 2.0f * M_PI;
 	static constexpr float maxSampleWidth = 0.25f;
 
-	float _delta;
-	double _phase = 0.0;
+	phase_delta_t _delta;
+	phase_t _phase = 0;
 	float _sampleWidth = 0.0f;
-	float _samplePhase = 0.0f;
+	phase_t _samplePhase = 0;
 
 	Phasor(
 		float sampleRate = 1000.0f,
@@ -81,19 +85,18 @@ struct Phasor : OscillatorGenerator {
 		_update();
 	}
 
-	void setSampleWidth(float sw); // fraction of maxPhase.
+	void setSampleWidth(float sw);
 	void setPhase(float radians);
-	float nextFromPhasor(const Phasor& phasor, float offset = 0.0f); // offset is not radians, but local phase.
-	float nextForPhase(float phase); // local phase, not radians.
+	float nextFromPhasor(const Phasor& phasor, phase_delta_t offset = 0);
+	inline float nextForPhase(phase_t phase) { return _nextForPhase(phase); }
 	virtual void _update();
-	void advancePhase();
-	void advancePhase(int n);
-	void advancePhasePositive();
+	inline void advancePhase() { _phase += _delta; }
+	inline void advancePhase(int n) { assert(n > 0); _phase += n * _delta; }
 	virtual float _next() override final;
-	virtual float _nextForPhase(float phase);
+	virtual float _nextForPhase(phase_t phase);
 
-	inline static float radiansToPhase(float radians) { return radians / M_PI; }
-	inline static float phaseToRadians(float phase) { return phase * M_PI; }
+	inline static phase_delta_t radiansToPhase(float radians) { return (radians / twoPI) * maxPhase; }
+	inline static float phaseToRadians(phase_t phase) { return (phase / (float)maxPhase) * twoPI; }
 };
 
 struct TablePhasor : Phasor {
@@ -111,7 +114,7 @@ struct TablePhasor : Phasor {
 	{
 	}
 
-	virtual float _nextForPhase(float phase) override;
+	virtual float _nextForPhase(phase_t phase) override;
 };
 
 struct SineOscillator : OscillatorGenerator {
@@ -154,8 +157,6 @@ struct SineTableOscillator : TablePhasor {
 };
 
 struct SawOscillator : Phasor {
-	const float halfMaxPhase = 0.5f * maxPhase;
-
 	SawOscillator(
 		float sampleRate = 1000.0f,
 		float frequency = 100.0f
@@ -164,7 +165,7 @@ struct SawOscillator : Phasor {
 	{
 	}
 
-	virtual float _nextForPhase(float phase) override;
+	virtual float _nextForPhase(phase_t phase) override;
 };
 
 struct SaturatingSawOscillator : SawOscillator {
@@ -183,13 +184,13 @@ struct SaturatingSawOscillator : SawOscillator {
 
 	void setSaturation(float saturation);
 
-	virtual float _nextForPhase(float phase) override;
+	virtual float _nextForPhase(phase_t phase) override;
 };
 
 struct BandLimitedSawOscillator : SaturatingSawOscillator {
 	int _quality;
 	const Table& _table;
-	float _qd = 0.0f;
+	phase_delta_t _qd = 0;
 	float _halfTableLen;
 
 	BandLimitedSawOscillator(
@@ -209,14 +210,14 @@ struct BandLimitedSawOscillator : SaturatingSawOscillator {
 	void setQuality(int quality);
 
 	virtual void _update() override;
-	virtual float _nextForPhase(float phase) override;
+	virtual float _nextForPhase(phase_t phase) override;
 };
 
 struct SquareOscillator : Phasor {
 	const float minPulseWidth = 0.03f;
 	const float maxPulseWidth = 1.0f - minPulseWidth;
 	float _pulseWidthInput;
-	float _pulseWidth = 0.5;
+	phase_t _pulseWidth = maxPhase / 2;
 	bool positive = true;
 
 	SquareOscillator(
@@ -229,14 +230,14 @@ struct SquareOscillator : Phasor {
 
 	void setPulseWidth(float pw);
 
-	virtual float _nextForPhase(float phase) override;
+	virtual float _nextForPhase(phase_t phase) override;
 };
 
 struct BandLimitedSquareOscillator : BandLimitedSawOscillator {
 	const float minPulseWidth = 0.03f;
 	const float maxPulseWidth = 1.0f - minPulseWidth;
 	float _pulseWidthInput;
-	float _pulseWidth;
+	phase_delta_t _pulseWidth;
 	float _offset;
 
 	BandLimitedSquareOscillator(
@@ -252,13 +253,12 @@ struct BandLimitedSquareOscillator : BandLimitedSawOscillator {
 
 	void setPulseWidth(float pw);
 
-	virtual float _nextForPhase(float phase) override;
+	virtual float _nextForPhase(phase_t phase) override;
 };
 
 struct TriangleOscillator : Phasor {
-	const float quarterMaxPhase = 0.25f * maxPhase;
-	const float threeQuartersMaxPhase = 0.75f * maxPhase;
-	const float twiceMaxPhase = 2.0f * maxPhase;
+	const phase_t quarterMaxPhase = maxPhase * 0.25f;
+	const phase_t threeQuartersMaxPhase = maxPhase * 0.75f;
 
 	TriangleOscillator(
 		float sampleRate = 1000.0f,
@@ -268,7 +268,7 @@ struct TriangleOscillator : Phasor {
 	{
 	}
 
-	virtual float _nextForPhase(float phase) override;
+	virtual float _nextForPhase(phase_t phase) override;
 };
 
 struct SineBankOscillator : Oscillator {
@@ -323,7 +323,7 @@ struct SineBankOscillator : Oscillator {
 
 	virtual void _sampleRateChanged() override;
 	virtual void _frequencyChanged() override;
-	float next(float phaseOffset = 0.0f); // Phasor "phase", not radians.
+	float next(Phasor::phase_t phaseOffset = 0.0f);
 };
 
 } // namespace dsp

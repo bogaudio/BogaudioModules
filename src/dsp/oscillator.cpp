@@ -14,10 +14,10 @@ void Phasor::setSampleWidth(float sw) {
 	if (_sampleWidth != sw) {
 		_sampleWidth = sw;
 		if (_sampleWidth > 0.001f) {
-			_samplePhase = _sampleWidth * maxPhase;
+			_samplePhase = _sampleWidth * (float)maxPhase;
 		}
 		else {
-			_samplePhase = 0.0f;
+			_samplePhase = 0;
 		}
 	}
 }
@@ -26,104 +26,37 @@ void Phasor::setPhase(float radians) {
 	_phase = radiansToPhase(radians);
 }
 
-float Phasor::nextFromPhasor(const Phasor& phasor, float offset) {
-	float p = phasor._phase + offset;
-	while (p >= maxPhase) {
-		p -= maxPhase;
+float Phasor::nextFromPhasor(const Phasor& phasor, phase_delta_t offset) {
+	offset += phasor._phase;
+	if (_samplePhase > 0) {
+		offset -= offset % _samplePhase;
 	}
-	while (p < 0.0f) {
-		p += maxPhase;
-	}
-
-	if (_samplePhase > 0.0f) {
-		p -= fmodf(p, _samplePhase);
-	}
-	return _nextForPhase(p);
+	return _nextForPhase(offset);
 }
 
 void Phasor::_update() {
-	_delta = (_frequency / _sampleRate) * maxPhase;
-	if (_delta >= maxPhase) {
-		_delta -= maxPhase;
-		if (_delta >= maxPhase) {
-			_delta = fmodf(_delta, maxPhase);
-		}
-	}
-	else if (_delta < 0.0f) {
-		_delta += maxPhase;
-		if (_delta < 0.0f) {
-			_delta = maxPhase - fmodf(-_delta, maxPhase);
-		}
-	}
-}
-
-float Phasor::nextForPhase(float phase) {
-	while (phase >= maxPhase) {
-		phase -= maxPhase;
-	}
-	while (phase < 0.0f) {
-		phase += maxPhase;
-	}
-	return _nextForPhase(phase);
-}
-
-void Phasor::advancePhase() {
-	_phase += _delta;
-	if (_phase >= maxPhase) {
-		_phase -= maxPhase;
-	}
-	if (_phase < 0.0f) {
-		_phase += maxPhase;
-	}
-	assert(_phase >= 0.0f);
-	assert(_phase < maxPhase);
-}
-
-void Phasor::advancePhase(int n) {
-	assert(n > 0);
-	_phase += n * _delta;
-	if (_phase >= maxPhase) {
-		_phase -= maxPhase;
-	}
-	if (_phase < 0.0f) {
-		_phase += maxPhase;
-	}
-	assert(_phase >= 0.0f);
-	assert(_phase < maxPhase);
-}
-
-void Phasor::advancePhasePositive() {
-	assert(_delta >= 0.0f);
-	_phase += _delta;
-	if (_phase >= maxPhase) {
-		_phase -= maxPhase;
-	}
-	assert(_phase < maxPhase);
+	_delta = ((phase_delta_t)((_frequency / _sampleRate) * maxPhase)) % maxPhase;
 }
 
 float Phasor::_next() {
 	advancePhase();
-	if (_samplePhase > 0.0f) {
-		return _nextForPhase(_phase - fmodf(_phase, _samplePhase));
+	if (_samplePhase > 0) {
+		return _nextForPhase(_phase - (_phase % _samplePhase));
 	}
 	return _nextForPhase(_phase);
 }
 
-float Phasor::_nextForPhase(float phase) {
+float Phasor::_nextForPhase(phase_t phase) {
 	return phase;
 }
 
 
-float TablePhasor::_nextForPhase(float phase) {
-	while (phase >= maxPhase) {
-		phase -= maxPhase;
-	}
-	while (phase < 0.0f) {
-		phase += maxPhase;
-	}
-
-	float fi = phase * (_tableLength / 2);
+float TablePhasor::_nextForPhase(phase_t phase) {
+	float fi = (phase / (float)maxPhase) * _tableLength;
 	int i = (int)fi;
+	if (i >= _tableLength) {
+		i %= _tableLength;
+	}
 	float v1 = _table.value(i);
 	if (_tableLength >= 1024) {
 		return v1;
@@ -153,8 +86,8 @@ float SineOscillator::_next() {
 }
 
 
-float SawOscillator::_nextForPhase(float phase) {
-	return phase - halfMaxPhase;
+float SawOscillator::_nextForPhase(phase_t phase) {
+	return (phase / (float)maxPhase) * 2.0f - 1.0f;
 }
 
 
@@ -171,7 +104,7 @@ void SaturatingSawOscillator::setSaturation(float saturation) {
 	}
 }
 
-float SaturatingSawOscillator::_nextForPhase(float phase) {
+float SaturatingSawOscillator::_nextForPhase(phase_t phase) {
 	float sample = SawOscillator::_nextForPhase(phase);
 	if (_saturation >= 0.1f) {
 		sample = tanhf(sample * _saturation * M_PI) * _saturationNormalization;
@@ -194,15 +127,15 @@ void BandLimitedSawOscillator::_update() {
 	_qd = q * _delta;
 }
 
-float BandLimitedSawOscillator::_nextForPhase(float phase) {
+float BandLimitedSawOscillator::_nextForPhase(phase_t phase) {
 	float sample = SaturatingSawOscillator::_nextForPhase(phase);
 	if (phase > maxPhase - _qd) {
-		float i = (maxPhase - phase) / _qd;
+		float i = (maxPhase - phase) / (float)_qd;
 		i = (1.0f - i) * _halfTableLen;
 		sample -= _table.value((int)i);
 	}
 	else if (phase < _qd) {
-		float i = phase / _qd;
+		float i = phase / (float)_qd;
 		i *= _halfTableLen - 1;
 		i += _halfTableLen;
 		sample -= _table.value((int)i);
@@ -218,18 +151,15 @@ void SquareOscillator::setPulseWidth(float pw) {
 	_pulseWidthInput = pw;
 
 	if (pw >= maxPulseWidth) {
-		_pulseWidth = maxPulseWidth;
+		pw = maxPulseWidth;
 	}
 	else if (pw <= minPulseWidth) {
-		_pulseWidth = minPulseWidth;
+		pw = minPulseWidth;
 	}
-	else {
-		_pulseWidth = pw;
-	}
-	_pulseWidth *= maxPhase;
+	_pulseWidth = maxPhase * pw;
 }
 
-float SquareOscillator::_nextForPhase(float phase) {
+float SquareOscillator::_nextForPhase(phase_t phase) {
 	if (positive) {
 		if (phase >= _pulseWidth) {
 			positive = false;
@@ -252,44 +182,37 @@ void BandLimitedSquareOscillator::setPulseWidth(float pw) {
 	_pulseWidthInput = pw;
 
 	if (pw >= maxPulseWidth) {
-		_pulseWidth = maxPulseWidth;
+		pw = maxPulseWidth;
 	}
 	else if (pw <= minPulseWidth) {
-		_pulseWidth = minPulseWidth;
+		pw = minPulseWidth;
 	}
-	else {
-		_pulseWidth = pw;
-	}
-	_pulseWidth *= maxPhase;
+	_pulseWidth = maxPhase * pw;
 
-	if (_pulseWidth >= 1.0f) {
-		_offset = _pulseWidth - 1.0f;
+	if (pw > 0.5) {
+		_offset = 2.0f * pw - 1.0f;
 	}
 	else {
-		_offset = -(1.0f - _pulseWidth);
+		_offset = -(1.0f - 2.0f * pw);
 	}
 }
 
-float BandLimitedSquareOscillator::_nextForPhase(float phase) {
+float BandLimitedSquareOscillator::_nextForPhase(phase_t phase) {
 	float sample = -BandLimitedSawOscillator::_nextForPhase(phase);
-	phase -= _pulseWidth;
-	if (phase < 0.0f) {
-		phase += maxPhase;
-	}
-	sample += BandLimitedSawOscillator::_nextForPhase(phase);
+	sample += BandLimitedSawOscillator::_nextForPhase(phase - _pulseWidth);
 	return sample + _offset;
 }
 
 
-float TriangleOscillator::_nextForPhase(float phase) {
-	float p = maxPhase * phase;
+float TriangleOscillator::_nextForPhase(phase_t phase) {
+	float p = (phase / (float)maxPhase) * 4.0f;
 	if (phase < quarterMaxPhase) {
 		return p;
 	}
 	if (phase < threeQuartersMaxPhase) {
-		return maxPhase - p;
+		return 2.0f - p;
 	}
-	return p - twiceMaxPhase;
+	return p - 4.0f;
 }
 
 
@@ -346,10 +269,10 @@ void SineBankOscillator::_frequencyChanged() {
 	}
 }
 
-float SineBankOscillator::next(float phaseOffset) {
+float SineBankOscillator::next(Phasor::phase_t phaseOffset) {
 	float next = 0.0;
 	for (Partial& p : _partials) {
-		p.sine.advancePhasePositive();
+		p.sine.advancePhase();
 		if (p.frequency < _maxPartialFrequency && (p.amplitude > 0.001 || p.amplitude < -0.001 || p.amplitudeSteps > 0)) {
 			if (p.amplitudeSteps > 0) {
 				if (p.amplitudeSteps == 1) {

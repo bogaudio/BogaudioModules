@@ -109,15 +109,15 @@ void EightFO::step() {
 	updateOutput(useSample, outputs[PHASE0_OUTPUT], _phase0Offset, _phase0Sample, _phase0Active);
 }
 
-float EightFO::phaseOffset(Param& p, Input& i, float baseOffset) {
-	float o = p.value * Phasor::maxPhase;
+Phasor::phase_delta_t EightFO::phaseOffset(Param& p, Input& i, Phasor::phase_delta_t baseOffset) {
+	float o = p.value * Phasor::maxPhase / 2.0f;
 	if (i.active) {
 		o *= clamp(i.value / 5.0f, -1.0f, 1.0f);
 	}
 	return baseOffset - o;
 }
 
-void EightFO::updateOutput(bool useSample, Output& output, float& offset, float& sample, bool& active) {
+void EightFO::updateOutput(bool useSample, Output& output, Phasor::phase_delta_t& offset, float& sample, bool& active) {
 	if (output.active) {
 		if (useSample && active) {
 			output.value = sample;

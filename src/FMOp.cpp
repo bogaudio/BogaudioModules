@@ -112,10 +112,9 @@ void FMOp::step() {
 	if (inputs[FM_INPUT].active) {
 		offset += inputs[FM_INPUT].value * _depth * 2.0f;
 	}
-	offset = Phasor::radiansToPhase(offset);
 	for (int i = 0; i < oversample; ++i) {
 		_phasor.advancePhase();
-		_buffer[i] = _sineTable.nextFromPhasor(_phasor, offset);
+		_buffer[i] = _sineTable.nextFromPhasor(_phasor, Phasor::radiansToPhase(offset));
 	}
 	float out = _decimator.next(oversample, _buffer);
 	out *= _level;

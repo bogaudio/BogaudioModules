@@ -73,14 +73,14 @@ struct EightFO : Module {
 
 	const int modulationSteps = 100;
 	const float amplitude = 5.0f;
-	const float basePhase7Offset = Phasor::radiansToPhase(1.75f * M_PI);
-	const float basePhase6Offset = Phasor::radiansToPhase(1.5f * M_PI);
-	const float basePhase5Offset = Phasor::radiansToPhase(1.25f * M_PI);
-	const float basePhase4Offset = Phasor::radiansToPhase(M_PI);
-	const float basePhase3Offset = Phasor::radiansToPhase(0.75f * M_PI);
-	const float basePhase2Offset = Phasor::radiansToPhase(0.5f * M_PI);
-	const float basePhase1Offset = Phasor::radiansToPhase(0.25f * M_PI);
-	const float basePhase0Offset = Phasor::radiansToPhase(0.0f);
+	const Phasor::phase_delta_t basePhase7Offset = Phasor::radiansToPhase(1.75f * M_PI);
+	const Phasor::phase_delta_t basePhase6Offset = Phasor::radiansToPhase(1.5f * M_PI);
+	const Phasor::phase_delta_t basePhase5Offset = Phasor::radiansToPhase(1.25f * M_PI);
+	const Phasor::phase_delta_t basePhase4Offset = Phasor::radiansToPhase(M_PI);
+	const Phasor::phase_delta_t basePhase3Offset = Phasor::radiansToPhase(0.75f * M_PI);
+	const Phasor::phase_delta_t basePhase2Offset = Phasor::radiansToPhase(0.5f * M_PI);
+	const Phasor::phase_delta_t basePhase1Offset = Phasor::radiansToPhase(0.25f * M_PI);
+	const Phasor::phase_delta_t basePhase0Offset = Phasor::radiansToPhase(0.0f);
 
 	int _modulationStep = 0;
 	Wave _wave = NO_WAVE;
@@ -97,14 +97,14 @@ struct EightFO : Module {
 	SawOscillator _ramp;
 	SquareOscillator _square;
 
-	float _phase7Offset = 0.0f;
-	float _phase6Offset = 0.0f;
-	float _phase5Offset = 0.0f;
-	float _phase4Offset = 0.0f;
-	float _phase3Offset = 0.0f;
-	float _phase2Offset = 0.0f;
-	float _phase1Offset = 0.0f;
-	float _phase0Offset = 0.0f;
+	Phasor::phase_delta_t _phase7Offset = 0.0f;
+	Phasor::phase_delta_t _phase6Offset = 0.0f;
+	Phasor::phase_delta_t _phase5Offset = 0.0f;
+	Phasor::phase_delta_t _phase4Offset = 0.0f;
+	Phasor::phase_delta_t _phase3Offset = 0.0f;
+	Phasor::phase_delta_t _phase2Offset = 0.0f;
+	Phasor::phase_delta_t _phase1Offset = 0.0f;
+	Phasor::phase_delta_t _phase0Offset = 0.0f;
 
 	float _phase7Sample = 0.0f;
 	float _phase6Sample = 0.0f;
@@ -132,8 +132,8 @@ struct EightFO : Module {
 	virtual void onReset() override;
 	virtual void onSampleRateChange() override;
 	virtual void step() override;
-	float phaseOffset(Param& p, Input& i, float baseOffset);
-	void updateOutput(bool useSample, Output& output, float& offset, float& sample, bool& active);
+	Phasor::phase_delta_t phaseOffset(Param& p, Input& i, Phasor::phase_delta_t baseOffset);
+	void updateOutput(bool useSample, Output& output, Phasor::phase_delta_t& offset, float& sample, bool& active);
 };
 
 } // namespace bogaudio

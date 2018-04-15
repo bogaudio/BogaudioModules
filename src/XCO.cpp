@@ -84,7 +84,7 @@ void XCO::step() {
 	}
 
 	float frequency = _baseHz;
-	float phaseOffset = 0.0f;
+	Phasor::phase_delta_t phaseOffset = 0;
 	if (inputs[FM_INPUT].active && _fmDepth > 0.01f) {
 		float fm = inputs[FM_INPUT].value * _fmDepth;
 		if (_fmLinearMode) {
@@ -131,7 +131,7 @@ void XCO::step() {
 	float sawOut = 0.0f;
 	float triangleOut = 0.0f;
 	float sineOut = 0.0f;
-	float sineFeedbackOffset = sineFeedback ? Phasor::radiansToPhase(_sineFeedback * _sineFeedbackDelayedSample) : 0.0f;
+	Phasor::phase_delta_t sineFeedbackOffset = sineFeedback ? Phasor::radiansToPhase(_sineFeedback * _sineFeedbackDelayedSample) : 0.0f;
 
 	if (squareOversample || sawOversample || triangleOversample || sineOversample) {
 		for (int i = 0; i < oversample; ++i) {
@@ -189,12 +189,12 @@ void XCO::step() {
 	outputs[MIX_OUTPUT].value = squareOut + sawOut + triangleOut + sineOut;
 }
 
-float XCO::phaseOffset(Param& param, Input& input) {
+Phasor::phase_delta_t XCO::phaseOffset(Param& param, Input& input) {
 	float v = param.value;
 	if (input.active) {
 		v *= clamp(input.value / 5.0f, -1.0f, 1.0f);
 	}
-	return -v;
+	return -v * Phasor::maxPhase / 2.0f;
 }
 
 float XCO::level(Param& param, Input& input) {

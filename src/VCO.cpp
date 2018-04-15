@@ -56,7 +56,7 @@ void VCO::step() {
 	}
 
 	float frequency = _baseHz;
-	float phaseOffset = 0.0f;
+	Phasor::phase_delta_t phaseOffset = 0;
 	if (inputs[FM_INPUT].active && _fmDepth > 0.01f) {
 		float fm = inputs[FM_INPUT].value * _fmDepth;
 		if (_fmLinearMode) {

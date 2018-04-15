@@ -79,10 +79,10 @@ struct XCO : Module {
 	float _triangleSampleWidth = 0.0f;
 	float _sineFeedback = 0.0f;
 	float _sineFeedbackDelayedSample = 0.0f;
-	float _squarePhaseOffset = 0.0f;
-	float _sawPhaseOffset = 0.0f;
-	float _trianglePhaseOffset = 0.0f;
-	float _sinePhaseOffset = 0.0f;
+	Phasor::phase_delta_t _squarePhaseOffset = 0.0f;
+	Phasor::phase_delta_t _sawPhaseOffset = 0.0f;
+	Phasor::phase_delta_t _trianglePhaseOffset = 0.0f;
+	Phasor::phase_delta_t _sinePhaseOffset = 0.0f;
 	float _squareMix = 1.0f;
 	float _sawMix = 1.0f;
 	float _triangleMix = 1.0f;
@@ -113,7 +113,7 @@ struct XCO : Module {
 	virtual void onReset() override;
 	virtual void onSampleRateChange() override;
 	virtual void step() override;
-	float phaseOffset(Param& param, Input& input);
+	Phasor::phase_delta_t phaseOffset(Param& param, Input& input);
 	float level(Param& param, Input& input);
 	void setSampleRate(float sampleRate);
 	void setFrequency(float frequency);
