@@ -82,7 +82,10 @@ struct Additator : Module {
 	SineBankOscillator _oscillator;
 	SchmittTrigger _syncTrigger;
 
-	Additator() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	Additator()
+	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
+	, _oscillator(1000.0f, 100.0f, maxPartials)
+	{
 		onReset();
 		onSampleRateChange();
 	}

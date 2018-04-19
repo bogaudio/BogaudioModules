@@ -258,22 +258,28 @@
     <g transform="translate(4 0)">
       <!-- <polyline points="-50,0 100,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 19)" /> -->
       <text font-size="8pt" letter-spacing="2px" transform="translate(9 27) rotate(270)">FM</text>
-      <use id="FM_PARAM" xlink:href="#knob" transform="translate(20 0)" />
+      <use id="FM_DEPTH_PARAM" xlink:href="#knob" transform="translate(20 0)" />
     </g>
     <!-- <rect width="90" height="10" fill="#0f0" transform="translate(0 26)" /> -->
-    <g transform="translate(6 52)">
-      <g transform="translate(0 0)">
-        <!-- <rect width="62" height="47" stroke="#0f0" fill="none" transform="translate(0 0)" /> -->
-        <!-- <polyline points="0,23.5 100,23.5" stroke="#0f0" stroke-width="1" fill="none" /> -->
-        <!-- <polyline points="15,23.5 15,-123.5" stroke="#0f0" stroke-width="1" fill="none" /> -->
-        <rect width="30" height="47" rx="5" fill="#fafafa" />
-        <use id="FM_INPUT" xlink:href="#input" transform="translate(3 5)" />
-        <text font-size="6pt" letter-spacing="1px" transform="translate(9 40)">FM</text>
+    <g transform="translate(-19 52)">
+      <rect width="71" height="47" rx="5" fill="#fafafa" transform="translate(10 0)" />
+      <g transform="translate(10 0)">
+        <!-- <rect width="30" height="47" rx="5" fill="#fafafa" /> -->
+        <use id="FM_INPUT" xlink:href="#input" transform="translate(7 5)" />
+        <text font-size="6pt" letter-spacing="1px" transform="translate(11 40)">FM</text>
       </g>
-      <g transform="translate(47 9)">
-        <text font-size="5pt" letter-spacing="2px" transform="translate(-1 -1)">EXP</text>
-        <use id="FM_TYPE_PARAM" xlink:href="#switch" transform="translate(0 2)" />
-        <text font-size="5pt" letter-spacing="2px" transform="translate(0 34)">LIN</text>
+      <g transform="translate(47 0)">
+        <!-- <rect width="30" height="47" rx="5" fill="#fafafa" /> -->
+        <use id="FM_DEPTH_INPUT" xlink:href="#input" transform="translate(3 5)" />
+        <text font-size="6pt" letter-spacing="1px" transform="translate(0 40)">DEPTH</text>
+      </g>
+      <g transform="translate(82 0)">
+        <!-- <rect width="30" height="47" rx="5" fill="#00c" /> -->
+        <g transform="translate(8 9)">
+          <text font-size="5pt" letter-spacing="2px" transform="translate(-1 -1)">EXP</text>
+          <use id="FM_TYPE_PARAM" xlink:href="#switch" transform="translate(0 2)" />
+          <text font-size="5pt" letter-spacing="2px" transform="translate(0 34)">LIN</text>
+        </g>
       </g>
     </g>
   </g>
@@ -282,7 +288,7 @@
   <!-- <rect width="90" height="18" fill="#0f0" transform="translate(0 175)" /> -->
   <!-- <rect width="90" height="18" fill="#0f0" transform="translate(0 295)" /> -->
 
-  <rect width="191" height="47" rx="5" fill="#bbb" transform="translate(99 313)" />
+  <rect width="193" height="47" rx="5" fill="#bbb" transform="translate(97 313)" />
 
   <g transform="translate(140 30)">
     <rect width="30" height="330" rx="5" fill="#fafafa" />
@@ -443,16 +449,16 @@
 
   <!-- <rect width="30" height="10" fill="#0f0" transform="translate(0 303)" /> -->
   <g transform="translate(0 313)">
-    <rect width="70" height="47" rx="5" fill="#fafafa" transform="translate(10 0)" />
+    <rect width="71" height="47" rx="5" fill="#fafafa" transform="translate(10 0)" />
     <g transform="translate(10 0)">
       <!-- <rect width="30" height="47" rx="5" fill="#fafafa" /> -->
-      <use id="PITCH_INPUT" xlink:href="#input" transform="translate(4 5)" />
-      <text font-size="6pt" letter-spacing="1px" transform="translate(2 40)">V/OCT</text>
+      <use id="PITCH_INPUT" xlink:href="#input" transform="translate(7 5)" />
+      <text font-size="6pt" letter-spacing="1px" transform="translate(5 40)">V/OCT</text>
     </g>
-    <g transform="translate(50 0)">
+    <g transform="translate(47 0)">
       <!-- <rect width="30" height="47" rx="5" fill="#fafafa" /> -->
-      <use id="SYNC_INPUT" xlink:href="#input" transform="translate(2 5)" />
-      <text font-size="6pt" letter-spacing="2px" transform="translate(0 40)">SYNC</text>
+      <use id="SYNC_INPUT" xlink:href="#input" transform="translate(3 5)" />
+      <text font-size="6pt" letter-spacing="1px" transform="translate(3 40)">SYNC</text>
     </g>
     <g transform="translate(100 0)">
       <!-- <rect width="30" height="47" rx="5" fill="#bbb" transform="translate(0 0)" /> -->

@@ -78,17 +78,21 @@ void LFO::step() {
 	}
 
 	_phasor.advancePhase();
-	bool useSample = true;
-	++_sampleStep;
-	if (_sampleStep >= _sampleSteps) {
-		_sampleStep = 0;
-		useSample = false;
+	bool useSample = false;
+	if (_sampleSteps > 1) {
+		++_sampleStep;
+		if (_sampleStep >= _sampleSteps) {
+			_sampleStep = 0;
+		}
+		else {
+			useSample = true;
+		}
 	}
 	updateOutput(_sine, useSample, false, outputs[SINE_OUTPUT], _sineSample, _sineActive);
 	updateOutput(_triangle, useSample, false, outputs[TRIANGLE_OUTPUT], _triangleSample, _triangleActive);
 	updateOutput(_ramp, useSample, false, outputs[RAMP_UP_OUTPUT], _rampUpSample, _rampUpActive);
 	updateOutput(_ramp, useSample, true, outputs[RAMP_DOWN_OUTPUT], _rampDownSample, _rampDownActive);
-	updateOutput(_square, useSample, false, outputs[SQUARE_OUTPUT], _squareSample, _squareActive);
+	updateOutput(_square, false, false, outputs[SQUARE_OUTPUT], _squareSample, _squareActive);
 }
 
 void LFO::updateOutput(Phasor& wave, bool useSample, bool invert, Output& output, float& sample, bool& active) {
@@ -97,7 +101,7 @@ void LFO::updateOutput(Phasor& wave, bool useSample, bool invert, Output& output
 			output.value = sample;
 		}
 		else {
-			sample = wave.nextFromPhasor(_phasor) * amplitude * _scale + _offset;
+			sample = wave.nextFromPhasor(_phasor) * amplitude * _scale + (invert ? -_offset : _offset);
 			if (invert) {
 				sample = -sample;
 			}

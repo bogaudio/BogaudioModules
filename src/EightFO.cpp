@@ -58,6 +58,7 @@ void EightFO::step() {
 			pw = (pw + 1.0f) / 2.0f;
 			pw *= 1.0f - 2.0f * _square.minPulseWidth;
 			_square.setPulseWidth(pw);
+			_sampleSteps = 1;
 		}
 		else {
 			float sample = abs(params[SAMPLE_PWM_PARAM].value);
@@ -66,6 +67,7 @@ void EightFO::step() {
 			}
 			float maxSampleSteps = (_phasor._sampleRate / _phasor._frequency) / 4.0f;
 			_sampleSteps = clamp((int)(sample * maxSampleSteps), 1, (int)maxSampleSteps);
+			_square.setPulseWidth(SquareOscillator::defaultPulseWidth);
 		}
 
 		_offset = params[OFFSET_PARAM].value;
@@ -93,11 +95,15 @@ void EightFO::step() {
 	}
 
 	_phasor.advancePhase();
-	bool useSample = true;
-	++_sampleStep;
-	if (_sampleStep >= _sampleSteps) {
-		_sampleStep = 0;
-		useSample = false;
+	bool useSample = false;
+	if (_sampleSteps > 1) {
+		++_sampleStep;
+		if (_sampleStep >= _sampleSteps) {
+			_sampleStep = 0;
+		}
+		else {
+			useSample = true;
+		}
 	}
 	updateOutput(useSample, outputs[PHASE7_OUTPUT], _phase7Offset, _phase7Sample, _phase7Active);
 	updateOutput(useSample, outputs[PHASE6_OUTPUT], _phase6Offset, _phase6Sample, _phase6Active);
@@ -223,7 +229,7 @@ struct EightFOWidget : ModuleWidget {
 			k->snap = true;
 			k->minAngle = 0.0;
 			k->maxAngle = M_PI;
-			k->speed = 2.0;
+			k->speed = 3.0;
 			addParam(w);
 		}
 		addParam(ParamWidget::create<StatefulButton9>(slowParamPosition, module, EightFO::SLOW_PARAM, 0.0, 1.0, 0.0));

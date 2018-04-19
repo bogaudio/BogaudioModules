@@ -70,7 +70,10 @@ void XCO::step() {
 			_sineFeedback *= clamp(inputs[SINE_FEEDBACK_INPUT].value / 10.0f, 0.0f, 1.0f);
 		}
 
-		_fmDepth = params[FM_PARAM].value;
+		_fmDepth = params[FM_DEPTH_PARAM].value;
+		if (inputs[FM_DEPTH_INPUT].active) {
+			_fmDepth *= clamp(inputs[FM_DEPTH_INPUT].value / 10.0f, 0.0f, 1.0f);
+		}
 
 		_squarePhaseOffset = phaseOffset(params[SQUARE_PHASE_PARAM], inputs[SQUARE_PHASE_INPUT]);
 		_sawPhaseOffset = phaseOffset(params[SAW_PHASE_PARAM], inputs[SAW_PHASE_INPUT]);
@@ -170,23 +173,23 @@ void XCO::step() {
 	}
 
 	if (squareNormal) {
-		squareOut += mix * amplitude * _squareMix * _square.nextFromPhasor(_phasor, _squarePhaseOffset + phaseOffset);
+		squareOut += mix * amplitude * _square.nextFromPhasor(_phasor, _squarePhaseOffset + phaseOffset);
 	}
 	if (sawNormal) {
-		sawOut += mix * amplitude * _sawMix * _saw.nextFromPhasor(_phasor, _sawPhaseOffset + phaseOffset);
+		sawOut += mix * amplitude * _saw.nextFromPhasor(_phasor, _sawPhaseOffset + phaseOffset);
 	}
 	if (triangleNormal) {
-		triangleOut += mix * amplitude * _triangleMix * _triangle.nextFromPhasor(_phasor, _trianglePhaseOffset + phaseOffset);
+		triangleOut += mix * amplitude * _triangle.nextFromPhasor(_phasor, _trianglePhaseOffset + phaseOffset);
 	}
 	if (sineNormal) {
-		sineOut += amplitude * _sineMix * _sine.nextFromPhasor(_phasor, sineFeedbackOffset + _sinePhaseOffset + phaseOffset);
+		sineOut += amplitude * _sine.nextFromPhasor(_phasor, sineFeedbackOffset + _sinePhaseOffset + phaseOffset);
 	}
 
 	outputs[SQUARE_OUTPUT].value = squareOut;
 	outputs[SAW_OUTPUT].value = sawOut;
 	outputs[TRIANGLE_OUTPUT].value = triangleOut;
 	outputs[SINE_OUTPUT].value = _sineFeedbackDelayedSample = sineOut;
-	outputs[MIX_OUTPUT].value = squareOut + sawOut + triangleOut + sineOut;
+	outputs[MIX_OUTPUT].value = _squareMix * squareOut + _sawMix * sawOut + _triangleMix * triangleOut + _sineMix * sineOut;
 }
 
 Phasor::phase_delta_t XCO::phaseOffset(Param& param, Input& input) {
@@ -246,7 +249,7 @@ struct XCOWidget : ModuleWidget {
 		auto fineParamPosition = Vec(47.0, 153.0);
 		auto slowParamPosition = Vec(121.0, 157.2);
 		auto fmParamPosition = Vec(55.0, 194.0);
-		auto fmTypeParamPosition = Vec(83.5, 256.5);
+		auto fmTypeParamPosition = Vec(101.5, 256.5);
 		auto squarePwParamPosition = Vec(147.0, 60.0);
 		auto squarePhaseParamPosition = Vec(147.0, 148.0);
 		auto squareMixParamPosition = Vec(147.0, 237.0);
@@ -260,7 +263,8 @@ struct XCOWidget : ModuleWidget {
 		auto sinePhaseParamPosition = Vec(267.0, 148.0);
 		auto sineMixParamPosition = Vec(267.0, 237.0);
 
-		auto fmInputPosition = Vec(40.0, 251.0);
+		auto fmInputPosition = Vec(29.0, 251.0);
+		auto fmDepthInputPosition = Vec(62.0, 251.0);
 		auto squarePwInputPosition = Vec(143.0, 95.0);
 		auto squarePhaseInputPosition = Vec(143.0, 183.0);
 		auto squareMixInputPosition = Vec(143.0, 272.0);
@@ -273,8 +277,8 @@ struct XCOWidget : ModuleWidget {
 		auto sineFeedbackInputPosition = Vec(263.0, 95.0);
 		auto sinePhaseInputPosition = Vec(263.0, 183.0);
 		auto sineMixInputPosition = Vec(263.0, 272.0);
-		auto pitchInputPosition = Vec(14.0, 318.0);
-		auto syncInputPosition = Vec(52.0, 318.0);
+		auto pitchInputPosition = Vec(17.0, 318.0);
+		auto syncInputPosition = Vec(50.0, 318.0);
 
 		auto squareOutputPosition = Vec(143.0, 318.0);
 		auto sawOutputPosition = Vec(183.0, 318.0);
@@ -288,7 +292,7 @@ struct XCOWidget : ModuleWidget {
 		addParam(ParamWidget::create<Knob68>(frequencyParamPosition, module, XCO::FREQUENCY_PARAM, -3.0, 6.0, 0.0));
 		addParam(ParamWidget::create<Knob16>(fineParamPosition, module, XCO::FINE_PARAM, -1.0, 1.0, 0.0));
 		addParam(ParamWidget::create<StatefulButton9>(slowParamPosition, module, XCO::SLOW_PARAM, 0.0, 1.0, 0.0));
-		addParam(ParamWidget::create<Knob38>(fmParamPosition, module, XCO::FM_PARAM, 0.0, 1.0, 0.0));
+		addParam(ParamWidget::create<Knob38>(fmParamPosition, module, XCO::FM_DEPTH_PARAM, 0.0, 1.0, 0.0));
 		addParam(ParamWidget::create<SliderSwitch2State14>(fmTypeParamPosition, module, XCO::FM_TYPE_PARAM, 0.0, 1.0, 1.0));
 		addParam(ParamWidget::create<Knob16>(squarePwParamPosition, module, XCO::SQUARE_PW_PARAM, -0.97, 0.97, 0.0));
 		addParam(ParamWidget::create<Knob16>(squarePhaseParamPosition, module, XCO::SQUARE_PHASE_PARAM, -1.0, 1.0, 0.0));
@@ -304,6 +308,7 @@ struct XCOWidget : ModuleWidget {
 		addParam(ParamWidget::create<Knob16>(sineMixParamPosition, module, XCO::SINE_MIX_PARAM, 0.0, 1.0, 1.0));
 
 		addInput(Port::create<Port24>(fmInputPosition, Port::INPUT, module, XCO::FM_INPUT));
+		addInput(Port::create<Port24>(fmDepthInputPosition, Port::INPUT, module, XCO::FM_DEPTH_INPUT));
 		addInput(Port::create<Port24>(squarePwInputPosition, Port::INPUT, module, XCO::SQUARE_PW_INPUT));
 		addInput(Port::create<Port24>(squarePhaseInputPosition, Port::INPUT, module, XCO::SQUARE_PHASE_INPUT));
 		addInput(Port::create<Port24>(squareMixInputPosition, Port::INPUT, module, XCO::SQUARE_MIX_INPUT));

@@ -107,7 +107,7 @@ void FMOp::step() {
 
 	float offset = 0.0f;
 	if (feedback > 0.001f) {
-		offset = feedback * _feedbackDelayedSample;
+		offset = feedback * 2.0f * _feedbackDelayedSample;
 	}
 	if (inputs[FM_INPUT].active) {
 		offset += inputs[FM_INPUT].value * _depth * 2.0f;
