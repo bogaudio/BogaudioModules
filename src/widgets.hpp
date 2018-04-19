@@ -38,13 +38,19 @@ struct Port24 : SVGPort {
 	Port24();
 };
 
-struct SliderSwitch2State14 : SVGSwitch, ToggleSwitch {
+struct SliderSwitch : SVGSwitch, ToggleSwitch {
+	CircularShadow* shadow = NULL;
+	SliderSwitch();
+};
+
+struct SliderSwitch2State14 : SliderSwitch {
 	SliderSwitch2State14();
 };
 
 struct StatefulButton : ParamWidget, FramebufferWidget {
 	std::vector<std::shared_ptr<SVG>> _frames;
 	SVGWidget* _svgWidget; // deleted elsewhere.
+	CircularShadow* shadow = NULL;
 
 	StatefulButton(const char* offSVGPath, const char* onSVGPath);
 	void step() override;
