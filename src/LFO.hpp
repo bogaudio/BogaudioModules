@@ -2,6 +2,7 @@
 
 #include "bogaudio.hpp"
 #include "dsp/oscillator.hpp"
+#include "dsp/signal.hpp"
 
 using namespace bogaudio::dsp;
 
@@ -53,7 +54,7 @@ struct LFO : Module {
 	int _sampleStep = 0;
 	float _offset = 0.0f;
 	float _scale = 0.0f;
-	SchmittTrigger _resetTrigger;
+	PositiveZeroCrossing _resetTrigger;
 
 	Phasor _phasor;
 	SineTableOscillator _sine;

@@ -118,9 +118,6 @@ void Additator::step() {
 		frequency = clamp(cvToFrequency(frequency), 20.0f, _maxFrequency);
 		_oscillator.setFrequency(frequency);
 
-		if (_syncTrigger.process(inputs[SYNC_INPUT].value)) {
-			_oscillator.syncToPhase(_phase == PHASE_SINE ? 0.0f : M_PI / 2.0f);
-		}
 		Phase phase = params[PHASE_PARAM].value > 1.5f ? PHASE_COSINE : PHASE_SINE;
 		if (_phase != phase) {
 			_phase = phase;
@@ -128,6 +125,9 @@ void Additator::step() {
 		}
 	}
 
+	if (_syncTrigger.next(inputs[SYNC_INPUT].value)) {
+		_oscillator.syncToPhase(_phase == PHASE_SINE ? 0.0f : M_PI / 2.0f);
+	}
 	outputs[AUDIO_OUTPUT].value = _oscillator.next() * 5.0;
 }
 
@@ -160,12 +160,12 @@ struct AdditatorWidget : ModuleWidget {
 		auto filterParamPosition = Vec(184.0, 218.0);
 		auto phaseParamPosition = Vec(194.0, 299.0);
 
-		auto pitchInputPosition = Vec(16.0, 274.0);
+		auto syncInputPosition = Vec(16.0, 274.0);
 		auto partialsInputPosition = Vec(50.0, 274.0);
 		auto widthInputPosition = Vec(84.0, 274.0);
 		auto oddSkewInputPosition = Vec(118.0, 274.0);
 		auto evenSkewInputPosition = Vec(152.0, 274.0);
-		auto syncInputPosition = Vec(16.0, 318.0);
+		auto pitchInputPosition = Vec(16.0, 318.0);
 		auto gainInputPosition = Vec(50.0, 318.0);
 		auto decayInputPosition = Vec(84.0, 318.0);
 		auto balanceInputPosition = Vec(118.0, 318.0);

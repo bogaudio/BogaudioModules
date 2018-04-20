@@ -40,10 +40,6 @@ void XCO::step() {
 		}
 		_baseHz = cvToFrequency(_baseVOct);
 
-		if (_syncTrigger.process(inputs[SYNC_INPUT].value)) {
-			_phasor.setPhase(0.0f);
-		}
-
 		float pw = params[SQUARE_PW_PARAM].value;
 		if (inputs[SQUARE_PW_INPUT].active) {
 			pw *= clamp(inputs[SQUARE_PW_INPUT].value / 5.0f, -1.0f, 1.0f);
@@ -84,6 +80,10 @@ void XCO::step() {
 		_sawMix = level(params[SAW_MIX_PARAM], inputs[SAW_MIX_INPUT]);
 		_triangleMix = level(params[TRIANGLE_MIX_PARAM], inputs[TRIANGLE_MIX_INPUT]);
 		_sineMix = level(params[SINE_MIX_PARAM], inputs[SINE_MIX_INPUT]);
+	}
+
+	if (_syncTrigger.next(inputs[SYNC_INPUT].value)) {
+		_phasor.resetPhase();
 	}
 
 	float frequency = _baseHz;

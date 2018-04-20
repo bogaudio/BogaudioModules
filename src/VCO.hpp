@@ -3,6 +3,7 @@
 #include "bogaudio.hpp"
 #include "dsp/filter.hpp"
 #include "dsp/oscillator.hpp"
+#include "dsp/signal.hpp"
 
 using namespace bogaudio::dsp;
 
@@ -53,7 +54,7 @@ struct VCO : Module {
 	bool _slowMode = false;
 	float _fmDepth = 0.0f;
 	bool _fmLinearMode = false;
-	SchmittTrigger _syncTrigger;
+	PositiveZeroCrossing _syncTrigger;
 
 	Phasor _phasor;
 	BandLimitedSquareOscillator _square;

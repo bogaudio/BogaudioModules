@@ -22,6 +22,10 @@ void Phasor::setSampleWidth(float sw) {
 	}
 }
 
+void Phasor::resetPhase() {
+	_phase = 0;
+}
+
 void Phasor::setPhase(float radians) {
 	_phase = radiansToPhase(radians);
 }

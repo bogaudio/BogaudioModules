@@ -86,6 +86,7 @@ struct Phasor : OscillatorGenerator {
 	}
 
 	void setSampleWidth(float sw);
+	void resetPhase();
 	void setPhase(float radians);
 	float nextFromPhasor(const Phasor& phasor, phase_delta_t offset = 0);
 	inline float nextForPhase(phase_t phase) { return _nextForPhase(phase); }

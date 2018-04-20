@@ -80,10 +80,6 @@ void EightFO::step() {
 			_scale *= clamp(inputs[SCALE_INPUT].value / 10.0f, 0.0f, 1.0f);
 		}
 
-		if (_resetTrigger.process(inputs[RESET_INPUT].value)) {
-			_phasor.setPhase(0.0f);
-		}
-
 		_phase7Offset = phaseOffset(params[PHASE7_PARAM], inputs[PHASE7_INPUT], basePhase7Offset);
 		_phase6Offset = phaseOffset(params[PHASE6_PARAM], inputs[PHASE6_INPUT], basePhase6Offset);
 		_phase5Offset = phaseOffset(params[PHASE5_PARAM], inputs[PHASE5_INPUT], basePhase5Offset);
@@ -92,6 +88,10 @@ void EightFO::step() {
 		_phase2Offset = phaseOffset(params[PHASE2_PARAM], inputs[PHASE2_INPUT], basePhase2Offset);
 		_phase1Offset = phaseOffset(params[PHASE1_PARAM], inputs[PHASE1_INPUT], basePhase1Offset);
 		_phase0Offset = phaseOffset(params[PHASE0_PARAM], inputs[PHASE0_INPUT], basePhase0Offset);
+	}
+
+	if (_resetTrigger.next(inputs[RESET_INPUT].value)) {
+		_phasor.resetPhase();
 	}
 
 	_phasor.advancePhase();

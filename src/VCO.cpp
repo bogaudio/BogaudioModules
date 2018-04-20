@@ -39,10 +39,6 @@ void VCO::step() {
 		}
 		_baseHz = cvToFrequency(_baseVOct);
 
-		if (_syncTrigger.process(inputs[SYNC_INPUT].value)) {
-			_phasor.setPhase(0.0f);
-		}
-
 		float pw = params[PW_PARAM].value;
 		if (inputs[PW_INPUT].active) {
 			pw *= clamp(inputs[PW_INPUT].value / 5.0f, -1.0f, 1.0f);
@@ -53,6 +49,10 @@ void VCO::step() {
 		_square.setPulseWidth(pw);
 
 		_fmDepth = params[FM_PARAM].value;
+	}
+
+	if (_syncTrigger.next(inputs[SYNC_INPUT].value)) {
+		_phasor.resetPhase();
 	}
 
 	float frequency = _baseHz;

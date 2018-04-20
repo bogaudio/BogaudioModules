@@ -3,6 +3,7 @@
 #include "bogaudio.hpp"
 #include "dsp/filter.hpp"
 #include "dsp/oscillator.hpp"
+#include "dsp/signal.hpp"
 
 using namespace bogaudio::dsp;
 
@@ -88,7 +89,7 @@ struct XCO : Module {
 	float _sawMix = 1.0f;
 	float _triangleMix = 1.0f;
 	float _sineMix = 1.0f;
-	SchmittTrigger _syncTrigger;
+	PositiveZeroCrossing _syncTrigger;
 
 	Phasor _phasor;
 	BandLimitedSquareOscillator _square;

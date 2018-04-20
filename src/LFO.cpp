@@ -71,10 +71,10 @@ void LFO::step() {
 		if (inputs[SCALE_INPUT].active) {
 			_scale *= clamp(inputs[SCALE_INPUT].value / 10.0f, 0.0f, 1.0f);
 		}
+	}
 
-		if (_resetTrigger.process(inputs[RESET_INPUT].value)) {
-			_phasor.setPhase(0.0f);
-		}
+	if (_resetTrigger.next(inputs[RESET_INPUT].value)) {
+		_phasor.resetPhase();
 	}
 
 	_phasor.advancePhase();

@@ -3,6 +3,7 @@
 #include "bogaudio.hpp"
 #include "dsp/oscillator.hpp"
 #include "dsp/pitch.hpp"
+#include "dsp/signal.hpp"
 
 using namespace bogaudio::dsp;
 
@@ -80,7 +81,7 @@ struct Additator : Module {
 	Phase _phase = PHASE_RESET;
 	float _maxFrequency = 0.0f;
 	SineBankOscillator _oscillator;
-	SchmittTrigger _syncTrigger;
+	PositiveZeroCrossing _syncTrigger;
 
 	Additator()
 	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
