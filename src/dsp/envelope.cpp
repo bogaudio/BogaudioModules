@@ -77,7 +77,16 @@ float ADSR::_next() {
 			}
 			case RELEASE_STAGE: {
 				_stage = ATTACK_STAGE;
-				_stageProgress = _attack * powf(_envelope, 2.0f);
+				switch (_shape) {
+					case EXPONENTIAL_SHAPE: {
+						_stageProgress = _attack * powf(_envelope, 2.0f);
+						break;
+					}
+					case LINEAR_SHAPE: {
+						_stageProgress = _attack * _envelope;
+						break;
+					}
+				}
 				break;
 			}
 		}
