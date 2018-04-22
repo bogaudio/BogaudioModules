@@ -71,10 +71,10 @@ void FMOp::step() {
 			if (inputs[SUSTAIN_INPUT].active) {
 				sustain *= clamp(inputs[SUSTAIN_INPUT].value / 10.0f, 0.0f, 1.0f);
 			}
-			_envelope.setAttack(params[ATTACK_PARAM].value);
-			_envelope.setDecay(params[DECAY_PARAM].value);
+			_envelope.setAttack(powf(params[ATTACK_PARAM].value, 2.0f) * 10.f);
+			_envelope.setDecay(powf(params[DECAY_PARAM].value, 2.0f) * 10.f);
 			_envelope.setSustain(sustain);
-			_envelope.setRelease(params[RELEASE_PARAM].value);
+			_envelope.setRelease(powf(params[RELEASE_PARAM].value, 2.0f) * 10.f);
 		}
 
 		_feedback = params[FEEDBACK_PARAM].value;
@@ -107,7 +107,7 @@ void FMOp::step() {
 
 	float offset = 0.0f;
 	if (feedback > 0.001f) {
-		offset = feedback * 2.0f * _feedbackDelayedSample;
+		offset = feedback * _feedbackDelayedSample;
 	}
 	if (inputs[FM_INPUT].active) {
 		offset += inputs[FM_INPUT].value * _depth * 2.0f;
@@ -116,11 +116,12 @@ void FMOp::step() {
 		_phasor.advancePhase();
 		_buffer[i] = _sineTable.nextFromPhasor(_phasor, Phasor::radiansToPhase(offset));
 	}
-	float out = _decimator.next(_buffer);
-	out *= _level;
+	float out = _level;
 	if (_levelEnvelopeOn) {
 		out *= envelope;
 	}
+	out *= out;
+	out *= _decimator.next(_buffer);
 	outputs[AUDIO_OUTPUT].value = _feedbackDelayedSample = amplitude * out;
 }
 
@@ -169,10 +170,10 @@ struct FMOpWidget : ModuleWidget {
 
 		addParam(ParamWidget::create<Knob38>(ratioParamPosition, module, FMOp::RATIO_PARAM, -1.0, 1.0, 0.0));
 		addParam(ParamWidget::create<Knob16>(fineParamPosition, module, FMOp::FINE_PARAM, -1.0, 1.0, 0.0));
-		addParam(ParamWidget::create<Knob26>(attackParamPosition, module, FMOp::ATTACK_PARAM, 0.0, 1.0, 0.1));
-		addParam(ParamWidget::create<Knob26>(decayParamPosition, module, FMOp::DECAY_PARAM, 0.0, 1.0, 0.1));
+		addParam(ParamWidget::create<Knob26>(attackParamPosition, module, FMOp::ATTACK_PARAM, 0.0, 1.0, 0.12));
+		addParam(ParamWidget::create<Knob26>(decayParamPosition, module, FMOp::DECAY_PARAM, 0.0, 1.0, 0.31623));
 		addParam(ParamWidget::create<Knob26>(sustainParamPosition, module, FMOp::SUSTAIN_PARAM, 0.0, 1.0, 1.0));
-		addParam(ParamWidget::create<Knob26>(releaseParamPosition, module, FMOp::RELEASE_PARAM, 0.0, 1.0, 0.3));
+		addParam(ParamWidget::create<Knob26>(releaseParamPosition, module, FMOp::RELEASE_PARAM, 0.0, 1.0, 0.31623));
 		addParam(ParamWidget::create<Knob26>(depthParamPosition, module, FMOp::DEPTH_PARAM, 0.0, 1.0, 0.0));
 		addParam(ParamWidget::create<Knob26>(feedbackParamPosition, module, FMOp::FEEDBACK_PARAM, 0.0, 1.0, 0.0));
 		addParam(ParamWidget::create<Knob26>(levelParamPosition, module, FMOp::LEVEL_PARAM, 0.0, 1.0, 1.0));

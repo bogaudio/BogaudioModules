@@ -68,7 +68,10 @@ struct FMOp : Module {
 	LPFDecimator _decimator;
 	SchmittTrigger _gateTrigger;
 
-	FMOp() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	FMOp()
+	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
+	, _envelope(ADSR::LINEAR_SHAPE)
+	{
 		onReset();
 		onSampleRateChange();
 	}
