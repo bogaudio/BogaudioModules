@@ -178,4 +178,4 @@ struct LFOWidget : ModuleWidget {
 	}
 };
 
-Model* modelLFO = Model::create<LFO, LFOWidget>("Bogaudio", "Bogaudio-LFO", "LFO");
+Model* modelLFO = Model::create<LFO, LFOWidget>("Bogaudio", "Bogaudio-LFO", "LFO", LFO_TAG);
