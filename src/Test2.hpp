@@ -5,12 +5,15 @@
 extern Model* modelTest2;
 
 // #define COMPLEX_BIQUAD 1
-#define MULTIPOLE 1
+// #define MULTIPOLE 1
+#define ADSR_ENVELOPE 1
 
 #ifdef COMPLEX_BIQUAD
 #include "dsp/filter.hpp"
 #elif MULTIPOLE
 #include "dsp/filter.hpp"
+#elif ADSR_ENVELOPE
+#include "dsp/envelope.hpp"
 #elif
 #error what
 #endif
@@ -56,6 +59,9 @@ struct Test2 : Module {
 	MultipoleFilter _filter;
 	const int maxSteps = 10;
 	int _steps = maxSteps;
+#elif ADSR_ENVELOPE
+	ADSR _adsr;
+	SchmittTrigger _trigger;
 #endif
 
 	Test2() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {

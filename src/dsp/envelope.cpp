@@ -1,6 +1,7 @@
 #include <assert.h>
 #include <math.h>
 #include <stdio.h>
+#include <algorithm>
 
 #include "envelope.hpp"
 
@@ -26,12 +27,12 @@ void ADSR::setGate(bool high) {
 
 void ADSR::setAttack(float seconds) {
 	assert(_attack >= 0.0f);
-	_attack = seconds;
+	_attack = std::max(seconds, 0.001f);
 }
 
 void ADSR::setDecay(float seconds) {
 	assert(_decay >= 0.0f);
-	_decay = seconds;
+	_decay = std::max(seconds, 0.001f);
 }
 
 void ADSR::setSustain(float level) {
@@ -42,7 +43,11 @@ void ADSR::setSustain(float level) {
 
 void ADSR::setRelease(float seconds) {
 	assert(_release >= 0.0f);
-	_release = seconds;
+	_release = std::max(seconds, 0.001f);
+}
+
+void ADSR::setShape(Shape shape) {
+	_shape = shape;
 }
 
 float ADSR::_next() {
@@ -107,13 +112,17 @@ float ADSR::_next() {
 		case ATTACK_STAGE: {
 			_stageProgress += _sampleTime;
 			_envelope = _stageProgress / _attack;
-			_envelope = powf(_envelope, 0.5f);
+			if (_shape == EXPONENTIAL_SHAPE) {
+				_envelope = powf(_envelope, 0.5f);
+			}
 			break;
 		}
 		case DECAY_STAGE: {
 			_stageProgress += _sampleTime;
 			_envelope = _stageProgress / _decay;
-			_envelope = powf(_envelope, 0.5f);
+			if (_shape == EXPONENTIAL_SHAPE) {
+				_envelope = powf(_envelope, 0.5f);
+			}
 			_envelope *= 1.0f - _sustain;
 			_envelope = 1.0f - _envelope;
 			break;
@@ -125,7 +134,9 @@ float ADSR::_next() {
 		case RELEASE_STAGE: {
 			_stageProgress += _sampleTime;
 			_envelope = _stageProgress / _release;
-			_envelope = powf(_envelope, 0.5f);
+			if (_shape == EXPONENTIAL_SHAPE) {
+				_envelope = powf(_envelope, 0.5f);
+			}
 			_envelope *= _releaseLevel;
 			_envelope = _releaseLevel - _envelope;
 			break;

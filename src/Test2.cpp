@@ -52,6 +52,21 @@ void Test2::step() {
 		in = inputs[IN_INPUT].value;
 	}
 	outputs[OUT_OUTPUT].value = _filter.next(in);
+
+#elif ADSR_ENVELOPE
+  if (outputs[OUT_OUTPUT].active) {
+		_adsr.setSampleRate(engineGetSampleRate());
+		if (inputs[IN_INPUT].active) {
+			_trigger.process(inputs[IN_INPUT].value);
+		}
+		_adsr.setGate(_trigger.isHigh());
+		_adsr.setAttack(params[PARAM1A_PARAM].value * 10.0f);
+		_adsr.setDecay(params[PARAM1B_PARAM].value * 10.0f);
+		_adsr.setSustain(params[PARAM2A_PARAM].value);
+		_adsr.setRelease(params[PARAM2B_PARAM].value * 10.0f);
+		_adsr.setShape(params[PARAM3A_PARAM].value > 0.5f ? ADSR::LINEAR_SHAPE : ADSR::EXPONENTIAL_SHAPE);
+		outputs[OUT_OUTPUT].value = _adsr.next() * 10.0f;
+	}
 #endif
 }
 
