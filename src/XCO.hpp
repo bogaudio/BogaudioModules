@@ -70,6 +70,7 @@ struct XCO : Module {
 	const int modulationSteps = 100;
 	const float amplitude = 5.0f;
 	static constexpr int oversample = 8;
+	const float slewLimitTime = 1.0f;
 	int _modulationStep = 0;
 	float _oversampleThreshold = 0.0f;
 	float _frequency = 0.0f;
@@ -89,7 +90,6 @@ struct XCO : Module {
 	float _sawMix = 1.0f;
 	float _triangleMix = 1.0f;
 	float _sineMix = 1.0f;
-	PositiveZeroCrossing _syncTrigger;
 
 	Phasor _phasor;
 	BandLimitedSquareOscillator _square;
@@ -104,6 +104,21 @@ struct XCO : Module {
 	float _sawBuffer[oversample];
 	float _triangleBuffer[oversample];
 	float _sineBuffer[oversample];
+	PositiveZeroCrossing _syncTrigger;
+
+	SlewLimiter _fmDepthSL;
+	SlewLimiter _squarePulseWidthSL;
+	SlewLimiter _sawSaturationSL;
+	SlewLimiter _triangleSampleWidthSL;
+	SlewLimiter _sineFeedbackSL;
+	SlewLimiter _squarePhaseOffsetSL;
+	SlewLimiter _sawPhaseOffsetSL;
+	SlewLimiter _trianglePhaseOffsetSL;
+	SlewLimiter _sinePhaseOffsetSL;
+	SlewLimiter _squareMixSL;
+	SlewLimiter _sawMixSL;
+	SlewLimiter _triangleMixSL;
+	SlewLimiter _sineMixSL;
 
 	XCO() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 		onReset();

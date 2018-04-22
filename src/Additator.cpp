@@ -8,10 +8,18 @@ void Additator::onReset() {
 }
 
 void Additator::onSampleRateChange() {
-	_oscillator.setSampleRate(engineGetSampleRate());
-	_maxFrequency = 0.47f * _oscillator._sampleRate;
+	float sampleRate = engineGetSampleRate();
+	_oscillator.setSampleRate(sampleRate);
+	_maxFrequency = 0.47f * sampleRate;
 	_steps = modulationSteps;
 	_phase = PHASE_RESET;
+	_widthSL.setParams(sampleRate, slewLimitTime);;
+	_oddSkewSL.setParams(sampleRate, slewLimitTime);;
+	_evenSkewSL.setParams(sampleRate, slewLimitTime);;
+	_amplitudeNormalizationSL.setParams(sampleRate, slewLimitTime);;
+	_decaySL.setParams(sampleRate, slewLimitTime);;
+	_balanceSL.setParams(sampleRate, slewLimitTime);;
+	_filterSL.setParams(sampleRate, slewLimitTime);;
 }
 
 float Additator::cvValue(Input& cv, bool dc) {
@@ -38,9 +46,9 @@ void Additator::step() {
 	if (_steps >= modulationSteps) {
 		_steps = 0;
 
-		float width = clamp(params[WIDTH_PARAM].value + (maxWidth / 2.0f) * cvValue(inputs[WIDTH_INPUT]), 0.0f, maxWidth);
-		float oddSkew = clamp(params[ODD_SKEW_PARAM].value + cvValue(inputs[ODD_SKEW_INPUT]), -maxSkew, maxSkew);
-		float evenSkew = clamp(params[EVEN_SKEW_PARAM].value + cvValue(inputs[EVEN_SKEW_INPUT]), -maxSkew, maxSkew);
+		float width = _widthSL.next(clamp(params[WIDTH_PARAM].value + (maxWidth / 2.0f) * cvValue(inputs[WIDTH_INPUT]), 0.0f, maxWidth));
+		float oddSkew = _oddSkewSL.next(clamp(params[ODD_SKEW_PARAM].value + cvValue(inputs[ODD_SKEW_INPUT]), -maxSkew, maxSkew));
+		float evenSkew = _evenSkewSL.next(clamp(params[EVEN_SKEW_PARAM].value + cvValue(inputs[EVEN_SKEW_INPUT]), -maxSkew, maxSkew));
 		if (
 			_width != width ||
 			_oddSkew != oddSkew ||
@@ -65,10 +73,10 @@ void Additator::step() {
 		}
 
 		int partials = clamp((int)roundf(params[PARTIALS_PARAM].value * cvValue(inputs[PARTIALS_INPUT], true)), 0, maxPartials);
-		float amplitudeNormalization = clamp(params[GAIN_PARAM].value + ((maxAmplitudeNormalization - minAmplitudeNormalization) / 2.0f) * cvValue(inputs[GAIN_INPUT]), minAmplitudeNormalization, maxAmplitudeNormalization);
-		float decay = clamp(params[DECAY_PARAM].value + ((maxDecay - minDecay) / 2.0f) * cvValue(inputs[DECAY_INPUT]), minDecay, maxDecay);
-		float balance = clamp(params[BALANCE_PARAM].value + cvValue(inputs[BALANCE_INPUT]), -1.0f, 1.0f);
-		float filter = clamp(params[FILTER_PARAM].value + cvValue(inputs[FILTER_INPUT]), minFilter, maxFilter);
+		float amplitudeNormalization = _amplitudeNormalizationSL.next(clamp(params[GAIN_PARAM].value + ((maxAmplitudeNormalization - minAmplitudeNormalization) / 2.0f) * cvValue(inputs[GAIN_INPUT]), minAmplitudeNormalization, maxAmplitudeNormalization));
+		float decay = _decaySL.next(clamp(params[DECAY_PARAM].value + ((maxDecay - minDecay) / 2.0f) * cvValue(inputs[DECAY_INPUT]), minDecay, maxDecay));
+		float balance = _balanceSL.next(clamp(params[BALANCE_PARAM].value + cvValue(inputs[BALANCE_INPUT]), -1.0f, 1.0f));
+		float filter = _filterSL.next(clamp(params[FILTER_PARAM].value + cvValue(inputs[FILTER_INPUT]), minFilter, maxFilter));
 		if (
 			_partials != partials ||
 			_amplitudeNormalization != amplitudeNormalization ||

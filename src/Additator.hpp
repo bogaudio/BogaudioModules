@@ -68,6 +68,7 @@ struct Additator : Module {
 	const float maxDecay = 3.0f;
 	const float minFilter = 0.1;
 	const float maxFilter = 1.9;
+	const float slewLimitTime = 1.0f;
 
 	int _steps = 0;
 	int _partials = 0;
@@ -82,6 +83,13 @@ struct Additator : Module {
 	float _maxFrequency = 0.0f;
 	SineBankOscillator _oscillator;
 	PositiveZeroCrossing _syncTrigger;
+	SlewLimiter _widthSL;
+	SlewLimiter _oddSkewSL;
+	SlewLimiter _evenSkewSL;
+	SlewLimiter _amplitudeNormalizationSL;
+	SlewLimiter _decaySL;
+	SlewLimiter _balanceSL;
+	SlewLimiter _filterSL;
 
 	Additator()
 	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)

@@ -46,6 +46,7 @@ struct VCO : Module {
 	const int modulationSteps = 100;
 	const float amplitude = 5.0f;
 	static constexpr int oversample = 8;
+	const float slewLimitTime = 1.0f;
 	int _modulationStep = 0;
 	float _oversampleThreshold = 0.0f;
 	float _frequency = 0.0f;
@@ -54,7 +55,6 @@ struct VCO : Module {
 	bool _slowMode = false;
 	float _fmDepth = 0.0f;
 	bool _fmLinearMode = false;
-	PositiveZeroCrossing _syncTrigger;
 
 	Phasor _phasor;
 	BandLimitedSquareOscillator _square;
@@ -67,6 +67,8 @@ struct VCO : Module {
 	float _squareBuffer[oversample];
 	float _sawBuffer[oversample];
 	float _triangleBuffer[oversample];
+	PositiveZeroCrossing _syncTrigger;
+	SlewLimiter _squarePulseWidthSL;
 
 	VCO() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 		onReset();

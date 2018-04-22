@@ -28,5 +28,22 @@ struct PositiveZeroCrossing {
 	void reset();
 };
 
+struct SlewLimiter {
+	float _sampleRate;
+	float _milliseconds;
+	float _samples;
+	float _current = 0.0f;
+	float _target = 0.0f;
+	int _steps = 0;
+	float _delta = 0.0f;
+
+	SlewLimiter(float sampleRate = 1000.0f, float milliseconds = 1.0f) {
+		setParams(sampleRate, milliseconds);
+	}
+
+	void setParams(float sampleRate, float milliseconds);
+	float next(float sample);
+};
+
 } // namespace dsp
 } // namespace bogaudio

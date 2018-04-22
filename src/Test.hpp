@@ -16,12 +16,13 @@ extern Model* modelTest;
 // #define OVERSAMPLING 1
 // #define OVERSAMPLED_BL 1
 // #define ANTIALIASING 1
-#define DECIMATORS 1
+// #define DECIMATORS 1
 // #define FM 1
 // #define PM 1
 // #define FEEDBACK_PM 1
 // #define EG 1
 // #define TABLES 1
+#define SLEW 1
 
 #include "pitch.hpp"
 #ifdef LPF
@@ -69,6 +70,8 @@ extern Model* modelTest;
 #include "dsp/envelope.hpp"
 #elif TABLES
 #include "dsp/oscillator.hpp"
+#elif SLEW
+#include "dsp/signal.hpp"
 #else
 #error what
 #endif
@@ -178,6 +181,8 @@ struct Test : Module {
 #elif TABLES
 	SineTableOscillator _sine;
 	TablePhasor _table;
+#elif SLEW
+	SlewLimiter _slew;
 #endif
 
 	Test()

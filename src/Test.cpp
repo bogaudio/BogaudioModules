@@ -339,6 +339,14 @@ void Test::step() {
 	_table.setSampleRate(engineGetSampleRate());
 	_table.setFrequency(oscillatorPitch());
 	outputs[OUT2_OUTPUT].value = _table.next() * 5.0f;
+
+#elif SLEW
+	float ms = params[PARAM1_PARAM].value;
+	if (inputs[CV1_INPUT].active) {
+		ms *= clamp(inputs[CV2_INPUT].value, 0.0f, 10.0f) / 10.0f;
+	}
+	_slew.setParams(engineGetSampleRate(), powf(ms, 2.0f) * 100.0f);
+	outputs[OUT_OUTPUT].value = _slew.next(inputs[IN_INPUT].value);
 #endif
 }
 

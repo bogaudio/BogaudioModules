@@ -4,6 +4,7 @@
 #include "dsp/envelope.hpp"
 #include "dsp/filter.hpp"
 #include "dsp/oscillator.hpp"
+#include "dsp/signal.hpp"
 
 using namespace bogaudio::dsp;
 
@@ -52,6 +53,7 @@ struct FMOp : Module {
 	const float amplitude = 5.0f;
 	const int modulationSteps = 100;
 	static constexpr int oversample = 8;
+	const float slewLimitTime = 1.0f;
 	int _steps = 0;
 	float _feedback = 0.0f;
 	float _feedbackDelayedSample = 0.0f;
@@ -67,6 +69,10 @@ struct FMOp : Module {
 	SineTableOscillator _sineTable;
 	LPFDecimator _decimator;
 	SchmittTrigger _gateTrigger;
+	SlewLimiter _feedbackSL;
+	SlewLimiter _depthSL;
+	SlewLimiter _levelSL;
+	SlewLimiter _sustainSL;
 
 	FMOp()
 	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)

@@ -46,7 +46,7 @@ void VCO::step() {
 		pw *= 1.0f - 2.0f * _square.minPulseWidth;
 		pw *= 0.5f;
 		pw += 0.5f;
-		_square.setPulseWidth(pw);
+		_square.setPulseWidth(_squarePulseWidthSL.next(pw));
 
 		_fmDepth = params[FM_PARAM].value;
 	}
@@ -140,6 +140,7 @@ void VCO::setSampleRate(float sampleRate) {
 	_squareDecimator.setParams(sampleRate, oversample);
 	_sawDecimator.setParams(sampleRate, oversample);
 	_triangleDecimator.setParams(sampleRate, oversample);
+	_squarePulseWidthSL.setParams(sampleRate, slewLimitTime / 10.0f);
 }
 
 void VCO::setFrequency(float frequency) {

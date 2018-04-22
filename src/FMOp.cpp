@@ -16,6 +16,10 @@ void FMOp::onSampleRateChange() {
 	_sineTable.setSampleRate(sampleRate);
 	_decimator.setParams(sampleRate, oversample);
 	_maxFrequency = 0.47f * sampleRate;
+	_feedbackSL.setParams(sampleRate, slewLimitTime);
+	_depthSL.setParams(sampleRate, slewLimitTime);
+	_levelSL.setParams(sampleRate, slewLimitTime);
+	_sustainSL.setParams(sampleRate, slewLimitTime / 10.0f);
 }
 
 void FMOp::step() {
@@ -73,7 +77,7 @@ void FMOp::step() {
 			}
 			_envelope.setAttack(powf(params[ATTACK_PARAM].value, 2.0f) * 10.f);
 			_envelope.setDecay(powf(params[DECAY_PARAM].value, 2.0f) * 10.f);
-			_envelope.setSustain(sustain);
+			_envelope.setSustain(_sustainSL.next(sustain));
 			_envelope.setRelease(powf(params[RELEASE_PARAM].value, 2.0f) * 10.f);
 		}
 
@@ -100,7 +104,7 @@ void FMOp::step() {
 		envelope = _envelope.next();
 	}
 
-	float feedback = _feedback;
+	float feedback = _feedbackSL.next(_feedback);
 	if (_feedbackEnvelopeOn) {
 		feedback *= envelope;
 	}
@@ -110,13 +114,13 @@ void FMOp::step() {
 		offset = feedback * _feedbackDelayedSample;
 	}
 	if (inputs[FM_INPUT].active) {
-		offset += inputs[FM_INPUT].value * _depth * 2.0f;
+		offset += inputs[FM_INPUT].value * _depthSL.next(_depth) * 2.0f;
 	}
 	for (int i = 0; i < oversample; ++i) {
 		_phasor.advancePhase();
 		_buffer[i] = _sineTable.nextFromPhasor(_phasor, Phasor::radiansToPhase(offset));
 	}
-	float out = _level;
+	float out = _levelSL.next(_level);
 	if (_levelEnvelopeOn) {
 		out *= envelope;
 	}
