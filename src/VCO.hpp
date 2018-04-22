@@ -61,9 +61,9 @@ struct VCO : Module {
 	BandLimitedSawOscillator _saw;
 	TriangleOscillator _triangle;
 	SineTableOscillator _sine;
-	Decimator _squareDecimator;
-	Decimator _sawDecimator;
-	Decimator _triangleDecimator;
+	CICDecimator _squareDecimator;
+	CICDecimator _sawDecimator;
+	CICDecimator _triangleDecimator;
 	float _squareBuffer[oversample];
 	float _sawBuffer[oversample];
 	float _triangleBuffer[oversample];

@@ -235,10 +235,10 @@ void Test::step() {
 			squareBuf[i] = _square.nextFromPhasor(_oversampledPhasor);
 		}
 
-		out += _sawDecimator.next(OVERSAMPLEN, sawBuf) * oMix;
+		out += _sawDecimator.next(sawBuf) * oMix;
 		// out += _sawRackDecimator.process(sawBuf) * oMix;
 
-		out2 += _squareDecimator.next(OVERSAMPLEN, squareBuf) * oMix;
+		out2 += _squareDecimator.next(squareBuf) * oMix;
 		// out2 += _squareRackDecimator.process(squareBuf) * oMix;
 	}
 	else {
@@ -249,6 +249,24 @@ void Test::step() {
 
 	outputs[OUT_OUTPUT].value = out * 5.0f;
 	outputs[OUT2_OUTPUT].value = out2 * 5.0f;
+
+#elif DECIMATORS
+	const int quality = 12;
+	float sampleRate = engineGetSampleRate();
+	float frequency = oscillatorPitch(15000.0);
+	_saw.setSampleRate(sampleRate);
+	_saw.setFrequency(frequency / (float)OVERSAMPLEN);
+	_saw.setQuality(quality);
+	_cicDecimator.setParams(sampleRate, OVERSAMPLEN);
+	_lpfDecimator.setParams(sampleRate, OVERSAMPLEN);
+
+	float buf[OVERSAMPLEN] {};
+	for (int i = 0; i < OVERSAMPLEN; ++i) {
+		buf[i] = _saw.next();
+	}
+	outputs[OUT_OUTPUT].value = _cicDecimator.next(buf) * 5.0f;
+	// outputs[OUT2_OUTPUT].value = _lpfDecimator.next(buf) * 5.0f;
+	outputs[OUT2_OUTPUT].value = _rackDecimator.process(buf) * 5.0f;
 
 #elif FM
 	const float amplitude = 5.0f;

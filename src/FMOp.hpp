@@ -65,7 +65,7 @@ struct FMOp : Module {
 	ADSR _envelope;
 	Phasor _phasor;
 	SineTableOscillator _sineTable;
-	Decimator _decimator;
+	LPFDecimator _decimator;
 	SchmittTrigger _gateTrigger;
 
 	FMOp() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {

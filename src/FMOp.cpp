@@ -116,7 +116,7 @@ void FMOp::step() {
 		_phasor.advancePhase();
 		_buffer[i] = _sineTable.nextFromPhasor(_phasor, Phasor::radiansToPhase(offset));
 	}
-	float out = _decimator.next(oversample, _buffer);
+	float out = _decimator.next(_buffer);
 	out *= _level;
 	if (_levelEnvelopeOn) {
 		out *= envelope;

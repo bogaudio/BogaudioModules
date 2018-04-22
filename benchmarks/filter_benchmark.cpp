@@ -7,19 +7,33 @@
 
 using namespace bogaudio::dsp;
 
-static void BM_Decimator(benchmark::State& state) {
+static void BM_LPFDecimator(benchmark::State& state) {
   WhiteNoiseGenerator r;
   const int n = 8;
   float buf[n];
   for (int i = 0; i < n; ++i) {
     buf[i] = r.next();
   }
-  Decimator d(44100.0, n);
+  LPFDecimator d(44100.0, n);
   for (auto _ : state) {
-    benchmark::DoNotOptimize(d.next(n, buf));
+    benchmark::DoNotOptimize(d.next(buf));
   }
 }
-BENCHMARK(BM_Decimator);
+BENCHMARK(BM_LPFDecimator);
+
+static void BM_CICDecimator(benchmark::State& state) {
+  WhiteNoiseGenerator r;
+  const int n = 8;
+  float buf[n];
+  for (int i = 0; i < n; ++i) {
+    buf[i] = r.next();
+  }
+  CICDecimator d(4, 8);
+  for (auto _ : state) {
+    benchmark::DoNotOptimize(d.next(buf));
+  }
+}
+BENCHMARK(BM_CICDecimator);
 
 static void BM_RackDecimator(benchmark::State& state) {
   WhiteNoiseGenerator r;

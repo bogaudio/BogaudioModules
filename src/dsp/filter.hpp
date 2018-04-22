@@ -1,5 +1,6 @@
 #pragma once
 
+#include <stdint.h>
 #include <math.h>
 
 #include "buffer.hpp"
@@ -127,14 +128,38 @@ struct MultipoleFilter : Filter {
 };
 
 struct Decimator {
+	Decimator() {}
+	virtual ~Decimator() {}
+
+	virtual void setParams(float sampleRate, int factor) = 0;
+	virtual float next(const float* buf) = 0;
+};
+
+struct LPFDecimator : Decimator {
+	int _factor;
 	MultipoleFilter _filter;
 
-	Decimator(float sampleRate = 1000.0f, int oversample = 4) {
-		setParams(sampleRate, oversample);
+	LPFDecimator(float sampleRate = 1000.0f, int factor = 8) {
+		setParams(sampleRate, factor);
 	}
+	virtual void setParams(float sampleRate, int factor) override;
+	virtual float next(const float* buf) override;
+};
 
-	void setParams(float sampleRate, int oversample);
-	float next(int n, const float* buf);
+struct CICDecimator : Decimator {
+	typedef int64_t T;
+	static constexpr T scale = 1l << 32;
+	int _stages;
+	T* _integrators;
+	T* _combs;
+	int _factor = 0;
+	float _gainCorrection;
+
+	CICDecimator(int stages = 4, int factor = 8);
+	virtual ~CICDecimator();
+
+	virtual void setParams(float sampleRate, int factor) override;
+	virtual float next(const float* buf) override;
 };
 
 } // namespace dsp

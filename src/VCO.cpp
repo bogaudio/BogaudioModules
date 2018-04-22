@@ -102,13 +102,13 @@ void VCO::step() {
 			}
 		}
 		if (outputs[SQUARE_OUTPUT].active) {
-			squareOut += oMix * amplitude * _squareDecimator.next(oversample, _squareBuffer);
+			squareOut += oMix * amplitude * _squareDecimator.next(_squareBuffer);
 		}
 		if (outputs[SAW_OUTPUT].active) {
-			sawOut += oMix * amplitude * _sawDecimator.next(oversample, _sawBuffer);
+			sawOut += oMix * amplitude * _sawDecimator.next(_sawBuffer);
 		}
 		if (outputs[TRIANGLE_OUTPUT].active) {
-			triangleOut += oMix * amplitude * _triangleDecimator.next(oversample, _triangleBuffer);
+			triangleOut += oMix * amplitude * _triangleDecimator.next(_triangleBuffer);
 		}
 	}
 	else {

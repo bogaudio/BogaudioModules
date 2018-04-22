@@ -153,19 +153,19 @@ void XCO::step() {
 			}
 		}
 		if (squareOversample) {
-			squareOut += oMix * amplitude * _squareDecimator.next(oversample, _squareBuffer);
+			squareOut += oMix * amplitude * _squareDecimator.next(_squareBuffer);
 		}
 		if (sawOversample) {
-			sawOut += oMix * amplitude * _sawDecimator.next(oversample, _sawBuffer);
+			sawOut += oMix * amplitude * _sawDecimator.next(_sawBuffer);
 		}
 		if (triangleOversample) {
-			triangleOut += amplitude * _triangleDecimator.next(oversample, _triangleBuffer);
+			triangleOut += amplitude * _triangleDecimator.next(_triangleBuffer);
 			if (!triangleSample) {
 				triangleOut *= oMix;
 			}
 		}
 		if (sineOversample) {
-			sineOut += amplitude * _sineDecimator.next(oversample, _sineBuffer);
+			sineOut += amplitude * _sineDecimator.next(_sineBuffer);
 		}
 	}
 	else {

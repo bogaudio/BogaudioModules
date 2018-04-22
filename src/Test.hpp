@@ -16,9 +16,10 @@ extern Model* modelTest;
 // #define OVERSAMPLING 1
 // #define OVERSAMPLED_BL 1
 // #define ANTIALIASING 1
+#define DECIMATORS 1
 // #define FM 1
 // #define PM 1
-#define FEEDBACK_PM 1
+// #define FEEDBACK_PM 1
 // #define EG 1
 // #define TABLES 1
 
@@ -54,6 +55,10 @@ extern Model* modelTest;
 #include "dsp/oscillator.hpp"
 #include "dsp/decimator.hpp" // rack
 #include "dsp/filter.hpp"
+#elif DECIMATORS
+#include "dsp/oscillator.hpp"
+#include "dsp/filter.hpp"
+#include "dsp/decimator.hpp" // rack
 #elif FM
 #include "dsp/oscillator.hpp"
 #elif PM
@@ -105,7 +110,8 @@ struct Test : Module {
 	LowPassFilter _lpf;
 #elif SINE
 	SineOscillator _sine;
-	SineTableOscillator _sine2;
+	SineTable _table;
+	TablePhasor _sine2;
 #elif SQUARE
 	SquareOscillator _square;
 	BandLimitedSquareOscillator _square2;
@@ -141,10 +147,17 @@ struct Test : Module {
 	Phasor _oversampledPhasor;
 	BandLimitedSawOscillator _saw;
 	BandLimitedSquareOscillator _square;
-	bogaudio::dsp::Decimator _sawDecimator;
-	bogaudio::dsp::Decimator _squareDecimator;
+	bogaudio::dsp::LPFDecimator _sawDecimator;
+	bogaudio::dsp::LPFDecimator _squareDecimator;
 	rack::Decimator<OVERSAMPLEN, OVERSAMPLEN> _sawRackDecimator;
 	rack::Decimator<OVERSAMPLEN, OVERSAMPLEN> _squareRackDecimator;
+#elif DECIMATORS
+	#define OVERSAMPLEN 8
+	#define STAGES 4
+	BandLimitedSawOscillator _saw;
+	bogaudio::dsp::CICDecimator _cicDecimator;
+	bogaudio::dsp::LPFDecimator _lpfDecimator;
+	rack::Decimator<OVERSAMPLEN, OVERSAMPLEN> _rackDecimator;
 #elif FM
 	float _baseHz = 0.0f;
 	float _ratio = 0.0f;
@@ -169,13 +182,19 @@ struct Test : Module {
 
 	Test()
 	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
-#if TABLES
+#if SINE
+	, _table(12)
+	, _sine2(_table)
+#elif DECIMATORS
+	, _cicDecimator(STAGES)
+#elif TABLES
   , _table(StaticBlepTable::table(), 44100.0, 1000.0)
 #endif
 	{
 		onReset();
 
 #ifdef SINE
+		_table.generate();
 		_sine2.setPhase(M_PI);
 
 #elif SAW

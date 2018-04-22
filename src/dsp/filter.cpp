@@ -177,20 +177,60 @@ float MultipoleFilter::next(float sample) {
 }
 
 
-void Decimator::setParams(float sampleRate, int oversample) {
+void LPFDecimator::setParams(float sampleRate, int factor) {
+	_factor = factor;
 	_filter.setParams(
 		MultipoleFilter::LP_TYPE,
 		4,
-		oversample * sampleRate,
+		factor * sampleRate,
 		0.45f * sampleRate,
 		0
 	);
 }
 
-float Decimator::next(int n, const float* buf) {
+float LPFDecimator::next(const float* buf) {
 	float s = 0.0f;
-	for (int i = 0; i < n; ++i) {
+	for (int i = 0; i < _factor; ++i) {
 		s = _filter.next(buf[i]);
 	}
 	return s;
+}
+
+
+// cascaded integrator–comb decimator: https://en.wikipedia.org/wiki/Cascaded_integrator%E2%80%93comb_filter
+CICDecimator::CICDecimator(int stages, int factor) {
+	assert(stages > 0);
+	_stages = stages;
+	_integrators = new T[_stages + 1] {};
+	_combs = new T[_stages] {};
+	setParams(0.0f, factor);
+}
+
+CICDecimator::~CICDecimator() {
+	delete[] _integrators;
+	delete[] _combs;
+}
+
+void CICDecimator::setParams(float _sampleRate, int factor) {
+	assert(factor > 0);
+	if (_factor != factor) {
+		_factor = factor;
+		_gainCorrection = 1.0f / (float)(pow(_factor, _stages));
+	}
+}
+
+float CICDecimator::next(const float* buf) {
+	for (int i = 0; i < _factor; ++i) {
+		_integrators[0] = buf[i] * scale;
+		for (int j = 1; j <= _stages; ++j) {
+			_integrators[j] += _integrators[j - 1];
+		}
+	}
+	T s = _integrators[_stages];
+	for (int i = 0; i < _stages; ++i) {
+		T t = s;
+		s -= _combs[i];
+		_combs[i] = t;
+	}
+	return _gainCorrection * (s / (float)scale);
 }
