@@ -25,6 +25,7 @@ struct FMOp : Module {
 		LEVEL_PARAM,
 		ENV_TO_LEVEL_PARAM,
 		ENV_TO_FEEDBACK_PARAM,
+		ENV_TO_DEPTH_PARAM,
 		NUM_PARAMS
 	};
 
@@ -47,6 +48,7 @@ struct FMOp : Module {
 	enum LightsIds {
 		ENV_TO_LEVEL_LIGHT,
 		ENV_TO_FEEDBACK_LIGHT,
+		ENV_TO_DEPTH_LIGHT,
 		NUM_LIGHTS
 	};
 
@@ -62,6 +64,7 @@ struct FMOp : Module {
 	bool _envelopeOn = false;
 	bool _levelEnvelopeOn = false;
 	bool _feedbackEnvelopeOn = false;
+	bool _depthEnvelopeOn = false;
 	float _maxFrequency = 0.0f;
 	float _buffer[oversample];
 	ADSR _envelope;
