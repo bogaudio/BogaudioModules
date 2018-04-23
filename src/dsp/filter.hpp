@@ -148,7 +148,7 @@ struct LPFDecimator : Decimator {
 
 struct CICDecimator : Decimator {
 	typedef int64_t T;
-	static constexpr T scale = 1l << 32;
+	static constexpr T scale = ((T)1) << 32;
 	int _stages;
 	T* _integrators;
 	T* _combs;
