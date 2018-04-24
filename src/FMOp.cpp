@@ -15,7 +15,7 @@ void FMOp::onSampleRateChange() {
 	_phasor.setSampleRate(sampleRate);
 	_sineTable.setSampleRate(sampleRate);
 	_decimator.setParams(sampleRate, oversample);
-	_maxFrequency = 0.47f * sampleRate;
+	_maxFrequency = 0.475f * sampleRate;
 	_feedbackSL.setParams(sampleRate, slewLimitTime);
 	_depthSL.setParams(sampleRate, slewLimitTime);
 	_levelSL.setParams(sampleRate, slewLimitTime);
@@ -55,7 +55,7 @@ void FMOp::step() {
 			ratio += 1.0f;
 		}
 		float frequency = pitchIn;
-		frequency += params[FINE_PARAM].value;
+		frequency += params[FINE_PARAM].value / 12.0f;
 		frequency = cvToFrequency(frequency);
 		frequency *= ratio;
 		frequency = clamp(frequency, -_maxFrequency, _maxFrequency);

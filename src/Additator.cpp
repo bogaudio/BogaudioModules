@@ -10,7 +10,7 @@ void Additator::onReset() {
 void Additator::onSampleRateChange() {
 	float sampleRate = engineGetSampleRate();
 	_oscillator.setSampleRate(sampleRate);
-	_maxFrequency = 0.47f * sampleRate;
+	_maxFrequency = 0.475f * sampleRate;
 	_steps = modulationSteps;
 	_phase = PHASE_RESET;
 	_widthSL.setParams(sampleRate, slewLimitTime);;
@@ -119,7 +119,7 @@ void Additator::step() {
 		}
 
 		float frequency = params[FREQUENCY_PARAM].value;
-		frequency += params[FINE_PARAM].value;
+		frequency += params[FINE_PARAM].value / 12.0f;;
 		if (inputs[PITCH_INPUT].active) {
 			frequency += clamp(inputs[PITCH_INPUT].value, -5.0f, 5.0f);
 		}

@@ -30,7 +30,7 @@ void VCO::step() {
 		_modulationStep = 0;
 
 		_baseVOct = params[FREQUENCY_PARAM].value;
-		_baseVOct += params[FINE_PARAM].value;
+		_baseVOct += params[FINE_PARAM].value / 12.0f;
 		if (inputs[PITCH_INPUT].active) {
 			_baseVOct += clamp(inputs[PITCH_INPUT].value, -5.0f, 5.0f);
 		}
@@ -144,7 +144,7 @@ void VCO::setSampleRate(float sampleRate) {
 }
 
 void VCO::setFrequency(float frequency) {
-	if (_frequency != frequency && frequency < 0.47f * _phasor._sampleRate) {
+	if (_frequency != frequency && frequency < 0.475f * _phasor._sampleRate) {
 		_frequency = frequency;
 		_phasor.setFrequency(_frequency / (float)oversample);
 		_square.setFrequency(_frequency);
