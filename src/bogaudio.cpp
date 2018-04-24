@@ -41,14 +41,12 @@ void init(rack::Plugin *p) {
 	p->website = "https://github.com/bogaudio/BogaudioModules";
 	p->manual = "https://github.com/bogaudio/BogaudioModules/blob/master/README.md";
 
-#ifdef EXPERIMENTAL
 	p->addModel(modelVCO);
 	p->addModel(modelXCO);
 	p->addModel(modelAdditator);
 	p->addModel(modelFMOp);
 	p->addModel(modelLFO);
 	p->addModel(modelEightFO);
-#endif
 
 	p->addModel(modelShaper);
 	p->addModel(modelShaperPlus);

@@ -1,13 +1,17 @@
 # BogaudioModules
-Modules for [VCV Rack](https://github.com/VCVRack/Rack), an open-source Eurorack-style virtual modular synthesizer.
+Modules for [VCV Rack](https://github.com/VCVRack/Rack), an open-source Eurorack-style virtual modular synthesizer:
+
+  - [Oscillators](#oscillators)
+  - [LFOs](#lfos)
+  - [Envelopes](#envelopes)
+  - [Spectrum Analyzer](#analyzer)
+  - [Utilities](#utilities).
 
 ![Modules screenshot](./doc/www/modules.png)
 
-Jump to [envelopes](#envelopes), the [spectrum analyzer](#analyzer), or the [utilities](#utilities).
-
 ## Builds/Releases
 
-Find downloadable builds for **Mac**, **Windows** and **Linux** on on the [releases page](https://github.com/bogaudio/BogaudioModules/releases).
+Mac, Linux and Windows builds of the latest version are available through [Rack's Plugin Manager](https://vcvrack.com/plugins.html).  Find release notes on the [releases page](https://github.com/bogaudio/BogaudioModules/releases).
 
 ## Building
 
@@ -22,6 +26,74 @@ You'll need to be set up to build [VCV Rack](https://github.com/VCVRack/Rack) it
 The master branch of this module currently builds against Rack's master and v0.6 branches.
 
 ## Modules
+
+### <a name="oscillators"></a> Oscillators
+
+![Oscillators screenshot](doc/www/oscillators.png)
+
+#### VCO
+
+A standard VCO featuring:
+  - Simultaneous square, saw, triangle and sine wave outputs.
+  - Traditional exponential and linear through-zero FM.
+  - Pulse width modulation of the square wave.
+  - Hard sync.
+  - Slow (LFO) mode.
+  - Antialiasing by a CPU-efficient combination of band limiting and oversampling.
+
+The main frequency knob is calibrated in volts, from -4 to +6, corresponding to notes from C0 to C6.  The default "0V" position corresponds to C4 (261.63HZ).  The knob value is added to the pitch CV input at the V/OCT port.  With CV input, the pitch can be driven as high as 95% of the Nyquist frequency (so, over 20KHZ at Rack's default sample rate).  The FINE knob allows an additional adjustment of up to +/-1 semitone (1/12 volt).  In slow mode, the output frequency is 7 octaves lower than in normal mode with the same knob/CV values.
+
+#### XCO
+
+Includes all the features of VCO, adding:
+  - An onboard wave mixer with output at the MIX port.
+  - For each wave type:
+    - A wave modifier (pulse width for square; saturation for saw; a sample-and-hold/step-function effect for triangle; FM feedback for sine).
+    - A phase knob/CV controlling the phase of the wave in the mix.
+    - A mix knob/CV to control the level of the wave in the mix (waves are output at full level at their individual outputs).
+  - A CV input for FM depth.
+
+#### ADDITATOR
+
+An additive ("sine-bank") oscillator, where the output is the sum of up to 100 individual sine/cosine waves (partials).  Various parameter knobs/CVs allow control over the number, frequencies and amplitudes of the partials:
+  - PARTIALS: sets the partial count.
+  - WIDTH: sets the spacing of partials in frequency; at the default position each successive partial is pitched an octave higher than the one before.
+  - O-SKEW: adjusts the spacing of odd-numbered partials up or down relative to WIDTH.
+  - E-SKEW: adjusts the spacing of even-numbered partials up or down relative to WIDTH.
+  - GAIN: Sets the level of the output by adjusting an internal amplitude normalization parameter.
+  - DECAY: applies a positive or negative tilt to the amplitude decay of the partials; at the default position, amplitudes decrease proportionally with increasing frequency.
+  - BALANCE: cuts the amplitudes of the odd or even partials.
+  - FILTER: manipulates the partial amplitudes to simulate low or high-pass filter effects.
+
+#### FM-OP
+
+A sine-wave oscillator and simple synth voice designed to allow patching up the classic FM "algorithms", via multiple copies of FM-OP (each copy being one operator in the algorithm).  Features:
+  - Linear through-zero FM response.
+  - CV-controllable FM depth (of the external FM signal at the FM input).
+  - CV-controllable FM feedback.
+  - CV-controllable output level.
+  - An on-board ADSR, controlled by the GATE input, with selectable routing to output level, feedback and depth, with CV control over the sustain level.
+  - A main frequency knob calibrated for setting the frequency as a ratio of the frequency dictated by the V/OCT input - assuming a single V/OCT CV is routed to multiple FM-OPs, this allows the relative frequency of each operator to be set via ratios.
+
+### <a name="lfos"></a> LFOs
+
+![LFOs screenshot](doc/www/lfos.png)
+
+#### LFO
+
+A standard LFO featuring:
+  - Simultaneous ramp-down, ramp-up (saw), square, triangle and sine wave outputs.
+  - Knob and CV control of the pulse width of the square wave.
+  - A CV-controllable "sample" modifier, which turns the output into a step function, as might be produced by patching the unmodified output through a sample-and-hold.
+  - Onboard CV-controllable offset and scale of the output voltages.
+  - Reset (hard sync) input.
+  - Slow mode.
+
+LFO tracks pitch CVs at the V/OCT input four octaves lower than a normal oscillator: with a 0V input, the output frequency is note C0 (16.35HZ).  The frequency knob is calibrated in linear volts (the small ticks), and its value is added to the input V/OCT.  With no input, the frequency range is from approximately 0.1 to 400HZ; with CV the frequency may be driven up to 2000HZ or down to arbitrarily low values.  In slow mode, the output frequency tracks the controls 8 octaves lower than in normal mode.
+
+#### 8FO
+
+An LFO with outputs at 8 different phases.  The phases may be set by knobs and CVs; by default they are 0, 45, 90, etc, degrees from the fundamental.  Otherwise, functionality is the same as with LFO, excepting that the wave shape is selectable, and all outputs are of the same (phase-shifted) wave.
 
 ### <a name="envelopes"></a> Envelopes
 
