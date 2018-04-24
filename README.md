@@ -5,7 +5,7 @@ Modules for [VCV Rack](https://github.com/VCVRack/Rack), an open-source Eurorack
   - [LFOs](#lfos)
   - [Envelopes](#envelopes)
   - [Spectrum Analyzer](#analyzer)
-  - [Utilities](#utilities).
+  - [Utilities](#utilities)
 
 ![Modules screenshot](./doc/www/modules.png)
 
