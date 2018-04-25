@@ -64,6 +64,17 @@ struct PinkNoiseGenerator : BasePinkNoiseGenerator<WhiteNoiseGenerator> {};
 
 struct RedNoiseGenerator : BasePinkNoiseGenerator<PinkNoiseGenerator> {};
 
+struct BlueNoiseGenerator : NoiseGenerator {
+	PinkNoiseGenerator _pink;
+	float _last = 0.0f;
+
+	virtual float _next() override {
+		float t = _last;
+		_last = _pink.next();
+		return _last - t;
+	}
+};
+
 struct GaussianNoiseGenerator : NoiseGenerator {
 	std::normal_distribution<float> _normal;
 

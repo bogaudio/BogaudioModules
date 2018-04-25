@@ -53,19 +53,21 @@
 
   <g transform="translate(0 18)">
     <g transform="translate(7.5 0)">
-      <rect width="34" height="168" rx="5" fill="#bbb" transform="translate(-2 0)" />
-      <use id="WHITE_OUTPUT" xlink:href="#output" transform="translate(3 6)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(0.5 39)">WHITE</text>
-      <use id="PINK_OUTPUT" xlink:href="#output" transform="translate(3 47)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(4.5 80)">PINK</text>
-      <use id="RED_OUTPUT" xlink:href="#output" transform="translate(3 88)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(7 121)">RED</text>
-      <use id="GAUSS_OUTPUT" xlink:href="#output" transform="translate(3 129)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(0 162)">GAUSS</text>
+      <rect width="34" height="209" rx="5" fill="#bbb" transform="translate(-2 0)" />
+      <use id="BLUE_OUTPUT" xlink:href="#output" transform="translate(3 6)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(4 39)">BLUE</text>
+      <use id="WHITE_OUTPUT" xlink:href="#output" transform="translate(3 47)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(0.5 80)">WHITE</text>
+      <use id="PINK_OUTPUT" xlink:href="#output" transform="translate(3 88)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(4.5 121)">PINK</text>
+      <use id="RED_OUTPUT" xlink:href="#output" transform="translate(3 129)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(7 162)">RED</text>
+      <use id="GAUSS_OUTPUT" xlink:href="#output" transform="translate(3 170)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(0 203)">GAUSS</text>
     </g>
   </g>
 
-  <g transform="translate(0 242)">
+  <g transform="translate(0 250)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(13 -4)">ABS</text>
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 28)" />

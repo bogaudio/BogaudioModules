@@ -25,6 +25,7 @@ struct Noise : Module {
 		RED_OUTPUT,
 		GAUSS_OUTPUT,
 		ABS_OUTPUT,
+		BLUE_OUTPUT,
 		NUM_OUTPUTS
 	};
 
@@ -32,6 +33,7 @@ struct Noise : Module {
 		NUM_LIGHTS
 	};
 
+	BlueNoiseGenerator _blue;
 	WhiteNoiseGenerator _white;
 	PinkNoiseGenerator _pink;
 	RedNoiseGenerator _red;
