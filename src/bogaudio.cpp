@@ -19,6 +19,7 @@
 #include "Detune.hpp"
 #include "DGate.hpp"
 #include "Manual.hpp"
+#include "Mult.hpp"
 #include "Noise.hpp"
 #include "Offset.hpp"
 #include "Reftone.hpp"
@@ -62,6 +63,9 @@ void init(rack::Plugin *p) {
 	p->addModel(modelDetune);
 	p->addModel(modelDGate);
 	p->addModel(modelManual);
+#ifdef EXPERIMENTAL
+	p->addModel(modelMult);
+#endif
 	p->addModel(modelNoise);
 	p->addModel(modelOffset);
 	p->addModel(modelReftone);
