@@ -89,4 +89,4 @@ struct ADSRWidget : ModuleWidget {
 	}
 };
 
-Model* modelADSR = Model::create<ADSR, ADSRWidget>("Bogaudio", "Bogaudio-ADSR", "ADSR");
+Model* modelADSR = Model::create<ADSR, ADSRWidget>("Bogaudio", "Bogaudio-ADSR", "ADSR", ENVELOPE_GENERATOR_TAG);
