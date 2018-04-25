@@ -46,8 +46,22 @@ void ADSR::setRelease(float seconds) {
 	_release = std::max(seconds, 0.001f);
 }
 
-void ADSR::setShape(Shape shape) {
-	_shape = shape;
+void ADSR::setLinearShape(bool linear) {
+	if (linear) {
+		setShapes(1.0f, 1.0f, 1.0f);
+	}
+	else {
+		setShapes(0.5f, 0.5f, 0.5f);
+	}
+}
+
+void ADSR::setShapes(float attackShape, float decayShape, float releaseShape) {
+	assert(attackShape >= 0.1f && attackShape <= 10.0f);
+	assert(decayShape >= 0.0f && decayShape <= 10.0f);
+	assert(releaseShape >= 0.0f && releaseShape <= 10.0f);
+	_attackShape = attackShape;
+	_decayShape = decayShape;
+	_releaseShape = releaseShape;
 }
 
 float ADSR::_next() {
@@ -77,16 +91,7 @@ float ADSR::_next() {
 			}
 			case RELEASE_STAGE: {
 				_stage = ATTACK_STAGE;
-				switch (_shape) {
-					case EXPONENTIAL_SHAPE: {
-						_stageProgress = _attack * powf(_envelope, 2.0f);
-						break;
-					}
-					case LINEAR_SHAPE: {
-						_stageProgress = _attack * _envelope;
-						break;
-					}
-				}
+				_stageProgress = _attack * powf(_envelope, 1.0f / _releaseShape);
 				break;
 			}
 		}
@@ -121,17 +126,13 @@ float ADSR::_next() {
 		case ATTACK_STAGE: {
 			_stageProgress += _sampleTime;
 			_envelope = _stageProgress / _attack;
-			if (_shape == EXPONENTIAL_SHAPE) {
-				_envelope = powf(_envelope, 0.5f);
-			}
+			_envelope = powf(_envelope, _attackShape);
 			break;
 		}
 		case DECAY_STAGE: {
 			_stageProgress += _sampleTime;
 			_envelope = _stageProgress / _decay;
-			if (_shape == EXPONENTIAL_SHAPE) {
-				_envelope = powf(_envelope, 0.5f);
-			}
+			_envelope = powf(_envelope, _decayShape);
 			_envelope *= 1.0f - _sustain;
 			_envelope = 1.0f - _envelope;
 			break;
@@ -143,9 +144,7 @@ float ADSR::_next() {
 		case RELEASE_STAGE: {
 			_stageProgress += _sampleTime;
 			_envelope = _stageProgress / _release;
-			if (_shape == EXPONENTIAL_SHAPE) {
-				_envelope = powf(_envelope, 0.5f);
-			}
+			_envelope = powf(_envelope, _releaseShape);
 			_envelope *= _releaseLevel;
 			_envelope = _releaseLevel - _envelope;
 			break;

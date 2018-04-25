@@ -30,26 +30,21 @@ struct ADSR : EnvelopeGenerator {
 		RELEASE_STAGE
 	};
 
-	enum Shape {
-		LINEAR_SHAPE,
-		EXPONENTIAL_SHAPE
-	};
-
 	Stage _stage = STOPPED_STAGE;
 	bool _gated = false;
 	float _attack = 0.0f;
 	float _decay = 0.0f;
 	float _sustain = 1.0f;
 	float _release = 0.0f;
-	Shape _shape;
+	float _attackShape;
+	float _decayShape;
+	float _releaseShape;
 	float _stageProgress = 0.0f;
 	float _releaseLevel = 0.0f;
 	float _envelope = 0.0f;
 
-	ADSR(Shape shape = EXPONENTIAL_SHAPE, float sampleRate = 1000.0f)
-	: EnvelopeGenerator(sampleRate)
-	, _shape(shape)
-	{
+	ADSR(bool linear = false, float sampleRate = 1000.0f) : EnvelopeGenerator(sampleRate) {
+		setLinearShape(linear);
 	}
 
 	void reset();
@@ -58,7 +53,9 @@ struct ADSR : EnvelopeGenerator {
 	void setDecay(float seconds);
 	void setSustain(float level);
 	void setRelease(float seconds);
-	void setShape(Shape shape);
+	void setLinearShape(bool linear);
+	void setShapes(float attackShape, float decayShape, float releaseShape);
+	bool isStage(Stage stage) { return _stage == stage; }
 
 	virtual float _next() override;
 };

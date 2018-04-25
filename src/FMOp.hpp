@@ -79,7 +79,7 @@ struct FMOp : Module {
 
 	FMOp()
 	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
-	, _envelope(ADSR::LINEAR_SHAPE)
+	, _envelope(true)
 	{
 		onReset();
 		onSampleRateChange();

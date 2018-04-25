@@ -15,6 +15,7 @@
 
 #include "Analyzer.hpp"
 
+#include "ADSR.hpp"
 #include "Detune.hpp"
 #include "DGate.hpp"
 #include "Manual.hpp"
@@ -55,6 +56,9 @@ void init(rack::Plugin *p) {
 
 	p->addModel(modelAnalyzer);
 
+#ifdef EXPERIMENTAL
+	p->addModel(modelADSR);
+#endif
 	p->addModel(modelDetune);
 	p->addModel(modelDGate);
 	p->addModel(modelManual);
