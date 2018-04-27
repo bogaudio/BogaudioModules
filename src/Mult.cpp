@@ -53,4 +53,4 @@ struct MultWidget : ModuleWidget {
 	}
 };
 
-Model* modelMult = Model::create<Mult, MultWidget>("Bogaudio", "Bogaudio-Mult", "MULT", MULTIPLE_TAG);
+Model* modelMult = Model::create<Mult, MultWidget>("Bogaudio", "Bogaudio-Mult", "Mult", MULTIPLE_TAG, UTILITY_TAG);
