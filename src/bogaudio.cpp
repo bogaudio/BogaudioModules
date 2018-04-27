@@ -16,6 +16,7 @@
 #include "Analyzer.hpp"
 
 #include "ADSR.hpp"
+#include "Bool.hpp"
 #include "Detune.hpp"
 #include "DGate.hpp"
 #include "Manual.hpp"
@@ -25,6 +26,7 @@
 #include "Reftone.hpp"
 #include "SampleHold.hpp"
 #include "Stack.hpp"
+#include "Sums.hpp"
 #include "Switch.hpp"
 #include "VCA.hpp"
 
@@ -59,6 +61,7 @@ void init(rack::Plugin *p) {
 
 #ifdef EXPERIMENTAL
 	p->addModel(modelADSR);
+	p->addModel(modelBool);
 #endif
 	p->addModel(modelDetune);
 	p->addModel(modelDGate);
@@ -71,6 +74,9 @@ void init(rack::Plugin *p) {
 	p->addModel(modelReftone);
 	p->addModel(modelSampleHold);
 	p->addModel(modelStack);
+#ifdef EXPERIMENTAL
+	p->addModel(modelSums);
+#endif
 	p->addModel(modelSwitch);
 	p->addModel(modelVCA);
 
