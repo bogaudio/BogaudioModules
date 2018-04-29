@@ -15,6 +15,8 @@
 
 #include "Analyzer.hpp"
 
+#include "RM.hpp"
+
 #include "ADSR.hpp"
 #include "Bool.hpp"
 #include "Detune.hpp"
@@ -58,6 +60,10 @@ void init(rack::Plugin *p) {
 	p->addModel(modelDADSRHPlus);
 
 	p->addModel(modelAnalyzer);
+
+#ifdef EXPERIMENTAL
+	p->addModel(modelRM);
+#endif
 
 #ifdef EXPERIMENTAL
 	p->addModel(modelADSR);

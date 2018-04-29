@@ -45,5 +45,18 @@ struct SlewLimiter {
 	float next(float sample);
 };
 
+struct CrossFader {
+	float _mix = 2.0f;
+	float _aMix;
+	float _bMix;
+
+	CrossFader() {
+		setMix(0.0f);
+	}
+
+	void setMix(float mix); // -1 to 1, 0 for equal output of both inputs.
+	float next(float a, float b);
+};
+
 } // namespace dsp
 } // namespace bogaudio

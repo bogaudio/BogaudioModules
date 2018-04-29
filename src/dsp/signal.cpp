@@ -70,3 +70,23 @@ float SlewLimiter::next(float sample) {
 	--_steps;
 	return _current;
 }
+
+
+void CrossFader::setMix(float mix) {
+	assert(mix >= -1.0f && mix <= 1.0f);
+	if (_mix != mix) {
+		_mix = mix;
+		if (_mix < 0.0f) {
+			_aMix = 1.0f;
+			_bMix = 1.0f + _mix;
+		}
+		else {
+			_aMix = 1.0f - _mix;
+			_bMix = 1.0f;
+		}
+	}
+}
+
+float CrossFader::next(float a, float b) {
+	return _aMix * a + _bMix * b;
+}
