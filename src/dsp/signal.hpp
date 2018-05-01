@@ -1,7 +1,42 @@
 #pragma once
 
+#include <math.h>
+
+#include "table.hpp"
+
 namespace bogaudio {
 namespace dsp {
+
+// "amplitude" is 0-whatever here, with 1 (=0db) meaning unity gain.
+inline float decibelsToAmplitude(float db) {
+	return powf(10.0f, db * 0.05f);
+}
+
+inline float amplitudeToDecibels(float amplitude) {
+	return 20.0f * log10f(amplitude);
+}
+
+struct Amplifier {
+	static const float minDecibels;
+	static const float maxDecibels;
+	static const float decibelsRange;
+	struct LevelTable : Table {
+		LevelTable(int n) : Table(n) {}
+		virtual void _generate() override;
+	};
+	struct StaticLevelTable : StaticTable<LevelTable, 11> {};
+
+	float _db = 0.0f;
+	float _level;
+	const Table& _table;
+
+	Amplifier() : _table(StaticLevelTable::table())	{
+		setLevel(minDecibels);
+	}
+
+	void setLevel(float db);
+	float next(float s);
+};
 
 struct PositiveZeroCrossing {
 	const float positiveThreshold = 0.01f;

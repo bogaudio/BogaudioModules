@@ -2,18 +2,20 @@
 #include "VCA.hpp"
 
 void VCA::step() {
-	channelStep(inputs[IN1_INPUT], outputs[OUT1_OUTPUT], params[LEVEL1_PARAM], inputs[CV1_INPUT]);
-	channelStep(inputs[IN2_INPUT], outputs[OUT2_OUTPUT], params[LEVEL2_PARAM], inputs[CV2_INPUT]);
+	channelStep(inputs[IN1_INPUT], outputs[OUT1_OUTPUT], params[LEVEL1_PARAM], inputs[CV1_INPUT], _amplifier1);
+	channelStep(inputs[IN2_INPUT], outputs[OUT2_OUTPUT], params[LEVEL2_PARAM], inputs[CV2_INPUT], _amplifier2);
 }
 
-void VCA::channelStep(Input& input, Output& output, Param& knob, Input& cv) {
+void VCA::channelStep(Input& input, Output& output, Param& knob, Input& cv, Amplifier& amplifier) {
 	if (input.active && output.active) {
 		float level = knob.value;
 		if (cv.active) {
 			level *= clamp(cv.value, 0.0f, 10.0f) / 10.0f;
 		}
-		level = powf(level, 2.0);
-		output.value = level * input.value;
+		level = 1.0f - level;
+		level *= Amplifier::minDecibels;
+		amplifier.setLevel(level);
+		output.value = amplifier.next(input.value);
 	}
 	else {
 		output.value = 0.0;

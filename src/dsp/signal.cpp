@@ -1,9 +1,52 @@
 
 #include <assert.h>
+#include <algorithm>
 
 #include "signal.hpp"
 
 using namespace bogaudio::dsp;
+
+const float Amplifier::minDecibels = -60.0f;
+const float Amplifier::maxDecibels = 20.0f;
+const float Amplifier::decibelsRange = maxDecibels - minDecibels;
+
+void Amplifier::LevelTable::_generate() {
+	const float rdb = 6.0f;
+	const float tdb = Amplifier::minDecibels + rdb;
+	const float ta = decibelsToAmplitude(tdb);
+	_table[0] = 0.0f;
+	for (int i = 1; i < _length; ++i) {
+		float db = Amplifier::minDecibels + (i / (float)_length) * Amplifier::decibelsRange;
+		if (db <= tdb) {
+			_table[i] = ((db - minDecibels) / rdb) * ta;
+		}
+		else {
+			_table[i] = decibelsToAmplitude(db);
+		}
+	}
+}
+
+void Amplifier::setLevel(float db) {
+	if (_db != db) {
+		_db = db;
+		if (_db > minDecibels) {
+			if (_db < maxDecibels) {
+				_level = _table.value(((_db - minDecibels) / decibelsRange) * _table.length());
+			}
+			else {
+				_level = decibelsToAmplitude(_db);
+			}
+		}
+		else {
+			_level = 0.0f;
+		}
+	}
+}
+
+float Amplifier::next(float s) {
+	return _level * s;
+}
+
 
 bool PositiveZeroCrossing::next(float sample) {
 	switch (_state) {

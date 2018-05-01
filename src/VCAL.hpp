@@ -1,15 +1,12 @@
 #pragma once
 
 #include "bogaudio.hpp"
-#include "dsp/signal.hpp"
 
-using namespace bogaudio::dsp;
-
-extern Model* modelVCA;
+extern Model* modelVCAL;
 
 namespace bogaudio {
 
-struct VCA : Module {
+struct VCAL : Module {
 	enum ParamsIds {
 		LEVEL1_PARAM,
 		LEVEL2_PARAM,
@@ -34,13 +31,10 @@ struct VCA : Module {
 		NUM_LIGHTS
 	};
 
-	Amplifier _amplifier1;
-	Amplifier _amplifier2;
-
-	VCA() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {}
+	VCAL() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {}
 
 	virtual void step() override;
-	void channelStep(Input& input, Output& output, Param& knob, Input& cv, Amplifier& amplifier);
+	void channelStep(Input& input, Output& output, Param& knob, Input& cv);
 };
 
 } // namespace bogaudio

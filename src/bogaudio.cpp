@@ -31,6 +31,7 @@
 #include "Sums.hpp"
 #include "Switch.hpp"
 #include "VCA.hpp"
+#include "VCAL.hpp"
 
 #include "Test.hpp"
 #include "Test2.hpp"
@@ -85,6 +86,9 @@ void init(rack::Plugin *p) {
 #endif
 	p->addModel(modelSwitch);
 	p->addModel(modelVCA);
+#ifdef EXPERIMENTAL
+	p->addModel(modelVCAL);
+#endif
 
 #ifdef TEST
 	p->addModel(modelTest);
