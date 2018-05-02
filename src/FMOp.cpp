@@ -132,8 +132,9 @@ void FMOp::step() {
 	if (_levelEnvelopeOn) {
 		out *= envelope;
 	}
-	out *= out;
-	out *= _decimator.next(_buffer);
+	out = (1.0f - out) * Amplifier::minDecibels;
+	_amplifier.setLevel(out);
+	out = _amplifier.next(_decimator.next(_buffer));
 	outputs[AUDIO_OUTPUT].value = _feedbackDelayedSample = amplitude * out;
 }
 

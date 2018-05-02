@@ -76,6 +76,7 @@ struct FMOp : Module {
 	SlewLimiter _depthSL;
 	SlewLimiter _levelSL;
 	SlewLimiter _sustainSL;
+	Amplifier _amplifier;
 
 	FMOp()
 	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
