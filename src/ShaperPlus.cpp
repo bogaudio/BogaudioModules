@@ -57,7 +57,7 @@ struct ShaperPlusWidget : ModuleWidget {
 		addParam(ParamWidget::create<Knob38>(decayParamPosition, module, ShaperPlus::DECAY_PARAM, 0.0, 1.0, 0.32));
 		addParam(ParamWidget::create<Knob38>(offParamPosition, module, ShaperPlus::OFF_PARAM, 0.0, 1.0, 0.07));
 		addParam(ParamWidget::create<Knob38>(envParamPosition, module, ShaperPlus::ENV_PARAM, 0.0, 1.0, 1.0));
-		addParam(ParamWidget::create<Knob38>(signalParamPosition, module, ShaperPlus::SIGNAL_PARAM, 0.0, 1.0, 0.5));
+		addParam(ParamWidget::create<Knob38>(signalParamPosition, module, ShaperPlus::SIGNAL_PARAM, 0.0, 1.0, 0.1));
 
 		addParam(ParamWidget::create<Button18>(triggerParamPosition, module, ShaperPlus::TRIGGER_PARAM, 0.0, 1.0, 0.0));
 		addInput(Port::create<Port24>(triggerInputPosition, Port::INPUT, module, ShaperPlus::TRIGGER_INPUT));
