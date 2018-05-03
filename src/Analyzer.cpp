@@ -1,5 +1,6 @@
 
 #include "Analyzer.hpp"
+#include "dsp/signal.hpp"
 
 struct bogaudio::ChannelAnalyzer : SpectrumAnalyzer {
 	int _binsN;
@@ -172,8 +173,8 @@ struct AnalyzerDisplay : TransparentWidget {
 	const int _insetTop = _insetAround + 13;
 	const int _insetBottom = _insetAround + 9;
 
-	const float _refDB0 = 20.0; // arbitrary; makes a 10.0-amplitude sine wave reach to about 0db on the output.
-	const float _displayDB = 120.0;
+	const float _displayDB = 80.0;
+	const float _positiveDisplayDB = 20.0;
 
 	const float xAxisLogFactor = 1 / 3.321; // magic number.
 
@@ -302,20 +303,41 @@ void AnalyzerDisplay::drawYAxis(NVGcontext* vg, float strokeWidth) {
 	nvgStroke(vg);
 
 	nvgBeginPath(vg);
-	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_displayDB - 20.0)/_displayDB);
+	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_displayDB - _positiveDisplayDB + 12.0)/_displayDB);
 	nvgMoveTo(vg, lineX, lineY);
 	nvgLineTo(vg, _size.x - _insetRight, lineY);
 	nvgStroke(vg);
+	drawText(vg, "12", textX, lineY + 5.0, textR);
 
+	nvgBeginPath(vg);
+	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_displayDB - _positiveDisplayDB)/_displayDB);
+	nvgMoveTo(vg, lineX, lineY);
+	nvgLineTo(vg, _size.x - _insetRight, lineY);
+	nvgStrokeWidth(vg, strokeWidth * 1.5);
+	nvgStroke(vg);
+	nvgStrokeWidth(vg, strokeWidth);
 	drawText(vg, "0", textX, lineY + 2.3, textR);
 
 	nvgBeginPath(vg);
-	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_displayDB - 70.0)/_displayDB);
+	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_displayDB - _positiveDisplayDB - 12.0)/_displayDB);
 	nvgMoveTo(vg, lineX, lineY);
 	nvgLineTo(vg, _size.x - _insetRight, lineY);
 	nvgStroke(vg);
+	drawText(vg, "-12", textX, lineY + 10, textR);
 
-	drawText(vg, "-50", textX, lineY + 10, textR);
+	nvgBeginPath(vg);
+	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_displayDB - _positiveDisplayDB - 24.0)/_displayDB);
+	nvgMoveTo(vg, lineX, lineY);
+	nvgLineTo(vg, _size.x - _insetRight, lineY);
+	nvgStroke(vg);
+	drawText(vg, "-24", textX, lineY + 10, textR);
+
+	nvgBeginPath(vg);
+	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_displayDB - _positiveDisplayDB - 48.0)/_displayDB);
+	nvgMoveTo(vg, lineX, lineY);
+	nvgLineTo(vg, _size.x - _insetRight, lineY);
+	nvgStroke(vg);
+	drawText(vg, "-48", textX, lineY + 10, textR);
 
 	nvgBeginPath(vg);
 	lineY = _insetTop + _graphSize.y + 1;
@@ -429,13 +451,18 @@ void AnalyzerDisplay::drawText(NVGcontext* vg, const char* s, float x, float y, 
 }
 
 int AnalyzerDisplay::binValueToHeight(float value) {
-	value /= _refDB0;
-	value = log10(value);
-	value = std::max(-5.0f, value);
-	value = std::min(1.0f, value);
-	value *= 20.0;
-	value = (value + _displayDB - 20.0) / _displayDB;
-	return round(_graphSize.y * value);
+	const float minDB = -(_displayDB - _positiveDisplayDB);
+	if (value < 0.00001f) {
+		return 0;
+	}
+	value /= 10.0f; // arbitrarily use 5.0f as reference "maximum" baseline signal (e.g. raw output of an oscillator)...but signals are +/-5, so 10 total.
+	value = powf(value, 0.5f); // undoing magnitude scaling of levels back from the FFT?
+	value = amplitudeToDecibels(value);
+	value = std::max(minDB, value);
+	value = std::min(_positiveDisplayDB, value);
+	value -= minDB;
+	value /= _displayDB;
+	return roundf(_graphSize.y * value);
 }
 
 
