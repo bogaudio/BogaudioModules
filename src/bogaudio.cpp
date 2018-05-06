@@ -32,6 +32,7 @@
 #include "Switch.hpp"
 #include "VCA.hpp"
 #include "VCAL.hpp"
+#include "VCAmp.hpp"
 
 #include "Test.hpp"
 #include "Test2.hpp"
@@ -88,6 +89,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelVCA);
 #ifdef EXPERIMENTAL
 	p->addModel(modelVCAL);
+	p->addModel(modelVCAmp);
 #endif
 
 #ifdef TEST

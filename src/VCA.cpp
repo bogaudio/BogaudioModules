@@ -17,9 +17,6 @@ void VCA::channelStep(Input& input, Output& output, Param& knob, Input& cv, Ampl
 		amplifier.setLevel(level);
 		output.value = amplifier.next(input.value);
 	}
-	else {
-		output.value = 0.0;
-	}
 }
 
 struct VCAWidget : ModuleWidget {

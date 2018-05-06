@@ -14,9 +14,6 @@ void VCAL::channelStep(Input& input, Output& output, Param& knob, Input& cv) {
 		}
 		output.value = level * input.value;
 	}
-	else {
-		output.value = 0.0;
-	}
 }
 
 struct VCALWidget : ModuleWidget {
