@@ -33,10 +33,15 @@ struct VCAmp : Module {
 	const float maxDecibels = 12.0f;
 	const float minDecibels = Amplifier::minDecibels;
 	Amplifier _amplifier;
+	RootMeanSquare _rms;
+	float _rmsLevel = 0.0f;
 
 	VCAmp() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+		onSampleRateChange();
+		_rms.setSensitivity(0.05f);
 	}
 
+	virtual void onSampleRateChange() override;
 	virtual void step() override;
 };
 

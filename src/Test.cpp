@@ -347,6 +347,15 @@ void Test::step() {
 	}
 	_slew.setParams(engineGetSampleRate(), powf(ms, 2.0f) * 100.0f);
 	outputs[OUT_OUTPUT].value = _slew.next(inputs[IN_INPUT].value);
+
+#elif RMS
+	float sensitivity = params[PARAM2_PARAM].value;
+	if (inputs[CV2_INPUT].active) {
+		sensitivity *= clamp(inputs[CV2_INPUT].value, 0.0f, 10.0f) / 10.0f;
+	}
+	_rms.setSampleRate(engineGetSampleRate());
+	_rms.setSensitivity(sensitivity);
+	outputs[OUT_OUTPUT].value = _rms.next(inputs[IN_INPUT].value);
 #endif
 }
 

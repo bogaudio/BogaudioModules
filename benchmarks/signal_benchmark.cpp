@@ -3,6 +3,7 @@
 
 #include <benchmark/benchmark.h>
 
+#include "dsp/oscillator.hpp"
 #include "dsp/noise.hpp"
 #include "dsp/signal.hpp"
 
@@ -47,6 +48,59 @@ static void BM_Amplifier(benchmark::State& state) {
   }
 }
 BENCHMARK(BM_Amplifier);
+
+static void BM_RMS_Short(benchmark::State& state) {
+  SineOscillator o(500.0, 100.0);
+  const int n = 256;
+  float buf[n];
+  for (int i = 0; i < n; ++i) {
+    buf[i] = o.next() * 5.0f;
+  }
+  RootMeanSquare rms(44100.0, 0.05);
+  int i = 0;
+  for (auto _ : state) {
+    i = ++i % n;
+    benchmark::DoNotOptimize(rms.next(buf[i]));
+  }
+}
+BENCHMARK(BM_RMS_Short);
+
+static void BM_RMS_Long(benchmark::State& state) {
+  SineOscillator o(500.0, 100.0);
+  const int n = 256;
+  float buf[n];
+  for (int i = 0; i < n; ++i) {
+    buf[i] = o.next() * 5.0f;
+  }
+  RootMeanSquare rms(44100.0, 1.0);
+  int i = 0;
+  for (auto _ : state) {
+    i = ++i % n;
+    benchmark::DoNotOptimize(rms.next(buf[i]));
+  }
+}
+BENCHMARK(BM_RMS_Long);
+
+static void BM_RMS_Modulating(benchmark::State& state) {
+  SineOscillator o(500.0, 100.0);
+  const int n = 256;
+  float buf[n];
+  for (int i = 0; i < n; ++i) {
+    buf[i] = o.next() * 5.0f;
+  }
+	std::minstd_rand g;
+	std::uniform_real_distribution<float> r(0.0f, 1.0f);
+  RootMeanSquare rms(44100.0, 1.0);
+  int i = 0;
+  for (auto _ : state) {
+    i = ++i % n;
+    if (i % 50 == 0) {
+      rms.setSensitivity(r(g));
+    }
+    benchmark::DoNotOptimize(rms.next(buf[i]));
+  }
+}
+BENCHMARK(BM_RMS_Modulating);
 
 static void BM_SlewLimiter_Fast(benchmark::State& state) {
   WhiteNoiseGenerator r;

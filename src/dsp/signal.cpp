@@ -48,6 +48,69 @@ float Amplifier::next(float s) {
 }
 
 
+void RootMeanSquare::setSampleRate(float sampleRate) {
+	assert(sampleRate > 0.0f);
+	if (_sampleRate != sampleRate) {
+		_sampleRate = sampleRate;
+		if (_buffer) {
+			delete[] _buffer;
+		}
+		_bufferN = (maxDelayMS / 1000.0f) * _sampleRate;
+		_buffer = new float[_bufferN] {};
+		if (_initialized) {
+			_initialized = false;
+			setSensitivity(_sensitivity);
+		}
+	}
+}
+
+void RootMeanSquare::setSensitivity(float sensitivity) {
+	assert(sensitivity >= 0.0f);
+	assert(sensitivity <= 1.0f);
+	if (_initialized) {
+		if (_sensitivity != sensitivity) {
+			_sensitivity = sensitivity;
+			int newSumN = std::max(_sensitivity * _bufferN, 1.0f);
+			int i = newSumN;
+			while (i > _sumN) {
+				_trailI = --_trailI;
+				if (_trailI < 0) {
+					_trailI = _bufferN - 1;
+				}
+				_sum += _buffer[_trailI];
+				--i;
+			}
+			while (i < _sumN) {
+				_sum -= _buffer[_trailI];
+				_trailI = ++_trailI % _bufferN;
+				++i;
+			}
+			_sumN = newSumN;
+		}
+	}
+	else {
+		_initialized = true;
+		_sensitivity = sensitivity;
+		_sumN = std::max(_sensitivity * _bufferN, 1.0f);
+		_leadI = 0;
+		_trailI = _bufferN - _sumN;
+		_sum = 0.0f;
+	}
+	assert(_sumN > 0);
+}
+
+float RootMeanSquare::next(float sample) {
+	_sum -= _buffer[_trailI];
+	_trailI = ++_trailI % _bufferN;
+	_sum += _buffer[_leadI] = sample * sample;
+	_leadI = ++_leadI % _bufferN;
+	if (_sum <= 0.0) {
+		return 0.0f;
+	}
+	return sqrtf((float)_sum / (float)_sumN);
+}
+
+
 bool PositiveZeroCrossing::next(float sample) {
 	switch (_state) {
 		case NEGATIVE_STATE: {

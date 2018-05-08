@@ -38,6 +38,35 @@ struct Amplifier {
 	float next(float s);
 };
 
+struct RootMeanSquare {
+	const float maxDelayMS = 300.0;
+	const float minDelayMS = 0.2;
+	float _sampleRate = -1.0f;
+	float _sensitivity = -1.0f;
+
+	bool _initialized = false;
+	float* _buffer = NULL;
+	int _bufferN = 0;
+	int _sumN = 0;
+	int _leadI = 0;
+	int _trailI = 0;
+	double _sum = 0;
+
+	RootMeanSquare(float sampleRate = 1000.0f, float sensitivity = 1.0f) {
+		setSampleRate(sampleRate);
+		setSensitivity(sensitivity);
+	}
+	~RootMeanSquare() {
+		if (_buffer) {
+			delete[] _buffer;
+		}
+	}
+
+	void setSampleRate(float sampleRate);
+	void setSensitivity(float sensitivity);
+	float next(float sample);
+};
+
 struct PositiveZeroCrossing {
 	const float positiveThreshold = 0.01f;
 	const float negativeThreshold = -positiveThreshold;

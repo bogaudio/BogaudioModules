@@ -1,6 +1,10 @@
 
 #include "VCAmp.hpp"
 
+void VCAmp::onSampleRateChange() {
+	_rms.setSampleRate(engineGetSampleRate());
+}
+
 void VCAmp::step() {
 	if (inputs[IN_INPUT].active && outputs[OUT_OUTPUT].active) {
 		float level = params[LEVEL_PARAM].value;
@@ -11,6 +15,7 @@ void VCAmp::step() {
 		level += minDecibels;
 		_amplifier.setLevel(level);
 		outputs[OUT_OUTPUT].value = _amplifier.next(inputs[IN_INPUT].value);
+		_rmsLevel = _rms.next(outputs[OUT_OUTPUT].value) / 5.0f;
 	}
 }
 
@@ -51,20 +56,23 @@ struct VUSlider : Knob {
 			nvgFillColor(vg, nvgRGBA(0xaa, 0xaa, 0xaa, 0xff));
 			nvgFill(vg);
 
-			float db = -60.0f + value * 72.0f;
-			if (db > -60.0f) {
-				nvgBeginPath(vg);
-				nvgRoundedRect(vg, 2, 4, 14, 5, 1.0);
-				if (db < -12.0f) {
-					nvgFillColor(vg, nvgRGBA(0x00, 0xff, 0x00, (1.0f - (db + 12.0f) / -48.0f) * (float)0xff));
+			float db = dynamic_cast<VCAmp*>(module)->_rmsLevel;
+			if (db > 0.0f) {
+				db = amplitudeToDecibels(db);
+				if (db > -60.0f) {
+					nvgBeginPath(vg);
+					nvgRoundedRect(vg, 2, 4, 14, 5, 1.0);
+					if (db < -24.0f) {
+						nvgFillColor(vg, nvgRGBA(0x55, 0xff, 0x00, (1.0f - (db + 24.0f) / -36.0f) * (float)0xff));
+					}
+					else if (db < 0.0f) {
+						nvgFillColor(vg, nvgRGBA((1.0f - db / -24.0f) * 0xff, 0xff, 0x00, 0xff));
+					}
+					else {
+						nvgFillColor(vg, nvgRGBA(0xff, (1.0f - db / 18.0f) * 0xff, 0x00, 0xff));
+					}
+					nvgFill(vg);
 				}
-				else if (db < 0.0f) {
-					nvgFillColor(vg, nvgRGBA((1.0f - db / -12.0f) * 0xff, 0xff, 0x00, 0xff));
-				}
-				else {
-					nvgFillColor(vg, nvgRGBA(0xff, (1.0f - db / 12.0f) * 0xff, 0x00, 0xff));
-				}
-				nvgFill(vg);
 			}
 		}
 		nvgRestore(vg);
