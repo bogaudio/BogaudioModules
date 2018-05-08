@@ -67,6 +67,19 @@ struct RootMeanSquare {
 	float next(float sample);
 };
 
+// Puckette 2007, "Theory and Technique"
+struct PucketteEnvelopeFollower {
+	float _sensitivity = -1.0f;
+	float _lastOutput = 0.0f;
+
+	PucketteEnvelopeFollower(float sensitivity = 1.0f) {
+		setSensitivity(sensitivity);
+	}
+
+	void setSensitivity(float sensitivity);
+	float next(float sample);
+};
+
 struct PositiveZeroCrossing {
 	const float positiveThreshold = 0.01f;
 	const float negativeThreshold = -positiveThreshold;

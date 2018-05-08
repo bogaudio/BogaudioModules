@@ -188,6 +188,7 @@ struct Test : Module {
 	SlewLimiter _slew;
 #elif RMS
 	RootMeanSquare _rms;
+	PucketteEnvelopeFollower _pef;
 #endif
 
 	Test()

@@ -356,6 +356,8 @@ void Test::step() {
 	_rms.setSampleRate(engineGetSampleRate());
 	_rms.setSensitivity(sensitivity);
 	outputs[OUT_OUTPUT].value = _rms.next(inputs[IN_INPUT].value);
+	_pef.setSensitivity(sensitivity);
+	outputs[OUT2_OUTPUT].value = _pef.next(inputs[IN_INPUT].value);
 #endif
 }
 

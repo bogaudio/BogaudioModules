@@ -102,6 +102,22 @@ static void BM_RMS_Modulating(benchmark::State& state) {
 }
 BENCHMARK(BM_RMS_Modulating);
 
+static void BM_PucketteEnvelopeFollower(benchmark::State& state) {
+  SineOscillator o(500.0, 100.0);
+  const int n = 256;
+  float buf[n];
+  for (int i = 0; i < n; ++i) {
+    buf[i] = o.next() * 5.0f;
+  }
+  PucketteEnvelopeFollower pef;
+  int i = 0;
+  for (auto _ : state) {
+    i = ++i % n;
+    benchmark::DoNotOptimize(pef.next(buf[i]));
+  }
+}
+BENCHMARK(BM_PucketteEnvelopeFollower);
+
 static void BM_SlewLimiter_Fast(benchmark::State& state) {
   WhiteNoiseGenerator r;
   const int n = 256;

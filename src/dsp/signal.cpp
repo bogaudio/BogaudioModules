@@ -111,6 +111,20 @@ float RootMeanSquare::next(float sample) {
 }
 
 
+void PucketteEnvelopeFollower::setSensitivity(float sensitivity) {
+	assert(sensitivity >= 0.0f);
+	assert(sensitivity <= 1.0f);
+	_sensitivity = std::min(sensitivity, 0.97f);
+}
+
+float PucketteEnvelopeFollower::next(float sample) {
+	const float norm = 5.0f;
+	sample /= norm;
+	_lastOutput = _sensitivity * _lastOutput + (1 - _sensitivity) * sample * sample;
+	return _lastOutput * norm;
+}
+
+
 bool PositiveZeroCrossing::next(float sample) {
 	switch (_state) {
 		case NEGATIVE_STATE: {
