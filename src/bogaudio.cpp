@@ -21,6 +21,7 @@
 #include "Bool.hpp"
 #include "Detune.hpp"
 #include "DGate.hpp"
+#include "Follow.hpp"
 #include "Manual.hpp"
 #include "Mult.hpp"
 #include "Noise.hpp"
@@ -73,6 +74,9 @@ void init(rack::Plugin *p) {
 #endif
 	p->addModel(modelDetune);
 	p->addModel(modelDGate);
+#ifdef EXPERIMENTAL
+	p->addModel(modelFollow);
+#endif
 	p->addModel(modelManual);
 #ifdef EXPERIMENTAL
 	p->addModel(modelMult);

@@ -39,8 +39,7 @@ struct Amplifier {
 };
 
 struct RootMeanSquare {
-	const float maxDelayMS = 300.0;
-	const float minDelayMS = 0.2;
+	float _maxDelayMS;
 	float _sampleRate = -1.0f;
 	float _sensitivity = -1.0f;
 
@@ -52,7 +51,7 @@ struct RootMeanSquare {
 	int _trailI = 0;
 	double _sum = 0;
 
-	RootMeanSquare(float sampleRate = 1000.0f, float sensitivity = 1.0f) {
+	RootMeanSquare(float sampleRate = 1000.0f, float sensitivity = 1.0f, float maxDelayMS = 300.0f) : _maxDelayMS(maxDelayMS) {
 		setSampleRate(sampleRate);
 		setSensitivity(sensitivity);
 	}

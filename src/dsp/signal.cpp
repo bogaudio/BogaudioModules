@@ -55,7 +55,7 @@ void RootMeanSquare::setSampleRate(float sampleRate) {
 		if (_buffer) {
 			delete[] _buffer;
 		}
-		_bufferN = (maxDelayMS / 1000.0f) * _sampleRate;
+		_bufferN = (_maxDelayMS / 1000.0f) * _sampleRate;
 		_buffer = new float[_bufferN] {};
 		if (_initialized) {
 			_initialized = false;
