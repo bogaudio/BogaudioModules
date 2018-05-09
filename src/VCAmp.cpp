@@ -59,20 +59,10 @@ struct VUSlider : Knob {
 			float db = dynamic_cast<VCAmp*>(module)->_rmsLevel;
 			if (db > 0.0f) {
 				db = amplitudeToDecibels(db);
-				if (db > -60.0f) {
-					nvgBeginPath(vg);
-					nvgRoundedRect(vg, 2, 4, 14, 5, 1.0);
-					if (db < -24.0f) {
-						nvgFillColor(vg, nvgRGBA(0x55, 0xff, 0x00, (1.0f - (db + 24.0f) / -36.0f) * (float)0xff));
-					}
-					else if (db < 0.0f) {
-						nvgFillColor(vg, nvgRGBA((1.0f - db / -24.0f) * 0xff, 0xff, 0x00, 0xff));
-					}
-					else {
-						nvgFillColor(vg, nvgRGBA(0xff, (1.0f - db / 18.0f) * 0xff, 0x00, 0xff));
-					}
-					nvgFill(vg);
-				}
+				nvgBeginPath(vg);
+				nvgRoundedRect(vg, 2, 4, 14, 5, 1.0);
+				nvgFillColor(vg, decibelsToColor(db));
+				nvgFill(vg);
 			}
 		}
 		nvgRestore(vg);

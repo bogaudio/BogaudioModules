@@ -107,3 +107,17 @@ void StatefulButton::onDragEnd(EventDragEnd& e) {
 
 StatefulButton9::StatefulButton9() : StatefulButton("res/button_9px_0.svg", "res/button_9px_1.svg") {
 }
+
+
+NVGcolor bogaudio::decibelsToColor(float db) {
+	if (db < -80.0f) {
+		return nvgRGBA(0x00, 0x00, 0x00, 0x00);
+	}
+	if (db < -24.0f) {
+		return nvgRGBA(0x55, 0xff, 0x00, (1.0f - (db + 24.0f) / -56.0f) * (float)0xff);
+	}
+	if (db < 0.0f) {
+		return nvgRGBA((1.0f - db / -24.0f) * 0xff, 0xff, 0x00, 0xff);
+	}
+	return nvgRGBA(0xff, (1.0f - db / 18.0f) * 0xff, 0x00, 0xff);
+}

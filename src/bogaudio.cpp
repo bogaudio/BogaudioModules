@@ -34,6 +34,7 @@
 #include "VCA.hpp"
 #include "VCAL.hpp"
 #include "VCAmp.hpp"
+#include "VU.hpp"
 
 #include "Test.hpp"
 #include "Test2.hpp"
@@ -94,6 +95,7 @@ void init(rack::Plugin *p) {
 #ifdef EXPERIMENTAL
 	p->addModel(modelVCAL);
 	p->addModel(modelVCAmp);
+	p->addModel(modelVU);
 #endif
 
 #ifdef TEST

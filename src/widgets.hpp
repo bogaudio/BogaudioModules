@@ -62,4 +62,6 @@ struct StatefulButton9 : StatefulButton {
 	StatefulButton9();
 };
 
+NVGcolor decibelsToColor(float db);
+
 } // namespace bogaudio
