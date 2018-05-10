@@ -21,6 +21,7 @@
 #include "Bool.hpp"
 #include "Detune.hpp"
 #include "DGate.hpp"
+#include "FlipFlop.hpp"
 #include "Follow.hpp"
 #include "Manual.hpp"
 #include "Mult.hpp"
@@ -77,6 +78,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelDetune);
 	p->addModel(modelDGate);
 #ifdef EXPERIMENTAL
+	p->addModel(modelFlipFlop);
 	p->addModel(modelFollow);
 #endif
 	p->addModel(modelManual);
