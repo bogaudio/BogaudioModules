@@ -152,3 +152,40 @@ static void BM_SlewLimiter_Slow(benchmark::State& state) {
   }
 }
 BENCHMARK(BM_SlewLimiter_Slow);
+
+static void BM_Panner(benchmark::State& state) {
+  SineOscillator o(500.0, 100.0);
+  const int n = 256;
+  float buf[n];
+  for (int i = 0; i < n; ++i) {
+    buf[i] = o.next() * 5.0f;
+  }
+  Panner p;
+  int i = 0;
+  float l, r;
+  for (auto _ : state) {
+    i = ++i % n;
+    p.next(buf[i], l, r);
+  }
+}
+BENCHMARK(BM_Panner);
+
+static void BM_Panner_Modulating(benchmark::State& state) {
+  SineOscillator o(500.0, 100.0);
+  const int n = 256;
+  float buf[n];
+  for (int i = 0; i < n; ++i) {
+    buf[i] = o.next() * 5.0f;
+  }
+  std::minstd_rand g;
+	std::uniform_real_distribution<float> r(-1.0f, 1.0f);
+  Panner p;
+  int i = 0;
+  float l, rr;
+  for (auto _ : state) {
+    i = ++i % n;
+    p.setPan(r(g));
+    p.next(buf[i], l, rr);
+  }
+}
+BENCHMARK(BM_Panner_Modulating);

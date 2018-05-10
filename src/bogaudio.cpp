@@ -26,6 +26,7 @@
 #include "Mult.hpp"
 #include "Noise.hpp"
 #include "Offset.hpp"
+#include "Pan.hpp"
 #include "Reftone.hpp"
 #include "SampleHold.hpp"
 #include "Stack.hpp"
@@ -84,6 +85,9 @@ void init(rack::Plugin *p) {
 #endif
 	p->addModel(modelNoise);
 	p->addModel(modelOffset);
+#ifdef EXPERIMENTAL
+	p->addModel(modelPan);
+#endif
 	p->addModel(modelReftone);
 	p->addModel(modelSampleHold);
 	p->addModel(modelStack);

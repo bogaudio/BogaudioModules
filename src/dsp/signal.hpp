@@ -134,5 +134,19 @@ struct CrossFader {
 	float next(float a, float b);
 };
 
+struct Panner {
+	float _pan = 2.0f;
+	float _lLevel = 0.0f;
+	float _rLevel = 0.0f;
+	const Table& _sineTable;
+
+	Panner() : _sineTable(StaticSineTable::table()) {
+		setPan(0.0f);
+	}
+
+	void setPan(float pan); // -1.0 full left, 0.0 even, 1.0f full right.
+	void next(float sample, float& l, float& r);
+};
+
 } // namespace dsp
 } // namespace bogaudio

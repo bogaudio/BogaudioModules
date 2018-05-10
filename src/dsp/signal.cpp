@@ -210,3 +210,19 @@ void CrossFader::setMix(float mix) {
 float CrossFader::next(float a, float b) {
 	return _aMix * a + _bMix * b;
 }
+
+
+void Panner::setPan(float pan) {
+	assert(pan >= -1.0f);
+	assert(pan <= 1.0f);
+	if (_pan != pan) {
+		_pan = pan;
+		_lLevel = _sineTable.value(((1.0f + _pan) / 8.0f + 0.25f) * _sineTable.length());
+		_rLevel = _sineTable.value(((1.0f + _pan) / 8.0f) * _sineTable.length());
+	}
+}
+
+void Panner::next(float sample, float& l, float& r) {
+	l = _lLevel * sample;
+	r = _rLevel * sample;
+}
