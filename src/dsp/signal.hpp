@@ -148,5 +148,30 @@ struct Panner {
 	void next(float sample, float& l, float& r);
 };
 
+struct DelayLine {
+	const float _maxTimeMS;
+	float _sampleRate = -1.0f;
+	int _bufferN;
+	float* _buffer = NULL;
+	float _time = -1.0f;
+	bool _initialized = false;
+	int _delaySamples;
+	int _leadI;
+	int _trailI;
+
+	DelayLine(float sampleRate = 1000.0f, float maxTimeMS = 1000.0f, float time = 1.0f) : _maxTimeMS(maxTimeMS) {
+		setSampleRate(sampleRate);
+		setTime(time);
+	}
+	~DelayLine() {
+		delete[] _buffer;
+	}
+
+	void setSampleRate(float sampleRate);
+	void setTime(float time);
+	float next(float sample);
+	int delaySamples();
+};
+
 } // namespace dsp
 } // namespace bogaudio

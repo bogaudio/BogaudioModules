@@ -189,3 +189,19 @@ static void BM_Panner_Modulating(benchmark::State& state) {
   }
 }
 BENCHMARK(BM_Panner_Modulating);
+
+static void BM_DelayLine(benchmark::State& state) {
+  SineOscillator o(500.0, 100.0);
+  const int n = 256;
+  float buf[n];
+  for (int i = 0; i < n; ++i) {
+    buf[i] = o.next() * 5.0f;
+  }
+  DelayLine dl(44100.0, 1000.0, 1.0);
+  int i = 0;
+  for (auto _ : state) {
+    i = ++i % n;
+    benchmark::DoNotOptimize(dl.next(buf[i]));
+  }
+}
+BENCHMARK(BM_DelayLine);

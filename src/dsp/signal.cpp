@@ -73,7 +73,7 @@ void RootMeanSquare::setSensitivity(float sensitivity) {
 			int newSumN = std::max(_sensitivity * _bufferN, 1.0f);
 			int i = newSumN;
 			while (i > _sumN) {
-				_trailI = --_trailI;
+				--_trailI;
 				if (_trailI < 0) {
 					_trailI = _bufferN - 1;
 				}
@@ -96,7 +96,6 @@ void RootMeanSquare::setSensitivity(float sensitivity) {
 		_trailI = _bufferN - _sumN;
 		_sum = 0.0f;
 	}
-	assert(_sumN > 0);
 }
 
 float RootMeanSquare::next(float sample) {
@@ -225,4 +224,64 @@ void Panner::setPan(float pan) {
 void Panner::next(float sample, float& l, float& r) {
 	l = _lLevel * sample;
 	r = _rLevel * sample;
+}
+
+
+void DelayLine::setSampleRate(float sampleRate) {
+	assert(sampleRate > 0.0f);
+	if (_sampleRate != sampleRate) {
+		_sampleRate = sampleRate;
+		if (_buffer) {
+			delete[] _buffer;
+		}
+		_bufferN = ceil((_maxTimeMS / 1000.0f) * _sampleRate);
+		_buffer = new float[_bufferN] {};
+		if (_initialized) {
+			_initialized = false;
+			setTime(_time);
+		}
+	}
+}
+
+void DelayLine::setTime(float time) {
+	assert(time >= 0.0f);
+	assert(time <= 1.0f);
+	if (_initialized) {
+		if (_time != time) {
+			_time = time;
+			int newDelaySamples = delaySamples();
+			int i = newDelaySamples;
+			while (i > _delaySamples) {
+				--_trailI;
+				if (_trailI < 0) {
+					_trailI = _bufferN - 1;
+				}
+				--i;
+			}
+			while (i < _delaySamples) {
+				_trailI = ++_trailI % _bufferN;
+				++i;
+			}
+			_delaySamples = newDelaySamples;
+		}
+	}
+	else {
+		_initialized = true;
+		_time = time;
+		_delaySamples = delaySamples();
+		_leadI = 0;
+		_trailI = _bufferN - _delaySamples;
+	}
+}
+
+float DelayLine::next(float sample) {
+	float delayed = _buffer[_trailI];
+	_trailI = ++_trailI % _bufferN;
+	_buffer[_leadI] = sample;
+	_leadI = ++_leadI % _bufferN;
+	return delayed;
+}
+
+int DelayLine::delaySamples() {
+	return std::max((_time * _maxTimeMS / 1000.0f) * _sampleRate, 1.0f);
 }
