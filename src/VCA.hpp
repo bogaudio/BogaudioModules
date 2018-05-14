@@ -13,6 +13,7 @@ struct VCA : Module {
 	enum ParamsIds {
 		LEVEL1_PARAM,
 		LEVEL2_PARAM,
+		LINEAR_PARAM,
 		NUM_PARAMS
 	};
 
@@ -31,6 +32,7 @@ struct VCA : Module {
 	};
 
 	enum LightsIds {
+		LINEAR_LIGHT,
 		NUM_LIGHTS
 	};
 
@@ -40,7 +42,7 @@ struct VCA : Module {
 	VCA() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {}
 
 	virtual void step() override;
-	void channelStep(Input& input, Output& output, Param& knob, Input& cv, Amplifier& amplifier);
+	void channelStep(Input& input, Output& output, Param& knob, Input& cv, Amplifier& amplifier, bool linear);
 };
 
 } // namespace bogaudio

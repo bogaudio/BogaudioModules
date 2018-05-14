@@ -100,8 +100,10 @@ void init(rack::Plugin *p) {
 #endif
 	p->addModel(modelSwitch);
 	p->addModel(modelVCA);
-#ifdef EXPERIMENTAL
+#if 0
 	p->addModel(modelVCAL);
+#endif
+#ifdef EXPERIMENTAL
 	p->addModel(modelVCAmp);
 	p->addModel(modelVU);
 #endif
