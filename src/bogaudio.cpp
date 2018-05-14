@@ -38,6 +38,7 @@
 #include "VCAL.hpp"
 #include "VCAmp.hpp"
 #include "VU.hpp"
+#include "XFade.hpp"
 
 #include "Test.hpp"
 #include "Test2.hpp"
@@ -106,6 +107,7 @@ void init(rack::Plugin *p) {
 #ifdef EXPERIMENTAL
 	p->addModel(modelVCAmp);
 	p->addModel(modelVU);
+	p->addModel(modelXFade);
 #endif
 
 #ifdef TEST
