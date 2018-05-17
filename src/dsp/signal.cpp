@@ -82,7 +82,8 @@ void RootMeanSquare::setSensitivity(float sensitivity) {
 			}
 			while (i < _sumN) {
 				_sum -= _buffer[_trailI];
-				_trailI = ++_trailI % _bufferN;
+				++_trailI;
+				_trailI %= _bufferN;
 				++i;
 			}
 			_sumN = newSumN;
@@ -100,9 +101,11 @@ void RootMeanSquare::setSensitivity(float sensitivity) {
 
 float RootMeanSquare::next(float sample) {
 	_sum -= _buffer[_trailI];
-	_trailI = ++_trailI % _bufferN;
+	++_trailI;
+	_trailI %= _bufferN;
 	_sum += _buffer[_leadI] = sample * sample;
-	_leadI = ++_leadI % _bufferN;
+	++_leadI;
+	_leadI %= _bufferN;
 	if (_sum <= 0.0) {
 		return 0.0f;
 	}
@@ -259,7 +262,8 @@ void DelayLine::setTime(float time) {
 				--i;
 			}
 			while (i < _delaySamples) {
-				_trailI = ++_trailI % _bufferN;
+				++_trailI;
+				_trailI %= _bufferN;
 				++i;
 			}
 			_delaySamples = newDelaySamples;
@@ -276,9 +280,11 @@ void DelayLine::setTime(float time) {
 
 float DelayLine::next(float sample) {
 	float delayed = _buffer[_trailI];
-	_trailI = ++_trailI % _bufferN;
+	++_trailI;
+	_trailI %= _bufferN;
 	_buffer[_leadI] = sample;
-	_leadI = ++_leadI % _bufferN;
+	++_leadI;
+	_leadI %= _bufferN;
 	return delayed;
 }
 
