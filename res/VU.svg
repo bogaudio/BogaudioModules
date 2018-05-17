@@ -293,7 +293,7 @@
         <polyline
            points="0,0 3,0"
            stroke="#333"
-           fille="none"
+           fill="none"
            transform="translate(11 0)"
            id="polyline53" />
         <text
@@ -307,7 +307,7 @@
         <polyline
            points="0,0 3,0"
            stroke="#333"
-           fille="none"
+           fill="none"
            transform="translate(11 0)"
            id="polyline59" />
         <text
@@ -321,7 +321,7 @@
         <polyline
            points="0,0 3,0"
            stroke="#333"
-           fille="none"
+           fill="none"
            transform="translate(11 0)"
            id="polyline65" />
         <text
@@ -335,7 +335,7 @@
         <polyline
            points="0,0 3,0"
            stroke="#333"
-           fille="none"
+           fill="none"
            transform="translate(11 0)"
            id="polyline71" />
         <text
@@ -349,7 +349,7 @@
         <polyline
            points="0,0 3,0"
            stroke="#333"
-           fille="none"
+           fill="none"
            transform="translate(11 0)"
            id="polyline77" />
         <text
@@ -360,7 +360,7 @@
       <g
          transform="translate(0 120)"
          id="g83">
-        <!-- <polyline points="0,0 5,0" stroke="#333" fille="none" transform="translate(11 0)" /> -->
+        <!-- <polyline points="0,0 5,0" stroke="#333" fill="none" transform="translate(11 0)" /> -->
         <!-- <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-36</text> -->
         <!-- <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-10 2.2)">- dB -</text> -->
       </g>
@@ -370,7 +370,7 @@
         <polyline
            points="0,0 3,0"
            stroke="#333"
-           fille="none"
+           fill="none"
            transform="translate(11 0)"
            id="polyline85" />
         <text
@@ -381,8 +381,6 @@
       <g
          transform="translate(0 170)"
          id="g93">
-        <!-- <polyline points="0,0 5,0" stroke="#333" fille="none" transform="translate(11 0)" /> -->
-        <!-- <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-36</text> -->
         <text
            font-size="6.0pt"
            transform="translate(7 0) rotate(-90) translate(-9 4.5)"
@@ -506,7 +504,7 @@
        transform="translate(0,15)">
       <path
          transform="translate(11)"
-         style="stroke:#333333"
+         style="fill:none;stroke:#333333"
          d="M 0,0 H 3"
          id="polyline177" />
       <g
@@ -525,7 +523,7 @@
        transform="translate(0,30)">
       <path
          transform="translate(11)"
-         style="stroke:#333333"
+         style="fill:none;stroke:#333333"
          d="M 0,0 H 3"
          id="polyline183" />
       <g
@@ -544,7 +542,7 @@
        transform="translate(0,45)">
       <path
          transform="translate(11)"
-         style="stroke:#333333"
+         style="fill:none;stroke:#333333"
          d="M 0,0 H 3"
          id="polyline189" />
       <g
@@ -567,7 +565,7 @@
        transform="translate(0,60)">
       <path
          transform="translate(11)"
-         style="stroke:#333333"
+         style="fill:none;stroke:#333333"
          d="M 0,0 H 3"
          id="polyline195" />
       <g
@@ -594,7 +592,7 @@
        transform="translate(0,90)">
       <path
          transform="translate(11)"
-         style="stroke:#333333"
+         style="fill:none;stroke:#333333"
          d="M 0,0 H 3"
          id="polyline201" />
       <g
@@ -619,7 +617,7 @@
     <g
        id="g207"
        transform="translate(0,120)">
-      <!-- <polyline points="0,0 5,0" stroke="#333" fille="none" transform="translate(11 0)" /> -->
+      <!-- <polyline points="0,0 5,0" stroke="#333" fill="none" transform="translate(11 0)" /> -->
       <!-- <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-36</text> -->
       <!-- <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-10 2.2)">- dB -</text> -->
     </g>
@@ -628,7 +626,7 @@
        transform="translate(0,150)">
       <path
          transform="translate(11)"
-         style="stroke:#333333"
+         style="fill:none;stroke:#333333"
          d="M 0,0 H 3"
          id="polyline209" />
       <g
@@ -653,8 +651,6 @@
     <g
        id="g217"
        transform="translate(0,170)">
-      <!-- <polyline points="0,0 5,0" stroke="#333" fille="none" transform="translate(11 0)" /> -->
-      <!-- <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-36</text> -->
       <g
          aria-label="dB"
          transform="rotate(-90,10.25,-1.25)"

@@ -62,6 +62,24 @@ struct StatefulButton9 : StatefulButton {
 	StatefulButton9();
 };
 
+struct StatefulButton18 : StatefulButton {
+	StatefulButton18();
+};
+
 NVGcolor decibelsToColor(float db);
+
+struct VUSlider : Knob {
+	const float slideHeight = 13.0f;
+	float* _vuLevel = NULL;
+
+	VUSlider() {
+		box.size = Vec(18.0f, 183.0f);
+	}
+
+	void setVULevel(float* vuLevel) {
+		_vuLevel = vuLevel;
+	}
+	virtual void draw(NVGcontext* vg) override;
+};
 
 } // namespace bogaudio

@@ -53,32 +53,32 @@
 
     <symbol id="guide-db" viewBox="0 0 20px 183px">
       <g transform="translate(0 15)">
-        <polyline points="0,0 3,0" stroke="#333" fille="none" transform="translate(11 0)" />
+        <polyline points="0,0 3,0" stroke="#333" fill="none" transform="translate(11 0)" />
         <text font-size="6.0pt" transform="translate(7 0) rotate(0) translate(-2.5 2.6)">6</text>
       </g>
       <g transform="translate(0 30)">
-        <polyline points="0,0 3,0" stroke="#333" fille="none" transform="translate(11 0)" />
+        <polyline points="0,0 3,0" stroke="#333" fill="none" transform="translate(11 0)" />
         <text font-size="6.0pt" transform="translate(7 0) rotate(0) translate(-2.5 2.6)">0</text>
       </g>
       <g transform="translate(0 45)">
-        <polyline points="0,0 3,0" stroke="#333" fille="none" transform="translate(11 0)" />
+        <polyline points="0,0 3,0" stroke="#333" fill="none" transform="translate(11 0)" />
         <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-4 2.2)">-6</text>
       </g>
       <g transform="translate(0 60)">
-        <polyline points="0,0 3,0" stroke="#333" fille="none" transform="translate(11 0)" />
+        <polyline points="0,0 3,0" stroke="#333" fill="none" transform="translate(11 0)" />
         <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-12</text>
       </g>
       <g transform="translate(0 90)">
-        <polyline points="0,0 3,0" stroke="#333" fille="none" transform="translate(11 0)" />
+        <polyline points="0,0 3,0" stroke="#333" fill="none" transform="translate(11 0)" />
         <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-24</text>
       </g>
       <g transform="translate(0 120)">
-        <!-- <polyline points="0,0 5,0" stroke="#333" fille="none" transform="translate(11 0)" /> -->
+        <!-- <polyline points="0,0 5,0" stroke="#333" fill="none" transform="translate(11 0)" /> -->
         <!-- <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-36</text> -->
         <!-- <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-10 2.2)">- dB -</text> -->
       </g>
       <g transform="translate(0 150)">
-        <polyline points="0,0 3,0" stroke="#333" fille="none" transform="translate(11 0)" />
+        <polyline points="0,0 3,0" stroke="#333" fill="none" transform="translate(11 0)" />
         <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-48</text>
       </g>
       <g transform="translate(0 170)">

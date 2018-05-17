@@ -1,7 +1,9 @@
 
 #include "widgets.hpp"
+#include "dsp/signal.hpp"
 
 using namespace bogaudio;
+using namespace bogaudio::dsp;
 
 Button18::Button18() {
 	addFrame(SVG::load(assetPlugin(plugin, "res/button_18px_0.svg")));
@@ -109,6 +111,10 @@ StatefulButton9::StatefulButton9() : StatefulButton("res/button_9px_0.svg", "res
 }
 
 
+StatefulButton18::StatefulButton18() : StatefulButton("res/button_18px_0.svg", "res/button_18px_1.svg") {
+}
+
+
 NVGcolor bogaudio::decibelsToColor(float db) {
 	if (db < -80.0f) {
 		return nvgRGBA(0x00, 0x00, 0x00, 0x00);
@@ -120,4 +126,52 @@ NVGcolor bogaudio::decibelsToColor(float db) {
 		return nvgRGBA((1.0f - db / -24.0f) * 0xff, 0xff, 0x00, 0xff);
 	}
 	return nvgRGBA(0xff, (1.0f - db / 18.0f) * 0xff, 0x00, 0xff);
+}
+
+
+void VUSlider::draw(NVGcontext* vg) {
+	nvgSave(vg);
+	{
+		nvgBeginPath(vg);
+		nvgRoundedRect(vg, 6, 3, 6, 177, 2);
+		nvgFillColor(vg, nvgRGBA(0x22, 0x22, 0x22, 0xff));
+		nvgFill(vg);
+		nvgStrokeColor(vg, nvgRGBA(0x88, 0x88, 0x88, 0xff));
+		nvgStroke(vg);
+	}
+	nvgRestore(vg);
+
+	nvgSave(vg);
+	{
+		nvgTranslate(vg, 0, 170.0f * (1.0f - value));
+		nvgBeginPath(vg);
+		nvgRoundedRect(vg, 0, 0, 18, 13, 1.5);
+		nvgFillColor(vg, nvgRGBA(0x77, 0x77, 0x77, 0xff));
+		nvgFill(vg);
+
+		nvgBeginPath(vg);
+		nvgRect(vg, 0, 2, 18, 9);
+		nvgFillColor(vg, nvgRGBA(0x44, 0x44, 0x44, 0xff));
+		nvgFill(vg);
+
+		nvgBeginPath(vg);
+		nvgRect(vg, 0, 6, 18, 1);
+		nvgFillColor(vg, nvgRGBA(0xfa, 0xfa, 0xfa, 0xff));
+		nvgFill(vg);
+
+		nvgBeginPath(vg);
+		nvgRoundedRect(vg, 2, 4, 14, 5, 1.0);
+		nvgFillColor(vg, nvgRGBA(0xaa, 0xaa, 0xaa, 0xff));
+		nvgFill(vg);
+
+		float db = _vuLevel ? *_vuLevel : 0.0f;
+		if (db > 0.0f) {
+			db = amplitudeToDecibels(db);
+			nvgBeginPath(vg);
+			nvgRoundedRect(vg, 2, 4, 14, 5, 1.0);
+			nvgFillColor(vg, decibelsToColor(db));
+			nvgFill(vg);
+		}
+	}
+	nvgRestore(vg);
 }
