@@ -60,6 +60,7 @@ void Additator::step() {
 
 			float multiple = 1.0f;
 			_oscillator.setPartialFrequencyRatio(1, multiple);
+			_activePartials = 1;
 			for (int i = 2, n = _oscillator.partialCount(); i <= n; ++i) {
 				float ii = i;
 				if (i % 2 == 0) {
@@ -68,7 +69,9 @@ void Additator::step() {
 				else {
 					ii += _oddSkew;
 				}
-				_oscillator.setPartialFrequencyRatio(i, powf(ii, _width));
+				if (_oscillator.setPartialFrequencyRatio(i, powf(ii, _width))) {
+					_activePartials = i;
+				}
 			}
 		}
 
@@ -94,9 +97,10 @@ void Additator::step() {
 			float as[maxPartials + 1];
 			float total = as[1] = 1.0f;
 			filter = log10f(_filter) + 1.0f;
+			int np = std::min(_partials, _activePartials);
 			for (int i = 2, n = _oscillator.partialCount(); i <= n; ++i) {
 				as[i] = 0.0f;
-				if (i <= _partials) {
+				if (i <= np) {
 					as[i] = powf(i, -_decay) * powf(_filter, i);
 					if (i % 2 == 0) {
 						if (_balance > 0.0f) {
@@ -111,7 +115,7 @@ void Additator::step() {
 					total += as[i];
 				}
 			}
-			float norm = std::max(_partials / (float)_oscillator.partialCount(), 0.1f);
+			float norm = std::max(np / (float)_oscillator.partialCount(), 0.1f);
 			norm = 1.0f + (_amplitudeNormalization - 1.0f) * norm;
 			norm = std::max(total / norm, 0.7f);
 			for (int i = 1, n = _oscillator.partialCount(); i <= n; ++i) {

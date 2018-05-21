@@ -230,13 +230,16 @@ void SineBankOscillator::setPartial(int i, float frequencyRatio, float amplitude
 	setPartialAmplitude(i, amplitude);
 }
 
-void SineBankOscillator::setPartialFrequencyRatio(int i, float frequencyRatio) {
+bool SineBankOscillator::setPartialFrequencyRatio(int i, float frequencyRatio) {
 	if (i <= (int)_partials.size()) {
 		Partial& p = _partials[i - 1];
 		p.frequencyRatio = frequencyRatio;
-		p.frequency = _frequency * frequencyRatio;
-		p.sine.setFrequency((double)_frequency * (double)frequencyRatio);
+		double f = (double)_frequency * (double)frequencyRatio;
+		p.frequency = f;
+		p.sine.setFrequency(f);
+		return f < _maxPartialFrequency;
 	}
+	return false;
 }
 
 void SineBankOscillator::setPartialAmplitude(int i, float amplitude, bool envelope) {

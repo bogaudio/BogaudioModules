@@ -81,6 +81,7 @@ struct Additator : Module {
 	float _filter = 0.0f;
 	Phase _phase = PHASE_RESET;
 	float _maxFrequency = 0.0f;
+	int _activePartials = 1;
 	SineBankOscillator _oscillator;
 	PositiveZeroCrossing _syncTrigger;
 	SlewLimiter _widthSL;

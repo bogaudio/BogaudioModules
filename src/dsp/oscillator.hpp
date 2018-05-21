@@ -318,7 +318,7 @@ struct SineBankOscillator : Oscillator {
 
 	// one-based indexes.
 	void setPartial(int i, float frequencyRatio, float amplitude);
-	void setPartialFrequencyRatio(int i, float frequencyRatio);
+	bool setPartialFrequencyRatio(int i, float frequencyRatio);
 	void setPartialAmplitude(int i, float amplitude, bool envelope = false);
 
 	void syncToPhase(float phase);
