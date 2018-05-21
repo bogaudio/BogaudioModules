@@ -111,9 +111,11 @@ void Additator::step() {
 					total += as[i];
 				}
 			}
-			total /= _amplitudeNormalization;
+			float norm = std::max(_partials / (float)_oscillator.partialCount(), 0.1f);
+			norm = 1.0f + (_amplitudeNormalization - 1.0f) * norm;
+			norm = std::max(total / norm, 0.7f);
 			for (int i = 1, n = _oscillator.partialCount(); i <= n; ++i) {
-				as[i] /= total;
+				as[i] /= norm;
 				_oscillator.setPartialAmplitude(i, as[i], i <= envelopes);
 			}
 		}
