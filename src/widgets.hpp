@@ -66,20 +66,31 @@ struct StatefulButton18 : StatefulButton {
 	StatefulButton18();
 };
 
+struct ToggleButton : SVGSwitch, ToggleSwitch {
+};
+
+struct ToggleButton18 : ToggleButton {
+	ToggleButton18();
+};
+
 NVGcolor decibelsToColor(float db);
 
 struct VUSlider : Knob {
 	const float slideHeight = 13.0f;
 	float* _vuLevel = NULL;
 
-	VUSlider() {
-		box.size = Vec(18.0f, 183.0f);
+	VUSlider(float height = 183.0f) {
+		box.size = Vec(18.0f, height);
 	}
 
 	void setVULevel(float* vuLevel) {
 		_vuLevel = vuLevel;
 	}
 	virtual void draw(NVGcontext* vg) override;
+};
+
+struct VUSlider151 : VUSlider {
+	VUSlider151() : VUSlider(151.0f) {}
 };
 
 } // namespace bogaudio

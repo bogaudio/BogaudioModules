@@ -8,9 +8,9 @@ using namespace bogaudio::dsp;
 namespace bogaudio {
 
 struct MixerChannel {
-	const float maxDecibels = 12.0f;
-	const float minDecibels = Amplifier::minDecibels;
-	const float slewTimeMS = 1.0f;
+	static const float maxDecibels;
+	static const float minDecibels;
+	static const float slewTimeMS;
 
 	Amplifier _amplifier;
 	Panner _panner;
@@ -21,7 +21,8 @@ struct MixerChannel {
 	Param& _panParam;
 	Param& _muteParam;
 	Input& _inInput;
-	Input& _cvInput;
+	Input& _levelInput;
+	Input& _panInput;
 
 	float out = 0.0f;
 	float left = 0.0f;
@@ -33,14 +34,16 @@ struct MixerChannel {
 		Param& pan,
 		Param& mute,
 		Input& in,
-		Input& cv,
+		Input& levelCv,
+		Input& panCv,
 		float sampleRate = 1000.0f
 	)
 	: _levelParam(level)
 	, _panParam(pan)
 	, _muteParam(mute)
 	, _inInput(in)
-	, _cvInput(cv)
+	, _levelInput(levelCv)
+	, _panInput(panCv)
 	{
 		setSampleRate(sampleRate);
 		_rms.setSensitivity(0.05f);

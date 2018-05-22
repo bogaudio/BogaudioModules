@@ -115,6 +115,12 @@ StatefulButton18::StatefulButton18() : StatefulButton("res/button_18px_0.svg", "
 }
 
 
+ToggleButton18::ToggleButton18() {
+	addFrame(SVG::load(assetPlugin(plugin, "res/button_18px_0.svg")));
+	addFrame(SVG::load(assetPlugin(plugin, "res/button_18px_1.svg")));
+}
+
+
 NVGcolor bogaudio::decibelsToColor(float db) {
 	if (db < -80.0f) {
 		return nvgRGBA(0x00, 0x00, 0x00, 0x00);
@@ -133,7 +139,7 @@ void VUSlider::draw(NVGcontext* vg) {
 	nvgSave(vg);
 	{
 		nvgBeginPath(vg);
-		nvgRoundedRect(vg, 6, 3, 6, 177, 2);
+		nvgRoundedRect(vg, 6, 3, 6, box.size.y - 6, 2);
 		nvgFillColor(vg, nvgRGBA(0x22, 0x22, 0x22, 0xff));
 		nvgFill(vg);
 		nvgStrokeColor(vg, nvgRGBA(0x88, 0x88, 0x88, 0xff));
@@ -143,7 +149,7 @@ void VUSlider::draw(NVGcontext* vg) {
 
 	nvgSave(vg);
 	{
-		nvgTranslate(vg, 0, 170.0f * (1.0f - value));
+		nvgTranslate(vg, 0, (box.size.y - 13.0f) * (1.0f - value));
 		nvgBeginPath(vg);
 		nvgRoundedRect(vg, 0, 0, 18, 13, 1.5);
 		nvgFillColor(vg, nvgRGBA(0x77, 0x77, 0x77, 0xff));
