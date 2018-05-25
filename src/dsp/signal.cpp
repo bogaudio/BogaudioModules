@@ -194,23 +194,62 @@ float SlewLimiter::next(float sample) {
 }
 
 
-void CrossFader::setMix(float mix) {
+void CrossFader::setParams(float mix, float curve, bool linear) {
 	assert(mix >= -1.0f && mix <= 1.0f);
-	if (_mix != mix) {
+	assert(curve >= -1.0f && curve <= 1.0f);
+	if (_mix != mix || _curve != curve || _linear != linear) {
 		_mix = mix;
-		if (_mix < 0.0f) {
-			_aMix = 1.0f;
-			_bMix = 1.0f + _mix;
+		_curve = curve;
+		_linear = linear;
+
+		float aMax, aMin;
+		float bMax, bMin;
+		if (_curve < 0.0f) {
+			aMax = 0.0f;
+			aMin = _curve + 2.0f;
+			bMax = 2.0f;
+			bMin = 0.0f - _curve;
 		}
 		else {
-			_aMix = 1.0f - _mix;
+			aMax = _curve;
+			aMin = 2.0f;
+			bMax = 2.0f - _curve;
+			bMin = 0.0f;
+		}
+
+		float m = _mix + 1.0f;
+		if (m < aMax) {
+			_aMix = 1.0f;
+		}
+		else if (m > aMin) {
+			_aMix = 0.0f;
+		}
+		else {
+			_aMix = 1.0f - ((m - aMax) / (aMin - aMax));
+		}
+
+		if (m > bMax) {
 			_bMix = 1.0f;
+		}
+		else if (m < bMin) {
+			_bMix = 0.0f;
+		}
+		else {
+			_bMix = (m - bMin) / (bMax - bMin);
+		}
+
+		if (!_linear) {
+			_aAmp.setLevel((1.0f - _aMix) * Amplifier::minDecibels);
+			_bAmp.setLevel((1.0f - _bMix) * Amplifier::minDecibels);
 		}
 	}
 }
 
 float CrossFader::next(float a, float b) {
-	return _aMix * a + _bMix * b;
+	if (_linear) {
+		return _aMix * a + _bMix * b;
+	}
+	return _aAmp.next(a) + _bAmp.next(b);
 }
 
 

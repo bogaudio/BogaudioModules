@@ -12,6 +12,8 @@ namespace bogaudio {
 struct XFade : Module {
 	enum ParamsIds {
 		MIX_PARAM,
+		CURVE_PARAM,
+		LINEAR_PARAM,
 		NUM_PARAMS
 	};
 
@@ -28,6 +30,7 @@ struct XFade : Module {
 	};
 
 	enum LightsIds {
+		LINEAR_LIGHT,
 		NUM_LIGHTS
 	};
 

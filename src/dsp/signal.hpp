@@ -123,14 +123,22 @@ struct SlewLimiter {
 
 struct CrossFader {
 	float _mix = 2.0f;
+	float _curve = 1.0f;
+	bool _linear = true;
 	float _aMix;
 	float _bMix;
+	Amplifier _aAmp;
+	Amplifier _bAmp;
 
 	CrossFader() {
-		setMix(0.0f);
+		setParams(0.0f);
 	}
 
-	void setMix(float mix); // -1 to 1, 0 for equal output of both inputs.
+	void setParams(
+		float mix, // -1 to 1, 0 for equal output of both inputs.
+		float curve = 1.0f, // -1 to 1: at -1, A will cut fully as mix goes to 0; at 0, A cuts over full mix; at 1, A cuts from 0 to 1.  B symmetric.
+		bool linear = true// cut is linear in amplitude if true; linear in decibels otherwise.
+	);
 	float next(float a, float b);
 };
 
