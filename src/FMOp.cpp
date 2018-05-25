@@ -2,6 +2,8 @@
 #include "FMOp.hpp"
 #include "dsp/pitch.hpp"
 
+#define LINEAR_LEVEL "linearLevel"
+
 void FMOp::onReset() {
 	_steps = modulationSteps;
 	_envelope.reset();
@@ -20,6 +22,19 @@ void FMOp::onSampleRateChange() {
 	_depthSL.setParams(sampleRate, slewLimitTime);
 	_levelSL.setParams(sampleRate, slewLimitTime);
 	_sustainSL.setParams(sampleRate, slewLimitTime / 10.0f);
+}
+
+json_t* FMOp::toJson() {
+	json_t* root = json_object();
+	json_object_set_new(root, LINEAR_LEVEL, json_boolean(_linearLevel));
+	return root;
+}
+
+void FMOp::fromJson(json_t* root) {
+	json_t* ll = json_object_get(root, LINEAR_LEVEL);
+	if (ll) {
+		_linearLevel = json_is_true(ll);
+	}
 }
 
 void FMOp::step() {
@@ -132,11 +147,34 @@ void FMOp::step() {
 	if (_levelEnvelopeOn) {
 		out *= envelope;
 	}
-	out = (1.0f - out) * Amplifier::minDecibels;
-	_amplifier.setLevel(out);
-	out = _amplifier.next(_decimator.next(_buffer));
+	if (_linearLevel) {
+		out *= _decimator.next(_buffer);
+	}
+	else {
+		out = (1.0f - out) * Amplifier::minDecibels;
+		_amplifier.setLevel(out);
+		out = _amplifier.next(_decimator.next(_buffer));
+	}
 	outputs[AUDIO_OUTPUT].value = _feedbackDelayedSample = amplitude * out;
 }
+
+struct LinearLevelMenuItem : MenuItem {
+	FMOp* _module;
+
+	LinearLevelMenuItem(FMOp* module, const char* label)
+	: _module(module)
+	{
+		this->text = label;
+	}
+
+	void onAction(EventAction &e) override {
+		_module->_linearLevel = !_module->_linearLevel;
+	}
+
+	void step() override {
+		rightText = _module->_linearLevel ? "✔" : "";
+	}
+};
 
 struct FMOpWidget : ModuleWidget {
 	FMOpWidget(FMOp* module) : ModuleWidget(module) {
@@ -209,6 +247,13 @@ struct FMOpWidget : ModuleWidget {
 		addChild(ModuleLightWidget::create<SmallLight<GreenLight>>(envToLevelLightPosition, module, FMOp::ENV_TO_LEVEL_LIGHT));
 		addChild(ModuleLightWidget::create<SmallLight<GreenLight>>(envToFeedbackLightPosition, module, FMOp::ENV_TO_FEEDBACK_LIGHT));
 		addChild(ModuleLightWidget::create<SmallLight<GreenLight>>(envToDepthLightPosition, module, FMOp::ENV_TO_DEPTH_LIGHT));
+	}
+
+	virtual void appendContextMenu(Menu* menu) override {
+	  FMOp* fmop = dynamic_cast<FMOp*>(module);
+		assert(fmop);
+		menu->addChild(new MenuLabel());
+		menu->addChild(new LinearLevelMenuItem(fmop, "Linear Level Response"));
 	}
 };
 

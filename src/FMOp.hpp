@@ -77,6 +77,7 @@ struct FMOp : Module {
 	SlewLimiter _levelSL;
 	SlewLimiter _sustainSL;
 	Amplifier _amplifier;
+	bool _linearLevel = false;
 
 	FMOp()
 	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
@@ -88,6 +89,8 @@ struct FMOp : Module {
 
 	virtual void onReset() override;
 	virtual void onSampleRateChange() override;
+	virtual json_t* toJson() override;
+	virtual void fromJson(json_t* root) override;
 	virtual void step() override;
 };
 
