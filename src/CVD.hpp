@@ -5,13 +5,14 @@
 
 using namespace bogaudio::dsp;
 
-extern Model* modelCVDelay;
+extern Model* modelCVD;
 
 namespace bogaudio {
 
-struct CVDelay : Module {
+struct CVD : Module {
 	enum ParamsIds {
 		TIME_PARAM,
+		TIME_SCALE_PARAM,
 		MIX_PARAM,
 		NUM_PARAMS
 	};
@@ -35,7 +36,10 @@ struct CVDelay : Module {
 	DelayLine _delay;
 	CrossFader _mix;
 
-	CVDelay() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	CVD()
+	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
+	, _delay(1000.0f, 10000.0f)
+	{
 		onSampleRateChange();
 	}
 

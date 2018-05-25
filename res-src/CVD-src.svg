@@ -31,6 +31,14 @@
       </g>
     </symbol>
 
+    <symbol id="knob-smallest" viewBox="0 0 16px 16px">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f" />
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f" />
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none" />
+      </g>
+    </symbol>
+
     <symbol id="knobguide-time" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <text font-size="5.0pt" transform="rotate(-240) translate(20 0) rotate(240) translate(-2 2)">0</text>
@@ -43,7 +51,18 @@
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-30) translate(17 0)" />
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(0) translate(17 0)" />
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(30) translate(17 0)" />
-        <text font-size="5.0pt" transform="rotate(60) translate(20 0) rotate(-60) translate(-2 2)">1s</text>
+        <text font-size="5.0pt" transform="rotate(60) translate(20 0) rotate(-60) translate(-2 2)">1</text>
+      </g>
+    </symbol>
+
+    <symbol id="knobguide-scale" viewBox="0 0 45px 45px">
+      <g transform="translate(22.5 22.5)">
+        <text font-size="5.0pt" transform="rotate(-135) translate(15 0) rotate(135) translate(-8 2)">0.1</text>
+        <polyline points="0,0 2,0" stroke-width="1" stroke="#333" transform="rotate(-135) translate(9.5 0)" />
+        <text font-size="5.0pt" transform="rotate(-90) translate(15 0) rotate(90) translate(-2 2)">1</text>
+        <polyline points="0,0 2,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(9.5 0)" />
+        <text font-size="5.0pt" transform="rotate(-45) translate(15 0) rotate(45) translate(-2 2)">10</text>
+        <polyline points="0,0 2,0" stroke-width="1" stroke="#333" transform="rotate(-45) translate(9.5 0)" />
       </g>
     </symbol>
 
@@ -86,7 +105,7 @@
   <!-- <polyline points="0,0 0,300" stroke="#0f0" stroke-width="1" fill="none" transform="translate(22.5 0)" /> -->
 
   <g transform="rotate(-90) translate(-376 13)">
-    <text class="title" font-size="7pt" letter-spacing="2.5px">CVDELAY</text>
+    <text class="title" font-size="7pt" letter-spacing="2.5px">CVD</text>
     <g transform="translate(0 12)">
       <text class="brand" font-size="7pt" letter-spacing="2px">BGA</text>
       <rect width="3.0" height="3" fill="#ddd" transform="translate(11.5 -5)" />
@@ -96,18 +115,20 @@
   <g transform="translate(0 25)">
     <text font-size="6pt" letter-spacing="2.0px" transform="translate(9.5 0)">TIME</text>
     <use id="TIME_PARAM" xlink:href="#knob" transform="translate(0 3)" />
-    <use xlink:href="#knobguide-time" transform="scale(1) translate(0 3)" />
-    <g transform="translate(5.5 49)">
+    <use xlink:href="#knobguide-time" transform="translate(0 3)" />
+    <use id="TIME_SCALE_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 59)" />
+    <use xlink:href="#knobguide-scale" transform="translate(0 44.5)" />
+    <g transform="translate(5.5 79)">
       <rect width="34" height="39" rx="5" fill="#fafafa" />
       <use id="TIME_INPUT" xlink:href="#input" transform="translate(5 3)" />
       <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
     </g>
   </g>
 
-  <g transform="translate(0 131)">
+  <g transform="translate(0 165)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(2 0)">DRY/WET</text>
     <use id="MIX_PARAM" xlink:href="#knob" transform="translate(0 3)" />
-    <use xlink:href="#knobguide-mix" transform="scale(1) translate(0 3)" />
+    <use xlink:href="#knobguide-mix" transform="translate(0 3)" />
     <g transform="translate(5.5 49)">
       <rect width="34" height="38" rx="5" fill="#fafafa" />
       <use id="MIX_INPUT" xlink:href="#input" transform="translate(5 3)" />
@@ -115,7 +136,7 @@
     </g>
   </g>
 
-  <g transform="translate(0 230)">
+  <g transform="translate(0 264)">
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 28)" />
       <rect width="34" height="35" rx="5" fill="#fafafa" />
@@ -129,6 +150,4 @@
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
     </g>
   </g>
-
-  <!-- <polyline points="0,0 45,0" stroke-width="0.5" stroke="#0f0" transform="translate(0 73)" /> -->
 </svg>

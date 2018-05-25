@@ -21,7 +21,7 @@
 
 #include "ADSR.hpp"
 #include "Bool.hpp"
-#include "CVDelay.hpp"
+#include "CVD.hpp"
 #include "Detune.hpp"
 #include "DGate.hpp"
 #include "FlipFlop.hpp"
@@ -80,7 +80,7 @@ void init(rack::Plugin *p) {
 #ifdef EXPERIMENTAL
 	p->addModel(modelADSR);
 	p->addModel(modelBool);
-	p->addModel(modelCVDelay);
+	p->addModel(modelCVD);
 #endif
 	p->addModel(modelDetune);
 	p->addModel(modelDGate);
