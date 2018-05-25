@@ -6,7 +6,7 @@ void VCAmp::onSampleRateChange() {
 }
 
 void VCAmp::step() {
-	if (inputs[IN_INPUT].active && outputs[OUT_OUTPUT].active) {
+	if (inputs[IN_INPUT].active) {
 		float level = params[LEVEL_PARAM].value;
 		if (inputs[CV_INPUT].active) {
 			level *= clamp(inputs[CV_INPUT].value, 0.0f, 10.0f) / 10.0f;
@@ -15,7 +15,10 @@ void VCAmp::step() {
 		level += minDecibels;
 		_amplifier.setLevel(level);
 		outputs[OUT_OUTPUT].value = _amplifier.next(inputs[IN_INPUT].value);
-		_rmsLevel = _rms.next(outputs[OUT_OUTPUT].value) / 5.0f;
+		_rmsLevel = _rms.next(outputs[OUT_OUTPUT].value / 5.0f);
+	}
+	else {
+		_rmsLevel = _rms.next(0.0f);
 	}
 }
 
