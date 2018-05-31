@@ -22,8 +22,8 @@ extern Model* modelTest;
 // #define FEEDBACK_PM 1
 // #define EG 1
 // #define TABLES 1
-// #define SLEW 1
-#define RMS 1
+#define SLEW 1
+// #define RMS 1
 
 #include "pitch.hpp"
 #ifdef LPF
@@ -186,6 +186,7 @@ struct Test : Module {
 	TablePhasor _table;
 #elif SLEW
 	SlewLimiter _slew;
+	ShapedSlewLimiter _slew2;
 #elif RMS
 	RootMeanSquare _rms;
 	PucketteEnvelopeFollower _pef;

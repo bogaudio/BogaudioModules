@@ -26,6 +26,7 @@
 #include "DGate.hpp"
 #include "FlipFlop.hpp"
 #include "Follow.hpp"
+#include "Lag.hpp"
 #include "Manual.hpp"
 #include "Mult.hpp"
 #include "Noise.hpp"
@@ -87,6 +88,7 @@ void init(rack::Plugin *p) {
 #ifdef EXPERIMENTAL
 	p->addModel(modelFlipFlop);
 	p->addModel(modelFollow);
+	p->addModel(modelLag);
 #endif
 	p->addModel(modelManual);
 #ifdef EXPERIMENTAL

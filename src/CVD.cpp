@@ -8,7 +8,7 @@ void CVD::onSampleRateChange() {
 void CVD::step() {
 	float time = params[TIME_PARAM].value;
 	if (inputs[TIME_INPUT].active) {
-		time *= clamp(params[TIME_INPUT].value / 10.0f, 0.0f, 1.0f);
+		time *= clamp(inputs[TIME_INPUT].value / 10.0f, 0.0f, 1.0f);
 	}
 	switch ((int)params[TIME_SCALE_PARAM].value) {
 		case 0: {

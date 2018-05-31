@@ -169,28 +169,48 @@ void PositiveZeroCrossing::reset() {
 void SlewLimiter::setParams(float sampleRate, float milliseconds) {
 	assert(sampleRate > 0.0f);
 	assert(milliseconds >= 0.0f);
-	_sampleRate = sampleRate;
-	_milliseconds = milliseconds;
-	_samples = (_milliseconds / 1000.0f) * _sampleRate;
+	_delta = range / ((milliseconds / 1000.0f) * sampleRate);
 }
 
 float SlewLimiter::next(float sample) {
-	if (_samples < 2 || (sample > _current - 0.01f && sample < _current + 0.01f)) {
-		_current = sample;
-		return sample;
+	if (sample > _last) {
+		return _last = std::min(_last + _delta, sample);
 	}
-	if (_target != sample) {
-		_target = sample;
-		_delta = (sample - _current) / _samples;
-		_steps = _samples;
+	return _last = std::max(_last - _delta, sample);
+}
+
+
+void ShapedSlewLimiter::setParams(float sampleRate, float milliseconds, float shape) {
+	assert(sampleRate > 0.0f);
+	assert(milliseconds >= 0.0f);
+	assert(shape >= minShape);
+	assert(shape <= maxShape);
+	_sampleTime = 1.0f / sampleRate;
+  _time	= milliseconds / 1000.0f;
+	_shapeExponent = (shape > -0.05f && shape < 0.05f) ? 0.0f : shape;
+	_inverseShapeExponent = 1.0f / _shapeExponent;
+}
+
+float ShapedSlewLimiter::next(float sample) {
+	float difference = sample - _last;
+	float ttg = abs(difference) / range;
+	if (_time < 0.0001f || ttg < 0.0001f) {
+		return _last = sample;
 	}
-	else if (_steps <= 1) {
-		_current = sample;
-		return sample;
+	if (_shapeExponent != 0.0f) {
+		ttg = powf(ttg, _shapeExponent);
 	}
-	_current += _delta;
-	--_steps;
-	return _current;
+	ttg *= _time;
+	ttg = std::max(0.0f, ttg - _sampleTime);
+	ttg /= _time;
+	if (_shapeExponent != 0.0f) {
+		ttg = powf(ttg, _inverseShapeExponent);
+	}
+	float y = abs(difference) - ttg * range;
+	if (difference < 0.0f) {
+		return _last = std::max(_last - y, sample);
+	}
+	return _last = std::min(_last + y, sample);
 }
 
 

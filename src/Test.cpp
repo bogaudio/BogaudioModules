@@ -345,8 +345,27 @@ void Test::step() {
 	if (inputs[CV1_INPUT].active) {
 		ms *= clamp(inputs[CV2_INPUT].value, 0.0f, 10.0f) / 10.0f;
 	}
-	_slew.setParams(engineGetSampleRate(), powf(ms, 2.0f) * 100.0f);
+	ms = powf(ms, 2.0f);
+	ms *= 10000.0f;
+	_slew.setParams(engineGetSampleRate(), ms);
 	outputs[OUT_OUTPUT].value = _slew.next(inputs[IN_INPUT].value);
+
+	float shape = params[PARAM2_PARAM].value;
+	if (inputs[CV2_INPUT].active) {
+		shape *= clamp(inputs[CV2_INPUT].value / 5.0f, -1.0f, 1.0f);
+	}
+	if (shape < 0.5) {
+		shape /= 0.5;
+		shape = _slew2.minShape + shape * (1.0f - _slew2.minShape);
+	}
+	else {
+		shape -= 0.5f;
+		shape /= 0.5f;
+		shape *= (_slew2.maxShape - 1.0f);
+		shape += 1.0f;
+	}
+	_slew2.setParams(engineGetSampleRate(), ms, shape);
+	outputs[OUT2_OUTPUT].value = _slew2.next(inputs[IN_INPUT].value);
 
 #elif RMS
 	float sensitivity = params[PARAM2_PARAM].value;
