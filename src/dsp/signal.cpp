@@ -48,7 +48,7 @@ float Amplifier::next(float s) {
 }
 
 
-void RootMeanSquare::setSampleRate(float sampleRate) {
+void RunningAverage::setSampleRate(float sampleRate) {
 	assert(sampleRate > 0.0f);
 	if (_sampleRate != sampleRate) {
 		_sampleRate = sampleRate;
@@ -64,7 +64,7 @@ void RootMeanSquare::setSampleRate(float sampleRate) {
 	}
 }
 
-void RootMeanSquare::setSensitivity(float sensitivity) {
+void RunningAverage::setSensitivity(float sensitivity) {
 	assert(sensitivity >= 0.0f);
 	assert(sensitivity <= 1.0f);
 	if (_initialized) {
@@ -95,21 +95,32 @@ void RootMeanSquare::setSensitivity(float sensitivity) {
 		_sumN = std::max(_sensitivity * _bufferN, 1.0f);
 		_leadI = 0;
 		_trailI = _bufferN - _sumN;
-		_sum = 0.0f;
+		_sum = 0.0;
 	}
 }
 
-float RootMeanSquare::next(float sample) {
+void RunningAverage::reset() {
+	_sum = 0.0;
+	std::fill(_buffer, _buffer + _bufferN, 0.0);
+}
+
+float RunningAverage::next(float sample) {
 	_sum -= _buffer[_trailI];
 	++_trailI;
 	_trailI %= _bufferN;
-	_sum += _buffer[_leadI] = sample * sample;
+	_sum += _buffer[_leadI] = sample;
 	++_leadI;
 	_leadI %= _bufferN;
+	return (float)_sum / (float)_sumN;
+}
+
+
+float RootMeanSquare::next(float sample) {
+	float a = RunningAverage::next(sample * sample);
 	if (_sum <= 0.0) {
 		return 0.0f;
 	}
-	return sqrtf((float)_sum / (float)_sumN);
+	return sqrtf(a);
 }
 
 

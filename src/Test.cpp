@@ -377,6 +377,12 @@ void Test::step() {
 	outputs[OUT_OUTPUT].value = _rms.next(inputs[IN_INPUT].value);
 	_pef.setSensitivity(sensitivity);
 	outputs[OUT2_OUTPUT].value = _pef.next(inputs[IN_INPUT].value);
+
+#elif RAVG
+	if (_reset.process(inputs[CV1_INPUT].value)) {
+		_average.reset();
+	}
+	outputs[OUT_OUTPUT].value = _average.next(inputs[IN_INPUT].value);
 #endif
 }
 

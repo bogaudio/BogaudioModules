@@ -22,8 +22,9 @@ extern Model* modelTest;
 // #define FEEDBACK_PM 1
 // #define EG 1
 // #define TABLES 1
-#define SLEW 1
+// #define SLEW 1
 // #define RMS 1
+#define RAVG 1
 
 #include "pitch.hpp"
 #ifdef LPF
@@ -74,6 +75,8 @@ extern Model* modelTest;
 #elif SLEW
 #include "dsp/signal.hpp"
 #elif RMS
+#include "dsp/signal.hpp"
+#elif RAVG
 #include "dsp/signal.hpp"
 #else
 #error what
@@ -190,6 +193,9 @@ struct Test : Module {
 #elif RMS
 	RootMeanSquare _rms;
 	PucketteEnvelopeFollower _pef;
+#elif RAVG
+	RunningAverage _average;
+	SchmittTrigger _reset;
 #endif
 
 	Test()
@@ -201,6 +207,8 @@ struct Test : Module {
 	, _cicDecimator(STAGES)
 #elif TABLES
   , _table(StaticBlepTable::table(), 44100.0, 1000.0)
+#elif RAVG
+	, _average(engineGetSampleRate(), 1.0f, 1000.0f)
 #endif
 	{
 		onReset();

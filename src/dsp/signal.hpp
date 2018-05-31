@@ -38,7 +38,7 @@ struct Amplifier {
 	float next(float s);
 };
 
-struct RootMeanSquare {
+struct RunningAverage {
 	float _maxDelayMS;
 	float _sampleRate = -1.0f;
 	float _sensitivity = -1.0f;
@@ -51,11 +51,11 @@ struct RootMeanSquare {
 	int _trailI = 0;
 	double _sum = 0;
 
-	RootMeanSquare(float sampleRate = 1000.0f, float sensitivity = 1.0f, float maxDelayMS = 300.0f) : _maxDelayMS(maxDelayMS) {
+	RunningAverage(float sampleRate = 1000.0f, float sensitivity = 1.0f, float maxDelayMS = 300.0f) : _maxDelayMS(maxDelayMS) {
 		setSampleRate(sampleRate);
 		setSensitivity(sensitivity);
 	}
-	~RootMeanSquare() {
+	virtual ~RunningAverage() {
 		if (_buffer) {
 			delete[] _buffer;
 		}
@@ -63,7 +63,17 @@ struct RootMeanSquare {
 
 	void setSampleRate(float sampleRate);
 	void setSensitivity(float sensitivity);
-	float next(float sample);
+	void reset();
+	virtual float next(float sample);
+};
+
+struct RootMeanSquare : RunningAverage {
+	RootMeanSquare(float sampleRate = 1000.0f, float sensitivity = 1.0f, float maxDelayMS = 300.0f)
+	: RunningAverage(sampleRate, sensitivity, maxDelayMS)
+	{
+	}
+
+	virtual float next(float sample) override;
 };
 
 // Puckette 2007, "Theory and Technique"

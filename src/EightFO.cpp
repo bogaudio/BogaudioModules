@@ -55,8 +55,9 @@ void EightFO::step() {
 			if (inputs[SAMPLE_PWM_INPUT].active) {
 				pw *= clamp(inputs[SAMPLE_PWM_INPUT].value / 5.0f, -1.0f, 1.0f);
 			}
-			pw = (pw + 1.0f) / 2.0f;
 			pw *= 1.0f - 2.0f * _square.minPulseWidth;
+			pw *= 0.5f;
+			pw += 0.5f;
 			_square.setPulseWidth(pw);
 			_sampleSteps = 1;
 		}
