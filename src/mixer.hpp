@@ -53,4 +53,11 @@ struct MixerChannel {
 	void next(bool stereo); // input from _in; outputs on out, left, right, rms.
 };
 
+struct MuteButton : ToggleButton {
+	MuteButton() {
+		addFrame(SVG::load(assetPlugin(plugin, "res/button_18px_0.svg")));
+		addFrame(SVG::load(assetPlugin(plugin, "res/button_18px_1_orange.svg")));
+	}
+};
+
 } // namespace bogaudio

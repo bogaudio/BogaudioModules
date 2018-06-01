@@ -18,6 +18,7 @@
 #include "RM.hpp"
 #include "VCM.hpp"
 #include "Mix4.hpp"
+#include "Mix8.hpp"
 
 #include "ADSR.hpp"
 #include "Bool.hpp"
@@ -76,6 +77,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelRM);
 	p->addModel(modelVCM);
 	p->addModel(modelMix4);
+	p->addModel(modelMix8);
 #endif
 
 #ifdef EXPERIMENTAL
