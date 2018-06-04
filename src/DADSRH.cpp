@@ -92,7 +92,7 @@ struct DADSRHWidget : ModuleWidget {
 		addChild(ModuleLightWidget::create<TinyLight<GreenLight>>(releaseShape3LightPosition, module, DADSRH::RELEASE_SHAPE3_LIGHT));
 	}
 
-	virtual void appendContextMenu(Menu* menu) override {
+	void appendContextMenu(Menu* menu) override {
 		DADSRH* dadsrh = dynamic_cast<DADSRH*>(module);
 		assert(dadsrh);
 		menu->addChild(new MenuLabel());

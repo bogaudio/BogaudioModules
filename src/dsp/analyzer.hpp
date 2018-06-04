@@ -166,7 +166,7 @@ struct SpectrumAnalyzer : OverlappingBuffer<float> {
 		delete[] _fftOut;
 	}
 
-	virtual void process(float* samples) override {
+	void process(float* samples) override {
 		float* input = samples;
 		if (_window) {
 			_window->apply(samples, _windowOut);

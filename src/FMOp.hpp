@@ -87,11 +87,11 @@ struct FMOp : Module {
 		onSampleRateChange();
 	}
 
-	virtual void onReset() override;
-	virtual void onSampleRateChange() override;
-	virtual json_t* toJson() override;
-	virtual void fromJson(json_t* root) override;
-	virtual void step() override;
+	void onReset() override;
+	void onSampleRateChange() override;
+	json_t* toJson() override;
+	void fromJson(json_t* root) override;
+	void step() override;
 };
 
 } // namespace bogaudio

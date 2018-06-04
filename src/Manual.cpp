@@ -68,7 +68,7 @@ struct ManualWidget : ModuleWidget {
 		addOutput(Port::create<Port24>(out8OutputPosition, Port::OUTPUT, module, Manual::OUT8_OUTPUT));
 	}
 
-	virtual void appendContextMenu(Menu* menu) override {
+	void appendContextMenu(Menu* menu) override {
 		Manual* manual = dynamic_cast<Manual*>(module);
 		assert(manual);
 		menu->addChild(new MenuLabel());

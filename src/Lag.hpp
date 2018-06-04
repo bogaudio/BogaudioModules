@@ -41,8 +41,8 @@ struct Lag : Module {
 		onReset();
 	}
 
-	virtual void onReset() override;
-	virtual void step() override;
+	void onReset() override;
+	void step() override;
 };
 
 } // namespace bogaudio

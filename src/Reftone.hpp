@@ -42,11 +42,11 @@ struct Reftone : Module {
 		onSampleRateChange();
 	}
 
-	virtual void onSampleRateChange() override {
+	void onSampleRateChange() override {
 		_sine.setSampleRate(engineGetSampleRate());
 	}
 
-	virtual void step() override;
+	void step() override;
 };
 
 } // namespace bogaudio

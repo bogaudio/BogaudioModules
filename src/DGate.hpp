@@ -48,10 +48,10 @@ struct DGate : TriggerOnLoadModule {
 		onReset();
 	}
 
-	virtual void onReset() override;
-	virtual void step() override;
+	void onReset() override;
+	void step() override;
 	bool stepStage(Param& knob);
-	virtual bool shouldTriggerOnNextLoad() override {
+	bool shouldTriggerOnNextLoad() override {
 		return _stage != STOPPED_STAGE;
 	};
 };

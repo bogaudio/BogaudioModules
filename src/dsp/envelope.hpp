@@ -57,7 +57,7 @@ struct ADSR : EnvelopeGenerator {
 	void setShapes(float attackShape, float decayShape, float releaseShape);
 	bool isStage(Stage stage) { return _stage == stage; }
 
-	virtual float _next() override;
+	float _next() override;
 };
 
 } // namespace dsp

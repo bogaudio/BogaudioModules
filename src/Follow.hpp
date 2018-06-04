@@ -41,8 +41,8 @@ struct Follow : Module {
 		onSampleRateChange();
 	}
 
-	virtual void onSampleRateChange() override;
-	virtual void step() override;
+	void onSampleRateChange() override;
+	void step() override;
 };
 
 } // namespace bogaudio

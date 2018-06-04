@@ -79,9 +79,9 @@ struct LFO : Module {
 		onSampleRateChange();
 	}
 
-	virtual void onReset() override;
-	virtual void onSampleRateChange() override;
-	virtual void step() override;
+	void onReset() override;
+	void onSampleRateChange() override;
+	void step() override;
 	void updateOutput(Phasor& wave, bool useSample, bool invert, Output& output, float& sample, bool& active);
 };
 

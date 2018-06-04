@@ -41,7 +41,7 @@ struct VCA : Module {
 
 	VCA() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {}
 
-	virtual void step() override;
+	void step() override;
 	void channelStep(Input& input, Output& output, Param& knob, Input& cv, Amplifier& amplifier, bool linear);
 };
 

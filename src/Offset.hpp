@@ -27,7 +27,7 @@ struct Offset : Module {
 
 	Offset() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {}
 
-	virtual void step() override;
+	void step() override;
 
 	float knobValue(const Param& knob, const Input& cv) const;
 };

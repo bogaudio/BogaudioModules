@@ -249,7 +249,7 @@ struct FMOpWidget : ModuleWidget {
 		addChild(ModuleLightWidget::create<SmallLight<GreenLight>>(envToDepthLightPosition, module, FMOp::ENV_TO_DEPTH_LIGHT));
 	}
 
-	virtual void appendContextMenu(Menu* menu) override {
+	void appendContextMenu(Menu* menu) override {
 	  FMOp* fmop = dynamic_cast<FMOp*>(module);
 		assert(fmop);
 		menu->addChild(new MenuLabel());

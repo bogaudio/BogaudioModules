@@ -75,8 +75,8 @@ struct Mix4 : Module {
 		_rms.setSensitivity(0.05f);
 	}
 
-	virtual void onSampleRateChange() override;
-	virtual void step() override;
+	void onSampleRateChange() override;
+	void step() override;
 };
 
 } // namespace bogaudio

@@ -130,9 +130,9 @@ struct EightFO : Module {
 		onSampleRateChange();
 	}
 
-	virtual void onReset() override;
-	virtual void onSampleRateChange() override;
-	virtual void step() override;
+	void onReset() override;
+	void onSampleRateChange() override;
+	void step() override;
 	Phasor::phase_delta_t phaseOffset(Param& p, Input& i, Phasor::phase_delta_t baseOffset);
 	void updateOutput(bool useSample, Output& output, Phasor::phase_delta_t& offset, float& sample, bool& active);
 };

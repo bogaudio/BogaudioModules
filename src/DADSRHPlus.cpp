@@ -114,7 +114,7 @@ struct DADSRHPlusWidget : ModuleWidget {
 		addChild(ModuleLightWidget::create<TinyLight<GreenLight>>(releaseShape3LightPosition, module, DADSRHPlus::RELEASE_SHAPE3_LIGHT));
 	}
 
-	virtual void appendContextMenu(Menu* menu) override {
+	void appendContextMenu(Menu* menu) override {
 		DADSRHPlus* dadsrhPlus = dynamic_cast<DADSRHPlus*>(module);
 		assert(dadsrhPlus);
 		menu->addChild(new MenuLabel());

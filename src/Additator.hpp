@@ -100,10 +100,10 @@ struct Additator : Module {
 		onSampleRateChange();
 	}
 
-	virtual void onReset() override;
-	virtual void onSampleRateChange() override;
+	void onReset() override;
+	void onSampleRateChange() override;
 	float cvValue(Input& cv, bool dc = false);
-	virtual void step() override;
+	void step() override;
 };
 
 } // namespace bogaudio

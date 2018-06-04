@@ -39,7 +39,7 @@ struct bogaudio::ChannelAnalyzer : SpectrumAnalyzer {
 		return _averagedBins->getAverages();
 	}
 
-	virtual bool step(float sample) override;
+	bool step(float sample) override;
 	float getPeak();
 };
 

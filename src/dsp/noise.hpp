@@ -32,7 +32,7 @@ struct WhiteNoiseGenerator : NoiseGenerator {
 
 	WhiteNoiseGenerator() : _uniform(-1.0, 1.0) {}
 
-	virtual float _next() override {
+	float _next() override {
 		return _uniform(_generator);
 	}
 };
@@ -44,7 +44,7 @@ struct BasePinkNoiseGenerator : NoiseGenerator {
 	G _gs[_n];
 	uint32_t _count = _g.next();
 
-	virtual float _next() override {
+	float _next() override {
 		// See: http://www.firstpr.com.au/dsp/pink-noise/
 		float sum = _g.next();
 		for (int i = 0, bit = 1; i < _n; ++i, bit <<= 1) {
@@ -68,7 +68,7 @@ struct BlueNoiseGenerator : NoiseGenerator {
 	PinkNoiseGenerator _pink;
 	float _last = 0.0f;
 
-	virtual float _next() override {
+	float _next() override {
 		float t = _last;
 		_last = _pink.next();
 		return _last - t;
@@ -80,7 +80,7 @@ struct GaussianNoiseGenerator : NoiseGenerator {
 
 	GaussianNoiseGenerator() : _normal(0, 1.0) {}
 
-	virtual float _next() override {
+	float _next() override {
 		return _normal(_generator);
 	}
 };

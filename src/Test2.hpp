@@ -68,8 +68,8 @@ struct Test2 : Module {
 		onReset();
 	}
 
-	virtual void onReset() override;
-	virtual void step() override;
+	void onReset() override;
+	void step() override;
 	// float oscillatorPitch1A();
 };
 

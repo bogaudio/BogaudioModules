@@ -41,9 +41,9 @@ struct Manual : TriggerOnLoadModule {
 		onReset();
 	}
 
-	virtual void onReset() override;
-	virtual void step() override;
-	virtual bool shouldTriggerOnNextLoad() override {
+	void onReset() override;
+	void step() override;
+	bool shouldTriggerOnNextLoad() override {
 		return true;
 	}
 };

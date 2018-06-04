@@ -34,7 +34,7 @@ struct Mult : Module {
 	Mult() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 	}
 
-	virtual void step() override;
+	void step() override;
 };
 
 } // namespace bogaudio

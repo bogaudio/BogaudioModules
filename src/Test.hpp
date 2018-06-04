@@ -290,8 +290,8 @@ struct Test : Module {
 #endif
 	}
 
-	virtual void onReset() override;
-	virtual void step() override;
+	void onReset() override;
+	void step() override;
 	float oscillatorPitch(float max = 10000.0);
 	float oscillatorPitch2(float max = 10000.0);
 	float ratio2();

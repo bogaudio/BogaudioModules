@@ -67,11 +67,11 @@ struct Analyzer : Module {
 		onReset();
 	}
 
-	virtual void onReset() override;
-	virtual void onSampleRateChange() override;
+	void onReset() override;
+	void onSampleRateChange() override;
 	void resetChannels();
 	SpectrumAnalyzer::Size size();
-	virtual void step() override;
+	void step() override;
 	void stepChannel(ChannelAnalyzer*& channelPointer, bool running, Input& input, Output& output);
 };
 

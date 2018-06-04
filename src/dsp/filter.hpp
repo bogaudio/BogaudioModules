@@ -45,7 +45,7 @@ struct BiquadFilter : Filter {
 		}
 	}
 
-	virtual float next(float sample) override {
+	float next(float sample) override {
 		_x[2] = _x[1];
 		_x[1] = _x[0];
 		_x[0] = sample;
@@ -95,7 +95,7 @@ struct LowPassFilter : Filter {
 	}
 
 	void setParams(float sampleRate, float cutoff, float q);
-	virtual float next(float sample) override {
+	float next(float sample) override {
 		return _biquad.next(sample);
 	}
 };
@@ -124,7 +124,7 @@ struct MultipoleFilter : Filter {
 		float cutoff,
 		float ripple // FIXME: using this with more than two poles creates large gain, need compensation.
 	);
-	virtual float next(float sample) override;
+	float next(float sample) override;
 };
 
 struct Decimator {
@@ -142,8 +142,8 @@ struct LPFDecimator : Decimator {
 	LPFDecimator(float sampleRate = 1000.0f, int factor = 8) {
 		setParams(sampleRate, factor);
 	}
-	virtual void setParams(float sampleRate, int factor) override;
-	virtual float next(const float* buf) override;
+	void setParams(float sampleRate, int factor) override;
+	float next(const float* buf) override;
 };
 
 struct CICDecimator : Decimator {
@@ -158,8 +158,8 @@ struct CICDecimator : Decimator {
 	CICDecimator(int stages = 4, int factor = 8);
 	virtual ~CICDecimator();
 
-	virtual void setParams(float sampleRate, int factor) override;
-	virtual float next(const float* buf) override;
+	void setParams(float sampleRate, int factor) override;
+	float next(const float* buf) override;
 };
 
 } // namespace dsp

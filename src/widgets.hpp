@@ -86,7 +86,7 @@ struct VUSlider : Knob {
 	void setVULevel(float* vuLevel) {
 		_vuLevel = vuLevel;
 	}
-	virtual void draw(NVGcontext* vg) override;
+	void draw(NVGcontext* vg) override;
 };
 
 struct VUSlider151 : VUSlider {

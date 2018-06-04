@@ -92,15 +92,15 @@ struct Shaper : TriggerOnLoadModule {
 		onReset();
 	}
 
-	virtual void onReset() override {
+	void onReset() override {
 		_core.reset();
 	}
 
-	virtual void step() override {
+	void step() override {
 		_core.step();
 	}
 
-	virtual bool shouldTriggerOnNextLoad() override {
+	bool shouldTriggerOnNextLoad() override {
 		return _core._stage != _core.STOPPED_STAGE;
 	}
 };

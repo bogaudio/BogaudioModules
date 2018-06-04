@@ -127,9 +127,9 @@ struct XCO : Module {
 		_square.setQuality(12);
 	}
 
-	virtual void onReset() override;
-	virtual void onSampleRateChange() override;
-	virtual void step() override;
+	void onReset() override;
+	void onSampleRateChange() override;
+	void step() override;
 	Phasor::phase_delta_t phaseOffset(Param& param, Input& input);
 	float level(Param& param, Input& input);
 	void setSampleRate(float sampleRate);

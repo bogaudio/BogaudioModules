@@ -77,11 +77,11 @@ struct Phasor : OscillatorGenerator {
 		_update();
 	}
 
-	virtual void _sampleRateChanged() override {
+	void _sampleRateChanged() override {
 		_update();
 	}
 
-	virtual void _frequencyChanged() override {
+	void _frequencyChanged() override {
 		_update();
 	}
 
@@ -93,7 +93,7 @@ struct Phasor : OscillatorGenerator {
 	virtual void _update();
 	inline void advancePhase() { _phase += _delta; }
 	inline void advancePhase(int n) { assert(n > 0); _phase += n * _delta; }
-	virtual float _next() override final;
+	float _next() override final;
 	virtual float _nextForPhase(phase_t phase);
 
 	inline static phase_delta_t radiansToPhase(float radians) { return (radians / twoPI) * maxPhase; }
@@ -115,7 +115,7 @@ struct TablePhasor : Phasor {
 	{
 	}
 
-	virtual float _nextForPhase(phase_t phase) override;
+	float _nextForPhase(phase_t phase) override;
 };
 
 struct SineOscillator : OscillatorGenerator {
@@ -134,17 +134,17 @@ struct SineOscillator : OscillatorGenerator {
 		update();
 	}
 
-	virtual void _sampleRateChanged() override {
+	void _sampleRateChanged() override {
 		update();
 	}
 
-	virtual void _frequencyChanged() override {
+	void _frequencyChanged() override {
 		update();
 	}
 
 	void setPhase(double phase);
 	void update();
-	virtual float _next() override;
+	float _next() override;
 };
 
 struct SineTableOscillator : TablePhasor {
@@ -166,7 +166,7 @@ struct SawOscillator : Phasor {
 	{
 	}
 
-	virtual float _nextForPhase(phase_t phase) override;
+	float _nextForPhase(phase_t phase) override;
 };
 
 struct SaturatingSawOscillator : SawOscillator {
@@ -185,7 +185,7 @@ struct SaturatingSawOscillator : SawOscillator {
 
 	void setSaturation(float saturation);
 
-	virtual float _nextForPhase(phase_t phase) override;
+	float _nextForPhase(phase_t phase) override;
 };
 
 struct BandLimitedSawOscillator : SaturatingSawOscillator {
@@ -210,8 +210,8 @@ struct BandLimitedSawOscillator : SaturatingSawOscillator {
 
 	void setQuality(int quality);
 
-	virtual void _update() override;
-	virtual float _nextForPhase(phase_t phase) override;
+	void _update() override;
+	float _nextForPhase(phase_t phase) override;
 };
 
 struct SquareOscillator : Phasor {
@@ -232,7 +232,7 @@ struct SquareOscillator : Phasor {
 
 	void setPulseWidth(float pw);
 
-	virtual float _nextForPhase(phase_t phase) override;
+	float _nextForPhase(phase_t phase) override;
 };
 
 struct BandLimitedSquareOscillator : BandLimitedSawOscillator {
@@ -255,7 +255,7 @@ struct BandLimitedSquareOscillator : BandLimitedSawOscillator {
 
 	void setPulseWidth(float pw);
 
-	virtual float _nextForPhase(phase_t phase) override;
+	float _nextForPhase(phase_t phase) override;
 };
 
 struct TriangleOscillator : Phasor {
@@ -270,7 +270,7 @@ struct TriangleOscillator : Phasor {
 	{
 	}
 
-	virtual float _nextForPhase(phase_t phase) override;
+	float _nextForPhase(phase_t phase) override;
 };
 
 struct SineBankOscillator : Oscillator {
@@ -323,8 +323,8 @@ struct SineBankOscillator : Oscillator {
 
 	void syncToPhase(float phase);
 
-	virtual void _sampleRateChanged() override;
-	virtual void _frequencyChanged() override;
+	void _sampleRateChanged() override;
+	void _frequencyChanged() override;
 	float next(Phasor::phase_t phaseOffset = 0.0f);
 };
 

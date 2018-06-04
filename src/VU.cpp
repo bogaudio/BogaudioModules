@@ -42,7 +42,7 @@ struct VUDisplay : OpaqueWidget {
 		}
 	}
 
-	virtual void draw(NVGcontext* vg) override {
+	void draw(NVGcontext* vg) override {
 		float lDb = _module->_lLevel;
 		if (lDb > 0.0f) {
 			lDb = amplitudeToDecibels(lDb);

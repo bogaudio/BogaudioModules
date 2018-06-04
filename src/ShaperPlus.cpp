@@ -90,7 +90,7 @@ struct ShaperPlusWidget : ModuleWidget {
 		addChild(ModuleLightWidget::create<TinyLight<GreenLight>>(offLightPosition, module, ShaperPlus::OFF_LIGHT));
 	}
 
-	virtual void appendContextMenu(Menu* menu) override {
+	void appendContextMenu(Menu* menu) override {
 		ShaperPlus* shaperPlus = dynamic_cast<ShaperPlus*>(module);
 		assert(shaperPlus);
 		menu->addChild(new MenuLabel());

@@ -47,9 +47,9 @@ struct ADSR : Module {
 		onSampleRateChange();
 	}
 
-	virtual void onReset() override;
-	virtual void onSampleRateChange() override;
-	virtual void step() override;
+	void onReset() override;
+	void onSampleRateChange() override;
+	void step() override;
 };
 
 } // namespace bogaudio

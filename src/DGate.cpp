@@ -113,7 +113,7 @@ struct DGateWidget : ModuleWidget {
 		addChild(ModuleLightWidget::create<TinyLight<GreenLight>>(gateLightPosition, module, DGate::GATE_LIGHT));
 	}
 
-	virtual void appendContextMenu(Menu* menu) override {
+	void appendContextMenu(Menu* menu) override {
 	  DGate* dgate = dynamic_cast<DGate*>(module);
 		assert(dgate);
 		menu->addChild(new MenuLabel());

@@ -22,7 +22,7 @@ struct Amplifier {
 	static const float decibelsRange;
 	struct LevelTable : Table {
 		LevelTable(int n) : Table(n) {}
-		virtual void _generate() override;
+		void _generate() override;
 	};
 	struct StaticLevelTable : StaticTable<LevelTable, 11> {};
 
@@ -73,7 +73,7 @@ struct RootMeanSquare : RunningAverage {
 	{
 	}
 
-	virtual float next(float sample) override;
+	float next(float sample) override;
 };
 
 // Puckette 2007, "Theory and Technique"

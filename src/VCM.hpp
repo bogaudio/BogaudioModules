@@ -52,7 +52,7 @@ struct VCM : Module {
 		onReset();
 	}
 
-	virtual void step() override;
+	void step() override;
 	float channelStep(Input& input, Param& knob, Input& cv, Amplifier& amplifier, bool linear);
 };
 
