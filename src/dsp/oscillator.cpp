@@ -1,4 +1,3 @@
-#include <math.h>
 
 #include "oscillator.hpp"
 
@@ -116,7 +115,7 @@ void SaturatingSawOscillator::setSaturation(float saturation) {
 float SaturatingSawOscillator::_nextForPhase(phase_t phase) {
 	float sample = SawOscillator::_nextForPhase(phase);
 	if (_saturation >= 0.1f) {
-		sample = tanhf(sample * _saturation * M_PI) * _saturationNormalization;
+		sample = _tanhf.value(sample * _saturation * M_PI) * _saturationNormalization;
 	}
 	return sample;
 }

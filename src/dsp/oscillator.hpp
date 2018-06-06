@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "base.hpp"
+#include "math.hpp"
 #include "table.hpp"
 
 namespace bogaudio {
@@ -172,6 +173,7 @@ struct SawOscillator : Phasor {
 struct SaturatingSawOscillator : SawOscillator {
 	float _saturation;
 	float _saturationNormalization;
+	FastTanhf _tanhf;
 
 	SaturatingSawOscillator(
 		float sampleRate = 1000.0f,
