@@ -361,3 +361,51 @@ float DelayLine::next(float sample) {
 int DelayLine::delaySamples() {
 	return std::max((_time * _maxTimeMS / 1000.0f) * _sampleRate, 1.0f);
 }
+
+
+void Limiter::setParams(float shape, float knee, float limit, float scale) {
+	assert(shape >= 0.0f);
+	assert(knee >= 0.0f);
+	assert(limit >= 0.0f);
+	assert(scale >= 1.0f);
+	_shape = shape;
+	_knee = knee;
+	_limit = std::max(knee, limit);
+	_scale = scale;
+
+	if (_shape >= 0.1f) {
+		if (_shape < 1.0f) {
+			_normalization = 1.0f / tanhf(_shape * M_PI);
+		}
+		else {
+			_normalization = 1.0f;
+		}
+	}
+}
+
+float Limiter::next(float sample) {
+	float out = abs(sample);
+	if (out > _knee) {
+		out -= _knee;
+		out /= _scale;
+		if (_shape >= 0.1f) {
+			// out /= _limit - _knee;
+			// out = _tanhf.value(out * _shape * M_PI) * _normalization;
+			// out *= _limit - _knee;
+			float x = out / (_limit - _knee);
+			x = _tanhf.value(x * _shape * M_PI) * _normalization;
+			x = std::min(x, 1.0f);
+			x *= _limit - _knee;
+			out = std::min(abs(sample) - _knee, x);
+		}
+		else {
+			out = std::min(out, _limit - _knee);
+		}
+		out += _knee;
+	}
+
+	if (sample < 0.0f) {
+		return -out;
+	}
+	return out;
+}

@@ -85,6 +85,14 @@ void Test2::step() {
 		_adsr.setShapes(attackShape, decayShape, decayShape);
 		outputs[OUT_OUTPUT].value = _adsr.next() * 10.0f;
 	}
+
+#elif LIMITER
+	float shape = params[PARAM1A_PARAM].value * 5.0f;
+	float knee = params[PARAM2A_PARAM].value * 10.0f;
+	float limit = params[PARAM2B_PARAM].value * 15.0f;
+	float scale = params[PARAM1B_PARAM].value * 2.0f + 1.0f;
+	_limiter.setParams(shape, knee, limit, scale);
+	outputs[OUT_OUTPUT].value = _limiter.next(inputs[IN_INPUT].value);
 #endif
 }
 

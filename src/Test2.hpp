@@ -6,7 +6,8 @@ extern Model* modelTest2;
 
 // #define COMPLEX_BIQUAD 1
 // #define MULTIPOLE 1
-#define ADSR_ENVELOPE 1
+// #define ADSR_ENVELOPE 1
+#define LIMITER 1
 
 #ifdef COMPLEX_BIQUAD
 #include "dsp/filter.hpp"
@@ -14,6 +15,8 @@ extern Model* modelTest2;
 #include "dsp/filter.hpp"
 #elif ADSR_ENVELOPE
 #include "dsp/envelope.hpp"
+#elif LIMITER
+#include "dsp/signal.hpp"
 #elif
 #error what
 #endif
@@ -62,6 +65,8 @@ struct Test2 : Module {
 #elif ADSR_ENVELOPE
 	ADSR _adsr;
 	SchmittTrigger _trigger;
+#elif LIMITER
+	Limiter _limiter;
 #endif
 
 	Test2() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {

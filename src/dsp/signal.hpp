@@ -2,6 +2,7 @@
 
 #include <math.h>
 
+#include "math.hpp"
 #include "table.hpp"
 
 namespace bogaudio {
@@ -203,6 +204,20 @@ struct DelayLine {
 	void setTime(float time);
 	float next(float sample);
 	int delaySamples();
+};
+
+struct Limiter {
+	float _shape;
+	float _knee;
+	float _limit;
+	float _scale;
+	float _normalization;
+	FastTanhf _tanhf;
+
+	Limiter() {}
+
+	void setParams(float shape = 1.0f, float knee = 5.0f, float limit = 10.0f, float scale = 2.0f);
+	float next(float sample);
 };
 
 } // namespace dsp

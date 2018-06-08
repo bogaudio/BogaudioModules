@@ -103,11 +103,13 @@ void SaturatingSawOscillator::setSaturation(float saturation) {
 	if (_saturation != saturation) {
 		assert(saturation >= 0.0f);
 		_saturation = saturation;
-		if (_saturation < 1.0f) {
-			_saturationNormalization = 1.0f / tanhf(_saturation * M_PI);
-		}
-		else {
-			_saturationNormalization = 1.0f;
+		if (_saturation >= 0.1f) {
+			if (_saturation < 1.0f) {
+				_saturationNormalization = 1.0f / tanhf(_saturation * M_PI);
+			}
+			else {
+				_saturationNormalization = 1.0f;
+			}
 		}
 	}
 }
