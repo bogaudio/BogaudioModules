@@ -120,7 +120,6 @@ void XCO::step() {
 	}
 
 	bool triangleSample = _triangleSampleWidth > 0.001f;
-	bool sineFeedback = _sineFeedback > 0.001f;
 	bool squareActive = outputs[MIX_OUTPUT].active || outputs[SQUARE_OUTPUT].active;
 	bool sawActive = outputs[MIX_OUTPUT].active || outputs[SAW_OUTPUT].active;
 	bool triangleActive = outputs[MIX_OUTPUT].active || outputs[TRIANGLE_OUTPUT].active;
@@ -128,18 +127,28 @@ void XCO::step() {
 	bool squareOversample = squareActive && oMix > 0.0f;
 	bool sawOversample = sawActive && oMix > 0.0f;
 	bool triangleOversample = triangleActive && (triangleSample || oMix > 0.0f);
-	bool sineOversample = sineActive && sineFeedback;
 	bool squareNormal = squareActive && mix > 0.0f;
 	bool sawNormal = sawActive && mix > 0.0f;
 	bool triangleNormal = triangleActive && !triangleSample && mix > 0.0f;
-	bool sineNormal = sineActive && !sineFeedback;
 	float squareOut = 0.0f;
 	float sawOut = 0.0f;
 	float triangleOut = 0.0f;
 	float sineOut = 0.0f;
-	Phasor::phase_delta_t sineFeedbackOffset = sineFeedback ? Phasor::radiansToPhase(_sineFeedback * _sineFeedbackDelayedSample) : 0.0f;
 
-	if (squareOversample || sawOversample || triangleOversample || sineOversample) {
+	Phasor::phase_delta_t sineFeedbackOffset = 0;
+	if (sineActive) {
+		 if (_sineFeedback > 0.001f) {
+			 sineFeedbackOffset = Phasor::radiansToPhase(_sineFeedback * _sineFeedbackDelayedSample);
+			 if (_sineOMix < 1.0f) {
+				 _sineOMix += sineOversampleMixIncrement;
+			 }
+		 }
+		 else if (_sineOMix > 0.0f) {
+			 _sineOMix -= sineOversampleMixIncrement;
+		 }
+	}
+
+	if (squareOversample || sawOversample || triangleOversample || _sineOMix > 0.0f) {
 		for (int i = 0; i < oversample; ++i) {
 			_phasor.advancePhase();
 			if (squareOversample) {
@@ -151,7 +160,7 @@ void XCO::step() {
 			if (triangleOversample) {
 				_triangleBuffer[i] = _triangle.nextFromPhasor(_phasor, _trianglePhaseOffset + phaseOffset);
 			}
-			if (sineOversample) {
+			if (_sineOMix > 0.0f) {
 				_sineBuffer[i] = _sine.nextFromPhasor(_phasor, sineFeedbackOffset + _sinePhaseOffset + phaseOffset);
 			}
 		}
@@ -167,8 +176,8 @@ void XCO::step() {
 				triangleOut *= oMix;
 			}
 		}
-		if (sineOversample) {
-			sineOut += amplitude * _sineDecimator.next(_sineBuffer);
+		if (_sineOMix > 0.0f) {
+			sineOut += amplitude * _sineOMix * _sineDecimator.next(_sineBuffer);
 		}
 	}
 	else {
@@ -184,8 +193,8 @@ void XCO::step() {
 	if (triangleNormal) {
 		triangleOut += mix * amplitude * _triangle.nextFromPhasor(_phasor, _trianglePhaseOffset + phaseOffset);
 	}
-	if (sineNormal) {
-		sineOut += amplitude * _sine.nextFromPhasor(_phasor, sineFeedbackOffset + _sinePhaseOffset + phaseOffset);
+	if (_sineOMix < 1.0f) {
+		sineOut += amplitude * (1.0f - _sineOMix) * _sine.nextFromPhasor(_phasor, sineFeedbackOffset + _sinePhaseOffset + phaseOffset);
 	}
 
 	outputs[SQUARE_OUTPUT].value = squareOut;

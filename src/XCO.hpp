@@ -71,6 +71,7 @@ struct XCO : Module {
 	const float amplitude = 5.0f;
 	static constexpr int oversample = 8;
 	const float slewLimitTime = 1.0f;
+	const float sineOversampleMixIncrement = 0.01f;
 	int _modulationStep = 0;
 	float _oversampleThreshold = 0.0f;
 	float _frequency = 0.0f;
@@ -81,6 +82,7 @@ struct XCO : Module {
 	bool _fmLinearMode = false;
 	float _triangleSampleWidth = 0.0f;
 	float _sineFeedback = 0.0f;
+	float _sineOMix = 0.0f;
 	float _sineFeedbackDelayedSample = 0.0f;
 	Phasor::phase_delta_t _squarePhaseOffset = 0.0f;
 	Phasor::phase_delta_t _sawPhaseOffset = 0.0f;
