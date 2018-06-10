@@ -37,12 +37,17 @@ struct VCA : Module {
 	};
 
 	Amplifier _amplifier1;
+	SlewLimiter _levelSL1;
 	Amplifier _amplifier2;
+	SlewLimiter _levelSL2;
 
-	VCA() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {}
+	VCA() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+		onSampleRateChange();
+	}
 
+	void onSampleRateChange() override;
 	void step() override;
-	void channelStep(Input& input, Output& output, Param& knob, Input& cv, Amplifier& amplifier, bool linear);
+	void channelStep(Input& input, Output& output, Param& knob, Input& cv, Amplifier& amplifier, SlewLimiter& levelSL, bool linear);
 };
 
 } // namespace bogaudio

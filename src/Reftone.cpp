@@ -6,13 +6,20 @@ void Reftone::step() {
 	const int referencePitch = 0;
 	const int referenceOctave = 4;
 
-	_pitch = params[PITCH_PARAM].value;
-	_octave = params[OCTAVE_PARAM].value;
-	_fine = params[FINE_PARAM].value;
-	_frequency = semitoneToFrequency(referenceSemitone + 12*(_octave - referenceOctave) + (_pitch - referencePitch) + _fine);
+	if (!(
+		_pitch == params[PITCH_PARAM].value &&
+		_octave == params[OCTAVE_PARAM].value &&
+		_fine == params[FINE_PARAM].value
+	)) {
+		_pitch = params[PITCH_PARAM].value;
+		_octave = params[OCTAVE_PARAM].value;
+		_fine = params[FINE_PARAM].value;
+		_frequency = semitoneToFrequency(referenceSemitone + 12*(_octave - referenceOctave) + (_pitch - referencePitch) + _fine);
+		_cv = frequencyToCV(_frequency);
+	}
 
 	if (outputs[CV_OUTPUT].active) {
-		outputs[CV_OUTPUT].value = frequencyToCV(_frequency);
+		outputs[CV_OUTPUT].value = _cv;
 	}
 	else {
 		outputs[CV_OUTPUT].value = 0.0;
@@ -171,7 +178,6 @@ float ReftoneDisplay::textRenderWidth(NVGcontext* vg, const char* s, int size) {
 	// return w - size/4.0;
 	return strlen(s) * (size / 2.1);
 }
-
 
 struct ReftoneWidget : ModuleWidget {
 	ReftoneWidget(Reftone* module) : ModuleWidget(module) {

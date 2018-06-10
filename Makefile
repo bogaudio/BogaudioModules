@@ -28,7 +28,7 @@ BENCHMARK_OBJECTS = $(patsubst %, build/%.o, $(BENCHMARK_SOURCES))
 BENCHMARK_DEPS = $(patsubst %, build/%.d, $(BENCHMARK_SOURCES))
 -include $(BENCHMARK_DEPS)
 benchmark: $(BENCHMARK_OBJECTS)
-	$(CXX) -o $@ $^ ../../build/src/util.cpp.o -lbenchmark -lpthread
+	$(CXX) -o $@ $^ -lbenchmark -lpthread
 benchmark_clean:
 	rm -f benchmark $(BENCHMARK_OBJECTS)
 

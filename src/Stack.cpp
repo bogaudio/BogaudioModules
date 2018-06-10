@@ -16,15 +16,27 @@ void Stack::step() {
 		semitones = roundf(semitones);
 	}
 
+	float inCV = 0.0f;
 	if (inputs[IN_INPUT].active) {
-		float cv = clamp(inputs[IN_INPUT].value, _minCVOut, _maxCVOut);
-		outputs[THRU_OUTPUT].value = cv;
-		outputs[OUT_OUTPUT].value = clamp(semitoneToCV(cvToSemitone(cv) + semitones + params[FINE_PARAM].value), _minCVOut, _maxCVOut);
+		inCV = clamp(inputs[IN_INPUT].value, _minCVOut, _maxCVOut);
+	}
+
+	float fine = params[FINE_PARAM].value;
+
+	if (_semitones != semitones || _inCV != inCV || _fine != fine) {
+		_semitones = semitones;
+		_inCV = inCV;
+		_fine = fine;
+		_outCV = clamp(semitoneToCV((_inCV != 0.0f ? cvToSemitone(_inCV) : referenceSemitone) + _semitones + _fine), _minCVOut, _maxCVOut);
+	}
+
+	if (inputs[IN_INPUT].active) {
+		outputs[THRU_OUTPUT].value = _inCV;
 	}
 	else {
-		outputs[THRU_OUTPUT].value = semitones / 10.0;
-		outputs[OUT_OUTPUT].value = clamp(semitoneToCV(referenceSemitone + semitones + params[FINE_PARAM].value), _minCVOut, _maxCVOut);
+		outputs[THRU_OUTPUT].value = _semitones / 10.0;
 	}
+	outputs[OUT_OUTPUT].value = _outCV;
 }
 
 struct StackWidget : ModuleWidget {

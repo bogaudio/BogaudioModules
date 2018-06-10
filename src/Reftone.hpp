@@ -34,8 +34,9 @@ struct Reftone : Module {
 
 	int _pitch = 9;
 	int _octave = 4;
-	float _fine = 0.0;
-	float _frequency = 440.0;
+	float _fine = 0.0f;
+	float _frequency = 440.0f;
+	float _cv = frequencyToCV(_frequency);
 	SineOscillator _sine;
 
 	Reftone() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {

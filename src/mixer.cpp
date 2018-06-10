@@ -3,7 +3,7 @@
 
 const float MixerChannel::maxDecibels = 6.0f;
 const float MixerChannel::minDecibels = Amplifier::minDecibels;
-const float MixerChannel::slewTimeMS = 1.0f;
+const float MixerChannel::slewTimeMS = 10.0f;
 
 void MixerChannel::setSampleRate(float sampleRate) {
 	_slewLimiter.setParams(sampleRate, slewTimeMS);

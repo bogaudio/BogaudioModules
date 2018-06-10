@@ -2,7 +2,9 @@
 #include "VCAmp.hpp"
 
 void VCAmp::onSampleRateChange() {
-	_rms.setSampleRate(engineGetSampleRate());
+	float sampleRate = engineGetSampleRate();
+	_levelSL.setParams(sampleRate, 10.0f);
+	_rms.setSampleRate(sampleRate);
 }
 
 void VCAmp::step() {
@@ -13,7 +15,7 @@ void VCAmp::step() {
 		}
 		level *= maxDecibels - minDecibels;
 		level += minDecibels;
-		_amplifier.setLevel(level);
+		_amplifier.setLevel(_levelSL.next(level));
 		outputs[OUT_OUTPUT].value = _amplifier.next(inputs[IN_INPUT].value);
 		_rmsLevel = _rms.next(outputs[OUT_OUTPUT].value / 5.0f);
 	}

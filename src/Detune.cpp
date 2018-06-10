@@ -8,35 +8,33 @@ void Detune::step() {
 
 	float cents = params[CENTS_PARAM].value;
 	if (inputs[CV_INPUT].active) {
-		cents *= clamp(inputs[CV_INPUT].value, 0.0f, 10.0f) / 10.0;
+		cents *= clamp(inputs[CV_INPUT].value / 10.0f, 0.0f, 1.0f);
 		cents = roundf(cents);
 	}
-	cents /= 100.0;
+	cents /= 100.0f;
 
+	float inCV = 0.0f;
 	if (inputs[IN_INPUT].active) {
-		float cv = inputs[IN_INPUT].value;
-		outputs[THRU_OUTPUT].value = cv;
-		if (cents < 0.001) {
-			outputs[OUT_PLUS_OUTPUT].value = cv;
-			outputs[OUT_MINUS_OUTPUT].value = cv;
+		inCV = inputs[IN_INPUT].value;
+	}
+
+	if (_cents != cents || _inCV != inCV) {
+		_cents = cents;
+		_inCV = inCV;
+		if (_cents < 0.001f) {
+			_plusCV = _inCV;
+			_minusCV = _inCV;
 		}
 		else {
-			float semitone = cvToSemitone(cv);
-			outputs[OUT_PLUS_OUTPUT].value = semitoneToCV(semitone + cents);
-			outputs[OUT_MINUS_OUTPUT].value = semitoneToCV(semitone - cents);
+			float semitone = cvToSemitone(_inCV);
+			_plusCV = semitoneToCV(semitone + cents);
+			_minusCV = semitoneToCV(semitone - cents);
 		}
 	}
-	else {
-		outputs[THRU_OUTPUT].value = 0.0;
-		if (cents < 0.001) {
-			outputs[OUT_PLUS_OUTPUT].value = 0.0;
-			outputs[OUT_MINUS_OUTPUT].value = 0.0;
-		}
-		else {
-			outputs[OUT_PLUS_OUTPUT].value = semitoneToCV(referenceSemitone + cents);
-			outputs[OUT_MINUS_OUTPUT].value = semitoneToCV(referenceSemitone - cents);
-		}
-	}
+
+	outputs[THRU_OUTPUT].value = _inCV;
+	outputs[OUT_PLUS_OUTPUT].value = _plusCV;
+	outputs[OUT_MINUS_OUTPUT].value = _minusCV;
 }
 
 struct DetuneWidget : ModuleWidget {

@@ -124,7 +124,7 @@ struct SlewLimiter {
 		setParams(sampleRate, milliseconds);
 	}
 
-	void setParams(float sampleRate, float milliseconds);
+	void setParams(float sampleRate, float milliseconds = 1.0f);
 	float next(float sample);
 };
 

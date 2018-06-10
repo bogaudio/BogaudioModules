@@ -1,19 +1,26 @@
 
 #include "VCA.hpp"
 
+void VCA::onSampleRateChange() {
+	float sampleRate = engineGetSampleRate();
+	_levelSL1.setParams(sampleRate, 100.0f);
+	_levelSL2.setParams(sampleRate, 100.0f);
+}
+
 void VCA::step() {
 	bool linear = params[LINEAR_PARAM].value > 0.5f;
 	lights[LINEAR_LIGHT].value = linear;
-	channelStep(inputs[IN1_INPUT], outputs[OUT1_OUTPUT], params[LEVEL1_PARAM], inputs[CV1_INPUT], _amplifier1, linear);
-	channelStep(inputs[IN2_INPUT], outputs[OUT2_OUTPUT], params[LEVEL2_PARAM], inputs[CV2_INPUT], _amplifier2, linear);
+	channelStep(inputs[IN1_INPUT], outputs[OUT1_OUTPUT], params[LEVEL1_PARAM], inputs[CV1_INPUT], _amplifier1, _levelSL1, linear);
+	channelStep(inputs[IN2_INPUT], outputs[OUT2_OUTPUT], params[LEVEL2_PARAM], inputs[CV2_INPUT], _amplifier2, _levelSL1, linear);
 }
 
-void VCA::channelStep(Input& input, Output& output, Param& knob, Input& cv, Amplifier& amplifier, bool linear) {
+void VCA::channelStep(Input& input, Output& output, Param& knob, Input& cv, Amplifier& amplifier, SlewLimiter& levelSL, bool linear) {
 	if (input.active && output.active) {
 		float level = knob.value;
 		if (cv.active) {
 			level *= clamp(cv.value / 10.0f, 0.0f, 1.0f);
 		}
+		level = levelSL.next(level);
 		if (linear) {
 			output.value = level * input.value;
 		}

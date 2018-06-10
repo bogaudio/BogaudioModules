@@ -34,11 +34,17 @@ struct XFade : Module {
 		NUM_LIGHTS
 	};
 
-	CrossFader _mix;
+	bool _linear = false;
+	float _mix = 0.0f;
+	float _curveIn = -1.0f;
+	SlewLimiter _mixSL;
+	CrossFader _mixer;
 
 	XFade() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+		onSampleRateChange();
 	}
 
+	void onSampleRateChange() override;
 	void step() override;
 };
 

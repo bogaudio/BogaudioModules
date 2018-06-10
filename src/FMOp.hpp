@@ -56,6 +56,7 @@ struct FMOp : Module {
 	const int modulationSteps = 100;
 	static constexpr int oversample = 8;
 	const float slewLimitTime = 1.0f;
+	const float oversampleMixIncrement = 0.01f;
 	int _steps = 0;
 	float _feedback = 0.0f;
 	float _feedbackDelayedSample = 0.0f;
@@ -67,10 +68,11 @@ struct FMOp : Module {
 	bool _depthEnvelopeOn = false;
 	float _maxFrequency = 0.0f;
 	float _buffer[oversample];
+	float _oversampleMix = 0.0f;
 	ADSR _envelope;
 	Phasor _phasor;
 	SineTableOscillator _sineTable;
-	LPFDecimator _decimator;
+	CICDecimator _decimator;
 	SchmittTrigger _gateTrigger;
 	SlewLimiter _feedbackSL;
 	SlewLimiter _depthSL;

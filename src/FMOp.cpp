@@ -15,7 +15,6 @@ void FMOp::onSampleRateChange() {
 	float sampleRate = engineGetSampleRate();
 	_envelope.setSampleRate(sampleRate);
 	_phasor.setSampleRate(sampleRate);
-	_sineTable.setSampleRate(sampleRate);
 	_decimator.setParams(sampleRate, oversample);
 	_maxFrequency = 0.475f * sampleRate;
 	_feedbackSL.setParams(sampleRate, slewLimitTime);
@@ -127,11 +126,18 @@ void FMOp::step() {
 	if (_feedbackEnvelopeOn) {
 		feedback *= envelope;
 	}
+	bool feedbackOn = feedback > 0.001f;
+
+	float out = _levelSL.next(_level);
+	if (_levelEnvelopeOn) {
+		out *= envelope;
+	}
 
 	float offset = 0.0f;
-	if (feedback > 0.001f) {
+	if (feedbackOn) {
 		offset = feedback * _feedbackDelayedSample;
 	}
+
 	if (inputs[FM_INPUT].active) {
 		float depth = _depthSL.next(_depth);
 		if (_depthEnvelopeOn) {
@@ -139,23 +145,47 @@ void FMOp::step() {
 		}
 		offset += inputs[FM_INPUT].value * depth * 2.0f;
 	}
-	for (int i = 0; i < oversample; ++i) {
-		_phasor.advancePhase();
-		_buffer[i] = _sineTable.nextFromPhasor(_phasor, Phasor::radiansToPhase(offset));
-	}
-	float out = _levelSL.next(_level);
-	if (_levelEnvelopeOn) {
-		out *= envelope;
-	}
-	if (_linearLevel) {
-		out *= _decimator.next(_buffer);
+
+	float sample = 0.0f;
+	if (out > 0.0001f) {
+		Phasor::phase_delta_t o = offset > 0.0f ? Phasor::radiansToPhase(offset) : 0;
+		if (feedbackOn) {
+			if (_oversampleMix < 1.0f) {
+				_oversampleMix += oversampleMixIncrement;
+			}
+		}
+		else if (_oversampleMix > 0.0f) {
+			_oversampleMix -= oversampleMixIncrement;
+		}
+
+		if (_oversampleMix > 0.0f) {
+			for (int i = 0; i < oversample; ++i) {
+				_phasor.advancePhase();
+				_buffer[i] = _sineTable.nextFromPhasor(_phasor, o);
+			}
+			sample = _oversampleMix * _decimator.next(_buffer);
+		}
+		else {
+			_phasor.advancePhase(oversample);
+		}
+		if (_oversampleMix < 1.0f) {
+			sample += (1.0f - _oversampleMix) * _sineTable.nextFromPhasor(_phasor, o);
+		}
+
+		if (_linearLevel) {
+			sample *= out;
+		}
+		else {
+			out = (1.0f - out) * Amplifier::minDecibels;
+			_amplifier.setLevel(out);
+			sample = _amplifier.next(sample);
+		}
 	}
 	else {
-		out = (1.0f - out) * Amplifier::minDecibels;
-		_amplifier.setLevel(out);
-		out = _amplifier.next(_decimator.next(_buffer));
+		_phasor.advancePhase(oversample);
 	}
-	outputs[AUDIO_OUTPUT].value = _feedbackDelayedSample = amplitude * out;
+
+	outputs[AUDIO_OUTPUT].value = _feedbackDelayedSample = amplitude * sample;
 }
 
 struct LinearLevelMenuItem : MenuItem {

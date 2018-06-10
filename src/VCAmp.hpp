@@ -33,6 +33,7 @@ struct VCAmp : Module {
 	const float maxDecibels = 12.0f;
 	const float minDecibels = Amplifier::minDecibels;
 	Amplifier _amplifier;
+	SlewLimiter _levelSL;
 	RootMeanSquare _rms;
 	float _rmsLevel = 0.0f;
 

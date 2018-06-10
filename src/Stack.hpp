@@ -38,6 +38,11 @@ struct Stack : Module {
 	const float _minCVOut = semitoneToCV(24.0); // C1
 	const float _maxCVOut = semitoneToCV(120.0); // C9
 
+	float _semitones = -1000.0f;
+	float _inCV = -1000.0f;
+	float _fine = -1000.0f;
+	float _outCV;
+
 	Stack() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 	}
 

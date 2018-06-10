@@ -32,6 +32,11 @@ struct Detune : Module {
 		NUM_LIGHTS
 	};
 
+	float _cents = -1.0f;
+	float _inCV = -1000.0f;
+	float _plusCV;
+	float _minusCV;
+
 	Detune() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 	}
 

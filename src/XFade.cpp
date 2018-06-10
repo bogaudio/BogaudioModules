@@ -1,24 +1,39 @@
 
 #include "XFade.hpp"
 
+void XFade::onSampleRateChange() {
+	_mixSL.setParams(engineGetSampleRate(), 100.0f);
+}
+
 void XFade::step() {
 	bool linear = params[LINEAR_PARAM].value > 0.5f;
 	lights[LINEAR_LIGHT].value = linear;
+	if (!outputs[OUT_OUTPUT].active) {
+		return;
+	}
 
 	float mix = params[MIX_PARAM].value;
 	if (inputs[MIX_INPUT].active) {
 		mix *= clamp(inputs[MIX_INPUT].value / 5.0f, -1.0f, 1.0f);
 	}
+	mix = _mixSL.next(mix);
 
-	float curve = params[CURVE_PARAM].value;
-	if (!linear) {
-		curve = powf(params[CURVE_PARAM].value, 0.082f);
+	float curveIn = params[CURVE_PARAM].value;
+
+	if (_linear != linear || _mix != mix || _curveIn != curveIn) {
+		_linear = linear;
+		_mix = mix;
+		_curveIn = curveIn;
+		if (!linear) {
+			curveIn = powf(params[CURVE_PARAM].value, 0.082f);
+		}
+		curveIn *= 2.0f;
+		curveIn -= 1.0f;
+
+		_mixer.setParams(mix, curveIn, linear);
 	}
-	curve *= 2.0f;
-	curve -= 1.0f;
 
-	_mix.setParams(mix, curve, linear);
-	outputs[OUT_OUTPUT].value = _mix.next(inputs[A_INPUT].value, inputs[B_INPUT].value);
+	outputs[OUT_OUTPUT].value = _mixer.next(inputs[A_INPUT].value, inputs[B_INPUT].value);
 }
 
 struct XFadeWidget : ModuleWidget {
