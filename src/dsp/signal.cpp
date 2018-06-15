@@ -413,6 +413,7 @@ float Limiter::next(float sample) {
 
 const float Saturator::limit = 12.0f;
 
+// Zavalishin 2018, "The Art of VA Filter Design", http://www.native-instruments.com/fileadmin/ni_media/downloads/pdf/VAFilterDesign_2.0.0a.pdf
 static inline float saturation(float x) {
 	const float y1 = 0.98765f; // (2*x - 1)/x**2 where x is 0.9.
 	const float offset = 0.075f / Saturator::limit; // magic.
