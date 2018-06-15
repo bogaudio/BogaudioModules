@@ -29,8 +29,10 @@ void Noise::step() {
 }
 
 struct NoiseWidget : ModuleWidget {
+	static constexpr int hp = 3;
+
 	NoiseWidget(Noise* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 3, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -64,4 +66,4 @@ struct NoiseWidget : ModuleWidget {
 	}
 };
 
-Model* modelNoise = Model::create<Noise, NoiseWidget>("Bogaudio", "Bogaudio-Noise", "Noise", NOISE_TAG, RANDOM_TAG, UTILITY_TAG);
+Model* modelNoise = createModel<Noise, NoiseWidget>("Bogaudio-Noise", "Noise",  "noise source", NOISE_TAG, RANDOM_TAG);

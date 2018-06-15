@@ -35,8 +35,10 @@ float VCM::channelStep(Input& input, Param& knob, Input& cv, Amplifier& amplifie
 }
 
 struct VCMWidget : ModuleWidget {
+	static constexpr int hp = 10;
+
 	VCMWidget(VCM* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 10, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -96,4 +98,4 @@ struct VCMWidget : ModuleWidget {
 	}
 };
 
-Model* modelVCM = Model::create<VCM, VCMWidget>("Bogaudio", "Bogaudio-VCM", "VCM");
+Model* modelVCM = createModel<VCM, VCMWidget>("Bogaudio-VCM", "VCM",  "4-channel mixer", MIXER_TAG);

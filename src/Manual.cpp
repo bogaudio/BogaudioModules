@@ -30,8 +30,10 @@ void Manual::step() {
 }
 
 struct ManualWidget : ModuleWidget {
+	static constexpr int hp = 3;
+
 	ManualWidget(Manual* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 3, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -76,4 +78,4 @@ struct ManualWidget : ModuleWidget {
 	}
 };
 
-Model* modelManual = Model::create<Manual, ManualWidget>("Bogaudio", "Bogaudio-Manual", "Manual", UTILITY_TAG);
+Model* modelManual = createModel<Manual, ManualWidget>("Bogaudio-Manual", "Manual",  "manual gates/triggers");

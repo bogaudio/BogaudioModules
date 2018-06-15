@@ -23,8 +23,10 @@ float Offset::knobValue(const Param& knob, const Input& cv) const {
 }
 
 struct OffsetWidget : ModuleWidget {
+	static constexpr int hp = 3;
+
 	OffsetWidget(Offset* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 3, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -58,4 +60,4 @@ struct OffsetWidget : ModuleWidget {
 	}
 };
 
-Model* modelOffset = Model::create<Offset, OffsetWidget>("Bogaudio", "Bogaudio-Offset", "Offset", ATTENUATOR_TAG, UTILITY_TAG);
+Model* modelOffset = createModel<Offset, OffsetWidget>("Bogaudio-Offset", "Offset",  "CV offset and scaler", ATTENUATOR_TAG);

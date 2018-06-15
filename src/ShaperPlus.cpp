@@ -2,8 +2,10 @@
 #include "ShaperPlus.hpp"
 
 struct ShaperPlusWidget : ModuleWidget {
+	static constexpr int hp = 15;
+
 	ShaperPlusWidget(ShaperPlus* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 15, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -98,4 +100,4 @@ struct ShaperPlusWidget : ModuleWidget {
 	}
 };
 
-Model* modelShaperPlus = Model::create<ShaperPlus, ShaperPlusWidget>("Bogaudio", "Bogaudio-ShaperPlus", "Shaper+", ENVELOPE_GENERATOR_TAG, AMPLIFIER_TAG);
+Model* modelShaperPlus = createModel<ShaperPlus, ShaperPlusWidget>("Bogaudio-ShaperPlus", "Shaper+",  "envelope and amplifier", ENVELOPE_GENERATOR_TAG, AMPLIFIER_TAG);

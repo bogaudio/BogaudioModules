@@ -71,8 +71,10 @@ bool DGate::stepStage(Param& knob) {
 }
 
 struct DGateWidget : ModuleWidget {
+	static constexpr int hp = 3;
+
 	DGateWidget(DGate* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 3, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -121,4 +123,4 @@ struct DGateWidget : ModuleWidget {
 	}
 };
 
-Model* modelDGate = Model::create<DGate, DGateWidget>("Bogaudio", "Bogaudio-DGate", "DGate", UTILITY_TAG);
+Model* modelDGate = createModel<DGate, DGateWidget>("Bogaudio-DGate", "DGate",  "trigger-to-gate with delay");

@@ -34,7 +34,6 @@ void Reftone::step() {
 	}
 }
 
-
 struct ReftoneDisplay : TransparentWidget {
 	const NVGcolor _textColor = nvgRGBA(0x00, 0xff, 0x00, 0xee);
 
@@ -180,8 +179,10 @@ float ReftoneDisplay::textRenderWidth(NVGcontext* vg, const char* s, int size) {
 }
 
 struct ReftoneWidget : ModuleWidget {
+	static constexpr int hp = 3;
+
 	ReftoneWidget(Reftone* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 3, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -228,4 +229,4 @@ struct ReftoneWidget : ModuleWidget {
 	}
 };
 
-Model* modelReftone = Model::create<Reftone, ReftoneWidget>("Bogaudio", "Bogaudio-Reftone", "Reftone", TUNER_TAG, UTILITY_TAG);
+Model* modelReftone = createModel<Reftone, ReftoneWidget>("Bogaudio-Reftone", "Reftone",  "precision pitch CV generator", TUNER_TAG);

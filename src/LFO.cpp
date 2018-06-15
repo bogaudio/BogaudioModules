@@ -116,8 +116,10 @@ void LFO::updateOutput(Phasor& wave, bool useSample, bool invert, Output& output
 }
 
 struct LFOWidget : ModuleWidget {
+	static constexpr int hp = 10;
+
 	LFOWidget(LFO* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 10, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -179,4 +181,4 @@ struct LFOWidget : ModuleWidget {
 	}
 };
 
-Model* modelLFO = Model::create<LFO, LFOWidget>("Bogaudio", "Bogaudio-LFO", "LFO", LFO_TAG);
+Model* modelLFO = createModel<LFO, LFOWidget>("Bogaudio-LFO", "LFO",  "low-frequency oscillator", LFO_TAG);

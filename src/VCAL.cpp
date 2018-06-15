@@ -17,8 +17,10 @@ void VCAL::channelStep(Input& input, Output& output, Param& knob, Input& cv) {
 }
 
 struct VCALWidget : ModuleWidget {
+	static constexpr int hp = 3;
+
 	VCALWidget(VCAL* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 3, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -56,4 +58,4 @@ struct VCALWidget : ModuleWidget {
 	}
 };
 
-Model* modelVCAL = Model::create<VCAL, VCALWidget>("Bogaudio", "Bogaudio-VCAL", "VCA-L", AMPLIFIER_TAG, ATTENUATOR_TAG, DUAL_TAG, UTILITY_TAG);
+Model* modelVCAL = createModel<VCAL, VCALWidget>("Bogaudio-VCAL", "VCA-L",  "dual attenuator", ATTENUATOR_TAG, DUAL_TAG);

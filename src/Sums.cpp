@@ -18,8 +18,10 @@ void Sums::step() {
 }
 
 struct SumsWidget : ModuleWidget {
+	static constexpr int hp = 3;
+
 	SumsWidget(Sums* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 3, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -55,4 +57,4 @@ struct SumsWidget : ModuleWidget {
 	}
 };
 
-Model* modelSums = Model::create<Sums, SumsWidget>("Bogaudio", "Bogaudio-Sums", "Sums", LOGIC_TAG, UTILITY_TAG);
+Model* modelSums = createModel<Sums, SumsWidget>("Bogaudio-Sums", "Sums",  "arithmetic logic", LOGIC_TAG);

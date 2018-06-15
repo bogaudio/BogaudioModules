@@ -37,8 +37,10 @@ void XFade::step() {
 }
 
 struct XFadeWidget : ModuleWidget {
+	static constexpr int hp = 3;
+
 	XFadeWidget(XFade* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 3, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -84,4 +86,4 @@ struct XFadeWidget : ModuleWidget {
 	}
 };
 
-Model* modelXFade = Model::create<XFade, XFadeWidget>("Bogaudio", "Bogaudio-XFade", "XFade", MIXER_TAG, UTILITY_TAG);
+Model* modelXFade = createModel<XFade, XFadeWidget>("Bogaudio-XFade", "XFade",  "crossfader", MIXER_TAG);

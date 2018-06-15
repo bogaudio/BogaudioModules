@@ -80,8 +80,10 @@ void Mix8::step() {
 }
 
 struct Mix8Widget : ModuleWidget {
+	static constexpr int hp = 27;
+
 	Mix8Widget(Mix8* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 27, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -222,4 +224,4 @@ struct Mix8Widget : ModuleWidget {
 	}
 };
 
-Model* modelMix8 = Model::create<Mix8, Mix8Widget>("Bogaudio", "Bogaudio-Mix8", "Mix8");
+Model* modelMix8 = createModel<Mix8, Mix8Widget>("Bogaudio-Mix8", "Mix8",  "8-channel mixer and panner", MIXER_TAG, PANNING_TAG);

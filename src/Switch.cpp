@@ -18,8 +18,10 @@ void bogaudio::Switch::step() {
 }
 
 struct SwitchWidget : ModuleWidget {
+	static constexpr int hp = 3;
+
 	SwitchWidget(bogaudio::Switch* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 3, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -57,4 +59,4 @@ struct SwitchWidget : ModuleWidget {
 	}
 };
 
-Model* modelSwitch = Model::create<bogaudio::Switch, SwitchWidget>("Bogaudio", "Bogaudio-Switch", "Switch", SWITCH_TAG, UTILITY_TAG);
+Model* modelSwitch = createModel<Switch, SwitchWidget>("Bogaudio-Switch", "Switch",  "signal switch", SWITCH_TAG);

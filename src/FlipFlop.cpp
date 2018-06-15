@@ -60,8 +60,10 @@ void FlipFlop::channelStep(
 }
 
 struct FlipFlopWidget : ModuleWidget {
+	static constexpr int hp = 3;
+
 	FlipFlopWidget(FlipFlop* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 3, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -97,4 +99,4 @@ struct FlipFlopWidget : ModuleWidget {
 	}
 };
 
-Model* modelFlipFlop = Model::create<FlipFlop, FlipFlopWidget>("Bogaudio", "Bogaudio-FlipFlop", "FlipFlop", LOGIC_TAG, DUAL_TAG, UTILITY_TAG);
+Model* modelFlipFlop = createModel<FlipFlop, FlipFlopWidget>("Bogaudio-FlipFlop", "FlipFlop",  "dual stateful logic", LOGIC_TAG, DUAL_TAG);

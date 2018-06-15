@@ -146,8 +146,10 @@ void Additator::step() {
 }
 
 struct AdditatorWidget : ModuleWidget {
+	static constexpr int hp = 15;
+
 	AdditatorWidget(Additator* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 15, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -246,4 +248,4 @@ struct AdditatorWidget : ModuleWidget {
 	}
 };
 
-Model* modelAdditator = Model::create<Additator, AdditatorWidget>("Bogaudio", "Bogaudio-Additator", "Additator", OSCILLATOR_TAG);
+Model* modelAdditator = createModel<Additator, AdditatorWidget>("Bogaudio-Additator", "Additator",  "additive oscillator", OSCILLATOR_TAG);

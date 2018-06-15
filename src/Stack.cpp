@@ -40,8 +40,10 @@ void Stack::step() {
 }
 
 struct StackWidget : ModuleWidget {
+	static constexpr int hp = 3;
+
 	StackWidget(Stack* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 3, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -94,4 +96,4 @@ struct StackWidget : ModuleWidget {
 	}
 };
 
-Model* modelStack = Model::create<Stack, StackWidget>("Bogaudio", "Bogaudio-Stack", "Stack", TUNER_TAG, UTILITY_TAG);
+Model* modelStack = createModel<Stack, StackWidget>("Bogaudio-Stack", "Stack",  "pitch CV processor", TUNER_TAG);

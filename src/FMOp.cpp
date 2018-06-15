@@ -207,8 +207,10 @@ struct LinearLevelMenuItem : MenuItem {
 };
 
 struct FMOpWidget : ModuleWidget {
+	static constexpr int hp = 10;
+
 	FMOpWidget(FMOp* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 10, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -287,4 +289,4 @@ struct FMOpWidget : ModuleWidget {
 	}
 };
 
-Model* modelFMOp = Model::create<FMOp, FMOpWidget>("Bogaudio", "Bogaudio-FMOp", "FM-OP", OSCILLATOR_TAG, SYNTH_VOICE_TAG);
+Model* modelFMOp = createModel<FMOp, FMOpWidget>("Bogaudio-FMOp", "FM-OP",  "FM oscillator", OSCILLATOR_TAG, SYNTH_VOICE_TAG);

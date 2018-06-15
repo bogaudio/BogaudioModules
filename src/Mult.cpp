@@ -16,8 +16,10 @@ void Mult::step() {
 }
 
 struct MultWidget : ModuleWidget {
+	static constexpr int hp = 3;
+
 	MultWidget(Mult* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 3, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -53,4 +55,4 @@ struct MultWidget : ModuleWidget {
 	}
 };
 
-Model* modelMult = Model::create<Mult, MultWidget>("Bogaudio", "Bogaudio-Mult", "Mult", MULTIPLE_TAG, UTILITY_TAG);
+Model* modelMult = createModel<Mult, MultWidget>("Bogaudio-Mult", "Mult",  "multiple", MULTIPLE_TAG);

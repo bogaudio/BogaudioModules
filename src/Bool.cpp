@@ -12,8 +12,10 @@ void Bool::step() {
 }
 
 struct BoolWidget : ModuleWidget {
+	static constexpr int hp = 3;
+
 	BoolWidget(Bool* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 3, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -47,4 +49,4 @@ struct BoolWidget : ModuleWidget {
 	}
 };
 
-Model* modelBool = Model::create<Bool, BoolWidget>("Bogaudio", "Bogaudio-Bool", "Bool", LOGIC_TAG, UTILITY_TAG);
+Model* modelBool = createModel<Bool, BoolWidget>("Bogaudio-Bool", "Bool",  "boolean logic", LOGIC_TAG);

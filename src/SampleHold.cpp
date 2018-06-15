@@ -48,8 +48,10 @@ void SampleHold::step(
 }
 
 struct SampleHoldWidget : ModuleWidget {
+	static constexpr int hp = 3;
+
 	SampleHoldWidget(SampleHold* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 3, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -87,4 +89,4 @@ struct SampleHoldWidget : ModuleWidget {
 	}
 };
 
-Model* modelSampleHold = Model::create<SampleHold, SampleHoldWidget>("Bogaudio", "Bogaudio-SampleHold", "S&H", SAMPLE_AND_HOLD_TAG, DUAL_TAG, UTILITY_TAG);
+Model* modelSampleHold = createModel<SampleHold, SampleHoldWidget>("Bogaudio-SampleHold", "S&H",  "dual sample and hold", SAMPLE_AND_HOLD_TAG, DUAL_TAG);

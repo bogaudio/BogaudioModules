@@ -25,8 +25,10 @@ void VCAmp::step() {
 }
 
 struct VCAmpWidget : ModuleWidget {
+	static constexpr int hp = 3;
+
 	VCAmpWidget(VCAmp* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 3, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -65,4 +67,4 @@ struct VCAmpWidget : ModuleWidget {
 	}
 };
 
-Model* modelVCAmp = Model::create<VCAmp, VCAmpWidget>("Bogaudio", "Bogaudio-VCAmp", "VCAmp", AMPLIFIER_TAG, ATTENUATOR_TAG, UTILITY_TAG);
+Model* modelVCAmp = createModel<VCAmp, VCAmpWidget>("Bogaudio-VCAmp", "VCAmp",  "amplifier", AMPLIFIER_TAG);

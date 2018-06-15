@@ -50,8 +50,10 @@ void Lag::step() {
 }
 
 struct LagWidget : ModuleWidget {
+	static constexpr int hp = 3;
+
 	LagWidget(Lag* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 3, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -95,4 +97,4 @@ struct LagWidget : ModuleWidget {
 	}
 };
 
-Model* modelLag = Model::create<Lag, LagWidget>("Bogaudio", "Bogaudio-Lag", "Lag", SLEW_LIMITER_TAG, UTILITY_TAG);
+Model* modelLag = createModel<Lag, LagWidget>("Bogaudio-Lag", "Lag",  "slew limiter / lag processor", SLEW_LIMITER_TAG);

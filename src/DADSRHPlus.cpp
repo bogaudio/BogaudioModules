@@ -2,8 +2,10 @@
 #include "DADSRHPlus.hpp"
 
 struct DADSRHPlusWidget : ModuleWidget {
+	static constexpr int hp = 15;
+
 	DADSRHPlusWidget(DADSRHPlus* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 15, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -122,4 +124,4 @@ struct DADSRHPlusWidget : ModuleWidget {
 	}
 };
 
-Model* modelDADSRHPlus = Model::create<DADSRHPlus, DADSRHPlusWidget>("Bogaudio", "Bogaudio-DADSRHPlus", "DADSR(H)+", ENVELOPE_GENERATOR_TAG);
+Model* modelDADSRHPlus = createModel<DADSRHPlus, DADSRHPlusWidget>("Bogaudio-DADSRHPlus", "DADSR(H)+",  "advanced envelope", ENVELOPE_GENERATOR_TAG);

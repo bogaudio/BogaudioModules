@@ -11,6 +11,7 @@
 #include "dsp/digital.hpp"
 #include "trigger_on_load.hpp"
 #include "widgets.hpp"
+#include "utils.hpp"
 
 using namespace rack;
 using namespace bogaudio;

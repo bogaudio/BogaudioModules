@@ -32,8 +32,10 @@ void Pan::step() {
 }
 
 struct PanWidget : ModuleWidget {
+	static constexpr int hp = 3;
+
 	PanWidget(Pan* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 3, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -71,4 +73,4 @@ struct PanWidget : ModuleWidget {
 	}
 };
 
-Model* modelPan = Model::create<Pan, PanWidget>("Bogaudio", "Bogaudio-Pan", "Pan", PANNING_TAG, DUAL_TAG, UTILITY_TAG);
+Model* modelPan = createModel<Pan, PanWidget>("Bogaudio-Pan", "Pan",  "dual panner", PANNING_TAG, DUAL_TAG);

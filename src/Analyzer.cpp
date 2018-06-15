@@ -474,8 +474,10 @@ struct OneTenKnob : Knob38 {
 
 
 struct AnalyzerWidget : ModuleWidget {
+	static constexpr int hp = 20;
+
 	AnalyzerWidget(Analyzer* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 20, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			auto panel = new SVGPanel();
@@ -544,4 +546,4 @@ struct AnalyzerWidget : ModuleWidget {
 	}
 };
 
-Model* modelAnalyzer = Model::create<Analyzer, AnalyzerWidget>("Bogaudio", "Bogaudio-Analyzer", "Analyzer", VISUAL_TAG);
+Model* modelAnalyzer = createModel<Analyzer, AnalyzerWidget>("Bogaudio-Analyzer", "Analyzer",  "spectrum analyzer", VISUAL_TAG);

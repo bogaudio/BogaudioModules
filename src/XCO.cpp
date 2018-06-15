@@ -259,8 +259,10 @@ void XCO::setFrequency(float frequency) {
 }
 
 struct XCOWidget : ModuleWidget {
+	static constexpr int hp = 20;
+
 	XCOWidget(XCO* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 20, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -364,4 +366,4 @@ struct XCOWidget : ModuleWidget {
 	}
 };
 
-Model* modelXCO = Model::create<XCO, XCOWidget>("Bogaudio", "Bogaudio-XCO", "XCO", OSCILLATOR_TAG);
+Model* modelXCO = createModel<XCO, XCOWidget>("Bogaudio-XCO", "XCO",  "oscillator with wave mixer", OSCILLATOR_TAG);

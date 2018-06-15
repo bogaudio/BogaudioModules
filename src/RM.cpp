@@ -33,8 +33,10 @@ void RM::step() {
 }
 
 struct RMWidget : ModuleWidget {
+	static constexpr int hp = 3;
+
 	RMWidget(RM* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 3, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -70,4 +72,4 @@ struct RMWidget : ModuleWidget {
 	}
 };
 
-Model* modelRM = Model::create<RM, RMWidget>("Bogaudio", "Bogaudio-RM", "RM", RING_MODULATOR_TAG, UTILITY_TAG);
+Model* modelRM = createModel<RM, RMWidget>("Bogaudio-RM", "RM",  "ring modulator", RING_MODULATOR_TAG);

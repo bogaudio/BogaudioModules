@@ -42,8 +42,10 @@ void %MODULE%::step() {
 }
 
 struct %MODULE%Widget : ModuleWidget {
+	static constexpr int hp = %HP%;
+
 	%MODULE%Widget(%MODULE%* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * %HP%, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -60,7 +62,7 @@ struct %MODULE%Widget : ModuleWidget {
 	}
 };
 
-Model* model%MODULE% = Model::create<%MODULE%, %MODULE%Widget>("%MANUFACTURER%", "%MANUFACTURER%-%MODULE%", "%MODULE%");
+Model* model%MODULE% = createModel<%MODULE%, %MODULE%Widget>("%MANUFACTURER%-%MODULE%", "%MODULE%",  "");
 CPP_TEMPLATE
 
 require 'optparse'

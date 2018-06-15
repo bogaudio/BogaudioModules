@@ -40,8 +40,10 @@ void ADSR::step() {
 }
 
 struct ADSRWidget : ModuleWidget {
+	static constexpr int hp = 3;
+
 	ADSRWidget(ADSR* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 3, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -89,4 +91,4 @@ struct ADSRWidget : ModuleWidget {
 	}
 };
 
-Model* modelADSR = Model::create<ADSR, ADSRWidget>("Bogaudio", "Bogaudio-ADSR", "ADSR", ENVELOPE_GENERATOR_TAG, UTILITY_TAG);
+Model* modelADSR = createModel<ADSR, ADSRWidget>("Bogaudio-ADSR", "ADSR",  "utility envelope", ENVELOPE_GENERATOR_TAG);

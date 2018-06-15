@@ -23,8 +23,10 @@ void Follow::step() {
 }
 
 struct FollowWidget : ModuleWidget {
+	static constexpr int hp = 3;
+
 	FollowWidget(Follow* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 3, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -58,4 +60,4 @@ struct FollowWidget : ModuleWidget {
 	}
 };
 
-Model* modelFollow = Model::create<Follow, FollowWidget>("Bogaudio", "Bogaudio-Follow", "Follow", ENVELOPE_FOLLOWER_TAG, UTILITY_TAG);
+Model* modelFollow = createModel<Follow, FollowWidget>("Bogaudio-Follow", "Follow",  "envelope follower", ENVELOPE_FOLLOWER_TAG);

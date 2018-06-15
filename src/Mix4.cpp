@@ -60,8 +60,10 @@ void Mix4::step() {
 }
 
 struct Mix4Widget : ModuleWidget {
+	static constexpr int hp = 15;
+
 	Mix4Widget(Mix4* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 15, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -154,4 +156,4 @@ struct Mix4Widget : ModuleWidget {
 	}
 };
 
-Model* modelMix4 = Model::create<Mix4, Mix4Widget>("Bogaudio", "Bogaudio-Mix4", "Mix4", MIXER_TAG, PANNING_TAG, DUAL_TAG);
+Model* modelMix4 = createModel<Mix4, Mix4Widget>("Bogaudio-Mix4", "Mix4",  "4-channel mixer and panner", MIXER_TAG, PANNING_TAG);

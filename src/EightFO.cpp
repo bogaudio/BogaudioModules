@@ -166,8 +166,10 @@ void EightFO::updateOutput(bool useSample, Output& output, Phasor::phase_delta_t
 }
 
 struct EightFOWidget : ModuleWidget {
+	static constexpr int hp = 17;
+
 	EightFOWidget(EightFO* module) : ModuleWidget(module) {
-		box.size = Vec(RACK_GRID_WIDTH * 17, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SVGPanel *panel = new SVGPanel();
@@ -282,4 +284,4 @@ struct EightFOWidget : ModuleWidget {
 	}
 };
 
-Model* modelEightFO = Model::create<EightFO, EightFOWidget>("Bogaudio", "Bogaudio-EightFO", "8FO", LFO_TAG);
+Model* modelEightFO = createModel<EightFO, EightFOWidget>("Bogaudio-EightFO", "8FO",  "LFO with 8 phased outputs", LFO_TAG);
