@@ -16,7 +16,7 @@ void VCAmp::step() {
 		level *= maxDecibels - minDecibels;
 		level += minDecibels;
 		_amplifier.setLevel(_levelSL.next(level));
-		outputs[OUT_OUTPUT].value = _amplifier.next(inputs[IN_INPUT].value);
+		outputs[OUT_OUTPUT].value = _saturator.next(_amplifier.next(inputs[IN_INPUT].value));
 		_rmsLevel = _rms.next(outputs[OUT_OUTPUT].value / 5.0f);
 	}
 	else {

@@ -202,3 +202,19 @@ static void BM_DelayLine(benchmark::State& state) {
   }
 }
 BENCHMARK(BM_DelayLine);
+
+static void BM_Saturator(benchmark::State& state) {
+  SineOscillator o(500.0, 100.0);
+  const int n = 256;
+  float buf[n];
+  for (int i = 0; i < n; ++i) {
+    buf[i] = o.next() * 20.0f;
+  }
+  Saturator s;
+  int i = 0;
+  for (auto _ : state) {
+    i = ++i % n;
+    benchmark::DoNotOptimize(s.next(buf[i]));
+  }
+}
+BENCHMARK(BM_Saturator);

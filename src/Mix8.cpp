@@ -44,6 +44,7 @@ void Mix8::step() {
 	mono += _channel7.out;
 	mono += _channel8.out;
 	mono = _amplifier.next(mono);
+	mono = _saturator.next(mono);
 	_rmsLevel = _rms.next(mono) / 5.0f;
 
 	if (stereo) {
@@ -57,6 +58,7 @@ void Mix8::step() {
 		left += _channel7.left;
 		left += _channel8.left;
 		left = _amplifier.next(left);
+		left = _saturator.next(left);
 		outputs[L_OUTPUT].value = left;
 
 		float right = 0.0f;
@@ -69,6 +71,7 @@ void Mix8::step() {
 		right += _channel7.right;
 		right += _channel8.right;
 		right = _amplifier.next(right);
+		right = _saturator.next(right);
 		outputs[R_OUTPUT].value = right;
 	}
 	else {

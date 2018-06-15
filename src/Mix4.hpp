@@ -61,6 +61,7 @@ struct Mix4 : Module {
 	MixerChannel _channel4;
 	Amplifier _amplifier;
 	SlewLimiter _slewLimiter;
+	Saturator _saturator;
 	RootMeanSquare _rms;
 	float _rmsLevel = 0.0f;
 

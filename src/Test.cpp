@@ -383,6 +383,11 @@ void Test::step() {
 		_average.reset();
 	}
 	outputs[OUT_OUTPUT].value = _average.next(inputs[IN_INPUT].value);
+
+#elif SATURATOR
+	float in = inputs[IN_INPUT].value;
+	outputs[OUT_OUTPUT].value = _saturator.next(in);
+	outputs[OUT2_OUTPUT].value = clamp(in, -Saturator::limit, Saturator::limit);
 #endif
 }
 

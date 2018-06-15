@@ -220,5 +220,11 @@ struct Limiter {
 	float next(float sample);
 };
 
+struct Saturator {
+	static const float limit;
+
+	float next(float sample);
+};
+
 } // namespace dsp
 } // namespace bogaudio

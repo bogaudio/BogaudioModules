@@ -89,6 +89,7 @@ struct Mix8 : Module {
 	MixerChannel _channel8;
 	Amplifier _amplifier;
 	SlewLimiter _slewLimiter;
+	Saturator _saturator;
 	RootMeanSquare _rms;
 	float _rmsLevel = 0.0f;
 

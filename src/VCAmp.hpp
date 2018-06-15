@@ -34,6 +34,7 @@ struct VCAmp : Module {
 	const float minDecibels = Amplifier::minDecibels;
 	Amplifier _amplifier;
 	SlewLimiter _levelSL;
+	Saturator _saturator;
 	RootMeanSquare _rms;
 	float _rmsLevel = 0.0f;
 

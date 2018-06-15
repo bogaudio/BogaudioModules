@@ -24,7 +24,8 @@ extern Model* modelTest;
 // #define TABLES 1
 // #define SLEW 1
 // #define RMS 1
-#define RAVG 1
+// #define RAVG 1
+#define SATURATOR 1
 
 #include "pitch.hpp"
 #ifdef LPF
@@ -77,6 +78,9 @@ extern Model* modelTest;
 #elif RMS
 #include "dsp/signal.hpp"
 #elif RAVG
+#include "dsp/signal.hpp"
+#elif SATURATOR
+#include "dsp/oscillator.hpp"
 #include "dsp/signal.hpp"
 #else
 #error what
@@ -196,6 +200,8 @@ struct Test : Module {
 #elif RAVG
 	RunningAverage _average;
 	SchmittTrigger _reset;
+#elif SATURATOR
+	Saturator _saturator;
 #endif
 
 	Test()

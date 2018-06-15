@@ -32,6 +32,7 @@ void Mix4::step() {
 	mono += _channel3.out;
 	mono += _channel4.out;
 	mono = _amplifier.next(mono);
+	mono = _saturator.next(mono);
 	_rmsLevel = _rms.next(mono) / 5.0f;
 
 	if (stereo) {
@@ -41,6 +42,7 @@ void Mix4::step() {
 		left += _channel3.left;
 		left += _channel4.left;
 		left = _amplifier.next(left);
+		left = _saturator.next(left);
 		outputs[L_OUTPUT].value = left;
 
 		float right = 0.0f;
@@ -49,6 +51,7 @@ void Mix4::step() {
 		right += _channel3.right;
 		right += _channel4.right;
 		right = _amplifier.next(right);
+		right = _saturator.next(right);
 		outputs[R_OUTPUT].value = right;
 	}
 	else {

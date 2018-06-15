@@ -409,3 +409,21 @@ float Limiter::next(float sample) {
 	}
 	return out;
 }
+
+
+const float Saturator::limit = 12.0f;
+
+static inline float saturation(float x) {
+	const float y1 = 0.98765f; // (2*x - 1)/x**2 where x is 0.9.
+	const float offset = 0.075f / Saturator::limit; // magic.
+	float x1 = (x + 1.0f) * 0.5f;
+	return Saturator::limit * (offset + x1 - sqrtf(x1 * x1 - y1 * x) * (1.0f / y1));
+}
+
+float Saturator::next(float sample) {
+	float x = sample * (1.0f / limit);
+	if (sample < 0.0f) {
+		return -saturation(-x);
+	}
+	return saturation(x);
+}
