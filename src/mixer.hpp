@@ -10,11 +10,13 @@ namespace bogaudio {
 struct MixerChannel {
 	static const float maxDecibels;
 	static const float minDecibels;
-	static const float slewTimeMS;
+	static const float levelSlewTimeMS;
+	static const float panSlewTimeMS;
 
 	Amplifier _amplifier;
 	Panner _panner;
-	SlewLimiter _slewLimiter;
+	SlewLimiter _levelSL;
+	SlewLimiter _panSL;
 	RootMeanSquare _rms;
 
 	Param& _levelParam;

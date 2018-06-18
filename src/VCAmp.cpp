@@ -1,9 +1,10 @@
 
 #include "VCAmp.hpp"
+#include "mixer.hpp"
 
 void VCAmp::onSampleRateChange() {
 	float sampleRate = engineGetSampleRate();
-	_levelSL.setParams(sampleRate, 10.0f);
+	_levelSL.setParams(sampleRate, MixerChannel::levelSlewTimeMS, maxDecibels - minDecibels);
 	_rms.setSampleRate(sampleRate);
 }
 

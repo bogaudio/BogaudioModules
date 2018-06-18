@@ -70,7 +70,6 @@ struct XCO : Module {
 	const int modulationSteps = 100;
 	const float amplitude = 5.0f;
 	static constexpr int oversample = 8;
-	const float slewLimitTime = 1.0f;
 	const float sineOversampleMixIncrement = 0.01f;
 	int _modulationStep = 0;
 	float _oversampleThreshold = 0.0f;
@@ -113,10 +112,6 @@ struct XCO : Module {
 	SlewLimiter _sawSaturationSL;
 	SlewLimiter _triangleSampleWidthSL;
 	SlewLimiter _sineFeedbackSL;
-	SlewLimiter _squarePhaseOffsetSL;
-	SlewLimiter _sawPhaseOffsetSL;
-	SlewLimiter _trianglePhaseOffsetSL;
-	SlewLimiter _sinePhaseOffsetSL;
 	SlewLimiter _squareMixSL;
 	SlewLimiter _sawMixSL;
 	SlewLimiter _triangleMixSL;

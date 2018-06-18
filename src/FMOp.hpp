@@ -55,7 +55,6 @@ struct FMOp : Module {
 	const float amplitude = 5.0f;
 	const int modulationSteps = 100;
 	static constexpr int oversample = 8;
-	const float slewLimitTime = 1.0f;
 	const float oversampleMixIncrement = 0.01f;
 	int _steps = 0;
 	float _feedback = 0.0f;

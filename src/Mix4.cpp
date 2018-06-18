@@ -7,7 +7,7 @@ void Mix4::onSampleRateChange() {
 	_channel2.setSampleRate(sr);
 	_channel3.setSampleRate(sr);
 	_channel4.setSampleRate(sr);
-	_slewLimiter.setParams(sr, MixerChannel::slewTimeMS);
+	_slewLimiter.setParams(sr, MixerChannel::levelSlewTimeMS, MixerChannel::maxDecibels - MixerChannel::minDecibels);
 	_rms.setSampleRate(sr);
 }
 

@@ -116,15 +116,14 @@ struct PositiveZeroCrossing {
 };
 
 struct SlewLimiter {
-	const float range = 10.0f;
 	float _delta;
 	float _last = 0.0f;
 
-	SlewLimiter(float sampleRate = 1000.0f, float milliseconds = 1.0f) {
-		setParams(sampleRate, milliseconds);
+	SlewLimiter(float sampleRate = 1000.0f, float milliseconds = 1.0f, float range = 10.0f) {
+		setParams(sampleRate, milliseconds, range);
 	}
 
-	void setParams(float sampleRate, float milliseconds = 1.0f);
+	void setParams(float sampleRate, float milliseconds = 1.0f, float range = 10.0f);
 	float next(float sample);
 };
 

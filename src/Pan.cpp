@@ -1,9 +1,10 @@
 
 #include "Pan.hpp"
+#include "mixer.hpp"
 
 void Pan::onSampleRateChange() {
-	_slew1.setParams(engineGetSampleRate(), 100.0f);
-	_slew2.setParams(engineGetSampleRate(), 100.0f);
+	_slew1.setParams(engineGetSampleRate(), MixerChannel::panSlewTimeMS, 2.0f);
+	_slew2.setParams(engineGetSampleRate(), MixerChannel::panSlewTimeMS, 2.0f);
 }
 
 void Pan::step() {

@@ -140,7 +140,7 @@ void VCO::setSampleRate(float sampleRate) {
 	_squareDecimator.setParams(sampleRate, oversample);
 	_sawDecimator.setParams(sampleRate, oversample);
 	_triangleDecimator.setParams(sampleRate, oversample);
-	_squarePulseWidthSL.setParams(sampleRate, slewLimitTime / 10.0f);
+	_squarePulseWidthSL.setParams(sampleRate, 0.1f, 2.0f);
 }
 
 void VCO::setFrequency(float frequency) {

@@ -177,9 +177,10 @@ void PositiveZeroCrossing::reset() {
 }
 
 
-void SlewLimiter::setParams(float sampleRate, float milliseconds) {
+void SlewLimiter::setParams(float sampleRate, float milliseconds, float range) {
 	assert(sampleRate > 0.0f);
 	assert(milliseconds >= 0.0f);
+	assert(range > 0.0f);
 	_delta = range / ((milliseconds / 1000.0f) * sampleRate);
 }
 

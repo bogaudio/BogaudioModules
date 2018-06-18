@@ -13,13 +13,13 @@ void Additator::onSampleRateChange() {
 	_maxFrequency = 0.475f * sampleRate;
 	_steps = modulationSteps;
 	_phase = PHASE_RESET;
-	_widthSL.setParams(sampleRate, slewLimitTime);;
-	_oddSkewSL.setParams(sampleRate, slewLimitTime);;
-	_evenSkewSL.setParams(sampleRate, slewLimitTime);;
-	_amplitudeNormalizationSL.setParams(sampleRate, slewLimitTime);;
-	_decaySL.setParams(sampleRate, slewLimitTime);;
-	_balanceSL.setParams(sampleRate, slewLimitTime);;
-	_filterSL.setParams(sampleRate, slewLimitTime);;
+	_widthSL.setParams(sampleRate, slewLimitTime, maxWidth);
+	_oddSkewSL.setParams(sampleRate, slewLimitTime, 2.0f * maxSkew);
+	_evenSkewSL.setParams(sampleRate, slewLimitTime, 2.0f * maxSkew);
+	_amplitudeNormalizationSL.setParams(sampleRate, slewLimitTime, maxAmplitudeNormalization - minAmplitudeNormalization);
+	_decaySL.setParams(sampleRate, slewLimitTime, maxDecay - minDecay);
+	_balanceSL.setParams(sampleRate, slewLimitTime, 2.0f);
+	_filterSL.setParams(sampleRate, slewLimitTime, maxFilter - minFilter);
 }
 
 float Additator::cvValue(Input& cv, bool dc) {

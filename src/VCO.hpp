@@ -46,7 +46,6 @@ struct VCO : Module {
 	const int modulationSteps = 100;
 	const float amplitude = 5.0f;
 	static constexpr int oversample = 8;
-	const float slewLimitTime = 1.0f;
 	int _modulationStep = 0;
 	float _oversampleThreshold = 0.0f;
 	float _frequency = 0.0f;

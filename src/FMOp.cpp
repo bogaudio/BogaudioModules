@@ -17,10 +17,10 @@ void FMOp::onSampleRateChange() {
 	_phasor.setSampleRate(sampleRate);
 	_decimator.setParams(sampleRate, oversample);
 	_maxFrequency = 0.475f * sampleRate;
-	_feedbackSL.setParams(sampleRate, slewLimitTime);
-	_depthSL.setParams(sampleRate, slewLimitTime);
-	_levelSL.setParams(sampleRate, slewLimitTime);
-	_sustainSL.setParams(sampleRate, slewLimitTime / 10.0f);
+	_feedbackSL.setParams(sampleRate, 5.0f, 1.0f);
+	_depthSL.setParams(sampleRate, 5.0f, 1.0f);
+	_levelSL.setParams(sampleRate, 10.0f, 1.0f);
+	_sustainSL.setParams(sampleRate, 1.0f, 1.0f);
 }
 
 json_t* FMOp::toJson() {

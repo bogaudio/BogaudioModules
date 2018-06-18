@@ -3,8 +3,8 @@
 
 void VCA::onSampleRateChange() {
 	float sampleRate = engineGetSampleRate();
-	_levelSL1.setParams(sampleRate, 100.0f);
-	_levelSL2.setParams(sampleRate, 100.0f);
+	_levelSL1.setParams(sampleRate, 5.0f, 1.0f);
+	_levelSL2.setParams(sampleRate, 5.0f, 1.0f);
 }
 
 void VCA::step() {

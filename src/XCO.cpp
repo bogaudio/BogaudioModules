@@ -73,10 +73,10 @@ void XCO::step() {
 			_fmDepth *= clamp(inputs[FM_DEPTH_INPUT].value / 10.0f, 0.0f, 1.0f);
 		}
 
-		_squarePhaseOffset = _squarePhaseOffsetSL.next(phaseOffset(params[SQUARE_PHASE_PARAM], inputs[SQUARE_PHASE_INPUT]));
-		_sawPhaseOffset = _sawPhaseOffsetSL.next(phaseOffset(params[SAW_PHASE_PARAM], inputs[SAW_PHASE_INPUT]));
-		_trianglePhaseOffset = _trianglePhaseOffsetSL.next(phaseOffset(params[TRIANGLE_PHASE_PARAM], inputs[TRIANGLE_PHASE_INPUT]));
-		_sinePhaseOffset = _sinePhaseOffsetSL.next(phaseOffset(params[SINE_PHASE_PARAM], inputs[SINE_PHASE_INPUT]));
+		_squarePhaseOffset = phaseOffset(params[SQUARE_PHASE_PARAM], inputs[SQUARE_PHASE_INPUT]);
+		_sawPhaseOffset = phaseOffset(params[SAW_PHASE_PARAM], inputs[SAW_PHASE_INPUT]);
+		_trianglePhaseOffset = phaseOffset(params[TRIANGLE_PHASE_PARAM], inputs[TRIANGLE_PHASE_INPUT]);
+		_sinePhaseOffset = phaseOffset(params[SINE_PHASE_PARAM], inputs[SINE_PHASE_INPUT]);
 
 		_squareMix = level(params[SQUARE_MIX_PARAM], inputs[SQUARE_MIX_INPUT]);
 		_sawMix = level(params[SAW_MIX_PARAM], inputs[SAW_MIX_INPUT]);
@@ -234,19 +234,15 @@ void XCO::setSampleRate(float sampleRate) {
 	_triangleDecimator.setParams(sampleRate, oversample);
 	_sineDecimator.setParams(sampleRate, oversample);
 
-	_fmDepthSL.setParams(sampleRate, slewLimitTime);
-	_squarePulseWidthSL.setParams(sampleRate, slewLimitTime / 10.0f);
-	_sawSaturationSL.setParams(sampleRate, slewLimitTime / 10.0f);
-	_triangleSampleWidthSL.setParams(sampleRate, slewLimitTime / 10.0f);
-	_sineFeedbackSL.setParams(sampleRate, slewLimitTime / 10.0f);
-	_squarePhaseOffsetSL.setParams(sampleRate, slewLimitTime / 2.0f);
-	_sawPhaseOffsetSL.setParams(sampleRate, slewLimitTime / 2.0f);
-	_trianglePhaseOffsetSL.setParams(sampleRate, slewLimitTime / 2.0f);
-	_sinePhaseOffsetSL.setParams(sampleRate, slewLimitTime / 2.0f);
-	_squareMixSL.setParams(sampleRate, slewLimitTime);
-	_sawMixSL.setParams(sampleRate, slewLimitTime);
-	_triangleMixSL.setParams(sampleRate, slewLimitTime);
-	_sineMixSL.setParams(sampleRate, slewLimitTime);
+	_fmDepthSL.setParams(sampleRate, 5.0f, 1.0f);
+	_squarePulseWidthSL.setParams(sampleRate, 0.1f, 2.0f);
+	_sawSaturationSL.setParams(sampleRate, 1.0f, 1.0f);
+	_triangleSampleWidthSL.setParams(sampleRate, 0.1f, 1.0f);
+	_sineFeedbackSL.setParams(sampleRate, 0.1f, 1.0f);
+	_squareMixSL.setParams(sampleRate, 5.0f, 1.0f);
+	_sawMixSL.setParams(sampleRate, 5.0f, 1.0f);
+	_triangleMixSL.setParams(sampleRate, 5.0f, 1.0f);
+	_sineMixSL.setParams(sampleRate, 5.0f, 1.0f);
 }
 
 void XCO::setFrequency(float frequency) {
