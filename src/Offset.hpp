@@ -25,8 +25,12 @@ struct Offset : Module {
 		NUM_OUTPUTS
 	};
 
+	bool _disableOutputLimit = false;
+
 	Offset() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {}
 
+	json_t* toJson() override;
+	void fromJson(json_t* root) override;
 	void step() override;
 
 	float knobValue(const Param& knob, const Input& cv) const;

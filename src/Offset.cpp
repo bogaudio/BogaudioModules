@@ -1,17 +1,34 @@
 
 #include "Offset.hpp"
 
+#define DISABLE_OUTPUT_LIMIT "disableOutputLimit"
+
+json_t* Offset::toJson() {
+	json_t* root = json_object();
+	json_object_set_new(root, DISABLE_OUTPUT_LIMIT, json_boolean(_disableOutputLimit));
+	return root;
+}
+
+void Offset::fromJson(json_t* root) {
+	json_t* dol = json_object_get(root, DISABLE_OUTPUT_LIMIT);
+	if (dol) {
+		_disableOutputLimit = json_is_true(dol);
+	}
+}
+
 void Offset::step() {
 	float offset = knobValue(params[OFFSET_PARAM], inputs[OFFSET_INPUT]);
 	float scale = knobValue(params[SCALE_PARAM], inputs[SCALE_INPUT]);
-	scale = scale < 0.0 ? -pow(scale, 2.0) : pow(scale, 2.0);
+	scale = scale < 0.0f ? -pow(scale, 2.0f) : pow(scale, 2.0f);
 	scale *= 10.0;
-	if (inputs[IN_INPUT].active) {
-		outputs[OUT_OUTPUT].value = clamp((inputs[IN_INPUT].value + 10.0f * offset) * scale, -10.0f, 10.0f);
+
+	float out = inputs[IN_INPUT].value;
+	out += 10.0f * offset;
+	out *= scale;
+	if (!_disableOutputLimit) {
+		out = clamp(out, -12.0f, 12.0f);
 	}
-	else {
-		outputs[OUT_OUTPUT].value = clamp(10.0f * offset * scale, -10.0f, 10.0f);
-	}
+	outputs[OUT_OUTPUT].value = out;
 }
 
 float Offset::knobValue(const Param& knob, const Input& cv) const {
@@ -21,6 +38,24 @@ float Offset::knobValue(const Param& knob, const Input& cv) const {
 	}
 	return v;
 }
+
+struct DisableOutputLimitMenuItem : MenuItem {
+	Offset* _module;
+
+	DisableOutputLimitMenuItem(Offset* module, const char* label)
+	: _module(module)
+	{
+		this->text = label;
+	}
+
+	void onAction(EventAction &e) override {
+		_module->_disableOutputLimit = !_module->_disableOutputLimit;
+	}
+
+	void step() override {
+		rightText = _module->_disableOutputLimit ? "✔" : "";
+	}
+};
 
 struct OffsetWidget : ModuleWidget {
 	static constexpr int hp = 3;
@@ -57,6 +92,13 @@ struct OffsetWidget : ModuleWidget {
 		addInput(Port::create<Port24>(inInputPosition, Port::INPUT, module, Offset::IN_INPUT));
 
 		addOutput(Port::create<Port24>(outOutputPosition, Port::OUTPUT, module, Offset::OUT_OUTPUT));
+	}
+
+	void appendContextMenu(Menu* menu) override {
+	  Offset* offset = dynamic_cast<Offset*>(module);
+		assert(offset);
+		menu->addChild(new MenuLabel());
+		menu->addChild(new DisableOutputLimitMenuItem(offset, "Diable Output Limit"));
 	}
 };
 
