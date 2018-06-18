@@ -148,7 +148,7 @@ void FMOp::step() {
 
 	float sample = 0.0f;
 	if (out > 0.0001f) {
-		Phasor::phase_delta_t o = offset > 0.0f ? Phasor::radiansToPhase(offset) : 0;
+		Phasor::phase_delta_t o = Phasor::radiansToPhase(offset);
 		if (feedbackOn) {
 			if (_oversampleMix < 1.0f) {
 				_oversampleMix += oversampleMixIncrement;
