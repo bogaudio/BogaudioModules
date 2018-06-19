@@ -32,7 +32,6 @@
 #include "Sums.hpp"
 #include "Switch.hpp"
 #include "VCA.hpp"
-#include "VCAL.hpp"
 #include "VCAmp.hpp"
 #include "VCM.hpp"
 #include "VCO.hpp"
@@ -77,9 +76,6 @@ void init(rack::Plugin *p) {
 	p->addModel(modelPan);
 	p->addModel(modelXFade);
 	p->addModel(modelVCA);
-#if 0
-	p->addModel(modelVCAL);
-#endif
 	p->addModel(modelVCAmp);
 
 	p->addModel(modelAnalyzer);
