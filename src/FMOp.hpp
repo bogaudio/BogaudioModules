@@ -68,7 +68,7 @@ struct FMOp : Module {
 	float _maxFrequency = 0.0f;
 	float _buffer[oversample];
 	float _oversampleMix = 0.0f;
-	ADSR _envelope;
+	dsp::ADSR _envelope;
 	Phasor _phasor;
 	SineTableOscillator _sineTable;
 	CICDecimator _decimator;

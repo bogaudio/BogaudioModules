@@ -1,47 +1,43 @@
 
 #include "bogaudio.hpp"
 
-#include "VCO.hpp"
-#include "XCO.hpp"
-#include "Additator.hpp"
-#include "FMOp.hpp"
-#include "LFO.hpp"
-#include "EightFO.hpp"
-
-#include "Shaper.hpp"
-#include "ShaperPlus.hpp"
-#include "DADSRH.hpp"
-#include "DADSRHPlus.hpp"
-
-#include "Analyzer.hpp"
-
-#include "RM.hpp"
-#include "VCM.hpp"
-#include "Mix4.hpp"
-#include "Mix8.hpp"
-
 #include "ADSR.hpp"
+#include "Additator.hpp"
+#include "Analyzer.hpp"
 #include "Bool.hpp"
 #include "CVD.hpp"
-#include "Detune.hpp"
+#include "DADSRH.hpp"
+#include "DADSRHPlus.hpp"
 #include "DGate.hpp"
+#include "Detune.hpp"
+#include "EightFO.hpp"
+#include "FMOp.hpp"
 #include "FlipFlop.hpp"
 #include "Follow.hpp"
+#include "LFO.hpp"
 #include "Lag.hpp"
 #include "Manual.hpp"
+#include "Mix4.hpp"
+#include "Mix8.hpp"
 #include "Mult.hpp"
 #include "Noise.hpp"
 #include "Offset.hpp"
 #include "Pan.hpp"
+#include "RM.hpp"
 #include "Reftone.hpp"
 #include "SampleHold.hpp"
+#include "Shaper.hpp"
+#include "ShaperPlus.hpp"
 #include "Stack.hpp"
 #include "Sums.hpp"
 #include "Switch.hpp"
 #include "VCA.hpp"
 #include "VCAL.hpp"
 #include "VCAmp.hpp"
+#include "VCM.hpp"
+#include "VCO.hpp"
 #include "VU.hpp"
+#include "XCO.hpp"
 #include "XFade.hpp"
 
 #include "Test.hpp"
@@ -63,59 +59,50 @@ void init(rack::Plugin *p) {
 	p->addModel(modelXCO);
 	p->addModel(modelAdditator);
 	p->addModel(modelFMOp);
+
 	p->addModel(modelLFO);
 	p->addModel(modelEightFO);
 
-	p->addModel(modelShaper);
-	p->addModel(modelShaperPlus);
 	p->addModel(modelDADSRH);
 	p->addModel(modelDADSRHPlus);
+	p->addModel(modelDGate);
+	p->addModel(modelShaper);
+	p->addModel(modelShaperPlus);
+	p->addModel(modelADSR);
+	p->addModel(modelFollow);
 
-	p->addModel(modelAnalyzer);
-
-#ifdef EXPERIMENTAL
-	p->addModel(modelRM);
-	p->addModel(modelVCM);
 	p->addModel(modelMix4);
 	p->addModel(modelMix8);
-#endif
-
-#ifdef EXPERIMENTAL
-	p->addModel(modelADSR);
-	p->addModel(modelBool);
-	p->addModel(modelCVD);
-#endif
-	p->addModel(modelDetune);
-	p->addModel(modelDGate);
-#ifdef EXPERIMENTAL
-	p->addModel(modelFlipFlop);
-	p->addModel(modelFollow);
-	p->addModel(modelLag);
-#endif
-	p->addModel(modelManual);
-#ifdef EXPERIMENTAL
-	p->addModel(modelMult);
-#endif
-	p->addModel(modelNoise);
-	p->addModel(modelOffset);
-#ifdef EXPERIMENTAL
+	p->addModel(modelVCM);
 	p->addModel(modelPan);
-#endif
-	p->addModel(modelReftone);
-	p->addModel(modelSampleHold);
-	p->addModel(modelStack);
-#ifdef EXPERIMENTAL
-	p->addModel(modelSums);
-#endif
-	p->addModel(modelSwitch);
+	p->addModel(modelXFade);
 	p->addModel(modelVCA);
 #if 0
 	p->addModel(modelVCAL);
 #endif
-#ifdef EXPERIMENTAL
 	p->addModel(modelVCAmp);
+
+	p->addModel(modelAnalyzer);
 	p->addModel(modelVU);
-	p->addModel(modelXFade);
+
+	p->addModel(modelDetune);
+	p->addModel(modelStack);
+	p->addModel(modelReftone);
+
+	p->addModel(modelBool);
+	p->addModel(modelCVD);
+	p->addModel(modelFlipFlop);
+	p->addModel(modelLag);
+	p->addModel(modelManual);
+	p->addModel(modelMult);
+	p->addModel(modelNoise);
+	p->addModel(modelOffset);
+	p->addModel(modelSampleHold);
+	p->addModel(modelSums);
+	p->addModel(modelSwitch);
+
+#ifdef EXPERIMENTAL
+	p->addModel(modelRM);
 #endif
 
 #ifdef TEST

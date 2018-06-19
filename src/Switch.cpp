@@ -59,4 +59,4 @@ struct SwitchWidget : ModuleWidget {
 	}
 };
 
-Model* modelSwitch = createModel<Switch, SwitchWidget>("Bogaudio-Switch", "Switch",  "signal switch", SWITCH_TAG);
+Model* modelSwitch = createModel<Switch, SwitchWidget>("Bogaudio-Switch", "Switch",  "signal router", SWITCH_TAG);
