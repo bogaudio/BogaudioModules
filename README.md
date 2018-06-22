@@ -3,15 +3,19 @@ Modules for [VCV Rack](https://github.com/VCVRack/Rack), an open-source Eurorack
 
   - [Oscillators](#oscillators)
   - [LFOs](#lfos)
-  - [Envelopes](#envelopes)
-  - [Spectrum Analyzer](#analyzer)
-  - [Utilities](#utilities)
+  - [Envelopes and Envelope Utilities](#envelopes)
+  - [Mixers, Panners and VCAs](#mixers)
+  - [Visualizers](#visualizers)
+  - [Pitch CV Utilities](#pitch)
+  - [Other Utilities](#utilities)
 
 ![Modules screenshot](./doc/www/modules.png)
+
 
 ## Builds/Releases
 
 Mac, Linux and Windows builds of the latest version are available through [Rack's Plugin Manager](https://vcvrack.com/plugins.html).  Find release notes on the [releases page](https://github.com/bogaudio/BogaudioModules/releases).
+
 
 ## Building
 
@@ -23,7 +27,8 @@ You'll need to be set up to build [VCV Rack](https://github.com/VCVRack/Rack) it
   make
   ```
 
-The master branch of this module currently builds against Rack's master and v0.6 branches.
+The master branch of this module currently builds against Rack's master and v0.6.1 branches.
+
 
 ## Modules
 
@@ -50,12 +55,12 @@ Includes all the features of VCO, adding:
   - For each wave type:
     - A wave modifier (pulse width for square; saturation for saw; a sample-and-hold/step-function effect for triangle; FM feedback for sine).
     - A phase knob/CV controlling the phase of the wave in the mix.
-    - A mix knob/CV to control the level of the wave in the mix (waves are output at full level at their individual outputs).
+    - A mix knob/CV to control the level of the wave in the mix (waves are output at full level at their individual outputs).  The knob/CV response is linear in amplitude.
   - A CV input for FM depth.
 
 #### ADDITATOR
 
-An additive ("sine-bank") oscillator, where the output is the sum of up to 100 individual sine/cosine waves (partials).  Various parameter knobs/CVs allow control over the number, frequencies and amplitudes of the partials:
+An additive ("sine bank") oscillator, where the output is the sum of up to 100 individual sine/cosine waves (partials).  Various parameter knobs/CVs allow control over the number, frequencies and amplitudes of the partials:
   - PARTIALS: sets the partial count.
   - WIDTH: sets the spacing of partials in frequency; at the default position each successive partial is pitched an octave higher than the one before.
   - O-SKEW: adjusts the spacing of odd-numbered partials up or down relative to WIDTH.
@@ -71,9 +76,10 @@ A sine-wave oscillator and simple synth voice designed to allow patching up the 
   - Linear through-zero FM response.
   - CV-controllable FM depth (of the external FM signal at the FM input).
   - CV-controllable FM feedback.
-  - CV-controllable output level.
+  - CV-controllable output level.  The LEVEL knob and CV have a linear-in-decibels (exponential in amplitude) response; a context-menu setting makes this linear in amplitude.
   - An on-board ADSR, controlled by the GATE input, with selectable routing to output level, feedback and depth, with CV control over the sustain level.
   - A main frequency knob calibrated for setting the frequency as a ratio of the frequency dictated by the V/OCT input - assuming a single V/OCT CV is routed to multiple FM-OPs, this allows the relative frequency of each operator to be set via ratios.
+
 
 ### <a name="lfos"></a> LFOs
 
@@ -95,30 +101,14 @@ LFO tracks pitch CVs at the V/OCT input four octaves lower than a normal oscilla
 
 An LFO with outputs at 8 different phases.  The phases may be set by knobs and CVs; by default they are 0, 45, 90, etc, degrees from the fundamental.  Otherwise, functionality is the same as with LFO, excepting that the wave shape is selectable, and all outputs are of the same (phase-shifted) wave.
 
-### <a name="envelopes"></a> Envelopes
 
-#### SHAPER
-
-SHAPER emulates the function of the Envelope Generator section of the classic [EMS VC3](https://en.wikipedia.org/wiki/EMS_VCS_3) and related synths.  It combines an envelope with a VCA.  Unlike an ADSR, the envelope stages are Attack, On, Decay and Off -- with linear movement in the attack and decay stages, this produces a signature trapezoidal envelope shape.
-
-![DADSHR envelopes screenshot](doc/www/shaper.png)
-
-
-Features:
-  - The ATTACK, ON, DECAY and OFF knobs specify times from nearly zero to 10 seconds.  The Speed switch allows these times to be multiplied by 10.
-  - The trapezoid envelope is output as a 0-10 control signal at port ENV, subject to attenuation by the ENV knob.  (INV outputs the inverse envelope.)
-  - Audio input at port IN is sent through the internal VCA -- controlled by knob SIGNAL and the envelope -- to port OUT.
-  - A trigger CV at the TRIGGER port, or a press of the TRIGGER button, will start the envelope cycle.  When the off stage completes, a trigger is sent out at port END.  If the CYCLE switch is set to LOOP, the envelope restarts immediately.
-
-#### SHAPER+
-
-SHAPER+ is a SHAPER, with the addition of CV inputs for each knob, and gate outputs for each stage (a stage's gate output will be high for the duration of the stage).
+### <a name="envelopes"></a> Envelopes and Envelope Utilities
 
 #### DADSRH
 
 DADSRH (Delay Attack Decay Sustain Release Hold) augments a standard ADSR with a delay stage and a self-gating (hold) mode.
 
-![DADSHR envelopes screenshot](doc/www/dadsrh.png)
+![Envelopes screenshot](doc/www/envelopes1.png)
 
 Features:
   - When the MODE switch is set to GATE, DADSRH is a more-or-less standard ADSR envelope generator, with an additional pre-attack delay stage.  The envelope is controlled by a gate CV at the trigger port, or by holding the TRIGGER button.
@@ -132,56 +122,130 @@ Features:
 
 DADSRH+ is a DADSRH, with the addition of CV inputs for each knob, and gate outputs for each stage (a stage's gate output will be high for the duration of the stage).
 
-### <a name="analyzer"></a> Analyzer
+#### DGATE
+
+A trigger-to-gate utility, with gate duration up to 10 seconds, and an optional pre-delay of up to 10 seconds.  A trigger pulse is output at END when a delay/gate cycle ends.  If the STOP/LOOP switch is set to LOOP, or if the trigger is high when the cycle ends, the cycle repeats.
+
+#### SHAPER
+
+SHAPER emulates the function of the Envelope Generator section of the classic [EMS VC3](https://en.wikipedia.org/wiki/EMS_VCS_3) and related synths.  It combines an envelope with a VCA.  Unlike an ADSR, the envelope stages are Attack, On, Decay and Off -- with linear movement in the attack and decay stages, this produces a signature trapezoidal envelope shape.
+
+![Envelopes screenshot](doc/www/envelopes2.png)
+
+Features:
+  - The ATTACK, ON, DECAY and OFF knobs specify times from nearly zero to 10 seconds.  The Speed switch allows these times to be multiplied by 10.
+  - The trapezoid envelope is output as a 0-10 control signal at port ENV, subject to attenuation by the ENV knob.  (INV outputs the inverse envelope.)
+  - Audio input at port IN is sent through the internal VCA -- controlled by knob SIGNAL and the envelope -- to port OUT.
+  - A trigger CV at the TRIGGER port, or a press of the TRIGGER button, will start the envelope cycle.  When the off stage completes, a trigger is sent out at port END.  If the CYCLE switch is set to LOOP, the envelope restarts immediately.
+
+#### SHAPER+
+
+SHAPER+ is a SHAPER, with the addition of CV inputs for each knob, and gate outputs for each stage (a stage's gate output will be high for the duration of the stage).
+
+#### ADSR
+
+A standard ADSR (attack, decay, sustain, release) envelope generator in 3HP.  The attack, decay and release knobs are exponentially scaled with durations up to 10 seconds.  The sustain knob is linearly scaled, setting the sustain level from 0 to 10 volts.  Lights below each stage knob indicate which stage is active.
+
+By default, the attack, decay and release envelope segments have an analog-ish curve; in linear mode (LIN button), the segments are linear.
+
+#### FOLLOW
+
+An envelope follower, a utility that converts its input to a CV proportional to the level of the input's amplitude.  The conversion is by the Root Mean Square method.  The DAMP knob and CV (+10 volts) affect how many input samples are used to calculate the output -- higher DAMP values effectively slow down and smooth out the response.  The SCALE knob and CV (+10 volts) simply scale the output.
+
+With DAMP at the minimum setting and SCALE at half, the module is an effective wave rectifier (that is, it outputs the absolute value of the input).
+
+
+### <a name="mixers"></a> Mixers, Panners and VCAs
+
+#### MIX4
+
+A four-channel mixer/panner with performance mutes.
+
+![Mixers screenshot](doc/www/mixers1.png)
+
+Features:
+  - Four input channels with decibel-calibrated level faders.
+  - Level fader for the output mix.
+  - CV control over channel and output levels; expects +10 volt CV; CV is attenuated by the corresponding slider when in use.
+  - CV-controlled stereo panners; expects +/-5 volt CV; CV is attenuverted by the corresponding knob when in use.
+  - Stereo outputs; if only one is patched, the output mix is mono.
+  - Performance mutes (buttons) per channel.
+  - Fader handles contain lights indicating the signal level out of that channel or the entire mix.
+  - Output saturates (soft clips) to +/-12 volts, where the clipping effect becomes noticeable above +/-10 volts.
+
+#### MIX8
+
+An eight-channel version of MIX4 with the same features.
+
+#### VCM
+
+A four-channel mixer in 10HP.
+
+![Mixers screenshot](doc/www/mixers2.png)
+
+Features:
+  - Four input channels and mono mix output with knob and CV control over level.  CVs expect +10 volts; when CV is in use, it is attenuated by the knob.
+  - Linear mode makes the knob/CV response linear in amplitude (this is good dialing in a CV mix); when off and by default the response is linear in decibels (and therefore exponential in amplitude).
+
+By default, the output is hard clipped at +/-12 volts (this is a standard in Rack).  A context menu option allows this limit to be disabled.
+
+#### PAN
+
+A stereo panner with dual inputs channels.  Each channel's panner may be controlled with a +/-5 volt CV; when CV is in use, it is attenuverted the corresponding knob.  Output saturates (soft clips) to +/-12 volts.
+
+#### XFADE
+
+A crossfader (or two-channel mixer, or way to patch a dry/wet knob into any signal chain).  The MIX knob sets the relative strength of inputs A and B.  MIX may be controlled with a +/-5 volt CV; when CV is in use, it is attenuverted the knob.
+
+The SHAPE knob affects the attenuation curves of the two channels as MIX changes:
+  - At the center position, SHAPE at produces a standard crossfader behavior.  A and B are attenuated by half; moving MIX to A or B brings that channel to full input level while cutting the opposite channel.  The attenuation is such that if the same signal is patched to both A and B, the same signal is produced at the output regardless of the setting of MIX.
+  - With SHAPE at the full counter-clockwise (left) position, there is no output when MIX is centered; moving MIX to A or B brings that channel to full level.
+  - With SHAPE at full clockwise (right) position, both channels are at full (unattenuated) level when MIX is centered; moving to A or B cuts the opposite channel.
+
+Linear mode (LIN button) makes the level attenuation response of MIX linear in amplitude (useful when processing CV); otherwise and by default the response is linear in decibels (and therefore exponential in amplitude).
+
+#### VCA
+
+A two-channel voltage-controlled attenuator.  (An attenuator can only reduce a signal.)
+
+Each channel's level may be controlled with a +10 volt CV; when CV is in use, it is attenuated by the corresponding knob.
+
+In linear mode (the LIN button), the knob/CV response is linear in amplitude (useful when processing CV); otherwise and by default the response is linear in decibels (and therefore exponential in amplitude).
+
+#### VCAMP
+
+A voltage-controlled amplifier, capable of adding 12 decibels gain to the input.  (12 decibels gain is the same as multiplying the input by 4.)
+
+The level may be controlled with a +10 volt CV; when CV is in use, it is attenuated by the corresponding slider.  The slider's toggle has a light indicating the output signal level.  The output saturates (soft clips) to +/-12 volts, where clipping becomes noticeable above +/-10 volts.
+
+### <a name="visualizers"></a> Visualizers
+
+#### ANALYZER
 
 A four-channel spectrum analyzer.
 
-![Analyzer screenshot](doc/www/analyzer.png)
+![Analyzer screenshot](doc/www/visualizers.png)
 
 Features:
   - Range setting: smoothly scrolls the displayed frequency range, from just the lower tenth, to the entire range (up to half the sampling rate).
   - Smooth setting: controls how many analysis frames will be averaged to drive the display.  A higher setting reduces jitter, at the expense of time lag.  For convenience, the knob setting is time-valued, from zero to half a second (internally this is converted to an integer averaging factor based on the sample rate and other settings).
   - Quality setting: switch between good (1024-sample) and better (4096-sample) FFT window sizes.  The higher setting yields finer frequency resolution at a higher CPU cost.
   - Off button: turn the unit off to save some CPU without unpatching.
+  - Each channel has a THRU output, which passes the corresponding input through unchanged.
 
+#### VU
 
-### <a name="utilities"></a> Utilities
+A stereo signal level visualizer/meter.  The L channel is sent to both displays if if nothing is patched to R.  Inputs to L and R are copied to the L and R outputs.
 
-A collection of compact 3-HP utility modules.
+### <a name="pitch"></a> Pitch CV Utilities
 
-![Utilities screenshot](doc/www/utilities.png)
+Utilities that process pitch CVs (1 volt / octave), for controlling the pitch of oscillators.
+
+![Pitch utilities screenshot](doc/www/pitch.png)
 
 #### DETUNE
 
 A 1V/octave pitch processor, for controlling a detuned oscillator pair.  A reference pitch in raised and lowered by the number of cents (hundredths of a semitone) specified by the knob and CV, and output at OUT+ and OUT-.  The input pitch is output at THRU.
-
-#### DGATE
-
-A triggerable gate with duration up to 10 seconds, with an optional pre-delay of up to 10 seconds.  A trigger pulse is output at END when a delay/gate cycle ends.  If the STOP/LOOP switch is set to LOOP, or if the trigger is high when the cycle ends, the cycle repeats.
-
-#### MANUAL
-
-A manual trigger/gate with 8 outputs.  A constant high value is sent from each output for as long as the TRIG button is held.  
-
-Manual may be set to output a trigger pulse on patch load (akin to a Max/Msp or Pd loadbang).  This is off by default; enable clicking "Trigger on Load" on the module's context (right-click) menu.
-
-#### NOISE
-
-A noise source, in types White, Pink (1/f), Red (aka Brown, 1/f^2) and Gauss (normal with mean 0 and variance 1).
-
-Additionally, NOISE has an absolute value circuit.  Patch audio into ABS to get positive CV.  For example, patch White into ABS to get uniform values in the range 0 to 10.
-
-#### OFFSET
-
-An offset and scaler.  The OFFSET and SCALE knobs have CV inputs.  With an input signal, output is `(input + offset) * scale`.  With no input connected, the output is constant in the value of `offset * scale`.
-
-#### REFTONE
-
-A tuner that outputs a selectable (Western, chromatic) pitch as CV (1v/octave, for controlling an oscillator) or as a pure sine tone.  The base pitch is selected with the PITCH and OCTAVE knobs, while the FINE knob allows the output to be fine-tuned up or down a full semitone.  The LED-style display indicates the selected pitch, octave and fine tuning (in cents), and the corresponding frequency (in hertz).
-
-#### S&H
-
-A dual sample-and-hold.  Sampling may be triggered by CV or button press.  If nothing is connected to an IN port, sampling for that channel is from an internal white noise source (range 0-10).
 
 #### STACK
 
@@ -189,13 +253,67 @@ A 1V/octave pitch processor for stacking oscillators.  The SEMIS, OCTAVE and FIN
 
 The CV input expects +/-5 volts; the value modifies the interval set by the knobs in the amount of one semitone per tenth volt.  If QZ (quantize) is active, the CV-controlled interval is quantized to the nearest semitone.  This specialized CV is output at the THRU port, with a value set by the knobs and CV in, when there is no input pitch.
 
+#### REFTONE
+
+A tuner that outputs a selectable (Western, chromatic) pitch as CV (1v/octave, for controlling an oscillator) or as a pure sine tone.  The base pitch is selected with the PITCH and OCTAVE knobs, while the FINE knob allows the output to be fine-tuned up or down a full semitone.  The LED-style display indicates the selected pitch, octave and fine tuning (in cents), and the corresponding frequency (in hertz).
+
+
+### <a name="utilities"></a> Utilities
+
+Miscellaneous utilities.
+
+![Utilities screenshot](doc/www/utilities.png)
+
+#### BOOL
+
+A boolean logic utility.  Inputs are considered true if the input voltage is greater than 1.  The top section takes two inputs and computes AND, OR and XOR at the outputs.  The lower section computes the negation of its input.  Output is 5 volts if an output is true, 0 otherwise.
+
+#### CVD
+
+A simple delay designed for use with CV.  Use it to delay triggers or gates, create a flip-flop that resets itself after a time, make a sequence run for a while then stop, to double up an envelope, or what have you.
+
+The large TIME knob sets the delay time, as scaled by the small knob (up to 0.1, 1 or 10 seconds); TIME takes a +10 CV, attenuated by the knob.  Reducing time truncates the internal delay buffer.  The DRY/WET knob sets the mix of the original and delayed signals at the output, with a +/-5 CV input.
+
+#### FLIPFLOP
+
+A boolean memory utility with two independent channels.  A high voltage at TRIGGER will cause the state of a channel to change from A to B.  A subsequent trigger will flip it back.  Output is 5 volts at whichever of A and B is selected, 0 otherwise.  A trigger voltage at RESET sets the channel back to state A.
+
+#### MANUAL
+
+A manual trigger/gate with 8 outputs.  A constant high value is sent from each output for as long as the TRIG button is held.  
+
+Manual may be set to output a trigger pulse on patch load (akin to a Max/Msp or Pd loadbang).  This is off by default; enable clicking "Trigger on Load" on the module's context (right-click) menu.
+
+#### MULT
+
+A 3 HP multiple (signal duplicator).  There are two 1-to-3 channels.  There is also a 1-to-6 mode: if nothing is patched to the second channel's input, the input to the first channel is copied to all six outputs.
+
+#### NOISE
+
+A noise source, in types blue (f), white, pink (1/f), red (aka rown, 1/f^2) and Gauss (normal with mean 0 and variance 1).
+
+Additionally, NOISE has an absolute value circuit.  Patch audio into ABS to get positive CV.  For example, patch white noise into ABS to get uniform values in the range 0 to 10.
+
+#### OFFSET
+
+An offset and scaler.  The OFFSET and SCALE knobs have CV inputs.  With an input signal, output is `(input + offset) * scale`.  With no input connected, the output is constant in the value of `offset * scale`.
+
+By default, the output is capped at +/-12 volts (this is a standard in Rack).  A context menu option allows this limit to be disabled.
+
+#### S&H
+
+A dual sample-and-hold.  Sampling may be triggered by CV or button press.  If nothing is connected to an IN port, sampling for that channel is from an internal white noise source (range 0-10).
+
+#### SUMS
+
+An arithmetic logic utility.  The top section outputs the sum, difference, maximum and minimum of its input signals (unpatched inputs send a 0-volt signal into each computation).  The lower section negates (reverses the sign of) its input.
+
+By default, the output is capped at +/-12 volts (this is a standard in Rack).  A context menu option allows this limit to be disabled.
+
 #### SWITCH
 
 A signal-routing module with two through channels.  If the button is held or the GATE input is high, the HIGH input for each channel is routed to the corresponding OUT.  Otherwise, each LOW input is routed to each OUT.
 
-#### VCA
-
-A compact, two-channel VCA.
 
 ## Other Notes
 
@@ -207,9 +325,11 @@ This behavior can be disabled on a per-module basis by right-clicking the module
 
 ![Resume Loop on Load menu screenshot](doc/www/resumeloop.png)
 
+
 ## Issues and Feedback
 
 Bug reports and feedback are welcome: please use the [issue tracker](https://github.com/bogaudio/BogaudioModules/issues).
+
 
 ## Acknowledgements
 

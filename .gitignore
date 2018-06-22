@@ -35,3 +35,4 @@ dist/
 benchmark
 testmain
 *.gp
+releasenote.md
