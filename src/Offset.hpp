@@ -1,12 +1,13 @@
 #pragma once
 
 #include "bogaudio.hpp"
+#include "disable_output_limit.hpp"
 
 extern Model* modelOffset;
 
 namespace bogaudio {
 
-struct Offset : Module {
+struct Offset : DisableOutputLimitModule {
 	enum ParamIds {
 		OFFSET_PARAM,
 		SCALE_PARAM,
@@ -25,12 +26,8 @@ struct Offset : Module {
 		NUM_OUTPUTS
 	};
 
-	bool _disableOutputLimit = false;
+	Offset() : DisableOutputLimitModule(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {}
 
-	Offset() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {}
-
-	json_t* toJson() override;
-	void fromJson(json_t* root) override;
 	void step() override;
 
 	float knobValue(const Param& knob, const Input& cv) const;

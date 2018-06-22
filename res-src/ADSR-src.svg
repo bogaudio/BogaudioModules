@@ -78,6 +78,26 @@
       </g>
     </symbol>
 
+    <symbol id="knobguide-linear" viewBox="0 0 45px 45px">
+      <g transform="translate(22.5 22.5)">
+        <g transform="rotate(-240) translate(17 0)">
+          <g transform="translate(3 0) rotate(240)">
+            <text font-size="6.5pt" transform="translate(-2.8 3.3)">0</text>
+          </g>
+        </g>
+        <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" transform="rotate(-210) translate(17 0)" />
+        <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" transform="rotate(-180) translate(17 0)" />
+        <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" transform="rotate(-150) translate(17 0)" />
+        <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" transform="rotate(-120) translate(17 0)" />
+        <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" transform="rotate(-90) translate(17 0)" />
+        <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" transform="rotate(-60) translate(17 0)" />
+        <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" transform="rotate(-30) translate(17 0)" />
+        <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" transform="rotate(0) translate(17 0)" />
+        <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" transform="rotate(30) translate(17 0)" />
+        <polyline points="0,0 3.5,0" stroke-width="1" stroke="#333" transform="rotate(60) translate(17 0)" />
+      </g>
+    </symbol>
+
     <symbol id="input" viewBox="0 0 24px 24px">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0" />
@@ -142,7 +162,7 @@
   <g transform="translate(0 139)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(13 0)">SUS</text>
     <use id="SUSTAIN_PARAM" xlink:href="#knob" transform="translate(0 0)" />
-    <use xlink:href="#knobguide" transform="translate(0 0)" />
+    <use xlink:href="#knobguide-linear" transform="translate(0 0)" />
     <use id="SUSTAIN_LIGHT" xlink:href="#light-tiny" transform="translate(20.8 40)" />
   </g>
 

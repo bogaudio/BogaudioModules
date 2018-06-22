@@ -4,23 +4,38 @@
 void Sums::step() {
 	float a = inputs[A_INPUT].value;
 	float b = inputs[B_INPUT].value;
-	outputs[SUM_OUTPUT].value = a + b;
-	outputs[DIFFERENCE_OUTPUT].value = a - b;
-	outputs[MAX_OUTPUT].value = std::max(a, b);
-	outputs[MIN_OUTPUT].value = std::min(a, b);
+	if (_disableOutputLimit) {
+		outputs[SUM_OUTPUT].value = a + b,
+		outputs[DIFFERENCE_OUTPUT].value = a - b;
+		outputs[MAX_OUTPUT].value = std::max(a, b);
+		outputs[MIN_OUTPUT].value = std::min(a, b);
 
-	if (inputs[NEGATE_INPUT].active) {
-		outputs[NEGATE_OUTPUT].value = -inputs[NEGATE_INPUT].value;
+		if (inputs[NEGATE_INPUT].active) {
+			outputs[NEGATE_OUTPUT].value = -inputs[NEGATE_INPUT].value;
+		}
+		else {
+			outputs[NEGATE_OUTPUT].value = 0.0f;
+		}
 	}
 	else {
-		outputs[NEGATE_OUTPUT].value = 0.0f;
+		outputs[SUM_OUTPUT].value = clamp(a + b, -12.0f, 12.0f);
+		outputs[DIFFERENCE_OUTPUT].value = clamp(a - b, -12.0f, 12.0f);
+		outputs[MAX_OUTPUT].value = clamp(std::max(a, b), -12.0f, 12.0f);
+		outputs[MIN_OUTPUT].value = clamp(std::min(a, b), -12.0f, 12.0f);
+
+		if (inputs[NEGATE_INPUT].active) {
+			outputs[NEGATE_OUTPUT].value = clamp(-inputs[NEGATE_INPUT].value, -12.0f, 12.0f);
+		}
+		else {
+			outputs[NEGATE_OUTPUT].value = 0.0f;
+		}
 	}
 }
 
-struct SumsWidget : ModuleWidget {
+struct SumsWidget : DisableOutputLimitModuleWidget {
 	static constexpr int hp = 3;
 
-	SumsWidget(Sums* module) : ModuleWidget(module) {
+	SumsWidget(Sums* module) : DisableOutputLimitModuleWidget(module) {
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

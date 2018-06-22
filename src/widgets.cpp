@@ -131,7 +131,7 @@ NVGcolor bogaudio::decibelsToColor(float db) {
 	if (db < 0.0f) {
 		return nvgRGBA((1.0f - db / -24.0f) * 0xff, 0xff, 0x00, 0xff);
 	}
-	return nvgRGBA(0xff, (1.0f - db / 18.0f) * 0xff, 0x00, 0xff);
+	return nvgRGBA(0xff, (1.0f - std::min(db, 9.0f) / 9.0f) * 0xff, 0x00, 0xff);
 }
 
 

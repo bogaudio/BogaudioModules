@@ -1,6 +1,7 @@
 #pragma once
 
 #include "bogaudio.hpp"
+#include "disable_output_limit.hpp"
 #include "dsp/signal.hpp"
 
 using namespace bogaudio::dsp;
@@ -9,7 +10,7 @@ extern Model* modelVCM;
 
 namespace bogaudio {
 
-struct VCM : Module {
+struct VCM : DisableOutputLimitModule {
 	enum ParamsIds {
 		LEVEL1_PARAM,
 		LEVEL2_PARAM,
@@ -48,7 +49,7 @@ struct VCM : Module {
 	Amplifier _amplifier3;
 	Amplifier _amplifier4;
 
-	VCM() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	VCM() : DisableOutputLimitModule(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 		onReset();
 	}
 

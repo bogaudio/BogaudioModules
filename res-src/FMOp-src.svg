@@ -240,7 +240,7 @@
     <text font-size="8pt" letter-spacing="2px" transform="translate(8 25) rotate(270)">SUS</text>
     <use id="SUSTAIN_PARAM" xlink:href="#knob-medium" transform="translate(20 0)" />
     <!-- <rect width="30" height="18" fill="#0f0" transform="translate(20 26)" /> -->
-    <use xlink:href="#knobguide-time" transform="translate(10.5 -9.5)" />
+    <use xlink:href="#knobguide-linear" transform="translate(10.5 -9.5)" />
   </g>
   <g transform="translate(87 229)">
     <!-- <polyline points="0,0 200,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(-140 -10)" /> -->

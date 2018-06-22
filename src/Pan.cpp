@@ -28,8 +28,8 @@ void Pan::step() {
 	_panner1.next(inputs[IN1_INPUT].value, l1, r1);
 	float l2 = 0.0f, r2 = 0.0f;
 	_panner2.next(inputs[IN2_INPUT].value, l2, r2);
-	outputs[L_OUTPUT].value = l1 + l2;
-	outputs[R_OUTPUT].value = r1 + r2;
+	outputs[L_OUTPUT].value = _saturatorLeft.next(l1 + l2);
+	outputs[R_OUTPUT].value = _saturatorRight.next(r1 + r2);
 }
 
 struct PanWidget : ModuleWidget {

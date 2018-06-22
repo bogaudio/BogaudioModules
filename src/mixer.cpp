@@ -32,7 +32,7 @@ void MixerChannel::next(bool stereo) {
 	}
 
 	out = _amplifier.next(_inInput.value);
-	rms = _rms.next(out) / 5.0f;
+	rms = _rms.next(out / 5.0f);
 	if (stereo) {
 		float pan = clamp(_panParam.value, -1.0f, 1.0f);
 		if (_panInput.active) {

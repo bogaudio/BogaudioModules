@@ -1,12 +1,13 @@
 #pragma once
 
 #include "bogaudio.hpp"
+#include "disable_output_limit.hpp"
 
 extern Model* modelSums;
 
 namespace bogaudio {
 
-struct Sums : Module {
+struct Sums : DisableOutputLimitModule {
 	enum ParamsIds {
 		NUM_PARAMS
 	};
@@ -31,7 +32,7 @@ struct Sums : Module {
 		NUM_LIGHTS
 	};
 
-	Sums() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	Sums() : DisableOutputLimitModule(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 	}
 
 	void step() override;

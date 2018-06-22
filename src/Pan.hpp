@@ -38,6 +38,8 @@ struct Pan : Module {
 	Panner _panner2;
 	SlewLimiter _slew1;
 	SlewLimiter _slew2;
+	Saturator _saturatorLeft;
+	Saturator _saturatorRight;
 
 	Pan() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 		onSampleRateChange();

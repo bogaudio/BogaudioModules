@@ -13,6 +13,10 @@ void VCM::step() {
 		if (inputs[MIX_CV_INPUT].active) {
 			level *= clamp(inputs[MIX_CV_INPUT].value / 10.0f, 0.0f, 1.0f);
 		}
+		out *= level;
+		if (!_disableOutputLimit) {
+			out = clamp(out, -12.0f, 12.0f);
+		}
 		outputs[MIX_OUTPUT].value = level * out;
 	}
 }
@@ -34,10 +38,10 @@ float VCM::channelStep(Input& input, Param& knob, Input& cv, Amplifier& amplifie
 	return amplifier.next(input.value);
 }
 
-struct VCMWidget : ModuleWidget {
+struct VCMWidget : DisableOutputLimitModuleWidget {
 	static constexpr int hp = 10;
 
-	VCMWidget(VCM* module) : ModuleWidget(module) {
+	VCMWidget(VCM* module) : DisableOutputLimitModuleWidget(module) {
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

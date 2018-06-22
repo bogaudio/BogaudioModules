@@ -11,7 +11,7 @@ void VCA::step() {
 	bool linear = params[LINEAR_PARAM].value > 0.5f;
 	lights[LINEAR_LIGHT].value = linear;
 	channelStep(inputs[IN1_INPUT], outputs[OUT1_OUTPUT], params[LEVEL1_PARAM], inputs[CV1_INPUT], _amplifier1, _levelSL1, linear);
-	channelStep(inputs[IN2_INPUT], outputs[OUT2_OUTPUT], params[LEVEL2_PARAM], inputs[CV2_INPUT], _amplifier2, _levelSL1, linear);
+	channelStep(inputs[IN2_INPUT], outputs[OUT2_OUTPUT], params[LEVEL2_PARAM], inputs[CV2_INPUT], _amplifier2, _levelSL2, linear);
 }
 
 void VCA::channelStep(Input& input, Output& output, Param& knob, Input& cv, Amplifier& amplifier, SlewLimiter& levelSL, bool linear) {

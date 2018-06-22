@@ -88,7 +88,6 @@ void init(rack::Plugin *p) {
 	p->addModel(modelBool);
 	p->addModel(modelCVD);
 	p->addModel(modelFlipFlop);
-	p->addModel(modelLag);
 	p->addModel(modelManual);
 	p->addModel(modelMult);
 	p->addModel(modelNoise);
@@ -98,6 +97,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelSwitch);
 
 #ifdef EXPERIMENTAL
+	p->addModel(modelLag);
 	p->addModel(modelRM);
 #endif
 
