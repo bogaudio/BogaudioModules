@@ -31,6 +31,7 @@
 #include "Stack.hpp"
 #include "Sums.hpp"
 #include "Switch.hpp"
+#include "UMix.hpp"
 #include "VCA.hpp"
 #include "VCAmp.hpp"
 #include "VCM.hpp"
@@ -73,6 +74,9 @@ void init(rack::Plugin *p) {
 	p->addModel(modelMix4);
 	p->addModel(modelMix8);
 	p->addModel(modelVCM);
+#ifdef EXPERIMENTAL
+	p->addModel(modelUMix);
+#endif
 	p->addModel(modelPan);
 	p->addModel(modelXFade);
 	p->addModel(modelVCA);
