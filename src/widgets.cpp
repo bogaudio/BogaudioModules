@@ -26,6 +26,11 @@ Knob16::Knob16() : BGKnob("res/knob_16px.svg", 16) {
 }
 
 
+Knob19::Knob19() : BGKnob("res/knob_19px.svg", 19) {
+	shadow->box.pos = Vec(0.0, 2.5);
+}
+
+
 Knob26::Knob26() : BGKnob("res/knob_26px.svg", 26) {
 }
 

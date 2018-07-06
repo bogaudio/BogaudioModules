@@ -18,6 +18,10 @@ struct Knob16 : BGKnob {
 	Knob16();
 };
 
+struct Knob19 : BGKnob {
+	Knob19();
+};
+
 struct Knob26 : BGKnob {
 	Knob26();
 };

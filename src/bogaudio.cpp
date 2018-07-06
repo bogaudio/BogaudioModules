@@ -17,6 +17,7 @@
 #include "LFO.hpp"
 #include "Lag.hpp"
 #include "Manual.hpp"
+#include "Matrix88.hpp"
 #include "Mix4.hpp"
 #include "Mix8.hpp"
 #include "Mult.hpp"
@@ -76,6 +77,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelVCM);
 #ifdef EXPERIMENTAL
 	p->addModel(modelUMix);
+	p->addModel(modelMatrix88);
 #endif
 	p->addModel(modelPan);
 	p->addModel(modelXFade);
