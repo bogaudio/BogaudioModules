@@ -1,6 +1,7 @@
 
 #include "bogaudio.hpp"
 
+#include "AD.hpp"
 #include "ADSR.hpp"
 #include "Additator.hpp"
 #include "Analyzer.hpp"
@@ -69,6 +70,9 @@ void init(rack::Plugin *p) {
 	p->addModel(modelDGate);
 	p->addModel(modelShaper);
 	p->addModel(modelShaperPlus);
+#ifdef EXPERIMENTAL
+	p->addModel(modelAD);
+#endif
 	p->addModel(modelADSR);
 	p->addModel(modelFollow);
 
