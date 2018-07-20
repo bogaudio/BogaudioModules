@@ -43,6 +43,10 @@ Knob38::Knob38() : BGKnob("res/knob_38px.svg", 38) {
 }
 
 
+Knob45::Knob45() : BGKnob("res/knob_45px.svg", 45) {
+}
+
+
 Knob68::Knob68() : BGKnob("res/knob_68px.svg", 68) {
 	shadow->box.pos = Vec(0.0, 4.0);
 }

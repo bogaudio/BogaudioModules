@@ -5,27 +5,28 @@
 
 using namespace bogaudio::dsp;
 
-extern Model* modelRM;
+extern Model* modelAMRM;
 
 namespace bogaudio {
 
-struct RM : Module {
+struct AMRM : Module {
 	enum ParamsIds {
-		MODULATOR_DEPTH_PARAM,
-		MIX_PARAM,
+		RECTIFY_PARAM,
+		DRYWET_PARAM,
 		NUM_PARAMS
 	};
 
 	enum InputsIds {
 		MODULATOR_INPUT,
 		CARRIER_INPUT,
-		MODULATOR_DEPTH_INPUT,
-		MIX_INPUT,
+		RECTIFY_INPUT,
+		DRYWET_INPUT,
 		NUM_INPUTS
 	};
 
 	enum OutputsIds {
 		OUT_OUTPUT,
+		RECTIFY_OUTPUT,
 		NUM_OUTPUTS
 	};
 
@@ -33,9 +34,9 @@ struct RM : Module {
 		NUM_LIGHTS
 	};
 
-	CrossFader _mix;
+	Saturator _saturator;
 
-	RM() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	AMRM() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 	}
 
 	void step() override;

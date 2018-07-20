@@ -4,6 +4,7 @@
 #include "AD.hpp"
 #include "ADSR.hpp"
 #include "Additator.hpp"
+#include "AMRM.hpp"
 #include "Analyzer.hpp"
 #include "Bool.hpp"
 #include "CVD.hpp"
@@ -25,7 +26,6 @@
 #include "Noise.hpp"
 #include "Offset.hpp"
 #include "Pan.hpp"
-#include "RM.hpp"
 #include "Reftone.hpp"
 #include "SampleHold.hpp"
 #include "Shaper.hpp"
@@ -88,6 +88,10 @@ void init(rack::Plugin *p) {
 	p->addModel(modelVCA);
 	p->addModel(modelVCAmp);
 
+#ifdef EXPERIMENTAL
+	p->addModel(modelAMRM);
+#endif
+
 	p->addModel(modelAnalyzer);
 	p->addModel(modelVU);
 
@@ -108,7 +112,6 @@ void init(rack::Plugin *p) {
 
 #ifdef EXPERIMENTAL
 	p->addModel(modelLag);
-	p->addModel(modelRM);
 #endif
 
 #ifdef TEST
