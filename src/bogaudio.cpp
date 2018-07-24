@@ -7,6 +7,7 @@
 #include "AMRM.hpp"
 #include "Analyzer.hpp"
 #include "Bool.hpp"
+#include "Cmp.hpp"
 #include "CVD.hpp"
 #include "DADSRH.hpp"
 #include "DADSRHPlus.hpp"
@@ -100,6 +101,9 @@ void init(rack::Plugin *p) {
 	p->addModel(modelReftone);
 
 	p->addModel(modelBool);
+#ifdef EXPERIMENTAL
+	p->addModel(modelCmp);
+#endif
 	p->addModel(modelCVD);
 	p->addModel(modelFlipFlop);
 	p->addModel(modelManual);
