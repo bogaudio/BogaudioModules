@@ -123,8 +123,11 @@ struct SlewLimiter {
 		setParams(sampleRate, milliseconds, range);
 	}
 
-	void setParams(float sampleRate, float milliseconds = 1.0f, float range = 10.0f);
-	float next(float sample);
+	void setParams(float sampleRate = 1000.0f, float milliseconds = 1.0f, float range = 10.0f);
+	inline float next(float sample) {
+		return _last = next(sample, _last);
+	}
+	float next(float sample, float last);
 };
 
 struct ShapedSlewLimiter {
@@ -223,6 +226,11 @@ struct Saturator {
 	static const float limit;
 
 	float next(float sample);
+};
+
+struct Compressor {
+	const float softKneeDb = 3.0f;
+	float compressionDb(float detectorDb, float thresholdDb, float ratio, bool softKnee);
 };
 
 } // namespace dsp

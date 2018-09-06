@@ -184,11 +184,11 @@ void SlewLimiter::setParams(float sampleRate, float milliseconds, float range) {
 	_delta = range / ((milliseconds / 1000.0f) * sampleRate);
 }
 
-float SlewLimiter::next(float sample) {
-	if (sample > _last) {
-		return _last = std::min(_last + _delta, sample);
+float SlewLimiter::next(float sample, float last) {
+	if (sample > last) {
+		return std::min(last + _delta, sample);
 	}
-	return _last = std::max(_last - _delta, sample);
+	return std::max(last - _delta, sample);
 }
 
 
@@ -428,4 +428,31 @@ float Saturator::next(float sample) {
 		return -saturation(-x);
 	}
 	return saturation(x);
+}
+
+
+float Compressor::compressionDb(float detectorDb, float thresholdDb, float ratio, bool softKnee) {
+	if (softKnee) {
+		float sDb = thresholdDb - softKneeDb;
+		if (detectorDb <= sDb) {
+			return 0.0f;
+		}
+
+		float ix = softKneeDb * std::min(ratio, 1000.0f) + thresholdDb;
+		float iy = softKneeDb + thresholdDb;
+		float t = (detectorDb - sDb) / (ix - thresholdDb);
+		float px = t * (ix - thresholdDb) + thresholdDb;
+		float py = t * (iy - thresholdDb) + thresholdDb;
+		float s = (py - sDb) / (px - sDb);
+		float compressionDb = detectorDb - sDb;
+		compressionDb -= s * (detectorDb - sDb);
+		return compressionDb;
+	}
+
+	if (detectorDb <= thresholdDb) {
+		return 0.0f;
+	}
+	float compressionDb = detectorDb - thresholdDb;
+	compressionDb -= compressionDb / ratio;
+	return compressionDb;
 }

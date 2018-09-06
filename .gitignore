@@ -36,4 +36,5 @@ benchmark
 testmain
 *.gp
 releasenote.md
+plot
 plot.*

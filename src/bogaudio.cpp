@@ -27,6 +27,7 @@
 #include "Noise.hpp"
 #include "Offset.hpp"
 #include "Pan.hpp"
+#include "Pressor.hpp"
 #include "Reftone.hpp"
 #include "SampleHold.hpp"
 #include "Shaper.hpp"
@@ -103,6 +104,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelBool);
 #ifdef EXPERIMENTAL
 	p->addModel(modelCmp);
+	p->addModel(modelPressor);
 #endif
 	p->addModel(modelCVD);
 	p->addModel(modelFlipFlop);
