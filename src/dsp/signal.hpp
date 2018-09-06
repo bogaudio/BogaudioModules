@@ -25,7 +25,7 @@ struct Amplifier {
 		LevelTable(int n) : Table(n) {}
 		void _generate() override;
 	};
-	struct StaticLevelTable : StaticTable<LevelTable, 11> {};
+	struct StaticLevelTable : StaticTable<LevelTable, 13> {};
 
 	float _db = 0.0f;
 	float _level;
