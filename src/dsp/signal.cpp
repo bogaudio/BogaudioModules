@@ -431,14 +431,18 @@ float Saturator::next(float sample) {
 }
 
 
+const float Compressor::maxEffectiveRatio = 1000.0f;
+
 float Compressor::compressionDb(float detectorDb, float thresholdDb, float ratio, bool softKnee) {
+	const float softKneeDb = 3.0f;
+
 	if (softKnee) {
 		float sDb = thresholdDb - softKneeDb;
 		if (detectorDb <= sDb) {
 			return 0.0f;
 		}
 
-		float ix = softKneeDb * std::min(ratio, 1000.0f) + thresholdDb;
+		float ix = softKneeDb * std::min(ratio, maxEffectiveRatio) + thresholdDb;
 		float iy = softKneeDb + thresholdDb;
 		float t = (detectorDb - sDb) / (ix - thresholdDb);
 		float px = t * (ix - thresholdDb) + thresholdDb;

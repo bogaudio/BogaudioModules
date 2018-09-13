@@ -19,6 +19,7 @@
 #include "Follow.hpp"
 #include "LFO.hpp"
 #include "Lag.hpp"
+#include "Lmtr.hpp"
 #include "Manual.hpp"
 #include "Matrix88.hpp"
 #include "Mix4.hpp"
@@ -92,6 +93,8 @@ void init(rack::Plugin *p) {
 
 #ifdef EXPERIMENTAL
 	p->addModel(modelAMRM);
+	p->addModel(modelPressor);
+	p->addModel(modelLmtr);
 #endif
 
 	p->addModel(modelAnalyzer);
@@ -104,7 +107,6 @@ void init(rack::Plugin *p) {
 	p->addModel(modelBool);
 #ifdef EXPERIMENTAL
 	p->addModel(modelCmp);
-	p->addModel(modelPressor);
 #endif
 	p->addModel(modelCVD);
 	p->addModel(modelFlipFlop);

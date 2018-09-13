@@ -88,7 +88,7 @@ void Pressor::step() {
 
 		_rmsDetector = params[DECTECTOR_MODE_PARAM].value > 0.5f;
 
-		_softKnee = params[KNEE_PARAM].value > 0.5f;
+		_softKnee = params[KNEE_PARAM].value > 0.97f;
 	}
 
 	float leftInput = inputs[LEFT_INPUT].value * _inLevel;
@@ -222,7 +222,7 @@ struct PressorWidget : ModuleWidget {
 		addParam(ParamWidget::create<Knob26>(inputGainParamPosition, module, Pressor::INPUT_GAIN_PARAM, -1.0, 1.0, 0.0));
 		addParam(ParamWidget::create<Knob26>(detectorMixParamPosition, module, Pressor::DETECTOR_MIX_PARAM, -1.0, 1.0, 0.0));
 		addParam(ParamWidget::create<SliderSwitch2State14>(dectectorModeParamPosition, module, Pressor::DECTECTOR_MODE_PARAM, 0.0, 1.0, 1.0));
-		addParam(ParamWidget::create<SliderSwitch2State14>(kneeParamPosition, module, Pressor::KNEE_PARAM, 0.0, 1.0, 1.0));
+		addParam(ParamWidget::create<SliderSwitch2State14>(kneeParamPosition, module, Pressor::KNEE_PARAM, 0.95, 1.0, 1.0));
 
 		addInput(Port::create<Port24>(leftInputPosition, Port::INPUT, module, Pressor::LEFT_INPUT));
 		addInput(Port::create<Port24>(sidechainInputPosition, Port::INPUT, module, Pressor::SIDECHAIN_INPUT));

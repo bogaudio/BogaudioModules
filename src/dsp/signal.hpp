@@ -229,7 +229,7 @@ struct Saturator {
 };
 
 struct Compressor {
-	const float softKneeDb = 3.0f;
+	static const float maxEffectiveRatio;
 	float compressionDb(float detectorDb, float thresholdDb, float ratio, bool softKnee);
 };
 
