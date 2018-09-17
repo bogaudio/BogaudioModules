@@ -16,9 +16,9 @@ struct Pressor : Module {
 		ATTACK_PARAM,
 		RELEASE_PARAM,
 		OUTPUT_GAIN_PARAM,
-		OUTPUT_MIX_PARAM,
 		INPUT_GAIN_PARAM,
 		DETECTOR_MIX_PARAM,
+		MODE_PARAM,
 		DECTECTOR_MODE_PARAM,
 		KNEE_PARAM,
 		NUM_PARAMS
@@ -32,8 +32,8 @@ struct Pressor : Module {
 		RIGHT_INPUT,
 		ATTACK_INPUT,
 		RELEASE_INPUT,
+		INPUT_GAIN_INPUT,
 		OUTPUT_GAIN_INPUT,
-		OUTPUT_MIX_INPUT,
 		NUM_INPUTS
 	};
 
@@ -57,6 +57,7 @@ struct Pressor : Module {
 	float _inLevel = 0.0f;
 	float _outGain = -1.0f;
 	float _outLevel = 0.0f;
+	bool _compressorMode = true;
 	bool _rmsDetector = true;
 	bool _softKnee = true;
 	float _lastEnv = 0.0f;
@@ -65,9 +66,10 @@ struct Pressor : Module {
 	SlewLimiter _attackSL;
 	SlewLimiter _releaseSL;
 	CrossFader _detectorMix;
-	CrossFader _outputMix;
 	RootMeanSquare _detectorRMS;
 	Compressor _compressor;
+	NoiseGate _noiseGate;
+	Amplifier _amplifier;
 	Saturator _saturator;
 
 	Pressor()

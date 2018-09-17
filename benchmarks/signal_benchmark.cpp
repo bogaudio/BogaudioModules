@@ -228,3 +228,13 @@ static void BM_CompressorSoftKnee(benchmark::State& state) {
   }
 }
 BENCHMARK(BM_CompressorSoftKnee);
+
+static void BM_NoiseGateSoftKnee(benchmark::State& state) {
+  int i = 0;
+  NoiseGate ng;
+  for (auto _ : state) {
+    i = ++i % 15;
+    benchmark::DoNotOptimize(ng.compressionDb(0.0f - (float)(i * 3), 0.0f, 2.0f, true));
+  }
+}
+BENCHMARK(BM_NoiseGateSoftKnee);

@@ -460,3 +460,37 @@ float Compressor::compressionDb(float detectorDb, float thresholdDb, float ratio
 	compressionDb -= compressionDb / ratio;
 	return compressionDb;
 }
+
+
+const float NoiseGate::maxEffectiveRatio = Compressor::maxEffectiveRatio;
+
+float NoiseGate::compressionDb(float detectorDb, float thresholdDb, float ratio, bool softKnee) {
+	const float softKneeDb = 6.0f;
+
+	if (softKnee) {
+		// FIXME: this acheives nothing.
+		float range = thresholdDb - Amplifier::minDecibels;
+		float ix = thresholdDb + softKneeDb;
+		float iy = 0;
+		if (detectorDb >= ix) {
+			return 0.0f;
+		}
+		float ox = thresholdDb - range / ratio;
+		if (detectorDb <= ox) {
+			return -Amplifier::minDecibels;
+		}
+		const float oy = Amplifier::minDecibels;
+		float t = (detectorDb - ox) / (ix - ox);
+		float px = t * (ix - thresholdDb) + thresholdDb;
+		float py = t * (iy - thresholdDb) + thresholdDb;
+		float s = (py - oy) / (px - ox);
+		return -(oy + s * (detectorDb - ox));
+	}
+
+	if (detectorDb >= thresholdDb) {
+		return 0.0f;
+	}
+	float differenceDb = thresholdDb - detectorDb;
+	float compressionDb = differenceDb * ratio - differenceDb;
+	return std::min(compressionDb, -Amplifier::minDecibels);
+}

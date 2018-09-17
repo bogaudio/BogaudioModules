@@ -233,5 +233,10 @@ struct Compressor {
 	float compressionDb(float detectorDb, float thresholdDb, float ratio, bool softKnee);
 };
 
+struct NoiseGate {
+	static const float maxEffectiveRatio;
+	float compressionDb(float detectorDb, float thresholdDb, float ratio, bool softKnee);
+};
+
 } // namespace dsp
 } // namespace bogaudio
