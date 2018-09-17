@@ -37,6 +37,7 @@ struct Mix8 : Module {
 		MUTE8_PARAM,
 		PAN8_PARAM,
 		MIX_PARAM,
+		MIX_MUTE_PARAM,
 		NUM_PARAMS
 	};
 
