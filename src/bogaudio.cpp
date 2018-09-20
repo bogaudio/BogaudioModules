@@ -25,6 +25,7 @@
 #include "Mix4.hpp"
 #include "Mix8.hpp"
 #include "Mult.hpp"
+#include "Mute8.hpp"
 #include "Noise.hpp"
 #include "Offset.hpp"
 #include "Pan.hpp"
@@ -85,6 +86,7 @@ void init(rack::Plugin *p) {
 #ifdef EXPERIMENTAL
 	p->addModel(modelUMix);
 	p->addModel(modelMatrix88);
+	p->addModel(modelMute8);
 #endif
 	p->addModel(modelPan);
 	p->addModel(modelXFade);
