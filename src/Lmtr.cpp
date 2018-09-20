@@ -39,12 +39,12 @@ void Lmtr::step() {
 	float env = abs(leftInput + rightInput);
 	float detectorDb = amplitudeToDecibels(env / 5.0f);
 	float compressionDb = _compressor.compressionDb(detectorDb, _thresholdDb, Compressor::maxEffectiveRatio, _softKnee);
-	float compression = decibelsToAmplitude(-compressionDb);
+	_amplifier.setLevel(-compressionDb);
 	if (outputs[LEFT_OUTPUT].active) {
-		outputs[LEFT_OUTPUT].value = _saturator.next(leftInput * compression * _outLevel);
+		outputs[LEFT_OUTPUT].value = _saturator.next(_amplifier.next(leftInput) * _outLevel);
 	}
 	if (outputs[RIGHT_OUTPUT].active) {
-		outputs[RIGHT_OUTPUT].value = _saturator.next(rightInput * compression * _outLevel);
+		outputs[RIGHT_OUTPUT].value = _saturator.next(_amplifier.next(rightInput) * _outLevel);
 	}
 }
 

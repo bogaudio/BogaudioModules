@@ -43,6 +43,7 @@ struct Lmtr : Module {
 	bool _softKnee = true;
 
 	Compressor _compressor;
+	Amplifier _amplifier;
 	Saturator _saturator;
 
 	Lmtr() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
