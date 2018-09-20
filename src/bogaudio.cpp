@@ -27,6 +27,7 @@
 #include "Mult.hpp"
 #include "Mute8.hpp"
 #include "Noise.hpp"
+#include "Nsgt.hpp"
 #include "Offset.hpp"
 #include "Pan.hpp"
 #include "Pressor.hpp"
@@ -97,6 +98,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelAMRM);
 	p->addModel(modelPressor);
 	p->addModel(modelLmtr);
+	p->addModel(modelNsgt);
 #endif
 
 	p->addModel(modelAnalyzer);
