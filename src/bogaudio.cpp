@@ -75,31 +75,24 @@ void init(rack::Plugin *p) {
 	p->addModel(modelDGate);
 	p->addModel(modelShaper);
 	p->addModel(modelShaperPlus);
-#ifdef EXPERIMENTAL
 	p->addModel(modelAD);
-#endif
 	p->addModel(modelADSR);
 	p->addModel(modelFollow);
 
 	p->addModel(modelMix4);
 	p->addModel(modelMix8);
 	p->addModel(modelVCM);
-#ifdef EXPERIMENTAL
 	p->addModel(modelUMix);
-	p->addModel(modelMatrix88);
 	p->addModel(modelMute8);
-#endif
 	p->addModel(modelPan);
 	p->addModel(modelXFade);
 	p->addModel(modelVCA);
 	p->addModel(modelVCAmp);
 
-#ifdef EXPERIMENTAL
 	p->addModel(modelAMRM);
 	p->addModel(modelPressor);
 	p->addModel(modelLmtr);
 	p->addModel(modelNsgt);
-#endif
 
 	p->addModel(modelAnalyzer);
 	p->addModel(modelVU);
@@ -109,9 +102,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelReftone);
 
 	p->addModel(modelBool);
-#ifdef EXPERIMENTAL
 	p->addModel(modelCmp);
-#endif
 	p->addModel(modelCVD);
 	p->addModel(modelFlipFlop);
 	p->addModel(modelManual);
@@ -124,6 +115,7 @@ void init(rack::Plugin *p) {
 
 #ifdef EXPERIMENTAL
 	p->addModel(modelLag);
+	p->addModel(modelMatrix88);
 #endif
 
 #ifdef TEST
