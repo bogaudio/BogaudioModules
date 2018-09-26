@@ -395,6 +395,8 @@ By default, the output is capped at +/-12 volts (this is a standard in Rack).  A
 
 A signal-routing module with two through channels.  If the button is held or the GATE input is high, the HIGH input for each channel is routed to the corresponding OUT.  Otherwise, each LOW input is routed to each OUT.
 
+If LTCH (latch) mode is enabled, a button click or trigger pulse at GATE will toggle the output to HIGH; a second click or trigger resets it to LOW.
+
 
 ## Other Notes
 
