@@ -9,23 +9,25 @@ void SampleHold::onReset() {
 }
 
 void SampleHold::step() {
-	step(
-		params[TRIGGER1_PARAM],
-		inputs[TRIGGER1_INPUT],
-		inputs[IN1_INPUT],
-		outputs[OUT1_OUTPUT],
-		_trigger1,
-		_value1
-	);
+	if (_trigger1.process(params[TRIGGER1_PARAM].value + inputs[TRIGGER1_INPUT].value)) {
+		if (inputs[IN1_INPUT].active) {
+			_value1 = inputs[IN1_INPUT].value;
+		}
+		else {
+			_value1 = abs(_noise.next()) * 10.0;
+		}
+	}
+	outputs[OUT1_OUTPUT].value = _value1;
 
-	step(
-		params[TRIGGER2_PARAM],
-		inputs[TRIGGER2_INPUT],
-		inputs[IN2_INPUT],
-		outputs[OUT2_OUTPUT],
-		_trigger2,
-		_value2
-	);
+	if (_trigger2.process(params[TRIGGER2_PARAM].value + inputs[TRIGGER2_INPUT].value)) {
+		if (inputs[IN2_INPUT].active) {
+			_value2 = inputs[IN2_INPUT].value;
+		}
+		else {
+			_value2 = abs(_noise.next()) * 10.0;
+		}
+	}
+	outputs[OUT2_OUTPUT].value = _value2;
 }
 
 void SampleHold::step(
