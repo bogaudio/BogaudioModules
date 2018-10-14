@@ -5,11 +5,11 @@
 
 using namespace bogaudio::dsp;
 
-extern Model* modelLmtr;
+extern Model* modelClpr;
 
 namespace bogaudio {
 
-struct Lmtr : Module {
+struct Clpr : Module {
 	enum ParamsIds {
 		THRESHOLD_PARAM,
 		OUTPUT_GAIN_PARAM,
@@ -41,22 +41,16 @@ struct Lmtr : Module {
 	float _outGain = -1.0f;
 	float _outLevel = 0.0f;
 	bool _softKnee = true;
-	float _lastEnv = 0.0f;
 
-	SlewLimiter _attackSL;
-	SlewLimiter _releaseSL;
-	RootMeanSquare _detector;
 	Compressor _compressor;
 	Amplifier _amplifier;
 	Saturator _saturator;
 
-	Lmtr() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	Clpr() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 		onReset();
-		onSampleRateChange();
 	}
 
 	void onReset() override;
-	void onSampleRateChange() override;
 	void step() override;
 };
 

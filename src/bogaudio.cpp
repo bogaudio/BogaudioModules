@@ -7,6 +7,7 @@
 #include "AMRM.hpp"
 #include "Analyzer.hpp"
 #include "Bool.hpp"
+#include "Clpr.hpp"
 #include "Cmp.hpp"
 #include "CVD.hpp"
 #include "DADSRH.hpp"
@@ -91,6 +92,7 @@ void init(rack::Plugin *p) {
 
 	p->addModel(modelAMRM);
 	p->addModel(modelPressor);
+	p->addModel(modelClpr);
 	p->addModel(modelLmtr);
 	p->addModel(modelNsgt);
 

@@ -278,9 +278,17 @@ The various controls and ports work as follows:
 
 Several of the settings can take fairly extreme values (e.g. OUT GAIN); this allows the module to be used as a distortion effect.
 
+#### CLPR
+
+CLPR is a compact (6HP) [clipper](https://en.wikipedia.org/wiki/Clipping_%28audio%29).  Its controls behave the same as the corresponding controls on PRESSOR.
+
+In contrast to LMTR, CLPR chops a signal at a voltage threshold corresponding to the selected amplitude; this distorts the signal.
+
 #### LMTR
 
-LMTR is a compact (6HP) hard [limiter](https://en.wikipedia.org/wiki/Dynamic_range_compression) or clipper.  Its controls behave the same as the corresponding controls on PRESSOR.
+LMTR is a compact (6HP) [limiter](https://en.wikipedia.org/wiki/Dynamic_range_compression).  Its controls behave the same as the corresponding controls on PRESSOR.
+
+In contrast to CLPR, LMTR does not distort the signal (or not much); it just reduces the amplitude of the signal to keep it below the threshold.
 
 #### NSGT
 
