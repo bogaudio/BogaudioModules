@@ -16,7 +16,7 @@ struct SampleHold : Module {
 		NUM_PARAMS
 	};
 
-	enum InputIds {
+	enum InputsIds {
 		TRIGGER1_INPUT,
 		IN1_INPUT,
 		TRIGGER2_INPUT,
@@ -30,24 +30,24 @@ struct SampleHold : Module {
 		NUM_OUTPUTS
 	};
 
+	enum LightsIds {
+		NUM_LIGHTS
+	};
+
 	SchmittTrigger _trigger1, _trigger2;
 	float _value1, _value2;
 	WhiteNoiseGenerator _noise;
 
-	SampleHold() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {
+	SampleHold()
+	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
+	, _value1(0.0f)
+	, _value2(0.0f)
+	{
 		onReset();
 	}
 
 	void onReset() override;
 	void step() override;
-	void step(
-		Param& triggerParam,
-		Input& triggerInput,
-		Input& in,
-		Output& out,
-		SchmittTrigger& trigger,
-		float& value
-	);
 };
 
 } // namespace bogaudio

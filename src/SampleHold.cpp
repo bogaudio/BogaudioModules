@@ -3,9 +3,9 @@
 
 void SampleHold::onReset() {
 	_trigger1.reset();
-	_value1 = 0.0;
+	_value1 = 0.0f;
 	_trigger2.reset();
-	_value1 = 0.0;
+	_value2 = 0.0f;
 }
 
 void SampleHold::step() {
@@ -28,25 +28,6 @@ void SampleHold::step() {
 		}
 	}
 	outputs[OUT2_OUTPUT].value = _value2;
-}
-
-void SampleHold::step(
-	Param& triggerParam,
-	Input& triggerInput,
-	Input& in,
-	Output& out,
-	SchmittTrigger& trigger,
-	float& value
-) {
-	if (trigger.process(triggerParam.value + triggerInput.value)) {
-		if (in.active) {
-			value = in.value;
-		}
-		else {
-			value = abs(_noise.next()) * 10.0;
-		}
-	}
-	out.value = value;
 }
 
 struct SampleHoldWidget : ModuleWidget {
