@@ -36,6 +36,7 @@
 #include "SampleHold.hpp"
 #include "Shaper.hpp"
 #include "ShaperPlus.hpp"
+#include "Slew.hpp"
 #include "Stack.hpp"
 #include "Sums.hpp"
 #include "Switch.hpp"
@@ -112,6 +113,9 @@ void init(rack::Plugin *p) {
 	p->addModel(modelNoise);
 	p->addModel(modelOffset);
 	p->addModel(modelSampleHold);
+#ifdef EXPERIMENTAL
+	p->addModel(modelSlew);
+#endif
 	p->addModel(modelSums);
 	p->addModel(modelSwitch);
 
