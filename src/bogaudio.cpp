@@ -6,6 +6,8 @@
 #include "Additator.hpp"
 #include "AMRM.hpp"
 #include "Analyzer.hpp"
+#include "Blank3.hpp"
+#include "Blank6.hpp"
 #include "Bool.hpp"
 #include "Clpr.hpp"
 #include "Cmp.hpp"
@@ -118,6 +120,11 @@ void init(rack::Plugin *p) {
 #endif
 	p->addModel(modelSums);
 	p->addModel(modelSwitch);
+
+#ifdef EXPERIMENTAL
+	p->addModel(modelBlank3);
+	p->addModel(modelBlank6);
+#endif
 
 #ifdef EXPERIMENTAL
 	p->addModel(modelLag);
