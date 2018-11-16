@@ -86,6 +86,9 @@ void init(rack::Plugin *p) {
 	p->addModel(modelMix4);
 	p->addModel(modelMix8);
 	p->addModel(modelVCM);
+	#ifdef EXPERIMENTAL
+		p->addModel(modelMatrix88);
+	#endif
 	p->addModel(modelUMix);
 	p->addModel(modelMute8);
 	p->addModel(modelPan);
@@ -128,7 +131,6 @@ void init(rack::Plugin *p) {
 
 #ifdef EXPERIMENTAL
 	p->addModel(modelLag);
-	p->addModel(modelMatrix88);
 #endif
 
 #ifdef TEST
