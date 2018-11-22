@@ -8,16 +8,15 @@ void Blank6::onSampleRateChange() {
 void Blank6::step() {
 	if (inputs[IN_INPUT].active) {
 		_level = _rms.next(inputs[IN_INPUT].value) / 5.0f;
-		_level *= 1.43f;
-		_level = clamp(_level, 0.0f, 1.0f);
 	}
 	else {
-		_level = 1.0f;
+		_level = -1.0f;
 	}
 }
 
 struct Blank6Display : OpaqueWidget {
 	const NVGcolor textColor = nvgRGBA(0x33, 0x33, 0x33, 0xff);
+	const NVGcolor bgTextColor = nvgRGBA(0xaa, 0xaa, 0xaa, 0xff);
 	const NVGcolor bgColor = nvgRGBA(0xdd, 0xdd, 0xdd, 0xff);
 	Blank6* _module;
 	const char* _text;
@@ -31,34 +30,31 @@ struct Blank6Display : OpaqueWidget {
 	}
 
 	void draw(NVGcontext* vg) override {
-		if (_module->_level < 0.001f) {
-			return;
-		}
-
 		float offsetX = box.size.x / 2.0f;
 		float offsetY = box.size.y / 2.0f;
 		nvgSave(vg);
 		nvgTranslate(vg, offsetX, offsetY);
-		if (_module->_level < 1.0f) {
-			const float discretize = 100.0f;
-			float level = roundf(_module->_level * discretize) * (1.0f / discretize);
-			nvgScale(vg, level, level);
-		}
-
-		nvgSave(vg);
 		nvgRotate(vg, M_PI/2.0f);
 		nvgTranslate(vg, -offsetY, offsetX);
-		nvgFontSize(vg, 54.0f);
+		nvgFontSize(vg, 52.0f);
 		nvgFontFaceId(vg, _font->handle);
 		nvgTextLetterSpacing(vg, 9.0f);
-		nvgFillColor(vg, textColor);
-		nvgText(vg, 0, 0, _text, NULL);
+		if (_module->_level < 0.0f) {
+			nvgFillColor(vg, textColor);
+			nvgText(vg, 0, 0, _text, NULL);
+		}
+		else {
+			nvgFillColor(vg, bgTextColor);
+			nvgText(vg, 0, 0, _text, NULL);
+			if (_module->_level > 0.0001f) {
+				nvgFillColor(vg, decibelsToColor(amplitudeToDecibels(_module->_level)));
+				nvgText(vg, 0, 0, _text, NULL);
+			}
+		}
 		nvgBeginPath(vg);
-		nvgRect(vg, 99, -20, 10, 10);
+		nvgRect(vg, 97, -20, 10, 10);
 		nvgFillColor(vg, bgColor);
 		nvgFill(vg);
-		nvgRestore(vg);
-
 		nvgRestore(vg);
 	}
 };
