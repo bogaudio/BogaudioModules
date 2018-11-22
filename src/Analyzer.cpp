@@ -77,10 +77,12 @@ float ChannelAnalyzer::getPeak() {
 
 
 void Analyzer::onReset() {
+	_modulationStep = modulationSteps;
 	resetChannels();
 }
 
 void Analyzer::onSampleRateChange() {
+	_modulationStep = modulationSteps;
 	resetChannels();
 }
 
@@ -104,39 +106,103 @@ void Analyzer::resetChannels() {
 }
 
 SpectrumAnalyzer::Size Analyzer::size() {
-	if (_quality == QUALITY_HIGH) {
-		return SpectrumAnalyzer::SIZE_4096;
+	switch (_quality) {
+		case QUALITY_ULTRA: {
+			return SpectrumAnalyzer::SIZE_16384;
+		}
+		case QUALITY_HIGH: {
+			return SpectrumAnalyzer::SIZE_4096;
+		}
+		default: {
+			return SpectrumAnalyzer::SIZE_1024;
+		}
 	}
-	return SpectrumAnalyzer::SIZE_1024;
+}
+
+SpectrumAnalyzer::WindowType Analyzer::window() {
+	switch (_window) {
+		case WINDOW_NONE: {
+			return SpectrumAnalyzer::WINDOW_NONE;
+		}
+		case WINDOW_HAMMING: {
+			return SpectrumAnalyzer::WINDOW_HAMMING;
+		}
+		default: {
+			return SpectrumAnalyzer::WINDOW_KAISER;
+		}
+	}
 }
 
 void Analyzer::step() {
-	_range = params[RANGE_PARAM].value;
+	++_modulationStep;
+	if (_modulationStep >= modulationSteps) {
+		_modulationStep = 0;
+		bool needResetChannels = false;
 
-	const float maxTime = 0.5;
-	float smooth = params[SMOOTH_PARAM].value * maxTime;
-	smooth /= size() / (_overlap * engineGetSampleRate());
-	int smoothN = std::max(1, (int)roundf(smooth));
-	if (_averageN != smoothN) {
-		_averageN = smoothN;
-		resetChannels();
+		float range = params[RANGE2_PARAM].value;
+		_rangeMinHz = 0.0f;
+		_rangeMaxHz = 0.5f * engineGetSampleRate();
+		if (range < 0.0f) {
+			range *= 0.9f;
+			_rangeMaxHz *= 1.0f + range;
+		}
+		else if (range > 0.0f) {
+			range *= range;
+			range *= 0.8f;
+			_rangeMinHz = range * _rangeMaxHz;
+		}
+
+		const float maxTime = 0.5;
+		float smooth = params[SMOOTH_PARAM].value * maxTime;
+		smooth /= size() / (_overlap * engineGetSampleRate());
+		int smoothN = std::max(1, (int)roundf(smooth));
+		if (_averageN != smoothN) {
+			_averageN = smoothN;
+			needResetChannels = true;
+		}
+
+		Quality quality = QUALITY_GOOD;
+		if (params[QUALITY_PARAM].value > 2.5) {
+			quality = QUALITY_ULTRA;
+		}
+		else if (params[QUALITY_PARAM].value > 1.5) {
+			quality = QUALITY_HIGH;
+		}
+		if (_quality != quality) {
+			_quality = quality;
+			needResetChannels = true;
+		}
+
+		Window window = WINDOW_KAISER;
+		if (params[WINDOW_PARAM].value > 2.5) {
+			window = WINDOW_NONE;
+		}
+		else if (params[WINDOW_PARAM].value > 1.5) {
+			window = WINDOW_HAMMING;
+		}
+		if (_window != window) {
+			_window = window;
+			needResetChannels = true;
+		}
+
+		if (needResetChannels) {
+			resetChannels();
+		}
+
+		_running = true; // params[POWER_PARAM].value == 1.0;
 	}
 
-	Quality quality = params[QUALITY_PARAM].value > 1.5 ? QUALITY_HIGH : QUALITY_GOOD;
-	if (_quality != quality) {
-		_quality = quality;
-		resetChannels();
-	}
-
-	_running = params[POWER_PARAM].value == 1.0;
 	stepChannel(_channelA, _running, inputs[SIGNALA_INPUT], outputs[SIGNALA_OUTPUT]);
 	stepChannel(_channelB, _running, inputs[SIGNALB_INPUT], outputs[SIGNALB_OUTPUT]);
 	stepChannel(_channelC, _running, inputs[SIGNALC_INPUT], outputs[SIGNALC_OUTPUT]);
 	stepChannel(_channelD, _running, inputs[SIGNALD_INPUT], outputs[SIGNALD_OUTPUT]);
 
-	lights[QUALITY_HIGH_LIGHT].value = _running && quality == QUALITY_HIGH;
-	lights[QUALITY_GOOD_LIGHT].value = _running && quality == QUALITY_GOOD;
-	lights[POWER_ON_LIGHT].value = _running;
+	lights[QUALITY_ULTRA_LIGHT].value = _running && _quality == QUALITY_ULTRA;
+	lights[QUALITY_HIGH_LIGHT].value = _running && _quality == QUALITY_HIGH;
+	lights[QUALITY_GOOD_LIGHT].value = _running && _quality == QUALITY_GOOD;
+	lights[WINDOW_NONE_LIGHT].value = _running && _window == WINDOW_NONE;
+	lights[WINDOW_HAMMING_LIGHT].value = _running && _window == WINDOW_HAMMING;
+	lights[WINDOW_KAISER_LIGHT].value = _running && _window == WINDOW_KAISER;
 }
 
 void Analyzer::stepChannel(ChannelAnalyzer*& channelPointer, bool running, Input& input, Output& output) {
@@ -145,7 +211,7 @@ void Analyzer::stepChannel(ChannelAnalyzer*& channelPointer, bool running, Input
 			channelPointer = new ChannelAnalyzer(
 				size(),
 				_overlap,
-				SpectrumAnalyzer::WINDOW_HAMMING,
+				window(),
 				engineGetSampleRate(),
 				_averageN,
 				_binAverageN
@@ -176,7 +242,7 @@ struct AnalyzerDisplay : TransparentWidget {
 	const float _displayDB = 80.0;
 	const float _positiveDisplayDB = 20.0;
 
-	const float xAxisLogFactor = 1 / 3.321; // magic number.
+	const float baseXAxisLogFactor = 1 / 3.321; // magic number.
 
 	const NVGcolor _axisColor = nvgRGBA(0xff, 0xff, 0xff, 0x70);
 	const NVGcolor _textColor = nvgRGBA(0xff, 0xff, 0xff, 0xc0);
@@ -189,6 +255,7 @@ struct AnalyzerDisplay : TransparentWidget {
 	const Vec _size;
 	const Vec _graphSize;
 	std::shared_ptr<Font> _font;
+	float _xAxisLogFactor = baseXAxisLogFactor;
 
 	AnalyzerDisplay(
 		Analyzer* module,
@@ -206,7 +273,7 @@ struct AnalyzerDisplay : TransparentWidget {
 	void drawHeader(NVGcontext* vg);
 	void drawYAxis(NVGcontext* vg, float strokeWidth);
 	void drawXAxis(NVGcontext* vg, float strokeWidth);
-	void drawXAxisLine(NVGcontext* vg, float hz, float maxHz);
+	void drawXAxisLine(NVGcontext* vg, float hz);
 	void drawGraph(NVGcontext* vg, const float* bins, int binsN, NVGcolor color, float strokeWidth);
 	void drawText(NVGcontext* vg, const char* s, float x, float y, float rotation = 0.0, const NVGcolor* color = NULL);
 	int binValueToHeight(float value);
@@ -216,6 +283,10 @@ void AnalyzerDisplay::draw(NVGcontext* vg) {
 	drawBackground(vg);
 	if (_module->_running) {
 		float strokeWidth = std::max(1.0f, 3 - gRackScene->zoomWidget->zoom);
+		// _xAxisLogFactor = (_module->_rangeMaxHz - _module->_rangeMinHz) / (0.5f * engineGetSampleRate());
+		// _xAxisLogFactor *= 1.0f - baseXAxisLogFactor;
+		// _xAxisLogFactor = 1.0f - _xAxisLogFactor;
+
 		nvgSave(vg);
 		nvgScissor(vg, _insetAround, _insetAround, _size.x - _insetAround, _size.y - _insetAround);
 		drawHeader(vg);
@@ -360,55 +431,79 @@ void AnalyzerDisplay::drawXAxis(NVGcontext* vg, float strokeWidth) {
 	nvgStrokeColor(vg, _axisColor);
 	nvgStrokeWidth(vg, strokeWidth);
 
-	const float maxHz = _module->_range * (engineGetSampleRate() / 2.0);
-	float hz = 100.0;
-	while (hz < maxHz && hz < 1001.0) {
-		drawXAxisLine(vg, hz, maxHz);
+	float hz = 100.0f;
+	while (hz < _module->_rangeMaxHz && hz < 1001.0) {
+		if (hz >= _module->_rangeMinHz) {
+			drawXAxisLine(vg, hz);
+		}
 		hz += 100.0;
 	}
 	hz = 2000.0;
-	while (hz < maxHz && hz < 10001.0) {
-		drawXAxisLine(vg, hz, maxHz);
+	while (hz < _module->_rangeMaxHz && hz < 10001.0) {
+		if (hz >= _module->_rangeMinHz) {
+			drawXAxisLine(vg, hz);
+		}
 		hz += 1000.0;
 	}
 	hz = 20000.0;
-	while (hz < maxHz && hz < 100001.0) {
-		drawXAxisLine(vg, hz, maxHz);
+	while (hz < _module->_rangeMaxHz && hz < 100001.0) {
+		if (hz >= _module->_rangeMinHz) {
+			drawXAxisLine(vg, hz);
+		}
 		hz += 10000.0;
 	}
 
 	drawText(vg, "Hz", _insetLeft, _size.y - 2);
-	{
-		float x = 100.0 / maxHz;
-		x = powf(x, xAxisLogFactor);
+	if (_module->_rangeMinHz <= 100.0f) {
+		float x = (100.0 - _module->_rangeMinHz) / (_module->_rangeMaxHz - _module->_rangeMinHz);
+		x = powf(x, _xAxisLogFactor);
 		if (x < 1.0) {
 			x *= _graphSize.x;
 			drawText(vg, "100", _insetLeft + x - 8, _size.y - 2);
 		}
 	}
-	{
-		float x = 1000.0 / maxHz;
-		x = powf(x, xAxisLogFactor);
+	if (_module->_rangeMinHz <= 1000.0f) {
+		float x = (1000.0 - _module->_rangeMinHz) / (_module->_rangeMaxHz - _module->_rangeMinHz);
+		x = powf(x, _xAxisLogFactor);
 		if (x < 1.0) {
 			x *= _graphSize.x;
 			drawText(vg, "1k", _insetLeft + x - 4, _size.y - 2);
 		}
 	}
-	{
-		float x = 10000.0 / maxHz;
-		x = powf(x, xAxisLogFactor);
+	if (_module->_rangeMinHz <= 10000.0f) {
+		float x = (10000.0 - _module->_rangeMinHz) / (_module->_rangeMaxHz - _module->_rangeMinHz);
+		x = powf(x, _xAxisLogFactor);
 		if (x < 1.0) {
 			x *= _graphSize.x;
-			drawText(vg, "10k", _insetLeft + x - 7, _size.y - 2);
+			drawText(vg, "10k", _insetLeft + x - 4, _size.y - 2);
+		}
+	}
+	if (_module->_rangeMinHz > 1000.0f) {
+		hz = 20000.0f;
+		float lastX = 0.0f;
+		while (hz < _module->_rangeMaxHz) {
+			if (_module->_rangeMinHz <= hz) {
+				float x = (hz - _module->_rangeMinHz) / (_module->_rangeMaxHz - _module->_rangeMinHz);
+				x = powf(x, _xAxisLogFactor);
+				if (x > lastX + 0.075f && x < 1.0f) {
+					lastX = x;
+					x *= _graphSize.x;
+					const int sLen = 32;
+					char s[sLen];
+					snprintf(s, sLen, "%dk", (int)(hz / 1000.0f));
+					drawText(vg, s, _insetLeft + x - 7, _size.y - 2);
+				}
+			}
+			hz += 10000.0f;
 		}
 	}
 
 	nvgRestore(vg);
 }
 
-void AnalyzerDisplay::drawXAxisLine(NVGcontext* vg, float hz, float maxHz) {
-	float x = hz / maxHz;
-	x = powf(x, xAxisLogFactor);
+void AnalyzerDisplay::drawXAxisLine(NVGcontext* vg, float hz) {
+	float x = (hz - _module->_rangeMinHz) / (_module->_rangeMaxHz - _module->_rangeMinHz);
+	x = powf(x, _xAxisLogFactor);
 	if (x < 1.0) {
 		x *= _graphSize.x;
 		nvgBeginPath(vg);
@@ -419,19 +514,22 @@ void AnalyzerDisplay::drawXAxisLine(NVGcontext* vg, float hz, float maxHz) {
 }
 
 void AnalyzerDisplay::drawGraph(NVGcontext* vg, const float* bins, int binsN, NVGcolor color, float strokeWidth) {
-	const int pointsN = roundf(_module->_range*(_module->size()/2));
+	float range = (_module->_rangeMaxHz - _module->_rangeMinHz) / (0.5f * engineGetSampleRate());
+	int pointsN = roundf(range * (_module->size() / 2));
+	range = _module->_rangeMinHz / (0.5f * engineGetSampleRate());
+	int pointsOffset = roundf(range * (_module->size() / 2));
 	nvgSave(vg);
 	nvgScissor(vg, _insetLeft, _insetTop, _graphSize.x, _graphSize.y);
 	nvgStrokeColor(vg, color);
 	nvgStrokeWidth(vg, strokeWidth);
 	nvgBeginPath(vg);
 	for (int i = 0; i < pointsN; ++i) {
-		int height = binValueToHeight(bins[i]);
+		int height = binValueToHeight(bins[pointsOffset + i]);
 		if (i == 0) {
 			nvgMoveTo(vg, _insetLeft, _insetTop + (_graphSize.y - height));
 		}
 		else {
-			float x = _graphSize.x * powf(i / (float)pointsN, xAxisLogFactor);
+			float x = _graphSize.x * powf(i / (float)pointsN, _xAxisLogFactor);
 			nvgLineTo(vg, _insetLeft + x, _insetTop + (_graphSize.y - height));
 		}
 	}
@@ -466,13 +564,6 @@ int AnalyzerDisplay::binValueToHeight(float value) {
 }
 
 
-struct OneTenKnob : Knob38 {
-	OneTenKnob() : Knob38() {
-		minAngle = -0.664*M_PI;
-	}
-};
-
-
 struct AnalyzerWidget : ModuleWidget {
 	static constexpr int hp = 20;
 
@@ -501,34 +592,33 @@ struct AnalyzerWidget : ModuleWidget {
 		addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 30, 365)));
 
 		// generated by svg_widgets.rb
-		auto rangeParamPosition = Vec(35.08, 271.08);
-		auto smoothParamPosition = Vec(109.08, 271.08);
-		auto qualityParamPosition = Vec(188.02, 300.02);
-		auto powerParamPosition = Vec(261.02, 300.02);
+		auto range2ParamPosition = Vec(30.08, 271.08);
+		auto smoothParamPosition = Vec(103.08, 271.08);
+		auto qualityParamPosition = Vec(179.02, 306.02);
+		auto windowParamPosition = Vec(250.02, 306.02);
 
 		auto signalaInputPosition = Vec(13.5, 323.0);
-		auto signalbInputPosition = Vec(86.5, 323.0);
-		auto signalcInputPosition = Vec(160.5, 323.0);
-		auto signaldInputPosition = Vec(233.5, 323.0);
+		auto signalbInputPosition = Vec(86.0, 323.0);
+		auto signalcInputPosition = Vec(158.5, 323.0);
+		auto signaldInputPosition = Vec(230.5, 323.0);
 
-		auto signalaOutputPosition = Vec(42.5, 323.0);
-		auto signalbOutputPosition = Vec(115.5, 323.0);
+		auto signalaOutputPosition = Vec(44.5, 323.0);
+		auto signalbOutputPosition = Vec(117.0, 323.0);
 		auto signalcOutputPosition = Vec(189.5, 323.0);
-		auto signaldOutputPosition = Vec(262.5, 323.0);
+		auto signaldOutputPosition = Vec(261.5, 323.0);
 
-		auto qualityHighLightPosition = Vec(179.0, 273.0);
-		auto qualityGoodLightPosition = Vec(179.0, 288.0);
-		auto powerOnLightPosition = Vec(252.0, 288.0);
+		auto qualityUltraLightPosition = Vec(170.0, 267.0);
+		auto qualityHighLightPosition = Vec(170.0, 281.0);
+		auto qualityGoodLightPosition = Vec(170.0, 295.0);
+		auto windowNoneLightPosition = Vec(241.0, 267.0);
+		auto windowHammingLightPosition = Vec(241.0, 281.0);
+		auto windowKaiserLightPosition = Vec(241.0, 295.0);
 		// end generated by svg_widgets.rb
 
-		addParam(ParamWidget::create<OneTenKnob>(rangeParamPosition, module, Analyzer::RANGE_PARAM, 0.1, 1.0, 0.5));
+		addParam(ParamWidget::create<Knob38>(range2ParamPosition, module, Analyzer::RANGE2_PARAM, -1.0, 1.0, 0.0));
 		addParam(ParamWidget::create<Knob38>(smoothParamPosition, module, Analyzer::SMOOTH_PARAM, 0.0, 1.0, 0.5));
-		addParam(ParamWidget::create<StatefulButton9>(qualityParamPosition, module, Analyzer::QUALITY_PARAM, 1.0, 2.0, 1.0));
-		{
-			auto w = ParamWidget::create<StatefulButton9>(powerParamPosition, module, Analyzer::POWER_PARAM, 0.0, 1.0, 1.0);
-			w->randomizable = false;
-			addParam(w);
-		}
+		addParam(ParamWidget::create<StatefulButton9>(qualityParamPosition, module, Analyzer::QUALITY_PARAM, 1.0, 3.0, 1.0));
+		addParam(ParamWidget::create<StatefulButton9>(windowParamPosition, module, Analyzer::WINDOW_PARAM, 1.0, 3.0, 1.0));
 
 		addInput(Port::create<Port24>(signalaInputPosition, Port::INPUT, module, Analyzer::SIGNALA_INPUT));
 		addInput(Port::create<Port24>(signalbInputPosition, Port::INPUT, module, Analyzer::SIGNALB_INPUT));
@@ -540,9 +630,12 @@ struct AnalyzerWidget : ModuleWidget {
 		addOutput(Port::create<Port24>(signalcOutputPosition, Port::OUTPUT, module, Analyzer::SIGNALC_OUTPUT));
 		addOutput(Port::create<Port24>(signaldOutputPosition, Port::OUTPUT, module, Analyzer::SIGNALD_OUTPUT));
 
+		addChild(ModuleLightWidget::create<SmallLight<GreenLight>>(qualityUltraLightPosition, module, Analyzer::QUALITY_ULTRA_LIGHT));
 		addChild(ModuleLightWidget::create<SmallLight<GreenLight>>(qualityHighLightPosition, module, Analyzer::QUALITY_HIGH_LIGHT));
 		addChild(ModuleLightWidget::create<SmallLight<GreenLight>>(qualityGoodLightPosition, module, Analyzer::QUALITY_GOOD_LIGHT));
-		addChild(ModuleLightWidget::create<SmallLight<GreenLight>>(powerOnLightPosition, module, Analyzer::POWER_ON_LIGHT));
+		addChild(ModuleLightWidget::create<SmallLight<GreenLight>>(windowNoneLightPosition, module, Analyzer::WINDOW_NONE_LIGHT));
+		addChild(ModuleLightWidget::create<SmallLight<GreenLight>>(windowHammingLightPosition, module, Analyzer::WINDOW_HAMMING_LIGHT));
+		addChild(ModuleLightWidget::create<SmallLight<GreenLight>>(windowKaiserLightPosition, module, Analyzer::WINDOW_KAISER_LIGHT));
 	}
 };
 

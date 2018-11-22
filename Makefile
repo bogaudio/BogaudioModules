@@ -50,7 +50,7 @@ plot: $(PLOT_OBJECTS)
 plotrun: plot
 	./plot
 plotrungp: plot
-	./plot > plot.tmp && gnuplot -e "set yrange [-80:80]; plot 'plot.tmp' using 1:2 with lines"
+	./plot > plot.tmp && gnuplot -e "set yrange [0:1.1]; plot 'plot.tmp' using 1:2 with lines"
 plot_clean:
 	rm -f plot $(PLOT_OBJECTS)
 

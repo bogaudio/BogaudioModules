@@ -13,10 +13,12 @@ struct ChannelAnalyzer;
 
 struct Analyzer : Module {
 	enum ParamsIds {
-		RANGE_PARAM,
+		RANGE_PARAM, // no longer used
 		SMOOTH_PARAM,
 		QUALITY_PARAM,
-		POWER_PARAM,
+		POWER_PARAM,  // no longer used
+		WINDOW_PARAM,
+		RANGE2_PARAM,
 		NUM_PARAMS
 	};
 
@@ -40,23 +42,38 @@ struct Analyzer : Module {
 		QUALITY_HIGH_LIGHT,
 		QUALITY_GOOD_LIGHT,
 		POWER_ON_LIGHT,
+		QUALITY_ULTRA_LIGHT,
+		WINDOW_NONE_LIGHT,
+		WINDOW_HAMMING_LIGHT,
+		WINDOW_KAISER_LIGHT,
 		NUM_LIGHTS
 	};
 
 	enum Quality {
+		QUALITY_ULTRA,
 		QUALITY_HIGH,
 		QUALITY_GOOD
 	};
 
+	enum Window {
+		WINDOW_NONE,
+		WINDOW_HAMMING,
+		WINDOW_KAISER
+	};
+
+	const int modulationSteps = 100;
+	int _modulationStep = 0;
 	bool _running = false;
 	int _averageN;
 	ChannelAnalyzer* _channelA = NULL;
 	ChannelAnalyzer* _channelB = NULL;
 	ChannelAnalyzer* _channelC = NULL;
 	ChannelAnalyzer* _channelD = NULL;
-	float _range = 0.0;
+	float _rangeMinHz = 0.0;
+	float _rangeMaxHz = 0.0;
 	float _smooth = 0.0;
 	Quality _quality = QUALITY_GOOD;
+	Window _window = WINDOW_KAISER;
 	const SpectrumAnalyzer::Overlap _overlap = SpectrumAnalyzer::OVERLAP_2;
 	const int _binAverageN = 2;
 
@@ -71,6 +88,7 @@ struct Analyzer : Module {
 	void onSampleRateChange() override;
 	void resetChannels();
 	SpectrumAnalyzer::Size size();
+	SpectrumAnalyzer::WindowType window();
 	void step() override;
 	void stepChannel(ChannelAnalyzer*& channelPointer, bool running, Input& input, Output& output);
 };
