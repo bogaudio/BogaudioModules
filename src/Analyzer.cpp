@@ -180,15 +180,30 @@ void Analyzer::resetChannels() {
 }
 
 SpectrumAnalyzer::Size Analyzer::size() {
-	switch (_quality) {
-		case QUALITY_ULTRA: {
-			return SpectrumAnalyzer::SIZE_16384;
+	if (engineGetSampleRate() < 96000.0f) {
+		switch (_quality) {
+			case QUALITY_ULTRA: {
+				return SpectrumAnalyzer::SIZE_8192;
+			}
+			case QUALITY_HIGH: {
+				return SpectrumAnalyzer::SIZE_4096;
+			}
+			default: {
+				return SpectrumAnalyzer::SIZE_1024;
+			}
 		}
-		case QUALITY_HIGH: {
-			return SpectrumAnalyzer::SIZE_4096;
-		}
-		default: {
-			return SpectrumAnalyzer::SIZE_1024;
+	}
+	else {
+		switch (_quality) {
+			case QUALITY_ULTRA: {
+				return SpectrumAnalyzer::SIZE_16384;
+			}
+			case QUALITY_HIGH: {
+				return SpectrumAnalyzer::SIZE_8192;
+			}
+			default: {
+				return SpectrumAnalyzer::SIZE_2048;
+			}
 		}
 	}
 }

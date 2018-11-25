@@ -37,6 +37,21 @@ void FFT4096::do_fft(float* out, float* in) {
 }
 
 
+typedef ffft::FFTRealFixLen<13> FIXED_FFT8192;
+
+FFT8192::FFT8192() {
+	_fft = new FIXED_FFT8192();
+}
+
+FFT8192::~FFT8192() {
+	delete (FIXED_FFT8192*)_fft;
+}
+
+void FFT8192::do_fft(float* out, float* in) {
+	((FIXED_FFT8192*)_fft)->do_fft(out, in);
+}
+
+
 typedef ffft::FFTRealFixLen<14> FIXED_FFT16384;
 
 FFT16384::FFT16384() {
