@@ -1,11 +1,27 @@
 
+#include <thread>
+#include <mutex>
+#include <condition_variable>
+
 #include "Analyzer.hpp"
 #include "dsp/signal.hpp"
 
-struct bogaudio::ChannelAnalyzer : SpectrumAnalyzer {
+struct bogaudio::ChannelAnalyzer  {
+	SpectrumAnalyzer _analyzer;
 	int _binsN;
 	float* _bins;
 	AveragingBuffer<float>* _averagedBins;
+	const int _stepBufN;
+	float* _stepBuf;
+	int _stepBufI = 0;
+	const int _workerBufN;
+	float* _workerBuf;
+	int _workerBufWriteI = 0;
+	int _workerBufReadI = 0;
+	bool _workerStop = false;
+	std::mutex _workerMutex;
+	std::condition_variable _workerCV;
+	std::thread _worker;
 
 	ChannelAnalyzer(
 		SpectrumAnalyzer::Size size,
@@ -15,15 +31,28 @@ struct bogaudio::ChannelAnalyzer : SpectrumAnalyzer {
 		int averageN,
 		int binSize
 	)
-	: SpectrumAnalyzer(size, overlap, windowType, sampleRate)
+	: _analyzer(size, overlap, windowType, sampleRate, false)
 	, _binsN(size / binSize)
 	, _bins(averageN == 1 ? new float[_binsN] {} : NULL)
 	, _averagedBins(averageN == 1 ? NULL : new AveragingBuffer<float>(_binsN, averageN))
+	, _stepBufN(size / overlap)
+	, _stepBuf(new float[_stepBufN] {})
+	, _workerBufN(size)
+	, _workerBuf(new float[_workerBufN] {})
+	, _worker(&ChannelAnalyzer::work, this)
 	{
 		assert(averageN >= 1);
 		assert(binSize >= 1);
 	}
 	virtual ~ChannelAnalyzer() {
+		{
+			std::lock_guard<std::mutex> lock(_workerMutex);
+			_workerStop = true;
+		}
+		_workerCV.notify_one();
+		_worker.join();
+		delete[] _workerBuf;
+		delete[] _stepBuf;
 		if (_bins) {
 			delete[] _bins;
 		}
@@ -39,24 +68,10 @@ struct bogaudio::ChannelAnalyzer : SpectrumAnalyzer {
 		return _averagedBins->getAverages();
 	}
 
-	bool step(float sample) override;
 	float getPeak();
+	void step(float sample);
+	void work();
 };
-
-bool ChannelAnalyzer::step(float sample) {
-	if (SpectrumAnalyzer::step(sample)) {
-		if (_bins) {
-			getMagnitudes(_bins, _binsN);
-		}
-		else {
-			float* frame = _averagedBins->getInputFrame();
-			getMagnitudes(frame, _binsN);
-			_averagedBins->commitInputFrame();
-		}
-		return true;
-	}
-	return false;
-}
 
 float ChannelAnalyzer::getPeak() {
 	float max = 0.0;
@@ -70,9 +85,67 @@ float ChannelAnalyzer::getPeak() {
 		}
 		sum += bins[bin];
 	}
-	const int bandsPerBin = _size / _binsN;
-	const float fWidth = (_sampleRate / 2.0f) / (float)(_size / bandsPerBin);
+	const int bandsPerBin = _analyzer._size / _binsN;
+	const float fWidth = (_analyzer._sampleRate / 2.0f) / (float)(_analyzer._size / bandsPerBin);
 	return (maxBin + 0.5f)*fWidth;
+}
+
+void ChannelAnalyzer::step(float sample) {
+	_stepBuf[_stepBufI++] = sample;
+	if (_stepBufI >= _stepBufN) {
+		_stepBufI = 0;
+
+		{
+			std::lock_guard<std::mutex> lock(_workerMutex);
+			for (int i = 0; i < _stepBufN; ++i) {
+				_workerBuf[_workerBufWriteI] = _stepBuf[i];
+				_workerBufWriteI = (_workerBufWriteI + 1) % _workerBufN;
+				if (_workerBufWriteI == _workerBufReadI) {
+					_workerBufWriteI = _workerBufReadI = 0;
+					break;
+				}
+			}
+		}
+		_workerCV.notify_one();
+	}
+}
+
+void ChannelAnalyzer::work() {
+	bool process = false;
+	MAIN: while (true) {
+		if (_workerStop) {
+			return;
+		}
+
+		if (process) {
+			process = false;
+
+			_analyzer.process();
+			_analyzer.postProcess();
+			if (_bins) {
+				_analyzer.getMagnitudes(_bins, _binsN);
+			}
+			else {
+				float* frame = _averagedBins->getInputFrame();
+				_analyzer.getMagnitudes(frame, _binsN);
+				_averagedBins->commitInputFrame();
+			}
+		}
+
+		while (_workerBufReadI != _workerBufWriteI) {
+			float sample = _workerBuf[_workerBufReadI];
+			_workerBufReadI = (_workerBufReadI + 1) % _workerBufN;
+			if (_analyzer.step(sample)) {
+				process = true;
+				goto MAIN;
+			}
+		}
+
+		std::unique_lock<std::mutex> lock(_workerMutex);
+		while (!(_workerBufReadI != _workerBufWriteI || _workerStop)) {
+			_workerCV.wait(lock);
+		}
+	}
 }
 
 
@@ -87,6 +160,7 @@ void Analyzer::onSampleRateChange() {
 }
 
 void Analyzer::resetChannels() {
+	std::lock_guard<std::mutex> lock(_channelsMutex);
 	if (_channelA) {
 		delete _channelA;
 		_channelA = NULL;
@@ -208,6 +282,7 @@ void Analyzer::step() {
 void Analyzer::stepChannel(ChannelAnalyzer*& channelPointer, bool running, Input& input, Output& output) {
 	if (running && input.active) {
 		if (!channelPointer) {
+			std::lock_guard<std::mutex> lock(_channelsMutex);
 			channelPointer = new ChannelAnalyzer(
 				size(),
 				_overlap,
@@ -217,17 +292,13 @@ void Analyzer::stepChannel(ChannelAnalyzer*& channelPointer, bool running, Input
 				_binAverageN
 			);
 		}
-
 		channelPointer->step(input.value);
 		output.value = input.value;
 	}
-	else {
-		if (channelPointer) {
-			delete channelPointer;
-			channelPointer = NULL;
-		}
-
-		output.value = input.value;
+	else if (channelPointer) {
+		std::lock_guard<std::mutex> lock(_channelsMutex);
+		delete channelPointer;
+		channelPointer = NULL;
 	}
 }
 
@@ -280,6 +351,8 @@ struct AnalyzerDisplay : TransparentWidget {
 };
 
 void AnalyzerDisplay::draw(NVGcontext* vg) {
+	std::lock_guard<std::mutex> lock(_module->_channelsMutex);
+
 	drawBackground(vg);
 	if (_module->_running) {
 		float strokeWidth = std::max(1.0f, 3 - gRackScene->zoomWidget->zoom);

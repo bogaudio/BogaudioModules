@@ -147,9 +147,10 @@ struct SpectrumAnalyzer : OverlappingBuffer<float> {
 		Size size,
 		Overlap overlap,
 		WindowType windowType,
-		float sampleRate
+		float sampleRate,
+		bool autoProcess = true
 	)
-	: OverlappingBuffer(size, overlap)
+	: OverlappingBuffer(size, overlap, autoProcess)
 	, _sampleRate(sampleRate)
 	, _fft(NULL)
 	, _fft1024(NULL)
@@ -223,7 +224,7 @@ struct SpectrumAnalyzer : OverlappingBuffer<float> {
 		delete[] _fftOut;
 	}
 
-	void process(float* samples) override {
+	void processBuffer(float* samples) override {
 		float* input = samples;
 		if (_window) {
 			_window->apply(samples, _windowOut);

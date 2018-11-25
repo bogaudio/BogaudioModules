@@ -1,5 +1,7 @@
 #pragma once
 
+#include <mutex>
+
 #include "bogaudio.hpp"
 #include "dsp/analyzer.hpp"
 
@@ -76,6 +78,7 @@ struct Analyzer : Module {
 	Window _window = WINDOW_KAISER;
 	const SpectrumAnalyzer::Overlap _overlap = SpectrumAnalyzer::OVERLAP_2;
 	const int _binAverageN = 2;
+	std::mutex _channelsMutex;
 
 	Analyzer() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 		onReset();
