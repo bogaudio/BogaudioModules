@@ -6,6 +6,7 @@
 #include "Additator.hpp"
 #include "AMRM.hpp"
 #include "Analyzer.hpp"
+#include "AnalyzerXL.hpp"
 #include "Blank3.hpp"
 #include "Blank6.hpp"
 #include "Bool.hpp"
@@ -86,9 +87,9 @@ void init(rack::Plugin *p) {
 	p->addModel(modelMix4);
 	p->addModel(modelMix8);
 	p->addModel(modelVCM);
-	#ifdef EXPERIMENTAL
-		p->addModel(modelMatrix88);
-	#endif
+#ifdef EXPERIMENTAL
+	p->addModel(modelMatrix88);
+#endif
 	p->addModel(modelUMix);
 	p->addModel(modelMute8);
 	p->addModel(modelPan);
@@ -103,6 +104,9 @@ void init(rack::Plugin *p) {
 	p->addModel(modelNsgt);
 
 	p->addModel(modelAnalyzer);
+#ifdef EXPERIMENTAL
+	p->addModel(modelAnalyzerXL);
+#endif
 	p->addModel(modelVU);
 
 	p->addModel(modelDetune);

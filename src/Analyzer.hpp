@@ -1,19 +1,13 @@
 #pragma once
 
-#include <mutex>
-
 #include "bogaudio.hpp"
-#include "dsp/analyzer.hpp"
-
-using namespace bogaudio::dsp;
+#include "analyzer_base.hpp"
 
 extern Model* modelAnalyzer;
 
 namespace bogaudio {
 
-struct ChannelAnalyzer;
-
-struct Analyzer : Module {
+struct Analyzer : AnalyzerBase {
 	enum ParamsIds {
 		RANGE_PARAM, // no longer used
 		SMOOTH_PARAM,
@@ -51,36 +45,10 @@ struct Analyzer : Module {
 		NUM_LIGHTS
 	};
 
-	enum Quality {
-		QUALITY_ULTRA,
-		QUALITY_HIGH,
-		QUALITY_GOOD
-	};
-
-	enum Window {
-		WINDOW_NONE,
-		WINDOW_HAMMING,
-		WINDOW_KAISER
-	};
-
 	const int modulationSteps = 100;
 	int _modulationStep = 0;
-	bool _running = false;
-	int _averageN;
-	ChannelAnalyzer* _channelA = NULL;
-	ChannelAnalyzer* _channelB = NULL;
-	ChannelAnalyzer* _channelC = NULL;
-	ChannelAnalyzer* _channelD = NULL;
-	float _rangeMinHz = 0.0;
-	float _rangeMaxHz = 0.0;
-	float _smooth = 0.0;
-	Quality _quality = QUALITY_GOOD;
-	Window _window = WINDOW_KAISER;
-	const SpectrumAnalyzer::Overlap _overlap = SpectrumAnalyzer::OVERLAP_2;
-	const int _binAverageN = 2;
-	std::mutex _channelsMutex;
 
-	Analyzer() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	Analyzer() : AnalyzerBase(4, NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 		onReset();
 	}
 	virtual ~Analyzer() {
@@ -89,11 +57,7 @@ struct Analyzer : Module {
 
 	void onReset() override;
 	void onSampleRateChange() override;
-	void resetChannels();
-	SpectrumAnalyzer::Size size();
-	SpectrumAnalyzer::WindowType window();
 	void step() override;
-	void stepChannel(ChannelAnalyzer*& channelPointer, bool running, Input& input, Output& output);
 };
 
 } // namespace bogaudio

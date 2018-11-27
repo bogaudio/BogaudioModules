@@ -110,7 +110,7 @@ struct UMixWidget : ModuleWidget {
 	}
 
 	void appendContextMenu(Menu* menu) override {
-	  UMix* umix = dynamic_cast<UMix*>(module);
+		UMix* umix = dynamic_cast<UMix*>(module);
 		assert(umix);
 		menu->addChild(new MenuLabel());
 		menu->addChild(new AverageMenuItem(umix, "Average"));
