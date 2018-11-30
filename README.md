@@ -17,6 +17,8 @@ Modules for [VCV Rack](https://github.com/VCVRack/Rack), an open-source Eurorack
 
 ![modules screenshot](./doc/www/modules3.png)
 
+![modules screenshot](./doc/www/modules4.png)
+
 
 ## Builds/Releases
 
@@ -209,6 +211,14 @@ A 3HP unity mixer, usable with CV (e.g. combining triggers) or audio.  Up to 8 i
 
 The context (right-click) menu has an option to average, rather than sum, the inputs.
 
+#### MATRIX88
+
+An 8x8 channel matrix mixer.  Each input can be sent with an independent level to each of the eight output mixes.
+
+*Note that the matri knobs are attenuvertors, and default to zero.*  That means there will be no output, regardless of the inputs, until some knobs are changed to non-zero values.
+
+Saturation (soft clipping) is applied to each output at +/-12 volts; the LEVEL knob allows attenuation of the mix before the saturation is applied.
+
 #### MUTE8
 
 MUTE8 provides 8 independent manual or CV-controlled mutes. Each channel is muted if its button is toggled on or if there is a positive voltage at its CV input.  Otherwise the input is passed to the output.
@@ -309,6 +319,10 @@ Features:
   - Off button: turn the unit off to save some CPU without unpatching.
   - Each channel has a THRU output, which passes the corresponding input through unchanged.
 
+#### ANALYZER-XL
+
+An eight-channel, 42HP version of ANALYZER, with edge-to-edge-screen type of design.  Options corresponding to ANALYZER's panel controls are available on the context (right-click) menu.
+
 #### VU
 
 A stereo signal level visualizer/meter.  The L channel is sent to both displays if if nothing is patched to R.  Inputs to L and R are copied to the L and R outputs.
@@ -336,7 +350,7 @@ A tuner that outputs a selectable (Western, chromatic) pitch as CV (1v/octave, f
 
 ### <a name="utilities"></a> Utilities
 
-Miscellaneous utilities.
+Various utilities.
 
 ![Utilities screenshot](doc/www/utilities.png)
 
@@ -393,6 +407,14 @@ By default, the output is capped at +/-12 volts (this is a standard in Rack).  A
 
 A dual sample-and-hold.  Sampling may be triggered by CV or button press.  If nothing is connected to an IN port, sampling for that channel is from an internal white noise source (range 0-10).
 
+#### SLEW
+
+A slew limiter - when the input changes rapidly, the output changes less rapidly, lagging the input.
+
+The rising and falling slew rates and shapes are set independently.  The RISE and FALL time knobs are calibrated to set the time the output would need to catch up to a 10V change in the input.
+
+The RISE and FALL shape knobs affect the movement of the output as it catches up to the input (the shape it would draw on a scope). The shapes vary between log, linear and exponential curves.
+
 #### SUMS
 
 An arithmetic logic utility.  The top section outputs the sum, difference, maximum and minimum of its input signals (unpatched inputs send a 0-volt signal into each computation).  The lower section negates (reverses the sign of) its input.
@@ -405,6 +427,17 @@ A signal-routing module with two through channels.  If the button is held or the
 
 If LTCH (latch) mode is enabled, a button click or trigger pulse at GATE will toggle the output to HIGH; a second click or trigger resets it to LOW.
 
+### <a name="utilities"></a> Miscellaneous
+
+![Miscellaneous screenshot](doc/www/misc.png)
+
+#### BLANK3
+
+A 3HP blank panel.
+
+#### BLANK6
+
+A 6HP blank panel.
 
 ## Other Notes
 
