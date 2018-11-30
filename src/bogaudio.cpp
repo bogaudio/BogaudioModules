@@ -87,8 +87,8 @@ void init(rack::Plugin *p) {
 	p->addModel(modelMix4);
 	p->addModel(modelMix8);
 	p->addModel(modelVCM);
-	p->addModel(modelMatrix88);
 	p->addModel(modelUMix);
+	p->addModel(modelMatrix88);
 	p->addModel(modelMute8);
 	p->addModel(modelPan);
 	p->addModel(modelXFade);

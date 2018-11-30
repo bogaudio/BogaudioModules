@@ -102,4 +102,4 @@ struct SlewWidget : ModuleWidget {
 	}
 };
 
-Model* modelSlew = createModel<Slew, SlewWidget>("Bogaudio-Slew", "Slew", "slew/lag/glide", SLEW_LIMITER_TAG);
+Model* modelSlew = createModel<Slew, SlewWidget>("Bogaudio-Slew", "Slew", "slew / lag / glide", SLEW_LIMITER_TAG);
