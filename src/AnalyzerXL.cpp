@@ -226,9 +226,9 @@ struct AnalyzerXLWidget : ModuleWidget {
 		}
 
 		{
-			auto inset = Vec(30, 0);
-			auto size = Vec(box.size.x - inset.x, 380);
-			auto display = new AnalyzerDisplay(module, size);
+			auto inset = Vec(30, 1);
+			auto size = Vec(box.size.x - inset.x - 1, 378);
+			auto display = new AnalyzerDisplay(module, size, false);
 			display->box.pos = inset;
 			display->box.size = size;
 			addChild(display);
@@ -260,7 +260,6 @@ struct AnalyzerXLWidget : ModuleWidget {
 		assert(a);
 
 		menu->addChild(new MenuLabel());
-		menu->addChild(new RangeMenuItem(a, "Range: lower 10%", -0.90f));
 		menu->addChild(new RangeMenuItem(a, "Range: lower 25%", -0.75f));
 		menu->addChild(new RangeMenuItem(a, "Range: lower 50%", -0.5f));
 		menu->addChild(new RangeMenuItem(a, "Range: Full", 0.0f));

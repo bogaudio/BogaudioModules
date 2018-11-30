@@ -137,16 +137,19 @@ struct AnalyzerDisplay : TransparentWidget {
 	AnalyzerBase* _module;
 	const Vec _size;
 	const Vec _graphSize;
+	bool _drawInset;
 	std::shared_ptr<Font> _font;
 	float _xAxisLogFactor = baseXAxisLogFactor;
 
 	AnalyzerDisplay(
 		AnalyzerBase* module,
-		Vec size
+		Vec size,
+		bool drawInset
 	)
 	: _module(module)
 	, _size(size)
 	, _graphSize(_size.x - _insetLeft - _insetRight, _size.y - _insetTop - _insetBottom)
+	, _drawInset(drawInset)
 	, _font(Font::load(assetPlugin(plugin, "res/fonts/inconsolata.ttf")))
 	{
 	}

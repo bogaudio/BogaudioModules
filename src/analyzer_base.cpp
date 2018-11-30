@@ -205,9 +205,9 @@ void AnalyzerDisplay::draw(NVGcontext* vg) {
 
 	drawBackground(vg);
 	float strokeWidth = std::max(1.0f, 3 - gRackScene->zoomWidget->zoom);
-	// _xAxisLogFactor = (_module->_rangeMaxHz - _module->_rangeMinHz) / (0.5f * engineGetSampleRate());
-	// _xAxisLogFactor *= 1.0f - baseXAxisLogFactor;
-	// _xAxisLogFactor = 1.0f - _xAxisLogFactor;
+	_xAxisLogFactor = (_module->_rangeMaxHz - _module->_rangeMinHz) / _module->_rangeMaxHz;
+	_xAxisLogFactor *= 1.0f - baseXAxisLogFactor;
+	_xAxisLogFactor = 1.0f - _xAxisLogFactor;
 
 	nvgSave(vg);
 	nvgScissor(vg, _insetAround, _insetAround, _size.x - _insetAround, _size.y - _insetAround);
@@ -229,8 +229,10 @@ void AnalyzerDisplay::drawBackground(NVGcontext* vg) {
 	nvgRect(vg, 0, 0, _size.x, _size.y);
 	nvgFillColor(vg, nvgRGBA(0x00, 0x00, 0x00, 0xff));
 	nvgFill(vg);
-	nvgStrokeColor(vg, nvgRGBA(0xc0, 0xc0, 0xc0, 0xff));
-	nvgStroke(vg);
+    if (_drawInset) {
+        nvgStrokeColor(vg, nvgRGBA(0xc0, 0xc0, 0xc0, 0xff));
+        nvgStroke(vg);
+    }
 	nvgRestore(vg);
 }
 
@@ -247,13 +249,18 @@ void AnalyzerDisplay::drawHeader(NVGcontext* vg) {
 	drawText(vg, s, x, _insetTop + textY);
 	x += n * charPx - 0;
 
+    int spacing = 3;
+    if (_size.x > 300) {
+        x += 5;
+        spacing = 20;
+    }
 	for (int i = 0; i < _module->_core._nChannels; ++i) {
 		ChannelAnalyzer* channel = _module->_core._channels[i];
 		if (channel) {
             snprintf(s, sLen, "%c:%7.1f", 'A' + i, channel->getPeak());
             drawText(vg, s, x, _insetTop + textY, 0.0, &_channelColors[i % channelColorsN]);
 		}
-        x += 9 * charPx + 3;
+        x += 9 * charPx + spacing;
 	}
 
 	nvgRestore(vg);

@@ -82,7 +82,7 @@ struct AnalyzerWidget : ModuleWidget {
 		{
 			auto inset = Vec(10, 25);
 			auto size = Vec(box.size.x - 2*inset.x, 230);
-			auto display = new AnalyzerDisplay(module, size);
+			auto display = new AnalyzerDisplay(module, size, true);
 			display->box.pos = inset;
 			display->box.size = size;
 			addChild(display);

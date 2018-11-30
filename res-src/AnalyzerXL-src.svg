@@ -29,7 +29,7 @@
     </symbol>
   </defs>
 
-  <rect width="100%" height="100%" fill="#222" />
+  <rect width="100%" height="100%" fill="#000" />
   <g transform="translate(0 375) rotate(-90)">
     <text transform="translate(0 12.5)">ANALYZER-XL</text>
     <text transform="translate(0 25.5)">BOGAUDIO</text>
