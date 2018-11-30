@@ -87,9 +87,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelMix4);
 	p->addModel(modelMix8);
 	p->addModel(modelVCM);
-#ifdef EXPERIMENTAL
 	p->addModel(modelMatrix88);
-#endif
 	p->addModel(modelUMix);
 	p->addModel(modelMute8);
 	p->addModel(modelPan);
@@ -104,9 +102,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelNsgt);
 
 	p->addModel(modelAnalyzer);
-#ifdef EXPERIMENTAL
 	p->addModel(modelAnalyzerXL);
-#endif
 	p->addModel(modelVU);
 
 	p->addModel(modelDetune);
@@ -122,16 +118,12 @@ void init(rack::Plugin *p) {
 	p->addModel(modelNoise);
 	p->addModel(modelOffset);
 	p->addModel(modelSampleHold);
-#ifdef EXPERIMENTAL
 	p->addModel(modelSlew);
-#endif
 	p->addModel(modelSums);
 	p->addModel(modelSwitch);
 
-#ifdef EXPERIMENTAL
 	p->addModel(modelBlank3);
 	p->addModel(modelBlank6);
-#endif
 
 #ifdef EXPERIMENTAL
 	p->addModel(modelLag);
