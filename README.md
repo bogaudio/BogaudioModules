@@ -10,6 +10,7 @@ Modules for [VCV Rack](https://github.com/VCVRack/Rack), an open-source Eurorack
   - [Visualizers](#visualizers)
   - [Pitch CV Utilities](#pitch)
   - [Other Utilities](#utilities)
+  - [Miscellaneous](#misc)
 
 ![modules screenshot](./doc/www/modules1.png)
 
@@ -427,7 +428,7 @@ A signal-routing module with two through channels.  If the button is held or the
 
 If LTCH (latch) mode is enabled, a button click or trigger pulse at GATE will toggle the output to HIGH; a second click or trigger resets it to LOW.
 
-### <a name="utilities"></a> Miscellaneous
+### <a name="misc"></a> Miscellaneous
 
 ![Miscellaneous screenshot](doc/www/misc.png)
 
