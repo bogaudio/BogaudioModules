@@ -1,6 +1,8 @@
 
 #include "Analyzer.hpp"
 
+#define RANGE_DB_KEY "range_db"
+
 void Analyzer::onReset() {
 	_modulationStep = modulationSteps;
 	_core.resetChannels();
@@ -9,6 +11,19 @@ void Analyzer::onReset() {
 void Analyzer::onSampleRateChange() {
 	_modulationStep = modulationSteps;
 	_core.resetChannels();
+}
+
+json_t* Analyzer::toJson() {
+	json_t* root = json_object();
+	json_object_set_new(root, RANGE_DB_KEY, json_real(_rangeDb));
+	return root;
+}
+
+void Analyzer::fromJson(json_t* root) {
+	json_t* jrd = json_object_get(root, RANGE_DB_KEY);
+	if (jrd) {
+		_rangeDb = clamp(json_real_value(jrd), 80.0f, 140.0f);
+	}
 }
 
 void Analyzer::step() {
@@ -65,6 +80,26 @@ void Analyzer::step() {
 	lights[WINDOW_HAMMING_LIGHT].value = _core._window == AnalyzerCore::WINDOW_HAMMING;
 	lights[WINDOW_KAISER_LIGHT].value = _core._window == AnalyzerCore::WINDOW_KAISER;
 }
+
+struct RangeDbMenuItem : MenuItem {
+	Analyzer* _module;
+	const float _rangeDb;
+
+	RangeDbMenuItem(Analyzer* module, const char* label, float rangeDb)
+	: _module(module)
+	, _rangeDb(rangeDb)
+	{
+		this->text = label;
+	}
+
+	void onAction(EventAction &e) override {
+		_module->_rangeDb = _rangeDb;
+	}
+
+	void step() override {
+		rightText = _module->_rangeDb == _rangeDb ? "✔" : "";
+	}
+};
 
 struct AnalyzerWidget : ModuleWidget {
 	static constexpr int hp = 20;
@@ -138,6 +173,15 @@ struct AnalyzerWidget : ModuleWidget {
 		addChild(ModuleLightWidget::create<SmallLight<GreenLight>>(windowNoneLightPosition, module, Analyzer::WINDOW_NONE_LIGHT));
 		addChild(ModuleLightWidget::create<SmallLight<GreenLight>>(windowHammingLightPosition, module, Analyzer::WINDOW_HAMMING_LIGHT));
 		addChild(ModuleLightWidget::create<SmallLight<GreenLight>>(windowKaiserLightPosition, module, Analyzer::WINDOW_KAISER_LIGHT));
+	}
+
+	void appendContextMenu(Menu* menu) override {
+		Analyzer* a = dynamic_cast<Analyzer*>(module);
+		assert(a);
+
+		menu->addChild(new MenuLabel());
+		menu->addChild(new RangeDbMenuItem(a, "Amplitude range: to -60dB", 80.0f));
+		menu->addChild(new RangeDbMenuItem(a, "Amplitude range: to -120dB", 140.0f));
 	}
 };
 

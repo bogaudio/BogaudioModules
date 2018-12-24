@@ -281,14 +281,14 @@ void AnalyzerDisplay::drawYAxis(NVGcontext* vg, float strokeWidth) {
 	nvgStroke(vg);
 
 	nvgBeginPath(vg);
-	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_displayDB - _positiveDisplayDB + 12.0)/_displayDB);
+	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_module->_rangeDb - _positiveDisplayDB + 12.0)/_module->_rangeDb);
 	nvgMoveTo(vg, lineX, lineY);
 	nvgLineTo(vg, _size.x - _insetRight, lineY);
 	nvgStroke(vg);
 	drawText(vg, "12", textX, lineY + 5.0, textR);
 
 	nvgBeginPath(vg);
-	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_displayDB - _positiveDisplayDB)/_displayDB);
+	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_module->_rangeDb - _positiveDisplayDB)/_module->_rangeDb);
 	nvgMoveTo(vg, lineX, lineY);
 	nvgLineTo(vg, _size.x - _insetRight, lineY);
 	nvgStrokeWidth(vg, strokeWidth * 1.5);
@@ -297,25 +297,34 @@ void AnalyzerDisplay::drawYAxis(NVGcontext* vg, float strokeWidth) {
 	drawText(vg, "0", textX, lineY + 2.3, textR);
 
 	nvgBeginPath(vg);
-	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_displayDB - _positiveDisplayDB - 12.0)/_displayDB);
+	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_module->_rangeDb - _positiveDisplayDB - 12.0)/_module->_rangeDb);
 	nvgMoveTo(vg, lineX, lineY);
 	nvgLineTo(vg, _size.x - _insetRight, lineY);
 	nvgStroke(vg);
 	drawText(vg, "-12", textX, lineY + 10, textR);
 
 	nvgBeginPath(vg);
-	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_displayDB - _positiveDisplayDB - 24.0)/_displayDB);
+	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_module->_rangeDb - _positiveDisplayDB - 24.0)/_module->_rangeDb);
 	nvgMoveTo(vg, lineX, lineY);
 	nvgLineTo(vg, _size.x - _insetRight, lineY);
 	nvgStroke(vg);
 	drawText(vg, "-24", textX, lineY + 10, textR);
 
 	nvgBeginPath(vg);
-	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_displayDB - _positiveDisplayDB - 48.0)/_displayDB);
+	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_module->_rangeDb - _positiveDisplayDB - 48.0)/_module->_rangeDb);
 	nvgMoveTo(vg, lineX, lineY);
 	nvgLineTo(vg, _size.x - _insetRight, lineY);
 	nvgStroke(vg);
 	drawText(vg, "-48", textX, lineY + 10, textR);
+
+	if (_module->_rangeDb > 100.0) {
+		nvgBeginPath(vg);
+		lineY = _insetTop + (_graphSize.y - _graphSize.y*(_module->_rangeDb - _positiveDisplayDB - 96.0)/_module->_rangeDb);
+		nvgMoveTo(vg, lineX, lineY);
+		nvgLineTo(vg, _size.x - _insetRight, lineY);
+		nvgStroke(vg);
+		drawText(vg, "-96", textX, lineY + 10, textR);
+	}
 
 	nvgBeginPath(vg);
 	lineY = _insetTop + _graphSize.y + 1;
@@ -456,16 +465,13 @@ void AnalyzerDisplay::drawText(NVGcontext* vg, const char* s, float x, float y, 
 }
 
 int AnalyzerDisplay::binValueToHeight(float value) {
-	const float minDB = -(_displayDB - _positiveDisplayDB);
-	if (value < 0.00001f) {
-		return 0;
-	}
+	const float minDB = -(_module->_rangeDb - _positiveDisplayDB);
 	value /= 10.0f; // arbitrarily use 5.0f as reference "maximum" baseline signal (e.g. raw output of an oscillator)...but signals are +/-5, so 10 total.
 	value = powf(value, 0.5f); // undoing magnitude scaling of levels back from the FFT?
 	value = amplitudeToDecibels(value);
 	value = std::max(minDB, value);
 	value = std::min(_positiveDisplayDB, value);
 	value -= minDB;
-	value /= _displayDB;
+	value /= _module->_rangeDb;
 	return roundf(_graphSize.y * value);
 }

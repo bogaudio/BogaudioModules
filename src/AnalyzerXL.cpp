@@ -4,6 +4,7 @@
 #include "AnalyzerXL.hpp"
 
 #define RANGE_KEY "range"
+#define RANGE_DB_KEY "range_db"
 #define SMOOTH_KEY "smooth"
 #define QUALITY_KEY "quality"
 #define QUALITY_GOOD_KEY "good"
@@ -48,6 +49,7 @@ void AnalyzerXL::setCoreParams() {
 json_t* AnalyzerXL::toJson() {
 	json_t* root = json_object();
 	json_object_set_new(root, RANGE_KEY, json_real(_range));
+	json_object_set_new(root, RANGE_DB_KEY, json_real(_rangeDb));
 	json_object_set_new(root, SMOOTH_KEY, json_real(_smooth));
 	switch (_quality) {
 		case AnalyzerCore::QUALITY_GOOD: {
@@ -84,6 +86,11 @@ void AnalyzerXL::fromJson(json_t* root) {
 	json_t* jr = json_object_get(root, RANGE_KEY);
 	if (jr) {
 		_range = clamp(json_real_value(jr), -0.9f, 0.8f);
+	}
+
+	json_t* jrd = json_object_get(root, RANGE_DB_KEY);
+	if (jrd) {
+		_rangeDb = clamp(json_real_value(jrd), 80.0f, 140.0f);
 	}
 
 	json_t* js = json_object_get(root, SMOOTH_KEY);
@@ -149,6 +156,26 @@ struct RangeMenuItem : MenuItem {
 
 	void step() override {
 		rightText = _module->_range == _range ? "✔" : "";
+	}
+};
+
+struct RangeDbMenuItem : MenuItem {
+	AnalyzerXL* _module;
+	const float _rangeDb;
+
+	RangeDbMenuItem(AnalyzerXL* module, const char* label, float rangeDb)
+	: _module(module)
+	, _rangeDb(rangeDb)
+	{
+		this->text = label;
+	}
+
+	void onAction(EventAction &e) override {
+		_module->_rangeDb = _rangeDb;
+	}
+
+	void step() override {
+		rightText = _module->_rangeDb == _rangeDb ? "✔" : "";
 	}
 };
 
@@ -260,14 +287,18 @@ struct AnalyzerXLWidget : ModuleWidget {
 		assert(a);
 
 		menu->addChild(new MenuLabel());
-		menu->addChild(new RangeMenuItem(a, "Range: lower 25%", -0.75f));
-		menu->addChild(new RangeMenuItem(a, "Range: lower 50%", -0.5f));
-		menu->addChild(new RangeMenuItem(a, "Range: Full", 0.0f));
-		menu->addChild(new RangeMenuItem(a, "Range: upper 50%", 0.5f));
-		menu->addChild(new RangeMenuItem(a, "Range: upper 25%", 0.75f));
+		menu->addChild(new RangeMenuItem(a, "Frequency range: lower 25%", -0.75f));
+		menu->addChild(new RangeMenuItem(a, "Frequency range: lower 50%", -0.5f));
+		menu->addChild(new RangeMenuItem(a, "Frequency range: full", 0.0f));
+		menu->addChild(new RangeMenuItem(a, "Frequency range: upper 50%", 0.5f));
+		menu->addChild(new RangeMenuItem(a, "Frequency range: upper 25%", 0.75f));
 
 		menu->addChild(new MenuLabel());
-		menu->addChild(new SmoothMenuItem(a, "Smooth: None", 0.0f));
+		menu->addChild(new RangeDbMenuItem(a, "Amplitude range: to -60dB", 80.0f));
+		menu->addChild(new RangeDbMenuItem(a, "Amplitude range: to -120dB", 140.0f));
+
+		menu->addChild(new MenuLabel());
+		menu->addChild(new SmoothMenuItem(a, "Smooth: none", 0.0f));
 		menu->addChild(new SmoothMenuItem(a, "Smooth: 10ms", 0.01f));
 		menu->addChild(new SmoothMenuItem(a, "Smooth: 50ms", 0.05f));
 		menu->addChild(new SmoothMenuItem(a, "Smooth: 100ms", 0.1f));
@@ -282,7 +313,7 @@ struct AnalyzerXLWidget : ModuleWidget {
 		menu->addChild(new MenuLabel());
 		menu->addChild(new WindowMenuItem(a, "Window: Kaiser", AnalyzerCore::WINDOW_KAISER));
 		menu->addChild(new WindowMenuItem(a, "Window: Hamming", AnalyzerCore::WINDOW_HAMMING));
-		menu->addChild(new WindowMenuItem(a, "Window: None", AnalyzerCore::WINDOW_NONE));
+		menu->addChild(new WindowMenuItem(a, "Window: none", AnalyzerCore::WINDOW_NONE));
 	}
 };
 

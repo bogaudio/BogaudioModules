@@ -84,7 +84,7 @@ struct AveragingBuffer {
 	, _averages(new T[_size] {})
 	, _frames(new T[_size * _framesN] {})
 	, _currentFrame(0)
-	, _resetsPerCommit(_size / 1000)
+	, _resetsPerCommit(std::max(_size / 100, 10))
 	, _currentReset(0)
 	{
 		assert(framesToAverage > 0);

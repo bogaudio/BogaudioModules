@@ -97,9 +97,10 @@ struct AnalyzerCore {
 };
 
 struct AnalyzerBase : Module {
-    float _rangeMinHz = 0.0;
+	float _rangeMinHz = 0.0;
 	float _rangeMaxHz = 0.0;
-    AnalyzerCore _core;
+	float _rangeDb = 80.0f;
+	AnalyzerCore _core;
 
     AnalyzerBase(int nChannels, int np, int ni, int no, int nl)
     : Module(np, ni, no, nl)
@@ -114,7 +115,7 @@ struct AnalyzerDisplay : TransparentWidget {
 	const int _insetTop = _insetAround + 13;
 	const int _insetBottom = _insetAround + 9;
 
-	const float _displayDB = 80.0;
+	// const float _displayDB = 140.0;
 	const float _positiveDisplayDB = 20.0;
 
 	const float baseXAxisLogFactor = 1 / 3.321; // magic number.
