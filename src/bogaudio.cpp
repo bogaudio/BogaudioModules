@@ -21,8 +21,9 @@
 #include "FMOp.hpp"
 #include "FlipFlop.hpp"
 #include "Follow.hpp"
-#include "LFO.hpp"
 #include "Lag.hpp"
+#include "LFO.hpp"
+#include "LLFO.hpp"
 #include "Lmtr.hpp"
 #include "Manual.hpp"
 #include "Matrix88.hpp"
@@ -74,6 +75,7 @@ void init(rack::Plugin *p) {
 
 	p->addModel(modelLFO);
 	p->addModel(modelEightFO);
+	p->addModel(modelLLFO);
 
 	p->addModel(modelDADSRH);
 	p->addModel(modelDADSRHPlus);
