@@ -3,8 +3,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <math.h>
+
 #include <algorithm>
+#include <cmath>
 
 #include "rack.hpp"
 

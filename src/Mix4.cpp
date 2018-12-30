@@ -154,7 +154,7 @@ struct Mix4Widget : ModuleWidget {
 			id,
 			0.0,
 			1.0,
-			abs(MixerChannel::minDecibels) / (MixerChannel::maxDecibels - MixerChannel::minDecibels)
+			fabs(MixerChannel::minDecibels) / (MixerChannel::maxDecibels - MixerChannel::minDecibels)
 		);
 		dynamic_cast<VUSlider*>(slider)->setVULevel(&rms);
 		addParam(slider);

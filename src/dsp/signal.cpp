@@ -1,6 +1,7 @@
 
 #include <assert.h>
 #include <algorithm>
+#include <cmath>
 
 #include "signal.hpp"
 
@@ -205,7 +206,7 @@ void ShapedSlewLimiter::setParams(float sampleRate, float milliseconds, float sh
 
 float ShapedSlewLimiter::next(float sample) {
 	float difference = sample - _last;
-	float ttg = abs(difference) / range;
+	float ttg = fabs(difference) / range;
 	if (_time < 0.0001f || ttg < 0.0001f) {
 		return _last = sample;
 	}
@@ -218,7 +219,7 @@ float ShapedSlewLimiter::next(float sample) {
 	if (_shapeExponent != 0.0f) {
 		ttg = powf(ttg, _inverseShapeExponent);
 	}
-	float y = abs(difference) - ttg * range;
+	float y = fabs(difference) - ttg * range;
 	if (difference < 0.0f) {
 		return _last = std::max(_last - y, sample);
 	}
@@ -385,7 +386,7 @@ void Limiter::setParams(float shape, float knee, float limit, float scale) {
 }
 
 float Limiter::next(float sample) {
-	float out = abs(sample);
+	float out = fabs(sample);
 	if (out > _knee) {
 		out -= _knee;
 		out /= _scale;
@@ -397,7 +398,7 @@ float Limiter::next(float sample) {
 			x = _tanhf.value(x * _shape * M_PI) * _normalization;
 			x = std::min(x, 1.0f);
 			x *= _limit - _knee;
-			out = std::min(abs(sample) - _knee, x);
+			out = std::min(fabs(sample) - _knee, x);
 		}
 		else {
 			out = std::min(out, _limit - _knee);
