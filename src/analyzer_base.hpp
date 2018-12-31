@@ -76,7 +76,7 @@ struct AnalyzerCore {
 		WINDOW_KAISER
 	};
 
-    int _nChannels;
+	int _nChannels;
 	ChannelAnalyzer** _channels;
 	int _averageN = 1;
 	Quality _quality = QUALITY_GOOD;
@@ -86,15 +86,15 @@ struct AnalyzerCore {
 	std::mutex _channelsMutex;
 
 	AnalyzerCore(int nChannels)
-    : _nChannels(nChannels)
-    , _channels(new ChannelAnalyzer*[_nChannels] {})
-    {}
+	: _nChannels(nChannels)
+	, _channels(new ChannelAnalyzer*[_nChannels] {})
+	{}
 	virtual ~AnalyzerCore() {
 		resetChannels();
-        delete[] _channels;
+		delete[] _channels;
 	}
 
-    void setParams(int averageN, Quality quality, Window window);
+	void setParams(int averageN, Quality quality, Window window);
 	void resetChannels();
 	SpectrumAnalyzer::Size size();
 	SpectrumAnalyzer::WindowType window();
@@ -107,10 +107,10 @@ struct AnalyzerBase : Module {
 	float _rangeDb = 80.0f;
 	AnalyzerCore _core;
 
-    AnalyzerBase(int nChannels, int np, int ni, int no, int nl)
-    : Module(np, ni, no, nl)
-    , _core(nChannels)
-    {}
+	AnalyzerBase(int nChannels, int np, int ni, int no, int nl)
+	: Module(np, ni, no, nl)
+	, _core(nChannels)
+	{}
 };
 
 struct AnalyzerDisplay : TransparentWidget {

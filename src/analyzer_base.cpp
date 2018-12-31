@@ -3,19 +3,19 @@
 #include "dsp/signal.hpp"
 
 ChannelAnalyzer::~ChannelAnalyzer() {
-    {
-        std::lock_guard<std::mutex> lock(_workerMutex);
-        _workerStop = true;
-    }
-    _workerCV.notify_one();
-    _worker.join();
-    delete[] _workerBuf;
-    delete[] _stepBuf;
+	{
+		std::lock_guard<std::mutex> lock(_workerMutex);
+		_workerStop = true;
+	}
+	_workerCV.notify_one();
+	_worker.join();
+	delete[] _workerBuf;
+	delete[] _stepBuf;
 	delete[] _bins0;
 	delete[] _bins1;
-    if (_averagedBins) {
-        delete _averagedBins;
-    }
+	if (_averagedBins) {
+		delete _averagedBins;
+	}
 }
 
 float ChannelAnalyzer::getPeak() {
@@ -102,32 +102,32 @@ void ChannelAnalyzer::work() {
 
 
 void AnalyzerCore::setParams(int averageN, Quality quality, Window window) {
-    bool reset = false;
-    if (_averageN != averageN) {
-        _averageN = averageN;
-        reset = true;
-    }
-    if (_quality != quality) {
-        _quality = quality;
-        reset = true;
-    }
-    if (_window != window) {
-        _window = window;
-        reset = true;
-    }
-    if (reset) {
-        resetChannels();
-    }
+	bool reset = false;
+	if (_averageN != averageN) {
+		_averageN = averageN;
+		reset = true;
+	}
+	if (_quality != quality) {
+		_quality = quality;
+		reset = true;
+	}
+	if (_window != window) {
+		_window = window;
+		reset = true;
+	}
+	if (reset) {
+		resetChannels();
+	}
 }
 
 void AnalyzerCore::resetChannels() {
 	std::lock_guard<std::mutex> lock(_channelsMutex);
-    for (int i = 0; i < _nChannels; ++i) {
-        if (_channels[i]) {
-            delete _channels[i];
-            _channels[i] = NULL;
-        }
-    }
+	for (int i = 0; i < _nChannels; ++i) {
+		if (_channels[i]) {
+			delete _channels[i];
+			_channels[i] = NULL;
+		}
+	}
 }
 
 SpectrumAnalyzer::Size AnalyzerCore::size() {
@@ -174,8 +174,8 @@ SpectrumAnalyzer::WindowType AnalyzerCore::window() {
 }
 
 void AnalyzerCore::stepChannel(int channelIndex, Input& input) {
-    assert(channelIndex >= 0);
-    assert(channelIndex < _nChannels);
+	assert(channelIndex >= 0);
+	assert(channelIndex < _nChannels);
 
 	if (input.active) {
 		if (!_channels[channelIndex]) {
@@ -226,10 +226,10 @@ void AnalyzerDisplay::drawBackground(NVGcontext* vg) {
 	nvgRect(vg, 0, 0, _size.x, _size.y);
 	nvgFillColor(vg, nvgRGBA(0x00, 0x00, 0x00, 0xff));
 	nvgFill(vg);
-    if (_drawInset) {
-        nvgStrokeColor(vg, nvgRGBA(0xc0, 0xc0, 0xc0, 0xff));
-        nvgStroke(vg);
-    }
+	if (_drawInset) {
+		nvgStrokeColor(vg, nvgRGBA(0xc0, 0xc0, 0xc0, 0xff));
+		nvgStroke(vg);
+	}
 	nvgRestore(vg);
 }
 
@@ -246,18 +246,18 @@ void AnalyzerDisplay::drawHeader(NVGcontext* vg) {
 	drawText(vg, s, x, _insetTop + textY);
 	x += n * charPx - 0;
 
-    int spacing = 3;
-    if (_size.x > 300) {
-        x += 5;
-        spacing = 20;
-    }
+	int spacing = 3;
+	if (_size.x > 300) {
+		x += 5;
+		spacing = 20;
+	}
 	for (int i = 0; i < _module->_core._nChannels; ++i) {
 		ChannelAnalyzer* channel = _module->_core._channels[i];
 		if (channel) {
-            snprintf(s, sLen, "%c:%7.1f", 'A' + i, channel->getPeak());
-            drawText(vg, s, x, _insetTop + textY, 0.0, &_channelColors[i % channelColorsN]);
+			snprintf(s, sLen, "%c:%7.1f", 'A' + i, channel->getPeak());
+			drawText(vg, s, x, _insetTop + textY, 0.0, &_channelColors[i % channelColorsN]);
 		}
-        x += 9 * charPx + spacing;
+		x += 9 * charPx + spacing;
 	}
 
 	nvgRestore(vg);
