@@ -13,6 +13,8 @@ struct SampleHold : Module {
 	enum ParamIds {
 		TRIGGER1_PARAM,
 		TRIGGER2_PARAM,
+		TRACK1_PARAM,
+		TRACK2_PARAM,
 		NUM_PARAMS
 	};
 
@@ -31,6 +33,8 @@ struct SampleHold : Module {
 	};
 
 	enum LightsIds {
+		TRACK1_LIGHT,
+		TRACK2_LIGHT,
 		NUM_LIGHTS
 	};
 
