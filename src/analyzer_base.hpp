@@ -4,6 +4,7 @@
 #include <thread>
 #include <mutex>
 #include <condition_variable>
+#include <atomic>
 
 #include "bogaudio.hpp"
 #include "dsp/analyzer.hpp"
@@ -15,7 +16,9 @@ namespace bogaudio {
 struct ChannelAnalyzer {
 	SpectrumAnalyzer _analyzer;
 	int _binsN;
-	float* _bins;
+	float* _bins0;
+	float* _bins1;
+	std::atomic<const float*> _currentBins;
 	AveragingBuffer<float>* _averagedBins;
 	const int _stepBufN;
 	float* _stepBuf;
@@ -39,7 +42,9 @@ struct ChannelAnalyzer {
 	)
 	: _analyzer(size, overlap, windowType, sampleRate, false)
 	, _binsN(size / binSize)
-	, _bins(averageN == 1 ? new float[_binsN] {} : NULL)
+	, _bins0(new float[_binsN] {})
+	, _bins1(new float[_binsN] {})
+	, _currentBins(_bins0)
 	, _averagedBins(averageN == 1 ? NULL : new AveragingBuffer<float>(_binsN, averageN))
 	, _stepBufN(size / overlap)
 	, _stepBuf(new float[_stepBufN] {})
@@ -52,7 +57,7 @@ struct ChannelAnalyzer {
 	}
 	virtual ~ChannelAnalyzer();
 
-	const float* getBins();
+	inline const float* getBins() { return _currentBins; }
 	float getPeak();
 	void step(float sample);
 	void work();

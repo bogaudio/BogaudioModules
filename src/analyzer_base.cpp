@@ -11,19 +11,11 @@ ChannelAnalyzer::~ChannelAnalyzer() {
     _worker.join();
     delete[] _workerBuf;
     delete[] _stepBuf;
-    if (_bins) {
-        delete[] _bins;
-    }
+	delete[] _bins0;
+	delete[] _bins1;
     if (_averagedBins) {
         delete _averagedBins;
     }
-}
-
-const float* ChannelAnalyzer::getBins() {
-    if (_bins) {
-        return _bins;
-    }
-    return _averagedBins->getAverages();
 }
 
 float ChannelAnalyzer::getPeak() {
@@ -75,14 +67,21 @@ void ChannelAnalyzer::work() {
 
 			_analyzer.process();
 			_analyzer.postProcess();
-			if (_bins) {
-				_analyzer.getMagnitudes(_bins, _binsN);
+			float* bins = _bins0;
+			if (_currentBins == _bins0) {
+				bins = _bins1;
 			}
-			else {
+			if (_averagedBins) {
 				float* frame = _averagedBins->getInputFrame();
 				_analyzer.getMagnitudes(frame, _binsN);
 				_averagedBins->commitInputFrame();
+				const float* averages = _averagedBins->getAverages();
+				std::copy(averages, averages + _binsN, bins);
 			}
+			else {
+				_analyzer.getMagnitudes(bins, _binsN);
+			}
+			_currentBins = bins;
 		}
 
 		while (_workerBufReadI != _workerBufWriteI) {
@@ -201,8 +200,6 @@ void AnalyzerCore::stepChannel(int channelIndex, Input& input) {
 
 
 void AnalyzerDisplay::draw(NVGcontext* vg) {
-	std::lock_guard<std::mutex> lock(_module->_core._channelsMutex);
-
 	drawBackground(vg);
 	float strokeWidth = std::max(1.0f, 3 - gRackScene->zoomWidget->zoom);
 	_xAxisLogFactor = (_module->_rangeMaxHz - _module->_rangeMinHz) / _module->_rangeMaxHz;
