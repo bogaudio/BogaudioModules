@@ -36,7 +36,7 @@ void Clpr::step() {
 
 	float leftInput = inputs[LEFT_INPUT].value;
 	float rightInput = inputs[RIGHT_INPUT].value;
-	float env = fabs(leftInput + rightInput);
+	float env = fabsf(leftInput + rightInput);
 	float detectorDb = amplitudeToDecibels(env / 5.0f);
 	float compressionDb = _compressor.compressionDb(detectorDb, _thresholdDb, Compressor::maxEffectiveRatio, _softKnee);
 	_amplifier.setLevel(-compressionDb);

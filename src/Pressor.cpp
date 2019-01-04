@@ -99,7 +99,7 @@ void Pressor::step() {
 		env = _detectorRMS.next(env);
 	}
 	else {
-		env = fabs(env);
+		env = fabsf(env);
 	}
 	if (env > _lastEnv) {
 		env = _attackSL.next(env, _lastEnv);

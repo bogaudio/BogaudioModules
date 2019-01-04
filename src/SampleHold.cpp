@@ -17,7 +17,7 @@ void SampleHold::step() {
 				_value1 = inputs[IN1_INPUT].value;
 			}
 			else {
-				_value1 = fabs(_noise.next()) * 10.0;
+				_value1 = fabsf(_noise.next()) * 10.0;
 			}
 		}
 		outputs[OUT1_OUTPUT].value = _value1;
@@ -31,7 +31,7 @@ void SampleHold::step() {
 				_value2 = inputs[IN2_INPUT].value;
 			}
 			else {
-				_value2 = fabs(_noise.next()) * 10.0;
+				_value2 = fabsf(_noise.next()) * 10.0;
 			}
 		}
 		outputs[OUT2_OUTPUT].value = _value2;

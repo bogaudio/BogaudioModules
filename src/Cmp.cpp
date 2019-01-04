@@ -51,7 +51,7 @@ void Cmp::step() {
 		outputs[LESS_OUTPUT]
 	);
 	stepChannel(
-		fabs(a - b) <= window,
+		fabsf(a - b) <= window,
 		high,
 		low,
 		_windowState,

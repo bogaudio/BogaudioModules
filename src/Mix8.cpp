@@ -222,7 +222,7 @@ struct Mix8Widget : ModuleWidget {
 			id,
 			0.0,
 			1.0,
-			fabs(MixerChannel::minDecibels) / (MixerChannel::maxDecibels - MixerChannel::minDecibels)
+			fabsf(MixerChannel::minDecibels) / (MixerChannel::maxDecibels - MixerChannel::minDecibels)
 		);
 		dynamic_cast<VUSlider*>(slider)->setVULevel(&rms);
 		addParam(slider);
