@@ -72,7 +72,7 @@ struct Mute8 : Module {
 
 	Amplifier _amplifiers[8];
 	SlewLimiter _slewLimiters[8];
-	SchmittTrigger _triggers[8];
+	Trigger _triggers[8];
 
 	Mute8() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 		onReset();

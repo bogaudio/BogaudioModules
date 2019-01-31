@@ -33,7 +33,7 @@ struct Switch : Module {
 		NUM_LIGHTS
 	};
 
-	SchmittTrigger _trigger;
+	Trigger _trigger;
 	bool _latchedHigh = false;
 
 	Switch() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {

@@ -38,7 +38,7 @@ struct SampleHold : Module {
 		NUM_LIGHTS
 	};
 
-	SchmittTrigger _trigger1, _trigger2;
+	Trigger _trigger1, _trigger2;
 	float _value1, _value2;
 	WhiteNoiseGenerator _noise;
 
