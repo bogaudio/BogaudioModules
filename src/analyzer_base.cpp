@@ -19,8 +19,7 @@ ChannelAnalyzer::~ChannelAnalyzer() {
 }
 
 float ChannelAnalyzer::getPeak() {
-	float max = 0.0;
-	float sum = 0.0;
+	float max = 0.0f;
 	int maxBin = 0;
 	const float* bins = getBins();
 	for (int bin = 0; bin < _binsN; ++bin) {
@@ -28,11 +27,19 @@ float ChannelAnalyzer::getPeak() {
 			max = bins[bin];
 			maxBin = bin;
 		}
-		sum += bins[bin];
 	}
+
 	const int bandsPerBin = _analyzer._size / _binsN;
 	const float fWidth = (_analyzer._sampleRate / 2.0f) / (float)(_analyzer._size / bandsPerBin);
-	return (maxBin + 0.5f)*fWidth;
+	float sum = 0.0f;
+	float sumWeights = 0.0f;
+	int i = std::max(0, maxBin - 1);
+	int j = std::max(_binsN - 1, maxBin + 1);
+	for (; i <= j; ++i) {
+		sum += bins[i] * fWidth * i;
+		sumWeights += bins[i];
+	}
+	return sum / sumWeights;
 }
 
 void ChannelAnalyzer::step(float sample) {
