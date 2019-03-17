@@ -66,13 +66,11 @@ struct LLFO : Module {
 	SawOscillator _ramp;
 	SquareOscillator _square;
 
-	Wave _wave;
 	bool _invert;
 	Phasor* _oscillator;
 
 	LLFO()
 	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
-	, _wave(SINE_WAVE)
 	, _invert(false)
 	, _oscillator(&_sine)
 	{

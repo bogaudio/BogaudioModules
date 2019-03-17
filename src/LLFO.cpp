@@ -15,12 +15,13 @@ void LLFO::onSampleRateChange() {
 void LLFO::step() {
 	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].value > 0.5f;
 
-	lights[SINE_LIGHT].value = _wave == SINE_WAVE;
-	lights[TRIANGLE_LIGHT].value = _wave == TRIANGLE_WAVE;
-	lights[RAMP_UP_LIGHT].value = _wave == RAMP_UP_WAVE;
-	lights[RAMP_DOWN_LIGHT].value = _wave == RAMP_DOWN_WAVE;
-	lights[SQUARE_LIGHT].value = _wave == SQUARE_WAVE;
-	lights[PULSE_LIGHT].value = _wave == PULSE_WAVE;
+	Wave wave = (Wave)params[WAVE_PARAM].value;
+	lights[SINE_LIGHT].value = wave == SINE_WAVE;
+	lights[TRIANGLE_LIGHT].value = wave == TRIANGLE_WAVE;
+	lights[RAMP_UP_LIGHT].value = wave == RAMP_UP_WAVE;
+	lights[RAMP_DOWN_LIGHT].value = wave == RAMP_DOWN_WAVE;
+	lights[SQUARE_LIGHT].value = wave == SQUARE_WAVE;
+	lights[PULSE_LIGHT].value = wave == PULSE_WAVE;
 	if (!outputs[OUT_OUTPUT].active) {
 		return;
 	}
@@ -45,9 +46,8 @@ void LLFO::step() {
 		}
 		_phasor.setFrequency(frequency);
 
-		_wave = (Wave)params[WAVE_PARAM].value;
 		_invert = false;
-		switch (_wave) {
+		switch (wave) {
 			case SINE_WAVE: {
 				_oscillator = &_sine;
 				break;
