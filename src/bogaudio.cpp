@@ -50,6 +50,8 @@
 #include "VCM.hpp"
 #include "VCO.hpp"
 #include "VU.hpp"
+#include "Walk.hpp"
+#include "Walk2.hpp"
 #include "XCO.hpp"
 #include "XFade.hpp"
 
@@ -85,6 +87,11 @@ void init(rack::Plugin *p) {
 	p->addModel(modelAD);
 	p->addModel(modelADSR);
 	p->addModel(modelFollow);
+
+#ifdef EXPERIMENTAL
+	p->addModel(modelWalk2);
+	p->addModel(modelWalk);
+#endif
 
 	p->addModel(modelMix4);
 	p->addModel(modelMix8);
