@@ -4,6 +4,7 @@
 #include "AD.hpp"
 #include "ADSR.hpp"
 #include "Additator.hpp"
+#include "AddrSeq.hpp"
 #include "AMRM.hpp"
 #include "Analyzer.hpp"
 #include "AnalyzerXL.hpp"
@@ -18,6 +19,7 @@
 #include "DGate.hpp"
 #include "Detune.hpp"
 #include "EightFO.hpp"
+#include "EightOne.hpp"
 #include "FMOp.hpp"
 #include "FlipFlop.hpp"
 #include "Follow.hpp"
@@ -34,6 +36,7 @@
 #include "Noise.hpp"
 #include "Nsgt.hpp"
 #include "Offset.hpp"
+#include "OneEight.hpp"
 #include "Pan.hpp"
 #include "Pressor.hpp"
 #include "Reftone.hpp"
@@ -109,6 +112,10 @@ void init(rack::Plugin *p) {
 	p->addModel(modelClpr);
 	p->addModel(modelLmtr);
 	p->addModel(modelNsgt);
+
+	p->addModel(modelOneEight);
+	p->addModel(modelEightOne);
+	p->addModel(modelAddrSeq);
 
 	p->addModel(modelAnalyzer);
 	p->addModel(modelAnalyzerXL);
