@@ -106,8 +106,8 @@ struct LFOBaseWidget : ModuleWidget, PitchModeListener {
 		LFOBase* lfo = dynamic_cast<LFOBase*>(module);
 		assert(lfo);
 		menu->addChild(new MenuLabel());
-		menu->addChild(new PitchModeMenuItem(lfo, "Classic pitch mdoe: 0V = C0 = 16.35HZ", false));
-		menu->addChild(new PitchModeMenuItem(lfo, "Standard pitch mdoe: 0V = C-3 = 2.04HZ", true));
+		menu->addChild(new PitchModeMenuItem(lfo, "Classic pitch mode: 0V = C0 = 16.35HZ", false));
+		menu->addChild(new PitchModeMenuItem(lfo, "Standard pitch mode: 0V = C-3 = 2.04HZ", true));
 	}
 };
 
