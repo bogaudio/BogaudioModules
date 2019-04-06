@@ -107,7 +107,9 @@ A standard LFO featuring:
   - Reset (hard sync) input.
   - Slow mode.
 
-LFO tracks pitch CVs at the V/OCT input four octaves lower than a normal oscillator: with a 0V input, the output frequency is note C0 (16.35HZ).  The frequency knob is calibrated in linear volts (the small ticks), and its value is added to the input V/OCT.  With no input, the frequency range is from approximately 0.1 to 400HZ; with CV the frequency may be driven up to 2000HZ or down to arbitrarily low values.  In slow mode, the output frequency tracks the controls 8 octaves lower than in normal mode.
+LFO tracks pitch CVs at the V/OCT input seven octaves lower than a normal oscillator: with a 0V input, the output frequency is note C-3 (2.04HZ).  The frequency knob is calibrated in linear volts (the small ticks), and its value is added to the input V/OCT.  With no input, the frequency range is from approximately 0.1 to 400HZ; with CV the frequency may be driven up to 2000HZ or down to arbitrarily low values.  In slow mode, the output frequency tracks the controls 11 octaves lower than in normal mode.
+
+*NOTE ON FREQUENCIES:* Previous to release 0.6.14 (April 2019), LFO tracked 0V as C0 or 16.35HZ (and 8 octaves lower in slow mode). Patches created with older versions will continue to have the old behavior.  New instances of LFO added to patches will have the new behavior.  The behavior can be toggled, in either case, on the context (right-click) menu.
 
 #### 8FO
 
@@ -194,6 +196,7 @@ Features:
   - CV-controlled stereo panners; expects +/-5 volt CV; CV is attenuverted by the corresponding knob when in use.
   - Stereo outputs; if only one is patched, the output mix is mono.
   - Performance mutes (buttons) per channel.
+  - Right-click a mute buttons solos that channel (un-mutes that channel and temporarily mutes all others).  Right or left click will un-solo, restoring the old state.  Multiple channels can be "soloed" at once.
   - Fader handles contain lights indicating the signal level out of that channel or the entire mix.
   - Output saturates (soft clips) to +/-12 volts, where the clipping effect becomes noticeable above +/-10 volts.
 
@@ -230,6 +233,8 @@ Saturation (soft clipping) is applied to each output at +/-12 volts; the LEVEL k
 #### MUTE8
 
 MUTE8 provides 8 independent manual or CV-controlled mutes. Each channel is muted if its button is toggled on or if there is a positive voltage at its CV input.  Otherwise the input is passed to the output.
+
+As with MIX4 and MIX8, a right-click on a mute button will solo that channel (pass that channel through while muting all others).  Right or left click clears this.
 
 #### PAN
 
