@@ -7,6 +7,7 @@ Modules for [VCV Rack](https://github.com/VCVRack/Rack), an open-source Eurorack
   - [Envelopes and Envelope Utilities](#envelopes)
   - [Mixers, Panners and VCAs](#mixers)
   - [Effects and Dynamics](#effects)
+  - [Sequential Switches and Sequencers](#sequencers)
   - [Visualizers](#visualizers)
   - [Pitch CV Utilities](#pitch)
   - [Other Utilities](#utilities)
@@ -15,6 +16,8 @@ Modules for [VCV Rack](https://github.com/VCVRack/Rack), an open-source Eurorack
 ![modules screenshot](./doc/www/modules1.png)
 
 ![modules screenshot](./doc/www/modules2.png)
+
+![modules screenshot](./doc/www/modules5.png)
 
 ![modules screenshot](./doc/www/modules3.png)
 
@@ -308,6 +311,28 @@ In contrast to CLPR, LMTR does not distort the signal (or not much); it just red
 #### NSGT
 
 NSGT is a compact (6HP) [noise gate](https://en.wikipedia.org/wiki/Noise_gate).  Its controls behave the same as the corresponding controls on PRESSOR.
+
+### <a name="sequencers"></a> Sequential Switches and Sequencers
+
+![Sequencers screenshot](doc/www/sequencers.png)
+
+#### 8:1
+
+8:1 is a sequential switch and voltage-addressed switch (multiplexer) at once -- it routes 8 inputs to 1 output according to either a clock or CV input (or both).
+
+As a sequential switch, a trigger at the clock input advances the input selection -- which input is routed to the output.  Like a sequencer, it can be reset with a trigger at RESET, the number of inputs to cycle through may be set with the STEPS knob, and the direction is set with the FWD/REV switch.
+
+As a multiplexer, it routes an input to the output under control of the SELECT knob and CV.  A 0-10V CV, divided into 8 equal divisions of 1.25V, controls the input selection.  This value is summed with the knob setting; for example, setting the knob to 4 and inputting a 2.6V CV will send input 7 to the output.  When the knob-plus-CV value exceeds 8, it wraps around.
+
+Both functions may be used simultaneously: the SELECT+CV value is added to the sequential/clocked value, wrapping around.  Note that the STEPS value only affects the sequential value; for example, using a clock input and setting STEPS to 2 will yield an alternation between two adjacent inputs, but this pair can be selected with the SELECT knob or CV.
+
+#### 1:8
+
+1:8 is the opposite of 8:1 -- it routes a single input to 1 of 8 outputs.  The control circuit behavior (CLOCK, SELECT, etc) is the same.
+
+#### ADDR-SEQ
+
+ADDR-SEQ is an 8-step sequencer where the step values are set by 8 bipolar knobs able to dial in voltages from -10 to 10V.  It has the same clocked or voltage-addressed control circuit as 8:1 and 1:8.
 
 ### <a name="visualizers"></a> Visualizers
 
