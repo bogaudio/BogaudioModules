@@ -145,7 +145,8 @@ struct HistoryBuffer {
 	}
 
 	inline void push(T s) {
-		_i = ++_i % _size;
+		++_i;
+		_i %= _size;
 		_buf[_i] = s;
 	}
 

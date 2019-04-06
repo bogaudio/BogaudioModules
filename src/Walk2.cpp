@@ -73,7 +73,8 @@ void Walk2::step() {
 		_outsY.push(outY);
 		_holdsY.push(_holdY);
 	}
-	_historyStep = ++_historyStep % _historySteps;
+	++_historyStep;
+	_historyStep %= _historySteps;
 }
 
 struct Walk2Display : TransparentWidget {
