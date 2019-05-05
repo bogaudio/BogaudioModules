@@ -333,6 +333,8 @@ As a multiplexer, it routes an input to the output under control of the SELECT k
 
 Both functions may be used simultaneously: the SELECT+CV value is added to the sequential/clocked value, wrapping around.  Note that the STEPS value only affects the sequential value; for example, using a clock input and setting STEPS to 2 will yield an alternation between two adjacent inputs, but this pair can be selected with the SELECT knob or CV.
 
+On the context (right-click) menu, if option "Select on clock" is selected, then the select value (knob and CV) is checked and used to modify the active step only when a clock is received, rather than continuously.  
+
 #### 1:8
 
 1:8 is the opposite of 8:1 -- it routes a single input to 1 of 8 outputs.  The control circuit behavior (CLOCK, SELECT, etc) is the same.

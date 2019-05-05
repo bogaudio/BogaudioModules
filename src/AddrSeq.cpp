@@ -1,6 +1,8 @@
 
 #include "AddrSeq.hpp"
 
+#define SELECT_ON_CLOCK "select_on_clock"
+
 void AddrSeq::onReset() {
 	_step = 0;
 	_clock.reset();
@@ -11,6 +13,19 @@ void AddrSeq::onSampleRateChange() {
 	_timer.setParams(engineGetSampleRate(), 0.001f);
 }
 
+json_t* AddrSeq::toJson() {
+	json_t* root = json_object();
+	json_object_set_new(root, SELECT_ON_CLOCK, json_boolean(_selectOnClock));
+	return root;
+}
+
+void AddrSeq::fromJson(json_t* root) {
+	json_t* s = json_object_get(root, SELECT_ON_CLOCK);
+	if (s) {
+		_selectOnClock = json_is_true(s);
+	}
+}
+
 void AddrSeq::step() {
 	bool reset = _reset.process(inputs[RESET_INPUT].value);
 	if (reset) {
@@ -19,13 +34,17 @@ void AddrSeq::step() {
 	bool timer = _timer.next();
 	bool clock = _clock.process(inputs[CLOCK_INPUT].value) && !timer;
 
-	int steps = clamp(params[STEPS_PARAM].value, 1.0f, 8.0f);
+	int steps = params[STEPS_PARAM].value;
 	int reverse = 1 - 2 * (params[DIRECTION_PARAM].value == 0.0f);
 	_step = (_step + reverse * clock) % steps;
 	_step += (_step < 0) * steps;
 	_step -= _step * reset;
-	int step = _step + (int)params[SELECT_PARAM].value;
-	step += (int)(clamp(inputs[SELECT_INPUT].value, 0.0f, 10.0f) * 0.1f * 8.0f);
+	int select = params[SELECT_PARAM].value;
+	select += clamp(inputs[SELECT_INPUT].value, 0.0f, 10.0f) * 0.1f * 8.0f;
+	if (!_selectOnClock || clock) {
+		_select = select;
+	}
+	int step = _step + _select;
 	step = step % 8;
 
 	float out = 0.0f;
@@ -35,6 +54,24 @@ void AddrSeq::step() {
 	}
 	outputs[OUT_OUTPUT].value = out * 10.0f;
 }
+
+struct SelectOnClockMenuItem : MenuItem {
+	AddrSeq* _module;
+
+	SelectOnClockMenuItem(AddrSeq* module, const char* label)
+	: _module(module)
+	{
+		this->text = label;
+	}
+
+	void onAction(EventAction &e) override {
+		_module->_selectOnClock = !_module->_selectOnClock;
+	}
+
+	void step() override {
+		rightText = _module->_selectOnClock ? "✔" : "";
+	}
+};
 
 struct AddrSeqWidget : ModuleWidget {
 	static constexpr int hp = 6;
@@ -115,6 +152,13 @@ struct AddrSeqWidget : ModuleWidget {
 		addChild(ModuleLightWidget::create<SmallLight<GreenLight>>(out6LightPosition, module, AddrSeq::OUT6_LIGHT));
 		addChild(ModuleLightWidget::create<SmallLight<GreenLight>>(out7LightPosition, module, AddrSeq::OUT7_LIGHT));
 		addChild(ModuleLightWidget::create<SmallLight<GreenLight>>(out8LightPosition, module, AddrSeq::OUT8_LIGHT));
+	}
+
+	void appendContextMenu(Menu* menu) override {
+		AddrSeq* m = dynamic_cast<AddrSeq*>(module);
+		assert(m);
+		menu->addChild(new MenuLabel());
+		menu->addChild(new SelectOnClockMenuItem(m, "Select on clock"));
 	}
 };
 

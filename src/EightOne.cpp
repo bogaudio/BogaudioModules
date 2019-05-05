@@ -1,6 +1,8 @@
 
 #include "EightOne.hpp"
 
+#define SELECT_ON_CLOCK "select_on_clock"
+
 void EightOne::onReset() {
 	_step = 0;
 	_clock.reset();
@@ -11,6 +13,19 @@ void EightOne::onSampleRateChange() {
 	_timer.setParams(engineGetSampleRate(), 0.001f);
 }
 
+json_t* EightOne::toJson() {
+	json_t* root = json_object();
+	json_object_set_new(root, SELECT_ON_CLOCK, json_boolean(_selectOnClock));
+	return root;
+}
+
+void EightOne::fromJson(json_t* root) {
+	json_t* s = json_object_get(root, SELECT_ON_CLOCK);
+	if (s) {
+		_selectOnClock = json_is_true(s);
+	}
+}
+
 void EightOne::step() {
 	bool reset = _reset.process(inputs[RESET_INPUT].value);
 	if (reset) {
@@ -19,13 +34,17 @@ void EightOne::step() {
 	bool timer = _timer.next();
 	bool clock = _clock.process(inputs[CLOCK_INPUT].value) && !timer;
 
-	int steps = clamp(params[STEPS_PARAM].value, 1.0f, 8.0f);
+	int steps = params[STEPS_PARAM].value;
 	int reverse = 1 - 2 * (params[DIRECTION_PARAM].value == 0.0f);
 	_step = (_step + reverse * clock) % steps;
 	_step += (_step < 0) * steps;
 	_step -= _step * reset;
-	int step = _step + (int)params[SELECT_PARAM].value;
-	step += (int)(clamp(inputs[SELECT_INPUT].value, 0.0f, 10.0f) * 0.1f * 8.0f);
+	int select = params[SELECT_PARAM].value;
+	select += clamp(inputs[SELECT_INPUT].value, 0.0f, 10.0f) * 0.1f * 8.0f;
+	if (!_selectOnClock || clock) {
+		_select = select;
+	}
+	int step = _step + _select;
 	step = step % 8;
 
 	float out = 0.0f;
@@ -35,6 +54,24 @@ void EightOne::step() {
 	}
 	outputs[OUT_OUTPUT].value = out;
 }
+
+struct SelectOnClockMenuItem : MenuItem {
+	EightOne* _module;
+
+	SelectOnClockMenuItem(EightOne* module, const char* label)
+	: _module(module)
+	{
+		this->text = label;
+	}
+
+	void onAction(EventAction &e) override {
+		_module->_selectOnClock = !_module->_selectOnClock;
+	}
+
+	void step() override {
+		rightText = _module->_selectOnClock ? "✔" : "";
+	}
+};
 
 struct EightOneWidget : ModuleWidget {
 	static constexpr int hp = 6;
@@ -115,6 +152,13 @@ struct EightOneWidget : ModuleWidget {
 		addChild(ModuleLightWidget::create<SmallLight<GreenLight>>(in6LightPosition, module, EightOne::IN6_LIGHT));
 		addChild(ModuleLightWidget::create<SmallLight<GreenLight>>(in7LightPosition, module, EightOne::IN7_LIGHT));
 		addChild(ModuleLightWidget::create<SmallLight<GreenLight>>(in8LightPosition, module, EightOne::IN8_LIGHT));
+	}
+
+	void appendContextMenu(Menu* menu) override {
+		EightOne* m = dynamic_cast<EightOne*>(module);
+		assert(m);
+		menu->addChild(new MenuLabel());
+		menu->addChild(new SelectOnClockMenuItem(m, "Select on clock"));
 	}
 };
 
