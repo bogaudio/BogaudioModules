@@ -218,9 +218,11 @@ By default, the output is hard clipped at +/-12 volts (this is a standard in Rac
 
 #### UMIX
 
-A 3HP unity mixer, usable with CV (e.g. combining triggers) or audio.  Up to 8 inputs are summed to the output.  Saturation (soft clipping) is applied to the output at +/-12 volts; the LEVEL knob allows attenuation of the mix before the saturation is applied.
+A 3HP unity mixer, usable with CV (e.g. combining triggers) or audio.  Up to 8 inputs are summed to the output.  Saturation (soft clipping) is applied to the output, which limits it to around +/-11V; the LEVEL knob allows attenuation of the mix before the saturation is applied.
 
 The context (right-click) menu has an option to average, rather than sum, the inputs.
+
+A second context menu option, "CV mode", disables the saturation, which allows for precise summing (or averaging) of CVs. In this case the output is hard-clipped at +/-12V.
 
 #### MATRIX88
 
