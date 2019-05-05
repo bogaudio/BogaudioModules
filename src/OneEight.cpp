@@ -7,12 +7,23 @@ void OneEight::onReset() {
 	_reset.reset();
 }
 
+void OneEight::onSampleRateChange() {
+	_timer.setParams(engineGetSampleRate(), 0.001f);
+}
+
 void OneEight::step() {
+	bool reset = _reset.process(inputs[RESET_INPUT].value);
+	if (reset) {
+		_timer.reset();
+	}
+	bool timer = _timer.next();
+	bool clock = _clock.process(inputs[CLOCK_INPUT].value) && !timer;
+
 	int steps = clamp(params[STEPS_PARAM].value, 2.0f, 8.0f);
 	int reverse = 1 - 2 * (params[DIRECTION_PARAM].value == 0.0f);
-	_step = (_step + reverse * _clock.process(inputs[CLOCK_INPUT].value)) % steps;
+	_step = (_step + reverse * clock) % steps;
 	_step += (_step < 0) * steps;
-	_step -= _step * _reset.process(inputs[RESET_INPUT].value);
+	_step -= _step * reset;
 	int step = _step + (int)params[SELECT_PARAM].value;
 	step += (int)(clamp(inputs[SELECT_INPUT].value, 0.0f, 10.0f) * 0.1f * 8.0f);
 	step = step % 8;
