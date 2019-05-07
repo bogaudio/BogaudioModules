@@ -10,7 +10,7 @@ void Walk2::onReset() {
 
 void Walk2::onSampleRateChange() {
 	_modulationStep = modulationSteps;
-	_historySteps = (historySeconds * engineGetSampleRate()) / historyPoints;
+	_historySteps = (historySeconds * engineGetSampleRate();) / historyPoints;
 }
 
 void Walk2::step() {
@@ -20,6 +20,7 @@ void Walk2::step() {
 	++_modulationStep;
 	if (_modulationStep >= modulationSteps) {
 		_modulationStep = 0;
+		float sampleRate = engineGetSampleRate();
 
 		float rateX = params[RATE_X_PARAM].value;
 		if (inputs[RATE_X_INPUT].active) {
@@ -27,7 +28,8 @@ void Walk2::step() {
 		}
 		rateX *= rateX;
 		rateX *= rateX;
-		_walkX.setParams(engineGetSampleRate(), rateX);
+		_walkX.setParams(sampleRate, rateX);
+		_slewX.setParams(sampleRate, std::max((1.0f - rateX) * 100.0f, 0.0f), 10.0f);
 
 		float rateY = params[RATE_Y_PARAM].value;
 		if (inputs[RATE_Y_INPUT].active) {
@@ -35,7 +37,8 @@ void Walk2::step() {
 		}
 		rateY *= rateY;
 		rateY *= rateY;
-		_walkY.setParams(engineGetSampleRate(), rateY);
+		_walkY.setParams(sampleRate, rateY);
+		_slewY.setParams(sampleRate, std::max((1.0f - rateY) * 100.0f, 0.0f), 10.0f);
 	}
 
 	if (_jumpTrigger.process(inputs[JUMP_INPUT].value)) {
@@ -43,7 +46,7 @@ void Walk2::step() {
 		_walkY.jump();
 	}
 
-	float outX = _walkX.next();
+	float outX = _slewX.next(_walkX.next());
 	outX *= params[SCALE_X_PARAM].value;
 	outX += params[OFFSET_X_PARAM].value * 5.0f;
 	outputs[OUT_X_OUTPUT].value = outX;
@@ -54,7 +57,7 @@ void Walk2::step() {
 	}
 	outputs[HOLD_X_OUTPUT].value = _holdX;
 
-	float outY = _walkY.next();
+	float outY = _slewY.next(_walkY.next());
 	outY *= params[SCALE_Y_PARAM].value;
 	outY += params[OFFSET_Y_PARAM].value * 5.0f;
 	outputs[OUT_Y_OUTPUT].value = outY;

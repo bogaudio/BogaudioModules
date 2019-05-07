@@ -8,6 +8,7 @@ void Walk::onReset() {
 
 void Walk::onSampleRateChange() {
 	_modulationStep = modulationSteps;
+	_slew.setParams(engineGetSampleRate(), 100.0f, 10.0f);
 }
 
 void Walk::step() {
@@ -26,7 +27,7 @@ void Walk::step() {
 		_walk.setParams(engineGetSampleRate(), rate);
 	}
 
-	float out = _walk.next();
+	float out = _slew.next(_walk.next());
 	out *= params[SCALE_PARAM].value;
 	out += params[OFFSET_PARAM].value * 5.0f;
 	outputs[OUT_OUTPUT].value = out;

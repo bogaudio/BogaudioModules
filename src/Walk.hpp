@@ -2,6 +2,7 @@
 
 #include "bogaudio.hpp"
 #include "dsp/noise.hpp"
+#include "dsp/signal.hpp"
 
 using namespace bogaudio::dsp;
 
@@ -39,6 +40,7 @@ struct Walk : Module {
 	int _modulationStep = 0;
 	Trigger _trigger;
 	RandomWalk _walk;
+	SlewLimiter _slew;
 	float _hold = 0.0f;
 
 	Walk() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {

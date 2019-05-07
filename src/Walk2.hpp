@@ -3,6 +3,7 @@
 #include "bogaudio.hpp"
 #include "dsp/buffer.hpp"
 #include "dsp/noise.hpp"
+#include "dsp/signal.hpp"
 
 using namespace bogaudio::dsp;
 
@@ -57,6 +58,7 @@ struct Walk2 : Module {
 
 	Trigger _triggerX, _triggerY;
 	RandomWalk _walkX, _walkY;
+	SlewLimiter _slewX, _slewY;
 	Trigger _jumpTrigger;
 	float _holdX = 0.0f, _holdY = 0.0f;
 	HistoryBuffer<float> _outsX, _outsY, _holdsX, _holdsY;
