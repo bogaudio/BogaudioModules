@@ -103,8 +103,8 @@ struct Walk2Display : TransparentWidget {
 	: _module(module)
 	, _size(size)
 	, _drawSize(_size.x - 2*_insetAround, _size.y - 2*_insetAround)
-	, _midX(_size.x / 2)
-	, _midY(_size.y / 2)
+	, _midX(_insetAround + _drawSize.x/2)
+	, _midY(_insetAround + _drawSize.y/2)
 	, _font(Font::load(assetPlugin(plugin, "res/fonts/inconsolata.ttf")))
 	{
 	}
@@ -114,7 +114,7 @@ struct Walk2Display : TransparentWidget {
 		float strokeWidth = std::max(1.0f, 3 - gRackScene->zoomWidget->zoom);
 
 		nvgSave(vg);
-		nvgScissor(vg, _insetAround, _insetAround, _size.x - _insetAround, _size.y - _insetAround);
+		nvgScissor(vg, _insetAround, _insetAround, _drawSize.x, _drawSize.y);
 		drawAxes(vg, strokeWidth);
 		drawTrace(vg, _traceColor, _module->_outsX, _module->_outsY);
 		nvgRestore(vg);
@@ -132,26 +132,52 @@ struct Walk2Display : TransparentWidget {
 	}
 
 	void drawAxes(NVGcontext* vg, float strokeWidth) {
+		const float tick = 3.0f;
+
 		nvgSave(vg);
 		nvgStrokeColor(vg, _axisColor);
 		nvgStrokeWidth(vg, strokeWidth);
 
 		nvgBeginPath(vg);
 		nvgMoveTo(vg, _insetAround, _midY);
-		nvgLineTo(vg, _size.x - _insetAround, _midY);
+		nvgLineTo(vg, _insetAround + _drawSize.x, _midY);
 		nvgStroke(vg);
 
 		nvgBeginPath(vg);
 		nvgMoveTo(vg, _midX, _insetAround);
-		nvgLineTo(vg, _midX, _size.y - _insetAround);
+		nvgLineTo(vg, _midX, _insetAround + _drawSize.y);
 		nvgStroke(vg);
+
+		for (int i = 1; i <= 5; ++i) {
+			float x = (i * 1.0f/5.0f) * 0.5f * _drawSize.x;
+			nvgBeginPath(vg);
+			nvgMoveTo(vg, _midX + x, _midY - tick);
+			nvgLineTo(vg, _midX + x, _midY + tick);
+			nvgStroke(vg);
+
+			nvgBeginPath(vg);
+			nvgMoveTo(vg, _midX - x, _midY - tick);
+			nvgLineTo(vg, _midX - x, _midY + tick);
+			nvgStroke(vg);
+
+			float y = (i * 1.0f/5.0f) * 0.5f * _drawSize.y;
+			nvgBeginPath(vg);
+			nvgMoveTo(vg, _midX - tick, _midY + y);
+			nvgLineTo(vg, _midX + tick, _midY + y);
+			nvgStroke(vg);
+
+			nvgBeginPath(vg);
+			nvgMoveTo(vg, _midX - tick, _midY - y);
+			nvgLineTo(vg, _midX + tick, _midY - y);
+			nvgStroke(vg);
+		}
 
 		nvgRestore(vg);
 	}
 
 	void drawTrace(NVGcontext* vg, NVGcolor color, HistoryBuffer<float>& x, HistoryBuffer<float>& y) {
 		nvgSave(vg);
-		nvgGlobalCompositeOperation(vg, NVG_LIGHTER);
+		// nvgGlobalCompositeOperation(vg, NVG_LIGHTER);
 
 		// int n = _module->historyPoints;
 		// float beginRadius = std::max(1.0f, 2.0f - gRackScene->zoomWidget->zoom);
@@ -180,8 +206,8 @@ struct Walk2Display : TransparentWidget {
 		color.a = endAlpha;
 		for (int i = n - 1; i > 0; --i) {
 			nvgBeginPath(vg);
-			nvgMoveTo(vg, cvToPixel(_midX, _drawSize.x, x.value(i - 1)), cvToPixel(_midY, _drawSize.y, y.value(i - 1)));
-			nvgLineTo(vg, cvToPixel(_midX, _drawSize.x, x.value(i)), cvToPixel(_midY, _drawSize.y, y.value(i)));
+			nvgMoveTo(vg, cvToPixelX(_midX, _drawSize.x, x.value(i - 1)), cvToPixelY(_midY, _drawSize.y, y.value(i - 1)));
+			nvgLineTo(vg, cvToPixelX(_midX, _drawSize.x, x.value(i)), cvToPixelY(_midY, _drawSize.y, y.value(i)));
 			nvgStrokeWidth(vg, width);
 			nvgStrokeColor(vg, color);
 			nvgStroke(vg);
@@ -189,7 +215,7 @@ struct Walk2Display : TransparentWidget {
 			color.a += alphaStep;
 		}
 		nvgBeginPath(vg);
-		nvgCircle(vg, cvToPixel(_midX, _drawSize.x, x.value(0)), cvToPixel(_midY, _drawSize.y, y.value(0)), 0.5f * width);
+		nvgCircle(vg, cvToPixelX(_midX, _drawSize.x, x.value(0)), cvToPixelY(_midY, _drawSize.y, y.value(0)), 0.5f * width);
 		nvgStrokeColor(vg, color);
 		nvgFillColor(vg, color);
 		nvgStroke(vg);
@@ -198,8 +224,12 @@ struct Walk2Display : TransparentWidget {
 		nvgRestore(vg);
 	}
 
-	inline float cvToPixel(float mid, float extent, float cv) {
+	inline float cvToPixelX(float mid, float extent, float cv) {
 		return mid + 0.1f * extent * cv;
+	}
+
+	inline float cvToPixelY(float mid, float extent, float cv) {
+		return mid - 0.1f * extent * cv;
 	}
 };
 
