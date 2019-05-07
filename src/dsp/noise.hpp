@@ -93,6 +93,7 @@ struct RandomWalk : Generator {
 	float _lastOut = 0.0f;
 	float _damp;
 	float _bias = 0.0f;
+	float _biasDamp = 1.0f;
 	WhiteNoiseGenerator _noise;
 	LowPassFilter _filter;
 
