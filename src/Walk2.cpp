@@ -102,7 +102,7 @@ struct Walk2Display : TransparentWidget {
 	)
 	: _module(module)
 	, _size(size)
-	, _drawSize(_size.x - 2*_insetAround, _size.y - 2*_insetAround)
+	, _drawSize(2 * (_size.x - 2 * _insetAround), 2 * (_size.y - 2 * _insetAround))
 	, _midX(_insetAround + _drawSize.x/2)
 	, _midY(_insetAround + _drawSize.y/2)
 	, _font(Font::load(assetPlugin(plugin, "res/fonts/inconsolata.ttf")))
@@ -113,8 +113,14 @@ struct Walk2Display : TransparentWidget {
 		drawBackground(vg);
 		float strokeWidth = std::max(1.0f, 3 - gRackScene->zoomWidget->zoom);
 
+		float tx = 1.0f + (clamp(_module->_offsetX, -5.0f, 5.0f) / 5.0f);
+		tx *= -_drawSize.x / 4;
+		float ty = 1.0f - (clamp(_module->_offsetY, -5.0f, 5.0f) / 5.0f);
+		ty *= -_drawSize.y / 4;
+
 		nvgSave(vg);
-		nvgScissor(vg, _insetAround, _insetAround, _drawSize.x, _drawSize.y);
+		nvgScissor(vg, _insetAround, _insetAround, _drawSize.x / 2, _drawSize.y / 2);
+		nvgTranslate(vg, tx, ty);
 		drawAxes(vg, strokeWidth);
 		drawTrace(vg, _traceColor, _module->_outsX, _module->_outsY);
 		nvgRestore(vg);
@@ -132,7 +138,9 @@ struct Walk2Display : TransparentWidget {
 	}
 
 	void drawAxes(NVGcontext* vg, float strokeWidth) {
-		const float tick = 3.0f;
+		const float shortTick = 4.0f;
+		const float longTick = 8.0f;
+		float dot = 0.5f * strokeWidth;
 
 		nvgSave(vg);
 		nvgStrokeColor(vg, _axisColor);
@@ -148,8 +156,10 @@ struct Walk2Display : TransparentWidget {
 		nvgLineTo(vg, _midX, _insetAround + _drawSize.y);
 		nvgStroke(vg);
 
-		for (int i = 1; i <= 5; ++i) {
-			float x = (i * 1.0f/5.0f) * 0.5f * _drawSize.x;
+		for (int i = 1; i <= 10; ++i) {
+			float tick = i % 5 == 0 ? longTick : shortTick;
+
+			float x = (i * 0.1f) * 0.5f * _drawSize.x;
 			nvgBeginPath(vg);
 			nvgMoveTo(vg, _midX + x, _midY - tick);
 			nvgLineTo(vg, _midX + x, _midY + tick);
@@ -160,7 +170,7 @@ struct Walk2Display : TransparentWidget {
 			nvgLineTo(vg, _midX - x, _midY + tick);
 			nvgStroke(vg);
 
-			float y = (i * 1.0f/5.0f) * 0.5f * _drawSize.y;
+			float y = (i * 0.1f) * 0.5f * _drawSize.y;
 			nvgBeginPath(vg);
 			nvgMoveTo(vg, _midX - tick, _midY + y);
 			nvgLineTo(vg, _midX + tick, _midY + y);
@@ -170,7 +180,90 @@ struct Walk2Display : TransparentWidget {
 			nvgMoveTo(vg, _midX - tick, _midY - y);
 			nvgLineTo(vg, _midX + tick, _midY - y);
 			nvgStroke(vg);
+
+			for (int j = 1; j <= 10; ++j) {
+				float y = (j * 0.1f) * 0.5f * _drawSize.y;
+
+				nvgBeginPath(vg);
+				nvgMoveTo(vg, _midX + x - dot, _midY + y);
+				nvgLineTo(vg, _midX + x + dot, _midY + y);
+				nvgStroke(vg);
+
+				nvgBeginPath(vg);
+				nvgMoveTo(vg, _midX - x - dot, _midY + y);
+				nvgLineTo(vg, _midX - x + dot, _midY + y);
+				nvgStroke(vg);
+
+				nvgBeginPath(vg);
+				nvgMoveTo(vg, _midX - x - dot, _midY - y);
+				nvgLineTo(vg, _midX - x + dot, _midY - y);
+				nvgStroke(vg);
+
+				nvgBeginPath(vg);
+				nvgMoveTo(vg, _midX + x - dot, _midY - y);
+				nvgLineTo(vg, _midX + x + dot, _midY - y);
+				nvgStroke(vg);
+			}
 		}
+
+		const float tick = shortTick;
+		{
+			float x = _midX - _drawSize.x / 4;
+			float y = _midY - _drawSize.y / 4;
+
+			nvgBeginPath(vg);
+			nvgMoveTo(vg, x - tick, y);
+			nvgLineTo(vg, x + tick, y);
+			nvgStroke(vg);
+
+			nvgBeginPath(vg);
+			nvgMoveTo(vg, x, y - tick);
+			nvgLineTo(vg, x, y + tick);
+			nvgStroke(vg);
+		}
+		{
+			float x = _midX + _drawSize.x / 4;
+			float y = _midY - _drawSize.y / 4;
+
+			nvgBeginPath(vg);
+			nvgMoveTo(vg, x - tick, y);
+			nvgLineTo(vg, x + tick, y);
+			nvgStroke(vg);
+
+			nvgBeginPath(vg);
+			nvgMoveTo(vg, x, y - tick);
+			nvgLineTo(vg, x, y + tick);
+			nvgStroke(vg);
+		}
+		{
+			float x = _midX + _drawSize.x / 4;
+			float y = _midY + _drawSize.y / 4;
+
+			nvgBeginPath(vg);
+			nvgMoveTo(vg, x - tick, y);
+			nvgLineTo(vg, x + tick, y);
+			nvgStroke(vg);
+
+			nvgBeginPath(vg);
+			nvgMoveTo(vg, x, y - tick);
+			nvgLineTo(vg, x, y + tick);
+			nvgStroke(vg);
+		}
+		{
+			float x = _midX - _drawSize.x / 4;
+			float y = _midY + _drawSize.y / 4;
+
+			nvgBeginPath(vg);
+			nvgMoveTo(vg, x - tick, y);
+			nvgLineTo(vg, x + tick, y);
+			nvgStroke(vg);
+
+			nvgBeginPath(vg);
+			nvgMoveTo(vg, x, y - tick);
+			nvgLineTo(vg, x, y + tick);
+			nvgStroke(vg);
+		}
+
 
 		nvgRestore(vg);
 	}
@@ -225,11 +318,11 @@ struct Walk2Display : TransparentWidget {
 	}
 
 	inline float cvToPixelX(float mid, float extent, float cv) {
-		return mid + 0.1f * extent * cv;
+		return mid + 0.05f * extent * cv;
 	}
 
 	inline float cvToPixelY(float mid, float extent, float cv) {
-		return mid - 0.1f * extent * cv;
+		return mid - 0.05f * extent * cv;
 	}
 };
 
