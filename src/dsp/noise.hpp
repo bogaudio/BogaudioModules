@@ -111,6 +111,7 @@ struct RandomWalk : Generator {
 
 	void setParams(float sampleRate = 1000.0f, float change = 0.5f);
 	void jump();
+	void tell(float v);
 	float _next() override;
 };
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <atomic>
+
 #include "bogaudio.hpp"
 #include "dsp/buffer.hpp"
 #include "dsp/noise.hpp"
@@ -58,11 +60,13 @@ struct Walk2 : Module {
 	SlewLimiter _slewX, _slewY;
 	Trigger _jumpTrigger;
 	HistoryBuffer<float> _outsX, _outsY;
+	std::atomic<Vec*> _jumpTo;
 
 	Walk2()
 	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
 	, _outsX(historyPoints, 0.0f)
 	, _outsY(historyPoints, 0.0f)
+	, _jumpTo(NULL)
 	{
 		onReset();
 		onSampleRateChange();

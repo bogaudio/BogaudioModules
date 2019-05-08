@@ -58,7 +58,14 @@ void Walk2::step() {
 		}
 	}
 
-	if (_jumpTrigger.process(inputs[JUMP_INPUT].value)) {
+	Vec* jumpTo = _jumpTo;
+	if (jumpTo != NULL) {
+		_jumpTo = NULL;
+		_walkX.tell(jumpTo->x);
+		_walkY.tell(jumpTo->y);
+		delete jumpTo;
+	}
+	else if (_jumpTrigger.process(inputs[JUMP_INPUT].value)) {
 		_walkX.jump();
 		_walkY.jump();
 	}
@@ -107,6 +114,21 @@ struct Walk2Display : TransparentWidget {
 	, _midY(_insetAround + _drawSize.y/2)
 	, _font(Font::load(assetPlugin(plugin, "res/fonts/inconsolata.ttf")))
 	{
+	}
+
+	void onMouseDown(EventMouseDown& e) override {
+		if (
+			e.pos.x > _insetAround &&
+			e.pos.x < _size.x - _insetAround &&
+			e.pos.y > _insetAround &&
+			e.pos.y < _size.y - _insetAround
+		) {
+			float x = 20.0f * ((e.pos.x - _insetAround) / (float)_drawSize.x);
+			x -= 5.0f;
+			float y = 20.0f * ((e.pos.y - _insetAround) / (float)_drawSize.y);
+			y = 5.0f - y;
+			_module->_jumpTo = new Vec(x, y);
+		}
 	}
 
 	void draw(NVGcontext* vg) override {
@@ -263,7 +285,6 @@ struct Walk2Display : TransparentWidget {
 			nvgLineTo(vg, x, y + tick);
 			nvgStroke(vg);
 		}
-
 
 		nvgRestore(vg);
 	}
