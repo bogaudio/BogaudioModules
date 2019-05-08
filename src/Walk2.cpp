@@ -1,6 +1,10 @@
 
 #include "Walk2.hpp"
 
+#define ZOOM_OUT_KEY "zoom_out"
+#define GRID_KEY "grid"
+#define COLOR_KEY "color"
+
 void Walk2::onReset() {
 	_jumpTrigger.reset();
 	_modulationStep = modulationSteps;
@@ -9,6 +13,29 @@ void Walk2::onReset() {
 void Walk2::onSampleRateChange() {
 	_modulationStep = modulationSteps;
 	_historySteps = (historySeconds * engineGetSampleRate()) / historyPoints;
+}
+
+json_t* Walk2::toJson() {
+	json_t* root = json_object();
+	json_object_set_new(root, ZOOM_OUT_KEY, json_boolean(_zoomOut));
+	json_object_set_new(root, GRID_KEY, json_boolean(_drawGrid));
+	json_object_set_new(root, COLOR_KEY, json_integer(_traceColor));
+	return root;
+}
+
+void Walk2::fromJson(json_t* root) {
+	json_t* zo = json_object_get(root, ZOOM_OUT_KEY);
+	if (zo) {
+		_zoomOut = json_is_true(zo);
+	}
+	json_t* g = json_object_get(root, GRID_KEY);
+	if (g) {
+		_drawGrid = json_is_true(g);
+	}
+	json_t* c = json_object_get(root, COLOR_KEY);
+	if (c) {
+		_traceColor = (TraceColor)json_integer_value(c);
+	}
 }
 
 void Walk2::step() {
@@ -94,14 +121,14 @@ struct Walk2Display : TransparentWidget {
 	const int _insetAround = 4;
 
 	const NVGcolor _axisColor = nvgRGBA(0xff, 0xff, 0xff, 0x70);
-	const NVGcolor _textColor = nvgRGBA(0xff, 0xff, 0xff, 0xc0);
-	const NVGcolor _traceColor = nvgRGBA(0xff, 0x00, 0x00, 0xd0);
+	const NVGcolor _defaultTraceColor = nvgRGBA(0x00, 0xff, 0x00, 0xee);
 
 	Walk2* _module;
 	const Vec _size;
 	const Vec _drawSize;
 	int _midX, _midY;
 	std::shared_ptr<Font> _font;
+	NVGcolor _traceColor = _defaultTraceColor;
 
 	Walk2Display(
 		Walk2* module,
@@ -132,17 +159,41 @@ struct Walk2Display : TransparentWidget {
 	}
 
 	void draw(NVGcontext* vg) override {
+		switch (_module->_traceColor) {
+			case Walk2::ORANGE_TRACE_COLOR: {
+				_traceColor = nvgRGBA(0xff, 0x80, 0x00, 0xee);
+				break;
+			}
+			case Walk2::RED_TRACE_COLOR: {
+				_traceColor = nvgRGBA(0xff, 0x00, 0x00, 0xee);
+				break;
+			}
+			case Walk2::BLUE_TRACE_COLOR: {
+				_traceColor = nvgRGBA(0x00, 0xdd, 0xff, 0xee);
+				break;
+			}
+			case Walk2::GREEN_TRACE_COLOR:
+			default: {
+				_traceColor = _defaultTraceColor;
+			}
+		}
+
 		drawBackground(vg);
 		float strokeWidth = std::max(1.0f, 3 - gRackScene->zoomWidget->zoom);
 
-		float tx = 1.0f + (clamp(_module->_offsetX, -5.0f, 5.0f) / 5.0f);
-		tx *= -_drawSize.x / 4;
-		float ty = 1.0f - (clamp(_module->_offsetY, -5.0f, 5.0f) / 5.0f);
-		ty *= -_drawSize.y / 4;
-
 		nvgSave(vg);
 		nvgScissor(vg, _insetAround, _insetAround, _drawSize.x / 2, _drawSize.y / 2);
-		nvgTranslate(vg, tx, ty);
+		if (_module->_zoomOut) {
+			nvgScale(vg, 0.5f, 0.5f);
+			strokeWidth *= 2.0f;
+		}
+		else {
+			float tx = 1.0f + (clamp(_module->_offsetX, -5.0f, 5.0f) / 5.0f);
+			tx *= -_drawSize.x / 4;
+			float ty = 1.0f - (clamp(_module->_offsetY, -5.0f, 5.0f) / 5.0f);
+			ty *= -_drawSize.y / 4;
+			nvgTranslate(vg, tx, ty);
+		}
 		drawAxes(vg, strokeWidth);
 		drawTrace(vg, _traceColor, _module->_outsX, _module->_outsY);
 		nvgRestore(vg);
@@ -203,87 +254,91 @@ struct Walk2Display : TransparentWidget {
 			nvgLineTo(vg, _midX + tick, _midY - y);
 			nvgStroke(vg);
 
-			for (int j = 1; j <= 10; ++j) {
-				float y = (j * 0.1f) * 0.5f * _drawSize.y;
+			if (_module->_drawGrid) {
+				for (int j = 1; j <= 10; ++j) {
+					float y = (j * 0.1f) * 0.5f * _drawSize.y;
 
-				nvgBeginPath(vg);
-				nvgMoveTo(vg, _midX + x - dot, _midY + y);
-				nvgLineTo(vg, _midX + x + dot, _midY + y);
-				nvgStroke(vg);
+					nvgBeginPath(vg);
+					nvgMoveTo(vg, _midX + x - dot, _midY + y);
+					nvgLineTo(vg, _midX + x + dot, _midY + y);
+					nvgStroke(vg);
 
-				nvgBeginPath(vg);
-				nvgMoveTo(vg, _midX - x - dot, _midY + y);
-				nvgLineTo(vg, _midX - x + dot, _midY + y);
-				nvgStroke(vg);
+					nvgBeginPath(vg);
+					nvgMoveTo(vg, _midX - x - dot, _midY + y);
+					nvgLineTo(vg, _midX - x + dot, _midY + y);
+					nvgStroke(vg);
 
-				nvgBeginPath(vg);
-				nvgMoveTo(vg, _midX - x - dot, _midY - y);
-				nvgLineTo(vg, _midX - x + dot, _midY - y);
-				nvgStroke(vg);
+					nvgBeginPath(vg);
+					nvgMoveTo(vg, _midX - x - dot, _midY - y);
+					nvgLineTo(vg, _midX - x + dot, _midY - y);
+					nvgStroke(vg);
 
-				nvgBeginPath(vg);
-				nvgMoveTo(vg, _midX + x - dot, _midY - y);
-				nvgLineTo(vg, _midX + x + dot, _midY - y);
-				nvgStroke(vg);
+					nvgBeginPath(vg);
+					nvgMoveTo(vg, _midX + x - dot, _midY - y);
+					nvgLineTo(vg, _midX + x + dot, _midY - y);
+					nvgStroke(vg);
+				}
 			}
 		}
 
-		const float tick = shortTick;
-		{
-			float x = _midX - _drawSize.x / 4;
-			float y = _midY - _drawSize.y / 4;
+		if (_module->_drawGrid) {
+			const float tick = shortTick;
+			{
+				float x = _midX - _drawSize.x / 4;
+				float y = _midY - _drawSize.y / 4;
 
-			nvgBeginPath(vg);
-			nvgMoveTo(vg, x - tick, y);
-			nvgLineTo(vg, x + tick, y);
-			nvgStroke(vg);
+				nvgBeginPath(vg);
+				nvgMoveTo(vg, x - tick, y);
+				nvgLineTo(vg, x + tick, y);
+				nvgStroke(vg);
 
-			nvgBeginPath(vg);
-			nvgMoveTo(vg, x, y - tick);
-			nvgLineTo(vg, x, y + tick);
-			nvgStroke(vg);
-		}
-		{
-			float x = _midX + _drawSize.x / 4;
-			float y = _midY - _drawSize.y / 4;
+				nvgBeginPath(vg);
+				nvgMoveTo(vg, x, y - tick);
+				nvgLineTo(vg, x, y + tick);
+				nvgStroke(vg);
+			}
+			{
+				float x = _midX + _drawSize.x / 4;
+				float y = _midY - _drawSize.y / 4;
 
-			nvgBeginPath(vg);
-			nvgMoveTo(vg, x - tick, y);
-			nvgLineTo(vg, x + tick, y);
-			nvgStroke(vg);
+				nvgBeginPath(vg);
+				nvgMoveTo(vg, x - tick, y);
+				nvgLineTo(vg, x + tick, y);
+				nvgStroke(vg);
 
-			nvgBeginPath(vg);
-			nvgMoveTo(vg, x, y - tick);
-			nvgLineTo(vg, x, y + tick);
-			nvgStroke(vg);
-		}
-		{
-			float x = _midX + _drawSize.x / 4;
-			float y = _midY + _drawSize.y / 4;
+				nvgBeginPath(vg);
+				nvgMoveTo(vg, x, y - tick);
+				nvgLineTo(vg, x, y + tick);
+				nvgStroke(vg);
+			}
+			{
+				float x = _midX + _drawSize.x / 4;
+				float y = _midY + _drawSize.y / 4;
 
-			nvgBeginPath(vg);
-			nvgMoveTo(vg, x - tick, y);
-			nvgLineTo(vg, x + tick, y);
-			nvgStroke(vg);
+				nvgBeginPath(vg);
+				nvgMoveTo(vg, x - tick, y);
+				nvgLineTo(vg, x + tick, y);
+				nvgStroke(vg);
 
-			nvgBeginPath(vg);
-			nvgMoveTo(vg, x, y - tick);
-			nvgLineTo(vg, x, y + tick);
-			nvgStroke(vg);
-		}
-		{
-			float x = _midX - _drawSize.x / 4;
-			float y = _midY + _drawSize.y / 4;
+				nvgBeginPath(vg);
+				nvgMoveTo(vg, x, y - tick);
+				nvgLineTo(vg, x, y + tick);
+				nvgStroke(vg);
+			}
+			{
+				float x = _midX - _drawSize.x / 4;
+				float y = _midY + _drawSize.y / 4;
 
-			nvgBeginPath(vg);
-			nvgMoveTo(vg, x - tick, y);
-			nvgLineTo(vg, x + tick, y);
-			nvgStroke(vg);
+				nvgBeginPath(vg);
+				nvgMoveTo(vg, x - tick, y);
+				nvgLineTo(vg, x + tick, y);
+				nvgStroke(vg);
 
-			nvgBeginPath(vg);
-			nvgMoveTo(vg, x, y - tick);
-			nvgLineTo(vg, x, y + tick);
-			nvgStroke(vg);
+				nvgBeginPath(vg);
+				nvgMoveTo(vg, x, y - tick);
+				nvgLineTo(vg, x, y + tick);
+				nvgStroke(vg);
+			}
 		}
 
 		nvgRestore(vg);
@@ -313,6 +368,10 @@ struct Walk2Display : TransparentWidget {
 		int n = _module->historyPoints;
 		float beginWidth = std::max(1.0f, 4.0f - gRackScene->zoomWidget->zoom);
 		float endWidth = std::max(0.5f, 2.0f - gRackScene->zoomWidget->zoom);
+		if (_module->_zoomOut) {
+			beginWidth *= 2.0f;
+			endWidth *= 2.0f;
+		}
 		float widthStep = (beginWidth - endWidth) / (float)n;
 		float width = endWidth;
 		float endAlpha = 0.1f;
@@ -344,6 +403,62 @@ struct Walk2Display : TransparentWidget {
 
 	inline float cvToPixelY(float mid, float extent, float cv) {
 		return mid - 0.05f * extent * cv;
+	}
+};
+
+struct ZoomOutMenuItem : MenuItem {
+	Walk2* _module;
+	const bool _zoomOut;
+
+	ZoomOutMenuItem(Walk2* module, const char* label, bool zoomOut)
+	: _module(module)
+	, _zoomOut(zoomOut)
+	{
+		this->text = label;
+	}
+
+	void onAction(EventAction &e) override {
+		_module->_zoomOut = _zoomOut;
+	}
+
+	void step() override {
+		rightText = _module->_zoomOut == _zoomOut ? "✔" : "";
+	}
+};
+
+struct GridMenuItem : MenuItem {
+	Walk2* _module;
+
+	GridMenuItem(Walk2* module, const char* label) : _module(module) {
+		this->text = label;
+	}
+
+	void onAction(EventAction &e) override {
+		_module->_drawGrid = !_module->_drawGrid;
+	}
+
+	void step() override {
+		rightText = _module->_drawGrid ? "✔" : "";
+	}
+};
+
+struct ColorMenuItem : MenuItem {
+	Walk2* _module;
+	const Walk2::TraceColor _color;
+
+	ColorMenuItem(Walk2* module, const char* label, Walk2::TraceColor color)
+	: _module(module)
+	, _color(color)
+	{
+		this->text = label;
+	}
+
+	void onAction(EventAction &e) override {
+		_module->_traceColor = _color;
+	}
+
+	void step() override {
+		rightText = _module->_traceColor == _color ? "✔" : "";
 	}
 };
 
@@ -414,6 +529,22 @@ struct Walk2Widget : ModuleWidget {
 		addOutput(Port::create<Port24>(outXOutputPosition, Port::OUTPUT, module, Walk2::OUT_X_OUTPUT));
 		addOutput(Port::create<Port24>(outYOutputPosition, Port::OUTPUT, module, Walk2::OUT_Y_OUTPUT));
 		addOutput(Port::create<Port24>(distanceOutputPosition, Port::OUTPUT, module, Walk2::DISTANCE_OUTPUT));
+	}
+
+	void appendContextMenu(Menu* menu) override {
+		Walk2* w = dynamic_cast<Walk2*>(module);
+		assert(w);
+
+		menu->addChild(new MenuLabel());
+		menu->addChild(new ZoomOutMenuItem(w, "Display range: +/-5V", false));
+		menu->addChild(new ZoomOutMenuItem(w, "Display range: +/-10V", true));
+		menu->addChild(new MenuLabel());
+		menu->addChild(new GridMenuItem(w, "Show grid"));
+		menu->addChild(new MenuLabel());
+		menu->addChild(new ColorMenuItem(w, "Trace color: green", Walk2::GREEN_TRACE_COLOR));
+		menu->addChild(new ColorMenuItem(w, "Trace color: orange", Walk2::ORANGE_TRACE_COLOR));
+		menu->addChild(new ColorMenuItem(w, "Trace color: red", Walk2::RED_TRACE_COLOR));
+		menu->addChild(new ColorMenuItem(w, "Trace color: blue", Walk2::BLUE_TRACE_COLOR));
 	}
 };
 

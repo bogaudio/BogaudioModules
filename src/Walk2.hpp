@@ -62,6 +62,16 @@ struct Walk2 : Module {
 	HistoryBuffer<float> _outsX, _outsY;
 	std::atomic<Vec*> _jumpTo;
 
+	enum TraceColor {
+		GREEN_TRACE_COLOR,
+		ORANGE_TRACE_COLOR,
+		RED_TRACE_COLOR,
+		BLUE_TRACE_COLOR
+	};
+	bool _zoomOut = false;
+	bool _drawGrid = true;
+	TraceColor _traceColor = GREEN_TRACE_COLOR;
+
 	Walk2()
 	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
 	, _outsX(historyPoints, 0.0f)
@@ -74,6 +84,8 @@ struct Walk2 : Module {
 
 	void onReset() override;
 	void onSampleRateChange() override;
+	json_t* toJson() override;
+	void fromJson(json_t* root) override;
 	void step() override;
 };
 
