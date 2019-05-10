@@ -20,8 +20,7 @@ void Walk::step() {
 		if (inputs[RATE_INPUT].active) {
 			rate *= clamp(inputs[RATE_INPUT].value / 10.0f, 0.0f, 1.0f);
 		}
-		rate *= rate;
-		rate *= rate;
+		rate = 0.2f * powf(rate, 5.0f);
 		_walk.setParams(engineGetSampleRate(), rate);
 
 		_offset = params[OFFSET_PARAM].value;

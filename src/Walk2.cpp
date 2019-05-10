@@ -38,6 +38,10 @@ void Walk2::fromJson(json_t* root) {
 	}
 }
 
+inline float scaleRate(float rate) {
+	return 0.2f * powf(rate, 5.0f);
+}
+
 void Walk2::step() {
 	++_modulationStep;
 	if (_modulationStep >= modulationSteps) {
@@ -48,8 +52,7 @@ void Walk2::step() {
 		if (inputs[RATE_X_INPUT].active) {
 			rateX *= clamp(inputs[RATE_X_INPUT].value / 10.0f, 0.0f, 1.0f);
 		}
-		rateX *= rateX;
-		rateX *= rateX;
+		rateX = scaleRate(rateX);
 		_walkX.setParams(sampleRate, rateX);
 		_slewX.setParams(sampleRate, std::max((1.0f - rateX) * 100.0f, 0.0f), 10.0f);
 
@@ -68,8 +71,7 @@ void Walk2::step() {
 		if (inputs[RATE_Y_INPUT].active) {
 			rateY *= clamp(inputs[RATE_Y_INPUT].value / 10.0f, 0.0f, 1.0f);
 		}
-		rateY *= rateY;
-		rateY *= rateY;
+		rateY = scaleRate(rateY);
 		_walkY.setParams(sampleRate, rateY);
 		_slewY.setParams(sampleRate, std::max((1.0f - rateY) * 100.0f, 0.0f), 10.0f);
 
