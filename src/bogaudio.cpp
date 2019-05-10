@@ -92,10 +92,10 @@ void init(rack::Plugin *p) {
 	p->addModel(modelADSR);
 	p->addModel(modelFollow);
 
-#ifdef EXPERIMENTAL
+	p->addModel(modelNoise);
+	p->addModel(modelSampleHold);
 	p->addModel(modelWalk2);
 	p->addModel(modelWalk);
-#endif
 
 	p->addModel(modelMix8);
 	p->addModel(modelMix4);
@@ -133,9 +133,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelFlipFlop);
 	p->addModel(modelManual);
 	p->addModel(modelMult);
-	p->addModel(modelNoise);
 	p->addModel(modelOffset);
-	p->addModel(modelSampleHold);
 	p->addModel(modelSlew);
 	p->addModel(modelSums);
 	p->addModel(modelSwitch);
