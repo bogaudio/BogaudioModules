@@ -34,7 +34,7 @@ void EightOne::step() {
 	bool timer = _timer.next();
 	bool clock = _clock.process(inputs[CLOCK_INPUT].value) && !timer;
 
-	int steps = params[STEPS_PARAM].value;
+	int steps = clamp(params[STEPS_PARAM].value, 1.0f, 8.0f);
 	int reverse = 1 - 2 * (params[DIRECTION_PARAM].value == 0.0f);
 	_step = (_step + reverse * clock) % steps;
 	_step += (_step < 0) * steps;
