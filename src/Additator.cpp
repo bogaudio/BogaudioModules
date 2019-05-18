@@ -241,18 +241,18 @@ struct AdditatorWidget : ModuleWidget {
 		));
 		addParam(createParam<StatefulButton9>(phaseParamPosition, module, Additator::PHASE_PARAM, 1.0, 2.0, 1.0));
 
-		addInput(createPort<Port24>(partialsInputPosition, PortWidget::INPUT, module, Additator::PARTIALS_INPUT));
-		addInput(createPort<Port24>(widthInputPosition, PortWidget::INPUT, module, Additator::WIDTH_INPUT));
-		addInput(createPort<Port24>(oddSkewInputPosition, PortWidget::INPUT, module, Additator::ODD_SKEW_INPUT));
-		addInput(createPort<Port24>(evenSkewInputPosition, PortWidget::INPUT, module, Additator::EVEN_SKEW_INPUT));
-		addInput(createPort<Port24>(gainInputPosition, PortWidget::INPUT, module, Additator::GAIN_INPUT));
-		addInput(createPort<Port24>(decayInputPosition, PortWidget::INPUT, module, Additator::DECAY_INPUT));
-		addInput(createPort<Port24>(balanceInputPosition, PortWidget::INPUT, module, Additator::BALANCE_INPUT));
-		addInput(createPort<Port24>(filterInputPosition, PortWidget::INPUT, module, Additator::FILTER_INPUT));
-		addInput(createPort<Port24>(pitchInputPosition, PortWidget::INPUT, module, Additator::PITCH_INPUT));
-		addInput(createPort<Port24>(syncInputPosition, PortWidget::INPUT, module, Additator::SYNC_INPUT));
+		addInput(createInput<Port24>(partialsInputPosition, module, Additator::PARTIALS_INPUT));
+		addInput(createInput<Port24>(widthInputPosition, module, Additator::WIDTH_INPUT));
+		addInput(createInput<Port24>(oddSkewInputPosition, module, Additator::ODD_SKEW_INPUT));
+		addInput(createInput<Port24>(evenSkewInputPosition, module, Additator::EVEN_SKEW_INPUT));
+		addInput(createInput<Port24>(gainInputPosition, module, Additator::GAIN_INPUT));
+		addInput(createInput<Port24>(decayInputPosition, module, Additator::DECAY_INPUT));
+		addInput(createInput<Port24>(balanceInputPosition, module, Additator::BALANCE_INPUT));
+		addInput(createInput<Port24>(filterInputPosition, module, Additator::FILTER_INPUT));
+		addInput(createInput<Port24>(pitchInputPosition, module, Additator::PITCH_INPUT));
+		addInput(createInput<Port24>(syncInputPosition, module, Additator::SYNC_INPUT));
 
-		addOutput(createPort<Port24>(audioOutputPosition, PortWidget::OUTPUT, module, Additator::AUDIO_OUTPUT));
+		addOutput(createOutput<Port24>(audioOutputPosition, module, Additator::AUDIO_OUTPUT));
 
 		addChild(createLight<SmallLight<GreenLight>>(sineLightPosition, module, Additator::SINE_LIGHT));
 		addChild(createLight<SmallLight<GreenLight>>(cosineLightPosition, module, Additator::COSINE_LIGHT));

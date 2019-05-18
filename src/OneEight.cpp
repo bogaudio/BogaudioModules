@@ -129,19 +129,19 @@ struct OneEightWidget : ModuleWidget {
 			addParam(w);
 		}
 
-		addInput(createPort<Port24>(clockInputPosition, PortWidget::INPUT, module, OneEight::CLOCK_INPUT));
-		addInput(createPort<Port24>(resetInputPosition, PortWidget::INPUT, module, OneEight::RESET_INPUT));
-		addInput(createPort<Port24>(selectInputPosition, PortWidget::INPUT, module, OneEight::SELECT_INPUT));
-		addInput(createPort<Port24>(inInputPosition, PortWidget::INPUT, module, OneEight::IN_INPUT));
+		addInput(createInput<Port24>(clockInputPosition, module, OneEight::CLOCK_INPUT));
+		addInput(createInput<Port24>(resetInputPosition, module, OneEight::RESET_INPUT));
+		addInput(createInput<Port24>(selectInputPosition, module, OneEight::SELECT_INPUT));
+		addInput(createInput<Port24>(inInputPosition, module, OneEight::IN_INPUT));
 
-		addOutput(createPort<Port24>(out1OutputPosition, PortWidget::OUTPUT, module, OneEight::OUT1_OUTPUT));
-		addOutput(createPort<Port24>(out2OutputPosition, PortWidget::OUTPUT, module, OneEight::OUT2_OUTPUT));
-		addOutput(createPort<Port24>(out3OutputPosition, PortWidget::OUTPUT, module, OneEight::OUT3_OUTPUT));
-		addOutput(createPort<Port24>(out4OutputPosition, PortWidget::OUTPUT, module, OneEight::OUT4_OUTPUT));
-		addOutput(createPort<Port24>(out5OutputPosition, PortWidget::OUTPUT, module, OneEight::OUT5_OUTPUT));
-		addOutput(createPort<Port24>(out6OutputPosition, PortWidget::OUTPUT, module, OneEight::OUT6_OUTPUT));
-		addOutput(createPort<Port24>(out7OutputPosition, PortWidget::OUTPUT, module, OneEight::OUT7_OUTPUT));
-		addOutput(createPort<Port24>(out8OutputPosition, PortWidget::OUTPUT, module, OneEight::OUT8_OUTPUT));
+		addOutput(createOutput<Port24>(out1OutputPosition, module, OneEight::OUT1_OUTPUT));
+		addOutput(createOutput<Port24>(out2OutputPosition, module, OneEight::OUT2_OUTPUT));
+		addOutput(createOutput<Port24>(out3OutputPosition, module, OneEight::OUT3_OUTPUT));
+		addOutput(createOutput<Port24>(out4OutputPosition, module, OneEight::OUT4_OUTPUT));
+		addOutput(createOutput<Port24>(out5OutputPosition, module, OneEight::OUT5_OUTPUT));
+		addOutput(createOutput<Port24>(out6OutputPosition, module, OneEight::OUT6_OUTPUT));
+		addOutput(createOutput<Port24>(out7OutputPosition, module, OneEight::OUT7_OUTPUT));
+		addOutput(createOutput<Port24>(out8OutputPosition, module, OneEight::OUT8_OUTPUT));
 
 		addChild(createLight<SmallLight<GreenLight>>(out1LightPosition, module, OneEight::OUT1_LIGHT));
 		addChild(createLight<SmallLight<GreenLight>>(out2LightPosition, module, OneEight::OUT2_LIGHT));

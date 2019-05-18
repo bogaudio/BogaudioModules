@@ -232,19 +232,19 @@ struct PressorWidget : ModuleWidget {
 		addParam(createParam<SliderSwitch2State14>(dectectorModeParamPosition, module, Pressor::DECTECTOR_MODE_PARAM, 0.0, 1.0, 1.0));
 		addParam(createParam<SliderSwitch2State14>(kneeParamPosition, module, Pressor::KNEE_PARAM, 0.95, 1.0, 1.0));
 
-		addInput(createPort<Port24>(leftInputPosition, PortWidget::INPUT, module, Pressor::LEFT_INPUT));
-		addInput(createPort<Port24>(sidechainInputPosition, PortWidget::INPUT, module, Pressor::SIDECHAIN_INPUT));
-		addInput(createPort<Port24>(thresholdInputPosition, PortWidget::INPUT, module, Pressor::THRESHOLD_INPUT));
-		addInput(createPort<Port24>(ratioInputPosition, PortWidget::INPUT, module, Pressor::RATIO_INPUT));
-		addInput(createPort<Port24>(rightInputPosition, PortWidget::INPUT, module, Pressor::RIGHT_INPUT));
-		addInput(createPort<Port24>(attackInputPosition, PortWidget::INPUT, module, Pressor::ATTACK_INPUT));
-		addInput(createPort<Port24>(releaseInputPosition, PortWidget::INPUT, module, Pressor::RELEASE_INPUT));
-		addInput(createPort<Port24>(inputGainInputPosition, PortWidget::INPUT, module, Pressor::INPUT_GAIN_INPUT));
-		addInput(createPort<Port24>(outputGainInputPosition, PortWidget::INPUT, module, Pressor::OUTPUT_GAIN_INPUT));
+		addInput(createInput<Port24>(leftInputPosition, module, Pressor::LEFT_INPUT));
+		addInput(createInput<Port24>(sidechainInputPosition, module, Pressor::SIDECHAIN_INPUT));
+		addInput(createInput<Port24>(thresholdInputPosition, module, Pressor::THRESHOLD_INPUT));
+		addInput(createInput<Port24>(ratioInputPosition, module, Pressor::RATIO_INPUT));
+		addInput(createInput<Port24>(rightInputPosition, module, Pressor::RIGHT_INPUT));
+		addInput(createInput<Port24>(attackInputPosition, module, Pressor::ATTACK_INPUT));
+		addInput(createInput<Port24>(releaseInputPosition, module, Pressor::RELEASE_INPUT));
+		addInput(createInput<Port24>(inputGainInputPosition, module, Pressor::INPUT_GAIN_INPUT));
+		addInput(createInput<Port24>(outputGainInputPosition, module, Pressor::OUTPUT_GAIN_INPUT));
 
-		addOutput(createPort<Port24>(envelopeOutputPosition, PortWidget::OUTPUT, module, Pressor::ENVELOPE_OUTPUT));
-		addOutput(createPort<Port24>(leftOutputPosition, PortWidget::OUTPUT, module, Pressor::LEFT_OUTPUT));
-		addOutput(createPort<Port24>(rightOutputPosition, PortWidget::OUTPUT, module, Pressor::RIGHT_OUTPUT));
+		addOutput(createOutput<Port24>(envelopeOutputPosition, module, Pressor::ENVELOPE_OUTPUT));
+		addOutput(createOutput<Port24>(leftOutputPosition, module, Pressor::LEFT_OUTPUT));
+		addOutput(createOutput<Port24>(rightOutputPosition, module, Pressor::RIGHT_OUTPUT));
 	}
 };
 

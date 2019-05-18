@@ -102,13 +102,13 @@ struct NsgtWidget : ModuleWidget {
 		addParam(createParam<Knob38>(ratioParamPosition, module, Nsgt::RATIO_PARAM, 0.0, 1.0, 0.552));
 		addParam(createParam<SliderSwitch2State14>(kneeParamPosition, module, Nsgt::KNEE_PARAM, 0.95, 1.0, 1.0));
 
-		addInput(createPort<Port24>(leftInputPosition, PortWidget::INPUT, module, Nsgt::LEFT_INPUT));
-		addInput(createPort<Port24>(rightInputPosition, PortWidget::INPUT, module, Nsgt::RIGHT_INPUT));
-		addInput(createPort<Port24>(thresholdInputPosition, PortWidget::INPUT, module, Nsgt::THRESHOLD_INPUT));
-		addInput(createPort<Port24>(ratioInputPosition, PortWidget::INPUT, module, Nsgt::RATIO_INPUT));
+		addInput(createInput<Port24>(leftInputPosition, module, Nsgt::LEFT_INPUT));
+		addInput(createInput<Port24>(rightInputPosition, module, Nsgt::RIGHT_INPUT));
+		addInput(createInput<Port24>(thresholdInputPosition, module, Nsgt::THRESHOLD_INPUT));
+		addInput(createInput<Port24>(ratioInputPosition, module, Nsgt::RATIO_INPUT));
 
-		addOutput(createPort<Port24>(leftOutputPosition, PortWidget::OUTPUT, module, Nsgt::LEFT_OUTPUT));
-		addOutput(createPort<Port24>(rightOutputPosition, PortWidget::OUTPUT, module, Nsgt::RIGHT_OUTPUT));
+		addOutput(createOutput<Port24>(leftOutputPosition, module, Nsgt::LEFT_OUTPUT));
+		addOutput(createOutput<Port24>(rightOutputPosition, module, Nsgt::RIGHT_OUTPUT));
 	}
 };
 

@@ -87,7 +87,7 @@ struct Blank6Widget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(0, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 365)));
 
-		addInput(createPort<BlankPort24>(Vec(33, 346), PortWidget::INPUT, module, Blank6::IN_INPUT));
+		addInput(createInput<BlankPort24>(Vec(33, 346), module, Blank6::IN_INPUT));
 	}
 };
 

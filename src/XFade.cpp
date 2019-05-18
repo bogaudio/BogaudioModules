@@ -76,11 +76,11 @@ struct XFadeWidget : ModuleWidget {
 		}
 		addParam(createParam<StatefulButton9>(linearParamPosition, module, XFade::LINEAR_PARAM, 0.0, 1.0, 0.0));
 
-		addInput(createPort<Port24>(mixInputPosition, PortWidget::INPUT, module, XFade::MIX_INPUT));
-		addInput(createPort<Port24>(aInputPosition, PortWidget::INPUT, module, XFade::A_INPUT));
-		addInput(createPort<Port24>(bInputPosition, PortWidget::INPUT, module, XFade::B_INPUT));
+		addInput(createInput<Port24>(mixInputPosition, module, XFade::MIX_INPUT));
+		addInput(createInput<Port24>(aInputPosition, module, XFade::A_INPUT));
+		addInput(createInput<Port24>(bInputPosition, module, XFade::B_INPUT));
 
-		addOutput(createPort<Port24>(outOutputPosition, PortWidget::OUTPUT, module, XFade::OUT_OUTPUT));
+		addOutput(createOutput<Port24>(outOutputPosition, module, XFade::OUT_OUTPUT));
 
 		addChild(createLight<SmallLight<GreenLight>>(linearLightPosition, module, XFade::LINEAR_LIGHT));
 	}

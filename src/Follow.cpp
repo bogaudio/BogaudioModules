@@ -52,11 +52,11 @@ struct FollowWidget : ModuleWidget {
 		addParam(createParam<Knob29>(responseParamPosition, module, Follow::RESPONSE_PARAM, 0.0, 1.0, 0.3));
 		addParam(createParam<Knob29>(scaleParamPosition, module, Follow::SCALE_PARAM, 0.0, 1.0, 1.0));
 
-		addInput(createPort<Port24>(responseInputPosition, PortWidget::INPUT, module, Follow::RESPONSE_INPUT));
-		addInput(createPort<Port24>(scaleInputPosition, PortWidget::INPUT, module, Follow::SCALE_INPUT));
-		addInput(createPort<Port24>(inInputPosition, PortWidget::INPUT, module, Follow::IN_INPUT));
+		addInput(createInput<Port24>(responseInputPosition, module, Follow::RESPONSE_INPUT));
+		addInput(createInput<Port24>(scaleInputPosition, module, Follow::SCALE_INPUT));
+		addInput(createInput<Port24>(inInputPosition, module, Follow::IN_INPUT));
 
-		addOutput(createPort<Port24>(outOutputPosition, PortWidget::OUTPUT, module, Follow::OUT_OUTPUT));
+		addOutput(createOutput<Port24>(outOutputPosition, module, Follow::OUT_OUTPUT));
 	}
 };
 

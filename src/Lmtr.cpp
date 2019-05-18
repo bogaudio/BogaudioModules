@@ -98,13 +98,13 @@ struct LmtrWidget : ModuleWidget {
 		addParam(createParam<Knob38>(outputGainParamPosition, module, Lmtr::OUTPUT_GAIN_PARAM, 0.0, 1.0, 0.0));
 		addParam(createParam<SliderSwitch2State14>(kneeParamPosition, module, Lmtr::KNEE_PARAM, 0.95, 1.0, 0.0));
 
-		addInput(createPort<Port24>(leftInputPosition, PortWidget::INPUT, module, Lmtr::LEFT_INPUT));
-		addInput(createPort<Port24>(rightInputPosition, PortWidget::INPUT, module, Lmtr::RIGHT_INPUT));
-		addInput(createPort<Port24>(thresholdInputPosition, PortWidget::INPUT, module, Lmtr::THRESHOLD_INPUT));
-		addInput(createPort<Port24>(outputGainInputPosition, PortWidget::INPUT, module, Lmtr::OUTPUT_GAIN_INPUT));
+		addInput(createInput<Port24>(leftInputPosition, module, Lmtr::LEFT_INPUT));
+		addInput(createInput<Port24>(rightInputPosition, module, Lmtr::RIGHT_INPUT));
+		addInput(createInput<Port24>(thresholdInputPosition, module, Lmtr::THRESHOLD_INPUT));
+		addInput(createInput<Port24>(outputGainInputPosition, module, Lmtr::OUTPUT_GAIN_INPUT));
 
-		addOutput(createPort<Port24>(leftOutputPosition, PortWidget::OUTPUT, module, Lmtr::LEFT_OUTPUT));
-		addOutput(createPort<Port24>(rightOutputPosition, PortWidget::OUTPUT, module, Lmtr::RIGHT_OUTPUT));
+		addOutput(createOutput<Port24>(leftOutputPosition, module, Lmtr::LEFT_OUTPUT));
+		addOutput(createOutput<Port24>(rightOutputPosition, module, Lmtr::RIGHT_OUTPUT));
 	}
 };
 

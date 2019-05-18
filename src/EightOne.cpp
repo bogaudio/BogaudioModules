@@ -130,19 +130,19 @@ struct EightOneWidget : ModuleWidget {
 			addParam(w);
 		}
 
-		addInput(createPort<Port24>(in1InputPosition, PortWidget::INPUT, module, EightOne::IN1_INPUT));
-		addInput(createPort<Port24>(in2InputPosition, PortWidget::INPUT, module, EightOne::IN2_INPUT));
-		addInput(createPort<Port24>(in3InputPosition, PortWidget::INPUT, module, EightOne::IN3_INPUT));
-		addInput(createPort<Port24>(in4InputPosition, PortWidget::INPUT, module, EightOne::IN4_INPUT));
-		addInput(createPort<Port24>(in5InputPosition, PortWidget::INPUT, module, EightOne::IN5_INPUT));
-		addInput(createPort<Port24>(in6InputPosition, PortWidget::INPUT, module, EightOne::IN6_INPUT));
-		addInput(createPort<Port24>(in7InputPosition, PortWidget::INPUT, module, EightOne::IN7_INPUT));
-		addInput(createPort<Port24>(in8InputPosition, PortWidget::INPUT, module, EightOne::IN8_INPUT));
-		addInput(createPort<Port24>(clockInputPosition, PortWidget::INPUT, module, EightOne::CLOCK_INPUT));
-		addInput(createPort<Port24>(resetInputPosition, PortWidget::INPUT, module, EightOne::RESET_INPUT));
-		addInput(createPort<Port24>(selectInputPosition, PortWidget::INPUT, module, EightOne::SELECT_INPUT));
+		addInput(createInput<Port24>(in1InputPosition, module, EightOne::IN1_INPUT));
+		addInput(createInput<Port24>(in2InputPosition, module, EightOne::IN2_INPUT));
+		addInput(createInput<Port24>(in3InputPosition, module, EightOne::IN3_INPUT));
+		addInput(createInput<Port24>(in4InputPosition, module, EightOne::IN4_INPUT));
+		addInput(createInput<Port24>(in5InputPosition, module, EightOne::IN5_INPUT));
+		addInput(createInput<Port24>(in6InputPosition, module, EightOne::IN6_INPUT));
+		addInput(createInput<Port24>(in7InputPosition, module, EightOne::IN7_INPUT));
+		addInput(createInput<Port24>(in8InputPosition, module, EightOne::IN8_INPUT));
+		addInput(createInput<Port24>(clockInputPosition, module, EightOne::CLOCK_INPUT));
+		addInput(createInput<Port24>(resetInputPosition, module, EightOne::RESET_INPUT));
+		addInput(createInput<Port24>(selectInputPosition, module, EightOne::SELECT_INPUT));
 
-		addOutput(createPort<Port24>(outOutputPosition, PortWidget::OUTPUT, module, EightOne::OUT_OUTPUT));
+		addOutput(createOutput<Port24>(outOutputPosition, module, EightOne::OUT_OUTPUT));
 
 		addChild(createLight<SmallLight<GreenLight>>(in1LightPosition, module, EightOne::IN1_LIGHT));
 		addChild(createLight<SmallLight<GreenLight>>(in2LightPosition, module, EightOne::IN2_LIGHT));

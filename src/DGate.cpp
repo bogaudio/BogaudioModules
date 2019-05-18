@@ -106,10 +106,10 @@ struct DGateWidget : ModuleWidget {
 		addParam(createParam<SliderSwitch2State14>(loopParamPosition, module, DGate::LOOP_PARAM, 0.0, 1.0, 1.0));
 		addParam(createParam<Button18>(triggerParamPosition, module, DGate::TRIGGER_PARAM, 0.0, 1.0, 0.0));
 
-		addInput(createPort<Port24>(triggerInputPosition, PortWidget::INPUT, module, DGate::TRIGGER_INPUT));
+		addInput(createInput<Port24>(triggerInputPosition, module, DGate::TRIGGER_INPUT));
 
-		addOutput(createPort<Port24>(gateOutputPosition, PortWidget::OUTPUT, module, DGate::GATE_OUTPUT));
-		addOutput(createPort<Port24>(endOutputPosition, PortWidget::OUTPUT, module, DGate::END_OUTPUT));
+		addOutput(createOutput<Port24>(gateOutputPosition, module, DGate::GATE_OUTPUT));
+		addOutput(createOutput<Port24>(endOutputPosition, module, DGate::END_OUTPUT));
 
 		addChild(createLight<TinyLight<GreenLight>>(delayLightPosition, module, DGate::DELAY_LIGHT));
 		addChild(createLight<TinyLight<GreenLight>>(gateLightPosition, module, DGate::GATE_LIGHT));

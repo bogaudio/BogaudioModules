@@ -138,11 +138,11 @@ struct AddrSeqWidget : ModuleWidget {
 		addParam(createParam<Knob16>(out7ParamPosition, module, AddrSeq::OUT7_PARAM, -1.0, 1.0, 0.0));
 		addParam(createParam<Knob16>(out8ParamPosition, module, AddrSeq::OUT8_PARAM, -1.0, 1.0, 0.0));
 
-		addInput(createPort<Port24>(clockInputPosition, PortWidget::INPUT, module, AddrSeq::CLOCK_INPUT));
-		addInput(createPort<Port24>(resetInputPosition, PortWidget::INPUT, module, AddrSeq::RESET_INPUT));
-		addInput(createPort<Port24>(selectInputPosition, PortWidget::INPUT, module, AddrSeq::SELECT_INPUT));
+		addInput(createInput<Port24>(clockInputPosition, module, AddrSeq::CLOCK_INPUT));
+		addInput(createInput<Port24>(resetInputPosition, module, AddrSeq::RESET_INPUT));
+		addInput(createInput<Port24>(selectInputPosition, module, AddrSeq::SELECT_INPUT));
 
-		addOutput(createPort<Port24>(outOutputPosition, PortWidget::OUTPUT, module, AddrSeq::OUT_OUTPUT));
+		addOutput(createOutput<Port24>(outOutputPosition, module, AddrSeq::OUT_OUTPUT));
 
 		addChild(createLight<SmallLight<GreenLight>>(out1LightPosition, module, AddrSeq::OUT1_LIGHT));
 		addChild(createLight<SmallLight<GreenLight>>(out2LightPosition, module, AddrSeq::OUT2_LIGHT));

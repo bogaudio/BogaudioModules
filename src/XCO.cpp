@@ -335,28 +335,28 @@ struct XCOWidget : ModuleWidget {
 		addParam(createParam<Knob16>(sinePhaseParamPosition, module, XCO::SINE_PHASE_PARAM, -1.0, 1.0, 0.0));
 		addParam(createParam<Knob16>(sineMixParamPosition, module, XCO::SINE_MIX_PARAM, 0.0, 1.0, 1.0));
 
-		addInput(createPort<Port24>(fmInputPosition, PortWidget::INPUT, module, XCO::FM_INPUT));
-		addInput(createPort<Port24>(fmDepthInputPosition, PortWidget::INPUT, module, XCO::FM_DEPTH_INPUT));
-		addInput(createPort<Port24>(squarePwInputPosition, PortWidget::INPUT, module, XCO::SQUARE_PW_INPUT));
-		addInput(createPort<Port24>(squarePhaseInputPosition, PortWidget::INPUT, module, XCO::SQUARE_PHASE_INPUT));
-		addInput(createPort<Port24>(squareMixInputPosition, PortWidget::INPUT, module, XCO::SQUARE_MIX_INPUT));
-		addInput(createPort<Port24>(sawSaturationInputPosition, PortWidget::INPUT, module, XCO::SAW_SATURATION_INPUT));
-		addInput(createPort<Port24>(sawPhaseInputPosition, PortWidget::INPUT, module, XCO::SAW_PHASE_INPUT));
-		addInput(createPort<Port24>(sawMixInputPosition, PortWidget::INPUT, module, XCO::SAW_MIX_INPUT));
-		addInput(createPort<Port24>(triangleSampleInputPosition, PortWidget::INPUT, module, XCO::TRIANGLE_SAMPLE_INPUT));
-		addInput(createPort<Port24>(trianglePhaseInputPosition, PortWidget::INPUT, module, XCO::TRIANGLE_PHASE_INPUT));
-		addInput(createPort<Port24>(triangleMixInputPosition, PortWidget::INPUT, module, XCO::TRIANGLE_MIX_INPUT));
-		addInput(createPort<Port24>(sineFeedbackInputPosition, PortWidget::INPUT, module, XCO::SINE_FEEDBACK_INPUT));
-		addInput(createPort<Port24>(sinePhaseInputPosition, PortWidget::INPUT, module, XCO::SINE_PHASE_INPUT));
-		addInput(createPort<Port24>(sineMixInputPosition, PortWidget::INPUT, module, XCO::SINE_MIX_INPUT));
-		addInput(createPort<Port24>(pitchInputPosition, PortWidget::INPUT, module, XCO::PITCH_INPUT));
-		addInput(createPort<Port24>(syncInputPosition, PortWidget::INPUT, module, XCO::SYNC_INPUT));
+		addInput(createInput<Port24>(fmInputPosition, module, XCO::FM_INPUT));
+		addInput(createInput<Port24>(fmDepthInputPosition, module, XCO::FM_DEPTH_INPUT));
+		addInput(createInput<Port24>(squarePwInputPosition, module, XCO::SQUARE_PW_INPUT));
+		addInput(createInput<Port24>(squarePhaseInputPosition, module, XCO::SQUARE_PHASE_INPUT));
+		addInput(createInput<Port24>(squareMixInputPosition, module, XCO::SQUARE_MIX_INPUT));
+		addInput(createInput<Port24>(sawSaturationInputPosition, module, XCO::SAW_SATURATION_INPUT));
+		addInput(createInput<Port24>(sawPhaseInputPosition, module, XCO::SAW_PHASE_INPUT));
+		addInput(createInput<Port24>(sawMixInputPosition, module, XCO::SAW_MIX_INPUT));
+		addInput(createInput<Port24>(triangleSampleInputPosition, module, XCO::TRIANGLE_SAMPLE_INPUT));
+		addInput(createInput<Port24>(trianglePhaseInputPosition, module, XCO::TRIANGLE_PHASE_INPUT));
+		addInput(createInput<Port24>(triangleMixInputPosition, module, XCO::TRIANGLE_MIX_INPUT));
+		addInput(createInput<Port24>(sineFeedbackInputPosition, module, XCO::SINE_FEEDBACK_INPUT));
+		addInput(createInput<Port24>(sinePhaseInputPosition, module, XCO::SINE_PHASE_INPUT));
+		addInput(createInput<Port24>(sineMixInputPosition, module, XCO::SINE_MIX_INPUT));
+		addInput(createInput<Port24>(pitchInputPosition, module, XCO::PITCH_INPUT));
+		addInput(createInput<Port24>(syncInputPosition, module, XCO::SYNC_INPUT));
 
-		addOutput(createPort<Port24>(squareOutputPosition, PortWidget::OUTPUT, module, XCO::SQUARE_OUTPUT));
-		addOutput(createPort<Port24>(sawOutputPosition, PortWidget::OUTPUT, module, XCO::SAW_OUTPUT));
-		addOutput(createPort<Port24>(triangleOutputPosition, PortWidget::OUTPUT, module, XCO::TRIANGLE_OUTPUT));
-		addOutput(createPort<Port24>(sineOutputPosition, PortWidget::OUTPUT, module, XCO::SINE_OUTPUT));
-		addOutput(createPort<Port24>(mixOutputPosition, PortWidget::OUTPUT, module, XCO::MIX_OUTPUT));
+		addOutput(createOutput<Port24>(squareOutputPosition, module, XCO::SQUARE_OUTPUT));
+		addOutput(createOutput<Port24>(sawOutputPosition, module, XCO::SAW_OUTPUT));
+		addOutput(createOutput<Port24>(triangleOutputPosition, module, XCO::TRIANGLE_OUTPUT));
+		addOutput(createOutput<Port24>(sineOutputPosition, module, XCO::SINE_OUTPUT));
+		addOutput(createOutput<Port24>(mixOutputPosition, module, XCO::MIX_OUTPUT));
 
 		addChild(createLight<SmallLight<GreenLight>>(slowLightPosition, module, XCO::SLOW_LIGHT));
 	}

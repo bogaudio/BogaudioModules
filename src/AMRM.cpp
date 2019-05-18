@@ -63,13 +63,13 @@ struct AMRMWidget : ModuleWidget {
 		addParam(createParam<Knob45>(rectifyParamPosition, module, AMRM::RECTIFY_PARAM, 0.0, 1.0, 0.0));
 		addParam(createParam<Knob45>(drywetParamPosition, module, AMRM::DRYWET_PARAM, 0.0, 1.0, 1.0));
 
-		addInput(createPort<Port24>(modulatorInputPosition, PortWidget::INPUT, module, AMRM::MODULATOR_INPUT));
-		addInput(createPort<Port24>(carrierInputPosition, PortWidget::INPUT, module, AMRM::CARRIER_INPUT));
-		addInput(createPort<Port24>(rectifyInputPosition, PortWidget::INPUT, module, AMRM::RECTIFY_INPUT));
-		addInput(createPort<Port24>(drywetInputPosition, PortWidget::INPUT, module, AMRM::DRYWET_INPUT));
+		addInput(createInput<Port24>(modulatorInputPosition, module, AMRM::MODULATOR_INPUT));
+		addInput(createInput<Port24>(carrierInputPosition, module, AMRM::CARRIER_INPUT));
+		addInput(createInput<Port24>(rectifyInputPosition, module, AMRM::RECTIFY_INPUT));
+		addInput(createInput<Port24>(drywetInputPosition, module, AMRM::DRYWET_INPUT));
 
-		addOutput(createPort<Port24>(rectifyOutputPosition, PortWidget::OUTPUT, module, AMRM::RECTIFY_OUTPUT));
-		addOutput(createPort<Port24>(outOutputPosition, PortWidget::OUTPUT, module, AMRM::OUT_OUTPUT));
+		addOutput(createOutput<Port24>(rectifyOutputPosition, module, AMRM::RECTIFY_OUTPUT));
+		addOutput(createOutput<Port24>(outOutputPosition, module, AMRM::OUT_OUTPUT));
 	}
 };
 

@@ -77,13 +77,13 @@ struct SampleHoldWidget : ModuleWidget {
 		addParam(createParam<StatefulButton9>(track1ParamPosition, module, SampleHold::TRACK1_PARAM, 0.0, 1.0, 0.0));
 		addParam(createParam<StatefulButton9>(track2ParamPosition, module, SampleHold::TRACK2_PARAM, 0.0, 1.0, 0.0));
 
-		addInput(createPort<Port24>(trigger1InputPosition, PortWidget::INPUT, module, SampleHold::TRIGGER1_INPUT));
-		addInput(createPort<Port24>(in1InputPosition, PortWidget::INPUT, module, SampleHold::IN1_INPUT));
-		addInput(createPort<Port24>(trigger2InputPosition, PortWidget::INPUT, module, SampleHold::TRIGGER2_INPUT));
-		addInput(createPort<Port24>(in2InputPosition, PortWidget::INPUT, module, SampleHold::IN2_INPUT));
+		addInput(createInput<Port24>(trigger1InputPosition, module, SampleHold::TRIGGER1_INPUT));
+		addInput(createInput<Port24>(in1InputPosition, module, SampleHold::IN1_INPUT));
+		addInput(createInput<Port24>(trigger2InputPosition, module, SampleHold::TRIGGER2_INPUT));
+		addInput(createInput<Port24>(in2InputPosition, module, SampleHold::IN2_INPUT));
 
-		addOutput(createPort<Port24>(out1OutputPosition, PortWidget::OUTPUT, module, SampleHold::OUT1_OUTPUT));
-		addOutput(createPort<Port24>(out2OutputPosition, PortWidget::OUTPUT, module, SampleHold::OUT2_OUTPUT));
+		addOutput(createOutput<Port24>(out1OutputPosition, module, SampleHold::OUT1_OUTPUT));
+		addOutput(createOutput<Port24>(out2OutputPosition, module, SampleHold::OUT2_OUTPUT));
 
 		addChild(createLight<SmallLight<GreenLight>>(track1LightPosition, module, SampleHold::TRACK1_LIGHT));
 		addChild(createLight<SmallLight<GreenLight>>(track2LightPosition, module, SampleHold::TRACK2_LIGHT));

@@ -134,22 +134,22 @@ struct Mix4Widget : ModuleWidget {
 		addSlider(mixParamPosition, module, Mix4::MIX_PARAM, module ? &module->_rmsLevel : NULL);
 		addParam(createParam<MuteButton>(mixMuteParamPosition, module, Mix4::MIX_MUTE_PARAM, 0.0, 1.0, 0.0));
 
-		addInput(createPort<Port24>(cv1InputPosition, PortWidget::INPUT, module, Mix4::CV1_INPUT));
-		addInput(createPort<Port24>(pan1InputPosition, PortWidget::INPUT, module, Mix4::PAN1_INPUT));
-		addInput(createPort<Port24>(in1InputPosition, PortWidget::INPUT, module, Mix4::IN1_INPUT));
-		addInput(createPort<Port24>(cv2InputPosition, PortWidget::INPUT, module, Mix4::CV2_INPUT));
-		addInput(createPort<Port24>(pan2InputPosition, PortWidget::INPUT, module, Mix4::PAN2_INPUT));
-		addInput(createPort<Port24>(in2InputPosition, PortWidget::INPUT, module, Mix4::IN2_INPUT));
-		addInput(createPort<Port24>(cv3InputPosition, PortWidget::INPUT, module, Mix4::CV3_INPUT));
-		addInput(createPort<Port24>(pan3InputPosition, PortWidget::INPUT, module, Mix4::PAN3_INPUT));
-		addInput(createPort<Port24>(in3InputPosition, PortWidget::INPUT, module, Mix4::IN3_INPUT));
-		addInput(createPort<Port24>(cv4InputPosition, PortWidget::INPUT, module, Mix4::CV4_INPUT));
-		addInput(createPort<Port24>(pan4InputPosition, PortWidget::INPUT, module, Mix4::PAN4_INPUT));
-		addInput(createPort<Port24>(in4InputPosition, PortWidget::INPUT, module, Mix4::IN4_INPUT));
-		addInput(createPort<Port24>(mixCvInputPosition, PortWidget::INPUT, module, Mix4::MIX_CV_INPUT));
+		addInput(createInput<Port24>(cv1InputPosition, module, Mix4::CV1_INPUT));
+		addInput(createInput<Port24>(pan1InputPosition, module, Mix4::PAN1_INPUT));
+		addInput(createInput<Port24>(in1InputPosition, module, Mix4::IN1_INPUT));
+		addInput(createInput<Port24>(cv2InputPosition, module, Mix4::CV2_INPUT));
+		addInput(createInput<Port24>(pan2InputPosition, module, Mix4::PAN2_INPUT));
+		addInput(createInput<Port24>(in2InputPosition, module, Mix4::IN2_INPUT));
+		addInput(createInput<Port24>(cv3InputPosition, module, Mix4::CV3_INPUT));
+		addInput(createInput<Port24>(pan3InputPosition, module, Mix4::PAN3_INPUT));
+		addInput(createInput<Port24>(in3InputPosition, module, Mix4::IN3_INPUT));
+		addInput(createInput<Port24>(cv4InputPosition, module, Mix4::CV4_INPUT));
+		addInput(createInput<Port24>(pan4InputPosition, module, Mix4::PAN4_INPUT));
+		addInput(createInput<Port24>(in4InputPosition, module, Mix4::IN4_INPUT));
+		addInput(createInput<Port24>(mixCvInputPosition, module, Mix4::MIX_CV_INPUT));
 
-		addOutput(createPort<Port24>(lOutputPosition, PortWidget::OUTPUT, module, Mix4::L_OUTPUT));
-		addOutput(createPort<Port24>(rOutputPosition, PortWidget::OUTPUT, module, Mix4::R_OUTPUT));
+		addOutput(createOutput<Port24>(lOutputPosition, module, Mix4::L_OUTPUT));
+		addOutput(createOutput<Port24>(rOutputPosition, module, Mix4::R_OUTPUT));
 	}
 
 	void addSlider(Vec position, Mix4* module, int id, float* rms) {

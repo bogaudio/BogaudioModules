@@ -245,28 +245,28 @@ struct EightFOWidget : LFOBaseWidget {
 		addPhaseParam(phase1ParamPosition, module, EightFO::PHASE1_PARAM, Phasor::phaseToRadians(basePhase1Offset));
 		addPhaseParam(phase0ParamPosition, module, EightFO::PHASE0_PARAM, Phasor::phaseToRadians(basePhase0Offset));
 
-		addInput(createPort<Port24>(samplePwmInputPosition, PortWidget::INPUT, module, EightFO::SAMPLE_PWM_INPUT));
-		addInput(createPort<Port24>(offsetInputPosition, PortWidget::INPUT, module, EightFO::OFFSET_INPUT));
-		addInput(createPort<Port24>(scaleInputPosition, PortWidget::INPUT, module, EightFO::SCALE_INPUT));
-		addInput(createPort<Port24>(phase7InputPosition, PortWidget::INPUT, module, EightFO::PHASE7_INPUT));
-		addInput(createPort<Port24>(phase6InputPosition, PortWidget::INPUT, module, EightFO::PHASE6_INPUT));
-		addInput(createPort<Port24>(phase5InputPosition, PortWidget::INPUT, module, EightFO::PHASE5_INPUT));
-		addInput(createPort<Port24>(phase4InputPosition, PortWidget::INPUT, module, EightFO::PHASE4_INPUT));
-		addInput(createPort<Port24>(phase3InputPosition, PortWidget::INPUT, module, EightFO::PHASE3_INPUT));
-		addInput(createPort<Port24>(phase2InputPosition, PortWidget::INPUT, module, EightFO::PHASE2_INPUT));
-		addInput(createPort<Port24>(phase1InputPosition, PortWidget::INPUT, module, EightFO::PHASE1_INPUT));
-		addInput(createPort<Port24>(phase0InputPosition, PortWidget::INPUT, module, EightFO::PHASE0_INPUT));
-		addInput(createPort<Port24>(pitchInputPosition, PortWidget::INPUT, module, EightFO::PITCH_INPUT));
-		addInput(createPort<Port24>(resetInputPosition, PortWidget::INPUT, module, EightFO::RESET_INPUT));
+		addInput(createInput<Port24>(samplePwmInputPosition, module, EightFO::SAMPLE_PWM_INPUT));
+		addInput(createInput<Port24>(offsetInputPosition, module, EightFO::OFFSET_INPUT));
+		addInput(createInput<Port24>(scaleInputPosition, module, EightFO::SCALE_INPUT));
+		addInput(createInput<Port24>(phase7InputPosition, module, EightFO::PHASE7_INPUT));
+		addInput(createInput<Port24>(phase6InputPosition, module, EightFO::PHASE6_INPUT));
+		addInput(createInput<Port24>(phase5InputPosition, module, EightFO::PHASE5_INPUT));
+		addInput(createInput<Port24>(phase4InputPosition, module, EightFO::PHASE4_INPUT));
+		addInput(createInput<Port24>(phase3InputPosition, module, EightFO::PHASE3_INPUT));
+		addInput(createInput<Port24>(phase2InputPosition, module, EightFO::PHASE2_INPUT));
+		addInput(createInput<Port24>(phase1InputPosition, module, EightFO::PHASE1_INPUT));
+		addInput(createInput<Port24>(phase0InputPosition, module, EightFO::PHASE0_INPUT));
+		addInput(createInput<Port24>(pitchInputPosition, module, EightFO::PITCH_INPUT));
+		addInput(createInput<Port24>(resetInputPosition, module, EightFO::RESET_INPUT));
 
-		addOutput(createPort<Port24>(phase7OutputPosition, PortWidget::OUTPUT, module, EightFO::PHASE7_OUTPUT));
-		addOutput(createPort<Port24>(phase6OutputPosition, PortWidget::OUTPUT, module, EightFO::PHASE6_OUTPUT));
-		addOutput(createPort<Port24>(phase5OutputPosition, PortWidget::OUTPUT, module, EightFO::PHASE5_OUTPUT));
-		addOutput(createPort<Port24>(phase4OutputPosition, PortWidget::OUTPUT, module, EightFO::PHASE4_OUTPUT));
-		addOutput(createPort<Port24>(phase3OutputPosition, PortWidget::OUTPUT, module, EightFO::PHASE3_OUTPUT));
-		addOutput(createPort<Port24>(phase2OutputPosition, PortWidget::OUTPUT, module, EightFO::PHASE2_OUTPUT));
-		addOutput(createPort<Port24>(phase1OutputPosition, PortWidget::OUTPUT, module, EightFO::PHASE1_OUTPUT));
-		addOutput(createPort<Port24>(phase0OutputPosition, PortWidget::OUTPUT, module, EightFO::PHASE0_OUTPUT));
+		addOutput(createOutput<Port24>(phase7OutputPosition, module, EightFO::PHASE7_OUTPUT));
+		addOutput(createOutput<Port24>(phase6OutputPosition, module, EightFO::PHASE6_OUTPUT));
+		addOutput(createOutput<Port24>(phase5OutputPosition, module, EightFO::PHASE5_OUTPUT));
+		addOutput(createOutput<Port24>(phase4OutputPosition, module, EightFO::PHASE4_OUTPUT));
+		addOutput(createOutput<Port24>(phase3OutputPosition, module, EightFO::PHASE3_OUTPUT));
+		addOutput(createOutput<Port24>(phase2OutputPosition, module, EightFO::PHASE2_OUTPUT));
+		addOutput(createOutput<Port24>(phase1OutputPosition, module, EightFO::PHASE1_OUTPUT));
+		addOutput(createOutput<Port24>(phase0OutputPosition, module, EightFO::PHASE0_OUTPUT));
 
 		addChild(createLight<SmallLight<GreenLight>>(slowLightPosition, module, EightFO::SLOW_LIGHT));
 	}

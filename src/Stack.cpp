@@ -86,11 +86,11 @@ struct StackWidget : ModuleWidget {
 		addParam(createParam<Knob16>(fineParamPosition, module, Stack::FINE_PARAM, -0.99, 0.99, 0.0));
 		addParam(createParam<StatefulButton9>(quantizeParamPosition, module, Stack::QUANTIZE_PARAM, 0.0, 1.0, 1.0));
 
-		addInput(createPort<Port24>(cvInputPosition, PortWidget::INPUT, module, Stack::CV_INPUT));
-		addInput(createPort<Port24>(inInputPosition, PortWidget::INPUT, module, Stack::IN_INPUT));
+		addInput(createInput<Port24>(cvInputPosition, module, Stack::CV_INPUT));
+		addInput(createInput<Port24>(inInputPosition, module, Stack::IN_INPUT));
 
-		addOutput(createPort<Port24>(thruOutputPosition, PortWidget::OUTPUT, module, Stack::THRU_OUTPUT));
-		addOutput(createPort<Port24>(outOutputPosition, PortWidget::OUTPUT, module, Stack::OUT_OUTPUT));
+		addOutput(createOutput<Port24>(thruOutputPosition, module, Stack::THRU_OUTPUT));
+		addOutput(createOutput<Port24>(outOutputPosition, module, Stack::OUT_OUTPUT));
 
 		addChild(createLight<SmallLight<GreenLight>>(quantizeLightPosition, module, Stack::QUANTIZE_LIGHT));
 	}

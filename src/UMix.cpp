@@ -134,16 +134,16 @@ struct UMixWidget : ModuleWidget {
 
 		addParam(createParam<Knob16>(levelParamPosition, module, UMix::LEVEL_PARAM, 0.0, 1.0, 1.0));
 
-		addInput(createPort<Port24>(in1InputPosition, PortWidget::INPUT, module, UMix::IN1_INPUT));
-		addInput(createPort<Port24>(in2InputPosition, PortWidget::INPUT, module, UMix::IN2_INPUT));
-		addInput(createPort<Port24>(in3InputPosition, PortWidget::INPUT, module, UMix::IN3_INPUT));
-		addInput(createPort<Port24>(in4InputPosition, PortWidget::INPUT, module, UMix::IN4_INPUT));
-		addInput(createPort<Port24>(in5InputPosition, PortWidget::INPUT, module, UMix::IN5_INPUT));
-		addInput(createPort<Port24>(in6InputPosition, PortWidget::INPUT, module, UMix::IN6_INPUT));
-		addInput(createPort<Port24>(in7InputPosition, PortWidget::INPUT, module, UMix::IN7_INPUT));
-		addInput(createPort<Port24>(in8InputPosition, PortWidget::INPUT, module, UMix::IN8_INPUT));
+		addInput(createInput<Port24>(in1InputPosition, module, UMix::IN1_INPUT));
+		addInput(createInput<Port24>(in2InputPosition, module, UMix::IN2_INPUT));
+		addInput(createInput<Port24>(in3InputPosition, module, UMix::IN3_INPUT));
+		addInput(createInput<Port24>(in4InputPosition, module, UMix::IN4_INPUT));
+		addInput(createInput<Port24>(in5InputPosition, module, UMix::IN5_INPUT));
+		addInput(createInput<Port24>(in6InputPosition, module, UMix::IN6_INPUT));
+		addInput(createInput<Port24>(in7InputPosition, module, UMix::IN7_INPUT));
+		addInput(createInput<Port24>(in8InputPosition, module, UMix::IN8_INPUT));
 
-		addOutput(createPort<Port24>(outOutputPosition, PortWidget::OUTPUT, module, UMix::OUT_OUTPUT));
+		addOutput(createOutput<Port24>(outOutputPosition, module, UMix::OUT_OUTPUT));
 	}
 
 	void appendContextMenu(Menu* menu) override {

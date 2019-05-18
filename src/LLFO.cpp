@@ -123,10 +123,10 @@ struct LLFOWidget : LFOBaseWidget {
 		addParam(createParam<Knob16>(offsetParamPosition, module, LLFO::OFFSET_PARAM, -1.0, 1.0, 0.0));
 		addParam(createParam<Knob16>(scaleParamPosition, module, LLFO::SCALE_PARAM, 0.0, 1.0, 1.0));
 
-		addInput(createPort<Port24>(pitchInputPosition, PortWidget::INPUT, module, LLFO::PITCH_INPUT));
-		addInput(createPort<Port24>(resetInputPosition, PortWidget::INPUT, module, LLFO::RESET_INPUT));
+		addInput(createInput<Port24>(pitchInputPosition, module, LLFO::PITCH_INPUT));
+		addInput(createInput<Port24>(resetInputPosition, module, LLFO::RESET_INPUT));
 
-		addOutput(createPort<Port24>(outOutputPosition, PortWidget::OUTPUT, module, LLFO::OUT_OUTPUT));
+		addOutput(createOutput<Port24>(outOutputPosition, module, LLFO::OUT_OUTPUT));
 
 		addChild(createLight<SmallLight<GreenLight>>(slowLightPosition, module, LLFO::SLOW_LIGHT));
 		addChild(createLight<SmallLight<GreenLight>>(sineLightPosition, module, LLFO::SINE_LIGHT));

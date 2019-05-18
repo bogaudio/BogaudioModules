@@ -201,15 +201,15 @@ struct CmpWidget : ModuleWidget {
 			addParam(w);
 		}
 
-		addInput(createPort<Port24>(aInputPosition, PortWidget::INPUT, module, Cmp::A_INPUT));
-		addInput(createPort<Port24>(bInputPosition, PortWidget::INPUT, module, Cmp::B_INPUT));
-		addInput(createPort<Port24>(windowInputPosition, PortWidget::INPUT, module, Cmp::WINDOW_INPUT));
-		addInput(createPort<Port24>(lagInputPosition, PortWidget::INPUT, module, Cmp::LAG_INPUT));
+		addInput(createInput<Port24>(aInputPosition, module, Cmp::A_INPUT));
+		addInput(createInput<Port24>(bInputPosition, module, Cmp::B_INPUT));
+		addInput(createInput<Port24>(windowInputPosition, module, Cmp::WINDOW_INPUT));
+		addInput(createInput<Port24>(lagInputPosition, module, Cmp::LAG_INPUT));
 
-		addOutput(createPort<Port24>(greaterOutputPosition, PortWidget::OUTPUT, module, Cmp::GREATER_OUTPUT));
-		addOutput(createPort<Port24>(lessOutputPosition, PortWidget::OUTPUT, module, Cmp::LESS_OUTPUT));
-		addOutput(createPort<Port24>(equalOutputPosition, PortWidget::OUTPUT, module, Cmp::EQUAL_OUTPUT));
-		addOutput(createPort<Port24>(notEqualOutputPosition, PortWidget::OUTPUT, module, Cmp::NOT_EQUAL_OUTPUT));
+		addOutput(createOutput<Port24>(greaterOutputPosition, module, Cmp::GREATER_OUTPUT));
+		addOutput(createOutput<Port24>(lessOutputPosition, module, Cmp::LESS_OUTPUT));
+		addOutput(createOutput<Port24>(equalOutputPosition, module, Cmp::EQUAL_OUTPUT));
+		addOutput(createOutput<Port24>(notEqualOutputPosition, module, Cmp::NOT_EQUAL_OUTPUT));
 	}
 };
 

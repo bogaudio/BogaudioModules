@@ -182,23 +182,23 @@ struct Matrix88Widget : ModuleWidget {
 		addParam(createParam<Knob19>(mix88ParamPosition, module, Matrix88::MIX88_PARAM, -1.0, 1.0, 0.0));
 		addParam(createParam<Knob16>(levelParamPosition, module, Matrix88::LEVEL_PARAM, 0.0, 1.0, 1.0));
 
-		addInput(createPort<Port24>(in1InputPosition, PortWidget::INPUT, module, Matrix88::IN1_INPUT));
-		addInput(createPort<Port24>(in2InputPosition, PortWidget::INPUT, module, Matrix88::IN2_INPUT));
-		addInput(createPort<Port24>(in3InputPosition, PortWidget::INPUT, module, Matrix88::IN3_INPUT));
-		addInput(createPort<Port24>(in4InputPosition, PortWidget::INPUT, module, Matrix88::IN4_INPUT));
-		addInput(createPort<Port24>(in5InputPosition, PortWidget::INPUT, module, Matrix88::IN5_INPUT));
-		addInput(createPort<Port24>(in6InputPosition, PortWidget::INPUT, module, Matrix88::IN6_INPUT));
-		addInput(createPort<Port24>(in7InputPosition, PortWidget::INPUT, module, Matrix88::IN7_INPUT));
-		addInput(createPort<Port24>(in8InputPosition, PortWidget::INPUT, module, Matrix88::IN8_INPUT));
+		addInput(createInput<Port24>(in1InputPosition, module, Matrix88::IN1_INPUT));
+		addInput(createInput<Port24>(in2InputPosition, module, Matrix88::IN2_INPUT));
+		addInput(createInput<Port24>(in3InputPosition, module, Matrix88::IN3_INPUT));
+		addInput(createInput<Port24>(in4InputPosition, module, Matrix88::IN4_INPUT));
+		addInput(createInput<Port24>(in5InputPosition, module, Matrix88::IN5_INPUT));
+		addInput(createInput<Port24>(in6InputPosition, module, Matrix88::IN6_INPUT));
+		addInput(createInput<Port24>(in7InputPosition, module, Matrix88::IN7_INPUT));
+		addInput(createInput<Port24>(in8InputPosition, module, Matrix88::IN8_INPUT));
 
-		addOutput(createPort<Port24>(out1OutputPosition, PortWidget::OUTPUT, module, Matrix88::OUT1_OUTPUT));
-		addOutput(createPort<Port24>(out2OutputPosition, PortWidget::OUTPUT, module, Matrix88::OUT2_OUTPUT));
-		addOutput(createPort<Port24>(out3OutputPosition, PortWidget::OUTPUT, module, Matrix88::OUT3_OUTPUT));
-		addOutput(createPort<Port24>(out4OutputPosition, PortWidget::OUTPUT, module, Matrix88::OUT4_OUTPUT));
-		addOutput(createPort<Port24>(out5OutputPosition, PortWidget::OUTPUT, module, Matrix88::OUT5_OUTPUT));
-		addOutput(createPort<Port24>(out6OutputPosition, PortWidget::OUTPUT, module, Matrix88::OUT6_OUTPUT));
-		addOutput(createPort<Port24>(out7OutputPosition, PortWidget::OUTPUT, module, Matrix88::OUT7_OUTPUT));
-		addOutput(createPort<Port24>(out8OutputPosition, PortWidget::OUTPUT, module, Matrix88::OUT8_OUTPUT));
+		addOutput(createOutput<Port24>(out1OutputPosition, module, Matrix88::OUT1_OUTPUT));
+		addOutput(createOutput<Port24>(out2OutputPosition, module, Matrix88::OUT2_OUTPUT));
+		addOutput(createOutput<Port24>(out3OutputPosition, module, Matrix88::OUT3_OUTPUT));
+		addOutput(createOutput<Port24>(out4OutputPosition, module, Matrix88::OUT4_OUTPUT));
+		addOutput(createOutput<Port24>(out5OutputPosition, module, Matrix88::OUT5_OUTPUT));
+		addOutput(createOutput<Port24>(out6OutputPosition, module, Matrix88::OUT6_OUTPUT));
+		addOutput(createOutput<Port24>(out7OutputPosition, module, Matrix88::OUT7_OUTPUT));
+		addOutput(createOutput<Port24>(out8OutputPosition, module, Matrix88::OUT8_OUTPUT));
 	}
 };
 

@@ -52,17 +52,17 @@ struct ShaperWidget : ModuleWidget {
 		addParam(createParam<Knob38>(signalParamPosition, module, Shaper::SIGNAL_PARAM, 0.0, 1.0, 0.1));
 
 		addParam(createParam<Button18>(triggerParamPosition, module, Shaper::TRIGGER_PARAM, 0.0, 1.0, 0.0));
-		addInput(createPort<Port24>(triggerInputPosition, PortWidget::INPUT, module, Shaper::TRIGGER_INPUT));
+		addInput(createInput<Port24>(triggerInputPosition, module, Shaper::TRIGGER_INPUT));
 
 		addParam(createParam<SliderSwitch2State14>(speedParamPosition, module, Shaper::SPEED_PARAM, 0.0, 1.0, 1.0));
 		addParam(createParam<SliderSwitch2State14>(loopParamPosition, module, Shaper::LOOP_PARAM, 0.0, 1.0, 1.0));
-		addOutput(createPort<Port24>(triggerOutputPosition, PortWidget::OUTPUT, module, Shaper::TRIGGER_OUTPUT));
+		addOutput(createOutput<Port24>(triggerOutputPosition, module, Shaper::TRIGGER_OUTPUT));
 
-		addOutput(createPort<Port24>(envOutputPosition, PortWidget::OUTPUT, module, Shaper::ENV_OUTPUT));
-		addOutput(createPort<Port24>(invOutputPosition, PortWidget::OUTPUT, module, Shaper::INV_OUTPUT));
+		addOutput(createOutput<Port24>(envOutputPosition, module, Shaper::ENV_OUTPUT));
+		addOutput(createOutput<Port24>(invOutputPosition, module, Shaper::INV_OUTPUT));
 
-		addInput(createPort<Port24>(signalInputPosition, PortWidget::INPUT, module, Shaper::SIGNAL_INPUT));
-		addOutput(createPort<Port24>(signalOutputPosition, PortWidget::OUTPUT, module, Shaper::SIGNAL_OUTPUT));
+		addInput(createInput<Port24>(signalInputPosition, module, Shaper::SIGNAL_INPUT));
+		addOutput(createOutput<Port24>(signalOutputPosition, module, Shaper::SIGNAL_OUTPUT));
 
 		addChild(createLight<TinyLight<GreenLight>>(attackLightPosition, module, Shaper::ATTACK_LIGHT));
 		addChild(createLight<TinyLight<GreenLight>>(onLightPosition, module, Shaper::ON_LIGHT));

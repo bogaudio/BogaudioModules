@@ -53,11 +53,11 @@ struct Mix1Widget : ModuleWidget {
 		}
 		addParam(createParam<MuteButton>(muteParamPosition, module, Mix1::MUTE_PARAM, 0.0, 1.0, 0.0));
 
-		addInput(createPort<Port24>(muteInputPosition, PortWidget::INPUT, module, Mix1::MUTE_INPUT));
-		addInput(createPort<Port24>(levelInputPosition, PortWidget::INPUT, module, Mix1::LEVEL_INPUT));
-		addInput(createPort<Port24>(inInputPosition, PortWidget::INPUT, module, Mix1::IN_INPUT));
+		addInput(createInput<Port24>(muteInputPosition, module, Mix1::MUTE_INPUT));
+		addInput(createInput<Port24>(levelInputPosition, module, Mix1::LEVEL_INPUT));
+		addInput(createInput<Port24>(inInputPosition, module, Mix1::IN_INPUT));
 
-		addOutput(createPort<Port24>(outOutputPosition, PortWidget::OUTPUT, module, Mix1::OUT_OUTPUT));
+		addOutput(createOutput<Port24>(outOutputPosition, module, Mix1::OUT_OUTPUT));
 	}
 };
 

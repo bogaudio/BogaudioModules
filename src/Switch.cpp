@@ -64,14 +64,14 @@ struct SwitchWidget : ModuleWidget {
 		addParam(createParam<Button18>(gateParamPosition, module, bogaudio::Switch::GATE_PARAM, 0.0, 10.0, 0.0));
 		addParam(createParam<StatefulButton9>(latchParamPosition, module, bogaudio::Switch::LATCH_PARAM, 0.0, 1.0, 0.0));
 
-		addInput(createPort<Port24>(gateInputPosition, PortWidget::INPUT, module, bogaudio::Switch::GATE_INPUT));
-		addInput(createPort<Port24>(high1InputPosition, PortWidget::INPUT, module, bogaudio::Switch::HIGH1_INPUT));
-		addInput(createPort<Port24>(low1InputPosition, PortWidget::INPUT, module, bogaudio::Switch::LOW1_INPUT));
-		addInput(createPort<Port24>(high2InputPosition, PortWidget::INPUT, module, bogaudio::Switch::HIGH2_INPUT));
-		addInput(createPort<Port24>(low2InputPosition, PortWidget::INPUT, module, bogaudio::Switch::LOW2_INPUT));
+		addInput(createInput<Port24>(gateInputPosition, module, bogaudio::Switch::GATE_INPUT));
+		addInput(createInput<Port24>(high1InputPosition, module, bogaudio::Switch::HIGH1_INPUT));
+		addInput(createInput<Port24>(low1InputPosition, module, bogaudio::Switch::LOW1_INPUT));
+		addInput(createInput<Port24>(high2InputPosition, module, bogaudio::Switch::HIGH2_INPUT));
+		addInput(createInput<Port24>(low2InputPosition, module, bogaudio::Switch::LOW2_INPUT));
 
-		addOutput(createPort<Port24>(out1OutputPosition, PortWidget::OUTPUT, module, bogaudio::Switch::OUT1_OUTPUT));
-		addOutput(createPort<Port24>(out2OutputPosition, PortWidget::OUTPUT, module, bogaudio::Switch::OUT2_OUTPUT));
+		addOutput(createOutput<Port24>(out1OutputPosition, module, bogaudio::Switch::OUT1_OUTPUT));
+		addOutput(createOutput<Port24>(out2OutputPosition, module, bogaudio::Switch::OUT2_OUTPUT));
 
 		addChild(createLight<SmallLight<GreenLight>>(latchLightPosition, module, bogaudio::Switch::LATCH_LIGHT));
 	}

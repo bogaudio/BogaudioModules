@@ -198,15 +198,15 @@ struct VCOWidget : ModuleWidget {
 		addParam(createParam<Knob26>(fmParamPosition, module, VCO::FM_PARAM, 0.0, 1.0, 0.0));
 		addParam(createParam<SliderSwitch2State14>(fmTypeParamPosition, module, VCO::FM_TYPE_PARAM, 0.0, 1.0, 1.0));
 
-		addInput(createPort<Port24>(pitchInputPosition, PortWidget::INPUT, module, VCO::PITCH_INPUT));
-		addInput(createPort<Port24>(syncInputPosition, PortWidget::INPUT, module, VCO::SYNC_INPUT));
-		addInput(createPort<Port24>(pwInputPosition, PortWidget::INPUT, module, VCO::PW_INPUT));
-		addInput(createPort<Port24>(fmInputPosition, PortWidget::INPUT, module, VCO::FM_INPUT));
+		addInput(createInput<Port24>(pitchInputPosition, module, VCO::PITCH_INPUT));
+		addInput(createInput<Port24>(syncInputPosition, module, VCO::SYNC_INPUT));
+		addInput(createInput<Port24>(pwInputPosition, module, VCO::PW_INPUT));
+		addInput(createInput<Port24>(fmInputPosition, module, VCO::FM_INPUT));
 
-		addOutput(createPort<Port24>(squareOutputPosition, PortWidget::OUTPUT, module, VCO::SQUARE_OUTPUT));
-		addOutput(createPort<Port24>(sawOutputPosition, PortWidget::OUTPUT, module, VCO::SAW_OUTPUT));
-		addOutput(createPort<Port24>(triangleOutputPosition, PortWidget::OUTPUT, module, VCO::TRIANGLE_OUTPUT));
-		addOutput(createPort<Port24>(sineOutputPosition, PortWidget::OUTPUT, module, VCO::SINE_OUTPUT));
+		addOutput(createOutput<Port24>(squareOutputPosition, module, VCO::SQUARE_OUTPUT));
+		addOutput(createOutput<Port24>(sawOutputPosition, module, VCO::SAW_OUTPUT));
+		addOutput(createOutput<Port24>(triangleOutputPosition, module, VCO::TRIANGLE_OUTPUT));
+		addOutput(createOutput<Port24>(sineOutputPosition, module, VCO::SINE_OUTPUT));
 
 		addChild(createLight<SmallLight<GreenLight>>(slowLightPosition, module, VCO::SLOW_LIGHT));
 	}

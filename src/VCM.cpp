@@ -86,17 +86,17 @@ struct VCMWidget : DisableOutputLimitModuleWidget {
 		addParam(createParam<Knob38>(mixParamPosition, module, VCM::MIX_PARAM, 0.0, 1.0, 0.8));
 		addParam(createParam<StatefulButton9>(linearParamPosition, module, VCM::LINEAR_PARAM, 0.0, 1.0, 0.0));
 
-		addInput(createPort<Port24>(in1InputPosition, PortWidget::INPUT, module, VCM::IN1_INPUT));
-		addInput(createPort<Port24>(cv1InputPosition, PortWidget::INPUT, module, VCM::CV1_INPUT));
-		addInput(createPort<Port24>(in2InputPosition, PortWidget::INPUT, module, VCM::IN2_INPUT));
-		addInput(createPort<Port24>(cv2InputPosition, PortWidget::INPUT, module, VCM::CV2_INPUT));
-		addInput(createPort<Port24>(in3InputPosition, PortWidget::INPUT, module, VCM::IN3_INPUT));
-		addInput(createPort<Port24>(cv3InputPosition, PortWidget::INPUT, module, VCM::CV3_INPUT));
-		addInput(createPort<Port24>(in4InputPosition, PortWidget::INPUT, module, VCM::IN4_INPUT));
-		addInput(createPort<Port24>(cv4InputPosition, PortWidget::INPUT, module, VCM::CV4_INPUT));
-		addInput(createPort<Port24>(mixCvInputPosition, PortWidget::INPUT, module, VCM::MIX_CV_INPUT));
+		addInput(createInput<Port24>(in1InputPosition, module, VCM::IN1_INPUT));
+		addInput(createInput<Port24>(cv1InputPosition, module, VCM::CV1_INPUT));
+		addInput(createInput<Port24>(in2InputPosition, module, VCM::IN2_INPUT));
+		addInput(createInput<Port24>(cv2InputPosition, module, VCM::CV2_INPUT));
+		addInput(createInput<Port24>(in3InputPosition, module, VCM::IN3_INPUT));
+		addInput(createInput<Port24>(cv3InputPosition, module, VCM::CV3_INPUT));
+		addInput(createInput<Port24>(in4InputPosition, module, VCM::IN4_INPUT));
+		addInput(createInput<Port24>(cv4InputPosition, module, VCM::CV4_INPUT));
+		addInput(createInput<Port24>(mixCvInputPosition, module, VCM::MIX_CV_INPUT));
 
-		addOutput(createPort<Port24>(mixOutputPosition, PortWidget::OUTPUT, module, VCM::MIX_OUTPUT));
+		addOutput(createOutput<Port24>(mixOutputPosition, module, VCM::MIX_OUTPUT));
 
 		addChild(createLight<SmallLight<GreenLight>>(linearLightPosition, module, VCM::LINEAR_LIGHT));
 	}

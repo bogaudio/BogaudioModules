@@ -69,13 +69,13 @@ struct VCAWidget : ModuleWidget {
 		addParam(createParam<Knob26>(level2ParamPosition, module, VCA::LEVEL2_PARAM, 0.0, 1.0, 0.8));
 		addParam(createParam<StatefulButton9>(linearParamPosition, module, VCA::LINEAR_PARAM, 0.0, 1.0, 0.0));
 
-		addInput(createPort<Port24>(cv1InputPosition, PortWidget::INPUT, module, VCA::CV1_INPUT));
-		addInput(createPort<Port24>(in1InputPosition, PortWidget::INPUT, module, VCA::IN1_INPUT));
-		addInput(createPort<Port24>(cv2InputPosition, PortWidget::INPUT, module, VCA::CV2_INPUT));
-		addInput(createPort<Port24>(in2InputPosition, PortWidget::INPUT, module, VCA::IN2_INPUT));
+		addInput(createInput<Port24>(cv1InputPosition, module, VCA::CV1_INPUT));
+		addInput(createInput<Port24>(in1InputPosition, module, VCA::IN1_INPUT));
+		addInput(createInput<Port24>(cv2InputPosition, module, VCA::CV2_INPUT));
+		addInput(createInput<Port24>(in2InputPosition, module, VCA::IN2_INPUT));
 
-		addOutput(createPort<Port24>(out1OutputPosition, PortWidget::OUTPUT, module, VCA::OUT1_OUTPUT));
-		addOutput(createPort<Port24>(out2OutputPosition, PortWidget::OUTPUT, module, VCA::OUT2_OUTPUT));
+		addOutput(createOutput<Port24>(out1OutputPosition, module, VCA::OUT1_OUTPUT));
+		addOutput(createOutput<Port24>(out2OutputPosition, module, VCA::OUT2_OUTPUT));
 
 		addChild(createLight<SmallLight<GreenLight>>(linearLightPosition, module, VCA::LINEAR_LIGHT));
 	}

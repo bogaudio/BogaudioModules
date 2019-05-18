@@ -157,15 +157,15 @@ struct AnalyzerWidget : ModuleWidget {
 		addParam(createParam<StatefulButton9>(qualityParamPosition, module, Analyzer::QUALITY_PARAM, 1.0, 3.0, 1.0));
 		addParam(createParam<StatefulButton9>(windowParamPosition, module, Analyzer::WINDOW_PARAM, 1.0, 3.0, 1.0));
 
-		addInput(createPort<Port24>(signalaInputPosition, PortWidget::INPUT, module, Analyzer::SIGNALA_INPUT));
-		addInput(createPort<Port24>(signalbInputPosition, PortWidget::INPUT, module, Analyzer::SIGNALB_INPUT));
-		addInput(createPort<Port24>(signalcInputPosition, PortWidget::INPUT, module, Analyzer::SIGNALC_INPUT));
-		addInput(createPort<Port24>(signaldInputPosition, PortWidget::INPUT, module, Analyzer::SIGNALD_INPUT));
+		addInput(createInput<Port24>(signalaInputPosition, module, Analyzer::SIGNALA_INPUT));
+		addInput(createInput<Port24>(signalbInputPosition, module, Analyzer::SIGNALB_INPUT));
+		addInput(createInput<Port24>(signalcInputPosition, module, Analyzer::SIGNALC_INPUT));
+		addInput(createInput<Port24>(signaldInputPosition, module, Analyzer::SIGNALD_INPUT));
 
-		addOutput(createPort<Port24>(signalaOutputPosition, PortWidget::OUTPUT, module, Analyzer::SIGNALA_OUTPUT));
-		addOutput(createPort<Port24>(signalbOutputPosition, PortWidget::OUTPUT, module, Analyzer::SIGNALB_OUTPUT));
-		addOutput(createPort<Port24>(signalcOutputPosition, PortWidget::OUTPUT, module, Analyzer::SIGNALC_OUTPUT));
-		addOutput(createPort<Port24>(signaldOutputPosition, PortWidget::OUTPUT, module, Analyzer::SIGNALD_OUTPUT));
+		addOutput(createOutput<Port24>(signalaOutputPosition, module, Analyzer::SIGNALA_OUTPUT));
+		addOutput(createOutput<Port24>(signalbOutputPosition, module, Analyzer::SIGNALB_OUTPUT));
+		addOutput(createOutput<Port24>(signalcOutputPosition, module, Analyzer::SIGNALC_OUTPUT));
+		addOutput(createOutput<Port24>(signaldOutputPosition, module, Analyzer::SIGNALD_OUTPUT));
 
 		addChild(createLight<SmallLight<GreenLight>>(qualityUltraLightPosition, module, Analyzer::QUALITY_ULTRA_LIGHT));
 		addChild(createLight<SmallLight<GreenLight>>(qualityHighLightPosition, module, Analyzer::QUALITY_HIGH_LIGHT));

@@ -72,11 +72,11 @@ struct DADSRHWidget : ModuleWidget {
 		addParam(createParam<SliderSwitch2State14>(speedParamPosition, module, DADSRH::SPEED_PARAM, 0.0, 1.0, 1.0));
 		addParam(createParam<SliderSwitch2State14>(retriggerParamPosition, module, DADSRH::RETRIGGER_PARAM, 0.0, 1.0, 1.0));
 
-		addInput(createPort<Port24>(triggerInputPosition, PortWidget::INPUT, module, DADSRH::TRIGGER_INPUT));
+		addInput(createInput<Port24>(triggerInputPosition, module, DADSRH::TRIGGER_INPUT));
 
-		addOutput(createPort<Port24>(envOutputPosition, PortWidget::OUTPUT, module, DADSRH::ENV_OUTPUT));
-		addOutput(createPort<Port24>(invOutputPosition, PortWidget::OUTPUT, module, DADSRH::INV_OUTPUT));
-		addOutput(createPort<Port24>(triggerOutputPosition, PortWidget::OUTPUT, module, DADSRH::TRIGGER_OUTPUT));
+		addOutput(createOutput<Port24>(envOutputPosition, module, DADSRH::ENV_OUTPUT));
+		addOutput(createOutput<Port24>(invOutputPosition, module, DADSRH::INV_OUTPUT));
+		addOutput(createOutput<Port24>(triggerOutputPosition, module, DADSRH::TRIGGER_OUTPUT));
 
 		addChild(createLight<TinyLight<GreenLight>>(delayLightPosition, module, DADSRH::DELAY_LIGHT));
 		addChild(createLight<TinyLight<GreenLight>>(attackLightPosition, module, DADSRH::ATTACK_LIGHT));

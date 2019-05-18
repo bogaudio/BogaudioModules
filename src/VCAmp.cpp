@@ -66,10 +66,10 @@ struct VCAmpWidget : ModuleWidget {
 		}
 		addParam(slider);
 
-		addInput(createPort<Port24>(cvInputPosition, PortWidget::INPUT, module, VCAmp::CV_INPUT));
-		addInput(createPort<Port24>(inInputPosition, PortWidget::INPUT, module, VCAmp::IN_INPUT));
+		addInput(createInput<Port24>(cvInputPosition, module, VCAmp::CV_INPUT));
+		addInput(createInput<Port24>(inInputPosition, module, VCAmp::IN_INPUT));
 
-		addOutput(createPort<Port24>(outOutputPosition, PortWidget::OUTPUT, module, VCAmp::OUT_OUTPUT));
+		addOutput(createOutput<Port24>(outOutputPosition, module, VCAmp::OUT_OUTPUT));
 	}
 };
 

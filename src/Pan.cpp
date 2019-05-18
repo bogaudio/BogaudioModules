@@ -64,13 +64,13 @@ struct PanWidget : ModuleWidget {
 		addParam(createParam<Knob26>(pan1ParamPosition, module, Pan::PAN1_PARAM, -1.0, 1.0, 0.0));
 		addParam(createParam<Knob26>(pan2ParamPosition, module, Pan::PAN2_PARAM, -1.0, 1.0, 0.0));
 
-		addInput(createPort<Port24>(cv1InputPosition, PortWidget::INPUT, module, Pan::CV1_INPUT));
-		addInput(createPort<Port24>(in1InputPosition, PortWidget::INPUT, module, Pan::IN1_INPUT));
-		addInput(createPort<Port24>(cv2InputPosition, PortWidget::INPUT, module, Pan::CV2_INPUT));
-		addInput(createPort<Port24>(in2InputPosition, PortWidget::INPUT, module, Pan::IN2_INPUT));
+		addInput(createInput<Port24>(cv1InputPosition, module, Pan::CV1_INPUT));
+		addInput(createInput<Port24>(in1InputPosition, module, Pan::IN1_INPUT));
+		addInput(createInput<Port24>(cv2InputPosition, module, Pan::CV2_INPUT));
+		addInput(createInput<Port24>(in2InputPosition, module, Pan::IN2_INPUT));
 
-		addOutput(createPort<Port24>(lOutputPosition, PortWidget::OUTPUT, module, Pan::L_OUTPUT));
-		addOutput(createPort<Port24>(rOutputPosition, PortWidget::OUTPUT, module, Pan::R_OUTPUT));
+		addOutput(createOutput<Port24>(lOutputPosition, module, Pan::L_OUTPUT));
+		addOutput(createOutput<Port24>(rOutputPosition, module, Pan::R_OUTPUT));
 	}
 };
 

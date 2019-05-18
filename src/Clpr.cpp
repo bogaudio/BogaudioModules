@@ -82,13 +82,13 @@ struct ClprWidget : ModuleWidget {
 		addParam(createParam<Knob38>(outputGainParamPosition, module, Clpr::OUTPUT_GAIN_PARAM, 0.0, 1.0, 0.0));
 		addParam(createParam<SliderSwitch2State14>(kneeParamPosition, module, Clpr::KNEE_PARAM, 0.95, 1.0, 0.0));
 
-		addInput(createPort<Port24>(leftInputPosition, PortWidget::INPUT, module, Clpr::LEFT_INPUT));
-		addInput(createPort<Port24>(rightInputPosition, PortWidget::INPUT, module, Clpr::RIGHT_INPUT));
-		addInput(createPort<Port24>(thresholdInputPosition, PortWidget::INPUT, module, Clpr::THRESHOLD_INPUT));
-		addInput(createPort<Port24>(outputGainInputPosition, PortWidget::INPUT, module, Clpr::OUTPUT_GAIN_INPUT));
+		addInput(createInput<Port24>(leftInputPosition, module, Clpr::LEFT_INPUT));
+		addInput(createInput<Port24>(rightInputPosition, module, Clpr::RIGHT_INPUT));
+		addInput(createInput<Port24>(thresholdInputPosition, module, Clpr::THRESHOLD_INPUT));
+		addInput(createInput<Port24>(outputGainInputPosition, module, Clpr::OUTPUT_GAIN_INPUT));
 
-		addOutput(createPort<Port24>(leftOutputPosition, PortWidget::OUTPUT, module, Clpr::LEFT_OUTPUT));
-		addOutput(createPort<Port24>(rightOutputPosition, PortWidget::OUTPUT, module, Clpr::RIGHT_OUTPUT));
+		addOutput(createOutput<Port24>(leftOutputPosition, module, Clpr::LEFT_OUTPUT));
+		addOutput(createOutput<Port24>(rightOutputPosition, module, Clpr::RIGHT_OUTPUT));
 	}
 };
 

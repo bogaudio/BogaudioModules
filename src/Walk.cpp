@@ -78,12 +78,12 @@ struct WalkWidget : ModuleWidget {
 		addParam(createParam<Knob16>(offsetParamPosition, module, Walk::OFFSET_PARAM, -1.0, 1.0, 0.0));
 		addParam(createParam<Knob16>(scaleParamPosition, module, Walk::SCALE_PARAM, 0.0, 1.0, 1.0));
 
-		addInput(createPort<Port24>(rateInputPosition, PortWidget::INPUT, module, Walk::RATE_INPUT));
-		addInput(createPort<Port24>(offsetInputPosition, PortWidget::INPUT, module, Walk::OFFSET_INPUT));
-		addInput(createPort<Port24>(scaleInputPosition, PortWidget::INPUT, module, Walk::SCALE_INPUT));
-		addInput(createPort<Port24>(jumpInputPosition, PortWidget::INPUT, module, Walk::JUMP_INPUT));
+		addInput(createInput<Port24>(rateInputPosition, module, Walk::RATE_INPUT));
+		addInput(createInput<Port24>(offsetInputPosition, module, Walk::OFFSET_INPUT));
+		addInput(createInput<Port24>(scaleInputPosition, module, Walk::SCALE_INPUT));
+		addInput(createInput<Port24>(jumpInputPosition, module, Walk::JUMP_INPUT));
 
-		addOutput(createPort<Port24>(outOutputPosition, PortWidget::OUTPUT, module, Walk::OUT_OUTPUT));
+		addOutput(createOutput<Port24>(outOutputPosition, module, Walk::OUT_OUTPUT));
 	}
 };
 

@@ -529,17 +529,17 @@ struct Walk2Widget : ModuleWidget {
 		addParam(createParam<Knob16>(scaleXParamPosition, module, Walk2::SCALE_X_PARAM, 0.0, 1.0, 1.0));
 		addParam(createParam<Knob16>(scaleYParamPosition, module, Walk2::SCALE_Y_PARAM, 0.0, 1.0, 1.0));
 
-		addInput(createPort<Port24>(offsetXInputPosition, PortWidget::INPUT, module, Walk2::OFFSET_X_INPUT));
-		addInput(createPort<Port24>(scaleXInputPosition, PortWidget::INPUT, module, Walk2::SCALE_X_INPUT));
-		addInput(createPort<Port24>(rateXInputPosition, PortWidget::INPUT, module, Walk2::RATE_X_INPUT));
-		addInput(createPort<Port24>(offsetYInputPosition, PortWidget::INPUT, module, Walk2::OFFSET_Y_INPUT));
-		addInput(createPort<Port24>(scaleYInputPosition, PortWidget::INPUT, module, Walk2::SCALE_Y_INPUT));
-		addInput(createPort<Port24>(rateYInputPosition, PortWidget::INPUT, module, Walk2::RATE_Y_INPUT));
-		addInput(createPort<Port24>(jumpInputPosition, PortWidget::INPUT, module, Walk2::JUMP_INPUT));
+		addInput(createInput<Port24>(offsetXInputPosition, module, Walk2::OFFSET_X_INPUT));
+		addInput(createInput<Port24>(scaleXInputPosition, module, Walk2::SCALE_X_INPUT));
+		addInput(createInput<Port24>(rateXInputPosition, module, Walk2::RATE_X_INPUT));
+		addInput(createInput<Port24>(offsetYInputPosition, module, Walk2::OFFSET_Y_INPUT));
+		addInput(createInput<Port24>(scaleYInputPosition, module, Walk2::SCALE_Y_INPUT));
+		addInput(createInput<Port24>(rateYInputPosition, module, Walk2::RATE_Y_INPUT));
+		addInput(createInput<Port24>(jumpInputPosition, module, Walk2::JUMP_INPUT));
 
-		addOutput(createPort<Port24>(outXOutputPosition, PortWidget::OUTPUT, module, Walk2::OUT_X_OUTPUT));
-		addOutput(createPort<Port24>(outYOutputPosition, PortWidget::OUTPUT, module, Walk2::OUT_Y_OUTPUT));
-		addOutput(createPort<Port24>(distanceOutputPosition, PortWidget::OUTPUT, module, Walk2::DISTANCE_OUTPUT));
+		addOutput(createOutput<Port24>(outXOutputPosition, module, Walk2::OUT_X_OUTPUT));
+		addOutput(createOutput<Port24>(outYOutputPosition, module, Walk2::OUT_Y_OUTPUT));
+		addOutput(createOutput<Port24>(distanceOutputPosition, module, Walk2::DISTANCE_OUTPUT));
 	}
 
 	void appendContextMenu(Menu* menu) override {

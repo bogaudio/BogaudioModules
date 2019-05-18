@@ -73,11 +73,11 @@ struct CVDWidget : ModuleWidget {
 		}
 		addParam(createParam<Knob29>(mixParamPosition, module, CVD::MIX_PARAM, -1.0, 1.0, 0.0));
 
-		addInput(createPort<Port24>(timeInputPosition, PortWidget::INPUT, module, CVD::TIME_INPUT));
-		addInput(createPort<Port24>(mixInputPosition, PortWidget::INPUT, module, CVD::MIX_INPUT));
-		addInput(createPort<Port24>(inInputPosition, PortWidget::INPUT, module, CVD::IN_INPUT));
+		addInput(createInput<Port24>(timeInputPosition, module, CVD::TIME_INPUT));
+		addInput(createInput<Port24>(mixInputPosition, module, CVD::MIX_INPUT));
+		addInput(createInput<Port24>(inInputPosition, module, CVD::IN_INPUT));
 
-		addOutput(createPort<Port24>(outOutputPosition, PortWidget::OUTPUT, module, CVD::OUT_OUTPUT));
+		addOutput(createOutput<Port24>(outOutputPosition, module, CVD::OUT_OUTPUT));
 	}
 };
 

@@ -266,15 +266,15 @@ struct FMOpWidget : ModuleWidget {
 		addParam(createParam<StatefulButton9>(envToFeedbackParamPosition, module, FMOp::ENV_TO_FEEDBACK_PARAM, 0.0, 1.0, 0.0));
 		addParam(createParam<StatefulButton9>(envToDepthParamPosition, module, FMOp::ENV_TO_DEPTH_PARAM, 0.0, 1.0, 0.0));
 
-		addInput(createPort<Port24>(sustainInputPosition, PortWidget::INPUT, module, FMOp::SUSTAIN_INPUT));
-		addInput(createPort<Port24>(depthInputPosition, PortWidget::INPUT, module, FMOp::DEPTH_INPUT));
-		addInput(createPort<Port24>(feedbackInputPosition, PortWidget::INPUT, module, FMOp::FEEDBACK_INPUT));
-		addInput(createPort<Port24>(levelInputPosition, PortWidget::INPUT, module, FMOp::LEVEL_INPUT));
-		addInput(createPort<Port24>(pitchInputPosition, PortWidget::INPUT, module, FMOp::PITCH_INPUT));
-		addInput(createPort<Port24>(gateInputPosition, PortWidget::INPUT, module, FMOp::GATE_INPUT));
-		addInput(createPort<Port24>(fmInputPosition, PortWidget::INPUT, module, FMOp::FM_INPUT));
+		addInput(createInput<Port24>(sustainInputPosition, module, FMOp::SUSTAIN_INPUT));
+		addInput(createInput<Port24>(depthInputPosition, module, FMOp::DEPTH_INPUT));
+		addInput(createInput<Port24>(feedbackInputPosition, module, FMOp::FEEDBACK_INPUT));
+		addInput(createInput<Port24>(levelInputPosition, module, FMOp::LEVEL_INPUT));
+		addInput(createInput<Port24>(pitchInputPosition, module, FMOp::PITCH_INPUT));
+		addInput(createInput<Port24>(gateInputPosition, module, FMOp::GATE_INPUT));
+		addInput(createInput<Port24>(fmInputPosition, module, FMOp::FM_INPUT));
 
-		addOutput(createPort<Port24>(audioOutputPosition, PortWidget::OUTPUT, module, FMOp::AUDIO_OUTPUT));
+		addOutput(createOutput<Port24>(audioOutputPosition, module, FMOp::AUDIO_OUTPUT));
 
 		addChild(createLight<SmallLight<GreenLight>>(envToLevelLightPosition, module, FMOp::ENV_TO_LEVEL_LIGHT));
 		addChild(createLight<SmallLight<GreenLight>>(envToFeedbackLightPosition, module, FMOp::ENV_TO_FEEDBACK_LIGHT));

@@ -79,9 +79,9 @@ struct ADSRWidget : ModuleWidget {
 		addParam(createParam<Knob29>(releaseParamPosition, module, ADSR::RELEASE_PARAM, 0.0, 1.0, 0.31623));
 		addParam(createParam<StatefulButton9>(linearParamPosition, module, ADSR::LINEAR_PARAM, 0.0, 1.0, 0.0));
 
-		addInput(createPort<Port24>(gateInputPosition, PortWidget::INPUT, module, ADSR::GATE_INPUT));
+		addInput(createInput<Port24>(gateInputPosition, module, ADSR::GATE_INPUT));
 
-		addOutput(createPort<Port24>(outOutputPosition, PortWidget::OUTPUT, module, ADSR::OUT_OUTPUT));
+		addOutput(createOutput<Port24>(outOutputPosition, module, ADSR::OUT_OUTPUT));
 
 		addChild(createLight<TinyLight<GreenLight>>(attackLightPosition, module, ADSR::ATTACK_LIGHT));
 		addChild(createLight<TinyLight<GreenLight>>(decayLightPosition, module, ADSR::DECAY_LIGHT));

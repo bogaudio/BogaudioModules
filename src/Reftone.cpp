@@ -229,8 +229,8 @@ struct ReftoneWidget : ModuleWidget {
 		}
 		addParam(createParam<Knob26>(fineParamPosition, module, Reftone::FINE_PARAM, -0.99, 0.99, 0.0));
 
-		addOutput(createPort<Port24>(cvOutputPosition, PortWidget::OUTPUT, module, Reftone::CV_OUTPUT));
-		addOutput(createPort<Port24>(outOutputPosition, PortWidget::OUTPUT, module, Reftone::OUT_OUTPUT));
+		addOutput(createOutput<Port24>(cvOutputPosition, module, Reftone::CV_OUTPUT));
+		addOutput(createOutput<Port24>(outOutputPosition, module, Reftone::OUT_OUTPUT));
 	}
 };
 

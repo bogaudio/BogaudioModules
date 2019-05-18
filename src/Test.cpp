@@ -514,13 +514,13 @@ struct TestWidget : ModuleWidget {
 		addParam(createParam<Knob26>(param2ParamPosition, module, Test::PARAM2_PARAM, 0.0, 1.0, 0.5));
 		addParam(createParam<Knob26>(param3ParamPosition, module, Test::PARAM3_PARAM, 0.0, 1.0, 0.5));
 
-		addInput(createPort<Port24>(cv1InputPosition, PortWidget::INPUT, module, Test::CV1_INPUT));
-		addInput(createPort<Port24>(cv2InputPosition, PortWidget::INPUT, module, Test::CV2_INPUT));
-		addInput(createPort<Port24>(cv3InputPosition, PortWidget::INPUT, module, Test::CV3_INPUT));
-		addInput(createPort<Port24>(inInputPosition, PortWidget::INPUT, module, Test::IN_INPUT));
+		addInput(createInput<Port24>(cv1InputPosition, module, Test::CV1_INPUT));
+		addInput(createInput<Port24>(cv2InputPosition, module, Test::CV2_INPUT));
+		addInput(createInput<Port24>(cv3InputPosition, module, Test::CV3_INPUT));
+		addInput(createInput<Port24>(inInputPosition, module, Test::IN_INPUT));
 
-		addOutput(createPort<Port24>(outOutputPosition, PortWidget::OUTPUT, module, Test::OUT_OUTPUT));
-		addOutput(createPort<Port24>(out2OutputPosition, PortWidget::OUTPUT, module, Test::OUT2_OUTPUT));
+		addOutput(createOutput<Port24>(outOutputPosition, module, Test::OUT_OUTPUT));
+		addOutput(createOutput<Port24>(out2OutputPosition, module, Test::OUT2_OUTPUT));
 	}
 };
 

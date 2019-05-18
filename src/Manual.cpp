@@ -60,14 +60,14 @@ struct ManualWidget : ModuleWidget {
 
 		addParam(createParam<Button18>(triggerParamPosition, module, Manual::TRIGGER_PARAM, 0.0, 1.0, 0.0));
 
-		addOutput(createPort<Port24>(out1OutputPosition, PortWidget::OUTPUT, module, Manual::OUT1_OUTPUT));
-		addOutput(createPort<Port24>(out2OutputPosition, PortWidget::OUTPUT, module, Manual::OUT2_OUTPUT));
-		addOutput(createPort<Port24>(out3OutputPosition, PortWidget::OUTPUT, module, Manual::OUT3_OUTPUT));
-		addOutput(createPort<Port24>(out4OutputPosition, PortWidget::OUTPUT, module, Manual::OUT4_OUTPUT));
-		addOutput(createPort<Port24>(out5OutputPosition, PortWidget::OUTPUT, module, Manual::OUT5_OUTPUT));
-		addOutput(createPort<Port24>(out6OutputPosition, PortWidget::OUTPUT, module, Manual::OUT6_OUTPUT));
-		addOutput(createPort<Port24>(out7OutputPosition, PortWidget::OUTPUT, module, Manual::OUT7_OUTPUT));
-		addOutput(createPort<Port24>(out8OutputPosition, PortWidget::OUTPUT, module, Manual::OUT8_OUTPUT));
+		addOutput(createOutput<Port24>(out1OutputPosition, module, Manual::OUT1_OUTPUT));
+		addOutput(createOutput<Port24>(out2OutputPosition, module, Manual::OUT2_OUTPUT));
+		addOutput(createOutput<Port24>(out3OutputPosition, module, Manual::OUT3_OUTPUT));
+		addOutput(createOutput<Port24>(out4OutputPosition, module, Manual::OUT4_OUTPUT));
+		addOutput(createOutput<Port24>(out5OutputPosition, module, Manual::OUT5_OUTPUT));
+		addOutput(createOutput<Port24>(out6OutputPosition, module, Manual::OUT6_OUTPUT));
+		addOutput(createOutput<Port24>(out7OutputPosition, module, Manual::OUT7_OUTPUT));
+		addOutput(createOutput<Port24>(out8OutputPosition, module, Manual::OUT8_OUTPUT));
 	}
 
 	void appendContextMenu(Menu* menu) override {

@@ -83,22 +83,22 @@ struct DADSRHPlusWidget : ModuleWidget {
 		addParam(createParam<SliderSwitch2State14>(speedParamPosition, module, DADSRHPlus::SPEED_PARAM, 0.0, 1.0, 1.0));
 		addParam(createParam<SliderSwitch2State14>(retriggerParamPosition, module, DADSRHPlus::RETRIGGER_PARAM, 0.0, 1.0, 1.0));
 
-		addInput(createPort<Port24>(delayInputPosition, PortWidget::INPUT, module, DADSRHPlus::DELAY_INPUT));
-		addInput(createPort<Port24>(attackInputPosition, PortWidget::INPUT, module, DADSRHPlus::ATTACK_INPUT));
-		addInput(createPort<Port24>(decayInputPosition, PortWidget::INPUT, module, DADSRHPlus::DECAY_INPUT));
-		addInput(createPort<Port24>(sustainInputPosition, PortWidget::INPUT, module, DADSRHPlus::SUSTAIN_INPUT));
-		addInput(createPort<Port24>(releaseInputPosition, PortWidget::INPUT, module, DADSRHPlus::RELEASE_INPUT));
-		addInput(createPort<Port24>(holdInputPosition, PortWidget::INPUT, module, DADSRHPlus::HOLD_INPUT));
-		addInput(createPort<Port24>(triggerInputPosition, PortWidget::INPUT, module, DADSRHPlus::TRIGGER_INPUT));
+		addInput(createInput<Port24>(delayInputPosition, module, DADSRHPlus::DELAY_INPUT));
+		addInput(createInput<Port24>(attackInputPosition, module, DADSRHPlus::ATTACK_INPUT));
+		addInput(createInput<Port24>(decayInputPosition, module, DADSRHPlus::DECAY_INPUT));
+		addInput(createInput<Port24>(sustainInputPosition, module, DADSRHPlus::SUSTAIN_INPUT));
+		addInput(createInput<Port24>(releaseInputPosition, module, DADSRHPlus::RELEASE_INPUT));
+		addInput(createInput<Port24>(holdInputPosition, module, DADSRHPlus::HOLD_INPUT));
+		addInput(createInput<Port24>(triggerInputPosition, module, DADSRHPlus::TRIGGER_INPUT));
 
-		addOutput(createPort<Port24>(delayOutputPosition, PortWidget::OUTPUT, module, DADSRHPlus::DELAY_OUTPUT));
-		addOutput(createPort<Port24>(attackOutputPosition, PortWidget::OUTPUT, module, DADSRHPlus::ATTACK_OUTPUT));
-		addOutput(createPort<Port24>(decayOutputPosition, PortWidget::OUTPUT, module, DADSRHPlus::DECAY_OUTPUT));
-		addOutput(createPort<Port24>(sustainOutputPosition, PortWidget::OUTPUT, module, DADSRHPlus::SUSTAIN_OUTPUT));
-		addOutput(createPort<Port24>(releaseOutputPosition, PortWidget::OUTPUT, module, DADSRHPlus::RELEASE_OUTPUT));
-		addOutput(createPort<Port24>(envOutputPosition, PortWidget::OUTPUT, module, DADSRHPlus::ENV_OUTPUT));
-		addOutput(createPort<Port24>(invOutputPosition, PortWidget::OUTPUT, module, DADSRHPlus::INV_OUTPUT));
-		addOutput(createPort<Port24>(triggerOutputPosition, PortWidget::OUTPUT, module, DADSRHPlus::TRIGGER_OUTPUT));
+		addOutput(createOutput<Port24>(delayOutputPosition, module, DADSRHPlus::DELAY_OUTPUT));
+		addOutput(createOutput<Port24>(attackOutputPosition, module, DADSRHPlus::ATTACK_OUTPUT));
+		addOutput(createOutput<Port24>(decayOutputPosition, module, DADSRHPlus::DECAY_OUTPUT));
+		addOutput(createOutput<Port24>(sustainOutputPosition, module, DADSRHPlus::SUSTAIN_OUTPUT));
+		addOutput(createOutput<Port24>(releaseOutputPosition, module, DADSRHPlus::RELEASE_OUTPUT));
+		addOutput(createOutput<Port24>(envOutputPosition, module, DADSRHPlus::ENV_OUTPUT));
+		addOutput(createOutput<Port24>(invOutputPosition, module, DADSRHPlus::INV_OUTPUT));
+		addOutput(createOutput<Port24>(triggerOutputPosition, module, DADSRHPlus::TRIGGER_OUTPUT));
 
 		addChild(createLight<TinyLight<GreenLight>>(delayLightPosition, module, DADSRHPlus::DELAY_LIGHT));
 		addChild(createLight<TinyLight<GreenLight>>(attackLightPosition, module, DADSRHPlus::ATTACK_LIGHT));

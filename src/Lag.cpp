@@ -89,11 +89,11 @@ struct LagWidget : ModuleWidget {
 		}
 		addParam(createParam<Knob29>(shapeParamPosition, module, Lag::SHAPE_PARAM, -1.0, 1.0, 0.0));
 
-		addInput(createPort<Port24>(timeInputPosition, PortWidget::INPUT, module, Lag::TIME_INPUT));
-		addInput(createPort<Port24>(shapeInputPosition, PortWidget::INPUT, module, Lag::SHAPE_INPUT));
-		addInput(createPort<Port24>(inInputPosition, PortWidget::INPUT, module, Lag::IN_INPUT));
+		addInput(createInput<Port24>(timeInputPosition, module, Lag::TIME_INPUT));
+		addInput(createInput<Port24>(shapeInputPosition, module, Lag::SHAPE_INPUT));
+		addInput(createInput<Port24>(inInputPosition, module, Lag::IN_INPUT));
 
-		addOutput(createPort<Port24>(outOutputPosition, PortWidget::OUTPUT, module, Lag::OUT_OUTPUT));
+		addOutput(createOutput<Port24>(outOutputPosition, module, Lag::OUT_OUTPUT));
 	}
 };
 

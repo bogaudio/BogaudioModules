@@ -100,12 +100,12 @@ struct ADWidget : ModuleWidget {
 		addParam(createParam<StatefulButton9>(loopParamPosition, module, AD::LOOP_PARAM, 0.0, 1.0, 0.0));
 		addParam(createParam<StatefulButton9>(linearParamPosition, module, AD::LINEAR_PARAM, 0.0, 1.0, 0.0));
 
-		addInput(createPort<Port24>(triggerInputPosition, PortWidget::INPUT, module, AD::TRIGGER_INPUT));
-		addInput(createPort<Port24>(attackInputPosition, PortWidget::INPUT, module, AD::ATTACK_INPUT));
-		addInput(createPort<Port24>(decayInputPosition, PortWidget::INPUT, module, AD::DECAY_INPUT));
+		addInput(createInput<Port24>(triggerInputPosition, module, AD::TRIGGER_INPUT));
+		addInput(createInput<Port24>(attackInputPosition, module, AD::ATTACK_INPUT));
+		addInput(createInput<Port24>(decayInputPosition, module, AD::DECAY_INPUT));
 
-		addOutput(createPort<Port24>(envOutputPosition, PortWidget::OUTPUT, module, AD::ENV_OUTPUT));
-		addOutput(createPort<Port24>(eocOutputPosition, PortWidget::OUTPUT, module, AD::EOC_OUTPUT));
+		addOutput(createOutput<Port24>(envOutputPosition, module, AD::ENV_OUTPUT));
+		addOutput(createOutput<Port24>(eocOutputPosition, module, AD::EOC_OUTPUT));
 
 		addChild(createLight<TinyLight<GreenLight>>(attackLightPosition, module, AD::ATTACK_LIGHT));
 		addChild(createLight<TinyLight<GreenLight>>(decayLightPosition, module, AD::DECAY_LIGHT));

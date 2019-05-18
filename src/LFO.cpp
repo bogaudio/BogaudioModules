@@ -152,18 +152,18 @@ struct LFOWidget : LFOBaseWidget {
 		addParam(createParam<Knob16>(offsetParamPosition, module, LFO::OFFSET_PARAM, -1.0, 1.0, 0.0));
 		addParam(createParam<Knob16>(scaleParamPosition, module, LFO::SCALE_PARAM, 0.0, 1.0, 1.0));
 
-		addInput(createPort<Port24>(sampleInputPosition, PortWidget::INPUT, module, LFO::SAMPLE_INPUT));
-		addInput(createPort<Port24>(pwInputPosition, PortWidget::INPUT, module, LFO::PW_INPUT));
-		addInput(createPort<Port24>(offsetInputPosition, PortWidget::INPUT, module, LFO::OFFSET_INPUT));
-		addInput(createPort<Port24>(scaleInputPosition, PortWidget::INPUT, module, LFO::SCALE_INPUT));
-		addInput(createPort<Port24>(pitchInputPosition, PortWidget::INPUT, module, LFO::PITCH_INPUT));
-		addInput(createPort<Port24>(resetInputPosition, PortWidget::INPUT, module, LFO::RESET_INPUT));
+		addInput(createInput<Port24>(sampleInputPosition, module, LFO::SAMPLE_INPUT));
+		addInput(createInput<Port24>(pwInputPosition, module, LFO::PW_INPUT));
+		addInput(createInput<Port24>(offsetInputPosition, module, LFO::OFFSET_INPUT));
+		addInput(createInput<Port24>(scaleInputPosition, module, LFO::SCALE_INPUT));
+		addInput(createInput<Port24>(pitchInputPosition, module, LFO::PITCH_INPUT));
+		addInput(createInput<Port24>(resetInputPosition, module, LFO::RESET_INPUT));
 
-		addOutput(createPort<Port24>(rampUpOutputPosition, PortWidget::OUTPUT, module, LFO::RAMP_UP_OUTPUT));
-		addOutput(createPort<Port24>(rampDownOutputPosition, PortWidget::OUTPUT, module, LFO::RAMP_DOWN_OUTPUT));
-		addOutput(createPort<Port24>(squareOutputPosition, PortWidget::OUTPUT, module, LFO::SQUARE_OUTPUT));
-		addOutput(createPort<Port24>(triangleOutputPosition, PortWidget::OUTPUT, module, LFO::TRIANGLE_OUTPUT));
-		addOutput(createPort<Port24>(sineOutputPosition, PortWidget::OUTPUT, module, LFO::SINE_OUTPUT));
+		addOutput(createOutput<Port24>(rampUpOutputPosition, module, LFO::RAMP_UP_OUTPUT));
+		addOutput(createOutput<Port24>(rampDownOutputPosition, module, LFO::RAMP_DOWN_OUTPUT));
+		addOutput(createOutput<Port24>(squareOutputPosition, module, LFO::SQUARE_OUTPUT));
+		addOutput(createOutput<Port24>(triangleOutputPosition, module, LFO::TRIANGLE_OUTPUT));
+		addOutput(createOutput<Port24>(sineOutputPosition, module, LFO::SINE_OUTPUT));
 
 		addChild(createLight<SmallLight<GreenLight>>(slowLightPosition, module, LFO::SLOW_LIGHT));
 	}

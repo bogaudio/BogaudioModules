@@ -70,12 +70,12 @@ struct DetuneWidget : ModuleWidget {
 			addParam(w);
 		}
 
-		addInput(createPort<Port24>(cvInputPosition, PortWidget::INPUT, module, Detune::CV_INPUT));
-		addInput(createPort<Port24>(inInputPosition, PortWidget::INPUT, module, Detune::IN_INPUT));
+		addInput(createInput<Port24>(cvInputPosition, module, Detune::CV_INPUT));
+		addInput(createInput<Port24>(inInputPosition, module, Detune::IN_INPUT));
 
-		addOutput(createPort<Port24>(thruOutputPosition, PortWidget::OUTPUT, module, Detune::THRU_OUTPUT));
-		addOutput(createPort<Port24>(outPlusOutputPosition, PortWidget::OUTPUT, module, Detune::OUT_PLUS_OUTPUT));
-		addOutput(createPort<Port24>(outMinusOutputPosition, PortWidget::OUTPUT, module, Detune::OUT_MINUS_OUTPUT));
+		addOutput(createOutput<Port24>(thruOutputPosition, module, Detune::THRU_OUTPUT));
+		addOutput(createOutput<Port24>(outPlusOutputPosition, module, Detune::OUT_PLUS_OUTPUT));
+		addOutput(createOutput<Port24>(outMinusOutputPosition, module, Detune::OUT_MINUS_OUTPUT));
 	}
 };
 

@@ -94,11 +94,11 @@ struct SlewWidget : ModuleWidget {
 		addParam(createParam<Knob26>(fallParamPosition, module, Slew::FALL_PARAM, 0.0, 1.0, 0.316));
 		addParam(createParam<Knob16>(fallShapeParamPosition, module, Slew::FALL_SHAPE_PARAM, -1.0, 1.0, 0.0));
 
-		addInput(createPort<Port24>(riseInputPosition, PortWidget::INPUT, module, Slew::RISE_INPUT));
-		addInput(createPort<Port24>(fallInputPosition, PortWidget::INPUT, module, Slew::FALL_INPUT));
-		addInput(createPort<Port24>(inInputPosition, PortWidget::INPUT, module, Slew::IN_INPUT));
+		addInput(createInput<Port24>(riseInputPosition, module, Slew::RISE_INPUT));
+		addInput(createInput<Port24>(fallInputPosition, module, Slew::FALL_INPUT));
+		addInput(createInput<Port24>(inInputPosition, module, Slew::IN_INPUT));
 
-		addOutput(createPort<Port24>(outOutputPosition, PortWidget::OUTPUT, module, Slew::OUT_OUTPUT));
+		addOutput(createOutput<Port24>(outOutputPosition, module, Slew::OUT_OUTPUT));
 	}
 };
 

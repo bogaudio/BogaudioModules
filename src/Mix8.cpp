@@ -194,34 +194,34 @@ struct Mix8Widget : ModuleWidget {
 		addSlider(mixParamPosition, module, Mix8::MIX_PARAM, module ? &module->_rmsLevel : NULL);
 		addParam(createParam<MuteButton>(mixMuteParamPosition, module, Mix8::MIX_MUTE_PARAM, 0.0, 1.0, 0.0));
 
-		addInput(createPort<Port24>(cv1InputPosition, PortWidget::INPUT, module, Mix8::CV1_INPUT));
-		addInput(createPort<Port24>(pan1InputPosition, PortWidget::INPUT, module, Mix8::PAN1_INPUT));
-		addInput(createPort<Port24>(in1InputPosition, PortWidget::INPUT, module, Mix8::IN1_INPUT));
-		addInput(createPort<Port24>(cv2InputPosition, PortWidget::INPUT, module, Mix8::CV2_INPUT));
-		addInput(createPort<Port24>(pan2InputPosition, PortWidget::INPUT, module, Mix8::PAN2_INPUT));
-		addInput(createPort<Port24>(in2InputPosition, PortWidget::INPUT, module, Mix8::IN2_INPUT));
-		addInput(createPort<Port24>(cv3InputPosition, PortWidget::INPUT, module, Mix8::CV3_INPUT));
-		addInput(createPort<Port24>(pan3InputPosition, PortWidget::INPUT, module, Mix8::PAN3_INPUT));
-		addInput(createPort<Port24>(in3InputPosition, PortWidget::INPUT, module, Mix8::IN3_INPUT));
-		addInput(createPort<Port24>(cv4InputPosition, PortWidget::INPUT, module, Mix8::CV4_INPUT));
-		addInput(createPort<Port24>(pan4InputPosition, PortWidget::INPUT, module, Mix8::PAN4_INPUT));
-		addInput(createPort<Port24>(in4InputPosition, PortWidget::INPUT, module, Mix8::IN4_INPUT));
-		addInput(createPort<Port24>(cv5InputPosition, PortWidget::INPUT, module, Mix8::CV5_INPUT));
-		addInput(createPort<Port24>(pan5InputPosition, PortWidget::INPUT, module, Mix8::PAN5_INPUT));
-		addInput(createPort<Port24>(in5InputPosition, PortWidget::INPUT, module, Mix8::IN5_INPUT));
-		addInput(createPort<Port24>(cv6InputPosition, PortWidget::INPUT, module, Mix8::CV6_INPUT));
-		addInput(createPort<Port24>(pan6InputPosition, PortWidget::INPUT, module, Mix8::PAN6_INPUT));
-		addInput(createPort<Port24>(in6InputPosition, PortWidget::INPUT, module, Mix8::IN6_INPUT));
-		addInput(createPort<Port24>(cv7InputPosition, PortWidget::INPUT, module, Mix8::CV7_INPUT));
-		addInput(createPort<Port24>(pan7InputPosition, PortWidget::INPUT, module, Mix8::PAN7_INPUT));
-		addInput(createPort<Port24>(in7InputPosition, PortWidget::INPUT, module, Mix8::IN7_INPUT));
-		addInput(createPort<Port24>(cv8InputPosition, PortWidget::INPUT, module, Mix8::CV8_INPUT));
-		addInput(createPort<Port24>(pan8InputPosition, PortWidget::INPUT, module, Mix8::PAN8_INPUT));
-		addInput(createPort<Port24>(in8InputPosition, PortWidget::INPUT, module, Mix8::IN8_INPUT));
-		addInput(createPort<Port24>(mixCvInputPosition, PortWidget::INPUT, module, Mix8::MIX_CV_INPUT));
+		addInput(createInput<Port24>(cv1InputPosition, module, Mix8::CV1_INPUT));
+		addInput(createInput<Port24>(pan1InputPosition, module, Mix8::PAN1_INPUT));
+		addInput(createInput<Port24>(in1InputPosition, module, Mix8::IN1_INPUT));
+		addInput(createInput<Port24>(cv2InputPosition, module, Mix8::CV2_INPUT));
+		addInput(createInput<Port24>(pan2InputPosition, module, Mix8::PAN2_INPUT));
+		addInput(createInput<Port24>(in2InputPosition, module, Mix8::IN2_INPUT));
+		addInput(createInput<Port24>(cv3InputPosition, module, Mix8::CV3_INPUT));
+		addInput(createInput<Port24>(pan3InputPosition, module, Mix8::PAN3_INPUT));
+		addInput(createInput<Port24>(in3InputPosition, module, Mix8::IN3_INPUT));
+		addInput(createInput<Port24>(cv4InputPosition, module, Mix8::CV4_INPUT));
+		addInput(createInput<Port24>(pan4InputPosition, module, Mix8::PAN4_INPUT));
+		addInput(createInput<Port24>(in4InputPosition, module, Mix8::IN4_INPUT));
+		addInput(createInput<Port24>(cv5InputPosition, module, Mix8::CV5_INPUT));
+		addInput(createInput<Port24>(pan5InputPosition, module, Mix8::PAN5_INPUT));
+		addInput(createInput<Port24>(in5InputPosition, module, Mix8::IN5_INPUT));
+		addInput(createInput<Port24>(cv6InputPosition, module, Mix8::CV6_INPUT));
+		addInput(createInput<Port24>(pan6InputPosition, module, Mix8::PAN6_INPUT));
+		addInput(createInput<Port24>(in6InputPosition, module, Mix8::IN6_INPUT));
+		addInput(createInput<Port24>(cv7InputPosition, module, Mix8::CV7_INPUT));
+		addInput(createInput<Port24>(pan7InputPosition, module, Mix8::PAN7_INPUT));
+		addInput(createInput<Port24>(in7InputPosition, module, Mix8::IN7_INPUT));
+		addInput(createInput<Port24>(cv8InputPosition, module, Mix8::CV8_INPUT));
+		addInput(createInput<Port24>(pan8InputPosition, module, Mix8::PAN8_INPUT));
+		addInput(createInput<Port24>(in8InputPosition, module, Mix8::IN8_INPUT));
+		addInput(createInput<Port24>(mixCvInputPosition, module, Mix8::MIX_CV_INPUT));
 
-		addOutput(createPort<Port24>(lOutputPosition, PortWidget::OUTPUT, module, Mix8::L_OUTPUT));
-		addOutput(createPort<Port24>(rOutputPosition, PortWidget::OUTPUT, module, Mix8::R_OUTPUT));
+		addOutput(createOutput<Port24>(lOutputPosition, module, Mix8::L_OUTPUT));
+		addOutput(createOutput<Port24>(rOutputPosition, module, Mix8::R_OUTPUT));
 	}
 
 	void addSlider(Vec position, Mix8* module, int id, float* rms) {
