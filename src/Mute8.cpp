@@ -52,7 +52,7 @@ struct Mute8Widget : ModuleWidget {
 		{
 			SVGPanel *panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(assetPlugin(plugin, "res/Mute8.svg")));
+			panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/Mute8.svg")));
 			addChild(panel);
 		}
 

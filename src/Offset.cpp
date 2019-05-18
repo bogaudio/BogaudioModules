@@ -33,7 +33,7 @@ struct OffsetWidget : DisableOutputLimitModuleWidget {
 		{
 			SVGPanel *panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(assetPlugin(plugin, "res/Offset.svg")));
+			panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/Offset.svg")));
 			addChild(panel);
 		}
 

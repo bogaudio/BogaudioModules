@@ -110,7 +110,7 @@ struct UMixWidget : ModuleWidget {
 		{
 			SVGPanel *panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(assetPlugin(plugin, "res/UMix.svg")));
+			panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/UMix.svg")));
 			addChild(panel);
 		}
 

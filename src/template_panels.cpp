@@ -8,7 +8,7 @@ struct ThreeHPWidget : ModuleWidget {
   	{
   		SVGPanel *panel = new SVGPanel();
   		panel->box.size = box.size;
-  		panel->setBackground(SVG::load(assetPlugin(plugin, "res/ThreeHP.svg")));
+  		panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/ThreeHP.svg")));
   		addChild(panel);
   	}
 
@@ -27,7 +27,7 @@ struct SixHPWidget : ModuleWidget {
   	{
   		SVGPanel *panel = new SVGPanel();
   		panel->box.size = box.size;
-  		panel->setBackground(SVG::load(assetPlugin(plugin, "res/SixHP.svg")));
+  		panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/SixHP.svg")));
   		addChild(panel);
   	}
 
@@ -46,7 +46,7 @@ struct EightHPWidget : ModuleWidget {
   	{
   		SVGPanel *panel = new SVGPanel();
   		panel->box.size = box.size;
-  		panel->setBackground(SVG::load(assetPlugin(plugin, "res/EightHP.svg")));
+  		panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/EightHP.svg")));
   		addChild(panel);
   	}
 
@@ -65,7 +65,7 @@ struct TenHPWidget : ModuleWidget {
 		{
 			SVGPanel *panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(assetPlugin(plugin, "res/TenHP.svg")));
+			panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/TenHP.svg")));
 			addChild(panel);
 		}
 
@@ -86,7 +86,7 @@ struct TwelveHPWidget : ModuleWidget {
   	{
   		SVGPanel *panel = new SVGPanel();
   		panel->box.size = box.size;
-  		panel->setBackground(SVG::load(assetPlugin(plugin, "res/TwelveHP.svg")));
+  		panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/TwelveHP.svg")));
   		addChild(panel);
   	}
 
@@ -106,7 +106,7 @@ struct ThirteenHPWidget : ModuleWidget {
   	{
   		SVGPanel *panel = new SVGPanel();
   		panel->box.size = box.size;
-  		panel->setBackground(SVG::load(assetPlugin(plugin, "res/ThirteenHP.svg")));
+  		panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/ThirteenHP.svg")));
   		addChild(panel);
   	}
 
@@ -127,7 +127,7 @@ struct FifteenHPWidget : ModuleWidget {
   	{
   		SVGPanel *panel = new SVGPanel();
   		panel->box.size = box.size;
-  		panel->setBackground(SVG::load(assetPlugin(plugin, "res/FifteenHP.svg")));
+  		panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/FifteenHP.svg")));
   		addChild(panel);
   	}
 
@@ -148,7 +148,7 @@ struct EighteenHPWidget : ModuleWidget {
   	{
   		SVGPanel *panel = new SVGPanel();
   		panel->box.size = box.size;
-  		panel->setBackground(SVG::load(assetPlugin(plugin, "res/EighteenHP.svg")));
+  		panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/EighteenHP.svg")));
   		addChild(panel);
   	}
 
@@ -169,7 +169,7 @@ struct TwentyHPWidget : ModuleWidget {
   	{
   		SVGPanel *panel = new SVGPanel();
   		panel->box.size = box.size;
-  		panel->setBackground(SVG::load(assetPlugin(plugin, "res/TwentyHP.svg")));
+  		panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/TwentyHP.svg")));
   		addChild(panel);
   	}
 
@@ -190,7 +190,7 @@ struct TwentyTwoHPWidget : ModuleWidget {
   	{
   		SVGPanel *panel = new SVGPanel();
   		panel->box.size = box.size;
-  		panel->setBackground(SVG::load(assetPlugin(plugin, "res/TwentyTwoHP.svg")));
+  		panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/TwentyTwoHP.svg")));
   		addChild(panel);
   	}
 
@@ -211,7 +211,7 @@ struct TwentyFiveHPWidget : ModuleWidget {
   	{
   		SVGPanel *panel = new SVGPanel();
   		panel->box.size = box.size;
-  		panel->setBackground(SVG::load(assetPlugin(plugin, "res/TwentyFiveHP.svg")));
+  		panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/TwentyFiveHP.svg")));
   		addChild(panel);
   	}
 
@@ -232,7 +232,7 @@ struct ThirtyHPWidget : ModuleWidget {
   	{
   		SVGPanel *panel = new SVGPanel();
   		panel->box.size = box.size;
-  		panel->setBackground(SVG::load(assetPlugin(plugin, "res/ThirtyHP.svg")));
+  		panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/ThirtyHP.svg")));
   		addChild(panel);
   	}
 

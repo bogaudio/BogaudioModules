@@ -21,7 +21,7 @@ struct Matrix88Widget : ModuleWidget {
 		{
 			SVGPanel *panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(assetPlugin(plugin, "res/Matrix88.svg")));
+			panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/Matrix88.svg")));
 			addChild(panel);
 		}
 

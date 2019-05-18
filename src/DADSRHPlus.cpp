@@ -10,7 +10,7 @@ struct DADSRHPlusWidget : ModuleWidget {
 		{
 			SVGPanel *panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(assetPlugin(plugin, "res/DADSRHPlus.svg")));
+			panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/DADSRHPlus.svg")));
 			addChild(panel);
 		}
 

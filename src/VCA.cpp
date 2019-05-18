@@ -42,7 +42,7 @@ struct VCAWidget : ModuleWidget {
 		{
 			SVGPanel *panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(assetPlugin(plugin, "res/VCA.svg")));
+			panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/VCA.svg")));
 			addChild(panel);
 		}
 

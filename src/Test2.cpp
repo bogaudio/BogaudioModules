@@ -111,7 +111,7 @@ struct Test2Widget : ModuleWidget {
 		{
 			SVGPanel *panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(assetPlugin(plugin, "res/Test2.svg")));
+			panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/Test2.svg")));
 			addChild(panel);
 		}
 

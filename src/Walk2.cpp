@@ -141,7 +141,7 @@ struct Walk2Display : TransparentWidget {
 	, _drawSize(2 * (_size.x - 2 * _insetAround), 2 * (_size.y - 2 * _insetAround))
 	, _midX(_insetAround + _drawSize.x/2)
 	, _midY(_insetAround + _drawSize.y/2)
-	, _font(Font::load(assetPlugin(plugin, "res/fonts/inconsolata.ttf")))
+	, _font(Font::load(assetPlugin(pluginInstance, "res/fonts/inconsolata.ttf")))
 	{
 	}
 
@@ -473,7 +473,7 @@ struct Walk2Widget : ModuleWidget {
 		{
 			SVGPanel *panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(assetPlugin(plugin, "res/Walk2.svg")));
+			panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/Walk2.svg")));
 			addChild(panel);
 		}
 

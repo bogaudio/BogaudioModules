@@ -100,7 +100,7 @@ struct Mix8Widget : ModuleWidget {
 		{
 			SVGPanel *panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(assetPlugin(plugin, "res/Mix8.svg")));
+			panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/Mix8.svg")));
 			addChild(panel);
 		}
 

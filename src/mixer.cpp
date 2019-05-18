@@ -56,11 +56,11 @@ SoloMuteButton::SoloMuteButton() {
 	_svgWidget = new SVGWidget();
 	addChild(_svgWidget);
 
-	auto svg = SVG::load(assetPlugin(plugin, "res/button_18px_0.svg"));
+	auto svg = SVG::load(assetPlugin(pluginInstance, "res/button_18px_0.svg"));
 	_frames.push_back(svg);
-	_frames.push_back(SVG::load(assetPlugin(plugin, "res/button_18px_1_orange.svg")));
-	_frames.push_back(SVG::load(assetPlugin(plugin, "res/button_18px_1_green.svg")));
-	_frames.push_back(SVG::load(assetPlugin(plugin, "res/button_18px_1_green.svg")));
+	_frames.push_back(SVG::load(assetPlugin(pluginInstance, "res/button_18px_1_orange.svg")));
+	_frames.push_back(SVG::load(assetPlugin(pluginInstance, "res/button_18px_1_green.svg")));
+	_frames.push_back(SVG::load(assetPlugin(pluginInstance, "res/button_18px_1_green.svg")));
 
 	_svgWidget->setSVG(svg);
 	box.size = _svgWidget->box.size;

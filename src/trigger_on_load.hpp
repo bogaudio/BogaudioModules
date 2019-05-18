@@ -3,7 +3,7 @@
 
 using namespace rack;
 
-extern Plugin *plugin;
+extern Plugin *pluginInstance;
 
 namespace bogaudio {
 

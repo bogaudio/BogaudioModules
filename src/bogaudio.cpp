@@ -65,10 +65,10 @@
 
 //NEW_INCLUDES_HERE
 
-Plugin *plugin;
+Plugin *pluginInstance;
 
 void init(rack::Plugin *p) {
-	plugin = p;
+	pluginInstance = p;
 	p->slug = TOSTRING(SLUG);
 	p->version = TOSTRING(VERSION);
 	p->website = "https://github.com/bogaudio/BogaudioModules";

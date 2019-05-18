@@ -81,7 +81,7 @@ struct OneEightWidget : ModuleWidget {
 		{
 			SVGPanel *panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(assetPlugin(plugin, "res/OneEight.svg")));
+			panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/OneEight.svg")));
 			addChild(panel);
 		}
 

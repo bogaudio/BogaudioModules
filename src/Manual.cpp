@@ -38,7 +38,7 @@ struct ManualWidget : ModuleWidget {
 		{
 			SVGPanel *panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(assetPlugin(plugin, "res/Manual.svg")));
+			panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/Manual.svg")));
 			addChild(panel);
 		}
 

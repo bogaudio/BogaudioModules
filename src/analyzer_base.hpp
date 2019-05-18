@@ -156,7 +156,7 @@ struct AnalyzerDisplay : TransparentWidget {
 	, _size(size)
 	, _graphSize(_size.x - _insetLeft - _insetRight, _size.y - _insetTop - _insetBottom)
 	, _drawInset(drawInset)
-	, _font(Font::load(assetPlugin(plugin, "res/fonts/inconsolata.ttf")))
+	, _font(Font::load(assetPlugin(pluginInstance, "res/fonts/inconsolata.ttf")))
 	{
 	}
 

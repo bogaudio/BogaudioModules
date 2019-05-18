@@ -17,4 +17,4 @@
 using namespace rack;
 using namespace bogaudio;
 
-extern Plugin *plugin;
+extern Plugin *pluginInstance;
