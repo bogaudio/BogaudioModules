@@ -48,42 +48,42 @@ void Walk2::process(const ProcessArgs& args) {
 		_modulationStep = 0;
 		float sampleRate = APP->engine->getSampleRate();
 
-		float rateX = params[RATE_X_PARAM].value;
-		if (inputs[RATE_X_INPUT].active) {
-			rateX *= clamp(inputs[RATE_X_INPUT].value / 10.0f, 0.0f, 1.0f);
+		float rateX = params[RATE_X_PARAM].getValue();
+		if (inputs[RATE_X_INPUT].isConnected()) {
+			rateX *= clamp(inputs[RATE_X_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
 		rateX = scaleRate(rateX);
 		_walkX.setParams(sampleRate, rateX);
 		_slewX.setParams(sampleRate, std::max((1.0f - rateX) * 100.0f, 0.0f), 10.0f);
 
-		_offsetX = params[OFFSET_X_PARAM].value;
-		if (inputs[OFFSET_X_INPUT].active) {
-			_offsetX *= clamp(inputs[OFFSET_X_INPUT].value / 5.0f, -1.0f, 1.0f);
+		_offsetX = params[OFFSET_X_PARAM].getValue();
+		if (inputs[OFFSET_X_INPUT].isConnected()) {
+			_offsetX *= clamp(inputs[OFFSET_X_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
 		}
 		_offsetX *= 5.0f;
 
-		_scaleX = params[SCALE_X_PARAM].value;
-		if (inputs[SCALE_X_INPUT].active) {
-			_scaleX *= clamp(inputs[SCALE_X_INPUT].value / 10.0f, 0.0f, 1.0f);
+		_scaleX = params[SCALE_X_PARAM].getValue();
+		if (inputs[SCALE_X_INPUT].isConnected()) {
+			_scaleX *= clamp(inputs[SCALE_X_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
 
-		float rateY = params[RATE_Y_PARAM].value;
-		if (inputs[RATE_Y_INPUT].active) {
-			rateY *= clamp(inputs[RATE_Y_INPUT].value / 10.0f, 0.0f, 1.0f);
+		float rateY = params[RATE_Y_PARAM].getValue();
+		if (inputs[RATE_Y_INPUT].isConnected()) {
+			rateY *= clamp(inputs[RATE_Y_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
 		rateY = scaleRate(rateY);
 		_walkY.setParams(sampleRate, rateY);
 		_slewY.setParams(sampleRate, std::max((1.0f - rateY) * 100.0f, 0.0f), 10.0f);
 
-		_offsetY = params[OFFSET_Y_PARAM].value;
-		if (inputs[OFFSET_Y_INPUT].active) {
-			_offsetY *= clamp(inputs[OFFSET_Y_INPUT].value / 5.0f, -1.0f, 1.0f);
+		_offsetY = params[OFFSET_Y_PARAM].getValue();
+		if (inputs[OFFSET_Y_INPUT].isConnected()) {
+			_offsetY *= clamp(inputs[OFFSET_Y_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
 		}
 		_offsetY *= 5.0f;
 
-		_scaleY = params[SCALE_Y_PARAM].value;
-		if (inputs[SCALE_Y_INPUT].active) {
-			_scaleY *= clamp(inputs[SCALE_Y_INPUT].value / 10.0f, 0.0f, 1.0f);
+		_scaleY = params[SCALE_Y_PARAM].getValue();
+		if (inputs[SCALE_Y_INPUT].isConnected()) {
+			_scaleY *= clamp(inputs[SCALE_Y_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
 	}
 
@@ -94,7 +94,7 @@ void Walk2::process(const ProcessArgs& args) {
 		_walkY.tell(jumpTo->y);
 		delete jumpTo;
 	}
-	else if (_jumpTrigger.process(inputs[JUMP_INPUT].value)) {
+	else if (_jumpTrigger.process(inputs[JUMP_INPUT].getVoltage())) {
 		_walkX.jump();
 		_walkY.jump();
 	}
@@ -102,14 +102,14 @@ void Walk2::process(const ProcessArgs& args) {
 	float outX = _slewX.next(_walkX.next());
 	outX *= _scaleX;
 	outX += _offsetX;
-	outputs[OUT_X_OUTPUT].value = outX;
+	outputs[OUT_X_OUTPUT].setVoltage(outX);
 
 	float outY = _slewY.next(_walkY.next());
 	outY *= _scaleY;
 	outY += _offsetY;
-	outputs[OUT_Y_OUTPUT].value = outY;
+	outputs[OUT_Y_OUTPUT].setVoltage(outY);
 
-	outputs[DISTANCE_OUTPUT].value = sqrtf(outX*outX + outY*outY) * 0.707107f; // scaling constant is 10 / squrt(200)
+	outputs[DISTANCE_OUTPUT].setVoltage(sqrtf(outX*outX + outY*outY) * 0.707107f); // scaling constant is 10 / squrt(200)
 
 	if (_historyStep == 0) {
 		_outsX.push(outX);

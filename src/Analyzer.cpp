@@ -31,7 +31,7 @@ void Analyzer::process(const ProcessArgs& args) {
 	if (_modulationStep >= modulationSteps) {
 		_modulationStep = 0;
 
-		float range = params[RANGE2_PARAM].value;
+		float range = params[RANGE2_PARAM].getValue();
 		_rangeMinHz = 0.0f;
 		_rangeMaxHz = 0.5f * APP->engine->getSampleRate();
 		if (range < 0.0f) {
@@ -45,23 +45,23 @@ void Analyzer::process(const ProcessArgs& args) {
 		}
 
 		const float maxTime = 0.5;
-		float smooth = params[SMOOTH_PARAM].value * maxTime;
+		float smooth = params[SMOOTH_PARAM].getValue() * maxTime;
 		smooth /= _core.size() / (_core._overlap * APP->engine->getSampleRate());
 		int averageN = std::max(1, (int)roundf(smooth));
 
 		AnalyzerCore::Quality quality = AnalyzerCore::QUALITY_GOOD;
-		if (params[QUALITY_PARAM].value > 2.5) {
+		if (params[QUALITY_PARAM].getValue() > 2.5) {
 			quality = AnalyzerCore::QUALITY_ULTRA;
 		}
-		else if (params[QUALITY_PARAM].value > 1.5) {
+		else if (params[QUALITY_PARAM].getValue() > 1.5) {
 			quality = AnalyzerCore::QUALITY_HIGH;
 		}
 
 		AnalyzerCore::Window window = AnalyzerCore::WINDOW_KAISER;
-		if (params[WINDOW_PARAM].value > 2.5) {
+		if (params[WINDOW_PARAM].getValue() > 2.5) {
 			window = AnalyzerCore::WINDOW_NONE;
 		}
-		else if (params[WINDOW_PARAM].value > 1.5) {
+		else if (params[WINDOW_PARAM].getValue() > 1.5) {
 			window = AnalyzerCore::WINDOW_HAMMING;
 		}
 
@@ -70,7 +70,7 @@ void Analyzer::process(const ProcessArgs& args) {
 
 	for (int i = 0; i < 4; ++i) {
 		_core.stepChannel(i, inputs[SIGNALA_INPUT + i]);
-		outputs[SIGNALA_OUTPUT + i].value = inputs[SIGNALA_INPUT + i].value;
+		outputs[SIGNALA_OUTPUT + i].setVoltage(inputs[SIGNALA_INPUT + i].getVoltage());
 	}
 
 	lights[QUALITY_ULTRA_LIGHT].value = _core._quality == AnalyzerCore::QUALITY_ULTRA;

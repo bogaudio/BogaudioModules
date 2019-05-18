@@ -27,29 +27,29 @@ void OneEight::dataFromJson(json_t* root) {
 }
 
 void OneEight::process(const ProcessArgs& args) {
-	bool reset = _reset.process(inputs[RESET_INPUT].value);
+	bool reset = _reset.process(inputs[RESET_INPUT].getVoltage());
 	if (reset) {
 		_timer.reset();
 	}
 	bool timer = _timer.next();
-	bool clock = _clock.process(inputs[CLOCK_INPUT].value) && !timer;
+	bool clock = _clock.process(inputs[CLOCK_INPUT].getVoltage()) && !timer;
 
-	int steps = clamp(params[STEPS_PARAM].value, 1.0f, 8.0f);
-	int reverse = 1 - 2 * (params[DIRECTION_PARAM].value == 0.0f);
+	int steps = clamp(params[STEPS_PARAM].getValue(), 1.0f, 8.0f);
+	int reverse = 1 - 2 * (params[DIRECTION_PARAM].getValue() == 0.0f);
 	_step = (_step + reverse * clock) % steps;
 	_step += (_step < 0) * steps;
 	_step -= _step * reset;
-	int select = params[SELECT_PARAM].value;
-	select += clamp(inputs[SELECT_INPUT].value, 0.0f, 10.0f) * 0.1f * 8.0f;
+	int select = params[SELECT_PARAM].getValue();
+	select += clamp(inputs[SELECT_INPUT].getVoltage(), 0.0f, 10.0f) * 0.1f * 8.0f;
 	if (!_selectOnClock || clock) {
 		_select = select;
 	}
 	int step = _step + _select;
 	step = step % 8;
 
-	float in = inputs[IN_INPUT].value + !inputs[IN_INPUT].active * 10.0f;
+	float in = inputs[IN_INPUT].getVoltage() + !inputs[IN_INPUT].isConnected() * 10.0f;
 	for (int i = 0; i < 8; ++i) {
-		outputs[OUT1_OUTPUT + i].value = (step == i) * in;
+		outputs[OUT1_OUTPUT + i].setVoltage((step == i) * in);
 		lights[OUT1_LIGHT + i].value = step == i;
 	}
 }

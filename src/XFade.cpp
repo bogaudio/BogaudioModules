@@ -6,26 +6,26 @@ void XFade::onSampleRateChange() {
 }
 
 void XFade::process(const ProcessArgs& args) {
-	bool linear = params[LINEAR_PARAM].value > 0.5f;
+	bool linear = params[LINEAR_PARAM].getValue() > 0.5f;
 	lights[LINEAR_LIGHT].value = linear;
-	if (!outputs[OUT_OUTPUT].active) {
+	if (!outputs[OUT_OUTPUT].isConnected()) {
 		return;
 	}
 
-	float mix = params[MIX_PARAM].value;
-	if (inputs[MIX_INPUT].active) {
-		mix *= clamp(inputs[MIX_INPUT].value / 5.0f, -1.0f, 1.0f);
+	float mix = params[MIX_PARAM].getValue();
+	if (inputs[MIX_INPUT].isConnected()) {
+		mix *= clamp(inputs[MIX_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
 	}
 	mix = _mixSL.next(mix);
 
-	float curveIn = params[CURVE_PARAM].value;
+	float curveIn = params[CURVE_PARAM].getValue();
 
 	if (_linear != linear || _mix != mix || _curveIn != curveIn) {
 		_linear = linear;
 		_mix = mix;
 		_curveIn = curveIn;
 		if (!linear) {
-			curveIn = powf(params[CURVE_PARAM].value, 0.082f);
+			curveIn = powf(params[CURVE_PARAM].getValue(), 0.082f);
 		}
 		curveIn *= 2.0f;
 		curveIn -= 1.0f;
@@ -33,7 +33,7 @@ void XFade::process(const ProcessArgs& args) {
 		_mixer.setParams(mix, curveIn, linear);
 	}
 
-	outputs[OUT_OUTPUT].value = _mixer.next(inputs[A_INPUT].value, inputs[B_INPUT].value);
+	outputs[OUT_OUTPUT].setVoltage(_mixer.next(inputs[A_INPUT].getVoltage(), inputs[B_INPUT].getVoltage()));
 }
 
 struct XFadeWidget : ModuleWidget {

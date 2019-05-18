@@ -12,16 +12,16 @@ void LLFO::onSampleRateChange() {
 }
 
 void LLFO::process(const ProcessArgs& args) {
-	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].value > 0.5f;
+	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].getValue() > 0.5f;
 
-	Wave wave = (Wave)params[WAVE_PARAM].value;
+	Wave wave = (Wave)params[WAVE_PARAM].getValue();
 	lights[SINE_LIGHT].value = wave == SINE_WAVE;
 	lights[TRIANGLE_LIGHT].value = wave == TRIANGLE_WAVE;
 	lights[RAMP_UP_LIGHT].value = wave == RAMP_UP_WAVE;
 	lights[RAMP_DOWN_LIGHT].value = wave == RAMP_DOWN_WAVE;
 	lights[SQUARE_LIGHT].value = wave == SQUARE_WAVE;
 	lights[PULSE_LIGHT].value = wave == PULSE_WAVE;
-	if (!outputs[OUT_OUTPUT].active) {
+	if (!outputs[OUT_OUTPUT].isConnected()) {
 		return;
 	}
 
@@ -62,11 +62,11 @@ void LLFO::process(const ProcessArgs& args) {
 			}
 		}
 
-		_offset = params[OFFSET_PARAM].value * 5.0f;
-		_scale = params[SCALE_PARAM].value;
+		_offset = params[OFFSET_PARAM].getValue() * 5.0f;
+		_scale = params[SCALE_PARAM].getValue();
 	}
 
-	if (_resetTrigger.next(inputs[RESET_INPUT].value)) {
+	if (_resetTrigger.next(inputs[RESET_INPUT].getVoltage())) {
 		_phasor.resetPhase();
 	}
 	_phasor.advancePhase();
@@ -75,7 +75,7 @@ void LLFO::process(const ProcessArgs& args) {
 		sample = -sample;
 	}
 	sample += _offset;
-	outputs[OUT_OUTPUT].value = sample;
+	outputs[OUT_OUTPUT].setVoltage(sample);
 }
 
 struct LLFOWidget : LFOBaseWidget {

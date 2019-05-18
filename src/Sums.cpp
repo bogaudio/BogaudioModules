@@ -2,32 +2,32 @@
 #include "Sums.hpp"
 
 void Sums::process(const ProcessArgs& args) {
-	float a = inputs[A_INPUT].value;
-	float b = inputs[B_INPUT].value;
+	float a = inputs[A_INPUT].getVoltage();
+	float b = inputs[B_INPUT].getVoltage();
 	if (_disableOutputLimit) {
 		outputs[SUM_OUTPUT].value = a + b,
-		outputs[DIFFERENCE_OUTPUT].value = a - b;
-		outputs[MAX_OUTPUT].value = std::max(a, b);
-		outputs[MIN_OUTPUT].value = std::min(a, b);
+		outputs[DIFFERENCE_OUTPUT].setVoltage(a - b);
+		outputs[MAX_OUTPUT].setVoltage(std::max(a, b));
+		outputs[MIN_OUTPUT].setVoltage(std::min(a, b));
 
-		if (inputs[NEGATE_INPUT].active) {
-			outputs[NEGATE_OUTPUT].value = -inputs[NEGATE_INPUT].value;
+		if (inputs[NEGATE_INPUT].isConnected()) {
+			outputs[NEGATE_OUTPUT].setVoltage(-inputs[NEGATE_INPUT].getVoltage());
 		}
 		else {
-			outputs[NEGATE_OUTPUT].value = 0.0f;
+			outputs[NEGATE_OUTPUT].setVoltage(0.0f);
 		}
 	}
 	else {
-		outputs[SUM_OUTPUT].value = clamp(a + b, -12.0f, 12.0f);
-		outputs[DIFFERENCE_OUTPUT].value = clamp(a - b, -12.0f, 12.0f);
-		outputs[MAX_OUTPUT].value = clamp(std::max(a, b), -12.0f, 12.0f);
-		outputs[MIN_OUTPUT].value = clamp(std::min(a, b), -12.0f, 12.0f);
+		outputs[SUM_OUTPUT].setVoltage(clamp(a + b, -12.0f, 12.0f));
+		outputs[DIFFERENCE_OUTPUT].setVoltage(clamp(a - b, -12.0f, 12.0f));
+		outputs[MAX_OUTPUT].setVoltage(clamp(std::max(a, b), -12.0f, 12.0f));
+		outputs[MIN_OUTPUT].setVoltage(clamp(std::min(a, b), -12.0f, 12.0f));
 
-		if (inputs[NEGATE_INPUT].active) {
-			outputs[NEGATE_OUTPUT].value = clamp(-inputs[NEGATE_INPUT].value, -12.0f, 12.0f);
+		if (inputs[NEGATE_INPUT].isConnected()) {
+			outputs[NEGATE_OUTPUT].setVoltage(clamp(-inputs[NEGATE_INPUT].getVoltage(), -12.0f, 12.0f));
 		}
 		else {
-			outputs[NEGATE_OUTPUT].value = 0.0f;
+			outputs[NEGATE_OUTPUT].setVoltage(0.0f);
 		}
 	}
 }

@@ -23,16 +23,16 @@ void EightFO::onSampleRateChange() {
 }
 
 void EightFO::process(const ProcessArgs& args) {
-	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].value > 0.5f;
+	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].getValue() > 0.5f;
 	if (!(
-		outputs[PHASE7_OUTPUT].active ||
-		outputs[PHASE6_OUTPUT].active ||
-		outputs[PHASE5_OUTPUT].active ||
-		outputs[PHASE4_OUTPUT].active ||
-		outputs[PHASE3_OUTPUT].active ||
-		outputs[PHASE2_OUTPUT].active ||
-		outputs[PHASE1_OUTPUT].active ||
-		outputs[PHASE0_OUTPUT].active
+		outputs[PHASE7_OUTPUT].isConnected() ||
+		outputs[PHASE6_OUTPUT].isConnected() ||
+		outputs[PHASE5_OUTPUT].isConnected() ||
+		outputs[PHASE4_OUTPUT].isConnected() ||
+		outputs[PHASE3_OUTPUT].isConnected() ||
+		outputs[PHASE2_OUTPUT].isConnected() ||
+		outputs[PHASE1_OUTPUT].isConnected() ||
+		outputs[PHASE0_OUTPUT].isConnected()
 	)) {
 		return;
 	}
@@ -43,11 +43,11 @@ void EightFO::process(const ProcessArgs& args) {
 
 		setFrequency(_slowMode, params[FREQUENCY_PARAM], inputs[PITCH_INPUT], _phasor);
 
-		_wave = (Wave)params[WAVE_PARAM].value;
+		_wave = (Wave)params[WAVE_PARAM].getValue();
 		if (_wave == SQUARE_WAVE) {
-			float pw = params[SAMPLE_PWM_PARAM].value;
-			if (inputs[SAMPLE_PWM_INPUT].active) {
-				pw *= clamp(inputs[SAMPLE_PWM_INPUT].value / 5.0f, -1.0f, 1.0f);
+			float pw = params[SAMPLE_PWM_PARAM].getValue();
+			if (inputs[SAMPLE_PWM_INPUT].isConnected()) {
+				pw *= clamp(inputs[SAMPLE_PWM_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
 			}
 			pw *= 1.0f - 2.0f * _square.minPulseWidth;
 			pw *= 0.5f;
@@ -56,23 +56,23 @@ void EightFO::process(const ProcessArgs& args) {
 			_sampleSteps = 1;
 		}
 		else {
-			float sample = fabsf(params[SAMPLE_PWM_PARAM].value);
-			if (inputs[SAMPLE_PWM_INPUT].active) {
-				sample *= clamp(fabsf(inputs[SAMPLE_PWM_INPUT].value) / 5.0f, 0.0f, 1.0f);
+			float sample = fabsf(params[SAMPLE_PWM_PARAM].getValue());
+			if (inputs[SAMPLE_PWM_INPUT].isConnected()) {
+				sample *= clamp(fabsf(inputs[SAMPLE_PWM_INPUT].getVoltage()) / 5.0f, 0.0f, 1.0f);
 			}
 			float maxSampleSteps = (_phasor._sampleRate / _phasor._frequency) / 4.0f;
 			_sampleSteps = clamp((int)(sample * maxSampleSteps), 1, (int)maxSampleSteps);
 			_square.setPulseWidth(SquareOscillator::defaultPulseWidth);
 		}
 
-		_offset = params[OFFSET_PARAM].value;
-		if (inputs[OFFSET_INPUT].active) {
-			_offset *= clamp(inputs[OFFSET_INPUT].value / 5.0f, -1.0f, 1.0f);
+		_offset = params[OFFSET_PARAM].getValue();
+		if (inputs[OFFSET_INPUT].isConnected()) {
+			_offset *= clamp(inputs[OFFSET_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
 		}
 		_offset *= 5.0f;
-		_scale = params[SCALE_PARAM].value;
-		if (inputs[SCALE_INPUT].active) {
-			_scale *= clamp(inputs[SCALE_INPUT].value / 10.0f, 0.0f, 1.0f);
+		_scale = params[SCALE_PARAM].getValue();
+		if (inputs[SCALE_INPUT].isConnected()) {
+			_scale *= clamp(inputs[SCALE_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
 
 		_phase7Offset = phaseOffset(params[PHASE7_PARAM], inputs[PHASE7_INPUT], basePhase7Offset);
@@ -85,7 +85,7 @@ void EightFO::process(const ProcessArgs& args) {
 		_phase0Offset = phaseOffset(params[PHASE0_PARAM], inputs[PHASE0_INPUT], basePhase0Offset);
 	}
 
-	if (_resetTrigger.next(inputs[RESET_INPUT].value)) {
+	if (_resetTrigger.next(inputs[RESET_INPUT].getVoltage())) {
 		_phasor.resetPhase();
 	}
 

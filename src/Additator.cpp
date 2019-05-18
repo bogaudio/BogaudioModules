@@ -44,8 +44,8 @@ float Additator::cvValue(Input& cv, bool dc) {
 }
 
 void Additator::process(const ProcessArgs& args) {
-	if (!outputs[AUDIO_OUTPUT].active) {
-		Phase phase = params[PHASE_PARAM].value > 1.5f ? PHASE_COSINE : PHASE_SINE;
+	if (!outputs[AUDIO_OUTPUT].isConnected()) {
+		Phase phase = params[PHASE_PARAM].getValue() > 1.5f ? PHASE_COSINE : PHASE_SINE;
 		lights[SINE_LIGHT].value = phase == PHASE_SINE;
 		lights[COSINE_LIGHT].value = phase == PHASE_COSINE;
 		return;
@@ -57,9 +57,9 @@ void Additator::process(const ProcessArgs& args) {
 	if (_steps >= modulationSteps) {
 		_steps = 0;
 
-		float width = _widthSL.next(clamp(params[WIDTH_PARAM].value + (maxWidth / 2.0f) * cvValue(inputs[WIDTH_INPUT]), 0.0f, maxWidth));
-		float oddSkew = _oddSkewSL.next(clamp(params[ODD_SKEW_PARAM].value + cvValue(inputs[ODD_SKEW_INPUT]), -maxSkew, maxSkew));
-		float evenSkew = _evenSkewSL.next(clamp(params[EVEN_SKEW_PARAM].value + cvValue(inputs[EVEN_SKEW_INPUT]), -maxSkew, maxSkew));
+		float width = _widthSL.next(clamp(params[WIDTH_PARAM].getValue() + (maxWidth / 2.0f) * cvValue(inputs[WIDTH_INPUT]), 0.0f, maxWidth));
+		float oddSkew = _oddSkewSL.next(clamp(params[ODD_SKEW_PARAM].getValue() + cvValue(inputs[ODD_SKEW_INPUT]), -maxSkew, maxSkew));
+		float evenSkew = _evenSkewSL.next(clamp(params[EVEN_SKEW_PARAM].getValue() + cvValue(inputs[EVEN_SKEW_INPUT]), -maxSkew, maxSkew));
 		if (
 			_width != width ||
 			_oddSkew != oddSkew ||
@@ -86,11 +86,11 @@ void Additator::process(const ProcessArgs& args) {
 			}
 		}
 
-		int partials = clamp((int)roundf(params[PARTIALS_PARAM].value * cvValue(inputs[PARTIALS_INPUT], true)), 0, maxPartials);
-		float amplitudeNormalization = _amplitudeNormalizationSL.next(clamp(params[GAIN_PARAM].value + ((maxAmplitudeNormalization - minAmplitudeNormalization) / 2.0f) * cvValue(inputs[GAIN_INPUT]), minAmplitudeNormalization, maxAmplitudeNormalization));
-		float decay = _decaySL.next(clamp(params[DECAY_PARAM].value + ((maxDecay - minDecay) / 2.0f) * cvValue(inputs[DECAY_INPUT]), minDecay, maxDecay));
-		float balance = _balanceSL.next(clamp(params[BALANCE_PARAM].value + cvValue(inputs[BALANCE_INPUT]), -1.0f, 1.0f));
-		float filter = _filterSL.next(clamp(params[FILTER_PARAM].value + cvValue(inputs[FILTER_INPUT]), minFilter, maxFilter));
+		int partials = clamp((int)roundf(params[PARTIALS_PARAM].getValue() * cvValue(inputs[PARTIALS_INPUT], true)), 0, maxPartials);
+		float amplitudeNormalization = _amplitudeNormalizationSL.next(clamp(params[GAIN_PARAM].getValue() + ((maxAmplitudeNormalization - minAmplitudeNormalization) / 2.0f) * cvValue(inputs[GAIN_INPUT]), minAmplitudeNormalization, maxAmplitudeNormalization));
+		float decay = _decaySL.next(clamp(params[DECAY_PARAM].getValue() + ((maxDecay - minDecay) / 2.0f) * cvValue(inputs[DECAY_INPUT]), minDecay, maxDecay));
+		float balance = _balanceSL.next(clamp(params[BALANCE_PARAM].getValue() + cvValue(inputs[BALANCE_INPUT]), -1.0f, 1.0f));
+		float filter = _filterSL.next(clamp(params[FILTER_PARAM].getValue() + cvValue(inputs[FILTER_INPUT]), minFilter, maxFilter));
 		if (
 			_partials != partials ||
 			_amplitudeNormalization != amplitudeNormalization ||
@@ -135,25 +135,25 @@ void Additator::process(const ProcessArgs& args) {
 			}
 		}
 
-		float frequency = params[FREQUENCY_PARAM].value;
-		frequency += params[FINE_PARAM].value / 12.0f;;
-		if (inputs[PITCH_INPUT].active) {
-			frequency += clamp(inputs[PITCH_INPUT].value, -5.0f, 5.0f);
+		float frequency = params[FREQUENCY_PARAM].getValue();
+		frequency += params[FINE_PARAM].getValue() / 12.0f;;
+		if (inputs[PITCH_INPUT].isConnected()) {
+			frequency += clamp(inputs[PITCH_INPUT].getVoltage(), -5.0f, 5.0f);
 		}
 		frequency = clamp(cvToFrequency(frequency), 20.0f, _maxFrequency);
 		_oscillator.setFrequency(frequency);
 
-		Phase phase = params[PHASE_PARAM].value > 1.5f ? PHASE_COSINE : PHASE_SINE;
+		Phase phase = params[PHASE_PARAM].getValue() > 1.5f ? PHASE_COSINE : PHASE_SINE;
 		if (_phase != phase) {
 			_phase = phase;
 			_oscillator.syncToPhase(_phase == PHASE_SINE ? 0.0f : M_PI / 2.0f);
 		}
 	}
 
-	if (_syncTrigger.next(inputs[SYNC_INPUT].value)) {
+	if (_syncTrigger.next(inputs[SYNC_INPUT].getVoltage())) {
 		_oscillator.syncToPhase(_phase == PHASE_SINE ? 0.0f : M_PI / 2.0f);
 	}
-	outputs[AUDIO_OUTPUT].value = _oscillator.next() * 5.0;
+	outputs[AUDIO_OUTPUT].setVoltage(_oscillator.next() * 5.0);
 }
 
 struct AdditatorWidget : ModuleWidget {

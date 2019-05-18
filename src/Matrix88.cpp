@@ -6,9 +6,9 @@ void Matrix88::process(const ProcessArgs& args) {
 		int paramOffset = MIX11_PARAM + i * 8;
 		float out = 0.0f;
 		for (int j = 0; j < 8; ++j) {
-			out += inputs[IN1_INPUT + j].value * params[paramOffset + j].value;
+			out += inputs[IN1_INPUT + j].getVoltage() * params[paramOffset + j].getValue();
 		}
-		outputs[OUT1_OUTPUT + i].value = _saturators[i].next(params[LEVEL_PARAM].value * out);
+		outputs[OUT1_OUTPUT + i].setVoltage(_saturators[i].next(params[LEVEL_PARAM].getValue() * out));
 	}
 }
 

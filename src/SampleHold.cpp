@@ -10,31 +10,31 @@ void SampleHold::onReset() {
 
 void SampleHold::process(const ProcessArgs& args) {
 	{
-		lights[TRACK1_LIGHT].value = params[TRACK1_PARAM].value;
-		bool triggered = _trigger1.process(params[TRIGGER1_PARAM].value + inputs[TRIGGER1_INPUT].value);
-		if (params[TRACK1_PARAM].value > 0.5f ? _trigger1.isHigh() : triggered) {
-			if (inputs[IN1_INPUT].active) {
-				_value1 = inputs[IN1_INPUT].value;
+		lights[TRACK1_LIGHT].value = params[TRACK1_PARAM].getValue();
+		bool triggered = _trigger1.process(params[TRIGGER1_PARAM].getValue() + inputs[TRIGGER1_INPUT].getVoltage());
+		if (params[TRACK1_PARAM].getValue() > 0.5f ? _trigger1.isHigh() : triggered) {
+			if (inputs[IN1_INPUT].isConnected()) {
+				_value1 = inputs[IN1_INPUT].getVoltage();
 			}
 			else {
 				_value1 = fabsf(_noise.next()) * 10.0;
 			}
 		}
-		outputs[OUT1_OUTPUT].value = _value1;
+		outputs[OUT1_OUTPUT].setVoltage(_value1);
 	}
 
 	{
-		lights[TRACK2_LIGHT].value = params[TRACK2_PARAM].value;
-		bool triggered = _trigger2.process(params[TRIGGER2_PARAM].value + inputs[TRIGGER2_INPUT].value);
-		if (params[TRACK2_PARAM].value > 0.5f ? _trigger2.isHigh() : triggered) {
-			if (inputs[IN2_INPUT].active) {
-				_value2 = inputs[IN2_INPUT].value;
+		lights[TRACK2_LIGHT].value = params[TRACK2_PARAM].getValue();
+		bool triggered = _trigger2.process(params[TRIGGER2_PARAM].getValue() + inputs[TRIGGER2_INPUT].getVoltage());
+		if (params[TRACK2_PARAM].getValue() > 0.5f ? _trigger2.isHigh() : triggered) {
+			if (inputs[IN2_INPUT].isConnected()) {
+				_value2 = inputs[IN2_INPUT].getVoltage();
 			}
 			else {
 				_value2 = fabsf(_noise.next()) * 10.0;
 			}
 		}
-		outputs[OUT2_OUTPUT].value = _value2;
+		outputs[OUT2_OUTPUT].setVoltage(_value2);
 	}
 }
 

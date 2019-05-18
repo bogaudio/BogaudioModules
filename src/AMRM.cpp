@@ -2,33 +2,33 @@
 #include "AMRM.hpp"
 
 void AMRM::process(const ProcessArgs& args) {
-	if (!(outputs[OUT_OUTPUT].active || outputs[RECTIFY_OUTPUT].active)) {
+	if (!(outputs[OUT_OUTPUT].isConnected() || outputs[RECTIFY_OUTPUT].isConnected())) {
 		return;
 	}
 
-	float rectify = params[RECTIFY_PARAM].value;
-	if (inputs[RECTIFY_INPUT].active) {
-		rectify = clamp(rectify + inputs[RECTIFY_INPUT].value / 10.0f, 0.0f, 1.0f);
+	float rectify = params[RECTIFY_PARAM].getValue();
+	if (inputs[RECTIFY_INPUT].isConnected()) {
+		rectify = clamp(rectify + inputs[RECTIFY_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 	}
 	rectify = 1.0f - rectify;
 
-	float depth = params[DRYWET_PARAM].value;
-	if (inputs[DRYWET_INPUT].active) {
-		depth = clamp(depth + inputs[DRYWET_INPUT].value / 10.0f, 0.0f, 1.0f);
+	float depth = params[DRYWET_PARAM].getValue();
+	if (inputs[DRYWET_INPUT].isConnected()) {
+		depth = clamp(depth + inputs[DRYWET_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 	}
 
-	float modulator = inputs[MODULATOR_INPUT].value;
+	float modulator = inputs[MODULATOR_INPUT].getVoltage();
 	if (rectify < 1.0f) {
 		rectify *= -5.0f;
 		if (modulator < rectify) {
 			modulator = rectify - (modulator - rectify);
 		}
 	}
-	outputs[RECTIFY_OUTPUT].value = modulator;
+	outputs[RECTIFY_OUTPUT].setVoltage(modulator);
 
 	modulator *= depth;
 	modulator += (1.0f - depth) * 5.0f;
-	outputs[OUT_OUTPUT].value = _saturator.next(modulator * inputs[CARRIER_INPUT].value * 0.2f);
+	outputs[OUT_OUTPUT].setVoltage(_saturator.next(modulator * inputs[CARRIER_INPUT].getVoltage() * 0.2f));
 }
 
 struct AMRMWidget : ModuleWidget {

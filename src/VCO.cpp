@@ -13,14 +13,14 @@ void VCO::onSampleRateChange() {
 }
 
 void VCO::process(const ProcessArgs& args) {
-	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].value > 0.5f;
-	_fmLinearMode = params[FM_TYPE_PARAM].value < 0.5f;
+	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].getValue() > 0.5f;
+	_fmLinearMode = params[FM_TYPE_PARAM].getValue() < 0.5f;
 
 	if (!(
-		outputs[SQUARE_OUTPUT].active ||
-		outputs[SAW_OUTPUT].active ||
-		outputs[TRIANGLE_OUTPUT].active ||
-		outputs[SINE_OUTPUT].active
+		outputs[SQUARE_OUTPUT].isConnected() ||
+		outputs[SAW_OUTPUT].isConnected() ||
+		outputs[TRIANGLE_OUTPUT].isConnected() ||
+		outputs[SINE_OUTPUT].isConnected()
 	)) {
 		return;
 	}
@@ -29,36 +29,36 @@ void VCO::process(const ProcessArgs& args) {
 	if (_modulationStep >= modulationSteps) {
 		_modulationStep = 0;
 
-		_baseVOct = params[FREQUENCY_PARAM].value;
-		_baseVOct += params[FINE_PARAM].value / 12.0f;
-		if (inputs[PITCH_INPUT].active) {
-			_baseVOct += clamp(inputs[PITCH_INPUT].value, -5.0f, 5.0f);
+		_baseVOct = params[FREQUENCY_PARAM].getValue();
+		_baseVOct += params[FINE_PARAM].getValue() / 12.0f;
+		if (inputs[PITCH_INPUT].isConnected()) {
+			_baseVOct += clamp(inputs[PITCH_INPUT].getVoltage(), -5.0f, 5.0f);
 		}
 		if (_slowMode) {
 			_baseVOct -= 7.0f;
 		}
 		_baseHz = cvToFrequency(_baseVOct);
 
-		float pw = params[PW_PARAM].value;
-		if (inputs[PW_INPUT].active) {
-			pw *= clamp(inputs[PW_INPUT].value / 5.0f, -1.0f, 1.0f);
+		float pw = params[PW_PARAM].getValue();
+		if (inputs[PW_INPUT].isConnected()) {
+			pw *= clamp(inputs[PW_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
 		}
 		pw *= 1.0f - 2.0f * _square.minPulseWidth;
 		pw *= 0.5f;
 		pw += 0.5f;
 		_square.setPulseWidth(_squarePulseWidthSL.next(pw));
 
-		_fmDepth = params[FM_PARAM].value;
+		_fmDepth = params[FM_PARAM].getValue();
 	}
 
-	if (_syncTrigger.next(inputs[SYNC_INPUT].value)) {
+	if (_syncTrigger.next(inputs[SYNC_INPUT].getVoltage())) {
 		_phasor.resetPhase();
 	}
 
 	float frequency = _baseHz;
 	Phasor::phase_delta_t phaseOffset = 0;
-	if (inputs[FM_INPUT].active && _fmDepth > 0.01f) {
-		float fm = inputs[FM_INPUT].value * _fmDepth;
+	if (inputs[FM_INPUT].isConnected() && _fmDepth > 0.01f) {
+		float fm = inputs[FM_INPUT].getVoltage() * _fmDepth;
 		if (_fmLinearMode) {
 			phaseOffset = Phasor::radiansToPhase(2.0f * fm);
 		}
@@ -91,23 +91,23 @@ void VCO::process(const ProcessArgs& args) {
 	if (oMix > 0.0f) {
 		for (int i = 0; i < oversample; ++i) {
 			_phasor.advancePhase();
-			if (outputs[SQUARE_OUTPUT].active) {
+			if (outputs[SQUARE_OUTPUT].isConnected()) {
 				_squareBuffer[i] = _square.nextFromPhasor(_phasor, phaseOffset);
 			}
-			if (outputs[SAW_OUTPUT].active) {
+			if (outputs[SAW_OUTPUT].isConnected()) {
 				_sawBuffer[i] = _saw.nextFromPhasor(_phasor, phaseOffset);
 			}
-			if (outputs[TRIANGLE_OUTPUT].active) {
+			if (outputs[TRIANGLE_OUTPUT].isConnected()) {
 				_triangleBuffer[i] = _triangle.nextFromPhasor(_phasor, phaseOffset);
 			}
 		}
-		if (outputs[SQUARE_OUTPUT].active) {
+		if (outputs[SQUARE_OUTPUT].isConnected()) {
 			squareOut += oMix * amplitude * _squareDecimator.next(_squareBuffer);
 		}
-		if (outputs[SAW_OUTPUT].active) {
+		if (outputs[SAW_OUTPUT].isConnected()) {
 			sawOut += oMix * amplitude * _sawDecimator.next(_sawBuffer);
 		}
-		if (outputs[TRIANGLE_OUTPUT].active) {
+		if (outputs[TRIANGLE_OUTPUT].isConnected()) {
 			triangleOut += oMix * amplitude * _triangleDecimator.next(_triangleBuffer);
 		}
 	}
@@ -115,21 +115,21 @@ void VCO::process(const ProcessArgs& args) {
 		_phasor.advancePhase(oversample);
 	}
 	if (mix > 0.0f) {
-		if (outputs[SQUARE_OUTPUT].active) {
+		if (outputs[SQUARE_OUTPUT].isConnected()) {
 			squareOut += mix * amplitude * _square.nextFromPhasor(_phasor, phaseOffset);
 		}
-		if (outputs[SAW_OUTPUT].active) {
+		if (outputs[SAW_OUTPUT].isConnected()) {
 			sawOut += mix * amplitude * _saw.nextFromPhasor(_phasor, phaseOffset);
 		}
-		if (outputs[TRIANGLE_OUTPUT].active) {
+		if (outputs[TRIANGLE_OUTPUT].isConnected()) {
 			triangleOut += mix * amplitude * _triangle.nextFromPhasor(_phasor, phaseOffset);
 		}
 	}
 
-	outputs[SQUARE_OUTPUT].value = squareOut;
-	outputs[SAW_OUTPUT].value = sawOut;
-	outputs[TRIANGLE_OUTPUT].value = triangleOut;
-	outputs[SINE_OUTPUT].value = outputs[SINE_OUTPUT].active ? (amplitude * _sine.nextFromPhasor(_phasor, phaseOffset)) : 0.0f;
+	outputs[SQUARE_OUTPUT].setVoltage(squareOut);
+	outputs[SAW_OUTPUT].setVoltage(sawOut);
+	outputs[TRIANGLE_OUTPUT].setVoltage(triangleOut);
+	outputs[SINE_OUTPUT].setVoltage(outputs[SINE_OUTPUT].isConnected() ? (amplitude * _sine.nextFromPhasor(_phasor, phaseOffset)) : 0.0f);
 }
 
 void VCO::setSampleRate(float sampleRate) {

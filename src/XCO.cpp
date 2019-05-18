@@ -13,15 +13,15 @@ void XCO::onSampleRateChange() {
 }
 
 void XCO::process(const ProcessArgs& args) {
-	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].value > 0.5f;
-	_fmLinearMode = params[FM_TYPE_PARAM].value < 0.5f;
+	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].getValue() > 0.5f;
+	_fmLinearMode = params[FM_TYPE_PARAM].getValue() < 0.5f;
 
 	if (!(
-		outputs[MIX_OUTPUT].active ||
-		outputs[SQUARE_OUTPUT].active ||
-		outputs[SAW_OUTPUT].active ||
-		outputs[TRIANGLE_OUTPUT].active ||
-		outputs[SINE_OUTPUT].active
+		outputs[MIX_OUTPUT].isConnected() ||
+		outputs[SQUARE_OUTPUT].isConnected() ||
+		outputs[SAW_OUTPUT].isConnected() ||
+		outputs[TRIANGLE_OUTPUT].isConnected() ||
+		outputs[SINE_OUTPUT].isConnected()
 	)) {
 		return;
 	}
@@ -30,47 +30,47 @@ void XCO::process(const ProcessArgs& args) {
 	if (_modulationStep >= modulationSteps) {
 		_modulationStep = 0;
 
-		_baseVOct = params[FREQUENCY_PARAM].value;
-		_baseVOct += params[FINE_PARAM].value / 12.0f;;
-		if (inputs[PITCH_INPUT].active) {
-			_baseVOct += clamp(inputs[PITCH_INPUT].value, -5.0f, 5.0f);
+		_baseVOct = params[FREQUENCY_PARAM].getValue();
+		_baseVOct += params[FINE_PARAM].getValue() / 12.0f;;
+		if (inputs[PITCH_INPUT].isConnected()) {
+			_baseVOct += clamp(inputs[PITCH_INPUT].getVoltage(), -5.0f, 5.0f);
 		}
 		if (_slowMode) {
 			_baseVOct -= 7.0f;
 		}
 		_baseHz = cvToFrequency(_baseVOct);
 
-		float pw = params[SQUARE_PW_PARAM].value;
-		if (inputs[SQUARE_PW_INPUT].active) {
-			pw *= clamp(inputs[SQUARE_PW_INPUT].value / 5.0f, -1.0f, 1.0f);
+		float pw = params[SQUARE_PW_PARAM].getValue();
+		if (inputs[SQUARE_PW_INPUT].isConnected()) {
+			pw *= clamp(inputs[SQUARE_PW_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
 		}
 		pw *= 1.0f - 2.0f * _square.minPulseWidth;
 		pw *= 0.5f;
 		pw += 0.5f;
 		_square.setPulseWidth(_squarePulseWidthSL.next(pw));
 
-		float saturation = params[SAW_SATURATION_PARAM].value;
-		if (inputs[SAW_SATURATION_INPUT].active) {
-			saturation *= clamp(inputs[SAW_SATURATION_INPUT].value / 10.0f, 0.0f, 1.0f);
+		float saturation = params[SAW_SATURATION_PARAM].getValue();
+		if (inputs[SAW_SATURATION_INPUT].isConnected()) {
+			saturation *= clamp(inputs[SAW_SATURATION_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
 		_saw.setSaturation(_sawSaturationSL.next(saturation) * 10.f);
 
-		float tsw = params[TRIANGLE_SAMPLE_PARAM].value * Phasor::maxSampleWidth;
-		if (inputs[TRIANGLE_SAMPLE_INPUT].active) {
-			tsw *= clamp(inputs[TRIANGLE_SAMPLE_INPUT].value / 10.0f, 0.0f, 1.0f);
+		float tsw = params[TRIANGLE_SAMPLE_PARAM].getValue() * Phasor::maxSampleWidth;
+		if (inputs[TRIANGLE_SAMPLE_INPUT].isConnected()) {
+			tsw *= clamp(inputs[TRIANGLE_SAMPLE_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
 		_triangleSampleWidth = _triangleSampleWidthSL.next(tsw);
 		_triangle.setSampleWidth(_triangleSampleWidth);
 
-		float sfb = params[SINE_FEEDBACK_PARAM].value;
-		if (inputs[SINE_FEEDBACK_INPUT].active) {
-			sfb *= clamp(inputs[SINE_FEEDBACK_INPUT].value / 10.0f, 0.0f, 1.0f);
+		float sfb = params[SINE_FEEDBACK_PARAM].getValue();
+		if (inputs[SINE_FEEDBACK_INPUT].isConnected()) {
+			sfb *= clamp(inputs[SINE_FEEDBACK_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
 		_sineFeedback = _sineFeedbackSL.next(sfb);
 
-		_fmDepth = params[FM_DEPTH_PARAM].value;
-		if (inputs[FM_DEPTH_INPUT].active) {
-			_fmDepth *= clamp(inputs[FM_DEPTH_INPUT].value / 10.0f, 0.0f, 1.0f);
+		_fmDepth = params[FM_DEPTH_PARAM].getValue();
+		if (inputs[FM_DEPTH_INPUT].isConnected()) {
+			_fmDepth *= clamp(inputs[FM_DEPTH_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
 
 		_squarePhaseOffset = phaseOffset(params[SQUARE_PHASE_PARAM], inputs[SQUARE_PHASE_INPUT]);
@@ -84,15 +84,15 @@ void XCO::process(const ProcessArgs& args) {
 		_sineMix = level(params[SINE_MIX_PARAM], inputs[SINE_MIX_INPUT]);
 	}
 
-	if (_syncTrigger.next(inputs[SYNC_INPUT].value)) {
+	if (_syncTrigger.next(inputs[SYNC_INPUT].getVoltage())) {
 		_phasor.resetPhase();
 	}
 
 	float frequency = _baseHz;
 	Phasor::phase_delta_t phaseOffset = 0;
 	float fmd = _fmDepthSL.next(_fmDepth);
-	if (inputs[FM_INPUT].active && fmd > 0.01f) {
-		float fm = inputs[FM_INPUT].value * fmd;
+	if (inputs[FM_INPUT].isConnected() && fmd > 0.01f) {
+		float fm = inputs[FM_INPUT].getVoltage() * fmd;
 		if (_fmLinearMode) {
 			phaseOffset = Phasor::radiansToPhase(2.0f * fm);
 		}
@@ -120,10 +120,10 @@ void XCO::process(const ProcessArgs& args) {
 	}
 
 	bool triangleSample = _triangleSampleWidth > 0.001f;
-	bool squareActive = outputs[MIX_OUTPUT].active || outputs[SQUARE_OUTPUT].active;
-	bool sawActive = outputs[MIX_OUTPUT].active || outputs[SAW_OUTPUT].active;
-	bool triangleActive = outputs[MIX_OUTPUT].active || outputs[TRIANGLE_OUTPUT].active;
-	bool sineActive = outputs[MIX_OUTPUT].active || outputs[SINE_OUTPUT].active;
+	bool squareActive = outputs[MIX_OUTPUT].isConnected() || outputs[SQUARE_OUTPUT].isConnected();
+	bool sawActive = outputs[MIX_OUTPUT].isConnected() || outputs[SAW_OUTPUT].isConnected();
+	bool triangleActive = outputs[MIX_OUTPUT].isConnected() || outputs[TRIANGLE_OUTPUT].isConnected();
+	bool sineActive = outputs[MIX_OUTPUT].isConnected() || outputs[SINE_OUTPUT].isConnected();
 	bool squareOversample = squareActive && oMix > 0.0f;
 	bool sawOversample = sawActive && oMix > 0.0f;
 	bool triangleOversample = triangleActive && (triangleSample || oMix > 0.0f);
@@ -197,12 +197,12 @@ void XCO::process(const ProcessArgs& args) {
 		sineOut += amplitude * (1.0f - _sineOMix) * _sine.nextFromPhasor(_phasor, sineFeedbackOffset + _sinePhaseOffset + phaseOffset);
 	}
 
-	outputs[SQUARE_OUTPUT].value = squareOut;
-	outputs[SAW_OUTPUT].value = sawOut;
-	outputs[TRIANGLE_OUTPUT].value = triangleOut;
-	outputs[SINE_OUTPUT].value = _sineFeedbackDelayedSample = sineOut;
-	if (outputs[MIX_OUTPUT].active) {
-		outputs[MIX_OUTPUT].value = _squareMixSL.next(_squareMix) * squareOut + _sawMixSL.next(_sawMix) * sawOut + _triangleMixSL.next(_triangleMix) * triangleOut + _sineMixSL.next(_sineMix) * sineOut;
+	outputs[SQUARE_OUTPUT].setVoltage(squareOut);
+	outputs[SAW_OUTPUT].setVoltage(sawOut);
+	outputs[TRIANGLE_OUTPUT].setVoltage(triangleOut);
+	outputs[SINE_OUTPUT].setVoltage(_sineFeedbackDelayedSample = sineOut);
+	if (outputs[MIX_OUTPUT].isConnected()) {
+		outputs[MIX_OUTPUT].setVoltage(_squareMixSL.next(_squareMix) * squareOut + _sawMixSL.next(_sawMix) * sawOut + _triangleMixSL.next(_triangleMix) * triangleOut + _sineMixSL.next(_sineMix) * sineOut);
 	}
 }
 

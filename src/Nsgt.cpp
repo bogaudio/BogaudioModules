@@ -14,7 +14,7 @@ void Nsgt::onSampleRateChange() {
 }
 
 void Nsgt::process(const ProcessArgs& args) {
-	if (!(outputs[LEFT_OUTPUT].active || outputs[RIGHT_OUTPUT].active)) {
+	if (!(outputs[LEFT_OUTPUT].isConnected() || outputs[RIGHT_OUTPUT].isConnected())) {
 		return;
 	}
 
@@ -22,16 +22,16 @@ void Nsgt::process(const ProcessArgs& args) {
 	if (_modulationStep >= modulationSteps) {
 		_modulationStep = 0;
 
-		_thresholdDb = params[THRESHOLD_PARAM].value;
-		if (inputs[THRESHOLD_INPUT].active) {
-			_thresholdDb *= clamp(inputs[THRESHOLD_INPUT].value / 10.0f, 0.0f, 1.0f);
+		_thresholdDb = params[THRESHOLD_PARAM].getValue();
+		if (inputs[THRESHOLD_INPUT].isConnected()) {
+			_thresholdDb *= clamp(inputs[THRESHOLD_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
 		_thresholdDb *= 30.0f;
 		_thresholdDb -= 24.0f;
 
-		float ratio = params[RATIO_PARAM].value;
-		if (inputs[RATIO_INPUT].active) {
-			ratio *= clamp(inputs[RATIO_INPUT].value / 10.0f, 0.0f, 1.0f);
+		float ratio = params[RATIO_PARAM].getValue();
+		if (inputs[RATIO_INPUT].isConnected()) {
+			ratio *= clamp(inputs[RATIO_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
 		if (_ratioKnob != ratio) {
 			_ratioKnob = ratio;
@@ -43,11 +43,11 @@ void Nsgt::process(const ProcessArgs& args) {
 			_ratio = 1.0f / _ratio;
 		}
 
-		_softKnee = params[KNEE_PARAM].value > 0.97f;
+		_softKnee = params[KNEE_PARAM].getValue() > 0.97f;
 	}
 
-	float leftInput = inputs[LEFT_INPUT].value;
-	float rightInput = inputs[RIGHT_INPUT].value;
+	float leftInput = inputs[LEFT_INPUT].getVoltage();
+	float rightInput = inputs[RIGHT_INPUT].getVoltage();
 	float env = _detector.next(leftInput + rightInput);
 	if (env > _lastEnv) {
 		env = _attackSL.next(env, _lastEnv);
@@ -60,11 +60,11 @@ void Nsgt::process(const ProcessArgs& args) {
 	float detectorDb = amplitudeToDecibels(env / 5.0f);
 	float compressionDb = _noiseGate.compressionDb(detectorDb, _thresholdDb, _ratio, _softKnee);
 	_amplifier.setLevel(-compressionDb);
-	if (outputs[LEFT_OUTPUT].active) {
-		outputs[LEFT_OUTPUT].value = _saturator.next(_amplifier.next(leftInput));
+	if (outputs[LEFT_OUTPUT].isConnected()) {
+		outputs[LEFT_OUTPUT].setVoltage(_saturator.next(_amplifier.next(leftInput)));
 	}
-	if (outputs[RIGHT_OUTPUT].active) {
-		outputs[RIGHT_OUTPUT].value = _saturator.next(_amplifier.next(rightInput));
+	if (outputs[RIGHT_OUTPUT].isConnected()) {
+		outputs[RIGHT_OUTPUT].setVoltage(_saturator.next(_amplifier.next(rightInput)));
 	}
 }
 

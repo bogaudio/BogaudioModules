@@ -6,7 +6,7 @@ void Clpr::onReset() {
 }
 
 void Clpr::process(const ProcessArgs& args) {
-	if (!(outputs[LEFT_OUTPUT].active || outputs[RIGHT_OUTPUT].active)) {
+	if (!(outputs[LEFT_OUTPUT].isConnected() || outputs[RIGHT_OUTPUT].isConnected())) {
 		return;
 	}
 
@@ -14,16 +14,16 @@ void Clpr::process(const ProcessArgs& args) {
 	if (_modulationStep >= modulationSteps) {
 		_modulationStep = 0;
 
-		_thresholdDb = params[THRESHOLD_PARAM].value;
-		if (inputs[THRESHOLD_INPUT].active) {
-			_thresholdDb *= clamp(inputs[THRESHOLD_INPUT].value / 10.0f, 0.0f, 1.0f);
+		_thresholdDb = params[THRESHOLD_PARAM].getValue();
+		if (inputs[THRESHOLD_INPUT].isConnected()) {
+			_thresholdDb *= clamp(inputs[THRESHOLD_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
 		_thresholdDb *= 30.0f;
 		_thresholdDb -= 24.0f;
 
-		float outGain = params[OUTPUT_GAIN_PARAM].value;
-		if (inputs[OUTPUT_GAIN_INPUT].active) {
-			outGain = clamp(outGain + inputs[OUTPUT_GAIN_INPUT].value / 5.0f, 0.0f, 1.0f);
+		float outGain = params[OUTPUT_GAIN_PARAM].getValue();
+		if (inputs[OUTPUT_GAIN_INPUT].isConnected()) {
+			outGain = clamp(outGain + inputs[OUTPUT_GAIN_INPUT].getVoltage() / 5.0f, 0.0f, 1.0f);
 		}
 		outGain *= 24.0f;
 		if (_outGain != outGain) {
@@ -31,20 +31,20 @@ void Clpr::process(const ProcessArgs& args) {
 			_outLevel = decibelsToAmplitude(_outGain);
 		}
 
-		_softKnee = params[KNEE_PARAM].value > 0.97f;
+		_softKnee = params[KNEE_PARAM].getValue() > 0.97f;
 	}
 
-	float leftInput = inputs[LEFT_INPUT].value;
-	float rightInput = inputs[RIGHT_INPUT].value;
+	float leftInput = inputs[LEFT_INPUT].getVoltage();
+	float rightInput = inputs[RIGHT_INPUT].getVoltage();
 	float env = fabsf(leftInput + rightInput);
 	float detectorDb = amplitudeToDecibels(env / 5.0f);
 	float compressionDb = _compressor.compressionDb(detectorDb, _thresholdDb, Compressor::maxEffectiveRatio, _softKnee);
 	_amplifier.setLevel(-compressionDb);
-	if (outputs[LEFT_OUTPUT].active) {
-		outputs[LEFT_OUTPUT].value = _saturator.next(_amplifier.next(leftInput) * _outLevel);
+	if (outputs[LEFT_OUTPUT].isConnected()) {
+		outputs[LEFT_OUTPUT].setVoltage(_saturator.next(_amplifier.next(leftInput) * _outLevel));
 	}
-	if (outputs[RIGHT_OUTPUT].active) {
-		outputs[RIGHT_OUTPUT].value = _saturator.next(_amplifier.next(rightInput) * _outLevel);
+	if (outputs[RIGHT_OUTPUT].isConnected()) {
+		outputs[RIGHT_OUTPUT].setVoltage(_saturator.next(_amplifier.next(rightInput) * _outLevel));
 	}
 }
 

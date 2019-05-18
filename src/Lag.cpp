@@ -6,7 +6,7 @@ void Lag::onReset() {
 }
 
 void Lag::process(const ProcessArgs& args) {
-	if (!(inputs[IN_INPUT].active && outputs[OUT_OUTPUT].active)) {
+	if (!(inputs[IN_INPUT].isConnected() && outputs[OUT_OUTPUT].isConnected())) {
 		return;
 	}
 
@@ -14,11 +14,11 @@ void Lag::process(const ProcessArgs& args) {
 	if (_modulationStep >= modulationSteps) {
 		_modulationStep = 0;
 
-		float time = params[TIME_PARAM].value;
-		if (inputs[TIME_INPUT].active) {
-			time *= clamp(inputs[TIME_INPUT].value / 10.0f, 0.0f, 1.0f);
+		float time = params[TIME_PARAM].getValue();
+		if (inputs[TIME_INPUT].isConnected()) {
+			time *= clamp(inputs[TIME_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
-		switch ((int)params[TIME_SCALE_PARAM].value) {
+		switch ((int)params[TIME_SCALE_PARAM].getValue()) {
 			case 0: {
 				time /= 10.f;
 				break;
@@ -30,9 +30,9 @@ void Lag::process(const ProcessArgs& args) {
 		}
 		time *= 1000.0f;
 
-		float shape = params[SHAPE_PARAM].value;
-		if (inputs[SHAPE_INPUT].active) {
-			shape *= clamp(inputs[SHAPE_INPUT].value / 5.0f, -1.0f, 1.0f);
+		float shape = params[SHAPE_PARAM].getValue();
+		if (inputs[SHAPE_INPUT].isConnected()) {
+			shape *= clamp(inputs[SHAPE_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
 		}
 		if (shape < 0.0) {
 			shape = 1.0f + shape;
@@ -46,7 +46,7 @@ void Lag::process(const ProcessArgs& args) {
 		_slew.setParams(APP->engine->getSampleRate(), time, shape);
 	}
 
-	outputs[OUT_OUTPUT].value = _slew.next(inputs[IN_INPUT].value);
+	outputs[OUT_OUTPUT].setVoltage(_slew.next(inputs[IN_INPUT].getVoltage()));
 }
 
 struct LagWidget : ModuleWidget {

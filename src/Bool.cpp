@@ -2,13 +2,13 @@
 #include "Bool.hpp"
 
 void Bool::process(const ProcessArgs& args) {
-	bool a = inputs[A_INPUT].value > 1.0f;
-	bool b = inputs[B_INPUT].value > 1.0f;
-	outputs[AND_OUTPUT].value = a && b ? 5.0f : 0.0f;
-	outputs[OR_OUTPUT].value = a || b ? 5.0f : 0.0f;
-	outputs[XOR_OUTPUT].value = a ^ b ? 5.0f : 0.0f;
+	bool a = inputs[A_INPUT].getVoltage() > 1.0f;
+	bool b = inputs[B_INPUT].getVoltage() > 1.0f;
+	outputs[AND_OUTPUT].setVoltage(a && b ? 5.0f : 0.0f);
+	outputs[OR_OUTPUT].setVoltage(a || b ? 5.0f : 0.0f);
+	outputs[XOR_OUTPUT].setVoltage(a ^ b ? 5.0f : 0.0f);
 
-	outputs[NOT_OUTPUT].value = (inputs[NOT_INPUT].active && inputs[NOT_INPUT].value > 1.0f) ? 0.0f : 5.0f;
+	outputs[NOT_OUTPUT].setVoltage((inputs[NOT_INPUT].isConnected() && inputs[NOT_INPUT].getVoltage() > 1.0f) ? 0.0f : 5.0f);
 }
 
 struct BoolWidget : ModuleWidget {

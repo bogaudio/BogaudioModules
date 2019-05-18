@@ -6,7 +6,7 @@ void Slew::onReset() {
 }
 
 void Slew::process(const ProcessArgs& args) {
-	if (!(inputs[IN_INPUT].active && outputs[OUT_OUTPUT].active)) {
+	if (!(inputs[IN_INPUT].isConnected() && outputs[OUT_OUTPUT].isConnected())) {
 		return;
 	}
 
@@ -23,20 +23,20 @@ void Slew::process(const ProcessArgs& args) {
 		_fall.setParams(APP->engine->getSampleRate(), fallTime, fallShape);
 	}
 
-	float sample = inputs[IN_INPUT].value;
+	float sample = inputs[IN_INPUT].getVoltage();
 	if (sample > _last) {
 		if (!_rising) {
 			_rising = true;
 			_rise._last = _last;
 		}
-		outputs[OUT_OUTPUT].value = _last = _rise.next(sample);
+		outputs[OUT_OUTPUT].setVoltage(_last = _rise.next(sample));
 	}
 	else {
 		if (_rising) {
 			_rising = false;
 			_fall._last = _last;
 		}
-		outputs[OUT_OUTPUT].value = _last = _fall.next(sample);
+		outputs[OUT_OUTPUT].setVoltage(_last = _fall.next(sample));
 	}
 }
 

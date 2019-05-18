@@ -27,20 +27,20 @@ void AddrSeq::dataFromJson(json_t* root) {
 }
 
 void AddrSeq::process(const ProcessArgs& args) {
-	bool reset = _reset.process(inputs[RESET_INPUT].value);
+	bool reset = _reset.process(inputs[RESET_INPUT].getVoltage());
 	if (reset) {
 		_timer.reset();
 	}
 	bool timer = _timer.next();
-	bool clock = _clock.process(inputs[CLOCK_INPUT].value) && !timer;
+	bool clock = _clock.process(inputs[CLOCK_INPUT].getVoltage()) && !timer;
 
-	int steps = clamp(params[STEPS_PARAM].value, 1.0f, 8.0f);
-	int reverse = 1 - 2 * (params[DIRECTION_PARAM].value == 0.0f);
+	int steps = clamp(params[STEPS_PARAM].getValue(), 1.0f, 8.0f);
+	int reverse = 1 - 2 * (params[DIRECTION_PARAM].getValue() == 0.0f);
 	_step = (_step + reverse * clock) % steps;
 	_step += (_step < 0) * steps;
 	_step -= _step * reset;
-	int select = params[SELECT_PARAM].value;
-	select += clamp(inputs[SELECT_INPUT].value, 0.0f, 10.0f) * 0.1f * 8.0f;
+	int select = params[SELECT_PARAM].getValue();
+	select += clamp(inputs[SELECT_INPUT].getVoltage(), 0.0f, 10.0f) * 0.1f * 8.0f;
 	if (!_selectOnClock || clock) {
 		_select = select;
 	}
@@ -49,10 +49,10 @@ void AddrSeq::process(const ProcessArgs& args) {
 
 	float out = 0.0f;
 	for (int i = 0; i < 8; ++i) {
-		out += params[OUT1_PARAM + i].value * (step == i);
+		out += params[OUT1_PARAM + i].getValue() * (step == i);
 		lights[OUT1_LIGHT + i].value = step == i;
 	}
-	outputs[OUT_OUTPUT].value = out * 10.0f;
+	outputs[OUT_OUTPUT].setVoltage(out * 10.0f);
 }
 
 struct SelectOnClockMenuItem : MenuItem {

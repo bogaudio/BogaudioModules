@@ -16,33 +16,33 @@ void Walk::process(const ProcessArgs& args) {
 	if (_modulationStep >= modulationSteps) {
 		_modulationStep = 0;
 
-		float rate = params[RATE_PARAM].value;
-		if (inputs[RATE_INPUT].active) {
-			rate *= clamp(inputs[RATE_INPUT].value / 10.0f, 0.0f, 1.0f);
+		float rate = params[RATE_PARAM].getValue();
+		if (inputs[RATE_INPUT].isConnected()) {
+			rate *= clamp(inputs[RATE_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
 		rate = 0.2f * powf(rate, 5.0f);
 		_walk.setParams(APP->engine->getSampleRate(), rate);
 
-		_offset = params[OFFSET_PARAM].value;
-		if (inputs[OFFSET_INPUT].active) {
-			_offset *= clamp(inputs[OFFSET_INPUT].value / 5.0f, -1.0f, 1.0f);
+		_offset = params[OFFSET_PARAM].getValue();
+		if (inputs[OFFSET_INPUT].isConnected()) {
+			_offset *= clamp(inputs[OFFSET_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
 		}
 		_offset *= 5.0f;
 
-		_scale = params[SCALE_PARAM].value;
-		if (inputs[SCALE_INPUT].active) {
-			_scale *= clamp(inputs[SCALE_INPUT].value / 10.0f, 0.0f, 1.0f);
+		_scale = params[SCALE_PARAM].getValue();
+		if (inputs[SCALE_INPUT].isConnected()) {
+			_scale *= clamp(inputs[SCALE_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
 	}
 
-	if (_jumpTrigger.process(inputs[JUMP_INPUT].value)) {
+	if (_jumpTrigger.process(inputs[JUMP_INPUT].getVoltage())) {
 		_walk.jump();
 	}
 
 	float out = _slew.next(_walk.next());
 	out *= _scale;
 	out += _offset;
-	outputs[OUT_OUTPUT].value = out;
+	outputs[OUT_OUTPUT].setVoltage(out);
 }
 
 struct WalkWidget : ModuleWidget {

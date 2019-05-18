@@ -7,13 +7,13 @@ void Offset::process(const ProcessArgs& args) {
 	scale = scale < 0.0f ? -pow(scale, 2.0f) : pow(scale, 2.0f);
 	scale *= 10.0;
 
-	float out = inputs[IN_INPUT].value;
+	float out = inputs[IN_INPUT].getVoltage();
 	out += 10.0f * offset;
 	out *= scale;
 	if (!_disableOutputLimit) {
 		out = clamp(out, -12.0f, 12.0f);
 	}
-	outputs[OUT_OUTPUT].value = out;
+	outputs[OUT_OUTPUT].setVoltage(out);
 }
 
 float Offset::knobValue(const Param& knob, const Input& cv) const {

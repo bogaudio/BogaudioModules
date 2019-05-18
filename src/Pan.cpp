@@ -8,28 +8,28 @@ void Pan::onSampleRateChange() {
 }
 
 void Pan::process(const ProcessArgs& args) {
-	if (!((inputs[IN1_INPUT].active || inputs[IN2_INPUT].active) && (outputs[L_OUTPUT].active || outputs[R_OUTPUT].active))) {
+	if (!((inputs[IN1_INPUT].isConnected() || inputs[IN2_INPUT].isConnected()) && (outputs[L_OUTPUT].isConnected() || outputs[R_OUTPUT].isConnected()))) {
 		return;
 	}
 
-	float pan = params[PAN1_PARAM].value;
-	if (inputs[CV1_INPUT].active) {
-		pan *= clamp(inputs[CV1_INPUT].value / 5.0f, -1.0f, 1.0f);
+	float pan = params[PAN1_PARAM].getValue();
+	if (inputs[CV1_INPUT].isConnected()) {
+		pan *= clamp(inputs[CV1_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
 	}
 	_panner1.setPan(_slew1.next(pan));
 
-	pan = params[PAN2_PARAM].value;
-	if (inputs[CV2_INPUT].active) {
-		pan *= clamp(inputs[CV2_INPUT].value / 5.0f, -1.0f, 1.0f);
+	pan = params[PAN2_PARAM].getValue();
+	if (inputs[CV2_INPUT].isConnected()) {
+		pan *= clamp(inputs[CV2_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
 	}
 	_panner2.setPan(_slew2.next(pan));
 
 	float l1 = 0.0f, r1 = 0.0f;
-	_panner1.next(inputs[IN1_INPUT].value, l1, r1);
+	_panner1.next(inputs[IN1_INPUT].getVoltage(), l1, r1);
 	float l2 = 0.0f, r2 = 0.0f;
-	_panner2.next(inputs[IN2_INPUT].value, l2, r2);
-	outputs[L_OUTPUT].value = _saturatorLeft.next(l1 + l2);
-	outputs[R_OUTPUT].value = _saturatorRight.next(r1 + r2);
+	_panner2.next(inputs[IN2_INPUT].getVoltage(), l2, r2);
+	outputs[L_OUTPUT].setVoltage(_saturatorLeft.next(l1 + l2));
+	outputs[R_OUTPUT].setVoltage(_saturatorRight.next(r1 + r2));
 }
 
 struct PanWidget : ModuleWidget {

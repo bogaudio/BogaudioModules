@@ -13,8 +13,8 @@ void ADSR::onSampleRateChange() {
 }
 
 void ADSR::process(const ProcessArgs& args) {
-	lights[LINEAR_LIGHT].value = _linearMode = params[LINEAR_PARAM].value > 0.5f;
-	if (!(outputs[OUT_OUTPUT].active || inputs[GATE_INPUT].active)) {
+	lights[LINEAR_LIGHT].value = _linearMode = params[LINEAR_PARAM].getValue() > 0.5f;
+	if (!(outputs[OUT_OUTPUT].isConnected() || inputs[GATE_INPUT].isConnected())) {
 		return;
 	}
 
@@ -22,16 +22,16 @@ void ADSR::process(const ProcessArgs& args) {
 	if (_modulationStep >= modulationSteps) {
 		_modulationStep = 0;
 
-		_envelope.setAttack(powf(params[ATTACK_PARAM].value, 2.0f) * 10.f);
-		_envelope.setDecay(powf(params[DECAY_PARAM].value, 2.0f) * 10.f);
-		_envelope.setSustain(params[SUSTAIN_PARAM].value);
-		_envelope.setRelease(powf(params[RELEASE_PARAM].value, 2.0f) * 10.f);
+		_envelope.setAttack(powf(params[ATTACK_PARAM].getValue(), 2.0f) * 10.f);
+		_envelope.setDecay(powf(params[DECAY_PARAM].getValue(), 2.0f) * 10.f);
+		_envelope.setSustain(params[SUSTAIN_PARAM].getValue());
+		_envelope.setRelease(powf(params[RELEASE_PARAM].getValue(), 2.0f) * 10.f);
 		_envelope.setLinearShape(_linearMode);
 	}
 
-	_gateTrigger.process(inputs[GATE_INPUT].value);
+	_gateTrigger.process(inputs[GATE_INPUT].getVoltage());
 	_envelope.setGate(_gateTrigger.isHigh());
-	outputs[OUT_OUTPUT].value = _envelope.next() * 10.0f;
+	outputs[OUT_OUTPUT].setVoltage(_envelope.next() * 10.0f);
 
 	lights[ATTACK_LIGHT].value = _envelope.isStage(bogaudio::dsp::ADSR::ATTACK_STAGE);
 	lights[DECAY_LIGHT].value = _envelope.isStage(bogaudio::dsp::ADSR::DECAY_STAGE);

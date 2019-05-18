@@ -2,20 +2,20 @@
 #include "Detune.hpp"
 
 void Detune::process(const ProcessArgs& args) {
-	if (!(outputs[OUT_PLUS_OUTPUT].active || outputs[OUT_MINUS_OUTPUT].active || outputs[THRU_OUTPUT].active)) {
+	if (!(outputs[OUT_PLUS_OUTPUT].isConnected() || outputs[OUT_MINUS_OUTPUT].isConnected() || outputs[THRU_OUTPUT].isConnected())) {
 		return;
 	}
 
-	float cents = params[CENTS_PARAM].value;
-	if (inputs[CV_INPUT].active) {
-		cents *= clamp(inputs[CV_INPUT].value / 10.0f, 0.0f, 1.0f);
+	float cents = params[CENTS_PARAM].getValue();
+	if (inputs[CV_INPUT].isConnected()) {
+		cents *= clamp(inputs[CV_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		cents = roundf(cents);
 	}
 	cents /= 100.0f;
 
 	float inCV = 0.0f;
-	if (inputs[IN_INPUT].active) {
-		inCV = inputs[IN_INPUT].value;
+	if (inputs[IN_INPUT].isConnected()) {
+		inCV = inputs[IN_INPUT].getVoltage();
 	}
 
 	if (_cents != cents || _inCV != inCV) {
@@ -32,9 +32,9 @@ void Detune::process(const ProcessArgs& args) {
 		}
 	}
 
-	outputs[THRU_OUTPUT].value = _inCV;
-	outputs[OUT_PLUS_OUTPUT].value = _plusCV;
-	outputs[OUT_MINUS_OUTPUT].value = _minusCV;
+	outputs[THRU_OUTPUT].setVoltage(_inCV);
+	outputs[OUT_PLUS_OUTPUT].setVoltage(_plusCV);
+	outputs[OUT_MINUS_OUTPUT].setVoltage(_minusCV);
 }
 
 struct DetuneWidget : ModuleWidget {

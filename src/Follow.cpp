@@ -6,19 +6,19 @@ void Follow::onSampleRateChange() {
 }
 
 void Follow::process(const ProcessArgs& args) {
-	if (inputs[IN_INPUT].active && outputs[OUT_OUTPUT].active) {
-		float response = params[RESPONSE_PARAM].value;
-		if (inputs[RESPONSE_INPUT].active) {
-			response *= clamp(inputs[RESPONSE_INPUT].value / 10.f, 0.0f, 1.0f);
+	if (inputs[IN_INPUT].isConnected() && outputs[OUT_OUTPUT].isConnected()) {
+		float response = params[RESPONSE_PARAM].getValue();
+		if (inputs[RESPONSE_INPUT].isConnected()) {
+			response *= clamp(inputs[RESPONSE_INPUT].getVoltage() / 10.f, 0.0f, 1.0f);
 		}
 		_rms.setSensitivity(response);
 
-		float scale = params[SCALE_PARAM].value;
-		if (inputs[SCALE_INPUT].active) {
-			scale *= clamp(inputs[SCALE_INPUT].value / 5.0f, -1.0f, 1.0f);
+		float scale = params[SCALE_PARAM].getValue();
+		if (inputs[SCALE_INPUT].isConnected()) {
+			scale *= clamp(inputs[SCALE_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
 		}
 
-		outputs[OUT_OUTPUT].value = scale * 2.0f * _rms.next(inputs[IN_INPUT].value);
+		outputs[OUT_OUTPUT].setVoltage(scale * 2.0f * _rms.next(inputs[IN_INPUT].getVoltage()));
 	}
 }
 

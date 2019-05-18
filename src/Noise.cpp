@@ -2,30 +2,30 @@
 #include "Noise.hpp"
 
 void Noise::process(const ProcessArgs& args) {
-	if (outputs[BLUE_OUTPUT].active) {
-		outputs[BLUE_OUTPUT].value = clamp(_blue.next() * 20.0f, -10.0f, 10.f);
+	if (outputs[BLUE_OUTPUT].isConnected()) {
+		outputs[BLUE_OUTPUT].setVoltage(clamp(_blue.next() * 20.0f, -10.0f, 10.f));
 	}
-	if (outputs[WHITE_OUTPUT].active) {
-		outputs[WHITE_OUTPUT].value = clamp(_white.next() * 10.0f, -10.0f, 10.f);
+	if (outputs[WHITE_OUTPUT].isConnected()) {
+		outputs[WHITE_OUTPUT].setVoltage(clamp(_white.next() * 10.0f, -10.0f, 10.f));
 	}
-	if (outputs[PINK_OUTPUT].active) {
-		outputs[PINK_OUTPUT].value = clamp(_pink.next() * 15.0f, -10.0f, 10.f);
+	if (outputs[PINK_OUTPUT].isConnected()) {
+		outputs[PINK_OUTPUT].setVoltage(clamp(_pink.next() * 15.0f, -10.0f, 10.f));
 	}
-	if (outputs[RED_OUTPUT].active) {
-		outputs[RED_OUTPUT].value = clamp(_red.next() * 20.0f, -10.0f, 10.f);
+	if (outputs[RED_OUTPUT].isConnected()) {
+		outputs[RED_OUTPUT].setVoltage(clamp(_red.next() * 20.0f, -10.0f, 10.f));
 	}
-	if (outputs[GAUSS_OUTPUT].active) {
-		outputs[GAUSS_OUTPUT].value = clamp(_gauss.next(), -10.0f, 10.f);
+	if (outputs[GAUSS_OUTPUT].isConnected()) {
+		outputs[GAUSS_OUTPUT].setVoltage(clamp(_gauss.next(), -10.0f, 10.f));
 	}
 
 	float in = 0.0;
-	if (inputs[ABS_INPUT].active) {
-		in = inputs[ABS_INPUT].value;
+	if (inputs[ABS_INPUT].isConnected()) {
+		in = inputs[ABS_INPUT].getVoltage();
 		if (in < 0.0) {
 			in = -in;
 		}
 	}
-	outputs[ABS_OUTPUT].value = in;
+	outputs[ABS_OUTPUT].setVoltage(in);
 }
 
 struct NoiseWidget : ModuleWidget {

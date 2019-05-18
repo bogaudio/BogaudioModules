@@ -2,17 +2,17 @@
 #include "Mult.hpp"
 
 void Mult::process(const ProcessArgs& args) {
-	float out = inputs[INA_INPUT].value;
-	outputs[OUTA1_OUTPUT].value = out;
-	outputs[OUTA2_OUTPUT].value = out;
-	outputs[OUTA3_OUTPUT].value = out;
+	float out = inputs[INA_INPUT].getVoltage();
+	outputs[OUTA1_OUTPUT].setVoltage(out);
+	outputs[OUTA2_OUTPUT].setVoltage(out);
+	outputs[OUTA3_OUTPUT].setVoltage(out);
 
-	if (inputs[INB_INPUT].active) {
-		out = inputs[INB_INPUT].value;
+	if (inputs[INB_INPUT].isConnected()) {
+		out = inputs[INB_INPUT].getVoltage();
 	}
-	outputs[OUTB1_OUTPUT].value = out;
-	outputs[OUTB2_OUTPUT].value = out;
-	outputs[OUTB3_OUTPUT].value = out;
+	outputs[OUTB1_OUTPUT].setVoltage(out);
+	outputs[OUTB2_OUTPUT].setVoltage(out);
+	outputs[OUTB3_OUTPUT].setVoltage(out);
 }
 
 struct MultWidget : ModuleWidget {

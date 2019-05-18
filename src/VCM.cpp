@@ -2,22 +2,22 @@
 #include "VCM.hpp"
 
 void VCM::process(const ProcessArgs& args) {
-	bool linear = params[LINEAR_PARAM].value > 0.5f;
+	bool linear = params[LINEAR_PARAM].getValue() > 0.5f;
 	lights[LINEAR_LIGHT].value = linear;
-	if (outputs[MIX_OUTPUT].active) {
+	if (outputs[MIX_OUTPUT].isConnected()) {
 		float out = channelStep(inputs[IN1_INPUT], params[LEVEL1_PARAM], inputs[CV1_INPUT], _amplifier1, linear);
 		out += channelStep(inputs[IN2_INPUT], params[LEVEL2_PARAM], inputs[CV2_INPUT], _amplifier2, linear);
 		out += channelStep(inputs[IN3_INPUT], params[LEVEL3_PARAM], inputs[CV3_INPUT], _amplifier3, linear);
 		out += channelStep(inputs[IN4_INPUT], params[LEVEL4_PARAM], inputs[CV4_INPUT], _amplifier4, linear);
-		float level = params[MIX_PARAM].value;
-		if (inputs[MIX_CV_INPUT].active) {
-			level *= clamp(inputs[MIX_CV_INPUT].value / 10.0f, 0.0f, 1.0f);
+		float level = params[MIX_PARAM].getValue();
+		if (inputs[MIX_CV_INPUT].isConnected()) {
+			level *= clamp(inputs[MIX_CV_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
 		out *= level;
 		if (!_disableOutputLimit) {
 			out = clamp(out, -12.0f, 12.0f);
 		}
-		outputs[MIX_OUTPUT].value = level * out;
+		outputs[MIX_OUTPUT].setVoltage(level * out);
 	}
 }
 

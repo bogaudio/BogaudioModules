@@ -12,8 +12,8 @@ void DGate::process(const ProcessArgs& args) {
 	float envelope = 0.0;
 	bool complete = false;
 	if (
-		_trigger.process(params[TRIGGER_PARAM].value + inputs[TRIGGER_INPUT].value) ||
-		(_firstStep && _triggerOnLoad && _shouldTriggerOnLoad && params[LOOP_PARAM].value <= 0.0)
+		_trigger.process(params[TRIGGER_PARAM].getValue() + inputs[TRIGGER_INPUT].getVoltage()) ||
+		(_firstStep && _triggerOnLoad && _shouldTriggerOnLoad && params[LOOP_PARAM].getValue() <= 0.0)
 	) {
 		_stage = DELAY_STAGE;
 		_stageProgress = 0.0;
@@ -33,7 +33,7 @@ void DGate::process(const ProcessArgs& args) {
 			case GATE_STAGE: {
 				if (stepStage(params[GATE_PARAM])) {
 					complete = true;
-					if (params[LOOP_PARAM].value <= 0.0 || _trigger.isHigh()) {
+					if (params[LOOP_PARAM].getValue() <= 0.0 || _trigger.isHigh()) {
 						_stage = DELAY_STAGE;
 						_stageProgress = 0.0;
 					}
@@ -49,11 +49,11 @@ void DGate::process(const ProcessArgs& args) {
 		}
 	}
 
-	outputs[GATE_OUTPUT].value = envelope * 10.0;
+	outputs[GATE_OUTPUT].setVoltage(envelope * 10.0);
 	if (complete) {
 		_triggerOuptutPulseGen.trigger(0.001);
 	}
-	outputs[END_OUTPUT].value = _triggerOuptutPulseGen.process(APP->engine->getSampleTime()) ? 5.0 : 0.0;
+	outputs[END_OUTPUT].setVoltage(_triggerOuptutPulseGen.process(APP->engine->getSampleTime()) ? 5.0 : 0.0);
 
 	lights[DELAY_LIGHT].value = _stage == DELAY_STAGE;
 	lights[GATE_LIGHT].value = _stage == GATE_STAGE;

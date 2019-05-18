@@ -7,7 +7,7 @@ void Mix1::onSampleRateChange() {
 
 void Mix1::process(const ProcessArgs& args) {
 	_channel.next(false, false);
-	outputs[OUT_OUTPUT].value = _channel.out;
+	outputs[OUT_OUTPUT].setVoltage(_channel.out);
 }
 
 struct Mix1Widget : ModuleWidget {

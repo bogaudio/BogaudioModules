@@ -6,8 +6,8 @@ void Blank6::onSampleRateChange() {
 }
 
 void Blank6::process(const ProcessArgs& args) {
-	if (inputs[IN_INPUT].active) {
-		_level = _rms.next(inputs[IN_INPUT].value) / 5.0f;
+	if (inputs[IN_INPUT].isConnected()) {
+		_level = _rms.next(inputs[IN_INPUT].getVoltage()) / 5.0f;
 	}
 	else {
 		_level = -1.0f;

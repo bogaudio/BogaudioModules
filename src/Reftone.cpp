@@ -7,30 +7,30 @@ void Reftone::process(const ProcessArgs& args) {
 	const int referenceOctave = 4;
 
 	if (!(
-		_pitch == params[PITCH_PARAM].value &&
-		_octave == params[OCTAVE_PARAM].value &&
-		_fine == params[FINE_PARAM].value
+		_pitch == params[PITCH_PARAM].getValue() &&
+		_octave == params[OCTAVE_PARAM].getValue() &&
+		_fine == params[FINE_PARAM].getValue()
 	)) {
-		_pitch = params[PITCH_PARAM].value;
-		_octave = params[OCTAVE_PARAM].value;
-		_fine = params[FINE_PARAM].value;
+		_pitch = params[PITCH_PARAM].getValue();
+		_octave = params[OCTAVE_PARAM].getValue();
+		_fine = params[FINE_PARAM].getValue();
 		_frequency = semitoneToFrequency(referenceSemitone + 12*(_octave - referenceOctave) + (_pitch - referencePitch) + _fine);
 		_cv = frequencyToCV(_frequency);
 	}
 
-	if (outputs[CV_OUTPUT].active) {
-		outputs[CV_OUTPUT].value = _cv;
+	if (outputs[CV_OUTPUT].isConnected()) {
+		outputs[CV_OUTPUT].setVoltage(_cv);
 	}
 	else {
-		outputs[CV_OUTPUT].value = 0.0;
+		outputs[CV_OUTPUT].setVoltage(0.0);
 	}
 
-	if (outputs[OUT_OUTPUT].active) {
+	if (outputs[OUT_OUTPUT].isConnected()) {
 		_sine.setFrequency(_frequency);
-		outputs[OUT_OUTPUT].value = _sine.next() * 5.0f;
+		outputs[OUT_OUTPUT].setVoltage(_sine.next() * 5.0f);
 	}
 	else {
-		outputs[OUT_OUTPUT].value = 0.0;
+		outputs[OUT_OUTPUT].setVoltage(0.0);
 	}
 }
 

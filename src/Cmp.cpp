@@ -8,33 +8,33 @@ void Cmp::onReset() {
 
 void Cmp::process(const ProcessArgs& args) {
 	if (!(
-		outputs[GREATER_OUTPUT].active ||
-		outputs[LESS_OUTPUT].active ||
-		outputs[EQUAL_OUTPUT].active ||
-		outputs[NOT_EQUAL_OUTPUT].active
+		outputs[GREATER_OUTPUT].isConnected() ||
+		outputs[LESS_OUTPUT].isConnected() ||
+		outputs[EQUAL_OUTPUT].isConnected() ||
+		outputs[NOT_EQUAL_OUTPUT].isConnected()
 	)) {
 		return;
 	}
 
-	float a = params[A_PARAM].value * 10.0f;
-	if (inputs[A_INPUT].active) {
-		a = clamp(a + inputs[A_INPUT].value, -12.0f, 12.0f);
+	float a = params[A_PARAM].getValue() * 10.0f;
+	if (inputs[A_INPUT].isConnected()) {
+		a = clamp(a + inputs[A_INPUT].getVoltage(), -12.0f, 12.0f);
 	}
 
-	float b = params[B_PARAM].value * 10.0f;
-	if (inputs[B_INPUT].active) {
-		b = clamp(b + inputs[B_INPUT].value, -12.0f, 12.0f);
+	float b = params[B_PARAM].getValue() * 10.0f;
+	if (inputs[B_INPUT].isConnected()) {
+		b = clamp(b + inputs[B_INPUT].getVoltage(), -12.0f, 12.0f);
 	}
 
-	float window = params[WINDOW_PARAM].value;
-	if (inputs[WINDOW_INPUT].active) {
-		window *= clamp(inputs[WINDOW_INPUT].value / 10.0f, 0.0f, 1.0f);
+	float window = params[WINDOW_PARAM].getValue();
+	if (inputs[WINDOW_INPUT].isConnected()) {
+		window *= clamp(inputs[WINDOW_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 	}
 	window *= 10.0f;
 
 	float high = 10.0f;
 	float low = 0.0f;
-	if (params[OUTPUT_PARAM].value > 0.5f) {
+	if (params[OUTPUT_PARAM].getValue() > 0.5f) {
 		high = 5.0f;
 		low = -5.0f;
 	}
@@ -146,9 +146,9 @@ void Cmp::stepChannel(
 }
 
 int Cmp::lagInSamples() {
-	float lag = params[LAG_PARAM].value;
-	if (inputs[LAG_INPUT].active) {
-		lag *= clamp(inputs[LAG_INPUT].value / 10.0f, 0.0f, 1.0f);
+	float lag = params[LAG_PARAM].getValue();
+	if (inputs[LAG_INPUT].isConnected()) {
+		lag *= clamp(inputs[LAG_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 	}
 	return lag * lag * APP->engine->getSampleRate();
 }

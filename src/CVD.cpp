@@ -6,11 +6,11 @@ void CVD::onSampleRateChange() {
 }
 
 void CVD::process(const ProcessArgs& args) {
-	float time = params[TIME_PARAM].value;
-	if (inputs[TIME_INPUT].active) {
-		time *= clamp(inputs[TIME_INPUT].value / 10.0f, 0.0f, 1.0f);
+	float time = params[TIME_PARAM].getValue();
+	if (inputs[TIME_INPUT].isConnected()) {
+		time *= clamp(inputs[TIME_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 	}
-	switch ((int)params[TIME_SCALE_PARAM].value) {
+	switch ((int)params[TIME_SCALE_PARAM].getValue()) {
 		case 0: {
 			time /= 100.f;
 			break;
@@ -22,15 +22,15 @@ void CVD::process(const ProcessArgs& args) {
 	}
 	_delay.setTime(time);
 
-	float mix = params[MIX_PARAM].value;
-	if (inputs[MIX_INPUT].active) {
-		mix = clamp(mix + inputs[MIX_INPUT].value / 5.0f, -1.0f, 1.0f);
+	float mix = params[MIX_PARAM].getValue();
+	if (inputs[MIX_INPUT].isConnected()) {
+		mix = clamp(mix + inputs[MIX_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
 	}
 	_mix.setParams(mix);
 
-	float in = inputs[IN_INPUT].value;
+	float in = inputs[IN_INPUT].getVoltage();
 	float delayed = _delay.next(in);
-	outputs[OUT_OUTPUT].value = _mix.next(in, delayed);
+	outputs[OUT_OUTPUT].setVoltage(_mix.next(in, delayed));
 }
 
 struct CVDWidget : ModuleWidget {

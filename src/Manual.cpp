@@ -7,7 +7,7 @@ void Manual::onReset() {
 }
 
 void Manual::process(const ProcessArgs& args) {
-	bool high = _trigger.process(params[TRIGGER_PARAM].value) || _trigger.isHigh() || (_firstStep && _triggerOnLoad && _shouldTriggerOnLoad);
+	bool high = _trigger.process(params[TRIGGER_PARAM].getValue()) || _trigger.isHigh() || (_firstStep && _triggerOnLoad && _shouldTriggerOnLoad);
 	if (high) {
 		_pulse.trigger(0.001f);
 		_pulse.process(APP->engine->getSampleTime());
@@ -17,14 +17,14 @@ void Manual::process(const ProcessArgs& args) {
 	}
 
 	float out = high ? 5.0f : 0.0f;
-	outputs[OUT1_OUTPUT].value = out;
-	outputs[OUT2_OUTPUT].value = out;
-	outputs[OUT3_OUTPUT].value = out;
-	outputs[OUT4_OUTPUT].value = out;
-	outputs[OUT5_OUTPUT].value = out;
-	outputs[OUT6_OUTPUT].value = out;
-	outputs[OUT7_OUTPUT].value = out;
-	outputs[OUT8_OUTPUT].value = out;
+	outputs[OUT1_OUTPUT].setVoltage(out);
+	outputs[OUT2_OUTPUT].setVoltage(out);
+	outputs[OUT3_OUTPUT].setVoltage(out);
+	outputs[OUT4_OUTPUT].setVoltage(out);
+	outputs[OUT5_OUTPUT].setVoltage(out);
+	outputs[OUT6_OUTPUT].setVoltage(out);
+	outputs[OUT7_OUTPUT].setVoltage(out);
+	outputs[OUT8_OUTPUT].setVoltage(out);
 
 	_firstStep = false;
 }

@@ -12,22 +12,22 @@ void Mix4::onSampleRateChange() {
 }
 
 void Mix4::process(const ProcessArgs& args) {
-	bool stereo = outputs[L_OUTPUT].active && outputs[R_OUTPUT].active;
+	bool stereo = outputs[L_OUTPUT].isConnected() && outputs[R_OUTPUT].isConnected();
 	bool solo =
-		params[MUTE1_PARAM].value > 1.5f ||
-		params[MUTE2_PARAM].value > 1.5f ||
-		params[MUTE3_PARAM].value > 1.5f ||
-		params[MUTE4_PARAM].value > 1.5f;
+		params[MUTE1_PARAM].getValue() > 1.5f ||
+		params[MUTE2_PARAM].getValue() > 1.5f ||
+		params[MUTE3_PARAM].getValue() > 1.5f ||
+		params[MUTE4_PARAM].getValue() > 1.5f;
 	_channel1.next(stereo, solo);
 	_channel2.next(stereo, solo);
 	_channel3.next(stereo, solo);
 	_channel4.next(stereo, solo);
 
 	float level = Amplifier::minDecibels;
-	if (params[MIX_MUTE_PARAM].value < 0.5f) {
-		level = params[MIX_PARAM].value;
-		if (inputs[MIX_CV_INPUT].active) {
-			level *= clamp(inputs[MIX_CV_INPUT].value / 10.0f, 0.0f, 1.0f);
+	if (params[MIX_MUTE_PARAM].getValue() < 0.5f) {
+		level = params[MIX_PARAM].getValue();
+		if (inputs[MIX_CV_INPUT].isConnected()) {
+			level *= clamp(inputs[MIX_CV_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
 		level *= MixerChannel::maxDecibels - MixerChannel::minDecibels;
 		level += MixerChannel::minDecibels;
@@ -51,7 +51,7 @@ void Mix4::process(const ProcessArgs& args) {
 		left += _channel4.left;
 		left = _amplifier.next(left);
 		left = _saturator.next(left);
-		outputs[L_OUTPUT].value = left;
+		outputs[L_OUTPUT].setVoltage(left);
 
 		float right = 0.0f;
 		right += _channel1.right;
@@ -60,10 +60,10 @@ void Mix4::process(const ProcessArgs& args) {
 		right += _channel4.right;
 		right = _amplifier.next(right);
 		right = _saturator.next(right);
-		outputs[R_OUTPUT].value = right;
+		outputs[R_OUTPUT].setVoltage(right);
 	}
 	else {
-		outputs[L_OUTPUT].value = outputs[R_OUTPUT].value = mono;
+		outputs[L_OUTPUT].setVoltage(outputs[R_OUTPUT].value = mono);
 	}
 }
 

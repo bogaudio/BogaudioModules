@@ -9,19 +9,19 @@ void VU::onSampleRateChange() {
 void VU::process(const ProcessArgs& args) {
 	float left = 0.0f;
 	float right = 0.0f;
-	if (inputs[L_INPUT].active) {
-		left = inputs[L_INPUT].value;
+	if (inputs[L_INPUT].isConnected()) {
+		left = inputs[L_INPUT].getVoltage();
 	}
-	if (inputs[R_INPUT].active) {
-		right = inputs[R_INPUT].value;
+	if (inputs[R_INPUT].isConnected()) {
+		right = inputs[R_INPUT].getVoltage();
 	}
 	else {
 		right = left;
 	}
 	_lLevel = _lRms.next(left) / 5.0f;
 	_rLevel = _rRms.next(right) / 5.0f;
-	outputs[L_OUTPUT].value = left;
-	outputs[R_OUTPUT].value = right;
+	outputs[L_OUTPUT].setVoltage(left);
+	outputs[R_OUTPUT].setVoltage(right);
 }
 
 struct VUDisplay : OpaqueWidget {

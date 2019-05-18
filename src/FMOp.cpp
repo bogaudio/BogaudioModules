@@ -37,10 +37,10 @@ void FMOp::dataFromJson(json_t* root) {
 }
 
 void FMOp::process(const ProcessArgs& args) {
-	if (!outputs[AUDIO_OUTPUT].active) {
-		lights[ENV_TO_LEVEL_LIGHT].value = params[ENV_TO_LEVEL_PARAM].value > 0.5f;
-		lights[ENV_TO_FEEDBACK_LIGHT].value = params[ENV_TO_FEEDBACK_PARAM].value > 0.5f;
-		lights[ENV_TO_DEPTH_LIGHT].value = params[ENV_TO_DEPTH_PARAM].value > 0.5f;
+	if (!outputs[AUDIO_OUTPUT].isConnected()) {
+		lights[ENV_TO_LEVEL_LIGHT].value = params[ENV_TO_LEVEL_PARAM].getValue() > 0.5f;
+		lights[ENV_TO_FEEDBACK_LIGHT].value = params[ENV_TO_FEEDBACK_PARAM].getValue() > 0.5f;
+		lights[ENV_TO_DEPTH_LIGHT].value = params[ENV_TO_DEPTH_PARAM].getValue() > 0.5f;
 		return;
 	}
 	lights[ENV_TO_LEVEL_LIGHT].value = _levelEnvelopeOn;
@@ -48,19 +48,19 @@ void FMOp::process(const ProcessArgs& args) {
 	lights[ENV_TO_DEPTH_LIGHT].value = _depthEnvelopeOn;
 
 	float pitchIn = 0.0f;
-	if (inputs[PITCH_INPUT].active) {
-		pitchIn = inputs[PITCH_INPUT].value;
+	if (inputs[PITCH_INPUT].isConnected()) {
+		pitchIn = inputs[PITCH_INPUT].getVoltage();
 	}
 	float gateIn = 0.0f;
-	if (inputs[GATE_INPUT].active) {
-		gateIn = inputs[GATE_INPUT].value;
+	if (inputs[GATE_INPUT].isConnected()) {
+		gateIn = inputs[GATE_INPUT].getVoltage();
 	}
 
 	++_steps;
 	if (_steps >= modulationSteps) {
 		_steps = 0;
 
-		float ratio = params[RATIO_PARAM].value;
+		float ratio = params[RATIO_PARAM].getValue();
 		if (ratio < 0.0f) {
 			ratio = std::max(1.0f + ratio, 0.01f);
 		}
@@ -69,15 +69,15 @@ void FMOp::process(const ProcessArgs& args) {
 			ratio += 1.0f;
 		}
 		float frequency = pitchIn;
-		frequency += params[FINE_PARAM].value / 12.0f;
+		frequency += params[FINE_PARAM].getValue() / 12.0f;
 		frequency = cvToFrequency(frequency);
 		frequency *= ratio;
 		frequency = clamp(frequency, -_maxFrequency, _maxFrequency);
 		_phasor.setFrequency(frequency / (float)oversample);
 
-		bool levelEnvelopeOn = params[ENV_TO_LEVEL_PARAM].value > 0.5f;
-		bool feedbackEnvelopeOn = params[ENV_TO_FEEDBACK_PARAM].value > 0.5f;
-		bool depthEnvelopeOn = params[ENV_TO_DEPTH_PARAM].value > 0.5f;
+		bool levelEnvelopeOn = params[ENV_TO_LEVEL_PARAM].getValue() > 0.5f;
+		bool feedbackEnvelopeOn = params[ENV_TO_FEEDBACK_PARAM].getValue() > 0.5f;
+		bool depthEnvelopeOn = params[ENV_TO_DEPTH_PARAM].getValue() > 0.5f;
 		if (_levelEnvelopeOn != levelEnvelopeOn || _feedbackEnvelopeOn != feedbackEnvelopeOn || _depthEnvelopeOn != depthEnvelopeOn) {
 			_levelEnvelopeOn = levelEnvelopeOn;
 			_feedbackEnvelopeOn = feedbackEnvelopeOn;
@@ -89,29 +89,29 @@ void FMOp::process(const ProcessArgs& args) {
 			_envelopeOn = envelopeOn;
 		}
 		if (_envelopeOn) {
-			float sustain = params[SUSTAIN_PARAM].value;
-			if (inputs[SUSTAIN_INPUT].active) {
-				sustain *= clamp(inputs[SUSTAIN_INPUT].value / 10.0f, 0.0f, 1.0f);
+			float sustain = params[SUSTAIN_PARAM].getValue();
+			if (inputs[SUSTAIN_INPUT].isConnected()) {
+				sustain *= clamp(inputs[SUSTAIN_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 			}
-			_envelope.setAttack(powf(params[ATTACK_PARAM].value, 2.0f) * 10.f);
-			_envelope.setDecay(powf(params[DECAY_PARAM].value, 2.0f) * 10.f);
+			_envelope.setAttack(powf(params[ATTACK_PARAM].getValue(), 2.0f) * 10.f);
+			_envelope.setDecay(powf(params[DECAY_PARAM].getValue(), 2.0f) * 10.f);
 			_envelope.setSustain(_sustainSL.next(sustain));
-			_envelope.setRelease(powf(params[RELEASE_PARAM].value, 2.0f) * 10.f);
+			_envelope.setRelease(powf(params[RELEASE_PARAM].getValue(), 2.0f) * 10.f);
 		}
 
-		_feedback = params[FEEDBACK_PARAM].value;
-		if (inputs[FEEDBACK_INPUT].active) {
-			_feedback *= clamp(inputs[FEEDBACK_INPUT].value / 10.0f, 0.0f, 1.0f);
+		_feedback = params[FEEDBACK_PARAM].getValue();
+		if (inputs[FEEDBACK_INPUT].isConnected()) {
+			_feedback *= clamp(inputs[FEEDBACK_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
 
-		_depth = params[DEPTH_PARAM].value;
-		if (inputs[DEPTH_INPUT].active) {
-			_depth *= clamp(inputs[DEPTH_INPUT].value / 10.0f, 0.0f, 1.0f);
+		_depth = params[DEPTH_PARAM].getValue();
+		if (inputs[DEPTH_INPUT].isConnected()) {
+			_depth *= clamp(inputs[DEPTH_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
 
-		_level = params[LEVEL_PARAM].value;
-		if (inputs[LEVEL_INPUT].active) {
-			_level *= clamp(inputs[LEVEL_INPUT].value / 10.0f, 0.0f, 1.0f);
+		_level = params[LEVEL_PARAM].getValue();
+		if (inputs[LEVEL_INPUT].isConnected()) {
+			_level *= clamp(inputs[LEVEL_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
 	}
 
@@ -138,12 +138,12 @@ void FMOp::process(const ProcessArgs& args) {
 		offset = feedback * _feedbackDelayedSample;
 	}
 
-	if (inputs[FM_INPUT].active) {
+	if (inputs[FM_INPUT].isConnected()) {
 		float depth = _depthSL.next(_depth);
 		if (_depthEnvelopeOn) {
 			depth *= envelope;
 		}
-		offset += inputs[FM_INPUT].value * depth * 2.0f;
+		offset += inputs[FM_INPUT].getVoltage() * depth * 2.0f;
 	}
 
 	float sample = 0.0f;
@@ -185,7 +185,7 @@ void FMOp::process(const ProcessArgs& args) {
 		_phasor.advancePhase(oversample);
 	}
 
-	outputs[AUDIO_OUTPUT].value = _feedbackDelayedSample = amplitude * sample;
+	outputs[AUDIO_OUTPUT].setVoltage(_feedbackDelayedSample = amplitude * sample);
 }
 
 struct LinearLevelMenuItem : MenuItem {

@@ -9,23 +9,23 @@ void Test2::onReset() {
 }
 
 void Test2::process(const ProcessArgs& args) {
-	if (!outputs[OUT_OUTPUT].active) {
+	if (!outputs[OUT_OUTPUT].isConnected()) {
 		return;
 	}
 
 #ifdef COMPLEX_BIQUAD
 	_complexBiquad.setComplexParams(
-		params[PARAM1B_PARAM].value,
-		params[PARAM2A_PARAM].value,
-		params[PARAM2B_PARAM].value * M_PI,
-		std::min(params[PARAM3A_PARAM].value, 0.9f),
-		params[PARAM3B_PARAM].value * M_PI
+		params[PARAM1B_PARAM].getValue(),
+		params[PARAM2A_PARAM].getValue(),
+		params[PARAM2B_PARAM].getValue() * M_PI,
+		std::min(params[PARAM3A_PARAM].getValue(), 0.9f),
+		params[PARAM3B_PARAM].getValue() * M_PI
 	);
 	float in = 0.0f;
-	if (inputs[IN_INPUT].active) {
-		in = inputs[IN_INPUT].value;
+	if (inputs[IN_INPUT].isConnected()) {
+		in = inputs[IN_INPUT].getVoltage();
 	}
-	outputs[OUT_OUTPUT].value = _complexBiquad.next(in);
+	outputs[OUT_OUTPUT].setVoltage(_complexBiquad.next(in));
 
 #elif MULTIPOLE
 	++_steps;
@@ -33,11 +33,11 @@ void Test2::process(const ProcessArgs& args) {
 		_steps = 0;
 
 		_filter.setParams(
-			params[PARAM2A_PARAM].value <= 0.5f ? MultipoleFilter::LP_TYPE : MultipoleFilter::HP_TYPE,
-			2 * clamp((int)(params[PARAM1B_PARAM].value * (MultipoleFilter::maxPoles / 2)), 1, MultipoleFilter::maxPoles / 2),
+			params[PARAM2A_PARAM].getValue() <= 0.5f ? MultipoleFilter::LP_TYPE : MultipoleFilter::HP_TYPE,
+			2 * clamp((int)(params[PARAM1B_PARAM].getValue() * (MultipoleFilter::maxPoles / 2)), 1, MultipoleFilter::maxPoles / 2),
 			APP->engine->getSampleRate(),
-			params[PARAM1A_PARAM].value * APP->engine->getSampleRate() / 2.0f,
-			params[PARAM2B_PARAM].value * MultipoleFilter::maxRipple
+			params[PARAM1A_PARAM].getValue() * APP->engine->getSampleRate() / 2.0f,
+			params[PARAM2B_PARAM].getValue() * MultipoleFilter::maxRipple
 		);
 		// _filter.setParams(
 		// 	MultipoleFilter::HP_TYPE,
@@ -48,23 +48,23 @@ void Test2::process(const ProcessArgs& args) {
 		// );
 	}
 	float in = 0.0f;
-	if (inputs[IN_INPUT].active) {
-		in = inputs[IN_INPUT].value;
+	if (inputs[IN_INPUT].isConnected()) {
+		in = inputs[IN_INPUT].getVoltage();
 	}
-	outputs[OUT_OUTPUT].value = _filter.next(in);
+	outputs[OUT_OUTPUT].setVoltage(_filter.next(in));
 
 #elif ADSR_ENVELOPE
-  if (outputs[OUT_OUTPUT].active) {
+  if (outputs[OUT_OUTPUT].isConnected()) {
 		_adsr.setSampleRate(APP->engine->getSampleRate());
-		if (inputs[IN_INPUT].active) {
-			_trigger.process(inputs[IN_INPUT].value);
+		if (inputs[IN_INPUT].isConnected()) {
+			_trigger.process(inputs[IN_INPUT].getVoltage());
 		}
 		_adsr.setGate(_trigger.isHigh());
-		_adsr.setAttack(powf(params[PARAM1A_PARAM].value, 2.0f) * 10.0f);
-		_adsr.setDecay(powf(params[PARAM1B_PARAM].value, 2.0f) * 10.0f);
-		_adsr.setSustain(params[PARAM2A_PARAM].value);
-		_adsr.setRelease(powf(params[PARAM2B_PARAM].value, 2.0f) * 10.0f);
-		float attackShape = params[PARAM3A_PARAM].value;
+		_adsr.setAttack(powf(params[PARAM1A_PARAM].getValue(), 2.0f) * 10.0f);
+		_adsr.setDecay(powf(params[PARAM1B_PARAM].getValue(), 2.0f) * 10.0f);
+		_adsr.setSustain(params[PARAM2A_PARAM].getValue());
+		_adsr.setRelease(powf(params[PARAM2B_PARAM].getValue(), 2.0f) * 10.0f);
+		float attackShape = params[PARAM3A_PARAM].getValue();
 		if (attackShape < 0.5f) {
 			attackShape += 0.5f;
 		}
@@ -73,7 +73,7 @@ void Test2::process(const ProcessArgs& args) {
 			attackShape *= 2.0f;
 			attackShape += 1.0f;
 		}
-		float decayShape = params[PARAM3B_PARAM].value;
+		float decayShape = params[PARAM3B_PARAM].getValue();
 		if (decayShape < 0.5f) {
 			decayShape += 0.5f;
 		}
@@ -83,24 +83,24 @@ void Test2::process(const ProcessArgs& args) {
 			decayShape += 1.0f;
 		}
 		_adsr.setShapes(attackShape, decayShape, decayShape);
-		outputs[OUT_OUTPUT].value = _adsr.next() * 10.0f;
+		outputs[OUT_OUTPUT].setVoltage(_adsr.next() * 10.0f);
 	}
 
 #elif LIMITER
-	float shape = params[PARAM1A_PARAM].value * 5.0f;
-	float knee = params[PARAM2A_PARAM].value * 10.0f;
-	float limit = params[PARAM2B_PARAM].value * 15.0f;
-	float scale = params[PARAM1B_PARAM].value * 2.0f + 1.0f;
+	float shape = params[PARAM1A_PARAM].getValue() * 5.0f;
+	float knee = params[PARAM2A_PARAM].getValue() * 10.0f;
+	float limit = params[PARAM2B_PARAM].getValue() * 15.0f;
+	float scale = params[PARAM1B_PARAM].getValue() * 2.0f + 1.0f;
 	_limiter.setParams(shape, knee, limit, scale);
-	outputs[OUT_OUTPUT].value = _limiter.next(inputs[IN_INPUT].value);
+	outputs[OUT_OUTPUT].setVoltage(_limiter.next(inputs[IN_INPUT].getVoltage()));
 #endif
 }
 
 // float Test2::oscillatorPitch1A() {
-// 	if (inputs[CV1A_INPUT].active) {
-// 		return cvToFrequency(inputs[CV1A_INPUT].value);
+// 	if (inputs[CV1A_INPUT].isConnected()) {
+// 		return cvToFrequency(inputs[CV1A_INPUT].getVoltage());
 // 	}
-// 	return 10000.0 * powf(params[PARAM1_PARAM].value, 2.0);
+// 	return 10000.0 * powf(params[PARAM1_PARAM].getValue(), 2.0);
 // }
 
 

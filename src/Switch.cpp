@@ -6,10 +6,10 @@ void bogaudio::Switch::onReset() {
 }
 
 void bogaudio::Switch::step() {
-	bool latched = params[LATCH_PARAM].value > 0.5f;
+	bool latched = params[LATCH_PARAM].getValue() > 0.5f;
 	lights[LATCH_LIGHT].value = latched;
 
-	bool triggered = _trigger.process(params[GATE_PARAM].value + inputs[GATE_INPUT].value);
+	bool triggered = _trigger.process(params[GATE_PARAM].getValue() + inputs[GATE_INPUT].getVoltage());
 	if (latched) {
 		if (triggered) {
 			_latchedHigh = !_latchedHigh;
@@ -20,12 +20,12 @@ void bogaudio::Switch::step() {
 	}
 
 	if (_latchedHigh || _trigger.isHigh()) {
-		outputs[OUT1_OUTPUT].value = inputs[HIGH1_INPUT].value;
-		outputs[OUT2_OUTPUT].value = inputs[HIGH2_INPUT].value;
+		outputs[OUT1_OUTPUT].setVoltage(inputs[HIGH1_INPUT].getVoltage());
+		outputs[OUT2_OUTPUT].setVoltage(inputs[HIGH2_INPUT].getVoltage());
 	}
 	else {
-		outputs[OUT1_OUTPUT].value = inputs[LOW1_INPUT].value;
-		outputs[OUT2_OUTPUT].value = inputs[LOW2_INPUT].value;
+		outputs[OUT1_OUTPUT].setVoltage(inputs[LOW1_INPUT].getVoltage());
+		outputs[OUT2_OUTPUT].setVoltage(inputs[LOW2_INPUT].getVoltage());
 	}
 }
 

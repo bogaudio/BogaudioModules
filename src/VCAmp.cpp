@@ -12,15 +12,15 @@ void VCAmp::onSampleRateChange() {
 }
 
 void VCAmp::process(const ProcessArgs& args) {
-	if (inputs[IN_INPUT].active) {
-		float level = params[LEVEL_PARAM].value;
-		if (inputs[CV_INPUT].active) {
-			level *= clamp(inputs[CV_INPUT].value, 0.0f, 10.0f) / 10.0f;
+	if (inputs[IN_INPUT].isConnected()) {
+		float level = params[LEVEL_PARAM].getValue();
+		if (inputs[CV_INPUT].isConnected()) {
+			level *= clamp(inputs[CV_INPUT].getVoltage(), 0.0f, 10.0f) / 10.0f;
 		}
 		level *= maxDecibels - minDecibels;
 		level += minDecibels;
 		_amplifier.setLevel(_levelSL.next(level));
-		outputs[OUT_OUTPUT].value = _saturator.next(_amplifier.next(inputs[IN_INPUT].value));
+		outputs[OUT_OUTPUT].setVoltage(_saturator.next(_amplifier.next(inputs[IN_INPUT].getVoltage())));
 		_rmsLevel = _rms.next(outputs[OUT_OUTPUT].value / 5.0f);
 	}
 	else {

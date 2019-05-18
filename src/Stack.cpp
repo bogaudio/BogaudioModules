@@ -2,26 +2,26 @@
 #include "Stack.hpp"
 
 void Stack::process(const ProcessArgs& args) {
-	lights[QUANTIZE_LIGHT].value = params[QUANTIZE_PARAM].value > 0.5;
-	if (!(outputs[OUT_OUTPUT].active || outputs[THRU_OUTPUT].active)) {
+	lights[QUANTIZE_LIGHT].value = params[QUANTIZE_PARAM].getValue() > 0.5;
+	if (!(outputs[OUT_OUTPUT].isConnected() || outputs[THRU_OUTPUT].isConnected())) {
 		return;
 	}
 
-	float semitones = params[OCTAVE_PARAM].value * 12.0;
-	semitones += params[SEMIS_PARAM].value;
-	if (inputs[CV_INPUT].active) {
-		semitones += clamp(inputs[CV_INPUT].value, -5.0f, 5.0f) * 10.0;
+	float semitones = params[OCTAVE_PARAM].getValue() * 12.0;
+	semitones += params[SEMIS_PARAM].getValue();
+	if (inputs[CV_INPUT].isConnected()) {
+		semitones += clamp(inputs[CV_INPUT].getVoltage(), -5.0f, 5.0f) * 10.0;
 	}
-	if (params[QUANTIZE_PARAM].value > 0.5) {
+	if (params[QUANTIZE_PARAM].getValue() > 0.5) {
 		semitones = roundf(semitones);
 	}
 
 	float inCV = 0.0f;
-	if (inputs[IN_INPUT].active) {
-		inCV = clamp(inputs[IN_INPUT].value, _minCVOut, _maxCVOut);
+	if (inputs[IN_INPUT].isConnected()) {
+		inCV = clamp(inputs[IN_INPUT].getVoltage(), _minCVOut, _maxCVOut);
 	}
 
-	float fine = params[FINE_PARAM].value;
+	float fine = params[FINE_PARAM].getValue();
 
 	if (_semitones != semitones || _inCV != inCV || _fine != fine) {
 		_semitones = semitones;
@@ -30,13 +30,13 @@ void Stack::process(const ProcessArgs& args) {
 		_outCV = clamp(semitoneToCV((_inCV != 0.0f ? cvToSemitone(_inCV) : referenceSemitone) + _semitones + _fine), _minCVOut, _maxCVOut);
 	}
 
-	if (inputs[IN_INPUT].active) {
-		outputs[THRU_OUTPUT].value = _inCV;
+	if (inputs[IN_INPUT].isConnected()) {
+		outputs[THRU_OUTPUT].setVoltage(_inCV);
 	}
 	else {
-		outputs[THRU_OUTPUT].value = _semitones / 10.0;
+		outputs[THRU_OUTPUT].setVoltage(_semitones / 10.0);
 	}
-	outputs[OUT_OUTPUT].value = _outCV;
+	outputs[OUT_OUTPUT].setVoltage(_outCV);
 }
 
 struct StackWidget : ModuleWidget {

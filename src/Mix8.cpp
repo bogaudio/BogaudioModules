@@ -16,16 +16,16 @@ _rms.setSampleRate(sr);
 }
 
 void Mix8::process(const ProcessArgs& args) {
-	bool stereo = outputs[L_OUTPUT].active && outputs[R_OUTPUT].active;
+	bool stereo = outputs[L_OUTPUT].isConnected() && outputs[R_OUTPUT].isConnected();
 	bool solo =
-		params[MUTE1_PARAM].value > 1.5f ||
-		params[MUTE2_PARAM].value > 1.5f ||
-		params[MUTE3_PARAM].value > 1.5f ||
-		params[MUTE4_PARAM].value > 1.5f ||
-		params[MUTE5_PARAM].value > 1.5f ||
-		params[MUTE6_PARAM].value > 1.5f ||
-		params[MUTE7_PARAM].value > 1.5f ||
-		params[MUTE8_PARAM].value > 1.5f;
+		params[MUTE1_PARAM].getValue() > 1.5f ||
+		params[MUTE2_PARAM].getValue() > 1.5f ||
+		params[MUTE3_PARAM].getValue() > 1.5f ||
+		params[MUTE4_PARAM].getValue() > 1.5f ||
+		params[MUTE5_PARAM].getValue() > 1.5f ||
+		params[MUTE6_PARAM].getValue() > 1.5f ||
+		params[MUTE7_PARAM].getValue() > 1.5f ||
+		params[MUTE8_PARAM].getValue() > 1.5f;
 	_channel1.next(stereo, solo);
 	_channel2.next(stereo, solo);
 	_channel3.next(stereo, solo);
@@ -36,10 +36,10 @@ void Mix8::process(const ProcessArgs& args) {
 	_channel8.next(stereo, solo);
 
 	float level = Amplifier::minDecibels;
-	if (params[MIX_MUTE_PARAM].value < 0.5f) {
-		level = params[MIX_PARAM].value;
-		if (inputs[MIX_CV_INPUT].active) {
-			level *= clamp(inputs[MIX_CV_INPUT].value / 10.0f, 0.0f, 1.0f);
+	if (params[MIX_MUTE_PARAM].getValue() < 0.5f) {
+		level = params[MIX_PARAM].getValue();
+		if (inputs[MIX_CV_INPUT].isConnected()) {
+			level *= clamp(inputs[MIX_CV_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
 		level *= MixerChannel::maxDecibels - MixerChannel::minDecibels;
 		level += MixerChannel::minDecibels;
@@ -71,7 +71,7 @@ void Mix8::process(const ProcessArgs& args) {
 		left += _channel8.left;
 		left = _amplifier.next(left);
 		left = _saturator.next(left);
-		outputs[L_OUTPUT].value = left;
+		outputs[L_OUTPUT].setVoltage(left);
 
 		float right = 0.0f;
 		right += _channel1.right;
@@ -84,10 +84,10 @@ void Mix8::process(const ProcessArgs& args) {
 		right += _channel8.right;
 		right = _amplifier.next(right);
 		right = _saturator.next(right);
-		outputs[R_OUTPUT].value = right;
+		outputs[R_OUTPUT].setVoltage(right);
 	}
 	else {
-		outputs[L_OUTPUT].value = outputs[R_OUTPUT].value = mono;
+		outputs[L_OUTPUT].setVoltage(outputs[R_OUTPUT].value = mono);
 	}
 }
 

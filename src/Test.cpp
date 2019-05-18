@@ -5,96 +5,96 @@ void Test::onReset() {
 }
 
 void Test::process(const ProcessArgs& args) {
-	if (!(outputs[OUT_OUTPUT].active || outputs[OUT2_OUTPUT].active)) {
+	if (!(outputs[OUT_OUTPUT].isConnected() || outputs[OUT2_OUTPUT].isConnected())) {
 		return;
 	}
 
 #ifdef LPF
-	if (!inputs[IN_INPUT].active) {
+	if (!inputs[IN_INPUT].isConnected()) {
 		return;
 	}
 	_lpf.setParams(
 		APP->engine->getSampleRate(),
-		10000.0 * clamp(params[PARAM1_PARAM].value, 0.0f, 1.0f),
-		std::max(10.0 * clamp(params[PARAM2_PARAM].value, 0.0f, 1.0f), 0.1)
+		10000.0 * clamp(params[PARAM1_PARAM].getValue(), 0.0f, 1.0f),
+		std::max(10.0 * clamp(params[PARAM2_PARAM].getValue(), 0.0f, 1.0f), 0.1)
 	);
-	outputs[OUT_OUTPUT].value = _lpf.next(inputs[IN_INPUT].value);
+	outputs[OUT_OUTPUT].setVoltage(_lpf.next(inputs[IN_INPUT].getVoltage()));
 
 #elif LPFNOISE
 	_lpf.setParams(
 		APP->engine->getSampleRate(),
-		22000.0 * clamp(params[PARAM1_PARAM].value, 0.0f, 1.0f),
+		22000.0 * clamp(params[PARAM1_PARAM].getValue(), 0.0f, 1.0f),
 		0.717f
 	);
 	float noise = _noise.next();
-	outputs[OUT_OUTPUT].value = _lpf.next(noise) * 10.0;;
-	outputs[OUT2_OUTPUT].value = noise * 10.0;;
+	outputs[OUT_OUTPUT].setVoltage(_lpf.next(noise) * 10.0);;
+	outputs[OUT2_OUTPUT].setVoltage(noise * 10.0);;
 
 #elif SINE
 	_sine.setSampleRate(APP->engine->getSampleRate());
 	_sine.setFrequency(oscillatorPitch());
-	outputs[OUT_OUTPUT].value = _sine.next() * 5.0f;
+	outputs[OUT_OUTPUT].setVoltage(_sine.next() * 5.0f);
 
 	_sine2.setSampleRate(APP->engine->getSampleRate());
 	_sine2.setFrequency(oscillatorPitch());
-	outputs[OUT2_OUTPUT].value = _sine2.next() * 5.0f;
+	outputs[OUT2_OUTPUT].setVoltage(_sine2.next() * 5.0f);
 
 #elif SQUARE
 	_square.setSampleRate(APP->engine->getSampleRate());
 	_square.setFrequency(oscillatorPitch());
-	float pw = params[PARAM2_PARAM].value;
-	if (inputs[CV2_INPUT].active) {
-		pw += clamp(inputs[CV2_INPUT].value, -5.0f, 5.0f) / 10.0f;
+	float pw = params[PARAM2_PARAM].getValue();
+	if (inputs[CV2_INPUT].isConnected()) {
+		pw += clamp(inputs[CV2_INPUT].getVoltage(), -5.0f, 5.0f) / 10.0f;
 	}
 	_square.setPulseWidth(pw);
-	outputs[OUT_OUTPUT].value = _square.next() * 5.0f;
+	outputs[OUT_OUTPUT].setVoltage(_square.next() * 5.0f);
 
 	_square2.setSampleRate(APP->engine->getSampleRate());
 	_square2.setFrequency(oscillatorPitch());
 	_square2.setPulseWidth(pw);
-	_square2.setQuality(params[PARAM3_PARAM].value * 200);
-	outputs[OUT2_OUTPUT].value = _square2.next() * 5.0f;
+	_square2.setQuality(params[PARAM3_PARAM].getValue() * 200);
+	outputs[OUT2_OUTPUT].setVoltage(_square2.next() * 5.0f);
 
 #elif SAW
 	_saw.setSampleRate(APP->engine->getSampleRate());
 	_saw.setFrequency(oscillatorPitch());
-	outputs[OUT_OUTPUT].value = _saw.next() * 5.0f;
+	outputs[OUT_OUTPUT].setVoltage(_saw.next() * 5.0f);
 
 	_saw2.setSampleRate(APP->engine->getSampleRate());
 	_saw2.setFrequency(oscillatorPitch());
-	_saw2.setQuality(params[PARAM2_PARAM].value * 200);
-	outputs[OUT2_OUTPUT].value = _saw2.next() * 5.0f;
+	_saw2.setQuality(params[PARAM2_PARAM].getValue() * 200);
+	outputs[OUT2_OUTPUT].setVoltage(_saw2.next() * 5.0f);
 
 #elif SATSAW
-	float saturation = params[PARAM2_PARAM].value * 10.0f;
-	if (inputs[CV2_INPUT].active) {
-		saturation *= clamp(inputs[CV2_INPUT].value / 10.0f, 0.0f, 1.0f);
+	float saturation = params[PARAM2_PARAM].getValue() * 10.0f;
+	if (inputs[CV2_INPUT].isConnected()) {
+		saturation *= clamp(inputs[CV2_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 	}
 	_saw.setSampleRate(APP->engine->getSampleRate());
 	_saw.setFrequency(oscillatorPitch());
 	_saw.setSaturation(saturation);
-	outputs[OUT_OUTPUT].value = _saw.next() * 5.0f;
+	outputs[OUT_OUTPUT].setVoltage(_saw.next() * 5.0f);
 
 	_saw2.setSampleRate(APP->engine->getSampleRate());
 	_saw2.setFrequency(oscillatorPitch());
 	_saw2.setSaturation(saturation);
-	_saw2.setQuality(params[PARAM3_PARAM].value * 200);
-	outputs[OUT2_OUTPUT].value = _saw2.next() * 5.0f;
+	_saw2.setQuality(params[PARAM3_PARAM].getValue() * 200);
+	outputs[OUT2_OUTPUT].setVoltage(_saw2.next() * 5.0f);
 
 #elif TRIANGLE
 	_triangle.setSampleRate(APP->engine->getSampleRate());
 	_triangle.setFrequency(oscillatorPitch());
-	outputs[OUT_OUTPUT].value = _triangle.next() * 5.0f;
+	outputs[OUT_OUTPUT].setVoltage(_triangle.next() * 5.0f);
 
 #elif SAMPLED_TRIANGLE
-	float sample = params[PARAM2_PARAM].value * Phasor::maxSampleWidth;
-	if (inputs[CV2_INPUT].active) {
-		sample *= clamp(inputs[CV2_INPUT].value / 10.0f, 0.0f, 1.0f);
+	float sample = params[PARAM2_PARAM].getValue() * Phasor::maxSampleWidth;
+	if (inputs[CV2_INPUT].isConnected()) {
+		sample *= clamp(inputs[CV2_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 	}
 	_triangle.setSampleRate(APP->engine->getSampleRate());
 	_triangle.setFrequency(oscillatorPitch());
 	_triangle.setSampleWidth(sample);
-	outputs[OUT_OUTPUT].value = _triangle.next() * 5.0f;
+	outputs[OUT_OUTPUT].setVoltage(_triangle.next() * 5.0f);
 
 	_triangle2.setSampleRate(APP->engine->getSampleRate());
 	_triangle2.setFrequency(oscillatorPitch());
@@ -108,12 +108,12 @@ void Test::process(const ProcessArgs& args) {
 	else {
 		_triangle2.advancePhase();
 	}
-	outputs[OUT2_OUTPUT].value = _sample;
+	outputs[OUT2_OUTPUT].setVoltage(_sample);
 
 #elif SINEBANK
 	_sineBank.setSampleRate(APP->engine->getSampleRate());
 	_sineBank.setFrequency(oscillatorPitch());
-	outputs[OUT_OUTPUT].value = _sineBank.next();
+	outputs[OUT_OUTPUT].setVoltage(_sineBank.next());
 
 #elif OVERSAMPLING
 	_saw1.setSampleRate(APP->engine->getSampleRate());
@@ -122,7 +122,7 @@ void Test::process(const ProcessArgs& args) {
 	for (int i = 0; i < OVERSAMPLEN; ++i) {
 		buf[i] = _saw1.next();
 	}
-	outputs[OUT_OUTPUT].value = _rackDecimator.process(buf) * 5.0f;
+	outputs[OUT_OUTPUT].setVoltage(_rackDecimator.process(buf) * 5.0f);
 
 	_saw2.setSampleRate(APP->engine->getSampleRate());
 	_saw2.setFrequency(oscillatorPitch() / (float)OVERSAMPLEN);
@@ -142,23 +142,23 @@ void Test::process(const ProcessArgs& args) {
 		s = _lpf.next(_saw2.next());
 		// s = _saw2.next();
 	}
-	outputs[OUT2_OUTPUT].value = s * 5.0;
+	outputs[OUT2_OUTPUT].setVoltage(s * 5.0);
 
 #elif OVERSAMPLED_BL
-	int quality = params[PARAM2_PARAM].value * 100;
+	int quality = params[PARAM2_PARAM].getValue() * 100;
 	const int maxOversample = 16;
-	int oversample = params[PARAM3_PARAM].value * maxOversample;
+	int oversample = params[PARAM3_PARAM].getValue() * maxOversample;
 
 	_saw1.setSampleRate(APP->engine->getSampleRate());
 	_saw1.setFrequency(oscillatorPitch());
 	_saw1.setQuality(quality);
-	outputs[OUT_OUTPUT].value = _saw1.next() * 5.0f;
+	outputs[OUT_OUTPUT].setVoltage(_saw1.next() * 5.0f);
 
 	_saw2.setSampleRate(APP->engine->getSampleRate());
 	_saw2.setQuality(quality);
 	if (oversample < 2) {
 		_saw2.setFrequency(oscillatorPitch());
-		outputs[OUT2_OUTPUT].value = _saw2.next() * 5.0f;
+		outputs[OUT2_OUTPUT].setVoltage(_saw2.next() * 5.0f);
 	}
 	else {
 		_saw2.setFrequency(oscillatorPitch() / (float)oversample);
@@ -171,7 +171,7 @@ void Test::process(const ProcessArgs& args) {
 		for (int i = 0; i < oversample; ++i) {
 			s = _lpf.next(_saw2.next());
 		}
-		outputs[OUT2_OUTPUT].value = s * 5.0f;
+		outputs[OUT2_OUTPUT].setVoltage(s * 5.0f);
 	}
 
 #elif ANTIALIASING
@@ -247,8 +247,8 @@ void Test::process(const ProcessArgs& args) {
 		}
 	}
 
-	outputs[OUT_OUTPUT].value = out * 5.0f;
-	outputs[OUT2_OUTPUT].value = out2 * 5.0f;
+	outputs[OUT_OUTPUT].setVoltage(out * 5.0f);
+	outputs[OUT2_OUTPUT].setVoltage(out2 * 5.0f);
 
 #elif DECIMATORS
 	const int quality = 12;
@@ -264,9 +264,9 @@ void Test::process(const ProcessArgs& args) {
 	for (int i = 0; i < OVERSAMPLEN; ++i) {
 		buf[i] = _saw.next();
 	}
-	outputs[OUT_OUTPUT].value = _cicDecimator.next(buf) * 5.0f;
-	// outputs[OUT2_OUTPUT].value = _lpfDecimator.next(buf) * 5.0f;
-	outputs[OUT2_OUTPUT].value = _rackDecimator.process(buf) * 5.0f;
+	outputs[OUT_OUTPUT].setVoltage(_cicDecimator.next(buf) * 5.0f);
+	// outputs[OUT2_OUTPUT].setVoltage(_lpfDecimator.next(buf) * 5.0f);
+	outputs[OUT2_OUTPUT].setVoltage(_rackDecimator.process(buf) * 5.0f);
 
 #elif INTERPOLATOR
 	const int quality = 12;
@@ -285,8 +285,8 @@ void Test::process(const ProcessArgs& args) {
 		}
 		_interpolator.next(_decimator.next(_rawSamples), _processedSamples);
 	}
-	outputs[OUT_OUTPUT].value = _processedSamples[_steps] * 5.0f;
-	outputs[OUT2_OUTPUT].value = _rawSamples[_steps] * 5.0f;
+	outputs[OUT_OUTPUT].setVoltage(_processedSamples[_steps] * 5.0f);
+	outputs[OUT2_OUTPUT].setVoltage(_rawSamples[_steps] * 5.0f);
 	++_steps;
 
 #elif FM
@@ -316,11 +316,11 @@ void Test::process(const ProcessArgs& args) {
 	// linear FM.
 	float modHz = _ratio * _baseHz;
 	_carrier.setFrequency(_baseHz + _index * _modulator.next() * modHz); // linear FM requires knowing the modulator's frequency.
-	outputs[OUT_OUTPUT].value = _carrier.next() * amplitude;
+	outputs[OUT_OUTPUT].setVoltage(_carrier.next() * amplitude);
 
 	// PM for comparison - identical output.
 	_carrier2.advancePhase();
-	outputs[OUT2_OUTPUT].value = _carrier2.nextFromPhasor(_carrier2, Phasor::radiansToPhase(_index * _modulator2.next())) * amplitude;
+	outputs[OUT2_OUTPUT].setVoltage(_carrier2.nextFromPhasor(_carrier2, Phasor::radiansToPhase(_index * _modulator2.next())) * amplitude);
 
 #elif PM
 	const float amplitude = 5.0f;
@@ -331,49 +331,49 @@ void Test::process(const ProcessArgs& args) {
 	_modulator.setSampleRate(APP->engine->getSampleRate());
 	_modulator.setFrequency(modHz);
 	_carrier.advancePhase();
-	outputs[OUT_OUTPUT].value = _carrier.nextFromPhasor(_carrier, Phasor::radiansToPhase(index3() * _modulator.next())) * amplitude;
+	outputs[OUT_OUTPUT].setVoltage(_carrier.nextFromPhasor(_carrier, Phasor::radiansToPhase(index3() * _modulator.next())) * amplitude);
 
 #elif FEEDBACK_PM
 	_carrier.setSampleRate(APP->engine->getSampleRate());
 	_carrier.setFrequency(oscillatorPitch());
-	float feedback = params[PARAM2_PARAM].value;
-	if (inputs[CV2_INPUT].active) {
-		feedback *= clamp(inputs[CV2_INPUT].value, 0.0f, 10.0f) / 10.0f;
+	float feedback = params[PARAM2_PARAM].getValue();
+	if (inputs[CV2_INPUT].isConnected()) {
+		feedback *= clamp(inputs[CV2_INPUT].getVoltage(), 0.0f, 10.0f) / 10.0f;
 	}
 	_carrier.advancePhase();
-	outputs[OUT_OUTPUT].value = _feedbackSample = _carrier.nextFromPhasor(_carrier, Phasor::radiansToPhase(feedback * _feedbackSample)) * 5.0f;
+	outputs[OUT_OUTPUT].setVoltage(_feedbackSample = _carrier.nextFromPhasor(_carrier, Phasor::radiansToPhase(feedback * _feedbackSample)) * 5.0f);
 
 #elif EG
 	_envelope.setSampleRate(APP->engine->getSampleRate());
-	_envelope.setAttack(params[PARAM1_PARAM].value);
-	_envelope.setDecay(params[PARAM2_PARAM].value);
-	_envelope.setSustain(params[PARAM3_PARAM].value);
-	_envelope.setRelease(params[PARAM2_PARAM].value);
-	_envelope.setGate(inputs[CV1_INPUT].value > 0.1f);
-	outputs[OUT_OUTPUT].value = _envelope.next() * 10.0f;
+	_envelope.setAttack(params[PARAM1_PARAM].getValue());
+	_envelope.setDecay(params[PARAM2_PARAM].getValue());
+	_envelope.setSustain(params[PARAM3_PARAM].getValue());
+	_envelope.setRelease(params[PARAM2_PARAM].getValue());
+	_envelope.setGate(inputs[CV1_INPUT].getVoltage() > 0.1f);
+	outputs[OUT_OUTPUT].setVoltage(_envelope.next() * 10.0f);
 
 #elif TABLES
 	_sine.setSampleRate(APP->engine->getSampleRate());
 	_sine.setFrequency(oscillatorPitch());
-	outputs[OUT_OUTPUT].value = _sine.next() * 5.0f;
+	outputs[OUT_OUTPUT].setVoltage(_sine.next() * 5.0f);
 
 	_table.setSampleRate(APP->engine->getSampleRate());
 	_table.setFrequency(oscillatorPitch());
-	outputs[OUT2_OUTPUT].value = _table.next() * 5.0f;
+	outputs[OUT2_OUTPUT].setVoltage(_table.next() * 5.0f);
 
 #elif SLEW
-	float ms = params[PARAM1_PARAM].value;
-	if (inputs[CV1_INPUT].active) {
-		ms *= clamp(inputs[CV2_INPUT].value, 0.0f, 10.0f) / 10.0f;
+	float ms = params[PARAM1_PARAM].getValue();
+	if (inputs[CV1_INPUT].isConnected()) {
+		ms *= clamp(inputs[CV2_INPUT].getVoltage(), 0.0f, 10.0f) / 10.0f;
 	}
 	ms = powf(ms, 2.0f);
 	ms *= 10000.0f;
 	_slew.setParams(APP->engine->getSampleRate(), ms);
-	outputs[OUT_OUTPUT].value = _slew.next(inputs[IN_INPUT].value);
+	outputs[OUT_OUTPUT].setVoltage(_slew.next(inputs[IN_INPUT].getVoltage()));
 
-	float shape = params[PARAM2_PARAM].value;
-	if (inputs[CV2_INPUT].active) {
-		shape *= clamp(inputs[CV2_INPUT].value / 5.0f, -1.0f, 1.0f);
+	float shape = params[PARAM2_PARAM].getValue();
+	if (inputs[CV2_INPUT].isConnected()) {
+		shape *= clamp(inputs[CV2_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
 	}
 	if (shape < 0.5) {
 		shape /= 0.5;
@@ -386,86 +386,86 @@ void Test::process(const ProcessArgs& args) {
 		shape += 1.0f;
 	}
 	_slew2.setParams(APP->engine->getSampleRate(), ms, shape);
-	outputs[OUT2_OUTPUT].value = _slew2.next(inputs[IN_INPUT].value);
+	outputs[OUT2_OUTPUT].setVoltage(_slew2.next(inputs[IN_INPUT].getVoltage()));
 
 #elif RMS
-	float sensitivity = params[PARAM2_PARAM].value;
-	if (inputs[CV2_INPUT].active) {
-		sensitivity *= clamp(inputs[CV2_INPUT].value, 0.0f, 10.0f) / 10.0f;
+	float sensitivity = params[PARAM2_PARAM].getValue();
+	if (inputs[CV2_INPUT].isConnected()) {
+		sensitivity *= clamp(inputs[CV2_INPUT].getVoltage(), 0.0f, 10.0f) / 10.0f;
 	}
 	_rms.setSampleRate(APP->engine->getSampleRate());
 	_rms.setSensitivity(sensitivity);
-	outputs[OUT_OUTPUT].value = _rms.next(inputs[IN_INPUT].value);
+	outputs[OUT_OUTPUT].setVoltage(_rms.next(inputs[IN_INPUT].getVoltage()));
 	_pef.setSensitivity(sensitivity);
-	outputs[OUT2_OUTPUT].value = _pef.next(inputs[IN_INPUT].value);
+	outputs[OUT2_OUTPUT].setVoltage(_pef.next(inputs[IN_INPUT].getVoltage()));
 
 #elif RAVG
-	if (_reset.process(inputs[CV1_INPUT].value)) {
+	if (_reset.process(inputs[CV1_INPUT].getVoltage())) {
 		_average.reset();
 	}
-	outputs[OUT_OUTPUT].value = _average.next(inputs[IN_INPUT].value);
+	outputs[OUT_OUTPUT].setVoltage(_average.next(inputs[IN_INPUT].getVoltage()));
 
 #elif SATURATOR
-	float in = inputs[IN_INPUT].value;
-	outputs[OUT_OUTPUT].value = _saturator.next(in);
-	outputs[OUT2_OUTPUT].value = clamp(in, -Saturator::limit, Saturator::limit);
+	float in = inputs[IN_INPUT].getVoltage();
+	outputs[OUT_OUTPUT].setVoltage(_saturator.next(in));
+	outputs[OUT2_OUTPUT].setVoltage(clamp(in, -Saturator::limit, Saturator::limit));
 
 #elif BROWNIAN
 	const float maxDiv = 1000.0f;
-	float change = clamp(1.0f - params[PARAM1_PARAM].value, 0.01f, 1.0f);
-	float smooth = clamp(params[PARAM2_PARAM].value, 0.01f, 1.0f);
+	float change = clamp(1.0f - params[PARAM1_PARAM].getValue(), 0.01f, 1.0f);
+	float smooth = clamp(params[PARAM2_PARAM].getValue(), 0.01f, 1.0f);
 	smooth *= smooth;
 	_filter1.setParams(APP->engine->getSampleRate(), smooth * APP->engine->getSampleRate() * 0.49f);
 	_filter2.setParams(APP->engine->getSampleRate(), smooth * APP->engine->getSampleRate() * 0.49f);
 
 	_last1 = _last1 + _noise1.next() / (change * maxDiv);
-	outputs[OUT_OUTPUT].value = _filter1.next(_last1);
+	outputs[OUT_OUTPUT].setVoltage(_filter1.next(_last1));
 	if (_last1 > 5.0f || _last1 < -5.0f) {
 		_last1 = 0.0f;
 	}
 
 	_last2 = _last2 + _noise1.next() / (change * maxDiv);
-	outputs[OUT2_OUTPUT].value = _filter2.next(_last2);
+	outputs[OUT2_OUTPUT].setVoltage(_filter2.next(_last2));
 	if (_last2 > 5.0f || _last2 < -5.0f) {
 		_last2 = 0.0f;
 	}
 
 	// // "leaky integrator"
-	// float alpha = params[PARAM1_PARAM].value;
+	// float alpha = params[PARAM1_PARAM].getValue();
 	// alpha = clamp(1.0f - alpha*alpha, 0.00001f, 1.0f);
 	// float sample = 5.0f * _noise1.next();
 	// _last1 = alpha*_last1 + (1.0f - alpha)*sample;
-	// outputs[OUT_OUTPUT].value = _last1;
+	// outputs[OUT_OUTPUT].setVoltage(_last1);
 
 #elif RANDOMWALK
-	float change = params[PARAM1_PARAM].value;
+	float change = params[PARAM1_PARAM].getValue();
 	change *= change;
 	change *= change;
 	_walk1.setParams(APP->engine->getSampleRate(), change);
 	_walk2.setParams(APP->engine->getSampleRate(), change);
-	outputs[OUT_OUTPUT].value = _walk1.next();
-	outputs[OUT2_OUTPUT].value = _walk2.next();
+	outputs[OUT_OUTPUT].setVoltage(_walk1.next());
+	outputs[OUT2_OUTPUT].setVoltage(_walk2.next());
 #endif
 }
 
 float Test::oscillatorPitch(float max) {
-	if (inputs[CV1_INPUT].active) {
-		return cvToFrequency(inputs[CV1_INPUT].value);
+	if (inputs[CV1_INPUT].isConnected()) {
+		return cvToFrequency(inputs[CV1_INPUT].getVoltage());
 	}
-	return max * powf(params[PARAM1_PARAM].value, 2.0);
+	return max * powf(params[PARAM1_PARAM].getValue(), 2.0);
 }
 
 float Test::oscillatorPitch2(float max) {
-	if (inputs[CV2_INPUT].active) {
-		return cvToFrequency(inputs[CV2_INPUT].value);
+	if (inputs[CV2_INPUT].isConnected()) {
+		return cvToFrequency(inputs[CV2_INPUT].getVoltage());
 	}
-	return max * powf(params[PARAM2_PARAM].value, 2.0);
+	return max * powf(params[PARAM2_PARAM].getValue(), 2.0);
 }
 
 float Test::ratio2() {
-	float ratio = (params[PARAM2_PARAM].value * 2.0f) - 1.0f;
-	if (inputs[CV2_INPUT].active) {
-		ratio *= clamp(inputs[CV2_INPUT].value / 5.0f, -1.0f, 1.0f);
+	float ratio = (params[PARAM2_PARAM].getValue() * 2.0f) - 1.0f;
+	if (inputs[CV2_INPUT].isConnected()) {
+		ratio *= clamp(inputs[CV2_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
 	}
 	if (ratio < 0.0f) {
 		return 1.0f + ratio;
@@ -474,9 +474,9 @@ float Test::ratio2() {
 }
 
 float Test::index3() {
-	float index = params[PARAM3_PARAM].value;
-	if (inputs[CV3_INPUT].active) {
-		index *= clamp(inputs[CV3_INPUT].value, 0.0f, 10.0f) / 10.0f;
+	float index = params[PARAM3_PARAM].getValue();
+	if (inputs[CV3_INPUT].isConnected()) {
+		index *= clamp(inputs[CV3_INPUT].getVoltage(), 0.0f, 10.0f) / 10.0f;
 	}
 	return index * 10.0f;
 }

@@ -18,9 +18,9 @@ void AD::onSampleRateChange() {
 }
 
 void AD::process(const ProcessArgs& args) {
-	lights[LOOP_LIGHT].value = _loopMode = params[LOOP_PARAM].value > 0.5f;
-	lights[LINEAR_LIGHT].value = _linearMode = params[LINEAR_PARAM].value > 0.5f;
-	if (!(outputs[ENV_OUTPUT].active || outputs[EOC_OUTPUT].active || inputs[TRIGGER_INPUT].active)) {
+	lights[LOOP_LIGHT].value = _loopMode = params[LOOP_PARAM].getValue() > 0.5f;
+	lights[LINEAR_LIGHT].value = _linearMode = params[LINEAR_PARAM].getValue() > 0.5f;
+	if (!(outputs[ENV_OUTPUT].isConnected() || outputs[EOC_OUTPUT].isConnected() || inputs[TRIGGER_INPUT].isConnected())) {
 		return;
 	}
 
@@ -28,33 +28,33 @@ void AD::process(const ProcessArgs& args) {
 	if (_modulationStep >= modulationSteps) {
 		_modulationStep = 0;
 
-		float attack = powf(params[ATTACK_PARAM].value, 2.0f);
-		if (inputs[ATTACK_INPUT].active) {
-			attack *= clamp(inputs[ATTACK_INPUT].value / 10.0f, 0.0f, 1.0f);
+		float attack = powf(params[ATTACK_PARAM].getValue(), 2.0f);
+		if (inputs[ATTACK_INPUT].isConnected()) {
+			attack *= clamp(inputs[ATTACK_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
 		_envelope.setAttack(_attackSL.next(attack * 10.f));
 
-		float decay = powf(params[DECAY_PARAM].value, 2.0f);
-		if (inputs[DECAY_INPUT].active) {
-			decay *= clamp(inputs[DECAY_INPUT].value / 10.0f, 0.0f, 1.0f);
+		float decay = powf(params[DECAY_PARAM].getValue(), 2.0f);
+		if (inputs[DECAY_INPUT].isConnected()) {
+			decay *= clamp(inputs[DECAY_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
 		_envelope.setDecay(_decaySL.next(decay * 10.f));
 
 		_envelope.setLinearShape(_linearMode);
 	}
 
-	_trigger.process(inputs[TRIGGER_INPUT].value);
+	_trigger.process(inputs[TRIGGER_INPUT].getVoltage());
 	if (!_on && (_trigger.isHigh() || (_loopMode && _envelope.isStage(ADSR::STOPPED_STAGE)))) {
 		_on = true;
 	}
 	_envelope.setGate(_on);
-	outputs[ENV_OUTPUT].value = _envelope.next() * 10.0f;
+	outputs[ENV_OUTPUT].setVoltage(_envelope.next() * 10.0f);
 	if (_on && _envelope.isStage(ADSR::SUSTAIN_STAGE)) {
 		_envelope.reset();
 		_on = false;
 		_eocPulseGen.trigger(0.001f);
 	}
-	outputs[EOC_OUTPUT].value = _eocPulseGen.process(APP->engine->getSampleTime()) ? 5.0f : 0.0f;
+	outputs[EOC_OUTPUT].setVoltage(_eocPulseGen.process(APP->engine->getSampleTime()) ? 5.0f : 0.0f);
 
 	lights[ATTACK_LIGHT].value = _envelope.isStage(ADSR::ATTACK_STAGE);
 	lights[DECAY_LIGHT].value = _envelope.isStage(ADSR::DECAY_STAGE);
