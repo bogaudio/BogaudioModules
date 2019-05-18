@@ -7,9 +7,8 @@
 #include <algorithm>
 #include <cmath>
 
-#include "rack.hpp"
+#include "rack0.hpp"
 
-#include "dsp/digital.hpp"
 #include "rack_overrides.hpp"
 #include "trigger_on_load.hpp"
 #include "widgets.hpp"

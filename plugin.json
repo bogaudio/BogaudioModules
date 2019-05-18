@@ -1,0 +1,24 @@
+{
+  "slug": "Bogaudio",
+  "name": "Bogaudio",
+  "version": "1.0.17",
+  "license": "BSD-3-Clause",
+  "author": "Matt Demanett",
+  "authorEmail": "",
+  "authorUrl": "",
+  "pluginUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md",
+  "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md",
+  "sourceUrl": "https://github.com/bogaudio/BogaudioModules",
+  "donateUrl": "",
+  "modules": [
+    {
+      "slug": "Bogaudio-SampleHold",
+      "name": "S&H",
+      "description": "dual sample (or track) and hold",
+      "tags": [
+        "sample and hold",
+        "dual"
+      ]
+    }
+  ]
+}

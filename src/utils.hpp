@@ -1,9 +1,9 @@
 #pragma once
 
-#include <string.h>
-#include <algorithm>
+// #include <string.h>
+// #include <algorithm>
 
-#include "rack.hpp"
+#include "rack0.hpp"
 
 using namespace rack;
 
@@ -16,19 +16,15 @@ Model* createModel(
 	const char* description,
 	Tags... tags
 ) {
-	const int n = 256;
-	char buf[n];
-	std::string uName = name;
-	for (auto& c: uName) {
-		c = toupper(c);
-	}
-	snprintf(buf, n, "%s - %s - %dHP", uName.c_str(), description, TModuleWidget::hp);
-	return Model::create<TModule, TModuleWidget>(
-		"Bogaudio",
-		slug,
-		buf,
-		tags...
-	);
+	// FIXME.v1
+	// const int n = 256;
+	// char buf[n];
+	// std::string uName = name;
+	// for (auto& c: uName) {
+	// 	c = toupper(c);
+	// }
+	// snprintf(buf, n, "%s - %s - %dHP", uName.c_str(), description, TModuleWidget::hp);
+	return Model::create<TModule, TModuleWidget>(slug);
 }
 
 } // namespace bogaudio
