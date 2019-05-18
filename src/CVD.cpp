@@ -81,4 +81,4 @@ struct CVDWidget : ModuleWidget {
 	}
 };
 
-Model* modelCVD = createModel<CVD, CVDWidget>("Bogaudio-CVD", "CVD",  "CV delay", DELAY_TAG);
+Model* modelCVD = bogaudio::createModel<CVD, CVDWidget>("Bogaudio-CVD", "CVD",  "CV delay", DELAY_TAG);

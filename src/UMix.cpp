@@ -155,4 +155,4 @@ struct UMixWidget : ModuleWidget {
 	}
 };
 
-Model* modelUMix = createModel<UMix, UMixWidget>("Bogaudio-UMix", "UMix", "unity mixer", MIXER_TAG);
+Model* modelUMix = bogaudio::createModel<UMix, UMixWidget>("Bogaudio-UMix", "UMix", "unity mixer", MIXER_TAG);

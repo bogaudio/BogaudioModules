@@ -162,4 +162,4 @@ struct AddrSeqWidget : ModuleWidget {
 	}
 };
 
-Model* modelAddrSeq = createModel<AddrSeq, AddrSeqWidget>("Bogaudio-AddrSeq", "ADDR-SEQ", "voltage-addressable sequencer", SEQUENCER_TAG);
+Model* modelAddrSeq = bogaudio::createModel<AddrSeq, AddrSeqWidget>("Bogaudio-AddrSeq", "ADDR-SEQ", "voltage-addressable sequencer", SEQUENCER_TAG);

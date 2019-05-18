@@ -185,4 +185,4 @@ struct AnalyzerWidget : ModuleWidget {
 	}
 };
 
-Model* modelAnalyzer = createModel<Analyzer, AnalyzerWidget>("Bogaudio-Analyzer", "Analyzer",  "spectrum analyzer", VISUAL_TAG);
+Model* modelAnalyzer = bogaudio::createModel<Analyzer, AnalyzerWidget>("Bogaudio-Analyzer", "Analyzer",  "spectrum analyzer", VISUAL_TAG);

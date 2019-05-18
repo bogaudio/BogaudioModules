@@ -24,7 +24,7 @@ Model* createModel(
 	// 	c = toupper(c);
 	// }
 	// snprintf(buf, n, "%s - %s - %dHP", uName.c_str(), description, TModuleWidget::hp);
-	return Model::create<TModule, TModuleWidget>(slug);
+	return rack::createModel<TModule, TModuleWidget>(slug);
 }
 
 } // namespace bogaudio

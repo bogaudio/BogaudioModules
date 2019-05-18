@@ -96,4 +96,4 @@ struct StackWidget : ModuleWidget {
 	}
 };
 
-Model* modelStack = createModel<Stack, StackWidget>("Bogaudio-Stack", "Stack",  "pitch CV processor", TUNER_TAG);
+Model* modelStack = bogaudio::createModel<Stack, StackWidget>("Bogaudio-Stack", "Stack",  "pitch CV processor", TUNER_TAG);

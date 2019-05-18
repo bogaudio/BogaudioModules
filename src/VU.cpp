@@ -123,4 +123,4 @@ struct VUWidget : ModuleWidget {
 	}
 };
 
-Model* modelVU = createModel<VU, VUWidget>("Bogaudio-VU", "VU",  "stereo signal meter", VISUAL_TAG, DUAL_TAG);
+Model* modelVU = bogaudio::createModel<VU, VUWidget>("Bogaudio-VU", "VU",  "stereo signal meter", VISUAL_TAG, DUAL_TAG);

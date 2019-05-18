@@ -59,4 +59,4 @@ struct Mix1Widget : ModuleWidget {
 	}
 };
 
-Model* modelMix1 = createModel<Mix1, Mix1Widget>("Bogaudio-Mix1", "MIX1", "fader/amplifier with mute", AMPLIFIER_TAG);
+Model* modelMix1 = bogaudio::createModel<Mix1, Mix1Widget>("Bogaudio-Mix1", "MIX1", "fader/amplifier with mute", AMPLIFIER_TAG);

@@ -72,4 +72,4 @@ struct SumsWidget : DisableOutputLimitModuleWidget {
 	}
 };
 
-Model* modelSums = createModel<Sums, SumsWidget>("Bogaudio-Sums", "Sums",  "arithmetic logic", LOGIC_TAG);
+Model* modelSums = bogaudio::createModel<Sums, SumsWidget>("Bogaudio-Sums", "Sums",  "arithmetic logic", LOGIC_TAG);

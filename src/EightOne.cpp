@@ -162,4 +162,4 @@ struct EightOneWidget : ModuleWidget {
 	}
 };
 
-Model* modelEightOne = createModel<EightOne, EightOneWidget>("Bogaudio-EightOne", "8:1", "demux & sequential switch", SWITCH_TAG);
+Model* modelEightOne = bogaudio::createModel<EightOne, EightOneWidget>("Bogaudio-EightOne", "8:1", "demux & sequential switch", SWITCH_TAG);

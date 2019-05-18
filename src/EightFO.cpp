@@ -271,4 +271,4 @@ struct EightFOWidget : LFOBaseWidget {
 	}
 };
 
-Model* modelEightFO = createModel<EightFO, EightFOWidget>("Bogaudio-EightFO", "8FO",  "LFO with 8 phased outputs", LFO_TAG);
+Model* modelEightFO = bogaudio::createModel<EightFO, EightFOWidget>("Bogaudio-EightFO", "8FO",  "LFO with 8 phased outputs", LFO_TAG);

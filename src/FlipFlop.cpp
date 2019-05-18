@@ -99,4 +99,4 @@ struct FlipFlopWidget : ModuleWidget {
 	}
 };
 
-Model* modelFlipFlop = createModel<FlipFlop, FlipFlopWidget>("Bogaudio-FlipFlop", "FlipFlop",  "dual stateful logic", LOGIC_TAG, DUAL_TAG);
+Model* modelFlipFlop = bogaudio::createModel<FlipFlop, FlipFlopWidget>("Bogaudio-FlipFlop", "FlipFlop",  "dual stateful logic", LOGIC_TAG, DUAL_TAG);

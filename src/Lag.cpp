@@ -97,4 +97,4 @@ struct LagWidget : ModuleWidget {
 	}
 };
 
-Model* modelLag = createModel<Lag, LagWidget>("Bogaudio-Lag", "Lag",  "slew limiter / lag processor", SLEW_LIMITER_TAG);
+Model* modelLag = bogaudio::createModel<Lag, LagWidget>("Bogaudio-Lag", "Lag",  "slew limiter / lag processor", SLEW_LIMITER_TAG);

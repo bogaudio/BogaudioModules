@@ -243,4 +243,4 @@ struct PressorWidget : ModuleWidget {
 	}
 };
 
-Model* modelPressor = createModel<Pressor, PressorWidget>("Bogaudio-Pressor", "Pressor", "stereo compressor", COMPRESSOR_TAG, DYNAMICS_TAG);
+Model* modelPressor = bogaudio::createModel<Pressor, PressorWidget>("Bogaudio-Pressor", "Pressor", "stereo compressor", COMPRESSOR_TAG, DYNAMICS_TAG);

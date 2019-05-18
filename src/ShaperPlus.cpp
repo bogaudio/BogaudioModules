@@ -100,4 +100,4 @@ struct ShaperPlusWidget : ModuleWidget {
 	}
 };
 
-Model* modelShaperPlus = createModel<ShaperPlus, ShaperPlusWidget>("Bogaudio-ShaperPlus", "Shaper+",  "envelope and amplifier", ENVELOPE_GENERATOR_TAG, AMPLIFIER_TAG);
+Model* modelShaperPlus = bogaudio::createModel<ShaperPlus, ShaperPlusWidget>("Bogaudio-ShaperPlus", "Shaper+",  "envelope and amplifier", ENVELOPE_GENERATOR_TAG, AMPLIFIER_TAG);

@@ -78,4 +78,4 @@ struct ManualWidget : ModuleWidget {
 	}
 };
 
-Model* modelManual = createModel<Manual, ManualWidget>("Bogaudio-Manual", "Manual",  "manual gates / triggers");
+Model* modelManual = bogaudio::createModel<Manual, ManualWidget>("Bogaudio-Manual", "Manual",  "manual gates / triggers");

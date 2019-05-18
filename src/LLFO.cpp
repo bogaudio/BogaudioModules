@@ -138,4 +138,4 @@ struct LLFOWidget : LFOBaseWidget {
 	}
 };
 
-Model* modelLLFO = createModel<LLFO, LLFOWidget>("Bogaudio-LLFO", "LLFO", "compact LFO", LFO_TAG);
+Model* modelLLFO = bogaudio::createModel<LLFO, LLFOWidget>("Bogaudio-LLFO", "LLFO", "compact LFO", LFO_TAG);
