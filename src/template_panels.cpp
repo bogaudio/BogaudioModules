@@ -12,8 +12,8 @@ struct ThreeHPWidget : ModuleWidget {
   		addChild(panel);
   	}
 
-  	addChild(Widget::create<ScrewSilver>(Vec(0, 0)));
-  	addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 15, 365)));
+  	addChild(createWidget<ScrewSilver>(Vec(0, 0)));
+  	addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 365)));
   }
 };
 
@@ -31,8 +31,8 @@ struct SixHPWidget : ModuleWidget {
   		addChild(panel);
   	}
 
-  	addChild(Widget::create<ScrewSilver>(Vec(0, 0)));
-  	addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 15, 365)));
+  	addChild(createWidget<ScrewSilver>(Vec(0, 0)));
+  	addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 365)));
   }
 };
 
@@ -50,8 +50,8 @@ struct EightHPWidget : ModuleWidget {
   		addChild(panel);
   	}
 
-  	addChild(Widget::create<ScrewSilver>(Vec(0, 0)));
-  	addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 15, 365)));
+  	addChild(createWidget<ScrewSilver>(Vec(0, 0)));
+  	addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 365)));
   }
 };
 
@@ -69,10 +69,10 @@ struct TenHPWidget : ModuleWidget {
 			addChild(panel);
 		}
 
-		addChild(Widget::create<ScrewSilver>(Vec(0, 0)));
-		addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 15, 0)));
-		addChild(Widget::create<ScrewSilver>(Vec(0, 365)));
-		addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 15, 365)));
+		addChild(createWidget<ScrewSilver>(Vec(0, 0)));
+		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 0)));
+		addChild(createWidget<ScrewSilver>(Vec(0, 365)));
+		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 365)));
 	}
 };
 
@@ -90,10 +90,10 @@ struct TwelveHPWidget : ModuleWidget {
   		addChild(panel);
   	}
 
-  	addChild(Widget::create<ScrewSilver>(Vec(0, 0)));
-  	addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 15, 0)));
-  	addChild(Widget::create<ScrewSilver>(Vec(0, 365)));
-  	addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 15, 365)));
+  	addChild(createWidget<ScrewSilver>(Vec(0, 0)));
+  	addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 0)));
+  	addChild(createWidget<ScrewSilver>(Vec(0, 365)));
+  	addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 365)));
   }
 };
 
@@ -110,10 +110,10 @@ struct ThirteenHPWidget : ModuleWidget {
   		addChild(panel);
   	}
 
-  	addChild(Widget::create<ScrewSilver>(Vec(0, 0)));
-  	addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 15, 0)));
-  	addChild(Widget::create<ScrewSilver>(Vec(0, 365)));
-  	addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 15, 365)));
+  	addChild(createWidget<ScrewSilver>(Vec(0, 0)));
+  	addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 0)));
+  	addChild(createWidget<ScrewSilver>(Vec(0, 365)));
+  	addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 365)));
   }
 };
 
@@ -131,10 +131,10 @@ struct FifteenHPWidget : ModuleWidget {
   		addChild(panel);
   	}
 
-  	addChild(Widget::create<ScrewSilver>(Vec(15, 0)));
-  	addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 30, 0)));
-  	addChild(Widget::create<ScrewSilver>(Vec(15, 365)));
-  	addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 30, 365)));
+  	addChild(createWidget<ScrewSilver>(Vec(15, 0)));
+  	addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 0)));
+  	addChild(createWidget<ScrewSilver>(Vec(15, 365)));
+  	addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 365)));
   }
 };
 
@@ -152,10 +152,10 @@ struct EighteenHPWidget : ModuleWidget {
   		addChild(panel);
   	}
 
-  	addChild(Widget::create<ScrewSilver>(Vec(15, 0)));
-  	addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 30, 0)));
-  	addChild(Widget::create<ScrewSilver>(Vec(15, 365)));
-  	addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 30, 365)));
+  	addChild(createWidget<ScrewSilver>(Vec(15, 0)));
+  	addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 0)));
+  	addChild(createWidget<ScrewSilver>(Vec(15, 365)));
+  	addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 365)));
   }
 };
 
@@ -173,10 +173,10 @@ struct TwentyHPWidget : ModuleWidget {
   		addChild(panel);
   	}
 
-  	addChild(Widget::create<ScrewSilver>(Vec(15, 0)));
-  	addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 30, 0)));
-  	addChild(Widget::create<ScrewSilver>(Vec(15, 365)));
-  	addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 30, 365)));
+  	addChild(createWidget<ScrewSilver>(Vec(15, 0)));
+  	addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 0)));
+  	addChild(createWidget<ScrewSilver>(Vec(15, 365)));
+  	addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 365)));
   }
 };
 
@@ -194,10 +194,10 @@ struct TwentyTwoHPWidget : ModuleWidget {
   		addChild(panel);
   	}
 
-  	addChild(Widget::create<ScrewSilver>(Vec(15, 0)));
-  	addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 30, 0)));
-  	addChild(Widget::create<ScrewSilver>(Vec(15, 365)));
-  	addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 30, 365)));
+  	addChild(createWidget<ScrewSilver>(Vec(15, 0)));
+  	addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 0)));
+  	addChild(createWidget<ScrewSilver>(Vec(15, 365)));
+  	addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 365)));
   }
 };
 
@@ -215,10 +215,10 @@ struct TwentyFiveHPWidget : ModuleWidget {
   		addChild(panel);
   	}
 
-  	addChild(Widget::create<ScrewSilver>(Vec(15, 0)));
-  	addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 30, 0)));
-  	addChild(Widget::create<ScrewSilver>(Vec(15, 365)));
-  	addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 30, 365)));
+  	addChild(createWidget<ScrewSilver>(Vec(15, 0)));
+  	addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 0)));
+  	addChild(createWidget<ScrewSilver>(Vec(15, 365)));
+  	addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 365)));
   }
 };
 
@@ -236,10 +236,10 @@ struct ThirtyHPWidget : ModuleWidget {
   		addChild(panel);
   	}
 
-  	addChild(Widget::create<ScrewSilver>(Vec(15, 0)));
-  	addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 30, 0)));
-  	addChild(Widget::create<ScrewSilver>(Vec(15, 365)));
-  	addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 30, 365)));
+  	addChild(createWidget<ScrewSilver>(Vec(15, 0)));
+  	addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 0)));
+  	addChild(createWidget<ScrewSilver>(Vec(15, 365)));
+  	addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 365)));
   }
 };
 

@@ -79,10 +79,10 @@ struct Blank3Widget : ModuleWidget {
 			addChild(display);
 		}
 
-		addChild(Widget::create<ScrewSilver>(Vec(0, 0)));
-		addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 15, 365)));
+		addChild(createWidget<ScrewSilver>(Vec(0, 0)));
+		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 365)));
 
-		addInput(Port::create<BlankPort24>(Vec(10.5, 346), Port::INPUT, module, Blank3::IN_INPUT));
+		addInput(createPort<BlankPort24>(Vec(10.5, 346), PortWidget::INPUT, module, Blank3::IN_INPUT));
 	}
 };
 
