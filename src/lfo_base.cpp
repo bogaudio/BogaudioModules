@@ -8,7 +8,7 @@
 #define PITCH_MODE_VALUE_CLASSIC "classic"
 #define PITCH_MODE_VALUE_COMPLIANT "compliant"
 
-json_t* LFOBase::toJson() {
+json_t* LFOBase::dataToJson() {
 	json_t* root = json_object();
 	switch (_pitchMode) {
 		case UNKNOWN_PITCH_MODE: {
@@ -26,7 +26,7 @@ json_t* LFOBase::toJson() {
 	return root;
 }
 
-void LFOBase::fromJson(json_t* root) {
+void LFOBase::dataFromJson(json_t* root) {
 	json_t* pm = json_object_get(root, PITCH_MODE_KEY);
 	if (pm) {
 		if (0 == strncmp(json_string_value(pm), PITCH_MODE_VALUE_CLASSIC, strlen(PITCH_MODE_VALUE_CLASSIC))) {

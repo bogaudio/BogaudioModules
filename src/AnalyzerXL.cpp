@@ -46,7 +46,7 @@ void AnalyzerXL::setCoreParams() {
 	_core.setParams(averageN, _quality, _window);
 }
 
-json_t* AnalyzerXL::toJson() {
+json_t* AnalyzerXL::dataToJson() {
 	json_t* root = json_object();
 	json_object_set_new(root, RANGE_KEY, json_real(_range));
 	json_object_set_new(root, RANGE_DB_KEY, json_real(_rangeDb));
@@ -82,7 +82,7 @@ json_t* AnalyzerXL::toJson() {
 	return root;
 }
 
-void AnalyzerXL::fromJson(json_t* root) {
+void AnalyzerXL::dataFromJson(json_t* root) {
 	json_t* jr = json_object_get(root, RANGE_KEY);
 	if (jr) {
 		_range = clamp(json_real_value(jr), -0.9f, 0.8f);

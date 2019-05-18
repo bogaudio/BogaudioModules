@@ -23,13 +23,13 @@ void FMOp::onSampleRateChange() {
 	_sustainSL.setParams(sampleRate, 1.0f, 1.0f);
 }
 
-json_t* FMOp::toJson() {
+json_t* FMOp::dataToJson() {
 	json_t* root = json_object();
 	json_object_set_new(root, LINEAR_LEVEL, json_boolean(_linearLevel));
 	return root;
 }
 
-void FMOp::fromJson(json_t* root) {
+void FMOp::dataFromJson(json_t* root) {
 	json_t* ll = json_object_get(root, LINEAR_LEVEL);
 	if (ll) {
 		_linearLevel = json_is_true(ll);

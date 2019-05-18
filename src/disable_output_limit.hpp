@@ -12,8 +12,8 @@ struct DisableOutputLimitModule : Module {
 	{
 	}
 
-	json_t* toJson() override;
-	void fromJson(json_t* root) override;
+	json_t* dataToJson() override;
+	void dataFromJson(json_t* root) override;
 };
 
 struct DisableOutputLimitMenuItem : MenuItem {

@@ -57,8 +57,8 @@ struct Analyzer : AnalyzerBase {
 
 	void onReset() override;
 	void onSampleRateChange() override;
-	json_t* toJson() override;
-	void fromJson(json_t* root) override;
+	json_t* dataToJson() override;
+	void dataFromJson(json_t* root) override;
 	void step() override;
 };
 

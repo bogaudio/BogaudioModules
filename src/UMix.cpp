@@ -4,14 +4,14 @@
 #define SUM "sum"
 #define CVMODE "cv_mode"
 
-json_t* UMix::toJson() {
+json_t* UMix::dataToJson() {
 	json_t* root = json_object();
 	json_object_set_new(root, SUM, json_boolean(_sum));
 	json_object_set_new(root, CVMODE, json_boolean(_cvMode));
 	return root;
 }
 
-void UMix::fromJson(json_t* root) {
+void UMix::dataFromJson(json_t* root) {
 	json_t* s = json_object_get(root, SUM);
 	if (s) {
 		_sum = json_is_true(s);

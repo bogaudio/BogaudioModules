@@ -13,13 +13,13 @@ void EightOne::onSampleRateChange() {
 	_timer.setParams(engineGetSampleRate(), 0.001f);
 }
 
-json_t* EightOne::toJson() {
+json_t* EightOne::dataToJson() {
 	json_t* root = json_object();
 	json_object_set_new(root, SELECT_ON_CLOCK, json_boolean(_selectOnClock));
 	return root;
 }
 
-void EightOne::fromJson(json_t* root) {
+void EightOne::dataFromJson(json_t* root) {
 	json_t* s = json_object_get(root, SELECT_ON_CLOCK);
 	if (s) {
 		_selectOnClock = json_is_true(s);

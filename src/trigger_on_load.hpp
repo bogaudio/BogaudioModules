@@ -16,8 +16,8 @@ struct TriggerOnLoadModule : Module {
 	{
 	}
 
-	json_t* toJson() override;
-	void fromJson(json_t* root) override;
+	json_t* dataToJson() override;
+	void dataFromJson(json_t* root) override;
 
 	virtual bool shouldTriggerOnNextLoad() = 0;
 };

@@ -15,7 +15,7 @@ void Walk2::onSampleRateChange() {
 	_historySteps = (historySeconds * engineGetSampleRate()) / historyPoints;
 }
 
-json_t* Walk2::toJson() {
+json_t* Walk2::dataToJson() {
 	json_t* root = json_object();
 	json_object_set_new(root, ZOOM_OUT_KEY, json_boolean(_zoomOut));
 	json_object_set_new(root, GRID_KEY, json_boolean(_drawGrid));
@@ -23,7 +23,7 @@ json_t* Walk2::toJson() {
 	return root;
 }
 
-void Walk2::fromJson(json_t* root) {
+void Walk2::dataFromJson(json_t* root) {
 	json_t* zo = json_object_get(root, ZOOM_OUT_KEY);
 	if (zo) {
 		_zoomOut = json_is_true(zo);

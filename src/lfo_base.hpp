@@ -25,8 +25,8 @@ struct LFOBase : Module {
 
 	LFOBase(int np, int ni, int no, int nl) : Module(np, ni, no, nl) {}
 
-	json_t* toJson() override;
-	void fromJson(json_t* root) override;
+	json_t* dataToJson() override;
+	void dataFromJson(json_t* root) override;
 	bool isCompliantPitchMode() { return _pitchMode == COMPLIANT_PITCH_MODE; }
 	void setPitchMode(PitchMode mode);
 	void setPitchModeListener(PitchModeListener* listener) { _pitchModeListener = listener; }
