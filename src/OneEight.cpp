@@ -63,7 +63,7 @@ struct SelectOnClockMenuItem : MenuItem {
 		this->text = label;
 	}
 
-	void onAction(EventAction &e) override {
+	void onAction(const event::Action& e) override {
 		_module->_selectOnClock = !_module->_selectOnClock;
 	}
 

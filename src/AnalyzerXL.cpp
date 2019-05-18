@@ -150,7 +150,7 @@ struct RangeMenuItem : MenuItem {
 		this->text = label;
 	}
 
-	void onAction(EventAction &e) override {
+	void onAction(const event::Action& e) override {
 		_module->_range = _range;
 	}
 
@@ -170,7 +170,7 @@ struct RangeDbMenuItem : MenuItem {
 		this->text = label;
 	}
 
-	void onAction(EventAction &e) override {
+	void onAction(const event::Action& e) override {
 		_module->_rangeDb = _rangeDb;
 	}
 
@@ -190,7 +190,7 @@ struct SmoothMenuItem : MenuItem {
 		this->text = label;
 	}
 
-	void onAction(EventAction &e) override {
+	void onAction(const event::Action& e) override {
 		_module->_smooth = _smooth;
 	}
 
@@ -210,7 +210,7 @@ struct QualityMenuItem : MenuItem {
 		this->text = label;
 	}
 
-	void onAction(EventAction &e) override {
+	void onAction(const event::Action& e) override {
 		_module->_quality = _quality;
 	}
 
@@ -230,7 +230,7 @@ struct WindowMenuItem : MenuItem {
 		this->text = label;
 	}
 
-	void onAction(EventAction &e) override {
+	void onAction(const event::Action& e) override {
 		_module->_window = _window;
 	}
 

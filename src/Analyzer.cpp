@@ -92,7 +92,7 @@ struct RangeDbMenuItem : MenuItem {
 		this->text = label;
 	}
 
-	void onAction(EventAction &e) override {
+	void onAction(const event::Action& e) override {
 		_module->_rangeDb = _rangeDb;
 	}
 

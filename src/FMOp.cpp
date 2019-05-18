@@ -197,7 +197,7 @@ struct LinearLevelMenuItem : MenuItem {
 		this->text = label;
 	}
 
-	void onAction(EventAction &e) override {
+	void onAction(const event::Action& e) override {
 		_module->_linearLevel = !_module->_linearLevel;
 	}
 

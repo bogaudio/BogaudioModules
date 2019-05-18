@@ -419,7 +419,7 @@ struct ZoomOutMenuItem : MenuItem {
 		this->text = label;
 	}
 
-	void onAction(EventAction &e) override {
+	void onAction(const event::Action& e) override {
 		_module->_zoomOut = _zoomOut;
 	}
 
@@ -435,7 +435,7 @@ struct GridMenuItem : MenuItem {
 		this->text = label;
 	}
 
-	void onAction(EventAction &e) override {
+	void onAction(const event::Action& e) override {
 		_module->_drawGrid = !_module->_drawGrid;
 	}
 
@@ -455,7 +455,7 @@ struct ColorMenuItem : MenuItem {
 		this->text = label;
 	}
 
-	void onAction(EventAction &e) override {
+	void onAction(const event::Action& e) override {
 		_module->_traceColor = _color;
 	}
 

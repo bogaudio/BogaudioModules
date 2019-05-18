@@ -74,7 +74,7 @@ struct AverageMenuItem : MenuItem {
 		this->text = label;
 	}
 
-	void onAction(EventAction &e) override {
+	void onAction(const event::Action& e) override {
 		_module->_sum = !_module->_sum;
 	}
 
@@ -92,7 +92,7 @@ struct CVModeMenuItem : MenuItem {
 		this->text = label;
 	}
 
-	void onAction(EventAction &e) override {
+	void onAction(const event::Action& e) override {
 		_module->_cvMode = !_module->_cvMode;
 	}
 

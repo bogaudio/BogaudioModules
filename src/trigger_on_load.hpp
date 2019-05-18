@@ -31,7 +31,7 @@ struct TriggerOnLoadMenuItem : MenuItem {
 		this->text = label;
 	}
 
-	void onAction(EventAction &e) override {
+	void onAction(const event::Action& e) override {
 		_module->_triggerOnLoad = !_module->_triggerOnLoad;
 	}
 

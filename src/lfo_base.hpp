@@ -44,7 +44,7 @@ struct PitchModeMenuItem : MenuItem {
 		this->text = label;
 	}
 
-	void onAction(EventAction &e) override {
+	void onAction(const event::Action& e) override {
 		_module->setPitchMode(_compliant ? LFOBase::COMPLIANT_PITCH_MODE : LFOBase::CLASSIC_PITCH_MODE);
 	}
 
