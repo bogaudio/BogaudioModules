@@ -56,11 +56,11 @@ SoloMuteButton::SoloMuteButton() {
 	_svgWidget = new SVGWidget();
 	addChild(_svgWidget);
 
-	auto svg = SVG::load(assetPlugin(pluginInstance, "res/button_18px_0.svg"));
+	auto svg = SVG::load(asset::plugin(pluginInstance, "res/button_18px_0.svg"));
 	_frames.push_back(svg);
-	_frames.push_back(SVG::load(assetPlugin(pluginInstance, "res/button_18px_1_orange.svg")));
-	_frames.push_back(SVG::load(assetPlugin(pluginInstance, "res/button_18px_1_green.svg")));
-	_frames.push_back(SVG::load(assetPlugin(pluginInstance, "res/button_18px_1_green.svg")));
+	_frames.push_back(SVG::load(asset::plugin(pluginInstance, "res/button_18px_1_orange.svg")));
+	_frames.push_back(SVG::load(asset::plugin(pluginInstance, "res/button_18px_1_green.svg")));
+	_frames.push_back(SVG::load(asset::plugin(pluginInstance, "res/button_18px_1_green.svg")));
 
 	_svgWidget->setSVG(svg);
 	box.size = _svgWidget->box.size;
@@ -70,33 +70,35 @@ SoloMuteButton::SoloMuteButton() {
 }
 
 void SoloMuteButton::step() {
-	FramebufferWidget::step();
+	// FIXME.v1 FramebufferWidget::step();
 }
 
 void SoloMuteButton::onButton(const event::Button& e) {
 	// FIXME.v1
-	if (!(if (e.action == GLFW_PRESS /*&& e.button == GLFW_MOUSE_BUTTON_LEFT*/ && (e.mods & RACK_MOD_MASK) == 0)) {
+	if (!(e.action == GLFW_PRESS /*&& e.button == GLFW_MOUSE_BUTTON_LEFT*/ && (e.mods & RACK_MOD_MASK) == 0)) {
 		return;
 	}
 
-	if (value >= 2.0f) {
-		setValue(value - 2.0f);
-	}
-	else if (e.button == 1) { // right click
-		setValue(value + 2.0f);
-	}
-	else {
-		setValue(value > 0.5f ? 0.0f : 1.0f);
-	}
-
-	e.consumed = true;
-	e.target = this;
+	// FIXME.v1
+	// if (value >= 2.0f) {
+	// 	setValue(value - 2.0f);
+	// }
+	// else if (e.button == 1) { // right click
+	// 	setValue(value + 2.0f);
+	// }
+	// else {
+	// 	setValue(value > 0.5f ? 0.0f : 1.0f);
+	// }
+	//
+	// e.consumed = true;
+	// e.target = this;
 }
 
 void SoloMuteButton::onChange(const event::Change& e) {
-	assert(_frames.size() == 4);
-	assert(value >= 0.0f && value <= 3.0f);
-	_svgWidget->setSVG(_frames[(int)value]);
-	dirty = true;
+	// FIXME.v1
+	// assert(_frames.size() == 4);
+	// assert(value >= 0.0f && value <= 3.0f);
+	// _svgWidget->setSVG(_frames[(int)value]);
+	// dirty = true;
 	ParamWidget::onChange(e);
 }

@@ -20,7 +20,7 @@ struct BoolWidget : ModuleWidget {
 		{
 			SVGPanel *panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/Bool.svg")));
+			panel->setBackground(SVG::load(asset::plugin(pluginInstance, "res/Bool.svg")));
 			addChild(panel);
 		}
 

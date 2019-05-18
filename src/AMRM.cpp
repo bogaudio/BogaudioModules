@@ -40,7 +40,7 @@ struct AMRMWidget : ModuleWidget {
 		{
 			SVGPanel *panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/AMRM.svg")));
+			panel->setBackground(SVG::load(asset::plugin(pluginInstance, "res/AMRM.svg")));
 			addChild(panel);
 		}
 

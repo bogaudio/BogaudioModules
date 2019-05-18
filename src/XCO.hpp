@@ -107,15 +107,15 @@ struct XCO : Module {
 	float _sineBuffer[oversample];
 	PositiveZeroCrossing _syncTrigger;
 
-	SlewLimiter _fmDepthSL;
-	SlewLimiter _squarePulseWidthSL;
-	SlewLimiter _sawSaturationSL;
-	SlewLimiter _triangleSampleWidthSL;
-	SlewLimiter _sineFeedbackSL;
-	SlewLimiter _squareMixSL;
-	SlewLimiter _sawMixSL;
-	SlewLimiter _triangleMixSL;
-	SlewLimiter _sineMixSL;
+	bogaudio::dsp::SlewLimiter _fmDepthSL;
+	bogaudio::dsp::SlewLimiter _squarePulseWidthSL;
+	bogaudio::dsp::SlewLimiter _sawSaturationSL;
+	bogaudio::dsp::SlewLimiter _triangleSampleWidthSL;
+	bogaudio::dsp::SlewLimiter _sineFeedbackSL;
+	bogaudio::dsp::SlewLimiter _squareMixSL;
+	bogaudio::dsp::SlewLimiter _sawMixSL;
+	bogaudio::dsp::SlewLimiter _triangleMixSL;
+	bogaudio::dsp::SlewLimiter _sineMixSL;
 
 	XCO() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 		onReset();

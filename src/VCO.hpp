@@ -67,7 +67,7 @@ struct VCO : Module {
 	float _sawBuffer[oversample];
 	float _triangleBuffer[oversample];
 	PositiveZeroCrossing _syncTrigger;
-	SlewLimiter _squarePulseWidthSL;
+	bogaudio::dsp::SlewLimiter _squarePulseWidthSL;
 
 	VCO() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 		onReset();

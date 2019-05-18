@@ -63,8 +63,8 @@ struct Pressor : Module {
 	float _lastEnv = 0.0f;
 	float _compressionDb = 0.0f;
 
-	SlewLimiter _attackSL;
-	SlewLimiter _releaseSL;
+	bogaudio::dsp::SlewLimiter _attackSL;
+	bogaudio::dsp::SlewLimiter _releaseSL;
 	CrossFader _detectorMix;
 	RootMeanSquare _detectorRMS;
 	Compressor _compressor;

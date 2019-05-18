@@ -141,12 +141,12 @@ struct Walk2Display : TransparentWidget {
 	, _drawSize(2 * (_size.x - 2 * _insetAround), 2 * (_size.y - 2 * _insetAround))
 	, _midX(_insetAround + _drawSize.x/2)
 	, _midY(_insetAround + _drawSize.y/2)
-	, _font(Font::load(assetPlugin(pluginInstance, "res/fonts/inconsolata.ttf")))
+	, _font(Font::load(asset::plugin(pluginInstance, "res/fonts/inconsolata.ttf")))
 	{
 	}
 
 	void onButton(const event::Button& e) override {
-		if (!(if (e.action == GLFW_PRESS && e.button == GLFW_MOUSE_BUTTON_LEFT && (e.mods & RACK_MOD_MASK) == 0)) {
+		if (!(e.action == GLFW_PRESS && e.button == GLFW_MOUSE_BUTTON_LEFT && (e.mods & RACK_MOD_MASK) == 0)) {
 			return;
 		}
 
@@ -185,7 +185,7 @@ struct Walk2Display : TransparentWidget {
 		}
 
 		drawBackground(vg);
-		float strokeWidth = std::max(1.0f, 3 - gRackScene->zoomWidget->zoom);
+		float strokeWidth = 2.0f; // FIXME.v1 std::max(1.0f, 3 - gRackScene->zoomWidget->zoom);
 
 		nvgSave(vg);
 		nvgScissor(vg, _insetAround, _insetAround, _drawSize.x / 2, _drawSize.y / 2);
@@ -372,8 +372,8 @@ struct Walk2Display : TransparentWidget {
 		// }
 
 		int n = _module->historyPoints;
-		float beginWidth = std::max(1.0f, 4.0f - gRackScene->zoomWidget->zoom);
-		float endWidth = std::max(0.5f, 2.0f - gRackScene->zoomWidget->zoom);
+		float beginWidth = 2.0f; // FIXME.v1 std::max(1.0f, 4.0f - gRackScene->zoomWidget->zoom);
+		float endWidth = 1.0f; // FIXME.v1 std::max(0.5f, 2.0f - gRackScene->zoomWidget->zoom);
 		if (_module->_zoomOut) {
 			beginWidth *= 2.0f;
 			endWidth *= 2.0f;
@@ -477,7 +477,7 @@ struct Walk2Widget : ModuleWidget {
 		{
 			SVGPanel *panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/Walk2.svg")));
+			panel->setBackground(SVG::load(asset::plugin(pluginInstance, "res/Walk2.svg")));
 			addChild(panel);
 		}
 

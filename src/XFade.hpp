@@ -37,7 +37,7 @@ struct XFade : Module {
 	bool _linear = false;
 	float _mix = 0.0f;
 	float _curveIn = -1.0f;
-	SlewLimiter _mixSL;
+	bogaudio::dsp::SlewLimiter _mixSL;
 	CrossFader _mixer;
 
 	XFade() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {

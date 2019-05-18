@@ -81,19 +81,21 @@ struct LFOBaseWidget : ModuleWidget, PitchModeListener {
 	void setSVG() {
 		if (_module->isCompliantPitchMode()) {
 			_panel->setBackground(_compliantSVG);
-			if (_frequencyKnob) {
-				_frequencyKnob->minValue = -5.0f;
-				_frequencyKnob->maxValue = 8.0f;
-				_frequencyKnob->dirty = true;
-			}
+			// FXIME.v1
+			// if (_frequencyKnob) {
+			// 	_frequencyKnob->minValue = -5.0f;
+			// 	_frequencyKnob->maxValue = 8.0f;
+			// 	_frequencyKnob->dirty = true;
+			// }
 		}
 		else {
 			_panel->setBackground(_classicSVG);
-			if (_frequencyKnob) {
-				_frequencyKnob->minValue = -8.0f;
-				_frequencyKnob->maxValue = 5.0f;
-				_frequencyKnob->dirty = true;
-			}
+			// FXIME.v1
+			// if (_frequencyKnob) {
+			// 	_frequencyKnob->minValue = -8.0f;
+			// 	_frequencyKnob->maxValue = 5.0f;
+			// 	_frequencyKnob->dirty = true;
+			// }
 		}
 		_panel->dirty = true;
 	}

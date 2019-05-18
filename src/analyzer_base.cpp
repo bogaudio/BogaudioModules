@@ -208,7 +208,7 @@ void AnalyzerCore::stepChannel(int channelIndex, Input& input) {
 
 void AnalyzerDisplay::draw(NVGcontext* vg) {
 	drawBackground(vg);
-	float strokeWidth = std::max(1.0f, 3 - gRackScene->zoomWidget->zoom);
+	float strokeWidth = 2.0f; // FIXME.v1 std::max(1.0f, 3 - gRackScene->zoomWidget->zoom);
 	_xAxisLogFactor = (_module->_rangeMaxHz - _module->_rangeMinHz) / _module->_rangeMaxHz;
 	_xAxisLogFactor *= 1.0f - baseXAxisLogFactor;
 	_xAxisLogFactor = 1.0f - _xAxisLogFactor;

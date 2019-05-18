@@ -43,8 +43,8 @@ struct Nsgt : Module {
 	bool _softKnee = true;
 	float _lastEnv = 0.0f;
 
-	SlewLimiter _attackSL;
-	SlewLimiter _releaseSL;
+	bogaudio::dsp::SlewLimiter _attackSL;
+	bogaudio::dsp::SlewLimiter _releaseSL;
 	RootMeanSquare _detector;
 	NoiseGate _noiseGate;
 	Amplifier _amplifier;

@@ -71,7 +71,7 @@ struct Mute8 : Module {
 	static const float slewTimeMS;
 
 	Amplifier _amplifiers[8];
-	SlewLimiter _slewLimiters[8];
+	bogaudio::dsp::SlewLimiter _slewLimiters[8];
 	Trigger _triggers[8];
 
 	Mute8() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {

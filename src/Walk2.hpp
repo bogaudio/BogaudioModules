@@ -57,7 +57,7 @@ struct Walk2 : Module {
 	float _offsetX = 0.0f, _offsetY = 0.0f;
 	float _scaleX = 0.0f, _scaleY = 0.0f;
 	RandomWalk _walkX, _walkY;
-	SlewLimiter _slewX, _slewY;
+	bogaudio::dsp::SlewLimiter _slewX, _slewY;
 	Trigger _jumpTrigger;
 	HistoryBuffer<float> _outsX, _outsY;
 	std::atomic<Vec*> _jumpTo;

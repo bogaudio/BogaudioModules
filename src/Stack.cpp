@@ -48,7 +48,7 @@ struct StackWidget : ModuleWidget {
 		{
 			SVGPanel *panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/Stack.svg")));
+			panel->setBackground(SVG::load(asset::plugin(pluginInstance, "res/Stack.svg")));
 			addChild(panel);
 		}
 

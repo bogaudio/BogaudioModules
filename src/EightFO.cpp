@@ -157,8 +157,8 @@ struct EightFOWidget : LFOBaseWidget {
 	: LFOBaseWidget(
 		module,
 		new SVGPanel(),
-		SVG::load(assetPlugin(pluginInstance, "res/EightFO-classic.svg")),
-		SVG::load(assetPlugin(pluginInstance, "res/EightFO.svg"))
+		SVG::load(asset::plugin(pluginInstance, "res/EightFO-classic.svg")),
+		SVG::load(asset::plugin(pluginInstance, "res/EightFO.svg"))
 	) {
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 		_panel->box.size = box.size;

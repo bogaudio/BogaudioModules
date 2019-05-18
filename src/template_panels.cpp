@@ -8,7 +8,7 @@ struct ThreeHPWidget : ModuleWidget {
   	{
   		SVGPanel *panel = new SVGPanel();
   		panel->box.size = box.size;
-  		panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/ThreeHP.svg")));
+  		panel->setBackground(SVG::load(asset::plugin(pluginInstance, "res/ThreeHP.svg")));
   		addChild(panel);
   	}
 
@@ -17,7 +17,7 @@ struct ThreeHPWidget : ModuleWidget {
   }
 };
 
-Model* modelThreeHP = Model::create<Module, ThreeHPWidget>("Bogaudio", "Bogaudio-ThreeHP", "3HP");
+Model* modelThreeHP = rack::createModel<Module, ThreeHPWidget>("Bogaudio-ThreeHP");
 
 
 struct SixHPWidget : ModuleWidget {
@@ -27,7 +27,7 @@ struct SixHPWidget : ModuleWidget {
   	{
   		SVGPanel *panel = new SVGPanel();
   		panel->box.size = box.size;
-  		panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/SixHP.svg")));
+  		panel->setBackground(SVG::load(asset::plugin(pluginInstance, "res/SixHP.svg")));
   		addChild(panel);
   	}
 
@@ -36,7 +36,7 @@ struct SixHPWidget : ModuleWidget {
   }
 };
 
-Model* modelSixHP = Model::create<Module, SixHPWidget>("Bogaudio", "Bogaudio-SixHP", "6HP");
+Model* modelSixHP = rack::createModel<Module, SixHPWidget>("Bogaudio-SixHP");
 
 
 struct EightHPWidget : ModuleWidget {
@@ -46,7 +46,7 @@ struct EightHPWidget : ModuleWidget {
   	{
   		SVGPanel *panel = new SVGPanel();
   		panel->box.size = box.size;
-  		panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/EightHP.svg")));
+  		panel->setBackground(SVG::load(asset::plugin(pluginInstance, "res/EightHP.svg")));
   		addChild(panel);
   	}
 
@@ -55,7 +55,7 @@ struct EightHPWidget : ModuleWidget {
   }
 };
 
-Model* modelEightHP = Model::create<Module, EightHPWidget>("Bogaudio", "Bogaudio-EightHP", "8HP");
+Model* modelEightHP = rack::createModel<Module, EightHPWidget>("Bogaudio-EightHP");
 
 
 struct TenHPWidget : ModuleWidget {
@@ -65,7 +65,7 @@ struct TenHPWidget : ModuleWidget {
 		{
 			SVGPanel *panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/TenHP.svg")));
+			panel->setBackground(SVG::load(asset::plugin(pluginInstance, "res/TenHP.svg")));
 			addChild(panel);
 		}
 
@@ -76,7 +76,7 @@ struct TenHPWidget : ModuleWidget {
 	}
 };
 
-Model* modelTenHP = Model::create<Module, TenHPWidget>("Bogaudio", "Bogaudio-TenHP", "10HP");
+Model* modelTenHP = rack::createModel<Module, TenHPWidget>("Bogaudio-TenHP");
 
 
 struct TwelveHPWidget : ModuleWidget {
@@ -86,7 +86,7 @@ struct TwelveHPWidget : ModuleWidget {
   	{
   		SVGPanel *panel = new SVGPanel();
   		panel->box.size = box.size;
-  		panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/TwelveHP.svg")));
+  		panel->setBackground(SVG::load(asset::plugin(pluginInstance, "res/TwelveHP.svg")));
   		addChild(panel);
   	}
 
@@ -97,7 +97,7 @@ struct TwelveHPWidget : ModuleWidget {
   }
 };
 
-Model* modelTwelveHP = Model::create<Module, TwelveHPWidget>("Bogaudio", "Bogaudio-TwelveHP", "12HP");
+Model* modelTwelveHP = rack::createModel<Module, TwelveHPWidget>("Bogaudio-TwelveHP");
 
 struct ThirteenHPWidget : ModuleWidget {
   ThirteenHPWidget(Module* module) : ModuleWidget(module) {
@@ -106,7 +106,7 @@ struct ThirteenHPWidget : ModuleWidget {
   	{
   		SVGPanel *panel = new SVGPanel();
   		panel->box.size = box.size;
-  		panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/ThirteenHP.svg")));
+  		panel->setBackground(SVG::load(asset::plugin(pluginInstance, "res/ThirteenHP.svg")));
   		addChild(panel);
   	}
 
@@ -117,7 +117,7 @@ struct ThirteenHPWidget : ModuleWidget {
   }
 };
 
-Model* modelThirteenHP = Model::create<Module, ThirteenHPWidget>("Bogaudio", "Bogaudio-ThirteenHP", "13HP");
+Model* modelThirteenHP = rack::createModel<Module, ThirteenHPWidget>("Bogaudio-ThirteenHP");
 
 
 struct FifteenHPWidget : ModuleWidget {
@@ -127,7 +127,7 @@ struct FifteenHPWidget : ModuleWidget {
   	{
   		SVGPanel *panel = new SVGPanel();
   		panel->box.size = box.size;
-  		panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/FifteenHP.svg")));
+  		panel->setBackground(SVG::load(asset::plugin(pluginInstance, "res/FifteenHP.svg")));
   		addChild(panel);
   	}
 
@@ -138,7 +138,7 @@ struct FifteenHPWidget : ModuleWidget {
   }
 };
 
-Model* modelFifteenHP = Model::create<Module, FifteenHPWidget>("Bogaudio", "Bogaudio-FifteenHP", "15HP");
+Model* modelFifteenHP = rack::createModel<Module, FifteenHPWidget>("Bogaudio-FifteenHP");
 
 
 struct EighteenHPWidget : ModuleWidget {
@@ -148,7 +148,7 @@ struct EighteenHPWidget : ModuleWidget {
   	{
   		SVGPanel *panel = new SVGPanel();
   		panel->box.size = box.size;
-  		panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/EighteenHP.svg")));
+  		panel->setBackground(SVG::load(asset::plugin(pluginInstance, "res/EighteenHP.svg")));
   		addChild(panel);
   	}
 
@@ -159,7 +159,7 @@ struct EighteenHPWidget : ModuleWidget {
   }
 };
 
-Model* modelEighteenHP = Model::create<Module, EighteenHPWidget>("Bogaudio", "Bogaudio-EighteenHP", "18HP");
+Model* modelEighteenHP = rack::createModel<Module, EighteenHPWidget>("Bogaudio-EighteenHP");
 
 
 struct TwentyHPWidget : ModuleWidget {
@@ -169,7 +169,7 @@ struct TwentyHPWidget : ModuleWidget {
   	{
   		SVGPanel *panel = new SVGPanel();
   		panel->box.size = box.size;
-  		panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/TwentyHP.svg")));
+  		panel->setBackground(SVG::load(asset::plugin(pluginInstance, "res/TwentyHP.svg")));
   		addChild(panel);
   	}
 
@@ -180,7 +180,7 @@ struct TwentyHPWidget : ModuleWidget {
   }
 };
 
-Model* modelTwentyHP = Model::create<Module, TwentyHPWidget>("Bogaudio", "Bogaudio-TwentyHP", "20HP");
+Model* modelTwentyHP = rack::createModel<Module, TwentyHPWidget>("Bogaudio-TwentyHP");
 
 
 struct TwentyTwoHPWidget : ModuleWidget {
@@ -190,7 +190,7 @@ struct TwentyTwoHPWidget : ModuleWidget {
   	{
   		SVGPanel *panel = new SVGPanel();
   		panel->box.size = box.size;
-  		panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/TwentyTwoHP.svg")));
+  		panel->setBackground(SVG::load(asset::plugin(pluginInstance, "res/TwentyTwoHP.svg")));
   		addChild(panel);
   	}
 
@@ -201,7 +201,7 @@ struct TwentyTwoHPWidget : ModuleWidget {
   }
 };
 
-Model* modelTwentyTwoHP = Model::create<Module, TwentyTwoHPWidget>("Bogaudio", "Bogaudio-TwentyTwoHP", "22HP");
+Model* modelTwentyTwoHP = rack::createModel<Module, TwentyTwoHPWidget>("Bogaudio-TwentyTwoHP");
 
 
 struct TwentyFiveHPWidget : ModuleWidget {
@@ -211,7 +211,7 @@ struct TwentyFiveHPWidget : ModuleWidget {
   	{
   		SVGPanel *panel = new SVGPanel();
   		panel->box.size = box.size;
-  		panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/TwentyFiveHP.svg")));
+  		panel->setBackground(SVG::load(asset::plugin(pluginInstance, "res/TwentyFiveHP.svg")));
   		addChild(panel);
   	}
 
@@ -222,7 +222,7 @@ struct TwentyFiveHPWidget : ModuleWidget {
   }
 };
 
-Model* modelTwentyFiveHP = Model::create<Module, TwentyFiveHPWidget>("Bogaudio", "Bogaudio-TwentyFiveHP", "25HP");
+Model* modelTwentyFiveHP = rack::createModel<Module, TwentyFiveHPWidget>("Bogaudio-TwentyFiveHP");
 
 
 struct ThirtyHPWidget : ModuleWidget {
@@ -232,7 +232,7 @@ struct ThirtyHPWidget : ModuleWidget {
   	{
   		SVGPanel *panel = new SVGPanel();
   		panel->box.size = box.size;
-  		panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/ThirtyHP.svg")));
+  		panel->setBackground(SVG::load(asset::plugin(pluginInstance, "res/ThirtyHP.svg")));
   		addChild(panel);
   	}
 
@@ -243,4 +243,4 @@ struct ThirtyHPWidget : ModuleWidget {
   }
 };
 
-Model* modelThirtyHP = Model::create<Module, ThirtyHPWidget>("Bogaudio", "Bogaudio-ThirtyHP", "30HP");
+Model* modelThirtyHP = rack::createModel<Module, ThirtyHPWidget>("Bogaudio-ThirtyHP");

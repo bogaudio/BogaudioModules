@@ -48,8 +48,8 @@ struct AD : Module {
 	PulseGenerator _eocPulseGen;
 	bool _on = false;
 	ADSR _envelope;
-	SlewLimiter _attackSL;
-	SlewLimiter _decaySL;
+	bogaudio::dsp::SlewLimiter _attackSL;
+	bogaudio::dsp::SlewLimiter _decaySL;
 
 	AD() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 		onReset();

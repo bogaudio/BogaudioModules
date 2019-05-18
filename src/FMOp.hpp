@@ -73,10 +73,10 @@ struct FMOp : Module {
 	SineTableOscillator _sineTable;
 	CICDecimator _decimator;
 	Trigger _gateTrigger;
-	SlewLimiter _feedbackSL;
-	SlewLimiter _depthSL;
-	SlewLimiter _levelSL;
-	SlewLimiter _sustainSL;
+	bogaudio::dsp::SlewLimiter _feedbackSL;
+	bogaudio::dsp::SlewLimiter _depthSL;
+	bogaudio::dsp::SlewLimiter _levelSL;
+	bogaudio::dsp::SlewLimiter _sustainSL;
 	Amplifier _amplifier;
 	bool _linearLevel = false;
 

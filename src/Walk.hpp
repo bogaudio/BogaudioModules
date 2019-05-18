@@ -41,7 +41,7 @@ struct Walk : Module {
 	float _scale = 0.0f;
 	Trigger _jumpTrigger;
 	RandomWalk _walk;
-	SlewLimiter _slew;
+	bogaudio::dsp::SlewLimiter _slew;
 
 	Walk() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 		onReset();

@@ -15,8 +15,8 @@ struct MixerChannel {
 
 	Amplifier _amplifier;
 	Panner _panner;
-	SlewLimiter _levelSL;
-	SlewLimiter _panSL;
+	bogaudio::dsp::SlewLimiter _levelSL;
+	bogaudio::dsp::SlewLimiter _panSL;
 	RootMeanSquare _rms;
 
 	Param& _levelParam;
@@ -60,12 +60,12 @@ struct MixerChannel {
 
 struct MuteButton : ToggleButton {
 	MuteButton() {
-		addFrame(SVG::load(assetPlugin(pluginInstance, "res/button_18px_0.svg")));
-		addFrame(SVG::load(assetPlugin(pluginInstance, "res/button_18px_1_orange.svg")));
+		addFrame(SVG::load(asset::plugin(pluginInstance, "res/button_18px_0.svg")));
+		addFrame(SVG::load(asset::plugin(pluginInstance, "res/button_18px_1_orange.svg")));
 	}
 };
 
-struct SoloMuteButton : ParamWidget, FramebufferWidget {
+struct SoloMuteButton : ParamWidget /*FIXME.v1 , FramebufferWidget*/ {
 	std::vector<std::shared_ptr<SVG>> _frames;
 	SVGWidget* _svgWidget; // deleted elsewhere.
 	CircularShadow* shadow = NULL;

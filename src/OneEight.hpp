@@ -51,7 +51,7 @@ struct OneEight : Module {
 
 	Trigger _clock;
 	Trigger _reset;
-	Timer _timer;
+	bogaudio::dsp::Timer _timer;
 	int _step;
 	bool _selectOnClock = false;
 	int _select = 0;

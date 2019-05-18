@@ -14,7 +14,7 @@ void VCA::step() {
 	channelStep(inputs[IN2_INPUT], outputs[OUT2_OUTPUT], params[LEVEL2_PARAM], inputs[CV2_INPUT], _amplifier2, _levelSL2, linear);
 }
 
-void VCA::channelStep(Input& input, Output& output, Param& knob, Input& cv, Amplifier& amplifier, SlewLimiter& levelSL, bool linear) {
+void VCA::channelStep(Input& input, Output& output, Param& knob, Input& cv, Amplifier& amplifier, bogaudio::dsp::SlewLimiter& levelSL, bool linear) {
 	if (input.active && output.active) {
 		float level = knob.value;
 		if (cv.active) {
@@ -42,7 +42,7 @@ struct VCAWidget : ModuleWidget {
 		{
 			SVGPanel *panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/VCA.svg")));
+			panel->setBackground(SVG::load(asset::plugin(pluginInstance, "res/VCA.svg")));
 			addChild(panel);
 		}
 

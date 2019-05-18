@@ -36,8 +36,8 @@ struct Pan : Module {
 
 	Panner _panner1;
 	Panner _panner2;
-	SlewLimiter _slew1;
-	SlewLimiter _slew2;
+	bogaudio::dsp::SlewLimiter _slew1;
+	bogaudio::dsp::SlewLimiter _slew2;
 	Saturator _saturatorLeft;
 	Saturator _saturatorRight;
 

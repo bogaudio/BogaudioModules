@@ -84,13 +84,13 @@ struct Additator : Module {
 	int _activePartials = 1;
 	SineBankOscillator _oscillator;
 	PositiveZeroCrossing _syncTrigger;
-	SlewLimiter _widthSL;
-	SlewLimiter _oddSkewSL;
-	SlewLimiter _evenSkewSL;
-	SlewLimiter _amplitudeNormalizationSL;
-	SlewLimiter _decaySL;
-	SlewLimiter _balanceSL;
-	SlewLimiter _filterSL;
+	bogaudio::dsp::SlewLimiter _widthSL;
+	bogaudio::dsp::SlewLimiter _oddSkewSL;
+	bogaudio::dsp::SlewLimiter _evenSkewSL;
+	bogaudio::dsp::SlewLimiter _amplitudeNormalizationSL;
+	bogaudio::dsp::SlewLimiter _decaySL;
+	bogaudio::dsp::SlewLimiter _balanceSL;
+	bogaudio::dsp::SlewLimiter _filterSL;
 
 	Additator()
 	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)

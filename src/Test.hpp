@@ -211,7 +211,7 @@ struct Test : Module {
 	SineTableOscillator _sine;
 	TablePhasor _table;
 #elif SLEW
-	SlewLimiter _slew;
+	bogaudio::dsp::SlewLimiter _slew;
 	ShapedSlewLimiter _slew2;
 #elif RMS
 	RootMeanSquare _rms;

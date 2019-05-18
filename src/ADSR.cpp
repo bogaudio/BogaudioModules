@@ -48,7 +48,7 @@ struct ADSRWidget : ModuleWidget {
 		{
 			SVGPanel *panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/ADSR.svg")));
+			panel->setBackground(SVG::load(asset::plugin(pluginInstance, "res/ADSR.svg")));
 			addChild(panel);
 		}
 

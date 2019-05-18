@@ -489,7 +489,7 @@ struct TestWidget : ModuleWidget {
 		{
 			SVGPanel *panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/Test.svg")));
+			panel->setBackground(SVG::load(asset::plugin(pluginInstance, "res/Test.svg")));
 			addChild(panel);
 		}
 
@@ -524,4 +524,4 @@ struct TestWidget : ModuleWidget {
 	}
 };
 
-Model* modelTest = Model::create<Test, TestWidget>("Bogaudio", "Bogaudio-Test", "Test");
+Model* modelTest = rack::createModel<Test, TestWidget>("Bogaudio-Test");

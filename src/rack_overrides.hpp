@@ -18,27 +18,28 @@ struct Trigger : SchmittTrigger {
 	}
 
 	bool process(float in) {
-		switch (state) {
-			case LOW:
-				if (in >= _highThreshold) {
-					state = HIGH;
-					return true;
-				}
-				break;
-			case HIGH:
-				if (in <= _lowThreshold) {
-					state = LOW;
-				}
-				break;
-			default:
-				if (in >= _highThreshold) {
-					state = HIGH;
-				}
-				else if (in <= _lowThreshold) {
-					state = LOW;
-				}
-				break;
-		}
+		// FIXME.v1
+		// switch (state) {
+		// 	case LOW:
+		// 		if (in >= _highThreshold) {
+		// 			state = HIGH;
+		// 			return true;
+		// 		}
+		// 		break;
+		// 	case HIGH:
+		// 		if (in <= _lowThreshold) {
+		// 			state = LOW;
+		// 		}
+		// 		break;
+		// 	default:
+		// 		if (in >= _highThreshold) {
+		// 			state = HIGH;
+		// 		}
+		// 		else if (in <= _lowThreshold) {
+		// 			state = LOW;
+		// 		}
+		// 		break;
+		// }
 		return false;
 	}
 };

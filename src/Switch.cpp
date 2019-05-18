@@ -38,7 +38,7 @@ struct SwitchWidget : ModuleWidget {
 		{
 			SVGPanel *panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/Switch.svg")));
+			panel->setBackground(SVG::load(asset::plugin(pluginInstance, "res/Switch.svg")));
 			addChild(panel);
 		}
 
@@ -77,4 +77,4 @@ struct SwitchWidget : ModuleWidget {
 	}
 };
 
-Model* modelSwitch = bogaudio::createModel<Switch, SwitchWidget>("Bogaudio-Switch", "Switch",  "signal router", SWITCH_TAG);
+Model* modelSwitch = bogaudio::createModel<bogaudio::Switch, SwitchWidget>("Bogaudio-Switch", "Switch",  "signal router", SWITCH_TAG);

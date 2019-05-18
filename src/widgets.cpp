@@ -6,14 +6,14 @@ using namespace bogaudio;
 using namespace bogaudio::dsp;
 
 Button18::Button18() {
-	addFrame(SVG::load(assetPlugin(pluginInstance, "res/button_18px_0.svg")));
-	addFrame(SVG::load(assetPlugin(pluginInstance, "res/button_18px_1.svg")));
+	addFrame(SVG::load(asset::plugin(pluginInstance, "res/button_18px_0.svg")));
+	addFrame(SVG::load(asset::plugin(pluginInstance, "res/button_18px_1.svg")));
 	box.size = Vec(18, 18);
 }
 
 
 BGKnob::BGKnob(const char* svg, int dim) {
-	setSVG(SVG::load(assetPlugin(pluginInstance, svg)));
+	setSVG(SVG::load(asset::plugin(pluginInstance, svg)));
 	box.size = Vec(dim, dim);
 	shadow->blurRadius = 2.0;
 	// k->shadow->opacity = 0.15;
@@ -53,7 +53,7 @@ Knob68::Knob68() : BGKnob("res/knob_68px.svg", 68) {
 
 
 Port24::Port24() {
-	setSVG(SVG::load(assetPlugin(pluginInstance, "res/port.svg")));
+	setSVG(SVG::load(asset::plugin(pluginInstance, "res/port.svg")));
 	box.size = Vec(24, 24);
 	shadow->blurRadius = 1.0;
 	shadow->box.pos = Vec(0.0, 1.5);
@@ -74,8 +74,8 @@ SliderSwitch::SliderSwitch() {
 
 
 SliderSwitch2State14::SliderSwitch2State14() {
-	addFrame(SVG::load(assetPlugin(pluginInstance, "res/slider_switch_2_14px_0.svg")));
-	addFrame(SVG::load(assetPlugin(pluginInstance, "res/slider_switch_2_14px_1.svg")));
+	addFrame(SVG::load(asset::plugin(pluginInstance, "res/slider_switch_2_14px_0.svg")));
+	addFrame(SVG::load(asset::plugin(pluginInstance, "res/slider_switch_2_14px_1.svg")));
 	shadow->box.size = Vec(14.0, 24.0);
 	shadow->blurRadius = 1.0;
 	shadow->box.pos = Vec(0.0, 7.0);
@@ -89,9 +89,9 @@ StatefulButton::StatefulButton(const char* offSVGPath, const char* onSVGPath) {
 	_svgWidget = new SVGWidget();
 	addChild(_svgWidget);
 
-	auto svg = SVG::load(assetPlugin(pluginInstance, offSVGPath));
+	auto svg = SVG::load(asset::plugin(pluginInstance, offSVGPath));
 	_frames.push_back(svg);
-	_frames.push_back(SVG::load(assetPlugin(pluginInstance, onSVGPath)));
+	_frames.push_back(SVG::load(asset::plugin(pluginInstance, onSVGPath)));
 
 	_svgWidget->setSVG(svg);
 	box.size = _svgWidget->box.size;
@@ -101,24 +101,25 @@ StatefulButton::StatefulButton(const char* offSVGPath, const char* onSVGPath) {
 }
 
 void StatefulButton::step() {
-	FramebufferWidget::step();
+	// FIXME.v1 FramebufferWidget::step();
 }
 
 void StatefulButton::onDragStart(const event::DragStart& e) {
 	_svgWidget->setSVG(_frames[1]);
-	dirty = true;
-
-	if (value >= maxValue) {
-		setValue(minValue);
-	}
-	else {
-		setValue(value + 1.0);
-	}
+	// FIXME.v1
+	// dirty = true;
+	//
+	// if (value >= maxValue) {
+	// 	setValue(minValue);
+	// }
+	// else {
+	// 	setValue(value + 1.0);
+	// }
 }
 
-void StatefulButton::onDragEnd(const event::End& e) {
+void StatefulButton::onDragEnd(const event::DragEnd& e) {
 	_svgWidget->setSVG(_frames[0]);
-	dirty = true;
+	// FIXME.v1 dirty = true;
 }
 
 
@@ -131,8 +132,8 @@ StatefulButton18::StatefulButton18() : StatefulButton("res/button_18px_0.svg", "
 
 
 ToggleButton18::ToggleButton18() {
-	addFrame(SVG::load(assetPlugin(pluginInstance, "res/button_18px_0.svg")));
-	addFrame(SVG::load(assetPlugin(pluginInstance, "res/button_18px_1.svg")));
+	addFrame(SVG::load(asset::plugin(pluginInstance, "res/button_18px_0.svg")));
+	addFrame(SVG::load(asset::plugin(pluginInstance, "res/button_18px_1.svg")));
 }
 
 
@@ -150,49 +151,49 @@ NVGcolor bogaudio::decibelsToColor(float db) {
 }
 
 
-void VUSlider::draw(NVGcontext* vg) {
-	nvgSave(vg);
+void VUSlider::draw(const DrawArgs& args) {
+	nvgSave(args.vg);
 	{
-		nvgBeginPath(vg);
-		nvgRoundedRect(vg, 6, 3, 6, box.size.y - 6, 2);
-		nvgFillColor(vg, nvgRGBA(0x22, 0x22, 0x22, 0xff));
-		nvgFill(vg);
-		nvgStrokeColor(vg, nvgRGBA(0x88, 0x88, 0x88, 0xff));
-		nvgStroke(vg);
+		nvgBeginPath(args.vg);
+		nvgRoundedRect(args.vg, 6, 3, 6, box.size.y - 6, 2);
+		nvgFillColor(args.vg, nvgRGBA(0x22, 0x22, 0x22, 0xff));
+		nvgFill(args.vg);
+		nvgStrokeColor(args.vg, nvgRGBA(0x88, 0x88, 0x88, 0xff));
+		nvgStroke(args.vg);
 	}
-	nvgRestore(vg);
+	nvgRestore(args.vg);
 
-	nvgSave(vg);
+	nvgSave(args.vg);
 	{
-		nvgTranslate(vg, 0, (box.size.y - 13.0f) * (1.0f - value));
-		nvgBeginPath(vg);
-		nvgRoundedRect(vg, 0, 0, 18, 13, 1.5);
-		nvgFillColor(vg, nvgRGBA(0x77, 0x77, 0x77, 0xff));
-		nvgFill(vg);
+		// FIXME.v1 nvgTranslate(args.vg, 0, (box.size.y - 13.0f) * (1.0f - value));
+		nvgBeginPath(args.vg);
+		nvgRoundedRect(args.vg, 0, 0, 18, 13, 1.5);
+		nvgFillColor(args.vg, nvgRGBA(0x77, 0x77, 0x77, 0xff));
+		nvgFill(args.vg);
 
-		nvgBeginPath(vg);
-		nvgRect(vg, 0, 2, 18, 9);
-		nvgFillColor(vg, nvgRGBA(0x44, 0x44, 0x44, 0xff));
-		nvgFill(vg);
+		nvgBeginPath(args.vg);
+		nvgRect(args.vg, 0, 2, 18, 9);
+		nvgFillColor(args.vg, nvgRGBA(0x44, 0x44, 0x44, 0xff));
+		nvgFill(args.vg);
 
-		nvgBeginPath(vg);
-		nvgRect(vg, 0, 6, 18, 1);
-		nvgFillColor(vg, nvgRGBA(0xfa, 0xfa, 0xfa, 0xff));
-		nvgFill(vg);
+		nvgBeginPath(args.vg);
+		nvgRect(args.vg, 0, 6, 18, 1);
+		nvgFillColor(args.vg, nvgRGBA(0xfa, 0xfa, 0xfa, 0xff));
+		nvgFill(args.vg);
 
-		nvgBeginPath(vg);
-		nvgRoundedRect(vg, 2, 4, 14, 5, 1.0);
-		nvgFillColor(vg, nvgRGBA(0xaa, 0xaa, 0xaa, 0xff));
-		nvgFill(vg);
+		nvgBeginPath(args.vg);
+		nvgRoundedRect(args.vg, 2, 4, 14, 5, 1.0);
+		nvgFillColor(args.vg, nvgRGBA(0xaa, 0xaa, 0xaa, 0xff));
+		nvgFill(args.vg);
 
 		float db = _vuLevel ? *_vuLevel : 0.0f;
 		if (db > 0.0f) {
 			db = amplitudeToDecibels(db);
-			nvgBeginPath(vg);
-			nvgRoundedRect(vg, 2, 4, 14, 5, 1.0);
-			nvgFillColor(vg, decibelsToColor(db));
-			nvgFill(vg);
+			nvgBeginPath(args.vg);
+			nvgRoundedRect(args.vg, 2, 4, 14, 5, 1.0);
+			nvgFillColor(args.vg, decibelsToColor(db));
+			nvgFill(args.vg);
 		}
 	}
-	nvgRestore(vg);
+	nvgRestore(args.vg);
 }

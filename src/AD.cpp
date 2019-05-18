@@ -69,7 +69,7 @@ struct ADWidget : ModuleWidget {
 		{
 			SVGPanel *panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/AD.svg")));
+			panel->setBackground(SVG::load(asset::plugin(pluginInstance, "res/AD.svg")));
 			addChild(panel);
 		}
 

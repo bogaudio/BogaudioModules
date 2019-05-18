@@ -89,7 +89,7 @@ struct Mix8 : Module {
 	MixerChannel _channel7;
 	MixerChannel _channel8;
 	Amplifier _amplifier;
-	SlewLimiter _slewLimiter;
+	bogaudio::dsp::SlewLimiter _slewLimiter;
 	Saturator _saturator;
 	RootMeanSquare _rms;
 	float _rmsLevel = 0.0f;
