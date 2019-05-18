@@ -19,7 +19,7 @@ struct Mix1Widget : ModuleWidget {
 		{
 			SVGPanel *panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(asset::plugin(pluginInstance, "res/Mix1.svg")));
+			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Mix1.svg")));
 			addChild(panel);
 		}
 

@@ -6,14 +6,14 @@ using namespace bogaudio;
 using namespace bogaudio::dsp;
 
 Button18::Button18() {
-	addFrame(SVG::load(asset::plugin(pluginInstance, "res/button_18px_0.svg")));
-	addFrame(SVG::load(asset::plugin(pluginInstance, "res/button_18px_1.svg")));
+	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_0.svg")));
+	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_1.svg")));
 	box.size = Vec(18, 18);
 }
 
 
 BGKnob::BGKnob(const char* svg, int dim) {
-	setSVG(SVG::load(asset::plugin(pluginInstance, svg)));
+	setSVG(APP->window->loadSvg(asset::plugin(pluginInstance, svg)));
 	box.size = Vec(dim, dim);
 	shadow->blurRadius = 2.0;
 	// k->shadow->opacity = 0.15;
@@ -53,7 +53,7 @@ Knob68::Knob68() : BGKnob("res/knob_68px.svg", 68) {
 
 
 Port24::Port24() {
-	setSVG(SVG::load(asset::plugin(pluginInstance, "res/port.svg")));
+	setSVG(APP->window->loadSvg(asset::plugin(pluginInstance, "res/port.svg")));
 	box.size = Vec(24, 24);
 	shadow->blurRadius = 1.0;
 	shadow->box.pos = Vec(0.0, 1.5);
@@ -74,8 +74,8 @@ SliderSwitch::SliderSwitch() {
 
 
 SliderSwitch2State14::SliderSwitch2State14() {
-	addFrame(SVG::load(asset::plugin(pluginInstance, "res/slider_switch_2_14px_0.svg")));
-	addFrame(SVG::load(asset::plugin(pluginInstance, "res/slider_switch_2_14px_1.svg")));
+	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/slider_switch_2_14px_0.svg")));
+	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/slider_switch_2_14px_1.svg")));
 	shadow->box.size = Vec(14.0, 24.0);
 	shadow->blurRadius = 1.0;
 	shadow->box.pos = Vec(0.0, 7.0);
@@ -89,9 +89,9 @@ StatefulButton::StatefulButton(const char* offSVGPath, const char* onSVGPath) {
 	_svgWidget = new SVGWidget();
 	addChild(_svgWidget);
 
-	auto svg = SVG::load(asset::plugin(pluginInstance, offSVGPath));
+	auto svg = APP->window->loadSvg(asset::plugin(pluginInstance, offSVGPath));
 	_frames.push_back(svg);
-	_frames.push_back(SVG::load(asset::plugin(pluginInstance, onSVGPath)));
+	_frames.push_back(APP->window->loadSvg(asset::plugin(pluginInstance, onSVGPath)));
 
 	_svgWidget->setSVG(svg);
 	box.size = _svgWidget->box.size;
@@ -132,8 +132,8 @@ StatefulButton18::StatefulButton18() : StatefulButton("res/button_18px_0.svg", "
 
 
 ToggleButton18::ToggleButton18() {
-	addFrame(SVG::load(asset::plugin(pluginInstance, "res/button_18px_0.svg")));
-	addFrame(SVG::load(asset::plugin(pluginInstance, "res/button_18px_1.svg")));
+	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_0.svg")));
+	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_1.svg")));
 }
 
 

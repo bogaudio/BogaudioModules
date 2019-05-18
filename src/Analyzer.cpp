@@ -110,7 +110,7 @@ struct AnalyzerWidget : ModuleWidget {
 		{
 			auto panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(asset::plugin(pluginInstance, "res/Analyzer.svg")));
+			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Analyzer.svg")));
 			addChild(panel);
 		}
 

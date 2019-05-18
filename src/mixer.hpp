@@ -60,8 +60,8 @@ struct MixerChannel {
 
 struct MuteButton : ToggleButton {
 	MuteButton() {
-		addFrame(SVG::load(asset::plugin(pluginInstance, "res/button_18px_0.svg")));
-		addFrame(SVG::load(asset::plugin(pluginInstance, "res/button_18px_1_orange.svg")));
+		addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_0.svg")));
+		addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_1_orange.svg")));
 	}
 };
 

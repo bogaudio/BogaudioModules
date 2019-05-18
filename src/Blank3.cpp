@@ -25,7 +25,7 @@ struct Blank3Display : OpaqueWidget {
 	Blank3Display(Blank3* module, const char* text)
 	: _module(module)
 	, _text(text)
-	, _font(Font::load(asset::plugin(pluginInstance, "res/fonts/audiowide.ttf")))
+	, _font(APP->window->loadFont(asset::plugin(pluginInstance, "res/fonts/audiowide.ttf")))
 	{
 	}
 
@@ -73,7 +73,7 @@ struct Blank3Widget : ModuleWidget {
 		{
 			SVGPanel *panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(asset::plugin(pluginInstance, "res/Blank3.svg")));
+			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Blank3.svg")));
 			addChild(panel);
 		}
 

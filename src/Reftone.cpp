@@ -47,7 +47,7 @@ struct ReftoneDisplay : TransparentWidget {
 	)
 	: _module(module)
 	, _size(size)
-	, _font(Font::load(asset::plugin(pluginInstance, "res/fonts/inconsolata-bold.ttf")))
+	, _font(APP->window->loadFont(asset::plugin(pluginInstance, "res/fonts/inconsolata-bold.ttf")))
 	{
 	}
 
@@ -192,7 +192,7 @@ struct ReftoneWidget : ModuleWidget {
 		{
 			SVGPanel *panel = new SVGPanel();
 			panel->box.size = box.size;
-			panel->setBackground(SVG::load(asset::plugin(pluginInstance, "res/Reftone.svg")));
+			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Reftone.svg")));
 			addChild(panel);
 		}
 
