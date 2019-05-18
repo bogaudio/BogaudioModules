@@ -26,7 +26,7 @@ void EightOne::dataFromJson(json_t* root) {
 	}
 }
 
-void EightOne::step() {
+void EightOne::process(const ProcessArgs& args) {
 	bool reset = _reset.process(inputs[RESET_INPUT].value);
 	if (reset) {
 		_timer.reset();

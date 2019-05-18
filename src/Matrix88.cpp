@@ -1,7 +1,7 @@
 
 #include "Matrix88.hpp"
 
-void Matrix88::step() {
+void Matrix88::process(const ProcessArgs& args) {
 	for (int i = 0; i < 8; ++i) {
 		int paramOffset = MIX11_PARAM + i * 8;
 		float out = 0.0f;

@@ -12,7 +12,7 @@ void XCO::onSampleRateChange() {
 	_modulationStep = modulationSteps;
 }
 
-void XCO::step() {
+void XCO::process(const ProcessArgs& args) {
 	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].value > 0.5f;
 	_fmLinearMode = params[FM_TYPE_PARAM].value < 0.5f;
 

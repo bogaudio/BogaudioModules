@@ -1,7 +1,7 @@
 
 #include "AMRM.hpp"
 
-void AMRM::step() {
+void AMRM::process(const ProcessArgs& args) {
 	if (!(outputs[OUT_OUTPUT].active || outputs[RECTIFY_OUTPUT].active)) {
 		return;
 	}

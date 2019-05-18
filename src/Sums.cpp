@@ -1,7 +1,7 @@
 
 #include "Sums.hpp"
 
-void Sums::step() {
+void Sums::process(const ProcessArgs& args) {
 	float a = inputs[A_INPUT].value;
 	float b = inputs[B_INPUT].value;
 	if (_disableOutputLimit) {

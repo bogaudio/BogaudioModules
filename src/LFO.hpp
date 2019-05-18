@@ -80,7 +80,7 @@ struct LFO : LFOBase {
 
 	void onReset() override;
 	void onSampleRateChange() override;
-	void step() override;
+	void process(const ProcessArgs& args) override;
 	void updateOutput(Phasor& wave, bool useSample, bool invert, Output& output, float& sample, bool& active);
 };
 

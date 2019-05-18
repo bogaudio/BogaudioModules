@@ -1,7 +1,7 @@
 
 #include "Mult.hpp"
 
-void Mult::step() {
+void Mult::process(const ProcessArgs& args) {
 	float out = inputs[INA_INPUT].value;
 	outputs[OUTA1_OUTPUT].value = out;
 	outputs[OUTA2_OUTPUT].value = out;

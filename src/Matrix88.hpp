@@ -112,7 +112,7 @@ struct Matrix88 : Module {
 	Matrix88() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 	}
 
-	void step() override;
+	void process(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

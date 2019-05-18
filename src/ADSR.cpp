@@ -12,7 +12,7 @@ void ADSR::onSampleRateChange() {
 	_modulationStep = modulationSteps;
 }
 
-void ADSR::step() {
+void ADSR::process(const ProcessArgs& args) {
 	lights[LINEAR_LIGHT].value = _linearMode = params[LINEAR_PARAM].value > 0.5f;
 	if (!(outputs[OUT_OUTPUT].active || inputs[GATE_INPUT].active)) {
 		return;

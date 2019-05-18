@@ -8,7 +8,7 @@ void ShaperCore::reset() {
 	_stageProgress = 0.0;
 }
 
-void ShaperCore::step() {
+void ShaperCore::process(const ProcessArgs& args) {
 	bool complete = false;
 	bool slow = _speedParam.value <= 0.0;
 	if (

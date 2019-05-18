@@ -8,7 +8,7 @@
 void Test2::onReset() {
 }
 
-void Test2::step() {
+void Test2::process(const ProcessArgs& args) {
 	if (!outputs[OUT_OUTPUT].active) {
 		return;
 	}

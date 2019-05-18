@@ -43,7 +43,7 @@ float Additator::cvValue(Input& cv, bool dc) {
 	return clamp(cv.value / 5.0f, -1.0f, 1.0f);
 }
 
-void Additator::step() {
+void Additator::process(const ProcessArgs& args) {
 	if (!outputs[AUDIO_OUTPUT].active) {
 		Phase phase = params[PHASE_PARAM].value > 1.5f ? PHASE_COSINE : PHASE_SINE;
 		lights[SINE_LIGHT].value = phase == PHASE_SINE;

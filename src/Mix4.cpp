@@ -11,7 +11,7 @@ void Mix4::onSampleRateChange() {
 	_rms.setSampleRate(sr);
 }
 
-void Mix4::step() {
+void Mix4::process(const ProcessArgs& args) {
 	bool stereo = outputs[L_OUTPUT].active && outputs[R_OUTPUT].active;
 	bool solo =
 		params[MUTE1_PARAM].value > 1.5f ||

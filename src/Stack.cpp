@@ -1,7 +1,7 @@
 
 #include "Stack.hpp"
 
-void Stack::step() {
+void Stack::process(const ProcessArgs& args) {
 	lights[QUANTIZE_LIGHT].value = params[QUANTIZE_PARAM].value > 0.5;
 	if (!(outputs[OUT_OUTPUT].active || outputs[THRU_OUTPUT].active)) {
 		return;

@@ -6,7 +6,7 @@ void Cmp::onReset() {
 	_windowState = LOW;
 }
 
-void Cmp::step() {
+void Cmp::process(const ProcessArgs& args) {
 	if (!(
 		outputs[GREATER_OUTPUT].active ||
 		outputs[LESS_OUTPUT].active ||

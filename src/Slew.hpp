@@ -46,7 +46,7 @@ struct Slew : Module {
 	}
 
 	void onReset() override;
-	void step() override;
+	void process(const ProcessArgs& args) override;
 	float time(Param& param, Input& input);
 	float shape(Param& param);
 };

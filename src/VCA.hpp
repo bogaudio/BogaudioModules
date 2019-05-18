@@ -46,7 +46,7 @@ struct VCA : Module {
 	}
 
 	void onSampleRateChange() override;
-	void step() override;
+	void process(const ProcessArgs& args) override;
 	void channelStep(Input& input, Output& output, Param& knob, Input& cv, Amplifier& amplifier, bogaudio::dsp::SlewLimiter& levelSL, bool linear);
 };
 

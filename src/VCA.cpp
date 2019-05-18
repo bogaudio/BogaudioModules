@@ -7,7 +7,7 @@ void VCA::onSampleRateChange() {
 	_levelSL2.setParams(sampleRate, 5.0f, 1.0f);
 }
 
-void VCA::step() {
+void VCA::process(const ProcessArgs& args) {
 	bool linear = params[LINEAR_PARAM].value > 0.5f;
 	lights[LINEAR_LIGHT].value = linear;
 	channelStep(inputs[IN1_INPUT], outputs[OUT1_OUTPUT], params[LEVEL1_PARAM], inputs[CV1_INPUT], _amplifier1, _levelSL1, linear);

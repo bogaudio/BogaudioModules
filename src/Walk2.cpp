@@ -42,7 +42,7 @@ inline float scaleRate(float rate) {
 	return 0.2f * powf(rate, 5.0f);
 }
 
-void Walk2::step() {
+void Walk2::process(const ProcessArgs& args) {
 	++_modulationStep;
 	if (_modulationStep >= modulationSteps) {
 		_modulationStep = 0;

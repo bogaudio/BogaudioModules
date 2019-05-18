@@ -13,7 +13,7 @@ void Nsgt::onSampleRateChange() {
 	_modulationStep = modulationSteps;
 }
 
-void Nsgt::step() {
+void Nsgt::process(const ProcessArgs& args) {
 	if (!(outputs[LEFT_OUTPUT].active || outputs[RIGHT_OUTPUT].active)) {
 		return;
 	}

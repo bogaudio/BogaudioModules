@@ -6,7 +6,7 @@ void VU::onSampleRateChange() {
 	_rRms.setSampleRate(engineGetSampleRate());
 }
 
-void VU::step() {
+void VU::process(const ProcessArgs& args) {
 	float left = 0.0f;
 	float right = 0.0f;
 	if (inputs[L_INPUT].active) {

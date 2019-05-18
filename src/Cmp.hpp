@@ -53,7 +53,7 @@ struct Cmp : Module {
 	}
 
 	void onReset() override;
-	void step() override;
+	void process(const ProcessArgs& args) override;
 	void stepChannel(
 		bool high,
 		float highValue,

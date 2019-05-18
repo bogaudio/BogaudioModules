@@ -5,7 +5,7 @@ void Lag::onReset() {
 	_modulationStep = modulationSteps;
 }
 
-void Lag::step() {
+void Lag::process(const ProcessArgs& args) {
 	if (!(inputs[IN_INPUT].active && outputs[OUT_OUTPUT].active)) {
 		return;
 	}

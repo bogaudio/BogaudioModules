@@ -6,7 +6,7 @@ void Manual::onReset() {
 	_pulse.process(10.0f);
 }
 
-void Manual::step() {
+void Manual::process(const ProcessArgs& args) {
 	bool high = _trigger.process(params[TRIGGER_PARAM].value) || _trigger.isHigh() || (_firstStep && _triggerOnLoad && _shouldTriggerOnLoad);
 	if (high) {
 		_pulse.trigger(0.001f);

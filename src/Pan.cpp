@@ -7,7 +7,7 @@ void Pan::onSampleRateChange() {
 	_slew2.setParams(engineGetSampleRate(), MixerChannel::panSlewTimeMS, 2.0f);
 }
 
-void Pan::step() {
+void Pan::process(const ProcessArgs& args) {
 	if (!((inputs[IN1_INPUT].active || inputs[IN2_INPUT].active) && (outputs[L_OUTPUT].active || outputs[R_OUTPUT].active))) {
 		return;
 	}

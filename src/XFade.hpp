@@ -45,7 +45,7 @@ struct XFade : Module {
 	}
 
 	void onSampleRateChange() override;
-	void step() override;
+	void process(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

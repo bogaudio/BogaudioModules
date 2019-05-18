@@ -123,7 +123,7 @@ struct EightFO : LFOBase {
 
 	void onReset() override;
 	void onSampleRateChange() override;
-	void step() override;
+	void process(const ProcessArgs& args) override;
 	Phasor::phase_delta_t phaseOffset(Param& p, Input& i, Phasor::phase_delta_t baseOffset);
 	void updateOutput(bool useSample, Output& output, Phasor::phase_delta_t& offset, float& sample, bool& active);
 };

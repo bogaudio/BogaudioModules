@@ -67,7 +67,7 @@ struct StatefulButton : ParamWidget /*, FramebufferWidget*/ {
 	CircularShadow* shadow = NULL;
 
 	StatefulButton(const char* offSVGPath, const char* onSVGPath);
-	void step() override;
+	void process(const ProcessArgs& args) override;
 	void onDragStart(const event::DragStart& e) override;
 	void onDragEnd(const event::DragEnd& e) override;
 };

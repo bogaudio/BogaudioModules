@@ -46,7 +46,7 @@ struct FlipFlop : Module {
 	}
 
 	void onReset() override;
-	void step() override;
+	void process(const ProcessArgs& args) override;
 	void channelStep(
 		Input& triggerInput,
 		Input& resetInput,

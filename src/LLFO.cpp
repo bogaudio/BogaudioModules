@@ -11,7 +11,7 @@ void LLFO::onSampleRateChange() {
 	_modulationStep = modulationSteps;
 }
 
-void LLFO::step() {
+void LLFO::process(const ProcessArgs& args) {
 	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].value > 0.5f;
 
 	Wave wave = (Wave)params[WAVE_PARAM].value;

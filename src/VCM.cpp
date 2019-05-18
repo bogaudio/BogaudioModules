@@ -1,7 +1,7 @@
 
 #include "VCM.hpp"
 
-void VCM::step() {
+void VCM::process(const ProcessArgs& args) {
 	bool linear = params[LINEAR_PARAM].value > 0.5f;
 	lights[LINEAR_LIGHT].value = linear;
 	if (outputs[MIX_OUTPUT].active) {

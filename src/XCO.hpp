@@ -126,7 +126,7 @@ struct XCO : Module {
 
 	void onReset() override;
 	void onSampleRateChange() override;
-	void step() override;
+	void process(const ProcessArgs& args) override;
 	Phasor::phase_delta_t phaseOffset(Param& param, Input& input);
 	float level(Param& param, Input& input);
 	void setSampleRate(float sampleRate);

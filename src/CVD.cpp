@@ -5,7 +5,7 @@ void CVD::onSampleRateChange() {
 	_delay.setSampleRate(engineGetSampleRate());
 }
 
-void CVD::step() {
+void CVD::process(const ProcessArgs& args) {
 	float time = params[TIME_PARAM].value;
 	if (inputs[TIME_INPUT].active) {
 		time *= clamp(inputs[TIME_INPUT].value / 10.0f, 0.0f, 1.0f);

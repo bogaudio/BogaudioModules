@@ -1,7 +1,7 @@
 
 #include "Reftone.hpp"
 
-void Reftone::step() {
+void Reftone::process(const ProcessArgs& args) {
 	// C4 -- the pitch.hpp reference frequency -- in knob values:
 	const int referencePitch = 0;
 	const int referenceOctave = 4;

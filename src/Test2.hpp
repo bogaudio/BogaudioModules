@@ -74,7 +74,7 @@ struct Test2 : Module {
 	}
 
 	void onReset() override;
-	void step() override;
+	void process(const ProcessArgs& args) override;
 	// float oscillatorPitch1A();
 };
 

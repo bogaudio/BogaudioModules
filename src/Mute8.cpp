@@ -19,7 +19,7 @@ void Mute8::onSampleRateChange() {
 	}
 }
 
-void Mute8::step() {
+void Mute8::process(const ProcessArgs& args) {
 	bool solo = false;
 	for (int i = 0; i < 8; ++i) {
 		solo = solo || params[MUTE1_PARAM + i].value > 1.5f;

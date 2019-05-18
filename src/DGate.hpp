@@ -49,7 +49,7 @@ struct DGate : TriggerOnLoadModule {
 	}
 
 	void onReset() override;
-	void step() override;
+	void process(const ProcessArgs& args) override;
 	bool stepStage(Param& knob);
 	bool shouldTriggerOnNextLoad() override {
 		return _stage != STOPPED_STAGE;

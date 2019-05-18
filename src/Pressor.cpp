@@ -10,7 +10,7 @@ void Pressor::onSampleRateChange() {
 	_modulationStep = modulationSteps;
 }
 
-void Pressor::step() {
+void Pressor::process(const ProcessArgs& args) {
 	if (!(
 		outputs[LEFT_OUTPUT].active ||
 		outputs[RIGHT_OUTPUT].active ||

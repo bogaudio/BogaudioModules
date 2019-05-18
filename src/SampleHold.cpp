@@ -8,7 +8,7 @@ void SampleHold::onReset() {
 	_value2 = 0.0f;
 }
 
-void SampleHold::step() {
+void SampleHold::process(const ProcessArgs& args) {
 	{
 		lights[TRACK1_LIGHT].value = params[TRACK1_PARAM].value;
 		bool triggered = _trigger1.process(params[TRIGGER1_PARAM].value + inputs[TRIGGER1_INPUT].value);

@@ -1,7 +1,7 @@
 
 #include "Bool.hpp"
 
-void Bool::step() {
+void Bool::process(const ProcessArgs& args) {
 	bool a = inputs[A_INPUT].value > 1.0f;
 	bool b = inputs[B_INPUT].value > 1.0f;
 	outputs[AND_OUTPUT].value = a && b ? 5.0f : 0.0f;

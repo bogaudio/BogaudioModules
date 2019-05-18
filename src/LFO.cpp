@@ -13,7 +13,7 @@ void LFO::onSampleRateChange() {
 	_sampleStep = _phasor._sampleRate;
 }
 
-void LFO::step() {
+void LFO::process(const ProcessArgs& args) {
 	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].value > 0.5f;
 	if (!(
 		outputs[SINE_OUTPUT].active ||

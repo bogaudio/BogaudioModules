@@ -59,7 +59,7 @@ struct Analyzer : AnalyzerBase {
 	void onSampleRateChange() override;
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
-	void step() override;
+	void process(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

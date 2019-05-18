@@ -15,7 +15,7 @@ void Mix8::onSampleRateChange() {
 _rms.setSampleRate(sr);
 }
 
-void Mix8::step() {
+void Mix8::process(const ProcessArgs& args) {
 	bool stereo = outputs[L_OUTPUT].active && outputs[R_OUTPUT].active;
 	bool solo =
 		params[MUTE1_PARAM].value > 1.5f ||

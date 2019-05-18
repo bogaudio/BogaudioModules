@@ -26,7 +26,7 @@ void OneEight::dataFromJson(json_t* root) {
 	}
 }
 
-void OneEight::step() {
+void OneEight::process(const ProcessArgs& args) {
 	bool reset = _reset.process(inputs[RESET_INPUT].value);
 	if (reset) {
 		_timer.reset();

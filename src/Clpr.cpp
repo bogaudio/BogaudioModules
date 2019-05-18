@@ -5,7 +5,7 @@ void Clpr::onReset() {
 	_modulationStep = modulationSteps;
 }
 
-void Clpr::step() {
+void Clpr::process(const ProcessArgs& args) {
 	if (!(outputs[LEFT_OUTPUT].active || outputs[RIGHT_OUTPUT].active)) {
 		return;
 	}

@@ -28,7 +28,7 @@ struct Offset : DisableOutputLimitModule {
 
 	Offset() : DisableOutputLimitModule(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {}
 
-	void step() override;
+	void process(const ProcessArgs& args) override;
 
 	float knobValue(const Param& knob, const Input& cv) const;
 };

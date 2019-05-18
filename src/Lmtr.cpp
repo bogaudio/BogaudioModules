@@ -13,7 +13,7 @@ void Lmtr::onSampleRateChange() {
 	_modulationStep = modulationSteps;
 }
 
-void Lmtr::step() {
+void Lmtr::process(const ProcessArgs& args) {
 	if (!(outputs[LEFT_OUTPUT].active || outputs[RIGHT_OUTPUT].active)) {
 		return;
 	}

@@ -10,7 +10,7 @@ void FlipFlop::onReset() {
 	_resetTrigger2.reset();
 }
 
-void FlipFlop::step() {
+void FlipFlop::process(const ProcessArgs& args) {
 	channelStep(
 		inputs[IN1_INPUT],
 		inputs[RESET1_INPUT],

@@ -5,7 +5,7 @@ void Mix1::onSampleRateChange() {
 	_channel.setSampleRate(engineGetSampleRate());
 }
 
-void Mix1::step() {
+void Mix1::process(const ProcessArgs& args) {
 	_channel.next(false, false);
 	outputs[OUT_OUTPUT].value = _channel.out;
 }

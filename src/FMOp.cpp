@@ -36,7 +36,7 @@ void FMOp::dataFromJson(json_t* root) {
 	}
 }
 
-void FMOp::step() {
+void FMOp::process(const ProcessArgs& args) {
 	if (!outputs[AUDIO_OUTPUT].active) {
 		lights[ENV_TO_LEVEL_LIGHT].value = params[ENV_TO_LEVEL_PARAM].value > 0.5f;
 		lights[ENV_TO_FEEDBACK_LIGHT].value = params[ENV_TO_FEEDBACK_PARAM].value > 0.5f;

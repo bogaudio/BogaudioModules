@@ -17,7 +17,7 @@ void AD::onSampleRateChange() {
 	_modulationStep = modulationSteps;
 }
 
-void AD::step() {
+void AD::process(const ProcessArgs& args) {
 	lights[LOOP_LIGHT].value = _loopMode = params[LOOP_PARAM].value > 0.5f;
 	lights[LINEAR_LIGHT].value = _linearMode = params[LINEAR_PARAM].value > 0.5f;
 	if (!(outputs[ENV_OUTPUT].active || outputs[EOC_OUTPUT].active || inputs[TRIGGER_INPUT].active)) {

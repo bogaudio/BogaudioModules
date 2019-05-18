@@ -42,7 +42,7 @@ struct Lag : Module {
 	}
 
 	void onReset() override;
-	void step() override;
+	void process(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

@@ -23,7 +23,7 @@ void UMix::dataFromJson(json_t* root) {
 	}
 }
 
-void UMix::step() {
+void UMix::process(const ProcessArgs& args) {
 	if (!outputs[OUT_OUTPUT].active) {
 		return;
 	}

@@ -26,7 +26,7 @@ void Analyzer::dataFromJson(json_t* root) {
 	}
 }
 
-void Analyzer::step() {
+void Analyzer::process(const ProcessArgs& args) {
 	++_modulationStep;
 	if (_modulationStep >= modulationSteps) {
 		_modulationStep = 0;

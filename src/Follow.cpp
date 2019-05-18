@@ -5,7 +5,7 @@ void Follow::onSampleRateChange() {
 	_rms.setSampleRate(engineGetSampleRate());
 }
 
-void Follow::step() {
+void Follow::process(const ProcessArgs& args) {
 	if (inputs[IN_INPUT].active && outputs[OUT_OUTPUT].active) {
 		float response = params[RESPONSE_PARAM].value;
 		if (inputs[RESPONSE_INPUT].active) {

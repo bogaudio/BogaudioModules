@@ -127,7 +127,7 @@ void AnalyzerXL::dataFromJson(json_t* root) {
 	}
 }
 
-void AnalyzerXL::step() {
+void AnalyzerXL::process(const ProcessArgs& args) {
 	++_modulationStep;
 	if (_modulationStep >= modulationSteps) {
 		_modulationStep = 0;

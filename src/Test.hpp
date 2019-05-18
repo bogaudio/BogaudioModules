@@ -329,7 +329,7 @@ struct Test : Module {
 	}
 
 	void onReset() override;
-	void step() override;
+	void process(const ProcessArgs& args) override;
 	float oscillatorPitch(float max = 10000.0);
 	float oscillatorPitch2(float max = 10000.0);
 	float ratio2();

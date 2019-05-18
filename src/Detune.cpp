@@ -1,7 +1,7 @@
 
 #include "Detune.hpp"
 
-void Detune::step() {
+void Detune::process(const ProcessArgs& args) {
 	if (!(outputs[OUT_PLUS_OUTPUT].active || outputs[OUT_MINUS_OUTPUT].active || outputs[THRU_OUTPUT].active)) {
 		return;
 	}

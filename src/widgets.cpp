@@ -100,7 +100,7 @@ StatefulButton::StatefulButton(const char* offSVGPath, const char* onSVGPath) {
 	shadow->box.pos = Vec(0.0, 1.0);
 }
 
-void StatefulButton::step() {
+void StatefulButton::process(const ProcessArgs& args) {
 	// FIXME.v1 FramebufferWidget::step();
 }
 

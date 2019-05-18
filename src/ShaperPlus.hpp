@@ -103,7 +103,7 @@ struct ShaperPlus : TriggerOnLoadModule {
 		_core.reset();
 	}
 
-	void step() override {
+	void process(const ProcessArgs& args) override {
 		_core.step();
 	}
 

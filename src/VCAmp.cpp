@@ -11,7 +11,7 @@ void VCAmp::onSampleRateChange() {
 	_rms.setSampleRate(sampleRate);
 }
 
-void VCAmp::step() {
+void VCAmp::process(const ProcessArgs& args) {
 	if (inputs[IN_INPUT].active) {
 		float level = params[LEVEL_PARAM].value;
 		if (inputs[CV_INPUT].active) {

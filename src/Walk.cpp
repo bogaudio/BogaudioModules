@@ -11,7 +11,7 @@ void Walk::onSampleRateChange() {
 	_slew.setParams(engineGetSampleRate(), 100.0f, 10.0f);
 }
 
-void Walk::step() {
+void Walk::process(const ProcessArgs& args) {
 	++_modulationStep;
 	if (_modulationStep >= modulationSteps) {
 		_modulationStep = 0;

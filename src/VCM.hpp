@@ -53,7 +53,7 @@ struct VCM : DisableOutputLimitModule {
 		onReset();
 	}
 
-	void step() override;
+	void process(const ProcessArgs& args) override;
 	float channelStep(Input& input, Param& knob, Input& cv, Amplifier& amplifier, bool linear);
 };
 

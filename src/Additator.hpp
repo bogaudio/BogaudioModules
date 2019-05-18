@@ -93,7 +93,7 @@ struct Additator : Module {
 	void onReset() override;
 	void onSampleRateChange() override;
 	float cvValue(Input& cv, bool dc = false);
-	void step() override;
+	void process(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

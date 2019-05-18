@@ -8,7 +8,7 @@ void DGate::onReset() {
 	_stageProgress = 0.0;
 }
 
-void DGate::step() {
+void DGate::process(const ProcessArgs& args) {
 	float envelope = 0.0;
 	bool complete = false;
 	if (

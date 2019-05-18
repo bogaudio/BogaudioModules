@@ -5,7 +5,7 @@ void XFade::onSampleRateChange() {
 	_mixSL.setParams(engineGetSampleRate(), 10.0f, 2.0f);
 }
 
-void XFade::step() {
+void XFade::process(const ProcessArgs& args) {
 	bool linear = params[LINEAR_PARAM].value > 0.5f;
 	lights[LINEAR_LIGHT].value = linear;
 	if (!outputs[OUT_OUTPUT].active) {

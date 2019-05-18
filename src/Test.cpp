@@ -4,7 +4,7 @@
 void Test::onReset() {
 }
 
-void Test::step() {
+void Test::process(const ProcessArgs& args) {
 	if (!(outputs[OUT_OUTPUT].active || outputs[OUT2_OUTPUT].active)) {
 		return;
 	}

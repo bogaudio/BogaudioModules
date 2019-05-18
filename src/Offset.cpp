@@ -1,7 +1,7 @@
 
 #include "Offset.hpp"
 
-void Offset::step() {
+void Offset::process(const ProcessArgs& args) {
 	float offset = knobValue(params[OFFSET_PARAM], inputs[OFFSET_INPUT]);
 	float scale = knobValue(params[SCALE_PARAM], inputs[SCALE_INPUT]);
 	scale = scale < 0.0f ? -pow(scale, 2.0f) : pow(scale, 2.0f);

@@ -5,7 +5,7 @@ void Slew::onReset() {
 	_modulationStep = modulationSteps;
 }
 
-void Slew::step() {
+void Slew::process(const ProcessArgs& args) {
 	if (!(inputs[IN_INPUT].active && outputs[OUT_OUTPUT].active)) {
 		return;
 	}

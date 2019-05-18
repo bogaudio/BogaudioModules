@@ -47,7 +47,7 @@ struct Reftone : Module {
 		_sine.setSampleRate(engineGetSampleRate());
 	}
 
-	void step() override;
+	void process(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

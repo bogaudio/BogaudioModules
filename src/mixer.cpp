@@ -69,7 +69,7 @@ SoloMuteButton::SoloMuteButton() {
 	shadow->box.pos = Vec(0.0, 1.0);
 }
 
-void SoloMuteButton::step() {
+void SoloMuteButton::process(const ProcessArgs& args) {
 	// FIXME.v1 FramebufferWidget::step();
 }
 

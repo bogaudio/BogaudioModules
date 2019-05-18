@@ -22,7 +22,7 @@ void EightFO::onSampleRateChange() {
 	_sampleStep = _phasor._sampleRate;
 }
 
-void EightFO::step() {
+void EightFO::process(const ProcessArgs& args) {
 	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].value > 0.5f;
 	if (!(
 		outputs[PHASE7_OUTPUT].active ||

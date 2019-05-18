@@ -1,7 +1,7 @@
 
 #include "Noise.hpp"
 
-void Noise::step() {
+void Noise::process(const ProcessArgs& args) {
 	if (outputs[BLUE_OUTPUT].active) {
 		outputs[BLUE_OUTPUT].value = clamp(_blue.next() * 20.0f, -10.0f, 10.f);
 	}
