@@ -2,11 +2,9 @@
 
 #include "rack.hpp"
 
-using namespace rack;
-
 namespace bogaudio {
 
-struct Trigger : SchmittTrigger {
+struct Trigger : rack::dsp::SchmittTrigger {
 	float _highThreshold;
 	float _lowThreshold;
 

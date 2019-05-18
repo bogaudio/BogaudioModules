@@ -45,7 +45,7 @@ struct AD : Module {
 	bool _loopMode = false;
 	bool _linearMode = false;
 	Trigger _trigger;
-	PulseGenerator _eocPulseGen;
+	rack::dsp::PulseGenerator _eocPulseGen;
 	bool _on = false;
 	ADSR _envelope;
 	bogaudio::dsp::SlewLimiter _attackSL;
