@@ -145,7 +145,11 @@ struct Walk2Display : TransparentWidget {
 	{
 	}
 
-	void onMouseDown(EventMouseDown& e) override {
+	void onButton(const event::Button& e) override {
+		if (!(if (e.action == GLFW_PRESS && e.button == GLFW_MOUSE_BUTTON_LEFT && (e.mods & RACK_MOD_MASK) == 0)) {
+			return;
+		}
+
 		if (
 			e.pos.x > _insetAround &&
 			e.pos.x < _size.x - _insetAround &&

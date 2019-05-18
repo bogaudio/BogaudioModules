@@ -66,8 +66,8 @@ struct StatefulButton : ParamWidget, FramebufferWidget {
 
 	StatefulButton(const char* offSVGPath, const char* onSVGPath);
 	void step() override;
-	void onDragStart(EventDragStart& e) override;
-	void onDragEnd(EventDragEnd& e) override;
+	void onDragStart(const event::DragStart& e) override;
+	void onDragEnd(const event::DragEnd& e) override;
 };
 
 struct StatefulButton9 : StatefulButton {

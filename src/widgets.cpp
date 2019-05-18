@@ -104,7 +104,7 @@ void StatefulButton::step() {
 	FramebufferWidget::step();
 }
 
-void StatefulButton::onDragStart(EventDragStart& e) {
+void StatefulButton::onDragStart(const event::DragStart& e) {
 	_svgWidget->setSVG(_frames[1]);
 	dirty = true;
 
@@ -116,7 +116,7 @@ void StatefulButton::onDragStart(EventDragStart& e) {
 	}
 }
 
-void StatefulButton::onDragEnd(EventDragEnd& e) {
+void StatefulButton::onDragEnd(const event::End& e) {
 	_svgWidget->setSVG(_frames[0]);
 	dirty = true;
 }

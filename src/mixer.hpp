@@ -72,8 +72,8 @@ struct SoloMuteButton : ParamWidget, FramebufferWidget {
 
 	SoloMuteButton();
 	void step() override;
-	void onMouseDown(EventMouseDown& e) override;
-	void onChange(EventChange &e) override;
+	void onButton(const event::Button& e) override;
+	void onChange(const event::Change& e) override;
 };
 
 } // namespace bogaudio

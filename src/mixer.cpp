@@ -73,7 +73,12 @@ void SoloMuteButton::step() {
 	FramebufferWidget::step();
 }
 
-void SoloMuteButton::onMouseDown(EventMouseDown& e) {
+void SoloMuteButton::onButton(const event::Button& e) {
+	// FIXME.v1
+	if (!(if (e.action == GLFW_PRESS /*&& e.button == GLFW_MOUSE_BUTTON_LEFT*/ && (e.mods & RACK_MOD_MASK) == 0)) {
+		return;
+	}
+
 	if (value >= 2.0f) {
 		setValue(value - 2.0f);
 	}
@@ -88,7 +93,7 @@ void SoloMuteButton::onMouseDown(EventMouseDown& e) {
 	e.target = this;
 }
 
-void SoloMuteButton::onChange(EventChange &e) {
+void SoloMuteButton::onChange(const event::Change& e) {
 	assert(_frames.size() == 4);
 	assert(value >= 0.0f && value <= 3.0f);
 	_svgWidget->setSVG(_frames[(int)value]);
