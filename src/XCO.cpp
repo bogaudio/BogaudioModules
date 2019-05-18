@@ -8,7 +8,7 @@ void XCO::onReset() {
 }
 
 void XCO::onSampleRateChange() {
-	setSampleRate(engineGetSampleRate());
+	setSampleRate(APP->engine->getSampleRate());
 	_modulationStep = modulationSteps;
 }
 

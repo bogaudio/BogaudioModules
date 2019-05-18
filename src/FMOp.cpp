@@ -12,7 +12,7 @@ void FMOp::onReset() {
 
 void FMOp::onSampleRateChange() {
 	_steps = modulationSteps;
-	float sampleRate = engineGetSampleRate();
+	float sampleRate = APP->engine->getSampleRate();
 	_envelope.setSampleRate(sampleRate);
 	_phasor.setSampleRate(sampleRate);
 	_decimator.setParams(sampleRate, oversample);

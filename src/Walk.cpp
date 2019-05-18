@@ -8,7 +8,7 @@ void Walk::onReset() {
 
 void Walk::onSampleRateChange() {
 	_modulationStep = modulationSteps;
-	_slew.setParams(engineGetSampleRate(), 100.0f, 10.0f);
+	_slew.setParams(APP->engine->getSampleRate(), 100.0f, 10.0f);
 }
 
 void Walk::process(const ProcessArgs& args) {
@@ -21,7 +21,7 @@ void Walk::process(const ProcessArgs& args) {
 			rate *= clamp(inputs[RATE_INPUT].value / 10.0f, 0.0f, 1.0f);
 		}
 		rate = 0.2f * powf(rate, 5.0f);
-		_walk.setParams(engineGetSampleRate(), rate);
+		_walk.setParams(APP->engine->getSampleRate(), rate);
 
 		_offset = params[OFFSET_PARAM].value;
 		if (inputs[OFFSET_INPUT].active) {

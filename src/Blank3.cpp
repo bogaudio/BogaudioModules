@@ -2,7 +2,7 @@
 #include "Blank3.hpp"
 
 void Blank3::onSampleRateChange() {
-	_rms.setSampleRate(engineGetSampleRate());
+	_rms.setSampleRate(APP->engine->getSampleRate());
 }
 
 void Blank3::process(const ProcessArgs& args) {

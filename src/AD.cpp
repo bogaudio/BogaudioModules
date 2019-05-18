@@ -10,7 +10,7 @@ void AD::onReset() {
 }
 
 void AD::onSampleRateChange() {
-	float sr = engineGetSampleRate();
+	float sr = APP->engine->getSampleRate();
 	_envelope.setSampleRate(sr);
 	_attackSL.setParams(sr / (float)modulationSteps);
 	_decaySL.setParams(sr / (float)modulationSteps);
@@ -54,7 +54,7 @@ void AD::process(const ProcessArgs& args) {
 		_on = false;
 		_eocPulseGen.trigger(0.001f);
 	}
-	outputs[EOC_OUTPUT].value = _eocPulseGen.process(engineGetSampleTime()) ? 5.0f : 0.0f;
+	outputs[EOC_OUTPUT].value = _eocPulseGen.process(APP->engine->getSampleTime()) ? 5.0f : 0.0f;
 
 	lights[ATTACK_LIGHT].value = _envelope.isStage(ADSR::ATTACK_STAGE);
 	lights[DECAY_LIGHT].value = _envelope.isStage(ADSR::DECAY_STAGE);

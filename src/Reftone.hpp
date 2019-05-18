@@ -44,7 +44,7 @@ struct Reftone : Module {
 	}
 
 	void onSampleRateChange() override {
-		_sine.setSampleRate(engineGetSampleRate());
+		_sine.setSampleRate(APP->engine->getSampleRate());
 	}
 
 	void process(const ProcessArgs& args) override;

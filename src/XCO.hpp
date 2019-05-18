@@ -119,7 +119,7 @@ struct XCO : Module {
 
 	XCO() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 		onReset();
-		setSampleRate(engineGetSampleRate());
+		setSampleRate(APP->engine->getSampleRate());
 		_saw.setQuality(12);
 		_square.setQuality(12);
 	}

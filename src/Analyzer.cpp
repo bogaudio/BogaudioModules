@@ -33,7 +33,7 @@ void Analyzer::process(const ProcessArgs& args) {
 
 		float range = params[RANGE2_PARAM].value;
 		_rangeMinHz = 0.0f;
-		_rangeMaxHz = 0.5f * engineGetSampleRate();
+		_rangeMaxHz = 0.5f * APP->engine->getSampleRate();
 		if (range < 0.0f) {
 			range *= 0.9f;
 			_rangeMaxHz *= 1.0f + range;
@@ -46,7 +46,7 @@ void Analyzer::process(const ProcessArgs& args) {
 
 		const float maxTime = 0.5;
 		float smooth = params[SMOOTH_PARAM].value * maxTime;
-		smooth /= _core.size() / (_core._overlap * engineGetSampleRate());
+		smooth /= _core.size() / (_core._overlap * APP->engine->getSampleRate());
 		int averageN = std::max(1, (int)roundf(smooth));
 
 		AnalyzerCore::Quality quality = AnalyzerCore::QUALITY_GOOD;

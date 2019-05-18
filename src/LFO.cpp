@@ -8,7 +8,7 @@ void LFO::onReset() {
 }
 
 void LFO::onSampleRateChange() {
-	_phasor.setSampleRate(engineGetSampleRate());
+	_phasor.setSampleRate(APP->engine->getSampleRate());
 	_modulationStep = modulationSteps;
 	_sampleStep = _phasor._sampleRate;
 }

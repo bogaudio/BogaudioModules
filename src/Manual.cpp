@@ -10,10 +10,10 @@ void Manual::process(const ProcessArgs& args) {
 	bool high = _trigger.process(params[TRIGGER_PARAM].value) || _trigger.isHigh() || (_firstStep && _triggerOnLoad && _shouldTriggerOnLoad);
 	if (high) {
 		_pulse.trigger(0.001f);
-		_pulse.process(engineGetSampleTime());
+		_pulse.process(APP->engine->getSampleTime());
 	}
 	else {
-		high = _pulse.process(engineGetSampleTime());
+		high = _pulse.process(APP->engine->getSampleTime());
 	}
 
 	float out = high ? 5.0f : 0.0f;

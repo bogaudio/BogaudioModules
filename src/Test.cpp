@@ -14,7 +14,7 @@ void Test::process(const ProcessArgs& args) {
 		return;
 	}
 	_lpf.setParams(
-		engineGetSampleRate(),
+		APP->engine->getSampleRate(),
 		10000.0 * clamp(params[PARAM1_PARAM].value, 0.0f, 1.0f),
 		std::max(10.0 * clamp(params[PARAM2_PARAM].value, 0.0f, 1.0f), 0.1)
 	);
@@ -22,7 +22,7 @@ void Test::process(const ProcessArgs& args) {
 
 #elif LPFNOISE
 	_lpf.setParams(
-		engineGetSampleRate(),
+		APP->engine->getSampleRate(),
 		22000.0 * clamp(params[PARAM1_PARAM].value, 0.0f, 1.0f),
 		0.717f
 	);
@@ -31,16 +31,16 @@ void Test::process(const ProcessArgs& args) {
 	outputs[OUT2_OUTPUT].value = noise * 10.0;;
 
 #elif SINE
-	_sine.setSampleRate(engineGetSampleRate());
+	_sine.setSampleRate(APP->engine->getSampleRate());
 	_sine.setFrequency(oscillatorPitch());
 	outputs[OUT_OUTPUT].value = _sine.next() * 5.0f;
 
-	_sine2.setSampleRate(engineGetSampleRate());
+	_sine2.setSampleRate(APP->engine->getSampleRate());
 	_sine2.setFrequency(oscillatorPitch());
 	outputs[OUT2_OUTPUT].value = _sine2.next() * 5.0f;
 
 #elif SQUARE
-	_square.setSampleRate(engineGetSampleRate());
+	_square.setSampleRate(APP->engine->getSampleRate());
 	_square.setFrequency(oscillatorPitch());
 	float pw = params[PARAM2_PARAM].value;
 	if (inputs[CV2_INPUT].active) {
@@ -49,18 +49,18 @@ void Test::process(const ProcessArgs& args) {
 	_square.setPulseWidth(pw);
 	outputs[OUT_OUTPUT].value = _square.next() * 5.0f;
 
-	_square2.setSampleRate(engineGetSampleRate());
+	_square2.setSampleRate(APP->engine->getSampleRate());
 	_square2.setFrequency(oscillatorPitch());
 	_square2.setPulseWidth(pw);
 	_square2.setQuality(params[PARAM3_PARAM].value * 200);
 	outputs[OUT2_OUTPUT].value = _square2.next() * 5.0f;
 
 #elif SAW
-	_saw.setSampleRate(engineGetSampleRate());
+	_saw.setSampleRate(APP->engine->getSampleRate());
 	_saw.setFrequency(oscillatorPitch());
 	outputs[OUT_OUTPUT].value = _saw.next() * 5.0f;
 
-	_saw2.setSampleRate(engineGetSampleRate());
+	_saw2.setSampleRate(APP->engine->getSampleRate());
 	_saw2.setFrequency(oscillatorPitch());
 	_saw2.setQuality(params[PARAM2_PARAM].value * 200);
 	outputs[OUT2_OUTPUT].value = _saw2.next() * 5.0f;
@@ -70,19 +70,19 @@ void Test::process(const ProcessArgs& args) {
 	if (inputs[CV2_INPUT].active) {
 		saturation *= clamp(inputs[CV2_INPUT].value / 10.0f, 0.0f, 1.0f);
 	}
-	_saw.setSampleRate(engineGetSampleRate());
+	_saw.setSampleRate(APP->engine->getSampleRate());
 	_saw.setFrequency(oscillatorPitch());
 	_saw.setSaturation(saturation);
 	outputs[OUT_OUTPUT].value = _saw.next() * 5.0f;
 
-	_saw2.setSampleRate(engineGetSampleRate());
+	_saw2.setSampleRate(APP->engine->getSampleRate());
 	_saw2.setFrequency(oscillatorPitch());
 	_saw2.setSaturation(saturation);
 	_saw2.setQuality(params[PARAM3_PARAM].value * 200);
 	outputs[OUT2_OUTPUT].value = _saw2.next() * 5.0f;
 
 #elif TRIANGLE
-	_triangle.setSampleRate(engineGetSampleRate());
+	_triangle.setSampleRate(APP->engine->getSampleRate());
 	_triangle.setFrequency(oscillatorPitch());
 	outputs[OUT_OUTPUT].value = _triangle.next() * 5.0f;
 
@@ -91,12 +91,12 @@ void Test::process(const ProcessArgs& args) {
 	if (inputs[CV2_INPUT].active) {
 		sample *= clamp(inputs[CV2_INPUT].value / 10.0f, 0.0f, 1.0f);
 	}
-	_triangle.setSampleRate(engineGetSampleRate());
+	_triangle.setSampleRate(APP->engine->getSampleRate());
 	_triangle.setFrequency(oscillatorPitch());
 	_triangle.setSampleWidth(sample);
 	outputs[OUT_OUTPUT].value = _triangle.next() * 5.0f;
 
-	_triangle2.setSampleRate(engineGetSampleRate());
+	_triangle2.setSampleRate(APP->engine->getSampleRate());
 	_triangle2.setFrequency(oscillatorPitch());
 	float maxSampleSteps = (_triangle2._sampleRate / _triangle2._frequency) / 4.0f;
 	_sampleSteps = clamp((int)((4.0f * sample) * maxSampleSteps), 1, (int)maxSampleSteps);
@@ -111,12 +111,12 @@ void Test::process(const ProcessArgs& args) {
 	outputs[OUT2_OUTPUT].value = _sample;
 
 #elif SINEBANK
-	_sineBank.setSampleRate(engineGetSampleRate());
+	_sineBank.setSampleRate(APP->engine->getSampleRate());
 	_sineBank.setFrequency(oscillatorPitch());
 	outputs[OUT_OUTPUT].value = _sineBank.next();
 
 #elif OVERSAMPLING
-	_saw1.setSampleRate(engineGetSampleRate());
+	_saw1.setSampleRate(APP->engine->getSampleRate());
 	_saw1.setFrequency(oscillatorPitch() / (float)OVERSAMPLEN);
 	float buf[OVERSAMPLEN];
 	for (int i = 0; i < OVERSAMPLEN; ++i) {
@@ -124,16 +124,16 @@ void Test::process(const ProcessArgs& args) {
 	}
 	outputs[OUT_OUTPUT].value = _rackDecimator.process(buf) * 5.0f;
 
-	_saw2.setSampleRate(engineGetSampleRate());
+	_saw2.setSampleRate(APP->engine->getSampleRate());
 	_saw2.setFrequency(oscillatorPitch() / (float)OVERSAMPLEN);
 	_lpf.setParams(
-		engineGetSampleRate(),
-		engineGetSampleRate() / 4.0f,
+		APP->engine->getSampleRate(),
+		APP->engine->getSampleRate() / 4.0f,
 		0.03
 	);
 	_lpf2.setParams(
-		engineGetSampleRate(),
-		engineGetSampleRate() / 4.0f,
+		APP->engine->getSampleRate(),
+		APP->engine->getSampleRate() / 4.0f,
 		0.03
 	);
 	float s = 0.0f;
@@ -149,12 +149,12 @@ void Test::process(const ProcessArgs& args) {
 	const int maxOversample = 16;
 	int oversample = params[PARAM3_PARAM].value * maxOversample;
 
-	_saw1.setSampleRate(engineGetSampleRate());
+	_saw1.setSampleRate(APP->engine->getSampleRate());
 	_saw1.setFrequency(oscillatorPitch());
 	_saw1.setQuality(quality);
 	outputs[OUT_OUTPUT].value = _saw1.next() * 5.0f;
 
-	_saw2.setSampleRate(engineGetSampleRate());
+	_saw2.setSampleRate(APP->engine->getSampleRate());
 	_saw2.setQuality(quality);
 	if (oversample < 2) {
 		_saw2.setFrequency(oscillatorPitch());
@@ -163,8 +163,8 @@ void Test::process(const ProcessArgs& args) {
 	else {
 		_saw2.setFrequency(oscillatorPitch() / (float)oversample);
 		_lpf.setParams(
-			oversample * engineGetSampleRate(),
-			0.95f * engineGetSampleRate(),
+			oversample * APP->engine->getSampleRate(),
+			0.95f * APP->engine->getSampleRate(),
 			0.03
 		);
 		float s = 0.0f;
@@ -178,7 +178,7 @@ void Test::process(const ProcessArgs& args) {
 	const int quality = 12;
 	const float oversampleThreshold = 0.06f;
 	const float oversampleMixWidth = 100.0f;
-	float sampleRate = engineGetSampleRate();
+	float sampleRate = APP->engine->getSampleRate();
 	float frequency = oscillatorPitch(15000.0);
 
 	float otf = oversampleThreshold * sampleRate;
@@ -252,7 +252,7 @@ void Test::process(const ProcessArgs& args) {
 
 #elif DECIMATORS
 	const int quality = 12;
-	float sampleRate = engineGetSampleRate();
+	float sampleRate = APP->engine->getSampleRate();
 	float frequency = oscillatorPitch(15000.0);
 	_saw.setSampleRate(sampleRate);
 	_saw.setFrequency(frequency / (float)OVERSAMPLEN);
@@ -270,7 +270,7 @@ void Test::process(const ProcessArgs& args) {
 
 #elif INTERPOLATOR
 	const int quality = 12;
-	float sampleRate = engineGetSampleRate();
+	float sampleRate = APP->engine->getSampleRate();
 	float frequency = oscillatorPitch();
 	_saw.setSampleRate(sampleRate);
 	_saw.setFrequency(frequency);
@@ -294,7 +294,7 @@ void Test::process(const ProcessArgs& args) {
 	float baseHz = oscillatorPitch();
 	float ratio = ratio2();
 	float index = index3();
-	float sampleRate = engineGetSampleRate();
+	float sampleRate = APP->engine->getSampleRate();
 	if (_baseHz != baseHz || _ratio != ratio || _index != index || _sampleRate != sampleRate) {
 		_baseHz = baseHz;
 		_ratio = ratio;
@@ -307,9 +307,9 @@ void Test::process(const ProcessArgs& args) {
 		_modulator.setSampleRate(_sampleRate);
 		_carrier.setSampleRate(_sampleRate);
 
-		_carrier2.setSampleRate(engineGetSampleRate());
+		_carrier2.setSampleRate(APP->engine->getSampleRate());
 		_carrier2.setFrequency(baseHz);
-		_modulator2.setSampleRate(engineGetSampleRate());
+		_modulator2.setSampleRate(APP->engine->getSampleRate());
 		_modulator2.setFrequency(modHz);
 	}
 
@@ -326,15 +326,15 @@ void Test::process(const ProcessArgs& args) {
 	const float amplitude = 5.0f;
 	float baseHz = oscillatorPitch();
 	float modHz = ratio2() * baseHz;
-	_carrier.setSampleRate(engineGetSampleRate());
+	_carrier.setSampleRate(APP->engine->getSampleRate());
 	_carrier.setFrequency(baseHz);
-	_modulator.setSampleRate(engineGetSampleRate());
+	_modulator.setSampleRate(APP->engine->getSampleRate());
 	_modulator.setFrequency(modHz);
 	_carrier.advancePhase();
 	outputs[OUT_OUTPUT].value = _carrier.nextFromPhasor(_carrier, Phasor::radiansToPhase(index3() * _modulator.next())) * amplitude;
 
 #elif FEEDBACK_PM
-	_carrier.setSampleRate(engineGetSampleRate());
+	_carrier.setSampleRate(APP->engine->getSampleRate());
 	_carrier.setFrequency(oscillatorPitch());
 	float feedback = params[PARAM2_PARAM].value;
 	if (inputs[CV2_INPUT].active) {
@@ -344,7 +344,7 @@ void Test::process(const ProcessArgs& args) {
 	outputs[OUT_OUTPUT].value = _feedbackSample = _carrier.nextFromPhasor(_carrier, Phasor::radiansToPhase(feedback * _feedbackSample)) * 5.0f;
 
 #elif EG
-	_envelope.setSampleRate(engineGetSampleRate());
+	_envelope.setSampleRate(APP->engine->getSampleRate());
 	_envelope.setAttack(params[PARAM1_PARAM].value);
 	_envelope.setDecay(params[PARAM2_PARAM].value);
 	_envelope.setSustain(params[PARAM3_PARAM].value);
@@ -353,11 +353,11 @@ void Test::process(const ProcessArgs& args) {
 	outputs[OUT_OUTPUT].value = _envelope.next() * 10.0f;
 
 #elif TABLES
-	_sine.setSampleRate(engineGetSampleRate());
+	_sine.setSampleRate(APP->engine->getSampleRate());
 	_sine.setFrequency(oscillatorPitch());
 	outputs[OUT_OUTPUT].value = _sine.next() * 5.0f;
 
-	_table.setSampleRate(engineGetSampleRate());
+	_table.setSampleRate(APP->engine->getSampleRate());
 	_table.setFrequency(oscillatorPitch());
 	outputs[OUT2_OUTPUT].value = _table.next() * 5.0f;
 
@@ -368,7 +368,7 @@ void Test::process(const ProcessArgs& args) {
 	}
 	ms = powf(ms, 2.0f);
 	ms *= 10000.0f;
-	_slew.setParams(engineGetSampleRate(), ms);
+	_slew.setParams(APP->engine->getSampleRate(), ms);
 	outputs[OUT_OUTPUT].value = _slew.next(inputs[IN_INPUT].value);
 
 	float shape = params[PARAM2_PARAM].value;
@@ -385,7 +385,7 @@ void Test::process(const ProcessArgs& args) {
 		shape *= (_slew2.maxShape - 1.0f);
 		shape += 1.0f;
 	}
-	_slew2.setParams(engineGetSampleRate(), ms, shape);
+	_slew2.setParams(APP->engine->getSampleRate(), ms, shape);
 	outputs[OUT2_OUTPUT].value = _slew2.next(inputs[IN_INPUT].value);
 
 #elif RMS
@@ -393,7 +393,7 @@ void Test::process(const ProcessArgs& args) {
 	if (inputs[CV2_INPUT].active) {
 		sensitivity *= clamp(inputs[CV2_INPUT].value, 0.0f, 10.0f) / 10.0f;
 	}
-	_rms.setSampleRate(engineGetSampleRate());
+	_rms.setSampleRate(APP->engine->getSampleRate());
 	_rms.setSensitivity(sensitivity);
 	outputs[OUT_OUTPUT].value = _rms.next(inputs[IN_INPUT].value);
 	_pef.setSensitivity(sensitivity);
@@ -415,8 +415,8 @@ void Test::process(const ProcessArgs& args) {
 	float change = clamp(1.0f - params[PARAM1_PARAM].value, 0.01f, 1.0f);
 	float smooth = clamp(params[PARAM2_PARAM].value, 0.01f, 1.0f);
 	smooth *= smooth;
-	_filter1.setParams(engineGetSampleRate(), smooth * engineGetSampleRate() * 0.49f);
-	_filter2.setParams(engineGetSampleRate(), smooth * engineGetSampleRate() * 0.49f);
+	_filter1.setParams(APP->engine->getSampleRate(), smooth * APP->engine->getSampleRate() * 0.49f);
+	_filter2.setParams(APP->engine->getSampleRate(), smooth * APP->engine->getSampleRate() * 0.49f);
 
 	_last1 = _last1 + _noise1.next() / (change * maxDiv);
 	outputs[OUT_OUTPUT].value = _filter1.next(_last1);
@@ -441,8 +441,8 @@ void Test::process(const ProcessArgs& args) {
 	float change = params[PARAM1_PARAM].value;
 	change *= change;
 	change *= change;
-	_walk1.setParams(engineGetSampleRate(), change);
-	_walk2.setParams(engineGetSampleRate(), change);
+	_walk1.setParams(APP->engine->getSampleRate(), change);
+	_walk2.setParams(APP->engine->getSampleRate(), change);
 	outputs[OUT_OUTPUT].value = _walk1.next();
 	outputs[OUT2_OUTPUT].value = _walk2.next();
 #endif

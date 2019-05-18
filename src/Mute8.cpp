@@ -13,7 +13,7 @@ void Mute8::onReset() {
 }
 
 void Mute8::onSampleRateChange() {
-	float sampleRate = engineGetSampleRate();
+	float sampleRate = APP->engine->getSampleRate();
 	for (int i = 0; i < 8; ++i) {
 		_slewLimiters[i].setParams(sampleRate, slewTimeMS, maxDecibels - minDecibels);
 	}

@@ -12,7 +12,7 @@ void Walk2::onReset() {
 
 void Walk2::onSampleRateChange() {
 	_modulationStep = modulationSteps;
-	_historySteps = (historySeconds * engineGetSampleRate()) / historyPoints;
+	_historySteps = (historySeconds * APP->engine->getSampleRate()) / historyPoints;
 }
 
 json_t* Walk2::dataToJson() {
@@ -46,7 +46,7 @@ void Walk2::process(const ProcessArgs& args) {
 	++_modulationStep;
 	if (_modulationStep >= modulationSteps) {
 		_modulationStep = 0;
-		float sampleRate = engineGetSampleRate();
+		float sampleRate = APP->engine->getSampleRate();
 
 		float rateX = params[RATE_X_PARAM].value;
 		if (inputs[RATE_X_INPUT].active) {

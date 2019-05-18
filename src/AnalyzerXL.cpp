@@ -33,7 +33,7 @@ void AnalyzerXL::onSampleRateChange() {
 
 void AnalyzerXL::setCoreParams() {
 	_rangeMinHz = 0.0f;
-	_rangeMaxHz = 0.5f * engineGetSampleRate();
+	_rangeMaxHz = 0.5f * APP->engine->getSampleRate();
 	if (_range < 0.0f) {
 		_rangeMaxHz *= 1.0f + _range;
 	}
@@ -41,7 +41,7 @@ void AnalyzerXL::setCoreParams() {
 		_rangeMinHz = _range * _rangeMaxHz;
 	}
 
-	float smooth = _smooth / (_core.size() / (_core._overlap * engineGetSampleRate()));
+	float smooth = _smooth / (_core.size() / (_core._overlap * APP->engine->getSampleRate()));
 	int averageN = std::max(1, (int)roundf(smooth));
 	_core.setParams(averageN, _quality, _window);
 }

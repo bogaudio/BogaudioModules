@@ -8,7 +8,7 @@ void VCO::onReset() {
 }
 
 void VCO::onSampleRateChange() {
-	setSampleRate(engineGetSampleRate());
+	setSampleRate(APP->engine->getSampleRate());
 	_modulationStep = modulationSteps;
 }
 

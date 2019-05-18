@@ -35,15 +35,15 @@ void Test2::process(const ProcessArgs& args) {
 		_filter.setParams(
 			params[PARAM2A_PARAM].value <= 0.5f ? MultipoleFilter::LP_TYPE : MultipoleFilter::HP_TYPE,
 			2 * clamp((int)(params[PARAM1B_PARAM].value * (MultipoleFilter::maxPoles / 2)), 1, MultipoleFilter::maxPoles / 2),
-			engineGetSampleRate(),
-			params[PARAM1A_PARAM].value * engineGetSampleRate() / 2.0f,
+			APP->engine->getSampleRate(),
+			params[PARAM1A_PARAM].value * APP->engine->getSampleRate() / 2.0f,
 			params[PARAM2B_PARAM].value * MultipoleFilter::maxRipple
 		);
 		// _filter.setParams(
 		// 	MultipoleFilter::HP_TYPE,
 		// 	4,
-		// 	engineGetSampleRate(),
-		// 	0.1f * engineGetSampleRate(),
+		// 	APP->engine->getSampleRate(),
+		// 	0.1f * APP->engine->getSampleRate(),
 		// 	0.1f
 		// );
 	}
@@ -55,7 +55,7 @@ void Test2::process(const ProcessArgs& args) {
 
 #elif ADSR_ENVELOPE
   if (outputs[OUT_OUTPUT].active) {
-		_adsr.setSampleRate(engineGetSampleRate());
+		_adsr.setSampleRate(APP->engine->getSampleRate());
 		if (inputs[IN_INPUT].active) {
 			_trigger.process(inputs[IN_INPUT].value);
 		}

@@ -2,7 +2,7 @@
 #include "Mix1.hpp"
 
 void Mix1::onSampleRateChange() {
-	_channel.setSampleRate(engineGetSampleRate());
+	_channel.setSampleRate(APP->engine->getSampleRate());
 }
 
 void Mix1::process(const ProcessArgs& args) {

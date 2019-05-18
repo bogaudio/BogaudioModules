@@ -2,7 +2,7 @@
 #include "XFade.hpp"
 
 void XFade::onSampleRateChange() {
-	_mixSL.setParams(engineGetSampleRate(), 10.0f, 2.0f);
+	_mixSL.setParams(APP->engine->getSampleRate(), 10.0f, 2.0f);
 }
 
 void XFade::process(const ProcessArgs& args) {

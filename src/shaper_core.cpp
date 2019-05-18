@@ -93,7 +93,7 @@ void ShaperCore::process(const ProcessArgs& args) {
 	if (complete) {
 		_triggerOuptutPulseGen.trigger(0.001);
 	}
-	_triggerOutput.value = _triggerOuptutPulseGen.process(engineGetSampleTime()) ? 5.0 : 0.0;
+	_triggerOutput.value = _triggerOuptutPulseGen.process(APP->engine->getSampleTime()) ? 5.0 : 0.0;
 
 	if (_attackOutput) {
 		_attackOutput->value = _stage == ATTACK_STAGE ? 5.0 : 0.0;
@@ -121,7 +121,7 @@ bool ShaperCore::stepStage(const Param& knob, const Input* cv, bool slow) {
 	t = pow(t, 2);
 	t = fmaxf(t, 0.001);
 	t *= slow ? 100.0 : 10.0;
-	_stageProgress += engineGetSampleTime() / t;
+	_stageProgress += APP->engine->getSampleTime() / t;
 	return _stageProgress > 1.0;
 }
 

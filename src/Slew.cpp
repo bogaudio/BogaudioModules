@@ -19,8 +19,8 @@ void Slew::process(const ProcessArgs& args) {
 		float fallTime = time(params[FALL_PARAM], inputs[FALL_INPUT]);
 		float fallShape = shape(params[FALL_SHAPE_PARAM]);
 
-		_rise.setParams(engineGetSampleRate(), riseTime, riseShape);
-		_fall.setParams(engineGetSampleRate(), fallTime, fallShape);
+		_rise.setParams(APP->engine->getSampleRate(), riseTime, riseShape);
+		_fall.setParams(APP->engine->getSampleRate(), fallTime, fallShape);
 	}
 
 	float sample = inputs[IN_INPUT].value;

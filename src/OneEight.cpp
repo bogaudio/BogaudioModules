@@ -10,7 +10,7 @@ void OneEight::onReset() {
 }
 
 void OneEight::onSampleRateChange() {
-	_timer.setParams(engineGetSampleRate(), 0.001f);
+	_timer.setParams(APP->engine->getSampleRate(), 0.001f);
 }
 
 json_t* OneEight::dataToJson() {

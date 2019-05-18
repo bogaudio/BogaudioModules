@@ -43,7 +43,7 @@ void Lag::process(const ProcessArgs& args) {
 			shape += 1.0f;
 		}
 
-		_slew.setParams(engineGetSampleRate(), time, shape);
+		_slew.setParams(APP->engine->getSampleRate(), time, shape);
 	}
 
 	outputs[OUT_OUTPUT].value = _slew.next(inputs[IN_INPUT].value);

@@ -2,7 +2,7 @@
 #include "Mix8.hpp"
 
 void Mix8::onSampleRateChange() {
-	float sr = engineGetSampleRate();
+	float sr = APP->engine->getSampleRate();
 	_channel1.setSampleRate(sr);
 	_channel2.setSampleRate(sr);
 	_channel3.setSampleRate(sr);

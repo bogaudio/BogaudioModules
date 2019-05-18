@@ -19,7 +19,7 @@ void Additator::onReset() {
 }
 
 void Additator::onSampleRateChange() {
-	float sampleRate = engineGetSampleRate();
+	float sampleRate = APP->engine->getSampleRate();
 	_oscillator.setSampleRate(sampleRate);
 	_maxFrequency = 0.475f * sampleRate;
 	_steps = modulationSteps;

@@ -8,7 +8,7 @@ void ADSR::onReset() {
 }
 
 void ADSR::onSampleRateChange() {
-	_envelope.setSampleRate(engineGetSampleRate());
+	_envelope.setSampleRate(APP->engine->getSampleRate());
 	_modulationStep = modulationSteps;
 }
 

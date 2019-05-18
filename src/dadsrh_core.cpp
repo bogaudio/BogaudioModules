@@ -207,7 +207,7 @@ void DADSRHCore::process(const ProcessArgs& args) {
 	if (complete) {
 		_triggerOuptutPulseGen.trigger(0.001);
 	}
-	_triggerOutput.value = _triggerOuptutPulseGen.process(engineGetSampleTime()) ? 5.0 : 0.0;
+	_triggerOutput.value = _triggerOuptutPulseGen.process(APP->engine->getSampleTime()) ? 5.0 : 0.0;
 
 	if (_delayOutput) {
 		_delayOutput->value = _stage == DELAY_STAGE ? 5.0 : 0.0;
@@ -245,7 +245,7 @@ void DADSRHCore::process(const ProcessArgs& args) {
 }
 
 float DADSRHCore::stepAmount(const Param& knob, const Input* cv, bool slow, bool allowZero) {
-	return engineGetSampleTime() / knobTime(knob, cv, slow, allowZero);
+	return APP->engine->getSampleTime() / knobTime(knob, cv, slow, allowZero);
 }
 
 float DADSRHCore::knobTime(const Param& knob, const Input* cv, bool slow, bool allowZero) {

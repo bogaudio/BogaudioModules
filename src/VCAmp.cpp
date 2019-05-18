@@ -6,7 +6,7 @@ const float maxDecibels = 12.0f;
 const float minDecibels = Amplifier::minDecibels;
 
 void VCAmp::onSampleRateChange() {
-	float sampleRate = engineGetSampleRate();
+	float sampleRate = APP->engine->getSampleRate();
 	_levelSL.setParams(sampleRate, MixerChannel::levelSlewTimeMS, maxDecibels - minDecibels);
 	_rms.setSampleRate(sampleRate);
 }

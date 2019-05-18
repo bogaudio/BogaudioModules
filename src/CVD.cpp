@@ -2,7 +2,7 @@
 #include "CVD.hpp"
 
 void CVD::onSampleRateChange() {
-	_delay.setSampleRate(engineGetSampleRate());
+	_delay.setSampleRate(APP->engine->getSampleRate());
 }
 
 void CVD::process(const ProcessArgs& args) {

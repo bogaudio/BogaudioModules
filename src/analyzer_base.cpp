@@ -138,7 +138,7 @@ void AnalyzerCore::resetChannels() {
 }
 
 SpectrumAnalyzer::Size AnalyzerCore::size() {
-	if (engineGetSampleRate() < 96000.0f) {
+	if (APP->engine->getSampleRate() < 96000.0f) {
 		switch (_quality) {
 			case QUALITY_ULTRA: {
 				return SpectrumAnalyzer::SIZE_8192;
@@ -191,7 +191,7 @@ void AnalyzerCore::stepChannel(int channelIndex, Input& input) {
 				size(),
 				_overlap,
 				window(),
-				engineGetSampleRate(),
+				APP->engine->getSampleRate(),
 				_averageN,
 				_binAverageN
 			);
@@ -254,7 +254,7 @@ void AnalyzerDisplay::drawHeader(const DrawArgs& args) {
 	char s[sLen];
 	int x = _insetAround + 2;
 
-	int n = snprintf(s, sLen, "Peaks (+/-%0.1f):", (engineGetSampleRate() / 2.0f) / (float)(_module->_core.size() / _module->_core._binAverageN));
+	int n = snprintf(s, sLen, "Peaks (+/-%0.1f):", (APP->engine->getSampleRate() / 2.0f) / (float)(_module->_core.size() / _module->_core._binAverageN));
 	drawText(args.vg, s, x, _insetTop + textY);
 	x += n * charPx - 0;
 
@@ -439,9 +439,9 @@ void AnalyzerDisplay::drawXAxisLine(const DrawArgs& args, float hz) {
 }
 
 void AnalyzerDisplay::drawGraph(const DrawArgs& args, const float* bins, int binsN, NVGcolor color, float strokeWidth) {
-	float range = (_module->_rangeMaxHz - _module->_rangeMinHz) / (0.5f * engineGetSampleRate());
+	float range = (_module->_rangeMaxHz - _module->_rangeMinHz) / (0.5f * APP->engine->getSampleRate());
 	int pointsN = roundf(range * (_module->_core.size() / 2));
-	range = _module->_rangeMinHz / (0.5f * engineGetSampleRate());
+	range = _module->_rangeMinHz / (0.5f * APP->engine->getSampleRate());
 	int pointsOffset = roundf(range * (_module->_core.size() / 2));
 	nvgSave(args.vg);
 	nvgScissor(args.vg, _insetLeft, _insetTop, _graphSize.x, _graphSize.y);

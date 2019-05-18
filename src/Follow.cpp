@@ -2,7 +2,7 @@
 #include "Follow.hpp"
 
 void Follow::onSampleRateChange() {
-	_rms.setSampleRate(engineGetSampleRate());
+	_rms.setSampleRate(APP->engine->getSampleRate());
 }
 
 void Follow::process(const ProcessArgs& args) {

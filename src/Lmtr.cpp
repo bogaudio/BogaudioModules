@@ -6,7 +6,7 @@ void Lmtr::onReset() {
 }
 
 void Lmtr::onSampleRateChange() {
-	float sampleRate = engineGetSampleRate();
+	float sampleRate = APP->engine->getSampleRate();
 	_detector.setSampleRate(sampleRate);
 	_attackSL.setParams(sampleRate, 150.0f);
 	_releaseSL.setParams(sampleRate, 600.0f);

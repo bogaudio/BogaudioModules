@@ -6,7 +6,7 @@ void Pressor::onReset() {
 }
 
 void Pressor::onSampleRateChange() {
-	_detectorRMS.setSampleRate(engineGetSampleRate());
+	_detectorRMS.setSampleRate(APP->engine->getSampleRate());
 	_modulationStep = modulationSteps;
 }
 
@@ -47,7 +47,7 @@ void Pressor::process(const ProcessArgs& args) {
 			_ratio = 1.0f / _ratio;
 		}
 
-		float sampleRate = engineGetSampleRate();
+		float sampleRate = APP->engine->getSampleRate();
 		float attack = params[ATTACK_PARAM].value;
 		if (inputs[ATTACK_INPUT].active) {
 			attack *= clamp(inputs[ATTACK_INPUT].value / 10.0f, 0.0f, 1.0f);

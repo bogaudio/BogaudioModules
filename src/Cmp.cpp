@@ -150,7 +150,7 @@ int Cmp::lagInSamples() {
 	if (inputs[LAG_INPUT].active) {
 		lag *= clamp(inputs[LAG_INPUT].value / 10.0f, 0.0f, 1.0f);
 	}
-	return lag * lag * engineGetSampleRate();
+	return lag * lag * APP->engine->getSampleRate();
 }
 
 struct CmpWidget : ModuleWidget {

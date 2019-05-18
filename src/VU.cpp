@@ -2,8 +2,8 @@
 #include "VU.hpp"
 
 void VU::onSampleRateChange() {
-	_lRms.setSampleRate(engineGetSampleRate());
-	_rRms.setSampleRate(engineGetSampleRate());
+	_lRms.setSampleRate(APP->engine->getSampleRate());
+	_rRms.setSampleRate(APP->engine->getSampleRate());
 }
 
 void VU::process(const ProcessArgs& args) {

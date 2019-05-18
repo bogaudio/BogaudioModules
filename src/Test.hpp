@@ -246,7 +246,7 @@ struct Test : Module {
 #elif TABLES
   , _table(StaticBlepTable::table(), 44100.0, 1000.0)
 #elif RAVG
-	, _average(engineGetSampleRate(), 1.0f, 1000.0f)
+	, _average(APP->engine->getSampleRate(), 1.0f, 1000.0f)
 #endif
 	{
 		onReset();

@@ -53,7 +53,7 @@ void DGate::process(const ProcessArgs& args) {
 	if (complete) {
 		_triggerOuptutPulseGen.trigger(0.001);
 	}
-	outputs[END_OUTPUT].value = _triggerOuptutPulseGen.process(engineGetSampleTime()) ? 5.0 : 0.0;
+	outputs[END_OUTPUT].value = _triggerOuptutPulseGen.process(APP->engine->getSampleTime()) ? 5.0 : 0.0;
 
 	lights[DELAY_LIGHT].value = _stage == DELAY_STAGE;
 	lights[GATE_LIGHT].value = _stage == GATE_STAGE;
@@ -66,7 +66,7 @@ bool DGate::stepStage(Param& knob) {
 	t = pow(t, 2);
 	t = fmaxf(t, 0.001);
 	t *= 10.0;
-	_stageProgress += engineGetSampleTime() / t;
+	_stageProgress += APP->engine->getSampleTime() / t;
 	return _stageProgress > 1.0;
 }
 
