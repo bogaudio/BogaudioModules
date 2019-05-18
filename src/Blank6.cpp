@@ -29,7 +29,7 @@ struct Blank6Display : OpaqueWidget {
 	{
 	}
 
-	void draw(NVGcontext* vg) override {
+	void draw(const DrawArgs& args) override {
 		// FIXME.v1
 		if (!_module) {
 			return;
@@ -37,30 +37,30 @@ struct Blank6Display : OpaqueWidget {
 
 		float offsetX = box.size.x / 2.0f;
 		float offsetY = box.size.y / 2.0f;
-		nvgSave(vg);
-		nvgTranslate(vg, offsetX, offsetY);
-		nvgRotate(vg, M_PI/2.0f);
-		nvgTranslate(vg, -offsetY, offsetX);
-		nvgFontSize(vg, 52.0f);
-		nvgFontFaceId(vg, _font->handle);
-		nvgTextLetterSpacing(vg, 9.0f);
+		nvgSave(args.vg);
+		nvgTranslate(args.vg, offsetX, offsetY);
+		nvgRotate(args.vg, M_PI/2.0f);
+		nvgTranslate(args.vg, -offsetY, offsetX);
+		nvgFontSize(args.vg, 52.0f);
+		nvgFontFaceId(args.vg, _font->handle);
+		nvgTextLetterSpacing(args.vg, 9.0f);
 		if (_module->_level < 0.0f) {
-			nvgFillColor(vg, textColor);
-			nvgText(vg, 0, 0, _text, NULL);
+			nvgFillColor(args.vg, textColor);
+			nvgText(args.vg, 0, 0, _text, NULL);
 		}
 		else {
-			nvgFillColor(vg, bgTextColor);
-			nvgText(vg, 0, 0, _text, NULL);
+			nvgFillColor(args.vg, bgTextColor);
+			nvgText(args.vg, 0, 0, _text, NULL);
 			if (_module->_level > 0.0001f) {
-				nvgFillColor(vg, decibelsToColor(amplitudeToDecibels(_module->_level)));
-				nvgText(vg, 0, 0, _text, NULL);
+				nvgFillColor(args.vg, decibelsToColor(amplitudeToDecibels(_module->_level)));
+				nvgText(args.vg, 0, 0, _text, NULL);
 			}
 		}
-		nvgBeginPath(vg);
-		nvgRect(vg, 97, -20, 10, 10);
-		nvgFillColor(vg, bgColor);
-		nvgFill(vg);
-		nvgRestore(vg);
+		nvgBeginPath(args.vg);
+		nvgRect(args.vg, 97, -20, 10, 10);
+		nvgFillColor(args.vg, bgColor);
+		nvgFill(args.vg);
+		nvgRestore(args.vg);
 	}
 };
 

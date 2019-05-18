@@ -206,47 +206,47 @@ void AnalyzerCore::stepChannel(int channelIndex, Input& input) {
 }
 
 
-void AnalyzerDisplay::draw(NVGcontext* vg) {
+void AnalyzerDisplay::draw(const DrawArgs& args) {
 	// FIXME.v1
 	if (!_module) {
 		return;
 	}
 
-	drawBackground(vg);
+	drawBackground(args.vg);
 	float strokeWidth = 2.0f; // FIXME.v1 std::max(1.0f, 3 - gRackScene->zoomWidget->zoom);
 	_xAxisLogFactor = (_module->_rangeMaxHz - _module->_rangeMinHz) / _module->_rangeMaxHz;
 	_xAxisLogFactor *= 1.0f - baseXAxisLogFactor;
 	_xAxisLogFactor = 1.0f - _xAxisLogFactor;
 
-	nvgSave(vg);
-	nvgScissor(vg, _insetAround, _insetAround, _size.x - _insetAround, _size.y - _insetAround);
-	drawHeader(vg);
-	drawYAxis(vg, strokeWidth);
-	drawXAxis(vg, strokeWidth);
+	nvgSave(args.vg);
+	nvgScissor(args.vg, _insetAround, _insetAround, _size.x - _insetAround, _size.y - _insetAround);
+	drawHeader(args.vg);
+	drawYAxis(args.vg, strokeWidth);
+	drawXAxis(args.vg, strokeWidth);
 	for (int i = 0; i < _module->_core._nChannels; ++i) {
 		ChannelAnalyzer* channel = _module->_core._channels[i];
 		if (channel) {
-			drawGraph(vg, channel->getBins(), channel->_binsN, _channelColors[i % channelColorsN], strokeWidth);
+			drawGraph(args.vg, channel->getBins(), channel->_binsN, _channelColors[i % channelColorsN], strokeWidth);
 		}
 	}
-	nvgRestore(vg);
+	nvgRestore(args.vg);
 }
 
-void AnalyzerDisplay::drawBackground(NVGcontext* vg) {
-	nvgSave(vg);
-	nvgBeginPath(vg);
-	nvgRect(vg, 0, 0, _size.x, _size.y);
-	nvgFillColor(vg, nvgRGBA(0x00, 0x00, 0x00, 0xff));
-	nvgFill(vg);
+void AnalyzerDisplay::drawBackground(const DrawArgs& args) {
+	nvgSave(args.vg);
+	nvgBeginPath(args.vg);
+	nvgRect(args.vg, 0, 0, _size.x, _size.y);
+	nvgFillColor(args.vg, nvgRGBA(0x00, 0x00, 0x00, 0xff));
+	nvgFill(args.vg);
 	if (_drawInset) {
-		nvgStrokeColor(vg, nvgRGBA(0xc0, 0xc0, 0xc0, 0xff));
-		nvgStroke(vg);
+		nvgStrokeColor(args.vg, nvgRGBA(0xc0, 0xc0, 0xc0, 0xff));
+		nvgStroke(args.vg);
 	}
-	nvgRestore(vg);
+	nvgRestore(args.vg);
 }
 
-void AnalyzerDisplay::drawHeader(NVGcontext* vg) {
-	nvgSave(vg);
+void AnalyzerDisplay::drawHeader(const DrawArgs& args) {
+	nvgSave(args.vg);
 
 	const int textY = -4;
 	const int charPx = 5;
@@ -255,7 +255,7 @@ void AnalyzerDisplay::drawHeader(NVGcontext* vg) {
 	int x = _insetAround + 2;
 
 	int n = snprintf(s, sLen, "Peaks (+/-%0.1f):", (engineGetSampleRate() / 2.0f) / (float)(_module->_core.size() / _module->_core._binAverageN));
-	drawText(vg, s, x, _insetTop + textY);
+	drawText(args.vg, s, x, _insetTop + textY);
 	x += n * charPx - 0;
 
 	int spacing = 3;
@@ -267,124 +267,124 @@ void AnalyzerDisplay::drawHeader(NVGcontext* vg) {
 		ChannelAnalyzer* channel = _module->_core._channels[i];
 		if (channel) {
 			snprintf(s, sLen, "%c:%7.1f", 'A' + i, channel->getPeak());
-			drawText(vg, s, x, _insetTop + textY, 0.0, &_channelColors[i % channelColorsN]);
+			drawText(args.vg, s, x, _insetTop + textY, 0.0, &_channelColors[i % channelColorsN]);
 		}
 		x += 9 * charPx + spacing;
 	}
 
-	nvgRestore(vg);
+	nvgRestore(args.vg);
 }
 
-void AnalyzerDisplay::drawYAxis(NVGcontext* vg, float strokeWidth) {
-	nvgSave(vg);
-	nvgStrokeColor(vg, _axisColor);
-	nvgStrokeWidth(vg, strokeWidth);
+void AnalyzerDisplay::drawYAxis(const DrawArgs& args, float strokeWidth) {
+	nvgSave(args.vg);
+	nvgStrokeColor(args.vg, _axisColor);
+	nvgStrokeWidth(args.vg, strokeWidth);
 	const int lineX = _insetLeft - 2;
 	const int textX = 9;
 	const float textR = -M_PI/2.0;
 
-	nvgBeginPath(vg);
+	nvgBeginPath(args.vg);
 	int lineY = _insetTop;
-	nvgMoveTo(vg, lineX, lineY);
-	nvgLineTo(vg, _size.x - _insetRight, lineY);
-	nvgStroke(vg);
+	nvgMoveTo(args.vg, lineX, lineY);
+	nvgLineTo(args.vg, _size.x - _insetRight, lineY);
+	nvgStroke(args.vg);
 
-	nvgBeginPath(vg);
+	nvgBeginPath(args.vg);
 	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_module->_rangeDb - _positiveDisplayDB + 12.0)/_module->_rangeDb);
-	nvgMoveTo(vg, lineX, lineY);
-	nvgLineTo(vg, _size.x - _insetRight, lineY);
-	nvgStroke(vg);
-	drawText(vg, "12", textX, lineY + 5.0, textR);
+	nvgMoveTo(args.vg, lineX, lineY);
+	nvgLineTo(args.vg, _size.x - _insetRight, lineY);
+	nvgStroke(args.vg);
+	drawText(args.vg, "12", textX, lineY + 5.0, textR);
 
-	nvgBeginPath(vg);
+	nvgBeginPath(args.vg);
 	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_module->_rangeDb - _positiveDisplayDB)/_module->_rangeDb);
-	nvgMoveTo(vg, lineX, lineY);
-	nvgLineTo(vg, _size.x - _insetRight, lineY);
-	nvgStrokeWidth(vg, strokeWidth * 1.5);
-	nvgStroke(vg);
-	nvgStrokeWidth(vg, strokeWidth);
-	drawText(vg, "0", textX, lineY + 2.3, textR);
+	nvgMoveTo(args.vg, lineX, lineY);
+	nvgLineTo(args.vg, _size.x - _insetRight, lineY);
+	nvgStrokeWidth(args.vg, strokeWidth * 1.5);
+	nvgStroke(args.vg);
+	nvgStrokeWidth(args.vg, strokeWidth);
+	drawText(args.vg, "0", textX, lineY + 2.3, textR);
 
-	nvgBeginPath(vg);
+	nvgBeginPath(args.vg);
 	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_module->_rangeDb - _positiveDisplayDB - 12.0)/_module->_rangeDb);
-	nvgMoveTo(vg, lineX, lineY);
-	nvgLineTo(vg, _size.x - _insetRight, lineY);
-	nvgStroke(vg);
-	drawText(vg, "-12", textX, lineY + 10, textR);
+	nvgMoveTo(args.vg, lineX, lineY);
+	nvgLineTo(args.vg, _size.x - _insetRight, lineY);
+	nvgStroke(args.vg);
+	drawText(args.vg, "-12", textX, lineY + 10, textR);
 
-	nvgBeginPath(vg);
+	nvgBeginPath(args.vg);
 	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_module->_rangeDb - _positiveDisplayDB - 24.0)/_module->_rangeDb);
-	nvgMoveTo(vg, lineX, lineY);
-	nvgLineTo(vg, _size.x - _insetRight, lineY);
-	nvgStroke(vg);
-	drawText(vg, "-24", textX, lineY + 10, textR);
+	nvgMoveTo(args.vg, lineX, lineY);
+	nvgLineTo(args.vg, _size.x - _insetRight, lineY);
+	nvgStroke(args.vg);
+	drawText(args.vg, "-24", textX, lineY + 10, textR);
 
-	nvgBeginPath(vg);
+	nvgBeginPath(args.vg);
 	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_module->_rangeDb - _positiveDisplayDB - 48.0)/_module->_rangeDb);
-	nvgMoveTo(vg, lineX, lineY);
-	nvgLineTo(vg, _size.x - _insetRight, lineY);
-	nvgStroke(vg);
-	drawText(vg, "-48", textX, lineY + 10, textR);
+	nvgMoveTo(args.vg, lineX, lineY);
+	nvgLineTo(args.vg, _size.x - _insetRight, lineY);
+	nvgStroke(args.vg);
+	drawText(args.vg, "-48", textX, lineY + 10, textR);
 
 	if (_module->_rangeDb > 100.0) {
-		nvgBeginPath(vg);
+		nvgBeginPath(args.vg);
 		lineY = _insetTop + (_graphSize.y - _graphSize.y*(_module->_rangeDb - _positiveDisplayDB - 96.0)/_module->_rangeDb);
-		nvgMoveTo(vg, lineX, lineY);
-		nvgLineTo(vg, _size.x - _insetRight, lineY);
-		nvgStroke(vg);
-		drawText(vg, "-96", textX, lineY + 10, textR);
+		nvgMoveTo(args.vg, lineX, lineY);
+		nvgLineTo(args.vg, _size.x - _insetRight, lineY);
+		nvgStroke(args.vg);
+		drawText(args.vg, "-96", textX, lineY + 10, textR);
 	}
 
-	nvgBeginPath(vg);
+	nvgBeginPath(args.vg);
 	lineY = _insetTop + _graphSize.y + 1;
-	nvgMoveTo(vg, lineX, lineY);
-	nvgLineTo(vg, _size.x - _insetRight, lineY);
-	nvgStroke(vg);
+	nvgMoveTo(args.vg, lineX, lineY);
+	nvgLineTo(args.vg, _size.x - _insetRight, lineY);
+	nvgStroke(args.vg);
 
-	nvgBeginPath(vg);
-	nvgMoveTo(vg, lineX, _insetTop);
-	nvgLineTo(vg, lineX, lineY);
-	nvgStroke(vg);
+	nvgBeginPath(args.vg);
+	nvgMoveTo(args.vg, lineX, _insetTop);
+	nvgLineTo(args.vg, lineX, lineY);
+	nvgStroke(args.vg);
 
-	drawText(vg, "dB", textX, _size.y - _insetBottom, textR);
+	drawText(args.vg, "dB", textX, _size.y - _insetBottom, textR);
 
-	nvgRestore(vg);
+	nvgRestore(args.vg);
 }
 
-void AnalyzerDisplay::drawXAxis(NVGcontext* vg, float strokeWidth) {
-	nvgSave(vg);
-	nvgStrokeColor(vg, _axisColor);
-	nvgStrokeWidth(vg, strokeWidth);
+void AnalyzerDisplay::drawXAxis(const DrawArgs& args, float strokeWidth) {
+	nvgSave(args.vg);
+	nvgStrokeColor(args.vg, _axisColor);
+	nvgStrokeWidth(args.vg, strokeWidth);
 
 	float hz = 100.0f;
 	while (hz < _module->_rangeMaxHz && hz < 1001.0) {
 		if (hz >= _module->_rangeMinHz) {
-			drawXAxisLine(vg, hz);
+			drawXAxisLine(args.vg, hz);
 		}
 		hz += 100.0;
 	}
 	hz = 2000.0;
 	while (hz < _module->_rangeMaxHz && hz < 10001.0) {
 		if (hz >= _module->_rangeMinHz) {
-			drawXAxisLine(vg, hz);
+			drawXAxisLine(args.vg, hz);
 		}
 		hz += 1000.0;
 	}
 	hz = 20000.0;
 	while (hz < _module->_rangeMaxHz && hz < 100001.0) {
 		if (hz >= _module->_rangeMinHz) {
-			drawXAxisLine(vg, hz);
+			drawXAxisLine(args.vg, hz);
 		}
 		hz += 10000.0;
 	}
 
-	drawText(vg, "Hz", _insetLeft, _size.y - 2);
+	drawText(args.vg, "Hz", _insetLeft, _size.y - 2);
 	if (_module->_rangeMinHz <= 100.0f) {
 		float x = (100.0 - _module->_rangeMinHz) / (_module->_rangeMaxHz - _module->_rangeMinHz);
 		x = powf(x, _xAxisLogFactor);
 		if (x < 1.0) {
 			x *= _graphSize.x;
-			drawText(vg, "100", _insetLeft + x - 8, _size.y - 2);
+			drawText(args.vg, "100", _insetLeft + x - 8, _size.y - 2);
 		}
 	}
 	if (_module->_rangeMinHz <= 1000.0f) {
@@ -392,7 +392,7 @@ void AnalyzerDisplay::drawXAxis(NVGcontext* vg, float strokeWidth) {
 		x = powf(x, _xAxisLogFactor);
 		if (x < 1.0) {
 			x *= _graphSize.x;
-			drawText(vg, "1k", _insetLeft + x - 4, _size.y - 2);
+			drawText(args.vg, "1k", _insetLeft + x - 4, _size.y - 2);
 		}
 	}
 	if (_module->_rangeMinHz <= 10000.0f) {
@@ -400,7 +400,7 @@ void AnalyzerDisplay::drawXAxis(NVGcontext* vg, float strokeWidth) {
 		x = powf(x, _xAxisLogFactor);
 		if (x < 1.0) {
 			x *= _graphSize.x;
-			drawText(vg, "10k", _insetLeft + x - 4, _size.y - 2);
+			drawText(args.vg, "10k", _insetLeft + x - 4, _size.y - 2);
 		}
 	}
 	if (_module->_rangeMinHz > 1000.0f) {
@@ -416,61 +416,61 @@ void AnalyzerDisplay::drawXAxis(NVGcontext* vg, float strokeWidth) {
 					const int sLen = 32;
 					char s[sLen];
 					snprintf(s, sLen, "%dk", (int)(hz / 1000.0f));
-					drawText(vg, s, _insetLeft + x - 7, _size.y - 2);
+					drawText(args.vg, s, _insetLeft + x - 7, _size.y - 2);
 				}
 			}
 			hz += 10000.0f;
 		}
 	}
 
-	nvgRestore(vg);
+	nvgRestore(args.vg);
 }
 
-void AnalyzerDisplay::drawXAxisLine(NVGcontext* vg, float hz) {
+void AnalyzerDisplay::drawXAxisLine(const DrawArgs& args, float hz) {
 	float x = (hz - _module->_rangeMinHz) / (_module->_rangeMaxHz - _module->_rangeMinHz);
 	x = powf(x, _xAxisLogFactor);
 	if (x < 1.0) {
 		x *= _graphSize.x;
-		nvgBeginPath(vg);
-		nvgMoveTo(vg, _insetLeft + x, _insetTop);
-		nvgLineTo(vg, _insetLeft + x, _insetTop + _graphSize.y);
-		nvgStroke(vg);
+		nvgBeginPath(args.vg);
+		nvgMoveTo(args.vg, _insetLeft + x, _insetTop);
+		nvgLineTo(args.vg, _insetLeft + x, _insetTop + _graphSize.y);
+		nvgStroke(args.vg);
 	}
 }
 
-void AnalyzerDisplay::drawGraph(NVGcontext* vg, const float* bins, int binsN, NVGcolor color, float strokeWidth) {
+void AnalyzerDisplay::drawGraph(const DrawArgs& args, const float* bins, int binsN, NVGcolor color, float strokeWidth) {
 	float range = (_module->_rangeMaxHz - _module->_rangeMinHz) / (0.5f * engineGetSampleRate());
 	int pointsN = roundf(range * (_module->_core.size() / 2));
 	range = _module->_rangeMinHz / (0.5f * engineGetSampleRate());
 	int pointsOffset = roundf(range * (_module->_core.size() / 2));
-	nvgSave(vg);
-	nvgScissor(vg, _insetLeft, _insetTop, _graphSize.x, _graphSize.y);
-	nvgStrokeColor(vg, color);
-	nvgStrokeWidth(vg, strokeWidth);
-	nvgBeginPath(vg);
+	nvgSave(args.vg);
+	nvgScissor(args.vg, _insetLeft, _insetTop, _graphSize.x, _graphSize.y);
+	nvgStrokeColor(args.vg, color);
+	nvgStrokeWidth(args.vg, strokeWidth);
+	nvgBeginPath(args.vg);
 	for (int i = 0; i < pointsN; ++i) {
 		int height = binValueToHeight(bins[pointsOffset + i]);
 		if (i == 0) {
-			nvgMoveTo(vg, _insetLeft, _insetTop + (_graphSize.y - height));
+			nvgMoveTo(args.vg, _insetLeft, _insetTop + (_graphSize.y - height));
 		}
 		else {
 			float x = _graphSize.x * powf(i / (float)pointsN, _xAxisLogFactor);
-			nvgLineTo(vg, _insetLeft + x, _insetTop + (_graphSize.y - height));
+			nvgLineTo(args.vg, _insetLeft + x, _insetTop + (_graphSize.y - height));
 		}
 	}
-	nvgStroke(vg);
-	nvgRestore(vg);
+	nvgStroke(args.vg);
+	nvgRestore(args.vg);
 }
 
-void AnalyzerDisplay::drawText(NVGcontext* vg, const char* s, float x, float y, float rotation, const NVGcolor* color) {
-	nvgSave(vg);
-	nvgTranslate(vg, x, y);
-	nvgRotate(vg, rotation);
-	nvgFontSize(vg, 10);
-	nvgFontFaceId(vg, _font->handle);
-	nvgFillColor(vg, color ? *color : _textColor);
-	nvgText(vg, 0, 0, s, NULL);
-	nvgRestore(vg);
+void AnalyzerDisplay::drawText(const DrawArgs& args, const char* s, float x, float y, float rotation, const NVGcolor* color) {
+	nvgSave(args.vg);
+	nvgTranslate(args.vg, x, y);
+	nvgRotate(args.vg, rotation);
+	nvgFontSize(args.vg, 10);
+	nvgFontFaceId(args.vg, _font->handle);
+	nvgFillColor(args.vg, color ? *color : _textColor);
+	nvgText(args.vg, 0, 0, s, NULL);
+	nvgRestore(args.vg);
 }
 
 int AnalyzerDisplay::binValueToHeight(float value) {

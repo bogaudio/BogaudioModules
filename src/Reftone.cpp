@@ -51,14 +51,14 @@ struct ReftoneDisplay : TransparentWidget {
 	{
 	}
 
-	void draw(NVGcontext* vg) override;
-	void drawBackground(NVGcontext* vg);
-	void drawText(NVGcontext* vg, const char* s, float x, float y, int size);
-	void drawCenteredText(NVGcontext* vg, const char* s, float y, int size);
-	float textRenderWidth(NVGcontext* vg, const char* s, int size);
+	void draw(const DrawArgs& args) override;
+	void drawBackground(const DrawArgs& args);
+	void drawText(const DrawArgs& args, const char* s, float x, float y, int size);
+	void drawCenteredText(const DrawArgs& args, const char* s, float y, int size);
+	float textRenderWidth(const DrawArgs& args, const char* s, int size);
 };
 
-void ReftoneDisplay::draw(NVGcontext* vg) {
+void ReftoneDisplay::draw(const DrawArgs& args) {
 	// FIXME.v1
 	if (!_module) {
 		return;
@@ -133,52 +133,52 @@ void ReftoneDisplay::draw(NVGcontext* vg) {
 		}
 	}
 
-	drawBackground(vg);
+	drawBackground(args.vg);
 	if (sharpFlat) {
-		drawText(vg, pitch, 3, 20, 28);
-		drawText(vg, sharpFlat, 16, 12, 16);
-		drawText(vg, octave, 22, 20, 28);
+		drawText(args.vg, pitch, 3, 20, 28);
+		drawText(args.vg, sharpFlat, 16, 12, 16);
+		drawText(args.vg, octave, 22, 20, 28);
 	}
 	else {
 		char s[n];
 		snprintf(s, n, "%s%s", pitch, octave);
-		drawCenteredText(vg, s, 20, 28);
+		drawCenteredText(args.vg, s, 20, 28);
 	}
-	drawCenteredText(vg, fine, 32.5, 14);
-	drawCenteredText(vg, frequency, 45, 14);
+	drawCenteredText(args.vg, fine, 32.5, 14);
+	drawCenteredText(args.vg, frequency, 45, 14);
 }
 
-void ReftoneDisplay::drawBackground(NVGcontext* vg) {
-	nvgSave(vg);
-	nvgBeginPath(vg);
-	nvgRect(vg, 0, 0, _size.x, _size.y);
-	nvgFillColor(vg, nvgRGBA(0x00, 0x00, 0x00, 0xff));
-	nvgFill(vg);
-	nvgRestore(vg);
+void ReftoneDisplay::drawBackground(const DrawArgs& args) {
+	nvgSave(args.vg);
+	nvgBeginPath(args.vg);
+	nvgRect(args.vg, 0, 0, _size.x, _size.y);
+	nvgFillColor(args.vg, nvgRGBA(0x00, 0x00, 0x00, 0xff));
+	nvgFill(args.vg);
+	nvgRestore(args.vg);
 }
 
-void ReftoneDisplay::drawText(NVGcontext* vg, const char* s, float x, float y, int size) {
-	nvgSave(vg);
-	nvgTranslate(vg, x, y);
-	nvgFontSize(vg, size);
-	nvgFontFaceId(vg, _font->handle);
-	nvgFillColor(vg, _textColor);
-	nvgText(vg, 0, 0, s, NULL);
-	nvgRestore(vg);
+void ReftoneDisplay::drawText(const DrawArgs& args, const char* s, float x, float y, int size) {
+	nvgSave(args.vg);
+	nvgTranslate(args.vg, x, y);
+	nvgFontSize(args.vg, size);
+	nvgFontFaceId(args.vg, _font->handle);
+	nvgFillColor(args.vg, _textColor);
+	nvgText(args.vg, 0, 0, s, NULL);
+	nvgRestore(args.vg);
 }
 
-void ReftoneDisplay::drawCenteredText(NVGcontext* vg, const char* s, float y, int size) {
-	float x = textRenderWidth(vg, s, size);
+void ReftoneDisplay::drawCenteredText(const DrawArgs& args, const char* s, float y, int size) {
+	float x = textRenderWidth(args.vg, s, size);
 	x = std::max(0.0f, _size.x - x);
 	x /= 2.0;
-	drawText(vg, s, x, y, size);
+	drawText(args.vg, s, x, y, size);
 }
 
-float ReftoneDisplay::textRenderWidth(NVGcontext* vg, const char* s, int size) {
-	// nvgSave(vg);
-	// nvgFontSize(vg, size);
-	// float w = nvgTextBounds(vg, 0, 0, s, NULL, NULL);
-	// nvgRestore(vg);
+float ReftoneDisplay::textRenderWidth(const DrawArgs& args, const char* s, int size) {
+	// nvgSave(args.vg);
+	// nvgFontSize(args.vg, size);
+	// float w = nvgTextBounds(args.vg, 0, 0, s, NULL, NULL);
+	// nvgRestore(args.vg);
 	// return w - size/4.0;
 	return strlen(s) * (size / 2.1);
 }

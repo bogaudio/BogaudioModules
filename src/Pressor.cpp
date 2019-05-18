@@ -146,26 +146,26 @@ struct CompressionDisplay : OpaqueWidget {
 		}
 	}
 
-	void draw(NVGcontext* vg) override {
+	void draw(const DrawArgs& args) override {
 		// FIXME.v1
 		if (!_module) {
 			return;
 		}
 
-		nvgSave(vg);
+		nvgSave(args.vg);
 		for (int i = 0; i < 80; i += 5) {
 			const Level& l = _levels.at(i / 5);
 
-			nvgBeginPath(vg);
-			nvgRect(vg, 3, i + 1, 5, 4);
-			nvgFillColor(vg, bgColor);
-			nvgFill(vg);
+			nvgBeginPath(args.vg);
+			nvgRect(args.vg, 3, i + 1, 5, 4);
+			nvgFillColor(args.vg, bgColor);
+			nvgFill(args.vg);
 			if (_module->_compressionDb > l.db) {
-				nvgFillColor(vg, l.color);
-				nvgFill(vg);
+				nvgFillColor(args.vg, l.color);
+				nvgFill(args.vg);
 			}
 		}
-		nvgRestore(vg);
+		nvgRestore(args.vg);
 	}
 };
 

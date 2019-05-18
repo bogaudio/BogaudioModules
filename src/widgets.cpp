@@ -152,48 +152,48 @@ NVGcolor bogaudio::decibelsToColor(float db) {
 
 
 void VUSlider::draw(const DrawArgs& args) {
-	nvgSave(args.vg);
+	nvgSave(args.args.vg);
 	{
-		nvgBeginPath(args.vg);
-		nvgRoundedRect(args.vg, 6, 3, 6, box.size.y - 6, 2);
-		nvgFillColor(args.vg, nvgRGBA(0x22, 0x22, 0x22, 0xff));
-		nvgFill(args.vg);
-		nvgStrokeColor(args.vg, nvgRGBA(0x88, 0x88, 0x88, 0xff));
-		nvgStroke(args.vg);
+		nvgBeginPath(args.args.vg);
+		nvgRoundedRect(args.args.vg, 6, 3, 6, box.size.y - 6, 2);
+		nvgFillColor(args.args.vg, nvgRGBA(0x22, 0x22, 0x22, 0xff));
+		nvgFill(args.args.vg);
+		nvgStrokeColor(args.args.vg, nvgRGBA(0x88, 0x88, 0x88, 0xff));
+		nvgStroke(args.args.vg);
 	}
-	nvgRestore(args.vg);
+	nvgRestore(args.args.vg);
 
-	nvgSave(args.vg);
+	nvgSave(args.args.vg);
 	{
-		// FIXME.v1 nvgTranslate(args.vg, 0, (box.size.y - 13.0f) * (1.0f - value));
-		nvgBeginPath(args.vg);
-		nvgRoundedRect(args.vg, 0, 0, 18, 13, 1.5);
-		nvgFillColor(args.vg, nvgRGBA(0x77, 0x77, 0x77, 0xff));
-		nvgFill(args.vg);
+		// FIXME.v1 nvgTranslate(args.args.vg, 0, (box.size.y - 13.0f) * (1.0f - value));
+		nvgBeginPath(args.args.vg);
+		nvgRoundedRect(args.args.vg, 0, 0, 18, 13, 1.5);
+		nvgFillColor(args.args.vg, nvgRGBA(0x77, 0x77, 0x77, 0xff));
+		nvgFill(args.args.vg);
 
-		nvgBeginPath(args.vg);
-		nvgRect(args.vg, 0, 2, 18, 9);
-		nvgFillColor(args.vg, nvgRGBA(0x44, 0x44, 0x44, 0xff));
-		nvgFill(args.vg);
+		nvgBeginPath(args.args.vg);
+		nvgRect(args.args.vg, 0, 2, 18, 9);
+		nvgFillColor(args.args.vg, nvgRGBA(0x44, 0x44, 0x44, 0xff));
+		nvgFill(args.args.vg);
 
-		nvgBeginPath(args.vg);
-		nvgRect(args.vg, 0, 6, 18, 1);
-		nvgFillColor(args.vg, nvgRGBA(0xfa, 0xfa, 0xfa, 0xff));
-		nvgFill(args.vg);
+		nvgBeginPath(args.args.vg);
+		nvgRect(args.args.vg, 0, 6, 18, 1);
+		nvgFillColor(args.args.vg, nvgRGBA(0xfa, 0xfa, 0xfa, 0xff));
+		nvgFill(args.args.vg);
 
-		nvgBeginPath(args.vg);
-		nvgRoundedRect(args.vg, 2, 4, 14, 5, 1.0);
-		nvgFillColor(args.vg, nvgRGBA(0xaa, 0xaa, 0xaa, 0xff));
-		nvgFill(args.vg);
+		nvgBeginPath(args.args.vg);
+		nvgRoundedRect(args.args.vg, 2, 4, 14, 5, 1.0);
+		nvgFillColor(args.args.vg, nvgRGBA(0xaa, 0xaa, 0xaa, 0xff));
+		nvgFill(args.args.vg);
 
 		float db = _vuLevel ? *_vuLevel : 0.0f;
 		if (db > 0.0f) {
 			db = amplitudeToDecibels(db);
-			nvgBeginPath(args.vg);
-			nvgRoundedRect(args.vg, 2, 4, 14, 5, 1.0);
-			nvgFillColor(args.vg, decibelsToColor(db));
-			nvgFill(args.vg);
+			nvgBeginPath(args.args.vg);
+			nvgRoundedRect(args.args.vg, 2, 4, 14, 5, 1.0);
+			nvgFillColor(args.args.vg, decibelsToColor(db));
+			nvgFill(args.args.vg);
 		}
 	}
-	nvgRestore(args.vg);
+	nvgRestore(args.args.vg);
 }

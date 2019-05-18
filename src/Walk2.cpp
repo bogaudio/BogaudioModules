@@ -164,7 +164,7 @@ struct Walk2Display : TransparentWidget {
 		}
 	}
 
-	void draw(NVGcontext* vg) override {
+	void draw(const DrawArgs& args) override {
 		// FIXME.v1
 		if (!_module) {
 			return;
@@ -189,13 +189,13 @@ struct Walk2Display : TransparentWidget {
 			}
 		}
 
-		drawBackground(vg);
+		drawBackground(args.vg);
 		float strokeWidth = 2.0f; // FIXME.v1 std::max(1.0f, 3 - gRackScene->zoomWidget->zoom);
 
-		nvgSave(vg);
-		nvgScissor(vg, _insetAround, _insetAround, _drawSize.x / 2, _drawSize.y / 2);
+		nvgSave(args.vg);
+		nvgScissor(args.vg, _insetAround, _insetAround, _drawSize.x / 2, _drawSize.y / 2);
 		if (_module->_zoomOut) {
-			nvgScale(vg, 0.5f, 0.5f);
+			nvgScale(args.vg, 0.5f, 0.5f);
 			strokeWidth *= 2.0f;
 		}
 		else {
@@ -203,91 +203,91 @@ struct Walk2Display : TransparentWidget {
 			tx *= -_drawSize.x / 4;
 			float ty = 1.0f - (clamp(_module->_offsetY, -5.0f, 5.0f) / 5.0f);
 			ty *= -_drawSize.y / 4;
-			nvgTranslate(vg, tx, ty);
+			nvgTranslate(args.vg, tx, ty);
 		}
-		drawAxes(vg, strokeWidth);
-		drawTrace(vg, _traceColor, _module->_outsX, _module->_outsY);
-		nvgRestore(vg);
+		drawAxes(args.vg, strokeWidth);
+		drawTrace(args.vg, _traceColor, _module->_outsX, _module->_outsY);
+		nvgRestore(args.vg);
 	}
 
-	void drawBackground(NVGcontext* vg) {
-		nvgSave(vg);
-		nvgBeginPath(vg);
-		nvgRect(vg, 0, 0, _size.x, _size.y);
-		nvgFillColor(vg, nvgRGBA(0x00, 0x00, 0x00, 0xff));
-		nvgFill(vg);
-		nvgStrokeColor(vg, nvgRGBA(0xc0, 0xc0, 0xc0, 0xff));
-		nvgStroke(vg);
-		nvgRestore(vg);
+	void drawBackground(const DrawArgs& args) {
+		nvgSave(args.vg);
+		nvgBeginPath(args.vg);
+		nvgRect(args.vg, 0, 0, _size.x, _size.y);
+		nvgFillColor(args.vg, nvgRGBA(0x00, 0x00, 0x00, 0xff));
+		nvgFill(args.vg);
+		nvgStrokeColor(args.vg, nvgRGBA(0xc0, 0xc0, 0xc0, 0xff));
+		nvgStroke(args.vg);
+		nvgRestore(args.vg);
 	}
 
-	void drawAxes(NVGcontext* vg, float strokeWidth) {
+	void drawAxes(const DrawArgs& args, float strokeWidth) {
 		const float shortTick = 4.0f;
 		const float longTick = 8.0f;
 		float dot = 0.5f * strokeWidth;
 
-		nvgSave(vg);
-		nvgStrokeColor(vg, _axisColor);
-		nvgStrokeWidth(vg, strokeWidth);
+		nvgSave(args.vg);
+		nvgStrokeColor(args.vg, _axisColor);
+		nvgStrokeWidth(args.vg, strokeWidth);
 
-		nvgBeginPath(vg);
-		nvgMoveTo(vg, _insetAround, _midY);
-		nvgLineTo(vg, _insetAround + _drawSize.x, _midY);
-		nvgStroke(vg);
+		nvgBeginPath(args.vg);
+		nvgMoveTo(args.vg, _insetAround, _midY);
+		nvgLineTo(args.vg, _insetAround + _drawSize.x, _midY);
+		nvgStroke(args.vg);
 
-		nvgBeginPath(vg);
-		nvgMoveTo(vg, _midX, _insetAround);
-		nvgLineTo(vg, _midX, _insetAround + _drawSize.y);
-		nvgStroke(vg);
+		nvgBeginPath(args.vg);
+		nvgMoveTo(args.vg, _midX, _insetAround);
+		nvgLineTo(args.vg, _midX, _insetAround + _drawSize.y);
+		nvgStroke(args.vg);
 
 		for (int i = 1; i <= 10; ++i) {
 			float tick = i % 5 == 0 ? longTick : shortTick;
 
 			float x = (i * 0.1f) * 0.5f * _drawSize.x;
-			nvgBeginPath(vg);
-			nvgMoveTo(vg, _midX + x, _midY - tick);
-			nvgLineTo(vg, _midX + x, _midY + tick);
-			nvgStroke(vg);
+			nvgBeginPath(args.vg);
+			nvgMoveTo(args.vg, _midX + x, _midY - tick);
+			nvgLineTo(args.vg, _midX + x, _midY + tick);
+			nvgStroke(args.vg);
 
-			nvgBeginPath(vg);
-			nvgMoveTo(vg, _midX - x, _midY - tick);
-			nvgLineTo(vg, _midX - x, _midY + tick);
-			nvgStroke(vg);
+			nvgBeginPath(args.vg);
+			nvgMoveTo(args.vg, _midX - x, _midY - tick);
+			nvgLineTo(args.vg, _midX - x, _midY + tick);
+			nvgStroke(args.vg);
 
 			float y = (i * 0.1f) * 0.5f * _drawSize.y;
-			nvgBeginPath(vg);
-			nvgMoveTo(vg, _midX - tick, _midY + y);
-			nvgLineTo(vg, _midX + tick, _midY + y);
-			nvgStroke(vg);
+			nvgBeginPath(args.vg);
+			nvgMoveTo(args.vg, _midX - tick, _midY + y);
+			nvgLineTo(args.vg, _midX + tick, _midY + y);
+			nvgStroke(args.vg);
 
-			nvgBeginPath(vg);
-			nvgMoveTo(vg, _midX - tick, _midY - y);
-			nvgLineTo(vg, _midX + tick, _midY - y);
-			nvgStroke(vg);
+			nvgBeginPath(args.vg);
+			nvgMoveTo(args.vg, _midX - tick, _midY - y);
+			nvgLineTo(args.vg, _midX + tick, _midY - y);
+			nvgStroke(args.vg);
 
 			if (_module->_drawGrid) {
 				for (int j = 1; j <= 10; ++j) {
 					float y = (j * 0.1f) * 0.5f * _drawSize.y;
 
-					nvgBeginPath(vg);
-					nvgMoveTo(vg, _midX + x - dot, _midY + y);
-					nvgLineTo(vg, _midX + x + dot, _midY + y);
-					nvgStroke(vg);
+					nvgBeginPath(args.vg);
+					nvgMoveTo(args.vg, _midX + x - dot, _midY + y);
+					nvgLineTo(args.vg, _midX + x + dot, _midY + y);
+					nvgStroke(args.vg);
 
-					nvgBeginPath(vg);
-					nvgMoveTo(vg, _midX - x - dot, _midY + y);
-					nvgLineTo(vg, _midX - x + dot, _midY + y);
-					nvgStroke(vg);
+					nvgBeginPath(args.vg);
+					nvgMoveTo(args.vg, _midX - x - dot, _midY + y);
+					nvgLineTo(args.vg, _midX - x + dot, _midY + y);
+					nvgStroke(args.vg);
 
-					nvgBeginPath(vg);
-					nvgMoveTo(vg, _midX - x - dot, _midY - y);
-					nvgLineTo(vg, _midX - x + dot, _midY - y);
-					nvgStroke(vg);
+					nvgBeginPath(args.vg);
+					nvgMoveTo(args.vg, _midX - x - dot, _midY - y);
+					nvgLineTo(args.vg, _midX - x + dot, _midY - y);
+					nvgStroke(args.vg);
 
-					nvgBeginPath(vg);
-					nvgMoveTo(vg, _midX + x - dot, _midY - y);
-					nvgLineTo(vg, _midX + x + dot, _midY - y);
-					nvgStroke(vg);
+					nvgBeginPath(args.vg);
+					nvgMoveTo(args.vg, _midX + x - dot, _midY - y);
+					nvgLineTo(args.vg, _midX + x + dot, _midY - y);
+					nvgStroke(args.vg);
 				}
 			}
 		}
@@ -298,66 +298,66 @@ struct Walk2Display : TransparentWidget {
 				float x = _midX - _drawSize.x / 4;
 				float y = _midY - _drawSize.y / 4;
 
-				nvgBeginPath(vg);
-				nvgMoveTo(vg, x - tick, y);
-				nvgLineTo(vg, x + tick, y);
-				nvgStroke(vg);
+				nvgBeginPath(args.vg);
+				nvgMoveTo(args.vg, x - tick, y);
+				nvgLineTo(args.vg, x + tick, y);
+				nvgStroke(args.vg);
 
-				nvgBeginPath(vg);
-				nvgMoveTo(vg, x, y - tick);
-				nvgLineTo(vg, x, y + tick);
-				nvgStroke(vg);
+				nvgBeginPath(args.vg);
+				nvgMoveTo(args.vg, x, y - tick);
+				nvgLineTo(args.vg, x, y + tick);
+				nvgStroke(args.vg);
 			}
 			{
 				float x = _midX + _drawSize.x / 4;
 				float y = _midY - _drawSize.y / 4;
 
-				nvgBeginPath(vg);
-				nvgMoveTo(vg, x - tick, y);
-				nvgLineTo(vg, x + tick, y);
-				nvgStroke(vg);
+				nvgBeginPath(args.vg);
+				nvgMoveTo(args.vg, x - tick, y);
+				nvgLineTo(args.vg, x + tick, y);
+				nvgStroke(args.vg);
 
-				nvgBeginPath(vg);
-				nvgMoveTo(vg, x, y - tick);
-				nvgLineTo(vg, x, y + tick);
-				nvgStroke(vg);
+				nvgBeginPath(args.vg);
+				nvgMoveTo(args.vg, x, y - tick);
+				nvgLineTo(args.vg, x, y + tick);
+				nvgStroke(args.vg);
 			}
 			{
 				float x = _midX + _drawSize.x / 4;
 				float y = _midY + _drawSize.y / 4;
 
-				nvgBeginPath(vg);
-				nvgMoveTo(vg, x - tick, y);
-				nvgLineTo(vg, x + tick, y);
-				nvgStroke(vg);
+				nvgBeginPath(args.vg);
+				nvgMoveTo(args.vg, x - tick, y);
+				nvgLineTo(args.vg, x + tick, y);
+				nvgStroke(args.vg);
 
-				nvgBeginPath(vg);
-				nvgMoveTo(vg, x, y - tick);
-				nvgLineTo(vg, x, y + tick);
-				nvgStroke(vg);
+				nvgBeginPath(args.vg);
+				nvgMoveTo(args.vg, x, y - tick);
+				nvgLineTo(args.vg, x, y + tick);
+				nvgStroke(args.vg);
 			}
 			{
 				float x = _midX - _drawSize.x / 4;
 				float y = _midY + _drawSize.y / 4;
 
-				nvgBeginPath(vg);
-				nvgMoveTo(vg, x - tick, y);
-				nvgLineTo(vg, x + tick, y);
-				nvgStroke(vg);
+				nvgBeginPath(args.vg);
+				nvgMoveTo(args.vg, x - tick, y);
+				nvgLineTo(args.vg, x + tick, y);
+				nvgStroke(args.vg);
 
-				nvgBeginPath(vg);
-				nvgMoveTo(vg, x, y - tick);
-				nvgLineTo(vg, x, y + tick);
-				nvgStroke(vg);
+				nvgBeginPath(args.vg);
+				nvgMoveTo(args.vg, x, y - tick);
+				nvgLineTo(args.vg, x, y + tick);
+				nvgStroke(args.vg);
 			}
 		}
 
-		nvgRestore(vg);
+		nvgRestore(args.vg);
 	}
 
-	void drawTrace(NVGcontext* vg, NVGcolor color, HistoryBuffer<float>& x, HistoryBuffer<float>& y) {
-		nvgSave(vg);
-		// nvgGlobalCompositeOperation(vg, NVG_LIGHTER);
+	void drawTrace(const DrawArgs& args, NVGcolor color, HistoryBuffer<float>& x, HistoryBuffer<float>& y) {
+		nvgSave(args.vg);
+		// nvgGlobalCompositeOperation(args.vg, NVG_LIGHTER);
 
 		// int n = _module->historyPoints;
 		// float beginRadius = std::max(1.0f, 2.0f - gRackScene->zoomWidget->zoom);
@@ -366,12 +366,12 @@ struct Walk2Display : TransparentWidget {
 		// float radius = beginRadius;
 		// float alphaStep = (color.a - 0.1f) / (float)n;
 		// for (int i = 0; i < n; ++i) {
-		// 	nvgBeginPath(vg);
-		// 	nvgCircle(vg, cvToPixel(_midX, _drawSize.x, x.value(i)), cvToPixel(_midY, _drawSize.y, y.value(i)), radius);
-		// 	nvgStrokeColor(vg, color);
-		// 	nvgFillColor(vg, color);
-		// 	nvgStroke(vg);
-		// 	nvgFill(vg);
+		// 	nvgBeginPath(args.vg);
+		// 	nvgCircle(args.vg, cvToPixel(_midX, _drawSize.x, x.value(i)), cvToPixel(_midY, _drawSize.y, y.value(i)), radius);
+		// 	nvgStrokeColor(args.vg, color);
+		// 	nvgFillColor(args.vg, color);
+		// 	nvgStroke(args.vg);
+		// 	nvgFill(args.vg);
 		// 	radius -= radiusStep;
 		// 	color.a -= alphaStep;
 		// }
@@ -389,23 +389,23 @@ struct Walk2Display : TransparentWidget {
 		float alphaStep = (color.a - endAlpha) / (float)n;
 		color.a = endAlpha;
 		for (int i = n - 1; i > 0; --i) {
-			nvgBeginPath(vg);
-			nvgMoveTo(vg, cvToPixelX(_midX, _drawSize.x, x.value(i - 1)), cvToPixelY(_midY, _drawSize.y, y.value(i - 1)));
-			nvgLineTo(vg, cvToPixelX(_midX, _drawSize.x, x.value(i)), cvToPixelY(_midY, _drawSize.y, y.value(i)));
-			nvgStrokeWidth(vg, width);
-			nvgStrokeColor(vg, color);
-			nvgStroke(vg);
+			nvgBeginPath(args.vg);
+			nvgMoveTo(args.vg, cvToPixelX(_midX, _drawSize.x, x.value(i - 1)), cvToPixelY(_midY, _drawSize.y, y.value(i - 1)));
+			nvgLineTo(args.vg, cvToPixelX(_midX, _drawSize.x, x.value(i)), cvToPixelY(_midY, _drawSize.y, y.value(i)));
+			nvgStrokeWidth(args.vg, width);
+			nvgStrokeColor(args.vg, color);
+			nvgStroke(args.vg);
 			width += widthStep;
 			color.a += alphaStep;
 		}
-		nvgBeginPath(vg);
-		nvgCircle(vg, cvToPixelX(_midX, _drawSize.x, x.value(0)), cvToPixelY(_midY, _drawSize.y, y.value(0)), 0.5f * width);
-		nvgStrokeColor(vg, color);
-		nvgFillColor(vg, color);
-		nvgStroke(vg);
-		nvgFill(vg);
+		nvgBeginPath(args.vg);
+		nvgCircle(args.vg, cvToPixelX(_midX, _drawSize.x, x.value(0)), cvToPixelY(_midY, _drawSize.y, y.value(0)), 0.5f * width);
+		nvgStrokeColor(args.vg, color);
+		nvgFillColor(args.vg, color);
+		nvgStroke(args.vg);
+		nvgFill(args.vg);
 
-		nvgRestore(vg);
+		nvgRestore(args.vg);
 	}
 
 	inline float cvToPixelX(float mid, float extent, float cv) {

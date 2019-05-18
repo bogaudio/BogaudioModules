@@ -160,14 +160,14 @@ struct AnalyzerDisplay : TransparentWidget {
 	{
 	}
 
-	void draw(NVGcontext* vg) override;
-	void drawBackground(NVGcontext* vg);
-	void drawHeader(NVGcontext* vg);
-	void drawYAxis(NVGcontext* vg, float strokeWidth);
-	void drawXAxis(NVGcontext* vg, float strokeWidth);
-	void drawXAxisLine(NVGcontext* vg, float hz);
-	void drawGraph(NVGcontext* vg, const float* bins, int binsN, NVGcolor color, float strokeWidth);
-	void drawText(NVGcontext* vg, const char* s, float x, float y, float rotation = 0.0, const NVGcolor* color = NULL);
+	void draw(const DrawArgs& args) override;
+	void drawBackground(const DrawArgs& args);
+	void drawHeader(const DrawArgs& args);
+	void drawYAxis(const DrawArgs& args, float strokeWidth);
+	void drawXAxis(const DrawArgs& args, float strokeWidth);
+	void drawXAxisLine(const DrawArgs& args, float hz);
+	void drawGraph(const DrawArgs& args, const float* bins, int binsN, NVGcolor color, float strokeWidth);
+	void drawText(const DrawArgs& args, const char* s, float x, float y, float rotation = 0.0, const NVGcolor* color = NULL);
 	int binValueToHeight(float value);
 };
 
