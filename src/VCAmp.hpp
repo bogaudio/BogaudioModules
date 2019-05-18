@@ -30,8 +30,6 @@ struct VCAmp : Module {
 		NUM_LIGHTS
 	};
 
-	const float maxDecibels = 12.0f;
-	const float minDecibels = Amplifier::minDecibels;
 	Amplifier _amplifier;
 	bogaudio::dsp::SlewLimiter _levelSL;
 	Saturator _saturator;

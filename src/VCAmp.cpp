@@ -2,6 +2,9 @@
 #include "VCAmp.hpp"
 #include "mixer.hpp"
 
+const float maxDecibels = 12.0f;
+const float minDecibels = Amplifier::minDecibels;
+
 void VCAmp::onSampleRateChange() {
 	float sampleRate = engineGetSampleRate();
 	_levelSL.setParams(sampleRate, MixerChannel::levelSlewTimeMS, maxDecibels - minDecibels);
@@ -56,9 +59,11 @@ struct VCAmpWidget : ModuleWidget {
 			VCAmp::LEVEL_PARAM,
 			0.0,
 			1.0,
-			fabs(module->minDecibels) / (module->maxDecibels - module->minDecibels)
+			fabs(minDecibels) / (maxDecibels - minDecibels)
 		);
-		dynamic_cast<VUSlider*>(slider)->setVULevel(&(module->_rmsLevel));
+		if (module) {
+			dynamic_cast<VUSlider*>(slider)->setVULevel(&(module->_rmsLevel));
+		}
 		addParam(slider);
 
 		addInput(createPort<Port24>(cvInputPosition, PortWidget::INPUT, module, VCAmp::CV_INPUT));

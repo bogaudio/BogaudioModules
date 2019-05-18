@@ -30,6 +30,11 @@ struct Blank3Display : OpaqueWidget {
 	}
 
 	void draw(NVGcontext* vg) override {
+		// FIXME.v1
+		if (!_module) {
+			return;
+		}
+
 		float offsetX = box.size.x / 2.0f;
 		float offsetY = box.size.y / 2.0f;
 		nvgSave(vg);

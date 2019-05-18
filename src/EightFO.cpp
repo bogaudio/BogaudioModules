@@ -1,6 +1,15 @@
 
 #include "EightFO.hpp"
 
+const Phasor::phase_delta_t basePhase7Offset = Phasor::radiansToPhase(1.75f * M_PI);
+const Phasor::phase_delta_t basePhase6Offset = Phasor::radiansToPhase(1.5f * M_PI);
+const Phasor::phase_delta_t basePhase5Offset = Phasor::radiansToPhase(1.25f * M_PI);
+const Phasor::phase_delta_t basePhase4Offset = Phasor::radiansToPhase(M_PI);
+const Phasor::phase_delta_t basePhase3Offset = Phasor::radiansToPhase(0.75f * M_PI);
+const Phasor::phase_delta_t basePhase2Offset = Phasor::radiansToPhase(0.5f * M_PI);
+const Phasor::phase_delta_t basePhase1Offset = Phasor::radiansToPhase(0.25f * M_PI);
+const Phasor::phase_delta_t basePhase0Offset = Phasor::radiansToPhase(0.0f);
+
 void EightFO::onReset() {
 	_resetTrigger.reset();
 	_modulationStep = modulationSteps;
@@ -227,14 +236,14 @@ struct EightFOWidget : LFOBaseWidget {
 		addParam(createParam<Knob26>(offsetParamPosition, module, EightFO::OFFSET_PARAM, -1.0, 1.0, 0.0));
 		addParam(createParam<Knob26>(scaleParamPosition, module, EightFO::SCALE_PARAM, 0.0, 1.0, 1.0));
 
-		addPhaseParam(phase7ParamPosition, module, EightFO::PHASE7_PARAM, Phasor::phaseToRadians(module->basePhase7Offset));
-		addPhaseParam(phase6ParamPosition, module, EightFO::PHASE6_PARAM, Phasor::phaseToRadians(module->basePhase6Offset));
-		addPhaseParam(phase5ParamPosition, module, EightFO::PHASE5_PARAM, Phasor::phaseToRadians(module->basePhase5Offset));
-		addPhaseParam(phase4ParamPosition, module, EightFO::PHASE4_PARAM, Phasor::phaseToRadians(module->basePhase4Offset));
-		addPhaseParam(phase3ParamPosition, module, EightFO::PHASE3_PARAM, Phasor::phaseToRadians(module->basePhase3Offset));
-		addPhaseParam(phase2ParamPosition, module, EightFO::PHASE2_PARAM, Phasor::phaseToRadians(module->basePhase2Offset));
-		addPhaseParam(phase1ParamPosition, module, EightFO::PHASE1_PARAM, Phasor::phaseToRadians(module->basePhase1Offset));
-		addPhaseParam(phase0ParamPosition, module, EightFO::PHASE0_PARAM, Phasor::phaseToRadians(module->basePhase0Offset));
+		addPhaseParam(phase7ParamPosition, module, EightFO::PHASE7_PARAM, Phasor::phaseToRadians(basePhase7Offset));
+		addPhaseParam(phase6ParamPosition, module, EightFO::PHASE6_PARAM, Phasor::phaseToRadians(basePhase6Offset));
+		addPhaseParam(phase5ParamPosition, module, EightFO::PHASE5_PARAM, Phasor::phaseToRadians(basePhase5Offset));
+		addPhaseParam(phase4ParamPosition, module, EightFO::PHASE4_PARAM, Phasor::phaseToRadians(basePhase4Offset));
+		addPhaseParam(phase3ParamPosition, module, EightFO::PHASE3_PARAM, Phasor::phaseToRadians(basePhase3Offset));
+		addPhaseParam(phase2ParamPosition, module, EightFO::PHASE2_PARAM, Phasor::phaseToRadians(basePhase2Offset));
+		addPhaseParam(phase1ParamPosition, module, EightFO::PHASE1_PARAM, Phasor::phaseToRadians(basePhase1Offset));
+		addPhaseParam(phase0ParamPosition, module, EightFO::PHASE0_PARAM, Phasor::phaseToRadians(basePhase0Offset));
 
 		addInput(createPort<Port24>(samplePwmInputPosition, PortWidget::INPUT, module, EightFO::SAMPLE_PWM_INPUT));
 		addInput(createPort<Port24>(offsetInputPosition, PortWidget::INPUT, module, EightFO::OFFSET_INPUT));

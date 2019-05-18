@@ -73,14 +73,6 @@ struct EightFO : LFOBase {
 
 	const int modulationSteps = 100;
 	const float amplitude = 5.0f;
-	const Phasor::phase_delta_t basePhase7Offset = Phasor::radiansToPhase(1.75f * M_PI);
-	const Phasor::phase_delta_t basePhase6Offset = Phasor::radiansToPhase(1.5f * M_PI);
-	const Phasor::phase_delta_t basePhase5Offset = Phasor::radiansToPhase(1.25f * M_PI);
-	const Phasor::phase_delta_t basePhase4Offset = Phasor::radiansToPhase(M_PI);
-	const Phasor::phase_delta_t basePhase3Offset = Phasor::radiansToPhase(0.75f * M_PI);
-	const Phasor::phase_delta_t basePhase2Offset = Phasor::radiansToPhase(0.5f * M_PI);
-	const Phasor::phase_delta_t basePhase1Offset = Phasor::radiansToPhase(0.25f * M_PI);
-	const Phasor::phase_delta_t basePhase0Offset = Phasor::radiansToPhase(0.0f);
 
 	int _modulationStep = 0;
 	Wave _wave = NO_WAVE;

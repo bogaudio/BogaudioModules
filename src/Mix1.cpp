@@ -46,7 +46,9 @@ struct Mix1Widget : ModuleWidget {
 				1.0,
 				fabsf(MixerChannel::minDecibels) / (MixerChannel::maxDecibels - MixerChannel::minDecibels)
 			);
-			dynamic_cast<VUSlider*>(slider)->setVULevel(&module->_channel.rms);
+			if (module) {
+				dynamic_cast<VUSlider*>(slider)->setVULevel(&module->_channel.rms);
+			}
 			addParam(slider);
 		}
 		addParam(createParam<MuteButton>(muteParamPosition, module, Mix1::MUTE_PARAM, 0.0, 1.0, 0.0));

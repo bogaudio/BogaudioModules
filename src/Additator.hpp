@@ -58,17 +58,7 @@ struct Additator : Module {
 		PHASE_COSINE
 	};
 
-	const int modulationSteps = 100;
-	const int maxPartials = 100;
-	const float maxWidth = 2.0f;
-	const float maxSkew = 0.99f;
-	const float minAmplitudeNormalization = 1.0f;
-	const float maxAmplitudeNormalization = 5.0f;
-	const float minDecay = -1.0f;
-	const float maxDecay = 3.0f;
-	const float minFilter = 0.1;
-	const float maxFilter = 1.9;
-	const float slewLimitTime = 1.0f;
+	static constexpr int maxPartials = 100;
 
 	int _steps = 0;
 	int _partials = 0;

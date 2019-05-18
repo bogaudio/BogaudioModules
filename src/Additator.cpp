@@ -1,6 +1,17 @@
 
 #include "Additator.hpp"
 
+const int modulationSteps = 100;
+const float maxWidth = 2.0f;
+const float maxSkew = 0.99f;
+const float minAmplitudeNormalization = 1.0f;
+const float maxAmplitudeNormalization = 5.0f;
+const float minDecay = -1.0f;
+const float maxDecay = 3.0f;
+const float minFilter = 0.1;
+const float maxFilter = 1.9;
+const float slewLimitTime = 1.0f;
+
 void Additator::onReset() {
 	_syncTrigger.reset();
 	_steps = modulationSteps;
@@ -195,38 +206,38 @@ struct AdditatorWidget : ModuleWidget {
 
 		addParam(createParam<Knob68>(frequencyParamPosition, module, Additator::FREQUENCY_PARAM, -3.0, 6.0, 0.0));
 		{
-			auto w = createParam<Knob38>(partialsParamPosition, module, Additator::PARTIALS_PARAM, 1.0, module->maxPartials, module->maxPartials / 5.0);
+			auto w = createParam<Knob38>(partialsParamPosition, module, Additator::PARTIALS_PARAM, 1.0, Additator::maxPartials, Additator::maxPartials / 5.0);
 			dynamic_cast<Knob*>(w)->snap = true;
 			addParam(w);
 		}
 		addParam(createParam<Knob16>(fineParamPosition, module, Additator::FINE_PARAM, -1.0, 1.0, 0.0));
-		addParam(createParam<Knob26>(widthParamPosition, module, Additator::WIDTH_PARAM, 0.0, module->maxWidth, module->maxWidth / 2.0));
-		addParam(createParam<Knob26>(oddSkewParamPosition, module, Additator::ODD_SKEW_PARAM, -module->maxSkew, module->maxSkew, 0.0));
-		addParam(createParam<Knob26>(evenSkewParamPosition, module, Additator::EVEN_SKEW_PARAM, -module->maxSkew, module->maxSkew, 0.0));
+		addParam(createParam<Knob26>(widthParamPosition, module, Additator::WIDTH_PARAM, 0.0, maxWidth, maxWidth / 2.0));
+		addParam(createParam<Knob26>(oddSkewParamPosition, module, Additator::ODD_SKEW_PARAM, -maxSkew, maxSkew, 0.0));
+		addParam(createParam<Knob26>(evenSkewParamPosition, module, Additator::EVEN_SKEW_PARAM, -maxSkew, maxSkew, 0.0));
 		addParam(createParam<Knob26>(
 			gainParamPosition,
 			module,
 			Additator::GAIN_PARAM,
-			module->minAmplitudeNormalization,
-			module->maxAmplitudeNormalization,
-			(module->maxAmplitudeNormalization - module->minAmplitudeNormalization) / 2.0 + module->minAmplitudeNormalization
+			minAmplitudeNormalization,
+			maxAmplitudeNormalization,
+			(maxAmplitudeNormalization - minAmplitudeNormalization) / 2.0 + minAmplitudeNormalization
 		));
 		addParam(createParam<Knob26>(
 			decayParamPosition,
 			module,
 			Additator::DECAY_PARAM,
-			module->minDecay,
-			module->maxDecay,
-			(module->maxDecay - module->minDecay) / 2.0 + module->minDecay
+			minDecay,
+			maxDecay,
+			(maxDecay - minDecay) / 2.0 + minDecay
 		));
 		addParam(createParam<Knob26>(balanceParamPosition, module, Additator::BALANCE_PARAM, -1.0, 1.0, 0.0));
 		addParam(createParam<Knob26>(
 			filterParamPosition,
 			module,
 			Additator::FILTER_PARAM,
-			module->minFilter,
-			module->maxFilter,
-			(module->maxFilter - module->minFilter) / 2.0 + module->minFilter
+			minFilter,
+			maxFilter,
+			(maxFilter - minFilter) / 2.0 + minFilter
 		));
 		addParam(createParam<StatefulButton9>(phaseParamPosition, module, Additator::PHASE_PARAM, 1.0, 2.0, 1.0));
 

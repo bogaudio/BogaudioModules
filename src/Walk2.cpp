@@ -165,6 +165,11 @@ struct Walk2Display : TransparentWidget {
 	}
 
 	void draw(NVGcontext* vg) override {
+		// FIXME.v1
+		if (!_module) {
+			return;
+		}
+
 		switch (_module->_traceColor) {
 			case Walk2::ORANGE_TRACE_COLOR: {
 				_traceColor = nvgRGBA(0xff, 0x80, 0x00, 0xee);

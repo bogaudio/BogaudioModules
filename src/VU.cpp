@@ -43,6 +43,11 @@ struct VUDisplay : OpaqueWidget {
 	}
 
 	void draw(NVGcontext* vg) override {
+		// FIXME.v1
+		if (!_module) {
+			return;
+		}
+
 		float lDb = _module->_lLevel;
 		if (lDb > 0.0f) {
 			lDb = amplitudeToDecibels(lDb);

@@ -59,6 +59,11 @@ struct ReftoneDisplay : TransparentWidget {
 };
 
 void ReftoneDisplay::draw(NVGcontext* vg) {
+	// FIXME.v1
+	if (!_module) {
+		return;
+	}
+
 	const int n = 20;
 	char octave[n];
 	snprintf(octave, n, "%d", _module->_octave);

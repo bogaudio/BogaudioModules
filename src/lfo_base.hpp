@@ -75,29 +75,30 @@ struct LFOBaseWidget : ModuleWidget, PitchModeListener {
 	, _compliantSVG(compliantSVG)
 	{
 		setSVG();
-		_module->setPitchModeListener(this);
+		if (_module) {
+			_module->setPitchModeListener(this);
+		}
 	}
 
 	void setSVG() {
-		if (_module->isCompliantPitchMode()) {
-			_panel->setBackground(_compliantSVG);
-			// FXIME.v1
-			// if (_frequencyKnob) {
-			// 	_frequencyKnob->minValue = -5.0f;
-			// 	_frequencyKnob->maxValue = 8.0f;
-			// 	_frequencyKnob->dirty = true;
-			// }
-		}
-		else {
-			_panel->setBackground(_classicSVG);
-			// FXIME.v1
-			// if (_frequencyKnob) {
-			// 	_frequencyKnob->minValue = -8.0f;
-			// 	_frequencyKnob->maxValue = 5.0f;
-			// 	_frequencyKnob->dirty = true;
-			// }
-		}
-		_panel->dirty = true;
+		// FIXME.v1
+		// if (_module->isCompliantPitchMode()) {
+		// 	_panel->setBackground(_compliantSVG);
+		// 	if (_frequencyKnob) {
+		// 		_frequencyKnob->minValue = -5.0f;
+		// 		_frequencyKnob->maxValue = 8.0f;
+		// 		_frequencyKnob->dirty = true;
+		// 	}
+		// }
+		// else {
+		// 	_panel->setBackground(_classicSVG);
+		// 	if (_frequencyKnob) {
+		// 		_frequencyKnob->minValue = -8.0f;
+		// 		_frequencyKnob->maxValue = 5.0f;
+		// 		_frequencyKnob->dirty = true;
+		// 	}
+		// }
+		// _panel->dirty = true;
 	}
 
 	void pitchModeChanged() override {

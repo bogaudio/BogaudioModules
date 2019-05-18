@@ -147,6 +147,11 @@ struct CompressionDisplay : OpaqueWidget {
 	}
 
 	void draw(NVGcontext* vg) override {
+		// FIXME.v1
+		if (!_module) {
+			return;
+		}
+
 		nvgSave(vg);
 		for (int i = 0; i < 80; i += 5) {
 			const Level& l = _levels.at(i / 5);
