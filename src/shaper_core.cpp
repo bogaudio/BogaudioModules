@@ -83,7 +83,7 @@ void ShaperCore::step() {
 	}
 
 	float signalLevel = levelParam(_signalParam, _signalCVInput);
-	_signalOutput.value = signalLevel * envelope * _signalInput.normalize(0.0);
+	_signalOutput.value = signalLevel * envelope * _signalInput.getNormalVoltage(0.0);
 
 	float envLevel = levelParam(_envParam, _envInput);
 	float envOutput = clamp(envLevel * envelope, 0.0f, 10.0f);
