@@ -60,20 +60,20 @@ struct PitchModeMenuItem : MenuItem {
 struct LFOBaseWidget : ModuleWidget, PitchModeListener {
 	LFOBase* _module;
 	SVGPanel* _panel;
-	std::shared_ptr<SVG> _classicSVG;
-	std::shared_ptr<SVG> _compliantSVG;
+	const char* _classicSVGName;
+	const char* _compliantSVGName;
 	SVGKnob* _frequencyKnob = NULL;
 
 	LFOBaseWidget(
 		LFOBase* module,
 		SVGPanel* panel,
-		std::shared_ptr<SVG> classicSVG,
-		std::shared_ptr<SVG> compliantSVG
+		const char* classicSVGName,
+		const char* compliantSVGName
 	)
 	: _module(module)
 	, _panel(panel)
-	, _classicSVG(classicSVG)
-	, _compliantSVG(compliantSVG)
+	, _classicSVGName(classicSVGName)
+	, _compliantSVGName(compliantSVGName)
 	{
 		setModule(module);
 		setSVG();
@@ -84,23 +84,23 @@ struct LFOBaseWidget : ModuleWidget, PitchModeListener {
 
 	void setSVG() {
 		// FIXME.v1
-		// if (_module->isCompliantPitchMode()) {
-		// 	_panel->setBackground(_compliantSVG);
-		// 	if (_frequencyKnob) {
-		// 		_frequencyKnob->minValue = -5.0f;
-		// 		_frequencyKnob->maxValue = 8.0f;
-		// 		_frequencyKnob->dirty = true;
-		// 	}
-		// }
-		// else {
-		// 	_panel->setBackground(_classicSVG);
-		// 	if (_frequencyKnob) {
-		// 		_frequencyKnob->minValue = -8.0f;
-		// 		_frequencyKnob->maxValue = 5.0f;
-		// 		_frequencyKnob->dirty = true;
-		// 	}
-		// }
-		// _panel->dirty = true;
+		if (_module && !_module->isCompliantPitchMode()) {
+			_panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, _classicSVGName)));
+			// if (_frequencyKnob) {
+			// 	_frequencyKnob->minValue = -8.0f;
+			// 	_frequencyKnob->maxValue = 5.0f;
+			// 	_frequencyKnob->dirty = true;
+			// }
+		}
+		else {
+			_panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, _compliantSVGName)));
+			// if (_frequencyKnob) {
+			// 	_frequencyKnob->minValue = -5.0f;
+			// 	_frequencyKnob->maxValue = 8.0f;
+			// 	_frequencyKnob->dirty = true;
+			// }
+		}
+		_panel->dirty = true;
 	}
 
 	void pitchModeChanged() override {
@@ -111,8 +111,8 @@ struct LFOBaseWidget : ModuleWidget, PitchModeListener {
 		LFOBase* lfo = dynamic_cast<LFOBase*>(module);
 		assert(lfo);
 		menu->addChild(new MenuLabel());
-		menu->addChild(new PitchModeMenuItem(lfo, "Standard pitch mode: 0V = C-3 = 2.04HZ", true));
-		menu->addChild(new PitchModeMenuItem(lfo, "Classic pitch mode: 0V = C0 = 16.35HZ", false));
+		menu->addChild(new PitchModeMenuItem(lfo, "Pitch: 0V = C-3 = 2.04HZ", true));
+		menu->addChild(new PitchModeMenuItem(lfo, "Pitch: 0V = C0 = 16.35HZ", false));
 	}
 };
 

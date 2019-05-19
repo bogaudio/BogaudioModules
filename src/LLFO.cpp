@@ -85,8 +85,8 @@ struct LLFOWidget : LFOBaseWidget {
 	: LFOBaseWidget(
 		module,
 		new SVGPanel(),
-		APP->window->loadSvg(asset::plugin(pluginInstance, "res/LLFO-classic.svg")),
-		APP->window->loadSvg(asset::plugin(pluginInstance, "res/LLFO.svg"))
+		"res/LLFO-classic.svg",
+		"res/LLFO.svg"
 	) {
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 		_panel->box.size = box.size;
