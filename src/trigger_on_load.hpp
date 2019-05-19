@@ -11,9 +11,8 @@ struct TriggerOnLoadModule : Module {
 	bool _triggerOnLoad = true;
 	bool _shouldTriggerOnLoad = true;
 
-	TriggerOnLoadModule(int numParams, int numInputs, int numOutputs, int numLights)
-	: Module(numParams, numInputs, numOutputs, numLights)
-	{
+	TriggerOnLoadModule(int numParams, int numInputs, int numOutputs, int numLights) {
+		config(numParams, numInputs, numOutputs, numLights);
 	}
 
 	json_t* dataToJson() override;

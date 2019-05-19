@@ -23,7 +23,9 @@ struct LFOBase : Module {
 	PitchMode _pitchMode = UNKNOWN_PITCH_MODE;
 	PitchModeListener* _pitchModeListener = NULL;
 
-	LFOBase(int np, int ni, int no, int nl) : Module(np, ni, no, nl) {}
+	LFOBase(int np, int ni, int no, int nl) {
+		config(np, ni, no, nl);
+	}
 
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
@@ -68,12 +70,12 @@ struct LFOBaseWidget : ModuleWidget, PitchModeListener {
 		std::shared_ptr<SVG> classicSVG,
 		std::shared_ptr<SVG> compliantSVG
 	)
-	: ModuleWidget(module)
-	, _module(module)
+	: _module(module)
 	, _panel(panel)
 	, _classicSVG(classicSVG)
 	, _compliantSVG(compliantSVG)
 	{
+		setModule(module);
 		setSVG();
 		if (_module) {
 			_module->setPitchModeListener(this);

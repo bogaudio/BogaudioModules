@@ -94,7 +94,8 @@ void Mix8::process(const ProcessArgs& args) {
 struct Mix8Widget : ModuleWidget {
 	static constexpr int hp = 27;
 
-	Mix8Widget(Mix8* module) : ModuleWidget(module) {
+	Mix8Widget(Mix8* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
@@ -225,14 +226,7 @@ struct Mix8Widget : ModuleWidget {
 	}
 
 	void addSlider(Vec position, Mix8* module, int id, float* rms) {
-		auto slider = createParam<VUSlider151>(
-			position,
-			module,
-			id,
-			0.0,
-			1.0,
-			fabsf(MixerChannel::minDecibels) / (MixerChannel::maxDecibels - MixerChannel::minDecibels)
-		);
+		auto slider = createParam<VUSlider151>(position, module, id);
 		if (rms) {
 			dynamic_cast<VUSlider*>(slider)->setVULevel(rms);
 		}

@@ -49,6 +49,10 @@ struct Analyzer : AnalyzerBase {
 	int _modulationStep = 0;
 
 	Analyzer() : AnalyzerBase(4, NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+		createParam(RANGE2_PARAM, -1.0f, 1.0f, 0.0f);
+		createParam(SMOOTH_PARAM, 0.0f, 1.0f, 0.5f);
+		createParam(QUALITY_PARAM, 1.0f, 3.0f, 1.0f);
+		createParam(WINDOW_PARAM, 1.0f, 3.0f, 1.0f);
 		onReset();
 	}
 	virtual ~Analyzer() {

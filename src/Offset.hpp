@@ -26,10 +26,10 @@ struct Offset : DisableOutputLimitModule {
 		NUM_OUTPUTS
 	};
 
-	Offset() : DisableOutputLimitModule(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "offset");
+	Offset() : DisableOutputLimitModule(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {
+		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "offset");
 		configParam(SCALE_PARAM, -1.0f, 1.0f, 0.316f, "scale");
-
-		}
+	}
 
 	void process(const ProcessArgs& args) override;
 

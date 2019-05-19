@@ -107,10 +107,10 @@ struct AnalyzerBase : Module {
 	float _rangeDb = 80.0f;
 	AnalyzerCore _core;
 
-	AnalyzerBase(int nChannels, int np, int ni, int no, int nl)
-	: Module(np, ni, no, nl)
-	, _core(nChannels)
-	{}
+	AnalyzerBase(int nChannels, int np, int ni, int no, int nl) : _core(nChannels)
+	{
+		config(np, ni, no, nl);
+	}
 };
 
 struct AnalyzerDisplay : TransparentWidget {

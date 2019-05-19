@@ -36,7 +36,10 @@ struct Switch : Module {
 	Trigger _trigger;
 	bool _latchedHigh = false;
 
-	Switch() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	Switch() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		configParam(GATE_PARAM, 0.0f, 10.0f, 0.0f, "gate");
+		configParam(LATCH_PARAM, 0.0f, 1.0f, 0.0f, "latch");
 		onReset();
 	}
 

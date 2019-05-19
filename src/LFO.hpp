@@ -74,6 +74,13 @@ struct LFO : LFOBase {
 	bool _squareActive = false;
 
 	LFO() : LFOBase(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+		configParam(FREQUENCY_PARAM, -8.0f, 5.0f, 0.0f, "frequency");
+		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "slow");
+		configParam(SAMPLE_PARAM, 0.0f, 1.0f, 0.0f, "sample");
+		configParam(PW_PARAM, -1.0f, 1.0f, 0.0f, "pw");
+		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "offset");
+		configParam(SCALE_PARAM, 0.0f, 1.0f, 1.0f, "scale");
+
 		onReset();
 		onSampleRateChange();
 	}

@@ -117,6 +117,21 @@ struct EightFO : LFOBase {
 	bool _phase0Active = false;
 
 	EightFO() : LFOBase(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+		configParam(FREQUENCY_PARAM, -8.0, 5.0, 0.0, "frequency");
+		configParam(WAVE_PARAM, 1.0, 5.0, 3.0, "wave");
+		configParam(SLOW_PARAM, 0.0, 1.0, 0.0, "slow");
+		configParam(SAMPLE_PWM_PARAM, -1.0, 1.0, 0.0, "sample/pwm");
+		configParam(OFFSET_PARAM, -1.0, 1.0, 0.0, "offset");
+		configParam(SCALE_PARAM, 0.0, 1.0, 1.0, "scale");
+		configParam(PHASE7_PARAM, -1.0, 1.0, 0.0, "phase");
+		configParam(PHASE6_PARAM, -1.0, 1.0, 0.0, "phase");
+		configParam(PHASE5_PARAM, -1.0, 1.0, 0.0, "phase");
+		configParam(PHASE4_PARAM, -1.0, 1.0, 0.0, "phase");
+		configParam(PHASE3_PARAM, -1.0, 1.0, 0.0, "phase");
+		configParam(PHASE2_PARAM, -1.0, 1.0, 0.0, "phase");
+		configParam(PHASE1_PARAM, -1.0, 1.0, 0.0, "phase");
+		configParam(PHASE0_PARAM, -1.0, 1.0, 0.0f, "phase");
+
 		onReset();
 		onSampleRateChange();
 	}

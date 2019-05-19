@@ -56,7 +56,6 @@ struct VCM : DisableOutputLimitModule {
 		configParam(LEVEL4_PARAM, 0.0f, 1.0f, 0.8f, "level4");
 		configParam(MIX_PARAM, 0.0f, 1.0f, 0.8f, "mix");
 		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "linear");
-
 		onReset();
 	}
 

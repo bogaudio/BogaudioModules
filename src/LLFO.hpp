@@ -73,6 +73,12 @@ struct LLFO : LFOBase {
 	, _invert(false)
 	, _oscillator(&_sine)
 	{
+		configParam(FREQUENCY_PARAM, -8.0f, 5.0f, 0.0f, "frequency");
+		configParam(WAVE_PARAM, 1.0f, 5.0f, 3.0f, "wave");
+		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "slow");
+		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "offset");
+		configParam(SCALE_PARAM, 0.0f, 1.0f, 1.0f, "scale");
+
 		onReset();
 		onSampleRateChange();
 	}

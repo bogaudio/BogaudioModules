@@ -234,25 +234,24 @@ struct Test : Module {
 #endif
 
 	Test()
-	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
 #if SINE
-	, _table(12)
+	: _table(12)
 	, _sine2(_table)
 #elif DECIMATORS
-	, _cicDecimator(STAGES)
+	: _cicDecimator(STAGES)
 #elif INTERPOLATOR
-	, _decimator(STAGES)
+	: _decimator(STAGES)
 	, _interpolator(STAGES)
 #elif TABLES
-  , _table(StaticBlepTable::table(), 44100.0, 1000.0)
+	: _table(StaticBlepTable::table(), 44100.0, 1000.0)
 #elif RAVG
-	, _average(APP->engine->getSampleRate(), 1.0f, 1000.0f)
+	: _average(APP->engine->getSampleRate(), 1.0f, 1000.0f)
 #endif
 	{
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(PARAM1_PARAM, 0.0f, 1.0f, 0.5f, "param1");
 		configParam(PARAM2_PARAM, 0.0f, 1.0f, 0.5f, "param2");
 		configParam(PARAM3_PARAM, 0.0f, 1.0f, 0.5f, "param3");
-
 		onReset();
 
 #ifdef SINE
