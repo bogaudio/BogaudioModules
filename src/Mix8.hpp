@@ -105,7 +105,7 @@ struct Mix8 : Module {
 	, _channel8(params[LEVEL8_PARAM], params[PAN8_PARAM], params[MUTE8_PARAM], inputs[IN8_INPUT], inputs[CV8_INPUT], inputs[PAN8_INPUT])
 	{
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		float levelDefault = fabsf(MixerChannel::minDecibels) / (MixerChannel::maxDecibels - MixerChannel::minDecibels));
+		float levelDefault = fabsf(MixerChannel::minDecibels) / (MixerChannel::maxDecibels - MixerChannel::minDecibels);
 		configParam(LEVEL1_PARAM, 0.0f, 1.0f, levelDefault);
 		configParam(PAN1_PARAM, -1.0f, 1.0f, 0.0);
 		configParam(MUTE1_PARAM, 0.0f, 3.0f, 0.0);

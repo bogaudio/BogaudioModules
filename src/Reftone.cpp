@@ -133,19 +133,19 @@ void ReftoneDisplay::draw(const DrawArgs& args) {
 		}
 	}
 
-	drawBackground(args.vg);
+	drawBackground(args);
 	if (sharpFlat) {
-		drawText(args.vg, pitch, 3, 20, 28);
-		drawText(args.vg, sharpFlat, 16, 12, 16);
-		drawText(args.vg, octave, 22, 20, 28);
+		drawText(args, pitch, 3, 20, 28);
+		drawText(args, sharpFlat, 16, 12, 16);
+		drawText(args, octave, 22, 20, 28);
 	}
 	else {
 		char s[n];
 		snprintf(s, n, "%s%s", pitch, octave);
-		drawCenteredText(args.vg, s, 20, 28);
+		drawCenteredText(args, s, 20, 28);
 	}
-	drawCenteredText(args.vg, fine, 32.5, 14);
-	drawCenteredText(args.vg, frequency, 45, 14);
+	drawCenteredText(args, fine, 32.5, 14);
+	drawCenteredText(args, frequency, 45, 14);
 }
 
 void ReftoneDisplay::drawBackground(const DrawArgs& args) {
@@ -168,10 +168,10 @@ void ReftoneDisplay::drawText(const DrawArgs& args, const char* s, float x, floa
 }
 
 void ReftoneDisplay::drawCenteredText(const DrawArgs& args, const char* s, float y, int size) {
-	float x = textRenderWidth(args.vg, s, size);
+	float x = textRenderWidth(args, s, size);
 	x = std::max(0.0f, _size.x - x);
 	x /= 2.0;
-	drawText(args.vg, s, x, y, size);
+	drawText(args, s, x, y, size);
 }
 
 float ReftoneDisplay::textRenderWidth(const DrawArgs& args, const char* s, int size) {

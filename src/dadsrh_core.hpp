@@ -173,7 +173,7 @@ struct DADSRHCore {
 	}
 
 	void reset();
-	void process(const ProcessArgs& args);
+	void step();
 
 	float stepAmount(const Param& knob, const Input* cv, bool slow, bool allowZero = false);
 	float knobTime(const Param& knob, const Input* cv, bool slow, bool allowZero = false);

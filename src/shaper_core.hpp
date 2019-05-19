@@ -130,7 +130,7 @@ struct ShaperCore {
 	}
 
 	void reset();
-	void process(const ProcessArgs& args);
+	void step();
 
 	bool stepStage(const Param& knob, const Input* cv, bool slow);
 	float levelParam(const Param& knob, const Input* cv) const;

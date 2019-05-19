@@ -8,7 +8,7 @@ void DADSRHCore::reset() {
 	_releaseLevel = _holdProgress = _stageProgress = _envelope = 0.0;
 }
 
-void DADSRHCore::process(const ProcessArgs& args) {
+void DADSRHCore::step() {
 	const int SHAPE1 = 1;
 	const int SHAPE2 = 2;
 	const int SHAPE3 = 3;

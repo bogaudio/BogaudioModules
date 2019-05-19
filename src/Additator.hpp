@@ -58,7 +58,17 @@ struct Additator : Module {
 		PHASE_COSINE
 	};
 
-	static constexpr int maxPartials = 100;
+	const int maxPartials = 100;
+	const int modulationSteps = 100;
+	const float maxWidth = 2.0f;
+	const float maxSkew = 0.99f;
+	const float minAmplitudeNormalization = 1.0f;
+	const float maxAmplitudeNormalization = 5.0f;
+	const float minDecay = -1.0f;
+	const float maxDecay = 3.0f;
+	const float minFilter = 0.1;
+	const float maxFilter = 1.9;
+	const float slewLimitTime = 1.0f;
 
 	int _steps = 0;
 	int _partials = 0;
@@ -92,10 +102,10 @@ struct Additator : Module {
 		configParam(WIDTH_PARAM, 0.0f, maxWidth, maxWidth / 2.0f, "width");
 		configParam(ODD_SKEW_PARAM, -maxSkew, maxSkew, 0.0f, "odd_skew");
 		configParam(EVEN_SKEW_PARAM, -maxSkew, maxSkew, 0.0f, "even_skew");
-		configParam(GAIN_PARAM, minAmplitudeNormalization, maxAmplitudeNormalization, (maxAmplitudeNormalization - minAmplitudeNormalization, "gain");
-		configParam(DECAY_PARAM, minDecay, maxDecay, (maxDecay - minDecay, "decay");
+		configParam(GAIN_PARAM, minAmplitudeNormalization, maxAmplitudeNormalization, (maxAmplitudeNormalization - minAmplitudeNormalization) / 2.0 + minAmplitudeNormalization, "gain");
+		configParam(DECAY_PARAM, minDecay, maxDecay, (maxDecay - minDecay) / 2.0 + minDecay, "decay");
 		configParam(BALANCE_PARAM, -1.0f, 1.0f, 0.0f, "balance");
-		configParam(FILTER_PARAM, minFilter, maxFilter, (maxFilter - minFilter, "filter");
+		configParam(FILTER_PARAM, minFilter, maxFilter, (maxFilter - minFilter) / 2.0 + minFilter, "filter");
 		configParam(PHASE_PARAM, 1.0f, 2.0f, 1.0f, "phase");
 
 		onReset();

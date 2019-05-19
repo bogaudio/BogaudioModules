@@ -71,7 +71,7 @@ struct SoloMuteButton : ParamWidget /*FIXME.v1 , FramebufferWidget*/ {
 	CircularShadow* shadow = NULL;
 
 	SoloMuteButton();
-	void process(const ProcessArgs& args) override;
+	void step() override;
 	void onButton(const event::Button& e) override;
 	void onChange(const event::Change& e) override;
 };

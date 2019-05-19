@@ -2,7 +2,8 @@
 #include "template_panels.hpp"
 
 struct ThreeHPWidget : ModuleWidget {
-  ThreeHPWidget(Module* module) : ModuleWidget(module) {
+  ThreeHPWidget(Module* module) {
+	  setModule(module);
   	box.size = Vec(RACK_GRID_WIDTH * 3, RACK_GRID_HEIGHT);
 
   	{
@@ -21,7 +22,8 @@ Model* modelThreeHP = rack::createModel<Module, ThreeHPWidget>("Bogaudio-ThreeHP
 
 
 struct SixHPWidget : ModuleWidget {
-  SixHPWidget(Module* module) : ModuleWidget(module) {
+  SixHPWidget(Module* module) {
+	  setModule(module);
   	box.size = Vec(RACK_GRID_WIDTH * 6, RACK_GRID_HEIGHT);
 
   	{
@@ -40,7 +42,8 @@ Model* modelSixHP = rack::createModel<Module, SixHPWidget>("Bogaudio-SixHP");
 
 
 struct EightHPWidget : ModuleWidget {
-  EightHPWidget(Module* module) : ModuleWidget(module) {
+  EightHPWidget(Module* module) {
+	  setModule(module);
   	box.size = Vec(RACK_GRID_WIDTH * 8, RACK_GRID_HEIGHT);
 
   	{
@@ -59,7 +62,8 @@ Model* modelEightHP = rack::createModel<Module, EightHPWidget>("Bogaudio-EightHP
 
 
 struct TenHPWidget : ModuleWidget {
-	TenHPWidget(Module* module) : ModuleWidget(module) {
+	TenHPWidget(Module* module) {
+	  setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * 10, RACK_GRID_HEIGHT);
 
 		{
@@ -80,7 +84,8 @@ Model* modelTenHP = rack::createModel<Module, TenHPWidget>("Bogaudio-TenHP");
 
 
 struct TwelveHPWidget : ModuleWidget {
-  TwelveHPWidget(Module* module) : ModuleWidget(module) {
+  TwelveHPWidget(Module* module) {
+	  setModule(module);
   	box.size = Vec(RACK_GRID_WIDTH * 12, RACK_GRID_HEIGHT);
 
   	{
@@ -100,7 +105,8 @@ struct TwelveHPWidget : ModuleWidget {
 Model* modelTwelveHP = rack::createModel<Module, TwelveHPWidget>("Bogaudio-TwelveHP");
 
 struct ThirteenHPWidget : ModuleWidget {
-  ThirteenHPWidget(Module* module) : ModuleWidget(module) {
+  ThirteenHPWidget(Module* module) {
+	  setModule(module);
   	box.size = Vec(RACK_GRID_WIDTH * 13, RACK_GRID_HEIGHT);
 
   	{
@@ -121,7 +127,8 @@ Model* modelThirteenHP = rack::createModel<Module, ThirteenHPWidget>("Bogaudio-T
 
 
 struct FifteenHPWidget : ModuleWidget {
-  FifteenHPWidget(Module* module) : ModuleWidget(module) {
+  FifteenHPWidget(Module* module) {
+	  setModule(module);
   	box.size = Vec(RACK_GRID_WIDTH * 15, RACK_GRID_HEIGHT);
 
   	{
@@ -142,7 +149,8 @@ Model* modelFifteenHP = rack::createModel<Module, FifteenHPWidget>("Bogaudio-Fif
 
 
 struct EighteenHPWidget : ModuleWidget {
-  EighteenHPWidget(Module* module) : ModuleWidget(module) {
+  EighteenHPWidget(Module* module) {
+	  setModule(module);
   	box.size = Vec(RACK_GRID_WIDTH * 18, RACK_GRID_HEIGHT);
 
   	{
@@ -163,7 +171,8 @@ Model* modelEighteenHP = rack::createModel<Module, EighteenHPWidget>("Bogaudio-E
 
 
 struct TwentyHPWidget : ModuleWidget {
-  TwentyHPWidget(Module* module) : ModuleWidget(module) {
+  TwentyHPWidget(Module* module) {
+	  setModule(module);
   	box.size = Vec(RACK_GRID_WIDTH * 20, RACK_GRID_HEIGHT);
 
   	{
@@ -184,7 +193,8 @@ Model* modelTwentyHP = rack::createModel<Module, TwentyHPWidget>("Bogaudio-Twent
 
 
 struct TwentyTwoHPWidget : ModuleWidget {
-  TwentyTwoHPWidget(Module* module) : ModuleWidget(module) {
+  TwentyTwoHPWidget(Module* module) {
+	  setModule(module);
   	box.size = Vec(RACK_GRID_WIDTH * 22, RACK_GRID_HEIGHT);
 
   	{
@@ -205,7 +215,8 @@ Model* modelTwentyTwoHP = rack::createModel<Module, TwentyTwoHPWidget>("Bogaudio
 
 
 struct TwentyFiveHPWidget : ModuleWidget {
-  TwentyFiveHPWidget(Module* module) : ModuleWidget(module) {
+  TwentyFiveHPWidget(Module* module) {
+	  setModule(module);
   	box.size = Vec(RACK_GRID_WIDTH * 25, RACK_GRID_HEIGHT);
 
   	{
@@ -226,7 +237,8 @@ Model* modelTwentyFiveHP = rack::createModel<Module, TwentyFiveHPWidget>("Bogaud
 
 
 struct ThirtyHPWidget : ModuleWidget {
-  ThirtyHPWidget(Module* module) : ModuleWidget(module) {
+  ThirtyHPWidget(Module* module) {
+	  setModule(module);
   	box.size = Vec(RACK_GRID_WIDTH * 30, RACK_GRID_HEIGHT);
 
   	{

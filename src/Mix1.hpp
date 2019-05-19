@@ -48,7 +48,7 @@ struct Mix1 : Module {
 	)
 	{
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(LEVEL_PARAM, 0.0f, 1.0f, fabsf(MixerChannel::minDecibels, "level");
+		configParam(LEVEL_PARAM, 0.0f, 1.0f, fabsf(MixerChannel::minDecibels) / (MixerChannel::maxDecibels - MixerChannel::minDecibels), "level");
 		configParam(MUTE_PARAM, 0.0f, 1.0f, 0.0f, "mute");
 
 		onSampleRateChange();

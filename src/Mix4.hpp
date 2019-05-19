@@ -73,7 +73,7 @@ struct Mix4 : Module {
 	, _channel4(params[LEVEL4_PARAM], params[PAN4_PARAM], params[MUTE4_PARAM], inputs[IN4_INPUT], inputs[CV4_INPUT], inputs[PAN4_INPUT])
 	{
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		float levelDefault = fabsf(MixerChannel::minDecibels) / (MixerChannel::maxDecibels - MixerChannel::minDecibels));
+		float levelDefault = fabsf(MixerChannel::minDecibels) / (MixerChannel::maxDecibels - MixerChannel::minDecibels);
 		configParam(LEVEL1_PARAM, 0.0f, 1.0f, levelDefault);
 		configParam(PAN1_PARAM, -1.0f, 1.0f, 0.0);
 		configParam(MUTE1_PARAM, 0.0f, 3.0f, 0.0);

@@ -5,7 +5,7 @@ void bogaudio::Switch::onReset() {
 	_trigger.reset();
 }
 
-void bogaudio::Switch::step() {
+void bogaudio::Switch::process(const ProcessArgs& args) {
 	bool latched = params[LATCH_PARAM].getValue() > 0.5f;
 	lights[LATCH_LIGHT].value = latched;
 

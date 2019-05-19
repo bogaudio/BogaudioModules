@@ -1,17 +1,6 @@
 
 #include "Additator.hpp"
 
-const int modulationSteps = 100;
-const float maxWidth = 2.0f;
-const float maxSkew = 0.99f;
-const float minAmplitudeNormalization = 1.0f;
-const float maxAmplitudeNormalization = 5.0f;
-const float minDecay = -1.0f;
-const float maxDecay = 3.0f;
-const float minFilter = 0.1;
-const float maxFilter = 1.9;
-const float slewLimitTime = 1.0f;
-
 void Additator::onReset() {
 	_syncTrigger.reset();
 	_steps = modulationSteps;
@@ -215,10 +204,10 @@ struct AdditatorWidget : ModuleWidget {
 		addParam(createParam<Knob26>(widthParamPosition, module, Additator::WIDTH_PARAM));
 		addParam(createParam<Knob26>(oddSkewParamPosition, module, Additator::ODD_SKEW_PARAM));
 		addParam(createParam<Knob26>(evenSkewParamPosition, module, Additator::EVEN_SKEW_PARAM));
-		addParam(createParam<Knob26>gainParamPosition, module, Additator::GAIN_PARAM));
-		addParam(createParam<Knob26>decayParamPosition, module, Additator::DECAY_PARAM));
+		addParam(createParam<Knob26>(gainParamPosition, module, Additator::GAIN_PARAM));
+		addParam(createParam<Knob26>(decayParamPosition, module, Additator::DECAY_PARAM));
 		addParam(createParam<Knob26>(balanceParamPosition, module, Additator::BALANCE_PARAM));
-		addParam(createParam<Knob26>filterParamPosition, module, Additator::FILTER_PARAM));
+		addParam(createParam<Knob26>(filterParamPosition, module, Additator::FILTER_PARAM));
 		addParam(createParam<StatefulButton9>(phaseParamPosition, module, Additator::PHASE_PARAM));
 
 		addInput(createInput<Port24>(partialsInputPosition, module, Additator::PARTIALS_INPUT));

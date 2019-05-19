@@ -189,7 +189,7 @@ struct Walk2Display : TransparentWidget {
 			}
 		}
 
-		drawBackground(args.vg);
+		drawBackground(args);
 		float strokeWidth = 2.0f; // FIXME.v1 std::max(1.0f, 3 - gRackScene->zoomWidget->zoom);
 
 		nvgSave(args.vg);
@@ -205,8 +205,8 @@ struct Walk2Display : TransparentWidget {
 			ty *= -_drawSize.y / 4;
 			nvgTranslate(args.vg, tx, ty);
 		}
-		drawAxes(args.vg, strokeWidth);
-		drawTrace(args.vg, _traceColor, _module->_outsX, _module->_outsY);
+		drawAxes(args, strokeWidth);
+		drawTrace(args, _traceColor, _module->_outsX, _module->_outsY);
 		nvgRestore(args.vg);
 	}
 

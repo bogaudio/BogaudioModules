@@ -30,6 +30,8 @@ struct VCAmp : Module {
 		NUM_LIGHTS
 	};
 
+	const float maxDecibels = 12.0f;
+	const float minDecibels = Amplifier::minDecibels;
 	Amplifier _amplifier;
 	bogaudio::dsp::SlewLimiter _levelSL;
 	Saturator _saturator;
@@ -38,7 +40,7 @@ struct VCAmp : Module {
 
 	VCAmp() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(LEVEL_PARAM, 0.0f, 1.0f, fabs(minDecibels, "level");
+		configParam(LEVEL_PARAM, 0.0f, 1.0f, fabs(minDecibels) / (maxDecibels - minDecibels), "level");
 
 		onSampleRateChange();
 		_rms.setSensitivity(0.05f);
