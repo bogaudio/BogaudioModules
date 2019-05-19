@@ -16,28 +16,17 @@ struct Trigger : rack::dsp::SchmittTrigger {
 	}
 
 	bool process(float in) {
-		// FIXME.v1
-		// switch (state) {
-		// 	case LOW:
-		// 		if (in >= _highThreshold) {
-		// 			state = HIGH;
-		// 			return true;
-		// 		}
-		// 		break;
-		// 	case HIGH:
-		// 		if (in <= _lowThreshold) {
-		// 			state = LOW;
-		// 		}
-		// 		break;
-		// 	default:
-		// 		if (in >= _highThreshold) {
-		// 			state = HIGH;
-		// 		}
-		// 		else if (in <= _lowThreshold) {
-		// 			state = LOW;
-		// 		}
-		// 		break;
-		// }
+		if (state) {
+			if (in <= _lowThreshold) {
+				state = false;
+			}
+		}
+		else {
+			if (in >= _highThreshold) {
+				state = true;
+				return true;
+			}
+		}
 		return false;
 	}
 };
