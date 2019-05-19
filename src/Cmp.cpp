@@ -161,7 +161,7 @@ struct CmpWidget : ModuleWidget {
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
-			SVGPanel *panel = new SVGPanel();
+			SvgPanel *panel = new SvgPanel();
 			panel->box.size = box.size;
 			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Cmp.svg")));
 			addChild(panel);
@@ -194,7 +194,7 @@ struct CmpWidget : ModuleWidget {
 		addParam(createParam<Knob29>(lagParamPosition, module, Cmp::LAG_PARAM));
 		{
 			auto w = createParam<Knob16>(outputParamPosition, module, Cmp::OUTPUT_PARAM);
-			auto k = dynamic_cast<SVGKnob*>(w);
+			auto k = dynamic_cast<SvgKnob*>(w);
 			k->snap = true;
 			k->minAngle = 3.0f * (M_PI / 8.0f);
 			k->maxAngle = 5.0f * (M_PI / 8.0f);

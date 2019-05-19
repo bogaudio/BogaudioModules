@@ -72,7 +72,7 @@ struct Blank3Widget : ModuleWidget {
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
-			SVGPanel *panel = new SVGPanel();
+			SvgPanel *panel = new SvgPanel();
 			panel->box.size = box.size;
 			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Blank3.svg")));
 			addChild(panel);

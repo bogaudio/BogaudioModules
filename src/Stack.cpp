@@ -47,7 +47,7 @@ struct StackWidget : ModuleWidget {
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
-			SVGPanel *panel = new SVGPanel();
+			SvgPanel *panel = new SvgPanel();
 			panel->box.size = box.size;
 			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Stack.svg")));
 			addChild(panel);
@@ -78,7 +78,7 @@ struct StackWidget : ModuleWidget {
 		}
 		{
 			auto w = createParam<Knob16>(octaveParamPosition, module, Stack::OCTAVE_PARAM);
-			auto k = dynamic_cast<SVGKnob*>(w);
+			auto k = dynamic_cast<SvgKnob*>(w);
 			k->snap = true;
 			k->minAngle = -0.5 * M_PI;
 			k->maxAngle = 0.5 * M_PI;

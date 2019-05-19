@@ -8,7 +8,7 @@ namespace bogaudio {
 
 // FIXME.v1: all of this.
 
-struct Button18 : SVGSwitch /*, MomentarySwitch*/ {
+struct Button18 : SvgSwitch /*, MomentarySwitch*/ {
 	Button18();
 };
 
@@ -44,7 +44,7 @@ struct Knob68 : BGKnob {
 	Knob68();
 };
 
-struct Port24 : SVGPort {
+struct Port24 : SvgPort {
 	Port24();
 };
 
@@ -52,7 +52,7 @@ struct BlankPort24 : Port24 {
 	BlankPort24();
 };
 
-struct SliderSwitch : SVGSwitch /*, ToggleSwitch*/ {
+struct SliderSwitch : SvgSwitch /*, ToggleSwitch*/ {
 	CircularShadow* shadow = NULL;
 	SliderSwitch();
 };
@@ -62,11 +62,11 @@ struct SliderSwitch2State14 : SliderSwitch {
 };
 
 struct StatefulButton : ParamWidget /*, FramebufferWidget*/ {
-	std::vector<std::shared_ptr<SVG>> _frames;
-	SVGWidget* _svgWidget; // deleted elsewhere.
+	std::vector<std::shared_ptr<Svg>> _frames;
+	SvgWidget* _svgWidget; // deleted elsewhere.
 	CircularShadow* shadow = NULL;
 
-	StatefulButton(const char* offSVGPath, const char* onSVGPath);
+	StatefulButton(const char* offSvgPath, const char* onSvgPath);
 	void step() override;
 	void onDragStart(const event::DragStart& e) override;
 	void onDragEnd(const event::DragEnd& e) override;
@@ -80,7 +80,7 @@ struct StatefulButton18 : StatefulButton {
 	StatefulButton18();
 };
 
-struct ToggleButton : SVGSwitch /*, ToggleSwitch*/ {
+struct ToggleButton : SvgSwitch /*, ToggleSwitch*/ {
 };
 
 struct ToggleButton18 : ToggleButton {

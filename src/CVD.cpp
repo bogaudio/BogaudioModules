@@ -41,7 +41,7 @@ struct CVDWidget : ModuleWidget {
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
-			SVGPanel *panel = new SVGPanel();
+			SvgPanel *panel = new SvgPanel();
 			panel->box.size = box.size;
 			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/CVD.svg")));
 			addChild(panel);
@@ -65,7 +65,7 @@ struct CVDWidget : ModuleWidget {
 		addParam(createParam<Knob29>(timeParamPosition, module, CVD::TIME_PARAM));
 		{
 			auto w = createParam<Knob16>(timeScaleParamPosition, module, CVD::TIME_SCALE_PARAM);
-			auto k = dynamic_cast<SVGKnob*>(w);
+			auto k = dynamic_cast<SvgKnob*>(w);
 			k->snap = true;
 			k->minAngle = -M_PI / 4.0f;
 			k->maxAngle = M_PI / 4.0f;

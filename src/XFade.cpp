@@ -44,7 +44,7 @@ struct XFadeWidget : ModuleWidget {
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
-			SVGPanel *panel = new SVGPanel();
+			SvgPanel *panel = new SvgPanel();
 			panel->box.size = box.size;
 			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/XFade.svg")));
 			addChild(panel);
@@ -70,7 +70,7 @@ struct XFadeWidget : ModuleWidget {
 		addParam(createParam<Knob29>(mixParamPosition, module, XFade::MIX_PARAM));
 		{
 			auto w = createParam<Knob16>(curveParamPosition, module, XFade::CURVE_PARAM);
-			auto k = dynamic_cast<SVGKnob*>(w);
+			auto k = dynamic_cast<SvgKnob*>(w);
 			k->minAngle = -0.5 * M_PI;
 			k->maxAngle = 0.5 * M_PI;
 			addParam(w);

@@ -110,7 +110,7 @@ struct Test2Widget : ModuleWidget {
 		box.size = Vec(RACK_GRID_WIDTH * 6, RACK_GRID_HEIGHT);
 
 		{
-			SVGPanel *panel = new SVGPanel();
+			SvgPanel *panel = new SvgPanel();
 			panel->box.size = box.size;
 			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Test2.svg")));
 			addChild(panel);

@@ -66,8 +66,8 @@ struct MuteButton : ToggleButton {
 };
 
 struct SoloMuteButton : ParamWidget /*FIXME.v1 , FramebufferWidget*/ {
-	std::vector<std::shared_ptr<SVG>> _frames;
-	SVGWidget* _svgWidget; // deleted elsewhere.
+	std::vector<std::shared_ptr<Svg>> _frames;
+	SvgWidget* _svgWidget; // deleted elsewhere.
 	CircularShadow* shadow = NULL;
 
 	SoloMuteButton();

@@ -53,7 +53,7 @@ SoloMuteButton::SoloMuteButton() {
 	shadow = new CircularShadow();
 	addChild(shadow);
 
-	_svgWidget = new SVGWidget();
+	_svgWidget = new SvgWidget();
 	addChild(_svgWidget);
 
 	auto svg = APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_0.svg"));
@@ -62,7 +62,7 @@ SoloMuteButton::SoloMuteButton() {
 	_frames.push_back(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_1_green.svg")));
 	_frames.push_back(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_1_green.svg")));
 
-	_svgWidget->setSVG(svg);
+	_svgWidget->setSvg(svg);
 	box.size = _svgWidget->box.size;
 	shadow->box.size = _svgWidget->box.size;
 	shadow->blurRadius = 1.0;
@@ -98,7 +98,7 @@ void SoloMuteButton::onChange(const event::Change& e) {
 	// FIXME.v1
 	// assert(_frames.size() == 4);
 	// assert(value >= 0.0f && value <= 3.0f);
-	// _svgWidget->setSVG(_frames[(int)value]);
+	// _svgWidget->setSvg(_frames[(int)value]);
 	// dirty = true;
 	ParamWidget::onChange(e);
 }

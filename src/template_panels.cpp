@@ -7,7 +7,7 @@ struct ThreeHPWidget : ModuleWidget {
   	box.size = Vec(RACK_GRID_WIDTH * 3, RACK_GRID_HEIGHT);
 
   	{
-  		SVGPanel *panel = new SVGPanel();
+  		SvgPanel *panel = new SvgPanel();
   		panel->box.size = box.size;
   		panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/ThreeHP.svg")));
   		addChild(panel);
@@ -27,7 +27,7 @@ struct SixHPWidget : ModuleWidget {
   	box.size = Vec(RACK_GRID_WIDTH * 6, RACK_GRID_HEIGHT);
 
   	{
-  		SVGPanel *panel = new SVGPanel();
+  		SvgPanel *panel = new SvgPanel();
   		panel->box.size = box.size;
   		panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/SixHP.svg")));
   		addChild(panel);
@@ -47,7 +47,7 @@ struct EightHPWidget : ModuleWidget {
   	box.size = Vec(RACK_GRID_WIDTH * 8, RACK_GRID_HEIGHT);
 
   	{
-  		SVGPanel *panel = new SVGPanel();
+  		SvgPanel *panel = new SvgPanel();
   		panel->box.size = box.size;
   		panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/EightHP.svg")));
   		addChild(panel);
@@ -67,7 +67,7 @@ struct TenHPWidget : ModuleWidget {
 		box.size = Vec(RACK_GRID_WIDTH * 10, RACK_GRID_HEIGHT);
 
 		{
-			SVGPanel *panel = new SVGPanel();
+			SvgPanel *panel = new SvgPanel();
 			panel->box.size = box.size;
 			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/TenHP.svg")));
 			addChild(panel);
@@ -89,7 +89,7 @@ struct TwelveHPWidget : ModuleWidget {
   	box.size = Vec(RACK_GRID_WIDTH * 12, RACK_GRID_HEIGHT);
 
   	{
-  		SVGPanel *panel = new SVGPanel();
+  		SvgPanel *panel = new SvgPanel();
   		panel->box.size = box.size;
   		panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/TwelveHP.svg")));
   		addChild(panel);
@@ -110,7 +110,7 @@ struct ThirteenHPWidget : ModuleWidget {
   	box.size = Vec(RACK_GRID_WIDTH * 13, RACK_GRID_HEIGHT);
 
   	{
-  		SVGPanel *panel = new SVGPanel();
+  		SvgPanel *panel = new SvgPanel();
   		panel->box.size = box.size;
   		panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/ThirteenHP.svg")));
   		addChild(panel);
@@ -132,7 +132,7 @@ struct FifteenHPWidget : ModuleWidget {
   	box.size = Vec(RACK_GRID_WIDTH * 15, RACK_GRID_HEIGHT);
 
   	{
-  		SVGPanel *panel = new SVGPanel();
+  		SvgPanel *panel = new SvgPanel();
   		panel->box.size = box.size;
   		panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/FifteenHP.svg")));
   		addChild(panel);
@@ -154,7 +154,7 @@ struct EighteenHPWidget : ModuleWidget {
   	box.size = Vec(RACK_GRID_WIDTH * 18, RACK_GRID_HEIGHT);
 
   	{
-  		SVGPanel *panel = new SVGPanel();
+  		SvgPanel *panel = new SvgPanel();
   		panel->box.size = box.size;
   		panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/EighteenHP.svg")));
   		addChild(panel);
@@ -176,7 +176,7 @@ struct TwentyHPWidget : ModuleWidget {
   	box.size = Vec(RACK_GRID_WIDTH * 20, RACK_GRID_HEIGHT);
 
   	{
-  		SVGPanel *panel = new SVGPanel();
+  		SvgPanel *panel = new SvgPanel();
   		panel->box.size = box.size;
   		panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/TwentyHP.svg")));
   		addChild(panel);
@@ -198,7 +198,7 @@ struct TwentyTwoHPWidget : ModuleWidget {
   	box.size = Vec(RACK_GRID_WIDTH * 22, RACK_GRID_HEIGHT);
 
   	{
-  		SVGPanel *panel = new SVGPanel();
+  		SvgPanel *panel = new SvgPanel();
   		panel->box.size = box.size;
   		panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/TwentyTwoHP.svg")));
   		addChild(panel);
@@ -220,7 +220,7 @@ struct TwentyFiveHPWidget : ModuleWidget {
   	box.size = Vec(RACK_GRID_WIDTH * 25, RACK_GRID_HEIGHT);
 
   	{
-  		SVGPanel *panel = new SVGPanel();
+  		SvgPanel *panel = new SvgPanel();
   		panel->box.size = box.size;
   		panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/TwentyFiveHP.svg")));
   		addChild(panel);
@@ -242,7 +242,7 @@ struct ThirtyHPWidget : ModuleWidget {
   	box.size = Vec(RACK_GRID_WIDTH * 30, RACK_GRID_HEIGHT);
 
   	{
-  		SVGPanel *panel = new SVGPanel();
+  		SvgPanel *panel = new SvgPanel();
   		panel->box.size = box.size;
   		panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/ThirtyHP.svg")));
   		addChild(panel);

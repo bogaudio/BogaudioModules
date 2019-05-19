@@ -165,7 +165,7 @@ struct EightFOWidget : LFOBaseWidget {
 	EightFOWidget(EightFO* module)
 	: LFOBaseWidget(
 		module,
-		new SVGPanel(),
+		new SvgPanel(),
 		"res/EightFO-classic.svg",
 		"res/EightFO.svg"
 	) {
@@ -224,7 +224,7 @@ struct EightFOWidget : LFOBaseWidget {
 		addParam(_frequencyKnob);
 		{
 			auto w = createParam<Knob16>(waveParamPosition, module, EightFO::WAVE_PARAM);
-			auto k = dynamic_cast<SVGKnob*>(w);
+			auto k = dynamic_cast<SvgKnob*>(w);
 			k->snap = true;
 			k->minAngle = 0.0;
 			k->maxAngle = M_PI;
@@ -273,7 +273,7 @@ struct EightFOWidget : LFOBaseWidget {
 
 	void addPhaseParam(const Vec& position, Module* module, EightFO::ParamsIds paramId, float rotation) {
 		auto w = createParam<Knob16>(position, module, paramId);
-		auto k = dynamic_cast<SVGKnob*>(w);
+		auto k = dynamic_cast<SvgKnob*>(w);
 		k->minAngle += 0.5 * M_PI - rotation;
 		k->maxAngle += 0.5 * M_PI - rotation;
 		addParam(w);

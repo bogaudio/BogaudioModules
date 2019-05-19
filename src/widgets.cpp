@@ -13,7 +13,7 @@ Button18::Button18() {
 
 
 BGKnob::BGKnob(const char* svg, int dim) {
-	setSVG(APP->window->loadSvg(asset::plugin(pluginInstance, svg)));
+	setSvg(APP->window->loadSvg(asset::plugin(pluginInstance, svg)));
 	box.size = Vec(dim, dim);
 	shadow->blurRadius = 2.0;
 	// k->shadow->opacity = 0.15;
@@ -53,7 +53,7 @@ Knob68::Knob68() : BGKnob("res/knob_68px.svg", 68) {
 
 
 Port24::Port24() {
-	setSVG(APP->window->loadSvg(asset::plugin(pluginInstance, "res/port.svg")));
+	setSvg(APP->window->loadSvg(asset::plugin(pluginInstance, "res/port.svg")));
 	box.size = Vec(24, 24);
 	shadow->blurRadius = 1.0;
 	shadow->box.pos = Vec(0.0, 1.5);
@@ -61,7 +61,7 @@ Port24::Port24() {
 
 
 BlankPort24::BlankPort24() {
-	setSVG(NULL);
+	setSvg(NULL);
 	box.size = Vec(24, 24);
 }
 
@@ -82,18 +82,18 @@ SliderSwitch2State14::SliderSwitch2State14() {
 }
 
 
-StatefulButton::StatefulButton(const char* offSVGPath, const char* onSVGPath) {
+StatefulButton::StatefulButton(const char* offSvgPath, const char* onSvgPath) {
 	shadow = new CircularShadow();
 	addChild(shadow);
 
-	_svgWidget = new SVGWidget();
+	_svgWidget = new SvgWidget();
 	addChild(_svgWidget);
 
-	auto svg = APP->window->loadSvg(asset::plugin(pluginInstance, offSVGPath));
+	auto svg = APP->window->loadSvg(asset::plugin(pluginInstance, offSvgPath));
 	_frames.push_back(svg);
-	_frames.push_back(APP->window->loadSvg(asset::plugin(pluginInstance, onSVGPath)));
+	_frames.push_back(APP->window->loadSvg(asset::plugin(pluginInstance, onSvgPath)));
 
-	_svgWidget->setSVG(svg);
+	_svgWidget->setSvg(svg);
 	box.size = _svgWidget->box.size;
 	shadow->box.size = _svgWidget->box.size;
 	shadow->blurRadius = 1.0;
@@ -105,7 +105,7 @@ void StatefulButton::step() {
 }
 
 void StatefulButton::onDragStart(const event::DragStart& e) {
-	_svgWidget->setSVG(_frames[1]);
+	_svgWidget->setSvg(_frames[1]);
 	// FIXME.v1
 	// dirty = true;
 	//
@@ -118,7 +118,7 @@ void StatefulButton::onDragStart(const event::DragStart& e) {
 }
 
 void StatefulButton::onDragEnd(const event::DragEnd& e) {
-	_svgWidget->setSVG(_frames[0]);
+	_svgWidget->setSvg(_frames[0]);
 	// FIXME.v1 dirty = true;
 }
 

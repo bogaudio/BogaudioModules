@@ -59,33 +59,33 @@ struct PitchModeMenuItem : MenuItem {
 
 struct LFOBaseWidget : ModuleWidget, PitchModeListener {
 	LFOBase* _module;
-	SVGPanel* _panel;
-	const char* _classicSVGName;
-	const char* _compliantSVGName;
-	SVGKnob* _frequencyKnob = NULL;
+	SvgPanel* _panel;
+	const char* _classicSvgName;
+	const char* _compliantSvgName;
+	SvgKnob* _frequencyKnob = NULL;
 
 	LFOBaseWidget(
 		LFOBase* module,
-		SVGPanel* panel,
-		const char* classicSVGName,
-		const char* compliantSVGName
+		SvgPanel* panel,
+		const char* classicSvgName,
+		const char* compliantSvgName
 	)
 	: _module(module)
 	, _panel(panel)
-	, _classicSVGName(classicSVGName)
-	, _compliantSVGName(compliantSVGName)
+	, _classicSvgName(classicSvgName)
+	, _compliantSvgName(compliantSvgName)
 	{
 		setModule(module);
-		setSVG();
+		setSvg();
 		if (_module) {
 			_module->setPitchModeListener(this);
 		}
 	}
 
-	void setSVG() {
+	void setSvg() {
 		// FIXME.v1
 		if (_module && !_module->isCompliantPitchMode()) {
-			_panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, _classicSVGName)));
+			_panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, _classicSvgName)));
 			// if (_frequencyKnob) {
 			// 	_frequencyKnob->minValue = -8.0f;
 			// 	_frequencyKnob->maxValue = 5.0f;
@@ -93,7 +93,7 @@ struct LFOBaseWidget : ModuleWidget, PitchModeListener {
 			// }
 		}
 		else {
-			_panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, _compliantSVGName)));
+			_panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, _compliantSvgName)));
 			// if (_frequencyKnob) {
 			// 	_frequencyKnob->minValue = -5.0f;
 			// 	_frequencyKnob->maxValue = 8.0f;
@@ -104,7 +104,7 @@ struct LFOBaseWidget : ModuleWidget, PitchModeListener {
 	}
 
 	void pitchModeChanged() override {
-		setSVG();
+		setSvg();
 	}
 
 	void appendContextMenu(Menu* menu) override {

@@ -107,7 +107,7 @@ struct LFOWidget : LFOBaseWidget {
 	LFOWidget(LFO* module)
 	: LFOBaseWidget(
 		module,
-		new SVGPanel(),
+		new SvgPanel(),
 		"res/LFO-classic.svg",
 		"res/LFO.svg"
 	) {

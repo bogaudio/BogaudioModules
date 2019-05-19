@@ -109,7 +109,7 @@ struct AnalyzerWidget : ModuleWidget {
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
-			auto panel = new SVGPanel();
+			auto panel = new SvgPanel();
 			panel->box.size = box.size;
 			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Analyzer.svg")));
 			addChild(panel);
