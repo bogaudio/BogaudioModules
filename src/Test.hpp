@@ -249,6 +249,10 @@ struct Test : Module {
 	, _average(APP->engine->getSampleRate(), 1.0f, 1000.0f)
 #endif
 	{
+		configParam(PARAM1_PARAM, 0.0f, 1.0f, 0.5f, "param1");
+		configParam(PARAM2_PARAM, 0.0f, 1.0f, 0.5f, "param2");
+		configParam(PARAM3_PARAM, 0.0f, 1.0f, 0.5f, "param3");
+
 		onReset();
 
 #ifdef SINE

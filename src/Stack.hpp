@@ -43,7 +43,12 @@ struct Stack : Module {
 	float _fine = -1000.0f;
 	float _outCV;
 
-	Stack() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	Stack() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		configParam(SEMIS_PARAM, 0.0f, 11.0f, 0.0f, "semis");
+		configParam(OCTAVE_PARAM, -3.0f, 3.0f, 0.0f, "octave");
+		configParam(FINE_PARAM, -0.99f, 0.99f, 0.0f, "fine");
+		configParam(QUANTIZE_PARAM, 0.0f, 1.0f, 1.0f, "quantize");
 	}
 
 	void process(const ProcessArgs& args) override;

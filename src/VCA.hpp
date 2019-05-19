@@ -41,7 +41,12 @@ struct VCA : Module {
 	Amplifier _amplifier2;
 	bogaudio::dsp::SlewLimiter _levelSL2;
 
-	VCA() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	VCA() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		configParam(LEVEL1_PARAM, 0.0f, 1.0f, 0.8f, "level1");
+		configParam(LEVEL2_PARAM, 0.0f, 1.0f, 0.8f, "level2");
+		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "linear");
+
 		onSampleRateChange();
 	}
 

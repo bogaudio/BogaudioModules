@@ -42,7 +42,14 @@ struct ADSR : Module {
 	Trigger _gateTrigger;
 	bogaudio::dsp::ADSR _envelope;
 
-	ADSR() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	ADSR() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		configParam(ATTACK_PARAM, 0.0f, 1.0f, 0.12f, "attack");
+		configParam(DECAY_PARAM, 0.0f, 1.0f, 0.31623f, "decay");
+		configParam(SUSTAIN_PARAM, 0.0f, 1.0f, 1.0f, "sustain");
+		configParam(RELEASE_PARAM, 0.0f, 1.0f, 0.31623f, "release");
+		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "linear");
+
 		onReset();
 		onSampleRateChange();
 	}

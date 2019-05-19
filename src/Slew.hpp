@@ -41,7 +41,13 @@ struct Slew : Module {
 	ShapedSlewLimiter _rise;
 	ShapedSlewLimiter _fall;
 
-	Slew() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	Slew() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		configParam(RISE_PARAM, 0.0f, 1.0f, 0.316f, "rise");
+		configParam(RISE_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "rise_shape");
+		configParam(FALL_PARAM, 0.0f, 1.0f, 0.316f, "fall");
+		configParam(FALL_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "fall_shape");
+
 		onReset();
 	}
 

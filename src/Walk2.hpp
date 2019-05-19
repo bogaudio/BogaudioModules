@@ -73,11 +73,18 @@ struct Walk2 : Module {
 	TraceColor _traceColor = GREEN_TRACE_COLOR;
 
 	Walk2()
-	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
-	, _outsX(historyPoints, 0.0f)
+	:  _outsX(historyPoints, 0.0f)
 	, _outsY(historyPoints, 0.0f)
 	, _jumpTo(NULL)
 	{
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		configParam(RATE_X_PARAM, 0.0f, 1.0f, 0.1f, "rate_x");
+		configParam(RATE_Y_PARAM, 0.0f, 1.0f, 0.1f, "rate_y");
+		configParam(OFFSET_X_PARAM, -1.0f, 1.0f, 0.0f, "offset_x");
+		configParam(OFFSET_Y_PARAM, -1.0f, 1.0f, 0.0f, "offset_y");
+		configParam(SCALE_X_PARAM, 0.0f, 1.0f, 1.0f, "scale_x");
+		configParam(SCALE_Y_PARAM, 0.0f, 1.0f, 1.0f, "scale_y");
+
 		onReset();
 		onSampleRateChange();
 	}

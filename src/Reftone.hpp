@@ -39,7 +39,12 @@ struct Reftone : Module {
 	float _cv = frequencyToCV(_frequency);
 	SineOscillator _sine;
 
-	Reftone() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	Reftone() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		configParam(PITCH_PARAM, 0.0f, 11.0f, 9.0f, "pitch");
+		configParam(OCTAVE_PARAM, 1.0f, 8.0f, 4.0f, "octave");
+		configParam(FINE_PARAM, -0.99f, 0.99f, 0.0f, "fine");
+
 		onSampleRateChange();
 	}
 

@@ -31,7 +31,8 @@ void Noise::process(const ProcessArgs& args) {
 struct NoiseWidget : ModuleWidget {
 	static constexpr int hp = 3;
 
-	NoiseWidget(Noise* module) : ModuleWidget(module) {
+	NoiseWidget(Noise* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

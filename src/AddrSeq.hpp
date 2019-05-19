@@ -56,7 +56,20 @@ struct AddrSeq : Module {
 	bool _selectOnClock = false;
 	int _select = 0;
 
-	AddrSeq() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	AddrSeq() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		configParam(STEPS_PARAM, 1.0f, 8.0f, 8.0f, "steps");
+		configParam(DIRECTION_PARAM, 0.0f, 1.0f, 1.0f, "direction");
+		configParam(SELECT_PARAM, 0.0f, 7.0f, 0.0f, "select");
+		configParam(OUT1_PARAM, -1.0f, 1.0f, 0.0f, "out1");
+		configParam(OUT2_PARAM, -1.0f, 1.0f, 0.0f, "out2");
+		configParam(OUT3_PARAM, -1.0f, 1.0f, 0.0f, "out3");
+		configParam(OUT4_PARAM, -1.0f, 1.0f, 0.0f, "out4");
+		configParam(OUT5_PARAM, -1.0f, 1.0f, 0.0f, "out5");
+		configParam(OUT6_PARAM, -1.0f, 1.0f, 0.0f, "out6");
+		configParam(OUT7_PARAM, -1.0f, 1.0f, 0.0f, "out7");
+		configParam(OUT8_PARAM, -1.0f, 1.0f, 0.0f, "out8");
+
 		onReset();
 		onSampleRateChange();
 	}

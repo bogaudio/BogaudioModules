@@ -31,8 +31,9 @@ struct Mult : Module {
 		NUM_LIGHTS
 	};
 
-	Mult() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
-	}
+	Mult() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		}
 
 	void process(const ProcessArgs& args) override;
 };

@@ -48,7 +48,14 @@ struct Cmp : Module {
 	State _windowState;
 	int _windowLag = 0;
 
-	Cmp() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	Cmp() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		configParam(A_PARAM, -1.0f, 1.0f, 0.0f, "a");
+		configParam(B_PARAM, -1.0f, 1.0f, 0.0f, "b");
+		configParam(WINDOW_PARAM, 0.0f, 1.0f, 0.5f, "window");
+		configParam(LAG_PARAM, 0.0f, 1.0f, 0.1f, "lag");
+		configParam(OUTPUT_PARAM, 0.0f, 1.0f, 0.0f, "output");
+
 		onReset();
 	}
 

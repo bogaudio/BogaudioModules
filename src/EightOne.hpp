@@ -56,7 +56,12 @@ struct EightOne : Module {
 	bool _selectOnClock = false;
 	int _select = 0;
 
-	EightOne() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	EightOne() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		configParam(STEPS_PARAM, 1.0f, 8.0f, 8.0f, "steps");
+		configParam(DIRECTION_PARAM, 0.0f, 1.0f, 1.0f, "direction");
+		configParam(SELECT_PARAM, 0.0f, 7.0f, 0.0f, "select");
+
 		onReset();
 		onSampleRateChange();
 	}

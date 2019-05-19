@@ -41,7 +41,11 @@ struct Pan : Module {
 	Saturator _saturatorLeft;
 	Saturator _saturatorRight;
 
-	Pan() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	Pan() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		configParam(PAN1_PARAM, -1.0f, 1.0f, 0.0f, "pan1");
+		configParam(PAN2_PARAM, -1.0f, 1.0f, 0.0f, "pan2");
+
 		onSampleRateChange();
 	}
 

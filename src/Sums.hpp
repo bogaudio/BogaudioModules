@@ -33,6 +33,7 @@ struct Sums : DisableOutputLimitModule {
 	};
 
 	Sums() : DisableOutputLimitModule(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+		
 	}
 
 	void process(const ProcessArgs& args) override;

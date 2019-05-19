@@ -18,7 +18,8 @@ void Mult::process(const ProcessArgs& args) {
 struct MultWidget : ModuleWidget {
 	static constexpr int hp = 3;
 
-	MultWidget(Mult* module) : ModuleWidget(module) {
+	MultWidget(Mult* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

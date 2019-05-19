@@ -30,8 +30,9 @@ struct Bool : Module {
 		NUM_LIGHTS
 	};
 
-	Bool() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
-	}
+	Bool() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		}
 
 	void process(const ProcessArgs& args) override;
 };

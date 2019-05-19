@@ -50,6 +50,13 @@ struct VCM : DisableOutputLimitModule {
 	Amplifier _amplifier4;
 
 	VCM() : DisableOutputLimitModule(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+		configParam(LEVEL1_PARAM, 0.0f, 1.0f, 0.8f, "level1");
+		configParam(LEVEL2_PARAM, 0.0f, 1.0f, 0.8f, "level2");
+		configParam(LEVEL3_PARAM, 0.0f, 1.0f, 0.8f, "level3");
+		configParam(LEVEL4_PARAM, 0.0f, 1.0f, 0.8f, "level4");
+		configParam(MIX_PARAM, 0.0f, 1.0f, 0.8f, "mix");
+		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "linear");
+
 		onReset();
 	}
 

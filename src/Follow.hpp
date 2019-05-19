@@ -35,9 +35,12 @@ struct Follow : Module {
 	RootMeanSquare _rms;
 
 	Follow()
-	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
-	, _rms(1000.0f, 1.0f, 500.0f)
+	:  _rms(1000.0f, 1.0f, 500.0f)
 	{
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		configParam(RESPONSE_PARAM, 0.0f, 1.0f, 0.3f, "response");
+		configParam(SCALE_PARAM, 0.0f, 1.0f, 1.0f, "scale");
+
 		onSampleRateChange();
 	}
 

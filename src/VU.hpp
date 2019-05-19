@@ -35,7 +35,8 @@ struct VU : Module {
 	float _lLevel = 0.0f;
 	float _rLevel = 0.0f;
 
-	VU() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	VU() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		onSampleRateChange();
 		_lRms.setSensitivity(0.05f);
 		_rRms.setSensitivity(0.05f);

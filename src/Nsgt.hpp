@@ -50,7 +50,12 @@ struct Nsgt : Module {
 	Amplifier _amplifier;
 	Saturator _saturator;
 
-	Nsgt() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	Nsgt() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		configParam(THRESHOLD_PARAM, 0.0f, 1.0f, 0.8f, "threshold");
+		configParam(RATIO_PARAM, 0.0f, 1.0f, 0.552f, "ratio");
+		configParam(KNEE_PARAM, 0.95f, 1.0f, 1.0f, "knee");
+
 		onReset();
 		onSampleRateChange();
 	}

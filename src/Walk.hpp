@@ -43,7 +43,12 @@ struct Walk : Module {
 	RandomWalk _walk;
 	bogaudio::dsp::SlewLimiter _slew;
 
-	Walk() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	Walk() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		configParam(RATE_PARAM, 0.0f, 1.0f, 0.1f, "rate");
+		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "offset");
+		configParam(SCALE_PARAM, 0.0f, 1.0f, 1.0f, "scale");
+
 		onReset();
 	}
 

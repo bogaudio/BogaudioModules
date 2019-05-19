@@ -92,7 +92,8 @@ struct VUDisplay : OpaqueWidget {
 struct VUWidget : ModuleWidget {
 	static constexpr int hp = 3;
 
-	VUWidget(VU* module) : ModuleWidget(module) {
+	VUWidget(VU* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

@@ -41,7 +41,8 @@ struct FlipFlop : Module {
 	PositiveZeroCrossing _trigger2;
 	Trigger _resetTrigger2;
 
-	FlipFlop() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	FlipFlop() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		onReset();
 	}
 

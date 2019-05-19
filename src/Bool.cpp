@@ -14,7 +14,8 @@ void Bool::process(const ProcessArgs& args) {
 struct BoolWidget : ModuleWidget {
 	static constexpr int hp = 3;
 
-	BoolWidget(Bool* module) : ModuleWidget(module) {
+	BoolWidget(Bool* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

@@ -43,10 +43,15 @@ struct SampleHold : Module {
 	WhiteNoiseGenerator _noise;
 
 	SampleHold()
-	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
-	, _value1(0.0f)
+	:  _value1(0.0f)
 	, _value2(0.0f)
 	{
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		configParam(TRIGGER1_PARAM, 0.0f, 1.0f, 0.0f, "trigger1");
+		configParam(TRIGGER2_PARAM, 0.0f, 1.0f, 0.0f, "trigger2");
+		configParam(TRACK1_PARAM, 0.0f, 1.0f, 0.0f, "track1");
+		configParam(TRACK2_PARAM, 0.0f, 1.0f, 0.0f, "track2");
+
 		onReset();
 	}
 

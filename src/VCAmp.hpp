@@ -36,7 +36,10 @@ struct VCAmp : Module {
 	RootMeanSquare _rms;
 	float _rmsLevel = 0.0f;
 
-	VCAmp() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	VCAmp() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		configParam(LEVEL_PARAM, 0.0f, 1.0f, fabs(minDecibels, "level");
+
 		onSampleRateChange();
 		_rms.setSensitivity(0.05f);
 	}

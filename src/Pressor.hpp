@@ -73,9 +73,20 @@ struct Pressor : Module {
 	Saturator _saturator;
 
 	Pressor()
-	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
-	, _detectorRMS(1000.0f, 1.0f, 50.0f)
+	:  _detectorRMS(1000.0f, 1.0f, 50.0f)
 	{
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		configParam(THRESHOLD_PARAM, 0.0f, 1.0f, 0.8f, "threshold");
+		configParam(RATIO_PARAM, 0.0f, 1.0f, 0.552f, "ratio");
+		configParam(ATTACK_PARAM, 0.0f, 1.0f, 0.316f, "attack");
+		configParam(RELEASE_PARAM, 0.0f, 1.0f, 0.316f, "release");
+		configParam(OUTPUT_GAIN_PARAM, 0.0f, 1.0f, 0.0f, "output_gain");
+		configParam(INPUT_GAIN_PARAM, -1.0f, 1.0f, 0.0f, "input_gain");
+		configParam(DETECTOR_MIX_PARAM, -1.0f, 1.0f, 0.0f, "detector_mix");
+		configParam(MODE_PARAM, 0.0f, 1.0f, 1.0f, "mode");
+		configParam(DECTECTOR_MODE_PARAM, 0.0f, 1.0f, 1.0f, "dectector_mode");
+		configParam(KNEE_PARAM, 0.95f, 1.0f, 1.0f, "knee");
+
 		onReset();
 		onSampleRateChange();
 	}

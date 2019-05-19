@@ -37,6 +37,8 @@ struct Manual : TriggerOnLoadModule {
 	rack::dsp::PulseGenerator _pulse;
 
 	Manual() : TriggerOnLoadModule(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+		configParam(TRIGGER_PARAM, 0.0f, 1.0f, 0.0f, "trigger");
+
 		_triggerOnLoad = false;
 		onReset();
 	}

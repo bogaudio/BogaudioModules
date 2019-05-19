@@ -40,7 +40,12 @@ struct XFade : Module {
 	bogaudio::dsp::SlewLimiter _mixSL;
 	CrossFader _mixer;
 
-	XFade() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	XFade() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		configParam(MIX_PARAM, -1.0f, 1.0f, 0.0f, "mix");
+		configParam(CURVE_PARAM, 0.0f, 1.0f, 0.5f, "curve");
+		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "linear");
+
 		onSampleRateChange();
 	}
 

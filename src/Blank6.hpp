@@ -30,7 +30,8 @@ struct Blank6 : Module {
 	RootMeanSquare _rms;
 	float _level = 0.0f;
 
-	Blank6() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	Blank6() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		onSampleRateChange();
 	}
 

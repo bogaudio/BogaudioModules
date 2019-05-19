@@ -74,7 +74,17 @@ struct Mute8 : Module {
 	bogaudio::dsp::SlewLimiter _slewLimiters[8];
 	Trigger _triggers[8];
 
-	Mute8() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	Mute8() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		configParam(MUTE1_PARAM, 0.0f, 3.0f, 0.0f, "mute1");
+		configParam(MUTE2_PARAM, 0.0f, 3.0f, 0.0f, "mute2");
+		configParam(MUTE3_PARAM, 0.0f, 3.0f, 0.0f, "mute3");
+		configParam(MUTE4_PARAM, 0.0f, 3.0f, 0.0f, "mute4");
+		configParam(MUTE5_PARAM, 0.0f, 3.0f, 0.0f, "mute5");
+		configParam(MUTE6_PARAM, 0.0f, 3.0f, 0.0f, "mute6");
+		configParam(MUTE7_PARAM, 0.0f, 3.0f, 0.0f, "mute7");
+		configParam(MUTE8_PARAM, 0.0f, 3.0f, 0.0f, "mute8");
+
 		onReset();
 		onSampleRateChange();
 	}

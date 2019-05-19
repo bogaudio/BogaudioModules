@@ -69,7 +69,15 @@ struct Test2 : Module {
 	Limiter _limiter;
 #endif
 
-	Test2() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	Test2() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		configParam(PARAM1A_PARAM, 0.0f, 1.0f, 0.0f, "param1a");
+		configParam(PARAM2A_PARAM, 0.0f, 1.0f, 0.0f, "param2a");
+		configParam(PARAM3A_PARAM, 0.0f, 1.0f, 0.0f, "param3a");
+		configParam(PARAM1B_PARAM, 0.0f, 1.0f, 0.0f, "param1b");
+		configParam(PARAM2B_PARAM, 0.0f, 1.0f, 0.0f, "param2b");
+		configParam(PARAM3B_PARAM, 0.0f, 1.0f, 0.0f, "param3b");
+
 		onReset();
 	}
 

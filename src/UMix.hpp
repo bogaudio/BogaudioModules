@@ -40,7 +40,9 @@ struct UMix : Module {
 	bool _cvMode = false;
 	Saturator _saturator;
 
-	UMix() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	UMix() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		configParam(LEVEL_PARAM, 0.0f, 1.0f, 1.0f, "level");
 	}
 
 	json_t* dataToJson() override;

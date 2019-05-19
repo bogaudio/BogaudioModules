@@ -39,7 +39,9 @@ struct Noise : Module {
 	RedNoiseGenerator _red;
 	GaussianNoiseGenerator _gauss;
 
-	Noise() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {}
+	Noise() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		}
 
 	void process(const ProcessArgs& args) override;
 };

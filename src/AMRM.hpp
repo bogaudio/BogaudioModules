@@ -36,7 +36,10 @@ struct AMRM : Module {
 
 	Saturator _saturator;
 
-	AMRM() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	AMRM() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		configParam(RECTIFY_PARAM, 0.0f, 1.0f, 0.0f, "rectify");
+		configParam(DRYWET_PARAM, 0.0f, 1.0f, 1.0f, "drywet");
 	}
 
 	void process(const ProcessArgs& args) override;

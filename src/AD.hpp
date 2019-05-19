@@ -51,7 +51,13 @@ struct AD : Module {
 	bogaudio::dsp::SlewLimiter _attackSL;
 	bogaudio::dsp::SlewLimiter _decaySL;
 
-	AD() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	AD() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		configParam(ATTACK_PARAM, 0.0f, 1.0f, 0.12f, "attack");
+		configParam(DECAY_PARAM, 0.0f, 1.0f, 0.31623f, "decay");
+		configParam(LOOP_PARAM, 0.0f, 1.0f, 0.0f, "loop");
+		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "linear");
+
 		onReset();
 		onSampleRateChange();
 		_envelope.setSustain(0.0f);

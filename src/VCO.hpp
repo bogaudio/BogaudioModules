@@ -69,7 +69,15 @@ struct VCO : Module {
 	PositiveZeroCrossing _syncTrigger;
 	bogaudio::dsp::SlewLimiter _squarePulseWidthSL;
 
-	VCO() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	VCO() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		configParam(FREQUENCY_PARAM, -3.0f, 6.0f, 0.0f, "frequency");
+		configParam(FINE_PARAM, -1.0f, 1.0f, 0.0f, "fine");
+		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "slow");
+		configParam(PW_PARAM, -1.0f, 1.0f, 0.0f, "pw");
+		configParam(FM_PARAM, 0.0f, 1.0f, 0.0f, "fm");
+		configParam(FM_TYPE_PARAM, 0.0f, 1.0f, 1.0f, "fm_type");
+
 		onReset();
 		setSampleRate(APP->engine->getSampleRate());
 		_saw.setQuality(12);
