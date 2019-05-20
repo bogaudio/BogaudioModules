@@ -1,9 +1,9 @@
 
-#include "rack.hpp"
+#include "rack0.hpp"
 
 using namespace rack;
 
-extern Plugin *plugin;
+extern Plugin *pluginInstance;
 
 namespace bogaudio {
 
@@ -12,12 +12,12 @@ struct TriggerOnLoadModule : Module {
 	bool _shouldTriggerOnLoad = true;
 
 	TriggerOnLoadModule(int numParams, int numInputs, int numOutputs, int numLights)
-	: Module(numParams, numInputs, numOutputs, numLights)
 	{
+	    config(numParams, numInputs, numLights);
 	}
 
-	json_t* toJson() override;
-	void fromJson(json_t* root) override;
+	json_t* dataToJson() override;
+	void dataFromJson(json_t* root) override;
 
 	virtual bool shouldTriggerOnNextLoad() = 0;
 };
@@ -31,7 +31,7 @@ struct TriggerOnLoadMenuItem : MenuItem {
 		this->text = label;
 	}
 
-	void onAction(EventAction &e) override {
+	void onAction(const event::Action &e) override {
 		_module->_triggerOnLoad = !_module->_triggerOnLoad;
 	}
 

@@ -23,7 +23,7 @@ Model* createModel(
 		c = toupper(c);
 	}
 	snprintf(buf, n, "%s - %s - %dHP", uName.c_str(), description, TModuleWidget::hp);
-	return Model::create<TModule, TModuleWidget>(
+	return createModel<TModule, TModuleWidget>(
 		"Bogaudio",
 		slug,
 		buf,

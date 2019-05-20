@@ -1,0 +1,21 @@
+{
+  "slug": "bogaudio",
+  "name": "Bogaudio",
+  "version": "1.0.0",
+  "license": "BSD 3",
+  "author": "bogaudio",
+  "authorEmail": "ddd@ddd.net",
+  "authorUrl": "https://github.com/bogaudio/BogaudioModules",
+  "pluginUrl": "https://github.com/bogaudio/BogaudioModules",
+  "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md",
+  "sourceUrl": "https://github.com/bogaudio/BogaudioModule",
+  "donateUrl": "",
+  "modules": [
+    {
+      "slug": "Bogaudio-FMOp",
+      "name": "Bogaudio-FMOp",
+      "description": "",
+      "tags": []
+    }
+  ]
+}
