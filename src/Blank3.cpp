@@ -30,9 +30,9 @@ struct Blank3Display : OpaqueWidget {
 	}
 
 	void draw(const DrawArgs& args) override {
-		// FIXME.v1
-		if (!_module) {
-			return;
+		float level = -1.0f;
+		if (_module) {
+			level = _module->_level;
 		}
 
 		float offsetX = box.size.x / 2.0f;
@@ -44,15 +44,15 @@ struct Blank3Display : OpaqueWidget {
 		nvgFontSize(args.vg, 54.0f);
 		nvgFontFaceId(args.vg, _font->handle);
 		nvgTextLetterSpacing(args.vg, 9.0f);
-		if (_module->_level < 0.0f) {
+		if (level < 0.0f) {
 			nvgFillColor(args.vg, textColor);
 			nvgText(args.vg, 0, 0, _text, NULL);
 		}
 		else {
 			nvgFillColor(args.vg, bgTextColor);
 			nvgText(args.vg, 0, 0, _text, NULL);
-			if (_module->_level > 0.0001f) {
-				nvgFillColor(args.vg, decibelsToColor(amplitudeToDecibels(_module->_level)));
+			if (level > 0.0001f) {
+				nvgFillColor(args.vg, decibelsToColor(amplitudeToDecibels(level)));
 				nvgText(args.vg, 0, 0, _text, NULL);
 			}
 		}

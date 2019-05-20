@@ -165,48 +165,48 @@ struct Walk2Display : TransparentWidget {
 	}
 
 	void draw(const DrawArgs& args) override {
-		// FIXME.v1
-		if (!_module) {
-			return;
-		}
-
-		switch (_module->_traceColor) {
-			case Walk2::ORANGE_TRACE_COLOR: {
-				_traceColor = nvgRGBA(0xff, 0x80, 0x00, 0xee);
-				break;
-			}
-			case Walk2::RED_TRACE_COLOR: {
-				_traceColor = nvgRGBA(0xff, 0x00, 0x00, 0xee);
-				break;
-			}
-			case Walk2::BLUE_TRACE_COLOR: {
-				_traceColor = nvgRGBA(0x00, 0xdd, 0xff, 0xee);
-				break;
-			}
-			case Walk2::GREEN_TRACE_COLOR:
-			default: {
-				_traceColor = _defaultTraceColor;
-			}
-		}
-
-		drawBackground(args);
 		float strokeWidth = 2.0f; // FIXME.v1 std::max(1.0f, 3 - gRackScene->zoomWidget->zoom);
 
+		drawBackground(args);
 		nvgSave(args.vg);
 		nvgScissor(args.vg, _insetAround, _insetAround, _drawSize.x / 2, _drawSize.y / 2);
-		if (_module->_zoomOut) {
+		if (_module && _module->_zoomOut) {
 			nvgScale(args.vg, 0.5f, 0.5f);
 			strokeWidth *= 2.0f;
 		}
 		else {
-			float tx = 1.0f + (clamp(_module->_offsetX, -5.0f, 5.0f) / 5.0f);
+			float offsetX = _module ? _module->_offsetX : 0.0f;
+			float offsetY = _module ? _module->_offsetY : 0.0f;
+			float tx = 1.0f + (clamp(offsetX, -5.0f, 5.0f) / 5.0f);
 			tx *= -_drawSize.x / 4;
-			float ty = 1.0f - (clamp(_module->_offsetY, -5.0f, 5.0f) / 5.0f);
+			float ty = 1.0f - (clamp(offsetY, -5.0f, 5.0f) / 5.0f);
 			ty *= -_drawSize.y / 4;
 			nvgTranslate(args.vg, tx, ty);
 		}
 		drawAxes(args, strokeWidth);
-		drawTrace(args, _traceColor, _module->_outsX, _module->_outsY);
+
+		if (_module) {
+			switch (_module->_traceColor) {
+				case Walk2::ORANGE_TRACE_COLOR: {
+					_traceColor = nvgRGBA(0xff, 0x80, 0x00, 0xee);
+					break;
+				}
+				case Walk2::RED_TRACE_COLOR: {
+					_traceColor = nvgRGBA(0xff, 0x00, 0x00, 0xee);
+					break;
+				}
+				case Walk2::BLUE_TRACE_COLOR: {
+					_traceColor = nvgRGBA(0x00, 0xdd, 0xff, 0xee);
+					break;
+				}
+				case Walk2::GREEN_TRACE_COLOR:
+				default: {
+					_traceColor = _defaultTraceColor;
+				}
+			}
+			drawTrace(args, _traceColor, _module->_outsX, _module->_outsY);
+		}
+
 		nvgRestore(args.vg);
 	}
 
@@ -265,7 +265,7 @@ struct Walk2Display : TransparentWidget {
 			nvgLineTo(args.vg, _midX + tick, _midY - y);
 			nvgStroke(args.vg);
 
-			if (_module->_drawGrid) {
+			if (!_module || _module->_drawGrid) {
 				for (int j = 1; j <= 10; ++j) {
 					float y = (j * 0.1f) * 0.5f * _drawSize.y;
 
@@ -292,7 +292,7 @@ struct Walk2Display : TransparentWidget {
 			}
 		}
 
-		if (_module->_drawGrid) {
+		if (!_module || _module->_drawGrid) {
 			const float tick = shortTick;
 			{
 				float x = _midX - _drawSize.x / 4;

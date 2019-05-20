@@ -207,26 +207,38 @@ void AnalyzerCore::stepChannel(int channelIndex, Input& input) {
 
 
 void AnalyzerDisplay::draw(const DrawArgs& args) {
-	// FIXME.v1
-	if (!_module) {
-		return;
+	float rangeMinHz = 0.0f;
+	float rangeMaxHz = 0.0f;
+	float rangeDb = 80.0f;
+	if (_module) {
+		rangeMinHz = _module->_rangeMinHz;
+		rangeMaxHz = _module->_rangeMaxHz;
+		rangeDb = _module->_rangeDb;
+	}
+	else {
+		rangeMaxHz = 0.5f * APP->engine->getSampleRate();
 	}
 
 	drawBackground(args);
+
 	float strokeWidth = 2.0f; // FIXME.v1 std::max(1.0f, 3 - gRackScene->zoomWidget->zoom);
-	_xAxisLogFactor = (_module->_rangeMaxHz - _module->_rangeMinHz) / _module->_rangeMaxHz;
+	_xAxisLogFactor = (rangeMaxHz - rangeMinHz) / rangeMaxHz;
 	_xAxisLogFactor *= 1.0f - baseXAxisLogFactor;
 	_xAxisLogFactor = 1.0f - _xAxisLogFactor;
 
 	nvgSave(args.vg);
 	nvgScissor(args.vg, _insetAround, _insetAround, _size.x - _insetAround, _size.y - _insetAround);
-	drawHeader(args);
-	drawYAxis(args, strokeWidth);
-	drawXAxis(args, strokeWidth);
-	for (int i = 0; i < _module->_core._nChannels; ++i) {
-		ChannelAnalyzer* channel = _module->_core._channels[i];
-		if (channel) {
-			drawGraph(args, channel->getBins(), channel->_binsN, _channelColors[i % channelColorsN], strokeWidth);
+	if (_module) {
+		drawHeader(args);
+	}
+	drawYAxis(args, strokeWidth, rangeDb);
+	drawXAxis(args, strokeWidth, rangeMinHz, rangeMaxHz);
+	if (_module) {
+		for (int i = 0; i < _module->_core._nChannels; ++i) {
+			ChannelAnalyzer* channel = _module->_core._channels[i];
+			if (channel) {
+				drawGraph(args, channel->getBins(), channel->_binsN, _channelColors[i % channelColorsN], strokeWidth, rangeMinHz, rangeMaxHz, rangeDb);
+			}
 		}
 	}
 	nvgRestore(args.vg);
@@ -275,7 +287,7 @@ void AnalyzerDisplay::drawHeader(const DrawArgs& args) {
 	nvgRestore(args.vg);
 }
 
-void AnalyzerDisplay::drawYAxis(const DrawArgs& args, float strokeWidth) {
+void AnalyzerDisplay::drawYAxis(const DrawArgs& args, float strokeWidth, float rangeDb) {
 	nvgSave(args.vg);
 	nvgStrokeColor(args.vg, _axisColor);
 	nvgStrokeWidth(args.vg, strokeWidth);
@@ -290,14 +302,14 @@ void AnalyzerDisplay::drawYAxis(const DrawArgs& args, float strokeWidth) {
 	nvgStroke(args.vg);
 
 	nvgBeginPath(args.vg);
-	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_module->_rangeDb - _positiveDisplayDB + 12.0)/_module->_rangeDb);
+	lineY = _insetTop + (_graphSize.y - _graphSize.y*(rangeDb - _positiveDisplayDB + 12.0)/rangeDb);
 	nvgMoveTo(args.vg, lineX, lineY);
 	nvgLineTo(args.vg, _size.x - _insetRight, lineY);
 	nvgStroke(args.vg);
 	drawText(args, "12", textX, lineY + 5.0, textR);
 
 	nvgBeginPath(args.vg);
-	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_module->_rangeDb - _positiveDisplayDB)/_module->_rangeDb);
+	lineY = _insetTop + (_graphSize.y - _graphSize.y*(rangeDb - _positiveDisplayDB)/rangeDb);
 	nvgMoveTo(args.vg, lineX, lineY);
 	nvgLineTo(args.vg, _size.x - _insetRight, lineY);
 	nvgStrokeWidth(args.vg, strokeWidth * 1.5);
@@ -306,29 +318,29 @@ void AnalyzerDisplay::drawYAxis(const DrawArgs& args, float strokeWidth) {
 	drawText(args, "0", textX, lineY + 2.3, textR);
 
 	nvgBeginPath(args.vg);
-	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_module->_rangeDb - _positiveDisplayDB - 12.0)/_module->_rangeDb);
+	lineY = _insetTop + (_graphSize.y - _graphSize.y*(rangeDb - _positiveDisplayDB - 12.0)/rangeDb);
 	nvgMoveTo(args.vg, lineX, lineY);
 	nvgLineTo(args.vg, _size.x - _insetRight, lineY);
 	nvgStroke(args.vg);
 	drawText(args, "-12", textX, lineY + 10, textR);
 
 	nvgBeginPath(args.vg);
-	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_module->_rangeDb - _positiveDisplayDB - 24.0)/_module->_rangeDb);
+	lineY = _insetTop + (_graphSize.y - _graphSize.y*(rangeDb - _positiveDisplayDB - 24.0)/rangeDb);
 	nvgMoveTo(args.vg, lineX, lineY);
 	nvgLineTo(args.vg, _size.x - _insetRight, lineY);
 	nvgStroke(args.vg);
 	drawText(args, "-24", textX, lineY + 10, textR);
 
 	nvgBeginPath(args.vg);
-	lineY = _insetTop + (_graphSize.y - _graphSize.y*(_module->_rangeDb - _positiveDisplayDB - 48.0)/_module->_rangeDb);
+	lineY = _insetTop + (_graphSize.y - _graphSize.y*(rangeDb - _positiveDisplayDB - 48.0)/rangeDb);
 	nvgMoveTo(args.vg, lineX, lineY);
 	nvgLineTo(args.vg, _size.x - _insetRight, lineY);
 	nvgStroke(args.vg);
 	drawText(args, "-48", textX, lineY + 10, textR);
 
-	if (_module->_rangeDb > 100.0) {
+	if (rangeDb > 100.0) {
 		nvgBeginPath(args.vg);
-		lineY = _insetTop + (_graphSize.y - _graphSize.y*(_module->_rangeDb - _positiveDisplayDB - 96.0)/_module->_rangeDb);
+		lineY = _insetTop + (_graphSize.y - _graphSize.y*(rangeDb - _positiveDisplayDB - 96.0)/rangeDb);
 		nvgMoveTo(args.vg, lineX, lineY);
 		nvgLineTo(args.vg, _size.x - _insetRight, lineY);
 		nvgStroke(args.vg);
@@ -351,64 +363,64 @@ void AnalyzerDisplay::drawYAxis(const DrawArgs& args, float strokeWidth) {
 	nvgRestore(args.vg);
 }
 
-void AnalyzerDisplay::drawXAxis(const DrawArgs& args, float strokeWidth) {
+void AnalyzerDisplay::drawXAxis(const DrawArgs& args, float strokeWidth, float rangeMinHz, float rangeMaxHz) {
 	nvgSave(args.vg);
 	nvgStrokeColor(args.vg, _axisColor);
 	nvgStrokeWidth(args.vg, strokeWidth);
 
 	float hz = 100.0f;
-	while (hz < _module->_rangeMaxHz && hz < 1001.0) {
-		if (hz >= _module->_rangeMinHz) {
-			drawXAxisLine(args, hz);
+	while (hz < rangeMaxHz && hz < 1001.0) {
+		if (hz >= rangeMinHz) {
+			drawXAxisLine(args, hz, rangeMinHz, rangeMaxHz);
 		}
 		hz += 100.0;
 	}
 	hz = 2000.0;
-	while (hz < _module->_rangeMaxHz && hz < 10001.0) {
-		if (hz >= _module->_rangeMinHz) {
-			drawXAxisLine(args, hz);
+	while (hz < rangeMaxHz && hz < 10001.0) {
+		if (hz >= rangeMinHz) {
+			drawXAxisLine(args, hz, rangeMinHz, rangeMaxHz);
 		}
 		hz += 1000.0;
 	}
 	hz = 20000.0;
-	while (hz < _module->_rangeMaxHz && hz < 100001.0) {
-		if (hz >= _module->_rangeMinHz) {
-			drawXAxisLine(args, hz);
+	while (hz < rangeMaxHz && hz < 100001.0) {
+		if (hz >= rangeMinHz) {
+			drawXAxisLine(args, hz, rangeMinHz, rangeMaxHz);
 		}
 		hz += 10000.0;
 	}
 
 	drawText(args, "Hz", _insetLeft, _size.y - 2);
-	if (_module->_rangeMinHz <= 100.0f) {
-		float x = (100.0 - _module->_rangeMinHz) / (_module->_rangeMaxHz - _module->_rangeMinHz);
+	if (rangeMinHz <= 100.0f) {
+		float x = (100.0 - rangeMinHz) / (rangeMaxHz - rangeMinHz);
 		x = powf(x, _xAxisLogFactor);
 		if (x < 1.0) {
 			x *= _graphSize.x;
 			drawText(args, "100", _insetLeft + x - 8, _size.y - 2);
 		}
 	}
-	if (_module->_rangeMinHz <= 1000.0f) {
-		float x = (1000.0 - _module->_rangeMinHz) / (_module->_rangeMaxHz - _module->_rangeMinHz);
+	if (rangeMinHz <= 1000.0f) {
+		float x = (1000.0 - rangeMinHz) / (rangeMaxHz - rangeMinHz);
 		x = powf(x, _xAxisLogFactor);
 		if (x < 1.0) {
 			x *= _graphSize.x;
 			drawText(args, "1k", _insetLeft + x - 4, _size.y - 2);
 		}
 	}
-	if (_module->_rangeMinHz <= 10000.0f) {
-		float x = (10000.0 - _module->_rangeMinHz) / (_module->_rangeMaxHz - _module->_rangeMinHz);
+	if (rangeMinHz <= 10000.0f) {
+		float x = (10000.0 - rangeMinHz) / (rangeMaxHz - rangeMinHz);
 		x = powf(x, _xAxisLogFactor);
 		if (x < 1.0) {
 			x *= _graphSize.x;
 			drawText(args, "10k", _insetLeft + x - 4, _size.y - 2);
 		}
 	}
-	if (_module->_rangeMinHz > 1000.0f) {
+	if (rangeMinHz > 1000.0f) {
 		hz = 20000.0f;
 		float lastX = 0.0f;
-		while (hz < _module->_rangeMaxHz) {
-			if (_module->_rangeMinHz <= hz) {
-				float x = (hz - _module->_rangeMinHz) / (_module->_rangeMaxHz - _module->_rangeMinHz);
+		while (hz < rangeMaxHz) {
+			if (rangeMinHz <= hz) {
+				float x = (hz - rangeMinHz) / (rangeMaxHz - rangeMinHz);
 				x = powf(x, _xAxisLogFactor);
 				if (x > lastX + 0.075f && x < 1.0f) {
 					lastX = x;
@@ -426,8 +438,8 @@ void AnalyzerDisplay::drawXAxis(const DrawArgs& args, float strokeWidth) {
 	nvgRestore(args.vg);
 }
 
-void AnalyzerDisplay::drawXAxisLine(const DrawArgs& args, float hz) {
-	float x = (hz - _module->_rangeMinHz) / (_module->_rangeMaxHz - _module->_rangeMinHz);
+void AnalyzerDisplay::drawXAxisLine(const DrawArgs& args, float hz, float rangeMinHz, float rangeMaxHz) {
+	float x = (hz - rangeMinHz) / (rangeMaxHz - rangeMinHz);
 	x = powf(x, _xAxisLogFactor);
 	if (x < 1.0) {
 		x *= _graphSize.x;
@@ -438,10 +450,19 @@ void AnalyzerDisplay::drawXAxisLine(const DrawArgs& args, float hz) {
 	}
 }
 
-void AnalyzerDisplay::drawGraph(const DrawArgs& args, const float* bins, int binsN, NVGcolor color, float strokeWidth) {
-	float range = (_module->_rangeMaxHz - _module->_rangeMinHz) / (0.5f * APP->engine->getSampleRate());
+void AnalyzerDisplay::drawGraph(
+	const DrawArgs& args,
+	const float* bins,
+	int binsN,
+	NVGcolor color,
+	float strokeWidth,
+	float rangeMinHz,
+	float rangeMaxHz,
+	float rangeDb
+) {
+	float range = (rangeMaxHz - rangeMinHz) / (0.5f * APP->engine->getSampleRate());
 	int pointsN = roundf(range * (_module->_core.size() / 2));
-	range = _module->_rangeMinHz / (0.5f * APP->engine->getSampleRate());
+	range = rangeMinHz / (0.5f * APP->engine->getSampleRate());
 	int pointsOffset = roundf(range * (_module->_core.size() / 2));
 	nvgSave(args.vg);
 	nvgScissor(args.vg, _insetLeft, _insetTop, _graphSize.x, _graphSize.y);
@@ -449,7 +470,7 @@ void AnalyzerDisplay::drawGraph(const DrawArgs& args, const float* bins, int bin
 	nvgStrokeWidth(args.vg, strokeWidth);
 	nvgBeginPath(args.vg);
 	for (int i = 0; i < pointsN; ++i) {
-		int height = binValueToHeight(bins[pointsOffset + i]);
+		int height = binValueToHeight(bins[pointsOffset + i], rangeDb);
 		if (i == 0) {
 			nvgMoveTo(args.vg, _insetLeft, _insetTop + (_graphSize.y - height));
 		}
@@ -473,14 +494,14 @@ void AnalyzerDisplay::drawText(const DrawArgs& args, const char* s, float x, flo
 	nvgRestore(args.vg);
 }
 
-int AnalyzerDisplay::binValueToHeight(float value) {
-	const float minDB = -(_module->_rangeDb - _positiveDisplayDB);
+int AnalyzerDisplay::binValueToHeight(float value, float rangeDb) {
+	const float minDB = -(rangeDb - _positiveDisplayDB);
 	value /= 10.0f; // arbitrarily use 5.0f as reference "maximum" baseline signal (e.g. raw output of an oscillator)...but signals are +/-5, so 10 total.
 	value = powf(value, 0.5f); // undoing magnitude scaling of levels back from the FFT?
 	value = amplitudeToDecibels(value);
 	value = std::max(minDB, value);
 	value = std::min(_positiveDisplayDB, value);
 	value -= minDB;
-	value /= _module->_rangeDb;
+	value /= rangeDb;
 	return roundf(_graphSize.y * value);
 }

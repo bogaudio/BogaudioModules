@@ -83,22 +83,19 @@ struct LFOBaseWidget : ModuleWidget, PitchModeListener {
 	}
 
 	void setSvg() {
-		// FIXME.v1
 		if (_module && !_module->isCompliantPitchMode()) {
 			_panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, _classicSvgName)));
-			// if (_frequencyKnob) {
-			// 	_frequencyKnob->minValue = -8.0f;
-			// 	_frequencyKnob->maxValue = 5.0f;
-			// 	_frequencyKnob->dirty = true;
-			// }
+			if (_frequencyKnob && _frequencyKnob->paramQuantity) {
+				_frequencyKnob->paramQuantity->minValue = -8.0f;
+				_frequencyKnob->paramQuantity->maxValue = 5.0f;
+			}
 		}
 		else {
 			_panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, _compliantSvgName)));
-			// if (_frequencyKnob) {
-			// 	_frequencyKnob->minValue = -5.0f;
-			// 	_frequencyKnob->maxValue = 8.0f;
-			// 	_frequencyKnob->dirty = true;
-			// }
+			if (_frequencyKnob && _frequencyKnob->paramQuantity) {
+				_frequencyKnob->paramQuantity->minValue = -5.0f;
+				_frequencyKnob->paramQuantity->maxValue = 8.0f;
+			}
 		}
 		_panel->dirty = true;
 	}

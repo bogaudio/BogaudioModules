@@ -147,9 +147,9 @@ struct CompressionDisplay : OpaqueWidget {
 	}
 
 	void draw(const DrawArgs& args) override {
-		// FIXME.v1
-		if (!_module) {
-			return;
+		float compressionDb = 0.0f;
+		if (_module) {
+			compressionDb = _module->_compressionDb;
 		}
 
 		nvgSave(args.vg);
@@ -160,7 +160,7 @@ struct CompressionDisplay : OpaqueWidget {
 			nvgRect(args.vg, 3, i + 1, 5, 4);
 			nvgFillColor(args.vg, bgColor);
 			nvgFill(args.vg);
-			if (_module->_compressionDb > l.db) {
+			if (compressionDb > l.db) {
 				nvgFillColor(args.vg, l.color);
 				nvgFill(args.vg);
 			}

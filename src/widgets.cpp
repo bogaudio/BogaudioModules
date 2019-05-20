@@ -147,8 +147,14 @@ NVGcolor bogaudio::decibelsToColor(float db) {
 
 
 void VUSlider::draw(const DrawArgs& args) {
-	if (!paramQuantity) {
-		return;
+	float level = 0.0f;
+	if (paramQuantity) {
+		level = paramQuantity->getValue();
+	}
+	else {
+		float minDb = -60.0f;
+		float maxDb = 6.0f;
+		level = fabsf(minDb) / (maxDb - minDb);
 	}
 
 	nvgSave(args.vg);
@@ -164,7 +170,7 @@ void VUSlider::draw(const DrawArgs& args) {
 
 	nvgSave(args.vg);
 	{
-		nvgTranslate(args.vg, 0, (box.size.y - 13.0f) * (1.0f - paramQuantity->getValue()));
+		nvgTranslate(args.vg, 0, (box.size.y - 13.0f) * (1.0f - level));
 		nvgBeginPath(args.vg);
 		nvgRoundedRect(args.vg, 0, 0, 18, 13, 1.5);
 		nvgFillColor(args.vg, nvgRGBA(0x77, 0x77, 0x77, 0xff));

@@ -59,25 +59,31 @@ struct ReftoneDisplay : TransparentWidget {
 };
 
 void ReftoneDisplay::draw(const DrawArgs& args) {
-	// FIXME.v1
-	if (!_module) {
-		return;
+	int mPitch = 9;
+	int mOctave = 4;
+	float mFine = 0.0f;
+	float mFrequency = 440.0f;
+	if (_module) {
+		mPitch = _module->_pitch;
+		mOctave = _module->_octave;
+		mFine = _module->_fine;
+		mFrequency = _module->_frequency;
 	}
 
 	const int n = 20;
 	char octave[n];
-	snprintf(octave, n, "%d", _module->_octave);
+	snprintf(octave, n, "%d", mOctave);
 
 	char fine[n];
-	fine[0] = _module->_fine < 0.0 ? '-' : '+';
-	snprintf(fine + 1, n - 1, "%02d", abs((int)(_module->_fine * 100)));
+	fine[0] = mFine < 0.0 ? '-' : '+';
+	snprintf(fine + 1, n - 1, "%02d", abs((int)(mFine * 100)));
 
 	char frequency[20];
-	snprintf(frequency, n, _module->_frequency >= 1000.0 ? "%0.0f" : "%0.1f", _module->_frequency);
+	snprintf(frequency, n, mFrequency >= 1000.0 ? "%0.0f" : "%0.1f", mFrequency);
 
 	const char* pitch = NULL;
 	const char* sharpFlat = NULL;
-	switch (_module->_pitch) {
+	switch (mPitch) {
 		case 0: {
 			pitch = "C";
 			break;
