@@ -13,7 +13,7 @@ void MixerChannel::setSampleRate(float sampleRate) {
 }
 
 void MixerChannel::next(bool stereo, bool solo) {
-	if (!_inInput.active) {
+	if (!_inInput.isConnected()) {
 		rms = out = left = right = 0.0f;
 		return;
 	}
@@ -28,7 +28,7 @@ void MixerChannel::next(bool stereo, bool solo) {
 	}
 	else {
 		float level = clamp(_levelParam.value, 0.0f, 1.0f);
-		if (_levelInput.active) {
+		if (_levelInput.isConnected()) {
 			level *= clamp(_levelInput.value / 10.0f, 0.0f, 1.0f);
 		}
 		level *= maxDecibels - minDecibels;
@@ -40,7 +40,7 @@ void MixerChannel::next(bool stereo, bool solo) {
 	rms = _rms.next(out / 5.0f);
 	if (stereo) {
 		float pan = clamp(_panParam.value, -1.0f, 1.0f);
-		if (_panInput.active) {
+		if (_panInput.isConnected()) {
 			pan *= clamp(_panInput.value / 5.0f, -1.0f, 1.0f);
 		}
 		_panner.setPan(_panSL.next(pan));
@@ -69,36 +69,31 @@ SoloMuteButton::SoloMuteButton() {
 	shadow->box.pos = Vec(0.0, 1.0);
 }
 
-void SoloMuteButton::step() {
-	// FIXME.v1 FramebufferWidget::step();
-}
-
 void SoloMuteButton::onButton(const event::Button& e) {
-	// FIXME.v1
-	if (!(e.action == GLFW_PRESS /*&& e.button == GLFW_MOUSE_BUTTON_LEFT*/ && (e.mods & RACK_MOD_MASK) == 0)) {
+	if (!paramQuantity || !(e.action == GLFW_PRESS && (e.mods & RACK_MOD_MASK) == 0)) {
 		return;
 	}
 
-	// FIXME.v1
-	// if (value >= 2.0f) {
-	// 	setValue(value - 2.0f);
-	// }
-	// else if (e.button == 1) { // right click
-	// 	setValue(value + 2.0f);
-	// }
-	// else {
-	// 	setValue(value > 0.5f ? 0.0f : 1.0f);
-	// }
-	//
-	// e.consumed = true;
-	// e.target = this;
+	float value = paramQuantity->getValue();
+	if (value >= 2.0f) {
+		paramQuantity->setValue(value - 2.0f);
+	}
+	else if (e.button == GLFW_MOUSE_BUTTON_RIGHT) {
+		paramQuantity->setValue(value + 2.0f);
+	}
+	else {
+		paramQuantity->setValue(value > 0.5f ? 0.0f : 1.0f);
+	}
+
+	e.consume(this);
 }
 
 void SoloMuteButton::onChange(const event::Change& e) {
-	// FIXME.v1
-	// assert(_frames.size() == 4);
-	// assert(value >= 0.0f && value <= 3.0f);
-	// _svgWidget->setSvg(_frames[(int)value]);
-	// dirty = true;
+	assert(_frames.size() == 4);
+	if (paramQuantity) {
+		float value = paramQuantity->getValue();
+		assert(value >= 0.0f && value <= 3.0f);
+		_svgWidget->setSvg(_frames[(int)value]);
+	}
 	ParamWidget::onChange(e);
 }

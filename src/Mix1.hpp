@@ -33,25 +33,27 @@ struct Mix1 : Module {
 		NUM_LIGHTS
 	};
 
-	MixerChannel _channel;
+	MixerChannel* _channel = NULL;
 
-	Mix1()
-	:  _channel(
-		params[LEVEL_PARAM],
-		params[LEVEL_PARAM], // not used
-		params[MUTE_PARAM],
-		inputs[IN_INPUT],
-		inputs[LEVEL_INPUT],
-		inputs[LEVEL_INPUT], // not used
-		1000.0f,
-		&inputs[MUTE_INPUT]
-	)
-	{
+	Mix1() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(LEVEL_PARAM, 0.0f, 1.0f, fabsf(MixerChannel::minDecibels) / (MixerChannel::maxDecibels - MixerChannel::minDecibels), "level");
 		configParam(MUTE_PARAM, 0.0f, 1.0f, 0.0f, "mute");
 
+		_channel = new MixerChannel(
+			params[LEVEL_PARAM],
+			params[LEVEL_PARAM], // not used
+			params[MUTE_PARAM],
+			inputs[IN_INPUT],
+			inputs[LEVEL_INPUT],
+			inputs[LEVEL_INPUT], // not used
+			1000.0f,
+			&inputs[MUTE_INPUT]
+		);
 		onSampleRateChange();
+	}
+	virtual ~Mix1() {
+		delete _channel;
 	}
 
 	void onSampleRateChange() override;

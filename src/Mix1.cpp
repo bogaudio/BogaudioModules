@@ -2,12 +2,12 @@
 #include "Mix1.hpp"
 
 void Mix1::onSampleRateChange() {
-	_channel.setSampleRate(APP->engine->getSampleRate());
+	_channel->setSampleRate(APP->engine->getSampleRate());
 }
 
 void Mix1::process(const ProcessArgs& args) {
-	_channel.next(false, false);
-	outputs[OUT_OUTPUT].setVoltage(_channel.out);
+	_channel->next(false, false);
+	outputs[OUT_OUTPUT].setVoltage(_channel->out);
 }
 
 struct Mix1Widget : ModuleWidget {
@@ -41,7 +41,7 @@ struct Mix1Widget : ModuleWidget {
 		{
 			auto slider = createParam<VUSlider151>(levelParamPosition, module, Mix1::LEVEL_PARAM);
 			if (module) {
-				dynamic_cast<VUSlider*>(slider)->setVULevel(&module->_channel.rms);
+				dynamic_cast<VUSlider*>(slider)->setVULevel(&module->_channel->rms);
 			}
 			addParam(slider);
 		}

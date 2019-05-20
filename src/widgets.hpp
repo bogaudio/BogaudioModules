@@ -6,9 +6,7 @@ extern Plugin *pluginInstance;
 
 namespace bogaudio {
 
-// FIXME.v1: all of this.
-
-struct Button18 : SvgSwitch /*, MomentarySwitch*/ {
+struct Button18 : SvgSwitch {
 	Button18();
 };
 
@@ -52,7 +50,7 @@ struct BlankPort24 : Port24 {
 	BlankPort24();
 };
 
-struct SliderSwitch : SvgSwitch /*, ToggleSwitch*/ {
+struct SliderSwitch : SvgSwitch {
 	CircularShadow* shadow = NULL;
 	SliderSwitch();
 };
@@ -61,13 +59,12 @@ struct SliderSwitch2State14 : SliderSwitch {
 	SliderSwitch2State14();
 };
 
-struct StatefulButton : ParamWidget /*, FramebufferWidget*/ {
+struct StatefulButton : ParamWidget {
 	std::vector<std::shared_ptr<Svg>> _frames;
 	SvgWidget* _svgWidget; // deleted elsewhere.
 	CircularShadow* shadow = NULL;
 
 	StatefulButton(const char* offSvgPath, const char* onSvgPath);
-	void step() override;
 	void onDragStart(const event::DragStart& e) override;
 	void onDragEnd(const event::DragEnd& e) override;
 };
@@ -80,7 +77,7 @@ struct StatefulButton18 : StatefulButton {
 	StatefulButton18();
 };
 
-struct ToggleButton : SvgSwitch /*, ToggleSwitch*/ {
+struct ToggleButton : SvgSwitch {
 };
 
 struct ToggleButton18 : ToggleButton {
@@ -89,7 +86,7 @@ struct ToggleButton18 : ToggleButton {
 
 NVGcolor decibelsToColor(float db);
 
-struct VUSlider : Knob {
+struct VUSlider : SliderKnob {
 	const float slideHeight = 13.0f;
 	float* _vuLevel = NULL;
 

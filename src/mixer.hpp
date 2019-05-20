@@ -65,13 +65,12 @@ struct MuteButton : ToggleButton {
 	}
 };
 
-struct SoloMuteButton : ParamWidget /*FIXME.v1 , FramebufferWidget*/ {
+struct SoloMuteButton : ParamWidget {
 	std::vector<std::shared_ptr<Svg>> _frames;
 	SvgWidget* _svgWidget; // deleted elsewhere.
 	CircularShadow* shadow = NULL;
 
 	SoloMuteButton();
-	void step() override;
 	void onButton(const event::Button& e) override;
 	void onChange(const event::Change& e) override;
 };

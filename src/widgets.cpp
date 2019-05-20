@@ -9,6 +9,7 @@ Button18::Button18() {
 	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_0.svg")));
 	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_1.svg")));
 	box.size = Vec(18, 18);
+	momentary = true;
 }
 
 
@@ -100,26 +101,20 @@ StatefulButton::StatefulButton(const char* offSvgPath, const char* onSvgPath) {
 	shadow->box.pos = Vec(0.0, 1.0);
 }
 
-void StatefulButton::step() {
-	// FIXME.v1 FramebufferWidget::step();
-}
-
 void StatefulButton::onDragStart(const event::DragStart& e) {
-	_svgWidget->setSvg(_frames[1]);
-	// FIXME.v1
-	// dirty = true;
-	//
-	// if (value >= maxValue) {
-	// 	setValue(minValue);
-	// }
-	// else {
-	// 	setValue(value + 1.0);
-	// }
+	if (paramQuantity) {
+		_svgWidget->setSvg(_frames[1]);
+		if (paramQuantity->getValue() >= paramQuantity->getMaxValue()) {
+			paramQuantity->setValue(paramQuantity->getMinValue());
+		}
+		else {
+			paramQuantity->setValue(paramQuantity->getValue() + 1.0);
+		}
+	}
 }
 
 void StatefulButton::onDragEnd(const event::DragEnd& e) {
 	_svgWidget->setSvg(_frames[0]);
-	// FIXME.v1 dirty = true;
 }
 
 
@@ -152,6 +147,10 @@ NVGcolor bogaudio::decibelsToColor(float db) {
 
 
 void VUSlider::draw(const DrawArgs& args) {
+	if (!paramQuantity) {
+		return;
+	}
+
 	nvgSave(args.vg);
 	{
 		nvgBeginPath(args.vg);
@@ -165,7 +164,7 @@ void VUSlider::draw(const DrawArgs& args) {
 
 	nvgSave(args.vg);
 	{
-		// FIXME.v1 nvgTranslate(args.vg, 0, (box.size.y - 13.0f) * (1.0f - value));
+		nvgTranslate(args.vg, 0, (box.size.y - 13.0f) * (1.0f - paramQuantity->getValue()));
 		nvgBeginPath(args.vg);
 		nvgRoundedRect(args.vg, 0, 0, 18, 13, 1.5);
 		nvgFillColor(args.vg, nvgRGBA(0x77, 0x77, 0x77, 0xff));
