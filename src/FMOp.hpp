@@ -83,7 +83,7 @@ struct FMOp : Module {
 	FMOp():
 	_envelope(true)
 	{
-	    config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
+	    config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		onReset();
 		onSampleRateChange();
 
