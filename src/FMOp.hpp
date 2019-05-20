@@ -73,26 +73,40 @@ struct FMOp : Module {
 	SineTableOscillator _sineTable;
 	CICDecimator _decimator;
 	Trigger _gateTrigger;
-	SlewLimiter _feedbackSL;
-	SlewLimiter _depthSL;
-	SlewLimiter _levelSL;
-	SlewLimiter _sustainSL;
+	bogaudio::dsp::SlewLimiter _feedbackSL;
+	bogaudio::dsp::SlewLimiter _depthSL;
+	bogaudio::dsp::SlewLimiter _levelSL;
+	bogaudio::dsp::SlewLimiter _sustainSL;
 	Amplifier _amplifier;
 	bool _linearLevel = false;
 
-	FMOp()
-	: Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
-	, _envelope(true)
+	FMOp():
+	_envelope(true)
 	{
+	    config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		onReset();
 		onSampleRateChange();
+
+		configParam(RATIO_PARAM, -1.0f, 1.0f, 0.0f, "Ratio");
+		configParam(FINE_PARAM, -1.0, 1.0, 0.0, "Fine");
+		configParam(ATTACK_PARAM,  0.0f, 1.0f, 0.12f, "Attack");
+		configParam(DECAY_PARAM, 0.0, 1.0, 0.31623, "Decay");
+		configParam(SUSTAIN_PARAM, 0.0f, 1.0f, 1.0f, "Sustain");
+		configParam(RELEASE_PARAM, 0.0f, 1.0f, 0.31623f, "Release");
+		configParam(DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "Depth");
+		configParam(FEEDBACK_PARAM, 0.0, 1.0, 0.0, "Feedback");
+		configParam(LEVEL_PARAM, 0.0, 1.0, 1.0, "Level");
+		configParam(ENV_TO_LEVEL_PARAM, 0.0, 1.0, 0.0, "Envelope to level");
+		configParam(ENV_TO_FEEDBACK_PARAM, 0.0, 1.0, 0.0, "Envelope to feedback");
+		configParam(ENV_TO_DEPTH_PARAM, 0.0, 1.0, 0.0, "Envelope to depth");
+
 	}
 
 	void onReset() override;
 	void onSampleRateChange() override;
-	json_t* toJson() override;
-	void fromJson(json_t* root) override;
-	void step() override;
+	json_t* dataToJson() override;
+	void dataFromJson(json_t* root) override;
+	void process(const ProcessArgs &args) override;
 };
 
 } // namespace bogaudio
