@@ -165,14 +165,10 @@ struct EightFOWidget : LFOBaseWidget {
 	EightFOWidget(EightFO* module)
 	: LFOBaseWidget(
 		module,
-		new SvgPanel(),
+		Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT),
 		"res/EightFO-classic.svg",
 		"res/EightFO.svg"
 	) {
-		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
-		_panel->box.size = box.size;
-		addChild(_panel);
-
 		addChild(createWidget<ScrewSilver>(Vec(15, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(15, 365)));

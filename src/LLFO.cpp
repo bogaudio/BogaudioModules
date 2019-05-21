@@ -84,13 +84,13 @@ struct LLFOWidget : LFOBaseWidget {
 	LLFOWidget(LLFO* module)
 	: LFOBaseWidget(
 		module,
-		new SvgPanel(),
+		Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT),
 		"res/LLFO-classic.svg",
 		"res/LLFO.svg"
 	) {
-		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
-		_panel->box.size = box.size;
-		addChild(_panel);
+		// box.size =
+		// _panel->box.size = box.size;
+		// addChild(_panel);
 
 		addChild(createWidget<ScrewSilver>(Vec(0, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 365)));
