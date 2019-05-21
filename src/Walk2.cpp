@@ -5,6 +5,8 @@
 #define GRID_KEY "grid"
 #define COLOR_KEY "color"
 
+extern float zoom;
+
 void Walk2::onReset() {
 	_jumpTrigger.reset();
 	_modulationStep = modulationSteps;
@@ -165,7 +167,7 @@ struct Walk2Display : TransparentWidget {
 	}
 
 	void draw(const DrawArgs& args) override {
-		float strokeWidth = 2.0f; // FIXME.v1 std::max(1.0f, 3 - gRackScene->zoomWidget->zoom);
+		float strokeWidth = std::max(1.0f, 3.0f - getZoom());
 
 		drawBackground(args);
 		nvgSave(args.vg);
@@ -360,8 +362,8 @@ struct Walk2Display : TransparentWidget {
 		// nvgGlobalCompositeOperation(args.vg, NVG_LIGHTER);
 
 		// int n = _module->historyPoints;
-		// float beginRadius = std::max(1.0f, 2.0f - gRackScene->zoomWidget->zoom);
-		// float endRadius = std::max(0.01f, 0.8f - gRackScene->zoomWidget->zoom);
+		// float beginRadius = std::max(1.0f, 2.0f - getZoom());
+		// float endRadius = std::max(0.01f, 0.8f - getZoom());
 		// float radiusStep = (beginRadius - endRadius) / (float)n;
 		// float radius = beginRadius;
 		// float alphaStep = (color.a - 0.1f) / (float)n;
@@ -377,8 +379,8 @@ struct Walk2Display : TransparentWidget {
 		// }
 
 		int n = _module->historyPoints;
-		float beginWidth = 2.0f; // FIXME.v1 std::max(1.0f, 4.0f - gRackScene->zoomWidget->zoom);
-		float endWidth = 1.0f; // FIXME.v1 std::max(0.5f, 2.0f - gRackScene->zoomWidget->zoom);
+		float beginWidth = std::max(1.0f, 4.0f - getZoom());
+		float endWidth = std::max(0.5f, 2.0f - getZoom());
 		if (_module->_zoomOut) {
 			beginWidth *= 2.0f;
 			endWidth *= 2.0f;

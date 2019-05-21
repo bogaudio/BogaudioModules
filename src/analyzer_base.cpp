@@ -221,7 +221,7 @@ void AnalyzerDisplay::draw(const DrawArgs& args) {
 
 	drawBackground(args);
 
-	float strokeWidth = 2.0f; // FIXME.v1 std::max(1.0f, 3 - gRackScene->zoomWidget->zoom);
+	float strokeWidth = std::max(1.0f, 3.0f - getZoom());
 	_xAxisLogFactor = (rangeMaxHz - rangeMinHz) / rangeMaxHz;
 	_xAxisLogFactor *= 1.0f - baseXAxisLogFactor;
 	_xAxisLogFactor = 1.0f - _xAxisLogFactor;
