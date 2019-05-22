@@ -36,7 +36,8 @@ void CVD::step() {
 struct CVDWidget : ModuleWidget {
 	static constexpr int hp = 3;
 
-	CVDWidget(CVD* module) : ModuleWidget(module) {
+	CVDWidget(CVD* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

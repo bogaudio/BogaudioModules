@@ -15,7 +15,8 @@ void Matrix88::step() {
 struct Matrix88Widget : ModuleWidget {
 	static constexpr int hp = 22;
 
-	Matrix88Widget(Matrix88* module) : ModuleWidget(module) {
+	Matrix88Widget(Matrix88* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

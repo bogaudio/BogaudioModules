@@ -42,7 +42,8 @@ void ADSR::step() {
 struct ADSRWidget : ModuleWidget {
 	static constexpr int hp = 3;
 
-	ADSRWidget(ADSR* module) : ModuleWidget(module) {
+	ADSRWidget(ADSR* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

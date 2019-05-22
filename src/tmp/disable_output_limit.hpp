@@ -35,7 +35,8 @@ struct DisableOutputLimitMenuItem : MenuItem {
 };
 
 struct DisableOutputLimitModuleWidget : ModuleWidget {
-	DisableOutputLimitModuleWidget(Module* module) : ModuleWidget(module) {
+	DisableOutputLimitModuleWidget(Module* module) {
+		setModule(module);
 	}
 
 	void appendContextMenu(Menu* menu) override {

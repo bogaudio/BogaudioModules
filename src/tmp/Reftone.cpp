@@ -181,7 +181,8 @@ float ReftoneDisplay::textRenderWidth(NVGcontext* vg, const char* s, int size) {
 struct ReftoneWidget : ModuleWidget {
 	static constexpr int hp = 3;
 
-	ReftoneWidget(Reftone* module) : ModuleWidget(module) {
+	ReftoneWidget(Reftone* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

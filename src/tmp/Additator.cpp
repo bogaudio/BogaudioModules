@@ -148,7 +148,8 @@ void Additator::step() {
 struct AdditatorWidget : ModuleWidget {
 	static constexpr int hp = 15;
 
-	AdditatorWidget(Additator* module) : ModuleWidget(module) {
+	AdditatorWidget(Additator* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

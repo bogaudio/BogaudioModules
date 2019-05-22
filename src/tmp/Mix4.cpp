@@ -70,7 +70,8 @@ void Mix4::step() {
 struct Mix4Widget : ModuleWidget {
 	static constexpr int hp = 15;
 
-	Mix4Widget(Mix4* module) : ModuleWidget(module) {
+	Mix4Widget(Mix4* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

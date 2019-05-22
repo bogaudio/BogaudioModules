@@ -32,7 +32,8 @@ void bogaudio::Switch::step() {
 struct SwitchWidget : ModuleWidget {
 	static constexpr int hp = 3;
 
-	SwitchWidget(bogaudio::Switch* module) : ModuleWidget(module) {
+	SwitchWidget(bogaudio::Switch* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

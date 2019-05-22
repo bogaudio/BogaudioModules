@@ -467,7 +467,8 @@ struct ColorMenuItem : MenuItem {
 struct Walk2Widget : ModuleWidget {
 	static constexpr int hp = 14;
 
-	Walk2Widget(Walk2* module) : ModuleWidget(module) {
+	Walk2Widget(Walk2* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

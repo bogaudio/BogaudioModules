@@ -50,7 +50,7 @@ struct ShaperCore {
 	bool& _triggerOnLoad;
 	bool& _shouldTriggerOnLoad;
 	Trigger _trigger;
-	PulseGenerator _triggerOuptutPulseGen;
+	dsp::PulseGenerator _triggerOuptutPulseGen;
 	Stage _stage;
 	float _stageProgress;
 

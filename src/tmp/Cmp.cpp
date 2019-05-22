@@ -156,7 +156,8 @@ int Cmp::lagInSamples() {
 struct CmpWidget : ModuleWidget {
 	static constexpr int hp = 6;
 
-	CmpWidget(Cmp* module) : ModuleWidget(module) {
+	CmpWidget(Cmp* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

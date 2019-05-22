@@ -40,7 +40,7 @@ struct DGate : TriggerOnLoadModule {
 
 	bool _firstStep = true;
 	Trigger _trigger;
-	PulseGenerator _triggerOuptutPulseGen;
+	dsp::PulseGenerator _triggerOuptutPulseGen;
 	Stage _stage;
 	float _stageProgress;
 

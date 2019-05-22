@@ -73,7 +73,8 @@ bool DGate::stepStage(Param& knob) {
 struct DGateWidget : ModuleWidget {
 	static constexpr int hp = 3;
 
-	DGateWidget(DGate* module) : ModuleWidget(module) {
+	DGateWidget(DGate* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

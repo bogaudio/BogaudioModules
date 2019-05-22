@@ -105,7 +105,8 @@ void Test2::step() {
 
 
 struct Test2Widget : ModuleWidget {
-	Test2Widget(Test2* module) : ModuleWidget(module) {
+	Test2Widget(Test2* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * 6, RACK_GRID_HEIGHT);
 
 		{

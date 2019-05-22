@@ -39,7 +39,8 @@ void XFade::step() {
 struct XFadeWidget : ModuleWidget {
 	static constexpr int hp = 3;
 
-	XFadeWidget(XFade* module) : ModuleWidget(module) {
+	XFadeWidget(XFade* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

@@ -483,7 +483,8 @@ float Test::index3() {
 
 
 struct TestWidget : ModuleWidget {
-	TestWidget(Test* module) : ModuleWidget(module) {
+	TestWidget(Test* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * 3, RACK_GRID_HEIGHT);
 
 		{

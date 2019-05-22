@@ -76,7 +76,8 @@ struct SelectOnClockMenuItem : MenuItem {
 struct AddrSeqWidget : ModuleWidget {
 	static constexpr int hp = 6;
 
-	AddrSeqWidget(AddrSeq* module) : ModuleWidget(module) {
+	AddrSeqWidget(AddrSeq* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

@@ -104,7 +104,8 @@ struct RangeDbMenuItem : MenuItem {
 struct AnalyzerWidget : ModuleWidget {
 	static constexpr int hp = 20;
 
-	AnalyzerWidget(Analyzer* module) : ModuleWidget(module) {
+	AnalyzerWidget(Analyzer* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

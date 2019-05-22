@@ -4,7 +4,8 @@
 struct DADSRHWidget : ModuleWidget {
 	static constexpr int hp = 10;
 
-	DADSRHWidget(DADSRH* module) : ModuleWidget(module) {
+	DADSRHWidget(DADSRH* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

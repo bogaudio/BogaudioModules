@@ -36,7 +36,8 @@ void VCA::channelStep(Input& input, Output& output, Param& knob, Input& cv, Ampl
 struct VCAWidget : ModuleWidget {
 	static constexpr int hp = 3;
 
-	VCAWidget(VCA* module) : ModuleWidget(module) {
+	VCAWidget(VCA* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

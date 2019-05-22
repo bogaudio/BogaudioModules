@@ -159,7 +159,7 @@ struct Test : Module {
 	SawOscillator _saw2;
 	LowPassFilter _lpf;
 	LowPassFilter _lpf2;
-	rack::Decimator<OVERSAMPLEN, OVERSAMPLEN> _rackDecimator;
+	rack::dsp::Decimator<OVERSAMPLEN, OVERSAMPLEN> _rackDecimator;
 #elif OVERSAMPLED_BL
 	BandLimitedSawOscillator _saw1;
 	BandLimitedSawOscillator _saw2;
@@ -172,15 +172,15 @@ struct Test : Module {
 	BandLimitedSquareOscillator _square;
 	bogaudio::dsp::LPFDecimator _sawDecimator;
 	bogaudio::dsp::LPFDecimator _squareDecimator;
-	rack::Decimator<OVERSAMPLEN, OVERSAMPLEN> _sawRackDecimator;
-	rack::Decimator<OVERSAMPLEN, OVERSAMPLEN> _squareRackDecimator;
+	rack::dsp::Decimator<OVERSAMPLEN, OVERSAMPLEN> _sawRackDecimator;
+	rack::dsp::Decimator<OVERSAMPLEN, OVERSAMPLEN> _squareRackDecimator;
 #elif DECIMATORS
 	#define OVERSAMPLEN 8
 	#define STAGES 4
 	BandLimitedSawOscillator _saw;
 	bogaudio::dsp::CICDecimator _cicDecimator;
 	bogaudio::dsp::LPFDecimator _lpfDecimator;
-	rack::Decimator<OVERSAMPLEN, OVERSAMPLEN> _rackDecimator;
+	rack::dsp::Decimator<OVERSAMPLEN, OVERSAMPLEN> _rackDecimator;
 #elif INTERPOLATOR
 	#define FACTOR 8
 	#define STAGES 4

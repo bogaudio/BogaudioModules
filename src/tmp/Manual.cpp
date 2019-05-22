@@ -32,7 +32,8 @@ void Manual::step() {
 struct ManualWidget : ModuleWidget {
 	static constexpr int hp = 3;
 
-	ManualWidget(Manual* module) : ModuleWidget(module) {
+	ManualWidget(Manual* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

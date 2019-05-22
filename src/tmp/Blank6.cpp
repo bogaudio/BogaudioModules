@@ -62,7 +62,8 @@ struct Blank6Display : OpaqueWidget {
 struct Blank6Widget : ModuleWidget {
 	static constexpr int hp = 6;
 
-	Blank6Widget(Blank6* module) : ModuleWidget(module) {
+	Blank6Widget(Blank6* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

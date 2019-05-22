@@ -4,7 +4,8 @@
 struct ShaperWidget : ModuleWidget {
 	static constexpr int hp = 10;
 
-	ShaperWidget(Shaper* module) : ModuleWidget(module) {
+	ShaperWidget(Shaper* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

@@ -35,7 +35,8 @@ void Pan::step() {
 struct PanWidget : ModuleWidget {
 	static constexpr int hp = 3;
 
-	PanWidget(Pan* module) : ModuleWidget(module) {
+	PanWidget(Pan* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

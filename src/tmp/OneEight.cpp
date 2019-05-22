@@ -75,7 +75,8 @@ struct SelectOnClockMenuItem : MenuItem {
 struct OneEightWidget : ModuleWidget {
 	static constexpr int hp = 6;
 
-	OneEightWidget(OneEight* module) : ModuleWidget(module) {
+	OneEightWidget(OneEight* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

@@ -71,7 +71,8 @@ void Nsgt::step() {
 struct NsgtWidget : ModuleWidget {
 	static constexpr int hp = 6;
 
-	NsgtWidget(Nsgt* module) : ModuleWidget(module) {
+	NsgtWidget(Nsgt* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

@@ -42,7 +42,8 @@ void Stack::step() {
 struct StackWidget : ModuleWidget {
 	static constexpr int hp = 3;
 
-	StackWidget(Stack* module) : ModuleWidget(module) {
+	StackWidget(Stack* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

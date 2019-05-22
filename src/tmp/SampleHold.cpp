@@ -41,7 +41,8 @@ void SampleHold::step() {
 struct SampleHoldWidget : ModuleWidget {
 	static constexpr int hp = 3;
 
-	SampleHoldWidget(SampleHold* module) : ModuleWidget(module) {
+	SampleHoldWidget(SampleHold* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

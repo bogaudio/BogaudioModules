@@ -48,7 +48,8 @@ void Walk::step() {
 struct WalkWidget : ModuleWidget {
 	static constexpr int hp = 3;
 
-	WalkWidget(Walk* module) : ModuleWidget(module) {
+	WalkWidget(Walk* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

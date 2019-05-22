@@ -51,7 +51,8 @@ void Clpr::step() {
 struct ClprWidget : ModuleWidget {
 	static constexpr int hp = 6;
 
-	ClprWidget(Clpr* module) : ModuleWidget(module) {
+	ClprWidget(Clpr* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

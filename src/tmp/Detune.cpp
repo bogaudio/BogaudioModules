@@ -40,7 +40,8 @@ void Detune::step() {
 struct DetuneWidget : ModuleWidget {
 	static constexpr int hp = 3;
 
-	DetuneWidget(Detune* module) : ModuleWidget(module) {
+	DetuneWidget(Detune* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

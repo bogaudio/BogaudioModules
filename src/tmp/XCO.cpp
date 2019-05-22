@@ -257,7 +257,8 @@ void XCO::setFrequency(float frequency) {
 struct XCOWidget : ModuleWidget {
 	static constexpr int hp = 20;
 
-	XCOWidget(XCO* module) : ModuleWidget(module) {
+	XCOWidget(XCO* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

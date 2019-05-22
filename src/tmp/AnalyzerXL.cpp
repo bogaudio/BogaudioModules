@@ -242,7 +242,8 @@ struct WindowMenuItem : MenuItem {
 struct AnalyzerXLWidget : ModuleWidget {
 	static constexpr int hp = 42;
 
-	AnalyzerXLWidget(AnalyzerXL* module) : ModuleWidget(module) {
+	AnalyzerXLWidget(AnalyzerXL* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

@@ -167,7 +167,8 @@ struct CompressionDisplay : OpaqueWidget {
 struct PressorWidget : ModuleWidget {
 	static constexpr int hp = 15;
 
-	PressorWidget(Pressor* module) : ModuleWidget(module) {
+	PressorWidget(Pressor* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

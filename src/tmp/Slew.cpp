@@ -63,7 +63,8 @@ float Slew::shape(Param& param) {
 struct SlewWidget : ModuleWidget {
 	static constexpr int hp = 3;
 
-	SlewWidget(Slew* module) : ModuleWidget(module) {
+	SlewWidget(Slew* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

@@ -34,7 +34,8 @@ void AMRM::step() {
 struct AMRMWidget : ModuleWidget {
 	static constexpr int hp = 6;
 
-	AMRMWidget(AMRM* module) : ModuleWidget(module) {
+	AMRMWidget(AMRM* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

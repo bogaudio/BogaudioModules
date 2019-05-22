@@ -46,7 +46,8 @@ void Mute8::stepChannel(int i, bool solo) {
 struct Mute8Widget : ModuleWidget {
 	static constexpr int hp = 10;
 
-	Mute8Widget(Mute8* module) : ModuleWidget(module) {
+	Mute8Widget(Mute8* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

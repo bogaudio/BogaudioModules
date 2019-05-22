@@ -28,7 +28,8 @@ void VCAmp::step() {
 struct VCAmpWidget : ModuleWidget {
 	static constexpr int hp = 3;
 
-	VCAmpWidget(VCAmp* module) : ModuleWidget(module) {
+	VCAmpWidget(VCAmp* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

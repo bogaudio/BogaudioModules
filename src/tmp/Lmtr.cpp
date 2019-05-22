@@ -67,7 +67,8 @@ void Lmtr::step() {
 struct LmtrWidget : ModuleWidget {
 	static constexpr int hp = 6;
 
-	LmtrWidget(Lmtr* module) : ModuleWidget(module) {
+	LmtrWidget(Lmtr* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

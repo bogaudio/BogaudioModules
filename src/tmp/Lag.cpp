@@ -52,7 +52,8 @@ void Lag::step() {
 struct LagWidget : ModuleWidget {
 	static constexpr int hp = 3;
 
-	LagWidget(Lag* module) : ModuleWidget(module) {
+	LagWidget(Lag* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

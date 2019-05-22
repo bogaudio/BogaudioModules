@@ -94,7 +94,8 @@ void Mix8::step() {
 struct Mix8Widget : ModuleWidget {
 	static constexpr int hp = 27;
 
-	Mix8Widget(Mix8* module) : ModuleWidget(module) {
+	Mix8Widget(Mix8* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

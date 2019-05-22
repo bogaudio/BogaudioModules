@@ -62,7 +62,8 @@ void FlipFlop::channelStep(
 struct FlipFlopWidget : ModuleWidget {
 	static constexpr int hp = 3;
 
-	FlipFlopWidget(FlipFlop* module) : ModuleWidget(module) {
+	FlipFlopWidget(FlipFlop* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

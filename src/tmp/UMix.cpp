@@ -104,7 +104,8 @@ struct CVModeMenuItem : MenuItem {
 struct UMixWidget : ModuleWidget {
 	static constexpr int hp = 3;
 
-	UMixWidget(UMix* module) : ModuleWidget(module) {
+	UMixWidget(UMix* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

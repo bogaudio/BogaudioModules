@@ -155,7 +155,8 @@ void VCO::setFrequency(float frequency) {
 struct VCOWidget : ModuleWidget {
 	static constexpr int hp = 10;
 
-	VCOWidget(VCO* module) : ModuleWidget(module) {
+	VCOWidget(VCO* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
