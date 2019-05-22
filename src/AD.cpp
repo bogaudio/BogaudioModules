@@ -10,14 +10,14 @@ void AD::onReset() {
 }
 
 void AD::onSampleRateChange() {
-	float sr = engineGetSampleRate();
+	float sr = APP->engine->getSampleRate();
 	_envelope.setSampleRate(sr);
 	_attackSL.setParams(sr / (float)modulationSteps);
 	_decaySL.setParams(sr / (float)modulationSteps);
 	_modulationStep = modulationSteps;
 }
 
-void AD::step() {
+void AD::process(const ProcessArgs &args) {
 	lights[LOOP_LIGHT].value = _loopMode = params[LOOP_PARAM].getValue() > 0.5f;
 	lights[LINEAR_LIGHT].value = _linearMode = params[LINEAR_PARAM].getValue() > 0.5f;
 	if (!(outputs[ENV_OUTPUT].isConnected() || outputs[EOC_OUTPUT].isConnected() || inputs[TRIGGER_INPUT].isConnected())) {
@@ -54,7 +54,7 @@ void AD::step() {
 		_on = false;
 		_eocPulseGen.trigger(0.001f);
 	}
-	outputs[EOC_OUTPUT].setVoltage(_eocPulseGen.process(engineGetSampleTime()) ? 5.0f : 0.0f);
+	outputs[EOC_OUTPUT].setVoltage(_eocPulseGen.process(args.sampleTime) ? 5.0f : 0.0f);
 
 	lights[ATTACK_LIGHT].value = _envelope.isStage(ADSR::ATTACK_STAGE);
 	lights[DECAY_LIGHT].value = _envelope.isStage(ADSR::DECAY_STAGE);
