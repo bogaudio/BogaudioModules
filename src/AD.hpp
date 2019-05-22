@@ -45,13 +45,19 @@ struct AD : Module {
 	bool _loopMode = false;
 	bool _linearMode = false;
 	Trigger _trigger;
-	PulseGenerator _eocPulseGen;
+	rack::dsp::PulseGenerator _eocPulseGen;
 	bool _on = false;
 	ADSR _envelope;
-	SlewLimiter _attackSL;
-	SlewLimiter _decaySL;
+	bogaudio::dsp::SlewLimiter _attackSL;
+	bogaudio::dsp::SlewLimiter _decaySL;
 
-	AD() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	AD() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		configParam(AD::ATTACK_PARAM, 0.0, 1.0, 0.12);
+		configParam(AD::DECAY_PARAM, 0.0, 1.0, 0.31623);
+		configParam(AD::LOOP_PARAM, 0.0, 1.0, 0.0);
+		configParam(AD::LINEAR_PARAM, 0.0, 1.0, 0.0);
+
 		onReset();
 		onSampleRateChange();
 		_envelope.setSustain(0.0f);
