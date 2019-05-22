@@ -1,7 +1,7 @@
 
 #include "bogaudio.hpp"
 
-//#include "AD.hpp"
+#include "AD.hpp"
 //#include "ADSR.hpp"
 //#include "Additator.hpp"
 //#include "AddrSeq.hpp"
@@ -84,7 +84,7 @@ void init(rack::Plugin *p) {
 //	p->addModel(modelDGate);
 //	p->addModel(modelShaper);
 //	p->addModel(modelShaperPlus);
-//	p->addModel(modelAD);
+	p->addModel(modelAD);
 //	p->addModel(modelADSR);
 //	p->addModel(modelFollow);
 //

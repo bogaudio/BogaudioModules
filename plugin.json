@@ -16,6 +16,12 @@
       "name": "Bogaudio-FMOp",
       "description": "",
       "tags": []
+    },
+    {
+      "slug": "Bogaudio-AD",
+      "name": "Bogaudio-AD",
+      "description": "",
+      "tags": []
     }
   ]
 }
