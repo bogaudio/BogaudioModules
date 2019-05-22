@@ -103,4 +103,4 @@ struct SlewWidget : ModuleWidget {
 	}
 };
 
-Model* modelSlew = bogaudio::createModel<Slew, SlewWidget>("Bogaudio-Slew", "Slew", "slew / lag / glide", SLEW_LIMITER_TAG);
+Model* modelSlew = bogaudio::createModel<Slew, SlewWidget>("Bogaudio-Slew", "Slew", "slew / lag / glide", "Slew limiter");

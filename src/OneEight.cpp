@@ -162,4 +162,4 @@ struct OneEightWidget : ModuleWidget {
 	}
 };
 
-Model* modelOneEight = bogaudio::createModel<OneEight, OneEightWidget>("Bogaudio-OneEight", "1:8", "mux & sequential switch", SWITCH_TAG);
+Model* modelOneEight = bogaudio::createModel<OneEight, OneEightWidget>("Bogaudio-OneEight", "1:8", "mux & sequential switch", "Switch");

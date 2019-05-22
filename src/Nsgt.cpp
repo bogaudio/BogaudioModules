@@ -113,4 +113,4 @@ struct NsgtWidget : ModuleWidget {
 	}
 };
 
-Model* modelNsgt = bogaudio::createModel<Nsgt, NsgtWidget>("Bogaudio-Nsgt", "Nsgt", "noise gate", DYNAMICS_TAG);
+Model* modelNsgt = bogaudio::createModel<Nsgt, NsgtWidget>("Bogaudio-Nsgt", "Nsgt", "noise gate", "Dynamics");

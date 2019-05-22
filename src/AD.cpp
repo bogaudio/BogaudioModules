@@ -115,4 +115,4 @@ struct ADWidget : ModuleWidget {
 	}
 };
 
-Model* modelAD = bogaudio::createModel<AD, ADWidget>("Bogaudio-AD", "AD", "utility envelope", ENVELOPE_GENERATOR_TAG);
+Model* modelAD = bogaudio::createModel<AD, ADWidget>("Bogaudio-AD", "AD", "utility envelope", "Envelope generator");

@@ -79,4 +79,4 @@ struct ShaperWidget : ModuleWidget {
 	}
 };
 
-Model* modelShaper = bogaudio::createModel<Shaper, ShaperWidget>("Bogaudio-Shaper", "Shaper",  "envelope and amplifier", ENVELOPE_GENERATOR_TAG, AMPLIFIER_TAG);
+Model* modelShaper = bogaudio::createModel<Shaper, ShaperWidget>("Bogaudio-Shaper", "Shaper",  "envelope and amplifier", "Envelope generator", "VCA");

@@ -50,4 +50,4 @@ struct BoolWidget : ModuleWidget {
 	}
 };
 
-Model* modelBool = bogaudio::createModel<Bool, BoolWidget>("Bogaudio-Bool", "Bool",  "boolean logic", LOGIC_TAG);
+Model* modelBool = bogaudio::createModel<Bool, BoolWidget>("Bogaudio-Bool", "Bool",  "boolean logic", "Logic");

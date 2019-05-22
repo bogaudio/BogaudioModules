@@ -165,4 +165,4 @@ struct LFOWidget : LFOBaseWidget {
 	}
 };
 
-Model* modelLFO = bogaudio::createModel<LFO, LFOWidget>("Bogaudio-LFO", "LFO",  "low-frequency oscillator", LFO_TAG);
+Model* modelLFO = bogaudio::createModel<LFO, LFOWidget>("Bogaudio-LFO", "LFO",  "low-frequency oscillator", "LFO");

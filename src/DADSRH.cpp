@@ -103,4 +103,4 @@ struct DADSRHWidget : ModuleWidget {
 	}
 };
 
-Model* modelDADSRH = bogaudio::createModel<DADSRH, DADSRHWidget>("Bogaudio-DADSRH", "DADSR(H)",  "advanced envelope", ENVELOPE_GENERATOR_TAG);
+Model* modelDADSRH = bogaudio::createModel<DADSRH, DADSRHWidget>("Bogaudio-DADSRH", "DADSR(H)",  "advanced envelope", "Envelope generator");

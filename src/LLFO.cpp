@@ -88,10 +88,6 @@ struct LLFOWidget : LFOBaseWidget {
 		"res/LLFO-classic.svg",
 		"res/LLFO.svg"
 	) {
-		// box.size =
-		// _panel->box.size = box.size;
-		// addChild(_panel);
-
 		addChild(createWidget<ScrewSilver>(Vec(0, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 365)));
 
@@ -138,4 +134,4 @@ struct LLFOWidget : LFOBaseWidget {
 	}
 };
 
-Model* modelLLFO = bogaudio::createModel<LLFO, LLFOWidget>("Bogaudio-LLFO", "LLFO", "compact LFO", LFO_TAG);
+Model* modelLLFO = bogaudio::createModel<LLFO, LLFOWidget>("Bogaudio-LLFO", "LLFO", "compact LFO", "LFO");

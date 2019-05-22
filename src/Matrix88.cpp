@@ -203,4 +203,4 @@ struct Matrix88Widget : ModuleWidget {
 	}
 };
 
-Model* modelMatrix88 = bogaudio::createModel<Matrix88, Matrix88Widget>("Bogaudio-Matrix88", "Matrix88", "8x8 matrix mixer", MIXER_TAG);
+Model* modelMatrix88 = bogaudio::createModel<Matrix88, Matrix88Widget>("Bogaudio-Matrix88", "Matrix88", "8x8 matrix mixer", "Mixer");

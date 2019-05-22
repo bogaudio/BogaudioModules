@@ -1,8 +1,5 @@
 #pragma once
 
-// #include <string.h>
-// #include <algorithm>
-
 #include "rack.hpp"
 
 using namespace rack;
@@ -16,14 +13,7 @@ Model* createModel(
 	const char* description,
 	Tags... tags
 ) {
-	// FIXME.v1
-	// const int n = 256;
-	// char buf[n];
-	// std::string uName = name;
-	// for (auto& c: uName) {
-	// 	c = toupper(c);
-	// }
-	// snprintf(buf, n, "%s - %s - %dHP", uName.c_str(), description, TModuleWidget::hp);
+	// params besides slug are obsolete here, but see scripts/modules_to_plugin_json.rb
 	return rack::createModel<TModule, TModuleWidget>(slug);
 }
 
