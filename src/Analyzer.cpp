@@ -181,8 +181,8 @@ struct AnalyzerWidget : ModuleWidget {
 		assert(a);
 
 		menu->addChild(new MenuLabel());
-		menu->addChild(new RangeDbMenuItem(a, "Amplitude range: to -60dB", 80.0f));
-		menu->addChild(new RangeDbMenuItem(a, "Amplitude range: to -120dB", 140.0f));
+		menu->addChild(new RangeDbMenuItem(a, "Amplitude: to -60dB", 80.0f));
+		menu->addChild(new RangeDbMenuItem(a, "Amplitude: to -120dB", 140.0f));
 	}
 };
 

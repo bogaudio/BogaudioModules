@@ -288,15 +288,15 @@ struct AnalyzerXLWidget : ModuleWidget {
 		assert(a);
 
 		menu->addChild(new MenuLabel());
-		menu->addChild(new RangeMenuItem(a, "Frequency range: lower 25%", -0.75f));
-		menu->addChild(new RangeMenuItem(a, "Frequency range: lower 50%", -0.5f));
-		menu->addChild(new RangeMenuItem(a, "Frequency range: full", 0.0f));
-		menu->addChild(new RangeMenuItem(a, "Frequency range: upper 50%", 0.5f));
-		menu->addChild(new RangeMenuItem(a, "Frequency range: upper 25%", 0.75f));
+		menu->addChild(new RangeMenuItem(a, "Frequency: lower 25%", -0.75f));
+		menu->addChild(new RangeMenuItem(a, "Frequency: lower 50%", -0.5f));
+		menu->addChild(new RangeMenuItem(a, "Frequency: full", 0.0f));
+		menu->addChild(new RangeMenuItem(a, "Frequency: upper 50%", 0.5f));
+		menu->addChild(new RangeMenuItem(a, "Frequency: upper 25%", 0.75f));
 
 		menu->addChild(new MenuLabel());
-		menu->addChild(new RangeDbMenuItem(a, "Amplitude range: to -60dB", 80.0f));
-		menu->addChild(new RangeDbMenuItem(a, "Amplitude range: to -120dB", 140.0f));
+		menu->addChild(new RangeDbMenuItem(a, "Amplitude: to -60dB", 80.0f));
+		menu->addChild(new RangeDbMenuItem(a, "Amplitude: to -120dB", 140.0f));
 
 		menu->addChild(new MenuLabel());
 		menu->addChild(new SmoothMenuItem(a, "Smooth: none", 0.0f));
