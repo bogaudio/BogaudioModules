@@ -8,12 +8,13 @@ FLAGS += -DTEST=1
 endif
 
 SOURCES = $(wildcard src/*.cpp src/dsp/*cpp)
-CXXFLAGS += -Isrc -Isrc/dsp
 
 DISTRIBUTABLES += $(wildcard LICENSE* README*) res
 
 RACK_DIR ?= ../..
 include $(RACK_DIR)/plugin.mk
+
+CXXFLAGS += -Isrc -Isrc/dsp
 
 BENCHMARK_SOURCES = $(wildcard benchmarks/*.cpp src/dsp/*cpp)
 BENCHMARK_OBJECTS = $(patsubst %, build/%.o, $(BENCHMARK_SOURCES))
