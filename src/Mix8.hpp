@@ -122,7 +122,7 @@ struct Mix8 : Module {
 		configParam(PAN8_PARAM, -1.0f, 1.0f, 0.0);
 		configParam(MUTE8_PARAM, 0.0f, 3.0f, 0.0);
 		configParam(MIX_PARAM, 0.0f, 1.0f, levelDefault);
-		configParam(MIX_MUTE_PARAM, 0.0f, 3.0f, 0.0);
+		configParam(MIX_MUTE_PARAM, 0.0f, 1.0f, 0.0f);
 
 		_channel1 = new MixerChannel(params[LEVEL1_PARAM], params[PAN1_PARAM], params[MUTE1_PARAM], inputs[IN1_INPUT], inputs[CV1_INPUT], inputs[PAN1_INPUT]);
 		_channel2 = new MixerChannel(params[LEVEL2_PARAM], params[PAN2_PARAM], params[MUTE2_PARAM], inputs[IN2_INPUT], inputs[CV2_INPUT], inputs[PAN2_INPUT]);
