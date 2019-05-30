@@ -69,20 +69,20 @@ struct Mix4 : Module {
 	Mix4() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		float levelDefault = fabsf(MixerChannel::minDecibels) / (MixerChannel::maxDecibels - MixerChannel::minDecibels);
-		configParam(LEVEL1_PARAM, 0.0f, 1.0f, levelDefault);
-		configParam(PAN1_PARAM, -1.0f, 1.0f, 0.0);
-		configParam(MUTE1_PARAM, 0.0f, 3.0f, 0.0);
-		configParam(LEVEL2_PARAM, 0.0f, 1.0f, levelDefault);
-		configParam(PAN2_PARAM, -1.0f, 1.0f, 0.0);
-		configParam(MUTE2_PARAM, 0.0f, 3.0f, 0.0);
-		configParam(LEVEL3_PARAM, 0.0f, 1.0f, levelDefault);
-		configParam(PAN3_PARAM, -1.0f, 1.0f, 0.0);
-		configParam(MUTE3_PARAM, 0.0f, 3.0f, 0.0);
-		configParam(LEVEL4_PARAM, 0.0f, 1.0f, levelDefault);
-		configParam(PAN4_PARAM, -1.0f, 1.0f, 0.0);
-		configParam(MUTE4_PARAM, 0.0f, 3.0f, 0.0);
-		configParam(MIX_PARAM, 0.0f, 1.0f, levelDefault);
-		configParam(MIX_MUTE_PARAM, 0.0f, 1.0f, 0.0f);
+		configParam(LEVEL1_PARAM, 0.0f, 1.0f, levelDefault, "ch1_level");
+		configParam(PAN1_PARAM, -1.0f, 1.0f, 0.0f, "ch1_pan");
+		configParam(MUTE1_PARAM, 0.0f, 3.0f, 0.0f, "ch1_mute");
+		configParam(LEVEL2_PARAM, 0.0f, 1.0f, levelDefault, "ch2_level");
+		configParam(PAN2_PARAM, -1.0f, 1.0f, 0.0f, "ch2_pan");
+		configParam(MUTE2_PARAM, 0.0f, 3.0f, 0.0f, "ch2_mute");
+		configParam(LEVEL3_PARAM, 0.0f, 1.0f, levelDefault, "ch3_level");
+		configParam(PAN3_PARAM, -1.0f, 1.0f, 0.0f, "ch3_pan");
+		configParam(MUTE3_PARAM, 0.0f, 3.0f, 0.0f, "ch3_mute");
+		configParam(LEVEL4_PARAM, 0.0f, 1.0f, levelDefault, "ch4_level");
+		configParam(PAN4_PARAM, -1.0f, 1.0f, 0.0f, "ch4_pan");
+		configParam(MUTE4_PARAM, 0.0f, 3.0f, 0.0f, "ch4_mute");
+		configParam(MIX_PARAM, 0.0f, 1.0f, levelDefault, "master_level");
+		configParam(MIX_MUTE_PARAM, 0.0f, 1.0f, 0.0f, "master_mute");
 
 		_channel1 = new MixerChannel(params[LEVEL1_PARAM], params[PAN1_PARAM], params[MUTE1_PARAM], inputs[IN1_INPUT], inputs[CV1_INPUT], inputs[PAN1_INPUT]);
 		_channel2 = new MixerChannel(params[LEVEL2_PARAM], params[PAN2_PARAM], params[MUTE2_PARAM], inputs[IN2_INPUT], inputs[CV2_INPUT], inputs[PAN2_INPUT]);
