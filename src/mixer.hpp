@@ -63,6 +63,8 @@ struct MuteButton : ToggleButton {
 		addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_0.svg")));
 		addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_1_orange.svg")));
 	}
+
+	void onButton(const event::Button& e) override;
 };
 
 struct SoloMuteButton : ParamWidget {

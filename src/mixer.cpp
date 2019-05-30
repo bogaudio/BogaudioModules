@@ -49,6 +49,20 @@ void MixerChannel::next(bool stereo, bool solo) {
 }
 
 
+void MuteButton::onButton(const event::Button& e) {
+	if (!(e.action == GLFW_PRESS && (e.mods & RACK_MOD_MASK) == 0)) {
+		return;
+	}
+
+	if (e.button == GLFW_MOUSE_BUTTON_RIGHT) {
+		e.consume(this);
+	}
+	else {
+		ToggleButton::onButton(e);
+	}
+}
+
+
 SoloMuteButton::SoloMuteButton() {
 	shadow = new CircularShadow();
 	addChild(shadow);
