@@ -43,7 +43,7 @@ void Nsgt::process(const ProcessArgs& args) {
 			_ratio = 1.0f / _ratio;
 		}
 
-		_softKnee = params[KNEE_PARAM].getValue() > 0.97f;
+		_softKnee = params[KNEE_PARAM].getValue() > 0.5f;
 	}
 
 	float leftInput = inputs[LEFT_INPUT].getVoltage();

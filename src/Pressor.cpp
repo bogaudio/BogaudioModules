@@ -86,7 +86,7 @@ void Pressor::process(const ProcessArgs& args) {
 
 		_compressorMode = params[MODE_PARAM].getValue() > 0.5f;
 		_rmsDetector = params[DECTECTOR_MODE_PARAM].getValue() > 0.5f;
-		_softKnee = params[KNEE_PARAM].getValue() > 0.97f;
+		_softKnee = params[KNEE_PARAM].getValue() > 0.5f;
 	}
 
 	float leftInput = inputs[LEFT_INPUT].getVoltage() * _inLevel;

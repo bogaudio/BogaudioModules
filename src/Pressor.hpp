@@ -85,7 +85,7 @@ struct Pressor : Module {
 		configParam(DETECTOR_MIX_PARAM, -1.0f, 1.0f, 0.0f, "detector_mix");
 		configParam(MODE_PARAM, 0.0f, 1.0f, 1.0f, "mode");
 		configParam(DECTECTOR_MODE_PARAM, 0.0f, 1.0f, 1.0f, "dectector_mode");
-		configParam(KNEE_PARAM, 0.95f, 1.0f, 1.0f, "knee");
+		configParam(KNEE_PARAM, 0.0f, 1.0f, 1.0f, "knee");
 
 		onReset();
 		onSampleRateChange();

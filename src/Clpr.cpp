@@ -31,7 +31,7 @@ void Clpr::process(const ProcessArgs& args) {
 			_outLevel = decibelsToAmplitude(_outGain);
 		}
 
-		_softKnee = params[KNEE_PARAM].getValue() > 0.97f;
+		_softKnee = params[KNEE_PARAM].getValue() > 0.5f;
 	}
 
 	float leftInput = inputs[LEFT_INPUT].getVoltage();
