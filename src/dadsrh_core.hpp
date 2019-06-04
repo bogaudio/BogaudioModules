@@ -175,9 +175,9 @@ struct DADSRHCore {
 	void reset();
 	void step();
 
-	float stepAmount(const Param& knob, const Input* cv, bool slow, bool allowZero = false);
-	float knobTime(const Param& knob, const Input* cv, bool slow, bool allowZero = false);
-	float knobAmount(const Param& knob, const Input* cv) const;
+	float stepAmount(Param& knob, Input* cv, bool slow, bool allowZero = false);
+	float knobTime(Param& knob, Input* cv, bool slow, bool allowZero = false);
+	float knobAmount(Param& knob, Input* cv) const;
 };
 
 } // namespace bogaudio

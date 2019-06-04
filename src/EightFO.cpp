@@ -111,17 +111,17 @@ void EightFO::process(const ProcessArgs& args) {
 }
 
 Phasor::phase_delta_t EightFO::phaseOffset(Param& p, Input& i, Phasor::phase_delta_t baseOffset) {
-	float o = p.value * Phasor::maxPhase / 2.0f;
-	if (i.active) {
-		o *= clamp(i.value / 5.0f, -1.0f, 1.0f);
+	float o = p.getValue() * Phasor::maxPhase / 2.0f;
+	if (i.isConnected()) {
+		o *= clamp(i.getVoltage() / 5.0f, -1.0f, 1.0f);
 	}
 	return baseOffset - o;
 }
 
 void EightFO::updateOutput(bool useSample, Output& output, Phasor::phase_delta_t& offset, float& sample, bool& active) {
-	if (output.active) {
+	if (output.isConnected()) {
 		if (useSample && active) {
-			output.value = sample;
+			output.setVoltage(sample);
 		}
 		else {
 			float v = 0.0f;
@@ -150,7 +150,7 @@ void EightFO::updateOutput(bool useSample, Output& output, Phasor::phase_delta_t
 					break;
 				}
 			}
-			output.value = sample = amplitude * _scale * v + _offset;
+			output.setVoltage(sample = amplitude * _scale * v + _offset);
 		}
 		active = true;
 	}

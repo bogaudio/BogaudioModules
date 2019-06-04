@@ -42,14 +42,14 @@ void Slew::process(const ProcessArgs& args) {
 
 float Slew::time(Param& param, Input& input) {
 	float time = param.value;
-	if (input.active) {
-		time *= clamp(input.value / 10.0f, 0.0f, 1.0f);
+	if (input.isConnected()) {
+		time *= clamp(input.getVoltage() / 10.0f, 0.0f, 1.0f);
 	}
 	return time * time * 10000.0f;
 }
 
 float Slew::shape(Param& param) {
-	float shape = param.value;
+	float shape = param.getValue();
 	if (shape < 0.0) {
 		shape = 1.0f + shape;
 		shape = _rise.minShape + shape * (1.0f - _rise.minShape);

@@ -116,7 +116,7 @@ void ShaperCore::step() {
 	_firstStep = false;
 }
 
-bool ShaperCore::stepStage(const Param& knob, const Input* cv, bool slow) {
+bool ShaperCore::stepStage(Param& knob, Input* cv, bool slow) {
 	float t = levelParam(knob, cv);
 	t = pow(t, 2);
 	t = fmaxf(t, 0.001);
@@ -125,10 +125,10 @@ bool ShaperCore::stepStage(const Param& knob, const Input* cv, bool slow) {
 	return _stageProgress > 1.0;
 }
 
-float ShaperCore::levelParam(const Param& knob, const Input* cv) const {
-	float v = clamp(knob.value, 0.0f, 1.0f);
-	if (cv && cv->active) {
-		v *= clamp(cv->value / 10.0f, 0.0f, 1.0f);
+float ShaperCore::levelParam(Param& knob, Input* cv) const {
+	float v = clamp(knob.getValue(), 0.0f, 1.0f);
+	if (cv && cv->isConnected()) {
+		v *= clamp(cv->getVoltage() / 10.0f, 0.0f, 1.0f);
 	}
 	return v;
 }

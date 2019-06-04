@@ -244,21 +244,21 @@ void DADSRHCore::step() {
 	_firstStep = false;
 }
 
-float DADSRHCore::stepAmount(const Param& knob, const Input* cv, bool slow, bool allowZero) {
+float DADSRHCore::stepAmount(Param& knob, Input* cv, bool slow, bool allowZero) {
 	return APP->engine->getSampleTime() / knobTime(knob, cv, slow, allowZero);
 }
 
-float DADSRHCore::knobTime(const Param& knob, const Input* cv, bool slow, bool allowZero) {
+float DADSRHCore::knobTime(Param& knob, Input* cv, bool slow, bool allowZero) {
 	float t = knobAmount(knob, cv);
 	t = pow(t, 2.0);
 	t = fmaxf(t, allowZero ? 0.0 : 0.001);
 	return t * (slow ? 100.0 : 10.0);
 }
 
-float DADSRHCore::knobAmount(const Param& knob, const Input* cv) const {
-	float v = clamp(knob.value, 0.0f, 1.0f);
-	if (cv && cv->active) {
-		v *= clamp(cv->value / 10.0f, 0.0f, 1.0f);
+float DADSRHCore::knobAmount(Param& knob, Input* cv) const {
+	float v = clamp(knob.getValue(), 0.0f, 1.0f);
+	if (cv && cv->isConnected()) {
+		v *= clamp(cv->getVoltage() / 10.0f, 0.0f, 1.0f);
 	}
 	return v;
 }

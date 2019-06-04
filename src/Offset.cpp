@@ -16,9 +16,9 @@ void Offset::process(const ProcessArgs& args) {
 	outputs[OUT_OUTPUT].setVoltage(out);
 }
 
-float Offset::knobValue(const Param& knob, const Input& cv) const {
+float Offset::knobValue(const Param& knob, Input& cv) const {
 	float v = knob.value;
-	if (cv.active) {
+	if (cv.isConnected()) {
 		v *= clamp(cv.value / 10.0f, -1.0f, 1.0f);
 	}
 	return v;

@@ -82,9 +82,9 @@ void LFO::process(const ProcessArgs& args) {
 }
 
 void LFO::updateOutput(Phasor& wave, bool useSample, bool invert, Output& output, float& sample, bool& active) {
-	if (output.active) {
+	if (output.isConnected()) {
 		if (useSample && active) {
-			output.value = sample;
+			output.setVoltage(sample);
 		}
 		else {
 			sample = wave.nextFromPhasor(_phasor) * amplitude * _scale;
@@ -92,7 +92,7 @@ void LFO::updateOutput(Phasor& wave, bool useSample, bool invert, Output& output
 				sample = -sample;
 			}
 			sample += _offset;
-			output.value = sample;
+			output.setVoltage(sample);
 		}
 		active = true;
 	}

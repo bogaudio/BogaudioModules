@@ -208,16 +208,16 @@ void XCO::process(const ProcessArgs& args) {
 
 Phasor::phase_delta_t XCO::phaseOffset(Param& param, Input& input) {
 	float v = param.value;
-	if (input.active) {
-		v *= clamp(input.value / 5.0f, -1.0f, 1.0f);
+	if (input.isConnected()) {
+		v *= clamp(input.getVoltage() / 5.0f, -1.0f, 1.0f);
 	}
 	return -v * Phasor::maxPhase / 2.0f;
 }
 
 float XCO::level(Param& param, Input& input) {
 	float v = param.value;
-	if (input.active) {
-		v *= clamp(input.value / 10.0f, 0.0f, 1.0f);
+	if (input.isConnected()) {
+		v *= clamp(input.getVoltage() / 10.0f, 0.0f, 1.0f);
 	}
 	return v;
 }

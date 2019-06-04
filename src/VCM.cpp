@@ -22,15 +22,15 @@ void VCM::process(const ProcessArgs& args) {
 }
 
 float VCM::channelStep(Input& input, Param& knob, Input& cv, Amplifier& amplifier, bool linear) {
-	if (!input.active) {
+	if (!input.isConnected()) {
 		return 0.0f;
 	}
-	float level = knob.value;
-	if (cv.active) {
-		level *= clamp(cv.value / 10.0f, 0.0f, 1.0f);
+	float level = knob.getValue();
+	if (cv.isConnected()) {
+		level *= clamp(cv.getVoltage() / 10.0f, 0.0f, 1.0f);
 	}
 	if (linear) {
-		return level * input.value;
+		return level * input.getVoltage();
 	}
 	level = 1.0f - level;
 	level *= Amplifier::minDecibels;

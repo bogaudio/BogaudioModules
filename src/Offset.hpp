@@ -33,7 +33,7 @@ struct Offset : DisableOutputLimitModule {
 
 	void process(const ProcessArgs& args) override;
 
-	float knobValue(const Param& knob, const Input& cv) const;
+	float knobValue(const Param& knob, Input& cv) const;
 };
 
 } // namespace bogaudio

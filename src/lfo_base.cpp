@@ -48,8 +48,8 @@ void LFOBase::setPitchMode(PitchMode mode) {
 
 void LFOBase::setFrequency(bool slow, Param& frequency, Input& pitch, Phasor& phasor) {
 	float f = frequency.value;
-	if (pitch.active) {
-		f += pitch.value;
+	if (pitch.isConnected()) {
+		f += pitch.getVoltage();
 	}
 	if (slow) {
 		f -= 8.0f;

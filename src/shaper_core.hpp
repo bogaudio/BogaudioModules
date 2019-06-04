@@ -132,8 +132,8 @@ struct ShaperCore {
 	void reset();
 	void step();
 
-	bool stepStage(const Param& knob, const Input* cv, bool slow);
-	float levelParam(const Param& knob, const Input* cv) const;
+	bool stepStage(Param& knob, Input* cv, bool slow);
+	float levelParam(Param& knob, Input* cv) const;
 };
 
 } // namespace bogaudio

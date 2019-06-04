@@ -23,13 +23,13 @@ void Additator::onSampleRateChange() {
 }
 
 float Additator::cvValue(Input& cv, bool dc) {
-	if (!cv.active) {
+	if (!cv.isConnected()) {
 		return dc ? 1.0f : 0.0f;
 	}
 	if (dc) {
-		return clamp(cv.value / 10.0f, 0.0f, 1.0f);
+		return clamp(cv.getVoltage() / 10.0f, 0.0f, 1.0f);
 	}
-	return clamp(cv.value / 5.0f, -1.0f, 1.0f);
+	return clamp(cv.getVoltage() / 5.0f, -1.0f, 1.0f);
 }
 
 void Additator::process(const ProcessArgs& args) {

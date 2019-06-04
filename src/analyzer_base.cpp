@@ -184,7 +184,7 @@ void AnalyzerCore::stepChannel(int channelIndex, Input& input) {
 	assert(channelIndex >= 0);
 	assert(channelIndex < _nChannels);
 
-	if (input.active) {
+	if (input.isConnected()) {
 		if (!_channels[channelIndex]) {
 			std::lock_guard<std::mutex> lock(_channelsMutex);
 			_channels[channelIndex] = new ChannelAnalyzer(
@@ -196,7 +196,7 @@ void AnalyzerCore::stepChannel(int channelIndex, Input& input) {
 				_binAverageN
 			);
 		}
-		_channels[channelIndex]->step(input.value);
+		_channels[channelIndex]->step(input.getVoltage());
 	}
 	else if (_channels[channelIndex]) {
 		std::lock_guard<std::mutex> lock(_channelsMutex);
