@@ -393,6 +393,13 @@ void AnalyzerDisplay::drawXAxis(const DrawArgs& args, float strokeWidth, float r
 		}
 		hz += 10000.0;
 	}
+	hz = 200000.0;
+	while (hz < rangeMaxHz && hz < 1000001.0) {
+		if (hz >= rangeMinHz) {
+			drawXAxisLine(args, hz, rangeMinHz, rangeMaxHz);
+		}
+		hz += 100000.0;
+	}
 
 	drawText(args, "Hz", _insetLeft, _size.y - 2);
 	if (rangeMinHz <= 100.0f) {
@@ -416,17 +423,45 @@ void AnalyzerDisplay::drawXAxis(const DrawArgs& args, float strokeWidth, float r
 		x = powf(x, _xAxisLogFactor);
 		if (x < 1.0) {
 			x *= _graphSize.x;
-			drawText(args, "10k", _insetLeft + x - 4, _size.y - 2);
+			drawText(args, "10k", _insetLeft + x - 7, _size.y - 2);
 		}
 	}
-	if (rangeMinHz > 1000.0f) {
-		hz = 20000.0f;
+	if (rangeMinHz <= 100000.0f) {
+		float x = (100000.0 - rangeMinHz) / (rangeMaxHz - rangeMinHz);
+		x = powf(x, _xAxisLogFactor);
+		if (x < 1.0) {
+			x *= _graphSize.x;
+			drawText(args, "100k", _insetLeft + x - 9, _size.y - 2);
+		}
+	}
+
+	if (rangeMinHz > 10000.0f) {
+		hz = 200000.0f;
 		float lastX = 0.0f;
 		while (hz < rangeMaxHz) {
 			if (rangeMinHz <= hz) {
 				float x = (hz - rangeMinHz) / (rangeMaxHz - rangeMinHz);
 				x = powf(x, _xAxisLogFactor);
-				if (x > lastX + 0.075f && x < 1.0f) {
+				if (x > lastX + 0.1f && x < 1.0f) {
+					lastX = x;
+					x *= _graphSize.x;
+					const int sLen = 32;
+					char s[sLen];
+					snprintf(s, sLen, "%dk", (int)(hz / 1000.0f));
+					drawText(args, s, _insetLeft + x - 7, _size.y - 2);
+				}
+			}
+			hz += 100000.0f;
+		}
+	}
+	else if (rangeMinHz > 1000.0f) {
+		hz = 20000.0f;
+		float lastX = 0.0f;
+		while (hz < 80000.0f) {
+			if (rangeMinHz <= hz) {
+				float x = (hz - rangeMinHz) / (rangeMaxHz - rangeMinHz);
+				x = powf(x, _xAxisLogFactor);
+				if (x > lastX + 0.1f && x < 1.0f) {
 					lastX = x;
 					x *= _graphSize.x;
 					const int sLen = 32;
