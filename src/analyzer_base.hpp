@@ -18,7 +18,8 @@ struct ChannelAnalyzer {
 	int _binsN;
 	float* _bins0;
 	float* _bins1;
-	std::atomic<const float*> _currentBins;
+	float* _currentBins;
+	std::atomic<float*>& _currentOutBuf;
 	AveragingBuffer<float>* _averagedBins;
 	const int _stepBufN;
 	float* _stepBuf;
@@ -38,13 +39,17 @@ struct ChannelAnalyzer {
 		SpectrumAnalyzer::WindowType windowType,
 		float sampleRate,
 		int averageN,
-		int binSize
+		int binSize,
+		float* outBuf1,
+		float* outBuf2,
+		std::atomic<float*>& currentOutBuf
 	)
 	: _analyzer(size, overlap, windowType, sampleRate, false)
 	, _binsN(size / binSize)
-	, _bins0(new float[_binsN] {})
-	, _bins1(new float[_binsN] {})
+	, _bins0(outBuf1)
+	, _bins1(outBuf2)
 	, _currentBins(_bins0)
+	, _currentOutBuf(currentOutBuf)
 	, _averagedBins(averageN == 1 ? NULL : new AveragingBuffer<float>(_binsN, averageN))
 	, _stepBufN(size / overlap)
 	, _stepBuf(new float[_stepBufN] {})
@@ -57,8 +62,6 @@ struct ChannelAnalyzer {
 	}
 	virtual ~ChannelAnalyzer();
 
-	inline const float* getBins() { return _currentBins; }
-	float getPeak();
 	void step(float sample);
 	void work();
 };
@@ -78,26 +81,44 @@ struct AnalyzerCore {
 
 	int _nChannels;
 	ChannelAnalyzer** _channels;
+	SpectrumAnalyzer::Size _size;
+	const int _binAverageN = 2;
+	const int _outBufferN = SpectrumAnalyzer::maxSize / _binAverageN;
+	int _binsN;
+	float* _outBufs;
+	std::atomic<float*>* _currentOutBufs;
 	int _averageN = 1;
 	Quality _quality = QUALITY_GOOD;
 	Window _window = WINDOW_KAISER;
 	const SpectrumAnalyzer::Overlap _overlap = SpectrumAnalyzer::OVERLAP_2;
-	const int _binAverageN = 2;
 	std::mutex _channelsMutex;
 
 	AnalyzerCore(int nChannels)
 	: _nChannels(nChannels)
 	, _channels(new ChannelAnalyzer*[_nChannels] {})
-	{}
+	, _outBufs(new float[2 * nChannels * _outBufferN] {})
+	, _currentOutBufs(new std::atomic<float*>[nChannels])
+	{
+		for (int i = 0; i < nChannels; ++i) {
+			_currentOutBufs[i] = _outBufs + 2 * i * _outBufferN;
+		}
+	}
 	virtual ~AnalyzerCore() {
 		resetChannels();
 		delete[] _channels;
+		delete[] _outBufs;
+		delete[] _currentOutBufs;
 	}
 
 	void setParams(int averageN, Quality quality, Window window);
 	void resetChannels();
 	SpectrumAnalyzer::Size size();
 	SpectrumAnalyzer::WindowType window();
+	inline float* getBins(int i) {
+		assert(i >= 0 && i < _nChannels);
+		return _currentOutBufs[i];
+	}
+	float getPeak(int channel);
 	void stepChannel(int channelIndex, Input& input);
 };
 
@@ -107,8 +128,7 @@ struct AnalyzerBase : Module {
 	float _rangeDb = 80.0f;
 	AnalyzerCore _core;
 
-	AnalyzerBase(int nChannels, int np, int ni, int no, int nl) : _core(nChannels)
-	{
+	AnalyzerBase(int nChannels, int np, int ni, int no, int nl) : _core(nChannels) {
 		config(np, ni, no, nl);
 	}
 };

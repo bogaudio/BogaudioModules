@@ -128,6 +128,7 @@ struct SpectrumAnalyzer : OverlappingBuffer<float> {
 		SIZE_8192 = 8192,
 		SIZE_16384 = 16384
 	};
+	static constexpr Size maxSize = SIZE_16384;
 
 	enum Overlap {
 		OVERLAP_1 = 1,
@@ -171,6 +172,7 @@ struct SpectrumAnalyzer : OverlappingBuffer<float> {
 	, _windowOut(NULL)
 	, _fftOut(new float[_size])
 	{
+		assert(size <= maxSize);
 		assert(_sampleRate > size);
 
 		switch (size) {

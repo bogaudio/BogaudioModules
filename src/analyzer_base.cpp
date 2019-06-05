@@ -11,35 +11,9 @@ ChannelAnalyzer::~ChannelAnalyzer() {
 	_worker.join();
 	delete[] _workerBuf;
 	delete[] _stepBuf;
-	delete[] _bins0;
-	delete[] _bins1;
 	if (_averagedBins) {
 		delete _averagedBins;
 	}
-}
-
-float ChannelAnalyzer::getPeak() {
-	float max = 0.0f;
-	int maxBin = 0;
-	const float* bins = getBins();
-	for (int bin = 0; bin < _binsN; ++bin) {
-		if (bins[bin] > max) {
-			max = bins[bin];
-			maxBin = bin;
-		}
-	}
-
-	const int bandsPerBin = _analyzer._size / _binsN;
-	const float fWidth = (_analyzer._sampleRate / 2.0f) / (float)(_analyzer._size / bandsPerBin);
-	float sum = 0.0f;
-	float sumWeights = 0.0f;
-	int i = std::max(0, maxBin - 1);
-	int j = std::max(_binsN - 1, maxBin + 1);
-	for (; i <= j; ++i) {
-		sum += bins[i] * fWidth * i;
-		sumWeights += bins[i];
-	}
-	return sum / sumWeights;
 }
 
 void ChannelAnalyzer::step(float sample) {
@@ -89,6 +63,7 @@ void ChannelAnalyzer::work() {
 				_analyzer.getMagnitudes(bins, _binsN);
 			}
 			_currentBins = bins;
+			_currentOutBuf = _currentBins;
 		}
 
 		while (_workerBufReadI != _workerBufWriteI) {
@@ -128,6 +103,9 @@ void AnalyzerCore::setParams(int averageN, Quality quality, Window window) {
 }
 
 void AnalyzerCore::resetChannels() {
+	_size = size();
+	_binsN = _size / _binAverageN;
+
 	std::lock_guard<std::mutex> lock(_channelsMutex);
 	for (int i = 0; i < _nChannels; ++i) {
 		if (_channels[i]) {
@@ -180,6 +158,31 @@ SpectrumAnalyzer::WindowType AnalyzerCore::window() {
 	}
 }
 
+float AnalyzerCore::getPeak(int channel) {
+	assert(channel >= 0 && channel < _nChannels);
+	float max = 0.0f;
+	int maxBin = 0;
+	const float* bins = getBins(channel);
+	for (int bin = 0; bin < _binsN; ++bin) {
+		if (bins[bin] > max) {
+			max = bins[bin];
+			maxBin = bin;
+		}
+	}
+
+	const int bandsPerBin = _size / _binsN;
+	const float fWidth = (APP->engine->getSampleRate() / 2.0f) / (float)(_size / bandsPerBin);
+	float sum = 0.0f;
+	float sumWeights = 0.0f;
+	int i = std::max(0, maxBin - 1);
+	int j = std::max(_binsN - 1, maxBin + 1);
+	for (; i <= j; ++i) {
+		sum += bins[i] * fWidth * i;
+		sumWeights += bins[i];
+	}
+	return sum / sumWeights;
+}
+
 void AnalyzerCore::stepChannel(int channelIndex, Input& input) {
 	assert(channelIndex >= 0);
 	assert(channelIndex < _nChannels);
@@ -188,12 +191,15 @@ void AnalyzerCore::stepChannel(int channelIndex, Input& input) {
 		if (!_channels[channelIndex]) {
 			std::lock_guard<std::mutex> lock(_channelsMutex);
 			_channels[channelIndex] = new ChannelAnalyzer(
-				size(),
+				_size,
 				_overlap,
 				window(),
 				APP->engine->getSampleRate(),
 				_averageN,
-				_binAverageN
+				_binAverageN,
+				_outBufs + 2 * channelIndex * _outBufferN,
+				_outBufs + (2 * channelIndex + 1) * _outBufferN,
+				_currentOutBufs[channelIndex]
 			);
 		}
 		_channels[channelIndex]->step(input.getVoltage());
@@ -235,9 +241,8 @@ void AnalyzerDisplay::draw(const DrawArgs& args) {
 	drawXAxis(args, strokeWidth, rangeMinHz, rangeMaxHz);
 	if (_module) {
 		for (int i = 0; i < _module->_core._nChannels; ++i) {
-			ChannelAnalyzer* channel = _module->_core._channels[i];
-			if (channel) {
-				drawGraph(args, channel->getBins(), channel->_binsN, _channelColors[i % channelColorsN], strokeWidth, rangeMinHz, rangeMaxHz, rangeDb);
+			if (_module->_core._channels[i]) {
+				drawGraph(args, _module->_core.getBins(i), _module->_core._binsN, _channelColors[i % channelColorsN], strokeWidth, rangeMinHz, rangeMaxHz, rangeDb);
 			}
 		}
 	}
@@ -266,7 +271,7 @@ void AnalyzerDisplay::drawHeader(const DrawArgs& args) {
 	char s[sLen];
 	int x = _insetAround + 2;
 
-	int n = snprintf(s, sLen, "Peaks (+/-%0.1f):", (APP->engine->getSampleRate() / 2.0f) / (float)(_module->_core.size() / _module->_core._binAverageN));
+	int n = snprintf(s, sLen, "Peaks (+/-%0.1f):", (APP->engine->getSampleRate() / 2.0f) / (float)(_module->_core._size / _module->_core._binAverageN));
 	drawText(args, s, x, _insetTop + textY);
 	x += n * charPx - 0;
 
@@ -276,9 +281,8 @@ void AnalyzerDisplay::drawHeader(const DrawArgs& args) {
 		spacing = 20;
 	}
 	for (int i = 0; i < _module->_core._nChannels; ++i) {
-		ChannelAnalyzer* channel = _module->_core._channels[i];
-		if (channel) {
-			snprintf(s, sLen, "%c:%7.1f", 'A' + i, channel->getPeak());
+		if (_module->_core._channels[i]) {
+			snprintf(s, sLen, "%c:%7.1f", 'A' + i, _module->_core.getPeak(i));
 			drawText(args, s, x, _insetTop + textY, 0.0, &_channelColors[i % channelColorsN]);
 		}
 		x += 9 * charPx + spacing;
@@ -461,9 +465,9 @@ void AnalyzerDisplay::drawGraph(
 	float rangeDb
 ) {
 	float range = (rangeMaxHz - rangeMinHz) / (0.5f * APP->engine->getSampleRate());
-	int pointsN = roundf(range * (_module->_core.size() / 2));
+	int pointsN = roundf(range * (_module->_core._size / 2));
 	range = rangeMinHz / (0.5f * APP->engine->getSampleRate());
-	int pointsOffset = roundf(range * (_module->_core.size() / 2));
+	int pointsOffset = roundf(range * (_module->_core._size / 2));
 	nvgSave(args.vg);
 	nvgScissor(args.vg, _insetLeft, _insetTop, _graphSize.x, _graphSize.y);
 	nvgStrokeColor(args.vg, color);
