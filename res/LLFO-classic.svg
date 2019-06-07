@@ -114,7 +114,7 @@
       </g>
     </symbol>
     <symbol
-       id="knobguide-frequency-llfo"
+       id="knobguide-frequency-llfo-classic"
        viewBox="0 0 45px 45px">
       <g
          transform="translate(22.5 22.5)"
@@ -150,7 +150,7 @@
            id="g36">
           <polyline
              points="0,0 2.5,0"
-             stroke-width="0.3"
+             stroke-width="1.0"
              stroke="#333"
              transform="translate(0 0)"
              id="polyline32" />
@@ -452,7 +452,7 @@
          id="g297"
          transform="rotate(-55.39,-7,-13.335863)">
         <path
-           style="stroke:#333333;stroke-width:0.30000001"
+           style="stroke:#333333;stroke-width:1"
            d="M 0,0 H 2.5"
            id="polyline293" />
         <g

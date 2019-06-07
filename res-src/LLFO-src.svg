@@ -49,14 +49,14 @@
           <text font-size="5.0pt" transform="translate(5 0) rotate(202) translate(3 9.5) rotate(-90)">0.2</text>
         </g>
 
+        <g transform="rotate(-124.62) translate(14 0)">
+          <polyline points="0,0 2.5,0" stroke-width="1.0" stroke="#333" transform="translate(0 0)" />
+          <text font-size="5.0pt" transform="translate(5 0) rotate(124.62) translate(-7.5 2.3)">OV</text>
+        </g>
+
         <g transform="rotate(-48.68) translate(14 0)">
           <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="translate(0 0)" />
           <text font-size="5.0pt" transform="translate(5 0) rotate(48.68) translate(-1 2.3)">20</text>
-        </g>
-
-        <g transform="rotate(-124.62) translate(14 0)">
-          <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="translate(0 0)" />
-          <text font-size="5.0pt" transform="translate(5 0) rotate(124.62) translate(-3.0 2.3)">2</text>
         </g>
 
         <g transform="rotate(27.98) translate(14 0)">
