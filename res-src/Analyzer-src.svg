@@ -83,7 +83,7 @@
         </g>
         <g transform="rotate(60) translate(31 0)">
           <g transform="translate(2 0) rotate(-60)">
-            <text font-size="7pt" transform="translate(-5 4.3)">0.5s</text>
+            <text font-size="7pt" transform="translate(-6 4.3)">500ms</text>
           </g>
         </g>
       </g>
