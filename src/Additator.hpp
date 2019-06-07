@@ -96,17 +96,17 @@ struct Additator : Module {
 	:  _oscillator(1000.0f, 100.0f, maxPartials)
 	{
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(FREQUENCY_PARAM, -3.0f, 6.0f, 0.0f, "frequency");
-		configParam(PARTIALS_PARAM, 1.0f, Additator::maxPartials, Additator::maxPartials / 5.0f, "partials");
-		configParam(FINE_PARAM, -1.0f, 1.0f, 0.0f, "fine");
-		configParam(WIDTH_PARAM, 0.0f, maxWidth, maxWidth / 2.0f, "width");
-		configParam(ODD_SKEW_PARAM, -maxSkew, maxSkew, 0.0f, "odd_skew");
-		configParam(EVEN_SKEW_PARAM, -maxSkew, maxSkew, 0.0f, "even_skew");
+		configParam(FREQUENCY_PARAM, -3.0f, 6.0f, 0.0f, "Frequency", " Hz", 2.0f, referenceFrequency);
+		configParam(PARTIALS_PARAM, 1.0f, Additator::maxPartials, Additator::maxPartials / 5.0f, "Partials");
+		configParam(FINE_PARAM, -1.0f, 1.0f, 0.0f, "Fine tune", " cents", 0.0f, 100.0f);
+		configParam(WIDTH_PARAM, 0.0f, maxWidth, maxWidth / 2.0f, "Width", "%", 0.0f, 2.0f * (1.0f / maxWidth) * 100.0f, -100.0f);
+		configParam(ODD_SKEW_PARAM, -maxSkew, maxSkew, 0.0f, "Odd skew", "%", 0.0f, (1.0f / maxSkew) * 100.0f);
+		configParam(EVEN_SKEW_PARAM, -maxSkew, maxSkew, 0.0f, "Even skew", "%", 0.0f, (1.0f / maxSkew) * 100.0f);
 		configParam(GAIN_PARAM, minAmplitudeNormalization, maxAmplitudeNormalization, (maxAmplitudeNormalization - minAmplitudeNormalization) / 2.0 + minAmplitudeNormalization, "gain");
 		configParam(DECAY_PARAM, minDecay, maxDecay, (maxDecay - minDecay) / 2.0 + minDecay, "decay");
-		configParam(BALANCE_PARAM, -1.0f, 1.0f, 0.0f, "balance");
+		configParam(BALANCE_PARAM, -1.0f, 1.0f, 0.0f, "Balance", "%", 0.0f, 100.0f);
 		configParam(FILTER_PARAM, minFilter, maxFilter, (maxFilter - minFilter) / 2.0 + minFilter, "filter");
-		configParam(PHASE_PARAM, 1.0f, 2.0f, 1.0f, "phase");
+		configParam(PHASE_PARAM, 1.0f, 2.0f, 1.0f, "Phase");
 
 		onReset();
 		onSampleRateChange();

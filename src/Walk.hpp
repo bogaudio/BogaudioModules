@@ -45,9 +45,9 @@ struct Walk : Module {
 
 	Walk() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(RATE_PARAM, 0.0f, 1.0f, 0.1f, "rate");
-		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "offset");
-		configParam(SCALE_PARAM, 0.0f, 1.0f, 1.0f, "scale");
+		configParam(RATE_PARAM, 0.0f, 1.0f, 0.1f, "Rate", "%", 0.0f, 100.0f);
+		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "Offset", "V", 0.0f, 5.0f);
+		configParam(SCALE_PARAM, 0.0f, 1.0f, 1.0f, "Scale", "%", 0.0f, 100.0f);
 
 		onReset();
 	}

@@ -129,17 +129,17 @@ struct DADSRHPlus : TriggerOnLoadModule {
 		configParam(DELAY_PARAM, 0.0f, 1.0f, 0.0f, "delay");
 		configParam(ATTACK_PARAM, 0.0f, 1.0f, 0.12f, "attack");
 		configParam(DECAY_PARAM, 0.0f, 1.0f, 0.32f, "decay");
-		configParam(SUSTAIN_PARAM, 0.0f, 1.0f, 0.5f, "sustain");
+		configParam(SUSTAIN_PARAM, 0.0f, 1.0f, 0.5f, "Sustain", "%", 0.0f, 100.0f);
 		configParam(RELEASE_PARAM, 0.0f, 1.0f, 0.32f, "release");
 		configParam(HOLD_PARAM, 0.0f, 1.0f, 0.45f, "hold");
-		configParam(ATTACK_SHAPE_PARAM, 1.0f, 3.0f, 1.0f, "attack_shape");
-		configParam(DECAY_SHAPE_PARAM, 1.0f, 3.0f, 1.0f, "decay_shape");
-		configParam(RELEASE_SHAPE_PARAM, 1.0f, 3.0f, 1.0f, "release_shape");
-		configParam(TRIGGER_PARAM, 0.0f, 1.0f, 0.0f, "trigger");
-		configParam(MODE_PARAM, 0.0f, 1.0f, 1.0f, "mode");
-		configParam(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "loop");
-		configParam(SPEED_PARAM, 0.0f, 1.0f, 1.0f, "speed");
-		configParam(RETRIGGER_PARAM, 0.0f, 1.0f, 1.0f, "retrigger");
+		configParam(ATTACK_SHAPE_PARAM, 1.0f, 3.0f, 1.0f, "Attack shape");
+		configParam(DECAY_SHAPE_PARAM, 1.0f, 3.0f, 1.0f, "Decay shape");
+		configParam(RELEASE_SHAPE_PARAM, 1.0f, 3.0f, 1.0f, "Release shape");
+		configParam(TRIGGER_PARAM, 0.0f, 1.0f, 0.0f, "Trigger");
+		configParam(MODE_PARAM, 0.0f, 1.0f, 1.0f, "Mode");
+		configParam(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "Loop");
+		configParam(SPEED_PARAM, 0.0f, 1.0f, 1.0f, "Speed");
+		configParam(RETRIGGER_PARAM, 0.0f, 1.0f, 1.0f, "Retrigger");
 
 		onReset();
 	}

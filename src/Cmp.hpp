@@ -50,11 +50,11 @@ struct Cmp : Module {
 
 	Cmp() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(A_PARAM, -1.0f, 1.0f, 0.0f, "a");
-		configParam(B_PARAM, -1.0f, 1.0f, 0.0f, "b");
-		configParam(WINDOW_PARAM, 0.0f, 1.0f, 0.5f, "window");
+		configParam(A_PARAM, -1.0f, 1.0f, 0.0f, "A", "V", 0.0f, 10.0f);
+		configParam(B_PARAM, -1.0f, 1.0f, 0.0f, "B", "V", 0.0f, 10.0f);
+		configParam(WINDOW_PARAM, 0.0f, 1.0f, 0.5f, "Window", "V", 0.0f, 10.0f);
 		configParam(LAG_PARAM, 0.0f, 1.0f, 0.1f, "lag");
-		configParam(OUTPUT_PARAM, 0.0f, 1.0f, 0.0f, "output");
+		configParam(OUTPUT_PARAM, 0.0f, 1.0f, 0.0f, "Output");
 
 		onReset();
 	}

@@ -93,11 +93,11 @@ struct Shaper : TriggerOnLoadModule {
 		configParam(ON_PARAM, 0.0f, 1.0f, 0.32f, "on");
 		configParam(DECAY_PARAM, 0.0f, 1.0f, 0.32f, "decay");
 		configParam(OFF_PARAM, 0.0f, 1.0f, 0.07f, "off");
-		configParam(ENV_PARAM, 0.0f, 1.0f, 1.0f, "env");
-		configParam(SIGNAL_PARAM, 0.0f, 1.0f, 0.1f, "signal");
-		configParam(TRIGGER_PARAM, 0.0f, 1.0f, 0.0f, "trigger");
-		configParam(SPEED_PARAM, 0.0f, 1.0f, 1.0f, "speed");
-		configParam(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "loop");
+		configParam(ENV_PARAM, 0.0f, 1.0f, 1.0f, "Env", "%", 0.0f, 100.0f);
+		configParam(SIGNAL_PARAM, 0.0f, 1.0f, 0.1f, "Signal", "x", 10.0f);
+		configParam(TRIGGER_PARAM, 0.0f, 1.0f, 0.0f, "Trigger");
+		configParam(SPEED_PARAM, 0.0f, 1.0f, 1.0f, "Speed");
+		configParam(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "Loop");
 
 		onReset();
 	}

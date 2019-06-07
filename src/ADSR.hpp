@@ -46,9 +46,9 @@ struct ADSR : Module {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(ATTACK_PARAM, 0.0f, 1.0f, 0.12f, "attack");
 		configParam(DECAY_PARAM, 0.0f, 1.0f, 0.31623f, "decay");
-		configParam(SUSTAIN_PARAM, 0.0f, 1.0f, 1.0f, "sustain");
+		configParam(SUSTAIN_PARAM, 0.0f, 1.0f, 1.0f, "Sustain", "%", 0.0f, 100.0f);
 		configParam(RELEASE_PARAM, 0.0f, 1.0f, 0.31623f, "release");
-		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "linear");
+		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear");
 
 		onReset();
 		onSampleRateChange();

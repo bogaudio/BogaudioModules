@@ -42,7 +42,7 @@ struct UMix : Module {
 
 	UMix() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(LEVEL_PARAM, 0.0f, 1.0f, 1.0f, "level");
+		configParam(LEVEL_PARAM, 0.0f, 1.0f, 1.0f, "Level", "%", 0.0f, 100.0f);
 	}
 
 	json_t* dataToJson() override;

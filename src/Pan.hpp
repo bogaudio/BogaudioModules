@@ -43,8 +43,8 @@ struct Pan : Module {
 
 	Pan() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(PAN1_PARAM, -1.0f, 1.0f, 0.0f, "pan1");
-		configParam(PAN2_PARAM, -1.0f, 1.0f, 0.0f, "pan2");
+		configParam(PAN1_PARAM, -1.0f, 1.0f, 0.0f, "Panning 1", "%", 0.0f, 100.0f);
+		configParam(PAN2_PARAM, -1.0f, 1.0f, 0.0f, "Panning 2", "%", 0.0f, 100.0f);
 
 		onSampleRateChange();
 	}

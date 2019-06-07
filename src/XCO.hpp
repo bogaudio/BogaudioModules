@@ -3,6 +3,7 @@
 #include "bogaudio.hpp"
 #include "dsp/filter.hpp"
 #include "dsp/oscillator.hpp"
+#include "dsp/pitch.hpp"
 #include "dsp/signal.hpp"
 
 using namespace bogaudio::dsp;
@@ -119,23 +120,23 @@ struct XCO : Module {
 
 	XCO() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(FREQUENCY_PARAM, -3.0f, 6.0f, 0.0f, "frequency");
-		configParam(FINE_PARAM, -1.0f, 1.0f, 0.0f, "fine");
-		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "slow");
-		configParam(FM_DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "fm_depth");
-		configParam(FM_TYPE_PARAM, 0.0f, 1.0f, 1.0f, "fm_type");
-		configParam(SQUARE_PW_PARAM, -0.97f, 0.97f, 0.0f, "square_pw");
-		configParam(SQUARE_PHASE_PARAM, -1.0f, 1.0f, 0.0f, "square_phase");
-		configParam(SQUARE_MIX_PARAM, 0.0f, 1.0f, 1.0f, "square_mix");
-		configParam(SAW_SATURATION_PARAM, 0.0f, 1.0f, 0.0f, "saw_saturation");
-		configParam(SAW_PHASE_PARAM, -1.0f, 1.0f, 0.0f, "saw_phase");
-		configParam(SAW_MIX_PARAM, 0.0f, 1.0f, 1.0f, "saw_mix");
-		configParam(TRIANGLE_SAMPLE_PARAM, 0.0f, 1.0f, 0.0f, "triangle_sample");
-		configParam(TRIANGLE_PHASE_PARAM, -1.0f, 1.0f, 0.0f, "triangle_phase");
-		configParam(TRIANGLE_MIX_PARAM, 0.0f, 1.0f, 1.0f, "triangle_mix");
-		configParam(SINE_FEEDBACK_PARAM, 0.0f, 1.0f, 0.0f, "sine_feedback");
-		configParam(SINE_PHASE_PARAM, -1.0f, 1.0f, 0.0f, "sine_phase");
-		configParam(SINE_MIX_PARAM, 0.0f, 1.0f, 1.0f, "sine_mix");
+		configParam(FREQUENCY_PARAM, -3.0f, 6.0f, 0.0f, "Frequency", " Hz", 2.0f, referenceFrequency);
+		configParam(FINE_PARAM, -1.0f, 1.0f, 0.0f, "Fine tune", " cents", 0.0f, 100.0f);
+		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow mode");
+		configParam(FM_DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "FM depth", "%", 0.0f, 100.0f);
+		configParam(FM_TYPE_PARAM, 0.0f, 1.0f, 1.0f, "FM mode");
+		configParam(SQUARE_PW_PARAM, -0.97f, 0.97f, 0.0f, "Square wave pulse width", "%", 0.0f, 100.0f);
+		configParam(SQUARE_PHASE_PARAM, -1.0f, 1.0f, 0.0f, "Square wave phase", "º", 0.0f, 180.0f);
+		configParam(SQUARE_MIX_PARAM, 0.0f, 1.0f, 1.0f, "Square wave mix", "%", 0.0f, 100.0f);
+		configParam(SAW_SATURATION_PARAM, 0.0f, 1.0f, 0.0f, "Saw wave saturation", "%", 0.0f, 100.0f);
+		configParam(SAW_PHASE_PARAM, -1.0f, 1.0f, 0.0f, "Saw wave phase", "º", 0.0f, 180.0f);
+		configParam(SAW_MIX_PARAM, 0.0f, 1.0f, 1.0f, "Saw wave mix", "%", 0.0f, 100.0f);
+		configParam(TRIANGLE_SAMPLE_PARAM, 0.0f, 1.0f, 0.0f, "Triangle wave sampling", "%", 0.0f, 100.0f);
+		configParam(TRIANGLE_PHASE_PARAM, -1.0f, 1.0f, 0.0f, "Triangle wave phase", "º", 0.0f, 180.0f);
+		configParam(TRIANGLE_MIX_PARAM, 0.0f, 1.0f, 1.0f, "Triangle wave mix", "%", 0.0f, 100.0f);
+		configParam(SINE_FEEDBACK_PARAM, 0.0f, 1.0f, 0.0f, "Sine wave feedback", "%", 0.0f, 100.0f);
+		configParam(SINE_PHASE_PARAM, -1.0f, 1.0f, 0.0f, "Sine wave phase", "º", 0.0f, 180.0f);
+		configParam(SINE_MIX_PARAM, 0.0f, 1.0f, 1.0f, "Sine wave mix", "%", 0.0f, 100.0f);
 
 		onReset();
 		setSampleRate(APP->engine->getSampleRate());

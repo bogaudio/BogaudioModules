@@ -84,18 +84,18 @@ struct FMOp : Module {
 	:  _envelope(true)
 	{
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(RATIO_PARAM, -1.0f, 1.0f, 0.0f, "ratio");
-		configParam(FINE_PARAM, -1.0f, 1.0f, 0.0f, "fine");
+		configParam(RATIO_PARAM, -1.0f, 1.0f, 0.0f, "Frequency ratio");
+		configParam(FINE_PARAM, -1.0f, 1.0f, 0.0f, "Fine tune", " cents", 0.0f, 100.0f);
 		configParam(ATTACK_PARAM, 0.0f, 1.0f, 0.12f, "attack");
 		configParam(DECAY_PARAM, 0.0f, 1.0f, 0.31623f, "decay");
-		configParam(SUSTAIN_PARAM, 0.0f, 1.0f, 1.0f, "sustain");
+		configParam(SUSTAIN_PARAM, 0.0f, 1.0f, 1.0f, "Sustain", "%", 0.0f, 100.0f);
 		configParam(RELEASE_PARAM, 0.0f, 1.0f, 0.31623f, "release");
-		configParam(DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "depth");
-		configParam(FEEDBACK_PARAM, 0.0f, 1.0f, 0.0f, "feedback");
-		configParam(LEVEL_PARAM, 0.0f, 1.0f, 1.0f, "level");
-		configParam(ENV_TO_LEVEL_PARAM, 0.0f, 1.0f, 0.0f, "env_to_level");
-		configParam(ENV_TO_FEEDBACK_PARAM, 0.0f, 1.0f, 0.0f, "env_to_feedback");
-		configParam(ENV_TO_DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "env_to_depth");
+		configParam(DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "FM depth", "%", 0.0f, 100.0f);
+		configParam(FEEDBACK_PARAM, 0.0f, 1.0f, 0.0f, "Feedback", "%", 0.0f, 100.0f);
+		configParam(LEVEL_PARAM, 0.0f, 1.0f, 1.0f, "level"); // FIXME: , " dB", 0.0f, -Amplifier::minDecibels, Amplifier::minDecibels);
+		configParam(ENV_TO_LEVEL_PARAM, 0.0f, 1.0f, 0.0f, "Level follows envelope");
+		configParam(ENV_TO_FEEDBACK_PARAM, 0.0f, 1.0f, 0.0f, "Feedback follows envelope");
+		configParam(ENV_TO_DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "FM depth follows envelope");
 
 		onReset();
 		onSampleRateChange();

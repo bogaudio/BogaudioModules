@@ -69,20 +69,20 @@ struct Mix4 : Module {
 	Mix4() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		float levelDefault = fabsf(MixerChannel::minDecibels) / (MixerChannel::maxDecibels - MixerChannel::minDecibels);
-		configParam(LEVEL1_PARAM, 0.0f, 1.0f, levelDefault, "ch1_level");
-		configParam(PAN1_PARAM, -1.0f, 1.0f, 0.0f, "ch1_pan");
-		configParam(MUTE1_PARAM, 0.0f, 3.0f, 0.0f, "ch1_mute");
-		configParam(LEVEL2_PARAM, 0.0f, 1.0f, levelDefault, "ch2_level");
-		configParam(PAN2_PARAM, -1.0f, 1.0f, 0.0f, "ch2_pan");
-		configParam(MUTE2_PARAM, 0.0f, 3.0f, 0.0f, "ch2_mute");
-		configParam(LEVEL3_PARAM, 0.0f, 1.0f, levelDefault, "ch3_level");
-		configParam(PAN3_PARAM, -1.0f, 1.0f, 0.0f, "ch3_pan");
-		configParam(MUTE3_PARAM, 0.0f, 3.0f, 0.0f, "ch3_mute");
-		configParam(LEVEL4_PARAM, 0.0f, 1.0f, levelDefault, "ch4_level");
-		configParam(PAN4_PARAM, -1.0f, 1.0f, 0.0f, "ch4_pan");
-		configParam(MUTE4_PARAM, 0.0f, 3.0f, 0.0f, "ch4_mute");
-		configParam(MIX_PARAM, 0.0f, 1.0f, levelDefault, "master_level");
-		configParam(MIX_MUTE_PARAM, 0.0f, 1.0f, 0.0f, "master_mute");
+		configParam(LEVEL1_PARAM, 0.0f, 1.0f, levelDefault, "Channel 1 level", " dB", 0.0f, MixerChannel::maxDecibels - MixerChannel::minDecibels, MixerChannel::minDecibels);
+		configParam(PAN1_PARAM, -1.0f, 1.0f, 0.0f, "Channel 1 panning", "%", 0.0f, 100.0f);
+		configParam(MUTE1_PARAM, 0.0f, 3.0f, 0.0f, "Channel 1 mute");
+		configParam(LEVEL2_PARAM, 0.0f, 1.0f, levelDefault, "Channel 2 level", " dB", 0.0f, MixerChannel::maxDecibels - MixerChannel::minDecibels, MixerChannel::minDecibels);
+		configParam(PAN2_PARAM, -1.0f, 1.0f, 0.0f, "Channel 2 panning", "%", 0.0f, 100.0f);
+		configParam(MUTE2_PARAM, 0.0f, 3.0f, 0.0f, "Channel 2 mute");
+		configParam(LEVEL3_PARAM, 0.0f, 1.0f, levelDefault, "Channel 3 level", " dB", 0.0f, MixerChannel::maxDecibels - MixerChannel::minDecibels, MixerChannel::minDecibels);
+		configParam(PAN3_PARAM, -1.0f, 1.0f, 0.0f, "Channel 3 panning", "%", 0.0f, 100.0f);
+		configParam(MUTE3_PARAM, 0.0f, 3.0f, 0.0f, "Channel 3 mute");
+		configParam(LEVEL4_PARAM, 0.0f, 1.0f, levelDefault, "Channel 4 level", " dB", 0.0f, MixerChannel::maxDecibels - MixerChannel::minDecibels, MixerChannel::minDecibels);
+		configParam(PAN4_PARAM, -1.0f, 1.0f, 0.0f, "Channel 4 panning", "%", 0.0f, 100.0f);
+		configParam(MUTE4_PARAM, 0.0f, 3.0f, 0.0f, "Channel 4 mute");
+		configParam(MIX_PARAM, 0.0f, 1.0f, levelDefault, "Master level", " dB", 0.0f, MixerChannel::maxDecibels - MixerChannel::minDecibels, MixerChannel::minDecibels);
+		configParam(MIX_MUTE_PARAM, 0.0f, 1.0f, 0.0f, "Master mute");
 
 		_channel1 = new MixerChannel(params[LEVEL1_PARAM], params[PAN1_PARAM], params[MUTE1_PARAM], inputs[IN1_INPUT], inputs[CV1_INPUT], inputs[PAN1_INPUT]);
 		_channel2 = new MixerChannel(params[LEVEL2_PARAM], params[PAN2_PARAM], params[MUTE2_PARAM], inputs[IN2_INPUT], inputs[CV2_INPUT], inputs[PAN2_INPUT]);

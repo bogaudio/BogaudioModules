@@ -40,9 +40,9 @@ struct CVD : Module {
 	:  _delay(1000.0f, 10000.0f)
 	{
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(TIME_PARAM, 0.0f, 1.0f, 0.5f, "time");
-		configParam(TIME_SCALE_PARAM, 0.0f, 2.0f, 1.0f, "time_scale");
-		configParam(MIX_PARAM, -1.0f, 1.0f, 0.0f, "mix");
+		configParam(TIME_PARAM, 0.0f, 1.0f, 0.5f, "Time base");
+		configParam(TIME_SCALE_PARAM, 0.0f, 2.0f, 1.0f, "Time scale", "", 10.0f, 0.1f);
+		configParam(MIX_PARAM, -1.0f, 1.0f, 0.0f, "Dry wet mix", "%", 0.0f, 100.0f);
 
 		onSampleRateChange();
 	}

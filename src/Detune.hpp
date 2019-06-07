@@ -39,7 +39,7 @@ struct Detune : Module {
 
 	Detune() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(CENTS_PARAM, 0.0f, 50.0f, 0.0f, "cents");
+		configParam(CENTS_PARAM, 0.0f, 50.0f, 0.0f, "Cents");
 	}
 
 	void process(const ProcessArgs& args) override;

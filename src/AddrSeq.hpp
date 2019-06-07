@@ -58,17 +58,17 @@ struct AddrSeq : Module {
 
 	AddrSeq() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(STEPS_PARAM, 1.0f, 8.0f, 8.0f, "steps");
-		configParam(DIRECTION_PARAM, 0.0f, 1.0f, 1.0f, "direction");
-		configParam(SELECT_PARAM, 0.0f, 7.0f, 0.0f, "select");
-		configParam(OUT1_PARAM, -1.0f, 1.0f, 0.0f, "out1");
-		configParam(OUT2_PARAM, -1.0f, 1.0f, 0.0f, "out2");
-		configParam(OUT3_PARAM, -1.0f, 1.0f, 0.0f, "out3");
-		configParam(OUT4_PARAM, -1.0f, 1.0f, 0.0f, "out4");
-		configParam(OUT5_PARAM, -1.0f, 1.0f, 0.0f, "out5");
-		configParam(OUT6_PARAM, -1.0f, 1.0f, 0.0f, "out6");
-		configParam(OUT7_PARAM, -1.0f, 1.0f, 0.0f, "out7");
-		configParam(OUT8_PARAM, -1.0f, 1.0f, 0.0f, "out8");
+		configParam(STEPS_PARAM, 1.0f, 8.0f, 8.0f, "Steps");
+		configParam(DIRECTION_PARAM, 0.0f, 1.0f, 1.0f, "Direction");
+		configParam(SELECT_PARAM, 0.0f, 7.0f, 0.0f, "Select step");
+		configParam(OUT1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1", "V", 0.0f, 10.0f);
+		configParam(OUT2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2", "V", 0.0f, 10.0f);
+		configParam(OUT3_PARAM, -1.0f, 1.0f, 0.0f, "Step 3", "V", 0.0f, 10.0f);
+		configParam(OUT4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4", "V", 0.0f, 10.0f);
+		configParam(OUT5_PARAM, -1.0f, 1.0f, 0.0f, "Step 5", "V", 0.0f, 10.0f);
+		configParam(OUT6_PARAM, -1.0f, 1.0f, 0.0f, "Step 6", "V", 0.0f, 10.0f);
+		configParam(OUT7_PARAM, -1.0f, 1.0f, 0.0f, "Step 7", "V", 0.0f, 10.0f);
+		configParam(OUT8_PARAM, -1.0f, 1.0f, 0.0f, "Step 8", "V", 0.0f, 10.0f);
 
 		onReset();
 		onSampleRateChange();

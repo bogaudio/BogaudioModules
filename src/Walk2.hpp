@@ -78,12 +78,12 @@ struct Walk2 : Module {
 	, _jumpTo(NULL)
 	{
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(RATE_X_PARAM, 0.0f, 1.0f, 0.1f, "rate_x");
-		configParam(RATE_Y_PARAM, 0.0f, 1.0f, 0.1f, "rate_y");
-		configParam(OFFSET_X_PARAM, -1.0f, 1.0f, 0.0f, "offset_x");
-		configParam(OFFSET_Y_PARAM, -1.0f, 1.0f, 0.0f, "offset_y");
-		configParam(SCALE_X_PARAM, 0.0f, 1.0f, 1.0f, "scale_x");
-		configParam(SCALE_Y_PARAM, 0.0f, 1.0f, 1.0f, "scale_y");
+		configParam(RATE_X_PARAM, 0.0f, 1.0f, 0.1f, "Rate X", "%", 0.0f, 100.0f);
+		configParam(RATE_Y_PARAM, 0.0f, 1.0f, 0.1f, "Rate Y", "%", 0.0f, 100.0f);
+		configParam(OFFSET_X_PARAM, -1.0f, 1.0f, 0.0f, "Offset X", "V", 0.0f, 5.0f);
+		configParam(OFFSET_Y_PARAM, -1.0f, 1.0f, 0.0f, "Offset Y", "V", 0.0f, 5.0f);
+		configParam(SCALE_X_PARAM, 0.0f, 1.0f, 1.0f, "Scale X", "%", 0.0f, 100.0f);
+		configParam(SCALE_Y_PARAM, 0.0f, 1.0f, 1.0f, "Scale Y", "%", 0.0f, 100.0f);
 
 		onReset();
 		onSampleRateChange();

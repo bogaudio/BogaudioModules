@@ -76,16 +76,16 @@ struct Pressor : Module {
 	:  _detectorRMS(1000.0f, 1.0f, 50.0f)
 	{
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(THRESHOLD_PARAM, 0.0f, 1.0f, 0.8f, "threshold");
+		configParam(THRESHOLD_PARAM, 0.0f, 1.0f, 0.8f, "Threshold", " dB", 0.0f, 30.0f, -24.0f);
 		configParam(RATIO_PARAM, 0.0f, 1.0f, 0.552f, "ratio");
 		configParam(ATTACK_PARAM, 0.0f, 1.0f, 0.316f, "attack");
 		configParam(RELEASE_PARAM, 0.0f, 1.0f, 0.316f, "release");
-		configParam(OUTPUT_GAIN_PARAM, 0.0f, 1.0f, 0.0f, "output_gain");
-		configParam(INPUT_GAIN_PARAM, -1.0f, 1.0f, 0.0f, "input_gain");
-		configParam(DETECTOR_MIX_PARAM, -1.0f, 1.0f, 0.0f, "detector_mix");
-		configParam(MODE_PARAM, 0.0f, 1.0f, 1.0f, "mode");
-		configParam(DECTECTOR_MODE_PARAM, 0.0f, 1.0f, 1.0f, "dectector_mode");
-		configParam(KNEE_PARAM, 0.0f, 1.0f, 1.0f, "knee");
+		configParam(OUTPUT_GAIN_PARAM, 0.0f, 1.0f, 0.0f, "Output gain", " dB", 0.0f, 24.0f);
+		configParam(INPUT_GAIN_PARAM, -1.0f, 1.0f, 0.0f, "Input gain", " dB", 0.0f, 12.0f);
+		configParam(DETECTOR_MIX_PARAM, -1.0f, 1.0f, 0.0f, "Detector mix", "%", 0.0f, 100.0f);
+		configParam(MODE_PARAM, 0.0f, 1.0f, 1.0f, "Mode");
+		configParam(DECTECTOR_MODE_PARAM, 0.0f, 1.0f, 1.0f, "Dectector mode");
+		configParam(KNEE_PARAM, 0.0f, 1.0f, 1.0f, "Knee");
 
 		onReset();
 		onSampleRateChange();

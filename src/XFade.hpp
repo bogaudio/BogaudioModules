@@ -42,9 +42,9 @@ struct XFade : Module {
 
 	XFade() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(MIX_PARAM, -1.0f, 1.0f, 0.0f, "mix");
-		configParam(CURVE_PARAM, 0.0f, 1.0f, 0.5f, "curve");
-		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "linear");
+		configParam(MIX_PARAM, -1.0f, 1.0f, 0.0f, "Mix", "%", 0.0f, 100.0f);
+		configParam(CURVE_PARAM, 0.0f, 1.0f, 0.5f, "Curve");
+		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear");
 
 		onSampleRateChange();
 	}

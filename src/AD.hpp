@@ -55,8 +55,8 @@ struct AD : Module {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(ATTACK_PARAM, 0.0f, 1.0f, 0.12f, "attack");
 		configParam(DECAY_PARAM, 0.0f, 1.0f, 0.31623f, "decay");
-		configParam(LOOP_PARAM, 0.0f, 1.0f, 0.0f, "loop");
-		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "linear");
+		configParam(LOOP_PARAM, 0.0f, 1.0f, 0.0f, "Loop");
+		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear");
 
 		onReset();
 		onSampleRateChange();

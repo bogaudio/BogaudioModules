@@ -38,8 +38,8 @@ struct AMRM : Module {
 
 	AMRM() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(RECTIFY_PARAM, 0.0f, 1.0f, 0.0f, "rectify");
-		configParam(DRYWET_PARAM, 0.0f, 1.0f, 1.0f, "drywet");
+		configParam(RECTIFY_PARAM, 0.0f, 1.0f, 0.0f, "Rectification", "%", 0.0f, 100.0f);
+		configParam(DRYWET_PARAM, 0.0f, 1.0f, 1.0f, "Wet mix", "%", 0.0f, 100.0f);
 	}
 
 	void process(const ProcessArgs& args) override;

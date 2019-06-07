@@ -52,9 +52,9 @@ struct Nsgt : Module {
 
 	Nsgt() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(THRESHOLD_PARAM, 0.0f, 1.0f, 0.8f, "threshold");
+		configParam(THRESHOLD_PARAM, 0.0f, 1.0f, 0.8f, "Threshold", " dB", 0.0f, 30.0f, -24.0f);
 		configParam(RATIO_PARAM, 0.0f, 1.0f, 0.552f, "ratio");
-		configParam(KNEE_PARAM, 0.0f, 1.0f, 1.0f, "knee");
+		configParam(KNEE_PARAM, 0.0f, 1.0f, 1.0f, "Knee");
 
 		onReset();
 		onSampleRateChange();

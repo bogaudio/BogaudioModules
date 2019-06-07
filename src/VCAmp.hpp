@@ -40,7 +40,7 @@ struct VCAmp : Module {
 
 	VCAmp() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(LEVEL_PARAM, 0.0f, 1.0f, fabs(minDecibels) / (maxDecibels - minDecibels), "level");
+		configParam(LEVEL_PARAM, 0.0f, 1.0f, fabs(minDecibels) / (maxDecibels - minDecibels), "Level", " dB", 0.0f, maxDecibels - minDecibels, minDecibels);
 
 		onSampleRateChange();
 		_rms.setSensitivity(0.05f);

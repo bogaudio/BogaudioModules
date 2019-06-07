@@ -118,19 +118,19 @@ struct EightFO : LFOBase {
 
 	EightFO() : LFOBase(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 		configParam(FREQUENCY_PARAM, -8.0, 5.0, 0.0, "frequency");
-		configParam(WAVE_PARAM, 1.0, 5.0, 3.0, "wave");
-		configParam(SLOW_PARAM, 0.0, 1.0, 0.0, "slow");
-		configParam(SAMPLE_PWM_PARAM, -1.0, 1.0, 0.0, "sample/pwm");
-		configParam(OFFSET_PARAM, -1.0, 1.0, 0.0, "offset");
-		configParam(SCALE_PARAM, 0.0, 1.0, 1.0, "scale");
-		configParam(PHASE7_PARAM, -1.0, 1.0, 0.0, "phase");
-		configParam(PHASE6_PARAM, -1.0, 1.0, 0.0, "phase");
-		configParam(PHASE5_PARAM, -1.0, 1.0, 0.0, "phase");
-		configParam(PHASE4_PARAM, -1.0, 1.0, 0.0, "phase");
-		configParam(PHASE3_PARAM, -1.0, 1.0, 0.0, "phase");
-		configParam(PHASE2_PARAM, -1.0, 1.0, 0.0, "phase");
-		configParam(PHASE1_PARAM, -1.0, 1.0, 0.0, "phase");
-		configParam(PHASE0_PARAM, -1.0, 1.0, 0.0f, "phase");
+		configParam(WAVE_PARAM, 1.0, 5.0, 3.0, "Waveform");
+		configParam(SLOW_PARAM, 0.0, 1.0, 0.0, "Slow");
+		configParam(SAMPLE_PWM_PARAM, -1.0, 1.0, 0.0, "Width", "%", 0.0f, 100.0f);
+		configParam(OFFSET_PARAM, -1.0, 1.0, 0.0, "Offset", "V", 0.0f, 5.0f);
+		configParam(SCALE_PARAM, 0.0, 1.0, 1.0, "Scale", "%", 0.0f, 100.0f);
+		configParam(PHASE7_PARAM, -1.0, 1.0, 0.0, "Phase 315", "º", 0.0f, 180.0f);
+		configParam(PHASE6_PARAM, -1.0, 1.0, 0.0, "Phase 270", "º", 0.0f, 180.0f);
+		configParam(PHASE5_PARAM, -1.0, 1.0, 0.0, "Phase 225", "º", 0.0f, 180.0f);
+		configParam(PHASE4_PARAM, -1.0, 1.0, 0.0, "Phase 180", "º", 0.0f, 180.0f);
+		configParam(PHASE3_PARAM, -1.0, 1.0, 0.0, "Phase 135", "º", 0.0f, 180.0f);
+		configParam(PHASE2_PARAM, -1.0, 1.0, 0.0, "Phase 90", "º", 0.0f, 180.0f);
+		configParam(PHASE1_PARAM, -1.0, 1.0, 0.0, "Phase 45", "º", 0.0f, 180.0f);
+		configParam(PHASE0_PARAM, -1.0, 1.0, 0.0f, "Phase 0", "º", 0.0f, 180.0f);
 
 		onReset();
 		onSampleRateChange();

@@ -3,6 +3,7 @@
 #include "bogaudio.hpp"
 #include "dsp/filter.hpp"
 #include "dsp/oscillator.hpp"
+#include "dsp/pitch.hpp"
 #include "dsp/signal.hpp"
 
 using namespace bogaudio::dsp;
@@ -71,12 +72,12 @@ struct VCO : Module {
 
 	VCO() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(FREQUENCY_PARAM, -3.0f, 6.0f, 0.0f, "frequency");
-		configParam(FINE_PARAM, -1.0f, 1.0f, 0.0f, "fine");
-		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "slow");
-		configParam(PW_PARAM, -1.0f, 1.0f, 0.0f, "pw");
-		configParam(FM_PARAM, 0.0f, 1.0f, 0.0f, "fm");
-		configParam(FM_TYPE_PARAM, 0.0f, 1.0f, 1.0f, "fm_type");
+		configParam(FREQUENCY_PARAM, -3.0f, 6.0f, 0.0f, "Frequency", " Hz", 2.0f, referenceFrequency);
+		configParam(FINE_PARAM, -1.0f, 1.0f, 0.0f, "Fine tune", " cents", 0.0f, 100.0f);
+		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow mode");
+		configParam(PW_PARAM, -1.0f, 1.0f, 0.0f, "Pulse width", "%", 0.0f, 100.0f*0.5f*(1.0f - 2.0f * _square.minPulseWidth), 50.0f);
+		configParam(FM_PARAM, 0.0f, 1.0f, 0.0f, "FM depth", "%", 0.0f, 100.0f);
+		configParam(FM_TYPE_PARAM, 0.0f, 1.0f, 1.0f, "FM mode");
 
 		onReset();
 		setSampleRate(APP->engine->getSampleRate());
