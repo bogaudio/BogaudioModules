@@ -12,6 +12,8 @@ struct Button18 : SvgSwitch {
 
 struct BGKnob : RoundKnob {
 	BGKnob(const char* svg, int dim);
+
+	void redraw();
 };
 
 struct Knob16 : BGKnob {

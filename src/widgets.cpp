@@ -21,6 +21,11 @@ BGKnob::BGKnob(const char* svg, int dim) {
 	shadow->box.pos = Vec(0.0, 3.0);
 }
 
+void BGKnob::redraw() {
+	event::Change c;
+	onChange(c);
+}
+
 
 Knob16::Knob16() : BGKnob("res/knob_16px.svg", 16) {
 	shadow->box.pos = Vec(0.0, 2.5);

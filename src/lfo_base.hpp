@@ -62,7 +62,7 @@ struct LFOBaseWidget : ModuleWidget, PitchModeListener {
 	SvgPanel* _panel = NULL;
 	const char* _classicSvgName;
 	const char* _compliantSvgName;
-	SvgKnob* _frequencyKnob = NULL;
+	BGKnob* _frequencyKnob = NULL;
 
 	LFOBaseWidget(
 		LFOBase* module,
@@ -96,6 +96,7 @@ struct LFOBaseWidget : ModuleWidget, PitchModeListener {
 			if (_frequencyKnob && _frequencyKnob->paramQuantity) {
 				_frequencyKnob->paramQuantity->minValue = -8.0f;
 				_frequencyKnob->paramQuantity->maxValue = 5.0f;
+				_frequencyKnob->redraw();
 			}
 		}
 		else {
@@ -103,6 +104,7 @@ struct LFOBaseWidget : ModuleWidget, PitchModeListener {
 			if (_frequencyKnob && _frequencyKnob->paramQuantity) {
 				_frequencyKnob->paramQuantity->minValue = -5.0f;
 				_frequencyKnob->paramQuantity->maxValue = 8.0f;
+				_frequencyKnob->redraw();
 			}
 		}
 	}
