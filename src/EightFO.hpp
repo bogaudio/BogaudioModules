@@ -120,7 +120,7 @@ struct EightFO : LFOBase {
 		configParam(WAVE_PARAM, 1.0, 5.0, 3.0, "Waveform");
 		configParam(SLOW_PARAM, 0.0, 1.0, 0.0, "Slow");
 		configParam(SAMPLE_PWM_PARAM, -1.0, 1.0, 0.0, "Width", "%", 0.0f, 100.0f);
-		configParam(OFFSET_PARAM, -1.0, 1.0, 0.0, "Offset", "V", 0.0f, 5.0f);
+		configParam(OFFSET_PARAM, -1.0, 1.0, 0.0, "Offset", " V", 0.0f, 5.0f);
 		configParam(SCALE_PARAM, 0.0, 1.0, 1.0, "Scale", "%", 0.0f, 100.0f);
 		configParam(PHASE7_PARAM, -1.0, 1.0, 0.0, "Phase 315", "º", 0.0f, 180.0f);
 		configParam(PHASE6_PARAM, -1.0, 1.0, 0.0, "Phase 270", "º", 0.0f, 180.0f);

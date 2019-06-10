@@ -75,7 +75,7 @@ struct LLFO : LFOBase {
 		configParam<LFOFrequencyParamQuantity>(FREQUENCY_PARAM, -8.0f, 5.0f, 0.0f, "Frequency", " Hz");
 		configParam(WAVE_PARAM, 0.0f, 5.0f, 0.0f, "Waveform");
 		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow mode");
-		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "Offset", "V", 0.0f, 5.0f);
+		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "Offset", " V", 0.0f, 5.0f);
 		configParam(SCALE_PARAM, 0.0f, 1.0f, 1.0f, "Scale", "%", 0.0f, 100.0f);
 
 		onReset();

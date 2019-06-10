@@ -401,7 +401,7 @@ void AnalyzerDisplay::drawXAxis(const DrawArgs& args, float strokeWidth, float r
 		hz += 100000.0;
 	}
 
-	drawText(args, "Hz", _insetLeft, _size.y - 2);
+	drawText(args, " Hz", _insetLeft, _size.y - 2);
 	if (rangeMinHz <= 100.0f) {
 		float x = (100.0 - rangeMinHz) / (rangeMaxHz - rangeMinHz);
 		x = powf(x, _xAxisLogFactor);
