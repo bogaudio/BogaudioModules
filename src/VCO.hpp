@@ -3,7 +3,6 @@
 #include "bogaudio.hpp"
 #include "dsp/filter.hpp"
 #include "dsp/oscillator.hpp"
-#include "dsp/pitch.hpp"
 #include "dsp/signal.hpp"
 
 using namespace bogaudio::dsp;
@@ -11,6 +10,8 @@ using namespace bogaudio::dsp;
 extern Model* modelVCO;
 
 namespace bogaudio {
+
+struct VCOFrequencyParamQuantity;
 
 struct VCO : Module {
 	enum ParamsIds {
@@ -47,6 +48,7 @@ struct VCO : Module {
 	const int modulationSteps = 100;
 	const float amplitude = 5.0f;
 	static constexpr int oversample = 8;
+	const float _slowModeOffset = -7.0f;
 	int _modulationStep = 0;
 	float _oversampleThreshold = 0.0f;
 	float _frequency = 0.0f;
@@ -72,7 +74,7 @@ struct VCO : Module {
 
 	VCO() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(FREQUENCY_PARAM, -3.0f, 6.0f, 0.0f, "Frequency", " Hz", 2.0f, referenceFrequency);
+		configParam<VCOFrequencyParamQuantity>(FREQUENCY_PARAM, -3.0f, 6.0f, 0.0f, "Frequency", " Hz");
 		configParam(FINE_PARAM, -1.0f, 1.0f, 0.0f, "Fine tune", " cents", 0.0f, 100.0f);
 		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow mode");
 		configParam(PW_PARAM, -1.0f, 1.0f, 0.0f, "Pulse width", "%", 0.0f, 100.0f*0.5f*(1.0f - 2.0f * _square.minPulseWidth), 50.0f);
@@ -90,6 +92,13 @@ struct VCO : Module {
 	void process(const ProcessArgs& args) override;
 	void setSampleRate(float sampleRate);
 	void setFrequency(float frequency);
+};
+
+struct VCOFrequencyParamQuantity : FrequencyParamQuantity {
+	float offset() override {
+		VCO* vco = static_cast<VCO*>(module);
+		return vco->_slowMode ? vco->_slowModeOffset : 0.0f;
+	}
 };
 
 } // namespace bogaudio

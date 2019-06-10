@@ -3,7 +3,6 @@
 #include "bogaudio.hpp"
 #include "dsp/filter.hpp"
 #include "dsp/oscillator.hpp"
-#include "dsp/pitch.hpp"
 #include "dsp/signal.hpp"
 
 using namespace bogaudio::dsp;
@@ -11,6 +10,8 @@ using namespace bogaudio::dsp;
 extern Model* modelXCO;
 
 namespace bogaudio {
+
+struct XCOFrequencyParamQuantity;
 
 struct XCO : Module {
 	enum ParamsIds {
@@ -71,6 +72,7 @@ struct XCO : Module {
 	const int modulationSteps = 100;
 	const float amplitude = 5.0f;
 	static constexpr int oversample = 8;
+	const float _slowModeOffset = -7.0f;
 	const float sineOversampleMixIncrement = 0.01f;
 	int _modulationStep = 0;
 	float _oversampleThreshold = 0.0f;
@@ -120,7 +122,7 @@ struct XCO : Module {
 
 	XCO() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(FREQUENCY_PARAM, -3.0f, 6.0f, 0.0f, "Frequency", " Hz", 2.0f, referenceFrequency);
+		configParam<XCOFrequencyParamQuantity>(FREQUENCY_PARAM, -3.0f, 6.0f, 0.0f, "Frequency", " Hz");
 		configParam(FINE_PARAM, -1.0f, 1.0f, 0.0f, "Fine tune", " cents", 0.0f, 100.0f);
 		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow mode");
 		configParam(FM_DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "FM depth", "%", 0.0f, 100.0f);
@@ -151,6 +153,13 @@ struct XCO : Module {
 	float level(Param& param, Input& input);
 	void setSampleRate(float sampleRate);
 	void setFrequency(float frequency);
+};
+
+struct XCOFrequencyParamQuantity : FrequencyParamQuantity {
+	float offset() override {
+		XCO* xco = static_cast<XCO*>(module);
+		return xco->_slowMode ? xco->_slowModeOffset : 0.0f;
+	}
 };
 
 } // namespace bogaudio

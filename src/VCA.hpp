@@ -9,6 +9,8 @@ extern Model* modelVCA;
 
 namespace bogaudio {
 
+struct VCALevelParamQuantity;
+
 struct VCA : Module {
 	enum ParamsIds {
 		LEVEL1_PARAM,
@@ -43,16 +45,23 @@ struct VCA : Module {
 
 	VCA() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(LEVEL1_PARAM, 0.0f, 1.0f, 0.8f, "level1");
-		configParam(LEVEL2_PARAM, 0.0f, 1.0f, 0.8f, "level2");
-		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "linear");
+		configParam<VCALevelParamQuantity>(LEVEL1_PARAM, 0.0f, 1.0f, 0.8f, "Level 1");
+		configParam<VCALevelParamQuantity>(LEVEL2_PARAM, 0.0f, 1.0f, 0.8f, "Level 2");
+		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear");
 
 		onSampleRateChange();
 	}
 
+	inline bool isLinear() { return params[LINEAR_PARAM].getValue() > 0.5f; }
 	void onSampleRateChange() override;
 	void process(const ProcessArgs& args) override;
 	void channelStep(Input& input, Output& output, Param& knob, Input& cv, Amplifier& amplifier, bogaudio::dsp::SlewLimiter& levelSL, bool linear);
+};
+
+struct VCALevelParamQuantity : AmpliferParamQuantity {
+	bool isLinear() override {
+		return static_cast<VCA*>(module)->isLinear();
+	}
 };
 
 } // namespace bogaudio

@@ -43,10 +43,10 @@ struct Slew : Module {
 
 	Slew() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(RISE_PARAM, 0.0f, 1.0f, 0.316f, "rise");
-		configParam(RISE_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "rise_shape");
-		configParam(FALL_PARAM, 0.0f, 1.0f, 0.316f, "fall");
-		configParam(FALL_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "fall_shape");
+		configParam<EnvelopeSegmentParamQuantity>(RISE_PARAM, 0.0f, 1.0f, 0.31623f, "Rise", "s");
+		configParam(RISE_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "Rise shape");
+		configParam<EnvelopeSegmentParamQuantity>(FALL_PARAM, 0.0f, 1.0f, 0.31623f, "Fall", "s");
+		configParam(FALL_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "Fall shape");
 
 		onReset();
 	}

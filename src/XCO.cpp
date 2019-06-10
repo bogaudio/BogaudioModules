@@ -36,7 +36,7 @@ void XCO::process(const ProcessArgs& args) {
 			_baseVOct += clamp(inputs[PITCH_INPUT].getVoltage(), -5.0f, 5.0f);
 		}
 		if (_slowMode) {
-			_baseVOct -= 7.0f;
+			_baseVOct += _slowModeOffset;
 		}
 		_baseHz = cvToFrequency(_baseVOct);
 

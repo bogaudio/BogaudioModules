@@ -9,6 +9,7 @@
 
 #include "rack.hpp"
 
+#include "param_quantities.hpp"
 #include "rack_overrides.hpp"
 #include "trigger_on_load.hpp"
 #include "widgets.hpp"

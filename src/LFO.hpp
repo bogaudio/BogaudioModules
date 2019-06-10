@@ -48,7 +48,6 @@ struct LFO : LFOBase {
 	const float amplitude = 5.0f;
 
 	int _modulationStep = 0;
-	bool _slowMode = false;
 	int _sampleSteps = 1;
 	int _sampleStep = 0;
 	float _offset = 0.0f;
@@ -74,7 +73,7 @@ struct LFO : LFOBase {
 	bool _squareActive = false;
 
 	LFO() : LFOBase(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
-		configParam(FREQUENCY_PARAM, -8.0f, 5.0f, 0.0f, "frequency");
+		configParam<LFOFrequencyParamQuantity>(FREQUENCY_PARAM, -5.0f, 8.0f, 0.0f, "Frequency", " Hz");
 		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow");
 		configParam(SAMPLE_PARAM, 0.0f, 1.0f, 0.0f, "Output sampling", "%", 0.0f, 100.0f);
 		configParam(PW_PARAM, -1.0f, 1.0f, 0.0f, "Pulse width", "%", 0.0f, 100.0f*0.5f*(1.0f - 2.0f * _square.minPulseWidth), 50.0f);

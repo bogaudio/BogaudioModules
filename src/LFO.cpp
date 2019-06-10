@@ -15,6 +15,7 @@ void LFO::onSampleRateChange() {
 
 void LFO::process(const ProcessArgs& args) {
 	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].getValue() > 0.5f;
+
 	if (!(
 		outputs[SINE_OUTPUT].isConnected() ||
 		outputs[TRIANGLE_OUTPUT].isConnected() ||
@@ -29,7 +30,7 @@ void LFO::process(const ProcessArgs& args) {
 	if (_modulationStep >= modulationSteps) {
 		_modulationStep = 0;
 
-		setFrequency(_slowMode, params[FREQUENCY_PARAM], inputs[PITCH_INPUT], _phasor);
+		setFrequency(params[FREQUENCY_PARAM], inputs[PITCH_INPUT], _phasor);
 
 		float pw = params[PW_PARAM].getValue();
 		if (inputs[PW_INPUT].isConnected()) {

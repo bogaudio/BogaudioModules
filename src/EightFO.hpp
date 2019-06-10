@@ -76,7 +76,6 @@ struct EightFO : LFOBase {
 
 	int _modulationStep = 0;
 	Wave _wave = NO_WAVE;
-	bool _slowMode = false;
 	int _sampleSteps = 1;
 	int _sampleStep = 0;
 	float _offset = 0.0f;
@@ -117,7 +116,7 @@ struct EightFO : LFOBase {
 	bool _phase0Active = false;
 
 	EightFO() : LFOBase(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
-		configParam(FREQUENCY_PARAM, -8.0, 5.0, 0.0, "frequency");
+		configParam<LFOFrequencyParamQuantity>(FREQUENCY_PARAM, -8.0, 5.0, 0.0, "Frequency", " Hz");
 		configParam(WAVE_PARAM, 1.0, 5.0, 3.0, "Waveform");
 		configParam(SLOW_PARAM, 0.0, 1.0, 0.0, "Slow");
 		configParam(SAMPLE_PWM_PARAM, -1.0, 1.0, 0.0, "Width", "%", 0.0f, 100.0f);

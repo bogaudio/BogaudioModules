@@ -45,8 +45,8 @@ struct DGate : TriggerOnLoadModule {
 	float _stageProgress;
 
 	DGate() : TriggerOnLoadModule(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
-		configParam(DELAY_PARAM, 0.0f, 1.0f, 0.0f, "delay");
-		configParam(GATE_PARAM, 0.0f, 1.0f, 0.32f, "gate");
+		configParam<EnvelopeSegmentParamQuantity>(DELAY_PARAM, 0.0f, 1.0f, 0.0f, "Delay", "s");
+		configParam<EnvelopeSegmentParamQuantity>(GATE_PARAM, 0.0f, 1.0f, 0.31623f, "Gate", "s");
 		configParam(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "Loop");
 		configParam(TRIGGER_PARAM, 0.0f, 1.0f, 0.0f, "Trigger");
 

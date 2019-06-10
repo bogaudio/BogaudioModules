@@ -44,10 +44,10 @@ struct ADSR : Module {
 
 	ADSR() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(ATTACK_PARAM, 0.0f, 1.0f, 0.12f, "attack");
-		configParam(DECAY_PARAM, 0.0f, 1.0f, 0.31623f, "decay");
+		configParam<EnvelopeSegmentParamQuantity>(ATTACK_PARAM, 0.0f, 1.0f, 0.141421f, "Attack", "s");
+		configParam<EnvelopeSegmentParamQuantity>(DECAY_PARAM, 0.0f, 1.0f, 0.31623f, "Decay", "s");
 		configParam(SUSTAIN_PARAM, 0.0f, 1.0f, 1.0f, "Sustain", "%", 0.0f, 100.0f);
-		configParam(RELEASE_PARAM, 0.0f, 1.0f, 0.31623f, "release");
+		configParam<EnvelopeSegmentParamQuantity>(RELEASE_PARAM, 0.0f, 1.0f, 0.31623f, "Release", "s");
 		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear");
 
 		onReset();

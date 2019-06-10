@@ -54,7 +54,6 @@ struct LLFO : LFOBase {
 	const float amplitude = 5.0f;
 
 	int _modulationStep = 0;
-	bool _slowMode = false;
 	float _offset = 0.0f;
 	float _scale = 0.0f;
 	PositiveZeroCrossing _resetTrigger;
@@ -73,7 +72,7 @@ struct LLFO : LFOBase {
 	, _invert(false)
 	, _oscillator(&_sine)
 	{
-		configParam(FREQUENCY_PARAM, -8.0f, 5.0f, 0.0f, "frequency");
+		configParam<LFOFrequencyParamQuantity>(FREQUENCY_PARAM, -8.0f, 5.0f, 0.0f, "Frequency", " Hz");
 		configParam(WAVE_PARAM, 0.0f, 5.0f, 0.0f, "Waveform");
 		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow mode");
 		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "Offset", "V", 0.0f, 5.0f);

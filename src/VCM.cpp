@@ -2,7 +2,7 @@
 #include "VCM.hpp"
 
 void VCM::process(const ProcessArgs& args) {
-	bool linear = params[LINEAR_PARAM].getValue() > 0.5f;
+	bool linear = isLinear();
 	lights[LINEAR_LIGHT].value = linear;
 	if (outputs[MIX_OUTPUT].isConnected()) {
 		float out = channelStep(inputs[IN1_INPUT], params[LEVEL1_PARAM], inputs[CV1_INPUT], _amplifier1, linear);

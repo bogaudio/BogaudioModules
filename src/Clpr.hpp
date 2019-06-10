@@ -48,9 +48,9 @@ struct Clpr : Module {
 
 	Clpr() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(THRESHOLD_PARAM, 0.0f, 1.0f, 0.8f, "threshold");
-		configParam(OUTPUT_GAIN_PARAM, 0.0f, 1.0f, 0.0f, "output_gain");
-		configParam(KNEE_PARAM, 0.0f, 1.0f, 0.0f, "knee");
+		configParam(THRESHOLD_PARAM, 0.0f, 1.0f, 0.8f, "Threshold", " dB", 0.0f, 30.0f, -24.0f);
+		configParam(OUTPUT_GAIN_PARAM, 0.0f, 1.0f, 0.0f, "Output gain", " dB", 0.0f, 24.0f);
+		configParam(KNEE_PARAM, 0.0f, 1.0f, 0.0f, "Knee");
 
 		onReset();
 	}

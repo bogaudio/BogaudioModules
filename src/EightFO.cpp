@@ -24,6 +24,7 @@ void EightFO::onSampleRateChange() {
 
 void EightFO::process(const ProcessArgs& args) {
 	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].getValue() > 0.5f;
+
 	if (!(
 		outputs[PHASE7_OUTPUT].isConnected() ||
 		outputs[PHASE6_OUTPUT].isConnected() ||
@@ -41,7 +42,7 @@ void EightFO::process(const ProcessArgs& args) {
 	if (_modulationStep >= modulationSteps) {
 		_modulationStep = 0;
 
-		setFrequency(_slowMode, params[FREQUENCY_PARAM], inputs[PITCH_INPUT], _phasor);
+		setFrequency(params[FREQUENCY_PARAM], inputs[PITCH_INPUT], _phasor);
 
 		_wave = (Wave)params[WAVE_PARAM].getValue();
 		if (_wave == SQUARE_WAVE) {

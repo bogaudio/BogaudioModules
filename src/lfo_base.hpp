@@ -21,6 +21,7 @@ struct LFOBase : Module {
 	};
 
 	PitchMode _pitchMode = UNKNOWN_PITCH_MODE;
+	bool _slowMode = false;
 	PitchModeListener* _pitchModeListener = NULL;
 
 	LFOBase(int np, int ni, int no, int nl) {
@@ -32,7 +33,15 @@ struct LFOBase : Module {
 	bool isCompliantPitchMode() { return _pitchMode != CLASSIC_PITCH_MODE; }
 	void setPitchMode(PitchMode mode);
 	void setPitchModeListener(PitchModeListener* listener) { _pitchModeListener = listener; }
-	void setFrequency(bool slow, Param& frequency, Input& pitch, Phasor& phasor);
+	float getPitchOffset();
+	void setFrequency(Param& frequency, Input& pitch, Phasor& phasor);
+};
+
+struct LFOFrequencyParamQuantity : FrequencyParamQuantity {
+	float offset() override {
+		LFOBase* lfo = static_cast<LFOBase*>(module);
+		return lfo->getPitchOffset();
+	}
 };
 
 struct PitchModeMenuItem : MenuItem {

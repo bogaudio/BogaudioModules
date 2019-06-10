@@ -46,20 +46,26 @@ void LFOBase::setPitchMode(PitchMode mode) {
 	}
 }
 
-void LFOBase::setFrequency(bool slow, Param& frequency, Input& pitch, Phasor& phasor) {
+float LFOBase::getPitchOffset() {
+	float offset = 0.0f;
+	if (_slowMode) {
+		offset -= 8.0f;
+	}
+	else {
+		offset -= 4.0f;
+	}
+	if (isCompliantPitchMode()) {
+		offset -= 3.0f;
+	}
+	return offset;
+}
+
+void LFOBase::setFrequency(Param& frequency, Input& pitch, Phasor& phasor) {
 	float f = frequency.value;
 	if (pitch.isConnected()) {
 		f += pitch.getVoltage();
 	}
-	if (slow) {
-		f -= 8.0f;
-	}
-	else {
-		f -= 4.0f;
-	}
-	if (isCompliantPitchMode()) {
-		f -= 3.0f;
-	}
+	f += getPitchOffset();
 
 	f = cvToFrequency(f);
 	if (f > 2000.0f) {

@@ -29,7 +29,7 @@ void LLFO::process(const ProcessArgs& args) {
 	if (_modulationStep >= modulationSteps) {
 		_modulationStep = 0;
 
-		setFrequency(_slowMode, params[FREQUENCY_PARAM], inputs[PITCH_INPUT], _phasor);
+		setFrequency(params[FREQUENCY_PARAM], inputs[PITCH_INPUT], _phasor);
 
 		_invert = false;
 		switch (wave) {
