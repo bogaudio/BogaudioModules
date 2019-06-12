@@ -213,6 +213,8 @@ void AnalyzerCore::stepChannel(int channelIndex, Input& input) {
 
 
 void AnalyzerDisplay::draw(const DrawArgs& args) {
+	std::lock_guard<std::mutex> lock(_module->_core._channelsMutex);
+
 	float rangeMinHz = 0.0f;
 	float rangeMaxHz = 0.0f;
 	float rangeDb = 80.0f;
