@@ -213,7 +213,9 @@ void AnalyzerCore::stepChannel(int channelIndex, Input& input) {
 
 
 void AnalyzerDisplay::draw(const DrawArgs& args) {
-	std::lock_guard<std::mutex> lock(_module->_core._channelsMutex);
+	if (_module) {
+		_module->_core._channelsMutex.lock();
+	}
 
 	float rangeMinHz = 0.0f;
 	float rangeMaxHz = 0.0f;
@@ -249,6 +251,10 @@ void AnalyzerDisplay::draw(const DrawArgs& args) {
 		}
 	}
 	nvgRestore(args.vg);
+
+	if (_module) {
+		_module->_core._channelsMutex.unlock();
+	}
 }
 
 void AnalyzerDisplay::drawBackground(const DrawArgs& args) {
