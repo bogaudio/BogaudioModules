@@ -116,7 +116,7 @@ struct EightFO : LFOBase {
 	bool _phase0Active = false;
 
 	EightFO() : LFOBase(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
-		configParam<LFOFrequencyParamQuantity>(FREQUENCY_PARAM, -8.0, 5.0, 0.0, "Frequency", " Hz");
+		configParam<LFOFrequencyParamQuantity>(FREQUENCY_PARAM, -5.0f, 8.0f, 0.0, "Frequency", " Hz");
 		configParam(WAVE_PARAM, 1.0, 5.0, 3.0, "Waveform");
 		configParam(SLOW_PARAM, 0.0, 1.0, 0.0, "Slow");
 		configParam(SAMPLE_PWM_PARAM, -1.0, 1.0, 0.0, "Width", "%", 0.0f, 100.0f);

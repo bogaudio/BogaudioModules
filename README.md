@@ -112,8 +112,6 @@ A standard LFO featuring:
 
 LFO tracks pitch CVs at the V/OCT input seven octaves lower than a normal oscillator: with a 0V input, the output frequency is note C-3 (2.04HZ).  The frequency knob is calibrated in linear volts (the small ticks), and its value is added to the input V/OCT.  With no input, the frequency range is from approximately 0.1 to 400HZ; with CV the frequency may be driven up to 2000HZ or down to arbitrarily low values.  In slow mode, the output frequency tracks the controls 11 octaves lower than in normal mode.
 
-*NOTE ON FREQUENCIES:* Previous to release 0.6.14 (April 2019), LFO tracked 0V as C0 or 16.35HZ (and 8 octaves lower in slow mode). Patches created with older versions will continue to have the old behavior.  New instances of LFO added to patches will have the new behavior.  The behavior can be toggled, in either case, on the context (right-click) menu.
-
 #### 8FO
 
 An LFO with outputs at 8 different phases.  The phases may be set by knobs and CVs; by default they are 0, 45, 90, etc, degrees from the fundamental.  Otherwise, functionality is the same as with LFO, excepting that the wave shape is selectable, and all outputs are of the same (phase-shifted) wave.
