@@ -5,9 +5,9 @@ Modules for [VCV Rack](https://github.com/VCVRack/Rack), an open-source Eurorack
   - [Oscillators](#oscillators)
   - [LFOs](#lfos)
   - [Envelopes and Envelope Utilities](#envelopes)
-  - [Noise/Random, Sample and Hold](#random)
   - [Mixers, Panners and VCAs](#mixers)
   - [Effects and Dynamics](#effects)
+  - [Noise/Random, Sample and Hold](#random)
   - [Sequential Switches and Sequencers](#sequencers)
   - [Visualizers](#visualizers)
   - [Pitch CV Utilities](#pitch)
@@ -17,10 +17,6 @@ Modules for [VCV Rack](https://github.com/VCVRack/Rack), an open-source Eurorack
 ![modules screenshot](./doc/www/modules1.png)
 
 ![modules screenshot](./doc/www/modules2.png)
-
-![modules screenshot](./doc/www/modules6.png)
-
-![modules screenshot](./doc/www/modules5.png)
 
 ![modules screenshot](./doc/www/modules3.png)
 
@@ -181,43 +177,6 @@ An envelope follower, a utility that converts its input to a CV proportional to 
 
 With DAMP at the minimum setting and SCALE at half, the module is an effective wave rectifier (that is, it outputs the absolute value of the input).
 
-### <a name="random"></a> Noise/Random, Sample and Hold
-
-![Noise/random screenshot](doc/www/noise.png)
-
-#### NOISE
-
-A noise source, in types blue (f), white, pink (1/f), red (aka rown, 1/f^2) and Gauss (normal with mean 0 and variance 1).
-
-Additionally, NOISE has an absolute value circuit.  Patch audio into ABS to get positive CV.  For example, patch white noise into ABS to get uniform values in the range 0 to 10.
-
-#### S&H
-
-A dual sample-and-hold and trigger-and-hold.  Sampling may be triggered by CV (on the rising edge of a trigger or gate) or button press.  If nothing is connected to an IN port, sampling for that channel is from an internal white noise source (range 0-10V).
-
-Each channel can be toggled into track-and-hold mode.  In this mode, when the input at GATE is high, or the button is held, the input is copied to the output.  When the gate goes low, the input is sampled and held until the next gate.
-
-#### WALK2
-
-WALK2 provides two channels of chaotic CV, where the CV moves as a "random walk".  The two outputs are drawn as a trace, in X and Y, on the display.
-
-For each channel:
- - RATE controls how sedately, or wildly, the CV moves around.  If CV is in use, it is attenuated by the knob.
- - OFFSET adds or subtracts up to 5V from the base +/-5V output.  If the offset CV is in use, it is attenuverted by the knob.
- - SCALE scales the output; if CV is in use, it is attenuated by the knob.
-
-Additionally:
-  - A trigger on the JUMP input will cause both channels to jump to a random value.  A bit of slew limitation applies to the jump to minimize popping.
-  - DIST outputs a third CV, ranging over 0-10V, related the X and Y channel outputs.  
-
-Clicking on the display will jump the outputs, X and Y, to that point (again with a bit of slew limitation).
-
-Various options on the context (right-click) menu allow customization of the display (set the range of the display to +/-10V instead of the default +/-5V; hide the grid dots; set the color of the trace).
-
-#### WALK
-
-WALK is a single-channel random walk, identical to one channel of WALK2, in 3HP.
-
 ### <a name="mixers"></a> Mixers, Panners and VCAs
 
 #### MIX8
@@ -359,6 +318,43 @@ In contrast to CLPR, LMTR does not distort the signal (or not much); it just red
 #### NSGT
 
 NSGT is a compact (6HP) [noise gate](https://en.wikipedia.org/wiki/Noise_gate).  Its controls behave the same as the corresponding controls on PRESSOR.
+
+### <a name="random"></a> Noise/Random, Sample and Hold
+
+![Noise/random screenshot](doc/www/noise.png)
+
+#### NOISE
+
+A noise source, in types blue (f), white, pink (1/f), red (aka rown, 1/f^2) and Gauss (normal with mean 0 and variance 1).
+
+Additionally, NOISE has an absolute value circuit.  Patch audio into ABS to get positive CV.  For example, patch white noise into ABS to get uniform values in the range 0 to 10.
+
+#### S&H
+
+A dual sample-and-hold and trigger-and-hold.  Sampling may be triggered by CV (on the rising edge of a trigger or gate) or button press.  If nothing is connected to an IN port, sampling for that channel is from an internal white noise source (range 0-10V).
+
+Each channel can be toggled into track-and-hold mode.  In this mode, when the input at GATE is high, or the button is held, the input is copied to the output.  When the gate goes low, the input is sampled and held until the next gate.
+
+#### WALK2
+
+WALK2 provides two channels of chaotic CV, where the CV moves as a "random walk".  The two outputs are drawn as a trace, in X and Y, on the display.
+
+For each channel:
+ - RATE controls how sedately, or wildly, the CV moves around.  If CV is in use, it is attenuated by the knob.
+ - OFFSET adds or subtracts up to 5V from the base +/-5V output.  If the offset CV is in use, it is attenuverted by the knob.
+ - SCALE scales the output; if CV is in use, it is attenuated by the knob.
+
+Additionally:
+  - A trigger on the JUMP input will cause both channels to jump to a random value.  A bit of slew limitation applies to the jump to minimize popping.
+  - DIST outputs a third CV, ranging over 0-10V, related the X and Y channel outputs.  
+
+Clicking on the display will jump the outputs, X and Y, to that point (again with a bit of slew limitation).
+
+Various options on the context (right-click) menu allow customization of the display (set the range of the display to +/-10V instead of the default +/-5V; hide the grid dots; set the color of the trace).
+
+#### WALK
+
+WALK is a single-channel random walk, identical to one channel of WALK2, in 3HP.
 
 ### <a name="sequencers"></a> Sequential Switches and Sequencers
 
