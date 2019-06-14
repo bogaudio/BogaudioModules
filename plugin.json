@@ -90,7 +90,7 @@
       "name": "DGate",
       "description": "trigger-to-gate with delay",
       "tags": [
-
+        "Utility"
       ]
     },
     {
@@ -415,7 +415,7 @@
       "name": "Manual",
       "description": "manual gates / triggers",
       "tags": [
-
+        "Utility"
       ]
     },
     {
