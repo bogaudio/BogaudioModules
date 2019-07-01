@@ -49,12 +49,26 @@ struct AddrSeq : Module {
 		NUM_LIGHTS
 	};
 
+	enum Range {
+		B10_RANGE,
+		B5_RANGE,
+		B3_RANGE,
+		B1_RANGE,
+		U10_RANGE,
+		U5_RANGE,
+		U3_RANGE,
+		U1_RANGE
+	};
+
 	Trigger _clock;
 	Trigger _reset;
 	bogaudio::dsp::Timer _timer;
 	int _step;
 	bool _selectOnClock = false;
 	int _select = 0;
+	Range _range;
+	float _rangeOffset;
+	float _rangeScale;
 
 	AddrSeq() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
@@ -72,12 +86,14 @@ struct AddrSeq : Module {
 
 		onReset();
 		onSampleRateChange();
+		setRange(B5_RANGE);
 	}
 
 	void onReset() override;
 	void onSampleRateChange() override;
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
+	void setRange(Range range);
 	void process(const ProcessArgs& args) override;
 };
 

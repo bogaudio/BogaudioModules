@@ -2,6 +2,7 @@
 #include "AddrSeq.hpp"
 
 #define SELECT_ON_CLOCK "select_on_clock"
+#define RANGE "range"
 
 void AddrSeq::onReset() {
 	_step = 0;
@@ -16,6 +17,7 @@ void AddrSeq::onSampleRateChange() {
 json_t* AddrSeq::dataToJson() {
 	json_t* root = json_object();
 	json_object_set_new(root, SELECT_ON_CLOCK, json_boolean(_selectOnClock));
+	json_object_set_new(root, RANGE, json_integer(_range));
 	return root;
 }
 
@@ -23,6 +25,64 @@ void AddrSeq::dataFromJson(json_t* root) {
 	json_t* s = json_object_get(root, SELECT_ON_CLOCK);
 	if (s) {
 		_selectOnClock = json_is_true(s);
+	}
+
+	json_t* r = json_object_get(root, RANGE);
+	if (r) {
+		int range = json_integer_value(r);
+		if (range >= B10_RANGE && range <= U1_RANGE) {
+			setRange((Range)range);
+		}
+	}
+}
+
+void AddrSeq::setRange(Range range) {
+	_range = range;
+
+	switch (_range) {
+		case B10_RANGE: {
+			_rangeOffset = 0.0f;
+			_rangeScale = 10.0f;
+			break;
+		}
+		case B5_RANGE: {
+			_rangeOffset = 0.0f;
+			_rangeScale = 5.0f;
+			break;
+		}
+		case B3_RANGE: {
+			_rangeOffset = 0.0f;
+			_rangeScale = 3.0f;
+			break;
+		}
+		case B1_RANGE: {
+			_rangeOffset = 0.0f;
+			_rangeScale = 1.0f;
+			break;
+		}
+		case U10_RANGE: {
+			_rangeOffset = 1.0f;
+			_rangeScale = 5.0f;
+			break;
+		}
+		case U5_RANGE: {
+			_rangeOffset = 1.0f;
+			_rangeScale = 2.5f;
+			break;
+		}
+		case U3_RANGE: {
+			_rangeOffset = 1.0f;
+			_rangeScale = 1.5f;
+			break;
+		}
+		case U1_RANGE: {
+			_rangeOffset = 1.0f;
+			_rangeScale = 0.5f;
+			break;
+		}
+		default: {
+			assert(false);
+		}
 	}
 }
 
@@ -52,7 +112,9 @@ void AddrSeq::process(const ProcessArgs& args) {
 		out += params[OUT1_PARAM + i].getValue() * (step == i);
 		lights[OUT1_LIGHT + i].value = step == i;
 	}
-	outputs[OUT_OUTPUT].setVoltage(out * 10.0f);
+	out += _rangeOffset;
+	out *= _rangeScale;
+	outputs[OUT_OUTPUT].setVoltage(out);
 }
 
 struct SelectOnClockMenuItem : MenuItem {
@@ -70,6 +132,26 @@ struct SelectOnClockMenuItem : MenuItem {
 
 	void step() override {
 		rightText = _module->_selectOnClock ? "✔" : "";
+	}
+};
+
+struct RangeMenuItem : MenuItem {
+	AddrSeq* _module;
+	AddrSeq::Range _range;
+
+	RangeMenuItem(AddrSeq* module, const char* label, AddrSeq::Range range)
+	: _module(module)
+	, _range(range)
+	{
+		this->text = label;
+	}
+
+	void onAction(const event::Action& e) override {
+		_module->setRange(_range);
+	}
+
+	void step() override {
+		rightText = _module->_range == _range ? "✔" : "";
 	}
 };
 
@@ -160,6 +242,15 @@ struct AddrSeqWidget : ModuleWidget {
 		assert(m);
 		menu->addChild(new MenuLabel());
 		menu->addChild(new SelectOnClockMenuItem(m, "Select on clock"));
+		menu->addChild(new MenuLabel());
+		menu->addChild(new RangeMenuItem(m, "Range: +/-10V", AddrSeq::B10_RANGE));
+		menu->addChild(new RangeMenuItem(m, "Range: +/-5V", AddrSeq::B5_RANGE));
+		menu->addChild(new RangeMenuItem(m, "Range: +/-3V", AddrSeq::B3_RANGE));
+		menu->addChild(new RangeMenuItem(m, "Range: +/-1V", AddrSeq::B1_RANGE));
+		menu->addChild(new RangeMenuItem(m, "Range: 0V-10V", AddrSeq::U10_RANGE));
+		menu->addChild(new RangeMenuItem(m, "Range: 0V-5V", AddrSeq::U5_RANGE));
+		menu->addChild(new RangeMenuItem(m, "Range: 0V-3V", AddrSeq::U3_RANGE));
+		menu->addChild(new RangeMenuItem(m, "Range: 0V-1V", AddrSeq::U1_RANGE));
 	}
 };
 
