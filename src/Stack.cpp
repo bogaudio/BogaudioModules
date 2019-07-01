@@ -2,17 +2,17 @@
 #include "Stack.hpp"
 
 void Stack::process(const ProcessArgs& args) {
-	lights[QUANTIZE_LIGHT].value = params[QUANTIZE_PARAM].getValue() > 0.5;
+	lights[QUANTIZE_LIGHT].value = params[QUANTIZE_PARAM].getValue() > 0.5f;
 	if (!(outputs[OUT_OUTPUT].isConnected() || outputs[THRU_OUTPUT].isConnected())) {
 		return;
 	}
 
-	float semitones = params[OCTAVE_PARAM].getValue() * 12.0;
+	float semitones = roundf(params[OCTAVE_PARAM].getValue()) * 12.0f;
 	semitones += params[SEMIS_PARAM].getValue();
 	if (inputs[CV_INPUT].isConnected()) {
-		semitones += clamp(inputs[CV_INPUT].getVoltage(), -5.0f, 5.0f) * 10.0;
+		semitones += clamp(inputs[CV_INPUT].getVoltage(), -5.0f, 5.0f) * 10.0f;
 	}
-	if (params[QUANTIZE_PARAM].getValue() > 0.5) {
+	if (params[QUANTIZE_PARAM].getValue() > 0.5f) {
 		semitones = roundf(semitones);
 	}
 

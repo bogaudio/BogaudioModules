@@ -3,8 +3,8 @@
 
 void Reftone::process(const ProcessArgs& args) {
 	// C4 -- the pitch.hpp reference frequency -- in knob values:
-	const int referencePitch = 0;
-	const int referenceOctave = 4;
+	const float referencePitch = 0.0f;
+	const float referenceOctave = 4.0f;
 
 	if (!(
 		_pitch == params[PITCH_PARAM].getValue() &&
@@ -14,7 +14,7 @@ void Reftone::process(const ProcessArgs& args) {
 		_pitch = params[PITCH_PARAM].getValue();
 		_octave = params[OCTAVE_PARAM].getValue();
 		_fine = params[FINE_PARAM].getValue();
-		_frequency = semitoneToFrequency(referenceSemitone + 12*(_octave - referenceOctave) + (_pitch - referencePitch) + _fine);
+		_frequency = semitoneToFrequency(referenceSemitone + 12.0f*roundf(_octave - referenceOctave) + (_pitch - referencePitch) + _fine);
 		_cv = frequencyToCV(_frequency);
 	}
 
