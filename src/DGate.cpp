@@ -123,4 +123,4 @@ struct DGateWidget : ModuleWidget {
 	}
 };
 
-Model* modelDGate = bogaudio::createModel<DGate, DGateWidget>("Bogaudio-DGate", "DGate",  "trigger-to-gate with delay");
+Model* modelDGate = bogaudio::createModel<DGate, DGateWidget>("Bogaudio-DGate", "DGate",  "trigger-to-gate with delay", "Utility");

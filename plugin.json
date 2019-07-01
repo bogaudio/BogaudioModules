@@ -5,8 +5,8 @@
   "license": "BSD-3-Clause",
   "brand": "Bogaudio",
   "author": "Matt Demanett",
-  "authorEmail": "",
-  "authorUrl": "",
+  "authorEmail": "mattdemanett@gmail.com",
+  "authorUrl": "https://github.com/mdemanett",
   "pluginUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md",
   "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md",
   "sourceUrl": "https://github.com/bogaudio/BogaudioModules",
@@ -90,7 +90,7 @@
       "name": "DGate",
       "description": "trigger-to-gate with delay",
       "tags": [
-
+        "Utility"
       ]
     },
     {
@@ -325,7 +325,7 @@
       "name": "ADDR-SEQ",
       "description": "voltage-addressable sequencer",
       "tags": [
-        "Sequencery"
+        "Sequencer"
       ]
     },
     {
@@ -415,7 +415,7 @@
       "name": "Manual",
       "description": "manual gates / triggers",
       "tags": [
-
+        "Utility"
       ]
     },
     {
