@@ -38,7 +38,7 @@ You'll need to be set up to build [VCV Rack](https://github.com/VCVRack/Rack) it
   make
   ```
 
-The master branch of this module currently builds against Rack 1.0.
+The master branch of this module currently builds against Rack 1.1.
 
 
 ## Modules
