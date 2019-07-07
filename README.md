@@ -378,7 +378,9 @@ On the context (right-click) menu, if option "Select on clock" is selected, then
 
 #### ADDR-SEQ
 
-ADDR-SEQ is an 8-step sequencer where the step values are set by 8 bipolar knobs able to dial in voltages from -10 to 10V.  It has the same clocked or voltage-addressed control circuit as 8:1 and 1:8.
+ADDR-SEQ is an 8-step sequencer where the step values are set by 8 knobs (with default output range of +/-10V).  It has the same clocked or voltage-addressed control circuit as 8:1 and 1:8.
+
+The output range of the knobs may be set on the context (right-click) menu to a variety of bipolar (e.g. +/-5V) and unipolar ranges (e.g. 0-5V).
 
 ### <a name="visualizers"></a> Visualizers
 
