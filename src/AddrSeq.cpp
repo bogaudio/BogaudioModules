@@ -89,11 +89,11 @@ struct SelectOnClockMenuItem : MenuItem {
 	}
 };
 
-struct RangeMenuItem : MenuItem {
+struct AddrSeqRangeMenuItem : MenuItem {
 	AddrSeq* _module;
 	float _offset, _scale;
 
-	RangeMenuItem(AddrSeq* module, const char* label, float offset, float scale)
+	AddrSeqRangeMenuItem(AddrSeq* module, const char* label, float offset, float scale)
 	: _module(module)
 	, _offset(offset)
 	, _scale(scale)
@@ -199,14 +199,14 @@ struct AddrSeqWidget : ModuleWidget {
 		menu->addChild(new MenuLabel());
 		menu->addChild(new SelectOnClockMenuItem(m, "Select on clock"));
 		menu->addChild(new MenuLabel());
-		menu->addChild(new RangeMenuItem(m, "Range: +/-10V", 0.0f, 10.0f));
-		menu->addChild(new RangeMenuItem(m, "Range: +/-5V", 0.0f, 5.0f));
-		menu->addChild(new RangeMenuItem(m, "Range: +/-3V", 0.0f, 3.0f));
-		menu->addChild(new RangeMenuItem(m, "Range: +/-1V", 0.0f, 1.0f));
-		menu->addChild(new RangeMenuItem(m, "Range: 0V-10V", 1.0f, 5.0f));
-		menu->addChild(new RangeMenuItem(m, "Range: 0V-5V", 1.0f, 2.5f));
-		menu->addChild(new RangeMenuItem(m, "Range: 0V-3V", 1.0f, 1.5f));
-		menu->addChild(new RangeMenuItem(m, "Range: 0V-1V", 1.0f, 0.5f));
+		menu->addChild(new AddrSeqRangeMenuItem(m, "Range: +/-10V", 0.0f, 10.0f));
+		menu->addChild(new AddrSeqRangeMenuItem(m, "Range: +/-5V", 0.0f, 5.0f));
+		menu->addChild(new AddrSeqRangeMenuItem(m, "Range: +/-3V", 0.0f, 3.0f));
+		menu->addChild(new AddrSeqRangeMenuItem(m, "Range: +/-1V", 0.0f, 1.0f));
+		menu->addChild(new AddrSeqRangeMenuItem(m, "Range: 0V-10V", 1.0f, 5.0f));
+		menu->addChild(new AddrSeqRangeMenuItem(m, "Range: 0V-5V", 1.0f, 2.5f));
+		menu->addChild(new AddrSeqRangeMenuItem(m, "Range: 0V-3V", 1.0f, 1.5f));
+		menu->addChild(new AddrSeqRangeMenuItem(m, "Range: 0V-1V", 1.0f, 0.5f));
 	}
 };
 
