@@ -35,11 +35,22 @@ struct VU : Module {
 	float _lLevel = 0.0f;
 	float _rLevel = 0.0f;
 
+	RunningAverage _lPeakRms;
+	RunningAverage _rPeakRms;
+	bogaudio::dsp::SlewLimiter _lPeakSlew;
+	bogaudio::dsp::SlewLimiter _rPeakSlew;
+	float _lPeakFalling = 0.0f;
+	float _rPeakFalling = 0.0f;
+	float _lPeakLevel = 0.0f;
+	float _rPeakLevel = 0.0f;
+
 	VU() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		onSampleRateChange();
-		_lRms.setSensitivity(0.05f);
-		_rRms.setSensitivity(0.05f);
+		_lRms.setSensitivity(1.0f);
+		_rRms.setSensitivity(1.0f);
+		_lPeakRms.setSensitivity(0.025f);
+		_rPeakRms.setSensitivity(0.025f);
 	}
 
 	void onSampleRateChange() override;

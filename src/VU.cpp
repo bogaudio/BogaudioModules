@@ -2,24 +2,54 @@
 #include "VU.hpp"
 
 void VU::onSampleRateChange() {
-	_lRms.setSampleRate(APP->engine->getSampleRate());
-	_rRms.setSampleRate(APP->engine->getSampleRate());
+	float sr = APP->engine->getSampleRate();
+	_lRms.setSampleRate(sr);
+	_rRms.setSampleRate(sr);
+	_lPeakRms.setSampleRate(sr);
+	_rPeakRms.setSampleRate(sr);
+	_lPeakSlew.setParams(sr, 750.0f, 1.0f);
+	_rPeakSlew.setParams(sr, 750.0f, 1.0f);
 }
 
 void VU::process(const ProcessArgs& args) {
-	float left = 0.0f;
+	float left = inputs[L_INPUT].getVoltage();
 	float right = 0.0f;
-	if (inputs[L_INPUT].isConnected()) {
-		left = inputs[L_INPUT].getVoltage();
-	}
 	if (inputs[R_INPUT].isConnected()) {
 		right = inputs[R_INPUT].getVoltage();
 	}
 	else {
 		right = left;
 	}
+
 	_lLevel = _lRms.next(left) / 5.0f;
 	_rLevel = _rRms.next(right) / 5.0f;
+
+	float lPeak = _lPeakRms.next(fabsf(left)) / 5.0f;
+	if (lPeak < _lPeakLevel) {
+		if (!_lPeakFalling) {
+			_lPeakFalling = true;
+			_lPeakSlew._last = _lPeakLevel;
+		}
+		lPeak = _lPeakSlew.next(lPeak);
+	}
+	else {
+		_lPeakFalling = false;
+	}
+	_lPeakLevel = lPeak;
+
+	float rPeak = _rPeakRms.next(fabsf(right)) / 5.0f;
+	if (rPeak < _rPeakLevel) {
+		if (!_rPeakFalling) {
+			_rPeakFalling = true;
+			_rPeakSlew._last = _rPeakLevel;
+		}
+		rPeak = _rPeakSlew.next(rPeak);
+	}
+	else {
+		_rPeakFalling = false;
+	}
+	_rPeakLevel = rPeak;
+
 	outputs[L_OUTPUT].setVoltage(left);
 	outputs[R_OUTPUT].setVoltage(right);
 }
@@ -43,25 +73,15 @@ struct VUDisplay : OpaqueWidget {
 	}
 
 	void draw(const DrawArgs& args) override {
-		float lDb = 0.0f;
-		float rDb = 0.0f;
+		float lDb = -100.0f;
+		float rDb = -100.0f;
+		float lPeakDb = -100.0f;
+		float rPeakDb = -100.0f;
 		if (_module) {
-			lDb = _module->_lLevel;
-			rDb = _module->_rLevel;
-		}
-
-		if (lDb > 0.0f) {
-			lDb = amplitudeToDecibels(lDb);
-		}
-		else {
-			lDb = -100.0f;
-		}
-
-		if (rDb > 0.0f) {
-			rDb = amplitudeToDecibels(rDb);
-		}
-		else {
-			rDb = -100.0f;
+			lDb = amplitudeToDecibels(_module->_lLevel);
+			rDb = amplitudeToDecibels(_module->_rLevel);
+			lPeakDb = amplitudeToDecibels(_module->_lPeakLevel);
+			rPeakDb = amplitudeToDecibels(_module->_rPeakLevel);
 		}
 
 		nvgSave(args.vg);
@@ -72,6 +92,10 @@ struct VUDisplay : OpaqueWidget {
 			nvgRect(args.vg, 3, i + 1, 5, 4);
 			nvgFillColor(args.vg, bgColor);
 			nvgFill(args.vg);
+			if (lPeakDb > l.db && lPeakDb < l.db + 2.0f) {
+				nvgFillColor(args.vg, nvgRGBA(0x00, 0xdd, 0xff, 0xff));
+				nvgFill(args.vg);
+			}
 			if (lDb > l.db) {
 				nvgFillColor(args.vg, l.color);
 				nvgFill(args.vg);
@@ -81,6 +105,10 @@ struct VUDisplay : OpaqueWidget {
 			nvgRect(args.vg, 10, i + 1, 5, 4);
 			nvgFillColor(args.vg, bgColor);
 			nvgFill(args.vg);
+			if (rPeakDb > l.db && rPeakDb < l.db + 2.0f) {
+				nvgFillColor(args.vg, nvgRGBA(0x00, 0xdd, 0xff, 0xff));
+				nvgFill(args.vg);
+			}
 			if (rDb > l.db) {
 				nvgFillColor(args.vg, l.color);
 				nvgFill(args.vg);
