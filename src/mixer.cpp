@@ -85,6 +85,7 @@ SoloMuteButton::SoloMuteButton() {
 
 void SoloMuteButton::onButton(const event::Button& e) {
 	if (!paramQuantity || !(e.action == GLFW_PRESS && (e.mods & RACK_MOD_MASK) == 0)) {
+		ParamWidget::onButton(e);
 		return;
 	}
 
@@ -99,7 +100,11 @@ void SoloMuteButton::onButton(const event::Button& e) {
 		paramQuantity->setValue(value > 0.5f ? 0.0f : 1.0f);
 	}
 
-	e.consume(this);
+	if (e.button == GLFW_MOUSE_BUTTON_RIGHT) {
+		e.consume(this);
+	} else {
+		ParamWidget::onButton(e);
+	}
 }
 
 void SoloMuteButton::onChange(const event::Change& e) {
