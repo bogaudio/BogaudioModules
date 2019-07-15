@@ -11,8 +11,6 @@ extern Model* modelXCO;
 
 namespace bogaudio {
 
-struct XCOFrequencyParamQuantity;
-
 struct XCO : Module {
 	enum ParamsIds {
 		FREQUENCY_PARAM,
@@ -120,6 +118,10 @@ struct XCO : Module {
 	bogaudio::dsp::SlewLimiter _triangleMixSL;
 	bogaudio::dsp::SlewLimiter _sineMixSL;
 
+	struct XCOFrequencyParamQuantity : FrequencyParamQuantity {
+		float offset() override;
+	};
+
 	XCO() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam<XCOFrequencyParamQuantity>(FREQUENCY_PARAM, -3.0f, 6.0f, 0.0f, "Frequency", " Hz");
@@ -153,13 +155,6 @@ struct XCO : Module {
 	float level(Param& param, Input& input);
 	void setSampleRate(float sampleRate);
 	void setFrequency(float frequency);
-};
-
-struct XCOFrequencyParamQuantity : FrequencyParamQuantity {
-	float offset() override {
-		XCO* xco = static_cast<XCO*>(module);
-		return xco->_slowMode ? xco->_slowModeOffset : 0.0f;
-	}
 };
 
 } // namespace bogaudio

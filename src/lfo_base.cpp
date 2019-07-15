@@ -2,6 +2,11 @@
 #include "lfo_base.hpp"
 #include "dsp/pitch.hpp"
 
+float LFOBase::LFOFrequencyParamQuantity::offset() {
+	LFOBase* lfo = static_cast<LFOBase*>(module);
+	return lfo->getPitchOffset();
+}
+
 float LFOBase::getPitchOffset() {
 	float offset = -3.0f;
 	if (_slowMode) {

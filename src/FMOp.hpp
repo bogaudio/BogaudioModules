@@ -12,9 +12,6 @@ extern Model* modelFMOp;
 
 namespace bogaudio {
 
-struct FMOpRatioParamQuantity;
-struct FMOpLevelParamQuantity;
-
 struct FMOp : Module {
 	enum ParamsIds {
 		RATIO_PARAM,
@@ -83,11 +80,20 @@ struct FMOp : Module {
 	Amplifier _amplifier;
 	bool _linearLevel = false;
 
+	struct RatioParamQuantity : ParamQuantity {
+		float getDisplayValue() override;
+		void setDisplayValue(float v) override;
+	};
+
+	struct LevelParamQuantity : AmpliferParamQuantity {
+		bool isLinear() override;
+	};
+
 	FMOp()
 	:  _envelope(true)
 	{
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam<FMOpRatioParamQuantity>(RATIO_PARAM, -1.0f, 1.0f, 0.0f, "Frequency ratio");
+		configParam<RatioParamQuantity>(RATIO_PARAM, -1.0f, 1.0f, 0.0f, "Frequency ratio");
 		configParam(FINE_PARAM, -1.0f, 1.0f, 0.0f, "Fine tune", " cents", 0.0f, 100.0f);
 		configParam<EnvelopeSegmentParamQuantity>(ATTACK_PARAM, 0.0f, 1.0f, 0.141421f, "Attack", " s");
 		configParam<EnvelopeSegmentParamQuantity>(DECAY_PARAM, 0.0f, 1.0f, 0.31623f, "Decay", " s");
@@ -95,7 +101,7 @@ struct FMOp : Module {
 		configParam<EnvelopeSegmentParamQuantity>(RELEASE_PARAM, 0.0f, 1.0f, 0.31623f, "Release", " s");
 		configParam(DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "FM depth", "%", 0.0f, 100.0f);
 		configParam(FEEDBACK_PARAM, 0.0f, 1.0f, 0.0f, "Feedback", "%", 0.0f, 100.0f);
-		configParam<FMOpLevelParamQuantity>(LEVEL_PARAM, 0.0f, 1.0f, 1.0f, "Level");
+		configParam<LevelParamQuantity>(LEVEL_PARAM, 0.0f, 1.0f, 1.0f, "Level");
 		configParam(ENV_TO_LEVEL_PARAM, 0.0f, 1.0f, 0.0f, "Level follows envelope");
 		configParam(ENV_TO_FEEDBACK_PARAM, 0.0f, 1.0f, 0.0f, "Feedback follows envelope");
 		configParam(ENV_TO_DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "FM depth follows envelope");
@@ -109,43 +115,6 @@ struct FMOp : Module {
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
 	void process(const ProcessArgs& args) override;
-};
-
-struct FMOpRatioParamQuantity : ParamQuantity {
-	float getDisplayValue() override {
-		float v = getValue();
-		if (!module) {
-			return v;
-		}
-
-		if (v < 0.0f) {
-			return std::max(1.0f + v, 0.01f);
-		}
-		v *= 9.0f;
-		v += 1.0f;
-		return v;
-	}
-
-	void setDisplayValue(float v) override {
-		if (!module) {
-			return;
-		}
-
-		if (v < 1.0f) {
-			v = v - 1.0f;
-		}
-		else {
-			v -= 1.0f;
-			v /= 9.0f;
-		}
-		setValue(v);
-	}
-};
-
-struct FMOpLevelParamQuantity : AmpliferParamQuantity {
-	bool isLinear() override {
-		return static_cast<FMOp*>(module)->_linearLevel;
-	}
 };
 
 } // namespace bogaudio

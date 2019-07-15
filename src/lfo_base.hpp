@@ -17,6 +17,10 @@ struct LFOBase : Module {
 	bool _slowMode = false;
 	PitchModeListener* _pitchModeListener = NULL;
 
+	struct LFOFrequencyParamQuantity : FrequencyParamQuantity {
+		float offset() override;
+	};
+
 	LFOBase(int np, int ni, int no, int nl) {
 		config(np, ni, no, nl);
 	}
@@ -25,11 +29,5 @@ struct LFOBase : Module {
 	void setFrequency(Param& frequency, Input& pitch, Phasor& phasor);
 };
 
-struct LFOFrequencyParamQuantity : FrequencyParamQuantity {
-	float offset() override {
-		LFOBase* lfo = static_cast<LFOBase*>(module);
-		return lfo->getPitchOffset();
-	}
-};
 
 } // namespace bogaudio

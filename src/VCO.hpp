@@ -11,8 +11,6 @@ extern Model* modelVCO;
 
 namespace bogaudio {
 
-struct VCOFrequencyParamQuantity;
-
 struct VCO : Module {
 	enum ParamsIds {
 		FREQUENCY_PARAM,
@@ -72,6 +70,10 @@ struct VCO : Module {
 	PositiveZeroCrossing _syncTrigger;
 	bogaudio::dsp::SlewLimiter _squarePulseWidthSL;
 
+	struct VCOFrequencyParamQuantity : FrequencyParamQuantity {
+		float offset() override;
+	};
+
 	VCO() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam<VCOFrequencyParamQuantity>(FREQUENCY_PARAM, -3.0f, 6.0f, 0.0f, "Frequency", " Hz");
@@ -92,13 +94,6 @@ struct VCO : Module {
 	void process(const ProcessArgs& args) override;
 	void setSampleRate(float sampleRate);
 	void setFrequency(float frequency);
-};
-
-struct VCOFrequencyParamQuantity : FrequencyParamQuantity {
-	float offset() override {
-		VCO* vco = static_cast<VCO*>(module);
-		return vco->_slowMode ? vco->_slowModeOffset : 0.0f;
-	}
 };
 
 } // namespace bogaudio

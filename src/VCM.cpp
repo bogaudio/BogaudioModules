@@ -1,6 +1,10 @@
 
 #include "VCM.hpp"
 
+bool VCM::LevelParamQuantity::isLinear() {
+	return static_cast<VCM*>(module)->isLinear();
+}
+
 void VCM::process(const ProcessArgs& args) {
 	bool linear = isLinear();
 	lights[LINEAR_LIGHT].value = linear;

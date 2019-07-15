@@ -2,6 +2,11 @@
 #include "XCO.hpp"
 #include "dsp/pitch.hpp"
 
+float XCO::XCOFrequencyParamQuantity::offset() {
+	XCO* xco = static_cast<XCO*>(module);
+	return xco->_slowMode ? xco->_slowModeOffset : 0.0f;
+}
+
 void XCO::onReset() {
 	_syncTrigger.reset();
 	_modulationStep = modulationSteps;

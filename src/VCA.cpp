@@ -1,6 +1,10 @@
 
 #include "VCA.hpp"
 
+bool VCA::LevelParamQuantity::isLinear() {
+	return static_cast<VCA*>(module)->isLinear();
+}
+
 void VCA::onSampleRateChange() {
 	float sampleRate = APP->engine->getSampleRate();
 	_levelSL1.setParams(sampleRate, 5.0f, 1.0f);

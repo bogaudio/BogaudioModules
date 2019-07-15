@@ -4,6 +4,39 @@
 
 #define LINEAR_LEVEL "linearLevel"
 
+float FMOp::RatioParamQuantity::getDisplayValue() {
+	float v = getValue();
+	if (!module) {
+		return v;
+	}
+
+	if (v < 0.0f) {
+		return std::max(1.0f + v, 0.01f);
+	}
+	v *= 9.0f;
+	v += 1.0f;
+	return v;
+}
+
+void FMOp::RatioParamQuantity::setDisplayValue(float v) {
+	if (!module) {
+		return;
+	}
+
+	if (v < 1.0f) {
+		v = v - 1.0f;
+	}
+	else {
+		v -= 1.0f;
+		v /= 9.0f;
+	}
+	setValue(v);
+}
+
+bool FMOp::LevelParamQuantity::isLinear() {
+	return static_cast<FMOp*>(module)->_linearLevel;
+}
+
 void FMOp::onReset() {
 	_steps = modulationSteps;
 	_envelope.reset();
