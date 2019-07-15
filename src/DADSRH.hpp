@@ -127,7 +127,6 @@ struct DADSRH : TriggerOnLoadModule {
 			_triggerOnLoad,
 			_shouldTriggerOnLoad
 		);
-
 		onReset();
 	}
 	virtual ~DADSRH() {
