@@ -7,8 +7,6 @@
 
 using namespace rack;
 
-extern Plugin *pluginInstance;
-
 namespace bogaudio {
 
 template <int scale>

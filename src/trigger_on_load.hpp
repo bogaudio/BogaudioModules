@@ -4,8 +4,6 @@
 
 using namespace rack;
 
-extern Plugin *pluginInstance;
-
 namespace bogaudio {
 
 struct TriggerOnLoadModule : Module {
