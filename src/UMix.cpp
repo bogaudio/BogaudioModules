@@ -65,42 +65,6 @@ void UMix::process(const ProcessArgs& args) {
 	}
 }
 
-struct AverageMenuItem : MenuItem {
-	UMix* _module;
-
-	AverageMenuItem(UMix* module, const char* label)
-	: _module(module)
-	{
-		this->text = label;
-	}
-
-	void onAction(const event::Action& e) override {
-		_module->_sum = !_module->_sum;
-	}
-
-	void step() override {
-		rightText = !_module->_sum ? "✔" : "";
-	}
-};
-
-struct CVModeMenuItem : MenuItem {
-	UMix* _module;
-
-	CVModeMenuItem(UMix* module, const char* label)
-	: _module(module)
-	{
-		this->text = label;
-	}
-
-	void onAction(const event::Action& e) override {
-		_module->_cvMode = !_module->_cvMode;
-	}
-
-	void step() override {
-		rightText = _module->_cvMode ? "✔" : "";
-	}
-};
-
 struct UMixWidget : ModuleWidget {
 	static constexpr int hp = 3;
 
@@ -146,6 +110,42 @@ struct UMixWidget : ModuleWidget {
 
 		addOutput(createOutput<Port24>(outOutputPosition, module, UMix::OUT_OUTPUT));
 	}
+
+	struct AverageMenuItem : MenuItem {
+		UMix* _module;
+
+		AverageMenuItem(UMix* module, const char* label)
+		: _module(module)
+		{
+			this->text = label;
+		}
+
+		void onAction(const event::Action& e) override {
+			_module->_sum = !_module->_sum;
+		}
+
+		void step() override {
+			rightText = !_module->_sum ? "✔" : "";
+		}
+	};
+
+	struct CVModeMenuItem : MenuItem {
+		UMix* _module;
+
+		CVModeMenuItem(UMix* module, const char* label)
+		: _module(module)
+		{
+			this->text = label;
+		}
+
+		void onAction(const event::Action& e) override {
+			_module->_cvMode = !_module->_cvMode;
+		}
+
+		void step() override {
+			rightText = _module->_cvMode ? "✔" : "";
+		}
+	};
 
 	void appendContextMenu(Menu* menu) override {
 		UMix* umix = dynamic_cast<UMix*>(module);

@@ -81,26 +81,6 @@ void Analyzer::process(const ProcessArgs& args) {
 	lights[WINDOW_KAISER_LIGHT].value = _core._window == AnalyzerCore::WINDOW_KAISER;
 }
 
-struct RangeDbMenuItem : MenuItem {
-	Analyzer* _module;
-	const float _rangeDb;
-
-	RangeDbMenuItem(Analyzer* module, const char* label, float rangeDb)
-	: _module(module)
-	, _rangeDb(rangeDb)
-	{
-		this->text = label;
-	}
-
-	void onAction(const event::Action& e) override {
-		_module->_rangeDb = _rangeDb;
-	}
-
-	void step() override {
-		rightText = _module->_rangeDb == _rangeDb ? "✔" : "";
-	}
-};
-
 struct AnalyzerWidget : ModuleWidget {
 	static constexpr int hp = 20;
 
@@ -175,6 +155,26 @@ struct AnalyzerWidget : ModuleWidget {
 		addChild(createLight<SmallLight<GreenLight>>(windowHammingLightPosition, module, Analyzer::WINDOW_HAMMING_LIGHT));
 		addChild(createLight<SmallLight<GreenLight>>(windowKaiserLightPosition, module, Analyzer::WINDOW_KAISER_LIGHT));
 	}
+
+	struct RangeDbMenuItem : MenuItem {
+		Analyzer* _module;
+		const float _rangeDb;
+
+		RangeDbMenuItem(Analyzer* module, const char* label, float rangeDb)
+		: _module(module)
+		, _rangeDb(rangeDb)
+		{
+			this->text = label;
+		}
+
+		void onAction(const event::Action& e) override {
+			_module->_rangeDb = _rangeDb;
+		}
+
+		void step() override {
+			rightText = _module->_rangeDb == _rangeDb ? "✔" : "";
+		}
+	};
 
 	void appendContextMenu(Menu* menu) override {
 		Analyzer* a = dynamic_cast<Analyzer*>(module);

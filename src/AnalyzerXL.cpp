@@ -139,106 +139,6 @@ void AnalyzerXL::process(const ProcessArgs& args) {
 	}
 }
 
-struct RangeMenuItem : MenuItem {
-	AnalyzerXL* _module;
-	const float _range;
-
-	RangeMenuItem(AnalyzerXL* module, const char* label, float range)
-	: _module(module)
-	, _range(range)
-	{
-		this->text = label;
-	}
-
-	void onAction(const event::Action& e) override {
-		_module->_range = _range;
-	}
-
-	void step() override {
-		rightText = _module->_range == _range ? "✔" : "";
-	}
-};
-
-struct RangeDbMenuItem : MenuItem {
-	AnalyzerXL* _module;
-	const float _rangeDb;
-
-	RangeDbMenuItem(AnalyzerXL* module, const char* label, float rangeDb)
-	: _module(module)
-	, _rangeDb(rangeDb)
-	{
-		this->text = label;
-	}
-
-	void onAction(const event::Action& e) override {
-		_module->_rangeDb = _rangeDb;
-	}
-
-	void step() override {
-		rightText = _module->_rangeDb == _rangeDb ? "✔" : "";
-	}
-};
-
-struct SmoothMenuItem : MenuItem {
-	AnalyzerXL* _module;
-	const float _smooth;
-
-	SmoothMenuItem(AnalyzerXL* module, const char* label, float smooth)
-	: _module(module)
-	, _smooth(smooth)
-	{
-		this->text = label;
-	}
-
-	void onAction(const event::Action& e) override {
-		_module->_smooth = _smooth;
-	}
-
-	void step() override {
-		rightText = _module->_smooth == _smooth ? "✔" : "";
-	}
-};
-
-struct QualityMenuItem : MenuItem {
-	AnalyzerXL* _module;
-	const AnalyzerCore::Quality _quality;
-
-	QualityMenuItem(AnalyzerXL* module, const char* label, AnalyzerCore::Quality quality)
-	: _module(module)
-	, _quality(quality)
-	{
-		this->text = label;
-	}
-
-	void onAction(const event::Action& e) override {
-		_module->_quality = _quality;
-	}
-
-	void step() override {
-		rightText = _module->_quality == _quality ? "✔" : "";
-	}
-};
-
-struct WindowMenuItem : MenuItem {
-	AnalyzerXL* _module;
-	const AnalyzerCore::Window _window;
-
-	WindowMenuItem(AnalyzerXL* module, const char* label, AnalyzerCore::Window window)
-	: _module(module)
-	, _window(window)
-	{
-		this->text = label;
-	}
-
-	void onAction(const event::Action& e) override {
-		_module->_window = _window;
-	}
-
-	void step() override {
-		rightText = _module->_window == _window ? "✔" : "";
-	}
-};
-
 struct AnalyzerXLWidget : ModuleWidget {
 	static constexpr int hp = 42;
 
@@ -282,6 +182,106 @@ struct AnalyzerXLWidget : ModuleWidget {
 		addInput(createInput<Port24>(signalgInputPosition, module, AnalyzerXL::SIGNALG_INPUT));
 		addInput(createInput<Port24>(signalhInputPosition, module, AnalyzerXL::SIGNALH_INPUT));
 	}
+
+	struct RangeMenuItem : MenuItem {
+		AnalyzerXL* _module;
+		const float _range;
+
+		RangeMenuItem(AnalyzerXL* module, const char* label, float range)
+		: _module(module)
+		, _range(range)
+		{
+			this->text = label;
+		}
+
+		void onAction(const event::Action& e) override {
+			_module->_range = _range;
+		}
+
+		void step() override {
+			rightText = _module->_range == _range ? "✔" : "";
+		}
+	};
+
+	struct RangeDbMenuItem : MenuItem {
+		AnalyzerXL* _module;
+		const float _rangeDb;
+
+		RangeDbMenuItem(AnalyzerXL* module, const char* label, float rangeDb)
+		: _module(module)
+		, _rangeDb(rangeDb)
+		{
+			this->text = label;
+		}
+
+		void onAction(const event::Action& e) override {
+			_module->_rangeDb = _rangeDb;
+		}
+
+		void step() override {
+			rightText = _module->_rangeDb == _rangeDb ? "✔" : "";
+		}
+	};
+
+	struct SmoothMenuItem : MenuItem {
+		AnalyzerXL* _module;
+		const float _smooth;
+
+		SmoothMenuItem(AnalyzerXL* module, const char* label, float smooth)
+		: _module(module)
+		, _smooth(smooth)
+		{
+			this->text = label;
+		}
+
+		void onAction(const event::Action& e) override {
+			_module->_smooth = _smooth;
+		}
+
+		void step() override {
+			rightText = _module->_smooth == _smooth ? "✔" : "";
+		}
+	};
+
+	struct QualityMenuItem : MenuItem {
+		AnalyzerXL* _module;
+		const AnalyzerCore::Quality _quality;
+
+		QualityMenuItem(AnalyzerXL* module, const char* label, AnalyzerCore::Quality quality)
+		: _module(module)
+		, _quality(quality)
+		{
+			this->text = label;
+		}
+
+		void onAction(const event::Action& e) override {
+			_module->_quality = _quality;
+		}
+
+		void step() override {
+			rightText = _module->_quality == _quality ? "✔" : "";
+		}
+	};
+
+	struct WindowMenuItem : MenuItem {
+		AnalyzerXL* _module;
+		const AnalyzerCore::Window _window;
+
+		WindowMenuItem(AnalyzerXL* module, const char* label, AnalyzerCore::Window window)
+		: _module(module)
+		, _window(window)
+		{
+			this->text = label;
+		}
+
+		void onAction(const event::Action& e) override {
+			_module->_window = _window;
+		}
+
+		void step() override {
+			rightText = _module->_window == _window ? "✔" : "";
+		}
+	};
 
 	void appendContextMenu(Menu* menu) override {
 		AnalyzerXL* a = dynamic_cast<AnalyzerXL*>(module);

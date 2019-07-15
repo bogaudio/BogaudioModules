@@ -16,25 +16,25 @@ struct TriggerOnLoadModule : Module {
 	virtual bool shouldTriggerOnNextLoad() = 0;
 };
 
-struct TriggerOnLoadMenuItem : MenuItem {
-	TriggerOnLoadModule* _module;
-
-	TriggerOnLoadMenuItem(TriggerOnLoadModule* module, const char* label)
-	: _module(module)
-	{
-		this->text = label;
-	}
-
-	void onAction(const event::Action& e) override {
-		_module->_triggerOnLoad = !_module->_triggerOnLoad;
-	}
-
-	void step() override {
-		rightText = _module->_triggerOnLoad ? "✔" : "";
-	}
-};
-
 struct TriggerOnLoadModuleWidget : ModuleWidget {
+	struct TriggerOnLoadMenuItem : MenuItem {
+		TriggerOnLoadModule* _module;
+
+		TriggerOnLoadMenuItem(TriggerOnLoadModule* module, const char* label)
+		: _module(module)
+		{
+			this->text = label;
+		}
+
+		void onAction(const event::Action& e) override {
+			_module->_triggerOnLoad = !_module->_triggerOnLoad;
+		}
+
+		void step() override {
+			rightText = _module->_triggerOnLoad ? "✔" : "";
+		}
+	};
+
 	void appendContextMenu(Menu* menu) override {
 		TriggerOnLoadModule* m = dynamic_cast<TriggerOnLoadModule*>(module);
 		assert(m);

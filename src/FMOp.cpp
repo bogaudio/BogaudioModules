@@ -221,24 +221,6 @@ void FMOp::process(const ProcessArgs& args) {
 	outputs[AUDIO_OUTPUT].setVoltage(_feedbackDelayedSample = amplitude * sample);
 }
 
-struct LinearLevelMenuItem : MenuItem {
-	FMOp* _module;
-
-	LinearLevelMenuItem(FMOp* module, const char* label)
-	: _module(module)
-	{
-		this->text = label;
-	}
-
-	void onAction(const event::Action& e) override {
-		_module->_linearLevel = !_module->_linearLevel;
-	}
-
-	void step() override {
-		rightText = _module->_linearLevel ? "✔" : "";
-	}
-};
-
 struct FMOpWidget : ModuleWidget {
 	static constexpr int hp = 10;
 
@@ -314,6 +296,24 @@ struct FMOpWidget : ModuleWidget {
 		addChild(createLight<SmallLight<GreenLight>>(envToFeedbackLightPosition, module, FMOp::ENV_TO_FEEDBACK_LIGHT));
 		addChild(createLight<SmallLight<GreenLight>>(envToDepthLightPosition, module, FMOp::ENV_TO_DEPTH_LIGHT));
 	}
+
+	struct LinearLevelMenuItem : MenuItem {
+		FMOp* _module;
+
+		LinearLevelMenuItem(FMOp* module, const char* label)
+		: _module(module)
+		{
+			this->text = label;
+		}
+
+		void onAction(const event::Action& e) override {
+			_module->_linearLevel = !_module->_linearLevel;
+		}
+
+		void step() override {
+			rightText = _module->_linearLevel ? "✔" : "";
+		}
+	};
 
 	void appendContextMenu(Menu* menu) override {
 	  FMOp* fmop = dynamic_cast<FMOp*>(module);

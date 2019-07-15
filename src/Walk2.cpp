@@ -419,62 +419,6 @@ struct Walk2Display : TransparentWidget {
 	}
 };
 
-struct ZoomOutMenuItem : MenuItem {
-	Walk2* _module;
-	const bool _zoomOut;
-
-	ZoomOutMenuItem(Walk2* module, const char* label, bool zoomOut)
-	: _module(module)
-	, _zoomOut(zoomOut)
-	{
-		this->text = label;
-	}
-
-	void onAction(const event::Action& e) override {
-		_module->_zoomOut = _zoomOut;
-	}
-
-	void step() override {
-		rightText = _module->_zoomOut == _zoomOut ? "✔" : "";
-	}
-};
-
-struct GridMenuItem : MenuItem {
-	Walk2* _module;
-
-	GridMenuItem(Walk2* module, const char* label) : _module(module) {
-		this->text = label;
-	}
-
-	void onAction(const event::Action& e) override {
-		_module->_drawGrid = !_module->_drawGrid;
-	}
-
-	void step() override {
-		rightText = _module->_drawGrid ? "✔" : "";
-	}
-};
-
-struct ColorMenuItem : MenuItem {
-	Walk2* _module;
-	const Walk2::TraceColor _color;
-
-	ColorMenuItem(Walk2* module, const char* label, Walk2::TraceColor color)
-	: _module(module)
-	, _color(color)
-	{
-		this->text = label;
-	}
-
-	void onAction(const event::Action& e) override {
-		_module->_traceColor = _color;
-	}
-
-	void step() override {
-		rightText = _module->_traceColor == _color ? "✔" : "";
-	}
-};
-
 struct Walk2Widget : ModuleWidget {
 	static constexpr int hp = 14;
 
@@ -544,6 +488,62 @@ struct Walk2Widget : ModuleWidget {
 		addOutput(createOutput<Port24>(outYOutputPosition, module, Walk2::OUT_Y_OUTPUT));
 		addOutput(createOutput<Port24>(distanceOutputPosition, module, Walk2::DISTANCE_OUTPUT));
 	}
+
+	struct ZoomOutMenuItem : MenuItem {
+		Walk2* _module;
+		const bool _zoomOut;
+
+		ZoomOutMenuItem(Walk2* module, const char* label, bool zoomOut)
+		: _module(module)
+		, _zoomOut(zoomOut)
+		{
+			this->text = label;
+		}
+
+		void onAction(const event::Action& e) override {
+			_module->_zoomOut = _zoomOut;
+		}
+
+		void step() override {
+			rightText = _module->_zoomOut == _zoomOut ? "✔" : "";
+		}
+	};
+
+	struct GridMenuItem : MenuItem {
+		Walk2* _module;
+
+		GridMenuItem(Walk2* module, const char* label) : _module(module) {
+			this->text = label;
+		}
+
+		void onAction(const event::Action& e) override {
+			_module->_drawGrid = !_module->_drawGrid;
+		}
+
+		void step() override {
+			rightText = _module->_drawGrid ? "✔" : "";
+		}
+	};
+
+	struct ColorMenuItem : MenuItem {
+		Walk2* _module;
+		const Walk2::TraceColor _color;
+
+		ColorMenuItem(Walk2* module, const char* label, Walk2::TraceColor color)
+		: _module(module)
+		, _color(color)
+		{
+			this->text = label;
+		}
+
+		void onAction(const event::Action& e) override {
+			_module->_traceColor = _color;
+		}
+
+		void step() override {
+			rightText = _module->_traceColor == _color ? "✔" : "";
+		}
+	};
 
 	void appendContextMenu(Menu* menu) override {
 		Walk2* w = dynamic_cast<Walk2*>(module);

@@ -11,25 +11,25 @@ struct DisableOutputLimitModule : Module {
 	void dataFromJson(json_t* root) override;
 };
 
-struct DisableOutputLimitMenuItem : MenuItem {
-	DisableOutputLimitModule* _module;
-
-	DisableOutputLimitMenuItem(DisableOutputLimitModule* module, const char* label)
-	: _module(module)
-	{
-		this->text = label;
-	}
-
-	void onAction(const event::Action& e) override {
-		_module->_disableOutputLimit = !_module->_disableOutputLimit;
-	}
-
-	void step() override {
-		rightText = _module->_disableOutputLimit ? "✔" : "";
-	}
-};
-
 struct DisableOutputLimitModuleWidget : ModuleWidget {
+	struct DisableOutputLimitMenuItem : MenuItem {
+		DisableOutputLimitModule* _module;
+
+		DisableOutputLimitMenuItem(DisableOutputLimitModule* module, const char* label)
+		: _module(module)
+		{
+			this->text = label;
+		}
+
+		void onAction(const event::Action& e) override {
+			_module->_disableOutputLimit = !_module->_disableOutputLimit;
+		}
+
+		void step() override {
+			rightText = _module->_disableOutputLimit ? "✔" : "";
+		}
+	};
+
 	void appendContextMenu(Menu* menu) override {
 		DisableOutputLimitModule* dolm = dynamic_cast<DisableOutputLimitModule*>(module);
 		assert(dolm);
