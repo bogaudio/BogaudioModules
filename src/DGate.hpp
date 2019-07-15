@@ -1,6 +1,7 @@
 #pragma once
 
 #include "bogaudio.hpp"
+#include "trigger_on_load.hpp"
 
 extern Model* modelDGate;
 
@@ -44,7 +45,8 @@ struct DGate : TriggerOnLoadModule {
 	Stage _stage;
 	float _stageProgress;
 
-	DGate() : TriggerOnLoadModule(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	DGate() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam<EnvelopeSegmentParamQuantity>(DELAY_PARAM, 0.0f, 1.0f, 0.0f, "Delay", " s");
 		configParam<EnvelopeSegmentParamQuantity>(GATE_PARAM, 0.0f, 1.0f, 0.31623f, "Gate", " s");
 		configParam(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "Loop");

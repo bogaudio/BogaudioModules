@@ -26,7 +26,8 @@ struct Offset : DisableOutputLimitModule {
 		NUM_OUTPUTS
 	};
 
-	Offset() : DisableOutputLimitModule(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {
+	Offset() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "Offset", " V", 0.0f, 5.0f);
 		configParam(SCALE_PARAM, -1.0f, 1.0f, 0.316f, "Scale", "%", 0.0f, 100.0f);
 	}

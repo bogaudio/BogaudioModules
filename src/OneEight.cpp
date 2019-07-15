@@ -1,8 +1,6 @@
 
 #include "OneEight.hpp"
 
-#define SELECT_ON_CLOCK "select_on_clock"
-
 void OneEight::onReset() {
 	_step = 0;
 	_clock.reset();
@@ -11,19 +9,6 @@ void OneEight::onReset() {
 
 void OneEight::onSampleRateChange() {
 	_timer.setParams(APP->engine->getSampleRate(), 0.001f);
-}
-
-json_t* OneEight::dataToJson() {
-	json_t* root = json_object();
-	json_object_set_new(root, SELECT_ON_CLOCK, json_boolean(_selectOnClock));
-	return root;
-}
-
-void OneEight::dataFromJson(json_t* root) {
-	json_t* s = json_object_get(root, SELECT_ON_CLOCK);
-	if (s) {
-		_selectOnClock = json_is_true(s);
-	}
 }
 
 void OneEight::process(const ProcessArgs& args) {
@@ -54,25 +39,7 @@ void OneEight::process(const ProcessArgs& args) {
 	}
 }
 
-struct SelectOnClockMenuItem : MenuItem {
-	OneEight* _module;
-
-	SelectOnClockMenuItem(OneEight* module, const char* label)
-	: _module(module)
-	{
-		this->text = label;
-	}
-
-	void onAction(const event::Action& e) override {
-		_module->_selectOnClock = !_module->_selectOnClock;
-	}
-
-	void step() override {
-		rightText = _module->_selectOnClock ? "✔" : "";
-	}
-};
-
-struct OneEightWidget : ModuleWidget {
+struct OneEightWidget : SelectOnClockModuleWidget {
 	static constexpr int hp = 6;
 
 	OneEightWidget(OneEight* module) {
@@ -152,13 +119,6 @@ struct OneEightWidget : ModuleWidget {
 		addChild(createLight<SmallLight<GreenLight>>(out6LightPosition, module, OneEight::OUT6_LIGHT));
 		addChild(createLight<SmallLight<GreenLight>>(out7LightPosition, module, OneEight::OUT7_LIGHT));
 		addChild(createLight<SmallLight<GreenLight>>(out8LightPosition, module, OneEight::OUT8_LIGHT));
-	}
-
-	void appendContextMenu(Menu* menu) override {
-		OneEight* m = dynamic_cast<OneEight*>(module);
-		assert(m);
-		menu->addChild(new MenuLabel());
-		menu->addChild(new SelectOnClockMenuItem(m, "Select on clock"));
 	}
 };
 

@@ -1,8 +1,6 @@
 
 #include "EightOne.hpp"
 
-#define SELECT_ON_CLOCK "select_on_clock"
-
 void EightOne::onReset() {
 	_step = 0;
 	_clock.reset();
@@ -11,19 +9,6 @@ void EightOne::onReset() {
 
 void EightOne::onSampleRateChange() {
 	_timer.setParams(APP->engine->getSampleRate(), 0.001f);
-}
-
-json_t* EightOne::dataToJson() {
-	json_t* root = json_object();
-	json_object_set_new(root, SELECT_ON_CLOCK, json_boolean(_selectOnClock));
-	return root;
-}
-
-void EightOne::dataFromJson(json_t* root) {
-	json_t* s = json_object_get(root, SELECT_ON_CLOCK);
-	if (s) {
-		_selectOnClock = json_is_true(s);
-	}
 }
 
 void EightOne::process(const ProcessArgs& args) {
@@ -55,25 +40,7 @@ void EightOne::process(const ProcessArgs& args) {
 	outputs[OUT_OUTPUT].setVoltage(out);
 }
 
-struct SelectOnClockMenuItem : MenuItem {
-	EightOne* _module;
-
-	SelectOnClockMenuItem(EightOne* module, const char* label)
-	: _module(module)
-	{
-		this->text = label;
-	}
-
-	void onAction(const event::Action& e) override {
-		_module->_selectOnClock = !_module->_selectOnClock;
-	}
-
-	void step() override {
-		rightText = _module->_selectOnClock ? "✔" : "";
-	}
-};
-
-struct EightOneWidget : ModuleWidget {
+struct EightOneWidget : SelectOnClockModuleWidget {
 	static constexpr int hp = 6;
 
 	EightOneWidget(EightOne* module) {
@@ -153,13 +120,6 @@ struct EightOneWidget : ModuleWidget {
 		addChild(createLight<SmallLight<GreenLight>>(in6LightPosition, module, EightOne::IN6_LIGHT));
 		addChild(createLight<SmallLight<GreenLight>>(in7LightPosition, module, EightOne::IN7_LIGHT));
 		addChild(createLight<SmallLight<GreenLight>>(in8LightPosition, module, EightOne::IN8_LIGHT));
-	}
-
-	void appendContextMenu(Menu* menu) override {
-		EightOne* m = dynamic_cast<EightOne*>(module);
-		assert(m);
-		menu->addChild(new MenuLabel());
-		menu->addChild(new SelectOnClockMenuItem(m, "Select on clock"));
 	}
 };
 

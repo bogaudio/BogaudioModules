@@ -1,7 +1,7 @@
 
 #include "ShaperPlus.hpp"
 
-struct ShaperPlusWidget : ModuleWidget {
+struct ShaperPlusWidget : TriggerOnLoadModuleWidget {
 	static constexpr int hp = 15;
 
 	ShaperPlusWidget(ShaperPlus* module) {
@@ -91,13 +91,6 @@ struct ShaperPlusWidget : ModuleWidget {
 		addChild(createLight<TinyLight<GreenLight>>(onLightPosition, module, ShaperPlus::ON_LIGHT));
 		addChild(createLight<TinyLight<GreenLight>>(decayLightPosition, module, ShaperPlus::DECAY_LIGHT));
 		addChild(createLight<TinyLight<GreenLight>>(offLightPosition, module, ShaperPlus::OFF_LIGHT));
-	}
-
-	void appendContextMenu(Menu* menu) override {
-		ShaperPlus* shaperPlus = dynamic_cast<ShaperPlus*>(module);
-		assert(shaperPlus);
-		menu->addChild(new MenuLabel());
-		menu->addChild(new TriggerOnLoadMenuItem(shaperPlus, "Resume loop on load"));
 	}
 };
 

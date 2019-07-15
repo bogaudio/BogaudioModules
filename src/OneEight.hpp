@@ -1,6 +1,7 @@
 #pragma once
 
 #include "bogaudio.hpp"
+#include "select_on_clock.hpp"
 #include "dsp/signal.hpp"
 
 using namespace bogaudio::dsp;
@@ -9,7 +10,7 @@ extern Model* modelOneEight;
 
 namespace bogaudio {
 
-struct OneEight : Module {
+struct OneEight : SelectOnClockModule {
 	enum ParamsIds {
 		STEPS_PARAM,
 		DIRECTION_PARAM,
@@ -53,7 +54,6 @@ struct OneEight : Module {
 	Trigger _reset;
 	bogaudio::dsp::Timer _timer;
 	int _step;
-	bool _selectOnClock = false;
 	int _select = 0;
 
 	OneEight() {
@@ -68,8 +68,6 @@ struct OneEight : Module {
 
 	void onReset() override;
 	void onSampleRateChange() override;
-	json_t* dataToJson() override;
-	void dataFromJson(json_t* root) override;
 	void process(const ProcessArgs& args) override;
 };
 

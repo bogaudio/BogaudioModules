@@ -7,10 +7,6 @@ namespace bogaudio {
 struct DisableOutputLimitModule : Module {
 	bool _disableOutputLimit = false;
 
-	DisableOutputLimitModule(int numParams, int numInputs, int numOutputs, int numLights = 0) {
-		config(numParams, numInputs, numOutputs, numLights);
-	}
-
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
 };
@@ -34,10 +30,6 @@ struct DisableOutputLimitMenuItem : MenuItem {
 };
 
 struct DisableOutputLimitModuleWidget : ModuleWidget {
-	DisableOutputLimitModuleWidget(Module* module) {
-		setModule(module);
-	}
-
 	void appendContextMenu(Menu* menu) override {
 		DisableOutputLimitModule* dolm = dynamic_cast<DisableOutputLimitModule*>(module);
 		assert(dolm);

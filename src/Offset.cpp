@@ -27,7 +27,8 @@ float Offset::knobValue(const Param& knob, Input& cv) const {
 struct OffsetWidget : DisableOutputLimitModuleWidget {
 	static constexpr int hp = 3;
 
-	OffsetWidget(Offset* module) : DisableOutputLimitModuleWidget(module) {
+	OffsetWidget(Offset* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

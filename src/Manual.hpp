@@ -1,6 +1,7 @@
 #pragma once
 
 #include "bogaudio.hpp"
+#include "trigger_on_load.hpp"
 
 extern Model* modelManual;
 
@@ -36,7 +37,8 @@ struct Manual : TriggerOnLoadModule {
 	Trigger _trigger;
 	rack::dsp::PulseGenerator _pulse;
 
-	Manual() : TriggerOnLoadModule(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	Manual() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(TRIGGER_PARAM, 0.0f, 1.0f, 0.0f, "Trigger");
 		_triggerOnLoad = false;
 		onReset();

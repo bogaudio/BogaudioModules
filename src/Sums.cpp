@@ -35,7 +35,8 @@ void Sums::process(const ProcessArgs& args) {
 struct SumsWidget : DisableOutputLimitModuleWidget {
 	static constexpr int hp = 3;
 
-	SumsWidget(Sums* module) : DisableOutputLimitModuleWidget(module) {
+	SumsWidget(Sums* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

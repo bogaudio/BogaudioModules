@@ -1,6 +1,7 @@
 #pragma once
 
 #include "bogaudio.hpp"
+#include "trigger_on_load.hpp"
 #include "shaper_core.hpp"
 
 extern Model* modelShaperPlus;
@@ -50,52 +51,10 @@ struct ShaperPlus : TriggerOnLoadModule {
 		NUM_LIGHTS
 	};
 
-	ShaperCore _core;
+	ShaperCore* _core;
 
-	ShaperPlus() : TriggerOnLoadModule(
-		NUM_PARAMS,
-		NUM_INPUTS,
-		NUM_OUTPUTS,
-		NUM_LIGHTS
-	)
-	, _core(
-		params[ATTACK_PARAM],
-		params[ON_PARAM],
-		params[DECAY_PARAM],
-		params[OFF_PARAM],
-		params[ENV_PARAM],
-		params[SIGNAL_PARAM],
-		params[TRIGGER_PARAM],
-		params[SPEED_PARAM],
-		params[LOOP_PARAM],
-
-		inputs[SIGNAL_INPUT],
-		inputs[TRIGGER_INPUT],
-		&inputs[ATTACK_INPUT],
-		&inputs[ON_INPUT],
-		&inputs[DECAY_INPUT],
-		&inputs[OFF_INPUT],
-		&inputs[ENV_INPUT],
-		&inputs[SIGNALCV_INPUT],
-
-		outputs[SIGNAL_OUTPUT],
-		outputs[ENV_OUTPUT],
-		outputs[INV_OUTPUT],
-		outputs[TRIGGER_OUTPUT],
-		&outputs[ATTACK_OUTPUT],
-		&outputs[ON_OUTPUT],
-		&outputs[DECAY_OUTPUT],
-		&outputs[OFF_OUTPUT],
-
-		lights[ATTACK_LIGHT],
-		lights[ON_LIGHT],
-		lights[DECAY_LIGHT],
-		lights[OFF_LIGHT],
-
-		_triggerOnLoad,
-		_shouldTriggerOnLoad
-	)
-	{
+	ShaperPlus() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam<EnvelopeSegmentParamQuantity>(ATTACK_PARAM, 0.0f, 1.0f, 0.14142f, "Attack", " s");
 		configParam<EnvelopeSegmentParamQuantity>(ON_PARAM, 0.0f, 1.0f, 0.31623f, "On", " s");
 		configParam<EnvelopeSegmentParamQuantity>(DECAY_PARAM, 0.0f, 1.0f, 0.31623f, "Decay", " s");
@@ -106,19 +65,59 @@ struct ShaperPlus : TriggerOnLoadModule {
 		configParam(SPEED_PARAM, 0.0f, 1.0f, 1.0f, "Speed");
 		configParam(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "Loop");
 
+		_core = new ShaperCore(
+			params[ATTACK_PARAM],
+			params[ON_PARAM],
+			params[DECAY_PARAM],
+			params[OFF_PARAM],
+			params[ENV_PARAM],
+			params[SIGNAL_PARAM],
+			params[TRIGGER_PARAM],
+			params[SPEED_PARAM],
+			params[LOOP_PARAM],
+
+			inputs[SIGNAL_INPUT],
+			inputs[TRIGGER_INPUT],
+			&inputs[ATTACK_INPUT],
+			&inputs[ON_INPUT],
+			&inputs[DECAY_INPUT],
+			&inputs[OFF_INPUT],
+			&inputs[ENV_INPUT],
+			&inputs[SIGNALCV_INPUT],
+
+			outputs[SIGNAL_OUTPUT],
+			outputs[ENV_OUTPUT],
+			outputs[INV_OUTPUT],
+			outputs[TRIGGER_OUTPUT],
+			&outputs[ATTACK_OUTPUT],
+			&outputs[ON_OUTPUT],
+			&outputs[DECAY_OUTPUT],
+			&outputs[OFF_OUTPUT],
+
+			lights[ATTACK_LIGHT],
+			lights[ON_LIGHT],
+			lights[DECAY_LIGHT],
+			lights[OFF_LIGHT],
+
+			_triggerOnLoad,
+			_shouldTriggerOnLoad
+		);
 		onReset();
+	}
+	virtual ~ShaperPlus() {
+		delete _core;
 	}
 
 	void onReset() override {
-		_core.reset();
+		_core->reset();
 	}
 
 	void process(const ProcessArgs& args) override {
-		_core.step();
+		_core->step();
 	}
 
 	bool shouldTriggerOnNextLoad() override {
-		return _core._stage != _core.STOPPED_STAGE;
+		return _core->_stage != _core->STOPPED_STAGE;
 	}
 };
 

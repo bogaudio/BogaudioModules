@@ -45,7 +45,8 @@ float VCM::channelStep(Input& input, Param& knob, Input& cv, Amplifier& amplifie
 struct VCMWidget : DisableOutputLimitModuleWidget {
 	static constexpr int hp = 10;
 
-	VCMWidget(VCM* module) : DisableOutputLimitModuleWidget(module) {
+	VCMWidget(VCM* module) {
+		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{

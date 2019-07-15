@@ -10,10 +10,6 @@ struct TriggerOnLoadModule : Module {
 	bool _triggerOnLoad = true;
 	bool _shouldTriggerOnLoad = true;
 
-	TriggerOnLoadModule(int numParams, int numInputs, int numOutputs, int numLights) {
-		config(numParams, numInputs, numOutputs, numLights);
-	}
-
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
 
@@ -35,6 +31,15 @@ struct TriggerOnLoadMenuItem : MenuItem {
 
 	void step() override {
 		rightText = _module->_triggerOnLoad ? "✔" : "";
+	}
+};
+
+struct TriggerOnLoadModuleWidget : ModuleWidget {
+	void appendContextMenu(Menu* menu) override {
+		TriggerOnLoadModule* m = dynamic_cast<TriggerOnLoadModule*>(module);
+		assert(m);
+		menu->addChild(new MenuLabel());
+		menu->addChild(new TriggerOnLoadMenuItem(m, "Resume loop on load"));
 	}
 };
 

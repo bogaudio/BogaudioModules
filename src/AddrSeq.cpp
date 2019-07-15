@@ -1,7 +1,6 @@
 
 #include "AddrSeq.hpp"
 
-#define SELECT_ON_CLOCK "select_on_clock"
 #define RANGE_OFFSET "range_offset"
 #define RANGE_SCALE "range_scale"
 
@@ -39,18 +38,14 @@ void AddrSeq::onSampleRateChange() {
 }
 
 json_t* AddrSeq::dataToJson() {
-	json_t* root = json_object();
-	json_object_set_new(root, SELECT_ON_CLOCK, json_boolean(_selectOnClock));
+	json_t* root = SelectOnClockModule::dataToJson();
 	json_object_set_new(root, RANGE_OFFSET, json_real(_rangeOffset));
 	json_object_set_new(root, RANGE_SCALE, json_real(_rangeScale));
 	return root;
 }
 
 void AddrSeq::dataFromJson(json_t* root) {
-	json_t* s = json_object_get(root, SELECT_ON_CLOCK);
-	if (s) {
-		_selectOnClock = json_is_true(s);
-	}
+	SelectOnClockModule::dataFromJson(root);
 
 	json_t* ro = json_object_get(root, RANGE_OFFSET);
 	if (ro) {
@@ -94,23 +89,6 @@ void AddrSeq::process(const ProcessArgs& args) {
 	outputs[OUT_OUTPUT].setVoltage(out);
 }
 
-struct SelectOnClockMenuItem : MenuItem {
-	AddrSeq* _module;
-
-	SelectOnClockMenuItem(AddrSeq* module, const char* label)
-	: _module(module)
-	{
-		this->text = label;
-	}
-
-	void onAction(const event::Action& e) override {
-		_module->_selectOnClock = !_module->_selectOnClock;
-	}
-
-	void step() override {
-		rightText = _module->_selectOnClock ? "✔" : "";
-	}
-};
 
 struct AddrSeqRangeMenuItem : MenuItem {
 	AddrSeq* _module;
@@ -134,7 +112,7 @@ struct AddrSeqRangeMenuItem : MenuItem {
 	}
 };
 
-struct AddrSeqWidget : ModuleWidget {
+struct AddrSeqWidget : SelectOnClockModuleWidget {
 	static constexpr int hp = 6;
 
 	AddrSeqWidget(AddrSeq* module) {
@@ -217,10 +195,10 @@ struct AddrSeqWidget : ModuleWidget {
 	}
 
 	void appendContextMenu(Menu* menu) override {
+		SelectOnClockModuleWidget::appendContextMenu(menu);
+
 		AddrSeq* m = dynamic_cast<AddrSeq*>(module);
 		assert(m);
-		menu->addChild(new MenuLabel());
-		menu->addChild(new SelectOnClockMenuItem(m, "Select on clock"));
 		menu->addChild(new MenuLabel());
 		menu->addChild(new AddrSeqRangeMenuItem(m, "Range: +/-10V", 0.0f, 10.0f));
 		menu->addChild(new AddrSeqRangeMenuItem(m, "Range: +/-5V", 0.0f, 5.0f));

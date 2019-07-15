@@ -69,7 +69,7 @@ bool DGate::stepStage(Param& knob) {
 	return _stageProgress > t;
 }
 
-struct DGateWidget : ModuleWidget {
+struct DGateWidget : TriggerOnLoadModuleWidget {
 	static constexpr int hp = 3;
 
 	DGateWidget(DGate* module) {
@@ -113,13 +113,6 @@ struct DGateWidget : ModuleWidget {
 
 		addChild(createLight<TinyLight<GreenLight>>(delayLightPosition, module, DGate::DELAY_LIGHT));
 		addChild(createLight<TinyLight<GreenLight>>(gateLightPosition, module, DGate::GATE_LIGHT));
-	}
-
-	void appendContextMenu(Menu* menu) override {
-	  DGate* dgate = dynamic_cast<DGate*>(module);
-		assert(dgate);
-		menu->addChild(new MenuLabel());
-		menu->addChild(new TriggerOnLoadMenuItem(dgate, "Resume loop on load"));
 	}
 };
 

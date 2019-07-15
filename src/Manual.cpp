@@ -29,7 +29,7 @@ void Manual::process(const ProcessArgs& args) {
 	_firstStep = false;
 }
 
-struct ManualWidget : ModuleWidget {
+struct ManualWidget : TriggerOnLoadModuleWidget {
 	static constexpr int hp = 3;
 
 	ManualWidget(Manual* module) {
@@ -72,10 +72,10 @@ struct ManualWidget : ModuleWidget {
 	}
 
 	void appendContextMenu(Menu* menu) override {
-		Manual* manual = dynamic_cast<Manual*>(module);
-		assert(manual);
+		TriggerOnLoadModule* m = dynamic_cast<TriggerOnLoadModule*>(module);
+		assert(m);
 		menu->addChild(new MenuLabel());
-		menu->addChild(new TriggerOnLoadMenuItem(manual, "Trigger on load"));
+		menu->addChild(new TriggerOnLoadMenuItem(m, "Trigger on load"));
 	}
 };
 

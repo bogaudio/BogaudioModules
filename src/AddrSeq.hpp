@@ -1,6 +1,7 @@
 #pragma once
 
 #include "bogaudio.hpp"
+#include "select_on_clock.hpp"
 #include "dsp/signal.hpp"
 
 using namespace bogaudio::dsp;
@@ -9,7 +10,7 @@ extern Model* modelAddrSeq;
 
 namespace bogaudio {
 
-struct AddrSeq : Module {
+struct AddrSeq : SelectOnClockModule {
 	enum ParamsIds {
 		STEPS_PARAM,
 		DIRECTION_PARAM,
@@ -53,7 +54,6 @@ struct AddrSeq : Module {
 	Trigger _reset;
 	bogaudio::dsp::Timer _timer;
 	int _step;
-	bool _selectOnClock = false;
 	int _select = 0;
 	float _rangeOffset = 0.0f;
 	float _rangeScale = 10.0f;

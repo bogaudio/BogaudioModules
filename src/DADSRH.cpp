@@ -1,7 +1,7 @@
 
 #include "DADSRH.hpp"
 
-struct DADSRHWidget : ModuleWidget {
+struct DADSRHWidget : TriggerOnLoadModuleWidget {
 	static constexpr int hp = 10;
 
 	DADSRHWidget(DADSRH* module) {
@@ -93,13 +93,6 @@ struct DADSRHWidget : ModuleWidget {
 		addChild(createLight<TinyLight<GreenLight>>(releaseShape1LightPosition, module, DADSRH::RELEASE_SHAPE1_LIGHT));
 		addChild(createLight<TinyLight<GreenLight>>(releaseShape2LightPosition, module, DADSRH::RELEASE_SHAPE2_LIGHT));
 		addChild(createLight<TinyLight<GreenLight>>(releaseShape3LightPosition, module, DADSRH::RELEASE_SHAPE3_LIGHT));
-	}
-
-	void appendContextMenu(Menu* menu) override {
-		DADSRH* dadsrh = dynamic_cast<DADSRH*>(module);
-		assert(dadsrh);
-		menu->addChild(new MenuLabel());
-		menu->addChild(new TriggerOnLoadMenuItem(dadsrh, "Resume loop on load"));
 	}
 };
 
