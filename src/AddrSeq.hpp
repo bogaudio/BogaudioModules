@@ -56,21 +56,26 @@ struct AddrSeq : Module {
 	bool _selectOnClock = false;
 	int _select = 0;
 	float _rangeOffset = 0.0f;
-	float _rangeScale = 5.0f;
+	float _rangeScale = 10.0f;
+
+	struct OutputParamQuantity : ParamQuantity {
+		float getDisplayValue() override;
+		void setDisplayValue(float v) override;
+	};
 
 	AddrSeq() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(STEPS_PARAM, 1.0f, 8.0f, 8.0f, "Steps");
 		configParam(DIRECTION_PARAM, 0.0f, 1.0f, 1.0f, "Direction");
 		configParam(SELECT_PARAM, 0.0f, 7.0f, 0.0f, "Select step");
-		configParam(OUT1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1", " V", 0.0f, 10.0f);
-		configParam(OUT2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2", " V", 0.0f, 10.0f);
-		configParam(OUT3_PARAM, -1.0f, 1.0f, 0.0f, "Step 3", " V", 0.0f, 10.0f);
-		configParam(OUT4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4", " V", 0.0f, 10.0f);
-		configParam(OUT5_PARAM, -1.0f, 1.0f, 0.0f, "Step 5", " V", 0.0f, 10.0f);
-		configParam(OUT6_PARAM, -1.0f, 1.0f, 0.0f, "Step 6", " V", 0.0f, 10.0f);
-		configParam(OUT7_PARAM, -1.0f, 1.0f, 0.0f, "Step 7", " V", 0.0f, 10.0f);
-		configParam(OUT8_PARAM, -1.0f, 1.0f, 0.0f, "Step 8", " V", 0.0f, 10.0f);
+		configParam<OutputParamQuantity>(OUT1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1", " V");
+		configParam<OutputParamQuantity>(OUT2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2", " V");
+		configParam<OutputParamQuantity>(OUT3_PARAM, -1.0f, 1.0f, 0.0f, "Step 3", " V");
+		configParam<OutputParamQuantity>(OUT4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4", " V");
+		configParam<OutputParamQuantity>(OUT5_PARAM, -1.0f, 1.0f, 0.0f, "Step 5", " V");
+		configParam<OutputParamQuantity>(OUT6_PARAM, -1.0f, 1.0f, 0.0f, "Step 6", " V");
+		configParam<OutputParamQuantity>(OUT7_PARAM, -1.0f, 1.0f, 0.0f, "Step 7", " V");
+		configParam<OutputParamQuantity>(OUT8_PARAM, -1.0f, 1.0f, 0.0f, "Step 8", " V");
 
 		onReset();
 		onSampleRateChange();

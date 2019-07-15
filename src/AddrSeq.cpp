@@ -71,6 +71,29 @@ void AddrSeq::process(const ProcessArgs& args) {
 	outputs[OUT_OUTPUT].setVoltage(out);
 }
 
+float AddrSeq::OutputParamQuantity::getDisplayValue() {
+	float v = getValue();
+	if (!module) {
+		return v;
+	}
+
+	AddrSeq* m = dynamic_cast<AddrSeq*>(module);
+	v += m->_rangeOffset;
+	v *= m->_rangeScale;
+	return v;
+}
+
+void AddrSeq::OutputParamQuantity::setDisplayValue(float v) {
+	if (!module) {
+		return;
+	}
+
+	AddrSeq* m = dynamic_cast<AddrSeq*>(module);
+	v /= m->_rangeScale;
+	v -= m->_rangeOffset;
+	setValue(v);
+}
+
 struct SelectOnClockMenuItem : MenuItem {
 	AddrSeq* _module;
 
