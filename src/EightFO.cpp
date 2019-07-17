@@ -44,7 +44,7 @@ void EightFO::process(const ProcessArgs& args) {
 
 		setFrequency(params[FREQUENCY_PARAM], inputs[PITCH_INPUT], _phasor);
 
-		_wave = (Wave)params[WAVE_PARAM].getValue();
+		_wave = (Wave)roundf(params[WAVE_PARAM].getValue());
 		if (_wave == SQUARE_WAVE) {
 			float pw = params[SAMPLE_PWM_PARAM].getValue();
 			if (inputs[SAMPLE_PWM_INPUT].isConnected()) {

@@ -18,7 +18,7 @@ void Lag::process(const ProcessArgs& args) {
 		if (inputs[TIME_INPUT].isConnected()) {
 			time *= clamp(inputs[TIME_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
-		switch ((int)params[TIME_SCALE_PARAM].getValue()) {
+		switch ((int)roundf(params[TIME_SCALE_PARAM].getValue())) {
 			case 0: {
 				time /= 10.f;
 				break;

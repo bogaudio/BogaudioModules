@@ -54,7 +54,7 @@ struct AddrSeq : SelectOnClockModule {
 	Trigger _reset;
 	bogaudio::dsp::Timer _timer;
 	int _step;
-	int _select = 0;
+	float _select = 0.0f;
 	float _rangeOffset = 0.0f;
 	float _rangeScale = 10.0f;
 

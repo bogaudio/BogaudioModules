@@ -54,7 +54,7 @@ struct OneEight : SelectOnClockModule {
 	Trigger _reset;
 	bogaudio::dsp::Timer _timer;
 	int _step;
-	int _select = 0;
+	float _select = 0.0f;
 
 	OneEight() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);

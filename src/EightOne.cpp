@@ -24,12 +24,12 @@ void EightOne::process(const ProcessArgs& args) {
 	_step = (_step + reverse * clock) % steps;
 	_step += (_step < 0) * steps;
 	_step -= _step * reset;
-	int select = params[SELECT_PARAM].getValue();
+	float select = params[SELECT_PARAM].getValue();
 	select += clamp(inputs[SELECT_INPUT].getVoltage(), 0.0f, 10.0f) * 0.1f * 8.0f;
 	if (!_selectOnClock || clock) {
 		_select = select;
 	}
-	int step = _step + _select;
+	int step = _step + roundf(_select);
 	step = step % 8;
 
 	float out = 0.0f;

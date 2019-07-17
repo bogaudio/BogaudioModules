@@ -14,7 +14,7 @@ void Reftone::process(const ProcessArgs& args) {
 		_pitch = params[PITCH_PARAM].getValue();
 		_octave = params[OCTAVE_PARAM].getValue();
 		_fine = params[FINE_PARAM].getValue();
-		_frequency = semitoneToFrequency(referenceSemitone + 12.0f*roundf(_octave - referenceOctave) + (_pitch - referencePitch) + _fine);
+		_frequency = semitoneToFrequency(referenceSemitone + 12.0f*roundf(_octave - referenceOctave) + roundf(_pitch - referencePitch) + _fine);
 		_cv = frequencyToCV(_frequency);
 	}
 

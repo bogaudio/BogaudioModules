@@ -8,7 +8,7 @@ void Stack::process(const ProcessArgs& args) {
 	}
 
 	float semitones = roundf(params[OCTAVE_PARAM].getValue()) * 12.0f;
-	semitones += params[SEMIS_PARAM].getValue();
+	semitones += roundf(params[SEMIS_PARAM].getValue());
 	if (inputs[CV_INPUT].isConnected()) {
 		semitones += clamp(inputs[CV_INPUT].getVoltage(), -5.0f, 5.0f) * 10.0f;
 	}
