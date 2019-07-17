@@ -2,7 +2,7 @@
 #include "VCA.hpp"
 
 bool VCA::LevelParamQuantity::isLinear() {
-	return static_cast<VCA*>(module)->isLinear();
+	return dynamic_cast<VCA*>(module)->isLinear();
 }
 
 void VCA::onSampleRateChange() {

@@ -34,7 +34,7 @@ void FMOp::RatioParamQuantity::setDisplayValue(float v) {
 }
 
 bool FMOp::LevelParamQuantity::isLinear() {
-	return static_cast<FMOp*>(module)->_linearLevel;
+	return dynamic_cast<FMOp*>(module)->_linearLevel;
 }
 
 void FMOp::onReset() {

@@ -3,7 +3,7 @@
 #include "dsp/pitch.hpp"
 
 float LFOBase::LFOFrequencyParamQuantity::offset() {
-	LFOBase* lfo = static_cast<LFOBase*>(module);
+	LFOBase* lfo = dynamic_cast<LFOBase*>(module);
 	return lfo->getPitchOffset();
 }
 

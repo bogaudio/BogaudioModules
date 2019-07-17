@@ -2,7 +2,7 @@
 #include "VCM.hpp"
 
 bool VCM::LevelParamQuantity::isLinear() {
-	return static_cast<VCM*>(module)->isLinear();
+	return dynamic_cast<VCM*>(module)->isLinear();
 }
 
 void VCM::process(const ProcessArgs& args) {

@@ -10,7 +10,7 @@ float AddrSeq::OutputParamQuantity::getDisplayValue() {
 		return v;
 	}
 
-	AddrSeq* m = static_cast<AddrSeq*>(module);
+	AddrSeq* m = dynamic_cast<AddrSeq*>(module);
 	v += m->_rangeOffset;
 	v *= m->_rangeScale;
 	return v;
@@ -21,7 +21,7 @@ void AddrSeq::OutputParamQuantity::setDisplayValue(float v) {
 		return;
 	}
 
-	AddrSeq* m = static_cast<AddrSeq*>(module);
+	AddrSeq* m = dynamic_cast<AddrSeq*>(module);
 	v /= m->_rangeScale;
 	v -= m->_rangeOffset;
 	setValue(v);

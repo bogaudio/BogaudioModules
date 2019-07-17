@@ -3,7 +3,7 @@
 #include "dsp/pitch.hpp"
 
 float VCO::VCOFrequencyParamQuantity::offset() {
-	VCO* vco = static_cast<VCO*>(module);
+	VCO* vco = dynamic_cast<VCO*>(module);
 	return vco->_slowMode ? vco->_slowModeOffset : 0.0f;
 }
 
