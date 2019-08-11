@@ -349,8 +349,7 @@
       "name": "VU",
       "description": "stereo signal meter",
       "tags": [
-        "Visual",
-        "Dual"
+        "Visual"
       ]
     },
     {
