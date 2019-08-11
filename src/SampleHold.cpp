@@ -1,11 +1,40 @@
 
 #include "SampleHold.hpp"
 
+#define NOISE_TYPE "noise_type"
+#define RANGE_OFFSET "range_offset"
+#define RANGE_SCALE "range_scale"
+
 void SampleHold::onReset() {
 	_trigger1.reset();
 	_value1 = 0.0f;
 	_trigger2.reset();
 	_value2 = 0.0f;
+}
+
+json_t* SampleHold::dataToJson() {
+	json_t* root = json_object();
+	json_object_set_new(root, NOISE_TYPE, json_integer((int)_noiseType));
+	json_object_set_new(root, RANGE_OFFSET, json_real(_rangeOffset));
+	json_object_set_new(root, RANGE_SCALE, json_real(_rangeScale));
+	return root;
+}
+
+void SampleHold::dataFromJson(json_t* root) {
+	json_t* nt = json_object_get(root, NOISE_TYPE);
+	if (nt) {
+		_noiseType = (NoiseType)json_integer_value(nt);
+	}
+
+	json_t* ro = json_object_get(root, RANGE_OFFSET);
+	if (ro) {
+		_rangeOffset = json_real_value(ro);
+	}
+
+	json_t* rs = json_object_get(root, RANGE_SCALE);
+	if (rs) {
+		_rangeScale = json_real_value(rs);
+	}
 }
 
 void SampleHold::process(const ProcessArgs& args) {
@@ -17,7 +46,7 @@ void SampleHold::process(const ProcessArgs& args) {
 				_value1 = inputs[IN1_INPUT].getVoltage();
 			}
 			else {
-				_value1 = fabsf(_noise.next()) * 10.0;
+				_value1 = (noise() + _rangeOffset) * _rangeScale;
 			}
 		}
 		outputs[OUT1_OUTPUT].setVoltage(_value1);
@@ -31,10 +60,27 @@ void SampleHold::process(const ProcessArgs& args) {
 				_value2 = inputs[IN2_INPUT].getVoltage();
 			}
 			else {
-				_value2 = fabsf(_noise.next()) * 10.0;
+				_value2 = (noise() + _rangeOffset) * _rangeScale;
 			}
 		}
 		outputs[OUT2_OUTPUT].setVoltage(_value2);
+	}
+}
+
+float SampleHold::noise() {
+	switch (_noiseType) {
+		case BLUE_NOISE_TYPE: {
+			return clamp(2.0f * _blue.next(), -1.0f, 1.0f);
+		}
+		case PINK_NOISE_TYPE: {
+			return clamp(1.5f * _pink.next(), -1.0f, 1.0f);
+		}
+		case RED_NOISE_TYPE: {
+			return clamp(2.0f * _red.next(), -1.0f, 1.0f);
+		}
+		default: {
+			return clamp(_white.next(), -1.0f, 1.0f);
+		}
 	}
 }
 
@@ -88,6 +134,67 @@ struct SampleHoldWidget : ModuleWidget {
 
 		addChild(createLight<SmallLight<GreenLight>>(track1LightPosition, module, SampleHold::TRACK1_LIGHT));
 		addChild(createLight<SmallLight<GreenLight>>(track2LightPosition, module, SampleHold::TRACK2_LIGHT));
+	}
+
+	struct NoiseTypeMenuItem : MenuItem {
+		SampleHold* _module;
+		SampleHold::NoiseType _noiseType;
+
+		NoiseTypeMenuItem(SampleHold* module, const char* label, SampleHold::NoiseType noiseType)
+		: _module(module)
+		, _noiseType(noiseType)
+		{
+			this->text = label;
+		}
+
+		void onAction(const event::Action& e) override {
+			_module->_noiseType = _noiseType;
+		}
+
+		void step() override {
+			rightText = _module->_noiseType == _noiseType ? "✔" : "";
+		}
+	};
+
+	struct RangeMenuItem : MenuItem {
+		SampleHold* _module;
+		float _offset, _scale;
+
+		RangeMenuItem(SampleHold* module, const char* label, float offset, float scale)
+		: _module(module)
+		, _offset(offset)
+		, _scale(scale)
+		{
+			this->text = label;
+		}
+
+		void onAction(const event::Action& e) override {
+			_module->_rangeOffset = _offset;
+			_module->_rangeScale = _scale;
+		}
+
+		void step() override {
+			rightText = (_module->_rangeOffset == _offset && _module->_rangeScale == _scale) ? "✔" : "";
+		}
+	};
+
+	void appendContextMenu(Menu* menu) override {
+		SampleHold* m = dynamic_cast<SampleHold*>(module);
+		assert(m);
+		menu->addChild(new MenuLabel());
+		menu->addChild(new NoiseTypeMenuItem(m, "Normal noise: blue", SampleHold::BLUE_NOISE_TYPE));
+		menu->addChild(new NoiseTypeMenuItem(m, "Normal noise: white", SampleHold::WHITE_NOISE_TYPE));
+		menu->addChild(new NoiseTypeMenuItem(m, "Normal noise: pink", SampleHold::PINK_NOISE_TYPE));
+		menu->addChild(new NoiseTypeMenuItem(m, "Normal noise: red", SampleHold::RED_NOISE_TYPE));
+		menu->addChild(new MenuLabel());
+		menu->addChild(new RangeMenuItem(m, "Normal range: +/-10V", 0.0f, 10.0f));
+		menu->addChild(new RangeMenuItem(m, "Normal range: +/-5V", 0.0f, 5.0f));
+		menu->addChild(new RangeMenuItem(m, "Normal range: +/-3V", 0.0f, 3.0f));
+		menu->addChild(new RangeMenuItem(m, "Normal range: +/-1V", 0.0f, 1.0f));
+		menu->addChild(new RangeMenuItem(m, "Normal range: 0V-10V", 1.0f, 5.0f));
+		menu->addChild(new RangeMenuItem(m, "Normal range: 0V-5V", 1.0f, 2.5f));
+		menu->addChild(new RangeMenuItem(m, "Normal range: 0V-3V", 1.0f, 1.5f));
+		menu->addChild(new RangeMenuItem(m, "Normal range: 0V-1V", 1.0f, 0.5f));
 	}
 };
 

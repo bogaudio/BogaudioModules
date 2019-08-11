@@ -38,9 +38,22 @@ struct SampleHold : Module {
 		NUM_LIGHTS
 	};
 
+	enum NoiseType {
+		WHITE_NOISE_TYPE,
+		BLUE_NOISE_TYPE,
+		PINK_NOISE_TYPE,
+		RED_NOISE_TYPE
+	};
+
 	Trigger _trigger1, _trigger2;
 	float _value1, _value2;
-	WhiteNoiseGenerator _noise;
+	BlueNoiseGenerator _blue;
+	WhiteNoiseGenerator _white;
+	PinkNoiseGenerator _pink;
+	RedNoiseGenerator _red;
+	NoiseType _noiseType = WHITE_NOISE_TYPE;
+	float _rangeOffset = 1.0f;
+	float _rangeScale = 5.0f;
 
 	SampleHold()
 	:  _value1(0.0f)
@@ -56,7 +69,10 @@ struct SampleHold : Module {
 	}
 
 	void onReset() override;
+	json_t* dataToJson() override;
+	void dataFromJson(json_t* root) override;
 	void process(const ProcessArgs& args) override;
+	float noise();
 };
 
 } // namespace bogaudio
