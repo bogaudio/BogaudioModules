@@ -38,33 +38,49 @@ void SampleHold::dataFromJson(json_t* root) {
 }
 
 void SampleHold::process(const ProcessArgs& args) {
-	{
-		lights[TRACK1_LIGHT].value = params[TRACK1_PARAM].getValue();
-		bool triggered = _trigger1.process(params[TRIGGER1_PARAM].getValue() + inputs[TRIGGER1_INPUT].getVoltage());
-		if (params[TRACK1_PARAM].getValue() > 0.5f ? _trigger1.isHigh() : triggered) {
-			if (inputs[IN1_INPUT].isConnected()) {
-				_value1 = inputs[IN1_INPUT].getVoltage();
-			}
-			else {
-				_value1 = (noise() + _rangeOffset) * _rangeScale;
-			}
-		}
-		outputs[OUT1_OUTPUT].setVoltage(_value1);
-	}
+	processChannel(
+		lights[TRACK1_LIGHT],
+		params[TRACK1_PARAM],
+		_trigger1,
+		params[TRIGGER1_PARAM],
+		inputs[TRIGGER1_INPUT],
+		inputs[IN1_INPUT],
+		_value1,
+		outputs[OUT1_OUTPUT]
+	);
+	processChannel(
+		lights[TRACK2_LIGHT],
+		params[TRACK2_PARAM],
+		_trigger2,
+		params[TRIGGER2_PARAM],
+		inputs[TRIGGER2_INPUT],
+		inputs[IN2_INPUT],
+		_value2,
+		outputs[OUT2_OUTPUT]
+	);
+}
 
-	{
-		lights[TRACK2_LIGHT].value = params[TRACK2_PARAM].getValue();
-		bool triggered = _trigger2.process(params[TRIGGER2_PARAM].getValue() + inputs[TRIGGER2_INPUT].getVoltage());
-		if (params[TRACK2_PARAM].getValue() > 0.5f ? _trigger2.isHigh() : triggered) {
-			if (inputs[IN2_INPUT].isConnected()) {
-				_value2 = inputs[IN2_INPUT].getVoltage();
-			}
-			else {
-				_value2 = (noise() + _rangeOffset) * _rangeScale;
-			}
+void SampleHold::processChannel(
+	Light& trackLight,
+	Param& trackParam,
+	Trigger& trigger,
+	Param& triggerParam,
+	Input& triggerInput,
+	Input& in,
+	float& value,
+	Output& out
+) {
+	trackLight.value = trackParam.getValue();
+	bool triggered = trigger.process(triggerParam.getValue() + triggerInput.getVoltage());
+	if (trackParam.getValue() > 0.5f ? trigger.isHigh() : triggered) {
+		if (in.isConnected()) {
+			value = in.getVoltage();
 		}
-		outputs[OUT2_OUTPUT].setVoltage(_value2);
+		else {
+			value = (noise() + _rangeOffset) * _rangeScale;
+		}
 	}
+	out.setVoltage(value);
 }
 
 float SampleHold::noise() {

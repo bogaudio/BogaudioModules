@@ -60,8 +60,8 @@ struct SampleHold : Module {
 	, _value2(0.0f)
 	{
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(TRIGGER1_PARAM, 0.0f, 1.0f, 0.0f, "Trigger 1");
-		configParam(TRIGGER2_PARAM, 0.0f, 1.0f, 0.0f, "Trigger 2");
+		configParam(TRIGGER1_PARAM, 0.0f, 10.0f, 0.0f, "Trigger 1");
+		configParam(TRIGGER2_PARAM, 0.0f, 10.0f, 0.0f, "Trigger 2");
 		configParam(TRACK1_PARAM, 0.0f, 1.0f, 0.0f, "Track 1");
 		configParam(TRACK2_PARAM, 0.0f, 1.0f, 0.0f, "Track 2");
 
@@ -72,6 +72,16 @@ struct SampleHold : Module {
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
 	void process(const ProcessArgs& args) override;
+	void processChannel(
+		Light& trackLight,
+		Param& trackParam,
+		Trigger& trigger,
+		Param& triggerParam,
+		Input& triggerInput,
+		Input& in,
+		float& value,
+		Output& out
+	);
 	float noise();
 };
 
