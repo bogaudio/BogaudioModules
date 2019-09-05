@@ -40,8 +40,8 @@ void FlipFlop::channelStep(
 	Trigger& resetTrigger,
 	bool& flipped
 ) {
-	bool triggered = trigger.next(triggerInput.value);
-	resetTrigger.process(resetInput.value);
+	bool triggered = trigger.next(triggerInput.getVoltage());
+	resetTrigger.process(resetInput.getVoltage());
 	if (resetTrigger.isHigh()) {
 		flipped = false;
 	}
@@ -50,12 +50,12 @@ void FlipFlop::channelStep(
 	}
 
 	if (flipped) {
-		aOutput.value = 0.0f;
-		bOutput.value = 5.0f;
+		aOutput.setVoltage(0.0f);
+		bOutput.setVoltage(5.0f);
 	}
 	else {
-		aOutput.value = 5.0f;
-		bOutput.value = 0.0f;
+		aOutput.setVoltage(5.0f);
+		bOutput.setVoltage(0.0f);
 	}
 }
 

@@ -62,7 +62,7 @@ void DGate::process(const ProcessArgs& args) {
 }
 
 bool DGate::stepStage(Param& knob) {
-	float t = knob.value;
+	float t = knob.getValue();
 	t = pow(t, 2);
 	t *= 10.0;
 	_stageProgress += APP->engine->getSampleTime();

@@ -39,7 +39,7 @@ float VCM::channelStep(Input& input, Param& knob, Input& cv, Amplifier& amplifie
 	level = 1.0f - level;
 	level *= Amplifier::minDecibels;
 	amplifier.setLevel(level);
-	return amplifier.next(input.value);
+	return amplifier.next(input.getVoltage());
 }
 
 struct VCMWidget : DisableOutputLimitModuleWidget {

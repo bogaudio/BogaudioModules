@@ -5,7 +5,7 @@ void Sums::process(const ProcessArgs& args) {
 	float a = inputs[A_INPUT].getVoltage();
 	float b = inputs[B_INPUT].getVoltage();
 	if (_disableOutputLimit) {
-		outputs[SUM_OUTPUT].value = a + b,
+		outputs[SUM_OUTPUT].setVoltage(a + b);
 		outputs[DIFFERENCE_OUTPUT].setVoltage(a - b);
 		outputs[MAX_OUTPUT].setVoltage(std::max(a, b));
 		outputs[MIN_OUTPUT].setVoltage(std::min(a, b));

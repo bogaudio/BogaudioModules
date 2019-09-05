@@ -10,10 +10,10 @@ void ShaperCore::reset() {
 
 void ShaperCore::step() {
 	bool complete = false;
-	bool slow = _speedParam.value <= 0.0;
+	bool slow = _speedParam.getValue() <= 0.0;
 	if (
-		_trigger.process(_triggerParam.value + _triggerInput.value) ||
-		(_firstStep && _triggerOnLoad && _shouldTriggerOnLoad && _loopParam.value <= 0.0)
+		_trigger.process(_triggerParam.getValue() + _triggerInput.getVoltage()) ||
+		(_firstStep && _triggerOnLoad && _shouldTriggerOnLoad && _loopParam.getValue() <= 0.0)
 	) {
 		_stage = ATTACK_STAGE;
 		_stageProgress = 0.0;
@@ -47,7 +47,7 @@ void ShaperCore::step() {
 			case OFF_STAGE: {
 				if (stepStage(_offParam, _offInput, slow)) {
 					complete = true;
-					if (_loopParam.value <= 0.0 || _trigger.isHigh()) {
+					if (_loopParam.getValue() <= 0.0 || _trigger.isHigh()) {
 						_stage = ATTACK_STAGE;
 						_stageProgress = 0.0;
 					}
@@ -83,17 +83,17 @@ void ShaperCore::step() {
 	}
 
 	float signalLevel = levelParam(_signalParam, _signalCVInput);
-	_signalOutput.value = signalLevel * envelope * _signalInput.getNormalVoltage(0.0);
+	_signalOutput.setVoltage(signalLevel * envelope * _signalInput.getNormalVoltage(0.0));
 
 	float envLevel = levelParam(_envParam, _envInput);
 	float envOutput = clamp(envLevel * envelope, 0.0f, 10.0f);
-	_envOutput.value = envOutput;
-	_invOutput.value = 10.0 - envOutput;
+	_envOutput.setVoltage(envOutput);
+	_invOutput.setVoltage(10.0 - envOutput);
 
 	if (complete) {
 		_triggerOuptutPulseGen.trigger(0.001);
 	}
-	_triggerOutput.value = _triggerOuptutPulseGen.process(APP->engine->getSampleTime()) ? 5.0 : 0.0;
+	_triggerOutput.setVoltage(_triggerOuptutPulseGen.process(APP->engine->getSampleTime()) ? 5.0 : 0.0);
 
 	if (_attackOutput) {
 		_attackOutput->value = _stage == ATTACK_STAGE ? 5.0 : 0.0;

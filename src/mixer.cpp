@@ -18,30 +18,30 @@ void MixerChannel::next(bool stereo, bool solo) {
 		return;
 	}
 
-	float mute = _muteParam.value;
+	float mute = _muteParam.getValue();
 	if (_muteInput) {
-		mute += clamp(_muteInput->value, 0.0f, 10.0f);
+		mute += clamp(_muteInput->getVoltage(), 0.0f, 10.0f);
 	}
 	bool muted = solo ? mute < 2.0f : mute > 0.5f;
 	if (muted) {
 		_amplifier.setLevel(_levelSL.next(minDecibels));
 	}
 	else {
-		float level = clamp(_levelParam.value, 0.0f, 1.0f);
+		float level = clamp(_levelParam.getValue(), 0.0f, 1.0f);
 		if (_levelInput.isConnected()) {
-			level *= clamp(_levelInput.value / 10.0f, 0.0f, 1.0f);
+			level *= clamp(_levelInput.getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
 		level *= maxDecibels - minDecibels;
 		level += minDecibels;
 		_amplifier.setLevel(_levelSL.next(level));
 	}
 
-	out = _amplifier.next(_inInput.value);
+	out = _amplifier.next(_inInput.getVoltage());
 	rms = _rms.next(out / 5.0f);
 	if (stereo) {
-		float pan = clamp(_panParam.value, -1.0f, 1.0f);
+		float pan = clamp(_panParam.getValue(), -1.0f, 1.0f);
 		if (_panInput.isConnected()) {
-			pan *= clamp(_panInput.value / 5.0f, -1.0f, 1.0f);
+			pan *= clamp(_panInput.getVoltage() / 5.0f, -1.0f, 1.0f);
 		}
 		_panner.setPan(_panSL.next(pan));
 		_panner.next(out, left, right);

@@ -41,7 +41,7 @@ void Slew::process(const ProcessArgs& args) {
 }
 
 float Slew::time(Param& param, Input& input) {
-	float time = param.value;
+	float time = param.getValue();
 	if (input.isConnected()) {
 		time *= clamp(input.getVoltage() / 10.0f, 0.0f, 1.0f);
 	}

@@ -20,19 +20,19 @@ void VCA::process(const ProcessArgs& args) {
 
 void VCA::channelStep(Input& input, Output& output, Param& knob, Input& cv, Amplifier& amplifier, bogaudio::dsp::SlewLimiter& levelSL, bool linear) {
 	if (input.isConnected() && output.isConnected()) {
-		float level = knob.value;
+		float level = knob.getValue();
 		if (cv.isConnected()) {
 			level *= clamp(cv.getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
 		level = levelSL.next(level);
 		if (linear) {
-			output.setVoltage(level * input.value);
+			output.setVoltage(level * input.getVoltage());
 		}
 		else {
 			level = 1.0f - level;
 			level *= Amplifier::minDecibels;
 			amplifier.setLevel(level);
-			output.setVoltage(amplifier.next(input.value));
+			output.setVoltage(amplifier.next(input.getVoltage()));
 		}
 	}
 }

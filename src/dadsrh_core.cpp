@@ -15,12 +15,12 @@ void DADSRHCore::step() {
 	const float shapeExponent = 2.0;
 	const float shapeInverseExponent = 0.5;
 
-	bool slow = _speedParam.value <= 0.5;
+	bool slow = _speedParam.getValue() <= 0.5;
 	if (
-		_trigger.process(_triggerParam.value + _triggerInput.value) ||
-		(_firstStep && _triggerOnLoad && _shouldTriggerOnLoad && _loopParam.value < 0.5 && _modeParam.value < 0.5)
+		_trigger.process(_triggerParam.getValue() + _triggerInput.getVoltage()) ||
+		(_firstStep && _triggerOnLoad && _shouldTriggerOnLoad && _loopParam.getValue() < 0.5 && _modeParam.getValue() < 0.5)
 	) {
-		if (_stage == STOPPED_STAGE || _retriggerParam.value <= 0.5) {
+		if (_stage == STOPPED_STAGE || _retriggerParam.getValue() <= 0.5) {
 			_stage = DELAY_STAGE;
 			_holdProgress = _stageProgress = _envelope = 0.0;
 		}
@@ -46,7 +46,7 @@ void DADSRHCore::step() {
 				case SUSTAIN_STAGE:
 				case RELEASE_STAGE: {
 					_stage = ATTACK_STAGE;
-					switch ((int)_attackShapeParam.value) {
+					switch ((int)_attackShapeParam.getValue()) {
 						case SHAPE2: {
 							_stageProgress = _envelope;
 							break;
@@ -82,7 +82,7 @@ void DADSRHCore::step() {
 			case ATTACK_STAGE:
 			case DECAY_STAGE:
 			case SUSTAIN_STAGE: {
-				bool gateMode = _modeParam.value > 0.5;
+				bool gateMode = _modeParam.getValue() > 0.5;
 				bool holdComplete = _holdProgress >= 1.0;
 				if (!holdComplete) {
 					// run the hold accumulation even if we're not in hold mode, in case we switch mid-cycle.
@@ -117,7 +117,7 @@ void DADSRHCore::step() {
 
 		case ATTACK_STAGE: {
 			_stageProgress += stepAmount(_attackParam, _attackInput, slow);
-			switch ((int)_attackShapeParam.value) {
+			switch ((int)_attackShapeParam.getValue()) {
 				case SHAPE2: {
 					_envelope = _stageProgress;
 					break;
@@ -141,7 +141,7 @@ void DADSRHCore::step() {
 		case DECAY_STAGE: {
 			float sustainLevel = knobAmount(_sustainParam, _sustainInput);
 			_stageProgress += stepAmount(_decayParam, _decayInput, slow);
-			switch ((int)_decayShapeParam.value) {
+			switch ((int)_decayShapeParam.getValue()) {
 				case SHAPE2: {
 					_envelope = 1.0 - _stageProgress;
 					break;
@@ -170,7 +170,7 @@ void DADSRHCore::step() {
 
 		case RELEASE_STAGE: {
 			_stageProgress += stepAmount(_releaseParam, _releaseInput, slow);
-			switch ((int)_releaseShapeParam.value) {
+			switch ((int)_releaseShapeParam.getValue()) {
 				case SHAPE2: {
 					_envelope = 1.0 - _stageProgress;
 					break;
@@ -188,7 +188,7 @@ void DADSRHCore::step() {
 			if (_envelope <= 0.001) {
 				complete = true;
 				_envelope = 0.0;
-				if (_modeParam.value < 0.5 && (_loopParam.value <= 0.5 || _trigger.isHigh())) {
+				if (_modeParam.getValue() < 0.5 && (_loopParam.getValue() <= 0.5 || _trigger.isHigh())) {
 					_stage = DELAY_STAGE;
 					_holdProgress = _stageProgress = 0.0;
 				}
@@ -201,13 +201,13 @@ void DADSRHCore::step() {
 	}
 
 	float env = _envelope * 10.0;
-	_envOutput.value = env;
-	_invOutput.value = 10.0 - env;
+	_envOutput.setVoltage(env);
+	_invOutput.setVoltage(10.0 - env);
 
 	if (complete) {
 		_triggerOuptutPulseGen.trigger(0.001);
 	}
-	_triggerOutput.value = _triggerOuptutPulseGen.process(APP->engine->getSampleTime()) ? 5.0 : 0.0;
+	_triggerOutput.setVoltage(_triggerOuptutPulseGen.process(APP->engine->getSampleTime()) ? 5.0 : 0.0);
 
 	if (_delayOutput) {
 		_delayOutput->value = _stage == DELAY_STAGE ? 5.0 : 0.0;

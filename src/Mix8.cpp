@@ -87,7 +87,8 @@ void Mix8::process(const ProcessArgs& args) {
 		outputs[R_OUTPUT].setVoltage(right);
 	}
 	else {
-		outputs[L_OUTPUT].setVoltage(outputs[R_OUTPUT].value = mono);
+		outputs[L_OUTPUT].setVoltage(mono);
+		outputs[R_OUTPUT].setVoltage(mono);
 	}
 }
 

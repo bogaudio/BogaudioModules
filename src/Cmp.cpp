@@ -132,14 +132,14 @@ void Cmp::stepChannel(
 	switch (state) {
 		case LOW:
 		case LAG_HIGH: {
-			highOutput.value = lowValue;
-			lowOutput.value = highValue;
+			highOutput.setVoltage(lowValue);
+			lowOutput.setVoltage(highValue);
 			break;
 		}
 		case HIGH:
 		case LAG_LOW: {
-			highOutput.value = highValue;
-			lowOutput.value = lowValue;
+			highOutput.setVoltage(highValue);
+			lowOutput.setVoltage(lowValue);
 			break;
 		}
 	}

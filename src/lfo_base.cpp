@@ -19,7 +19,7 @@ float LFOBase::getPitchOffset() {
 }
 
 void LFOBase::setFrequency(Param& frequency, Input& pitch, Phasor& phasor) {
-	float f = frequency.value;
+	float f = frequency.getValue();
 	if (pitch.isConnected()) {
 		f += pitch.getVoltage();
 	}

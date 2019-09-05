@@ -17,8 +17,9 @@ void VCAmp::process(const ProcessArgs& args) {
 		level *= maxDecibels - minDecibels;
 		level += minDecibels;
 		_amplifier.setLevel(_levelSL.next(level));
-		outputs[OUT_OUTPUT].setVoltage(_saturator.next(_amplifier.next(inputs[IN_INPUT].getVoltage())));
-		_rmsLevel = _rms.next(outputs[OUT_OUTPUT].value / 5.0f);
+		float out = _saturator.next(_amplifier.next(inputs[IN_INPUT].getVoltage()));
+		outputs[OUT_OUTPUT].setVoltage(out);
+		_rmsLevel = _rms.next(out / 5.0f);
 	}
 	else {
 		_rmsLevel = _rms.next(0.0f);
