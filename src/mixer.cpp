@@ -36,7 +36,7 @@ void MixerChannel::next(bool stereo, bool solo) {
 		_amplifier.setLevel(_levelSL.next(level));
 	}
 
-	out = _amplifier.next(_inInput.getVoltage());
+	out = _amplifier.next(_inInput.getVoltageSum());
 	rms = _rms.next(out / 5.0f);
 	if (stereo) {
 		float pan = clamp(_panParam.getValue(), -1.0f, 1.0f);

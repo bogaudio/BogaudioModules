@@ -63,7 +63,7 @@ void VCO::process(const ProcessArgs& args) {
 	float frequency = _baseHz;
 	Phasor::phase_delta_t phaseOffset = 0;
 	if (inputs[FM_INPUT].isConnected() && _fmDepth > 0.01f) {
-		float fm = inputs[FM_INPUT].getVoltage() * _fmDepth;
+		float fm = inputs[FM_INPUT].getVoltageSum() * _fmDepth;
 		if (_fmLinearMode) {
 			phaseOffset = Phasor::radiansToPhase(2.0f * fm);
 		}

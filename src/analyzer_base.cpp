@@ -202,7 +202,7 @@ void AnalyzerCore::stepChannel(int channelIndex, Input& input) {
 				_currentOutBufs[channelIndex]
 			);
 		}
-		_channels[channelIndex]->step(input.getVoltage());
+		_channels[channelIndex]->step(input.getVoltageSum());
 	}
 	else if (_channels[channelIndex]) {
 		std::lock_guard<std::mutex> lock(_channelsMutex);

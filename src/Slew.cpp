@@ -23,7 +23,7 @@ void Slew::process(const ProcessArgs& args) {
 		_fall.setParams(APP->engine->getSampleRate(), fallTime, fallShape);
 	}
 
-	float sample = inputs[IN_INPUT].getVoltage();
+	float sample = inputs[IN_INPUT].getVoltageSum();
 	if (sample > _last) {
 		if (!_rising) {
 			_rising = true;

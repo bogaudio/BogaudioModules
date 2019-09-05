@@ -32,7 +32,7 @@ void OneEight::process(const ProcessArgs& args) {
 	int step = _step + roundf(_select);
 	step = step % 8;
 
-	float in = inputs[IN_INPUT].getVoltage() + !inputs[IN_INPUT].isConnected() * 10.0f;
+	float in = inputs[IN_INPUT].getVoltageSum() + !inputs[IN_INPUT].isConnected() * 10.0f;
 	for (int i = 0; i < 8; ++i) {
 		outputs[OUT1_OUTPUT + i].setVoltage((step == i) * in);
 		lights[OUT1_LIGHT + i].value = step == i;

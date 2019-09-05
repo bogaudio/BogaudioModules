@@ -18,7 +18,7 @@ void Follow::process(const ProcessArgs& args) {
 			scale *= clamp(inputs[SCALE_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
 		}
 
-		outputs[OUT_OUTPUT].setVoltage(scale * 2.0f * _rms.next(inputs[IN_INPUT].getVoltage()));
+		outputs[OUT_OUTPUT].setVoltage(scale * 2.0f * _rms.next(inputs[IN_INPUT].getVoltageSum()));
 	}
 }
 

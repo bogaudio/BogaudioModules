@@ -42,8 +42,8 @@ void Lmtr::process(const ProcessArgs& args) {
 		_softKnee = params[KNEE_PARAM].getValue() > 0.5f;
 	}
 
-	float leftInput = inputs[LEFT_INPUT].getVoltage();
-	float rightInput = inputs[RIGHT_INPUT].getVoltage();
+	float leftInput = inputs[LEFT_INPUT].getVoltageSum();
+	float rightInput = inputs[RIGHT_INPUT].getVoltageSum();
 	float env = _detector.next(leftInput + rightInput);
 	if (env > _lastEnv) {
 		env = _attackSL.next(env, _lastEnv);

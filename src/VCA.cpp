@@ -26,13 +26,13 @@ void VCA::channelStep(Input& input, Output& output, Param& knob, Input& cv, Ampl
 		}
 		level = levelSL.next(level);
 		if (linear) {
-			output.setVoltage(level * input.getVoltage());
+			output.setVoltage(level * input.getVoltageSum());
 		}
 		else {
 			level = 1.0f - level;
 			level *= Amplifier::minDecibels;
 			amplifier.setLevel(level);
-			output.setVoltage(amplifier.next(input.getVoltage()));
+			output.setVoltage(amplifier.next(input.getVoltageSum()));
 		}
 	}
 }

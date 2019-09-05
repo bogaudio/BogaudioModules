@@ -40,7 +40,7 @@ void Mute8::stepChannel(int i, bool solo) {
 		lights[MUTE1_LIGHT + i].value = 0.0f;
 		_amplifiers[i].setLevel(_slewLimiters[i].next(maxDecibels));
 	}
-	outputs[OUTPUT1_OUTPUT + i].setVoltage(_amplifiers[i].next(inputs[INPUT1_INPUT + i].isConnected() ? inputs[INPUT1_INPUT + i].getVoltage() : 5.0f));
+	outputs[OUTPUT1_OUTPUT + i].setVoltage(_amplifiers[i].next(inputs[INPUT1_INPUT + i].isConnected() ? inputs[INPUT1_INPUT + i].getVoltageSum() : 5.0f));
 }
 
 struct Mute8Widget : ModuleWidget {

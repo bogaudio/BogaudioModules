@@ -7,7 +7,7 @@ void Blank3::onSampleRateChange() {
 
 void Blank3::process(const ProcessArgs& args) {
 	if (inputs[IN_INPUT].isConnected()) {
-		_level = _rms.next(inputs[IN_INPUT].getVoltage()) / 5.0f;
+		_level = _rms.next(inputs[IN_INPUT].getVoltageSum()) / 5.0f;
 	}
 	else {
 		_level = -1.0f;

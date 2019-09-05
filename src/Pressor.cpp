@@ -89,11 +89,11 @@ void Pressor::process(const ProcessArgs& args) {
 		_softKnee = params[KNEE_PARAM].getValue() > 0.5f;
 	}
 
-	float leftInput = inputs[LEFT_INPUT].getVoltage() * _inLevel;
-	float rightInput = inputs[RIGHT_INPUT].getVoltage() * _inLevel;
+	float leftInput = inputs[LEFT_INPUT].getVoltageSum() * _inLevel;
+	float rightInput = inputs[RIGHT_INPUT].getVoltageSum() * _inLevel;
 	float env = leftInput + rightInput;
 	if (inputs[SIDECHAIN_INPUT].isConnected()) {
-		env = _detectorMix.next(env, inputs[SIDECHAIN_INPUT].getVoltage());
+		env = _detectorMix.next(env, inputs[SIDECHAIN_INPUT].getVoltageSum());
 	}
 	if (_rmsDetector) {
 		env = _detectorRMS.next(env);

@@ -70,7 +70,8 @@ void Analyzer::process(const ProcessArgs& args) {
 
 	for (int i = 0; i < 4; ++i) {
 		_core.stepChannel(i, inputs[SIGNALA_INPUT + i]);
-		outputs[SIGNALA_OUTPUT + i].setVoltage(inputs[SIGNALA_INPUT + i].getVoltage());
+		outputs[SIGNALA_OUTPUT + i].setChannels(inputs[SIGNALA_INPUT + i].getChannels());
+		outputs[SIGNALA_OUTPUT + i].writeVoltages(inputs[SIGNALA_INPUT + i].getVoltages());
 	}
 
 	lights[QUALITY_ULTRA_LIGHT].value = _core._quality == AnalyzerCore::QUALITY_ULTRA;

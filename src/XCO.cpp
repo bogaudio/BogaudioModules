@@ -97,7 +97,7 @@ void XCO::process(const ProcessArgs& args) {
 	Phasor::phase_delta_t phaseOffset = 0;
 	float fmd = _fmDepthSL.next(_fmDepth);
 	if (inputs[FM_INPUT].isConnected() && fmd > 0.01f) {
-		float fm = inputs[FM_INPUT].getVoltage() * fmd;
+		float fm = inputs[FM_INPUT].getVoltageSum() * fmd;
 		if (_fmLinearMode) {
 			phaseOffset = Phasor::radiansToPhase(2.0f * fm);
 		}

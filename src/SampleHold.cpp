@@ -74,7 +74,7 @@ void SampleHold::processChannel(
 	bool triggered = trigger.process(triggerParam.getValue() + triggerInput.getVoltage());
 	if (trackParam.getValue() > 0.5f ? trigger.isHigh() : triggered) {
 		if (in.isConnected()) {
-			value = in.getVoltage();
+			value = in.getVoltageSum();
 		}
 		else {
 			value = (noise() + _rangeOffset) * _rangeScale;

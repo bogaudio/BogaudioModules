@@ -18,12 +18,12 @@ void Cmp::process(const ProcessArgs& args) {
 
 	float a = params[A_PARAM].getValue() * 10.0f;
 	if (inputs[A_INPUT].isConnected()) {
-		a = clamp(a + inputs[A_INPUT].getVoltage(), -12.0f, 12.0f);
+		a = clamp(a + inputs[A_INPUT].getVoltageSum(), -12.0f, 12.0f);
 	}
 
 	float b = params[B_PARAM].getValue() * 10.0f;
 	if (inputs[B_INPUT].isConnected()) {
-		b = clamp(b + inputs[B_INPUT].getVoltage(), -12.0f, 12.0f);
+		b = clamp(b + inputs[B_INPUT].getVoltageSum(), -12.0f, 12.0f);
 	}
 
 	float window = params[WINDOW_PARAM].getValue();

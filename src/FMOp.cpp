@@ -176,7 +176,7 @@ void FMOp::process(const ProcessArgs& args) {
 		if (_depthEnvelopeOn) {
 			depth *= envelope;
 		}
-		offset += inputs[FM_INPUT].getVoltage() * depth * 2.0f;
+		offset += inputs[FM_INPUT].getVoltageSum() * depth * 2.0f;
 	}
 
 	float sample = 0.0f;

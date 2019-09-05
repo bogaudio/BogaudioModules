@@ -2,13 +2,13 @@
 #include "Mult.hpp"
 
 void Mult::process(const ProcessArgs& args) {
-	float out = inputs[INA_INPUT].getVoltage();
+	float out = inputs[INA_INPUT].getVoltageSum();
 	outputs[OUTA1_OUTPUT].setVoltage(out);
 	outputs[OUTA2_OUTPUT].setVoltage(out);
 	outputs[OUTA3_OUTPUT].setVoltage(out);
 
 	if (inputs[INB_INPUT].isConnected()) {
-		out = inputs[INB_INPUT].getVoltage();
+		out = inputs[INB_INPUT].getVoltageSum();
 	}
 	outputs[OUTB1_OUTPUT].setVoltage(out);
 	outputs[OUTB2_OUTPUT].setVoltage(out);

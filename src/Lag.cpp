@@ -46,7 +46,7 @@ void Lag::process(const ProcessArgs& args) {
 		_slew.setParams(APP->engine->getSampleRate(), time, shape);
 	}
 
-	outputs[OUT_OUTPUT].setVoltage(_slew.next(inputs[IN_INPUT].getVoltage()));
+	outputs[OUT_OUTPUT].setVoltage(_slew.next(inputs[IN_INPUT].getVoltageSum()));
 }
 
 struct LagWidget : ModuleWidget {

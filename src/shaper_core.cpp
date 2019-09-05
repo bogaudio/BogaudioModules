@@ -83,7 +83,7 @@ void ShaperCore::step() {
 	}
 
 	float signalLevel = levelParam(_signalParam, _signalCVInput);
-	_signalOutput.setVoltage(signalLevel * envelope * _signalInput.getNormalVoltage(0.0));
+	_signalOutput.setVoltage(signalLevel * envelope * _signalInput.getVoltageSum());
 
 	float envLevel = levelParam(_envParam, _envInput);
 	float envOutput = clamp(envLevel * envelope, 0.0f, 10.0f);
@@ -96,16 +96,16 @@ void ShaperCore::step() {
 	_triggerOutput.setVoltage(_triggerOuptutPulseGen.process(APP->engine->getSampleTime()) ? 5.0 : 0.0);
 
 	if (_attackOutput) {
-		_attackOutput->value = _stage == ATTACK_STAGE ? 5.0 : 0.0;
+		_attackOutput->value.setVoltage(_stage == ATTACK_STAGE ? 5.0 : 0.0);
 	}
 	if (_onOutput) {
-		_onOutput->value = _stage == ON_STAGE ? 5.0 : 0.0;
+		_onOutput->value.setVoltage(_stage == ON_STAGE ? 5.0 : 0.0);
 	}
 	if (_decayOutput) {
-		_decayOutput->value = _stage == DECAY_STAGE ? 5.0 : 0.0;
+		_decayOutput->value.setVoltage(_stage == DECAY_STAGE ? 5.0 : 0.0);
 	}
 	if (_offOutput) {
-		_offOutput->value = _stage == OFF_STAGE ? 5.0 : 0.0;
+		_offOutput->value.setVoltage(_stage == OFF_STAGE ? 5.0 : 0.0);
 	}
 
 	_attackLight.value = _stage == ATTACK_STAGE;

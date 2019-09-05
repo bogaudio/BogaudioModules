@@ -45,7 +45,7 @@ void UMix::process(const ProcessArgs& args) {
 		int active = 0;
 		for (int i = 0; i < 8; ++i) {
 			if (inputs[IN1_INPUT + i].isConnected()) {
-				out += inputs[IN1_INPUT + i].getVoltage();
+				out += inputs[IN1_INPUT + i].getVoltageSum();
 				++active;
 			}
 		}

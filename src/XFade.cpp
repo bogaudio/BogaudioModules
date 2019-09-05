@@ -33,7 +33,7 @@ void XFade::process(const ProcessArgs& args) {
 		_mixer.setParams(mix, curveIn, linear);
 	}
 
-	outputs[OUT_OUTPUT].setVoltage(_mixer.next(inputs[A_INPUT].getVoltage(), inputs[B_INPUT].getVoltage()));
+	outputs[OUT_OUTPUT].setVoltage(_mixer.next(inputs[A_INPUT].getVoltageSum(), inputs[B_INPUT].getVoltageSum()));
 }
 
 struct XFadeWidget : ModuleWidget {

@@ -20,12 +20,18 @@ void bogaudio::Switch::process(const ProcessArgs& args) {
 	}
 
 	if (_latchedHigh || _trigger.isHigh()) {
-		outputs[OUT1_OUTPUT].setVoltage(inputs[HIGH1_INPUT].getVoltage());
-		outputs[OUT2_OUTPUT].setVoltage(inputs[HIGH2_INPUT].getVoltage());
+		outputs[OUT1_OUTPUT].setChannels(inputs[HIGH1_INPUT].getChannels());
+		outputs[OUT1_OUTPUT].writeVoltages(inputs[HIGH1_INPUT].getVoltages());
+
+		outputs[OUT2_OUTPUT].setChannels(inputs[HIGH2_INPUT].getChannels());
+		outputs[OUT2_OUTPUT].writeVoltages(inputs[HIGH2_INPUT].getVoltages());
 	}
 	else {
-		outputs[OUT1_OUTPUT].setVoltage(inputs[LOW1_INPUT].getVoltage());
-		outputs[OUT2_OUTPUT].setVoltage(inputs[LOW2_INPUT].getVoltage());
+		outputs[OUT1_OUTPUT].setChannels(inputs[LOW1_INPUT].getChannels());
+		outputs[OUT1_OUTPUT].writeVoltages(inputs[LOW1_INPUT].getVoltages());
+
+		outputs[OUT2_OUTPUT].setChannels(inputs[LOW2_INPUT].getChannels());
+		outputs[OUT2_OUTPUT].writeVoltages(inputs[LOW2_INPUT].getVoltages());
 	}
 }
 

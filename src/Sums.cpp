@@ -2,8 +2,8 @@
 #include "Sums.hpp"
 
 void Sums::process(const ProcessArgs& args) {
-	float a = inputs[A_INPUT].getVoltage();
-	float b = inputs[B_INPUT].getVoltage();
+	float a = inputs[A_INPUT].getVoltageSum();
+	float b = inputs[B_INPUT].getVoltageSum();
 	if (_disableOutputLimit) {
 		outputs[SUM_OUTPUT].setVoltage(a + b);
 		outputs[DIFFERENCE_OUTPUT].setVoltage(a - b);

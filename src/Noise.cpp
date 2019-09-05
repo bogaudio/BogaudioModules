@@ -20,7 +20,7 @@ void Noise::process(const ProcessArgs& args) {
 
 	float in = 0.0;
 	if (inputs[ABS_INPUT].isConnected()) {
-		in = inputs[ABS_INPUT].getVoltage();
+		in = inputs[ABS_INPUT].getVoltageSum();
 		if (in < 0.0) {
 			in = -in;
 		}

@@ -25,9 +25,9 @@ void Pan::process(const ProcessArgs& args) {
 	_panner2.setPan(_slew2.next(pan));
 
 	float l1 = 0.0f, r1 = 0.0f;
-	_panner1.next(inputs[IN1_INPUT].getVoltage(), l1, r1);
+	_panner1.next(inputs[IN1_INPUT].getVoltageSum(), l1, r1);
 	float l2 = 0.0f, r2 = 0.0f;
-	_panner2.next(inputs[IN2_INPUT].getVoltage(), l2, r2);
+	_panner2.next(inputs[IN2_INPUT].getVoltageSum(), l2, r2);
 	outputs[L_OUTPUT].setVoltage(_saturatorLeft.next(l1 + l2));
 	outputs[R_OUTPUT].setVoltage(_saturatorRight.next(r1 + r2));
 }

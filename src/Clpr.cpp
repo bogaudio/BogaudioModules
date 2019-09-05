@@ -34,8 +34,8 @@ void Clpr::process(const ProcessArgs& args) {
 		_softKnee = params[KNEE_PARAM].getValue() > 0.5f;
 	}
 
-	float leftInput = inputs[LEFT_INPUT].getVoltage();
-	float rightInput = inputs[RIGHT_INPUT].getVoltage();
+	float leftInput = inputs[LEFT_INPUT].getVoltageSum();
+	float rightInput = inputs[RIGHT_INPUT].getVoltageSum();
 	float env = fabsf(leftInput + rightInput);
 	float detectorDb = amplitudeToDecibels(env / 5.0f);
 	float compressionDb = _compressor.compressionDb(detectorDb, _thresholdDb, Compressor::maxEffectiveRatio, _softKnee);

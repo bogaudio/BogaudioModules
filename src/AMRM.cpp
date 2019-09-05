@@ -17,7 +17,7 @@ void AMRM::process(const ProcessArgs& args) {
 		depth = clamp(depth + inputs[DRYWET_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 	}
 
-	float modulator = inputs[MODULATOR_INPUT].getVoltage();
+	float modulator = inputs[MODULATOR_INPUT].getVoltageSum();
 	if (rectify < 1.0f) {
 		rectify *= -5.0f;
 		if (modulator < rectify) {
@@ -28,7 +28,7 @@ void AMRM::process(const ProcessArgs& args) {
 
 	modulator *= depth;
 	modulator += (1.0f - depth) * 5.0f;
-	outputs[OUT_OUTPUT].setVoltage(_saturator.next(modulator * inputs[CARRIER_INPUT].getVoltage() * 0.2f));
+	outputs[OUT_OUTPUT].setVoltage(_saturator.next(modulator * inputs[CARRIER_INPUT].getVoltageSum() * 0.2f));
 }
 
 struct AMRMWidget : ModuleWidget {

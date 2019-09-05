@@ -34,7 +34,7 @@ void EightOne::process(const ProcessArgs& args) {
 
 	float out = 0.0f;
 	for (int i = 0; i < 8; ++i) {
-		out += inputs[IN1_INPUT + i].getVoltage() * (step == i);
+		out += inputs[IN1_INPUT + i].getVoltageSum() * (step == i);
 		lights[IN1_LIGHT + i].value = step == i;
 	}
 	outputs[OUT_OUTPUT].setVoltage(out);

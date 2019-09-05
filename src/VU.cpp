@@ -12,10 +12,10 @@ void VU::onSampleRateChange() {
 }
 
 void VU::process(const ProcessArgs& args) {
-	float left = inputs[L_INPUT].getVoltage();
+	float left = inputs[L_INPUT].getVoltageSum();
 	float right = 0.0f;
 	if (inputs[R_INPUT].isConnected()) {
-		right = inputs[R_INPUT].getVoltage();
+		right = inputs[R_INPUT].getVoltageSum();
 	}
 	else {
 		right = left;
