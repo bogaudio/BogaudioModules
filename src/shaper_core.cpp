@@ -96,16 +96,16 @@ void ShaperCore::step() {
 	_triggerOutput.setVoltage(_triggerOuptutPulseGen.process(APP->engine->getSampleTime()) ? 5.0 : 0.0);
 
 	if (_attackOutput) {
-		_attackOutput->value.setVoltage(_stage == ATTACK_STAGE ? 5.0 : 0.0);
+		_attackOutput->setVoltage(_stage == ATTACK_STAGE ? 5.0 : 0.0);
 	}
 	if (_onOutput) {
-		_onOutput->value.setVoltage(_stage == ON_STAGE ? 5.0 : 0.0);
+		_onOutput->setVoltage(_stage == ON_STAGE ? 5.0 : 0.0);
 	}
 	if (_decayOutput) {
-		_decayOutput->value.setVoltage(_stage == DECAY_STAGE ? 5.0 : 0.0);
+		_decayOutput->setVoltage(_stage == DECAY_STAGE ? 5.0 : 0.0);
 	}
 	if (_offOutput) {
-		_offOutput->value.setVoltage(_stage == OFF_STAGE ? 5.0 : 0.0);
+		_offOutput->setVoltage(_stage == OFF_STAGE ? 5.0 : 0.0);
 	}
 
 	_attackLight.value = _stage == ATTACK_STAGE;
