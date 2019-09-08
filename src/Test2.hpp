@@ -25,7 +25,7 @@ using namespace bogaudio::dsp;
 
 namespace bogaudio {
 
-struct Test2 : Module {
+struct Test2 : BGModule {
 	enum ParamsIds {
 		PARAM1A_PARAM,
 		PARAM2A_PARAM,

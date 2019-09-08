@@ -1,40 +1,35 @@
 
 #include "Walk.hpp"
 
-void Walk::onReset() {
+void Walk::reset() {
 	_jumpTrigger.reset();
-	_modulationStep = modulationSteps;
 }
 
-void Walk::onSampleRateChange() {
-	_modulationStep = modulationSteps;
+void Walk::sampleRateChange() {
 	_slew.setParams(APP->engine->getSampleRate(), 100.0f, 10.0f);
 }
 
-void Walk::process(const ProcessArgs& args) {
-	++_modulationStep;
-	if (_modulationStep >= modulationSteps) {
-		_modulationStep = 0;
-
-		float rate = params[RATE_PARAM].getValue();
-		if (inputs[RATE_INPUT].isConnected()) {
-			rate *= clamp(inputs[RATE_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-		}
-		rate = 0.2f * powf(rate, 5.0f);
-		_walk.setParams(APP->engine->getSampleRate(), rate);
-
-		_offset = params[OFFSET_PARAM].getValue();
-		if (inputs[OFFSET_INPUT].isConnected()) {
-			_offset *= clamp(inputs[OFFSET_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
-		}
-		_offset *= 5.0f;
-
-		_scale = params[SCALE_PARAM].getValue();
-		if (inputs[SCALE_INPUT].isConnected()) {
-			_scale *= clamp(inputs[SCALE_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-		}
+void Walk::modulate() {
+	float rate = params[RATE_PARAM].getValue();
+	if (inputs[RATE_INPUT].isConnected()) {
+		rate *= clamp(inputs[RATE_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 	}
+	rate = 0.2f * powf(rate, 5.0f);
+	_walk.setParams(APP->engine->getSampleRate(), rate);
 
+	_offset = params[OFFSET_PARAM].getValue();
+	if (inputs[OFFSET_INPUT].isConnected()) {
+		_offset *= clamp(inputs[OFFSET_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
+	}
+	_offset *= 5.0f;
+
+	_scale = params[SCALE_PARAM].getValue();
+	if (inputs[SCALE_INPUT].isConnected()) {
+		_scale *= clamp(inputs[SCALE_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+	}
+}
+
+void Walk::processIfActive(const ProcessArgs& args) {
 	if (_jumpTrigger.process(inputs[JUMP_INPUT].getVoltage())) {
 		_walk.jump();
 	}

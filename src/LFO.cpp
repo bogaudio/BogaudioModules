@@ -1,65 +1,62 @@
 
 #include "LFO.hpp"
 
-void LFO::onReset() {
+void LFO::reset() {
 	_resetTrigger.reset();
-	_modulationStep = modulationSteps;
 	_sampleStep = _phasor._sampleRate;
 }
 
-void LFO::onSampleRateChange() {
+void LFO::sampleRateChange() {
 	_phasor.setSampleRate(APP->engine->getSampleRate());
-	_modulationStep = modulationSteps;
 	_sampleStep = _phasor._sampleRate;
 }
 
-void LFO::process(const ProcessArgs& args) {
-	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].getValue() > 0.5f;
-
-	if (!(
+bool LFO::active() {
+	return (
 		outputs[SINE_OUTPUT].isConnected() ||
 		outputs[TRIANGLE_OUTPUT].isConnected() ||
 		outputs[RAMP_UP_OUTPUT].isConnected() ||
 		outputs[RAMP_DOWN_OUTPUT].isConnected() ||
 		outputs[SQUARE_OUTPUT].isConnected()
-	)) {
-		return;
+	);
+}
+
+void LFO::modulate() {
+	setFrequency(params[FREQUENCY_PARAM], inputs[PITCH_INPUT], _phasor);
+
+	float pw = params[PW_PARAM].getValue();
+	if (inputs[PW_INPUT].isConnected()) {
+		pw *= clamp(inputs[PW_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
 	}
+	pw *= 1.0f - 2.0f * _square.minPulseWidth;
+	pw *= 0.5f;
+	pw += 0.5f;
+	_square.setPulseWidth(pw);
 
-	++_modulationStep;
-	if (_modulationStep >= modulationSteps) {
-		_modulationStep = 0;
-
-		setFrequency(params[FREQUENCY_PARAM], inputs[PITCH_INPUT], _phasor);
-
-		float pw = params[PW_PARAM].getValue();
-		if (inputs[PW_INPUT].isConnected()) {
-			pw *= clamp(inputs[PW_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
-		}
-		pw *= 1.0f - 2.0f * _square.minPulseWidth;
-		pw *= 0.5f;
-		pw += 0.5f;
-		_square.setPulseWidth(pw);
-
-		float sample = params[SAMPLE_PARAM].getValue();
-		if (inputs[SAMPLE_INPUT].isConnected()) {
-			sample *= clamp(inputs[SAMPLE_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-		}
-		float maxSampleSteps = (_phasor._sampleRate / _phasor._frequency) / 4.0f;
-		_sampleSteps = clamp((int)(sample * maxSampleSteps), 1, (int)maxSampleSteps);
-
-		_offset = params[OFFSET_PARAM].getValue();
-		if (inputs[OFFSET_INPUT].isConnected()) {
-			_offset *= clamp(inputs[OFFSET_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
-		}
-		_offset *= 5.0f;
-
-		_scale = params[SCALE_PARAM].getValue();
-		if (inputs[SCALE_INPUT].isConnected()) {
-			_scale *= clamp(inputs[SCALE_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-		}
+	float sample = params[SAMPLE_PARAM].getValue();
+	if (inputs[SAMPLE_INPUT].isConnected()) {
+		sample *= clamp(inputs[SAMPLE_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 	}
+	float maxSampleSteps = (_phasor._sampleRate / _phasor._frequency) / 4.0f;
+	_sampleSteps = clamp((int)(sample * maxSampleSteps), 1, (int)maxSampleSteps);
 
+	_offset = params[OFFSET_PARAM].getValue();
+	if (inputs[OFFSET_INPUT].isConnected()) {
+		_offset *= clamp(inputs[OFFSET_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
+	}
+	_offset *= 5.0f;
+
+	_scale = params[SCALE_PARAM].getValue();
+	if (inputs[SCALE_INPUT].isConnected()) {
+		_scale *= clamp(inputs[SCALE_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+	}
+}
+
+void LFO::alwaysProcess(const ProcessArgs& args) {
+	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].getValue() > 0.5f;
+}
+
+void LFO::processIfActive(const ProcessArgs& args) {
 	if (_resetTrigger.next(inputs[RESET_INPUT].getVoltage())) {
 		_phasor.resetPhase();
 	}

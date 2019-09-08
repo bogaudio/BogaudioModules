@@ -1,34 +1,32 @@
 
 #include "ADSR.hpp"
 
-void ADSR::onReset() {
+void ADSR::reset() {
 	_gateTrigger.reset();
 	_envelope.reset();
-	_modulationStep = modulationSteps;
 }
 
-void ADSR::onSampleRateChange() {
+void ADSR::sampleRateChange() {
 	_envelope.setSampleRate(APP->engine->getSampleRate());
-	_modulationStep = modulationSteps;
 }
 
-void ADSR::process(const ProcessArgs& args) {
+bool ADSR::active() {
+	return outputs[OUT_OUTPUT].isConnected() || inputs[GATE_INPUT].isConnected();
+}
+
+void ADSR::modulate() {
+	_envelope.setAttack(powf(params[ATTACK_PARAM].getValue(), 2.0f) * 10.f);
+	_envelope.setDecay(powf(params[DECAY_PARAM].getValue(), 2.0f) * 10.f);
+	_envelope.setSustain(params[SUSTAIN_PARAM].getValue());
+	_envelope.setRelease(powf(params[RELEASE_PARAM].getValue(), 2.0f) * 10.f);
+	_envelope.setLinearShape(_linearMode);
+}
+
+void ADSR::alwaysProcess(const ProcessArgs& args) {
 	lights[LINEAR_LIGHT].value = _linearMode = params[LINEAR_PARAM].getValue() > 0.5f;
-	if (!(outputs[OUT_OUTPUT].isConnected() || inputs[GATE_INPUT].isConnected())) {
-		return;
-	}
+}
 
-	++_modulationStep;
-	if (_modulationStep >= modulationSteps) {
-		_modulationStep = 0;
-
-		_envelope.setAttack(powf(params[ATTACK_PARAM].getValue(), 2.0f) * 10.f);
-		_envelope.setDecay(powf(params[DECAY_PARAM].getValue(), 2.0f) * 10.f);
-		_envelope.setSustain(params[SUSTAIN_PARAM].getValue());
-		_envelope.setRelease(powf(params[RELEASE_PARAM].getValue(), 2.0f) * 10.f);
-		_envelope.setLinearShape(_linearMode);
-	}
-
+void ADSR::processIfActive(const ProcessArgs& args) {
 	_gateTrigger.process(inputs[GATE_INPUT].getVoltage());
 	_envelope.setGate(_gateTrigger.isHigh());
 	outputs[OUT_OUTPUT].setVoltage(_envelope.next() * 10.0f);

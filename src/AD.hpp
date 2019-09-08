@@ -10,7 +10,7 @@ extern Model* modelAD;
 
 namespace bogaudio {
 
-struct AD : Module {
+struct AD : ModulatingBGModule {
 	enum ParamsIds {
 		ATTACK_PARAM,
 		DECAY_PARAM,
@@ -40,8 +40,6 @@ struct AD : Module {
 		NUM_LIGHTS
 	};
 
-	const int modulationSteps = 100;
-	int _modulationStep = 0;
 	bool _loopMode = false;
 	bool _linearMode = false;
 	Trigger _trigger;
@@ -58,15 +56,18 @@ struct AD : Module {
 		configParam(LOOP_PARAM, 0.0f, 1.0f, 0.0f, "Loop");
 		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear");
 
-		onReset();
-		onSampleRateChange();
+		reset();
+		sampleRateChange();
 		_envelope.setSustain(0.0f);
 		_envelope.setRelease(0.0f);
 	}
 
-	void onReset() override;
-	void onSampleRateChange() override;
-	void process(const ProcessArgs& args) override;
+	void reset() override;
+	void sampleRateChange() override;
+	bool active() override;
+	void modulate() override;
+	void alwaysProcess(const ProcessArgs& args) override;
+	void processIfActive(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

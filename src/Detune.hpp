@@ -9,7 +9,7 @@ extern Model* modelDetune;
 
 namespace bogaudio {
 
-struct Detune : Module {
+struct Detune : BGModule {
 	enum ParamsIds {
 		CENTS_PARAM,
 		NUM_PARAMS

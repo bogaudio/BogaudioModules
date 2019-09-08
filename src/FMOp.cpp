@@ -37,14 +37,12 @@ bool FMOp::LevelParamQuantity::isLinear() {
 	return dynamic_cast<FMOp*>(module)->_linearLevel;
 }
 
-void FMOp::onReset() {
-	_steps = modulationSteps;
+void FMOp::reset() {
 	_envelope.reset();
 	_gateTrigger.reset();
 }
 
-void FMOp::onSampleRateChange() {
-	_steps = modulationSteps;
+void FMOp::sampleRateChange() {
 	float sampleRate = APP->engine->getSampleRate();
 	_envelope.setSampleRate(sampleRate);
 	_phasor.setSampleRate(sampleRate);
@@ -69,87 +67,84 @@ void FMOp::dataFromJson(json_t* root) {
 	}
 }
 
-void FMOp::process(const ProcessArgs& args) {
-	if (!outputs[AUDIO_OUTPUT].isConnected()) {
-		lights[ENV_TO_LEVEL_LIGHT].value = params[ENV_TO_LEVEL_PARAM].getValue() > 0.5f;
-		lights[ENV_TO_FEEDBACK_LIGHT].value = params[ENV_TO_FEEDBACK_PARAM].getValue() > 0.5f;
-		lights[ENV_TO_DEPTH_LIGHT].value = params[ENV_TO_DEPTH_PARAM].getValue() > 0.5f;
-		return;
-	}
-	lights[ENV_TO_LEVEL_LIGHT].value = _levelEnvelopeOn;
-	lights[ENV_TO_FEEDBACK_LIGHT].value = _feedbackEnvelopeOn;
-	lights[ENV_TO_DEPTH_LIGHT].value = _depthEnvelopeOn;
+bool FMOp::active() {
+	return outputs[AUDIO_OUTPUT].isConnected();
+}
 
+void FMOp::modulate() {
 	float pitchIn = 0.0f;
 	if (inputs[PITCH_INPUT].isConnected()) {
 		pitchIn = inputs[PITCH_INPUT].getVoltage();
 	}
-	float gateIn = 0.0f;
-	if (inputs[GATE_INPUT].isConnected()) {
-		gateIn = inputs[GATE_INPUT].getVoltage();
+	float ratio = params[RATIO_PARAM].getValue();
+	if (ratio < 0.0f) {
+		ratio = std::max(1.0f + ratio, 0.01f);
+	}
+	else {
+		ratio *= 9.0f;
+		ratio += 1.0f;
 	}
 
-	++_steps;
-	if (_steps >= modulationSteps) {
-		_steps = 0;
+	float frequency = pitchIn;
+	frequency += params[FINE_PARAM].getValue() / 12.0f;
+	frequency = cvToFrequency(frequency);
+	frequency *= ratio;
+	frequency = clamp(frequency, -_maxFrequency, _maxFrequency);
+	_phasor.setFrequency(frequency / (float)oversample);
 
-		float ratio = params[RATIO_PARAM].getValue();
-		if (ratio < 0.0f) {
-			ratio = std::max(1.0f + ratio, 0.01f);
+	bool levelEnvelopeOn = params[ENV_TO_LEVEL_PARAM].getValue() > 0.5f;
+	bool feedbackEnvelopeOn = params[ENV_TO_FEEDBACK_PARAM].getValue() > 0.5f;
+	bool depthEnvelopeOn = params[ENV_TO_DEPTH_PARAM].getValue() > 0.5f;
+	if (_levelEnvelopeOn != levelEnvelopeOn || _feedbackEnvelopeOn != feedbackEnvelopeOn || _depthEnvelopeOn != depthEnvelopeOn) {
+		_levelEnvelopeOn = levelEnvelopeOn;
+		_feedbackEnvelopeOn = feedbackEnvelopeOn;
+		_depthEnvelopeOn = depthEnvelopeOn;
+		bool envelopeOn = _levelEnvelopeOn || _feedbackEnvelopeOn || _depthEnvelopeOn;
+		if (envelopeOn && !_envelopeOn) {
+			_envelope.reset();
 		}
-		else {
-			ratio *= 9.0f;
-			ratio += 1.0f;
+		_envelopeOn = envelopeOn;
+	}
+	if (_envelopeOn) {
+		float sustain = params[SUSTAIN_PARAM].getValue();
+		if (inputs[SUSTAIN_INPUT].isConnected()) {
+			sustain *= clamp(inputs[SUSTAIN_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 		}
-		float frequency = pitchIn;
-		frequency += params[FINE_PARAM].getValue() / 12.0f;
-		frequency = cvToFrequency(frequency);
-		frequency *= ratio;
-		frequency = clamp(frequency, -_maxFrequency, _maxFrequency);
-		_phasor.setFrequency(frequency / (float)oversample);
-
-		bool levelEnvelopeOn = params[ENV_TO_LEVEL_PARAM].getValue() > 0.5f;
-		bool feedbackEnvelopeOn = params[ENV_TO_FEEDBACK_PARAM].getValue() > 0.5f;
-		bool depthEnvelopeOn = params[ENV_TO_DEPTH_PARAM].getValue() > 0.5f;
-		if (_levelEnvelopeOn != levelEnvelopeOn || _feedbackEnvelopeOn != feedbackEnvelopeOn || _depthEnvelopeOn != depthEnvelopeOn) {
-			_levelEnvelopeOn = levelEnvelopeOn;
-			_feedbackEnvelopeOn = feedbackEnvelopeOn;
-			_depthEnvelopeOn = depthEnvelopeOn;
-			bool envelopeOn = _levelEnvelopeOn || _feedbackEnvelopeOn || _depthEnvelopeOn;
-			if (envelopeOn && !_envelopeOn) {
-				_envelope.reset();
-			}
-			_envelopeOn = envelopeOn;
-		}
-		if (_envelopeOn) {
-			float sustain = params[SUSTAIN_PARAM].getValue();
-			if (inputs[SUSTAIN_INPUT].isConnected()) {
-				sustain *= clamp(inputs[SUSTAIN_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-			}
-			_envelope.setAttack(powf(params[ATTACK_PARAM].getValue(), 2.0f) * 10.f);
-			_envelope.setDecay(powf(params[DECAY_PARAM].getValue(), 2.0f) * 10.f);
-			_envelope.setSustain(_sustainSL.next(sustain));
-			_envelope.setRelease(powf(params[RELEASE_PARAM].getValue(), 2.0f) * 10.f);
-		}
-
-		_feedback = params[FEEDBACK_PARAM].getValue();
-		if (inputs[FEEDBACK_INPUT].isConnected()) {
-			_feedback *= clamp(inputs[FEEDBACK_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-		}
-
-		_depth = params[DEPTH_PARAM].getValue();
-		if (inputs[DEPTH_INPUT].isConnected()) {
-			_depth *= clamp(inputs[DEPTH_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-		}
-
-		_level = params[LEVEL_PARAM].getValue();
-		if (inputs[LEVEL_INPUT].isConnected()) {
-			_level *= clamp(inputs[LEVEL_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-		}
+		_envelope.setAttack(powf(params[ATTACK_PARAM].getValue(), 2.0f) * 10.f);
+		_envelope.setDecay(powf(params[DECAY_PARAM].getValue(), 2.0f) * 10.f);
+		_envelope.setSustain(_sustainSL.next(sustain));
+		_envelope.setRelease(powf(params[RELEASE_PARAM].getValue(), 2.0f) * 10.f);
 	}
 
+	_feedback = params[FEEDBACK_PARAM].getValue();
+	if (inputs[FEEDBACK_INPUT].isConnected()) {
+		_feedback *= clamp(inputs[FEEDBACK_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+	}
+
+	_depth = params[DEPTH_PARAM].getValue();
+	if (inputs[DEPTH_INPUT].isConnected()) {
+		_depth *= clamp(inputs[DEPTH_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+	}
+
+	_level = params[LEVEL_PARAM].getValue();
+	if (inputs[LEVEL_INPUT].isConnected()) {
+		_level *= clamp(inputs[LEVEL_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+	}
+}
+
+void FMOp::alwaysProcess(const ProcessArgs& args) {
+	lights[ENV_TO_LEVEL_LIGHT].value = params[ENV_TO_LEVEL_PARAM].getValue() > 0.5f;
+	lights[ENV_TO_FEEDBACK_LIGHT].value = params[ENV_TO_FEEDBACK_PARAM].getValue() > 0.5f;
+	lights[ENV_TO_DEPTH_LIGHT].value = params[ENV_TO_DEPTH_PARAM].getValue() > 0.5f;
+}
+
+void FMOp::processIfActive(const ProcessArgs& args) {
 	float envelope = 0.0f;
 	if (_envelopeOn) {
+		float gateIn = 0.0f;
+		if (inputs[GATE_INPUT].isConnected()) {
+			gateIn = inputs[GATE_INPUT].getVoltage();
+		}
 		_gateTrigger.process(gateIn);
 		_envelope.setGate(_gateTrigger.isHigh());
 		envelope = _envelope.next();

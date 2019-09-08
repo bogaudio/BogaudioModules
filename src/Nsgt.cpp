@@ -1,51 +1,44 @@
 
 #include "Nsgt.hpp"
 
-void Nsgt::onReset() {
-	_modulationStep = modulationSteps;
-}
 
-void Nsgt::onSampleRateChange() {
+void Nsgt::sampleRateChange() {
 	float sampleRate = APP->engine->getSampleRate();
 	_detector.setSampleRate(sampleRate);
 	_attackSL.setParams(sampleRate, 150.0f);
 	_releaseSL.setParams(sampleRate, 600.0f);
-	_modulationStep = modulationSteps;
 }
 
-void Nsgt::process(const ProcessArgs& args) {
-	if (!(outputs[LEFT_OUTPUT].isConnected() || outputs[RIGHT_OUTPUT].isConnected())) {
-		return;
+bool Nsgt::active() {
+	return outputs[LEFT_OUTPUT].isConnected() || outputs[RIGHT_OUTPUT].isConnected();
+}
+
+void Nsgt::modulate() {
+	_thresholdDb = params[THRESHOLD_PARAM].getValue();
+	if (inputs[THRESHOLD_INPUT].isConnected()) {
+		_thresholdDb *= clamp(inputs[THRESHOLD_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+	}
+	_thresholdDb *= 30.0f;
+	_thresholdDb -= 24.0f;
+
+	float ratio = params[RATIO_PARAM].getValue();
+	if (inputs[RATIO_INPUT].isConnected()) {
+		ratio *= clamp(inputs[RATIO_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+	}
+	if (_ratioKnob != ratio) {
+		_ratioKnob = ratio;
+		_ratio = powf(_ratioKnob, 1.5f);
+		_ratio = 1.0f - _ratio;
+		_ratio *= M_PI;
+		_ratio *= 0.25f;
+		_ratio = tanf(_ratio);
+		_ratio = 1.0f / _ratio;
 	}
 
-	++_modulationStep;
-	if (_modulationStep >= modulationSteps) {
-		_modulationStep = 0;
+	_softKnee = params[KNEE_PARAM].getValue() > 0.5f;
+}
 
-		_thresholdDb = params[THRESHOLD_PARAM].getValue();
-		if (inputs[THRESHOLD_INPUT].isConnected()) {
-			_thresholdDb *= clamp(inputs[THRESHOLD_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-		}
-		_thresholdDb *= 30.0f;
-		_thresholdDb -= 24.0f;
-
-		float ratio = params[RATIO_PARAM].getValue();
-		if (inputs[RATIO_INPUT].isConnected()) {
-			ratio *= clamp(inputs[RATIO_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-		}
-		if (_ratioKnob != ratio) {
-			_ratioKnob = ratio;
-			_ratio = powf(_ratioKnob, 1.5f);
-			_ratio = 1.0f - _ratio;
-			_ratio *= M_PI;
-			_ratio *= 0.25f;
-			_ratio = tanf(_ratio);
-			_ratio = 1.0f / _ratio;
-		}
-
-		_softKnee = params[KNEE_PARAM].getValue() > 0.5f;
-	}
-
+void Nsgt::processIfActive(const ProcessArgs& args) {
 	float leftInput = inputs[LEFT_INPUT].getVoltageSum();
 	float rightInput = inputs[RIGHT_INPUT].getVoltageSum();
 	float env = _detector.next(leftInput + rightInput);

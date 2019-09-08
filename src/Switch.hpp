@@ -6,7 +6,7 @@ extern Model* modelSwitch;
 
 namespace bogaudio {
 
-struct Switch : Module {
+struct Switch : BGModule {
 	enum ParamsIds {
 		GATE_PARAM,
 		LATCH_PARAM,

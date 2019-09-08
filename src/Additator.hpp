@@ -11,7 +11,7 @@ extern Model* modelAdditator;
 
 namespace bogaudio {
 
-struct Additator : Module {
+struct Additator : ModulatingBGModule {
 	enum ParamsIds {
 		FREQUENCY_PARAM,
 		PARTIALS_PARAM,
@@ -59,7 +59,6 @@ struct Additator : Module {
 	};
 
 	const int maxPartials = 100;
-	const int modulationSteps = 100;
 	const float maxWidth = 2.0f;
 	const float maxSkew = 0.99f;
 	const float minAmplitudeNormalization = 1.0f;
@@ -70,7 +69,6 @@ struct Additator : Module {
 	const float maxFilter = 1.9;
 	const float slewLimitTime = 1.0f;
 
-	int _steps = 0;
 	int _partials = 0;
 	float _width = 0.0f;
 	float _oddSkew = 0.0f;
@@ -108,14 +106,17 @@ struct Additator : Module {
 		configParam(FILTER_PARAM, minFilter, maxFilter, (maxFilter - minFilter) / 2.0 + minFilter, "Filter");
 		configParam(PHASE_PARAM, 1.0f, 2.0f, 1.0f, "Phase");
 
-		onReset();
-		onSampleRateChange();
+		reset();
+		sampleRateChange();
 	}
 
-	void onReset() override;
-	void onSampleRateChange() override;
+	void reset() override;
+	void sampleRateChange() override;
+	bool active() override;
+	void modulate() override;
 	float cvValue(Input& cv, bool dc = false);
-	void process(const ProcessArgs& args) override;
+	void alwaysProcess(const ProcessArgs& args) override;
+	void processIfActive(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

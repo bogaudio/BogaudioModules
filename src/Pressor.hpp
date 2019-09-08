@@ -9,7 +9,7 @@ extern Model* modelPressor;
 
 namespace bogaudio {
 
-struct Pressor : Module {
+struct Pressor : ModulatingBGModule {
 	enum ParamsIds {
 		THRESHOLD_PARAM,
 		RATIO_PARAM,
@@ -48,8 +48,6 @@ struct Pressor : Module {
 		NUM_LIGHTS
 	};
 
-	const int modulationSteps = 100;
-	int _modulationStep = 0;
 	float _thresholdDb = 0.0f;
 	float _ratio = 0.0f;
 	float _ratioKnob = -1.0f;
@@ -87,13 +85,13 @@ struct Pressor : Module {
 		configParam(DECTECTOR_MODE_PARAM, 0.0f, 1.0f, 1.0f, "Dectector mode");
 		configParam(KNEE_PARAM, 0.0f, 1.0f, 1.0f, "Knee");
 
-		onReset();
-		onSampleRateChange();
+		sampleRateChange();
 	}
 
-	void onReset() override;
-	void onSampleRateChange() override;
-	void process(const ProcessArgs& args) override;
+	void sampleRateChange() override;
+	bool active() override;
+	void modulate() override;
+	void processIfActive(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

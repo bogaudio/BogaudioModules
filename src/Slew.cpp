@@ -1,28 +1,21 @@
 
 #include "Slew.hpp"
 
-void Slew::onReset() {
-	_modulationStep = modulationSteps;
+bool Slew::active() {
+	return inputs[IN_INPUT].isConnected() && outputs[OUT_OUTPUT].isConnected();
 }
 
-void Slew::process(const ProcessArgs& args) {
-	if (!(inputs[IN_INPUT].isConnected() && outputs[OUT_OUTPUT].isConnected())) {
-		return;
-	}
+void Slew::modulate() {
+	float riseTime = time(params[RISE_PARAM], inputs[RISE_INPUT]);
+	float riseShape = shape(params[RISE_SHAPE_PARAM]);
+	float fallTime = time(params[FALL_PARAM], inputs[FALL_INPUT]);
+	float fallShape = shape(params[FALL_SHAPE_PARAM]);
 
-	++_modulationStep;
-	if (_modulationStep >= modulationSteps) {
-		_modulationStep = 0;
+	_rise.setParams(APP->engine->getSampleRate(), riseTime, riseShape);
+	_fall.setParams(APP->engine->getSampleRate(), fallTime, fallShape);
+}
 
-		float riseTime = time(params[RISE_PARAM], inputs[RISE_INPUT]);
-		float riseShape = shape(params[RISE_SHAPE_PARAM]);
-		float fallTime = time(params[FALL_PARAM], inputs[FALL_INPUT]);
-		float fallShape = shape(params[FALL_SHAPE_PARAM]);
-
-		_rise.setParams(APP->engine->getSampleRate(), riseTime, riseShape);
-		_fall.setParams(APP->engine->getSampleRate(), fallTime, fallShape);
-	}
-
+void Slew::processIfActive(const ProcessArgs& args) {
 	float sample = inputs[IN_INPUT].getVoltageSum();
 	if (sample > _last) {
 		if (!_rising) {

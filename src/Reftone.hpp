@@ -10,7 +10,7 @@ extern Model* modelReftone;
 
 namespace bogaudio {
 
-struct Reftone : Module {
+struct Reftone : BGModule {
 	enum ParamsIds {
 		PITCH_PARAM,
 		OCTAVE_PARAM,

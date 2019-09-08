@@ -9,7 +9,7 @@ extern Model* modelStack;
 
 namespace bogaudio {
 
-struct Stack : Module {
+struct Stack : BGModule {
 	enum ParamsIds {
 		SEMIS_PARAM,
 		OCTAVE_PARAM,

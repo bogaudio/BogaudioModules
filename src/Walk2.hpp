@@ -13,7 +13,7 @@ extern Model* modelWalk2;
 
 namespace bogaudio {
 
-struct Walk2 : Module {
+struct Walk2 : ModulatingBGModule {
 	enum ParamsIds {
 		RATE_X_PARAM,
 		RATE_Y_PARAM,
@@ -45,9 +45,6 @@ struct Walk2 : Module {
 	enum LightsIds {
 		NUM_LIGHTS
 	};
-
-	const int modulationSteps = 100;
-	int _modulationStep = 0;
 
 	const float historySeconds = 1.0f;
 	const int historyPoints = 100;
@@ -85,15 +82,16 @@ struct Walk2 : Module {
 		configParam(SCALE_X_PARAM, 0.0f, 1.0f, 1.0f, "Scale X", "%", 0.0f, 100.0f);
 		configParam(SCALE_Y_PARAM, 0.0f, 1.0f, 1.0f, "Scale Y", "%", 0.0f, 100.0f);
 
-		onReset();
-		onSampleRateChange();
+		reset();
+		sampleRateChange();
 	}
 
-	void onReset() override;
-	void onSampleRateChange() override;
+	void reset() override;
+	void sampleRateChange() override;
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
-	void process(const ProcessArgs& args) override;
+	void modulate() override;
+	void processIfActive(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

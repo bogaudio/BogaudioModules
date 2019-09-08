@@ -1,94 +1,86 @@
 
 #include "Pressor.hpp"
 
-void Pressor::onReset() {
-	_modulationStep = modulationSteps;
-}
-
-void Pressor::onSampleRateChange() {
+void Pressor::sampleRateChange() {
 	_detectorRMS.setSampleRate(APP->engine->getSampleRate());
-	_modulationStep = modulationSteps;
 }
 
-void Pressor::process(const ProcessArgs& args) {
-	if (!(
+bool Pressor::active() {
+	return (
 		outputs[LEFT_OUTPUT].isConnected() ||
 		outputs[RIGHT_OUTPUT].isConnected() ||
 		outputs[ENVELOPE_OUTPUT].isConnected() ||
 		outputs[LEFT_INPUT].isConnected() ||
 		outputs[RIGHT_INPUT].isConnected() ||
 		outputs[SIDECHAIN_INPUT].isConnected()
-	)) {
-		return;
+	);
+}
+
+void Pressor::modulate() {
+	_thresholdDb = params[THRESHOLD_PARAM].getValue();
+	if (inputs[THRESHOLD_INPUT].isConnected()) {
+		_thresholdDb *= clamp(inputs[THRESHOLD_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+	}
+	_thresholdDb *= 30.0f;
+	_thresholdDb -= 24.0f;
+
+	float ratio = params[RATIO_PARAM].getValue();
+	if (inputs[RATIO_INPUT].isConnected()) {
+		ratio *= clamp(inputs[RATIO_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+	}
+	if (_ratioKnob != ratio) {
+		_ratioKnob = ratio;
+		_ratio = powf(_ratioKnob, 1.5f);
+		_ratio = 1.0f - _ratio;
+		_ratio *= M_PI;
+		_ratio *= 0.25f;
+		_ratio = tanf(_ratio);
+		_ratio = 1.0f / _ratio;
 	}
 
-	++_modulationStep;
-	if (_modulationStep >= modulationSteps) {
-		_modulationStep = 0;
+	float sampleRate = APP->engine->getSampleRate();
+	float attack = params[ATTACK_PARAM].getValue();
+	if (inputs[ATTACK_INPUT].isConnected()) {
+		attack *= clamp(inputs[ATTACK_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+	}
+	attack *= attack;
+	_attackSL.setParams(sampleRate, attack * 500.0f);
 
-		_thresholdDb = params[THRESHOLD_PARAM].getValue();
-		if (inputs[THRESHOLD_INPUT].isConnected()) {
-			_thresholdDb *= clamp(inputs[THRESHOLD_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-		}
-		_thresholdDb *= 30.0f;
-		_thresholdDb -= 24.0f;
+	float release = params[RELEASE_PARAM].getValue();
+	if (inputs[RELEASE_INPUT].isConnected()) {
+		release *= clamp(inputs[RELEASE_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+	}
+	release *= release;
+	_releaseSL.setParams(sampleRate, release * 2000.0f);
 
-		float ratio = params[RATIO_PARAM].getValue();
-		if (inputs[RATIO_INPUT].isConnected()) {
-			ratio *= clamp(inputs[RATIO_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-		}
-		if (_ratioKnob != ratio) {
-			_ratioKnob = ratio;
-			_ratio = powf(_ratioKnob, 1.5f);
-			_ratio = 1.0f - _ratio;
-			_ratio *= M_PI;
-			_ratio *= 0.25f;
-			_ratio = tanf(_ratio);
-			_ratio = 1.0f / _ratio;
-		}
-
-		float sampleRate = APP->engine->getSampleRate();
-		float attack = params[ATTACK_PARAM].getValue();
-		if (inputs[ATTACK_INPUT].isConnected()) {
-			attack *= clamp(inputs[ATTACK_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-		}
-		attack *= attack;
-		_attackSL.setParams(sampleRate, attack * 500.0f);
-
-		float release = params[RELEASE_PARAM].getValue();
-		if (inputs[RELEASE_INPUT].isConnected()) {
-			release *= clamp(inputs[RELEASE_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-		}
-		release *= release;
-		_releaseSL.setParams(sampleRate, release * 2000.0f);
-
-		float inGain = params[INPUT_GAIN_PARAM].getValue();
-		if (inputs[INPUT_GAIN_INPUT].isConnected()) {
-			inGain = clamp(inGain + inputs[INPUT_GAIN_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
-		}
-		inGain *= 12.0f;
-		if (_inGain != inGain) {
-			_inGain = inGain;
-			_inLevel = decibelsToAmplitude(_inGain);
-		}
-
-		float outGain = params[OUTPUT_GAIN_PARAM].getValue();
-		if (inputs[OUTPUT_GAIN_INPUT].isConnected()) {
-			outGain = clamp(outGain + inputs[OUTPUT_GAIN_INPUT].getVoltage() / 5.0f, 0.0f, 1.0f);
-		}
-		outGain *= 24.0f;
-		if (_outGain != outGain) {
-			_outGain = outGain;
-			_outLevel = decibelsToAmplitude(_outGain);
-		}
-
-		_detectorMix.setParams(params[DETECTOR_MIX_PARAM].getValue(), 0.0f, true);
-
-		_compressorMode = params[MODE_PARAM].getValue() > 0.5f;
-		_rmsDetector = params[DECTECTOR_MODE_PARAM].getValue() > 0.5f;
-		_softKnee = params[KNEE_PARAM].getValue() > 0.5f;
+	float inGain = params[INPUT_GAIN_PARAM].getValue();
+	if (inputs[INPUT_GAIN_INPUT].isConnected()) {
+		inGain = clamp(inGain + inputs[INPUT_GAIN_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
+	}
+	inGain *= 12.0f;
+	if (_inGain != inGain) {
+		_inGain = inGain;
+		_inLevel = decibelsToAmplitude(_inGain);
 	}
 
+	float outGain = params[OUTPUT_GAIN_PARAM].getValue();
+	if (inputs[OUTPUT_GAIN_INPUT].isConnected()) {
+		outGain = clamp(outGain + inputs[OUTPUT_GAIN_INPUT].getVoltage() / 5.0f, 0.0f, 1.0f);
+	}
+	outGain *= 24.0f;
+	if (_outGain != outGain) {
+		_outGain = outGain;
+		_outLevel = decibelsToAmplitude(_outGain);
+	}
+
+	_detectorMix.setParams(params[DETECTOR_MIX_PARAM].getValue(), 0.0f, true);
+
+	_compressorMode = params[MODE_PARAM].getValue() > 0.5f;
+	_rmsDetector = params[DECTECTOR_MODE_PARAM].getValue() > 0.5f;
+	_softKnee = params[KNEE_PARAM].getValue() > 0.5f;
+}
+
+void Pressor::processIfActive(const ProcessArgs& args) {
 	float leftInput = inputs[LEFT_INPUT].getVoltageSum() * _inLevel;
 	float rightInput = inputs[RIGHT_INPUT].getVoltageSum() * _inLevel;
 	float env = leftInput + rightInput;

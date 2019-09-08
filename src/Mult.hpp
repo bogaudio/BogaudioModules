@@ -6,7 +6,7 @@ extern Model* modelMult;
 
 namespace bogaudio {
 
-struct Mult : Module {
+struct Mult : BGModule {
 	enum ParamsIds {
 		NUM_PARAMS
 	};
@@ -33,7 +33,7 @@ struct Mult : Module {
 
 	Mult() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		}
+	}
 
 	void process(const ProcessArgs& args) override;
 };

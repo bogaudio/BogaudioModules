@@ -4,7 +4,7 @@
 
 namespace bogaudio {
 
-struct DisableOutputLimitModule : Module {
+struct DisableOutputLimitModule : BGModule {
 	bool _disableOutputLimit = false;
 
 	json_t* dataToJson() override;

@@ -9,7 +9,7 @@ extern Model* modelSampleHold;
 
 namespace bogaudio {
 
-struct SampleHold : Module {
+struct SampleHold : BGModule {
 	enum ParamIds {
 		TRIGGER1_PARAM,
 		TRIGGER2_PARAM,

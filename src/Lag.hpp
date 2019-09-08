@@ -9,7 +9,7 @@ extern Model* modelLag;
 
 namespace bogaudio {
 
-struct Lag : Module {
+struct Lag : ModulatingBGModule {
 	enum ParamsIds {
 		TIME_PARAM,
 		TIME_SCALE_PARAM,
@@ -33,8 +33,6 @@ struct Lag : Module {
 		NUM_LIGHTS
 	};
 
-	const int modulationSteps = 100;
-	int _modulationStep = 0;
 	ShapedSlewLimiter _slew;
 
 	Lag() {
@@ -42,12 +40,11 @@ struct Lag : Module {
 		configParam(TIME_PARAM, 0.0f, 1.0f, 0.5f, "time");
 		configParam(TIME_SCALE_PARAM, 0.0f, 2.0f, 1.0f, "time_scale");
 		configParam(SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "shape");
-
-		onReset();
 	}
 
-	void onReset() override;
-	void process(const ProcessArgs& args) override;
+	bool active() override;
+	void modulate() override;
+	void processIfActive(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

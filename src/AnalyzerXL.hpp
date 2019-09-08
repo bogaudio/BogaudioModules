@@ -32,23 +32,21 @@ struct AnalyzerXL : AnalyzerBase {
 		NUM_LIGHTS
 	};
 
-	const int modulationSteps = 100;
-	int _modulationStep = 0;
 	float _range = 0.0f;
 	float _smooth = 0.25f;
 	AnalyzerCore::Quality _quality = AnalyzerCore::QUALITY_GOOD;
 	AnalyzerCore::Window _window = AnalyzerCore::WINDOW_KAISER;
 
 	AnalyzerXL() : AnalyzerBase(8, NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
-		onReset();
+		reset();
 	}
 
-	void onReset() override;
-	void onSampleRateChange() override;
-	void setCoreParams();
+	void reset() override;
+	void sampleRateChange() override;
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
-	void process(const ProcessArgs& args) override;
+	void modulate() override;
+	void processIfActive(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

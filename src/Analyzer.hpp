@@ -45,9 +45,6 @@ struct Analyzer : AnalyzerBase {
 		NUM_LIGHTS
 	};
 
-	const int modulationSteps = 100;
-	int _modulationStep = 0;
-
 	Analyzer() : AnalyzerBase(4, NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 		configParam(RANGE2_PARAM, -1.0f, 1.0f, 0.0f, "Range");
 		configParam(SMOOTH_PARAM, 0.0f, 1.0f, 0.5f, "Smoothing", " ms", 0.0f, 500.0f);
@@ -56,14 +53,15 @@ struct Analyzer : AnalyzerBase {
 		onReset();
 	}
 	virtual ~Analyzer() {
-		onReset();
+		reset();
 	}
 
-	void onReset() override;
-	void onSampleRateChange() override;
+	void reset() override;
+	void sampleRateChange() override;
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
-	void process(const ProcessArgs& args) override;
+	void modulate() override;
+	void processIfActive(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

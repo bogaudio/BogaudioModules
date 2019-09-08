@@ -1,39 +1,32 @@
 
 #include "Clpr.hpp"
 
-void Clpr::onReset() {
-	_modulationStep = modulationSteps;
+bool Clpr::active() {
+	return outputs[LEFT_OUTPUT].isConnected() || outputs[RIGHT_OUTPUT].isConnected();
 }
 
-void Clpr::process(const ProcessArgs& args) {
-	if (!(outputs[LEFT_OUTPUT].isConnected() || outputs[RIGHT_OUTPUT].isConnected())) {
-		return;
+void Clpr::modulate() {
+	_thresholdDb = params[THRESHOLD_PARAM].getValue();
+	if (inputs[THRESHOLD_INPUT].isConnected()) {
+		_thresholdDb *= clamp(inputs[THRESHOLD_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+	}
+	_thresholdDb *= 30.0f;
+	_thresholdDb -= 24.0f;
+
+	float outGain = params[OUTPUT_GAIN_PARAM].getValue();
+	if (inputs[OUTPUT_GAIN_INPUT].isConnected()) {
+		outGain = clamp(outGain + inputs[OUTPUT_GAIN_INPUT].getVoltage() / 5.0f, 0.0f, 1.0f);
+	}
+	outGain *= 24.0f;
+	if (_outGain != outGain) {
+		_outGain = outGain;
+		_outLevel = decibelsToAmplitude(_outGain);
 	}
 
-	++_modulationStep;
-	if (_modulationStep >= modulationSteps) {
-		_modulationStep = 0;
+	_softKnee = params[KNEE_PARAM].getValue() > 0.5f;
+}
 
-		_thresholdDb = params[THRESHOLD_PARAM].getValue();
-		if (inputs[THRESHOLD_INPUT].isConnected()) {
-			_thresholdDb *= clamp(inputs[THRESHOLD_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-		}
-		_thresholdDb *= 30.0f;
-		_thresholdDb -= 24.0f;
-
-		float outGain = params[OUTPUT_GAIN_PARAM].getValue();
-		if (inputs[OUTPUT_GAIN_INPUT].isConnected()) {
-			outGain = clamp(outGain + inputs[OUTPUT_GAIN_INPUT].getVoltage() / 5.0f, 0.0f, 1.0f);
-		}
-		outGain *= 24.0f;
-		if (_outGain != outGain) {
-			_outGain = outGain;
-			_outLevel = decibelsToAmplitude(_outGain);
-		}
-
-		_softKnee = params[KNEE_PARAM].getValue() > 0.5f;
-	}
-
+void Clpr::processIfActive(const ProcessArgs& args) {
 	float leftInput = inputs[LEFT_INPUT].getVoltageSum();
 	float rightInput = inputs[RIGHT_INPUT].getVoltageSum();
 	float env = fabsf(leftInput + rightInput);

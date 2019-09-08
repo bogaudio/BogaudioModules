@@ -10,7 +10,7 @@ extern Model* modelMix8;
 
 namespace bogaudio {
 
-struct Mix8 : Module {
+struct Mix8 : BGModule {
 	enum ParamsIds {
 		LEVEL1_PARAM,
 		MUTE1_PARAM,

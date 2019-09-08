@@ -1,48 +1,46 @@
 
 #include "AD.hpp"
 
-void AD::onReset() {
+void AD::reset() {
 	_trigger.reset();
 	_eocPulseGen.process(10.0);
 	_envelope.reset();
-	_modulationStep = modulationSteps;
 	_on = false;
 }
 
-void AD::onSampleRateChange() {
+void AD::sampleRateChange() {
 	float sr = APP->engine->getSampleRate();
 	_envelope.setSampleRate(sr);
-	_attackSL.setParams(sr / (float)modulationSteps);
-	_decaySL.setParams(sr / (float)modulationSteps);
-	_modulationStep = modulationSteps;
+	_attackSL.setParams(sr / (float)_modulationSteps);
+	_decaySL.setParams(sr / (float)_modulationSteps);
 }
 
-void AD::process(const ProcessArgs& args) {
+bool AD::active() {
+	return outputs[ENV_OUTPUT].isConnected() || outputs[EOC_OUTPUT].isConnected() || inputs[TRIGGER_INPUT].isConnected();
+}
+
+void AD::modulate() {
+	float attack = powf(params[ATTACK_PARAM].getValue(), 2.0f);
+	if (inputs[ATTACK_INPUT].isConnected()) {
+		attack *= clamp(inputs[ATTACK_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+	}
+	_envelope.setAttack(_attackSL.next(attack * 10.f));
+
+	float decay = powf(params[DECAY_PARAM].getValue(), 2.0f);
+	if (inputs[DECAY_INPUT].isConnected()) {
+		decay *= clamp(inputs[DECAY_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+	}
+	_envelope.setDecay(_decaySL.next(decay * 10.f));
+
+	_envelope.setLinearShape(_linearMode);
+}
+
+void AD::alwaysProcess(const ProcessArgs& args) {
 	lights[LOOP_LIGHT].value = _loopMode = params[LOOP_PARAM].getValue() > 0.5f;
 	lights[LINEAR_LIGHT].value = _linearMode = params[LINEAR_PARAM].getValue() > 0.5f;
-	if (!(outputs[ENV_OUTPUT].isConnected() || outputs[EOC_OUTPUT].isConnected() || inputs[TRIGGER_INPUT].isConnected())) {
-		return;
-	}
+}
 
-	++_modulationStep;
-	if (_modulationStep >= modulationSteps) {
-		_modulationStep = 0;
-
-		float attack = powf(params[ATTACK_PARAM].getValue(), 2.0f);
-		if (inputs[ATTACK_INPUT].isConnected()) {
-			attack *= clamp(inputs[ATTACK_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-		}
-		_envelope.setAttack(_attackSL.next(attack * 10.f));
-
-		float decay = powf(params[DECAY_PARAM].getValue(), 2.0f);
-		if (inputs[DECAY_INPUT].isConnected()) {
-			decay *= clamp(inputs[DECAY_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-		}
-		_envelope.setDecay(_decaySL.next(decay * 10.f));
-
-		_envelope.setLinearShape(_linearMode);
-	}
-
+void AD::processIfActive(const ProcessArgs& args) {
 	_trigger.process(inputs[TRIGGER_INPUT].getVoltage());
 	if (!_on && (_trigger.isHigh() || (_loopMode && _envelope.isStage(ADSR::STOPPED_STAGE)))) {
 		_on = true;

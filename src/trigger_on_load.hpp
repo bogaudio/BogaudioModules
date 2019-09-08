@@ -1,12 +1,12 @@
 #pragma once
 
-#include "rack.hpp"
+#include "bogaudio.hpp"
 
 using namespace rack;
 
 namespace bogaudio {
 
-struct TriggerOnLoadModule : Module {
+struct TriggerOnLoadModule : BGModule {
 	bool _triggerOnLoad = true;
 	bool _shouldTriggerOnLoad = true;
 

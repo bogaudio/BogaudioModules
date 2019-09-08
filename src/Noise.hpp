@@ -9,7 +9,7 @@ extern Model* modelNoise;
 
 namespace bogaudio {
 
-struct Noise : Module {
+struct Noise : BGModule {
 	enum ParamsIds {
 		NUM_PARAMS
 	};

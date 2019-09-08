@@ -6,7 +6,7 @@ using namespace rack;
 
 namespace bogaudio {
 
-struct SelectOnClockModule : Module {
+struct SelectOnClockModule : BGModule {
 	bool _selectOnClock = false;
 
 	json_t* dataToJson() override;

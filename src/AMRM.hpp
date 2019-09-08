@@ -9,7 +9,7 @@ extern Model* modelAMRM;
 
 namespace bogaudio {
 
-struct AMRM : Module {
+struct AMRM : BGModule {
 	enum ParamsIds {
 		RECTIFY_PARAM,
 		DRYWET_PARAM,

@@ -9,7 +9,7 @@ extern Model* modelLmtr;
 
 namespace bogaudio {
 
-struct Lmtr : Module {
+struct Lmtr : ModulatingBGModule {
 	enum ParamsIds {
 		THRESHOLD_PARAM,
 		OUTPUT_GAIN_PARAM,
@@ -35,8 +35,6 @@ struct Lmtr : Module {
 		NUM_LIGHTS
 	};
 
-	const int modulationSteps = 100;
-	int _modulationStep = 0;
 	float _thresholdDb = 0.0f;
 	float _outGain = -1.0f;
 	float _outLevel = 0.0f;
@@ -56,13 +54,13 @@ struct Lmtr : Module {
 		configParam(OUTPUT_GAIN_PARAM, 0.0f, 1.0f, 0.0f, "Output gain", " dB", 0.0f, 24.0f);
 		configParam(KNEE_PARAM, 0.0f, 1.0f, 0.0f, "Knee");
 
-		onReset();
-		onSampleRateChange();
+		sampleRateChange();
 	}
 
-	void onReset() override;
-	void onSampleRateChange() override;
-	void process(const ProcessArgs& args) override;
+	void sampleRateChange() override;
+	bool active() override;
+	void modulate() override;
+	void processIfActive(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

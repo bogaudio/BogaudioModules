@@ -13,7 +13,7 @@ struct PitchModeListener {
 	virtual void pitchModeChanged() = 0;
 };
 
-struct LFOBase : Module {
+struct LFOBase : ModulatingBGModule {
 	bool _slowMode = false;
 	PitchModeListener* _pitchModeListener = NULL;
 

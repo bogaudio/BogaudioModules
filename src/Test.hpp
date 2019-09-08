@@ -100,7 +100,7 @@ using namespace bogaudio::dsp;
 
 namespace bogaudio {
 
-struct Test : Module {
+struct Test : BGModule {
 	enum ParamsIds {
 		PARAM1_PARAM,
 		PARAM2_PARAM,

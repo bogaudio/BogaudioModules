@@ -9,7 +9,7 @@ extern Model* modelMute8;
 
 namespace bogaudio {
 
-struct Mute8 : Module {
+struct Mute8 : BGModule {
 	enum ParamsIds {
 		MUTE1_PARAM,
 		MUTE2_PARAM,

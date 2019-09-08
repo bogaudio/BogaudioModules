@@ -6,7 +6,7 @@ extern Model* modelCmp;
 
 namespace bogaudio {
 
-struct Cmp : Module {
+struct Cmp : BGModule {
 	enum ParamsIds {
 		A_PARAM,
 		B_PARAM,

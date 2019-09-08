@@ -9,7 +9,7 @@ extern Model* modelCVD;
 
 namespace bogaudio {
 
-struct CVD : Module {
+struct CVD : BGModule {
 	enum ParamsIds {
 		TIME_PARAM,
 		TIME_SCALE_PARAM,

@@ -11,7 +11,7 @@ extern Model* modelXCO;
 
 namespace bogaudio {
 
-struct XCO : Module {
+struct XCO : ModulatingBGModule {
 	enum ParamsIds {
 		FREQUENCY_PARAM,
 		FINE_PARAM,
@@ -67,12 +67,10 @@ struct XCO : Module {
 		NUM_LIGHTS
 	};
 
-	const int modulationSteps = 100;
 	const float amplitude = 5.0f;
 	static constexpr int oversample = 8;
 	const float _slowModeOffset = -7.0f;
 	const float sineOversampleMixIncrement = 0.01f;
-	int _modulationStep = 0;
 	float _oversampleThreshold = 0.0f;
 	float _frequency = 0.0f;
 	float _baseVOct = 0.0f;
@@ -142,15 +140,18 @@ struct XCO : Module {
 		configParam(SINE_PHASE_PARAM, -1.0f, 1.0f, 0.0f, "Sine wave phase", "º", 0.0f, 180.0f);
 		configParam(SINE_MIX_PARAM, 0.0f, 1.0f, 1.0f, "Sine wave mix", "%", 0.0f, 100.0f);
 
-		onReset();
+		reset();
 		setSampleRate(APP->engine->getSampleRate());
 		_saw.setQuality(12);
 		_square.setQuality(12);
 	}
 
-	void onReset() override;
-	void onSampleRateChange() override;
-	void process(const ProcessArgs& args) override;
+	void reset() override;
+	void sampleRateChange() override;
+	bool active() override;
+	void modulate() override;
+	void alwaysProcess(const ProcessArgs& args) override;
+	void processIfActive(const ProcessArgs& args) override;
 	Phasor::phase_delta_t phaseOffset(Param& param, Input& input);
 	float level(Param& param, Input& input);
 	void setSampleRate(float sampleRate);

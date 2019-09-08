@@ -9,7 +9,7 @@ extern Model* modelFollow;
 
 namespace bogaudio {
 
-struct Follow : Module {
+struct Follow : BGModule {
 	enum ParamsIds {
 		RESPONSE_PARAM,
 		SCALE_PARAM,

@@ -9,7 +9,7 @@ extern Model* modelNsgt;
 
 namespace bogaudio {
 
-struct Nsgt : Module {
+struct Nsgt : ModulatingBGModule {
 	enum ParamsIds {
 		THRESHOLD_PARAM,
 		RATIO_PARAM,
@@ -35,8 +35,6 @@ struct Nsgt : Module {
 		NUM_LIGHTS
 	};
 
-	const int modulationSteps = 100;
-	int _modulationStep = 0;
 	float _thresholdDb = 0.0f;
 	float _ratio = 0.0f;
 	float _ratioKnob = -1.0f;
@@ -56,13 +54,13 @@ struct Nsgt : Module {
 		configParam<DynamicsRatioParamQuantity>(RATIO_PARAM, 0.0f, 1.0f, 0.55159f, "Ratio");
 		configParam(KNEE_PARAM, 0.0f, 1.0f, 1.0f, "Knee");
 
-		onReset();
-		onSampleRateChange();
+		sampleRateChange();
 	}
 
-	void onReset() override;
-	void onSampleRateChange() override;
-	void process(const ProcessArgs& args) override;
+	void sampleRateChange() override;
+	bool active() override;
+	void modulate() override;
+	void processIfActive(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

@@ -44,10 +44,7 @@ struct LFO : LFOBase {
 		NUM_LIGHTS
 	};
 
-	const int modulationSteps = 100;
 	const float amplitude = 5.0f;
-
-	int _modulationStep = 0;
 	int _sampleSteps = 1;
 	int _sampleStep = 0;
 	float _offset = 0.0f;
@@ -80,13 +77,16 @@ struct LFO : LFOBase {
 		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "Offset", " V", 0.0f, 5.0f);
 		configParam(SCALE_PARAM, 0.0f, 1.0f, 1.0f, "Scale", "%", 0.0f, 100.0f);
 
-		onReset();
-		onSampleRateChange();
+		reset();
+		sampleRateChange();
 	}
 
-	void onReset() override;
-	void onSampleRateChange() override;
-	void process(const ProcessArgs& args) override;
+	void reset() override;
+	void sampleRateChange() override;
+	bool active() override;
+	void modulate() override;
+	void alwaysProcess(const ProcessArgs& args) override;
+	void processIfActive(const ProcessArgs& args) override;
 	void updateOutput(Phasor& wave, bool useSample, bool invert, Output& output, float& sample, bool& active);
 };
 

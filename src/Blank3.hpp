@@ -9,7 +9,7 @@ extern Model* modelBlank3;
 
 namespace bogaudio {
 
-struct Blank3 : Module {
+struct Blank3 : BGModule {
 	enum ParamsIds {
 		NUM_PARAMS
 	};

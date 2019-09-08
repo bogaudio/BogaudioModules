@@ -10,7 +10,7 @@ extern Model* modelWalk;
 
 namespace bogaudio {
 
-struct Walk : Module {
+struct Walk : ModulatingBGModule {
 	enum ParamsIds {
 		RATE_PARAM,
 		OFFSET_PARAM,
@@ -35,8 +35,6 @@ struct Walk : Module {
 		NUM_LIGHTS
 	};
 
-	const int modulationSteps = 100;
-	int _modulationStep = 0;
 	float _offset = 0.0f;
 	float _scale = 0.0f;
 	Trigger _jumpTrigger;
@@ -49,12 +47,13 @@ struct Walk : Module {
 		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "Offset", " V", 0.0f, 5.0f);
 		configParam(SCALE_PARAM, 0.0f, 1.0f, 1.0f, "Scale", "%", 0.0f, 100.0f);
 
-		onReset();
+		reset();
 	}
 
-	void onReset() override;
-	void onSampleRateChange() override;
-	void process(const ProcessArgs& args) override;
+	void reset() override;
+	void sampleRateChange() override;
+	void modulate() override;
+	void processIfActive(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

@@ -9,7 +9,7 @@ extern Model* modelXFade;
 
 namespace bogaudio {
 
-struct XFade : Module {
+struct XFade : BGModule {
 	enum ParamsIds {
 		MIX_PARAM,
 		CURVE_PARAM,

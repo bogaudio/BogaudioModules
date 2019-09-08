@@ -3,13 +3,11 @@
 
 #define RANGE_DB_KEY "range_db"
 
-void Analyzer::onReset() {
-	_modulationStep = modulationSteps;
+void Analyzer::reset() {
 	_core.resetChannels();
 }
 
-void Analyzer::onSampleRateChange() {
-	_modulationStep = modulationSteps;
+void Analyzer::sampleRateChange() {
 	_core.resetChannels();
 }
 
@@ -26,50 +24,48 @@ void Analyzer::dataFromJson(json_t* root) {
 	}
 }
 
-void Analyzer::process(const ProcessArgs& args) {
-	++_modulationStep;
-	if (_modulationStep >= modulationSteps) {
-		_modulationStep = 0;
-
-		float range = params[RANGE2_PARAM].getValue();
-		_rangeMinHz = 0.0f;
-		_rangeMaxHz = 0.5f * APP->engine->getSampleRate();
-		if (range < 0.0f) {
-			range *= 0.9f;
-			_rangeMaxHz *= 1.0f + range;
-		}
-		else if (range > 0.0f) {
-			range *= range;
-			range *= 0.8f;
-			_rangeMinHz = range * _rangeMaxHz;
-		}
-
-		const float maxTime = 0.5;
-		float smooth = params[SMOOTH_PARAM].getValue() * maxTime;
-		smooth /= _core.size() / (_core._overlap * APP->engine->getSampleRate());
-		int averageN = std::max(1, (int)roundf(smooth));
-
-		AnalyzerCore::Quality quality = AnalyzerCore::QUALITY_GOOD;
-		if (params[QUALITY_PARAM].getValue() > 2.5) {
-			quality = AnalyzerCore::QUALITY_ULTRA;
-		}
-		else if (params[QUALITY_PARAM].getValue() > 1.5) {
-			quality = AnalyzerCore::QUALITY_HIGH;
-		}
-
-		AnalyzerCore::Window window = AnalyzerCore::WINDOW_KAISER;
-		if (params[WINDOW_PARAM].getValue() > 2.5) {
-			window = AnalyzerCore::WINDOW_NONE;
-		}
-		else if (params[WINDOW_PARAM].getValue() > 1.5) {
-			window = AnalyzerCore::WINDOW_HAMMING;
-		}
-
-		_core.setParams(averageN, quality, window);
+void Analyzer::modulate() {
+	float range = params[RANGE2_PARAM].getValue();
+	_rangeMinHz = 0.0f;
+	_rangeMaxHz = 0.5f * APP->engine->getSampleRate();
+	if (range < 0.0f) {
+		range *= 0.9f;
+		_rangeMaxHz *= 1.0f + range;
+	}
+	else if (range > 0.0f) {
+		range *= range;
+		range *= 0.8f;
+		_rangeMinHz = range * _rangeMaxHz;
 	}
 
+	const float maxTime = 0.5;
+	float smooth = params[SMOOTH_PARAM].getValue() * maxTime;
+	smooth /= _core.size() / (_core._overlap * APP->engine->getSampleRate());
+	int averageN = std::max(1, (int)roundf(smooth));
+
+	AnalyzerCore::Quality quality = AnalyzerCore::QUALITY_GOOD;
+	if (params[QUALITY_PARAM].getValue() > 2.5) {
+		quality = AnalyzerCore::QUALITY_ULTRA;
+	}
+	else if (params[QUALITY_PARAM].getValue() > 1.5) {
+		quality = AnalyzerCore::QUALITY_HIGH;
+	}
+
+	AnalyzerCore::Window window = AnalyzerCore::WINDOW_KAISER;
+	if (params[WINDOW_PARAM].getValue() > 2.5) {
+		window = AnalyzerCore::WINDOW_NONE;
+	}
+	else if (params[WINDOW_PARAM].getValue() > 1.5) {
+		window = AnalyzerCore::WINDOW_HAMMING;
+	}
+
+	_core.setParams(averageN, quality, window);
+}
+
+void Analyzer::processIfActive(const ProcessArgs& args) {
 	for (int i = 0; i < 4; ++i) {
 		_core.stepChannel(i, inputs[SIGNALA_INPUT + i]);
+
 		outputs[SIGNALA_OUTPUT + i].setChannels(inputs[SIGNALA_INPUT + i].getChannels());
 		outputs[SIGNALA_OUTPUT + i].writeVoltages(inputs[SIGNALA_INPUT + i].getVoltages());
 	}

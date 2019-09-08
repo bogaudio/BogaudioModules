@@ -12,7 +12,7 @@ extern Model* modelFMOp;
 
 namespace bogaudio {
 
-struct FMOp : Module {
+struct FMOp : ModulatingBGModule {
 	enum ParamsIds {
 		RATIO_PARAM,
 		FINE_PARAM,
@@ -53,10 +53,8 @@ struct FMOp : Module {
 	};
 
 	const float amplitude = 5.0f;
-	const int modulationSteps = 100;
 	static constexpr int oversample = 8;
 	const float oversampleMixIncrement = 0.01f;
-	int _steps = 0;
 	float _feedback = 0.0f;
 	float _feedbackDelayedSample = 0.0f;
 	float _depth = 0.0f;
@@ -106,15 +104,18 @@ struct FMOp : Module {
 		configParam(ENV_TO_FEEDBACK_PARAM, 0.0f, 1.0f, 0.0f, "Feedback follows envelope");
 		configParam(ENV_TO_DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "FM depth follows envelope");
 
-		onReset();
-		onSampleRateChange();
+		reset();
+		sampleRateChange();
 	}
 
-	void onReset() override;
-	void onSampleRateChange() override;
+	void reset() override;
+	void sampleRateChange() override;
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
-	void process(const ProcessArgs& args) override;
+	bool active() override;
+	void modulate() override;
+	void alwaysProcess(const ProcessArgs& args) override;
+	void processIfActive(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

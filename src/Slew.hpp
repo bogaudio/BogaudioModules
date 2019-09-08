@@ -9,7 +9,7 @@ extern Model* modelSlew;
 
 namespace bogaudio {
 
-struct Slew : Module {
+struct Slew : ModulatingBGModule {
 	enum ParamsIds {
 		RISE_PARAM,
 		RISE_SHAPE_PARAM,
@@ -34,8 +34,6 @@ struct Slew : Module {
 		NUM_LIGHTS
 	};
 
-	const int modulationSteps = 100;
-	int _modulationStep = 0;
 	bool _rising = true;
 	float _last = 0.0f;
 	ShapedSlewLimiter _rise;
@@ -47,12 +45,11 @@ struct Slew : Module {
 		configParam(RISE_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "Rise shape");
 		configParam<EnvelopeSegmentParamQuantity>(FALL_PARAM, 0.0f, 1.0f, 0.31623f, "Fall", " s");
 		configParam(FALL_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "Fall shape");
-
-		onReset();
 	}
 
-	void onReset() override;
-	void process(const ProcessArgs& args) override;
+	bool active() override;
+	void modulate() override;
+	void processIfActive(const ProcessArgs& args) override;
 	float time(Param& param, Input& input);
 	float shape(Param& param);
 };

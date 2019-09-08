@@ -9,7 +9,7 @@ extern Model* modelFlipFlop;
 
 namespace bogaudio {
 
-struct FlipFlop : Module {
+struct FlipFlop : BGModule {
 	enum ParamsIds {
 		NUM_PARAMS
 	};

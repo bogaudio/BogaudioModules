@@ -7,7 +7,7 @@ extern Model* modelADSR;
 
 namespace bogaudio {
 
-struct ADSR : Module {
+struct ADSR : ModulatingBGModule {
 	enum ParamsIds {
 		ATTACK_PARAM,
 		DECAY_PARAM,
@@ -36,8 +36,6 @@ struct ADSR : Module {
 		NUM_LIGHTS
 	};
 
-	const int modulationSteps = 100;
-	int _modulationStep = 0;
 	bool _linearMode = false;
 	Trigger _gateTrigger;
 	bogaudio::dsp::ADSR _envelope;
@@ -50,13 +48,16 @@ struct ADSR : Module {
 		configParam<EnvelopeSegmentParamQuantity>(RELEASE_PARAM, 0.0f, 1.0f, 0.31623f, "Release", " s");
 		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear");
 
-		onReset();
-		onSampleRateChange();
+		reset();
+		sampleRateChange();
 	}
 
-	void onReset() override;
-	void onSampleRateChange() override;
-	void process(const ProcessArgs& args) override;
+	void reset() override;
+	void sampleRateChange() override;
+	bool active() override;
+	void modulate() override;
+	void alwaysProcess(const ProcessArgs& args) override;
+	void processIfActive(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

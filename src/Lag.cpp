@@ -1,51 +1,44 @@
 
 #include "Lag.hpp"
 
-void Lag::onReset() {
-	_modulationStep = modulationSteps;
+bool Lag::active() {
+	return inputs[IN_INPUT].isConnected() && outputs[OUT_OUTPUT].isConnected();
 }
 
-void Lag::process(const ProcessArgs& args) {
-	if (!(inputs[IN_INPUT].isConnected() && outputs[OUT_OUTPUT].isConnected())) {
-		return;
+void Lag::modulate() {
+	float time = params[TIME_PARAM].getValue();
+	if (inputs[TIME_INPUT].isConnected()) {
+		time *= clamp(inputs[TIME_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+	}
+	switch ((int)roundf(params[TIME_SCALE_PARAM].getValue())) {
+		case 0: {
+			time /= 10.f;
+			break;
+		}
+		case 2: {
+			time *= 10.f;
+			break;
+		}
+	}
+	time *= 1000.0f;
+
+	float shape = params[SHAPE_PARAM].getValue();
+	if (inputs[SHAPE_INPUT].isConnected()) {
+		shape *= clamp(inputs[SHAPE_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
+	}
+	if (shape < 0.0) {
+		shape = 1.0f + shape;
+		shape = _slew.minShape + shape * (1.0f - _slew.minShape);
+	}
+	else {
+		shape *= _slew.maxShape - 1.0f;
+		shape += 1.0f;
 	}
 
-	++_modulationStep;
-	if (_modulationStep >= modulationSteps) {
-		_modulationStep = 0;
+	_slew.setParams(APP->engine->getSampleRate(), time, shape);
+}
 
-		float time = params[TIME_PARAM].getValue();
-		if (inputs[TIME_INPUT].isConnected()) {
-			time *= clamp(inputs[TIME_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-		}
-		switch ((int)roundf(params[TIME_SCALE_PARAM].getValue())) {
-			case 0: {
-				time /= 10.f;
-				break;
-			}
-			case 2: {
-				time *= 10.f;
-				break;
-			}
-		}
-		time *= 1000.0f;
-
-		float shape = params[SHAPE_PARAM].getValue();
-		if (inputs[SHAPE_INPUT].isConnected()) {
-			shape *= clamp(inputs[SHAPE_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
-		}
-		if (shape < 0.0) {
-			shape = 1.0f + shape;
-			shape = _slew.minShape + shape * (1.0f - _slew.minShape);
-		}
-		else {
-			shape *= _slew.maxShape - 1.0f;
-			shape += 1.0f;
-		}
-
-		_slew.setParams(APP->engine->getSampleRate(), time, shape);
-	}
-
+void Lag::processIfActive(const ProcessArgs& args) {
 	outputs[OUT_OUTPUT].setVoltage(_slew.next(inputs[IN_INPUT].getVoltageSum()));
 }
 

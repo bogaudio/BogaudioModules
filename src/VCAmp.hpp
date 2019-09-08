@@ -9,7 +9,7 @@ extern Model* modelVCAmp;
 
 namespace bogaudio {
 
-struct VCAmp : Module {
+struct VCAmp : BGModule {
 	enum ParamsIds {
 		LEVEL_PARAM,
 		NUM_PARAMS

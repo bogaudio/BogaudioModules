@@ -71,10 +71,7 @@ struct EightFO : LFOBase {
 		SQUARE_WAVE
 	};
 
-	const int modulationSteps = 100;
 	const float amplitude = 5.0f;
-
-	int _modulationStep = 0;
 	Wave _wave = NO_WAVE;
 	int _sampleSteps = 1;
 	int _sampleStep = 0;
@@ -131,13 +128,16 @@ struct EightFO : LFOBase {
 		configParam(PHASE1_PARAM, -1.0, 1.0, 0.0, "Phase 45", "º", 0.0f, 180.0f);
 		configParam(PHASE0_PARAM, -1.0, 1.0, 0.0f, "Phase 0", "º", 0.0f, 180.0f);
 
-		onReset();
-		onSampleRateChange();
+		reset();
+		sampleRateChange();
 	}
 
-	void onReset() override;
-	void onSampleRateChange() override;
-	void process(const ProcessArgs& args) override;
+	void reset() override;
+	void sampleRateChange() override;
+	bool active() override;
+	void modulate() override;
+	void alwaysProcess(const ProcessArgs& args) override;
+	void processIfActive(const ProcessArgs& args) override;
 	Phasor::phase_delta_t phaseOffset(Param& p, Input& i, Phasor::phase_delta_t baseOffset);
 	void updateOutput(bool useSample, Output& output, Phasor::phase_delta_t& offset, float& sample, bool& active);
 };

@@ -122,7 +122,7 @@ struct AnalyzerCore {
 	void stepChannel(int channelIndex, Input& input);
 };
 
-struct AnalyzerBase : Module {
+struct AnalyzerBase : ModulatingBGModule {
 	float _rangeMinHz = 0.0;
 	float _rangeMaxHz = 0.0;
 	float _rangeDb = 80.0f;

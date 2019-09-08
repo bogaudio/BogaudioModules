@@ -9,7 +9,7 @@ extern Model* modelMatrix88;
 
 namespace bogaudio {
 
-struct Matrix88 : Module {
+struct Matrix88 : BGModule {
 	enum ParamsIds {
 		MIX11_PARAM,
 		MIX21_PARAM,

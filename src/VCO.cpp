@@ -7,55 +7,53 @@ float VCO::VCOFrequencyParamQuantity::offset() {
 	return vco->_slowMode ? vco->_slowModeOffset : 0.0f;
 }
 
-void VCO::onReset() {
+void VCO::reset() {
 	_syncTrigger.reset();
-	_modulationStep = modulationSteps;
 }
 
-void VCO::onSampleRateChange() {
+void VCO::sampleRateChange() {
 	setSampleRate(APP->engine->getSampleRate());
-	_modulationStep = modulationSteps;
 }
 
-void VCO::process(const ProcessArgs& args) {
-	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].getValue() > 0.5f;
-	_fmLinearMode = params[FM_TYPE_PARAM].getValue() < 0.5f;
-
-	if (!(
+bool VCO::active() {
+	return (
 		outputs[SQUARE_OUTPUT].isConnected() ||
 		outputs[SAW_OUTPUT].isConnected() ||
 		outputs[TRIANGLE_OUTPUT].isConnected() ||
 		outputs[SINE_OUTPUT].isConnected()
-	)) {
-		return;
+	);
+}
+
+void VCO::modulate() {
+	_fmLinearMode = params[FM_TYPE_PARAM].getValue() < 0.5f;
+
+	_baseVOct = params[FREQUENCY_PARAM].getValue();
+	_baseVOct += params[FINE_PARAM].getValue() / 12.0f;
+	if (inputs[PITCH_INPUT].isConnected()) {
+		_baseVOct += clamp(inputs[PITCH_INPUT].getVoltage(), -5.0f, 5.0f);
 	}
-
-	++_modulationStep;
-	if (_modulationStep >= modulationSteps) {
-		_modulationStep = 0;
-
-		_baseVOct = params[FREQUENCY_PARAM].getValue();
-		_baseVOct += params[FINE_PARAM].getValue() / 12.0f;
-		if (inputs[PITCH_INPUT].isConnected()) {
-			_baseVOct += clamp(inputs[PITCH_INPUT].getVoltage(), -5.0f, 5.0f);
-		}
-		if (_slowMode) {
-			_baseVOct += _slowModeOffset;
-		}
-		_baseHz = cvToFrequency(_baseVOct);
-
-		float pw = params[PW_PARAM].getValue();
-		if (inputs[PW_INPUT].isConnected()) {
-			pw *= clamp(inputs[PW_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
-		}
-		pw *= 1.0f - 2.0f * _square.minPulseWidth;
-		pw *= 0.5f;
-		pw += 0.5f;
-		_square.setPulseWidth(_squarePulseWidthSL.next(pw));
-
-		_fmDepth = params[FM_PARAM].getValue();
+	if (_slowMode) {
+		_baseVOct += _slowModeOffset;
 	}
+	_baseHz = cvToFrequency(_baseVOct);
 
+	float pw = params[PW_PARAM].getValue();
+	if (inputs[PW_INPUT].isConnected()) {
+		pw *= clamp(inputs[PW_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
+	}
+	pw *= 1.0f - 2.0f * _square.minPulseWidth;
+	pw *= 0.5f;
+	pw += 0.5f;
+	_square.setPulseWidth(_squarePulseWidthSL.next(pw));
+
+	_fmDepth = params[FM_PARAM].getValue();
+}
+
+void VCO::alwaysProcess(const ProcessArgs& args) {
+	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].getValue() > 0.5f;
+}
+
+void VCO::processIfActive(const ProcessArgs& args) {
 	if (_syncTrigger.next(inputs[SYNC_INPUT].getVoltage())) {
 		_phasor.resetPhase();
 	}

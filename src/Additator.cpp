@@ -1,17 +1,15 @@
 
 #include "Additator.hpp"
 
-void Additator::onReset() {
+void Additator::reset() {
 	_syncTrigger.reset();
-	_steps = modulationSteps;
 	_phase = PHASE_RESET;
 }
 
-void Additator::onSampleRateChange() {
+void Additator::sampleRateChange() {
 	float sampleRate = APP->engine->getSampleRate();
 	_oscillator.setSampleRate(sampleRate);
 	_maxFrequency = 0.475f * sampleRate;
-	_steps = modulationSteps;
 	_phase = PHASE_RESET;
 	_widthSL.setParams(sampleRate, slewLimitTime, maxWidth);
 	_oddSkewSL.setParams(sampleRate, slewLimitTime, 2.0f * maxSkew);
@@ -32,113 +30,111 @@ float Additator::cvValue(Input& cv, bool dc) {
 	return clamp(cv.getVoltage() / 5.0f, -1.0f, 1.0f);
 }
 
-void Additator::process(const ProcessArgs& args) {
-	if (!outputs[AUDIO_OUTPUT].isConnected()) {
-		Phase phase = params[PHASE_PARAM].getValue() > 1.5f ? PHASE_COSINE : PHASE_SINE;
-		lights[SINE_LIGHT].value = phase == PHASE_SINE;
-		lights[COSINE_LIGHT].value = phase == PHASE_COSINE;
-		return;
+bool Additator::active() {
+	return outputs[AUDIO_OUTPUT].isConnected();
+}
+
+void Additator::modulate() {
+	float width = _widthSL.next(clamp(params[WIDTH_PARAM].getValue() + (maxWidth / 2.0f) * cvValue(inputs[WIDTH_INPUT]), 0.0f, maxWidth));
+	float oddSkew = _oddSkewSL.next(clamp(params[ODD_SKEW_PARAM].getValue() + cvValue(inputs[ODD_SKEW_INPUT]), -maxSkew, maxSkew));
+	float evenSkew = _evenSkewSL.next(clamp(params[EVEN_SKEW_PARAM].getValue() + cvValue(inputs[EVEN_SKEW_INPUT]), -maxSkew, maxSkew));
+	if (
+		_width != width ||
+		_oddSkew != oddSkew ||
+		_evenSkew != evenSkew
+	) {
+		_width = width;
+		_oddSkew = oddSkew;
+		_evenSkew = evenSkew;
+
+		float multiple = 1.0f;
+		_oscillator.setPartialFrequencyRatio(1, multiple);
+		_activePartials = 1;
+		for (int i = 2, n = _oscillator.partialCount(); i <= n; ++i) {
+			float ii = i;
+			if (i % 2 == 0) {
+				ii += _evenSkew;
+			}
+			else {
+				ii += _oddSkew;
+			}
+			if (_oscillator.setPartialFrequencyRatio(i, powf(ii, _width))) {
+				_activePartials = i;
+			}
+		}
 	}
-	lights[SINE_LIGHT].value = _phase == PHASE_SINE;
-	lights[COSINE_LIGHT].value = _phase == PHASE_COSINE;
 
-	++_steps;
-	if (_steps >= modulationSteps) {
-		_steps = 0;
+	int partials = clamp((int)roundf(params[PARTIALS_PARAM].getValue() * cvValue(inputs[PARTIALS_INPUT], true)), 0, maxPartials);
+	float amplitudeNormalization = _amplitudeNormalizationSL.next(clamp(params[GAIN_PARAM].getValue() + ((maxAmplitudeNormalization - minAmplitudeNormalization) / 2.0f) * cvValue(inputs[GAIN_INPUT]), minAmplitudeNormalization, maxAmplitudeNormalization));
+	float decay = _decaySL.next(clamp(params[DECAY_PARAM].getValue() + ((maxDecay - minDecay) / 2.0f) * cvValue(inputs[DECAY_INPUT]), minDecay, maxDecay));
+	float balance = _balanceSL.next(clamp(params[BALANCE_PARAM].getValue() + cvValue(inputs[BALANCE_INPUT]), -1.0f, 1.0f));
+	float filter = _filterSL.next(clamp(params[FILTER_PARAM].getValue() + cvValue(inputs[FILTER_INPUT]), minFilter, maxFilter));
+	if (
+		_partials != partials ||
+		_amplitudeNormalization != amplitudeNormalization ||
+		_decay != decay ||
+		_balance != balance ||
+		_filter != filter
+	) {
+		int envelopes = _partials != partials ? std::max(_partials, partials) : 0;
+		_partials = partials;
+		_amplitudeNormalization = amplitudeNormalization;
+		_decay = decay;
+		_balance = balance;
+		_filter = filter;
 
-		float width = _widthSL.next(clamp(params[WIDTH_PARAM].getValue() + (maxWidth / 2.0f) * cvValue(inputs[WIDTH_INPUT]), 0.0f, maxWidth));
-		float oddSkew = _oddSkewSL.next(clamp(params[ODD_SKEW_PARAM].getValue() + cvValue(inputs[ODD_SKEW_INPUT]), -maxSkew, maxSkew));
-		float evenSkew = _evenSkewSL.next(clamp(params[EVEN_SKEW_PARAM].getValue() + cvValue(inputs[EVEN_SKEW_INPUT]), -maxSkew, maxSkew));
-		if (
-			_width != width ||
-			_oddSkew != oddSkew ||
-			_evenSkew != evenSkew
-		) {
-			_width = width;
-			_oddSkew = oddSkew;
-			_evenSkew = evenSkew;
-
-			float multiple = 1.0f;
-			_oscillator.setPartialFrequencyRatio(1, multiple);
-			_activePartials = 1;
-			for (int i = 2, n = _oscillator.partialCount(); i <= n; ++i) {
-				float ii = i;
+		float as[maxPartials + 1];
+		float total = as[1] = 1.0f;
+		filter = log10f(_filter) + 1.0f;
+		int np = std::min(_partials, _activePartials);
+		for (int i = 2, n = _oscillator.partialCount(); i <= n; ++i) {
+			as[i] = 0.0f;
+			if (i <= np) {
+				as[i] = powf(i, -_decay) * powf(_filter, i);
 				if (i % 2 == 0) {
-					ii += _evenSkew;
+					if (_balance > 0.0f) {
+						as[i] *= 1.0f - _balance;
+					}
 				}
 				else {
-					ii += _oddSkew;
-				}
-				if (_oscillator.setPartialFrequencyRatio(i, powf(ii, _width))) {
-					_activePartials = i;
-				}
-			}
-		}
-
-		int partials = clamp((int)roundf(params[PARTIALS_PARAM].getValue() * cvValue(inputs[PARTIALS_INPUT], true)), 0, maxPartials);
-		float amplitudeNormalization = _amplitudeNormalizationSL.next(clamp(params[GAIN_PARAM].getValue() + ((maxAmplitudeNormalization - minAmplitudeNormalization) / 2.0f) * cvValue(inputs[GAIN_INPUT]), minAmplitudeNormalization, maxAmplitudeNormalization));
-		float decay = _decaySL.next(clamp(params[DECAY_PARAM].getValue() + ((maxDecay - minDecay) / 2.0f) * cvValue(inputs[DECAY_INPUT]), minDecay, maxDecay));
-		float balance = _balanceSL.next(clamp(params[BALANCE_PARAM].getValue() + cvValue(inputs[BALANCE_INPUT]), -1.0f, 1.0f));
-		float filter = _filterSL.next(clamp(params[FILTER_PARAM].getValue() + cvValue(inputs[FILTER_INPUT]), minFilter, maxFilter));
-		if (
-			_partials != partials ||
-			_amplitudeNormalization != amplitudeNormalization ||
-			_decay != decay ||
-			_balance != balance ||
-			_filter != filter
-		) {
-			int envelopes = _partials != partials ? std::max(_partials, partials) : 0;
-			_partials = partials;
-			_amplitudeNormalization = amplitudeNormalization;
-			_decay = decay;
-			_balance = balance;
-			_filter = filter;
-
-			float as[maxPartials + 1];
-			float total = as[1] = 1.0f;
-			filter = log10f(_filter) + 1.0f;
-			int np = std::min(_partials, _activePartials);
-			for (int i = 2, n = _oscillator.partialCount(); i <= n; ++i) {
-				as[i] = 0.0f;
-				if (i <= np) {
-					as[i] = powf(i, -_decay) * powf(_filter, i);
-					if (i % 2 == 0) {
-						if (_balance > 0.0f) {
-							as[i] *= 1.0f - _balance;
-						}
+					if (_balance < 0.0f) {
+						as[i] *= 1.0f + _balance;
 					}
-					else {
-						if (_balance < 0.0f) {
-							as[i] *= 1.0f + _balance;
-						}
-					}
-					total += as[i];
 				}
-			}
-			float norm = std::max(np / (float)_oscillator.partialCount(), 0.1f);
-			norm = 1.0f + (_amplitudeNormalization - 1.0f) * norm;
-			norm = std::max(total / norm, 0.7f);
-			for (int i = 1, n = _oscillator.partialCount(); i <= n; ++i) {
-				as[i] /= norm;
-				_oscillator.setPartialAmplitude(i, as[i], i <= envelopes);
+				total += as[i];
 			}
 		}
-
-		float frequency = params[FREQUENCY_PARAM].getValue();
-		frequency += params[FINE_PARAM].getValue() / 12.0f;;
-		if (inputs[PITCH_INPUT].isConnected()) {
-			frequency += clamp(inputs[PITCH_INPUT].getVoltage(), -5.0f, 5.0f);
-		}
-		frequency = clamp(cvToFrequency(frequency), 20.0f, _maxFrequency);
-		_oscillator.setFrequency(frequency);
-
-		Phase phase = params[PHASE_PARAM].getValue() > 1.5f ? PHASE_COSINE : PHASE_SINE;
-		if (_phase != phase) {
-			_phase = phase;
-			_oscillator.syncToPhase(_phase == PHASE_SINE ? 0.0f : M_PI / 2.0f);
+		float norm = std::max(np / (float)_oscillator.partialCount(), 0.1f);
+		norm = 1.0f + (_amplitudeNormalization - 1.0f) * norm;
+		norm = std::max(total / norm, 0.7f);
+		for (int i = 1, n = _oscillator.partialCount(); i <= n; ++i) {
+			as[i] /= norm;
+			_oscillator.setPartialAmplitude(i, as[i], i <= envelopes);
 		}
 	}
 
+	float frequency = params[FREQUENCY_PARAM].getValue();
+	frequency += params[FINE_PARAM].getValue() / 12.0f;;
+	if (inputs[PITCH_INPUT].isConnected()) {
+		frequency += clamp(inputs[PITCH_INPUT].getVoltage(), -5.0f, 5.0f);
+	}
+	frequency = clamp(cvToFrequency(frequency), 20.0f, _maxFrequency);
+	_oscillator.setFrequency(frequency);
+
+	Phase phase = params[PHASE_PARAM].getValue() > 1.5f ? PHASE_COSINE : PHASE_SINE;
+	if (_phase != phase) {
+		_phase = phase;
+		_oscillator.syncToPhase(_phase == PHASE_SINE ? 0.0f : M_PI / 2.0f);
+	}
+}
+
+void Additator::alwaysProcess(const ProcessArgs& args) {
+	Phase phase = params[PHASE_PARAM].getValue() > 1.5f ? PHASE_COSINE : PHASE_SINE;
+	lights[SINE_LIGHT].value = phase == PHASE_SINE;
+	lights[COSINE_LIGHT].value = phase == PHASE_COSINE;
+}
+
+void Additator::processIfActive(const ProcessArgs& args) {
 	if (_syncTrigger.next(inputs[SYNC_INPUT].getVoltage())) {
 		_oscillator.syncToPhase(_phase == PHASE_SINE ? 0.0f : M_PI / 2.0f);
 	}

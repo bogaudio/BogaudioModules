@@ -1,17 +1,58 @@
 
 #include "LLFO.hpp"
 
-void LLFO::onReset() {
+void LLFO::reset() {
 	_resetTrigger.reset();
-	_modulationStep = modulationSteps;
 }
 
-void LLFO::onSampleRateChange() {
+void LLFO::sampleRateChange() {
 	_phasor.setSampleRate(APP->engine->getSampleRate());
-	_modulationStep = modulationSteps;
 }
 
-void LLFO::process(const ProcessArgs& args) {
+bool LLFO::active() {
+	return outputs[OUT_OUTPUT].isConnected();
+}
+
+void LLFO::modulate() {
+	setFrequency(params[FREQUENCY_PARAM], inputs[PITCH_INPUT], _phasor);
+
+	_invert = false;
+	Wave wave = (Wave)params[WAVE_PARAM].getValue();
+	switch (wave) {
+		case SINE_WAVE: {
+			_oscillator = &_sine;
+			break;
+		}
+		case TRIANGLE_WAVE: {
+			_oscillator = &_triangle;
+			break;
+		}
+		case RAMP_UP_WAVE: {
+			_oscillator = &_ramp;
+			break;
+		}
+		case RAMP_DOWN_WAVE: {
+			_oscillator = &_ramp;
+			_invert = true;
+			break;
+		}
+		case SQUARE_WAVE: {
+			_oscillator = &_square;
+			_square.setPulseWidth(0.5f);
+			break;
+		}
+		case PULSE_WAVE: {
+			_oscillator = &_square;
+			_square.setPulseWidth(0.1f);
+			break;
+		}
+	}
+
+	_offset = params[OFFSET_PARAM].getValue() * 5.0f;
+	_scale = params[SCALE_PARAM].getValue();
+}
+
+void LLFO::alwaysProcess(const ProcessArgs& args) {
 	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].getValue() > 0.5f;
 
 	Wave wave = (Wave)params[WAVE_PARAM].getValue();
@@ -21,51 +62,9 @@ void LLFO::process(const ProcessArgs& args) {
 	lights[RAMP_DOWN_LIGHT].value = wave == RAMP_DOWN_WAVE;
 	lights[SQUARE_LIGHT].value = wave == SQUARE_WAVE;
 	lights[PULSE_LIGHT].value = wave == PULSE_WAVE;
-	if (!outputs[OUT_OUTPUT].isConnected()) {
-		return;
-	}
+}
 
-	++_modulationStep;
-	if (_modulationStep >= modulationSteps) {
-		_modulationStep = 0;
-
-		setFrequency(params[FREQUENCY_PARAM], inputs[PITCH_INPUT], _phasor);
-
-		_invert = false;
-		switch (wave) {
-			case SINE_WAVE: {
-				_oscillator = &_sine;
-				break;
-			}
-			case TRIANGLE_WAVE: {
-				_oscillator = &_triangle;
-				break;
-			}
-			case RAMP_UP_WAVE: {
-				_oscillator = &_ramp;
-				break;
-			}
-			case RAMP_DOWN_WAVE: {
-				_oscillator = &_ramp;
-				_invert = true;
-				break;
-			}
-			case SQUARE_WAVE: {
-				_oscillator = &_square;
-				_square.setPulseWidth(0.5f);
-				break;
-			}
-			case PULSE_WAVE: {
-				_oscillator = &_square;
-				_square.setPulseWidth(0.1f);
-				break;
-			}
-		}
-
-		_offset = params[OFFSET_PARAM].getValue() * 5.0f;
-		_scale = params[SCALE_PARAM].getValue();
-	}
-
+void LLFO::processIfActive(const ProcessArgs& args) {
 	if (_resetTrigger.next(inputs[RESET_INPUT].getVoltage())) {
 		_phasor.resetPhase();
 	}

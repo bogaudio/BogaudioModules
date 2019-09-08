@@ -15,35 +15,16 @@
 #define WINDOW_HAMMING_KEY "hamming"
 #define WINDOW_KAISER_KEY "kaiser"
 
-void AnalyzerXL::onReset() {
-	_modulationStep = modulationSteps;
+void AnalyzerXL::reset() {
 	_range = 0.0f;
 	_smooth = 0.25f;
 	_quality = AnalyzerCore::QUALITY_GOOD;
 	_window = AnalyzerCore::WINDOW_KAISER;
-	setCoreParams();
 	_core.resetChannels();
 }
 
-void AnalyzerXL::onSampleRateChange() {
-	_modulationStep = modulationSteps;
-	setCoreParams();
+void AnalyzerXL::sampleRateChange() {
 	_core.resetChannels();
-}
-
-void AnalyzerXL::setCoreParams() {
-	_rangeMinHz = 0.0f;
-	_rangeMaxHz = 0.5f * APP->engine->getSampleRate();
-	if (_range < 0.0f) {
-		_rangeMaxHz *= 1.0f + _range;
-	}
-	else if (_range > 0.0f) {
-		_rangeMinHz = _range * _rangeMaxHz;
-	}
-
-	float smooth = _smooth / (_core.size() / (_core._overlap * APP->engine->getSampleRate()));
-	int averageN = std::max(1, (int)roundf(smooth));
-	_core.setParams(averageN, _quality, _window);
 }
 
 json_t* AnalyzerXL::dataToJson() {
@@ -127,13 +108,22 @@ void AnalyzerXL::dataFromJson(json_t* root) {
 	}
 }
 
-void AnalyzerXL::process(const ProcessArgs& args) {
-	++_modulationStep;
-	if (_modulationStep >= modulationSteps) {
-		_modulationStep = 0;
-		setCoreParams();
+void AnalyzerXL::modulate() {
+	_rangeMinHz = 0.0f;
+	_rangeMaxHz = 0.5f * APP->engine->getSampleRate();
+	if (_range < 0.0f) {
+		_rangeMaxHz *= 1.0f + _range;
+	}
+	else if (_range > 0.0f) {
+		_rangeMinHz = _range * _rangeMaxHz;
 	}
 
+	float smooth = _smooth / (_core.size() / (_core._overlap * APP->engine->getSampleRate()));
+	int averageN = std::max(1, (int)roundf(smooth));
+	_core.setParams(averageN, _quality, _window);
+}
+
+void AnalyzerXL::processIfActive(const ProcessArgs& args) {
 	for (int i = 0; i < 8; ++i) {
 		_core.stepChannel(i, inputs[SIGNALA_INPUT + i]);
 	}

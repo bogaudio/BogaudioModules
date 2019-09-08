@@ -11,7 +11,7 @@ extern Model* modelVCO;
 
 namespace bogaudio {
 
-struct VCO : Module {
+struct VCO : ModulatingBGModule {
 	enum ParamsIds {
 		FREQUENCY_PARAM,
 		FINE_PARAM,
@@ -43,11 +43,9 @@ struct VCO : Module {
 		NUM_LIGHTS
 	};
 
-	const int modulationSteps = 100;
 	const float amplitude = 5.0f;
 	static constexpr int oversample = 8;
 	const float _slowModeOffset = -7.0f;
-	int _modulationStep = 0;
 	float _oversampleThreshold = 0.0f;
 	float _frequency = 0.0f;
 	float _baseVOct = 0.0f;
@@ -83,15 +81,18 @@ struct VCO : Module {
 		configParam(FM_PARAM, 0.0f, 1.0f, 0.0f, "FM depth", "%", 0.0f, 100.0f);
 		configParam(FM_TYPE_PARAM, 0.0f, 1.0f, 1.0f, "FM mode");
 
-		onReset();
+		reset();
 		setSampleRate(APP->engine->getSampleRate());
 		_saw.setQuality(12);
 		_square.setQuality(12);
 	}
 
-	void onReset() override;
-	void onSampleRateChange() override;
-	void process(const ProcessArgs& args) override;
+	void reset() override;
+	void sampleRateChange() override;
+	bool active() override;
+	void modulate() override;
+	void alwaysProcess(const ProcessArgs& args) override;
+	void processIfActive(const ProcessArgs& args) override;
 	void setSampleRate(float sampleRate);
 	void setFrequency(float frequency);
 };

@@ -9,7 +9,7 @@ extern Model* modelPan;
 
 namespace bogaudio {
 
-struct Pan : Module {
+struct Pan : BGModule {
 	enum ParamsIds {
 		PAN1_PARAM,
 		PAN2_PARAM,

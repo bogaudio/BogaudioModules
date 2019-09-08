@@ -7,88 +7,86 @@ float XCO::XCOFrequencyParamQuantity::offset() {
 	return xco->_slowMode ? xco->_slowModeOffset : 0.0f;
 }
 
-void XCO::onReset() {
+void XCO::reset() {
 	_syncTrigger.reset();
-	_modulationStep = modulationSteps;
 }
 
-void XCO::onSampleRateChange() {
+void XCO::sampleRateChange() {
 	setSampleRate(APP->engine->getSampleRate());
-	_modulationStep = modulationSteps;
 }
 
-void XCO::process(const ProcessArgs& args) {
-	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].getValue() > 0.5f;
-	_fmLinearMode = params[FM_TYPE_PARAM].getValue() < 0.5f;
-
-	if (!(
+bool XCO::active() {
+	return (
 		outputs[MIX_OUTPUT].isConnected() ||
 		outputs[SQUARE_OUTPUT].isConnected() ||
 		outputs[SAW_OUTPUT].isConnected() ||
 		outputs[TRIANGLE_OUTPUT].isConnected() ||
 		outputs[SINE_OUTPUT].isConnected()
-	)) {
-		return;
+	);
+}
+
+void XCO::modulate() {
+	_fmLinearMode = params[FM_TYPE_PARAM].getValue() < 0.5f;
+
+	_baseVOct = params[FREQUENCY_PARAM].getValue();
+	_baseVOct += params[FINE_PARAM].getValue() / 12.0f;;
+	if (inputs[PITCH_INPUT].isConnected()) {
+		_baseVOct += clamp(inputs[PITCH_INPUT].getVoltage(), -5.0f, 5.0f);
+	}
+	if (_slowMode) {
+		_baseVOct += _slowModeOffset;
+	}
+	_baseHz = cvToFrequency(_baseVOct);
+
+	float pw = params[SQUARE_PW_PARAM].getValue();
+	if (inputs[SQUARE_PW_INPUT].isConnected()) {
+		pw *= clamp(inputs[SQUARE_PW_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
+	}
+	pw *= 1.0f - 2.0f * _square.minPulseWidth;
+	pw *= 0.5f;
+	pw += 0.5f;
+	_square.setPulseWidth(_squarePulseWidthSL.next(pw));
+
+	float saturation = params[SAW_SATURATION_PARAM].getValue();
+	if (inputs[SAW_SATURATION_INPUT].isConnected()) {
+		saturation *= clamp(inputs[SAW_SATURATION_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+	}
+	_saw.setSaturation(_sawSaturationSL.next(saturation) * 10.f);
+
+	float tsw = params[TRIANGLE_SAMPLE_PARAM].getValue() * Phasor::maxSampleWidth;
+	if (inputs[TRIANGLE_SAMPLE_INPUT].isConnected()) {
+		tsw *= clamp(inputs[TRIANGLE_SAMPLE_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+	}
+	_triangleSampleWidth = _triangleSampleWidthSL.next(tsw);
+	_triangle.setSampleWidth(_triangleSampleWidth);
+
+	float sfb = params[SINE_FEEDBACK_PARAM].getValue();
+	if (inputs[SINE_FEEDBACK_INPUT].isConnected()) {
+		sfb *= clamp(inputs[SINE_FEEDBACK_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+	}
+	_sineFeedback = _sineFeedbackSL.next(sfb);
+
+	_fmDepth = params[FM_DEPTH_PARAM].getValue();
+	if (inputs[FM_DEPTH_INPUT].isConnected()) {
+		_fmDepth *= clamp(inputs[FM_DEPTH_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 	}
 
-	++_modulationStep;
-	if (_modulationStep >= modulationSteps) {
-		_modulationStep = 0;
+	_squarePhaseOffset = phaseOffset(params[SQUARE_PHASE_PARAM], inputs[SQUARE_PHASE_INPUT]);
+	_sawPhaseOffset = phaseOffset(params[SAW_PHASE_PARAM], inputs[SAW_PHASE_INPUT]);
+	_trianglePhaseOffset = phaseOffset(params[TRIANGLE_PHASE_PARAM], inputs[TRIANGLE_PHASE_INPUT]);
+	_sinePhaseOffset = phaseOffset(params[SINE_PHASE_PARAM], inputs[SINE_PHASE_INPUT]);
 
-		_baseVOct = params[FREQUENCY_PARAM].getValue();
-		_baseVOct += params[FINE_PARAM].getValue() / 12.0f;;
-		if (inputs[PITCH_INPUT].isConnected()) {
-			_baseVOct += clamp(inputs[PITCH_INPUT].getVoltage(), -5.0f, 5.0f);
-		}
-		if (_slowMode) {
-			_baseVOct += _slowModeOffset;
-		}
-		_baseHz = cvToFrequency(_baseVOct);
+	_squareMix = level(params[SQUARE_MIX_PARAM], inputs[SQUARE_MIX_INPUT]);
+	_sawMix = level(params[SAW_MIX_PARAM], inputs[SAW_MIX_INPUT]);
+	_triangleMix = level(params[TRIANGLE_MIX_PARAM], inputs[TRIANGLE_MIX_INPUT]);
+	_sineMix = level(params[SINE_MIX_PARAM], inputs[SINE_MIX_INPUT]);
+}
 
-		float pw = params[SQUARE_PW_PARAM].getValue();
-		if (inputs[SQUARE_PW_INPUT].isConnected()) {
-			pw *= clamp(inputs[SQUARE_PW_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
-		}
-		pw *= 1.0f - 2.0f * _square.minPulseWidth;
-		pw *= 0.5f;
-		pw += 0.5f;
-		_square.setPulseWidth(_squarePulseWidthSL.next(pw));
+void XCO::alwaysProcess(const ProcessArgs& args) {
+	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].getValue() > 0.5f;
+}
 
-		float saturation = params[SAW_SATURATION_PARAM].getValue();
-		if (inputs[SAW_SATURATION_INPUT].isConnected()) {
-			saturation *= clamp(inputs[SAW_SATURATION_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-		}
-		_saw.setSaturation(_sawSaturationSL.next(saturation) * 10.f);
-
-		float tsw = params[TRIANGLE_SAMPLE_PARAM].getValue() * Phasor::maxSampleWidth;
-		if (inputs[TRIANGLE_SAMPLE_INPUT].isConnected()) {
-			tsw *= clamp(inputs[TRIANGLE_SAMPLE_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-		}
-		_triangleSampleWidth = _triangleSampleWidthSL.next(tsw);
-		_triangle.setSampleWidth(_triangleSampleWidth);
-
-		float sfb = params[SINE_FEEDBACK_PARAM].getValue();
-		if (inputs[SINE_FEEDBACK_INPUT].isConnected()) {
-			sfb *= clamp(inputs[SINE_FEEDBACK_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-		}
-		_sineFeedback = _sineFeedbackSL.next(sfb);
-
-		_fmDepth = params[FM_DEPTH_PARAM].getValue();
-		if (inputs[FM_DEPTH_INPUT].isConnected()) {
-			_fmDepth *= clamp(inputs[FM_DEPTH_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-		}
-
-		_squarePhaseOffset = phaseOffset(params[SQUARE_PHASE_PARAM], inputs[SQUARE_PHASE_INPUT]);
-		_sawPhaseOffset = phaseOffset(params[SAW_PHASE_PARAM], inputs[SAW_PHASE_INPUT]);
-		_trianglePhaseOffset = phaseOffset(params[TRIANGLE_PHASE_PARAM], inputs[TRIANGLE_PHASE_INPUT]);
-		_sinePhaseOffset = phaseOffset(params[SINE_PHASE_PARAM], inputs[SINE_PHASE_INPUT]);
-
-		_squareMix = level(params[SQUARE_MIX_PARAM], inputs[SQUARE_MIX_INPUT]);
-		_sawMix = level(params[SAW_MIX_PARAM], inputs[SAW_MIX_INPUT]);
-		_triangleMix = level(params[TRIANGLE_MIX_PARAM], inputs[TRIANGLE_MIX_INPUT]);
-		_sineMix = level(params[SINE_MIX_PARAM], inputs[SINE_MIX_INPUT]);
-	}
-
+void XCO::processIfActive(const ProcessArgs& args) {
 	if (_syncTrigger.next(inputs[SYNC_INPUT].getVoltage())) {
 		_phasor.resetPhase();
 	}

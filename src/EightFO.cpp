@@ -10,22 +10,18 @@ const Phasor::phase_delta_t basePhase2Offset = Phasor::radiansToPhase(0.5f * M_P
 const Phasor::phase_delta_t basePhase1Offset = Phasor::radiansToPhase(0.25f * M_PI);
 const Phasor::phase_delta_t basePhase0Offset = Phasor::radiansToPhase(0.0f);
 
-void EightFO::onReset() {
+void EightFO::reset() {
 	_resetTrigger.reset();
-	_modulationStep = modulationSteps;
 	_sampleStep = _phasor._sampleRate;
 }
 
-void EightFO::onSampleRateChange() {
+void EightFO::sampleRateChange() {
 	_phasor.setSampleRate(APP->engine->getSampleRate());
-	_modulationStep = modulationSteps;
 	_sampleStep = _phasor._sampleRate;
 }
 
-void EightFO::process(const ProcessArgs& args) {
-	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].getValue() > 0.5f;
-
-	if (!(
+bool EightFO::active() {
+	return (
 		outputs[PHASE7_OUTPUT].isConnected() ||
 		outputs[PHASE6_OUTPUT].isConnected() ||
 		outputs[PHASE5_OUTPUT].isConnected() ||
@@ -34,58 +30,59 @@ void EightFO::process(const ProcessArgs& args) {
 		outputs[PHASE2_OUTPUT].isConnected() ||
 		outputs[PHASE1_OUTPUT].isConnected() ||
 		outputs[PHASE0_OUTPUT].isConnected()
-	)) {
-		return;
+	);
+}
+
+void EightFO::modulate() {
+	setFrequency(params[FREQUENCY_PARAM], inputs[PITCH_INPUT], _phasor);
+
+	_wave = (Wave)roundf(params[WAVE_PARAM].getValue());
+	if (_wave == SQUARE_WAVE) {
+		float pw = params[SAMPLE_PWM_PARAM].getValue();
+		if (inputs[SAMPLE_PWM_INPUT].isConnected()) {
+			pw *= clamp(inputs[SAMPLE_PWM_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
+		}
+		pw *= 1.0f - 2.0f * _square.minPulseWidth;
+		pw *= 0.5f;
+		pw += 0.5f;
+		_square.setPulseWidth(pw);
+		_sampleSteps = 1;
+	}
+	else {
+		float sample = fabsf(params[SAMPLE_PWM_PARAM].getValue());
+		if (inputs[SAMPLE_PWM_INPUT].isConnected()) {
+			sample *= clamp(fabsf(inputs[SAMPLE_PWM_INPUT].getVoltage()) / 5.0f, 0.0f, 1.0f);
+		}
+		float maxSampleSteps = (_phasor._sampleRate / _phasor._frequency) / 4.0f;
+		_sampleSteps = clamp((int)(sample * maxSampleSteps), 1, (int)maxSampleSteps);
+		_square.setPulseWidth(SquareOscillator::defaultPulseWidth);
 	}
 
-	++_modulationStep;
-	if (_modulationStep >= modulationSteps) {
-		_modulationStep = 0;
-
-		setFrequency(params[FREQUENCY_PARAM], inputs[PITCH_INPUT], _phasor);
-
-		_wave = (Wave)roundf(params[WAVE_PARAM].getValue());
-		if (_wave == SQUARE_WAVE) {
-			float pw = params[SAMPLE_PWM_PARAM].getValue();
-			if (inputs[SAMPLE_PWM_INPUT].isConnected()) {
-				pw *= clamp(inputs[SAMPLE_PWM_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
-			}
-			pw *= 1.0f - 2.0f * _square.minPulseWidth;
-			pw *= 0.5f;
-			pw += 0.5f;
-			_square.setPulseWidth(pw);
-			_sampleSteps = 1;
-		}
-		else {
-			float sample = fabsf(params[SAMPLE_PWM_PARAM].getValue());
-			if (inputs[SAMPLE_PWM_INPUT].isConnected()) {
-				sample *= clamp(fabsf(inputs[SAMPLE_PWM_INPUT].getVoltage()) / 5.0f, 0.0f, 1.0f);
-			}
-			float maxSampleSteps = (_phasor._sampleRate / _phasor._frequency) / 4.0f;
-			_sampleSteps = clamp((int)(sample * maxSampleSteps), 1, (int)maxSampleSteps);
-			_square.setPulseWidth(SquareOscillator::defaultPulseWidth);
-		}
-
-		_offset = params[OFFSET_PARAM].getValue();
-		if (inputs[OFFSET_INPUT].isConnected()) {
-			_offset *= clamp(inputs[OFFSET_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
-		}
-		_offset *= 5.0f;
-		_scale = params[SCALE_PARAM].getValue();
-		if (inputs[SCALE_INPUT].isConnected()) {
-			_scale *= clamp(inputs[SCALE_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-		}
-
-		_phase7Offset = phaseOffset(params[PHASE7_PARAM], inputs[PHASE7_INPUT], basePhase7Offset);
-		_phase6Offset = phaseOffset(params[PHASE6_PARAM], inputs[PHASE6_INPUT], basePhase6Offset);
-		_phase5Offset = phaseOffset(params[PHASE5_PARAM], inputs[PHASE5_INPUT], basePhase5Offset);
-		_phase4Offset = phaseOffset(params[PHASE4_PARAM], inputs[PHASE4_INPUT], basePhase4Offset);
-		_phase3Offset = phaseOffset(params[PHASE3_PARAM], inputs[PHASE3_INPUT], basePhase3Offset);
-		_phase2Offset = phaseOffset(params[PHASE2_PARAM], inputs[PHASE2_INPUT], basePhase2Offset);
-		_phase1Offset = phaseOffset(params[PHASE1_PARAM], inputs[PHASE1_INPUT], basePhase1Offset);
-		_phase0Offset = phaseOffset(params[PHASE0_PARAM], inputs[PHASE0_INPUT], basePhase0Offset);
+	_offset = params[OFFSET_PARAM].getValue();
+	if (inputs[OFFSET_INPUT].isConnected()) {
+		_offset *= clamp(inputs[OFFSET_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
+	}
+	_offset *= 5.0f;
+	_scale = params[SCALE_PARAM].getValue();
+	if (inputs[SCALE_INPUT].isConnected()) {
+		_scale *= clamp(inputs[SCALE_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
 	}
 
+	_phase7Offset = phaseOffset(params[PHASE7_PARAM], inputs[PHASE7_INPUT], basePhase7Offset);
+	_phase6Offset = phaseOffset(params[PHASE6_PARAM], inputs[PHASE6_INPUT], basePhase6Offset);
+	_phase5Offset = phaseOffset(params[PHASE5_PARAM], inputs[PHASE5_INPUT], basePhase5Offset);
+	_phase4Offset = phaseOffset(params[PHASE4_PARAM], inputs[PHASE4_INPUT], basePhase4Offset);
+	_phase3Offset = phaseOffset(params[PHASE3_PARAM], inputs[PHASE3_INPUT], basePhase3Offset);
+	_phase2Offset = phaseOffset(params[PHASE2_PARAM], inputs[PHASE2_INPUT], basePhase2Offset);
+	_phase1Offset = phaseOffset(params[PHASE1_PARAM], inputs[PHASE1_INPUT], basePhase1Offset);
+	_phase0Offset = phaseOffset(params[PHASE0_PARAM], inputs[PHASE0_INPUT], basePhase0Offset);
+}
+
+void EightFO::alwaysProcess(const ProcessArgs& args) {
+	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].getValue() > 0.5f;
+}
+
+void EightFO::processIfActive(const ProcessArgs& args) {
 	if (_resetTrigger.next(inputs[RESET_INPUT].getVoltage())) {
 		_phasor.resetPhase();
 	}
