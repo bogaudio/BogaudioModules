@@ -2,60 +2,80 @@
 #include "FlipFlop.hpp"
 
 void FlipFlop::reset() {
-	_flipped1 = false;
-	_flipped2 = false;
-	_trigger1.reset();
-	_resetTrigger1.reset();
-	_trigger2.reset();
-	_resetTrigger2.reset();
+	for (int i = 0; i < maxChannels; ++i) {
+		_flipped1[i] = false;
+		_trigger1[i].reset();
+		_resetTrigger1[i].reset();
+
+		_flipped2[i] = false;
+		_trigger2[i].reset();
+		_resetTrigger2[i].reset();
+	}
 }
 
-void FlipFlop::processChannel(const ProcessArgs& args, int _c) {
-	channelStep(
-		inputs[IN1_INPUT],
-		inputs[RESET1_INPUT],
-		outputs[A1_OUTPUT],
-		outputs[B1_OUTPUT],
-		_trigger1,
-		_resetTrigger1,
-		_flipped1
-	);
-	channelStep(
-		inputs[IN2_INPUT],
-		inputs[RESET2_INPUT],
-		outputs[A2_OUTPUT],
-		outputs[B2_OUTPUT],
-		_trigger2,
-		_resetTrigger2,
-		_flipped2
-	);
+void FlipFlop::processChannel(const ProcessArgs& args, int c) {
+	assert(c == 0);
+
+	for (int i = 0, n = std::max(1, inputs[IN1_INPUT].getChannels()); i < n; ++i) {
+		channelStep(
+			i,
+			n,
+			inputs[IN1_INPUT],
+			inputs[RESET1_INPUT],
+			outputs[A1_OUTPUT],
+			outputs[B1_OUTPUT],
+			_trigger1,
+			_resetTrigger1,
+			_flipped1
+		);
+	}
+
+	for (int i = 0, n = std::max(1, inputs[IN2_INPUT].getChannels()); i < n; ++i) {
+		channelStep(
+			i,
+			n,
+			inputs[IN2_INPUT],
+			inputs[RESET2_INPUT],
+			outputs[A2_OUTPUT],
+			outputs[B2_OUTPUT],
+			_trigger2,
+			_resetTrigger2,
+			_flipped2
+		);
+	}
 }
 
 void FlipFlop::channelStep(
+	int c,
+	int channels,
 	Input& triggerInput,
 	Input& resetInput,
 	Output& aOutput,
 	Output& bOutput,
-	PositiveZeroCrossing& trigger,
-	Trigger& resetTrigger,
-	bool& flipped
+	PositiveZeroCrossing* trigger,
+	Trigger* resetTrigger,
+	bool* flipped
 ) {
-	bool triggered = trigger.next(triggerInput.getVoltage());
-	resetTrigger.process(resetInput.getVoltage());
-	if (resetTrigger.isHigh()) {
-		flipped = false;
+	bool triggered = trigger[c].next(triggerInput.getVoltage(c));
+	resetTrigger[c].process(resetInput.getPolyVoltage(c));
+	if (resetTrigger[c].isHigh()) {
+		flipped[c] = false;
 	}
 	else if (triggered) {
-		flipped = !flipped;
+		flipped[c] = !flipped[c];
 	}
 
-	if (flipped) {
-		aOutput.setVoltage(0.0f);
-		bOutput.setVoltage(5.0f);
+	if (flipped[c]) {
+		aOutput.setChannels(channels);
+		aOutput.setVoltage(0.0f, c);
+		bOutput.setChannels(channels);
+		bOutput.setVoltage(5.0f, c);
 	}
 	else {
-		aOutput.setVoltage(5.0f);
-		bOutput.setVoltage(0.0f);
+		aOutput.setChannels(channels);
+		aOutput.setVoltage(5.0f, c);
+		bOutput.setChannels(channels);
+		bOutput.setVoltage(0.0f, c);
 	}
 }
 

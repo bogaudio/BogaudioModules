@@ -34,12 +34,12 @@ struct FlipFlop : BGModule {
 		NUM_LIGHTS
 	};
 
-	bool _flipped1;
-	bool _flipped2;
-	PositiveZeroCrossing _trigger1;
-	Trigger _resetTrigger1;
-	PositiveZeroCrossing _trigger2;
-	Trigger _resetTrigger2;
+	bool _flipped1[maxChannels] {};
+	bool _flipped2[maxChannels] {};
+	PositiveZeroCrossing _trigger1[maxChannels];
+	Trigger _resetTrigger1[maxChannels];
+	PositiveZeroCrossing _trigger2[maxChannels];
+	Trigger _resetTrigger2[maxChannels];
 
 	FlipFlop() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
@@ -47,15 +47,18 @@ struct FlipFlop : BGModule {
 	}
 
 	void reset() override;
-	void processChannel(const ProcessArgs& args, int _c) override;
+	int channels() override { return 1; }
+	void processChannel(const ProcessArgs& args, int c) override;
 	void channelStep(
+		int c,
+		int channels,
 		Input& triggerInput,
 		Input& resetInput,
 		Output& aOutput,
 		Output& bOutput,
-		PositiveZeroCrossing& trigger,
-		Trigger& resetTrigger,
-		bool& flipped
+		PositiveZeroCrossing* trigger,
+		Trigger* resetTrigger,
+		bool* flipped
 	);
 };
 
