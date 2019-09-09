@@ -1,12 +1,12 @@
 
 #include "Manual.hpp"
 
-void Manual::onReset() {
+void Manual::reset() {
 	_trigger.reset();
 	_pulse.process(10.0f);
 }
 
-void Manual::process(const ProcessArgs& args) {
+void Manual::processChannel(const ProcessArgs& args, int _c) {
 	bool high = _trigger.process(params[TRIGGER_PARAM].getValue()) || _trigger.isHigh() || (_firstStep && _triggerOnLoad && _shouldTriggerOnLoad);
 	if (high) {
 		_pulse.trigger(0.001f);

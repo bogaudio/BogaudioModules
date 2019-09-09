@@ -252,7 +252,7 @@ struct Test : BGModule {
 		configParam(PARAM1_PARAM, 0.0f, 1.0f, 0.5f, "param1");
 		configParam(PARAM2_PARAM, 0.0f, 1.0f, 0.5f, "param2");
 		configParam(PARAM3_PARAM, 0.0f, 1.0f, 0.5f, "param3");
-		onReset();
+		reset();
 
 #ifdef SINE
 		_table.generate();
@@ -331,8 +331,8 @@ struct Test : BGModule {
 #endif
 	}
 
-	void onReset() override;
-	void process(const ProcessArgs& args) override;
+	void reset() override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 	float oscillatorPitch(float max = 10000.0);
 	float oscillatorPitch2(float max = 10000.0);
 	float ratio2();

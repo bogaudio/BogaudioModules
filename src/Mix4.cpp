@@ -1,7 +1,7 @@
 
 #include "Mix4.hpp"
 
-void Mix4::onSampleRateChange() {
+void Mix4::sampleRateChange() {
 	float sr = APP->engine->getSampleRate();
 	_channel1->setSampleRate(sr);
 	_channel2->setSampleRate(sr);
@@ -11,7 +11,7 @@ void Mix4::onSampleRateChange() {
 	_rms.setSampleRate(sr);
 }
 
-void Mix4::process(const ProcessArgs& args) {
+void Mix4::processChannel(const ProcessArgs& args, int _c) {
 	bool stereo = outputs[L_OUTPUT].isConnected() && outputs[R_OUTPUT].isConnected();
 	bool solo =
 		params[MUTE1_PARAM].getValue() > 1.5f ||

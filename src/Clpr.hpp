@@ -9,7 +9,7 @@ extern Model* modelClpr;
 
 namespace bogaudio {
 
-struct Clpr : ModulatingBGModule {
+struct Clpr : BGModule {
 	enum ParamsIds {
 		THRESHOLD_PARAM,
 		OUTPUT_GAIN_PARAM,
@@ -55,7 +55,7 @@ struct Clpr : ModulatingBGModule {
 
 	bool active() override;
 	void modulate() override;
-	void processIfActive(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

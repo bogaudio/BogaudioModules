@@ -10,7 +10,7 @@ extern Model* modelAD;
 
 namespace bogaudio {
 
-struct AD : ModulatingBGModule {
+struct AD : BGModule {
 	enum ParamsIds {
 		ATTACK_PARAM,
 		DECAY_PARAM,
@@ -66,8 +66,8 @@ struct AD : ModulatingBGModule {
 	void sampleRateChange() override;
 	bool active() override;
 	void modulate() override;
-	void alwaysProcess(const ProcessArgs& args) override;
-	void processIfActive(const ProcessArgs& args) override;
+	void always(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

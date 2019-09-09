@@ -52,11 +52,11 @@ void LFO::modulate() {
 	}
 }
 
-void LFO::alwaysProcess(const ProcessArgs& args) {
+void LFO::always(const ProcessArgs& args) {
 	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].getValue() > 0.5f;
 }
 
-void LFO::processIfActive(const ProcessArgs& args) {
+void LFO::processChannel(const ProcessArgs& args, int _c) {
 	if (_resetTrigger.next(inputs[RESET_INPUT].getVoltage())) {
 		_phasor.resetPhase();
 	}

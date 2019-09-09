@@ -51,12 +51,12 @@ struct VCA : BGModule {
 		configParam<LevelParamQuantity>(LEVEL2_PARAM, 0.0f, 1.0f, 0.8f, "Level 2");
 		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear");
 
-		onSampleRateChange();
+		sampleRateChange();
 	}
 
 	inline bool isLinear() { return params[LINEAR_PARAM].getValue() > 0.5f; }
-	void onSampleRateChange() override;
-	void process(const ProcessArgs& args) override;
+	void sampleRateChange() override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 	void channelStep(Input& input, Output& output, Param& knob, Input& cv, Amplifier& amplifier, bogaudio::dsp::SlewLimiter& levelSL, bool linear);
 };
 

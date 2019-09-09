@@ -128,13 +128,13 @@ void Additator::modulate() {
 	}
 }
 
-void Additator::alwaysProcess(const ProcessArgs& args) {
+void Additator::always(const ProcessArgs& args) {
 	Phase phase = params[PHASE_PARAM].getValue() > 1.5f ? PHASE_COSINE : PHASE_SINE;
 	lights[SINE_LIGHT].value = phase == PHASE_SINE;
 	lights[COSINE_LIGHT].value = phase == PHASE_COSINE;
 }
 
-void Additator::processIfActive(const ProcessArgs& args) {
+void Additator::processChannel(const ProcessArgs& args, int _c) {
 	if (_syncTrigger.next(inputs[SYNC_INPUT].getVoltage())) {
 		_oscillator.syncToPhase(_phase == PHASE_SINE ? 0.0f : M_PI / 2.0f);
 	}

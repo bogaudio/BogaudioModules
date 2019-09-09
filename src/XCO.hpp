@@ -11,7 +11,7 @@ extern Model* modelXCO;
 
 namespace bogaudio {
 
-struct XCO : ModulatingBGModule {
+struct XCO : BGModule {
 	enum ParamsIds {
 		FREQUENCY_PARAM,
 		FINE_PARAM,
@@ -150,8 +150,8 @@ struct XCO : ModulatingBGModule {
 	void sampleRateChange() override;
 	bool active() override;
 	void modulate() override;
-	void alwaysProcess(const ProcessArgs& args) override;
-	void processIfActive(const ProcessArgs& args) override;
+	void always(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 	Phasor::phase_delta_t phaseOffset(Param& param, Input& input);
 	float level(Param& param, Input& input);
 	void setSampleRate(float sampleRate);

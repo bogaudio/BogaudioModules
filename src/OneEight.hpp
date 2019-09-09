@@ -62,13 +62,13 @@ struct OneEight : SelectOnClockModule {
 		configParam(DIRECTION_PARAM, 0.0f, 1.0f, 1.0f, "Direction");
 		configParam(SELECT_PARAM, 0.0f, 7.0f, 0.0f, "Select step");
 
-		onReset();
-		onSampleRateChange();
+		reset();
+		sampleRateChange();
 	}
 
-	void onReset() override;
-	void onSampleRateChange() override;
-	void process(const ProcessArgs& args) override;
+	void reset() override;
+	void sampleRateChange() override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

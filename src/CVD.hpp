@@ -44,11 +44,11 @@ struct CVD : BGModule {
 		configParam(TIME_SCALE_PARAM, 0.0f, 2.0f, 1.0f, "Time scale", "", 10.0f, 0.1f);
 		configParam(MIX_PARAM, -1.0f, 1.0f, 0.0f, "Dry wet mix", "%", 0.0f, 100.0f);
 
-		onSampleRateChange();
+		sampleRateChange();
 	}
 
-	void onSampleRateChange() override;
-	void process(const ProcessArgs& args) override;
+	void sampleRateChange() override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

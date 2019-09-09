@@ -1,11 +1,11 @@
 
 #include "Follow.hpp"
 
-void Follow::onSampleRateChange() {
+void Follow::sampleRateChange() {
 	_rms.setSampleRate(APP->engine->getSampleRate());
 }
 
-void Follow::process(const ProcessArgs& args) {
+void Follow::processChannel(const ProcessArgs& args, int _c) {
 	if (inputs[IN_INPUT].isConnected() && outputs[OUT_OUTPUT].isConnected()) {
 		float response = params[RESPONSE_PARAM].getValue();
 		if (inputs[RESPONSE_INPUT].isConnected()) {

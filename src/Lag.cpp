@@ -38,7 +38,7 @@ void Lag::modulate() {
 	_slew.setParams(APP->engine->getSampleRate(), time, shape);
 }
 
-void Lag::processIfActive(const ProcessArgs& args) {
+void Lag::processChannel(const ProcessArgs& args, int _c) {
 	outputs[OUT_OUTPUT].setVoltage(_slew.next(inputs[IN_INPUT].getVoltageSum()));
 }
 

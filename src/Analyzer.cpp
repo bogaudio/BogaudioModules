@@ -62,7 +62,7 @@ void Analyzer::modulate() {
 	_core.setParams(averageN, quality, window);
 }
 
-void Analyzer::processIfActive(const ProcessArgs& args) {
+void Analyzer::processChannel(const ProcessArgs& args, int _c) {
 	for (int i = 0; i < 4; ++i) {
 		_core.stepChannel(i, inputs[SIGNALA_INPUT + i]);
 

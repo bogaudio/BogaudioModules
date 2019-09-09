@@ -178,7 +178,7 @@ struct Matrix88 : BGModule {
 		configParam(LEVEL_PARAM, 0.0f, 1.0f, 1.0f, "Level", "%", 0.0f, 100.0f);
 	}
 
-	void process(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

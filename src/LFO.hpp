@@ -85,8 +85,8 @@ struct LFO : LFOBase {
 	void sampleRateChange() override;
 	bool active() override;
 	void modulate() override;
-	void alwaysProcess(const ProcessArgs& args) override;
-	void processIfActive(const ProcessArgs& args) override;
+	void always(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 	void updateOutput(Phasor& wave, bool useSample, bool invert, Output& output, float& sample, bool& active);
 };
 

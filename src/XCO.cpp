@@ -82,11 +82,11 @@ void XCO::modulate() {
 	_sineMix = level(params[SINE_MIX_PARAM], inputs[SINE_MIX_INPUT]);
 }
 
-void XCO::alwaysProcess(const ProcessArgs& args) {
+void XCO::always(const ProcessArgs& args) {
 	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].getValue() > 0.5f;
 }
 
-void XCO::processIfActive(const ProcessArgs& args) {
+void XCO::processChannel(const ProcessArgs& args, int _c) {
 	if (_syncTrigger.next(inputs[SYNC_INPUT].getVoltage())) {
 		_phasor.resetPhase();
 	}

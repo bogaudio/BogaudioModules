@@ -9,7 +9,7 @@ extern Model* modelPressor;
 
 namespace bogaudio {
 
-struct Pressor : ModulatingBGModule {
+struct Pressor : BGModule {
 	enum ParamsIds {
 		THRESHOLD_PARAM,
 		RATIO_PARAM,
@@ -91,7 +91,7 @@ struct Pressor : ModulatingBGModule {
 	void sampleRateChange() override;
 	bool active() override;
 	void modulate() override;
-	void processIfActive(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

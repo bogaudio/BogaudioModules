@@ -1,37 +1,80 @@
 
 #include "Switch.hpp"
 
-void bogaudio::Switch::onReset() {
-	_trigger.reset();
+void bogaudio::Switch::reset() {
+	for (int i = 0; i < _channels; ++i) {
+		_trigger[i].reset();
+	}
 }
 
-void bogaudio::Switch::process(const ProcessArgs& args) {
-	bool latched = params[LATCH_PARAM].getValue() > 0.5f;
-	lights[LATCH_LIGHT].value = latched;
+bool bogaudio::Switch::active() {
+	return outputs[OUT1_OUTPUT].isConnected() || outputs[OUT2_OUTPUT].isConnected();
+}
 
-	bool triggered = _trigger.process(params[GATE_PARAM].getValue() + inputs[GATE_INPUT].getVoltage());
-	if (latched) {
+int bogaudio::Switch::channels() {
+	if (inputs[GATE_INPUT].isConnected()) {
+		return inputs[GATE_INPUT].getChannels();
+	}
+	return 1;
+}
+
+void bogaudio::Switch::channelsChanged(int before, int after) {
+	while (before < after) {
+		_trigger[before].reset();
+		++before;
+	}
+}
+
+void bogaudio::Switch::modulate() {
+	_latch = params[LATCH_PARAM].getValue() > 0.5f;
+}
+
+void bogaudio::Switch::always(const ProcessArgs& args) {
+	lights[LATCH_LIGHT].value = _latch;
+}
+
+void bogaudio::Switch::processChannel(const ProcessArgs& args, int c) {
+	bool triggered = _trigger[c].process(params[GATE_PARAM].getValue() + inputs[GATE_INPUT].getVoltage(c));
+	if (_latch) {
 		if (triggered) {
-			_latchedHigh = !_latchedHigh;
+			_latchedHigh[c] = !_latchedHigh[c];
 		}
 	}
 	else {
-		_latchedHigh = false;
+		_latchedHigh[c] = false;
 	}
 
-	if (_latchedHigh || _trigger.isHigh()) {
-		outputs[OUT1_OUTPUT].setChannels(inputs[HIGH1_INPUT].getChannels());
-		outputs[OUT1_OUTPUT].writeVoltages(inputs[HIGH1_INPUT].getVoltages());
+	if (_latchedHigh[c] || _trigger[c].isHigh()) {
+		if (_channels == 1) {
+			outputs[OUT1_OUTPUT].setChannels(inputs[HIGH1_INPUT].getChannels());
+			outputs[OUT1_OUTPUT].writeVoltages(inputs[HIGH1_INPUT].getVoltages());
 
-		outputs[OUT2_OUTPUT].setChannels(inputs[HIGH2_INPUT].getChannels());
-		outputs[OUT2_OUTPUT].writeVoltages(inputs[HIGH2_INPUT].getVoltages());
+			outputs[OUT2_OUTPUT].setChannels(inputs[HIGH2_INPUT].getChannels());
+			outputs[OUT2_OUTPUT].writeVoltages(inputs[HIGH2_INPUT].getVoltages());
+		}
+		else {
+			outputs[OUT1_OUTPUT].setChannels(std::max(inputs[LOW1_INPUT].getChannels(), inputs[HIGH1_INPUT].getChannels()));
+			outputs[OUT1_OUTPUT].setVoltage(inputs[HIGH1_INPUT].getVoltage(c), c);
+
+			outputs[OUT2_OUTPUT].setChannels(std::max(inputs[LOW2_INPUT].getChannels(), inputs[HIGH2_INPUT].getChannels()));
+			outputs[OUT2_OUTPUT].setVoltage(inputs[HIGH2_INPUT].getVoltage(c), c);
+		}
 	}
 	else {
-		outputs[OUT1_OUTPUT].setChannels(inputs[LOW1_INPUT].getChannels());
-		outputs[OUT1_OUTPUT].writeVoltages(inputs[LOW1_INPUT].getVoltages());
+		if (_channels == 1) {
+			outputs[OUT1_OUTPUT].setChannels(std::max(inputs[LOW1_INPUT].getChannels(), inputs[HIGH1_INPUT].getChannels()));
+			outputs[OUT1_OUTPUT].writeVoltages(inputs[LOW1_INPUT].getVoltages());
 
-		outputs[OUT2_OUTPUT].setChannels(inputs[LOW2_INPUT].getChannels());
-		outputs[OUT2_OUTPUT].writeVoltages(inputs[LOW2_INPUT].getVoltages());
+			outputs[OUT2_OUTPUT].setChannels(std::max(inputs[LOW2_INPUT].getChannels(), inputs[HIGH2_INPUT].getChannels()));
+			outputs[OUT2_OUTPUT].writeVoltages(inputs[LOW2_INPUT].getVoltages());
+		}
+		else {
+			outputs[OUT1_OUTPUT].setChannels(_channels);
+			outputs[OUT1_OUTPUT].setVoltage(inputs[LOW1_INPUT].getVoltage(c), c);
+
+			outputs[OUT2_OUTPUT].setChannels(_channels);
+			outputs[OUT2_OUTPUT].setVoltage(inputs[LOW2_INPUT].getVoltage(c), c);
+		}
 	}
 }
 

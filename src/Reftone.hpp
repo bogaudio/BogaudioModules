@@ -45,14 +45,14 @@ struct Reftone : BGModule {
 		configParam(OCTAVE_PARAM, 1.0f, 8.0f, 4.0f, "Octave");
 		configParam(FINE_PARAM, -0.99f, 0.99f, 0.0f, "Fine tune", " cents", 0.0f, 100.0f);
 
-		onSampleRateChange();
+		sampleRateChange();
 	}
 
-	void onSampleRateChange() override {
+	void sampleRateChange() override {
 		_sine.setSampleRate(APP->engine->getSampleRate());
 	}
 
-	void process(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

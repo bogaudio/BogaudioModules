@@ -32,11 +32,11 @@ struct Blank6 : BGModule {
 
 	Blank6() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		onSampleRateChange();
+		sampleRateChange();
 	}
 
-	void onSampleRateChange() override;
-	void process(const ProcessArgs& args) override;
+	void sampleRateChange() override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

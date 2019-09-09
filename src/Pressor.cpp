@@ -80,7 +80,7 @@ void Pressor::modulate() {
 	_softKnee = params[KNEE_PARAM].getValue() > 0.5f;
 }
 
-void Pressor::processIfActive(const ProcessArgs& args) {
+void Pressor::processChannel(const ProcessArgs& args, int _c) {
 	float leftInput = inputs[LEFT_INPUT].getVoltageSum() * _inLevel;
 	float rightInput = inputs[RIGHT_INPUT].getVoltageSum() * _inLevel;
 	float env = leftInput + rightInput;

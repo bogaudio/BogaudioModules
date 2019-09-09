@@ -6,20 +6,20 @@ const float Mute8::maxDecibels = 0.0f;
 const float Mute8::minDecibels = Amplifier::minDecibels;
 const float Mute8::slewTimeMS = 5.0f;
 
-void Mute8::onReset() {
+void Mute8::reset() {
 	for (int i = 0; i < 8; ++i) {
 		_triggers[i].reset();
 	}
 }
 
-void Mute8::onSampleRateChange() {
+void Mute8::sampleRateChange() {
 	float sampleRate = APP->engine->getSampleRate();
 	for (int i = 0; i < 8; ++i) {
 		_slewLimiters[i].setParams(sampleRate, slewTimeMS, maxDecibels - minDecibels);
 	}
 }
 
-void Mute8::process(const ProcessArgs& args) {
+void Mute8::processChannel(const ProcessArgs& args, int _c) {
 	bool solo = false;
 	for (int i = 0; i < 8; ++i) {
 		solo = solo || params[MUTE1_PARAM + i].getValue() > 1.5f;

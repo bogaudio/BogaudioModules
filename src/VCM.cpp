@@ -5,7 +5,7 @@ bool VCM::LevelParamQuantity::isLinear() {
 	return dynamic_cast<VCM*>(module)->isLinear();
 }
 
-void VCM::process(const ProcessArgs& args) {
+void VCM::processChannel(const ProcessArgs& args, int _c) {
 	bool linear = isLinear();
 	lights[LINEAR_LIGHT].value = linear;
 	if (outputs[MIX_OUTPUT].isConnected()) {

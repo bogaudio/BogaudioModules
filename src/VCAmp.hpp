@@ -42,12 +42,12 @@ struct VCAmp : BGModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(LEVEL_PARAM, 0.0f, 1.0f, fabs(minDecibels) / (maxDecibels - minDecibels), "Level", " dB", 0.0f, maxDecibels - minDecibels, minDecibels);
 
-		onSampleRateChange();
+		sampleRateChange();
 		_rms.setSensitivity(0.05f);
 	}
 
-	void onSampleRateChange() override;
-	void process(const ProcessArgs& args) override;
+	void sampleRateChange() override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

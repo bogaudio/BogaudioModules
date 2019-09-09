@@ -78,11 +78,11 @@ struct Test2 : BGModule {
 		configParam(PARAM2B_PARAM, 0.0f, 1.0f, 0.0f, "param2b");
 		configParam(PARAM3B_PARAM, 0.0f, 1.0f, 0.0f, "param3b");
 
-		onReset();
+		reset();
 	}
 
-	void onReset() override;
-	void process(const ProcessArgs& args) override;
+	void reset() override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 	// float oscillatorPitch1A();
 };
 

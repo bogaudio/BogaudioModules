@@ -61,11 +61,11 @@ struct VCM : DisableOutputLimitModule {
 		configParam<LevelParamQuantity>(LEVEL4_PARAM, 0.0f, 1.0f, 0.8f, "Level 4");
 		configParam<LevelParamQuantity>(MIX_PARAM, 0.0f, 1.0f, 0.8f, "Mix level");
 		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear");
-		onReset();
+		reset();
 	}
 
 	inline bool isLinear() { return params[LINEAR_PARAM].getValue() > 0.5f; }
-	void process(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 	float channelStep(Input& input, Param& knob, Input& cv, Amplifier& amplifier, bool linear);
 };
 

@@ -1,12 +1,12 @@
 
 #include "Cmp.hpp"
 
-void Cmp::onReset() {
+void Cmp::reset() {
 	_thresholdState = LOW;
 	_windowState = LOW;
 }
 
-void Cmp::process(const ProcessArgs& args) {
+void Cmp::processChannel(const ProcessArgs& args, int _c) {
 	if (!(
 		outputs[GREATER_OUTPUT].isConnected() ||
 		outputs[LESS_OUTPUT].isConnected() ||

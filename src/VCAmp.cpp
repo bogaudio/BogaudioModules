@@ -2,13 +2,13 @@
 #include "VCAmp.hpp"
 #include "mixer.hpp"
 
-void VCAmp::onSampleRateChange() {
+void VCAmp::sampleRateChange() {
 	float sampleRate = APP->engine->getSampleRate();
 	_levelSL.setParams(sampleRate, MixerChannel::levelSlewTimeMS, maxDecibels - minDecibels);
 	_rms.setSampleRate(sampleRate);
 }
 
-void VCAmp::process(const ProcessArgs& args) {
+void VCAmp::processChannel(const ProcessArgs& args, int _c) {
 	if (inputs[IN_INPUT].isConnected()) {
 		float level = params[LEVEL_PARAM].getValue();
 		if (inputs[CV_INPUT].isConnected()) {

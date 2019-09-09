@@ -1,11 +1,11 @@
 
 #include "Blank6.hpp"
 
-void Blank6::onSampleRateChange() {
+void Blank6::sampleRateChange() {
 	_rms.setSampleRate(APP->engine->getSampleRate());
 }
 
-void Blank6::process(const ProcessArgs& args) {
+void Blank6::processChannel(const ProcessArgs& args, int _c) {
 	if (inputs[IN_INPUT].isConnected()) {
 		_level = _rms.next(inputs[IN_INPUT].getVoltageSum()) / 5.0f;
 	}

@@ -5,10 +5,10 @@
 #include "Test2.hpp"
 #include "pitch.hpp"
 
-void Test2::onReset() {
+void Test2::reset() {
 }
 
-void Test2::process(const ProcessArgs& args) {
+void Test2::processChannel(const ProcessArgs& args, int _c) {
 	if (!outputs[OUT_OUTPUT].isConnected()) {
 		return;
 	}

@@ -42,7 +42,7 @@ struct Detune : BGModule {
 		configParam(CENTS_PARAM, 0.0f, 50.0f, 0.0f, "Cents");
 	}
 
-	void process(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

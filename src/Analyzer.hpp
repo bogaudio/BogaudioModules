@@ -50,7 +50,7 @@ struct Analyzer : AnalyzerBase {
 		configParam(SMOOTH_PARAM, 0.0f, 1.0f, 0.5f, "Smoothing", " ms", 0.0f, 500.0f);
 		configParam(QUALITY_PARAM, 1.0f, 3.0f, 1.0f, "Analysis quality");
 		configParam(WINDOW_PARAM, 1.0f, 3.0f, 1.0f, "Analysis window type");
-		onReset();
+		reset();
 	}
 	virtual ~Analyzer() {
 		reset();
@@ -61,7 +61,7 @@ struct Analyzer : AnalyzerBase {
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
 	void modulate() override;
-	void processIfActive(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

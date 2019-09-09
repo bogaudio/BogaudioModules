@@ -41,11 +41,11 @@ struct Manual : TriggerOnLoadModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(TRIGGER_PARAM, 0.0f, 1.0f, 0.0f, "Trigger");
 		_triggerOnLoad = false;
-		onReset();
+		reset();
 	}
 
-	void onReset() override;
-	void process(const ProcessArgs& args) override;
+	void reset() override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 	bool shouldTriggerOnNextLoad() override {
 		return true;
 	}

@@ -51,7 +51,7 @@ struct Stack : BGModule {
 		configParam(QUANTIZE_PARAM, 0.0f, 1.0f, 1.0f, "Quantize");
 	}
 
-	void process(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

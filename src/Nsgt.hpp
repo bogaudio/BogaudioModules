@@ -9,7 +9,7 @@ extern Model* modelNsgt;
 
 namespace bogaudio {
 
-struct Nsgt : ModulatingBGModule {
+struct Nsgt : BGModule {
 	enum ParamsIds {
 		THRESHOLD_PARAM,
 		RATIO_PARAM,
@@ -60,7 +60,7 @@ struct Nsgt : ModulatingBGModule {
 	void sampleRateChange() override;
 	bool active() override;
 	void modulate() override;
-	void processIfActive(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

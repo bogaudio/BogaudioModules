@@ -10,7 +10,7 @@ extern Model* modelWalk;
 
 namespace bogaudio {
 
-struct Walk : ModulatingBGModule {
+struct Walk : BGModule {
 	enum ParamsIds {
 		RATE_PARAM,
 		OFFSET_PARAM,
@@ -53,7 +53,7 @@ struct Walk : ModulatingBGModule {
 	void reset() override;
 	void sampleRateChange() override;
 	void modulate() override;
-	void processIfActive(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

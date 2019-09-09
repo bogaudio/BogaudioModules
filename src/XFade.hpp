@@ -46,11 +46,11 @@ struct XFade : BGModule {
 		configParam(CURVE_PARAM, 0.0f, 1.0f, 0.5f, "Curve");
 		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear");
 
-		onSampleRateChange();
+		sampleRateChange();
 	}
 
-	void onSampleRateChange() override;
-	void process(const ProcessArgs& args) override;
+	void sampleRateChange() override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

@@ -12,7 +12,7 @@ extern Model* modelFMOp;
 
 namespace bogaudio {
 
-struct FMOp : ModulatingBGModule {
+struct FMOp : BGModule {
 	enum ParamsIds {
 		RATIO_PARAM,
 		FINE_PARAM,
@@ -114,8 +114,8 @@ struct FMOp : ModulatingBGModule {
 	void dataFromJson(json_t* root) override;
 	bool active() override;
 	void modulate() override;
-	void alwaysProcess(const ProcessArgs& args) override;
-	void processIfActive(const ProcessArgs& args) override;
+	void always(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

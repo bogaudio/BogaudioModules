@@ -56,11 +56,11 @@ struct Cmp : BGModule {
 		configParam<ScaledSquaringParamQuantity<1>>(LAG_PARAM, 0.0f, 1.0f, 0.1f, "Lag", " s");
 		configParam(OUTPUT_PARAM, 0.0f, 1.0f, 0.0f, "Output");
 
-		onReset();
+		reset();
 	}
 
-	void onReset() override;
-	void process(const ProcessArgs& args) override;
+	void reset() override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 	void stepChannel(
 		bool high,
 		float highValue,

@@ -9,7 +9,7 @@ extern Model* modelLag;
 
 namespace bogaudio {
 
-struct Lag : ModulatingBGModule {
+struct Lag : BGModule {
 	enum ParamsIds {
 		TIME_PARAM,
 		TIME_SCALE_PARAM,
@@ -44,7 +44,7 @@ struct Lag : ModulatingBGModule {
 
 	bool active() override;
 	void modulate() override;
-	void processIfActive(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

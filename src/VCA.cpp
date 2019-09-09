@@ -5,13 +5,13 @@ bool VCA::LevelParamQuantity::isLinear() {
 	return dynamic_cast<VCA*>(module)->isLinear();
 }
 
-void VCA::onSampleRateChange() {
+void VCA::sampleRateChange() {
 	float sampleRate = APP->engine->getSampleRate();
 	_levelSL1.setParams(sampleRate, 5.0f, 1.0f);
 	_levelSL2.setParams(sampleRate, 5.0f, 1.0f);
 }
 
-void VCA::process(const ProcessArgs& args) {
+void VCA::processChannel(const ProcessArgs& args, int _c) {
 	bool linear = isLinear();
 	lights[LINEAR_LIGHT].value = linear;
 	channelStep(inputs[IN1_INPUT], outputs[OUT1_OUTPUT], params[LEVEL1_PARAM], inputs[CV1_INPUT], _amplifier1, _levelSL1, linear);

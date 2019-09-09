@@ -65,13 +65,13 @@ struct SampleHold : BGModule {
 		configParam(TRACK1_PARAM, 0.0f, 1.0f, 0.0f, "Track 1");
 		configParam(TRACK2_PARAM, 0.0f, 1.0f, 0.0f, "Track 2");
 
-		onReset();
+		reset();
 	}
 
-	void onReset() override;
+	void reset() override;
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
-	void process(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 	void processChannel(
 		Light& trackLight,
 		Param& trackParam,

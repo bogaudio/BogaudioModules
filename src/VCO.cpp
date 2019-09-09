@@ -49,11 +49,11 @@ void VCO::modulate() {
 	_fmDepth = params[FM_PARAM].getValue();
 }
 
-void VCO::alwaysProcess(const ProcessArgs& args) {
+void VCO::always(const ProcessArgs& args) {
 	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].getValue() > 0.5f;
 }
 
-void VCO::processIfActive(const ProcessArgs& args) {
+void VCO::processChannel(const ProcessArgs& args, int _c) {
 	if (_syncTrigger.next(inputs[SYNC_INPUT].getVoltage())) {
 		_phasor.resetPhase();
 	}

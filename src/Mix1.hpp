@@ -50,14 +50,14 @@ struct Mix1 : BGModule {
 			1000.0f,
 			&inputs[MUTE_INPUT]
 		);
-		onSampleRateChange();
+		sampleRateChange();
 	}
 	virtual ~Mix1() {
 		delete _channel;
 	}
 
-	void onSampleRateChange() override;
-	void process(const ProcessArgs& args) override;
+	void sampleRateChange() override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

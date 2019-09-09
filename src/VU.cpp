@@ -1,7 +1,7 @@
 
 #include "VU.hpp"
 
-void VU::onSampleRateChange() {
+void VU::sampleRateChange() {
 	float sr = APP->engine->getSampleRate();
 	_lRms.setSampleRate(sr);
 	_rRms.setSampleRate(sr);
@@ -11,7 +11,7 @@ void VU::onSampleRateChange() {
 	_rPeakSlew.setParams(sr, 750.0f, 1.0f);
 }
 
-void VU::process(const ProcessArgs& args) {
+void VU::processChannel(const ProcessArgs& args, int _c) {
 	float left = inputs[L_INPUT].getVoltageSum();
 	float right = 0.0f;
 	if (inputs[R_INPUT].isConnected()) {

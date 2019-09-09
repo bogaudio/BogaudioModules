@@ -46,15 +46,15 @@ struct VU : BGModule {
 
 	VU() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		onSampleRateChange();
+		sampleRateChange();
 		_lRms.setSensitivity(1.0f);
 		_rRms.setSensitivity(1.0f);
 		_lPeakRms.setSensitivity(0.025f);
 		_rPeakRms.setSensitivity(0.025f);
 	}
 
-	void onSampleRateChange() override;
-	void process(const ProcessArgs& args) override;
+	void sampleRateChange() override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

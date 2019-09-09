@@ -132,13 +132,13 @@ void FMOp::modulate() {
 	}
 }
 
-void FMOp::alwaysProcess(const ProcessArgs& args) {
+void FMOp::always(const ProcessArgs& args) {
 	lights[ENV_TO_LEVEL_LIGHT].value = params[ENV_TO_LEVEL_PARAM].getValue() > 0.5f;
 	lights[ENV_TO_FEEDBACK_LIGHT].value = params[ENV_TO_FEEDBACK_PARAM].getValue() > 0.5f;
 	lights[ENV_TO_DEPTH_LIGHT].value = params[ENV_TO_DEPTH_PARAM].getValue() > 0.5f;
 }
 
-void FMOp::processIfActive(const ProcessArgs& args) {
+void FMOp::processChannel(const ProcessArgs& args, int _c) {
 	float envelope = 0.0f;
 	if (_envelopeOn) {
 		float gateIn = 0.0f;

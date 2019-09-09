@@ -26,7 +26,7 @@ void Clpr::modulate() {
 	_softKnee = params[KNEE_PARAM].getValue() > 0.5f;
 }
 
-void Clpr::processIfActive(const ProcessArgs& args) {
+void Clpr::processChannel(const ProcessArgs& args, int _c) {
 	float leftInput = inputs[LEFT_INPUT].getVoltageSum();
 	float rightInput = inputs[RIGHT_INPUT].getVoltageSum();
 	float env = fabsf(leftInput + rightInput);

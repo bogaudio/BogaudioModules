@@ -1,11 +1,11 @@
 
 #include "CVD.hpp"
 
-void CVD::onSampleRateChange() {
+void CVD::sampleRateChange() {
 	_delay.setSampleRate(APP->engine->getSampleRate());
 }
 
-void CVD::process(const ProcessArgs& args) {
+void CVD::processChannel(const ProcessArgs& args, int _c) {
 	float time = params[TIME_PARAM].getValue();
 	if (inputs[TIME_INPUT].isConnected()) {
 		time *= clamp(inputs[TIME_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);

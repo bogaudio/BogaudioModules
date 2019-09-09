@@ -5,7 +5,7 @@
 #define RANGE_OFFSET "range_offset"
 #define RANGE_SCALE "range_scale"
 
-void SampleHold::onReset() {
+void SampleHold::reset() {
 	_trigger1.reset();
 	_value1 = 0.0f;
 	_trigger2.reset();
@@ -37,7 +37,7 @@ void SampleHold::dataFromJson(json_t* root) {
 	}
 }
 
-void SampleHold::process(const ProcessArgs& args) {
+void SampleHold::processChannel(const ProcessArgs& args, int _c) {
 	processChannel(
 		lights[TRACK1_LIGHT],
 		params[TRACK1_PARAM],

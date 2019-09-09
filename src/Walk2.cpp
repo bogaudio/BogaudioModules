@@ -84,7 +84,7 @@ void Walk2::modulate() {
 	}
 }
 
-void Walk2::processIfActive(const ProcessArgs& args) {
+void Walk2::processChannel(const ProcessArgs& args, int _c) {
 	Vec* jumpTo = _jumpTo;
 	if (jumpTo != NULL) {
 		_jumpTo = NULL;

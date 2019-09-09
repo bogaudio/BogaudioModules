@@ -35,12 +35,12 @@ void AD::modulate() {
 	_envelope.setLinearShape(_linearMode);
 }
 
-void AD::alwaysProcess(const ProcessArgs& args) {
+void AD::always(const ProcessArgs& args) {
 	lights[LOOP_LIGHT].value = _loopMode = params[LOOP_PARAM].getValue() > 0.5f;
 	lights[LINEAR_LIGHT].value = _linearMode = params[LINEAR_PARAM].getValue() > 0.5f;
 }
 
-void AD::processIfActive(const ProcessArgs& args) {
+void AD::processChannel(const ProcessArgs& args, int _c) {
 	_trigger.process(inputs[TRIGGER_INPUT].getVoltage());
 	if (!_on && (_trigger.isHigh() || (_loopMode && _envelope.isStage(ADSR::STOPPED_STAGE)))) {
 		_on = true;

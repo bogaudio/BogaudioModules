@@ -2,12 +2,12 @@
 #include "Pan.hpp"
 #include "mixer.hpp"
 
-void Pan::onSampleRateChange() {
+void Pan::sampleRateChange() {
 	_slew1.setParams(APP->engine->getSampleRate(), MixerChannel::panSlewTimeMS, 2.0f);
 	_slew2.setParams(APP->engine->getSampleRate(), MixerChannel::panSlewTimeMS, 2.0f);
 }
 
-void Pan::process(const ProcessArgs& args) {
+void Pan::processChannel(const ProcessArgs& args, int _c) {
 	if (!((inputs[IN1_INPUT].isConnected() || inputs[IN2_INPUT].isConnected()) && (outputs[L_OUTPUT].isConnected() || outputs[R_OUTPUT].isConnected()))) {
 		return;
 	}

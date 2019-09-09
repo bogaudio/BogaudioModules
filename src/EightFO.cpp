@@ -78,11 +78,11 @@ void EightFO::modulate() {
 	_phase0Offset = phaseOffset(params[PHASE0_PARAM], inputs[PHASE0_INPUT], basePhase0Offset);
 }
 
-void EightFO::alwaysProcess(const ProcessArgs& args) {
+void EightFO::always(const ProcessArgs& args) {
 	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].getValue() > 0.5f;
 }
 
-void EightFO::processIfActive(const ProcessArgs& args) {
+void EightFO::processChannel(const ProcessArgs& args, int _c) {
 	if (_resetTrigger.next(inputs[RESET_INPUT].getVoltage())) {
 		_phasor.resetPhase();
 	}

@@ -136,8 +136,8 @@ struct EightFO : LFOBase {
 	void sampleRateChange() override;
 	bool active() override;
 	void modulate() override;
-	void alwaysProcess(const ProcessArgs& args) override;
-	void processIfActive(const ProcessArgs& args) override;
+	void always(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 	Phasor::phase_delta_t phaseOffset(Param& p, Input& i, Phasor::phase_delta_t baseOffset);
 	void updateOutput(bool useSample, Output& output, Phasor::phase_delta_t& offset, float& sample, bool& active);
 };

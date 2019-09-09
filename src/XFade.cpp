@@ -1,11 +1,11 @@
 
 #include "XFade.hpp"
 
-void XFade::onSampleRateChange() {
+void XFade::sampleRateChange() {
 	_mixSL.setParams(APP->engine->getSampleRate(), 10.0f, 2.0f);
 }
 
-void XFade::process(const ProcessArgs& args) {
+void XFade::processChannel(const ProcessArgs& args, int _c) {
 	bool linear = params[LINEAR_PARAM].getValue() > 0.5f;
 	lights[LINEAR_LIGHT].value = linear;
 	if (!outputs[OUT_OUTPUT].isConnected()) {

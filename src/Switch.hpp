@@ -33,18 +33,24 @@ struct Switch : BGModule {
 		NUM_LIGHTS
 	};
 
-	Trigger _trigger;
-	bool _latchedHigh = false;
+	Trigger _trigger[maxChannels];
+	bool _latchedHigh[maxChannels] {};
+	bool _latch = false;
 
 	Switch() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(GATE_PARAM, 0.0f, 10.0f, 0.0f, "Gate");
 		configParam(LATCH_PARAM, 0.0f, 1.0f, 0.0f, "Latch");
-		onReset();
+		reset();
 	}
 
-	void onReset() override;
-	void process(const ProcessArgs& args) override;
+	void reset() override;
+	bool active() override;
+	int channels() override;
+	void channelsChanged(int before, int after) override;
+	void modulate() override;
+	void always(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

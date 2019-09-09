@@ -15,7 +15,7 @@ void Slew::modulate() {
 	_fall.setParams(APP->engine->getSampleRate(), fallTime, fallShape);
 }
 
-void Slew::processIfActive(const ProcessArgs& args) {
+void Slew::processChannel(const ProcessArgs& args, int _c) {
 	float sample = inputs[IN_INPUT].getVoltageSum();
 	if (sample > _last) {
 		if (!_rising) {

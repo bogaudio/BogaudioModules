@@ -1,7 +1,7 @@
 
 #include "Detune.hpp"
 
-void Detune::process(const ProcessArgs& args) {
+void Detune::processChannel(const ProcessArgs& args, int _c) {
 	if (!(outputs[OUT_PLUS_OUTPUT].isConnected() || outputs[OUT_MINUS_OUTPUT].isConnected() || outputs[THRU_OUTPUT].isConnected())) {
 		return;
 	}

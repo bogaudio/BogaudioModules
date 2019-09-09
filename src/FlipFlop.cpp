@@ -1,7 +1,7 @@
 
 #include "FlipFlop.hpp"
 
-void FlipFlop::onReset() {
+void FlipFlop::reset() {
 	_flipped1 = false;
 	_flipped2 = false;
 	_trigger1.reset();
@@ -10,7 +10,7 @@ void FlipFlop::onReset() {
 	_resetTrigger2.reset();
 }
 
-void FlipFlop::process(const ProcessArgs& args) {
+void FlipFlop::processChannel(const ProcessArgs& args, int _c) {
 	channelStep(
 		inputs[IN1_INPUT],
 		inputs[RESET1_INPUT],

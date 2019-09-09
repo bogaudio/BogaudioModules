@@ -1,7 +1,7 @@
 
 #include "Sums.hpp"
 
-void Sums::process(const ProcessArgs& args) {
+void Sums::processChannel(const ProcessArgs& args, int _c) {
 	float a = inputs[A_INPUT].getVoltageSum();
 	float b = inputs[B_INPUT].getVoltageSum();
 	if (_disableOutputLimit) {

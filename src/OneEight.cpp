@@ -1,17 +1,17 @@
 
 #include "OneEight.hpp"
 
-void OneEight::onReset() {
+void OneEight::reset() {
 	_step = 0;
 	_clock.reset();
 	_reset.reset();
 }
 
-void OneEight::onSampleRateChange() {
+void OneEight::sampleRateChange() {
 	_timer.setParams(APP->engine->getSampleRate(), 0.001f);
 }
 
-void OneEight::process(const ProcessArgs& args) {
+void OneEight::processChannel(const ProcessArgs& args, int _c) {
 	bool reset = _reset.process(inputs[RESET_INPUT].getVoltage());
 	if (reset) {
 		_timer.reset();

@@ -132,7 +132,7 @@ struct Mix8 : BGModule {
 		_channel6 = new MixerChannel(params[LEVEL6_PARAM], params[PAN6_PARAM], params[MUTE6_PARAM], inputs[IN6_INPUT], inputs[CV6_INPUT], inputs[PAN6_INPUT]);
 		_channel7 = new MixerChannel(params[LEVEL7_PARAM], params[PAN7_PARAM], params[MUTE7_PARAM], inputs[IN7_INPUT], inputs[CV7_INPUT], inputs[PAN7_INPUT]);
 		_channel8 = new MixerChannel(params[LEVEL8_PARAM], params[PAN8_PARAM], params[MUTE8_PARAM], inputs[IN8_INPUT], inputs[CV8_INPUT], inputs[PAN8_INPUT]);
-		onSampleRateChange();
+		sampleRateChange();
 		_rms.setSensitivity(0.05f);
 	}
 	virtual ~Mix8() {
@@ -146,8 +146,8 @@ struct Mix8 : BGModule {
 		delete _channel8;
 	}
 
-	void onSampleRateChange() override;
-	void process(const ProcessArgs& args) override;
+	void sampleRateChange() override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

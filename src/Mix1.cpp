@@ -1,11 +1,11 @@
 
 #include "Mix1.hpp"
 
-void Mix1::onSampleRateChange() {
+void Mix1::sampleRateChange() {
 	_channel->setSampleRate(APP->engine->getSampleRate());
 }
 
-void Mix1::process(const ProcessArgs& args) {
+void Mix1::processChannel(const ProcessArgs& args, int _c) {
 	_channel->next(false, false);
 	outputs[OUT_OUTPUT].setVoltage(_channel->out);
 }

@@ -1,7 +1,7 @@
 
 #include "Noise.hpp"
 
-void Noise::process(const ProcessArgs& args) {
+void Noise::processChannel(const ProcessArgs& args, int _c) {
 	if (outputs[BLUE_OUTPUT].isConnected()) {
 		outputs[BLUE_OUTPUT].setVoltage(clamp(_blue.next() * 20.0f, -10.0f, 10.f));
 	}

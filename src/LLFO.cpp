@@ -52,7 +52,7 @@ void LLFO::modulate() {
 	_scale = params[SCALE_PARAM].getValue();
 }
 
-void LLFO::alwaysProcess(const ProcessArgs& args) {
+void LLFO::always(const ProcessArgs& args) {
 	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].getValue() > 0.5f;
 
 	Wave wave = (Wave)params[WAVE_PARAM].getValue();
@@ -64,7 +64,7 @@ void LLFO::alwaysProcess(const ProcessArgs& args) {
 	lights[PULSE_LIGHT].value = wave == PULSE_WAVE;
 }
 
-void LLFO::processIfActive(const ProcessArgs& args) {
+void LLFO::processChannel(const ProcessArgs& args, int _c) {
 	if (_resetTrigger.next(inputs[RESET_INPUT].getVoltage())) {
 		_phasor.resetPhase();
 	}

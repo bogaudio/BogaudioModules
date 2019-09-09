@@ -1,7 +1,7 @@
 
 #include "Stack.hpp"
 
-void Stack::process(const ProcessArgs& args) {
+void Stack::processChannel(const ProcessArgs& args, int _c) {
 	lights[QUANTIZE_LIGHT].value = params[QUANTIZE_PARAM].getValue() > 0.5f;
 	if (!(outputs[OUT_OUTPUT].isConnected() || outputs[THRU_OUTPUT].isConnected())) {
 		return;

@@ -1,14 +1,14 @@
 
 #include "DGate.hpp"
 
-void DGate::onReset() {
+void DGate::reset() {
 	_trigger.reset();
 	_triggerOuptutPulseGen.process(10.0);
 	_stage = STOPPED_STAGE;
 	_stageProgress = 0.0;
 }
 
-void DGate::process(const ProcessArgs& args) {
+void DGate::processChannel(const ProcessArgs& args, int _c) {
 	float envelope = 0.0;
 	bool complete = false;
 	if (

@@ -1,17 +1,17 @@
 
 #include "EightOne.hpp"
 
-void EightOne::onReset() {
+void EightOne::reset() {
 	_step = 0;
 	_clock.reset();
 	_reset.reset();
 }
 
-void EightOne::onSampleRateChange() {
+void EightOne::sampleRateChange() {
 	_timer.setParams(APP->engine->getSampleRate(), 0.001f);
 }
 
-void EightOne::process(const ProcessArgs& args) {
+void EightOne::processChannel(const ProcessArgs& args, int _c) {
 	bool reset = _reset.process(inputs[RESET_INPUT].getVoltage());
 	if (reset) {
 		_timer.reset();

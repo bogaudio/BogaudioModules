@@ -1,11 +1,11 @@
 
 #include "Blank3.hpp"
 
-void Blank3::onSampleRateChange() {
+void Blank3::sampleRateChange() {
 	_rms.setSampleRate(APP->engine->getSampleRate());
 }
 
-void Blank3::process(const ProcessArgs& args) {
+void Blank3::processChannel(const ProcessArgs& args, int _c) {
 	if (inputs[IN_INPUT].isConnected()) {
 		_level = _rms.next(inputs[IN_INPUT].getVoltageSum()) / 5.0f;
 	}

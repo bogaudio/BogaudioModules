@@ -13,7 +13,7 @@ extern Model* modelWalk2;
 
 namespace bogaudio {
 
-struct Walk2 : ModulatingBGModule {
+struct Walk2 : BGModule {
 	enum ParamsIds {
 		RATE_X_PARAM,
 		RATE_Y_PARAM,
@@ -91,7 +91,7 @@ struct Walk2 : ModulatingBGModule {
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
 	void modulate() override;
-	void processIfActive(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

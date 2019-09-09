@@ -1,7 +1,7 @@
 
 #include "AMRM.hpp"
 
-void AMRM::process(const ProcessArgs& args) {
+void AMRM::processChannel(const ProcessArgs& args, int _c) {
 	if (!(outputs[OUT_OUTPUT].isConnected() || outputs[RECTIFY_OUTPUT].isConnected())) {
 		return;
 	}

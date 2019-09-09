@@ -23,7 +23,7 @@ void UMix::dataFromJson(json_t* root) {
 	}
 }
 
-void UMix::process(const ProcessArgs& args) {
+void UMix::processChannel(const ProcessArgs& args, int _c) {
 	if (!outputs[OUT_OUTPUT].isConnected()) {
 		return;
 	}

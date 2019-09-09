@@ -3,24 +3,35 @@
 
 using namespace bogaudio;
 
-void ModulatingBGModule::onReset() {
+void BGModule::onReset() {
 	_steps = _modulationSteps;
 	reset();
 }
 
-void ModulatingBGModule::onSampleRateChange() {
+void BGModule::onSampleRateChange() {
 	_steps = _modulationSteps;
 	sampleRateChange();
 }
 
-void ModulatingBGModule::process(const ProcessArgs& args) {
-	alwaysProcess(args);
+void BGModule::process(const ProcessArgs& args) {
+	always(args);
 	if (active()) {
 		++_steps;
 		if (_steps >= _modulationSteps) {
 			_steps = 0;
+
+			int channelsBefore = _channels;
+			int channelsNow = channels();
+			if (channelsBefore != channelsNow) {
+				_channels = channelsNow;
+				channelsChanged(channelsBefore, channelsNow);
+			}
+
 			modulate();
 		}
-		processIfActive(args);
+
+		for (int i = 0; i < _channels; ++i) {
+			processChannel(args, i);
+		}
 	}
 }

@@ -29,7 +29,7 @@ void Walk::modulate() {
 	}
 }
 
-void Walk::processIfActive(const ProcessArgs& args) {
+void Walk::processChannel(const ProcessArgs& args, int _c) {
 	if (_jumpTrigger.process(inputs[JUMP_INPUT].getVoltage())) {
 		_walk.jump();
 	}

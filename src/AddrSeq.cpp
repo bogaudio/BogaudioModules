@@ -27,13 +27,13 @@ void AddrSeq::OutputParamQuantity::setDisplayValue(float v) {
 	setValue(v);
 }
 
-void AddrSeq::onReset() {
+void AddrSeq::reset() {
 	_step = 0;
 	_clock.reset();
 	_reset.reset();
 }
 
-void AddrSeq::onSampleRateChange() {
+void AddrSeq::sampleRateChange() {
 	_timer.setParams(APP->engine->getSampleRate(), 0.001f);
 }
 
@@ -58,7 +58,7 @@ void AddrSeq::dataFromJson(json_t* root) {
 	}
 }
 
-void AddrSeq::process(const ProcessArgs& args) {
+void AddrSeq::processChannel(const ProcessArgs& args, int _c) {
 	bool reset = _reset.process(inputs[RESET_INPUT].getVoltage());
 	if (reset) {
 		_timer.reset();

@@ -11,7 +11,7 @@ extern Model* modelVCO;
 
 namespace bogaudio {
 
-struct VCO : ModulatingBGModule {
+struct VCO : BGModule {
 	enum ParamsIds {
 		FREQUENCY_PARAM,
 		FINE_PARAM,
@@ -91,8 +91,8 @@ struct VCO : ModulatingBGModule {
 	void sampleRateChange() override;
 	bool active() override;
 	void modulate() override;
-	void alwaysProcess(const ProcessArgs& args) override;
-	void processIfActive(const ProcessArgs& args) override;
+	void always(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 	void setSampleRate(float sampleRate);
 	void setFrequency(float frequency);
 };

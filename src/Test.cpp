@@ -1,10 +1,10 @@
 
 #include "Test.hpp"
 
-void Test::onReset() {
+void Test::reset() {
 }
 
-void Test::process(const ProcessArgs& args) {
+void Test::processChannel(const ProcessArgs& args, int _c) {
 	if (!(outputs[OUT_OUTPUT].isConnected() || outputs[OUT2_OUTPUT].isConnected())) {
 		return;
 	}

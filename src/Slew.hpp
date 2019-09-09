@@ -9,7 +9,7 @@ extern Model* modelSlew;
 
 namespace bogaudio {
 
-struct Slew : ModulatingBGModule {
+struct Slew : BGModule {
 	enum ParamsIds {
 		RISE_PARAM,
 		RISE_SHAPE_PARAM,
@@ -49,7 +49,7 @@ struct Slew : ModulatingBGModule {
 
 	bool active() override;
 	void modulate() override;
-	void processIfActive(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 	float time(Param& param, Input& input);
 	float shape(Param& param);
 };

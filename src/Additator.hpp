@@ -11,7 +11,7 @@ extern Model* modelAdditator;
 
 namespace bogaudio {
 
-struct Additator : ModulatingBGModule {
+struct Additator : BGModule {
 	enum ParamsIds {
 		FREQUENCY_PARAM,
 		PARTIALS_PARAM,
@@ -115,8 +115,8 @@ struct Additator : ModulatingBGModule {
 	bool active() override;
 	void modulate() override;
 	float cvValue(Input& cv, bool dc = false);
-	void alwaysProcess(const ProcessArgs& args) override;
-	void processIfActive(const ProcessArgs& args) override;
+	void always(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

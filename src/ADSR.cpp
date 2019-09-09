@@ -22,11 +22,11 @@ void ADSR::modulate() {
 	_envelope.setLinearShape(_linearMode);
 }
 
-void ADSR::alwaysProcess(const ProcessArgs& args) {
+void ADSR::always(const ProcessArgs& args) {
 	lights[LINEAR_LIGHT].value = _linearMode = params[LINEAR_PARAM].getValue() > 0.5f;
 }
 
-void ADSR::processIfActive(const ProcessArgs& args) {
+void ADSR::processChannel(const ProcessArgs& args, int _c) {
 	_gateTrigger.process(inputs[GATE_INPUT].getVoltage());
 	_envelope.setGate(_gateTrigger.isHigh());
 	outputs[OUT_OUTPUT].setVoltage(_envelope.next() * 10.0f);

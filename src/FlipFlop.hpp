@@ -43,11 +43,11 @@ struct FlipFlop : BGModule {
 
 	FlipFlop() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		onReset();
+		reset();
 	}
 
-	void onReset() override;
-	void process(const ProcessArgs& args) override;
+	void reset() override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 	void channelStep(
 		Input& triggerInput,
 		Input& resetInput,

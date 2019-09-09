@@ -77,15 +77,15 @@ struct AddrSeq : SelectOnClockModule {
 		configParam<OutputParamQuantity>(OUT7_PARAM, -1.0f, 1.0f, 0.0f, "Step 7", " V");
 		configParam<OutputParamQuantity>(OUT8_PARAM, -1.0f, 1.0f, 0.0f, "Step 8", " V");
 
-		onReset();
-		onSampleRateChange();
+		reset();
+		sampleRateChange();
 	}
 
-	void onReset() override;
-	void onSampleRateChange() override;
+	void reset() override;
+	void sampleRateChange() override;
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
-	void process(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

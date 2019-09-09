@@ -138,17 +138,17 @@ struct DADSRHPlus : TriggerOnLoadModule {
 			_triggerOnLoad,
 			_shouldTriggerOnLoad
 		);
-		onReset();
+		reset();
 	}
 	virtual ~DADSRHPlus() {
 		delete _core;
 	}
 
-	void onReset() override {
+	void reset() override {
 		_core->reset();
 	}
 
-	void process(const ProcessArgs& args) override {
+	void processChannel(const ProcessArgs& args, int _c) override {
 		_core->step();
 	}
 

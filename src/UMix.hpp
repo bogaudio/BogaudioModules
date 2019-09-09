@@ -47,7 +47,7 @@ struct UMix : BGModule {
 
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
-	void process(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

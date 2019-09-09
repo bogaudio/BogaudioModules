@@ -9,7 +9,7 @@ extern Model* modelLmtr;
 
 namespace bogaudio {
 
-struct Lmtr : ModulatingBGModule {
+struct Lmtr : BGModule {
 	enum ParamsIds {
 		THRESHOLD_PARAM,
 		OUTPUT_GAIN_PARAM,
@@ -60,7 +60,7 @@ struct Lmtr : ModulatingBGModule {
 	void sampleRateChange() override;
 	bool active() override;
 	void modulate() override;
-	void processIfActive(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 };
 
 } // namespace bogaudio

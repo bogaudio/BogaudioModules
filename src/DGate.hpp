@@ -52,11 +52,11 @@ struct DGate : TriggerOnLoadModule {
 		configParam(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "Loop");
 		configParam(TRIGGER_PARAM, 0.0f, 1.0f, 0.0f, "Trigger");
 
-		onReset();
+		reset();
 	}
 
-	void onReset() override;
-	void process(const ProcessArgs& args) override;
+	void reset() override;
+	void processChannel(const ProcessArgs& args, int _c) override;
 	bool stepStage(Param& knob);
 	bool shouldTriggerOnNextLoad() override {
 		return _stage != STOPPED_STAGE;

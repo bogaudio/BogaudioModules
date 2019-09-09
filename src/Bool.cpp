@@ -1,7 +1,7 @@
 
 #include "Bool.hpp"
 
-void Bool::process(const ProcessArgs& args) {
+void Bool::processChannel(const ProcessArgs& args, int _c) {
 	bool a = inputs[A_INPUT].getVoltage() > 1.0f;
 	bool b = inputs[B_INPUT].getVoltage() > 1.0f;
 	outputs[AND_OUTPUT].setVoltage(a && b ? 5.0f : 0.0f);
