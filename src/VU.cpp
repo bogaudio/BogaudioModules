@@ -13,12 +13,19 @@ void VU::sampleRateChange() {
 
 void VU::processChannel(const ProcessArgs& args, int _c) {
 	float left = inputs[L_INPUT].getVoltageSum();
+	outputs[L_OUTPUT].setChannels(inputs[L_INPUT].getChannels());
+	outputs[L_OUTPUT].writeVoltages(inputs[L_INPUT].getVoltages());
+
 	float right = 0.0f;
 	if (inputs[R_INPUT].isConnected()) {
 		right = inputs[R_INPUT].getVoltageSum();
+		outputs[R_OUTPUT].setChannels(inputs[R_INPUT].getChannels());
+		outputs[R_OUTPUT].writeVoltages(inputs[R_INPUT].getVoltages());
 	}
 	else {
 		right = left;
+		outputs[R_OUTPUT].setChannels(inputs[L_INPUT].getChannels());
+		outputs[R_OUTPUT].writeVoltages(inputs[L_INPUT].getVoltages());
 	}
 
 	_lLevel = _lRms.next(left) / 5.0f;
@@ -49,9 +56,6 @@ void VU::processChannel(const ProcessArgs& args, int _c) {
 		_rPeakFalling = false;
 	}
 	_rPeakLevel = rPeak;
-
-	outputs[L_OUTPUT].setVoltage(left);
-	outputs[R_OUTPUT].setVoltage(right);
 }
 
 struct VUDisplay : OpaqueWidget {
