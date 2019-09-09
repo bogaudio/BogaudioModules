@@ -2,17 +2,25 @@
 #include "Mult.hpp"
 
 void Mult::process(const ProcessArgs& args) {
-	float out = inputs[INA_INPUT].getVoltageSum();
-	outputs[OUTA1_OUTPUT].setVoltage(out);
-	outputs[OUTA2_OUTPUT].setVoltage(out);
-	outputs[OUTA3_OUTPUT].setVoltage(out);
+	int n = inputs[INA_INPUT].getChannels();
+	float* out = inputs[INA_INPUT].getVoltages();
+	outputs[OUTA1_OUTPUT].setChannels(n);
+	outputs[OUTA1_OUTPUT].writeVoltages(out);
+	outputs[OUTA2_OUTPUT].setChannels(n);
+	outputs[OUTA2_OUTPUT].writeVoltages(out);
+	outputs[OUTA3_OUTPUT].setChannels(n);
+	outputs[OUTA3_OUTPUT].writeVoltages(out);
 
 	if (inputs[INB_INPUT].isConnected()) {
-		out = inputs[INB_INPUT].getVoltageSum();
+		n = inputs[INB_INPUT].getChannels();
+		out = inputs[INB_INPUT].getVoltages();
 	}
-	outputs[OUTB1_OUTPUT].setVoltage(out);
-	outputs[OUTB2_OUTPUT].setVoltage(out);
-	outputs[OUTB3_OUTPUT].setVoltage(out);
+	outputs[OUTB1_OUTPUT].setChannels(n);
+	outputs[OUTB1_OUTPUT].writeVoltages(out);
+	outputs[OUTB2_OUTPUT].setChannels(n);
+	outputs[OUTB2_OUTPUT].writeVoltages(out);
+	outputs[OUTB3_OUTPUT].setChannels(n);
+	outputs[OUTB3_OUTPUT].writeVoltages(out);
 }
 
 struct MultWidget : ModuleWidget {
