@@ -30,7 +30,7 @@ void UMix::processChannel(const ProcessArgs& args, int _c) {
 	if (_sum) {
 		float out = 0.0f;
 		for (int i = 0; i < 8; ++i) {
-			out += inputs[IN1_INPUT + i].getVoltage();
+			out += inputs[IN1_INPUT + i].getVoltageSum();
 		}
 		out *= params[LEVEL_PARAM].getValue();
 		if (_cvMode) {
