@@ -1,14 +1,25 @@
 
 #include "Bool.hpp"
 
-void Bool::processChannel(const ProcessArgs& args, int _c) {
-	bool a = inputs[A_INPUT].getVoltage() > 1.0f;
-	bool b = inputs[B_INPUT].getVoltage() > 1.0f;
-	outputs[AND_OUTPUT].setVoltage(a && b ? 5.0f : 0.0f);
-	outputs[OR_OUTPUT].setVoltage(a || b ? 5.0f : 0.0f);
-	outputs[XOR_OUTPUT].setVoltage(a ^ b ? 5.0f : 0.0f);
+void Bool::processChannel(const ProcessArgs& args, int c) {
+	assert(c == 0);
 
-	outputs[NOT_OUTPUT].setVoltage((inputs[NOT_INPUT].isConnected() && inputs[NOT_INPUT].getVoltage() > 1.0f) ? 0.0f : 5.0f);
+	for (int i = 0, cn = std::max(inputs[A_INPUT].getChannels(), inputs[B_INPUT].getChannels()); i < cn; ++i) {
+		bool a = inputs[A_INPUT].getPolyVoltage(i) > 1.0f;
+		bool b = inputs[B_INPUT].getPolyVoltage(i) > 1.0f;
+		outputs[AND_OUTPUT].setChannels(cn);
+		outputs[AND_OUTPUT].setVoltage(5.0f * (a && b), i);
+		outputs[OR_OUTPUT].setChannels(cn);
+		outputs[OR_OUTPUT].setVoltage(5.0f * (a || b), i);
+		outputs[XOR_OUTPUT].setChannels(cn);
+		outputs[XOR_OUTPUT].setVoltage(5.0f * (a ^ b), i);
+	}
+
+	int cn = inputs[NOT_INPUT].getChannels();
+	outputs[NOT_OUTPUT].setChannels(cn);
+	for (int i = 0; i < cn; ++i) {
+		outputs[NOT_OUTPUT].setVoltage(5.0f * (inputs[NOT_INPUT].isConnected() && inputs[NOT_INPUT].getPolyVoltage(i) > 1.0f), i);
+	}
 }
 
 struct BoolWidget : ModuleWidget {

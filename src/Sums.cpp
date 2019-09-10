@@ -1,33 +1,38 @@
 
 #include "Sums.hpp"
 
-void Sums::processChannel(const ProcessArgs& args, int _c) {
-	float a = inputs[A_INPUT].getVoltageSum();
-	float b = inputs[B_INPUT].getVoltageSum();
-	if (_disableOutputLimit) {
-		outputs[SUM_OUTPUT].setVoltage(a + b);
-		outputs[DIFFERENCE_OUTPUT].setVoltage(a - b);
-		outputs[MAX_OUTPUT].setVoltage(std::max(a, b));
-		outputs[MIN_OUTPUT].setVoltage(std::min(a, b));
+void Sums::processChannel(const ProcessArgs& args, int c) {
+	assert(c == 0);
 
-		if (inputs[NEGATE_INPUT].isConnected()) {
-			outputs[NEGATE_OUTPUT].setVoltage(-inputs[NEGATE_INPUT].getVoltage());
+	for (int i = 0, cn = std::max(inputs[A_INPUT].getChannels(), inputs[B_INPUT].getChannels()); i < cn; ++i) {
+		float a = inputs[A_INPUT].getPolyVoltage(i);
+		float b = inputs[B_INPUT].getPolyVoltage(i);
+		outputs[SUM_OUTPUT].setChannels(cn);
+		outputs[DIFFERENCE_OUTPUT].setChannels(cn);
+		outputs[MAX_OUTPUT].setChannels(cn);
+		outputs[MIN_OUTPUT].setChannels(cn);
+		if (_disableOutputLimit) {
+			outputs[SUM_OUTPUT].setVoltage(a + b, i);
+			outputs[DIFFERENCE_OUTPUT].setVoltage(a - b, i);
+			outputs[MAX_OUTPUT].setVoltage(std::max(a, b), i);
+			outputs[MIN_OUTPUT].setVoltage(std::min(a, b), i);
 		}
 		else {
-			outputs[NEGATE_OUTPUT].setVoltage(0.0f);
+			outputs[SUM_OUTPUT].setVoltage(clamp(a + b, -12.0f, 12.0f), i);
+			outputs[DIFFERENCE_OUTPUT].setVoltage(clamp(a - b, -12.0f, 12.0f), i);
+			outputs[MAX_OUTPUT].setVoltage(clamp(std::max(a, b), -12.0f, 12.0f), i);
+			outputs[MIN_OUTPUT].setVoltage(clamp(std::min(a, b), -12.0f, 12.0f), i);
 		}
 	}
-	else {
-		outputs[SUM_OUTPUT].setVoltage(clamp(a + b, -12.0f, 12.0f));
-		outputs[DIFFERENCE_OUTPUT].setVoltage(clamp(a - b, -12.0f, 12.0f));
-		outputs[MAX_OUTPUT].setVoltage(clamp(std::max(a, b), -12.0f, 12.0f));
-		outputs[MIN_OUTPUT].setVoltage(clamp(std::min(a, b), -12.0f, 12.0f));
 
-		if (inputs[NEGATE_INPUT].isConnected()) {
-			outputs[NEGATE_OUTPUT].setVoltage(clamp(-inputs[NEGATE_INPUT].getVoltage(), -12.0f, 12.0f));
+	int cn = inputs[NEGATE_INPUT].getChannels();
+	outputs[NEGATE_OUTPUT].setChannels(cn);
+	for (int i = 0; i < cn; ++i) {
+		if (_disableOutputLimit) {
+			outputs[NEGATE_OUTPUT].setVoltage(-inputs[NEGATE_INPUT].getPolyVoltage(i), i);
 		}
 		else {
-			outputs[NEGATE_OUTPUT].setVoltage(0.0f);
+			outputs[NEGATE_OUTPUT].setVoltage(clamp(-inputs[NEGATE_INPUT].getPolyVoltage(i), -12.0f, 12.0f), i);
 		}
 	}
 }
