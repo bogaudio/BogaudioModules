@@ -27,6 +27,7 @@ struct BGModule : Module {
 	virtual int channels() { return 1; }
 	virtual void channelsChanged(int before, int after) {}
 	virtual void modulate() {}
+	virtual void modulateChannel(int c) {}
 	virtual void always(const ProcessArgs& args) {}
 	virtual void processChannel(const ProcessArgs& args, int c) = 0;
 };

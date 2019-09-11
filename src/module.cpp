@@ -28,6 +28,9 @@ void BGModule::process(const ProcessArgs& args) {
 			}
 
 			modulate();
+			for (int i = 0; i < _channels; ++i) {
+				modulateChannel(i);
+			}
 		}
 
 		for (int i = 0; i < _channels; ++i) {

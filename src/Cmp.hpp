@@ -43,10 +43,13 @@ struct Cmp : BGModule {
 		LAG_HIGH
 	};
 
-	State _thresholdState;
-	int _thresholdLag = 0;
-	State _windowState;
-	int _windowLag = 0;
+	State _thresholdState[maxChannels] {};
+	int _thresholdLag[maxChannels] {};
+	State _windowState[maxChannels] {};
+	int _windowLag[maxChannels] {};
+	float _highValue = 10.0f;
+	float _lowValue = 0.0f;
+	int _lagInSamples[maxChannels] {};
 
 	Cmp() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
@@ -60,18 +63,19 @@ struct Cmp : BGModule {
 	}
 
 	void reset() override;
-	void processChannel(const ProcessArgs& args, int _c) override;
+	bool active() override;
+	int channels() override;
+	void modulate() override;
+	void modulateChannel(int c) override;
+	void processChannel(const ProcessArgs& args, int c) override;
 	void stepChannel(
+		int c,
 		bool high,
-		float highValue,
-		float lowValue,
 		State& state,
 		int& channelLag,
-		int& lag,
 		Output& highOutput,
 		Output& lowOutput
 	);
-	int lagInSamples();
 };
 
 } // namespace bogaudio
