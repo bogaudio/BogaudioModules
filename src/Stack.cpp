@@ -1,42 +1,50 @@
 
 #include "Stack.hpp"
 
-void Stack::processChannel(const ProcessArgs& args, int _c) {
-	lights[QUANTIZE_LIGHT].value = params[QUANTIZE_PARAM].getValue() > 0.5f;
-	if (!(outputs[OUT_OUTPUT].isConnected() || outputs[THRU_OUTPUT].isConnected())) {
-		return;
-	}
+bool Stack::active() {
+	return outputs[OUT_OUTPUT].isConnected() || outputs[THRU_OUTPUT].isConnected();
+}
 
-	float semitones = roundf(params[OCTAVE_PARAM].getValue()) * 12.0f;
-	semitones += roundf(params[SEMIS_PARAM].getValue());
+int Stack::channels() {
+	return std::max(1, inputs[IN_INPUT].getChannels());
+}
+
+void Stack::always(const ProcessArgs& args) {
+	lights[QUANTIZE_LIGHT].value = params[QUANTIZE_PARAM].getValue() > 0.5f;
+}
+
+void Stack::modulateChannel(int c) {
+	_semitones[c] = roundf(params[OCTAVE_PARAM].getValue()) * 12.0f;
+	_semitones[c] += roundf(params[SEMIS_PARAM].getValue());
 	if (inputs[CV_INPUT].isConnected()) {
-		semitones += clamp(inputs[CV_INPUT].getVoltage(), -5.0f, 5.0f) * 10.0f;
+		_semitones[c] += clamp(inputs[CV_INPUT].getPolyVoltage(c), -5.0f, 5.0f) * 10.0f;
 	}
 	if (params[QUANTIZE_PARAM].getValue() > 0.5f) {
-		semitones = roundf(semitones);
+		_semitones[c] = roundf(_semitones[c]);
 	}
+}
 
-	float inCV = 0.0f;
-	if (inputs[IN_INPUT].isConnected()) {
-		inCV = clamp(inputs[IN_INPUT].getVoltage(), _minCVOut, _maxCVOut);
-	}
-
+void Stack::processChannel(const ProcessArgs& args, int c) {
+	float inCV = clamp(inputs[IN_INPUT].getVoltage(c), _minCVOut, _maxCVOut);
 	float fine = params[FINE_PARAM].getValue();
 
-	if (_semitones != semitones || _inCV != inCV || _fine != fine) {
-		_semitones = semitones;
-		_inCV = inCV;
-		_fine = fine;
-		_outCV = clamp(semitoneToCV((_inCV != 0.0f ? cvToSemitone(_inCV) : referenceSemitone) + _semitones + _fine), _minCVOut, _maxCVOut);
+	if (_semitones[c] != _lastSemitones[c] || inCV != _lastInCV[c] || fine != _lastFine[c]) {
+		_lastSemitones[c] = _semitones[c];
+		_lastInCV[c] = inCV;
+		_lastFine[c] = fine;
+		_outCV[c] = clamp(semitoneToCV((inCV != 0.0f ? cvToSemitone(inCV) : referenceSemitone) + _semitones[c] + fine), _minCVOut, _maxCVOut);
 	}
 
 	if (inputs[IN_INPUT].isConnected()) {
-		outputs[THRU_OUTPUT].setVoltage(_inCV);
+		outputs[THRU_OUTPUT].setChannels(_channels);
+		outputs[THRU_OUTPUT].setVoltage(inCV, c);
 	}
 	else {
-		outputs[THRU_OUTPUT].setVoltage(_semitones / 10.0);
+		assert(c == 0);
+		outputs[THRU_OUTPUT].setVoltage(_semitones[c] / 10.0);
 	}
-	outputs[OUT_OUTPUT].setVoltage(_outCV);
+	outputs[OUT_OUTPUT].setChannels(_channels);
+	outputs[OUT_OUTPUT].setVoltage(_outCV[c], c);
 }
 
 struct StackWidget : ModuleWidget {

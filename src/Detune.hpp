@@ -32,17 +32,26 @@ struct Detune : BGModule {
 		NUM_LIGHTS
 	};
 
-	float _cents = -1.0f;
-	float _inCV = -1000.0f;
-	float _plusCV;
-	float _minusCV;
+	float _cents[maxChannels] {};
+	float _lastCents[maxChannels];
+	float _lastInCV[maxChannels];
+	float _plusCV[maxChannels] {};
+	float _minusCV[maxChannels] {};
 
 	Detune() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(CENTS_PARAM, 0.0f, 50.0f, 0.0f, "Cents");
+
+		for (int i = 0; i < maxChannels; ++i) {
+			_lastCents[i] = -1.0f;
+			_lastInCV[i] = -1000.0f;
+		}
 	}
 
-	void processChannel(const ProcessArgs& args, int _c) override;
+	bool active() override;
+	int channels() override;
+	void modulateChannel(int c) override;
+	void processChannel(const ProcessArgs& args, int c) override;
 };
 
 } // namespace bogaudio

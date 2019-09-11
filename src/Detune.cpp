@@ -1,40 +1,46 @@
 
 #include "Detune.hpp"
 
-void Detune::processChannel(const ProcessArgs& args, int _c) {
-	if (!(outputs[OUT_PLUS_OUTPUT].isConnected() || outputs[OUT_MINUS_OUTPUT].isConnected() || outputs[THRU_OUTPUT].isConnected())) {
-		return;
-	}
+bool Detune::active() {
+	return outputs[OUT_PLUS_OUTPUT].isConnected() || outputs[OUT_MINUS_OUTPUT].isConnected() || outputs[THRU_OUTPUT].isConnected();
+}
 
-	float cents = params[CENTS_PARAM].getValue();
+int Detune::channels() {
+	return inputs[IN_INPUT].getChannels();
+}
+
+void Detune::modulateChannel(int c) {
+	_cents[c] = params[CENTS_PARAM].getValue();
 	if (inputs[CV_INPUT].isConnected()) {
-		cents *= clamp(inputs[CV_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-		cents = roundf(cents);
+		_cents[c] *= clamp(inputs[CV_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
+		_cents[c] = roundf(_cents[c]);
 	}
-	cents /= 100.0f;
+	_cents[c] /= 100.0f;;
+}
 
-	float inCV = 0.0f;
-	if (inputs[IN_INPUT].isConnected()) {
-		inCV = inputs[IN_INPUT].getVoltage();
-	}
+void Detune::processChannel(const ProcessArgs& args, int c) {
+	float inCV = inputs[IN_INPUT].getVoltage(c);
 
-	if (_cents != cents || _inCV != inCV) {
-		_cents = cents;
-		_inCV = inCV;
-		if (_cents < 0.001f) {
-			_plusCV = _inCV;
-			_minusCV = _inCV;
+	if (_cents[c] != _lastCents[c] || inCV != _lastInCV[c]) {
+		_lastCents[c] = _cents[c];
+		_lastInCV[c] = inCV;
+		if (_cents[c] < 0.001f) {
+			_plusCV[c] = inCV;
+			_minusCV[c] = inCV;
 		}
 		else {
-			float semitone = cvToSemitone(_inCV);
-			_plusCV = semitoneToCV(semitone + cents);
-			_minusCV = semitoneToCV(semitone - cents);
+			float semitone = cvToSemitone(inCV);
+			_plusCV[c] = semitoneToCV(semitone + _cents[c]);
+			_minusCV[c] = semitoneToCV(semitone - _cents[c]);
 		}
 	}
 
-	outputs[THRU_OUTPUT].setVoltage(_inCV);
-	outputs[OUT_PLUS_OUTPUT].setVoltage(_plusCV);
-	outputs[OUT_MINUS_OUTPUT].setVoltage(_minusCV);
+	outputs[THRU_OUTPUT].setChannels(_channels);
+	outputs[THRU_OUTPUT].setVoltage(inCV, c);
+	outputs[OUT_PLUS_OUTPUT].setChannels(_channels);
+	outputs[OUT_PLUS_OUTPUT].setVoltage(_plusCV[c], c);
+	outputs[OUT_MINUS_OUTPUT].setChannels(_channels);
+	outputs[OUT_MINUS_OUTPUT].setVoltage(_minusCV[c], c);
 }
 
 struct DetuneWidget : ModuleWidget {

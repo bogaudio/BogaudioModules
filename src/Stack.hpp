@@ -38,10 +38,11 @@ struct Stack : BGModule {
 	const float _minCVOut = semitoneToCV(24.0); // C1
 	const float _maxCVOut = semitoneToCV(120.0); // C9
 
-	float _semitones = -1000.0f;
-	float _inCV = -1000.0f;
-	float _fine = -1000.0f;
-	float _outCV;
+	float _semitones[maxChannels] {};
+	float _lastSemitones[maxChannels];
+	float _lastInCV[maxChannels];
+	float _lastFine[maxChannels];
+	float _outCV[maxChannels] {};
 
 	Stack() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
@@ -49,9 +50,19 @@ struct Stack : BGModule {
 		configParam(OCTAVE_PARAM, -3.0f, 3.0f, 0.0f, "Octaves");
 		configParam(FINE_PARAM, -0.99f, 0.99f, 0.0f, "Fine tune", " cents", 0.0f, 100.0f);
 		configParam(QUANTIZE_PARAM, 0.0f, 1.0f, 1.0f, "Quantize");
+
+		for (int i = 0; i < maxChannels; ++i) {
+			_lastSemitones[i] = -1000.0f;
+			_lastInCV[i] = -1000.0f;
+			_lastFine[i] = -1000.0f;
+		}
 	}
 
-	void processChannel(const ProcessArgs& args, int _c) override;
+	bool active() override;
+	int channels() override;
+	void modulateChannel(int c) override;
+	void always(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int c) override;
 };
 
 } // namespace bogaudio
