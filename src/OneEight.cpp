@@ -2,40 +2,71 @@
 #include "OneEight.hpp"
 
 void OneEight::reset() {
-	_step = 0;
-	_clock.reset();
-	_reset.reset();
+	for (int i = 0; i < maxChannels; ++i) {
+		_step[i] = 0;
+		_clock[i].reset();
+		_reset[i].reset();
+	}
 }
 
 void OneEight::sampleRateChange() {
-	_timer.setParams(APP->engine->getSampleRate(), 0.001f);
+	for (int i = 0; i < maxChannels; ++i) {
+		_timer[i].setParams(APP->engine->getSampleRate(), 0.001f);
+	}
 }
 
-void OneEight::processChannel(const ProcessArgs& args, int _c) {
-	bool reset = _reset.process(inputs[RESET_INPUT].getVoltage());
+int OneEight::channels() {
+	return std::max(1, std::max(inputs[CLOCK_INPUT].getChannels(), inputs[SELECT_INPUT].getChannels()));
+}
+
+void OneEight::processChannel(const ProcessArgs& args, int c) {
+	bool reset = _reset[c].process(inputs[RESET_INPUT].getVoltage());
 	if (reset) {
-		_timer.reset();
+		_timer[c].reset();
 	}
-	bool timer = _timer.next();
-	bool clock = _clock.process(inputs[CLOCK_INPUT].getVoltage()) && !timer;
+	bool timer = _timer[c].next();
+	bool clock = _clock[c].process(inputs[CLOCK_INPUT].getPolyVoltage(c)) && !timer;
 
 	int steps = clamp(params[STEPS_PARAM].getValue(), 1.0f, 8.0f);
 	int reverse = 1 - 2 * (params[DIRECTION_PARAM].getValue() == 0.0f);
-	_step = (_step + reverse * clock) % steps;
-	_step += (_step < 0) * steps;
-	_step -= _step * reset;
+	_step[c] = (_step[c] + reverse * clock) % steps;
+	_step[c] += (_step[c] < 0) * steps;
+	_step[c] -= _step[c] * reset;
 	float select = params[SELECT_PARAM].getValue();
-	select += clamp(inputs[SELECT_INPUT].getVoltage(), 0.0f, 10.0f) * 0.1f * 8.0f;
+	select += clamp(inputs[SELECT_INPUT].getPolyVoltage(c), 0.0f, 10.0f) * 0.1f * 8.0f;
 	if (!_selectOnClock || clock) {
-		_select = select;
+		_select[c] = select;
 	}
-	int step = _step + roundf(_select);
+	int step = _step[c] + roundf(_select[c]);
 	step = step % 8;
 
-	float in = inputs[IN_INPUT].getVoltageSum() + !inputs[IN_INPUT].isConnected() * 10.0f;
-	for (int i = 0; i < 8; ++i) {
-		outputs[OUT1_OUTPUT + i].setVoltage((step == i) * in);
-		lights[OUT1_LIGHT + i].value = step == i;
+	if (_channels > 1) {
+		float in = inputs[IN_INPUT].getPolyVoltage(c) + !inputs[IN_INPUT].isConnected() * 10.0f;
+		for (int i = 0; i < 8; ++i) {
+			outputs[OUT1_OUTPUT + i].setChannels(_channels);
+			outputs[OUT1_OUTPUT + i].setVoltage((step == i) * in, c);
+		}
+		if (c == 0) {
+			for (int i = 0; i < 8; ++i) {
+				lights[OUT1_LIGHT + i].value = step == i;
+			}
+		}
+	}
+	else if (!inputs[IN_INPUT].isConnected()) {
+		for (int i = 0; i < 8; ++i) {
+			outputs[OUT1_OUTPUT + i].setChannels(1);
+			outputs[OUT1_OUTPUT + i].setVoltage((step == i) * 10.0f);
+			lights[OUT1_LIGHT + i].value = step == i;
+		}
+	}
+	else {
+		float* in = inputs[IN_INPUT].getVoltages();
+		static float zeroes[maxChannels] {};
+		for (int i = 0; i < 8; ++i) {
+			outputs[OUT1_OUTPUT + i].setChannels(inputs[IN_INPUT].getChannels());
+			outputs[OUT1_OUTPUT + i].writeVoltages((step == i) ? in : zeroes);
+			lights[OUT1_LIGHT + i].value = step == i;
+		}
 	}
 }
 

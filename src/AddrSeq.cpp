@@ -28,13 +28,17 @@ void AddrSeq::OutputParamQuantity::setDisplayValue(float v) {
 }
 
 void AddrSeq::reset() {
-	_step = 0;
-	_clock.reset();
-	_reset.reset();
+	for (int i = 0; i < maxChannels; ++i) {
+		_step[i] = 0;
+		_clock[i].reset();
+		_reset[i].reset();
+	}
 }
 
 void AddrSeq::sampleRateChange() {
-	_timer.setParams(APP->engine->getSampleRate(), 0.001f);
+	for (int i = 0; i < maxChannels; ++i) {
+		_timer[i].setParams(APP->engine->getSampleRate(), 0.001f);
+	}
 }
 
 json_t* AddrSeq::dataToJson() {
@@ -58,35 +62,41 @@ void AddrSeq::dataFromJson(json_t* root) {
 	}
 }
 
-void AddrSeq::processChannel(const ProcessArgs& args, int _c) {
-	bool reset = _reset.process(inputs[RESET_INPUT].getVoltage());
+int AddrSeq::channels() {
+	return std::max(1, std::max(inputs[CLOCK_INPUT].getChannels(), inputs[SELECT_INPUT].getChannels()));
+}
+
+void AddrSeq::processChannel(const ProcessArgs& args, int c) {
+	bool reset = _reset[c].process(inputs[RESET_INPUT].getVoltage());
 	if (reset) {
-		_timer.reset();
+		_timer[c].reset();
 	}
-	bool timer = _timer.next();
-	bool clock = _clock.process(inputs[CLOCK_INPUT].getVoltage()) && !timer;
+	bool timer = _timer[c].next();
+	bool clock = _clock[c].process(inputs[CLOCK_INPUT].getPolyVoltage(c)) && !timer;
 
 	int steps = clamp(params[STEPS_PARAM].getValue(), 1.0f, 8.0f);
 	int reverse = 1 - 2 * (params[DIRECTION_PARAM].getValue() == 0.0f);
-	_step = (_step + reverse * clock) % steps;
-	_step += (_step < 0) * steps;
-	_step -= _step * reset;
+	_step[c] = (_step[c] + reverse * clock) % steps;
+	_step[c] += (_step[c] < 0) * steps;
+	_step[c] -= _step[c] * reset;
 	float select = params[SELECT_PARAM].getValue();
-	select += clamp(inputs[SELECT_INPUT].getVoltage(), 0.0f, 10.0f) * 0.1f * 8.0f;
+	select += clamp(inputs[SELECT_INPUT].getPolyVoltage(c), 0.0f, 10.0f) * 0.1f * 8.0f;
 	if (!_selectOnClock || clock) {
-		_select = select;
+		_select[c] = select;
 	}
-	int step = _step + roundf(_select);
+	int step = _step[c] + roundf(_select[c]);
 	step = step % 8;
 
-	float out = 0.0f;
-	for (int i = 0; i < 8; ++i) {
-		out += params[OUT1_PARAM + i].getValue() * (step == i);
-		lights[OUT1_LIGHT + i].value = step == i;
-	}
+	float out = params[OUT1_PARAM + step].getValue();
 	out += _rangeOffset;
 	out *= _rangeScale;
-	outputs[OUT_OUTPUT].setVoltage(out);
+	outputs[OUT_OUTPUT].setChannels(_channels);
+	outputs[OUT_OUTPUT].setVoltage(out, c);
+	if (c == 0) {
+		for (int i = 0; i < 8; ++i) {
+			lights[OUT1_LIGHT + i].value = step == i;
+		}
+	}
 }
 
 struct AddrSeqWidget : SelectOnClockModuleWidget {

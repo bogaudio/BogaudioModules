@@ -50,11 +50,11 @@ struct OneEight : SelectOnClockModule {
 		NUM_LIGHTS
 	};
 
-	Trigger _clock;
-	Trigger _reset;
-	bogaudio::dsp::Timer _timer;
-	int _step;
-	float _select = 0.0f;
+	Trigger _clock[maxChannels];
+	Trigger _reset[maxChannels];
+	bogaudio::dsp::Timer _timer[maxChannels];
+	int _step[maxChannels];
+	float _select[maxChannels] {};
 
 	OneEight() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
@@ -68,7 +68,8 @@ struct OneEight : SelectOnClockModule {
 
 	void reset() override;
 	void sampleRateChange() override;
-	void processChannel(const ProcessArgs& args, int _c) override;
+	int channels() override;
+	void processChannel(const ProcessArgs& args, int c) override;
 };
 
 } // namespace bogaudio

@@ -50,11 +50,11 @@ struct AddrSeq : SelectOnClockModule {
 		NUM_LIGHTS
 	};
 
-	Trigger _clock;
-	Trigger _reset;
-	bogaudio::dsp::Timer _timer;
-	int _step;
-	float _select = 0.0f;
+	Trigger _clock[maxChannels];
+	Trigger _reset[maxChannels];
+	bogaudio::dsp::Timer _timer[maxChannels];
+	int _step[maxChannels];
+	float _select[maxChannels] {};
 	float _rangeOffset = 0.0f;
 	float _rangeScale = 10.0f;
 
@@ -85,7 +85,8 @@ struct AddrSeq : SelectOnClockModule {
 	void sampleRateChange() override;
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
-	void processChannel(const ProcessArgs& args, int _c) override;
+	int channels() override;
+	void processChannel(const ProcessArgs& args, int c) override;
 };
 
 } // namespace bogaudio

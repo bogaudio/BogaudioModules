@@ -2,42 +2,61 @@
 #include "EightOne.hpp"
 
 void EightOne::reset() {
-	_step = 0;
-	_clock.reset();
-	_reset.reset();
+	for (int i = 0; i < maxChannels; ++i) {
+		_step[i] = 0;
+		_clock[i].reset();
+		_reset[i].reset();
+	}
 }
 
 void EightOne::sampleRateChange() {
-	_timer.setParams(APP->engine->getSampleRate(), 0.001f);
+	for (int i = 0; i < maxChannels; ++i) {
+		_timer[i].setParams(APP->engine->getSampleRate(), 0.001f);
+	}
 }
 
-void EightOne::processChannel(const ProcessArgs& args, int _c) {
-	bool reset = _reset.process(inputs[RESET_INPUT].getVoltage());
+int EightOne::channels() {
+	return std::max(1, std::max(inputs[CLOCK_INPUT].getChannels(), inputs[SELECT_INPUT].getChannels()));
+}
+
+void EightOne::processChannel(const ProcessArgs& args, int c) {
+	bool reset = _reset[c].process(inputs[RESET_INPUT].getVoltage());
 	if (reset) {
-		_timer.reset();
+		_timer[c].reset();
 	}
-	bool timer = _timer.next();
-	bool clock = _clock.process(inputs[CLOCK_INPUT].getVoltage()) && !timer;
+	bool timer = _timer[c].next();
+	bool clock = _clock[c].process(inputs[CLOCK_INPUT].getPolyVoltage(c)) && !timer;
 
 	int steps = clamp(params[STEPS_PARAM].getValue(), 1.0f, 8.0f);
 	int reverse = 1 - 2 * (params[DIRECTION_PARAM].getValue() == 0.0f);
-	_step = (_step + reverse * clock) % steps;
-	_step += (_step < 0) * steps;
-	_step -= _step * reset;
+	_step[c] = (_step[c] + reverse * clock) % steps;
+	_step[c] += (_step[c] < 0) * steps;
+	_step[c] -= _step[c] * reset;
 	float select = params[SELECT_PARAM].getValue();
-	select += clamp(inputs[SELECT_INPUT].getVoltage(), 0.0f, 10.0f) * 0.1f * 8.0f;
+	select += clamp(inputs[SELECT_INPUT].getPolyVoltage(c), 0.0f, 10.0f) * 0.1f * 8.0f;
 	if (!_selectOnClock || clock) {
-		_select = select;
+		_select[c] = select;
 	}
-	int step = _step + roundf(_select);
+	int step = _step[c] + roundf(_select[c]);
 	step = step % 8;
 
-	float out = 0.0f;
-	for (int i = 0; i < 8; ++i) {
-		out += inputs[IN1_INPUT + i].getVoltageSum() * (step == i);
-		lights[IN1_LIGHT + i].value = step == i;
+	Input& in = inputs[IN1_INPUT + step];
+	if (_channels > 1) {
+		outputs[OUT_OUTPUT].setChannels(_channels);
+		outputs[OUT_OUTPUT].setVoltage(in.getPolyVoltage(c), c);
+		if (c == 0) {
+			for (int i = 0; i < 8; ++i) {
+				lights[IN1_LIGHT + i].value = step == i;
+			}
+		}
 	}
-	outputs[OUT_OUTPUT].setVoltage(out);
+	else {
+		outputs[OUT_OUTPUT].setChannels(in.getChannels());
+		outputs[OUT_OUTPUT].writeVoltages(in.getVoltages());
+		for (int i = 0; i < 8; ++i) {
+			lights[IN1_LIGHT + i].value = step == i;
+		}
+	}
 }
 
 struct EightOneWidget : SelectOnClockModuleWidget {
