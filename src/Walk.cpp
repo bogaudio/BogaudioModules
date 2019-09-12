@@ -2,42 +2,57 @@
 #include "Walk.hpp"
 
 void Walk::reset() {
-	_jumpTrigger.reset();
+	for (int i = 0; i < maxChannels; ++i) {
+		_jumpTrigger[i].reset();
+	}
 }
 
 void Walk::sampleRateChange() {
-	_slew.setParams(APP->engine->getSampleRate(), 100.0f, 10.0f);
+	for (int i = 0; i < maxChannels; ++i) {
+		_slew[i].setParams(APP->engine->getSampleRate(), 100.0f, 10.0f);
+	}
 }
 
-void Walk::modulate() {
+int Walk::channels() {
+	return std::max(
+		1,
+		std::max(
+			std::max(inputs[RATE_INPUT].getChannels(), inputs[JUMP_INPUT].getChannels()),
+			std::max(inputs[OFFSET_INPUT].getChannels(), inputs[SCALE_INPUT].getChannels())
+		)
+	);
+}
+
+void Walk::modulateChannel(int c) {
 	float rate = params[RATE_PARAM].getValue();
 	if (inputs[RATE_INPUT].isConnected()) {
-		rate *= clamp(inputs[RATE_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+		rate *= clamp(inputs[RATE_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
 	rate = 0.2f * powf(rate, 5.0f);
-	_walk.setParams(APP->engine->getSampleRate(), rate);
+	_walk[c].setParams(APP->engine->getSampleRate(), rate);
 
-	_offset = params[OFFSET_PARAM].getValue();
+	_offset[c] = params[OFFSET_PARAM].getValue();
 	if (inputs[OFFSET_INPUT].isConnected()) {
-		_offset *= clamp(inputs[OFFSET_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
+		_offset[c] *= clamp(inputs[OFFSET_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
 	}
-	_offset *= 5.0f;
+	_offset[c] *= 5.0f;
 
-	_scale = params[SCALE_PARAM].getValue();
+	_scale[c] = params[SCALE_PARAM].getValue();
 	if (inputs[SCALE_INPUT].isConnected()) {
-		_scale *= clamp(inputs[SCALE_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+		_scale[c] *= clamp(inputs[SCALE_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
 }
 
-void Walk::processChannel(const ProcessArgs& args, int _c) {
-	if (_jumpTrigger.process(inputs[JUMP_INPUT].getVoltage())) {
-		_walk.jump();
+void Walk::processChannel(const ProcessArgs& args, int c) {
+	if (_jumpTrigger[c].process(inputs[JUMP_INPUT].getPolyVoltage(c))) {
+		_walk[c].jump();
 	}
 
-	float out = _slew.next(_walk.next());
-	out *= _scale;
-	out += _offset;
-	outputs[OUT_OUTPUT].setVoltage(out);
+	float out = _slew[c].next(_walk[c].next());
+	out *= _scale[c];
+	out += _offset[c];
+	outputs[OUT_OUTPUT].setChannels(_channels);
+	outputs[OUT_OUTPUT].setVoltage(out, c);
 }
 
 struct WalkWidget : ModuleWidget {

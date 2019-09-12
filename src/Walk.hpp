@@ -35,11 +35,11 @@ struct Walk : BGModule {
 		NUM_LIGHTS
 	};
 
-	float _offset = 0.0f;
-	float _scale = 0.0f;
-	Trigger _jumpTrigger;
-	RandomWalk _walk;
-	bogaudio::dsp::SlewLimiter _slew;
+	float _offset[maxChannels] {};
+	float _scale[maxChannels] {};
+	Trigger _jumpTrigger[maxChannels];
+	RandomWalk _walk[maxChannels];
+	bogaudio::dsp::SlewLimiter _slew[maxChannels];
 
 	Walk() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
@@ -52,8 +52,9 @@ struct Walk : BGModule {
 
 	void reset() override;
 	void sampleRateChange() override;
-	void modulate() override;
-	void processChannel(const ProcessArgs& args, int _c) override;
+	int channels() override;
+	void modulateChannel(int c) override;
+	void processChannel(const ProcessArgs& args, int c) override;
 };
 
 } // namespace bogaudio
