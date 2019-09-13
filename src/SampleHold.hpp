@@ -45,8 +45,10 @@ struct SampleHold : BGModule {
 		RED_NOISE_TYPE
 	};
 
-	Trigger _trigger1, _trigger2;
-	float _value1, _value2;
+	Trigger _trigger1[maxChannels];
+	Trigger _trigger2[maxChannels];
+	float _value1[maxChannels] {};
+	float _value2[maxChannels] {};
 	BlueNoiseGenerator _blue;
 	WhiteNoiseGenerator _white;
 	PinkNoiseGenerator _pink;
@@ -55,10 +57,7 @@ struct SampleHold : BGModule {
 	float _rangeOffset = 1.0f;
 	float _rangeScale = 5.0f;
 
-	SampleHold()
-	:  _value1(0.0f)
-	, _value2(0.0f)
-	{
+	SampleHold() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(TRIGGER1_PARAM, 0.0f, 10.0f, 0.0f, "Trigger 1");
 		configParam(TRIGGER2_PARAM, 0.0f, 10.0f, 0.0f, "Trigger 2");
@@ -71,15 +70,15 @@ struct SampleHold : BGModule {
 	void reset() override;
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
-	void processChannel(const ProcessArgs& args, int _c) override;
+	void processChannel(const ProcessArgs& args, int c) override;
 	void processChannel(
 		Light& trackLight,
 		Param& trackParam,
-		Trigger& trigger,
+		Trigger* trigger,
 		Param& triggerParam,
 		Input& triggerInput,
 		Input& in,
-		float& value,
+		float* value,
 		Output& out
 	);
 	float noise();

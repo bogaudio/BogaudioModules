@@ -6,10 +6,12 @@
 #define RANGE_SCALE "range_scale"
 
 void SampleHold::reset() {
-	_trigger1.reset();
-	_value1 = 0.0f;
-	_trigger2.reset();
-	_value2 = 0.0f;
+	for (int i = 0; i < maxChannels; ++i) {
+		_trigger1[i].reset();
+		_value1[i] = 0.0f;
+		_trigger2[i].reset();
+		_value2[i] = 0.0f;
+	}
 }
 
 json_t* SampleHold::dataToJson() {
@@ -37,7 +39,9 @@ void SampleHold::dataFromJson(json_t* root) {
 	}
 }
 
-void SampleHold::processChannel(const ProcessArgs& args, int _c) {
+void SampleHold::processChannel(const ProcessArgs& args, int c) {
+	assert(c == 0);
+
 	processChannel(
 		lights[TRACK1_LIGHT],
 		params[TRACK1_PARAM],
@@ -63,24 +67,29 @@ void SampleHold::processChannel(const ProcessArgs& args, int _c) {
 void SampleHold::processChannel(
 	Light& trackLight,
 	Param& trackParam,
-	Trigger& trigger,
+	Trigger* trigger,
 	Param& triggerParam,
 	Input& triggerInput,
 	Input& in,
-	float& value,
+	float* value,
 	Output& out
 ) {
 	trackLight.value = trackParam.getValue();
-	bool triggered = trigger.process(triggerParam.getValue() + triggerInput.getVoltage());
-	if (trackParam.getValue() > 0.5f ? trigger.isHigh() : triggered) {
-		if (in.isConnected()) {
-			value = in.getVoltageSum();
+
+	int n = std::max(1, std::max(triggerInput.getChannels(), in.getChannels()));
+	out.setChannels(n);
+	for (int i = 0; i < n; ++i) {
+		bool triggered = trigger[i].process(triggerParam.getValue() + triggerInput.getPolyVoltage(i));
+		if (trackParam.getValue() > 0.5f ? trigger[i].isHigh() : triggered) {
+			if (in.isConnected()) {
+				value[i] = in.getPolyVoltage(i);
+			}
+			else {
+				value[i] = (noise() + _rangeOffset) * _rangeScale;
+			}
 		}
-		else {
-			value = (noise() + _rangeOffset) * _rangeScale;
-		}
+		out.setVoltage(value[i], i);
 	}
-	out.setVoltage(value);
 }
 
 float SampleHold::noise() {
