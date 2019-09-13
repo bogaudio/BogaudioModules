@@ -1,34 +1,40 @@
 
 #include "AMRM.hpp"
 
-void AMRM::processChannel(const ProcessArgs& args, int _c) {
-	if (!(outputs[OUT_OUTPUT].isConnected() || outputs[RECTIFY_OUTPUT].isConnected())) {
-		return;
-	}
+bool AMRM::active() {
+	return outputs[OUT_OUTPUT].isConnected() || outputs[RECTIFY_OUTPUT].isConnected();
+}
 
+int AMRM::channels() {
+	return std::max(inputs[MODULATOR_INPUT].getChannels(), inputs[CARRIER_INPUT].getChannels());
+}
+
+void AMRM::processChannel(const ProcessArgs& args, int c) {
 	float rectify = params[RECTIFY_PARAM].getValue();
 	if (inputs[RECTIFY_INPUT].isConnected()) {
-		rectify = clamp(rectify + inputs[RECTIFY_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+		rectify = clamp(rectify + inputs[RECTIFY_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
 	rectify = 1.0f - rectify;
 
 	float depth = params[DRYWET_PARAM].getValue();
 	if (inputs[DRYWET_INPUT].isConnected()) {
-		depth = clamp(depth + inputs[DRYWET_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+		depth = clamp(depth + inputs[DRYWET_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
 
-	float modulator = inputs[MODULATOR_INPUT].getVoltageSum();
+	float modulator = inputs[MODULATOR_INPUT].getPolyVoltage(c);
 	if (rectify < 1.0f) {
 		rectify *= -5.0f;
 		if (modulator < rectify) {
 			modulator = rectify - (modulator - rectify);
 		}
 	}
-	outputs[RECTIFY_OUTPUT].setVoltage(modulator);
+	outputs[RECTIFY_OUTPUT].setChannels(_channels);
+	outputs[RECTIFY_OUTPUT].setVoltage(modulator, c);
 
 	modulator *= depth;
 	modulator += (1.0f - depth) * 5.0f;
-	outputs[OUT_OUTPUT].setVoltage(_saturator.next(modulator * inputs[CARRIER_INPUT].getVoltageSum() * 0.2f));
+	outputs[OUT_OUTPUT].setChannels(_channels);
+	outputs[OUT_OUTPUT].setVoltage(_saturator.next(modulator * inputs[CARRIER_INPUT].getPolyVoltage(c) * 0.2f), c);
 }
 
 struct AMRMWidget : ModuleWidget {
