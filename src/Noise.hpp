@@ -33,6 +33,7 @@ struct Noise : BGModule {
 		NUM_LIGHTS
 	};
 
+	int _noiseChannels = 1;
 	BlueNoiseGenerator _blue;
 	WhiteNoiseGenerator _white;
 	PinkNoiseGenerator _pink;
@@ -41,9 +42,11 @@ struct Noise : BGModule {
 
 	Noise() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		}
+	}
 
-	void processChannel(const ProcessArgs& args, int _c) override;
+	json_t* dataToJson() override;
+	void dataFromJson(json_t* root) override;
+	void processChannel(const ProcessArgs& args, int c) override;
 };
 
 } // namespace bogaudio
