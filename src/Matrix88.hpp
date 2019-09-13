@@ -107,7 +107,7 @@ struct Matrix88 : BGModule {
 		NUM_LIGHTS
 	};
 
-	Saturator _saturators[8];
+	Saturator _saturators[maxChannels][8];
 
 	Matrix88() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
@@ -178,7 +178,8 @@ struct Matrix88 : BGModule {
 		configParam(LEVEL_PARAM, 0.0f, 1.0f, 1.0f, "Level", "%", 0.0f, 100.0f);
 	}
 
-	void processChannel(const ProcessArgs& args, int _c) override;
+	int channels() override;
+	void processChannel(const ProcessArgs& args, int c) override;
 };
 
 } // namespace bogaudio

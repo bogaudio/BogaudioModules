@@ -23,21 +23,32 @@ void UMix::dataFromJson(json_t* root) {
 	}
 }
 
-void UMix::processChannel(const ProcessArgs& args, int _c) {
-	if (!outputs[OUT_OUTPUT].isConnected()) {
-		return;
+bool UMix::active() {
+	return outputs[OUT_OUTPUT].isConnected();
+}
+
+int UMix::channels() {
+	int max = 0;
+	for (int i = 0; i < 8; ++i) {
+		max = std::max(max, inputs[IN1_INPUT + i].getChannels());
 	}
+	return max;
+}
+
+void UMix::processChannel(const ProcessArgs& args, int c) {
+	outputs[OUT_OUTPUT].setChannels(_channels);
+
 	if (_sum) {
 		float out = 0.0f;
 		for (int i = 0; i < 8; ++i) {
-			out += inputs[IN1_INPUT + i].getVoltageSum();
+			out += inputs[IN1_INPUT + i].getPolyVoltage(c);
 		}
 		out *= params[LEVEL_PARAM].getValue();
 		if (_cvMode) {
-			outputs[OUT_OUTPUT].setVoltage(clamp(out, -12.0f, 12.0f));
+			outputs[OUT_OUTPUT].setVoltage(clamp(out, -12.0f, 12.0f), c);
 		}
 		else {
-			outputs[OUT_OUTPUT].setVoltage(_saturator.next(out));
+			outputs[OUT_OUTPUT].setVoltage(_saturator[c].next(out), c);
 		}
 	}
 	else {
@@ -45,7 +56,7 @@ void UMix::processChannel(const ProcessArgs& args, int _c) {
 		int active = 0;
 		for (int i = 0; i < 8; ++i) {
 			if (inputs[IN1_INPUT + i].isConnected()) {
-				out += inputs[IN1_INPUT + i].getVoltageSum();
+				out += inputs[IN1_INPUT + i].getPolyVoltage(c);
 				++active;
 			}
 		}
@@ -53,14 +64,14 @@ void UMix::processChannel(const ProcessArgs& args, int _c) {
 			out /= (float)active;
 			out *= params[LEVEL_PARAM].getValue();
 			if (_cvMode) {
-				outputs[OUT_OUTPUT].setVoltage(clamp(out, -12.0f, 12.0f));
+				outputs[OUT_OUTPUT].setVoltage(clamp(out, -12.0f, 12.0f), c);
 			}
 			else {
-				outputs[OUT_OUTPUT].setVoltage(_saturator.next(out));
+				outputs[OUT_OUTPUT].setVoltage(_saturator[c].next(out), c);
 			}
 		}
 		else {
-			outputs[OUT_OUTPUT].setVoltage(0.0f);
+			outputs[OUT_OUTPUT].setVoltage(0.0f, c);
 		}
 	}
 }

@@ -38,7 +38,7 @@ struct UMix : BGModule {
 
 	bool _sum = true;
 	bool _cvMode = false;
-	Saturator _saturator;
+	Saturator _saturator[maxChannels];
 
 	UMix() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
@@ -47,7 +47,9 @@ struct UMix : BGModule {
 
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
-	void processChannel(const ProcessArgs& args, int _c) override;
+	bool active() override;
+	int channels() override;
+	void processChannel(const ProcessArgs& args, int c) override;
 };
 
 } // namespace bogaudio

@@ -1,14 +1,23 @@
 
 #include "Matrix88.hpp"
 
-void Matrix88::processChannel(const ProcessArgs& args, int _c) {
+int Matrix88::channels() {
+	int max = 0;
+	for (int i = 0; i < 8; ++i) {
+		max = std::max(max, inputs[IN1_INPUT + i].getChannels());
+	}
+	return max;
+}
+
+void Matrix88::processChannel(const ProcessArgs& args, int c) {
 	for (int i = 0; i < 8; ++i) {
 		int paramOffset = MIX11_PARAM + i * 8;
 		float out = 0.0f;
 		for (int j = 0; j < 8; ++j) {
-			out += inputs[IN1_INPUT + j].getVoltageSum() * params[paramOffset + j].getValue();
+			out += inputs[IN1_INPUT + j].getPolyVoltage(c) * params[paramOffset + j].getValue();
 		}
-		outputs[OUT1_OUTPUT + i].setVoltage(_saturators[i].next(params[LEVEL_PARAM].getValue() * out));
+		outputs[OUT1_OUTPUT + i].setChannels(_channels);
+		outputs[OUT1_OUTPUT + i].setVoltage(_saturators[c][i].next(params[LEVEL_PARAM].getValue() * out), c);
 	}
 }
 
