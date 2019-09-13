@@ -16,6 +16,12 @@ struct BGModule : Module {
 	BGModule(int modulationSteps = 100) : _modulationSteps(modulationSteps) {
 		_steps = _modulationSteps;
 	}
+	virtual ~BGModule() {
+		while (_channels >= 1) {
+			removeEngine(_channels - 1);
+			--_channels;
+		}
+	}
 
 	void onReset() override final;
 	void onSampleRateChange() override final;
@@ -26,6 +32,8 @@ struct BGModule : Module {
 	virtual bool active() { return true; }
 	virtual int channels() { return 1; }
 	virtual void channelsChanged(int before, int after) {}
+	virtual void addEngine(int c) {}
+	virtual void removeEngine(int c) {}
 	virtual void modulate() {}
 	virtual void modulateChannel(int c) {}
 	virtual void always(const ProcessArgs& args) {}

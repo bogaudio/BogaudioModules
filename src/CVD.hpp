@@ -59,7 +59,8 @@ struct CVD : BGModule {
 
 	void sampleRateChange() override;
 	int channels() override;
-	void channelsChanged(int before, int after) override;
+	void addEngine(int c) override;
+	void removeEngine(int c) override;
 	void modulateChannel(int c) override;
 	void processChannel(const ProcessArgs& args, int c) override;
 };

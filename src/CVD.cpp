@@ -13,21 +13,13 @@ int CVD::channels() {
 	return inputs[IN_INPUT].getChannels();
 }
 
-void CVD::channelsChanged(int before, int after) {
-	if (before < after) {
-		while (before < after) {
-			_engines[before] = new Engine();
-			_engines[before]->delay.setSampleRate(APP->engine->getSampleRate());
-			++before;
-		}
-	}
-	else {
-		while (after > before) {
-			delete _engines[after - 1];
-			_engines[after - 1] = NULL;
-			++after;
-		}
-	}
+void CVD::addEngine(int c) {
+	_engines[c] = new Engine();
+}
+
+void CVD::removeEngine(int c) {
+	delete _engines[c];
+	_engines[c] = NULL;
 }
 
 void CVD::modulateChannel(int c) {

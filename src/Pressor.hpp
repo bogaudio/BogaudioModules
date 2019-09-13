@@ -48,31 +48,35 @@ struct Pressor : BGModule {
 		NUM_LIGHTS
 	};
 
-	float _thresholdDb = 0.0f;
-	float _ratio = 0.0f;
-	float _ratioKnob = -1.0f;
-	float _inGain = -1.0f;
-	float _inLevel = 0.0f;
-	float _outGain = -1.0f;
-	float _outLevel = 0.0f;
+	struct Engine {
+		float thresholdDb = 0.0f;
+		float ratio = 0.0f;
+		float ratioKnob = -1.0f;
+		float inGain = -1.0f;
+		float inLevel = 0.0f;
+		float outGain = -1.0f;
+		float outLevel = 0.0f;
+		float lastEnv = 0.0f;
+
+		bogaudio::dsp::SlewLimiter attackSL;
+		bogaudio::dsp::SlewLimiter releaseSL;
+		CrossFader detectorMix;
+		RootMeanSquare detectorRMS;
+		Compressor compressor;
+		NoiseGate noiseGate;
+		Amplifier amplifier;
+		Saturator saturator;
+
+		Engine() : detectorRMS(1000.0f, 1.0f, 50.0f) {}
+	};
+
+	Engine* _engines[maxChannels] {};
+	float _compressionDb = 0.0f;
 	bool _compressorMode = true;
 	bool _rmsDetector = true;
 	bool _softKnee = true;
-	float _lastEnv = 0.0f;
-	float _compressionDb = 0.0f;
 
-	bogaudio::dsp::SlewLimiter _attackSL;
-	bogaudio::dsp::SlewLimiter _releaseSL;
-	CrossFader _detectorMix;
-	RootMeanSquare _detectorRMS;
-	Compressor _compressor;
-	NoiseGate _noiseGate;
-	Amplifier _amplifier;
-	Saturator _saturator;
-
-	Pressor()
-	:  _detectorRMS(1000.0f, 1.0f, 50.0f)
-	{
+	Pressor() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(THRESHOLD_PARAM, 0.0f, 1.0f, 0.8f, "Threshold", " dB", 0.0f, 30.0f, -24.0f);
 		configParam<DynamicsRatioParamQuantity>(RATIO_PARAM, 0.0f, 1.0f, 0.55159f, "Ratio");
@@ -90,8 +94,12 @@ struct Pressor : BGModule {
 
 	void sampleRateChange() override;
 	bool active() override;
+	int channels() override;
+	void addEngine(int c) override;
+	void removeEngine(int c) override;
 	void modulate() override;
-	void processChannel(const ProcessArgs& args, int _c) override;
+	void modulateChannel(int c) override;
+	void processChannel(const ProcessArgs& args, int c) override;
 };
 
 } // namespace bogaudio

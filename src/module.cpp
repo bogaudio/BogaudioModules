@@ -25,6 +25,18 @@ void BGModule::process(const ProcessArgs& args) {
 			if (channelsBefore != channelsNow) {
 				_channels = channelsNow;
 				channelsChanged(channelsBefore, channelsNow);
+				if (channelsBefore < channelsNow) {
+					while (channelsBefore < channelsNow) {
+						addEngine(channelsBefore);
+						++channelsBefore;
+					}
+				}
+				else {
+					while (channelsNow < channelsBefore) {
+						removeEngine(channelsBefore - 1);
+						--channelsBefore;
+					}
+				}
 			}
 
 			modulate();
