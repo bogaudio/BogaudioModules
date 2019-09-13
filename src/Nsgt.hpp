@@ -35,18 +35,22 @@ struct Nsgt : BGModule {
 		NUM_LIGHTS
 	};
 
-	float _thresholdDb = 0.0f;
-	float _ratio = 0.0f;
-	float _ratioKnob = -1.0f;
-	bool _softKnee = true;
-	float _lastEnv = 0.0f;
+	struct Engine {
+		float thresholdDb = 0.0f;
+		float ratio = 0.0f;
+		float ratioKnob = -1.0f;
+		float lastEnv = 0.0f;
 
-	bogaudio::dsp::SlewLimiter _attackSL;
-	bogaudio::dsp::SlewLimiter _releaseSL;
-	RootMeanSquare _detector;
-	NoiseGate _noiseGate;
-	Amplifier _amplifier;
-	Saturator _saturator;
+		bogaudio::dsp::SlewLimiter attackSL;
+		bogaudio::dsp::SlewLimiter releaseSL;
+		RootMeanSquare detector;
+		NoiseGate noiseGate;
+		Amplifier amplifier;
+		Saturator saturator;
+	};
+
+	Engine* _engines[maxChannels] {};
+	bool _softKnee = true;
 
 	Nsgt() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
@@ -59,7 +63,11 @@ struct Nsgt : BGModule {
 
 	void sampleRateChange() override;
 	bool active() override;
+	int channels() override;
+	void addEngine(int c) override;
+	void removeEngine(int c) override;
 	void modulate() override;
+	void modulateChannel(int c) override;
 	void processChannel(const ProcessArgs& args, int _c) override;
 };
 

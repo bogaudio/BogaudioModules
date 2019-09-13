@@ -4,60 +4,90 @@
 
 void Nsgt::sampleRateChange() {
 	float sampleRate = APP->engine->getSampleRate();
-	_detector.setSampleRate(sampleRate);
-	_attackSL.setParams(sampleRate, 150.0f);
-	_releaseSL.setParams(sampleRate, 600.0f);
+	for (int i = 0; i < _channels; ++i) {
+		if (_engines[i]) {
+			_engines[i]->detector.setSampleRate(sampleRate);
+			_engines[i]->attackSL.setParams(sampleRate, 150.0f);
+			_engines[i]->releaseSL.setParams(sampleRate, 600.0f);
+		}
+	}
 }
 
 bool Nsgt::active() {
 	return outputs[LEFT_OUTPUT].isConnected() || outputs[RIGHT_OUTPUT].isConnected();
 }
 
+int Nsgt::channels() {
+	return inputs[LEFT_INPUT].getChannels() + inputs[RIGHT_INPUT].getChannels();
+}
+
+void Nsgt::addEngine(int c) {
+	_engines[c] = new Engine();
+}
+
+void Nsgt::removeEngine(int c) {
+	delete _engines[c];
+	_engines[c] = NULL;
+}
+
 void Nsgt::modulate() {
-	_thresholdDb = params[THRESHOLD_PARAM].getValue();
-	if (inputs[THRESHOLD_INPUT].isConnected()) {
-		_thresholdDb *= clamp(inputs[THRESHOLD_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-	}
-	_thresholdDb *= 30.0f;
-	_thresholdDb -= 24.0f;
-
-	float ratio = params[RATIO_PARAM].getValue();
-	if (inputs[RATIO_INPUT].isConnected()) {
-		ratio *= clamp(inputs[RATIO_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-	}
-	if (_ratioKnob != ratio) {
-		_ratioKnob = ratio;
-		_ratio = powf(_ratioKnob, 1.5f);
-		_ratio = 1.0f - _ratio;
-		_ratio *= M_PI;
-		_ratio *= 0.25f;
-		_ratio = tanf(_ratio);
-		_ratio = 1.0f / _ratio;
-	}
-
 	_softKnee = params[KNEE_PARAM].getValue() > 0.5f;
 }
 
-void Nsgt::processChannel(const ProcessArgs& args, int _c) {
-	float leftInput = inputs[LEFT_INPUT].getVoltageSum();
-	float rightInput = inputs[RIGHT_INPUT].getVoltageSum();
-	float env = _detector.next(leftInput + rightInput);
-	if (env > _lastEnv) {
-		env = _attackSL.next(env, _lastEnv);
+void Nsgt::modulateChannel(int c) {
+	if (!_engines[c]) {
+		return;
+	}
+
+	_engines[c]->thresholdDb = params[THRESHOLD_PARAM].getValue();
+	if (inputs[THRESHOLD_INPUT].isConnected()) {
+		_engines[c]->thresholdDb *= clamp(inputs[THRESHOLD_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
+	}
+	_engines[c]->thresholdDb *= 30.0f;
+	_engines[c]->thresholdDb -= 24.0f;
+
+	float ratio = params[RATIO_PARAM].getValue();
+	if (inputs[RATIO_INPUT].isConnected()) {
+		ratio *= clamp(inputs[RATIO_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
+	}
+	if (_engines[c]->ratioKnob != ratio) {
+		_engines[c]->ratioKnob = ratio;
+		ratio = powf(_engines[c]->ratioKnob, 1.5f);
+		ratio = 1.0f - ratio;
+		ratio *= M_PI;
+		ratio *= 0.25f;
+		ratio = tanf(ratio);
+		ratio = 1.0f / ratio;
+		_engines[c]->ratioKnob = ratio;
+	}
+}
+
+void Nsgt::processChannel(const ProcessArgs& args, int c) {
+	if (!_engines[c]) {
+		return;
+	}
+
+	float leftInput = inputs[LEFT_INPUT].getPolyVoltage(c);
+	float rightInput = inputs[RIGHT_INPUT].getPolyVoltage(c);
+	float env = _engines[c]->detector.next(leftInput + rightInput);
+	if (env > _engines[c]->lastEnv) {
+		env = _engines[c]->attackSL.next(env, _engines[c]->lastEnv);
 	}
 	else {
-		env = _releaseSL.next(env, _lastEnv);
+		env = _engines[c]->releaseSL.next(env, _engines[c]->lastEnv);
 	}
-	_lastEnv = env;
+	_engines[c]->lastEnv = env;
 
 	float detectorDb = amplitudeToDecibels(env / 5.0f);
-	float compressionDb = _noiseGate.compressionDb(detectorDb, _thresholdDb, _ratio, _softKnee);
-	_amplifier.setLevel(-compressionDb);
+	float compressionDb = _engines[c]->noiseGate.compressionDb(detectorDb, _engines[c]->thresholdDb, _engines[c]->ratio, _softKnee);
+	_engines[c]->amplifier.setLevel(-compressionDb);
 	if (outputs[LEFT_OUTPUT].isConnected()) {
-		outputs[LEFT_OUTPUT].setVoltage(_saturator.next(_amplifier.next(leftInput)));
+		outputs[LEFT_OUTPUT].setChannels(_channels);
+		outputs[LEFT_OUTPUT].setVoltage(_engines[c]->saturator.next(_engines[c]->amplifier.next(leftInput)), c);
 	}
 	if (outputs[RIGHT_OUTPUT].isConnected()) {
-		outputs[RIGHT_OUTPUT].setVoltage(_saturator.next(_amplifier.next(rightInput)));
+		outputs[RIGHT_OUTPUT].setChannels(_channels);
+		outputs[RIGHT_OUTPUT].setVoltage(_engines[c]->saturator.next(_engines[c]->amplifier.next(rightInput)), c);
 	}
 }
 
