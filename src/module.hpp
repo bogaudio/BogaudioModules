@@ -38,6 +38,7 @@ struct BGModule : Module {
 	virtual void modulateChannel(int c) {}
 	virtual void always(const ProcessArgs& args) {}
 	virtual void processChannel(const ProcessArgs& args, int c) = 0;
+	virtual void postProcess(const ProcessArgs& args) {}
 };
 
 } // namespace bogaudio

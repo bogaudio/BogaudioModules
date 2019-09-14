@@ -36,9 +36,25 @@ struct ADSR : BGModule {
 		NUM_LIGHTS
 	};
 
+	struct Engine {
+		Trigger gateTrigger;
+		bogaudio::dsp::ADSR envelope;
+
+		Engine() {
+			reset();
+			sampleRateChange();
+			envelope.setSustain(0.0f);
+			envelope.setRelease(0.0f);
+		}
+		void reset();
+		void sampleRateChange();
+	};
+	Engine* _engines[maxChannels] {};
 	bool _linearMode = false;
-	Trigger _gateTrigger;
-	bogaudio::dsp::ADSR _envelope;
+	int _attackLightSum;
+	int _decayLightSum;
+	int _sustainLightSum;
+	int _releaseLightSum;
 
 	ADSR() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
@@ -47,17 +63,18 @@ struct ADSR : BGModule {
 		configParam(SUSTAIN_PARAM, 0.0f, 1.0f, 1.0f, "Sustain", "%", 0.0f, 100.0f);
 		configParam<EnvelopeSegmentParamQuantity>(RELEASE_PARAM, 0.0f, 1.0f, 0.31623f, "Release", " s");
 		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear");
-
-		reset();
-		sampleRateChange();
 	}
 
 	void reset() override;
 	void sampleRateChange() override;
 	bool active() override;
-	void modulate() override;
+	int channels() override;
+	void addEngine(int c) override;
+	void removeEngine(int c) override;
+	void modulateChannel(int c) override;
 	void always(const ProcessArgs& args) override;
-	void processChannel(const ProcessArgs& args, int _c) override;
+	void processChannel(const ProcessArgs& args, int c) override;
+	void postProcess(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

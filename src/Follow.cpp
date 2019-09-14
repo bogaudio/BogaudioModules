@@ -2,24 +2,45 @@
 #include "Follow.hpp"
 
 void Follow::sampleRateChange() {
-	_rms.setSampleRate(APP->engine->getSampleRate());
+	for (int c = 0; c < maxChannels; ++c) {
+		if (_rms[c]) {
+			_rms[c]->setSampleRate(APP->engine->getSampleRate());
+		}
+	}
 }
 
-void Follow::processChannel(const ProcessArgs& args, int _c) {
-	if (inputs[IN_INPUT].isConnected() && outputs[OUT_OUTPUT].isConnected()) {
-		float response = params[RESPONSE_PARAM].getValue();
-		if (inputs[RESPONSE_INPUT].isConnected()) {
-			response *= clamp(inputs[RESPONSE_INPUT].getVoltage() / 10.f, 0.0f, 1.0f);
-		}
-		_rms.setSensitivity(response);
+bool Follow::active() {
+	return inputs[IN_INPUT].isConnected() && outputs[OUT_OUTPUT].isConnected();
+}
 
-		float scale = params[SCALE_PARAM].getValue();
-		if (inputs[SCALE_INPUT].isConnected()) {
-			scale *= clamp(inputs[SCALE_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
-		}
+int Follow::channels() {
+	return inputs[IN_INPUT].getChannels();
+}
 
-		outputs[OUT_OUTPUT].setVoltage(scale * 2.0f * _rms.next(inputs[IN_INPUT].getVoltageSum()));
+void Follow::addEngine(int c) {
+	_rms[c] = new RootMeanSquare(1000.0f, 1.0f, 500.0f);
+	_rms[c]->setSampleRate(APP->engine->getSampleRate());
+}
+
+void Follow::removeEngine(int c) {
+	delete _rms[c];
+	_rms[c] = NULL;
+}
+
+void Follow::processChannel(const ProcessArgs& args, int c) {
+	float response = params[RESPONSE_PARAM].getValue();
+	if (inputs[RESPONSE_INPUT].isConnected()) {
+		response *= clamp(inputs[RESPONSE_INPUT].getPolyVoltage(c) / 10.f, 0.0f, 1.0f);
 	}
+	_rms[c]->setSensitivity(response);
+
+	float scale = params[SCALE_PARAM].getValue();
+	if (inputs[SCALE_INPUT].isConnected()) {
+		scale *= clamp(inputs[SCALE_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
+	}
+
+	outputs[OUT_OUTPUT].setChannels(_channels);
+	outputs[OUT_OUTPUT].setVoltage(scale * 2.0f * _rms[c]->next(inputs[IN_INPUT].getVoltage(c)), c);
 }
 
 struct FollowWidget : ModuleWidget {

@@ -1,61 +1,100 @@
 
 #include "AD.hpp"
 
+void AD::Engine::reset() {
+	trigger.reset();
+	eocPulseGen.process(10.0);
+	envelope.reset();
+	on = false;
+}
+
+void AD::Engine::sampleRateChange() {
+	float sr = APP->engine->getSampleRate();
+	envelope.setSampleRate(sr);
+	attackSL.setParams(sr / (float)modulationSteps);
+	decaySL.setParams(sr / (float)modulationSteps);
+}
+
 void AD::reset() {
-	_trigger.reset();
-	_eocPulseGen.process(10.0);
-	_envelope.reset();
-	_on = false;
+	for (int c = 0; c < _channels; ++c) {
+		if (_engines[c]) {
+			_engines[c]->reset();
+		}
+	}
 }
 
 void AD::sampleRateChange() {
-	float sr = APP->engine->getSampleRate();
-	_envelope.setSampleRate(sr);
-	_attackSL.setParams(sr / (float)_modulationSteps);
-	_decaySL.setParams(sr / (float)_modulationSteps);
+	for (int c = 0; c < _channels; ++c) {
+		if (_engines[c]) {
+			_engines[c]->sampleRateChange();
+		}
+	}
 }
 
 bool AD::active() {
-	return outputs[ENV_OUTPUT].isConnected() || outputs[EOC_OUTPUT].isConnected() || inputs[TRIGGER_INPUT].isConnected();
+	return inputs[TRIGGER_INPUT].isConnected() || outputs[ENV_OUTPUT].isConnected() || outputs[EOC_OUTPUT].isConnected();
 }
 
-void AD::modulate() {
+int AD::channels() {
+	return inputs[TRIGGER_INPUT].getChannels();
+}
+
+void AD::addEngine(int c) {
+	_engines[c] = new Engine(_modulationSteps);
+	_engines[c]->reset();
+	_engines[c]->sampleRateChange();
+}
+
+void AD::removeEngine(int c) {
+	delete _engines[c];
+	_engines[c] = NULL;
+}
+
+void AD::modulateChannel(int c) {
 	float attack = powf(params[ATTACK_PARAM].getValue(), 2.0f);
 	if (inputs[ATTACK_INPUT].isConnected()) {
-		attack *= clamp(inputs[ATTACK_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+		attack *= clamp(inputs[ATTACK_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
-	_envelope.setAttack(_attackSL.next(attack * 10.f));
+	_engines[c]->envelope.setAttack(_engines[c]->attackSL.next(attack * 10.f));
 
 	float decay = powf(params[DECAY_PARAM].getValue(), 2.0f);
 	if (inputs[DECAY_INPUT].isConnected()) {
-		decay *= clamp(inputs[DECAY_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+		decay *= clamp(inputs[DECAY_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
-	_envelope.setDecay(_decaySL.next(decay * 10.f));
+	_engines[c]->envelope.setDecay(_engines[c]->decaySL.next(decay * 10.f));
 
-	_envelope.setLinearShape(_linearMode);
+	_engines[c]->envelope.setLinearShape(_linearMode);
 }
 
 void AD::always(const ProcessArgs& args) {
 	lights[LOOP_LIGHT].value = _loopMode = params[LOOP_PARAM].getValue() > 0.5f;
 	lights[LINEAR_LIGHT].value = _linearMode = params[LINEAR_PARAM].getValue() > 0.5f;
+	_attackLightSum = _decayLightSum = 0;
 }
 
-void AD::processChannel(const ProcessArgs& args, int _c) {
-	_trigger.process(inputs[TRIGGER_INPUT].getVoltage());
-	if (!_on && (_trigger.isHigh() || (_loopMode && _envelope.isStage(ADSR::STOPPED_STAGE)))) {
-		_on = true;
+void AD::processChannel(const ProcessArgs& args, int c) {
+	_engines[c]->trigger.process(inputs[TRIGGER_INPUT].getVoltage(c));
+	if (!_engines[c]->on && (_engines[c]->trigger.isHigh() || (_loopMode && _engines[c]->envelope.isStage(ADSR::STOPPED_STAGE)))) {
+		_engines[c]->on = true;
 	}
-	_envelope.setGate(_on);
-	outputs[ENV_OUTPUT].setVoltage(_envelope.next() * 10.0f);
-	if (_on && _envelope.isStage(ADSR::SUSTAIN_STAGE)) {
-		_envelope.reset();
-		_on = false;
-		_eocPulseGen.trigger(0.001f);
+	_engines[c]->envelope.setGate(_engines[c]->on);
+	outputs[ENV_OUTPUT].setChannels(_channels);
+	outputs[ENV_OUTPUT].setVoltage(_engines[c]->envelope.next() * 10.0f, c);
+	if (_engines[c]->on && _engines[c]->envelope.isStage(ADSR::SUSTAIN_STAGE)) {
+		_engines[c]->envelope.reset();
+		_engines[c]->on = false;
+		_engines[c]->eocPulseGen.trigger(0.001f);
 	}
-	outputs[EOC_OUTPUT].setVoltage(_eocPulseGen.process(APP->engine->getSampleTime()) ? 5.0f : 0.0f);
+	outputs[EOC_OUTPUT].setChannels(_channels);
+	outputs[EOC_OUTPUT].setVoltage(_engines[c]->eocPulseGen.process(APP->engine->getSampleTime()) ? 5.0f : 0.0f, c);
 
-	lights[ATTACK_LIGHT].value = _envelope.isStage(ADSR::ATTACK_STAGE);
-	lights[DECAY_LIGHT].value = _envelope.isStage(ADSR::DECAY_STAGE);
+	_attackLightSum += _engines[c]->envelope.isStage(ADSR::ATTACK_STAGE);
+	_decayLightSum += _engines[c]->envelope.isStage(ADSR::DECAY_STAGE);
+}
+
+void AD::postProcess(const ProcessArgs& args) {
+	lights[ATTACK_LIGHT].value = _attackLightSum / (float)_channels;
+	lights[DECAY_LIGHT].value = _decayLightSum / (float)_channels;
 }
 
 struct ADWidget : ModuleWidget {

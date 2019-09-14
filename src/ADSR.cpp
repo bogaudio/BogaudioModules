@@ -1,40 +1,80 @@
 
 #include "ADSR.hpp"
 
+void ADSR::Engine::reset() {
+	gateTrigger.reset();
+	envelope.reset();
+}
+
+void ADSR::Engine::sampleRateChange() {
+	envelope.setSampleRate(APP->engine->getSampleRate());
+}
+
 void ADSR::reset() {
-	_gateTrigger.reset();
-	_envelope.reset();
+	for (int c = 0; c < _channels; ++c) {
+		if (_engines[c]) {
+			_engines[c]->reset();
+		}
+	}
 }
 
 void ADSR::sampleRateChange() {
-	_envelope.setSampleRate(APP->engine->getSampleRate());
+	for (int c = 0; c < _channels; ++c) {
+		if (_engines[c]) {
+			_engines[c]->sampleRateChange();
+		}
+	}
 }
 
 bool ADSR::active() {
-	return outputs[OUT_OUTPUT].isConnected() || inputs[GATE_INPUT].isConnected();
+	return inputs[GATE_INPUT].isConnected() || outputs[OUT_OUTPUT].isConnected();
 }
 
-void ADSR::modulate() {
-	_envelope.setAttack(powf(params[ATTACK_PARAM].getValue(), 2.0f) * 10.f);
-	_envelope.setDecay(powf(params[DECAY_PARAM].getValue(), 2.0f) * 10.f);
-	_envelope.setSustain(params[SUSTAIN_PARAM].getValue());
-	_envelope.setRelease(powf(params[RELEASE_PARAM].getValue(), 2.0f) * 10.f);
-	_envelope.setLinearShape(_linearMode);
+int ADSR::channels() {
+	return inputs[GATE_INPUT].getChannels();
+}
+
+void ADSR::addEngine(int c) {
+	_engines[c] = new Engine();
+	_engines[c]->reset();
+	_engines[c]->sampleRateChange();
+}
+
+void ADSR::removeEngine(int c) {
+	delete _engines[c];
+	_engines[c] = NULL;
+}
+
+void ADSR::modulateChannel(int c) {
+	_engines[c]->envelope.setAttack(powf(params[ATTACK_PARAM].getValue(), 2.0f) * 10.f);
+	_engines[c]->envelope.setDecay(powf(params[DECAY_PARAM].getValue(), 2.0f) * 10.f);
+	_engines[c]->envelope.setSustain(params[SUSTAIN_PARAM].getValue());
+	_engines[c]->envelope.setRelease(powf(params[RELEASE_PARAM].getValue(), 2.0f) * 10.f);
+	_engines[c]->envelope.setLinearShape(_linearMode);
 }
 
 void ADSR::always(const ProcessArgs& args) {
 	lights[LINEAR_LIGHT].value = _linearMode = params[LINEAR_PARAM].getValue() > 0.5f;
+	_attackLightSum = _decayLightSum = _sustainLightSum = _releaseLightSum = 0;
 }
 
-void ADSR::processChannel(const ProcessArgs& args, int _c) {
-	_gateTrigger.process(inputs[GATE_INPUT].getVoltage());
-	_envelope.setGate(_gateTrigger.isHigh());
-	outputs[OUT_OUTPUT].setVoltage(_envelope.next() * 10.0f);
+void ADSR::processChannel(const ProcessArgs& args, int c) {
+	_engines[c]->gateTrigger.process(inputs[GATE_INPUT].getVoltage(c));
+	_engines[c]->envelope.setGate(_engines[c]->gateTrigger.isHigh());
+	outputs[OUT_OUTPUT].setChannels(_channels);
+	outputs[OUT_OUTPUT].setVoltage(_engines[c]->envelope.next() * 10.0f, c);
 
-	lights[ATTACK_LIGHT].value = _envelope.isStage(bogaudio::dsp::ADSR::ATTACK_STAGE);
-	lights[DECAY_LIGHT].value = _envelope.isStage(bogaudio::dsp::ADSR::DECAY_STAGE);
-	lights[SUSTAIN_LIGHT].value = _envelope.isStage(bogaudio::dsp::ADSR::SUSTAIN_STAGE);
-	lights[RELEASE_LIGHT].value = _envelope.isStage(bogaudio::dsp::ADSR::RELEASE_STAGE);
+	_attackLightSum += _engines[c]->envelope.isStage(dsp::ADSR::ATTACK_STAGE);
+	_decayLightSum += _engines[c]->envelope.isStage(dsp::ADSR::DECAY_STAGE);
+	_sustainLightSum += _engines[c]->envelope.isStage(dsp::ADSR::SUSTAIN_STAGE);
+	_releaseLightSum += _engines[c]->envelope.isStage(dsp::ADSR::RELEASE_STAGE);
+}
+
+void ADSR::postProcess(const ProcessArgs& args) {
+	lights[ATTACK_LIGHT].value = _attackLightSum / (float)_channels;
+	lights[DECAY_LIGHT].value = _decayLightSum / (float)_channels;
+	lights[SUSTAIN_LIGHT].value = _sustainLightSum / (float)_channels;
+	lights[RELEASE_LIGHT].value = _releaseLightSum / (float)_channels;
 }
 
 struct ADSRWidget : ModuleWidget {

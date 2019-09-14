@@ -32,11 +32,9 @@ struct Follow : BGModule {
 		NUM_LIGHTS
 	};
 
-	RootMeanSquare _rms;
+	RootMeanSquare* _rms[maxChannels] {};
 
-	Follow()
-	:  _rms(1000.0f, 1.0f, 500.0f)
-	{
+	Follow() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(RESPONSE_PARAM, 0.0f, 1.0f, 0.3f, "Sensitivity", "%", 0.0f, 100.0f);
 		configParam(SCALE_PARAM, 0.0f, 1.0f, 1.0f, "Scale", "%", 0.0f, 100.0f);
@@ -44,8 +42,12 @@ struct Follow : BGModule {
 		sampleRateChange();
 	}
 
+	bool active() override;
+	int channels() override;
+	void addEngine(int c) override;
+	void removeEngine(int c) override;
 	void sampleRateChange() override;
-	void processChannel(const ProcessArgs& args, int _c) override;
+	void processChannel(const ProcessArgs& args, int c) override;
 };
 
 } // namespace bogaudio

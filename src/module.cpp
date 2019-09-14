@@ -48,5 +48,6 @@ void BGModule::process(const ProcessArgs& args) {
 		for (int i = 0; i < _channels; ++i) {
 			processChannel(args, i);
 		}
+		postProcess(args);
 	}
 }
