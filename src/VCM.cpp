@@ -5,41 +5,54 @@ bool VCM::LevelParamQuantity::isLinear() {
 	return dynamic_cast<VCM*>(module)->isLinear();
 }
 
-void VCM::processChannel(const ProcessArgs& args, int _c) {
-	bool linear = isLinear();
-	lights[LINEAR_LIGHT].value = linear;
-	if (outputs[MIX_OUTPUT].isConnected()) {
-		float out = channelStep(inputs[IN1_INPUT], params[LEVEL1_PARAM], inputs[CV1_INPUT], _amplifier1, linear);
-		out += channelStep(inputs[IN2_INPUT], params[LEVEL2_PARAM], inputs[CV2_INPUT], _amplifier2, linear);
-		out += channelStep(inputs[IN3_INPUT], params[LEVEL3_PARAM], inputs[CV3_INPUT], _amplifier3, linear);
-		out += channelStep(inputs[IN4_INPUT], params[LEVEL4_PARAM], inputs[CV4_INPUT], _amplifier4, linear);
-		float level = params[MIX_PARAM].getValue();
-		if (inputs[MIX_CV_INPUT].isConnected()) {
-			level *= clamp(inputs[MIX_CV_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-		}
-		out *= level;
-		if (!_disableOutputLimit) {
-			out = clamp(out, -12.0f, 12.0f);
-		}
-		outputs[MIX_OUTPUT].setVoltage(level * out);
-	}
+bool VCM::active() {
+	return outputs[MIX_OUTPUT].isConnected();
 }
 
-float VCM::channelStep(Input& input, Param& knob, Input& cv, Amplifier& amplifier, bool linear) {
+int VCM::channels() {
+	return std::max(
+		std::max(inputs[IN1_INPUT].getChannels(), inputs[IN2_INPUT].getChannels()),
+		std::max(inputs[IN3_INPUT].getChannels(), inputs[IN4_INPUT].getChannels())
+	);
+}
+
+void VCM::always(const ProcessArgs& args) {
+	lights[LINEAR_LIGHT].value = isLinear();
+}
+
+void VCM::processChannel(const ProcessArgs& args, int c) {
+	bool linear = isLinear();
+	float out = channelStep(c, inputs[IN1_INPUT], params[LEVEL1_PARAM], inputs[CV1_INPUT], _amplifier1[c], linear);
+	out += channelStep(c, inputs[IN2_INPUT], params[LEVEL2_PARAM], inputs[CV2_INPUT], _amplifier2[c], linear);
+	out += channelStep(c, inputs[IN3_INPUT], params[LEVEL3_PARAM], inputs[CV3_INPUT], _amplifier3[c], linear);
+	out += channelStep(c, inputs[IN4_INPUT], params[LEVEL4_PARAM], inputs[CV4_INPUT], _amplifier4[c], linear);
+	float level = params[MIX_PARAM].getValue();
+	if (inputs[MIX_CV_INPUT].isConnected()) {
+		level *= clamp(inputs[MIX_CV_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
+	}
+	out *= level;
+	if (!_disableOutputLimit) {
+		out = clamp(out, -12.0f, 12.0f);
+	}
+	outputs[MIX_OUTPUT].setChannels(_channels);
+	outputs[MIX_OUTPUT].setVoltage(level * out, c);
+}
+
+float VCM::channelStep(int c, Input& input, Param& knob, Input& cv, Amplifier& amplifier, bool linear) {
 	if (!input.isConnected()) {
 		return 0.0f;
 	}
 	float level = knob.getValue();
 	if (cv.isConnected()) {
-		level *= clamp(cv.getVoltage() / 10.0f, 0.0f, 1.0f);
+		level *= clamp(cv.getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
 	if (linear) {
-		return level * input.getVoltageSum();
+		return level * input.getPolyVoltage(c);
 	}
 	level = 1.0f - level;
 	level *= Amplifier::minDecibels;
 	amplifier.setLevel(level);
-	return amplifier.next(input.getVoltageSum());
+	return amplifier.next(input.getPolyVoltage(c));
 }
 
 struct VCMWidget : DisableOutputLimitModuleWidget {

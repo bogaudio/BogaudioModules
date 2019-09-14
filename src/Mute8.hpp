@@ -70,9 +70,9 @@ struct Mute8 : BGModule {
 	static const float minDecibels;
 	static const float slewTimeMS;
 
-	Amplifier _amplifiers[8];
-	bogaudio::dsp::SlewLimiter _slewLimiters[8];
-	Trigger _triggers[8];
+	Amplifier _amplifiers[8][maxChannels];
+	bogaudio::dsp::SlewLimiter _slewLimiters[8][maxChannels];
+	Trigger _triggers[8][maxChannels];
 
 	Mute8() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
@@ -91,7 +91,7 @@ struct Mute8 : BGModule {
 
 	void reset() override;
 	void sampleRateChange() override;
-	void processChannel(const ProcessArgs& args, int _c) override;
+	void processChannel(const ProcessArgs& args, int c) override;
 	void stepChannel(int i, bool solo);
 };
 

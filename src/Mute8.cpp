@@ -8,18 +8,24 @@ const float Mute8::slewTimeMS = 5.0f;
 
 void Mute8::reset() {
 	for (int i = 0; i < 8; ++i) {
-		_triggers[i].reset();
+		for (int c = 0; c < maxChannels; ++c) {
+			_triggers[i][c].reset();
+		}
 	}
 }
 
 void Mute8::sampleRateChange() {
 	float sampleRate = APP->engine->getSampleRate();
 	for (int i = 0; i < 8; ++i) {
-		_slewLimiters[i].setParams(sampleRate, slewTimeMS, maxDecibels - minDecibels);
+		for (int c = 0; c < maxChannels; ++c) {
+			_slewLimiters[i][c].setParams(sampleRate, slewTimeMS, maxDecibels - minDecibels);
+		}
 	}
 }
 
-void Mute8::processChannel(const ProcessArgs& args, int _c) {
+void Mute8::processChannel(const ProcessArgs& args, int c) {
+	assert(c == 0);
+
 	bool solo = false;
 	for (int i = 0; i < 8; ++i) {
 		solo = solo || params[MUTE1_PARAM + i].getValue() > 1.5f;
@@ -30,17 +36,41 @@ void Mute8::processChannel(const ProcessArgs& args, int _c) {
 }
 
 void Mute8::stepChannel(int i, bool solo) {
-	_triggers[i].process(inputs[MUTE1_INPUT + i].getVoltage());
-	bool muted = solo ? params[MUTE1_PARAM + i].getValue() < 2.0f : (params[MUTE1_PARAM + i].getValue() > 0.5f || _triggers[i].isHigh());
-	if (muted) {
-		lights[MUTE1_LIGHT + i].value = 1.0f;
-		_amplifiers[i].setLevel(_slewLimiters[i].next(minDecibels));
+	bool allMuted = solo ? params[MUTE1_PARAM + i].getValue() < 2.0f : params[MUTE1_PARAM + i].getValue() > 0.5f;
+
+	if (inputs[INPUT1_INPUT + i].isConnected()) {
+		int n = inputs[INPUT1_INPUT + i].getChannels();
+		outputs[OUTPUT1_OUTPUT + i].setChannels(n);
+		int mutedCount = 0;
+		for (int c = 0; c < n; ++c) {
+			_triggers[i][c].process(inputs[MUTE1_INPUT + i].getPolyVoltage(c));
+			bool muted = allMuted || _triggers[i][c].isHigh();
+			if (muted) {
+				++mutedCount;
+				_amplifiers[i][c].setLevel(_slewLimiters[i][c].next(minDecibels));
+			}
+			else {
+				_amplifiers[i][c].setLevel(_slewLimiters[i][c].next(maxDecibels));
+			}
+			outputs[OUTPUT1_OUTPUT + i].setChannels(n);
+			outputs[OUTPUT1_OUTPUT + i].setVoltage(_amplifiers[i][c].next(inputs[INPUT1_INPUT + i].getVoltage(c)), c);
+		}
+		lights[MUTE1_LIGHT + i].value = mutedCount / (float)n;
 	}
 	else {
-		lights[MUTE1_LIGHT + i].value = 0.0f;
-		_amplifiers[i].setLevel(_slewLimiters[i].next(maxDecibels));
+		_triggers[i][0].process(inputs[MUTE1_INPUT + i].getVoltage());
+		bool muted = allMuted || _triggers[i][0].isHigh();
+		if (muted) {
+			lights[MUTE1_LIGHT + i].value = 1.0f;
+			_amplifiers[i][0].setLevel(_slewLimiters[i][0].next(minDecibels));
+		}
+		else {
+			lights[MUTE1_LIGHT + i].value = 0.0f;
+			_amplifiers[i][0].setLevel(_slewLimiters[i][0].next(maxDecibels));
+		}
+		outputs[OUTPUT1_OUTPUT + i].setChannels(1);
+		outputs[OUTPUT1_OUTPUT + i].setVoltage(_amplifiers[i][0].next(5.0f));
 	}
-	outputs[OUTPUT1_OUTPUT + i].setVoltage(_amplifiers[i].next(inputs[INPUT1_INPUT + i].isConnected() ? inputs[INPUT1_INPUT + i].getVoltageSum() : 5.0f));
 }
 
 struct Mute8Widget : ModuleWidget {

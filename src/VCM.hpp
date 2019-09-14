@@ -44,10 +44,10 @@ struct VCM : DisableOutputLimitModule {
 		NUM_LIGHTS
 	};
 
-	Amplifier _amplifier1;
-	Amplifier _amplifier2;
-	Amplifier _amplifier3;
-	Amplifier _amplifier4;
+	Amplifier _amplifier1[maxChannels];
+	Amplifier _amplifier2[maxChannels];
+	Amplifier _amplifier3[maxChannels];
+	Amplifier _amplifier4[maxChannels];
 
 	struct LevelParamQuantity : AmpliferParamQuantity {
 		bool isLinear() override;
@@ -65,8 +65,11 @@ struct VCM : DisableOutputLimitModule {
 	}
 
 	inline bool isLinear() { return params[LINEAR_PARAM].getValue() > 0.5f; }
-	void processChannel(const ProcessArgs& args, int _c) override;
-	float channelStep(Input& input, Param& knob, Input& cv, Amplifier& amplifier, bool linear);
+	bool active() override;
+	int channels() override;
+	void always(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int c) override;
+	float channelStep(int c, Input& input, Param& knob, Input& cv, Amplifier& amplifier, bool linear);
 };
 
 } // namespace bogaudio
