@@ -34,10 +34,10 @@ struct Pan : BGModule {
 		NUM_LIGHTS
 	};
 
-	Panner _panner1;
-	Panner _panner2;
-	bogaudio::dsp::SlewLimiter _slew1;
-	bogaudio::dsp::SlewLimiter _slew2;
+	Panner _panner1[maxChannels];
+	Panner _panner2[maxChannels];
+	bogaudio::dsp::SlewLimiter _slew1[maxChannels];
+	bogaudio::dsp::SlewLimiter _slew2[maxChannels];
 	Saturator _saturatorLeft;
 	Saturator _saturatorRight;
 
@@ -49,8 +49,10 @@ struct Pan : BGModule {
 		sampleRateChange();
 	}
 
+	bool active() override;
+	int channels() override;
 	void sampleRateChange() override;
-	void processChannel(const ProcessArgs& args, int _c) override;
+	void processChannel(const ProcessArgs& args, int c) override;
 };
 
 } // namespace bogaudio

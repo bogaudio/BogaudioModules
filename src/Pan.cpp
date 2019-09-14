@@ -3,33 +3,41 @@
 #include "mixer.hpp"
 
 void Pan::sampleRateChange() {
-	_slew1.setParams(APP->engine->getSampleRate(), MixerChannel::panSlewTimeMS, 2.0f);
-	_slew2.setParams(APP->engine->getSampleRate(), MixerChannel::panSlewTimeMS, 2.0f);
+	for (int c = 0; c < maxChannels; ++c) {
+		_slew1[c].setParams(APP->engine->getSampleRate(), MixerChannel::panSlewTimeMS, 2.0f);
+		_slew2[c].setParams(APP->engine->getSampleRate(), MixerChannel::panSlewTimeMS, 2.0f);
+	}
 }
 
-void Pan::processChannel(const ProcessArgs& args, int _c) {
-	if (!((inputs[IN1_INPUT].isConnected() || inputs[IN2_INPUT].isConnected()) && (outputs[L_OUTPUT].isConnected() || outputs[R_OUTPUT].isConnected()))) {
-		return;
-	}
+bool Pan::active() {
+	return (inputs[IN1_INPUT].isConnected() || inputs[IN2_INPUT].isConnected()) && (outputs[L_OUTPUT].isConnected() || outputs[R_OUTPUT].isConnected());
+}
 
+int Pan::channels() {
+	return std::max(inputs[IN1_INPUT].getChannels(), inputs[IN2_INPUT].getChannels());
+}
+
+void Pan::processChannel(const ProcessArgs& args, int c) {
 	float pan = params[PAN1_PARAM].getValue();
 	if (inputs[CV1_INPUT].isConnected()) {
-		pan *= clamp(inputs[CV1_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
+		pan *= clamp(inputs[CV1_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
 	}
-	_panner1.setPan(_slew1.next(pan));
+	_panner1[c].setPan(_slew1[c].next(pan));
 
 	pan = params[PAN2_PARAM].getValue();
 	if (inputs[CV2_INPUT].isConnected()) {
-		pan *= clamp(inputs[CV2_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
+		pan *= clamp(inputs[CV2_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
 	}
-	_panner2.setPan(_slew2.next(pan));
+	_panner2[c].setPan(_slew2[c].next(pan));
 
 	float l1 = 0.0f, r1 = 0.0f;
-	_panner1.next(inputs[IN1_INPUT].getVoltageSum(), l1, r1);
+	_panner1[c].next(inputs[IN1_INPUT].getPolyVoltage(c), l1, r1);
 	float l2 = 0.0f, r2 = 0.0f;
-	_panner2.next(inputs[IN2_INPUT].getVoltageSum(), l2, r2);
-	outputs[L_OUTPUT].setVoltage(_saturatorLeft.next(l1 + l2));
-	outputs[R_OUTPUT].setVoltage(_saturatorRight.next(r1 + r2));
+	_panner2[c].next(inputs[IN2_INPUT].getPolyVoltage(c), l2, r2);
+	outputs[L_OUTPUT].setChannels(_channels);
+	outputs[L_OUTPUT].setVoltage(_saturatorLeft.next(l1 + l2), c);
+	outputs[R_OUTPUT].setChannels(_channels);
+	outputs[R_OUTPUT].setVoltage(_saturatorRight.next(r1 + r2), c);
 }
 
 struct PanWidget : ModuleWidget {

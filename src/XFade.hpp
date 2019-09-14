@@ -35,10 +35,10 @@ struct XFade : BGModule {
 	};
 
 	bool _linear = false;
-	float _mix = 0.0f;
-	float _curveIn = -1.0f;
-	bogaudio::dsp::SlewLimiter _mixSL;
-	CrossFader _mixer;
+	float _mix[maxChannels] {};
+	float _curveIn[maxChannels];
+	bogaudio::dsp::SlewLimiter _mixSL[maxChannels];
+	CrossFader _mixer[maxChannels];
 
 	XFade() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
@@ -47,10 +47,16 @@ struct XFade : BGModule {
 		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear");
 
 		sampleRateChange();
+		for (int c = 0; c < maxChannels; ++c) {
+			_curveIn[c] = -1.0f;
+		}
 	}
 
 	void sampleRateChange() override;
-	void processChannel(const ProcessArgs& args, int _c) override;
+	bool active() override;
+	int channels() override;
+	void always(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int c) override;
 };
 
 } // namespace bogaudio

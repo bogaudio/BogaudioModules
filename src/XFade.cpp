@@ -2,38 +2,49 @@
 #include "XFade.hpp"
 
 void XFade::sampleRateChange() {
-	_mixSL.setParams(APP->engine->getSampleRate(), 10.0f, 2.0f);
+	for (int c = 0; c < maxChannels; ++c) {
+		_mixSL[c].setParams(APP->engine->getSampleRate(), 10.0f, 2.0f);
+	}
 }
 
-void XFade::processChannel(const ProcessArgs& args, int _c) {
+bool XFade::active() {
+	return outputs[OUT_OUTPUT].isConnected();
+}
+
+int XFade::channels() {
+	return std::max(inputs[A_INPUT].getChannels(), inputs[B_INPUT].getChannels());
+}
+
+void XFade::always(const ProcessArgs& args) {
+	lights[LINEAR_LIGHT].value = params[LINEAR_PARAM].getValue() > 0.5f;
+}
+
+void XFade::processChannel(const ProcessArgs& args, int c) {
 	bool linear = params[LINEAR_PARAM].getValue() > 0.5f;
-	lights[LINEAR_LIGHT].value = linear;
-	if (!outputs[OUT_OUTPUT].isConnected()) {
-		return;
-	}
 
 	float mix = params[MIX_PARAM].getValue();
 	if (inputs[MIX_INPUT].isConnected()) {
-		mix *= clamp(inputs[MIX_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
+		mix *= clamp(inputs[MIX_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
 	}
-	mix = _mixSL.next(mix);
+	mix = _mixSL[c].next(mix);
 
 	float curveIn = params[CURVE_PARAM].getValue();
 
-	if (_linear != linear || _mix != mix || _curveIn != curveIn) {
+	if (_linear != linear || _mix[c] != mix || _curveIn[c] != curveIn) {
 		_linear = linear;
-		_mix = mix;
-		_curveIn = curveIn;
+		_mix[c] = mix;
+		_curveIn[c] = curveIn;
 		if (!linear) {
 			curveIn = powf(params[CURVE_PARAM].getValue(), 0.082f);
 		}
 		curveIn *= 2.0f;
 		curveIn -= 1.0f;
 
-		_mixer.setParams(mix, curveIn, linear);
+		_mixer[c].setParams(mix, curveIn, linear);
 	}
 
-	outputs[OUT_OUTPUT].setVoltage(_mixer.next(inputs[A_INPUT].getVoltageSum(), inputs[B_INPUT].getVoltageSum()));
+	outputs[OUT_OUTPUT].setChannels(_channels);
+	outputs[OUT_OUTPUT].setVoltage(_mixer[c].next(inputs[A_INPUT].getVoltage(c), inputs[B_INPUT].getVoltage(c)), c);
 }
 
 struct XFadeWidget : ModuleWidget {
