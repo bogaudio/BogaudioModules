@@ -4,25 +4,35 @@
 
 void VCAmp::sampleRateChange() {
 	float sampleRate = APP->engine->getSampleRate();
-	_levelSL.setParams(sampleRate, MixerChannel::levelSlewTimeMS, maxDecibels - minDecibels);
-	_rms.setSampleRate(sampleRate);
+	for (int c = 0; c < maxChannels; ++c) {
+		_levelSL[c].setParams(sampleRate, MixerChannel::levelSlewTimeMS, maxDecibels - minDecibels);
+		_rms[c].setSampleRate(sampleRate);
+	}
 }
 
-void VCAmp::processChannel(const ProcessArgs& args, int _c) {
+void VCAmp::processChannel(const ProcessArgs& args, int c) {
+	assert(c == 0);
+
 	if (inputs[IN_INPUT].isConnected()) {
-		float level = params[LEVEL_PARAM].getValue();
-		if (inputs[CV_INPUT].isConnected()) {
-			level *= clamp(inputs[CV_INPUT].getVoltage(), 0.0f, 10.0f) / 10.0f;
+		int n = inputs[IN_INPUT].getChannels();
+		outputs[OUT_OUTPUT].setChannels(n);
+		float rmsSum = 0.0f;
+		for (; c < n; ++c) {
+			float level = params[LEVEL_PARAM].getValue();
+			if (inputs[CV_INPUT].isConnected()) {
+				level *= clamp(inputs[CV_INPUT].getPolyVoltage(c), 0.0f, 10.0f) / 10.0f;
+			}
+			level *= maxDecibels - minDecibels;
+			level += minDecibels;
+			_amplifier[c].setLevel(_levelSL[c].next(level));
+			float out = _saturator[c].next(_amplifier[c].next(inputs[IN_INPUT].getVoltage(c)));
+			outputs[OUT_OUTPUT].setVoltage(out, c);
+			rmsSum += _rms[c].next(out / 5.0f);
 		}
-		level *= maxDecibels - minDecibels;
-		level += minDecibels;
-		_amplifier.setLevel(_levelSL.next(level));
-		float out = _saturator.next(_amplifier.next(inputs[IN_INPUT].getVoltageSum()));
-		outputs[OUT_OUTPUT].setVoltage(out);
-		_rmsLevel = _rms.next(out / 5.0f);
+		_rmsLevel = rmsSum / (float)n;
 	}
 	else {
-		_rmsLevel = _rms.next(0.0f);
+		_rmsLevel = 0.0f;
 	}
 }
 

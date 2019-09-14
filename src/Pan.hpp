@@ -38,8 +38,8 @@ struct Pan : BGModule {
 	Panner _panner2[maxChannels];
 	bogaudio::dsp::SlewLimiter _slew1[maxChannels];
 	bogaudio::dsp::SlewLimiter _slew2[maxChannels];
-	Saturator _saturatorLeft;
-	Saturator _saturatorRight;
+	Saturator _saturatorLeft[maxChannels];
+	Saturator _saturatorRight[maxChannels];
 
 	Pan() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);

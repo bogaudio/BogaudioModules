@@ -36,10 +36,10 @@ struct VCA : BGModule {
 		NUM_LIGHTS
 	};
 
-	Amplifier _amplifier1;
-	bogaudio::dsp::SlewLimiter _levelSL1;
-	Amplifier _amplifier2;
-	bogaudio::dsp::SlewLimiter _levelSL2;
+	Amplifier _amplifier1[maxChannels];
+	bogaudio::dsp::SlewLimiter _levelSL1[maxChannels];
+	Amplifier _amplifier2[maxChannels];
+	bogaudio::dsp::SlewLimiter _levelSL2[maxChannels];
 
 	struct LevelParamQuantity : AmpliferParamQuantity {
 		bool isLinear() override;
@@ -56,8 +56,8 @@ struct VCA : BGModule {
 
 	inline bool isLinear() { return params[LINEAR_PARAM].getValue() > 0.5f; }
 	void sampleRateChange() override;
-	void processChannel(const ProcessArgs& args, int _c) override;
-	void channelStep(Input& input, Output& output, Param& knob, Input& cv, Amplifier& amplifier, bogaudio::dsp::SlewLimiter& levelSL, bool linear);
+	void processChannel(const ProcessArgs& args, int c) override;
+	void channelStep(Input& input, Output& output, Param& knob, Input& cv, Amplifier* amplifier, bogaudio::dsp::SlewLimiter* levelSL, bool linear);
 };
 
 } // namespace bogaudio

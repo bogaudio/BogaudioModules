@@ -35,9 +35,9 @@ void Pan::processChannel(const ProcessArgs& args, int c) {
 	float l2 = 0.0f, r2 = 0.0f;
 	_panner2[c].next(inputs[IN2_INPUT].getPolyVoltage(c), l2, r2);
 	outputs[L_OUTPUT].setChannels(_channels);
-	outputs[L_OUTPUT].setVoltage(_saturatorLeft.next(l1 + l2), c);
+	outputs[L_OUTPUT].setVoltage(_saturatorLeft[c].next(l1 + l2), c);
 	outputs[R_OUTPUT].setChannels(_channels);
-	outputs[R_OUTPUT].setVoltage(_saturatorRight.next(r1 + r2), c);
+	outputs[R_OUTPUT].setVoltage(_saturatorRight[c].next(r1 + r2), c);
 }
 
 struct PanWidget : ModuleWidget {

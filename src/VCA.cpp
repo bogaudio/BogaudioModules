@@ -7,32 +7,42 @@ bool VCA::LevelParamQuantity::isLinear() {
 
 void VCA::sampleRateChange() {
 	float sampleRate = APP->engine->getSampleRate();
-	_levelSL1.setParams(sampleRate, 5.0f, 1.0f);
-	_levelSL2.setParams(sampleRate, 5.0f, 1.0f);
+	for (int c = 0; c < maxChannels; ++c) {
+		_levelSL1[c].setParams(sampleRate, 5.0f, 1.0f);
+		_levelSL2[c].setParams(sampleRate, 5.0f, 1.0f);
+	}
 }
 
-void VCA::processChannel(const ProcessArgs& args, int _c) {
+void VCA::processChannel(const ProcessArgs& args, int c) {
+	assert(c == 0);
+
 	bool linear = isLinear();
 	lights[LINEAR_LIGHT].value = linear;
 	channelStep(inputs[IN1_INPUT], outputs[OUT1_OUTPUT], params[LEVEL1_PARAM], inputs[CV1_INPUT], _amplifier1, _levelSL1, linear);
 	channelStep(inputs[IN2_INPUT], outputs[OUT2_OUTPUT], params[LEVEL2_PARAM], inputs[CV2_INPUT], _amplifier2, _levelSL2, linear);
 }
 
-void VCA::channelStep(Input& input, Output& output, Param& knob, Input& cv, Amplifier& amplifier, bogaudio::dsp::SlewLimiter& levelSL, bool linear) {
-	if (input.isConnected() && output.isConnected()) {
+void VCA::channelStep(Input& input, Output& output, Param& knob, Input& cv, Amplifier* amplifier, bogaudio::dsp::SlewLimiter* levelSL, bool linear) {
+	if (!(input.isConnected() && output.isConnected())) {
+		return;
+	}
+
+	int n = input.getChannels();
+	output.setChannels(n);
+	for (int c = 0; c < n; ++c) {
 		float level = knob.getValue();
 		if (cv.isConnected()) {
-			level *= clamp(cv.getVoltage() / 10.0f, 0.0f, 1.0f);
+			level *= clamp(cv.getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 		}
-		level = levelSL.next(level);
+		level = levelSL[c].next(level);
 		if (linear) {
-			output.setVoltage(level * input.getVoltageSum());
+			output.setVoltage(level * input.getVoltage(c), c);
 		}
 		else {
 			level = 1.0f - level;
 			level *= Amplifier::minDecibels;
-			amplifier.setLevel(level);
-			output.setVoltage(amplifier.next(input.getVoltageSum()));
+			amplifier[c].setLevel(level);
+			output.setVoltage(amplifier[c].next(input.getVoltage(c)), c);
 		}
 	}
 }

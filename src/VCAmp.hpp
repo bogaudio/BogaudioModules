@@ -32,10 +32,10 @@ struct VCAmp : BGModule {
 
 	const float maxDecibels = 12.0f;
 	const float minDecibels = Amplifier::minDecibels;
-	Amplifier _amplifier;
-	bogaudio::dsp::SlewLimiter _levelSL;
-	Saturator _saturator;
-	RootMeanSquare _rms;
+	Amplifier _amplifier[maxChannels];
+	bogaudio::dsp::SlewLimiter _levelSL[maxChannels];
+	Saturator _saturator[maxChannels];
+	RootMeanSquare _rms[maxChannels];
 	float _rmsLevel = 0.0f;
 
 	VCAmp() {
@@ -43,11 +43,13 @@ struct VCAmp : BGModule {
 		configParam(LEVEL_PARAM, 0.0f, 1.0f, fabs(minDecibels) / (maxDecibels - minDecibels), "Level", " dB", 0.0f, maxDecibels - minDecibels, minDecibels);
 
 		sampleRateChange();
-		_rms.setSensitivity(0.05f);
+		for (int c = 0; c < maxChannels; ++c) {
+			_rms[c].setSensitivity(0.05f);
+		}
 	}
 
 	void sampleRateChange() override;
-	void processChannel(const ProcessArgs& args, int _c) override;
+	void processChannel(const ProcessArgs& args, int c) override;
 };
 
 } // namespace bogaudio
