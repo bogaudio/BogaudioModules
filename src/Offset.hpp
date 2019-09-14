@@ -32,9 +32,9 @@ struct Offset : DisableOutputLimitModule {
 		configParam(SCALE_PARAM, -1.0f, 1.0f, 0.316f, "Scale", "%", 0.0f, 100.0f);
 	}
 
-	void processChannel(const ProcessArgs& args, int _c) override;
-
-	float knobValue(Param& knob, Input& cv) const;
+	int channels() override;
+	void processChannel(const ProcessArgs& args, int c) override;
+	float knobValue(Param& knob, Input& cv, int c) const;
 };
 
 } // namespace bogaudio

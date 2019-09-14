@@ -1,25 +1,33 @@
 
 #include "Offset.hpp"
 
-void Offset::processChannel(const ProcessArgs& args, int _c) {
-	float offset = knobValue(params[OFFSET_PARAM], inputs[OFFSET_INPUT]);
-	float scale = knobValue(params[SCALE_PARAM], inputs[SCALE_INPUT]);
+int Offset::channels() {
+	if (inputs[IN_INPUT].isConnected()) {
+		return inputs[IN_INPUT].getChannels();
+	}
+	return 1;
+}
+
+void Offset::processChannel(const ProcessArgs& args, int c) {
+	float offset = knobValue(params[OFFSET_PARAM], inputs[OFFSET_INPUT], c);
+	float scale = knobValue(params[SCALE_PARAM], inputs[SCALE_INPUT], c);
 	scale = scale < 0.0f ? -pow(scale, 2.0f) : pow(scale, 2.0f);
 	scale *= 10.0;
 
-	float out = inputs[IN_INPUT].getVoltage();
+	float out = inputs[IN_INPUT].getVoltage(c);
 	out += 10.0f * offset;
 	out *= scale;
 	if (!_disableOutputLimit) {
 		out = clamp(out, -12.0f, 12.0f);
 	}
-	outputs[OUT_OUTPUT].setVoltage(out);
+	outputs[OUT_OUTPUT].setChannels(_channels);
+	outputs[OUT_OUTPUT].setVoltage(out, c);
 }
 
-float Offset::knobValue(Param& knob, Input& cv) const {
+float Offset::knobValue(Param& knob, Input& cv, int c) const {
 	float v = knob.getValue();
 	if (cv.isConnected()) {
-		v *= clamp(cv.getVoltage() / 10.0f, -1.0f, 1.0f);
+		v *= clamp(cv.getPolyVoltage(c) / 10.0f, -1.0f, 1.0f);
 	}
 	return v;
 }
