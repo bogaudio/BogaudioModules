@@ -44,7 +44,11 @@ struct Shaper : TriggerOnLoadModule {
 		NUM_LIGHTS
 	};
 
-	ShaperCore* _core;
+	ShaperCore* _core[maxChannels] {};
+	float _attackLights[maxChannels] {};
+	float _onLights[maxChannels] {};
+	float _decayLights[maxChannels] {};
+	float _offLights[maxChannels] {};
 
 	Shaper() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
@@ -57,61 +61,16 @@ struct Shaper : TriggerOnLoadModule {
 		configParam(TRIGGER_PARAM, 0.0f, 1.0f, 0.0f, "Trigger");
 		configParam(SPEED_PARAM, 0.0f, 1.0f, 1.0f, "Speed");
 		configParam(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "Loop");
-
-		_core = new ShaperCore(
-			params[ATTACK_PARAM],
-			params[ON_PARAM],
-			params[DECAY_PARAM],
-			params[OFF_PARAM],
-			params[ENV_PARAM],
-			params[SIGNAL_PARAM],
-			params[TRIGGER_PARAM],
-			params[SPEED_PARAM],
-			params[LOOP_PARAM],
-
-			inputs[SIGNAL_INPUT],
-			inputs[TRIGGER_INPUT],
-			NULL,
-			NULL,
-			NULL,
-			NULL,
-			NULL,
-			NULL,
-
-			outputs[SIGNAL_OUTPUT],
-			outputs[ENV_OUTPUT],
-			outputs[INV_OUTPUT],
-			outputs[TRIGGER_OUTPUT],
-			NULL,
-			NULL,
-			NULL,
-			NULL,
-
-			lights[ATTACK_LIGHT],
-			lights[ON_LIGHT],
-			lights[DECAY_LIGHT],
-			lights[OFF_LIGHT],
-
-			_triggerOnLoad,
-			_shouldTriggerOnLoad
-		);
-		reset();
-	}
-	virtual ~Shaper() {
-		delete _core;
 	}
 
-	void reset() override {
-		_core->reset();
-	}
+	void reset() override;
+	int channels() override;
+	void addEngine(int c) override;
+	void removeEngine(int c) override;
+	void processChannel(const ProcessArgs& args, int c) override;
+	void postProcess(const ProcessArgs& args) override;
 
-	void processChannel(const ProcessArgs& args, int _c) override {
-		_core->step();
-	}
-
-	bool shouldTriggerOnNextLoad() override {
-		return _core->_stage != _core->STOPPED_STAGE;
-	}
+	bool shouldTriggerOnNextLoad() override;
 };
 
 } // namespace bogaudio

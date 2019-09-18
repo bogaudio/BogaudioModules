@@ -46,11 +46,11 @@ struct DADSRHCore {
 	Output& _invOutput;
 	Output& _triggerOutput;
 
-	Light& _delayLight;
-	Light& _attackLight;
-	Light& _decayLight;
-	Light& _sustainLight;
-	Light& _releaseLight;
+	float* _delayLights;
+	float* _attackLights;
+	float* _decayLights;
+	float* _sustainLights;
+	float* _releaseLights;
 	Light& _attackShape1Light;
 	Light& _attackShape2Light;
 	Light& _attackShape3Light;
@@ -102,11 +102,11 @@ struct DADSRHCore {
 		Output& invOutput,
 		Output& triggerOutput,
 
-		Light& delayLight,
-		Light& attackLight,
-		Light& decayLight,
-		Light& sustainLight,
-		Light& releaseLight,
+		float* delayLights,
+		float* attackLights,
+		float* decayLights,
+		float* sustainLights,
+		float* releaseLights,
 		Light& attackShape1Light,
 		Light& attackShape2Light,
 		Light& attackShape3Light,
@@ -151,11 +151,11 @@ struct DADSRHCore {
 	, _invOutput(invOutput)
 	, _triggerOutput(triggerOutput)
 
-	, _delayLight(delayLight)
-	, _attackLight(attackLight)
-	, _decayLight(decayLight)
-	, _sustainLight(sustainLight)
-	, _releaseLight(releaseLight)
+	, _delayLights(delayLights)
+	, _attackLights(attackLights)
+	, _decayLights(decayLights)
+	, _sustainLights(sustainLights)
+	, _releaseLights(releaseLights)
 	, _attackShape1Light(attackShape1Light)
 	, _attackShape2Light(attackShape2Light)
 	, _attackShape3Light(attackShape3Light)
@@ -173,11 +173,11 @@ struct DADSRHCore {
 	}
 
 	void reset();
-	void step();
+	void step(int c, int channels);
 
-	float stepAmount(Param& knob, Input* cv, bool slow, bool allowZero = false);
-	float knobTime(Param& knob, Input* cv, bool slow, bool allowZero = false);
-	float knobAmount(Param& knob, Input* cv) const;
+	float stepAmount(int c, Param& knob, Input* cv, bool slow, bool allowZero = false);
+	float knobTime(int c, Param& knob, Input* cv, bool slow, bool allowZero = false);
+	float knobAmount(int c, Param& knob, Input* cv) const;
 };
 
 } // namespace bogaudio

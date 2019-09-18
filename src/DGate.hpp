@@ -39,11 +39,19 @@ struct DGate : TriggerOnLoadModule {
 		GATE_STAGE
 	};
 
-	bool _firstStep = true;
-	Trigger _trigger;
-	rack::dsp::PulseGenerator _triggerOuptutPulseGen;
-	Stage _stage;
-	float _stageProgress;
+	struct Engine {
+		bool firstStep = true;
+		Trigger trigger;
+		rack::dsp::PulseGenerator triggerOuptutPulseGen;
+		Stage stage;
+		float stageProgress;
+		float delayLight;
+		float gateLight;
+
+		void reset();
+	};
+
+	Engine *_engines[maxChannels] {};
 
 	DGate() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
@@ -51,16 +59,16 @@ struct DGate : TriggerOnLoadModule {
 		configParam<EnvelopeSegmentParamQuantity>(GATE_PARAM, 0.0f, 1.0f, 0.31623f, "Gate", " s");
 		configParam(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "Loop");
 		configParam(TRIGGER_PARAM, 0.0f, 1.0f, 0.0f, "Trigger");
-
-		reset();
 	}
 
 	void reset() override;
-	void processChannel(const ProcessArgs& args, int _c) override;
-	bool stepStage(Param& knob);
-	bool shouldTriggerOnNextLoad() override {
-		return _stage != STOPPED_STAGE;
-	};
+	int channels() override;
+	void addEngine(int c) override;
+	void removeEngine(int c) override;
+	void processChannel(const ProcessArgs& args, int c) override;
+	void postProcess(const ProcessArgs& args) override;
+	bool stepStage(int c, Param& knob);
+	bool shouldTriggerOnNextLoad() override;
 };
 
 } // namespace bogaudio

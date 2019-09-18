@@ -41,10 +41,10 @@ struct ShaperCore {
 	Output* _decayOutput;
 	Output* _offOutput;
 
-	Light& _attackLight;
-	Light& _onLight;
-	Light& _decayLight;
-	Light& _offLight;
+	float* _attackLights;
+	float* _onLights;
+	float* _decayLights;
+	float* _offLights;
 
 	bool _firstStep = true;
 	bool& _triggerOnLoad;
@@ -83,10 +83,10 @@ struct ShaperCore {
 		Output* decayOutput,
 		Output* offOutput,
 
-		Light& attackLight,
-		Light& onLight,
-		Light& decayLight,
-		Light& offLight,
+		float* attackLights,
+		float* onLights,
+		float* decayLights,
+		float* offLights,
 
 		bool& triggerOnLoad,
 		bool& shouldTriggerOnLoad
@@ -118,10 +118,10 @@ struct ShaperCore {
 	, _decayOutput(decayOutput)
 	, _offOutput(offOutput)
 
-	, _attackLight(attackLight)
-	, _onLight(onLight)
-	, _decayLight(decayLight)
-	, _offLight(offLight)
+	, _attackLights(attackLights)
+	, _onLights(onLights)
+	, _decayLights(decayLights)
+	, _offLights(offLights)
 
 	, _triggerOnLoad(triggerOnLoad)
 	, _shouldTriggerOnLoad(shouldTriggerOnLoad)
@@ -130,10 +130,10 @@ struct ShaperCore {
 	}
 
 	void reset();
-	void step();
+	void step(int c, int channels);
 
-	bool stepStage(Param& knob, Input* cv, bool slow);
-	float levelParam(Param& knob, Input* cv) const;
+	bool stepStage(Param& knob, Input* cv, bool slow, int c);
+	float levelParam(Param& knob, Input* cv, int c) const;
 };
 
 } // namespace bogaudio

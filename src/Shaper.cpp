@@ -1,6 +1,95 @@
 
 #include "Shaper.hpp"
 
+void Shaper::reset() {
+	for (int c = 0; c < maxChannels; ++c) {
+		if (_core[c]) {
+			_core[c]->reset();
+		}
+	}
+}
+
+int Shaper::channels() {
+	return std::max(inputs[SIGNAL_INPUT].getChannels(), inputs[TRIGGER_INPUT].getChannels());
+}
+
+void Shaper::addEngine(int c) {
+	_core[c] = new ShaperCore(
+		params[ATTACK_PARAM],
+		params[ON_PARAM],
+		params[DECAY_PARAM],
+		params[OFF_PARAM],
+		params[ENV_PARAM],
+		params[SIGNAL_PARAM],
+		params[TRIGGER_PARAM],
+		params[SPEED_PARAM],
+		params[LOOP_PARAM],
+
+		inputs[SIGNAL_INPUT],
+		inputs[TRIGGER_INPUT],
+		NULL,
+		NULL,
+		NULL,
+		NULL,
+		NULL,
+		NULL,
+
+		outputs[SIGNAL_OUTPUT],
+		outputs[ENV_OUTPUT],
+		outputs[INV_OUTPUT],
+		outputs[TRIGGER_OUTPUT],
+		NULL,
+		NULL,
+		NULL,
+		NULL,
+
+		_attackLights,
+		_onLights,
+		_decayLights,
+		_offLights,
+
+		_triggerOnLoad,
+		_shouldTriggerOnLoad
+	);
+}
+
+void Shaper::removeEngine(int c) {
+	delete _core[c];
+	_core[c] = NULL;
+}
+
+void Shaper::processChannel(const ProcessArgs& args, int c) {
+	_core[c]->step(c, _channels);
+}
+
+void Shaper::postProcess(const ProcessArgs& args) {
+	float attackSum = 0.0f;
+	float onSum = 0.0f;
+	float decaySum = 0.0f;
+	float offSum = 0.0f;
+	for (int c = 0; c < maxChannels; ++c) {
+		if (_core[c]) {
+			attackSum += _attackLights[c];
+			onSum += _onLights[c];
+			decaySum += _decayLights[c];
+			offSum += _offLights[c];
+		}
+	}
+	lights[ATTACK_LIGHT].value = attackSum / (float)_channels;
+	lights[ON_LIGHT].value = onSum / (float)_channels;
+	lights[DECAY_LIGHT].value = decaySum / (float)_channels;
+	lights[OFF_LIGHT].value = offSum / (float)_channels;
+}
+
+bool Shaper::shouldTriggerOnNextLoad() {
+	for (int c = 0; c < maxChannels; ++c) {
+		if (_core[c] && _core[c]->_stage != _core[c]->STOPPED_STAGE) {
+			return true;
+		}
+	}
+	return false;
+}
+
 struct ShaperWidget : TriggerOnLoadModuleWidget {
 	static constexpr int hp = 10;
 

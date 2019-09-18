@@ -8,7 +8,7 @@ void DADSRHCore::reset() {
 	_releaseLevel = _holdProgress = _stageProgress = _envelope = 0.0;
 }
 
-void DADSRHCore::step() {
+void DADSRHCore::step(int c, int channels) {
 	const int SHAPE1 = 1;
 	const int SHAPE2 = 2;
 	const int SHAPE3 = 3;
@@ -17,7 +17,7 @@ void DADSRHCore::step() {
 
 	bool slow = _speedParam.getValue() <= 0.5;
 	if (
-		_trigger.process(_triggerParam.getValue() + _triggerInput.getVoltage()) ||
+		_trigger.process(_triggerParam.getValue() + _triggerInput.getPolyVoltage(c)) ||
 		(_firstStep && _triggerOnLoad && _shouldTriggerOnLoad && _loopParam.getValue() < 0.5 && _modeParam.getValue() < 0.5)
 	) {
 		if (_stage == STOPPED_STAGE || _retriggerParam.getValue() <= 0.5) {
@@ -36,8 +36,8 @@ void DADSRHCore::step() {
 					_stageProgress = _envelope = 0.0;
 
 					// we're skipping the delay; subtract the full delay time from hold time so that env has the same shape as if we'd waited out the delay.
-					float delayTime = knobTime(_delayParam, _delayInput, slow, true);
-					float holdTime = knobTime(_holdParam, _holdInput, slow);
+					float delayTime = knobTime(c, _delayParam, _delayInput, slow, true);
+					float holdTime = knobTime(c, _holdParam, _holdInput, slow);
 					_holdProgress = fminf(1.0, delayTime / holdTime);
 					break;
 				}
@@ -62,9 +62,9 @@ void DADSRHCore::step() {
 					}
 
 					// reset hold to what it would have been at this point in the attack the first time through.
-					float delayTime = knobTime(_delayParam, _delayInput, slow, true);
-					float attackTime = knobTime(_attackParam, _attackInput, slow);
-					float holdTime = knobTime(_holdParam, _holdInput, slow);
+					float delayTime = knobTime(c, _delayParam, _delayInput, slow, true);
+					float attackTime = knobTime(c, _attackParam, _attackInput, slow);
+					float holdTime = knobTime(c, _holdParam, _holdInput, slow);
 					_holdProgress = fminf(1.0, (delayTime + _stageProgress * attackTime) / holdTime);
 					break;
 				}
@@ -86,7 +86,7 @@ void DADSRHCore::step() {
 				bool holdComplete = _holdProgress >= 1.0;
 				if (!holdComplete) {
 					// run the hold accumulation even if we're not in hold mode, in case we switch mid-cycle.
-					_holdProgress += stepAmount(_holdParam, _holdInput, slow);
+					_holdProgress += stepAmount(c, _holdParam, _holdInput, slow);
 					holdComplete = _holdProgress >= 1.0;
 				}
 
@@ -107,7 +107,7 @@ void DADSRHCore::step() {
 		}
 
 		case DELAY_STAGE: {
-			_stageProgress += stepAmount(_delayParam, _delayInput, slow, true);
+			_stageProgress += stepAmount(c, _delayParam, _delayInput, slow, true);
 			if (_stageProgress >= 1.0) {
 				_stage = ATTACK_STAGE;
 				_stageProgress = 0.0;
@@ -116,7 +116,7 @@ void DADSRHCore::step() {
 		}
 
 		case ATTACK_STAGE: {
-			_stageProgress += stepAmount(_attackParam, _attackInput, slow);
+			_stageProgress += stepAmount(c, _attackParam, _attackInput, slow);
 			switch ((int)_attackShapeParam.getValue()) {
 				case SHAPE2: {
 					_envelope = _stageProgress;
@@ -139,8 +139,8 @@ void DADSRHCore::step() {
 		}
 
 		case DECAY_STAGE: {
-			float sustainLevel = knobAmount(_sustainParam, _sustainInput);
-			_stageProgress += stepAmount(_decayParam, _decayInput, slow);
+			float sustainLevel = knobAmount(c, _sustainParam, _sustainInput);
+			_stageProgress += stepAmount(c, _decayParam, _decayInput, slow);
 			switch ((int)_decayShapeParam.getValue()) {
 				case SHAPE2: {
 					_envelope = 1.0 - _stageProgress;
@@ -164,12 +164,12 @@ void DADSRHCore::step() {
 		}
 
 		case SUSTAIN_STAGE: {
-			_envelope = knobAmount(_sustainParam, _sustainInput);
+			_envelope = knobAmount(c, _sustainParam, _sustainInput);
 			break;
 		}
 
 		case RELEASE_STAGE: {
-			_stageProgress += stepAmount(_releaseParam, _releaseInput, slow);
+			_stageProgress += stepAmount(c, _releaseParam, _releaseInput, slow);
 			switch ((int)_releaseShapeParam.getValue()) {
 				case SHAPE2: {
 					_envelope = 1.0 - _stageProgress;
@@ -201,35 +201,43 @@ void DADSRHCore::step() {
 	}
 
 	float env = _envelope * 10.0;
-	_envOutput.setVoltage(env);
-	_invOutput.setVoltage(10.0 - env);
+	_envOutput.setChannels(channels);
+	_envOutput.setVoltage(env, c);
+	_invOutput.setChannels(channels);
+	_invOutput.setVoltage(10.0 - env, c);
 
 	if (complete) {
 		_triggerOuptutPulseGen.trigger(0.001);
 	}
-	_triggerOutput.setVoltage(_triggerOuptutPulseGen.process(APP->engine->getSampleTime()) ? 5.0 : 0.0);
+	_triggerOutput.setChannels(channels);
+	_triggerOutput.setVoltage(_triggerOuptutPulseGen.process(APP->engine->getSampleTime()) ? 5.0 : 0.0, c);
 
 	if (_delayOutput) {
-		_delayOutput->value = _stage == DELAY_STAGE ? 5.0 : 0.0;
+		_delayOutput->setChannels(channels);
+		_delayOutput->setVoltage(_stage == DELAY_STAGE ? 5.0 : 0.0, c);
 	}
 	if (_attackOutput) {
-		_attackOutput->value = _stage == ATTACK_STAGE ? 5.0 : 0.0;
+		_attackOutput->setChannels(channels);
+		_attackOutput->setVoltage(_stage == ATTACK_STAGE ? 5.0 : 0.0, c);
 	}
 	if (_decayOutput) {
-		_decayOutput->value = _stage == DECAY_STAGE ? 5.0 : 0.0;
+		_decayOutput->setChannels(channels);
+		_decayOutput->setVoltage(_stage == DECAY_STAGE ? 5.0 : 0.0, c);
 	}
 	if (_sustainOutput) {
-		_sustainOutput->value = _stage == SUSTAIN_STAGE ? 5.0 : 0.0;
+		_sustainOutput->setChannels(channels);
+		_sustainOutput->setVoltage(_stage == SUSTAIN_STAGE ? 5.0 : 0.0, c);
 	}
 	if (_releaseOutput) {
-		_releaseOutput->value = _stage == RELEASE_STAGE ? 5.0 : 0.0;
+		_releaseOutput->setChannels(channels);
+		_releaseOutput->setVoltage(_stage == RELEASE_STAGE ? 5.0 : 0.0, c);
 	}
 
-	_delayLight.value = _stage == DELAY_STAGE;
-	_attackLight.value = _stage == ATTACK_STAGE;
-	_decayLight.value = _stage == DECAY_STAGE;
-	_sustainLight.value = _stage == SUSTAIN_STAGE;
-	_releaseLight.value = _stage == RELEASE_STAGE;
+	_delayLights[c] = _stage == DELAY_STAGE;
+	_attackLights[c] = _stage == ATTACK_STAGE;
+	_decayLights[c] = _stage == DECAY_STAGE;
+	_sustainLights[c] = _stage == SUSTAIN_STAGE;
+	_releaseLights[c] = _stage == RELEASE_STAGE;
 
 	_attackShape1Light.value = (int)_attackShapeParam.value == SHAPE1;
 	_attackShape2Light.value = (int)_attackShapeParam.value == SHAPE2;
@@ -244,21 +252,21 @@ void DADSRHCore::step() {
 	_firstStep = false;
 }
 
-float DADSRHCore::stepAmount(Param& knob, Input* cv, bool slow, bool allowZero) {
-	return APP->engine->getSampleTime() / knobTime(knob, cv, slow, allowZero);
+float DADSRHCore::stepAmount(int c, Param& knob, Input* cv, bool slow, bool allowZero) {
+	return APP->engine->getSampleTime() / knobTime(c, knob, cv, slow, allowZero);
 }
 
-float DADSRHCore::knobTime(Param& knob, Input* cv, bool slow, bool allowZero) {
-	float t = knobAmount(knob, cv);
+float DADSRHCore::knobTime(int c, Param& knob, Input* cv, bool slow, bool allowZero) {
+	float t = knobAmount(c, knob, cv);
 	t = pow(t, 2.0);
 	t = fmaxf(t, allowZero ? 0.0 : 0.001);
 	return t * (slow ? 100.0 : 10.0);
 }
 
-float DADSRHCore::knobAmount(Param& knob, Input* cv) const {
+float DADSRHCore::knobAmount(int c, Param& knob, Input* cv) const {
 	float v = clamp(knob.getValue(), 0.0f, 1.0f);
 	if (cv && cv->isConnected()) {
-		v *= clamp(cv->getVoltage() / 10.0f, 0.0f, 1.0f);
+		v *= clamp(cv->getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
 	return v;
 }

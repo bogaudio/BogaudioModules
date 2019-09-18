@@ -1,6 +1,112 @@
 
 #include "DADSRHPlus.hpp"
 
+void DADSRHPlus::reset() {
+	for (int c = 0; c < maxChannels; ++c) {
+		if (_core[c]) {
+			_core[c]->reset();
+		}
+	}
+}
+
+int DADSRHPlus::channels() {
+	return inputs[TRIGGER_INPUT].getChannels();
+}
+
+void DADSRHPlus::addEngine(int c) {
+	_core[c] = new DADSRHCore(
+		params[DELAY_PARAM],
+		params[ATTACK_PARAM],
+		params[DECAY_PARAM],
+		params[SUSTAIN_PARAM],
+		params[RELEASE_PARAM],
+		params[HOLD_PARAM],
+		params[ATTACK_SHAPE_PARAM],
+		params[DECAY_SHAPE_PARAM],
+		params[RELEASE_SHAPE_PARAM],
+		params[TRIGGER_PARAM],
+		params[MODE_PARAM],
+		params[LOOP_PARAM],
+		params[SPEED_PARAM],
+		params[RETRIGGER_PARAM],
+
+		&inputs[DELAY_INPUT],
+		&inputs[ATTACK_INPUT],
+		&inputs[DECAY_INPUT],
+		&inputs[SUSTAIN_INPUT],
+		&inputs[RELEASE_INPUT],
+		&inputs[HOLD_INPUT],
+		inputs[TRIGGER_INPUT],
+
+		&outputs[DELAY_OUTPUT],
+		&outputs[ATTACK_OUTPUT],
+		&outputs[DECAY_OUTPUT],
+		&outputs[SUSTAIN_OUTPUT],
+		&outputs[RELEASE_OUTPUT],
+		outputs[ENV_OUTPUT],
+		outputs[INV_OUTPUT],
+		outputs[TRIGGER_OUTPUT],
+
+		_delayLights,
+		_attackLights,
+		_decayLights,
+		_sustainLights,
+		_releaseLights,
+		lights[ATTACK_SHAPE1_LIGHT],
+		lights[ATTACK_SHAPE2_LIGHT],
+		lights[ATTACK_SHAPE3_LIGHT],
+		lights[DECAY_SHAPE1_LIGHT],
+		lights[DECAY_SHAPE2_LIGHT],
+		lights[DECAY_SHAPE3_LIGHT],
+		lights[RELEASE_SHAPE1_LIGHT],
+		lights[RELEASE_SHAPE2_LIGHT],
+		lights[RELEASE_SHAPE3_LIGHT],
+
+		_triggerOnLoad,
+		_shouldTriggerOnLoad
+	);
+}
+
+void DADSRHPlus::removeEngine(int c) {
+	delete _core[c];
+	_core[c] = NULL;
+}
+
+void DADSRHPlus::processChannel(const ProcessArgs& args, int c) {
+	_core[c]->step(c, _channels);
+}
+
+void DADSRHPlus::postProcess(const ProcessArgs& args) {
+	float delaySum = 0.0f;
+	float attackSum = 0.0f;
+	float decaySum = 0.0f;
+	float sustainSum = 0.0f;
+	float releaseSum = 0.0f;
+	for (int c = 0; c < maxChannels; ++c) {
+		if (_core[c]) {
+			delaySum += _delayLights[c];
+			attackSum += _attackLights[c];
+			decaySum += _decayLights[c];
+			sustainSum += _sustainLights[c];
+			releaseSum += _releaseLights[c];
+		}
+	}
+	lights[DELAY_LIGHT].value = delaySum / (float)_channels;
+	lights[ATTACK_LIGHT].value = attackSum / (float)_channels;
+	lights[DECAY_LIGHT].value = decaySum / (float)_channels;
+	lights[SUSTAIN_LIGHT].value = sustainSum / (float)_channels;
+	lights[RELEASE_LIGHT].value = releaseSum / (float)_channels;
+}
+
+bool DADSRHPlus::shouldTriggerOnNextLoad() {
+	for (int c = 0; c < maxChannels; ++c) {
+		if (_core[c] && _core[c]->_stage != _core[c]->STOPPED_STAGE) {
+			return true;
+		}
+	}
+	return false;
+}
+
 struct DADSRHPlusWidget : TriggerOnLoadModuleWidget {
 	static constexpr int hp = 15;
 

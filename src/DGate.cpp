@@ -1,44 +1,68 @@
 
 #include "DGate.hpp"
 
-void DGate::reset() {
-	_trigger.reset();
-	_triggerOuptutPulseGen.process(10.0);
-	_stage = STOPPED_STAGE;
-	_stageProgress = 0.0;
+void DGate::Engine::reset() {
+	trigger.reset();
+	triggerOuptutPulseGen.process(10.0);
+	stage = STOPPED_STAGE;
+	stageProgress = 0.0;
+	delayLight = 0.0;
+	gateLight = 0.0;
 }
 
-void DGate::processChannel(const ProcessArgs& args, int _c) {
+void DGate::reset() {
+	for (int c = 0; c < maxChannels; ++c) {
+		if (_engines[c]) {
+			_engines[c]->reset();
+		}
+	}
+}
+
+int DGate::channels() {
+	return inputs[TRIGGER_INPUT].getChannels();
+}
+
+void DGate::addEngine(int c) {
+	_engines[c] = new Engine();
+	_engines[c]->reset();
+}
+
+void DGate::removeEngine(int c) {
+	delete _engines[c];
+	_engines[c] = NULL;
+}
+
+void DGate::processChannel(const ProcessArgs& args, int c) {
 	float envelope = 0.0;
 	bool complete = false;
 	if (
-		_trigger.process(params[TRIGGER_PARAM].getValue() + inputs[TRIGGER_INPUT].getVoltage()) ||
-		(_firstStep && _triggerOnLoad && _shouldTriggerOnLoad && params[LOOP_PARAM].getValue() <= 0.0)
+		_engines[c]->trigger.process(params[TRIGGER_PARAM].getValue() + inputs[TRIGGER_INPUT].getPolyVoltage(c)) ||
+		(_engines[c]->firstStep && _triggerOnLoad && _shouldTriggerOnLoad && params[LOOP_PARAM].getValue() <= 0.0)
 	) {
-		_stage = DELAY_STAGE;
-		_stageProgress = 0.0;
+		_engines[c]->stage = DELAY_STAGE;
+		_engines[c]->stageProgress = 0.0;
 	}
 	else {
-		switch (_stage) {
+		switch (_engines[c]->stage) {
 			case STOPPED_STAGE: {
 				break;
 			}
 			case DELAY_STAGE: {
-				if (stepStage(params[DELAY_PARAM])) {
-					_stage = GATE_STAGE;
-					_stageProgress = 0.0;
+				if (stepStage(c, params[DELAY_PARAM])) {
+					_engines[c]->stage = GATE_STAGE;
+					_engines[c]->stageProgress = 0.0;
 				}
 				break;
 			}
 			case GATE_STAGE: {
-				if (stepStage(params[GATE_PARAM])) {
+				if (stepStage(c, params[GATE_PARAM])) {
 					complete = true;
-					if (params[LOOP_PARAM].getValue() <= 0.0 || _trigger.isHigh()) {
-						_stage = DELAY_STAGE;
-						_stageProgress = 0.0;
+					if (params[LOOP_PARAM].getValue() <= 0.0 || _engines[c]->trigger.isHigh()) {
+						_engines[c]->stage = DELAY_STAGE;
+						_engines[c]->stageProgress = 0.0;
 					}
 					else {
-						_stage = STOPPED_STAGE;
+						_engines[c]->stage = STOPPED_STAGE;
 					}
 				}
 				else {
@@ -49,25 +73,49 @@ void DGate::processChannel(const ProcessArgs& args, int _c) {
 		}
 	}
 
-	outputs[GATE_OUTPUT].setVoltage(envelope * 10.0);
+	outputs[GATE_OUTPUT].setChannels(_channels);
+	outputs[GATE_OUTPUT].setVoltage(envelope * 10.0, c);
 	if (complete) {
-		_triggerOuptutPulseGen.trigger(0.001);
+		_engines[c]->triggerOuptutPulseGen.trigger(0.001);
 	}
-	outputs[END_OUTPUT].setVoltage(_triggerOuptutPulseGen.process(APP->engine->getSampleTime()) ? 5.0 : 0.0);
+	outputs[END_OUTPUT].setChannels(_channels);
+	outputs[END_OUTPUT].setVoltage(_engines[c]->triggerOuptutPulseGen.process(APP->engine->getSampleTime()) ? 5.0 : 0.0, c);
 
-	lights[DELAY_LIGHT].value = _stage == DELAY_STAGE;
-	lights[GATE_LIGHT].value = _stage == GATE_STAGE;
+	_engines[c]->delayLight = _engines[c]->stage == DELAY_STAGE;
+	_engines[c]->gateLight  = _engines[c]->stage == GATE_STAGE;
 
-	_firstStep = false;
+	_engines[c]->firstStep = false;
 }
 
-bool DGate::stepStage(Param& knob) {
+void DGate::postProcess(const ProcessArgs& args) {
+	float delaySum = 0.0f;
+	float gateSum = 0.0f;
+	for (int c = 0; c < maxChannels; ++c) {
+		if (_engines[c]) {
+			delaySum += _engines[c]->delayLight;
+			gateSum += _engines[c]->gateLight;
+		}
+	}
+	lights[DELAY_LIGHT].value = delaySum / (float)_channels;
+	lights[GATE_LIGHT].value = gateSum / (float)_channels;
+}
+
+bool DGate::stepStage(int c, Param& knob) {
 	float t = knob.getValue();
 	t = pow(t, 2);
 	t *= 10.0;
-	_stageProgress += APP->engine->getSampleTime();
-	return _stageProgress > t;
+	_engines[c]->stageProgress += APP->engine->getSampleTime();
+	return _engines[c]->stageProgress > t;
 }
+
+bool DGate::shouldTriggerOnNextLoad() {
+	for (int c = 0; c < maxChannels; ++c) {
+		if (_engines[c] && _engines[c]->stage != STOPPED_STAGE) {
+			return true;
+		}
+	}
+	return false;
+};
 
 struct DGateWidget : TriggerOnLoadModuleWidget {
 	static constexpr int hp = 3;

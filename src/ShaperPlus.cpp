@@ -1,6 +1,95 @@
 
 #include "ShaperPlus.hpp"
 
+void ShaperPlus::reset() {
+	for (int c = 0; c < maxChannels; ++c) {
+		if (_core[c]) {
+			_core[c]->reset();
+		}
+	}
+}
+
+int ShaperPlus::channels() {
+	return std::max(inputs[SIGNAL_INPUT].getChannels(), inputs[TRIGGER_INPUT].getChannels());
+}
+
+void ShaperPlus::addEngine(int c) {
+	_core[c] = new ShaperCore(
+		params[ATTACK_PARAM],
+		params[ON_PARAM],
+		params[DECAY_PARAM],
+		params[OFF_PARAM],
+		params[ENV_PARAM],
+		params[SIGNAL_PARAM],
+		params[TRIGGER_PARAM],
+		params[SPEED_PARAM],
+		params[LOOP_PARAM],
+
+		inputs[SIGNAL_INPUT],
+		inputs[TRIGGER_INPUT],
+		&inputs[ATTACK_INPUT],
+		&inputs[ON_INPUT],
+		&inputs[DECAY_INPUT],
+		&inputs[OFF_INPUT],
+		&inputs[ENV_INPUT],
+		&inputs[SIGNALCV_INPUT],
+
+		outputs[SIGNAL_OUTPUT],
+		outputs[ENV_OUTPUT],
+		outputs[INV_OUTPUT],
+		outputs[TRIGGER_OUTPUT],
+		&outputs[ATTACK_OUTPUT],
+		&outputs[ON_OUTPUT],
+		&outputs[DECAY_OUTPUT],
+		&outputs[OFF_OUTPUT],
+
+		_attackLights,
+		_onLights,
+		_decayLights,
+		_offLights,
+
+		_triggerOnLoad,
+		_shouldTriggerOnLoad
+	);
+}
+
+void ShaperPlus::removeEngine(int c) {
+	delete _core[c];
+	_core[c] = NULL;
+}
+
+void ShaperPlus::processChannel(const ProcessArgs& args, int c) {
+	_core[c]->step(c, _channels);
+}
+
+void ShaperPlus::postProcess(const ProcessArgs& args) {
+	float attackSum = 0.0f;
+	float onSum = 0.0f;
+	float decaySum = 0.0f;
+	float offSum = 0.0f;
+	for (int c = 0; c < maxChannels; ++c) {
+		if (_core[c]) {
+			attackSum += _attackLights[c];
+			onSum += _onLights[c];
+			decaySum += _decayLights[c];
+			offSum += _offLights[c];
+		}
+	}
+	lights[ATTACK_LIGHT].value = attackSum / (float)_channels;
+	lights[ON_LIGHT].value = onSum / (float)_channels;
+	lights[DECAY_LIGHT].value = decaySum / (float)_channels;
+	lights[OFF_LIGHT].value = offSum / (float)_channels;
+}
+
+bool ShaperPlus::shouldTriggerOnNextLoad() {
+	for (int c = 0; c < maxChannels; ++c) {
+		if (_core[c] && _core[c]->_stage != _core[c]->STOPPED_STAGE) {
+			return true;
+		}
+	}
+	return false;
+}
+
 struct ShaperPlusWidget : TriggerOnLoadModuleWidget {
 	static constexpr int hp = 15;
 
