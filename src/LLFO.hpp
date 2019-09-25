@@ -53,14 +53,14 @@ struct LLFO : LFOBase {
 	const float amplitude = 5.0f;
 	float _offset = 0.0f;
 	float _scale = 0.0f;
-	PositiveZeroCrossing _resetTrigger;
 
-	Phasor _phasor;
+	PositiveZeroCrossing _resetTrigger[maxChannels];
+	Phasor _phasor[maxChannels];
+
 	SineTableOscillator _sine;
 	TriangleOscillator _triangle;
 	SawOscillator _ramp;
 	SquareOscillator _square;
-
 	bool _invert;
 	Phasor* _oscillator;
 
@@ -82,9 +82,11 @@ struct LLFO : LFOBase {
 	void reset() override;
 	void sampleRateChange() override;
 	bool active() override;
+	int channels() override;
 	void modulate() override;
+	void modulateChannel(int c) override;
 	void always(const ProcessArgs& args) override;
-	void processChannel(const ProcessArgs& args, int _c) override;
+	void processChannel(const ProcessArgs& args, int c) override;
 };
 
 } // namespace bogaudio

@@ -26,7 +26,7 @@ struct LFOBase : BGModule {
 	}
 
 	float getPitchOffset();
-	void setFrequency(Param& frequency, Input& pitch, Phasor& phasor);
+	void setFrequency(Param& frequency, Input& pitch, Phasor& phasor, int c = 0); // FIXME
 };
 
 

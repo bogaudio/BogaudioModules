@@ -44,50 +44,57 @@ struct LFO : LFOBase {
 		NUM_LIGHTS
 	};
 
+	struct Engine {
+		int sampleSteps = 1;
+		int sampleStep = 0;
+		float offset = 0.0f;
+		float scale = 0.0f;
+		PositiveZeroCrossing resetTrigger;
+
+		Phasor phasor;
+		SineTableOscillator sine;
+		TriangleOscillator triangle;
+		SawOscillator ramp;
+		SquareOscillator square;
+
+		float sineSample = 0.0f;
+		float triangleSample = 0.0f;
+		float rampUpSample = 0.0f;
+		float rampDownSample = 0.0f;
+		float squareSample = 0.0f;
+
+		bool sineActive = false;
+		bool triangleActive = false;
+		bool rampUpActive = false;
+		bool rampDownActive = false;
+		bool squareActive = false;
+
+		void reset();
+		void sampleRateChange();
+	};
+
 	const float amplitude = 5.0f;
-	int _sampleSteps = 1;
-	int _sampleStep = 0;
-	float _offset = 0.0f;
-	float _scale = 0.0f;
-	PositiveZeroCrossing _resetTrigger;
-
-	Phasor _phasor;
-	SineTableOscillator _sine;
-	TriangleOscillator _triangle;
-	SawOscillator _ramp;
-	SquareOscillator _square;
-
-	float _sineSample = 0.0f;
-	float _triangleSample = 0.0f;
-	float _rampUpSample = 0.0f;
-	float _rampDownSample = 0.0f;
-	float _squareSample = 0.0f;
-
-	bool _sineActive = false;
-	bool _triangleActive = false;
-	bool _rampUpActive = false;
-	bool _rampDownActive = false;
-	bool _squareActive = false;
+	Engine* _engines[maxChannels] {};
 
 	LFO() : LFOBase(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 		configParam<LFOFrequencyParamQuantity>(FREQUENCY_PARAM, -5.0f, 8.0f, 0.0f, "Frequency", " Hz");
 		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow");
 		configParam(SAMPLE_PARAM, 0.0f, 1.0f, 0.0f, "Output sampling", "%", 0.0f, 100.0f);
-		configParam(PW_PARAM, -1.0f, 1.0f, 0.0f, "Pulse width", "%", 0.0f, 100.0f*0.5f*(1.0f - 2.0f * _square.minPulseWidth), 50.0f);
+		configParam(PW_PARAM, -1.0f, 1.0f, 0.0f, "Pulse width", "%", 0.0f, 100.0f*0.5f*(1.0f - 2.0f * SquareOscillator::minPulseWidth), 50.0f);
 		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "Offset", " V", 0.0f, 5.0f);
 		configParam(SCALE_PARAM, 0.0f, 1.0f, 1.0f, "Scale", "%", 0.0f, 100.0f);
-
-		reset();
-		sampleRateChange();
 	}
 
 	void reset() override;
 	void sampleRateChange() override;
 	bool active() override;
-	void modulate() override;
+	int channels() override;
+	void addEngine(int c) override;
+	void removeEngine(int c) override;
+	void modulateChannel(int c) override;
 	void always(const ProcessArgs& args) override;
-	void processChannel(const ProcessArgs& args, int _c) override;
-	void updateOutput(Phasor& wave, bool useSample, bool invert, Output& output, float& sample, bool& active);
+	void processChannel(const ProcessArgs& args, int c) override;
+	void updateOutput(int c, Phasor& wave, bool useSample, bool invert, Output& output, float& sample, bool& active);
 };
 
 } // namespace bogaudio

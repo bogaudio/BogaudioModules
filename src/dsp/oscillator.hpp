@@ -217,8 +217,8 @@ struct BandLimitedSawOscillator : SaturatingSawOscillator {
 };
 
 struct SquareOscillator : Phasor {
-	const float minPulseWidth = 0.03f;
-	const float maxPulseWidth = 1.0f - minPulseWidth;
+	static constexpr float minPulseWidth = 0.03f;
+	static constexpr float maxPulseWidth = 1.0f - minPulseWidth;
 	static constexpr float defaultPulseWidth = 0.5f;
 	float _pulseWidthInput;
 	phase_t _pulseWidth = maxPhase * defaultPulseWidth;

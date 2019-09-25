@@ -2,20 +2,26 @@
 #include "LLFO.hpp"
 
 void LLFO::reset() {
-	_resetTrigger.reset();
+	for (int c = 0; c < maxChannels; ++c) {
+		_resetTrigger[c].reset();
+	}
 }
 
 void LLFO::sampleRateChange() {
-	_phasor.setSampleRate(APP->engine->getSampleRate());
+	for (int c = 0; c < maxChannels; ++c) {
+		_phasor[c].setSampleRate(APP->engine->getSampleRate());
+	}
 }
 
 bool LLFO::active() {
 	return outputs[OUT_OUTPUT].isConnected();
 }
 
-void LLFO::modulate() {
-	setFrequency(params[FREQUENCY_PARAM], inputs[PITCH_INPUT], _phasor);
+int LLFO::channels() {
+	return std::max(1, inputs[PITCH_INPUT].getChannels());
+}
 
+void LLFO::modulate() {
 	_invert = false;
 	Wave wave = (Wave)params[WAVE_PARAM].getValue();
 	switch (wave) {
@@ -52,6 +58,10 @@ void LLFO::modulate() {
 	_scale = params[SCALE_PARAM].getValue();
 }
 
+void LLFO::modulateChannel(int c) {
+	setFrequency(params[FREQUENCY_PARAM], inputs[PITCH_INPUT], _phasor[c], c);
+}
+
 void LLFO::always(const ProcessArgs& args) {
 	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].getValue() > 0.5f;
 
@@ -64,17 +74,18 @@ void LLFO::always(const ProcessArgs& args) {
 	lights[PULSE_LIGHT].value = wave == PULSE_WAVE;
 }
 
-void LLFO::processChannel(const ProcessArgs& args, int _c) {
-	if (_resetTrigger.next(inputs[RESET_INPUT].getVoltage())) {
-		_phasor.resetPhase();
+void LLFO::processChannel(const ProcessArgs& args, int c) {
+	if (_resetTrigger[c].next(inputs[RESET_INPUT].getPolyVoltage(c))) {
+		_phasor[c].resetPhase();
 	}
-	_phasor.advancePhase();
-	float sample = _oscillator->nextFromPhasor(_phasor) * amplitude * _scale;
+	_phasor[c].advancePhase();
+	float sample = _oscillator->nextFromPhasor(_phasor[c]) * amplitude * _scale;
 	if (_invert) {
 		sample = -sample;
 	}
 	sample += _offset;
-	outputs[OUT_OUTPUT].setVoltage(sample);
+	outputs[OUT_OUTPUT].setChannels(_channels);
+	outputs[OUT_OUTPUT].setVoltage(sample, c);
 }
 
 struct LLFOWidget : ModuleWidget {
