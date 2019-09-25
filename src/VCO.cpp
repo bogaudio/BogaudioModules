@@ -4,15 +4,49 @@
 
 float VCO::VCOFrequencyParamQuantity::offset() {
 	VCO* vco = dynamic_cast<VCO*>(module);
-	return vco->_slowMode ? vco->_slowModeOffset : 0.0f;
+	return vco->_slowMode ? vco->slowModeOffset : 0.0f;
+}
+
+void VCO::Engine::reset() {
+	syncTrigger.reset();
+}
+
+void VCO::Engine::sampleRateChange(float sampleRate) {
+	phasor.setSampleRate(sampleRate);
+	square.setSampleRate(sampleRate);
+	saw.setSampleRate(sampleRate);
+	squareDecimator.setParams(sampleRate, oversample);
+	sawDecimator.setParams(sampleRate, oversample);
+	triangleDecimator.setParams(sampleRate, oversample);
+	squarePulseWidthSL.setParams(sampleRate, 0.1f, 2.0f);
+}
+
+void VCO::Engine::setFrequency(float f) {
+	if (frequency != f && f < 0.475f * phasor._sampleRate) {
+		frequency = f;
+		phasor.setFrequency(frequency / (float)oversample);
+		square.setFrequency(frequency);
+		saw.setFrequency(frequency);
+	}
 }
 
 void VCO::reset() {
-	_syncTrigger.reset();
+	for (int c = 0; c < maxChannels; ++c) {
+		if (_engines[c]) {
+			_engines[c]->reset();
+		}
+	}
 }
 
 void VCO::sampleRateChange() {
-	setSampleRate(APP->engine->getSampleRate());
+	float sampleRate = APP->engine->getSampleRate();
+	_oversampleThreshold = 0.06f * sampleRate;
+
+	for (int c = 0; c < maxChannels; ++c) {
+		if (_engines[c]) {
+			_engines[c]->sampleRateChange(sampleRate);
+		}
+	}
 }
 
 bool VCO::active() {
@@ -24,52 +58,68 @@ bool VCO::active() {
 	);
 }
 
+int VCO::channels() {
+	return std::max(1, inputs[PITCH_INPUT].getChannels());
+}
+
+void VCO::addEngine(int c) {
+	_engines[c] = new Engine();
+	_engines[c]->reset();
+	_engines[c]->sampleRateChange(APP->engine->getSampleRate());
+}
+
+void VCO::removeEngine(int c) {
+	delete _engines[c];
+	_engines[c] = NULL;
+}
+
 void VCO::modulate() {
 	_fmLinearMode = params[FM_TYPE_PARAM].getValue() < 0.5f;
+	_fmDepth = params[FM_PARAM].getValue();
+}
 
-	_baseVOct = params[FREQUENCY_PARAM].getValue();
-	_baseVOct += params[FINE_PARAM].getValue() / 12.0f;
+void VCO::modulateChannel(int c) {
+	_engines[c]->baseVOct = params[FREQUENCY_PARAM].getValue();
+	_engines[c]->baseVOct += params[FINE_PARAM].getValue() / 12.0f;
 	if (inputs[PITCH_INPUT].isConnected()) {
-		_baseVOct += clamp(inputs[PITCH_INPUT].getVoltage(), -5.0f, 5.0f);
+		_engines[c]->baseVOct += clamp(inputs[PITCH_INPUT].getVoltage(c), -5.0f, 5.0f);
 	}
 	if (_slowMode) {
-		_baseVOct += _slowModeOffset;
+		_engines[c]->baseVOct += slowModeOffset;
 	}
-	_baseHz = cvToFrequency(_baseVOct);
+	_engines[c]->baseHz = cvToFrequency(_engines[c]->baseVOct);
 
 	float pw = params[PW_PARAM].getValue();
 	if (inputs[PW_INPUT].isConnected()) {
-		pw *= clamp(inputs[PW_INPUT].getVoltage() / 5.0f, -1.0f, 1.0f);
+		pw *= clamp(inputs[PW_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
 	}
-	pw *= 1.0f - 2.0f * _square.minPulseWidth;
+	pw *= 1.0f - 2.0f * _engines[c]->square.minPulseWidth;
 	pw *= 0.5f;
 	pw += 0.5f;
-	_square.setPulseWidth(_squarePulseWidthSL.next(pw));
-
-	_fmDepth = params[FM_PARAM].getValue();
+	_engines[c]->square.setPulseWidth(_engines[c]->squarePulseWidthSL.next(pw));
 }
 
 void VCO::always(const ProcessArgs& args) {
 	lights[SLOW_LIGHT].value = _slowMode = params[SLOW_PARAM].getValue() > 0.5f;
 }
 
-void VCO::processChannel(const ProcessArgs& args, int _c) {
-	if (_syncTrigger.next(inputs[SYNC_INPUT].getVoltage())) {
-		_phasor.resetPhase();
+void VCO::processChannel(const ProcessArgs& args, int c) {
+	if (_engines[c]->syncTrigger.next(inputs[SYNC_INPUT].getPolyVoltage(c))) {
+		_engines[c]->phasor.resetPhase();
 	}
 
-	float frequency = _baseHz;
+	float frequency = _engines[c]->baseHz;
 	Phasor::phase_delta_t phaseOffset = 0;
 	if (inputs[FM_INPUT].isConnected() && _fmDepth > 0.01f) {
-		float fm = inputs[FM_INPUT].getVoltageSum() * _fmDepth;
+		float fm = inputs[FM_INPUT].getPolyVoltage(c) * _fmDepth;
 		if (_fmLinearMode) {
 			phaseOffset = Phasor::radiansToPhase(2.0f * fm);
 		}
 		else {
-			frequency = cvToFrequency(_baseVOct + fm);
+			frequency = cvToFrequency(_engines[c]->baseVOct + fm);
 		}
 	}
-	setFrequency(frequency);
+	_engines[c]->setFrequency(frequency);
 
 	const float oversampleWidth = 100.0f;
 	float mix, oMix;
@@ -92,67 +142,51 @@ void VCO::processChannel(const ProcessArgs& args, int _c) {
 	float sawOut = 0.0f;
 	float triangleOut = 0.0f;
 	if (oMix > 0.0f) {
-		for (int i = 0; i < oversample; ++i) {
-			_phasor.advancePhase();
+		for (int i = 0; i < Engine::oversample; ++i) {
+			_engines[c]->phasor.advancePhase();
 			if (outputs[SQUARE_OUTPUT].isConnected()) {
-				_squareBuffer[i] = _square.nextFromPhasor(_phasor, phaseOffset);
+				_engines[c]->squareBuffer[i] = _engines[c]->square.nextFromPhasor(_engines[c]->phasor, phaseOffset);
 			}
 			if (outputs[SAW_OUTPUT].isConnected()) {
-				_sawBuffer[i] = _saw.nextFromPhasor(_phasor, phaseOffset);
+				_engines[c]->sawBuffer[i] = _engines[c]->saw.nextFromPhasor(_engines[c]->phasor, phaseOffset);
 			}
 			if (outputs[TRIANGLE_OUTPUT].isConnected()) {
-				_triangleBuffer[i] = _triangle.nextFromPhasor(_phasor, phaseOffset);
+				_engines[c]->triangleBuffer[i] = _engines[c]->triangle.nextFromPhasor(_engines[c]->phasor, phaseOffset);
 			}
 		}
 		if (outputs[SQUARE_OUTPUT].isConnected()) {
-			squareOut += oMix * amplitude * _squareDecimator.next(_squareBuffer);
+			squareOut += oMix * amplitude * _engines[c]->squareDecimator.next(_engines[c]->squareBuffer);
 		}
 		if (outputs[SAW_OUTPUT].isConnected()) {
-			sawOut += oMix * amplitude * _sawDecimator.next(_sawBuffer);
+			sawOut += oMix * amplitude * _engines[c]->sawDecimator.next(_engines[c]->sawBuffer);
 		}
 		if (outputs[TRIANGLE_OUTPUT].isConnected()) {
-			triangleOut += oMix * amplitude * _triangleDecimator.next(_triangleBuffer);
+			triangleOut += oMix * amplitude * _engines[c]->triangleDecimator.next(_engines[c]->triangleBuffer);
 		}
 	}
 	else {
-		_phasor.advancePhase(oversample);
+		_engines[c]->phasor.advancePhase(Engine::oversample);
 	}
 	if (mix > 0.0f) {
 		if (outputs[SQUARE_OUTPUT].isConnected()) {
-			squareOut += mix * amplitude * _square.nextFromPhasor(_phasor, phaseOffset);
+			squareOut += mix * amplitude * _engines[c]->square.nextFromPhasor(_engines[c]->phasor, phaseOffset);
 		}
 		if (outputs[SAW_OUTPUT].isConnected()) {
-			sawOut += mix * amplitude * _saw.nextFromPhasor(_phasor, phaseOffset);
+			sawOut += mix * amplitude * _engines[c]->saw.nextFromPhasor(_engines[c]->phasor, phaseOffset);
 		}
 		if (outputs[TRIANGLE_OUTPUT].isConnected()) {
-			triangleOut += mix * amplitude * _triangle.nextFromPhasor(_phasor, phaseOffset);
+			triangleOut += mix * amplitude * _engines[c]->triangle.nextFromPhasor(_engines[c]->phasor, phaseOffset);
 		}
 	}
 
-	outputs[SQUARE_OUTPUT].setVoltage(squareOut);
-	outputs[SAW_OUTPUT].setVoltage(sawOut);
-	outputs[TRIANGLE_OUTPUT].setVoltage(triangleOut);
-	outputs[SINE_OUTPUT].setVoltage(outputs[SINE_OUTPUT].isConnected() ? (amplitude * _sine.nextFromPhasor(_phasor, phaseOffset)) : 0.0f);
-}
-
-void VCO::setSampleRate(float sampleRate) {
-	_oversampleThreshold = 0.06f * sampleRate;
-	_phasor.setSampleRate(sampleRate);
-	_square.setSampleRate(sampleRate);
-	_saw.setSampleRate(sampleRate);
-	_squareDecimator.setParams(sampleRate, oversample);
-	_sawDecimator.setParams(sampleRate, oversample);
-	_triangleDecimator.setParams(sampleRate, oversample);
-	_squarePulseWidthSL.setParams(sampleRate, 0.1f, 2.0f);
-}
-
-void VCO::setFrequency(float frequency) {
-	if (_frequency != frequency && frequency < 0.475f * _phasor._sampleRate) {
-		_frequency = frequency;
-		_phasor.setFrequency(_frequency / (float)oversample);
-		_square.setFrequency(_frequency);
-		_saw.setFrequency(_frequency);
-	}
+	outputs[SQUARE_OUTPUT].setChannels(_channels);
+	outputs[SQUARE_OUTPUT].setVoltage(squareOut, c);
+	outputs[SAW_OUTPUT].setChannels(_channels);
+	outputs[SAW_OUTPUT].setVoltage(sawOut, c);
+	outputs[TRIANGLE_OUTPUT].setChannels(_channels);
+	outputs[TRIANGLE_OUTPUT].setVoltage(triangleOut, c);
+	outputs[SINE_OUTPUT].setChannels(_channels);
+	outputs[SINE_OUTPUT].setVoltage(outputs[SINE_OUTPUT].isConnected() ? (amplitude * _engines[c]->sine.nextFromPhasor(_engines[c]->phasor, phaseOffset)) : 0.0f, c);
 }
 
 struct VCOWidget : ModuleWidget {
