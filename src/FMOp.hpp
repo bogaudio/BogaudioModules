@@ -52,31 +52,41 @@ struct FMOp : BGModule {
 		NUM_LIGHTS
 	};
 
-	const float amplitude = 5.0f;
+	static constexpr float amplitude = 5.0f;
 	static constexpr int oversample = 8;
-	const float oversampleMixIncrement = 0.01f;
-	float _feedback = 0.0f;
-	float _feedbackDelayedSample = 0.0f;
-	float _depth = 0.0f;
-	float _level = 0.0f;
-	bool _envelopeOn = false;
+	static constexpr float oversampleMixIncrement = 0.01f;
+
+	struct Engine {
+		float feedback = 0.0f;
+		float feedbackDelayedSample = 0.0f;
+		float depth = 0.0f;
+		float level = 0.0f;
+		bool envelopeOn = false;
+		float maxFrequency = 0.0f;
+		float buffer[oversample];
+		float oversampleMix = 0.0f;
+		dsp::ADSR envelope;
+		Phasor phasor;
+		SineTableOscillator sineTable;
+		CICDecimator decimator;
+		Trigger gateTrigger;
+		bogaudio::dsp::SlewLimiter feedbackSL;
+		bogaudio::dsp::SlewLimiter depthSL;
+		bogaudio::dsp::SlewLimiter levelSL;
+		bogaudio::dsp::SlewLimiter sustainSL;
+		Amplifier amplifier;
+
+		Engine() : envelope(true) {}
+
+		void reset();
+		void sampleRateChange();
+	};
+
+	bool _linearLevel = false;
 	bool _levelEnvelopeOn = false;
 	bool _feedbackEnvelopeOn = false;
 	bool _depthEnvelopeOn = false;
-	float _maxFrequency = 0.0f;
-	float _buffer[oversample];
-	float _oversampleMix = 0.0f;
-	dsp::ADSR _envelope;
-	Phasor _phasor;
-	SineTableOscillator _sineTable;
-	CICDecimator _decimator;
-	Trigger _gateTrigger;
-	bogaudio::dsp::SlewLimiter _feedbackSL;
-	bogaudio::dsp::SlewLimiter _depthSL;
-	bogaudio::dsp::SlewLimiter _levelSL;
-	bogaudio::dsp::SlewLimiter _sustainSL;
-	Amplifier _amplifier;
-	bool _linearLevel = false;
+	Engine* _engines[maxChannels] {};
 
 	struct RatioParamQuantity : ParamQuantity {
 		float getDisplayValue() override;
@@ -87,9 +97,7 @@ struct FMOp : BGModule {
 		bool isLinear() override;
 	};
 
-	FMOp()
-	:  _envelope(true)
-	{
+	FMOp() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam<RatioParamQuantity>(RATIO_PARAM, -1.0f, 1.0f, 0.0f, "Frequency ratio");
 		configParam(FINE_PARAM, -1.0f, 1.0f, 0.0f, "Fine tune", " cents", 0.0f, 100.0f);
@@ -103,9 +111,6 @@ struct FMOp : BGModule {
 		configParam(ENV_TO_LEVEL_PARAM, 0.0f, 1.0f, 0.0f, "Level follows envelope");
 		configParam(ENV_TO_FEEDBACK_PARAM, 0.0f, 1.0f, 0.0f, "Feedback follows envelope");
 		configParam(ENV_TO_DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "FM depth follows envelope");
-
-		reset();
-		sampleRateChange();
 	}
 
 	void reset() override;
@@ -113,9 +118,13 @@ struct FMOp : BGModule {
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
 	bool active() override;
+	int channels() override;
+	void addEngine(int c) override;
+	void removeEngine(int c) override;
 	void modulate() override;
+	void modulateChannel(int c) override;
 	void always(const ProcessArgs& args) override;
-	void processChannel(const ProcessArgs& args, int _c) override;
+	void processChannel(const ProcessArgs& args, int c) override;
 };
 
 } // namespace bogaudio

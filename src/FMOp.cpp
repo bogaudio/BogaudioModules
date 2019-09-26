@@ -37,21 +37,21 @@ bool FMOp::LevelParamQuantity::isLinear() {
 	return dynamic_cast<FMOp*>(module)->_linearLevel;
 }
 
-void FMOp::reset() {
-	_envelope.reset();
-	_gateTrigger.reset();
+void FMOp::Engine::reset() {
+	envelope.reset();
+	gateTrigger.reset();
 }
 
-void FMOp::sampleRateChange() {
+void FMOp::Engine::sampleRateChange() {
 	float sampleRate = APP->engine->getSampleRate();
-	_envelope.setSampleRate(sampleRate);
-	_phasor.setSampleRate(sampleRate);
-	_decimator.setParams(sampleRate, oversample);
-	_maxFrequency = 0.475f * sampleRate;
-	_feedbackSL.setParams(sampleRate, 5.0f, 1.0f);
-	_depthSL.setParams(sampleRate, 5.0f, 1.0f);
-	_levelSL.setParams(sampleRate, 10.0f, 1.0f);
-	_sustainSL.setParams(sampleRate, 1.0f, 1.0f);
+	envelope.setSampleRate(sampleRate);
+	phasor.setSampleRate(sampleRate);
+	decimator.setParams(sampleRate, oversample);
+	maxFrequency = 0.475f * sampleRate;
+	feedbackSL.setParams(sampleRate, 5.0f, 1.0f);
+	depthSL.setParams(sampleRate, 5.0f, 1.0f);
+	levelSL.setParams(sampleRate, 10.0f, 1.0f);
+	sustainSL.setParams(sampleRate, 1.0f, 1.0f);
 }
 
 json_t* FMOp::dataToJson() {
@@ -67,14 +67,49 @@ void FMOp::dataFromJson(json_t* root) {
 	}
 }
 
+void FMOp::reset() {
+	for (int c = 0; c < _channels; ++c) {
+		_engines[c]->reset();
+	}
+}
+
+void FMOp::sampleRateChange() {
+	for (int c = 0; c < _channels; ++c) {
+		_engines[c]->sampleRateChange();
+	}
+}
+
 bool FMOp::active() {
 	return outputs[AUDIO_OUTPUT].isConnected();
 }
 
+int FMOp::channels() {
+	return std::max(1, inputs[PITCH_INPUT].getChannels());
+}
+
+void FMOp::addEngine(int c) {
+	_engines[c] = new Engine();
+	_engines[c]->reset();
+	_engines[c]->sampleRateChange();
+}
+
+void FMOp::removeEngine(int c) {
+	delete _engines[c];
+	_engines[c] = NULL;
+}
+
 void FMOp::modulate() {
+	_levelEnvelopeOn = params[ENV_TO_LEVEL_PARAM].getValue() > 0.5f;
+	_feedbackEnvelopeOn = params[ENV_TO_FEEDBACK_PARAM].getValue() > 0.5f;
+	_depthEnvelopeOn = params[ENV_TO_DEPTH_PARAM].getValue() > 0.5f;
+}
+
+void FMOp::modulateChannel(int c) {
+	Engine& e = *_engines[c];
+
 	float pitchIn = 0.0f;
 	if (inputs[PITCH_INPUT].isConnected()) {
-		pitchIn = inputs[PITCH_INPUT].getVoltage();
+		pitchIn = inputs[PITCH_INPUT].getVoltage(c);
 	}
 	float ratio = params[RATIO_PARAM].getValue();
 	if (ratio < 0.0f) {
@@ -89,46 +124,39 @@ void FMOp::modulate() {
 	frequency += params[FINE_PARAM].getValue() / 12.0f;
 	frequency = cvToFrequency(frequency);
 	frequency *= ratio;
-	frequency = clamp(frequency, -_maxFrequency, _maxFrequency);
-	_phasor.setFrequency(frequency / (float)oversample);
+	frequency = clamp(frequency, -e.maxFrequency, e.maxFrequency);
+	e.phasor.setFrequency(frequency / (float)oversample);
 
-	bool levelEnvelopeOn = params[ENV_TO_LEVEL_PARAM].getValue() > 0.5f;
-	bool feedbackEnvelopeOn = params[ENV_TO_FEEDBACK_PARAM].getValue() > 0.5f;
-	bool depthEnvelopeOn = params[ENV_TO_DEPTH_PARAM].getValue() > 0.5f;
-	if (_levelEnvelopeOn != levelEnvelopeOn || _feedbackEnvelopeOn != feedbackEnvelopeOn || _depthEnvelopeOn != depthEnvelopeOn) {
-		_levelEnvelopeOn = levelEnvelopeOn;
-		_feedbackEnvelopeOn = feedbackEnvelopeOn;
-		_depthEnvelopeOn = depthEnvelopeOn;
-		bool envelopeOn = _levelEnvelopeOn || _feedbackEnvelopeOn || _depthEnvelopeOn;
-		if (envelopeOn && !_envelopeOn) {
-			_envelope.reset();
-		}
-		_envelopeOn = envelopeOn;
+	bool envelopeOn = _levelEnvelopeOn || _feedbackEnvelopeOn || _depthEnvelopeOn;
+	if (envelopeOn && !e.envelopeOn) {
+		e.envelope.reset();
 	}
-	if (_envelopeOn) {
+	e.envelopeOn = envelopeOn;
+
+	if (e.envelopeOn) {
 		float sustain = params[SUSTAIN_PARAM].getValue();
 		if (inputs[SUSTAIN_INPUT].isConnected()) {
-			sustain *= clamp(inputs[SUSTAIN_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+			sustain *= clamp(inputs[SUSTAIN_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 		}
-		_envelope.setAttack(powf(params[ATTACK_PARAM].getValue(), 2.0f) * 10.f);
-		_envelope.setDecay(powf(params[DECAY_PARAM].getValue(), 2.0f) * 10.f);
-		_envelope.setSustain(_sustainSL.next(sustain));
-		_envelope.setRelease(powf(params[RELEASE_PARAM].getValue(), 2.0f) * 10.f);
+		e.envelope.setAttack(powf(params[ATTACK_PARAM].getValue(), 2.0f) * 10.f);
+		e.envelope.setDecay(powf(params[DECAY_PARAM].getValue(), 2.0f) * 10.f);
+		e.envelope.setSustain(e.sustainSL.next(sustain));
+		e.envelope.setRelease(powf(params[RELEASE_PARAM].getValue(), 2.0f) * 10.f);
 	}
 
-	_feedback = params[FEEDBACK_PARAM].getValue();
+	e.feedback = params[FEEDBACK_PARAM].getValue();
 	if (inputs[FEEDBACK_INPUT].isConnected()) {
-		_feedback *= clamp(inputs[FEEDBACK_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+		e.feedback *= clamp(inputs[FEEDBACK_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
 
-	_depth = params[DEPTH_PARAM].getValue();
+	e.depth = params[DEPTH_PARAM].getValue();
 	if (inputs[DEPTH_INPUT].isConnected()) {
-		_depth *= clamp(inputs[DEPTH_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+		e.depth *= clamp(inputs[DEPTH_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
 
-	_level = params[LEVEL_PARAM].getValue();
+	e.level = params[LEVEL_PARAM].getValue();
 	if (inputs[LEVEL_INPUT].isConnected()) {
-		_level *= clamp(inputs[LEVEL_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+		e.level *= clamp(inputs[LEVEL_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
 }
 
@@ -138,66 +166,68 @@ void FMOp::always(const ProcessArgs& args) {
 	lights[ENV_TO_DEPTH_LIGHT].value = params[ENV_TO_DEPTH_PARAM].getValue() > 0.5f;
 }
 
-void FMOp::processChannel(const ProcessArgs& args, int _c) {
+void FMOp::processChannel(const ProcessArgs& args, int c) {
+	Engine& e = *_engines[c];
+
 	float envelope = 0.0f;
-	if (_envelopeOn) {
+	if (e.envelopeOn) {
 		float gateIn = 0.0f;
 		if (inputs[GATE_INPUT].isConnected()) {
-			gateIn = inputs[GATE_INPUT].getVoltage();
+			gateIn = inputs[GATE_INPUT].getPolyVoltage(c);
 		}
-		_gateTrigger.process(gateIn);
-		_envelope.setGate(_gateTrigger.isHigh());
-		envelope = _envelope.next();
+		e.gateTrigger.process(gateIn);
+		e.envelope.setGate(e.gateTrigger.isHigh());
+		envelope = e.envelope.next();
 	}
 
-	float feedback = _feedbackSL.next(_feedback);
+	float feedback = e.feedbackSL.next(e.feedback);
 	if (_feedbackEnvelopeOn) {
 		feedback *= envelope;
 	}
 	bool feedbackOn = feedback > 0.001f;
 
-	float out = _levelSL.next(_level);
+	float out = e.levelSL.next(e.level);
 	if (_levelEnvelopeOn) {
 		out *= envelope;
 	}
 
 	float offset = 0.0f;
 	if (feedbackOn) {
-		offset = feedback * _feedbackDelayedSample;
+		offset = feedback * e.feedbackDelayedSample;
 	}
 
 	if (inputs[FM_INPUT].isConnected()) {
-		float depth = _depthSL.next(_depth);
+		float depth = e.depthSL.next(e.depth);
 		if (_depthEnvelopeOn) {
 			depth *= envelope;
 		}
-		offset += inputs[FM_INPUT].getVoltageSum() * depth * 2.0f;
+		offset += inputs[FM_INPUT].getPolyVoltage(c) * depth * 2.0f;
 	}
 
 	float sample = 0.0f;
 	if (out > 0.0001f) {
 		Phasor::phase_delta_t o = Phasor::radiansToPhase(offset);
 		if (feedbackOn) {
-			if (_oversampleMix < 1.0f) {
-				_oversampleMix += oversampleMixIncrement;
+			if (e.oversampleMix < 1.0f) {
+				e.oversampleMix += oversampleMixIncrement;
 			}
 		}
-		else if (_oversampleMix > 0.0f) {
-			_oversampleMix -= oversampleMixIncrement;
+		else if (e.oversampleMix > 0.0f) {
+			e.oversampleMix -= oversampleMixIncrement;
 		}
 
-		if (_oversampleMix > 0.0f) {
+		if (e.oversampleMix > 0.0f) {
 			for (int i = 0; i < oversample; ++i) {
-				_phasor.advancePhase();
-				_buffer[i] = _sineTable.nextFromPhasor(_phasor, o);
+				e.phasor.advancePhase();
+				e.buffer[i] = e.sineTable.nextFromPhasor(e.phasor, o);
 			}
-			sample = _oversampleMix * _decimator.next(_buffer);
+			sample = e.oversampleMix * e.decimator.next(e.buffer);
 		}
 		else {
-			_phasor.advancePhase(oversample);
+			e.phasor.advancePhase(oversample);
 		}
-		if (_oversampleMix < 1.0f) {
-			sample += (1.0f - _oversampleMix) * _sineTable.nextFromPhasor(_phasor, o);
+		if (e.oversampleMix < 1.0f) {
+			sample += (1.0f - e.oversampleMix) * e.sineTable.nextFromPhasor(e.phasor, o);
 		}
 
 		if (_linearLevel) {
@@ -205,15 +235,16 @@ void FMOp::processChannel(const ProcessArgs& args, int _c) {
 		}
 		else {
 			out = (1.0f - out) * Amplifier::minDecibels;
-			_amplifier.setLevel(out);
-			sample = _amplifier.next(sample);
+			e.amplifier.setLevel(out);
+			sample = e.amplifier.next(sample);
 		}
 	}
 	else {
-		_phasor.advancePhase(oversample);
+		e.phasor.advancePhase(oversample);
 	}
 
-	outputs[AUDIO_OUTPUT].setVoltage(_feedbackDelayedSample = amplitude * sample);
+	outputs[AUDIO_OUTPUT].setChannels(_channels);
+	outputs[AUDIO_OUTPUT].setVoltage(e.feedbackDelayedSample = amplitude * sample, c);
 }
 
 struct FMOpWidget : ModuleWidget {
