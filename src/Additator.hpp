@@ -58,41 +58,48 @@ struct Additator : BGModule {
 		PHASE_COSINE
 	};
 
-	const int maxPartials = 100;
-	const float maxWidth = 2.0f;
-	const float maxSkew = 0.99f;
-	const float minAmplitudeNormalization = 1.0f;
-	const float maxAmplitudeNormalization = 5.0f;
-	const float minDecay = -1.0f;
-	const float maxDecay = 3.0f;
-	const float minFilter = 0.1;
-	const float maxFilter = 1.9;
-	const float slewLimitTime = 1.0f;
+	static constexpr int maxPartials = 100;
+	static constexpr float maxWidth = 2.0f;
+	static constexpr float maxSkew = 0.99f;
+	static constexpr float minAmplitudeNormalization = 1.0f;
+	static constexpr float maxAmplitudeNormalization = 5.0f;
+	static constexpr float minDecay = -1.0f;
+	static constexpr float maxDecay = 3.0f;
+	static constexpr float minFilter = 0.1;
+	static constexpr float maxFilter = 1.9;
+	static constexpr float slewLimitTime = 1.0f;
 
-	int _partials = 0;
-	float _width = 0.0f;
-	float _oddSkew = 0.0f;
-	float _evenSkew = 0.0f;
-	float _amplitudeNormalization = 0.0f;
-	float _decay = 0.0f;
-	float _balance = 0.0f;
-	float _filter = 0.0f;
-	Phase _phase = PHASE_RESET;
-	float _maxFrequency = 0.0f;
-	int _activePartials = 1;
-	SineBankOscillator _oscillator;
-	PositiveZeroCrossing _syncTrigger;
-	bogaudio::dsp::SlewLimiter _widthSL;
-	bogaudio::dsp::SlewLimiter _oddSkewSL;
-	bogaudio::dsp::SlewLimiter _evenSkewSL;
-	bogaudio::dsp::SlewLimiter _amplitudeNormalizationSL;
-	bogaudio::dsp::SlewLimiter _decaySL;
-	bogaudio::dsp::SlewLimiter _balanceSL;
-	bogaudio::dsp::SlewLimiter _filterSL;
+	struct Engine {
+		int partials = 0;
+		float width = 0.0f;
+		float oddSkew = 0.0f;
+		float evenSkew = 0.0f;
+		float amplitudeNormalization = 0.0f;
+		float decay = 0.0f;
+		float balance = 0.0f;
+		float filter = 0.0f;
+		Phase phase = PHASE_RESET;
+		float maxFrequency = 0.0f;
+		int activePartials = 1;
+		SineBankOscillator oscillator;
+		PositiveZeroCrossing syncTrigger;
+		bogaudio::dsp::SlewLimiter widthSL;
+		bogaudio::dsp::SlewLimiter oddSkewSL;
+		bogaudio::dsp::SlewLimiter evenSkewSL;
+		bogaudio::dsp::SlewLimiter amplitudeNormalizationSL;
+		bogaudio::dsp::SlewLimiter decaySL;
+		bogaudio::dsp::SlewLimiter balanceSL;
+		bogaudio::dsp::SlewLimiter filterSL;
 
-	Additator()
-	:  _oscillator(1000.0f, 100.0f, maxPartials)
-	{
+		Engine() : oscillator(1000.0f, 100.0f, maxPartials) {}
+
+		void reset();
+		void sampleRateChange();
+	};
+
+	Engine* _engines[maxChannels] {};
+
+	Additator()	{
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam<FrequencyParamQuantity>(FREQUENCY_PARAM, -3.0f, 6.0f, 0.0f, "Frequency", " Hz");
 		configParam(PARTIALS_PARAM, 1.0f, Additator::maxPartials, Additator::maxPartials / 5.0f, "Partials");
@@ -105,18 +112,18 @@ struct Additator : BGModule {
 		configParam(BALANCE_PARAM, -1.0f, 1.0f, 0.0f, "Balance", "%", 0.0f, 100.0f);
 		configParam(FILTER_PARAM, minFilter, maxFilter, (maxFilter - minFilter) / 2.0 + minFilter, "Filter");
 		configParam(PHASE_PARAM, 1.0f, 2.0f, 1.0f, "Phase");
-
-		reset();
-		sampleRateChange();
 	}
 
 	void reset() override;
 	void sampleRateChange() override;
 	bool active() override;
-	void modulate() override;
-	float cvValue(Input& cv, bool dc = false);
+	int channels() override;
+	void addEngine(int c) override;
+	void removeEngine(int c) override;
+	void modulateChannel(int c) override;
 	void always(const ProcessArgs& args) override;
-	void processChannel(const ProcessArgs& args, int _c) override;
+	void processChannel(const ProcessArgs& args, int c) override;
+	float cvValue(int c, Input& cv, bool dc = false);
 };
 
 } // namespace bogaudio
