@@ -67,54 +67,68 @@ struct XCO : BGModule {
 		NUM_LIGHTS
 	};
 
+	struct Engine {
+		static constexpr int oversample = 8;
+
+		float frequency = 0.0f;
+		float baseVOct = 0.0f;
+		float baseHz = 0.0f;
+		float fmDepth = 0.0f;
+		float triangleSampleWidth = 0.0f;
+		float sineFeedback = 0.0f;
+		float sineOMix = 0.0f;
+		float sineFeedbackDelayedSample = 0.0f;
+		Phasor::phase_delta_t squarePhaseOffset = 0.0f;
+		Phasor::phase_delta_t sawPhaseOffset = 0.0f;
+		Phasor::phase_delta_t trianglePhaseOffset = 0.0f;
+		Phasor::phase_delta_t sinePhaseOffset = 0.0f;
+		float squareMix = 1.0f;
+		float sawMix = 1.0f;
+		float triangleMix = 1.0f;
+		float sineMix = 1.0f;
+
+		Phasor phasor;
+		BandLimitedSquareOscillator square;
+		BandLimitedSawOscillator saw;
+		TriangleOscillator triangle;
+		SineTableOscillator sine;
+		CICDecimator squareDecimator;
+		CICDecimator sawDecimator;
+		CICDecimator triangleDecimator;
+		CICDecimator sineDecimator;
+		float squareBuffer[oversample];
+		float sawBuffer[oversample];
+		float triangleBuffer[oversample];
+		float sineBuffer[oversample];
+		PositiveZeroCrossing syncTrigger;
+
+		bogaudio::dsp::SlewLimiter fmDepthSL;
+		bogaudio::dsp::SlewLimiter squarePulseWidthSL;
+		bogaudio::dsp::SlewLimiter sawSaturationSL;
+		bogaudio::dsp::SlewLimiter triangleSampleWidthSL;
+		bogaudio::dsp::SlewLimiter sineFeedbackSL;
+		bogaudio::dsp::SlewLimiter squareMixSL;
+		bogaudio::dsp::SlewLimiter sawMixSL;
+		bogaudio::dsp::SlewLimiter triangleMixSL;
+		bogaudio::dsp::SlewLimiter sineMixSL;
+
+		Engine() {
+			saw.setQuality(12);
+			square.setQuality(12);
+		}
+
+		void reset();
+		void sampleRateChange(float sampleRate);
+		void setFrequency(float frequency);
+	};
+
 	const float amplitude = 5.0f;
-	static constexpr int oversample = 8;
 	const float _slowModeOffset = -7.0f;
 	const float sineOversampleMixIncrement = 0.01f;
 	float _oversampleThreshold = 0.0f;
-	float _frequency = 0.0f;
-	float _baseVOct = 0.0f;
-	float _baseHz = 0.0f;
 	bool _slowMode = false;
-	float _fmDepth = 0.0f;
 	bool _fmLinearMode = false;
-	float _triangleSampleWidth = 0.0f;
-	float _sineFeedback = 0.0f;
-	float _sineOMix = 0.0f;
-	float _sineFeedbackDelayedSample = 0.0f;
-	Phasor::phase_delta_t _squarePhaseOffset = 0.0f;
-	Phasor::phase_delta_t _sawPhaseOffset = 0.0f;
-	Phasor::phase_delta_t _trianglePhaseOffset = 0.0f;
-	Phasor::phase_delta_t _sinePhaseOffset = 0.0f;
-	float _squareMix = 1.0f;
-	float _sawMix = 1.0f;
-	float _triangleMix = 1.0f;
-	float _sineMix = 1.0f;
-
-	Phasor _phasor;
-	BandLimitedSquareOscillator _square;
-	BandLimitedSawOscillator _saw;
-	TriangleOscillator _triangle;
-	SineTableOscillator _sine;
-	CICDecimator _squareDecimator;
-	CICDecimator _sawDecimator;
-	CICDecimator _triangleDecimator;
-	CICDecimator _sineDecimator;
-	float _squareBuffer[oversample];
-	float _sawBuffer[oversample];
-	float _triangleBuffer[oversample];
-	float _sineBuffer[oversample];
-	PositiveZeroCrossing _syncTrigger;
-
-	bogaudio::dsp::SlewLimiter _fmDepthSL;
-	bogaudio::dsp::SlewLimiter _squarePulseWidthSL;
-	bogaudio::dsp::SlewLimiter _sawSaturationSL;
-	bogaudio::dsp::SlewLimiter _triangleSampleWidthSL;
-	bogaudio::dsp::SlewLimiter _sineFeedbackSL;
-	bogaudio::dsp::SlewLimiter _squareMixSL;
-	bogaudio::dsp::SlewLimiter _sawMixSL;
-	bogaudio::dsp::SlewLimiter _triangleMixSL;
-	bogaudio::dsp::SlewLimiter _sineMixSL;
+	Engine* _engines[maxChannels] {};
 
 	struct XCOFrequencyParamQuantity : FrequencyParamQuantity {
 		float offset() override;
@@ -139,23 +153,20 @@ struct XCO : BGModule {
 		configParam(SINE_FEEDBACK_PARAM, 0.0f, 1.0f, 0.0f, "Sine wave feedback", "%", 0.0f, 100.0f);
 		configParam(SINE_PHASE_PARAM, -1.0f, 1.0f, 0.0f, "Sine wave phase", "º", 0.0f, 180.0f);
 		configParam(SINE_MIX_PARAM, 0.0f, 1.0f, 1.0f, "Sine wave mix", "%", 0.0f, 100.0f);
-
-		reset();
-		setSampleRate(APP->engine->getSampleRate());
-		_saw.setQuality(12);
-		_square.setQuality(12);
 	}
 
 	void reset() override;
 	void sampleRateChange() override;
 	bool active() override;
+	int channels() override;
+	void addEngine(int c) override;
+	void removeEngine(int c) override;
 	void modulate() override;
+	void modulateChannel(int c) override;
 	void always(const ProcessArgs& args) override;
-	void processChannel(const ProcessArgs& args, int _c) override;
-	Phasor::phase_delta_t phaseOffset(Param& param, Input& input);
-	float level(Param& param, Input& input);
-	void setSampleRate(float sampleRate);
-	void setFrequency(float frequency);
+	void processChannel(const ProcessArgs& args, int c) override;
+	Phasor::phase_delta_t phaseOffset(int c, Param& param, Input& input);
+	float level(int c, Param& param, Input& input);
 };
 
 } // namespace bogaudio
