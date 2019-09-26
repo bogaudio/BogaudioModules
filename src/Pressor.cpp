@@ -2,10 +2,8 @@
 #include "Pressor.hpp"
 
 void Pressor::sampleRateChange() {
-	for (int i = 0; i < maxChannels; ++i) {
-		if (_engines[i]) {
-			_engines[i]->detectorRMS.setSampleRate(APP->engine->getSampleRate());
-		}
+	for (int c = 0; c < _channels; ++c) {
+		_engines[c]->detectorRMS.setSampleRate(APP->engine->getSampleRate());
 	}
 }
 
@@ -40,30 +38,32 @@ void Pressor::modulate() {
 }
 
 void Pressor::modulateChannel(int c) {
+	Engine& e = *_engines[c];
+
 	if (!_engines[c]) {
 		return;
 	}
 
-	_engines[c]->thresholdDb = params[THRESHOLD_PARAM].getValue();
+	e.thresholdDb = params[THRESHOLD_PARAM].getValue();
 	if (inputs[THRESHOLD_INPUT].isConnected()) {
-		_engines[c]->thresholdDb *= clamp(inputs[THRESHOLD_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
+		e.thresholdDb *= clamp(inputs[THRESHOLD_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
-	_engines[c]->thresholdDb *= 30.0f;
-	_engines[c]->thresholdDb -= 24.0f;
+	e.thresholdDb *= 30.0f;
+	e.thresholdDb -= 24.0f;
 
 	float ratio = params[RATIO_PARAM].getValue();
 	if (inputs[RATIO_INPUT].isConnected()) {
 		ratio *= clamp(inputs[RATIO_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
-	if (_engines[c]->ratioKnob != ratio) {
-		_engines[c]->ratioKnob = ratio;
+	if (e.ratioKnob != ratio) {
+		e.ratioKnob = ratio;
 		ratio = powf(ratio, 1.5f);
 		ratio = 1.0f - ratio;
 		ratio *= M_PI;
 		ratio *= 0.25f;
 		ratio = tanf(ratio);
 		ratio = 1.0f / ratio;
-		_engines[c]->ratio = ratio;
+		e.ratio = ratio;
 	}
 
 	float sampleRate = APP->engine->getSampleRate();
@@ -72,23 +72,23 @@ void Pressor::modulateChannel(int c) {
 		attack *= clamp(inputs[ATTACK_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
 	attack *= attack;
-	_engines[c]->attackSL.setParams(sampleRate, attack * 500.0f);
+	e.attackSL.setParams(sampleRate, attack * 500.0f);
 
 	float release = params[RELEASE_PARAM].getValue();
 	if (inputs[RELEASE_INPUT].isConnected()) {
 		release *= clamp(inputs[RELEASE_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
 	release *= release;
-	_engines[c]->releaseSL.setParams(sampleRate, release * 2000.0f);
+	e.releaseSL.setParams(sampleRate, release * 2000.0f);
 
 	float inGain = params[INPUT_GAIN_PARAM].getValue();
 	if (inputs[INPUT_GAIN_INPUT].isConnected()) {
 		inGain = clamp(inGain + inputs[INPUT_GAIN_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
 	}
 	inGain *= 12.0f;
-	if (_engines[c]->inGain != inGain) {
-		_engines[c]->inGain = inGain;
-		_engines[c]->inLevel = decibelsToAmplitude(_engines[c]->inGain);
+	if (e.inGain != inGain) {
+		e.inGain = inGain;
+		e.inLevel = decibelsToAmplitude(e.inGain);
 	}
 
 	float outGain = params[OUTPUT_GAIN_PARAM].getValue();
@@ -96,48 +96,50 @@ void Pressor::modulateChannel(int c) {
 		outGain = clamp(outGain + inputs[OUTPUT_GAIN_INPUT].getPolyVoltage(c) / 5.0f, 0.0f, 1.0f);
 	}
 	outGain *= 24.0f;
-	if (_engines[c]->outGain != outGain) {
-		_engines[c]->outGain = outGain;
-		_engines[c]->outLevel = decibelsToAmplitude(_engines[c]->outGain);
+	if (e.outGain != outGain) {
+		e.outGain = outGain;
+		e.outLevel = decibelsToAmplitude(e.outGain);
 	}
 
-	_engines[c]->detectorMix.setParams(params[DETECTOR_MIX_PARAM].getValue(), 0.0f, true);
+	e.detectorMix.setParams(params[DETECTOR_MIX_PARAM].getValue(), 0.0f, true);
 }
 
 void Pressor::processChannel(const ProcessArgs& args, int c) {
+	Engine& e = *_engines[c];
+
 	if (!_engines[c]) {
 		return;
 	}
 
-	float leftInput = inputs[LEFT_INPUT].getPolyVoltage(c) * _engines[c]->inLevel;
-	float rightInput = inputs[RIGHT_INPUT].getPolyVoltage(c) * _engines[c]->inLevel;
+	float leftInput = inputs[LEFT_INPUT].getPolyVoltage(c) * e.inLevel;
+	float rightInput = inputs[RIGHT_INPUT].getPolyVoltage(c) * e.inLevel;
 	float env = leftInput + rightInput;
 	if (inputs[SIDECHAIN_INPUT].isConnected()) {
-		env = _engines[c]->detectorMix.next(env, inputs[SIDECHAIN_INPUT].getPolyVoltage(c));
+		env = e.detectorMix.next(env, inputs[SIDECHAIN_INPUT].getPolyVoltage(c));
 	}
 	if (_rmsDetector) {
-		env = _engines[c]->detectorRMS.next(env);
+		env = e.detectorRMS.next(env);
 	}
 	else {
 		env = fabsf(env);
 	}
-	if (env > _engines[c]->lastEnv) {
-		env = _engines[c]->attackSL.next(env, _engines[c]->lastEnv);
+	if (env > e.lastEnv) {
+		env = e.attackSL.next(env, e.lastEnv);
 	}
 	else {
-		env = _engines[c]->releaseSL.next(env, _engines[c]->lastEnv);
+		env = e.releaseSL.next(env, e.lastEnv);
 	}
-	_engines[c]->lastEnv = env;
+	e.lastEnv = env;
 
 	float detectorDb = amplitudeToDecibels(env / 5.0f);
 	float compressionDb = 0.0f;
 	if (_compressorMode) {
-		compressionDb = _engines[c]->compressor.compressionDb(detectorDb, _engines[c]->thresholdDb, _engines[c]->ratio, _softKnee);
+		compressionDb = e.compressor.compressionDb(detectorDb, e.thresholdDb, e.ratio, _softKnee);
 	}
 	else {
-		compressionDb = _engines[c]->noiseGate.compressionDb(detectorDb, _engines[c]->thresholdDb, _engines[c]->ratio, _softKnee);
+		compressionDb = e.noiseGate.compressionDb(detectorDb, e.thresholdDb, e.ratio, _softKnee);
 	}
-	_engines[c]->amplifier.setLevel(-compressionDb);
+	e.amplifier.setLevel(-compressionDb);
 	if (c == 0) {
 		_compressionDb = compressionDb;
 		outputs[ENVELOPE_OUTPUT].setChannels(_channels);
@@ -146,10 +148,10 @@ void Pressor::processChannel(const ProcessArgs& args, int c) {
 	}
 	outputs[ENVELOPE_OUTPUT].setVoltage(env, c);
 	if (outputs[LEFT_OUTPUT].isConnected()) {
-		outputs[LEFT_OUTPUT].setVoltage(_engines[c]->saturator.next(_engines[c]->amplifier.next(leftInput) * _engines[c]->outLevel), c);
+		outputs[LEFT_OUTPUT].setVoltage(e.saturator.next(e.amplifier.next(leftInput) * e.outLevel), c);
 	}
 	if (outputs[RIGHT_OUTPUT].isConnected()) {
-		outputs[RIGHT_OUTPUT].setVoltage(_engines[c]->saturator.next(_engines[c]->amplifier.next(rightInput) * _engines[c]->outLevel), c);
+		outputs[RIGHT_OUTPUT].setVoltage(e.saturator.next(e.amplifier.next(rightInput) * e.outLevel), c);
 	}
 }
 

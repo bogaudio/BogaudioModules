@@ -12,18 +12,14 @@ void LFO::Engine::sampleRateChange() {
 }
 
 void LFO::reset() {
-	for (int c = 0; c < maxChannels; ++c) {
-		if (_engines[c]) {
-			_engines[c]->reset();
-		}
+	for (int c = 0; c < _channels; ++c) {
+		_engines[c]->reset();
 	}
 }
 
 void LFO::sampleRateChange() {
-	for (int c = 0; c < maxChannels; ++c) {
-		if (_engines[c]) {
-			_engines[c]->sampleRateChange();
-		}
+	for (int c = 0; c < _channels; ++c) {
+		_engines[c]->sampleRateChange();
 	}
 }
 
@@ -53,33 +49,35 @@ void LFO::removeEngine(int c) {
 }
 
 void LFO::modulateChannel(int c) {
-	setFrequency(params[FREQUENCY_PARAM], inputs[PITCH_INPUT], _engines[c]->phasor, c);
+	Engine& e = *_engines[c];
+
+	setFrequency(params[FREQUENCY_PARAM], inputs[PITCH_INPUT], e.phasor, c);
 
 	float pw = params[PW_PARAM].getValue();
 	if (inputs[PW_INPUT].isConnected()) {
 		pw *= clamp(inputs[PW_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
 	}
-	pw *= 1.0f - 2.0f * _engines[c]->square.minPulseWidth;
+	pw *= 1.0f - 2.0f * e.square.minPulseWidth;
 	pw *= 0.5f;
 	pw += 0.5f;
-	_engines[c]->square.setPulseWidth(pw);
+	e.square.setPulseWidth(pw);
 
 	float sample = params[SAMPLE_PARAM].getValue();
 	if (inputs[SAMPLE_INPUT].isConnected()) {
 		sample *= clamp(inputs[SAMPLE_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
-	float maxSampleSteps = (_engines[c]->phasor._sampleRate / _engines[c]->phasor._frequency) / 4.0f;
-	_engines[c]->sampleSteps = clamp((int)(sample * maxSampleSteps), 1, (int)maxSampleSteps);
+	float maxSampleSteps = (e.phasor._sampleRate / e.phasor._frequency) / 4.0f;
+	e.sampleSteps = clamp((int)(sample * maxSampleSteps), 1, (int)maxSampleSteps);
 
-	_engines[c]->offset = params[OFFSET_PARAM].getValue();
+	e.offset = params[OFFSET_PARAM].getValue();
 	if (inputs[OFFSET_INPUT].isConnected()) {
-		_engines[c]->offset *= clamp(inputs[OFFSET_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
+		e.offset *= clamp(inputs[OFFSET_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
 	}
-	_engines[c]->offset *= 5.0f;
+	e.offset *= 5.0f;
 
-	_engines[c]->scale = params[SCALE_PARAM].getValue();
+	e.scale = params[SCALE_PARAM].getValue();
 	if (inputs[SCALE_INPUT].isConnected()) {
-		_engines[c]->scale *= clamp(inputs[SCALE_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
+		e.scale *= clamp(inputs[SCALE_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
 }
 
@@ -88,26 +86,28 @@ void LFO::always(const ProcessArgs& args) {
 }
 
 void LFO::processChannel(const ProcessArgs& args, int c) {
-	if (_engines[c]->resetTrigger.next(inputs[RESET_INPUT].getPolyVoltage(c))) {
-		_engines[c]->phasor.resetPhase();
+	Engine& e = *_engines[c];
+
+	if (e.resetTrigger.next(inputs[RESET_INPUT].getPolyVoltage(c))) {
+		e.phasor.resetPhase();
 	}
 
-	_engines[c]->phasor.advancePhase();
+	e.phasor.advancePhase();
 	bool useSample = false;
-	if (_engines[c]->sampleSteps > 1) {
-		++_engines[c]->sampleStep;
-		if (_engines[c]->sampleStep >= _engines[c]->sampleSteps) {
-			_engines[c]->sampleStep = 0;
+	if (e.sampleSteps > 1) {
+		++e.sampleStep;
+		if (e.sampleStep >= e.sampleSteps) {
+			e.sampleStep = 0;
 		}
 		else {
 			useSample = true;
 		}
 	}
-	updateOutput(c, _engines[c]->sine, useSample, false, outputs[SINE_OUTPUT], _engines[c]->sineSample, _engines[c]->sineActive);
-	updateOutput(c, _engines[c]->triangle, useSample, false, outputs[TRIANGLE_OUTPUT], _engines[c]->triangleSample, _engines[c]->triangleActive);
-	updateOutput(c, _engines[c]->ramp, useSample, false, outputs[RAMP_UP_OUTPUT], _engines[c]->rampUpSample, _engines[c]->rampUpActive);
-	updateOutput(c, _engines[c]->ramp, useSample, true, outputs[RAMP_DOWN_OUTPUT], _engines[c]->rampDownSample, _engines[c]->rampDownActive);
-	updateOutput(c, _engines[c]->square, false, false, outputs[SQUARE_OUTPUT], _engines[c]->squareSample, _engines[c]->squareActive);
+	updateOutput(c, e.sine, useSample, false, outputs[SINE_OUTPUT], e.sineSample, e.sineActive);
+	updateOutput(c, e.triangle, useSample, false, outputs[TRIANGLE_OUTPUT], e.triangleSample, e.triangleActive);
+	updateOutput(c, e.ramp, useSample, false, outputs[RAMP_UP_OUTPUT], e.rampUpSample, e.rampUpActive);
+	updateOutput(c, e.ramp, useSample, true, outputs[RAMP_DOWN_OUTPUT], e.rampDownSample, e.rampDownActive);
+	updateOutput(c, e.square, false, false, outputs[SQUARE_OUTPUT], e.squareSample, e.squareActive);
 }
 
 void LFO::updateOutput(int c, Phasor& wave, bool useSample, bool invert, Output& output, float& sample, bool& active) {

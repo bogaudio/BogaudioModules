@@ -2,10 +2,8 @@
 #include "CVD.hpp"
 
 void CVD::sampleRateChange() {
-	for (int i = 0; i < _channels; ++i) {
-		if (_engines[i]) {
-			_engines[i]->delay.setSampleRate(APP->engine->getSampleRate());
-		}
+	for (int c = 0; c < _channels; ++c) {
+		_engines[c]->delay.setSampleRate(APP->engine->getSampleRate());
 	}
 }
 
@@ -23,38 +21,38 @@ void CVD::removeEngine(int c) {
 }
 
 void CVD::modulateChannel(int c) {
-	if (_engines[c]) {
-		float time = params[TIME_PARAM].getValue();
-		if (inputs[TIME_INPUT].isConnected()) {
-			time *= clamp(inputs[TIME_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
-		}
-		switch ((int)roundf(params[TIME_SCALE_PARAM].getValue())) {
-			case 0: {
-				time /= 100.f;
-				break;
-			}
-			case 1: {
-				time /= 10.f;
-				break;
-			}
-		}
-		_engines[c]->delay.setTime(time);
+	Engine& e = *_engines[c];
 
-		float mix = params[MIX_PARAM].getValue();
-		if (inputs[MIX_INPUT].isConnected()) {
-			mix = clamp(mix + inputs[MIX_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
-		}
-		_engines[c]->mix.setParams(mix);
+	float time = params[TIME_PARAM].getValue();
+	if (inputs[TIME_INPUT].isConnected()) {
+		time *= clamp(inputs[TIME_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
+	switch ((int)roundf(params[TIME_SCALE_PARAM].getValue())) {
+		case 0: {
+			time /= 100.f;
+			break;
+		}
+		case 1: {
+			time /= 10.f;
+			break;
+		}
+	}
+	e.delay.setTime(time);
+
+	float mix = params[MIX_PARAM].getValue();
+	if (inputs[MIX_INPUT].isConnected()) {
+		mix = clamp(mix + inputs[MIX_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
+	}
+	e.mix.setParams(mix);
 }
 
 void CVD::processChannel(const ProcessArgs& args, int c) {
-	if (_engines[c]) {
-		float in = inputs[IN_INPUT].getPolyVoltage(c);
-		float delayed = _engines[c]->delay.next(in);
-		outputs[OUT_OUTPUT].setChannels(_channels);
-		outputs[OUT_OUTPUT].setVoltage(_engines[c]->mix.next(in, delayed), c);
-	}
+	Engine& e = *_engines[c];
+
+	float in = inputs[IN_INPUT].getPolyVoltage(c);
+	float delayed = e.delay.next(in);
+	outputs[OUT_OUTPUT].setChannels(_channels);
+	outputs[OUT_OUTPUT].setVoltage(e.mix.next(in, delayed), c);
 }
 
 struct CVDWidget : ModuleWidget {

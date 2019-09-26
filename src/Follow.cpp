@@ -2,10 +2,8 @@
 #include "Follow.hpp"
 
 void Follow::sampleRateChange() {
-	for (int c = 0; c < maxChannels; ++c) {
-		if (_rms[c]) {
-			_rms[c]->setSampleRate(APP->engine->getSampleRate());
-		}
+	for (int c = 0; c < _channels; ++c) {
+		_rms[c]->setSampleRate(APP->engine->getSampleRate());
 	}
 }
 

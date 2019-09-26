@@ -11,10 +11,8 @@ void DGate::Engine::reset() {
 }
 
 void DGate::reset() {
-	for (int c = 0; c < maxChannels; ++c) {
-		if (_engines[c]) {
-			_engines[c]->reset();
-		}
+	for (int c = 0; c < _channels; ++c) {
+		_engines[c]->reset();
 	}
 }
 
@@ -33,36 +31,38 @@ void DGate::removeEngine(int c) {
 }
 
 void DGate::processChannel(const ProcessArgs& args, int c) {
+	Engine& e = *_engines[c];
+
 	float envelope = 0.0;
 	bool complete = false;
 	if (
-		_engines[c]->trigger.process(params[TRIGGER_PARAM].getValue() + inputs[TRIGGER_INPUT].getPolyVoltage(c)) ||
-		(_engines[c]->firstStep && _triggerOnLoad && _shouldTriggerOnLoad && params[LOOP_PARAM].getValue() <= 0.0)
+		e.trigger.process(params[TRIGGER_PARAM].getValue() + inputs[TRIGGER_INPUT].getPolyVoltage(c)) ||
+		(e.firstStep && _triggerOnLoad && _shouldTriggerOnLoad && params[LOOP_PARAM].getValue() <= 0.0)
 	) {
-		_engines[c]->stage = DELAY_STAGE;
-		_engines[c]->stageProgress = 0.0;
+		e.stage = DELAY_STAGE;
+		e.stageProgress = 0.0;
 	}
 	else {
-		switch (_engines[c]->stage) {
+		switch (e.stage) {
 			case STOPPED_STAGE: {
 				break;
 			}
 			case DELAY_STAGE: {
 				if (stepStage(c, params[DELAY_PARAM])) {
-					_engines[c]->stage = GATE_STAGE;
-					_engines[c]->stageProgress = 0.0;
+					e.stage = GATE_STAGE;
+					e.stageProgress = 0.0;
 				}
 				break;
 			}
 			case GATE_STAGE: {
 				if (stepStage(c, params[GATE_PARAM])) {
 					complete = true;
-					if (params[LOOP_PARAM].getValue() <= 0.0 || _engines[c]->trigger.isHigh()) {
-						_engines[c]->stage = DELAY_STAGE;
-						_engines[c]->stageProgress = 0.0;
+					if (params[LOOP_PARAM].getValue() <= 0.0 || e.trigger.isHigh()) {
+						e.stage = DELAY_STAGE;
+						e.stageProgress = 0.0;
 					}
 					else {
-						_engines[c]->stage = STOPPED_STAGE;
+						e.stage = STOPPED_STAGE;
 					}
 				}
 				else {
@@ -76,25 +76,23 @@ void DGate::processChannel(const ProcessArgs& args, int c) {
 	outputs[GATE_OUTPUT].setChannels(_channels);
 	outputs[GATE_OUTPUT].setVoltage(envelope * 10.0, c);
 	if (complete) {
-		_engines[c]->triggerOuptutPulseGen.trigger(0.001);
+		e.triggerOuptutPulseGen.trigger(0.001);
 	}
 	outputs[END_OUTPUT].setChannels(_channels);
-	outputs[END_OUTPUT].setVoltage(_engines[c]->triggerOuptutPulseGen.process(APP->engine->getSampleTime()) ? 5.0 : 0.0, c);
+	outputs[END_OUTPUT].setVoltage(e.triggerOuptutPulseGen.process(APP->engine->getSampleTime()) ? 5.0 : 0.0, c);
 
-	_engines[c]->delayLight = _engines[c]->stage == DELAY_STAGE;
-	_engines[c]->gateLight  = _engines[c]->stage == GATE_STAGE;
+	e.delayLight = e.stage == DELAY_STAGE;
+	e.gateLight  = e.stage == GATE_STAGE;
 
-	_engines[c]->firstStep = false;
+	e.firstStep = false;
 }
 
 void DGate::postProcess(const ProcessArgs& args) {
 	float delaySum = 0.0f;
 	float gateSum = 0.0f;
-	for (int c = 0; c < maxChannels; ++c) {
-		if (_engines[c]) {
-			delaySum += _engines[c]->delayLight;
-			gateSum += _engines[c]->gateLight;
-		}
+	for (int c = 0; c < _channels; ++c) {
+		delaySum += _engines[c]->delayLight;
+		gateSum += _engines[c]->gateLight;
 	}
 	lights[DELAY_LIGHT].value = delaySum / (float)_channels;
 	lights[GATE_LIGHT].value = gateSum / (float)_channels;
@@ -109,8 +107,8 @@ bool DGate::stepStage(int c, Param& knob) {
 }
 
 bool DGate::shouldTriggerOnNextLoad() {
-	for (int c = 0; c < maxChannels; ++c) {
-		if (_engines[c] && _engines[c]->stage != STOPPED_STAGE) {
+	for (int c = 0; c < _channels; ++c) {
+		if (_engines[c]->stage != STOPPED_STAGE) {
 			return true;
 		}
 	}

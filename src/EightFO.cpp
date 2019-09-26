@@ -21,18 +21,14 @@ void EightFO::Engine::sampleRateChange() {
 }
 
 void EightFO::reset() {
-	for (int c = 0; c < maxChannels; ++c) {
-		if (_engines[c]) {
-			_engines[c]->reset();
-		}
+	for (int c = 0; c < _channels; ++c) {
+		_engines[c]->reset();
 	}
 }
 
 void EightFO::sampleRateChange() {
-	for (int c = 0; c < maxChannels; ++c) {
-		if (_engines[c]) {
-			_engines[c]->sampleRateChange();
-		}
+	for (int c = 0; c < _channels; ++c) {
+		_engines[c]->sampleRateChange();
 	}
 }
 
@@ -69,47 +65,49 @@ void EightFO::modulate() {
 }
 
 void EightFO::modulateChannel(int c) {
-	setFrequency(params[FREQUENCY_PARAM], inputs[PITCH_INPUT], _engines[c]->phasor, c);
+	Engine& e = *_engines[c];
+
+	setFrequency(params[FREQUENCY_PARAM], inputs[PITCH_INPUT], e.phasor, c);
 
 	if (_wave == SQUARE_WAVE) {
 		float pw = params[SAMPLE_PWM_PARAM].getValue();
 		if (inputs[SAMPLE_PWM_INPUT].isConnected()) {
 			pw *= clamp(inputs[SAMPLE_PWM_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
 		}
-		pw *= 1.0f - 2.0f * _engines[c]->square.minPulseWidth;
+		pw *= 1.0f - 2.0f * e.square.minPulseWidth;
 		pw *= 0.5f;
 		pw += 0.5f;
-		_engines[c]->square.setPulseWidth(pw);
-		_engines[c]->sampleSteps = 1;
+		e.square.setPulseWidth(pw);
+		e.sampleSteps = 1;
 	}
 	else {
 		float sample = fabsf(params[SAMPLE_PWM_PARAM].getValue());
 		if (inputs[SAMPLE_PWM_INPUT].isConnected()) {
 			sample *= clamp(fabsf(inputs[SAMPLE_PWM_INPUT].getPolyVoltage(c)) / 5.0f, 0.0f, 1.0f);
 		}
-		float maxSampleSteps = (_engines[c]->phasor._sampleRate / _engines[c]->phasor._frequency) / 4.0f;
-		_engines[c]->sampleSteps = clamp((int)(sample * maxSampleSteps), 1, (int)maxSampleSteps);
-		_engines[c]->square.setPulseWidth(SquareOscillator::defaultPulseWidth);
+		float maxSampleSteps = (e.phasor._sampleRate / e.phasor._frequency) / 4.0f;
+		e.sampleSteps = clamp((int)(sample * maxSampleSteps), 1, (int)maxSampleSteps);
+		e.square.setPulseWidth(SquareOscillator::defaultPulseWidth);
 	}
 
-	_engines[c]->offset = params[OFFSET_PARAM].getValue();
+	e.offset = params[OFFSET_PARAM].getValue();
 	if (inputs[OFFSET_INPUT].isConnected()) {
-		_engines[c]->offset *= clamp(inputs[OFFSET_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
+		e.offset *= clamp(inputs[OFFSET_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
 	}
-	_engines[c]->offset *= 5.0f;
-	_engines[c]->scale = params[SCALE_PARAM].getValue();
+	e.offset *= 5.0f;
+	e.scale = params[SCALE_PARAM].getValue();
 	if (inputs[SCALE_INPUT].isConnected()) {
-		_engines[c]->scale *= clamp(inputs[SCALE_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
+		e.scale *= clamp(inputs[SCALE_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
 
-	_engines[c]->phase7Offset = phaseOffset(c, params[PHASE7_PARAM], inputs[PHASE7_INPUT], basePhase7Offset);
-	_engines[c]->phase6Offset = phaseOffset(c, params[PHASE6_PARAM], inputs[PHASE6_INPUT], basePhase6Offset);
-	_engines[c]->phase5Offset = phaseOffset(c, params[PHASE5_PARAM], inputs[PHASE5_INPUT], basePhase5Offset);
-	_engines[c]->phase4Offset = phaseOffset(c, params[PHASE4_PARAM], inputs[PHASE4_INPUT], basePhase4Offset);
-	_engines[c]->phase3Offset = phaseOffset(c, params[PHASE3_PARAM], inputs[PHASE3_INPUT], basePhase3Offset);
-	_engines[c]->phase2Offset = phaseOffset(c, params[PHASE2_PARAM], inputs[PHASE2_INPUT], basePhase2Offset);
-	_engines[c]->phase1Offset = phaseOffset(c, params[PHASE1_PARAM], inputs[PHASE1_INPUT], basePhase1Offset);
-	_engines[c]->phase0Offset = phaseOffset(c, params[PHASE0_PARAM], inputs[PHASE0_INPUT], basePhase0Offset);
+	e.phase7Offset = phaseOffset(c, params[PHASE7_PARAM], inputs[PHASE7_INPUT], basePhase7Offset);
+	e.phase6Offset = phaseOffset(c, params[PHASE6_PARAM], inputs[PHASE6_INPUT], basePhase6Offset);
+	e.phase5Offset = phaseOffset(c, params[PHASE5_PARAM], inputs[PHASE5_INPUT], basePhase5Offset);
+	e.phase4Offset = phaseOffset(c, params[PHASE4_PARAM], inputs[PHASE4_INPUT], basePhase4Offset);
+	e.phase3Offset = phaseOffset(c, params[PHASE3_PARAM], inputs[PHASE3_INPUT], basePhase3Offset);
+	e.phase2Offset = phaseOffset(c, params[PHASE2_PARAM], inputs[PHASE2_INPUT], basePhase2Offset);
+	e.phase1Offset = phaseOffset(c, params[PHASE1_PARAM], inputs[PHASE1_INPUT], basePhase1Offset);
+	e.phase0Offset = phaseOffset(c, params[PHASE0_PARAM], inputs[PHASE0_INPUT], basePhase0Offset);
 }
 
 void EightFO::always(const ProcessArgs& args) {
@@ -117,29 +115,31 @@ void EightFO::always(const ProcessArgs& args) {
 }
 
 void EightFO::processChannel(const ProcessArgs& args, int c) {
-	if (_engines[c]->resetTrigger.next(inputs[RESET_INPUT].getPolyVoltage(c))) {
-		_engines[c]->phasor.resetPhase();
+	Engine& e = *_engines[c];
+
+	if (e.resetTrigger.next(inputs[RESET_INPUT].getPolyVoltage(c))) {
+		e.phasor.resetPhase();
 	}
 
-	_engines[c]->phasor.advancePhase();
+	e.phasor.advancePhase();
 	bool useSample = false;
-	if (_engines[c]->sampleSteps > 1) {
-		++_engines[c]->sampleStep;
-		if (_engines[c]->sampleStep >= _engines[c]->sampleSteps) {
-			_engines[c]->sampleStep = 0;
+	if (e.sampleSteps > 1) {
+		++e.sampleStep;
+		if (e.sampleStep >= e.sampleSteps) {
+			e.sampleStep = 0;
 		}
 		else {
 			useSample = true;
 		}
 	}
-	updateOutput(c, useSample, outputs[PHASE7_OUTPUT], _engines[c]->phase7Offset, _engines[c]->phase7Sample, _engines[c]->phase7Active);
-	updateOutput(c, useSample, outputs[PHASE6_OUTPUT], _engines[c]->phase6Offset, _engines[c]->phase6Sample, _engines[c]->phase6Active);
-	updateOutput(c, useSample, outputs[PHASE5_OUTPUT], _engines[c]->phase5Offset, _engines[c]->phase5Sample, _engines[c]->phase5Active);
-	updateOutput(c, useSample, outputs[PHASE4_OUTPUT], _engines[c]->phase4Offset, _engines[c]->phase4Sample, _engines[c]->phase4Active);
-	updateOutput(c, useSample, outputs[PHASE3_OUTPUT], _engines[c]->phase3Offset, _engines[c]->phase3Sample, _engines[c]->phase3Active);
-	updateOutput(c, useSample, outputs[PHASE2_OUTPUT], _engines[c]->phase2Offset, _engines[c]->phase2Sample, _engines[c]->phase2Active);
-	updateOutput(c, useSample, outputs[PHASE1_OUTPUT], _engines[c]->phase1Offset, _engines[c]->phase1Sample, _engines[c]->phase1Active);
-	updateOutput(c, useSample, outputs[PHASE0_OUTPUT], _engines[c]->phase0Offset, _engines[c]->phase0Sample, _engines[c]->phase0Active);
+	updateOutput(c, useSample, outputs[PHASE7_OUTPUT], e.phase7Offset, e.phase7Sample, e.phase7Active);
+	updateOutput(c, useSample, outputs[PHASE6_OUTPUT], e.phase6Offset, e.phase6Sample, e.phase6Active);
+	updateOutput(c, useSample, outputs[PHASE5_OUTPUT], e.phase5Offset, e.phase5Sample, e.phase5Active);
+	updateOutput(c, useSample, outputs[PHASE4_OUTPUT], e.phase4Offset, e.phase4Sample, e.phase4Active);
+	updateOutput(c, useSample, outputs[PHASE3_OUTPUT], e.phase3Offset, e.phase3Sample, e.phase3Active);
+	updateOutput(c, useSample, outputs[PHASE2_OUTPUT], e.phase2Offset, e.phase2Sample, e.phase2Active);
+	updateOutput(c, useSample, outputs[PHASE1_OUTPUT], e.phase1Offset, e.phase1Sample, e.phase1Active);
+	updateOutput(c, useSample, outputs[PHASE0_OUTPUT], e.phase0Offset, e.phase0Sample, e.phase0Active);
 }
 
 Phasor::phase_delta_t EightFO::phaseOffset(int c, Param& p, Input& i, Phasor::phase_delta_t baseOffset) {

@@ -42,10 +42,8 @@ void XCO::Engine::setFrequency(float f) {
 }
 
 void XCO::reset() {
-	for (int c = 0; c < maxChannels; ++c) {
-		if (_engines[c]) {
-			_engines[c]->reset();
-		}
+	for (int c = 0; c < _channels; ++c) {
+		_engines[c]->reset();
 	}
 }
 
@@ -53,10 +51,8 @@ void XCO::sampleRateChange() {
 	float sampleRate = APP->engine->getSampleRate();
 	_oversampleThreshold = 0.06f * sampleRate;
 
-	for (int c = 0; c < maxChannels; ++c) {
-		if (_engines[c]) {
-			_engines[c]->sampleRateChange(sampleRate);
-		}
+	for (int c = 0; c < _channels; ++c) {
+		_engines[c]->sampleRateChange(sampleRate);
 	}
 }
 
@@ -90,58 +86,60 @@ void XCO::modulate() {
 }
 
 void XCO::modulateChannel(int c) {
-	_engines[c]->baseVOct = params[FREQUENCY_PARAM].getValue();
-	_engines[c]->baseVOct += params[FINE_PARAM].getValue() / 12.0f;;
+	Engine& e = *_engines[c];
+
+	e.baseVOct = params[FREQUENCY_PARAM].getValue();
+	e.baseVOct += params[FINE_PARAM].getValue() / 12.0f;;
 	if (inputs[PITCH_INPUT].isConnected()) {
-		_engines[c]->baseVOct += clamp(inputs[PITCH_INPUT].getVoltage(c), -5.0f, 5.0f);
+		e.baseVOct += clamp(inputs[PITCH_INPUT].getVoltage(c), -5.0f, 5.0f);
 	}
 	if (_slowMode) {
-		_engines[c]->baseVOct += _slowModeOffset;
+		e.baseVOct += _slowModeOffset;
 	}
-	_engines[c]->baseHz = cvToFrequency(_engines[c]->baseVOct);
+	e.baseHz = cvToFrequency(e.baseVOct);
 
 	float pw = params[SQUARE_PW_PARAM].getValue();
 	if (inputs[SQUARE_PW_INPUT].isConnected()) {
 		pw *= clamp(inputs[SQUARE_PW_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
 	}
-	pw *= 1.0f - 2.0f * _engines[c]->square.minPulseWidth;
+	pw *= 1.0f - 2.0f * e.square.minPulseWidth;
 	pw *= 0.5f;
 	pw += 0.5f;
-	_engines[c]->square.setPulseWidth(_engines[c]->squarePulseWidthSL.next(pw));
+	e.square.setPulseWidth(e.squarePulseWidthSL.next(pw));
 
 	float saturation = params[SAW_SATURATION_PARAM].getValue();
 	if (inputs[SAW_SATURATION_INPUT].isConnected()) {
 		saturation *= clamp(inputs[SAW_SATURATION_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
-	_engines[c]->saw.setSaturation(_engines[c]->sawSaturationSL.next(saturation) * 10.f);
+	e.saw.setSaturation(e.sawSaturationSL.next(saturation) * 10.f);
 
 	float tsw = params[TRIANGLE_SAMPLE_PARAM].getValue() * Phasor::maxSampleWidth;
 	if (inputs[TRIANGLE_SAMPLE_INPUT].isConnected()) {
 		tsw *= clamp(inputs[TRIANGLE_SAMPLE_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
-	_engines[c]->triangleSampleWidth = _engines[c]->triangleSampleWidthSL.next(tsw);
-	_engines[c]->triangle.setSampleWidth(_engines[c]->triangleSampleWidth);
+	e.triangleSampleWidth = e.triangleSampleWidthSL.next(tsw);
+	e.triangle.setSampleWidth(e.triangleSampleWidth);
 
 	float sfb = params[SINE_FEEDBACK_PARAM].getValue();
 	if (inputs[SINE_FEEDBACK_INPUT].isConnected()) {
 		sfb *= clamp(inputs[SINE_FEEDBACK_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
-	_engines[c]->sineFeedback = _engines[c]->sineFeedbackSL.next(sfb);
+	e.sineFeedback = e.sineFeedbackSL.next(sfb);
 
-	_engines[c]->fmDepth = params[FM_DEPTH_PARAM].getValue();
+	e.fmDepth = params[FM_DEPTH_PARAM].getValue();
 	if (inputs[FM_DEPTH_INPUT].isConnected()) {
-		_engines[c]->fmDepth *= clamp(inputs[FM_DEPTH_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
+		e.fmDepth *= clamp(inputs[FM_DEPTH_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
 
-	_engines[c]->squarePhaseOffset = phaseOffset(c, params[SQUARE_PHASE_PARAM], inputs[SQUARE_PHASE_INPUT]);
-	_engines[c]->sawPhaseOffset = phaseOffset(c, params[SAW_PHASE_PARAM], inputs[SAW_PHASE_INPUT]);
-	_engines[c]->trianglePhaseOffset = phaseOffset(c, params[TRIANGLE_PHASE_PARAM], inputs[TRIANGLE_PHASE_INPUT]);
-	_engines[c]->sinePhaseOffset = phaseOffset(c, params[SINE_PHASE_PARAM], inputs[SINE_PHASE_INPUT]);
+	e.squarePhaseOffset = phaseOffset(c, params[SQUARE_PHASE_PARAM], inputs[SQUARE_PHASE_INPUT]);
+	e.sawPhaseOffset = phaseOffset(c, params[SAW_PHASE_PARAM], inputs[SAW_PHASE_INPUT]);
+	e.trianglePhaseOffset = phaseOffset(c, params[TRIANGLE_PHASE_PARAM], inputs[TRIANGLE_PHASE_INPUT]);
+	e.sinePhaseOffset = phaseOffset(c, params[SINE_PHASE_PARAM], inputs[SINE_PHASE_INPUT]);
 
-	_engines[c]->squareMix = level(c, params[SQUARE_MIX_PARAM], inputs[SQUARE_MIX_INPUT]);
-	_engines[c]->sawMix = level(c, params[SAW_MIX_PARAM], inputs[SAW_MIX_INPUT]);
-	_engines[c]->triangleMix = level(c, params[TRIANGLE_MIX_PARAM], inputs[TRIANGLE_MIX_INPUT]);
-	_engines[c]->sineMix = level(c, params[SINE_MIX_PARAM], inputs[SINE_MIX_INPUT]);
+	e.squareMix = level(c, params[SQUARE_MIX_PARAM], inputs[SQUARE_MIX_INPUT]);
+	e.sawMix = level(c, params[SAW_MIX_PARAM], inputs[SAW_MIX_INPUT]);
+	e.triangleMix = level(c, params[TRIANGLE_MIX_PARAM], inputs[TRIANGLE_MIX_INPUT]);
+	e.sineMix = level(c, params[SINE_MIX_PARAM], inputs[SINE_MIX_INPUT]);
 }
 
 void XCO::always(const ProcessArgs& args) {
@@ -149,23 +147,25 @@ void XCO::always(const ProcessArgs& args) {
 }
 
 void XCO::processChannel(const ProcessArgs& args, int c) {
-	if (_engines[c]->syncTrigger.next(inputs[SYNC_INPUT].getPolyVoltage(c))) {
-		_engines[c]->phasor.resetPhase();
+	Engine& e = *_engines[c];
+
+	if (e.syncTrigger.next(inputs[SYNC_INPUT].getPolyVoltage(c))) {
+		e.phasor.resetPhase();
 	}
 
-	float frequency = _engines[c]->baseHz;
+	float frequency = e.baseHz;
 	Phasor::phase_delta_t phaseOffset = 0;
-	float fmd = _engines[c]->fmDepthSL.next(_engines[c]->fmDepth);
+	float fmd = e.fmDepthSL.next(e.fmDepth);
 	if (inputs[FM_INPUT].isConnected() && fmd > 0.01f) {
 		float fm = inputs[FM_INPUT].getPolyVoltage(c) * fmd;
 		if (_fmLinearMode) {
 			phaseOffset = Phasor::radiansToPhase(2.0f * fm);
 		}
 		else {
-			frequency = cvToFrequency(_engines[c]->baseVOct + fm);
+			frequency = cvToFrequency(e.baseVOct + fm);
 		}
 	}
-	_engines[c]->setFrequency(frequency);
+	e.setFrequency(frequency);
 
 	const float oversampleWidth = 100.0f;
 	float mix, oMix;
@@ -184,7 +184,7 @@ void XCO::processChannel(const ProcessArgs& args, int c) {
 		oMix = 0.0f;
 	}
 
-	bool triangleSample = _engines[c]->triangleSampleWidth > 0.001f;
+	bool triangleSample = e.triangleSampleWidth > 0.001f;
 	bool squareActive = outputs[MIX_OUTPUT].isConnected() || outputs[SQUARE_OUTPUT].isConnected();
 	bool sawActive = outputs[MIX_OUTPUT].isConnected() || outputs[SAW_OUTPUT].isConnected();
 	bool triangleActive = outputs[MIX_OUTPUT].isConnected() || outputs[TRIANGLE_OUTPUT].isConnected();
@@ -202,64 +202,64 @@ void XCO::processChannel(const ProcessArgs& args, int c) {
 
 	Phasor::phase_delta_t sineFeedbackOffset = 0;
 	if (sineActive) {
-		 if (_engines[c]->sineFeedback > 0.001f) {
-			 sineFeedbackOffset = Phasor::radiansToPhase(_engines[c]->sineFeedback * _engines[c]->sineFeedbackDelayedSample);
-			 if (_engines[c]->sineOMix < 1.0f) {
-				 _engines[c]->sineOMix += sineOversampleMixIncrement;
+		 if (e.sineFeedback > 0.001f) {
+			 sineFeedbackOffset = Phasor::radiansToPhase(e.sineFeedback * e.sineFeedbackDelayedSample);
+			 if (e.sineOMix < 1.0f) {
+				 e.sineOMix += sineOversampleMixIncrement;
 			 }
 		 }
-		 else if (_engines[c]->sineOMix > 0.0f) {
-			 _engines[c]->sineOMix -= sineOversampleMixIncrement;
+		 else if (e.sineOMix > 0.0f) {
+			 e.sineOMix -= sineOversampleMixIncrement;
 		 }
 	}
 
-	if (squareOversample || sawOversample || triangleOversample || _engines[c]->sineOMix > 0.0f) {
+	if (squareOversample || sawOversample || triangleOversample || e.sineOMix > 0.0f) {
 		for (int i = 0; i < Engine::oversample; ++i) {
-			_engines[c]->phasor.advancePhase();
+			e.phasor.advancePhase();
 			if (squareOversample) {
-				_engines[c]->squareBuffer[i] = _engines[c]->square.nextFromPhasor(_engines[c]->phasor, _engines[c]->squarePhaseOffset + phaseOffset);
+				e.squareBuffer[i] = e.square.nextFromPhasor(e.phasor, e.squarePhaseOffset + phaseOffset);
 			}
 			if (sawOversample) {
-				_engines[c]->sawBuffer[i] = _engines[c]->saw.nextFromPhasor(_engines[c]->phasor, _engines[c]->sawPhaseOffset + phaseOffset);
+				e.sawBuffer[i] = e.saw.nextFromPhasor(e.phasor, e.sawPhaseOffset + phaseOffset);
 			}
 			if (triangleOversample) {
-				_engines[c]->triangleBuffer[i] = _engines[c]->triangle.nextFromPhasor(_engines[c]->phasor, _engines[c]->trianglePhaseOffset + phaseOffset);
+				e.triangleBuffer[i] = e.triangle.nextFromPhasor(e.phasor, e.trianglePhaseOffset + phaseOffset);
 			}
-			if (_engines[c]->sineOMix > 0.0f) {
-				_engines[c]->sineBuffer[i] = _engines[c]->sine.nextFromPhasor(_engines[c]->phasor, sineFeedbackOffset + _engines[c]->sinePhaseOffset + phaseOffset);
+			if (e.sineOMix > 0.0f) {
+				e.sineBuffer[i] = e.sine.nextFromPhasor(e.phasor, sineFeedbackOffset + e.sinePhaseOffset + phaseOffset);
 			}
 		}
 		if (squareOversample) {
-			squareOut += oMix * amplitude * _engines[c]->squareDecimator.next(_engines[c]->squareBuffer);
+			squareOut += oMix * amplitude * e.squareDecimator.next(e.squareBuffer);
 		}
 		if (sawOversample) {
-			sawOut += oMix * amplitude * _engines[c]->sawDecimator.next(_engines[c]->sawBuffer);
+			sawOut += oMix * amplitude * e.sawDecimator.next(e.sawBuffer);
 		}
 		if (triangleOversample) {
-			triangleOut += amplitude * _engines[c]->triangleDecimator.next(_engines[c]->triangleBuffer);
+			triangleOut += amplitude * e.triangleDecimator.next(e.triangleBuffer);
 			if (!triangleSample) {
 				triangleOut *= oMix;
 			}
 		}
-		if (_engines[c]->sineOMix > 0.0f) {
-			sineOut += amplitude * _engines[c]->sineOMix * _engines[c]->sineDecimator.next(_engines[c]->sineBuffer);
+		if (e.sineOMix > 0.0f) {
+			sineOut += amplitude * e.sineOMix * e.sineDecimator.next(e.sineBuffer);
 		}
 	}
 	else {
-		_engines[c]->phasor.advancePhase(Engine::oversample);
+		e.phasor.advancePhase(Engine::oversample);
 	}
 
 	if (squareNormal) {
-		squareOut += mix * amplitude * _engines[c]->square.nextFromPhasor(_engines[c]->phasor, _engines[c]->squarePhaseOffset + phaseOffset);
+		squareOut += mix * amplitude * e.square.nextFromPhasor(e.phasor, e.squarePhaseOffset + phaseOffset);
 	}
 	if (sawNormal) {
-		sawOut += mix * amplitude * _engines[c]->saw.nextFromPhasor(_engines[c]->phasor, _engines[c]->sawPhaseOffset + phaseOffset);
+		sawOut += mix * amplitude * e.saw.nextFromPhasor(e.phasor, e.sawPhaseOffset + phaseOffset);
 	}
 	if (triangleNormal) {
-		triangleOut += mix * amplitude * _engines[c]->triangle.nextFromPhasor(_engines[c]->phasor, _engines[c]->trianglePhaseOffset + phaseOffset);
+		triangleOut += mix * amplitude * e.triangle.nextFromPhasor(e.phasor, e.trianglePhaseOffset + phaseOffset);
 	}
-	if (_engines[c]->sineOMix < 1.0f) {
-		sineOut += amplitude * (1.0f - _engines[c]->sineOMix) * _engines[c]->sine.nextFromPhasor(_engines[c]->phasor, sineFeedbackOffset + _engines[c]->sinePhaseOffset + phaseOffset);
+	if (e.sineOMix < 1.0f) {
+		sineOut += amplitude * (1.0f - e.sineOMix) * e.sine.nextFromPhasor(e.phasor, sineFeedbackOffset + e.sinePhaseOffset + phaseOffset);
 	}
 
 	outputs[SQUARE_OUTPUT].setChannels(_channels);
@@ -269,12 +269,12 @@ void XCO::processChannel(const ProcessArgs& args, int c) {
 	outputs[TRIANGLE_OUTPUT].setChannels(_channels);
 	outputs[TRIANGLE_OUTPUT].setVoltage(triangleOut, c);
 	outputs[SINE_OUTPUT].setChannels(_channels);
-	outputs[SINE_OUTPUT].setVoltage(_engines[c]->sineFeedbackDelayedSample = sineOut, c);
+	outputs[SINE_OUTPUT].setVoltage(e.sineFeedbackDelayedSample = sineOut, c);
 	if (outputs[MIX_OUTPUT].isConnected()) {
-		float mix = _engines[c]->squareMixSL.next(_engines[c]->squareMix) * squareOut;
-		mix += _engines[c]->sawMixSL.next(_engines[c]->sawMix) * sawOut;
-		mix += _engines[c]->triangleMixSL.next(_engines[c]->triangleMix) * triangleOut;
-		mix += _engines[c]->sineMixSL.next(_engines[c]->sineMix) * sineOut;
+		float mix = e.squareMixSL.next(e.squareMix) * squareOut;
+		mix += e.sawMixSL.next(e.sawMix) * sawOut;
+		mix += e.triangleMixSL.next(e.triangleMix) * triangleOut;
+		mix += e.sineMixSL.next(e.sineMix) * sineOut;
 		outputs[MIX_OUTPUT].setChannels(_channels);
 		outputs[MIX_OUTPUT].setVoltage(mix, c);
 	}

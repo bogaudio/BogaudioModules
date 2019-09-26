@@ -49,13 +49,6 @@ struct CVD : BGModule {
 
 		sampleRateChange();
 	}
-	virtual ~CVD() {
-		for (int i = 0; i < maxChannels; ++i) {
-			if (_engines[i]) {
-				delete _engines[i];
-			}
-		}
-	}
 
 	void sampleRateChange() override;
 	int channels() override;

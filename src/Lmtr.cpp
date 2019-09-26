@@ -3,12 +3,10 @@
 
 void Lmtr::sampleRateChange() {
 	float sampleRate = APP->engine->getSampleRate();
-	for (int i = 0; i < _channels; ++i) {
-		if (_engines[i]) {
-			_engines[i]->detector.setSampleRate(sampleRate);
-			_engines[i]->attackSL.setParams(sampleRate, 150.0f);
-			_engines[i]->releaseSL.setParams(sampleRate, 600.0f);
-		}
+	for (int c = 0; c < _channels; ++c) {
+		_engines[c]->detector.setSampleRate(sampleRate);
+		_engines[c]->attackSL.setParams(sampleRate, 150.0f);
+		_engines[c]->releaseSL.setParams(sampleRate, 600.0f);
 	}
 }
 
@@ -34,54 +32,58 @@ void Lmtr::modulate() {
 }
 
 void Lmtr::modulateChannel(int c) {
+	Engine& e = *_engines[c];
+
 	if (!_engines[c]) {
 		return;
 	}
 
-	_engines[c]->thresholdDb = params[THRESHOLD_PARAM].getValue();
+	e.thresholdDb = params[THRESHOLD_PARAM].getValue();
 	if (inputs[THRESHOLD_INPUT].isConnected()) {
-		_engines[c]->thresholdDb *= clamp(inputs[THRESHOLD_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
+		e.thresholdDb *= clamp(inputs[THRESHOLD_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
-	_engines[c]->thresholdDb *= 30.0f;
-	_engines[c]->thresholdDb -= 24.0f;
+	e.thresholdDb *= 30.0f;
+	e.thresholdDb -= 24.0f;
 
 	float outGain = params[OUTPUT_GAIN_PARAM].getValue();
 	if (inputs[OUTPUT_GAIN_INPUT].isConnected()) {
 		outGain = clamp(outGain + inputs[OUTPUT_GAIN_INPUT].getPolyVoltage(c) / 5.0f, 0.0f, 1.0f);
 	}
 	outGain *= 24.0f;
-	if (_engines[c]->outGain != outGain) {
-		_engines[c]->outGain = outGain;
-		_engines[c]->outLevel = decibelsToAmplitude(_engines[c]->outGain);
+	if (e.outGain != outGain) {
+		e.outGain = outGain;
+		e.outLevel = decibelsToAmplitude(e.outGain);
 	}
 }
 
 void Lmtr::processChannel(const ProcessArgs& args, int c) {
+	Engine& e = *_engines[c];
+
 	if (!_engines[c]) {
 		return;
 	}
 
 	float leftInput = inputs[LEFT_INPUT].getPolyVoltage(c);
 	float rightInput = inputs[RIGHT_INPUT].getPolyVoltage(c);
-	float env = _engines[c]->detector.next(leftInput + rightInput);
-	if (env > _engines[c]->lastEnv) {
-		env = _engines[c]->attackSL.next(env, _engines[c]->lastEnv);
+	float env = e.detector.next(leftInput + rightInput);
+	if (env > e.lastEnv) {
+		env = e.attackSL.next(env, e.lastEnv);
 	}
 	else {
-		env = _engines[c]->releaseSL.next(env, _engines[c]->lastEnv);
+		env = e.releaseSL.next(env, e.lastEnv);
 	}
-	_engines[c]->lastEnv = env;
+	e.lastEnv = env;
 
 	float detectorDb = amplitudeToDecibels(env / 5.0f);
-	float compressionDb = _engines[c]->compressor.compressionDb(detectorDb, _engines[c]->thresholdDb, Compressor::maxEffectiveRatio, _softKnee);
-	_engines[c]->amplifier.setLevel(-compressionDb);
+	float compressionDb = e.compressor.compressionDb(detectorDb, e.thresholdDb, Compressor::maxEffectiveRatio, _softKnee);
+	e.amplifier.setLevel(-compressionDb);
 	if (outputs[LEFT_OUTPUT].isConnected()) {
 		outputs[LEFT_OUTPUT].setChannels(_channels);
-		outputs[LEFT_OUTPUT].setVoltage(_engines[c]->saturator.next(_engines[c]->amplifier.next(leftInput) * _engines[c]->outLevel), c);
+		outputs[LEFT_OUTPUT].setVoltage(e.saturator.next(e.amplifier.next(leftInput) * e.outLevel), c);
 	}
 	if (outputs[RIGHT_OUTPUT].isConnected()) {
 		outputs[RIGHT_OUTPUT].setChannels(_channels);
-		outputs[RIGHT_OUTPUT].setVoltage(_engines[c]->saturator.next(_engines[c]->amplifier.next(rightInput) * _engines[c]->outLevel), c);
+		outputs[RIGHT_OUTPUT].setVoltage(e.saturator.next(e.amplifier.next(rightInput) * e.outLevel), c);
 	}
 }
 

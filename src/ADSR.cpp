@@ -12,17 +12,13 @@ void ADSR::Engine::sampleRateChange() {
 
 void ADSR::reset() {
 	for (int c = 0; c < _channels; ++c) {
-		if (_engines[c]) {
-			_engines[c]->reset();
-		}
+		_engines[c]->reset();
 	}
 }
 
 void ADSR::sampleRateChange() {
 	for (int c = 0; c < _channels; ++c) {
-		if (_engines[c]) {
-			_engines[c]->sampleRateChange();
-		}
+		_engines[c]->sampleRateChange();
 	}
 }
 
@@ -46,11 +42,13 @@ void ADSR::removeEngine(int c) {
 }
 
 void ADSR::modulateChannel(int c) {
-	_engines[c]->envelope.setAttack(powf(params[ATTACK_PARAM].getValue(), 2.0f) * 10.f);
-	_engines[c]->envelope.setDecay(powf(params[DECAY_PARAM].getValue(), 2.0f) * 10.f);
-	_engines[c]->envelope.setSustain(params[SUSTAIN_PARAM].getValue());
-	_engines[c]->envelope.setRelease(powf(params[RELEASE_PARAM].getValue(), 2.0f) * 10.f);
-	_engines[c]->envelope.setLinearShape(_linearMode);
+	Engine& e = *_engines[c];
+
+	e.envelope.setAttack(powf(params[ATTACK_PARAM].getValue(), 2.0f) * 10.f);
+	e.envelope.setDecay(powf(params[DECAY_PARAM].getValue(), 2.0f) * 10.f);
+	e.envelope.setSustain(params[SUSTAIN_PARAM].getValue());
+	e.envelope.setRelease(powf(params[RELEASE_PARAM].getValue(), 2.0f) * 10.f);
+	e.envelope.setLinearShape(_linearMode);
 }
 
 void ADSR::always(const ProcessArgs& args) {
@@ -59,15 +57,17 @@ void ADSR::always(const ProcessArgs& args) {
 }
 
 void ADSR::processChannel(const ProcessArgs& args, int c) {
-	_engines[c]->gateTrigger.process(inputs[GATE_INPUT].getVoltage(c));
-	_engines[c]->envelope.setGate(_engines[c]->gateTrigger.isHigh());
-	outputs[OUT_OUTPUT].setChannels(_channels);
-	outputs[OUT_OUTPUT].setVoltage(_engines[c]->envelope.next() * 10.0f, c);
+	Engine& e = *_engines[c];
 
-	_attackLightSum += _engines[c]->envelope.isStage(dsp::ADSR::ATTACK_STAGE);
-	_decayLightSum += _engines[c]->envelope.isStage(dsp::ADSR::DECAY_STAGE);
-	_sustainLightSum += _engines[c]->envelope.isStage(dsp::ADSR::SUSTAIN_STAGE);
-	_releaseLightSum += _engines[c]->envelope.isStage(dsp::ADSR::RELEASE_STAGE);
+	e.gateTrigger.process(inputs[GATE_INPUT].getVoltage(c));
+	e.envelope.setGate(e.gateTrigger.isHigh());
+	outputs[OUT_OUTPUT].setChannels(_channels);
+	outputs[OUT_OUTPUT].setVoltage(e.envelope.next() * 10.0f, c);
+
+	_attackLightSum += e.envelope.isStage(dsp::ADSR::ATTACK_STAGE);
+	_decayLightSum += e.envelope.isStage(dsp::ADSR::DECAY_STAGE);
+	_sustainLightSum += e.envelope.isStage(dsp::ADSR::SUSTAIN_STAGE);
+	_releaseLightSum += e.envelope.isStage(dsp::ADSR::RELEASE_STAGE);
 }
 
 void ADSR::postProcess(const ProcessArgs& args) {

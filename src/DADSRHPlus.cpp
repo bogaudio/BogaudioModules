@@ -2,10 +2,8 @@
 #include "DADSRHPlus.hpp"
 
 void DADSRHPlus::reset() {
-	for (int c = 0; c < maxChannels; ++c) {
-		if (_core[c]) {
-			_core[c]->reset();
-		}
+	for (int c = 0; c < _channels; ++c) {
+		_core[c]->reset();
 	}
 }
 
@@ -82,14 +80,12 @@ void DADSRHPlus::postProcess(const ProcessArgs& args) {
 	float decaySum = 0.0f;
 	float sustainSum = 0.0f;
 	float releaseSum = 0.0f;
-	for (int c = 0; c < maxChannels; ++c) {
-		if (_core[c]) {
-			delaySum += _delayLights[c];
-			attackSum += _attackLights[c];
-			decaySum += _decayLights[c];
-			sustainSum += _sustainLights[c];
-			releaseSum += _releaseLights[c];
-		}
+	for (int c = 0; c < _channels; ++c) {
+		delaySum += _delayLights[c];
+		attackSum += _attackLights[c];
+		decaySum += _decayLights[c];
+		sustainSum += _sustainLights[c];
+		releaseSum += _releaseLights[c];
 	}
 	lights[DELAY_LIGHT].value = delaySum / (float)_channels;
 	lights[ATTACK_LIGHT].value = attackSum / (float)_channels;
@@ -99,8 +95,8 @@ void DADSRHPlus::postProcess(const ProcessArgs& args) {
 }
 
 bool DADSRHPlus::shouldTriggerOnNextLoad() {
-	for (int c = 0; c < maxChannels; ++c) {
-		if (_core[c] && _core[c]->_stage != _core[c]->STOPPED_STAGE) {
+	for (int c = 0; c < _channels; ++c) {
+		if (_core[c]->_stage != _core[c]->STOPPED_STAGE) {
 			return true;
 		}
 	}

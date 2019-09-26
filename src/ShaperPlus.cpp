@@ -2,10 +2,8 @@
 #include "ShaperPlus.hpp"
 
 void ShaperPlus::reset() {
-	for (int c = 0; c < maxChannels; ++c) {
-		if (_core[c]) {
-			_core[c]->reset();
-		}
+	for (int c = 0; c < _channels; ++c) {
+		_core[c]->reset();
 	}
 }
 
@@ -67,13 +65,11 @@ void ShaperPlus::postProcess(const ProcessArgs& args) {
 	float onSum = 0.0f;
 	float decaySum = 0.0f;
 	float offSum = 0.0f;
-	for (int c = 0; c < maxChannels; ++c) {
-		if (_core[c]) {
-			attackSum += _attackLights[c];
-			onSum += _onLights[c];
-			decaySum += _decayLights[c];
-			offSum += _offLights[c];
-		}
+	for (int c = 0; c < _channels; ++c) {
+		attackSum += _attackLights[c];
+		onSum += _onLights[c];
+		decaySum += _decayLights[c];
+		offSum += _offLights[c];
 	}
 	lights[ATTACK_LIGHT].value = attackSum / (float)_channels;
 	lights[ON_LIGHT].value = onSum / (float)_channels;
@@ -82,8 +78,8 @@ void ShaperPlus::postProcess(const ProcessArgs& args) {
 }
 
 bool ShaperPlus::shouldTriggerOnNextLoad() {
-	for (int c = 0; c < maxChannels; ++c) {
-		if (_core[c] && _core[c]->_stage != _core[c]->STOPPED_STAGE) {
+	for (int c = 0; c < _channels; ++c) {
+		if (_core[c]->_stage != _core[c]->STOPPED_STAGE) {
 			return true;
 		}
 	}
