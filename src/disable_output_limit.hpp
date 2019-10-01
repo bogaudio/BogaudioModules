@@ -26,6 +26,7 @@ struct DisableOutputLimitModuleWidget : ModuleWidget {
 		}
 
 		void step() override {
+			MenuItem::step();
 			rightText = _module->_disableOutputLimit ? "✔" : "";
 		}
 	};

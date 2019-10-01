@@ -337,6 +337,7 @@ struct FMOpWidget : ModuleWidget {
 		}
 
 		void step() override {
+			MenuItem::step();
 			rightText = _module->_linearLevel ? "✔" : "";
 		}
 	};

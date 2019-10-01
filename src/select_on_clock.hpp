@@ -28,6 +28,7 @@ struct SelectOnClockModuleWidget : ModuleWidget {
 		}
 
 		void step() override {
+			MenuItem::step();
 			rightText = _module->_selectOnClock ? "✔" : "";
 		}
 	};

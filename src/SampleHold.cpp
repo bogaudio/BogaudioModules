@@ -177,6 +177,7 @@ struct SampleHoldWidget : ModuleWidget {
 		}
 
 		void step() override {
+			MenuItem::step();
 			rightText = _module->_noiseType == _noiseType ? "✔" : "";
 		}
 	};
@@ -199,6 +200,7 @@ struct SampleHoldWidget : ModuleWidget {
 		}
 
 		void step() override {
+			MenuItem::step();
 			rightText = (_module->_rangeOffset == _offset && _module->_rangeScale == _scale) ? "✔" : "";
 		}
 	};

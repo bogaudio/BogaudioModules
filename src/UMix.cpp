@@ -136,6 +136,7 @@ struct UMixWidget : ModuleWidget {
 		}
 
 		void step() override {
+			MenuItem::step();
 			rightText = !_module->_sum ? "✔" : "";
 		}
 	};
@@ -154,6 +155,7 @@ struct UMixWidget : ModuleWidget {
 		}
 
 		void step() override {
+			MenuItem::step();
 			rightText = _module->_cvMode ? "✔" : "";
 		}
 	};

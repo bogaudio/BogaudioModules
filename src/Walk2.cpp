@@ -501,6 +501,7 @@ struct Walk2Widget : ModuleWidget {
 		}
 
 		void step() override {
+			MenuItem::step();
 			rightText = _module->_zoomOut == _zoomOut ? "✔" : "";
 		}
 	};
@@ -517,6 +518,7 @@ struct Walk2Widget : ModuleWidget {
 		}
 
 		void step() override {
+			MenuItem::step();
 			rightText = _module->_drawGrid ? "✔" : "";
 		}
 	};
@@ -537,6 +539,7 @@ struct Walk2Widget : ModuleWidget {
 		}
 
 		void step() override {
+			MenuItem::step();
 			rightText = _module->_traceColor == _color ? "✔" : "";
 		}
 	};

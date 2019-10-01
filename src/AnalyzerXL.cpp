@@ -189,6 +189,7 @@ struct AnalyzerXLWidget : ModuleWidget {
 		}
 
 		void step() override {
+			MenuItem::step();
 			rightText = _module->_range == _range ? "✔" : "";
 		}
 	};
@@ -209,6 +210,7 @@ struct AnalyzerXLWidget : ModuleWidget {
 		}
 
 		void step() override {
+			MenuItem::step();
 			rightText = _module->_rangeDb == _rangeDb ? "✔" : "";
 		}
 	};
@@ -229,6 +231,7 @@ struct AnalyzerXLWidget : ModuleWidget {
 		}
 
 		void step() override {
+			MenuItem::step();
 			rightText = _module->_smooth == _smooth ? "✔" : "";
 		}
 	};
@@ -249,6 +252,7 @@ struct AnalyzerXLWidget : ModuleWidget {
 		}
 
 		void step() override {
+			MenuItem::step();
 			rightText = _module->_quality == _quality ? "✔" : "";
 		}
 	};
@@ -269,6 +273,7 @@ struct AnalyzerXLWidget : ModuleWidget {
 		}
 
 		void step() override {
+			MenuItem::step();
 			rightText = _module->_window == _window ? "✔" : "";
 		}
 	};

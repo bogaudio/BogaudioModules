@@ -31,6 +31,7 @@ struct TriggerOnLoadModuleWidget : ModuleWidget {
 		}
 
 		void step() override {
+			MenuItem::step();
 			rightText = _module->_triggerOnLoad ? "✔" : "";
 		}
 	};

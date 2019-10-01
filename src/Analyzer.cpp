@@ -169,6 +169,7 @@ struct AnalyzerWidget : ModuleWidget {
 		}
 
 		void step() override {
+			MenuItem::step();
 			rightText = _module->_rangeDb == _rangeDb ? "✔" : "";
 		}
 	};
