@@ -12,12 +12,7 @@ void MixerChannel::setSampleRate(float sampleRate) {
 	_rms.setSampleRate(sampleRate);
 }
 
-void MixerChannel::next(bool stereo, bool solo) {
-	if (!_inInput.isConnected()) {
-		rms = out = left = right = 0.0f;
-		return;
-	}
-
+void MixerChannel::next(float sample, bool stereo, bool solo) {
 	float mute = _muteParam.getValue();
 	if (_muteInput) {
 		mute += clamp(_muteInput->getVoltage(), 0.0f, 10.0f);
@@ -36,7 +31,7 @@ void MixerChannel::next(bool stereo, bool solo) {
 		_amplifier.setLevel(_levelSL.next(level));
 	}
 
-	out = _amplifier.next(_inInput.getVoltageSum());
+	left = right = out = _amplifier.next(sample);
 	rms = _rms.next(out / 5.0f);
 	if (stereo) {
 		float pan = clamp(_panParam.getValue(), -1.0f, 1.0f);

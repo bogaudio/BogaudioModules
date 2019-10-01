@@ -6,7 +6,7 @@ void Mix1::sampleRateChange() {
 }
 
 void Mix1::processChannel(const ProcessArgs& args, int _c) {
-	_channel->next(false, false);
+	_channel->next(inputs[IN_INPUT].getVoltageSum(), false, false);
 	outputs[OUT_OUTPUT].setVoltage(_channel->out);
 }
 

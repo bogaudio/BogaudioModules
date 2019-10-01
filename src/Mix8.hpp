@@ -80,14 +80,8 @@ struct Mix8 : BGModule {
 		NUM_LIGHTS
 	};
 
-	MixerChannel* _channel1;
-	MixerChannel* _channel2;
-	MixerChannel* _channel3;
-	MixerChannel* _channel4;
-	MixerChannel* _channel5;
-	MixerChannel* _channel6;
-	MixerChannel* _channel7;
-	MixerChannel* _channel8;
+	int _polyChannelOffset = -1;
+	MixerChannel* _channels[8] {};
 	Amplifier _amplifier;
 	bogaudio::dsp::SlewLimiter _slewLimiter;
 	Saturator _saturator;
@@ -124,28 +118,25 @@ struct Mix8 : BGModule {
 		configParam(MIX_PARAM, 0.0f, 1.0f, levelDefault, "Master level", " dB", 0.0f, MixerChannel::maxDecibels - MixerChannel::minDecibels, MixerChannel::minDecibels);
 		configParam(MIX_MUTE_PARAM, 0.0f, 1.0f, 0.0f, "Master mute");
 
-		_channel1 = new MixerChannel(params[LEVEL1_PARAM], params[PAN1_PARAM], params[MUTE1_PARAM], inputs[IN1_INPUT], inputs[CV1_INPUT], inputs[PAN1_INPUT]);
-		_channel2 = new MixerChannel(params[LEVEL2_PARAM], params[PAN2_PARAM], params[MUTE2_PARAM], inputs[IN2_INPUT], inputs[CV2_INPUT], inputs[PAN2_INPUT]);
-		_channel3 = new MixerChannel(params[LEVEL3_PARAM], params[PAN3_PARAM], params[MUTE3_PARAM], inputs[IN3_INPUT], inputs[CV3_INPUT], inputs[PAN3_INPUT]);
-		_channel4 = new MixerChannel(params[LEVEL4_PARAM], params[PAN4_PARAM], params[MUTE4_PARAM], inputs[IN4_INPUT], inputs[CV4_INPUT], inputs[PAN4_INPUT]);
-		_channel5 = new MixerChannel(params[LEVEL5_PARAM], params[PAN5_PARAM], params[MUTE5_PARAM], inputs[IN5_INPUT], inputs[CV5_INPUT], inputs[PAN5_INPUT]);
-		_channel6 = new MixerChannel(params[LEVEL6_PARAM], params[PAN6_PARAM], params[MUTE6_PARAM], inputs[IN6_INPUT], inputs[CV6_INPUT], inputs[PAN6_INPUT]);
-		_channel7 = new MixerChannel(params[LEVEL7_PARAM], params[PAN7_PARAM], params[MUTE7_PARAM], inputs[IN7_INPUT], inputs[CV7_INPUT], inputs[PAN7_INPUT]);
-		_channel8 = new MixerChannel(params[LEVEL8_PARAM], params[PAN8_PARAM], params[MUTE8_PARAM], inputs[IN8_INPUT], inputs[CV8_INPUT], inputs[PAN8_INPUT]);
+		_channels[0] = new MixerChannel(params[LEVEL1_PARAM], params[PAN1_PARAM], params[MUTE1_PARAM], inputs[CV1_INPUT], inputs[PAN1_INPUT]);
+		_channels[1] = new MixerChannel(params[LEVEL2_PARAM], params[PAN2_PARAM], params[MUTE2_PARAM], inputs[CV2_INPUT], inputs[PAN2_INPUT]);
+		_channels[2] = new MixerChannel(params[LEVEL3_PARAM], params[PAN3_PARAM], params[MUTE3_PARAM], inputs[CV3_INPUT], inputs[PAN3_INPUT]);
+		_channels[3] = new MixerChannel(params[LEVEL4_PARAM], params[PAN4_PARAM], params[MUTE4_PARAM], inputs[CV4_INPUT], inputs[PAN4_INPUT]);
+		_channels[4] = new MixerChannel(params[LEVEL5_PARAM], params[PAN5_PARAM], params[MUTE5_PARAM], inputs[CV5_INPUT], inputs[PAN5_INPUT]);
+		_channels[5] = new MixerChannel(params[LEVEL6_PARAM], params[PAN6_PARAM], params[MUTE6_PARAM], inputs[CV6_INPUT], inputs[PAN6_INPUT]);
+		_channels[6] = new MixerChannel(params[LEVEL7_PARAM], params[PAN7_PARAM], params[MUTE7_PARAM], inputs[CV7_INPUT], inputs[PAN7_INPUT]);
+		_channels[7] = new MixerChannel(params[LEVEL8_PARAM], params[PAN8_PARAM], params[MUTE8_PARAM], inputs[CV8_INPUT], inputs[PAN8_INPUT]);
 		sampleRateChange();
 		_rms.setSensitivity(0.05f);
 	}
 	virtual ~Mix8() {
-		delete _channel1;
-		delete _channel2;
-		delete _channel3;
-		delete _channel4;
-		delete _channel5;
-		delete _channel6;
-		delete _channel7;
-		delete _channel8;
+		for (int i = 0; i < 8; ++i) {
+			delete _channels[i];
+		}
 	}
 
+	json_t* dataToJson() override;
+	void dataFromJson(json_t* root) override;
 	void sampleRateChange() override;
 	void processChannel(const ProcessArgs& args, int _c) override;
 };

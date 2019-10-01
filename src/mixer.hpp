@@ -22,7 +22,6 @@ struct MixerChannel {
 	Param& _levelParam;
 	Param& _panParam;
 	Param& _muteParam;
-	Input& _inInput;
 	Input& _levelInput;
 	Input& _panInput;
 	Input* _muteInput;
@@ -36,7 +35,6 @@ struct MixerChannel {
 		Param& level,
 		Param& pan,
 		Param& mute,
-		Input& in,
 		Input& levelCv,
 		Input& panCv,
 		float sampleRate = 1000.0f,
@@ -45,7 +43,6 @@ struct MixerChannel {
 	: _levelParam(level)
 	, _panParam(pan)
 	, _muteParam(mute)
-	, _inInput(in)
 	, _levelInput(levelCv)
 	, _panInput(panCv)
 	, _muteInput(muteCv)
@@ -55,7 +52,7 @@ struct MixerChannel {
 	}
 
 	void setSampleRate(float sampleRate);
-	void next(bool stereo, bool solo); // input from _in; outputs on out, left, right, rms.
+	void next(float sample, bool stereo, bool solo); // outputs on out, left, right, rms.
 };
 
 struct MuteButton : ToggleButton {

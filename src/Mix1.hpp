@@ -44,7 +44,6 @@ struct Mix1 : BGModule {
 			params[LEVEL_PARAM],
 			params[LEVEL_PARAM], // not used
 			params[MUTE_PARAM],
-			inputs[IN_INPUT],
 			inputs[LEVEL_INPUT],
 			inputs[LEVEL_INPUT], // not used
 			1000.0f,
