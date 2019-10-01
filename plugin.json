@@ -30,7 +30,7 @@
     },
     {
       "slug": "Bogaudio-Additator",
-      "name": "Additator",
+      "name": "ADDITATOR",
       "description": "additive oscillator",
       "tags": [
         "Oscillator"
@@ -87,7 +87,7 @@
     },
     {
       "slug": "Bogaudio-DGate",
-      "name": "DGate",
+      "name": "DGATE",
       "description": "trigger-to-gate with delay",
       "tags": [
         "Utility"
@@ -95,7 +95,7 @@
     },
     {
       "slug": "Bogaudio-Shaper",
-      "name": "Shaper",
+      "name": "SHAPER",
       "description": "envelope and amplifier",
       "tags": [
         "Envelope generator",
@@ -104,7 +104,7 @@
     },
     {
       "slug": "Bogaudio-ShaperPlus",
-      "name": "Shaper+",
+      "name": "SHAPER+",
       "description": "envelope and amplifier",
       "tags": [
         "Envelope generator",
@@ -129,7 +129,7 @@
     },
     {
       "slug": "Bogaudio-Follow",
-      "name": "Follow",
+      "name": "FOLLOW",
       "description": "envelope follower",
       "tags": [
         "Envelope follower"
@@ -137,7 +137,7 @@
     },
     {
       "slug": "Bogaudio-Noise",
-      "name": "Noise",
+      "name": "NOISE",
       "description": "noise source",
       "tags": [
         "Noise",
@@ -155,7 +155,7 @@
     },
     {
       "slug": "Bogaudio-Walk2",
-      "name": "Walk2",
+      "name": "WALK2",
       "description": "random-walk CV source",
       "tags": [
         "Random"
@@ -163,7 +163,7 @@
     },
     {
       "slug": "Bogaudio-Walk",
-      "name": "Walk",
+      "name": "WALK",
       "description": "random-walk CV source",
       "tags": [
         "Random"
@@ -171,7 +171,7 @@
     },
     {
       "slug": "Bogaudio-Mix8",
-      "name": "Mix8",
+      "name": "MIX8",
       "description": "8-channel mixer and panner",
       "tags": [
         "Mixer",
@@ -180,7 +180,7 @@
     },
     {
       "slug": "Bogaudio-Mix4",
-      "name": "Mix4",
+      "name": "MIX4",
       "description": "4-channel mixer and panner",
       "tags": [
         "Mixer",
@@ -205,7 +205,7 @@
     },
     {
       "slug": "Bogaudio-UMix",
-      "name": "UMix",
+      "name": "UMIX",
       "description": "unity mixer",
       "tags": [
         "Mixer"
@@ -213,7 +213,7 @@
     },
     {
       "slug": "Bogaudio-Matrix88",
-      "name": "Matrix88",
+      "name": "MATRIX88",
       "description": "8x8 matrix mixer",
       "tags": [
         "Mixer"
@@ -221,7 +221,7 @@
     },
     {
       "slug": "Bogaudio-Mute8",
-      "name": "Mute8",
+      "name": "MUTE8",
       "description": "eight mutes with CV",
       "tags": [
         "Utility"
@@ -229,7 +229,7 @@
     },
     {
       "slug": "Bogaudio-Pan",
-      "name": "Pan",
+      "name": "PAN",
       "description": "dual panner",
       "tags": [
         "Panning",
@@ -238,7 +238,7 @@
     },
     {
       "slug": "Bogaudio-XFade",
-      "name": "XFade",
+      "name": "XFADE",
       "description": "crossfader",
       "tags": [
         "Mixer"
@@ -255,7 +255,7 @@
     },
     {
       "slug": "Bogaudio-VCAmp",
-      "name": "VCAmp",
+      "name": "VCAMP",
       "description": "amplifier",
       "tags": [
         "VCA"
@@ -272,7 +272,7 @@
     },
     {
       "slug": "Bogaudio-Pressor",
-      "name": "Pressor",
+      "name": "PRESSOR",
       "description": "stereo compressor",
       "tags": [
         "Compressor",
@@ -298,7 +298,7 @@
     },
     {
       "slug": "Bogaudio-Nsgt",
-      "name": "Nsgt",
+      "name": "NSGT",
       "description": "noise gate",
       "tags": [
         "Dynamics"
@@ -330,7 +330,7 @@
     },
     {
       "slug": "Bogaudio-Analyzer",
-      "name": "Analyzer",
+      "name": "ANALYZER",
       "description": "spectrum analyzer",
       "tags": [
         "Visual"
@@ -338,7 +338,7 @@
     },
     {
       "slug": "Bogaudio-AnalyzerXL",
-      "name": "Analyzer-XL",
+      "name": "ANALYZER-XL",
       "description": "spectrum analyzer",
       "tags": [
         "Visual"
@@ -354,7 +354,7 @@
     },
     {
       "slug": "Bogaudio-Detune",
-      "name": "Detune",
+      "name": "DETUNE",
       "description": "pitch CV processor",
       "tags": [
         "Tuner"
@@ -362,7 +362,7 @@
     },
     {
       "slug": "Bogaudio-Stack",
-      "name": "Stack",
+      "name": "STACK",
       "description": "pitch CV processor",
       "tags": [
         "Tuner"
@@ -370,7 +370,7 @@
     },
     {
       "slug": "Bogaudio-Reftone",
-      "name": "Reftone",
+      "name": "REFTONE",
       "description": "precision pitch CV generator",
       "tags": [
         "Tuner"
@@ -378,7 +378,7 @@
     },
     {
       "slug": "Bogaudio-Bool",
-      "name": "Bool",
+      "name": "BOOL",
       "description": "boolean logic",
       "tags": [
         "Logic"
@@ -402,7 +402,7 @@
     },
     {
       "slug": "Bogaudio-FlipFlop",
-      "name": "FlipFlop",
+      "name": "FLIPFLOP",
       "description": "dual stateful logic",
       "tags": [
         "Logic",
@@ -411,7 +411,7 @@
     },
     {
       "slug": "Bogaudio-Manual",
-      "name": "Manual",
+      "name": "MANUAL",
       "description": "manual gates / triggers",
       "tags": [
         "Utility"
@@ -419,7 +419,7 @@
     },
     {
       "slug": "Bogaudio-Mult",
-      "name": "Mult",
+      "name": "MULT",
       "description": "multiple",
       "tags": [
         "Multiple"
@@ -427,7 +427,7 @@
     },
     {
       "slug": "Bogaudio-Offset",
-      "name": "Offset",
+      "name": "OFFSET",
       "description": "CV offset and scaler",
       "tags": [
         "Attenuator"
@@ -435,7 +435,7 @@
     },
     {
       "slug": "Bogaudio-Slew",
-      "name": "Slew",
+      "name": "SLEW",
       "description": "slew / lag / glide",
       "tags": [
         "Slew limiter"
@@ -443,7 +443,7 @@
     },
     {
       "slug": "Bogaudio-Sums",
-      "name": "Sums",
+      "name": "SUMS",
       "description": "arithmetic logic",
       "tags": [
         "Logic"
@@ -451,7 +451,7 @@
     },
     {
       "slug": "Bogaudio-Switch",
-      "name": "Switch",
+      "name": "SWITCH",
       "description": "signal router",
       "tags": [
         "Switch"
@@ -459,7 +459,7 @@
     },
     {
       "slug": "Bogaudio-Blank3",
-      "name": "Blank3",
+      "name": "BLANK3",
       "description": "blank panel",
       "tags": [
         "Blank"
@@ -467,7 +467,7 @@
     },
     {
       "slug": "Bogaudio-Blank6",
-      "name": "Blank6",
+      "name": "BLANK6",
       "description": "blank panel",
       "tags": [
         "Blank"
