@@ -74,6 +74,9 @@ void XCO::addEngine(int c) {
 	_engines[c] = new Engine();
 	_engines[c]->reset();
 	_engines[c]->sampleRateChange(APP->engine->getSampleRate());
+	if (c > 0) {
+		_engines[c]->phasor.syncPhase(_engines[0]->phasor);
+	}
 }
 
 void XCO::removeEngine(int c) {

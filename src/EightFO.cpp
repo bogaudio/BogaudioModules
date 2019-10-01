@@ -53,6 +53,9 @@ void EightFO::addEngine(int c) {
 	_engines[c] = new Engine();
 	_engines[c]->reset();
 	_engines[c]->sampleRateChange();
+	if (c > 0) {
+		_engines[c]->phasor.syncPhase(_engines[0]->phasor);
+	}
 }
 
 void EightFO::removeEngine(int c) {

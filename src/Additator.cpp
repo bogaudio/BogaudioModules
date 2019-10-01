@@ -44,6 +44,9 @@ void Additator::addEngine(int c) {
 	_engines[c] = new Engine();
 	_engines[c]->reset();
 	_engines[c]->sampleRateChange();
+	if (c > 0) {
+		_engines[c]->oscillator.syncTo(_engines[0]->oscillator);
+	}
 }
 
 void Additator::removeEngine(int c) {

@@ -29,6 +29,10 @@ void Phasor::setPhase(float radians) {
 	_phase = radiansToPhase(radians);
 }
 
+void Phasor::syncPhase(const Phasor& phasor) {
+	_phase = phasor._phase;
+}
+
 float Phasor::nextFromPhasor(const Phasor& phasor, phase_delta_t offset) {
 	offset += phasor._phase;
 	if (_samplePhase > 0) {
@@ -264,6 +268,12 @@ void SineBankOscillator::setPartialAmplitude(int i, float amplitude, bool envelo
 void SineBankOscillator::syncToPhase(float phase) {
 	for (Partial& p : _partials) {
 		p.sine.setPhase(phase);
+	}
+}
+
+void SineBankOscillator::syncTo(const SineBankOscillator& other) {
+	for (int i = 0, n = std::min(_partials.size(), other._partials.size()); i < n; ++i) {
+		_partials[i].sine.syncPhase(other._partials[i].sine);
 	}
 }
 

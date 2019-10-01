@@ -89,6 +89,7 @@ struct Phasor : OscillatorGenerator {
 	void setSampleWidth(float sw);
 	void resetPhase();
 	void setPhase(float radians);
+	void syncPhase(const Phasor& phasor);
 	float nextFromPhasor(const Phasor& phasor, phase_delta_t offset = 0);
 	inline float nextForPhase(phase_t phase) { return _nextForPhase(phase); }
 	virtual void _update();
@@ -324,6 +325,7 @@ struct SineBankOscillator : Oscillator {
 	void setPartialAmplitude(int i, float amplitude, bool envelope = false);
 
 	void syncToPhase(float phase);
+	void syncTo(const SineBankOscillator& other);
 
 	void _sampleRateChanged() override;
 	void _frequencyChanged() override;
