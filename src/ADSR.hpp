@@ -55,6 +55,7 @@ struct ADSR : BGModule {
 	int _decayLightSum;
 	int _sustainLightSum;
 	int _releaseLightSum;
+	float _invert = 1.0f;
 
 	ADSR() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
@@ -67,6 +68,8 @@ struct ADSR : BGModule {
 
 	void reset() override;
 	void sampleRateChange() override;
+	json_t* dataToJson() override;
+	void dataFromJson(json_t* root) override;
 	bool active() override;
 	int channels() override;
 	void addEngine(int c) override;

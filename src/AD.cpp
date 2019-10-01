@@ -1,6 +1,8 @@
 
 #include "AD.hpp"
 
+#define INVERT "invert"
+
 void AD::Engine::reset() {
 	trigger.reset();
 	eocPulseGen.process(10.0);
@@ -24,6 +26,19 @@ void AD::reset() {
 void AD::sampleRateChange() {
 	for (int c = 0; c < _channels; ++c) {
 		_engines[c]->sampleRateChange();
+	}
+}
+
+json_t* AD::dataToJson() {
+	json_t* root = json_object();
+	json_object_set_new(root, INVERT, json_real(_invert));
+	return root;
+}
+
+void AD::dataFromJson(json_t* root) {
+	json_t* i = json_object_get(root, INVERT);
+	if (i) {
+		_invert = json_real_value(i);
 	}
 }
 
@@ -79,7 +94,7 @@ void AD::processChannel(const ProcessArgs& args, int c) {
 	}
 	e.envelope.setGate(e.on);
 	outputs[ENV_OUTPUT].setChannels(_channels);
-	outputs[ENV_OUTPUT].setVoltage(e.envelope.next() * 10.0f, c);
+	outputs[ENV_OUTPUT].setVoltage(e.envelope.next() * 10.0f * _invert, c);
 	if (e.on && e.envelope.isStage(ADSR::SUSTAIN_STAGE)) {
 		e.envelope.reset();
 		e.on = false;
@@ -149,6 +164,37 @@ struct ADWidget : ModuleWidget {
 		addChild(createLight<TinyLight<GreenLight>>(decayLightPosition, module, AD::DECAY_LIGHT));
 		addChild(createLight<SmallLight<GreenLight>>(loopLightPosition, module, AD::LOOP_LIGHT));
 		addChild(createLight<SmallLight<GreenLight>>(linearLightPosition, module, AD::LINEAR_LIGHT));
+	}
+
+	struct InvertMenuItem : MenuItem {
+		AD* _module;
+
+		InvertMenuItem(AD* module, const char* label, int offset)
+		: _module(module)
+		{
+			this->text = label;
+		}
+
+		void onAction(const event::Action& e) override {
+			if (_module->_invert < 0.0f) {
+				_module->_invert = 1.0f;
+			}
+			else {
+				_module->_invert = -1.0f;
+			}
+		}
+
+		void step() override {
+			MenuItem::step();
+			rightText = _module->_invert == -1.0f ? "✔" : "";
+		}
+	};
+
+	void appendContextMenu(Menu* menu) override {
+		AD* m = dynamic_cast<AD*>(module);
+		assert(m);
+		menu->addChild(new MenuLabel());
+		menu->addChild(new InvertMenuItem(m, "Invert output", -1));
 	}
 };
 

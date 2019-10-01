@@ -1,6 +1,8 @@
 
 #include "ADSR.hpp"
 
+#define INVERT "invert"
+
 void ADSR::Engine::reset() {
 	gateTrigger.reset();
 	envelope.reset();
@@ -19,6 +21,19 @@ void ADSR::reset() {
 void ADSR::sampleRateChange() {
 	for (int c = 0; c < _channels; ++c) {
 		_engines[c]->sampleRateChange();
+	}
+}
+
+json_t* ADSR::dataToJson() {
+	json_t* root = json_object();
+	json_object_set_new(root, INVERT, json_real(_invert));
+	return root;
+}
+
+void ADSR::dataFromJson(json_t* root) {
+	json_t* i = json_object_get(root, INVERT);
+	if (i) {
+		_invert = json_real_value(i);
 	}
 }
 
@@ -62,7 +77,7 @@ void ADSR::processChannel(const ProcessArgs& args, int c) {
 	e.gateTrigger.process(inputs[GATE_INPUT].getVoltage(c));
 	e.envelope.setGate(e.gateTrigger.isHigh());
 	outputs[OUT_OUTPUT].setChannels(_channels);
-	outputs[OUT_OUTPUT].setVoltage(e.envelope.next() * 10.0f, c);
+	outputs[OUT_OUTPUT].setVoltage(e.envelope.next() * 10.0f * _invert, c);
 
 	_attackLightSum += e.envelope.isStage(dsp::ADSR::ATTACK_STAGE);
 	_decayLightSum += e.envelope.isStage(dsp::ADSR::DECAY_STAGE);
@@ -127,6 +142,37 @@ struct ADSRWidget : ModuleWidget {
 		addChild(createLight<TinyLight<GreenLight>>(sustainLightPosition, module, ADSR::SUSTAIN_LIGHT));
 		addChild(createLight<TinyLight<GreenLight>>(releaseLightPosition, module, ADSR::RELEASE_LIGHT));
 		addChild(createLight<SmallLight<GreenLight>>(linearLightPosition, module, ADSR::LINEAR_LIGHT));
+	}
+
+	struct InvertMenuItem : MenuItem {
+		ADSR* _module;
+
+		InvertMenuItem(ADSR* module, const char* label, int offset)
+		: _module(module)
+		{
+			this->text = label;
+		}
+
+		void onAction(const event::Action& e) override {
+			if (_module->_invert < 0.0f) {
+				_module->_invert = 1.0f;
+			}
+			else {
+				_module->_invert = -1.0f;
+			}
+		}
+
+		void step() override {
+			MenuItem::step();
+			rightText = _module->_invert == -1.0f ? "✔" : "";
+		}
+	};
+
+	void appendContextMenu(Menu* menu) override {
+		ADSR* m = dynamic_cast<ADSR*>(module);
+		assert(m);
+		menu->addChild(new MenuLabel());
+		menu->addChild(new InvertMenuItem(m, "Invert output", -1));
 	}
 };
 

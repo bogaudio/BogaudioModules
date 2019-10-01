@@ -63,6 +63,7 @@ struct AD : BGModule {
 	bool _linearMode = false;
 	int _attackLightSum;
 	int _decayLightSum;
+	float _invert = 1.0f;
 
 	AD() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
@@ -74,6 +75,8 @@ struct AD : BGModule {
 
 	void reset() override;
 	void sampleRateChange() override;
+	json_t* dataToJson() override;
+	void dataFromJson(json_t* root) override;
 	bool active() override;
 	int channels() override;
 	void addEngine(int c) override;
