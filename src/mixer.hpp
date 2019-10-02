@@ -52,7 +52,7 @@ struct MixerChannel {
 	}
 
 	void setSampleRate(float sampleRate);
-	void next(float sample, bool stereo, bool solo); // outputs on out, left, right, rms.
+	void next(float sample, bool stereo, bool solo, int c = 0); // outputs on out, left, right, rms.
 };
 
 struct MuteButton : ToggleButton {

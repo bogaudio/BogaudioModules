@@ -33,30 +33,24 @@ struct Mix1 : BGModule {
 		NUM_LIGHTS
 	};
 
-	MixerChannel* _channel = NULL;
+	MixerChannel* _engines[maxChannels] {};
+	float _rmsSum = 0.0f;
+	float _rms = 0.0f;
 
 	Mix1() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(LEVEL_PARAM, 0.0f, 1.0f, fabsf(MixerChannel::minDecibels) / (MixerChannel::maxDecibels - MixerChannel::minDecibels), "Level", "dB", 0.0f, MixerChannel::maxDecibels - MixerChannel::minDecibels, MixerChannel::minDecibels);
 		configParam(MUTE_PARAM, 0.0f, 1.0f, 0.0f, "Mute");
-
-		_channel = new MixerChannel(
-			params[LEVEL_PARAM],
-			params[LEVEL_PARAM], // not used
-			params[MUTE_PARAM],
-			inputs[LEVEL_INPUT],
-			inputs[LEVEL_INPUT], // not used
-			1000.0f,
-			&inputs[MUTE_INPUT]
-		);
-		sampleRateChange();
-	}
-	virtual ~Mix1() {
-		delete _channel;
 	}
 
 	void sampleRateChange() override;
-	void processChannel(const ProcessArgs& args, int _c) override;
+	bool active() override;
+	int channels() override;
+	void addEngine(int c) override;
+	void removeEngine(int c) override;
+	void always(const ProcessArgs& args) override;
+	void processChannel(const ProcessArgs& args, int c) override;
+	void postProcess(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

@@ -12,10 +12,10 @@ void MixerChannel::setSampleRate(float sampleRate) {
 	_rms.setSampleRate(sampleRate);
 }
 
-void MixerChannel::next(float sample, bool stereo, bool solo) {
+void MixerChannel::next(float sample, bool stereo, bool solo, int c) {
 	float mute = _muteParam.getValue();
 	if (_muteInput) {
-		mute += clamp(_muteInput->getVoltage(), 0.0f, 10.0f);
+		mute += clamp(_muteInput->getPolyVoltage(c), 0.0f, 10.0f);
 	}
 	bool muted = solo ? mute < 2.0f : mute > 0.5f;
 	if (muted) {
@@ -24,7 +24,7 @@ void MixerChannel::next(float sample, bool stereo, bool solo) {
 	else {
 		float level = clamp(_levelParam.getValue(), 0.0f, 1.0f);
 		if (_levelInput.isConnected()) {
-			level *= clamp(_levelInput.getVoltage() / 10.0f, 0.0f, 1.0f);
+			level *= clamp(_levelInput.getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 		}
 		level *= maxDecibels - minDecibels;
 		level += minDecibels;
@@ -36,7 +36,7 @@ void MixerChannel::next(float sample, bool stereo, bool solo) {
 	if (stereo) {
 		float pan = clamp(_panParam.getValue(), -1.0f, 1.0f);
 		if (_panInput.isConnected()) {
-			pan *= clamp(_panInput.getVoltage() / 5.0f, -1.0f, 1.0f);
+			pan *= clamp(_panInput.getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
 		}
 		_panner.setPan(_panSL.next(pan));
 		_panner.next(out, left, right);
