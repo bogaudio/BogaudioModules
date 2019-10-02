@@ -41,11 +41,21 @@ int Additator::channels() {
 }
 
 void Additator::addEngine(int c) {
-	_engines[c] = new Engine();
-	_engines[c]->reset();
-	_engines[c]->sampleRateChange();
+	Engine& e = *(_engines[c] = new Engine());
+	e.reset();
+	e.sampleRateChange();
+
+	e.widthSL._last = widthParam(c);
+	e.oddSkewSL._last = oddSkewParam(c);
+	e.evenSkewSL._last = evenSkewParam(c);
+	e.amplitudeNormalizationSL._last = amplitudeNormalizationParam(c);
+	e.decaySL._last = decayParam(c);
+	e.balanceSL._last = balanceParam(c);
+	e.filterSL._last = filterParam(c);
+
+	modulateChannel(c);
 	if (c > 0) {
-		_engines[c]->oscillator.syncTo(_engines[0]->oscillator);
+		e.oscillator.syncTo(_engines[0]->oscillator);
 	}
 }
 
@@ -54,12 +64,40 @@ void Additator::removeEngine(int c) {
 	_engines[c] = NULL;
 }
 
+float Additator::widthParam(int c) {
+	return clamp(params[WIDTH_PARAM].getValue() + (maxWidth / 2.0f) * cvValue(c, inputs[WIDTH_INPUT]), 0.0f, maxWidth);
+}
+
+float Additator::oddSkewParam(int c) {
+	return clamp(params[ODD_SKEW_PARAM].getValue() + cvValue(c, inputs[ODD_SKEW_INPUT]), -maxSkew, maxSkew);
+}
+
+float Additator::evenSkewParam(int c) {
+	return clamp(params[EVEN_SKEW_PARAM].getValue() + cvValue(c, inputs[EVEN_SKEW_INPUT]), -maxSkew, maxSkew);
+}
+
+float Additator::amplitudeNormalizationParam(int c) {
+	return clamp(params[GAIN_PARAM].getValue() + ((maxAmplitudeNormalization - minAmplitudeNormalization) / 2.0f) * cvValue(c, inputs[GAIN_INPUT]), minAmplitudeNormalization, maxAmplitudeNormalization);
+}
+
+float Additator::decayParam(int c) {
+	return clamp(params[DECAY_PARAM].getValue() + ((maxDecay - minDecay) / 2.0f) * cvValue(c, inputs[DECAY_INPUT]), minDecay, maxDecay);
+}
+
+float Additator::balanceParam(int c) {
+	return clamp(params[BALANCE_PARAM].getValue() + cvValue(c, inputs[BALANCE_INPUT]), -1.0f, 1.0f);
+}
+
+float Additator::filterParam(int c) {
+	return clamp(params[FILTER_PARAM].getValue() + cvValue(c, inputs[FILTER_INPUT]), minFilter, maxFilter);
+}
+
 void Additator::modulateChannel(int c) {
 	Engine& e = *_engines[c];
 
-	float width = e.widthSL.next(clamp(params[WIDTH_PARAM].getValue() + (maxWidth / 2.0f) * cvValue(c, inputs[WIDTH_INPUT]), 0.0f, maxWidth));
-	float oddSkew = e.oddSkewSL.next(clamp(params[ODD_SKEW_PARAM].getValue() + cvValue(c, inputs[ODD_SKEW_INPUT]), -maxSkew, maxSkew));
-	float evenSkew = e.evenSkewSL.next(clamp(params[EVEN_SKEW_PARAM].getValue() + cvValue(c, inputs[EVEN_SKEW_INPUT]), -maxSkew, maxSkew));
+	float width = e.widthSL.next(widthParam(c));
+	float oddSkew = e.oddSkewSL.next(oddSkewParam(c));
+	float evenSkew = e.evenSkewSL.next(evenSkewParam(c));
 	if (
 		e.width != width ||
 		e.oddSkew != oddSkew ||
@@ -69,8 +107,7 @@ void Additator::modulateChannel(int c) {
 		e.oddSkew = oddSkew;
 		e.evenSkew = evenSkew;
 
-		float multiple = 1.0f;
-		e.oscillator.setPartialFrequencyRatio(1, multiple);
+		e.oscillator.setPartialFrequencyRatio(1, 1.0f);
 		e.activePartials = 1;
 		for (int i = 2, n = e.oscillator.partialCount(); i <= n; ++i) {
 			float ii = i;
@@ -87,10 +124,10 @@ void Additator::modulateChannel(int c) {
 	}
 
 	int partials = clamp((int)roundf(params[PARTIALS_PARAM].getValue() * cvValue(c, inputs[PARTIALS_INPUT], true)), 0, maxPartials);
-	float amplitudeNormalization = e.amplitudeNormalizationSL.next(clamp(params[GAIN_PARAM].getValue() + ((maxAmplitudeNormalization - minAmplitudeNormalization) / 2.0f) * cvValue(c, inputs[GAIN_INPUT]), minAmplitudeNormalization, maxAmplitudeNormalization));
-	float decay = e.decaySL.next(clamp(params[DECAY_PARAM].getValue() + ((maxDecay - minDecay) / 2.0f) * cvValue(c, inputs[DECAY_INPUT]), minDecay, maxDecay));
-	float balance = e.balanceSL.next(clamp(params[BALANCE_PARAM].getValue() + cvValue(c, inputs[BALANCE_INPUT]), -1.0f, 1.0f));
-	float filter = e.filterSL.next(clamp(params[FILTER_PARAM].getValue() + cvValue(c, inputs[FILTER_INPUT]), minFilter, maxFilter));
+	float amplitudeNormalization = e.amplitudeNormalizationSL.next(amplitudeNormalizationParam(c));
+	float decay = e.decaySL.next(decayParam(c));
+	float balance = e.balanceSL.next(balanceParam(c));
+	float filter = e.filterSL.next(filterParam(c));
 	if (
 		e.partials != partials ||
 		e.amplitudeNormalization != amplitudeNormalization ||
@@ -136,7 +173,7 @@ void Additator::modulateChannel(int c) {
 	}
 
 	float frequency = params[FREQUENCY_PARAM].getValue();
-	frequency += params[FINE_PARAM].getValue() / 12.0f;;
+	frequency += params[FINE_PARAM].getValue() / 12.0f;
 	if (inputs[PITCH_INPUT].isConnected()) {
 		frequency += clamp(inputs[PITCH_INPUT].getVoltage(c), -5.0f, 5.0f);
 	}

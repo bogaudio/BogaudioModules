@@ -120,6 +120,13 @@ struct Additator : BGModule {
 	int channels() override;
 	void addEngine(int c) override;
 	void removeEngine(int c) override;
+	float widthParam(int c);
+	float oddSkewParam(int c);
+	float evenSkewParam(int c);
+	float amplitudeNormalizationParam(int c);
+	float decayParam(int c);
+	float balanceParam(int c);
+	float filterParam(int c);
 	void modulateChannel(int c) override;
 	void always(const ProcessArgs& args) override;
 	void processChannel(const ProcessArgs& args, int c) override;
