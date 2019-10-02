@@ -17,7 +17,8 @@
       "name": "VCO",
       "description": "oscillator",
       "tags": [
-        "Oscillator"
+        "Oscillator",
+        "Polyphonic"
       ]
     },
     {
@@ -25,7 +26,8 @@
       "name": "XCO",
       "description": "oscillator with wave mixer",
       "tags": [
-        "Oscillator"
+        "Oscillator",
+        "Polyphonic"
       ]
     },
     {
@@ -33,7 +35,8 @@
       "name": "ADDITATOR",
       "description": "additive oscillator",
       "tags": [
-        "Oscillator"
+        "Oscillator",
+        "Polyphonic"
       ]
     },
     {
@@ -42,7 +45,8 @@
       "description": "FM oscillator",
       "tags": [
         "Oscillator",
-        "Synth voice"
+        "Synth voice",
+        "Polyphonic"
       ]
     },
     {
@@ -50,7 +54,8 @@
       "name": "LFO",
       "description": "low-frequency oscillator",
       "tags": [
-        "LFO"
+        "LFO",
+        "Polyphonic"
       ]
     },
     {
@@ -58,7 +63,8 @@
       "name": "8FO",
       "description": "LFO with 8 phased outputs",
       "tags": [
-        "LFO"
+        "LFO",
+        "Polyphonic"
       ]
     },
     {
@@ -66,7 +72,8 @@
       "name": "LLFO",
       "description": "compact LFO",
       "tags": [
-        "LFO"
+        "LFO",
+        "Polyphonic"
       ]
     },
     {
@@ -74,7 +81,8 @@
       "name": "DADSR(H)",
       "description": "advanced envelope",
       "tags": [
-        "Envelope generator"
+        "Envelope generator",
+        "Polyphonic"
       ]
     },
     {
@@ -82,7 +90,8 @@
       "name": "DADSR(H)+",
       "description": "advanced envelope",
       "tags": [
-        "Envelope generator"
+        "Envelope generator",
+        "Polyphonic"
       ]
     },
     {
@@ -90,7 +99,8 @@
       "name": "DGATE",
       "description": "trigger-to-gate with delay",
       "tags": [
-        "Utility"
+        "Utility",
+        "Polyphonic"
       ]
     },
     {
@@ -99,7 +109,8 @@
       "description": "envelope and amplifier",
       "tags": [
         "Envelope generator",
-        "VCA"
+        "VCA",
+        "Polyphonic"
       ]
     },
     {
@@ -108,7 +119,8 @@
       "description": "envelope and amplifier",
       "tags": [
         "Envelope generator",
-        "VCA"
+        "VCA",
+        "Polyphonic"
       ]
     },
     {
@@ -116,7 +128,8 @@
       "name": "AD",
       "description": "utility envelope",
       "tags": [
-        "Envelope generator"
+        "Envelope generator",
+        "Polyphonic"
       ]
     },
     {
@@ -124,7 +137,8 @@
       "name": "ADSR",
       "description": "utility envelope",
       "tags": [
-        "Envelope generator"
+        "Envelope generator",
+        "Polyphonic"
       ]
     },
     {
@@ -132,7 +146,8 @@
       "name": "FOLLOW",
       "description": "envelope follower",
       "tags": [
-        "Envelope follower"
+        "Envelope follower",
+        "Polyphonic"
       ]
     },
     {
@@ -141,7 +156,8 @@
       "description": "noise source",
       "tags": [
         "Noise",
-        "Random"
+        "Random",
+        "Polyphonic"
       ]
     },
     {
@@ -150,7 +166,8 @@
       "description": "dual sample (or track) and hold",
       "tags": [
         "Sample and hold",
-        "Dual"
+        "Dual",
+        "Polyphonic"
       ]
     },
     {
@@ -166,7 +183,8 @@
       "name": "WALK",
       "description": "random-walk CV source",
       "tags": [
-        "Random"
+        "Random",
+        "Polyphonic"
       ]
     },
     {
@@ -192,7 +210,8 @@
       "name": "MIX1",
       "description": "fader/amplifier with mute",
       "tags": [
-        "VCA"
+        "VCA",
+        "Polyphonic"
       ]
     },
     {
@@ -200,7 +219,8 @@
       "name": "VCM",
       "description": "4-channel mixer",
       "tags": [
-        "Mixer"
+        "Mixer",
+        "Polyphonic"
       ]
     },
     {
@@ -208,7 +228,8 @@
       "name": "UMIX",
       "description": "unity mixer",
       "tags": [
-        "Mixer"
+        "Mixer",
+        "Polyphonic"
       ]
     },
     {
@@ -216,7 +237,8 @@
       "name": "MATRIX88",
       "description": "8x8 matrix mixer",
       "tags": [
-        "Mixer"
+        "Mixer",
+        "Polyphonic"
       ]
     },
     {
@@ -224,7 +246,8 @@
       "name": "MUTE8",
       "description": "eight mutes with CV",
       "tags": [
-        "Utility"
+        "Utility",
+        "Polyphonic"
       ]
     },
     {
@@ -233,7 +256,8 @@
       "description": "dual panner",
       "tags": [
         "Panning",
-        "Dual"
+        "Dual",
+        "Polyphonic"
       ]
     },
     {
@@ -241,7 +265,8 @@
       "name": "XFADE",
       "description": "crossfader",
       "tags": [
-        "Mixer"
+        "Mixer",
+        "Polyphonic"
       ]
     },
     {
@@ -250,7 +275,8 @@
       "description": "dual attenuator",
       "tags": [
         "VCA",
-        "Dual"
+        "Dual",
+        "Polyphonic"
       ]
     },
     {
@@ -258,7 +284,8 @@
       "name": "VCAMP",
       "description": "amplifier",
       "tags": [
-        "VCA"
+        "VCA",
+        "Polyphonic"
       ]
     },
     {
@@ -267,7 +294,8 @@
       "description": "ring modulator",
       "tags": [
         "Ring modulator",
-        "Effect"
+        "Effect",
+        "Polyphonic"
       ]
     },
     {
@@ -276,7 +304,8 @@
       "description": "stereo compressor",
       "tags": [
         "Compressor",
-        "Dynamics"
+        "Dynamics",
+        "Polyphonic"
       ]
     },
     {
@@ -285,7 +314,8 @@
       "description": "clipper",
       "tags": [
         "Dynamics",
-        "Distortion"
+        "Distortion",
+        "Polyphonic"
       ]
     },
     {
@@ -293,7 +323,8 @@
       "name": "LMTR",
       "description": "limiter",
       "tags": [
-        "Dynamics"
+        "Dynamics",
+        "Polyphonic"
       ]
     },
     {
@@ -301,7 +332,8 @@
       "name": "NSGT",
       "description": "noise gate",
       "tags": [
-        "Dynamics"
+        "Dynamics",
+        "Polyphonic"
       ]
     },
     {
@@ -309,7 +341,8 @@
       "name": "1:8",
       "description": "mux & sequential switch",
       "tags": [
-        "Switch"
+        "Switch",
+        "Polyphonic"
       ]
     },
     {
@@ -317,7 +350,8 @@
       "name": "8:1",
       "description": "demux & sequential switch",
       "tags": [
-        "Switch"
+        "Switch",
+        "Polyphonic"
       ]
     },
     {
@@ -325,7 +359,8 @@
       "name": "ADDR-SEQ",
       "description": "voltage-addressable sequencer",
       "tags": [
-        "Sequencer"
+        "Sequencer",
+        "Polyphonic"
       ]
     },
     {
@@ -357,7 +392,8 @@
       "name": "DETUNE",
       "description": "pitch CV processor",
       "tags": [
-        "Tuner"
+        "Tuner",
+        "Polyphonic"
       ]
     },
     {
@@ -365,7 +401,8 @@
       "name": "STACK",
       "description": "pitch CV processor",
       "tags": [
-        "Tuner"
+        "Tuner",
+        "Polyphonic"
       ]
     },
     {
@@ -381,7 +418,8 @@
       "name": "BOOL",
       "description": "boolean logic",
       "tags": [
-        "Logic"
+        "Logic",
+        "Polyphonic"
       ]
     },
     {
@@ -389,7 +427,8 @@
       "name": "CMP",
       "description": "comparator",
       "tags": [
-        "Logic"
+        "Logic",
+        "Polyphonic"
       ]
     },
     {
@@ -397,7 +436,8 @@
       "name": "CVD",
       "description": "CV delay",
       "tags": [
-        "Delay"
+        "Delay",
+        "Polyphonic"
       ]
     },
     {
@@ -406,7 +446,8 @@
       "description": "dual stateful logic",
       "tags": [
         "Logic",
-        "Dual"
+        "Dual",
+        "Polyphonic"
       ]
     },
     {
@@ -422,7 +463,8 @@
       "name": "MULT",
       "description": "multiple",
       "tags": [
-        "Multiple"
+        "Multiple",
+        "Polyphonic"
       ]
     },
     {
@@ -430,7 +472,8 @@
       "name": "OFFSET",
       "description": "CV offset and scaler",
       "tags": [
-        "Attenuator"
+        "Attenuator",
+        "Polyphonic"
       ]
     },
     {
@@ -438,7 +481,8 @@
       "name": "SLEW",
       "description": "slew / lag / glide",
       "tags": [
-        "Slew limiter"
+        "Slew limiter",
+        "Polyphonic"
       ]
     },
     {
@@ -446,7 +490,8 @@
       "name": "SUMS",
       "description": "arithmetic logic",
       "tags": [
-        "Logic"
+        "Logic",
+        "Polyphonic"
       ]
     },
     {
@@ -454,7 +499,8 @@
       "name": "SWITCH",
       "description": "signal router",
       "tags": [
-        "Switch"
+        "Switch",
+        "Polyphonic"
       ]
     },
     {
