@@ -368,7 +368,7 @@ WALK is a single-channel random walk, identical to one channel of WALK2, in 3HP.
 
 As a sequential switch, a trigger at the clock input advances the input selection -- which input is routed to the output.  Like a sequencer, it can be reset with a trigger at RESET, the number of inputs to cycle through may be set with the STEPS knob, and the direction is set with the FWD/REV switch.
 
-As a multiplexer, it routes an input to the output under control of the SELECT knob and CV.  A 0-10V CV, divided into 8 equal divisions of 1.25V, controls the input selection.  This value is summed with the knob setting; for example, setting the knob to 4 and inputting a 2.6V CV will send input 7 to the output.  When the knob-plus-CV value exceeds 8, it wraps around.
+As a multiplexer, it routes an input to the output under control of the SELECT knob and CV.  A 0-10V CV, divided into 8 equal divisions of 1.25V, controls the input selection.  A CV of less 1.25V does nothing; a voltage of 1.25-2.49V will add 1 step to the selection, and so on.  This value is summed with the knob setting; for example, setting the knob to 4 and inputting a 2.6V CV will send input 6 to the output.  When the knob-plus-CV value exceeds 8, it wraps around.
 
 Both functions may be used simultaneously: the SELECT+CV value is added to the sequential/clocked value, wrapping around.  Note that the STEPS value only affects the sequential value; for example, using a clock input and setting STEPS to 2 will yield an alternation between two adjacent inputs, but this pair can be selected with the SELECT knob or CV.
 

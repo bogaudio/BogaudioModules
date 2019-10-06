@@ -84,7 +84,7 @@ void AddrSeq::processChannel(const ProcessArgs& args, int c) {
 	if (!_selectOnClock || clock) {
 		_select[c] = select;
 	}
-	int step = _step[c] + roundf(_select[c]);
+	int step = _step[c] + (int)_select[c];
 	step = step % 8;
 
 	float out = params[OUT1_PARAM + step].getValue();
