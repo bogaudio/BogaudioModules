@@ -28,8 +28,8 @@ struct Offset : DisableOutputLimitModule {
 
 	Offset() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
-		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "Offset", " V", 0.0f, 5.0f);
-		configParam(SCALE_PARAM, -1.0f, 1.0f, 0.316f, "Scale", "%", 0.0f, 100.0f);
+		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "Offset", " V", 0.0f, 10.0f);
+		configParam<TenXSquaringParamQuantity>(SCALE_PARAM, -1.0f, 1.0f, 0.31623f, "Scale", "x");
 	}
 
 	int channels() override;

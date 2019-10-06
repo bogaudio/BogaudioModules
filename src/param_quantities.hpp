@@ -17,18 +17,26 @@ struct ScaledSquaringParamQuantity : ParamQuantity {
 			return v;
 		}
 
-		v *= v;
-		v *= (float)scale;
-		return v;
+		float vv = v * v;
+		vv *= (float)scale;
+		if (v < 0.0f) {
+			return -vv;
+		}
+		return vv;
 	}
 
 	void setDisplayValue(float displayValue) override {
 		if (!module) {
 			return;
 		}
-		displayValue /= (float)scale;
-		displayValue = powf(displayValue, 0.5f);
-		setValue(displayValue);
+		float v = fabsf(displayValue) / (float)scale;
+		v = powf(v, 0.5f);
+		if (displayValue < 0.0f) {
+			setValue(-v);
+		}
+		else {
+			setValue(v);
+		}
 	}
 };
 
