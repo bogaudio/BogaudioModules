@@ -86,4 +86,4 @@ struct ClprWidget : ModuleWidget {
 	}
 };
 
-Model* modelClpr = bogaudio::createModel<Clpr, ClprWidget>("Bogaudio-Clpr", "CLPR", "clipper", "Dynamics", "Distortion");
+Model* modelClpr = bogaudio::createModel<Clpr, ClprWidget>("Bogaudio-Clpr", "CLPR", "clipper", "Dynamics", "Distortion", "Polyphonic");

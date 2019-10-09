@@ -17,7 +17,7 @@ extern Model* model%MODULE%;
 
 namespace %HEADER% {
 
-struct %MODULE% : Module {
+struct %MODULE% : BGModule {
 %ENUMS%
 
 	%MODULE%() {
@@ -26,9 +26,9 @@ struct %MODULE% : Module {
 		onReset();
 	}
 
-	void onReset() override;
-	void onSampleRateChange() override;
-	void process(const ProcessArgs& args) override;
+	void reset() override;
+	void sampleRateChange() override;
+	void processChannel(const ProcessArgs& args, int c) override;
 };
 
 } // namespace %HEADER%
@@ -38,14 +38,14 @@ cpp_template = <<CPP_TEMPLATE
 
 #include "%MODULE%.hpp"
 
-void %MODULE%::onReset() {
+void %MODULE%::reset() {
 }
 
-void %MODULE%::onSampleRateChange() {
+void %MODULE%::sampleRateChange() {
 	// float sampleRate = APP->engine->getSampleRate();
 }
 
-void %MODULE%::process(const ProcessArgs& args) {
+void %MODULE%::processChannel(const ProcessArgs& args, int c) {
 }
 
 struct %MODULE%Widget : ModuleWidget {

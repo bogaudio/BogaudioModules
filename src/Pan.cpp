@@ -83,4 +83,4 @@ struct PanWidget : ModuleWidget {
 	}
 };
 
-Model* modelPan = bogaudio::createModel<Pan, PanWidget>("Bogaudio-Pan", "Pan",  "dual panner", "Panning", "Dual");
+Model* modelPan = bogaudio::createModel<Pan, PanWidget>("Bogaudio-Pan", "PAN", "dual panner", "Panning", "Dual", "Polyphonic");

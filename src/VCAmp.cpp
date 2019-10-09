@@ -75,4 +75,4 @@ struct VCAmpWidget : ModuleWidget {
 	}
 };
 
-Model* modelVCAmp = bogaudio::createModel<VCAmp, VCAmpWidget>("Bogaudio-VCAmp", "VCAmp",  "amplifier", "VCA");
+Model* modelVCAmp = bogaudio::createModel<VCAmp, VCAmpWidget>("Bogaudio-VCAmp", "VCAMP", "amplifier", "VCA", "Polyphonic");

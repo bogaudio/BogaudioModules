@@ -353,4 +353,4 @@ struct FMOpWidget : ModuleWidget {
 	}
 };
 
-Model* modelFMOp = bogaudio::createModel<FMOp, FMOpWidget>("Bogaudio-FMOp", "FM-OP",  "FM oscillator", "Oscillator", "Synth voice");
+Model* modelFMOp = bogaudio::createModel<FMOp, FMOpWidget>("Bogaudio-FMOp", "FM-OP", "FM oscillator", "Oscillator", "Synth voice", "Polyphonic");

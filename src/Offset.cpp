@@ -71,4 +71,4 @@ struct OffsetWidget : DisableOutputLimitModuleWidget {
 	}
 };
 
-Model* modelOffset = bogaudio::createModel<Offset, OffsetWidget>("Bogaudio-Offset", "Offset",  "CV offset and scaler", "Attenuator");
+Model* modelOffset = bogaudio::createModel<Offset, OffsetWidget>("Bogaudio-Offset", "OFFSET", "CV offset and scaler", "Attenuator", "Polyphonic");

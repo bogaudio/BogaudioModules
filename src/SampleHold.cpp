@@ -225,4 +225,4 @@ struct SampleHoldWidget : ModuleWidget {
 	}
 };
 
-Model* modelSampleHold = bogaudio::createModel<SampleHold, SampleHoldWidget>("Bogaudio-SampleHold", "S&H",  "dual sample (or track) and hold", "Sample and hold", "Dual");
+Model* modelSampleHold = bogaudio::createModel<SampleHold, SampleHoldWidget>("Bogaudio-SampleHold", "S&H", "dual sample (or track) and hold", "Sample and hold", "Dual", "Polyphonic");

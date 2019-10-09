@@ -221,4 +221,4 @@ struct AddrSeqWidget : SelectOnClockModuleWidget {
 	}
 };
 
-Model* modelAddrSeq = bogaudio::createModel<AddrSeq, AddrSeqWidget>("Bogaudio-AddrSeq", "ADDR-SEQ", "voltage-addressable sequencer", "Sequencer");
+Model* modelAddrSeq = bogaudio::createModel<AddrSeq, AddrSeqWidget>("Bogaudio-AddrSeq", "ADDR-SEQ", "voltage-addressable sequencer", "Sequencer", "Polyphonic");

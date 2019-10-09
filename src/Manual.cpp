@@ -79,4 +79,4 @@ struct ManualWidget : TriggerOnLoadModuleWidget {
 	}
 };
 
-Model* modelManual = bogaudio::createModel<Manual, ManualWidget>("Bogaudio-Manual", "Manual",  "manual gates / triggers", "Utility");
+Model* modelManual = bogaudio::createModel<Manual, ManualWidget>("Bogaudio-Manual", "MANUAL", "manual gates / triggers", "Utility");

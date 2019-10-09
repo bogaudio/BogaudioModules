@@ -41,3 +41,5 @@ then
     ruby -e "s = File.read('$PLUGIN'); s.sub!(/\/\/NEW_MODELS_HERE/, %Q{$MODEL\n\t//NEW_MODELS_HERE}); File.write('$PLUGIN', s)"
   fi
 fi
+
+./scripts/modules_to_plugin_json.rb

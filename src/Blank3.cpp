@@ -92,4 +92,4 @@ struct Blank3Widget : ModuleWidget {
 	}
 };
 
-Model* modelBlank3 = bogaudio::createModel<Blank3, Blank3Widget>("Bogaudio-Blank3", "Blank3", "blank panel", "Blank");
+Model* modelBlank3 = bogaudio::createModel<Blank3, Blank3Widget>("Bogaudio-Blank3", "BLANK3", "blank panel", "Blank");

@@ -296,4 +296,4 @@ struct AdditatorWidget : ModuleWidget {
 	}
 };
 
-Model* modelAdditator = bogaudio::createModel<Additator, AdditatorWidget>("Bogaudio-Additator", "Additator",  "additive oscillator", "Oscillator");
+Model* modelAdditator = bogaudio::createModel<Additator, AdditatorWidget>("Bogaudio-Additator", "ADDITATOR", "additive oscillator", "Oscillator", "Polyphonic");

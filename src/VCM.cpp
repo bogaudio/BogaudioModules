@@ -120,4 +120,4 @@ struct VCMWidget : DisableOutputLimitModuleWidget {
 	}
 };
 
-Model* modelVCM = bogaudio::createModel<VCM, VCMWidget>("Bogaudio-VCM", "VCM",  "4-channel mixer", "Mixer");
+Model* modelVCM = bogaudio::createModel<VCM, VCMWidget>("Bogaudio-VCM", "VCM", "4-channel mixer", "Mixer", "Polyphonic");

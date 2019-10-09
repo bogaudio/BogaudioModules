@@ -241,4 +241,4 @@ struct ReftoneWidget : ModuleWidget {
 	}
 };
 
-Model* modelReftone = bogaudio::createModel<Reftone, ReftoneWidget>("Bogaudio-Reftone", "Reftone",  "precision pitch CV generator", "Tuner");
+Model* modelReftone = bogaudio::createModel<Reftone, ReftoneWidget>("Bogaudio-Reftone", "REFTONE", "precision pitch CV generator", "Tuner");

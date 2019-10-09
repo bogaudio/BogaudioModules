@@ -273,4 +273,4 @@ struct Mix8Widget : ModuleWidget {
 	}
 };
 
-Model* modelMix8 = bogaudio::createModel<Mix8, Mix8Widget>("Bogaudio-Mix8", "Mix8",  "8-channel mixer and panner", "Mixer", "Panning");
+Model* modelMix8 = bogaudio::createModel<Mix8, Mix8Widget>("Bogaudio-Mix8", "MIX8", "8-channel mixer and panner", "Mixer", "Panning");

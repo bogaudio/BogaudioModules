@@ -220,4 +220,4 @@ struct DADSRHPlusWidget : TriggerOnLoadModuleWidget {
 	}
 };
 
-Model* modelDADSRHPlus = bogaudio::createModel<DADSRHPlus, DADSRHPlusWidget>("Bogaudio-DADSRHPlus", "DADSR(H)+",  "advanced envelope", "Envelope generator");
+Model* modelDADSRHPlus = bogaudio::createModel<DADSRHPlus, DADSRHPlusWidget>("Bogaudio-DADSRHPlus", "DADSR(H)+", "advanced envelope", "Envelope generator", "Polyphonic");

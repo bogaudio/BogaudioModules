@@ -142,4 +142,4 @@ struct EightOneWidget : SelectOnClockModuleWidget {
 	}
 };
 
-Model* modelEightOne = bogaudio::createModel<EightOne, EightOneWidget>("Bogaudio-EightOne", "8:1", "demux & sequential switch", "Switch");
+Model* modelEightOne = bogaudio::createModel<EightOne, EightOneWidget>("Bogaudio-EightOne", "8:1", "demux & sequential switch", "Switch", "Polyphonic");

@@ -223,4 +223,4 @@ struct Mix4Widget : ModuleWidget {
 	}
 };
 
-Model* modelMix4 = bogaudio::createModel<Mix4, Mix4Widget>("Bogaudio-Mix4", "Mix4",  "4-channel mixer and panner", "Mixer", "Panning");
+Model* modelMix4 = bogaudio::createModel<Mix4, Mix4Widget>("Bogaudio-Mix4", "MIX4", "4-channel mixer and panner", "Mixer", "Panning");

@@ -253,4 +253,4 @@ struct VCOWidget : ModuleWidget {
 	}
 };
 
-Model* modelVCO = bogaudio::createModel<VCO, VCOWidget>("Bogaudio-VCO", "VCO",  "oscillator", "Oscillator");
+Model* modelVCO = bogaudio::createModel<VCO, VCOWidget>("Bogaudio-VCO", "VCO", "oscillator", "Oscillator", "Polyphonic");

@@ -12,8 +12,8 @@ end
 
 modules = []
 models.each do |model|
-  create = `git grep -in #{model} | grep createModel`
-  if create =~ /createModel.*?\("([^",]+)",\s*"([^",]+)",\s*"([^",]+)"(?:,\s*([^)]*))?\);/
+  create = `grep -in #{model} src/*cpp | grep createModel`
+  if create =~ /createModel.*?\("([^",]+)",\s*"([^",]+)",\s*"([^",]*)"(?:,\s*([^)]*))?\);/
     slug = $1
     name = $2
     description = $3
@@ -39,5 +39,5 @@ end
 plugin['modules'] = modules
 File.write('plugin.json.bak', plugin_json)
 puts 'wrote plugin.json.bak'
-File.write('plugin.json', JSON.pretty_generate(plugin))
+File.write('plugin.json', JSON.pretty_generate(plugin) + "\n")
 puts "wrote plugin.json"

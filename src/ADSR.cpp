@@ -176,4 +176,4 @@ struct ADSRWidget : ModuleWidget {
 	}
 };
 
-Model* modelADSR = bogaudio::createModel<ADSR, ADSRWidget>("Bogaudio-ADSR", "ADSR",  "utility envelope", "Envelope generator");
+Model* modelADSR = bogaudio::createModel<ADSR, ADSRWidget>("Bogaudio-ADSR", "ADSR", "utility envelope", "Envelope generator", "Polyphonic");

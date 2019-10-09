@@ -96,4 +96,4 @@ struct VCAWidget : ModuleWidget {
 	}
 };
 
-Model* modelVCA = bogaudio::createModel<VCA, VCAWidget>("Bogaudio-VCA", "VCA",  "dual attenuator", "VCA", "Dual");
+Model* modelVCA = bogaudio::createModel<VCA, VCAWidget>("Bogaudio-VCA", "VCA", "dual attenuator", "VCA", "Dual", "Polyphonic");
