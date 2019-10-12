@@ -178,4 +178,4 @@ struct MonoWidget : ModuleWidget {
 	}
 };
 
-Model* modelMono = createModel<Mono, MonoWidget>("Bogaudio-Mono", "Mono", "poly-to-mono converter with onboard compressor", "Utility", "Polyphonic");
+Model* modelMono = createModel<Mono, MonoWidget>("Bogaudio-Mono", "Mono", "Poly-to-mono converter with onboard compressor", "Utility", "Polyphonic");

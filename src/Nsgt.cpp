@@ -138,4 +138,4 @@ struct NsgtWidget : ModuleWidget {
 	}
 };
 
-Model* modelNsgt = bogaudio::createModel<Nsgt, NsgtWidget>("Bogaudio-Nsgt", "NSGT", "noise gate", "Dynamics", "Polyphonic");
+Model* modelNsgt = bogaudio::createModel<Nsgt, NsgtWidget>("Bogaudio-Nsgt", "NSGT", "Noise gate", "Dynamics", "Polyphonic");

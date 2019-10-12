@@ -95,4 +95,4 @@ struct Mix1Widget : ModuleWidget {
 	}
 };
 
-Model* modelMix1 = bogaudio::createModel<Mix1, Mix1Widget>("Bogaudio-Mix1", "MIX1", "fader/amplifier with mute", "VCA", "Polyphonic");
+Model* modelMix1 = bogaudio::createModel<Mix1, Mix1Widget>("Bogaudio-Mix1", "MIX1", "Fader/amplifier with CV controllable mute", "VCA", "Polyphonic");

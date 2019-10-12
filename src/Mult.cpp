@@ -64,4 +64,4 @@ struct MultWidget : ModuleWidget {
 	}
 };
 
-Model* modelMult = bogaudio::createModel<Mult, MultWidget>("Bogaudio-Mult", "MULT", "multiple", "Multiple", "Polyphonic");
+Model* modelMult = bogaudio::createModel<Mult, MultWidget>("Bogaudio-Mult", "MULT", "1:6 or dual 1:3 multiple/splitter", "Multiple", "Polyphonic");

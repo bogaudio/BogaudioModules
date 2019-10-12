@@ -408,4 +408,4 @@ struct XCOWidget : ModuleWidget {
 	}
 };
 
-Model* modelXCO = bogaudio::createModel<XCO, XCOWidget>("Bogaudio-XCO", "XCO", "oscillator with wave mixer", "Oscillator", "Polyphonic");
+Model* modelXCO = bogaudio::createModel<XCO, XCOWidget>("Bogaudio-XCO", "XCO", "Oscillator with wave mixer, wave mods, FM, hard sync", "Oscillator", "Polyphonic");

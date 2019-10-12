@@ -80,4 +80,4 @@ struct AMRMWidget : ModuleWidget {
 	}
 };
 
-Model* modelAMRM = bogaudio::createModel<AMRM, AMRMWidget>("Bogaudio-AMRM", "AM/RM", "ring modulator", "Ring modulator", "Effect", "Polyphonic");
+Model* modelAMRM = bogaudio::createModel<AMRM, AMRMWidget>("Bogaudio-AMRM", "AM/RM", "Variable ring/amplitude modulator and rectifier", "Ring modulator", "Effect", "Polyphonic");

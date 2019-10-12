@@ -313,4 +313,4 @@ struct AnalyzerXLWidget : ModuleWidget {
 	}
 };
 
-Model* modelAnalyzerXL = bogaudio::createModel<AnalyzerXL, AnalyzerXLWidget>("Bogaudio-AnalyzerXL", "ANALYZER-XL", "spectrum analyzer", "Visual");
+Model* modelAnalyzerXL = bogaudio::createModel<AnalyzerXL, AnalyzerXLWidget>("Bogaudio-AnalyzerXL", "ANALYZER-XL", "8-channel spectrum analyzer", "Visual");

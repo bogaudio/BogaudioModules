@@ -153,4 +153,4 @@ struct OneEightWidget : SelectOnClockModuleWidget {
 	}
 };
 
-Model* modelOneEight = bogaudio::createModel<OneEight, OneEightWidget>("Bogaudio-OneEight", "1:8", "mux & sequential switch", "Switch", "Polyphonic");
+Model* modelOneEight = bogaudio::createModel<OneEight, OneEightWidget>("Bogaudio-OneEight", "1:8", "8-channel multiplexer & sequential switch", "Switch", "Polyphonic");

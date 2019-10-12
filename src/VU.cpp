@@ -162,4 +162,4 @@ struct VUWidget : ModuleWidget {
 	}
 };
 
-Model* modelVU = bogaudio::createModel<VU, VUWidget>("Bogaudio-VU", "VU", "stereo signal meter", "Visual");
+Model* modelVU = bogaudio::createModel<VU, VUWidget>("Bogaudio-VU", "VU", "Stereo signal meter", "Visual");

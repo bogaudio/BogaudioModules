@@ -315,4 +315,4 @@ struct EightFOWidget : ModuleWidget {
 	}
 };
 
-Model* modelEightFO = bogaudio::createModel<EightFO, EightFOWidget>("Bogaudio-EightFO", "8FO", "LFO with 8 phased outputs", "LFO", "Polyphonic");
+Model* modelEightFO = bogaudio::createModel<EightFO, EightFOWidget>("Bogaudio-EightFO", "8FO", "LFO with outputs at 8 different phases", "LFO", "Polyphonic");

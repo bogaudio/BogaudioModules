@@ -80,4 +80,4 @@ struct FollowWidget : ModuleWidget {
 	}
 };
 
-Model* modelFollow = bogaudio::createModel<Follow, FollowWidget>("Bogaudio-Follow", "FOLLOW", "envelope follower", "Envelope follower", "Polyphonic");
+Model* modelFollow = bogaudio::createModel<Follow, FollowWidget>("Bogaudio-Follow", "FOLLOW", "Envelope follower", "Envelope follower", "Polyphonic");

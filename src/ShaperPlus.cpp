@@ -179,4 +179,4 @@ struct ShaperPlusWidget : TriggerOnLoadModuleWidget {
 	}
 };
 
-Model* modelShaperPlus = bogaudio::createModel<ShaperPlus, ShaperPlusWidget>("Bogaudio-ShaperPlus", "SHAPER+", "envelope and amplifier", "Envelope generator", "VCA", "Polyphonic");
+Model* modelShaperPlus = bogaudio::createModel<ShaperPlus, ShaperPlusWidget>("Bogaudio-ShaperPlus", "SHAPER+", "Retro-inspired envelope generator and amplifier with additional CV", "Envelope generator", "VCA", "Polyphonic");

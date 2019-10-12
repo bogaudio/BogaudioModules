@@ -98,4 +98,4 @@ struct XFadeWidget : ModuleWidget {
 	}
 };
 
-Model* modelXFade = bogaudio::createModel<XFade, XFadeWidget>("Bogaudio-XFade", "XFADE", "crossfader", "Mixer", "Polyphonic");
+Model* modelXFade = bogaudio::createModel<XFade, XFadeWidget>("Bogaudio-XFade", "XFADE", "Crossfader", "Mixer", "Polyphonic");

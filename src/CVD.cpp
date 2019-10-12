@@ -104,4 +104,4 @@ struct CVDWidget : ModuleWidget {
 	}
 };
 
-Model* modelCVD = bogaudio::createModel<CVD, CVDWidget>("Bogaudio-CVD", "CVD", "CV delay", "Delay", "Polyphonic");
+Model* modelCVD = bogaudio::createModel<CVD, CVDWidget>("Bogaudio-CVD", "CVD", "Simple delay designed for triggers and other CVs", "Delay", "Polyphonic");

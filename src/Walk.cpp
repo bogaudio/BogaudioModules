@@ -98,4 +98,4 @@ struct WalkWidget : ModuleWidget {
 	}
 };
 
-Model* modelWalk = bogaudio::createModel<Walk, WalkWidget>("Bogaudio-Walk", "WALK", "random-walk CV source", "Random", "Polyphonic");
+Model* modelWalk = bogaudio::createModel<Walk, WalkWidget>("Bogaudio-Walk", "WALK", "Random-walk CV source", "Random", "Polyphonic");

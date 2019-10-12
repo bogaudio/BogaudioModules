@@ -127,4 +127,4 @@ struct SwitchWidget : ModuleWidget {
 	}
 };
 
-Model* modelSwitch = bogaudio::createModel<bogaudio::Switch, SwitchWidget>("Bogaudio-Switch", "SWITCH", "signal router", "Switch", "Polyphonic");
+Model* modelSwitch = bogaudio::createModel<bogaudio::Switch, SwitchWidget>("Bogaudio-Switch", "SWITCH", "2-way signal router", "Switch", "Polyphonic");

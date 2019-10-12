@@ -13,7 +13,7 @@ end
 modules = []
 models.each do |model|
   create = `grep -in #{model} src/*cpp | grep createModel`
-  if create =~ /createModel.*?\("([^",]+)",\s*"([^",]+)",\s*"([^",]*)"(?:,\s*([^)]*))?\);/
+  if create =~ /createModel.*?\("([^"]+)",\s*"([^"]+)",\s*"([^"]*)"(?:,\s*([^)]*))?\);/
     slug = $1
     name = $2
     description = $3

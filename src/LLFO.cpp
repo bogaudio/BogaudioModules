@@ -153,4 +153,4 @@ struct LLFOWidget : ModuleWidget {
 	}
 };
 
-Model* modelLLFO = bogaudio::createModel<LLFO, LLFOWidget>("Bogaudio-LLFO", "LLFO", "compact LFO", "LFO", "Polyphonic");
+Model* modelLLFO = bogaudio::createModel<LLFO, LLFOWidget>("Bogaudio-LLFO", "LLFO", "Compact low frequency oscillator", "LFO", "Polyphonic");
