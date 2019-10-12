@@ -32,6 +32,7 @@
 #include "Mix1.hpp"
 #include "Mix4.hpp"
 #include "Mix8.hpp"
+#include "Mono.hpp"
 #include "Mult.hpp"
 #include "Mute8.hpp"
 #include "Noise.hpp"
@@ -122,6 +123,8 @@ void init(rack::Plugin *p) {
 	p->addModel(modelDetune);
 	p->addModel(modelStack);
 	p->addModel(modelReftone);
+
+	p->addModel(modelMono);
 
 	p->addModel(modelBool);
 	p->addModel(modelCmp);

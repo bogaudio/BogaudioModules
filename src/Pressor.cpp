@@ -155,50 +155,50 @@ void Pressor::processChannel(const ProcessArgs& args, int c) {
 	}
 }
 
-struct CompressionDisplay : OpaqueWidget {
-	struct Level {
-		float db;
-		NVGcolor color;
-		Level(float db, const NVGcolor& color) : db(db), color(color) {}
-	};
+struct PressorWidget : ModuleWidget {
+	struct CompressionDisplay : OpaqueWidget {
+		struct Level {
+			float db;
+			NVGcolor color;
+			Level(float db, const NVGcolor& color) : db(db), color(color) {}
+		};
 
-	const NVGcolor bgColor = nvgRGBA(0xaa, 0xaa, 0xaa, 0xff);
-	Pressor* _module;
-	std::vector<Level> _levels;
+		const NVGcolor bgColor = nvgRGBA(0xaa, 0xaa, 0xaa, 0xff);
+		Pressor* _module;
+		std::vector<Level> _levels;
 
-	CompressionDisplay(Pressor* module) : _module(module) {
-		auto color = nvgRGBA(0xff, 0xaa, 0x00, 0xff);
-		_levels.push_back(Level(30.0f, color));
-		for (int i = 1; i <= 15; ++i) {
-			float db = 30.0f - i*2.0f;
-			_levels.push_back(Level(db, color)); // decibelsToColor(db - 15.0f)));
-		}
-	}
-
-	void draw(const DrawArgs& args) override {
-		float compressionDb = 0.0f;
-		if (_module) {
-			compressionDb = _module->_compressionDb;
-		}
-
-		nvgSave(args.vg);
-		for (int i = 0; i < 80; i += 5) {
-			const Level& l = _levels.at(i / 5);
-
-			nvgBeginPath(args.vg);
-			nvgRect(args.vg, 3, i + 1, 5, 4);
-			nvgFillColor(args.vg, bgColor);
-			nvgFill(args.vg);
-			if (compressionDb > l.db) {
-				nvgFillColor(args.vg, l.color);
-				nvgFill(args.vg);
+		CompressionDisplay(Pressor* module) : _module(module) {
+			auto color = nvgRGBA(0xff, 0xaa, 0x00, 0xff);
+			_levels.push_back(Level(30.0f, color));
+			for (int i = 1; i <= 15; ++i) {
+				float db = 30.0f - i*2.0f;
+				_levels.push_back(Level(db, color)); // decibelsToColor(db - 15.0f)));
 			}
 		}
-		nvgRestore(args.vg);
-	}
-};
 
-struct PressorWidget : ModuleWidget {
+		void draw(const DrawArgs& args) override {
+			float compressionDb = 0.0f;
+			if (_module) {
+				compressionDb = _module->_compressionDb;
+			}
+
+			nvgSave(args.vg);
+			for (int i = 0; i < 80; i += 5) {
+				const Level& l = _levels.at(i / 5);
+
+				nvgBeginPath(args.vg);
+				nvgRect(args.vg, 3, i + 1, 5, 4);
+				nvgFillColor(args.vg, bgColor);
+				nvgFill(args.vg);
+				if (compressionDb > l.db) {
+					nvgFillColor(args.vg, l.color);
+					nvgFill(args.vg);
+				}
+			}
+			nvgRestore(args.vg);
+		}
+	};
+
 	static constexpr int hp = 15;
 
 	PressorWidget(Pressor* module) {

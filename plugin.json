@@ -414,6 +414,15 @@
       ]
     },
     {
+      "slug": "Bogaudio-Mono",
+      "name": "Mono",
+      "description": "poly-to-mono converter with onboard compressor",
+      "tags": [
+        "Utility",
+        "Polyphonic"
+      ]
+    },
+    {
       "slug": "Bogaudio-Bool",
       "name": "BOOL",
       "description": "boolean logic",
