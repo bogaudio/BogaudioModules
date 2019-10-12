@@ -10,7 +10,7 @@ Modules for [VCV Rack](https://github.com/VCVRack/Rack), an open-source Eurorack
   - [Noise/Random, Sample and Hold](#random)
   - [Sequential Switches and Sequencers](#sequencers)
   - [Visualizers](#visualizers)
-  - [Pitch CV Utilities](#pitch)
+  - [Polyphony and Pitch CV Utilities](#pitch)
   - [Other Utilities](#utilities)
   - [Miscellaneous](#misc)
 
@@ -283,7 +283,7 @@ The RECT inputs expects a bipolar (+/-5V) CV, which is added to the RECTIFY knob
 
 Note: AM/RM is calibrated to expect +/-5V, 10V peak-to-peak signals (i.e. the output of a typical oscillator).  A modulator signal with a negative value in excess of -5V will be affected by the rectifier circuit even if the RECTIFY is zero.  To avoid this effect, you may need to attenuate a hot signal you wish to use as the modulator.
 
-#### PRESSOR
+#### <a name="pressor"></a> PRESSOR
 
 PRESSOR is a stereo [compressor](https://en.wikipedia.org/wiki/Dynamic_range_compression) and [noise gate](https://en.wikipedia.org/wiki/Noise_gate) with many controls and a sidechain input.  A compressor attenuates signals louder than a threshold level; a noise gate attenuates signals quieter than a threshold level.
 
@@ -408,11 +408,17 @@ An eight-channel, 42HP version of ANALYZER, with edge-to-edge-screen type of des
 
 A stereo signal level visualizer/meter.  The L channel is sent to both displays if if nothing is patched to R.  Inputs to L and R are copied to the L and R outputs.
 
-### <a name="pitch"></a> Pitch CV Utilities
+### <a name="pitch"></a> Polyphony and Pitch CV Utilities
 
-Utilities that process pitch CVs (1 volt / octave), for controlling the pitch of oscillators.
+Utilities related to polyphony, and for processing pitch CVs (1 volt / octave CVs, for controlling the pitch of oscillators).
 
-![Pitch utilities screenshot](doc/www/pitch.png)
+![Polyphony and pitch utilities screenshot](doc/www/pitch.png)
+
+#### MONO
+
+MONO mixes down the channels of a polyphonic cable to a single-channel mono output.  It is an alternative to the SUM module that comes with VCV Rack, but adds an onboard compressor, to even out the level differences when only a few, or many, channels on the incoming are sounding.  The COMP control sets the amount of compression; at zero there is no effect and the behavior of this module is essentially equivalent to Rack's SUM.  As with SUM, the LEVEL control simply attenuates the output.  The output, post-LEVEL, is soft-clipped at about +/-12V.
+
+Those with a discerning ear may prefer to set COMP to zero (or use Rack's SUM), and then patch into <a href="#pressor">PRESSOR</a>, for more control over the compression effect.
 
 #### DETUNE
 

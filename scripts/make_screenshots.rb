@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-# To generate per-modules screenshots, in Rack dir: ./Rack -d -p 1
+# To generate per-modules screenshots, in Rack dir: ./Rack -d -t 1
 
 screens = [
   {
@@ -31,7 +31,7 @@ screens = [
     file: 'modules4.png',
     crop: false,
     rows: [
-      ['Detune', 'Stack', 'Reftone', '-', 'Bool', 'Cmp', 'CVD', 'FlipFlop', 'Manual', 'Mult', 'Offset', 'Slew', 'Sums', 'Switch', '-', 'Blank3', 'Blank6']
+      ['Mono', '-', 'Detune', 'Stack', 'Reftone', '-', 'Bool', 'Cmp', 'CVD', 'FlipFlop', 'Manual', 'Mult', 'Offset', 'Slew', 'Sums', 'Switch', '-', 'Blank3', 'Blank6']
     ]
   },
 
@@ -109,7 +109,7 @@ screens = [
     file: 'pitch.png',
     crop: true,
     rows: [
-      ['Detune', 'Stack', 'Reftone']
+      ['Mono', '-', 'Detune', 'Stack', 'Reftone']
     ]
   },
   {
