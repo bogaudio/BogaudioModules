@@ -400,9 +400,11 @@ _Polyphony:_ For the noise outputs, the number of polyphonic channels is set on 
 
 A dual sample-and-hold and trigger-and-hold.  Sampling may be triggered by CV (on the rising edge of a trigger or gate) or button press.
 
-If nothing is connected to an IN port, sampling for that channel is normaled to an internal white noise source with range 0-10V. Alternative options for the normal source noise type and range are available on the context (right-click) menu.  The normal source selection applies to both channels.
+If nothing is connected to an IN port, sampling for that channel is normalled to an internal white noise source with range 0-10V. Alternative options for the normal source noise type and range are available on the context (right-click) menu.  The normal source selection applies to both channels.
 
 Each channel can be toggled into track-and-hold mode.  In this mode, when the input at GATE is high, or the button is held, the input is copied to the output.  When the gate goes low, the input is sampled and held until the next gate.
+
+The GATE input on the lower section is normalled to GATE in the top section (but a press on the top button does not trigger the lower section).
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by maximum of the channels on the GATE and IN inputs, independently on the top and bottom sections of the module.
 

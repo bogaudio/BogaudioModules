@@ -77,6 +77,7 @@ struct SampleHold : BGModule {
 		Trigger* trigger,
 		Param& triggerParam,
 		Input& triggerInput,
+		Input* altTriggerInput,
 		Input& in,
 		float* value,
 		Output& out

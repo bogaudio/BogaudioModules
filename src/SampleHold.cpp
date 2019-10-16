@@ -48,6 +48,7 @@ void SampleHold::processChannel(const ProcessArgs& args, int c) {
 		_trigger1,
 		params[TRIGGER1_PARAM],
 		inputs[TRIGGER1_INPUT],
+		NULL,
 		inputs[IN1_INPUT],
 		_value1,
 		outputs[OUT1_OUTPUT]
@@ -58,6 +59,7 @@ void SampleHold::processChannel(const ProcessArgs& args, int c) {
 		_trigger2,
 		params[TRIGGER2_PARAM],
 		inputs[TRIGGER2_INPUT],
+		&inputs[TRIGGER1_INPUT],
 		inputs[IN2_INPUT],
 		_value2,
 		outputs[OUT2_OUTPUT]
@@ -70,6 +72,7 @@ void SampleHold::processChannel(
 	Trigger* trigger,
 	Param& triggerParam,
 	Input& triggerInput,
+	Input* altTriggerInput,
 	Input& in,
 	float* value,
 	Output& out
@@ -79,7 +82,13 @@ void SampleHold::processChannel(
 	int n = std::max(1, std::max(triggerInput.getChannels(), in.getChannels()));
 	out.setChannels(n);
 	for (int i = 0; i < n; ++i) {
-		bool triggered = trigger[i].process(triggerParam.getValue() + triggerInput.getPolyVoltage(i));
+		float triggerIn = 0.0f;
+		if (triggerInput.isConnected()) {
+			triggerIn = triggerInput.getPolyVoltage(i);
+		} else if (altTriggerInput) {
+			triggerIn = altTriggerInput->getPolyVoltage(i);
+		}
+		bool triggered = trigger[i].process(triggerParam.getValue() + triggerIn);
 		if (trackParam.getValue() > 0.5f ? trigger[i].isHigh() : triggered) {
 			if (in.isConnected()) {
 				value[i] = in.getPolyVoltage(i);
