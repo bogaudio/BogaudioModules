@@ -61,7 +61,7 @@ A standard VCO featuring:
 
 The main frequency knob is calibrated in volts, from -4 to +6, corresponding to notes from C0 to C6.  The default "0V" position corresponds to C4 (261.63HZ).  The knob value is added to the pitch CV input at the V/OCT port.  With CV input, the pitch can be driven as high as 95% of the Nyquist frequency (so, over 20KHZ at Rack's default sample rate).  The FINE knob allows an additional adjustment of up to +/-1 semitone (100 cents, 1/12 volt).  In slow mode, the output frequency is 7 octaves lower than in normal mode with the same knob/CV values.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the input cable at V/OCT.
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by maximum of the channels on the V/OCT and FM inputs.
 
 #### XCO
 
@@ -73,7 +73,7 @@ Includes all the features of VCO, adding:
     - A mix knob/CV to control the level of the wave in the mix (waves are output at full level at their individual outputs).  The knob/CV response is linear in amplitude.
   - A CV input for FM depth.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the input cable at V/OCT.
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by maximum of the channels on the V/OCT and FM inputs.
 
 #### ADDITATOR
 
@@ -99,7 +99,7 @@ A sine-wave oscillator and simple synth voice designed to allow patching up the 
   - An on-board ADSR, controlled by the GATE input, with selectable routing to output level, feedback and depth, with CV control over the sustain level.
   - A main frequency knob calibrated for setting the frequency as a ratio of the frequency dictated by the V/OCT input - assuming a single V/OCT CV is routed to multiple FM-OPs, this allows the relative frequency of each operator to be set via ratios.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the input cable at V/OCT.
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by maximum of the channels on the V/OCT and FM inputs.
 
 ### <a name="lfos"></a> LFOs
 
