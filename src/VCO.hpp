@@ -19,6 +19,7 @@ struct VCO : BGModule {
 		PW_PARAM,
 		FM_PARAM,
 		FM_TYPE_PARAM,
+		LINEAR_PARAM,
 		NUM_PARAMS
 	};
 
@@ -40,18 +41,20 @@ struct VCO : BGModule {
 
 	enum LightsIds {
 		SLOW_LIGHT,
+		LINEAR_LIGHT,
 		NUM_LIGHTS
 	};
 
 	struct Engine {
 		static constexpr int oversample = 8;
 
-		float frequency = 0.0f;
+		float frequency = NAN;
 		float baseVOct = 0.0f;
 		float baseHz = 0.0f;
 
 		Phasor phasor;
 		BandLimitedSquareOscillator square;
+		
 		BandLimitedSawOscillator saw;
 		TriangleOscillator triangle;
 		SineTableOscillator sine;
@@ -78,11 +81,14 @@ struct VCO : BGModule {
 	Engine* _engines[maxChannels] {};
 	float _oversampleThreshold = 0.0f;
 	bool _slowMode = false;
+	bool _linearMode = false;
 	float _fmDepth = 0.0f;
 	bool _fmLinearMode = false;
 
 	struct VCOFrequencyParamQuantity : FrequencyParamQuantity {
 		float offset() override;
+		float getDisplayValue() override;
+		void setDisplayValue(float v) override;
 	};
 
 	VCO() {
@@ -93,6 +99,7 @@ struct VCO : BGModule {
 		configParam(PW_PARAM, -1.0f, 1.0f, 0.0f, "Pulse width", "%", 0.0f, 100.0f*0.5f*(1.0f - 2.0f * SquareOscillator::minPulseWidth), 50.0f);
 		configParam(FM_PARAM, 0.0f, 1.0f, 0.0f, "FM depth", "%", 0.0f, 100.0f);
 		configParam(FM_TYPE_PARAM, 0.0f, 1.0f, 1.0f, "FM mode");
+		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear Freq");
 	}
 
 	void reset() override;
