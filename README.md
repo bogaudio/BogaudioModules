@@ -14,6 +14,8 @@ Modules for [VCV Rack](https://github.com/VCVRack/Rack), an open-source Eurorack
   - [Other Utilities](#utilities)
   - [Miscellaneous](#misc)
 
+Most Bogaudio modules support VCV Rack's polyphony feature; see <a href="#polyphony">Note on Polyphony</a>.  [NOTE: polyphonic features are presently being tested; they are not yet available on Rack's plugin manager.  But coming soon!]
+
 ![modules screenshot](./doc/www/modules1.png)
 
 ![modules screenshot](./doc/www/modules2.png)
@@ -59,6 +61,8 @@ A standard VCO featuring:
 
 The main frequency knob is calibrated in volts, from -4 to +6, corresponding to notes from C0 to C6.  The default "0V" position corresponds to C4 (261.63HZ).  The knob value is added to the pitch CV input at the V/OCT port.  With CV input, the pitch can be driven as high as 95% of the Nyquist frequency (so, over 20KHZ at Rack's default sample rate).  The FINE knob allows an additional adjustment of up to +/-1 semitone (100 cents, 1/12 volt).  In slow mode, the output frequency is 7 octaves lower than in normal mode with the same knob/CV values.
 
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the input cable at V/OCT.
+
 #### XCO
 
 Includes all the features of VCO, adding:
@@ -68,6 +72,8 @@ Includes all the features of VCO, adding:
     - A phase knob/CV controlling the phase of the wave in the mix.
     - A mix knob/CV to control the level of the wave in the mix (waves are output at full level at their individual outputs).  The knob/CV response is linear in amplitude.
   - A CV input for FM depth.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the input cable at V/OCT.
 
 #### ADDITATOR
 
@@ -81,6 +87,8 @@ An additive ("sine bank") oscillator, where the output is the sum of up to 100 i
   - BALANCE: cuts the amplitudes of the odd or even partials.
   - FILTER: manipulates the partial amplitudes to simulate low or high-pass filter effects.
 
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the input cable at V/OCT.
+
 #### FM-OP
 
 A sine-wave oscillator and simple synth voice designed to allow patching up the classic FM "algorithms", via multiple copies of FM-OP (each copy being one operator in the algorithm).  Features:
@@ -91,6 +99,7 @@ A sine-wave oscillator and simple synth voice designed to allow patching up the 
   - An on-board ADSR, controlled by the GATE input, with selectable routing to output level, feedback and depth, with CV control over the sustain level.
   - A main frequency knob calibrated for setting the frequency as a ratio of the frequency dictated by the V/OCT input - assuming a single V/OCT CV is routed to multiple FM-OPs, this allows the relative frequency of each operator to be set via ratios.
 
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the input cable at V/OCT.
 
 ### <a name="lfos"></a> LFOs
 
@@ -108,13 +117,19 @@ A standard LFO featuring:
 
 LFO tracks pitch CVs at the V/OCT input seven octaves lower than a normal oscillator: with a 0V input, the output frequency is note C-3 (2.04HZ).  The frequency knob is calibrated in linear volts (the small ticks), and its value is added to the input V/OCT.  With no input, the frequency range is from approximately 0.1 to 400HZ; with CV the frequency may be driven up to 2000HZ or down to arbitrarily low values.  In slow mode, the output frequency tracks the controls 11 octaves lower than in normal mode.
 
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the input cable at V/OCT.
+
 #### 8FO
 
 An LFO with outputs at 8 different phases.  The phases may be set by knobs and CVs; by default they are 0, 45, 90, etc, degrees from the fundamental.  Otherwise, functionality is the same as with LFO, excepting that the wave shape is selectable, and all outputs are of the same (phase-shifted) wave.
 
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the input cable at V/OCT.
+
 #### LLFO
 
 A 3HP LFO, with selectable waveform.  The features are a subset of LFO, with the addition of a sixth 10%-pulse waveform (since there is no pulse width control).
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the input cable at V/OCT.
 
 
 ### <a name="envelopes"></a> Envelopes and Envelope Utilities
@@ -133,13 +148,19 @@ Features:
   - Toggles allow selection of linear, exponential or inverse-exponential shapes for the attack, decay and release stages.
   - The RETRIG switch controls the retrigger behavior (when a new gate or trigger happens while the envelope is running): ATT immediately attacks from the current envelope value (this is the typical behavior with many ADSRs), while RST causes a full reset of the envelope (restarting it at the delay stage).
 
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the input cable at TRIGGER.  Pressing the trigger button will trigger all channels.
+
 #### DADSRH+
 
 DADSRH+ is a DADSRH, with the addition of CV inputs for each knob, and gate outputs for each stage (a stage's gate output will be high for the duration of the stage).
 
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the input cable at TRIGGER.  Pressing the trigger button will trigger all channels.
+
 #### DGATE
 
 A trigger-to-gate utility, with gate duration up to 10 seconds, and an optional pre-delay of up to 10 seconds.  A trigger pulse is output at END when a delay/gate cycle ends.  If the STOP/LOOP switch is set to LOOP, or if the trigger is high when the cycle ends, the cycle repeats.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the input cable at TRIG.  Pressing the trigger button will trigger all channels.
 
 #### SHAPER
 
@@ -153,9 +174,13 @@ Features:
   - Audio input at port IN is sent through the internal VCA -- controlled by knob SIGNAL and the envelope -- to port OUT.
   - A trigger CV at the TRIGGER port, or a press of the TRIGGER button, will start the envelope cycle.  When the off stage completes, a trigger is sent out at port END.  If the CYCLE switch is set to LOOP, the envelope restarts immediately.
 
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the maximum of the channels on input cables at TRIGGER or IN.  Pressing the trigger button will trigger all channels.
+
 #### SHAPER+
 
 SHAPER+ is a SHAPER, with the addition of CV inputs for each knob, and gate outputs for each stage (a stage's gate output will be high for the duration of the stage).
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the maximum of the channels on input cables at TRIGGER or IN.  Pressing the trigger button will trigger all channels.
 
 #### AD
 
@@ -165,17 +190,23 @@ When a trigger voltage is received at the TRIG input, the envelope cycle begins,
 
 By default, the attack and decay envelope segments have an analog-ish curve; in linear mode (LIN button), the segments are linear.
 
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the input cable at TRIG.
+
 #### ADSR
 
 A standard ADSR (attack, decay, sustain, release) envelope generator in 3HP.  The attack, decay and release knobs are exponentially scaled with durations up to 10 seconds.  The sustain knob is linearly scaled, setting the sustain level from 0 to 10 volts.  Lights below each stage knob indicate which stage is active.
 
 By default, the attack, decay and release envelope segments have an analog-ish curve; in linear mode (LIN button), the segments are linear.
 
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the input cable at GATE.
+
 #### FOLLOW
 
 An envelope follower, a utility that converts its input to a CV proportional to the level of the input's amplitude.  The conversion is by the Root Mean Square method.  The DAMP knob and CV (+10 volts) affect how many input samples are used to calculate the output -- higher DAMP values effectively slow down and smooth out the response.  The SCALE knob and CV (+10 volts) simply scale the output.
 
 With DAMP at the minimum setting and SCALE at half, the module is an effective wave rectifier (that is, it outputs the absolute value of the input).
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the input cable at IN.
 
 ### <a name="mixers"></a> Mixers, Panners and VCAs
 
@@ -196,13 +227,19 @@ Features:
   - Fader handles contain lights indicating the signal level out of that channel or the entire mix.
   - Output saturates (soft clips) to +/-12 volts, where the clipping effect becomes noticeable above +/-10 volts.
 
+_Polyphony:_ The module is monophonic; if a polyphonic cable is present at an input, its channels will be summed.  However, there is a non-standard polyphonic feature: on the context (right-click) menu, there are options to "spread" a polyphonic input connected to input channel 1 (only) across the mixer's inputs, as if the poly input had been split into eight mono inputs and each connected to the mixer.  This can be applied to channels 1-8 of the input, or channels 9-16.  Any input patched to an input other than input 1 will override the "spread" signal.
+
 #### MIX4
 
 A four-channel version of MIX8 with the same features.
 
+_Polyphony:_ As with MIX8, this is a monophonic module, but with the same non-standard "spread" feature (in groups of four channels).
+
 ### MIX1
 
 A 3HP fader/VCA, with mute.  
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the input cable at IN.
 
 #### VCM
 
@@ -216,6 +253,8 @@ Features:
 
 By default, the output is hard clipped at +/-12 volts (this is a standard in Rack).  A context menu option allows this limit to be disabled.
 
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by the maximum polyphony of the input cables at any of the four IN ports.
+
 #### UMIX
 
 A 3HP unity mixer, usable with CV (e.g. combining triggers) or audio.  Up to 8 inputs are summed to the output.  Saturation (soft clipping) is applied to the output, which limits it to around +/-11V; the LEVEL knob allows attenuation of the mix before the saturation is applied.
@@ -223,6 +262,8 @@ A 3HP unity mixer, usable with CV (e.g. combining triggers) or audio.  Up to 8 i
 The context (right-click) menu has an option to average, rather than sum, the inputs.
 
 A second context menu option, "CV mode", disables the saturation, which allows for precise summing (or averaging) of CVs. In this case the output is hard-clipped at +/-12V.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by the maximum polyphony of the input cables at any of the inputs.
 
 #### MATRIX88
 
@@ -232,15 +273,23 @@ An 8x8 channel matrix mixer.  Each input can be sent with an independent level t
 
 Saturation (soft clipping) is applied to each output at +/-12 volts; the LEVEL knob allows attenuation of the mix before the saturation is applied.
 
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by the maximum polyphony of the input cables at any of the inputs.
+
 #### MUTE8
 
 MUTE8 provides 8 independent manual or CV-controlled mutes. Each channel is muted if its button is toggled on or if there is a positive voltage at its CV input.  Otherwise the input is passed to the output.
 
 As with MIX4 and MIX8, a right-click on a mute button will solo that channel (pass that channel through while muting all others).  Right or left click clears this.
 
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by the maximum polyphony of the input cables at any of the inputs.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, where each of the 8 channels may be independently polyphonic, as defined by the cable at the channel's input.
+
 #### PAN
 
 A stereo panner with dual inputs channels.  Each channel's panner may be controlled with a +/-5 volt CV; when CV is in use, it is attenuverted the corresponding knob.  Output saturates (soft clips) to +/-12 volts.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the maximum of the channels on two IN ports.
 
 #### XFADE
 
@@ -253,6 +302,8 @@ The SHAPE knob affects the attenuation curves of the two channels as MIX changes
 
 Linear mode (LIN button) makes the level attenuation response of MIX linear in amplitude (useful when processing CV); otherwise and by default the response is linear in decibels (and therefore exponential in amplitude).
 
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the maximum of the channels on the A and B inputs.
+
 #### VCA
 
 A two-channel voltage-controlled attenuator.  (An attenuator can only reduce a signal.)
@@ -261,11 +312,15 @@ Each channel's level may be controlled with a +10 volt CV; when CV is in use, it
 
 In linear mode (the LIN button), the knob/CV response is linear in amplitude (useful when processing CV); otherwise and by default the response is linear in decibels (and therefore exponential in amplitude).
 
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the cable at IN, independently for the top and bottom sections of the module.
+
 #### VCAMP
 
 A voltage-controlled amplifier, capable of adding 12 decibels gain to the input.  (12 decibels gain is the same as multiplying the input by 4.)
 
 The level may be controlled with a +10 volt CV; when CV is in use, it is attenuated by the corresponding slider.  The slider's toggle has a light indicating the output signal level.  The output saturates (soft clips) to +/-12 volts, where clipping becomes noticeable above +/-10 volts.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the cable at IN.
 
 ### <a name="effects"></a> Effects and Dynamics
 
@@ -282,6 +337,8 @@ AM/RM is a ring- and amplitude-modulation effect and CV-controllable variable wa
 The RECT inputs expects a bipolar (+/-5V) CV, which is added to the RECTIFY knob.  The D/W input works the same for the DRY/WET knob.
 
 Note: AM/RM is calibrated to expect +/-5V, 10V peak-to-peak signals (i.e. the output of a typical oscillator).  A modulator signal with a negative value in excess of -5V will be affected by the rectifier circuit even if the RECTIFY is zero.  To avoid this effect, you may need to attenuate a hot signal you wish to use as the modulator.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by maximum of the channels on the MOD and CAR inputs.
 
 #### <a name="pressor"></a> PRESSOR
 
@@ -303,11 +360,15 @@ The various controls and ports work as follows:
 
 Several of the settings can take fairly extreme values (e.g. OUT GAIN); this allows the module to be used as a distortion effect.
 
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by maximum of the channels on the L and R inputs.
+
 #### CLPR
 
 CLPR is a compact (6HP) [clipper](https://en.wikipedia.org/wiki/Clipping_%28audio%29).  Its controls behave the same as the corresponding controls on PRESSOR.
 
 In contrast to LMTR, CLPR chops a signal at a voltage threshold corresponding to the selected amplitude; this distorts the signal.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by maximum of the channels on the L and R inputs.
 
 #### LMTR
 
@@ -315,9 +376,13 @@ LMTR is a compact (6HP) [limiter](https://en.wikipedia.org/wiki/Dynamic_range_co
 
 In contrast to CLPR, LMTR does not distort the signal (or not much); it just reduces the amplitude of the signal to keep it below the threshold.
 
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by maximum of the channels on the L and R inputs.
+
 #### NSGT
 
 NSGT is a compact (6HP) [noise gate](https://en.wikipedia.org/wiki/Noise_gate).  Its controls behave the same as the corresponding controls on PRESSOR.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by maximum of the channels on the L and R inputs.
 
 ### <a name="random"></a> Noise/Random, Sample and Hold
 
@@ -329,6 +394,8 @@ A noise source, in types blue (f), white, pink (1/f), red (aka rown, 1/f^2) and 
 
 Additionally, NOISE has an absolute value circuit.  Patch audio into ABS to get positive CV.  For example, patch white noise into ABS to get uniform values in the range 0 to 10.
 
+_Polyphony:_ For the noise outputs, the number of polyphonic channels is set on the context (right-click) menu.  Independently, the ABS circuit is <a href="#polyphony">polyphonic</a>, with polyphony defined by the cable at IN.
+
 #### S&H
 
 A dual sample-and-hold and trigger-and-hold.  Sampling may be triggered by CV (on the rising edge of a trigger or gate) or button press.
@@ -336,6 +403,8 @@ A dual sample-and-hold and trigger-and-hold.  Sampling may be triggered by CV (o
 If nothing is connected to an IN port, sampling for that channel is normaled to an internal white noise source with range 0-10V. Alternative options for the normal source noise type and range are available on the context (right-click) menu.  The normal source selection applies to both channels.
 
 Each channel can be toggled into track-and-hold mode.  In this mode, when the input at GATE is high, or the button is held, the input is copied to the output.  When the gate goes low, the input is sampled and held until the next gate.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by maximum of the channels on the GATE and IN inputs, independently on the top and bottom sections of the module.
 
 #### WALK2
 
@@ -354,9 +423,13 @@ Clicking on the display will jump the outputs, X and Y, to that point (again wit
 
 Various options on the context (right-click) menu allow customization of the display (set the range of the display to +/-10V instead of the default +/-5V; hide the grid dots; set the color of the trace).
 
+_Polyphony:_ The module is monophonic (note that WALK is polyphonic).
+
 #### WALK
 
 WALK is a single-channel random walk, identical to one channel of WALK2, in 3HP.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the cable at RATE.
 
 ### <a name="sequencers"></a> Sequential Switches and Sequencers
 
@@ -374,15 +447,21 @@ Both functions may be used simultaneously: the SELECT+CV value is added to the s
 
 On the context (right-click) menu, if option "Select on clock" is selected, then the select value (knob and CV) is checked and used to modify the active step only when a clock is received, rather than continuously.  
 
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by maximum of the channels preset at the CLOCK and select CV inputs.
+
 #### 1:8
 
 1:8 is the opposite of 8:1 -- it routes a single input to 1 of 8 outputs.  The control circuit behavior (CLOCK, SELECT, etc) is the same.
+
+_Polyphony:_ Same as 8:1.
 
 #### ADDR-SEQ
 
 ADDR-SEQ is an 8-step sequencer where the step values are set by 8 knobs (with default output range of +/-10V).  It has the same clocked or voltage-addressed control circuit as 8:1 and 1:8.
 
 The output range of the knobs may be set on the context (right-click) menu to a variety of bipolar (e.g. +/-5V) and unipolar ranges (e.g. 0-5V).
+
+_Polyphony:_ Same as 8:1.
 
 ### <a name="visualizers"></a> Visualizers
 
@@ -400,13 +479,21 @@ Features:
   - Each channel has a THRU output, which passes the corresponding input through unchanged.
   - On the context (right-click) menu, the display vertical (amplitude) range can be set to extend down to -120dB (the default is -60dB).
 
+_Polyphony:_ Monophonic, with two exceptions:
+  - If an input is polyphonic, its channels are summed, and the spectra of the summed signal is displayed.
+  - A polyphonic input is copied unchanged (channels intact) to THRU.
+
 #### ANALYZER-XL
 
 An eight-channel, 42HP version of ANALYZER, with edge-to-edge-screen type of design.  Options corresponding to ANALYZER's panel controls are available on the context (right-click) menu.
 
+_Polyphony:_ Monophonic; if an input is polyphonic, its channels are summed, and the spectra of the summed signal is displayed.
+
 #### VU
 
 A stereo signal level visualizer/meter.  The L channel is sent to both displays if if nothing is patched to R.  Inputs to L and R are copied to the L and R outputs.
+
+_Polyphony:_ Monophonic; if an input is polyphonic, its channels are summed, and summed value is used to compute the level displayed (independently for the left and right inputs).
 
 ### <a name="pitch"></a> Polyphony and Pitch CV Utilities
 
@@ -416,13 +503,13 @@ Utilities related to polyphony, and for processing pitch CVs (1 volt / octave CV
 
 #### MONO
 
-MONO mixes down the channels of a polyphonic cable to a single-channel mono output.  It is an alternative to the SUM module that comes with VCV Rack, but adds an onboard compressor, to even out the level differences when only a few, or many, channels on the incoming are sounding.  The COMP control sets the amount of compression; at zero there is no effect and the behavior of this module is essentially equivalent to Rack's SUM.  As with SUM, the LEVEL control simply attenuates the output.  The output, post-LEVEL, is soft-clipped at about +/-12V.
-
-Those with a discerning ear may prefer to set COMP to zero (or use Rack's SUM), and then patch into <a href="#pressor">PRESSOR</a>, for more control over the compression effect.
+MONO mixes down the channels of a polyphonic cable to a single-channel mono output.  It is an alternative to the SUM module that comes with VCV Rack, but adds an onboard compressor, to even out the level differences when only a few, or many, channels on the input cable are sounding.  The COMP control sets the amount of compression; at zero there is no effect and the behavior of this module is essentially equivalent to Rack's SUM.  As with SUM, the LEVEL control simply attenuates the output.  The output, post-LEVEL, is soft-clipped at about +/-12V.
 
 #### DETUNE
 
 A 1V/octave pitch processor, for controlling a detuned oscillator pair.  A reference pitch in raised and lowered by the number of cents (hundredths of a semitone) specified by the knob and CV, and output at OUT+ and OUT-.  The input pitch is output at THRU.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the input at V/OCT.
 
 #### STACK
 
@@ -430,10 +517,13 @@ A 1V/octave pitch processor for stacking oscillators.  The SEMIS, OCTAVE and FIN
 
 The CV input expects +/-5 volts; the value modifies the interval set by the knobs in the amount of one semitone per tenth volt.  If QZ (quantize) is active, the CV-controlled interval is quantized to the nearest semitone.  This specialized CV is output at the THRU port, with a value set by the knobs and CV in, when there is no input pitch.
 
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the input at V/OCT.
+
 #### REFTONE
 
 A tuner that outputs a selectable (Western, chromatic) pitch as CV (1v/octave, for controlling an oscillator) or as a pure sine tone.  The base pitch is selected with the PITCH and OCTAVE knobs, while the FINE knob allows the output to be fine-tuned up or down a full semitone.  The LED-style display indicates the selected pitch, octave and fine tuning (in cents), and the corresponding frequency (in hertz).
 
+_Polyphony:_ Monophonic.
 
 ### <a name="utilities"></a> Utilities
 
@@ -444,6 +534,8 @@ Various utilities.
 #### BOOL
 
 A boolean logic utility.  Inputs are considered true if the input voltage is greater than 1.  The top section takes two inputs and computes AND, OR and XOR at the outputs.  The lower section computes the negation of its input.  Output is 5 volts if an output is true, 0 otherwise.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the maximum of the two inputs in the top section.  The NOT circuit is independently polpyphonic based on its input.
 
 #### CMP
 
@@ -458,15 +550,21 @@ The WINDOW knob specifies the window voltage.  LAG specifies a time of up to one
 
 The OUTPUT switch sets the high and low voltage values for the outputs: 0V low/+10V high, or -5V low/+5V high.
 
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the maximum of the channels on the A and B inputs.
+
 #### CVD
 
 A simple delay designed for use with CV (though it works fine with audio).  Use it to delay triggers or gates, create a flip-flop that resets itself after a time, make a sequence run for a while then stop, to double up an envelope, or what have you.
 
 The large TIME knob sets the delay time, as scaled by the small knob (up to 0.1, 1 or 10 seconds); TIME takes a +10 CV, attenuated by the knob.  Reducing time truncates the internal delay buffer.  The DRY/WET knob sets the mix of the original and delayed signals at the output, with a +/-5 CV input.
 
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the channels at the IN port.
+
 #### FLIPFLOP
 
 A boolean memory utility with two independent channels.  A high voltage at TRIGGER will cause the state of a channel to change from A to B.  A subsequent trigger will flip it back.  Output is 5 volts at whichever of A and B is selected, 0 otherwise.  A trigger voltage at RESET sets the channel back to state A.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the channels at the TRIG input, independently for the two sections of the module.
 
 #### MANUAL
 
@@ -474,15 +572,21 @@ A manual trigger/gate with 8 outputs.  A constant high value is sent from each o
 
 Manual may be set to output a trigger pulse on patch load (akin to a Max/Msp or Pd loadbang).  This is off by default; enable clicking "Trigger on Load" on the module's context (right-click) menu.
 
+_Polyphony:_ Monophonic.
+
 #### MULT
 
 A 3 HP multiple (signal duplicator).  There are two 1-to-3 channels.  There is also a 1-to-6 mode: if nothing is patched to the second channel's input, the input to the first channel is copied to all six outputs.
+
+_Polyphony:_ Polyphonic inputs are duplicated (channels intact) at their corresponding outputs.
 
 #### OFFSET
 
 An offset and scaler.  The OFFSET and SCALE knobs have CV inputs.  With an input signal, output is `(input + offset) * scale`.  With no input connected, the output is constant in the value of `offset * scale`.
 
 By default, the output is capped at +/-12 volts (this is a standard in Rack).  A context menu option allows this limit to be disabled.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the channels at the IN port.
 
 #### SLEW
 
@@ -492,17 +596,23 @@ The rising and falling slew rates and shapes are set independently.  The RISE an
 
 The RISE and FALL shape knobs affect the movement of the output as it catches up to the input (the shape it would draw on a scope). The shapes vary between log, linear and exponential curves.
 
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the channels at the IN port.
+
 #### SUMS
 
 An arithmetic logic utility.  The top section outputs the sum, difference, maximum and minimum of its input signals (unpatched inputs send a 0-volt signal into each computation).  The lower section negates (reverses the sign of) its input.
 
 By default, the output is capped at +/-12 volts (this is a standard in Rack).  A context menu option allows this limit to be disabled.
 
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the maximum of the two inputs in the top section.  The NEG circuit is independently polpyphonic based on its input.
+
 #### SWITCH
 
 A signal-routing module with two through channels.  If the button is held or the GATE input is high, the HIGH input for each channel is routed to the corresponding OUT.  Otherwise, each LOW input is routed to each OUT.
 
 If LTCH (latch) mode is enabled, a button click or trigger pulse at GATE will toggle the output to HIGH; a second click or trigger resets it to LOW.
+
+_Polyphony:_ If polyphonic input is present at GATE, then the module is polyphonic in the standard way, independently switching the independent polyphonic channels on the high/low inputs (the button will switch all channels).  Additionally, if the input at GATE is not present or monophonic, but polyphonic cables are are present at any high/low inputs, and such an input is switched to the output, it is duplicated to the output with channels intact.
 
 ### <a name="misc"></a> Miscellaneous
 
@@ -515,6 +625,33 @@ A 3HP blank panel.
 #### BLANK6
 
 A 6HP blank panel.
+
+## <a name="polyphony"></a> Note on Polyphony
+
+[NOTE: polyphonic features are presently being tested; they are not yet available on Rack's plugin manager.  But coming soon!]
+
+Most modules in this collection support VCV Rack's polyphony feature according to Rack's <a href="https://vcvrack.com/manual/VoltageStandards.html#polyphony">polyphony standards</a>.
+
+Generally this means that a module with polyphonic support can run up to 16 independent internal "channels".  The number of channels a module will run is defined by the polyphony of the signal (cable) present at a particular, designated input port.  (This will be the pitch input of an oscillator, or the gate input of an envelope, and so on.)  When the input at that port carries more than one channel, the module's outputs will carry the same number of channels.
+
+With secondary inputs (CV inputs), the behavior is usually:
+  - If the input signal is monophonic, that single value is used by each channel in the module.
+  - If the input is signal is polyphonic, each processing channel will use the value of the corresponding channel of the CV input.  If the CV input does not have as many channels as the module is processing, higher channels will see a zero input from the CV.
+
+Knobs, faders and switches apply equally to all modules channels.  Where a module has indicator lights, these usually display an average value across the active module channels.  (Note that this indicator behavior isn't specified by the standard.)
+
+A few modules are strictly monophonic.  In this case, a polyphonic input will be handled in one of two ways:
+  - The polyphonic channels will be summed (typically if the input is designed for audio).
+  - The value of the first channel will be used, ignoring others (typically if the input is designed for CV).
+
+See the documentation for each module for notes on any divergence from these basic rules.  Each module's documentation will also indicate what input port defines the module's polyphony.
+
+Other notes:
+  - Some modules define their polyphony based on more than one input.  For example, modules with stereo inputs will usually set their internal channels to the maximum of the channels present on the left and right inputs, if those are different for some reason.
+  - Modules with no inputs may still support polyphonic outputs; in this case the polyphony is set on the context (right-click) menu.  NOISE is an example.
+  - Some modules are not polyphonic in a strict sense, but have non-standard polyphonic features (see the channel spread feature on MIX4 and MIX8).
+
+Finally, please note that with the addition of polyphony, the term "channels" can have several meanings in this documentation.  Polyphonic modules have up to 16 internal processing "channels", defined by the polyphonic "channels" of their inputs, and carrying over to the polyphonic "channels" of their outputs.  But, elsewhere, MIX8 is an "8-channel" mixer; stereo modules will have left and right "channels"; VCA is a dual module with two independent "channels" (each of which may be polyphonic); ANALYZER has four input "channels" (in that it will display the spectra of four different inputs simultaneously); and so on.
 
 ## Other Notes
 
