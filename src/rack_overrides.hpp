@@ -32,7 +32,7 @@ struct Trigger : rack::dsp::SchmittTrigger {
 };
 
 inline float getZoom() {
-	return rack::APP->scene->rackScroll->zoomWidget->zoom;
+	return APP->scene->rackScroll->zoomWidget->zoom;
 }
 
 } // namespace bogaudio
