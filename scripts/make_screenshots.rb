@@ -16,7 +16,7 @@ screens = [
     crop: false,
     rows: [
       ['Mix8', 'Mix4', 'Mix1', 'VCM', 'Mute8', 'Pan', 'XFade', 'VCA', 'VCAmp'],
-      ['AMRM', 'Pressor', 'Lmtr', 'Nsgt', 'UMix', 'Matrix88']
+      ['AMRM', 'Pressor', 'Lmtr', 'Nsgt', '-', 'UMix', 'Matrix88']
     ]
   },
   {
@@ -74,7 +74,7 @@ screens = [
     file: 'mixers1.png',
     crop: true,
     rows: [
-      ['Mix8', 'Mix4', 'Mix1']
+      ['Mix8', 'Mix4', 'Mix1', 'UMix', 'Matrix88']
     ]
   },
   {
@@ -88,7 +88,7 @@ screens = [
     file: 'effects.png',
     crop: true,
     rows: [
-      ['AMRM', 'Pressor', 'Lmtr', 'Nsgt', 'UMix', 'Matrix88']
+      ['AMRM', 'Pressor', 'Lmtr', 'Nsgt']
     ]
   },
   {
@@ -102,7 +102,7 @@ screens = [
     file: 'visualizers.png',
     crop: true,
     rows: [
-      ['VU', 'Analyzer', 'AnalyzerXL']
+      ['Analyzer', 'AnalyzerXL', 'VU']
     ]
   },
   {
