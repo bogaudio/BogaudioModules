@@ -18,7 +18,7 @@ void Bool::processChannel(const ProcessArgs& args, int c) {
 	int cn = inputs[NOT_INPUT].getChannels();
 	outputs[NOT_OUTPUT].setChannels(cn);
 	for (int i = 0; i < cn; ++i) {
-		outputs[NOT_OUTPUT].setVoltage(5.0f * (inputs[NOT_INPUT].isConnected() && inputs[NOT_INPUT].getPolyVoltage(i) > 1.0f), i);
+		outputs[NOT_OUTPUT].setVoltage(5.0f * (inputs[NOT_INPUT].isConnected() && inputs[NOT_INPUT].getPolyVoltage(i) < 1.0f), i);
 	}
 }
 
