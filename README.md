@@ -14,7 +14,7 @@ Modules for [VCV Rack](https://github.com/VCVRack/Rack), an open-source Eurorack
   - [Other Utilities](#utilities)
   - [Miscellaneous](#misc)
 
-Most Bogaudio modules support VCV Rack's polyphony feature; see <a href="#polyphony">Note on Polyphony</a>.  [NOTE: polyphonic features are presently being tested; they are not yet available on Rack's plugin manager.  But coming soon!]
+Most Bogaudio modules support VCV Rack's polyphony feature; see <a href="#polyphony">Note on Polyphony</a>.
 
 ![modules screenshot](./doc/www/modules1.png)
 
@@ -627,8 +627,6 @@ A 3HP blank panel.
 A 6HP blank panel.
 
 ## <a name="polyphony"></a> Note on Polyphony
-
-[NOTE: polyphonic features are presently being tested; they are not yet available on Rack's plugin manager.  But coming soon!]
 
 Most modules in this collection support VCV Rack's polyphony feature according to Rack's <a href="https://vcvrack.com/manual/VoltageStandards.html#polyphony">polyphony standards</a>.
 
