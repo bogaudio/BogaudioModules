@@ -9,7 +9,7 @@ void BGModule::onReset() {
 }
 
 void BGModule::onSampleRateChange() {
-	_modulationSteps = APP->engine->getSampleRate() / 100.0f;
+	_modulationSteps = 100; // APP->engine->getSampleRate() / 100.0f;
 	_steps = _modulationSteps;
 	sampleRateChange();
 }
