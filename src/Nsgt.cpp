@@ -2,12 +2,16 @@
 #include "Nsgt.hpp"
 
 
-void Nsgt::sampleRateChange() {
+void Nsgt::Engine::sampleRateChange() {
 	float sampleRate = APP->engine->getSampleRate();
+	detector.setSampleRate(sampleRate);
+	attackSL.setParams(sampleRate, 150.0f);
+	releaseSL.setParams(sampleRate, 600.0f);
+}
+
+void Nsgt::sampleRateChange() {
 	for (int c = 0; c < _channels; ++c) {
-		_engines[c]->detector.setSampleRate(sampleRate);
-		_engines[c]->attackSL.setParams(sampleRate, 150.0f);
-		_engines[c]->releaseSL.setParams(sampleRate, 600.0f);
+		_engines[c]->sampleRateChange();
 	}
 }
 
@@ -21,6 +25,7 @@ int Nsgt::channels() {
 
 void Nsgt::addEngine(int c) {
 	_engines[c] = new Engine();
+	_engines[c]->sampleRateChange();
 }
 
 void Nsgt::removeEngine(int c) {

@@ -1,9 +1,13 @@
 
 #include "Pressor.hpp"
 
+void Pressor::Engine::sampleRateChange() {
+	detectorRMS.setSampleRate(APP->engine->getSampleRate());
+}
+
 void Pressor::sampleRateChange() {
 	for (int c = 0; c < _channels; ++c) {
-		_engines[c]->detectorRMS.setSampleRate(APP->engine->getSampleRate());
+		_engines[c]->sampleRateChange();
 	}
 }
 
@@ -24,6 +28,7 @@ int Pressor::channels() {
 
 void Pressor::addEngine(int c) {
 	_engines[c] = new Engine();
+	_engines[c]->sampleRateChange();
 }
 
 void Pressor::removeEngine(int c) {

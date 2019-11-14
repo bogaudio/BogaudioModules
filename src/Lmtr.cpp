@@ -1,12 +1,16 @@
 
 #include "Lmtr.hpp"
 
-void Lmtr::sampleRateChange() {
+void Lmtr::Engine::sampleRateChange() {
 	float sampleRate = APP->engine->getSampleRate();
+	detector.setSampleRate(sampleRate);
+	attackSL.setParams(sampleRate, 150.0f);
+	releaseSL.setParams(sampleRate, 600.0f);
+}
+
+void Lmtr::sampleRateChange() {
 	for (int c = 0; c < _channels; ++c) {
-		_engines[c]->detector.setSampleRate(sampleRate);
-		_engines[c]->attackSL.setParams(sampleRate, 150.0f);
-		_engines[c]->releaseSL.setParams(sampleRate, 600.0f);
+		_engines[c]->sampleRateChange();
 	}
 }
 
@@ -20,6 +24,7 @@ int Lmtr::channels() {
 
 void Lmtr::addEngine(int c) {
 	_engines[c] = new Engine();
+	_engines[c]->sampleRateChange();
 }
 
 void Lmtr::removeEngine(int c) {

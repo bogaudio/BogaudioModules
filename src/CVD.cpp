@@ -1,9 +1,13 @@
 
 #include "CVD.hpp"
 
-void CVD::sampleRateChange() {
+void CVD::Engine::sampleRateChange() {
+	delay.setSampleRate(APP->engine->getSampleRate());
+}
+
+void Lmtr::sampleRateChange() {
 	for (int c = 0; c < _channels; ++c) {
-		_engines[c]->delay.setSampleRate(APP->engine->getSampleRate());
+		_engines[c]->sampleRateChange();
 	}
 }
 
@@ -13,6 +17,7 @@ int CVD::channels() {
 
 void CVD::addEngine(int c) {
 	_engines[c] = new Engine();
+	_engines[c]->sampleRateChange();
 }
 
 void CVD::removeEngine(int c) {

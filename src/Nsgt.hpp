@@ -47,6 +47,8 @@ struct Nsgt : BGModule {
 		NoiseGate noiseGate;
 		Amplifier amplifier;
 		Saturator saturator;
+
+		void sampleRateChange();
 	};
 
 	Engine* _engines[maxChannels] {};
@@ -57,8 +59,6 @@ struct Nsgt : BGModule {
 		configParam(THRESHOLD_PARAM, 0.0f, 1.0f, 0.8f, "Threshold", " dB", 0.0f, 30.0f, -24.0f);
 		configParam<DynamicsRatioParamQuantity>(RATIO_PARAM, 0.0f, 1.0f, 0.55159f, "Ratio");
 		configParam(KNEE_PARAM, 0.0f, 1.0f, 1.0f, "Knee");
-
-		sampleRateChange();
 	}
 
 	void sampleRateChange() override;

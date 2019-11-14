@@ -49,8 +49,6 @@ struct Clpr : BGModule {
 		configParam(THRESHOLD_PARAM, 0.0f, 1.0f, 0.8f, "Threshold", " dB", 0.0f, 30.0f, -24.0f);
 		configParam(OUTPUT_GAIN_PARAM, 0.0f, 1.0f, 0.0f, "Output gain", " dB", 0.0f, 24.0f);
 		configParam(KNEE_PARAM, 0.0f, 1.0f, 0.0f, "Knee");
-
-		reset();
 	}
 
 	bool active() override;

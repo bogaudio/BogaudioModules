@@ -68,6 +68,8 @@ struct Pressor : BGModule {
 		Saturator saturator;
 
 		Engine() : detectorRMS(1000.0f, 1.0f, 50.0f) {}
+
+		void sampleRateChange();
 	};
 
 	Engine* _engines[maxChannels] {};
@@ -88,8 +90,6 @@ struct Pressor : BGModule {
 		configParam(MODE_PARAM, 0.0f, 1.0f, 1.0f, "Mode");
 		configParam(DECTECTOR_MODE_PARAM, 0.0f, 1.0f, 1.0f, "Dectector mode");
 		configParam(KNEE_PARAM, 0.0f, 1.0f, 1.0f, "Knee");
-
-		sampleRateChange();
 	}
 
 	void sampleRateChange() override;

@@ -38,6 +38,8 @@ struct CVD : BGModule {
 		CrossFader mix;
 
 		Engine() : delay(1000.0f, 10000.0f) {}
+
+		void sampleRateChange();
 	};
 	Engine* _engines[maxChannels] {};
 
@@ -46,8 +48,6 @@ struct CVD : BGModule {
 		configParam(TIME_PARAM, 0.0f, 1.0f, 0.5f, "Time base");
 		configParam(TIME_SCALE_PARAM, 0.0f, 2.0f, 1.0f, "Time scale", "", 10.0f, 0.1f);
 		configParam(MIX_PARAM, -1.0f, 1.0f, 0.0f, "Dry wet mix", "%", 0.0f, 100.0f);
-
-		sampleRateChange();
 	}
 
 	void sampleRateChange() override;

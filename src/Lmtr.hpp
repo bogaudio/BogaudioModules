@@ -47,6 +47,8 @@ struct Lmtr : BGModule {
 		Compressor compressor;
 		Amplifier amplifier;
 		Saturator saturator;
+
+		void sampleRateChange();
 	};
 
 	Engine* _engines[maxChannels] {};
@@ -57,8 +59,6 @@ struct Lmtr : BGModule {
 		configParam(THRESHOLD_PARAM, 0.0f, 1.0f, 0.8f, "Threshold", " dB", 0.0f, 30.0f, -24.0f);
 		configParam(OUTPUT_GAIN_PARAM, 0.0f, 1.0f, 0.0f, "Output gain", " dB", 0.0f, 24.0f);
 		configParam(KNEE_PARAM, 0.0f, 1.0f, 0.0f, "Knee");
-
-		sampleRateChange();
 	}
 
 	void sampleRateChange() override;
