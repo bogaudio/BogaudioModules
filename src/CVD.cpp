@@ -5,7 +5,7 @@ void CVD::Engine::sampleRateChange() {
 	delay.setSampleRate(APP->engine->getSampleRate());
 }
 
-void Lmtr::sampleRateChange() {
+void CVD::sampleRateChange() {
 	for (int c = 0; c < _channels; ++c) {
 		_engines[c]->sampleRateChange();
 	}
