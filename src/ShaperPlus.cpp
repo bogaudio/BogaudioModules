@@ -8,7 +8,7 @@ void ShaperPlus::reset() {
 }
 
 int ShaperPlus::channels() {
-	return std::max(inputs[SIGNAL_INPUT].getChannels(), inputs[TRIGGER_INPUT].getChannels());
+	return std::max(1, std::max(inputs[SIGNAL_INPUT].getChannels(), inputs[TRIGGER_INPUT].getChannels()));
 }
 
 void ShaperPlus::addEngine(int c) {
