@@ -35,14 +35,18 @@ struct Clpr : BGModule {
 		NUM_LIGHTS
 	};
 
-	float _thresholdDb = 0.0f;
-	float _outGain = -1.0f;
-	float _outLevel = 0.0f;
-	bool _softKnee = true;
+	struct Engine {
+		float thresholdDb = 0.0f;
+		float outGain = -1.0f;
+		float outLevel = 0.0f;
 
-	Compressor _compressor;
-	Amplifier _amplifier;
-	Saturator _saturator;
+		Compressor compressor;
+		Amplifier amplifier;
+		Saturator saturator;
+	};
+
+	Engine* _engines[maxChannels] {};
+	bool _softKnee = true;
 
 	Clpr() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
@@ -52,8 +56,12 @@ struct Clpr : BGModule {
 	}
 
 	bool active() override;
+	int channels() override;
+	void addEngine(int c) override;
+	void removeEngine(int c) override;
 	void modulate() override;
-	void processChannel(const ProcessArgs& args, int _c) override;
+	void modulateChannel(int c) override;
+	void processChannel(const ProcessArgs& args, int c) override;
 };
 
 } // namespace bogaudio

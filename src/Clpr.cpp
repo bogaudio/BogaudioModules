@@ -5,39 +5,60 @@ bool Clpr::active() {
 	return outputs[LEFT_OUTPUT].isConnected() || outputs[RIGHT_OUTPUT].isConnected();
 }
 
+int Clpr::channels() {
+	return std::max(inputs[LEFT_INPUT].getChannels(), inputs[RIGHT_INPUT].getChannels());
+}
+
+void Clpr::addEngine(int c) {
+	_engines[c] = new Engine();
+}
+
+void Clpr::removeEngine(int c) {
+	delete _engines[c];
+	_engines[c] = NULL;
+}
+
 void Clpr::modulate() {
-	_thresholdDb = params[THRESHOLD_PARAM].getValue();
-	if (inputs[THRESHOLD_INPUT].isConnected()) {
-		_thresholdDb *= clamp(inputs[THRESHOLD_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-	}
-	_thresholdDb *= 30.0f;
-	_thresholdDb -= 24.0f;
-
-	float outGain = params[OUTPUT_GAIN_PARAM].getValue();
-	if (inputs[OUTPUT_GAIN_INPUT].isConnected()) {
-		outGain = clamp(outGain + inputs[OUTPUT_GAIN_INPUT].getVoltage() / 5.0f, 0.0f, 1.0f);
-	}
-	outGain *= 24.0f;
-	if (_outGain != outGain) {
-		_outGain = outGain;
-		_outLevel = decibelsToAmplitude(_outGain);
-	}
-
 	_softKnee = params[KNEE_PARAM].getValue() > 0.5f;
 }
 
-void Clpr::processChannel(const ProcessArgs& args, int _c) {
-	float leftInput = inputs[LEFT_INPUT].getVoltageSum();
-	float rightInput = inputs[RIGHT_INPUT].getVoltageSum();
+void Clpr::modulateChannel(int c) {
+	Engine& e = *_engines[c];
+
+	e.thresholdDb = params[THRESHOLD_PARAM].getValue();
+	if (inputs[THRESHOLD_INPUT].isConnected()) {
+		e.thresholdDb *= clamp(inputs[THRESHOLD_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
+	}
+	e.thresholdDb *= 30.0f;
+	e.thresholdDb -= 24.0f;
+
+	float outGain = params[OUTPUT_GAIN_PARAM].getValue();
+	if (inputs[OUTPUT_GAIN_INPUT].isConnected()) {
+		outGain = clamp(outGain + inputs[OUTPUT_GAIN_INPUT].getPolyVoltage(c) / 5.0f, 0.0f, 1.0f);
+	}
+	outGain *= 24.0f;
+	if (e.outGain != outGain) {
+		e.outGain = outGain;
+		e.outLevel = decibelsToAmplitude(e.outGain);
+	}
+}
+
+void Clpr::processChannel(const ProcessArgs& args, int c) {
+	Engine& e = *_engines[c];
+
+	float leftInput = inputs[LEFT_INPUT].getPolyVoltage(c);
+	float rightInput = inputs[RIGHT_INPUT].getPolyVoltage(c);
 	float env = fabsf(leftInput + rightInput);
 	float detectorDb = amplitudeToDecibels(env / 5.0f);
-	float compressionDb = _compressor.compressionDb(detectorDb, _thresholdDb, Compressor::maxEffectiveRatio, _softKnee);
-	_amplifier.setLevel(-compressionDb);
+	float compressionDb = e.compressor.compressionDb(detectorDb, e.thresholdDb, Compressor::maxEffectiveRatio, _softKnee);
+	e.amplifier.setLevel(-compressionDb);
 	if (outputs[LEFT_OUTPUT].isConnected()) {
-		outputs[LEFT_OUTPUT].setVoltage(_saturator.next(_amplifier.next(leftInput) * _outLevel));
+		outputs[LEFT_OUTPUT].setChannels(_channels);
+		outputs[LEFT_OUTPUT].setVoltage(e.saturator.next(e.amplifier.next(leftInput) * e.outLevel), c);
 	}
 	if (outputs[RIGHT_OUTPUT].isConnected()) {
-		outputs[RIGHT_OUTPUT].setVoltage(_saturator.next(_amplifier.next(rightInput) * _outLevel));
+		outputs[RIGHT_OUTPUT].setChannels(_channels);
+		outputs[RIGHT_OUTPUT].setVoltage(e.saturator.next(e.amplifier.next(rightInput) * e.outLevel), c);
 	}
 }
 
