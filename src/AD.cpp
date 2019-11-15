@@ -47,7 +47,7 @@ bool AD::active() {
 }
 
 int AD::channels() {
-	return inputs[TRIGGER_INPUT].getChannels();
+	return std::max(1, inputs[TRIGGER_INPUT].getChannels());
 }
 
 void AD::addEngine(int c) {
