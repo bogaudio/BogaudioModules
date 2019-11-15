@@ -9,7 +9,7 @@ void BGModule::onReset() {
 }
 
 void BGModule::onSampleRateChange() {
-	_modulationSteps = 100; // APP->engine->getSampleRate() / 100.0f;
+	_modulationSteps = APP->engine->getSampleRate() * (2.5f / 1000.0f); // modulate every ~2.5ms regardless of sample rate.
 	_steps = _modulationSteps;
 	sampleRateChange();
 }
