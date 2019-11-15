@@ -19,7 +19,7 @@ bool Lmtr::active() {
 }
 
 int Lmtr::channels() {
-	return inputs[LEFT_INPUT].getChannels() + inputs[RIGHT_INPUT].getChannels();
+	return std::max(inputs[LEFT_INPUT].getChannels(), inputs[RIGHT_INPUT].getChannels());
 }
 
 void Lmtr::addEngine(int c) {
