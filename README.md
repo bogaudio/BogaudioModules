@@ -402,7 +402,9 @@ A dual sample-and-hold and trigger-and-hold.  Sampling may be triggered by CV (o
 
 If nothing is connected to an IN port, sampling for that channel is normalled to an internal white noise source with range 0-10V. Alternative options for the normal source noise type and range are available on the context (right-click) menu.  The normal source selection applies to both channels.
 
-Each channel can be independently toggled into track-and-hold mode.  In this mode, when the input at GATE is high, or the button is held, the input is copied to the output.  When the gate goes low, the input is sampled and held until the next gate.
+Each channel can be independently toggled into track-and-hold mode with the corresponding TRK button.  In this mode, when the input at GATE is high, or the button is held, the input is copied to the output.  When the gate goes low, the input is sampled and held until the next gate.
+
+[New in version 1.1.24:] Each channel may also be have its output inverted with the INV button.
 
 The GATE input on the lower section is normalled to GATE in the top section (but a press on the top button does not trigger the lower section).
 

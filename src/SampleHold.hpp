@@ -15,6 +15,8 @@ struct SampleHold : BGModule {
 		TRIGGER2_PARAM,
 		TRACK1_PARAM,
 		TRACK2_PARAM,
+		INVERT1_PARAM,
+		INVERT2_PARAM,
 		NUM_PARAMS
 	};
 
@@ -35,6 +37,8 @@ struct SampleHold : BGModule {
 	enum LightsIds {
 		TRACK1_LIGHT,
 		TRACK2_LIGHT,
+		INVERT1_LIGHT,
+		INVERT2_LIGHT,
 		NUM_LIGHTS
 	};
 
@@ -63,6 +67,8 @@ struct SampleHold : BGModule {
 		configParam(TRIGGER2_PARAM, 0.0f, 10.0f, 0.0f, "Trigger 2");
 		configParam(TRACK1_PARAM, 0.0f, 1.0f, 0.0f, "Track 1");
 		configParam(TRACK2_PARAM, 0.0f, 1.0f, 0.0f, "Track 2");
+		configParam(INVERT1_PARAM, 0.0f, 1.0f, 0.0f, "Invert 1");
+		configParam(INVERT2_PARAM, 0.0f, 1.0f, 0.0f, "Invert 2");
 
 		reset();
 	}
@@ -74,6 +80,8 @@ struct SampleHold : BGModule {
 	void processChannel(
 		Light& trackLight,
 		Param& trackParam,
+		Light& invertLight,
+		Param& invertParam,
 		Trigger* trigger,
 		Param& triggerParam,
 		Input& triggerInput,

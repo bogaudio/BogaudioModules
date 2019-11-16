@@ -82,8 +82,8 @@
 
     <g transform="translate(0 65)">
       <g transform="translate(5.5 0)">
-        <rect width="34" height="10" fill="#fafafa" transform="translate(0 41)" />
-        <rect width="34" height="48" rx="5" fill="#fafafa" />
+        <rect width="34" height="10" fill="#fafafa" transform="translate(0 51)" />
+        <rect width="34" height="58" rx="5" fill="#fafafa" />
         <use id="IN1_INPUT" xlink:href="#input" transform="translate(5 3)" />
         <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
       </g>
@@ -96,7 +96,15 @@
         <!-- <rect width="90" height="5" fill="#0f0" transform="translate(0 -6)" /> -->
       </g>
 
-      <g transform="translate(5.5 54)">
+      <g transform="translate(7 52)">
+        <!-- <polyline points="0,3.2 70,3.2" stroke="#0f0" stroke-width="1" fill="none" /> -->
+        <use id="INVERT1_PARAM" xlink:href="#button-small" transform="translate(22 -1.3)" />
+        <use id="INVERT1_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
+        <text font-size="5pt" letter-spacing="1.2px" transform="translate(7.3 5.5)">INV</text>
+        <!-- <rect width="90" height="5" fill="#0f0" transform="translate(0 -6)" /> -->
+      </g>
+
+      <g transform="translate(5.5 64)">
         <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)" />
         <rect width="34" height="35" rx="5" fill="#bbb" />
         <use id="OUT1_OUTPUT" xlink:href="#output" transform="translate(5 0)" />
@@ -120,8 +128,8 @@
 
     <g transform="translate(0 65)">
       <g transform="translate(5.5 0)">
-        <rect width="34" height="10" fill="#fafafa" transform="translate(0 41)" />
-        <rect width="34" height="48" rx="5" fill="#fafafa" />
+        <rect width="34" height="10" fill="#fafafa" transform="translate(0 51)" />
+        <rect width="34" height="58" rx="5" fill="#fafafa" />
         <use id="IN2_INPUT" xlink:href="#input" transform="translate(5 3)" />
         <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
       </g>
@@ -134,7 +142,15 @@
         <!-- <rect width="90" height="5" fill="#0f0" transform="translate(0 -6)" /> -->
       </g>
 
-      <g transform="translate(5.5 54)">
+      <g transform="translate(7 52)">
+        <!-- <polyline points="0,3.2 70,3.2" stroke="#0f0" stroke-width="1" fill="none" /> -->
+        <use id="INVERT2_PARAM" xlink:href="#button-small" transform="translate(22 -1.3)" />
+        <use id="INVERT2_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
+        <text font-size="5pt" letter-spacing="1.2px" transform="translate(7.3 5.5)">INV</text>
+        <!-- <rect width="90" height="5" fill="#0f0" transform="translate(0 -6)" /> -->
+      </g>
+
+      <g transform="translate(5.5 64)">
         <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)" />
         <rect width="34" height="35" rx="5" fill="#bbb" />
         <use id="OUT2_OUTPUT" xlink:href="#output" transform="translate(5 0)" />
