@@ -1,7 +1,7 @@
 #pragma once
 
 #include "bogaudio.hpp"
-#include "select_on_clock.hpp"
+#include "addressable_sequence.hpp"
 #include "dsp/signal.hpp"
 
 using namespace bogaudio::dsp;
@@ -10,7 +10,7 @@ extern Model* modelAddrSeq;
 
 namespace bogaudio {
 
-struct AddrSeq : SelectOnClockModule {
+struct AddrSeq : AddressableSequenceModule {
 	enum ParamsIds {
 		STEPS_PARAM,
 		DIRECTION_PARAM,
@@ -50,11 +50,6 @@ struct AddrSeq : SelectOnClockModule {
 		NUM_LIGHTS
 	};
 
-	Trigger _clock[maxChannels];
-	Trigger _reset[maxChannels];
-	bogaudio::dsp::Timer _timer[maxChannels];
-	int _step[maxChannels];
-	float _select[maxChannels] {};
 	float _rangeOffset = 0.0f;
 	float _rangeScale = 10.0f;
 
@@ -76,13 +71,8 @@ struct AddrSeq : SelectOnClockModule {
 		configParam<OutputParamQuantity>(OUT6_PARAM, -1.0f, 1.0f, 0.0f, "Step 6", " V");
 		configParam<OutputParamQuantity>(OUT7_PARAM, -1.0f, 1.0f, 0.0f, "Step 7", " V");
 		configParam<OutputParamQuantity>(OUT8_PARAM, -1.0f, 1.0f, 0.0f, "Step 8", " V");
-
-		reset();
-		sampleRateChange();
 	}
 
-	void reset() override;
-	void sampleRateChange() override;
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
 	int channels() override;

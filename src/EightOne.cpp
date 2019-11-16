@@ -1,44 +1,20 @@
 
 #include "EightOne.hpp"
 
-void EightOne::reset() {
-	for (int i = 0; i < maxChannels; ++i) {
-		_step[i] = 0;
-		_clock[i].reset();
-		_reset[i].reset();
-	}
-}
-
-void EightOne::sampleRateChange() {
-	for (int i = 0; i < maxChannels; ++i) {
-		_timer[i].setParams(APP->engine->getSampleRate(), 0.001f);
-	}
-}
-
 int EightOne::channels() {
 	return std::max(1, std::max(inputs[CLOCK_INPUT].getChannels(), inputs[SELECT_INPUT].getChannels()));
 }
 
 void EightOne::processChannel(const ProcessArgs& args, int c) {
-	bool reset = _reset[c].process(inputs[RESET_INPUT].getVoltage());
-	if (reset) {
-		_timer[c].reset();
-	}
-	bool timer = _timer[c].next();
-	bool clock = _clock[c].process(inputs[CLOCK_INPUT].getPolyVoltage(c)) && !timer;
-
-	int steps = clamp(params[STEPS_PARAM].getValue(), 1.0f, 8.0f);
-	int reverse = 1 - 2 * (params[DIRECTION_PARAM].getValue() == 0.0f);
-	_step[c] = (_step[c] + reverse * clock) % steps;
-	_step[c] += (_step[c] < 0) * steps;
-	_step[c] -= _step[c] * reset;
-	float select = params[SELECT_PARAM].getValue();
-	select += clamp(inputs[SELECT_INPUT].getPolyVoltage(c), 0.0f, 10.0f) * 0.1f * 8.0f;
-	if (!_selectOnClock || clock) {
-		_select[c] = select;
-	}
-	int step = _step[c] + (int)_select[c];
-	step = step % 8;
+	int step = nextStep(
+		c,
+		inputs[RESET_INPUT],
+		inputs[CLOCK_INPUT],
+		params[STEPS_PARAM],
+		params[DIRECTION_PARAM],
+		params[SELECT_PARAM],
+		inputs[SELECT_INPUT]
+	);
 
 	Input& in = inputs[IN1_INPUT + step];
 	if (_channels > 1) {
@@ -59,7 +35,7 @@ void EightOne::processChannel(const ProcessArgs& args, int c) {
 	}
 }
 
-struct EightOneWidget : SelectOnClockModuleWidget {
+struct EightOneWidget : AddressableSequenceModuleWidget {
 	static constexpr int hp = 6;
 
 	EightOneWidget(EightOne* module) {

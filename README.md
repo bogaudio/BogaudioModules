@@ -447,7 +447,9 @@ As a multiplexer, it routes an input to the output under control of the SELECT k
 
 Both functions may be used simultaneously: the SELECT+CV value is added to the sequential/clocked value, wrapping around.  Note that the STEPS value only affects the sequential value; for example, using a clock input and setting STEPS to 2 will yield an alternation between two adjacent inputs, but this pair can be selected with the SELECT knob or CV.
 
-On the context (right-click) menu, if option "Select on clock" is selected, then the select value (knob and CV) is checked and used to modify the active step only when a clock is received, rather than continuously.  
+On the context (right-click) menu, if option "Select on clock mode" is selected, then the select value (knob and CV) is checked and used to modify the active step only when a clock is received, rather than continuously.
+
+[New in version 1.1.24:] Also on the context menu, option "Triggered select mode" changes how the SELECT feature works, replacing the continuous voltage selection with a second internal sequence that offsets (adds to) the primary sequential switch step.  In this mode, the SELECT input exepcts trigger pulses, which advance the secondary sequence, while the SELECT knob sets the length of the secondary sequence (and a trigger at RESET will reset it). Thus different clocks and step lengths can be used to create complex output step patterns. "Select on clock mode" has no effect if "Triggered select mode" is enabled.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by maximum of the channels present at the CLOCK and select CV inputs.
 

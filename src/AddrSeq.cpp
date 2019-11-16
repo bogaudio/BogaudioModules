@@ -27,29 +27,15 @@ void AddrSeq::OutputParamQuantity::setDisplayValue(float v) {
 	setValue(v);
 }
 
-void AddrSeq::reset() {
-	for (int i = 0; i < maxChannels; ++i) {
-		_step[i] = 0;
-		_clock[i].reset();
-		_reset[i].reset();
-	}
-}
-
-void AddrSeq::sampleRateChange() {
-	for (int i = 0; i < maxChannels; ++i) {
-		_timer[i].setParams(APP->engine->getSampleRate(), 0.001f);
-	}
-}
-
 json_t* AddrSeq::dataToJson() {
-	json_t* root = SelectOnClockModule::dataToJson();
+	json_t* root = AddressableSequenceModule::dataToJson();
 	json_object_set_new(root, RANGE_OFFSET, json_real(_rangeOffset));
 	json_object_set_new(root, RANGE_SCALE, json_real(_rangeScale));
 	return root;
 }
 
 void AddrSeq::dataFromJson(json_t* root) {
-	SelectOnClockModule::dataFromJson(root);
+	AddressableSequenceModule::dataFromJson(root);
 
 	json_t* ro = json_object_get(root, RANGE_OFFSET);
 	if (ro) {
@@ -67,25 +53,15 @@ int AddrSeq::channels() {
 }
 
 void AddrSeq::processChannel(const ProcessArgs& args, int c) {
-	bool reset = _reset[c].process(inputs[RESET_INPUT].getVoltage());
-	if (reset) {
-		_timer[c].reset();
-	}
-	bool timer = _timer[c].next();
-	bool clock = _clock[c].process(inputs[CLOCK_INPUT].getPolyVoltage(c)) && !timer;
-
-	int steps = clamp(params[STEPS_PARAM].getValue(), 1.0f, 8.0f);
-	int reverse = 1 - 2 * (params[DIRECTION_PARAM].getValue() == 0.0f);
-	_step[c] = (_step[c] + reverse * clock) % steps;
-	_step[c] += (_step[c] < 0) * steps;
-	_step[c] -= _step[c] * reset;
-	float select = params[SELECT_PARAM].getValue();
-	select += clamp(inputs[SELECT_INPUT].getPolyVoltage(c), 0.0f, 10.0f) * 0.1f * 8.0f;
-	if (!_selectOnClock || clock) {
-		_select[c] = select;
-	}
-	int step = _step[c] + (int)_select[c];
-	step = step % 8;
+	int step = nextStep(
+		c,
+		inputs[RESET_INPUT],
+		inputs[CLOCK_INPUT],
+		params[STEPS_PARAM],
+		params[DIRECTION_PARAM],
+		params[SELECT_PARAM],
+		inputs[SELECT_INPUT]
+	);
 
 	float out = params[OUT1_PARAM + step].getValue();
 	out += _rangeOffset;
@@ -99,7 +75,7 @@ void AddrSeq::processChannel(const ProcessArgs& args, int c) {
 	}
 }
 
-struct AddrSeqWidget : SelectOnClockModuleWidget {
+struct AddrSeqWidget : AddressableSequenceModuleWidget {
 	static constexpr int hp = 6;
 
 	AddrSeqWidget(AddrSeq* module) {
@@ -205,7 +181,7 @@ struct AddrSeqWidget : SelectOnClockModuleWidget {
 	};
 
 	void appendContextMenu(Menu* menu) override {
-		SelectOnClockModuleWidget::appendContextMenu(menu);
+		AddressableSequenceModuleWidget::appendContextMenu(menu);
 
 		AddrSeq* m = dynamic_cast<AddrSeq*>(module);
 		assert(m);

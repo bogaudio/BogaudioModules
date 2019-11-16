@@ -1,7 +1,7 @@
 #pragma once
 
 #include "bogaudio.hpp"
-#include "select_on_clock.hpp"
+#include "addressable_sequence.hpp"
 #include "dsp/signal.hpp"
 
 using namespace bogaudio::dsp;
@@ -10,7 +10,7 @@ extern Model* modelEightOne;
 
 namespace bogaudio {
 
-struct EightOne : SelectOnClockModule {
+struct EightOne : AddressableSequenceModule {
 	enum ParamsIds {
 		STEPS_PARAM,
 		DIRECTION_PARAM,
@@ -50,24 +50,13 @@ struct EightOne : SelectOnClockModule {
 		NUM_LIGHTS
 	};
 
-	Trigger _clock[maxChannels];
-	Trigger _reset[maxChannels];
-	bogaudio::dsp::Timer _timer[maxChannels];
-	int _step[maxChannels];
-	float _select[maxChannels] {};
-
 	EightOne() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(STEPS_PARAM, 1.0f, 8.0f, 8.0f, "Steps");
 		configParam(DIRECTION_PARAM, 0.0f, 1.0f, 1.0f, "Direction");
 		configParam(SELECT_PARAM, 0.0f, 7.0f, 0.0f, "Select step");
-
-		reset();
-		sampleRateChange();
 	}
 
-	void reset() override;
-	void sampleRateChange() override;
 	int channels() override;
 	void processChannel(const ProcessArgs& args, int c) override;
 };
