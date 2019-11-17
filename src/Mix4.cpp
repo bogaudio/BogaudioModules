@@ -200,7 +200,7 @@ struct Mix4Widget : ModuleWidget {
 		mi->addItem(OptionMenuItem("Channels 5-8", [m]() { return m->_polyChannelOffset == 4; }, [m]() { m->_polyChannelOffset = 4; }));
 		mi->addItem(OptionMenuItem("Channels 9-12", [m]() { return m->_polyChannelOffset == 8; }, [m]() { m->_polyChannelOffset = 8; }));
 		mi->addItem(OptionMenuItem("Channels 13-16", [m]() { return m->_polyChannelOffset == 12; }, [m]() { m->_polyChannelOffset = 12; }));
-		menu->addChild(mi);
+		OptionsMenuItem::addToMenu(mi, menu);
 	}
 };
 

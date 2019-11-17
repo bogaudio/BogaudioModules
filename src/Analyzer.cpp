@@ -161,7 +161,7 @@ struct AnalyzerWidget : ModuleWidget {
 		OptionsMenuItem* mi = new OptionsMenuItem("Amplitude range");
 		mi->addItem(OptionMenuItem("To -60dB", [a]() { return a->_rangeDb == 80.0f; }, [a]() { a->_rangeDb = 80.0f; }));
 		mi->addItem(OptionMenuItem("To -120dB", [a]() { return a->_rangeDb == 140.0f; }, [a]() { a->_rangeDb = 140.0f; }));
-		menu->addChild(mi);
+		OptionsMenuItem::addToMenu(mi, menu);
 	}
 };
 

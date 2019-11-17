@@ -250,7 +250,7 @@ struct Mix8Widget : ModuleWidget {
 		mi->addItem(OptionMenuItem("None", [m]() { return m->_polyChannelOffset == -1; }, [m]() { m->_polyChannelOffset = -1; }));
 		mi->addItem(OptionMenuItem("Channels 1-8", [m]() { return m->_polyChannelOffset == 0; }, [m]() { m->_polyChannelOffset = 0; }));
 		mi->addItem(OptionMenuItem("Channels 9-16", [m]() { return m->_polyChannelOffset == 8; }, [m]() { m->_polyChannelOffset = 8; }));
-		menu->addChild(mi);
+		OptionsMenuItem::addToMenu(mi, menu);
 	}
 };
 

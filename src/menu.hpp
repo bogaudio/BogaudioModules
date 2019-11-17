@@ -52,6 +52,8 @@ struct OptionsMenuItem : MenuItem {
 		}
 		return menu;
 	}
+
+	static void addToMenu(OptionsMenuItem* item, Menu* menu);
 };
 
 } // namespace bogaudio

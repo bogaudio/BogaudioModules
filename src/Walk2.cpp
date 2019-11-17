@@ -494,7 +494,7 @@ struct Walk2Widget : ModuleWidget {
 			OptionsMenuItem* mi = new OptionsMenuItem("Display range");
 			mi->addItem(OptionMenuItem("+/-5V", [m]() { return m->_zoomOut == false; }, [m]() { m->_zoomOut = false; }));
 			mi->addItem(OptionMenuItem("+/-10V", [m]() { return m->_zoomOut == true; }, [m]() { m->_zoomOut = true; }));
-			menu->addChild(mi);
+			OptionsMenuItem::addToMenu(mi, menu);
 		}
 		menu->addChild(new BoolOptionMenuItem("Show grid", [m]() { return &m->_drawGrid; }));
 		{
@@ -503,7 +503,7 @@ struct Walk2Widget : ModuleWidget {
 			mi->addItem(OptionMenuItem("Orange", [m]() { return m->_traceColor == Walk2::ORANGE_TRACE_COLOR; }, [m]() { m->_traceColor = Walk2::ORANGE_TRACE_COLOR; }));
 			mi->addItem(OptionMenuItem("Red", [m]() { return m->_traceColor == Walk2::RED_TRACE_COLOR; }, [m]() { m->_traceColor = Walk2::RED_TRACE_COLOR; }));
 			mi->addItem(OptionMenuItem("Blue", [m]() { return m->_traceColor == Walk2::BLUE_TRACE_COLOR; }, [m]() { m->_traceColor = Walk2::BLUE_TRACE_COLOR; }));
-			menu->addChild(mi);
+			OptionsMenuItem::addToMenu(mi, menu);
 		}
 	}
 };

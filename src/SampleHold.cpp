@@ -214,7 +214,7 @@ struct SampleHoldWidget : ModuleWidget {
 			mi->addItem(OptionMenuItem("White", [m]() { return m->_noiseType == SampleHold::WHITE_NOISE_TYPE; }, [m]() { m->_noiseType = SampleHold::WHITE_NOISE_TYPE; }));
 			mi->addItem(OptionMenuItem("Pink", [m]() { return m->_noiseType == SampleHold::PINK_NOISE_TYPE; }, [m]() { m->_noiseType = SampleHold::PINK_NOISE_TYPE; }));
 			mi->addItem(OptionMenuItem("Red", [m]() { return m->_noiseType == SampleHold::RED_NOISE_TYPE; }, [m]() { m->_noiseType = SampleHold::RED_NOISE_TYPE; }));
-			menu->addChild(mi);
+			OptionsMenuItem::addToMenu(mi, menu);
 		}
 		{
 			OptionsMenuItem* mi = new OptionsMenuItem("Normal range");
@@ -226,7 +226,7 @@ struct SampleHoldWidget : ModuleWidget {
 			mi->addItem(RangeOptionMenuItem(m, "0V-5V", 1.0f, 2.5f));
 			mi->addItem(RangeOptionMenuItem(m, "0V-3V", 1.0f, 1.5f));
 			mi->addItem(RangeOptionMenuItem(m, "0V-1V", 1.0f, 0.5f));
-			menu->addChild(mi);
+			OptionsMenuItem::addToMenu(mi, menu);
 		}
 	}
 };

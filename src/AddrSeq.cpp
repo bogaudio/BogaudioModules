@@ -184,7 +184,7 @@ struct AddrSeqWidget : AddressableSequenceModuleWidget {
 		mi->addItem(RangeOptionMenuItem(m, "0V-5V", 1.0f, 2.5f));
 		mi->addItem(RangeOptionMenuItem(m, "0V-3V", 1.0f, 1.5f));
 		mi->addItem(RangeOptionMenuItem(m, "0V-1V", 1.0f, 0.5f));
-		menu->addChild(mi);
+		OptionsMenuItem::addToMenu(mi, menu);
 	}
 };
 

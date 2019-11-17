@@ -185,13 +185,13 @@ struct AnalyzerXLWidget : ModuleWidget {
 			mi->addItem(OptionMenuItem("Full", [a]() { return a->_range == 0.0f; }, [a]() { a->_range = 0.0f; }));
 			mi->addItem(OptionMenuItem("Upper 50%", [a]() { return a->_range == 0.5f; }, [a]() { a->_range = 0.5f; }));
 			mi->addItem(OptionMenuItem("Upper 25%", [a]() { return a->_range == 0.75f; }, [a]() { a->_range = 0.75f; }));
-			menu->addChild(mi);
+			OptionsMenuItem::addToMenu(mi, menu);
 		}
 		{
 			OptionsMenuItem* mi = new OptionsMenuItem("Amplitude range");
 			mi->addItem(OptionMenuItem("To -60dB", [a]() { return a->_rangeDb == 80.0f; }, [a]() { a->_rangeDb = 80.0f; }));
 			mi->addItem(OptionMenuItem("To -120dB", [a]() { return a->_rangeDb == 140.0f; }, [a]() { a->_rangeDb = 140.0f; }));
-			menu->addChild(mi);
+			OptionsMenuItem::addToMenu(mi, menu);
 		}
 		{
 			OptionsMenuItem* mi = new OptionsMenuItem("Smoothing");
@@ -201,21 +201,21 @@ struct AnalyzerXLWidget : ModuleWidget {
 			mi->addItem(OptionMenuItem("100ms", [a]() { return a->_smooth == 0.1f; }, [a]() { a->_smooth = 0.1f; }));
 			mi->addItem(OptionMenuItem("250ms", [a]() { return a->_smooth == 0.25f; }, [a]() { a->_smooth = 0.25f; }));
 			mi->addItem(OptionMenuItem("500ms", [a]() { return a->_smooth == 0.5f; }, [a]() { a->_smooth = 0.5f; }));
-			menu->addChild(mi);
+			OptionsMenuItem::addToMenu(mi, menu);
 		}
 		{
 			OptionsMenuItem* mi = new OptionsMenuItem("Quality");
 			mi->addItem(OptionMenuItem("Good", [a]() { return a->_quality == AnalyzerCore::QUALITY_GOOD; }, [a]() { a->_quality = AnalyzerCore::QUALITY_GOOD; }));
 			mi->addItem(OptionMenuItem("High", [a]() { return a->_quality == AnalyzerCore::QUALITY_HIGH; }, [a]() { a->_quality = AnalyzerCore::QUALITY_HIGH; }));
 			mi->addItem(OptionMenuItem("Ultra", [a]() { return a->_quality == AnalyzerCore::QUALITY_ULTRA; }, [a]() { a->_quality = AnalyzerCore::QUALITY_ULTRA; }));
-			menu->addChild(mi);
+			OptionsMenuItem::addToMenu(mi, menu);
 		}
 		{
 			OptionsMenuItem* mi = new OptionsMenuItem("Window");
 			mi->addItem(OptionMenuItem("Kaiser", [a]() { return a->_window == AnalyzerCore::WINDOW_KAISER; }, [a]() { a->_window = AnalyzerCore::WINDOW_KAISER; }));
 			mi->addItem(OptionMenuItem("Hamming", [a]() { return a->_window == AnalyzerCore::WINDOW_HAMMING; }, [a]() { a->_window = AnalyzerCore::WINDOW_HAMMING; }));
 			mi->addItem(OptionMenuItem("None", [a]() { return a->_window == AnalyzerCore::WINDOW_NONE; }, [a]() { a->_window = AnalyzerCore::WINDOW_NONE; }));
-			menu->addChild(mi);
+			OptionsMenuItem::addToMenu(mi, menu);
 		}
 	}
 };
