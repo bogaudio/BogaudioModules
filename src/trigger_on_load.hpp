@@ -17,30 +17,17 @@ struct TriggerOnLoadModule : BGModule {
 };
 
 struct TriggerOnLoadModuleWidget : ModuleWidget {
-	struct TriggerOnLoadMenuItem : MenuItem {
-		TriggerOnLoadModule* _module;
+	std::string _menuItemLabel;
 
-		TriggerOnLoadMenuItem(TriggerOnLoadModule* module, const char* label)
-		: _module(module)
-		{
-			this->text = label;
-		}
-
-		void onAction(const event::Action& e) override {
-			_module->_triggerOnLoad = !_module->_triggerOnLoad;
-		}
-
-		void step() override {
-			MenuItem::step();
-			rightText = _module->_triggerOnLoad ? "✔" : "";
-		}
-	};
+	TriggerOnLoadModuleWidget(const char* menuItemLabel = "Resume loop on load")
+	: _menuItemLabel(menuItemLabel)
+	{}
 
 	void appendContextMenu(Menu* menu) override {
 		TriggerOnLoadModule* m = dynamic_cast<TriggerOnLoadModule*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());
-		menu->addChild(new TriggerOnLoadMenuItem(m, "Resume loop on load"));
+		menu->addChild(new BoolOptionMenuItem(_menuItemLabel.c_str(), [m]() { return &m->_triggerOnLoad; }));
 	}
 };
 

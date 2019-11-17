@@ -91,41 +91,21 @@ struct NoiseWidget : ModuleWidget {
 		addOutput(createOutput<Port24>(absOutputPosition, module, Noise::ABS_OUTPUT));
 	}
 
-	struct ChannelMenuItemX : MenuItem {
-		Noise* _module;
-		int _channels;
-
-		ChannelMenuItemX(Noise* module, const char* label, int channels)
-		: _module(module)
-		, _channels(channels)
-		{
-			this->text = label;
-		}
-
-		void onAction(const event::Action& e) override {
-			_module->_noiseChannels = _channels;
-		}
-
-		void step() override {
-			MenuItem::step();
-			this->rightText = _module->_noiseChannels == _channels ? "✔" : "";
-		}
-	};
-
-	struct ChannelsMenuItemX : MenuItem {
+	struct ChannelsMenuItem : MenuItem {
 		Noise* _module;
 
-		ChannelsMenuItemX(Noise* module, const char* label) : _module(module) {
+		ChannelsMenuItem(Noise* module, const char* label) : _module(module) {
 			this->text = label;
 		}
 
 		Menu* createChildMenu() override {
 			Menu* menu = new Menu;
-			menu->addChild(new ChannelMenuItemX(_module, "Monophonic", 1));
+			Noise* m = _module;
+			menu->addChild(new OptionMenuItem("Monophonic", [m]() { return m->_noiseChannels == 1; }, [m]() { m->_noiseChannels = 1; }));
 			for (int i = 2; i <= BGModule::maxChannels; i++) {
 				char s[10];
 				snprintf(s, 10, "%d", i);
-				menu->addChild(new ChannelMenuItemX(_module, s, i));
+				menu->addChild(new OptionMenuItem(s, [m, i]() { return m->_noiseChannels == i; }, [m, i]() { m->_noiseChannels = i; }));
 			}
 			return menu;
 		}
@@ -143,7 +123,7 @@ struct NoiseWidget : ModuleWidget {
 		assert(m);
 
 		menu->addChild(new MenuLabel());
-		menu->addChild(new ChannelsMenuItemX(m, "Polyphony channels"));
+		menu->addChild(new ChannelsMenuItem(m, "Polyphony channels"));
 	}
 };
 

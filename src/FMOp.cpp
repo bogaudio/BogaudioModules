@@ -326,30 +326,11 @@ struct FMOpWidget : ModuleWidget {
 		addChild(createLight<SmallLight<GreenLight>>(envToDepthLightPosition, module, FMOp::ENV_TO_DEPTH_LIGHT));
 	}
 
-	struct LinearLevelMenuItem : MenuItem {
-		FMOp* _module;
-
-		LinearLevelMenuItem(FMOp* module, const char* label)
-		: _module(module)
-		{
-			this->text = label;
-		}
-
-		void onAction(const event::Action& e) override {
-			_module->_linearLevel = !_module->_linearLevel;
-		}
-
-		void step() override {
-			MenuItem::step();
-			rightText = _module->_linearLevel ? "✔" : "";
-		}
-	};
-
 	void appendContextMenu(Menu* menu) override {
 	  FMOp* fmop = dynamic_cast<FMOp*>(module);
 		assert(fmop);
 		menu->addChild(new MenuLabel());
-		menu->addChild(new LinearLevelMenuItem(fmop, "Linear level response"));
+		menu->addChild(new BoolOptionMenuItem("Linear level response", [fmop]() { return &fmop->_linearLevel; }));
 	}
 };
 

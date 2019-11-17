@@ -32,7 +32,9 @@ void Manual::processChannel(const ProcessArgs& args, int _c) {
 struct ManualWidget : TriggerOnLoadModuleWidget {
 	static constexpr int hp = 3;
 
-	ManualWidget(Manual* module) {
+	ManualWidget(Manual* module)
+	: TriggerOnLoadModuleWidget("Trigger on load")
+	{
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
@@ -69,13 +71,6 @@ struct ManualWidget : TriggerOnLoadModuleWidget {
 		addOutput(createOutput<Port24>(out6OutputPosition, module, Manual::OUT6_OUTPUT));
 		addOutput(createOutput<Port24>(out7OutputPosition, module, Manual::OUT7_OUTPUT));
 		addOutput(createOutput<Port24>(out8OutputPosition, module, Manual::OUT8_OUTPUT));
-	}
-
-	void appendContextMenu(Menu* menu) override {
-		TriggerOnLoadModule* m = dynamic_cast<TriggerOnLoadModule*>(module);
-		assert(m);
-		menu->addChild(new MenuLabel());
-		menu->addChild(new TriggerOnLoadMenuItem(m, "Trigger on load"));
 	}
 };
 

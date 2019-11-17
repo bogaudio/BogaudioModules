@@ -153,34 +153,15 @@ struct AnalyzerWidget : ModuleWidget {
 		addChild(createLight<SmallLight<GreenLight>>(windowKaiserLightPosition, module, Analyzer::WINDOW_KAISER_LIGHT));
 	}
 
-	struct RangeDbMenuItem : MenuItem {
-		Analyzer* _module;
-		const float _rangeDb;
-
-		RangeDbMenuItem(Analyzer* module, const char* label, float rangeDb)
-		: _module(module)
-		, _rangeDb(rangeDb)
-		{
-			this->text = label;
-		}
-
-		void onAction(const event::Action& e) override {
-			_module->_rangeDb = _rangeDb;
-		}
-
-		void step() override {
-			MenuItem::step();
-			rightText = _module->_rangeDb == _rangeDb ? "✔" : "";
-		}
-	};
-
 	void appendContextMenu(Menu* menu) override {
 		Analyzer* a = dynamic_cast<Analyzer*>(module);
 		assert(a);
 
 		menu->addChild(new MenuLabel());
-		menu->addChild(new RangeDbMenuItem(a, "Amplitude: to -60dB", 80.0f));
-		menu->addChild(new RangeDbMenuItem(a, "Amplitude: to -120dB", 140.0f));
+		OptionsMenuItem* mi = new OptionsMenuItem("Amplitude range");
+		mi->addItem(OptionMenuItem("To -60dB", [a]() { return a->_rangeDb == 80.0f; }, [a]() { a->_rangeDb = 80.0f; }));
+		mi->addItem(OptionMenuItem("To -120dB", [a]() { return a->_rangeDb == 140.0f; }, [a]() { a->_rangeDb = 140.0f; }));
+		menu->addChild(mi);
 	}
 };
 

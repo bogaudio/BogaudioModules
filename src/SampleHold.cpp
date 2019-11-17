@@ -191,67 +191,43 @@ struct SampleHoldWidget : ModuleWidget {
 		addChild(createLight<SmallLight<GreenLight>>(invert2LightPosition, module, SampleHold::INVERT2_LIGHT));
 	}
 
-	struct NoiseTypeMenuItem : MenuItem {
-		SampleHold* _module;
-		SampleHold::NoiseType _noiseType;
-
-		NoiseTypeMenuItem(SampleHold* module, const char* label, SampleHold::NoiseType noiseType)
-		: _module(module)
-		, _noiseType(noiseType)
-		{
-			this->text = label;
-		}
-
-		void onAction(const event::Action& e) override {
-			_module->_noiseType = _noiseType;
-		}
-
-		void step() override {
-			MenuItem::step();
-			rightText = _module->_noiseType == _noiseType ? "✔" : "";
-		}
-	};
-
-	struct RangeMenuItem : MenuItem {
-		SampleHold* _module;
-		float _offset, _scale;
-
-		RangeMenuItem(SampleHold* module, const char* label, float offset, float scale)
-		: _module(module)
-		, _offset(offset)
-		, _scale(scale)
-		{
-			this->text = label;
-		}
-
-		void onAction(const event::Action& e) override {
-			_module->_rangeOffset = _offset;
-			_module->_rangeScale = _scale;
-		}
-
-		void step() override {
-			MenuItem::step();
-			rightText = (_module->_rangeOffset == _offset && _module->_rangeScale == _scale) ? "✔" : "";
-		}
+	struct RangeOptionMenuItem : OptionMenuItem {
+		RangeOptionMenuItem(SampleHold* module, const char* label, float offset, float scale)
+		: OptionMenuItem(
+			label,
+			[=]() { return module->_rangeOffset == offset && module->_rangeScale == scale; },
+			[=]() {
+				module->_rangeOffset = offset;
+				module->_rangeScale = scale;
+			}
+		)
+		{}
 	};
 
 	void appendContextMenu(Menu* menu) override {
 		SampleHold* m = dynamic_cast<SampleHold*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());
-		menu->addChild(new NoiseTypeMenuItem(m, "Normal noise: blue", SampleHold::BLUE_NOISE_TYPE));
-		menu->addChild(new NoiseTypeMenuItem(m, "Normal noise: white", SampleHold::WHITE_NOISE_TYPE));
-		menu->addChild(new NoiseTypeMenuItem(m, "Normal noise: pink", SampleHold::PINK_NOISE_TYPE));
-		menu->addChild(new NoiseTypeMenuItem(m, "Normal noise: red", SampleHold::RED_NOISE_TYPE));
-		menu->addChild(new MenuLabel());
-		menu->addChild(new RangeMenuItem(m, "Normal range: +/-10V", 0.0f, 10.0f));
-		menu->addChild(new RangeMenuItem(m, "Normal range: +/-5V", 0.0f, 5.0f));
-		menu->addChild(new RangeMenuItem(m, "Normal range: +/-3V", 0.0f, 3.0f));
-		menu->addChild(new RangeMenuItem(m, "Normal range: +/-1V", 0.0f, 1.0f));
-		menu->addChild(new RangeMenuItem(m, "Normal range: 0V-10V", 1.0f, 5.0f));
-		menu->addChild(new RangeMenuItem(m, "Normal range: 0V-5V", 1.0f, 2.5f));
-		menu->addChild(new RangeMenuItem(m, "Normal range: 0V-3V", 1.0f, 1.5f));
-		menu->addChild(new RangeMenuItem(m, "Normal range: 0V-1V", 1.0f, 0.5f));
+		{
+			OptionsMenuItem* mi = new OptionsMenuItem("Normal noise");
+			mi->addItem(OptionMenuItem("Blue", [m]() { return m->_noiseType == SampleHold::BLUE_NOISE_TYPE; }, [m]() { m->_noiseType = SampleHold::BLUE_NOISE_TYPE; }));
+			mi->addItem(OptionMenuItem("White", [m]() { return m->_noiseType == SampleHold::WHITE_NOISE_TYPE; }, [m]() { m->_noiseType = SampleHold::WHITE_NOISE_TYPE; }));
+			mi->addItem(OptionMenuItem("Pink", [m]() { return m->_noiseType == SampleHold::PINK_NOISE_TYPE; }, [m]() { m->_noiseType = SampleHold::PINK_NOISE_TYPE; }));
+			mi->addItem(OptionMenuItem("Red", [m]() { return m->_noiseType == SampleHold::RED_NOISE_TYPE; }, [m]() { m->_noiseType = SampleHold::RED_NOISE_TYPE; }));
+			menu->addChild(mi);
+		}
+		{
+			OptionsMenuItem* mi = new OptionsMenuItem("Normal range");
+			mi->addItem(RangeOptionMenuItem(m, "+/-10V", 0.0f, 10.0f));
+			mi->addItem(RangeOptionMenuItem(m, "+/-5V", 0.0f, 5.0f));
+			mi->addItem(RangeOptionMenuItem(m, "+/-3V", 0.0f, 3.0f));
+			mi->addItem(RangeOptionMenuItem(m, "+/-1V", 0.0f, 1.0f));
+			mi->addItem(RangeOptionMenuItem(m, "0V-10V", 1.0f, 5.0f));
+			mi->addItem(RangeOptionMenuItem(m, "0V-5V", 1.0f, 2.5f));
+			mi->addItem(RangeOptionMenuItem(m, "0V-3V", 1.0f, 1.5f));
+			mi->addItem(RangeOptionMenuItem(m, "0V-1V", 1.0f, 0.5f));
+			menu->addChild(mi);
+		}
 	}
 };
 

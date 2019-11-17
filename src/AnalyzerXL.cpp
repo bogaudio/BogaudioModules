@@ -173,143 +173,50 @@ struct AnalyzerXLWidget : ModuleWidget {
 		addInput(createInput<Port24>(signalhInputPosition, module, AnalyzerXL::SIGNALH_INPUT));
 	}
 
-	struct RangeMenuItem : MenuItem {
-		AnalyzerXL* _module;
-		const float _range;
-
-		RangeMenuItem(AnalyzerXL* module, const char* label, float range)
-		: _module(module)
-		, _range(range)
-		{
-			this->text = label;
-		}
-
-		void onAction(const event::Action& e) override {
-			_module->_range = _range;
-		}
-
-		void step() override {
-			MenuItem::step();
-			rightText = _module->_range == _range ? "✔" : "";
-		}
-	};
-
-	struct RangeDbMenuItem : MenuItem {
-		AnalyzerXL* _module;
-		const float _rangeDb;
-
-		RangeDbMenuItem(AnalyzerXL* module, const char* label, float rangeDb)
-		: _module(module)
-		, _rangeDb(rangeDb)
-		{
-			this->text = label;
-		}
-
-		void onAction(const event::Action& e) override {
-			_module->_rangeDb = _rangeDb;
-		}
-
-		void step() override {
-			MenuItem::step();
-			rightText = _module->_rangeDb == _rangeDb ? "✔" : "";
-		}
-	};
-
-	struct SmoothMenuItem : MenuItem {
-		AnalyzerXL* _module;
-		const float _smooth;
-
-		SmoothMenuItem(AnalyzerXL* module, const char* label, float smooth)
-		: _module(module)
-		, _smooth(smooth)
-		{
-			this->text = label;
-		}
-
-		void onAction(const event::Action& e) override {
-			_module->_smooth = _smooth;
-		}
-
-		void step() override {
-			MenuItem::step();
-			rightText = _module->_smooth == _smooth ? "✔" : "";
-		}
-	};
-
-	struct QualityMenuItem : MenuItem {
-		AnalyzerXL* _module;
-		const AnalyzerCore::Quality _quality;
-
-		QualityMenuItem(AnalyzerXL* module, const char* label, AnalyzerCore::Quality quality)
-		: _module(module)
-		, _quality(quality)
-		{
-			this->text = label;
-		}
-
-		void onAction(const event::Action& e) override {
-			_module->_quality = _quality;
-		}
-
-		void step() override {
-			MenuItem::step();
-			rightText = _module->_quality == _quality ? "✔" : "";
-		}
-	};
-
-	struct WindowMenuItem : MenuItem {
-		AnalyzerXL* _module;
-		const AnalyzerCore::Window _window;
-
-		WindowMenuItem(AnalyzerXL* module, const char* label, AnalyzerCore::Window window)
-		: _module(module)
-		, _window(window)
-		{
-			this->text = label;
-		}
-
-		void onAction(const event::Action& e) override {
-			_module->_window = _window;
-		}
-
-		void step() override {
-			MenuItem::step();
-			rightText = _module->_window == _window ? "✔" : "";
-		}
-	};
-
 	void appendContextMenu(Menu* menu) override {
 		AnalyzerXL* a = dynamic_cast<AnalyzerXL*>(module);
 		assert(a);
 
 		menu->addChild(new MenuLabel());
-		menu->addChild(new RangeMenuItem(a, "Frequency: lower 25%", -0.75f));
-		menu->addChild(new RangeMenuItem(a, "Frequency: lower 50%", -0.5f));
-		menu->addChild(new RangeMenuItem(a, "Frequency: full", 0.0f));
-		menu->addChild(new RangeMenuItem(a, "Frequency: upper 50%", 0.5f));
-		menu->addChild(new RangeMenuItem(a, "Frequency: upper 25%", 0.75f));
-
-		menu->addChild(new MenuLabel());
-		menu->addChild(new RangeDbMenuItem(a, "Amplitude: to -60dB", 80.0f));
-		menu->addChild(new RangeDbMenuItem(a, "Amplitude: to -120dB", 140.0f));
-
-		menu->addChild(new MenuLabel());
-		menu->addChild(new SmoothMenuItem(a, "Smooth: none", 0.0f));
-		menu->addChild(new SmoothMenuItem(a, "Smooth: 10ms", 0.01f));
-		menu->addChild(new SmoothMenuItem(a, "Smooth: 50ms", 0.05f));
-		menu->addChild(new SmoothMenuItem(a, "Smooth: 100ms", 0.1f));
-		menu->addChild(new SmoothMenuItem(a, "Smooth: 250ms", 0.25f));
-		menu->addChild(new SmoothMenuItem(a, "Smooth: 500ms", 0.5f));
-
-		menu->addChild(new MenuLabel());
-		menu->addChild(new QualityMenuItem(a, "Quality: good", AnalyzerCore::QUALITY_GOOD));
-		menu->addChild(new QualityMenuItem(a, "Quality: high", AnalyzerCore::QUALITY_HIGH));
-		menu->addChild(new QualityMenuItem(a, "Quality: ultra", AnalyzerCore::QUALITY_ULTRA));
-
-		menu->addChild(new MenuLabel());
-		menu->addChild(new WindowMenuItem(a, "Window: Kaiser", AnalyzerCore::WINDOW_KAISER));
-		menu->addChild(new WindowMenuItem(a, "Window: Hamming", AnalyzerCore::WINDOW_HAMMING));
-		menu->addChild(new WindowMenuItem(a, "Window: none", AnalyzerCore::WINDOW_NONE));
+		{
+			OptionsMenuItem* mi = new OptionsMenuItem("Frequency range");
+			mi->addItem(OptionMenuItem("Lower 25%", [a]() { return a->_range == -0.75f; }, [a]() { a->_range = -0.75f; }));
+			mi->addItem(OptionMenuItem("Lower 50%", [a]() { return a->_range == -0.5f; }, [a]() { a->_range = -0.5f; }));
+			mi->addItem(OptionMenuItem("Full", [a]() { return a->_range == 0.0f; }, [a]() { a->_range = 0.0f; }));
+			mi->addItem(OptionMenuItem("Upper 50%", [a]() { return a->_range == 0.5f; }, [a]() { a->_range = 0.5f; }));
+			mi->addItem(OptionMenuItem("Upper 25%", [a]() { return a->_range == 0.75f; }, [a]() { a->_range = 0.75f; }));
+			menu->addChild(mi);
+		}
+		{
+			OptionsMenuItem* mi = new OptionsMenuItem("Amplitude range");
+			mi->addItem(OptionMenuItem("To -60dB", [a]() { return a->_rangeDb == 80.0f; }, [a]() { a->_rangeDb = 80.0f; }));
+			mi->addItem(OptionMenuItem("To -120dB", [a]() { return a->_rangeDb == 140.0f; }, [a]() { a->_rangeDb = 140.0f; }));
+			menu->addChild(mi);
+		}
+		{
+			OptionsMenuItem* mi = new OptionsMenuItem("Smoothing");
+			mi->addItem(OptionMenuItem("None", [a]() { return a->_smooth == 0.0f; }, [a]() { a->_smooth = 0.0f; }));
+			mi->addItem(OptionMenuItem("10ms", [a]() { return a->_smooth == 0.01f; }, [a]() { a->_smooth = 0.01f; }));
+			mi->addItem(OptionMenuItem("50ms", [a]() { return a->_smooth == 0.05f; }, [a]() { a->_smooth = 0.05f; }));
+			mi->addItem(OptionMenuItem("100ms", [a]() { return a->_smooth == 0.1f; }, [a]() { a->_smooth = 0.1f; }));
+			mi->addItem(OptionMenuItem("250ms", [a]() { return a->_smooth == 0.25f; }, [a]() { a->_smooth = 0.25f; }));
+			mi->addItem(OptionMenuItem("500ms", [a]() { return a->_smooth == 0.5f; }, [a]() { a->_smooth = 0.5f; }));
+			menu->addChild(mi);
+		}
+		{
+			OptionsMenuItem* mi = new OptionsMenuItem("Quality");
+			mi->addItem(OptionMenuItem("Good", [a]() { return a->_quality == AnalyzerCore::QUALITY_GOOD; }, [a]() { a->_quality = AnalyzerCore::QUALITY_GOOD; }));
+			mi->addItem(OptionMenuItem("High", [a]() { return a->_quality == AnalyzerCore::QUALITY_HIGH; }, [a]() { a->_quality = AnalyzerCore::QUALITY_HIGH; }));
+			mi->addItem(OptionMenuItem("Ultra", [a]() { return a->_quality == AnalyzerCore::QUALITY_ULTRA; }, [a]() { a->_quality = AnalyzerCore::QUALITY_ULTRA; }));
+			menu->addChild(mi);
+		}
+		{
+			OptionsMenuItem* mi = new OptionsMenuItem("Window");
+			mi->addItem(OptionMenuItem("Kaiser", [a]() { return a->_window == AnalyzerCore::WINDOW_KAISER; }, [a]() { a->_window = AnalyzerCore::WINDOW_KAISER; }));
+			mi->addItem(OptionMenuItem("Hamming", [a]() { return a->_window == AnalyzerCore::WINDOW_HAMMING; }, [a]() { a->_window = AnalyzerCore::WINDOW_HAMMING; }));
+			mi->addItem(OptionMenuItem("None", [a]() { return a->_window == AnalyzerCore::WINDOW_NONE; }, [a]() { a->_window = AnalyzerCore::WINDOW_NONE; }));
+			menu->addChild(mi);
+		}
 	}
 };
 

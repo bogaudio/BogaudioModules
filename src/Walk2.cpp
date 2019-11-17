@@ -485,79 +485,26 @@ struct Walk2Widget : ModuleWidget {
 		addOutput(createOutput<Port24>(distanceOutputPosition, module, Walk2::DISTANCE_OUTPUT));
 	}
 
-	struct ZoomOutMenuItem : MenuItem {
-		Walk2* _module;
-		const bool _zoomOut;
-
-		ZoomOutMenuItem(Walk2* module, const char* label, bool zoomOut)
-		: _module(module)
-		, _zoomOut(zoomOut)
-		{
-			this->text = label;
-		}
-
-		void onAction(const event::Action& e) override {
-			_module->_zoomOut = _zoomOut;
-		}
-
-		void step() override {
-			MenuItem::step();
-			rightText = _module->_zoomOut == _zoomOut ? "✔" : "";
-		}
-	};
-
-	struct GridMenuItem : MenuItem {
-		Walk2* _module;
-
-		GridMenuItem(Walk2* module, const char* label) : _module(module) {
-			this->text = label;
-		}
-
-		void onAction(const event::Action& e) override {
-			_module->_drawGrid = !_module->_drawGrid;
-		}
-
-		void step() override {
-			MenuItem::step();
-			rightText = _module->_drawGrid ? "✔" : "";
-		}
-	};
-
-	struct ColorMenuItem : MenuItem {
-		Walk2* _module;
-		const Walk2::TraceColor _color;
-
-		ColorMenuItem(Walk2* module, const char* label, Walk2::TraceColor color)
-		: _module(module)
-		, _color(color)
-		{
-			this->text = label;
-		}
-
-		void onAction(const event::Action& e) override {
-			_module->_traceColor = _color;
-		}
-
-		void step() override {
-			MenuItem::step();
-			rightText = _module->_traceColor == _color ? "✔" : "";
-		}
-	};
-
 	void appendContextMenu(Menu* menu) override {
-		Walk2* w = dynamic_cast<Walk2*>(module);
-		assert(w);
+		Walk2* m = dynamic_cast<Walk2*>(module);
+		assert(m);
 
 		menu->addChild(new MenuLabel());
-		menu->addChild(new ZoomOutMenuItem(w, "Display range: +/-5V", false));
-		menu->addChild(new ZoomOutMenuItem(w, "Display range: +/-10V", true));
-		menu->addChild(new MenuLabel());
-		menu->addChild(new GridMenuItem(w, "Show grid"));
-		menu->addChild(new MenuLabel());
-		menu->addChild(new ColorMenuItem(w, "Trace color: green", Walk2::GREEN_TRACE_COLOR));
-		menu->addChild(new ColorMenuItem(w, "Trace color: orange", Walk2::ORANGE_TRACE_COLOR));
-		menu->addChild(new ColorMenuItem(w, "Trace color: red", Walk2::RED_TRACE_COLOR));
-		menu->addChild(new ColorMenuItem(w, "Trace color: blue", Walk2::BLUE_TRACE_COLOR));
+		{
+			OptionsMenuItem* mi = new OptionsMenuItem("Display range");
+			mi->addItem(OptionMenuItem("+/-5V", [m]() { return m->_zoomOut == false; }, [m]() { m->_zoomOut = false; }));
+			mi->addItem(OptionMenuItem("+/-10V", [m]() { return m->_zoomOut == true; }, [m]() { m->_zoomOut = true; }));
+			menu->addChild(mi);
+		}
+		menu->addChild(new BoolOptionMenuItem("Show grid", [m]() { return &m->_drawGrid; }));
+		{
+			OptionsMenuItem* mi = new OptionsMenuItem("Trace color");
+			mi->addItem(OptionMenuItem("Green", [m]() { return m->_traceColor == Walk2::GREEN_TRACE_COLOR; }, [m]() { m->_traceColor = Walk2::GREEN_TRACE_COLOR; }));
+			mi->addItem(OptionMenuItem("Orange", [m]() { return m->_traceColor == Walk2::ORANGE_TRACE_COLOR; }, [m]() { m->_traceColor = Walk2::ORANGE_TRACE_COLOR; }));
+			mi->addItem(OptionMenuItem("Red", [m]() { return m->_traceColor == Walk2::RED_TRACE_COLOR; }, [m]() { m->_traceColor = Walk2::RED_TRACE_COLOR; }));
+			mi->addItem(OptionMenuItem("Blue", [m]() { return m->_traceColor == Walk2::BLUE_TRACE_COLOR; }, [m]() { m->_traceColor = Walk2::BLUE_TRACE_COLOR; }));
+			menu->addChild(mi);
+		}
 	}
 };
 

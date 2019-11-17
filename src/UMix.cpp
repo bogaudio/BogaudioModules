@@ -122,50 +122,12 @@ struct UMixWidget : ModuleWidget {
 		addOutput(createOutput<Port24>(outOutputPosition, module, UMix::OUT_OUTPUT));
 	}
 
-	struct AverageMenuItem : MenuItem {
-		UMix* _module;
-
-		AverageMenuItem(UMix* module, const char* label)
-		: _module(module)
-		{
-			this->text = label;
-		}
-
-		void onAction(const event::Action& e) override {
-			_module->_sum = !_module->_sum;
-		}
-
-		void step() override {
-			MenuItem::step();
-			rightText = !_module->_sum ? "✔" : "";
-		}
-	};
-
-	struct CVModeMenuItem : MenuItem {
-		UMix* _module;
-
-		CVModeMenuItem(UMix* module, const char* label)
-		: _module(module)
-		{
-			this->text = label;
-		}
-
-		void onAction(const event::Action& e) override {
-			_module->_cvMode = !_module->_cvMode;
-		}
-
-		void step() override {
-			MenuItem::step();
-			rightText = _module->_cvMode ? "✔" : "";
-		}
-	};
-
 	void appendContextMenu(Menu* menu) override {
-		UMix* umix = dynamic_cast<UMix*>(module);
-		assert(umix);
+		UMix* m = dynamic_cast<UMix*>(module);
+		assert(m);
 		menu->addChild(new MenuLabel());
-		menu->addChild(new AverageMenuItem(umix, "Average"));
-		menu->addChild(new CVModeMenuItem(umix, "CV mode"));
+		menu->addChild(new OptionMenuItem("Average", [m]() { return !m->_sum; }, [m]() { m->_sum = !m->_sum; }));
+		menu->addChild(new BoolOptionMenuItem("CV mode", [m]() { return &m->_cvMode; }));
 	}
 };
 

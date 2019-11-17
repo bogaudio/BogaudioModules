@@ -190,36 +190,17 @@ struct Mix4Widget : ModuleWidget {
 		addParam(slider);
 	}
 
-	struct PolySpreadMenuItem : MenuItem {
-		Mix4* _module;
-		int _offset;
-
-		PolySpreadMenuItem(Mix4* module, const char* label, int offset)
-		: _module(module)
-		, _offset(offset)
-		{
-			this->text = label;
-		}
-
-		void onAction(const event::Action& e) override {
-			_module->_polyChannelOffset = _offset;
-		}
-
-		void step() override {
-			MenuItem::step();
-			rightText = _module->_polyChannelOffset == _offset ? "✔" : "";
-		}
-	};
-
 	void appendContextMenu(Menu* menu) override {
 		Mix4* m = dynamic_cast<Mix4*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());
-		menu->addChild(new PolySpreadMenuItem(m, "Input 1 poly spread: none", -1));
-		menu->addChild(new PolySpreadMenuItem(m, "Input 1 poly spread: channels 1-4", 0));
-		menu->addChild(new PolySpreadMenuItem(m, "Input 1 poly spread: channels 5-8", 4));
-		menu->addChild(new PolySpreadMenuItem(m, "Input 1 poly spread: channels 9-12", 4));
-		menu->addChild(new PolySpreadMenuItem(m, "Input 1 poly spread: channels 13-16", 4));
+		OptionsMenuItem* mi = new OptionsMenuItem("Input 1 poly spread");
+		mi->addItem(OptionMenuItem("None", [m]() { return m->_polyChannelOffset == -1; }, [m]() { m->_polyChannelOffset = -1; }));
+		mi->addItem(OptionMenuItem("Channels 1-4", [m]() { return m->_polyChannelOffset == 0; }, [m]() { m->_polyChannelOffset = 0; }));
+		mi->addItem(OptionMenuItem("Channels 5-8", [m]() { return m->_polyChannelOffset == 4; }, [m]() { m->_polyChannelOffset = 4; }));
+		mi->addItem(OptionMenuItem("Channels 9-12", [m]() { return m->_polyChannelOffset == 8; }, [m]() { m->_polyChannelOffset = 8; }));
+		mi->addItem(OptionMenuItem("Channels 13-16", [m]() { return m->_polyChannelOffset == 12; }, [m]() { m->_polyChannelOffset = 12; }));
+		menu->addChild(mi);
 	}
 };
 

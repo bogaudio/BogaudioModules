@@ -37,50 +37,12 @@ struct AddressableSequenceModule : BGModule {
 };
 
 struct AddressableSequenceModuleWidget : ModuleWidget {
-	struct SelectOnClockMenuItem : MenuItem {
-		AddressableSequenceModule* _module;
-
-		SelectOnClockMenuItem(AddressableSequenceModule* module, const char* label)
-		: _module(module)
-		{
-			this->text = label;
-		}
-
-		void onAction(const event::Action& e) override {
-			_module->_selectOnClock = !_module->_selectOnClock;
-		}
-
-		void step() override {
-			MenuItem::step();
-			rightText = _module->_selectOnClock ? "✔" : "";
-		}
-	};
-
-	struct TriggeredSelectMenuItem : MenuItem {
-		AddressableSequenceModule* _module;
-
-		TriggeredSelectMenuItem(AddressableSequenceModule* module, const char* label)
-		: _module(module)
-		{
-			this->text = label;
-		}
-
-		void onAction(const event::Action& e) override {
-			_module->_triggeredSelect = !_module->_triggeredSelect;
-		}
-
-		void step() override {
-			MenuItem::step();
-			rightText = _module->_triggeredSelect ? "✔" : "";
-		}
-	};
-
 	void appendContextMenu(Menu* menu) override {
 		AddressableSequenceModule* m = dynamic_cast<AddressableSequenceModule*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());
-		menu->addChild(new SelectOnClockMenuItem(m, "Select on clock mode"));
-		menu->addChild(new TriggeredSelectMenuItem(m, "Triggered select mode"));
+		menu->addChild(new BoolOptionMenuItem("Select on clock mode", [m]() { return &m->_selectOnClock; }));
+		menu->addChild(new BoolOptionMenuItem("Triggered select mode", [m]() { return &m->_triggeredSelect; }));
 	}
 };
 

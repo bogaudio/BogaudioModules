@@ -144,35 +144,22 @@ struct ADSRWidget : ModuleWidget {
 		addChild(createLight<SmallLight<GreenLight>>(linearLightPosition, module, ADSR::LINEAR_LIGHT));
 	}
 
-	struct InvertMenuItem : MenuItem {
-		ADSR* _module;
-
-		InvertMenuItem(ADSR* module, const char* label, int offset)
-		: _module(module)
-		{
-			this->text = label;
-		}
-
-		void onAction(const event::Action& e) override {
-			if (_module->_invert < 0.0f) {
-				_module->_invert = 1.0f;
-			}
-			else {
-				_module->_invert = -1.0f;
-			}
-		}
-
-		void step() override {
-			MenuItem::step();
-			rightText = _module->_invert == -1.0f ? "✔" : "";
-		}
-	};
-
 	void appendContextMenu(Menu* menu) override {
 		ADSR* m = dynamic_cast<ADSR*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());
-		menu->addChild(new InvertMenuItem(m, "Invert output", -1));
+		menu->addChild(new OptionMenuItem(
+			"Invert output",
+			[m]() { return m->_invert == -1.0f; },
+			[m]() {
+				if (m->_invert < 0.0f) {
+					m->_invert = 1.0f;
+				}
+				else {
+					m->_invert = -1.0f;
+				}
+			}
+		));
 	}
 };
 
