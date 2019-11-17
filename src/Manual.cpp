@@ -7,7 +7,14 @@ void Manual::reset() {
 }
 
 void Manual::processChannel(const ProcessArgs& args, int _c) {
-	bool high = _trigger.process(params[TRIGGER_PARAM].getValue()) || _trigger.isHigh() || (_firstStep && _triggerOnLoad && _shouldTriggerOnLoad);
+	bool initialPulse = false;
+	if (_initialDelay && !_initialDelay->next()) {
+		initialPulse = true;
+		delete _initialDelay;
+		_initialDelay = NULL;
+	}
+
+	bool high = _trigger.process(params[TRIGGER_PARAM].getValue()) || _trigger.isHigh() || (initialPulse && _triggerOnLoad && _shouldTriggerOnLoad);
 	if (high) {
 		_pulse.trigger(0.001f);
 		_pulse.process(APP->engine->getSampleTime());
@@ -25,8 +32,6 @@ void Manual::processChannel(const ProcessArgs& args, int _c) {
 	outputs[OUT6_OUTPUT].setVoltage(out);
 	outputs[OUT7_OUTPUT].setVoltage(out);
 	outputs[OUT8_OUTPUT].setVoltage(out);
-
-	_firstStep = false;
 }
 
 struct ManualWidget : TriggerOnLoadModuleWidget {
