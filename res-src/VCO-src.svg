@@ -261,20 +261,22 @@
   </g>
   <use xlink:href="#knobguide-centertick" transform="translate(36 141)" />
 
-  <g transform="translate(82 158.5)">
-    <!-- <polyline points="0,3.2 70,3.2" stroke="#0f0" stroke-width="1" fill="none" /> -->
-    <use id="SLOW_PARAM" xlink:href="#button-small" transform="translate(40 -1.3)" />
-    <use id="SLOW_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
-    <text font-size="6pt" letter-spacing="2px" transform="translate(9 6.1)">SLOW</text>
-    <!-- <rect width="90" height="10" fill="#0f0" transform="translate(0 7)" /> -->
-  </g>
+  <g transform="translate(82 150)">
+    <g transform="translate(0 1)">
+      <!-- <polyline points="0,3.2 70,3.2" stroke="#0f0" stroke-width="1" fill="none" /> -->
+      <use id="SLOW_PARAM" xlink:href="#button-small" transform="translate(41 -1.3)" />
+      <use id="SLOW_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
+      <text font-size="6pt" letter-spacing="2px" transform="translate(9 6.1)">SLOW</text>
+      <!-- <rect width="90" height="10" fill="#0f0" transform="translate(0 7)" /> -->
+    </g>
 
-  <g transform="translate(82 168.5)">
-    <!-- <polyline points="0,3.2 70,3.2" stroke="#0f0" stroke-width="1" fill="none" /> -->
-    <use id="LINEAR_PARAM" xlink:href="#button-small" transform="translate(40 -1.3)" />
-    <use id="LINEAR_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
-    <text font-size="6pt" letter-spacing="2px" transform="translate(14 6.1)">LIN</text>
-    <!-- <rect width="90" height="10" fill="#0f0" transform="translate(0 7)" /> -->
+    <g transform="translate(0 14)">
+      <!-- <polyline points="0,3.2 70,3.2" stroke="#0f0" stroke-width="1" fill="none" /> -->
+      <use id="LINEAR_PARAM" xlink:href="#button-small" transform="translate(41 -1.3)" />
+      <use id="LINEAR_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
+      <text font-size="6pt" letter-spacing="0.5px" transform="translate(9 6.1)">LINEAR</text>
+      <!-- <rect width="90" height="10" fill="#0f0" transform="translate(0 7)" /> -->
+    </g>
   </g>
 
   <!-- <rect width="100" height="7" fill="#0f0" transform="translate(10 172)" /> -->

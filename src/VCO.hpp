@@ -48,13 +48,12 @@ struct VCO : BGModule {
 	struct Engine {
 		static constexpr int oversample = 8;
 
-		float frequency = NAN;
+		float frequency = 0.0f;
 		float baseVOct = 0.0f;
 		float baseHz = 0.0f;
 
 		Phasor phasor;
 		BandLimitedSquareOscillator square;
-		
 		BandLimitedSawOscillator saw;
 		TriangleOscillator triangle;
 		SineTableOscillator sine;
