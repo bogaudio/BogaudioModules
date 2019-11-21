@@ -70,7 +70,7 @@ struct %MODULE%Widget : ModuleWidget {
 	}
 };
 
-Model* model%MODULE% = createModel<%MODULE%, %MODULE%Widget>("%MANUFACTURER%-%MODULE%", "%MODULE%", "");
+Model* model%MODULE% = createModel<%MODULE%, %MODULE%Widget>("%MANUFACTURER%-%MODULE%", "%MODULE_CAPS%", "");
 CPP_TEMPLATE
 
 require 'optparse'
@@ -315,6 +315,7 @@ def make_stub(widgets_by_type, template, options)
   comments = options[:comments]
   s = template
   s.gsub!(/%MODULE%/, options[:module])
+  s.gsub!(/%MODULE_CAPS%/, options[:module].upcase)
   s.gsub!(/%PLUGIN%/, options[:plugin])
   s.gsub!(/%HEADER%/, options[:plugin].downcase)
   s.gsub!(/%MANUFACTURER%/, options[:manufacturer])
