@@ -1,6 +1,7 @@
 #pragma once
 
 #include <assert.h>
+#include <mutex>
 
 #include "base.hpp"
 
@@ -41,6 +42,7 @@ protected:
 template<class T, int N> class StaticTable {
 private:
 	Table* _table = NULL;
+	std::mutex _lock;
 
 	StaticTable() {
 	}
@@ -56,6 +58,7 @@ public:
 
 	static const Table& table() {
 		static StaticTable<T, N> instance;
+		std::lock_guard<std::mutex> lock(instance._lock);
 		if (!instance._table) {
 			instance._table = new T(N);
 			instance._table->generate();
