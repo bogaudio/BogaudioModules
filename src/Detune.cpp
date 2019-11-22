@@ -15,7 +15,7 @@ void Detune::modulateChannel(int c) {
 		_cents[c] *= clamp(inputs[CV_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 		_cents[c] = roundf(_cents[c]);
 	}
-	_cents[c] /= 100.0f;;
+	_cents[c] /= 100.0f;
 }
 
 void Detune::processChannel(const ProcessArgs& args, int c) {
