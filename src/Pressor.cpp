@@ -45,10 +45,6 @@ void Pressor::modulate() {
 void Pressor::modulateChannel(int c) {
 	Engine& e = *_engines[c];
 
-	if (!_engines[c]) {
-		return;
-	}
-
 	e.thresholdDb = params[THRESHOLD_PARAM].getValue();
 	if (inputs[THRESHOLD_INPUT].isConnected()) {
 		e.thresholdDb *= clamp(inputs[THRESHOLD_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
@@ -111,10 +107,6 @@ void Pressor::modulateChannel(int c) {
 
 void Pressor::processChannel(const ProcessArgs& args, int c) {
 	Engine& e = *_engines[c];
-
-	if (!_engines[c]) {
-		return;
-	}
 
 	float leftInput = inputs[LEFT_INPUT].getPolyVoltage(c) * e.inLevel;
 	float rightInput = inputs[RIGHT_INPUT].getPolyVoltage(c) * e.inLevel;

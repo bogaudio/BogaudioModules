@@ -40,10 +40,6 @@ void Nsgt::modulate() {
 void Nsgt::modulateChannel(int c) {
 	Engine& e = *_engines[c];
 
-	if (!_engines[c]) {
-		return;
-	}
-
 	e.thresholdDb = params[THRESHOLD_PARAM].getValue();
 	if (inputs[THRESHOLD_INPUT].isConnected()) {
 		e.thresholdDb *= clamp(inputs[THRESHOLD_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
@@ -69,10 +65,6 @@ void Nsgt::modulateChannel(int c) {
 
 void Nsgt::processChannel(const ProcessArgs& args, int c) {
 	Engine& e = *_engines[c];
-
-	if (!_engines[c]) {
-		return;
-	}
 
 	float leftInput = inputs[LEFT_INPUT].getPolyVoltage(c);
 	float rightInput = inputs[RIGHT_INPUT].getPolyVoltage(c);
