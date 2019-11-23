@@ -61,7 +61,7 @@ A standard VCO featuring:
 
 The main frequency knob is calibrated in volts, from -4 to +6, corresponding to notes from C0 to C6.  The default "0V" position corresponds to C4 (261.63HZ).  Any pitch CV input at the V/OCT port is added to the knob value to determine the oscillator frequency.  With CV input, the pitch can be driven as high as 95% of the Nyquist frequency (so, over 20KHZ at Rack's default sample rate).  The FINE knob allows an additional adjustment of up to +/-1 semitone (100 cents, 1/12 volt).  In slow mode, the output frequency is 7 octaves lower than in normal mode with the same knob/CV values.
 
-[New in version 1.1.24:] In linear mode, the frequency 1000HZ times the pitch voltage (as determined by the knob plus V/OCT CV) -- at 0V, the frequency is zero, and the oscillator stops.  In slow mode, it tracks at 1HZ times the pitch voltage.  Negative voltages will realize the same output frequency as the corresponding positive voltage (the oscillator runs backwards).  Use with with an FM input to create strange waveforms.
+In linear mode, the frequency 1000HZ times the pitch voltage (as determined by the knob plus V/OCT CV) -- at 0V, the frequency is zero, and the oscillator stops.  In slow mode, it tracks at 1HZ times the pitch voltage.  Negative voltages will realize the same output frequency as the corresponding positive voltage (the oscillator runs backwards).  Use with with an FM input to create strange waveforms.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the maximum of the channels on the V/OCT and FM inputs.
 
@@ -406,7 +406,7 @@ If nothing is connected to an IN port, sampling for that channel is normalled to
 
 Each channel can be independently toggled into track-and-hold mode with the corresponding TRK button.  In this mode, when the input at GATE is high, or the button is held, the input is copied to the output.  When the gate goes low, the input is sampled and held until the next gate.
 
-[New in version 1.1.24:] Each channel may also be have its output inverted with the INV button.
+Each channel may also be have its output inverted with the INV button.
 
 The GATE input on the lower section is normalled to GATE in the top section (but a press on the top button does not trigger the lower section).
 
@@ -453,7 +453,7 @@ Both functions may be used simultaneously: the SELECT+CV value is added to the s
 
 On the context (right-click) menu, if option "Select on clock mode" is selected, then the select value (knob and CV) is checked and used to modify the active step only when a clock is received, rather than continuously.
 
-[New in version 1.1.24:] Also on the context menu, option "Triggered select mode" changes how the SELECT feature works, replacing the continuous voltage selection with a second internal sequence that offsets (adds to) the primary sequential switch step.  In this mode, the SELECT input exepcts trigger pulses, which advance the secondary sequence, while the SELECT knob sets the length of the secondary sequence (and a trigger at RESET will reset it). Thus different clocks and step lengths can be used to create complex output step patterns. "Select on clock mode" has no effect if "Triggered select mode" is enabled.
+Also on the context menu, option "Triggered select mode" changes how the SELECT feature works, replacing the continuous voltage selection with a second internal sequence that offsets (adds to) the primary sequential switch step.  In this mode, the SELECT input exepcts trigger pulses, which advance the secondary sequence, while the SELECT knob sets the length of the secondary sequence (and a trigger at RESET will reset it). Thus different clocks and step lengths can be used to create complex output step patterns. "Select on clock mode" has no effect if "Triggered select mode" is enabled.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by maximum of the channels present at the CLOCK and select CV inputs.
 
@@ -576,7 +576,7 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the 
 
 A manual trigger/gate with 8 outputs.  A constant high value is sent from each output for as long as the TRIG button is held.  
 
-Manual may be set to output a trigger pulse (+5V for 10ms) on patch load (akin to a Max/Msp loadbang).  This is off by default; enable clicking "Trigger on Load" on the module's context (right-click) menu.  [New in version 1.1.24:] The pulse is emitted 100ms after the patch starts processing samples.
+Manual may be set to output a trigger pulse (+5V for 10ms) on patch load (akin to a Max/Msp loadbang).  This is off by default; enable clicking "Trigger on Load" on the module's context (right-click) menu.  The pulse is emitted 100ms after the patch starts processing samples.
 
 _Polyphony:_ Monophonic.
 
