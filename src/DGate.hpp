@@ -63,8 +63,8 @@ struct DGate : TriggerOnLoadModule {
 
 	void reset() override;
 	int channels() override;
-	void addEngine(int c) override;
-	void removeEngine(int c) override;
+	void addChannel(int c) override;
+	void removeChannel(int c) override;
 	void processChannel(const ProcessArgs& args, int c) override;
 	void postProcess(const ProcessArgs& args) override;
 	bool stepStage(int c, Param& knob);

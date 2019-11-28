@@ -118,8 +118,8 @@ struct Additator : BGModule {
 	void sampleRateChange() override;
 	bool active() override;
 	int channels() override;
-	void addEngine(int c) override;
-	void removeEngine(int c) override;
+	void addChannel(int c) override;
+	void removeChannel(int c) override;
 	float widthParam(int c);
 	float oddSkewParam(int c);
 	float evenSkewParam(int c);

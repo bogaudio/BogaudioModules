@@ -21,7 +21,7 @@ int LLFO::channels() {
 	return std::max(1, inputs[PITCH_INPUT].getChannels());
 }
 
-void LLFO::addEngine(int c) {
+void LLFO::addChannel(int c) {
 	if (c > 0) {
 		_phasor[c].syncPhase(_phasor[0]);
 	}

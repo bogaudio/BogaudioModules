@@ -70,7 +70,7 @@ int XCO::channels() {
 	return std::max(1, std::max(inputs[PITCH_INPUT].getChannels(), inputs[FM_INPUT].getChannels()));
 }
 
-void XCO::addEngine(int c) {
+void XCO::addChannel(int c) {
 	_engines[c] = new Engine();
 	_engines[c]->reset();
 	_engines[c]->sampleRateChange(APP->engine->getSampleRate());
@@ -79,7 +79,7 @@ void XCO::addEngine(int c) {
 	}
 }
 
-void XCO::removeEngine(int c) {
+void XCO::removeChannel(int c) {
 	delete _engines[c];
 	_engines[c] = NULL;
 }

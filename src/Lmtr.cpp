@@ -22,12 +22,12 @@ int Lmtr::channels() {
 	return std::max(inputs[LEFT_INPUT].getChannels(), inputs[RIGHT_INPUT].getChannels());
 }
 
-void Lmtr::addEngine(int c) {
+void Lmtr::addChannel(int c) {
 	_engines[c] = new Engine();
 	_engines[c]->sampleRateChange();
 }
 
-void Lmtr::removeEngine(int c) {
+void Lmtr::removeChannel(int c) {
 	delete _engines[c];
 	_engines[c] = NULL;
 }

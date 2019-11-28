@@ -11,7 +11,7 @@ int DADSRH::channels() {
 	return std::max(1, inputs[TRIGGER_INPUT].getChannels());
 }
 
-void DADSRH::addEngine(int c) {
+void DADSRH::addChannel(int c) {
 	_core[c] = new DADSRHCore(
 		params[DELAY_PARAM],
 		params[ATTACK_PARAM],
@@ -65,7 +65,7 @@ void DADSRH::addEngine(int c) {
 	);
 }
 
-void DADSRH::removeEngine(int c) {
+void DADSRH::removeChannel(int c) {
 	delete _core[c];
 	_core[c] = NULL;
 }

@@ -87,7 +87,7 @@ int VCO::channels() {
 	return std::max(1, std::max(inputs[PITCH_INPUT].getChannels(), inputs[FM_INPUT].getChannels()));
 }
 
-void VCO::addEngine(int c) {
+void VCO::addChannel(int c) {
 	_engines[c] = new Engine();
 	_engines[c]->reset();
 	_engines[c]->sampleRateChange(APP->engine->getSampleRate());
@@ -96,7 +96,7 @@ void VCO::addEngine(int c) {
 	}
 }
 
-void VCO::removeEngine(int c) {
+void VCO::removeChannel(int c) {
 	delete _engines[c];
 	_engines[c] = NULL;
 }

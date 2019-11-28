@@ -37,7 +37,7 @@ int LFO::channels() {
 	return std::max(1, inputs[PITCH_INPUT].getChannels());
 }
 
-void LFO::addEngine(int c) {
+void LFO::addChannel(int c) {
 	_engines[c] = new Engine();
 	_engines[c]->reset();
 	_engines[c]->sampleRateChange();
@@ -46,7 +46,7 @@ void LFO::addEngine(int c) {
 	}
 }
 
-void LFO::removeEngine(int c) {
+void LFO::removeChannel(int c) {
 	delete _engines[c];
 	_engines[c] = NULL;
 }

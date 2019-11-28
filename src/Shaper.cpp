@@ -11,7 +11,7 @@ int Shaper::channels() {
 	return std::max(1, std::max(inputs[SIGNAL_INPUT].getChannels(), inputs[TRIGGER_INPUT].getChannels()));
 }
 
-void Shaper::addEngine(int c) {
+void Shaper::addChannel(int c) {
 	_core[c] = new ShaperCore(
 		params[ATTACK_PARAM],
 		params[ON_PARAM],
@@ -51,7 +51,7 @@ void Shaper::addEngine(int c) {
 	);
 }
 
-void Shaper::removeEngine(int c) {
+void Shaper::removeChannel(int c) {
 	delete _core[c];
 	_core[c] = NULL;
 }

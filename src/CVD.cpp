@@ -15,12 +15,12 @@ int CVD::channels() {
 	return inputs[IN_INPUT].getChannels();
 }
 
-void CVD::addEngine(int c) {
+void CVD::addChannel(int c) {
 	_engines[c] = new Engine();
 	_engines[c]->sampleRateChange();
 }
 
-void CVD::removeEngine(int c) {
+void CVD::removeChannel(int c) {
 	delete _engines[c];
 	_engines[c] = NULL;
 }

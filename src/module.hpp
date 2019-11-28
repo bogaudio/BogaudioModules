@@ -19,7 +19,7 @@ struct BGModule : Module {
 	}
 	virtual ~BGModule() {
 		while (_channels >= 1) {
-			removeEngine(_channels - 1);
+			removeChannel(_channels - 1);
 			--_channels;
 		}
 	}
@@ -33,8 +33,8 @@ struct BGModule : Module {
 	virtual bool active() { return true; }
 	virtual int channels() { return 1; }
 	virtual void channelsChanged(int before, int after) {}
-	virtual void addEngine(int c) {}
-	virtual void removeEngine(int c) {}
+	virtual void addChannel(int c) {}
+	virtual void removeChannel(int c) {}
 	virtual void modulate() {}
 	virtual void modulateChannel(int c) {}
 	virtual void always(const ProcessArgs& args) {}

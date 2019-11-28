@@ -49,7 +49,7 @@ int EightFO::channels() {
 	return std::max(1, inputs[PITCH_INPUT].getChannels());
 }
 
-void EightFO::addEngine(int c) {
+void EightFO::addChannel(int c) {
 	_engines[c] = new Engine();
 	_engines[c]->reset();
 	_engines[c]->sampleRateChange();
@@ -58,7 +58,7 @@ void EightFO::addEngine(int c) {
 	}
 }
 
-void EightFO::removeEngine(int c) {
+void EightFO::removeChannel(int c) {
 	delete _engines[c];
 	_engines[c] = NULL;
 }

@@ -20,12 +20,12 @@ int DGate::channels() {
 	return std::max(1, inputs[TRIGGER_INPUT].getChannels());
 }
 
-void DGate::addEngine(int c) {
+void DGate::addChannel(int c) {
 	_engines[c] = new Engine();
 	_engines[c]->reset();
 }
 
-void DGate::removeEngine(int c) {
+void DGate::removeChannel(int c) {
 	delete _engines[c];
 	_engines[c] = NULL;
 }

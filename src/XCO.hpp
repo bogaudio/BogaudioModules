@@ -159,8 +159,8 @@ struct XCO : BGModule {
 	void sampleRateChange() override;
 	bool active() override;
 	int channels() override;
-	void addEngine(int c) override;
-	void removeEngine(int c) override;
+	void addChannel(int c) override;
+	void removeChannel(int c) override;
 	void modulate() override;
 	void modulateChannel(int c) override;
 	void always(const ProcessArgs& args) override;

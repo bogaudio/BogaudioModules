@@ -9,11 +9,11 @@ int Clpr::channels() {
 	return std::max(inputs[LEFT_INPUT].getChannels(), inputs[RIGHT_INPUT].getChannels());
 }
 
-void Clpr::addEngine(int c) {
+void Clpr::addChannel(int c) {
 	_engines[c] = new Engine();
 }
 
-void Clpr::removeEngine(int c) {
+void Clpr::removeChannel(int c) {
 	delete _engines[c];
 	_engines[c] = NULL;
 }

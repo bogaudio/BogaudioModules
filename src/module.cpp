@@ -28,13 +28,13 @@ void BGModule::process(const ProcessArgs& args) {
 				channelsChanged(channelsBefore, channelsNow);
 				if (channelsBefore < channelsNow) {
 					while (channelsBefore < channelsNow) {
-						addEngine(channelsBefore);
+						addChannel(channelsBefore);
 						++channelsBefore;
 					}
 				}
 				else {
 					while (channelsNow < channelsBefore) {
-						removeEngine(channelsBefore - 1);
+						removeChannel(channelsBefore - 1);
 						--channelsBefore;
 					}
 				}

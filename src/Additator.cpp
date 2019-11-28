@@ -40,7 +40,7 @@ int Additator::channels() {
 	return std::max(1, inputs[PITCH_INPUT].getChannels());
 }
 
-void Additator::addEngine(int c) {
+void Additator::addChannel(int c) {
 	Engine& e = *(_engines[c] = new Engine());
 	e.reset();
 	e.sampleRateChange();
@@ -59,7 +59,7 @@ void Additator::addEngine(int c) {
 	}
 }
 
-void Additator::removeEngine(int c) {
+void Additator::removeChannel(int c) {
 	delete _engines[c];
 	_engines[c] = NULL;
 }

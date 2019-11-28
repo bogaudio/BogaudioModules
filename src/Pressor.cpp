@@ -26,12 +26,12 @@ int Pressor::channels() {
 	return std::max(inputs[LEFT_INPUT].getChannels(), inputs[RIGHT_INPUT].getChannels());
 }
 
-void Pressor::addEngine(int c) {
+void Pressor::addChannel(int c) {
 	_engines[c] = new Engine();
 	_engines[c]->sampleRateChange();
 }
 
-void Pressor::removeEngine(int c) {
+void Pressor::removeChannel(int c) {
 	delete _engines[c];
 	_engines[c] = NULL;
 }

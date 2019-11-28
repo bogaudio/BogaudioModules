@@ -15,12 +15,12 @@ int Follow::channels() {
 	return inputs[IN_INPUT].getChannels();
 }
 
-void Follow::addEngine(int c) {
+void Follow::addChannel(int c) {
 	_rms[c] = new RootMeanSquare(1000.0f, 1.0f, 500.0f);
 	_rms[c]->setSampleRate(APP->engine->getSampleRate());
 }
 
-void Follow::removeEngine(int c) {
+void Follow::removeChannel(int c) {
 	delete _rms[c];
 	_rms[c] = NULL;
 }

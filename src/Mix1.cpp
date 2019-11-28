@@ -16,7 +16,7 @@ int Mix1::channels() {
 	return inputs[IN_INPUT].getChannels();
 }
 
-void Mix1::addEngine(int c) {
+void Mix1::addChannel(int c) {
 	_engines[c] = new MixerChannel(
 		params[LEVEL_PARAM],
 		params[LEVEL_PARAM], // not used
@@ -29,7 +29,7 @@ void Mix1::addEngine(int c) {
 	_engines[c]->setSampleRate(APP->engine->getSampleRate());
 }
 
-void Mix1::removeEngine(int c) {
+void Mix1::removeChannel(int c) {
 	delete _engines[c];
 	_engines[c] = NULL;
 }

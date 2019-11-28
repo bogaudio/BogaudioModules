@@ -45,13 +45,13 @@ int ADSR::channels() {
 	return inputs[GATE_INPUT].getChannels();
 }
 
-void ADSR::addEngine(int c) {
+void ADSR::addChannel(int c) {
 	_engines[c] = new Engine();
 	_engines[c]->reset();
 	_engines[c]->sampleRateChange();
 }
 
-void ADSR::removeEngine(int c) {
+void ADSR::removeChannel(int c) {
 	delete _engines[c];
 	_engines[c] = NULL;
 }

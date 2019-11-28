@@ -50,13 +50,13 @@ int AD::channels() {
 	return std::max(1, inputs[TRIGGER_INPUT].getChannels());
 }
 
-void AD::addEngine(int c) {
+void AD::addChannel(int c) {
 	_engines[c] = new Engine(_modulationSteps);
 	_engines[c]->reset();
 	_engines[c]->sampleRateChange();
 }
 
-void AD::removeEngine(int c) {
+void AD::removeChannel(int c) {
 	delete _engines[c];
 	_engines[c] = NULL;
 }

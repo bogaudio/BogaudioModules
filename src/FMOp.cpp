@@ -87,7 +87,7 @@ int FMOp::channels() {
 	return std::max(1, std::max(inputs[PITCH_INPUT].getChannels(), inputs[FM_INPUT].getChannels()));
 }
 
-void FMOp::addEngine(int c) {
+void FMOp::addChannel(int c) {
 	_engines[c] = new Engine();
 	_engines[c]->reset();
 	_engines[c]->sampleRateChange();
@@ -96,7 +96,7 @@ void FMOp::addEngine(int c) {
 	}
 }
 
-void FMOp::removeEngine(int c) {
+void FMOp::removeChannel(int c) {
 	delete _engines[c];
 	_engines[c] = NULL;
 }

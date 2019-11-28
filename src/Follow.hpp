@@ -44,8 +44,8 @@ struct Follow : BGModule {
 
 	bool active() override;
 	int channels() override;
-	void addEngine(int c) override;
-	void removeEngine(int c) override;
+	void addChannel(int c) override;
+	void removeChannel(int c) override;
 	void sampleRateChange() override;
 	void processChannel(const ProcessArgs& args, int c) override;
 };

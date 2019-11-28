@@ -89,8 +89,8 @@ struct LFO : LFOBase {
 	void sampleRateChange() override;
 	bool active() override;
 	int channels() override;
-	void addEngine(int c) override;
-	void removeEngine(int c) override;
+	void addChannel(int c) override;
+	void removeChannel(int c) override;
 	void modulateChannel(int c) override;
 	void always(const ProcessArgs& args) override;
 	void processChannel(const ProcessArgs& args, int c) override;

@@ -23,12 +23,12 @@ int Nsgt::channels() {
 	return std::max(inputs[LEFT_INPUT].getChannels(), inputs[RIGHT_INPUT].getChannels());
 }
 
-void Nsgt::addEngine(int c) {
+void Nsgt::addChannel(int c) {
 	_engines[c] = new Engine();
 	_engines[c]->sampleRateChange();
 }
 
-void Nsgt::removeEngine(int c) {
+void Nsgt::removeChannel(int c) {
 	delete _engines[c];
 	_engines[c] = NULL;
 }
