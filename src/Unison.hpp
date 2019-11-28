@@ -38,7 +38,6 @@ struct Unison : BGModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(CHANNELS_PARAM, 1.0f, 16.0f, 1.0f, "Channels");
 		configParam(DETUNE_PARAM, 0.0f, maxDetuneCents, 0.0f, "Detune");
-		onReset();
 	}
 
 	void modulate() override;

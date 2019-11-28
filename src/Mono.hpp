@@ -47,7 +47,6 @@ struct Mono : BGModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(COMPRESSION_PARAM, 0.0f, 1.0f, 0.2f, "Compression", "", 0.0f, 10.0f);
 		configParam<AmpliferParamQuantity>(LEVEL_PARAM, 0.0f, 1.0f, 1.0f, "Output level");
-		onReset();
 	}
 
 	void sampleRateChange() override;
