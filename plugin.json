@@ -415,8 +415,26 @@
     },
     {
       "slug": "Bogaudio-Mono",
-      "name": "Mono",
+      "name": "MONO",
       "description": "Poly-to-mono converter with onboard compressor",
+      "tags": [
+        "Utility",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Bogaudio-Assign",
+      "name": "ASSIGN",
+      "description": "Poly voice (re)assigner",
+      "tags": [
+        "Utility",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Bogaudio-Unison",
+      "name": "UNISON",
+      "description": "Poly unison voicing utility with detune",
       "tags": [
         "Utility",
         "Polyphonic"
@@ -526,22 +544,6 @@
       "description": "6HP blank panel",
       "tags": [
         "Blank"
-      ]
-    },
-    {
-      "slug": "Bogaudio-Unison",
-      "name": "UNISON",
-      "description": "",
-      "tags": [
-
-      ]
-    },
-    {
-      "slug": "Bogaudio-Assign",
-      "name": "ASSIGN",
-      "description": "",
-      "tags": [
-
       ]
     }
   ]
