@@ -65,6 +65,7 @@
 #include "template_panels.hpp"
 
 #include "Unison.hpp"
+#include "Assign.hpp"
 //NEW_INCLUDES_HERE
 
 Plugin *pluginInstance;
@@ -126,6 +127,8 @@ void init(rack::Plugin *p) {
 	p->addModel(modelReftone);
 
 	p->addModel(modelMono);
+	p->addModel(modelAssign);
+	p->addModel(modelUnison);
 
 	p->addModel(modelBool);
 	p->addModel(modelCmp);
@@ -163,6 +166,5 @@ void init(rack::Plugin *p) {
 	p->addModel(modelThirtyHP);
 #endif
 
-	p->addModel(modelUnison);
 	//NEW_MODELS_HERE
 }
