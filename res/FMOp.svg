@@ -34,8 +34,8 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="640"
-     inkscape:window-height="480"
+     inkscape:window-width="468"
+     inkscape:window-height="449"
      id="namedview339"
      showgrid="false"
      inkscape:zoom="0.62105263"
@@ -701,6 +701,8 @@
      id="g225"
      transform="translate(10,45)">
     <!-- <polyline points="0,0 0,354" stroke="#0f0" stroke-width="1" fill="none" transform="translate(39 0)" /> -->
+    <!-- <polyline points="0,0 0,354" stroke="#0f0" stroke-width="1" fill="none" transform="translate(25 0)" /> -->
+    <!-- <polyline points="0,0 0,354" stroke="#0f0" stroke-width="1" fill="none" transform="translate(53 0)" /> -->
   </g>
   <g
      id="use227"
@@ -1532,11 +1534,10 @@
   </g>
   <g
      id="g265"
-     transform="translate(30,141)">
-    <!-- <rect width="38" height="6" fill="#f0f" transform="translate(0 0)" /> -->
+     transform="translate(34.5,141)">
     <g
        aria-label="ENV"
-       transform="translate(9,6.2)"
+       transform="translate(0,6.2)"
        style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;letter-spacing:1px;fill:#333333"
        id="text263">
       <path
@@ -1645,11 +1646,10 @@
   </g>
   <g
      id="g275"
-     transform="translate(30,197)">
-    <!-- <rect width="38" height="6" fill="#f0f" transform="translate(0 0)" /> -->
+     transform="translate(34.5,197)">
     <g
        aria-label="ENV"
-       transform="translate(9,6.2)"
+       transform="translate(0,6.2)"
        style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;letter-spacing:1px;fill:#333333"
        id="text273">
       <path
@@ -1762,11 +1762,10 @@
   </g>
   <g
      id="g285"
-     transform="translate(30,253)">
-    <!-- <rect width="38" height="6" fill="#f0f" transform="translate(0 0)" /> -->
+     transform="translate(34.5,253)">
     <g
        aria-label="ENV"
-       transform="translate(9,6.2)"
+       transform="translate(0,6.2)"
        style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;letter-spacing:1px;fill:#333333"
        id="text283">
       <path

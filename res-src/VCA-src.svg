@@ -53,10 +53,6 @@
       </g>
     </symbol>
 
-    <symbol id="light-small" viewBox="0 0 6.4px 6.4px">
-      <rect width="6.4" height="6.4" fill="#0f0" />
-    </symbol>
-
     <symbol id="input" viewBox="0 0 24px 24px">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0" />
@@ -136,9 +132,10 @@
     </g>
   </g>
 
-  <g transform="translate(6.5 334)">
-    <use id="LINEAR_LIGHT" xlink:href="#light-small" transform="translate(0 0.5)" />
-    <text font-size="5pt" letter-spacing="1px" transform="translate(8 6)">LIN</text>
-    <use id="LINEAR_PARAM" xlink:href="#button" transform="translate(23 -1)" />
+  <g transform="translate(10.5 334)">
+    <text font-size="5pt" letter-spacing="1px" transform="translate(0 6)">LIN</text>
+    <use id="LINEAR_PARAM" xlink:href="#button" transform="translate(15 -1)" />
   </g>
+  <!-- <polyline points="0,0 0,380" stroke-width="0.5" stroke="#0f0" transform="translate(36.5 0)" /> -->
+  <!-- <polyline points="0,0 0,380" stroke-width="0.5" stroke="#0f0" transform="translate(8.5 0)" /> -->
 </svg>

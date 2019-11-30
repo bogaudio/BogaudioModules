@@ -48,10 +48,6 @@
         <circle r="4" stroke-width="1" stroke="#00f" fill="#f00" />
       </g>
     </symbol>
-
-    <symbol id="light-small" viewBox="0 0 6.4px 6.4px">
-      <rect width="6.4" height="6.4" fill="#0f0" />
-    </symbol>
   </defs>
 
   <rect width="100%" height="100%" fill="#ddd" />
@@ -88,20 +84,14 @@
         <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
       </g>
 
-      <g transform="translate(7 41)">
-        <!-- <polyline points="0,3.2 70,3.2" stroke="#0f0" stroke-width="1" fill="none" /> -->
-        <use id="TRACK1_PARAM" xlink:href="#button-small" transform="translate(22 -1.3)" />
-        <use id="TRACK1_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
-        <text font-size="5pt" letter-spacing="0.5px" transform="translate(7.3 5.5)">TRK</text>
-        <!-- <rect width="90" height="5" fill="#0f0" transform="translate(0 -6)" /> -->
+      <g transform="translate(9.5 41)">
+        <text font-size="5pt" letter-spacing="1px" transform="translate(0 5.5)">TRK</text>
+        <use id="TRACK1_PARAM" xlink:href="#button-small" transform="translate(17 -1.3)" />
       </g>
 
-      <g transform="translate(7 52)">
-        <!-- <polyline points="0,3.2 70,3.2" stroke="#0f0" stroke-width="1" fill="none" /> -->
-        <use id="INVERT1_PARAM" xlink:href="#button-small" transform="translate(22 -1.3)" />
-        <use id="INVERT1_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
-        <text font-size="5pt" letter-spacing="1.2px" transform="translate(7.3 5.5)">INV</text>
-        <!-- <rect width="90" height="5" fill="#0f0" transform="translate(0 -6)" /> -->
+      <g transform="translate(9.5 52)">
+        <text font-size="5pt" letter-spacing="1.2px" transform="translate(1 5.5)">INV</text>
+        <use id="INVERT1_PARAM" xlink:href="#button-small" transform="translate(17 -1.3)" />
       </g>
 
       <g transform="translate(5.5 64)">
@@ -134,20 +124,14 @@
         <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
       </g>
 
-      <g transform="translate(7 41)">
-        <!-- <polyline points="0,3.2 70,3.2" stroke="#0f0" stroke-width="1" fill="none" /> -->
-        <use id="TRACK2_PARAM" xlink:href="#button-small" transform="translate(22 -1.3)" />
-        <use id="TRACK2_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
-        <text font-size="5pt" letter-spacing="0.5px" transform="translate(7.3 5.5)">TRK</text>
-        <!-- <rect width="90" height="5" fill="#0f0" transform="translate(0 -6)" /> -->
+      <g transform="translate(9.5 41)">
+        <text font-size="5pt" letter-spacing="1px" transform="translate(0 5.5)">TRK</text>
+        <use id="TRACK2_PARAM" xlink:href="#button-small" transform="translate(17 -1.3)" />
       </g>
 
-      <g transform="translate(7 52)">
-        <!-- <polyline points="0,3.2 70,3.2" stroke="#0f0" stroke-width="1" fill="none" /> -->
-        <use id="INVERT2_PARAM" xlink:href="#button-small" transform="translate(22 -1.3)" />
-        <use id="INVERT2_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
-        <text font-size="5pt" letter-spacing="1.2px" transform="translate(7.3 5.5)">INV</text>
-        <!-- <rect width="90" height="5" fill="#0f0" transform="translate(0 -6)" /> -->
+      <g transform="translate(9.5 52)">
+        <text font-size="5pt" letter-spacing="1.2px" transform="translate(1 5.5)">INV</text>
+        <use id="INVERT2_PARAM" xlink:href="#button-small" transform="translate(17 -1.3)" />
       </g>
 
       <g transform="translate(5.5 64)">

@@ -31,7 +31,6 @@ struct LLFO : LFOBase {
 	};
 
 	enum LightsIds {
-		SLOW_LIGHT,
 		SINE_LIGHT,
 		RAMP_UP_LIGHT,
 		SQUARE_LIGHT,

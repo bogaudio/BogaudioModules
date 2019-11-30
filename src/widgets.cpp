@@ -137,6 +137,12 @@ ToggleButton18::ToggleButton18() {
 }
 
 
+IndicatorButtonGreen9::IndicatorButtonGreen9() {
+	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_9px_0.svg")));
+	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_9px_1_green.svg")));
+}
+
+
 NVGcolor bogaudio::decibelsToColor(float db) {
 	if (db < -80.0f) {
 		return nvgRGBA(0x00, 0x00, 0x00, 0x00);

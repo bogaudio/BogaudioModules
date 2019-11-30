@@ -30,7 +30,6 @@ struct XFade : BGModule {
 	};
 
 	enum LightsIds {
-		LINEAR_LIGHT,
 		NUM_LIGHTS
 	};
 
@@ -55,7 +54,6 @@ struct XFade : BGModule {
 	void sampleRateChange() override;
 	bool active() override;
 	int channels() override;
-	void always(const ProcessArgs& args) override;
 	void processChannel(const ProcessArgs& args, int c) override;
 };
 

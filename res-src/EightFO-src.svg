@@ -219,10 +219,6 @@
         <circle r="4" stroke-width="1" stroke="#00f" fill="#f00" />
       </g>
     </symbol>
-
-    <symbol id="light-small" viewBox="0 0 6.4px 6.4px">
-      <rect width="6.4" height="6.4" fill="#0f0" />
-    </symbol>
   </defs>
 
   <rect width="100%" height="100%" fill="#ddd" />
@@ -253,12 +249,9 @@
   <!-- <rect width="20" height="10" fill="#0f0" transform="translate(108 130)" /> -->
   <text font-size="6pt" letter-spacing="1px" transform="translate(34 133)">0V = C-3 = 2.04HZ</text>
 
-  <g transform="translate(86 335)">
-    <!-- <rect width="230" height="15" fill="#0f0" transform="translate(-30 -17)" /> -->
-    <!-- <rect width="230" height="15" fill="#0f0" transform="translate(-30 8)" /> -->
-    <use id="SLOW_PARAM" xlink:href="#button-small" transform="translate(40 -1.3)" />
-    <use id="SLOW_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
+  <g transform="translate(78 335)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(9 6.1)">SLOW</text>
+    <use id="SLOW_PARAM" xlink:href="#button-small" transform="translate(40 -1.3)" />
   </g>
 
   <!-- <rect width="230" height="10" fill="#0f0" transform="translate(0 137)" /> -->

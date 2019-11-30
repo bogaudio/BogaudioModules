@@ -58,7 +58,6 @@ struct EightFO : LFOBase {
 	};
 
 	enum LightsIds {
-		SLOW_LIGHT,
 		NUM_LIGHTS
 	};
 
@@ -144,7 +143,6 @@ struct EightFO : LFOBase {
 	void removeChannel(int c) override;
 	void modulate() override;
 	void modulateChannel(int c) override;
-	void always(const ProcessArgs& args) override;
 	void processChannel(const ProcessArgs& args, int c) override;
 	Phasor::phase_delta_t phaseOffset(int c, Param& p, Input& i, Phasor::phase_delta_t baseOffset);
 	void updateOutput(int c, bool useSample, Output& output, Phasor::phase_delta_t& offset, float& sample, bool& active);

@@ -35,8 +35,6 @@ struct AD : BGModule {
 	enum LightsIds {
 		ATTACK_LIGHT,
 		DECAY_LIGHT,
-		LOOP_LIGHT,
-		LINEAR_LIGHT,
 		NUM_LIGHTS
 	};
 

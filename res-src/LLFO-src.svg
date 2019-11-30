@@ -138,13 +138,9 @@
     <use xlink:href="#knobguide-frequency-llfo" transform="translate(0 -7.5)" />
   </g>
 
-  <g transform="translate(2 72)">
-    <!-- <rect width="45" height="8" fill="#f0f" transform="translate(0 -9)" /> -->
-    <!-- <rect width="230" height="15" fill="#0f0" transform="translate(-30 -17)" /> -->
-    <!-- <rect width="230" height="15" fill="#0f0" transform="translate(-30 8)" /> -->
-    <use id="SLOW_PARAM" xlink:href="#button-small" transform="translate(32 -1)" />
-    <use id="SLOW_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
-    <text font-size="6pt" letter-spacing="0.5px" transform="translate(8 6.1)">SLOW</text>
+  <g transform="translate(0 72)">
+    <text font-size="6pt" letter-spacing="1px" transform="translate(4 6.1)">SLOW</text>
+    <use id="SLOW_PARAM" xlink:href="#button-small" transform="translate(31 -1)" />
   </g>
 
   <g transform="translate(0.5 88)">

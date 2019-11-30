@@ -98,10 +98,6 @@
       </g>
     </symbol>
 
-    <symbol id="light-small" viewBox="0 0 6.4px 6.4px">
-      <rect width="6.4" height="6.4" fill="#0f0" />
-    </symbol>
-
     <symbol id="light-tiny" viewBox="0 0 1.1px 1.1px">
       <rect width="3.2" height="3.2" fill="#0f0" />
     </symbol>
@@ -114,7 +110,8 @@
 
   <!-- <polyline points="22.5,0 22.5,380" stroke-width="0.5" stroke="#0f0" /> -->
   <!-- <polyline points="5,0 5,380" stroke-width="0.5" stroke="#0f0" /> -->
-  <!-- <polyline points="40,0 40,380" stroke-width="0.5" stroke="#0f0" /> -->
+  <!-- <polyline points="25,0 25,380" stroke-width="0.5" stroke="#0f0" /> -->
+  <!-- <polyline points="38,0 38,380" stroke-width="0.5" stroke="#0f0" /> -->
   <!-- <rect width="45" height="10" fill="#0f0" transform="translate(0 68)" /> -->
   <!-- <rect width="45" height="10" fill="#0f0" transform="translate(0 127)" /> -->
   <!-- <rect width="45" height="10" fill="#0f0" transform="translate(0 177)" /> -->
@@ -141,20 +138,14 @@
     <use id="DECAY_LIGHT" xlink:href="#light-tiny" transform="translate(20.8 40)" />
   </g>
 
-  <g transform="translate(2.5 132.5)">
-    <!-- <polyline points="0,3.2 70,3.2" stroke="#0f0" stroke-width="1" fill="none" /> -->
-    <use id="LOOP_PARAM" xlink:href="#button-small" transform="translate(31 -1.3)" />
-    <use id="LOOP_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
-    <text font-size="6pt" letter-spacing="0.5px" transform="translate(8 6.1)">LOOP</text>
-    <!-- <rect width="90" height="10" fill="#0f0" transform="translate(0 7)" /> -->
+  <g transform="translate(7.5 132.5)">
+    <text font-size="5pt" letter-spacing="0.5px" transform="translate(0 6)">LOOP</text>
+    <use id="LOOP_PARAM" xlink:href="#button-small" transform="translate(21 -1)" />
   </g>
 
-  <g transform="translate(2.5 147)">
-    <!-- <polyline points="0,3.2 70,3.2" stroke="#0f0" stroke-width="1" fill="none" /> -->
-    <use id="LINEAR_PARAM" xlink:href="#button-small" transform="translate(31 -1.3)" />
-    <use id="LINEAR_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
-    <text font-size="6pt" letter-spacing="2px" transform="translate(8 6.1)">LIN</text>
-    <!-- <rect width="90" height="10" fill="#0f0" transform="translate(0 7)" /> -->
+  <g transform="translate(13.5 147)">
+    <text font-size="5pt" letter-spacing="1.5px" transform="translate(-1 6)">LIN</text>
+    <use id="LINEAR_PARAM" xlink:href="#button-small" transform="translate(15 -1)" />
   </g>
 
   <g transform="translate(0 160.5)">

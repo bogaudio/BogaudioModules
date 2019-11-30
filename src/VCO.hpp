@@ -40,8 +40,6 @@ struct VCO : BGModule {
 	};
 
 	enum LightsIds {
-		SLOW_LIGHT,
-		LINEAR_LIGHT,
 		NUM_LIGHTS
 	};
 
@@ -109,7 +107,6 @@ struct VCO : BGModule {
 	void removeChannel(int c) override;
 	void modulate() override;
 	void modulateChannel(int c) override;
-	void always(const ProcessArgs& args) override;
 	void processChannel(const ProcessArgs& args, int c) override;
 };
 

@@ -40,7 +40,6 @@ struct LFO : LFOBase {
 	};
 
 	enum LightsIds {
-		SLOW_LIGHT,
 		NUM_LIGHTS
 	};
 
@@ -92,7 +91,6 @@ struct LFO : LFOBase {
 	void addChannel(int c) override;
 	void removeChannel(int c) override;
 	void modulateChannel(int c) override;
-	void always(const ProcessArgs& args) override;
 	void processChannel(const ProcessArgs& args, int c) override;
 	void updateOutput(int c, Phasor& wave, bool useSample, bool invert, Output& output, float& sample, bool& active);
 };

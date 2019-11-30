@@ -29,7 +29,6 @@ struct Switch : BGModule {
 	};
 
 	enum LightsIds {
-		LATCH_LIGHT,
 		NUM_LIGHTS
 	};
 
@@ -49,7 +48,6 @@ struct Switch : BGModule {
 	int channels() override;
 	void channelsChanged(int before, int after) override;
 	void modulate() override;
-	void always(const ProcessArgs& args) override;
 	void processChannel(const ProcessArgs& args, int _c) override;
 };
 

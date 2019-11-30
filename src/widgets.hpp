@@ -88,6 +88,10 @@ struct ToggleButton18 : ToggleButton {
 	ToggleButton18();
 };
 
+struct IndicatorButtonGreen9 : SvgSwitch {
+	IndicatorButtonGreen9();
+};
+
 NVGcolor decibelsToColor(float db);
 
 struct VUSlider : SliderKnob {

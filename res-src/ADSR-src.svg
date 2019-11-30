@@ -118,10 +118,6 @@
       </g>
     </symbol>
 
-    <symbol id="light-small" viewBox="0 0 6.4px 6.4px">
-      <rect width="6.4" height="6.4" fill="#0f0" />
-    </symbol>
-
     <symbol id="light-tiny" viewBox="0 0 1.1px 1.1px">
       <rect width="3.2" height="3.2" fill="#0f0" />
     </symbol>
@@ -173,12 +169,9 @@
     <use id="RELEASE_LIGHT" xlink:href="#light-tiny" transform="translate(20.8 40)" />
   </g>
 
-  <g transform="translate(4 247)">
-    <!-- <polyline points="0,3.2 70,3.2" stroke="#0f0" stroke-width="1" fill="none" /> -->
-    <use id="LINEAR_PARAM" xlink:href="#button-small" transform="translate(28 -1.3)" />
-    <use id="LINEAR_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
-    <text font-size="6pt" letter-spacing="2px" transform="translate(9 6.1)">LIN</text>
-    <!-- <rect width="90" height="10" fill="#0f0" transform="translate(0 7)" /> -->
+  <g transform="translate(10.5 247)">
+    <text font-size="5pt" letter-spacing="1px" transform="translate(0 6)">LIN</text>
+    <use id="LINEAR_PARAM" xlink:href="#button-small" transform="translate(15 -1)" />
   </g>
 
   <g transform="translate(0 262)">

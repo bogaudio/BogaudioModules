@@ -35,10 +35,6 @@ struct SampleHold : BGModule {
 	};
 
 	enum LightsIds {
-		TRACK1_LIGHT,
-		TRACK2_LIGHT,
-		INVERT1_LIGHT,
-		INVERT2_LIGHT,
 		NUM_LIGHTS
 	};
 
@@ -78,9 +74,7 @@ struct SampleHold : BGModule {
 	void dataFromJson(json_t* root) override;
 	void processChannel(const ProcessArgs& args, int c) override;
 	void processChannel(
-		Light& trackLight,
 		Param& trackParam,
-		Light& invertLight,
 		Param& invertParam,
 		Trigger* trigger,
 		Param& triggerParam,

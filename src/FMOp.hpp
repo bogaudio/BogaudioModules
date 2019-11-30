@@ -46,9 +46,6 @@ struct FMOp : BGModule {
 	};
 
 	enum LightsIds {
-		ENV_TO_LEVEL_LIGHT,
-		ENV_TO_FEEDBACK_LIGHT,
-		ENV_TO_DEPTH_LIGHT,
 		NUM_LIGHTS
 	};
 
@@ -123,7 +120,6 @@ struct FMOp : BGModule {
 	void removeChannel(int c) override;
 	void modulate() override;
 	void modulateChannel(int c) override;
-	void always(const ProcessArgs& args) override;
 	void processChannel(const ProcessArgs& args, int c) override;
 };
 

@@ -32,7 +32,6 @@ struct VCA : BGModule {
 	};
 
 	enum LightsIds {
-		LINEAR_LIGHT,
 		NUM_LIGHTS
 	};
 
