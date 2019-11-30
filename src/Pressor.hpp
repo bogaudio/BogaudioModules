@@ -44,10 +44,6 @@ struct Pressor : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	struct Engine {
 		float thresholdDb = 0.0f;
 		float ratio = 0.0f;
@@ -79,7 +75,7 @@ struct Pressor : BGModule {
 	bool _softKnee = true;
 
 	Pressor() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(THRESHOLD_PARAM, 0.0f, 1.0f, 0.8f, "Threshold", " dB", 0.0f, 30.0f, -24.0f);
 		configParam<DynamicsRatioParamQuantity>(RATIO_PARAM, 0.0f, 1.0f, 0.55159f, "Ratio");
 		configParam<ScaledSquaringParamQuantity<500>>(ATTACK_PARAM, 0.0f, 1.0f, 0.31623f, "Attack", " ms");

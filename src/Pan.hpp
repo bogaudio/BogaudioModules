@@ -30,10 +30,6 @@ struct Pan : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	Panner _panner1[maxChannels];
 	Panner _panner2[maxChannels];
 	bogaudio::dsp::SlewLimiter _slew1[maxChannels];
@@ -42,7 +38,7 @@ struct Pan : BGModule {
 	Saturator _saturatorRight[maxChannels];
 
 	Pan() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(PAN1_PARAM, -1.0f, 1.0f, 0.0f, "Panning 1", "%", 0.0f, 100.0f);
 		configParam(PAN2_PARAM, -1.0f, 1.0f, 0.0f, "Panning 2", "%", 0.0f, 100.0f);
 

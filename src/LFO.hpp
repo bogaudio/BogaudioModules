@@ -39,10 +39,6 @@ struct LFO : LFOBase {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	struct Engine {
 		int sampleSteps = 1;
 		int sampleStep = 0;
@@ -75,7 +71,7 @@ struct LFO : LFOBase {
 	const float amplitude = 5.0f;
 	Engine* _engines[maxChannels] {};
 
-	LFO() : LFOBase(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	LFO() : LFOBase(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {
 		configParam<LFOFrequencyParamQuantity>(FREQUENCY_PARAM, -5.0f, 8.0f, 0.0f, "Frequency", " Hz");
 		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow");
 		configParam(SAMPLE_PARAM, 0.0f, 1.0f, 0.0f, "Output sampling", "%", 0.0f, 100.0f);

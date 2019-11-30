@@ -26,12 +26,8 @@ struct Bool : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	Bool() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 	}
 
 	void processChannel(const ProcessArgs& args, int c) override;

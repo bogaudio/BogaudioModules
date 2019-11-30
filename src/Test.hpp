@@ -122,10 +122,6 @@ struct Test : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 #ifdef LPF
 	LowPassFilter _lpf;
 #elif LPFNOISE
@@ -248,7 +244,7 @@ struct Test : BGModule {
 	: _average(APP->engine->getSampleRate(), 1.0f, 1000.0f)
 #endif
 	{
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(PARAM1_PARAM, 0.0f, 1.0f, 0.5f, "param1");
 		configParam(PARAM2_PARAM, 0.0f, 1.0f, 0.5f, "param2");
 		configParam(PARAM3_PARAM, 0.0f, 1.0f, 0.5f, "param3");

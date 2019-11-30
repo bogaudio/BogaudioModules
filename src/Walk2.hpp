@@ -42,10 +42,6 @@ struct Walk2 : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	const float historySeconds = 1.0f;
 	const int historyPoints = 100;
 	int _historySteps;
@@ -74,7 +70,7 @@ struct Walk2 : BGModule {
 	, _outsY(historyPoints, 0.0f)
 	, _jumpTo(NULL)
 	{
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(RATE_X_PARAM, 0.0f, 1.0f, 0.1f, "Rate X", "%", 0.0f, 100.0f);
 		configParam(RATE_Y_PARAM, 0.0f, 1.0f, 0.1f, "Rate Y", "%", 0.0f, 100.0f);
 		configParam(OFFSET_X_PARAM, -1.0f, 1.0f, 0.0f, "Offset X", " V", 0.0f, 5.0f);

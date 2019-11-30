@@ -28,10 +28,6 @@ struct Reftone : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	int _pitch = 9;
 	int _octave = 4;
 	float _fine = 0.0f;
@@ -40,7 +36,7 @@ struct Reftone : BGModule {
 	SineOscillator _sine;
 
 	Reftone() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(PITCH_PARAM, 0.0f, 11.0f, 9.0f, "Pitch");
 		configParam(OCTAVE_PARAM, 1.0f, 8.0f, 4.0f, "Octave");
 		configParam(FINE_PARAM, -0.99f, 0.99f, 0.0f, "Fine tune", " cents", 0.0f, 100.0f);

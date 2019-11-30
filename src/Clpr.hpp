@@ -31,10 +31,6 @@ struct Clpr : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	struct Engine {
 		float thresholdDb = 0.0f;
 		float outGain = -1.0f;
@@ -49,7 +45,7 @@ struct Clpr : BGModule {
 	bool _softKnee = true;
 
 	Clpr() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(THRESHOLD_PARAM, 0.0f, 1.0f, 0.8f, "Threshold", " dB", 0.0f, 30.0f, -24.0f);
 		configParam(OUTPUT_GAIN_PARAM, 0.0f, 1.0f, 0.0f, "Output gain", " dB", 0.0f, 24.0f);
 		configParam(KNEE_PARAM, 0.0f, 1.0f, 0.0f, "Knee");

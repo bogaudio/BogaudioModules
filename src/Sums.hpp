@@ -28,12 +28,8 @@ struct Sums : DisableOutputLimitModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	Sums() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 	}
 
 	void processChannel(const ProcessArgs& args, int c) override;

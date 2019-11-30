@@ -26,10 +26,6 @@ struct Mono : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	RootMeanSquare _channelRMSs[maxChannels];
 	float _channelLevels[maxChannels] {};
 	RootMeanSquare _detectorRMS;
@@ -44,7 +40,7 @@ struct Mono : BGModule {
 	float _compressionDb = 0.0f;
 
 	Mono() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(COMPRESSION_PARAM, 0.0f, 1.0f, 0.2f, "Compression", "", 0.0f, 10.0f);
 		configParam<AmpliferParamQuantity>(LEVEL_PARAM, 0.0f, 1.0f, 1.0f, "Output level");
 	}

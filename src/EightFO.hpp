@@ -57,10 +57,6 @@ struct EightFO : LFOBase {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	enum Wave {
 		NO_WAVE,
 		RAMP_UP_WAVE,
@@ -118,7 +114,7 @@ struct EightFO : LFOBase {
 	Wave _wave = NO_WAVE;
 	Engine* _engines[maxChannels] {};
 
-	EightFO() : LFOBase(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	EightFO() : LFOBase(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {
 		configParam<LFOFrequencyParamQuantity>(FREQUENCY_PARAM, -5.0f, 8.0f, 0.0, "Frequency", " Hz");
 		configParam(WAVE_PARAM, 1.0, 5.0, 3.0, "Waveform");
 		configParam(SLOW_PARAM, 0.0, 1.0, 0.0, "Slow");

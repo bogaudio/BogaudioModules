@@ -28,14 +28,10 @@ struct Follow : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	RootMeanSquare* _rms[maxChannels] {};
 
 	Follow() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(RESPONSE_PARAM, 0.0f, 1.0f, 0.3f, "Sensitivity", "%", 0.0f, 100.0f);
 		configParam(SCALE_PARAM, 0.0f, 1.0f, 1.0f, "Scale", "%", 0.0f, 100.0f);
 

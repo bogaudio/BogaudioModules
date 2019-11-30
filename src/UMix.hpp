@@ -32,16 +32,12 @@ struct UMix : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	bool _sum = true;
 	bool _cvMode = false;
 	Saturator _saturator[maxChannels];
 
 	UMix() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(LEVEL_PARAM, 0.0f, 1.0f, 1.0f, "Level", "%", 0.0f, 100.0f);
 	}
 

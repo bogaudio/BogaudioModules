@@ -30,10 +30,6 @@ struct Stack : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	const float _minCVOut = semitoneToCV(24.0); // C1
 	const float _maxCVOut = semitoneToCV(120.0); // C9
 
@@ -44,7 +40,7 @@ struct Stack : BGModule {
 	float _outCV[maxChannels] {};
 
 	Stack() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(SEMIS_PARAM, 0.0f, 11.0f, 0.0f, "Semitones");
 		configParam(OCTAVE_PARAM, -3.0f, 3.0f, 0.0f, "Octaves");
 		configParam(FINE_PARAM, -0.99f, 0.99f, 0.0f, "Fine tune", " cents", 0.0f, 100.0f);

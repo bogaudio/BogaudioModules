@@ -28,16 +28,12 @@ struct AnalyzerXL : AnalyzerBase {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	float _range = 0.0f;
 	float _smooth = 0.25f;
 	AnalyzerCore::Quality _quality = AnalyzerCore::QUALITY_GOOD;
 	AnalyzerCore::Window _window = AnalyzerCore::WINDOW_KAISER;
 
-	AnalyzerXL() : AnalyzerBase(8, NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+	AnalyzerXL() : AnalyzerBase(8, NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {
 		reset();
 	}
 

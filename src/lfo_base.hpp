@@ -21,7 +21,7 @@ struct LFOBase : BGModule {
 		float offset() override;
 	};
 
-	LFOBase(int np, int ni, int no, int nl) {
+	LFOBase(int np, int ni, int no, int nl = 0) {
 		config(np, ni, no, nl);
 	}
 

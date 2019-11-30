@@ -26,16 +26,12 @@ struct Unison : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	const float maxDetuneCents = 50.0f;
 	int _channels = 0;
 	float _cents = 0.0f;
 
 	Unison() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(CHANNELS_PARAM, 1.0f, 16.0f, 1.0f, "Channels");
 		configParam(DETUNE_PARAM, 0.0f, maxDetuneCents, 0.0f, "Detune");
 	}

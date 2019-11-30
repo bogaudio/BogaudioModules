@@ -52,10 +52,6 @@ struct Test2 : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 #ifdef COMPLEX_BIQUAD
 	ComplexBiquadFilter _complexBiquad;
 #elif MULTIPOLE
@@ -70,7 +66,7 @@ struct Test2 : BGModule {
 #endif
 
 	Test2() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(PARAM1A_PARAM, 0.0f, 1.0f, 0.0f, "param1a");
 		configParam(PARAM2A_PARAM, 0.0f, 1.0f, 0.0f, "param2a");
 		configParam(PARAM3A_PARAM, 0.0f, 1.0f, 0.0f, "param3a");

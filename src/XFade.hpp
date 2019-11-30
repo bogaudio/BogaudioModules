@@ -29,10 +29,6 @@ struct XFade : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	bool _linear = false;
 	float _mix[maxChannels] {};
 	float _curveIn[maxChannels];
@@ -40,7 +36,7 @@ struct XFade : BGModule {
 	CrossFader _mixer[maxChannels];
 
 	XFade() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(MIX_PARAM, -1.0f, 1.0f, 0.0f, "Mix", "%", 0.0f, 100.0f);
 		configParam(CURVE_PARAM, 0.0f, 1.0f, 0.5f, "Curve");
 		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear");

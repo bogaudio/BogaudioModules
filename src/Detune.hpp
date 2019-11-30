@@ -28,10 +28,6 @@ struct Detune : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	float _cents[maxChannels] {};
 	float _lastCents[maxChannels];
 	float _lastInCV[maxChannels];
@@ -39,7 +35,7 @@ struct Detune : BGModule {
 	float _minusCV[maxChannels] {};
 
 	Detune() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(CENTS_PARAM, 0.0f, 50.0f, 0.0f, "Cents");
 
 		for (int i = 0; i < maxChannels; ++i) {

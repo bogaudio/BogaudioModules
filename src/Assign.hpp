@@ -25,10 +25,6 @@ struct Assign : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	int _channelsOut;
 	Trigger _resetTrigger;
 	Trigger _gateTrigger[maxChannels];
@@ -43,7 +39,7 @@ struct Assign : BGModule {
 	unsigned long _step = 0;
 
 	Assign() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(CHANNELS_PARAM, 1.0f, 16.0f, 0.0f, "Channels");
 		reset();
 	}

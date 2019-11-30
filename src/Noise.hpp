@@ -29,10 +29,6 @@ struct Noise : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	int _noiseChannels = 1;
 	BlueNoiseGenerator _blue;
 	WhiteNoiseGenerator _white;
@@ -41,7 +37,7 @@ struct Noise : BGModule {
 	GaussianNoiseGenerator _gauss;
 
 	Noise() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 	}
 
 	json_t* dataToJson() override;

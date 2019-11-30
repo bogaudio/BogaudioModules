@@ -23,15 +23,11 @@ struct Blank3 : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	RootMeanSquare _rms;
 	float _level = 0.0f;
 
 	Blank3() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		sampleRateChange();
 	}
 

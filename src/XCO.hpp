@@ -62,10 +62,6 @@ struct XCO : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	struct Engine {
 		static constexpr int oversample = 8;
 
@@ -134,7 +130,7 @@ struct XCO : BGModule {
 	};
 
 	XCO() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam<XCOFrequencyParamQuantity>(FREQUENCY_PARAM, -3.0f, 6.0f, 0.0f, "Frequency", " Hz");
 		configParam(FINE_PARAM, -1.0f, 1.0f, 0.0f, "Fine tune", " cents", 0.0f, 100.0f);
 		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow mode");

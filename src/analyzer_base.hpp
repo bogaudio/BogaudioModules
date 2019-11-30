@@ -128,7 +128,7 @@ struct AnalyzerBase : BGModule {
 	float _rangeDb = 80.0f;
 	AnalyzerCore _core;
 
-	AnalyzerBase(int nChannels, int np, int ni, int no, int nl) : _core(nChannels) {
+	AnalyzerBase(int nChannels, int np, int ni, int no, int nl = 0) : _core(nChannels) {
 		config(np, ni, no, nl);
 	}
 };

@@ -280,9 +280,13 @@ def make_enums(widgets_by_type, comments, indent)
   i2 = indent ? "\t\t" : "\t"
   groups = %w(Params Inputs Outputs Lights).map do |type|
     ids = (widgets_by_type[type.downcase] || []).map(&:id)
-    ids << "NUM_#{type.upcase}"
-    "#{i1}enum #{type}Ids {\n#{i2}#{ids.join(",\n#{i2}")}\n#{i1}};"
-  end
+    if ids.empty? && type == 'Lights'
+      nil
+    else
+      ids << "NUM_#{type.upcase}"
+      "#{i1}enum #{type}Ids {\n#{i2}#{ids.join(",\n#{i2}")}\n#{i1}};"
+    end
+  end.reject { |s| s.nil? }
   s = groups.join("\n\n")
   s = [make_comment(true, indent), s, make_comment(false, indent)].join("\n") if comments
   s
@@ -332,6 +336,9 @@ def make_stub(widgets_by_type, template, options)
     s.gsub!(/%PARAMCONFIGS%/, make_param_configs(widgets_by_type, false, true, options))
   end
   s.sub!(/\s*\}\s*(Model\*.*)\Z/, "\n}\n\n\n\\1")
+  if widgets_by_type['lights'].nil?
+    s.sub!(/, NUM_LIGHTS\)/, ')')
+  end
   s = [make_comment(true, false), s, make_comment(false, false)].join("\n") if comments
   s
 end

@@ -31,10 +31,6 @@ struct Walk : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	float _offset[maxChannels] {};
 	float _scale[maxChannels] {};
 	Trigger _jumpTrigger[maxChannels];
@@ -42,7 +38,7 @@ struct Walk : BGModule {
 	bogaudio::dsp::SlewLimiter _slew[maxChannels];
 
 	Walk() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(RATE_PARAM, 0.0f, 1.0f, 0.1f, "Rate", "%", 0.0f, 100.0f);
 		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "Offset", " V", 0.0f, 5.0f);
 		configParam(SCALE_PARAM, 0.0f, 1.0f, 1.0f, "Scale", "%", 0.0f, 100.0f);

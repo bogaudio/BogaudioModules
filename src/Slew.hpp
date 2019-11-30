@@ -30,10 +30,6 @@ struct Slew : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	float _riseShape = 0.0f;
 	float _fallShape = 0.0f;
 	bool _rising[maxChannels];
@@ -42,7 +38,7 @@ struct Slew : BGModule {
 	ShapedSlewLimiter _fall[maxChannels];
 
 	Slew() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam<EnvelopeSegmentParamQuantity>(RISE_PARAM, 0.0f, 1.0f, 0.31623f, "Rise", " s");
 		configParam(RISE_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "Rise shape");
 		configParam<EnvelopeSegmentParamQuantity>(FALL_PARAM, 0.0f, 1.0f, 0.31623f, "Fall", " s");

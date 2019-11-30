@@ -34,10 +34,6 @@ struct SampleHold : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	enum NoiseType {
 		WHITE_NOISE_TYPE,
 		BLUE_NOISE_TYPE,
@@ -58,7 +54,7 @@ struct SampleHold : BGModule {
 	float _rangeScale = 5.0f;
 
 	SampleHold() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(TRIGGER1_PARAM, 0.0f, 10.0f, 0.0f, "Trigger 1");
 		configParam(TRIGGER2_PARAM, 0.0f, 10.0f, 0.0f, "Trigger 2");
 		configParam(TRACK1_PARAM, 0.0f, 1.0f, 0.0f, "Track 1");

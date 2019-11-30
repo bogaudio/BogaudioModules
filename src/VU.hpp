@@ -26,10 +26,6 @@ struct VU : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	RootMeanSquare _lRms;
 	RootMeanSquare _rRms;
 	float _lLevel = 0.0f;
@@ -45,7 +41,7 @@ struct VU : BGModule {
 	float _rPeakLevel = 0.0f;
 
 	VU() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		sampleRateChange();
 		_lRms.setSensitivity(1.0f);
 		_rRms.setSensitivity(1.0f);

@@ -29,14 +29,10 @@ struct Lag : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	ShapedSlewLimiter _slew;
 
 	Lag() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(TIME_PARAM, 0.0f, 1.0f, 0.5f, "time");
 		configParam(TIME_SCALE_PARAM, 0.0f, 2.0f, 1.0f, "time_scale");
 		configParam(SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "shape");

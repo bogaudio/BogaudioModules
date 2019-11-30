@@ -29,16 +29,12 @@ struct Manual : TriggerOnLoadModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	Trigger _trigger;
 	rack::dsp::PulseGenerator _pulse;
 	bogaudio::dsp::Timer* _initialDelay = NULL;
 
 	Manual() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(TRIGGER_PARAM, 0.0f, 1.0f, 0.0f, "Trigger");
 		_triggerOnLoad = false;
 		_initialDelay = new bogaudio::dsp::Timer(APP->engine->getSampleRate(), 0.01f);

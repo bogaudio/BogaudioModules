@@ -26,10 +26,6 @@ struct VCAmp : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	const float maxDecibels = 12.0f;
 	const float minDecibels = Amplifier::minDecibels;
 	Amplifier _amplifier[maxChannels];
@@ -39,7 +35,7 @@ struct VCAmp : BGModule {
 	float _rmsLevel = 0.0f;
 
 	VCAmp() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(LEVEL_PARAM, 0.0f, 1.0f, fabs(minDecibels) / (maxDecibels - minDecibels), "Level", " dB", 0.0f, maxDecibels - minDecibels, minDecibels);
 
 		sampleRateChange();

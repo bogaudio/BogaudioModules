@@ -30,10 +30,6 @@ struct FlipFlop : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	bool _flipped1[maxChannels] {};
 	bool _flipped2[maxChannels] {};
 	PositiveZeroCrossing _trigger1[maxChannels];
@@ -42,7 +38,7 @@ struct FlipFlop : BGModule {
 	Trigger _resetTrigger2[maxChannels];
 
 	FlipFlop() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		reset();
 	}
 

@@ -39,10 +39,6 @@ struct VCM : DisableOutputLimitModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightsIds {
-		NUM_LIGHTS
-	};
-
 	Amplifier _amplifier1[maxChannels];
 	Amplifier _amplifier2[maxChannels];
 	Amplifier _amplifier3[maxChannels];
@@ -53,7 +49,7 @@ struct VCM : DisableOutputLimitModule {
 	};
 
 	VCM() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam<LevelParamQuantity>(LEVEL1_PARAM, 0.0f, 1.0f, 0.8f, "Level 1");
 		configParam<LevelParamQuantity>(LEVEL2_PARAM, 0.0f, 1.0f, 0.8f, "Level 2");
 		configParam<LevelParamQuantity>(LEVEL3_PARAM, 0.0f, 1.0f, 0.8f, "Level 3");
