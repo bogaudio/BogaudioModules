@@ -51,6 +51,10 @@ void LFO::removeChannel(int c) {
 	_engines[c] = NULL;
 }
 
+void LFO::modulate() {
+	_slowMode = params[SLOW_PARAM].getValue() > 0.5f;
+}
+
 void LFO::modulateChannel(int c) {
 	Engine& e = *_engines[c];
 

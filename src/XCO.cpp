@@ -85,6 +85,7 @@ void XCO::removeChannel(int c) {
 }
 
 void XCO::modulate() {
+	_slowMode = params[SLOW_PARAM].getValue() > 0.5f;
 	_fmLinearMode = params[FM_TYPE_PARAM].getValue() < 0.5f;
 }
 

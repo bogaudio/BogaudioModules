@@ -102,6 +102,8 @@ void VCO::removeChannel(int c) {
 }
 
 void VCO::modulate() {
+	_slowMode = params[SLOW_PARAM].getValue() > 0.5f;
+	_linearMode = params[LINEAR_PARAM].getValue() > 0.5f;
 	_fmLinearMode = params[FM_TYPE_PARAM].getValue() < 0.5f;
 	_fmDepth = params[FM_PARAM].getValue();
 }

@@ -77,6 +77,9 @@ void AD::modulateChannel(int c) {
 	e.envelope.setDecay(e.decaySL.next(decay * 10.f));
 
 	e.envelope.setLinearShape(_linearMode);
+
+	_loopMode = params[LOOP_PARAM].getValue() > 0.5f;
+	_linearMode = params[LINEAR_PARAM].getValue() > 0.5f;
 }
 
 void AD::always(const ProcessArgs& args) {

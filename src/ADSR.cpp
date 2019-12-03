@@ -56,6 +56,10 @@ void ADSR::removeChannel(int c) {
 	_engines[c] = NULL;
 }
 
+void ADSR::modulate() {
+	_linearMode = params[LINEAR_PARAM].getValue() > 0.5f;
+}
+
 void ADSR::modulateChannel(int c) {
 	Engine& e = *_engines[c];
 

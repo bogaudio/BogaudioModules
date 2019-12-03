@@ -28,6 +28,8 @@ void LLFO::addChannel(int c) {
 }
 
 void LLFO::modulate() {
+	_slowMode = params[SLOW_PARAM].getValue() > 0.5f;
+
 	_invert = false;
 	Wave wave = (Wave)params[WAVE_PARAM].getValue();
 	switch (wave) {

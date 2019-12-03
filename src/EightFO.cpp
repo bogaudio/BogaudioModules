@@ -65,6 +65,7 @@ void EightFO::removeChannel(int c) {
 
 void EightFO::modulate() {
 	_wave = (Wave)roundf(params[WAVE_PARAM].getValue());
+	_slowMode = params[SLOW_PARAM].getValue() > 0.5f;
 }
 
 void EightFO::modulateChannel(int c) {

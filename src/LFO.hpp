@@ -86,6 +86,7 @@ struct LFO : LFOBase {
 	int channels() override;
 	void addChannel(int c) override;
 	void removeChannel(int c) override;
+	void modulate() override;
 	void modulateChannel(int c) override;
 	void processChannel(const ProcessArgs& args, int c) override;
 	void updateOutput(int c, Phasor& wave, bool useSample, bool invert, Output& output, float& sample, bool& active);
