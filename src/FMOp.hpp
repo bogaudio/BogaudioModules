@@ -45,6 +45,14 @@ struct FMOp : BGModule {
 		NUM_OUTPUTS
 	};
 
+	enum LightsIds {
+		ATTACK_LIGHT,
+		DECAY_LIGHT,
+		SUSTAIN_LIGHT,
+		RELEASE_LIGHT,
+		NUM_LIGHTS
+	};
+
 	static constexpr float amplitude = 5.0f;
 	static constexpr int oversample = 8;
 	static constexpr float oversampleMixIncrement = 0.01f;
@@ -79,6 +87,10 @@ struct FMOp : BGModule {
 	bool _levelEnvelopeOn = false;
 	bool _feedbackEnvelopeOn = false;
 	bool _depthEnvelopeOn = false;
+	int _attackLightSum;
+	int _decayLightSum;
+	int _sustainLightSum;
+	int _releaseLightSum;
 	Engine* _engines[maxChannels] {};
 
 	struct RatioParamQuantity : ParamQuantity {
@@ -91,7 +103,7 @@ struct FMOp : BGModule {
 	};
 
 	FMOp() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam<RatioParamQuantity>(RATIO_PARAM, -1.0f, 1.0f, 0.0f, "Frequency ratio");
 		configParam(FINE_PARAM, -1.0f, 1.0f, 0.0f, "Fine tune", " cents", 0.0f, 100.0f);
 		configParam<EnvelopeSegmentParamQuantity>(ATTACK_PARAM, 0.0f, 1.0f, 0.141421f, "Attack", " s");
@@ -116,7 +128,9 @@ struct FMOp : BGModule {
 	void removeChannel(int c) override;
 	void modulate() override;
 	void modulateChannel(int c) override;
+	void always(const ProcessArgs& args) override;
 	void processChannel(const ProcessArgs& args, int c) override;
+	void postProcess(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

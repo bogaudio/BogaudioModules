@@ -187,6 +187,10 @@
     <symbol id="light-small" viewBox="0 0 6.4px 6.4px">
       <rect width="6.4" height="6.4" fill="#0f0" />
     </symbol>
+
+    <symbol id="light-tiny" viewBox="0 0 1.1px 1.1px">
+      <rect width="3.2" height="3.2" fill="#0f0" />
+    </symbol>
   </defs>
 
   <rect width="100%" height="100%" fill="#ddd" />
@@ -197,7 +201,7 @@
   <!-- <rect width="35" height="20" fill="#0f0" transform="translate(0 0)" /> -->
   <!-- <rect width="35" height="20" fill="#0f0" transform="translate(115 0)" /> -->
 
-  <!-- <polyline points="0,50 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(140 0)" /> -->
+  <!-- <polyline points="0,50 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(120 0)" /> -->
 
   <text class="title" x="39" y="19" font-size="12pt" letter-spacing="4px">FM-OP</text>
   <g transform="translate(35.5 374)">
@@ -226,6 +230,7 @@
     <use id="ATTACK_PARAM" xlink:href="#knob-medium" transform="translate(20 0)" />
     <!-- <rect width="30" height="18" fill="#0f0" transform="translate(20 26)" /> -->
     <use xlink:href="#knobguide-time" transform="translate(10.5 -9.5)" />
+    <use id="ATTACK_LIGHT" xlink:href="#light-tiny" transform="translate(31.5 29)" />
   </g>
   <g transform="translate(87 139)">
     <!-- <polyline points="0,0 200,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(-140 -10)" /> -->
@@ -233,6 +238,7 @@
     <use id="DECAY_PARAM" xlink:href="#knob-medium" transform="translate(20 0)" />
     <!-- <rect width="30" height="18" fill="#0f0" transform="translate(20 26)" /> -->
     <use xlink:href="#knobguide-time" transform="translate(10.5 -9.5)" />
+    <use id="DECAY_LIGHT" xlink:href="#light-tiny" transform="translate(31.5 29)" />
   </g>
   <g transform="translate(87 184)">
     <!-- <polyline points="0,0 200,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(-140 -10)" /> -->
@@ -240,6 +246,7 @@
     <use id="SUSTAIN_PARAM" xlink:href="#knob-medium" transform="translate(20 0)" />
     <!-- <rect width="30" height="18" fill="#0f0" transform="translate(20 26)" /> -->
     <use xlink:href="#knobguide-linear" transform="translate(10.5 -9.5)" />
+    <use id="SUSTAIN_LIGHT" xlink:href="#light-tiny" transform="translate(31.5 29)" />
   </g>
   <g transform="translate(87 229)">
     <!-- <polyline points="0,0 200,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(-140 -10)" /> -->
@@ -247,6 +254,7 @@
     <use id="RELEASE_PARAM" xlink:href="#knob-medium" transform="translate(20 0)" />
     <!-- <rect width="30" height="18" fill="#0f0" transform="translate(20 26)" /> -->
     <use xlink:href="#knobguide-time" transform="translate(10.5 -9.5)" />
+    <use id="RELEASE_LIGHT" xlink:href="#light-tiny" transform="translate(31.5 29)" />
   </g>
 
   <!-- <rect width="70" height="8" fill="#ff0" transform="translate(80 126)" /> -->
