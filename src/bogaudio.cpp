@@ -8,6 +8,8 @@
 #include "AMRM.hpp"
 #include "Analyzer.hpp"
 #include "AnalyzerXL.hpp"
+#include "ASR.hpp"
+#include "Assign.hpp"
 #include "Blank3.hpp"
 #include "Blank6.hpp"
 #include "Bool.hpp"
@@ -50,6 +52,7 @@
 #include "Sums.hpp"
 #include "Switch.hpp"
 #include "UMix.hpp"
+#include "Unison.hpp"
 #include "VCA.hpp"
 #include "VCAmp.hpp"
 #include "VCM.hpp"
@@ -64,8 +67,6 @@
 #include "Test2.hpp"
 #include "template_panels.hpp"
 
-#include "Unison.hpp"
-#include "Assign.hpp"
 //NEW_INCLUDES_HERE
 
 Plugin *pluginInstance;
@@ -88,6 +89,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelShaper);
 	p->addModel(modelShaperPlus);
 	p->addModel(modelAD);
+	p->addModel(modelASR);
 	p->addModel(modelADSR);
 	p->addModel(modelFollow);
 

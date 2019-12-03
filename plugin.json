@@ -133,6 +133,15 @@
       ]
     },
     {
+      "slug": "Bogaudio-ASR",
+      "name": "ASR",
+      "description": "Utility attack/sustain/release envelope generator",
+      "tags": [
+        "Envelope generator",
+        "Polyphonic"
+      ]
+    },
+    {
       "slug": "Bogaudio-ADSR",
       "name": "ADSR",
       "description": "Utility ADSR envelope generator",

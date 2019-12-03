@@ -31,6 +31,14 @@
       </g>
     </symbol>
 
+    <symbol id="knob-smallest" viewBox="0 0 16px 16px">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f" />
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f" />
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none" />
+      </g>
+    </symbol>
+
     <symbol id="knobguide" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <g transform="rotate(-240) translate(17 0)">
@@ -109,14 +117,14 @@
   <polyline points="0,0 45,0 45,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none" />
 
   <!-- <polyline points="22.5,0 22.5,380" stroke-width="0.5" stroke="#0f0" /> -->
-  <!-- <polyline points="13,0 3,380" stroke-width="0.5" stroke="#0f0" /> -->
-  <!-- <polyline points="32,0 42,380" stroke-width="0.5" stroke="#0f0" /> -->
+  <!-- <polyline points="13,0 13,380" stroke-width="0.5" stroke="#0f0" /> -->
+  <!-- <polyline points="32,0 32,380" stroke-width="0.5" stroke="#0f0" /> -->
   <!-- <rect width="45" height="10" fill="#0f0" transform="translate(0 68)" /> -->
   <!-- <rect width="45" height="10" fill="#0f0" transform="translate(0 127)" /> -->
   <!-- <rect width="45" height="10" fill="#0f0" transform="translate(0 177)" /> -->
 
   <g transform="rotate(-90) translate(-376 13)">
-    <text class="title" font-size="7pt" letter-spacing="2.5px">AD</text>
+    <text class="title" font-size="7pt" letter-spacing="2.5px">ASR</text>
     <g transform="translate(0 12)">
       <text class="brand" font-size="7pt" letter-spacing="2px">BGA</text>
       <rect width="3.0" height="3" fill="#ddd" transform="translate(11.5 -5)" />
@@ -131,38 +139,32 @@
   </g>
 
   <g transform="translate(0 82)">
-    <text font-size="6pt" letter-spacing="2px" transform="translate(6 0)">DECAY</text>
-    <use id="DECAY_PARAM" xlink:href="#knob" transform="translate(0 0)" />
+    <text font-size="6pt" letter-spacing="1px" transform="translate(2.5 0)">RELEASE</text>
+    <use id="RELEASE_PARAM" xlink:href="#knob" transform="translate(0 0)" />
     <use xlink:href="#knobguide" transform="translate(0 0)" />
-    <use id="DECAY_LIGHT" xlink:href="#light-tiny" transform="translate(20.8 40)" />
+    <use id="RELEASE_LIGHT" xlink:href="#light-tiny" transform="translate(20.8 40)" />
   </g>
 
-  <g transform="translate(0 132.5)">
-    <g transform="translate(2.5 0)">
-      <text font-size="5pt" letter-spacing="0.5px" transform="translate(0 6)">RT</text>
-      <use id="RETRIGGER_PARAM" xlink:href="#button-small" transform="translate(9.5 -1)" />
-    </g>
-    <g transform="translate(23.5 0)">
-      <text font-size="5pt" letter-spacing="0.5px" transform="translate(0.3 6)">LP</text>
-      <use id="LOOP_PARAM" xlink:href="#button-small" transform="translate(9.5 -1)" />
-    </g>
+  <g transform="translate(3.5 130)">
+    <text font-size="6pt" letter-spacing="1px" transform="translate(7 11)">S</text>
+    <use id="SUSTAIN_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 0)" />
   </g>
 
-  <g transform="translate(11 147)">
+  <g transform="translate(11 151)">
     <text font-size="5pt" letter-spacing="1.5px" transform="translate(-1 6)">LIN</text>
     <use id="LINEAR_PARAM" xlink:href="#button-small" transform="translate(15 -1)" />
   </g>
 
-  <g transform="translate(0 160.5)">
+  <g transform="translate(0 162)">
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 98)" />
       <rect width="34" height="108" rx="5" fill="#fafafa" />
       <use id="TRIGGER_INPUT" xlink:href="#input" transform="translate(5 3)" />
       <text font-size="5pt" letter-spacing="2px" transform="translate(6.5 35)">TRIG</text>
       <use id="ATTACK_INPUT" xlink:href="#input" transform="translate(5 38)" />
-      <text font-size="5pt" letter-spacing="1px" transform="translate(2 70)">ATTACK</text>
-      <use id="DECAY_INPUT" xlink:href="#input" transform="translate(5 73)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(2.5 105)">DECAY</text>
+      <text font-size="5pt" letter-spacing="2px" transform="translate(9 70)">ATT</text>
+      <use id="RELEASE_INPUT" xlink:href="#input" transform="translate(5 73)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(9 105)">REL</text>
     </g>
     <g transform="translate(5.5 111)">
       <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)" />

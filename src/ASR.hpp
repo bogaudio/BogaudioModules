@@ -6,24 +6,23 @@
 
 using namespace bogaudio::dsp;
 
-extern Model* modelAD;
+extern Model* modelASR;
 
 namespace bogaudio {
 
-struct AD : BGModule {
+struct ASR : BGModule {
 	enum ParamsIds {
 		ATTACK_PARAM,
-		DECAY_PARAM,
-		LOOP_PARAM,
+		RELEASE_PARAM,
+		SUSTAIN_PARAM,
 		LINEAR_PARAM,
-		RETRIGGER_PARAM,
 		NUM_PARAMS
 	};
 
 	enum InputsIds {
 		TRIGGER_INPUT,
 		ATTACK_INPUT,
-		DECAY_INPUT,
+		RELEASE_INPUT,
 		NUM_INPUTS
 	};
 
@@ -35,7 +34,7 @@ struct AD : BGModule {
 
 	enum LightsIds {
 		ATTACK_LIGHT,
-		DECAY_LIGHT,
+		RELEASE_LIGHT,
 		NUM_LIGHTS
 	};
 
@@ -46,32 +45,28 @@ struct AD : BGModule {
 		bool on = false;
 		bogaudio::dsp::ADSR envelope;
 		bogaudio::dsp::SlewLimiter attackSL;
-		bogaudio::dsp::SlewLimiter decaySL;
+		bogaudio::dsp::SlewLimiter releaseSL;
 
 		Engine(int ms) : modulationSteps(ms) {
 			reset();
 			sampleRateChange();
-			envelope.setSustain(0.0f);
-			envelope.setRelease(0.0f);
+			envelope.setDecay(0.0f);
 		}
 		void reset();
 		void sampleRateChange();
 	};
 	Engine* _engines[maxChannels] {};
-	bool _retriggerMode = true;
-	bool _loopMode = false;
 	bool _linearMode = false;
 	int _attackLightSum;
-	int _decayLightSum;
+	int _releaseLightSum;
 	float _invert = 1.0f;
 
-	AD() {
+	ASR() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam<EnvelopeSegmentParamQuantity>(ATTACK_PARAM, 0.0f, 1.0f, 0.141421f, "Attack", " s");
-		configParam<EnvelopeSegmentParamQuantity>(DECAY_PARAM, 0.0f, 1.0f, 0.31623f, "Decay", " s");
-		configParam(LOOP_PARAM, 0.0f, 1.0f, 0.0f, "Loop");
+		configParam<EnvelopeSegmentParamQuantity>(RELEASE_PARAM, 0.0f, 1.0f, 0.31623f, "Release", " s");
+		configParam(SUSTAIN_PARAM, 0.0f, 1.0f, 1.0f, "Sustain", "", 0.0f, 10.0f);
 		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear");
-		configParam(RETRIGGER_PARAM, 0.0f, 1.0f, 1.0f, "Retrigger");
 	}
 
 	void reset() override;
