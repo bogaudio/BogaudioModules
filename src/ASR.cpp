@@ -103,8 +103,8 @@ void ASR::processChannel(const ProcessArgs& args, int c) {
 	outputs[EOC_OUTPUT].setChannels(_channels);
 	outputs[EOC_OUTPUT].setVoltage(e.eocPulseGen.process(APP->engine->getSampleTime()) ? 5.0f : 0.0f, c);
 
-	_attackLightSum += e.envelope.isStage(ADSR::ATTACK_STAGE);
-	_releaseLightSum += e.envelope.isStage(ADSR::RELEASE_STAGE);
+	_attackLightSum += e.envelope.isStage(ADSR::ATTACK_STAGE) || e.envelope.isStage(ADSR::SUSTAIN_STAGE);
+	_releaseLightSum += e.envelope.isStage(ADSR::RELEASE_STAGE) || e.envelope.isStage(ADSR::SUSTAIN_STAGE);
 }
 
 void ASR::postProcess(const ProcessArgs& args) {
