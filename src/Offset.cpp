@@ -2,10 +2,7 @@
 #include "Offset.hpp"
 
 int Offset::channels() {
-	if (inputs[IN_INPUT].isConnected()) {
-		return inputs[IN_INPUT].getChannels();
-	}
-	return 1;
+	return std::max(1, inputs[IN_INPUT].getChannels());
 }
 
 void Offset::processChannel(const ProcessArgs& args, int c) {

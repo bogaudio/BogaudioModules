@@ -10,10 +10,7 @@ bool VCM::active() {
 }
 
 int VCM::channels() {
-	return std::max(
-		std::max(inputs[IN1_INPUT].getChannels(), inputs[IN2_INPUT].getChannels()),
-		std::max(inputs[IN3_INPUT].getChannels(), inputs[IN4_INPUT].getChannels())
-	);
+	return inputs[IN1_INPUT].getChannels();
 }
 
 void VCM::processChannel(const ProcessArgs& args, int c) {

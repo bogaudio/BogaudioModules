@@ -48,10 +48,6 @@ void AddrSeq::dataFromJson(json_t* root) {
 	}
 }
 
-int AddrSeq::channels() {
-	return std::max(1, std::max(inputs[CLOCK_INPUT].getChannels(), inputs[SELECT_INPUT].getChannels()));
-}
-
 void AddrSeq::processChannel(const ProcessArgs& args, int c) {
 	int step = nextStep(
 		c,

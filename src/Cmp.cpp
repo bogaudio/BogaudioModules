@@ -18,7 +18,7 @@ bool Cmp::active() {
 }
 
 int Cmp::channels() {
-	return std::max(1, std::max(inputs[A_INPUT].getChannels(), inputs[B_INPUT].getChannels()));
+	return std::max(1, inputs[A_INPUT].getChannels());
 }
 
 void Cmp::modulate() {

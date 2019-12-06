@@ -1,6 +1,7 @@
 
 #include "addressable_sequence.hpp"
 
+#define POLY_INPUT "poly_input"
 #define SELECT_ON_CLOCK "select_on_clock"
 #define TRIGGERED_SELECT "triggered_select"
 
@@ -23,12 +24,18 @@ void AddressableSequenceModule::sampleRateChange() {
 
 json_t* AddressableSequenceModule::dataToJson() {
 	json_t* root = json_object();
+	json_object_set_new(root, POLY_INPUT, json_integer(_polyInputID));
 	json_object_set_new(root, SELECT_ON_CLOCK, json_boolean(_selectOnClock));
 	json_object_set_new(root, TRIGGERED_SELECT, json_boolean(_triggeredSelect));
 	return root;
 }
 
 void AddressableSequenceModule::dataFromJson(json_t* root) {
+	json_t* p = json_object_get(root, POLY_INPUT);
+	if (p) {
+		_polyInputID = json_integer_value(p);
+	}
+
 	json_t* s = json_object_get(root, SELECT_ON_CLOCK);
 	if (s) {
 		_selectOnClock = json_is_true(s);
@@ -38,6 +45,10 @@ void AddressableSequenceModule::dataFromJson(json_t* root) {
 	if (t) {
 		_triggeredSelect = json_is_true(t);
 	}
+}
+
+int AddressableSequenceModule::channels() {
+	return std::max(1, _polyInputID == _selectInputID ? inputs[_selectInputID].getChannels() : inputs[_clockInputID].getChannels());
 }
 
 int AddressableSequenceModule::nextStep(

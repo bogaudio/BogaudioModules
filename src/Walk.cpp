@@ -1,6 +1,8 @@
 
 #include "Walk.hpp"
 
+#define POLY_INPUT "poly_input"
+
 void Walk::reset() {
 	for (int i = 0; i < maxChannels; ++i) {
 		_jumpTrigger[i].reset();
@@ -13,14 +15,25 @@ void Walk::sampleRateChange() {
 	}
 }
 
+json_t* Walk::dataToJson() {
+	json_t* root = json_object();
+	json_object_set_new(root, POLY_INPUT, json_integer(_polyInputID));
+	return root;
+}
+
+void Walk::dataFromJson(json_t* root) {
+	json_t* p = json_object_get(root, POLY_INPUT);
+	if (p) {
+		_polyInputID = json_integer_value(p);
+	}
+}
+
 int Walk::channels() {
-	return std::max(
-		1,
-		std::max(
-			std::max(inputs[RATE_INPUT].getChannels(), inputs[JUMP_INPUT].getChannels()),
-			std::max(inputs[OFFSET_INPUT].getChannels(), inputs[SCALE_INPUT].getChannels())
-		)
-	);
+	int id = _polyInputID;
+	if (!(_polyInputID == OFFSET_INPUT || _polyInputID == SCALE_INPUT || _polyInputID == JUMP_INPUT)) {
+		id = RATE_INPUT;
+	}
+	return std::max(1, inputs[id].getChannels());
 }
 
 void Walk::modulateChannel(int c) {
@@ -95,6 +108,18 @@ struct WalkWidget : ModuleWidget {
 		addInput(createInput<Port24>(jumpInputPosition, module, Walk::JUMP_INPUT));
 
 		addOutput(createOutput<Port24>(outOutputPosition, module, Walk::OUT_OUTPUT));
+	}
+
+	void appendContextMenu(Menu* menu) override {
+		Walk* m = dynamic_cast<Walk*>(module);
+		assert(m);
+		menu->addChild(new MenuLabel());
+		OptionsMenuItem* p = new OptionsMenuItem("Polyphony channels from");
+		p->addItem(OptionMenuItem("RATE input", [m]() { return m->_polyInputID == Walk::RATE_INPUT; }, [m]() { m->_polyInputID = Walk::RATE_INPUT; }));
+		p->addItem(OptionMenuItem("OFFSET input", [m]() { return m->_polyInputID == Walk::OFFSET_INPUT; }, [m]() { m->_polyInputID = Walk::OFFSET_INPUT; }));
+		p->addItem(OptionMenuItem("SCALE input", [m]() { return m->_polyInputID == Walk::SCALE_INPUT; }, [m]() { m->_polyInputID = Walk::SCALE_INPUT; }));
+		p->addItem(OptionMenuItem("JUMP input", [m]() { return m->_polyInputID == Walk::JUMP_INPUT; }, [m]() { m->_polyInputID = Walk::JUMP_INPUT; }));
+		OptionsMenuItem::addToMenu(p, menu);
 	}
 };
 

@@ -14,7 +14,7 @@ bool Pan::active() {
 }
 
 int Pan::channels() {
-	return std::max(inputs[IN1_INPUT].getChannels(), inputs[IN2_INPUT].getChannels());
+	return inputs[IN1_INPUT].getChannels();
 }
 
 void Pan::processChannel(const ProcessArgs& args, int c) {

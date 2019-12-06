@@ -52,6 +52,7 @@ struct SampleHold : BGModule {
 	NoiseType _noiseType = WHITE_NOISE_TYPE;
 	float _rangeOffset = 1.0f;
 	float _rangeScale = 5.0f;
+	int _polyInputID = TRIGGER1_INPUT;
 
 	SampleHold() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);

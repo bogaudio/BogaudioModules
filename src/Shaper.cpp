@@ -8,7 +8,7 @@ void Shaper::reset() {
 }
 
 int Shaper::channels() {
-	return std::max(1, std::max(inputs[SIGNAL_INPUT].getChannels(), inputs[TRIGGER_INPUT].getChannels()));
+	return std::max(1, inputs[TRIGGER_INPUT].getChannels());
 }
 
 void Shaper::addChannel(int c) {

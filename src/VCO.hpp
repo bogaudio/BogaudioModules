@@ -77,6 +77,7 @@ struct VCO : BGModule {
 	bool _linearMode = false;
 	float _fmDepth = 0.0f;
 	bool _fmLinearMode = false;
+	int _polyInputID = PITCH_INPUT;
 
 	struct VCOFrequencyParamQuantity : FrequencyParamQuantity {
 		float offset() override;
@@ -97,6 +98,8 @@ struct VCO : BGModule {
 
 	void reset() override;
 	void sampleRateChange() override;
+	json_t* dataToJson() override;
+	void dataFromJson(json_t* root) override;
 	bool active() override;
 	int channels() override;
 	void addChannel(int c) override;

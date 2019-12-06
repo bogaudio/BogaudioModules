@@ -20,7 +20,7 @@ bool Nsgt::active() {
 }
 
 int Nsgt::channels() {
-	return std::max(inputs[LEFT_INPUT].getChannels(), inputs[RIGHT_INPUT].getChannels());
+	return inputs[LEFT_INPUT].getChannels();
 }
 
 void Nsgt::addChannel(int c) {

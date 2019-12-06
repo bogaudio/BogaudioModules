@@ -58,7 +58,7 @@ struct AddrSeq : AddressableSequenceModule {
 		void setDisplayValue(float v) override;
 	};
 
-	AddrSeq() {
+	AddrSeq() : AddressableSequenceModule(CLOCK_INPUT, SELECT_INPUT) {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(STEPS_PARAM, 1.0f, 8.0f, 8.0f, "Steps");
 		configParam(DIRECTION_PARAM, 0.0f, 1.0f, 1.0f, "Direction");
@@ -75,7 +75,6 @@ struct AddrSeq : AddressableSequenceModule {
 
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
-	int channels() override;
 	void processChannel(const ProcessArgs& args, int c) override;
 };
 

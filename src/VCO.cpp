@@ -2,6 +2,8 @@
 #include "VCO.hpp"
 #include "dsp/pitch.hpp"
 
+#define POLY_INPUT "poly_input"
+
 float VCO::VCOFrequencyParamQuantity::offset() {
 	VCO* vco = dynamic_cast<VCO*>(module);
 	return vco->_slowMode ? vco->slowModeOffset : 0.0f;
@@ -74,6 +76,19 @@ void VCO::sampleRateChange() {
 	}
 }
 
+json_t* VCO::dataToJson() {
+	json_t* root = json_object();
+	json_object_set_new(root, POLY_INPUT, json_integer(_polyInputID));
+	return root;
+}
+
+void VCO::dataFromJson(json_t* root) {
+	json_t* p = json_object_get(root, POLY_INPUT);
+	if (p) {
+		_polyInputID = json_integer_value(p);
+	}
+}
+
 bool VCO::active() {
 	return (
 		outputs[SQUARE_OUTPUT].isConnected() ||
@@ -84,7 +99,7 @@ bool VCO::active() {
 }
 
 int VCO::channels() {
-	return std::max(1, std::max(inputs[PITCH_INPUT].getChannels(), inputs[FM_INPUT].getChannels()));
+	return std::max(1, _polyInputID == FM_INPUT ? inputs[FM_INPUT].getChannels() : inputs[PITCH_INPUT].getChannels());
 }
 
 void VCO::addChannel(int c) {
@@ -285,6 +300,16 @@ struct VCOWidget : ModuleWidget {
 		addOutput(createOutput<Port24>(sawOutputPosition, module, VCO::SAW_OUTPUT));
 		addOutput(createOutput<Port24>(triangleOutputPosition, module, VCO::TRIANGLE_OUTPUT));
 		addOutput(createOutput<Port24>(sineOutputPosition, module, VCO::SINE_OUTPUT));
+	}
+
+	void appendContextMenu(Menu* menu) override {
+		VCO* m = dynamic_cast<VCO*>(module);
+		assert(m);
+		menu->addChild(new MenuLabel());
+		OptionsMenuItem* p = new OptionsMenuItem("Polyphony channels from");
+		p->addItem(OptionMenuItem("V/OCT input", [m]() { return m->_polyInputID == VCO::PITCH_INPUT; }, [m]() { m->_polyInputID = VCO::PITCH_INPUT; }));
+		p->addItem(OptionMenuItem("FM input", [m]() { return m->_polyInputID == VCO::FM_INPUT; }, [m]() { m->_polyInputID = VCO::FM_INPUT; }));
+		OptionsMenuItem::addToMenu(p, menu);
 	}
 };
 

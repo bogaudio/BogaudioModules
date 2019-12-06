@@ -1,10 +1,6 @@
 
 #include "OneEight.hpp"
 
-int OneEight::channels() {
-	return std::max(1, std::max(inputs[CLOCK_INPUT].getChannels(), inputs[SELECT_INPUT].getChannels()));
-}
-
 void OneEight::processChannel(const ProcessArgs& args, int c) {
 	int step = nextStep(
 		c,

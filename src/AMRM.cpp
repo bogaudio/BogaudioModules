@@ -6,7 +6,7 @@ bool AMRM::active() {
 }
 
 int AMRM::channels() {
-	return std::max(inputs[MODULATOR_INPUT].getChannels(), inputs[CARRIER_INPUT].getChannels());
+	return inputs[CARRIER_INPUT].getChannels();
 }
 
 void AMRM::processChannel(const ProcessArgs& args, int c) {

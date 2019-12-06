@@ -50,14 +50,13 @@ struct OneEight : AddressableSequenceModule {
 		NUM_LIGHTS
 	};
 
-	OneEight() {
+	OneEight() : AddressableSequenceModule(CLOCK_INPUT, SELECT_INPUT) {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(STEPS_PARAM, 1.0f, 8.0f, 8.0f, "Steps");
 		configParam(DIRECTION_PARAM, 0.0f, 1.0f, 1.0f, "Direction");
 		configParam(SELECT_PARAM, 0.0f, 7.0f, 0.0f, "Select step");
 	}
 
-	int channels() override;
 	void processChannel(const ProcessArgs& args, int c) override;
 };
 

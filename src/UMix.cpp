@@ -28,11 +28,7 @@ bool UMix::active() {
 }
 
 int UMix::channels() {
-	int max = 0;
-	for (int i = 0; i < 8; ++i) {
-		max = std::max(max, inputs[IN1_INPUT + i].getChannels());
-	}
-	return max;
+	return inputs[IN1_INPUT].getChannels();
 }
 
 void UMix::processChannel(const ProcessArgs& args, int c) {

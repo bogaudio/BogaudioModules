@@ -12,10 +12,7 @@ bool bogaudio::Switch::active() {
 }
 
 int bogaudio::Switch::channels() {
-	if (inputs[GATE_INPUT].isConnected()) {
-		return inputs[GATE_INPUT].getChannels();
-	}
-	return 1;
+	return std::max(1, inputs[GATE_INPUT].getChannels());
 }
 
 void bogaudio::Switch::channelsChanged(int before, int after) {
@@ -49,19 +46,19 @@ void bogaudio::Switch::processChannel(const ProcessArgs& args, int c) {
 			outputs[OUT2_OUTPUT].writeVoltages(inputs[HIGH2_INPUT].getVoltages());
 		}
 		else {
-			outputs[OUT1_OUTPUT].setChannels(std::max(inputs[LOW1_INPUT].getChannels(), inputs[HIGH1_INPUT].getChannels()));
+			outputs[OUT1_OUTPUT].setChannels(_channels);
 			outputs[OUT1_OUTPUT].setVoltage(inputs[HIGH1_INPUT].getVoltage(c), c);
 
-			outputs[OUT2_OUTPUT].setChannels(std::max(inputs[LOW2_INPUT].getChannels(), inputs[HIGH2_INPUT].getChannels()));
+			outputs[OUT2_OUTPUT].setChannels(_channels);
 			outputs[OUT2_OUTPUT].setVoltage(inputs[HIGH2_INPUT].getVoltage(c), c);
 		}
 	}
 	else {
 		if (_channels == 1) {
-			outputs[OUT1_OUTPUT].setChannels(std::max(inputs[LOW1_INPUT].getChannels(), inputs[HIGH1_INPUT].getChannels()));
+			outputs[OUT1_OUTPUT].setChannels(inputs[LOW1_INPUT].getChannels());
 			outputs[OUT1_OUTPUT].writeVoltages(inputs[LOW1_INPUT].getVoltages());
 
-			outputs[OUT2_OUTPUT].setChannels(std::max(inputs[LOW2_INPUT].getChannels(), inputs[HIGH2_INPUT].getChannels()));
+			outputs[OUT2_OUTPUT].setChannels(inputs[LOW2_INPUT].getChannels());
 			outputs[OUT2_OUTPUT].writeVoltages(inputs[LOW2_INPUT].getVoltages());
 		}
 		else {

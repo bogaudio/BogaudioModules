@@ -6,7 +6,7 @@ bool Clpr::active() {
 }
 
 int Clpr::channels() {
-	return std::max(inputs[LEFT_INPUT].getChannels(), inputs[RIGHT_INPUT].getChannels());
+	return inputs[LEFT_INPUT].getChannels();
 }
 
 void Clpr::addChannel(int c) {

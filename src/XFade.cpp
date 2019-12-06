@@ -12,7 +12,7 @@ bool XFade::active() {
 }
 
 int XFade::channels() {
-	return std::max(inputs[A_INPUT].getChannels(), inputs[B_INPUT].getChannels());
+	return inputs[A_INPUT].getChannels();
 }
 
 void XFade::processChannel(const ProcessArgs& args, int c) {

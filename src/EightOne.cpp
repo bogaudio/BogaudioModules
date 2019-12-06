@@ -1,10 +1,6 @@
 
 #include "EightOne.hpp"
 
-int EightOne::channels() {
-	return std::max(1, std::max(inputs[CLOCK_INPUT].getChannels(), inputs[SELECT_INPUT].getChannels()));
-}
-
 void EightOne::processChannel(const ProcessArgs& args, int c) {
 	int step = nextStep(
 		c,

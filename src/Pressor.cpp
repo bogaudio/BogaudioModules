@@ -23,7 +23,7 @@ bool Pressor::active() {
 }
 
 int Pressor::channels() {
-	return std::max(inputs[LEFT_INPUT].getChannels(), inputs[RIGHT_INPUT].getChannels());
+	return inputs[LEFT_INPUT].getChannels();
 }
 
 void Pressor::addChannel(int c) {

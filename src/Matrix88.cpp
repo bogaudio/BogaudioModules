@@ -2,11 +2,7 @@
 #include "Matrix88.hpp"
 
 int Matrix88::channels() {
-	int max = 0;
-	for (int i = 0; i < 8; ++i) {
-		max = std::max(max, inputs[IN1_INPUT + i].getChannels());
-	}
-	return max;
+	return inputs[IN1_INPUT].getChannels();
 }
 
 void Matrix88::processChannel(const ProcessArgs& args, int c) {

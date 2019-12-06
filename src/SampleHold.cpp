@@ -1,6 +1,7 @@
 
 #include "SampleHold.hpp"
 
+#define POLY_INPUT "poly_input"
 #define NOISE_TYPE "noise_type"
 #define RANGE_OFFSET "range_offset"
 #define RANGE_SCALE "range_scale"
@@ -16,6 +17,7 @@ void SampleHold::reset() {
 
 json_t* SampleHold::dataToJson() {
 	json_t* root = json_object();
+	json_object_set_new(root, POLY_INPUT, json_integer(_polyInputID));
 	json_object_set_new(root, NOISE_TYPE, json_integer((int)_noiseType));
 	json_object_set_new(root, RANGE_OFFSET, json_real(_rangeOffset));
 	json_object_set_new(root, RANGE_SCALE, json_real(_rangeScale));
@@ -23,6 +25,11 @@ json_t* SampleHold::dataToJson() {
 }
 
 void SampleHold::dataFromJson(json_t* root) {
+	json_t* p = json_object_get(root, POLY_INPUT);
+	if (p) {
+		_polyInputID = json_integer_value(p);
+	}
+
 	json_t* nt = json_object_get(root, NOISE_TYPE);
 	if (nt) {
 		_noiseType = (NoiseType)json_integer_value(nt);
@@ -77,7 +84,7 @@ void SampleHold::processChannel(
 	float* value,
 	Output& out
 ) {
-	int n = std::max(1, std::max(triggerInput.getChannels(), in.getChannels()));
+	int n = std::max(1, _polyInputID == IN1_INPUT ? in.getChannels() : triggerInput.getChannels());
 	out.setChannels(n);
 	for (int i = 0; i < n; ++i) {
 		float triggerIn = 0.0f;
@@ -189,6 +196,12 @@ struct SampleHoldWidget : ModuleWidget {
 		SampleHold* m = dynamic_cast<SampleHold*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());
+		{
+			OptionsMenuItem* p = new OptionsMenuItem("Polyphony channels from");
+			p->addItem(OptionMenuItem("GATE input", [m]() { return m->_polyInputID == SampleHold::TRIGGER1_INPUT; }, [m]() { m->_polyInputID = SampleHold::TRIGGER1_INPUT; }));
+			p->addItem(OptionMenuItem("IN input", [m]() { return m->_polyInputID == SampleHold::IN1_INPUT; }, [m]() { m->_polyInputID = SampleHold::IN1_INPUT; }));
+			OptionsMenuItem::addToMenu(p, menu);
+		}
 		{
 			OptionsMenuItem* mi = new OptionsMenuItem("Normal noise");
 			mi->addItem(OptionMenuItem("Blue", [m]() { return m->_noiseType == SampleHold::BLUE_NOISE_TYPE; }, [m]() { m->_noiseType = SampleHold::BLUE_NOISE_TYPE; }));
