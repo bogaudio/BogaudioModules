@@ -19,7 +19,7 @@ void Sine::dataFromJson(json_t* root) {
 	json_t* w = json_object_get(root, WAVE);
 	if (w) {
 		_wave = (Wave)json_integer_value(w);
-		if (!(_wave == TRIANGLE_WAVE || _wave == SAW_WAVE || _wave == SQUARE_WAVE || _wave == PULSE_25_WAVE || _wave == PULSE_10_WAVE)) {
+		if (!(_wave == TRIANGLE_WAVE || _wave == SAW_WAVE || _wave == RAMP_WAVE || _wave == SQUARE_WAVE || _wave == PULSE_25_WAVE || _wave == PULSE_10_WAVE)) {
 			_wave = SINE_WAVE;
 		}
 	}
@@ -48,8 +48,19 @@ void Sine::modulateChannel(int c) {
 	VCOBase::modulateChannel(c);
 	Engine& e = *_engines[c];
 
+	_outputScale = 1.0f;
+	e.sawActive = false;
 	e.squareActive = false;
 	switch (_wave) {
+		case SAW_WAVE: {
+			e.sawActive = true;
+			break;
+		}
+		case RAMP_WAVE: {
+			e.sawActive = true;
+			_outputScale = -1.0f;
+			break;
+		}
 		case SQUARE_WAVE: {
 			e.squareActive = true;
 			e.square.setPulseWidth(e.squarePulseWidthSL.next(0.5f));
@@ -68,7 +79,6 @@ void Sine::modulateChannel(int c) {
 		default: {
 		}
 	}
-	e.sawActive = _wave == SAW_WAVE;
 	e.triangleActive = _wave == TRIANGLE_WAVE;
 	e.sineActive = _wave == SINE_WAVE;
 }
@@ -85,7 +95,7 @@ void Sine::processChannel(const ProcessArgs& args, int c) {
 	VCOBase::processChannel(args, c);
 
 	outputs[OUT_OUTPUT].setChannels(_channels);
-	outputs[OUT_OUTPUT].setVoltage(e.squareOut + e.sawOut + e.triangleOut + e.sineOut, c);
+	outputs[OUT_OUTPUT].setVoltage(_outputScale * (e.squareOut + e.sawOut + e.triangleOut + e.sineOut), c);
 }
 
 struct SineWidget : ModuleWidget {
@@ -141,6 +151,7 @@ struct SineWidget : ModuleWidget {
 		w->addItem(OptionMenuItem("Sine", [m]() { return m->_wave == Sine::SINE_WAVE; }, [m]() { m->_wave = Sine::SINE_WAVE; }));
 		w->addItem(OptionMenuItem("Triangle", [m]() { return m->_wave == Sine::TRIANGLE_WAVE; }, [m]() { m->_wave = Sine::TRIANGLE_WAVE; }));
 		w->addItem(OptionMenuItem("Saw", [m]() { return m->_wave == Sine::SAW_WAVE; }, [m]() { m->_wave = Sine::SAW_WAVE; }));
+		w->addItem(OptionMenuItem("Ramp", [m]() { return m->_wave == Sine::RAMP_WAVE; }, [m]() { m->_wave = Sine::RAMP_WAVE; }));
 		w->addItem(OptionMenuItem("Square", [m]() { return m->_wave == Sine::SQUARE_WAVE; }, [m]() { m->_wave = Sine::SQUARE_WAVE; }));
 		w->addItem(OptionMenuItem("25% pulse", [m]() { return m->_wave == Sine::PULSE_25_WAVE; }, [m]() { m->_wave = Sine::PULSE_25_WAVE; }));
 		w->addItem(OptionMenuItem("10% pulse", [m]() { return m->_wave == Sine::PULSE_10_WAVE; }, [m]() { m->_wave = Sine::PULSE_10_WAVE; }));

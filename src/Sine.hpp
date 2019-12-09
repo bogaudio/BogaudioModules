@@ -33,12 +33,14 @@ struct Sine : VCOBase {
 		SINE_WAVE,
 		TRIANGLE_WAVE,
 		SAW_WAVE,
+		RAMP_WAVE,
 		SQUARE_WAVE,
 		PULSE_25_WAVE,
 		PULSE_10_WAVE
 	};
 
 	Wave _wave = SINE_WAVE;
+	float _outputScale = 1.0f;
 
 	Sine()
 	: VCOBase(
