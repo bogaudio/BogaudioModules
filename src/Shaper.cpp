@@ -79,7 +79,7 @@ void Shaper::postProcess(const ProcessArgs& args) {
 
 bool Shaper::shouldTriggerOnNextLoad() {
 	for (int c = 0; c < _channels; ++c) {
-		if (_core[c]->_stage != _core[c]->STOPPED_STAGE) {
+		if (_core[c] && _core[c]->_stage != _core[c]->STOPPED_STAGE) {
 			return true;
 		}
 	}

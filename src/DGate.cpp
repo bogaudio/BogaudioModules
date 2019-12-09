@@ -108,7 +108,7 @@ bool DGate::stepStage(int c, Param& knob) {
 
 bool DGate::shouldTriggerOnNextLoad() {
 	for (int c = 0; c < _channels; ++c) {
-		if (_engines[c]->stage != STOPPED_STAGE) {
+		if (_engines[c] && _engines[c]->stage != STOPPED_STAGE) {
 			return true;
 		}
 	}
