@@ -29,6 +29,7 @@
 #include "LFO.hpp"
 #include "LLFO.hpp"
 #include "Lmtr.hpp"
+#include "LVCO.hpp"
 #include "Manual.hpp"
 #include "Matrix88.hpp"
 #include "Mix1.hpp"
@@ -47,6 +48,7 @@
 #include "SampleHold.hpp"
 #include "Shaper.hpp"
 #include "ShaperPlus.hpp"
+#include "Sine.hpp"
 #include "Slew.hpp"
 #include "Stack.hpp"
 #include "Sums.hpp"
@@ -75,6 +77,8 @@ void init(rack::Plugin *p) {
 	pluginInstance = p;
 
 	p->addModel(modelVCO);
+	p->addModel(modelLVCO);
+	p->addModel(modelSine);
 	p->addModel(modelXCO);
 	p->addModel(modelAdditator);
 	p->addModel(modelFMOp);

@@ -22,6 +22,24 @@
       ]
     },
     {
+      "slug": "Bogaudio-LVCO",
+      "name": "LVCO",
+      "description": "Compact oscillator",
+      "tags": [
+        "Oscillator",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Bogaudio-Sine",
+      "name": "SINE",
+      "description": "Compact oscillator with phase offset",
+      "tags": [
+        "Oscillator",
+        "Polyphonic"
+      ]
+    },
+    {
       "slug": "Bogaudio-XCO",
       "name": "XCO",
       "description": "Oscillator with wave mixer, wave mods, FM, hard sync",
