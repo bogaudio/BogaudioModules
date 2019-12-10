@@ -34,7 +34,7 @@ bool LFO::active() {
 }
 
 int LFO::channels() {
-	return std::max(1, inputs[PITCH_INPUT].getChannels());
+	return inputs[PITCH_INPUT].getChannels();
 }
 
 void LFO::addChannel(int c) {

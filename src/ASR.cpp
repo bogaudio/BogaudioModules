@@ -47,7 +47,7 @@ bool ASR::active() {
 }
 
 int ASR::channels() {
-	return std::max(1, inputs[TRIGGER_INPUT].getChannels());
+	return inputs[TRIGGER_INPUT].getChannels();
 }
 
 void ASR::addChannel(int c) {

@@ -4,7 +4,7 @@
 void Bool::processChannel(const ProcessArgs& args, int c) {
 	assert(c == 0);
 
-	for (int i = 0, cn = inputs[A_INPUT].getChannels(); i < cn; ++i) {
+	for (int i = 0, cn = std::max(1, inputs[A_INPUT].getChannels()); i < cn; ++i) {
 		bool a = inputs[A_INPUT].getPolyVoltage(i) > 1.0f;
 		bool b = inputs[B_INPUT].getPolyVoltage(i) > 1.0f;
 		outputs[AND_OUTPUT].setChannels(cn);
@@ -15,7 +15,7 @@ void Bool::processChannel(const ProcessArgs& args, int c) {
 		outputs[XOR_OUTPUT].setVoltage(5.0f * (a ^ b), i);
 	}
 
-	int cn = inputs[NOT_INPUT].getChannels();
+	int cn = std::max(1, inputs[NOT_INPUT].getChannels());
 	outputs[NOT_OUTPUT].setChannels(cn);
 	for (int i = 0; i < cn; ++i) {
 		outputs[NOT_OUTPUT].setVoltage(5.0f * (inputs[NOT_INPUT].isConnected() && inputs[NOT_INPUT].getPolyVoltage(i) < 1.0f), i);

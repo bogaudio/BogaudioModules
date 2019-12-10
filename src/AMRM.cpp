@@ -1,12 +1,27 @@
 
 #include "AMRM.hpp"
 
+#define POLY_INPUT "poly_input"
+
+json_t* AMRM::dataToJson() {
+	json_t* root = json_object();
+	json_object_set_new(root, POLY_INPUT, json_integer(_polyInputID));
+	return root;
+}
+
+void AMRM::dataFromJson(json_t* root) {
+	json_t* p = json_object_get(root, POLY_INPUT);
+	if (p) {
+		_polyInputID = json_integer_value(p);
+	}
+}
+
 bool AMRM::active() {
 	return outputs[OUT_OUTPUT].isConnected() || outputs[RECTIFY_OUTPUT].isConnected();
 }
 
 int AMRM::channels() {
-	return inputs[CARRIER_INPUT].getChannels();
+	return _polyInputID == MODULATOR_INPUT ? inputs[MODULATOR_INPUT].getChannels() : inputs[CARRIER_INPUT].getChannels();
 }
 
 void AMRM::processChannel(const ProcessArgs& args, int c) {
@@ -77,6 +92,16 @@ struct AMRMWidget : ModuleWidget {
 
 		addOutput(createOutput<Port24>(rectifyOutputPosition, module, AMRM::RECTIFY_OUTPUT));
 		addOutput(createOutput<Port24>(outOutputPosition, module, AMRM::OUT_OUTPUT));
+	}
+
+	void appendContextMenu(Menu* menu) override {
+		AMRM* m = dynamic_cast<AMRM*>(module);
+		assert(m);
+		menu->addChild(new MenuLabel());
+		OptionsMenuItem* p = new OptionsMenuItem("Polyphony channels from");
+		p->addItem(OptionMenuItem("CAR input", [m]() { return m->_polyInputID == AMRM::CARRIER_INPUT; }, [m]() { m->_polyInputID = AMRM::CARRIER_INPUT; }));
+		p->addItem(OptionMenuItem("MOD input", [m]() { return m->_polyInputID == AMRM::MODULATOR_INPUT; }, [m]() { m->_polyInputID = AMRM::MODULATOR_INPUT; }));
+		OptionsMenuItem::addToMenu(p, menu);
 	}
 };
 

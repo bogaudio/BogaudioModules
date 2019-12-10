@@ -6,7 +6,7 @@ bool Stack::active() {
 }
 
 int Stack::channels() {
-	return std::max(1, inputs[IN_INPUT].getChannels());
+	return inputs[IN_INPUT].getChannels();
 }
 
 void Stack::modulateChannel(int c) {

@@ -84,7 +84,7 @@ bool FMOp::active() {
 }
 
 int FMOp::channels() {
-	return std::max(1, inputs[PITCH_INPUT].getChannels());
+	return inputs[PITCH_INPUT].getChannels();
 }
 
 void FMOp::addChannel(int c) {

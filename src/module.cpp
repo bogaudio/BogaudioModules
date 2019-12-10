@@ -22,7 +22,7 @@ void BGModule::process(const ProcessArgs& args) {
 			_steps = 0;
 
 			int channelsBefore = _channels;
-			int channelsNow = channels();
+			int channelsNow = std::max(1, channels());
 			if (channelsBefore != channelsNow) {
 				_channels = channelsNow;
 				channelsChanged(channelsBefore, channelsNow);

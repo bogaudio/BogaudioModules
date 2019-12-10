@@ -33,7 +33,7 @@ int Walk::channels() {
 	if (!(_polyInputID == OFFSET_INPUT || _polyInputID == SCALE_INPUT || _polyInputID == JUMP_INPUT)) {
 		id = RATE_INPUT;
 	}
-	return std::max(1, inputs[id].getChannels());
+	return inputs[id].getChannels();
 }
 
 void Walk::modulateChannel(int c) {

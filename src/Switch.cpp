@@ -12,7 +12,7 @@ bool bogaudio::Switch::active() {
 }
 
 int bogaudio::Switch::channels() {
-	return std::max(1, inputs[GATE_INPUT].getChannels());
+	return inputs[GATE_INPUT].getChannels();
 }
 
 void bogaudio::Switch::channelsChanged(int before, int after) {

@@ -17,7 +17,7 @@ void DGate::reset() {
 }
 
 int DGate::channels() {
-	return std::max(1, inputs[TRIGGER_INPUT].getChannels());
+	return inputs[TRIGGER_INPUT].getChannels();
 }
 
 void DGate::addChannel(int c) {

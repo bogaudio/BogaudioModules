@@ -31,6 +31,7 @@ struct AMRM : BGModule {
 	};
 
 	Saturator _saturator;
+	int _polyInputID = CARRIER_INPUT;
 
 	AMRM() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
@@ -38,6 +39,8 @@ struct AMRM : BGModule {
 		configParam(DRYWET_PARAM, 0.0f, 1.0f, 1.0f, "Wet mix", "%", 0.0f, 100.0f);
 	}
 
+	json_t* dataToJson() override;
+	void dataFromJson(json_t* root) override;
 	bool active() override;
 	int channels() override;
 	void processChannel(const ProcessArgs& args, int c) override;

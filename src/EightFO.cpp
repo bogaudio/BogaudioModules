@@ -46,7 +46,7 @@ bool EightFO::active() {
 }
 
 int EightFO::channels() {
-	return std::max(1, inputs[PITCH_INPUT].getChannels());
+	return inputs[PITCH_INPUT].getChannels();
 }
 
 void EightFO::addChannel(int c) {

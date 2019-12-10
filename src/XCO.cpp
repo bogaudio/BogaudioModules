@@ -67,7 +67,7 @@ bool XCO::active() {
 }
 
 int XCO::channels() {
-	return std::max(1, inputs[PITCH_INPUT].getChannels());
+	return inputs[PITCH_INPUT].getChannels();
 }
 
 void XCO::addChannel(int c) {

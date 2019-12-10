@@ -4,7 +4,7 @@
 void Sums::processChannel(const ProcessArgs& args, int c) {
 	assert(c == 0);
 
-	for (int i = 0, cn = inputs[A_INPUT].getChannels(); i < cn; ++i) {
+	for (int i = 0, cn = std::max(1, inputs[A_INPUT].getChannels()); i < cn; ++i) {
 		float a = inputs[A_INPUT].getPolyVoltage(i);
 		float b = inputs[B_INPUT].getPolyVoltage(i);
 		outputs[SUM_OUTPUT].setChannels(cn);

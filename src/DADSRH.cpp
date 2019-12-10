@@ -8,7 +8,7 @@ void DADSRH::reset() {
 }
 
 int DADSRH::channels() {
-	return std::max(1, inputs[TRIGGER_INPUT].getChannels());
+	return inputs[TRIGGER_INPUT].getChannels();
 }
 
 void DADSRH::addChannel(int c) {

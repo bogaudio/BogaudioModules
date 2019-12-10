@@ -37,7 +37,7 @@ bool Additator::active() {
 }
 
 int Additator::channels() {
-	return std::max(1, inputs[PITCH_INPUT].getChannels());
+	return inputs[PITCH_INPUT].getChannels();
 }
 
 void Additator::addChannel(int c) {

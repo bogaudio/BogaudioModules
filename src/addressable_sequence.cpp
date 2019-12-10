@@ -48,7 +48,7 @@ void AddressableSequenceModule::dataFromJson(json_t* root) {
 }
 
 int AddressableSequenceModule::channels() {
-	return std::max(1, _polyInputID == _selectInputID ? inputs[_selectInputID].getChannels() : inputs[_clockInputID].getChannels());
+	return _polyInputID == _selectInputID ? inputs[_selectInputID].getChannels() : inputs[_clockInputID].getChannels();
 }
 
 int AddressableSequenceModule::nextStep(

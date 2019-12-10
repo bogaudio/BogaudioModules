@@ -89,7 +89,7 @@ void VCOBase::dataFromJson(json_t* root) {
 }
 
 int VCOBase::channels() {
-	return std::max(1, _polyInputID == _fmInputID ? inputs[_fmInputID].getChannels() : inputs[_pitchInputID].getChannels());
+	return _polyInputID == _fmInputID ? inputs[_fmInputID].getChannels() : inputs[_pitchInputID].getChannels();
 }
 
 void VCOBase::addChannel(int c) {
