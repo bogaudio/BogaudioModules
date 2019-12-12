@@ -46,6 +46,30 @@ struct Knob68 : BGKnob {
 	Knob68();
 };
 
+struct IndicatorKnob : Knob {
+	struct IKWidget : widget::OpaqueWidget {
+		float _angle = 0.0f;
+		NVGcolor _color = nvgRGBA(0x00, 0x00, 0x00, 0x00);
+		std::function<bool()> _drawColorsCB;
+
+		void setAngle(float a);
+		void draw(const DrawArgs& args) override;
+	};
+
+	widget::FramebufferWidget* fb;
+	CircularShadow* shadow;
+	IKWidget* w;
+
+	IndicatorKnob(int dim);
+	void onChange(const event::Change& e) override;
+	inline void setDrawColorsCallback(std::function<bool()> fn) { w->_drawColorsCB = fn; }
+	void redraw();
+};
+
+struct IndicatorKnob19 : IndicatorKnob {
+	IndicatorKnob19() : IndicatorKnob(19) {}
+};
+
 struct Port24 : SvgPort {
 	Port24();
 };

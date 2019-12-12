@@ -58,6 +58,101 @@ Knob68::Knob68() : BGKnob("res/knob_68px.svg", 68) {
 }
 
 
+void IndicatorKnob::IKWidget::setAngle(float a) {
+	assert(a >= -1.0f && a <= 1.0f);
+
+	_angle = a * 0.83f * M_PI;
+	if (a < 0.0f) {
+		_color.r = 1.0f; // 0xff
+		_color.g = 0.6f; // 0x99
+		_color.b = 0.0f; // 0x00
+		_color.a = -a;
+	}
+	else {
+		_color.r = 0.333f; // 0x55
+		_color.g = 1.0f; // 0xff
+		_color.b = 0.333f; // 0x55
+		_color.a = a;
+	}
+}
+
+void IndicatorKnob::IKWidget::draw(const DrawArgs& args) {
+	nvgSave(args.vg);
+
+	float c = box.size.x * 0.5f;
+	nvgTranslate(args.vg, c, c);
+	nvgRotate(args.vg, _angle);
+	nvgTranslate(args.vg, -c, -c);
+
+	float r = c - 0.2f; // FIXME: have some things to scale here, if dim ever won't equal 19.
+	nvgBeginPath(args.vg);
+	nvgCircle(args.vg, c, c, r);
+	nvgFillColor(args.vg, nvgRGBA(0x33, 0x33, 0x33, 0xff));
+	nvgFill(args.vg);
+
+	r -= 2.0f;
+	nvgBeginPath(args.vg);
+	nvgCircle(args.vg, c, c, r);
+	nvgFillColor(args.vg, nvgRGBA(0xee, 0xee, 0xee, 0xff));
+	nvgFill(args.vg);
+	if (!_drawColorsCB || _drawColorsCB()) {
+		nvgBeginPath(args.vg);
+		nvgCircle(args.vg, c, c, r);
+		nvgFillColor(args.vg, _color);
+		nvgFill(args.vg);
+		nvgBeginPath(args.vg);
+		nvgCircle(args.vg, c, c, r);
+		nvgFillColor(args.vg, nvgRGBA(0xaa, 0xaa, 0xaa, 0x7f));
+		nvgFill(args.vg);
+	}
+
+	nvgBeginPath(args.vg);
+	nvgCircle(args.vg, c, 1.6f, 1.3f);
+	nvgFillColor(args.vg, nvgRGBA(0xff, 0xff, 0xff, 0xff));
+	nvgFill(args.vg);
+
+	nvgBeginPath(args.vg);
+	nvgCircle(args.vg, c, 1.9f, 1.3f);
+	nvgFillColor(args.vg, nvgRGBA(0xff, 0xff, 0xff, 0xff));
+	nvgFill(args.vg);
+
+	nvgRestore(args.vg);
+}
+
+IndicatorKnob::IndicatorKnob(int dim) {
+	box.size = math::Vec(dim, dim);
+	box.pos = math::Vec(0, 0);
+	fb = new widget::FramebufferWidget;
+	addChild(fb);
+	fb->box.size = box.size;
+
+	shadow = new CircularShadow;
+	shadow->box.size = box.size;
+	shadow->blurRadius = 2.0;
+	// shadow->opacity = 0.15;
+	shadow->box.pos = Vec(0.0, 3.0);
+	fb->addChild(shadow);
+
+	w = new IKWidget;
+	w->box.size = box.size;
+	w->box.pos = math::Vec(0, 0);
+	fb->addChild(w);
+}
+
+void IndicatorKnob::onChange(const event::Change& e) {
+	fb->dirty = true;
+	if (paramQuantity) {
+		w->setAngle(paramQuantity->getValue());
+	}
+	Knob::onChange(e);
+}
+
+void IndicatorKnob::redraw() {
+	event::Change c;
+	onChange(c);
+}
+
+
 Port24::Port24() {
 	setSvg(APP->window->loadSvg(asset::plugin(pluginInstance, "res/port.svg")));
 	box.size = Vec(24, 24);

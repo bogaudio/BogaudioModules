@@ -1,7 +1,5 @@
 #pragma once
 
-#include <functional>
-
 #include "rack.hpp"
 
 using namespace rack;

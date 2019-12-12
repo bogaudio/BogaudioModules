@@ -104,6 +104,7 @@ struct Matrix88 : BGModule {
 	};
 
 	Saturator _saturators[maxChannels][8];
+	bool _indicatorKnobs = false;
 
 	Matrix88() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
@@ -174,6 +175,8 @@ struct Matrix88 : BGModule {
 		configParam(LEVEL_PARAM, 0.0f, 1.0f, 1.0f, "Level", "%", 0.0f, 100.0f);
 	}
 
+	json_t* dataToJson() override;
+	void dataFromJson(json_t* root) override;
 	int channels() override;
 	void processChannel(const ProcessArgs& args, int c) override;
 };
