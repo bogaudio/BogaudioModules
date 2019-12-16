@@ -8,10 +8,6 @@ extern Plugin *pluginInstance;
 
 namespace bogaudio {
 
-struct Button18 : SvgSwitch {
-	Button18();
-};
-
 struct BGKnob : RoundKnob {
 	BGKnob(const char* svg, int dim);
 
@@ -47,7 +43,7 @@ struct Knob68 : BGKnob {
 };
 
 struct IndicatorKnob : Knob {
-	struct IKWidget : widget::OpaqueWidget {
+	struct IKWidget : widget::Widget {
 		float _angle = 0.0f;
 		NVGcolor _color = nvgRGBA(0x00, 0x00, 0x00, 0x00);
 		std::function<bool()> _drawColorsCB;
@@ -61,6 +57,7 @@ struct IndicatorKnob : Knob {
 	IKWidget* w;
 
 	IndicatorKnob(int dim);
+	void onHover(const event::Hover& e) override;
 	void onChange(const event::Change& e) override;
 	inline void setDrawColorsCallback(std::function<bool()> fn) { w->_drawColorsCB = fn; }
 	void redraw();
@@ -85,6 +82,10 @@ struct SliderSwitch : SvgSwitch {
 
 struct SliderSwitch2State14 : SliderSwitch {
 	SliderSwitch2State14();
+};
+
+struct Button18 : SvgSwitch {
+	Button18();
 };
 
 struct StatefulButton : ParamWidget {
@@ -114,6 +115,39 @@ struct ToggleButton18 : ToggleButton {
 
 struct IndicatorButtonGreen9 : SvgSwitch {
 	IndicatorButtonGreen9();
+};
+
+struct InvertingIndicatorButton : ParamWidget {
+	struct IIBWidget : widget::Widget {
+		int _dim;
+		NVGcolor _color = nvgRGBA(0x00, 0x00, 0x00, 0x00);
+
+		IIBWidget(int dim) : _dim(dim) {}
+
+		void setValue(float v);
+		void draw(const DrawArgs& args) override;
+	};
+
+	widget::FramebufferWidget* fb;
+	CircularShadow* shadow;
+	IIBWidget* w;
+
+	InvertingIndicatorButton(int dim);
+
+	void reset() override;
+	void randomize() override;
+	void onHover(const event::Hover& e) override;
+	void onDoubleClick(const event::DoubleClick& e) override {}
+	void onButton(const event::Button& e) override;
+	void onChange(const event::Change& e) override;
+};
+
+struct InvertingIndicatorButton9 : InvertingIndicatorButton {
+	InvertingIndicatorButton9() : InvertingIndicatorButton(9) {}
+};
+
+struct InvertingIndicatorButton18 : InvertingIndicatorButton {
+	InvertingIndicatorButton18() : InvertingIndicatorButton(18) {}
 };
 
 NVGcolor decibelsToColor(float db);

@@ -84,7 +84,7 @@ void IndicatorKnob::IKWidget::draw(const DrawArgs& args) {
 	nvgRotate(args.vg, _angle);
 	nvgTranslate(args.vg, -c, -c);
 
-	float r = c - 0.2f; // FIXME: have some things to scale here, if dim ever won't equal 19.
+	float r = c - 0.2f; // FIXME: need to scale everything if there is ever a dim != 19.
 	nvgBeginPath(args.vg);
 	nvgCircle(args.vg, c, c, r);
 	nvgFillColor(args.vg, nvgRGBA(0x33, 0x33, 0x33, 0xff));
@@ -100,6 +100,36 @@ void IndicatorKnob::IKWidget::draw(const DrawArgs& args) {
 		nvgCircle(args.vg, c, c, r);
 		nvgFillColor(args.vg, _color);
 		nvgFill(args.vg);
+
+		r -= 0.15f;
+		nvgBeginPath(args.vg);
+		nvgCircle(args.vg, c, c, r);
+		nvgStrokeColor(args.vg, nvgRGBA(0x66, 0x66, 0x66, 0x7f));
+		nvgStrokeWidth(args.vg, 0.3f);
+		nvgStroke(args.vg);
+
+		r -= 0.3f;
+		nvgBeginPath(args.vg);
+		nvgCircle(args.vg, c, c, r);
+		nvgStrokeColor(args.vg, nvgRGBA(0x77, 0x77, 0x77, 0x7f));
+		nvgStrokeWidth(args.vg, 0.3f);
+		nvgStroke(args.vg);
+
+		r -= 0.3f;
+		nvgBeginPath(args.vg);
+		nvgCircle(args.vg, c, c, r);
+		nvgStrokeColor(args.vg, nvgRGBA(0x88, 0x88, 0x88, 0x7f));
+		nvgStrokeWidth(args.vg, 0.3f);
+		nvgStroke(args.vg);
+
+		r -= 0.3f;
+		nvgBeginPath(args.vg);
+		nvgCircle(args.vg, c, c, r);
+		nvgStrokeColor(args.vg, nvgRGBA(0x99, 0x99, 0x99, 0x7f));
+		nvgStrokeWidth(args.vg, 0.3f);
+		nvgStroke(args.vg);
+
+		r -= 0.15f;
 		nvgBeginPath(args.vg);
 		nvgCircle(args.vg, c, c, r);
 		nvgFillColor(args.vg, nvgRGBA(0xaa, 0xaa, 0xaa, 0x7f));
@@ -137,6 +167,14 @@ IndicatorKnob::IndicatorKnob(int dim) {
 	w->box.size = box.size;
 	w->box.pos = math::Vec(0, 0);
 	fb->addChild(w);
+}
+
+void IndicatorKnob::onHover(const event::Hover& e) {
+	math::Vec c = box.size.div(2);
+	float dist = e.pos.minus(c).norm();
+	if (dist <= c.x) {
+		ParamWidget::onHover(e);
+	}
 }
 
 void IndicatorKnob::onChange(const event::Change& e) {
@@ -235,6 +273,154 @@ ToggleButton18::ToggleButton18() {
 IndicatorButtonGreen9::IndicatorButtonGreen9() {
 	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_9px_0.svg")));
 	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_9px_1_green.svg")));
+}
+
+
+void InvertingIndicatorButton::IIBWidget::setValue(float v) {
+	assert(v >= -1.0f && v <= 1.0f);
+
+	if (v < 0.0f) {
+		_color.r = 1.0f; // 0xff
+		_color.g = 0.6f; // 0x99
+		_color.b = 0.0f; // 0x00
+		_color.a = -v;
+	}
+	else {
+		_color.r = 0.333f; // 0x55
+		_color.g = 1.0f; // 0xff
+		_color.b = 0.333f; // 0x55
+		_color.a = v;
+	}
+}
+
+void InvertingIndicatorButton::IIBWidget::draw(const DrawArgs& args) {
+	nvgSave(args.vg);
+
+	float c = box.size.x * 0.5f;
+	float s = ((float)_dim) / 18.0f;
+	float r = c - 0.1f;
+	nvgBeginPath(args.vg);
+	nvgCircle(args.vg, c, c, r);
+	nvgFillColor(args.vg, nvgRGBA(0x88, 0x88, 0x88, 0xff));
+	nvgFill(args.vg);
+
+	r -= std::max(0.3f, 0.5f * s);
+	nvgBeginPath(args.vg);
+	nvgCircle(args.vg, c, c, r);
+	nvgFillColor(args.vg, nvgRGBA(0x33, 0x33, 0x33, 0xff));
+	nvgFill(args.vg);
+
+	r -= std::max(0.2f, 0.3f * s);
+	nvgBeginPath(args.vg);
+	nvgCircle(args.vg, c, c, r);
+	nvgFillColor(args.vg, nvgRGBA(0xee, 0xee, 0xee, 0xff));
+	nvgFill(args.vg);
+	nvgBeginPath(args.vg);
+	nvgCircle(args.vg, c, c, r);
+	nvgFillColor(args.vg, _color);
+	nvgFill(args.vg);
+
+	r -= 0.15f;
+	nvgBeginPath(args.vg);
+	nvgCircle(args.vg, c, c, r);
+	nvgStrokeColor(args.vg, nvgRGBA(0x66, 0x66, 0x66, 0x7f));
+	nvgStrokeWidth(args.vg, 0.3f * s);
+	nvgStroke(args.vg);
+
+	float dr = std::max(0.2f, 0.3f * s);
+	r -= dr;
+	nvgBeginPath(args.vg);
+	nvgCircle(args.vg, c, c, r);
+	nvgStrokeColor(args.vg, nvgRGBA(0x77, 0x77, 0x77, 0x7f));
+	nvgStrokeWidth(args.vg, dr);
+	nvgStroke(args.vg);
+
+	r -= dr;
+	nvgBeginPath(args.vg);
+	nvgCircle(args.vg, c, c, r);
+	nvgStrokeColor(args.vg, nvgRGBA(0x88, 0x88, 0x88, 0x7f));
+	nvgStrokeWidth(args.vg, dr);
+	nvgStroke(args.vg);
+
+	r -= dr;
+	nvgBeginPath(args.vg);
+	nvgCircle(args.vg, c, c, r);
+	nvgStrokeColor(args.vg, nvgRGBA(0x99, 0x99, 0x99, 0x7f));
+	nvgStrokeWidth(args.vg, dr);
+	nvgStroke(args.vg);
+
+	r -= 0.15f;
+	nvgBeginPath(args.vg);
+	nvgCircle(args.vg, c, c, r);
+	nvgFillColor(args.vg, nvgRGBA(0xaa, 0xaa, 0xaa, 0x7f));
+	nvgFill(args.vg);
+
+	nvgRestore(args.vg);
+}
+
+InvertingIndicatorButton::InvertingIndicatorButton(int dim) {
+	box.size = math::Vec(dim, dim);
+	// box.pos = math::Vec(0, 0);
+	fb = new widget::FramebufferWidget;
+	addChild(fb);
+	fb->box.size = box.size;
+
+	shadow = new CircularShadow;
+	shadow->box.size = box.size;
+	shadow->blurRadius = 2.0;
+	shadow->box.pos = Vec(0.0, 1.0);
+	fb->addChild(shadow);
+
+	w = new IIBWidget(dim);
+	w->box.size = box.size;
+	// w->box.pos = math::Vec(0, 0);
+	fb->addChild(w);
+}
+
+void InvertingIndicatorButton::reset() {
+	if (paramQuantity) {
+		paramQuantity->reset();
+	}
+}
+
+void InvertingIndicatorButton::randomize() {
+	if (paramQuantity) {
+		paramQuantity->setValue(roundf(2.0f * random::uniform()) - 1.0f);
+	}
+}
+
+void InvertingIndicatorButton::onHover(const event::Hover& e) {
+	math::Vec c = box.size.div(2);
+	float dist = e.pos.minus(c).norm();
+	if (dist <= c.x) {
+		ParamWidget::onHover(e);
+	}
+}
+
+void InvertingIndicatorButton::onButton(const event::Button& e) {
+	ParamWidget::onButton(e);
+	if (!paramQuantity || !(e.action == GLFW_PRESS && (e.mods & RACK_MOD_MASK) == 0)) {
+		return;
+	}
+
+	float value = paramQuantity->getValue();
+	if (value <= -1.0f) {
+		paramQuantity->setValue(0.0f);
+	}
+	else if (value < 1.0f) {
+		paramQuantity->setValue(1.0f);
+	}
+	else {
+		paramQuantity->setValue(-1.0f);
+	}
+}
+
+void InvertingIndicatorButton::onChange(const event::Change& e) {
+	fb->dirty = true;
+	if (paramQuantity) {
+		w->setValue(paramQuantity->getValue());
+	}
+	ParamWidget::onChange(e);
 }
 
 

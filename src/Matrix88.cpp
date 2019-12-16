@@ -1,38 +1,7 @@
 
 #include "Matrix88.hpp"
 
-#define INDICATOR_KNOBS "indicator_knobs"
-
-json_t* Matrix88::dataToJson() {
-	json_t* root = json_object();
-	json_object_set_new(root, INDICATOR_KNOBS, json_boolean(_indicatorKnobs));
-	return root;
-}
-
-void Matrix88::dataFromJson(json_t* root) {
-	json_t* k = json_object_get(root, INDICATOR_KNOBS);
-	if (k) {
-		_indicatorKnobs = json_is_true(k);
-	}
-}
-
-int Matrix88::channels() {
-	return inputs[IN1_INPUT].getChannels();
-}
-
-void Matrix88::processChannel(const ProcessArgs& args, int c) {
-	for (int i = 0; i < 8; ++i) {
-		int paramOffset = MIX11_PARAM + i * 8;
-		float out = 0.0f;
-		for (int j = 0; j < 8; ++j) {
-			out += inputs[IN1_INPUT + j].getPolyVoltage(c) * params[paramOffset + j].getValue();
-		}
-		outputs[OUT1_OUTPUT + i].setChannels(_channels);
-		outputs[OUT1_OUTPUT + i].setVoltage(_saturators[c][i].next(params[LEVEL_PARAM].getValue() * out), c);
-	}
-}
-
-struct Matrix88Widget : ModuleWidget {
+struct Matrix88Widget : KnobMatrixModuleWidget {
 	static constexpr int hp = 22;
 
 	Matrix88Widget(Matrix88* module) {
@@ -116,7 +85,6 @@ struct Matrix88Widget : ModuleWidget {
 		auto mix68ParamPosition = Vec(298.7, 217.2);
 		auto mix78ParamPosition = Vec(298.7, 254.2);
 		auto mix88ParamPosition = Vec(298.7, 291.2);
-		auto levelParamPosition = Vec(14.5, 339.5);
 
 		auto in1InputPosition = Vec(10.5, 30.0);
 		auto in2InputPosition = Vec(10.5, 67.0);
@@ -201,7 +169,6 @@ struct Matrix88Widget : ModuleWidget {
 		createKnob(mix68ParamPosition, module, Matrix88::MIX68_PARAM);
 		createKnob(mix78ParamPosition, module, Matrix88::MIX78_PARAM);
 		createKnob(mix88ParamPosition, module, Matrix88::MIX88_PARAM);
-		addParam(createParam<Knob16>(levelParamPosition, module, Matrix88::LEVEL_PARAM));
 
 		addInput(createInput<Port24>(in1InputPosition, module, Matrix88::IN1_INPUT));
 		addInput(createInput<Port24>(in2InputPosition, module, Matrix88::IN2_INPUT));
@@ -221,32 +188,6 @@ struct Matrix88Widget : ModuleWidget {
 		addOutput(createOutput<Port24>(out7OutputPosition, module, Matrix88::OUT7_OUTPUT));
 		addOutput(createOutput<Port24>(out8OutputPosition, module, Matrix88::OUT8_OUTPUT));
 	}
-
-	std::vector<IndicatorKnob19*> _knobs;
-	void createKnob(math::Vec& position, Matrix88* module, int id) {
-		IndicatorKnob19* knob = dynamic_cast<IndicatorKnob19*>(createParam<IndicatorKnob19>(position, module, id));
-		if (module) {
-			knob->setDrawColorsCallback([module]() { return module->_indicatorKnobs; });
-		}
-		addParam(knob);
-		_knobs.push_back(knob);
-	}
-
-	void redrawKnobs() {
-		for (IndicatorKnob19* knob : _knobs) {
-			knob->redraw();
-		}
-	}
-
-	void appendContextMenu(Menu* menu) override {
-		Matrix88* m = dynamic_cast<Matrix88*>(module);
-		assert(m);
-		menu->addChild(new OptionMenuItem(
-			"Indicator knobs",
-			[m]() { return m->_indicatorKnobs; },
-			[m, this]() { m->_indicatorKnobs = !m->_indicatorKnobs; this->redrawKnobs(); }
-		));
-	}
 };
 
-Model* modelMatrix88 = bogaudio::createModel<Matrix88, Matrix88Widget>("Bogaudio-Matrix88", "MATRIX88", "8x8 channel matrix mixer", "Mixer", "Polyphonic");
+Model* modelMatrix88 = bogaudio::createModel<Matrix88, Matrix88Widget>("Bogaudio-Matrix88", "MATRIX88", "8x8 matrix mixer", "Mixer", "Polyphonic");

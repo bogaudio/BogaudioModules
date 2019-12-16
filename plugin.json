@@ -260,9 +260,54 @@
       ]
     },
     {
+      "slug": "Bogaudio-Mumix",
+      "name": "MUMIX",
+      "description": "8-input unity mixer with mutes",
+      "tags": [
+        "Mixer",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Bogaudio-Matrix44",
+      "name": "MATRIX44",
+      "description": "4x4 matrix mixer",
+      "tags": [
+        "Mixer",
+        "Polyphonic"
+      ]
+    },
+    {
       "slug": "Bogaudio-Matrix88",
       "name": "MATRIX88",
-      "description": "8x8 channel matrix mixer",
+      "description": "8x8 matrix mixer",
+      "tags": [
+        "Mixer",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Bogaudio-Switch44",
+      "name": "SWITCH44",
+      "description": "4x4 matrix mixer",
+      "tags": [
+        "Mixer",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Bogaudio-Switch88",
+      "name": "SWITCH88",
+      "description": "8x8 matrix mixer",
+      "tags": [
+        "Mixer",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Bogaudio-Switch1616",
+      "name": "SWITCH1616",
+      "description": "16x16 matrix mixer",
       "tags": [
         "Mixer",
         "Polyphonic"

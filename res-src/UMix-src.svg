@@ -23,26 +23,6 @@
   </style>
 
   <defs>
-    <symbol id="knob-small" viewBox="0 0 45px 45px">
-      <g transform="translate(22.5 22.5)">
-        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f" />
-        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f" />
-        <circle cx="0" cy="0" r="7.5" stroke-width="1" stroke="#00f" fill="none" />
-      </g>
-    </symbol>
-
-    <symbol id="knobguide-maxtick" viewBox="0 0 40px 40px">
-      <g transform="translate(20 20)">
-        <g transform="rotate(60) translate(10 0)">
-          <polyline points="0,0 4,0" stroke-width="1" stroke="#333" />
-        </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)" />
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" />
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)" />
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" />
-      </g>
-    </symbol>
-
     <symbol id="input" viewBox="0 0 24px 24px">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0" />
@@ -75,28 +55,22 @@
 
   <g transform="translate(0 18)">
     <g transform="translate(5.5 0)">
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 232)" />
-      <rect width="34" height="242" rx="5" fill="#fafafa" />
+      <rect width="34" height="10" fill="#fafafa" transform="translate(0 283)" />
+      <rect width="34" height="293" rx="5" fill="#fafafa" />
       <use id="IN1_INPUT" xlink:href="#input" transform="translate(5 5)" />
-      <use id="IN2_INPUT" xlink:href="#input" transform="translate(5 35)" />
-      <use id="IN3_INPUT" xlink:href="#input" transform="translate(5 65)" />
-      <use id="IN4_INPUT" xlink:href="#input" transform="translate(5 95)" />
-      <use id="IN5_INPUT" xlink:href="#input" transform="translate(5 125)" />
-      <use id="IN6_INPUT" xlink:href="#input" transform="translate(5 155)" />
-      <use id="IN7_INPUT" xlink:href="#input" transform="translate(5 185)" />
-      <use id="IN8_INPUT" xlink:href="#input" transform="translate(5 215)" />
+      <use id="IN2_INPUT" xlink:href="#input" transform="translate(5 40.5)" />
+      <use id="IN3_INPUT" xlink:href="#input" transform="translate(5 76)" />
+      <use id="IN4_INPUT" xlink:href="#input" transform="translate(5 111.5)" />
+      <use id="IN5_INPUT" xlink:href="#input" transform="translate(5 147)" />
+      <use id="IN6_INPUT" xlink:href="#input" transform="translate(5 182.5)" />
+      <use id="IN7_INPUT" xlink:href="#input" transform="translate(5 218)" />
+      <use id="IN8_INPUT" xlink:href="#input" transform="translate(5 252.5)" />
     </g>
-    <g transform="translate(5.5 245)">
+    <g transform="translate(5.5 283)">
       <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)" />
-      <rect width="34" height="36" rx="5" fill="#bbb" />
-      <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 32)">OUT</text>
+      <rect width="34" height="38" rx="5" fill="#bbb" />
+      <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 1)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 33)">OUT</text>
     </g>
-  </g>
-
-  <g transform="translate(0 311)">
-    <text font-size="6pt" letter-spacing="2px" transform="translate(7 0)">LEVEL</text>
-    <use id="LEVEL_PARAM" xlink:href="#knob-small" transform="translate(0 -5)" />
-    <use xlink:href="#knobguide-maxtick" transform="translate(2.2 -2.5)" />
   </g>
 </svg>

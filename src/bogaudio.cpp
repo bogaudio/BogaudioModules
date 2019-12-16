@@ -31,12 +31,14 @@
 #include "Lmtr.hpp"
 #include "LVCO.hpp"
 #include "Manual.hpp"
+#include "Matrix44.hpp"
 #include "Matrix88.hpp"
 #include "Mix1.hpp"
 #include "Mix4.hpp"
 #include "Mix8.hpp"
 #include "Mono.hpp"
 #include "Mult.hpp"
+#include "Mumix.hpp"
 #include "Mute8.hpp"
 #include "Noise.hpp"
 #include "Nsgt.hpp"
@@ -53,6 +55,9 @@
 #include "Stack.hpp"
 #include "Sums.hpp"
 #include "Switch.hpp"
+#include "Switch1616.hpp"
+#include "Switch44.hpp"
+#include "Switch88.hpp"
 #include "UMix.hpp"
 #include "Unison.hpp"
 #include "VCA.hpp"
@@ -107,7 +112,12 @@ void init(rack::Plugin *p) {
 	p->addModel(modelMix1);
 	p->addModel(modelVCM);
 	p->addModel(modelUMix);
+	p->addModel(modelMumix);
+	p->addModel(modelMatrix44);
 	p->addModel(modelMatrix88);
+	p->addModel(modelSwitch44);
+	p->addModel(modelSwitch88);
+	p->addModel(modelSwitch1616);
 	p->addModel(modelMute8);
 	p->addModel(modelPan);
 	p->addModel(modelXFade);

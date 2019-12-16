@@ -3,11 +3,11 @@
 #include "bogaudio.hpp"
 #include "matrix_base.hpp"
 
-extern Model* modelMatrix88;
+extern Model* modelSwitch88;
 
 namespace bogaudio {
 
-struct Matrix88 : KnobMatrixModule {
+struct Switch88 : MatrixModule {
 	enum ParamsIds {
 		MIX11_PARAM,
 		MIX21_PARAM,
@@ -100,7 +100,7 @@ struct Matrix88 : KnobMatrixModule {
 		NUM_OUTPUTS
 	};
 
-	Matrix88() : KnobMatrixModule(8, MIX11_PARAM, IN1_INPUT, OUT1_OUTPUT) {
+	Switch88() : MatrixModule(8, MIX11_PARAM, IN1_INPUT, OUT1_OUTPUT) {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(MIX11_PARAM, -1.0f, 1.0f, 0.0f, "Mix 1A", "%", 0.0f, 100.0f);
 		configParam(MIX21_PARAM, -1.0f, 1.0f, 0.0f, "Mix 2A", "%", 0.0f, 100.0f);
