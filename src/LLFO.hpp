@@ -85,7 +85,7 @@ struct LLFO : LFOBase {
 	void addChannel(int c) override;
 	void modulate() override;
 	void modulateChannel(int c) override;
-	void always(const ProcessArgs& args) override;
+	void processAll(const ProcessArgs& args) override;
 	void processChannel(const ProcessArgs& args, int c) override;
 };
 

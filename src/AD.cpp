@@ -83,7 +83,7 @@ void AD::modulateChannel(int c) {
 	_linearMode = params[LINEAR_PARAM].getValue() > 0.5f;
 }
 
-void AD::always(const ProcessArgs& args) {
+void AD::processAll(const ProcessArgs& args) {
 	_attackLightSum = _decayLightSum = 0;
 }
 

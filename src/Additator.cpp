@@ -187,7 +187,7 @@ void Additator::modulateChannel(int c) {
 	}
 }
 
-void Additator::always(const ProcessArgs& args) {
+void Additator::processAll(const ProcessArgs& args) {
 	Phase phase = params[PHASE_PARAM].getValue() > 1.5f ? PHASE_COSINE : PHASE_SINE;
 	lights[SINE_LIGHT].value = phase == PHASE_SINE;
 	lights[COSINE_LIGHT].value = phase == PHASE_COSINE;

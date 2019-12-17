@@ -49,7 +49,7 @@ struct Assign : BGModule {
 	void addChannel(int c) override;
 	void removeChannel(int c) override;
 	void modulate() override;
-	void always(const ProcessArgs& args) override;
+	void processAll(const ProcessArgs& args) override;
 	void processChannel(const ProcessArgs& args, int c) override {};
 };
 

@@ -70,7 +70,7 @@ void LLFO::modulateChannel(int c) {
 	setFrequency(params[FREQUENCY_PARAM], inputs[PITCH_INPUT], _phasor[c], c);
 }
 
-void LLFO::always(const ProcessArgs& args) {
+void LLFO::processAll(const ProcessArgs& args) {
 	Wave wave = (Wave)params[WAVE_PARAM].getValue();
 	lights[SINE_LIGHT].value = wave == SINE_WAVE;
 	lights[TRIANGLE_LIGHT].value = wave == TRIANGLE_WAVE;

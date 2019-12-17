@@ -163,7 +163,7 @@ void FMOp::modulateChannel(int c) {
 	}
 }
 
-void FMOp::always(const ProcessArgs& args) {
+void FMOp::processAll(const ProcessArgs& args) {
 	_attackLightSum = _decayLightSum = _sustainLightSum = _releaseLightSum = 0;
 }
 

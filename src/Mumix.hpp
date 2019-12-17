@@ -65,7 +65,7 @@ struct Mumix : MatrixBaseModule {
 	bool active() override;
 	int channels() override;
 	void modulate() override;
-	void always(const ProcessArgs& args) override;
+	void processAll(const ProcessArgs& args) override;
 	void processChannel(const ProcessArgs& args, int c) override;
 };
 

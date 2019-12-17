@@ -15,7 +15,7 @@ void BGModule::onSampleRateChange() {
 }
 
 void BGModule::process(const ProcessArgs& args) {
-	always(args);
+	processAll(args);
 	if (active()) {
 		++_steps;
 		if (_steps >= _modulationSteps) {

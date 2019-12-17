@@ -34,7 +34,7 @@ void Mix1::removeChannel(int c) {
 	_engines[c] = NULL;
 }
 
-void Mix1::always(const ProcessArgs& args) {
+void Mix1::processAll(const ProcessArgs& args) {
 	_rmsSum = 0.0f;
 }
 

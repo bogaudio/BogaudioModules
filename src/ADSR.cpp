@@ -70,7 +70,7 @@ void ADSR::modulateChannel(int c) {
 	e.envelope.setLinearShape(_linearMode);
 }
 
-void ADSR::always(const ProcessArgs& args) {
+void ADSR::processAll(const ProcessArgs& args) {
 	_attackLightSum = _decayLightSum = _sustainLightSum = _releaseLightSum = 0;
 }
 

@@ -81,7 +81,7 @@ void ASR::modulateChannel(int c) {
 	_linearMode = params[LINEAR_PARAM].getValue() > 0.5f;
 }
 
-void ASR::always(const ProcessArgs& args) {
+void ASR::processAll(const ProcessArgs& args) {
 	_attackLightSum = _releaseLightSum = 0;
 }
 
