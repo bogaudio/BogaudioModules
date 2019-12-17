@@ -310,7 +310,7 @@ void InvertingIndicatorButton::IIBWidget::draw(const DrawArgs& args) {
 	nvgFillColor(args.vg, nvgRGBA(0x33, 0x33, 0x33, 0xff));
 	nvgFill(args.vg);
 
-	r -= std::max(0.2f, 0.3f * s);
+	r -= std::max(0.2f, 0.6f * s);
 	nvgBeginPath(args.vg);
 	nvgCircle(args.vg, c, c, r);
 	nvgFillColor(args.vg, nvgRGBA(0xee, 0xee, 0xee, 0xff));
@@ -319,38 +319,32 @@ void InvertingIndicatorButton::IIBWidget::draw(const DrawArgs& args) {
 	nvgCircle(args.vg, c, c, r);
 	nvgFillColor(args.vg, _color);
 	nvgFill(args.vg);
+	nvgCircle(args.vg, c, c, r);
+	nvgFillColor(args.vg, nvgRGBA(0x66, 0x66, 0x66, 0x7f));
+	nvgFill(args.vg);
 
-	r -= 0.15f;
+	r -= std::max(0.2f, 0.6f * s);
 	nvgBeginPath(args.vg);
 	nvgCircle(args.vg, c, c, r);
-	nvgStrokeColor(args.vg, nvgRGBA(0x66, 0x66, 0x66, 0x7f));
-	nvgStrokeWidth(args.vg, 0.3f * s);
-	nvgStroke(args.vg);
-
-	float dr = std::max(0.2f, 0.3f * s);
-	r -= dr;
+	nvgFillColor(args.vg, nvgRGBA(0xee, 0xee, 0xee, 0xff));
+	nvgFill(args.vg);
 	nvgBeginPath(args.vg);
 	nvgCircle(args.vg, c, c, r);
-	nvgStrokeColor(args.vg, nvgRGBA(0x77, 0x77, 0x77, 0x7f));
-	nvgStrokeWidth(args.vg, dr);
-	nvgStroke(args.vg);
+	nvgFillColor(args.vg, _color);
+	nvgFill(args.vg);
+	nvgCircle(args.vg, c, c, r);
+	nvgFillColor(args.vg, nvgRGBA(0x88, 0x88, 0x88, 0x7f));
+	nvgFill(args.vg);
 
-	r -= dr;
+	r -= std::max(0.2f, 0.6f * s);
 	nvgBeginPath(args.vg);
 	nvgCircle(args.vg, c, c, r);
-	nvgStrokeColor(args.vg, nvgRGBA(0x88, 0x88, 0x88, 0x7f));
-	nvgStrokeWidth(args.vg, dr);
-	nvgStroke(args.vg);
-
-	r -= dr;
+	nvgFillColor(args.vg, nvgRGBA(0xee, 0xee, 0xee, 0xff));
+	nvgFill(args.vg);
 	nvgBeginPath(args.vg);
 	nvgCircle(args.vg, c, c, r);
-	nvgStrokeColor(args.vg, nvgRGBA(0x99, 0x99, 0x99, 0x7f));
-	nvgStrokeWidth(args.vg, dr);
-	nvgStroke(args.vg);
-
-	r -= 0.15f;
-	nvgBeginPath(args.vg);
+	nvgFillColor(args.vg, _color);
+	nvgFill(args.vg);
 	nvgCircle(args.vg, c, c, r);
 	nvgFillColor(args.vg, nvgRGBA(0xaa, 0xaa, 0xaa, 0x7f));
 	nvgFill(args.vg);
