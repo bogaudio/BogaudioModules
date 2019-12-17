@@ -6,7 +6,6 @@
 
 #include <algorithm>
 #include <cmath>
-#include <functional>
 
 #include "rack.hpp"
 
