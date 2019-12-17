@@ -2,7 +2,6 @@
 #include "UMix.hpp"
 
 #define SUM "sum"
-#define CVMODE "cv_mode"
 
 json_t* UMix::dataToJson() {
 	json_t* root = MatrixBaseModule::dataToJson();
