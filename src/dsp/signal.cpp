@@ -499,7 +499,7 @@ float NoiseGate::compressionDb(float detectorDb, float thresholdDb, float ratio,
 
 void Timer::setParams(float sampleRate, float time) {
 	assert(sampleRate > 0.0f);
-	assert(time > 0.0f);
+	assert(time >= 0.0f);
 	// FIXME: if the timer is running, should set the duration to reflect the time elapsed so far, adjusting it for the delta samplerate.
 	_durationSteps = time * sampleRate;
 }

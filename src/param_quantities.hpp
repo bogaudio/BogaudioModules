@@ -40,6 +40,8 @@ struct ScaledSquaringParamQuantity : ParamQuantity {
 	}
 };
 
+typedef ScaledSquaringParamQuantity<1> OneXSquaringParamQuantity;
+
 typedef ScaledSquaringParamQuantity<10> TenXSquaringParamQuantity;
 
 typedef TenXSquaringParamQuantity EnvelopeSegmentParamQuantity;

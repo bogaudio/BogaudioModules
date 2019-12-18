@@ -20,6 +20,7 @@
 #include "DADSRHPlus.hpp"
 #include "DGate.hpp"
 #include "Detune.hpp"
+#include "Edge.hpp"
 #include "EightFO.hpp"
 #include "EightOne.hpp"
 #include "FMOp.hpp"
@@ -101,6 +102,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelASR);
 	p->addModel(modelADSR);
 	p->addModel(modelFollow);
+	p->addModel(modelEdge);
 
 	p->addModel(modelNoise);
 	p->addModel(modelSampleHold);

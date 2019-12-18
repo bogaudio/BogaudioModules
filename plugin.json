@@ -178,6 +178,16 @@
       ]
     },
     {
+      "slug": "Bogaudio-Edge",
+      "name": "EDGE",
+      "description": "Edge detector, gate-to-trigger, comparator",
+      "tags": [
+        "Logic",
+        "Utility",
+        "Polyphonic"
+      ]
+    },
+    {
       "slug": "Bogaudio-Noise",
       "name": "NOISE",
       "description": "Noise source with multiple flavors & absolute value",
