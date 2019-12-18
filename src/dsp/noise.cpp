@@ -40,11 +40,13 @@ void RandomWalk::setParams(float sampleRate, float change) {
 }
 
 void RandomWalk::jump() {
-	tell(_noise.next() * 5.0f);
+	float x = fabsf(_noise.next()) * (_max - _min);
+	x += _min;
+	tell(x);
 }
 
 void RandomWalk::tell(float v) {
-	assert(v >= -5.0f && v <= 5.0f);
+	assert(v >= _min && v <= _max);
 	_last = _bias = v;
 	_filter.reset();
 }

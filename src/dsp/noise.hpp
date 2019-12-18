@@ -106,6 +106,7 @@ struct RandomWalk : Generator {
 	: _min(min)
 	, _max(max)
 	{
+		assert(_min < _max);
 		setParams(sampleRate, change);
 	}
 
