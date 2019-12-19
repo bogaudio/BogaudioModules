@@ -481,7 +481,7 @@
     {
       "slug": "Bogaudio-Stack",
       "name": "STACK",
-      "description": "Relative pitch CV generator for stacking oscillators",
+      "description": "Pitch CV transposer, for stacking oscillators",
       "tags": [
         "Tuner",
         "Polyphonic"
