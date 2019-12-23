@@ -8,6 +8,7 @@
 #include "AMRM.hpp"
 #include "Analyzer.hpp"
 #include "AnalyzerXL.hpp"
+#include "Arp.hpp"
 #include "ASR.hpp"
 #include "Assign.hpp"
 #include "Blank3.hpp"
@@ -145,6 +146,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelReftone);
 
 	p->addModel(modelMono);
+	p->addModel(modelArp);
 	p->addModel(modelAssign);
 	p->addModel(modelUnison);
 

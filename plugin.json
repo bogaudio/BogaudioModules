@@ -627,6 +627,15 @@
       "tags": [
         "Blank"
       ]
+    },
+    {
+      "slug": "Bogaudio-Arp",
+      "name": "ARP",
+      "description": "Poly-input arpeggiator",
+      "tags": [
+        "Arpeggiator",
+        "Polyphonic"
+      ]
     }
   ]
 }
