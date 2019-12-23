@@ -45,7 +45,7 @@ void Assign::modulate() {
 	_channelsOut = clamp((int)params[CHANNELS_PARAM].getValue(), 1, 16);
 }
 
-void Assign::processAll(const ProcessArgs& args) {
+void Assign::postProcess(const ProcessArgs& args) {
 	++_step;
 	if (_resetTrigger.process(inputs[RESET_INPUT].getVoltage())) {
 		_nextAssign = 0;
