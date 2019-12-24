@@ -23,7 +23,6 @@ struct %MODULE% : BGModule {
 	%MODULE%() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 %PARAMCONFIGS%
-		reset();
 	}
 
 	void reset() override;
