@@ -47,6 +47,7 @@
 #include "Offset.hpp"
 #include "OneEight.hpp"
 #include "Pan.hpp"
+#include "PolyMult.hpp"
 #include "Pressor.hpp"
 #include "Reftone.hpp"
 #include "SampleHold.hpp"
@@ -149,6 +150,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelArp);
 	p->addModel(modelAssign);
 	p->addModel(modelUnison);
+	p->addModel(modelPolyMult);
 
 	p->addModel(modelBool);
 	p->addModel(modelCmp);
