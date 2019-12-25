@@ -645,6 +645,15 @@
       "tags": [
         "Blank"
       ]
+    },
+    {
+      "slug": "Bogaudio-PolyCon",
+      "name": "POLYCON",
+      "description": "Polyphonic per-channel constant voltages",
+      "tags": [
+        "Utility",
+        "Polyphonic"
+      ]
     }
   ]
 }
