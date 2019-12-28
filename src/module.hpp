@@ -8,14 +8,12 @@ namespace bogaudio {
 
 struct BGModule : Module {
 	int _modulationSteps = 100;
-	int _steps = 0;
+	int _steps = -1;
 
 	static constexpr int maxChannels = PORT_MAX_CHANNELS;
 	int _channels = 0;
 
 	BGModule() {
-		reset();
-		onSampleRateChange();
 	}
 	virtual ~BGModule() {
 		while (_channels >= 1) {

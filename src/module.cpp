@@ -15,6 +15,11 @@ void BGModule::onSampleRateChange() {
 }
 
 void BGModule::process(const ProcessArgs& args) {
+	if (_steps < 0) {
+		onReset();
+		onSampleRateChange();
+	}
+
 	processAll(args);
 	if (active()) {
 		++_steps;
