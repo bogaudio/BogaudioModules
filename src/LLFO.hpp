@@ -73,9 +73,6 @@ struct LLFO : LFOBase {
 		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow mode");
 		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "Offset", " V", 0.0f, 5.0f);
 		configParam(SCALE_PARAM, 0.0f, 1.0f, 1.0f, "Scale", "%", 0.0f, 100.0f);
-
-		reset();
-		sampleRateChange();
 	}
 
 	void reset() override;

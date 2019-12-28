@@ -62,8 +62,6 @@ struct SampleHold : BGModule {
 		configParam(TRACK2_PARAM, 0.0f, 1.0f, 0.0f, "Track 2");
 		configParam(INVERT1_PARAM, 0.0f, 1.0f, 0.0f, "Invert 1");
 		configParam(INVERT2_PARAM, 0.0f, 1.0f, 0.0f, "Invert 2");
-
-		reset();
 	}
 
 	void reset() override;

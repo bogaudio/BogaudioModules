@@ -73,8 +73,6 @@ struct Test2 : BGModule {
 		configParam(PARAM1B_PARAM, 0.0f, 1.0f, 0.0f, "param1b");
 		configParam(PARAM2B_PARAM, 0.0f, 1.0f, 0.0f, "param2b");
 		configParam(PARAM3B_PARAM, 0.0f, 1.0f, 0.0f, "param3b");
-
-		reset();
 	}
 
 	void reset() override;

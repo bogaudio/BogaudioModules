@@ -38,7 +38,6 @@ struct Manual : TriggerOnLoadModule {
 		configParam(TRIGGER_PARAM, 0.0f, 1.0f, 0.0f, "Trigger");
 		_triggerOnLoad = false;
 		_initialDelay = new bogaudio::dsp::Timer(APP->engine->getSampleRate(), 0.01f);
-		reset();
 	}
 	virtual ~Manual() {
 		if (_initialDelay) {

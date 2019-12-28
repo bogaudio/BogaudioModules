@@ -39,7 +39,6 @@ struct FlipFlop : BGModule {
 
 	FlipFlop() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
-		reset();
 	}
 
 	void reset() override;

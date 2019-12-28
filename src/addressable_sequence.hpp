@@ -24,8 +24,6 @@ struct AddressableSequenceModule : BGModule {
 	, _clockInputID(clockInputID)
 	, _selectInputID(selectInputID)
 	{
-		reset();
-		sampleRateChange();
 	}
 
 	void reset() override;

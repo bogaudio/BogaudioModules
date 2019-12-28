@@ -48,7 +48,6 @@ struct Switch : BGModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(GATE_PARAM, 0.0f, 10.0f, 0.0f, "Gate");
 		configParam(LATCH_PARAM, 0.0f, 1.0f, 0.0f, "Latch");
-		reset();
 	}
 
 	void reset() override;

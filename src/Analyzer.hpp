@@ -50,7 +50,6 @@ struct Analyzer : AnalyzerBase {
 		configParam(SMOOTH_PARAM, 0.0f, 1.0f, 0.5f, "Smoothing", " ms", 0.0f, 500.0f);
 		configParam(QUALITY_PARAM, 1.0f, 3.0f, 1.0f, "Analysis quality");
 		configParam(WINDOW_PARAM, 1.0f, 3.0f, 1.0f, "Analysis window type");
-		reset();
 	}
 	virtual ~Analyzer() {
 		reset();

@@ -66,7 +66,7 @@ struct Walk2 : BGModule {
 	TraceColor _traceColor = GREEN_TRACE_COLOR;
 
 	Walk2()
-	:  _outsX(historyPoints, 0.0f)
+	: _outsX(historyPoints, 0.0f)
 	, _outsY(historyPoints, 0.0f)
 	, _jumpTo(NULL)
 	{
@@ -77,9 +77,6 @@ struct Walk2 : BGModule {
 		configParam(OFFSET_Y_PARAM, -1.0f, 1.0f, 0.0f, "Offset Y", " V", 0.0f, 5.0f);
 		configParam(SCALE_X_PARAM, 0.0f, 1.0f, 1.0f, "Scale X", "%", 0.0f, 100.0f);
 		configParam(SCALE_Y_PARAM, 0.0f, 1.0f, 1.0f, "Scale Y", "%", 0.0f, 100.0f);
-
-		reset();
-		sampleRateChange();
 	}
 
 	void reset() override;

@@ -84,9 +84,6 @@ struct Mute8 : BGModule {
 		configParam(MUTE6_PARAM, 0.0f, 3.0f, 0.0f, "Mute 6");
 		configParam(MUTE7_PARAM, 0.0f, 3.0f, 0.0f, "Mute 7");
 		configParam(MUTE8_PARAM, 0.0f, 3.0f, 0.0f, "Mute 8");
-
-		reset();
-		sampleRateChange();
 	}
 
 	void reset() override;

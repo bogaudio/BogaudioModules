@@ -54,8 +54,6 @@ struct Cmp : BGModule {
 		configParam(WINDOW_PARAM, 0.0f, 1.0f, 0.5f, "Window", " V", 0.0f, 10.0f);
 		configParam<ScaledSquaringParamQuantity<1>>(LAG_PARAM, 0.0f, 1.0f, 0.1f, "Lag", " s");
 		configParam(OUTPUT_PARAM, 0.0f, 1.0f, 0.0f, "Output");
-
-		reset();
 	}
 
 	void reset() override;
