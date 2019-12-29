@@ -40,6 +40,15 @@
       ]
     },
     {
+      "slug": "Bogaudio-Pulse",
+      "name": "PULSE",
+      "description": "Compact square/pulse oscillator with PWM",
+      "tags": [
+        "Oscillator",
+        "Polyphonic"
+      ]
+    },
+    {
       "slug": "Bogaudio-XCO",
       "name": "XCO",
       "description": "Oscillator with wave mixer, wave mods, FM, hard sync",
@@ -532,6 +541,15 @@
       ]
     },
     {
+      "slug": "Bogaudio-PolyCon",
+      "name": "POLYCON",
+      "description": "Polyphonic per-channel constant voltages",
+      "tags": [
+        "Utility",
+        "Polyphonic"
+      ]
+    },
+    {
       "slug": "Bogaudio-PolyMult",
       "name": "POLYMULT",
       "description": "Mono-to-poly multiple",
@@ -644,15 +662,6 @@
       "description": "6HP blank panel",
       "tags": [
         "Blank"
-      ]
-    },
-    {
-      "slug": "Bogaudio-PolyCon",
-      "name": "POLYCON",
-      "description": "Polyphonic per-channel constant voltages",
-      "tags": [
-        "Utility",
-        "Polyphonic"
       ]
     }
   ]

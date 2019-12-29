@@ -141,7 +141,7 @@ void VCOBase::processChannel(const ProcessArgs& args, int c) {
 
 	float frequency = e.baseHz;
 	Phasor::phase_delta_t phaseOffset = 0;
-	if (inputs[_fmInputID].isConnected() && _fmDepth > 0.01f) {
+	if (_fmInputID >= 0 && inputs[_fmInputID].isConnected() && _fmDepth > 0.01f) {
 		float fm = inputs[_fmInputID].getPolyVoltage(c) * _fmDepth;
 		if (_fmLinearMode) {
 			phaseOffset = Phasor::radiansToPhase(2.0f * fm);

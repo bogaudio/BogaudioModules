@@ -50,6 +50,7 @@
 #include "PolyCon.hpp"
 #include "PolyMult.hpp"
 #include "Pressor.hpp"
+#include "Pulse.hpp"
 #include "Reftone.hpp"
 #include "SampleHold.hpp"
 #include "Shaper.hpp"
@@ -88,6 +89,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelVCO);
 	p->addModel(modelLVCO);
 	p->addModel(modelSine);
+	p->addModel(modelPulse);
 	p->addModel(modelXCO);
 	p->addModel(modelAdditator);
 	p->addModel(modelFMOp);
