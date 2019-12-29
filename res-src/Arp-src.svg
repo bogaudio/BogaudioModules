@@ -112,7 +112,11 @@
       <use id="RANDOM_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
       <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">RD</text>
     </g>
-    <use id="MODE_PARAM" xlink:href="#button-small" transform="translate(15 40)" />
+    <g transform="translate(0 40)">
+      <use id="SHUFFLE_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
+      <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">SH</text>
+    </g>
+    <use id="MODE_PARAM" xlink:href="#button-small" transform="translate(21 39)" />
   </g>
 
   <g transform="translate(2.5 78.5)">

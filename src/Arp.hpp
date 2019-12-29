@@ -35,6 +35,7 @@ struct Arp : BGModule {
 		UP_DOWN_REPEAT_LIGHT,
 		IN_ORDER_LIGHT,
 		RANDOM_LIGHT,
+		SHUFFLE_LIGHT,
 		NUM_LIGHTS
 	};
 
@@ -44,7 +45,8 @@ struct Arp : BGModule {
 		UP_DOWN_MODE,
 		UP_DOWN_REPEAT_MODE,
 		IN_ORDER_MODE,
-		RANDOM_MODE
+		RANDOM_MODE,
+		SHUFFLE_MODE
 	};
 
 	struct NoteSet {
@@ -67,6 +69,7 @@ struct Arp : BGModule {
 		bool _notesDirty = false;
 		int _playIndex = -1;
 		bool _up = true;
+		bool _shuffleMask[maxChannels] {};
 		NoteSet* _syncTo;
 		bool _syncNext = true;
 
@@ -102,7 +105,7 @@ struct Arp : BGModule {
 
 	Arp() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(MODE_PARAM, 0.0f, 5.0f, 0.0f, "Playback mode");
+		configParam(MODE_PARAM, 0.0f, 6.0f, 0.0f, "Playback mode");
 		configParam(GATE_LENGTH_PARAM, 0.0f, 1.0f, 0.5f, "Gate length", "%", 0.0f, 100.0f);
 		configParam(HOLD_PARAM, 0.0f, 1.0f, 0.0f, "Hold/latch");
 
