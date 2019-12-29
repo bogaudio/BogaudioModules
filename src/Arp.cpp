@@ -119,6 +119,7 @@ bool Arp::NoteSet::nextPitch(Mode mode, float& pitchOut) {
 void Arp::NoteSet::reset() {
 	resetSequence();
 	_notesDirty = false;
+	_noteCount = 0;
 	for (int c = 0; c < maxChannels; ++c) {
 		_noteOn[c] = false;
 		_notesAsPlayed[c].reset();
@@ -127,7 +128,6 @@ void Arp::NoteSet::reset() {
 }
 
 void Arp::NoteSet::resetSequence() {
-	_noteCount = 0;
 	_playIndex = -1;
 	_up = true;
 }
