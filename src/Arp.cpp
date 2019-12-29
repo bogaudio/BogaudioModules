@@ -1,33 +1,220 @@
 
 #include "Arp.hpp"
 
-void Arp::Note::reset() {
+#define NOTES_IMMEDIATE_MODE "notes_immediate"
+
+void Arp::NoteSet::Note::reset() {
 	pitch = 0.0f;
 	channel = -1;
 }
 
-void Arp::reset() {
-	_clockTrigger.reset();
-	_resetTrigger.reset();
-	_anyHigh = false;
-	_noteCount = 0;
-	_playIndex = -1;
-	_pitchOut = 0.0f;
-	_up = true;
-	_secondsSinceLastClock = -1.0f;
-	_clockSeconds = 0.1f;
-	_gateGenerator.process(1000.0f);
+bool Arp::NoteSet::nextPitch(Mode mode, float& pitchOut) {
+	if (_syncNext) {
+		_syncNext = false;
+		sync();
+	}
+	if (_noteCount <= 0) {
+		return false;
+	}
+
+	switch (mode) {
+		case UP_MODE: {
+			_playIndex = (_playIndex + 1) % _noteCount;
+			_syncNext = _syncTo && _playIndex == _noteCount - 1;
+			pitchOut = _notesByPitch[_playIndex].pitch;
+			return true;
+		}
+
+		case DOWN_MODE: {
+			--_playIndex;
+			if (_playIndex < 0) {
+				_playIndex = _noteCount - 1;
+			}
+			_syncNext = _syncTo && _playIndex == 0;
+			pitchOut = _notesByPitch[_playIndex].pitch;
+			return true;
+		}
+
+		case UP_DOWN_MODE: {
+			if (_up) {
+				++_playIndex;
+				if (_playIndex >= _noteCount) {
+					_playIndex = std::max(0, _noteCount - 2);
+					_up = false;
+				}
+			}
+			else {
+				--_playIndex;
+				if (_playIndex < 0) {
+					_playIndex = 1 % _noteCount;
+					_up = true;
+				}
+				_syncNext = _syncTo && (_playIndex == 0 || _playIndex == 1);
+			}
+			pitchOut = _notesByPitch[_playIndex].pitch;
+			return true;
+		}
+
+		case UP_DOWN_REPEAT_MODE: {
+			if (_up) {
+				++_playIndex;
+				if (_playIndex >= _noteCount) {
+					_playIndex = _noteCount - 1;
+					_up = false;
+				}
+			}
+			else {
+				--_playIndex;
+				if (_playIndex < 0) {
+					_playIndex = 0;
+					_up = true;
+				}
+				_syncNext = _syncTo && _playIndex == 0;
+			}
+			pitchOut = _notesByPitch[_playIndex].pitch;
+			return true;
+		}
+
+		case IN_ORDER_MODE: {
+			_playIndex = (_playIndex + 1) % _noteCount;
+			_syncNext = _syncTo && _playIndex == _noteCount - 1;
+			pitchOut = _notesAsPlayed[_playIndex].pitch;
+			return true;
+		}
+
+		case RANDOM_MODE: {
+			_playIndex = (_playIndex + 1) % _noteCount;
+			_syncNext = _syncTo && _playIndex == _noteCount - 1;
+			pitchOut = _notesAsPlayed[random::u32() % _noteCount].pitch;
+			return true;
+		}
+	}
+
+	assert(false);
+	return 0.0f;
+}
+
+void Arp::NoteSet::reset() {
+	resetSequence();
+	_notesDirty = false;
 	for (int c = 0; c < maxChannels; ++c) {
-		_gateTrigger[c].reset();
-		_gateHigh[c] = false;
 		_noteOn[c] = false;
 		_notesAsPlayed[c].reset();
 		_notesByPitch[c].reset();
 	}
 }
 
+void Arp::NoteSet::resetSequence() {
+	_noteCount = 0;
+	_playIndex = -1;
+	_up = true;
+}
+
+void Arp::NoteSet::addNote(int c, float pitch) {
+	dropNote(c);
+	_noteOn[c] = true;
+	_notesDirty = true;
+
+	Note n;
+	n.pitch = pitch;
+	n.channel = c;
+
+	_notesAsPlayed[_noteCount] = n;
+
+	int i = 0;
+	while (n.pitch >= _notesByPitch[i].pitch && i < _noteCount) {
+		++i;
+	}
+	assert(i <= _noteCount);
+	shuffleUp(_notesByPitch, i);
+	_notesByPitch[i] = n;
+
+	++_noteCount;
+	assert(_noteCount <= maxChannels);
+}
+
+void Arp::NoteSet::dropNote(int c) {
+	if (!_noteOn[c]) {
+		return;
+	}
+	_noteOn[c] = false;
+	_notesDirty = true;
+
+	int i = 0;
+	while (_notesAsPlayed[i].channel != c && i < _noteCount) {
+		++i;
+	}
+	assert(i < _noteCount);
+	shuffleDown(_notesAsPlayed, i);
+	_notesAsPlayed[_noteCount].reset();
+
+	i = 0;
+	while (_notesByPitch[i].channel != c && i < _noteCount) {
+		++i;
+	}
+	assert(i < _noteCount);
+	shuffleDown(_notesByPitch, i);
+	_notesByPitch[_noteCount].reset();
+
+	--_noteCount;
+	assert(_noteCount >= 0);
+}
+
+void Arp::NoteSet::shuffleUp(Note* notes, int index) {
+	for (int i = _noteCount; i > index; --i) {
+		notes[i] = notes[i - 1];
+	}
+}
+
+void Arp::NoteSet::shuffleDown(Note* notes, int index) {
+	for (int n = _noteCount - 1; index < n; ++index) {
+		notes[index] = notes[index + 1];
+	}
+}
+
+void Arp::NoteSet::sync() {
+	if (!_syncTo || !_syncTo->_notesDirty) {
+		return;
+	}
+
+	_noteCount = _syncTo->_noteCount;
+	_playIndex = -1;
+	std::copy(_syncTo->_noteOn, _syncTo->_noteOn + maxChannels, _noteOn);
+	std::copy(_syncTo->_notesAsPlayed, _syncTo->_notesAsPlayed + _noteCount, _notesAsPlayed);
+	std::copy(_syncTo->_notesByPitch, _syncTo->_notesByPitch + _noteCount, _notesByPitch);
+	_syncTo->_notesDirty = false;
+}
+
+void Arp::reset() {
+	_clockTrigger.reset();
+	_resetTrigger.reset();
+	_anyHigh = false;
+	_secondsSinceLastClock = -1.0f;
+	_clockSeconds = 0.1f;
+	_gateGenerator.process(1000.0f);
+	for (int c = 0; c < maxChannels; ++c) {
+		_gateTrigger[c].reset();
+		_gateHigh[c] = false;
+	}
+	_currentNotes->reset();
+	_playbackNotes->reset();
+}
+
 void Arp::sampleRateChange() {
 	_sampleTime = APP->engine->getSampleTime();
+}
+
+json_t* Arp::dataToJson() {
+	json_t* root = json_object();
+	json_object_set_new(root, NOTES_IMMEDIATE_MODE, json_boolean(_notesImmediate));
+	return root;
+}
+
+void Arp::dataFromJson(json_t* root) {
+	json_t* ni = json_object_get(root, NOTES_IMMEDIATE_MODE);
+	if (ni) {
+		_notesImmediate = json_is_true(ni);
+	}
 }
 
 int Arp::channels() {
@@ -39,9 +226,7 @@ void Arp::addChannel(int c) {
 }
 
 void Arp::removeChannel(int c) {
-	if (_noteOn[c]) {
-		dropNote(c);
-	}
+	_currentNotes->dropNote(c);
 }
 
 void Arp::modulate() {
@@ -64,8 +249,8 @@ void Arp::processAll(const ProcessArgs& args) {
 	lights[RANDOM_LIGHT].value = _mode == RANDOM_MODE;
 
 	if (_resetTrigger.process(inputs[RESET_INPUT].getVoltage())) {
-		_playIndex = -1;
-		_up = true;
+		_currentNotes->resetSequence();
+		_playbackNotes->resetSequence();
 	}
 
 	bool wasAnyHigh = _anyHigh;
@@ -78,13 +263,16 @@ void Arp::processAll(const ProcessArgs& args) {
 			}
 			_anyHigh = true;
 			_gateHigh[c] = true;
-			addNote(c);
+			_currentNotes->addNote(c, inputs[PITCH_INPUT].getPolyVoltage(c));
+			if (_currentNotes->noteCount() == 1) {
+				_playbackNotes->sync();
+			}
 		}
 		else if (_gateHigh[c]) {
 			if (!_gateTrigger[c].isHigh()) {
 				_gateHigh[c] = false;
 				if (!_hold) {
-					dropNote(c);
+					_currentNotes->dropNote(c);
 				}
 			}
 			else {
@@ -105,149 +293,21 @@ void Arp::processAll(const ProcessArgs& args) {
 		_secondsSinceLastClock += _sampleTime;
 	}
 
-	if (clock && _noteCount > 0) {
-		_gateGenerator.trigger(0.001f + _gateLength * _clockSeconds);
-
-		switch (_mode) {
-			case UP_MODE: {
-				_playIndex = (_playIndex + 1) % _noteCount;
-				_pitchOut = _notesByPitch[_playIndex].pitch;
-				break;
-			}
-
-			case DOWN_MODE: {
-				--_playIndex;
-				if (_playIndex < 0) {
-					_playIndex = _noteCount - 1;
-				}
-				_pitchOut = _notesByPitch[_playIndex].pitch;
-				break;
-			}
-
-			case UP_DOWN_MODE: {
-				if (_up) {
-					++_playIndex;
-					if (_playIndex >= _noteCount) {
-						_playIndex = std::max(0, _noteCount - 2);
-						_up = false;
-					}
-				}
-				else {
-					--_playIndex;
-					if (_playIndex < 0) {
-						_playIndex = 1 % _noteCount;
-						_up = true;
-					}
-				}
-				_pitchOut = _notesByPitch[_playIndex].pitch;
-				break;
-			}
-
-			case UP_DOWN_REPEAT_MODE: {
-				if (_up) {
-					++_playIndex;
-					if (_playIndex >= _noteCount) {
-						_playIndex = _noteCount - 1;
-						_up = false;
-					}
-				}
-				else {
-					--_playIndex;
-					if (_playIndex < 0) {
-						_playIndex = 0;
-						_up = true;
-					}
-				}
-				_pitchOut = _notesByPitch[_playIndex].pitch;
-				break;
-			}
-
-			case IN_ORDER_MODE: {
-				_playIndex = (_playIndex + 1) % _noteCount;
-				_pitchOut = _notesAsPlayed[_playIndex].pitch;
-				break;
-			}
-
-			case RANDOM_MODE: {
-				_playIndex = (_playIndex + 1) % _noteCount;
-				_pitchOut = _notesAsPlayed[random::u32() % _noteCount].pitch;
-				break;
-			}
-
-			default: {
-				assert(false);
-			}
+	NoteSet* notes = _notesImmediate ? _currentNotes : _playbackNotes;
+	if (clock) {
+		if (notes->nextPitch(_mode, _pitchOut)) {
+			_gateGenerator.trigger(0.001f + _gateLength * _clockSeconds);
 		}
 	}
-
 	outputs[PITCH_OUTPUT].setVoltage(_pitchOut);
 	outputs[GATE_OUTPUT].setVoltage(_gateGenerator.process(_sampleTime) * 5.0f);
 }
 
-void Arp::addNote(int c) {
-	if (_noteOn[c]) {
-		dropNote(c);
-	}
-	_noteOn[c] = true;
-
-	Note n;
-	n.pitch = inputs[PITCH_INPUT].getPolyVoltage(c);
-	n.channel = c;
-
-	_notesAsPlayed[_noteCount] = n;
-
-	int i = 0;
-	while (n.pitch >= _notesByPitch[i].pitch && i < _noteCount) {
-		++i;
-	}
-	assert(i <= _noteCount);
-	shuffleUp(_notesByPitch, i);
-	_notesByPitch[i] = n;
-
-	++_noteCount;
-	assert(_noteCount <= maxChannels);
-}
-
-void Arp::dropNote(int c) {
-	_noteOn[c] = false;
-
-	int i = 0;
-	while (_notesAsPlayed[i].channel != c && i < _noteCount) {
-		++i;
-	}
-	assert(i < _noteCount);
-	shuffleDown(_notesAsPlayed, i);
-	_notesAsPlayed[_noteCount].reset();
-
-	i = 0;
-	while (_notesByPitch[i].channel != c && i < _noteCount) {
-		++i;
-	}
-	assert(i < _noteCount);
-	shuffleDown(_notesByPitch, i);
-	_notesByPitch[_noteCount].reset();
-
-	--_noteCount;
-	assert(_noteCount >= 0);
-}
-
 void Arp::dropAllNotes() {
 	for (int c = 0; c < _channels; ++c) {
-		if (_noteOn[c] && !_gateHigh[c]) {
-			dropNote(c);
+		if (!_gateHigh[c]) {
+			_currentNotes->dropNote(c);
 		}
-	}
-}
-
-void Arp::shuffleUp(Note* notes, int index) {
-	for (int i = _noteCount; i > index; --i) {
-		notes[i] = notes[i - 1];
-	}
-}
-
-void Arp::shuffleDown(Note* notes, int index) {
-	for (int n = _noteCount - 1; index < n; ++index) {
-		notes[index] = notes[index + 1];
 	}
 }
 
@@ -307,6 +367,17 @@ struct ArpWidget : ModuleWidget {
 		addChild(createLight<SmallLight<GreenLight>>(upDownRepeatLightPosition, module, Arp::UP_DOWN_REPEAT_LIGHT));
 		addChild(createLight<SmallLight<GreenLight>>(inOrderLightPosition, module, Arp::IN_ORDER_LIGHT));
 		addChild(createLight<SmallLight<GreenLight>>(randomLightPosition, module, Arp::RANDOM_LIGHT));
+	}
+
+	void appendContextMenu(Menu* menu) override {
+		Arp* m = dynamic_cast<Arp*>(module);
+		assert(m);
+		menu->addChild(new MenuLabel());
+
+		OptionsMenuItem* ni = new OptionsMenuItem("Use new notes");
+		ni->addItem(OptionMenuItem("On arpeggio restart", [m]() { return !m->_notesImmediate; }, [m]() { m->_notesImmediate = false; }));
+		ni->addItem(OptionMenuItem("Immediately", [m]() { return m->_notesImmediate; }, [m]() { m->_notesImmediate = true; }));
+		OptionsMenuItem::addToMenu(ni, menu);
 	}
 };
 

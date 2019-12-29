@@ -98,7 +98,7 @@
     </g>
     <g transform="translate(0 20)">
       <use id="UP_DOWN_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
-      <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">P</text>
+      <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">PD</text>
     </g>
     <g transform="translate(21 20)">
       <use id="UP_DOWN_REPEAT_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
@@ -110,7 +110,7 @@
     </g>
     <g transform="translate(21 30)">
       <use id="RANDOM_LIGHT" xlink:href="#light-small" transform="translate(0 0)" />
-      <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">R</text>
+      <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">RD</text>
     </g>
     <use id="MODE_PARAM" xlink:href="#button-small" transform="translate(15 40)" />
   </g>

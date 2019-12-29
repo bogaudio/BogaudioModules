@@ -47,32 +47,54 @@ struct Arp : BGModule {
 		RANDOM_MODE
 	};
 
-	struct Note {
-		float pitch;
-		int channel;
+	struct NoteSet {
+		struct Note {
+			float pitch;
+			int channel;
 
-		Note() {
-			reset();
-		}
+			Note() {
+				reset();
+			}
 
+			void reset();
+		};
+
+
+		bool _noteOn[maxChannels] {};
+		int _noteCount = 0;
+		Note _notesAsPlayed[maxChannels];
+		Note _notesByPitch[maxChannels];
+		bool _notesDirty = false;
+		int _playIndex = -1;
+		bool _up = true;
+		NoteSet* _syncTo;
+		bool _syncNext = true;
+
+		NoteSet(NoteSet* syncTo = NULL) : _syncTo(syncTo) {}
+
+		inline int noteCount() { return _noteCount; }
+		bool nextPitch(Mode mode, float& pitchOut);
 		void reset();
+		void resetSequence();
+		void addNote(int c, float pitch);
+		void dropNote(int c);
+		void shuffleUp(Note* notes, int index);
+		void shuffleDown(Note* notes, int index);
+		void sync();
 	};
 
 	Mode _mode = UP_MODE;
 	float _gateLength = 0.5f;
 	bool _hold = false;
+	bool _notesImmediate = false;
 	Trigger _clockTrigger;
 	Trigger _resetTrigger;
 	Trigger _gateTrigger[maxChannels];
 	bool _anyHigh = false;
 	bool _gateHigh[maxChannels] {};
-	bool _noteOn[maxChannels] {};
-	int _noteCount = 0;
-	Note _notesAsPlayed[maxChannels];
-	Note _notesByPitch[maxChannels];
-	int _playIndex = -1;
+	NoteSet* _currentNotes;
+	NoteSet* _playbackNotes;
 	float _pitchOut = 0.0f;
-	bool _up = true;
 	float _sampleTime = 0.001f;
 	float _secondsSinceLastClock = -1.0f;
 	float _clockSeconds = 0.1f;
@@ -83,21 +105,26 @@ struct Arp : BGModule {
 		configParam(MODE_PARAM, 0.0f, 5.0f, 0.0f, "Playback mode");
 		configParam(GATE_LENGTH_PARAM, 0.0f, 1.0f, 0.5f, "Gate length", "%", 0.0f, 100.0f);
 		configParam(HOLD_PARAM, 0.0f, 1.0f, 0.0f, "Hold/latch");
+
+		_currentNotes = new NoteSet();
+		_playbackNotes = new NoteSet(_currentNotes);
+	}
+	virtual ~Arp() {
+		delete _currentNotes;
+		delete _playbackNotes;
 	}
 
 	void reset() override;
 	void sampleRateChange() override;
+	json_t* dataToJson() override;
+	void dataFromJson(json_t* root) override;
 	int channels() override;
 	void addChannel(int c) override;
 	void removeChannel(int c) override;
 	void modulate() override;
 	void processAll(const ProcessArgs& args) override;
 	void processChannel(const ProcessArgs& args, int c) override {}
-	void addNote(int c);
-	void dropNote(int c);
 	void dropAllNotes();
-	void shuffleUp(Note* notes, int index);
-	void shuffleDown(Note* notes, int index);
 };
 
 } // namespace bogaudio
