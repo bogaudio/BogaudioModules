@@ -100,13 +100,13 @@ void init(rack::Plugin *p) {
 
 	p->addModel(modelDADSRH);
 	p->addModel(modelDADSRHPlus);
-	p->addModel(modelDGate);
 	p->addModel(modelShaper);
 	p->addModel(modelShaperPlus);
 	p->addModel(modelAD);
 	p->addModel(modelASR);
 	p->addModel(modelADSR);
 	p->addModel(modelFollow);
+	p->addModel(modelDGate);
 	p->addModel(modelEdge);
 
 	p->addModel(modelNoise);
@@ -118,6 +118,12 @@ void init(rack::Plugin *p) {
 	p->addModel(modelMix4);
 	p->addModel(modelMix1);
 	p->addModel(modelVCM);
+	p->addModel(modelMute8);
+	p->addModel(modelPan);
+	p->addModel(modelXFade);
+	p->addModel(modelVCA);
+	p->addModel(modelVCAmp);
+
 	p->addModel(modelUMix);
 	p->addModel(modelMumix);
 	p->addModel(modelMatrix44);
@@ -125,11 +131,6 @@ void init(rack::Plugin *p) {
 	p->addModel(modelSwitch44);
 	p->addModel(modelSwitch88);
 	p->addModel(modelSwitch1616);
-	p->addModel(modelMute8);
-	p->addModel(modelPan);
-	p->addModel(modelXFade);
-	p->addModel(modelVCA);
-	p->addModel(modelVCAmp);
 
 	p->addModel(modelAMRM);
 	p->addModel(modelPressor);

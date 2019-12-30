@@ -122,15 +122,6 @@
       ]
     },
     {
-      "slug": "Bogaudio-DGate",
-      "name": "DGATE",
-      "description": "Trigger-to-gate converter with delay",
-      "tags": [
-        "Utility",
-        "Polyphonic"
-      ]
-    },
-    {
       "slug": "Bogaudio-Shaper",
       "name": "SHAPER",
       "description": "Retro-inspired envelope generator and amplifier",
@@ -183,6 +174,15 @@
       "description": "Envelope follower",
       "tags": [
         "Envelope follower",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Bogaudio-DGate",
+      "name": "DGATE",
+      "description": "Trigger-to-gate converter with delay",
+      "tags": [
+        "Utility",
         "Polyphonic"
       ]
     },
@@ -270,6 +270,53 @@
       ]
     },
     {
+      "slug": "Bogaudio-Mute8",
+      "name": "MUTE8",
+      "description": "Eight independent mutes with CV control",
+      "tags": [
+        "Utility",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Bogaudio-Pan",
+      "name": "PAN",
+      "description": "Dual stereo panner",
+      "tags": [
+        "Panning",
+        "Dual",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Bogaudio-XFade",
+      "name": "XFADE",
+      "description": "Crossfader",
+      "tags": [
+        "Mixer",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Bogaudio-VCA",
+      "name": "VCA",
+      "description": "Dual voltage controlled attenuator",
+      "tags": [
+        "VCA",
+        "Dual",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Bogaudio-VCAmp",
+      "name": "VCAMP",
+      "description": "Voltage controlled amplifier with 12dB gain",
+      "tags": [
+        "VCA",
+        "Polyphonic"
+      ]
+    },
+    {
       "slug": "Bogaudio-UMix",
       "name": "UMIX",
       "description": "8-input unity mixer",
@@ -329,53 +376,6 @@
       "description": "16x16 matrix mixer",
       "tags": [
         "Mixer",
-        "Polyphonic"
-      ]
-    },
-    {
-      "slug": "Bogaudio-Mute8",
-      "name": "MUTE8",
-      "description": "Eight independent mutes with CV control",
-      "tags": [
-        "Utility",
-        "Polyphonic"
-      ]
-    },
-    {
-      "slug": "Bogaudio-Pan",
-      "name": "PAN",
-      "description": "Dual stereo panner",
-      "tags": [
-        "Panning",
-        "Dual",
-        "Polyphonic"
-      ]
-    },
-    {
-      "slug": "Bogaudio-XFade",
-      "name": "XFADE",
-      "description": "Crossfader",
-      "tags": [
-        "Mixer",
-        "Polyphonic"
-      ]
-    },
-    {
-      "slug": "Bogaudio-VCA",
-      "name": "VCA",
-      "description": "Dual voltage controlled attenuator",
-      "tags": [
-        "VCA",
-        "Dual",
-        "Polyphonic"
-      ]
-    },
-    {
-      "slug": "Bogaudio-VCAmp",
-      "name": "VCAMP",
-      "description": "Voltage controlled amplifier with 12dB gain",
-      "tags": [
-        "VCA",
         "Polyphonic"
       ]
     },
