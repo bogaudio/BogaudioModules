@@ -20,7 +20,7 @@ void BGModule::process(const ProcessArgs& args) {
 		onSampleRateChange();
 	}
 
-	processAll(args);
+	processAlways(args);
 	if (active()) {
 		++_steps;
 		if (_steps >= _modulationSteps) {
@@ -51,9 +51,11 @@ void BGModule::process(const ProcessArgs& args) {
 			}
 		}
 
+		processAll(args);
 		for (int i = 0; i < _channels; ++i) {
 			processChannel(args, i);
 		}
 		postProcess(args);
 	}
+	postProcessAlways(args);
 }

@@ -67,8 +67,8 @@ struct SampleHold : BGModule {
 	void reset() override;
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
-	void processChannel(const ProcessArgs& args, int c) override;
-	void processChannel(
+	void processAll(const ProcessArgs& args) override;
+	void handleChannel(
 		Param& trackParam,
 		Param& invertParam,
 		Trigger* trigger,

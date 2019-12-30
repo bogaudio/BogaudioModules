@@ -31,7 +31,7 @@ struct PolyMult : BGModule {
 		configParam(CHANNELS_PARAM, 1.0f, 16.0f, 1.0f, "Polyphony channels");
 	}
 
-	void processChannel(const ProcessArgs& args, int c) override;
+	void processAll(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

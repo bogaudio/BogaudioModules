@@ -10,14 +10,12 @@ void VCAmp::sampleRateChange() {
 	}
 }
 
-void VCAmp::processChannel(const ProcessArgs& args, int c) {
-	assert(c == 0);
-
+void VCAmp::processAll(const ProcessArgs& args) {
 	if (inputs[IN_INPUT].isConnected()) {
 		int n = inputs[IN_INPUT].getChannels();
 		outputs[OUT_OUTPUT].setChannels(n);
 		float rmsSum = 0.0f;
-		for (; c < n; ++c) {
+		for (int c = 0; c < n; ++c) {
 			float level = params[LEVEL_PARAM].getValue();
 			if (inputs[CV_INPUT].isConnected()) {
 				level *= clamp(inputs[CV_INPUT].getPolyVoltage(c), 0.0f, 10.0f) / 10.0f;

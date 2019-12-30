@@ -70,7 +70,7 @@ void ADSR::modulateChannel(int c) {
 	e.envelope.setLinearShape(_linearMode);
 }
 
-void ADSR::processAll(const ProcessArgs& args) {
+void ADSR::processAlways(const ProcessArgs& args) {
 	_attackLightSum = _decayLightSum = _sustainLightSum = _releaseLightSum = 0;
 }
 
@@ -88,7 +88,7 @@ void ADSR::processChannel(const ProcessArgs& args, int c) {
 	_releaseLightSum += e.envelope.isStage(dsp::ADSR::RELEASE_STAGE);
 }
 
-void ADSR::postProcess(const ProcessArgs& args) {
+void ADSR::postProcessAlways(const ProcessArgs& args) {
 	lights[ATTACK_LIGHT].value = _attackLightSum / (float)_channels;
 	lights[DECAY_LIGHT].value = _decayLightSum / (float)_channels;
 	lights[SUSTAIN_LIGHT].value = _sustainLightSum / (float)_channels;

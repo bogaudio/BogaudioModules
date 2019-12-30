@@ -13,9 +13,7 @@ void FlipFlop::reset() {
 	}
 }
 
-void FlipFlop::processChannel(const ProcessArgs& args, int c) {
-	assert(c == 0);
-
+void FlipFlop::processAll(const ProcessArgs& args) {
 	for (int i = 0, n = std::max(1, inputs[IN1_INPUT].getChannels()); i < n; ++i) {
 		channelStep(
 			i,

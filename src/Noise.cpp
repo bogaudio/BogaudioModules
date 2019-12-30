@@ -16,9 +16,7 @@ void Noise::dataFromJson(json_t* root) {
 	}
 }
 
-void Noise::processChannel(const ProcessArgs& args, int c) {
-	assert(c == 0);
-
+void Noise::processAll(const ProcessArgs& args) {
 	for (int i = 0; i < _noiseChannels; ++i) {
 		if (outputs[BLUE_OUTPUT].isConnected()) {
 			outputs[BLUE_OUTPUT].setChannels(_noiseChannels);

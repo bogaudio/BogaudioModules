@@ -81,7 +81,7 @@ void ASR::modulateChannel(int c) {
 	_linearMode = params[LINEAR_PARAM].getValue() > 0.5f;
 }
 
-void ASR::processAll(const ProcessArgs& args) {
+void ASR::processAlways(const ProcessArgs& args) {
 	_attackLightSum = _releaseLightSum = 0;
 }
 
@@ -107,7 +107,7 @@ void ASR::processChannel(const ProcessArgs& args, int c) {
 	_releaseLightSum += e.envelope.isStage(ADSR::RELEASE_STAGE) || e.envelope.isStage(ADSR::SUSTAIN_STAGE);
 }
 
-void ASR::postProcess(const ProcessArgs& args) {
+void ASR::postProcessAlways(const ProcessArgs& args) {
 	lights[ATTACK_LIGHT].value = _attackLightSum / (float)_channels;
 	lights[RELEASE_LIGHT].value = _releaseLightSum / (float)_channels;
 }

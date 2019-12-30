@@ -1,9 +1,7 @@
 
 #include "PolyCon.hpp"
 
-void PolyCon::processChannel(const ProcessArgs& args, int c) {
-	assert(c == 0);
-
+void PolyCon::processAll(const ProcessArgs& args) {
 	int cn = clamp(params[CHANNELS_PARAM].getValue(), 1.0f, 16.0f);
 	if (inputs[CHANNELS_INPUT].isConnected()) {
 		cn = inputs[CHANNELS_INPUT].getChannels();

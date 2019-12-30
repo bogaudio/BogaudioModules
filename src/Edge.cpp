@@ -25,9 +25,11 @@ void Edge::modulate() {
 	_holdSeconds *= _holdSeconds;
 }
 
-void Edge::processAll(const ProcessArgs& args) {
+void Edge::processAlways(const ProcessArgs& args) {
 	_highLightSum = 0;
+}
 
+void Edge::processAll(const ProcessArgs& args) {
 	outputs[HIGH_OUTPUT].setChannels(_channels);
 	outputs[RISE_OUTPUT].setChannels(_channels);
 	outputs[FALL_OUTPUT].setChannels(_channels);
@@ -88,7 +90,7 @@ void Edge::processChannel(const ProcessArgs& args, int c) {
 	outputs[FALL_OUTPUT].setVoltage(_fallOutputPulseGen[c].process(st) * 5.0f, c);
 }
 
-void Edge::postProcess(const ProcessArgs& args) {
+void Edge::postProcessAlways(const ProcessArgs& args) {
 	lights[HIGH_LIGHT].value = _highLightSum / (float)_channels;
 }
 

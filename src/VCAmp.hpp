@@ -45,7 +45,7 @@ struct VCAmp : BGModule {
 	}
 
 	void sampleRateChange() override;
-	void processChannel(const ProcessArgs& args, int c) override;
+	void processAll(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

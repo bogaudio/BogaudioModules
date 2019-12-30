@@ -88,7 +88,7 @@ struct Mute8 : BGModule {
 
 	void reset() override;
 	void sampleRateChange() override;
-	void processChannel(const ProcessArgs& args, int c) override;
+	void processAll(const ProcessArgs& args) override;
 	void stepChannel(int i, bool solo);
 };
 

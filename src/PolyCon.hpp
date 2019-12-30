@@ -79,7 +79,7 @@ struct PolyCon : BGModule {
 		configParam(CHANNEL16_PARAM, -1.0f, 1.0f, 0.0f, "Channel 16", "V", 0.0f, 10.0f);
 	}
 
-	void processChannel(const ProcessArgs& args, int c) override;
+	void processAll(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

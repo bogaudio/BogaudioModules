@@ -46,10 +46,8 @@ void SampleHold::dataFromJson(json_t* root) {
 	}
 }
 
-void SampleHold::processChannel(const ProcessArgs& args, int c) {
-	assert(c == 0);
-
-	processChannel(
+void SampleHold::processAll(const ProcessArgs& args) {
+	handleChannel(
 		params[TRACK1_PARAM],
 		params[INVERT1_PARAM],
 		_trigger1,
@@ -60,7 +58,7 @@ void SampleHold::processChannel(const ProcessArgs& args, int c) {
 		_value1,
 		outputs[OUT1_OUTPUT]
 	);
-	processChannel(
+	handleChannel(
 		params[TRACK2_PARAM],
 		params[INVERT2_PARAM],
 		_trigger2,
@@ -73,7 +71,7 @@ void SampleHold::processChannel(const ProcessArgs& args, int c) {
 	);
 }
 
-void SampleHold::processChannel(
+void SampleHold::handleChannel(
 	Param& trackParam,
 	Param& invertParam,
 	Trigger* trigger,

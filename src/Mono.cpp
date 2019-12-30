@@ -23,9 +23,7 @@ void Mono::modulate() {
 	_levelAmp.setLevel(level);
 }
 
-void Mono::processChannel(const ProcessArgs& args, int c) {
-	assert(c == 0);
-
+void Mono::processAll(const ProcessArgs& args) {
 	_activeChannels = inputs[POLY_INPUT].getChannels();
 	float out = 0.0f;
 	for (int c = 0; c < _activeChannels; ++c) {

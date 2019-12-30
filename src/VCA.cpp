@@ -13,9 +13,7 @@ void VCA::sampleRateChange() {
 	}
 }
 
-void VCA::processChannel(const ProcessArgs& args, int c) {
-	assert(c == 0);
-
+void VCA::processAll(const ProcessArgs& args) {
 	bool linear = isLinear();
 	channelStep(inputs[IN1_INPUT], outputs[OUT1_OUTPUT], params[LEVEL1_PARAM], inputs[CV1_INPUT], _amplifier1, _levelSL1, linear);
 	channelStep(inputs[IN2_INPUT], outputs[OUT2_OUTPUT], params[LEVEL2_PARAM], inputs[CV2_INPUT], _amplifier2, _levelSL2, linear);

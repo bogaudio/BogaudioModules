@@ -163,7 +163,7 @@ void FMOp::modulateChannel(int c) {
 	}
 }
 
-void FMOp::processAll(const ProcessArgs& args) {
+void FMOp::processAlways(const ProcessArgs& args) {
 	_attackLightSum = _decayLightSum = _sustainLightSum = _releaseLightSum = 0;
 }
 
@@ -253,7 +253,7 @@ void FMOp::processChannel(const ProcessArgs& args, int c) {
 	_releaseLightSum += e.envelope.isStage(dsp::ADSR::RELEASE_STAGE);
 }
 
-void FMOp::postProcess(const ProcessArgs& args) {
+void FMOp::postProcessAlways(const ProcessArgs& args) {
 	lights[ATTACK_LIGHT].value = _attackLightSum / (float)_channels;
 	lights[DECAY_LIGHT].value = _decayLightSum / (float)_channels;
 	lights[SUSTAIN_LIGHT].value = _sustainLightSum / (float)_channels;

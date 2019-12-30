@@ -30,7 +30,7 @@ struct Bool : BGModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 	}
 
-	void processChannel(const ProcessArgs& args, int c) override;
+	void processAll(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

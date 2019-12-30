@@ -11,9 +11,7 @@ void Unison::modulate() {
 	_cents /= 100.0f;
 }
 
-void Unison::processChannel(const ProcessArgs& args, int c) {
-	assert(c == 0);
-
+void Unison::processAll(const ProcessArgs& args) {
 	float pitch = inputs[PITCH_INPUT].getVoltage();
 	float gate = inputs[GATE_INPUT].getVoltage();
 	outputs[PITCH_OUTPUT].setChannels(_channels);

@@ -33,11 +33,13 @@ struct BGModule : Module {
 	virtual void channelsChanged(int before, int after) {}
 	virtual void addChannel(int c) {}
 	virtual void removeChannel(int c) {}
+	virtual void processAlways(const ProcessArgs& args) {} // called before modulate()!
 	virtual void modulate() {}
 	virtual void modulateChannel(int c) {}
 	virtual void processAll(const ProcessArgs& args) {}
-	virtual void processChannel(const ProcessArgs& args, int c) = 0;
+	virtual void processChannel(const ProcessArgs& args, int c) {}
 	virtual void postProcess(const ProcessArgs& args) {}
+	virtual void postProcessAlways(const ProcessArgs& args) {} // modulate() may not have been called.
 };
 
 } // namespace bogaudio

@@ -33,7 +33,7 @@ void Mumix::modulate() {
 	}
 }
 
-void Mumix::processAll(const ProcessArgs& args) {
+void Mumix::processAlways(const ProcessArgs& args) {
 	for (int i = 0; i < 8; ++i) {
 		_amplifiers[i].setLevel(_slewLimiters[i].next(_muted[i] ? minDecibels : maxDecibels));
 	}

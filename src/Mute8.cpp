@@ -23,9 +23,7 @@ void Mute8::sampleRateChange() {
 	}
 }
 
-void Mute8::processChannel(const ProcessArgs& args, int c) {
-	assert(c == 0);
-
+void Mute8::processAll(const ProcessArgs& args) {
 	bool solo = false;
 	for (int i = 0; i < 8; ++i) {
 		solo = solo || params[MUTE1_PARAM + i].getValue() > 1.5f;

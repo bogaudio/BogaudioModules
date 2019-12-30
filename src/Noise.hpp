@@ -42,7 +42,7 @@ struct Noise : BGModule {
 
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
-	void processChannel(const ProcessArgs& args, int c) override;
+	void processAll(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

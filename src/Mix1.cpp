@@ -34,7 +34,7 @@ void Mix1::removeChannel(int c) {
 	_engines[c] = NULL;
 }
 
-void Mix1::processAll(const ProcessArgs& args) {
+void Mix1::processAlways(const ProcessArgs& args) {
 	_rmsSum = 0.0f;
 }
 
@@ -46,7 +46,7 @@ void Mix1::processChannel(const ProcessArgs& args, int c) {
 	outputs[OUT_OUTPUT].setVoltage(e.out, c);
 }
 
-void Mix1::postProcess(const ProcessArgs& args) {
+void Mix1::postProcessAlways(const ProcessArgs& args) {
 	_rms = _rmsSum / (float)_channels;
 }
 

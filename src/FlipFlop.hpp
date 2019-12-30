@@ -42,7 +42,7 @@ struct FlipFlop : BGModule {
 	}
 
 	void reset() override;
-	void processChannel(const ProcessArgs& args, int c) override;
+	void processAll(const ProcessArgs& args) override;
 	void channelStep(
 		int c,
 		int channels,

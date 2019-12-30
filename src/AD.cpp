@@ -83,7 +83,7 @@ void AD::modulateChannel(int c) {
 	_linearMode = params[LINEAR_PARAM].getValue() > 0.5f;
 }
 
-void AD::processAll(const ProcessArgs& args) {
+void AD::processAlways(const ProcessArgs& args) {
 	_attackLightSum = _decayLightSum = 0;
 }
 
@@ -109,7 +109,7 @@ void AD::processChannel(const ProcessArgs& args, int c) {
 	_decayLightSum += e.envelope.isStage(ADSR::DECAY_STAGE);
 }
 
-void AD::postProcess(const ProcessArgs& args) {
+void AD::postProcessAlways(const ProcessArgs& args) {
 	lights[ATTACK_LIGHT].value = _attackLightSum / (float)_channels;
 	lights[DECAY_LIGHT].value = _decayLightSum / (float)_channels;
 }

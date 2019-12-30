@@ -1,9 +1,7 @@
 
 #include "Bool.hpp"
 
-void Bool::processChannel(const ProcessArgs& args, int c) {
-	assert(c == 0);
-
+void Bool::processAll(const ProcessArgs& args) {
 	for (int i = 0, cn = std::max(1, inputs[A_INPUT].getChannels()); i < cn; ++i) {
 		bool a = inputs[A_INPUT].getPolyVoltage(i) > 1.0f;
 		bool b = inputs[B_INPUT].getPolyVoltage(i) > 1.0f;

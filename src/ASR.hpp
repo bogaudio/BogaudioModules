@@ -78,9 +78,9 @@ struct ASR : BGModule {
 	void addChannel(int c) override;
 	void removeChannel(int c) override;
 	void modulateChannel(int c) override;
-	void processAll(const ProcessArgs& args) override;
+	void processAlways(const ProcessArgs& args) override;
 	void processChannel(const ProcessArgs& args, int c) override;
-	void postProcess(const ProcessArgs& args) override;
+	void postProcessAlways(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

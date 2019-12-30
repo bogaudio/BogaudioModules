@@ -22,7 +22,7 @@ void bogaudio::Switch::modulate() {
 	_latch = params[LATCH_PARAM].getValue() > 0.5f;
 }
 
-void bogaudio::Switch::processAll(const ProcessArgs& args) {
+void bogaudio::Switch::processAlways(const ProcessArgs& args) {
 	_high1LightSum = 0;
 	_low1LightSum = 0;
 	_high2LightSum = 0;
@@ -80,7 +80,7 @@ void bogaudio::Switch::processChannel(const ProcessArgs& args, int c) {
 	}
 }
 
-void bogaudio::Switch::postProcess(const ProcessArgs& args) {
+void bogaudio::Switch::postProcessAlways(const ProcessArgs& args) {
 	lights[HIGH1_LIGHT].value = _high1LightSum / (float)_channels;
 	lights[LOW1_LIGHT].value = _low1LightSum / (float)_channels;
 	lights[HIGH2_LIGHT].value = _high2LightSum / (float)_channels;
