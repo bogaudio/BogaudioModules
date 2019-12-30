@@ -102,7 +102,7 @@
     <use xlink:href="#knobguide-channels" transform="translate(0 -1)" />
   </g>
 
-  <g transform="translate(0 85)">
+  <g transform="translate(0 75)">
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 98)" />
       <rect width="34" height="105" rx="5" fill="#fafafa" />
