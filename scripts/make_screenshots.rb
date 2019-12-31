@@ -1,45 +1,65 @@
 #!/usr/bin/env ruby
 
-# To generate per-modules screenshots, in Rack dir: ./Rack -d -t 1
+# To reggenerate README screenshots:
+#  1. rm -rf ../../screenshots/Bogaudio/
+#  2. (cd ../.. && ./Rack -d -t 1 Bogaudio)
+#  3. ./scripts/make_screenshots.rb ../../screenshots/Bogaudio
 
 screens = [
   {
     file: 'modules1.png',
     crop: false,
     rows: [
-      ['VCO', 'XCO', 'Additator', 'FMOp', '-', 'LFO', 'EightFO', 'LLFO'],
-      ['DADSRH', 'DADSRHPlus', 'DGate', 'Shaper', 'ShaperPlus', 'AD', 'ADSR', 'Follow']
+      ['VCO', 'LVCO', 'Sine', 'Pulse', 'XCO', 'Additator', 'FMOp'],
+      ['LFO', 'EightFO', 'LLFO']
     ]
   },
   {
     file: 'modules2.png',
     crop: false,
     rows: [
-      ['Mix8', 'Mix4', 'Mix1', 'VCM', 'Mute8', 'Pan', 'XFade', 'VCA', 'VCAmp'],
-      ['AMRM', 'Pressor', 'Lmtr', 'Nsgt', '-', 'UMix', 'Matrix88']
+      ['DADSRH', 'DADSRHPlus', 'Shaper', 'ShaperPlus', 'AD', 'ASR', 'ADSR', 'Follow', 'DGate', 'Edge']
     ]
   },
   {
     file: 'modules3.png',
     crop: false,
     rows: [
-      ['Noise', 'SampleHold', 'Walk2', 'Walk', '-', 'EightOne', 'OneEight', 'AddrSeq'],
-      ['VU', 'Analyzer', 'AnalyzerXL']
+      ['Mix8', 'Mix4', 'Mix1', 'VCM', 'Mute8', '-', 'Pan', 'XFade', '-', 'VCA', 'VCAmp'],
+      ['UMix', 'Mumix', '-', 'Matrix44', 'Matrix88'],
+      ['Switch44', 'Switch88', 'Switch1616']
     ]
   },
   {
     file: 'modules4.png',
     crop: false,
     rows: [
-      ['Mono', '-', 'Detune', 'Stack', 'Reftone', '-', 'Bool', 'Cmp', 'CVD', 'FlipFlop', 'Manual', 'Mult', 'Offset', 'Slew', 'Sums', 'Switch', '-', 'Blank3', 'Blank6']
+      ['AMRM', 'Pressor', 'Lmtr', 'Nsgt'],
+      ['Noise', 'SampleHold', 'Walk2', 'Walk', '-', 'EightOne', 'OneEight', 'AddrSeq'],
+      ['VU', 'Analyzer', 'AnalyzerXL']
+    ]
+  },
+  {
+    file: 'modules5.png',
+    crop: false,
+    rows: [
+      ['Mono', 'Arp', 'Assign', 'Unison', 'PolyCon', 'PolyMult', '-', 'Detune', 'Stack', 'Reftone'],
+      ['Bool', 'Cmp', 'CVD', 'FlipFlop', 'Manual', 'Mult', 'Offset', 'Slew', 'Sums', 'Switch', '-', 'Blank3', 'Blank6']
     ]
   },
 
   {
-    file: 'oscillators.png',
+    file: 'oscillators1.png',
     crop: true,
     rows: [
-      ['VCO', 'XCO', 'Additator', 'FMOp']
+      ['VCO', 'LVCO', 'Sine', 'Pulse', 'XCO']
+    ]
+  },
+  {
+    file: 'oscillators2.png',
+    crop: true,
+    rows: [
+      ['Additator', 'FMOp']
     ]
   },
   {
@@ -53,14 +73,21 @@ screens = [
     file: 'envelopes1.png',
     crop: true,
     rows: [
-      ['DADSRH', 'DADSRHPlus', 'DGate']
+      ['DADSRH', 'DADSRHPlus']
     ]
   },
   {
     file: 'envelopes2.png',
     crop: true,
     rows: [
-      ['Shaper', 'ShaperPlus', 'AD', 'ADSR', 'Follow']
+      ['Shaper', 'ShaperPlus', 'AD', 'ASR', 'ADSR', 'Follow']
+    ]
+  },
+  {
+    file: 'envelopes3.png',
+    crop: true,
+    rows: [
+      ['DGate', 'Edge']
     ]
   },
   {
@@ -74,14 +101,35 @@ screens = [
     file: 'mixers1.png',
     crop: true,
     rows: [
-      ['Mix8', 'Mix4', 'Mix1', 'UMix', 'Matrix88']
+      ['Mix8', 'Mix4', 'Mix1']
     ]
   },
   {
     file: 'mixers2.png',
     crop: true,
     rows: [
-      ['VCM', 'Mute8', 'Pan', 'XFade', 'VCA', 'VCAmp']
+      ['VCM', 'Mute8', 'Pan', 'XFade']
+    ]
+  },
+  {
+    file: 'mixers3.png',
+    crop: true,
+    rows: [
+      ['VCA', 'VCAmp']
+    ]
+  },
+  {
+    file: 'mixers4.png',
+    crop: true,
+    rows: [
+      ['UMix', 'Mumix', 'Matrix44', 'Matrix88']
+    ]
+  },
+  {
+    file: 'mixers5.png',
+    crop: true,
+    rows: [
+      ['Switch44', 'Switch88', 'Switch1616']
     ]
   },
   {
@@ -106,10 +154,17 @@ screens = [
     ]
   },
   {
+    file: 'poly.png',
+    crop: true,
+    rows: [
+      ['Mono', 'Arp', 'Assign', 'Unison', 'PolyCon', 'PolyMult']
+    ]
+  },
+  {
     file: 'pitch.png',
     crop: true,
     rows: [
-      ['Mono', '-', 'Detune', 'Stack', 'Reftone']
+      ['Detune', 'Stack', 'Reftone']
     ]
   },
   {
