@@ -590,7 +590,7 @@ A stereo signal level visualizer/meter.  The L channel is sent to both displays 
 _Polyphony:_ Monophonic, but if an input is polyphonic, its channels are summed, and summed value is used to compute the level displayed (independently for the left and right inputs).
 
 
-### <a name="pitch"></a> Polyphony Utilities
+### <a name="poly"></a> Polyphony Utilities
 
 ![Polyphony utilities screenshot](doc/www/poly.png)
 
