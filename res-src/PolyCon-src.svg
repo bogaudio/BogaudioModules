@@ -33,31 +33,23 @@
 
     <symbol id="knobguide-channels" viewBox="0 0 40px 40px">
       <g transform="translate(20 20)">
-        <text font-size="5pt" transform="rotate(-240) translate(13 0) rotate(240) translate(-2 2)">1</text>
-        <text font-size="5pt" transform="rotate(-200) translate(13 0) rotate(200) translate(-2 2)">3</text>
-        <text font-size="5pt" transform="rotate(-160) translate(13 0) rotate(160) translate(-2 2)">5</text>
-        <text font-size="5pt" transform="rotate(-120) translate(13 0) rotate(120) translate(-2 2)">7</text>
-        <text font-size="5pt" transform="rotate(-80) translate(13 0) rotate(80) translate(-2 2)">9</text>
-        <text font-size="5pt" transform="rotate(-40) translate(13 0) rotate(40) translate(-2 2)">11</text>
-        <text font-size="5pt" transform="rotate(0) translate(13 0) rotate(0) translate(-2.1 2.3)">13</text>
-        <text font-size="5pt" transform="rotate(40) translate(13 0) rotate(-40) translate(-1.8 3)">15</text>
+        <text font-size="5pt" transform="rotate(-240) translate(14 0) rotate(240) translate(-2 2)">1</text>
+        <text font-size="5pt" transform="rotate(-180) translate(14 0) rotate(180) translate(-2 2)">4</text>
+        <text font-size="5pt" transform="rotate(-100) translate(14 0) rotate(100) translate(-2 2)">8</text>
+        <text font-size="5pt" transform="rotate(-20) translate(13 0) rotate(20) translate(-2 2)">12</text>
+        <text font-size="5pt" transform="rotate(60) translate(13 0) rotate(-60) translate(-1.8 3)">16</text>
 
-        <!-- <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-240) translate(12 0)" /> -->
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-220) translate(10 0)" />
-        <!-- <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-200) translate(12 0)" /> -->
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-180) translate(10 0)" />
-        <!-- <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-160) translate(12 0)" /> -->
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-200) translate(10 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-160) translate(10 0)" />
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-140) translate(10 0)" />
-        <!-- <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-120) translate(12 0)" /> -->
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-100) translate(10 0)" />
-        <!-- <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-80) translate(12 0)" /> -->
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-120) translate(10 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-80) translate(10 0)" />
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-60) translate(10 0)" />
-        <!-- <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-40) translate(12 0)" /> -->
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-20) translate(10 0)" />
-        <!-- <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(0) translate(12 0)" /> -->
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-40) translate(10 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(0) translate(10 0)" />
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(20) translate(10 0)" />
-        <!-- <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(40) translate(12 0)" /> -->
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(60) translate(10 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(40) translate(10 0)" />
       </g>
     </symbol>
 
@@ -130,98 +122,98 @@
   <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(86.67 0)" /> -->
   <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(104.67 0)" /> -->
 
-  <g transform="translate(19.5 70)">
+  <g transform="translate(21.5 70)">
     <use id="CHANNEL1_PARAM" xlink:href="#knob19" transform="translate(3.6 8)" />
     <use xlink:href="#knobguide-centertick19" transform="translate(-6.5 -2)" />
     <text font-size="5pt" letter-spacing="1px" transform="translate(-6.5 20.5)">1</text>
     <use id="CHANNEL1_LIGHT" xlink:href="#light-tiny" transform="translate(12.25 30)" />
   </g>
-  <g transform="translate(19.5 107)">
+  <g transform="translate(21.5 107)">
     <use id="CHANNEL2_PARAM" xlink:href="#knob19" transform="translate(3.5 8)" />
     <use xlink:href="#knobguide-centertick19" transform="translate(-6.5 -2)" />
     <text font-size="5pt" letter-spacing="1px" transform="translate(-7 20.5)">2</text>
     <use id="CHANNEL2_LIGHT" xlink:href="#light-tiny" transform="translate(12.25 30)" />
   </g>
-  <g transform="translate(19.5 144)">
+  <g transform="translate(21.5 144)">
     <use id="CHANNEL3_PARAM" xlink:href="#knob19" transform="translate(3.5 8)" />
     <use xlink:href="#knobguide-centertick19" transform="translate(-6.5 -2)" />
     <text font-size="5pt" letter-spacing="1px" transform="translate(-7 20.5)">3</text>
     <use id="CHANNEL3_LIGHT" xlink:href="#light-tiny" transform="translate(12.25 30)" />
   </g>
-  <g transform="translate(19.5 181)">
+  <g transform="translate(21.5 181)">
     <use id="CHANNEL4_PARAM" xlink:href="#knob19" transform="translate(3.5 8)" />
     <use xlink:href="#knobguide-centertick19" transform="translate(-6.5 -2)" />
     <text font-size="5pt" letter-spacing="1px" transform="translate(-7.2 20.5)">4</text>
     <use id="CHANNEL4_LIGHT" xlink:href="#light-tiny" transform="translate(12.25 30)" />
   </g>
-  <g transform="translate(19.5 218)">
+  <g transform="translate(21.5 218)">
     <use id="CHANNEL5_PARAM" xlink:href="#knob19" transform="translate(3.5 8)" />
     <use xlink:href="#knobguide-centertick19" transform="translate(-6.5 -2)" />
     <text font-size="5pt" letter-spacing="1px" transform="translate(-7.2 20.5)">5</text>
     <use id="CHANNEL5_LIGHT" xlink:href="#light-tiny" transform="translate(12.25 30)" />
   </g>
-  <g transform="translate(19.5 255)">
+  <g transform="translate(21.5 255)">
     <use id="CHANNEL6_PARAM" xlink:href="#knob19" transform="translate(3.5 8)" />
     <use xlink:href="#knobguide-centertick19" transform="translate(-6.5 -2)" />
     <text font-size="5pt" letter-spacing="1px" transform="translate(-7.2 20.5)">6</text>
     <use id="CHANNEL6_LIGHT" xlink:href="#light-tiny" transform="translate(12.25 30)" />
   </g>
-  <g transform="translate(19.5 292)">
+  <g transform="translate(21.5 292)">
     <use id="CHANNEL7_PARAM" xlink:href="#knob19" transform="translate(3.5 8)" />
     <use xlink:href="#knobguide-centertick19" transform="translate(-6.5 -2)" />
     <text font-size="5pt" letter-spacing="1px" transform="translate(-7.2 20.5)">7</text>
     <use id="CHANNEL7_LIGHT" xlink:href="#light-tiny" transform="translate(12.25 30)" />
   </g>
-  <g transform="translate(19.5 329)">
+  <g transform="translate(21.5 329)">
     <use id="CHANNEL8_PARAM" xlink:href="#knob19" transform="translate(3.5 8)" />
     <use xlink:href="#knobguide-centertick19" transform="translate(-6.5 -2)" />
     <text font-size="5pt" letter-spacing="1px" transform="translate(-7.2 20.5)">8</text>
     <use id="CHANNEL8_LIGHT" xlink:href="#light-tiny" transform="translate(12.25 30)" />
   </g>
 
-  <g transform="translate(73 70)">
+  <g transform="translate(71.5 70)">
     <use id="CHANNEL9_PARAM" xlink:href="#knob19" transform="translate(3.5 8)" />
     <use xlink:href="#knobguide-centertick19" transform="translate(-6.5 -2)" />
     <text font-size="5pt" letter-spacing="1px" transform="translate(31 20.5)">9</text>
     <use id="CHANNEL9_LIGHT" xlink:href="#light-tiny" transform="translate(12.25 30)" />
   </g>
-  <g transform="translate(73 107)">
+  <g transform="translate(71.5 107)">
     <use id="CHANNEL10_PARAM" xlink:href="#knob19" transform="translate(3.5 8)" />
     <use xlink:href="#knobguide-centertick19" transform="translate(-6.5 -2)" />
     <text font-size="5pt" letter-spacing="1px" transform="translate(30.5 20.5)">10</text>
     <use id="CHANNEL10_LIGHT" xlink:href="#light-tiny" transform="translate(12.25 30)" />
   </g>
-  <g transform="translate(73 144)">
+  <g transform="translate(71.5 144)">
     <use id="CHANNEL11_PARAM" xlink:href="#knob19" transform="translate(3.5 8)" />
     <use xlink:href="#knobguide-centertick19" transform="translate(-6.5 -2)" />
     <text font-size="5pt" letter-spacing="1px" transform="translate(30.5 20.5)">11</text>
     <use id="CHANNEL11_LIGHT" xlink:href="#light-tiny" transform="translate(12.25 30)" />
   </g>
-  <g transform="translate(73 181)">
+  <g transform="translate(71.5 181)">
     <use id="CHANNEL12_PARAM" xlink:href="#knob19" transform="translate(3.5 8)" />
     <use xlink:href="#knobguide-centertick19" transform="translate(-6.5 -2)" />
     <text font-size="5pt" letter-spacing="1px" transform="translate(30.5 20.5)">12</text>
     <use id="CHANNEL12_LIGHT" xlink:href="#light-tiny" transform="translate(12.25 30)" />
   </g>
-  <g transform="translate(73 218)">
+  <g transform="translate(71.5 218)">
     <use id="CHANNEL13_PARAM" xlink:href="#knob19" transform="translate(3.5 8)" />
     <use xlink:href="#knobguide-centertick19" transform="translate(-6.5 -2)" />
     <text font-size="5pt" letter-spacing="1px" transform="translate(30.5 20.5)">13</text>
     <use id="CHANNEL13_LIGHT" xlink:href="#light-tiny" transform="translate(12.25 30)" />
   </g>
-  <g transform="translate(73 255)">
+  <g transform="translate(71.5 255)">
     <use id="CHANNEL14_PARAM" xlink:href="#knob19" transform="translate(3.5 8)" />
     <use xlink:href="#knobguide-centertick19" transform="translate(-6.5 -2)" />
     <text font-size="5pt" letter-spacing="1px" transform="translate(30.5 20.5)">14</text>
     <use id="CHANNEL14_LIGHT" xlink:href="#light-tiny" transform="translate(12.25 30)" />
   </g>
-  <g transform="translate(73 292)">
+  <g transform="translate(71.5 292)">
     <use id="CHANNEL15_PARAM" xlink:href="#knob19" transform="translate(3.5 8)" />
     <use xlink:href="#knobguide-centertick19" transform="translate(-6.5 -2)" />
     <text font-size="5pt" letter-spacing="1px" transform="translate(30.5 20.5)">15</text>
     <use id="CHANNEL15_LIGHT" xlink:href="#light-tiny" transform="translate(12.25 30)" />
   </g>
-  <g transform="translate(73 329)">
+  <g transform="translate(71.5 329)">
     <use id="CHANNEL16_PARAM" xlink:href="#knob19" transform="translate(3.5 8)" />
     <use xlink:href="#knobguide-centertick19" transform="translate(-6.5 -2)" />
     <text font-size="5pt" letter-spacing="1px" transform="translate(30.5 20.5)">16</text>

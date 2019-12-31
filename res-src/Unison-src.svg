@@ -35,7 +35,6 @@
       <g transform="translate(22.5 22.5)">
         <text font-size="5.0pt" transform="rotate(-240) translate(18 0) rotate(240) translate(-1.9 2.2)">1</text>
         <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-220) translate(15 0)" />
-        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-220) translate(15 0)" />
         <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-200) translate(15 0)" />
 
         <text font-size="5.0pt" transform="rotate(-180) translate(17 0) rotate(180) translate(-2 2.2)">4</text>
