@@ -294,7 +294,7 @@ end
 def make_screws(hp, comments, indent)
   i1 = indent ? "\t\t" : ''
   ss = []
-  if hp <= 6
+  if hp <= 8
     ss << 'addChild(createWidget<ScrewSilver>(Vec(0, 0)));'
     ss << 'addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 365)));'
   elsif hp <= 13
