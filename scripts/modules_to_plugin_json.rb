@@ -5,10 +5,13 @@ require 'JSON'
 plugin_json = File.read("plugin.json")
 plugin = JSON.parse(plugin_json)
 
-models = `c++ -E src/bogaudio.cpp 2>&1 | grep addModel`
+flags = []
+flags << '-DTEST=1' if ENV['TEST']
+flags << '-DEXPERIMENTAL=1' if ENV['EXPERIMENTAL']
+models = `c++ #{flags.join(' ')} -E src/bogaudio.cpp 2>&1 | grep addModel`
 models = models.split.map do |s|
   s.sub(/^\s*p->addModel\(([^)]+)\);\s*$/, '\1')
-end
+end.reject { |m| m =~ /^model.*HP$/ }
 
 modules = []
 models.each do |model|

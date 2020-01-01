@@ -525,4 +525,4 @@ struct TestWidget : ModuleWidget {
 	}
 };
 
-Model* modelTest = rack::createModel<Test, TestWidget>("Bogaudio-Test");
+Model* modelTest = bogaudio::createModel<Test, TestWidget>("Bogaudio-Test", "TEST", "test");
