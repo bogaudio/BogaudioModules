@@ -43,8 +43,22 @@ plot: $(PLOT_OBJECTS)
 plotrun: plot
 	./plot
 plotrungp: plot
-	./plot > plot.tmp && gnuplot -e "set yrange [0:1.1]; plot 'plot.tmp' using 1:2 with lines"
+	# ./plot > plot.tmp && gnuplot -p -e "set yrange [0:1.1]; plot 'plot.tmp' using 1:2 with lines"
+	./plot > plot.tmp && gnuplot -p test/plot.gp
 plot_clean:
-	rm -f plot $(PLOT_OBJECTS)
+	rm -f plot plot.tmp $(PLOT_OBJECTS)
 
-clean: benchmark_clean testmain_clean plot_clean
+SCATTER_SOURCES = $(wildcard test/scatter.cpp src/dsp/*cpp)
+SCATTER_OBJECTS = $(patsubst %, build/%.o, $(SCATTER_SOURCES))
+SCATTER_DEPS = $(patsubst %, build/%.d, $(SCATTER_SOURCES))
+-include $(SCATTER_DEPS)
+scatter: $(SCATTER_OBJECTS)
+	$(CXX) -o $@ $^
+scatterrun: scatter
+	./scatter
+scatterrungp: scatter
+	./scatter > scatter.tmp && gnuplot -p test/scatter.gp
+scatter_clean:
+	rm -f scatter scatter.tmp $(SCATTER_OBJECTS)
+
+clean: benchmark_clean testmain_clean plot_clean scatter_clean

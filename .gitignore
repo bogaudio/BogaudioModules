@@ -38,4 +38,7 @@ testmain
 releasenote.md
 plot
 plot.*
+scatter
+scatter.*
 lldb.cmd
+!test/*
