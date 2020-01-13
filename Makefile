@@ -43,7 +43,6 @@ plot: $(PLOT_OBJECTS)
 plotrun: plot
 	./plot
 plotrungp: plot
-	# ./plot > plot.tmp && gnuplot -p -e "set yrange [0:1.1]; plot 'plot.tmp' using 1:2 with lines"
 	./plot > plot.tmp && gnuplot -p test/plot.gp
 plot_clean:
 	rm -f plot plot.tmp $(PLOT_OBJECTS)
