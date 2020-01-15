@@ -36,7 +36,6 @@ void Stack::processChannel(const ProcessArgs& args, int c) {
 		outputs[THRU_OUTPUT].setVoltage(inCV, c);
 	}
 	else {
-		assert(c == 0);
 		outputs[THRU_OUTPUT].setVoltage(_semitones[c] / 10.0);
 	}
 	outputs[OUT_OUTPUT].setChannels(_channels);
