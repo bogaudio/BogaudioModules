@@ -16,10 +16,6 @@
 #define WINDOW_KAISER_KEY "kaiser"
 
 void AnalyzerXL::reset() {
-	_range = 0.0f;
-	_smooth = 0.25f;
-	_quality = AnalyzerCore::QUALITY_GOOD;
-	_window = AnalyzerCore::WINDOW_KAISER;
 	_core.resetChannels();
 }
 
