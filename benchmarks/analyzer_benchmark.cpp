@@ -90,23 +90,23 @@ static void BM_SpectrumAnalyzerStep(benchmark::State& state) {
 }
 BENCHMARK(BM_SpectrumAnalyzerStep);
 
-static void BM_SpectrumAnalyzerProcess(benchmark::State& state) {
-  SpectrumAnalyzer sa(
-    SpectrumAnalyzer::SIZE_1024,
-    SpectrumAnalyzer::OVERLAP_1,
-    SpectrumAnalyzer::WINDOW_HANNING,
-    44100.0
-  );
-  float in[8] = { 0.0, 0.7, 1.0, 0.7, 0.0, -0.7, -1.0, -0.7 };
-  for (int i = 0; i < 1024; ++i) {
-    sa.step(in[i % 8]);
-  }
-
-  for (auto _ : state) {
-    sa.process(sa._samples);
-  }
-}
-BENCHMARK(BM_SpectrumAnalyzerProcess);
+// static void BM_SpectrumAnalyzerProcess(benchmark::State& state) {
+//   SpectrumAnalyzer sa(
+//     SpectrumAnalyzer::SIZE_1024,
+//     SpectrumAnalyzer::OVERLAP_1,
+//     SpectrumAnalyzer::WINDOW_HANNING,
+//     44100.0
+//   );
+//   float in[8] = { 0.0, 0.7, 1.0, 0.7, 0.0, -0.7, -1.0, -0.7 };
+//   for (int i = 0; i < 1024; ++i) {
+//     sa.step(in[i % 8]);
+//   }
+//
+//   for (auto _ : state) {
+//     sa.process(sa._samples);
+//   }
+// }
+// BENCHMARK(BM_SpectrumAnalyzerProcess);
 
 static void BM_SpectrumAnalyzerGetMagnitudes(benchmark::State& state) {
   SpectrumAnalyzer sa(

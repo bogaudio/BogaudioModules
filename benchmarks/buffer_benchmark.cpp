@@ -7,7 +7,7 @@ using namespace bogaudio::dsp;
 
 struct BMOverlappingBuffer : OverlappingBuffer<float> {
   BMOverlappingBuffer(int size, int o) : OverlappingBuffer(size, o) {}
-  void process(float* samples) override {}
+  void processBuffer(float* samples) override {}
 };
 
 static void BM_OverlappingBuffer(benchmark::State& state) {
