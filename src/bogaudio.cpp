@@ -24,6 +24,8 @@
 #include "Edge.hpp"
 #include "EightFO.hpp"
 #include "EightOne.hpp"
+#include "EQ.hpp"
+#include "FFB.hpp"
 #include "FMOp.hpp"
 #include "FlipFlop.hpp"
 #include "Follow.hpp"
@@ -31,6 +33,7 @@
 #include "LFO.hpp"
 #include "LLFO.hpp"
 #include "Lmtr.hpp"
+#include "LVCF.hpp"
 #include "LVCO.hpp"
 #include "Manual.hpp"
 #include "Matrix44.hpp"
@@ -67,6 +70,7 @@
 #include "Unison.hpp"
 #include "VCA.hpp"
 #include "VCAmp.hpp"
+#include "VCF.hpp"
 #include "VCM.hpp"
 #include "VCO.hpp"
 #include "VU.hpp"
@@ -98,6 +102,11 @@ void init(rack::Plugin *p) {
 	p->addModel(modelLFO);
 	p->addModel(modelEightFO);
 	p->addModel(modelLLFO);
+
+	p->addModel(modelVCF);
+	p->addModel(modelLVCF);
+	p->addModel(modelFFB);
+	p->addModel(modelEQ);
 
 	p->addModel(modelDADSRH);
 	p->addModel(modelDADSRHPlus);

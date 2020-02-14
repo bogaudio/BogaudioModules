@@ -104,6 +104,42 @@
       ]
     },
     {
+      "slug": "Bogaudio-VCF",
+      "name": "VCF",
+      "description": "Multimode filter",
+      "tags": [
+        "Filter",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Bogaudio-LVCF",
+      "name": "LVCF",
+      "description": "Compact multimode filter",
+      "tags": [
+        "Filter",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Bogaudio-FFB",
+      "name": "FFB",
+      "description": "Fixed filter bank",
+      "tags": [
+        "Filter",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Bogaudio-EQ",
+      "name": "EQ",
+      "description": "Compact 3-channel equalizer",
+      "tags": [
+        "Equalizer",
+        "Polyphonic"
+      ]
+    },
+    {
       "slug": "Bogaudio-DADSRH",
       "name": "DADSR(H)",
       "description": "Advanced envelope generator",

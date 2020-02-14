@@ -74,10 +74,53 @@ struct ChebyshevPoles : Scatter {
 	}
 };
 
+struct ChebyshevPoles2 : Scatter {
+	int k = 1;
+	int n;
+	double ripple;
+	double e;
+	double ef;
+
+	ChebyshevPoles2(int n, double ripple) : n(n), ripple(ripple) {
+		e = ripple / 10.0;
+		e = std::pow(10.0, e);
+		e -= 1.0f;
+		e = std::sqrt(e);
+
+		ef = std::asinh(1.0 / e) / (float)n;
+	}
+
+	bool next(float& x, float &y) override {
+		double a = (double)(2 * k - 1) * M_PI / (double)(2 * n);
+		x = -std::sinh(ef) * std::sin(a);
+		y = std::cosh(ef) * std::cos(a);
+		++k;
+		return k <= n;
+	}
+};
+
+struct ButterworthPoles2 : Scatter {
+	int k = 1;
+	int n;
+
+	ButterworthPoles2(int n) : n(n) {}
+
+	bool next(float& x, float &y) override {
+		float a = ((float)(2 * k + n - 1)) * M_PI / (float)(2 * n);
+
+		x = std::cos(a);
+		y = std::sin(a);
+		++k;
+		return k <= n;
+	}
+};
+
 int main() {
 	// std::unique_ptr<Scatter> s(new TestScatter());
 	// std::unique_ptr<Scatter> s(new ButterworthPoles(16));
-	std::unique_ptr<Scatter> s(new ChebyshevPoles(16, 0.01));
+	// std::unique_ptr<Scatter> s(new ButterworthPoles2(7));
+	// std::unique_ptr<Scatter> s(new ChebyshevPoles(16, 0.01));
+	std::unique_ptr<Scatter> s(new ChebyshevPoles2(4, 3.0));
 
 	float x = 0.0f;
 	float y = 0.0f;

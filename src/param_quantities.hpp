@@ -19,6 +19,7 @@ struct ScaledSquaringParamQuantity : ParamQuantity {
 
 		float vv = v * v;
 		vv *= (float)scale;
+		vv += displayOffset;
 		if (v < 0.0f) {
 			return -vv;
 		}
@@ -29,6 +30,7 @@ struct ScaledSquaringParamQuantity : ParamQuantity {
 		if (!module) {
 			return;
 		}
+		displayValue -= displayOffset;
 		float v = fabsf(displayValue) / (float)scale;
 		v = powf(v, 0.5f);
 		if (displayValue < 0.0f) {

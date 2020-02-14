@@ -359,6 +359,7 @@ float TestVCF::AllPassModel::next(float sample) {
 	return _filter.next(sample);
 }
 
+
 template<typename T>
 void TestVCF::ChebyshevModel<T>::setParams(float cutoff, float bandwidth, float resonance, Mode mode, Poles poles, float topology) {
 	switch (mode) {
