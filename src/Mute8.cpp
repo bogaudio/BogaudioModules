@@ -2,9 +2,24 @@
 #include "Mute8.hpp"
 #include "mixer.hpp"
 
+#define LATCHING_CVS "latching_cvs"
+
 const float Mute8::maxDecibels = 0.0f;
 const float Mute8::minDecibels = Amplifier::minDecibels;
 const float Mute8::slewTimeMS = 5.0f;
+
+json_t* Mute8::dataToJson() {
+	json_t* root = json_object();
+	json_object_set_new(root, LATCHING_CVS, json_boolean(_latchingCVs));
+	return root;
+}
+
+void Mute8::dataFromJson(json_t* root) {
+	json_t* l = json_object_get(root, LATCHING_CVS);
+	if (l) {
+		_latchingCVs = json_is_true(l);
+	}
+}
 
 void Mute8::reset() {
 	for (int i = 0; i < 8; ++i) {
@@ -41,8 +56,10 @@ void Mute8::stepChannel(int i, bool solo) {
 		outputs[OUTPUT1_OUTPUT + i].setChannels(n);
 		int mutedCount = 0;
 		for (int c = 0; c < n; ++c) {
-			_triggers[i][c].process(inputs[MUTE1_INPUT + i].getPolyVoltage(c));
-			bool muted = allMuted || _triggers[i][c].isHigh();
+			if (_triggers[i][c].process(inputs[MUTE1_INPUT + i].getPolyVoltage(c))) {
+				_latches[i][c] = !_latches[i][c];
+			}
+			bool muted = allMuted || (!_latchingCVs && _triggers[i][c].isHigh()) || (_latchingCVs && _latches[i][c]);
 			if (muted) {
 				++mutedCount;
 				_amplifiers[i][c].setLevel(_slewLimiters[i][c].next(minDecibels));
@@ -56,8 +73,10 @@ void Mute8::stepChannel(int i, bool solo) {
 		lights[MUTE1_LIGHT + i].value = mutedCount / (float)n;
 	}
 	else {
-		_triggers[i][0].process(inputs[MUTE1_INPUT + i].getVoltage());
-		bool muted = allMuted || _triggers[i][0].isHigh();
+		if (_triggers[i][0].process(inputs[MUTE1_INPUT + i].getVoltage())) {
+			_latches[i][0] = !_latches[i][0];
+		}
+		bool muted = allMuted || (!_latchingCVs && _triggers[i][0].isHigh()) || (_latchingCVs && _latches[i][0]);
 		if (muted) {
 			lights[MUTE1_LIGHT + i].value = 1.0f;
 			_amplifiers[i][0].setLevel(_slewLimiters[i][0].next(minDecibels));
@@ -179,6 +198,13 @@ struct Mute8Widget : ModuleWidget {
 		addChild(createLight<SmallLight<GreenLight>>(mute6LightPosition, module, Mute8::MUTE6_LIGHT));
 		addChild(createLight<SmallLight<GreenLight>>(mute7LightPosition, module, Mute8::MUTE7_LIGHT));
 		addChild(createLight<SmallLight<GreenLight>>(mute8LightPosition, module, Mute8::MUTE8_LIGHT));
+	}
+
+	void appendContextMenu(Menu* menu) override {
+		Mute8* m = dynamic_cast<Mute8*>(module);
+		assert(m);
+		menu->addChild(new MenuLabel());
+		menu->addChild(new BoolOptionMenuItem("Latching CV triggers", [m]() { return &m->_latchingCVs; }));
 	}
 };
 

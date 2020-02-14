@@ -305,6 +305,8 @@ MUTE8 provides 8 independent manual or CV-controlled mutes. Each channel is mute
 
 As with MIX4 and MIX8, a right-click on a mute button will solo that channel (pass that channel through while muting all others).  Right or left click clears this.
 
+If context menu option "Latching CV triggers" is enabled, triggers on the CV inputs toggle muting on and off.
+
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, where each of the 8 channels may be independently polyphonic, as defined by the cable at the channel's input.
 
 #### PAN

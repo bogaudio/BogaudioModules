@@ -73,6 +73,8 @@ struct Mute8 : BGModule {
 	Amplifier _amplifiers[8][maxChannels];
 	bogaudio::dsp::SlewLimiter _slewLimiters[8][maxChannels];
 	Trigger _triggers[8][maxChannels];
+	bool _latches[8][maxChannels] {};
+	bool _latchingCVs = false;
 
 	Mute8() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
@@ -86,6 +88,8 @@ struct Mute8 : BGModule {
 		configParam(MUTE8_PARAM, 0.0f, 3.0f, 0.0f, "Mute 8");
 	}
 
+	json_t* dataToJson() override;
+	void dataFromJson(json_t* root) override;
 	void reset() override;
 	void sampleRateChange() override;
 	void processAll(const ProcessArgs& args) override;
