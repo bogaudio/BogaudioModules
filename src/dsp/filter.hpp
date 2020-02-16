@@ -126,7 +126,7 @@ struct MultipoleFilter : Filter {
 };
 
 struct MultimodeFilter : Filter {
-	typedef float T;
+	typedef double T;
 	typedef std::complex<T> TC;
 
 	struct Pole {
