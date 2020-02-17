@@ -98,6 +98,13 @@ struct LowPassFilter : Filter {
 	}
 };
 
+struct DCBlocker : Filter {
+	float _lastIn = 0.0f;
+	float _lastOut = 0.0f;
+
+	float next(float sample) override;
+};
+
 struct MultipoleFilter : Filter {
 	enum Type {
 		LP_TYPE,

@@ -28,7 +28,8 @@ extern Model* modelTest;
 // #define RAVG 1
 // #define SATURATOR 1
 // #define BROWNIAN 1
-#define RANDOMWALK 1
+// #define RANDOMWALK 1
+#define DCBLOCKER 1
 
 #include "pitch.hpp"
 #ifdef LPF
@@ -92,6 +93,8 @@ extern Model* modelTest;
 #include "dsp/noise.hpp"
 #elif RANDOMWALK
 #include "dsp/noise.hpp"
+#elif DCBLOCKER
+#include "dsp/filter.hpp"
 #else
 #error what
 #endif
@@ -227,6 +230,8 @@ struct Test : BGModule {
 #elif RANDOMWALK
 	RandomWalk _walk1;
 	RandomWalk _walk2;
+#elif DCBLOCKER
+	DCBlocker _filter;
 #endif
 
 	Test()

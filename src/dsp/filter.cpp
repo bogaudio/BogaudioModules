@@ -71,6 +71,14 @@ void LowPassFilter::setParams(float sampleRate, float cutoff, float q) {
 }
 
 
+float DCBlocker::next(float sample) {
+	const float r = 0.999f;
+	_lastOut = sample - _lastIn + r * _lastOut;
+	_lastIn = sample;
+	return _lastOut;
+}
+
+
 // Adapted from Smith 1997, "The Scientist and Engineer's Guide to DSP"
 void MultipoleFilter::setParams(
 	Type type,

@@ -445,6 +445,12 @@ void Test::processChannel(const ProcessArgs& args, int _c) {
 	_walk2.setParams(APP->engine->getSampleRate(), change);
 	outputs[OUT_OUTPUT].setVoltage(_walk1.next());
 	outputs[OUT2_OUTPUT].setVoltage(_walk2.next());
+
+#elif DCBLOCKER
+	float in = inputs[IN_INPUT].getVoltage();
+	outputs[OUT_OUTPUT].setVoltage(_filter.next(in));
+	outputs[OUT2_OUTPUT].setVoltage(in);
+
 #endif
 }
 
