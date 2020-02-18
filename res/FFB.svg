@@ -186,13 +186,13 @@
       </g>
     </symbol>
     <symbol
-       id="knobguide-centertick"
+       id="knobguide-maxtick"
        viewBox="0 0 40px 40px">
       <g
          transform="translate(20 20)"
          id="g59">
         <g
-           transform="rotate(-90) translate(10 0)"
+           transform="rotate(60) translate(10 0)"
            id="g49">
           <polyline
              points="0,0 4,0"
@@ -206,7 +206,7 @@
            stroke-width="0.5"
            stroke-linecap="round"
            fill="none"
-           transform="rotate(20)"
+           transform="rotate(0)"
            id="path51" />
         <path
            d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0"
@@ -222,7 +222,7 @@
            stroke-width="0.5"
            stroke-linecap="round"
            fill="none"
-           transform="rotate(-20)"
+           transform="rotate(0)"
            id="path55" />
         <path
            d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0"
@@ -1522,7 +1522,7 @@
        transform="translate(20,20)">
       <g
          id="g298"
-         transform="rotate(-90,-5,-5)">
+         transform="rotate(60,-5,8.660254)">
         <path
            style="stroke:#333333;stroke-width:1"
            d="M 0,0 H 4"
@@ -1530,7 +1530,6 @@
       </g>
       <path
          id="path300"
-         transform="rotate(20)"
          d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0"
          inkscape:connector-curvature="0"
          style="fill:none;stroke:#333333;stroke-width:0.5;stroke-linecap:round" />
@@ -1542,7 +1541,6 @@
          style="fill:none;stroke:#333333;stroke-width:0.5;stroke-linecap:round" />
       <path
          id="path304"
-         transform="rotate(-20)"
          d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0"
          inkscape:connector-curvature="0"
          style="fill:none;stroke:#333333;stroke-width:0.5;stroke-linecap:round" />

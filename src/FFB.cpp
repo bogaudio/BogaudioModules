@@ -4,7 +4,7 @@
 void FFB::Engine::sampleRateChange() {
 	float sr = APP->engine->getSampleRate();
 	for (int i = 0; i < 14; i++) {
-		_slews[i].setParams(sr, 5.0f, 1.0f);
+		_slews[i].setParams(sr, 1.0f, 1.0f);
 	}
 
 	auto bp = [this, sr](int i, float cutoff) {
@@ -69,7 +69,7 @@ void FFB::modulateChannel(int c) {
 	float cv = 1.0f;
 	if (inputs[CV_INPUT].isConnected()) {
 		cv = clamp(inputs[CV_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
-		cv *= clamp(params[CV_PARAM].getValue(), -1.0f, 1.0f);
+		cv *= clamp(params[CV_PARAM].getValue(), 0.0f, 1.0f);
 	}
 
 	for (int i = 0; i < 14; ++i) {

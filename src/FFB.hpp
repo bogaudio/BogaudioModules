@@ -91,7 +91,7 @@ struct FFB : BGModule {
 		configParam<AmpliferParamQuantity>(BAND_8_PARAM, 0.0f, 1.0f, 1.0f, "Band 8 level");
 		configParam<AmpliferParamQuantity>(BAND_12_PARAM, 0.0f, 1.0f, 1.0f, "Band 12 level");
 		configParam<AmpliferParamQuantity>(LOWPASS_PARAM, 0.0f, 1.0f, 1.0f, "Lowpass level");
-		configParam(CV_PARAM, -1.0f, 1.0f, 0.0f, "Level CV", "%", 0.0f, 100.0f);
+		configParam(CV_PARAM, 0.0f, 1.0f, 1.0f, "Level CV", "%", 0.0f, 100.0f);
 		configParam<AmpliferParamQuantity>(HIGHPASS_PARAM, 0.0f, 1.0f, 1.0f, "Highpass level");
 	}
 

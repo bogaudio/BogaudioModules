@@ -106,9 +106,9 @@ void LVCF::modulateChannel(int c) {
 	float f = clamp(params[FREQUENCY_PARAM].getValue(), 0.0f, 1.0f);
 	f *= f;
 	if (inputs[FREQUENCY_CV_INPUT].isConnected()) {
-		float fcv = clamp(inputs[FREQUENCY_CV_INPUT].getPolyVoltage(c) / 10.0f, -1.0f, 1.0f);
+		float fcv = clamp(inputs[FREQUENCY_CV_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
 		fcv *= clamp(params[FREQUENCY_CV_PARAM].getValue(), -1.0f, 1.0f);
-		f += fcv;
+		f = std::max(0.0f, f + fcv);
 	}
 	f *= MultimodeFilter::maxFrequency;
 	const float lowThreshold = 100.0f;
