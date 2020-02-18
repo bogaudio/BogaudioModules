@@ -67,6 +67,7 @@ struct VCF : BGModule {
 	MultimodeFilter::Mode _mode = MultimodeFilter::UNKNOWN_MODE;
 	MultimodeFilter::BandwidthMode _bandwidthMode = MultimodeFilter::PITCH_BANDWIDTH_MODE;
 	Engine* _engines[maxChannels] {};
+	float _lastFrequency = 0.0f;
 
 	VCF() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);

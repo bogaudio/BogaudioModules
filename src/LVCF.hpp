@@ -47,6 +47,7 @@ struct LVCF : BGModule {
 	float _q = 0.0f;
 	MultimodeFilter::BandwidthMode _bandwidthMode = MultimodeFilter::PITCH_BANDWIDTH_MODE;
 	Engine* _engines[maxChannels] {};
+	float _lastFrequency = 0.0f;
 
 	LVCF() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);

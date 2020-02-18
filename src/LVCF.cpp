@@ -102,6 +102,7 @@ void LVCF::modulate() {
 void LVCF::modulateChannel(int c) {
 	Engine& e = *_engines[c];
 
+	float q = _q;
 	float f = clamp(params[FREQUENCY_PARAM].getValue(), 0.0f, 1.0f);
 	f *= f;
 	if (inputs[FREQUENCY_CV_INPUT].isConnected()) {
@@ -110,6 +111,16 @@ void LVCF::modulateChannel(int c) {
 		f += fcv;
 	}
 	f *= MultimodeFilter::maxFrequency;
+	const float lowThreshold = 100.0f;
+	if (f < lowThreshold) {
+		float deltaF = std::max(1.0f, _lastFrequency) / MultimodeFilter::maxFrequency;
+		deltaF = std::pow(deltaF, 1.5f);
+		deltaF *= std::max(5.0f, 0.5f * MultimodeFilter::maxFrequency);
+		f = std::max(_lastFrequency - deltaF, f);
+
+		q = std::min(f / lowThreshold, q);
+	}
+	_lastFrequency = f;
 	f = clamp(f, MultimodeFilter::minFrequency, MultimodeFilter::maxFrequency);
 
 	e.setParams(
@@ -118,7 +129,7 @@ void LVCF::modulateChannel(int c) {
 		_poles,
 		_mode,
 		f,
-		_q,
+		q,
 		_bandwidthMode
 	);
 }

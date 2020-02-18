@@ -25,16 +25,24 @@ using namespace bogaudio::dsp;
 // 	return 1.0f / (2.0f * e);
 // }
 
-// Q https://en.wikipedia.org/wiki/Q_factor
+// // Q https://en.wikipedia.org/wiki/Q_factor
+// float y(float x) {
+// 	x *= 2.0f;
+// 	return std::pow(2.0f, x / 2.0f) / (std::pow(2.0f, x) - 1.0f);
+// }
+
+const float m = 20000.0f;
 float y(float x) {
-	x *= 2.0f;
-	return std::pow(2.0f, x / 2.0f) / (std::pow(2.0f, x) - 1.0f);
+	x /= m;
+	x = powf(x, 1.25f);
+	x *= 0.5f * m;
+	return x;
 }
 
 int main() {
   const float xMin = 0.1f;
   // const float xMax = 1023.0f;
-  const float xMax = 3.0f;
+  const float xMax = 100.0f;
   const float samples = 1024.0f;
 
   const float delta = (xMax - xMin) / samples;

@@ -163,6 +163,16 @@ void VCF::modulateChannel(int c) {
 		pitch += fm;
 		f += cvToFrequency(pitch);
 	}
+	const float lowThreshold = 100.0f;
+	if (f < lowThreshold) {
+		float deltaF = std::max(1.0f, _lastFrequency) / MultimodeFilter::maxFrequency;
+		deltaF = std::pow(deltaF, 1.5f);
+		deltaF *= std::max(5.0f, 0.5f * MultimodeFilter::maxFrequency);
+		f = std::max(_lastFrequency - deltaF, f);
+
+		q = std::min(f / lowThreshold, q);
+	}
+	_lastFrequency = f;
 	f = clamp(f, MultimodeFilter::minFrequency, MultimodeFilter::maxFrequency);
 
 	e.setParams(
