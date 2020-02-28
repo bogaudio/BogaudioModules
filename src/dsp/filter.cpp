@@ -228,7 +228,7 @@ void MultimodeFilter::setParams(
 			case CHEBYSHEV_TYPE: {
 				T ripple = 3.0;
 				if (mode == LOWPASS_MODE || mode == HIGHPASS_MODE) {
-					ripple += std::max(0.0f, 12.0f * qbw);
+					ripple += std::max(0.0f, 6.0f * qbw);
 				}
 				T e = ripple / (T)10.0;
 				e = std::pow((T)10.0, e);
@@ -268,7 +268,7 @@ void MultimodeFilter::setParams(
 				_nFilters = nf;
 
 				// T iq = (1.0 / std::sqrt(2.0)) - 0.65 * _qbw;
-				T iq = (T)0.8 - (T)0.75 * _qbw;
+				T iq = (T)0.8 - (T)0.6 * _qbw;
 				T wa = std::tan(_frequency * _half2PiST);
 				T wa2 = wa * wa;
 
