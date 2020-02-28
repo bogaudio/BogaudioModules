@@ -335,14 +335,14 @@ void MultimodeFilter::setParams(
 				switch (_bandwidthMode) {
 					case LINEAR_BANDWIDTH_MODE: {
 						float bandwidth = std::max(minBWLinear, maxBWLinear * _qbw);
-						wdl = std::max(1.0f, _frequency - 0.5f * bandwidth);
-						wdh = std::min(maxFrequency, _frequency + 0.5f * bandwidth);
+						wdl = std::max(minFrequency, _frequency - 0.5f * bandwidth);
+						wdh = std::min(maxFrequency, std::max((float)wdl + 10.0f, _frequency + 0.5f * bandwidth));
 						break;
 					}
 					case PITCH_BANDWIDTH_MODE: {
 						float bandwidth = std::max(minBWPitch, maxBWPitch * _qbw);
-						wdl = std::max(1.0f, powf(2.0f, -bandwidth) * _frequency);
-						wdh = std::min(maxFrequency, powf(2.0f, bandwidth) * _frequency);
+						wdl = std::max(minFrequency, powf(2.0f, -bandwidth) * _frequency);
+						wdh = std::min(maxFrequency, std::max((float)wdl + 10.0f, powf(2.0f, bandwidth) * _frequency));
 						break;
 					}
 					default: {
