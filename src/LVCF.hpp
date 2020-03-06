@@ -37,16 +37,34 @@ struct LVCF : BGModule {
 		NUM_LIGHTS
 	};
 
-	typedef MultimodeFilter Engine;
+	struct Engine {
+		MultimodeFilter _filter;
+		float _sampleRate;
+		bogaudio::dsp::SlewLimiter _frequencySL;
+		MultimodeFilter _finalHP;
 
-	MultimodeFilter::Type _typeSetting = MultimodeFilter::BUTTERWORTH_TYPE;
-	MultimodeFilter::Type _type = MultimodeFilter::UNKNOWN_TYPE;
+		Engine() {
+			sampleRateChange();
+		}
+
+		void setParams(
+			int poles,
+			MultimodeFilter::Mode mode,
+			float frequency,
+			float qbw,
+			MultimodeFilter::BandwidthMode bwm
+		);
+		void sampleRateChange(int modulationSteps = 100);
+		void reset();
+		float next(float sample);
+	};
+
 	MultimodeFilter::Mode _mode = MultimodeFilter::UNKNOWN_MODE;
 	int _polesSetting = 4;
 	int _poles = 0;
 	float _q = 0.0f;
 	MultimodeFilter::BandwidthMode _bandwidthMode = MultimodeFilter::PITCH_BANDWIDTH_MODE;
-	Engine* _engines[maxChannels] {};
+	Engine* _engines[maxChannels];
 	float _lastFrequency = 0.0f;
 
 	LVCF() {
@@ -59,6 +77,7 @@ struct LVCF : BGModule {
 
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
+	void sampleRateChange() override;
 	bool active() override;
 	int channels() override;
 	void addChannel(int c) override;

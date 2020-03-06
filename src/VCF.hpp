@@ -18,7 +18,6 @@ struct VCF : BGModule {
 		Q_PARAM,
 		MODE_PARAM,
 		SLOPE_PARAM,
-		TYPE_PARAM,
 		NUM_PARAMS
 	};
 
@@ -45,13 +44,14 @@ struct VCF : BGModule {
 		float _gains[nFilters] {};
 		bogaudio::dsp::SlewLimiter _gainSLs[nFilters];
 		float _sampleRate;
+		bogaudio::dsp::SlewLimiter _frequencySL;
+		MultimodeFilter _finalHP;
 
 		Engine() {
 			sampleRateChange();
 		}
 
 		void setParams(
-			MultimodeFilter::Type type,
 			float slope,
 			MultimodeFilter::Mode mode,
 			float frequency,
@@ -59,15 +59,13 @@ struct VCF : BGModule {
 			MultimodeFilter::BandwidthMode bwm
 		);
 		void reset();
-		void sampleRateChange();
+		void sampleRateChange(int modulationSteps = 100);
 		float next(float sample);
 	};
 
-	MultimodeFilter::Type _type = MultimodeFilter::UNKNOWN_TYPE;
 	MultimodeFilter::Mode _mode = MultimodeFilter::UNKNOWN_MODE;
 	MultimodeFilter::BandwidthMode _bandwidthMode = MultimodeFilter::PITCH_BANDWIDTH_MODE;
 	Engine* _engines[maxChannels] {};
-	float _lastFrequency = 0.0f;
 
 	VCF() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
@@ -77,7 +75,6 @@ struct VCF : BGModule {
 		configParam(Q_PARAM, 0.0f, 1.0f, 0.0f, "Resonance / bandwidth", "%", 0.0f, 100.0f);
 		configParam(MODE_PARAM, 0.0f, 3.0f, 0.0f, "Mode");
 		configParam<ScaledSquaringParamQuantity<Engine::maxPoles - Engine::minPoles>>(SLOPE_PARAM, 0.0f, 1.0f, 0.52222f, "Slope", " poles", 0.0f, 1.0f, Engine::minPoles);
-		configParam(TYPE_PARAM, 0.0f, 1.0f, 1.0f, "Type");
 	}
 
 	json_t* dataToJson() override;

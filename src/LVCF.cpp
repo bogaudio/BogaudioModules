@@ -1,28 +1,47 @@
 
 #include "LVCF.hpp"
 
-#define TYPE_KEY "type"
-#define A_TYPE_KEY "a"
-#define B_TYPE_KEY "b"
 #define POLES_KEY "poles"
 #define BANDWIDTH_MODE_KEY "bandwidthMode"
 #define LINEAR_BANDWIDTH_MODE_KEY "linear"
 #define PITCH_BANDWIDTH_MODE_KEY "pitched"
 
+void LVCF::Engine::setParams(
+	int poles,
+	MultimodeFilter::Mode mode,
+	float frequency,
+	float qbw,
+	MultimodeFilter::BandwidthMode bwm
+) {
+	frequency = semitoneToFrequency(_frequencySL.next(frequencyToSemitone(frequency)));
+
+	_filter.setParams(
+		_sampleRate,
+		MultimodeFilter::BUTTERWORTH_TYPE,
+		poles,
+		mode,
+		frequency,
+		qbw,
+		bwm
+	);
+}
+
+void LVCF::Engine::sampleRateChange(int modulationSteps) {
+	_sampleRate = APP->engine->getSampleRate();
+	_frequencySL.setParams(_sampleRate, 100.0f / (float)modulationSteps, frequencyToSemitone(MultimodeFilter::maxFrequency - MultimodeFilter::minFrequency));
+	_finalHP.setParams(_sampleRate, MultimodeFilter::BUTTERWORTH_TYPE, 2, MultimodeFilter::HIGHPASS_MODE, 80.0f, MultimodeFilter::minQbw);
+}
+
+void LVCF::Engine::reset() {
+	_filter.reset();
+}
+
+float LVCF::Engine::next(float sample) {
+	return _finalHP.next(_filter.next(sample));
+}
+
 json_t* LVCF::dataToJson() {
 	json_t* root = json_object();
-
-	switch (_typeSetting) {
-		case MultimodeFilter::BUTTERWORTH_TYPE: {
-			json_object_set_new(root, TYPE_KEY, json_string(A_TYPE_KEY));
-			break;
-		}
-		case MultimodeFilter::CHEBYSHEV_TYPE: {
-			json_object_set_new(root, TYPE_KEY, json_string(B_TYPE_KEY));
-			break;
-		}
-		default: {}
-	}
 
 	json_object_set_new(root, POLES_KEY, json_integer(_polesSetting));
 
@@ -42,16 +61,6 @@ json_t* LVCF::dataToJson() {
 }
 
 void LVCF::dataFromJson(json_t* root) {
-	json_t* t = json_object_get(root, TYPE_KEY);
-	if (t) {
-		if (strcmp(json_string_value(t), B_TYPE_KEY) == 0) {
-			_typeSetting = MultimodeFilter::CHEBYSHEV_TYPE;
-		}
-		else {
-			_typeSetting = MultimodeFilter::BUTTERWORTH_TYPE;
-		}
-	}
-
 	json_t* p = json_object_get(root, POLES_KEY);
 	if (p) {
 		_polesSetting = clamp(json_integer_value(p), 1, 12);
@@ -65,6 +74,12 @@ void LVCF::dataFromJson(json_t* root) {
 		else {
 			_bandwidthMode = MultimodeFilter::PITCH_BANDWIDTH_MODE;
 		}
+	}
+}
+
+void LVCF::sampleRateChange() {
+	for (int c = 0; c < _channels; ++c) {
+		_engines[c]->sampleRateChange(_modulationSteps);
 	}
 }
 
@@ -87,8 +102,7 @@ void LVCF::removeChannel(int c) {
 
 void LVCF::modulate() {
 	MultimodeFilter::Mode mode = (MultimodeFilter::Mode)(1 + clamp((int)params[MODE_PARAM].getValue(), 0, 4));
-	if (_type != _typeSetting || _mode != mode || _poles != _polesSetting) {
-		_type = _typeSetting;
+	if (_mode != mode || _poles != _polesSetting) {
 		_mode = mode;
 		_poles = _polesSetting;
 		for (int c = 0; c < _channels; ++c) {
@@ -124,8 +138,6 @@ void LVCF::modulateChannel(int c) {
 	f = clamp(f, MultimodeFilter::minFrequency, MultimodeFilter::maxFrequency);
 
 	e.setParams(
-		APP->engine->getSampleRate(),
-		_type,
 		_poles,
 		_mode,
 		f,
@@ -203,11 +215,6 @@ struct LVCFWidget : ModuleWidget {
 		LVCF* m = dynamic_cast<LVCF*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());
-
-		OptionsMenuItem* t = new OptionsMenuItem("Type");
-		t->addItem(OptionMenuItem("A", [m]() { return m->_typeSetting == MultimodeFilter::BUTTERWORTH_TYPE; }, [m]() { m->_typeSetting = MultimodeFilter::BUTTERWORTH_TYPE; }));
-		t->addItem(OptionMenuItem("B", [m]() { return m->_typeSetting == MultimodeFilter::CHEBYSHEV_TYPE; }, [m]() { m->_typeSetting = MultimodeFilter::CHEBYSHEV_TYPE; }));
-		OptionsMenuItem::addToMenu(t, menu);
 
 		OptionsMenuItem* s = new OptionsMenuItem("Slope");
 		s->addItem(OptionMenuItem("1 pole", [m]() { return m->_polesSetting == 1; }, [m]() { m->_polesSetting = 1; }));

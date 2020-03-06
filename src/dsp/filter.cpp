@@ -246,8 +246,8 @@ void MultimodeFilter::setParams(
 					_poles[j] = Pole(-re, im, re + re, re * re + im * im);
 				}
 
-				// _outGain = 1.0 / (e * std::pow(2.0, (T)(_nPoles - 1)));
-				_outGain = 1.0f / std::pow(2.0f, (T)(_nPoles - 1));
+				_outGain = 1.0 / (e * std::pow(2.0, (T)(_nPoles - 1)));
+				// _outGain = 1.0f / std::pow(2.0f, (T)(_nPoles - 1));
 				break;
 			}
 

@@ -179,7 +179,7 @@ struct MultimodeFilter : Filter {
 	static constexpr int minPoles = 1;
 	static constexpr int maxPoles = 16;
 	static constexpr int modPoles = 1;
-	static constexpr float minFrequency = 10.0f;
+	static constexpr float minFrequency = 1.0f;
 	static constexpr float maxFrequency = 21000.0f;
 	static constexpr float minQbw = 0.0f;
 	static constexpr float maxQbw = 1.0f;
