@@ -602,9 +602,9 @@ MONO mixes down the channels of a polyphonic cable to a single-channel mono outp
 
 #### ARP
 
-A performance-oriented arpeggiator, where the arpeggiated notes come from polyphonic pitch and gate inputs (typically, these might come directly from Rack's MIDI-CV module, with the module's polyphony channels set to greater than 1).  The pitch and gate inputs should have the same number of polyphony channels to avoid odd results.
+ARP is a performance-oriented arpeggiator, where the arpeggiated notes come from polyphonic pitch and gate inputs.  It is designed to patched directly to Rack's MIDI-CV (with polyphony enabled) and be played with a MIDI keyboard.  As below, it can be controlled by other modules as well, though this needs to be done carefully.
 
-When a gate goes high on a channel of the GATE input, the pitch of the corresponding channel from the V/OCT input is added as a note to the arpeggio. (So again, if ARP is patched to MIDI-CV, pressing a key on your controller adds a note to the arpeggio.)
+When a gate goes high on a poly channel of the GATE input, the pitch of the corresponding poly channel from the V/OCT input is added as a note to the arpeggio. (Thus, if ARP is patched to MIDI-CV, pressing a key on your MIDI controller adds a note to the arpeggio.)
 
 The arpeggio is played back under control of the input at CLOCK, which is required for the module to do anything, at the rate of one note per clock pulse.
 
@@ -623,9 +623,15 @@ HOLD latches the arpeggio, such that it keeps playing even when all input gates 
 
 A trigger at the RESET input will reset the playback of the current arpeggio on the next received clock.  
 
-By default, new notes recorded by the module are incorporated into the playing arpeggio only when the arpeggio restarts on its first note.  On the context (right click) menu, this can be changed such that notes have immediate effect.  
+By default, new notes recorded by the module are incorporated into the playing arpeggio only when the arpeggio restarts on its first note.  On the context (right click) menu, the "Use new notes" setting can be changed such that notes have immediate effect.  
 
 The outputs are always monophonic -- patch ARP into ASSIGN to play an arpeggio through a poly voice.
+
+**To control ARP from modules other than MIDI-CV**, you'll at minimum need to create a polyphonic pitch signal (with Rack's MERGE or something else) and connect it to V/OCT.  Then you'll need gates:
+  - With a monophonic gate input, whenever the gate goes high, the pitches of the arpeggio will be set per the poly channels on the V/OCT input, reading in order from channel 1.  So if the gate goes high while V/OCT is getting a four-channel poly input with voltages corresponding to C3, E3, G3 and B3, the arpeggio will be set to those four notes.
+  - With a polyphonic gate input, the effect is like pressing a key on a MIDI controller to trigger a gate on a poly channel.  ARP will see a new note using the pitch of the corresponding poly channel on V/OCT.  *You will get strange results if the V/OCT and GATE inputs have a different number of poly channels.*
+
+Note that the HOLD toggle and "Use new notes" menu setting still apply however you control ARP.  If not playing from a keyboard, it will usually make sense to toggle HOLD on and set "Use new notes" to "Immediately".  
 
 #### ASSIGN
 

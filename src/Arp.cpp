@@ -240,7 +240,7 @@ void Arp::dataFromJson(json_t* root) {
 }
 
 int Arp::channels() {
-	return inputs[GATE_INPUT].getChannels();
+	return inputs[PITCH_INPUT].getChannels();
 }
 
 void Arp::addChannel(int c) {
@@ -284,6 +284,7 @@ void Arp::processAll(const ProcessArgs& args) {
 			if (_hold && !wasAnyHigh && firstAdd) {
 				dropAllNotes();
 			}
+			firstAdd = false;
 			_anyHigh = true;
 			_gateHigh[c] = true;
 			_currentNotes->addNote(c, inputs[PITCH_INPUT].getPolyVoltage(c));
