@@ -125,13 +125,13 @@ float ADSR::_next() {
 		}
 		case ATTACK_STAGE: {
 			_stageProgress += _sampleTime;
-			_envelope = std::max(1.0f, _stageProgress / _attack);
+			_envelope = std::min(1.0f, _stageProgress / _attack);
 			_envelope = powf(_envelope, _attackShape);
 			break;
 		}
 		case DECAY_STAGE: {
 			_stageProgress += _sampleTime;
-			_envelope = std::max(1.0f, _stageProgress / _decay);
+			_envelope = std::min(1.0f, _stageProgress / _decay);
 			_envelope = powf(_envelope, _decayShape);
 			_envelope *= 1.0f - _sustain;
 			_envelope = 1.0f - _envelope;
@@ -143,7 +143,7 @@ float ADSR::_next() {
 		}
 		case RELEASE_STAGE: {
 			_stageProgress += _sampleTime;
-			_envelope = std::max(1.0f, _stageProgress / _release);
+			_envelope = std::min(1.0f, _stageProgress / _release);
 			_envelope = powf(_envelope, _releaseShape);
 			_envelope *= _releaseLevel;
 			_envelope = _releaseLevel - _envelope;
