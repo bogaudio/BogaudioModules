@@ -207,8 +207,8 @@ struct VCFWidget : ModuleWidget {
 		auto frequencyCvParamPosition = Vec(45.0, 138.0);
 		auto fmParamPosition = Vec(102.0, 138.0);
 		auto modeParamPosition = Vec(67.0, 176.0);
-		auto qParamPosition = Vec(24.5, 220.0);
-		auto slopeParamPosition = Vec(99.5, 220.0);
+		auto qParamPosition = Vec(26.5, 220.0);
+		auto slopeParamPosition = Vec(97.5, 220.0);
 
 		auto frequencyCvInputPosition = Vec(31.0, 274.0);
 		auto pitchInputPosition = Vec(63.0, 274.0);

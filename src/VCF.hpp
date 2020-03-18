@@ -69,12 +69,12 @@ struct VCF : BGModule {
 
 	VCF() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
-		configParam<ScaledSquaringParamQuantity<(int)MultimodeFilter::maxFrequency>>(FREQUENCY_PARAM, 0.0f, 1.0f, 0.22361f, "Center/cutoff frequency", " HZ");
+		configParam<ScaledSquaringParamQuantity<(int)MultimodeFilter::maxFrequency>>(FREQUENCY_PARAM, 0.0f, 1.0f, 0.21822f, "Center/cutoff frequency", " HZ");
 		configParam(FREQUENCY_CV_PARAM, -1.0f, 1.0f, 0.0f, "Frequency CV attenuation", "%", 0.0f, 100.0f);
 		configParam(FM_PARAM, 0.0f, 1.0f, 0.0f, "FM", "%", 0.0f, 100.0f);
 		configParam(Q_PARAM, 0.0f, 1.0f, 0.0f, "Resonance / bandwidth", "%", 0.0f, 100.0f);
 		configParam(MODE_PARAM, 0.0f, 3.0f, 0.0f, "Mode");
-		configParam<ScaledSquaringParamQuantity<Engine::maxPoles - Engine::minPoles>>(SLOPE_PARAM, 0.0f, 1.0f, 0.52222f, "Slope", " poles", 0.0f, 1.0f, Engine::minPoles);
+		configParam<ScaledSquaringParamQuantity<Engine::maxPoles - Engine::minPoles>>(SLOPE_PARAM, 0.0f, 1.0f, 0.522233f, "Slope", " poles", 0.0f, 1.0f, Engine::minPoles);
 	}
 
 	json_t* dataToJson() override;

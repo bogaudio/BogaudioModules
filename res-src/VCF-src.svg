@@ -227,6 +227,8 @@
   </g>
 
   <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(75 0)" /> -->
+  <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(7 0)" /> -->
+  <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(143 0)" /> -->
 
   <g transform="translate(21 25)">
     <use id="FREQUENCY_PARAM" xlink:href="#knob-large" transform="translate(20 20)" />
@@ -251,7 +253,7 @@
     <use xlink:href="#knobguide-mode" transform="translate(-9 -11)" />
   </g>
 
-  <g transform="translate(0 220)">
+  <g transform="translate(2 220)">
     <!-- <rect width="75" height="54" fill="#ff0" transform="translate(1 -9)" /> -->
     <!-- <rect width="64" height="54" fill="#f0f" transform="translate(5.5 -9)" /> -->
     <text font-size="8pt" letter-spacing="2px" transform="translate(13.5 43.5) rotate(270)">RES/BW</text>
@@ -259,7 +261,7 @@
     <use xlink:href="#knobguide-linear-38" transform="translate(18.5 -6)" />
   </g>
 
-  <g transform="translate(75 220)">
+  <g transform="translate(73 220)">
     <!-- <rect width="75" height="54" fill="#ff0" transform="translate(0 -9)" /> -->
     <!-- <rect width="64" height="54" fill="#f0f" transform="translate(5.5 -9)" /> -->
     <text font-size="8pt" letter-spacing="2px" transform="translate(13.4 38.5) rotate(270)">SLOPE</text>
