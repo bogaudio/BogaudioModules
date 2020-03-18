@@ -18,6 +18,7 @@ screens = [
     file: 'modules2.png',
     crop: false,
     rows: [
+      ['VCF', 'LVCF', 'FFB', 'EQ'],
       ['DADSRH', 'DADSRHPlus', 'Shaper', 'ShaperPlus', 'AD', 'ASR', 'ADSR', 'Follow', 'DGate', 'Edge']
     ]
   },
@@ -67,6 +68,13 @@ screens = [
     crop: true,
     rows: [
       ['LFO', 'EightFO', 'LLFO']
+    ]
+  },
+  {
+    file: 'filters.png',
+    crop: true,
+    rows: [
+      ['VCF', 'LVCF', 'FFB', 'EQ']
     ]
   },
   {

@@ -4,6 +4,7 @@ Modules for [VCV Rack](https://github.com/VCVRack/Rack), an open-source Eurorack
 
   - [Oscillators](#oscillators)
   - [LFOs](#lfos)
+  - [Filters](#filters)
   - [Envelopes and Envelope Utilities](#envelopes)
   - [Mixers, Panners and VCAs](#mixers)
   - [Effects and Dynamics](#effects)
@@ -158,6 +159,69 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V
 A 3HP LFO, with selectable waveform.  The features are a subset of LFO, with the addition of a sixth 10%-pulse waveform.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
+
+
+### <a name="filters"></a> Filters
+
+![Filters screenshot](doc/www/filters.png)
+
+#### VCF
+
+A general-purpose filter with a selectable lowpass, highpass, bandpass or bandreject (notch) output.  Being based on pure DSP theory, rather than a model of an analog filter design, it has a transparent character (which to say, no "character" at all, or not much -- which character is often very nice).  However, it achieves interesting features such as:
+  - A slope (or transition rate at the cutoff) that can be smoothly modulated from very shallow (1 pole) to very sharp (12 poles).
+  - Smoothly modulatable bandwidth in bandpass and bandreject modes.
+  - Very accurate V/OCT tracking.
+
+The large knob sets the filter's base cutoff frequency (for lowpass and highpass modes) or center frequency (for bandpass and bandreject).  There are three CV inputs that affect the cutoff; each input is converted to a HZ value and added to the base value set by the knob:
+  - CV: a general, linear input expecting bipolar +/-5V signals. The input is attenuverted by the CV knob.
+  - V/OCT: an input here is interpreted as a pitch CV.  Use this and set the main knob to 0HZ for accurate key tracking.
+  - FM: an exponential FM input; the input here is attenuated by the FM knob, then added to the V/OCT input (which normals to 0V) before being converted to HZ.
+
+The RES/BW knob has two functions, depending on mode:
+  - In lowpass and highpass modes, it controls the resonance of the filter at the cutoff frequency.  The filter does not self-resonate.
+  - In bandpass and bandreject modes, it sets the bandwidth of the filter -- the width in HZ around the center frequency of the passband (bandpass mode) or stopband (bandreject mode).  Note that at the minimum setting, the bandwidth can be quite small, even inaudible, depending on the center frequency (see below).
+
+The R/BW CV input expects a unipolar 0-10V input; when in use this input is attenuated by the RES/BW knob.
+
+SLOPE modulates the rate of transition between the pass and stop bands in each filter mode.  (For example, in lowpass mode, a higher slope means a faster/sharper change, at the cutoff frequency, from frequency passing through the filter to being suppressed by the filter.)  This ranges from a slow (at 1) to fast (at 12) transition.  It may be modulated by the SLP CV input, which expects 0-10V, and which is attenuated by the SLOPE knob.
+
+The context menu option "Bandwidth mode" controls how the bandwidth is calculated for a given center frequency and RES/BW setting:
+  - "Pitched" (the default): the upper and lower frequencies of the band are equally distant from the center frequency in pitch (octaves and semitones), with a maxmimum of 2 octaves.
+  - "Linear": the upper and lower frequencies are equally distant in HZ from the center frequency, with a maximum of 2000HZ.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
+
+#### LVCF
+
+A compact version of VCF.  The filter slope may be set on the context menu.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
+
+#### FFB
+
+A fixed filter bank comprised of 12 bandpass filters, with low- and high-pass filters on each end.  The band frequencies are those used on the classic [Moog 914](https://modularsynthesis.com/moog/914/914.htm).
+
+Each knobs sets the attenuation of the output of its corresponding filter, down to -60db, before those outputs are mixed back together and sent to the outputs.
+
+The CV input (expecting 0-10V, and attenuated by the CV knob) controls a VCA that gates the outputs.
+
+Tnere are three outputs:
+  - ALL: a mix of the outputs of all the filters.
+  - ODD: a mix of the LP, HP, and odd-numbered band filters (125HZ, 250 HZ, etc).
+  - EVEN: a mix of the LP, HP, and even-numbered band filters (175HZ, 350 HZ, etc).
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
+
+#### EQ
+
+A basic low/mid/high three-band equalizer.  Each knob sets the gain of its corresponding filter from -36db, through unity (0db) to +12db.
+
+The cutoff/center frequencies of the three filters are:
+  - LOW: 100Hz
+  - MID: 350HZ
+  - HIGH: 1000HZ
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
 
 
 ### <a name="envelopes"></a> Envelopes and Envelope Utilities
