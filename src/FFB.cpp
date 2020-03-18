@@ -14,7 +14,7 @@ void FFB::Engine::sampleRateChange() {
 			4.0f,
 			MultimodeFilter::BANDPASS_MODE,
 			cutoff,
-			0.22f / MultimodeFilter::maxBWPitch,
+			0.22f / BOGAUDIO_DSP_MULTIMODEFILTER_MAXBWPITCH,
 			MultimodeFilter::PITCH_BANDWIDTH_MODE
 		);
 	};

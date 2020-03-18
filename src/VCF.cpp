@@ -51,7 +51,7 @@ void VCF::Engine::setParams(
 void VCF::Engine::sampleRateChange(int modulationSteps) {
 	_sampleRate = APP->engine->getSampleRate();
 	_frequencySL.setParams(_sampleRate, 100.0f / (float)modulationSteps, frequencyToSemitone(maxFrequency - minFrequency));
-	_finalHP.setParams(_sampleRate, MultimodeFilter::BUTTERWORTH_TYPE, 2, MultimodeFilter::HIGHPASS_MODE, 80.0f, MultimodeFilter::minQbw);
+	_finalHP.setParams(_sampleRate, MultimodeFilter::BUTTERWORTH_TYPE, 2, MultimodeFilter::HIGHPASS_MODE, 80.0f, BOGAUDIO_DSP_MULTIMODEFILTER_MINQBW);
 	for (int i = 0; i < nFilters; ++i) {
 		_gainSLs[i].setParams(_sampleRate, 50.0f, 1.0f);
 	}

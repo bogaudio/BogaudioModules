@@ -132,6 +132,16 @@ struct MultipoleFilter : Filter {
 	float next(float sample) override;
 };
 
+// hacky workaround for certain linkers here; see https://github.com/bogaudio/BogaudioModules/issues/104
+#define BOGAUDIO_DSP_MULTIMODEFILTER_MINFREQUENCY 1.0f
+#define BOGAUDIO_DSP_MULTIMODEFILTER_MAXFREQUENCY 21000.0f
+#define BOGAUDIO_DSP_MULTIMODEFILTER_MINQBW 0.0f
+#define BOGAUDIO_DSP_MULTIMODEFILTER_MAXQBW 1.0f
+#define BOGAUDIO_DSP_MULTIMODEFILTER_MINBWLINEAR 10.0f
+#define BOGAUDIO_DSP_MULTIMODEFILTER_MAXBWLINEAR 5000.0f
+#define BOGAUDIO_DSP_MULTIMODEFILTER_MINBWPITCH (1.0f / (1.0f * 12.0f * 100.0f / 25.0f))
+#define BOGAUDIO_DSP_MULTIMODEFILTER_MAXBWPITCH 2.0f
+
 struct MultimodeFilter : Filter {
 	typedef double T;
 	typedef std::complex<T> TC;
@@ -179,14 +189,14 @@ struct MultimodeFilter : Filter {
 	static constexpr int minPoles = 1;
 	static constexpr int maxPoles = 16;
 	static constexpr int modPoles = 1;
-	static constexpr float minFrequency = 1.0f;
-	static constexpr float maxFrequency = 21000.0f;
-	static constexpr float minQbw = 0.0f;
-	static constexpr float maxQbw = 1.0f;
-	static constexpr float minBWLinear = 10.0f;
-	static constexpr float maxBWLinear = 5000.0f;
-	static constexpr float minBWPitch = 1.0f / (1.0f * 12.0f * 100.0f / 25.0f);
-	static constexpr float maxBWPitch = 2.0f;
+	const float minFrequency = BOGAUDIO_DSP_MULTIMODEFILTER_MINFREQUENCY;
+	const float maxFrequency = BOGAUDIO_DSP_MULTIMODEFILTER_MAXFREQUENCY;
+	const float minQbw = BOGAUDIO_DSP_MULTIMODEFILTER_MINQBW;
+	const float maxQbw = BOGAUDIO_DSP_MULTIMODEFILTER_MAXQBW;
+	const float minBWLinear = BOGAUDIO_DSP_MULTIMODEFILTER_MINBWLINEAR;
+	const float maxBWLinear = BOGAUDIO_DSP_MULTIMODEFILTER_MAXBWLINEAR;
+	const float minBWPitch = BOGAUDIO_DSP_MULTIMODEFILTER_MINBWPITCH;
+	const float maxBWPitch = BOGAUDIO_DSP_MULTIMODEFILTER_MAXBWPITCH;
 
 	float _sampleRate = 44100.0f;
 	float _half2PiST = 0.0f;
