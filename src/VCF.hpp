@@ -63,13 +63,15 @@ struct VCF : BGModule {
 		float next(float sample);
 	};
 
+	static constexpr float maxFrequency = 20000.0f;
+	static constexpr float minFrequency = MultimodeFilter::minFrequency;
 	MultimodeFilter::Mode _mode = MultimodeFilter::UNKNOWN_MODE;
 	MultimodeFilter::BandwidthMode _bandwidthMode = MultimodeFilter::PITCH_BANDWIDTH_MODE;
 	Engine* _engines[maxChannels] {};
 
 	VCF() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
-		configParam<ScaledSquaringParamQuantity<(int)MultimodeFilter::maxFrequency>>(FREQUENCY_PARAM, 0.0f, 1.0f, 0.21822f, "Center/cutoff frequency", " HZ");
+		configParam<ScaledSquaringParamQuantity<(int)maxFrequency>>(FREQUENCY_PARAM, 0.0f, 1.0f, 0.22361f, "Center/cutoff frequency", " HZ");
 		configParam(FREQUENCY_CV_PARAM, -1.0f, 1.0f, 0.0f, "Frequency CV attenuation", "%", 0.0f, 100.0f);
 		configParam(FM_PARAM, 0.0f, 1.0f, 0.0f, "FM", "%", 0.0f, 100.0f);
 		configParam(Q_PARAM, 0.0f, 1.0f, 0.0f, "Resonance / bandwidth", "%", 0.0f, 100.0f);

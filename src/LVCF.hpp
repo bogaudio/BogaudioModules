@@ -59,17 +59,18 @@ struct LVCF : BGModule {
 		float next(float sample);
 	};
 
+	static constexpr float maxFrequency = 20000.0f;
+	static constexpr float minFrequency = MultimodeFilter::minFrequency;
 	MultimodeFilter::Mode _mode = MultimodeFilter::UNKNOWN_MODE;
 	int _polesSetting = 4;
 	int _poles = 0;
 	float _q = 0.0f;
 	MultimodeFilter::BandwidthMode _bandwidthMode = MultimodeFilter::PITCH_BANDWIDTH_MODE;
 	Engine* _engines[maxChannels];
-	float _lastFrequency = 0.0f;
 
 	LVCF() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam<ScaledSquaringParamQuantity<(int)MultimodeFilter::maxFrequency>>(FREQUENCY_PARAM, 0.0f, 1.0f, 0.21822f, "Center/cutoff frequency", " HZ");
+		configParam<ScaledSquaringParamQuantity<(int)maxFrequency>>(FREQUENCY_PARAM, 0.0f, 1.0f, 0.22361f, "Center/cutoff frequency", " HZ");
 		configParam(FREQUENCY_CV_PARAM, -1.0f, 1.0f, 0.0f, "Frequency CV attenuation", "%", 0.0f, 100.0f);
 		configParam(Q_PARAM, 0.0f, 1.0f, 0.0f, "Resonance / bandwidth", "%", 0.0f, 100.0f);
 		configParam(MODE_PARAM, 0.0f, 3.0f, 0.0f, "Mode");

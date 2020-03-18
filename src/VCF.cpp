@@ -50,7 +50,7 @@ void VCF::Engine::setParams(
 
 void VCF::Engine::sampleRateChange(int modulationSteps) {
 	_sampleRate = APP->engine->getSampleRate();
-	_frequencySL.setParams(_sampleRate, 100.0f / (float)modulationSteps, frequencyToSemitone(MultimodeFilter::maxFrequency - MultimodeFilter::minFrequency));
+	_frequencySL.setParams(_sampleRate, 100.0f / (float)modulationSteps, frequencyToSemitone(maxFrequency - minFrequency));
 	_finalHP.setParams(_sampleRate, MultimodeFilter::BUTTERWORTH_TYPE, 2, MultimodeFilter::HIGHPASS_MODE, 80.0f, MultimodeFilter::minQbw);
 	for (int i = 0; i < nFilters; ++i) {
 		_gainSLs[i].setParams(_sampleRate, 50.0f, 1.0f);
@@ -156,7 +156,7 @@ void VCF::modulateChannel(int c) {
 		fcv *= clamp(params[FREQUENCY_CV_PARAM].getValue(), -1.0f, 1.0f);
 		f = std::max(0.0f, f + fcv);
 	}
-	f *= MultimodeFilter::maxFrequency;
+	f *= maxFrequency;
 	if (inputs[PITCH_INPUT].isConnected() || inputs[FM_INPUT].isConnected()) {
 		float fm = inputs[FM_INPUT].getPolyVoltage(c);
 		fm *= clamp(params[FM_PARAM].getValue(), 0.0f, 1.0f);
@@ -164,7 +164,7 @@ void VCF::modulateChannel(int c) {
 		pitch += fm;
 		f += cvToFrequency(pitch);
 	}
-	f = clamp(f, MultimodeFilter::minFrequency, MultimodeFilter::maxFrequency);
+	f = clamp(f, minFrequency, maxFrequency);
 
 	e.setParams(
 		slope,

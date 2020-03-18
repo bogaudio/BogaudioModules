@@ -28,7 +28,7 @@ void LVCF::Engine::setParams(
 
 void LVCF::Engine::sampleRateChange(int modulationSteps) {
 	_sampleRate = APP->engine->getSampleRate();
-	_frequencySL.setParams(_sampleRate, 100.0f / (float)modulationSteps, frequencyToSemitone(MultimodeFilter::maxFrequency - MultimodeFilter::minFrequency));
+	_frequencySL.setParams(_sampleRate, 100.0f / (float)modulationSteps, frequencyToSemitone(maxFrequency - minFrequency));
 	_finalHP.setParams(_sampleRate, MultimodeFilter::BUTTERWORTH_TYPE, 2, MultimodeFilter::HIGHPASS_MODE, 80.0f, MultimodeFilter::minQbw);
 }
 
@@ -124,18 +124,8 @@ void LVCF::modulateChannel(int c) {
 		fcv *= clamp(params[FREQUENCY_CV_PARAM].getValue(), -1.0f, 1.0f);
 		f = std::max(0.0f, f + fcv);
 	}
-	f *= MultimodeFilter::maxFrequency;
-	const float lowThreshold = 100.0f;
-	if (f < lowThreshold) {
-		float deltaF = std::max(1.0f, _lastFrequency) / MultimodeFilter::maxFrequency;
-		deltaF = std::pow(deltaF, 1.5f);
-		deltaF *= std::max(5.0f, 0.5f * MultimodeFilter::maxFrequency);
-		f = std::max(_lastFrequency - deltaF, f);
-
-		q = std::min(f / lowThreshold, q);
-	}
-	_lastFrequency = f;
-	f = clamp(f, MultimodeFilter::minFrequency, MultimodeFilter::maxFrequency);
+	f *= maxFrequency;
+	f = clamp(f, minFrequency, maxFrequency);
 
 	e.setParams(
 		_poles,
