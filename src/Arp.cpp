@@ -134,24 +134,26 @@ void Arp::NoteSet::resetSequence() {
 }
 
 void Arp::NoteSet::addNote(int c, float pitch) {
+	Note n;
+	n.pitch = pitch;
+	n.channel = c;
+	int i = 0;
+	while (n.pitch >= _notesByPitch[i].pitch && i < _noteCount) {
+		if (n.pitch == _notesByPitch[i].pitch) {
+			return;
+		}
+		++i;
+	}
+	assert(i <= _noteCount);
+
 	dropNote(c);
 	_noteOn[c] = true;
 	_notesDirty = true;
 
-	Note n;
-	n.pitch = pitch;
-	n.channel = c;
-
-	_notesAsPlayed[_noteCount] = n;
-
-	int i = 0;
-	while (n.pitch >= _notesByPitch[i].pitch && i < _noteCount) {
-		++i;
-	}
-	assert(i <= _noteCount);
 	shuffleUp(_notesByPitch, i);
 	_notesByPitch[i] = n;
 
+	_notesAsPlayed[_noteCount] = n;
 	++_noteCount;
 	assert(_noteCount <= maxChannels);
 }
