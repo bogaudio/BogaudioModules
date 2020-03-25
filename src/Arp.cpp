@@ -2,6 +2,7 @@
 #include "Arp.hpp"
 
 #define NOTES_IMMEDIATE_MODE "notes_immediate"
+#define FIXED_GATE_MODE "fixed_gate"
 
 void Arp::NoteSet::Note::reset() {
 	pitch = 0.0f;
@@ -229,6 +230,7 @@ void Arp::sampleRateChange() {
 json_t* Arp::dataToJson() {
 	json_t* root = json_object();
 	json_object_set_new(root, NOTES_IMMEDIATE_MODE, json_boolean(_notesImmediate));
+	json_object_set_new(root, FIXED_GATE_MODE, json_boolean(_fixedGate));
 	return root;
 }
 
@@ -236,6 +238,11 @@ void Arp::dataFromJson(json_t* root) {
 	json_t* ni = json_object_get(root, NOTES_IMMEDIATE_MODE);
 	if (ni) {
 		_notesImmediate = json_is_true(ni);
+	}
+
+	json_t* fg = json_object_get(root, FIXED_GATE_MODE);
+	if (fg) {
+		_fixedGate = json_is_true(fg);
 	}
 }
 
@@ -320,7 +327,15 @@ void Arp::processAll(const ProcessArgs& args) {
 	NoteSet* notes = _notesImmediate ? _currentNotes : _playbackNotes;
 	if (clock) {
 		if (notes->nextPitch(_mode, _pitchOut)) {
-			_gateGenerator.trigger(0.001f + _gateLength * _clockSeconds);
+			_gateGenerator.reset();
+			float gl = _gateLength;
+			if (_fixedGate) {
+				gl *= 0.5f;
+			}
+			else {
+				gl *= _clockSeconds;
+			}
+			_gateGenerator.trigger(std::max(0.001f, gl));
 		}
 	}
 	outputs[PITCH_OUTPUT].setVoltage(_pitchOut);
@@ -404,6 +419,11 @@ struct ArpWidget : ModuleWidget {
 		ni->addItem(OptionMenuItem("On arpeggio restart", [m]() { return !m->_notesImmediate; }, [m]() { m->_notesImmediate = false; }));
 		ni->addItem(OptionMenuItem("Immediately", [m]() { return m->_notesImmediate; }, [m]() { m->_notesImmediate = true; }));
 		OptionsMenuItem::addToMenu(ni, menu);
+
+		OptionsMenuItem* fg = new OptionsMenuItem("Max gate length");
+		fg->addItem(OptionMenuItem("Clock interval", [m]() { return !m->_fixedGate; }, [m]() { m->_fixedGate = false; }));
+		fg->addItem(OptionMenuItem("Fixed (500ms)", [m]() { return m->_fixedGate; }, [m]() { m->_fixedGate = true; }));
+		OptionsMenuItem::addToMenu(fg, menu);
 	}
 };
 

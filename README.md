@@ -681,7 +681,7 @@ MODE controls how the arpeggio plays back:
   - RD (random): play random notes from the arpeggio; notes may repeat.
   - SH (shuffle): on each arpeggio, play each note once, but in random order.  Repeated notes may still occur, but only when the last note of a sequence happens to be the same as the randomly-selected first note of the next sequence.
 
-The GATE knob sets the output gate length for each played note, as a proportion of the time between the last two clock pulses (which can potentially cause odd behaviors if you use an irregular clock).  The minimum gate pulse is 1ms; if the knob is turned all the way up, the gate does not drop between notes.
+The GATE knob sets the output gate length for each played note, as a proportion of the time between the last two clock pulses.  The minimum gate pulse is 1ms; if the knob is turned all the way up, the gate does not drop between notes.  Using an irregular clock, or starting and stopping the clock, will confuse the calculation of the clock rate and produce odd results.  To avoid these problems, if they come up, the context menu option "Max gate length" may be set to "Fixed": in this mode, the gate length is set by the GATE knob to a value from 1ms up to 500ms, without reference to the clock. 
 
 HOLD latches the arpeggio, such that it keeps playing even when all input gates are low.  Once all gates are low, a new gate will start adding notes to a new arpeggio.  Notes will be added to the current arpeggio as long as any gate is high.
 

@@ -86,10 +86,39 @@ struct Arp : BGModule {
 		void sync();
 	};
 
+	struct GateLengthParamQuantity : ParamQuantity {
+		float getDisplayValue() override {
+			float v = getValue();
+			if (!module) {
+				return v;
+			}
+
+			if (dynamic_cast<Arp*>(module)->_fixedGate) {
+				unit = " ms";
+				return v * 500.0f;
+			}
+			unit = "%";
+			return v * 100.0f;
+		}
+
+		void setDisplayValue(float displayValue) override {
+			if (!module) {
+				return;
+			}
+			if (dynamic_cast<Arp*>(module)->_fixedGate) {
+				setValue(displayValue / 500.0f);
+			}
+			else {
+				setValue(displayValue / 100.0f);
+			}
+		}
+	};
+
 	Mode _mode = UP_MODE;
 	float _gateLength = 0.5f;
 	bool _hold = false;
 	bool _notesImmediate = false;
+	bool _fixedGate = false;
 	Trigger _clockTrigger;
 	Trigger _resetTrigger;
 	Trigger _gateTrigger[maxChannels];
@@ -99,14 +128,14 @@ struct Arp : BGModule {
 	NoteSet* _playbackNotes;
 	float _pitchOut = 0.0f;
 	float _sampleTime = 0.001f;
-	float _secondsSinceLastClock = -1.0f;
+	float _secondsSinceLastClock = 0.0f;
 	float _clockSeconds = 0.1f;
 	rack::dsp::PulseGenerator _gateGenerator;
 
 	Arp() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(MODE_PARAM, 0.0f, 6.0f, 0.0f, "Playback mode");
-		configParam(GATE_LENGTH_PARAM, 0.0f, 1.0f, 0.5f, "Gate length", "%", 0.0f, 100.0f);
+		configParam<GateLengthParamQuantity>(GATE_LENGTH_PARAM, 0.0f, 1.0f, 0.5f, "Gate length");
 		configParam(HOLD_PARAM, 0.0f, 1.0f, 0.0f, "Hold/latch");
 
 		_currentNotes = new NoteSet();
