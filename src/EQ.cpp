@@ -18,10 +18,18 @@ void EQ::removeChannel(int c) {
 	_engines[c] = NULL;
 }
 
+float EQ::knobToDb(Param& p) {
+	float v = clamp(p.getValue(), -1.0f, 1.0f);
+	if (v < 0.0f) {
+		return -v * Engine::cutDb;
+	}
+	return v * Engine::gainDb;
+}
+
 void EQ::modulate() {
-	_lowDb = clamp(params[LOW_PARAM].getValue(), Engine::cutDb, Engine::gainDb);
-	_midDb = clamp(params[MID_PARAM].getValue(), Engine::cutDb, Engine::gainDb);
-	_highDb = clamp(params[HIGH_PARAM].getValue(), Engine::cutDb, Engine::gainDb);
+	_lowDb = knobToDb(params[LOW_PARAM]);
+	_midDb = knobToDb(params[MID_PARAM]);
+	_highDb = knobToDb(params[HIGH_PARAM]);
 }
 
 void EQ::modulateChannel(int c) {

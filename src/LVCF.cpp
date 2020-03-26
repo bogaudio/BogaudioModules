@@ -1,5 +1,6 @@
 
 #include "LVCF.hpp"
+#include "dsp/pitch.hpp"
 
 #define POLES_KEY "poles"
 #define BANDWIDTH_MODE_KEY "bandwidthMode"

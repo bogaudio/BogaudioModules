@@ -1,6 +1,7 @@
 #pragma once
 
 #include "bogaudio.hpp"
+#include "dsp/signal.hpp"
 
 using namespace rack;
 

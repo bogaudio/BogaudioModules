@@ -34,15 +34,16 @@ struct EQ : BGModule {
 
 	EQ() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
-		configParam(LOW_PARAM, Engine::cutDb, Engine::gainDb, 0.0f, "Low", " dB");
-		configParam(MID_PARAM, Engine::cutDb, Engine::gainDb, 0.0f, "Mid", " dB");
-		configParam(HIGH_PARAM, Engine::cutDb, Engine::gainDb, 0.0f, "High", " dB");
+		configParam<EQParamQuantity>(LOW_PARAM, -1.0f, 1.0f, 0.0f, "Low", " dB");
+		configParam<EQParamQuantity>(MID_PARAM, -1.0f, 1.0f, 0.0f, "Mid", " dB");
+		configParam<EQParamQuantity>(HIGH_PARAM, -1.0f, 1.0f, 0.0f, "High", " dB");
 	}
 
 	bool active() override;
 	int channels() override;
 	void addChannel(int c) override;
 	void removeChannel(int c) override;
+	float knobToDb(Param& p);
 	void modulate() override;
 	void modulateChannel(int c) override;
 	void processAll(const ProcessArgs& args) override;

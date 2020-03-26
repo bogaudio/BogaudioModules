@@ -1,5 +1,6 @@
 
 #include "VCF.hpp"
+#include "dsp/pitch.hpp"
 
 #define BANDWIDTH_MODE_KEY "bandwidthMode"
 #define LINEAR_BANDWIDTH_MODE_KEY "linear"

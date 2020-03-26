@@ -2,6 +2,7 @@
 
 #include "bogaudio.hpp"
 #include "trigger_on_load.hpp"
+#include "dsp/signal.hpp"
 
 extern Model* modelManual;
 

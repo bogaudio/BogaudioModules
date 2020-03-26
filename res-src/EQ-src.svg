@@ -34,12 +34,14 @@
     <symbol id="knobguide-eq" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <text font-size="5.0pt" transform="rotate(-240) translate(20 0) rotate(240) translate(-6 3)">-36</text>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-202.5) translate(17 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-215) translate(17 0)" />
+        <polyline points="0,0 3,0" stroke-width="0.7" stroke="#333" transform="rotate(-190) translate(17 0)" />
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-165) translate(17 0)" />
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-127.5) translate(17 0)" />
-        <text font-size="5.0pt" transform="rotate(-90) translate(20 0) rotate(90) translate(-5 3)">-12</text>
-        <text font-size="5.0pt" transform="rotate(-15) translate(20 0) rotate(15) translate(-3.5 3)">0</text>
+        <polyline points="0,0 3,0" stroke-width="0.7" stroke="#333" transform="rotate(-140) translate(17 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-115) translate(17 0)" />
+        <text font-size="5.0pt" transform="rotate(-90) translate(20 0) rotate(90) translate(-1.9 3)">0</text>
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-52.5) translate(17 0)" />
+        <polyline points="0,0 3,0" stroke-width="0.7" stroke="#333" transform="rotate(-15) translate(17 0)" />
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(22.5) translate(17 0)" />
         <text font-size="5.0pt" transform="rotate(60) translate(20 0) rotate(-60) translate(-3.5 3)">12</text>
         <text font-size="5.0pt" transform="rotate(90) translate(20 0) rotate(-90) translate(-4 3)">dB</text>
