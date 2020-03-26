@@ -81,6 +81,7 @@
 
 #include "Test.hpp"
 #include "Test2.hpp"
+#include "TestExpander.hpp"
 #include "TestVCF.hpp"
 #include "template_panels.hpp"
 
@@ -188,6 +189,8 @@ void init(rack::Plugin *p) {
 #ifdef TEST
 	p->addModel(modelTest);
 	p->addModel(modelTest2);
+	p->addModel(modelTestExpanderBase);
+	p->addModel(modelTestExpanderExtension);
 	p->addModel(modelTestVCF);
 
 	p->addModel(modelThreeHP);

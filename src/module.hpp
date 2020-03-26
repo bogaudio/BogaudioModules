@@ -22,9 +22,9 @@ struct BGModule : Module {
 		}
 	}
 
-	void onReset() override final;
-	void onSampleRateChange() override final;
-	void process(const ProcessArgs& args) override final;
+	void onReset() override;
+	void onSampleRateChange() override;
+	void process(const ProcessArgs& args) override;
 
 	virtual void reset() {}
 	virtual void sampleRateChange() {}
