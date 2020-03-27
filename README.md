@@ -189,6 +189,10 @@ The context menu option "Bandwidth mode" controls how the bandwidth is calculate
   - "Pitched" (the default): the upper and lower frequencies of the band are equally distant from the center frequency in pitch (octaves and semitones), with a maxmimum of 2 octaves.
   - "Linear": the upper and lower frequencies are equally distant in HZ from the center frequency, with a maximum of 2000HZ.
 
+Note: due to limitations in the filter's implementation, it has a couple workarounds in place to avoid problems:
+  - The cutoff frequency uses a slew limiter (it has limit on how fast it can change), such that it takes approximately 100ms to move the cutoff from fully closed to fully open (or the opposite).
+  - There is a fixed two-pole highpass filter on the filter output, at a cutoff of 80hz.
+
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
 
 #### LVCF
@@ -681,7 +685,7 @@ MODE controls how the arpeggio plays back:
   - RD (random): play random notes from the arpeggio; notes may repeat.
   - SH (shuffle): on each arpeggio, play each note once, but in random order.  Repeated notes may still occur, but only when the last note of a sequence happens to be the same as the randomly-selected first note of the next sequence.
 
-The GATE knob sets the output gate length for each played note, as a proportion of the time between the last two clock pulses.  The minimum gate pulse is 1ms; if the knob is turned all the way up, the gate does not drop between notes.  Using an irregular clock, or starting and stopping the clock, will confuse the calculation of the clock rate and produce odd results.  To avoid these problems, if they come up, the context menu option "Max gate length" may be set to "Fixed": in this mode, the gate length is set by the GATE knob to a value from 1ms up to 500ms, without reference to the clock. 
+The GATE knob sets the output gate length for each played note, as a proportion of the time between the last two clock pulses.  The minimum gate pulse is 1ms; if the knob is turned all the way up, the gate does not drop between notes.  Using an irregular clock, or starting and stopping the clock, will confuse the calculation of the clock rate and produce odd results.  To avoid these problems, if they come up, the context menu option "Max gate length" may be set to "Fixed": in this mode, the gate length is set by the GATE knob to a value from 1ms up to 500ms, without reference to the clock.
 
 HOLD latches the arpeggio, such that it keeps playing even when all input gates are low.  Once all gates are low, a new gate will start adding notes to a new arpeggio.  Notes will be added to the current arpeggio as long as any gate is high.
 
