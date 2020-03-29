@@ -98,7 +98,7 @@ struct FMOp : BGModule {
 		void setDisplayValue(float v) override;
 	};
 
-	struct LevelParamQuantity : AmpliferParamQuantity {
+	struct LevelParamQuantity : AmplifierParamQuantity {
 		bool isLinear() override;
 	};
 

@@ -6,11 +6,11 @@
 using namespace bogaudio;
 using namespace bogaudio::dsp;
 
-bool AmpliferParamQuantity::isLinear() {
+bool AmplifierParamQuantity::isLinear() {
 	return false;
 }
 
-void AmpliferParamQuantity::setUnits(bool linear) {
+void AmplifierParamQuantity::setUnits(bool linear) {
 	if (linear) {
 		unit = "";
 	}
@@ -19,7 +19,7 @@ void AmpliferParamQuantity::setUnits(bool linear) {
 	}
 }
 
-float AmpliferParamQuantity::getDisplayValue() {
+float AmplifierParamQuantity::getDisplayValue() {
 	float v = getValue();
 	if (!module) {
 		return v;
@@ -36,7 +36,7 @@ float AmpliferParamQuantity::getDisplayValue() {
 	return v;
 }
 
-void AmpliferParamQuantity::setDisplayValue(float displayValue) {
+void AmplifierParamQuantity::setDisplayValue(float displayValue) {
 	if (!module) {
 		return;
 	}

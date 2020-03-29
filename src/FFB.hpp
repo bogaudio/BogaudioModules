@@ -64,21 +64,21 @@ struct FFB : BGModule {
 
 	FFB() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam<AmpliferParamQuantity>(BAND_1_PARAM, 0.0f, 1.0f, 1.0f, "Band 1 level");
-		configParam<AmpliferParamQuantity>(BAND_5_PARAM, 0.0f, 1.0f, 1.0f, "Band 5 level");
-		configParam<AmpliferParamQuantity>(BAND_9_PARAM, 0.0f, 1.0f, 1.0f, "Band 9 level");
-		configParam<AmpliferParamQuantity>(BAND_2_PARAM, 0.0f, 1.0f, 1.0f, "Band 2 level");
-		configParam<AmpliferParamQuantity>(BAND_6_PARAM, 0.0f, 1.0f, 1.0f, "Band 6 level");
-		configParam<AmpliferParamQuantity>(BAND_10_PARAM, 0.0f, 1.0f, 1.0f, "Band 10 level");
-		configParam<AmpliferParamQuantity>(BAND_3_PARAM, 0.0f, 1.0f, 1.0f, "Band 3 level");
-		configParam<AmpliferParamQuantity>(BAND_7_PARAM, 0.0f, 1.0f, 1.0f, "Band 7 level");
-		configParam<AmpliferParamQuantity>(BAND_11_PARAM, 0.0f, 1.0f, 1.0f, "Band 11 level");
-		configParam<AmpliferParamQuantity>(BAND_4_PARAM, 0.0f, 1.0f, 1.0f, "Band 4 level");
-		configParam<AmpliferParamQuantity>(BAND_8_PARAM, 0.0f, 1.0f, 1.0f, "Band 8 level");
-		configParam<AmpliferParamQuantity>(BAND_12_PARAM, 0.0f, 1.0f, 1.0f, "Band 12 level");
-		configParam<AmpliferParamQuantity>(LOWPASS_PARAM, 0.0f, 1.0f, 1.0f, "Lowpass level");
+		configParam<AmplifierParamQuantity>(BAND_1_PARAM, 0.0f, 1.0f, 1.0f, "Band 1 level");
+		configParam<AmplifierParamQuantity>(BAND_5_PARAM, 0.0f, 1.0f, 1.0f, "Band 5 level");
+		configParam<AmplifierParamQuantity>(BAND_9_PARAM, 0.0f, 1.0f, 1.0f, "Band 9 level");
+		configParam<AmplifierParamQuantity>(BAND_2_PARAM, 0.0f, 1.0f, 1.0f, "Band 2 level");
+		configParam<AmplifierParamQuantity>(BAND_6_PARAM, 0.0f, 1.0f, 1.0f, "Band 6 level");
+		configParam<AmplifierParamQuantity>(BAND_10_PARAM, 0.0f, 1.0f, 1.0f, "Band 10 level");
+		configParam<AmplifierParamQuantity>(BAND_3_PARAM, 0.0f, 1.0f, 1.0f, "Band 3 level");
+		configParam<AmplifierParamQuantity>(BAND_7_PARAM, 0.0f, 1.0f, 1.0f, "Band 7 level");
+		configParam<AmplifierParamQuantity>(BAND_11_PARAM, 0.0f, 1.0f, 1.0f, "Band 11 level");
+		configParam<AmplifierParamQuantity>(BAND_4_PARAM, 0.0f, 1.0f, 1.0f, "Band 4 level");
+		configParam<AmplifierParamQuantity>(BAND_8_PARAM, 0.0f, 1.0f, 1.0f, "Band 8 level");
+		configParam<AmplifierParamQuantity>(BAND_12_PARAM, 0.0f, 1.0f, 1.0f, "Band 12 level");
+		configParam<AmplifierParamQuantity>(LOWPASS_PARAM, 0.0f, 1.0f, 1.0f, "Lowpass level");
 		configParam(CV_PARAM, 0.0f, 1.0f, 1.0f, "Level CV", "%", 0.0f, 100.0f);
-		configParam<AmpliferParamQuantity>(HIGHPASS_PARAM, 0.0f, 1.0f, 1.0f, "Highpass level");
+		configParam<AmplifierParamQuantity>(HIGHPASS_PARAM, 0.0f, 1.0f, 1.0f, "Highpass level");
 	}
 
 	void sampleRateChange() override;

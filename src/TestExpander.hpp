@@ -8,8 +8,7 @@ extern Model* modelTestExpanderExtension;
 
 namespace bogaudio {
 
-struct TestExpanderMessage : MessageBase {
-	int channels = 0;
+struct TestExpanderMessage : ExpanderMessage {
 	float sample[BGModule::maxChannels] {};
 };
 

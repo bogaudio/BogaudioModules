@@ -19,10 +19,8 @@ int Mix1::channels() {
 void Mix1::addChannel(int c) {
 	_engines[c] = new MixerChannel(
 		params[LEVEL_PARAM],
-		params[LEVEL_PARAM], // not used
 		params[MUTE_PARAM],
 		inputs[LEVEL_INPUT],
-		inputs[LEVEL_INPUT], // not used
 		1000.0f,
 		&inputs[MUTE_INPUT]
 	);
@@ -40,7 +38,7 @@ void Mix1::processAlways(const ProcessArgs& args) {
 
 void Mix1::processChannel(const ProcessArgs& args, int c) {
 	MixerChannel& e = *_engines[c];
-	e.next(inputs[IN_INPUT].getVoltage(c), false, false, c);
+	e.next(inputs[IN_INPUT].getVoltage(c), false, c);
 	_rmsSum += e.rms;
 	outputs[OUT_OUTPUT].setChannels(_channels);
 	outputs[OUT_OUTPUT].setVoltage(e.out, c);

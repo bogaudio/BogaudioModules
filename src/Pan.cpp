@@ -3,9 +3,10 @@
 #include "mixer.hpp"
 
 void Pan::sampleRateChange() {
+	float sr = APP->engine->getSampleRate();
 	for (int c = 0; c < maxChannels; ++c) {
-		_slew1[c].setParams(APP->engine->getSampleRate(), MixerChannel::panSlewTimeMS, 2.0f);
-		_slew2[c].setParams(APP->engine->getSampleRate(), MixerChannel::panSlewTimeMS, 2.0f);
+		_slew1[c].setParams(sr, MIXER_PAN_SLEW_MS, 2.0f);
+		_slew2[c].setParams(sr, MIXER_PAN_SLEW_MS, 2.0f);
 	}
 }
 

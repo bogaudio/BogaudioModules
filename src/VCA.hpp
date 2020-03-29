@@ -36,7 +36,7 @@ struct VCA : BGModule {
 	Amplifier _amplifier2[maxChannels];
 	bogaudio::dsp::SlewLimiter _levelSL2[maxChannels];
 
-	struct LevelParamQuantity : AmpliferParamQuantity {
+	struct LevelParamQuantity : AmplifierParamQuantity {
 		bool isLinear() override;
 	};
 

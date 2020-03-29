@@ -126,7 +126,9 @@ void init(rack::Plugin *p) {
 	p->addModel(modelWalk);
 
 	p->addModel(modelMix8);
+	p->addModel(modelMix8x);
 	p->addModel(modelMix4);
+	p->addModel(modelMix4x);
 	p->addModel(modelMix1);
 	p->addModel(modelVCM);
 	p->addModel(modelMute8);

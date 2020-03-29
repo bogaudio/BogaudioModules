@@ -45,7 +45,7 @@ typedef ScaledSquaringParamQuantity<10> TenXSquaringParamQuantity;
 
 typedef TenXSquaringParamQuantity EnvelopeSegmentParamQuantity;
 
-struct AmpliferParamQuantity : ParamQuantity {
+struct AmplifierParamQuantity : ParamQuantity {
 	virtual bool isLinear();
 	virtual void setUnits(bool linear);
 	float getDisplayValue() override;

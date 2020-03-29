@@ -279,12 +279,30 @@
       ]
     },
     {
+      "slug": "Bogaudio-Mix8x",
+      "name": "MIX8X",
+      "description": "Expander for MIX8, adds EQs and sends",
+      "tags": [
+        "Mixer",
+        "Expander"
+      ]
+    },
+    {
       "slug": "Bogaudio-Mix4",
       "name": "MIX4",
       "description": "4-channel mixer and panner",
       "tags": [
         "Mixer",
         "Panning"
+      ]
+    },
+    {
+      "slug": "Bogaudio-Mix4x",
+      "name": "MIX4X",
+      "description": "Expander for MIX4, adds EQs and sends",
+      "tags": [
+        "Mixer",
+        "Expander"
       ]
     },
     {

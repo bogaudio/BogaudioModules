@@ -9,10 +9,10 @@ using namespace rack;
 
 namespace bogaudio {
 
-struct MessageBase {
+struct ExpanderMessage {
 	int channels = 0;
 
-	virtual ~MessageBase() {}
+	virtual ~ExpanderMessage() {}
 };
 
 template<class MSG, class EM>
@@ -20,7 +20,7 @@ struct ExpandableModule : BGModule {
 	MSG _messages[2] {};
 
 	ExpandableModule() {
-		static_assert(std::is_base_of<MessageBase, MSG>::value, "type parameter MSG must derive from MessageBase");
+		static_assert(std::is_base_of<ExpanderMessage, MSG>::value, "type parameter MSG must derive from ExpanderMessage");
 
 		rightExpander.producerMessage = &_messages[0];
 		rightExpander.consumerMessage = &_messages[1];
@@ -59,7 +59,7 @@ struct ExpanderModule : BGModule {
 	MSG _messages[2] {};
 
 	ExpanderModule() {
-		static_assert(std::is_base_of<MessageBase, MSG>::value, "type parameter MSG must derive from MessageBase");
+		static_assert(std::is_base_of<ExpanderMessage, MSG>::value, "type parameter MSG must derive from ExpanderMessage");
 
 		leftExpander.producerMessage = &_messages[0];
 		leftExpander.consumerMessage = &_messages[1];

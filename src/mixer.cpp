@@ -4,15 +4,13 @@
 const float MixerChannel::maxDecibels = 6.0f;
 const float MixerChannel::minDecibels = Amplifier::minDecibels;
 const float MixerChannel::levelSlewTimeMS = 5.0f;
-const float MixerChannel::panSlewTimeMS = 10.0f;
 
 void MixerChannel::setSampleRate(float sampleRate) {
 	_levelSL.setParams(sampleRate, levelSlewTimeMS, maxDecibels - minDecibels);
-	_panSL.setParams(sampleRate, panSlewTimeMS, 2.0f);
 	_rms.setSampleRate(sampleRate);
 }
 
-void MixerChannel::next(float sample, bool stereo, bool solo, int c) {
+void MixerChannel::next(float sample, bool solo, int c) {
 	float mute = _muteParam.getValue();
 	if (_muteInput) {
 		mute += clamp(_muteInput->getPolyVoltage(c), 0.0f, 10.0f);
@@ -31,16 +29,50 @@ void MixerChannel::next(float sample, bool stereo, bool solo, int c) {
 		_amplifier.setLevel(_levelSL.next(level));
 	}
 
-	left = right = out = _amplifier.next(sample);
+	out = _amplifier.next(sample);
 	rms = _rms.next(out / 5.0f);
-	if (stereo) {
-		float pan = clamp(_panParam.getValue(), -1.0f, 1.0f);
-		if (_panInput.isConnected()) {
-			pan *= clamp(_panInput.getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
-		}
-		_panner.setPan(_panSL.next(pan));
-		_panner.next(out, left, right);
+}
+
+
+void MixerExpanderChannel::setSampleRate(float sampleRate) {
+	_sendASL.setParams(sampleRate, MixerChannel::levelSlewTimeMS, MixerChannel::maxDecibels - MixerChannel::minDecibels);
+	_sendBSL.setParams(sampleRate, MixerChannel::levelSlewTimeMS, MixerChannel::maxDecibels - MixerChannel::minDecibels);
+}
+
+float MixerExpanderChannel::knobToDb(Param& p) {
+	float v = clamp(p.getValue(), -1.0f, 1.0f);
+	if (v < 0.0f) {
+		return -v * Equalizer::cutDb;
 	}
+	return v * Equalizer::gainDb;
+}
+
+void MixerExpanderChannel::next(float preFader, float postFader) {
+	_eq.setParams(
+		APP->engine->getSampleRate(),
+		knobToDb(_lowParam),
+		knobToDb(_midParam),
+		knobToDb(_highParam)
+	);
+	postEQ = _eq.next(postFader);
+
+	float level = clamp(_sendAParam.getValue(), 0.0f, 1.0f);
+	if (_sendAInput.isConnected()) {
+		level *= clamp(_sendAInput.getVoltage() / 10.0f, 0.0f, 1.0f);
+	}
+	level = 1.0f - level;
+	level *= Amplifier::minDecibels;
+	_sendAAmp.setLevel(_sendASL.next(level));
+	sendA = _sendAAmp.next(_preAParam.getValue() > 0.5f ? preFader : postEQ);
+
+	level = clamp(_sendBParam.getValue(), 0.0f, 1.0f);
+	if (_sendBInput.isConnected()) {
+		level *= clamp(_sendBInput.getVoltage() / 10.0f, 0.0f, 1.0f);
+	}
+	level = 1.0f - level;
+	level *= Amplifier::minDecibels;
+	_sendBAmp.setLevel(_sendBSL.next(level));
+	sendB = _sendBAmp.next(_preBParam.getValue() > 0.5f ? preFader : postEQ);
 }
 
 

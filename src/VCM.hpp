@@ -44,7 +44,7 @@ struct VCM : DisableOutputLimitModule {
 	Amplifier _amplifier3[maxChannels];
 	Amplifier _amplifier4[maxChannels];
 
-	struct LevelParamQuantity : AmpliferParamQuantity {
+	struct LevelParamQuantity : AmplifierParamQuantity {
 		bool isLinear() override;
 	};
 
