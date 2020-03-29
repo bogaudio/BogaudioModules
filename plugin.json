@@ -140,6 +140,15 @@
       ]
     },
     {
+      "slug": "Bogaudio-EQS",
+      "name": "EQS",
+      "description": "Stereo 3-channel equalizer",
+      "tags": [
+        "Equalizer",
+        "Polyphonic"
+      ]
+    },
+    {
       "slug": "Bogaudio-DADSRH",
       "name": "DADSR(H)",
       "description": "Advanced envelope generator",

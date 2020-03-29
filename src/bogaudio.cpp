@@ -25,6 +25,7 @@
 #include "EightFO.hpp"
 #include "EightOne.hpp"
 #include "EQ.hpp"
+#include "EQS.hpp"
 #include "FFB.hpp"
 #include "FMOp.hpp"
 #include "FlipFlop.hpp"
@@ -108,6 +109,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelLVCF);
 	p->addModel(modelFFB);
 	p->addModel(modelEQ);
+	p->addModel(modelEQS);
 
 	p->addModel(modelDADSRH);
 	p->addModel(modelDADSRHPlus);

@@ -1,0 +1,113 @@
+<svg
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="90"
+  height="380"
+  viewBox="0 0 90 380"
+>
+  <style>
+    text {
+      fill: #333;
+      font-family: 'Roboto', sans-serif;
+      font-weight: bold;
+    }
+    text.title {
+      font-family: 'Comfortaa', sans-serif;
+      font-weight: normal;
+    }
+    text.brand {
+      font-family: 'Audiowide', sans-serif;
+      font-weight: bold;
+    }
+  </style>
+
+  <defs>
+    <symbol id="knob38" viewBox="0 0 38px 38px">
+      <g transform="translate(19 19)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f" />
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f" />
+        <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none" />
+      </g>
+    </symbol>
+
+    <symbol id="knobguide-eq-38" viewBox="0 0 70px 70px">
+      <g transform="translate(35 35)">
+        <text font-size="6.0pt" transform="rotate(-240) translate(25 0) rotate(240) translate(-10 2.5)">-36</text>
+        <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" transform="rotate(-215) translate(21 0)" />
+        <text font-size="6.0pt" transform="rotate(-190) translate(25 0) rotate(190) translate(-10 2.5)">-24</text>
+        <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" transform="rotate(-165) translate(21 0)" />
+        <text font-size="6.0pt" transform="rotate(-140) translate(25 0) rotate(140) translate(-10 2.5)">-12</text>
+        <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" transform="rotate(-115) translate(21 0)" />
+        <text font-size="6.0pt" transform="rotate(-90) translate(25 0) rotate(90) translate(-2.3 2.5)">0</text>
+        <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" transform="rotate(-52.5) translate(21 0)" />
+        <text font-size="6.0pt" transform="rotate(-15) translate(25 0) rotate(15) translate(-3 2.5)">6</text>
+        <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" transform="rotate(22.5) translate(21 0)" />
+        <text font-size="6.0pt" transform="rotate(60) translate(25 0) rotate(-60) translate(-2.3 2.5)">12</text>
+        <text font-size="6.0pt" transform="rotate(90) translate(29 0) rotate(-90) translate(-4.7 2.2)">dB</text>
+      </g>
+    </symbol>
+
+    <symbol id="input" viewBox="0 0 24px 24px">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0" />
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none" />
+      </g>
+    </symbol>
+
+    <symbol id="output" viewBox="0 0 24px 24px">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00" />
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none" />
+      </g>
+    </symbol>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ddd" />
+  <polyline points="1,1 89,1 89,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none" />
+  <polyline points="0.5,0.5 89.5,0.5 89.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none" />
+  <polyline points="0,0 90,0 90,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none" />
+
+  <text class="title" x="50" y="17" font-size="9pt" letter-spacing="3px">EQS</text>
+  <g transform="translate(5.5 374)">
+    <text class="brand" font-size="6.5pt" letter-spacing="2px">BOGAUDIO</text>
+    <rect width="1.5" height="2" fill="#ddd" transform="translate(21 -4)" />
+  </g>
+
+  <g transform="translate(0 40)">
+    <text font-size="8pt" letter-spacing="2px" transform="translate(32 0)">LOW</text>
+    <use id="LOW_PARAM" xlink:href="#knob38" transform="translate(26 13)" />
+    <use xlink:href="#knobguide-eq-38" transform="translate(10 -3)" />
+  </g>
+
+  <g transform="translate(0 122)">
+    <text font-size="8pt" letter-spacing="2px" transform="translate(33 0)">MID</text>
+    <use id="MID_PARAM" xlink:href="#knob38" transform="translate(26 13)" />
+    <use xlink:href="#knobguide-eq-38" transform="translate(10 -3)" />
+  </g>
+
+  <g transform="translate(0 204)">
+    <text font-size="8pt" letter-spacing="2px" transform="translate(29 0)">HIGH</text>
+    <use id="HIGH_PARAM" xlink:href="#knob38" transform="translate(26 13)" />
+    <use xlink:href="#knobguide-eq-38" transform="translate(10 -3)" />
+  </g>
+
+  <g transform="translate(11 275)">
+    <g transform="translate(0 0)">
+      <rect width="68" height="10" fill="#fafafa" transform="translate(0 31)" />
+      <rect width="68" height="38" rx="5" fill="#fafafa" />
+      <use id="LEFT_INPUT" xlink:href="#input" transform="translate(5 4)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(15.5 36)">L</text>
+      <use id="RIGHT_INPUT" xlink:href="#input" transform="translate(39 4)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(49 36)">R</text>
+    </g>
+    <g transform="translate(0 44)">
+      <rect width="68" height="10" fill="#bbb" transform="translate(0 -3)" />
+      <rect width="68" height="37" rx="5" fill="#bbb" />
+      <use id="LEFT_OUTPUT" xlink:href="#output" transform="translate(5 1)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(15.5 33)">L</text>
+      <use id="RIGHT_OUTPUT" xlink:href="#output" transform="translate(39 1)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(49 33)">R</text>
+    </g>
+  </g>
+</svg>
