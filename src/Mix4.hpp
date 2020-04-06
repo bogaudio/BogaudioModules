@@ -15,7 +15,7 @@ struct Mix4x;
 
 typedef MixerExpanderMessage<4> Mix4ExpanderMessage;
 
-struct Mix4 : ExpandableModule<Mix4ExpanderMessage, Mix4x> {
+struct Mix4 : ExpandableModule<Mix4ExpanderMessage, Mix4x, BGModule> {
 	enum ParamsIds {
 		LEVEL1_PARAM,
 		PAN1_PARAM,
@@ -105,7 +105,7 @@ struct Mix4 : ExpandableModule<Mix4ExpanderMessage, Mix4x> {
 	void processAll(const ProcessArgs& args) override;
 };
 
-struct Mix4x : ExpanderModule<Mix4ExpanderMessage, Mix4> {
+struct Mix4x : ExpanderModule<Mix4ExpanderMessage, Mix4, BGModule> {
 	enum ParamsIds {
 		LOW1_PARAM,
 		MID1_PARAM,

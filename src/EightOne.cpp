@@ -1,14 +1,18 @@
 
 #include "EightOne.hpp"
 
+void EightOne::processAlways(const ProcessArgs& args) {
+	std::fill(_lightSums, _lightSums + 8, 0.0f);
+}
+
 void EightOne::processChannel(const ProcessArgs& args, int c) {
 	int step = nextStep(
 		c,
-		inputs[RESET_INPUT],
+		&inputs[RESET_INPUT],
 		inputs[CLOCK_INPUT],
-		params[STEPS_PARAM],
+		&params[STEPS_PARAM],
 		params[DIRECTION_PARAM],
-		params[SELECT_PARAM],
+		&params[SELECT_PARAM],
 		inputs[SELECT_INPUT]
 	);
 
@@ -16,18 +20,20 @@ void EightOne::processChannel(const ProcessArgs& args, int c) {
 	if (_channels > 1) {
 		outputs[OUT_OUTPUT].setChannels(_channels);
 		outputs[OUT_OUTPUT].setVoltage(in.getPolyVoltage(c), c);
-		if (c == 0) {
-			for (int i = 0; i < 8; ++i) {
-				lights[IN1_LIGHT + i].value = step == i;
-			}
-		}
 	}
 	else {
 		outputs[OUT_OUTPUT].setChannels(in.getChannels());
 		outputs[OUT_OUTPUT].writeVoltages(in.getVoltages());
-		for (int i = 0; i < 8; ++i) {
-			lights[IN1_LIGHT + i].value = step == i;
-		}
+	}
+
+	for (int i = 0; i < 8; ++i) {
+		_lightSums[i] += step == i;
+	}
+}
+
+void EightOne::postProcessAlways(const ProcessArgs& args) {
+	for (int i = 0; i < 8; ++i) {
+		lights[IN1_LIGHT + i].value = _lightSums[i] / (float)_channels;
 	}
 }
 

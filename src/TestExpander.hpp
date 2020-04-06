@@ -14,7 +14,7 @@ struct TestExpanderMessage : ExpanderMessage {
 
 struct TestExpanderExtension;
 
-struct TestExpanderBase : ExpandableModule<TestExpanderMessage, TestExpanderExtension> {
+struct TestExpanderBase : ExpandableModule<TestExpanderMessage, TestExpanderExtension, BGModule> {
 	enum ParamsIds {
 		NUM_PARAMS
 	};
@@ -43,7 +43,7 @@ struct TestExpanderBase : ExpandableModule<TestExpanderMessage, TestExpanderExte
 	void processChannel(const ProcessArgs& args, int c) override;
 };
 
-struct TestExpanderExtension : ExpanderModule<TestExpanderMessage, TestExpanderBase> {
+struct TestExpanderExtension : ExpanderModule<TestExpanderMessage, TestExpanderBase, BGModule> {
 	enum ParamsIds {
 		NUM_PARAMS
 	};

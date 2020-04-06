@@ -518,6 +518,25 @@
       ]
     },
     {
+      "slug": "Bogaudio-Pgmr",
+      "name": "PGMR",
+      "description": "4-step programmer and sequencer",
+      "tags": [
+        "Sequencer",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Bogaudio-PgmrX",
+      "name": "PGMRX",
+      "description": "4-step chainable expander for PGMR",
+      "tags": [
+        "Sequencer",
+        "Expander",
+        "Polyphonic"
+      ]
+    },
+    {
       "slug": "Bogaudio-Analyzer",
       "name": "ANALYZER",
       "description": "4-channel spectrum analyzer",

@@ -1,14 +1,18 @@
 
 #include "OneEight.hpp"
 
+void OneEight::processAlways(const ProcessArgs& args) {
+	std::fill(_lightSums, _lightSums + 8, 0.0f);
+}
+
 void OneEight::processChannel(const ProcessArgs& args, int c) {
 	int step = nextStep(
 		c,
-		inputs[RESET_INPUT],
+		&inputs[RESET_INPUT],
 		inputs[CLOCK_INPUT],
-		params[STEPS_PARAM],
+		&params[STEPS_PARAM],
 		params[DIRECTION_PARAM],
-		params[SELECT_PARAM],
+		&params[SELECT_PARAM],
 		inputs[SELECT_INPUT]
 	);
 
@@ -17,18 +21,14 @@ void OneEight::processChannel(const ProcessArgs& args, int c) {
 		for (int i = 0; i < 8; ++i) {
 			outputs[OUT1_OUTPUT + i].setChannels(_channels);
 			outputs[OUT1_OUTPUT + i].setVoltage((step == i) * in, c);
-		}
-		if (c == 0) {
-			for (int i = 0; i < 8; ++i) {
-				lights[OUT1_LIGHT + i].value = step == i;
-			}
+			_lightSums[i] += step == i;
 		}
 	}
 	else if (!inputs[IN_INPUT].isConnected()) {
 		for (int i = 0; i < 8; ++i) {
 			outputs[OUT1_OUTPUT + i].setChannels(1);
 			outputs[OUT1_OUTPUT + i].setVoltage((step == i) * 10.0f);
-			lights[OUT1_LIGHT + i].value = step == i;
+			_lightSums[i] += step == i;
 		}
 	}
 	else {
@@ -37,8 +37,14 @@ void OneEight::processChannel(const ProcessArgs& args, int c) {
 		for (int i = 0; i < 8; ++i) {
 			outputs[OUT1_OUTPUT + i].setChannels(inputs[IN_INPUT].getChannels());
 			outputs[OUT1_OUTPUT + i].writeVoltages((step == i) ? in : zeroes);
-			lights[OUT1_LIGHT + i].value = step == i;
+			_lightSums[i] += step == i;
 		}
+	}
+}
+
+void OneEight::postProcessAlways(const ProcessArgs& args) {
+	for (int i = 0; i < 8; ++i) {
+		lights[OUT1_LIGHT + i].value = _lightSums[i] / (float)_channels;
 	}
 }
 

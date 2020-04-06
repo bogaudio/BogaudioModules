@@ -1,0 +1,276 @@
+<svg
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="225"
+  height="380"
+  viewBox="0 0 225 380"
+>
+  <style>
+    text {
+      fill: #333;
+      font-family: 'Roboto', sans-serif;
+      font-weight: bold;
+    }
+    text.title {
+      font-family: 'Comfortaa', sans-serif;
+      font-weight: normal;
+    }
+    text.brand {
+      font-family: 'Audiowide', sans-serif;
+      font-weight: bold;
+    }
+  </style>
+
+  <defs>
+    <symbol id="knob26" viewBox="0 0 45px 45px">
+      <g transform="translate(22.5 22.5)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f" />
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f" />
+        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none" />
+      </g>
+    </symbol>
+
+    <symbol id="knobguide-pgmr" viewBox="0 0 45px 45px">
+      <g transform="translate(22.5 22.5)">
+        <polyline points="0,0 3.5,0" stroke-width="1.0" stroke="#333" transform="rotate(-240) translate(15 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-225) translate(15 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-210) translate(15 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-195) translate(15 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-180) translate(15 0)" />
+        <polyline points="0,0 3.5,0" stroke-width="1.0" stroke="#333" transform="rotate(-165) translate(15 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-150) translate(15 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-135) translate(15 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-120) translate(15 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-105) translate(15 0)" />
+
+        <text font-size="5pt" transform="rotate(-90) translate(15 0) rotate(90) translate(-1.9 0)">0</text>
+
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-75) translate(15 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-60) translate(15 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-45) translate(15 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-30) translate(15 0)" />
+        <polyline points="0,0 3.5,0" stroke-width="1.0" stroke="#333" transform="rotate(-15) translate(15 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(0) translate(15 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(15) translate(15 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(30) translate(15 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(45) translate(15 0)" />
+        <polyline points="0,0 3.5,0" stroke-width="1.0" stroke="#333" transform="rotate(60) translate(15 0)" />
+
+        <text font-size="9pt" transform="rotate(-225) translate(20 0) rotate(225) translate(-1 8.8)">-</text>
+        <text font-size="7pt" transform="rotate(45) translate(20 0) rotate(-45) translate(-3.9 8.5)">+</text>
+      </g>
+    </symbol>
+
+    <symbol id="button" viewBox="0 0 18px 18px">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00" />
+      </g>
+    </symbol>
+
+    <symbol id="light-small" viewBox="0 0 6.4px 6.4px">
+      <rect width="6.4" height="6.4" fill="#0f0" />
+    </symbol>
+
+    <symbol id="button-small" viewBox="0 0 9px 9px">
+      <g transform="translate(4.5 4.5)">
+        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00" />
+      </g>
+    </symbol>
+
+    <symbol id="input" viewBox="0 0 24px 24px">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0" />
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none" />
+      </g>
+    </symbol>
+
+    <symbol id="output" viewBox="0 0 24px 24px">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00" />
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none" />
+      </g>
+    </symbol>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ddd" />
+  <polyline points="1,1 224,1 224,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none" />
+  <polyline points="0.5,0.5 224.5,0.5 224.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none" />
+  <polyline points="0,0 225,0 225,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none" />
+
+  <!-- <rect width="80" height="20" fill="#0f0" transform="translate(0 0)" /> -->
+  <!-- <rect width="80" height="20" fill="#0f0" transform="translate(145 0)" /> -->
+  <text class="title" x="82" y="19" font-size="12pt" letter-spacing="4px">PGMR</text>
+  <g transform="translate(72.5 374)">
+    <text class="brand" font-size="8pt" letter-spacing="2px">BOGAUDIO</text>
+    <rect width="3.0" height="3" fill="#ddd" transform="translate(24 -5)" />
+  </g>
+
+  <!-- <polyline points="0,0 225,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 30)" /> -->
+  <!-- <polyline points="0,0 225,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 135.5)" /> -->
+  <!-- <polyline points="0,0 225,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 360)" /> -->
+
+  <g transform="translate(0 56)">
+    <g transform="translate(5.5 0)">
+      <rect width="34" height="155" rx="5" fill="#bbb" transform="translate(0 -10)" />
+      <use id="A_OUTPUT" xlink:href="#output" transform="translate(5 3)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 0)">OUT</text>
+      <text font-size="5pt" letter-spacing="2px" transform="translate(15 35)">A</text>
+      <use id="B_OUTPUT" xlink:href="#output" transform="translate(5 38)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(15 70)">B</text>
+      <use id="C_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(15 105)">C</text>
+      <use id="D_OUTPUT" xlink:href="#output" transform="translate(5 107)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(15 140)">D</text>
+    </g>
+  </g>
+
+  <g transform="translate(0 224)">
+    <g transform="translate(5.5 0)">
+      <rect width="34" height="10" fill="#fafafa" transform="translate(0 92)" />
+      <rect width="34" height="102" rx="5" fill="#fafafa" transform="translate(0 -3)" />
+      <use id="CLOCK_INPUT" xlink:href="#input" transform="translate(5 2)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(2.5 34)">CLOCK</text>
+      <text font-size="5pt" letter-spacing="1px" transform="translate(5 46.5)">FWD</text>
+      <use id="DIRECTION_PARAM" xlink:href="#button-small" transform="translate(22.5 39.7)" />
+      <text font-size="5pt" letter-spacing="0.1px" transform="translate(2 60)">S.O.C.</text>
+      <use id="SELECT_ON_CLOCK_PARAM" xlink:href="#button-small" transform="translate(22.5 53.2)" />
+      <use id="SELECT_INPUT" xlink:href="#input" transform="translate(5 66)" />
+      <text font-size="5pt" letter-spacing="1px" transform="translate(2.5 98)">SELECT</text>
+    </g>
+    <g transform="translate(5.5 105)">
+      <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)" />
+      <rect width="34" height="30" rx="5" fill="#bbb" />
+      <use id="SELECT_ALL_OUTPUT" xlink:href="#output" transform="translate(5 1)" />
+    </g>
+  </g>
+
+  <g transform="translate(45 30)">
+    <!-- <rect width="34" height="330" fill="#ccc" transform="translate(5.5 0)" /> -->
+    <text font-size="5pt" letter-spacing="2px" transform="translate(20.5 -1)">1</text>
+    <use id="CVA1_PARAM" xlink:href="#knob26" transform="translate(0 1)" />
+    <use xlink:href="#knobguide-pgmr" transform="translate(0 1)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 48)">A</text>
+    <use id="CVB1_PARAM" xlink:href="#knob26" transform="translate(0 55)" />
+    <use xlink:href="#knobguide-pgmr" transform="translate(0 55)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 102)">B</text>
+    <use id="CVC1_PARAM" xlink:href="#knob26" transform="translate(0 109)" />
+    <use xlink:href="#knobguide-pgmr" transform="translate(0 109)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 156)">C</text>
+    <use id="CVD1_PARAM" xlink:href="#knob26" transform="translate(0 163)" />
+    <use xlink:href="#knobguide-pgmr" transform="translate(0 163)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 210)">D</text>
+    <g transform="translate(0 223)">
+      <g transform="translate(5.5 0)">
+        <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)" />
+        <rect width="34" height="76" rx="5" fill="#fafafa" transform="translate(0 -3)" />
+        <use id="SELECT1_LIGHT" xlink:href="#light-small" transform="translate(13.8 2)" />
+        <use id="SELECT1_PARAM" xlink:href="#button" transform="translate(8 14)" />
+        <use id="SELECT1_INPUT" xlink:href="#input" transform="translate(5 37)" />
+        <text font-size="5pt" letter-spacing="1px" transform="translate(2.5 69)">SELECT</text>
+      </g>
+      <g transform="translate(5.5 73)">
+        <rect width="34" height="10" fill="#bbb" transform="translate(0 0)" />
+        <rect width="34" height="33" rx="5" fill="#bbb" />
+        <use id="SELECT1_OUTPUT" xlink:href="#output" transform="translate(5 4)" />
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(90 30)">
+    <!-- <rect width="34" height="330" fill="#ccc" transform="translate(5.5 0)" /> -->
+    <text font-size="5pt" letter-spacing="2px" transform="translate(20.5 -1)">2</text>
+    <use id="CVA2_PARAM" xlink:href="#knob26" transform="translate(0 1)" />
+    <use xlink:href="#knobguide-pgmr" transform="translate(0 1)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 48)">A</text>
+    <use id="CVB2_PARAM" xlink:href="#knob26" transform="translate(0 55)" />
+    <use xlink:href="#knobguide-pgmr" transform="translate(0 55)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 102)">B</text>
+    <use id="CVC2_PARAM" xlink:href="#knob26" transform="translate(0 109)" />
+    <use xlink:href="#knobguide-pgmr" transform="translate(0 109)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 156)">C</text>
+    <use id="CVD2_PARAM" xlink:href="#knob26" transform="translate(0 163)" />
+    <use xlink:href="#knobguide-pgmr" transform="translate(0 163)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 210)">D</text>
+    <g transform="translate(0 223)">
+      <g transform="translate(5.5 0)">
+        <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)" />
+        <rect width="34" height="76" rx="5" fill="#fafafa" transform="translate(0 -3)" />
+        <use id="SELECT2_LIGHT" xlink:href="#light-small" transform="translate(13.8 2)" />
+        <use id="SELECT2_PARAM" xlink:href="#button" transform="translate(8 14)" />
+        <use id="SELECT2_INPUT" xlink:href="#input" transform="translate(5 37)" />
+        <text font-size="5pt" letter-spacing="1px" transform="translate(2.5 69)">SELECT</text>
+      </g>
+      <g transform="translate(5.5 73)">
+        <rect width="34" height="10" fill="#bbb" transform="translate(0 0)" />
+        <rect width="34" height="33" rx="5" fill="#bbb" />
+        <use id="SELECT2_OUTPUT" xlink:href="#output" transform="translate(5 4)" />
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(135 30)">
+    <!-- <rect width="34" height="330" fill="#ccc" transform="translate(5.5 0)" /> -->
+    <text font-size="5pt" letter-spacing="2px" transform="translate(20.5 -1)">3</text>
+    <use id="CVA3_PARAM" xlink:href="#knob26" transform="translate(0 1)" />
+    <use xlink:href="#knobguide-pgmr" transform="translate(0 1)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 48)">A</text>
+    <use id="CVB3_PARAM" xlink:href="#knob26" transform="translate(0 55)" />
+    <use xlink:href="#knobguide-pgmr" transform="translate(0 55)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 102)">B</text>
+    <use id="CVC3_PARAM" xlink:href="#knob26" transform="translate(0 109)" />
+    <use xlink:href="#knobguide-pgmr" transform="translate(0 109)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 156)">C</text>
+    <use id="CVD3_PARAM" xlink:href="#knob26" transform="translate(0 163)" />
+    <use xlink:href="#knobguide-pgmr" transform="translate(0 163)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 210)">D</text>
+    <g transform="translate(0 223)">
+      <g transform="translate(5.5 0)">
+        <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)" />
+        <rect width="34" height="76" rx="5" fill="#fafafa" transform="translate(0 -3)" />
+        <use id="SELECT3_LIGHT" xlink:href="#light-small" transform="translate(13.8 2)" />
+        <use id="SELECT3_PARAM" xlink:href="#button" transform="translate(8 14)" />
+        <use id="SELECT3_INPUT" xlink:href="#input" transform="translate(5 37)" />
+        <text font-size="5pt" letter-spacing="1px" transform="translate(2.5 69)">SELECT</text>
+      </g>
+      <g transform="translate(5.5 73)">
+        <rect width="34" height="10" fill="#bbb" transform="translate(0 0)" />
+        <rect width="34" height="33" rx="5" fill="#bbb" />
+        <use id="SELECT3_OUTPUT" xlink:href="#output" transform="translate(5 4)" />
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(180 30)">
+    <!-- <rect width="34" height="330" fill="#ccc" transform="translate(5.5 0)" /> -->
+    <text font-size="5pt" letter-spacing="2px" transform="translate(20.5 -1)">4</text>
+    <use id="CVA4_PARAM" xlink:href="#knob26" transform="translate(0 1)" />
+    <use xlink:href="#knobguide-pgmr" transform="translate(0 1)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 48)">A</text>
+    <use id="CVB4_PARAM" xlink:href="#knob26" transform="translate(0 55)" />
+    <use xlink:href="#knobguide-pgmr" transform="translate(0 55)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 102)">B</text>
+    <use id="CVC4_PARAM" xlink:href="#knob26" transform="translate(0 109)" />
+    <use xlink:href="#knobguide-pgmr" transform="translate(0 109)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 156)">C</text>
+    <use id="CVD4_PARAM" xlink:href="#knob26" transform="translate(0 163)" />
+    <use xlink:href="#knobguide-pgmr" transform="translate(0 163)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 210)">D</text>
+    <g transform="translate(0 223)">
+      <g transform="translate(5.5 0)">
+        <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)" />
+        <rect width="34" height="76" rx="5" fill="#fafafa" transform="translate(0 -3)" />
+        <use id="SELECT4_LIGHT" xlink:href="#light-small" transform="translate(13.8 2)" />
+        <use id="SELECT4_PARAM" xlink:href="#button" transform="translate(8 14)" />
+        <use id="SELECT4_INPUT" xlink:href="#input" transform="translate(5 37)" />
+        <text font-size="5pt" letter-spacing="1px" transform="translate(2.5 69)">SELECT</text>
+      </g>
+      <g transform="translate(5.5 73)">
+        <rect width="34" height="10" fill="#bbb" transform="translate(0 0)" />
+        <rect width="34" height="33" rx="5" fill="#bbb" />
+        <use id="SELECT4_OUTPUT" xlink:href="#output" transform="translate(5 4)" />
+      </g>
+    </g>Z
+  </g>
+  <!-- <polyline points="0,0 225,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 315)" /> -->
+</svg>

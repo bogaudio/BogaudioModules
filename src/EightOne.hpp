@@ -50,14 +50,19 @@ struct EightOne : AddressableSequenceModule {
 		NUM_LIGHTS
 	};
 
-	EightOne() : AddressableSequenceModule(CLOCK_INPUT, SELECT_INPUT) {
+	float _lightSums[8] {};
+
+	EightOne() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(STEPS_PARAM, 1.0f, 8.0f, 8.0f, "Steps");
 		configParam(DIRECTION_PARAM, 0.0f, 1.0f, 1.0f, "Direction");
 		configParam(SELECT_PARAM, 0.0f, 7.0f, 0.0f, "Select step");
+		setInputIDs(CLOCK_INPUT, SELECT_INPUT);
 	}
 
+	void processAlways(const ProcessArgs& args) override;
 	void processChannel(const ProcessArgs& args, int c) override;
+	void postProcessAlways(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

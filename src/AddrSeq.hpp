@@ -2,15 +2,12 @@
 
 #include "bogaudio.hpp"
 #include "addressable_sequence.hpp"
-#include "dsp/signal.hpp"
-
-using namespace bogaudio::dsp;
 
 extern Model* modelAddrSeq;
 
 namespace bogaudio {
 
-struct AddrSeq : AddressableSequenceModule {
+struct AddrSeq : OutputRangeAddressableSequenceModule {
 	enum ParamsIds {
 		STEPS_PARAM,
 		DIRECTION_PARAM,
@@ -50,15 +47,9 @@ struct AddrSeq : AddressableSequenceModule {
 		NUM_LIGHTS
 	};
 
-	float _rangeOffset = 0.0f;
-	float _rangeScale = 10.0f;
+	float _lightSums[8] {};
 
-	struct OutputParamQuantity : ParamQuantity {
-		float getDisplayValue() override;
-		void setDisplayValue(float v) override;
-	};
-
-	AddrSeq() : AddressableSequenceModule(CLOCK_INPUT, SELECT_INPUT) {
+	AddrSeq() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(STEPS_PARAM, 1.0f, 8.0f, 8.0f, "Steps");
 		configParam(DIRECTION_PARAM, 0.0f, 1.0f, 1.0f, "Direction");
@@ -71,11 +62,12 @@ struct AddrSeq : AddressableSequenceModule {
 		configParam<OutputParamQuantity>(OUT6_PARAM, -1.0f, 1.0f, 0.0f, "Step 6", " V");
 		configParam<OutputParamQuantity>(OUT7_PARAM, -1.0f, 1.0f, 0.0f, "Step 7", " V");
 		configParam<OutputParamQuantity>(OUT8_PARAM, -1.0f, 1.0f, 0.0f, "Step 8", " V");
+		setInputIDs(CLOCK_INPUT, SELECT_INPUT);
 	}
 
-	json_t* dataToJson() override;
-	void dataFromJson(json_t* root) override;
+	void processAlways(const ProcessArgs& args) override;
 	void processChannel(const ProcessArgs& args, int c) override;
+	void postProcessAlways(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

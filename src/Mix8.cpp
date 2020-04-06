@@ -29,7 +29,7 @@ void Mix8::sampleRateChange() {
 void Mix8::processAll(const ProcessArgs& args) {
 	Mix8ExpanderMessage* toExp = &_dummyExpanderMessage;
 	Mix8ExpanderMessage* fromExp = &_dummyExpanderMessage;
-	if (connected()) {
+	if (expanderConnected()) {
 		toExp = toExpander();
 		fromExp = fromExpander();
 	}
@@ -86,7 +86,7 @@ void Mix8::processAll(const ProcessArgs& args) {
 	float mono = 0.0f;
 	float left = 0.0f;
 	float right = 0.0f;
-	if (connected()) {
+	if (expanderConnected()) {
 		mono += fromExp->returnA[0] + fromExp->returnB[0];
 		left += fromExp->returnA[0] + fromExp->returnB[0];
 		right += fromExp->returnA[1] + fromExp->returnB[1];
@@ -294,7 +294,7 @@ void Mix8x::sampleRateChange() {
 }
 
 void Mix8x::processAll(const ProcessArgs& args) {
-	if (!connected()) {
+	if (!baseConnected()) {
 		outputs[SEND_A_OUTPUT].setVoltage(0.0f);
 		outputs[SEND_B_OUTPUT].setVoltage(0.0f);
 		return;

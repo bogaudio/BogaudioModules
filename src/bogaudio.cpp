@@ -51,6 +51,7 @@
 #include "Offset.hpp"
 #include "OneEight.hpp"
 #include "Pan.hpp"
+#include "Pgmr.hpp"
 #include "PolyCon.hpp"
 #include "PolyMult.hpp"
 #include "Pressor.hpp"
@@ -156,6 +157,8 @@ void init(rack::Plugin *p) {
 	p->addModel(modelOneEight);
 	p->addModel(modelEightOne);
 	p->addModel(modelAddrSeq);
+	p->addModel(modelPgmr);
+	p->addModel(modelPgmrX);
 
 	p->addModel(modelAnalyzer);
 	p->addModel(modelAnalyzerXL);

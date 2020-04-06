@@ -15,7 +15,7 @@ struct Mix8x;
 
 typedef MixerExpanderMessage<8> Mix8ExpanderMessage;
 
-struct Mix8 : ExpandableModule<Mix8ExpanderMessage, Mix8x> {
+struct Mix8 : ExpandableModule<Mix8ExpanderMessage, Mix8x, BGModule> {
 	enum ParamsIds {
 		LEVEL1_PARAM,
 		MUTE1_PARAM,
@@ -145,7 +145,7 @@ struct Mix8 : ExpandableModule<Mix8ExpanderMessage, Mix8x> {
 	void processAll(const ProcessArgs& args) override;
 };
 
-struct Mix8x : ExpanderModule<Mix8ExpanderMessage, Mix8> {
+struct Mix8x : ExpanderModule<Mix8ExpanderMessage, Mix8, BGModule> {
 	enum ParamsIds {
 		LOW1_PARAM,
 		MID1_PARAM,

@@ -7,11 +7,11 @@ int TestExpanderBase::channels() {
 
 void TestExpanderBase::processAll(const ProcessArgs& args) {
 	outputs[OUT_OUTPUT].setChannels(_channels);
-	lights[COM_LIGHT].value = connected();
+	lights[COM_LIGHT].value = expanderConnected();
 }
 
 void TestExpanderBase::processChannel(const ProcessArgs& args, int c) {
-	if (connected()) {
+	if (expanderConnected()) {
 		toExpander()->sample[c] = inputs[IN_INPUT].getPolyVoltage(c);
 		outputs[OUT_OUTPUT].setVoltage(fromExpander()->sample[c], c);
 	}
@@ -58,11 +58,11 @@ Model* modelTestExpanderBase = createModel<TestExpanderBase, TestExpanderBaseWid
 
 void TestExpanderExtension::processAll(const ProcessArgs& args) {
 	outputs[OUT_OUTPUT].setChannels(_channels);
-	lights[COM_LIGHT].value = connected();
+	lights[COM_LIGHT].value = baseConnected();
 }
 
 void TestExpanderExtension::processChannel(const ProcessArgs& args, int c) {
-	if (connected()) {
+	if (baseConnected()) {
 		float sample = fromBase()->sample[c];
 		toBase()->sample[c] = -sample;
 		outputs[OUT_OUTPUT].setVoltage(sample, c);

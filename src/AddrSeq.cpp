@@ -1,61 +1,18 @@
 
 #include "AddrSeq.hpp"
 
-#define RANGE_OFFSET "range_offset"
-#define RANGE_SCALE "range_scale"
-
-float AddrSeq::OutputParamQuantity::getDisplayValue() {
-	float v = getValue();
-	if (!module) {
-		return v;
-	}
-
-	AddrSeq* m = dynamic_cast<AddrSeq*>(module);
-	v += m->_rangeOffset;
-	v *= m->_rangeScale;
-	return v;
-}
-
-void AddrSeq::OutputParamQuantity::setDisplayValue(float v) {
-	if (!module) {
-		return;
-	}
-
-	AddrSeq* m = dynamic_cast<AddrSeq*>(module);
-	v /= m->_rangeScale;
-	v -= m->_rangeOffset;
-	setValue(v);
-}
-
-json_t* AddrSeq::dataToJson() {
-	json_t* root = AddressableSequenceModule::dataToJson();
-	json_object_set_new(root, RANGE_OFFSET, json_real(_rangeOffset));
-	json_object_set_new(root, RANGE_SCALE, json_real(_rangeScale));
-	return root;
-}
-
-void AddrSeq::dataFromJson(json_t* root) {
-	AddressableSequenceModule::dataFromJson(root);
-
-	json_t* ro = json_object_get(root, RANGE_OFFSET);
-	if (ro) {
-		_rangeOffset = json_real_value(ro);
-	}
-
-	json_t* rs = json_object_get(root, RANGE_SCALE);
-	if (rs) {
-		_rangeScale = json_real_value(rs);
-	}
+void AddrSeq::processAlways(const ProcessArgs& args) {
+	std::fill(_lightSums, _lightSums + 8, 0.0f);
 }
 
 void AddrSeq::processChannel(const ProcessArgs& args, int c) {
 	int step = nextStep(
 		c,
-		inputs[RESET_INPUT],
+		&inputs[RESET_INPUT],
 		inputs[CLOCK_INPUT],
-		params[STEPS_PARAM],
+		&params[STEPS_PARAM],
 		params[DIRECTION_PARAM],
-		params[SELECT_PARAM],
+		&params[SELECT_PARAM],
 		inputs[SELECT_INPUT]
 	);
 
@@ -64,10 +21,15 @@ void AddrSeq::processChannel(const ProcessArgs& args, int c) {
 	out *= _rangeScale;
 	outputs[OUT_OUTPUT].setChannels(_channels);
 	outputs[OUT_OUTPUT].setVoltage(out, c);
-	if (c == 0) {
-		for (int i = 0; i < 8; ++i) {
-			lights[OUT1_LIGHT + i].value = step == i;
-		}
+
+	for (int i = 0; i < 8; ++i) {
+		_lightSums[i] += step == i;
+	}
+}
+
+void AddrSeq::postProcessAlways(const ProcessArgs& args) {
+	for (int i = 0; i < 8; ++i) {
+		lights[OUT1_LIGHT + i].value = _lightSums[i] / (float)_channels;
 	}
 }
 
