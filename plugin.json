@@ -678,6 +678,16 @@
       ]
     },
     {
+      "slug": "Bogaudio-Inv",
+      "name": "INV",
+      "description": "Dual signal inverter",
+      "tags": [
+        "Logic",
+        "Dual",
+        "Polyphonic"
+      ]
+    },
+    {
       "slug": "Bogaudio-Manual",
       "name": "MANUAL",
       "description": "Button controlled gates / triggers",

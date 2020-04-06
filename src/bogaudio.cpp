@@ -30,6 +30,7 @@
 #include "FMOp.hpp"
 #include "FlipFlop.hpp"
 #include "Follow.hpp"
+#include "Inv.hpp"
 #include "Lag.hpp"
 #include "LFO.hpp"
 #include "LLFO.hpp"
@@ -179,6 +180,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelCmp);
 	p->addModel(modelCVD);
 	p->addModel(modelFlipFlop);
+	p->addModel(modelInv);
 	p->addModel(modelManual);
 	p->addModel(modelMult);
 	p->addModel(modelOffset);
