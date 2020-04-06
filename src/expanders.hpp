@@ -38,7 +38,7 @@ struct ExpandableModule : BASE {
 
 	MSG* toExpander() {
 		assert(expanderConnected());
-		MSG* m = (MSG*)BGModule::rightExpander.module->BGModule::leftExpander.producerMessage;
+		MSG* m = (MSG*)BGModule::rightExpander.module->leftExpander.producerMessage;
 		assert(m);
 		m->channels = BGModule::_channels;
 		return m;
