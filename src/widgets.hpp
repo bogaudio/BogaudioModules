@@ -132,9 +132,11 @@ struct InvertingIndicatorButton : ParamWidget {
 	widget::FramebufferWidget* fb;
 	CircularShadow* shadow;
 	IIBWidget* w;
+	std::function<bool()> clickToInvertCB;
 
 	InvertingIndicatorButton(int dim);
 
+	inline void setClickToInvertCallback(std::function<bool()> fn) { clickToInvertCB = fn; }
 	void reset() override;
 	void randomize() override;
 	void onHover(const event::Hover& e) override;

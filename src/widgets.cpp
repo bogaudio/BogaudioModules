@@ -393,7 +393,7 @@ void InvertingIndicatorButton::onHover(const event::Hover& e) {
 
 void InvertingIndicatorButton::onButton(const event::Button& e) {
 	ParamWidget::onButton(e);
-	if (!paramQuantity || !(e.action == GLFW_PRESS && (e.mods & RACK_MOD_MASK) == 0)) {
+	if (!paramQuantity || !(e.action == GLFW_PRESS && (e.mods & RACK_MOD_MASK) == 0) || e.button == GLFW_MOUSE_BUTTON_RIGHT) {
 		return;
 	}
 
@@ -404,8 +404,11 @@ void InvertingIndicatorButton::onButton(const event::Button& e) {
 	else if (value < 1.0f) {
 		paramQuantity->setValue(1.0f);
 	}
-	else {
+	else if (!clickToInvertCB || clickToInvertCB()) {
 		paramQuantity->setValue(-1.0f);
+	}
+	else {
+		paramQuantity->setValue(0.0f);
 	}
 }
 

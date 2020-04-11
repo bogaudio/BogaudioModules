@@ -70,3 +70,20 @@ void KnobMatrixModule::dataFromJson(json_t* root) {
 		_indicatorKnobs = json_is_true(k);
 	}
 }
+
+
+#define CLICK_TO_INVERT "click_to_invert"
+
+json_t* SwitchMatrixModule::dataToJson() {
+	json_t* root = MatrixBaseModule::dataToJson();
+	json_object_set_new(root, CLICK_TO_INVERT, json_boolean(_clickToInvert));
+	return root;
+}
+
+void SwitchMatrixModule::dataFromJson(json_t* root) {
+	MatrixBaseModule::dataFromJson(root);
+	json_t* c = json_object_get(root, CLICK_TO_INVERT);
+	if (c) {
+		_clickToInvert = json_is_true(c);
+	}
+}

@@ -7,7 +7,7 @@ extern Model* modelSwitch1616;
 
 namespace bogaudio {
 
-struct Switch1616 : MatrixModule {
+struct Switch1616 : SwitchMatrixModule {
 	enum ParamsIds {
 		MIX_1_1_PARAM,
 		MIX_1_2_PARAM,
@@ -308,7 +308,7 @@ struct Switch1616 : MatrixModule {
 		NUM_OUTPUTS
 	};
 
-	Switch1616() : MatrixModule(16, MIX_1_1_PARAM, IN1_INPUT, OUT1_OUTPUT) {
+	Switch1616() : SwitchMatrixModule(16, MIX_1_1_PARAM, IN1_INPUT, OUT1_OUTPUT) {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 
 		configParam(MIX_1_1_PARAM, -1.0f, 1.0f, 0.0f, "Mix 1A", "%", 0.0f, 100.0f);

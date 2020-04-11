@@ -80,6 +80,7 @@ struct KnobMatrixModule : MatrixModule {
 
 struct KnobMatrixModuleWidget : MatrixBaseModuleWidget {
 	std::vector<IndicatorKnob19*> _knobs;
+
 	void createKnob(math::Vec& position, KnobMatrixModule* module, int id) {
 		IndicatorKnob19* knob = dynamic_cast<IndicatorKnob19*>(createParam<IndicatorKnob19>(position, module, id));
 		if (module) {
@@ -103,6 +104,38 @@ struct KnobMatrixModuleWidget : MatrixBaseModuleWidget {
 			"Indicator knobs",
 			[m]() { return m->_indicatorKnobs; },
 			[m, this]() { m->_indicatorKnobs = !m->_indicatorKnobs; this->redrawKnobs(); }
+		));
+	}
+};
+
+struct SwitchMatrixModule : MatrixModule {
+	bool _clickToInvert = true;
+
+	SwitchMatrixModule(int n, int firstParamID, int firstInputID, int firstOutputID)
+	: MatrixModule(n, firstParamID, firstInputID, firstOutputID)
+	{}
+
+	json_t* dataToJson() override;
+	void dataFromJson(json_t* root) override;
+};
+
+struct SwitchMatrixModuleWidget : MatrixBaseModuleWidget {
+	template<class W> void createSwitch(math::Vec& position, SwitchMatrixModule* module, int id) {
+		auto s = dynamic_cast<W*>(createParam<W>(position, module, id));
+		if (module) {
+			s->setClickToInvertCallback([module]() { return module->_clickToInvert; });
+		}
+		addParam(s);
+	}
+
+	void appendContextMenu(Menu* menu) override {
+		SwitchMatrixModule* m = dynamic_cast<SwitchMatrixModule*>(module);
+		assert(m);
+		MatrixBaseModuleWidget::appendContextMenu(menu);
+		menu->addChild(new OptionMenuItem(
+			"Click to invert",
+			[m]() { return m->_clickToInvert; },
+			[m]() { m->_clickToInvert = !m->_clickToInvert; }
 		));
 	}
 };
