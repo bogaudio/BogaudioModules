@@ -94,7 +94,7 @@ public:
 	static PgmrRegistry& registry();
 };
 
-struct Pgmr : ExpandableModule<PgmrExpanderMessage, PgmrX, OutputRangeAddressableSequenceModule>, PgmrBase {
+struct Pgmr : ExpandableModule<PgmrExpanderMessage, OutputRangeAddressableSequenceModule>, PgmrBase {
 	enum ParamsIds {
 		DIRECTION_PARAM,
 		SELECT_ON_CLOCK_PARAM,
@@ -154,7 +154,7 @@ struct Pgmr : ExpandableModule<PgmrExpanderMessage, PgmrX, OutputRangeAddressabl
 
 	float _sampleTime = 0.001f;
 	bool _selectTriggers = false;
-	std::mutex _stepsLock;
+	SpinLock _stepsLock;
 	std::vector<PgmrStep*> _steps;
 	int _lastSteps[maxChannels] {};
 	rack::dsp::PulseGenerator _allPulseGens[maxChannels];
@@ -190,6 +190,8 @@ struct Pgmr : ExpandableModule<PgmrExpanderMessage, PgmrX, OutputRangeAddressabl
 		_localSteps[1] = new PgmrStep(params[CVA2_PARAM], params[CVB2_PARAM], params[CVC2_PARAM], params[CVD2_PARAM], lights[SELECT2_LIGHT], params[SELECT2_PARAM], inputs[SELECT2_INPUT], outputs[SELECT2_OUTPUT]);
 		_localSteps[2] = new PgmrStep(params[CVA3_PARAM], params[CVB3_PARAM], params[CVC3_PARAM], params[CVD3_PARAM], lights[SELECT3_LIGHT], params[SELECT3_PARAM], inputs[SELECT3_INPUT], outputs[SELECT3_OUTPUT]);
 		_localSteps[3] = new PgmrStep(params[CVA4_PARAM], params[CVB4_PARAM], params[CVC4_PARAM], params[CVD4_PARAM], lights[SELECT4_LIGHT], params[SELECT4_PARAM], inputs[SELECT4_INPUT], outputs[SELECT4_OUTPUT]);
+
+		setExpanderModel(modelPgmrX);
 		_id = PgmrRegistry::registry().registerBase(*this);
 	}
 	virtual ~Pgmr() {
@@ -206,7 +208,7 @@ struct Pgmr : ExpandableModule<PgmrExpanderMessage, PgmrX, OutputRangeAddressabl
 	void setSteps(std::vector<PgmrStep*>& steps);
 };
 
-struct PgmrX : ExpanderModule<PgmrExpanderMessage, PgmrBase, ExpandableModule<PgmrExpanderMessage, PgmrX, BGModule>>, PgmrBase {
+struct PgmrX : ExpanderModule<PgmrExpanderMessage, ExpandableModule<PgmrExpanderMessage, BGModule>>, PgmrBase {
 	enum ParamsIds {
 		CVA1_PARAM,
 		CVB1_PARAM,
@@ -288,10 +290,15 @@ struct PgmrX : ExpanderModule<PgmrExpanderMessage, PgmrBase, ExpandableModule<Pg
 		configParam<OutputParamQuantity>(CVC4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4C", " V");
 		configParam<OutputParamQuantity>(CVD4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4D", " V");
 		configParam<OutputParamQuantity>(SELECT4_PARAM, 0.0f, 1.0f, 0.0f, "Select 4");
+
 		_localSteps[0] = new PgmrStep(params[CVA1_PARAM], params[CVB1_PARAM], params[CVC1_PARAM], params[CVD1_PARAM], lights[SELECT1_LIGHT], params[SELECT1_PARAM], inputs[SELECT1_INPUT], outputs[SELECT1_OUTPUT]);
 		_localSteps[1] = new PgmrStep(params[CVA2_PARAM], params[CVB2_PARAM], params[CVC2_PARAM], params[CVD2_PARAM], lights[SELECT2_LIGHT], params[SELECT2_PARAM], inputs[SELECT2_INPUT], outputs[SELECT2_OUTPUT]);
 		_localSteps[2] = new PgmrStep(params[CVA3_PARAM], params[CVB3_PARAM], params[CVC3_PARAM], params[CVD3_PARAM], lights[SELECT3_LIGHT], params[SELECT3_PARAM], inputs[SELECT3_INPUT], outputs[SELECT3_OUTPUT]);
 		_localSteps[3] = new PgmrStep(params[CVA4_PARAM], params[CVB4_PARAM], params[CVC4_PARAM], params[CVD4_PARAM], lights[SELECT4_LIGHT], params[SELECT4_PARAM], inputs[SELECT4_INPUT], outputs[SELECT4_OUTPUT]);
+
+		setBaseModel(modelPgmr);
+		setChainableModel(modelPgmrX);
+		setExpanderModel(modelPgmrX);
 	}
 	virtual ~PgmrX() {
 		PgmrRegistry::registry().deregisterExpander(_baseID, _position);

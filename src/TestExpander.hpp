@@ -14,7 +14,7 @@ struct TestExpanderMessage : ExpanderMessage {
 
 struct TestExpanderExtension;
 
-struct TestExpanderBase : ExpandableModule<TestExpanderMessage, TestExpanderExtension, BGModule> {
+struct TestExpanderBase : ExpandableModule<TestExpanderMessage, BGModule> {
 	enum ParamsIds {
 		NUM_PARAMS
 	};
@@ -36,6 +36,7 @@ struct TestExpanderBase : ExpandableModule<TestExpanderMessage, TestExpanderExte
 
 	TestExpanderBase() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		setExpanderModel(modelTestExpanderExtension);
 	}
 
 	int channels() override;
@@ -43,7 +44,7 @@ struct TestExpanderBase : ExpandableModule<TestExpanderMessage, TestExpanderExte
 	void processChannel(const ProcessArgs& args, int c) override;
 };
 
-struct TestExpanderExtension : ExpanderModule<TestExpanderMessage, TestExpanderBase, BGModule> {
+struct TestExpanderExtension : ExpanderModule<TestExpanderMessage, BGModule> {
 	enum ParamsIds {
 		NUM_PARAMS
 	};
@@ -64,6 +65,7 @@ struct TestExpanderExtension : ExpanderModule<TestExpanderMessage, TestExpanderB
 
 	TestExpanderExtension() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+		setBaseModel(modelTestExpanderBase);
 	}
 
 	void processAll(const ProcessArgs& args) override;

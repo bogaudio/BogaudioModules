@@ -80,7 +80,7 @@ PgmrRegistry& PgmrRegistry::registry() {
 
 
 void Pgmr::reset() {
-	std::lock_guard<std::mutex> lock(_stepsLock);
+	std::lock_guard<SpinLock> lock(_stepsLock);
 
 	for (int c = 0; c < maxChannels; ++c) {
 		_lastSteps[c] = -1;
@@ -124,7 +124,7 @@ void Pgmr::processAlways(const ProcessArgs& args) {
 }
 
 void Pgmr::processChannel(const ProcessArgs& args, int c) {
-	std::lock_guard<std::mutex> lock(_stepsLock);
+	std::lock_guard<SpinLock> lock(_stepsLock);
 	int steps = _steps.size();
 	if (c == 0) {
 		for (int i = 0, n = _steps.size(); i < n; ++i) {
@@ -200,7 +200,7 @@ void Pgmr::processChannel(const ProcessArgs& args, int c) {
 }
 
 void Pgmr::setSteps(std::vector<PgmrStep*>& steps) {
-	std::lock_guard<std::mutex> lock(_stepsLock);
+	std::lock_guard<SpinLock> lock(_stepsLock);
 	_steps = steps;
 }
 
@@ -342,7 +342,7 @@ struct PgmrWidget : AddressableSequenceBaseModuleWidget {
 		mi->addItem(RangeOptionMenuItem(m, "+/-1V", 0.0f, 1.0f));
 		OptionsMenuItem::addToMenu(mi, menu);
 
-		OptionsMenuItem* so = new OptionsMenuItem("Step-selected output");
+		OptionsMenuItem* so = new OptionsMenuItem("Output on selected step");
 		so->addItem(OptionMenuItem("Gate", [m]() { return !m->_selectTriggers; }, [m]() { m->_selectTriggers = false; }));
 		so->addItem(OptionMenuItem("Trigger", [m]() { return m->_selectTriggers; }, [m]() { m->_selectTriggers = true; }));
 		OptionsMenuItem::addToMenu(so, menu);

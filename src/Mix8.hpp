@@ -15,7 +15,7 @@ struct Mix8x;
 
 typedef MixerExpanderMessage<8> Mix8ExpanderMessage;
 
-struct Mix8 : ExpandableModule<Mix8ExpanderMessage, Mix8x, BGModule> {
+struct Mix8 : ExpandableModule<Mix8ExpanderMessage, BGModule> {
 	enum ParamsIds {
 		LEVEL1_PARAM,
 		MUTE1_PARAM,
@@ -130,8 +130,10 @@ struct Mix8 : ExpandableModule<Mix8ExpanderMessage, Mix8x, BGModule> {
 		_channels[5] = new MixerChannel(params[LEVEL6_PARAM], params[MUTE6_PARAM], inputs[CV6_INPUT]);
 		_channels[6] = new MixerChannel(params[LEVEL7_PARAM], params[MUTE7_PARAM], inputs[CV7_INPUT]);
 		_channels[7] = new MixerChannel(params[LEVEL8_PARAM], params[MUTE8_PARAM], inputs[CV8_INPUT]);
+
 		sampleRateChange();
 		_rms.setSensitivity(0.05f);
+		setExpanderModel(modelMix8x);
 	}
 	virtual ~Mix8() {
 		for (int i = 0; i < 8; ++i) {
@@ -145,7 +147,7 @@ struct Mix8 : ExpandableModule<Mix8ExpanderMessage, Mix8x, BGModule> {
 	void processAll(const ProcessArgs& args) override;
 };
 
-struct Mix8x : ExpanderModule<Mix8ExpanderMessage, Mix8, BGModule> {
+struct Mix8x : ExpanderModule<Mix8ExpanderMessage, BGModule> {
 	enum ParamsIds {
 		LOW1_PARAM,
 		MID1_PARAM,
@@ -313,6 +315,8 @@ struct Mix8x : ExpanderModule<Mix8ExpanderMessage, Mix8, BGModule> {
 		_channels[5] = new MixerExpanderChannel(params[LOW6_PARAM], params[MID6_PARAM], params[HIGH6_PARAM], params[A6_PARAM], params[B6_PARAM], params[PRE_A6_PARAM], params[PRE_B6_PARAM], inputs[A6_INPUT], inputs[B6_INPUT]);
 		_channels[6] = new MixerExpanderChannel(params[LOW7_PARAM], params[MID7_PARAM], params[HIGH7_PARAM], params[A7_PARAM], params[B7_PARAM], params[PRE_A7_PARAM], params[PRE_B7_PARAM], inputs[A7_INPUT], inputs[B7_INPUT]);
 		_channels[7] = new MixerExpanderChannel(params[LOW8_PARAM], params[MID8_PARAM], params[HIGH8_PARAM], params[A8_PARAM], params[B8_PARAM], params[PRE_A8_PARAM], params[PRE_B8_PARAM], inputs[A8_INPUT], inputs[B8_INPUT]);
+
+		setBaseModel(modelMix8);
 	}
 	virtual ~Mix8x() {
 		for (int i = 0; i < 8; ++i) {

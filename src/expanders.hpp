@@ -15,8 +15,9 @@ struct ExpanderMessage {
 	virtual ~ExpanderMessage() {}
 };
 
-template<class MSG, class EM, class BASE>
+template<class MSG, class BASE>
 struct ExpandableModule : BASE {
+	Model* _expanderModel = NULL;
 	MSG _messages[2] {};
 	bool _wasConnected = false;
 
@@ -28,27 +29,24 @@ struct ExpandableModule : BASE {
 		BGModule::rightExpander.consumerMessage = &_messages[1];
 	}
 
+	void setExpanderModel(Model* m) {
+		_expanderModel = m;
+	}
+
 	bool expanderConnected() {
-		bool connected = BGModule::rightExpander.module && dynamic_cast<EM*>(BGModule::rightExpander.module);
+		bool connected = BGModule::rightExpander.module && _expanderModel && BGModule::rightExpander.module->model == _expanderModel;
 		if (!connected && _wasConnected) {
 			_messages[1] = _messages[0] = MSG();
 		}
 		return _wasConnected = connected;
 	}
 
-	MSG* toExpander() {
-		assert(expanderConnected());
-		MSG* m = (MSG*)BGModule::rightExpander.module->leftExpander.producerMessage;
-		assert(m);
-		m->channels = BGModule::_channels;
-		return m;
+	inline MSG* toExpander() {
+		return (MSG*)BGModule::rightExpander.module->leftExpander.producerMessage;
 	}
 
-	MSG* fromExpander() {
-		assert(expanderConnected());
-		MSG* m = (MSG*)BGModule::rightExpander.consumerMessage;
-		assert(m);
-		return m;
+	inline MSG* fromExpander() {
+		return (MSG*)BGModule::rightExpander.consumerMessage;
 	}
 
 	void process(const BGModule::ProcessArgs& args) override {
@@ -60,8 +58,10 @@ struct ExpandableModule : BASE {
 };
 
 // An expander must be to the right of the expanded module to work.
-template<class MSG, class BM, class BASE>
+template<class MSG, class BASE>
 struct ExpanderModule : BASE {
+	Model* _baseModel = NULL;
+	Model* _chainableModel = NULL;
 	MSG _messages[2] {};
 	bool _wasConnected = false;
 
@@ -73,26 +73,28 @@ struct ExpanderModule : BASE {
 		BGModule::leftExpander.consumerMessage = &_messages[1];
 	}
 
+	void setBaseModel(Model* m) {
+		_baseModel = m;
+	}
+
+	void setChainableModel(Model* m) {
+		_chainableModel = m;
+	}
+
 	bool baseConnected() {
-		bool connected = BGModule::leftExpander.module && dynamic_cast<BM*>(BGModule::leftExpander.module);
+		bool connected = BGModule::leftExpander.module && ((_baseModel && BGModule::leftExpander.module->model == _baseModel) || (_chainableModel && BGModule::leftExpander.module->model == _chainableModel));
 		if (!connected && _wasConnected) {
 			_messages[1] = _messages[0] = MSG();
 		}
 		return _wasConnected = connected;
 	}
 
-	MSG* fromBase() {
-		assert(baseConnected());
-		MSG* m = (MSG*)BGModule::leftExpander.consumerMessage;
-		assert(m);
-		return m;
+	inline MSG* fromBase() {
+		return (MSG*)BGModule::leftExpander.consumerMessage;
 	}
 
-	MSG* toBase() {
-		assert(baseConnected());
-		MSG* m = (MSG*)BGModule::leftExpander.module->rightExpander.producerMessage;
-		assert(m);
-		return m;
+	inline MSG* toBase() {
+		return (MSG*)BGModule::leftExpander.module->rightExpander.producerMessage;
 	}
 
 	int channels() override final {
