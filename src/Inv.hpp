@@ -29,13 +29,21 @@ struct Inv : BGModule {
 		NUM_OUTPUTS
 	};
 
+	enum LightsIds {
+		LOW1_LIGHT,
+		HIGH1_LIGHT,
+		LOW2_LIGHT,
+		HIGH2_LIGHT,
+		NUM_LIGHTS
+	};
+
 	bool _saveLatchedToPatch = false;
 	Trigger _trigger[2][maxChannels];
 	bool _latch[2] {};
 	bool _latchedHigh[2][maxChannels] {{},{}};
 
 	Inv() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(GATE1_PARAM, 0.0f, 1.0f, 0.0f, "Channel 1 gate");
 		configParam(LATCH1_PARAM, 0.0f, 1.0f, 0.0f, "Channel 1 latch");
 		configParam(GATE2_PARAM, 0.0f, 1.0f, 0.0f, "Channel 2 gate");

@@ -72,7 +72,7 @@ void bogaudio::Switch::processChannel(const ProcessArgs& args, int c) {
 		_latchedHigh[c] = false;
 	}
 
-	if (_latchedHigh[c] || _trigger[c].isHigh()) {
+	if (_latchedHigh[c] || (!_latch && _trigger[c].isHigh())) {
 		++_high1LightSum;
 		++_high2LightSum;
 
@@ -85,10 +85,10 @@ void bogaudio::Switch::processChannel(const ProcessArgs& args, int c) {
 		}
 		else {
 			outputs[OUT1_OUTPUT].setChannels(_channels);
-			outputs[OUT1_OUTPUT].setVoltage(inputs[HIGH1_INPUT].getVoltage(c), c);
+			outputs[OUT1_OUTPUT].setVoltage(inputs[HIGH1_INPUT].getPolyVoltage(c), c);
 
 			outputs[OUT2_OUTPUT].setChannels(_channels);
-			outputs[OUT2_OUTPUT].setVoltage(inputs[HIGH2_INPUT].getVoltage(c), c);
+			outputs[OUT2_OUTPUT].setVoltage(inputs[HIGH2_INPUT].getPolyVoltage(c), c);
 		}
 	}
 	else {
@@ -104,10 +104,10 @@ void bogaudio::Switch::processChannel(const ProcessArgs& args, int c) {
 		}
 		else {
 			outputs[OUT1_OUTPUT].setChannels(_channels);
-			outputs[OUT1_OUTPUT].setVoltage(inputs[LOW1_INPUT].getVoltage(c), c);
+			outputs[OUT1_OUTPUT].setVoltage(inputs[LOW1_INPUT].getPolyVoltage(c), c);
 
 			outputs[OUT2_OUTPUT].setChannels(_channels);
-			outputs[OUT2_OUTPUT].setVoltage(inputs[LOW2_INPUT].getVoltage(c), c);
+			outputs[OUT2_OUTPUT].setVoltage(inputs[LOW2_INPUT].getPolyVoltage(c), c);
 		}
 	}
 }

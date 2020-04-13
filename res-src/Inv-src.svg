@@ -48,6 +48,10 @@
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none" />
       </g>
     </symbol>
+
+    <symbol id="light" viewBox="0 0 6.4px 6.4px">
+      <rect width="6.4" height="6.4" fill="#0f0" />
+    </symbol>
   </defs>
 
   <rect width="100%" height="100%" fill="#ddd" />
@@ -79,7 +83,9 @@
       <rect width="34" height="10" fill="#bbb" transform="translate(0 0)" />
       <rect width="34" height="39" rx="5" fill="#bbb" />
       <use id="OUT1_OUTPUT" xlink:href="#output" transform="translate(5 3)" />
-      <text font-size="5pt" letter-spacing="1px" transform="translate(9 35)">OUT</text>
+      <text font-size="5pt" letter-spacing="1px" transform="translate(14 35)">OUT</text>
+      <use id="LOW1_LIGHT" xlink:href="#light" transform="translate(5 29.3)" />
+      <use id="HIGH1_LIGHT" xlink:href="#light" transform="translate(5 29.3)" />
     </g>
   </g>
 
@@ -99,7 +105,9 @@
       <rect width="34" height="10" fill="#bbb" transform="translate(0 0)" />
       <rect width="34" height="39" rx="5" fill="#bbb" />
       <use id="OUT2_OUTPUT" xlink:href="#output" transform="translate(5 3)" />
-      <text font-size="5pt" letter-spacing="1px" transform="translate(9 35)">OUT</text>
+      <text font-size="5pt" letter-spacing="1px" transform="translate(14 35)">OUT</text>
+      <use id="LOW2_LIGHT" xlink:href="#light" transform="translate(5 29.3)" />
+      <use id="HIGH2_LIGHT" xlink:href="#light" transform="translate(5 29.3)" />
     </g>
   </g>
 </svg>
