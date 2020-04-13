@@ -12,6 +12,7 @@ struct AddressableSequenceModule : BGModule {
 	int _clockInputID = -1;
 	int _selectInputID = -1;
 	Trigger _clock[maxChannels];
+	NegativeTrigger _negativeClock[maxChannels];
 	Trigger _reset[maxChannels];
 	Trigger _selectTrigger[maxChannels];
 	bogaudio::dsp::Timer _timer[maxChannels];
@@ -19,6 +20,7 @@ struct AddressableSequenceModule : BGModule {
 	float _select[maxChannels] {};
 	bool _selectOnClock = false;
 	bool _triggeredSelect = false;
+	bool _reverseOnNegativeClock = false;
 
 	void setInputIDs(int clockInputID, int selectInputID) {
 		_polyInputID = clockInputID;
@@ -53,6 +55,8 @@ struct AddressableSequenceBaseModuleWidget : ModuleWidget {
 		p->addItem(OptionMenuItem("CLOCK input", [m]() { return m->_polyInputID == m->_clockInputID; }, [m]() { m->_polyInputID = m->_clockInputID; }));
 		p->addItem(OptionMenuItem("SELECT input", [m]() { return m->_polyInputID == m->_selectInputID; }, [m]() { m->_polyInputID = m->_selectInputID; }));
 		OptionsMenuItem::addToMenu(p, menu);
+
+		menu->addChild(new BoolOptionMenuItem("Reverse step on negative clock", [m]() { return &m->_reverseOnNegativeClock; }));
 	}
 };
 

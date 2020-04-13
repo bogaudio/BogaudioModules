@@ -4,12 +4,14 @@
 #define POLY_INPUT "poly_input"
 #define SELECT_ON_CLOCK "select_on_clock"
 #define TRIGGERED_SELECT "triggered_select"
+#define REVERSE_ON_NEGATIVE_CLOCK "reverse_on_negative_clock"
 
 void AddressableSequenceModule::reset() {
 	for (int i = 0; i < maxChannels; ++i) {
 		_step[i] = 0;
 		_select[i] = 0;
 		_clock[i].reset();
+		_negativeClock[i].reset();
 		_reset[i].reset();
 		_selectTrigger[i].reset();
 	}
@@ -27,6 +29,7 @@ json_t* AddressableSequenceModule::dataToJson() {
 	json_object_set_new(root, POLY_INPUT, json_integer(_polyInputID));
 	json_object_set_new(root, SELECT_ON_CLOCK, json_boolean(_selectOnClock));
 	json_object_set_new(root, TRIGGERED_SELECT, json_boolean(_triggeredSelect));
+	json_object_set_new(root, REVERSE_ON_NEGATIVE_CLOCK, json_boolean(_reverseOnNegativeClock));
 	return root;
 }
 
@@ -44,6 +47,11 @@ void AddressableSequenceModule::dataFromJson(json_t* root) {
 	json_t* t = json_object_get(root, TRIGGERED_SELECT);
 	if (t) {
 		_triggeredSelect = json_is_true(t);
+	}
+
+	json_t* r = json_object_get(root, REVERSE_ON_NEGATIVE_CLOCK);
+	if (r) {
+		_reverseOnNegativeClock = json_is_true(r);
 	}
 }
 
@@ -72,14 +80,16 @@ int AddressableSequenceModule::nextStep(
 		}
 	}
 	bool timer = _timer[c].next();
-	bool clock = _clock[c].process(clockInput.getPolyVoltage(c)) && !timer;
+	float clockVoltage = clockInput.getPolyVoltage(c);
+	bool clock = _clock[c].process(clockVoltage) && !timer;
+	bool negativeClock = _negativeClock[c].process(clockVoltage) && _reverseOnNegativeClock && !timer && !clock;
 
 	int steps = n;
 	if (stepsParam) {
 		steps = clamp(stepsParam->getValue(), 1.0f, (float)n);
 	}
 	int reverse = 1 - 2 * (directionParam.getValue() == 0.0f);
-	_step[c] = (_step[c] + reverse * clock) % steps;
+	_step[c] = (_step[c] + reverse * clock + -reverse * negativeClock) % steps;
 	_step[c] += (_step[c] < 0) * steps;
 	_step[c] -= _step[c] * reset;
 
