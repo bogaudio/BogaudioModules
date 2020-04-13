@@ -1,6 +1,10 @@
 
 #include "Inv.hpp"
 
+#define SAVE_LATCHED_TO_PATCH "save_latched_to_patch"
+#define LATCHED_STATE1 "latched_state1"
+#define LATCHED_STATE2 "latched_state2"
+
 void Inv::reset() {
 	for (int c = 0; c < maxChannels; ++c) {
 		_trigger[0][c].reset();
@@ -8,17 +12,73 @@ void Inv::reset() {
 	}
 }
 
-void Inv::processAll(const ProcessArgs& args) {
-	processDualChannel(0);
-	processDualChannel(1);
+json_t* Inv::dataToJson() {
+	json_t* root = json_object();
+	json_object_set_new(root, SAVE_LATCHED_TO_PATCH, json_boolean(_saveLatchedToPatch));
+	if (_saveLatchedToPatch) {
+		if (_latch[0]) {
+			json_t* a = json_array();
+			for (int c = 0; c < maxChannels; ++c) {
+				json_array_append_new(a, json_boolean(_latchedHigh[0][c]));
+			}
+			json_object_set_new(root, LATCHED_STATE1, a);
+		}
+
+		if (_latch[1]) {
+			json_t* a = json_array();
+			for (int c = 0; c < maxChannels; ++c) {
+				json_array_append_new(a, json_boolean(_latchedHigh[1][c]));
+			}
+			json_object_set_new(root, LATCHED_STATE2, a);
+		}
+	}
+	return root;
 }
 
-void Inv::processDualChannel(int i) {
+void Inv::dataFromJson(json_t* root) {
+	json_t* sl = json_object_get(root, SAVE_LATCHED_TO_PATCH);
+	if (sl) {
+		_saveLatchedToPatch = json_is_true(sl);
+		if (_saveLatchedToPatch) {
+			json_t* a1 = json_object_get(root, LATCHED_STATE1);
+			if (a1 && json_array_size(a1) == maxChannels) {
+				for (int c = 0; c < maxChannels; ++c) {
+					json_t* ls = json_array_get(a1, c);
+					if (ls && json_is_true(ls)) {
+						_latchedHigh[0][c] = true;
+					}
+				}
+			}
+
+			json_t* a2 = json_object_get(root, LATCHED_STATE2);
+			if (a2 && json_array_size(a2) == maxChannels) {
+				for (int c = 0; c < maxChannels; ++c) {
+					json_t* ls = json_array_get(a2, c);
+					if (ls && json_is_true(ls)) {
+						_latchedHigh[1][c] = true;
+					}
+				}
+			}
+		}
+	}
+}
+
+void Inv::modulate() {
+	_latch[0] = params[LATCH1_PARAM].getValue() > 0.5f;
+	_latch[1] = params[LATCH2_PARAM].getValue() > 0.5f;
+}
+
+void Inv::processAll(const ProcessArgs& args) {
+	processDual(0);
+	processDual(1);
+}
+
+void Inv::processDual(int i) {
 	int channels = inputs[IN1_INPUT + 2 * i].getChannels();
 	outputs[OUT1_OUTPUT + i].setChannels(channels);
 	for (int c = 0; c < channels; ++c) {
 		bool triggered = _trigger[i][c].process(params[GATE1_PARAM + 2 * i].getValue() + inputs[GATE1_INPUT + 2 * i].getPolyVoltage(c));
-		if (params[LATCH1_PARAM + 2 * i].getValue() > 0.5f) {
+		if (_latch[i]) {
 			if (triggered) {
 				_latchedHigh[i][c] = !_latchedHigh[i][c];
 			}
@@ -79,6 +139,13 @@ struct InvWidget : ModuleWidget {
 
 		addOutput(createOutput<Port24>(out1OutputPosition, module, Inv::OUT1_OUTPUT));
 		addOutput(createOutput<Port24>(out2OutputPosition, module, Inv::OUT2_OUTPUT));
+	}
+
+	void appendContextMenu(Menu* menu) override {
+		auto m = dynamic_cast<Inv*>(module);
+		assert(m);
+		menu->addChild(new MenuLabel());
+		menu->addChild(new BoolOptionMenuItem("Save latched state to patch", [m]() { return &m->_saveLatchedToPatch; }));
 	}
 };
 

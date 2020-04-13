@@ -29,7 +29,9 @@ struct Inv : BGModule {
 		NUM_OUTPUTS
 	};
 
+	bool _saveLatchedToPatch = false;
 	Trigger _trigger[2][maxChannels];
+	bool _latch[2] {};
 	bool _latchedHigh[2][maxChannels] {{},{}};
 
 	Inv() {
@@ -41,8 +43,11 @@ struct Inv : BGModule {
 	}
 
 	void reset() override;
+	json_t* dataToJson() override;
+	void dataFromJson(json_t* root) override;
+	void modulate() override;
 	void processAll(const ProcessArgs& args) override;
-	void processDualChannel(int i);
+	void processDual(int i);
 };
 
 } // namespace bogaudio

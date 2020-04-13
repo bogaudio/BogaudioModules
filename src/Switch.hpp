@@ -36,6 +36,7 @@ struct Switch : BGModule {
 		NUM_LIGHTS
 	};
 
+	bool _saveLatchedToPatch = false;
 	Trigger _trigger[maxChannels];
 	bool _latchedHigh[maxChannels] {};
 	bool _latch = false;
@@ -51,6 +52,8 @@ struct Switch : BGModule {
 	}
 
 	void reset() override;
+	json_t* dataToJson() override;
+	void dataFromJson(json_t* root) override;
 	int channels() override;
 	void channelsChanged(int before, int after) override;
 	void modulate() override;
