@@ -104,12 +104,17 @@ int AddressableSequenceModule::nextStep(
 		_select[c] -= _select[c] * reset;
 	}
 	else {
-		select += clamp(selectInput.getPolyVoltage(c), 0.0f, 9.99f) * 0.1f * (float)n;
+		select += clamp(selectInput.getPolyVoltage(c), -9.99f, 9.99f) * 0.1f * (float)n;
 		if (!_selectOnClock || clock) {
 			_select[c] = select;
 		}
 	}
-	return (_step[c] + (int)_select[c]) % n;
+
+	int s = (_step[c] + (int)_select[c]) % n;
+	if (s < 0) {
+		return n + s;
+	}
+	return s;
 }
 
 int AddressableSequenceModule::setStep(int c, int i, int n) {
