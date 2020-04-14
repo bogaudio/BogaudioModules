@@ -10,6 +10,10 @@ void PolyCon::processAll(const ProcessArgs& args) {
 	outputs[OUT_OUTPUT].setChannels(cn);
 	for (int c = 0; c < cn; ++c) {
 		outputs[OUT_OUTPUT].setVoltage(clamp(params[CHANNEL1_PARAM + c].getValue(), -1.0f, 1.0f) * 10.0f, c);
+		lights[CHANNEL1_LIGHT + c].value = 1.0f;
+	}
+	for (int c = cn; c < maxChannels; ++c) {
+		lights[CHANNEL1_LIGHT + c].value = 0.0f;
 	}
 }
 
