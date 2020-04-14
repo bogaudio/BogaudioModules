@@ -9,7 +9,10 @@ void PolyCon::processAll(const ProcessArgs& args) {
 
 	outputs[OUT_OUTPUT].setChannels(cn);
 	for (int c = 0; c < cn; ++c) {
-		outputs[OUT_OUTPUT].setVoltage(clamp(params[CHANNEL1_PARAM + c].getValue(), -1.0f, 1.0f) * 10.0f, c);
+		float out = clamp(params[CHANNEL1_PARAM + c].getValue(), -1.0f, 1.0f);
+		out += _rangeOffset;
+		out *= _rangeScale;
+		outputs[OUT_OUTPUT].setVoltage(out, c);
 		lights[CHANNEL1_LIGHT + c].value = 1.0f;
 	}
 	for (int c = cn; c < maxChannels; ++c) {
@@ -118,6 +121,11 @@ struct PolyConWidget : ModuleWidget {
 		addChild(createLight<TinyLight<GreenLight>>(channel14LightPosition, module, PolyCon::CHANNEL14_LIGHT));
 		addChild(createLight<TinyLight<GreenLight>>(channel15LightPosition, module, PolyCon::CHANNEL15_LIGHT));
 		addChild(createLight<TinyLight<GreenLight>>(channel16LightPosition, module, PolyCon::CHANNEL16_LIGHT));
+	}
+
+	void appendContextMenu(Menu* menu) override {
+		menu->addChild(new MenuLabel());
+		OutputRangeOptionMenuItem::addOutputRangeOptionsToMenu(module, menu);
 	}
 };
 

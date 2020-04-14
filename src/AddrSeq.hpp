@@ -54,14 +54,14 @@ struct AddrSeq : OutputRangeAddressableSequenceModule {
 		configParam(STEPS_PARAM, 1.0f, 8.0f, 8.0f, "Steps");
 		configParam(DIRECTION_PARAM, 0.0f, 1.0f, 1.0f, "Direction");
 		configParam(SELECT_PARAM, 0.0f, 7.0f, 0.0f, "Select step");
-		configParam<OutputParamQuantity>(OUT1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1", " V");
-		configParam<OutputParamQuantity>(OUT2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2", " V");
-		configParam<OutputParamQuantity>(OUT3_PARAM, -1.0f, 1.0f, 0.0f, "Step 3", " V");
-		configParam<OutputParamQuantity>(OUT4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4", " V");
-		configParam<OutputParamQuantity>(OUT5_PARAM, -1.0f, 1.0f, 0.0f, "Step 5", " V");
-		configParam<OutputParamQuantity>(OUT6_PARAM, -1.0f, 1.0f, 0.0f, "Step 6", " V");
-		configParam<OutputParamQuantity>(OUT7_PARAM, -1.0f, 1.0f, 0.0f, "Step 7", " V");
-		configParam<OutputParamQuantity>(OUT8_PARAM, -1.0f, 1.0f, 0.0f, "Step 8", " V");
+		configParam<OutputRangeParamQuantity>(OUT1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1", " V");
+		configParam<OutputRangeParamQuantity>(OUT2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2", " V");
+		configParam<OutputRangeParamQuantity>(OUT3_PARAM, -1.0f, 1.0f, 0.0f, "Step 3", " V");
+		configParam<OutputRangeParamQuantity>(OUT4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4", " V");
+		configParam<OutputRangeParamQuantity>(OUT5_PARAM, -1.0f, 1.0f, 0.0f, "Step 5", " V");
+		configParam<OutputRangeParamQuantity>(OUT6_PARAM, -1.0f, 1.0f, 0.0f, "Step 6", " V");
+		configParam<OutputRangeParamQuantity>(OUT7_PARAM, -1.0f, 1.0f, 0.0f, "Step 7", " V");
+		configParam<OutputRangeParamQuantity>(OUT8_PARAM, -1.0f, 1.0f, 0.0f, "Step 8", " V");
 		setInputIDs(CLOCK_INPUT, SELECT_INPUT);
 	}
 

@@ -317,63 +317,22 @@ struct PgmrWidget : AddressableSequenceBaseModuleWidget {
 		addChild(createLight<SmallLight<GreenLight>>(select4LightPosition, module, Pgmr::SELECT4_LIGHT));
 	}
 
-	struct RangeOptionMenuItem : OptionMenuItem {
-		RangeOptionMenuItem(Pgmr* module, const char* label, float offset, float scale)
-		: OptionMenuItem(
-			label,
-			[=]() { return module->_rangeOffset == offset && module->_rangeScale == scale; },
-			[=]() {
-				module->_rangeOffset = offset;
-				module->_rangeScale = scale;
-			}
-		)
-		{}
-	};
-
 	void appendContextMenu(Menu* menu) override {
 		AddressableSequenceBaseModuleWidget::appendContextMenu(menu);
 
 		auto m = dynamic_cast<Pgmr*>(module);
 		assert(m);
-		OptionsMenuItem* mi = new OptionsMenuItem("Range");
-		mi->addItem(RangeOptionMenuItem(m, "+/-10V", 0.0f, 10.0f));
-		mi->addItem(RangeOptionMenuItem(m, "+/-5V", 0.0f, 5.0f));
-		mi->addItem(RangeOptionMenuItem(m, "+/-3V", 0.0f, 3.0f));
-		mi->addItem(RangeOptionMenuItem(m, "+/-1V", 0.0f, 1.0f));
-		OptionsMenuItem::addToMenu(mi, menu);
-
 		OptionsMenuItem* so = new OptionsMenuItem("Output on selected step");
 		so->addItem(OptionMenuItem("Gate", [m]() { return !m->_selectTriggers; }, [m]() { m->_selectTriggers = false; }));
 		so->addItem(OptionMenuItem("Trigger", [m]() { return m->_selectTriggers; }, [m]() { m->_selectTriggers = true; }));
 		OptionsMenuItem::addToMenu(so, menu);
+
+		OutputRangeOptionMenuItem::addOutputRangeOptionsToMenu(module, menu);
 	}
 };
 
 Model* modelPgmr = createModel<Pgmr, PgmrWidget>("Bogaudio-Pgmr", "PGMR", "4-step programmer and sequencer", "Sequencer", "Polyphonic");
 
-
-float PgmrX::OutputParamQuantity::getDisplayValue() {
-	float v = getValue();
-	if (!module) {
-		return v;
-	}
-
-	auto m = dynamic_cast<PgmrX*>(module);
-	v += m->_rangeOffset;
-	v *= m->_rangeScale;
-	return v;
-}
-
-void PgmrX::OutputParamQuantity::setDisplayValue(float v) {
-	if (!module) {
-		return;
-	}
-
-	auto m = dynamic_cast<PgmrX*>(module);
-	v /= m->_rangeScale;
-	v -= m->_rangeOffset;
-	setValue(v);
-}
 
 void PgmrX::processAlways(const ProcessArgs& args) {
 	int position = 0;

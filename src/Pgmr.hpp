@@ -164,25 +164,25 @@ struct Pgmr : ExpandableModule<PgmrExpanderMessage, OutputRangeAddressableSequen
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(DIRECTION_PARAM, 0.0f, 1.0f, 1.0f, "Forward");
 		configParam(SELECT_ON_CLOCK_PARAM, 0.0f, 1.0f, 0.0f, "Select on clock");
-		configParam<OutputParamQuantity>(CVA1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1A", " V");
-		configParam<OutputParamQuantity>(CVB1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1B", " V");
-		configParam<OutputParamQuantity>(CVC1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1C", " V");
-		configParam<OutputParamQuantity>(CVD1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1D", " V");
+		configParam<OutputRangeParamQuantity>(CVA1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1A", " V");
+		configParam<OutputRangeParamQuantity>(CVB1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1B", " V");
+		configParam<OutputRangeParamQuantity>(CVC1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1C", " V");
+		configParam<OutputRangeParamQuantity>(CVD1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1D", " V");
 		configParam(SELECT1_PARAM, 0.0f, 1.0f, 0.0f, "Select 1");
-		configParam<OutputParamQuantity>(CVA2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2A", " V");
-		configParam<OutputParamQuantity>(CVB2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2B", " V");
-		configParam<OutputParamQuantity>(CVC2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2C", " V");
-		configParam<OutputParamQuantity>(CVD2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2D", " V");
+		configParam<OutputRangeParamQuantity>(CVA2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2A", " V");
+		configParam<OutputRangeParamQuantity>(CVB2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2B", " V");
+		configParam<OutputRangeParamQuantity>(CVC2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2C", " V");
+		configParam<OutputRangeParamQuantity>(CVD2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2D", " V");
 		configParam(SELECT2_PARAM, 0.0f, 1.0f, 0.0f, "Select 2");
-		configParam<OutputParamQuantity>(CVA3_PARAM, -1.0f, 1.0f, 0.0f, "Step 3A", " V");
-		configParam<OutputParamQuantity>(CVB3_PARAM, -1.0f, 1.0f, 0.0f, "Step 3B", " V");
-		configParam<OutputParamQuantity>(CVC3_PARAM, -1.0f, 1.0f, 0.0f, "Step 3C", " V");
-		configParam<OutputParamQuantity>(CVD3_PARAM, -1.0f, 1.0f, 0.0f, "Step 3D", " V");
+		configParam<OutputRangeParamQuantity>(CVA3_PARAM, -1.0f, 1.0f, 0.0f, "Step 3A", " V");
+		configParam<OutputRangeParamQuantity>(CVB3_PARAM, -1.0f, 1.0f, 0.0f, "Step 3B", " V");
+		configParam<OutputRangeParamQuantity>(CVC3_PARAM, -1.0f, 1.0f, 0.0f, "Step 3C", " V");
+		configParam<OutputRangeParamQuantity>(CVD3_PARAM, -1.0f, 1.0f, 0.0f, "Step 3D", " V");
 		configParam(SELECT3_PARAM, 0.0f, 1.0f, 0.0f, "Select 3");
-		configParam<OutputParamQuantity>(CVA4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4A", " V");
-		configParam<OutputParamQuantity>(CVB4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4B", " V");
-		configParam<OutputParamQuantity>(CVC4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4C", " V");
-		configParam<OutputParamQuantity>(CVD4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4D", " V");
+		configParam<OutputRangeParamQuantity>(CVA4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4A", " V");
+		configParam<OutputRangeParamQuantity>(CVB4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4B", " V");
+		configParam<OutputRangeParamQuantity>(CVC4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4C", " V");
+		configParam<OutputRangeParamQuantity>(CVD4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4D", " V");
 		configParam(SELECT4_PARAM, 0.0f, 1.0f, 0.0f, "Select 4");
 		setInputIDs(CLOCK_INPUT, SELECT_INPUT);
 
@@ -208,7 +208,7 @@ struct Pgmr : ExpandableModule<PgmrExpanderMessage, OutputRangeAddressableSequen
 	void setSteps(std::vector<PgmrStep*>& steps);
 };
 
-struct PgmrX : ExpanderModule<PgmrExpanderMessage, ExpandableModule<PgmrExpanderMessage, BGModule>>, PgmrBase {
+struct PgmrX : ExpanderModule<PgmrExpanderMessage, ExpandableModule<PgmrExpanderMessage, BGModule>>, PgmrBase, OutputRange {
 	enum ParamsIds {
 		CVA1_PARAM,
 		CVB1_PARAM,
@@ -257,39 +257,32 @@ struct PgmrX : ExpanderModule<PgmrExpanderMessage, ExpandableModule<PgmrExpander
 		NUM_LIGHTS
 	};
 
-	struct OutputParamQuantity : ParamQuantity {
-		float getDisplayValue() override;
-		void setDisplayValue(float v) override;
-	};
-
 	bool _registered = false;
 	int _baseID = -1;
 	int _position = -1;
-	float _rangeOffset = 0.0f;
-	float _rangeScale = 10.0f;
 
 	PgmrX() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam<OutputParamQuantity>(CVA1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1A", " V");
-		configParam<OutputParamQuantity>(CVB1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1B", " V");
-		configParam<OutputParamQuantity>(CVC1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1C", " V");
-		configParam<OutputParamQuantity>(CVD1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1D", " V");
+		configParam<OutputRangeParamQuantity>(CVA1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1A", " V");
+		configParam<OutputRangeParamQuantity>(CVB1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1B", " V");
+		configParam<OutputRangeParamQuantity>(CVC1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1C", " V");
+		configParam<OutputRangeParamQuantity>(CVD1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1D", " V");
 		configParam(SELECT1_PARAM, 0.0f, 1.0f, 0.0f, "Select 1");
-		configParam<OutputParamQuantity>(CVA2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2A", " V");
-		configParam<OutputParamQuantity>(CVB2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2B", " V");
-		configParam<OutputParamQuantity>(CVC2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2C", " V");
-		configParam<OutputParamQuantity>(CVD2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2D", " V");
+		configParam<OutputRangeParamQuantity>(CVA2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2A", " V");
+		configParam<OutputRangeParamQuantity>(CVB2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2B", " V");
+		configParam<OutputRangeParamQuantity>(CVC2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2C", " V");
+		configParam<OutputRangeParamQuantity>(CVD2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2D", " V");
 		configParam(SELECT2_PARAM, 0.0f, 1.0f, 0.0f, "Select 2");
-		configParam<OutputParamQuantity>(CVA3_PARAM, -1.0f, 1.0f, 0.0f, "Step 3A", " V");
-		configParam<OutputParamQuantity>(CVB3_PARAM, -1.0f, 1.0f, 0.0f, "Step 3B", " V");
-		configParam<OutputParamQuantity>(CVC3_PARAM, -1.0f, 1.0f, 0.0f, "Step 3C", " V");
-		configParam<OutputParamQuantity>(CVD3_PARAM, -1.0f, 1.0f, 0.0f, "Step 3D", " V");
+		configParam<OutputRangeParamQuantity>(CVA3_PARAM, -1.0f, 1.0f, 0.0f, "Step 3A", " V");
+		configParam<OutputRangeParamQuantity>(CVB3_PARAM, -1.0f, 1.0f, 0.0f, "Step 3B", " V");
+		configParam<OutputRangeParamQuantity>(CVC3_PARAM, -1.0f, 1.0f, 0.0f, "Step 3C", " V");
+		configParam<OutputRangeParamQuantity>(CVD3_PARAM, -1.0f, 1.0f, 0.0f, "Step 3D", " V");
 		configParam(SELECT3_PARAM, 0.0f, 1.0f, 0.0f, "Select 3");
-		configParam<OutputParamQuantity>(CVA4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4A", " V");
-		configParam<OutputParamQuantity>(CVB4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4B", " V");
-		configParam<OutputParamQuantity>(CVC4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4C", " V");
-		configParam<OutputParamQuantity>(CVD4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4D", " V");
-		configParam<OutputParamQuantity>(SELECT4_PARAM, 0.0f, 1.0f, 0.0f, "Select 4");
+		configParam<OutputRangeParamQuantity>(CVA4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4A", " V");
+		configParam<OutputRangeParamQuantity>(CVB4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4B", " V");
+		configParam<OutputRangeParamQuantity>(CVC4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4C", " V");
+		configParam<OutputRangeParamQuantity>(CVD4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4D", " V");
+		configParam<OutputRangeParamQuantity>(SELECT4_PARAM, 0.0f, 1.0f, 0.0f, "Select 4");
 
 		_localSteps[0] = new PgmrStep(params[CVA1_PARAM], params[CVB1_PARAM], params[CVC1_PARAM], params[CVD1_PARAM], lights[SELECT1_LIGHT], params[SELECT1_PARAM], inputs[SELECT1_INPUT], outputs[SELECT1_OUTPUT]);
 		_localSteps[1] = new PgmrStep(params[CVA2_PARAM], params[CVB2_PARAM], params[CVC2_PARAM], params[CVD2_PARAM], lights[SELECT2_LIGHT], params[SELECT2_PARAM], inputs[SELECT2_INPUT], outputs[SELECT2_OUTPUT]);

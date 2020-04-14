@@ -115,34 +115,9 @@ struct AddrSeqWidget : AddressableSequenceModuleWidget {
 		addChild(createLight<SmallLight<GreenLight>>(out8LightPosition, module, AddrSeq::OUT8_LIGHT));
 	}
 
-	struct RangeOptionMenuItem : OptionMenuItem {
-		RangeOptionMenuItem(AddrSeq* module, const char* label, float offset, float scale)
-		: OptionMenuItem(
-			label,
-			[=]() { return module->_rangeOffset == offset && module->_rangeScale == scale; },
-			[=]() {
-				module->_rangeOffset = offset;
-				module->_rangeScale = scale;
-			}
-		)
-		{}
-	};
-
 	void appendContextMenu(Menu* menu) override {
 		AddressableSequenceModuleWidget::appendContextMenu(menu);
-
-		AddrSeq* m = dynamic_cast<AddrSeq*>(module);
-		assert(m);
-		OptionsMenuItem* mi = new OptionsMenuItem("Range");
-		mi->addItem(RangeOptionMenuItem(m, "+/-10V", 0.0f, 10.0f));
-		mi->addItem(RangeOptionMenuItem(m, "+/-5V", 0.0f, 5.0f));
-		mi->addItem(RangeOptionMenuItem(m, "+/-3V", 0.0f, 3.0f));
-		mi->addItem(RangeOptionMenuItem(m, "+/-1V", 0.0f, 1.0f));
-		mi->addItem(RangeOptionMenuItem(m, "0V-10V", 1.0f, 5.0f));
-		mi->addItem(RangeOptionMenuItem(m, "0V-5V", 1.0f, 2.5f));
-		mi->addItem(RangeOptionMenuItem(m, "0V-3V", 1.0f, 1.5f));
-		mi->addItem(RangeOptionMenuItem(m, "0V-1V", 1.0f, 0.5f));
-		OptionsMenuItem::addToMenu(mi, menu);
+		OutputRangeOptionMenuItem::addOutputRangeOptionsToMenu(module, menu);
 	}
 };
 

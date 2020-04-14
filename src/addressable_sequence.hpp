@@ -1,6 +1,7 @@
 #pragma once
 
 #include "bogaudio.hpp"
+#include "output_range.hpp"
 #include "dsp/signal.hpp"
 
 using namespace rack;
@@ -71,17 +72,6 @@ struct AddressableSequenceModuleWidget : AddressableSequenceBaseModuleWidget {
 	}
 };
 
-struct OutputRangeAddressableSequenceModule : AddressableSequenceModule {
-	float _rangeOffset = 0.0f;
-	float _rangeScale = 10.0f;
-
-	struct OutputParamQuantity : ParamQuantity {
-		float getDisplayValue() override;
-		void setDisplayValue(float v) override;
-	};
-
-	json_t* dataToJson() override;
-	void dataFromJson(json_t* root) override;
-};
+typedef OutputRangeModule<AddressableSequenceModule> OutputRangeAddressableSequenceModule;
 
 } // namespace bogaudio
