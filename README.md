@@ -420,13 +420,12 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the 
 
 ![Mixers screenshot](doc/www/mixers4.png)
 
-A 3HP unity mixer, usable with audio or CV (e.g. to combine triggers).  Up to 8 inputs are summed to the output.  Saturation (soft clipping) limits the output to +/-12V.
+A 3HP unity mixer, usable with audio or CV (e.g. to combine triggers).  Up to 8 inputs are summed to the output.  The output is limited to +/-12V (with clipping modes as below).
 
-The context (right-click) menu has an option to average, rather than sum, the inputs.
-
-A second context menu option, "CV mode", disables the saturation, which allows for precise summing (or averaging) of CVs. In this case the output is hard-clipped at +/-12V.
-
-A final context menu option allows the input gains to be reduced by up to 12db.
+The context (right-click) menu has a few options:
+ - "Input gain" allows the input gain to be reduced up to -12dB.
+ - "Output clipping" sets the manner of output clipping: "Soft" applies saturation or soft clipping, which is better for audio, and which is the default; "Hard" simply clips the output at +/-12V.  "Hard" is better for CVs, as this mode will achieve precise summing of CVs; otherwise the saturator will slightly affect (reduce) the sums at all levels.
+ - "Average" causes the module to average, rather than sum, its inputs.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by the first/topmost input.
 
@@ -442,7 +441,9 @@ An 4x4 channel matrix mixer.  Each input can be routed with an independent level
 
 *Note that the matrix knobs are attenuvertors, and default to zero.*  That means there will be no output, regardless of the inputs, until some knobs are changed to non-zero values.
 
-Saturation (soft clipping) limits each output to +/-12V.  A context menu option allows the input gains to be reduced by up to 12db.
+Saturation (soft clipping) limits each output to +/-12V.  This can be changed to a hard clip at +/-12V on the context menu ("Output clipping") -- as described on UMIX, this is mode is better if you need to precisely sum CVs.
+
+Another context menu option allows the input gains to be reduced by up to 12db.
 
 The knobs visually indicate their values with green/orange colors.  This can be disabled on the context menu.
 
