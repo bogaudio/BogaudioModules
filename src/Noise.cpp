@@ -1,41 +1,26 @@
 
 #include "Noise.hpp"
 
-#define NOISE_CHANNELS "noise_channels"
-
-json_t* Noise::dataToJson() {
-	json_t* root = json_object();
-	json_object_set_new(root, NOISE_CHANNELS, json_integer(_noiseChannels));
-	return root;
-}
-
-void Noise::dataFromJson(json_t* root) {
-	json_t* nc = json_object_get(root, NOISE_CHANNELS);
-	if (nc) {
-		_noiseChannels = json_integer_value(nc);
-	}
-}
-
 void Noise::processAll(const ProcessArgs& args) {
-	for (int i = 0; i < _noiseChannels; ++i) {
+	for (int i = 0; i < _polyChannels; ++i) {
 		if (outputs[BLUE_OUTPUT].isConnected()) {
-			outputs[BLUE_OUTPUT].setChannels(_noiseChannels);
+			outputs[BLUE_OUTPUT].setChannels(_polyChannels);
 			outputs[BLUE_OUTPUT].setVoltage(clamp(_blue.next() * 20.0f, -10.0f, 10.f), i);
 		}
 		if (outputs[WHITE_OUTPUT].isConnected()) {
-			outputs[WHITE_OUTPUT].setChannels(_noiseChannels);
+			outputs[WHITE_OUTPUT].setChannels(_polyChannels);
 			outputs[WHITE_OUTPUT].setVoltage(clamp(_white.next() * 10.0f, -10.0f, 10.f), i);
 		}
 		if (outputs[PINK_OUTPUT].isConnected()) {
-			outputs[PINK_OUTPUT].setChannels(_noiseChannels);
+			outputs[PINK_OUTPUT].setChannels(_polyChannels);
 			outputs[PINK_OUTPUT].setVoltage(clamp(_pink.next() * 15.0f, -10.0f, 10.f), i);
 		}
 		if (outputs[RED_OUTPUT].isConnected()) {
-			outputs[RED_OUTPUT].setChannels(_noiseChannels);
+			outputs[RED_OUTPUT].setChannels(_polyChannels);
 			outputs[RED_OUTPUT].setVoltage(clamp(_red.next() * 20.0f, -10.0f, 10.f), i);
 		}
 		if (outputs[GAUSS_OUTPUT].isConnected()) {
-			outputs[GAUSS_OUTPUT].setChannels(_noiseChannels);
+			outputs[GAUSS_OUTPUT].setChannels(_polyChannels);
 			outputs[GAUSS_OUTPUT].setVoltage(clamp(_gauss.next(), -10.0f, 10.f), i);
 		}
 	}
@@ -89,39 +74,11 @@ struct NoiseWidget : ModuleWidget {
 		addOutput(createOutput<Port24>(absOutputPosition, module, Noise::ABS_OUTPUT));
 	}
 
-	struct ChannelsMenuItem : MenuItem {
-		Noise* _module;
-
-		ChannelsMenuItem(Noise* module, const char* label) : _module(module) {
-			this->text = label;
-		}
-
-		Menu* createChildMenu() override {
-			Menu* menu = new Menu;
-			Noise* m = _module;
-			menu->addChild(new OptionMenuItem("Monophonic", [m]() { return m->_noiseChannels == 1; }, [m]() { m->_noiseChannels = 1; }));
-			for (int i = 2; i <= BGModule::maxChannels; i++) {
-				char s[10];
-				snprintf(s, 10, "%d", i);
-				menu->addChild(new OptionMenuItem(s, [m, i]() { return m->_noiseChannels == i; }, [m, i]() { m->_noiseChannels = i; }));
-			}
-			return menu;
-		}
-
-		void step() override {
-			MenuItem::step();
-			char s[10];
-			snprintf(s, 10, "%d ▸", _module->_noiseChannels);
-			this->rightText = s;
-		}
-	};
-
 	void appendContextMenu(Menu* menu) override {
-		Noise* m = dynamic_cast<Noise*>(module);
+		auto m = dynamic_cast<Noise*>(module);
 		assert(m);
-
 		menu->addChild(new MenuLabel());
-		menu->addChild(new ChannelsMenuItem(m, "Polyphony channels"));
+		menu->addChild(new PolyChannelsMenuItem(m));
 	}
 };
 

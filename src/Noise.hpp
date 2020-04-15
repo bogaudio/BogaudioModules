@@ -2,6 +2,7 @@
 
 #include "bogaudio.hpp"
 #include "dsp/noise.hpp"
+#include "poly_channels.hpp"
 
 using namespace bogaudio::dsp;
 
@@ -9,7 +10,7 @@ extern Model* modelNoise;
 
 namespace bogaudio {
 
-struct Noise : BGModule {
+struct Noise : PolyChannelsModule {
 	enum ParamsIds {
 		NUM_PARAMS
 	};
@@ -29,7 +30,6 @@ struct Noise : BGModule {
 		NUM_OUTPUTS
 	};
 
-	int _noiseChannels = 1;
 	BlueNoiseGenerator _blue;
 	WhiteNoiseGenerator _white;
 	PinkNoiseGenerator _pink;
@@ -40,8 +40,6 @@ struct Noise : BGModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 	}
 
-	json_t* dataToJson() override;
-	void dataFromJson(json_t* root) override;
 	void processAll(const ProcessArgs& args) override;
 };
 

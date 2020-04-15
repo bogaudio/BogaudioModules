@@ -624,7 +624,16 @@
     },
     {
       "slug": "Bogaudio-PolyCon",
-      "name": "POLYCON",
+      "name": "POLYCON16",
+      "description": "Polyphonic per-channel constant voltages",
+      "tags": [
+        "Utility",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Bogaudio-PolyCon8",
+      "name": "POLYCON8",
       "description": "Polyphonic per-channel constant voltages",
       "tags": [
         "Utility",

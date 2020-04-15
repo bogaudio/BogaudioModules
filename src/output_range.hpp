@@ -18,7 +18,7 @@ struct OutputRange {
 
 template<class BASE>
 struct OutputRangeModule : BASE, OutputRange {
-	json_t* dataToJson() {
+	json_t* dataToJson() override {
 		json_t* root = BASE::dataToJson();
 		if (!root) {
 			root = json_object();
@@ -28,7 +28,7 @@ struct OutputRangeModule : BASE, OutputRange {
 		return root;
 	}
 
-	void dataFromJson(json_t* root) {
+	void dataFromJson(json_t* root) override {
 		BASE::dataFromJson(root);
 
 		json_t* ro = json_object_get(root, "range_offset");

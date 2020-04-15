@@ -53,7 +53,8 @@
 #include "OneEight.hpp"
 #include "Pan.hpp"
 #include "Pgmr.hpp"
-#include "PolyCon.hpp"
+#include "PolyCon8.hpp"
+#include "PolyCon16.hpp"
 #include "PolyMult.hpp"
 #include "Pressor.hpp"
 #include "Pulse.hpp"
@@ -173,7 +174,8 @@ void init(rack::Plugin *p) {
 	p->addModel(modelArp);
 	p->addModel(modelAssign);
 	p->addModel(modelUnison);
-	p->addModel(modelPolyCon);
+	p->addModel(modelPolyCon16);
+	p->addModel(modelPolyCon8);
 	p->addModel(modelPolyMult);
 
 	p->addModel(modelBool);
