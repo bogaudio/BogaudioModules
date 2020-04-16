@@ -44,14 +44,14 @@ struct PolyCon8 : OutputRangeModule<PolyChannelsModule> {
 
 	PolyCon8() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam<OutputRangeParamQuantity>(CHANNEL1_PARAM, -1.0f, 1.0f, 0.0f, "Channel 1", "V", 0.0f, 10.0f);
-		configParam<OutputRangeParamQuantity>(CHANNEL2_PARAM, -1.0f, 1.0f, 0.0f, "Channel 2", "V", 0.0f, 10.0f);
-		configParam<OutputRangeParamQuantity>(CHANNEL3_PARAM, -1.0f, 1.0f, 0.0f, "Channel 3", "V", 0.0f, 10.0f);
-		configParam<OutputRangeParamQuantity>(CHANNEL4_PARAM, -1.0f, 1.0f, 0.0f, "Channel 4", "V", 0.0f, 10.0f);
-		configParam<OutputRangeParamQuantity>(CHANNEL5_PARAM, -1.0f, 1.0f, 0.0f, "Channel 5", "V", 0.0f, 10.0f);
-		configParam<OutputRangeParamQuantity>(CHANNEL6_PARAM, -1.0f, 1.0f, 0.0f, "Channel 6", "V", 0.0f, 10.0f);
-		configParam<OutputRangeParamQuantity>(CHANNEL7_PARAM, -1.0f, 1.0f, 0.0f, "Channel 7", "V", 0.0f, 10.0f);
-		configParam<OutputRangeParamQuantity>(CHANNEL8_PARAM, -1.0f, 1.0f, 0.0f, "Channel 8", "V", 0.0f, 10.0f);
+		configParam<OutputRangeParamQuantity>(CHANNEL1_PARAM, -1.0f, 1.0f, 0.0f, "Channel 1", " V");
+		configParam<OutputRangeParamQuantity>(CHANNEL2_PARAM, -1.0f, 1.0f, 0.0f, "Channel 2", " V");
+		configParam<OutputRangeParamQuantity>(CHANNEL3_PARAM, -1.0f, 1.0f, 0.0f, "Channel 3", " V");
+		configParam<OutputRangeParamQuantity>(CHANNEL4_PARAM, -1.0f, 1.0f, 0.0f, "Channel 4", " V");
+		configParam<OutputRangeParamQuantity>(CHANNEL5_PARAM, -1.0f, 1.0f, 0.0f, "Channel 5", " V");
+		configParam<OutputRangeParamQuantity>(CHANNEL6_PARAM, -1.0f, 1.0f, 0.0f, "Channel 6", " V");
+		configParam<OutputRangeParamQuantity>(CHANNEL7_PARAM, -1.0f, 1.0f, 0.0f, "Channel 7", " V");
+		configParam<OutputRangeParamQuantity>(CHANNEL8_PARAM, -1.0f, 1.0f, 0.0f, "Channel 8", " V");
 	}
 
 	void processAll(const ProcessArgs& args) override;

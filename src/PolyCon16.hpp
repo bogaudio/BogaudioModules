@@ -62,22 +62,22 @@ struct PolyCon16 : OutputRangeModule<BGModule> {
 	PolyCon16() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(CHANNELS_PARAM, 1.0f, 16.0f, 1.0f, "Polyphony channels");
-		configParam<OutputRangeParamQuantity>(CHANNEL1_PARAM, -1.0f, 1.0f, 0.0f, "Channel 1", "V", 0.0f, 10.0f);
-		configParam<OutputRangeParamQuantity>(CHANNEL2_PARAM, -1.0f, 1.0f, 0.0f, "Channel 2", "V", 0.0f, 10.0f);
-		configParam<OutputRangeParamQuantity>(CHANNEL3_PARAM, -1.0f, 1.0f, 0.0f, "Channel 3", "V", 0.0f, 10.0f);
-		configParam<OutputRangeParamQuantity>(CHANNEL4_PARAM, -1.0f, 1.0f, 0.0f, "Channel 4", "V", 0.0f, 10.0f);
-		configParam<OutputRangeParamQuantity>(CHANNEL5_PARAM, -1.0f, 1.0f, 0.0f, "Channel 5", "V", 0.0f, 10.0f);
-		configParam<OutputRangeParamQuantity>(CHANNEL6_PARAM, -1.0f, 1.0f, 0.0f, "Channel 6", "V", 0.0f, 10.0f);
-		configParam<OutputRangeParamQuantity>(CHANNEL7_PARAM, -1.0f, 1.0f, 0.0f, "Channel 7", "V", 0.0f, 10.0f);
-		configParam<OutputRangeParamQuantity>(CHANNEL8_PARAM, -1.0f, 1.0f, 0.0f, "Channel 8", "V", 0.0f, 10.0f);
-		configParam<OutputRangeParamQuantity>(CHANNEL9_PARAM, -1.0f, 1.0f, 0.0f, "Channel 9", "V", 0.0f, 10.0f);
-		configParam<OutputRangeParamQuantity>(CHANNEL10_PARAM, -1.0f, 1.0f, 0.0f, "Channel 10", "V", 0.0f, 10.0f);
-		configParam<OutputRangeParamQuantity>(CHANNEL11_PARAM, -1.0f, 1.0f, 0.0f, "Channel 11", "V", 0.0f, 10.0f);
-		configParam<OutputRangeParamQuantity>(CHANNEL12_PARAM, -1.0f, 1.0f, 0.0f, "Channel 12", "V", 0.0f, 10.0f);
-		configParam<OutputRangeParamQuantity>(CHANNEL13_PARAM, -1.0f, 1.0f, 0.0f, "Channel 13", "V", 0.0f, 10.0f);
-		configParam<OutputRangeParamQuantity>(CHANNEL14_PARAM, -1.0f, 1.0f, 0.0f, "Channel 14", "V", 0.0f, 10.0f);
-		configParam<OutputRangeParamQuantity>(CHANNEL15_PARAM, -1.0f, 1.0f, 0.0f, "Channel 15", "V", 0.0f, 10.0f);
-		configParam<OutputRangeParamQuantity>(CHANNEL16_PARAM, -1.0f, 1.0f, 0.0f, "Channel 16", "V", 0.0f, 10.0f);
+		configParam<OutputRangeParamQuantity>(CHANNEL1_PARAM, -1.0f, 1.0f, 0.0f, "Channel 1", " V");
+		configParam<OutputRangeParamQuantity>(CHANNEL2_PARAM, -1.0f, 1.0f, 0.0f, "Channel 2", " V");
+		configParam<OutputRangeParamQuantity>(CHANNEL3_PARAM, -1.0f, 1.0f, 0.0f, "Channel 3", " V");
+		configParam<OutputRangeParamQuantity>(CHANNEL4_PARAM, -1.0f, 1.0f, 0.0f, "Channel 4", " V");
+		configParam<OutputRangeParamQuantity>(CHANNEL5_PARAM, -1.0f, 1.0f, 0.0f, "Channel 5", " V");
+		configParam<OutputRangeParamQuantity>(CHANNEL6_PARAM, -1.0f, 1.0f, 0.0f, "Channel 6", " V");
+		configParam<OutputRangeParamQuantity>(CHANNEL7_PARAM, -1.0f, 1.0f, 0.0f, "Channel 7", " V");
+		configParam<OutputRangeParamQuantity>(CHANNEL8_PARAM, -1.0f, 1.0f, 0.0f, "Channel 8", " V");
+		configParam<OutputRangeParamQuantity>(CHANNEL9_PARAM, -1.0f, 1.0f, 0.0f, "Channel 9", " V");
+		configParam<OutputRangeParamQuantity>(CHANNEL10_PARAM, -1.0f, 1.0f, 0.0f, "Channel 10", " V");
+		configParam<OutputRangeParamQuantity>(CHANNEL11_PARAM, -1.0f, 1.0f, 0.0f, "Channel 11", " V");
+		configParam<OutputRangeParamQuantity>(CHANNEL12_PARAM, -1.0f, 1.0f, 0.0f, "Channel 12", " V");
+		configParam<OutputRangeParamQuantity>(CHANNEL13_PARAM, -1.0f, 1.0f, 0.0f, "Channel 13", " V");
+		configParam<OutputRangeParamQuantity>(CHANNEL14_PARAM, -1.0f, 1.0f, 0.0f, "Channel 14", " V");
+		configParam<OutputRangeParamQuantity>(CHANNEL15_PARAM, -1.0f, 1.0f, 0.0f, "Channel 15", " V");
+		configParam<OutputRangeParamQuantity>(CHANNEL16_PARAM, -1.0f, 1.0f, 0.0f, "Channel 16", " V");
 	}
 
 	void processAll(const ProcessArgs& args) override;

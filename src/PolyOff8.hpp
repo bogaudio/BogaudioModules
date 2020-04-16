@@ -61,21 +61,21 @@ struct PolyOff8 : OutputRangeModule<BGModule> {
 
 	PolyOff8() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam<OutputRangeParamQuantity>(OFFSET1_PARAM, -1.0f, 1.0f, 0.0f, "Channel 1 offset");
+		configParam<OutputRangeParamQuantity>(OFFSET1_PARAM, -1.0f, 1.0f, 0.0f, "Channel 1 offset", " V");
 		configParam(SCALE1_PARAM, -1.0f, 1.0f, 1.0f, "Channel 1 scale", "%", 0.0f, 100.0f);
-		configParam<OutputRangeParamQuantity>(OFFSET2_PARAM, -1.0f, 1.0f, 0.0f, "Channel 2 offset");
+		configParam<OutputRangeParamQuantity>(OFFSET2_PARAM, -1.0f, 1.0f, 0.0f, "Channel 2 offset", " V");
 		configParam(SCALE2_PARAM, -1.0f, 1.0f, 1.0f, "Channel 2 scale", "%", 0.0f, 100.0f);
-		configParam<OutputRangeParamQuantity>(OFFSET3_PARAM, -1.0f, 1.0f, 0.0f, "Channel 3 offset");
+		configParam<OutputRangeParamQuantity>(OFFSET3_PARAM, -1.0f, 1.0f, 0.0f, "Channel 3 offset", " V");
 		configParam(SCALE3_PARAM, -1.0f, 1.0f, 1.0f, "Channel 3 scale", "%", 0.0f, 100.0f);
-		configParam<OutputRangeParamQuantity>(OFFSET4_PARAM, -1.0f, 1.0f, 0.0f, "Channel 4 offset");
+		configParam<OutputRangeParamQuantity>(OFFSET4_PARAM, -1.0f, 1.0f, 0.0f, "Channel 4 offset", " V");
 		configParam(SCALE4_PARAM, -1.0f, 1.0f, 1.0f, "Channel 4 scale", "%", 0.0f, 100.0f);
-		configParam<OutputRangeParamQuantity>(OFFSET5_PARAM, -1.0f, 1.0f, 0.0f, "Channel 5 offset");
+		configParam<OutputRangeParamQuantity>(OFFSET5_PARAM, -1.0f, 1.0f, 0.0f, "Channel 5 offset", " V");
 		configParam(SCALE5_PARAM, -1.0f, 1.0f, 1.0f, "Channel 5 scale", "%", 0.0f, 100.0f);
-		configParam<OutputRangeParamQuantity>(OFFSET6_PARAM, -1.0f, 1.0f, 0.0f, "Channel 6 offset");
+		configParam<OutputRangeParamQuantity>(OFFSET6_PARAM, -1.0f, 1.0f, 0.0f, "Channel 6 offset", " V");
 		configParam(SCALE6_PARAM, -1.0f, 1.0f, 1.0f, "Channel 6 scale", "%", 0.0f, 100.0f);
-		configParam<OutputRangeParamQuantity>(OFFSET7_PARAM, -1.0f, 1.0f, 0.0f, "Channel 7 offset");
+		configParam<OutputRangeParamQuantity>(OFFSET7_PARAM, -1.0f, 1.0f, 0.0f, "Channel 7 offset", " V");
 		configParam(SCALE7_PARAM, -1.0f, 1.0f, 1.0f, "Channel 7 scale", "%", 0.0f, 100.0f);
-		configParam<OutputRangeParamQuantity>(OFFSET8_PARAM, -1.0f, 1.0f, 0.0f, "Channel 8 offset");
+		configParam<OutputRangeParamQuantity>(OFFSET8_PARAM, -1.0f, 1.0f, 0.0f, "Channel 8 offset", " V");
 		configParam(SCALE8_PARAM, -1.0f, 1.0f, 1.0f, "Channel 8 scale", "%", 0.0f, 100.0f);
 		configParam(CHANNELS_PARAM, 1.0f, 8.0f, 1.0f, "Polyphony channels");
 	}
