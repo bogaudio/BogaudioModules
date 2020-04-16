@@ -61,7 +61,7 @@ struct PolyCon16 : OutputRangeModule<BGModule> {
 
 	PolyCon16() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam<OutputRangeParamQuantity>(CHANNELS_PARAM, 1.0f, 16.0f, 1.0f, "Polyphony channels");
+		configParam(CHANNELS_PARAM, 1.0f, 16.0f, 1.0f, "Polyphony channels");
 		configParam<OutputRangeParamQuantity>(CHANNEL1_PARAM, -1.0f, 1.0f, 0.0f, "Channel 1", "V", 0.0f, 10.0f);
 		configParam<OutputRangeParamQuantity>(CHANNEL2_PARAM, -1.0f, 1.0f, 0.0f, "Channel 2", "V", 0.0f, 10.0f);
 		configParam<OutputRangeParamQuantity>(CHANNEL3_PARAM, -1.0f, 1.0f, 0.0f, "Channel 3", "V", 0.0f, 10.0f);

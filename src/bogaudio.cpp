@@ -55,6 +55,8 @@
 #include "Pgmr.hpp"
 #include "PolyCon8.hpp"
 #include "PolyCon16.hpp"
+#include "PolyOff8.hpp"
+#include "PolyOff16.hpp"
 #include "PolyMult.hpp"
 #include "Pressor.hpp"
 #include "Pulse.hpp"
@@ -174,8 +176,10 @@ void init(rack::Plugin *p) {
 	p->addModel(modelArp);
 	p->addModel(modelAssign);
 	p->addModel(modelUnison);
-	p->addModel(modelPolyCon16);
 	p->addModel(modelPolyCon8);
+	p->addModel(modelPolyCon16);
+	p->addModel(modelPolyOff8);
+	p->addModel(modelPolyOff16);
 	p->addModel(modelPolyMult);
 
 	p->addModel(modelBool);

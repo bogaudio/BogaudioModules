@@ -623,6 +623,15 @@
       ]
     },
     {
+      "slug": "Bogaudio-PolyCon8",
+      "name": "POLYCON8",
+      "description": "Polyphonic per-channel constant voltages",
+      "tags": [
+        "Utility",
+        "Polyphonic"
+      ]
+    },
+    {
       "slug": "Bogaudio-PolyCon",
       "name": "POLYCON16",
       "description": "Polyphonic per-channel constant voltages",
@@ -632,11 +641,18 @@
       ]
     },
     {
-      "slug": "Bogaudio-PolyCon8",
-      "name": "POLYCON8",
-      "description": "Polyphonic per-channel constant voltages",
+      "slug": "Bogaudio-PolyOff8",
+      "name": "POLYOFF8",
+      "description": "Polyphonic per-channel offset and scale",
       "tags": [
-        "Utility",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Bogaudio-PolyOff16",
+      "name": "POLYOFF16",
+      "description": "Polyphonic per-channel offset and scale",
+      "tags": [
         "Polyphonic"
       ]
     },
