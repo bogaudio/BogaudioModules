@@ -215,6 +215,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelTwelveHP);
 	p->addModel(modelThirteenHP);
 	p->addModel(modelFifteenHP);
+	p->addModel(modelSixteenHP);
 	p->addModel(modelEighteenHP);
 	p->addModel(modelTwentyHP);
 	p->addModel(modelTwentyTwoHP);

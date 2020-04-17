@@ -18,7 +18,7 @@ struct ThreeHPWidget : ModuleWidget {
   }
 };
 
-Model* modelThreeHP = rack::createModel<Module, ThreeHPWidget>("Bogaudio-ThreeHP");
+Model* modelThreeHP = bogaudio::createModel<Module, ThreeHPWidget>("Bogaudio-ThreeHP", "THREEHP", "Template/blank", "Blank");
 
 
 struct SixHPWidget : ModuleWidget {
@@ -38,7 +38,7 @@ struct SixHPWidget : ModuleWidget {
   }
 };
 
-Model* modelSixHP = rack::createModel<Module, SixHPWidget>("Bogaudio-SixHP");
+Model* modelSixHP = bogaudio::createModel<Module, SixHPWidget>("Bogaudio-SixHP", "SIXHP", "Template/blank", "Blank");
 
 
 struct EightHPWidget : ModuleWidget {
@@ -58,7 +58,7 @@ struct EightHPWidget : ModuleWidget {
   }
 };
 
-Model* modelEightHP = rack::createModel<Module, EightHPWidget>("Bogaudio-EightHP");
+Model* modelEightHP = bogaudio::createModel<Module, EightHPWidget>("Bogaudio-EightHP", "EIGHTHP", "Template/blank", "Blank");
 
 
 struct TenHPWidget : ModuleWidget {
@@ -80,7 +80,7 @@ struct TenHPWidget : ModuleWidget {
 	}
 };
 
-Model* modelTenHP = rack::createModel<Module, TenHPWidget>("Bogaudio-TenHP");
+Model* modelTenHP = bogaudio::createModel<Module, TenHPWidget>("Bogaudio-TenHP", "TENHP", "Template/blank", "Blank");
 
 
 struct TwelveHPWidget : ModuleWidget {
@@ -102,7 +102,8 @@ struct TwelveHPWidget : ModuleWidget {
   }
 };
 
-Model* modelTwelveHP = rack::createModel<Module, TwelveHPWidget>("Bogaudio-TwelveHP");
+Model* modelTwelveHP = bogaudio::createModel<Module, TwelveHPWidget>("Bogaudio-TwelveHP", "TWELVEHP", "Template/blank", "Blank");
+
 
 struct ThirteenHPWidget : ModuleWidget {
   ThirteenHPWidget(Module* module) {
@@ -123,7 +124,7 @@ struct ThirteenHPWidget : ModuleWidget {
   }
 };
 
-Model* modelThirteenHP = rack::createModel<Module, ThirteenHPWidget>("Bogaudio-ThirteenHP");
+Model* modelThirteenHP = bogaudio::createModel<Module, ThirteenHPWidget>("Bogaudio-ThirteenHP", "THIRTEENHP", "Template/blank", "Blank");
 
 
 struct FifteenHPWidget : ModuleWidget {
@@ -145,7 +146,29 @@ struct FifteenHPWidget : ModuleWidget {
   }
 };
 
-Model* modelFifteenHP = rack::createModel<Module, FifteenHPWidget>("Bogaudio-FifteenHP");
+Model* modelFifteenHP = bogaudio::createModel<Module, FifteenHPWidget>("Bogaudio-FifteenHP", "FIFTEENHP", "Template/blank", "Blank");
+
+
+struct SixteenHPWidget : ModuleWidget {
+  SixteenHPWidget(Module* module) {
+	  setModule(module);
+  	box.size = Vec(RACK_GRID_WIDTH * 16, RACK_GRID_HEIGHT);
+
+  	{
+  		SvgPanel *panel = new SvgPanel();
+  		panel->box.size = box.size;
+  		panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/SixteenHP.svg")));
+  		addChild(panel);
+  	}
+
+  	addChild(createWidget<ScrewSilver>(Vec(15, 0)));
+  	addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 0)));
+  	addChild(createWidget<ScrewSilver>(Vec(15, 365)));
+  	addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 365)));
+  }
+};
+
+Model* modelSixteenHP = bogaudio::createModel<Module, SixteenHPWidget>("Bogaudio-SixteenHP", "SIXTEENHP", "Template/blank", "Blank");
 
 
 struct EighteenHPWidget : ModuleWidget {
@@ -167,7 +190,7 @@ struct EighteenHPWidget : ModuleWidget {
   }
 };
 
-Model* modelEighteenHP = rack::createModel<Module, EighteenHPWidget>("Bogaudio-EighteenHP");
+Model* modelEighteenHP = bogaudio::createModel<Module, EighteenHPWidget>("Bogaudio-EighteenHP", "EIGHTEENHP", "Template/blank", "Blank");
 
 
 struct TwentyHPWidget : ModuleWidget {
@@ -189,7 +212,7 @@ struct TwentyHPWidget : ModuleWidget {
   }
 };
 
-Model* modelTwentyHP = rack::createModel<Module, TwentyHPWidget>("Bogaudio-TwentyHP");
+Model* modelTwentyHP = bogaudio::createModel<Module, TwentyHPWidget>("Bogaudio-TwentyHP", "TWENTYHP", "Template/blank", "Blank");
 
 
 struct TwentyTwoHPWidget : ModuleWidget {
@@ -211,7 +234,7 @@ struct TwentyTwoHPWidget : ModuleWidget {
   }
 };
 
-Model* modelTwentyTwoHP = rack::createModel<Module, TwentyTwoHPWidget>("Bogaudio-TwentyTwoHP");
+Model* modelTwentyTwoHP = bogaudio::createModel<Module, TwentyTwoHPWidget>("Bogaudio-TwentyTwoHP", "TWENTYTWOHP", "Template/blank", "Blank");
 
 
 struct TwentyFiveHPWidget : ModuleWidget {
@@ -233,7 +256,7 @@ struct TwentyFiveHPWidget : ModuleWidget {
   }
 };
 
-Model* modelTwentyFiveHP = rack::createModel<Module, TwentyFiveHPWidget>("Bogaudio-TwentyFiveHP");
+Model* modelTwentyFiveHP = bogaudio::createModel<Module, TwentyFiveHPWidget>("Bogaudio-TwentyFiveHP", "TWENTYFIVEHP", "Template/blank", "Blank");
 
 
 struct ThirtyHPWidget : ModuleWidget {
@@ -255,4 +278,4 @@ struct ThirtyHPWidget : ModuleWidget {
   }
 };
 
-Model* modelThirtyHP = rack::createModel<Module, ThirtyHPWidget>("Bogaudio-ThirtyHP");
+Model* modelThirtyHP = bogaudio::createModel<Module, ThirtyHPWidget>("Bogaudio-ThirtyHP", "THIRTYHP", "Template/blank", "Blank");

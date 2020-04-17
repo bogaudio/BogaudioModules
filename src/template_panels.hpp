@@ -9,6 +9,7 @@ extern Model* modelTenHP;
 extern Model* modelTwelveHP;
 extern Model* modelThirteenHP;
 extern Model* modelFifteenHP;
+extern Model* modelSixteenHP;
 extern Model* modelEighteenHP;
 extern Model* modelTwentyHP;
 extern Model* modelTwentyTwoHP;
