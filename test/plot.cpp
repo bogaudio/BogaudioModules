@@ -40,17 +40,17 @@ float y(float x) {
 }
 
 int main() {
-  const float xMin = 0.1f;
-  // const float xMax = 1023.0f;
-  const float xMax = 100.0f;
-  const float samples = 1024.0f;
+	const float xMin = 0.1f;
+	// const float xMax = 1023.0f;
+	const float xMax = 100.0f;
+	const float samples = 1024.0f;
 
-  const float delta = (xMax - xMin) / samples;
-  float x = xMin;
-  while (x <= xMax) {
-    printf("%f, %f\n", x, y(x));
-    x += delta;
-  }
-  // printf("%f\n", y(1.0f));
-  return 0;
+	const float delta = (xMax - xMin) / samples;
+	float x = xMin;
+	while (x <= xMax) {
+		printf("%f, %f\n", x, y(x));
+		x += delta;
+	}
+	// printf("%f\n", y(1.0f));
+	return 0;
 }
