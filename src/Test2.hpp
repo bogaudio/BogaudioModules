@@ -10,9 +10,9 @@ extern Model* modelTest2;
 #define LIMITER 1
 
 #ifdef COMPLEX_BIQUAD
-#include "dsp/filter.hpp"
+#include "dsp/filters/filter.hpp"
 #elif MULTIPOLE
-#include "dsp/filter.hpp"
+#include "dsp/filters/experiments.hpp"
 #elif ADSR_ENVELOPE
 #include "dsp/envelope.hpp"
 #elif LIMITER

@@ -3,7 +3,7 @@
 #include <random>
 
 #include "base.hpp"
-#include "filter.hpp"
+#include "filters/filter.hpp"
 
 namespace bogaudio {
 namespace dsp {

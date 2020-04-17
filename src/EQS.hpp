@@ -1,7 +1,7 @@
 #pragma once
 
 #include "bogaudio.hpp"
-#include "filter.hpp"
+#include "dsp/filters/equalizer.hpp"
 
 extern Model* modelEQS;
 

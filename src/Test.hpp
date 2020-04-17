@@ -33,9 +33,9 @@ extern Model* modelTest;
 
 #include "pitch.hpp"
 #ifdef LPF
-#include "dsp/filter.hpp"
+#include "dsp/filters/filter.hpp"
 #elif LPFNOISE
-#include "dsp/filter.hpp"
+#include "dsp/filters/filter.hpp"
 #include "dsp/noise.hpp"
 #elif SINE
 #include "dsp/oscillator.hpp"
@@ -54,22 +54,22 @@ extern Model* modelTest;
 #elif OVERSAMPLING
 #include "dsp/oscillator.hpp"
 #include "dsp/decimator.hpp" // rack
-#include "dsp/filter.hpp"
+#include "dsp/filters/resample.hpp"
 #define OVERSAMPLEN 16
 #elif OVERSAMPLED_BL
 #include "dsp/oscillator.hpp"
-#include "dsp/filter.hpp"
+#include "dsp/filters/resample.hpp"
 #elif ANTIALIASING
 #include "dsp/oscillator.hpp"
 #include "dsp/decimator.hpp" // rack
-#include "dsp/filter.hpp"
+#include "dsp/filters/resample.hpp"
 #elif DECIMATORS
 #include "dsp/oscillator.hpp"
-#include "dsp/filter.hpp"
+#include "dsp/filters/resample.hpp"
 #include "dsp/decimator.hpp" // rack
 #elif INTERPOLATOR
 #include "dsp/oscillator.hpp"
-#include "dsp/filter.hpp"
+#include "dsp/filters/resample.hpp"
 #elif FM
 #include "dsp/oscillator.hpp"
 #elif PM
@@ -94,7 +94,7 @@ extern Model* modelTest;
 #elif RANDOMWALK
 #include "dsp/noise.hpp"
 #elif DCBLOCKER
-#include "dsp/filter.hpp"
+#include "dsp/filters/experiments.hpp"
 #else
 #error what
 #endif

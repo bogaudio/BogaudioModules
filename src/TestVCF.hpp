@@ -1,7 +1,8 @@
 #pragma once
 
 #include "bogaudio.hpp"
-#include "dsp/filter.hpp"
+#include "dsp/filters/experiments.hpp"
+#include "dsp/filters/resample.hpp"
 #include "dsp/signal.hpp"
 
 using namespace bogaudio::dsp;

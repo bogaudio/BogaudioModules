@@ -7,7 +7,8 @@ ifdef TEST
 FLAGS += -DTEST=1
 endif
 
-SOURCES = $(wildcard src/*.cpp src/dsp/*cpp)
+DSP_SOURCES = $(wildcard src/dsp/*cpp src/dsp/filters/*cpp)
+SOURCES = $(wildcard src/*.cpp) $(DSP_SOURCES)
 
 DISTRIBUTABLES += $(wildcard LICENSE* README*) res
 
@@ -16,7 +17,7 @@ include $(RACK_DIR)/plugin.mk
 
 CXXFLAGS += -Isrc -Isrc/dsp -Ilib
 
-BENCHMARK_SOURCES = $(wildcard benchmarks/*.cpp src/dsp/*cpp)
+BENCHMARK_SOURCES = $(wildcard benchmarks/*.cpp) $(DSP_SOURCES)
 BENCHMARK_OBJECTS = $(patsubst %, build/%.o, $(BENCHMARK_SOURCES))
 BENCHMARK_DEPS = $(patsubst %, build/%.d, $(BENCHMARK_SOURCES))
 -include $(BENCHMARK_DEPS)
@@ -25,7 +26,7 @@ benchmark: $(BENCHMARK_OBJECTS)
 benchmark_clean:
 	rm -f benchmark $(BENCHMARK_OBJECTS)
 
-TESTMAIN_SOURCES = $(wildcard test/testmain.cpp src/dsp/*cpp)
+TESTMAIN_SOURCES = test/testmain.cpp $(DSP_SOURCES)
 TESTMAIN_OBJECTS = $(patsubst %, build/%.o, $(TESTMAIN_SOURCES))
 TESTMAIN_DEPS = $(patsubst %, build/%.d, $(TESTMAIN_SOURCES))
 -include $(TESTMAIN_DEPS)
@@ -34,7 +35,7 @@ testmain: $(TESTMAIN_OBJECTS)
 testmain_clean:
 	rm -f testmain $(TESTMAIN_OBJECTS)
 
-PLOT_SOURCES = $(wildcard test/plot.cpp src/dsp/*cpp)
+PLOT_SOURCES = test/plot.cpp $(DSP_SOURCES)
 PLOT_OBJECTS = $(patsubst %, build/%.o, $(PLOT_SOURCES))
 PLOT_DEPS = $(patsubst %, build/%.d, $(PLOT_SOURCES))
 -include $(PLOT_DEPS)
@@ -47,7 +48,7 @@ plotrungp: plot
 plot_clean:
 	rm -f plot plot.tmp $(PLOT_OBJECTS)
 
-SCATTER_SOURCES = $(wildcard test/scatter.cpp src/dsp/*cpp)
+SCATTER_SOURCES = test/scatter.cpp $(DSP_SOURCES)
 SCATTER_OBJECTS = $(patsubst %, build/%.o, $(SCATTER_SOURCES))
 SCATTER_DEPS = $(patsubst %, build/%.d, $(SCATTER_SOURCES))
 -include $(SCATTER_DEPS)

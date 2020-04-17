@@ -2,7 +2,7 @@
 
 #include "bogaudio.hpp"
 #include "expanders.hpp"
-#include "dsp/filter.hpp"
+#include "dsp/filters/equalizer.hpp"
 #include "dsp/signal.hpp"
 
 using namespace bogaudio::dsp;

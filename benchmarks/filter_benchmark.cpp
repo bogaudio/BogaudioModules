@@ -2,7 +2,7 @@
 #include <benchmark/benchmark.h>
 
 #include "dsp/noise.hpp"
-#include "dsp/filter.hpp"
+#include "dsp/filters/resample.hpp"
 // #include "dsp/decimator.hpp" // rack
 
 using namespace bogaudio::dsp;

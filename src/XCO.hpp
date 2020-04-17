@@ -1,7 +1,7 @@
 #pragma once
 
 #include "bogaudio.hpp"
-#include "dsp/filter.hpp"
+#include "dsp/filters/resample.hpp"
 #include "dsp/oscillator.hpp"
 #include "dsp/signal.hpp"
 

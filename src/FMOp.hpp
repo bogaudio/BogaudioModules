@@ -2,7 +2,7 @@
 
 #include "bogaudio.hpp"
 #include "dsp/envelope.hpp"
-#include "dsp/filter.hpp"
+#include "dsp/filters/resample.hpp"
 #include "dsp/oscillator.hpp"
 #include "dsp/signal.hpp"
 

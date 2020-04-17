@@ -1,5 +1,5 @@
 #include "param_quantities.hpp"
-#include "dsp/filter.hpp"
+#include "dsp/filters/equalizer.hpp"
 #include "dsp/pitch.hpp"
 #include "dsp/signal.hpp"
 

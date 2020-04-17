@@ -1,7 +1,7 @@
 #pragma once
 
 #include "bogaudio.hpp"
-#include "dsp/filter.hpp"
+#include "dsp/filters/multimode.hpp"
 
 using namespace bogaudio::dsp;
 
