@@ -162,4 +162,4 @@ struct DGateWidget : TriggerOnLoadModuleWidget {
 	}
 };
 
-Model* modelDGate = bogaudio::createModel<DGate, DGateWidget>("Bogaudio-DGate", "DGATE", "Trigger-to-gate converter with delay", "Utility", "Polyphonic");
+Model* modelDGate = bogaudio::createModel<DGate, DGateWidget>("Bogaudio-DGate", "DGATE", "Trigger-to-gate converter with delay", "Polyphonic");

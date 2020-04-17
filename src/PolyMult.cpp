@@ -65,4 +65,4 @@ struct PolyMultWidget : ModuleWidget {
 	}
 };
 
-Model* modelPolyMult = createModel<PolyMult, PolyMultWidget>("Bogaudio-PolyMult", "POLYMULT", "Mono-to-poly multiple", "Utility", "Polyphonic");
+Model* modelPolyMult = createModel<PolyMult, PolyMultWidget>("Bogaudio-PolyMult", "POLYMULT", "Mono-to-poly multiple", "Polyphonic");

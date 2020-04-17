@@ -129,4 +129,4 @@ struct PolyCon16Widget : ModuleWidget {
 };
 
 // Note slug is "Bogaudio-PolyCon" for backwards compatibility.
-Model* modelPolyCon16 = createModel<PolyCon16, PolyCon16Widget>("Bogaudio-PolyCon", "POLYCON16", "Polyphonic per-channel constant voltages", "Utility", "Polyphonic");
+Model* modelPolyCon16 = createModel<PolyCon16, PolyCon16Widget>("Bogaudio-PolyCon", "POLYCON16", "Polyphonic per-channel constant voltages", "Polyphonic");

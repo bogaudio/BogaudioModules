@@ -139,4 +139,4 @@ struct EdgeWidget : ModuleWidget {
 	}
 };
 
-Model* modelEdge = createModel<Edge, EdgeWidget>("Bogaudio-Edge", "EDGE", "Edge detector, gate-to-trigger, comparator", "Logic", "Utility", "Polyphonic");
+Model* modelEdge = createModel<Edge, EdgeWidget>("Bogaudio-Edge", "EDGE", "Edge detector, gate-to-trigger, comparator", "Logic", "Polyphonic");

@@ -86,4 +86,4 @@ struct PolyCon8Widget : ModuleWidget {
 	}
 };
 
-Model* modelPolyCon8 = createModel<PolyCon8, PolyCon8Widget>("Bogaudio-PolyCon8", "POLYCON8", "Polyphonic per-channel constant voltages", "Utility", "Polyphonic");
+Model* modelPolyCon8 = createModel<PolyCon8, PolyCon8Widget>("Bogaudio-PolyCon8", "POLYCON8", "Polyphonic per-channel constant voltages", "Polyphonic");

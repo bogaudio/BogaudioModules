@@ -227,7 +227,6 @@
       "name": "DGATE",
       "description": "Trigger-to-gate converter with delay",
       "tags": [
-        "Utility",
         "Polyphonic"
       ]
     },
@@ -237,7 +236,6 @@
       "description": "Edge detector, gate-to-trigger, comparator",
       "tags": [
         "Logic",
-        "Utility",
         "Polyphonic"
       ]
     },
@@ -337,7 +335,6 @@
       "name": "MUTE8",
       "description": "Eight independent mutes with CV control",
       "tags": [
-        "Utility",
         "Polyphonic"
       ]
     },
@@ -591,7 +588,6 @@
       "name": "MONO",
       "description": "Poly-to-mono converter with onboard compressor",
       "tags": [
-        "Utility",
         "Polyphonic"
       ]
     },
@@ -609,7 +605,6 @@
       "name": "ASSIGN",
       "description": "Poly voice (re)assigner",
       "tags": [
-        "Utility",
         "Polyphonic"
       ]
     },
@@ -618,7 +613,6 @@
       "name": "UNISON",
       "description": "Poly unison voicing utility with detune",
       "tags": [
-        "Utility",
         "Polyphonic"
       ]
     },
@@ -627,7 +621,6 @@
       "name": "POLYCON8",
       "description": "Polyphonic per-channel constant voltages",
       "tags": [
-        "Utility",
         "Polyphonic"
       ]
     },
@@ -636,7 +629,6 @@
       "name": "POLYCON16",
       "description": "Polyphonic per-channel constant voltages",
       "tags": [
-        "Utility",
         "Polyphonic"
       ]
     },
@@ -661,7 +653,6 @@
       "name": "POLYMULT",
       "description": "Mono-to-poly multiple",
       "tags": [
-        "Utility",
         "Polyphonic"
       ]
     },
@@ -717,7 +708,7 @@
       "name": "MANUAL",
       "description": "Button controlled gates / triggers",
       "tags": [
-        "Utility"
+        "Controller"
       ]
     },
     {
