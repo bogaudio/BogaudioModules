@@ -12,9 +12,9 @@ struct Equalizer : Filter {
 	Amplifier _lowAmp;
 	Amplifier _midAmp;
 	Amplifier _highAmp;
-	MultimodeFilter _lowFilter;
-	MultimodeFilter _midFilter;
-	MultimodeFilter _highFilter;
+	FourPoleButtworthLowpassFilter _lowFilter;
+	TowPoleButtworthBandpassFilter _midFilter;
+	FourPoleButtworthHighpassFilter _highFilter;
 
 	void setParams(
 		float sampleRate,

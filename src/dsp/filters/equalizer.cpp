@@ -16,35 +16,13 @@ void Equalizer::setParams(
 	assert(highDb >= cutDb && highDb <= gainDb);
 
 	_lowAmp.setLevel(lowDb);
-	_lowFilter.setParams(
-		sampleRate,
-		MultimodeFilter::BUTTERWORTH_TYPE,
-		4,
-		MultimodeFilter::LOWPASS_MODE,
-		100.0f,
-		0.0f
-	);
+	_lowFilter.setParams(sampleRate, 100.0f, 0.0f);
 
 	_midAmp.setLevel(midDb);
-	_midFilter.setParams(
-		sampleRate,
-		MultimodeFilter::BUTTERWORTH_TYPE,
-		2,
-		MultimodeFilter::BANDPASS_MODE,
-		350.0f,
-		0.55f,
-		MultimodeFilter::PITCH_BANDWIDTH_MODE
-	);
+	_midFilter.setParams(sampleRate, 350.0f, 0.55f, MultimodeFilter::PITCH_BANDWIDTH_MODE);
 
 	_highAmp.setLevel(highDb);
-	_highFilter.setParams(
-		sampleRate,
-		MultimodeFilter::BUTTERWORTH_TYPE,
-		4,
-		MultimodeFilter::HIGHPASS_MODE,
-		1000.0f,
-		0.0f
-	);
+	_highFilter.setParams(sampleRate, 1000.0f, 0.0f);
 }
 
 float Equalizer::next(float sample) {

@@ -8,30 +8,27 @@ void FFB::Engine::sampleRateChange() {
 	}
 
 	auto bp = [this, sr](int i, float cutoff) {
-		_filters[i].setParams(
+		_bandPasses[i].setParams(
 			sr,
-			MultimodeFilter::BUTTERWORTH_TYPE,
-			4.0f,
-			MultimodeFilter::BANDPASS_MODE,
 			cutoff,
 			0.22f / BOGAUDIO_DSP_MULTIMODEFILTER_MAXBWPITCH,
 			MultimodeFilter::PITCH_BANDWIDTH_MODE
 		);
 	};
-	_filters[ 0].setParams(sr, MultimodeFilter::BUTTERWORTH_TYPE, 12.0f, MultimodeFilter::LOWPASS_MODE, 95.0f, 0.0f);
-	bp(1, 125.0f);
-	bp(2, 175.0f);
-	bp(3, 250.0f);
-	bp(4, 350.0f);
-	bp(5, 500.0f);
-	bp(6, 700.0f);
-	bp(7, 1000.0f);
-	bp(8, 1400.0f);
-	bp(9, 2000.0f);
-	bp(10, 2800.0f);
-	bp(11, 4000.0f);
-	bp(12, 5600.0f);
-	_filters[13].setParams(sr, MultimodeFilter::BUTTERWORTH_TYPE, 12.0f, MultimodeFilter::HIGHPASS_MODE, 6900.0f, 0.0f);
+	_lowPass.setParams(sr, MultimodeFilter::BUTTERWORTH_TYPE, 12.0f, MultimodeFilter::LOWPASS_MODE, 95.0f, 0.0f);
+	bp(0, 125.0f);
+	bp(1, 175.0f);
+	bp(2, 250.0f);
+	bp(3, 350.0f);
+	bp(4, 500.0f);
+	bp(5, 700.0f);
+	bp(6, 1000.0f);
+	bp(7, 1400.0f);
+	bp(8, 2000.0f);
+	bp(9, 2800.0f);
+	bp(10, 4000.0f);
+	bp(11, 5600.0f);
+	_highPass.setParams(sr, MultimodeFilter::BUTTERWORTH_TYPE, 12.0f, MultimodeFilter::HIGHPASS_MODE, 6900.0f, 0.0f);
 }
 
 void FFB::sampleRateChange() {
@@ -85,13 +82,15 @@ void FFB::processChannel(const ProcessArgs& args, int c) {
 
 	float in = inputs[IN_INPUT].getVoltage(c);
 	float outAll = 0.0f;
-	float outOdd = 0.0f;
-	float outEven = 0.0f;
-	for (int i = 0; i < 14; ++i) {
-		float out = e._amplifiers[i].next(e._filters[i].next(in));
+	outAll += e._amplifiers[0].next(e._lowPass.next(in));
+	outAll += e._amplifiers[13].next(e._highPass.next(in));
+	float outOdd = outAll;
+	float outEven = outAll;
+	for (int i = 1; i <= 12; ++i) {
+		float out = e._amplifiers[i].next(e._bandPasses[i - 1].next(in));
 		outAll += out;
-		outOdd += (i == 0 || i == 13 || i % 2 == 1) * out;
-		outEven += (i == 0 || i == 13 || i % 2 == 0) * out;
+		outOdd += (i % 2 == 1) * out;
+		outEven += (i % 2 == 0) * out;
 	}
 
 	outputs[ALL_OUTPUT].setChannels(_channels);

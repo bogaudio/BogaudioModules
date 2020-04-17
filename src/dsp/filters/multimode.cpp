@@ -7,7 +7,42 @@
 
 using namespace bogaudio::dsp;
 
-void MultimodeFilter::setParams(
+template<typename T, int N> void BiquadBank<T, N>::setParams(int i, T a0, T a1, T a2, T b0, T b1, T b2) {
+	assert(i >= 0 && i < N);
+	_biquads[i].setParams(a0, a1, a2, b0, b1, b2);
+}
+
+template<typename T, int N> void BiquadBank<T, N>::reset(int from) {
+	assert(from >= 0);
+	for (; from < N; ++from) {
+		_biquads[from].reset();
+	}
+}
+
+template<> float BiquadBank<double, 4>::next(float sample) {
+	assert(_n <= 4);
+	for (int i = 0; i < _n; ++i) {
+		sample = _biquads[i].next(sample);
+	}
+	return sample;
+}
+
+template<> float BiquadBank<double, 16>::next(float sample) {
+	assert(_n <= 16);
+	for (int i = 0; i < _n; ++i) {
+		sample = _biquads[i].next(sample);
+	}
+	return sample;
+}
+
+template struct bogaudio::dsp::BiquadBank<double, 4>;
+template struct bogaudio::dsp::BiquadBank<double, 16>;
+
+
+template<int N> void MultimodeDesigner<N>::setParams(
+	bool& changed,
+	BiquadBank<T, N>& biquads,
+	float& outGain,
 	float sampleRate,
 	Type type,
 	int poles,
@@ -16,13 +51,15 @@ void MultimodeFilter::setParams(
 	float qbw,
 	BandwidthMode bwm
 ) {
-	assert(poles >= minPoles && poles <= maxPoles);
+	assert(N >= minPoles && N <= maxPoles);
+	assert(poles >= minPoles && poles <= N);
 	assert(poles % modPoles == 0);
 	assert(frequency >= minFrequency && frequency <= maxFrequency);
 	assert(qbw >= minQbw && qbw <= maxQbw);
 
 	bool repole = _type != type || _mode != mode || _nPoles != poles || (type == CHEBYSHEV_TYPE && (mode == LOWPASS_MODE || mode == HIGHPASS_MODE) && _qbw != qbw);
 	bool redesign = repole || _frequency != frequency || _qbw != qbw || _sampleRate != sampleRate || _bandwidthMode != bwm;
+	changed = redesign;
 	_sampleRate = sampleRate;
 	_half2PiST = M_PI * (1.0f / sampleRate);
 	_type = type;
@@ -43,7 +80,7 @@ void MultimodeFilter::setParams(
 					_poles[j] = Pole(-re, im, re + re, re * re + im * im);
 				}
 
-				_outGain = 1.0f;
+				outGain = 1.0f;
 				break;
 			}
 
@@ -68,8 +105,8 @@ void MultimodeFilter::setParams(
 					_poles[j] = Pole(-re, im, re + re, re * re + im * im);
 				}
 
-				_outGain = 1.0 / (e * std::pow(2.0, (T)(_nPoles - 1)));
-				// _outGain = 1.0f / std::pow(2.0f, (T)(_nPoles - 1));
+				outGain = 1.0 / (e * std::pow(2.0, (T)(_nPoles - 1)));
+				// outGain = 1.0f / std::pow(2.0f, (T)(_nPoles - 1));
 				break;
 			}
 
@@ -83,11 +120,9 @@ void MultimodeFilter::setParams(
 		switch (_mode) {
 			case LOWPASS_MODE:
 			case HIGHPASS_MODE: {
-				int nf = _nPoles / 2 + _nPoles % 2;
-				for (int i = _nFilters; i < nf; ++i) {
-					_filters[i].reset();
-				}
-				_nFilters = nf;
+				biquads.reset(_nBiquads);
+				_nBiquads = _nPoles / 2 + _nPoles % 2;
+				biquads.setSectionsInUse(_nBiquads);
 
 				// T iq = (1.0 / std::sqrt(2.0)) - 0.65 * _qbw;
 				T iq = (T)0.8 - (T)0.6 * _qbw;
@@ -96,49 +131,49 @@ void MultimodeFilter::setParams(
 
 				if (_mode == LOWPASS_MODE) {
 					int ni = 0;
-					int nf = _nFilters;
+					int nb = _nBiquads;
 					if (_nPoles % 2 == 1) {
 						++ni;
-						--nf;
+						--nb;
 						T wap = wa * std::real(_poles[0].p);
-						_filters[0].setParams(wa, wa, 0.0, wap + (T)1.0, wap - (T)1.0, (T)0.0);
+						biquads.setParams(0, wa, wa, 0.0, wap + (T)1.0, wap - (T)1.0, (T)0.0);
 					}
 					T a0 = wa2;
 					T a1 = wa2 + wa2;
 					T a2 = wa2;
-					for (int i = 0; i < nf; ++i) {
+					for (int i = 0; i < nb; ++i) {
 						Pole& pole = _poles[ni + i];
 						T ywa2 = pole.y * wa2;
 						T ywa21 = ywa2 + (T)1.0;
-						T x = (((T)(i == nf / 2) * (iq - (T)1.0)) + (T)1.0) * pole.x;
+						T x = (((T)(i == nb / 2) * (iq - (T)1.0)) + (T)1.0) * pole.x;
 						T xwa = x * wa;
 						T b0 = ywa21 - xwa;
 						T b1 = (T)-2.0 + (ywa2 + ywa2);
 						T b2 = ywa21 + xwa;
-						_filters[ni + i].setParams(a0, a1, a2, b0, b1, b2);
+						biquads.setParams(ni + i, a0, a1, a2, b0, b1, b2);
 					}
 				}
 				else {
 					int ni = 0;
-					int nf = _nFilters;
+					int nb = _nBiquads;
 					if (_nPoles % 2 == 1) {
 						++ni;
-						--nf;
+						--nb;
 						T rp = std::real(_poles[0].p);
-						_filters[0].setParams(1.0, -1.0, 0.0, wa + rp, wa - rp, 0.0);
+						biquads.setParams(0, 1.0, -1.0, 0.0, wa + rp, wa - rp, 0.0);
 					}
 					T a0 = 1.0;
 					T a1 = -2.0f;
 					T a2 = 1.0;
-					for (int i = 0; i < nf; ++i) {
+					for (int i = 0; i < nb; ++i) {
 						Pole& pole = _poles[ni + i];
 						T wa2y = wa2 + pole.y;
-						T x = (((T)(i == nf / 2) * (iq - (T)1.0)) + (T)1.0) * pole.x;
+						T x = (((T)(i == nb / 2) * (iq - (T)1.0)) + (T)1.0) * pole.x;
 						T xwa = x * wa;
 						T b0 = wa2y - xwa;
 						T b1 = (wa2 + wa2) - (pole.y + pole.y);
 						T b2 = wa2y + xwa;
-						_filters[ni + i].setParams(a0, a1, a2, b0, b1, b2);
+						biquads.setParams(ni + i, a0, a1, a2, b0, b1, b2);
 					}
 				}
 				break;
@@ -146,11 +181,9 @@ void MultimodeFilter::setParams(
 
 			case BANDPASS_MODE:
 			case BANDREJECT_MODE: {
-				int nf = ((_nPoles / 2) * 2) + (_nPoles % 2);
-				for (int i = _nFilters; i < nf; ++i) {
-					_filters[i].reset();
-				}
-				_nFilters = nf;
+				biquads.reset(_nBiquads);
+				_nBiquads = ((_nPoles / 2) * 2) + (_nPoles % 2);
+				biquads.setSectionsInUse(_nBiquads);
 
 				T wdl = 0.0;
 				T wdh = 0.0;
@@ -183,12 +216,13 @@ void MultimodeFilter::setParams(
 					T a2 = -w;
 
 					int ni = 0;
-					int nf = _nFilters;
+					int nb = _nBiquads;
 					if (_nPoles % 2 == 1) {
 						++ni;
-						--nf;
+						--nb;
 						T wp = w * std::real(_poles[0].p);
-						_filters[0].setParams(
+						biquads.setParams(
+							0,
 							a0,
 							a1,
 							a2,
@@ -197,7 +231,7 @@ void MultimodeFilter::setParams(
 							(T)1.0 - wp + w02
 						);
 					}
-					for (int i = 0; i < nf; i += 2) {
+					for (int i = 0; i < nb; i += 2) {
 						Pole& pole = _poles[ni + i / 2];
 						TC x = pole.p2;
 						x *= w2;
@@ -223,13 +257,13 @@ void MultimodeFilter::setParams(
 							T b0 = (T)1.0 + f1a + f2a;
 							T b1 = (T)-2.0 + (f2a + f2a);
 							T b2 = (T)1.0 - f1a + f2a;
-							_filters[ni + i].setParams(a0, a1, a2, b0, b1, b2);
+							biquads.setParams(ni + i, a0, a1, a2, b0, b1, b2);
 						}
 						{
 							T b0 = (T)1.0 + f1b + f2b;
 							T b1 = (T)-2.0 + (f2b + f2b);
 							T b2 = (T)1.0 - f1b + f2b;
-							_filters[ni + i + 1].setParams(a0, a1, a2, b0, b1, b2);
+							biquads.setParams(ni + i + 1, a0, a1, a2, b0, b1, b2);
 						}
 					}
 				}
@@ -239,13 +273,14 @@ void MultimodeFilter::setParams(
 					T a2 = a0;
 
 					int ni = 0;
-					int nf = _nFilters;
+					int nb = _nBiquads;
 					if (_nPoles % 2 == 1) {
 						++ni;
-						--nf;
+						--nb;
 						T rp = std::real(_poles[0].p);
 						T rpw02 = rp * w02;
-						_filters[0].setParams(
+						biquads.setParams(
+							0,
 							a0,
 							a1,
 							a2,
@@ -254,7 +289,7 @@ void MultimodeFilter::setParams(
 							rp - w + rpw02
 						);
 					}
-					for (int i = 0; i < nf; i += 2) {
+					for (int i = 0; i < nb; i += 2) {
 						Pole& pole = _poles[ni + i / 2];
 						TC x = pole.p2;
 						x *= (T)-4.0 * w02;
@@ -278,13 +313,13 @@ void MultimodeFilter::setParams(
 							T b0 = pole.r + f1a + f2a;
 							T b1 = (T)-2.0 * pole.r + (f2a + f2a);
 							T b2 = pole.r - f1a + f2a;
-							_filters[ni + i].setParams(a0, a1, a2, b0, b1, b2);
+							biquads.setParams(ni + i, a0, a1, a2, b0, b1, b2);
 						}
 						{
 							T b0 = pole.r + f1b + f2b;
 							T b1 = (T)-2.0 * pole.r + (f2b + f2b);
 							T b2 = pole.r - f1b + f2b;
-							_filters[ni + i + 1].setParams(a0, a1, a2, b0, b1, b2);
+							biquads.setParams(ni + i + 1, a0, a1, a2, b0, b1, b2);
 						}
 					}
 				}
@@ -298,15 +333,41 @@ void MultimodeFilter::setParams(
 	}
 }
 
-float MultimodeFilter::next(float sample) {
-	for (int i = 0; i < _nFilters; ++i) {
-		sample = _filters[i].next(sample);
-	}
-	return _outGain * sample;
+template struct bogaudio::dsp::MultimodeDesigner<4>;
+template struct bogaudio::dsp::MultimodeDesigner<16>;
+
+
+template<int N> void MultimodeBase<N>::design(
+	float sampleRate,
+	Type type,
+	int poles,
+	Mode mode,
+	float frequency,
+	float qbw,
+	BandwidthMode bwm
+) {
+	bool changed = false;
+	_designer.setParams(
+		changed,
+		_biquads,
+		_outGain,
+		sampleRate,
+		type,
+		poles,
+		mode,
+		frequency,
+		qbw,
+		bwm
+	);
 }
 
-void MultimodeFilter::reset() {
-	for (int i = 0; i < _nFilters; ++i) {
-		_filters[i].reset();
-	}
+template<int N> float MultimodeBase<N>::next(float sample) {
+	return _outGain * _biquads.next(sample);
 }
+
+template<int N> void MultimodeBase<N>::reset() {
+	_biquads.reset();
+}
+
+template struct bogaudio::dsp::MultimodeBase<4>;
+template struct bogaudio::dsp::MultimodeBase<16>;
