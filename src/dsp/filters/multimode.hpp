@@ -29,7 +29,7 @@ struct BiquadBank : Filter {
 #define BOGAUDIO_DSP_MULTIMODEFILTER_MAXBWPITCH 2.0f
 
 struct MultimodeTypes {
-	typedef double T;
+	typedef float T;
 	typedef std::complex<T> TC;
 
 	enum Type {

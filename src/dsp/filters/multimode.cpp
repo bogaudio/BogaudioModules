@@ -19,7 +19,7 @@ template<typename T, int N> void BiquadBank<T, N>::reset(int from) {
 	}
 }
 
-template<> float BiquadBank<double, 4>::next(float sample) {
+template<> float BiquadBank<MultimodeTypes::T, 4>::next(float sample) {
 	assert(_n <= 4);
 	for (int i = 0; i < _n; ++i) {
 		sample = _biquads[i].next(sample);
@@ -27,7 +27,7 @@ template<> float BiquadBank<double, 4>::next(float sample) {
 	return sample;
 }
 
-template<> float BiquadBank<double, 16>::next(float sample) {
+template<> float BiquadBank<MultimodeTypes::T, 16>::next(float sample) {
 	assert(_n <= 16);
 	for (int i = 0; i < _n; ++i) {
 		sample = _biquads[i].next(sample);
@@ -35,8 +35,8 @@ template<> float BiquadBank<double, 16>::next(float sample) {
 	return sample;
 }
 
-template struct bogaudio::dsp::BiquadBank<double, 4>;
-template struct bogaudio::dsp::BiquadBank<double, 16>;
+template struct bogaudio::dsp::BiquadBank<MultimodeTypes::T, 4>;
+template struct bogaudio::dsp::BiquadBank<MultimodeTypes::T, 16>;
 
 
 template<int N> void MultimodeDesigner<N>::setParams(
