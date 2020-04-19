@@ -7,40 +7,129 @@
 
 using namespace bogaudio::dsp;
 
+#ifdef RACK_SIMD
+
+void Biquad4::setParams(int i, float a0, float a1, float a2, float b0, float b1, float b2) {
+	assert(i >= 0 && i < 4);
+	float ib0 = 1.0 / b0;
+	_a0[i] = a0 * ib0;
+	_a1[i] = a1 * ib0;
+	_a2[i] = a2 * ib0;
+	_b1[i] = b1 * ib0;
+	_b2[i] = b2 * ib0;
+}
+
+void Biquad4::reset() {
+	_x[0] = _x[1] = _x[2] = 0.0;
+	_y[0] = _y[1] = _y[2] = 0.0;
+}
+
+void Biquad4::setN(int n) {
+	assert(n <= 4);
+	for (; n < 4; ++n) {
+		setParams(n, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0);
+	}
+}
+
+float Biquad4::next(float sample) {
+	if (_disable) {
+		return sample;
+	}
+
+	_x[2] = _x[1];
+	_x[1] = _x[0];
+
+	// slower: _x[0] = _mm_shuffle_ps(_y[0].v, _y[0].v, _MM_SHUFFLE(2, 1, 0, 0)); _x[0][0] = sample;
+	_x[0] = float_4(sample, _y[0][0], _y[0][1], _y[0][2]);
+
+	_y[2] = _y[1];
+	_y[1] = _y[0];
+	_y[0] = ((_a0 * _x[0]) + (_a1 * _x[1]) + (_a2 * _x[2])) - ((_b1 * _y[1]) + (_b2 * _y[2]));
+	return _y[0][3];
+}
+
+template<> void BiquadBank<MultimodeTypes::T, 4>::setParams(int i, MultimodeTypes::T a0, MultimodeTypes::T a1, MultimodeTypes::T a2, MultimodeTypes::T b0, MultimodeTypes::T b1, MultimodeTypes::T b2) {
+	assert(i >= 0 && i < 4);
+	_biquads->setParams(i, a0, a1, a2, b0, b1, b2);
+}
+
+template<> void BiquadBank<MultimodeTypes::T, 4>::reset() {
+	_biquads->reset();
+}
+
+template<> void BiquadBank<MultimodeTypes::T, 4>::setN(int n) {
+	for (; n < 4; ++n) {
+		_biquads->setParams(n, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0);
+	}
+}
+
+template<> float BiquadBank<MultimodeTypes::T, 4>::next(float sample) {
+	return _biquads->next(sample);
+}
+
+template<> void BiquadBank<MultimodeTypes::T, 16>::setParams(int i, MultimodeTypes::T a0, MultimodeTypes::T a1, MultimodeTypes::T a2, MultimodeTypes::T b0, MultimodeTypes::T b1, MultimodeTypes::T b2) {
+	assert(i >= 0 && i < 16);
+	_biquads[i / 4].setParams(i % 4, a0, a1, a2, b0, b1, b2);
+}
+
+template<> void BiquadBank<MultimodeTypes::T, 16>::reset() {
+	_biquads[0].reset();
+	_biquads[1].reset();
+	_biquads[2].reset();
+	_biquads[3].reset();
+}
+
+template<> void BiquadBank<MultimodeTypes::T, 16>::setN(int n) {
+	for (int i = n, nn = n + (4 - n % 4); i < nn; ++i) {
+		_biquads[i / 4].setParams(i % 4, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0);
+	}
+	for (int i = 0; i < 4; ++i) {
+		_biquads[i].disable(4 * i > n);
+	}
+}
+
+template<> float BiquadBank<MultimodeTypes::T, 16>::next(float sample) {
+	sample = _biquads[0].next(sample);
+	sample = _biquads[1].next(sample);
+	sample = _biquads[2].next(sample);
+	return _biquads[3].next(sample);
+}
+
+#else
+
 template<typename T, int N> void BiquadBank<T, N>::setParams(int i, T a0, T a1, T a2, T b0, T b1, T b2) {
 	assert(i >= 0 && i < N);
 	_biquads[i].setParams(a0, a1, a2, b0, b1, b2);
 }
 
-template<typename T, int N> void BiquadBank<T, N>::reset(int from) {
-	assert(from >= 0);
-	for (; from < N; ++from) {
-		_biquads[from].reset();
+template<typename T, int N> void BiquadBank<T, N>::reset() {
+	for (int i = 0; i < N; ++i) {
+		_biquads[i].reset();
 	}
 }
 
-template<> float BiquadBank<MultimodeTypes::T, 4>::next(float sample) {
-	assert(_n <= 4);
+template<typename T, int N> void BiquadBank<T, N>::setN(int n) {
+	assert(n <= N);
+	_n = n;
+	for (; n < N; ++n) {
+		_biquads[n].reset();
+	}
+}
+
+template<typename T, int N> float BiquadBank<T, N>::next(float sample) {
 	for (int i = 0; i < _n; ++i) {
 		sample = _biquads[i].next(sample);
 	}
 	return sample;
 }
 
-template<> float BiquadBank<MultimodeTypes::T, 16>::next(float sample) {
-	assert(_n <= 16);
-	for (int i = 0; i < _n; ++i) {
-		sample = _biquads[i].next(sample);
-	}
-	return sample;
-}
+#endif
 
 template struct bogaudio::dsp::BiquadBank<MultimodeTypes::T, 4>;
 template struct bogaudio::dsp::BiquadBank<MultimodeTypes::T, 16>;
 
 
 template<int N> void MultimodeDesigner<N>::setParams(
-	bool& changed,
 	BiquadBank<T, N>& biquads,
 	float& outGain,
 	float sampleRate,
@@ -59,7 +148,6 @@ template<int N> void MultimodeDesigner<N>::setParams(
 
 	bool repole = _type != type || _mode != mode || _nPoles != poles || (type == CHEBYSHEV_TYPE && (mode == LOWPASS_MODE || mode == HIGHPASS_MODE) && _qbw != qbw);
 	bool redesign = repole || _frequency != frequency || _qbw != qbw || _sampleRate != sampleRate || _bandwidthMode != bwm;
-	changed = redesign;
 	_sampleRate = sampleRate;
 	_half2PiST = M_PI * (1.0f / sampleRate);
 	_type = type;
@@ -120,9 +208,8 @@ template<int N> void MultimodeDesigner<N>::setParams(
 		switch (_mode) {
 			case LOWPASS_MODE:
 			case HIGHPASS_MODE: {
-				biquads.reset(_nBiquads);
 				_nBiquads = _nPoles / 2 + _nPoles % 2;
-				biquads.setSectionsInUse(_nBiquads);
+				biquads.setN(_nBiquads);
 
 				// T iq = (1.0 / std::sqrt(2.0)) - 0.65 * _qbw;
 				T iq = (T)0.8 - (T)0.6 * _qbw;
@@ -181,9 +268,8 @@ template<int N> void MultimodeDesigner<N>::setParams(
 
 			case BANDPASS_MODE:
 			case BANDREJECT_MODE: {
-				biquads.reset(_nBiquads);
 				_nBiquads = ((_nPoles / 2) * 2) + (_nPoles % 2);
-				biquads.setSectionsInUse(_nBiquads);
+				biquads.setN(_nBiquads);
 
 				T wdl = 0.0;
 				T wdh = 0.0;
@@ -346,9 +432,7 @@ template<int N> void MultimodeBase<N>::design(
 	float qbw,
 	BandwidthMode bwm
 ) {
-	bool changed = false;
 	_designer.setParams(
-		changed,
 		_biquads,
 		_outGain,
 		sampleRate,

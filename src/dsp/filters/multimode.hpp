@@ -4,17 +4,45 @@
 
 #include "filters/filter.hpp"
 
+#ifdef RACK_SIMD
+#include "simd/vector.hpp"
+using rack::simd::float_4;
+#endif
+
 namespace bogaudio {
 namespace dsp {
 
+#ifdef RACK_SIMD
+	struct Biquad4 {
+		float_4 _a0;
+		float_4 _a1;
+		float_4 _a2;
+		float_4 _b1;
+		float_4 _b2;
+		float_4 _x[3] {};
+		float_4 _y[3] {};
+		bool _disable = false;
+
+		void setParams(int i, float a0, float a1, float a2, float b0, float b1, float b2);
+		void reset();
+		void setN(int n);
+		inline void disable(bool disable) { _disable = disable; }
+		float next(float sample);
+	};
+#endif
+
 template<typename T, int N>
 struct BiquadBank : Filter {
+#ifdef RACK_SIMD
+	Biquad4 _biquads[N / 4];
+#else
 	BiquadFilter<T> _biquads[N];
 	int _n = N;
+#endif
 
 	void setParams(int i, T a0, T a1, T a2, T b0, T b1, T b2);
-	void reset(int from = 0);
-	inline void setSectionsInUse(int n) { _n = n; }
+	void reset();
+	void setN(int n);
 	float next(float sample) override;
 };
 
@@ -99,7 +127,6 @@ struct MultimodeDesigner : MultimodeTypes {
 	int _nBiquads = 0;
 
 	void setParams(
-		bool& changed,
 		BiquadBank<T, N>& biquads,
 		float& outGain,
 		float sampleRate,
@@ -187,7 +214,7 @@ struct FourPoleButtworthHighpassFilter : MultimodeBase<4> {
 	}
 };
 
-struct TowPoleButtworthBandpassFilter : MultimodeBase<4> {
+struct TwoPoleButtworthBandpassFilter : MultimodeBase<4> {
 	inline void setParams(
 		float sampleRate,
 		float frequency,

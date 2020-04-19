@@ -7,6 +7,10 @@ ifdef TEST
 FLAGS += -DTEST=1
 endif
 
+ifndef NO_RACK_SIMD
+FLAGS += -DRACK_SIMD=1
+endif
+
 DSP_SOURCES = $(wildcard src/dsp/*cpp src/dsp/filters/*cpp)
 SOURCES = $(wildcard src/*.cpp) $(DSP_SOURCES)
 
@@ -31,7 +35,8 @@ TESTMAIN_OBJECTS = $(patsubst %, build/%.o, $(TESTMAIN_SOURCES))
 TESTMAIN_DEPS = $(patsubst %, build/%.d, $(TESTMAIN_SOURCES))
 -include $(TESTMAIN_DEPS)
 testmain: $(TESTMAIN_OBJECTS)
-	$(CXX) -o $@ $^ ../../build/src/util.cpp.o
+	# $(CXX) -o $@ $^ ../../build/src/util.cpp.o
+	$(CXX) -o $@ $^
 testmain_clean:
 	rm -f testmain $(TESTMAIN_OBJECTS)
 
