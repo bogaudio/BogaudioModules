@@ -34,6 +34,28 @@ void Mix8::processAll(const ProcessArgs& args) {
 		fromExp = fromExpander();
 	}
 
+	if (!(
+		inputs[IN1_INPUT].isConnected() ||
+		inputs[IN2_INPUT].isConnected() ||
+		inputs[IN3_INPUT].isConnected() ||
+		inputs[IN4_INPUT].isConnected() ||
+		inputs[IN5_INPUT].isConnected() ||
+		inputs[IN6_INPUT].isConnected() ||
+		inputs[IN7_INPUT].isConnected() ||
+		inputs[IN8_INPUT].isConnected()
+	)) {
+		if (_wasActive > 0) {
+			--_wasActive;
+			for (int i = 0; i < 8; ++i) {
+				_channels[i]->reset();
+				toExp->active[i] = false;
+			}
+			_rmsLevel = 0.0f;
+		}
+		return;
+	}
+	_wasActive = 2;
+
 	bool solo =
 		params[MUTE1_PARAM].getValue() > 1.5f ||
 		params[MUTE2_PARAM].getValue() > 1.5f ||
@@ -53,17 +75,27 @@ void Mix8::processAll(const ProcessArgs& args) {
 		}
 		_channels[0]->next(sample, solo);
 		toExp->preFader[0] = sample;
+		toExp->active[0] = inputs[IN1_INPUT].isConnected();
 
 		for (int i = 1; i < 8; ++i) {
 			float sample = 0.0f;
+			bool channelActive = false;
 			if (inputs[IN1_INPUT + 3 * i].isConnected()) {
 				sample = inputs[IN1_INPUT + 3 * i].getVoltageSum();
+				_channels[i]->next(sample, solo);
+				channelActive = true;
 			}
 			else if (_polyChannelOffset >= 0) {
 				sample = inputs[IN1_INPUT].getPolyVoltage(_polyChannelOffset + i);
+				_channels[i]->next(sample, solo);
+				channelActive = true;
 			}
-			_channels[i]->next(sample, solo);
+			else {
+				_channels[i]->out = 0.0f;
+				_channels[i]->rms = 0.0f;
+			}
 			toExp->preFader[i] = sample;
+			toExp->active[i] = channelActive;
 		}
 	}
 
@@ -293,6 +325,12 @@ void Mix8x::sampleRateChange() {
 	_returnBSL.setParams(sr, MixerChannel::levelSlewTimeMS, MixerChannel::maxDecibels - MixerChannel::minDecibels);
 }
 
+void Mix8x::modulate() {
+	for (int i = 0; i < 8; ++i) {
+		_channels[i]->modulate();
+	}
+}
+
 void Mix8x::processAll(const ProcessArgs& args) {
 	if (!baseConnected()) {
 		outputs[SEND_A_OUTPUT].setVoltage(0.0f);
@@ -304,50 +342,65 @@ void Mix8x::processAll(const ProcessArgs& args) {
 	Mix8ExpanderMessage* to = toBase();
 	float sendA = 0.0f;
 	float sendB = 0.0f;
+	bool sendAActive = outputs[SEND_A_OUTPUT].isConnected();
+	bool sendBActive = outputs[SEND_B_OUTPUT].isConnected();
 	for (int i = 0; i < 8; ++i) {
-		_channels[i]->next(from->preFader[i], from->postFader[i]);
-		to->postEQ[i] = _channels[i]->postEQ;
-		sendA += _channels[i]->sendA;
-		sendB += _channels[i]->sendB;
+		if (from->active[i]) {
+			_channels[i]->next(from->preFader[i], from->postFader[i], sendAActive, sendBActive);
+			to->postEQ[i] = _channels[i]->postEQ;
+			sendA += _channels[i]->sendA;
+			sendB += _channels[i]->sendB;
+		}
+		else {
+			to->postEQ[i] = from->preFader[i];
+		}
 	}
 	outputs[SEND_A_OUTPUT].setVoltage(_saturatorA.next(sendA));
 	outputs[SEND_B_OUTPUT].setVoltage(_saturatorA.next(sendB));
 
-	float levelA = clamp(params[LEVEL_A_PARAM].getValue(), 0.0f, 1.0f);
-	if (inputs[LEVEL_A_INPUT].isConnected()) {
-		levelA *= clamp(inputs[LEVEL_A_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
-	}
-	levelA = 1.0f - levelA;
-	levelA *= Amplifier::minDecibels;
-	_returnAAmp.setLevel(_returnASL.next(levelA));
-	if (inputs[L_A_INPUT].isConnected()) {
-		to->returnA[0] = _returnAAmp.next(inputs[L_A_INPUT].getVoltage());
-	}
-	else {
-		to->returnA[0] = 0.0f;
-	}
-	if (inputs[R_A_INPUT].isConnected()) {
-		to->returnA[1] = _returnAAmp.next(inputs[R_A_INPUT].getVoltage());
-	}
-	else {
-		to->returnA[1] = to->returnA[0];
+	bool lAActive = inputs[L_A_INPUT].isConnected();
+	bool rAActive = inputs[R_A_INPUT].isConnected();
+	if (lAActive || rAActive) {
+		float levelA = clamp(params[LEVEL_A_PARAM].getValue(), 0.0f, 1.0f);
+		if (inputs[LEVEL_A_INPUT].isConnected()) {
+			levelA *= clamp(inputs[LEVEL_A_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+		}
+		levelA = 1.0f - levelA;
+		levelA *= Amplifier::minDecibels;
+		_returnAAmp.setLevel(_returnASL.next(levelA));
+		if (lAActive) {
+			to->returnA[0] = _returnAAmp.next(inputs[L_A_INPUT].getVoltage());
+		}
+		else {
+			to->returnA[0] = 0.0f;
+		}
+		if (rAActive) {
+			to->returnA[1] = _returnAAmp.next(inputs[R_A_INPUT].getVoltage());
+		}
+		else {
+			to->returnA[1] = to->returnA[0];
+		}
 	}
 
-	float levelB = clamp(params[LEVEL_B_PARAM].getValue(), 0.0f, 1.0f);
-	levelB = 1.0f - levelB;
-	levelB *= Amplifier::minDecibels;
-	_returnBAmp.setLevel(_returnBSL.next(levelB));
-	if (inputs[L_B_INPUT].isConnected()) {
-		to->returnB[0] = _returnBAmp.next(inputs[L_B_INPUT].getVoltage());
-	}
-	else {
-		to->returnB[0] = 0.0f;
-	}
-	if (inputs[R_B_INPUT].isConnected()) {
-		to->returnB[1] = _returnBAmp.next(inputs[R_B_INPUT].getVoltage());
-	}
-	else {
-		to->returnB[1] = to->returnB[0];
+	bool lBActive = inputs[L_B_INPUT].isConnected();
+	bool rBActive = inputs[R_B_INPUT].isConnected();
+	if (lBActive || rBActive) {
+		float levelB = clamp(params[LEVEL_B_PARAM].getValue(), 0.0f, 1.0f);
+		levelB = 1.0f - levelB;
+		levelB *= Amplifier::minDecibels;
+		_returnBAmp.setLevel(_returnBSL.next(levelB));
+		if (lBActive) {
+			to->returnB[0] = _returnBAmp.next(inputs[L_B_INPUT].getVoltage());
+		}
+		else {
+			to->returnB[0] = 0.0f;
+		}
+		if (rBActive) {
+			to->returnB[1] = _returnBAmp.next(inputs[R_B_INPUT].getVoltage());
+		}
+		else {
+			to->returnB[1] = to->returnB[0];
+		}
 	}
 }
 

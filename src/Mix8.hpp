@@ -1,7 +1,7 @@
 #pragma once
 
 #include "bogaudio.hpp"
-#include "mixer.hpp"
+#include "mixer_expander.hpp"
 #include "dsp/signal.hpp"
 
 using namespace bogaudio::dsp;
@@ -91,6 +91,7 @@ struct Mix8 : ExpandableModule<Mix8ExpanderMessage, BGModule> {
 	RootMeanSquare _rms;
 	float _rmsLevel = 0.0f;
 	Mix8ExpanderMessage _dummyExpanderMessage;
+	int _wasActive = 0;
 
 	Mix8() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
@@ -325,6 +326,7 @@ struct Mix8x : ExpanderModule<Mix8ExpanderMessage, BGModule> {
 	}
 
 	void sampleRateChange() override;
+	void modulate() override;
 	void processAll(const ProcessArgs& args) override;
 };
 
