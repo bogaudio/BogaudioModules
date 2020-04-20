@@ -85,4 +85,4 @@ struct UnisonWidget : ModuleWidget {
 	}
 };
 
-Model* modelUnison = createModel<Unison, UnisonWidget>("Bogaudio-Unison", "UNISON", "Poly unison voicing utility with detune", "Polyphonic");
+Model* modelUnison = createModel<Unison, UnisonWidget>("Bogaudio-Unison", "UNISON", "Polyphonic unison voicing processor with detune", "Polyphonic");

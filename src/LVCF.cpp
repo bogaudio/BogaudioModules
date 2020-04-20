@@ -229,4 +229,4 @@ struct LVCFWidget : ModuleWidget {
 	}
 };
 
-Model* modelLVCF = createModel<LVCF, LVCFWidget>("Bogaudio-LVCF", "LVCF", "Compact multimode filter", "Filter", "Polyphonic");
+Model* modelLVCF = createModel<LVCF, LVCFWidget>("Bogaudio-LVCF", "LVCF", "Multimode filter", "Filter", "Polyphonic");

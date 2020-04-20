@@ -82,4 +82,4 @@ struct NoiseWidget : ModuleWidget {
 	}
 };
 
-Model* modelNoise = bogaudio::createModel<Noise, NoiseWidget>("Bogaudio-Noise", "NOISE", "Noise source with multiple flavors & absolute value", "Noise", "Random", "Polyphonic");
+Model* modelNoise = bogaudio::createModel<Noise, NoiseWidget>("Bogaudio-Noise", "NOISE", "Noise source", "Noise", "Random", "Polyphonic");

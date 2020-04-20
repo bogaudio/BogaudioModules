@@ -96,4 +96,4 @@ struct StackWidget : ModuleWidget {
 	}
 };
 
-Model* modelStack = bogaudio::createModel<Stack, StackWidget>("Bogaudio-Stack", "STACK", "Pitch CV transposer, for stacking oscillators", "Tuner", "Polyphonic");
+Model* modelStack = bogaudio::createModel<Stack, StackWidget>("Bogaudio-Stack", "STACK", "Pitch CV transposer", "Tuner", "Polyphonic");

@@ -163,4 +163,4 @@ struct ASRWidget : ModuleWidget {
 	}
 };
 
-Model* modelASR = createModel<ASR, ASRWidget>("Bogaudio-ASR", "ASR", "Utility attack/sustain/release envelope generator", "Envelope generator", "Polyphonic");
+Model* modelASR = createModel<ASR, ASRWidget>("Bogaudio-ASR", "ASR", "Attack/sustain/release envelope generator", "Envelope generator", "Polyphonic");

@@ -157,4 +157,4 @@ struct LVCOWidget : ModuleWidget {
 	}
 };
 
-Model* modelLVCO = createModel<LVCO, LVCOWidget>("Bogaudio-LVCO", "LVCO", "Compact oscillator", "Oscillator", "Polyphonic");
+Model* modelLVCO = createModel<LVCO, LVCOWidget>("Bogaudio-LVCO", "LVCO", "Oscillator", "Oscillator", "Polyphonic");

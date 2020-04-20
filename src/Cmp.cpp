@@ -211,4 +211,4 @@ struct CmpWidget : ModuleWidget {
 	}
 };
 
-Model* modelCmp = bogaudio::createModel<Cmp, CmpWidget>("Bogaudio-Cmp", "CMP", "Window comparator utility", "Logic", "Polyphonic");
+Model* modelCmp = bogaudio::createModel<Cmp, CmpWidget>("Bogaudio-Cmp", "CMP", "Window comparator", "Logic", "Polyphonic");

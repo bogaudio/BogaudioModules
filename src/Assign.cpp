@@ -148,4 +148,4 @@ struct AssignWidget : ModuleWidget {
 	}
 };
 
-Model* modelAssign = createModel<Assign, AssignWidget>("Bogaudio-Assign", "ASSIGN", "Poly voice (re)assigner", "Polyphonic");
+Model* modelAssign = createModel<Assign, AssignWidget>("Bogaudio-Assign", "ASSIGN", "Polyphonic voice (re)assigner", "Polyphonic");

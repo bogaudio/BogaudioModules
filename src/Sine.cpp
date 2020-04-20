@@ -171,4 +171,4 @@ struct SineWidget : ModuleWidget {
 	}
 };
 
-Model* modelSine = createModel<Sine, SineWidget>("Bogaudio-Sine", "SINE", "Compact oscillator with phase offset", "Oscillator", "Polyphonic");
+Model* modelSine = createModel<Sine, SineWidget>("Bogaudio-Sine", "SINE", "Sine oscillator with phase offset", "Oscillator", "Polyphonic");

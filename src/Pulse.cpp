@@ -103,4 +103,4 @@ struct PulseWidget : ModuleWidget {
 	}
 };
 
-Model* modelPulse = createModel<Pulse, PulseWidget>("Bogaudio-Pulse", "PULSE", "Compact square/pulse oscillator with PWM", "Oscillator", "Polyphonic");
+Model* modelPulse = createModel<Pulse, PulseWidget>("Bogaudio-Pulse", "PULSE", "Square/pulse oscillator", "Oscillator", "Polyphonic");

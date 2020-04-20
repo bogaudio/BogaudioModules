@@ -429,4 +429,4 @@ struct ArpWidget : ModuleWidget {
 	}
 };
 
-Model* modelArp = createModel<Arp, ArpWidget>("Bogaudio-Arp", "ARP", "Poly-input arpeggiator", "Arpeggiator", "Polyphonic");
+Model* modelArp = createModel<Arp, ArpWidget>("Bogaudio-Arp", "ARP", "Polyphonic-input arpeggiator", "Arpeggiator", "Polyphonic");

@@ -208,4 +208,4 @@ struct Mute8Widget : ModuleWidget {
 	}
 };
 
-Model* modelMute8 = bogaudio::createModel<Mute8, Mute8Widget>("Bogaudio-Mute8", "MUTE8", "Eight independent mutes with CV control", "Polyphonic");
+Model* modelMute8 = bogaudio::createModel<Mute8, Mute8Widget>("Bogaudio-Mute8", "MUTE8", "8 independent mutes with CV control", "Polyphonic");

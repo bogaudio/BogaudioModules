@@ -86,4 +86,4 @@ struct EQWidget : ModuleWidget {
 	}
 };
 
-Model* modelEQ = createModel<EQ, EQWidget>("Bogaudio-EQ", "EQ", "Compact 3-channel equalizer", "Equalizer", "Polyphonic");
+Model* modelEQ = createModel<EQ, EQWidget>("Bogaudio-EQ", "EQ", "3-band equalizer", "Equalizer", "Polyphonic");
