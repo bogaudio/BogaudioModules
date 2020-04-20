@@ -64,7 +64,7 @@ struct VCF : BGModule {
 	};
 
 	static constexpr float maxFrequency = 20000.0f;
-	static constexpr float minFrequency = BOGAUDIO_DSP_MULTIMODEFILTER_MINFREQUENCY;
+	static constexpr float minFrequency = MultimodeFilter::minFrequency;
 	MultimodeFilter::Mode _mode = MultimodeFilter::UNKNOWN_MODE;
 	MultimodeFilter::BandwidthMode _bandwidthMode = MultimodeFilter::PITCH_BANDWIDTH_MODE;
 	Engine* _engines[maxChannels] {};

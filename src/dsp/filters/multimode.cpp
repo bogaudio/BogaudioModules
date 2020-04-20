@@ -7,6 +7,7 @@
 
 using namespace bogaudio::dsp;
 
+
 #ifdef RACK_SIMD
 
 void Biquad4::setParams(int i, float a0, float a1, float a2, float b0, float b1, float b2) {
@@ -127,6 +128,19 @@ template<typename T, int N> float BiquadBank<T, N>::next(float sample) {
 
 template struct bogaudio::dsp::BiquadBank<MultimodeTypes::T, 4>;
 template struct bogaudio::dsp::BiquadBank<MultimodeTypes::T, 16>;
+
+
+constexpr int MultimodeTypes::minPoles;
+constexpr int MultimodeTypes::maxPoles;
+constexpr int MultimodeTypes::modPoles;
+constexpr float MultimodeTypes::minFrequency;
+constexpr float MultimodeTypes::maxFrequency;
+constexpr float MultimodeTypes::minQbw;
+constexpr float MultimodeTypes::maxQbw;
+constexpr float MultimodeTypes::minBWLinear;
+constexpr float MultimodeTypes::maxBWLinear;
+constexpr float MultimodeTypes::minBWPitch;
+constexpr float MultimodeTypes::maxBWPitch;
 
 
 template<int N> void MultimodeDesigner<N>::setParams(

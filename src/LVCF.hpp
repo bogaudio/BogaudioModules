@@ -60,7 +60,7 @@ struct LVCF : BGModule {
 	};
 
 	static constexpr float maxFrequency = 20000.0f;
-	static constexpr float minFrequency = BOGAUDIO_DSP_MULTIMODEFILTER_MINFREQUENCY;
+	static constexpr float minFrequency = MultimodeFilter::minFrequency;
 	MultimodeFilter::Mode _mode = MultimodeFilter::UNKNOWN_MODE;
 	int _polesSetting = 4;
 	int _poles = 0;
