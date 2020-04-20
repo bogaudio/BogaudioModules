@@ -29,11 +29,13 @@ models.each do |model|
     else
       tags = []
     end
+    anchor = slug.sub(/^Bogaudio-/, '').downcase
 
     modules << {
       slug: slug,
       name: name,
       description: description,
+      manualUrl: 'https://github.com/bogaudio/BogaudioModules/blob/master/README.md#' + anchor,
       tags: tags
     }
   else
