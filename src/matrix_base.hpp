@@ -38,8 +38,8 @@ struct MatrixBaseModuleWidget : ModuleWidget {
 		OptionsMenuItem::addToMenu(g, menu);
 
 		OptionsMenuItem* c = new OptionsMenuItem("Output clipping");
-		c->addItem(OptionMenuItem("Soft", [m]() { return m->_clippingMode == MatrixBaseModule::SOFT_CLIPPING; }, [m]() { m->_clippingMode = MatrixBaseModule::SOFT_CLIPPING; }));
-		c->addItem(OptionMenuItem("Hard", [m]() { return m->_clippingMode == MatrixBaseModule::HARD_CLIPPING; }, [m]() { m->_clippingMode = MatrixBaseModule::HARD_CLIPPING; }));
+		c->addItem(OptionMenuItem("Soft/saturated (better for audio)", [m]() { return m->_clippingMode == MatrixBaseModule::SOFT_CLIPPING; }, [m]() { m->_clippingMode = MatrixBaseModule::SOFT_CLIPPING; }));
+		c->addItem(OptionMenuItem("Hard/clipped (better for CV)", [m]() { return m->_clippingMode == MatrixBaseModule::HARD_CLIPPING; }, [m]() { m->_clippingMode = MatrixBaseModule::HARD_CLIPPING; }));
 		OptionsMenuItem::addToMenu(c, menu);
 	}
 };
