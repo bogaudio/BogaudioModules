@@ -72,18 +72,72 @@ void KnobMatrixModule::dataFromJson(json_t* root) {
 }
 
 
-#define CLICK_TO_INVERT "click_to_invert"
+#define INVERTING "inverting"
+#define INVERTING_CLICK "click"
+#define INVERTING_PARAM "param"
+#define INVERTING_DISABLED "disabled"
 
 json_t* SwitchMatrixModule::dataToJson() {
 	json_t* root = MatrixBaseModule::dataToJson();
-	json_object_set_new(root, CLICK_TO_INVERT, json_boolean(_clickToInvert));
+	switch (_inverting) {
+		case CLICK_INVERTING: {
+			json_object_set_new(root, INVERTING, json_string(INVERTING_CLICK));
+			break;
+		}
+		case PARAM_INVERTING: {
+			json_object_set_new(root, INVERTING, json_string(INVERTING_PARAM));
+			break;
+		}
+		case NO_INVERTING: {
+			json_object_set_new(root, INVERTING, json_string(INVERTING_DISABLED));
+			break;
+		}
+	}
 	return root;
 }
 
 void SwitchMatrixModule::dataFromJson(json_t* root) {
 	MatrixBaseModule::dataFromJson(root);
-	json_t* c = json_object_get(root, CLICK_TO_INVERT);
-	if (c) {
-		_clickToInvert = json_is_true(c);
+	json_t* i = json_object_get(root, INVERTING);
+	if (i) {
+		const char* s = json_string_value(i);
+		if (s) {
+			if (0 == strcmp(INVERTING_CLICK, s)) {
+				setInverting(CLICK_INVERTING);
+			}
+			else if (0 == strcmp(INVERTING_PARAM, s)) {
+				setInverting(PARAM_INVERTING);
+			}
+			else if (0 == strcmp(INVERTING_DISABLED, s)) {
+				setInverting(NO_INVERTING);
+			}
+		}
 	}
+}
+
+void SwitchMatrixModule::setInverting(Inverting inverting) {
+	_inverting = inverting;
+
+	float minValue = -1.0f;
+	switch (_inverting) {
+		case CLICK_INVERTING:
+		case PARAM_INVERTING: {
+			minValue = -1.0f;
+			break;
+		}
+		default: {
+			minValue = 0.0f;
+		}
+	}
+	for (ParamQuantity* pq : _switchParamQuantities) {
+		pq->minValue = minValue;
+		if (pq->getValue() < minValue) {
+			pq->setValue(minValue);
+		}
+	}
+}
+
+void SwitchMatrixModule::configSwitchParam(int id, const char* label) {
+	configParam(id, -1.0f, 1.0f, 0.0f, label, "%", 0.0f, 100.0f);
+	_switchParamQuantities.push_back(paramQuantities[id]);
 }

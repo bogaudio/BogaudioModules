@@ -109,7 +109,14 @@ struct KnobMatrixModuleWidget : MatrixBaseModuleWidget {
 };
 
 struct SwitchMatrixModule : MatrixModule {
-	bool _clickToInvert = true;
+	enum Inverting {
+		CLICK_INVERTING,
+		PARAM_INVERTING,
+		NO_INVERTING
+	};
+
+	Inverting _inverting = CLICK_INVERTING;
+	std::vector<ParamQuantity*> _switchParamQuantities;
 
 	SwitchMatrixModule(int n, int firstParamID, int firstInputID, int firstOutputID)
 	: MatrixModule(n, firstParamID, firstInputID, firstOutputID)
@@ -117,13 +124,15 @@ struct SwitchMatrixModule : MatrixModule {
 
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
+	void setInverting(Inverting inverting);
+	void configSwitchParam(int id, const char* label);
 };
 
 struct SwitchMatrixModuleWidget : MatrixBaseModuleWidget {
 	template<class W> void createSwitch(math::Vec& position, SwitchMatrixModule* module, int id) {
 		auto s = dynamic_cast<W*>(createParam<W>(position, module, id));
 		if (module) {
-			s->setClickToInvertCallback([module]() { return module->_clickToInvert; });
+			s->setClickToInvertCallback([module]() { return module->_inverting == SwitchMatrixModule::CLICK_INVERTING; });
 		}
 		addParam(s);
 	}
@@ -132,11 +141,12 @@ struct SwitchMatrixModuleWidget : MatrixBaseModuleWidget {
 		SwitchMatrixModule* m = dynamic_cast<SwitchMatrixModule*>(module);
 		assert(m);
 		MatrixBaseModuleWidget::appendContextMenu(menu);
-		menu->addChild(new OptionMenuItem(
-			"Click to invert",
-			[m]() { return m->_clickToInvert; },
-			[m]() { m->_clickToInvert = !m->_clickToInvert; }
-		));
+
+		OptionsMenuItem* i = new OptionsMenuItem("Inverting");
+		i->addItem(OptionMenuItem("On second click", [m]() { return m->_inverting == SwitchMatrixModule::CLICK_INVERTING; }, [m]() { m->setInverting(SwitchMatrixModule::CLICK_INVERTING); }));
+		i->addItem(OptionMenuItem("By param entry (right-click)", [m]() { return m->_inverting == SwitchMatrixModule::PARAM_INVERTING; }, [m]() { m->setInverting(SwitchMatrixModule::PARAM_INVERTING); }));
+		i->addItem(OptionMenuItem("Disabled", [m]() { return m->_inverting == SwitchMatrixModule::NO_INVERTING; }, [m]() { m->setInverting(SwitchMatrixModule::NO_INVERTING); }));
+		OptionsMenuItem::addToMenu(i, menu);
 	}
 };
 

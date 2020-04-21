@@ -46,22 +46,22 @@ struct Switch44 : SwitchMatrixModule {
 
 	Switch44() : SwitchMatrixModule(4, MIX11_PARAM, IN1_INPUT, OUT1_OUTPUT) {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
-		configParam(MIX11_PARAM, -1.0f, 1.0f, 0.0f, "Mix 1A", "%", 0.0f, 100.0f);
-		configParam(MIX21_PARAM, -1.0f, 1.0f, 0.0f, "Mix 2A", "%", 0.0f, 100.0f);
-		configParam(MIX31_PARAM, -1.0f, 1.0f, 0.0f, "Mix 3A", "%", 0.0f, 100.0f);
-		configParam(MIX41_PARAM, -1.0f, 1.0f, 0.0f, "Mix 4A", "%", 0.0f, 100.0f);
-		configParam(MIX12_PARAM, -1.0f, 1.0f, 0.0f, "Mix 1B", "%", 0.0f, 100.0f);
-		configParam(MIX22_PARAM, -1.0f, 1.0f, 0.0f, "Mix 2B", "%", 0.0f, 100.0f);
-		configParam(MIX32_PARAM, -1.0f, 1.0f, 0.0f, "Mix 3B", "%", 0.0f, 100.0f);
-		configParam(MIX42_PARAM, -1.0f, 1.0f, 0.0f, "Mix 4B", "%", 0.0f, 100.0f);
-		configParam(MIX13_PARAM, -1.0f, 1.0f, 0.0f, "Mix 1C", "%", 0.0f, 100.0f);
-		configParam(MIX23_PARAM, -1.0f, 1.0f, 0.0f, "Mix 2C", "%", 0.0f, 100.0f);
-		configParam(MIX33_PARAM, -1.0f, 1.0f, 0.0f, "Mix 3C", "%", 0.0f, 100.0f);
-		configParam(MIX43_PARAM, -1.0f, 1.0f, 0.0f, "Mix 4C", "%", 0.0f, 100.0f);
-		configParam(MIX14_PARAM, -1.0f, 1.0f, 0.0f, "Mix 1D", "%", 0.0f, 100.0f);
-		configParam(MIX24_PARAM, -1.0f, 1.0f, 0.0f, "Mix 2D", "%", 0.0f, 100.0f);
-		configParam(MIX34_PARAM, -1.0f, 1.0f, 0.0f, "Mix 3D", "%", 0.0f, 100.0f);
-		configParam(MIX44_PARAM, -1.0f, 1.0f, 0.0f, "Mix 4D", "%", 0.0f, 100.0f);
+		configSwitchParam(MIX11_PARAM, "Mix 1A");
+		configSwitchParam(MIX21_PARAM, "Mix 2A");
+		configSwitchParam(MIX31_PARAM, "Mix 3A");
+		configSwitchParam(MIX41_PARAM, "Mix 4A");
+		configSwitchParam(MIX12_PARAM, "Mix 1B");
+		configSwitchParam(MIX22_PARAM, "Mix 2B");
+		configSwitchParam(MIX32_PARAM, "Mix 3B");
+		configSwitchParam(MIX42_PARAM, "Mix 4B");
+		configSwitchParam(MIX13_PARAM, "Mix 1C");
+		configSwitchParam(MIX23_PARAM, "Mix 2C");
+		configSwitchParam(MIX33_PARAM, "Mix 3C");
+		configSwitchParam(MIX43_PARAM, "Mix 4C");
+		configSwitchParam(MIX14_PARAM, "Mix 1D");
+		configSwitchParam(MIX24_PARAM, "Mix 2D");
+		configSwitchParam(MIX34_PARAM, "Mix 3D");
+		configSwitchParam(MIX44_PARAM, "Mix 4D");
 	}
 };
 

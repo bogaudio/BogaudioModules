@@ -404,7 +404,7 @@ void InvertingIndicatorButton::onButton(const event::Button& e) {
 	else if (value < 1.0f) {
 		paramQuantity->setValue(1.0f);
 	}
-	else if (!clickToInvertCB || clickToInvertCB()) {
+	else if (paramQuantity->minValue < 0.0f && (!clickToInvertCB || clickToInvertCB())) {
 		paramQuantity->setValue(-1.0f);
 	}
 	else {
