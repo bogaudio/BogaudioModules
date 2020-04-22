@@ -116,6 +116,8 @@ struct SwitchMatrixModule : MatrixModule {
 	};
 
 	Inverting _inverting = CLICK_INVERTING;
+	bool _rowExclusive = false;
+	bool _columnExclusive = false;
 	std::vector<ParamQuantity*> _switchParamQuantities;
 
 	SwitchMatrixModule(int n, int firstParamID, int firstInputID, int firstOutputID)
@@ -126,6 +128,9 @@ struct SwitchMatrixModule : MatrixModule {
 	void dataFromJson(json_t* root) override;
 	void setInverting(Inverting inverting);
 	void configSwitchParam(int id, const char* label);
+	void switchChanged(int id, float value);
+	void setRowExclusive(bool e);
+	void setColumnExclusive(bool e);
 };
 
 struct SwitchMatrixModuleWidget : MatrixBaseModuleWidget {
@@ -133,6 +138,7 @@ struct SwitchMatrixModuleWidget : MatrixBaseModuleWidget {
 		auto s = dynamic_cast<W*>(createParam<W>(position, module, id));
 		if (module) {
 			s->setClickToInvertCallback([module]() { return module->_inverting == SwitchMatrixModule::CLICK_INVERTING; });
+			s->setOnChangeCallback([module](int id, float value) { module->switchChanged(id, value); });
 		}
 		addParam(s);
 	}
@@ -147,6 +153,9 @@ struct SwitchMatrixModuleWidget : MatrixBaseModuleWidget {
 		i->addItem(OptionMenuItem("By param entry (right-click)", [m]() { return m->_inverting == SwitchMatrixModule::PARAM_INVERTING; }, [m]() { m->setInverting(SwitchMatrixModule::PARAM_INVERTING); }));
 		i->addItem(OptionMenuItem("Disabled", [m]() { return m->_inverting == SwitchMatrixModule::NO_INVERTING; }, [m]() { m->setInverting(SwitchMatrixModule::NO_INVERTING); }));
 		OptionsMenuItem::addToMenu(i, menu);
+
+		menu->addChild(new OptionMenuItem("Exclusive by rows", [m]() { return m->_rowExclusive; }, [m]() { m->setRowExclusive(!m->_rowExclusive); }));
+		menu->addChild(new OptionMenuItem("Exclusive by columns", [m]() { return m->_columnExclusive; }, [m]() { m->setColumnExclusive(!m->_columnExclusive); }));
 	}
 };
 

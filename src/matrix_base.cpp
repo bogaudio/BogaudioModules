@@ -77,8 +77,12 @@ void KnobMatrixModule::dataFromJson(json_t* root) {
 #define INVERTING_PARAM "param"
 #define INVERTING_DISABLED "disabled"
 
+#define ROW_EXCLUSIVE "row_exclusive"
+#define COLUMN_EXCLUSIVE "column_exclusive"
+
 json_t* SwitchMatrixModule::dataToJson() {
 	json_t* root = MatrixBaseModule::dataToJson();
+
 	switch (_inverting) {
 		case CLICK_INVERTING: {
 			json_object_set_new(root, INVERTING, json_string(INVERTING_CLICK));
@@ -93,11 +97,16 @@ json_t* SwitchMatrixModule::dataToJson() {
 			break;
 		}
 	}
+
+	json_object_set_new(root, ROW_EXCLUSIVE, json_boolean(_rowExclusive));
+	json_object_set_new(root, COLUMN_EXCLUSIVE, json_boolean(_columnExclusive));
+
 	return root;
 }
 
 void SwitchMatrixModule::dataFromJson(json_t* root) {
 	MatrixBaseModule::dataFromJson(root);
+
 	json_t* i = json_object_get(root, INVERTING);
 	if (i) {
 		const char* s = json_string_value(i);
@@ -112,6 +121,15 @@ void SwitchMatrixModule::dataFromJson(json_t* root) {
 				setInverting(NO_INVERTING);
 			}
 		}
+	}
+
+	json_t* re = json_object_get(root, ROW_EXCLUSIVE);
+	if (re) {
+		_rowExclusive = json_is_true(re);
+	}
+	json_t* ce = json_object_get(root, COLUMN_EXCLUSIVE);
+	if (ce) {
+		_columnExclusive = json_is_true(ce);
 	}
 }
 
@@ -140,4 +158,65 @@ void SwitchMatrixModule::setInverting(Inverting inverting) {
 void SwitchMatrixModule::configSwitchParam(int id, const char* label) {
 	configParam(id, -1.0f, 1.0f, 0.0f, label, "%", 0.0f, 100.0f);
 	_switchParamQuantities.push_back(paramQuantities[id]);
+}
+
+void SwitchMatrixModule::switchChanged(int id, float value) {
+	if (value != 0.0f) {
+		int row = (id - _firstParamID) % _n;
+		int col = (id - _firstParamID) / _n;
+
+		if (_rowExclusive) {
+			for (int i = 0; i < col; ++i) {
+				_switchParamQuantities[i * _n + row]->setValue(0.0f);
+			}
+			for (int i = col + 1; i < _n; ++i) {
+				_switchParamQuantities[i * _n + row]->setValue(0.0f);
+			}
+		}
+
+		if (_columnExclusive) {
+			for (int i = 0; i < row; ++i) {
+				_switchParamQuantities[col * _n + i]->setValue(0.0f);
+			}
+			for (int i = row + 1; i < _n; ++i) {
+				_switchParamQuantities[col * _n + i]->setValue(0.0f);
+			}
+		}
+	}
+}
+
+void SwitchMatrixModule::setRowExclusive(bool e) {
+	_rowExclusive = e;
+	if (e) {
+		for (int i = 0; i < _n; ++i) {
+			int j = 0;
+			for (; j < _n; ++j) {
+				if (_switchParamQuantities[j * _n + i]->getValue() != 0.0f) {
+					break;
+				}
+			}
+			++j;
+			for (; j < _n; ++j) {
+				_switchParamQuantities[j * _n + i]->setValue(0.0f);
+			}
+		}
+	}
+}
+
+void SwitchMatrixModule::setColumnExclusive(bool e) {
+	_columnExclusive = e;
+	if (e) {
+		for (int i = 0; i < _n; ++i) {
+			int j = 0;
+			for (; j < _n; ++j) {
+				if (_switchParamQuantities[i * _n + j]->getValue() != 0.0f) {
+					break;
+				}
+			}
+			++j;
+			for (; j < _n; ++j) {
+				_switchParamQuantities[i * _n + j]->setValue(0.0f);
+			}
+		}
+	}
 }

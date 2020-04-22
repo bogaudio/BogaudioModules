@@ -133,10 +133,12 @@ struct InvertingIndicatorButton : ParamWidget {
 	CircularShadow* shadow;
 	IIBWidget* w;
 	std::function<bool()> clickToInvertCB;
+	std::function<void(int, float)> onChangeCB;
 
 	InvertingIndicatorButton(int dim);
 
 	inline void setClickToInvertCallback(std::function<bool()> fn) { clickToInvertCB = fn; }
+	inline void setOnChangeCallback(std::function<void(int, float)> fn) { onChangeCB = fn; }
 	void reset() override;
 	void randomize() override;
 	void onHover(const event::Hover& e) override;

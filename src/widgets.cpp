@@ -415,7 +415,11 @@ void InvertingIndicatorButton::onButton(const event::Button& e) {
 void InvertingIndicatorButton::onChange(const event::Change& e) {
 	fb->dirty = true;
 	if (paramQuantity) {
-		w->setValue(paramQuantity->getValue());
+		float v = paramQuantity->getValue();
+		w->setValue(v);
+		if (onChangeCB) {
+			onChangeCB(paramQuantity->paramId, v);
+		}
 	}
 	ParamWidget::onChange(e);
 }
