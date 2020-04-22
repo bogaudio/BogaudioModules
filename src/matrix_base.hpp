@@ -45,10 +45,13 @@ struct MatrixBaseModuleWidget : ModuleWidget {
 };
 
 struct MatrixModule : MatrixBaseModule {
+	static constexpr int maxN = 16;
 	int _n;
 	int _firstParamID;
 	int _firstInputID;
 	int _firstOutputID;
+
+	float* _paramValues = NULL;
 	Saturator* _saturators = NULL;
 
 	MatrixModule(int n, int firstParamID, int firstInputID, int firstOutputID)
@@ -57,13 +60,17 @@ struct MatrixModule : MatrixBaseModule {
 	, _firstInputID(firstInputID)
 	, _firstOutputID(firstOutputID)
 	{
+		assert(_n <= maxN);
+		_paramValues = new float[_n * _n];
 		_saturators = new Saturator[_n * maxChannels];
 	}
 	virtual ~MatrixModule() {
+		delete[] _paramValues;
 		delete[] _saturators;
 	}
 
 	int channels() override;
+	void modulate() override;
 	void processChannel(const ProcessArgs& args, int c) override;
 };
 

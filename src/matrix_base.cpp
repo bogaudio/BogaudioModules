@@ -39,12 +39,31 @@ int MatrixModule::channels() {
 	return inputs[_firstInputID].getChannels();
 }
 
+void MatrixModule::modulate() {
+	for (int i = 0, nn = _n * _n; i < nn; ++i) {
+		_paramValues[i] = params[_firstParamID + i].getValue();
+	}
+}
+
 void MatrixModule::processChannel(const ProcessArgs& args, int c) {
+	bool inActive[maxN];
+	float in[maxN];
 	for (int i = 0; i < _n; ++i) {
-		int paramOffset = _firstParamID + i * _n;
+		inActive[i] = inputs[_firstInputID + i].isConnected();
+		if (inActive[i]) {
+			in[i] = inputs[_firstInputID + i].getPolyVoltage(c) * _inputGainLevel;
+		}
+	}
+
+	for (int i = 0; i < _n; ++i) {
+		if (!outputs[_firstOutputID + i].isConnected()) {
+			continue;
+		}
 		float out = 0.0f;
 		for (int j = 0; j < _n; ++j) {
-			out += inputs[_firstInputID + j].getPolyVoltage(c) * _inputGainLevel * params[paramOffset + j].getValue();
+			if (inActive[i]) {
+				out += in[j] * _paramValues[i * _n + j];
+			}
 		}
 		if (_clippingMode != HARD_CLIPPING) {
 			out = _saturators[c * _n + i].next(out);
