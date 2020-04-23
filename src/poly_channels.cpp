@@ -27,8 +27,8 @@ Menu* PolyChannelsMenuItem::createChildMenu() {
 	PolyChannelsModule* m = _module;
 	menu->addChild(new OptionMenuItem("Monophonic", [m]() { return m->_polyChannels == 1; }, [m]() { m->_polyChannels = 1; }));
 	for (int i = 2; i <= _maxChannels; i++) {
-		char s[10];
-		snprintf(s, 10, "%d", i);
+		char s[16];
+		snprintf(s, 16, "%d", i);
 		menu->addChild(new OptionMenuItem(s, [m, i]() { return m->_polyChannels == i; }, [m, i]() { m->_polyChannels = i; }));
 	}
 	return menu;
@@ -36,7 +36,7 @@ Menu* PolyChannelsMenuItem::createChildMenu() {
 
 void PolyChannelsMenuItem::step() {
 	MenuItem::step();
-	char s[10];
-	snprintf(s, 10, "%d ▸", _module->_polyChannels);
+	char s[16];
+	snprintf(s, 16, "%d ▸", _module->_polyChannels);
 	this->rightText = s;
 }
