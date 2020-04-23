@@ -7,7 +7,7 @@ Modules for [VCV Rack](https://github.com/VCVRack/Rack), an open-source Eurorack
   - [Filters](#filters)
   - [Envelopes and Envelope Utilities](#envelopes)
   - [Mixers, Panners and VCAs](#mixers)
-  - [VCAs, Dynamics](#dynamics)
+  - [VCAs and Dynamics](#dynamics)
   - [Noise/Random, Sample and Hold](#random)
   - [Sequential Switches and Sequencers](#sequencers)
   - [Visualizers](#visualizers)
@@ -491,8 +491,6 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defin
 
 ### <a name="dynamics"></a> VCAs and Dynamics
 
-![Mixers screenshot](doc/www/effects.png)
-
 #### <a name="vca"></a> VCA
 
 ![Mixers screenshot](doc/www/vcas.png)
@@ -512,6 +510,8 @@ A voltage-controlled amplifier, capable of adding 12 decibels gain to the input.
 The level may be controlled with a 0-10V CV -- when CV is in use, it is attenuated by the corresponding slider.  The slider's toggle has a light indicating the output signal level.  The output saturates (soft clips) to +/-12V.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the IN input.
+
+![Mixers screenshot](doc/www/dynamics.png)
 
 #### <a name="amrm"></a> AM/RM
 

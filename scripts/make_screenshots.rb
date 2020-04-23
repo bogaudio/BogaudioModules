@@ -142,7 +142,7 @@ screens = [
     ]
   },
   {
-    file: 'effects.png',
+    file: 'dynamics.png',
     crop: true,
     rows: [
       ['AMRM', 'Pressor', 'Lmtr', 'Nsgt']
