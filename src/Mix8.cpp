@@ -51,6 +51,8 @@ void Mix8::processAll(const ProcessArgs& args) {
 				toExp->active[i] = false;
 			}
 			_rmsLevel = 0.0f;
+			outputs[L_OUTPUT].setVoltage(0.0f);
+			outputs[R_OUTPUT].setVoltage(0.0f);
 		}
 		return;
 	}

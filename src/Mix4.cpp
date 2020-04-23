@@ -47,6 +47,8 @@ void Mix4::processAll(const ProcessArgs& args) {
 				toExp->active[i] = false;
 			}
 			_rmsLevel = 0.0f;
+			outputs[L_OUTPUT].setVoltage(0.0f);
+			outputs[R_OUTPUT].setVoltage(0.0f);
 		}
 		return;
 	}
@@ -66,6 +68,7 @@ void Mix4::processAll(const ProcessArgs& args) {
 			sample = inputs[IN1_INPUT].getVoltageSum();
 		}
 		_channels[0]->next(sample, solo);
+		toExp->preFader[0] = sample;
 		toExp->active[0] = inputs[IN1_INPUT].isConnected();
 
 		for (int i = 1; i < 4; ++i) {
