@@ -5,8 +5,9 @@
 
 #include "filters/multimode.hpp"
 
-using namespace bogaudio::dsp;
-
+// using namespace bogaudio::dsp;
+namespace bogaudio { // gcc < 7 wants the namespaces this way with explicit template instantiations.
+namespace dsp {
 
 #ifdef RACK_SIMD
 
@@ -126,8 +127,8 @@ template<typename T, int N> float BiquadBank<T, N>::next(float sample) {
 
 #endif
 
-template struct bogaudio::dsp::BiquadBank<MultimodeTypes::T, 4>;
-template struct bogaudio::dsp::BiquadBank<MultimodeTypes::T, 16>;
+template struct BiquadBank<MultimodeTypes::T, 4>;
+template struct BiquadBank<MultimodeTypes::T, 16>;
 
 
 constexpr int MultimodeTypes::minPoles;
@@ -433,8 +434,8 @@ template<int N> void MultimodeDesigner<N>::setParams(
 	}
 }
 
-template struct bogaudio::dsp::MultimodeDesigner<4>;
-template struct bogaudio::dsp::MultimodeDesigner<16>;
+template struct MultimodeDesigner<4>;
+template struct MultimodeDesigner<16>;
 
 
 template<int N> void MultimodeBase<N>::design(
@@ -467,5 +468,8 @@ template<int N> void MultimodeBase<N>::reset() {
 	_biquads.reset();
 }
 
-template struct bogaudio::dsp::MultimodeBase<4>;
-template struct bogaudio::dsp::MultimodeBase<16>;
+template struct MultimodeBase<4>;
+template struct MultimodeBase<16>;
+
+} // namespace dsp
+} // namespace bogaudio
