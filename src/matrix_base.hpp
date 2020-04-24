@@ -61,7 +61,7 @@ struct MatrixModule : MatrixBaseModule {
 	, _firstOutputID(firstOutputID)
 	{
 		assert(_n <= maxN);
-		_paramValues = new float[_n * _n];
+		_paramValues = new float[_n * _n] {};
 		_saturators = new Saturator[_n * maxChannels];
 	}
 	virtual ~MatrixModule() {

@@ -40,14 +40,18 @@ int MatrixModule::channels() {
 }
 
 void MatrixModule::modulate() {
-	for (int i = 0, nn = _n * _n; i < nn; ++i) {
-		_paramValues[i] = params[_firstParamID + i].getValue();
+	MatrixBaseModule::modulate();
+	for (int i = 0; i < _n; ++i) {
+		for (int j = 0; j < _n; ++j) {
+			int ii = i * _n + j;
+			_paramValues[ii] = params[_firstParamID + ii].getValue();
+		}
 	}
 }
 
 void MatrixModule::processChannel(const ProcessArgs& args, int c) {
-	bool inActive[maxN];
-	float in[maxN];
+	bool inActive[maxN] {};
+	float in[maxN] {};
 	for (int i = 0; i < _n; ++i) {
 		inActive[i] = inputs[_firstInputID + i].isConnected();
 		if (inActive[i]) {
@@ -61,7 +65,7 @@ void MatrixModule::processChannel(const ProcessArgs& args, int c) {
 		}
 		float out = 0.0f;
 		for (int j = 0; j < _n; ++j) {
-			if (inActive[i]) {
+			if (inActive[j]) {
 				out += in[j] * _paramValues[i * _n + j];
 			}
 		}
