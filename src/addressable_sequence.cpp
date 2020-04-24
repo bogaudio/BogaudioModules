@@ -93,7 +93,7 @@ int AddressableSequenceModule::nextStep(
 	_step[c] += (_step[c] < 0) * steps;
 	_step[c] -= _step[c] * reset;
 
-	float select = 0;
+	float select = n;
 	if (selectParam) {
 		select = clamp(selectParam->getValue(), 0.0f, (float)(n - 1));
 	}

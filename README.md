@@ -7,7 +7,7 @@ Modules for [VCV Rack](https://github.com/VCVRack/Rack), an open-source Eurorack
   - [Filters](#filters)
   - [Envelopes and Envelope Utilities](#envelopes)
   - [Mixers, Panners and VCAs](#mixers)
-  - [Effects and Dynamics](#effects)
+  - [VCAs and Dynamics](#dynamics)
   - [Noise/Random, Sample and Hold](#random)
   - [Sequential Switches and Sequencers](#sequencers)
   - [Visualizers](#visualizers)
@@ -17,6 +17,8 @@ Modules for [VCV Rack](https://github.com/VCVRack/Rack), an open-source Eurorack
   - [Miscellaneous](#misc)
 
 Most Bogaudio modules support VCV Rack's polyphony feature; see <a href="#polyphony">Note on Polyphony</a>.
+
+Some modules have expanders; see <a href="#expanders">notes on expanders</a>.
 
 ![modules screenshot](./doc/www/modules1.png)
 
@@ -227,6 +229,10 @@ The cutoff/center frequencies of the three filters are:
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
 
+#### <a name="eqs"></a> EQS
+
+A stereo version of EQ.  The left and right inputs are processed by separate filters, but the filter parameters are set by the shared three knobs.
+
 
 ### <a name="envelopes"></a> Envelopes and Envelope Utilities
 
@@ -341,11 +347,29 @@ _Polyphony:_ The module is monophonic: if a polyphonic cable is present at an in
 
 However, there is a non-standard polyphonic feature: on the context (right-click) menu, there are options to "spread" a polyphonic input connected to input channel 1 (only) across the mixer's inputs, as if the poly input had been split into eight mono inputs and each connected to the mixer.  This can be applied to channels 1-8 of the input, or channels 9-16.  Any input patched to an input other than input 1 will override the spread signal.
 
+#### <a name="mix8x"></a> MIX8X
+
+An expander for MIX8, adding an EQ for each mixer channel, and two sends and stereo returns.
+
+Each EQ section is based on the <a href="#eq">EQ</a> module, with same bands and gains.
+
+Each mixer channel can be routed to send A or send B by knob and CV.  The CVs expect a 0-10V signal, and are attenuated by the corresponding knob.  The knob/CV response is exponential in amplitude, linear in decibels.
+
+Below each send knob is a PRE switch (for "pre-fader"); if on, the send receives the unaltered input into its corresponding mixer channel; otherwise it gets the signal subject to the mixer channel's level slider, mute button and EQ.
+
+Return A and B are each stereo, with the right input being normalled to the left.  Each has a LEVEL knob. Return A (only) has a CV input for LEVEL (the CV works the same as with the sends).  Each return's inputs, subject to the LEVEL processing, are injected directly into the mixer's final stage, subject to the master level slider and mute.  Note that you don't have to use the sends to use the returns.
+
+MIX8X must be positioned to the right of, and ajacent to, the base MIX8 module it will pair with.  See <a href="#expanders">notes on expanders</a>.
+
 #### <a name="mix4"></a> MIX4
 
 A four-channel version of MIX8 with the same features.
 
 _Polyphony:_ As with MIX8, this is a monophonic module, but with the same non-standard "spread" feature (in groups of four channels).
+
+#### <a name="mix4x"></a> MIX4X
+
+An expander for MIX4, with functionality identical to what MIX8X adds to MIX8.
 
 ### MIX1
 
@@ -396,29 +420,9 @@ Linear mode (the LIN button) makes the level attenuation response of MIX linear 
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the A input.
 
-#### <a name="vca"></a> VCA
-
-![Mixers screenshot](doc/www/mixers3.png)
-
-A two-channel voltage-controlled attenuator.  (An attenuator can only reduce a signal.)
-
-Each channel's level may be controlled with a 0-10V CV; when CV is in use, it is attenuated by the corresponding knob.
-
-In linear mode (the LIN button), the knob/CV response is linear in amplitude (useful when processing CV); otherwise and by default the response is linear in decibels (and therefore exponential in amplitude).
-
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the IN input, independently for the top and bottom sections of the module.
-
-#### <a name="vcamp"></a> VCAMP
-
-A voltage-controlled amplifier, capable of adding 12 decibels gain to the input.  (Twelve decibels gain is the same as multiplying the input by 4.)
-
-The level may be controlled with a 0-10V CV -- when CV is in use, it is attenuated by the corresponding slider.  The slider's toggle has a light indicating the output signal level.  The output saturates (soft clips) to +/-12V.
-
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the IN input.
-
 #### <a name="umix"></a> UMIX
 
-![Mixers screenshot](doc/www/mixers4.png)
+![Mixers screenshot](doc/www/mixers3.png)
 
 A 3HP unity mixer, usable with audio or CV (e.g. to combine triggers).  Up to 8 inputs are summed to the output.  The output is limited to +/-12V (with clipping modes as below).
 
@@ -457,11 +461,18 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defin
 
 #### <a name="switch44"></a> SWITCH44
 
-![Mixers screenshot](doc/www/mixers5.png)
+![Mixers screenshot](doc/www/mixers4.png)
 
-Identical to MATRIX44, but with switches instead of knobs.  All switches default to off, passing no signal.  A single left-click sets the switch to pass voltage with unity gain.  A second click sets the switch to pass the inverted signal.  A third click sets the switch off.
+Identical to MATRIX44, but with switches instead of knobs.  All switches default to off, passing no signal.  A single left-click sets the switch to pass voltage with unity gain.  A second click sets the switch to pass the inverted signal (this can be disabled, as below).  Another click sets the switch off.
 
 Note that you can pass attenuated values, by use of Rack's arbitrary parameter-entry feature: right-click a switch, and set its value from -100 to 100% (fractional percentages are allowed).
+
+The signal inverting behavior may be set with the "Inverting" context menu options:
+  - "On second click" is the default behavior.
+  - "By param entry" allows negative scale values to be set for a switch by the parameter-entry method, but clicks on a switch will just toggle between on and off.
+  - "None" disables inverting entirely.  This option is handy if you want to map MIDI controller buttons/pads to switches.
+
+Two other options, "Exclusive by rows" and "Exclusive by columns", if enabled, allow only one switch to be non-zero in a row, or column, respectively.  Both may be on at once.  (These options do not work well with MIDI mapping via Rack's MIDI-MAP module; this is a known issue for which there is no good solution; but see the discussion [here](https://github.com/bogaudio/BogaudioModules/issues/112) for a potential workaround.  The same problem may apply to other parameter-mapping methods.)
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by input 1.
 
@@ -478,9 +489,29 @@ An 16x16 version of SWITCH44.
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by input 1.
 
 
-### <a name="effects"></a> Effects and Dynamics
+### <a name="dynamics"></a> VCAs and Dynamics
 
-![Mixers screenshot](doc/www/effects.png)
+#### <a name="vca"></a> VCA
+
+![Mixers screenshot](doc/www/vcas.png)
+
+A two-channel voltage-controlled attenuator.  (An attenuator can only reduce a signal.)
+
+Each channel's level may be controlled with a 0-10V CV; when CV is in use, it is attenuated by the corresponding knob.
+
+In linear mode (the LIN button), the knob/CV response is linear in amplitude (useful when processing CV); otherwise and by default the response is linear in decibels (and therefore exponential in amplitude).
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the IN input, independently for the top and bottom sections of the module.
+
+#### <a name="vcamp"></a> VCAMP
+
+A voltage-controlled amplifier, capable of adding 12 decibels gain to the input.  (Twelve decibels gain is the same as multiplying the input by 4.)
+
+The level may be controlled with a 0-10V CV -- when CV is in use, it is attenuated by the corresponding slider.  The slider's toggle has a light indicating the output signal level.  The output saturates (soft clips) to +/-12V.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the IN input.
+
+![Mixers screenshot](doc/www/dynamics.png)
 
 #### <a name="amrm"></a> AM/RM
 
@@ -595,7 +626,7 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the 
 
 ### <a name="sequencers"></a> Sequential Switches and Sequencers
 
-![Sequencers screenshot](doc/www/sequencers.png)
+![Sequencers screenshot](doc/www/sequencers1.png)
 
 #### <a name="eightone"></a> 8:1
 
@@ -603,13 +634,15 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the 
 
 As a sequential switch, a trigger at the clock input advances the input selection -- which input is routed to the output.  Like a sequencer, it can be reset with a trigger at RESET; the number of inputs to cycle through may be set with the STEPS knob; and the direction is set with the FWD/REV switch.
 
-As a multiplexer, it routes an input to the output under control of the SELECT knob and CV.  A 0-10V CV, divided into 8 equal divisions of 1.25V, controls the input selection.  A CV of less than 1.25V does nothing; a voltage of 1.25-2.49V will add 1 step to the selection, and so on.  This value is summed with the knob setting; for example, setting the knob to 4 and inputting a 2.6V CV will send input 6 to the output.  When the knob-plus-CV value exceeds 8, it wraps around.
+As a multiplexer, it routes an input to the output under control of the SELECT knob and CV.  A -10-10V CV, divided into 16 equal divisions of 1.25V, controls the input selection.  A CV between +/-1.25V does nothing; a voltage of 1.25-2.49V will add 1 step to the selection, a voltage between -1.25V and -2.49V will subtract one step, and so on.  This value is summed with the knob setting; for example, setting the knob to 4 and inputting a 2.6V CV will send input 6 to the output.  When the knob-plus-CV value exceeds 8, it wraps around.
 
 Both functions may be used simultaneously: the SELECT+CV value is added to the sequential/clocked value, wrapping around.  Note that the STEPS value only affects the sequential value; for example, using a clock input and setting STEPS to 2 will yield an alternation between two adjacent inputs, but this pair can be selected with the SELECT knob or CV.
 
-On the context (right-click) menu, if option "Select on clock mode" is selected, then the select value (knob and CV) is checked and used to modify the active step only when a clock is received, rather than continuously.
+On the context (right-click) menu, if option "Reverse step on negative clock" is enabled, negative or inverted clock pulses (e.g. a pulse from 0V to -5V) will step backwards.  This is still affected by the FWD/REV switch; if the switch is at REV, then a positive clock steps backwards and a negative clock forwards.  This negative-clock behavior can be used to achieve voltage control over the sequence direction (the utility module <a href="#inv">INV</a> can help here).
 
-Also on the context menu, option "Triggered select mode" changes how the SELECT feature works, replacing the continuous voltage selection with a second internal sequence that offsets (adds to) the primary sequential switch step.  In this mode, the SELECT input exepcts trigger pulses, which advance the secondary sequence, while the SELECT knob sets the length of the secondary sequence (and a trigger at RESET will reset it). Thus different clocks and step lengths can be used to create complex output step patterns. "Select on clock mode" has no effect if "Triggered select mode" is enabled.
+If option "Select on clock mode" is selected, then the select value (knob and CV) is checked and used to modify the active step only when a clock is received, rather than continuously.
+
+Option "Triggered select mode" changes how the SELECT feature works, replacing the continuous voltage selection with a second internal sequence that offsets (adds to) the primary sequential switch step.  In this mode, the SELECT input exepcts trigger pulses, which advance the secondary sequence, while the SELECT knob sets the length of the secondary sequence (and a trigger at RESET will reset it). Thus different clocks and step lengths can be used to create complex output step patterns. "Select on clock mode" has no effect if "Triggered select mode" is enabled.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the CLOCK input.  This can be set to the SELECT CV input on the context menu.
 
@@ -626,6 +659,28 @@ ADDR-SEQ is an 8-step sequencer where the step values are set by 8 knobs (with d
 The output range of the knobs may be set on the context (right-click) menu to a variety of bipolar (e.g. +/-5V) and unipolar ranges (e.g. 0-5V).
 
 _Polyphony:_ Same as 8:1.
+
+![Sequencers screenshot](doc/www/sequencers2.png)
+
+#### <a name="pgmr"></a> PGMR
+
+PGMR is a four-step programmer, or sequencer with the ability to select the current step manually or by CV.  It is expandable with PGMRX, to add four more steps.  Multiple PGMRXs can be chained on, to add arbitrarily many steps, four at a time.
+
+For each step, four knobs A, B, C, D control the voltage that will go to the corresponding output when that step is selected.  As with ADDR-SEQ, the output range of the knobs can be set on the context menu.
+
+The current step can be selected many ways:
+  - By pressing the button, or sending a trigger to the SELECT input, for a given step.
+  - By inputs to CLOCK and/or SELECT, subject to the FWD and S.O.C. ("Select On Clock") toggles.  The behavior of these is the same as it is on <a href="#eightone">8:1</a> (and 1:8 and ADDR-SEQ), with the exception that the voltage range to the SELECT input is divided by the number of steps present on PGMR and all its connected PGMRX instances (where the division is always by 8 -- 16 if you consider negative voltages -- on 8:1).
+
+Any PGMRX expanders must be positioned to the right of, and ajacent to, the base PGMR module, or the previous PGMRX in the chain.  See <a href="#expanders">notes on expanders</a>.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the CLOCK input.  This can be set to the SELECT CV input on the context menu.
+
+#### <a name="pgmrx"></a> PGMRX
+
+A chainable expander for PGMR.  Each instance adds four more steps to the base sequence.
+
+Each PGMRX in a chain must be positioned to the right of, and ajacent to, the previous PGMRX in the chain, or the base PGMR module.  See <a href="#expanders">notes on expanders</a>.
 
 
 ### <a name="visualizers"></a> Visualizers
@@ -663,7 +718,7 @@ _Polyphony:_ Monophonic, but if an input is polyphonic, its channels are summed,
 
 ### <a name="poly"></a> Polyphony Utilities
 
-![Polyphony utilities screenshot](doc/www/poly.png)
+![Polyphony utilities screenshot](doc/www/poly1.png)
 
 #### <a name="mono"></a> MONO
 
@@ -725,11 +780,39 @@ The behavior of DETUNE depends on the number of output channels:
   - With four channels, a channel gets each of: up and down the full amount and up and down half the amount.
   - And so on, such that the detune amounts are evenly spread, and one channel gets the unaltered pitch if and only if the channel count is odd.
 
-#### <a name="polycon"></a> POLYCON
+![Polyphony utilities screenshot](doc/www/poly2.png)
 
-POLYCON allows fixed voltages to be sent directly to some number of polyphonic channels by channel number.  The number of output channels is set the CHAN knob, unless an input is present at the CHAN input, in which case the channel count is taken from that input, and the knob is ignored.  
+#### <a name="polycon"></a> POLYCON16
+
+POLYCON16 allows fixed voltages to be sent directly to some number of channels, by channel number, of a polyphonic output.  The number of output channels is set the CHAN knob, unless an input is present at the CHAN input, in which case the channel count is taken from that input, and the knob is ignored.
 
 This can be used to introduce a bit fixed variation across the channels of a poly voice.
+
+The context menu option range allows the output voltages to be set from several bipolar and unipolar ranges.  Note that when a unipolar range is used, 0V will be output when the knob is fully counter-clockwise, even though the knobs are drawn with a bipolar dial (such that 0V is usually at noon).
+
+#### <a name="polycon8"></a> POLYCON8
+
+A compact version of POLYCON16, that only works with polyphony channels 1-8.  The channel count must be set on the context (right-click) menu.
+
+#### <a name="polyoff16"></a> POLYOFF16
+
+POLYOFF16 allows for the offset and scaling of voltages on each channel of a polyphonic signal.  It can also be used as a replacement for Rack's MERGE, or as a CV-controllable version of POLYCON16.
+
+The mode of operation is determined by the presence of an input at IN.  With an input:
+  - The number of output polyphony channels is set equal to the number of channels on the input, and the CHAN knob is ignored.
+  - The voltage of each polyphony channel on the input is processed by the corresponding OFFSET and SCALE knobs.
+  - The offset for each channel may be CV-controlled by a (monophonic) input at at it's corresponding CV port; the CV inputs expect +/-5V and are attenuverted by the OFFSET knob.
+
+With no input at IN:
+  - The output channels are set by the CHAN knob.
+  - A monophonic voltage may be provided at each channel's IN port; this is processed by the channel's OFFSET and SCALE before being merged to the output.  You can also think of the input voltage as being a CV for the constant value set by the OFFSET knob -- it's the same thing.
+  - With no input to a channel, the output voltage is just set by the channel's OFFSET and SCALE knobs.
+
+The module has the same "Range" content-menu options as POLYCON16.
+
+#### <a name="polyoff8"></a> POLYOFF16
+
+A half-width version of POLYCON16, that only works with polyphony channels 1-8.
 
 #### <a name="polymult"></a> POLYMULT
 
@@ -804,6 +887,14 @@ A boolean memory utility with two independent channels.  A high voltage at TRIGG
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the channels at the TRIG input, independently for the two sections of the module.
 
+#### <a name="inv"></a> INV
+
+A dual signal inverter, with CV or manual control, and optional latching.  In each section separately, the signal at IN is inverted and sent to OUT when the button is held an input voltage at GATE is high, and passed to OUT unchanged otherwise.
+
+If LATCH is enabled, a button press or high voltage toggles the state of the inverter.  A context menu option "Save latched state to patch" will, if latching is enabled, save the latched state to the patch and restore it on patch load.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the channels at the IN input, independently for the two sections of the module.
+
 #### <a name="manual"></a> MANUAL
 
 A manual trigger/gate with 8 outputs.  A constant high value is sent from each output for as long as the TRIG button is held.  
@@ -850,6 +941,8 @@ A signal-routing module with two through channels.  If the button is held or the
 
 If LATCH is enabled, a button click or trigger pulse at GATE will toggle the output to HIGH; a second click or trigger resets it to LOW.
 
+If the context menu option "Save latched state to patch" is enabled, and latching is on, the latched state will be preserved in the patch and restored on patch load.  Otherwise the module be in LOW state on patch load.
+
 _Polyphony:_ If polyphonic input is present at GATE, then the module is polyphonic in the standard way, independently switching the independent polyphonic channels on the high/low inputs (the button will switch all channels).  Additionally, if the input at GATE is not present or monophonic, but polyphonic cables are are present at any high/low inputs, and such an input is switched to the output, it is duplicated to the output with channels intact.
 
 
@@ -890,6 +983,17 @@ Other notes:
   - Some modules are not polyphonic in a strict sense, but have non-standard polyphonic features (see the channel spread feature on MIX4 and MIX8).
 
 Finally, please note that with the addition of polyphony, the term "channels" can have several meanings in this documentation.  Polyphonic modules have up to 16 internal processing "channels", defined by the polyphonic "channels" of their inputs, and carrying over to the polyphonic "channels" of their outputs.  But, elsewhere, MIX8 is an "8-channel" mixer; stereo modules will have left and right "channels"; VCA is a dual module with two independent "channels" (each of which may be polyphonic); ANALYZER has four input "channels" (in that it will display the spectra of four different inputs simultaneously); and so on.
+
+
+## <a name="expanders"></a> Note on Expanders
+
+A few modules in this collection have expanders.  These will generally do nothing unless they are paired with the base module they're meant to expand.
+
+To pair an expander with its base, the expander **must** be positioned **to the right** of the base module, and **adjacent to** (touching) the base module.  That's all that's required; there is no button or context menu switch to pair modules.  Conversely, there's no button or option that disables the pairing of a base and expander if they're correctly positioned.
+
+Rack allows left expanders as well as right, but to simplify things we've chosen not to use them, allowing only right expansion.  Rack doesn't support expanders above or below the expanded module.
+
+Some expanders may be chainable: multiple instances can be added to continue expanding the base.  In this case, the expanders must all be to the right of the base, and all touching.
 
 
 ## Other Notes

@@ -18,7 +18,7 @@ screens = [
     file: 'modules2.png',
     crop: false,
     rows: [
-      ['VCF', 'LVCF', 'FFB', 'EQ'],
+      ['VCF', 'LVCF', 'FFB', 'EQ', 'EQS'],
       ['DADSRH', 'DADSRHPlus', 'Shaper', 'ShaperPlus', 'AD', 'ASR', 'ADSR', 'Follow', 'DGate', 'Edge']
     ]
   },
@@ -26,8 +26,9 @@ screens = [
     file: 'modules3.png',
     crop: false,
     rows: [
-      ['Mix8', 'Mix4', 'Mix1', 'VCM', 'Mute8', '-', 'Pan', 'XFade', '-', 'VCA', 'VCAmp'],
-      ['UMix', 'Mumix', '-', 'Matrix44', 'Matrix88'],
+      ['Mix8', 'Mix8x', 'Mute8'],
+      ['Mix4', 'Mix4x', 'Mix1', 'VCM', 'Pan', 'XFade'],
+      ['UMix', 'Mumix', 'Matrix44', 'Matrix88'],
       ['Switch44', 'Switch88', 'Switch1616']
     ]
   },
@@ -35,8 +36,8 @@ screens = [
     file: 'modules4.png',
     crop: false,
     rows: [
-      ['AMRM', 'Pressor', 'Lmtr', 'Nsgt'],
-      ['Noise', 'SampleHold', 'Walk2', 'Walk', '-', 'EightOne', 'OneEight', 'AddrSeq'],
+      ['VCA', 'VCAmp', '-', 'AMRM', 'Pressor', 'Lmtr', 'Nsgt'],
+      ['Noise', 'SampleHold', 'Walk2', 'Walk', '-', 'EightOne', 'OneEight', 'AddrSeq', 'PGMR', 'PGMRX'],
       ['VU', 'Analyzer', 'AnalyzerXL']
     ]
   },
@@ -44,8 +45,8 @@ screens = [
     file: 'modules5.png',
     crop: false,
     rows: [
-      ['Mono', 'Arp', 'Assign', 'Unison', 'PolyCon', 'PolyMult', '-', 'Detune', 'Stack', 'Reftone'],
-      ['Bool', 'Cmp', 'CVD', 'FlipFlop', 'Manual', 'Mult', 'Offset', 'Slew', 'Sums', 'Switch', '-', 'Blank3', 'Blank6']
+      ['Mono', 'Arp', 'Assign', 'Unison', 'PolyCon', 'PolyCon8', 'PolyOff16', 'PolyOff8', 'PolyMult', '-', 'Detune', 'Stack', 'Reftone'],
+      ['Bool', 'Cmp', 'CVD', 'FlipFlop', 'Inv', 'Manual', 'Mult', 'Offset', 'Slew', 'Sums', 'Switch', '-', 'Blank3', 'Blank6']
     ]
   },
 
@@ -74,7 +75,7 @@ screens = [
     file: 'filters.png',
     crop: true,
     rows: [
-      ['VCF', 'LVCF', 'FFB', 'EQ']
+      ['VCF', 'LVCF', 'FFB', 'EQ', 'EQS']
     ]
   },
   {
@@ -109,7 +110,7 @@ screens = [
     file: 'mixers1.png',
     crop: true,
     rows: [
-      ['Mix8', 'Mix4', 'Mix1']
+      ['Mix8', 'Mix8x', 'Mix4', 'Mix4x', 'Mix1']
     ]
   },
   {
@@ -123,35 +124,42 @@ screens = [
     file: 'mixers3.png',
     crop: true,
     rows: [
-      ['VCA', 'VCAmp']
+      ['UMix', 'Mumix', 'Matrix44', 'Matrix88']
     ]
   },
   {
     file: 'mixers4.png',
     crop: true,
     rows: [
-      ['UMix', 'Mumix', 'Matrix44', 'Matrix88']
-    ]
-  },
-  {
-    file: 'mixers5.png',
-    crop: true,
-    rows: [
       ['Switch44', 'Switch88', 'Switch1616']
     ]
   },
   {
-    file: 'effects.png',
+    file: 'vcas.png',
+    crop: true,
+    rows: [
+      ['VCA', 'VCAmp']
+    ]
+  },
+  {
+    file: 'dynamics.png',
     crop: true,
     rows: [
       ['AMRM', 'Pressor', 'Lmtr', 'Nsgt']
     ]
   },
   {
-    file: 'sequencers.png',
+    file: 'sequencers1.png',
     crop: true,
     rows: [
       ['EightOne', 'OneEight', 'AddrSeq']
+    ]
+  },
+  {
+    file: 'sequencers2.png',
+    crop: true,
+    rows: [
+      ['PGMR', 'PGMRX']
     ]
   },
   {
@@ -162,10 +170,17 @@ screens = [
     ]
   },
   {
-    file: 'poly.png',
+    file: 'poly1.png',
     crop: true,
     rows: [
-      ['Mono', 'Arp', 'Assign', 'Unison', 'PolyCon', 'PolyMult']
+      ['Mono', 'Arp', 'Assign', 'Unison']
+    ]
+  },
+  {
+    file: 'poly2.png',
+    crop: true,
+    rows: [
+      ['PolyCon', 'Polycon8', 'PolyOff16', 'PolyOff8', 'PolyMult']
     ]
   },
   {
@@ -179,7 +194,7 @@ screens = [
     file: 'utilities.png',
     crop: true,
     rows: [
-      ['Bool', 'Cmp', 'CVD', 'FlipFlop', 'Manual', 'Mult', 'Offset', 'Slew', 'Sums', 'Switch']
+      ['Bool', 'Cmp', 'CVD', 'FlipFlop', 'Inv', 'Manual', 'Mult', 'Offset', 'Slew', 'Sums', 'Switch']
     ]
   },
   {

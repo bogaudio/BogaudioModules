@@ -58,6 +58,7 @@ struct AddressableSequenceBaseModuleWidget : ModuleWidget {
 		OptionsMenuItem::addToMenu(p, menu);
 
 		menu->addChild(new BoolOptionMenuItem("Reverse step on negative clock", [m]() { return &m->_reverseOnNegativeClock; }));
+		menu->addChild(new BoolOptionMenuItem("Triggered select mode", [m]() { return &m->_triggeredSelect; }));
 	}
 };
 
@@ -68,7 +69,6 @@ struct AddressableSequenceModuleWidget : AddressableSequenceBaseModuleWidget {
 		AddressableSequenceModule* m = dynamic_cast<AddressableSequenceModule*>(module);
 		assert(m);
 		menu->addChild(new BoolOptionMenuItem("Select on clock mode", [m]() { return &m->_selectOnClock; }));
-		menu->addChild(new BoolOptionMenuItem("Triggered select mode", [m]() { return &m->_triggeredSelect; }));
 	}
 };
 
