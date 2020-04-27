@@ -73,7 +73,7 @@ struct MultimodeTypes {
 	static constexpr int minPoles = 1;
 	static constexpr int maxPoles = 16;
 	static constexpr int modPoles = 1;
-	static constexpr float minFrequency = 1.0f;
+	static constexpr float minFrequency = 3.0f; // FIXME: this can go down to at least 1.0f if T is double.
 	static constexpr float maxFrequency = 21000.0f;
 	static constexpr float minQbw = 0.0f;
 	static constexpr float maxQbw = 1.0f;

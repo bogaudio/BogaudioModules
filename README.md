@@ -194,6 +194,7 @@ The context menu option "Bandwidth mode" controls how the bandwidth is calculate
 Note: due to limitations in the filter's implementation, it has a couple workarounds in place to avoid problems:
   - The cutoff frequency uses a slew limiter (it has limit on how fast it can change), such that it takes approximately 100ms to move the cutoff from fully closed to fully open (or the opposite).
   - There is a fixed two-pole highpass filter on the filter output, at a cutoff of 80hz.
+  - While the module's frequency knob goes to zero, the filter's cutoff won't actually go below 3hz.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
 
