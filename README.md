@@ -1,5 +1,7 @@
 # BogaudioModules
 
+![build badge](https://img.shields.io/github/workflow/status/bogaudio/BogaudioModules/Develop?label=build) ![version badge](https://img.shields.io/github/v/release/bogaudio/BogaudioModules)
+
 Modules for [VCV Rack](https://github.com/VCVRack/Rack), an open-source Eurorack-style virtual modular synthesizer:
 
   - [Oscillators](#oscillators)
@@ -1016,3 +1018,5 @@ Bug reports and feedback are welcome: please use the [issue tracker](https://git
 ## Acknowledgements
 
 Uses [FFTReal](https://github.com/cyrilcode/fft-real) under the DWTFYWT Public License.
+
+The Github Actions auto-build scripts under [.github/](.github) are originally from [SubmarineFree](https://github.com/david-c14/SubmarineFree) -- thanks @david-c14 and @dewb -- find a detailed explanation [here](https://github.com/david-c14/SubmarineFree/wiki/Cross-compiling-using-github-actions).
