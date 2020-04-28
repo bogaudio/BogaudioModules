@@ -195,7 +195,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelSwitch);
 
 	p->addModel(modelBlank3);
-	p->addModel(modelBlank6);
+	p->addModel(modelBlank666);
 
 #ifdef EXPERIMENTAL
 	p->addModel(modelLag);
