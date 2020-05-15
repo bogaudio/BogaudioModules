@@ -56,6 +56,7 @@ struct ADSR : EnvelopeGenerator {
 	void setLinearShape(bool linear);
 	void setShapes(float attackShape, float decayShape, float releaseShape);
 	bool isStage(Stage stage) { return _stage == stage; }
+	void retrigger();
 
 	float _next() override;
 };

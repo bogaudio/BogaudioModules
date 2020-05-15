@@ -64,6 +64,21 @@ void ADSR::setShapes(float attackShape, float decayShape, float releaseShape) {
 	_releaseShape = releaseShape;
 }
 
+void ADSR::retrigger() {
+	switch (_stage) {
+		case STOPPED_STAGE: {
+			_stage = ATTACK_STAGE;
+			_stageProgress = 0.0f;
+			break;
+		}
+		default: {
+			_stage = ATTACK_STAGE;
+			float e = powf(_envelope, 1.0f / _attackShape);
+			_stageProgress = e * _attack;
+		}
+	}
+}
+
 float ADSR::_next() {
 	if (_gated) {
 		switch (_stage) {

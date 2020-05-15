@@ -91,8 +91,19 @@ void AD::processChannel(const ProcessArgs& args, int c) {
 	Engine& e = *_engines[c];
 
 	bool start = e.trigger.process(inputs[TRIGGER_INPUT].getVoltage(c));
-	if (!e.on && ((start || (_retriggerMode && e.trigger.isHigh())) || (_loopMode && e.envelope.isStage(ADSR::STOPPED_STAGE)))) {
+	if (!e.on && (
+		start ||
+		(_retriggerMode && e.trigger.isHigh()) ||
+		(_loopMode && e.envelope.isStage(ADSR::STOPPED_STAGE))
+	)) {
 		e.on = true;
+	} else if (e.on && start && _retriggerMode) {
+		if (_loopMode) {
+			e.envelope.reset();
+		}
+		else {
+			e.envelope.retrigger();
+		}
 	}
 	e.envelope.setGate(e.on);
 	outputs[ENV_OUTPUT].setChannels(_channels);

@@ -283,9 +283,13 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the T
 
 #### <a name="ad"></a> AD
 
-An AD (Attack, Decay) envelope generator in 3HP.  The attack and decay are exponentially scaled with durations up to 10 seconds.  The attack and decay times have CV inputs expecting 0-10V inputs; if a CV is present, the corresponding knob attenuates it.
+An AD (Attack, Decay) envelope generator in 3HP.  The attack and decay stages have durations up to 10 seconds, and CV inputs expecting 0-10V inputs; if a CV is present, the corresponding knob attenuates it.
 
-When a trigger voltage is received at the TRIG input, the envelope cycle begins; whether the module will retrigger or not if a new trigger is received before the envelope cycle repeats is controlled by the RT toggle.  When the cycle completes, a trigger is emitted at EOC, and the cycle retriggers if the TRIG voltage is high.  If loop mode is enabled by the LP toggle, the envelope cycles continuously regardless of the TRIG input.
+When a trigger or gate is received at the TRIG input, the envelope cycle begins and runs to its end.  At the end of the cycle, a pulse is emitted at EOC.
+
+If the RT (retrigger) toggle is enabled, if TRIG receives a new trigger while the envelope is decaying, it reenters the attack stage at whatever level the envelope is currently at.  If the cycle ends and the TRIG voltage is high, the cycle restarts.
+
+If the LP (loop) toggle is enabled, the envelope cycles continuously (it doesn't need a trigger to start it).  If RT is also enabled, triggers at TRIG will restart the cycle (this is similar to syncing an LFO).
 
 By default, the attack and decay envelope segments have an exponential curve -- in linear mode (the LIN toggle), the segments are linear.
 
