@@ -485,11 +485,27 @@ void VUSlider::draw(const DrawArgs& args) {
 		nvgFill(args.vg);
 
 		float db = _vuLevel ? *_vuLevel : 0.0f;
+		bool stereo = false;
+		float stereoDb = 0.0f;
+		if (_stereoVuLevel) {
+			stereo = true;
+			stereoDb = *_stereoVuLevel;
+		}
 		if (db > 0.0f) {
-			db = amplitudeToDecibels(db);
 			nvgBeginPath(args.vg);
-			nvgRoundedRect(args.vg, 2, 4, 14, 5, 1.0);
-			nvgFillColor(args.vg, decibelsToColor(db));
+			if (stereo) {
+				nvgRoundedRect(args.vg, 2, 4, stereo ? 7 : 14, 5, 1.0);
+			}
+			else {
+				nvgRoundedRect(args.vg, 2, 4, 14, 5, 1.0);
+			}
+			nvgFillColor(args.vg, decibelsToColor(amplitudeToDecibels(db)));
+			nvgFill(args.vg);
+		}
+		if (stereo) {
+			nvgBeginPath(args.vg);
+			nvgRoundedRect(args.vg, 9, 4, 7, 5, 1.0);
+			nvgFillColor(args.vg, decibelsToColor(amplitudeToDecibels(stereoDb)));
 			nvgFill(args.vg);
 		}
 	}

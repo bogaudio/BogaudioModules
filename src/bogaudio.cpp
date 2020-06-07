@@ -41,6 +41,7 @@
 #include "Matrix44.hpp"
 #include "Matrix88.hpp"
 #include "Mix1.hpp"
+#include "Mix2.hpp"
 #include "Mix4.hpp"
 #include "Mix8.hpp"
 #include "Mono.hpp"
@@ -136,6 +137,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelMix8x);
 	p->addModel(modelMix4);
 	p->addModel(modelMix4x);
+	p->addModel(modelMix2);
 	p->addModel(modelMix1);
 	p->addModel(modelVCM);
 	p->addModel(modelMute8);

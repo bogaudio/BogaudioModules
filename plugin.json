@@ -346,9 +346,19 @@
       ]
     },
     {
+      "slug": "Bogaudio-Mix2",
+      "name": "MIX2",
+      "description": "Stereo fader/amplifier with CV-controllable mute",
+      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#mix2",
+      "tags": [
+        "VCA",
+        "Polyphonic"
+      ]
+    },
+    {
       "slug": "Bogaudio-Mix1",
       "name": "MIX1",
-      "description": "Fader/amplifier with CV controllable mute",
+      "description": "Fader/amplifier with CV-controllable mute",
       "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#mix1",
       "tags": [
         "VCA",

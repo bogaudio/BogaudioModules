@@ -160,13 +160,17 @@ NVGcolor decibelsToColor(float db);
 struct VUSlider : SliderKnob {
 	const float slideHeight = 13.0f;
 	float* _vuLevel = NULL;
+	float* _stereoVuLevel = NULL;
 
 	VUSlider(float height = 183.0f) {
 		box.size = Vec(18.0f, height);
 	}
 
-	void setVULevel(float* vuLevel) {
-		_vuLevel = vuLevel;
+	inline void setVULevel(float* level) {
+		_vuLevel = level;
+	}
+	inline void setStereoVULevel(float* level) {
+		_stereoVuLevel = level;
 	}
 	void draw(const DrawArgs& args) override;
 };
