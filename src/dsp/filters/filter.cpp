@@ -15,9 +15,9 @@ void LowPassFilter::setParams(float sampleRate, float cutoff, float q) {
 	_q = q;
 	// printf("\nLPF set param: sr=%f c=%f q=%f\n", _sampleRate, _cutoff, _q);
 
-	float w0 = 2.0 * M_PI * _cutoff / _sampleRate;
-	float cosw0 = cosf(w0);
-	float alpha = sinf(w0) / (2.0 * _q);
+	double w0 = 2.0 * M_PI * (double)(_cutoff / _sampleRate);
+	double cosw0 = cos(w0);
+	double alpha = sin(w0) / (2.0 * _q);
 
 	_biquad.setParams(
 		(1.0 - cosw0) / 2.0,

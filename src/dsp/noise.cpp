@@ -30,7 +30,7 @@ void RandomWalk::setParams(float sampleRate, float change) {
 	assert(change >= 0.0f);
 	assert(change <= 1.0f);
 
-	_filter.setParams(sampleRate, std::max(2.0f, change * 0.49f * sampleRate));
+	_filter.setParams(sampleRate, std::max(2.0f, change * 0.49f * std::min(44100.0f, sampleRate)));
 
 	const float maxDamp = 0.98;
 	const float minDamp = 0.9999;

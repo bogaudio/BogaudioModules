@@ -13,9 +13,10 @@ void Test::processChannel(const ProcessArgs& args, int _c) {
 	if (!inputs[IN_INPUT].isConnected()) {
 		return;
 	}
+	float sr = APP->engine->getSampleRate();
 	_lpf.setParams(
-		APP->engine->getSampleRate(),
-		10000.0 * clamp(params[PARAM1_PARAM].getValue(), 0.0f, 1.0f),
+		sr,
+		0.49f * sr * clamp(params[PARAM1_PARAM].getValue(), 0.0f, 1.0f),
 		std::max(10.0 * clamp(params[PARAM2_PARAM].getValue(), 0.0f, 1.0f), 0.1)
 	);
 	outputs[OUT_OUTPUT].setVoltage(_lpf.next(inputs[IN_INPUT].getVoltage()));

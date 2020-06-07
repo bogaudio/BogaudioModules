@@ -4,7 +4,7 @@
 
 extern Model* modelTest;
 
-// #define LPF 1
+#define LPF 1
 // #define LPFNOISE 1
 // #define SINE 1
 // #define SQUARE 1
@@ -29,7 +29,7 @@ extern Model* modelTest;
 // #define SATURATOR 1
 // #define BROWNIAN 1
 // #define RANDOMWALK 1
-#define DCBLOCKER 1
+// #define DCBLOCKER 1
 
 #include "pitch.hpp"
 #ifdef LPF

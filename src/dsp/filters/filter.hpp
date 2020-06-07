@@ -60,7 +60,7 @@ struct LowPassFilter : Filter {
 	float _cutoff = 0.0f;
 	float _q = 0.0f;
 
-	BiquadFilter<float> _biquad;
+	BiquadFilter<double> _biquad; // double is necessary here to make low cutoffs work at high sample rates.
 
 	LowPassFilter(float sampleRate = 1000.0f, float cutoff = 100.0f, float q = 0.001f) {
 		setParams(sampleRate, cutoff, q);
