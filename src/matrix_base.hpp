@@ -122,7 +122,7 @@ struct SwitchMatrixModule : MatrixModule {
 		NO_INVERTING
 	};
 
-	Inverting _inverting = CLICK_INVERTING;
+	Inverting _inverting = PARAM_INVERTING;
 	bool _rowExclusive = false;
 	bool _columnExclusive = false;
 	std::vector<ParamQuantity*> _switchParamQuantities;
@@ -156,8 +156,8 @@ struct SwitchMatrixModuleWidget : MatrixBaseModuleWidget {
 		MatrixBaseModuleWidget::appendContextMenu(menu);
 
 		OptionsMenuItem* i = new OptionsMenuItem("Inverting");
-		i->addItem(OptionMenuItem("On second click", [m]() { return m->_inverting == SwitchMatrixModule::CLICK_INVERTING; }, [m]() { m->setInverting(SwitchMatrixModule::CLICK_INVERTING); }));
 		i->addItem(OptionMenuItem("By param entry (right-click)", [m]() { return m->_inverting == SwitchMatrixModule::PARAM_INVERTING; }, [m]() { m->setInverting(SwitchMatrixModule::PARAM_INVERTING); }));
+		i->addItem(OptionMenuItem("On second click", [m]() { return m->_inverting == SwitchMatrixModule::CLICK_INVERTING; }, [m]() { m->setInverting(SwitchMatrixModule::CLICK_INVERTING); }));
 		i->addItem(OptionMenuItem("Disabled", [m]() { return m->_inverting == SwitchMatrixModule::NO_INVERTING; }, [m]() { m->setInverting(SwitchMatrixModule::NO_INVERTING); }));
 		OptionsMenuItem::addToMenu(i, menu);
 
