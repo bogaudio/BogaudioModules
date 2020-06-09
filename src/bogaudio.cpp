@@ -28,6 +28,7 @@
 #include "EQS.hpp"
 #include "FFB.hpp"
 #include "FMOp.hpp"
+#include "FourMan.hpp"
 #include "FlipFlop.hpp"
 #include "Follow.hpp"
 #include "Inv.hpp"
@@ -190,6 +191,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelFlipFlop);
 	p->addModel(modelInv);
 	p->addModel(modelManual);
+	p->addModel(modelFourMan);
 	p->addModel(modelMult);
 	p->addModel(modelOffset);
 	p->addModel(modelSlew);

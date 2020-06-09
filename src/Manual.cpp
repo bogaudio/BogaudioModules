@@ -6,7 +6,11 @@ void Manual::reset() {
 	_pulse.process(10.0f);
 }
 
-void Manual::processChannel(const ProcessArgs& args, int _c) {
+void Manual::sampleRateChange() {
+	_sampleTime = APP->engine->getSampleTime();
+}
+
+void Manual::processAll(const ProcessArgs& args) {
 	bool initialPulse = false;
 	if (_initialDelay && !_initialDelay->next()) {
 		initialPulse = true;
@@ -17,11 +21,8 @@ void Manual::processChannel(const ProcessArgs& args, int _c) {
 	bool high = _trigger.process(params[TRIGGER_PARAM].getValue()) || _trigger.isHigh() || (initialPulse && _triggerOnLoad && _shouldTriggerOnLoad);
 	if (high) {
 		_pulse.trigger(0.001f);
-		_pulse.process(APP->engine->getSampleTime());
 	}
-	else {
-		high = _pulse.process(APP->engine->getSampleTime());
-	}
+	high = _pulse.process(_sampleTime);
 
 	float out = high ? 5.0f : 0.0f;
 	outputs[OUT1_OUTPUT].setVoltage(out);

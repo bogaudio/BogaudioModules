@@ -4,13 +4,16 @@
 #include "trigger_on_load.hpp"
 #include "dsp/signal.hpp"
 
-extern Model* modelManual;
+extern Model* modelFourMan;
 
 namespace bogaudio {
 
-struct Manual : TriggerOnLoadModule {
+struct FourMan : TriggerOnLoadModule {
 	enum ParamsIds {
-		TRIGGER_PARAM,
+		TRIGGER1_PARAM,
+		TRIGGER2_PARAM,
+		TRIGGER3_PARAM,
+		TRIGGER4_PARAM,
 		NUM_PARAMS
 	};
 
@@ -23,25 +26,24 @@ struct Manual : TriggerOnLoadModule {
 		OUT2_OUTPUT,
 		OUT3_OUTPUT,
 		OUT4_OUTPUT,
-		OUT5_OUTPUT,
-		OUT6_OUTPUT,
-		OUT7_OUTPUT,
-		OUT8_OUTPUT,
 		NUM_OUTPUTS
 	};
 
-	Trigger _trigger;
-	rack::dsp::PulseGenerator _pulse;
-	float _sampleTime;
+	Trigger _trigger[4];
+	rack::dsp::PulseGenerator _pulse[4];
+	float _sampleTime = 1.0f;
 	bogaudio::dsp::Timer* _initialDelay = NULL;
 
-	Manual() {
+	FourMan() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
-		configParam(TRIGGER_PARAM, 0.0f, 1.0f, 0.0f, "Trigger");
+		configParam(TRIGGER1_PARAM, 0.0f, 1.0f, 0.0f, "Trigger 1");
+		configParam(TRIGGER2_PARAM, 0.0f, 1.0f, 0.0f, "Trigger 2");
+		configParam(TRIGGER3_PARAM, 0.0f, 1.0f, 0.0f, "Trigger 3");
+		configParam(TRIGGER4_PARAM, 0.0f, 1.0f, 0.0f, "Trigger 4");
 		_triggerOnLoad = false;
 		_initialDelay = new bogaudio::dsp::Timer(APP->engine->getSampleRate(), 0.01f);
 	}
-	virtual ~Manual() {
+	virtual ~FourMan() {
 		if (_initialDelay) {
 			delete _initialDelay;
 		}

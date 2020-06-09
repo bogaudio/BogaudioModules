@@ -800,6 +800,16 @@
       ]
     },
     {
+      "slug": "Bogaudio-FourMan",
+      "name": "4MAN",
+      "description": "Quad button-controlled gates / triggers",
+      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#fourman",
+      "tags": [
+        "Controller",
+        "Quad"
+      ]
+    },
+    {
       "slug": "Bogaudio-Mult",
       "name": "MULT",
       "description": "1:6 or dual 1:3 multiple/splitter",
