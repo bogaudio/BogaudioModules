@@ -304,7 +304,7 @@ struct Mix8Widget : ModuleWidget {
 	}
 
 	void appendContextMenu(Menu* menu) override {
-		Mix8* m = dynamic_cast<Mix8*>(module);
+		auto m = dynamic_cast<Mix8*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());
 		OptionsMenuItem* mi = new OptionsMenuItem("Input 1 poly spread");

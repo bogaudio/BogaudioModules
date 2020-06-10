@@ -111,7 +111,7 @@ struct WalkWidget : ModuleWidget {
 	}
 
 	void appendContextMenu(Menu* menu) override {
-		Walk* m = dynamic_cast<Walk*>(module);
+		auto m = dynamic_cast<Walk*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());
 		OptionsMenuItem* p = new OptionsMenuItem("Polyphony channels from");

@@ -201,7 +201,7 @@ struct Mute8Widget : ModuleWidget {
 	}
 
 	void appendContextMenu(Menu* menu) override {
-		Mute8* m = dynamic_cast<Mute8*>(module);
+		auto m = dynamic_cast<Mute8*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());
 		menu->addChild(new BoolOptionMenuItem("Latching CV triggers", [m]() { return &m->_latchingCVs; }));

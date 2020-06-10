@@ -123,7 +123,7 @@ int AddressableSequenceModule::setStep(int c, int i, int n) {
 
 
 void AddressableSequenceBaseModuleWidget::appendContextMenu(Menu* menu) {
-	AddressableSequenceModule* m = dynamic_cast<AddressableSequenceModule*>(module);
+	auto m = dynamic_cast<AddressableSequenceModule*>(module);
 	assert(m);
 
 	menu->addChild(new MenuLabel());
@@ -140,7 +140,7 @@ void AddressableSequenceBaseModuleWidget::appendContextMenu(Menu* menu) {
 void AddressableSequenceModuleWidget::appendContextMenu(Menu* menu) {
 	AddressableSequenceBaseModuleWidget::appendContextMenu(menu);
 
-	AddressableSequenceModule* m = dynamic_cast<AddressableSequenceModule*>(module);
+	auto m = dynamic_cast<AddressableSequenceModule*>(module);
 	assert(m);
 	menu->addChild(new BoolOptionMenuItem("Select on clock mode", [m]() { return &m->_selectOnClock; }));
 }

@@ -486,7 +486,7 @@ struct Walk2Widget : ModuleWidget {
 	}
 
 	void appendContextMenu(Menu* menu) override {
-		Walk2* m = dynamic_cast<Walk2*>(module);
+		auto m = dynamic_cast<Walk2*>(module);
 		assert(m);
 
 		menu->addChild(new MenuLabel());

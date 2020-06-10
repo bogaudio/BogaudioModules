@@ -36,7 +36,7 @@ void MatrixBaseModule::modulate() {
 
 
 void MatrixBaseModuleWidget::appendContextMenu(Menu* menu) {
-	MatrixBaseModule* m = dynamic_cast<MatrixBaseModule*>(module);
+	auto m = dynamic_cast<MatrixBaseModule*>(module);
 	assert(m);
 	menu->addChild(new MenuLabel());
 
@@ -115,7 +115,7 @@ void KnobMatrixModule::dataFromJson(json_t* root) {
 
 
 void KnobMatrixModuleWidget::createKnob(math::Vec& position, KnobMatrixModule* module, int id) {
-	IndicatorKnob19* knob = dynamic_cast<IndicatorKnob19*>(createParam<IndicatorKnob19>(position, module, id));
+	auto knob = dynamic_cast<IndicatorKnob19*>(createParam<IndicatorKnob19>(position, module, id));
 	if (module) {
 		knob->setDrawColorsCallback([module]() { return module->_indicatorKnobs; });
 	}
@@ -130,7 +130,7 @@ void KnobMatrixModuleWidget::redrawKnobs() {
 }
 
 void KnobMatrixModuleWidget::appendContextMenu(Menu* menu) {
-	KnobMatrixModule* m = dynamic_cast<KnobMatrixModule*>(module);
+	auto m = dynamic_cast<KnobMatrixModule*>(module);
 	assert(m);
 	MatrixBaseModuleWidget::appendContextMenu(menu);
 	menu->addChild(new OptionMenuItem(
@@ -292,7 +292,7 @@ void SwitchMatrixModule::setColumnExclusive(bool e) {
 
 
 void SwitchMatrixModuleWidget::appendContextMenu(Menu* menu) {
-	SwitchMatrixModule* m = dynamic_cast<SwitchMatrixModule*>(module);
+	auto m = dynamic_cast<SwitchMatrixModule*>(module);
 	assert(m);
 	MatrixBaseModuleWidget::appendContextMenu(menu);
 

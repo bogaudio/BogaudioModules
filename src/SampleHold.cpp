@@ -191,7 +191,7 @@ struct SampleHoldWidget : ModuleWidget {
 	};
 
 	void appendContextMenu(Menu* menu) override {
-		SampleHold* m = dynamic_cast<SampleHold*>(module);
+		auto m = dynamic_cast<SampleHold*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());
 		{

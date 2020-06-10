@@ -139,7 +139,7 @@ struct LVCOWidget : ModuleWidget {
 	}
 
 	void appendContextMenu(Menu* menu) override {
-		LVCO* m = dynamic_cast<LVCO*>(module);
+		auto m = dynamic_cast<LVCO*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());
 

@@ -413,7 +413,7 @@ struct ArpWidget : ModuleWidget {
 	}
 
 	void appendContextMenu(Menu* menu) override {
-		Arp* m = dynamic_cast<Arp*>(module);
+		auto m = dynamic_cast<Arp*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());
 

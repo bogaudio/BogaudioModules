@@ -18,7 +18,7 @@ void DisableOutputLimitModule::dataFromJson(json_t* root) {
 
 
 void DisableOutputLimitModuleWidget::appendContextMenu(Menu* menu) {
-	DisableOutputLimitModule* m = dynamic_cast<DisableOutputLimitModule*>(module);
+	auto m = dynamic_cast<DisableOutputLimitModule*>(module);
 	assert(m);
 	menu->addChild(new MenuLabel());
 	menu->addChild(new BoolOptionMenuItem("Disable output limit", [m]() { return &m->_disableOutputLimit; }));

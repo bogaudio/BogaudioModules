@@ -95,7 +95,7 @@ struct AMRMWidget : ModuleWidget {
 	}
 
 	void appendContextMenu(Menu* menu) override {
-		AMRM* m = dynamic_cast<AMRM*>(module);
+		auto m = dynamic_cast<AMRM*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());
 		OptionsMenuItem* p = new OptionsMenuItem("Polyphony channels from");

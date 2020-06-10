@@ -203,7 +203,7 @@ struct LVCFWidget : ModuleWidget {
 	}
 
 	void appendContextMenu(Menu* menu) override {
-		LVCF* m = dynamic_cast<LVCF*>(module);
+		auto m = dynamic_cast<LVCF*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());
 

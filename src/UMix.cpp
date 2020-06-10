@@ -107,7 +107,7 @@ struct UMixWidget : MatrixBaseModuleWidget {
 	}
 
 	void appendContextMenu(Menu* menu) override {
-		UMix* m = dynamic_cast<UMix*>(module);
+		auto m = dynamic_cast<UMix*>(module);
 		assert(m);
 		MatrixBaseModuleWidget::appendContextMenu(menu);
 		menu->addChild(new OptionMenuItem("Average", [m]() { return !m->_sum; }, [m]() { m->_sum = !m->_sum; }));

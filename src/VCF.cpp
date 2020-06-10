@@ -248,7 +248,7 @@ struct VCFWidget : ModuleWidget {
 	}
 
 	void appendContextMenu(Menu* menu) override {
-		VCF* m = dynamic_cast<VCF*>(module);
+		auto m = dynamic_cast<VCF*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());
 		OptionsMenuItem* bwm = new OptionsMenuItem("Bandwidth mode");

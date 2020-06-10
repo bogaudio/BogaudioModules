@@ -339,7 +339,7 @@ struct FMOpWidget : ModuleWidget {
 	}
 
 	void appendContextMenu(Menu* menu) override {
-	  FMOp* fmop = dynamic_cast<FMOp*>(module);
+		auto fmop = dynamic_cast<FMOp*>(module);
 		assert(fmop);
 		menu->addChild(new MenuLabel());
 		menu->addChild(new BoolOptionMenuItem("Linear level response", [fmop]() { return &fmop->_linearLevel; }));

@@ -154,7 +154,7 @@ struct AnalyzerWidget : ModuleWidget {
 	}
 
 	void appendContextMenu(Menu* menu) override {
-		Analyzer* a = dynamic_cast<Analyzer*>(module);
+		auto a = dynamic_cast<Analyzer*>(module);
 		assert(a);
 
 		menu->addChild(new MenuLabel());

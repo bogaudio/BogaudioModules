@@ -178,7 +178,7 @@ struct ADWidget : ModuleWidget {
 	}
 
 	void appendContextMenu(Menu* menu) override {
-		AD* m = dynamic_cast<AD*>(module);
+		auto m = dynamic_cast<AD*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());
 		menu->addChild(new OptionMenuItem(

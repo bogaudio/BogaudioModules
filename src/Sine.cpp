@@ -143,7 +143,7 @@ struct SineWidget : ModuleWidget {
 	}
 
 	void appendContextMenu(Menu* menu) override {
-		Sine* m = dynamic_cast<Sine*>(module);
+		auto m = dynamic_cast<Sine*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());
 

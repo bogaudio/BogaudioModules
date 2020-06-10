@@ -111,7 +111,7 @@ struct VCOWidget : ModuleWidget {
 	}
 
 	void appendContextMenu(Menu* menu) override {
-		VCO* m = dynamic_cast<VCO*>(module);
+		auto m = dynamic_cast<VCO*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());
 		OptionsMenuItem* p = new OptionsMenuItem("Polyphony channels from");

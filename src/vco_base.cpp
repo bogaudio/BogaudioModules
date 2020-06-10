@@ -4,7 +4,7 @@
 #define POLY_INPUT "poly_input"
 
 float VCOBase::VCOFrequencyParamQuantity::offset() {
-	VCOBase* vco = dynamic_cast<VCOBase*>(module);
+	auto vco = dynamic_cast<VCOBase*>(module);
 	return vco->_slowMode ? vco->slowModeOffset : 0.0f;
 }
 
@@ -14,7 +14,7 @@ float VCOBase::VCOFrequencyParamQuantity::getDisplayValue() {
 		return v;
 	}
 
-	VCOBase* vco = dynamic_cast<VCOBase*>(module);
+	auto vco = dynamic_cast<VCOBase*>(module);
 	return vco->_linearMode ? (vco->_slowMode ? v : v * 1000.0f) : FrequencyParamQuantity::getDisplayValue();
 }
 
@@ -23,7 +23,7 @@ void VCOBase::VCOFrequencyParamQuantity::setDisplayValue(float v) {
 		return;
 	}
 
-	VCOBase* vco = dynamic_cast<VCOBase*>(module);
+	auto vco = dynamic_cast<VCOBase*>(module);
 	if (vco->_linearMode) {
 		if (vco->_slowMode) {
 			setValue(v / 1000.0f);

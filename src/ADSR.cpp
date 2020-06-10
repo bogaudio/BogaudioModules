@@ -146,7 +146,7 @@ struct ADSRWidget : ModuleWidget {
 	}
 
 	void appendContextMenu(Menu* menu) override {
-		ADSR* m = dynamic_cast<ADSR*>(module);
+		auto m = dynamic_cast<ADSR*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());
 		menu->addChild(new OptionMenuItem(
