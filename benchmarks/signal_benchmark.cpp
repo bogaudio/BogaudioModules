@@ -9,7 +9,7 @@
 
 using namespace bogaudio::dsp;
 
-static void BM_DecibelsToAmplitude(benchmark::State& state) {
+static void BM_Signal_DecibelsToAmplitude(benchmark::State& state) {
 	std::vector<float> buf = { 10.0f, 6.0f, 3.0f, 0.0f, -3.0f, -6.0f, -10.0f, -30.0f, -60.0f };
 	int i = 0;
 	for (auto _ : state) {
@@ -17,9 +17,9 @@ static void BM_DecibelsToAmplitude(benchmark::State& state) {
 		benchmark::DoNotOptimize(decibelsToAmplitude(buf.at(i)));
 	}
 }
-BENCHMARK(BM_DecibelsToAmplitude);
+BENCHMARK(BM_Signal_DecibelsToAmplitude);
 
-static void BM_AmplitudeToDecibels(benchmark::State& state) {
+static void BM_Signal_AmplitudeToDecibels(benchmark::State& state) {
 	std::vector<float> buf = { 0.0001f, 0.0001f, 0.001f, 0.01, 0.1f, 0.3f, 0.5f, 0.8f, 1.0f, 1.5f, 2.0f, 5.0f, 10.0f };
 	int i = 0;
 	for (auto _ : state) {
@@ -27,9 +27,9 @@ static void BM_AmplitudeToDecibels(benchmark::State& state) {
 		benchmark::DoNotOptimize(amplitudeToDecibels(buf.at(i)));
 	}
 }
-BENCHMARK(BM_AmplitudeToDecibels);
+BENCHMARK(BM_Signal_AmplitudeToDecibels);
 
-static void BM_Amplifier(benchmark::State& state) {
+static void BM_Signal_Amplifier(benchmark::State& state) {
 	WhiteNoiseGenerator r;
 	const int n = 256;
 	float samples[n];
@@ -47,9 +47,9 @@ static void BM_Amplifier(benchmark::State& state) {
 		benchmark::DoNotOptimize(a.next(samples[j]));
 	}
 }
-BENCHMARK(BM_Amplifier);
+BENCHMARK(BM_Signal_Amplifier);
 
-static void BM_RMS_Short(benchmark::State& state) {
+static void BM_Signal_RMS_Short(benchmark::State& state) {
 	SineOscillator o(500.0, 100.0);
 	const int n = 256;
 	float buf[n];
@@ -63,9 +63,9 @@ static void BM_RMS_Short(benchmark::State& state) {
 		benchmark::DoNotOptimize(rms.next(buf[i]));
 	}
 }
-BENCHMARK(BM_RMS_Short);
+BENCHMARK(BM_Signal_RMS_Short);
 
-static void BM_RMS_Long(benchmark::State& state) {
+static void BM_Signal_RMS_Long(benchmark::State& state) {
 	SineOscillator o(500.0, 100.0);
 	const int n = 256;
 	float buf[n];
@@ -79,9 +79,9 @@ static void BM_RMS_Long(benchmark::State& state) {
 		benchmark::DoNotOptimize(rms.next(buf[i]));
 	}
 }
-BENCHMARK(BM_RMS_Long);
+BENCHMARK(BM_Signal_RMS_Long);
 
-static void BM_RMS_Modulating(benchmark::State& state) {
+static void BM_Signal_RMS_Modulating(benchmark::State& state) {
 	SineOscillator o(500.0, 100.0);
 	const int n = 256;
 	float buf[n];
@@ -100,9 +100,9 @@ static void BM_RMS_Modulating(benchmark::State& state) {
 		benchmark::DoNotOptimize(rms.next(buf[i]));
 	}
 }
-BENCHMARK(BM_RMS_Modulating);
+BENCHMARK(BM_Signal_RMS_Modulating);
 
-static void BM_PucketteEnvelopeFollower(benchmark::State& state) {
+static void BM_Signal_PucketteEnvelopeFollower(benchmark::State& state) {
 	SineOscillator o(500.0, 100.0);
 	const int n = 256;
 	float buf[n];
@@ -116,9 +116,9 @@ static void BM_PucketteEnvelopeFollower(benchmark::State& state) {
 		benchmark::DoNotOptimize(pef.next(buf[i]));
 	}
 }
-BENCHMARK(BM_PucketteEnvelopeFollower);
+BENCHMARK(BM_Signal_PucketteEnvelopeFollower);
 
-static void BM_SlewLimiter(benchmark::State& state) {
+static void BM_Signal_SlewLimiter(benchmark::State& state) {
 	WhiteNoiseGenerator r;
 	const int n = 256;
 	float buf[n];
@@ -132,9 +132,9 @@ static void BM_SlewLimiter(benchmark::State& state) {
 		benchmark::DoNotOptimize(sl.next(buf[i]));
 	}
 }
-BENCHMARK(BM_SlewLimiter);
+BENCHMARK(BM_Signal_SlewLimiter);
 
-static void BM_ShapedSlewLimiter(benchmark::State& state) {
+static void BM_Signal_ShapedSlewLimiter(benchmark::State& state) {
 	WhiteNoiseGenerator r;
 	const int n = 256;
 	float buf[n];
@@ -148,9 +148,9 @@ static void BM_ShapedSlewLimiter(benchmark::State& state) {
 		benchmark::DoNotOptimize(sl.next(buf[i]));
 	}
 }
-BENCHMARK(BM_ShapedSlewLimiter);
+BENCHMARK(BM_Signal_ShapedSlewLimiter);
 
-static void BM_Panner(benchmark::State& state) {
+static void BM_Signal_Panner(benchmark::State& state) {
 	SineOscillator o(500.0, 100.0);
 	const int n = 256;
 	float buf[n];
@@ -165,9 +165,9 @@ static void BM_Panner(benchmark::State& state) {
 		p.next(buf[i], l, r);
 	}
 }
-BENCHMARK(BM_Panner);
+BENCHMARK(BM_Signal_Panner);
 
-static void BM_Panner_Modulating(benchmark::State& state) {
+static void BM_Signal_Panner_Modulating(benchmark::State& state) {
 	SineOscillator o(500.0, 100.0);
 	const int n = 256;
 	float buf[n];
@@ -185,9 +185,9 @@ static void BM_Panner_Modulating(benchmark::State& state) {
 		p.next(buf[i], l, rr);
 	}
 }
-BENCHMARK(BM_Panner_Modulating);
+BENCHMARK(BM_Signal_Panner_Modulating);
 
-static void BM_DelayLine(benchmark::State& state) {
+static void BM_Signal_DelayLine(benchmark::State& state) {
 	SineOscillator o(500.0, 100.0);
 	const int n = 256;
 	float buf[n];
@@ -201,9 +201,9 @@ static void BM_DelayLine(benchmark::State& state) {
 		benchmark::DoNotOptimize(dl.next(buf[i]));
 	}
 }
-BENCHMARK(BM_DelayLine);
+BENCHMARK(BM_Signal_DelayLine);
 
-static void BM_Saturator(benchmark::State& state) {
+static void BM_Signal_Saturator(benchmark::State& state) {
 	SineOscillator o(500.0, 100.0);
 	const int n = 256;
 	float buf[n];
@@ -217,9 +217,9 @@ static void BM_Saturator(benchmark::State& state) {
 		benchmark::DoNotOptimize(s.next(buf[i]));
 	}
 }
-BENCHMARK(BM_Saturator);
+BENCHMARK(BM_Signal_Saturator);
 
-static void BM_CompressorSoftKnee(benchmark::State& state) {
+static void BM_Signal_CompressorSoftKnee(benchmark::State& state) {
 	int i = 0;
 	Compressor c;
 	for (auto _ : state) {
@@ -227,9 +227,9 @@ static void BM_CompressorSoftKnee(benchmark::State& state) {
 		benchmark::DoNotOptimize(c.compressionDb((float)(i + 5), 10.0f, 2.0f, true));
 	}
 }
-BENCHMARK(BM_CompressorSoftKnee);
+BENCHMARK(BM_Signal_CompressorSoftKnee);
 
-static void BM_NoiseGateSoftKnee(benchmark::State& state) {
+static void BM_Signal_NoiseGateSoftKnee(benchmark::State& state) {
 	int i = 0;
 	NoiseGate ng;
 	for (auto _ : state) {
@@ -237,4 +237,4 @@ static void BM_NoiseGateSoftKnee(benchmark::State& state) {
 		benchmark::DoNotOptimize(ng.compressionDb(0.0f - (float)(i * 3), 0.0f, 2.0f, true));
 	}
 }
-BENCHMARK(BM_NoiseGateSoftKnee);
+BENCHMARK(BM_Signal_NoiseGateSoftKnee);

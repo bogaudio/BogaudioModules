@@ -8,7 +8,7 @@
 
 using namespace bogaudio::dsp;
 
-static void BM_LPFDecimator(benchmark::State& state) {
+static void BM_Filter_LPFDecimator(benchmark::State& state) {
 	WhiteNoiseGenerator r;
 	const int n = 8;
 	float buf[n];
@@ -20,9 +20,9 @@ static void BM_LPFDecimator(benchmark::State& state) {
 		benchmark::DoNotOptimize(d.next(buf));
 	}
 }
-BENCHMARK(BM_LPFDecimator);
+BENCHMARK(BM_Filter_LPFDecimator);
 
-static void BM_CICDecimator(benchmark::State& state) {
+static void BM_Filter_CICDecimator(benchmark::State& state) {
 	WhiteNoiseGenerator r;
 	const int n = 8;
 	float buf[n];
@@ -34,9 +34,9 @@ static void BM_CICDecimator(benchmark::State& state) {
 		benchmark::DoNotOptimize(d.next(buf));
 	}
 }
-BENCHMARK(BM_CICDecimator);
+BENCHMARK(BM_Filter_CICDecimator);
 
-// static void BM_RackDecimator(benchmark::State& state) {
+// static void BM_Filter_RackDecimator(benchmark::State& state) {
 //   WhiteNoiseGenerator r;
 //   const int n = 8;
 //   float buf[n];
@@ -48,9 +48,9 @@ BENCHMARK(BM_CICDecimator);
 //     benchmark::DoNotOptimize(d.process(buf));
 //   }
 // }
-// BENCHMARK(BM_RackDecimator);
+// BENCHMARK(BM_Filter_RackDecimator);
 
-static void BM_Biquad(benchmark::State& state) {
+static void BM_Filter_Biquad(benchmark::State& state) {
 	WhiteNoiseGenerator r;
 	const int n = 8;
 	float buf[n];
@@ -66,9 +66,9 @@ static void BM_Biquad(benchmark::State& state) {
 		i = (i + 1) % n;
 	}
 }
-BENCHMARK(BM_Biquad);
+BENCHMARK(BM_Filter_Biquad);
 
-static void BM_AnalogFrequency(benchmark::State& state) {
+static void BM_Filter_AnalogFrequency(benchmark::State& state) {
 	WhiteNoiseGenerator r;
 	const int n = 128;
 	float buf[n];
@@ -82,10 +82,10 @@ static void BM_AnalogFrequency(benchmark::State& state) {
 		i = (i + 1) % n;
 	}
 }
-BENCHMARK(BM_AnalogFrequency);
+BENCHMARK(BM_Filter_AnalogFrequency);
 
 #ifdef RACK_SIMD
-static void BM_Biquad4(benchmark::State& state) {
+static void BM_Filter_Biquad4(benchmark::State& state) {
 	WhiteNoiseGenerator r;
 	const int n = 128;
 	float buf[n];
@@ -103,10 +103,10 @@ static void BM_Biquad4(benchmark::State& state) {
 		i = (i + 1) % n;
 	}
 }
-BENCHMARK(BM_Biquad4);
+BENCHMARK(BM_Filter_Biquad4);
 #endif
 
-static void BM_BiquadBank4(benchmark::State& state) {
+static void BM_Filter_BiquadBank4(benchmark::State& state) {
 	WhiteNoiseGenerator r;
 	const int n = 128;
 	float buf[n];
@@ -133,9 +133,9 @@ static void BM_BiquadBank4(benchmark::State& state) {
 		i = (i + 1) % n;
 	}
 }
-BENCHMARK(BM_BiquadBank4);
+BENCHMARK(BM_Filter_BiquadBank4);
 
-static void BM_BiquadBank16(benchmark::State& state) {
+static void BM_Filter_BiquadBank16(benchmark::State& state) {
 	WhiteNoiseGenerator r;
 	const int n = 128;
 	float buf[n];
@@ -162,9 +162,9 @@ static void BM_BiquadBank16(benchmark::State& state) {
 		i = (i + 1) % n;
 	}
 }
-BENCHMARK(BM_BiquadBank16);
+BENCHMARK(BM_Filter_BiquadBank16);
 
-static void BM_BiquadBank16_2Pole(benchmark::State& state) {
+static void BM_Filter_BiquadBank16_2Pole(benchmark::State& state) {
 	WhiteNoiseGenerator r;
 	const int n = 128;
 	float buf[n];
@@ -191,4 +191,4 @@ static void BM_BiquadBank16_2Pole(benchmark::State& state) {
 		i = (i + 1) % n;
 	}
 }
-BENCHMARK(BM_BiquadBank16_2Pole);
+BENCHMARK(BM_Filter_BiquadBank16_2Pole);

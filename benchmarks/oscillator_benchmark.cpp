@@ -5,31 +5,31 @@
 
 using namespace bogaudio::dsp;
 
-static void BM_Phasor(benchmark::State& state) {
+static void BM_Oscillator_Phasor(benchmark::State& state) {
 	Phasor p(44100.0, 440.0);
 	for (auto _ : state) {
 		p.next();
 	}
 }
-BENCHMARK(BM_Phasor);
+BENCHMARK(BM_Oscillator_Phasor);
 
-static void BM_SineOscillator(benchmark::State& state) {
+static void BM_Oscillator_SineOscillator(benchmark::State& state) {
 	SineOscillator o(44100.0, 440.0);
 	for (auto _ : state) {
 		o.next();
 	}
 }
-BENCHMARK(BM_SineOscillator);
+BENCHMARK(BM_Oscillator_SineOscillator);
 
-static void BM_SineTableOscillator(benchmark::State& state) {
+static void BM_Oscillator_SineTableOscillator(benchmark::State& state) {
 	SineTableOscillator o(44100.0, 440.0);
 	for (auto _ : state) {
 		o.next();
 	}
 }
-BENCHMARK(BM_SineTableOscillator);
+BENCHMARK(BM_Oscillator_SineTableOscillator);
 
-static void BM_SineOscillatorFM(benchmark::State& state) {
+static void BM_Oscillator_SineOscillatorFM(benchmark::State& state) {
 	const float baseHz = 440.0;
 	SineOscillator m(44100.0, baseHz);
 	SineOscillator c(44100.0, baseHz);
@@ -38,9 +38,9 @@ static void BM_SineOscillatorFM(benchmark::State& state) {
 		c.next();
 	}
 }
-BENCHMARK(BM_SineOscillatorFM);
+BENCHMARK(BM_Oscillator_SineOscillatorFM);
 
-static void BM_SineTableOscillatorPM(benchmark::State& state) {
+static void BM_Oscillator_SineTableOscillatorPM(benchmark::State& state) {
 	SineTableOscillator m(44100.0, 440.0);
 	SineTableOscillator c(44100.0, 440.0);
 	for (auto _ : state) {
@@ -48,69 +48,69 @@ static void BM_SineTableOscillatorPM(benchmark::State& state) {
 		c.nextFromPhasor(c, Phasor::radiansToPhase(m.next()));
 	}
 }
-BENCHMARK(BM_SineTableOscillatorPM);
+BENCHMARK(BM_Oscillator_SineTableOscillatorPM);
 
-static void BM_SawOscillator(benchmark::State& state) {
+static void BM_Oscillator_SawOscillator(benchmark::State& state) {
 	SawOscillator o(44100.0, 440.0);
 	for (auto _ : state) {
 		o.next();
 	}
 }
-BENCHMARK(BM_SawOscillator);
+BENCHMARK(BM_Oscillator_SawOscillator);
 
-static void BM_SaturatingSawOscillator(benchmark::State& state) {
+static void BM_Oscillator_SaturatingSawOscillator(benchmark::State& state) {
 	SaturatingSawOscillator o(44100.0, 440.0);
 	o.setSaturation(0.9);
 	for (auto _ : state) {
 		o.next();
 	}
 }
-BENCHMARK(BM_SaturatingSawOscillator);
+BENCHMARK(BM_Oscillator_SaturatingSawOscillator);
 
-static void BM_BandLimitedSawOscillator(benchmark::State& state) {
+static void BM_Oscillator_BandLimitedSawOscillator(benchmark::State& state) {
 	BandLimitedSawOscillator o(44100.0, 440.0);
 	o.setQuality(12);
 	for (auto _ : state) {
 		o.next();
 	}
 }
-BENCHMARK(BM_BandLimitedSawOscillator);
+BENCHMARK(BM_Oscillator_BandLimitedSawOscillator);
 
-static void BM_SquareOscillator(benchmark::State& state) {
+static void BM_Oscillator_SquareOscillator(benchmark::State& state) {
 	SquareOscillator o(44100.0, 440.0);
 	for (auto _ : state) {
 		o.next();
 	}
 }
-BENCHMARK(BM_SquareOscillator);
+BENCHMARK(BM_Oscillator_SquareOscillator);
 
-static void BM_BandLimitedSquareOscillator(benchmark::State& state) {
+static void BM_Oscillator_BandLimitedSquareOscillator(benchmark::State& state) {
 	BandLimitedSquareOscillator o(44100.0, 440.0);
 	o.setQuality(12);
 	for (auto _ : state) {
 		o.next();
 	}
 }
-BENCHMARK(BM_BandLimitedSquareOscillator);
+BENCHMARK(BM_Oscillator_BandLimitedSquareOscillator);
 
-static void BM_TriangleOscillator(benchmark::State& state) {
+static void BM_Oscillator_TriangleOscillator(benchmark::State& state) {
 	TriangleOscillator o(44100.0, 440.0);
 	for (auto _ : state) {
 		o.next();
 	}
 }
-BENCHMARK(BM_TriangleOscillator);
+BENCHMARK(BM_Oscillator_TriangleOscillator);
 
-static void BM_SampledTriangleOscillator(benchmark::State& state) {
+static void BM_Oscillator_SampledTriangleOscillator(benchmark::State& state) {
 	TriangleOscillator o(44100.0, 440.0);
 	o.setSampleWidth(Phasor::maxSampleWidth / 2.0);
 	for (auto _ : state) {
 		o.next();
 	}
 }
-BENCHMARK(BM_SampledTriangleOscillator);
+BENCHMARK(BM_Oscillator_SampledTriangleOscillator);
 
-static void BM_SineBankOscillator100(benchmark::State& state) {
+static void BM_Oscillator_SineBankOscillator100(benchmark::State& state) {
 	SineBankOscillator o(44100.0, 100.0, 100);
 	for (int i = 1, n = o.partialCount(); i <= n; ++i) {
 		o.setPartial(i, i, 1.0 / (float)i);
@@ -120,9 +120,9 @@ static void BM_SineBankOscillator100(benchmark::State& state) {
 		o.next();
 	}
 }
-BENCHMARK(BM_SineBankOscillator100);
+BENCHMARK(BM_Oscillator_SineBankOscillator100);
 
-static void BM_SineBankOscillator500(benchmark::State& state) {
+static void BM_Oscillator_SineBankOscillator500(benchmark::State& state) {
 	SineBankOscillator o(44100.0, 500.0, 100);
 	for (int i = 1, n = o.partialCount(); i <= n; ++i) {
 		o.setPartial(i, i, 1.0 / (float)i);
@@ -132,9 +132,9 @@ static void BM_SineBankOscillator500(benchmark::State& state) {
 		o.next();
 	}
 }
-BENCHMARK(BM_SineBankOscillator500);
+BENCHMARK(BM_Oscillator_SineBankOscillator500);
 
-static void BM_SineBankOscillator5000(benchmark::State& state) {
+static void BM_Oscillator_SineBankOscillator5000(benchmark::State& state) {
 	SineBankOscillator o(44100.0, 5000.0, 100);
 	for (int i = 1, n = o.partialCount(); i <= n; ++i) {
 		o.setPartial(i, i, 1.0 / (float)i);
@@ -144,9 +144,9 @@ static void BM_SineBankOscillator5000(benchmark::State& state) {
 		o.next();
 	}
 }
-BENCHMARK(BM_SineBankOscillator5000);
+BENCHMARK(BM_Oscillator_SineBankOscillator5000);
 
-static void BM_SineBankOscillator15000(benchmark::State& state) {
+static void BM_Oscillator_SineBankOscillator15000(benchmark::State& state) {
 	SineBankOscillator o(44100.0, 15000.0, 100);
 	for (int i = 1, n = o.partialCount(); i <= n; ++i) {
 		o.setPartial(i, i, 1.0 / (float)i);
@@ -156,4 +156,4 @@ static void BM_SineBankOscillator15000(benchmark::State& state) {
 		o.next();
 	}
 }
-BENCHMARK(BM_SineBankOscillator15000);
+BENCHMARK(BM_Oscillator_SineBankOscillator15000);

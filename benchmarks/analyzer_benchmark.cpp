@@ -5,14 +5,14 @@
 
 using namespace bogaudio::dsp;
 
-static void BM_HanningWindowInit(benchmark::State& state) {
+static void BM_Analyzer_HanningWindowInit(benchmark::State& state) {
 	for (auto _ : state) {
 		delete new HanningWindow(1024);
 	}
 }
-BENCHMARK(BM_HanningWindowInit);
+BENCHMARK(BM_Analyzer_HanningWindowInit);
 
-static void BM_HanningWindowApply(benchmark::State& state) {
+static void BM_Analyzer_HanningWindowApply(benchmark::State& state) {
 	const int n = 1024;
 	HanningWindow w(n);
 	float in[n];
@@ -23,9 +23,9 @@ static void BM_HanningWindowApply(benchmark::State& state) {
 		in[0] = out[0]; // prevents the call from being optimized away?
 	}
 }
-BENCHMARK(BM_HanningWindowApply);
+BENCHMARK(BM_Analyzer_HanningWindowApply);
 
-static void BM_RuntimeFFT1024(benchmark::State& state) {
+static void BM_Analyzer_RuntimeFFT1024(benchmark::State& state) {
 	const int n = 1024;
 	ffft::FFTReal<float> fft(n);
 	float in[n];
@@ -35,9 +35,9 @@ static void BM_RuntimeFFT1024(benchmark::State& state) {
 		fft.do_fft(out, in);
 	}
 }
-BENCHMARK(BM_RuntimeFFT1024);
+BENCHMARK(BM_Analyzer_RuntimeFFT1024);
 
-static void BM_CompileTimeFFT1024(benchmark::State& state) {
+static void BM_Analyzer_CompileTimeFFT1024(benchmark::State& state) {
 	FFT1024 fft;
 	const int n = 1024;
 	float in[n];
@@ -47,9 +47,9 @@ static void BM_CompileTimeFFT1024(benchmark::State& state) {
 		fft.do_fft(out, in);
 	}
 }
-BENCHMARK(BM_CompileTimeFFT1024);
+BENCHMARK(BM_Analyzer_CompileTimeFFT1024);
 
-static void BM_RuntimeFFT4096(benchmark::State& state) {
+static void BM_Analyzer_RuntimeFFT4096(benchmark::State& state) {
 	const int n = 4096;
 	ffft::FFTReal<float> fft(n);
 	float in[n];
@@ -59,9 +59,9 @@ static void BM_RuntimeFFT4096(benchmark::State& state) {
 		fft.do_fft(out, in);
 	}
 }
-BENCHMARK(BM_RuntimeFFT4096);
+BENCHMARK(BM_Analyzer_RuntimeFFT4096);
 
-static void BM_CompileTimeFFT4096(benchmark::State& state) {
+static void BM_Analyzer_CompileTimeFFT4096(benchmark::State& state) {
 	FFT4096 fft;
 	const int n = 4096;
 	float in[n];
@@ -71,9 +71,9 @@ static void BM_CompileTimeFFT4096(benchmark::State& state) {
 		fft.do_fft(out, in);
 	}
 }
-BENCHMARK(BM_CompileTimeFFT4096);
+BENCHMARK(BM_Analyzer_CompileTimeFFT4096);
 
-static void BM_SpectrumAnalyzerStep(benchmark::State& state) {
+static void BM_Analyzer_SpectrumAnalyzerStep(benchmark::State& state) {
 	SpectrumAnalyzer sa(
 		SpectrumAnalyzer::SIZE_1024,
 		SpectrumAnalyzer::OVERLAP_1,
@@ -88,9 +88,9 @@ static void BM_SpectrumAnalyzerStep(benchmark::State& state) {
 		i %= 8;
 	}
 }
-BENCHMARK(BM_SpectrumAnalyzerStep);
+BENCHMARK(BM_Analyzer_SpectrumAnalyzerStep);
 
-// static void BM_SpectrumAnalyzerProcess(benchmark::State& state) {
+// static void BM_Analyzer_SpectrumAnalyzerProcess(benchmark::State& state) {
 //   SpectrumAnalyzer sa(
 //     SpectrumAnalyzer::SIZE_1024,
 //     SpectrumAnalyzer::OVERLAP_1,
@@ -106,9 +106,9 @@ BENCHMARK(BM_SpectrumAnalyzerStep);
 //     sa.process(sa._samples);
 //   }
 // }
-// BENCHMARK(BM_SpectrumAnalyzerProcess);
+// BENCHMARK(BM_Analyzer_SpectrumAnalyzerProcess);
 
-static void BM_SpectrumAnalyzerGetMagnitudes(benchmark::State& state) {
+static void BM_Analyzer_SpectrumAnalyzerGetMagnitudes(benchmark::State& state) {
 	SpectrumAnalyzer sa(
 		SpectrumAnalyzer::SIZE_1024,
 		SpectrumAnalyzer::OVERLAP_1,
@@ -126,4 +126,4 @@ static void BM_SpectrumAnalyzerGetMagnitudes(benchmark::State& state) {
 		sa.getMagnitudes(bins, nBins);
 	}
 }
-BENCHMARK(BM_SpectrumAnalyzerGetMagnitudes);
+BENCHMARK(BM_Analyzer_SpectrumAnalyzerGetMagnitudes);

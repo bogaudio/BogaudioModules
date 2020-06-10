@@ -10,14 +10,14 @@ struct BMOverlappingBuffer : OverlappingBuffer<float> {
 	void processBuffer(float* samples) override {}
 };
 
-static void BM_OverlappingBuffer(benchmark::State& state) {
+static void BM_Buffer_OverlappingBuffer(benchmark::State& state) {
 	BMOverlappingBuffer b(1024, 2);
 	int i = 0;
 	for (auto _ : state) {
 		b.step(i++);
 	}
 }
-BENCHMARK(BM_OverlappingBuffer);
+BENCHMARK(BM_Buffer_OverlappingBuffer);
 
 
 static void _averagingBuffer(benchmark::State& state, int n, int m) {
@@ -37,12 +37,12 @@ static void _averagingBuffer(benchmark::State& state, int n, int m) {
 	assert(pi > M_PI - e && pi < M_PI + e);
 }
 
-static void BM_AveragingBufferSmallN(benchmark::State& state) {
+static void BM_Buffer_AveragingBufferSmallN(benchmark::State& state) {
 	_averagingBuffer(state, 1024, 3);
 }
-BENCHMARK(BM_AveragingBufferSmallN);
+BENCHMARK(BM_Buffer_AveragingBufferSmallN);
 
-static void BM_AveragingBufferLargeN(benchmark::State& state) {
+static void BM_Buffer_AveragingBufferLargeN(benchmark::State& state) {
 	_averagingBuffer(state, 1024, 100);
 }
-BENCHMARK(BM_AveragingBufferLargeN);
+BENCHMARK(BM_Buffer_AveragingBufferLargeN);
