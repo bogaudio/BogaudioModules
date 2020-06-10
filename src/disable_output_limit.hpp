@@ -12,12 +12,7 @@ struct DisableOutputLimitModule : BGModule {
 };
 
 struct DisableOutputLimitModuleWidget : ModuleWidget {
-	void appendContextMenu(Menu* menu) override {
-		DisableOutputLimitModule* m = dynamic_cast<DisableOutputLimitModule*>(module);
-		assert(m);
-		menu->addChild(new MenuLabel());
-		menu->addChild(new BoolOptionMenuItem("Disable output limit", [m]() { return &m->_disableOutputLimit; }));
-	}
+	void appendContextMenu(Menu* menu) override;
 };
 
 } // namespace bogaudio

@@ -16,20 +16,7 @@ struct Trigger : rack::dsp::SchmittTrigger {
 		reset();
 	}
 
-	bool process(float in) {
-		if (state) {
-			if (in <= _lowThreshold) {
-				state = false;
-			}
-		}
-		else {
-			if (in >= _highThreshold) {
-				state = true;
-				return true;
-			}
-		}
-		return false;
-	}
+	bool process(float in);
 };
 
 struct NegativeTrigger : rack::dsp::SchmittTrigger {
@@ -44,20 +31,7 @@ struct NegativeTrigger : rack::dsp::SchmittTrigger {
 		reset();
 	}
 
-	bool process(float in) {
-		if (state) {
-			if (in >= _lowThreshold) {
-				state = false;
-			}
-		}
-		else {
-			if (in <= _highThreshold) {
-				state = true;
-				return true;
-			}
-		}
-		return false;
-	}
+	bool process(float in);
 };
 
 inline float getZoom() {

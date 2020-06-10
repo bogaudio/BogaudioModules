@@ -35,6 +35,25 @@ void MatrixBaseModule::modulate() {
 }
 
 
+void MatrixBaseModuleWidget::appendContextMenu(Menu* menu) {
+	MatrixBaseModule* m = dynamic_cast<MatrixBaseModule*>(module);
+	assert(m);
+	menu->addChild(new MenuLabel());
+
+	OptionsMenuItem* g = new OptionsMenuItem("Input gain");
+	g->addItem(OptionMenuItem("Unity", [m]() { return (int)m->_inputGainDb == 0; }, [m]() { m->_inputGainDb = 0.0f; }));
+	g->addItem(OptionMenuItem("-3db", [m]() { return (int)m->_inputGainDb == -3; }, [m]() { m->_inputGainDb = -3.0f; }));
+	g->addItem(OptionMenuItem("-6db", [m]() { return (int)m->_inputGainDb == -6; }, [m]() { m->_inputGainDb = -6.0f; }));
+	g->addItem(OptionMenuItem("-12db", [m]() { return (int)m->_inputGainDb == -12; }, [m]() { m->_inputGainDb = -12.0f; }));
+	OptionsMenuItem::addToMenu(g, menu);
+
+	OptionsMenuItem* c = new OptionsMenuItem("Output clipping");
+	c->addItem(OptionMenuItem("Soft/saturated (better for audio)", [m]() { return m->_clippingMode == MatrixBaseModule::SOFT_CLIPPING; }, [m]() { m->_clippingMode = MatrixBaseModule::SOFT_CLIPPING; }));
+	c->addItem(OptionMenuItem("Hard/clipped (better for CV)", [m]() { return m->_clippingMode == MatrixBaseModule::HARD_CLIPPING; }, [m]() { m->_clippingMode = MatrixBaseModule::HARD_CLIPPING; }));
+	OptionsMenuItem::addToMenu(c, menu);
+}
+
+
 int MatrixModule::channels() {
 	return inputs[_firstInputID].getChannels();
 }
@@ -92,6 +111,33 @@ void KnobMatrixModule::dataFromJson(json_t* root) {
 	if (k) {
 		_indicatorKnobs = json_is_true(k);
 	}
+}
+
+
+void KnobMatrixModuleWidget::createKnob(math::Vec& position, KnobMatrixModule* module, int id) {
+	IndicatorKnob19* knob = dynamic_cast<IndicatorKnob19*>(createParam<IndicatorKnob19>(position, module, id));
+	if (module) {
+		knob->setDrawColorsCallback([module]() { return module->_indicatorKnobs; });
+	}
+	addParam(knob);
+	_knobs.push_back(knob);
+}
+
+void KnobMatrixModuleWidget::redrawKnobs() {
+	for (IndicatorKnob19* knob : _knobs) {
+		knob->redraw();
+	}
+}
+
+void KnobMatrixModuleWidget::appendContextMenu(Menu* menu) {
+	KnobMatrixModule* m = dynamic_cast<KnobMatrixModule*>(module);
+	assert(m);
+	MatrixBaseModuleWidget::appendContextMenu(menu);
+	menu->addChild(new OptionMenuItem(
+		"Indicator knobs",
+		[m]() { return m->_indicatorKnobs; },
+		[m, this]() { m->_indicatorKnobs = !m->_indicatorKnobs; this->redrawKnobs(); }
+	));
 }
 
 
@@ -242,4 +288,20 @@ void SwitchMatrixModule::setColumnExclusive(bool e) {
 			}
 		}
 	}
+}
+
+
+void SwitchMatrixModuleWidget::appendContextMenu(Menu* menu) {
+	SwitchMatrixModule* m = dynamic_cast<SwitchMatrixModule*>(module);
+	assert(m);
+	MatrixBaseModuleWidget::appendContextMenu(menu);
+
+	OptionsMenuItem* i = new OptionsMenuItem("Inverting");
+	i->addItem(OptionMenuItem("By param entry (right-click)", [m]() { return m->_inverting == SwitchMatrixModule::PARAM_INVERTING; }, [m]() { m->setInverting(SwitchMatrixModule::PARAM_INVERTING); }));
+	i->addItem(OptionMenuItem("On second click", [m]() { return m->_inverting == SwitchMatrixModule::CLICK_INVERTING; }, [m]() { m->setInverting(SwitchMatrixModule::CLICK_INVERTING); }));
+	i->addItem(OptionMenuItem("Disabled", [m]() { return m->_inverting == SwitchMatrixModule::NO_INVERTING; }, [m]() { m->setInverting(SwitchMatrixModule::NO_INVERTING); }));
+	OptionsMenuItem::addToMenu(i, menu);
+
+	menu->addChild(new OptionMenuItem("Exclusive by rows", [m]() { return m->_rowExclusive; }, [m]() { m->setRowExclusive(!m->_rowExclusive); }));
+	menu->addChild(new OptionMenuItem("Exclusive by columns", [m]() { return m->_columnExclusive; }, [m]() { m->setColumnExclusive(!m->_columnExclusive); }));
 }

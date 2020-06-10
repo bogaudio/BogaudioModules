@@ -23,12 +23,7 @@ struct TriggerOnLoadModuleWidget : ModuleWidget {
 	: _menuItemLabel(menuItemLabel)
 	{}
 
-	void appendContextMenu(Menu* menu) override {
-		TriggerOnLoadModule* m = dynamic_cast<TriggerOnLoadModule*>(module);
-		assert(m);
-		menu->addChild(new MenuLabel());
-		menu->addChild(new BoolOptionMenuItem(_menuItemLabel.c_str(), [m]() { return &m->_triggerOnLoad; }));
-	}
+	void appendContextMenu(Menu* menu) override;
 };
 
 } // namespace bogaudio
