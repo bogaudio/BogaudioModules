@@ -22,10 +22,11 @@ namespace dsp {
 		float_4 _x[3] {};
 		float_4 _y[3] {};
 		bool _disable = false;
+		int _outputIndex = 3;
 
 		void setParams(int i, float a0, float a1, float a2, float b0, float b1, float b2);
 		void reset();
-		void setN(int n);
+		void setN(int n, bool minDelay = false);
 		inline void disable(bool disable) { _disable = disable; }
 		float next(float sample);
 	};
@@ -42,7 +43,7 @@ struct BiquadBank : Filter {
 
 	void setParams(int i, T a0, T a1, T a2, T b0, T b1, T b2);
 	void reset();
-	void setN(int n);
+	void setN(int n, bool minDelay = false);
 	float next(float sample) override;
 };
 
@@ -68,6 +69,12 @@ struct MultimodeTypes {
 		UNKNOWN_BANDWIDTH_MODE,
 		LINEAR_BANDWIDTH_MODE,
 		PITCH_BANDWIDTH_MODE
+	};
+
+	enum DelayMode {
+		UNKNOWN_DELAY_MODE,
+		FIXED_DELAY_MODE,
+		MINIMUM_DELAY_MODE
 	};
 
 	static constexpr int minPoles = 1;
@@ -113,6 +120,7 @@ struct MultimodeDesigner : MultimodeTypes {
 	float _frequency = -1.0f;
 	float _qbw = -1.0f;
 	BandwidthMode _bandwidthMode = UNKNOWN_BANDWIDTH_MODE;
+	DelayMode _delayMode = UNKNOWN_DELAY_MODE;
 	Pole _poles[maxPoles / 2];
 	int _nBiquads = 0;
 
@@ -125,7 +133,8 @@ struct MultimodeDesigner : MultimodeTypes {
 		Mode mode,
 		float frequency,
 		float qbw,
-		BandwidthMode bwm = PITCH_BANDWIDTH_MODE
+		BandwidthMode bwm = PITCH_BANDWIDTH_MODE,
+		DelayMode dm = FIXED_DELAY_MODE
 	);
 };
 
@@ -142,7 +151,8 @@ struct MultimodeBase : MultimodeTypes, Filter {
 		Mode mode,
 		float frequency,
 		float qbw,
-		BandwidthMode bwm = PITCH_BANDWIDTH_MODE
+		BandwidthMode bwm = PITCH_BANDWIDTH_MODE,
+		DelayMode dm = FIXED_DELAY_MODE
 	);
 	float next(float sample) override;
 	void reset();
@@ -156,7 +166,8 @@ struct MultimodeFilter : MultimodeBase<16> {
 		Mode mode,
 		float frequency,
 		float qbw,
-		BandwidthMode bwm = PITCH_BANDWIDTH_MODE
+		BandwidthMode bwm = PITCH_BANDWIDTH_MODE,
+		DelayMode dm = FIXED_DELAY_MODE
 	) {
 		design(
 			sampleRate,
@@ -165,7 +176,8 @@ struct MultimodeFilter : MultimodeBase<16> {
 			mode,
 			frequency,
 			qbw,
-			bwm
+			bwm,
+			dm
 		);
 	}
 };
