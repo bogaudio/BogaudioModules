@@ -83,6 +83,7 @@ struct Mix8 : ExpandableModule<Mix8ExpanderMessage, BGModule> {
 
 	int _polyChannelOffset = -1;
 	MixerChannel* _channels[8] {};
+	bool _channelActive[8] {};
 	Panner _panners[8];
 	bogaudio::dsp::SlewLimiter _panSLs[8];
 	Amplifier _amplifier;

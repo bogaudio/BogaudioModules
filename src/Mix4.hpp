@@ -59,6 +59,7 @@ struct Mix4 : ExpandableModule<Mix4ExpanderMessage, BGModule> {
 
 	int _polyChannelOffset = -1;
 	MixerChannel* _channels[4] {};
+	bool _channelActive[4] {};
 	Panner _panners[4];
 	bogaudio::dsp::SlewLimiter _panSLs[4];
 	Amplifier _amplifier;

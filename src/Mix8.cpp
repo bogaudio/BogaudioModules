@@ -81,23 +81,22 @@ void Mix8::processAll(const ProcessArgs& args) {
 
 		for (int i = 1; i < 8; ++i) {
 			float sample = 0.0f;
-			bool channelActive = false;
 			if (inputs[IN1_INPUT + 3 * i].isConnected()) {
 				sample = inputs[IN1_INPUT + 3 * i].getVoltageSum();
 				_channels[i]->next(sample, solo);
-				channelActive = true;
+				_channelActive[i] = true;
 			}
 			else if (_polyChannelOffset >= 0) {
 				sample = inputs[IN1_INPUT].getPolyVoltage(_polyChannelOffset + i);
 				_channels[i]->next(sample, solo);
-				channelActive = true;
+				_channelActive[i] = true;
 			}
-			else {
-				_channels[i]->out = 0.0f;
-				_channels[i]->rms = 0.0f;
+			else if (_channelActive[i]) {
+				_channels[i]->reset();
+				_channelActive[i] = false;
 			}
 			toExp->preFader[i] = sample;
-			toExp->active[i] = channelActive;
+			toExp->active[i] = _channelActive[i];
 		}
 	}
 
