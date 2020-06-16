@@ -62,10 +62,9 @@ void PEQ::processChannel(const ProcessArgs& args, int c) {
 }
 
 void PEQ::postProcessAlways(const ProcessArgs& args) {
-	float ic = 1.0f / (float)std::max(1, _channels);
-	lights[A_LIGHT].value = _rmsSums[0] * ic;
-	lights[B_LIGHT].value = _rmsSums[1] * ic;
-	lights[C_LIGHT].value = _rmsSums[2] * ic;
+	lights[A_LIGHT].value = _rmsSums[0] * _inverseChannels;
+	lights[B_LIGHT].value = _rmsSums[1] * _inverseChannels;
+	lights[C_LIGHT].value = _rmsSums[2] * _inverseChannels;
 }
 
 struct PEQWidget : ModuleWidget {

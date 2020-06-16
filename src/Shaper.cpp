@@ -71,10 +71,10 @@ void Shaper::postProcess(const ProcessArgs& args) {
 		decaySum += _decayLights[c];
 		offSum += _offLights[c];
 	}
-	lights[ATTACK_LIGHT].value = attackSum / (float)_channels;
-	lights[ON_LIGHT].value = onSum / (float)_channels;
-	lights[DECAY_LIGHT].value = decaySum / (float)_channels;
-	lights[OFF_LIGHT].value = offSum / (float)_channels;
+	lights[ATTACK_LIGHT].value = attackSum * _inverseChannels;
+	lights[ON_LIGHT].value = onSum * _inverseChannels;
+	lights[DECAY_LIGHT].value = decaySum * _inverseChannels;
+	lights[OFF_LIGHT].value = offSum * _inverseChannels;
 }
 
 bool Shaper::shouldTriggerOnNextLoad() {

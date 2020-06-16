@@ -121,8 +121,8 @@ void AD::processChannel(const ProcessArgs& args, int c) {
 }
 
 void AD::postProcessAlways(const ProcessArgs& args) {
-	lights[ATTACK_LIGHT].value = _attackLightSum / (float)_channels;
-	lights[DECAY_LIGHT].value = _decayLightSum / (float)_channels;
+	lights[ATTACK_LIGHT].value = _attackLightSum * _inverseChannels;
+	lights[DECAY_LIGHT].value = _decayLightSum * _inverseChannels;
 }
 
 struct ADWidget : ModuleWidget {

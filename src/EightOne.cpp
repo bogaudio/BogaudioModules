@@ -33,7 +33,7 @@ void EightOne::processChannel(const ProcessArgs& args, int c) {
 
 void EightOne::postProcessAlways(const ProcessArgs& args) {
 	for (int i = 0; i < 8; ++i) {
-		lights[IN1_LIGHT + i].value = _lightSums[i] / (float)_channels;
+		lights[IN1_LIGHT + i].value = _lightSums[i] * _inverseChannels;
 	}
 }
 

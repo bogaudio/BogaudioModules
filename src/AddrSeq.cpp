@@ -29,7 +29,7 @@ void AddrSeq::processChannel(const ProcessArgs& args, int c) {
 
 void AddrSeq::postProcessAlways(const ProcessArgs& args) {
 	for (int i = 0; i < 8; ++i) {
-		lights[OUT1_LIGHT + i].value = _lightSums[i] / (float)_channels;
+		lights[OUT1_LIGHT + i].value = _lightSums[i] * _inverseChannels;
 	}
 }
 

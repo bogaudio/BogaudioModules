@@ -87,11 +87,11 @@ void DADSRH::postProcess(const ProcessArgs& args) {
 		sustainSum += _sustainLights[c];
 		releaseSum += _releaseLights[c];
 	}
-	lights[DELAY_LIGHT].value = delaySum / (float)_channels;
-	lights[ATTACK_LIGHT].value = attackSum / (float)_channels;
-	lights[DECAY_LIGHT].value = decaySum / (float)_channels;
-	lights[SUSTAIN_LIGHT].value = sustainSum / (float)_channels;
-	lights[RELEASE_LIGHT].value = releaseSum / (float)_channels;
+	lights[DELAY_LIGHT].value = delaySum * _inverseChannels;
+	lights[ATTACK_LIGHT].value = attackSum * _inverseChannels;
+	lights[DECAY_LIGHT].value = decaySum * _inverseChannels;
+	lights[SUSTAIN_LIGHT].value = sustainSum * _inverseChannels;
+	lights[RELEASE_LIGHT].value = releaseSum * _inverseChannels;
 }
 
 bool DADSRH::shouldTriggerOnNextLoad() {

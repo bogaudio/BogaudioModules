@@ -108,8 +108,8 @@ void ASR::processChannel(const ProcessArgs& args, int c) {
 }
 
 void ASR::postProcessAlways(const ProcessArgs& args) {
-	lights[ATTACK_LIGHT].value = _attackLightSum / (float)_channels;
-	lights[RELEASE_LIGHT].value = _releaseLightSum / (float)_channels;
+	lights[ATTACK_LIGHT].value = _attackLightSum * _inverseChannels;
+	lights[RELEASE_LIGHT].value = _releaseLightSum * _inverseChannels;
 }
 
 struct ASRWidget : ModuleWidget {

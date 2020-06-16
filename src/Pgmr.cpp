@@ -194,7 +194,7 @@ void Pgmr::processChannel(const ProcessArgs& args, int c) {
 
 	if (c == _channels - 1) {
 		for (int i = 0, n = _steps.size(); i < n; ++i) {
-			_steps[i]->selectedLight.value = _steps[i]->lightSum / (float)_channels;
+			_steps[i]->selectedLight.value = _steps[i]->lightSum * _inverseChannels;
 		}
 	}
 }

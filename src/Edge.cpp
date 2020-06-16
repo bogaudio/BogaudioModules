@@ -91,7 +91,7 @@ void Edge::processChannel(const ProcessArgs& args, int c) {
 }
 
 void Edge::postProcessAlways(const ProcessArgs& args) {
-	lights[HIGH_LIGHT].value = _highLightSum / (float)_channels;
+	lights[HIGH_LIGHT].value = _highLightSum * _inverseChannels;
 }
 
 struct EdgeWidget : ModuleWidget {

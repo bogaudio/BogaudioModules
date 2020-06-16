@@ -56,9 +56,8 @@ void Mix2::processChannel(const ProcessArgs& args, int c) {
 }
 
 void Mix2::postProcessAlways(const ProcessArgs& args) {
-	float ic = 1.0f / (float)std::max(1, _channels);
-	_leftRms = _leftRmsSum * ic;
-	_rightRms = _rightRmsSum * ic;
+	_leftRms = _leftRmsSum * _inverseChannels;
+	_rightRms = _rightRmsSum * _inverseChannels;
 }
 
 struct Mix2Widget : ModuleWidget {

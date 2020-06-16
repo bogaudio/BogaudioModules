@@ -30,6 +30,7 @@ void BGModule::process(const ProcessArgs& args) {
 			int channelsNow = std::max(1, channels());
 			if (channelsBefore != channelsNow) {
 				_channels = channelsNow;
+				_inverseChannels = 1.0f / (float)_channels;
 				channelsChanged(channelsBefore, channelsNow);
 				if (channelsBefore < channelsNow) {
 					while (channelsBefore < channelsNow) {

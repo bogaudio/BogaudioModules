@@ -45,7 +45,7 @@ void Mix1::processChannel(const ProcessArgs& args, int c) {
 }
 
 void Mix1::postProcessAlways(const ProcessArgs& args) {
-	_rms = _rmsSum / (float)_channels;
+	_rms = _rmsSum * _inverseChannels;
 }
 
 struct Mix1Widget : ModuleWidget {

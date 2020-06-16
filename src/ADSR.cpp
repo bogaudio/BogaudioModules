@@ -89,10 +89,10 @@ void ADSR::processChannel(const ProcessArgs& args, int c) {
 }
 
 void ADSR::postProcessAlways(const ProcessArgs& args) {
-	lights[ATTACK_LIGHT].value = _attackLightSum / (float)_channels;
-	lights[DECAY_LIGHT].value = _decayLightSum / (float)_channels;
-	lights[SUSTAIN_LIGHT].value = _sustainLightSum / (float)_channels;
-	lights[RELEASE_LIGHT].value = _releaseLightSum / (float)_channels;
+	lights[ATTACK_LIGHT].value = _attackLightSum * _inverseChannels;
+	lights[DECAY_LIGHT].value = _decayLightSum * _inverseChannels;
+	lights[SUSTAIN_LIGHT].value = _sustainLightSum * _inverseChannels;
+	lights[RELEASE_LIGHT].value = _releaseLightSum * _inverseChannels;
 }
 
 struct ADSRWidget : ModuleWidget {

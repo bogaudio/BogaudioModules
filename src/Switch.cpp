@@ -113,10 +113,10 @@ void bogaudio::Switch::processChannel(const ProcessArgs& args, int c) {
 }
 
 void bogaudio::Switch::postProcessAlways(const ProcessArgs& args) {
-	lights[HIGH1_LIGHT].value = _high1LightSum / (float)_channels;
-	lights[LOW1_LIGHT].value = _low1LightSum / (float)_channels;
-	lights[HIGH2_LIGHT].value = _high2LightSum / (float)_channels;
-	lights[LOW2_LIGHT].value = _low2LightSum / (float)_channels;
+	lights[HIGH1_LIGHT].value = _high1LightSum * _inverseChannels;
+	lights[LOW1_LIGHT].value = _low1LightSum * _inverseChannels;
+	lights[HIGH2_LIGHT].value = _high2LightSum * _inverseChannels;
+	lights[LOW2_LIGHT].value = _low2LightSum * _inverseChannels;
 }
 
 struct SwitchWidget : ModuleWidget {

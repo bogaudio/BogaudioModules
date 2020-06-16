@@ -12,6 +12,7 @@ struct BGModule : Module {
 
 	static constexpr int maxChannels = PORT_MAX_CHANNELS;
 	int _channels = 0;
+	float _inverseChannels = 0.0f;
 
 	BGModule() {
 	}

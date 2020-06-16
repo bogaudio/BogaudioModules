@@ -94,8 +94,8 @@ void DGate::postProcess(const ProcessArgs& args) {
 		delaySum += _engines[c]->delayLight;
 		gateSum += _engines[c]->gateLight;
 	}
-	lights[DELAY_LIGHT].value = delaySum / (float)_channels;
-	lights[GATE_LIGHT].value = gateSum / (float)_channels;
+	lights[DELAY_LIGHT].value = delaySum * _inverseChannels;
+	lights[GATE_LIGHT].value = gateSum * _inverseChannels;
 }
 
 bool DGate::stepStage(int c, Param& knob) {
