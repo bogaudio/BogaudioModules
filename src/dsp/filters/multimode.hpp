@@ -182,6 +182,30 @@ struct MultimodeFilter : MultimodeBase<16> {
 	}
 };
 
+struct FourPoleMultimodeFilter : MultimodeBase<4> {
+	inline void setParams(
+		float sampleRate,
+		Type type,
+		int poles,
+		Mode mode,
+		float frequency,
+		float qbw,
+		BandwidthMode bwm = PITCH_BANDWIDTH_MODE,
+		DelayMode dm = FIXED_DELAY_MODE
+	) {
+		design(
+			sampleRate,
+			type,
+			poles,
+			mode,
+			frequency,
+			qbw,
+			bwm,
+			dm
+		);
+	}
+};
+
 struct FourPoleButtworthLowpassFilter : MultimodeBase<4> {
 	inline void setParams(
 		float sampleRate,

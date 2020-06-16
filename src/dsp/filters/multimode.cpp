@@ -160,7 +160,7 @@ template<int N> void MultimodeDesigner<N>::setParams(
 	DelayMode dm
 ) {
 	assert(N >= minPoles && N <= maxPoles);
-	assert(poles >= minPoles && poles <= N);
+	assert(poles >= minPoles && (poles <= N || (poles <= 2*N && (mode == LOWPASS_MODE || mode == HIGHPASS_MODE))));
 	assert(poles % modPoles == 0);
 	assert(frequency >= minFrequency - 0.00001f && frequency <= maxFrequency);
 	assert(qbw >= minQbw && qbw <= maxQbw);

@@ -164,6 +164,16 @@
       ]
     },
     {
+      "slug": "Bogaudio-PEQ",
+      "name": "PEQ",
+      "description": "3-channel parametric equalizer",
+      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#peq",
+      "tags": [
+        "Filter",
+        "Polyphonic"
+      ]
+    },
+    {
       "slug": "Bogaudio-DADSRH",
       "name": "DADSR(H)",
       "description": "Advanced envelope generator",
