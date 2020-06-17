@@ -59,7 +59,7 @@ struct VCF : BGModule {
 			MultimodeFilter::BandwidthMode bwm
 		);
 		void reset();
-		void sampleRateChange(int modulationSteps = 100);
+		void sampleRateChange();
 		float next(float sample);
 	};
 

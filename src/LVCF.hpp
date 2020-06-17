@@ -54,7 +54,7 @@ struct LVCF : BGModule {
 			float qbw,
 			MultimodeFilter::BandwidthMode bwm
 		);
-		void sampleRateChange(int modulationSteps = 100);
+		void sampleRateChange();
 		void reset();
 		float next(float sample);
 	};

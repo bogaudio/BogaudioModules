@@ -49,9 +49,9 @@ void VCF::Engine::setParams(
 	}
 }
 
-void VCF::Engine::sampleRateChange(int modulationSteps) {
+void VCF::Engine::sampleRateChange() {
 	_sampleRate = APP->engine->getSampleRate();
-	_frequencySL.setParams(_sampleRate, 100.0f / (float)modulationSteps, frequencyToSemitone(maxFrequency - minFrequency));
+	_frequencySL.setParams(_sampleRate, 0.5f, frequencyToSemitone(maxFrequency - minFrequency));
 	_finalHP.setParams(_sampleRate, MultimodeFilter::BUTTERWORTH_TYPE, 2, MultimodeFilter::HIGHPASS_MODE, 80.0f, MultimodeFilter::minQbw, MultimodeFilter::LINEAR_BANDWIDTH_MODE, MultimodeFilter::MINIMUM_DELAY_MODE);
 	for (int i = 0; i < nFilters; ++i) {
 		_gainSLs[i].setParams(_sampleRate, 50.0f, 1.0f);
@@ -105,7 +105,7 @@ void VCF::dataFromJson(json_t* root) {
 
 void VCF::sampleRateChange() {
 	for (int c = 0; c < _channels; ++c) {
-		_engines[c]->sampleRateChange(_modulationSteps);
+		_engines[c]->sampleRateChange();
 	}
 }
 
@@ -151,12 +151,12 @@ void VCF::modulateChannel(int c) {
 	}
 
 	float f = clamp(params[FREQUENCY_PARAM].getValue(), 0.0f, 1.0f);
-	f *= f;
 	if (inputs[FREQUENCY_CV_INPUT].isConnected()) {
 		float fcv = clamp(inputs[FREQUENCY_CV_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
 		fcv *= clamp(params[FREQUENCY_CV_PARAM].getValue(), -1.0f, 1.0f);
 		f = std::max(0.0f, f + fcv);
 	}
+	f *= f;
 	f *= maxFrequency;
 	if (inputs[PITCH_INPUT].isConnected() || inputs[FM_INPUT].isConnected()) {
 		float fm = inputs[FM_INPUT].getPolyVoltage(c);

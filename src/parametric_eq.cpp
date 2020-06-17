@@ -9,7 +9,7 @@ constexpr float PEQChannel::minFrequency;
 void PEQChannel::setSampleRate(float sampleRate) {
 	_sampleRate = sampleRate;
 	_levelSL.setParams(sampleRate, 0.05f, maxDecibels - minDecibels);
-	_frequencySL.setParams(sampleRate, 1.0f, frequencyToSemitone(maxFrequency - minFrequency));
+	_frequencySL.setParams(sampleRate, 0.5f, frequencyToSemitone(maxFrequency - minFrequency));
 	_bandwidthSL.setParams(sampleRate, 0.05f, MultimodeFilter::maxQbw - MultimodeFilter::minQbw);
 	_rms.setSampleRate(sampleRate);
 }
