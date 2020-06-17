@@ -262,7 +262,11 @@ struct Mix8Widget : ModuleWidget {
 		addParam(createParam<SoloMuteButton>(mute8ParamPosition, module, Mix8::MUTE8_PARAM));
 		addParam(createParam<Knob16>(pan8ParamPosition, module, Mix8::PAN8_PARAM));
 		addSlider(mixParamPosition, module, Mix8::MIX_PARAM, module ? &module->_rmsLevel : NULL);
-		addParam(createParam<MuteButton>(mixMuteParamPosition, module, Mix8::MIX_MUTE_PARAM));
+		{
+			auto b = createParam<MuteButton>(mixMuteParamPosition, module, Mix8::MIX_MUTE_PARAM);
+			b->setRandomize(false);
+			addParam(b);
+		}
 
 		addInput(createInput<Port24>(cv1InputPosition, module, Mix8::CV1_INPUT));
 		addInput(createInput<Port24>(pan1InputPosition, module, Mix8::PAN1_INPUT));

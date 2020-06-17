@@ -48,11 +48,15 @@ struct MixerChannel {
 };
 
 struct MuteButton : ToggleButton {
+	bool _randomize = true;
+
 	MuteButton() {
 		addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_0.svg")));
 		addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_1_orange.svg")));
 	}
 
+	inline void setRandomize(bool randomize) { _randomize = randomize; }
+	void randomize() override;
 	void onButton(const event::Button& e) override;
 };
 
@@ -62,6 +66,7 @@ struct SoloMuteButton : ParamWidget {
 	CircularShadow* shadow = NULL;
 
 	SoloMuteButton();
+	void randomize() override;
 	void onButton(const event::Button& e) override;
 	void onChange(const event::Change& e) override;
 };

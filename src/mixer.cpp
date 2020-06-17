@@ -38,6 +38,12 @@ void MixerChannel::next(float sample, bool solo, int c) {
 }
 
 
+void MuteButton::randomize() {
+	if (_randomize) {
+		ToggleButton::randomize();
+	}
+}
+
 void MuteButton::onButton(const event::Button& e) {
 	if (!(e.action == GLFW_PRESS && (e.mods & RACK_MOD_MASK) == 0)) {
 		return;
@@ -70,6 +76,12 @@ SoloMuteButton::SoloMuteButton() {
 	shadow->box.size = _svgWidget->box.size;
 	shadow->blurRadius = 1.0;
 	shadow->box.pos = Vec(0.0, 1.0);
+}
+
+void SoloMuteButton::randomize() {
+	if (paramQuantity) {
+		paramQuantity->setValue(random::uniform() > 0.5f ? 1.0f : 0.0f);
+	}
 }
 
 void SoloMuteButton::onButton(const event::Button& e) {

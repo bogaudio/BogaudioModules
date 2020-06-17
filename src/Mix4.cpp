@@ -218,7 +218,11 @@ struct Mix4Widget : ModuleWidget {
 		addParam(createParam<Knob16>(pan4ParamPosition, module, Mix4::PAN4_PARAM));
 		addParam(createParam<SoloMuteButton>(mute4ParamPosition, module, Mix4::MUTE4_PARAM));
 		addSlider(mixParamPosition, module, Mix4::MIX_PARAM, module ? &module->_rmsLevel : NULL);
-		addParam(createParam<MuteButton>(mixMuteParamPosition, module, Mix4::MIX_MUTE_PARAM));
+		{
+			auto b = createParam<MuteButton>(mixMuteParamPosition, module, Mix4::MIX_MUTE_PARAM);
+			b->setRandomize(false);
+			addParam(b);
+		}
 
 		addInput(createInput<Port24>(cv1InputPosition, module, Mix4::CV1_INPUT));
 		addInput(createInput<Port24>(pan1InputPosition, module, Mix4::PAN1_INPUT));
