@@ -54,6 +54,13 @@ void MatrixBaseModuleWidget::appendContextMenu(Menu* menu) {
 }
 
 
+void MatrixModule::sampleRateChange() {
+	float sr = APP->engine->getSampleRate();
+	for (int i = 0, n = _n * _n; i < n; ++i) {
+		_sls[i].setParams(sr, 0.5f, 1.0f);
+	}
+}
+
 int MatrixModule::channels() {
 	return inputs[_firstInputID].getChannels();
 }
@@ -63,7 +70,7 @@ void MatrixModule::modulate() {
 	for (int i = 0; i < _n; ++i) {
 		for (int j = 0; j < _n; ++j) {
 			int ii = i * _n + j;
-			_paramValues[ii] = params[_firstParamID + ii].getValue();
+			_paramValues[ii] = _sls[ii].next(params[_firstParamID + ii].getValue());
 		}
 	}
 }

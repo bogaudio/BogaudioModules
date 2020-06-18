@@ -36,6 +36,7 @@ struct MatrixModule : MatrixBaseModule {
 	int _firstOutputID;
 
 	float* _paramValues = NULL;
+	bogaudio::dsp::SlewLimiter* _sls = NULL;
 	Saturator* _saturators = NULL;
 
 	MatrixModule(int n, int firstParamID, int firstInputID, int firstOutputID)
@@ -46,13 +47,16 @@ struct MatrixModule : MatrixBaseModule {
 	{
 		assert(_n <= maxN);
 		_paramValues = new float[_n * _n] {};
+		_sls = new bogaudio::dsp::SlewLimiter[_n * _n];
 		_saturators = new Saturator[_n * maxChannels];
 	}
 	virtual ~MatrixModule() {
 		delete[] _paramValues;
+		delete[] _sls;
 		delete[] _saturators;
 	}
 
+	void sampleRateChange() override;
 	int channels() override;
 	void modulate() override;
 	void processChannel(const ProcessArgs& args, int c) override;
