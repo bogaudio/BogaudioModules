@@ -78,6 +78,12 @@ SoloMuteButton::SoloMuteButton() {
 	shadow->box.pos = Vec(0.0, 1.0);
 }
 
+void SoloMuteButton::reset() {
+	if (paramQuantity) {
+		paramQuantity->setValue(0.0f);
+	}
+}
+
 void SoloMuteButton::randomize() {
 	if (paramQuantity) {
 		paramQuantity->setValue(random::uniform() > 0.5f ? 1.0f : 0.0f);
