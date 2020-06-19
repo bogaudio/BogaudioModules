@@ -56,6 +56,18 @@
       </g>
     </symbol>
 
+    <symbol id="knobguide-mintick" viewBox="0 0 40px 40px">
+      <g transform="translate(20 20)">
+        <g transform="rotate(-240) translate(10 0)">
+          <polyline points="0,0 4,0" stroke-width="1" stroke="#333" />
+        </g>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)" />
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" />
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)" />
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" />
+      </g>
+    </symbol>
+
     <symbol id="input" viewBox="0 0 24px 24px">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0" />
@@ -113,7 +125,7 @@
     <use id="OFFSET1_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)" />
     <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)" />
     <use id="SCALE1_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(81.5 -12)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)" />
     <!-- <polyline points="0,0 150,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(0 8)" /> -->
   </g>
 
@@ -123,7 +135,7 @@
     <use id="OFFSET2_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)" />
     <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)" />
     <use id="SCALE2_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(81.5 -12)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)" />
     <!-- <polyline points="0,0 150,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(0 8)" /> -->
   </g>
 
@@ -133,7 +145,7 @@
     <use id="OFFSET3_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)" />
     <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)" />
     <use id="SCALE3_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(81.5 -12)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)" />
     <!-- <polyline points="0,0 150,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(0 8)" /> -->
   </g>
 
@@ -143,7 +155,7 @@
     <use id="OFFSET4_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)" />
     <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)" />
     <use id="SCALE4_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(81.5 -12)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)" />
     <!-- <polyline points="0,0 150,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(0 8)" /> -->
   </g>
 
@@ -153,7 +165,7 @@
     <use id="OFFSET5_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)" />
     <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)" />
     <use id="SCALE5_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(81.5 -12)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)" />
     <!-- <polyline points="0,0 150,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(0 8)" /> -->
   </g>
 
@@ -163,7 +175,7 @@
     <use id="OFFSET6_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)" />
     <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)" />
     <use id="SCALE6_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(81.5 -12)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)" />
     <!-- <polyline points="0,0 150,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(0 8)" /> -->
   </g>
 
@@ -173,7 +185,7 @@
     <use id="OFFSET7_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)" />
     <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)" />
     <use id="SCALE7_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(81.5 -12)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)" />
     <!-- <polyline points="0,0 150,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(0 8)" /> -->
   </g>
 
@@ -183,7 +195,7 @@
     <use id="OFFSET8_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)" />
     <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)" />
     <use id="SCALE8_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(81.5 -12)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)" />
     <!-- <polyline points="0,0 150,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(0 8)" /> -->
   </g>
 

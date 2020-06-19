@@ -65,6 +65,18 @@
       </g>
     </symbol>
 
+    <symbol id="knobguide-mintick" viewBox="0 0 40px 40px">
+      <g transform="translate(20 20)">
+        <g transform="rotate(-240) translate(10 0)">
+          <polyline points="0,0 4,0" stroke-width="1" stroke="#333" />
+        </g>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)" />
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" />
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)" />
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" />
+      </g>
+    </symbol>
+
     <symbol id="input" viewBox="0 0 24px 24px">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0" />
@@ -132,7 +144,7 @@
     <use id="OFFSET1_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)" />
     <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)" />
     <use id="SCALE1_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(81.5 -12)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)" />
   </g>
   <g transform="translate(0 68)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(46.5 8)">2</text>
@@ -140,7 +152,7 @@
     <use id="OFFSET2_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)" />
     <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)" />
     <use id="SCALE2_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(81.5 -12)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)" />
   </g>
   <g transform="translate(0 103)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(46.5 8)">3</text>
@@ -148,7 +160,7 @@
     <use id="OFFSET3_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)" />
     <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)" />
     <use id="SCALE3_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(81.5 -12)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)" />
   </g>
   <g transform="translate(0 138)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(46.5 8)">4</text>
@@ -156,7 +168,7 @@
     <use id="OFFSET4_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)" />
     <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)" />
     <use id="SCALE4_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(81.5 -12)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)" />
   </g>
   <g transform="translate(0 173)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(46.5 8)">5</text>
@@ -164,7 +176,7 @@
     <use id="OFFSET5_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)" />
     <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)" />
     <use id="SCALE5_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(81.5 -12)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)" />
   </g>
   <g transform="translate(0 208)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(46.5 8)">6</text>
@@ -172,7 +184,7 @@
     <use id="OFFSET6_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)" />
     <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)" />
     <use id="SCALE6_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(81.5 -12)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)" />
   </g>
   <g transform="translate(0 243)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(46.5 8)">7</text>
@@ -180,7 +192,7 @@
     <use id="OFFSET7_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)" />
     <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)" />
     <use id="SCALE7_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(81.5 -12)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)" />
   </g>
   <g transform="translate(0 278)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(46.5 8)">8</text>
@@ -188,7 +200,7 @@
     <use id="OFFSET8_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)" />
     <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)" />
     <use id="SCALE8_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(81.5 -12)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)" />
   </g>
 
   <g transform="translate(120 33)">
@@ -197,7 +209,7 @@
     <use id="OFFSET9_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)" />
     <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)" />
     <use id="SCALE9_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(81.5 -12)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)" />
   </g>
   <g transform="translate(120 68)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(44 8)">10</text>
@@ -205,7 +217,7 @@
     <use id="OFFSET10_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)" />
     <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)" />
     <use id="SCALE10_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(81.5 -12)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)" />
   </g>
   <g transform="translate(120 103)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(44 8)">11</text>
@@ -213,7 +225,7 @@
     <use id="OFFSET11_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)" />
     <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)" />
     <use id="SCALE11_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(81.5 -12)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)" />
   </g>
   <g transform="translate(120 138)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(44 8)">12</text>
@@ -221,7 +233,7 @@
     <use id="OFFSET12_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)" />
     <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)" />
     <use id="SCALE12_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(81.5 -12)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)" />
   </g>
   <g transform="translate(120 173)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(44 8)">13</text>
@@ -229,7 +241,7 @@
     <use id="OFFSET13_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)" />
     <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)" />
     <use id="SCALE13_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(81.5 -12)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)" />
   </g>
   <g transform="translate(120 208)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(44 8)">14</text>
@@ -237,7 +249,7 @@
     <use id="OFFSET14_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)" />
     <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)" />
     <use id="SCALE14_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(81.5 -12)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)" />
   </g>
   <g transform="translate(120 243)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(44 8)">15</text>
@@ -245,7 +257,7 @@
     <use id="OFFSET15_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)" />
     <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)" />
     <use id="SCALE15_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(81.5 -12)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)" />
   </g>
   <g transform="translate(120 278)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(44 8)">16</text>
@@ -253,7 +265,7 @@
     <use id="OFFSET16_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)" />
     <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)" />
     <use id="SCALE16_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(81.5 -12)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)" />
   </g>
 
   <text font-size="6pt" letter-spacing="0.3px" transform="translate(55 308)">OFFSET</text>

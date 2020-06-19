@@ -85,9 +85,9 @@
       </g>
     </symbol>
 
-    <symbol id="knobguide-maxtick" viewBox="0 0 40px 40px">
+    <symbol id="knobguide-mintick" viewBox="0 0 40px 40px">
       <g transform="translate(20 20)">
-        <g transform="rotate(60) translate(10 0)">
+        <g transform="rotate(-240) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1" stroke="#333" />
         </g>
         <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)" />
@@ -152,15 +152,15 @@
     <use id="A_FREQUENCY_PARAM" xlink:href="#knob" transform="translate(59 3.5)" />
     <use xlink:href="#knobguide-frequency" transform="translate(56 3.5)" />
 
-    <text font-size="6pt" letter-spacing="2px" transform="translate(113 20) rotate(270)">BW</text>
-    <use id="A_BANDWIDTH_PARAM" xlink:href="#knob-smallest" transform="translate(122 5)" />
-    <use xlink:href="#knobguide-maxtick" transform="translate(110 -7)" />
+    <text font-size="6pt" letter-spacing="2px" transform="translate(113 19) rotate(270)">BW</text>
+    <use id="A_BANDWIDTH_PARAM" xlink:href="#knob-smallest" transform="translate(122 4)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(110 -8)" />
 
     <text font-size="6pt" letter-spacing="2px" transform="translate(113 58.5) rotate(270)">FCV</text>
     <use id="A_CV_PARAM" xlink:href="#knob-smallest" transform="translate(122 42)" />
     <use xlink:href="#knobguide-centertick" transform="translate(110 30)" />
 
-    <g transform="translate(104 26.5)">
+    <g transform="translate(118 26.5)">
       <text font-size="6pt" letter-spacing="1px" transform="translate(0 6.1)">LP</text>
       <use id="A_MODE_PARAM" xlink:href="#button-small" transform="translate(13.5 -1)" />
     </g>
@@ -183,7 +183,7 @@
 
     <text font-size="6pt" letter-spacing="2px" transform="translate(113 22) rotate(270)">BW</text>
     <use id="B_BANDWIDTH_PARAM" xlink:href="#knob-smallest" transform="translate(122 7)" />
-    <use xlink:href="#knobguide-maxtick" transform="translate(110 -5)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(110 -5)" />
 
     <text font-size="6pt" letter-spacing="2px" transform="translate(113 56.5) rotate(270)">FCV</text>
     <use id="B_CV_PARAM" xlink:href="#knob-smallest" transform="translate(122 40)" />
@@ -205,15 +205,15 @@
     <use id="C_FREQUENCY_PARAM" xlink:href="#knob" transform="translate(59 3.5)" />
     <use xlink:href="#knobguide-frequency" transform="translate(56 3.5)" />
 
-    <text font-size="6pt" letter-spacing="2px" transform="translate(113 20) rotate(270)">BW</text>
-    <use id="C_BANDWIDTH_PARAM" xlink:href="#knob-smallest" transform="translate(122 5)" />
-    <use xlink:href="#knobguide-maxtick" transform="translate(110 -7)" />
+    <text font-size="6pt" letter-spacing="2px" transform="translate(113 19) rotate(270)">BW</text>
+    <use id="C_BANDWIDTH_PARAM" xlink:href="#knob-smallest" transform="translate(122 4)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(110 -8)" />
 
     <text font-size="6pt" letter-spacing="2px" transform="translate(113 58.5) rotate(270)">FCV</text>
     <use id="C_CV_PARAM" xlink:href="#knob-smallest" transform="translate(122 42)" />
     <use xlink:href="#knobguide-centertick" transform="translate(110 30)" />
 
-    <g transform="translate(104 26.5)">
+    <g transform="translate(118 26.5)">
       <text font-size="6pt" letter-spacing="1px" transform="translate(-0.5 6.1)">HP</text>
       <use id="C_MODE_PARAM" xlink:href="#button-small" transform="translate(13.5 -1)" />
     </g>

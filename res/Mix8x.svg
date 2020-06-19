@@ -137,13 +137,13 @@
       </g>
     </symbol>
     <symbol
-       id="knobguide-maxtick"
+       id="knobguide-mintick"
        viewBox="0 0 40px 40px">
       <g
          transform="translate(20 20)"
          id="g40">
         <g
-           transform="rotate(60) translate(10 0)"
+           transform="rotate(-240) translate(10 0)"
            id="g30">
           <polyline
              points="0,0 4,0"
@@ -543,7 +543,7 @@
        transform="translate(20,20)">
       <g
          id="g1184"
-         transform="rotate(60,-5,8.660254)">
+         transform="rotate(120,-5,2.8867513)">
         <path
            style="stroke:#333333;stroke-width:1"
            d="M 0,0 H 4"
@@ -607,7 +607,7 @@
        transform="translate(20,20)">
       <g
          id="g1168"
-         transform="rotate(60,-5,8.660254)">
+         transform="rotate(120,-5,2.8867513)">
         <path
            style="stroke:#333333;stroke-width:1"
            d="M 0,0 H 4"
@@ -915,7 +915,7 @@
        transform="translate(20,20)">
       <g
          id="g1104"
-         transform="rotate(60,-5,8.660254)">
+         transform="rotate(120,-5,2.8867513)">
         <path
            style="stroke:#333333;stroke-width:1"
            d="M 0,0 H 4"
@@ -979,7 +979,7 @@
        transform="translate(20,20)">
       <g
          id="g1088"
-         transform="rotate(60,-5,8.660254)">
+         transform="rotate(120,-5,2.8867513)">
         <path
            style="stroke:#333333;stroke-width:1"
            d="M 0,0 H 4"
@@ -1287,7 +1287,7 @@
        transform="translate(20,20)">
       <g
          id="g1024"
-         transform="rotate(60,-5,8.660254)">
+         transform="rotate(120,-5,2.8867513)">
         <path
            style="stroke:#333333;stroke-width:1"
            d="M 0,0 H 4"
@@ -1351,7 +1351,7 @@
        transform="translate(20,20)">
       <g
          id="g1008"
-         transform="rotate(60,-5,8.660254)">
+         transform="rotate(120,-5,2.8867513)">
         <path
            style="stroke:#333333;stroke-width:1"
            d="M 0,0 H 4"
@@ -1659,7 +1659,7 @@
        transform="translate(20,20)">
       <g
          id="g944"
-         transform="rotate(60,-5,8.660254)">
+         transform="rotate(120,-5,2.8867513)">
         <path
            style="stroke:#333333;stroke-width:1"
            d="M 0,0 H 4"
@@ -1723,7 +1723,7 @@
        transform="translate(20,20)">
       <g
          id="g928"
-         transform="rotate(60,-5,8.660254)">
+         transform="rotate(120,-5,2.8867513)">
         <path
            style="stroke:#333333;stroke-width:1"
            d="M 0,0 H 4"
@@ -2031,7 +2031,7 @@
        transform="translate(20,20)">
       <g
          id="g864"
-         transform="rotate(60,-5,8.660254)">
+         transform="rotate(120,-5,2.8867513)">
         <path
            style="stroke:#333333;stroke-width:1"
            d="M 0,0 H 4"
@@ -2095,7 +2095,7 @@
        transform="translate(20,20)">
       <g
          id="g848"
-         transform="rotate(60,-5,8.660254)">
+         transform="rotate(120,-5,2.8867513)">
         <path
            style="stroke:#333333;stroke-width:1"
            d="M 0,0 H 4"
@@ -2403,7 +2403,7 @@
        transform="translate(20,20)">
       <g
          id="g784"
-         transform="rotate(60,-5,8.660254)">
+         transform="rotate(120,-5,2.8867513)">
         <path
            style="stroke:#333333;stroke-width:1"
            d="M 0,0 H 4"
@@ -2467,7 +2467,7 @@
        transform="translate(20,20)">
       <g
          id="g768"
-         transform="rotate(60,-5,8.660254)">
+         transform="rotate(120,-5,2.8867513)">
         <path
            style="stroke:#333333;stroke-width:1"
            d="M 0,0 H 4"
@@ -2775,7 +2775,7 @@
        transform="translate(20,20)">
       <g
          id="g704"
-         transform="rotate(60,-5,8.660254)">
+         transform="rotate(120,-5,2.8867513)">
         <path
            style="stroke:#333333;stroke-width:1"
            d="M 0,0 H 4"
@@ -2839,7 +2839,7 @@
        transform="translate(20,20)">
       <g
          id="g688"
-         transform="rotate(60,-5,8.660254)">
+         transform="rotate(120,-5,2.8867513)">
         <path
            style="stroke:#333333;stroke-width:1"
            d="M 0,0 H 4"
@@ -3147,7 +3147,7 @@
        transform="translate(20,20)">
       <g
          id="g624"
-         transform="rotate(60,-5,8.660254)">
+         transform="rotate(120,-5,2.8867513)">
         <path
            style="stroke:#333333;stroke-width:1"
            d="M 0,0 H 4"
@@ -3211,7 +3211,7 @@
        transform="translate(20,20)">
       <g
          id="g608"
-         transform="rotate(60,-5,8.660254)">
+         transform="rotate(120,-5,2.8867513)">
         <path
            style="stroke:#333333;stroke-width:1"
            d="M 0,0 H 4"
@@ -3427,7 +3427,7 @@
        transform="translate(20,20)">
       <g
          id="g592"
-         transform="rotate(60,-5,8.660254)">
+         transform="rotate(120,-5,2.8867513)">
         <path
            style="stroke:#333333;stroke-width:1"
            d="M 0,0 H 4"
@@ -3551,7 +3551,7 @@
        transform="translate(20,20)">
       <g
          id="g576"
-         transform="rotate(60,-5,8.660254)">
+         transform="rotate(120,-5,2.8867513)">
         <path
            style="stroke:#333333;stroke-width:1"
            d="M 0,0 H 4"

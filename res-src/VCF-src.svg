@@ -124,9 +124,9 @@
       </g>
     </symbol>
 
-    <symbol id="knobguide-maxtick" viewBox="0 0 40px 40px">
+    <symbol id="knobguide-mintick" viewBox="0 0 40px 40px">
       <g transform="translate(20 20)">
-        <g transform="rotate(60) translate(10 0)">
+        <g transform="rotate(-240) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1" stroke="#333" />
         </g>
         <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)" />
@@ -244,7 +244,7 @@
   <g transform="translate(82 126)">
     <text font-size="8pt" letter-spacing="2px" transform="translate(10 27) rotate(270)">FM</text>
     <use id="FM_PARAM" xlink:href="#knob-smallest" transform="translate(20 12)" />
-    <use xlink:href="#knobguide-maxtick" transform="translate(8 0)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(8 0)" />
   </g>
 
   <g transform="translate(54 165)">
