@@ -12,22 +12,26 @@ struct PEQChannel {
 	static const float maxDecibels;
 	static const float minDecibels;
 	static constexpr float maxFrequency = 20000.0f;
-	static constexpr float minFrequency = 100.0f; // MultimodeFilter::minFrequency;
+	static constexpr float minFrequency = MultimodeFilter::minFrequency;
+	static const float maxFrequencySemitone;
+	static const float minFrequencySemitone;
 
 	float _sampleRate;
 	Amplifier _amplifier;
 	bogaudio::dsp::SlewLimiter _levelSL;
-	FourPoleMultimodeFilter _filter;
+	MultimodeFilter _filter;
 	bogaudio::dsp::SlewLimiter _frequencySL;
 	bogaudio::dsp::SlewLimiter _bandwidthSL;
 	RootMeanSquare _rms;
 
 	int _c;
 	MultimodeFilter::Mode _mode;
+	bool _fullFrequencyMode = true;
 	int _poles;
 	Param& _levelParam;
 	Param& _frequencyParam;
-	Param& _frequencyCvParam;
+	Param& _frequencyCv1Param;
+	Param* _frequencyCv2Param;
 	Param& _bandwidthParam;
 	Input& _levelInput;
 	Input& _frequency1Input;
@@ -39,25 +43,27 @@ struct PEQChannel {
 
 	PEQChannel(
 		int polyChannel,
-		Param& level,
-		Param& frequency,
-		Param& frequencyCv,
-		Param& bandwidth,
-		Input& levelCv,
-		Input& frequencyCv1,
-		Input& frequencyCv2,
-		Input* bandwidthCv = NULL,
+		Param& levelParam,
+		Param& frequencyParam,
+		Param& frequencyCv1Param,
+		Param* frequencyCv2Param,
+		Param& bandwidthParam,
+		Input& levelCvInput,
+		Input& frequencyCv1Input,
+		Input& frequencyCv2Input,
+		Input* bandwidthCvInput,
 		float sampleRate = 1000.0f
 	)
 	: _c(polyChannel)
-	, _levelParam(level)
-	, _frequencyParam(frequency)
-	, _frequencyCvParam(frequencyCv)
-	, _bandwidthParam(bandwidth)
-	, _levelInput(levelCv)
-	, _frequency1Input(frequencyCv2)
-	, _frequency2Input(frequencyCv1)
-	, _bandwidthInput(bandwidthCv)
+	, _levelParam(levelParam)
+	, _frequencyParam(frequencyParam)
+	, _frequencyCv1Param(frequencyCv1Param)
+	, _frequencyCv2Param(frequencyCv2Param)
+	, _bandwidthParam(bandwidthParam)
+	, _levelInput(levelCvInput)
+	, _frequency1Input(frequencyCv1Input)
+	, _frequency2Input(frequencyCv2Input)
+	, _bandwidthInput(bandwidthCvInput)
 	{
 		setSampleRate(sampleRate);
 		setFilterMode(MultimodeFilter::BANDPASS_MODE);
@@ -66,6 +72,7 @@ struct PEQChannel {
 
 	void setSampleRate(float sampleRate);
 	void setFilterMode(MultimodeFilter::Mode mode);
+	inline void setFrequencyMode(bool full) { _fullFrequencyMode = full; }
 	void modulate();
 	void next(float sample); // outputs on members out, rms.
 };
@@ -88,32 +95,35 @@ struct PEQEngine {
 	inline void configChannel(
 		int i,
 		int polyChannel,
-		Param& level,
-		Param& frequency,
-		Param& frequencyCv,
-		Param& bandwidth,
-		Input& levelCv,
-		Input& frequencyCv1,
-		Input& frequencyCv2,
-		Input* bandwidthCv = NULL
+		Param& levelParam,
+		Param& frequencyParam,
+		Param& frequencyCv1Param,
+		Param* frequencyCv2Param,
+		Param& bandwidthParam,
+		Input& levelCvInput,
+		Input& frequencyCv1Input,
+		Input& frequencyCv2Input,
+		Input* bandwidthCvInput
 	) {
 		_channels[i] = new PEQChannel(
 			polyChannel,
-			level,
-			frequency,
-			frequencyCv,
-			bandwidth,
-			levelCv,
-			frequencyCv1,
-			frequencyCv2,
-			bandwidthCv
+			levelParam,
+			frequencyParam,
+			frequencyCv1Param,
+			frequencyCv2Param,
+			bandwidthParam,
+			levelCvInput,
+			frequencyCv1Input,
+			frequencyCv2Input,
+			bandwidthCvInput
 		);
 	}
 	inline void setLowFilterMode(MultimodeFilter::Mode mode) { _channels[0]->setFilterMode(mode); }
 	inline void setHighFilterMode(MultimodeFilter::Mode mode) { _channels[_n - 1]->setFilterMode(mode); }
+	void setFrequencyMode(bool full);
 	void setSampleRate(float sr);
 	void modulate();
-	float next(float sample, float* rmsSums);
+	float next(float sample, float* outs, float* rmsSums);
 };
 
 } // namespace bogaudio

@@ -26,6 +26,7 @@ void PEQ::addChannel(int c) {
 			params[A_LEVEL_PARAM + i*4],
 			params[A_FREQUENCY_PARAM + i*4],
 			params[A_CV_PARAM + i*4],
+			NULL,
 			params[A_BANDWIDTH_PARAM + i*4],
 			inputs[A_LEVEL_INPUT + i],
 			inputs[A_FREQUENCY_INPUT + i],
@@ -58,7 +59,8 @@ void PEQ::processAlways(const ProcessArgs& args) {
 }
 
 void PEQ::processChannel(const ProcessArgs& args, int c) {
-	outputs[OUT_OUTPUT].setVoltage(_engines[c]->next(inputs[IN_INPUT].getVoltage(c), _rmsSums), c);
+	float outs[6];
+	outputs[OUT_OUTPUT].setVoltage(_engines[c]->next(inputs[IN_INPUT].getVoltage(c), outs, _rmsSums), c);
 }
 
 void PEQ::postProcessAlways(const ProcessArgs& args) {

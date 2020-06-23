@@ -1,3 +1,4 @@
+
 #include "parametric_eq.hpp"
 #include "dsp/pitch.hpp"
 
@@ -5,6 +6,8 @@ const float PEQChannel::maxDecibels = 6.0f;
 const float PEQChannel::minDecibels = Amplifier::minDecibels;
 constexpr float PEQChannel::maxFrequency;
 constexpr float PEQChannel::minFrequency;
+const float PEQChannel::maxFrequencySemitone = frequencyToSemitone(PEQChannel::maxFrequency);
+const float PEQChannel::minFrequencySemitone = frequencyToSemitone(PEQChannel::minFrequency);
 
 void PEQChannel::setSampleRate(float sampleRate) {
 	_sampleRate = sampleRate;
@@ -16,7 +19,7 @@ void PEQChannel::setSampleRate(float sampleRate) {
 
 void PEQChannel::setFilterMode(MultimodeFilter::Mode mode) {
 	_mode = mode;
-	_poles = _mode == MultimodeFilter::BANDPASS_MODE ? 2 : 4;
+	_poles = _mode == MultimodeFilter::BANDPASS_MODE ? 4 : 12;
 }
 
 void PEQChannel::modulate() {
@@ -33,15 +36,28 @@ void PEQChannel::modulate() {
 		fcv += clamp(_frequency1Input.getPolyVoltage(_c) / 5.0f, -1.0f, 1.0f);
 	}
 	if (_frequency2Input.isConnected()) {
-		fcv += clamp(_frequency2Input.getPolyVoltage(_c) / 5.0f, -1.0f, 1.0f);
+		float cv = clamp(_frequency2Input.getPolyVoltage(_c) / 5.0f, -1.0f, 1.0f);
+		if (_frequencyCv2Param) {
+			cv *= _frequencyCv2Param->getValue();
+		}
+		fcv += cv;
 	}
-	fcv *= _frequencyCvParam.getValue();
+	fcv *= _frequencyCv1Param.getValue();
+	if (_fullFrequencyMode) {
+		fcv *= maxFrequencySemitone - minFrequencySemitone;
+	}
+	else {
+		fcv *= 12.0f;
+	}
+
 	float f = _frequencyParam.getValue();
-	f += fcv;
 	f *= f;
 	f *= maxFrequency;
 	f = clamp(f, minFrequency, maxFrequency);
-	f = semitoneToFrequency(_frequencySL.next(frequencyToSemitone(f)));
+	f = frequencyToSemitone(f);
+	f += fcv;
+	f = clamp(f, minFrequencySemitone, maxFrequencySemitone);
+	f = semitoneToFrequency(_frequencySL.next(f));
 
 	float bw = MultimodeFilter::minQbw;
 	if (_mode == MultimodeFilter::BANDPASS_MODE) {
@@ -49,6 +65,7 @@ void PEQChannel::modulate() {
 		if (_bandwidthInput && _bandwidthInput->isConnected()) {
 			bw *= clamp(_bandwidthInput->getPolyVoltage(_c) / 10.0f, 0.0f, 1.0f);
 		}
+		bw = MultimodeFilter::minQbw + bw * (MultimodeFilter::maxQbw - MultimodeFilter::minQbw);
 	}
 	_filter.setParams(
 		_sampleRate,
@@ -67,7 +84,13 @@ void PEQChannel::next(float sample) {
 }
 
 
-void PEQEngine::setSampleRate(float sr) {
+ void PEQEngine::setFrequencyMode(bool full) {
+	 for (int i = 0; i < _n; ++i) {
+		 _channels[i]->setFrequencyMode(full);
+	 }
+ }
+
+ void PEQEngine::setSampleRate(float sr) {
 	for (int i = 0; i < _n; ++i) {
 		_channels[i]->setSampleRate(sr);
 	}
@@ -79,12 +102,12 @@ void PEQEngine::modulate() {
 	}
 }
 
-float PEQEngine::next(float sample, float* rmsSums) {
+float PEQEngine::next(float sample, float* outs, float* rmsSums) {
 	float out = 0.0f;
 	for (int i = 0; i < _n; ++i) {
 		PEQChannel& c = *_channels[i];
 		c.next(sample);
-		out += c.out;
+		out += outs[i] = c.out;
 		rmsSums[i] += c.rms;
 	}
 	return _saturator.next(out);

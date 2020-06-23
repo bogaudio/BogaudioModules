@@ -66,7 +66,7 @@ struct PEQ : BGModule {
 		configParam(A_MODE_PARAM, 0.0f, 1.0f, 1.0f, "Channel A LP/BP");
 		configParam(B_LEVEL_PARAM, 0.0f, 1.0f, levelDefault, "Channel B level", " dB", 0.0f, PEQChannel::maxDecibels - PEQChannel::minDecibels, PEQChannel::minDecibels);
 		configParam<ScaledSquaringParamQuantity<(int)PEQChannel::maxFrequency>>(B_FREQUENCY_PARAM, 0.0f, 1.0f, 0.1322876f, "Channel B frequency", " HZ");
-		configParam(B_BANDWIDTH_PARAM, 0.0f, 1.0f, 0.5f, "Channel B bandwidth", "%", 0.0f, 100.0f);
+		configParam(B_BANDWIDTH_PARAM, 0.0f, 1.0f, 0.66f, "Channel B bandwidth", "%", 0.0f, 100.0f);
 		configParam(B_CV_PARAM, -1.0f, 1.0f, 0.0f, "Channel B frequency CV attenuation", "%", 0.0f, 100.0f);
 		configParam(C_LEVEL_PARAM, 0.0f, 1.0f, levelDefault, "Channel C level", " dB", 0.0f, PEQChannel::maxDecibels - PEQChannel::minDecibels, PEQChannel::minDecibels);
 		configParam<ScaledSquaringParamQuantity<(int)PEQChannel::maxFrequency>>(C_FREQUENCY_PARAM, 0.0f, 1.0f, 0.223607f, "Channel C frequency", " HZ");

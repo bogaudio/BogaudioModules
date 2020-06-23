@@ -55,6 +55,8 @@
 #include "OneEight.hpp"
 #include "Pan.hpp"
 #include "PEQ.hpp"
+#include "PEQ6.hpp"
+#include "PEQ14.hpp"
 #include "Pgmr.hpp"
 #include "PolyCon8.hpp"
 #include "PolyCon16.hpp"
@@ -119,6 +121,8 @@ void init(rack::Plugin *p) {
 	p->addModel(modelEQ);
 	p->addModel(modelEQS);
 	p->addModel(modelPEQ);
+	p->addModel(modelPEQ6);
+	p->addModel(modelPEQ14);
 
 	p->addModel(modelDADSRH);
 	p->addModel(modelDADSRHPlus);
