@@ -19,7 +19,7 @@ struct PEQChannel {
 	float _sampleRate;
 	Amplifier _amplifier;
 	bogaudio::dsp::SlewLimiter _levelSL;
-	MultimodeFilter _filter;
+	MultimodeFilter* _filter = NULL;
 	bogaudio::dsp::SlewLimiter _frequencySL;
 	bogaudio::dsp::SlewLimiter _bandwidthSL;
 	RootMeanSquare _rms;
@@ -42,6 +42,7 @@ struct PEQChannel {
 	float rms = 0.0f;
 
 	PEQChannel(
+		MultimodeFilter* filter,
 		int polyChannel,
 		Param& levelParam,
 		Param& frequencyParam,
@@ -54,7 +55,8 @@ struct PEQChannel {
 		Input* bandwidthCvInput,
 		float sampleRate = 1000.0f
 	)
-	: _c(polyChannel)
+	: _filter(filter)
+	, _c(polyChannel)
 	, _levelParam(levelParam)
 	, _frequencyParam(frequencyParam)
 	, _frequencyCv1Param(frequencyCv1Param)
@@ -68,6 +70,9 @@ struct PEQChannel {
 		setSampleRate(sampleRate);
 		setFilterMode(MultimodeFilter::BANDPASS_MODE);
 		_rms.setSensitivity(0.05f);
+	}
+	virtual ~PEQChannel() {
+		delete _filter;
 	}
 
 	void setSampleRate(float sampleRate);
@@ -106,6 +111,7 @@ struct PEQEngine {
 		Input* bandwidthCvInput
 	) {
 		_channels[i] = new PEQChannel(
+			i == 0 || i == _n - 1 ? (MultimodeFilter*)(new MultimodeFilter8()) : (MultimodeFilter*)(new MultimodeFilter4()),
 			polyChannel,
 			levelParam,
 			frequencyParam,

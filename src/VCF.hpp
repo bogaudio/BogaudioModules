@@ -40,12 +40,12 @@ struct VCF : BGModule {
 		static constexpr int maxPoles = 12;
 		static constexpr int minPoles = 1;
 		static constexpr int nFilters = maxPoles;
-		MultimodeFilter _filters[nFilters];
+		MultimodeFilter16 _filters[nFilters];
 		float _gains[nFilters] {};
 		bogaudio::dsp::SlewLimiter _gainSLs[nFilters];
 		float _sampleRate;
 		bogaudio::dsp::SlewLimiter _frequencySL;
-		MultimodeFilter _finalHP;
+		MultimodeFilter4 _finalHP;
 
 		Engine() {
 			sampleRateChange();

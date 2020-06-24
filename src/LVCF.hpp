@@ -38,10 +38,10 @@ struct LVCF : BGModule {
 	};
 
 	struct Engine {
-		MultimodeFilter _filter;
+		MultimodeFilter16 _filter;
 		float _sampleRate;
 		bogaudio::dsp::SlewLimiter _frequencySL;
-		MultimodeFilter _finalHP;
+		MultimodeFilter4 _finalHP;
 
 		Engine() {
 			sampleRateChange();

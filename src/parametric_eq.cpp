@@ -67,7 +67,7 @@ void PEQChannel::modulate() {
 		}
 		bw = MultimodeFilter::minQbw + bw * (MultimodeFilter::maxQbw - MultimodeFilter::minQbw);
 	}
-	_filter.setParams(
+	_filter->setParams(
 		_sampleRate,
 		MultimodeFilter::BUTTERWORTH_TYPE,
 		_poles,
@@ -79,7 +79,7 @@ void PEQChannel::modulate() {
 }
 
 void PEQChannel::next(float sample) {
-	out = _amplifier.next(_filter.next(sample));
+	out = _amplifier.next(_filter->next(sample));
 	rms = _rms.next(out / 5.0f);
 }
 

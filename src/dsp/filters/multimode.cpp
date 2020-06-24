@@ -68,6 +68,36 @@ template<> float BiquadBank<MultimodeTypes::T, 4>::next(float sample) {
 	return _biquads->next(sample);
 }
 
+
+template<> void BiquadBank<MultimodeTypes::T, 8>::setParams(int i, MultimodeTypes::T a0, MultimodeTypes::T a1, MultimodeTypes::T a2, MultimodeTypes::T b0, MultimodeTypes::T b1, MultimodeTypes::T b2) {
+	assert(i >= 0 && i < 8);
+	_biquads[i / 4].setParams(i % 4, a0, a1, a2, b0, b1, b2);
+}
+
+template<> void BiquadBank<MultimodeTypes::T, 8>::reset() {
+	_biquads[0].reset();
+	_biquads[1].reset();
+}
+
+template<> void BiquadBank<MultimodeTypes::T, 8>::setN(int n, bool minDelay) {
+	assert(n > 0 && n <= 8);
+	for (int i = 0, nn = n / 4; i < nn; ++i) {
+		_biquads[i].setN(4, false);
+	}
+	if (n % 4 != 0) {
+		_biquads[n / 4].setN(n % 4, minDelay);
+	}
+	for (int i = 0; i < 2; ++i) {
+		_biquads[i].disable(4 * i >= n);
+	}
+}
+
+template<> float BiquadBank<MultimodeTypes::T, 8>::next(float sample) {
+	sample = _biquads[0].next(sample);
+	return _biquads[1].next(sample);
+}
+
+
 template<> void BiquadBank<MultimodeTypes::T, 16>::setParams(int i, MultimodeTypes::T a0, MultimodeTypes::T a1, MultimodeTypes::T a2, MultimodeTypes::T b0, MultimodeTypes::T b1, MultimodeTypes::T b2) {
 	assert(i >= 0 && i < 16);
 	_biquads[i / 4].setParams(i % 4, a0, a1, a2, b0, b1, b2);
@@ -131,6 +161,7 @@ template<typename T, int N> float BiquadBank<T, N>::next(float sample) {
 #endif
 
 template struct BiquadBank<MultimodeTypes::T, 4>;
+template struct BiquadBank<MultimodeTypes::T, 8>;
 template struct BiquadBank<MultimodeTypes::T, 16>;
 
 
@@ -440,10 +471,11 @@ template<int N> void MultimodeDesigner<N>::setParams(
 }
 
 template struct MultimodeDesigner<4>;
+template struct MultimodeDesigner<8>;
 template struct MultimodeDesigner<16>;
 
 
-template<int N> void MultimodeBase<N>::design(
+template<int N> void MultimodeBase<N>::setParams(
 	float sampleRate,
 	Type type,
 	int poles,
@@ -476,6 +508,7 @@ template<int N> void MultimodeBase<N>::reset() {
 }
 
 template struct MultimodeBase<4>;
+template struct MultimodeBase<8>;
 template struct MultimodeBase<16>;
 
 } // namespace dsp

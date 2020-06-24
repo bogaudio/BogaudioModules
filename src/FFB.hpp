@@ -47,9 +47,9 @@ struct FFB : BGModule {
 	};
 
 	struct Engine {
-		MultimodeFilter _lowPass;
+		MultimodeFilter8 _lowPass;
 		FourPoleButtworthBandpassFilter _bandPasses[12];
-		MultimodeFilter _highPass;
+		MultimodeFilter8 _highPass;
 		Amplifier _amplifiers[14];
 		bogaudio::dsp::SlewLimiter _slews[14];
 

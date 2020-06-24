@@ -7,14 +7,17 @@ namespace bogaudio {
 namespace dsp {
 
 struct Filter {
-	Filter() {}
 	virtual ~Filter() {}
 
 	virtual float next(float sample) = 0;
 };
 
+struct ResetableFilter : Filter {
+	virtual void reset() = 0;
+};
+
 template<typename T>
-struct BiquadFilter : Filter {
+struct BiquadFilter : ResetableFilter {
 	T _a0 = 0.0;
 	T _a1 = 0.0;
 	T _a2 = 0.0;
@@ -33,7 +36,7 @@ struct BiquadFilter : Filter {
 		_b2 = b2 * ib0;
 	}
 
-	void reset() {
+	void reset() override {
 		_x[0] = _x[1] = _x[2] = 0.0;
 		_y[0] = _y[1] = _y[2] = 0.0;
 	}
@@ -55,7 +58,7 @@ struct BiquadFilter : Filter {
 	}
 };
 
-struct LowPassFilter : Filter {
+struct LowPassFilter : ResetableFilter {
 	float _sampleRate = 0.0f;
 	float _cutoff = 0.0f;
 	float _q = 0.0f;
@@ -67,7 +70,7 @@ struct LowPassFilter : Filter {
 	}
 
 	void setParams(float sampleRate, float cutoff, float q = 0.001f);
-	void reset() { _biquad.reset(); }
+	void reset() override { _biquad.reset(); }
 	float next(float sample) override {
 		return _biquad.next(sample);
 	}
