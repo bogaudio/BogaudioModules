@@ -239,6 +239,21 @@ StatefulButton::StatefulButton(const char* offSvgPath, const char* onSvgPath) {
 	shadow->box.pos = Vec(0.0, 1.0);
 }
 
+void StatefulButton::reset() {
+	if (paramQuantity) {
+		paramQuantity->setValue(paramQuantity->getMinValue());
+	}
+}
+
+void StatefulButton::randomize() {
+	if (paramQuantity) {
+		float min = paramQuantity->getMinValue();
+		float max = paramQuantity->getMaxValue();
+		float value = roundf(min + (max - min) * random::uniform());
+		paramQuantity->setValue(value);
+	}
+}
+
 void StatefulButton::onDragStart(const event::DragStart& e) {
 	if (paramQuantity) {
 		_svgWidget->setSvg(_frames[1]);

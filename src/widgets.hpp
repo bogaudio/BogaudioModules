@@ -95,6 +95,8 @@ struct StatefulButton : ParamWidget {
 	CircularShadow* shadow = NULL;
 
 	StatefulButton(const char* offSvgPath, const char* onSvgPath);
+	void reset() override;
+	void randomize() override;
 	void onDragStart(const event::DragStart& e) override;
 	void onDragEnd(const event::DragEnd& e) override;
 };
