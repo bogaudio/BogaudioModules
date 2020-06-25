@@ -4,10 +4,8 @@
 
 namespace bogaudio {
 
-struct Pgmr : ExpandableModule<PgmrExpanderMessage, OutputRangeAddressableSequenceModule>, PgmrBase {
+struct PgmrX : ExpanderModule<PgmrExpanderMessage, ExpandableModule<PgmrExpanderMessage, BGModule>>, PgmrBase, OutputRange {
 	enum ParamsIds {
-		DIRECTION_PARAM,
-		SELECT_ON_CLOCK_PARAM,
 		CVA1_PARAM,
 		CVB1_PARAM,
 		CVC1_PARAM,
@@ -32,8 +30,6 @@ struct Pgmr : ExpandableModule<PgmrExpanderMessage, OutputRangeAddressableSequen
 	};
 
 	enum InputsIds {
-		CLOCK_INPUT,
-		SELECT_INPUT,
 		SELECT1_INPUT,
 		SELECT2_INPUT,
 		SELECT3_INPUT,
@@ -42,11 +38,6 @@ struct Pgmr : ExpandableModule<PgmrExpanderMessage, OutputRangeAddressableSequen
 	};
 
 	enum OutputsIds {
-		A_OUTPUT,
-		B_OUTPUT,
-		C_OUTPUT,
-		D_OUTPUT,
-		SELECT_ALL_OUTPUT,
 		SELECT1_OUTPUT,
 		SELECT2_OUTPUT,
 		SELECT3_OUTPUT,
@@ -62,18 +53,12 @@ struct Pgmr : ExpandableModule<PgmrExpanderMessage, OutputRangeAddressableSequen
 		NUM_LIGHTS
 	};
 
-	float _sampleTime = 0.001f;
-	bool _selectTriggers = false;
-	SpinLock _stepsLock;
-	std::vector<PgmrStep*> _steps;
-	int _lastSteps[maxChannels] {};
-	rack::dsp::PulseGenerator _allPulseGens[maxChannels];
-	int _id = -1;
+	bool _registered = false;
+	int _baseID = -1;
+	int _position = -1;
 
-	Pgmr() {
+	PgmrX() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(DIRECTION_PARAM, 0.0f, 1.0f, 1.0f, "Forward");
-		configParam(SELECT_ON_CLOCK_PARAM, 0.0f, 1.0f, 0.0f, "Select on clock");
 		configParam<OutputRangeParamQuantity>(CVA1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1A", " V");
 		configParam<OutputRangeParamQuantity>(CVB1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1B", " V");
 		configParam<OutputRangeParamQuantity>(CVC1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1C", " V");
@@ -93,29 +78,22 @@ struct Pgmr : ExpandableModule<PgmrExpanderMessage, OutputRangeAddressableSequen
 		configParam<OutputRangeParamQuantity>(CVB4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4B", " V");
 		configParam<OutputRangeParamQuantity>(CVC4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4C", " V");
 		configParam<OutputRangeParamQuantity>(CVD4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4D", " V");
-		configParam(SELECT4_PARAM, 0.0f, 1.0f, 0.0f, "Select 4");
-		setInputIDs(CLOCK_INPUT, SELECT_INPUT);
+		configParam<OutputRangeParamQuantity>(SELECT4_PARAM, 0.0f, 1.0f, 0.0f, "Select 4");
 
 		_localSteps[0] = new PgmrStep(params[CVA1_PARAM], params[CVB1_PARAM], params[CVC1_PARAM], params[CVD1_PARAM], lights[SELECT1_LIGHT], params[SELECT1_PARAM], inputs[SELECT1_INPUT], outputs[SELECT1_OUTPUT]);
 		_localSteps[1] = new PgmrStep(params[CVA2_PARAM], params[CVB2_PARAM], params[CVC2_PARAM], params[CVD2_PARAM], lights[SELECT2_LIGHT], params[SELECT2_PARAM], inputs[SELECT2_INPUT], outputs[SELECT2_OUTPUT]);
 		_localSteps[2] = new PgmrStep(params[CVA3_PARAM], params[CVB3_PARAM], params[CVC3_PARAM], params[CVD3_PARAM], lights[SELECT3_LIGHT], params[SELECT3_PARAM], inputs[SELECT3_INPUT], outputs[SELECT3_OUTPUT]);
 		_localSteps[3] = new PgmrStep(params[CVA4_PARAM], params[CVB4_PARAM], params[CVC4_PARAM], params[CVD4_PARAM], lights[SELECT4_LIGHT], params[SELECT4_PARAM], inputs[SELECT4_INPUT], outputs[SELECT4_OUTPUT]);
 
+		setBaseModel(modelPgmr);
+		setChainableModel(modelPgmrX);
 		setExpanderModel(modelPgmrX);
-		_id = PgmrRegistry::registry().registerBase(*this);
 	}
-	virtual ~Pgmr() {
-		PgmrRegistry::registry().deregisterBase(_id);
+	virtual ~PgmrX() {
+		PgmrRegistry::registry().deregisterExpander(_baseID, _position);
 	}
 
-	void reset() override;
-	void sampleRateChange() override;
-	json_t* dataToJson() override;
-	void dataFromJson(json_t* root) override;
-	void modulate() override;
 	void processAlways(const ProcessArgs& args) override;
-	void processChannel(const ProcessArgs& args, int c) override;
-	void setSteps(std::vector<PgmrStep*>& steps);
 };
 
 } // namespace bogaudio
