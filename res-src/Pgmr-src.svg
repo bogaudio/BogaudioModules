@@ -110,19 +110,17 @@
   <!-- <polyline points="0,0 225,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 135.5)" /> -->
   <!-- <polyline points="0,0 225,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 360)" /> -->
 
-  <g transform="translate(0 56)">
-    <g transform="translate(5.5 0)">
-      <rect width="34" height="155" rx="5" fill="#bbb" transform="translate(0 -10)" />
-      <use id="A_OUTPUT" xlink:href="#output" transform="translate(5 3)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 0)">OUT</text>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(15 35)">A</text>
-      <use id="B_OUTPUT" xlink:href="#output" transform="translate(5 38)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(15 70)">B</text>
-      <use id="C_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(15 105)">C</text>
-      <use id="D_OUTPUT" xlink:href="#output" transform="translate(5 107)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(15 140)">D</text>
-    </g>
+  <g transform="translate(5.5 56)">
+    <rect width="34" height="155" rx="5" fill="#bbb" transform="translate(0 -10)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 0)">OUT</text>
+    <use id="A_OUTPUT" xlink:href="#output" transform="translate(5 3)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(15 35)">A</text>
+    <use id="B_OUTPUT" xlink:href="#output" transform="translate(5 38)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(15 70)">B</text>
+    <use id="C_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(15 105)">C</text>
+    <use id="D_OUTPUT" xlink:href="#output" transform="translate(5 108)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(15 140)">D</text>
   </g>
 
   <g transform="translate(0 224)">

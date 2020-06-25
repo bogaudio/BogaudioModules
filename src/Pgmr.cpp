@@ -182,7 +182,7 @@ struct PgmrWidget : AddressableSequenceBaseModuleWidget {
 		auto aOutputPosition = Vec(10.5, 59.0);
 		auto bOutputPosition = Vec(10.5, 94.0);
 		auto cOutputPosition = Vec(10.5, 129.0);
-		auto dOutputPosition = Vec(10.5, 163.0);
+		auto dOutputPosition = Vec(10.5, 164.0);
 		auto selectAllOutputPosition = Vec(10.5, 330.0);
 		auto select1OutputPosition = Vec(55.5, 330.0);
 		auto select2OutputPosition = Vec(100.5, 330.0);
