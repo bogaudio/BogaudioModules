@@ -222,6 +222,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelTestVCF);
 
 	p->addModel(modelThreeHP);
+	p->addModel(modelFiveHP);
 	p->addModel(modelSixHP);
 	p->addModel(modelEightHP);
 	p->addModel(modelTenHP);

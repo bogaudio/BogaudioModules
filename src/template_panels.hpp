@@ -3,6 +3,7 @@
 #include "bogaudio.hpp"
 
 extern Model* modelThreeHP;
+extern Model* modelFiveHP;
 extern Model* modelSixHP;
 extern Model* modelEightHP;
 extern Model* modelTenHP;
