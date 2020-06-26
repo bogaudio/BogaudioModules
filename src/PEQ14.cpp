@@ -90,6 +90,9 @@ void PEQ14::processChannel(const ProcessArgs& args, int c) {
 	float outs[14] {};
 	float out = _engines[c]->next(inputs[IN_INPUT].getVoltage(c), outs, _rmsSums);
 	outputs[OUT_OUTPUT].setVoltage(out, c);
+	if (expanderConnected()) {
+		std::copy(outs, outs + 14, toExpander()->outs[c]);
+	}
 
 	float oddOut = 0.0f;
 	float evenOut = 0.0f;

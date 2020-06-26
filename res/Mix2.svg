@@ -314,11 +314,11 @@
      id="rect91" />
   <path
      style="fill:none;stroke:#e4e4e4;stroke-width:0.5"
-     d="M 1,1 H 75 V 379 H 1 V 1"
+     d="M 1,1 H 74 V 379 H 1 V 1"
      id="polyline93" />
   <path
      style="fill:none;stroke:#ebebeb;stroke-width:0.80000001"
-     d="m 0.5,0.5 h 75 v 379 H 0.5 V 0.5"
+     d="m 0.5,0.5 h 74 v 379 H 0.5 V 0.5"
      id="polyline95" />
   <path
      style="fill:none;stroke:#f2f2f2;stroke-width:1"

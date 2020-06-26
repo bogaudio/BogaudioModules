@@ -1,13 +1,10 @@
 #pragma once
 
-#include "bogaudio.hpp"
-#include "parametric_eq.hpp"
-
-extern Model* modelPEQ14;
+#include "PEQ14_shared.hpp"
 
 namespace bogaudio {
 
-struct PEQ14 : BGModule {
+struct PEQ14 : ExpandableModule<PEQ14ExpanderMessage, BGModule> {
 	enum ParamsIds {
 		EF_RESPONSE_PARAM,
 		FREQUENCY_CV_PARAM,
@@ -183,6 +180,8 @@ struct PEQ14 : BGModule {
 		configParam(LEVEL14_PARAM, 0.0f, 1.0f, levelDefault, "Channel 6 level", " dB", 0.0f, PEQChannel::maxDecibels - PEQChannel::minDecibels, PEQChannel::minDecibels);
 		configParam<ScaledSquaringParamQuantity<(int)PEQChannel::maxFrequency>>(FREQUENCY14_PARAM, 0.0f, 1.0f, 0.5873670f, "Channel 6 frequency", " HZ");
 		configParam(FREQUENCY_CV14_PARAM, -1.0f, 1.0f, 1.0f, "Channel 6 frequency CV attenuation", "%", 0.0f, 100.0f);
+
+		setExpanderModel(modelPEQ14XO);
 	}
 
 	void sampleRateChange() override;
