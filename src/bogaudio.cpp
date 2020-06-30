@@ -61,6 +61,8 @@
 #include "PEQ6XO.hpp"
 #include "PEQ14.hpp"
 #include "PEQ14XO.hpp"
+#include "PEQ14XR.hpp"
+#include "PEQ14XV.hpp"
 #include "Pgmr.hpp"
 #include "PgmrX.hpp"
 #include "PolyCon8.hpp"
@@ -130,6 +132,8 @@ void init(rack::Plugin *p) {
 	p->addModel(modelPEQ6XO);
 	p->addModel(modelPEQ14);
 	p->addModel(modelPEQ14XO);
+	p->addModel(modelPEQ14XV);
+	p->addModel(modelPEQ14XR);
 
 	p->addModel(modelDADSRH);
 	p->addModel(modelDADSRHPlus);

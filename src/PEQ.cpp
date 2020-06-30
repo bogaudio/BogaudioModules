@@ -59,8 +59,7 @@ void PEQ::processAlways(const ProcessArgs& args) {
 }
 
 void PEQ::processChannel(const ProcessArgs& args, int c) {
-	float outs[6];
-	outputs[OUT_OUTPUT].setVoltage(_engines[c]->next(inputs[IN_INPUT].getVoltage(c), outs, _rmsSums), c);
+	outputs[OUT_OUTPUT].setVoltage(_engines[c]->next(inputs[IN_INPUT].getVoltage(c), _rmsSums), c);
 }
 
 void PEQ::postProcessAlways(const ProcessArgs& args) {

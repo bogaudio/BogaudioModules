@@ -181,7 +181,7 @@ struct PEQ14 : ExpandableModule<PEQ14ExpanderMessage, BGModule> {
 		configParam<ScaledSquaringParamQuantity<(int)PEQChannel::maxFrequency>>(FREQUENCY14_PARAM, 0.0f, 1.0f, 0.5873670f, "Channel 6 frequency", " HZ");
 		configParam(FREQUENCY_CV14_PARAM, -1.0f, 1.0f, 1.0f, "Channel 6 frequency CV attenuation", "%", 0.0f, 100.0f);
 
-		setExpanderModel(modelPEQ14XO);
+		setExpanderModelPredicate([](Model* m) { return m == modelPEQ14XO || m == modelPEQ14XR || m == modelPEQ14XV; });
 	}
 
 	void sampleRateChange() override;
@@ -192,6 +192,7 @@ struct PEQ14 : ExpandableModule<PEQ14ExpanderMessage, BGModule> {
 	void modulate() override;
 	void processAlways(const ProcessArgs& args) override;
 	void processChannel(const ProcessArgs& args, int c) override;
+	float scaleEF(float ef, float frequency);
 	void postProcessAlways(const ProcessArgs& args) override;
 };
 

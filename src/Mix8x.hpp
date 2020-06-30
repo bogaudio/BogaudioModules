@@ -175,7 +175,7 @@ struct Mix8x : ExpanderModule<Mix8ExpanderMessage, BGModule> {
 		_channels[6] = new MixerExpanderChannel(params[LOW7_PARAM], params[MID7_PARAM], params[HIGH7_PARAM], params[A7_PARAM], params[B7_PARAM], params[PRE_A7_PARAM], params[PRE_B7_PARAM], inputs[A7_INPUT], inputs[B7_INPUT]);
 		_channels[7] = new MixerExpanderChannel(params[LOW8_PARAM], params[MID8_PARAM], params[HIGH8_PARAM], params[A8_PARAM], params[B8_PARAM], params[PRE_A8_PARAM], params[PRE_B8_PARAM], inputs[A8_INPUT], inputs[B8_INPUT]);
 
-		setBaseModel(modelMix8);
+		setBaseModelPredicate([](Model* m) { return m == modelMix8; });
 	}
 	virtual ~Mix8x() {
 		for (int i = 0; i < 8; ++i) {

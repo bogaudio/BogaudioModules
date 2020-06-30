@@ -126,7 +126,7 @@ struct Mix8 : ExpandableModule<Mix8ExpanderMessage, BGModule> {
 
 		sampleRateChange();
 		_rms.setSensitivity(0.05f);
-		setExpanderModel(modelMix8x);
+		setExpanderModelPredicate([](Model* m) { return m == modelMix8x; });
 	}
 	virtual ~Mix8() {
 		for (int i = 0; i < 8; ++i) {

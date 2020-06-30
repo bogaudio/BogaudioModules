@@ -25,7 +25,7 @@ struct PEQ6XO : ExpanderModule<PEQ6ExpanderMessage, BGModule> {
 
 	PEQ6XO() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
-		setBaseModel(modelPEQ6);
+		setBaseModelPredicate([](Model* m) { return m == modelPEQ6; });
 	}
 
 	void processAll(const ProcessArgs& args) override;

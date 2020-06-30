@@ -50,30 +50,30 @@ void PEQChannel::modulate() {
 		fcv *= 12.0f;
 	}
 
-	float f = _frequencyParam.getValue();
-	f *= f;
-	f *= maxFrequency;
-	f = clamp(f, minFrequency, maxFrequency);
-	f = frequencyToSemitone(f);
-	f += fcv;
-	f = clamp(f, minFrequencySemitone, maxFrequencySemitone);
-	f = semitoneToFrequency(_frequencySL.next(f));
+	frequency = _frequencyParam.getValue();
+	frequency *= frequency;
+	frequency *= maxFrequency;
+	frequency = clamp(frequency, minFrequency, maxFrequency);
+	frequency = frequencyToSemitone(frequency);
+	frequency += fcv;
+	frequency = clamp(frequency, minFrequencySemitone, maxFrequencySemitone);
+	frequency = semitoneToFrequency(_frequencySL.next(frequency));
 
-	float bw = MultimodeFilter::minQbw;
+	bandwidth = MultimodeFilter::minQbw;
 	if (_mode == MultimodeFilter::BANDPASS_MODE) {
-		bw = clamp(_bandwidthParam.getValue(), 0.0f, 1.0f);
+		bandwidth = clamp(_bandwidthParam.getValue(), 0.0f, 1.0f);
 		if (_bandwidthInput && _bandwidthInput->isConnected()) {
-			bw *= clamp(_bandwidthInput->getPolyVoltage(_c) / 10.0f, 0.0f, 1.0f);
+			bandwidth *= clamp(_bandwidthInput->getPolyVoltage(_c) / 10.0f, 0.0f, 1.0f);
 		}
-		bw = MultimodeFilter::minQbw + bw * (MultimodeFilter::maxQbw - MultimodeFilter::minQbw);
+		bandwidth = MultimodeFilter::minQbw + bandwidth * (MultimodeFilter::maxQbw - MultimodeFilter::minQbw);
 	}
 	_filter->setParams(
 		_sampleRate,
 		MultimodeFilter::BUTTERWORTH_TYPE,
 		_poles,
 		_mode,
-		f,
-		bw,
+		frequency,
+		bandwidth,
 		MultimodeFilter::PITCH_BANDWIDTH_MODE
 	);
 }
@@ -102,12 +102,14 @@ void PEQEngine::modulate() {
 	}
 }
 
-float PEQEngine::next(float sample, float* outs, float* rmsSums) {
+float PEQEngine::next(float sample, float* rmsSums) {
+	bandwidth = _channels[1]->bandwidth; // take from any bandpass-only channel.
 	float out = 0.0f;
 	for (int i = 0; i < _n; ++i) {
 		PEQChannel& c = *_channels[i];
 		c.next(sample);
 		out += outs[i] = c.out;
+		frequencies[i] = c.frequency;
 		rmsSums[i] += c.rms;
 	}
 	return _saturator.next(out);

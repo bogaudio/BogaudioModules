@@ -5,6 +5,16 @@ void PEQ14XO::processAll(const ProcessArgs& args) {
 	for (int i = 0; i < 14; ++i) {
 		outputs[BAND1_OUTPUT + i].setChannels(_channels);
 	}
+
+	if (expanderConnected()) {
+		if (baseConnected()) {
+			// *toExpander() = *fromBase();
+			fromBase()->copyTo(toExpander());
+		}
+		else {
+			toExpander()->reset();
+		}
+	}
 }
 
 void PEQ14XO::processChannel(const ProcessArgs& args, int c) {

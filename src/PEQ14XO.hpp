@@ -4,7 +4,7 @@
 
 namespace bogaudio {
 
-struct PEQ14XO : ExpanderModule<PEQ14ExpanderMessage, BGModule> {
+struct PEQ14XO : ExpanderModule<PEQ14ExpanderMessage, ExpandableModule<PEQ14ExpanderMessage, BGModule>> {
 	enum ParamsIds {
 		NUM_PARAMS
 	};
@@ -33,7 +33,8 @@ struct PEQ14XO : ExpanderModule<PEQ14ExpanderMessage, BGModule> {
 
 	PEQ14XO() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
-		setBaseModel(modelPEQ14);
+		setBaseModelPredicate([](Model* m) { return m == modelPEQ14 || m == modelPEQ14XO || m == modelPEQ14XR  || m == modelPEQ14XV; });
+		setExpanderModelPredicate([](Model* m) { return m == modelPEQ14XO || m == modelPEQ14XR || m == modelPEQ14XV; });
 	}
 
 	void processAll(const ProcessArgs& args) override;

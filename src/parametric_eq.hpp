@@ -40,6 +40,8 @@ struct PEQChannel {
 
 	float out = 0.0f;
 	float rms = 0.0f;
+	float frequency = 0.0f;
+	float bandwidth = 0.0f;
 
 	PEQChannel(
 		MultimodeFilter* filter,
@@ -87,14 +89,22 @@ struct PEQEngine {
 	PEQChannel** _channels;
 	Saturator _saturator;
 
+	float* outs = NULL;
+	float* frequencies = NULL;
+	float bandwidth = 0.0f;
+
 	PEQEngine(int channels) : _n(channels) {
 		_channels = new PEQChannel*[_n] {};
+		outs = new float[_n] {};
+		frequencies = new float[_n] {};
 	}
 	~PEQEngine() {
 		for (int i = 0; i < _n; ++i) {
 			delete _channels[i];
 		}
 		delete[] _channels;
+		delete[] outs;
+		delete[] frequencies;
 	}
 
 	inline void configChannel(
@@ -129,7 +139,7 @@ struct PEQEngine {
 	void setFrequencyMode(bool full);
 	void setSampleRate(float sr);
 	void modulate();
-	float next(float sample, float* outs, float* rmsSums);
+	float next(float sample, float* rmsSums);
 };
 
 } // namespace bogaudio

@@ -108,7 +108,7 @@ struct Mix4x : ExpanderModule<Mix4ExpanderMessage, BGModule> {
 		_channels[2] = new MixerExpanderChannel(params[LOW3_PARAM], params[MID3_PARAM], params[HIGH3_PARAM], params[A3_PARAM], params[B3_PARAM], params[PRE_A3_PARAM], params[PRE_B3_PARAM], inputs[A3_INPUT], inputs[B3_INPUT]);
 		_channels[3] = new MixerExpanderChannel(params[LOW4_PARAM], params[MID4_PARAM], params[HIGH4_PARAM], params[A4_PARAM], params[B4_PARAM], params[PRE_A4_PARAM], params[PRE_B4_PARAM], inputs[A4_INPUT], inputs[B4_INPUT]);
 
-		setBaseModel(modelMix4);
+		setBaseModelPredicate([](Model* m) { return m == modelMix4; });
 	}
 	virtual ~Mix4x() {
 		for (int i = 0; i < 4; ++i) {

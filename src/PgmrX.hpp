@@ -85,9 +85,8 @@ struct PgmrX : ExpanderModule<PgmrExpanderMessage, ExpandableModule<PgmrExpander
 		_localSteps[2] = new PgmrStep(params[CVA3_PARAM], params[CVB3_PARAM], params[CVC3_PARAM], params[CVD3_PARAM], lights[SELECT3_LIGHT], params[SELECT3_PARAM], inputs[SELECT3_INPUT], outputs[SELECT3_OUTPUT]);
 		_localSteps[3] = new PgmrStep(params[CVA4_PARAM], params[CVB4_PARAM], params[CVC4_PARAM], params[CVD4_PARAM], lights[SELECT4_LIGHT], params[SELECT4_PARAM], inputs[SELECT4_INPUT], outputs[SELECT4_OUTPUT]);
 
-		setBaseModel(modelPgmr);
-		setChainableModel(modelPgmrX);
-		setExpanderModel(modelPgmrX);
+		setBaseModelPredicate([](Model* m) { return m == modelPgmr || m == modelPgmrX; });
+		setExpanderModelPredicate([](Model* m) { return m == modelPgmrX; });
 	}
 	virtual ~PgmrX() {
 		PgmrRegistry::registry().deregisterExpander(_baseID, _position);

@@ -81,15 +81,15 @@ void PEQ6::processAlways(const ProcessArgs& args) {
 }
 
 void PEQ6::processChannel(const ProcessArgs& args, int c) {
-	float outs[6] {};
-	float out = _engines[c]->next(inputs[IN_INPUT].getVoltage(c), outs, _rmsSums);
+	PEQEngine& e = *_engines[c];
+	float out = e.next(inputs[IN_INPUT].getVoltage(c), _rmsSums);
 	outputs[OUT_OUTPUT].setVoltage(out, c);
 	if (expanderConnected()) {
-		std::copy(outs, outs + 6, toExpander()->outs[c]);
+		std::copy(e.outs, e.outs + 6, toExpander()->outs[c]);
 	}
 
 	for (int i = 0; i < 6; ++i) {
-		outputs[EF1_OUTPUT + i].setVoltage(2.0f * _efs[c][i].next(outs[i]), c);
+		outputs[EF1_OUTPUT + i].setVoltage(2.0f * _efs[c][i].next(e.outs[i]), c);
 	}
 }
 

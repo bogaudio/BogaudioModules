@@ -104,7 +104,7 @@ struct PEQ6 : ExpandableModule<PEQ6ExpanderMessage, BGModule> {
 		configParam<ScaledSquaringParamQuantity<(int)PEQChannel::maxFrequency>>(FREQUENCY6_PARAM, 0.0f, 1.0f, 0.3535534f, "Channel 6 frequency", " HZ");
 		configParam(FREQUENCY_CV6_PARAM, -1.0f, 1.0f, 1.0f, "Channel 6 frequency CV attenuation", "%", 0.0f, 100.0f);
 
-		setExpanderModel(modelPEQ6XO);
+		setExpanderModelPredicate([](Model* m) { return m == modelPEQ6XO; });
 	}
 
 	void sampleRateChange() override;

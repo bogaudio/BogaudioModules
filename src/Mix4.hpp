@@ -86,7 +86,7 @@ struct Mix4 : ExpandableModule<Mix4ExpanderMessage, BGModule> {
 
 		sampleRateChange();
 		_rms.setSensitivity(0.05f);
-		setExpanderModel(modelMix4x);
+		setExpanderModelPredicate([](Model* m) { return m == modelMix4x; });
 	}
 	virtual ~Mix4() {
 		for (int i = 0; i < 4; ++i) {

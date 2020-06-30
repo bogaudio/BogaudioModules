@@ -87,22 +87,41 @@ void PEQ14::processAlways(const ProcessArgs& args) {
 }
 
 void PEQ14::processChannel(const ProcessArgs& args, int c) {
-	float outs[14] {};
-	float out = _engines[c]->next(inputs[IN_INPUT].getVoltage(c), outs, _rmsSums);
+	PEQEngine& e = *_engines[c];
+	float out = e.next(inputs[IN_INPUT].getVoltage(c), _rmsSums);
 	outputs[OUT_OUTPUT].setVoltage(out, c);
-	if (expanderConnected()) {
-		std::copy(outs, outs + 14, toExpander()->outs[c]);
-	}
 
+	float levels[14];
 	float oddOut = 0.0f;
 	float evenOut = 0.0f;
 	for (int i = 0; i < 14; ++i) {
-		oddOut += outs[i] * (float)(i % 2 == 0 || (i == 13 && _highMode == MultimodeFilter::HIGHPASS_MODE));
-		evenOut += outs[i] * (float)(i % 2 == 1 || (i == 0 && _lowMode == MultimodeFilter::LOWPASS_MODE));
-		outputs[EF1_OUTPUT + i].setVoltage(2.0f * _efs[c][i].next(outs[i]), c);
+		oddOut += e.outs[i] * (float)(i % 2 == 0 || (i == 13 && _highMode == MultimodeFilter::HIGHPASS_MODE));
+		evenOut += e.outs[i] * (float)(i % 2 == 1 || (i == 0 && _lowMode == MultimodeFilter::LOWPASS_MODE));
+		levels[i] = scaleEF(_efs[c][i].next(e.outs[i]), e.frequencies[i]);
+		outputs[EF1_OUTPUT + i].setVoltage(levels[i], c);
 	}
 	outputs[ODDS_OUTPUT].setVoltage(oddOut, c);
 	outputs[EVENS_OUTPUT].setVoltage(evenOut, c);
+
+	if (expanderConnected()) {
+		auto m = toExpander();
+		m->valid = true;
+		std::copy(e.outs, e.outs + 14, m->outs[c]);
+		std::copy(e.frequencies, e.frequencies + 14, m->frequencies[c]);
+		std::copy(levels, levels + 14, m->levels[c]);
+		m->bandwidths[c] = e.bandwidth;
+		m->lowLP = _lowMode == MultimodeFilter::LOWPASS_MODE;
+		m->highHP = _highMode == MultimodeFilter::HIGHPASS_MODE;
+	}
+}
+
+float PEQ14::scaleEF(float ef, float frequency) {
+	float bandwidth = 2.0 * params[BANDWIDTH_PARAM].getValue();
+	float minf = std::max(0.0f, powf(2.0f, -bandwidth) * frequency);
+	float maxf = std::min(PEQChannel::maxFrequency, powf(2.0f, bandwidth) * frequency);
+	float scale = (maxf - minf) / PEQChannel::maxFrequency;
+	scale = 1.0f / scale;
+	return scale * ef;
 }
 
 void PEQ14::postProcessAlways(const ProcessArgs& args) {
@@ -351,4 +370,4 @@ struct PEQ14Widget : ModuleWidget {
 	}
 };
 
-Model* modelPEQ14 = createModel<PEQ14, PEQ14Widget>("Bogaudio-PEQ14", "PEQ14", "6-channel parametric equalizer / filter bank", "Filter", "Polyphonic");
+Model* modelPEQ14 = createModel<PEQ14, PEQ14Widget>("Bogaudio-PEQ14", "PEQ14", "14-channel parametric equalizer / filter bank", "Filter", "Vocoder", "Polyphonic");

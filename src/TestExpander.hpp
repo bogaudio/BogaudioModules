@@ -36,7 +36,7 @@ struct TestExpanderBase : ExpandableModule<TestExpanderMessage, BGModule> {
 
 	TestExpanderBase() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		setExpanderModel(modelTestExpanderExtension);
+		setExpanderModelPredicate([](Model* m) { return m == modelTestExpanderExtension; });
 	}
 
 	int channels() override;
@@ -65,7 +65,7 @@ struct TestExpanderExtension : ExpanderModule<TestExpanderMessage, BGModule> {
 
 	TestExpanderExtension() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		setBaseModel(modelTestExpanderBase);
+		setBaseModelPredicate([](Model* m) { return m == modelTestExpanderBase; });
 	}
 
 	void processAll(const ProcessArgs& args) override;

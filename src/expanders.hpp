@@ -17,7 +17,7 @@ struct ExpanderMessage {
 
 template<class MSG, class BASE>
 struct ExpandableModule : BASE {
-	Model* _expanderModel = NULL;
+	std::function<bool(Model*)> _expanderModel;
 	MSG _messages[2] {};
 	bool _wasConnected = false;
 
@@ -29,12 +29,12 @@ struct ExpandableModule : BASE {
 		BGModule::rightExpander.consumerMessage = &_messages[1];
 	}
 
-	void setExpanderModel(Model* m) {
-		_expanderModel = m;
+	void setExpanderModelPredicate(std::function<bool(Model*)> p) {
+		_expanderModel = p;
 	}
 
 	bool expanderConnected() {
-		bool connected = BGModule::rightExpander.module && _expanderModel && BGModule::rightExpander.module->model == _expanderModel;
+		bool connected = BGModule::rightExpander.module && _expanderModel && _expanderModel(BGModule::rightExpander.module->model);
 		if (!connected && _wasConnected) {
 			_messages[1] = _messages[0] = MSG();
 		}
@@ -60,8 +60,7 @@ struct ExpandableModule : BASE {
 // An expander must be to the right of the expanded module to work.
 template<class MSG, class BASE>
 struct ExpanderModule : BASE {
-	Model* _baseModel = NULL;
-	Model* _chainableModel = NULL;
+	std::function<bool(Model*)>  _baseModel;
 	MSG _messages[2] {};
 	bool _wasConnected = false;
 
@@ -73,16 +72,12 @@ struct ExpanderModule : BASE {
 		BGModule::leftExpander.consumerMessage = &_messages[1];
 	}
 
-	void setBaseModel(Model* m) {
-		_baseModel = m;
-	}
-
-	void setChainableModel(Model* m) {
-		_chainableModel = m;
+	void setBaseModelPredicate(std::function<bool(Model*)> p) {
+		_baseModel = p;
 	}
 
 	bool baseConnected() {
-		bool connected = BGModule::leftExpander.module && ((_baseModel && BGModule::leftExpander.module->model == _baseModel) || (_chainableModel && BGModule::leftExpander.module->model == _chainableModel));
+		bool connected = BGModule::leftExpander.module && _baseModel && _baseModel(BGModule::leftExpander.module->model);
 		if (!connected && _wasConnected) {
 			_messages[1] = _messages[0] = MSG();
 		}

@@ -101,7 +101,7 @@ struct Pgmr : ExpandableModule<PgmrExpanderMessage, OutputRangeAddressableSequen
 		_localSteps[2] = new PgmrStep(params[CVA3_PARAM], params[CVB3_PARAM], params[CVC3_PARAM], params[CVD3_PARAM], lights[SELECT3_LIGHT], params[SELECT3_PARAM], inputs[SELECT3_INPUT], outputs[SELECT3_OUTPUT]);
 		_localSteps[3] = new PgmrStep(params[CVA4_PARAM], params[CVB4_PARAM], params[CVC4_PARAM], params[CVD4_PARAM], lights[SELECT4_LIGHT], params[SELECT4_PARAM], inputs[SELECT4_INPUT], outputs[SELECT4_OUTPUT]);
 
-		setExpanderModel(modelPgmrX);
+		setExpanderModelPredicate([](Model* m) { return m == modelPgmrX; });
 		_id = PgmrRegistry::registry().registerBase(*this);
 	}
 	virtual ~Pgmr() {
