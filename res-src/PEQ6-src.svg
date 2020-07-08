@@ -157,29 +157,25 @@
   <!-- <polyline points="0,0 315,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 24)" /> -->
   <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(22.5 0)" /> -->
 
-  <g transform="translate(0 20)">
-    <use id="EF_RESPONSE_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 8)" />
-    <use xlink:href="#knobguide-mintick" transform="translate(2.5 -4)" />
-    <text font-size="5pt" letter-spacing="1px" transform="translate(8.5 36)">EF-RSP</text>
+  <g transform="translate(0 40)">
+    <!-- <rect width="37" height="66" fill="#f0f" transform="translate(0 0)" /> -->
+    <use id="FREQUENCY_CV_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 7)" />
+    <use xlink:href="#knobguide-centertick" transform="translate(2.5 -5)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(14 33)">FCV</text>
+    <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(7.5 36)" />
+    <use id="FREQUENCY_CV_INPUT" xlink:href="#input" transform="translate(10.5 39)" />
   </g>
 
-  <g transform="translate(0 58)">
-    <use id="FREQUENCY_CV_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 11)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 -1)" />
-    <text font-size="5pt" letter-spacing="2px" transform="translate(14 37)">FCV</text>
-    <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(7.5 40)" />
-    <use id="FREQUENCY_CV_INPUT" xlink:href="#input" transform="translate(10.5 43)" />
+  <g transform="translate(0 124)">
+    <!-- <rect width="37" height="66" fill="#f0f" transform="translate(0 0)" /> -->
+    <use id="BANDWIDTH_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 5)" />
+    <use xlink:href="#knobguide-mintick" transform="translate(2.5 -7)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(16.5 33)">BW</text>
+    <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(7.5 36)" />
+    <use id="BANDWIDTH_INPUT" xlink:href="#input" transform="translate(10.5 39)" />
   </g>
 
-  <g transform="translate(0 133)">
-    <use id="BANDWIDTH_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 8)" />
-    <use xlink:href="#knobguide-mintick" transform="translate(2.5 -4)" />
-    <text font-size="5pt" letter-spacing="2px" transform="translate(16.5 37)">BW</text>
-    <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(7.5 40)" />
-    <use id="BANDWIDTH_INPUT" xlink:href="#input" transform="translate(10.5 43)" />
-  </g>
-
-  <g transform="translate(2 211)">
+  <g transform="translate(2 209)">
     <!-- <rect width="40" height="23" fill="#f0f" transform="translate(2.5 0)" /> -->
     <text font-size="5pt" letter-spacing="1px" transform="translate(2.5 8.5)">CH1-LP</text>
     <use id="LP_PARAM" xlink:href="#button-small" transform="translate(33.5 1)" />
@@ -187,7 +183,7 @@
     <use id="HP_PARAM" xlink:href="#button-small" transform="translate(33.5 13)" />
   </g>
 
-  <g transform="translate(6 243)">
+  <g transform="translate(6 242)">
     <!-- <rect width="37" height="35" fill="#f0f" transform="translate(0 0)" /> -->
     <text font-size="5pt" letter-spacing="1px" transform="translate(5 34.5) rotate(-90)">FCV RNG</text>
     <use id="FMOD_RELATIVE_LIGHT" xlink:href="#light-small" transform="translate(10 1)" />
@@ -225,8 +221,8 @@
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <use id="FREQUENCY_CV1_INPUT" xlink:href="#input" transform="translate(5 38)" />
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="EF1_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12 105)">EF</text>
+      <use id="OUT1_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
@@ -248,8 +244,8 @@
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <use id="FREQUENCY_CV2_INPUT" xlink:href="#input" transform="translate(5 38)" />
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="EF2_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12 105)">EF</text>
+      <use id="OUT2_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
@@ -271,8 +267,8 @@
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <use id="FREQUENCY_CV3_INPUT" xlink:href="#input" transform="translate(5 38)" />
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="EF3_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12 105)">EF</text>
+      <use id="OUT3_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
@@ -294,8 +290,8 @@
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <use id="FREQUENCY_CV4_INPUT" xlink:href="#input" transform="translate(5 38)" />
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="EF4_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12 105)">EF</text>
+      <use id="OUT4_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
@@ -317,8 +313,8 @@
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <use id="FREQUENCY_CV5_INPUT" xlink:href="#input" transform="translate(5 38)" />
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="EF5_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12 105)">EF</text>
+      <use id="OUT5_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
@@ -340,8 +336,8 @@
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <use id="FREQUENCY_CV6_INPUT" xlink:href="#input" transform="translate(5 38)" />
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="EF6_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12 105)">EF</text>
+      <use id="OUT6_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
+      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 </svg>

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "bogaudio.hpp"
+#include "filters/equalizer.hpp"
 #include "filters/multimode.hpp"
 #include "dsp/signal.hpp"
 
@@ -140,6 +141,14 @@ struct PEQEngine {
 	void setSampleRate(float sr);
 	void modulate();
 	float next(float sample, float* rmsSums);
+};
+
+struct PEQXFBase : BGModule {
+	typedef EQParamQuantity EFGainParamQuantity;
+	static constexpr float efGainMinDecibels = Equalizer::cutDb;
+	static constexpr float efGainMaxDecibels = Equalizer::gainDb;
+
+	float scaleEF(float ef, float frequency, float bandwidth);
 };
 
 } // namespace bogaudio

@@ -58,9 +58,9 @@
 #include "Pan.hpp"
 #include "PEQ.hpp"
 #include "PEQ6.hpp"
-#include "PEQ6XO.hpp"
+#include "PEQ6XF.hpp"
 #include "PEQ14.hpp"
-#include "PEQ14XO.hpp"
+#include "PEQ14XF.hpp"
 #include "PEQ14XR.hpp"
 #include "PEQ14XV.hpp"
 #include "Pgmr.hpp"
@@ -129,11 +129,10 @@ void init(rack::Plugin *p) {
 	p->addModel(modelEQS);
 	p->addModel(modelPEQ);
 	p->addModel(modelPEQ6);
-	p->addModel(modelPEQ6XO);
+	p->addModel(modelPEQ6XF);
 	p->addModel(modelPEQ14);
-	p->addModel(modelPEQ14XO);
+	p->addModel(modelPEQ14XF);
 	p->addModel(modelPEQ14XV);
-	p->addModel(modelPEQ14XR);
 
 	p->addModel(modelDADSRH);
 	p->addModel(modelDADSRHPlus);
@@ -220,6 +219,7 @@ void init(rack::Plugin *p) {
 
 #ifdef EXPERIMENTAL
 	p->addModel(modelLag);
+	p->addModel(modelPEQ14XR);
 #endif
 
 #ifdef TEST

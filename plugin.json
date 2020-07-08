@@ -184,10 +184,10 @@
       ]
     },
     {
-      "slug": "Bogaudio-PEQ6XO",
-      "name": "PEQ6XO",
-      "description": "PEQ6 band outputs expander",
-      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#peq6xo",
+      "slug": "Bogaudio-PEQ6XF",
+      "name": "PEQ6XF",
+      "description": "PEQ6 envelope followers expander",
+      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#peq6xf",
       "tags": [
         "Filter",
         "Expander",
@@ -206,10 +206,10 @@
       ]
     },
     {
-      "slug": "Bogaudio-PEQ14XO",
-      "name": "PEQ14XO",
-      "description": "PEQ14 band outputs expander",
-      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#peq14xo",
+      "slug": "Bogaudio-PEQ14XF",
+      "name": "PEQ14XF",
+      "description": "PEQ14 envelope followers expander",
+      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#peq14xf",
       "tags": [
         "Filter",
         "Expander",
@@ -221,18 +221,6 @@
       "name": "PEQ14XV",
       "description": "PEQ14 vocoder expander",
       "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#peq14xv",
-      "tags": [
-        "Filter",
-        "Vocoder",
-        "Expander",
-        "Polyphonic"
-      ]
-    },
-    {
-      "slug": "Bogaudio-PEQ14XR",
-      "name": "PEQ14XR",
-      "description": "PEQ14 resynthesizer expander",
-      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#peq14xr",
       "tags": [
         "Filter",
         "Vocoder",

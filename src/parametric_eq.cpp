@@ -114,3 +114,15 @@ float PEQEngine::next(float sample, float* rmsSums) {
 	}
 	return _saturator.next(out);
 }
+
+
+float PEQXFBase::scaleEF(float ef, float frequency, float bandwidth) {
+	bandwidth = (bandwidth - MultimodeFilter::minQbw) / (MultimodeFilter::maxQbw - MultimodeFilter::minQbw);
+	bandwidth *= MultimodeFilter::maxBWPitch;
+	float minf = std::max(0.0f, powf(2.0f, -bandwidth) * frequency);
+	float maxf = std::min(PEQChannel::maxFrequency, powf(2.0f, bandwidth) * frequency);
+	float scale = (2.0f * (maxf - minf)) / PEQChannel::maxFrequency;
+	scale = 1.0f / scale;
+	scale = sqrtf(scale); // FIXME: someday prove this is correct.
+	return 2.0f * scale * ef;
+}

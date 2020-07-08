@@ -6,7 +6,6 @@ namespace bogaudio {
 
 struct PEQ6 : ExpandableModule<PEQ6ExpanderMessage, BGModule> {
 	enum ParamsIds {
-		EF_RESPONSE_PARAM,
 		FREQUENCY_CV_PARAM,
 		BANDWIDTH_PARAM,
 		LP_PARAM,
@@ -54,12 +53,12 @@ struct PEQ6 : ExpandableModule<PEQ6ExpanderMessage, BGModule> {
 
 	enum OutputsIds {
 		OUT_OUTPUT,
-		EF1_OUTPUT,
-		EF2_OUTPUT,
-		EF3_OUTPUT,
-		EF4_OUTPUT,
-		EF5_OUTPUT,
-		EF6_OUTPUT,
+		OUT1_OUTPUT,
+		OUT2_OUTPUT,
+		OUT3_OUTPUT,
+		OUT4_OUTPUT,
+		OUT5_OUTPUT,
+		OUT6_OUTPUT,
 		NUM_OUTPUTS
 	};
 
@@ -72,14 +71,12 @@ struct PEQ6 : ExpandableModule<PEQ6ExpanderMessage, BGModule> {
 	PEQEngine* _engines[maxChannels] {};
 	float _rmsSums[6] {};
 	float _rms[6] {};
-	RootMeanSquare _efs[maxChannels][6];
-	float _response = -1.0f;
 	bool _fullFrequencyMode = false;
+	PEQ6ExpanderMessage* _expanderMessage = NULL;
 
 	PEQ6() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		float levelDefault = fabsf(PEQChannel::minDecibels) / (PEQChannel::maxDecibels - PEQChannel::minDecibels);
-		configParam(EF_RESPONSE_PARAM, 0.0f, 1.0f, 0.3f, "Envelope follower response", "%", 0.0f, 100.0f);
 		configParam(FREQUENCY_CV_PARAM, -1.0f, 1.0f, 0.0f, "Global frequency CV attenuation", "%", 0.0f, 100.0f);
 		configParam(BANDWIDTH_PARAM, 0.0f, 1.0f, 0.33f, "Bandwidth", "%", 0.0f, 100.0f);
 		configParam(LP_PARAM, 0.0f, 1.0f, 1.0f, "Channel 1 LP/BP");
@@ -104,7 +101,7 @@ struct PEQ6 : ExpandableModule<PEQ6ExpanderMessage, BGModule> {
 		configParam<ScaledSquaringParamQuantity<(int)PEQChannel::maxFrequency>>(FREQUENCY6_PARAM, 0.0f, 1.0f, 0.3535534f, "Channel 6 frequency", " HZ");
 		configParam(FREQUENCY_CV6_PARAM, -1.0f, 1.0f, 1.0f, "Channel 6 frequency CV attenuation", "%", 0.0f, 100.0f);
 
-		setExpanderModelPredicate([](Model* m) { return m == modelPEQ6XO; });
+		setExpanderModelPredicate([](Model* m) { return m == modelPEQ6XF; });
 	}
 
 	void sampleRateChange() override;
