@@ -48,6 +48,7 @@ struct RunningAverage {
 	float* _buffer = NULL;
 	int _bufferN = 0;
 	int _sumN = 0;
+	float _invSumN = 0.0f;
 	int _leadI = 0;
 	int _trailI = 0;
 	double _sum = 0;
@@ -66,28 +67,6 @@ struct RunningAverage {
 	void setSensitivity(float sensitivity);
 	void reset();
 	virtual float next(float sample);
-};
-
-struct RootMeanSquare : RunningAverage {
-	RootMeanSquare(float sampleRate = 1000.0f, float sensitivity = 1.0f, float maxDelayMS = 300.0f)
-	: RunningAverage(sampleRate, sensitivity, maxDelayMS)
-	{
-	}
-
-	float next(float sample) override;
-};
-
-// Puckette 2007, "Theory and Technique"
-struct PucketteEnvelopeFollower {
-	float _sensitivity = -1.0f;
-	float _lastOutput = 0.0f;
-
-	PucketteEnvelopeFollower(float sensitivity = 1.0f) {
-		setSensitivity(sensitivity);
-	}
-
-	void setSensitivity(float sensitivity);
-	float next(float sample);
 };
 
 struct PositiveZeroCrossing {

@@ -397,8 +397,20 @@ void Test::processChannel(const ProcessArgs& args, int _c) {
 	_rms.setSampleRate(APP->engine->getSampleRate());
 	_rms.setSensitivity(sensitivity);
 	outputs[OUT_OUTPUT].setVoltage(_rms.next(inputs[IN_INPUT].getVoltage()));
-	_pef.setSensitivity(sensitivity);
+	_pef.setParams(APP->engine->getSampleRate(), sensitivity);
 	outputs[OUT2_OUTPUT].setVoltage(_pef.next(inputs[IN_INPUT].getVoltage()));
+
+#elif FASTRMS
+	float sensitivity = params[PARAM2_PARAM].getValue();
+	if (inputs[CV2_INPUT].isConnected()) {
+		sensitivity *= clamp(inputs[CV2_INPUT].getVoltage(), 0.0f, 10.0f) / 10.0f;
+	}
+	_pure.setSampleRate(APP->engine->getSampleRate());
+	_pure.setSensitivity(sensitivity);
+	outputs[OUT_OUTPUT].setVoltage(_pure.next(inputs[IN_INPUT].getVoltage()));
+	_fast.setSampleRate(APP->engine->getSampleRate());
+	_fast.setSensitivity(sensitivity);
+	outputs[OUT2_OUTPUT].setVoltage(_fast.next(inputs[IN_INPUT].getVoltage()));
 
 #elif RAVG
 	if (_reset.process(inputs[CV1_INPUT].getVoltage())) {

@@ -1,7 +1,9 @@
 #pragma once
 
 #include "bogaudio.hpp"
-#include "dsp/signal.hpp"
+#include "follower_base.hpp"
+#include "dsp/filters/equalizer.hpp"
+#include "dsp/filters/utility.hpp"
 
 using namespace bogaudio::dsp;
 
@@ -9,16 +11,16 @@ extern Model* modelFollow;
 
 namespace bogaudio {
 
-struct Follow : BGModule {
+struct Follow : FollowerBase {
 	enum ParamsIds {
 		RESPONSE_PARAM,
-		SCALE_PARAM,
+		GAIN_PARAM,
 		NUM_PARAMS
 	};
 
 	enum InputsIds {
 		RESPONSE_INPUT,
-		SCALE_INPUT,
+		GAIN_INPUT,
 		IN_INPUT,
 		NUM_INPUTS
 	};
@@ -28,21 +30,25 @@ struct Follow : BGModule {
 		NUM_OUTPUTS
 	};
 
-	RootMeanSquare* _rms[maxChannels] {};
+	struct Engine {
+		EnvelopeFollower follower;
+		Amplifier gain;
+	};
+
+	Engine* _engines[maxChannels] {};
+	Saturator _saturator;
 
 	Follow() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
-		configParam(RESPONSE_PARAM, 0.0f, 1.0f, 0.3f, "Sensitivity", "%", 0.0f, 100.0f);
-		configParam(SCALE_PARAM, 0.0f, 1.0f, 1.0f, "Scale", "%", 0.0f, 100.0f);
-
-		sampleRateChange();
+		configParam(RESPONSE_PARAM, 0.0f, 1.0f, 0.3f, "Smoothing", "%", 0.0f, 100.0f);
+		configParam<EFGainParamQuantity>(GAIN_PARAM, -1.0f, 1.0f, 0.0f, "Gain", " dB");
 	}
 
 	bool active() override;
 	int channels() override;
 	void addChannel(int c) override;
 	void removeChannel(int c) override;
-	void sampleRateChange() override;
+	void modulateChannel(int c) override;
 	void processChannel(const ProcessArgs& args, int c) override;
 };
 

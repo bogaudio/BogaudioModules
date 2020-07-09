@@ -1,8 +1,10 @@
 #pragma once
 
 #include "bogaudio.hpp"
-#include "filters/equalizer.hpp"
-#include "filters/multimode.hpp"
+#include "follower_base.hpp"
+#include "dsp/filters/equalizer.hpp"
+#include "dsp/filters/multimode.hpp"
+#include "dsp/filters/utility.hpp"
 #include "dsp/signal.hpp"
 
 using namespace bogaudio::dsp;
@@ -143,11 +145,7 @@ struct PEQEngine {
 	float next(float sample, float* rmsSums);
 };
 
-struct PEQXFBase : BGModule {
-	typedef EQParamQuantity EFGainParamQuantity;
-	static constexpr float efGainMinDecibels = Equalizer::cutDb;
-	static constexpr float efGainMaxDecibels = Equalizer::gainDb;
-
+struct PEQXFBase : FollowerBase {
 	float scaleEF(float ef, float frequency, float bandwidth);
 };
 

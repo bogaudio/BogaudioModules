@@ -49,7 +49,7 @@
 
     <symbol id="knobguide-scale" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
-        <text font-size="5.0pt" transform="rotate(-240) translate(20 0) rotate(240) translate(-2 2)">0</text>
+        <text font-size="8pt" transform="rotate(-240) translate(20 0) rotate(240) translate(-2 3)">-</text>
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-210) translate(17 0)" />
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-180) translate(17 0)" />
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-150) translate(17 0)" />
@@ -59,7 +59,7 @@
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-30) translate(17 0)" />
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(0) translate(17 0)" />
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(30) translate(17 0)" />
-        <text font-size="5.0pt" transform="rotate(60) translate(20 0) rotate(-60) translate(-2 2)">1</text>
+        <text font-size="6pt" transform="rotate(60) translate(20 0) rotate(-60) translate(-2 2)">+</text>
       </g>
     </symbol>
 
@@ -105,12 +105,12 @@
   </g>
 
   <g transform="translate(0 131)">
-    <text font-size="6pt" letter-spacing="1px" transform="translate(8 0)">SCALE</text>
-    <use id="SCALE_PARAM" xlink:href="#knob" transform="translate(0 3)" />
+    <text font-size="6pt" letter-spacing="1px" transform="translate(11.5 0)">GAIN</text>
+    <use id="GAIN_PARAM" xlink:href="#knob" transform="translate(0 3)" />
     <use xlink:href="#knobguide-scale" transform="scale(1) translate(0 3)" />
     <g transform="translate(5.5 49)">
       <rect width="34" height="38" rx="5" fill="#fafafa" />
-      <use id="SCALE_INPUT" xlink:href="#input" transform="translate(5 3)" />
+      <use id="GAIN_INPUT" xlink:href="#input" transform="translate(5 3)" />
       <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
     </g>
   </g>

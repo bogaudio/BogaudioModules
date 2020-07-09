@@ -26,7 +26,7 @@ struct PEQ6XF : ExpanderModule<PEQ6ExpanderMessage, PEQXFBase> {
 	};
 
 	struct Engine {
-		RootMeanSquare efs[6];
+		EnvelopeFollower efs[6];
 	};
 
 	Engine* _engines[maxChannels] {};
@@ -37,13 +37,12 @@ struct PEQ6XF : ExpanderModule<PEQ6ExpanderMessage, PEQXFBase> {
 
 	PEQ6XF() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
-		configParam(DAMP_PARAM, 0.0f, 1.0f, 0.3f, "Envelope follower response", "%", 0.0f, 100.0f);
+		configParam(DAMP_PARAM, 0.0f, 1.0f, 0.3f, "Envelope follower smoothing", "%", 0.0f, 100.0f);
 		configParam<EFGainParamQuantity>(GAIN_PARAM, -1.0f, 1.0f, 0.0f, "Envelope follower gain", " dB");
 
 		setBaseModelPredicate([](Model* m) { return m == modelPEQ6; });
 	}
 
-	void sampleRateChange() override;
 	void addChannel(int c) override;
 	void removeChannel(int c) override;
 	void modulate() override;

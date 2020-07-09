@@ -1,21 +1,8 @@
 
 #include "PEQ6XF.hpp"
 
-void PEQ6XF::sampleRateChange() {
-	float sr = APP->engine->getSampleRate();
-	for (int c = 0; c < _channels; ++c) {
-		for (int i = 0; i < 6; ++i) {
-			_engines[c]->efs[i].setSampleRate(sr);
-		}
-	}
-}
-
 void PEQ6XF::addChannel(int c) {
 	_engines[c] = new Engine();
-	float sr = APP->engine->getSampleRate();
-	for (int i = 0; i < 6; ++i) {
-		_engines[c]->efs[i].setSampleRate(sr);
-	}
 }
 
 void PEQ6XF::removeChannel(int c) {
@@ -24,24 +11,18 @@ void PEQ6XF::removeChannel(int c) {
 }
 
 void PEQ6XF::modulate() {
-	float response = params[DAMP_PARAM].getValue();
+	float sr = APP->engine->getSampleRate();
+	float response = sensitivity(params[DAMP_PARAM], NULL, 0);
 	if (_response != response) {
 		_response = response;
 		for (int c = 0; c < _channels; ++c) {
 			for (int i = 0; i < 6; ++i) {
-				_engines[c]->efs[i].setSensitivity(_response);
+				_engines[c]->efs[i].setParams(sr, _response);
 			}
 		}
 	}
 
-	float db = clamp(params[GAIN_PARAM].getValue(), -1.0f, 1.0f);
-	if (db < 0.0f) {
-		db = -db * efGainMinDecibels;
-	}
-	else {
-		db *= std::min(12.0f, efGainMaxDecibels);
-	}
-	_gain.setLevel(db);
+	_gain.setLevel(gain(params[GAIN_PARAM], NULL, 0));
 }
 
 void PEQ6XF::processAll(const ProcessArgs& args) {

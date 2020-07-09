@@ -1,21 +1,8 @@
 
 #include "PEQ14XF.hpp"
 
-void PEQ14XF::sampleRateChange() {
-	float sr = APP->engine->getSampleRate();
-	for (int c = 0; c < _channels; ++c) {
-		for (int i = 0; i < 14; ++i) {
-			_engines[c]->efs[i].setSampleRate(sr);
-		}
-	}
-}
-
 void PEQ14XF::addChannel(int c) {
 	_engines[c] = new Engine();
-	float sr = APP->engine->getSampleRate();
-	for (int i = 0; i < 14; ++i) {
-		_engines[c]->efs[i].setSampleRate(sr);
-	}
 }
 
 void PEQ14XF::removeChannel(int c) {
@@ -26,28 +13,16 @@ void PEQ14XF::removeChannel(int c) {
 void PEQ14XF::modulateChannel(int c) {
 	Engine& e = *_engines[c];
 
-	float response = params[DAMP_PARAM].getValue();
-	if (inputs[DAMP_INPUT].isConnected()) {
-		response *= clamp(inputs[DAMP_INPUT].getPolyVoltage(c) / 10.f, 0.0f, 1.0f);
-	}
+	float sr = APP->engine->getSampleRate();
+	float response = sensitivity(params[DAMP_PARAM], &inputs[DAMP_INPUT], c);
 	if (e.response != response) {
 		e.response = response;
 		for (int i = 0; i < 14; ++i) {
-			_engines[c]->efs[i].setSensitivity(e.response);
+			e.efs[i].setParams(sr, e.response);
 		}
 	}
 
-	float db = clamp(params[GAIN_PARAM].getValue(), -1.0f, 1.0f);
-	if (inputs[GAIN_INPUT].isConnected()) {
-		db *= clamp(inputs[GAIN_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
-	}
-	if (db < 0.0f) {
-		db = -db * efGainMinDecibels;
-	}
-	else {
-		db *= std::min(12.0f, efGainMaxDecibels);
-	}
-	e.gain.setLevel(db);
+	e.gain.setLevel(gain(params[GAIN_PARAM], &inputs[GAIN_INPUT], c));
 }
 
 void PEQ14XF::processAll(const ProcessArgs& args) {

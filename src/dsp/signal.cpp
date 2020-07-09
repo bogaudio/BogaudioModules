@@ -98,6 +98,7 @@ void RunningAverage::setSensitivity(float sensitivity) {
 		_trailI = _bufferN - _sumN;
 		_sum = 0.0;
 	}
+	_invSumN = 1.0f / (float)_sumN;
 }
 
 void RunningAverage::reset() {
@@ -112,30 +113,7 @@ float RunningAverage::next(float sample) {
 	_sum += _buffer[_leadI] = sample;
 	++_leadI;
 	_leadI %= _bufferN;
-	return (float)_sum / (float)_sumN;
-}
-
-
-float RootMeanSquare::next(float sample) {
-	float a = RunningAverage::next(sample * sample);
-	if (_sum <= 0.0) {
-		return 0.0f;
-	}
-	return sqrtf(a);
-}
-
-
-void PucketteEnvelopeFollower::setSensitivity(float sensitivity) {
-	assert(sensitivity >= 0.0f);
-	assert(sensitivity <= 1.0f);
-	_sensitivity = std::min(sensitivity, 0.97f);
-}
-
-float PucketteEnvelopeFollower::next(float sample) {
-	const float norm = 5.0f;
-	sample /= norm;
-	_lastOutput = _sensitivity * _lastOutput + (1 - _sensitivity) * sample * sample;
-	return _lastOutput * norm;
+	return (float)_sum * _invSumN;
 }
 
 

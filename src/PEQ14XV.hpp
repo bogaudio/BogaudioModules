@@ -34,20 +34,17 @@ struct PEQ14XV : ExpanderModule<PEQ14ExpanderMessage, ExpandableModule<PEQ14Expa
 	struct Engine {
 		MultimodeFilter* filters[14] {};
 		Amplifier amplifiers[14];
-		RootMeanSquare efs[14];
+		EnvelopeFollower efs[14];
 		float response = -1.0f;
 		Amplifier efGain;
 		float transposeSemitones = 0.0f;
 
 		Engine();
 		~Engine();
-
-		void setSampleRate(float sr);
 	};
 
 	static constexpr float maxOutputGain = 24.0f;
 
-	float _sampleRate = 1000.0f;
 	Engine* _engines[maxChannels] {};
 	Amplifier _outputGain;
 	Amplifier _band14Mix;
@@ -58,7 +55,7 @@ struct PEQ14XV : ExpanderModule<PEQ14ExpanderMessage, ExpandableModule<PEQ14Expa
 
 	PEQ14XV() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
-		configParam(EF_DAMP_PARAM, 0.0f, 1.0f, 0.3f, "Envelope follower response", "%", 0.0f, 100.0f);
+		configParam(EF_DAMP_PARAM, 0.0f, 1.0f, 0.3f, "Envelope follower smoothing", "%", 0.0f, 100.0f);
 		configParam<EFGainParamQuantity>(EF_GAIN_PARAM, -1.0f, 1.0f, 0.0f, "Envelope follower gain", " dB");
 		configParam(TRANSPOSE_PARAM, -1.0f, 1.0f, 0.0f, "Transpose", " semitones", 0.0f, 24.0f);
 		configParam(OUTPUT_GAIN_PARAM, 0.0f, 1.0f, 0.0f, "Output gain", " dB", 0.0f, maxOutputGain);
@@ -70,7 +67,6 @@ struct PEQ14XV : ExpanderModule<PEQ14ExpanderMessage, ExpandableModule<PEQ14Expa
 		setExpanderModelPredicate([](Model* m) { return m == modelPEQ14XF || m == modelPEQ14XR || m == modelPEQ14XV; });
 	}
 
-	void sampleRateChange() override;
 	void addChannel(int c) override;
 	void removeChannel(int c) override;
 	void modulate() override;

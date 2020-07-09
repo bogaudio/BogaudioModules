@@ -4,6 +4,8 @@
 #include "dsp/noise.hpp"
 #include "dsp/filters/multimode.hpp"
 #include "dsp/filters/resample.hpp"
+#include "dsp/filters/utility.hpp"
+#include "dsp/oscillator.hpp"
 // #include "dsp/decimator.hpp" // rack
 
 using namespace bogaudio::dsp;
@@ -192,3 +194,88 @@ static void BM_Filter_BiquadBank16_2Pole(benchmark::State& state) {
 	}
 }
 BENCHMARK(BM_Filter_BiquadBank16_2Pole);
+
+static void BM_Filter_RMS_Short(benchmark::State& state) {
+	SineOscillator o(500.0, 100.0);
+	const int n = 256;
+	float buf[n];
+	for (int i = 0; i < n; ++i) {
+		buf[i] = o.next() * 5.0f;
+	}
+	RootMeanSquare rms(44100.0, 0.05);
+	int i = 0;
+	for (auto _ : state) {
+		i = ++i % n;
+		rms.next(buf[i]);
+	}
+}
+BENCHMARK(BM_Filter_RMS_Short);
+
+static void BM_Filter_RMS_Long(benchmark::State& state) {
+	SineOscillator o(500.0, 100.0);
+	const int n = 256;
+	float buf[n];
+	for (int i = 0; i < n; ++i) {
+		buf[i] = o.next() * 5.0f;
+	}
+	RootMeanSquare rms(44100.0, 1.0);
+	int i = 0;
+	for (auto _ : state) {
+		i = ++i % n;
+		rms.next(buf[i]);
+	}
+}
+BENCHMARK(BM_Filter_RMS_Long);
+
+static void BM_Filter_RMS_Modulating(benchmark::State& state) {
+	SineOscillator o(500.0, 100.0);
+	const int n = 256;
+	float buf[n];
+	for (int i = 0; i < n; ++i) {
+		buf[i] = o.next() * 5.0f;
+	}
+	std::minstd_rand g;
+	std::uniform_real_distribution<float> r(0.0f, 1.0f);
+	RootMeanSquare rms(44100.0, 1.0);
+	int i = 0;
+	for (auto _ : state) {
+		i = ++i % n;
+		if (i % 50 == 0) {
+			rms.setSensitivity(r(g));
+		}
+		rms.next(buf[i]);
+	}
+}
+BENCHMARK(BM_Filter_RMS_Modulating);
+
+static void BM_Filter_PureRMS_Short(benchmark::State& state) {
+	SineOscillator o(500.0, 100.0);
+	const int n = 256;
+	float buf[n];
+	for (int i = 0; i < n; ++i) {
+		buf[i] = o.next() * 5.0f;
+	}
+	PureRootMeanSquare rms(44100.0, 0.05);
+	int i = 0;
+	for (auto _ : state) {
+		i = ++i % n;
+		rms.next(buf[i]);
+	}
+}
+BENCHMARK(BM_Filter_PureRMS_Short);
+
+static void BM_Filter_PucketteEnvelopeFollower(benchmark::State& state) {
+	SineOscillator o(500.0, 100.0);
+	const int n = 256;
+	float buf[n];
+	for (int i = 0; i < n; ++i) {
+		buf[i] = o.next() * 5.0f;
+	}
+	PucketteEnvelopeFollower pef;
+	int i = 0;
+	for (auto _ : state) {
+		i = ++i % n;
+		pef.next(buf[i]);
+	}
+}
+BENCHMARK(BM_Filter_PucketteEnvelopeFollower);

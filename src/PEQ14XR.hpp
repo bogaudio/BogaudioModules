@@ -40,7 +40,7 @@ struct PEQ14XR : ExpanderModule<PEQ14ExpanderMessage, ExpandableModule<PEQ14Expa
 
 		BandOscillator oscillators[14];
 		Amplifier amplifiers[14];
-		RootMeanSquare efs[14];
+		EnvelopeFollower efs[14];
 		float response = -1.0f;
 		Amplifier efGain;
 
@@ -53,7 +53,7 @@ struct PEQ14XR : ExpanderModule<PEQ14ExpanderMessage, ExpandableModule<PEQ14Expa
 
 	PEQ14XR() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
-		configParam(DAMP_PARAM, 0.0f, 1.0f, 0.3f, "Envelope follower response", "%", 0.0f, 100.0f);
+		configParam(DAMP_PARAM, 0.0f, 1.0f, 0.3f, "Envelope follower smoothing", "%", 0.0f, 100.0f);
 		configParam<EFGainParamQuantity>(GAIN_PARAM, -1.0f, 1.0f, 0.0f, "Envelope follower gain", " dB");
 
 		setBaseModelPredicate([](Model* m) { return m == modelPEQ14 || m == modelPEQ14XF || m == modelPEQ14XR || m == modelPEQ14XV; });

@@ -16,22 +16,8 @@ PEQ14XV::Engine::~Engine() {
 	}
 }
 
-void PEQ14XV::Engine::setSampleRate(float sr) {
-	for (int i = 0; i < 14; ++i) {
-		efs[i].setSampleRate(sr);
-	}
-}
-
-void PEQ14XV::sampleRateChange() {
-	_sampleRate = APP->engine->getSampleRate();
-	for (int c = 0; c < _channels; ++c) {
-		_engines[c]->setSampleRate(_sampleRate);
-	}
-}
-
 void PEQ14XV::addChannel(int c) {
 	_engines[c] = new Engine();
-	_engines[c]->setSampleRate(APP->engine->getSampleRate());
 }
 
 void PEQ14XV::removeChannel(int c) {
@@ -56,28 +42,16 @@ void PEQ14XV::modulate() {
 void PEQ14XV::modulateChannel(int c) {
 	Engine& e = *_engines[c];
 
-	float response = params[EF_DAMP_PARAM].getValue();
-	if (inputs[EF_DAMP_INPUT].isConnected()) {
-		response *= clamp(inputs[EF_DAMP_INPUT].getPolyVoltage(c) / 10.f, 0.0f, 1.0f);
-	}
+	float sr = APP->engine->getSampleRate();
+	float response = sensitivity(params[EF_DAMP_PARAM], &inputs[EF_DAMP_INPUT], c);
 	if (e.response != response) {
 		e.response = response;
 		for (int i = 0; i < 14; ++i) {
-			_engines[c]->efs[i].setSensitivity(e.response);
+			e.efs[i].setParams(sr, e.response);
 		}
 	}
 
-	float db = clamp(params[EF_GAIN_PARAM].getValue(), -1.0f, 1.0f);
-	if (inputs[EF_GAIN_INPUT].isConnected()) {
-		db *= clamp(inputs[EF_GAIN_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
-	}
-	if (db < 0.0f) {
-		db = -db * efGainMinDecibels;
-	}
-	else {
-		db *= std::min(12.0f, efGainMaxDecibels);
-	}
-	e.efGain.setLevel(db);
+	e.efGain.setLevel(gain(params[EF_GAIN_PARAM], &inputs[EF_GAIN_INPUT], c));
 
 	float transpose = clamp(params[TRANSPOSE_PARAM].getValue(), -1.0f, 1.0f);
 	if (inputs[TRANSPOSE_INPUT].isConnected()) {
@@ -139,7 +113,7 @@ void PEQ14XV::processChannel(const ProcessArgs& args, int c) {
 			}
 
 			e.filters[i]->setParams(
-				_sampleRate,
+				APP->engine->getSampleRate(),
 				MultimodeFilter::BUTTERWORTH_TYPE,
 				poles,
 				mode,

@@ -36,7 +36,7 @@ struct PEQ14XF : ExpanderModule<PEQ14ExpanderMessage, ExpandableModule<PEQ14Expa
 	};
 
 	struct Engine {
-		RootMeanSquare efs[14];
+		EnvelopeFollower efs[14];
 		float response = -1.0f;
 		Amplifier gain;
 	};
@@ -47,14 +47,13 @@ struct PEQ14XF : ExpanderModule<PEQ14ExpanderMessage, ExpandableModule<PEQ14Expa
 
 	PEQ14XF() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
-		configParam(DAMP_PARAM, 0.0f, 1.0f, 0.3f, "Envelope follower response", "%", 0.0f, 100.0f);
+		configParam(DAMP_PARAM, 0.0f, 1.0f, 0.3f, "Envelope follower smoothing", "%", 0.0f, 100.0f);
 		configParam<EFGainParamQuantity>(GAIN_PARAM, -1.0f, 1.0f, 0.0f, "Envelope follower gain", " dB");
 
 		setBaseModelPredicate([](Model* m) { return m == modelPEQ14 || m == modelPEQ14XF || m == modelPEQ14XR  || m == modelPEQ14XV; });
 		setExpanderModelPredicate([](Model* m) { return m == modelPEQ14XF || m == modelPEQ14XR || m == modelPEQ14XV; });
 	}
 
-	void sampleRateChange() override;
 	void addChannel(int c) override;
 	void removeChannel(int c) override;
 	void modulateChannel(int c) override;

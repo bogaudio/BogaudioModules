@@ -4,7 +4,7 @@
 
 extern Model* modelTest;
 
-#define LPF 1
+//#define LPF 1
 // #define LPFNOISE 1
 // #define SINE 1
 // #define SQUARE 1
@@ -24,7 +24,8 @@ extern Model* modelTest;
 // #define EG 1
 // #define TABLES 1
 // #define SLEW 1
-// #define RMS 1
+#define RMS 1
+// #define FASTRMS 1
 // #define RAVG 1
 // #define SATURATOR 1
 // #define BROWNIAN 1
@@ -84,6 +85,10 @@ extern Model* modelTest;
 #include "dsp/signal.hpp"
 #elif RMS
 #include "dsp/signal.hpp"
+#include "dsp/filters/utility.hpp"
+#elif FASTRMS
+#include "dsp/signal.hpp"
+#include "dsp/filters/utility.hpp"
 #elif RAVG
 #include "dsp/signal.hpp"
 #elif SATURATOR
@@ -215,6 +220,9 @@ struct Test : BGModule {
 #elif RMS
 	RootMeanSquare _rms;
 	PucketteEnvelopeFollower _pef;
+#elif FASTRMS
+	PureRootMeanSquare _pure;
+	FastRootMeanSquare _fast;
 #elif RAVG
 	RunningAverage _average;
 	Trigger _reset;
