@@ -1,34 +1,67 @@
 
 #include "FFB.hpp"
+#include "dsp/pitch.hpp"
 
 void FFB::Engine::sampleRateChange() {
 	float sr = APP->engine->getSampleRate();
 	for (int i = 0; i < 14; i++) {
 		_slews[i].setParams(sr, 1.0f, 1.0f);
 	}
+	configureBands(sr, _semitonesOffset);
+}
 
-	auto bp = [this, sr](int i, float cutoff) {
+void FFB::Engine::setSemitonesOffset(float semitonesOffset) {
+	if (_semitonesOffset != semitonesOffset) {
+		_semitonesOffset = semitonesOffset;
+		configureBands(APP->engine->getSampleRate(), _semitonesOffset);
+	}
+}
+
+void FFB::Engine::configureBands(float sr, float semitonesOffset) {
+	_lowPass.setParams(
+		sr,
+		MultimodeFilter::BUTTERWORTH_TYPE,
+		12.0f,
+		MultimodeFilter::LOWPASS_MODE,
+		bandFrequency(0, semitonesOffset),
+		0.0f
+	);
+	for (int i = 0; i < 12; ++i) {
 		_bandPasses[i].setParams(
 			sr,
-			cutoff,
+			bandFrequency(i + 1, semitonesOffset),
 			0.22f / MultimodeFilter::maxBWPitch,
 			MultimodeFilter::PITCH_BANDWIDTH_MODE
 		);
+	}
+	_highPass.setParams(
+		sr,
+		MultimodeFilter::BUTTERWORTH_TYPE,
+		12.0f,
+		MultimodeFilter::HIGHPASS_MODE,
+		bandFrequency(13, semitonesOffset),
+		0.0f
+	);
+}
+
+float FFB::Engine::bandFrequency(int i, float semitonesOffset) {
+	static const float fs[14] = {
+		95.0f,
+		125.0f,
+		175.0f,
+		250.0f,
+		350.0f,
+		500.0f,
+		700.0f,
+		1000.0f,
+		1400.0f,
+		2000.0f,
+		2800.0f,
+		4000.0f,
+		5600.0f,
+		6900.0f
 	};
-	_lowPass.setParams(sr, MultimodeFilter::BUTTERWORTH_TYPE, 12.0f, MultimodeFilter::LOWPASS_MODE, 95.0f, 0.0f);
-	bp(0, 125.0f);
-	bp(1, 175.0f);
-	bp(2, 250.0f);
-	bp(3, 350.0f);
-	bp(4, 500.0f);
-	bp(5, 700.0f);
-	bp(6, 1000.0f);
-	bp(7, 1400.0f);
-	bp(8, 2000.0f);
-	bp(9, 2800.0f);
-	bp(10, 4000.0f);
-	bp(11, 5600.0f);
-	_highPass.setParams(sr, MultimodeFilter::BUTTERWORTH_TYPE, 12.0f, MultimodeFilter::HIGHPASS_MODE, 6900.0f, 0.0f);
+	return semitoneToFrequency(frequencyToSemitone(fs[i]) + semitonesOffset);
 }
 
 void FFB::sampleRateChange() {
@@ -63,18 +96,19 @@ void FFB::modulate() {
 void FFB::modulateChannel(int c) {
 	Engine& e = *_engines[c];
 
-	float cv = 1.0f;
-	if (inputs[CV_INPUT].isConnected()) {
-		cv = clamp(inputs[CV_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
-		cv *= clamp(params[CV_PARAM].getValue(), 0.0f, 1.0f);
-	}
-
 	for (int i = 0; i < 14; ++i) {
-		float level = e._slews[i].next(_levels[i] * cv);
+		float level = e._slews[i].next(_levels[i]);
 		level = 1.0f - level;
 		level *= Amplifier::minDecibels;
 		e._amplifiers[i].setLevel(level);
 	}
+
+	float semitones = clamp(params[CV_PARAM].getValue(), -1.0f, 1.0f);
+	if (inputs[CV_INPUT].isConnected()) {
+		semitones *= clamp(inputs[CV_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
+	}
+	semitones *= 12.0f;
+	e.setSemitonesOffset(semitones);
 }
 
 void FFB::processChannel(const ProcessArgs& args, int c) {

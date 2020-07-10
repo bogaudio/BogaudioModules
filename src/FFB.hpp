@@ -52,12 +52,17 @@ struct FFB : BGModule {
 		MultimodeFilter8 _highPass;
 		Amplifier _amplifiers[14];
 		bogaudio::dsp::SlewLimiter _slews[14];
+		float _semitonesOffset = 0.0f;
+		float _bandFrequencies[14] {};
 
 		Engine() {
 			sampleRateChange();
 		}
 
 		void sampleRateChange();
+		void setSemitonesOffset(float semitonesOffset);
+		void configureBands(float sr, float semitonesOffset);
+		float bandFrequency(int i, float semitonesOffset);
 	};
 
 	Engine* _engines[maxChannels] {};
@@ -78,7 +83,7 @@ struct FFB : BGModule {
 		configParam<AmplifierParamQuantity>(BAND_8_PARAM, 0.0f, 1.0f, 1.0f, "Band 8 level");
 		configParam<AmplifierParamQuantity>(BAND_12_PARAM, 0.0f, 1.0f, 1.0f, "Band 12 level");
 		configParam<AmplifierParamQuantity>(LOWPASS_PARAM, 0.0f, 1.0f, 1.0f, "Lowpass level");
-		configParam(CV_PARAM, 0.0f, 1.0f, 1.0f, "Level CV", "%", 0.0f, 100.0f);
+		configParam(CV_PARAM, -1.0f, 1.0f, 0.0f, "Frequency offset", " semitones", 0.0f, 12.0f);
 		configParam<AmplifierParamQuantity>(HIGHPASS_PARAM, 0.0f, 1.0f, 1.0f, "Highpass level");
 	}
 

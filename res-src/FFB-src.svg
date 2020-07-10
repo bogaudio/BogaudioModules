@@ -55,14 +55,14 @@
       </g>
     </symbol>
 
-    <symbol id="knobguide-mintick" viewBox="0 0 40px 40px">
+    <symbol id="knobguide-centertick" viewBox="0 0 40px 40px">
       <g transform="translate(20 20)">
-        <g transform="rotate(-240) translate(10 0)">
+        <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1" stroke="#333" />
         </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)" />
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)" />
         <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" />
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)" />
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)" />
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" />
       </g>
     </symbol>
@@ -183,9 +183,9 @@
     <!-- <use id="LOWWPASS_LIGHT" xlink:href="#light-small" transform="translate(1 8.5)" /> -->
   </g>
   <g transform="translate(41 228)">
-    <text font-size="6pt" letter-spacing="2px" transform="translate(12.5 6)">CV</text>
+    <text font-size="6pt" letter-spacing="2px" transform="translate(6 6)">FREQ</text>
     <use id="CV_PARAM" xlink:href="#knob-smallest" transform="translate(11 18.5)" />
-    <use xlink:href="#knobguide-mintick" transform="translate(-1 6.5)" />
+    <use xlink:href="#knobguide-centertick" transform="translate(-1 6.5)" />
   </g>
   <g transform="translate(80.5 228)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(12.5 6)">HP</text>
@@ -203,7 +203,7 @@
     </g>
     <g transform="translate(32 0)">
       <use id="CV_INPUT" xlink:href="#input" transform="translate(3 4)" />
-      <text font-size="6pt" letter-spacing="2px" transform="translate(8.5 39)">CV</text>
+      <text font-size="6pt" letter-spacing="2px" transform="translate(5.5 39)">FCV</text>
     </g>
   </g>
   <g transform="translate(13 320)">
