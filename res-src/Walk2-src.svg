@@ -83,6 +83,16 @@
       </g>
     </symbol>
 
+    <symbol id="button-small" viewBox="0 0 9px 9px">
+      <g transform="translate(4.5 4.5)">
+        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00" />
+      </g>
+    </symbol>
+
+    <symbol id="light-small" viewBox="0 0 6.4px 6.4px">
+      <rect width="6.4" height="6.4" fill="#0f0" />
+    </symbol>
+
     <symbol id="input" viewBox="0 0 24px 24px">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0" />
@@ -206,13 +216,30 @@
     <text font-size="6pt" letter-spacing="1.5px" transform="translate(37 75)">OUT</text>
   </g>
 
-  <g transform="translate(74.5 300)">
+  <g transform="translate(74.5 288)">
     <rect width="61" height="40" rx="5" fill="#fafafa" />
     <rect width="22" height="40" rx="5" fill="#bbb" transform="translate(40)" />
     <rect width="20" height="40" fill="#bbb" transform="translate(31)" />
     <use id="JUMP_INPUT" xlink:href="#input" transform="translate(3.5 3)" />
     <use id="DISTANCE_OUTPUT" xlink:href="#output" transform="translate(34.5 3)" />
-    <text font-size="6pt" letter-spacing="1.5px" transform="translate(2 36)">JUMP</text>
+    <text font-size="6pt" letter-spacing="1.5px" transform="translate(4 36)">TRIG</text>
     <text font-size="6pt" letter-spacing="1.5px" transform="translate(35.5 36)">DIST</text>
+  </g>
+
+  <g transform="translate(96 332)">
+    <text font-size="6pt" letter-spacing="1px" transform="translate(-10 24.5) rotate(-90)">TRIG</text>
+    <g transform="translate(2 0)">
+      <use id="JUMP_LIGHT" xlink:href="#light-small" transform="translate(-7.5 1)" />
+      <text font-size="5pt" letter-spacing="1px" transform="translate(1 6.7)">JUMP</text>
+    </g>
+    <g transform="translate(2 10)">
+      <use id="SAMPLEHOLD_LIGHT" xlink:href="#light-small" transform="translate(-7.5 1)" />
+      <text font-size="5pt" letter-spacing="0.5px" transform="translate(1 6.7)">S&amp;H</text>
+    </g>
+    <g transform="translate(2 20)">
+      <use id="TRACKHOLD_LIGHT" xlink:href="#light-small" transform="translate(-7.5 1)" />
+      <text font-size="5pt" letter-spacing="1px" transform="translate(1 6.7)">T&amp;H</text>
+    </g>
+    <use id="JUMP_MODE_PARAM" xlink:href="#button-small" transform="translate(26 9.7)" />
   </g>
 </svg>

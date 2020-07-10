@@ -6,6 +6,7 @@
 #include "dsp/buffer.hpp"
 #include "dsp/noise.hpp"
 #include "dsp/signal.hpp"
+#include "Walk.hpp"
 
 using namespace bogaudio::dsp;
 
@@ -21,6 +22,7 @@ struct Walk2 : BGModule {
 		OFFSET_Y_PARAM,
 		SCALE_X_PARAM,
 		SCALE_Y_PARAM,
+		JUMP_MODE_PARAM,
 		NUM_PARAMS
 	};
 
@@ -42,6 +44,13 @@ struct Walk2 : BGModule {
 		NUM_OUTPUTS
 	};
 
+	enum LightsIds {
+		JUMP_LIGHT,
+		SAMPLEHOLD_LIGHT,
+		TRACKHOLD_LIGHT,
+		NUM_LIGHTS
+	};
+
 	const float historySeconds = 1.0f;
 	const int historyPoints = 100;
 	int _historySteps;
@@ -54,6 +63,8 @@ struct Walk2 : BGModule {
 	Trigger _jumpTrigger;
 	HistoryBuffer<float> _outsX, _outsY;
 	std::atomic<Vec*> _jumpTo;
+	Walk::JumpMode _jumpMode = Walk::JUMP_JUMPMODE;
+	float _lastOutX = 0.0f, _lastOutY = 0.0f;
 
 	enum TraceColor {
 		GREEN_TRACE_COLOR,
@@ -70,13 +81,14 @@ struct Walk2 : BGModule {
 	, _outsY(historyPoints, 0.0f)
 	, _jumpTo(NULL)
 	{
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(RATE_X_PARAM, 0.0f, 1.0f, 0.1f, "Rate X", "%", 0.0f, 100.0f);
 		configParam(RATE_Y_PARAM, 0.0f, 1.0f, 0.1f, "Rate Y", "%", 0.0f, 100.0f);
 		configParam(OFFSET_X_PARAM, -1.0f, 1.0f, 0.0f, "Offset X", " V", 0.0f, 5.0f);
 		configParam(OFFSET_Y_PARAM, -1.0f, 1.0f, 0.0f, "Offset Y", " V", 0.0f, 5.0f);
 		configParam(SCALE_X_PARAM, 0.0f, 1.0f, 1.0f, "Scale X", "%", 0.0f, 100.0f);
 		configParam(SCALE_Y_PARAM, 0.0f, 1.0f, 1.0f, "Scale Y", "%", 0.0f, 100.0f);
+		configParam(JUMP_MODE_PARAM, 0.0f, 2.0f, 0.0f, "TRIG action");
 	}
 
 	void reset() override;
@@ -84,6 +96,7 @@ struct Walk2 : BGModule {
 	json_t* dataToJson() override;
 	void dataFromJson(json_t* root) override;
 	void modulate() override;
+	void processAlways(const ProcessArgs& args) override;
 	void processChannel(const ProcessArgs& args, int _c) override;
 };
 

@@ -31,12 +31,20 @@ struct Walk : BGModule {
 		NUM_OUTPUTS
 	};
 
+	enum JumpMode {
+		JUMP_JUMPMODE,
+		TRACKHOLD_JUMPMODE,
+		SAMPLEHOLD_JUMPMODE
+	};
+
 	float _offset[maxChannels] {};
 	float _scale[maxChannels] {};
 	Trigger _jumpTrigger[maxChannels];
 	RandomWalk _walk[maxChannels];
 	bogaudio::dsp::SlewLimiter _slew[maxChannels];
+	float _lastOut[maxChannels] {};
 	int _polyInputID = RATE_INPUT;
+	JumpMode _jumpMode = JUMP_JUMPMODE;
 
 	Walk() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);

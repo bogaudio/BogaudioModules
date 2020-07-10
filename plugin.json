@@ -354,10 +354,12 @@
     {
       "slug": "Bogaudio-Walk2",
       "name": "WALK2",
-      "description": "2-channel random-walk CV source",
+      "description": "2D random-walk and X/Y controller",
       "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#walk2",
       "tags": [
-        "Random"
+        "Random",
+        "Sample and hold",
+        "Controller"
       ]
     },
     {
@@ -367,6 +369,7 @@
       "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#walk",
       "tags": [
         "Random",
+        "Sample and hold",
         "Polyphonic"
       ]
     },
