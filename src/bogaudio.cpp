@@ -132,7 +132,6 @@ void init(rack::Plugin *p) {
 	p->addModel(modelPEQ6XF);
 	p->addModel(modelPEQ14);
 	p->addModel(modelPEQ14XF);
-	p->addModel(modelPEQ14XV);
 
 	p->addModel(modelDADSRH);
 	p->addModel(modelDADSRHPlus);
@@ -220,6 +219,7 @@ void init(rack::Plugin *p) {
 #ifdef EXPERIMENTAL
 	p->addModel(modelLag);
 	p->addModel(modelPEQ14XR);
+	p->addModel(modelPEQ14XV);
 #endif
 
 #ifdef TEST

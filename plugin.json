@@ -217,18 +217,6 @@
       ]
     },
     {
-      "slug": "Bogaudio-PEQ14XV",
-      "name": "PEQ14XV",
-      "description": "PEQ14 vocoder expander",
-      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#peq14xv",
-      "tags": [
-        "Filter",
-        "Vocoder",
-        "Expander",
-        "Polyphonic"
-      ]
-    },
-    {
       "slug": "Bogaudio-DADSRH",
       "name": "DADSR(H)",
       "description": "Advanced envelope generator",
