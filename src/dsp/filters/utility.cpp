@@ -1,5 +1,6 @@
 
 #include "filters/utility.hpp"
+#include <cstdlib>
 
 using namespace bogaudio::dsp;
 
