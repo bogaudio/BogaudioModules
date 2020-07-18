@@ -99,7 +99,7 @@ struct PulseWidget : ModuleWidget {
 		auto m = dynamic_cast<Pulse*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());
-		menu->addChild(new BoolOptionMenuItem("Lineary frequency mode", [m]() { return &m->_linearMode; }));
+		menu->addChild(new BoolOptionMenuItem("Linear frequency mode", [m]() { return &m->_linearMode; }));
 	}
 };
 

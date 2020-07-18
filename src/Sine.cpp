@@ -162,7 +162,7 @@ struct SineWidget : ModuleWidget {
 		fm->addItem(OptionMenuItem("Linear", [m]() { return m->_fmLinearMode; }, [m]() { m->_fmLinearMode = true; }));
 		OptionsMenuItem::addToMenu(fm, menu);
 
-		menu->addChild(new BoolOptionMenuItem("Lineary frequency mode", [m]() { return &m->_linearMode; }));
+		menu->addChild(new BoolOptionMenuItem("Linear frequency mode", [m]() { return &m->_linearMode; }));
 
 		OptionsMenuItem* p = new OptionsMenuItem("Polyphony channels from");
 		p->addItem(OptionMenuItem("V/OCT input", [m]() { return m->_polyInputID == Sine::PITCH_INPUT; }, [m]() { m->_polyInputID = Sine::PITCH_INPUT; }));
