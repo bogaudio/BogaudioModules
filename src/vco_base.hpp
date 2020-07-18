@@ -4,6 +4,7 @@
 #include "dsp/filters/resample.hpp"
 #include "dsp/oscillator.hpp"
 #include "dsp/signal.hpp"
+#include <math.h>
 
 using namespace bogaudio::dsp;
 
@@ -13,7 +14,7 @@ struct VCOBase : BGModule {
 	struct Engine {
 		static constexpr int oversample = 8;
 
-		float frequency = 0.0f;
+		float frequency = INFINITY;
 		float baseVOct = 0.0f;
 		float baseHz = 0.0f;
 
@@ -79,6 +80,7 @@ struct VCOBase : BGModule {
 	, _polyInputID(piID)
 	{}
 
+	inline float linearModeVoltsToHertz(float v) { return _slowMode ? v : 1000.0f * v; }
 	void reset() override;
 	void sampleRateChange() override;
 	json_t* dataToJson() override;

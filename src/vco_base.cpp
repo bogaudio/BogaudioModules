@@ -117,12 +117,7 @@ void VCOBase::modulateChannel(int c) {
 		e.baseVOct += clamp(inputs[_pitchInputID].getVoltage(c), -5.0f, 5.0f);
 	}
 	if (_linearMode) {
-		if (_slowMode) {
-			e.baseHz = e.baseVOct;
-		}
-		else {
-			e.baseHz = e.baseVOct * 1000.0f;
-		}
+		e.baseHz = linearModeVoltsToHertz(e.baseVOct);
 	}
 	else {
 		if (_slowMode) {
@@ -145,6 +140,9 @@ void VCOBase::processChannel(const ProcessArgs& args, int c) {
 		float fm = inputs[_fmInputID].getPolyVoltage(c) * _fmDepth;
 		if (_fmLinearMode) {
 			phaseOffset = Phasor::radiansToPhase(2.0f * fm);
+		}
+		else if (_linearMode) {
+			frequency += linearModeVoltsToHertz(fm);
 		}
 		else {
 			frequency = cvToFrequency(e.baseVOct + fm);
