@@ -13,7 +13,7 @@ float DCBlocker::next(float sample) {
 
 
 float AverageRectifiedValue::next(float sample) {
-	return RunningAverage::next(std::abs(sample));
+	return RunningAverage::next(fabsf(sample));
 }
 
 
@@ -40,5 +40,5 @@ void PucketteEnvelopeFollower::setParams(float sampleRate, float sensitivity) {
 }
 
 float PucketteEnvelopeFollower::next(float sample) {
-	return _filter.next(std::abs(_dcBlocker.next(sample)));
+	return _filter.next(fabsf(_dcBlocker.next(sample)));
 }
