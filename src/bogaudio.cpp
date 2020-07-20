@@ -16,6 +16,7 @@
 #include "Bool.hpp"
 #include "Clpr.hpp"
 #include "Cmp.hpp"
+#include "CmpDist.hpp"
 #include "CVD.hpp"
 #include "DADSRH.hpp"
 #include "DADSRHPlus.hpp"
@@ -175,6 +176,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelClpr);
 	p->addModel(modelLmtr);
 	p->addModel(modelNsgt);
+	p->addModel(modelCmpDist);
 
 	p->addModel(modelOneEight);
 	p->addModel(modelEightOne);

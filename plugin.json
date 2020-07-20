@@ -606,6 +606,17 @@
       ]
     },
     {
+      "slug": "Bogaudio-CmpDist",
+      "name": "CMPDIST",
+      "description": "Comparator-based distortion",
+      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#cmpdist",
+      "tags": [
+        "Distortion",
+        "Effect",
+        "Polyphonic"
+      ]
+    },
+    {
       "slug": "Bogaudio-OneEight",
       "name": "1:8",
       "description": "8-channel multiplexer & sequential switch",
