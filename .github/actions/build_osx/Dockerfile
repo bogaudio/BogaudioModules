@@ -2,8 +2,8 @@
 FROM debian
 
 RUN apt-get update && \
-    apt-get upgrade -yy -qq && \
-    apt-get install -yy -qq \
+    apt-get upgrade -yy && \
+    apt-get install -yy \
     automake            \
     bison               \
     curl                \
@@ -26,10 +26,10 @@ RUN apt-get update && \
     libgl1-mesa-dev     \
     libglu1-mesa-dev    \
     jq			\
-    rsync > /dev/null
+    rsync
 
 ENV OSXCROSS_SDK_VERSION 10.11
-RUN ((SDK_VERSION=$OSXCROSS_SDK_VERSION                           \
+RUN SDK_VERSION=$OSXCROSS_SDK_VERSION                           \
     mkdir /opt/osxcross &&                                      \
     cd /opt &&                                                  \
     git clone https://github.com/tpoechtrager/osxcross.git &&   \
@@ -40,7 +40,7 @@ RUN ((SDK_VERSION=$OSXCROSS_SDK_VERSION                           \
     curl -L -o ./tarballs/MacOSX${OSXCROSS_SDK_VERSION}.sdk.tar.xz \
     https://github.com/apriorit/osxcross-sdks/raw/master/MacOSX${OSXCROSS_SDK_VERSION}.sdk.tar.xz && \
     yes | PORTABLE=true ./build.sh &&                           \
-    ./build_compiler_rt.sh) &> /tmp/build.out) || cat /tmp/build.out
+    ./build_compiler_rt.sh
 
 ENV PATH $PATH:/opt/osxcross/target/bin
 
