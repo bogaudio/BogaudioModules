@@ -38,6 +38,35 @@ void MixerChannel::next(float sample, bool solo, int c) {
 }
 
 
+#define DIM_DB "dim_decibels"
+
+json_t* DimmableMixerModule::dataToJson() {
+	json_t* root = json_object();
+	json_object_set_new(root, DIM_DB, json_real(_dimDb));
+	return root;
+}
+
+void DimmableMixerModule::dataFromJson(json_t* root) {
+	json_t* o = json_object_get(root, DIM_DB);
+	if (o) {
+		_dimDb = json_real_value(o);
+	}
+}
+
+
+void DimmableMixerWidget::appendContextMenu(Menu* menu) {
+	auto m = dynamic_cast<DimmableMixerModule*>(module);
+	assert(m);
+	menu->addChild(new MenuLabel());
+	OptionsMenuItem* da = new OptionsMenuItem("Dim amount");
+	da->addItem(OptionMenuItem("-6 dB", [m]() { return m->_dimDb == 6.0f; }, [m]() { m->_dimDb = 6.0f; }));
+	da->addItem(OptionMenuItem("-12 dB", [m]() { return m->_dimDb == 12.0f; }, [m]() { m->_dimDb = 12.0f; }));
+	da->addItem(OptionMenuItem("-18 dB", [m]() { return m->_dimDb == 18.0f; }, [m]() { m->_dimDb = 18.0f; }));
+	da->addItem(OptionMenuItem("-24 dB", [m]() { return m->_dimDb == 24.0f; }, [m]() { m->_dimDb = 24.0f; }));
+	OptionsMenuItem::addToMenu(da, menu);
+}
+
+
 void MuteButton::randomize() {
 	if (_randomize) {
 		ToggleButton::randomize();

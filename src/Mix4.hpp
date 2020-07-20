@@ -6,7 +6,7 @@ using namespace bogaudio::dsp;
 
 namespace bogaudio {
 
-struct Mix4 : ExpandableModule<Mix4ExpanderMessage, BGModule> {
+struct Mix4 : ExpandableModule<Mix4ExpanderMessage, DimmableMixerModule> {
 	enum ParamsIds {
 		LEVEL1_PARAM,
 		PAN1_PARAM,
@@ -22,6 +22,7 @@ struct Mix4 : ExpandableModule<Mix4ExpanderMessage, BGModule> {
 		MUTE4_PARAM,
 		MIX_PARAM,
 		MIX_MUTE_PARAM,
+		MIX_DIM_PARAM,
 		NUM_PARAMS
 	};
 
@@ -78,6 +79,7 @@ struct Mix4 : ExpandableModule<Mix4ExpanderMessage, BGModule> {
 		configParam(MUTE4_PARAM, 0.0f, 3.0f, 0.0f, "Channel 4 mute");
 		configParam(MIX_PARAM, 0.0f, 1.0f, levelDefault, "Master level", " dB", 0.0f, MixerChannel::maxDecibels - MixerChannel::minDecibels, MixerChannel::minDecibels);
 		configParam(MIX_MUTE_PARAM, 0.0f, 1.0f, 0.0f, "Master mute");
+		configParam(MIX_DIM_PARAM, 0.0f, 1.0f, 0.0f, "Master dim");
 
 		_channels[0] = new MixerChannel(params[LEVEL1_PARAM], params[MUTE1_PARAM], inputs[CV1_INPUT]);
 		_channels[1] = new MixerChannel(params[LEVEL2_PARAM], params[MUTE2_PARAM], inputs[CV2_INPUT]);

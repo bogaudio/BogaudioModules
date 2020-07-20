@@ -222,6 +222,8 @@
     <use id="MIX_PARAM" xlink:href="#slider" transform="translate(13.5 12)" />
     <use id="MIX_MUTE_PARAM" xlink:href="#button" transform="translate(12.5 165)" />
     <text font-size="5pt" letter-spacing="2px" transform="translate(10 192)">MUTE</text>
+    <use id="MIX_DIM_PARAM" xlink:href="#button" transform="translate(12.5 198)" />
+    <text font-size="5pt" letter-spacing="2px" transform="translate(14.5 225)">DIM</text>
     <g transform="translate(5.5 229)">
       <rect width="34" height="50" rx="5" fill="#fafafa" />
       <use id="MIX_CV_INPUT" xlink:href="#input" transform="translate(5 3)" />

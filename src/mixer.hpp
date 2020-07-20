@@ -48,6 +48,17 @@ struct MixerChannel {
 	void next(float sample, bool solo, int c = 0); // outputs on members out, rms.
 };
 
+struct DimmableMixerModule : BGModule {
+	float _dimDb = 12.0f;
+
+	json_t* dataToJson() override;
+	void dataFromJson(json_t* root) override;
+};
+
+struct DimmableMixerWidget : ModuleWidget {
+	void appendContextMenu(Menu* menu) override;
+};
+
 struct MuteButton : ToggleButton {
 	bool _randomize = true;
 

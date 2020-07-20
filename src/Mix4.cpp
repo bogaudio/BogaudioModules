@@ -4,12 +4,13 @@
 #define POLY_OFFSET "poly_channel_offset"
 
 json_t* Mix4::dataToJson() {
-	json_t* root = json_object();
+	json_t* root = DimmableMixerModule::dataToJson();
 	json_object_set_new(root, POLY_OFFSET, json_integer(_polyChannelOffset));
 	return root;
 }
 
 void Mix4::dataFromJson(json_t* root) {
+	DimmableMixerModule::dataFromJson(root);
 	json_t* o = json_object_get(root, POLY_OFFSET);
 	if (o) {
 		_polyChannelOffset = json_integer_value(o);
@@ -100,6 +101,9 @@ void Mix4::processAll(const ProcessArgs& args) {
 		}
 		level *= MixerChannel::maxDecibels - MixerChannel::minDecibels;
 		level += MixerChannel::minDecibels;
+		if (params[MIX_DIM_PARAM].getValue() > 0.5f) {
+			level = std::max(Amplifier::minDecibels, level - _dimDb);
+		}
 	}
 	_amplifier.setLevel(_slewLimiter.next(level));
 
@@ -152,7 +156,7 @@ void Mix4::processAll(const ProcessArgs& args) {
 	}
 }
 
-struct Mix4Widget : ModuleWidget {
+struct Mix4Widget : DimmableMixerWidget {
 	static constexpr int hp = 15;
 
 	Mix4Widget(Mix4* module) {
@@ -186,6 +190,7 @@ struct Mix4Widget : ModuleWidget {
 		auto pan4ParamPosition = Vec(147.5, 223.0);
 		auto mixParamPosition = Vec(189.5, 32.0);
 		auto mixMuteParamPosition = Vec(189.2, 185.7);
+		auto mixDimParamPosition = Vec(189.2, 218.7);
 
 		auto cv1InputPosition = Vec(14.5, 255.0);
 		auto pan1InputPosition = Vec(14.5, 290.0);
@@ -223,6 +228,11 @@ struct Mix4Widget : ModuleWidget {
 			b->setRandomize(false);
 			addParam(b);
 		}
+		{
+			auto b = createParam<MuteButton>(mixDimParamPosition, module, Mix4::MIX_DIM_PARAM);
+			b->setRandomize(false);
+			addParam(b);
+		}
 
 		addInput(createInput<Port24>(cv1InputPosition, module, Mix4::CV1_INPUT));
 		addInput(createInput<Port24>(pan1InputPosition, module, Mix4::PAN1_INPUT));
@@ -251,9 +261,9 @@ struct Mix4Widget : ModuleWidget {
 	}
 
 	void appendContextMenu(Menu* menu) override {
+		DimmableMixerWidget::appendContextMenu(menu);
 		auto m = dynamic_cast<Mix4*>(module);
 		assert(m);
-		menu->addChild(new MenuLabel());
 		OptionsMenuItem* mi = new OptionsMenuItem("Input 1 poly spread");
 		mi->addItem(OptionMenuItem("None", [m]() { return m->_polyChannelOffset == -1; }, [m]() { m->_polyChannelOffset = -1; }));
 		mi->addItem(OptionMenuItem("Channels 1-4", [m]() { return m->_polyChannelOffset == 0; }, [m]() { m->_polyChannelOffset = 0; }));
