@@ -11,7 +11,7 @@ screens = [
     crop: false,
     rows: [
       ['VCO', 'LVCO', 'Sine', 'Pulse', 'XCO', 'Additator', 'FMOp'],
-      ['LFO', 'EightFO', 'LLFO']
+      ['LFO', 'LLFO', 'EightFO']
     ]
   },
   {
@@ -19,6 +19,7 @@ screens = [
     crop: false,
     rows: [
       ['VCF', 'LVCF', 'FFB', 'EQ', 'EQS'],
+      ['PEQ', 'PEQ6', 'PEQ6XF', 'PEQ14', 'PEQ14XF'],
       ['DADSRH', 'DADSRHPlus', 'Shaper', 'ShaperPlus', 'AD', 'ASR', 'ADSR', 'Follow', 'DGate', 'Edge']
     ]
   },
@@ -27,7 +28,7 @@ screens = [
     crop: false,
     rows: [
       ['Mix8', 'Mix8x', 'Mute8'],
-      ['Mix4', 'Mix4x', 'Mix1', 'VCM', 'Pan', 'XFade'],
+      ['Mix4', 'Mix4x', 'Mix1', 'Mix2', 'VCM', 'Pan', 'XFade'],
       ['UMix', 'Mumix', 'Matrix44', 'Matrix88'],
       ['Switch44', 'Switch88', 'Switch1616']
     ]
@@ -36,7 +37,7 @@ screens = [
     file: 'modules4.png',
     crop: false,
     rows: [
-      ['VCA', 'VCAmp', '-', 'AMRM', 'Pressor', 'Lmtr', 'Nsgt'],
+      ['VCA', 'VCAmp', '-', 'AMRM', 'Pressor', 'Lmtr', 'Nsgt', 'CmpDist'],
       ['Noise', 'SampleHold', 'Walk2', 'Walk', '-', 'EightOne', 'OneEight', 'AddrSeq', 'PGMR', 'PGMRX'],
       ['VU', 'Analyzer', 'AnalyzerXL']
     ]
@@ -46,7 +47,7 @@ screens = [
     crop: false,
     rows: [
       ['Mono', 'Arp', 'Assign', 'Unison', 'PolyCon', 'PolyCon8', 'PolyOff16', 'PolyOff8', 'PolyMult', '-', 'Detune', 'Stack', 'Reftone'],
-      ['Bool', 'Cmp', 'CVD', 'FlipFlop', 'Inv', 'Manual', 'Mult', 'Offset', 'Slew', 'Sums', 'Switch', '-', 'Blank3', 'Blank6']
+      ['Bool', 'Cmp', 'CVD', 'FlipFlop', 'Inv', 'Manual', 'FourMan', 'Mult', 'Offset', 'Slew', 'Sums', 'Switch', '-', 'Blank3', 'Blank6']
     ]
   },
 
@@ -68,7 +69,7 @@ screens = [
     file: 'lfos.png',
     crop: true,
     rows: [
-      ['LFO', 'EightFO', 'LLFO']
+      ['LFO', 'LLFO', 'EightFO']
     ]
   },
   {
@@ -76,6 +77,13 @@ screens = [
     crop: true,
     rows: [
       ['VCF', 'LVCF', 'FFB', 'EQ', 'EQS']
+    ]
+  },
+  {
+    file: 'parametric_eqs.png',
+    crop: true,
+    rows: [
+      ['PEQ', 'PEQ6', 'PEQ6XF', 'PEQ14', 'PEQ14XF']
     ]
   },
   {
@@ -145,7 +153,7 @@ screens = [
     file: 'dynamics.png',
     crop: true,
     rows: [
-      ['AMRM', 'Pressor', 'Lmtr', 'Nsgt']
+      ['AMRM', 'Pressor', 'Lmtr', 'Nsgt', 'CmpDist']
     ]
   },
   {
@@ -194,7 +202,7 @@ screens = [
     file: 'utilities.png',
     crop: true,
     rows: [
-      ['Bool', 'Cmp', 'CVD', 'FlipFlop', 'Inv', 'Manual', 'Mult', 'Offset', 'Slew', 'Sums', 'Switch']
+      ['Bool', 'Cmp', 'CVD', 'FlipFlop', 'Inv', 'Manual', 'FourMan', 'Mult', 'Offset', 'Slew', 'Sums', 'Switch']
     ]
   },
   {

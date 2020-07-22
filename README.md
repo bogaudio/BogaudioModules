@@ -152,15 +152,15 @@ LFO tracks pitch CVs at the V/OCT input seven octaves lower than a normal oscill
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
 
-#### <a name="eightfo"></a> 8FO
-
-An LFO with outputs at 8 different phases.  The phases may be set by knobs and CVs; by default they are 0, 45, 90, etc, degrees from the fundamental.  Otherwise, functionality is the same as with LFO, excepting that the wave shape is selectable, and all outputs are of the same (phase-shifted) wave.
-
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
-
 #### <a name="llfo"></a> LLFO
 
 A 3HP LFO, with selectable waveform.  The features are a subset of LFO, with the addition of a sixth 10%-pulse waveform.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
+
+#### <a name="eightfo"></a> 8FO
+
+An LFO with outputs at 8 different phases.  The phases may be set by knobs and CVs; by default they are 0, 45, 90, etc, degrees from the fundamental.  Otherwise, functionality is the same as with LFO, excepting that the wave shape is selectable, and all outputs are of the same (phase-shifted) wave.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
 
@@ -212,9 +212,9 @@ A fixed filter bank comprised of 12 bandpass filters, with low- and high-pass fi
 
 Each knobs sets the attenuation of the output of its corresponding filter, down to -60db, before those outputs are mixed back together and sent to the outputs.
 
-The CV input (expecting 0-10V, and attenuated by the CV knob) controls a VCA that gates the outputs.
+The FREQ knob adjusts the center frequency of each band up to an octave in either direction.  It takes a bipolar (+/-5V) CV at FCV, which is attenuverted by the knob if in use.
 
-Tnere are three outputs:
+There are three outputs:
   - ALL: a mix of the outputs of all the filters.
   - ODD: a mix of the LP, HP, and odd-numbered band filters (125HZ, 250 HZ, etc).
   - EVEN: a mix of the LP, HP, and even-numbered band filters (175HZ, 350 HZ, etc).
@@ -236,6 +236,46 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the I
 
 A stereo version of EQ.  The left and right inputs are processed by separate filters, but the filter parameters are set by the shared three knobs.
 
+![Filters screenshot](doc/www/parametric_eqs.png)
+
+#### <a name="peq"></a> PEQ
+
+A three-channel parametric EQ, which is a filter bank where the band frequencies are controllable.  Each channel gets the input from IN and applies a bandpass filter with center frequency set by FREQ, where the filter's output is sent through a VCA controlled by LEVEL.  The outputs of each channel are mixed to OUT.
+
+The first channel may be configured as a lowpass filter, if the LP button is on.  The last channel can be highpass.  (And they are by default.)
+
+Each channel has a CV input for level; this is a unipolar (0-10V) CV, and correponding knob attenuates the CV if the CV is in use.
+
+Likewise each channel has an FCV input for frequency modulation, and additionally there is a global FCV input, which voltage effects all channels.  For each channel, the channel FCV and global FCV are summed, then attenuverted by the channel's FCV knob, and the result is added to the FREQ knob setting.  These CVs are bipolar (+/-5V), where +5V will send the frequency from 0 to its max value.
+
+Finally, each channel has a BW (bandwidth) setting, that applies if the channel is a bandpass filter, and controls the width of the filter's frequency response.  These have unipolar CVs per channel.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
+
+#### <a name="peq6"></a> PEQ6
+
+A six channel parametric EQ.  It generally works as PEQ does, except:
+  - The global FCV control has a knob, which becomes an attenuverter if a CV is provided.
+  - There is a global BW paramter with CV, rather than per-channel bandwidth controls.
+  - The "FCV RNG" option controls the scaling of the frequency CV inputs; if set to OCTV, the full CV range will alter the band frquencies up to an octave in either direction; if set to FULL, the CV can run the frequencies over the full range, as on PEQ.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
+
+#### <a name="peq6xf"></a> PEQ6XF
+
+Expands PEQ6 with envelope follower outputs, per band.  The DAMP and GAIN knobs control the followers; see the description of the <a href="#follow">FOLLOW</a> module for a description of how these work.
+
+#### <a name="peq14"></a> PEQ14
+
+A fourteen channel parametric EQ.  The control scheme is as with PEQ6.
+
+It adds ODD and EVEN outputs: these are mixes of the odd and even channels, respectively.  If the low channel is set to LOWPASS, its output will go to both ODD and EVEN.  Same for the high channel, if its set to HIGHPASS.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
+
+#### <a name="peq14xf"></a> PEQ14XF
+
+Expands PEQ6 with envelope follower outputs, per band.  The DAMP and GAIN knobs control the followers; see the description of the <a href="#follow">FOLLOW</a> module for a description of how these work.  DAMP has a unipolar (0-10V) CV; GAIN has a bipolar (+/-5V) CV.
 
 ### <a name="envelopes"></a> Envelopes and Envelope Utilities
 
@@ -311,9 +351,9 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the G
 
 #### <a name="follow"></a> FOLLOW
 
-An envelope follower (a utility that converts its input to a CV proportional to the level of the input's amplitude).  The DAMP knob and CV (0-10V) affect how many input samples are used to calculate the output -- higher DAMP values effectively slow down and smooth out the response.  The SCALE knob and CV (0-10V) attenutate the output.
+An envelope follower (a utility that converts its input to a CV proportional to the level of the input's amplitude).  The DAMP knob and CV (0-10V) affect how quickly the output responds to changes in the input -- higher DAMP values effectively slow down and smooth out the response.
 
-With DAMP at the minimum setting and SCALE at half, the module is an effective wave rectifier (that is, it outputs the absolute value of the input).
+The GAIN knob and CV (+/-5V) can attenuate or amplify the output.  Turning the knob counter-clockwise form center will cut the output up to -36dB; turning it clockwise will amplify it up to +12dB.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
 
@@ -378,11 +418,17 @@ _Polyphony:_ As with MIX8, this is a monophonic module, but with the same non-st
 
 An expander for MIX4, with functionality identical to what MIX8X adds to MIX8.
 
-### MIX1
+#### <a name="mix1"></a> MIX1
 
 A 3HP fader/VCA, with mute.  
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
+
+#### <a name="mix2"></a> MIX2
+
+A stereo version of MIX1.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the L input.
 
 #### <a name="vcm"></a> VCM
 
@@ -470,16 +516,18 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defin
 
 ![Mixers screenshot](doc/www/mixers4.png)
 
-Identical to MATRIX44, but with switches instead of knobs.  All switches default to off, passing no signal.  A single left-click sets the switch to pass voltage with unity gain.  A second click sets the switch to pass the inverted signal (this can be disabled, as below).  Another click sets the switch off.
+Identical to MATRIX44, but with switches instead of knobs.  All switches default to off, passing no signal.  Clicking a switch sets it to pass voltage with unity gain.  Another click sets the switch off (unless second-click inverting is on, as below).
 
-Note that you can pass attenuated values, by use of Rack's arbitrary parameter-entry feature: right-click a switch, and set its value from -100 to 100% (fractional percentages are allowed).
+Note that you can pass attenuated values, by use of Rack's arbitrary parameter-entry feature: right-click a switch, and set its value from -100 to 100% (fractional percentages are allowed).  If inverting is disabled, as below, the entry is from 0 to 100%.
 
 The signal inverting behavior may be set with the "Inverting" context menu options:
-  - "On second click" is the default behavior.
-  - "By param entry" allows negative scale values to be set for a switch by the parameter-entry method, but clicks on a switch will just toggle between on and off.
+  - "By param entry" allows negative scale values to be set for a switch by the parameter-entry method, but clicks on a switch will just toggle between on and off.  This is the default.
+  - "On second click" causes a click on a non-inverting but enabled switch to change to inverting; anotehr click turns it off.
   - "None" disables inverting entirely.  This option is handy if you want to map MIDI controller buttons/pads to switches.
 
 Two other options, "Exclusive by rows" and "Exclusive by columns", if enabled, allow only one switch to be non-zero in a row, or column, respectively.  Both may be on at once.  (These options do not work well with MIDI mapping via Rack's MIDI-MAP module; this is a known issue for which there is no good solution; but see the discussion [here](https://github.com/bogaudio/BogaudioModules/issues/112) for a potential workaround.  The same problem may apply to other parameter-mapping methods.)
+
+Every switch applies a bit of slew limitation when it changes values, as an anti-popping measure.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by input 1.
 
@@ -577,6 +625,26 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the 
 NSGT is a compact (6HP) [noise gate](https://en.wikipedia.org/wiki/Noise_gate).  Its controls behave the same as the corresponding controls on PRESSOR.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the L input.
+
+#### <a name="cmpdist"></a> CMPDIST
+
+A distortion effect based on a window comparator.  One or two input signals are used, at inputs A and B (if you only want to use one input, note that input B is normalled to +5V).  The inputs are scaled by the A and B knobs and their corresponding bipolar (+/-5V) CV inputs.  At the same time, a "window" voltage is set by the WINDOW knob and unipolar (0-10V) CV.
+
+The comparator calculates the following:
+  - If the scaled A voltage is greater than B by at least the amount of the WINDOW voltage, then we're in the GT (greater than) state.
+  - If A less than B by at least the WINDOW voltage, we're in LT (less than) state.
+  - Otherwise, A and B are within WINDOW volts of each other, and we're in EQ state.
+
+The outputs GT, LT and EQ follow the state:
+  - If GT, the GT output is +5V, and -5V otherwise.
+  - If LT, the LT output is +5V, and -5V otherwise.
+  - If EQ, the EQ output is +5V, and -5V otherwise.
+
+The MIX output combines the other outputs according to the GT MIX, EQ MIX and LT MIX knobs, which are simply attenuverters (rather than proper VCAs).  GT MIX and LT mix have bipolar CVs.
+
+The MIX output is also subject to the DRY/WET setting, where the dry signal is comprised of the A and B scaled inputs, each processed by the A DRY and B DRY VCAs.  DRY/WET has a bipolar CV.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the A input.
 
 
 ### <a name="random"></a> Noise/Random, Sample and Hold
@@ -906,7 +974,15 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the 
 
 A manual trigger/gate with 8 outputs.  A constant high value is sent from each output for as long as the TRIG button is held.  
 
-Manual may be set to output a trigger pulse (+5V for 10ms) on patch load (akin to a Max/Msp loadbang).  This is off by default; enable clicking "Trigger on Load" on the module's context (right-click) menu.  The pulse is emitted 100ms after the patch starts processing samples.
+MANUAL may be set to output a trigger pulse (+5V for 10ms) on patch load (akin to a Max/Msp loadbang).  This is off by default; enable clicking "Trigger on Load" on the module's context (right-click) menu.  The pulse is emitted 100ms after the patch starts processing samples.
+
+_Polyphony:_ Monophonic.
+
+#### <a name="4man"></a> 4MAN
+
+A version of MANUAL with four independent trigger buttons with separate outputs.
+
+The "Trigger on load" option, as on MANUAL, applies to all four outputs if enabled.
 
 _Polyphony:_ Monophonic.
 
