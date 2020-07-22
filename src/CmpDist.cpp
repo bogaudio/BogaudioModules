@@ -81,10 +81,7 @@ void CmpDist::processChannel(const ProcessArgs& args, int c) {
 	const float v = 5.0f;
 	Engine& e = *_engines[c];
 
-	float a = v;
-	if (inputs[A_INPUT].isConnected()) {
-		a = inputs[A_INPUT].getPolyVoltage(c);
-	}
+	float a = inputs[A_INPUT].getPolyVoltage(c);
 	a *= e.aScale;
 	float b = v;
 	if (inputs[B_INPUT].isConnected()) {
@@ -160,7 +157,6 @@ struct CmpDistWidget : ModuleWidget {
 		auto bInputPosition = Vec(15.0, 318.0);
 		auto bScaleInputPosition = Vec(47.0, 318.0);
 
-		auto ltMixOutputPosition = Vec(79.0, 230.0);
 		auto gtOutputPosition = Vec(79.0, 274.0);
 		auto ltOutputPosition = Vec(111.0, 274.0);
 		auto eqOutputPosition = Vec(79.0, 318.0);
@@ -186,7 +182,6 @@ struct CmpDistWidget : ModuleWidget {
 		addInput(createInput<Port24>(bInputPosition, module, CmpDist::B_INPUT));
 		addInput(createInput<Port24>(bScaleInputPosition, module, CmpDist::B_SCALE_INPUT));
 
-		addOutput(createOutput<Port24>(ltMixOutputPosition, module, CmpDist::LT_MIX_OUTPUT));
 		addOutput(createOutput<Port24>(gtOutputPosition, module, CmpDist::GT_OUTPUT));
 		addOutput(createOutput<Port24>(ltOutputPosition, module, CmpDist::LT_OUTPUT));
 		addOutput(createOutput<Port24>(eqOutputPosition, module, CmpDist::EQ_OUTPUT));

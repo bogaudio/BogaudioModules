@@ -36,7 +36,6 @@ struct CmpDist : BGModule {
 	};
 
 	enum OutputsIds {
-		LT_MIX_OUTPUT,
 		GT_OUTPUT,
 		LT_OUTPUT,
 		EQ_OUTPUT,
