@@ -118,14 +118,14 @@ screens = [
     file: 'mixers1.png',
     crop: true,
     rows: [
-      ['Mix8', 'Mix8x', 'Mix4', 'Mix4x', 'Mix1']
+      ['Mix8', 'Mix8x', 'Mix4', 'Mix4x']
     ]
   },
   {
     file: 'mixers2.png',
     crop: true,
     rows: [
-      ['VCM', 'Mute8', 'Pan', 'XFade']
+      ['Mix1', 'Mix2', 'VCM', 'Mute8', 'Pan', 'XFade']
     ]
   },
   {

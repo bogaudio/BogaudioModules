@@ -418,6 +418,8 @@ _Polyphony:_ As with MIX8, this is a monophonic module, but with the same non-st
 
 An expander for MIX4, with functionality identical to what MIX8X adds to MIX8.
 
+![Mixers screenshot](doc/www/mixers2.png)
+
 #### <a name="mix1"></a> MIX1
 
 A 3HP fader/VCA, with mute.  
@@ -433,8 +435,6 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the L
 #### <a name="vcm"></a> VCM
 
 A four-channel mixer in 10HP.
-
-![Mixers screenshot](doc/www/mixers2.png)
 
 Features:
   - Four input channels and mono mix output with knob and CV control over level.  CVs expect 0-10V; when CV is in use, it is attenuated by the knob.
