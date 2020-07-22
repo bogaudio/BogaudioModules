@@ -388,7 +388,8 @@ Features:
   - Mutes per channel.
   - Right-clicking a mute buttons solos that channel (un-mutes that channel and temporarily mutes all others).  Right or left click will un-solo, restoring the old state.  Multiple channels can be "soloed" at once.
   - The fader handles contain lights indicating the signal level out of that channel.
-  - The Output saturates (soft clips) at +/-12 volts.
+  - The master output has MUTE and DIM controls (DIM is a partial mute, with a value configurable on the context menu; it defaults to -12dB).
+  - The output saturates (soft clips) at +/-12 volts.
 
 _Polyphony:_ The module is monophonic: if a polyphonic cable is present at an input, its channels will be summed.
 
@@ -675,18 +676,26 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the 
 
 #### <a name="walk2"></a> WALK2
 
-WALK2 provides two channels of chaotic output, where the output voltage moves as a random walk.  The two outputs are drawn as a trace, in X and Y, on the display.
+WALK2 provides two channels of chaotic output, where the output voltage moves as a random walk.  The two outputs are drawn as a trace, in X and Y, on the display.  It may also be configured as an X/Y controller.
 
 For each channel:
  - RATE (knob and cv) controls how sedately, or wildly, the CV moves around.  If CV is in use, it is attenuated by the knob.
  - OFFSET (knob and cv) adds or subtracts up to 5V from the base +/-5V output.  If the offset CV is in use, it is attenuverted by the knob.
  - SCALE (knob and cv) attenuates the output; if CV is in use, it is attenuated by the knob.
 
-Additionally:
-  - A trigger on the JUMP input will cause both channels to jump to a random value.  A bit of slew limitation applies to the jump to minimize popping.
-  - DIST outputs a third CV, ranging over 0-10V, derived from X and Y channel outputs.  
+DIST outputs a third CV, ranging over 0-10V, derived from X and Y channel outputs.  
 
-Clicking on the display will jump the outputs, X and Y, to that point (again with a bit of slew limitation).
+The TRIG input can be set to one of three actions by the TRIG selector below it:
+  - JUMP: on each trigger at TRIG, both channels will jump to a random value.
+  - S&H: on each trigger at TRIG, the value of the random generator on each channel is sampled and held.
+  - T&H: while there is a high gate voltage at TRIG, the random generator output is passed to each channel's output; when the gate drops, the last value is held.
+
+The display can be interacted with directly:
+  - A click on the display will jump the outputs to the corresponding value.
+  - Clicking and dragging will force the outputs to track the mouse.
+Using these in combination with the S&H mode, where the values will hold until something changes them, makes WALK2 to into a handy X/Y controller.
+
+All discontinuous output jumps, caused by any of these means, are subject to a small amount of slew limitation, to avoid pops.
 
 Various options on the context (right-click) menu allow customization of the display (set the range of the display to +/-10V instead of the default +/-5V; hide the grid dots; set the color of the trace).
 
@@ -694,7 +703,7 @@ _Polyphony:_ The module is monophonic (note that WALK is polyphonic).
 
 #### <a name="walk"></a> WALK
 
-WALK is a single-channel random walk, identical to one channel of WALK2, in 3HP.
+WALK is a single-channel random walk, identical to one channel of WALK2, in 3HP.  It has a JUMP input rather than a TRIG input, but the same S&H and T&H modes are available on the context menu.  
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the RATE input.  The polyphony port can be changed to OFFSET, SCALE or JUMP on the context menu.
 
