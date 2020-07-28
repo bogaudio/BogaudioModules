@@ -1,6 +1,6 @@
 #!/usr/bin/ruby
 
-INKSCAPE = '/Applications/Inkscape.app/Contents/Resources/bin/inkscape'
+INKSCAPE = '/Applications/Inkscape.app/Contents/MacOS/inkscape'
 OUTPUT_DECIMAL_PLACES=2
 
 hpp_template = <<HPP_TEMPLATE
@@ -166,7 +166,7 @@ unless File.exist?(svg_file)
 end
 svg_file = File.absolute_path(svg_file)
 
-lines = `#{INKSCAPE} -z -S #{svg_file}`
+lines = `#{INKSCAPE} -S #{svg_file}`
 # FIXME: check for error.
 
 Widget = Struct.new(:id, :x, :y, :width, :height) do

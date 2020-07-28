@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INKSCAPE="/Applications/Inkscape.app/Contents/Resources/bin/inkscape"
+INKSCAPE="/Applications/Inkscape.app/Contents/MacOS/inkscape"
 
 if [ "x$1" = "x" ]
 then
@@ -26,10 +26,6 @@ fi
 TMP_FILE="/tmp/svg_render_tmp.svg"
 
 < "$1" perl -e '$s = do { local $/; <STDIN> }; $s =~ s/<use[^<>\/]+id="\w+_(PARAM|INPUT|OUTPUT|LIGHT|WIDGET)"[^<>\/]+(\/\>|<\/use>)//gs; print $s' > "$TMP_FILE" && \
-  "$INKSCAPE" -f "$TMP_FILE" \
-  --verb EditSelectAll --verb SelectionUnGroup \
-  --verb EditSelectAll --verb EditUnlinkClone \
-  --verb EditSelectAll  --verb ObjectToPath \
-  --verb FileSave --verb FileQuit && \
+  "$INKSCAPE" -g --actions='EditSelectAll;SelectionUnGroup;EditSelectAll;EditUnlinkClone;EditSelectAll;ObjectToPath;FileSave;FileQuit' "$TMP_FILE" 2> /dev/null && \
   cp "$TMP_FILE" "$OUT_FILE" && \
   rm "$TMP_FILE"
