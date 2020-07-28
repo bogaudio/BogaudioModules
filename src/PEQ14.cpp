@@ -9,7 +9,24 @@ void PEQ14::sampleRateChange() {
 }
 
 bool PEQ14::active() {
-	return outputs[OUT_OUTPUT].isConnected() || outputs[ODDS_OUTPUT].isConnected() || outputs[EVENS_OUTPUT].isConnected();
+	return
+		outputs[OUT_OUTPUT].isConnected() ||
+		outputs[ODDS_OUTPUT].isConnected() ||
+		outputs[EVENS_OUTPUT].isConnected() ||
+		outputs[OUT1_OUTPUT].isConnected() ||
+		outputs[OUT2_OUTPUT].isConnected() ||
+		outputs[OUT3_OUTPUT].isConnected() ||
+		outputs[OUT4_OUTPUT].isConnected() ||
+		outputs[OUT5_OUTPUT].isConnected() ||
+		outputs[OUT6_OUTPUT].isConnected() ||
+		outputs[OUT7_OUTPUT].isConnected() ||
+		outputs[OUT8_OUTPUT].isConnected() ||
+		outputs[OUT9_OUTPUT].isConnected() ||
+		outputs[OUT10_OUTPUT].isConnected() ||
+		outputs[OUT11_OUTPUT].isConnected() ||
+		outputs[OUT12_OUTPUT].isConnected() ||
+		outputs[OUT13_OUTPUT].isConnected() ||
+		outputs[OUT14_OUTPUT].isConnected();
 }
 
 int PEQ14::channels() {
@@ -31,7 +48,7 @@ void PEQ14::addChannel(int c) {
 			inputs[LEVEL1_INPUT + i*2],
 			inputs[FREQUENCY_CV1_INPUT + i*2],
 			inputs[FREQUENCY_CV_INPUT],
-			NULL
+			&inputs[BANDWIDTH_INPUT]
 		);
 	}
 	_engines[c]->setSampleRate(APP->engine->getSampleRate());

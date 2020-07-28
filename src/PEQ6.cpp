@@ -9,7 +9,14 @@ void PEQ6::sampleRateChange() {
 }
 
 bool PEQ6::active() {
-	return outputs[OUT_OUTPUT].isConnected();
+	return
+		outputs[OUT_OUTPUT].isConnected() ||
+		outputs[OUT1_OUTPUT].isConnected() ||
+		outputs[OUT2_OUTPUT].isConnected() ||
+		outputs[OUT3_OUTPUT].isConnected() ||
+		outputs[OUT4_OUTPUT].isConnected() ||
+		outputs[OUT5_OUTPUT].isConnected() ||
+		outputs[OUT6_OUTPUT].isConnected();
 }
 
 int PEQ6::channels() {
@@ -31,7 +38,7 @@ void PEQ6::addChannel(int c) {
 			inputs[LEVEL1_INPUT + i*2],
 			inputs[FREQUENCY_CV1_INPUT + i*2],
 			inputs[FREQUENCY_CV_INPUT],
-			NULL
+			&inputs[BANDWIDTH_INPUT]
 		);
 	}
 	_engines[c]->setSampleRate(APP->engine->getSampleRate());
