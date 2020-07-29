@@ -1,11 +1,5 @@
-<svg
-  version="1.1"
-  xmlns="http://www.w3.org/2000/svg"
-  xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="690"
-  height="380"
-  viewBox="0 0 690 380"
->
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="690" height="380" viewBox="0 0 690 380">
   <style>
     text {
       fill: #333;
@@ -24,44 +18,44 @@
 
   <defs>
     <symbol id="slider" viewBox="0 0 18px 151x">
-      <rect width="18" height="151" fill="none" />
-      <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222" />
+      <rect width="18" height="151" fill="none"/>
+      <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
       <g transform="translate(0 40)">
-        <rect width="18" height="13" rx="1.5" fill="#777" />
-        <rect width="18" height="9" x="0" y="2" fill="#444" />
-        <polyline points="0,6.5 18,6.5" stroke="#fafafa" stroke-width="1" fill="none" />
-        <rect width="14" height="5" x="2" y="4" rx="1.0" fill="#ddd" transform="translate(0 0)" />
+        <rect width="18" height="13" rx="1.5" fill="#777"/>
+        <rect width="18" height="9" x="0" y="2" fill="#444"/>
+        <polyline points="0,6.5 18,6.5" stroke="#fafafa" stroke-width="1" fill="none"/>
+        <rect width="14" height="5" x="2" y="4" rx="1.0" fill="#ddd" transform="translate(0 0)"/>
       </g>
     </symbol>
 
     <symbol id="sliderguide-db" viewBox="0 0 20px 151px">
       <g transform="translate(0 6.5)">
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)" />
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)" />
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
       </g>
       <g transform="translate(0 19.05)">
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)" />
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)" />
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
         <text font-size="6.0pt" transform="translate(7 0) rotate(0) translate(-2.5 2.6)">0</text>
       </g>
       <g transform="translate(0 32.86)">
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)" />
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)" />
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
         <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-4 2.2)">-6</text>
       </g>
       <g transform="translate(0 46.05)">
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)" />
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)" />
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
         <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-12</text>
       </g>
       <g transform="translate(0 72.41)">
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)" />
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)" />
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
         <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-24</text>
       </g>
       <g transform="translate(0 125.14)">
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)" />
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)" />
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
         <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-48</text>
       </g>
       <g transform="translate(0 151.5)">
@@ -72,77 +66,77 @@
 
     <symbol id="knob-smallest" viewBox="0 0 16px 16px">
       <g transform="translate(8 8)">
-        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f" />
-        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f" />
-        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none" />
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </symbol>
 
     <symbol id="knobguide-centertick" viewBox="0 0 40px 40px">
       <g transform="translate(20 20)">
         <g transform="rotate(-90) translate(10 0)">
-          <polyline points="0,0 4,0" stroke-width="1" stroke="#333" />
+          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
         </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)" />
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" />
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)" />
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" />
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
     </symbol>
 
     <symbol id="knobguide-mintick" viewBox="0 0 40px 40px">
       <g transform="translate(20 20)">
         <g transform="rotate(-240) translate(10 0)">
-          <polyline points="0,0 4,0" stroke-width="1" stroke="#333" />
+          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
         </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)" />
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" />
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)" />
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" />
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
     </symbol>
 
     <symbol id="knobguide-frequency16" viewBox="0 0 40px 40px">
       <g transform="translate(20 20)">
-        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(60) translate(10 0)" />
-        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(19.8) translate(10 0)" />
-        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(-27.9) translate(10 0)" />
-        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(-90) translate(10 0)" />
-        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(-172.9) translate(10 0)" />
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(60) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(19.8) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(-27.9) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(-90) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(-172.9) translate(10 0)"/>
         <text font-size="5pt" transform="rotate(-240) translate(10 0) rotate(240) translate(-2.5 4)">0</text>
       </g>
     </symbol>
 
     <symbol id="input" viewBox="0 0 24px 24px">
       <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0" />
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none" />
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </symbol>
 
     <symbol id="output" viewBox="0 0 24px 24px">
       <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00" />
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none" />
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </symbol>
 
     <symbol id="button-small" viewBox="0 0 9px 9px">
       <g transform="translate(4.5 4.5)">
-        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00" />
+        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
       </g>
     </symbol>
 
     <symbol id="light-small" viewBox="0 0 6.4px 6.4px">
-      <rect width="6.4" height="6.4" fill="#0f0" />
+      <rect width="6.4" height="6.4" fill="#0f0"/>
     </symbol>
   </defs>
 
 
-  <rect width="100%" height="100%" fill="#ddd" />
-  <polyline points="1,1 689,1 689,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none" />
-  <polyline points="0.5,0.5 689.5,0.5 689.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none" />
-  <polyline points="0,0 690,0 690,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none" />
+  <rect width="100%" height="100%" fill="#ddd"/>
+  <polyline points="1,1 689,1 689,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
+  <polyline points="0.5,0.5 689.5,0.5 689.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
+  <polyline points="0,0 690,0 690,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none"/>
 
   <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(75 0)" /> -->
 
@@ -150,382 +144,382 @@
   <text class="title" x="311.5" y="19" font-size="12pt" letter-spacing="4px">PEQ14</text>
   <g transform="translate(305 374)">
     <text class="brand" font-size="8pt" letter-spacing="2px">BOGAUDIO</text>
-    <rect width="3.0" height="3" fill="#ddd" transform="translate(24 -5)" />
+    <rect width="3.0" height="3" fill="#ddd" transform="translate(24 -5)"/>
   </g>
 
   <g transform="translate(6.5 48)">
     <!-- <rect width="62" height="40" fill="#f0f" transform="translate(0 0)" /> -->
-    <use id="FREQUENCY_CV_PARAM" xlink:href="#knob-smallest" transform="translate(40.5 11)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(28.5 -1)" />
+    <use id="FREQUENCY_CV_PARAM" xlink:href="#knob-smallest" transform="translate(40.5 11)"/>
+    <use xlink:href="#knobguide-centertick" transform="translate(28.5 -1)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(40 37)">FCV</text>
-    <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(0 5)" />
-    <use id="FREQUENCY_CV_INPUT" xlink:href="#input" transform="translate(3 8)" />
+    <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(0 5)"/>
+    <use id="FREQUENCY_CV_INPUT" xlink:href="#input" transform="translate(3 8)"/>
     <!-- <rect width="62" height="25" fill="#0f0" transform="translate(0 40)" /> -->
   </g>
 
   <g transform="translate(6.5 113)">
     <!-- <rect width="62" height="40" fill="#f0f" transform="translate(0 0)" /> -->
-    <use id="BANDWIDTH_PARAM" xlink:href="#knob-smallest" transform="translate(40.5 8)" />
-    <use xlink:href="#knobguide-mintick" transform="translate(28.5 -4)" />
+    <use id="BANDWIDTH_PARAM" xlink:href="#knob-smallest" transform="translate(40.5 8)"/>
+    <use xlink:href="#knobguide-mintick" transform="translate(28.5 -4)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(42.5 37)">BW</text>
-    <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(0 5)" />
-    <use id="BANDWIDTH_INPUT" xlink:href="#input" transform="translate(3 8)" />
+    <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(0 5)"/>
+    <use id="BANDWIDTH_INPUT" xlink:href="#input" transform="translate(3 8)"/>
     <!-- <rect width="62" height="25" fill="#0f0" transform="translate(0 40)" /> -->
   </g>
 
   <g transform="translate(17.5 179)">
     <!-- <rect width="40" height="23" fill="#f0f" transform="translate(0 0)" /> -->
     <text font-size="5pt" letter-spacing="1px" transform="translate(0 8.5)">CH1-LP</text>
-    <use id="LP_PARAM" xlink:href="#button-small" transform="translate(31 1)" />
+    <use id="LP_PARAM" xlink:href="#button-small" transform="translate(31 1)"/>
     <text font-size="5pt" letter-spacing="0.5px" transform="translate(-3 20.5)">CH14-HP</text>
-    <use id="HP_PARAM" xlink:href="#button-small" transform="translate(31 13)" />
+    <use id="HP_PARAM" xlink:href="#button-small" transform="translate(31 13)"/>
     <!-- <rect width="62" height="25" fill="#0f0" transform="translate(0 23)" /> -->
   </g>
 
   <g transform="translate(18.5 227)">
     <!-- <rect width="38" height="35" fill="#f0f" transform="translate(0 0)" /> -->
     <text font-size="5pt" letter-spacing="1px" transform="translate(5 34.5) rotate(-90)">FCV RNG</text>
-    <use id="FMOD_RELATIVE_LIGHT" xlink:href="#light-small" transform="translate(10 1)" />
+    <use id="FMOD_RELATIVE_LIGHT" xlink:href="#light-small" transform="translate(10 1)"/>
     <text font-size="5pt" letter-spacing="0.5px" transform="translate(18.5 6.7)">OCTV</text>
-    <use id="FMOD_FULL_LIGHT" xlink:href="#light-small" transform="translate(10 14)" />
+    <use id="FMOD_FULL_LIGHT" xlink:href="#light-small" transform="translate(10 14)"/>
     <text font-size="5pt" letter-spacing="0.5px" transform="translate(18.5 19.7)">FULL</text>
-    <use id="FMOD_PARAM" xlink:href="#button-small" transform="translate(14 25)" />
+    <use id="FMOD_PARAM" xlink:href="#button-small" transform="translate(14 25)"/>
     <!-- <rect width="62" height="25" fill="#0f0" transform="translate(0 35)" /> -->
   </g>
 
   <g transform="translate(5.5 287)">
-    <rect width="64" height="73" rx="5" fill="#bbb" />
-    <rect width="32" height="36.5" rx="5" fill="#fafafa" />
-    <rect width="32" height="10" fill="#fafafa" transform="translate(0 26.5)" />
-    <rect width="10" height="36.5" fill="#fafafa" transform="translate(22 0)" />
-    <use id="IN_INPUT" xlink:href="#input" transform="translate(5 3)" />
+    <rect width="64" height="73" rx="5" fill="#bbb"/>
+    <rect width="32" height="36.5" rx="5" fill="#fafafa"/>
+    <rect width="32" height="10" fill="#fafafa" transform="translate(0 26.5)"/>
+    <rect width="10" height="36.5" fill="#fafafa" transform="translate(22 0)"/>
+    <use id="IN_INPUT" xlink:href="#input" transform="translate(5 3)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
-    <use id="ODDS_OUTPUT" xlink:href="#output" transform="translate(35 3)" />
+    <use id="ODDS_OUTPUT" xlink:href="#output" transform="translate(35 3)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(38.5 35)">ODD</text>
-    <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 38)" />
+    <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 38)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(8 70)">OUT</text>
-    <use id="EVENS_OUTPUT" xlink:href="#output" transform="translate(35 38)" />
+    <use id="EVENS_OUTPUT" xlink:href="#output" transform="translate(35 38)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(36 70)">EVEN</text>
   </g>
 
   <g transform="translate(74 20)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.5 8)">1</text>
-    <use xlink:href="#sliderguide-db" transform="translate(0 8)" />
-    <use id="LEVEL1_PARAM" xlink:href="#slider" transform="translate(13.5 8)" />
-    <use id="FREQUENCY1_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)" />
-    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)" />
+    <use xlink:href="#sliderguide-db" transform="translate(0 8)"/>
+    <use id="LEVEL1_PARAM" xlink:href="#slider" transform="translate(13.5 8)"/>
+    <use id="FREQUENCY1_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)"/>
+    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 193)">FREQ</text>
-    <use id="FREQUENCY_CV1_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)" />
+    <use id="FREQUENCY_CV1_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)"/>
+    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
     <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb" />
-      <rect width="34" height="71.5" rx="5" fill="#fafafa" />
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)" />
-      <use id="LEVEL1_INPUT" xlink:href="#input" transform="translate(5 3)" />
+      <rect width="34" height="108" rx="5" fill="#bbb"/>
+      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
+      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+      <use id="LEVEL1_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <use id="FREQUENCY_CV1_INPUT" xlink:href="#input" transform="translate(5 38)" />
+      <use id="FREQUENCY_CV1_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="OUT1_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
+      <use id="OUT1_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
   <g transform="translate(118 20)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.5 8)">2</text>
-    <use xlink:href="#sliderguide-db" transform="translate(0 8)" />
-    <use id="LEVEL2_PARAM" xlink:href="#slider" transform="translate(13.5 8)" />
-    <use id="FREQUENCY2_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)" />
-    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)" />
+    <use xlink:href="#sliderguide-db" transform="translate(0 8)"/>
+    <use id="LEVEL2_PARAM" xlink:href="#slider" transform="translate(13.5 8)"/>
+    <use id="FREQUENCY2_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)"/>
+    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 193)">FREQ</text>
-    <use id="FREQUENCY_CV2_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)" />
+    <use id="FREQUENCY_CV2_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)"/>
+    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
     <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb" />
-      <rect width="34" height="71.5" rx="5" fill="#fafafa" />
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)" />
-      <use id="LEVEL2_INPUT" xlink:href="#input" transform="translate(5 3)" />
+      <rect width="34" height="108" rx="5" fill="#bbb"/>
+      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
+      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+      <use id="LEVEL2_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <use id="FREQUENCY_CV2_INPUT" xlink:href="#input" transform="translate(5 38)" />
+      <use id="FREQUENCY_CV2_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="OUT2_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
+      <use id="OUT2_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
   <g transform="translate(162 20)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.5 8)">3</text>
-    <use xlink:href="#sliderguide-db" transform="translate(0 8)" />
-    <use id="LEVEL3_PARAM" xlink:href="#slider" transform="translate(13.5 8)" />
-    <use id="FREQUENCY3_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)" />
-    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)" />
+    <use xlink:href="#sliderguide-db" transform="translate(0 8)"/>
+    <use id="LEVEL3_PARAM" xlink:href="#slider" transform="translate(13.5 8)"/>
+    <use id="FREQUENCY3_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)"/>
+    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 193)">FREQ</text>
-    <use id="FREQUENCY_CV3_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)" />
+    <use id="FREQUENCY_CV3_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)"/>
+    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
     <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb" />
-      <rect width="34" height="71.5" rx="5" fill="#fafafa" />
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)" />
-      <use id="LEVEL3_INPUT" xlink:href="#input" transform="translate(5 3)" />
+      <rect width="34" height="108" rx="5" fill="#bbb"/>
+      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
+      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+      <use id="LEVEL3_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <use id="FREQUENCY_CV3_INPUT" xlink:href="#input" transform="translate(5 38)" />
+      <use id="FREQUENCY_CV3_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="OUT3_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
+      <use id="OUT3_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
   <g transform="translate(206 20)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.5 8)">4</text>
-    <use xlink:href="#sliderguide-db" transform="translate(0 8)" />
-    <use id="LEVEL4_PARAM" xlink:href="#slider" transform="translate(13.5 8)" />
-    <use id="FREQUENCY4_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)" />
-    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)" />
+    <use xlink:href="#sliderguide-db" transform="translate(0 8)"/>
+    <use id="LEVEL4_PARAM" xlink:href="#slider" transform="translate(13.5 8)"/>
+    <use id="FREQUENCY4_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)"/>
+    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 193)">FREQ</text>
-    <use id="FREQUENCY_CV4_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)" />
+    <use id="FREQUENCY_CV4_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)"/>
+    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
     <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb" />
-      <rect width="34" height="71.5" rx="5" fill="#fafafa" />
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)" />
-      <use id="LEVEL4_INPUT" xlink:href="#input" transform="translate(5 3)" />
+      <rect width="34" height="108" rx="5" fill="#bbb"/>
+      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
+      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+      <use id="LEVEL4_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <use id="FREQUENCY_CV4_INPUT" xlink:href="#input" transform="translate(5 38)" />
+      <use id="FREQUENCY_CV4_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="OUT4_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
+      <use id="OUT4_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
   <g transform="translate(250 20)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.5 8)">5</text>
-    <use xlink:href="#sliderguide-db" transform="translate(0 8)" />
-    <use id="LEVEL5_PARAM" xlink:href="#slider" transform="translate(13.5 8)" />
-    <use id="FREQUENCY5_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)" />
-    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)" />
+    <use xlink:href="#sliderguide-db" transform="translate(0 8)"/>
+    <use id="LEVEL5_PARAM" xlink:href="#slider" transform="translate(13.5 8)"/>
+    <use id="FREQUENCY5_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)"/>
+    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 193)">FREQ</text>
-    <use id="FREQUENCY_CV5_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)" />
+    <use id="FREQUENCY_CV5_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)"/>
+    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
     <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb" />
-      <rect width="34" height="71.5" rx="5" fill="#fafafa" />
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)" />
-      <use id="LEVEL5_INPUT" xlink:href="#input" transform="translate(5 3)" />
+      <rect width="34" height="108" rx="5" fill="#bbb"/>
+      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
+      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+      <use id="LEVEL5_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <use id="FREQUENCY_CV5_INPUT" xlink:href="#input" transform="translate(5 38)" />
+      <use id="FREQUENCY_CV5_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="OUT5_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
+      <use id="OUT5_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
   <g transform="translate(294 20)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.5 8)">6</text>
-    <use xlink:href="#sliderguide-db" transform="translate(0 8)" />
-    <use id="LEVEL6_PARAM" xlink:href="#slider" transform="translate(13.5 8)" />
-    <use id="FREQUENCY6_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)" />
-    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)" />
+    <use xlink:href="#sliderguide-db" transform="translate(0 8)"/>
+    <use id="LEVEL6_PARAM" xlink:href="#slider" transform="translate(13.5 8)"/>
+    <use id="FREQUENCY6_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)"/>
+    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 193)">FREQ</text>
-    <use id="FREQUENCY_CV6_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)" />
+    <use id="FREQUENCY_CV6_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)"/>
+    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
     <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb" />
-      <rect width="34" height="71.5" rx="5" fill="#fafafa" />
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)" />
-      <use id="LEVEL6_INPUT" xlink:href="#input" transform="translate(5 3)" />
+      <rect width="34" height="108" rx="5" fill="#bbb"/>
+      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
+      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+      <use id="LEVEL6_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <use id="FREQUENCY_CV6_INPUT" xlink:href="#input" transform="translate(5 38)" />
+      <use id="FREQUENCY_CV6_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="OUT6_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
+      <use id="OUT6_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
   <g transform="translate(338 20)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.5 8)">7</text>
-    <use xlink:href="#sliderguide-db" transform="translate(0 8)" />
-    <use id="LEVEL7_PARAM" xlink:href="#slider" transform="translate(13.5 8)" />
-    <use id="FREQUENCY7_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)" />
-    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)" />
+    <use xlink:href="#sliderguide-db" transform="translate(0 8)"/>
+    <use id="LEVEL7_PARAM" xlink:href="#slider" transform="translate(13.5 8)"/>
+    <use id="FREQUENCY7_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)"/>
+    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 193)">FREQ</text>
-    <use id="FREQUENCY_CV7_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)" />
+    <use id="FREQUENCY_CV7_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)"/>
+    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
     <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb" />
-      <rect width="34" height="71.5" rx="5" fill="#fafafa" />
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)" />
-      <use id="LEVEL7_INPUT" xlink:href="#input" transform="translate(5 3)" />
+      <rect width="34" height="108" rx="5" fill="#bbb"/>
+      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
+      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+      <use id="LEVEL7_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <use id="FREQUENCY_CV7_INPUT" xlink:href="#input" transform="translate(5 38)" />
+      <use id="FREQUENCY_CV7_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="OUT7_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
+      <use id="OUT7_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
   <g transform="translate(382 20)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.5 8)">8</text>
-    <use xlink:href="#sliderguide-db" transform="translate(0 8)" />
-    <use id="LEVEL8_PARAM" xlink:href="#slider" transform="translate(13.5 8)" />
-    <use id="FREQUENCY8_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)" />
-    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)" />
+    <use xlink:href="#sliderguide-db" transform="translate(0 8)"/>
+    <use id="LEVEL8_PARAM" xlink:href="#slider" transform="translate(13.5 8)"/>
+    <use id="FREQUENCY8_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)"/>
+    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 193)">FREQ</text>
-    <use id="FREQUENCY_CV8_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)" />
+    <use id="FREQUENCY_CV8_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)"/>
+    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
     <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb" />
-      <rect width="34" height="71.5" rx="5" fill="#fafafa" />
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)" />
-      <use id="LEVEL8_INPUT" xlink:href="#input" transform="translate(5 3)" />
+      <rect width="34" height="108" rx="5" fill="#bbb"/>
+      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
+      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+      <use id="LEVEL8_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <use id="FREQUENCY_CV8_INPUT" xlink:href="#input" transform="translate(5 38)" />
+      <use id="FREQUENCY_CV8_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="OUT8_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
+      <use id="OUT8_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
   <g transform="translate(426 20)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.5 8)">9</text>
-    <use xlink:href="#sliderguide-db" transform="translate(0 8)" />
-    <use id="LEVEL9_PARAM" xlink:href="#slider" transform="translate(13.5 8)" />
-    <use id="FREQUENCY9_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)" />
-    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)" />
+    <use xlink:href="#sliderguide-db" transform="translate(0 8)"/>
+    <use id="LEVEL9_PARAM" xlink:href="#slider" transform="translate(13.5 8)"/>
+    <use id="FREQUENCY9_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)"/>
+    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 193)">FREQ</text>
-    <use id="FREQUENCY_CV9_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)" />
+    <use id="FREQUENCY_CV9_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)"/>
+    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
     <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb" />
-      <rect width="34" height="71.5" rx="5" fill="#fafafa" />
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)" />
-      <use id="LEVEL9_INPUT" xlink:href="#input" transform="translate(5 3)" />
+      <rect width="34" height="108" rx="5" fill="#bbb"/>
+      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
+      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+      <use id="LEVEL9_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <use id="FREQUENCY_CV9_INPUT" xlink:href="#input" transform="translate(5 38)" />
+      <use id="FREQUENCY_CV9_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="OUT9_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
+      <use id="OUT9_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
   <g transform="translate(470 20)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(17 8)">10</text>
-    <use xlink:href="#sliderguide-db" transform="translate(0 8)" />
-    <use id="LEVEL10_PARAM" xlink:href="#slider" transform="translate(13.5 8)" />
-    <use id="FREQUENCY10_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)" />
-    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)" />
+    <use xlink:href="#sliderguide-db" transform="translate(0 8)"/>
+    <use id="LEVEL10_PARAM" xlink:href="#slider" transform="translate(13.5 8)"/>
+    <use id="FREQUENCY10_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)"/>
+    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 193)">FREQ</text>
-    <use id="FREQUENCY_CV10_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)" />
+    <use id="FREQUENCY_CV10_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)"/>
+    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
     <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb" />
-      <rect width="34" height="71.5" rx="5" fill="#fafafa" />
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)" />
-      <use id="LEVEL10_INPUT" xlink:href="#input" transform="translate(5 3)" />
+      <rect width="34" height="108" rx="5" fill="#bbb"/>
+      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
+      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+      <use id="LEVEL10_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <use id="FREQUENCY_CV10_INPUT" xlink:href="#input" transform="translate(5 38)" />
+      <use id="FREQUENCY_CV10_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="OUT10_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
+      <use id="OUT10_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
   <g transform="translate(514 20)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(17.5 8)">11</text>
-    <use xlink:href="#sliderguide-db" transform="translate(0 8)" />
-    <use id="LEVEL11_PARAM" xlink:href="#slider" transform="translate(13.5 8)" />
-    <use id="FREQUENCY11_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)" />
-    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)" />
+    <use xlink:href="#sliderguide-db" transform="translate(0 8)"/>
+    <use id="LEVEL11_PARAM" xlink:href="#slider" transform="translate(13.5 8)"/>
+    <use id="FREQUENCY11_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)"/>
+    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 193)">FREQ</text>
-    <use id="FREQUENCY_CV11_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)" />
+    <use id="FREQUENCY_CV11_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)"/>
+    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
     <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb" />
-      <rect width="34" height="71.5" rx="5" fill="#fafafa" />
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)" />
-      <use id="LEVEL11_INPUT" xlink:href="#input" transform="translate(5 3)" />
+      <rect width="34" height="108" rx="5" fill="#bbb"/>
+      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
+      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+      <use id="LEVEL11_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <use id="FREQUENCY_CV11_INPUT" xlink:href="#input" transform="translate(5 38)" />
+      <use id="FREQUENCY_CV11_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="OUT11_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
+      <use id="OUT11_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
   <g transform="translate(558 20)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(17 8)">12</text>
-    <use xlink:href="#sliderguide-db" transform="translate(0 8)" />
-    <use id="LEVEL12_PARAM" xlink:href="#slider" transform="translate(13.5 8)" />
-    <use id="FREQUENCY12_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)" />
-    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)" />
+    <use xlink:href="#sliderguide-db" transform="translate(0 8)"/>
+    <use id="LEVEL12_PARAM" xlink:href="#slider" transform="translate(13.5 8)"/>
+    <use id="FREQUENCY12_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)"/>
+    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 193)">FREQ</text>
-    <use id="FREQUENCY_CV12_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)" />
+    <use id="FREQUENCY_CV12_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)"/>
+    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
     <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb" />
-      <rect width="34" height="71.5" rx="5" fill="#fafafa" />
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)" />
-      <use id="LEVEL12_INPUT" xlink:href="#input" transform="translate(5 3)" />
+      <rect width="34" height="108" rx="5" fill="#bbb"/>
+      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
+      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+      <use id="LEVEL12_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <use id="FREQUENCY_CV12_INPUT" xlink:href="#input" transform="translate(5 38)" />
+      <use id="FREQUENCY_CV12_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="OUT12_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
+      <use id="OUT12_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
   <g transform="translate(602 20)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(17 8)">13</text>
-    <use xlink:href="#sliderguide-db" transform="translate(0 8)" />
-    <use id="LEVEL13_PARAM" xlink:href="#slider" transform="translate(13.5 8)" />
-    <use id="FREQUENCY13_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)" />
-    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)" />
+    <use xlink:href="#sliderguide-db" transform="translate(0 8)"/>
+    <use id="LEVEL13_PARAM" xlink:href="#slider" transform="translate(13.5 8)"/>
+    <use id="FREQUENCY13_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)"/>
+    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 193)">FREQ</text>
-    <use id="FREQUENCY_CV13_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)" />
+    <use id="FREQUENCY_CV13_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)"/>
+    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
     <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb" />
-      <rect width="34" height="71.5" rx="5" fill="#fafafa" />
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)" />
-      <use id="LEVEL13_INPUT" xlink:href="#input" transform="translate(5 3)" />
+      <rect width="34" height="108" rx="5" fill="#bbb"/>
+      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
+      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+      <use id="LEVEL13_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <use id="FREQUENCY_CV13_INPUT" xlink:href="#input" transform="translate(5 38)" />
+      <use id="FREQUENCY_CV13_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="OUT13_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
+      <use id="OUT13_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
   <g transform="translate(646 20)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(17 8)">14</text>
-    <use xlink:href="#sliderguide-db" transform="translate(0 8)" />
-    <use id="LEVEL14_PARAM" xlink:href="#slider" transform="translate(13.5 8)" />
-    <use id="FREQUENCY14_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)" />
-    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)" />
+    <use xlink:href="#sliderguide-db" transform="translate(0 8)"/>
+    <use id="LEVEL14_PARAM" xlink:href="#slider" transform="translate(13.5 8)"/>
+    <use id="FREQUENCY14_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 164)"/>
+    <use xlink:href="#knobguide-frequency16" transform="translate(2.5 152)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 193)">FREQ</text>
-    <use id="FREQUENCY_CV14_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)" />
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)" />
+    <use id="FREQUENCY_CV14_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 204)"/>
+    <use xlink:href="#knobguide-centertick" transform="translate(2.5 192)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
     <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb" />
-      <rect width="34" height="71.5" rx="5" fill="#fafafa" />
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)" />
-      <use id="LEVEL14_INPUT" xlink:href="#input" transform="translate(5 3)" />
+      <rect width="34" height="108" rx="5" fill="#bbb"/>
+      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
+      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+      <use id="LEVEL14_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <use id="FREQUENCY_CV14_INPUT" xlink:href="#input" transform="translate(5 38)" />
+      <use id="FREQUENCY_CV14_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="OUT14_OUTPUT" xlink:href="#output" transform="translate(5 73)" />
+      <use id="OUT14_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
