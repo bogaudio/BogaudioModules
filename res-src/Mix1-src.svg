@@ -1,88 +1,13 @@
 <?xml version="1.0"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="45" height="380" viewBox="0 0 45 380">
-  <style>
-    text {
-      fill: #333;
-      font-family: 'Roboto', sans-serif;
-      font-weight: bold;
-    }
-    text.title {
-      font-family: 'Comfortaa', sans-serif;
-      font-weight: normal;
-    }
-    text.brand {
-      font-family: 'Audiowide', sans-serif;
-      font-weight: bold;
-    }
-  </style>
+  <style/>
 
   <defs>
-    <symbol id="slider" viewBox="0 0 18px 151x">
-      <rect width="18" height="151" fill="none"/>
-      <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
-      <g transform="translate(0 40)">
-        <rect width="18" height="13" rx="1.5" fill="#777"/>
-        <rect width="18" height="9" x="0" y="2" fill="#444"/>
-        <polyline points="0,6.5 18,6.5" stroke="#fafafa" stroke-width="1" fill="none"/>
-        <rect width="14" height="5" x="2" y="4" rx="1.0" fill="#ddd" transform="translate(0 0)"/>
-      </g>
-    </symbol>
-
-    <symbol id="sliderguide-db" viewBox="0 0 20px 151px">
-      <g transform="translate(0 6.5)">
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
-      </g>
-      <g transform="translate(0 19.05)">
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
-        <text font-size="6.0pt" transform="translate(7 0) rotate(0) translate(-2.5 2.6)">0</text>
-      </g>
-      <g transform="translate(0 32.86)">
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
-        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-4 2.2)">-6</text>
-      </g>
-      <g transform="translate(0 46.05)">
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
-        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-12</text>
-      </g>
-      <g transform="translate(0 72.41)">
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
-        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-24</text>
-      </g>
-      <g transform="translate(0 125.14)">
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
-        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-48</text>
-      </g>
-      <g transform="translate(0 151.5)">
-        <!-- <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)" /> -->
-        <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
-      </g>
-    </symbol>
-
-    <symbol id="button" viewBox="0 0 20px 20px">
-      <g transform="translate(10 10)">
-        <circle cx="0" cy="0" r="8.8" stroke-width="1" stroke="#00f" fill="#f00"/>
-      </g>
-    </symbol>
-
-    <symbol id="input" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
-      </g>
-    </symbol>
-
-    <symbol id="output" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
-      </g>
-    </symbol>
+    <def id="slider-151"/>
+    <def id="sliderdial-db-151"/>
+    <def id="button"/>
+    <def id="input"/>
+    <def id="output"/>
   </defs>
 
   <rect width="100%" height="100%" fill="#ddd"/>
@@ -104,15 +29,15 @@
   </g>
 
   <g transform="translate(0 18)">
-    <use xlink:href="#sliderguide-db" transform="translate(0 0)"/>
-    <use id="LEVEL_PARAM" xlink:href="#slider" transform="translate(13.5 0)"/>
+    <use xlink:href="#sliderdial-db-151" transform="translate(0 0)"/>
+    <use id="LEVEL_PARAM" xlink:href="#slider-151" transform="translate(13.5 0)"/>
   </g>
 
   <g transform="translate(0 173)">
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 120)"/>
       <rect width="34" height="127" rx="5" fill="#fafafa"/>
-      <use id="MUTE_PARAM" xlink:href="#button" transform="translate(7 2)"/>
+      <use id="MUTE_PARAM" xlink:href="#button" transform="translate(8 3)"/>
       <use id="MUTE_INPUT" xlink:href="#input" transform="translate(5 25)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(5 57)">MUTE</text>
       <use id="LEVEL_INPUT" xlink:href="#input" transform="translate(5 60)"/>

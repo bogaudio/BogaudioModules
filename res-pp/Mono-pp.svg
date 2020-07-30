@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="45" height="380" viewBox="0 0 45 380">
+  <style>text {
+  fill: #333;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+text.title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+}
+text.brand {
+  font-family: 'Audiowide', sans-serif;
+  font-weight: bold;
+}
+</style>
+
+  <defs>
+    <symbol id="light-small" viewBox="0 0 6.4px 6.4px">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </symbol>
+    <symbol id="knob26" viewBox="0 0 26px 26px">
+      <g transform="translate(13 13)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </symbol>
+    <symbol id="dial-linear" viewBox="0 0 45px 45px">
+      <g transform="translate(22.5 22.5)">
+        <text font-size="5.0pt" transform="rotate(-240) translate(18 0) rotate(240) translate(-2 2)">0</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-210) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-180) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-150) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-120) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-90) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-60) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-30) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(0) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(30) translate(15 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="1" stroke="#333" transform="rotate(60) translate(15 0)"/>
+      </g>
+    </symbol>
+    <symbol id="input" viewBox="0 0 24px 24px">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </symbol>
+    <symbol id="output" viewBox="0 0 24px 24px">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </symbol>
+
+    <symbol id="compression-mono" viewBox="0 0 11px 75px">
+      <!-- <rect width="11" height="75" x="0" y="0" rx="0" fill="#ccc" /> -->
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(3 0)"/>
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(3 15)"/>
+    </symbol>
+
+    <symbol id="guide-compression-mono" viewBox="0 0 20px 95px">
+      <g transform="translate(0 10)">
+        <g transform="translate(0 0)">
+          <polyline points="0,0 3,0" stroke="#333" fill="none" transform="translate(11 0)"/>
+          <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-4.5 2.2)">12+</text>
+        </g>
+        <g transform="translate(0 15)">
+          <polyline points="0,0 3,0" stroke="#333" fill="none" transform="translate(11 0)"/>
+          <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-2.5 2.2)">6</text>
+        </g>
+        <g transform="translate(0 30)">
+          <polyline points="0,0 3,0" stroke="#333" fill="none" transform="translate(11 0)"/>
+          <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-2.5 2.2)">0</text>
+        </g>
+
+        <g transform="translate(0 15)">
+          <!-- <polyline points="0,0 3,0" stroke="#333" fill="none" transform="translate(23 0)" /> -->
+          <text font-size="6.0pt" transform="translate(31 0) rotate(-90) translate(-4.5 2.2)">dB</text>
+        </g>
+      </g>
+    </symbol>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ddd"/>
+  <polyline points="1,1 44,1 44,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
+  <polyline points="0.5,0.5 44.5,0.5 44.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
+  <polyline points="0,0 45,0 45,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none"/>
+
+  <!-- <polyline points="22.5,0 22.5,380" stroke-width="0.5" stroke="#0f0" /> -->
+
+  <g transform="rotate(-90) translate(-376 13)">
+    <text class="title" font-size="7pt" letter-spacing="2.5px">MONO</text>
+    <g transform="translate(0 12)">
+      <text class="brand" font-size="7pt" letter-spacing="2px">BGA</text>
+      <rect width="3.0" height="3" fill="#ddd" transform="translate(11.5 -5)"/>
+    </g>
+  </g>
+
+  <g transform="translate(0 25)">
+    <text font-size="6pt" letter-spacing="2.0px" transform="translate(8 0)">CHAN</text>
+  </g>
+
+  <g transform="translate(2.5 30)">
+    <!-- <rect width="40" height="40" fill="#fafafa" transform="translate(0 0)" /> -->
+    <use id="CHANNEL_1_WIDGET" xlink:href="#light-small" transform="translate(0, 0) translate(1.8 1.8)"/>
+    <use id="CHANNEL_2_WIDGET" xlink:href="#light-small" transform="translate(10, 0) translate(1.8 1.8)"/>
+    <use id="CHANNEL_3_WIDGET" xlink:href="#light-small" transform="translate(20, 0) translate(1.8 1.8)"/>
+    <use id="CHANNEL_4_WIDGET" xlink:href="#light-small" transform="translate(30, 0) translate(1.8 1.8)"/>
+
+    <use id="CHANNEL_5_WIDGET" xlink:href="#light-small" transform="translate(0, 10) translate(1.8 1.8)"/>
+    <use id="CHANNEL_6_WIDGET" xlink:href="#light-small" transform="translate(10, 10) translate(1.8 1.8)"/>
+    <use id="CHANNEL_7_WIDGET" xlink:href="#light-small" transform="translate(20, 10) translate(1.8 1.8)"/>
+    <use id="CHANNEL_8_WIDGET" xlink:href="#light-small" transform="translate(30, 10) translate(1.8 1.8)"/>
+
+    <use id="CHANNEL_9_WIDGET" xlink:href="#light-small" transform="translate(0, 20) translate(1.8 1.8)"/>
+    <use id="CHANNEL_10_WIDGET" xlink:href="#light-small" transform="translate(10, 20) translate(1.8 1.8)"/>
+    <use id="CHANNEL_11_WIDGET" xlink:href="#light-small" transform="translate(20, 20) translate(1.8 1.8)"/>
+    <use id="CHANNEL_12_WIDGET" xlink:href="#light-small" transform="translate(30, 20) translate(1.8 1.8)"/>
+
+    <use id="CHANNEL_13_WIDGET" xlink:href="#light-small" transform="translate(0, 30) translate(1.8 1.8)"/>
+    <use id="CHANNEL_14_WIDGET" xlink:href="#light-small" transform="translate(10, 30) translate(1.8 1.8)"/>
+    <use id="CHANNEL_15_WIDGET" xlink:href="#light-small" transform="translate(20, 30) translate(1.8 1.8)"/>
+    <use id="CHANNEL_16_WIDGET" xlink:href="#light-small" transform="translate(30, 30) translate(1.8 1.8)"/>
+  </g>
+
+  <!-- <rect width="45" height="14" fill="#0f0" transform="translate(0 72)" /> -->
+  <!-- <rect width="45" height="14" fill="#0f0" transform="translate(0 178)" /> -->
+  <!-- <rect width="45" height="14" fill="#0f0" transform="translate(0 237)" /> -->
+
+  <g transform="translate(0 92)">
+    <text font-size="6pt" letter-spacing="2.0px" transform="translate(8 0)">COMP</text>
+    <use id="COMPRESSION_PARAM" xlink:href="#knob26" transform="translate(9.5 7.5)"/>
+    <use xlink:href="#dial-linear" transform="translate(0 -2)"/>
+  </g>
+
+  <g transform="translate(17 147)">
+    <use id="COMPRESSION_WIDGET" xlink:href="#compression-mono" transform="translate(0 -1)"/>
+    <use xlink:href="#guide-compression-mono" transform="translate(-13 -11)"/>
+  </g>
+
+  <g transform="translate(0 198)">
+    <text font-size="6pt" letter-spacing="2.0px" transform="translate(7 0)">LEVEL</text>
+    <use id="LEVEL_PARAM" xlink:href="#knob26" transform="translate(9.5 7.5)"/>
+    <use xlink:href="#dial-linear" transform="translate(0 -2)"/>
+  </g>
+
+  <g transform="translate(0 251)">
+    <g transform="translate(5.5 0)">
+      <rect width="34" height="10" fill="#fafafa" transform="translate(0 28)"/>
+      <rect width="34" height="35" rx="5" fill="#fafafa"/>
+      <use id="POLY_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <text font-size="5pt" letter-spacing="2px" transform="translate(6 35)">POLY</text>
+    </g>
+    <g transform="translate(5.5 41)">
+      <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
+      <rect width="34" height="35" rx="5" fill="#bbb"/>
+      <use id="MONO_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
+      <text font-size="5pt" letter-spacing="2px" transform="translate(4.5 32)">MONO</text>
+    </g>
+  </g>
+</svg>

@@ -1,25 +1,11 @@
 <?xml version="1.0"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="630" height="380" viewBox="0 0 630 380">
-  <style>
-    text {
-      fill: #fff;
-      font-family: 'Comfortaa', sans-serif;
-      font-size: 7pt;
-      font-weight: bold;
-      letter-spacing: 2px;
-    }
-  </style>
+  <style/>
 
   <defs>
-    <symbol id="display" viewBox="0 0 600px 380px">
+    <def id="input"/>
+    <symbol id="display-analyzerxl" viewBox="0 0 600px 380px">
       <rect cx="0" cy="0" width="600" height="380" fill="#222"/>
-    </symbol>
-
-    <symbol id="input" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
-      </g>
     </symbol>
   </defs>
 
@@ -40,6 +26,6 @@
     <use id="SIGNALH_INPUT" xlink:href="#input" transform="translate(0 238)"/>
   </g>
 
-  <use id="DISPLAY_WIDGET" xlink:href="#display" transform="translate(30 0)"/>
+  <use id="DISPLAY_WIDGET" xlink:href="#display-analyzerxl" transform="translate(30 0)"/>
   <!-- <rect cx="0" cy="0" width="600" height="380" fill="#555" transform="translate(30 0)" /> -->
 </svg>

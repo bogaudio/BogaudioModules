@@ -1,47 +1,20 @@
 <?xml version="1.0"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="150" height="380" viewBox="0 0 150 380">
-  <style>
-    text {
-      fill: #333;
-      font-family: 'Roboto', sans-serif;
-      font-weight: bold;
-    }
-    text.title {
-      font-family: 'Comfortaa', sans-serif;
-      font-weight: normal;
-    }
-    text.brand {
-      font-family: 'Audiowide', sans-serif;
-      font-weight: bold;
-    }
-  </style>
+  <style/>
 
   <defs>
-    <symbol id="knob-large" viewBox="0 0 68px 68px">
-      <g transform="translate(34 34)">
-        <polyline points="-10,0 10,0" stroke-width="1" stroke="#00f"/>
-        <polyline points="0,-10 0,10" stroke-width="1" stroke="#00f"/>
-        <circle cx="0" cy="0" r="33.5" stroke-width="1" stroke="#00f" fill="none"/>
-      </g>
-    </symbol>
+    <def id="knob68"/>
+    <def id="knob38"/>
+    <def id="knob16"/>
+    <def id="dial-centertick"/>
+    <def id="dial-mintick"/>
+    <def id="input"/>
+    <def id="output"/>
+    <def id="button-small"/>
+    <def id="light-small"/>
+    <def id="light-tiny"/>
 
-    <symbol id="knob" viewBox="0 0 38px 38px">
-      <g transform="translate(19 19)">
-        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
-        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
-        <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none"/>
-      </g>
-    </symbol>
-
-    <symbol id="knob-smallest" viewBox="0 0 16px 16px">
-      <g transform="translate(8 8)">
-        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
-        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
-        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
-      </g>
-    </symbol>
-
-    <symbol id="knobguide-frequency" viewBox="0 0 150px 108px">
+    <symbol id="dial-frequency-vcf" viewBox="0 0 150px 108px">
       <g transform="translate(75 54)">
         <g transform="rotate(-240) translate(34 0)">
           <polyline points="0,0 5,0" stroke-width="1" stroke="#333" transform="translate(3 0)"/>
@@ -106,47 +79,7 @@
       </g>
     </symbol>
 
-    <symbol id="knobguide-centertick" viewBox="0 0 40px 40px">
-      <g transform="translate(20 20)">
-        <g transform="rotate(-90) translate(10 0)">
-          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
-        </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
-      </g>
-    </symbol>
-
-    <symbol id="knobguide-mintick" viewBox="0 0 40px 40px">
-      <g transform="translate(20 20)">
-        <g transform="rotate(-240) translate(10 0)">
-          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
-        </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
-      </g>
-    </symbol>
-
-    <symbol id="knobguide-linear-38" viewBox="0 0 50px 50px">
-      <g transform="translate(25 25)">
-        <text font-size="6.0pt" transform="rotate(-240) translate(24 0) rotate(240) translate(-4 3)">0</text>
-        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-210) translate(22 0)"/>
-        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-180) translate(22 0)"/>
-        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-150) translate(22 0)"/>
-        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-120) translate(22 0)"/>
-        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-90) translate(22 0)"/>
-        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-60) translate(22 0)"/>
-        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-30) translate(22 0)"/>
-        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(0) translate(22 0)"/>
-        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(30) translate(22 0)"/>
-        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(60) translate(22 0)"/>
-      </g>
-    </symbol>
-
-    <symbol id="knobguide-slope" viewBox="0 0 50px 60px">
+    <symbol id="dial-slope-vcf" viewBox="0 0 50px 60px">
       <g transform="translate(25 30)">
         <text font-size="6.0pt" transform="rotate(-240) translate(24 0) rotate(240) translate(-2 3)">1</text>
         <polyline points="0,0 2,0" stroke-width="0.5" stroke="#333" transform="rotate(-176) translate(22 0)"/>
@@ -164,7 +97,7 @@
       </g>
     </symbol>
 
-    <symbol id="knobguide-mode" viewBox="0 0 60px 60px">
+    <symbol id="dial-mode-vcf" viewBox="0 0 60px 60px">
       <g transform="translate(30 30)">
         <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-67.5) translate(11 0)"/>
         <text font-size="6.0pt" transform="rotate(-67.5) translate(24 0) rotate(67.5) translate(-3 7)">LP</text>
@@ -180,32 +113,20 @@
       </g>
     </symbol>
 
-    <symbol id="input" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+    <symbol id="dial-linear-vcf" viewBox="0 0 50px 50px">
+      <g transform="translate(25 25)">
+        <text font-size="6.0pt" transform="rotate(-240) translate(24 0) rotate(240) translate(-4 3)">0</text>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-210) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-180) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-150) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-120) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-90) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-60) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-30) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(0) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(30) translate(22 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(60) translate(22 0)"/>
       </g>
-    </symbol>
-
-    <symbol id="output" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
-      </g>
-    </symbol>
-
-    <symbol id="button-small" viewBox="0 0 9px 9px">
-      <g transform="translate(4.5 4.5)">
-        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
-      </g>
-    </symbol>
-
-    <symbol id="light-small" viewBox="0 0 6.4px 6.4px">
-      <rect width="6.4" height="6.4" fill="#0f0"/>
-    </symbol>
-
-    <symbol id="light-tiny" viewBox="0 0 1.1px 1.1px">
-      <rect width="3.2" height="3.2" fill="#0f0"/>
     </symbol>
   </defs>
 
@@ -225,42 +146,42 @@
   <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(143 0)" /> -->
 
   <g transform="translate(21 25)">
-    <use id="FREQUENCY_PARAM" xlink:href="#knob-large" transform="translate(20 20)"/>
-    <use xlink:href="#knobguide-frequency" transform="translate(-21 0)"/>
+    <use id="FREQUENCY_PARAM" xlink:href="#knob68" transform="translate(20 20)"/>
+    <use xlink:href="#dial-frequency-vcf" transform="translate(-21 0)"/>
   </g>
 
   <g transform="translate(25 126)">
     <text font-size="8pt" letter-spacing="2px" transform="translate(10 27) rotate(270)">CV</text>
-    <use id="FREQUENCY_CV_PARAM" xlink:href="#knob-smallest" transform="translate(20 12)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(8 0)"/>
+    <use id="FREQUENCY_CV_PARAM" xlink:href="#knob16" transform="translate(20 12)"/>
+    <use xlink:href="#dial-centertick" transform="translate(8 0)"/>
   </g>
 
   <g transform="translate(82 126)">
     <text font-size="8pt" letter-spacing="2px" transform="translate(10 27) rotate(270)">FM</text>
-    <use id="FM_PARAM" xlink:href="#knob-smallest" transform="translate(20 12)"/>
-    <use xlink:href="#knobguide-mintick" transform="translate(8 0)"/>
+    <use id="FM_PARAM" xlink:href="#knob16" transform="translate(20 12)"/>
+    <use xlink:href="#dial-mintick" transform="translate(8 0)"/>
   </g>
 
   <g transform="translate(54 165)">
     <text font-size="8pt" letter-spacing="2px" transform="translate(7 38) rotate(270)">MODE</text>
-    <use id="MODE_PARAM" xlink:href="#knob-smallest" transform="translate(13 11)"/>
-    <use xlink:href="#knobguide-mode" transform="translate(-9 -11)"/>
+    <use id="MODE_PARAM" xlink:href="#knob16" transform="translate(13 11)"/>
+    <use xlink:href="#dial-mode-vcf" transform="translate(-9 -11)"/>
   </g>
 
   <g transform="translate(2 220)">
     <!-- <rect width="75" height="54" fill="#ff0" transform="translate(1 -9)" /> -->
     <!-- <rect width="64" height="54" fill="#f0f" transform="translate(5.5 -9)" /> -->
     <text font-size="8pt" letter-spacing="2px" transform="translate(13.5 43.5) rotate(270)">RES/BW</text>
-    <use id="Q_PARAM" xlink:href="#knob" transform="translate(24.5 0)"/>
-    <use xlink:href="#knobguide-linear-38" transform="translate(18.5 -6)"/>
+    <use id="Q_PARAM" xlink:href="#knob38" transform="translate(24.5 0)"/>
+    <use xlink:href="#dial-linear-vcf" transform="translate(18.5 -6)"/>
   </g>
 
   <g transform="translate(73 220)">
     <!-- <rect width="75" height="54" fill="#ff0" transform="translate(0 -9)" /> -->
     <!-- <rect width="64" height="54" fill="#f0f" transform="translate(5.5 -9)" /> -->
     <text font-size="8pt" letter-spacing="2px" transform="translate(13.4 38.5) rotate(270)">SLOPE</text>
-    <use id="SLOPE_PARAM" xlink:href="#knob" transform="translate(24.5 0)"/>
-    <use xlink:href="#knobguide-slope" transform="translate(18.5 -11)"/>
+    <use id="SLOPE_PARAM" xlink:href="#knob38" transform="translate(24.5 0)"/>
+    <use xlink:href="#dial-slope-vcf" transform="translate(18.5 -11)"/>
   </g>
 
   <g transform="translate(0 269)">

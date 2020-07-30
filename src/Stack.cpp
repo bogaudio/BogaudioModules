@@ -63,7 +63,7 @@ struct StackWidget : ModuleWidget {
 		auto semisParamPosition = Vec(9.5, 32.5);
 		auto octaveParamPosition = Vec(14.5, 86.5);
 		auto fineParamPosition = Vec(14.5, 126.5);
-		auto quantizeParamPosition = Vec(28.4, 191.9);
+		auto quantizeParamPosition = Vec(29.0, 192.0);
 
 		auto cvInputPosition = Vec(10.5, 157.0);
 		auto inInputPosition = Vec(10.5, 215.0);

@@ -1,23 +1,12 @@
 <?xml version="1.0"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="45" height="380" viewBox="0 0 45 380">
-  <style>
-    text {
-      fill: #333;
-      font-family: 'Roboto', sans-serif;
-      font-weight: bold;
-    }
-    text.title {
-      font-family: 'Comfortaa', sans-serif;
-      font-weight: normal;
-    }
-    text.brand {
-      font-family: 'Audiowide', sans-serif;
-      font-weight: bold;
-    }
-  </style>
+  <style/>
 
   <defs>
-    <symbol id="vu" viewBox="0 0 18px 180px">
+    <def id="input"/>
+    <def id="output"/>
+
+    <symbol id="vu-vu" viewBox="0 0 18px 180px">
       <!-- <rect width="18" height="180" x="0" y="0" rx="0" fill="#ccc" /> -->
       <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(3 0)"/>
       <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(10 0)"/>
@@ -45,7 +34,7 @@
       <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(10 165)"/>
     </symbol>
 
-    <symbol id="guide-db" viewBox="0 0 20px 183px">
+    <symbol id="guide-db-vu" viewBox="0 0 20px 183px">
       <g transform="translate(0 15)">
         <polyline points="0,0 3,0" stroke="#333" fill="none" transform="translate(11 0)"/>
         <text font-size="6.0pt" transform="translate(7 0) rotate(0) translate(-2.5 2.6)">6</text>
@@ -79,20 +68,6 @@
         <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-9 4.5)">dB</text>
       </g>
     </symbol>
-
-    <symbol id="input" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
-      </g>
-    </symbol>
-
-    <symbol id="output" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
-      </g>
-    </symbol>
   </defs>
 
   <rect width="100%" height="100%" fill="#ddd"/>
@@ -114,8 +89,8 @@
   </g>
 
   <g transform="translate(0 18)">
-    <use id="VU_WIDGET" xlink:href="#vu" transform="translate(13.5 -1)"/>
-    <use xlink:href="#guide-db" transform="translate(0 -1)"/>
+    <use id="VU_WIDGET" xlink:href="#vu-vu" transform="translate(13.5 -1)"/>
+    <use xlink:href="#guide-db-vu" transform="translate(0 -1)"/>
   </g>
 
   <g transform="translate(0 200)">

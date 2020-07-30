@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="75" height="380" viewBox="0 0 75 380">
+  <style>text {
+  fill: #333;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+text.title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+}
+text.brand {
+  font-family: 'Audiowide', sans-serif;
+  font-weight: bold;
+}
+</style>
+
+  <defs>
+    <symbol id="knob16" viewBox="0 0 16px 16px">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </symbol>
+    <symbol id="dial-centertick" viewBox="0 0 40px 40px">
+      <g transform="translate(20 20)">
+        <g transform="rotate(-90) translate(10 0)">
+          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
+        </g>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </symbol>
+    <symbol id="dial-mintick" viewBox="0 0 40px 40px">
+      <g transform="translate(20 20)">
+        <g transform="rotate(-240) translate(10 0)">
+          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
+        </g>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </symbol>
+    <symbol id="input" viewBox="0 0 24px 24px">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </symbol>
+    <symbol id="output" viewBox="0 0 24px 24px">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </symbol>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ddd"/>
+  <polyline points="1,1 74,1 74,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
+  <polyline points="0.5,0.5 74.5,0.5 74.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
+  <polyline points="0,0 75,0 75,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none"/>
+
+  <text class="title" x="20" y="14" font-size="7pt" letter-spacing="1px">PEQ14XF</text>
+  <g transform="translate(25 374)">
+    <text class="brand" font-size="6.5pt" letter-spacing="2px">BGA</text>
+    <rect width="2" height="2" fill="#ddd" transform="translate(11.5 -4)"/>
+  </g>
+
+  <g transform="translate(-2.5 24)">
+    <use id="DAMP_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
+    <use xlink:href="#dial-mintick" transform="translate(2.5 -6)"/>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(10 33)">DAMP</text>
+    <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(7.5 36)"/>
+    <use id="DAMP_INPUT" xlink:href="#input" transform="translate(10.5 39)"/>
+  </g>
+
+  <g transform="translate(32.5 23.5)">
+    <use id="GAIN_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
+    <use xlink:href="#dial-centertick" transform="translate(2.5 -6)"/>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(11.5 33)">GAIN</text>
+    <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(7.5 36)"/>
+    <use id="GAIN_INPUT" xlink:href="#input" transform="translate(10.5 39)"/>
+  </g>
+
+  <g transform="translate(5.5 108)">
+    <rect width="64" height="260" rx="5" fill="#bbb" transform="translate(0 -10)"/>
+
+    <text font-size="5pt" letter-spacing="2px" transform="translate(27 0)">EF</text>
+    <use id="EF1_OUTPUT" xlink:href="#output" transform="translate(5 3)"/>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(15 35)">1</text>
+    <use id="EF2_OUTPUT" xlink:href="#output" transform="translate(5 38)"/>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(15 70)">2</text>
+    <use id="EF3_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(15 105)">3</text>
+    <use id="EF4_OUTPUT" xlink:href="#output" transform="translate(5 108)"/>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(15 140)">4</text>
+    <use id="EF5_OUTPUT" xlink:href="#output" transform="translate(5 143)"/>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(15 175)">5</text>
+    <use id="EF6_OUTPUT" xlink:href="#output" transform="translate(5 178)"/>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(15 210)">6</text>
+    <use id="EF7_OUTPUT" xlink:href="#output" transform="translate(5 213)"/>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(15 245)">7</text>
+
+    <g transform="translate(31 0)">
+      <use id="EF8_OUTPUT" xlink:href="#output" transform="translate(5 3)"/>
+      <text font-size="5pt" letter-spacing="2px" transform="translate(15 35)">8</text>
+      <use id="EF9_OUTPUT" xlink:href="#output" transform="translate(5 38)"/>
+      <text font-size="5pt" letter-spacing="2px" transform="translate(15 70)">9</text>
+      <use id="EF10_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
+      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">10</text>
+      <use id="EF11_OUTPUT" xlink:href="#output" transform="translate(5 108)"/>
+      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 140)">11</text>
+      <use id="EF12_OUTPUT" xlink:href="#output" transform="translate(5 143)"/>
+      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 175)">12</text>
+      <use id="EF13_OUTPUT" xlink:href="#output" transform="translate(5 178)"/>
+      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 210)">13</text>
+      <use id="EF14_OUTPUT" xlink:href="#output" transform="translate(5 213)"/>
+      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 245)">14</text>
+    </g>
+  </g>
+
+  <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(18.75 0)" /> -->
+  <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(37.5 0)" /> -->
+  <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(56.25 0)" /> -->
+</svg>

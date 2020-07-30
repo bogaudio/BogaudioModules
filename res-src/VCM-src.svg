@@ -1,31 +1,14 @@
 <?xml version="1.0"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="150" height="380" viewBox="0 0 150 380">
-  <style>
-    text {
-      fill: #333;
-      font-family: 'Roboto', sans-serif;
-      font-weight: bold;
-    }
-    text.title {
-      font-family: 'Comfortaa', sans-serif;
-      font-weight: normal;
-    }
-    text.brand {
-      font-family: 'Audiowide', sans-serif;
-      font-weight: bold;
-    }
-  </style>
+  <style/>
 
   <defs>
-    <symbol id="knob" viewBox="0 0 40px 40px">
-      <g transform="translate(20 20)">
-        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
-        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
-        <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none"/>
-      </g>
-    </symbol>
+    <def id="knob38"/>
+    <def id="input"/>
+    <def id="output"/>
+    <def id="button-small"/>
 
-    <symbol id="knobguide" viewBox="0 0 60px 60px">
+    <symbol id="dial-level-vcm" viewBox="0 0 60px 60px">
       <g transform="translate(30 30)">
         <text font-size="6.0pt" transform="rotate(-240) translate(25 0) rotate(240) translate(-2.3 2.5)">0</text>
         <polyline points="0,0 3.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-210) translate(22 0)"/>
@@ -38,26 +21,6 @@
         <polyline points="0,0 3.5,0" stroke-width="0.3" stroke="#333" transform="rotate(0) translate(22 0)"/>
         <polyline points="0,0 3.5,0" stroke-width="0.3" stroke="#333" transform="rotate(30) translate(22 0)"/>
         <polyline points="0,0 5,0" stroke-width="1" stroke="#333" transform="rotate(60) translate(22 0)"/>
-      </g>
-    </symbol>
-
-    <symbol id="input" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
-      </g>
-    </symbol>
-
-    <symbol id="output" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
-      </g>
-    </symbol>
-
-    <symbol id="button-small" viewBox="0 0 9px 9px">
-      <g transform="translate(4.5 4.5)">
-        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
       </g>
     </symbol>
   </defs>
@@ -94,8 +57,8 @@
       </g>
     </g>
     <!-- <polyline points="0,0 150,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 22.5)" /> -->
-    <use id="LEVEL1_PARAM" xlink:href="#knob" transform="translate(88.5 2.5)"/>
-    <use xlink:href="#knobguide" transform="translate(78.5 -7.5)"/>
+    <use id="LEVEL1_PARAM" xlink:href="#knob38" transform="translate(89.5 3.5)"/>
+    <use xlink:href="#dial-level-vcm" transform="translate(78.5 -7.5)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(139 13.8) rotate(90)">CH1</text>
   </g>
 
@@ -112,8 +75,8 @@
       </g>
     </g>
     <!-- <polyline points="0,0 150,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 22.5)" /> -->
-    <use id="LEVEL2_PARAM" xlink:href="#knob" transform="translate(88.5 2.5)"/>
-    <use xlink:href="#knobguide" transform="translate(78.5 -7.5)"/>
+    <use id="LEVEL2_PARAM" xlink:href="#knob38" transform="translate(89.5 3.5)"/>
+    <use xlink:href="#dial-level-vcm" transform="translate(78.5 -7.5)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(139 13.8) rotate(90)">CH2</text>
   </g>
 
@@ -130,8 +93,8 @@
       </g>
     </g>
     <!-- <polyline points="0,0 150,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 22.5)" /> -->
-    <use id="LEVEL3_PARAM" xlink:href="#knob" transform="translate(88.5 2.5)"/>
-    <use xlink:href="#knobguide" transform="translate(78.5 -7.5)"/>
+    <use id="LEVEL3_PARAM" xlink:href="#knob38" transform="translate(89.5 3.5)"/>
+    <use xlink:href="#dial-level-vcm" transform="translate(78.5 -7.5)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(139 13.8) rotate(90)">CH3</text>
   </g>
 
@@ -148,15 +111,15 @@
       </g>
     </g>
     <!-- <polyline points="0,0 150,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 22.5)" /> -->
-    <use id="LEVEL4_PARAM" xlink:href="#knob" transform="translate(88.5 2.5)"/>
-    <use xlink:href="#knobguide" transform="translate(78.5 -7.5)"/>
+    <use id="LEVEL4_PARAM" xlink:href="#knob38" transform="translate(89.5 3.5)"/>
+    <use xlink:href="#dial-level-vcm" transform="translate(78.5 -7.5)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(139 13.8) rotate(90)">CH4</text>
   </g>
 
   <g transform="translate(0 290)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 30.5) rotate(-90)">MIX</text>
-    <use id="MIX_PARAM" xlink:href="#knob" transform="translate(21.5 2.5)"/>
-    <use xlink:href="#knobguide" transform="translate(11.5 -7.5)"/>
+    <use id="MIX_PARAM" xlink:href="#knob38" transform="translate(22.5 3.5)"/>
+    <use xlink:href="#dial-level-vcm" transform="translate(11.5 -7.5)"/>
     <g transform="translate(77 0)">
       <rect width="63" height="43" rx="5" fill="#bbb"/>
       <rect width="31.5" height="43" rx="5" fill="#fafafa"/>

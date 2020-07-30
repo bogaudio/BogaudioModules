@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="9" height="9" viewBox="0 0 9 9">
+  <g transform="translate(4.5 4.5)">
+    <circle r="4.4" fill="#888"/>
+    <circle r="4.4" fill="#333"/>
+
+    <circle r="4.2" fill="#5f5"/>
+    <circle r="4.2" fill="#666" fill-opacity="0.5"/>
+
+    <circle r="4.0" fill="#5f5"/>
+    <circle r="4.0" fill="#777" fill-opacity="0.5"/>
+
+    <circle r="3.8" fill="#5f5"/>
+    <circle r="3.8" fill="#888" fill-opacity="0.5"/>
+
+    <circle r="3.6" fill="#5f5"/>
+    <circle r="3.6" fill="#999" fill-opacity="0.5"/>
+
+    <circle r="3.3" fill="#5f5"/>
+    <circle r="3.3" fill="#aaa" fill-opacity="0.5"/>
+  </g>
+</svg>

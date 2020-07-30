@@ -1,93 +1,15 @@
 <?xml version="1.0"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="240" height="380" viewBox="0 0 240 380">
-  <style>
-    text {
-      fill: #333;
-      font-family: 'Roboto', sans-serif;
-      font-weight: bold;
-    }
-    text.title {
-      font-family: 'Comfortaa', sans-serif;
-      font-weight: normal;
-    }
-    text.brand {
-      font-family: 'Audiowide', sans-serif;
-      font-weight: bold;
-    }
-  </style>
+  <style/>
 
   <defs>
-    <symbol id="knob-smallest" viewBox="0 0 16px 16px">
-      <g transform="translate(8 8)">
-        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
-        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
-        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
-      </g>
-    </symbol>
-
-    <symbol id="knobguide-channels" viewBox="0 0 40px 40px">
-      <g transform="translate(20 20)">
-        <text font-size="5pt" transform="rotate(-240) translate(14 0) rotate(240) translate(-2 2)">1</text>
-        <text font-size="5pt" transform="rotate(-180) translate(14 0) rotate(180) translate(-2 2)">4</text>
-        <text font-size="5pt" transform="rotate(-100) translate(14 0) rotate(100) translate(-2 2)">8</text>
-        <text font-size="5pt" transform="rotate(-20) translate(13 0) rotate(20) translate(-2 2)">12</text>
-        <text font-size="5pt" transform="rotate(60) translate(13 0) rotate(-60) translate(-1.8 3)">16</text>
-
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-220) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-200) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-160) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-140) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-120) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-80) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-60) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-40) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(0) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(20) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(40) translate(10 0)"/>
-      </g>
-    </symbol>
-
-    <symbol id="knobguide-centertick" viewBox="0 0 40px 40px">
-      <g transform="translate(20 20)">
-        <g transform="rotate(-90) translate(10 0)">
-          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
-        </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
-      </g>
-    </symbol>
-
-    <symbol id="knobguide-mintick" viewBox="0 0 40px 40px">
-      <g transform="translate(20 20)">
-        <g transform="rotate(-240) translate(10 0)">
-          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
-        </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
-      </g>
-    </symbol>
-
-    <symbol id="input" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
-      </g>
-    </symbol>
-
-    <symbol id="output" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
-      </g>
-    </symbol>
-
-    <symbol id="light-tiny" viewBox="0 0 1.1px 1.1px">
-      <rect width="3.2" height="3.2" fill="#0f0"/>
-    </symbol>
+    <def id="knob16"/>
+    <def id="dial-channels-small"/>
+    <def id="dial-centertick"/>
+    <def id="dial-mintick"/>
+    <def id="input"/>
+    <def id="output"/>
+    <def id="light-tiny"/>
   </defs>
 
   <rect width="100%" height="100%" fill="#ddd"/>
@@ -135,131 +57,131 @@
   <g transform="translate(0 33)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(46.5 8)">1</text>
     <use id="CHANNEL1_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
-    <use id="OFFSET1_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)"/>
-    <use id="SCALE1_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)"/>
-    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)"/>
+    <use id="OFFSET1_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
+    <use xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
+    <use id="SCALE1_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
+    <use xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
   </g>
   <g transform="translate(0 68)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(46.5 8)">2</text>
     <use id="CHANNEL2_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
-    <use id="OFFSET2_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)"/>
-    <use id="SCALE2_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)"/>
-    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)"/>
+    <use id="OFFSET2_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
+    <use xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
+    <use id="SCALE2_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
+    <use xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
   </g>
   <g transform="translate(0 103)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(46.5 8)">3</text>
     <use id="CHANNEL3_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
-    <use id="OFFSET3_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)"/>
-    <use id="SCALE3_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)"/>
-    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)"/>
+    <use id="OFFSET3_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
+    <use xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
+    <use id="SCALE3_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
+    <use xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
   </g>
   <g transform="translate(0 138)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(46.5 8)">4</text>
     <use id="CHANNEL4_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
-    <use id="OFFSET4_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)"/>
-    <use id="SCALE4_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)"/>
-    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)"/>
+    <use id="OFFSET4_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
+    <use xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
+    <use id="SCALE4_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
+    <use xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
   </g>
   <g transform="translate(0 173)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(46.5 8)">5</text>
     <use id="CHANNEL5_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
-    <use id="OFFSET5_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)"/>
-    <use id="SCALE5_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)"/>
-    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)"/>
+    <use id="OFFSET5_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
+    <use xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
+    <use id="SCALE5_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
+    <use xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
   </g>
   <g transform="translate(0 208)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(46.5 8)">6</text>
     <use id="CHANNEL6_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
-    <use id="OFFSET6_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)"/>
-    <use id="SCALE6_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)"/>
-    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)"/>
+    <use id="OFFSET6_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
+    <use xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
+    <use id="SCALE6_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
+    <use xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
   </g>
   <g transform="translate(0 243)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(46.5 8)">7</text>
     <use id="CHANNEL7_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
-    <use id="OFFSET7_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)"/>
-    <use id="SCALE7_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)"/>
-    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)"/>
+    <use id="OFFSET7_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
+    <use xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
+    <use id="SCALE7_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
+    <use xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
   </g>
   <g transform="translate(0 278)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(46.5 8)">8</text>
     <use id="CHANNEL8_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
-    <use id="OFFSET8_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)"/>
-    <use id="SCALE8_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)"/>
-    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)"/>
+    <use id="OFFSET8_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
+    <use xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
+    <use id="SCALE8_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
+    <use xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
   </g>
 
   <g transform="translate(120 33)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(46.5 8)">9</text>
     <use id="CHANNEL9_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
-    <use id="OFFSET9_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)"/>
-    <use id="SCALE9_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)"/>
-    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)"/>
+    <use id="OFFSET9_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
+    <use xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
+    <use id="SCALE9_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
+    <use xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
   </g>
   <g transform="translate(120 68)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(44 8)">10</text>
     <use id="CHANNEL10_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
-    <use id="OFFSET10_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)"/>
-    <use id="SCALE10_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)"/>
-    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)"/>
+    <use id="OFFSET10_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
+    <use xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
+    <use id="SCALE10_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
+    <use xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
   </g>
   <g transform="translate(120 103)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(44 8)">11</text>
     <use id="CHANNEL11_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
-    <use id="OFFSET11_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)"/>
-    <use id="SCALE11_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)"/>
-    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)"/>
+    <use id="OFFSET11_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
+    <use xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
+    <use id="SCALE11_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
+    <use xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
   </g>
   <g transform="translate(120 138)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(44 8)">12</text>
     <use id="CHANNEL12_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
-    <use id="OFFSET12_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)"/>
-    <use id="SCALE12_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)"/>
-    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)"/>
+    <use id="OFFSET12_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
+    <use xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
+    <use id="SCALE12_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
+    <use xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
   </g>
   <g transform="translate(120 173)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(44 8)">13</text>
     <use id="CHANNEL13_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
-    <use id="OFFSET13_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)"/>
-    <use id="SCALE13_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)"/>
-    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)"/>
+    <use id="OFFSET13_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
+    <use xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
+    <use id="SCALE13_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
+    <use xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
   </g>
   <g transform="translate(120 208)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(44 8)">14</text>
     <use id="CHANNEL14_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
-    <use id="OFFSET14_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)"/>
-    <use id="SCALE14_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)"/>
-    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)"/>
+    <use id="OFFSET14_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
+    <use xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
+    <use id="SCALE14_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
+    <use xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
   </g>
   <g transform="translate(120 243)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(44 8)">15</text>
     <use id="CHANNEL15_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
-    <use id="OFFSET15_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)"/>
-    <use id="SCALE15_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)"/>
-    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)"/>
+    <use id="OFFSET15_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
+    <use xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
+    <use id="SCALE15_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
+    <use xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
   </g>
   <g transform="translate(120 278)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(44 8)">16</text>
     <use id="CHANNEL16_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
-    <use id="OFFSET16_PARAM" xlink:href="#knob-smallest" transform="translate(62.5 0)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(50.5 -12)"/>
-    <use id="SCALE16_PARAM" xlink:href="#knob-smallest" transform="translate(93.5 0)"/>
-    <use xlink:href="#knobguide-mintick" transform="translate(81.5 -12)"/>
+    <use id="OFFSET16_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
+    <use xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
+    <use id="SCALE16_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
+    <use xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
   </g>
 
   <text font-size="6pt" letter-spacing="0.3px" transform="translate(55 308)">OFFSET</text>
@@ -272,8 +194,8 @@
 
   <g transform="translate(73 320)">
     <text font-size="6pt" letter-spacing="1.5px" transform="translate(-4 39) rotate(-90) translate(6.5 0)">CHAN</text>
-    <use id="CHANNELS_PARAM" xlink:href="#knob-smallest" transform="translate(10 12)"/>
-    <use xlink:href="#knobguide-channels" transform="translate(-2 0)"/>
+    <use id="CHANNELS_PARAM" xlink:href="#knob16" transform="translate(10 12)"/>
+    <use xlink:href="#dial-channels-small" transform="translate(-2 0)"/>
   </g>
 
   <g transform="translate(115 318)">

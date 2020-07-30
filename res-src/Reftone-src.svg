@@ -1,35 +1,16 @@
 <?xml version="1.0"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="45" height="380" viewBox="0 0 45 380">
-  <style>
-    text {
-      fill: #333;
-      font-family: 'Roboto', sans-serif;
-      font-weight: bold;
-    }
-    text.title {
-      font-family: 'Comfortaa', sans-serif;
-      font-weight: normal;
-    }
-    text.brand {
-      font-family: 'Audiowide', sans-serif;
-      font-weight: bold;
-    }
-  </style>
+  <style/>
 
   <defs>
-    <symbol id="display" viewBox="0 0 45px 34px">
+    <def id="knob26"/>
+    <def id="output"/>
+
+    <symbol id="display-reftone" viewBox="0 0 45px 34px">
       <rect width="38" height="48" fill="#222" transform="translate(3.5 0)"/>
     </symbol>
 
-    <symbol id="knob" viewBox="0 0 45px 45px">
-      <g transform="translate(22.5 22.5)">
-        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
-        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
-        <circle r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
-      </g>
-    </symbol>
-
-    <symbol id="knobguide-pitch" viewBox="0 0 45px 45px">
+    <symbol id="dial-pitch-reftone" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <g transform="rotate(-240) translate(15 0)">
           <text font-size="5.0pt" transform="translate(2 0) rotate(240) translate(-2.2 2.2)">C</text>
@@ -70,7 +51,7 @@
       </g>
     </symbol>
 
-    <symbol id="knobguide-octave" viewBox="0 0 45px 45px">
+    <symbol id="dial-octave-reftone" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <g transform="rotate(-240) translate(15 0)">
           <text font-size="5.0pt" transform="translate(2 0) rotate(240) translate(-2.2 2.2)">1</text>
@@ -99,7 +80,7 @@
       </g>
     </symbol>
 
-    <symbol id="knobguide-fine" viewBox="0 0 45px 45px">
+    <symbol id="dial-fine-reftone" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <g transform="rotate(-240) translate(15 0)">
           <!-- <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" /> -->
@@ -117,13 +98,6 @@
         <path d="M 0 -17.5 A 17.5 17.5 0 0 1 17.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
         <path d="M 0 -17.5 A 17.5 17.5 0 0 0 -17.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -17.5 A 17.5 17.5 0 0 0 -17.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
-      </g>
-    </symbol>
-
-    <symbol id="output" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </symbol>
   </defs>
@@ -148,29 +122,29 @@
   </g>
 
   <g transform="translate(0 18)">
-    <use id="DISPLAY_WIDGET" xlink:href="#display"/>
+    <use id="DISPLAY_WIDGET" xlink:href="#display-reftone"/>
 
     <g transform="translate(0 62)">
       <g transform="translate(0 0)">
         <text font-size="6pt" letter-spacing="2px" transform="translate(7 0)">PITCH</text>
-        <use id="PITCH_PARAM" xlink:href="#knob" transform="translate(0 0)"/>
+        <use id="PITCH_PARAM" xlink:href="#knob26" transform="translate(9.5 9.5)"/>
       </g>
 
       <g transform="translate(0 54)">
         <text font-size="6pt" letter-spacing="2px" transform="translate(2.5 0)">OCTAVE</text>
-        <use id="OCTAVE_PARAM" xlink:href="#knob" transform="translate(0 0)"/>
+        <use id="OCTAVE_PARAM" xlink:href="#knob26" transform="translate(9.5 9.5)"/>
       </g>
 
       <g transform="translate(0 108)">
         <text font-size="6pt" letter-spacing="2px" transform="translate(11 0)">FINE</text>
-        <use id="FINE_PARAM" xlink:href="#knob" transform="translate(0 0)"/>
+        <use id="FINE_PARAM" xlink:href="#knob26" transform="translate(9.5 9.5)"/>
       </g>
     </g>
   </g>
 
-  <use xlink:href="#knobguide-pitch" transform="translate(0 80)"/>
-  <use xlink:href="#knobguide-octave" transform="translate(0 134)"/>
-  <use xlink:href="#knobguide-fine" transform="translate(0 188)"/>
+  <use xlink:href="#dial-pitch-reftone" transform="translate(0 80)"/>
+  <use xlink:href="#dial-octave-reftone" transform="translate(0 134)"/>
+  <use xlink:href="#dial-fine-reftone" transform="translate(0 188)"/>
 
   <g transform="translate(0 235)">
     <g transform="translate(0 0)">

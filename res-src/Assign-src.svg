@@ -1,78 +1,14 @@
 <?xml version="1.0"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="45" height="380" viewBox="0 0 45 380">
-  <style>
-    text {
-      fill: #333;
-      font-family: 'Roboto', sans-serif;
-      font-weight: bold;
-    }
-    text.title {
-      font-family: 'Comfortaa', sans-serif;
-      font-weight: normal;
-    }
-    text.brand {
-      font-family: 'Audiowide', sans-serif;
-      font-weight: bold;
-    }
-  </style>
+  <style/>
 
   <defs>
-    <symbol id="knob-medium" viewBox="0 0 26px 26px">
-      <g transform="translate(13 13)">
-        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
-        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
-        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
-      </g>
-    </symbol>
-
-    <symbol id="knobguide-channels" viewBox="0 0 45px 45px">
-      <g transform="translate(22.5 22.5)">
-        <text font-size="5.0pt" transform="rotate(-240) translate(18 0) rotate(240) translate(-1.9 2.2)">1</text>
-        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-220) translate(15 0)"/>
-        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-200) translate(15 0)"/>
-
-        <text font-size="5.0pt" transform="rotate(-180) translate(17 0) rotate(180) translate(-2 2.2)">4</text>
-        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-160) translate(15 0)"/>
-        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-140) translate(15 0)"/>
-        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-120) translate(15 0)"/>
-
-        <text font-size="5.0pt" transform="rotate(-100) translate(17 0) rotate(100) translate(-1.9 2.5)">8</text>
-        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-80) translate(15 0)"/>
-        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-60) translate(15 0)"/>
-        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-40) translate(15 0)"/>
-
-        <text font-size="5.0pt" transform="rotate(-20) translate(17 0) rotate(20) translate(-3 2.4)">12</text>
-        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(0) translate(15 0)"/>
-        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(20) translate(15 0)"/>
-        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(40) translate(15 0)"/>
-
-        <text font-size="5.0pt" transform="rotate(60) translate(18 0) rotate(-60) translate(-1.9 2.2)">16</text>
-      </g>
-    </symbol>
-
-    <symbol id="button-small" viewBox="0 0 9px 9px">
-      <g transform="translate(4.5 4.5)">
-        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
-      </g>
-    </symbol>
-
-    <symbol id="light-small" viewBox="0 0 6.4px 6.4px">
-      <rect width="6.4" height="6.4" fill="#0f0"/>
-    </symbol>
-
-    <symbol id="input" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
-      </g>
-    </symbol>
-
-    <symbol id="output" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
-      </g>
-    </symbol>
+    <def id="knob26"/>
+    <def id="dial-channels"/>
+    <def id="button-small"/>
+    <def id="light-small"/>
+    <def id="input"/>
+    <def id="output"/>
   </defs>
 
   <rect width="100%" height="100%" fill="#ddd"/>
@@ -92,8 +28,8 @@
 
   <g transform="translate(0 25)">
     <text font-size="6pt" letter-spacing="2.0px" transform="translate(8 0)">CHAN</text>
-    <use id="CHANNELS_PARAM" xlink:href="#knob-medium" transform="translate(9.5 9)"/>
-    <use xlink:href="#knobguide-channels" transform="translate(0 -1)"/>
+    <use id="CHANNELS_PARAM" xlink:href="#knob26" transform="translate(9.5 9)"/>
+    <use xlink:href="#dial-channels" transform="translate(0 -1)"/>
   </g>
 
   <g transform="translate(0 75)">

@@ -1,77 +1,15 @@
 <?xml version="1.0"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="225" height="380" viewBox="0 0 225 380">
-  <style>
-    text {
-      fill: #333;
-      font-family: 'Roboto', sans-serif;
-      font-weight: bold;
-    }
-    text.title {
-      font-family: 'Comfortaa', sans-serif;
-      font-weight: normal;
-    }
-    text.brand {
-      font-family: 'Audiowide', sans-serif;
-      font-weight: bold;
-    }
-  </style>
+  <style/>
 
   <defs>
-    <symbol id="knob-smallest" viewBox="0 0 16px 16px">
-      <g transform="translate(8 8)">
-        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
-        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
-        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
-      </g>
-    </symbol>
-
-    <symbol id="knobguide-centertick" viewBox="0 0 40px 40px">
-      <g transform="translate(20 20)">
-        <g transform="rotate(-90) translate(10 0)">
-          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
-        </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
-      </g>
-    </symbol>
-
-    <symbol id="knobguide-mintick" viewBox="0 0 40px 40px">
-      <g transform="translate(20 20)">
-        <g transform="rotate(-240) translate(10 0)">
-          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
-        </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
-      </g>
-    </symbol>
-
-    <symbol id="input" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
-      </g>
-    </symbol>
-
-    <symbol id="output" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
-      </g>
-    </symbol>
-
-    <symbol id="button-small" viewBox="0 0 9px 9px">
-      <g transform="translate(4.5 4.5)">
-        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
-      </g>
-    </symbol>
-
-    <symbol id="light-tiny" viewBox="0 0 1.1px 1.1px">
-      <rect width="3.2" height="3.2" fill="#0f0"/>
-    </symbol>
+    <def id="knob16"/>
+    <def id="dial-centertick"/>
+    <def id="dial-mintick"/>
+    <def id="input"/>
+    <def id="output"/>
+    <def id="button-small"/>
+    <def id="light-tiny"/>
   </defs>
 
   <rect width="100%" height="100%" fill="#ddd"/>
@@ -93,22 +31,22 @@
 
   <g transform="translate(4 20)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">CH1</text>
-    <use id="LOW1_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 23)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 11)"/>
+    <use id="LOW1_PARAM" xlink:href="#knob16" transform="translate(14.5 23)"/>
+    <use xlink:href="#dial-centertick" transform="translate(2.5 11)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 48)">LOW</text>
-    <use id="MID1_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 69)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 57)"/>
+    <use id="MID1_PARAM" xlink:href="#knob16" transform="translate(14.5 69)"/>
+    <use xlink:href="#dial-centertick" transform="translate(2.5 57)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 94)">MID</text>
-    <use id="HIGH1_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 115)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 103)"/>
+    <use id="HIGH1_PARAM" xlink:href="#knob16" transform="translate(14.5 115)"/>
+    <use xlink:href="#dial-centertick" transform="translate(2.5 103)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11.5 140)">HIGH</text>
-    <use id="A1_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 160)"/>
-    <use xlink:href="#knobguide-mintick" transform="translate(2.5 148)"/>
+    <use id="A1_PARAM" xlink:href="#knob16" transform="translate(14.5 160)"/>
+    <use xlink:href="#dial-mintick" transform="translate(2.5 148)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.2 185)">A</text>
     <text font-size="5pt" letter-spacing="1px" transform="translate(9 195)">PRE</text>
     <use id="PRE_A1_PARAM" xlink:href="#button-small" transform="translate(26 188)"/>
-    <use id="B1_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 216)"/>
-    <use xlink:href="#knobguide-mintick" transform="translate(2.5 204)"/>
+    <use id="B1_PARAM" xlink:href="#knob16" transform="translate(14.5 216)"/>
+    <use xlink:href="#dial-mintick" transform="translate(2.5 204)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.4 241)">B</text>
     <text font-size="5pt" letter-spacing="1px" transform="translate(9 251)">PRE</text>
     <use id="PRE_B1_PARAM" xlink:href="#button-small" transform="translate(26 244)"/>
@@ -123,22 +61,22 @@
 
   <g transform="translate(47 20)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">CH2</text>
-    <use id="LOW2_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 23)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 11)"/>
+    <use id="LOW2_PARAM" xlink:href="#knob16" transform="translate(14.5 23)"/>
+    <use xlink:href="#dial-centertick" transform="translate(2.5 11)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 48)">LOW</text>
-    <use id="MID2_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 69)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 57)"/>
+    <use id="MID2_PARAM" xlink:href="#knob16" transform="translate(14.5 69)"/>
+    <use xlink:href="#dial-centertick" transform="translate(2.5 57)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 94)">MID</text>
-    <use id="HIGH2_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 115)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 103)"/>
+    <use id="HIGH2_PARAM" xlink:href="#knob16" transform="translate(14.5 115)"/>
+    <use xlink:href="#dial-centertick" transform="translate(2.5 103)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11.5 140)">HIGH</text>
-    <use id="A2_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 160)"/>
-    <use xlink:href="#knobguide-mintick" transform="translate(2.5 148)"/>
+    <use id="A2_PARAM" xlink:href="#knob16" transform="translate(14.5 160)"/>
+    <use xlink:href="#dial-mintick" transform="translate(2.5 148)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.2 185)">A</text>
     <text font-size="5pt" letter-spacing="1px" transform="translate(9 195)">PRE</text>
     <use id="PRE_A2_PARAM" xlink:href="#button-small" transform="translate(26 188)"/>
-    <use id="B2_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 216)"/>
-    <use xlink:href="#knobguide-mintick" transform="translate(2.5 204)"/>
+    <use id="B2_PARAM" xlink:href="#knob16" transform="translate(14.5 216)"/>
+    <use xlink:href="#dial-mintick" transform="translate(2.5 204)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.4 241)">B</text>
     <text font-size="5pt" letter-spacing="1px" transform="translate(9 251)">PRE</text>
     <use id="PRE_B2_PARAM" xlink:href="#button-small" transform="translate(26 244)"/>
@@ -153,22 +91,22 @@
 
   <g transform="translate(90 20)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">CH3</text>
-    <use id="LOW3_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 23)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 11)"/>
+    <use id="LOW3_PARAM" xlink:href="#knob16" transform="translate(14.5 23)"/>
+    <use xlink:href="#dial-centertick" transform="translate(2.5 11)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 48)">LOW</text>
-    <use id="MID3_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 69)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 57)"/>
+    <use id="MID3_PARAM" xlink:href="#knob16" transform="translate(14.5 69)"/>
+    <use xlink:href="#dial-centertick" transform="translate(2.5 57)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 94)">MID</text>
-    <use id="HIGH3_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 115)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 103)"/>
+    <use id="HIGH3_PARAM" xlink:href="#knob16" transform="translate(14.5 115)"/>
+    <use xlink:href="#dial-centertick" transform="translate(2.5 103)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11.5 140)">HIGH</text>
-    <use id="A3_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 160)"/>
-    <use xlink:href="#knobguide-mintick" transform="translate(2.5 148)"/>
+    <use id="A3_PARAM" xlink:href="#knob16" transform="translate(14.5 160)"/>
+    <use xlink:href="#dial-mintick" transform="translate(2.5 148)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.2 185)">A</text>
     <text font-size="5pt" letter-spacing="1px" transform="translate(9 195)">PRE</text>
     <use id="PRE_A3_PARAM" xlink:href="#button-small" transform="translate(26 188)"/>
-    <use id="B3_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 216)"/>
-    <use xlink:href="#knobguide-mintick" transform="translate(2.5 204)"/>
+    <use id="B3_PARAM" xlink:href="#knob16" transform="translate(14.5 216)"/>
+    <use xlink:href="#dial-mintick" transform="translate(2.5 204)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.4 241)">B</text>
     <text font-size="5pt" letter-spacing="1px" transform="translate(9 251)">PRE</text>
     <use id="PRE_B3_PARAM" xlink:href="#button-small" transform="translate(26 244)"/>
@@ -183,22 +121,22 @@
 
   <g transform="translate(133 20)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">CH4</text>
-    <use id="LOW4_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 23)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 11)"/>
+    <use id="LOW4_PARAM" xlink:href="#knob16" transform="translate(14.5 23)"/>
+    <use xlink:href="#dial-centertick" transform="translate(2.5 11)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 48)">LOW</text>
-    <use id="MID4_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 69)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 57)"/>
+    <use id="MID4_PARAM" xlink:href="#knob16" transform="translate(14.5 69)"/>
+    <use xlink:href="#dial-centertick" transform="translate(2.5 57)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 94)">MID</text>
-    <use id="HIGH4_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 115)"/>
-    <use xlink:href="#knobguide-centertick" transform="translate(2.5 103)"/>
+    <use id="HIGH4_PARAM" xlink:href="#knob16" transform="translate(14.5 115)"/>
+    <use xlink:href="#dial-centertick" transform="translate(2.5 103)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11.5 140)">HIGH</text>
-    <use id="A4_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 160)"/>
-    <use xlink:href="#knobguide-mintick" transform="translate(2.5 148)"/>
+    <use id="A4_PARAM" xlink:href="#knob16" transform="translate(14.5 160)"/>
+    <use xlink:href="#dial-mintick" transform="translate(2.5 148)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.2 185)">A</text>
     <text font-size="5pt" letter-spacing="1px" transform="translate(9 195)">PRE</text>
     <use id="PRE_A4_PARAM" xlink:href="#button-small" transform="translate(26 188)"/>
-    <use id="B4_PARAM" xlink:href="#knob-smallest" transform="translate(14.5 216)"/>
-    <use xlink:href="#knobguide-mintick" transform="translate(2.5 204)"/>
+    <use id="B4_PARAM" xlink:href="#knob16" transform="translate(14.5 216)"/>
+    <use xlink:href="#dial-mintick" transform="translate(2.5 204)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.4 241)">B</text>
     <text font-size="5pt" letter-spacing="1px" transform="translate(9 251)">PRE</text>
     <use id="PRE_B4_PARAM" xlink:href="#button-small" transform="translate(26 244)"/>
@@ -223,7 +161,7 @@
       <text font-size="5pt" letter-spacing="2px" transform="translate(15.3 73)">L</text>
       <use id="R_A_INPUT" xlink:href="#input" transform="translate(5 76)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8 108)">R(L)</text>
-      <use id="LEVEL_A_PARAM" xlink:href="#knob-smallest" transform="translate(9 117)"/>
+      <use id="LEVEL_A_PARAM" xlink:href="#knob16" transform="translate(9 117)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 145)">LEVEL</text>
       <use id="LEVEL_A_INPUT" xlink:href="#input" transform="translate(5 149)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(11 181)">CV</text>
@@ -233,7 +171,7 @@
         <!-- <text font-size="5pt" letter-spacing="2px" transform="translate(-1 40) rotate(-90)">AUX A</text> -->
       <!-- </g> -->
     </g>
-    <use xlink:href="#knobguide-mintick" transform="translate(2.5 106)"/>
+    <use xlink:href="#dial-mintick" transform="translate(2.5 106)"/>
 
     <g transform="translate(5.5 191)">
       <rect width="34" height="50" rx="5" fill="#bbb"/>
@@ -245,10 +183,10 @@
       <text font-size="5pt" letter-spacing="2px" transform="translate(15.3 73)">L</text>
       <use id="R_B_INPUT" xlink:href="#input" transform="translate(5 76)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8 108)">R(L)</text>
-      <use id="LEVEL_B_PARAM" xlink:href="#knob-smallest" transform="translate(9 117)"/>
+      <use id="LEVEL_B_PARAM" xlink:href="#knob16" transform="translate(9 117)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 145)">LEVEL</text>
     </g>
-    <use xlink:href="#knobguide-mintick" transform="translate(2.5 296)"/>
+    <use xlink:href="#dial-mintick" transform="translate(2.5 296)"/>
     <!-- <polyline points="0,0 0,350" stroke="#0f0" stroke-width="1" fill="none" transform="translate(22.5 0)" /> -->
   </g>
 </svg>

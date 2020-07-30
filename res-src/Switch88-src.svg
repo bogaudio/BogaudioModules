@@ -1,45 +1,11 @@
 <?xml version="1.0"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="330" height="380" viewBox="0 0 330 380">
-  <style>
-    text {
-      fill: #333;
-      font-family: 'Roboto', sans-serif;
-      font-weight: bold;
-    }
-    text.title {
-      font-family: 'Comfortaa', sans-serif;
-      font-weight: normal;
-    }
-    text.brand {
-      font-family: 'Audiowide', sans-serif;
-      font-weight: bold;
-    }
-  </style>
+  <style/>
 
   <defs>
-    <symbol id="button" viewBox="0 0 20px 20px">
-      <g transform="translate(10 10)">
-        <circle cx="0" cy="0" r="8.8" stroke-width="1" stroke="#00f" fill="#f00"/>
-      </g>
-    </symbol>
-
-    <symbol id="input" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
-        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
-        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
-      </g>
-    </symbol>
-
-    <symbol id="output" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
-        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
-        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
-      </g>
-    </symbol>
+    <def id="button"/>
+    <def id="input"/>
+    <def id="output"/>
   </defs>
 
   <rect width="100%" height="100%" fill="#ddd"/>
@@ -82,203 +48,203 @@
   </g>
 
   <g transform="translate(50 24)">
-    <use id="MIX11_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX11_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(50 61)">
-    <use id="MIX21_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX21_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(50 98)">
-    <use id="MIX31_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX31_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(50 135)">
-    <use id="MIX41_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX41_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(50 172)">
-    <use id="MIX51_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX51_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(50 209)">
-    <use id="MIX61_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX61_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(50 246)">
-    <use id="MIX71_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX71_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(50 283)">
-    <use id="MIX81_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX81_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
 
   <g transform="translate(85 24)">
-    <use id="MIX12_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX12_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(85 61)">
-    <use id="MIX22_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX22_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(85 98)">
-    <use id="MIX32_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX32_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(85 135)">
-    <use id="MIX42_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX42_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(85 172)">
-    <use id="MIX52_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX52_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(85 209)">
-    <use id="MIX62_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX62_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(85 246)">
-    <use id="MIX72_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX72_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(85 283)">
-    <use id="MIX82_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX82_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
 
   <g transform="translate(120 24)">
-    <use id="MIX13_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX13_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(120 61)">
-    <use id="MIX23_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX23_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(120 98)">
-    <use id="MIX33_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX33_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(120 135)">
-    <use id="MIX43_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX43_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(120 172)">
-    <use id="MIX53_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX53_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(120 209)">
-    <use id="MIX63_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX63_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(120 246)">
-    <use id="MIX73_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX73_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(120 283)">
-    <use id="MIX83_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX83_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
 
   <g transform="translate(155 24)">
-    <use id="MIX14_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX14_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(155 61)">
-    <use id="MIX24_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX24_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(155 98)">
-    <use id="MIX34_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX34_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(155 135)">
-    <use id="MIX44_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX44_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(155 172)">
-    <use id="MIX54_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX54_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(155 209)">
-    <use id="MIX64_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX64_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(155 246)">
-    <use id="MIX74_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX74_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(155 283)">
-    <use id="MIX84_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX84_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
 
   <g transform="translate(190 24)">
-    <use id="MIX15_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX15_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(190 61)">
-    <use id="MIX25_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX25_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(190 98)">
-    <use id="MIX35_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX35_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(190 135)">
-    <use id="MIX45_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX45_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(190 172)">
-    <use id="MIX55_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX55_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(190 209)">
-    <use id="MIX65_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX65_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(190 246)">
-    <use id="MIX75_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX75_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(190 283)">
-    <use id="MIX85_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX85_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
 
   <g transform="translate(225 24)">
-    <use id="MIX16_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX16_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(225 61)">
-    <use id="MIX26_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX26_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(225 98)">
-    <use id="MIX36_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX36_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(225 135)">
-    <use id="MIX46_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX46_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(225 172)">
-    <use id="MIX56_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX56_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(225 209)">
-    <use id="MIX66_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX66_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(225 246)">
-    <use id="MIX76_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX76_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(225 283)">
-    <use id="MIX86_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX86_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
 
   <g transform="translate(260 24)">
-    <use id="MIX17_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX17_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(260 61)">
-    <use id="MIX27_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX27_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(260 98)">
-    <use id="MIX37_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX37_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(260 135)">
-    <use id="MIX47_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX47_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(260 172)">
-    <use id="MIX57_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX57_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(260 209)">
-    <use id="MIX67_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX67_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(260 246)">
-    <use id="MIX77_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX77_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(260 283)">
-    <use id="MIX87_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX87_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
 
   <g transform="translate(295 24)">
-    <use id="MIX18_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX18_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(295 61)">
-    <use id="MIX28_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX28_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(295 98)">
-    <use id="MIX38_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX38_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(295 135)">
-    <use id="MIX48_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX48_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(295 172)">
-    <use id="MIX58_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX58_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(295 209)">
-    <use id="MIX68_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX68_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(295 246)">
-    <use id="MIX78_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX78_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
   <g transform="translate(295 283)">
-    <use id="MIX88_PARAM" xlink:href="#button" transform="translate(3.5 8)"/>
+    <use id="MIX88_PARAM" xlink:href="#button" transform="translate(4.5 9)"/>
   </g>
 
 

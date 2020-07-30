@@ -1,41 +1,11 @@
 <?xml version="1.0"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="150" height="380" viewBox="0 0 150 380">
-  <style>
-    text {
-      fill: #333;
-      font-family: 'Roboto', sans-serif;
-      font-weight: bold;
-    }
-    text.title {
-      font-family: 'Comfortaa', sans-serif;
-      font-weight: normal;
-    }
-    text.brand {
-      font-family: 'Audiowide', sans-serif;
-      font-weight: bold;
-    }
-  </style>
+  <style/>
 
   <defs>
-    <symbol id="button" viewBox="0 0 20px 20px">
-      <g transform="translate(10 10)">
-        <circle cx="0" cy="0" r="8.8" stroke-width="1" stroke="#00f" fill="#f00"/>
-      </g>
-    </symbol>
-
-    <symbol id="input" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
-      </g>
-    </symbol>
-
-    <symbol id="output" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
-      </g>
-    </symbol>
+    <def id="button"/>
+    <def id="input"/>
+    <def id="output"/>
   </defs>
 
   <rect width="100%" height="100%" fill="#ddd"/>
@@ -58,70 +28,70 @@
 
   <g transform="translate(13.5 42.5)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(7.5 6)">1A</text>
-    <use id="MIX11_PARAM" xlink:href="#button" transform="translate(3.5 16)"/>
+    <use id="MIX11_PARAM" xlink:href="#button" transform="translate(4.5 17)"/>
   </g>
   <g transform="translate(13.5 99)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(7.5 6)">2A</text>
-    <use id="MIX21_PARAM" xlink:href="#button" transform="translate(3.5 16)"/>
+    <use id="MIX21_PARAM" xlink:href="#button" transform="translate(4.5 17)"/>
   </g>
   <g transform="translate(13.5 155)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(7.5 6)">3A</text>
-    <use id="MIX31_PARAM" xlink:href="#button" transform="translate(3.5 16)"/>
+    <use id="MIX31_PARAM" xlink:href="#button" transform="translate(4.5 17)"/>
   </g>
   <g transform="translate(13.5 211)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(7.5 6)">4A</text>
-    <use id="MIX41_PARAM" xlink:href="#button" transform="translate(3.5 16)"/>
+    <use id="MIX41_PARAM" xlink:href="#button" transform="translate(4.5 17)"/>
   </g>
 
   <g transform="translate(45.5 42.5)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(7.5 6)">1B</text>
-    <use id="MIX12_PARAM" xlink:href="#button" transform="translate(3.5 16)"/>
+    <use id="MIX12_PARAM" xlink:href="#button" transform="translate(4.5 17)"/>
   </g>
   <g transform="translate(45.5 99)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(7.5 6)">2B</text>
-    <use id="MIX22_PARAM" xlink:href="#button" transform="translate(3.5 16)"/>
+    <use id="MIX22_PARAM" xlink:href="#button" transform="translate(4.5 17)"/>
   </g>
   <g transform="translate(45.5 155)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(7.5 6)">3B</text>
-    <use id="MIX32_PARAM" xlink:href="#button" transform="translate(3.5 16)"/>
+    <use id="MIX32_PARAM" xlink:href="#button" transform="translate(4.5 17)"/>
   </g>
   <g transform="translate(45.5 211)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(7.5 6)">4B</text>
-    <use id="MIX42_PARAM" xlink:href="#button" transform="translate(3.5 16)"/>
+    <use id="MIX42_PARAM" xlink:href="#button" transform="translate(4.5 17)"/>
   </g>
 
   <g transform="translate(77.5 42.5)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(7.5 6)">1C</text>
-    <use id="MIX13_PARAM" xlink:href="#button" transform="translate(3.5 16)"/>
+    <use id="MIX13_PARAM" xlink:href="#button" transform="translate(4.5 17)"/>
   </g>
   <g transform="translate(77.5 99)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(7.5 6)">2C</text>
-    <use id="MIX23_PARAM" xlink:href="#button" transform="translate(3.5 16)"/>
+    <use id="MIX23_PARAM" xlink:href="#button" transform="translate(4.5 17)"/>
   </g>
   <g transform="translate(77.5 155)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(7.5 6)">3C</text>
-    <use id="MIX33_PARAM" xlink:href="#button" transform="translate(3.5 16)"/>
+    <use id="MIX33_PARAM" xlink:href="#button" transform="translate(4.5 17)"/>
   </g>
   <g transform="translate(77.5 211)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(7.5 6)">4C</text>
-    <use id="MIX43_PARAM" xlink:href="#button" transform="translate(3.5 16)"/>
+    <use id="MIX43_PARAM" xlink:href="#button" transform="translate(4.5 17)"/>
   </g>
 
   <g transform="translate(109.5 42.5)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(7.5 6)">1D</text>
-    <use id="MIX14_PARAM" xlink:href="#button" transform="translate(3.5 16)"/>
+    <use id="MIX14_PARAM" xlink:href="#button" transform="translate(4.5 17)"/>
   </g>
   <g transform="translate(109.5 99)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(7.5 6)">2D</text>
-    <use id="MIX24_PARAM" xlink:href="#button" transform="translate(3.5 16)"/>
+    <use id="MIX24_PARAM" xlink:href="#button" transform="translate(4.5 17)"/>
   </g>
   <g transform="translate(109.5 155)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(7.5 6)">3D</text>
-    <use id="MIX34_PARAM" xlink:href="#button" transform="translate(3.5 16)"/>
+    <use id="MIX34_PARAM" xlink:href="#button" transform="translate(4.5 17)"/>
   </g>
   <g transform="translate(109.5 211)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(7.5 6)">4D</text>
-    <use id="MIX44_PARAM" xlink:href="#button" transform="translate(3.5 16)"/>
+    <use id="MIX44_PARAM" xlink:href="#button" transform="translate(4.5 17)"/>
   </g>
 
   <g transform="translate(0 269)">

@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="180" height="380" viewBox="0 0 180 380">
+  <style>text {
+  fill: #333;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+text.title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+}
+text.brand {
+  font-family: 'Audiowide', sans-serif;
+  font-weight: bold;
+}
+</style>
+
+  <defs>
+    <symbol id="knob38" viewBox="0 0 38px 38px">
+      <g transform="translate(19 19)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </symbol>
+    <symbol id="input" viewBox="0 0 24px 24px">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </symbol>
+    <symbol id="output" viewBox="0 0 24px 24px">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </symbol>
+    <symbol id="button-small" viewBox="0 0 9px 9px">
+      <g transform="translate(4.5 4.5)">
+        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </symbol>
+    <symbol id="light-small" viewBox="0 0 6.4px 6.4px">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </symbol>
+
+    <symbol id="dial-cutoff-testvcf" viewBox="0 0 50px 50px">
+      <g transform="translate(25 25)">
+        <text font-size="6.0pt" transform="rotate(-240) translate(24 0) rotate(240) translate(-4 3)">0</text>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-210) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-180) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-150) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-120) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-90) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-60) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-30) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(0) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(30) translate(22 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(60) translate(22 0)"/>
+      </g>
+    </symbol>
+
+    <symbol id="dial-resonance-testvcf" viewBox="0 0 50px 50px">
+      <g transform="translate(25 25)">
+        <text font-size="6.0pt" transform="rotate(-240) translate(24 0) rotate(240) translate(-4 3)">0</text>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-210) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-180) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-150) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-120) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-90) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-60) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(-30) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(0) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.5" stroke="#333" transform="rotate(30) translate(22 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(60) translate(22 0)"/>
+      </g>
+    </symbol>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ddd"/>
+  <polyline points="1,1 179,1 179,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
+  <polyline points="0.5,0.5 179.5,0.5 179.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
+  <polyline points="0,0 180,0 180,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none"/>
+
+  <text class="title" x="70" y="19" font-size="12pt" letter-spacing="4px">VCF</text>
+  <g transform="translate(50 374)">
+    <text class="brand" font-size="8pt" letter-spacing="2px">BOGAUDIO</text>
+    <rect width="3.0" height="3" fill="#ddd" transform="translate(24 -5)"/>
+  </g>
+
+  <g transform="translate(20 50)">
+    <!-- <polyline points="-50,0 100,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 19)" /> -->
+    <text font-size="8pt" letter-spacing="2px" transform="translate(9 45) rotate(270)">CUTOFF</text>
+    <use id="CUTOFF_PARAM" xlink:href="#knob38" transform="translate(20 0)"/>
+    <use xlink:href="#dial-cutoff-testvcf" transform="translate(14 -6)"/>
+  </g>
+
+  <g transform="translate(20 120)">
+    <!-- <polyline points="-50,0 100,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 19)" /> -->
+    <text font-size="8pt" letter-spacing="1px" transform="translate(9 45) rotate(270)">RES/BW</text>
+    <use id="Q_PARAM" xlink:href="#knob38" transform="translate(20 0)"/>
+    <use xlink:href="#dial-resonance-testvcf" transform="translate(14 -6)"/>
+  </g>
+
+  <g transform="translate(20 190)">
+    <!-- <polyline points="-50,0 100,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 19)" /> -->
+    <text font-size="8pt" letter-spacing="1px" transform="translate(9 39) rotate(270)">DRIVE</text>
+    <use id="DRIVE_PARAM" xlink:href="#knob38" transform="translate(20 0)"/>
+    <use xlink:href="#dial-resonance-testvcf" transform="translate(14 -6)"/>
+  </g>
+
+  <g transform="translate(20 260)">
+    <!-- <polyline points="-50,0 100,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 19)" /> -->
+    <text font-size="8pt" letter-spacing="1px" transform="translate(9 36) rotate(270)">TOPO</text>
+    <use id="TOPOLOGY_PARAM" xlink:href="#knob38" transform="translate(20 0)"/>
+    <use xlink:href="#dial-resonance-testvcf" transform="translate(14 -6)"/>
+  </g>
+
+  <g transform="translate(110 48)">
+    <!-- <polyline points="-50,0 100,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 19)" /> -->
+    <text font-size="8pt" letter-spacing="1px" transform="translate(9 40) rotate(270)">MODE</text>
+    <g transform="translate(20 0)">
+      <g transform="translate(0 10)">
+        <use id="LOWPASS_LIGHT" xlink:href="#light-small" transform="translate(0 0)"/>
+        <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">LP</text>
+      </g>
+      <g transform="translate(21 10)">
+        <use id="HIGHPASS_LIGHT" xlink:href="#light-small" transform="translate(0 0)"/>
+        <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">HP</text>
+      </g>
+      <g transform="translate(0 20)">
+        <use id="BANDPASS_LIGHT" xlink:href="#light-small" transform="translate(0 0)"/>
+        <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">BP</text>
+      </g>
+      <g transform="translate(21 20)">
+        <use id="BAND_REJECT_LIGHT" xlink:href="#light-small" transform="translate(0 0)"/>
+        <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">BR</text>
+      </g>
+      <use id="MODE_PARAM" xlink:href="#button-small" transform="translate(15 29)"/>
+    </g>
+  </g>
+
+  <g transform="translate(110 117)">
+    <!-- <polyline points="-50,0 100,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 19)" /> -->
+    <text font-size="8pt" letter-spacing="1px" transform="translate(9 40) rotate(270)">POLES</text>
+    <g transform="translate(20 0)">
+      <g transform="translate(0 10)">
+        <use id="POLES_2_LIGHT" xlink:href="#light-small" transform="translate(0 0)"/>
+        <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">2</text>
+      </g>
+      <g transform="translate(21 10)">
+        <use id="POLES_4_LIGHT" xlink:href="#light-small" transform="translate(0 0)"/>
+        <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">4</text>
+      </g>
+      <g transform="translate(0 20)">
+        <use id="POLES_6_LIGHT" xlink:href="#light-small" transform="translate(0 0)"/>
+        <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">6</text>
+      </g>
+      <g transform="translate(21 20)">
+        <use id="POLES_8_LIGHT" xlink:href="#light-small" transform="translate(0 0)"/>
+        <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">8</text>
+      </g>
+      <g transform="translate(0 30)">
+        <use id="POLES_10_LIGHT" xlink:href="#light-small" transform="translate(0 0)"/>
+        <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">10</text>
+      </g>
+      <g transform="translate(21 30)">
+        <use id="POLES_12_LIGHT" xlink:href="#light-small" transform="translate(0 0)"/>
+        <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">12</text>
+      </g>
+      <use id="POLES_PARAM" xlink:href="#button-small" transform="translate(15 39)"/>
+    </g>
+  </g>
+
+  <g transform="translate(45 315)">
+    <rect width="58" height="40" rx="5" fill="#fafafa"/>
+    <rect width="50" height="40" rx="5" fill="#bbb" transform="translate(38)"/>
+    <rect width="20" height="40" fill="#bbb" transform="translate(29)"/>
+    <use id="IN_INPUT" xlink:href="#input" transform="translate(2.5 3)"/>
+    <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(31.5 3)"/>
+    <use id="OUT_B_OUTPUT" xlink:href="#output" transform="translate(60.5 3)"/>
+    <text font-size="6pt" letter-spacing="2px" transform="translate(10 36)">IN</text>
+    <text font-size="6pt" letter-spacing="2px" transform="translate(33 36)">OUT</text>
+    <text font-size="6pt" letter-spacing="2px" transform="translate(70.5 36)">B</text>
+  </g>
+</svg>

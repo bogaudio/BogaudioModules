@@ -1,31 +1,13 @@
 <?xml version="1.0"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="45" height="380" viewBox="0 0 45 380">
-  <style>
-    text {
-      fill: #333;
-      font-family: 'Roboto', sans-serif;
-      font-weight: bold;
-    }
-    text.title {
-      font-family: 'Comfortaa', sans-serif;
-      font-weight: normal;
-    }
-    text.brand {
-      font-family: 'Audiowide', sans-serif;
-      font-weight: bold;
-    }
-  </style>
+  <style/>
 
   <defs>
-    <symbol id="knob" viewBox="0 0 45px 45px">
-      <g transform="translate(22.5 22.5)">
-        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
-        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
-        <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
-      </g>
-    </symbol>
+    <def id="knob29"/>
+    <def id="input"/>
+    <def id="output"/>
 
-    <symbol id="knobguide-response" viewBox="0 0 45px 45px">
+    <symbol id="dial-response-follow" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <text font-size="5.0pt" transform="rotate(-240) translate(20 0) rotate(240) translate(-2 2)">0</text>
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-210) translate(17 0)"/>
@@ -41,7 +23,7 @@
       </g>
     </symbol>
 
-    <symbol id="knobguide-scale" viewBox="0 0 45px 45px">
+    <symbol id="dial-scale-follow" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <text font-size="8pt" transform="rotate(-240) translate(20 0) rotate(240) translate(-2 3)">-</text>
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-210) translate(17 0)"/>
@@ -54,20 +36,6 @@
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(0) translate(17 0)"/>
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(30) translate(17 0)"/>
         <text font-size="6pt" transform="rotate(60) translate(20 0) rotate(-60) translate(-2 2)">+</text>
-      </g>
-    </symbol>
-
-    <symbol id="input" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
-      </g>
-    </symbol>
-
-    <symbol id="output" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </symbol>
   </defs>
@@ -89,8 +57,8 @@
 
   <g transform="translate(0 25)">
     <text font-size="6pt" letter-spacing="2.0px" transform="translate(8.5 0)">DAMP</text>
-    <use id="RESPONSE_PARAM" xlink:href="#knob" transform="translate(0 3)"/>
-    <use xlink:href="#knobguide-response" transform="scale(1) translate(0 3)"/>
+    <use id="RESPONSE_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
+    <use xlink:href="#dial-response-follow" transform="translate(0 3)"/>
     <g transform="translate(5.5 49)">
       <rect width="34" height="39" rx="5" fill="#fafafa"/>
       <use id="RESPONSE_INPUT" xlink:href="#input" transform="translate(5 3)"/>
@@ -100,8 +68,8 @@
 
   <g transform="translate(0 131)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(11.5 0)">GAIN</text>
-    <use id="GAIN_PARAM" xlink:href="#knob" transform="translate(0 3)"/>
-    <use xlink:href="#knobguide-scale" transform="scale(1) translate(0 3)"/>
+    <use id="GAIN_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
+    <use xlink:href="#dial-scale-follow" transform="translate(0 3)"/>
     <g transform="translate(5.5 49)">
       <rect width="34" height="38" rx="5" fill="#fafafa"/>
       <use id="GAIN_INPUT" xlink:href="#input" transform="translate(5 3)"/>

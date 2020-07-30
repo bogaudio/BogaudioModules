@@ -1,31 +1,13 @@
 <?xml version="1.0"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="45" height="380" viewBox="0 0 45 380">
-  <style>
-    text {
-      fill: #333;
-      font-family: 'Roboto', sans-serif;
-      font-weight: bold;
-    }
-    text.title {
-      font-family: 'Comfortaa', sans-serif;
-      font-weight: normal;
-    }
-    text.brand {
-      font-family: 'Audiowide', sans-serif;
-      font-weight: bold;
-    }
-  </style>
+  <style/>
 
   <defs>
-    <symbol id="knob" viewBox="0 0 45px 45px">
-      <g transform="translate(22.5 22.5)">
-        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
-        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
-        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
-      </g>
-    </symbol>
+    <def id="knob26"/>
+    <def id="input"/>
+    <def id="output"/>
 
-    <symbol id="knobguide-panner" viewBox="0 0 45px 45px">
+    <symbol id="dial-panner-pan" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <text font-size="5.0pt" transform="rotate(-240) translate(18 0) rotate(240) translate(-1.8 2)">L</text>
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-210) translate(15 0)"/>
@@ -38,20 +20,6 @@
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(0) translate(15 0)"/>
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(30) translate(15 0)"/>
         <text font-size="5.0pt" transform="rotate(60) translate(18 0) rotate(-60) translate(-2.1 2)">R</text>
-      </g>
-    </symbol>
-
-    <symbol id="input" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
-      </g>
-    </symbol>
-
-    <symbol id="output" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </symbol>
   </defs>
@@ -75,8 +43,8 @@
   </g>
 
   <g transform="translate(0 15)">
-    <use id="PAN1_PARAM" xlink:href="#knob" transform="translate(0 0)"/>
-    <use xlink:href="#knobguide-panner" transform="translate(0 0)"/>
+    <use id="PAN1_PARAM" xlink:href="#knob26" transform="translate(9.5 9.5)"/>
+    <use xlink:href="#dial-panner-pan" transform="translate(0 0)"/>
     <g transform="translate(5.5 44)">
       <rect width="34" height="73" rx="5" fill="#fafafa"/>
       <use id="CV1_INPUT" xlink:href="#input" transform="translate(5 3)"/>
@@ -87,8 +55,8 @@
   </g>
 
   <g transform="translate(0 138)">
-    <use id="PAN2_PARAM" xlink:href="#knob" transform="translate(0 0)"/>
-    <use xlink:href="#knobguide-panner" transform="translate(0 0)"/>
+    <use id="PAN2_PARAM" xlink:href="#knob26" transform="translate(9.5 9.5)"/>
+    <use xlink:href="#dial-panner-pan" transform="translate(0 0)"/>
     <g transform="translate(5.5 44)">
       <rect width="34" height="73" rx="5" fill="#fafafa"/>
       <use id="CV2_INPUT" xlink:href="#input" transform="translate(5 3)"/>
