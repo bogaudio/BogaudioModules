@@ -16,26 +16,6 @@ text.brand {
 </style>
 
   <defs>
-    <symbol id="knob45" viewBox="0 0 90px 90px">
-      <g transform="translate(45 45)">
-        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
-        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
-        <circle cx="0" cy="0" r="22" stroke-width="1" stroke="#00f" fill="none"/>
-      </g>
-    </symbol>
-    <symbol id="input" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
-      </g>
-    </symbol>
-    <symbol id="output" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
-      </g>
-    </symbol>
-
     <symbol id="dial-rectify-amrm" viewBox="0 0 90px 90px">
       <g transform="translate(45 45)">
         <text font-size="6.0pt" transform="rotate(-240) translate(29 0) rotate(240) translate(-4 3)">0</text>
@@ -86,13 +66,25 @@ text.brand {
 
   <g transform="translate(0 49)">
     <text font-size="8pt" letter-spacing="2px" transform="translate(18 0)">RECTIFY</text>
-    <use id="RECTIFY_PARAM" xlink:href="#knob45" transform="translate(0 -5)"/>
+    <g transform="translate(0 -5)"><svg id="RECTIFY_PARAM">
+      <g transform="translate(45 45)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="22" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
     <use xlink:href="#dial-rectify-amrm" transform="translate(0 -5)"/>
   </g>
 
   <g transform="translate(0 148)">
     <text font-size="8pt" letter-spacing="2px" transform="translate(15.5 0)">DRY/WET</text>
-    <use id="DRYWET_PARAM" xlink:href="#knob45" transform="translate(0 -5)"/>
+    <g transform="translate(0 -5)"><svg id="DRYWET_PARAM">
+      <g transform="translate(45 45)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="22" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
     <use xlink:href="#dial-drywet-amrm" transform="translate(0 -5)"/>
   </g>
 
@@ -100,21 +92,51 @@ text.brand {
     <g transform="translate(0 0)">
       <rect width="68" height="10" fill="#fafafa" transform="translate(0 66)"/>
       <rect width="68" height="73" rx="5" fill="#fafafa"/>
-      <use id="MODULATOR_INPUT" xlink:href="#input" transform="translate(5 4)"/>
+      <g transform="translate(5 4)"><svg id="MODULATOR_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(7.5 36)">MOD</text>
-      <use id="CARRIER_INPUT" xlink:href="#input" transform="translate(39 4)"/>
+      <g transform="translate(39 4)"><svg id="CARRIER_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(42.5 36)">CAR</text>
-      <use id="RECTIFY_INPUT" xlink:href="#input" transform="translate(5 40)"/>
+      <g transform="translate(5 40)"><svg id="RECTIFY_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(5.5 72)">RECT</text>
-      <use id="DRYWET_INPUT" xlink:href="#input" transform="translate(39 40)"/>
+      <g transform="translate(39 40)"><svg id="DRYWET_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(42 72)">D/W</text>
     </g>
     <g transform="translate(0 79)">
       <rect width="68" height="10" fill="#bbb" transform="translate(0 -3)"/>
       <rect width="68" height="37" rx="5" fill="#bbb"/>
-      <use id="RECTIFY_OUTPUT" xlink:href="#output" transform="translate(5 1)"/>
+      <g transform="translate(5 1)"><svg id="RECTIFY_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(5.5 33)">RECT</text>
-      <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(39 1)"/>
+      <g transform="translate(39 1)"><svg id="OUT_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(42.5 33)">OUT</text>
     </g>
   </g>

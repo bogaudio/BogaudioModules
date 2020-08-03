@@ -3,15 +3,6 @@
   <style/>
 
   <defs>
-    <import id="knob29"/>
-    <import id="knob16"/>
-    <import id="dial-centertick"/>
-    <import id="dial-mintick"/>
-    <import id="button-small"/>
-    <import id="input"/>
-    <import id="output"/>
-    <import id="light-small"/>
-
     <symbol id="dial-frequency-peq" viewBox="0 0 61px 45px">
       <g transform="translate(25.5 22.5)">
         <text font-size="5pt" transform="rotate(60) translate(20 0) rotate(-60) translate(-5 4)">20K</text>
@@ -65,28 +56,28 @@
     <!-- <rect width="150" height="60" fill="#0f0" transform="translate(0 0)" /> -->
     <!-- <polyline points="0,30 150,30" stroke="#f00" stroke-width="1" fill="none" /> -->
     <!-- <polyline points="0,0 150,0" stroke="#0ff" stroke-width="1" fill="none" transform="translate(0 26)" /> -->
-    <use id="A_LIGHT" xlink:href="#light-small" transform="translate(5.5 18)"/>
+    <def id="A_LIGHT" xlink:href="#light-small" transform="translate(5.5 18)"/>
     <text font-size="6pt" letter-spacing="2px" transform="translate(11.5 33) rotate(270)">A</text>
 
     <text font-size="6pt" letter-spacing="2px" transform="translate(20 58)">LEVEL</text>
-    <use id="A_LEVEL_PARAM" xlink:href="#knob29" transform="translate(13 3.5)"/>
+    <def id="A_LEVEL_PARAM" xlink:href="#knob29" transform="translate(13 3.5)"/>
     <use xlink:href="#dial-level-peq" transform="translate(13 3.5)"/>
 
     <text font-size="6pt" letter-spacing="2px" transform="translate(69 58)">FREQ</text>
-    <use id="A_FREQUENCY_PARAM" xlink:href="#knob29" transform="translate(59 3.5)"/>
+    <def id="A_FREQUENCY_PARAM" xlink:href="#knob29" transform="translate(59 3.5)"/>
     <use xlink:href="#dial-frequency-peq" transform="translate(56 3.5)"/>
 
     <text font-size="6pt" letter-spacing="2px" transform="translate(113 19) rotate(270)">BW</text>
-    <use id="A_BANDWIDTH_PARAM" xlink:href="#knob16" transform="translate(122 4)"/>
-    <use xlink:href="#dial-mintick" transform="translate(110 -8)"/>
+    <def id="A_BANDWIDTH_PARAM" xlink:href="#knob16" transform="translate(122 4)"/>
+    <def xlink:href="#dial-mintick" transform="translate(110 -8)"/>
 
     <text font-size="6pt" letter-spacing="2px" transform="translate(113 58.5) rotate(270)">FCV</text>
-    <use id="A_CV_PARAM" xlink:href="#knob16" transform="translate(122 42)"/>
-    <use xlink:href="#dial-centertick" transform="translate(110 30)"/>
+    <def id="A_CV_PARAM" xlink:href="#knob16" transform="translate(122 42)"/>
+    <def xlink:href="#dial-centertick" transform="translate(110 30)"/>
 
     <g transform="translate(118 26.5)">
       <text font-size="6pt" letter-spacing="1px" transform="translate(0 6.1)">LP</text>
-      <use id="A_MODE_PARAM" xlink:href="#button-small" transform="translate(13.5 -1)"/>
+      <def id="A_MODE_PARAM" xlink:href="#button-small" transform="translate(13.5 -1)"/>
     </g>
   </g>
 
@@ -94,52 +85,52 @@
     <!-- <rect width="150" height="60" fill="#0f0" transform="translate(0 0)" /> -->
     <!-- <polyline points="0,30 150,30" stroke="#f00" stroke-width="1" fill="none" /> -->
     <!-- <polyline points="0,0 150,0" stroke="#0ff" stroke-width="1" fill="none" transform="translate(0 26)" /> -->
-    <use id="B_LIGHT" xlink:href="#light-small" transform="translate(5.5 18)"/>
+    <def id="B_LIGHT" xlink:href="#light-small" transform="translate(5.5 18)"/>
     <text font-size="6pt" letter-spacing="2px" transform="translate(11.5 33) rotate(270)">B</text>
 
     <text font-size="6pt" letter-spacing="2px" transform="translate(20 58)">LEVEL</text>
-    <use id="B_LEVEL_PARAM" xlink:href="#knob29" transform="translate(13 3.5)"/>
+    <def id="B_LEVEL_PARAM" xlink:href="#knob29" transform="translate(13 3.5)"/>
     <use xlink:href="#dial-level-peq" transform="translate(13 3.5)"/>
 
     <text font-size="6pt" letter-spacing="2px" transform="translate(69 58)">FREQ</text>
-    <use id="B_FREQUENCY_PARAM" xlink:href="#knob29" transform="translate(59 3.5)"/>
+    <def id="B_FREQUENCY_PARAM" xlink:href="#knob29" transform="translate(59 3.5)"/>
     <use xlink:href="#dial-frequency-peq" transform="translate(56 3.5)"/>
 
     <text font-size="6pt" letter-spacing="2px" transform="translate(113 22) rotate(270)">BW</text>
-    <use id="B_BANDWIDTH_PARAM" xlink:href="#knob16" transform="translate(122 7)"/>
-    <use xlink:href="#dial-mintick" transform="translate(110 -5)"/>
+    <def id="B_BANDWIDTH_PARAM" xlink:href="#knob16" transform="translate(122 7)"/>
+    <def xlink:href="#dial-mintick" transform="translate(110 -5)"/>
 
     <text font-size="6pt" letter-spacing="2px" transform="translate(113 56.5) rotate(270)">FCV</text>
-    <use id="B_CV_PARAM" xlink:href="#knob16" transform="translate(122 40)"/>
-    <use xlink:href="#dial-centertick" transform="translate(110 28)"/>
+    <def id="B_CV_PARAM" xlink:href="#knob16" transform="translate(122 40)"/>
+    <def xlink:href="#dial-centertick" transform="translate(110 28)"/>
   </g>
 
   <g transform="translate(0 159)">
     <!-- <rect width="150" height="60" fill="#0f0" transform="translate(0 0)" /> -->
     <!-- <polyline points="0,30 150,30" stroke="#f00" stroke-width="1" fill="none" /> -->
     <!-- <polyline points="0,0 150,0" stroke="#0ff" stroke-width="1" fill="none" transform="translate(0 26)" /> -->
-    <use id="C_LIGHT" xlink:href="#light-small" transform="translate(5.5 18)"/>
+    <def id="C_LIGHT" xlink:href="#light-small" transform="translate(5.5 18)"/>
     <text font-size="6pt" letter-spacing="2px" transform="translate(11.5 33) rotate(270)">C</text>
 
     <text font-size="6pt" letter-spacing="2px" transform="translate(20 58)">LEVEL</text>
-    <use id="C_LEVEL_PARAM" xlink:href="#knob29" transform="translate(13 3.5)"/>
+    <def id="C_LEVEL_PARAM" xlink:href="#knob29" transform="translate(13 3.5)"/>
     <use xlink:href="#dial-level-peq" transform="translate(13 3.5)"/>
 
     <text font-size="6pt" letter-spacing="2px" transform="translate(69 58)">FREQ</text>
-    <use id="C_FREQUENCY_PARAM" xlink:href="#knob29" transform="translate(59 3.5)"/>
+    <def id="C_FREQUENCY_PARAM" xlink:href="#knob29" transform="translate(59 3.5)"/>
     <use xlink:href="#dial-frequency-peq" transform="translate(56 3.5)"/>
 
     <text font-size="6pt" letter-spacing="2px" transform="translate(113 19) rotate(270)">BW</text>
-    <use id="C_BANDWIDTH_PARAM" xlink:href="#knob16" transform="translate(122 4)"/>
-    <use xlink:href="#dial-mintick" transform="translate(110 -8)"/>
+    <def id="C_BANDWIDTH_PARAM" xlink:href="#knob16" transform="translate(122 4)"/>
+    <def xlink:href="#dial-mintick" transform="translate(110 -8)"/>
 
     <text font-size="6pt" letter-spacing="2px" transform="translate(113 58.5) rotate(270)">FCV</text>
-    <use id="C_CV_PARAM" xlink:href="#knob16" transform="translate(122 42)"/>
-    <use xlink:href="#dial-centertick" transform="translate(110 30)"/>
+    <def id="C_CV_PARAM" xlink:href="#knob16" transform="translate(122 42)"/>
+    <def xlink:href="#dial-centertick" transform="translate(110 30)"/>
 
     <g transform="translate(118 26.5)">
       <text font-size="6pt" letter-spacing="1px" transform="translate(-0.5 6.1)">HP</text>
-      <use id="C_MODE_PARAM" xlink:href="#button-small" transform="translate(13.5 -1)"/>
+      <def id="C_MODE_PARAM" xlink:href="#button-small" transform="translate(13.5 -1)"/>
     </g>
   </g>
 
@@ -150,53 +141,53 @@
     <rect width="8" height="46" fill="#bbb" transform="translate(107.5 88)"/>
 
     <g transform="translate(12 0)">
-      <use id="A_LEVEL_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+      <def id="A_LEVEL_INPUT" xlink:href="#input" transform="translate(3 5)"/>
       <text font-size="6pt" letter-spacing="1px" transform="translate(3 40)">A-LVL</text>
     </g>
     <g transform="translate(44 0)">
-      <use id="B_LEVEL_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+      <def id="B_LEVEL_INPUT" xlink:href="#input" transform="translate(3 5)"/>
       <text font-size="6pt" letter-spacing="1px" transform="translate(1 40)">B-LVL</text>
     </g>
     <g transform="translate(76 0)">
-      <use id="C_LEVEL_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+      <def id="C_LEVEL_INPUT" xlink:href="#input" transform="translate(3 5)"/>
       <text font-size="6pt" letter-spacing="1px" transform="translate(2 40)">C-LVL</text>
     </g>
     <g transform="translate(108 0)">
-      <use id="ALL_CV_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+      <def id="ALL_CV_INPUT" xlink:href="#input" transform="translate(3 5)"/>
       <text font-size="6pt" letter-spacing="1px" transform="translate(6 40)">FCV</text>
     </g>
 
     <g transform="translate(12 44)">
-      <use id="A_FREQUENCY_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+      <def id="A_FREQUENCY_INPUT" xlink:href="#input" transform="translate(3 5)"/>
       <text font-size="6pt" letter-spacing="1px" transform="translate(1 40)">A-FCV</text>
     </g>
     <g transform="translate(44 44)">
-      <use id="B_FREQUENCY_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+      <def id="B_FREQUENCY_INPUT" xlink:href="#input" transform="translate(3 5)"/>
       <text font-size="6pt" letter-spacing="1px" transform="translate(1 40)">B-FCV</text>
     </g>
     <g transform="translate(76 44)">
-      <use id="C_FREQUENCY_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+      <def id="C_FREQUENCY_INPUT" xlink:href="#input" transform="translate(3 5)"/>
       <text font-size="6pt" letter-spacing="1px" transform="translate(1 40)">C-FCV</text>
     </g>
     <g transform="translate(108 44)">
-      <use id="IN_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+      <def id="IN_INPUT" xlink:href="#input" transform="translate(3 5)"/>
       <text font-size="6pt" letter-spacing="2px" transform="translate(10 40)">IN</text>
     </g>
 
     <g transform="translate(12 88)">
-      <use id="A_BANDWIDTH_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+      <def id="A_BANDWIDTH_INPUT" xlink:href="#input" transform="translate(3 5)"/>
       <text font-size="6pt" letter-spacing="1px" transform="translate(3 40)">A-BW</text>
     </g>
     <g transform="translate(44 88)">
-      <use id="B_BANDWIDTH_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+      <def id="B_BANDWIDTH_INPUT" xlink:href="#input" transform="translate(3 5)"/>
       <text font-size="6pt" letter-spacing="1px" transform="translate(2 40)">B-BW</text>
     </g>
     <g transform="translate(76 88)">
-      <use id="C_BANDWIDTH_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+      <def id="C_BANDWIDTH_INPUT" xlink:href="#input" transform="translate(3 5)"/>
       <text font-size="6pt" letter-spacing="1px" transform="translate(3 40)">C-BW</text>
     </g>
     <g transform="translate(108 88)">
-      <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
+      <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
       <text font-size="6pt" letter-spacing="2px" transform="translate(5 40)">OUT</text>
     </g>
   </g>

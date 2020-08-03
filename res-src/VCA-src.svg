@@ -2,14 +2,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="45" height="380" viewBox="0 0 45 380">
   <style/>
 
-  <defs>
-    <import id="knob26"/>
-    <import id="dial-linear"/>
-    <import id="button-small"/>
-    <import id="input"/>
-    <import id="output"/>
-  </defs>
-
   <rect width="100%" height="100%" fill="#ddd"/>
   <polyline points="1,1 44,1 44,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
   <polyline points="0.5,0.5 44.5,0.5 44.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
@@ -31,52 +23,52 @@
   <!-- <rect width="45" height="18" fill="#0f0" transform="translate(0 0)" /> -->
 
   <g transform="translate(0 19)">
-    <use id="LEVEL1_PARAM" xlink:href="#knob26" transform="translate(9.5 3.5)"/>
-    <use xlink:href="#dial-linear" transform="translate(0 -6)"/>
+    <def id="LEVEL1_PARAM" xlink:href="#knob26" transform="translate(9.5 3.5)"/>
+    <def xlink:href="#dial-linear" transform="translate(0 -6)"/>
   </g>
 
   <g transform="translate(0 57)">
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)"/>
       <rect width="34" height="70" rx="5" fill="#fafafa"/>
-      <use id="CV1_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="CV1_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">CV</text>
-      <use id="IN1_INPUT" xlink:href="#input" transform="translate(5 38)"/>
+      <def id="IN1_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 70)">IN</text>
     </g>
     <g transform="translate(5.5 76)">
       <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
       <rect width="34" height="35" rx="5" fill="#bbb"/>
-      <use id="OUT1_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
+      <def id="OUT1_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
     </g>
   </g>
 
   <g transform="translate(0 178)">
-    <use id="LEVEL2_PARAM" xlink:href="#knob26" transform="translate(9.5 3.5)"/>
-    <use xlink:href="#dial-linear" transform="translate(0 -6)"/>
+    <def id="LEVEL2_PARAM" xlink:href="#knob26" transform="translate(9.5 3.5)"/>
+    <def xlink:href="#dial-linear" transform="translate(0 -6)"/>
   </g>
 
   <g transform="translate(0 216)">
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)"/>
       <rect width="34" height="70" rx="5" fill="#fafafa"/>
-      <use id="CV2_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="CV2_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">CV</text>
-      <use id="IN2_INPUT" xlink:href="#input" transform="translate(5 38)"/>
+      <def id="IN2_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 70)">IN</text>
     </g>
     <g transform="translate(5.5 76)">
       <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
       <rect width="34" height="35" rx="5" fill="#bbb"/>
-      <use id="OUT2_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
+      <def id="OUT2_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
     </g>
   </g>
 
   <g transform="translate(10.5 334)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(0 6)">LIN</text>
-    <use id="LINEAR_PARAM" xlink:href="#button-small" transform="translate(15 -1)"/>
+    <def id="LINEAR_PARAM" xlink:href="#button-small" transform="translate(15 -1)"/>
   </g>
   <!-- <polyline points="0,0 0,380" stroke-width="0.5" stroke="#0f0" transform="translate(36.5 0)" /> -->
   <!-- <polyline points="0,0 0,380" stroke-width="0.5" stroke="#0f0" transform="translate(8.5 0)" /> -->

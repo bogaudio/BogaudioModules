@@ -2,13 +2,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="150" height="380" viewBox="0 0 150 380">
   <style/>
 
-  <defs>
-    <import id="button"/>
-    <import id="light-small"/>
-    <import id="input"/>
-    <import id="output"/>
-  </defs>
-
   <rect width="100%" height="100%" fill="#ddd"/>
   <polyline points="1,1 149,1 149,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
   <polyline points="0.5,0.5 149.5,0.5 149.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
@@ -26,15 +19,15 @@
   <g transform="translate(8 32)">
     <rect width="30" height="328" rx="5" fill="#fafafa"/>
     <g transform="translate(3 4)">
-      <use id="INPUT1_INPUT" xlink:href="#input" transform="translate(0 0)"/>
-      <use id="INPUT2_INPUT" xlink:href="#input" transform="translate(0 40)"/>
-      <use id="INPUT3_INPUT" xlink:href="#input" transform="translate(0 80)"/>
-      <use id="INPUT4_INPUT" xlink:href="#input" transform="translate(0 120)"/>
+      <def id="INPUT1_INPUT" xlink:href="#input" transform="translate(0 0)"/>
+      <def id="INPUT2_INPUT" xlink:href="#input" transform="translate(0 40)"/>
+      <def id="INPUT3_INPUT" xlink:href="#input" transform="translate(0 80)"/>
+      <def id="INPUT4_INPUT" xlink:href="#input" transform="translate(0 120)"/>
 
-      <use id="INPUT5_INPUT" xlink:href="#input" transform="translate(0 160)"/>
-      <use id="INPUT6_INPUT" xlink:href="#input" transform="translate(0 200)"/>
-      <use id="INPUT7_INPUT" xlink:href="#input" transform="translate(0 240)"/>
-      <use id="INPUT8_INPUT" xlink:href="#input" transform="translate(0 280)"/>
+      <def id="INPUT5_INPUT" xlink:href="#input" transform="translate(0 160)"/>
+      <def id="INPUT6_INPUT" xlink:href="#input" transform="translate(0 200)"/>
+      <def id="INPUT7_INPUT" xlink:href="#input" transform="translate(0 240)"/>
+      <def id="INPUT8_INPUT" xlink:href="#input" transform="translate(0 280)"/>
     </g>
     <text font-size="6pt" letter-spacing="2px" transform="translate(9.8 320)">IN</text>
   </g>
@@ -42,15 +35,15 @@
   <g transform="translate(43 32)">
     <rect width="30" height="328" rx="5" fill="#fafafa"/>
     <g transform="translate(3 4)">
-      <use id="MUTE1_INPUT" xlink:href="#input" transform="translate(0 0)"/>
-      <use id="MUTE2_INPUT" xlink:href="#input" transform="translate(0 40)"/>
-      <use id="MUTE3_INPUT" xlink:href="#input" transform="translate(0 80)"/>
-      <use id="MUTE4_INPUT" xlink:href="#input" transform="translate(0 120)"/>
+      <def id="MUTE1_INPUT" xlink:href="#input" transform="translate(0 0)"/>
+      <def id="MUTE2_INPUT" xlink:href="#input" transform="translate(0 40)"/>
+      <def id="MUTE3_INPUT" xlink:href="#input" transform="translate(0 80)"/>
+      <def id="MUTE4_INPUT" xlink:href="#input" transform="translate(0 120)"/>
 
-      <use id="MUTE5_INPUT" xlink:href="#input" transform="translate(0 160)"/>
-      <use id="MUTE6_INPUT" xlink:href="#input" transform="translate(0 200)"/>
-      <use id="MUTE7_INPUT" xlink:href="#input" transform="translate(0 240)"/>
-      <use id="MUTE8_INPUT" xlink:href="#input" transform="translate(0 280)"/>
+      <def id="MUTE5_INPUT" xlink:href="#input" transform="translate(0 160)"/>
+      <def id="MUTE6_INPUT" xlink:href="#input" transform="translate(0 200)"/>
+      <def id="MUTE7_INPUT" xlink:href="#input" transform="translate(0 240)"/>
+      <def id="MUTE8_INPUT" xlink:href="#input" transform="translate(0 280)"/>
     </g>
     <text font-size="6pt" letter-spacing="2px" transform="translate(8 320)">CV</text>
   </g>
@@ -59,37 +52,37 @@
     <!-- <rect width="30" height="328" rx="5" fill="#fafafa" /> -->
     <g transform="translate(0 4)">
       <g transform="translate(0 2)">
-        <use id="MUTE1_PARAM" xlink:href="#button" transform="translate(1 3)"/>
-        <use id="MUTE1_LIGHT" xlink:href="#light-small" transform="translate(23 8.8)"/>
+        <def id="MUTE1_PARAM" xlink:href="#button" transform="translate(1 3)"/>
+        <def id="MUTE1_LIGHT" xlink:href="#light-small" transform="translate(23 8.8)"/>
       </g>
       <g transform="translate(0 42)">
-        <use id="MUTE2_PARAM" xlink:href="#button" transform="translate(1 3)"/>
-        <use id="MUTE2_LIGHT" xlink:href="#light-small" transform="translate(23 8.8)"/>
+        <def id="MUTE2_PARAM" xlink:href="#button" transform="translate(1 3)"/>
+        <def id="MUTE2_LIGHT" xlink:href="#light-small" transform="translate(23 8.8)"/>
       </g>
       <g transform="translate(0 82)">
-        <use id="MUTE3_PARAM" xlink:href="#button" transform="translate(1 3)"/>
-        <use id="MUTE3_LIGHT" xlink:href="#light-small" transform="translate(23 8.8)"/>
+        <def id="MUTE3_PARAM" xlink:href="#button" transform="translate(1 3)"/>
+        <def id="MUTE3_LIGHT" xlink:href="#light-small" transform="translate(23 8.8)"/>
       </g>
       <g transform="translate(0 122)">
-        <use id="MUTE4_PARAM" xlink:href="#button" transform="translate(1 3)"/>
-        <use id="MUTE4_LIGHT" xlink:href="#light-small" transform="translate(23 8.8)"/>
+        <def id="MUTE4_PARAM" xlink:href="#button" transform="translate(1 3)"/>
+        <def id="MUTE4_LIGHT" xlink:href="#light-small" transform="translate(23 8.8)"/>
       </g>
 
       <g transform="translate(0 162)">
-        <use id="MUTE5_PARAM" xlink:href="#button" transform="translate(1 3)"/>
-        <use id="MUTE5_LIGHT" xlink:href="#light-small" transform="translate(23 8.8)"/>
+        <def id="MUTE5_PARAM" xlink:href="#button" transform="translate(1 3)"/>
+        <def id="MUTE5_LIGHT" xlink:href="#light-small" transform="translate(23 8.8)"/>
       </g>
       <g transform="translate(0 202)">
-        <use id="MUTE6_PARAM" xlink:href="#button" transform="translate(1 3)"/>
-        <use id="MUTE6_LIGHT" xlink:href="#light-small" transform="translate(23 8.8)"/>
+        <def id="MUTE6_PARAM" xlink:href="#button" transform="translate(1 3)"/>
+        <def id="MUTE6_LIGHT" xlink:href="#light-small" transform="translate(23 8.8)"/>
       </g>
       <g transform="translate(0 242)">
-        <use id="MUTE7_PARAM" xlink:href="#button" transform="translate(1 3)"/>
-        <use id="MUTE7_LIGHT" xlink:href="#light-small" transform="translate(23 8.8)"/>
+        <def id="MUTE7_PARAM" xlink:href="#button" transform="translate(1 3)"/>
+        <def id="MUTE7_LIGHT" xlink:href="#light-small" transform="translate(23 8.8)"/>
       </g>
       <g transform="translate(0 280)">
-        <use id="MUTE8_PARAM" xlink:href="#button" transform="translate(1 3)"/>
-        <use id="MUTE8_LIGHT" xlink:href="#light-small" transform="translate(23 8.8)"/>
+        <def id="MUTE8_PARAM" xlink:href="#button" transform="translate(1 3)"/>
+        <def id="MUTE8_LIGHT" xlink:href="#light-small" transform="translate(23 8.8)"/>
       </g>
     </g>
     <text font-size="6pt" letter-spacing="2px" transform="translate(1 320)">MUTE</text>
@@ -98,15 +91,15 @@
   <g transform="translate(112 32)">
     <rect width="30" height="328" rx="5" fill="#bbb"/>
     <g transform="translate(3 4)">
-      <use id="OUTPUT1_OUTPUT" xlink:href="#output" transform="translate(0 0)"/>
-      <use id="OUTPUT2_OUTPUT" xlink:href="#output" transform="translate(0 40)"/>
-      <use id="OUTPUT3_OUTPUT" xlink:href="#output" transform="translate(0 80)"/>
-      <use id="OUTPUT4_OUTPUT" xlink:href="#output" transform="translate(0 120)"/>
+      <def id="OUTPUT1_OUTPUT" xlink:href="#output" transform="translate(0 0)"/>
+      <def id="OUTPUT2_OUTPUT" xlink:href="#output" transform="translate(0 40)"/>
+      <def id="OUTPUT3_OUTPUT" xlink:href="#output" transform="translate(0 80)"/>
+      <def id="OUTPUT4_OUTPUT" xlink:href="#output" transform="translate(0 120)"/>
 
-      <use id="OUTPUT5_OUTPUT" xlink:href="#output" transform="translate(0 160)"/>
-      <use id="OUTPUT6_OUTPUT" xlink:href="#output" transform="translate(0 200)"/>
-      <use id="OUTPUT7_OUTPUT" xlink:href="#output" transform="translate(0 240)"/>
-      <use id="OUTPUT8_OUTPUT" xlink:href="#output" transform="translate(0 280)"/>
+      <def id="OUTPUT5_OUTPUT" xlink:href="#output" transform="translate(0 160)"/>
+      <def id="OUTPUT6_OUTPUT" xlink:href="#output" transform="translate(0 200)"/>
+      <def id="OUTPUT7_OUTPUT" xlink:href="#output" transform="translate(0 240)"/>
+      <def id="OUTPUT8_OUTPUT" xlink:href="#output" transform="translate(0 280)"/>
     </g>
     <text font-size="6pt" letter-spacing="2px" transform="translate(5 320)">OUT</text>
   </g>

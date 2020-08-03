@@ -3,14 +3,6 @@
   <style/>
 
   <defs>
-    <import id="knob26"/>
-    <import id="knob16"/>
-    <import id="dial-mintick"/>
-    <import id="dial-centertick"/>
-    <import id="input"/>
-    <import id="output"/>
-    <import id="button-small"/>
-
     <symbol id="dial-frequency-sine" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <polyline points="0,0 3.5,0" stroke-width="0.7" stroke="#333" transform="rotate(-240) translate(15 0)"/>
@@ -49,27 +41,27 @@
 
   <g transform="translate(0 25)">
     <!-- <polyline points="0,0 45,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 0)" /> -->
-    <use id="FREQUENCY_PARAM" xlink:href="#knob26" transform="translate(9.5 2)"/>
+    <def id="FREQUENCY_PARAM" xlink:href="#knob26" transform="translate(9.5 2)"/>
     <use xlink:href="#dial-frequency-sine" transform="translate(0 -7.5)"/>
   </g>
 
   <g transform="translate(0 63)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(4 6.1)">SLOW</text>
-    <use id="SLOW_PARAM" xlink:href="#button-small" transform="translate(31 -1)"/>
+    <def id="SLOW_PARAM" xlink:href="#button-small" transform="translate(31 -1)"/>
   </g>
 
   <g transform="translate(0 83)">
     <!-- <rect width="45" height="8" fill="#f0f" transform="translate(0 -14)" /> -->
     <text font-size="6pt" letter-spacing="2px" transform="translate(16 0)">FM</text>
-    <use id="FM_DEPTH_PARAM" xlink:href="#knob16" transform="translate(14.5 9.5)"/>
-    <use xlink:href="#dial-mintick" transform="translate(2.2 -2.5)"/>
+    <def id="FM_DEPTH_PARAM" xlink:href="#knob16" transform="translate(14.5 9.5)"/>
+    <def xlink:href="#dial-mintick" transform="translate(2.2 -2.5)"/>
   </g>
 
   <g transform="translate(0 125)">
     <!-- <rect width="45" height="8" fill="#f0f" transform="translate(0 -14)" /> -->
     <text font-size="6pt" letter-spacing="2px" transform="translate(6 0)">PHASE</text>
-    <use id="PHASE_PARAM" xlink:href="#knob16" transform="translate(14.5 9.5)"/>
-    <use xlink:href="#dial-centertick" transform="translate(2.2 -2.5)"/>
+    <def id="PHASE_PARAM" xlink:href="#knob16" transform="translate(14.5 9.5)"/>
+    <def xlink:href="#dial-centertick" transform="translate(2.2 -2.5)"/>
   </g>
 
   <g transform="translate(0 158)">
@@ -77,19 +69,19 @@
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 133)"/>
       <rect width="34" height="140" rx="5" fill="#fafafa"/>
-      <use id="PITCH_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="PITCH_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">V/OCT</text>
-      <use id="FM_INPUT" xlink:href="#input" transform="translate(5 38)"/>
+      <def id="FM_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(11 70)">FM</text>
-      <use id="PHASE_INPUT" xlink:href="#input" transform="translate(5 73)"/>
+      <def id="PHASE_INPUT" xlink:href="#input" transform="translate(5 73)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(2.5 105)">PHASE</text>
-      <use id="SYNC_INPUT" xlink:href="#input" transform="translate(5 108)"/>
+      <def id="SYNC_INPUT" xlink:href="#input" transform="translate(5 108)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(5 140)">SYNC</text>
     </g>
     <g transform="translate(5.5 146)">
       <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
       <rect width="34" height="35" rx="5" fill="#bbb"/>
-      <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
+      <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
     </g>
   </g>

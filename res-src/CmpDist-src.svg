@@ -3,13 +3,6 @@
   <style/>
 
   <defs>
-    <import id="knob29"/>
-    <import id="knob16"/>
-    <import id="dial-window"/>
-    <import id="dial-mintick"/>
-    <import id="input"/>
-    <import id="output"/>
-
     <symbol id="dial-attenuverter-cmpdist" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <text font-size="7pt" transform="rotate(-240) translate(20 0) rotate(240) translate(-1.2 2.2)">-</text>
@@ -76,37 +69,37 @@
 
   <g transform="translate(6 35)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(3.5 0)">A SCALE</text>
-    <use id="A_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
+    <def id="A_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
     <use xlink:href="#dial-attenuverter-cmpdist" transform="translate(0 3)"/>
   </g>
 
   <g transform="translate(52.5 35)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(4 0)">WINDOW</text>
-    <use id="WINDOW_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
-    <use xlink:href="#dial-window" transform="translate(0 3)"/>
+    <def id="WINDOW_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
+    <def xlink:href="#dial-window" transform="translate(0 3)"/>
   </g>
 
   <g transform="translate(99 35)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(3.5 0)">B SCALE</text>
-    <use id="B_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
+    <def id="B_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
     <use xlink:href="#dial-attenuverter-cmpdist" transform="translate(0 3)"/>
   </g>
 
   <g transform="translate(6 100)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(6.5 0)">GT MIX</text>
-    <use id="GT_MIX_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
+    <def id="GT_MIX_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
     <use xlink:href="#dial-attenuverter-cmpdist" transform="translate(0 3)"/>
   </g>
 
   <g transform="translate(52.5 100)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(6.5 0)">EQ MIX</text>
-    <use id="EQ_MIX_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
+    <def id="EQ_MIX_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
     <use xlink:href="#dial-attenuverter-cmpdist" transform="translate(0 3)"/>
   </g>
 
   <g transform="translate(99 100)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(7 0)">LT MIX</text>
-    <use id="LT_MIX_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
+    <def id="LT_MIX_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
     <use xlink:href="#dial-attenuverter-cmpdist" transform="translate(0 3)"/>
   </g>
 
@@ -116,20 +109,20 @@
 
   <g transform="translate(52.5 165)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(2.5 0)">DRY/WET</text>
-    <use id="DRY_WET_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
+    <def id="DRY_WET_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
     <use xlink:href="#dial-drywet-cmpdist" transform="translate(0 3)"/>
   </g>
 
   <g transform="translate(20.5 182.5)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(-6 -9)">A DRY</text>
-    <use id="A_DRY_PARAM" xlink:href="#knob16" transform="translate(0 0)"/>
-    <use xlink:href="#dial-mintick" transform="translate(-12.5 -12)"/>
+    <def id="A_DRY_PARAM" xlink:href="#knob16" transform="translate(0 0)"/>
+    <def xlink:href="#dial-mintick" transform="translate(-12.5 -12)"/>
   </g>
 
   <g transform="translate(113.5 182.5)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(-6 -9)">B DRY</text>
-    <use id="B_DRY_PARAM" xlink:href="#knob16" transform="translate(0 0)"/>
-    <use xlink:href="#dial-mintick" transform="translate(-12.5 -12)"/>
+    <def id="B_DRY_PARAM" xlink:href="#knob16" transform="translate(0 0)"/>
+    <def xlink:href="#dial-mintick" transform="translate(-12.5 -12)"/>
   </g>
 
   <g transform="translate(0 225)">
@@ -140,55 +133,55 @@
     <rect width="10" height="8" fill="#bbb" transform="translate(75 127)"/>
 
     <g transform="translate(12 0)">
-      <use id="GT_MIX_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+      <def id="GT_MIX_INPUT" xlink:href="#input" transform="translate(3 5)"/>
       <text font-size="6pt" letter-spacing="1px" transform="translate(5 40)">GTM</text>
     </g>
     <g transform="translate(44 0)">
-      <use id="LT_MIX_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+      <def id="LT_MIX_INPUT" xlink:href="#input" transform="translate(3 5)"/>
       <text font-size="6pt" letter-spacing="1px" transform="translate(6 40)">LTM</text>
     </g>
     <g transform="translate(76 0)">
-      <use id="WINDOW_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+      <def id="WINDOW_INPUT" xlink:href="#input" transform="translate(3 5)"/>
       <text font-size="6pt" letter-spacing="0.5px" transform="translate(1.5 40)">WNDW</text>
     </g>
     <g transform="translate(108 0)">
-      <use id="DRY_WET_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+      <def id="DRY_WET_INPUT" xlink:href="#input" transform="translate(3 5)"/>
       <text font-size="6pt" letter-spacing="1px" transform="translate(6 40)">D/W</text>
     </g>
 
     <g transform="translate(0 44)">
       <g transform="translate(12 0)">
-        <use id="A_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+        <def id="A_INPUT" xlink:href="#input" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="1px" transform="translate(5 40)">A IN</text>
       </g>
       <g transform="translate(44 0)">
-        <use id="A_SCALE_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+        <def id="A_SCALE_INPUT" xlink:href="#input" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="1px" transform="translate(1.5 40)">A SCL</text>
       </g>
       <g transform="translate(76 0)">
-        <use id="GT_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
+        <def id="GT_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(8 40)">GT</text>
       </g>
       <g transform="translate(108 0)">
-        <use id="LT_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
+        <def id="LT_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(9.5 40)">LT</text>
       </g>
 
       <g transform="translate(10 44)">
         <g transform="translate(2 0)">
-          <use id="B_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+          <def id="B_INPUT" xlink:href="#input" transform="translate(3 5)"/>
           <text font-size="6pt" letter-spacing="1px" transform="translate(5 40)">B IN</text>
         </g>
         <g transform="translate(34 0)">
-          <use id="B_SCALE_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+          <def id="B_SCALE_INPUT" xlink:href="#input" transform="translate(3 5)"/>
           <text font-size="6pt" letter-spacing="1px" transform="translate(1.5 40)">B SCL</text>
         </g>
         <g transform="translate(66 0)">
-          <use id="EQ_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
+          <def id="EQ_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
           <text font-size="6pt" letter-spacing="2px" transform="translate(9 40)">EQ</text>
         </g>
         <g transform="translate(98 0)">
-          <use id="MIX_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
+          <def id="MIX_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
           <text font-size="6pt" letter-spacing="2px" transform="translate(6 40)">MIX</text>
         </g>
       </g>

@@ -3,12 +3,6 @@
   <style/>
 
   <defs>
-    <import id="knob26"/>
-    <import id="knob16"/>
-    <import id="button-small"/>
-    <import id="input"/>
-    <import id="output"/>
-
     <symbol id="dial-octave-stack" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <g transform="rotate(-180) translate(10 0)">
@@ -119,29 +113,29 @@
 
   <g transform="translate(0 25)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(6.4 0)">SEMIS</text>
-    <use id="SEMIS_PARAM" xlink:href="#knob26" transform="translate(9.5 7.5)"/>
+    <def id="SEMIS_PARAM" xlink:href="#knob26" transform="translate(9.5 7.5)"/>
     <use xlink:href="#dial-interval-stack" transform="translate(0 -2)"/>
   </g>
 
   <g transform="translate(0 77)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(2.2 0)">OCTAVE</text>
-    <use id="OCTAVE_PARAM" xlink:href="#knob16" transform="translate(14.5 9.5)"/>
+    <def id="OCTAVE_PARAM" xlink:href="#knob16" transform="translate(14.5 9.5)"/>
     <use xlink:href="#dial-octave-stack" transform="translate(0 -5)"/>
   </g>
 
   <g transform="translate(0 117)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(11 0)">FINE</text>
-    <use id="FINE_PARAM" xlink:href="#knob16" transform="translate(14.5 9.5)"/>
+    <def id="FINE_PARAM" xlink:href="#knob16" transform="translate(14.5 9.5)"/>
     <use xlink:href="#dial-fine-stack" transform="translate(0 -5)"/>
   </g>
 
   <g transform="translate(5.5 154)">
     <rect width="34" height="50" rx="5" fill="#fafafa"/>
-    <use id="CV_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+    <def id="CV_INPUT" xlink:href="#input" transform="translate(5 3)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
     <g transform="translate(1.5 39)">
       <text font-size="5pt" letter-spacing="0.75px" transform="translate(0 6)">QNTZ</text>
-      <use id="QUANTIZE_PARAM" xlink:href="#button-small" transform="translate(22 -1)"/>
+      <def id="QUANTIZE_PARAM" xlink:href="#button-small" transform="translate(22 -1)"/>
     </g>
   </g>
 
@@ -149,15 +143,15 @@
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 28)"/>
       <rect width="34" height="35" rx="5" fill="#fafafa"/>
-      <use id="IN_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="IN_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3 35)">V/OCT</text>
     </g>
     <g transform="translate(5.5 41)">
       <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
       <rect width="34" height="72" rx="5" fill="#bbb"/>
-      <use id="THRU_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
+      <def id="THRU_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(5.5 32)">THRU</text>
-      <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 36)"/>
+      <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 36)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 68)">OUT</text>
     </g>
   </g>

@@ -2,13 +2,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="45" height="380" viewBox="0 0 45 380">
   <style/>
 
-  <defs>
-    <import id="knob16"/>
-    <import id="dial-channels-small"/>
-    <import id="input"/>
-    <import id="output"/>
-  </defs>
-
   <rect width="100%" height="100%" fill="#ddd"/>
   <polyline points="1,1 44,1 44,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
   <polyline points="0.5,0.5 44.5,0.5 44.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
@@ -26,29 +19,29 @@
 
   <g transform="translate(2.5 30)">
     <text font-size="6pt" letter-spacing="1.5px" transform="translate(6.5 0)">CHAN</text>
-    <use id="CHANNELS_PARAM" xlink:href="#knob16" transform="translate(12 12)"/>
-    <use xlink:href="#dial-channels-small" transform="translate(0 0)"/>
+    <def id="CHANNELS_PARAM" xlink:href="#knob16" transform="translate(12 12)"/>
+    <def xlink:href="#dial-channels-small" transform="translate(0 0)"/>
   </g>
 
   <g transform="translate(0 70)">
     <g transform="translate(5.5 0)">
       <rect width="34" height="74" rx="5" fill="#fafafa"/>
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 64)"/>
-      <use id="CHANNELS_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="CHANNELS_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="1px" transform="translate(6 35)">CHAN</text>
-      <use id="IN_INPUT" xlink:href="#input" transform="translate(5 39)"/>
+      <def id="IN_INPUT" xlink:href="#input" transform="translate(5 39)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 71)">IN</text>
     </g>
     <g transform="translate(5.5 77)">
       <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
       <rect width="34" height="140" rx="5" fill="#bbb"/>
-      <use id="OUT1_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
+      <def id="OUT1_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
-      <use id="OUT2_OUTPUT" xlink:href="#output" transform="translate(5 35)"/>
+      <def id="OUT2_OUTPUT" xlink:href="#output" transform="translate(5 35)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 67)">OUT</text>
-      <use id="OUT3_OUTPUT" xlink:href="#output" transform="translate(5 70)"/>
+      <def id="OUT3_OUTPUT" xlink:href="#output" transform="translate(5 70)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 102)">OUT</text>
-      <use id="OUT4_OUTPUT" xlink:href="#output" transform="translate(5 105)"/>
+      <def id="OUT4_OUTPUT" xlink:href="#output" transform="translate(5 105)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 137)">OUT</text>
     </g>
   </g>

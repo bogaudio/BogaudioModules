@@ -226,6 +226,37 @@ def process(name)
     end
   end
 
+  doc.css('def').each do |n|
+    id = n.attribute('href').to_s
+    if id
+      id.sub!(/^#/, '')
+      d = $defs[id]
+      if d
+        nn = d.dup
+        nn.node_name = 'svg'
+        if n['id'] && !n['id'].to_s.empty?
+          nn['id'] = n['id']
+        else
+          nn.delete('id')
+        end
+        nn.delete('viewBox')
+        if n['transform'] && !n['transform'].to_s.empty?
+          onn = nn
+          nn = Nokogiri::XML::Node.new('g', doc)
+          nn['transform'] = n['transform']
+          nn.add_child(onn)
+        end
+        n.replace(nn)
+      else
+        puts "WARN: no def defined for def ID '#{id}' in #{fn}"
+        n.remove
+      end
+    else
+      puts "WARN: def without ID in #{fn}: #{n.to_s}"
+      n.remove
+    end
+  end
+
   name = widget_from_filename(fn)
   write_output(name, doc, $main_styles)
   $skins.each do |skin_name, skin|

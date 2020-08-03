@@ -3,7 +3,6 @@
   <style/>
 
   <defs>
-    <import id="input"/>
     <symbol id="display-analyzerxl" viewBox="0 0 600px 380px">
       <rect cx="0" cy="0" width="600" height="380" fill="#222"/>
     </symbol>
@@ -16,14 +15,14 @@
   </g>
 
   <g transform="translate(3, 13)">
-    <use id="SIGNALA_INPUT" xlink:href="#input" transform="translate(0 0)"/>
-    <use id="SIGNALB_INPUT" xlink:href="#input" transform="translate(0 34)"/>
-    <use id="SIGNALC_INPUT" xlink:href="#input" transform="translate(0 68)"/>
-    <use id="SIGNALD_INPUT" xlink:href="#input" transform="translate(0 102)"/>
-    <use id="SIGNALE_INPUT" xlink:href="#input" transform="translate(0 136)"/>
-    <use id="SIGNALF_INPUT" xlink:href="#input" transform="translate(0 170)"/>
-    <use id="SIGNALG_INPUT" xlink:href="#input" transform="translate(0 204)"/>
-    <use id="SIGNALH_INPUT" xlink:href="#input" transform="translate(0 238)"/>
+    <def id="SIGNALA_INPUT" xlink:href="#input" transform="translate(0 0)"/>
+    <def id="SIGNALB_INPUT" xlink:href="#input" transform="translate(0 34)"/>
+    <def id="SIGNALC_INPUT" xlink:href="#input" transform="translate(0 68)"/>
+    <def id="SIGNALD_INPUT" xlink:href="#input" transform="translate(0 102)"/>
+    <def id="SIGNALE_INPUT" xlink:href="#input" transform="translate(0 136)"/>
+    <def id="SIGNALF_INPUT" xlink:href="#input" transform="translate(0 170)"/>
+    <def id="SIGNALG_INPUT" xlink:href="#input" transform="translate(0 204)"/>
+    <def id="SIGNALH_INPUT" xlink:href="#input" transform="translate(0 238)"/>
   </g>
 
   <use id="DISPLAY_WIDGET" xlink:href="#display-analyzerxl" transform="translate(30 0)"/>

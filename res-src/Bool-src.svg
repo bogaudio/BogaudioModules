@@ -2,11 +2,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="45" height="380" viewBox="0 0 45 380">
   <style/>
 
-  <defs>
-    <import id="input"/>
-    <import id="output"/>
-  </defs>
-
   <rect width="100%" height="100%" fill="#ddd"/>
   <polyline points="1,1 44,1 44,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
   <polyline points="0.5,0.5 44.5,0.5 44.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
@@ -23,17 +18,17 @@
   <g transform="translate(7.5 18)">
     <rect width="34" height="63.5" rx="5" fill="#fafafa" transform="translate(-2 0)"/>
     <rect width="34" height="10" fill="#fafafa" transform="translate(-2 53.5)"/>
-    <use id="A_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-    <use id="B_INPUT" xlink:href="#input" transform="translate(3 35)"/>
+    <def id="A_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+    <def id="B_INPUT" xlink:href="#input" transform="translate(3 35)"/>
   </g>
   <g transform="translate(7.5 82)">
     <rect width="34" height="123" rx="5" fill="#bbb" transform="translate(-2 0)"/>
     <rect width="34" height="10" fill="#bbb" transform="translate(-2 0)"/>
-    <use id="AND_OUTPUT" xlink:href="#output" transform="translate(3 4)"/>
+    <def id="AND_OUTPUT" xlink:href="#output" transform="translate(3 4)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(6.3 37)">AND</text>
-    <use id="OR_OUTPUT" xlink:href="#output" transform="translate(3 44)"/>
+    <def id="OR_OUTPUT" xlink:href="#output" transform="translate(3 44)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(9.5 77)">OR</text>
-    <use id="XOR_OUTPUT" xlink:href="#output" transform="translate(3 84)"/>
+    <def id="XOR_OUTPUT" xlink:href="#output" transform="translate(3 84)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(6.5 117)">XOR</text>
   </g>
 
@@ -41,12 +36,12 @@
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 22)"/>
       <rect width="34" height="32" rx="5" fill="#fafafa"/>
-      <use id="NOT_INPUT" xlink:href="#input" transform="translate(5 4)"/>
+      <def id="NOT_INPUT" xlink:href="#input" transform="translate(5 4)"/>
     </g>
     <g transform="translate(5.5 35)">
       <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
       <rect width="34" height="39" rx="5" fill="#bbb"/>
-      <use id="NOT_OUTPUT" xlink:href="#output" transform="translate(5 2)"/>
+      <def id="NOT_OUTPUT" xlink:href="#output" transform="translate(5 2)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 34)">NOT</text>
     </g>
   </g>

@@ -15,66 +15,6 @@ text.brand {
 }
 </style>
 
-  <defs>
-    <symbol id="knob29" viewBox="0 0 45px 45px">
-      <g transform="translate(22.5 22.5)">
-        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
-        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
-        <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
-      </g>
-    </symbol>
-    <symbol id="dial-select" viewBox="0 0 45px 45px">
-      <g transform="translate(22.5 22.5)">
-        <text font-size="5.0pt" transform="rotate(-240) translate(19 0) rotate(240) translate(-2 2)">1</text>
-        <text font-size="5.0pt" transform="rotate(-197.1) translate(19 0) rotate(197.1) translate(-2 2)">2</text>
-        <text font-size="5.0pt" transform="rotate(-154.3) translate(19 0) rotate(154.3) translate(-2 2)">3</text>
-        <text font-size="5.0pt" transform="rotate(-111.4) translate(19 0) rotate(111.4) translate(-2 2)">4</text>
-        <text font-size="5.0pt" transform="rotate(-68.6) translate(19 0) rotate(68.6) translate(-2 2)">5</text>
-        <text font-size="5.0pt" transform="rotate(-25.7) translate(19 0) rotate(25.7) translate(-2 2)">6</text>
-        <text font-size="5.0pt" transform="rotate(17.1) translate(19 0) rotate(-17.1) translate(-2 2)">7</text>
-        <text font-size="5.0pt" transform="rotate(60) translate(19 0) rotate(-60) translate(-2 2)">8</text>
-      </g>
-    </symbol>
-    <symbol id="knob16" viewBox="0 0 16px 16px">
-      <g transform="translate(8 8)">
-        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
-        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
-        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
-      </g>
-    </symbol>
-    <symbol id="dial-steps" viewBox="0 0 40px 40px">
-      <g transform="translate(20 20)">
-        <text font-size="5.0pt" transform="rotate(-240) translate(13 0) rotate(240) translate(-2 2)">1</text>
-        <text font-size="5.0pt" transform="rotate(-197.1) translate(13 0) rotate(197.1) translate(-2 2)">2</text>
-        <text font-size="5.0pt" transform="rotate(-154.3) translate(13 0) rotate(154.3) translate(-2 2)">3</text>
-        <text font-size="5.0pt" transform="rotate(-111.4) translate(13 0) rotate(111.4) translate(-2 2)">4</text>
-        <text font-size="5.0pt" transform="rotate(-68.6) translate(13 0) rotate(68.6) translate(-2 2)">5</text>
-        <text font-size="5.0pt" transform="rotate(-25.7) translate(13 0) rotate(25.7) translate(-2 2)">6</text>
-        <text font-size="5.0pt" transform="rotate(17.1) translate(13 0) rotate(-17.1) translate(-2 2)">7</text>
-        <text font-size="5.0pt" transform="rotate(60) translate(13 0) rotate(-60) translate(-2 2)">8</text>
-      </g>
-    </symbol>
-    <symbol id="switch" viewBox="0 0 14px 24px">
-      <rect width="14px" height="24px" stroke-width="1" stroke="#000" fill="#ddd"/>
-      <rect width="14px" height="12px" stroke-width="0" fill="#000"/>
-    </symbol>
-    <symbol id="light-small" viewBox="0 0 6.4px 6.4px">
-      <rect width="6.4" height="6.4" fill="#0f0"/>
-    </symbol>
-    <symbol id="input" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
-      </g>
-    </symbol>
-    <symbol id="output" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
-      </g>
-    </symbol>
-  </defs>
-
   <rect width="100%" height="100%" fill="#ddd"/>
   <polyline points="1,1 89,1 89,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
   <polyline points="0.5,0.5 89.5,0.5 89.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
@@ -90,60 +30,146 @@ text.brand {
     <rect width="34" height="337" rx="5" fill="#fafafa" transform="translate(0 -9)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 0)">IN</text>
 
-    <use id="IN1_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+    <g transform="translate(5 3)"><svg id="IN1_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">1</text>
-    <use id="IN1_LIGHT" xlink:href="#light-small" transform="translate(17 29.5)"/>
+    <g transform="translate(17 29.5)"><svg id="IN1_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
 
-    <use id="IN2_INPUT" xlink:href="#input" transform="translate(5 44.3)"/>
+    <g transform="translate(5 44.3)"><svg id="IN2_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 76.3)">2</text>
-    <use id="IN2_LIGHT" xlink:href="#light-small" transform="translate(17 70.8)"/>
+    <g transform="translate(17 70.8)"><svg id="IN2_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
 
-    <use id="IN3_INPUT" xlink:href="#input" transform="translate(5 86.6)"/>
+    <g transform="translate(5 86.6)"><svg id="IN3_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 118.6)">3</text>
-    <use id="IN3_LIGHT" xlink:href="#light-small" transform="translate(17 113.1)"/>
+    <g transform="translate(17 113.1)"><svg id="IN3_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
 
-    <use id="IN4_INPUT" xlink:href="#input" transform="translate(5 126.9)"/>
+    <g transform="translate(5 126.9)"><svg id="IN4_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 158.9)">4</text>
-    <use id="IN4_LIGHT" xlink:href="#light-small" transform="translate(17 153.4)"/>
+    <g transform="translate(17 153.4)"><svg id="IN4_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
 
-    <use id="IN5_INPUT" xlink:href="#input" transform="translate(5 168.1)"/>
+    <g transform="translate(5 168.1)"><svg id="IN5_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 200.1)">5</text>
-    <use id="IN5_LIGHT" xlink:href="#light-small" transform="translate(17 194.6)"/>
+    <g transform="translate(17 194.6)"><svg id="IN5_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
 
-    <use id="IN6_INPUT" xlink:href="#input" transform="translate(5 209.4)"/>
+    <g transform="translate(5 209.4)"><svg id="IN6_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 241.4)">6</text>
-    <use id="IN6_LIGHT" xlink:href="#light-small" transform="translate(17 235.9)"/>
+    <g transform="translate(17 235.9)"><svg id="IN6_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
 
-    <use id="IN7_INPUT" xlink:href="#input" transform="translate(5 250.7)"/>
+    <g transform="translate(5 250.7)"><svg id="IN7_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 282.7)">7</text>
-    <use id="IN7_LIGHT" xlink:href="#light-small" transform="translate(17 277.2)"/>
+    <g transform="translate(17 277.2)"><svg id="IN7_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
 
-    <use id="IN8_INPUT" xlink:href="#input" transform="translate(5 292)"/>
+    <g transform="translate(5 292)"><svg id="IN8_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 324)">8</text>
-    <use id="IN8_LIGHT" xlink:href="#light-small" transform="translate(17 318.5)"/>
+    <g transform="translate(17 318.5)"><svg id="IN8_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
   </g>
 
   <g transform="translate(49.5 32)">
     <rect width="34" height="39" rx="5" fill="#fafafa"/>
     <rect width="34" height="10" fill="#fafafa" transform="translate(0 30)"/>
-    <use id="CLOCK_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+    <g transform="translate(5 3)"><svg id="CLOCK_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="1px" transform="translate(4 35)">CLOCK</text>
   </g>
   <g transform="translate(49.5 69)">
     <rect width="34" height="39" rx="5" fill="#fafafa"/>
-    <use id="RESET_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+    <g transform="translate(5 3)"><svg id="RESET_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="1px" transform="translate(5 35)">RESET</text>
   </g>
 
   <g transform="translate(44 121)">
     <text font-size="6pt" letter-spacing="1.5px" transform="translate(7.5 0)">STEPS</text>
-    <use id="STEPS_PARAM" xlink:href="#knob16" transform="translate(14.5 10.5)"/>
-    <use xlink:href="#dial-steps" transform="translate(2.5 -1)"/>
+    <g transform="translate(14.5 10.5)"><svg id="STEPS_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 -1)"><svg>
+      <g transform="translate(20 20)">
+        <text font-size="5.0pt" transform="rotate(-240) translate(13 0) rotate(240) translate(-2 2)">1</text>
+        <text font-size="5.0pt" transform="rotate(-197.1) translate(13 0) rotate(197.1) translate(-2 2)">2</text>
+        <text font-size="5.0pt" transform="rotate(-154.3) translate(13 0) rotate(154.3) translate(-2 2)">3</text>
+        <text font-size="5.0pt" transform="rotate(-111.4) translate(13 0) rotate(111.4) translate(-2 2)">4</text>
+        <text font-size="5.0pt" transform="rotate(-68.6) translate(13 0) rotate(68.6) translate(-2 2)">5</text>
+        <text font-size="5.0pt" transform="rotate(-25.7) translate(13 0) rotate(25.7) translate(-2 2)">6</text>
+        <text font-size="5.0pt" transform="rotate(17.1) translate(13 0) rotate(-17.1) translate(-2 2)">7</text>
+        <text font-size="5.0pt" transform="rotate(60) translate(13 0) rotate(-60) translate(-2 2)">8</text>
+      </g>
+    </svg></g>
   </g>
 
   <g transform="translate(59 166)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(-1.8 -1)">FWD</text>
-    <use id="DIRECTION_PARAM" xlink:href="#switch" transform="translate(0 2)"/>
+    <g transform="translate(0 2)"><svg id="DIRECTION_PARAM">
+      <rect width="14px" height="24px" stroke-width="1" stroke="#000" fill="#ddd"/>
+      <rect width="14px" height="12px" stroke-width="0" fill="#000"/>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(-1.3 34)">REV</text>
   </g>
 
@@ -151,18 +177,45 @@ text.brand {
   <!-- <rect width="45" height="14" fill="#0f0" transform="translate(0 307)" /> -->
   <g transform="translate(44 220)">
     <text font-size="6pt" letter-spacing="1.5px" transform="translate(4.5 0)">SELECT</text>
-    <use id="SELECT_PARAM" xlink:href="#knob29" transform="translate(0 2)"/>
-    <use xlink:href="#dial-select" transform="translate(0 2)"/>
+    <g transform="translate(0 2)"><svg id="SELECT_PARAM">
+      <g transform="translate(22.5 22.5)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(0 2)"><svg>
+      <g transform="translate(22.5 22.5)">
+        <text font-size="5.0pt" transform="rotate(-240) translate(19 0) rotate(240) translate(-2 2)">1</text>
+        <text font-size="5.0pt" transform="rotate(-197.1) translate(19 0) rotate(197.1) translate(-2 2)">2</text>
+        <text font-size="5.0pt" transform="rotate(-154.3) translate(19 0) rotate(154.3) translate(-2 2)">3</text>
+        <text font-size="5.0pt" transform="rotate(-111.4) translate(19 0) rotate(111.4) translate(-2 2)">4</text>
+        <text font-size="5.0pt" transform="rotate(-68.6) translate(19 0) rotate(68.6) translate(-2 2)">5</text>
+        <text font-size="5.0pt" transform="rotate(-25.7) translate(19 0) rotate(25.7) translate(-2 2)">6</text>
+        <text font-size="5.0pt" transform="rotate(17.1) translate(19 0) rotate(-17.1) translate(-2 2)">7</text>
+        <text font-size="5.0pt" transform="rotate(60) translate(19 0) rotate(-60) translate(-2 2)">8</text>
+      </g>
+    </svg></g>
     <g transform="translate(5.5 47)">
       <rect width="34" height="39" rx="5" fill="#fafafa"/>
-      <use id="SELECT_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <g transform="translate(5 3)"><svg id="SELECT_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(11.5 35)">CV</text>
     </g>
   </g>
 
   <g transform="translate(49.5 321)">
     <rect width="34" height="39" rx="5" fill="#bbb"/>
-    <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 3)"/>
+    <g transform="translate(5 3)"><svg id="OUT_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(8 35)">OUT</text>
   </g>
 

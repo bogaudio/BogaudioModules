@@ -15,21 +15,6 @@ text.brand {
 }
 </style>
 
-  <defs>
-    <symbol id="input" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
-      </g>
-    </symbol>
-    <symbol id="output" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
-      </g>
-    </symbol>
-  </defs>
-
   <rect width="100%" height="100%" fill="#ddd"/>
   <polyline points="1,1 44,1 44,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
   <polyline points="0.5,0.5 44.5,0.5 44.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
@@ -49,19 +34,64 @@ text.brand {
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 283)"/>
       <rect width="34" height="293" rx="5" fill="#fafafa"/>
-      <use id="IN1_INPUT" xlink:href="#input" transform="translate(5 5)"/>
-      <use id="IN2_INPUT" xlink:href="#input" transform="translate(5 40.5)"/>
-      <use id="IN3_INPUT" xlink:href="#input" transform="translate(5 76)"/>
-      <use id="IN4_INPUT" xlink:href="#input" transform="translate(5 111.5)"/>
-      <use id="IN5_INPUT" xlink:href="#input" transform="translate(5 147)"/>
-      <use id="IN6_INPUT" xlink:href="#input" transform="translate(5 182.5)"/>
-      <use id="IN7_INPUT" xlink:href="#input" transform="translate(5 218)"/>
-      <use id="IN8_INPUT" xlink:href="#input" transform="translate(5 252.5)"/>
+      <g transform="translate(5 5)"><svg id="IN1_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <g transform="translate(5 40.5)"><svg id="IN2_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <g transform="translate(5 76)"><svg id="IN3_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <g transform="translate(5 111.5)"><svg id="IN4_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <g transform="translate(5 147)"><svg id="IN5_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <g transform="translate(5 182.5)"><svg id="IN6_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <g transform="translate(5 218)"><svg id="IN7_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <g transform="translate(5 252.5)"><svg id="IN8_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
     </g>
     <g transform="translate(5.5 283)">
       <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
       <rect width="34" height="38" rx="5" fill="#bbb"/>
-      <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 1)"/>
+      <g transform="translate(5 1)"><svg id="OUT_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 33)">OUT</text>
     </g>
   </g>

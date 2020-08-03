@@ -37,7 +37,7 @@ ARGV.each do |file|
 
       puts "Preparing #{fn}..."
       doc = read_xml(fn)
-      doc.css('use').each do |n|
+      doc.css('use, svg svg').each do |n|
         id = n.attribute('id')
         n.remove if id && id.to_s =~ /_(PARAM|INPUT|OUTPUT|LIGHT|WIDGET)$/
       end

@@ -3,11 +3,6 @@
   <style/>
 
   <defs>
-    <import id="knob26"/>
-    <import id="knob16"/>
-    <import id="input"/>
-    <import id="output"/>
-
     <symbol id="dial-time-slew" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <text font-size="5.0pt" transform="rotate(-240) translate(18 0) rotate(240) translate(-1.9 2.2)">0</text>
@@ -70,26 +65,26 @@
 
   <g transform="translate(0 25)">
     <text font-size="6pt" letter-spacing="2.0px" transform="translate(11 0)">RISE</text>
-    <use id="RISE_PARAM" xlink:href="#knob26" transform="translate(9.5 9)"/>
+    <def id="RISE_PARAM" xlink:href="#knob26" transform="translate(9.5 9)"/>
     <use xlink:href="#dial-time-slew" transform="translate(0 -1)"/>
-    <use id="RISE_SHAPE_PARAM" xlink:href="#knob16" transform="translate(14.5 51)"/>
+    <def id="RISE_SHAPE_PARAM" xlink:href="#knob16" transform="translate(14.5 51)"/>
     <use xlink:href="#dial-rise-shape-slew" transform="translate(2.5 39)"/>
     <g transform="translate(7.5 77)">
       <rect width="30" height="30" rx="5" fill="#fafafa"/>
-      <use id="RISE_INPUT" xlink:href="#input" transform="translate(3 3)"/>
+      <def id="RISE_INPUT" xlink:href="#input" transform="translate(3 3)"/>
       <!-- <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text> -->
     </g>
   </g>
 
   <g transform="translate(0 146)">
     <text font-size="6pt" letter-spacing="2.0px" transform="translate(11 0)">FALL</text>
-    <use id="FALL_PARAM" xlink:href="#knob26" transform="translate(9.5 9)"/>
+    <def id="FALL_PARAM" xlink:href="#knob26" transform="translate(9.5 9)"/>
     <use xlink:href="#dial-time-slew" transform="translate(0 -1)"/>
-    <use id="FALL_SHAPE_PARAM" xlink:href="#knob16" transform="translate(14.5 51)"/>
+    <def id="FALL_SHAPE_PARAM" xlink:href="#knob16" transform="translate(14.5 51)"/>
     <use xlink:href="#dial-fall-shape-slew" transform="translate(2.5 39)"/>
     <g transform="translate(7.5 77)">
       <rect width="30" height="30" rx="5" fill="#fafafa"/>
-      <use id="FALL_INPUT" xlink:href="#input" transform="translate(3 3)"/>
+      <def id="FALL_INPUT" xlink:href="#input" transform="translate(3 3)"/>
       <!-- <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text> -->
     </g>
   </g>
@@ -98,13 +93,13 @@
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 28)"/>
       <rect width="34" height="35" rx="5" fill="#fafafa"/>
-      <use id="IN_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="IN_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
     </g>
     <g transform="translate(5.5 41)">
       <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
       <rect width="34" height="35" rx="5" fill="#bbb"/>
-      <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
+      <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
     </g>
   </g>

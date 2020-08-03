@@ -2,11 +2,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="45" height="380" viewBox="0 0 45 380">
   <style/>
 
-  <defs>
-    <import id="input"/>
-    <import id="output"/>
-  </defs>
-
   <rect width="100%" height="100%" fill="#ddd"/>
   <polyline points="1,1 44,1 44,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
   <polyline points="0.5,0.5 44.5,0.5 44.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
@@ -23,15 +18,15 @@
   <g transform="translate(0 18)">
     <g transform="translate(7.5 0)">
       <rect width="34" height="209" rx="5" fill="#bbb" transform="translate(-2 0)"/>
-      <use id="BLUE_OUTPUT" xlink:href="#output" transform="translate(3 6)"/>
+      <def id="BLUE_OUTPUT" xlink:href="#output" transform="translate(3 6)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(4 39)">BLUE</text>
-      <use id="WHITE_OUTPUT" xlink:href="#output" transform="translate(3 47)"/>
+      <def id="WHITE_OUTPUT" xlink:href="#output" transform="translate(3 47)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(0.5 80)">WHITE</text>
-      <use id="PINK_OUTPUT" xlink:href="#output" transform="translate(3 88)"/>
+      <def id="PINK_OUTPUT" xlink:href="#output" transform="translate(3 88)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(4.5 121)">PINK</text>
-      <use id="RED_OUTPUT" xlink:href="#output" transform="translate(3 129)"/>
+      <def id="RED_OUTPUT" xlink:href="#output" transform="translate(3 129)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(7 162)">RED</text>
-      <use id="GAUSS_OUTPUT" xlink:href="#output" transform="translate(3 170)"/>
+      <def id="GAUSS_OUTPUT" xlink:href="#output" transform="translate(3 170)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(0 203)">GAUSS</text>
     </g>
   </g>
@@ -41,13 +36,13 @@
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 28)"/>
       <rect width="34" height="35" rx="5" fill="#fafafa"/>
-      <use id="ABS_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="ABS_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
     </g>
     <g transform="translate(5.5 41)">
       <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
       <rect width="34" height="35" rx="5" fill="#bbb"/>
-      <use id="ABS_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
+      <def id="ABS_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
     </g>
   </g>

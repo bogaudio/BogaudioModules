@@ -2,11 +2,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="45" height="380" viewBox="0 0 45 380">
   <style/>
 
-  <defs>
-    <import id="output"/>
-    <import id="light-small"/>
-  </defs>
-
   <rect width="100%" height="100%" fill="#ddd"/>
   <polyline points="1,1 44,1 44,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
   <polyline points="0.5,0.5 44.5,0.5 44.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
@@ -21,14 +16,14 @@
   </g>
 
   <g transform="translate(0 280)">
-    <use id="COM_LIGHT" xlink:href="#light-small" transform="translate(10 0.5)"/>
+    <def id="COM_LIGHT" xlink:href="#light-small" transform="translate(10 0.5)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(19 6)">COM</text>
   </g>
 
   <g transform="translate(0 260)">
     <g transform="translate(5.5 41)">
       <rect width="34" height="38" rx="5" fill="#bbb" transform="translate(0 -3)"/>
-      <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
+      <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
     </g>
   </g>

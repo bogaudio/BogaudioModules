@@ -16,63 +16,6 @@ text.brand {
 </style>
 
   <defs>
-    <symbol id="knob29" viewBox="0 0 45px 45px">
-      <g transform="translate(22.5 22.5)">
-        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
-        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
-        <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
-      </g>
-    </symbol>
-    <symbol id="knob16" viewBox="0 0 16px 16px">
-      <g transform="translate(8 8)">
-        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
-        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
-        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
-      </g>
-    </symbol>
-    <symbol id="dial-window" viewBox="0 0 45px 45px">
-      <g transform="translate(22.5 22.5)">
-        <text font-size="5.0pt" transform="rotate(-240) translate(20 0) rotate(240) translate(-1.9 2.2)">0</text>
-
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-210) translate(17 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-180) translate(17 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-150) translate(17 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-120) translate(17 0)"/>
-
-        <polyline points="0,0 3.5,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(17 0)"/>
-
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-60) translate(17 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-30) translate(17 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(0) translate(17 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(30) translate(17 0)"/>
-
-        <text font-size="5.0pt" transform="rotate(60) translate(20 0) rotate(-60) translate(-4 2.2)">10</text>
-      </g>
-    </symbol>
-    <symbol id="dial-mintick" viewBox="0 0 40px 40px">
-      <g transform="translate(20 20)">
-        <g transform="rotate(-240) translate(10 0)">
-          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
-        </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
-      </g>
-    </symbol>
-    <symbol id="input" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
-      </g>
-    </symbol>
-    <symbol id="output" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
-      </g>
-    </symbol>
-
     <symbol id="dial-attenuverter-cmpdist" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <text font-size="7pt" transform="rotate(-240) translate(20 0) rotate(240) translate(-1.2 2.2)">-</text>
@@ -139,37 +82,91 @@ text.brand {
 
   <g transform="translate(6 35)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(3.5 0)">A SCALE</text>
-    <use id="A_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
+    <g transform="translate(0 3)"><svg id="A_PARAM">
+      <g transform="translate(22.5 22.5)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
     <use xlink:href="#dial-attenuverter-cmpdist" transform="translate(0 3)"/>
   </g>
 
   <g transform="translate(52.5 35)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(4 0)">WINDOW</text>
-    <use id="WINDOW_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
-    <use xlink:href="#dial-window" transform="translate(0 3)"/>
+    <g transform="translate(0 3)"><svg id="WINDOW_PARAM">
+      <g transform="translate(22.5 22.5)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(0 3)"><svg>
+      <g transform="translate(22.5 22.5)">
+        <text font-size="5.0pt" transform="rotate(-240) translate(20 0) rotate(240) translate(-1.9 2.2)">0</text>
+
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-210) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-180) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-150) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-120) translate(17 0)"/>
+
+        <polyline points="0,0 3.5,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(17 0)"/>
+
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-60) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-30) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(0) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(30) translate(17 0)"/>
+
+        <text font-size="5.0pt" transform="rotate(60) translate(20 0) rotate(-60) translate(-4 2.2)">10</text>
+      </g>
+    </svg></g>
   </g>
 
   <g transform="translate(99 35)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(3.5 0)">B SCALE</text>
-    <use id="B_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
+    <g transform="translate(0 3)"><svg id="B_PARAM">
+      <g transform="translate(22.5 22.5)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
     <use xlink:href="#dial-attenuverter-cmpdist" transform="translate(0 3)"/>
   </g>
 
   <g transform="translate(6 100)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(6.5 0)">GT MIX</text>
-    <use id="GT_MIX_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
+    <g transform="translate(0 3)"><svg id="GT_MIX_PARAM">
+      <g transform="translate(22.5 22.5)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
     <use xlink:href="#dial-attenuverter-cmpdist" transform="translate(0 3)"/>
   </g>
 
   <g transform="translate(52.5 100)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(6.5 0)">EQ MIX</text>
-    <use id="EQ_MIX_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
+    <g transform="translate(0 3)"><svg id="EQ_MIX_PARAM">
+      <g transform="translate(22.5 22.5)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
     <use xlink:href="#dial-attenuverter-cmpdist" transform="translate(0 3)"/>
   </g>
 
   <g transform="translate(99 100)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(7 0)">LT MIX</text>
-    <use id="LT_MIX_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
+    <g transform="translate(0 3)"><svg id="LT_MIX_PARAM">
+      <g transform="translate(22.5 22.5)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
     <use xlink:href="#dial-attenuverter-cmpdist" transform="translate(0 3)"/>
   </g>
 
@@ -179,20 +176,58 @@ text.brand {
 
   <g transform="translate(52.5 165)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(2.5 0)">DRY/WET</text>
-    <use id="DRY_WET_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
+    <g transform="translate(0 3)"><svg id="DRY_WET_PARAM">
+      <g transform="translate(22.5 22.5)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
     <use xlink:href="#dial-drywet-cmpdist" transform="translate(0 3)"/>
   </g>
 
   <g transform="translate(20.5 182.5)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(-6 -9)">A DRY</text>
-    <use id="A_DRY_PARAM" xlink:href="#knob16" transform="translate(0 0)"/>
-    <use xlink:href="#dial-mintick" transform="translate(-12.5 -12)"/>
+    <g transform="translate(0 0)"><svg id="A_DRY_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-12.5 -12)"><svg>
+      <g transform="translate(20 20)">
+        <g transform="rotate(-240) translate(10 0)">
+          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
+        </g>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
 
   <g transform="translate(113.5 182.5)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(-6 -9)">B DRY</text>
-    <use id="B_DRY_PARAM" xlink:href="#knob16" transform="translate(0 0)"/>
-    <use xlink:href="#dial-mintick" transform="translate(-12.5 -12)"/>
+    <g transform="translate(0 0)"><svg id="B_DRY_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-12.5 -12)"><svg>
+      <g transform="translate(20 20)">
+        <g transform="rotate(-240) translate(10 0)">
+          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
+        </g>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
 
   <g transform="translate(0 225)">
@@ -203,55 +238,115 @@ text.brand {
     <rect width="10" height="8" fill="#bbb" transform="translate(75 127)"/>
 
     <g transform="translate(12 0)">
-      <use id="GT_MIX_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+      <g transform="translate(3 5)"><svg id="GT_MIX_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="6pt" letter-spacing="1px" transform="translate(5 40)">GTM</text>
     </g>
     <g transform="translate(44 0)">
-      <use id="LT_MIX_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+      <g transform="translate(3 5)"><svg id="LT_MIX_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="6pt" letter-spacing="1px" transform="translate(6 40)">LTM</text>
     </g>
     <g transform="translate(76 0)">
-      <use id="WINDOW_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+      <g transform="translate(3 5)"><svg id="WINDOW_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="6pt" letter-spacing="0.5px" transform="translate(1.5 40)">WNDW</text>
     </g>
     <g transform="translate(108 0)">
-      <use id="DRY_WET_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+      <g transform="translate(3 5)"><svg id="DRY_WET_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="6pt" letter-spacing="1px" transform="translate(6 40)">D/W</text>
     </g>
 
     <g transform="translate(0 44)">
       <g transform="translate(12 0)">
-        <use id="A_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+        <g transform="translate(3 5)"><svg id="A_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
         <text font-size="6pt" letter-spacing="1px" transform="translate(5 40)">A IN</text>
       </g>
       <g transform="translate(44 0)">
-        <use id="A_SCALE_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+        <g transform="translate(3 5)"><svg id="A_SCALE_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
         <text font-size="6pt" letter-spacing="1px" transform="translate(1.5 40)">A SCL</text>
       </g>
       <g transform="translate(76 0)">
-        <use id="GT_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
+        <g transform="translate(3 5)"><svg id="GT_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
         <text font-size="6pt" letter-spacing="2px" transform="translate(8 40)">GT</text>
       </g>
       <g transform="translate(108 0)">
-        <use id="LT_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
+        <g transform="translate(3 5)"><svg id="LT_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
         <text font-size="6pt" letter-spacing="2px" transform="translate(9.5 40)">LT</text>
       </g>
 
       <g transform="translate(10 44)">
         <g transform="translate(2 0)">
-          <use id="B_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+          <g transform="translate(3 5)"><svg id="B_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
           <text font-size="6pt" letter-spacing="1px" transform="translate(5 40)">B IN</text>
         </g>
         <g transform="translate(34 0)">
-          <use id="B_SCALE_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+          <g transform="translate(3 5)"><svg id="B_SCALE_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
           <text font-size="6pt" letter-spacing="1px" transform="translate(1.5 40)">B SCL</text>
         </g>
         <g transform="translate(66 0)">
-          <use id="EQ_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
+          <g transform="translate(3 5)"><svg id="EQ_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
           <text font-size="6pt" letter-spacing="2px" transform="translate(9 40)">EQ</text>
         </g>
         <g transform="translate(98 0)">
-          <use id="MIX_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
+          <g transform="translate(3 5)"><svg id="MIX_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
           <text font-size="6pt" letter-spacing="2px" transform="translate(6 40)">MIX</text>
         </g>
       </g>

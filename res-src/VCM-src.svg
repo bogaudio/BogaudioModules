@@ -3,11 +3,6 @@
   <style/>
 
   <defs>
-    <import id="knob38"/>
-    <import id="input"/>
-    <import id="output"/>
-    <import id="button-small"/>
-
     <symbol id="dial-level-vcm" viewBox="0 0 60px 60px">
       <g transform="translate(30 30)">
         <text font-size="6.0pt" transform="rotate(-240) translate(25 0) rotate(240) translate(-2.3 2.5)">0</text>
@@ -48,16 +43,16 @@
     <g transform="translate(10 1)">
       <rect width="63" height="43" rx="5" fill="#fafafa"/>
       <g transform="translate(1 0)">
-        <use id="IN1_INPUT" xlink:href="#input" transform="translate(3 4)"/>
+        <def id="IN1_INPUT" xlink:href="#input" transform="translate(3 4)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(10 39)">IN</text>
       </g>
       <g transform="translate(32 0)">
-        <use id="CV1_INPUT" xlink:href="#input" transform="translate(3 4)"/>
+        <def id="CV1_INPUT" xlink:href="#input" transform="translate(3 4)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(8.5 39)">CV</text>
       </g>
     </g>
     <!-- <polyline points="0,0 150,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 22.5)" /> -->
-    <use id="LEVEL1_PARAM" xlink:href="#knob38" transform="translate(89.5 3.5)"/>
+    <def id="LEVEL1_PARAM" xlink:href="#knob38" transform="translate(89.5 3.5)"/>
     <use xlink:href="#dial-level-vcm" transform="translate(78.5 -7.5)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(139 13.8) rotate(90)">CH1</text>
   </g>
@@ -66,16 +61,16 @@
     <g transform="translate(10 1)">
       <rect width="63" height="43" rx="5" fill="#fafafa"/>
       <g transform="translate(1 0)">
-        <use id="IN2_INPUT" xlink:href="#input" transform="translate(3 4)"/>
+        <def id="IN2_INPUT" xlink:href="#input" transform="translate(3 4)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(10 39)">IN</text>
       </g>
       <g transform="translate(32 0)">
-        <use id="CV2_INPUT" xlink:href="#input" transform="translate(3 4)"/>
+        <def id="CV2_INPUT" xlink:href="#input" transform="translate(3 4)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(8.5 39)">CV</text>
       </g>
     </g>
     <!-- <polyline points="0,0 150,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 22.5)" /> -->
-    <use id="LEVEL2_PARAM" xlink:href="#knob38" transform="translate(89.5 3.5)"/>
+    <def id="LEVEL2_PARAM" xlink:href="#knob38" transform="translate(89.5 3.5)"/>
     <use xlink:href="#dial-level-vcm" transform="translate(78.5 -7.5)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(139 13.8) rotate(90)">CH2</text>
   </g>
@@ -84,16 +79,16 @@
     <g transform="translate(10 1)">
       <rect width="63" height="43" rx="5" fill="#fafafa"/>
       <g transform="translate(1 0)">
-        <use id="IN3_INPUT" xlink:href="#input" transform="translate(3 4)"/>
+        <def id="IN3_INPUT" xlink:href="#input" transform="translate(3 4)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(10 39)">IN</text>
       </g>
       <g transform="translate(32 0)">
-        <use id="CV3_INPUT" xlink:href="#input" transform="translate(3 4)"/>
+        <def id="CV3_INPUT" xlink:href="#input" transform="translate(3 4)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(8.5 39)">CV</text>
       </g>
     </g>
     <!-- <polyline points="0,0 150,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 22.5)" /> -->
-    <use id="LEVEL3_PARAM" xlink:href="#knob38" transform="translate(89.5 3.5)"/>
+    <def id="LEVEL3_PARAM" xlink:href="#knob38" transform="translate(89.5 3.5)"/>
     <use xlink:href="#dial-level-vcm" transform="translate(78.5 -7.5)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(139 13.8) rotate(90)">CH3</text>
   </g>
@@ -102,41 +97,41 @@
     <g transform="translate(10 1)">
       <rect width="63" height="43" rx="5" fill="#fafafa"/>
       <g transform="translate(1 0)">
-        <use id="IN4_INPUT" xlink:href="#input" transform="translate(3 4)"/>
+        <def id="IN4_INPUT" xlink:href="#input" transform="translate(3 4)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(10 39)">IN</text>
       </g>
       <g transform="translate(32 0)">
-        <use id="CV4_INPUT" xlink:href="#input" transform="translate(3 4)"/>
+        <def id="CV4_INPUT" xlink:href="#input" transform="translate(3 4)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(8.5 39)">CV</text>
       </g>
     </g>
     <!-- <polyline points="0,0 150,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 22.5)" /> -->
-    <use id="LEVEL4_PARAM" xlink:href="#knob38" transform="translate(89.5 3.5)"/>
+    <def id="LEVEL4_PARAM" xlink:href="#knob38" transform="translate(89.5 3.5)"/>
     <use xlink:href="#dial-level-vcm" transform="translate(78.5 -7.5)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(139 13.8) rotate(90)">CH4</text>
   </g>
 
   <g transform="translate(0 290)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 30.5) rotate(-90)">MIX</text>
-    <use id="MIX_PARAM" xlink:href="#knob38" transform="translate(22.5 3.5)"/>
+    <def id="MIX_PARAM" xlink:href="#knob38" transform="translate(22.5 3.5)"/>
     <use xlink:href="#dial-level-vcm" transform="translate(11.5 -7.5)"/>
     <g transform="translate(77 0)">
       <rect width="63" height="43" rx="5" fill="#bbb"/>
       <rect width="31.5" height="43" rx="5" fill="#fafafa"/>
       <rect width="5" height="43" fill="#fafafa" transform="translate(26.5 0)"/>
       <g transform="translate(1 0)">
-        <use id="MIX_CV_INPUT" xlink:href="#input" transform="translate(3 4)"/>
+        <def id="MIX_CV_INPUT" xlink:href="#input" transform="translate(3 4)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(8.5 39)">CV</text>
       </g>
       <g transform="translate(32 0)">
-        <use id="MIX_OUTPUT" xlink:href="#output" transform="translate(3 4)"/>
+        <def id="MIX_OUTPUT" xlink:href="#output" transform="translate(3 4)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(5 39)">OUT</text>
       </g>
     </g>
 
     <g transform="translate(42 54)">
       <text font-size="6pt" letter-spacing="2px" transform="translate(9 6.1)">LINEAR</text>
-      <use id="LINEAR_PARAM" xlink:href="#button-small" transform="translate(49 -1.3)"/>
+      <def id="LINEAR_PARAM" xlink:href="#button-small" transform="translate(49 -1.3)"/>
     </g>
   </g>
 

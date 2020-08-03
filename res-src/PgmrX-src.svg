@@ -2,15 +2,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="180" height="380" viewBox="0 0 180 380">
   <style/>
 
-  <defs>
-    <import id="knob26"/>
-    <import id="dial-pgmr"/>
-    <import id="button"/>
-    <import id="light-small"/>
-    <import id="input"/>
-    <import id="output"/>
-  </defs>
-
   <rect width="100%" height="100%" fill="#ddd"/>
   <polyline points="1,1 179,1 179,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
   <polyline points="0.5,0.5 179.5,0.5 179.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
@@ -27,31 +18,31 @@
   <g transform="translate(0 30)">
     <!-- <rect width="34" height="330" fill="#ccc" transform="translate(5.5 0)" /> -->
     <text font-size="5pt" letter-spacing="2px" transform="translate(18 -1)">+1</text>
-    <use id="CVA1_PARAM" xlink:href="#knob26" transform="translate(9.5 10.5)"/>
-    <use xlink:href="#dial-pgmr" transform="translate(0 1)"/>
+    <def id="CVA1_PARAM" xlink:href="#knob26" transform="translate(9.5 10.5)"/>
+    <def xlink:href="#dial-pgmr" transform="translate(0 1)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 48)">A</text>
-    <use id="CVB1_PARAM" xlink:href="#knob26" transform="translate(9.5 64.5)"/>
-    <use xlink:href="#dial-pgmr" transform="translate(0 55)"/>
+    <def id="CVB1_PARAM" xlink:href="#knob26" transform="translate(9.5 64.5)"/>
+    <def xlink:href="#dial-pgmr" transform="translate(0 55)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 102)">B</text>
-    <use id="CVC1_PARAM" xlink:href="#knob26" transform="translate(9.5 118.5)"/>
-    <use xlink:href="#dial-pgmr" transform="translate(0 109)"/>
+    <def id="CVC1_PARAM" xlink:href="#knob26" transform="translate(9.5 118.5)"/>
+    <def xlink:href="#dial-pgmr" transform="translate(0 109)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 156)">C</text>
-    <use id="CVD1_PARAM" xlink:href="#knob26" transform="translate(9.5 172.5)"/>
-    <use xlink:href="#dial-pgmr" transform="translate(0 163)"/>
+    <def id="CVD1_PARAM" xlink:href="#knob26" transform="translate(9.5 172.5)"/>
+    <def xlink:href="#dial-pgmr" transform="translate(0 163)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 210)">D</text>
     <g transform="translate(0 223)">
       <g transform="translate(5.5 0)">
         <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)"/>
         <rect width="34" height="76" rx="5" fill="#fafafa" transform="translate(0 -3)"/>
-        <use id="SELECT1_LIGHT" xlink:href="#light-small" transform="translate(13.8 2)"/>
-        <use id="SELECT1_PARAM" xlink:href="#button" transform="translate(8 14)"/>
-        <use id="SELECT1_INPUT" xlink:href="#input" transform="translate(5 37)"/>
+        <def id="SELECT1_LIGHT" xlink:href="#light-small" transform="translate(13.8 2)"/>
+        <def id="SELECT1_PARAM" xlink:href="#button" transform="translate(8 14)"/>
+        <def id="SELECT1_INPUT" xlink:href="#input" transform="translate(5 37)"/>
         <text font-size="5pt" letter-spacing="1px" transform="translate(2.5 69)">SELECT</text>
       </g>
       <g transform="translate(5.5 73)">
         <rect width="34" height="10" fill="#bbb" transform="translate(0 0)"/>
         <rect width="34" height="33" rx="5" fill="#bbb"/>
-        <use id="SELECT1_OUTPUT" xlink:href="#output" transform="translate(5 4)"/>
+        <def id="SELECT1_OUTPUT" xlink:href="#output" transform="translate(5 4)"/>
       </g>
     </g>
   </g>
@@ -59,31 +50,31 @@
   <g transform="translate(45 30)">
     <!-- <rect width="34" height="330" fill="#ccc" transform="translate(5.5 0)" /> -->
     <text font-size="5pt" letter-spacing="2px" transform="translate(18 -1)">+2</text>
-    <use id="CVA2_PARAM" xlink:href="#knob26" transform="translate(9.5 10.5)"/>
-    <use xlink:href="#dial-pgmr" transform="translate(0 1)"/>
+    <def id="CVA2_PARAM" xlink:href="#knob26" transform="translate(9.5 10.5)"/>
+    <def xlink:href="#dial-pgmr" transform="translate(0 1)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 48)">A</text>
-    <use id="CVB2_PARAM" xlink:href="#knob26" transform="translate(9.5 64.5)"/>
-    <use xlink:href="#dial-pgmr" transform="translate(0 55)"/>
+    <def id="CVB2_PARAM" xlink:href="#knob26" transform="translate(9.5 64.5)"/>
+    <def xlink:href="#dial-pgmr" transform="translate(0 55)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 102)">B</text>
-    <use id="CVC2_PARAM" xlink:href="#knob26" transform="translate(9.5 118.5)"/>
-    <use xlink:href="#dial-pgmr" transform="translate(0 109)"/>
+    <def id="CVC2_PARAM" xlink:href="#knob26" transform="translate(9.5 118.5)"/>
+    <def xlink:href="#dial-pgmr" transform="translate(0 109)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 156)">C</text>
-    <use id="CVD2_PARAM" xlink:href="#knob26" transform="translate(9.5 172.5)"/>
-    <use xlink:href="#dial-pgmr" transform="translate(0 163)"/>
+    <def id="CVD2_PARAM" xlink:href="#knob26" transform="translate(9.5 172.5)"/>
+    <def xlink:href="#dial-pgmr" transform="translate(0 163)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 210)">D</text>
     <g transform="translate(0 223)">
       <g transform="translate(5.5 0)">
         <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)"/>
         <rect width="34" height="76" rx="5" fill="#fafafa" transform="translate(0 -3)"/>
-        <use id="SELECT2_LIGHT" xlink:href="#light-small" transform="translate(13.8 2)"/>
-        <use id="SELECT2_PARAM" xlink:href="#button" transform="translate(8 14)"/>
-        <use id="SELECT2_INPUT" xlink:href="#input" transform="translate(5 37)"/>
+        <def id="SELECT2_LIGHT" xlink:href="#light-small" transform="translate(13.8 2)"/>
+        <def id="SELECT2_PARAM" xlink:href="#button" transform="translate(8 14)"/>
+        <def id="SELECT2_INPUT" xlink:href="#input" transform="translate(5 37)"/>
         <text font-size="5pt" letter-spacing="1px" transform="translate(2.5 69)">SELECT</text>
       </g>
       <g transform="translate(5.5 73)">
         <rect width="34" height="10" fill="#bbb" transform="translate(0 0)"/>
         <rect width="34" height="33" rx="5" fill="#bbb"/>
-        <use id="SELECT2_OUTPUT" xlink:href="#output" transform="translate(5 4)"/>
+        <def id="SELECT2_OUTPUT" xlink:href="#output" transform="translate(5 4)"/>
       </g>
     </g>
   </g>
@@ -91,31 +82,31 @@
   <g transform="translate(90 30)">
     <!-- <rect width="34" height="330" fill="#ccc" transform="translate(5.5 0)" /> -->
     <text font-size="5pt" letter-spacing="2px" transform="translate(18 -1)">+3</text>
-    <use id="CVA3_PARAM" xlink:href="#knob26" transform="translate(9.5 10.5)"/>
-    <use xlink:href="#dial-pgmr" transform="translate(0 1)"/>
+    <def id="CVA3_PARAM" xlink:href="#knob26" transform="translate(9.5 10.5)"/>
+    <def xlink:href="#dial-pgmr" transform="translate(0 1)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 48)">A</text>
-    <use id="CVB3_PARAM" xlink:href="#knob26" transform="translate(9.5 64.5)"/>
-    <use xlink:href="#dial-pgmr" transform="translate(0 55)"/>
+    <def id="CVB3_PARAM" xlink:href="#knob26" transform="translate(9.5 64.5)"/>
+    <def xlink:href="#dial-pgmr" transform="translate(0 55)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 102)">B</text>
-    <use id="CVC3_PARAM" xlink:href="#knob26" transform="translate(9.5 118.5)"/>
-    <use xlink:href="#dial-pgmr" transform="translate(0 109)"/>
+    <def id="CVC3_PARAM" xlink:href="#knob26" transform="translate(9.5 118.5)"/>
+    <def xlink:href="#dial-pgmr" transform="translate(0 109)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 156)">C</text>
-    <use id="CVD3_PARAM" xlink:href="#knob26" transform="translate(9.5 172.5)"/>
-    <use xlink:href="#dial-pgmr" transform="translate(0 163)"/>
+    <def id="CVD3_PARAM" xlink:href="#knob26" transform="translate(9.5 172.5)"/>
+    <def xlink:href="#dial-pgmr" transform="translate(0 163)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 210)">D</text>
     <g transform="translate(0 223)">
       <g transform="translate(5.5 0)">
         <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)"/>
         <rect width="34" height="76" rx="5" fill="#fafafa" transform="translate(0 -3)"/>
-        <use id="SELECT3_LIGHT" xlink:href="#light-small" transform="translate(13.8 2)"/>
-        <use id="SELECT3_PARAM" xlink:href="#button" transform="translate(8 14)"/>
-        <use id="SELECT3_INPUT" xlink:href="#input" transform="translate(5 37)"/>
+        <def id="SELECT3_LIGHT" xlink:href="#light-small" transform="translate(13.8 2)"/>
+        <def id="SELECT3_PARAM" xlink:href="#button" transform="translate(8 14)"/>
+        <def id="SELECT3_INPUT" xlink:href="#input" transform="translate(5 37)"/>
         <text font-size="5pt" letter-spacing="1px" transform="translate(2.5 69)">SELECT</text>
       </g>
       <g transform="translate(5.5 73)">
         <rect width="34" height="10" fill="#bbb" transform="translate(0 0)"/>
         <rect width="34" height="33" rx="5" fill="#bbb"/>
-        <use id="SELECT3_OUTPUT" xlink:href="#output" transform="translate(5 4)"/>
+        <def id="SELECT3_OUTPUT" xlink:href="#output" transform="translate(5 4)"/>
       </g>
     </g>
   </g>
@@ -123,31 +114,31 @@
   <g transform="translate(135 30)">
     <!-- <rect width="34" height="330" fill="#ccc" transform="translate(5.5 0)" /> -->
     <text font-size="5pt" letter-spacing="2px" transform="translate(17.5 -1)">+4</text>
-    <use id="CVA4_PARAM" xlink:href="#knob26" transform="translate(9.5 10.5)"/>
-    <use xlink:href="#dial-pgmr" transform="translate(0 1)"/>
+    <def id="CVA4_PARAM" xlink:href="#knob26" transform="translate(9.5 10.5)"/>
+    <def xlink:href="#dial-pgmr" transform="translate(0 1)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 48)">A</text>
-    <use id="CVB4_PARAM" xlink:href="#knob26" transform="translate(9.5 64.5)"/>
-    <use xlink:href="#dial-pgmr" transform="translate(0 55)"/>
+    <def id="CVB4_PARAM" xlink:href="#knob26" transform="translate(9.5 64.5)"/>
+    <def xlink:href="#dial-pgmr" transform="translate(0 55)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 102)">B</text>
-    <use id="CVC4_PARAM" xlink:href="#knob26" transform="translate(9.5 118.5)"/>
-    <use xlink:href="#dial-pgmr" transform="translate(0 109)"/>
+    <def id="CVC4_PARAM" xlink:href="#knob26" transform="translate(9.5 118.5)"/>
+    <def xlink:href="#dial-pgmr" transform="translate(0 109)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 156)">C</text>
-    <use id="CVD4_PARAM" xlink:href="#knob26" transform="translate(9.5 172.5)"/>
-    <use xlink:href="#dial-pgmr" transform="translate(0 163)"/>
+    <def id="CVD4_PARAM" xlink:href="#knob26" transform="translate(9.5 172.5)"/>
+    <def xlink:href="#dial-pgmr" transform="translate(0 163)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 210)">D</text>
     <g transform="translate(0 223)">
       <g transform="translate(5.5 0)">
         <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)"/>
         <rect width="34" height="76" rx="5" fill="#fafafa" transform="translate(0 -3)"/>
-        <use id="SELECT4_LIGHT" xlink:href="#light-small" transform="translate(13.8 2)"/>
-        <use id="SELECT4_PARAM" xlink:href="#button" transform="translate(8 14)"/>
-        <use id="SELECT4_INPUT" xlink:href="#input" transform="translate(5 37)"/>
+        <def id="SELECT4_LIGHT" xlink:href="#light-small" transform="translate(13.8 2)"/>
+        <def id="SELECT4_PARAM" xlink:href="#button" transform="translate(8 14)"/>
+        <def id="SELECT4_INPUT" xlink:href="#input" transform="translate(5 37)"/>
         <text font-size="5pt" letter-spacing="1px" transform="translate(2.5 69)">SELECT</text>
       </g>
       <g transform="translate(5.5 73)">
         <rect width="34" height="10" fill="#bbb" transform="translate(0 0)"/>
         <rect width="34" height="33" rx="5" fill="#bbb"/>
-        <use id="SELECT4_OUTPUT" xlink:href="#output" transform="translate(5 4)"/>
+        <def id="SELECT4_OUTPUT" xlink:href="#output" transform="translate(5 4)"/>
       </g>
     </g>
   </g>

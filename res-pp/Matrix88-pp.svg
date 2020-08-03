@@ -15,37 +15,6 @@ text.brand {
 }
 </style>
 
-  <defs>
-    <symbol id="knob19" viewBox="0 0 20px 20px">
-      <g transform="translate(10 10)">
-        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
-        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
-        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
-      </g>
-    </symbol>
-    <symbol id="dial-centertick-19" viewBox="0 0 40px 40px">
-      <g transform="translate(20 20)">
-        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
-      </g>
-    </symbol>
-    <symbol id="input" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
-      </g>
-    </symbol>
-    <symbol id="output" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
-      </g>
-    </symbol>
-  </defs>
-
   <rect width="100%" height="100%" fill="#ddd"/>
   <polyline points="1,1 329,1 329,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
   <polyline points="0.5,0.5 329.5,0.5 329.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
@@ -63,290 +32,1266 @@ text.brand {
 
   <g transform="translate(5.5 25)">
     <rect width="34" height="293" rx="5" fill="#fafafa" transform="translate(0 0)"/>
-    <use id="IN1_INPUT" xlink:href="#input" transform="translate(5 5)"/>
-    <use id="IN2_INPUT" xlink:href="#input" transform="translate(5 42)"/>
-    <use id="IN3_INPUT" xlink:href="#input" transform="translate(5 79)"/>
-    <use id="IN4_INPUT" xlink:href="#input" transform="translate(5 116)"/>
-    <use id="IN5_INPUT" xlink:href="#input" transform="translate(5 153)"/>
-    <use id="IN6_INPUT" xlink:href="#input" transform="translate(5 190)"/>
-    <use id="IN7_INPUT" xlink:href="#input" transform="translate(5 227)"/>
-    <use id="IN8_INPUT" xlink:href="#input" transform="translate(5 264)"/>
+    <g transform="translate(5 5)"><svg id="IN1_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(5 42)"><svg id="IN2_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(5 79)"><svg id="IN3_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(5 116)"><svg id="IN4_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(5 153)"><svg id="IN5_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(5 190)"><svg id="IN6_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(5 227)"><svg id="IN7_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(5 264)"><svg id="IN8_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
   </g>
 
   <g transform="translate(46.5 323)">
     <rect width="278.5" height="34" rx="5" fill="#bbb" transform="translate(0 0)"/>
-    <use id="OUT1_OUTPUT" xlink:href="#output" transform="translate(5 5)"/>
-    <use id="OUT2_OUTPUT" xlink:href="#output" transform="translate(40 5)"/>
-    <use id="OUT3_OUTPUT" xlink:href="#output" transform="translate(75 5)"/>
-    <use id="OUT4_OUTPUT" xlink:href="#output" transform="translate(110 5)"/>
-    <use id="OUT5_OUTPUT" xlink:href="#output" transform="translate(145 5)"/>
-    <use id="OUT6_OUTPUT" xlink:href="#output" transform="translate(180 5)"/>
-    <use id="OUT7_OUTPUT" xlink:href="#output" transform="translate(215 5)"/>
-    <use id="OUT8_OUTPUT" xlink:href="#output" transform="translate(250 5)"/>
+    <g transform="translate(5 5)"><svg id="OUT1_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(40 5)"><svg id="OUT2_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(75 5)"><svg id="OUT3_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(110 5)"><svg id="OUT4_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(145 5)"><svg id="OUT5_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(180 5)"><svg id="OUT6_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(215 5)"><svg id="OUT7_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(250 5)"><svg id="OUT8_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
   </g>
 
   <g transform="translate(50 24)">
-    <use id="MIX11_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX11_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(50 61)">
-    <use id="MIX21_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX21_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(50 98)">
-    <use id="MIX31_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX31_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(50 135)">
-    <use id="MIX41_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX41_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(50 172)">
-    <use id="MIX51_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX51_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(50 209)">
-    <use id="MIX61_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX61_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(50 246)">
-    <use id="MIX71_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX71_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(50 283)">
-    <use id="MIX81_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX81_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
 
   <g transform="translate(85 24)">
-    <use id="MIX12_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX12_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(85 61)">
-    <use id="MIX22_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX22_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(85 98)">
-    <use id="MIX32_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX32_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(85 135)">
-    <use id="MIX42_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX42_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(85 172)">
-    <use id="MIX52_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX52_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(85 209)">
-    <use id="MIX62_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX62_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(85 246)">
-    <use id="MIX72_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX72_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(85 283)">
-    <use id="MIX82_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX82_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
 
   <g transform="translate(120 24)">
-    <use id="MIX13_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX13_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(120 61)">
-    <use id="MIX23_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX23_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(120 98)">
-    <use id="MIX33_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX33_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(120 135)">
-    <use id="MIX43_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX43_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(120 172)">
-    <use id="MIX53_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX53_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(120 209)">
-    <use id="MIX63_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX63_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(120 246)">
-    <use id="MIX73_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX73_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(120 283)">
-    <use id="MIX83_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX83_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
 
   <g transform="translate(155 24)">
-    <use id="MIX14_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX14_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(155 61)">
-    <use id="MIX24_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX24_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(155 98)">
-    <use id="MIX34_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX34_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(155 135)">
-    <use id="MIX44_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX44_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(155 172)">
-    <use id="MIX54_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX54_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(155 209)">
-    <use id="MIX64_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX64_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(155 246)">
-    <use id="MIX74_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX74_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(155 283)">
-    <use id="MIX84_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX84_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
 
   <g transform="translate(190 24)">
-    <use id="MIX15_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX15_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(190 61)">
-    <use id="MIX25_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX25_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(190 98)">
-    <use id="MIX35_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX35_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(190 135)">
-    <use id="MIX45_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX45_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(190 172)">
-    <use id="MIX55_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX55_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(190 209)">
-    <use id="MIX65_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX65_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(190 246)">
-    <use id="MIX75_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX75_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(190 283)">
-    <use id="MIX85_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX85_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
 
   <g transform="translate(225 24)">
-    <use id="MIX16_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX16_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(225 61)">
-    <use id="MIX26_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX26_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(225 98)">
-    <use id="MIX36_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX36_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(225 135)">
-    <use id="MIX46_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX46_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(225 172)">
-    <use id="MIX56_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX56_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(225 209)">
-    <use id="MIX66_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX66_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(225 246)">
-    <use id="MIX76_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX76_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(225 283)">
-    <use id="MIX86_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX86_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
 
   <g transform="translate(260 24)">
-    <use id="MIX17_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX17_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(260 61)">
-    <use id="MIX27_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX27_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(260 98)">
-    <use id="MIX37_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX37_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(260 135)">
-    <use id="MIX47_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX47_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(260 172)">
-    <use id="MIX57_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX57_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(260 209)">
-    <use id="MIX67_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX67_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(260 246)">
-    <use id="MIX77_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX77_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(260 283)">
-    <use id="MIX87_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX87_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
 
   <g transform="translate(295 24)">
-    <use id="MIX18_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX18_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(295 61)">
-    <use id="MIX28_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX28_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(295 98)">
-    <use id="MIX38_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX38_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(295 135)">
-    <use id="MIX48_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX48_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(295 172)">
-    <use id="MIX58_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX58_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(295 209)">
-    <use id="MIX68_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX68_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(295 246)">
-    <use id="MIX78_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX78_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
   <g transform="translate(295 283)">
-    <use id="MIX88_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
-    <use xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    <g transform="translate(3.5 8)"><svg id="MIX88_PARAM">
+      <g transform="translate(10 10)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-6.5 -2)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
   </g>
 
   <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(22.5 0)" /> -->

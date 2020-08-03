@@ -3,16 +3,6 @@
   <style/>
 
   <defs>
-    <import id="knob68"/>
-    <import id="knob26"/>
-    <import id="knob16"/>
-    <import id="dial-frequency-lfo"/>
-    <import id="dial-attenuverter"/>
-    <import id="dial-linear"/>
-    <import id="input"/>
-    <import id="output"/>
-    <import id="button-small"/>
-
     <symbol id="waves-eightfo" viewBox="0 0 70px 70px">
       <!-- <polyline points="0,0 0,70" stroke-width="1" stroke="#0f0" transform="translate(20 0)" /> -->
       <g transform="translate(20 35)">
@@ -79,9 +69,9 @@
     <!-- <rect width="108" height="108" fill="none" stroke="#0f0" /> -->
     <!-- <polyline points="0,54 54,54" stroke="#0f0" stroke-width="1" fill="none" /> -->
     <!-- <polyline points="54,54 54,354" stroke="#0f0" stroke-width="1" fill="none" /> -->
-    <use id="FREQUENCY_PARAM" xlink:href="#knob68" transform="translate(20 20)"/>
+    <def id="FREQUENCY_PARAM" xlink:href="#knob68" transform="translate(20 20)"/>
   </g>
-  <use xlink:href="#dial-frequency-lfo" transform="translate(10 15)"/>
+  <def xlink:href="#dial-frequency-lfo" transform="translate(10 15)"/>
 
   <!-- <rect width="20" height="10" fill="#0f0" transform="translate(20 130)" /> -->
   <!-- <rect width="20" height="10" fill="#0f0" transform="translate(108 130)" /> -->
@@ -89,14 +79,14 @@
 
   <g transform="translate(78 335)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(9 6.1)">SLOW</text>
-    <use id="SLOW_PARAM" xlink:href="#button-small" transform="translate(40 -1.3)"/>
+    <def id="SLOW_PARAM" xlink:href="#button-small" transform="translate(40 -1.3)"/>
   </g>
 
   <!-- <rect width="230" height="10" fill="#0f0" transform="translate(0 137)" /> -->
   <g transform="translate(10 163)">
     <!-- <polyline points="0,0 170,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(10 13)" /> -->
     <g transform="translate(10 0)">
-      <use id="WAVE_PARAM" xlink:href="#knob16" transform="translate(0 5)"/>
+      <def id="WAVE_PARAM" xlink:href="#knob16" transform="translate(0 5)"/>
       <!-- <rect width="60" height="60" fill="none" stroke="#0f0" transform="translate(-10 -30) translate(8 13)" /> -->
     </g>
     <g transform="translate(70 0)">
@@ -105,9 +95,9 @@
       <!-- <polyline points="0,0 0,170" stroke="#0f0" stroke-width="1" fill="none" transform="translate(33 -13)" /> -->
       <!-- <polyline points="0,0 170,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(-10 33)" /> -->
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 38) rotate(270)">SAM/PW</text>
-      <use id="SAMPLE_PWM_PARAM" xlink:href="#knob26" transform="translate(20 0)"/>
+      <def id="SAMPLE_PWM_PARAM" xlink:href="#knob26" transform="translate(20 0)"/>
     </g>
-    <use xlink:href="#dial-attenuverter" transform="translate(80.5 -9.6)"/>
+    <def xlink:href="#dial-attenuverter" transform="translate(80.5 -9.6)"/>
     <use xlink:href="#waves-eightfo" transform="translate(-2 -22)"/>
   </g>
 
@@ -119,43 +109,43 @@
     <!-- <polyline points="0,0 170,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(10 33)" /> -->
     <g transform="translate(10 0)">
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 36.5) rotate(270)">OFFSET</text>
-      <use id="OFFSET_PARAM" xlink:href="#knob26" transform="translate(20 0)"/>
+      <def id="OFFSET_PARAM" xlink:href="#knob26" transform="translate(20 0)"/>
     </g>
-    <use xlink:href="#dial-attenuverter" transform="translate(20.5 -9.6)"/>
+    <def xlink:href="#dial-attenuverter" transform="translate(20.5 -9.6)"/>
     <g transform="translate(70 0)">
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 32) rotate(270)">SCALE</text>
-      <use id="SCALE_PARAM" xlink:href="#knob26" transform="translate(20 0)"/>
+      <def id="SCALE_PARAM" xlink:href="#knob26" transform="translate(20 0)"/>
     </g>
-    <use xlink:href="#dial-linear" transform="translate(80.5 -9.6)"/>
+    <def xlink:href="#dial-linear" transform="translate(80.5 -9.6)"/>
   </g>
 
   <g transform="translate(137 32)">
     <g transform="translate(3 4)">
       <g transform="translate(0 0)">
-        <use id="PHASE7_PARAM" xlink:href="#knob16" transform="translate(4 4)"/>
+        <def id="PHASE7_PARAM" xlink:href="#knob16" transform="translate(4 4)"/>
       </g>
       <g transform="translate(0 40)">
-        <use id="PHASE6_PARAM" xlink:href="#knob16" transform="translate(4 4)"/>
+        <def id="PHASE6_PARAM" xlink:href="#knob16" transform="translate(4 4)"/>
       </g>
       <g transform="translate(0 80)">
-        <use id="PHASE5_PARAM" xlink:href="#knob16" transform="translate(4 4)"/>
+        <def id="PHASE5_PARAM" xlink:href="#knob16" transform="translate(4 4)"/>
       </g>
       <g transform="translate(0 120)">
-        <use id="PHASE4_PARAM" xlink:href="#knob16" transform="translate(4 4)"/>
+        <def id="PHASE4_PARAM" xlink:href="#knob16" transform="translate(4 4)"/>
       </g>
 
       <g transform="translate(0 160)">
-        <use id="PHASE3_PARAM" xlink:href="#knob16" transform="translate(4 4)"/>
+        <def id="PHASE3_PARAM" xlink:href="#knob16" transform="translate(4 4)"/>
       </g>
       <g transform="translate(0 200)">
-        <use id="PHASE2_PARAM" xlink:href="#knob16" transform="translate(4 4)"/>
+        <def id="PHASE2_PARAM" xlink:href="#knob16" transform="translate(4 4)"/>
       </g>
       <g transform="translate(0 240)">
-        <use id="PHASE1_PARAM" xlink:href="#knob16" transform="translate(4 4)"/>
+        <def id="PHASE1_PARAM" xlink:href="#knob16" transform="translate(4 4)"/>
       </g>
       <g transform="translate(0 280)">
         <!-- <polyline points="0,0 200,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 12)" /> -->
-        <use id="PHASE0_PARAM" xlink:href="#knob16" transform="translate(4 4)"/>
+        <def id="PHASE0_PARAM" xlink:href="#knob16" transform="translate(4 4)"/>
       </g>
     </g>
   </g>
@@ -175,15 +165,15 @@
   <g transform="translate(176 32)">
     <rect width="30" height="328" rx="5" fill="#fafafa"/>
     <g transform="translate(3 4)">
-      <use id="PHASE7_INPUT" xlink:href="#input" transform="translate(0 0)"/>
-      <use id="PHASE6_INPUT" xlink:href="#input" transform="translate(0 40)"/>
-      <use id="PHASE5_INPUT" xlink:href="#input" transform="translate(0 80)"/>
-      <use id="PHASE4_INPUT" xlink:href="#input" transform="translate(0 120)"/>
+      <def id="PHASE7_INPUT" xlink:href="#input" transform="translate(0 0)"/>
+      <def id="PHASE6_INPUT" xlink:href="#input" transform="translate(0 40)"/>
+      <def id="PHASE5_INPUT" xlink:href="#input" transform="translate(0 80)"/>
+      <def id="PHASE4_INPUT" xlink:href="#input" transform="translate(0 120)"/>
 
-      <use id="PHASE3_INPUT" xlink:href="#input" transform="translate(0 160)"/>
-      <use id="PHASE2_INPUT" xlink:href="#input" transform="translate(0 200)"/>
-      <use id="PHASE1_INPUT" xlink:href="#input" transform="translate(0 240)"/>
-      <use id="PHASE0_INPUT" xlink:href="#input" transform="translate(0 280)"/>
+      <def id="PHASE3_INPUT" xlink:href="#input" transform="translate(0 160)"/>
+      <def id="PHASE2_INPUT" xlink:href="#input" transform="translate(0 200)"/>
+      <def id="PHASE1_INPUT" xlink:href="#input" transform="translate(0 240)"/>
+      <def id="PHASE0_INPUT" xlink:href="#input" transform="translate(0 280)"/>
     </g>
     <text font-size="6pt" letter-spacing="2px" transform="translate(8 320)">CV</text>
   </g>
@@ -191,15 +181,15 @@
   <g transform="translate(215 32)">
     <rect width="30" height="328" rx="5" fill="#bbb"/>
     <g transform="translate(3 4)">
-      <use id="PHASE7_OUTPUT" xlink:href="#output" transform="translate(0 0)"/>
-      <use id="PHASE6_OUTPUT" xlink:href="#output" transform="translate(0 40)"/>
-      <use id="PHASE5_OUTPUT" xlink:href="#output" transform="translate(0 80)"/>
-      <use id="PHASE4_OUTPUT" xlink:href="#output" transform="translate(0 120)"/>
+      <def id="PHASE7_OUTPUT" xlink:href="#output" transform="translate(0 0)"/>
+      <def id="PHASE6_OUTPUT" xlink:href="#output" transform="translate(0 40)"/>
+      <def id="PHASE5_OUTPUT" xlink:href="#output" transform="translate(0 80)"/>
+      <def id="PHASE4_OUTPUT" xlink:href="#output" transform="translate(0 120)"/>
 
-      <use id="PHASE3_OUTPUT" xlink:href="#output" transform="translate(0 160)"/>
-      <use id="PHASE2_OUTPUT" xlink:href="#output" transform="translate(0 200)"/>
-      <use id="PHASE1_OUTPUT" xlink:href="#output" transform="translate(0 240)"/>
-      <use id="PHASE0_OUTPUT" xlink:href="#output" transform="translate(0 280)"/>
+      <def id="PHASE3_OUTPUT" xlink:href="#output" transform="translate(0 160)"/>
+      <def id="PHASE2_OUTPUT" xlink:href="#output" transform="translate(0 200)"/>
+      <def id="PHASE1_OUTPUT" xlink:href="#output" transform="translate(0 240)"/>
+      <def id="PHASE0_OUTPUT" xlink:href="#output" transform="translate(0 280)"/>
     </g>
     <text font-size="6pt" letter-spacing="2px" transform="translate(5 320)">OUT</text>
   </g>
@@ -213,27 +203,27 @@
     <!-- <rect width="300" height="7" fill="#f00" transform="translate(10 40)" /> -->
     <g transform="translate(10 -40)">
       <!-- <rect width="30" height="40" rx="5" fill="#fafafa" /> -->
-      <use id="SAMPLE_PWM_INPUT" xlink:href="#input" transform="translate(4 4)"/>
+      <def id="SAMPLE_PWM_INPUT" xlink:href="#input" transform="translate(4 4)"/>
       <text font-size="6pt" letter-spacing="1px" transform="translate(4 38)">S/PW</text>
     </g>
     <g transform="translate(50 -40)">
       <!-- <rect width="30" height="40" rx="5" fill="#fafafa" /> -->
-      <use id="OFFSET_INPUT" xlink:href="#input" transform="translate(2 4)"/>
+      <def id="OFFSET_INPUT" xlink:href="#input" transform="translate(2 4)"/>
       <text font-size="6pt" letter-spacing="2px" transform="translate(4.5 38)">OFF</text>
     </g>
     <g transform="translate(90 -40)">
       <!-- <rect width="30" height="40" rx="5" fill="#fafafa" /> -->
-      <use id="SCALE_INPUT" xlink:href="#input" transform="translate(0 4)"/>
+      <def id="SCALE_INPUT" xlink:href="#input" transform="translate(0 4)"/>
       <text font-size="6pt" letter-spacing="2px" transform="translate(2.5 38)">SCL</text>
     </g>
     <g transform="translate(10 0)">
       <!-- <rect width="30" height="47" rx="5" fill="#fafafa" /> -->
-      <use id="PITCH_INPUT" xlink:href="#input" transform="translate(4 5)"/>
+      <def id="PITCH_INPUT" xlink:href="#input" transform="translate(4 5)"/>
       <text font-size="6pt" letter-spacing="1px" transform="translate(2 40)">V/OCT</text>
     </g>
     <g transform="translate(50 0)">
       <!-- <rect width="30" height="47" rx="5" fill="#fafafa" /> -->
-      <use id="RESET_INPUT" xlink:href="#input" transform="translate(2 5)"/>
+      <def id="RESET_INPUT" xlink:href="#input" transform="translate(2 5)"/>
       <text font-size="6pt" letter-spacing="1px" transform="translate(0 40)">RESET</text>
     </g>
   </g>

@@ -2,14 +2,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="75" height="380" viewBox="0 0 75 380">
   <style/>
 
-  <defs>
-    <import id="knob16"/>
-    <import id="dial-centertick"/>
-    <import id="dial-mintick"/>
-    <import id="input"/>
-    <import id="output"/>
-  </defs>
-
   <rect width="100%" height="100%" fill="#ddd"/>
   <polyline points="1,1 74,1 74,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
   <polyline points="0.5,0.5 74.5,0.5 74.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
@@ -22,24 +14,24 @@
   </g>
 
   <g transform="translate(-2.5 24)">
-    <use id="DAMP_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
-    <use xlink:href="#dial-mintick" transform="translate(2.5 -6)"/>
+    <def id="DAMP_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
+    <def xlink:href="#dial-mintick" transform="translate(2.5 -6)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(10 33)">DAMP</text>
     <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(7.5 36)"/>
-    <use id="DAMP_INPUT" xlink:href="#input" transform="translate(10.5 39)"/>
+    <def id="DAMP_INPUT" xlink:href="#input" transform="translate(10.5 39)"/>
   </g>
 
   <g transform="translate(32.5 23.5)">
-    <use id="GAIN_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
-    <use xlink:href="#dial-centertick" transform="translate(2.5 -6)"/>
+    <def id="GAIN_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
+    <def xlink:href="#dial-centertick" transform="translate(2.5 -6)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11.5 33)">GAIN</text>
     <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(7.5 36)"/>
-    <use id="GAIN_INPUT" xlink:href="#input" transform="translate(10.5 39)"/>
+    <def id="GAIN_INPUT" xlink:href="#input" transform="translate(10.5 39)"/>
   </g>
 
   <g transform="translate(20.5 318)">
     <rect width="34" height="42" rx="5" fill="#bbb"/>
-    <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 4)"/>
+    <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 4)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 37)">OUT</text>
   </g>
 </svg>

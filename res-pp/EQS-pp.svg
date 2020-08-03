@@ -16,26 +16,6 @@ text.brand {
 </style>
 
   <defs>
-    <symbol id="knob38" viewBox="0 0 38px 38px">
-      <g transform="translate(19 19)">
-        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
-        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
-        <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none"/>
-      </g>
-    </symbol>
-    <symbol id="input" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
-      </g>
-    </symbol>
-    <symbol id="output" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
-      </g>
-    </symbol>
-
     <symbol id="dial-eq-eqs" viewBox="0 0 70px 70px">
       <g transform="translate(35 35)">
         <text font-size="6.0pt" transform="rotate(-240) translate(25 0) rotate(240) translate(-10 2.5)">-36</text>
@@ -67,19 +47,37 @@ text.brand {
 
   <g transform="translate(0 40)">
     <text font-size="8pt" letter-spacing="2px" transform="translate(32 0)">LOW</text>
-    <use id="LOW_PARAM" xlink:href="#knob38" transform="translate(26 13)"/>
+    <g transform="translate(26 13)"><svg id="LOW_PARAM">
+      <g transform="translate(19 19)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
     <use xlink:href="#dial-eq-eqs" transform="translate(10 -3)"/>
   </g>
 
   <g transform="translate(0 122)">
     <text font-size="8pt" letter-spacing="2px" transform="translate(33 0)">MID</text>
-    <use id="MID_PARAM" xlink:href="#knob38" transform="translate(26 13)"/>
+    <g transform="translate(26 13)"><svg id="MID_PARAM">
+      <g transform="translate(19 19)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
     <use xlink:href="#dial-eq-eqs" transform="translate(10 -3)"/>
   </g>
 
   <g transform="translate(0 204)">
     <text font-size="8pt" letter-spacing="2px" transform="translate(29 0)">HIGH</text>
-    <use id="HIGH_PARAM" xlink:href="#knob38" transform="translate(26 13)"/>
+    <g transform="translate(26 13)"><svg id="HIGH_PARAM">
+      <g transform="translate(19 19)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
     <use xlink:href="#dial-eq-eqs" transform="translate(10 -3)"/>
   </g>
 
@@ -87,17 +85,37 @@ text.brand {
     <g transform="translate(0 0)">
       <rect width="68" height="10" fill="#fafafa" transform="translate(0 31)"/>
       <rect width="68" height="38" rx="5" fill="#fafafa"/>
-      <use id="LEFT_INPUT" xlink:href="#input" transform="translate(5 4)"/>
+      <g transform="translate(5 4)"><svg id="LEFT_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(15.5 36)">L</text>
-      <use id="RIGHT_INPUT" xlink:href="#input" transform="translate(39 4)"/>
+      <g transform="translate(39 4)"><svg id="RIGHT_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(49 36)">R</text>
     </g>
     <g transform="translate(0 44)">
       <rect width="68" height="10" fill="#bbb" transform="translate(0 -3)"/>
       <rect width="68" height="37" rx="5" fill="#bbb"/>
-      <use id="LEFT_OUTPUT" xlink:href="#output" transform="translate(5 1)"/>
+      <g transform="translate(5 1)"><svg id="LEFT_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(15.5 33)">L</text>
-      <use id="RIGHT_OUTPUT" xlink:href="#output" transform="translate(39 1)"/>
+      <g transform="translate(39 1)"><svg id="RIGHT_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(49 33)">R</text>
     </g>
   </g>

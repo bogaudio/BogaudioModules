@@ -3,12 +3,6 @@
   <style/>
 
   <defs>
-    <import id="knob38"/>
-    <import id="dial-threshold"/>
-    <import id="switch"/>
-    <import id="input"/>
-    <import id="output"/>
-
     <symbol id="dial-ratio-nsgt" viewBox="0 0 70px 70px">
       <g transform="translate(35 35)">
         <text font-size="6.0pt" transform="rotate(-240) translate(25 0) rotate(240) translate(-2.5 2.5)">1</text>
@@ -43,20 +37,20 @@
 
   <g transform="translate(0 40)">
     <text font-size="8pt" letter-spacing="2px" transform="translate(8 0)">THRESHOLD</text>
-    <use id="THRESHOLD_PARAM" xlink:href="#knob38" transform="translate(26 12)"/>
-    <use xlink:href="#dial-threshold" transform="translate(10 -4)"/>
+    <def id="THRESHOLD_PARAM" xlink:href="#knob38" transform="translate(26 12)"/>
+    <def xlink:href="#dial-threshold" transform="translate(10 -4)"/>
   </g>
 
   <g transform="translate(0 122)">
     <text font-size="8pt" letter-spacing="2px" transform="translate(25.5 0)">RATIO</text>
-    <use id="RATIO_PARAM" xlink:href="#knob38" transform="translate(26 13)"/>
+    <def id="RATIO_PARAM" xlink:href="#knob38" transform="translate(26 13)"/>
     <use xlink:href="#dial-ratio-nsgt" transform="translate(10 -3)"/>
   </g>
 
   <g transform="translate(40 198)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(-8 25.5) rotate(270)">KNEE</text>
     <text font-size="5pt" letter-spacing="2px" transform="translate(-4 -1)">SOFT</text>
-    <use id="KNEE_PARAM" xlink:href="#switch" transform="translate(0 2)"/>
+    <def id="KNEE_PARAM" xlink:href="#switch" transform="translate(0 2)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(-5 34)">HARD</text>
   </g>
 
@@ -64,21 +58,21 @@
     <g transform="translate(0 0)">
       <rect width="68" height="10" fill="#fafafa" transform="translate(0 66)"/>
       <rect width="68" height="73" rx="5" fill="#fafafa"/>
-      <use id="LEFT_INPUT" xlink:href="#input" transform="translate(5 4)"/>
+      <def id="LEFT_INPUT" xlink:href="#input" transform="translate(5 4)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(15.5 36)">L</text>
-      <use id="RIGHT_INPUT" xlink:href="#input" transform="translate(39 4)"/>
+      <def id="RIGHT_INPUT" xlink:href="#input" transform="translate(39 4)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(49 36)">R</text>
-      <use id="THRESHOLD_INPUT" xlink:href="#input" transform="translate(5 40)"/>
+      <def id="THRESHOLD_INPUT" xlink:href="#input" transform="translate(5 40)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(5.5 72)">TRSH</text>
-      <use id="RATIO_INPUT" xlink:href="#input" transform="translate(39 40)"/>
+      <def id="RATIO_INPUT" xlink:href="#input" transform="translate(39 40)"/>
       <text font-size="5pt" letter-spacing="1px" transform="translate(39.5 72)">RATIO</text>
     </g>
     <g transform="translate(0 79)">
       <rect width="68" height="10" fill="#bbb" transform="translate(0 -3)"/>
       <rect width="68" height="37" rx="5" fill="#bbb"/>
-      <use id="LEFT_OUTPUT" xlink:href="#output" transform="translate(5 1)"/>
+      <def id="LEFT_OUTPUT" xlink:href="#output" transform="translate(5 1)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(15.5 33)">L</text>
-      <use id="RIGHT_OUTPUT" xlink:href="#output" transform="translate(39 1)"/>
+      <def id="RIGHT_OUTPUT" xlink:href="#output" transform="translate(39 1)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(49 33)">R</text>
     </g>
   </g>

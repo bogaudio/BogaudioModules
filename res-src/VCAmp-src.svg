@@ -2,13 +2,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="45" height="380" viewBox="0 0 45 380">
   <style/>
 
-  <defs>
-    <import id="slider-183"/>
-    <import id="sliderdial-db-183"/>
-    <import id="input"/>
-    <import id="output"/>
-  </defs>
-
   <rect width="100%" height="100%" fill="#ddd"/>
   <polyline points="1,1 44,1 44,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
   <polyline points="0.5,0.5 44.5,0.5 44.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
@@ -28,23 +21,23 @@
   </g>
 
   <g transform="translate(0 18)">
-    <use xlink:href="#sliderdial-db-183" transform="translate(0 0)"/>
-    <use id="LEVEL_PARAM" xlink:href="#slider-183" transform="translate(13.5 0)"/>
+    <def xlink:href="#sliderdial-db-183" transform="translate(0 0)"/>
+    <def id="LEVEL_PARAM" xlink:href="#slider-183" transform="translate(13.5 0)"/>
   </g>
 
   <g transform="translate(0 210)">
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)"/>
       <rect width="34" height="70" rx="5" fill="#fafafa"/>
-      <use id="CV_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="CV_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
-      <use id="IN_INPUT" xlink:href="#input" transform="translate(5 38)"/>
+      <def id="IN_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 70)">IN</text>
     </g>
     <g transform="translate(5.5 76)">
       <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
       <rect width="34" height="35" rx="5" fill="#bbb"/>
-      <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
+      <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
     </g>
   </g>

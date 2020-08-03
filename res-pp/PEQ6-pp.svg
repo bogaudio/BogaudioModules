@@ -15,18 +15,142 @@ text.brand {
 }
 </style>
 
-  <defs>
-    <symbol id="slider-151" viewBox="0 0 18px 151x">
-      <rect width="18" height="151" fill="none"/>
-      <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
-      <g transform="translate(0 40)">
-        <rect width="18" height="13" rx="1.5" fill="#777"/>
-        <rect width="18" height="9" x="0" y="2" fill="#444"/>
-        <polyline points="0,6.5 18,6.5" stroke="#fafafa" stroke-width="1" fill="none"/>
-        <rect width="14" height="5" x="2" y="4" rx="1.0" fill="#ddd" transform="translate(0 0)"/>
+  <rect width="100%" height="100%" fill="#ddd"/>
+  <polyline points="1,1 314,1 214,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
+  <polyline points="0.5,0.5 314.5,0.5 314.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
+  <polyline points="0,0 315,0 315,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none"/>
+
+  <!-- <rect width="125" height="20" fill="#0f0" transform="translate(0 0)" /> -->
+  <!-- <rect width="125" height="20" fill="#0f0" transform="translate(190 0)" /> -->
+  <!-- <rect width="120" height="20" fill="#0f0" transform="translate(0 360)" /> -->
+  <!-- <rect width="120" height="20" fill="#0f0" transform="translate(195 360)" /> -->
+
+  <text class="title" x="129" y="19" font-size="12pt" letter-spacing="4px">PEQ6</text>
+  <g transform="translate(118 374)">
+    <text class="brand" font-size="8pt" letter-spacing="2px">BOGAUDIO</text>
+    <rect width="3.0" height="3" fill="#ddd" transform="translate(24 -5)"/>
+  </g>
+
+  <!-- <polyline points="0,0 315,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 24)" /> -->
+  <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(22.5 0)" /> -->
+
+  <g transform="translate(0 40)">
+    <!-- <rect width="37" height="66" fill="#f0f" transform="translate(0 0)" /> -->
+    <g transform="translate(14.5 7)"><svg id="FREQUENCY_CV_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
-    </symbol>
-    <symbol id="sliderdial-db-151" viewBox="0 0 20px 151px">
+    </svg></g>
+    <g transform="translate(2.5 -5)"><svg>
+      <g transform="translate(20 20)">
+        <g transform="rotate(-90) translate(10 0)">
+          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
+        </g>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(14 33)">FCV</text>
+    <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(7.5 36)"/>
+    <g transform="translate(10.5 39)"><svg id="FREQUENCY_CV_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+  </g>
+
+  <g transform="translate(0 124)">
+    <!-- <rect width="37" height="66" fill="#f0f" transform="translate(0 0)" /> -->
+    <g transform="translate(14.5 5)"><svg id="BANDWIDTH_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 -7)"><svg>
+      <g transform="translate(20 20)">
+        <g transform="rotate(-240) translate(10 0)">
+          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
+        </g>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(16.5 33)">BW</text>
+    <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(7.5 36)"/>
+    <g transform="translate(10.5 39)"><svg id="BANDWIDTH_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+  </g>
+
+  <g transform="translate(2 209)">
+    <!-- <rect width="40" height="23" fill="#f0f" transform="translate(2.5 0)" /> -->
+    <text font-size="5pt" letter-spacing="1px" transform="translate(2.5 8.5)">CH1-LP</text>
+    <g transform="translate(33.5 1)"><svg id="LP_PARAM">
+      <g transform="translate(4.5 4.5)">
+        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <text font-size="5pt" letter-spacing="0.8px" transform="translate(2.5 20.5)">CH8-HP</text>
+    <g transform="translate(33.5 13)"><svg id="HP_PARAM">
+      <g transform="translate(4.5 4.5)">
+        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+
+  <g transform="translate(6 242)">
+    <!-- <rect width="37" height="35" fill="#f0f" transform="translate(0 0)" /> -->
+    <text font-size="5pt" letter-spacing="1px" transform="translate(5 34.5) rotate(-90)">FCV RNG</text>
+    <g transform="translate(10 1)"><svg id="FMOD_RELATIVE_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+    <text font-size="5pt" letter-spacing="0.5px" transform="translate(18.5 6.7)">OCTV</text>
+    <g transform="translate(10 14)"><svg id="FMOD_FULL_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+    <text font-size="5pt" letter-spacing="0.5px" transform="translate(18.5 19.7)">FULL</text>
+    <g transform="translate(14 25)"><svg id="FMOD_PARAM">
+      <g transform="translate(4.5 4.5)">
+        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+
+  <g transform="translate(5.5 287)">
+    <rect width="34" height="73" rx="5" fill="#bbb"/>
+    <rect width="34" height="36.5" rx="5" fill="#fafafa"/>
+    <rect width="34" height="10" fill="#fafafa" transform="translate(0 26.5)"/>
+    <g transform="translate(5 3)"><svg id="IN_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
+    <g transform="translate(5 38)"><svg id="OUT_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(8 70)">OUT</text>
+  </g>
+
+  <g transform="translate(45 20)">
+    <text font-size="5pt" letter-spacing="2px" transform="translate(20.5 8)">1</text>
+    <g transform="translate(0 8)"><svg>
       <g transform="translate(0 6.5)">
         <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
         <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
@@ -60,15 +184,43 @@ text.brand {
         <!-- <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)" /> -->
         <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
       </g>
-    </symbol>
-    <symbol id="knob16" viewBox="0 0 16px 16px">
+    </svg></g>
+    <g transform="translate(13.5 8)"><svg id="LEVEL1_PARAM">
+      <rect width="18" height="151" fill="none"/>
+      <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
+      <g transform="translate(0 40)">
+        <rect width="18" height="13" rx="1.5" fill="#777"/>
+        <rect width="18" height="9" x="0" y="2" fill="#444"/>
+        <polyline points="0,6.5 18,6.5" stroke="#fafafa" stroke-width="1" fill="none"/>
+        <rect width="14" height="5" x="2" y="4" rx="1.0" fill="#ddd" transform="translate(0 0)"/>
+      </g>
+    </svg></g>
+    <g transform="translate(14.5 164)"><svg id="FREQUENCY1_PARAM">
       <g transform="translate(8 8)">
         <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
         <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
-    </symbol>
-    <symbol id="dial-centertick" viewBox="0 0 40px 40px">
+    </svg></g>
+    <g transform="translate(2.5 152)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(60) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(19.8) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(-27.9) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(-90) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(-172.9) translate(10 0)"/>
+        <text font-size="5pt" transform="rotate(-240) translate(10 0) rotate(240) translate(-2.5 4)">0</text>
+      </g>
+    </svg></g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(11 193)">FREQ</text>
+    <g transform="translate(14.5 204)"><svg id="FREQUENCY_CV1_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 192)"><svg>
       <g transform="translate(20 20)">
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
@@ -78,19 +230,91 @@ text.brand {
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </symbol>
-    <symbol id="dial-mintick" viewBox="0 0 40px 40px">
-      <g transform="translate(20 20)">
-        <g transform="rotate(-240) translate(10 0)">
-          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
-        </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+    </svg></g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
+    <g transform="translate(5.5 232)">
+      <rect width="34" height="108" rx="5" fill="#bbb"/>
+      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
+      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+      <g transform="translate(5 3)"><svg id="LEVEL1_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
-    </symbol>
-    <symbol id="dial-frequency-16" viewBox="0 0 40px 40px">
+    </svg></g>
+      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <g transform="translate(5 38)"><svg id="FREQUENCY_CV1_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
+      <g transform="translate(5 73)"><svg id="OUT1_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
+    </g>
+  </g>
+
+  <g transform="translate(90 20)">
+    <text font-size="5pt" letter-spacing="2px" transform="translate(20.5 8)">2</text>
+    <g transform="translate(0 8)"><svg>
+      <g transform="translate(0 6.5)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+      </g>
+      <g transform="translate(0 19.05)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(0) translate(-2.5 2.6)">0</text>
+      </g>
+      <g transform="translate(0 32.86)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-4 2.2)">-6</text>
+      </g>
+      <g transform="translate(0 46.05)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-12</text>
+      </g>
+      <g transform="translate(0 72.41)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-24</text>
+      </g>
+      <g transform="translate(0 125.14)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-48</text>
+      </g>
+      <g transform="translate(0 151.5)">
+        <!-- <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)" /> -->
+        <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
+      </g>
+    </svg></g>
+    <g transform="translate(13.5 8)"><svg id="LEVEL2_PARAM">
+      <rect width="18" height="151" fill="none"/>
+      <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
+      <g transform="translate(0 40)">
+        <rect width="18" height="13" rx="1.5" fill="#777"/>
+        <rect width="18" height="9" x="0" y="2" fill="#444"/>
+        <polyline points="0,6.5 18,6.5" stroke="#fafafa" stroke-width="1" fill="none"/>
+        <rect width="14" height="5" x="2" y="4" rx="1.0" fill="#ddd" transform="translate(0 0)"/>
+      </g>
+    </svg></g>
+    <g transform="translate(14.5 164)"><svg id="FREQUENCY2_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 152)"><svg>
       <g transform="translate(20 20)">
         <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(60) translate(10 0)"/>
         <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(19.8) translate(10 0)"/>
@@ -99,228 +323,499 @@ text.brand {
         <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(-172.9) translate(10 0)"/>
         <text font-size="5pt" transform="rotate(-240) translate(10 0) rotate(240) translate(-2.5 4)">0</text>
       </g>
-    </symbol>
-    <symbol id="input" viewBox="0 0 24px 24px">
+    </svg></g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(11 193)">FREQ</text>
+    <g transform="translate(14.5 204)"><svg id="FREQUENCY_CV2_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 192)"><svg>
+      <g transform="translate(20 20)">
+        <g transform="rotate(-90) translate(10 0)">
+          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
+        </g>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
+    <g transform="translate(5.5 232)">
+      <rect width="34" height="108" rx="5" fill="#bbb"/>
+      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
+      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+      <g transform="translate(5 3)"><svg id="LEVEL2_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
-    </symbol>
-    <symbol id="output" viewBox="0 0 24px 24px">
+    </svg></g>
+      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <g transform="translate(5 38)"><svg id="FREQUENCY_CV2_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
+      <g transform="translate(5 73)"><svg id="OUT2_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
-    </symbol>
-    <symbol id="button-small" viewBox="0 0 9px 9px">
-      <g transform="translate(4.5 4.5)">
-        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
-      </g>
-    </symbol>
-    <symbol id="light-small" viewBox="0 0 6.4px 6.4px">
-      <rect width="6.4" height="6.4" fill="#0f0"/>
-    </symbol>
-  </defs>
-
-  <rect width="100%" height="100%" fill="#ddd"/>
-  <polyline points="1,1 314,1 214,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
-  <polyline points="0.5,0.5 314.5,0.5 314.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
-  <polyline points="0,0 315,0 315,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none"/>
-
-  <!-- <rect width="125" height="20" fill="#0f0" transform="translate(0 0)" /> -->
-  <!-- <rect width="125" height="20" fill="#0f0" transform="translate(190 0)" /> -->
-  <!-- <rect width="120" height="20" fill="#0f0" transform="translate(0 360)" /> -->
-  <!-- <rect width="120" height="20" fill="#0f0" transform="translate(195 360)" /> -->
-
-  <text class="title" x="129" y="19" font-size="12pt" letter-spacing="4px">PEQ6</text>
-  <g transform="translate(118 374)">
-    <text class="brand" font-size="8pt" letter-spacing="2px">BOGAUDIO</text>
-    <rect width="3.0" height="3" fill="#ddd" transform="translate(24 -5)"/>
-  </g>
-
-  <!-- <polyline points="0,0 315,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 24)" /> -->
-  <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(22.5 0)" /> -->
-
-  <g transform="translate(0 40)">
-    <!-- <rect width="37" height="66" fill="#f0f" transform="translate(0 0)" /> -->
-    <use id="FREQUENCY_CV_PARAM" xlink:href="#knob16" transform="translate(14.5 7)"/>
-    <use xlink:href="#dial-centertick" transform="translate(2.5 -5)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(14 33)">FCV</text>
-    <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(7.5 36)"/>
-    <use id="FREQUENCY_CV_INPUT" xlink:href="#input" transform="translate(10.5 39)"/>
-  </g>
-
-  <g transform="translate(0 124)">
-    <!-- <rect width="37" height="66" fill="#f0f" transform="translate(0 0)" /> -->
-    <use id="BANDWIDTH_PARAM" xlink:href="#knob16" transform="translate(14.5 5)"/>
-    <use xlink:href="#dial-mintick" transform="translate(2.5 -7)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(16.5 33)">BW</text>
-    <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(7.5 36)"/>
-    <use id="BANDWIDTH_INPUT" xlink:href="#input" transform="translate(10.5 39)"/>
-  </g>
-
-  <g transform="translate(2 209)">
-    <!-- <rect width="40" height="23" fill="#f0f" transform="translate(2.5 0)" /> -->
-    <text font-size="5pt" letter-spacing="1px" transform="translate(2.5 8.5)">CH1-LP</text>
-    <use id="LP_PARAM" xlink:href="#button-small" transform="translate(33.5 1)"/>
-    <text font-size="5pt" letter-spacing="0.8px" transform="translate(2.5 20.5)">CH8-HP</text>
-    <use id="HP_PARAM" xlink:href="#button-small" transform="translate(33.5 13)"/>
-  </g>
-
-  <g transform="translate(6 242)">
-    <!-- <rect width="37" height="35" fill="#f0f" transform="translate(0 0)" /> -->
-    <text font-size="5pt" letter-spacing="1px" transform="translate(5 34.5) rotate(-90)">FCV RNG</text>
-    <use id="FMOD_RELATIVE_LIGHT" xlink:href="#light-small" transform="translate(10 1)"/>
-    <text font-size="5pt" letter-spacing="0.5px" transform="translate(18.5 6.7)">OCTV</text>
-    <use id="FMOD_FULL_LIGHT" xlink:href="#light-small" transform="translate(10 14)"/>
-    <text font-size="5pt" letter-spacing="0.5px" transform="translate(18.5 19.7)">FULL</text>
-    <use id="FMOD_PARAM" xlink:href="#button-small" transform="translate(14 25)"/>
-  </g>
-
-  <g transform="translate(5.5 287)">
-    <rect width="34" height="73" rx="5" fill="#bbb"/>
-    <rect width="34" height="36.5" rx="5" fill="#fafafa"/>
-    <rect width="34" height="10" fill="#fafafa" transform="translate(0 26.5)"/>
-    <use id="IN_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
-    <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 38)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(8 70)">OUT</text>
-  </g>
-
-  <g transform="translate(45 20)">
-    <text font-size="5pt" letter-spacing="2px" transform="translate(20.5 8)">1</text>
-    <use xlink:href="#sliderdial-db-151" transform="translate(0 8)"/>
-    <use id="LEVEL1_PARAM" xlink:href="#slider-151" transform="translate(13.5 8)"/>
-    <use id="FREQUENCY1_PARAM" xlink:href="#knob16" transform="translate(14.5 164)"/>
-    <use xlink:href="#dial-frequency-16" transform="translate(2.5 152)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(11 193)">FREQ</text>
-    <use id="FREQUENCY_CV1_PARAM" xlink:href="#knob16" transform="translate(14.5 204)"/>
-    <use xlink:href="#dial-centertick" transform="translate(2.5 192)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb"/>
-      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
-      <use id="LEVEL1_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <use id="FREQUENCY_CV1_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="OUT1_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
-    </g>
-  </g>
-
-  <g transform="translate(90 20)">
-    <text font-size="5pt" letter-spacing="2px" transform="translate(20.5 8)">2</text>
-    <use xlink:href="#sliderdial-db-151" transform="translate(0 8)"/>
-    <use id="LEVEL2_PARAM" xlink:href="#slider-151" transform="translate(13.5 8)"/>
-    <use id="FREQUENCY2_PARAM" xlink:href="#knob16" transform="translate(14.5 164)"/>
-    <use xlink:href="#dial-frequency-16" transform="translate(2.5 152)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(11 193)">FREQ</text>
-    <use id="FREQUENCY_CV2_PARAM" xlink:href="#knob16" transform="translate(14.5 204)"/>
-    <use xlink:href="#dial-centertick" transform="translate(2.5 192)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb"/>
-      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
-      <use id="LEVEL2_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <use id="FREQUENCY_CV2_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="OUT2_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
   <g transform="translate(135 20)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.5 8)">3</text>
-    <use xlink:href="#sliderdial-db-151" transform="translate(0 8)"/>
-    <use id="LEVEL3_PARAM" xlink:href="#slider-151" transform="translate(13.5 8)"/>
-    <use id="FREQUENCY3_PARAM" xlink:href="#knob16" transform="translate(14.5 164)"/>
-    <use xlink:href="#dial-frequency-16" transform="translate(2.5 152)"/>
+    <g transform="translate(0 8)"><svg>
+      <g transform="translate(0 6.5)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+      </g>
+      <g transform="translate(0 19.05)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(0) translate(-2.5 2.6)">0</text>
+      </g>
+      <g transform="translate(0 32.86)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-4 2.2)">-6</text>
+      </g>
+      <g transform="translate(0 46.05)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-12</text>
+      </g>
+      <g transform="translate(0 72.41)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-24</text>
+      </g>
+      <g transform="translate(0 125.14)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-48</text>
+      </g>
+      <g transform="translate(0 151.5)">
+        <!-- <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)" /> -->
+        <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
+      </g>
+    </svg></g>
+    <g transform="translate(13.5 8)"><svg id="LEVEL3_PARAM">
+      <rect width="18" height="151" fill="none"/>
+      <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
+      <g transform="translate(0 40)">
+        <rect width="18" height="13" rx="1.5" fill="#777"/>
+        <rect width="18" height="9" x="0" y="2" fill="#444"/>
+        <polyline points="0,6.5 18,6.5" stroke="#fafafa" stroke-width="1" fill="none"/>
+        <rect width="14" height="5" x="2" y="4" rx="1.0" fill="#ddd" transform="translate(0 0)"/>
+      </g>
+    </svg></g>
+    <g transform="translate(14.5 164)"><svg id="FREQUENCY3_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 152)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(60) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(19.8) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(-27.9) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(-90) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(-172.9) translate(10 0)"/>
+        <text font-size="5pt" transform="rotate(-240) translate(10 0) rotate(240) translate(-2.5 4)">0</text>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 193)">FREQ</text>
-    <use id="FREQUENCY_CV3_PARAM" xlink:href="#knob16" transform="translate(14.5 204)"/>
-    <use xlink:href="#dial-centertick" transform="translate(2.5 192)"/>
+    <g transform="translate(14.5 204)"><svg id="FREQUENCY_CV3_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 192)"><svg>
+      <g transform="translate(20 20)">
+        <g transform="rotate(-90) translate(10 0)">
+          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
+        </g>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
     <g transform="translate(5.5 232)">
       <rect width="34" height="108" rx="5" fill="#bbb"/>
       <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
-      <use id="LEVEL3_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <g transform="translate(5 3)"><svg id="LEVEL3_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <use id="FREQUENCY_CV3_INPUT" xlink:href="#input" transform="translate(5 38)"/>
+      <g transform="translate(5 38)"><svg id="FREQUENCY_CV3_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="OUT3_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
+      <g transform="translate(5 73)"><svg id="OUT3_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
   <g transform="translate(180 20)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.5 8)">4</text>
-    <use xlink:href="#sliderdial-db-151" transform="translate(0 8)"/>
-    <use id="LEVEL4_PARAM" xlink:href="#slider-151" transform="translate(13.5 8)"/>
-    <use id="FREQUENCY4_PARAM" xlink:href="#knob16" transform="translate(14.5 164)"/>
-    <use xlink:href="#dial-frequency-16" transform="translate(2.5 152)"/>
+    <g transform="translate(0 8)"><svg>
+      <g transform="translate(0 6.5)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+      </g>
+      <g transform="translate(0 19.05)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(0) translate(-2.5 2.6)">0</text>
+      </g>
+      <g transform="translate(0 32.86)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-4 2.2)">-6</text>
+      </g>
+      <g transform="translate(0 46.05)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-12</text>
+      </g>
+      <g transform="translate(0 72.41)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-24</text>
+      </g>
+      <g transform="translate(0 125.14)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-48</text>
+      </g>
+      <g transform="translate(0 151.5)">
+        <!-- <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)" /> -->
+        <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
+      </g>
+    </svg></g>
+    <g transform="translate(13.5 8)"><svg id="LEVEL4_PARAM">
+      <rect width="18" height="151" fill="none"/>
+      <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
+      <g transform="translate(0 40)">
+        <rect width="18" height="13" rx="1.5" fill="#777"/>
+        <rect width="18" height="9" x="0" y="2" fill="#444"/>
+        <polyline points="0,6.5 18,6.5" stroke="#fafafa" stroke-width="1" fill="none"/>
+        <rect width="14" height="5" x="2" y="4" rx="1.0" fill="#ddd" transform="translate(0 0)"/>
+      </g>
+    </svg></g>
+    <g transform="translate(14.5 164)"><svg id="FREQUENCY4_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 152)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(60) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(19.8) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(-27.9) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(-90) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(-172.9) translate(10 0)"/>
+        <text font-size="5pt" transform="rotate(-240) translate(10 0) rotate(240) translate(-2.5 4)">0</text>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 192)">FREQ</text>
-    <use id="FREQUENCY_CV4_PARAM" xlink:href="#knob16" transform="translate(14.5 204)"/>
-    <use xlink:href="#dial-centertick" transform="translate(2.5 191)"/>
+    <g transform="translate(14.5 204)"><svg id="FREQUENCY_CV4_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 191)"><svg>
+      <g transform="translate(20 20)">
+        <g transform="rotate(-90) translate(10 0)">
+          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
+        </g>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
     <g transform="translate(5.5 232)">
       <rect width="34" height="108" rx="5" fill="#bbb"/>
       <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
-      <use id="LEVEL4_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <g transform="translate(5 3)"><svg id="LEVEL4_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <use id="FREQUENCY_CV4_INPUT" xlink:href="#input" transform="translate(5 38)"/>
+      <g transform="translate(5 38)"><svg id="FREQUENCY_CV4_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="OUT4_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
+      <g transform="translate(5 73)"><svg id="OUT4_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
   <g transform="translate(225 20)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.5 8)">5</text>
-    <use xlink:href="#sliderdial-db-151" transform="translate(0 8)"/>
-    <use id="LEVEL5_PARAM" xlink:href="#slider-151" transform="translate(13.5 8)"/>
-    <use id="FREQUENCY5_PARAM" xlink:href="#knob16" transform="translate(14.5 164)"/>
-    <use xlink:href="#dial-frequency-16" transform="translate(2.5 152)"/>
+    <g transform="translate(0 8)"><svg>
+      <g transform="translate(0 6.5)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+      </g>
+      <g transform="translate(0 19.05)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(0) translate(-2.5 2.6)">0</text>
+      </g>
+      <g transform="translate(0 32.86)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-4 2.2)">-6</text>
+      </g>
+      <g transform="translate(0 46.05)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-12</text>
+      </g>
+      <g transform="translate(0 72.41)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-24</text>
+      </g>
+      <g transform="translate(0 125.14)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-48</text>
+      </g>
+      <g transform="translate(0 151.5)">
+        <!-- <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)" /> -->
+        <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
+      </g>
+    </svg></g>
+    <g transform="translate(13.5 8)"><svg id="LEVEL5_PARAM">
+      <rect width="18" height="151" fill="none"/>
+      <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
+      <g transform="translate(0 40)">
+        <rect width="18" height="13" rx="1.5" fill="#777"/>
+        <rect width="18" height="9" x="0" y="2" fill="#444"/>
+        <polyline points="0,6.5 18,6.5" stroke="#fafafa" stroke-width="1" fill="none"/>
+        <rect width="14" height="5" x="2" y="4" rx="1.0" fill="#ddd" transform="translate(0 0)"/>
+      </g>
+    </svg></g>
+    <g transform="translate(14.5 164)"><svg id="FREQUENCY5_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 152)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(60) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(19.8) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(-27.9) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(-90) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(-172.9) translate(10 0)"/>
+        <text font-size="5pt" transform="rotate(-240) translate(10 0) rotate(240) translate(-2.5 4)">0</text>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 193)">FREQ</text>
-    <use id="FREQUENCY_CV5_PARAM" xlink:href="#knob16" transform="translate(14.5 204)"/>
-    <use xlink:href="#dial-centertick" transform="translate(2.5 192)"/>
+    <g transform="translate(14.5 204)"><svg id="FREQUENCY_CV5_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 192)"><svg>
+      <g transform="translate(20 20)">
+        <g transform="rotate(-90) translate(10 0)">
+          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
+        </g>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
     <g transform="translate(5.5 232)">
       <rect width="34" height="108" rx="5" fill="#bbb"/>
       <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
-      <use id="LEVEL5_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <g transform="translate(5 3)"><svg id="LEVEL5_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <use id="FREQUENCY_CV5_INPUT" xlink:href="#input" transform="translate(5 38)"/>
+      <g transform="translate(5 38)"><svg id="FREQUENCY_CV5_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="OUT5_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
+      <g transform="translate(5 73)"><svg id="OUT5_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
   <g transform="translate(270 20)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.5 8)">6</text>
-    <use xlink:href="#sliderdial-db-151" transform="translate(0 8)"/>
-    <use id="LEVEL6_PARAM" xlink:href="#slider-151" transform="translate(13.5 8)"/>
-    <use id="FREQUENCY6_PARAM" xlink:href="#knob16" transform="translate(14.5 163)"/>
-    <use xlink:href="#dial-frequency-16" transform="translate(2.5 152)"/>
+    <g transform="translate(0 8)"><svg>
+      <g transform="translate(0 6.5)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+      </g>
+      <g transform="translate(0 19.05)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(0) translate(-2.5 2.6)">0</text>
+      </g>
+      <g transform="translate(0 32.86)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-4 2.2)">-6</text>
+      </g>
+      <g transform="translate(0 46.05)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-12</text>
+      </g>
+      <g transform="translate(0 72.41)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-24</text>
+      </g>
+      <g transform="translate(0 125.14)">
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-48</text>
+      </g>
+      <g transform="translate(0 151.5)">
+        <!-- <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)" /> -->
+        <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
+      </g>
+    </svg></g>
+    <g transform="translate(13.5 8)"><svg id="LEVEL6_PARAM">
+      <rect width="18" height="151" fill="none"/>
+      <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
+      <g transform="translate(0 40)">
+        <rect width="18" height="13" rx="1.5" fill="#777"/>
+        <rect width="18" height="9" x="0" y="2" fill="#444"/>
+        <polyline points="0,6.5 18,6.5" stroke="#fafafa" stroke-width="1" fill="none"/>
+        <rect width="14" height="5" x="2" y="4" rx="1.0" fill="#ddd" transform="translate(0 0)"/>
+      </g>
+    </svg></g>
+    <g transform="translate(14.5 163)"><svg id="FREQUENCY6_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 152)"><svg>
+      <g transform="translate(20 20)">
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(60) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(19.8) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(-27.9) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(-90) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.5" stroke="#333" transform="rotate(-172.9) translate(10 0)"/>
+        <text font-size="5pt" transform="rotate(-240) translate(10 0) rotate(240) translate(-2.5 4)">0</text>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 193)">FREQ</text>
-    <use id="FREQUENCY_CV6_PARAM" xlink:href="#knob16" transform="translate(14.5 204)"/>
-    <use xlink:href="#dial-centertick" transform="translate(2.5 192)"/>
+    <g transform="translate(14.5 204)"><svg id="FREQUENCY_CV6_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 192)"><svg>
+      <g transform="translate(20 20)">
+        <g transform="rotate(-90) translate(10 0)">
+          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
+        </g>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
     <g transform="translate(5.5 232)">
       <rect width="34" height="108" rx="5" fill="#bbb"/>
       <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
-      <use id="LEVEL6_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <g transform="translate(5 3)"><svg id="LEVEL6_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <use id="FREQUENCY_CV6_INPUT" xlink:href="#input" transform="translate(5 38)"/>
+      <g transform="translate(5 38)"><svg id="FREQUENCY_CV6_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
-      <use id="OUT6_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
+      <g transform="translate(5 73)"><svg id="OUT6_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>

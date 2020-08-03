@@ -3,13 +3,6 @@
   <style/>
 
   <defs>
-    <import id="knob38"/>
-    <import id="knob26"/>
-    <import id="dial-attenuverter"/>
-    <import id="switch"/>
-    <import id="input"/>
-    <import id="output"/>
-
     <symbol id="dial-ratio-pressor" viewBox="0 0 70px 70px">
       <g transform="translate(35 35)">
         <text font-size="6.0pt" transform="rotate(-240) translate(25 0) rotate(240) translate(-2.5 2.5)">1</text>
@@ -185,7 +178,7 @@
     <!-- <polyline points="0,0 270,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 19)" /> -->
     <!-- <polyline points="0,0 270,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 39)" /> -->
     <text font-size="8pt" letter-spacing="1.5px" transform="translate(4 56.5) rotate(270)">THRESHOLD</text>
-    <use id="THRESHOLD_PARAM" xlink:href="#knob38" transform="translate(23 0)"/>
+    <def id="THRESHOLD_PARAM" xlink:href="#knob38" transform="translate(23 0)"/>
     <use xlink:href="#dial-threshold-pressor" transform="translate(7 -16)"/>
   </g>
 
@@ -193,7 +186,7 @@
     <!-- <polyline points="0,19 68,19" stroke="#0f0" stroke-width="1" fill="none" /> -->
     <!-- <polyline points="42,-20 42,250" stroke="#0f0" stroke-width="1" fill="none" /> -->
     <text font-size="8pt" letter-spacing="2px" transform="translate(4 38.5) rotate(270)">RATIO</text>
-    <use id="RATIO_PARAM" xlink:href="#knob38" transform="translate(23 0)"/>
+    <def id="RATIO_PARAM" xlink:href="#knob38" transform="translate(23 0)"/>
     <use xlink:href="#dial-ratio-pressor" transform="translate(7 -16)"/>
   </g>
 
@@ -211,14 +204,14 @@
       <!-- <polyline points="0,0 270,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 13)" /> -->
       <!-- <polyline points="0,0 270,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 33)" /> -->
       <text font-size="8pt" letter-spacing="2px" transform="translate(6 38.5) rotate(270)">ATTACK</text>
-      <use id="ATTACK_PARAM" xlink:href="#knob26" transform="translate(19 0)"/>
+      <def id="ATTACK_PARAM" xlink:href="#knob26" transform="translate(19 0)"/>
     </g>
     <use xlink:href="#dial-attack-pressor" transform="translate(21.5 -9.5)"/>
     <g transform="translate(102 0)">
       <!-- <rect width="51" height="10" fill="#f003" transform="translate(8 -15)" /> -->
       <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(29 -100)" /> -->
       <text font-size="8pt" letter-spacing="2px" transform="translate(6 42) rotate(270)">RELEASE</text>
-      <use id="RELEASE_PARAM" xlink:href="#knob26" transform="translate(19 0)"/>
+      <def id="RELEASE_PARAM" xlink:href="#knob26" transform="translate(19 0)"/>
     </g>
     <use xlink:href="#dial-release-pressor" transform="translate(111.5 -9.5)"/>
   </g>
@@ -231,21 +224,21 @@
       <!-- <polyline points="0,0 270,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 13)" /> -->
       <!-- <polyline points="0,0 270,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 33)" /> -->
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 38.5) rotate(270)">IN GAIN</text>
-      <use id="INPUT_GAIN_PARAM" xlink:href="#knob26" transform="translate(19 0)"/>
+      <def id="INPUT_GAIN_PARAM" xlink:href="#knob26" transform="translate(19 0)"/>
     </g>
     <use xlink:href="#dial-inputgain-pressor" transform="translate(8.5 -9.5)"/>
     <g transform="translate(60 0)">
       <!-- <rect width="47" height="10" fill="#f003" transform="translate(8 -15)" /> -->
       <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(29 -100)" /> -->
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 44.5) rotate(270)">OUT GAIN</text>
-      <use id="OUTPUT_GAIN_PARAM" xlink:href="#knob26" transform="translate(19 0)"/>
+      <def id="OUTPUT_GAIN_PARAM" xlink:href="#knob26" transform="translate(19 0)"/>
     </g>
     <use xlink:href="#dial-outputgain-pressor" transform="translate(69.5 -9.5)"/>
     <g transform="translate(121 0)">
       <!-- <rect width="47" height="10" fill="#f003" transform="translate(8 -15)" /> -->
       <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(29 -100)" /> -->
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 38) rotate(270)">IN/SIDE</text>
-      <use id="DETECTOR_MIX_PARAM" xlink:href="#knob26" transform="translate(19 0)"/>
+      <def id="DETECTOR_MIX_PARAM" xlink:href="#knob26" transform="translate(19 0)"/>
     </g>
     <use xlink:href="#dial-detectormix-pressor" transform="translate(130.5 -9.5)"/>
   </g>
@@ -255,21 +248,21 @@
       <!-- <rect width="5" height="24" fill="#0f0" transform="translate(-14 2)" /> -->
       <text font-size="5pt" letter-spacing="1.5px" transform="translate(-8 25.5) rotate(270)">MODE</text>
       <text font-size="5pt" letter-spacing="2px" transform="translate(-5 -1)">COMP</text>
-      <use id="MODE_PARAM" xlink:href="#switch" transform="translate(0 2)"/>
+      <def id="MODE_PARAM" xlink:href="#switch" transform="translate(0 2)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(-4 34)">GATE</text>
     </g>
     <g transform="translate(0 49)">
       <!-- <rect width="5" height="24" fill="#0f0" transform="translate(-14 2)" /> -->
       <text font-size="5pt" letter-spacing="1.5px" transform="translate(-8 30) rotate(270)">DETECT</text>
       <text font-size="5pt" letter-spacing="2px" transform="translate(-2 -1)">RMS</text>
-      <use id="DECTECTOR_MODE_PARAM" xlink:href="#switch" transform="translate(0 2)"/>
+      <def id="DECTECTOR_MODE_PARAM" xlink:href="#switch" transform="translate(0 2)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(-4 34)">PEAK</text>
     </g>
     <g transform="translate(0 98)">
       <!-- <rect width="5" height="24" fill="#0f0" transform="translate(-14 2)" /> -->
       <text font-size="5pt" letter-spacing="2px" transform="translate(-8 25.5) rotate(270)">KNEE</text>
       <text font-size="5pt" letter-spacing="2px" transform="translate(-4 -1)">SOFT</text>
-      <use id="KNEE_PARAM" xlink:href="#switch" transform="translate(0 2)"/>
+      <def id="KNEE_PARAM" xlink:href="#switch" transform="translate(0 2)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(-5 34)">HARD</text>
     </g>
   </g>
@@ -283,54 +276,54 @@
 
     <g transform="translate(10 0)">
       <g transform="translate(3 0)">
-        <use id="LEFT_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+        <def id="LEFT_INPUT" xlink:href="#input" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(13 40)">L</text>
       </g>
       <g transform="translate(37 0)">
-        <use id="SIDECHAIN_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+        <def id="SIDECHAIN_INPUT" xlink:href="#input" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(3 40)">SIDE</text>
       </g>
       <g transform="translate(71 0)">
-        <use id="THRESHOLD_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+        <def id="THRESHOLD_INPUT" xlink:href="#input" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(1.5 40)">TRSH</text>
       </g>
       <g transform="translate(105 0)">
-        <use id="RATIO_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+        <def id="RATIO_INPUT" xlink:href="#input" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="1px" transform="translate(1.5 40)">RATIO</text>
       </g>
       <g transform="translate(139 0)">
-        <use id="ENVELOPE_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
+        <def id="ENVELOPE_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(5.5 40)">ENV</text>
       </g>
       <g transform="translate(173 0)">
-        <use id="LEFT_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
+        <def id="LEFT_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(13 40)">L</text>
       </g>
     </g>
 
     <g transform="translate(10 44)">
       <g transform="translate(3 0)">
-        <use id="RIGHT_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+        <def id="RIGHT_INPUT" xlink:href="#input" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(13 40)">R</text>
       </g>
       <g transform="translate(37 0)">
-        <use id="ATTACK_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+        <def id="ATTACK_INPUT" xlink:href="#input" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(5.5 40)">ATT</text>
       </g>
       <g transform="translate(71 0)">
-        <use id="RELEASE_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+        <def id="RELEASE_INPUT" xlink:href="#input" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(5.4 40)">REL</text>
       </g>
       <g transform="translate(105 0)">
-        <use id="INPUT_GAIN_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+        <def id="INPUT_GAIN_INPUT" xlink:href="#input" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="1px" transform="translate(5.3 40)">IGN</text>
       </g>
       <g transform="translate(139 0)">
-        <use id="OUTPUT_GAIN_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+        <def id="OUTPUT_GAIN_INPUT" xlink:href="#input" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="1px" transform="translate(5.3 40)">OGN</text>
       </g>
       <g transform="translate(173 0)">
-        <use id="RIGHT_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
+        <def id="RIGHT_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(12 40)">R</text>
       </g>
     </g>

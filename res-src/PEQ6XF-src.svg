@@ -2,13 +2,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="45" height="380" viewBox="0 0 45 380">
   <style/>
 
-  <defs>
-    <import id="knob16"/>
-    <import id="dial-centertick"/>
-    <import id="dial-mintick"/>
-    <import id="output"/>
-  </defs>
-
   <rect width="100%" height="100%" fill="#ddd"/>
   <polyline points="1,1 44,1 44,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
   <polyline points="0.5,0.5 44.5,0.5 44.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
@@ -23,31 +16,31 @@
   </g>
 
   <g transform="translate(0 24)">
-    <use id="DAMP_PARAM" xlink:href="#knob16" transform="translate(14.5 8)"/>
-    <use xlink:href="#dial-mintick" transform="translate(2.5 -4)"/>
+    <def id="DAMP_PARAM" xlink:href="#knob16" transform="translate(14.5 8)"/>
+    <def xlink:href="#dial-mintick" transform="translate(2.5 -4)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(12 0)">DAMP</text>
   </g>
 
   <g transform="translate(0 63)">
-    <use id="GAIN_PARAM" xlink:href="#knob16" transform="translate(14.5 8)"/>
-    <use xlink:href="#dial-centertick" transform="translate(2.5 -4)"/>
+    <def id="GAIN_PARAM" xlink:href="#knob16" transform="translate(14.5 8)"/>
+    <def xlink:href="#dial-centertick" transform="translate(2.5 -4)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(13 0)">GAIN</text>
   </g>
 
   <g transform="translate(5.5 104)">
     <rect width="34" height="225" rx="5" fill="#bbb" transform="translate(0 -10)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 0)">EF</text>
-    <use id="EF1_OUTPUT" xlink:href="#output" transform="translate(5 3)"/>
+    <def id="EF1_OUTPUT" xlink:href="#output" transform="translate(5 3)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(15 35)">1</text>
-    <use id="EF2_OUTPUT" xlink:href="#output" transform="translate(5 38)"/>
+    <def id="EF2_OUTPUT" xlink:href="#output" transform="translate(5 38)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(15 70)">2</text>
-    <use id="EF3_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
+    <def id="EF3_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(15 105)">3</text>
-    <use id="EF4_OUTPUT" xlink:href="#output" transform="translate(5 108)"/>
+    <def id="EF4_OUTPUT" xlink:href="#output" transform="translate(5 108)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(15 140)">4</text>
-    <use id="EF5_OUTPUT" xlink:href="#output" transform="translate(5 143)"/>
+    <def id="EF5_OUTPUT" xlink:href="#output" transform="translate(5 143)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(15 175)">5</text>
-    <use id="EF6_OUTPUT" xlink:href="#output" transform="translate(5 178)"/>
+    <def id="EF6_OUTPUT" xlink:href="#output" transform="translate(5 178)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(15 210)">6</text>
   </g>
 </svg>

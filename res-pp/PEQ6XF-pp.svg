@@ -15,44 +15,6 @@ text.brand {
 }
 </style>
 
-  <defs>
-    <symbol id="knob16" viewBox="0 0 16px 16px">
-      <g transform="translate(8 8)">
-        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
-        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
-        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
-      </g>
-    </symbol>
-    <symbol id="dial-centertick" viewBox="0 0 40px 40px">
-      <g transform="translate(20 20)">
-        <g transform="rotate(-90) translate(10 0)">
-          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
-        </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
-      </g>
-    </symbol>
-    <symbol id="dial-mintick" viewBox="0 0 40px 40px">
-      <g transform="translate(20 20)">
-        <g transform="rotate(-240) translate(10 0)">
-          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
-        </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
-      </g>
-    </symbol>
-    <symbol id="output" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
-      </g>
-    </symbol>
-  </defs>
-
   <rect width="100%" height="100%" fill="#ddd"/>
   <polyline points="1,1 44,1 44,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
   <polyline points="0.5,0.5 44.5,0.5 44.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
@@ -67,31 +29,93 @@ text.brand {
   </g>
 
   <g transform="translate(0 24)">
-    <use id="DAMP_PARAM" xlink:href="#knob16" transform="translate(14.5 8)"/>
-    <use xlink:href="#dial-mintick" transform="translate(2.5 -4)"/>
+    <g transform="translate(14.5 8)"><svg id="DAMP_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 -4)"><svg>
+      <g transform="translate(20 20)">
+        <g transform="rotate(-240) translate(10 0)">
+          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
+        </g>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="1px" transform="translate(12 0)">DAMP</text>
   </g>
 
   <g transform="translate(0 63)">
-    <use id="GAIN_PARAM" xlink:href="#knob16" transform="translate(14.5 8)"/>
-    <use xlink:href="#dial-centertick" transform="translate(2.5 -4)"/>
+    <g transform="translate(14.5 8)"><svg id="GAIN_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 -4)"><svg>
+      <g transform="translate(20 20)">
+        <g transform="rotate(-90) translate(10 0)">
+          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
+        </g>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="1px" transform="translate(13 0)">GAIN</text>
   </g>
 
   <g transform="translate(5.5 104)">
     <rect width="34" height="225" rx="5" fill="#bbb" transform="translate(0 -10)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 0)">EF</text>
-    <use id="EF1_OUTPUT" xlink:href="#output" transform="translate(5 3)"/>
+    <g transform="translate(5 3)"><svg id="EF1_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(15 35)">1</text>
-    <use id="EF2_OUTPUT" xlink:href="#output" transform="translate(5 38)"/>
+    <g transform="translate(5 38)"><svg id="EF2_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(15 70)">2</text>
-    <use id="EF3_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
+    <g transform="translate(5 73)"><svg id="EF3_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(15 105)">3</text>
-    <use id="EF4_OUTPUT" xlink:href="#output" transform="translate(5 108)"/>
+    <g transform="translate(5 108)"><svg id="EF4_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(15 140)">4</text>
-    <use id="EF5_OUTPUT" xlink:href="#output" transform="translate(5 143)"/>
+    <g transform="translate(5 143)"><svg id="EF5_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(15 175)">5</text>
-    <use id="EF6_OUTPUT" xlink:href="#output" transform="translate(5 178)"/>
+    <g transform="translate(5 178)"><svg id="EF6_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(15 210)">6</text>
   </g>
 </svg>

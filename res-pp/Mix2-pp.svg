@@ -15,18 +15,19 @@ text.brand {
 }
 </style>
 
-  <defs>
-    <symbol id="slider-151" viewBox="0 0 18px 151x">
-      <rect width="18" height="151" fill="none"/>
-      <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
-      <g transform="translate(0 40)">
-        <rect width="18" height="13" rx="1.5" fill="#777"/>
-        <rect width="18" height="9" x="0" y="2" fill="#444"/>
-        <polyline points="0,6.5 18,6.5" stroke="#fafafa" stroke-width="1" fill="none"/>
-        <rect width="14" height="5" x="2" y="4" rx="1.0" fill="#ddd" transform="translate(0 0)"/>
-      </g>
-    </symbol>
-    <symbol id="sliderdial-db-151" viewBox="0 0 20px 151px">
+  <rect width="100%" height="100%" fill="#ddd"/>
+  <polyline points="1,1 74,1 74,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
+  <polyline points="0.5,0.5 74.5,0.5 74.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
+  <polyline points="0,0 75,0 75,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none"/>
+
+  <text class="title" x="30" y="17" font-size="9pt" letter-spacing="3px">MIX2</text>
+  <g transform="translate(25 374)">
+    <text class="brand" font-size="6.5pt" letter-spacing="2px">BGA</text>
+    <rect width="2" height="2" fill="#ddd" transform="translate(11.5 -4)"/>
+  </g>
+
+  <g transform="translate(0 32)">
+    <g transform="translate(15 0)"><svg>
       <g transform="translate(0 6.5)">
         <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
         <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
@@ -60,44 +61,25 @@ text.brand {
         <!-- <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)" /> -->
         <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
       </g>
-    </symbol>
-    <symbol id="button" viewBox="0 0 18px 18px">
-      <g transform="translate(9 9)">
-        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+    </svg></g>
+    <g transform="translate(28.5 0)"><svg id="LEVEL_PARAM">
+      <rect width="18" height="151" fill="none"/>
+      <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
+      <g transform="translate(0 40)">
+        <rect width="18" height="13" rx="1.5" fill="#777"/>
+        <rect width="18" height="9" x="0" y="2" fill="#444"/>
+        <polyline points="0,6.5 18,6.5" stroke="#fafafa" stroke-width="1" fill="none"/>
+        <rect width="14" height="5" x="2" y="4" rx="1.0" fill="#ddd" transform="translate(0 0)"/>
       </g>
-    </symbol>
-    <symbol id="input" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
-      </g>
-    </symbol>
-    <symbol id="output" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
-      </g>
-    </symbol>
-  </defs>
-
-  <rect width="100%" height="100%" fill="#ddd"/>
-  <polyline points="1,1 74,1 74,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
-  <polyline points="0.5,0.5 74.5,0.5 74.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
-  <polyline points="0,0 75,0 75,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none"/>
-
-  <text class="title" x="30" y="17" font-size="9pt" letter-spacing="3px">MIX2</text>
-  <g transform="translate(25 374)">
-    <text class="brand" font-size="6.5pt" letter-spacing="2px">BGA</text>
-    <rect width="2" height="2" fill="#ddd" transform="translate(11.5 -4)"/>
-  </g>
-
-  <g transform="translate(0 32)">
-    <use xlink:href="#sliderdial-db-151" transform="translate(15 0)"/>
-    <use id="LEVEL_PARAM" xlink:href="#slider-151" transform="translate(28.5 0)"/>
+    </svg></g>
   </g>
 
   <g transform="translate(15 197)">
-    <use id="MUTE_PARAM" xlink:href="#button" transform="translate(13.5 0)"/>
+    <g transform="translate(13.5 0)"><svg id="MUTE_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(10 27)">MUTE</text>
   </g>
 
@@ -105,21 +87,51 @@ text.brand {
     <g transform="translate(5.5 0)">
       <rect width="64" height="10" fill="#fafafa" transform="translate(0 66)"/>
       <rect width="64" height="73" rx="5" fill="#fafafa"/>
-      <use id="LEVEL_INPUT" xlink:href="#input" transform="translate(5 4)"/>
+      <g transform="translate(5 4)"><svg id="LEVEL_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="1.5px" transform="translate(4.5 36)">LEVEL</text>
-      <use id="MUTE_INPUT" xlink:href="#input" transform="translate(35 4)"/>
+      <g transform="translate(35 4)"><svg id="MUTE_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="1.5px" transform="translate(35.5 36)">MUTE</text>
-      <use id="L_INPUT" xlink:href="#input" transform="translate(5 40)"/>
+      <g transform="translate(5 40)"><svg id="L_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(15 72)">L</text>
-      <use id="R_INPUT" xlink:href="#input" transform="translate(35 40)"/>
+      <g transform="translate(35 40)"><svg id="R_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="0.5px" transform="translate(39 72)">R (L)</text>
     </g>
     <g transform="translate(5.5 79)">
       <rect width="64" height="10" fill="#bbb" transform="translate(0 -3)"/>
       <rect width="64" height="37" rx="5" fill="#bbb"/>
-      <use id="L_OUTPUT" xlink:href="#output" transform="translate(5 1)"/>
+      <g transform="translate(5 1)"><svg id="L_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(15 33)">L</text>
-      <use id="R_OUTPUT" xlink:href="#output" transform="translate(35 1)"/>
+      <g transform="translate(35 1)"><svg id="R_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(45 33)">R</text>
     </g>
   </g>

@@ -2,18 +2,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="150" height="380" viewBox="0 0 150 380">
   <style/>
 
-  <defs>
-    <import id="knob38"/>
-    <import id="dial-sustain"/>
-    <import id="dial-exp"/>
-    <import id="button"/>
-    <import id="button-small"/>
-    <import id="switch"/>
-    <import id="input"/>
-    <import id="output"/>
-    <import id="light-tiny"/>
-  </defs>
-
   <rect width="100%" height="100%" fill="#ddd"/>
   <polyline points="1,1 149,1 149,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
   <polyline points="0.5,0.5 149.5,0.5 149.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
@@ -28,170 +16,170 @@
   <g transform="translate(9 33)">
     <g transform="translate(0 0)">
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 40) rotate(270)">DELAY</text>
-      <use id="DELAY_PARAM" xlink:href="#knob38" transform="translate(18 0)"/>
-      <use id="DELAY_LIGHT" xlink:href="#light-tiny" transform="translate(3 43)"/>
+      <def id="DELAY_PARAM" xlink:href="#knob38" transform="translate(18 0)"/>
+      <def id="DELAY_LIGHT" xlink:href="#light-tiny" transform="translate(3 43)"/>
     </g>
 
     <g transform="translate(0 56)">
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 31) rotate(270)">ATT</text>
-      <use id="ATTACK_PARAM" xlink:href="#knob38" transform="translate(18 0)"/>
-      <use id="ATTACK_LIGHT" xlink:href="#light-tiny" transform="translate(3 34)"/>
+      <def id="ATTACK_PARAM" xlink:href="#knob38" transform="translate(18 0)"/>
+      <def id="ATTACK_LIGHT" xlink:href="#light-tiny" transform="translate(3 34)"/>
     </g>
 
     <g transform="translate(0 112)">
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 31) rotate(270)">DEC</text>
-      <use id="DECAY_PARAM" xlink:href="#knob38" transform="translate(18 0)"/>
-      <use id="DECAY_LIGHT" xlink:href="#light-tiny" transform="translate(3 34)"/>
+      <def id="DECAY_PARAM" xlink:href="#knob38" transform="translate(18 0)"/>
+      <def id="DECAY_LIGHT" xlink:href="#light-tiny" transform="translate(3 34)"/>
     </g>
 
     <g transform="translate(0 168)">
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 31) rotate(270)">SUS</text>
-      <use id="SUSTAIN_PARAM" xlink:href="#knob38" transform="translate(18 0)"/>
-      <use id="SUSTAIN_LIGHT" xlink:href="#light-tiny" transform="translate(3 34)"/>
+      <def id="SUSTAIN_PARAM" xlink:href="#knob38" transform="translate(18 0)"/>
+      <def id="SUSTAIN_LIGHT" xlink:href="#light-tiny" transform="translate(3 34)"/>
     </g>
 
     <g transform="translate(0 224)">
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 31) rotate(270)">REL</text>
-      <use id="RELEASE_PARAM" xlink:href="#knob38" transform="translate(18 0)"/>
-      <use id="RELEASE_LIGHT" xlink:href="#light-tiny" transform="translate(3 34)"/>
+      <def id="RELEASE_PARAM" xlink:href="#knob38" transform="translate(18 0)"/>
+      <def id="RELEASE_LIGHT" xlink:href="#light-tiny" transform="translate(3 34)"/>
     </g>
 
     <g transform="translate(0 280)">
       <g transform="translate(75 0)">
         <text font-size="8pt" letter-spacing="2px" transform="translate(48 2) rotate(90)">HOLD</text>
-        <use id="HOLD_PARAM" xlink:href="#knob38" transform="translate(-1.7 0)"/>
+        <def id="HOLD_PARAM" xlink:href="#knob38" transform="translate(-1.7 0)"/>
       </g>
     </g>
   </g>
 
-  <use xlink:href="#dial-exp" transform="scale(0.75) translate(11 19)"/>
-  <use xlink:href="#dial-exp" transform="scale(0.75) translate(11 94)"/>
-  <use xlink:href="#dial-exp" transform="scale(0.75) translate(11 169)"/>
-  <use xlink:href="#dial-sustain" transform="scale(0.75) translate(11 243)"/>
-  <use xlink:href="#dial-exp" transform="scale(0.75) translate(11 318)"/>
-  <use xlink:href="#dial-exp" transform="scale(0.75) translate(85 392.5)"/>
+  <def xlink:href="#dial-exp" transform="scale(0.75) translate(11 19)"/>
+  <def xlink:href="#dial-exp" transform="scale(0.75) translate(11 94)"/>
+  <def xlink:href="#dial-exp" transform="scale(0.75) translate(11 169)"/>
+  <def xlink:href="#dial-sustain" transform="scale(0.75) translate(11 243)"/>
+  <def xlink:href="#dial-exp" transform="scale(0.75) translate(11 318)"/>
+  <def xlink:href="#dial-exp" transform="scale(0.75) translate(85 392.5)"/>
 
   <g>
     <g transform="translate(77 96)">
       <g transform="translate(0 0)">
-        <use id="ATTACK_SHAPE1_LIGHT" xlink:href="#light-tiny"/>
+        <def id="ATTACK_SHAPE1_LIGHT" xlink:href="#light-tiny"/>
         <g transform="translate(5 5)">
           <path d="M 1 1 Q 1 -6, 8 -6" stroke="#333" stroke-width="1" fill="none"/>
         </g>
       </g>
       <g transform="translate(0 10)">
-        <use id="ATTACK_SHAPE2_LIGHT" xlink:href="#light-tiny"/>
+        <def id="ATTACK_SHAPE2_LIGHT" xlink:href="#light-tiny"/>
         <g transform="translate(5 5)">
           <polyline points="0,1 10,1" stroke="#333" stroke-width="1" fill="none" transform="rotate(-45)"/>
         </g>
       </g>
       <g transform="translate(0 20)">
-        <use id="ATTACK_SHAPE3_LIGHT" xlink:href="#light-tiny"/>
+        <def id="ATTACK_SHAPE3_LIGHT" xlink:href="#light-tiny"/>
         <g transform="translate(5 5)">
           <path d="M 0 1 Q 7 1, 8 -7" stroke="#333" stroke-width="1" fill="none"/>
         </g>
       </g>
       <g transform="translate(0 28)">
-        <use id="ATTACK_SHAPE_PARAM" xlink:href="#button-small"/>
+        <def id="ATTACK_SHAPE_PARAM" xlink:href="#button-small"/>
       </g>
     </g>
 
     <g transform="translate(77 152.5)">
       <g transform="translate(0 0)">
-        <use id="DECAY_SHAPE1_LIGHT" xlink:href="#light-tiny" transform="translate(0 0)"/>
+        <def id="DECAY_SHAPE1_LIGHT" xlink:href="#light-tiny" transform="translate(0 0)"/>
         <g transform="translate(5 0)">
           <path d="M 0.5 -1 Q 1 6, 8 6" stroke="#333" stroke-width="1" fill="none"/>
         </g>
       </g>
       <g transform="translate(0 10)">
-        <use id="DECAY_SHAPE2_LIGHT" xlink:href="#light-tiny"/>
+        <def id="DECAY_SHAPE2_LIGHT" xlink:href="#light-tiny"/>
         <g transform="translate(6 -2)">
           <polyline points="0,1 10,1" stroke="#333" stroke-width="1" fill="none" transform="rotate(45)"/>
         </g>
       </g>
       <g transform="translate(0 20)">
-        <use id="DECAY_SHAPE3_LIGHT" xlink:href="#light-tiny"/>
+        <def id="DECAY_SHAPE3_LIGHT" xlink:href="#light-tiny"/>
         <g transform="translate(5 0)">
           <path d="M 0.5 -1 Q 6 0, 7 6" stroke="#333" stroke-width="1" fill="none"/>
         </g>
       </g>
       <g transform="translate(0 28)">
-        <use id="DECAY_SHAPE_PARAM" xlink:href="#button-small"/>
+        <def id="DECAY_SHAPE_PARAM" xlink:href="#button-small"/>
       </g>
     </g>
 
     <g transform="translate(77 264.5)">
       <g transform="translate(0 0)">
-        <use id="RELEASE_SHAPE1_LIGHT" xlink:href="#light-tiny"/>
+        <def id="RELEASE_SHAPE1_LIGHT" xlink:href="#light-tiny"/>
         <g transform="translate(5 0)">
           <path d="M 0.5 -1 Q 1 6, 8 6" stroke="#333" stroke-width="1" fill="none"/>
         </g>
       </g>
       <g transform="translate(0 10)">
-        <use id="RELEASE_SHAPE2_LIGHT" xlink:href="#light-tiny"/>
+        <def id="RELEASE_SHAPE2_LIGHT" xlink:href="#light-tiny"/>
         <g transform="translate(6 -2)">
           <polyline points="0,1 10,1" stroke="#333" stroke-width="1" fill="none" transform="rotate(45)"/>
         </g>
       </g>
       <g transform="translate(0 20)">
-        <use id="RELEASE_SHAPE3_LIGHT" xlink:href="#light-tiny"/>
+        <def id="RELEASE_SHAPE3_LIGHT" xlink:href="#light-tiny"/>
         <g transform="translate(5 0)">
           <path d="M 0.5 -1 Q 6 0, 7 6" stroke="#333" stroke-width="1" fill="none"/>
         </g>
       </g>
       <g transform="translate(0 28)">
-        <use id="RELEASE_SHAPE_PARAM" xlink:href="#button-small"/>
+        <def id="RELEASE_SHAPE_PARAM" xlink:href="#button-small"/>
       </g>
     </g>
   </g>
 
   <g transform="translate(84 37)">
     <rect width="58" height="40" rx="5" fill="#fafafa"/>
-    <use id="TRIGGER_PARAM" xlink:href="#button" transform="translate(6 6)"/>
-    <use id="TRIGGER_INPUT" xlink:href="#input" transform="translate(31 3)"/>
+    <def id="TRIGGER_PARAM" xlink:href="#button" transform="translate(6 6)"/>
+    <def id="TRIGGER_INPUT" xlink:href="#input" transform="translate(31 3)"/>
     <text font-size="6pt" letter-spacing="2px" transform="translate(6 36)">TRIGGER</text>
   </g>
 
   <g transform="translate(120 93)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(-8 27.5) rotate(270)">MODE</text>
     <text font-size="5pt" letter-spacing="2px" transform="translate(-5 -1)">GATE</text>
-    <use id="MODE_PARAM" xlink:href="#switch" transform="translate(0 2)"/>
+    <def id="MODE_PARAM" xlink:href="#switch" transform="translate(0 2)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(-4 34)">TRIG</text>
   </g>
 
   <g transform="translate(120 143)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(-8 28.5) rotate(270)">CYCLE</text>
     <text font-size="5pt" letter-spacing="2px" transform="translate(-4.5 -1)">STOP</text>
-    <use id="LOOP_PARAM" xlink:href="#switch" transform="translate(0 2)"/>
+    <def id="LOOP_PARAM" xlink:href="#switch" transform="translate(0 2)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(-4 34)">LOOP</text>
   </g>
 
   <g transform="translate(20 319)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(-7 28.5) rotate(270)">SPEED</text>
     <text font-size="5pt" letter-spacing="2px" transform="translate(2 -1)">1X</text>
-    <use id="SPEED_PARAM" xlink:href="#switch" transform="translate(0 2)"/>
+    <def id="SPEED_PARAM" xlink:href="#switch" transform="translate(0 2)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(-1 34)">10X</text>
   </g>
 
   <g transform="translate(55 319)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(-7 31) rotate(270)">RETRIG</text>
     <text font-size="5pt" letter-spacing="2px" transform="translate(-1.5 -1)">ATT</text>
-    <use id="RETRIGGER_PARAM" xlink:href="#switch" transform="translate(0 2)"/>
+    <def id="RETRIGGER_PARAM" xlink:href="#switch" transform="translate(0 2)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(-1.5 34)">RST</text>
   </g>
 
   <g transform="translate(112 187)">
     <rect width="30" height="116" rx="5" fill="#bbb"/>
     <g transform="translate(0 1)">
-      <use id="ENV_OUTPUT" xlink:href="#output" transform="translate(3 3)"/>
+      <def id="ENV_OUTPUT" xlink:href="#output" transform="translate(3 3)"/>
       <text font-size="6pt" letter-spacing="2px" transform="translate(6 36)">ENV</text>
     </g>
     <g transform="translate(0 38)">
-      <use id="INV_OUTPUT" xlink:href="#output" transform="translate(3 3)"/>
+      <def id="INV_OUTPUT" xlink:href="#output" transform="translate(3 3)"/>
       <text font-size="6pt" letter-spacing="2px" transform="translate(6 36)">INV</text>
     </g>
     <g transform="translate(0 75)">
-      <use id="TRIGGER_OUTPUT" xlink:href="#output" transform="translate(3 3)"/>
+      <def id="TRIGGER_OUTPUT" xlink:href="#output" transform="translate(3 3)"/>
       <text font-size="6pt" letter-spacing="2px" transform="translate(6 36)">END</text>
     </g>
   </g>

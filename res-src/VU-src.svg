@@ -3,9 +3,6 @@
   <style/>
 
   <defs>
-    <import id="input"/>
-    <import id="output"/>
-
     <symbol id="vu-vu" viewBox="0 0 18px 180px">
       <!-- <rect width="18" height="180" x="0" y="0" rx="0" fill="#ccc" /> -->
       <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(3 0)"/>
@@ -97,17 +94,17 @@
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)"/>
       <rect width="34" height="70" rx="5" fill="#fafafa"/>
-      <use id="L_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="L_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(15 35)">L</text>
-      <use id="R_INPUT" xlink:href="#input" transform="translate(5 38)"/>
+      <def id="R_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="0.5px" transform="translate(9 70)">R (L)</text>
     </g>
     <g transform="translate(5.5 76)">
       <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
       <rect width="34" height="70" rx="5" fill="#bbb"/>
-      <use id="L_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
+      <def id="L_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(15 32)">L</text>
-      <use id="R_OUTPUT" xlink:href="#output" transform="translate(5 35)"/>
+      <def id="R_OUTPUT" xlink:href="#output" transform="translate(5 35)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(15 67)">R</text>
     </g>
   </g>

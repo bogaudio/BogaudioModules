@@ -2,16 +2,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="120" height="380" viewBox="0 0 120 380">
   <style/>
 
-  <defs>
-    <import id="knob16"/>
-    <import id="dial-channels-small-8"/>
-    <import id="dial-centertick"/>
-    <import id="dial-mintick"/>
-    <import id="input"/>
-    <import id="output"/>
-    <import id="light-tiny"/>
-  </defs>
-
   <rect width="100%" height="100%" fill="#ddd"/>
   <polyline points="1,1 119,1 119,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
   <polyline points="0.5,0.5 119.5,0.5 119.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
@@ -33,94 +23,94 @@
 
   <g transform="translate(5.5 24)">
     <rect width="34" height="289" rx="5" fill="#fafafa" transform="translate(0 0)"/>
-    <use id="CV1_INPUT" xlink:href="#input" transform="translate(5 5)"/>
-    <use id="CV2_INPUT" xlink:href="#input" transform="translate(5 40)"/>
-    <use id="CV3_INPUT" xlink:href="#input" transform="translate(5 75)"/>
-    <use id="CV4_INPUT" xlink:href="#input" transform="translate(5 110)"/>
-    <use id="CV5_INPUT" xlink:href="#input" transform="translate(5 145)"/>
-    <use id="CV6_INPUT" xlink:href="#input" transform="translate(5 180)"/>
-    <use id="CV7_INPUT" xlink:href="#input" transform="translate(5 215)"/>
-    <use id="CV8_INPUT" xlink:href="#input" transform="translate(5 250)"/>
+    <def id="CV1_INPUT" xlink:href="#input" transform="translate(5 5)"/>
+    <def id="CV2_INPUT" xlink:href="#input" transform="translate(5 40)"/>
+    <def id="CV3_INPUT" xlink:href="#input" transform="translate(5 75)"/>
+    <def id="CV4_INPUT" xlink:href="#input" transform="translate(5 110)"/>
+    <def id="CV5_INPUT" xlink:href="#input" transform="translate(5 145)"/>
+    <def id="CV6_INPUT" xlink:href="#input" transform="translate(5 180)"/>
+    <def id="CV7_INPUT" xlink:href="#input" transform="translate(5 215)"/>
+    <def id="CV8_INPUT" xlink:href="#input" transform="translate(5 250)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(4 284)">IN/CV</text>
   </g>
 
   <g transform="translate(0 33)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(46.5 8)">1</text>
-    <use id="CHANNEL1_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
-    <use id="OFFSET1_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
-    <use xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
-    <use id="SCALE1_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
-    <use xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
+    <def id="CHANNEL1_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
+    <def id="OFFSET1_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
+    <def xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
+    <def id="SCALE1_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
+    <def xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
     <!-- <polyline points="0,0 150,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(0 8)" /> -->
   </g>
 
   <g transform="translate(0 68)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(46.5 8)">2</text>
-    <use id="CHANNEL2_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
-    <use id="OFFSET2_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
-    <use xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
-    <use id="SCALE2_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
-    <use xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
+    <def id="CHANNEL2_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
+    <def id="OFFSET2_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
+    <def xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
+    <def id="SCALE2_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
+    <def xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
     <!-- <polyline points="0,0 150,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(0 8)" /> -->
   </g>
 
   <g transform="translate(0 103)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(46.5 8)">3</text>
-    <use id="CHANNEL3_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
-    <use id="OFFSET3_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
-    <use xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
-    <use id="SCALE3_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
-    <use xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
+    <def id="CHANNEL3_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
+    <def id="OFFSET3_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
+    <def xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
+    <def id="SCALE3_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
+    <def xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
     <!-- <polyline points="0,0 150,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(0 8)" /> -->
   </g>
 
   <g transform="translate(0 138)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(46.5 8)">4</text>
-    <use id="CHANNEL4_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
-    <use id="OFFSET4_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
-    <use xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
-    <use id="SCALE4_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
-    <use xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
+    <def id="CHANNEL4_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
+    <def id="OFFSET4_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
+    <def xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
+    <def id="SCALE4_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
+    <def xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
     <!-- <polyline points="0,0 150,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(0 8)" /> -->
   </g>
 
   <g transform="translate(0 173)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(46.5 8)">5</text>
-    <use id="CHANNEL5_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
-    <use id="OFFSET5_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
-    <use xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
-    <use id="SCALE5_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
-    <use xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
+    <def id="CHANNEL5_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
+    <def id="OFFSET5_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
+    <def xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
+    <def id="SCALE5_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
+    <def xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
     <!-- <polyline points="0,0 150,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(0 8)" /> -->
   </g>
 
   <g transform="translate(0 208)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(46.5 8)">6</text>
-    <use id="CHANNEL6_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
-    <use id="OFFSET6_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
-    <use xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
-    <use id="SCALE6_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
-    <use xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
+    <def id="CHANNEL6_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
+    <def id="OFFSET6_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
+    <def xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
+    <def id="SCALE6_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
+    <def xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
     <!-- <polyline points="0,0 150,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(0 8)" /> -->
   </g>
 
   <g transform="translate(0 243)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(46.5 8)">7</text>
-    <use id="CHANNEL7_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
-    <use id="OFFSET7_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
-    <use xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
-    <use id="SCALE7_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
-    <use xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
+    <def id="CHANNEL7_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
+    <def id="OFFSET7_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
+    <def xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
+    <def id="SCALE7_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
+    <def xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
     <!-- <polyline points="0,0 150,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(0 8)" /> -->
   </g>
 
   <g transform="translate(0 278)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(46.5 8)">8</text>
-    <use id="CHANNEL8_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
-    <use id="OFFSET8_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
-    <use xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
-    <use id="SCALE8_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
-    <use xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
+    <def id="CHANNEL8_LIGHT" xlink:href="#light-tiny" transform="translate(46.8 10)"/>
+    <def id="OFFSET8_PARAM" xlink:href="#knob16" transform="translate(62.5 0)"/>
+    <def xlink:href="#dial-centertick" transform="translate(50.5 -12)"/>
+    <def id="SCALE8_PARAM" xlink:href="#knob16" transform="translate(93.5 0)"/>
+    <def xlink:href="#dial-mintick" transform="translate(81.5 -12)"/>
     <!-- <polyline points="0,0 150,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(0 8)" /> -->
   </g>
 
@@ -129,16 +119,16 @@
 
   <g transform="translate(11 320)">
     <text font-size="6pt" letter-spacing="1.5px" transform="translate(0 39) rotate(-90) translate(6.5 0)">CHAN</text>
-    <use id="CHANNELS_PARAM" xlink:href="#knob16" transform="translate(12 12)"/>
-    <use xlink:href="#dial-channels-small-8" transform="translate(0 0)"/>
+    <def id="CHANNELS_PARAM" xlink:href="#knob16" transform="translate(12 12)"/>
+    <def xlink:href="#dial-channels-small-8" transform="translate(0 0)"/>
   </g>
 
   <g transform="translate(52 318)">
     <rect width="60" height="40" rx="5" fill="#fafafa"/>
     <rect width="24" height="40" rx="5" fill="#bbb" transform="translate(38)"/>
     <rect width="20" height="40" fill="#bbb" transform="translate(31)"/>
-    <use id="IN_INPUT" xlink:href="#input" transform="translate(3.5 4)"/>
-    <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(34.5 4)"/>
+    <def id="IN_INPUT" xlink:href="#input" transform="translate(3.5 4)"/>
+    <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(34.5 4)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(11 36)">IN</text>
     <text font-size="6pt" letter-spacing="2px" transform="translate(36 36)">OUT</text>
   </g>

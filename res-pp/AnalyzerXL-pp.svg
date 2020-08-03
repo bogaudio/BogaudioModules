@@ -16,12 +16,6 @@ text.brand {
 </style>
 
   <defs>
-    <symbol id="input" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
-      </g>
-    </symbol>
     <symbol id="display-analyzerxl" viewBox="0 0 600px 380px">
       <rect cx="0" cy="0" width="600" height="380" fill="#222"/>
     </symbol>
@@ -34,14 +28,54 @@ text.brand {
   </g>
 
   <g transform="translate(3, 13)">
-    <use id="SIGNALA_INPUT" xlink:href="#input" transform="translate(0 0)"/>
-    <use id="SIGNALB_INPUT" xlink:href="#input" transform="translate(0 34)"/>
-    <use id="SIGNALC_INPUT" xlink:href="#input" transform="translate(0 68)"/>
-    <use id="SIGNALD_INPUT" xlink:href="#input" transform="translate(0 102)"/>
-    <use id="SIGNALE_INPUT" xlink:href="#input" transform="translate(0 136)"/>
-    <use id="SIGNALF_INPUT" xlink:href="#input" transform="translate(0 170)"/>
-    <use id="SIGNALG_INPUT" xlink:href="#input" transform="translate(0 204)"/>
-    <use id="SIGNALH_INPUT" xlink:href="#input" transform="translate(0 238)"/>
+    <g transform="translate(0 0)"><svg id="SIGNALA_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(0 34)"><svg id="SIGNALB_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(0 68)"><svg id="SIGNALC_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(0 102)"><svg id="SIGNALD_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(0 136)"><svg id="SIGNALE_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(0 170)"><svg id="SIGNALF_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(0 204)"><svg id="SIGNALG_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(0 238)"><svg id="SIGNALH_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
   </g>
 
   <use id="DISPLAY_WIDGET" xlink:href="#display-analyzerxl" transform="translate(30 0)"/>

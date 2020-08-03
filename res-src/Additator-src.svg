@@ -3,19 +3,6 @@
   <style/>
 
   <defs>
-    <import id="knob68"/>
-    <import id="knob38"/>
-    <import id="knob26"/>
-    <import id="knob16"/>
-    <import id="dial-frequency"/>
-    <import id="dial-attenuverter"/>
-    <import id="dial-linear"/>
-    <import id="dial-centertick"/>
-    <import id="input"/>
-    <import id="output"/>
-    <import id="button-small"/>
-    <import id="light-small"/>
-
     <symbol id="dial-partials-additator" viewBox="0 0 70px 70px">
       <g transform="translate(35 35)">
         <text font-size="6.0pt" transform="rotate(-240) translate(25.5 0) rotate(240) translate(-2.5 2.5)">1</text>
@@ -59,9 +46,9 @@
     <!-- <rect width="108" height="98" fill="none" stroke="#0f0" /> -->
     <!-- <polyline points="0,54 254,54" stroke="#0f0" stroke-width="1" fill="none" /> -->
     <!-- <polyline points="54,54 54,354" stroke="#0f0" stroke-width="1" fill="none" /> -->
-    <use id="FREQUENCY_PARAM" xlink:href="#knob68" transform="translate(20 20)"/>
+    <def id="FREQUENCY_PARAM" xlink:href="#knob68" transform="translate(20 20)"/>
   </g>
-  <use xlink:href="#dial-frequency" transform="translate(20 25)"/>
+  <def xlink:href="#dial-frequency" transform="translate(20 25)"/>
 
   <text font-size="6pt" letter-spacing="1px" transform="translate(30 135)">0V = C4 = 261.63HZ</text>
 
@@ -69,7 +56,7 @@
     <!-- <polyline points="0,19 68,19" stroke="#0f0" stroke-width="1" fill="none" /> -->
     <!-- <polyline points="40,-20 40,50" stroke="#0f0" stroke-width="1" fill="none" /> -->
     <text font-size="8pt" letter-spacing="2px" transform="translate(4 50) rotate(270)">PARTIALS</text>
-    <use id="PARTIALS_PARAM" xlink:href="#knob38" transform="translate(21 0)"/>
+    <def id="PARTIALS_PARAM" xlink:href="#knob38" transform="translate(21 0)"/>
     <use xlink:href="#dial-partials-additator" transform="translate(5 -16)"/>
   </g>
 
@@ -80,28 +67,28 @@
       <!-- <polyline points="0,21 70,21" stroke="#0f0" stroke-width="1" fill="none" /> -->
       <!-- <polyline points="21,-10 21,240" stroke="#0f0" stroke-width="1" fill="none" /> -->
       <text font-size="8pt" letter-spacing="2px" transform="translate(-3 22.5) rotate(270)">FINE</text>
-      <use id="FINE_PARAM" xlink:href="#knob16" transform="translate(10 0)"/>
+      <def id="FINE_PARAM" xlink:href="#knob16" transform="translate(10 0)"/>
       <!-- <rect width="90" height="10" fill="#0f0" transform="translate(0 17)" /> -->
     </g>
-    <use xlink:href="#dial-centertick" transform="translate(8 -7)"/>
+    <def xlink:href="#dial-centertick" transform="translate(8 -7)"/>
     <g transform="translate(53 0)">
       <!-- <polyline points="-50,13 168,13" stroke="#0f0" stroke-width="1" fill="none" /> -->
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 33) rotate(270)">WIDTH</text>
-      <use id="WIDTH_PARAM" xlink:href="#knob26" transform="translate(16 0)"/>
+      <def id="WIDTH_PARAM" xlink:href="#knob26" transform="translate(16 0)"/>
     </g>
-    <use xlink:href="#dial-linear" transform="translate(59.5 -9.5)"/>
+    <def xlink:href="#dial-linear" transform="translate(59.5 -9.5)"/>
     <g transform="translate(106 0)">
       <!-- <polyline points="0,19 68,19" stroke="#0f0" stroke-width="1" fill="none" /> -->
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 38) rotate(270)">O-SKEW</text>
-      <use id="ODD_SKEW_PARAM" xlink:href="#knob26" transform="translate(16 0)"/>
+      <def id="ODD_SKEW_PARAM" xlink:href="#knob26" transform="translate(16 0)"/>
     </g>
-    <use xlink:href="#dial-attenuverter" transform="translate(112.5 -9.5)"/>
+    <def xlink:href="#dial-attenuverter" transform="translate(112.5 -9.5)"/>
     <g transform="translate(158 0)">
       <!-- <polyline points="0,19 68,19" stroke="#0f0" stroke-width="1" fill="none" /> -->
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 37.5) rotate(270)">E-SKEW</text>
-      <use id="EVEN_SKEW_PARAM" xlink:href="#knob26" transform="translate(16 0)"/>
+      <def id="EVEN_SKEW_PARAM" xlink:href="#knob26" transform="translate(16 0)"/>
     </g>
-    <use xlink:href="#dial-attenuverter" transform="translate(164.5 -9.5)"/>
+    <def xlink:href="#dial-attenuverter" transform="translate(164.5 -9.5)"/>
   </g>
 
   <g transform="translate(10 218)">
@@ -109,35 +96,35 @@
       <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(29 -100)" /> -->
       <!-- <polyline points="0,13 270,13" stroke="#0f0" stroke-width="1" fill="none" /> -->
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 28.5) rotate(270)">GAIN</text>
-      <use id="GAIN_PARAM" xlink:href="#knob26" transform="translate(16 0)"/>
+      <def id="GAIN_PARAM" xlink:href="#knob26" transform="translate(16 0)"/>
     </g>
-    <use xlink:href="#dial-linear" transform="translate(5.5 -9.5)"/>
+    <def xlink:href="#dial-linear" transform="translate(5.5 -9.5)"/>
     <g transform="translate(53 0)">
       <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(29 -100)" /> -->
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 33.5) rotate(270)">DECAY</text>
-      <use id="DECAY_PARAM" xlink:href="#knob26" transform="translate(16 0)"/>
+      <def id="DECAY_PARAM" xlink:href="#knob26" transform="translate(16 0)"/>
     </g>
-    <use xlink:href="#dial-attenuverter" transform="translate(59.5 -9.5)"/>
+    <def xlink:href="#dial-attenuverter" transform="translate(59.5 -9.5)"/>
     <g transform="translate(106 0)">
       <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(29 -100)" /> -->
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 43) rotate(270)">BALANCE</text>
-      <use id="BALANCE_PARAM" xlink:href="#knob26" transform="translate(16 0)"/>
+      <def id="BALANCE_PARAM" xlink:href="#knob26" transform="translate(16 0)"/>
     </g>
-    <use xlink:href="#dial-attenuverter" transform="translate(112.5 -9.5)"/>
+    <def xlink:href="#dial-attenuverter" transform="translate(112.5 -9.5)"/>
     <g transform="translate(158 0)">
       <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(29 -100)" /> -->
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 34.5) rotate(270)">FILTER</text>
-      <use id="FILTER_PARAM" xlink:href="#knob26" transform="translate(16 0)"/>
+      <def id="FILTER_PARAM" xlink:href="#knob26" transform="translate(16 0)"/>
     </g>
-    <use xlink:href="#dial-attenuverter" transform="translate(164.5 -9.5)"/>
+    <def xlink:href="#dial-attenuverter" transform="translate(164.5 -9.5)"/>
   </g>
 
   <g transform="translate(185 272)">
-    <use id="SINE_LIGHT" xlink:href="#light-small" transform="translate(0 0)"/>
+    <def id="SINE_LIGHT" xlink:href="#light-small" transform="translate(0 0)"/>
     <text font-size="6pt" letter-spacing="2px" transform="translate(9 6.1)">SIN</text>
-    <use id="COSINE_LIGHT" xlink:href="#light-small" transform="translate(0 15)"/>
+    <def id="COSINE_LIGHT" xlink:href="#light-small" transform="translate(0 15)"/>
     <text font-size="6pt" letter-spacing="2px" transform="translate(9 21.1)">COS</text>
-    <use id="PHASE_PARAM" xlink:href="#button-small" transform="translate(9 27)"/>
+    <def id="PHASE_PARAM" xlink:href="#button-small" transform="translate(9 27)"/>
   </g>
 
   <g transform="translate(0 269)">
@@ -147,50 +134,50 @@
 
     <g transform="translate(10 0)">
       <g transform="translate(3 0)">
-        <use id="SYNC_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+        <def id="SYNC_INPUT" xlink:href="#input" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="1px" transform="translate(3 40)">SYNC</text>
       </g>
       <g transform="translate(37 0)">
-        <use id="PARTIALS_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+        <def id="PARTIALS_INPUT" xlink:href="#input" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="1px" transform="translate(0.5 40)">PRTLS</text>
       </g>
       <g transform="translate(71 0)">
-        <use id="WIDTH_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+        <def id="WIDTH_INPUT" xlink:href="#input" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="1px" transform="translate(0.5 40)">WIDTH</text>
       </g>
       <g transform="translate(105 0)">
-        <use id="ODD_SKEW_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+        <def id="ODD_SKEW_INPUT" xlink:href="#input" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(5 40)">OSK</text>
       </g>
       <g transform="translate(139 0)">
-        <use id="EVEN_SKEW_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+        <def id="EVEN_SKEW_INPUT" xlink:href="#input" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(5.5 40)">ESK</text>
       </g>
     </g>
 
     <g transform="translate(10 44)">
       <g transform="translate(3 0)">
-        <use id="PITCH_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+        <def id="PITCH_INPUT" xlink:href="#input" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="1px" transform="translate(1 40)">V/OCT</text>
       </g>
       <g transform="translate(37 0)">
-        <use id="GAIN_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+        <def id="GAIN_INPUT" xlink:href="#input" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(2 40)">GAIN</text>
       </g>
       <g transform="translate(71 0)">
-        <use id="DECAY_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+        <def id="DECAY_INPUT" xlink:href="#input" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="1px" transform="translate(1 40)">DECAY</text>
       </g>
       <g transform="translate(105 0)">
-        <use id="BALANCE_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+        <def id="BALANCE_INPUT" xlink:href="#input" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(5.5 40)">BAL</text>
       </g>
       <g transform="translate(139 0)">
-        <use id="FILTER_INPUT" xlink:href="#input" transform="translate(3 5)"/>
+        <def id="FILTER_INPUT" xlink:href="#input" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(3 40)">FLTR</text>
       </g>
       <g transform="translate(173 0)">
-        <use id="AUDIO_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
+        <def id="AUDIO_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
         <text font-size="6pt" letter-spacing="2px" transform="translate(5 40)">OUT</text>
       </g>
     </g>

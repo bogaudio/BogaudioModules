@@ -3,12 +3,6 @@
   <style/>
 
   <defs>
-    <import id="knob29"/>
-    <import id="knob16"/>
-    <import id="dial-window"/>
-    <import id="input"/>
-    <import id="output"/>
-
     <symbol id="dial-voltage-cmp" viewBox="0 0 90px 45px">
       <!-- <rect width="90" height="45" fill="#f003" transform="translate(0 0)" /> -->
       <g transform="translate(8 22.5)">
@@ -88,44 +82,44 @@
 
   <g transform="translate(0 35)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(20 0)">A</text>
-    <use id="A_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
+    <def id="A_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
     <use xlink:href="#dial-offset-cmp" transform="translate(0 3)"/>
     <g transform="translate(5.5 49)">
       <rect width="34" height="38" rx="5" fill="#fafafa"/>
-      <use id="A_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="A_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(13 35)">IN</text>
     </g>
   </g>
 
   <g transform="translate(45 35)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(20 0)">B</text>
-    <use id="B_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
+    <def id="B_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
     <use xlink:href="#dial-offset-cmp" transform="translate(0 3)"/>
     <g transform="translate(5.5 49)">
       <rect width="34" height="38" rx="5" fill="#fafafa"/>
-      <use id="B_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="B_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(13 35)">IN</text>
     </g>
   </g>
 
   <g transform="translate(0 140)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(3.5 0)">WINDOW</text>
-    <use id="WINDOW_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
-    <use xlink:href="#dial-window" transform="translate(0 3)"/>
+    <def id="WINDOW_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
+    <def xlink:href="#dial-window" transform="translate(0 3)"/>
     <g transform="translate(5.5 49)">
       <rect width="34" height="38" rx="5" fill="#fafafa"/>
-      <use id="WINDOW_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="WINDOW_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
     </g>
   </g>
 
   <g transform="translate(45 140)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(14 0)">LAG</text>
-    <use id="LAG_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
+    <def id="LAG_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
     <use xlink:href="#dial-lag-cmp" transform="translate(0 3)"/>
     <g transform="translate(5.5 49)">
       <rect width="34" height="38" rx="5" fill="#fafafa"/>
-      <use id="LAG_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="LAG_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
     </g>
   </g>
@@ -133,27 +127,27 @@
   <g transform="translate(25 239)">
     <!-- <rect width="40" height="32" fill="#0f03" transform="translate(0 0)" /> -->
     <text font-size="6pt" letter-spacing="1px" transform="translate(1.5 7)">OUTPUT</text>
-    <use id="OUTPUT_PARAM" xlink:href="#knob16" transform="translate(0.5 12)"/>
+    <def id="OUTPUT_PARAM" xlink:href="#knob16" transform="translate(0.5 12)"/>
     <use xlink:href="#dial-voltage-cmp" transform="translate(0.5 -2.5)"/>
   </g>
 
   <g transform="translate(11 279)">
     <rect width="68" height="77" rx="5" fill="#bbb"/>
-    <use id="GREATER_OUTPUT" xlink:href="#output" transform="translate(5 4)"/>
+    <def id="GREATER_OUTPUT" xlink:href="#output" transform="translate(5 4)"/>
     <g transform="translate(9 36.5)">
       <text font-size="5pt" transform="translate(0 0)">A</text>
       <text font-size="8pt" style="font-weight: normal" transform="translate(6 0.5)">&#x2265;</text>
       <text font-size="5pt" transform="translate(13 0)">B</text>
     </g>
-    <use id="LESS_OUTPUT" xlink:href="#output" transform="translate(39 4)"/>
+    <def id="LESS_OUTPUT" xlink:href="#output" transform="translate(39 4)"/>
     <g transform="translate(43 36.5)">
       <text font-size="5pt" transform="translate(0 0)">A</text>
       <text font-size="8pt" style="font-weight: normal" transform="translate(6 1)">&lt;</text>
       <text font-size="5pt" transform="translate(13 0)">B</text>
     </g>
-    <use id="EQUAL_OUTPUT" xlink:href="#output" transform="translate(5 40)"/>
+    <def id="EQUAL_OUTPUT" xlink:href="#output" transform="translate(5 40)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(12 72)">EQ</text>
-    <use id="NOT_EQUAL_OUTPUT" xlink:href="#output" transform="translate(39 40)"/>
+    <def id="NOT_EQUAL_OUTPUT" xlink:href="#output" transform="translate(39 40)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(42 72)">NOT</text>
   </g>
 </svg>

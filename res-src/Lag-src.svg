@@ -3,13 +3,6 @@
   <style/>
 
   <defs>
-    <import id="knob29"/>
-    <import id="knob16"/>
-    <import id="dial-time"/>
-    <import id="dial-scale"/>
-    <import id="input"/>
-    <import id="output"/>
-
     <symbol id="dial-shape-lag" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <text font-size="5.0pt" transform="rotate(-240) translate(20 0) rotate(240) translate(-10 2)">LOG</text>
@@ -44,24 +37,24 @@
 
   <g transform="translate(0 25)">
     <text font-size="6pt" letter-spacing="2.0px" transform="translate(9.5 0)">TIME</text>
-    <use id="TIME_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
-    <use xlink:href="#dial-time" transform="translate(0 3)"/>
-    <use id="TIME_SCALE_PARAM" xlink:href="#knob16" transform="translate(14.5 59)"/>
-    <use xlink:href="#dial-scale" transform="translate(0 44.5)"/>
+    <def id="TIME_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
+    <def xlink:href="#dial-time" transform="translate(0 3)"/>
+    <def id="TIME_SCALE_PARAM" xlink:href="#knob16" transform="translate(14.5 59)"/>
+    <def xlink:href="#dial-scale" transform="translate(0 44.5)"/>
     <g transform="translate(5.5 79)">
       <rect width="34" height="39" rx="5" fill="#fafafa"/>
-      <use id="TIME_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="TIME_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
     </g>
   </g>
 
   <g transform="translate(0 165)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(7.5 0)">SHAPE</text>
-    <use id="SHAPE_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
+    <def id="SHAPE_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
     <use xlink:href="#dial-shape-lag" transform="translate(0 3)"/>
     <g transform="translate(5.5 49)">
       <rect width="34" height="38" rx="5" fill="#fafafa"/>
-      <use id="SHAPE_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="SHAPE_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
     </g>
   </g>
@@ -70,13 +63,13 @@
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 28)"/>
       <rect width="34" height="35" rx="5" fill="#fafafa"/>
-      <use id="IN_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="IN_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
     </g>
     <g transform="translate(5.5 41)">
       <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
       <rect width="34" height="35" rx="5" fill="#bbb"/>
-      <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
+      <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
     </g>
   </g>

@@ -2,13 +2,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="45" height="380" viewBox="0 0 45 380">
   <style/>
 
-  <defs>
-    <import id="knob16"/>
-    <import id="dial-centertick"/>
-    <import id="output"/>
-    <import id="light-tiny"/>
-  </defs>
-
   <rect width="100%" height="100%" fill="#ddd"/>
   <polyline points="1,1 44,1 44,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
   <polyline points="0.5,0.5 44.5,0.5 44.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
@@ -27,64 +20,64 @@
 
   <g transform="translate(0 18)">
     <!-- <rect width="45" height="23" fill="#ff0" transform="translate(0 0)" /> -->
-    <use id="CHANNEL1_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
-    <use xlink:href="#dial-centertick" transform="translate(2.2 -6)"/>
+    <def id="CHANNEL1_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
+    <def xlink:href="#dial-centertick" transform="translate(2.2 -6)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(3 16.5)">1</text>
-    <use id="CHANNEL1_LIGHT" xlink:href="#light-tiny" transform="translate(38.5 12.4)"/>
+    <def id="CHANNEL1_LIGHT" xlink:href="#light-tiny" transform="translate(38.5 12.4)"/>
   </g>
   <g transform="translate(0 49.5)">
     <!-- <rect width="45" height="23" fill="#ff0" transform="translate(0 0)" /> -->
-    <use id="CHANNEL2_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
-    <use xlink:href="#dial-centertick" transform="translate(2.2 -6)"/>
+    <def id="CHANNEL2_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
+    <def xlink:href="#dial-centertick" transform="translate(2.2 -6)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(3 16.5)">2</text>
-    <use id="CHANNEL2_LIGHT" xlink:href="#light-tiny" transform="translate(38.5 12.4)"/>
+    <def id="CHANNEL2_LIGHT" xlink:href="#light-tiny" transform="translate(38.5 12.4)"/>
   </g>
   <g transform="translate(0 81)">
     <!-- <rect width="45" height="23" fill="#ff0" transform="translate(0 0)" /> -->
-    <use id="CHANNEL3_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
-    <use xlink:href="#dial-centertick" transform="translate(2.2 -6)"/>
+    <def id="CHANNEL3_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
+    <def xlink:href="#dial-centertick" transform="translate(2.2 -6)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(3 16.5)">3</text>
-    <use id="CHANNEL3_LIGHT" xlink:href="#light-tiny" transform="translate(38.5 12.4)"/>
+    <def id="CHANNEL3_LIGHT" xlink:href="#light-tiny" transform="translate(38.5 12.4)"/>
   </g>
   <g transform="translate(0 112.5)">
     <!-- <rect width="45" height="23" fill="#ff0" transform="translate(0 0)" /> -->
-    <use id="CHANNEL4_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
-    <use xlink:href="#dial-centertick" transform="translate(2.2 -6)"/>
+    <def id="CHANNEL4_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
+    <def xlink:href="#dial-centertick" transform="translate(2.2 -6)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(3 16.5)">4</text>
-    <use id="CHANNEL4_LIGHT" xlink:href="#light-tiny" transform="translate(38.5 12.4)"/>
+    <def id="CHANNEL4_LIGHT" xlink:href="#light-tiny" transform="translate(38.5 12.4)"/>
   </g>
   <g transform="translate(0 144)">
     <!-- <rect width="45" height="23" fill="#ff0" transform="translate(0 0)" /> -->
-    <use id="CHANNEL5_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
-    <use xlink:href="#dial-centertick" transform="translate(2.2 -6)"/>
+    <def id="CHANNEL5_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
+    <def xlink:href="#dial-centertick" transform="translate(2.2 -6)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(3 16.5)">5</text>
-    <use id="CHANNEL5_LIGHT" xlink:href="#light-tiny" transform="translate(38.5 12.4)"/>
+    <def id="CHANNEL5_LIGHT" xlink:href="#light-tiny" transform="translate(38.5 12.4)"/>
   </g>
   <g transform="translate(0 175.5)">
     <!-- <rect width="45" height="23" fill="#ff0" transform="translate(0 0)" /> -->
-    <use id="CHANNEL6_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
-    <use xlink:href="#dial-centertick" transform="translate(2.2 -6)"/>
+    <def id="CHANNEL6_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
+    <def xlink:href="#dial-centertick" transform="translate(2.2 -6)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(3 16.5)">6</text>
-    <use id="CHANNEL6_LIGHT" xlink:href="#light-tiny" transform="translate(38.5 12.4)"/>
+    <def id="CHANNEL6_LIGHT" xlink:href="#light-tiny" transform="translate(38.5 12.4)"/>
   </g>
   <g transform="translate(0 207)">
     <!-- <rect width="45" height="23" fill="#ff0" transform="translate(0 0)" /> -->
-    <use id="CHANNEL7_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
-    <use xlink:href="#dial-centertick" transform="translate(2.2 -6)"/>
+    <def id="CHANNEL7_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
+    <def xlink:href="#dial-centertick" transform="translate(2.2 -6)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(3 16.5)">7</text>
-    <use id="CHANNEL7_LIGHT" xlink:href="#light-tiny" transform="translate(38.5 12.4)"/>
+    <def id="CHANNEL7_LIGHT" xlink:href="#light-tiny" transform="translate(38.5 12.4)"/>
   </g>
   <g transform="translate(0 238.5)">
     <!-- <rect width="45" height="23" fill="#ff0" transform="translate(0 0)" /> -->
-    <use id="CHANNEL8_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
-    <use xlink:href="#dial-centertick" transform="translate(2.2 -6)"/>
+    <def id="CHANNEL8_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
+    <def xlink:href="#dial-centertick" transform="translate(2.2 -6)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(3 16.5)">8</text>
-    <use id="CHANNEL8_LIGHT" xlink:href="#light-tiny" transform="translate(38.5 12.4)"/>
+    <def id="CHANNEL8_LIGHT" xlink:href="#light-tiny" transform="translate(38.5 12.4)"/>
   </g>
 
   <g transform="translate(7.5 270)">
     <rect width="34" height="40" rx="5" fill="#bbb" transform="translate(-2 0)"/>
-    <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(3 4)"/>
+    <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(3 4)"/>
     <text font-size="6pt" letter-spacing="2px" transform="translate(5 36)">OUT</text>
   </g>
 </svg>

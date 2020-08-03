@@ -3,10 +3,6 @@
   <style/>
 
   <defs>
-    <import id="knob26"/>
-    <import id="input"/>
-    <import id="output"/>
-
     <symbol id="dial-panner-pan" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <text font-size="5.0pt" transform="rotate(-240) translate(18 0) rotate(240) translate(-1.8 2)">L</text>
@@ -43,34 +39,34 @@
   </g>
 
   <g transform="translate(0 15)">
-    <use id="PAN1_PARAM" xlink:href="#knob26" transform="translate(9.5 9.5)"/>
+    <def id="PAN1_PARAM" xlink:href="#knob26" transform="translate(9.5 9.5)"/>
     <use xlink:href="#dial-panner-pan" transform="translate(0 0)"/>
     <g transform="translate(5.5 44)">
       <rect width="34" height="73" rx="5" fill="#fafafa"/>
-      <use id="CV1_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="CV1_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
-      <use id="IN1_INPUT" xlink:href="#input" transform="translate(5 38)"/>
+      <def id="IN1_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 70)">IN</text>
     </g>
   </g>
 
   <g transform="translate(0 138)">
-    <use id="PAN2_PARAM" xlink:href="#knob26" transform="translate(9.5 9.5)"/>
+    <def id="PAN2_PARAM" xlink:href="#knob26" transform="translate(9.5 9.5)"/>
     <use xlink:href="#dial-panner-pan" transform="translate(0 0)"/>
     <g transform="translate(5.5 44)">
       <rect width="34" height="73" rx="5" fill="#fafafa"/>
-      <use id="CV2_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="CV2_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
-      <use id="IN2_INPUT" xlink:href="#input" transform="translate(5 38)"/>
+      <def id="IN2_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 70)">IN</text>
     </g>
   </g>
 
   <g transform="translate(5.5 265)">
     <rect width="34" height="73" rx="5" fill="#bbb"/>
-    <use id="L_OUTPUT" xlink:href="#output" transform="translate(5 3)"/>
+    <def id="L_OUTPUT" xlink:href="#output" transform="translate(5 3)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(15 35)">L</text>
-    <use id="R_OUTPUT" xlink:href="#output" transform="translate(5 38)"/>
+    <def id="R_OUTPUT" xlink:href="#output" transform="translate(5 38)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(15 70)">R</text>
   </g>
 </svg>

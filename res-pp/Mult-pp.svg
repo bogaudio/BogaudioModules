@@ -15,21 +15,6 @@ text.brand {
 }
 </style>
 
-  <defs>
-    <symbol id="input" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
-      </g>
-    </symbol>
-    <symbol id="output" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
-      </g>
-    </symbol>
-  </defs>
-
   <rect width="100%" height="100%" fill="#ddd"/>
   <polyline points="1,1 44,1 44,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
   <polyline points="0.5,0.5 44.5,0.5 44.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
@@ -48,7 +33,12 @@ text.brand {
       <g transform="translate(5.5 0)">
         <rect width="34" height="10" fill="#fafafa" transform="translate(0 29)"/>
         <rect width="34" height="35" rx="5" fill="#fafafa"/>
-        <use id="INA_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+        <g transform="translate(5 3)"><svg id="INA_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
         <text font-size="5pt" letter-spacing="2px" transform="translate(7 35)">IN-A</text>
       </g>
     </g>
@@ -59,9 +49,24 @@ text.brand {
         <rect width="34" height="102" rx="5" fill="#bbb"/>
 
         <g transform="translate(2 2)">
-          <use id="OUTA1_OUTPUT" xlink:href="#output" transform="translate(3 0)"/>
-          <use id="OUTA2_OUTPUT" xlink:href="#output" transform="translate(3 30)"/>
-          <use id="OUTA3_OUTPUT" xlink:href="#output" transform="translate(3 60)"/>
+          <g transform="translate(3 0)"><svg id="OUTA1_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+          <g transform="translate(3 30)"><svg id="OUTA2_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+          <g transform="translate(3 60)"><svg id="OUTA3_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
 
           <text font-size="5pt" letter-spacing="2px" transform="translate(6.5 95)">OUT</text>
         </g>
@@ -74,7 +79,12 @@ text.brand {
       <g transform="translate(5.5 0)">
         <rect width="34" height="10" fill="#fafafa" transform="translate(0 29)"/>
         <rect width="34" height="35" rx="5" fill="#fafafa"/>
-        <use id="INB_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+        <g transform="translate(5 3)"><svg id="INB_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
         <text font-size="5pt" letter-spacing="1px" transform="translate(3 35)">IN-B(A)</text>
       </g>
     </g>
@@ -85,9 +95,24 @@ text.brand {
         <rect width="34" height="102" rx="5" fill="#bbb"/>
 
         <g transform="translate(2 2)">
-          <use id="OUTB1_OUTPUT" xlink:href="#output" transform="translate(3 0)"/>
-          <use id="OUTB2_OUTPUT" xlink:href="#output" transform="translate(3 30)"/>
-          <use id="OUTB3_OUTPUT" xlink:href="#output" transform="translate(3 60)"/>
+          <g transform="translate(3 0)"><svg id="OUTB1_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+          <g transform="translate(3 30)"><svg id="OUTB2_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+          <g transform="translate(3 60)"><svg id="OUTB3_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
 
           <text font-size="5pt" letter-spacing="2px" transform="translate(6.5 95)">OUT</text>
         </g>

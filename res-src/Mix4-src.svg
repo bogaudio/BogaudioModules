@@ -2,16 +2,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="225" height="380" viewBox="0 0 225 380">
   <style/>
 
-  <defs>
-    <import id="slider-151"/>
-    <import id="sliderdial-db-151"/>
-    <import id="knob16"/>
-    <import id="dial-centertick"/>
-    <import id="button"/>
-    <import id="input"/>
-    <import id="output"/>
-  </defs>
-
   <rect width="100%" height="100%" fill="#ddd"/>
   <polyline points="1,1 224,1 224,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
   <polyline points="0.5,0.5 224.5,0.5 224.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
@@ -31,20 +21,20 @@
   <g transform="translate(4 20)">
     <!-- <rect width="39" height="344" fill="#ccc" transform="translate(3 0)" /> -->
     <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">CH1</text>
-    <use xlink:href="#sliderdial-db-151" transform="translate(0 12)"/>
-    <use id="LEVEL1_PARAM" xlink:href="#slider-151" transform="translate(13.5 12)"/>
-    <use id="MUTE1_PARAM" xlink:href="#button" transform="translate(13.5 165)"/>
+    <def xlink:href="#sliderdial-db-151" transform="translate(0 12)"/>
+    <def id="LEVEL1_PARAM" xlink:href="#slider-151" transform="translate(13.5 12)"/>
+    <def id="MUTE1_PARAM" xlink:href="#button" transform="translate(13.5 165)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(10 192)">MUTE</text>
-    <use id="PAN1_PARAM" xlink:href="#knob16" transform="translate(14.5 203)"/>
-    <use xlink:href="#dial-centertick" transform="translate(2.5 191)"/>
+    <def id="PAN1_PARAM" xlink:href="#knob16" transform="translate(14.5 203)"/>
+    <def xlink:href="#dial-centertick" transform="translate(2.5 191)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
     <g transform="translate(5.5 232)">
       <rect width="34" height="108" rx="5" fill="#fafafa"/>
-      <use id="CV1_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="CV1_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <use id="PAN1_INPUT" xlink:href="#input" transform="translate(5 38)"/>
+      <def id="PAN1_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
-      <use id="IN1_INPUT" xlink:href="#input" transform="translate(5 73)"/>
+      <def id="IN1_INPUT" xlink:href="#input" transform="translate(5 73)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
     </g>
     <!-- <rect width="8" height="40" fill="#f00" transform="translate(39.5 300)" /> -->
@@ -53,20 +43,20 @@
   <g transform="translate(47 20)">
     <!-- <rect width="39" height="344" fill="#ccc" transform="translate(3 0)" /> -->
     <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">CH2</text>
-    <use xlink:href="#sliderdial-db-151" transform="translate(0 12)"/>
-    <use id="LEVEL2_PARAM" xlink:href="#slider-151" transform="translate(13.5 12)"/>
-    <use id="MUTE2_PARAM" xlink:href="#button" transform="translate(13.5 165)"/>
+    <def xlink:href="#sliderdial-db-151" transform="translate(0 12)"/>
+    <def id="LEVEL2_PARAM" xlink:href="#slider-151" transform="translate(13.5 12)"/>
+    <def id="MUTE2_PARAM" xlink:href="#button" transform="translate(13.5 165)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(10 192)">MUTE</text>
-    <use id="PAN2_PARAM" xlink:href="#knob16" transform="translate(14.5 203)"/>
-    <use xlink:href="#dial-centertick" transform="translate(2.5 191)"/>
+    <def id="PAN2_PARAM" xlink:href="#knob16" transform="translate(14.5 203)"/>
+    <def xlink:href="#dial-centertick" transform="translate(2.5 191)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
     <g transform="translate(5.5 232)">
       <rect width="34" height="108" rx="5" fill="#fafafa"/>
-      <use id="CV2_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="CV2_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <use id="PAN2_INPUT" xlink:href="#input" transform="translate(5 38)"/>
+      <def id="PAN2_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
-      <use id="IN2_INPUT" xlink:href="#input" transform="translate(5 73)"/>
+      <def id="IN2_INPUT" xlink:href="#input" transform="translate(5 73)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
     </g>
     <!-- <rect width="8" height="40" fill="#f00" transform="translate(39.5 300)" /> -->
@@ -75,20 +65,20 @@
   <g transform="translate(90 20)">
     <!-- <rect width="39" height="344" fill="#ccc" transform="translate(3 0)" /> -->
     <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">CH3</text>
-    <use xlink:href="#sliderdial-db-151" transform="translate(0 12)"/>
-    <use id="LEVEL3_PARAM" xlink:href="#slider-151" transform="translate(13.5 12)"/>
-    <use id="MUTE3_PARAM" xlink:href="#button" transform="translate(13.5 165)"/>
+    <def xlink:href="#sliderdial-db-151" transform="translate(0 12)"/>
+    <def id="LEVEL3_PARAM" xlink:href="#slider-151" transform="translate(13.5 12)"/>
+    <def id="MUTE3_PARAM" xlink:href="#button" transform="translate(13.5 165)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(10 192)">MUTE</text>
-    <use id="PAN3_PARAM" xlink:href="#knob16" transform="translate(14.5 203)"/>
-    <use xlink:href="#dial-centertick" transform="translate(2.5 191)"/>
+    <def id="PAN3_PARAM" xlink:href="#knob16" transform="translate(14.5 203)"/>
+    <def xlink:href="#dial-centertick" transform="translate(2.5 191)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
     <g transform="translate(5.5 232)">
       <rect width="34" height="108" rx="5" fill="#fafafa"/>
-      <use id="CV3_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="CV3_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <use id="PAN3_INPUT" xlink:href="#input" transform="translate(5 38)"/>
+      <def id="PAN3_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
-      <use id="IN3_INPUT" xlink:href="#input" transform="translate(5 73)"/>
+      <def id="IN3_INPUT" xlink:href="#input" transform="translate(5 73)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
     </g>
     <!-- <rect width="8" height="40" fill="#f00" transform="translate(39.5 300)" /> -->
@@ -97,20 +87,20 @@
   <g transform="translate(133 20)">
     <!-- <rect width="39" height="344" fill="#ccc" transform="translate(3 0)" /> -->
     <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">CH4</text>
-    <use xlink:href="#sliderdial-db-151" transform="translate(0 12)"/>
-    <use id="LEVEL4_PARAM" xlink:href="#slider-151" transform="translate(13.5 12)"/>
-    <use id="MUTE4_PARAM" xlink:href="#button" transform="translate(13.5 165)"/>
+    <def xlink:href="#sliderdial-db-151" transform="translate(0 12)"/>
+    <def id="LEVEL4_PARAM" xlink:href="#slider-151" transform="translate(13.5 12)"/>
+    <def id="MUTE4_PARAM" xlink:href="#button" transform="translate(13.5 165)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(10 192)">MUTE</text>
-    <use id="PAN4_PARAM" xlink:href="#knob16" transform="translate(14.5 203)"/>
-    <use xlink:href="#dial-centertick" transform="translate(2.5 191)"/>
+    <def id="PAN4_PARAM" xlink:href="#knob16" transform="translate(14.5 203)"/>
+    <def xlink:href="#dial-centertick" transform="translate(2.5 191)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
     <g transform="translate(5.5 232)">
       <rect width="34" height="108" rx="5" fill="#fafafa"/>
-      <use id="CV4_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="CV4_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <use id="PAN4_INPUT" xlink:href="#input" transform="translate(5 38)"/>
+      <def id="PAN4_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
-      <use id="IN4_INPUT" xlink:href="#input" transform="translate(5 73)"/>
+      <def id="IN4_INPUT" xlink:href="#input" transform="translate(5 73)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
     </g>
     <!-- <rect width="8" height="40" fill="#f00" transform="translate(39.5 300)" /> -->
@@ -119,21 +109,21 @@
   <g transform="translate(176 20)">
     <!-- <rect width="39" height="344" fill="#ccc" transform="translate(3 0)" /> -->
     <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">MIX</text>
-    <use xlink:href="#sliderdial-db-151" transform="translate(0 12)"/>
-    <use id="MIX_PARAM" xlink:href="#slider-151" transform="translate(13.5 12)"/>
-    <use id="MIX_MUTE_PARAM" xlink:href="#button" transform="translate(13.5 165)"/>
+    <def xlink:href="#sliderdial-db-151" transform="translate(0 12)"/>
+    <def id="MIX_PARAM" xlink:href="#slider-151" transform="translate(13.5 12)"/>
+    <def id="MIX_MUTE_PARAM" xlink:href="#button" transform="translate(13.5 165)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(10 192)">MUTE</text>
-    <use id="MIX_DIM_PARAM" xlink:href="#button" transform="translate(13.5 198)"/>
+    <def id="MIX_DIM_PARAM" xlink:href="#button" transform="translate(13.5 198)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14.5 225)">DIM</text>
     <g transform="translate(5.5 229)">
       <rect width="34" height="50" rx="5" fill="#fafafa"/>
-      <use id="MIX_CV_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="MIX_CV_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <rect width="34" height="73" rx="5" fill="#bbb" transform="translate(0 38)"/>
       <rect width="34" height="5" fill="#bbb" transform="translate(0 38)"/>
-      <use id="L_OUTPUT" xlink:href="#output" transform="translate(5 41)"/>
+      <def id="L_OUTPUT" xlink:href="#output" transform="translate(5 41)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(15.5 73)">L</text>
-      <use id="R_OUTPUT" xlink:href="#output" transform="translate(5 76)"/>
+      <def id="R_OUTPUT" xlink:href="#output" transform="translate(5 76)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(15 108)">R</text>
     </g>
   </g>

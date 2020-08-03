@@ -16,50 +16,6 @@ text.brand {
 </style>
 
   <defs>
-    <symbol id="knob26" viewBox="0 0 26px 26px">
-      <g transform="translate(13 13)">
-        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
-        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
-        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
-      </g>
-    </symbol>
-    <symbol id="dial-channels" viewBox="0 0 45px 45px">
-      <g transform="translate(22.5 22.5)">
-        <text font-size="5.0pt" transform="rotate(-240) translate(18 0) rotate(240) translate(-1.9 2.2)">1</text>
-        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-220) translate(15 0)"/>
-        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-200) translate(15 0)"/>
-
-        <text font-size="5.0pt" transform="rotate(-180) translate(17 0) rotate(180) translate(-2 2.2)">4</text>
-        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-160) translate(15 0)"/>
-        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-140) translate(15 0)"/>
-        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-120) translate(15 0)"/>
-
-        <text font-size="5.0pt" transform="rotate(-100) translate(17 0) rotate(100) translate(-1.9 2.5)">8</text>
-        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-80) translate(15 0)"/>
-        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-60) translate(15 0)"/>
-        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-40) translate(15 0)"/>
-
-        <text font-size="5.0pt" transform="rotate(-20) translate(17 0) rotate(20) translate(-3 2.4)">12</text>
-        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(0) translate(15 0)"/>
-        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(20) translate(15 0)"/>
-        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(40) translate(15 0)"/>
-
-        <text font-size="5.0pt" transform="rotate(60) translate(18 0) rotate(-60) translate(-1.9 2.2)">16</text>
-      </g>
-    </symbol>
-    <symbol id="input" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
-      </g>
-    </symbol>
-    <symbol id="output" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
-      </g>
-    </symbol>
-
     <symbol id="dial-detune-unison" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <text font-size="5.0pt" transform="rotate(-240) translate(18 0) rotate(240) translate(-1.9 2.2)">0</text>
@@ -92,17 +48,57 @@ text.brand {
 
   <g transform="translate(0 25)">
     <text font-size="6pt" letter-spacing="2.0px" transform="translate(8 0)">CHAN</text>
-    <use id="CHANNELS_PARAM" xlink:href="#knob26" transform="translate(9.5 9)"/>
-    <use xlink:href="#dial-channels" transform="translate(0 -1)"/>
+    <g transform="translate(9.5 9)"><svg id="CHANNELS_PARAM">
+      <g transform="translate(13 13)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(0 -1)"><svg>
+      <g transform="translate(22.5 22.5)">
+        <text font-size="5.0pt" transform="rotate(-240) translate(18 0) rotate(240) translate(-1.9 2.2)">1</text>
+        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-220) translate(15 0)"/>
+        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-200) translate(15 0)"/>
+
+        <text font-size="5.0pt" transform="rotate(-180) translate(17 0) rotate(180) translate(-2 2.2)">4</text>
+        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-160) translate(15 0)"/>
+        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-140) translate(15 0)"/>
+        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-120) translate(15 0)"/>
+
+        <text font-size="5.0pt" transform="rotate(-100) translate(17 0) rotate(100) translate(-1.9 2.5)">8</text>
+        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-80) translate(15 0)"/>
+        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-60) translate(15 0)"/>
+        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-40) translate(15 0)"/>
+
+        <text font-size="5.0pt" transform="rotate(-20) translate(17 0) rotate(20) translate(-3 2.4)">12</text>
+        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(0) translate(15 0)"/>
+        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(20) translate(15 0)"/>
+        <polyline points="0,0 1.5,0" stroke-width="0.3" stroke="#333" transform="rotate(40) translate(15 0)"/>
+
+        <text font-size="5.0pt" transform="rotate(60) translate(18 0) rotate(-60) translate(-1.9 2.2)">16</text>
+      </g>
+    </svg></g>
   </g>
 
   <g transform="translate(0 80)">
     <text font-size="6pt" letter-spacing="1.5px" transform="translate(3.5 0)">DETUNE</text>
-    <use id="DETUNE_PARAM" xlink:href="#knob26" transform="translate(9.5 9)"/>
+    <g transform="translate(9.5 9)"><svg id="DETUNE_PARAM">
+      <g transform="translate(13 13)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
     <use xlink:href="#dial-detune-unison" transform="translate(0 -1)"/>
     <g transform="translate(5.5 44)">
       <rect width="34" height="39" rx="5" fill="#fafafa"/>
-      <use id="DETUNE_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <g transform="translate(5 3)"><svg id="DETUNE_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
     </g>
   </g>
@@ -111,17 +107,37 @@ text.brand {
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)"/>
       <rect width="34" height="70" rx="5" fill="#fafafa"/>
-      <use id="PITCH_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <g transform="translate(5 3)"><svg id="PITCH_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3 35)">V/OCT</text>
-      <use id="GATE_INPUT" xlink:href="#input" transform="translate(5 38)"/>
+      <g transform="translate(5 38)"><svg id="GATE_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(5.5 70)">GATE</text>
     </g>
     <g transform="translate(5.5 76)">
       <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
       <rect width="34" height="70" rx="5" fill="#bbb"/>
-      <use id="PITCH_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
+      <g transform="translate(5 0)"><svg id="PITCH_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3 32)">V/OCT</text>
-      <use id="GATE_OUTPUT" xlink:href="#output" transform="translate(5 35)"/>
+      <g transform="translate(5 35)"><svg id="GATE_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(5.5 67)">GATE</text>
     </g>
   </g>

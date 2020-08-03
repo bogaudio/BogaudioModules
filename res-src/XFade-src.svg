@@ -3,12 +3,6 @@
   <style/>
 
   <defs>
-    <import id="knob29"/>
-    <import id="knob16"/>
-    <import id="button-small"/>
-    <import id="input"/>
-    <import id="output"/>
-
     <symbol id="dial-mixab-xfade" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <text font-size="5.0pt" transform="rotate(-240) translate(20 0) rotate(240) translate(-2 2)">A</text>
@@ -72,39 +66,39 @@
 
   <g transform="translate(0 25)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(14 0)">MIX</text>
-    <use id="MIX_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
+    <def id="MIX_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
     <use xlink:href="#dial-mixab-xfade" transform="translate(0 3)"/>
     <g transform="translate(5.5 49)">
       <rect width="34" height="38" rx="5" fill="#fafafa"/>
-      <use id="MIX_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="MIX_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
     </g>
   </g>
 
   <g transform="translate(0 135)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(7.5 0)">SHAPE</text>
-    <use id="CURVE_PARAM" xlink:href="#knob16" transform="translate(14.5 17.5)"/>
+    <def id="CURVE_PARAM" xlink:href="#knob16" transform="translate(14.5 17.5)"/>
     <use xlink:href="#dial-curve-xfade" transform="translate(0 3)"/>
   </g>
 
   <g transform="translate(10.5 178)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(0 6)">LIN</text>
-    <use id="LINEAR_PARAM" xlink:href="#button-small" transform="translate(15 -1)"/>
+    <def id="LINEAR_PARAM" xlink:href="#button-small" transform="translate(15 -1)"/>
   </g>
 
   <g transform="translate(0 210)">
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)"/>
       <rect width="34" height="70" rx="5" fill="#fafafa"/>
-      <use id="A_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="A_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(15 35)">A</text>
-      <use id="B_INPUT" xlink:href="#input" transform="translate(5 38)"/>
+      <def id="B_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(15 70)">B</text>
     </g>
     <g transform="translate(5.5 76)">
       <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
       <rect width="34" height="35" rx="5" fill="#bbb"/>
-      <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
+      <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">MIX</text>
     </g>
   </g>

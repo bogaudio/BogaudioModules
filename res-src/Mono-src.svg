@@ -3,12 +3,6 @@
   <style/>
 
   <defs>
-    <import id="light-small"/>
-    <import id="knob26"/>
-    <import id="dial-linear"/>
-    <import id="input"/>
-    <import id="output"/>
-
     <symbol id="compression-mono" viewBox="0 0 11px 75px">
       <!-- <rect width="11" height="75" x="0" y="0" rx="0" fill="#ccc" /> -->
       <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(3 0)"/>
@@ -59,25 +53,25 @@
 
   <g transform="translate(2.5 30)">
     <!-- <rect width="40" height="40" fill="#fafafa" transform="translate(0 0)" /> -->
-    <use id="CHANNEL_1_WIDGET" xlink:href="#light-small" transform="translate(0, 0) translate(1.8 1.8)"/>
-    <use id="CHANNEL_2_WIDGET" xlink:href="#light-small" transform="translate(10, 0) translate(1.8 1.8)"/>
-    <use id="CHANNEL_3_WIDGET" xlink:href="#light-small" transform="translate(20, 0) translate(1.8 1.8)"/>
-    <use id="CHANNEL_4_WIDGET" xlink:href="#light-small" transform="translate(30, 0) translate(1.8 1.8)"/>
+    <def id="CHANNEL_1_WIDGET" xlink:href="#light-small" transform="translate(0, 0) translate(1.8 1.8)"/>
+    <def id="CHANNEL_2_WIDGET" xlink:href="#light-small" transform="translate(10, 0) translate(1.8 1.8)"/>
+    <def id="CHANNEL_3_WIDGET" xlink:href="#light-small" transform="translate(20, 0) translate(1.8 1.8)"/>
+    <def id="CHANNEL_4_WIDGET" xlink:href="#light-small" transform="translate(30, 0) translate(1.8 1.8)"/>
 
-    <use id="CHANNEL_5_WIDGET" xlink:href="#light-small" transform="translate(0, 10) translate(1.8 1.8)"/>
-    <use id="CHANNEL_6_WIDGET" xlink:href="#light-small" transform="translate(10, 10) translate(1.8 1.8)"/>
-    <use id="CHANNEL_7_WIDGET" xlink:href="#light-small" transform="translate(20, 10) translate(1.8 1.8)"/>
-    <use id="CHANNEL_8_WIDGET" xlink:href="#light-small" transform="translate(30, 10) translate(1.8 1.8)"/>
+    <def id="CHANNEL_5_WIDGET" xlink:href="#light-small" transform="translate(0, 10) translate(1.8 1.8)"/>
+    <def id="CHANNEL_6_WIDGET" xlink:href="#light-small" transform="translate(10, 10) translate(1.8 1.8)"/>
+    <def id="CHANNEL_7_WIDGET" xlink:href="#light-small" transform="translate(20, 10) translate(1.8 1.8)"/>
+    <def id="CHANNEL_8_WIDGET" xlink:href="#light-small" transform="translate(30, 10) translate(1.8 1.8)"/>
 
-    <use id="CHANNEL_9_WIDGET" xlink:href="#light-small" transform="translate(0, 20) translate(1.8 1.8)"/>
-    <use id="CHANNEL_10_WIDGET" xlink:href="#light-small" transform="translate(10, 20) translate(1.8 1.8)"/>
-    <use id="CHANNEL_11_WIDGET" xlink:href="#light-small" transform="translate(20, 20) translate(1.8 1.8)"/>
-    <use id="CHANNEL_12_WIDGET" xlink:href="#light-small" transform="translate(30, 20) translate(1.8 1.8)"/>
+    <def id="CHANNEL_9_WIDGET" xlink:href="#light-small" transform="translate(0, 20) translate(1.8 1.8)"/>
+    <def id="CHANNEL_10_WIDGET" xlink:href="#light-small" transform="translate(10, 20) translate(1.8 1.8)"/>
+    <def id="CHANNEL_11_WIDGET" xlink:href="#light-small" transform="translate(20, 20) translate(1.8 1.8)"/>
+    <def id="CHANNEL_12_WIDGET" xlink:href="#light-small" transform="translate(30, 20) translate(1.8 1.8)"/>
 
-    <use id="CHANNEL_13_WIDGET" xlink:href="#light-small" transform="translate(0, 30) translate(1.8 1.8)"/>
-    <use id="CHANNEL_14_WIDGET" xlink:href="#light-small" transform="translate(10, 30) translate(1.8 1.8)"/>
-    <use id="CHANNEL_15_WIDGET" xlink:href="#light-small" transform="translate(20, 30) translate(1.8 1.8)"/>
-    <use id="CHANNEL_16_WIDGET" xlink:href="#light-small" transform="translate(30, 30) translate(1.8 1.8)"/>
+    <def id="CHANNEL_13_WIDGET" xlink:href="#light-small" transform="translate(0, 30) translate(1.8 1.8)"/>
+    <def id="CHANNEL_14_WIDGET" xlink:href="#light-small" transform="translate(10, 30) translate(1.8 1.8)"/>
+    <def id="CHANNEL_15_WIDGET" xlink:href="#light-small" transform="translate(20, 30) translate(1.8 1.8)"/>
+    <def id="CHANNEL_16_WIDGET" xlink:href="#light-small" transform="translate(30, 30) translate(1.8 1.8)"/>
   </g>
 
   <!-- <rect width="45" height="14" fill="#0f0" transform="translate(0 72)" /> -->
@@ -86,8 +80,8 @@
 
   <g transform="translate(0 92)">
     <text font-size="6pt" letter-spacing="2.0px" transform="translate(8 0)">COMP</text>
-    <use id="COMPRESSION_PARAM" xlink:href="#knob26" transform="translate(9.5 7.5)"/>
-    <use xlink:href="#dial-linear" transform="translate(0 -2)"/>
+    <def id="COMPRESSION_PARAM" xlink:href="#knob26" transform="translate(9.5 7.5)"/>
+    <def xlink:href="#dial-linear" transform="translate(0 -2)"/>
   </g>
 
   <g transform="translate(17 147)">
@@ -97,21 +91,21 @@
 
   <g transform="translate(0 198)">
     <text font-size="6pt" letter-spacing="2.0px" transform="translate(7 0)">LEVEL</text>
-    <use id="LEVEL_PARAM" xlink:href="#knob26" transform="translate(9.5 7.5)"/>
-    <use xlink:href="#dial-linear" transform="translate(0 -2)"/>
+    <def id="LEVEL_PARAM" xlink:href="#knob26" transform="translate(9.5 7.5)"/>
+    <def xlink:href="#dial-linear" transform="translate(0 -2)"/>
   </g>
 
   <g transform="translate(0 251)">
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 28)"/>
       <rect width="34" height="35" rx="5" fill="#fafafa"/>
-      <use id="POLY_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="POLY_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(6 35)">POLY</text>
     </g>
     <g transform="translate(5.5 41)">
       <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
       <rect width="34" height="35" rx="5" fill="#bbb"/>
-      <use id="MONO_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
+      <def id="MONO_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(4.5 32)">MONO</text>
     </g>
   </g>

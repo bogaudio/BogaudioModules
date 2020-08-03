@@ -3,14 +3,6 @@
   <style/>
 
   <defs>
-    <import id="knob26"/>
-    <import id="knob16"/>
-    <import id="dial-centertick"/>
-    <import id="input"/>
-    <import id="output"/>
-    <import id="button-small"/>
-    <import id="light-small"/>
-
     <symbol id="dial-cutoff-lvcf" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <text font-size="5.0pt" transform="rotate(-240) translate(18 0) rotate(240) translate(-2 2)">0</text>
@@ -62,63 +54,63 @@
 
   <g transform="translate(0 31)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(5 0)">CUTOFF</text>
-    <use id="FREQUENCY_PARAM" xlink:href="#knob26" transform="translate(9.5 8)"/>
+    <def id="FREQUENCY_PARAM" xlink:href="#knob26" transform="translate(9.5 8)"/>
     <use xlink:href="#dial-cutoff-lvcf" transform="translate(0 -1.5)"/>
   </g>
 
   <g transform="translate(0 84)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(16 0)">CV</text>
-    <use id="FREQUENCY_CV_PARAM" xlink:href="#knob16" transform="translate(14.5 9.5)"/>
-    <use xlink:href="#dial-centertick" transform="translate(2.2 -2.5)"/>
+    <def id="FREQUENCY_CV_PARAM" xlink:href="#knob16" transform="translate(14.5 9.5)"/>
+    <def xlink:href="#dial-centertick" transform="translate(2.2 -2.5)"/>
   </g>
 
   <g transform="translate(0 130)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(5 0)">RES/BW</text>
-    <use id="Q_PARAM" xlink:href="#knob26" transform="translate(9.5 8)"/>
+    <def id="Q_PARAM" xlink:href="#knob26" transform="translate(9.5 8)"/>
     <use xlink:href="#dial-q-lvcf" transform="translate(0 -1.5)"/>
   </g>
 
   <g transform="translate(0.5 180)">
     <g transform="translate(10 0)">
       <g transform="translate(0 0)">
-        <use id="LOWPASS_LIGHT" xlink:href="#light-small" transform="translate(-7.5 1)"/>
+        <def id="LOWPASS_LIGHT" xlink:href="#light-small" transform="translate(-7.5 1)"/>
         <text font-size="5pt" letter-spacing="0.5px" transform="translate(1 6.7)">LP</text>
       </g>
 
       <g transform="translate(0 13)">
-        <use id="BANDPASS_LIGHT" xlink:href="#light-small" transform="translate(-7.5 1)"/>
+        <def id="BANDPASS_LIGHT" xlink:href="#light-small" transform="translate(-7.5 1)"/>
         <text font-size="5pt" letter-spacing="0.5px" transform="translate(1 6.7)">BP</text>
       </g>
     </g>
 
     <g transform="translate(32 0)">
       <g transform="translate(0 0)">
-        <use id="HIGHPASS_LIGHT" xlink:href="#light-small" transform="translate(-7.5 1)"/>
+        <def id="HIGHPASS_LIGHT" xlink:href="#light-small" transform="translate(-7.5 1)"/>
         <text font-size="5pt" letter-spacing="0.5px" transform="translate(1 6.7)">HP</text>
       </g>
 
       <g transform="translate(0 13)">
-        <use id="BANDREJECT_LIGHT" xlink:href="#light-small" transform="translate(-7.5 1)"/>
+        <def id="BANDREJECT_LIGHT" xlink:href="#light-small" transform="translate(-7.5 1)"/>
         <text font-size="5pt" letter-spacing="0.5px" transform="translate(1 6.7)">BR</text>
       </g>
     </g>
 
-    <use id="MODE_PARAM" xlink:href="#button-small" transform="translate(17.5 24)"/>
+    <def id="MODE_PARAM" xlink:href="#button-small" transform="translate(17.5 24)"/>
   </g>
 
   <g transform="translate(0 225)">
     <g transform="translate(5.5 0)">
       <rect width="34" height="73" rx="5" fill="#fafafa"/>
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)"/>
-      <use id="IN_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="IN_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
-      <use id="FREQUENCY_CV_INPUT" xlink:href="#input" transform="translate(5 38)"/>
+      <def id="FREQUENCY_CV_INPUT" xlink:href="#input" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(11 70)">CV</text>
     </g>
     <g transform="translate(5.5 76)">
       <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
       <rect width="34" height="35" rx="5" fill="#bbb"/>
-      <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
+      <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
     </g>
   </g>

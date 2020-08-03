@@ -16,33 +16,6 @@ text.brand {
 </style>
 
   <defs>
-    <symbol id="knob26" viewBox="0 0 26px 26px">
-      <g transform="translate(13 13)">
-        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
-        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
-        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
-      </g>
-    </symbol>
-    <symbol id="knob16" viewBox="0 0 16px 16px">
-      <g transform="translate(8 8)">
-        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
-        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
-        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
-      </g>
-    </symbol>
-    <symbol id="input" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
-      </g>
-    </symbol>
-    <symbol id="output" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
-      </g>
-    </symbol>
-
     <symbol id="dial-time-slew" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <text font-size="5.0pt" transform="rotate(-240) translate(18 0) rotate(240) translate(-1.9 2.2)">0</text>
@@ -105,26 +78,60 @@ text.brand {
 
   <g transform="translate(0 25)">
     <text font-size="6pt" letter-spacing="2.0px" transform="translate(11 0)">RISE</text>
-    <use id="RISE_PARAM" xlink:href="#knob26" transform="translate(9.5 9)"/>
+    <g transform="translate(9.5 9)"><svg id="RISE_PARAM">
+      <g transform="translate(13 13)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
     <use xlink:href="#dial-time-slew" transform="translate(0 -1)"/>
-    <use id="RISE_SHAPE_PARAM" xlink:href="#knob16" transform="translate(14.5 51)"/>
+    <g transform="translate(14.5 51)"><svg id="RISE_SHAPE_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
     <use xlink:href="#dial-rise-shape-slew" transform="translate(2.5 39)"/>
     <g transform="translate(7.5 77)">
       <rect width="30" height="30" rx="5" fill="#fafafa"/>
-      <use id="RISE_INPUT" xlink:href="#input" transform="translate(3 3)"/>
+      <g transform="translate(3 3)"><svg id="RISE_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <!-- <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text> -->
     </g>
   </g>
 
   <g transform="translate(0 146)">
     <text font-size="6pt" letter-spacing="2.0px" transform="translate(11 0)">FALL</text>
-    <use id="FALL_PARAM" xlink:href="#knob26" transform="translate(9.5 9)"/>
+    <g transform="translate(9.5 9)"><svg id="FALL_PARAM">
+      <g transform="translate(13 13)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
     <use xlink:href="#dial-time-slew" transform="translate(0 -1)"/>
-    <use id="FALL_SHAPE_PARAM" xlink:href="#knob16" transform="translate(14.5 51)"/>
+    <g transform="translate(14.5 51)"><svg id="FALL_SHAPE_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
     <use xlink:href="#dial-fall-shape-slew" transform="translate(2.5 39)"/>
     <g transform="translate(7.5 77)">
       <rect width="30" height="30" rx="5" fill="#fafafa"/>
-      <use id="FALL_INPUT" xlink:href="#input" transform="translate(3 3)"/>
+      <g transform="translate(3 3)"><svg id="FALL_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <!-- <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text> -->
     </g>
   </g>
@@ -133,13 +140,23 @@ text.brand {
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 28)"/>
       <rect width="34" height="35" rx="5" fill="#fafafa"/>
-      <use id="IN_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <g transform="translate(5 3)"><svg id="IN_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
     </g>
     <g transform="translate(5.5 41)">
       <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
       <rect width="34" height="35" rx="5" fill="#bbb"/>
-      <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
+      <g transform="translate(5 0)"><svg id="OUT_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
     </g>
   </g>

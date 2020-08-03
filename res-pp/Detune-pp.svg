@@ -16,26 +16,6 @@ text.brand {
 </style>
 
   <defs>
-    <symbol id="knob26" viewBox="0 0 26px 26px">
-      <g transform="translate(13 13)">
-        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
-        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
-        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
-      </g>
-    </symbol>
-    <symbol id="input" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
-      </g>
-    </symbol>
-    <symbol id="output" viewBox="0 0 24px 24px">
-      <g transform="translate(12 12)">
-        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
-        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
-      </g>
-    </symbol>
-
     <symbol id="dial-cents-detune" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <g transform="rotate(-240) translate(15 0)">
@@ -94,13 +74,24 @@ text.brand {
 
   <g transform="translate(0 25)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(5.5 0)">CENTS</text>
-    <use id="CENTS_PARAM" xlink:href="#knob26" transform="translate(9.5 7.5)"/>
+    <g transform="translate(9.5 7.5)"><svg id="CENTS_PARAM">
+      <g transform="translate(13 13)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
     <use xlink:href="#dial-cents-detune" transform="translate(0 -2)"/>
   </g>
 
   <g transform="translate(5.5 74)">
     <rect width="34" height="39" rx="5" fill="#fafafa"/>
-    <use id="CV_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+    <g transform="translate(5 3)"><svg id="CV_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
   </g>
 
@@ -108,17 +99,37 @@ text.brand {
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 28)"/>
       <rect width="34" height="35" rx="5" fill="#fafafa"/>
-      <use id="IN_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <g transform="translate(5 3)"><svg id="IN_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3 35)">V/OCT</text>
     </g>
     <g transform="translate(5.5 41)">
       <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
       <rect width="34" height="107" rx="5" fill="#bbb"/>
-      <use id="THRU_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
+      <g transform="translate(5 0)"><svg id="THRU_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(5.5 32)">THRU</text>
-      <use id="OUT_PLUS_OUTPUT" xlink:href="#output" transform="translate(5 36)"/>
+      <g transform="translate(5 36)"><svg id="OUT_PLUS_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(5.5 68)">OUT+</text>
-      <use id="OUT_MINUS_OUTPUT" xlink:href="#output" transform="translate(5 72)"/>
+      <g transform="translate(5 72)"><svg id="OUT_MINUS_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
       <text font-size="5pt" letter-spacing="2px" transform="translate(6.5 104)">OUT-</text>
     </g>
   </g>

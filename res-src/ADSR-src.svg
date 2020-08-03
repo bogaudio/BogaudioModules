@@ -3,13 +3,6 @@
   <style/>
 
   <defs>
-    <import id="knob29"/>
-    <import id="dial"/>
-    <import id="input"/>
-    <import id="output"/>
-    <import id="button-small"/>
-    <import id="light-tiny"/>
-
     <symbol id="dial-linear-adsr" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <g transform="rotate(-240) translate(17 0)">
@@ -51,48 +44,48 @@
 
   <g transform="translate(0 25)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(13 0)">ATT</text>
-    <use id="ATTACK_PARAM" xlink:href="#knob29" transform="translate(0 0)"/>
-    <use xlink:href="#dial" transform="translate(0 0)"/>
-    <use id="ATTACK_LIGHT" xlink:href="#light-tiny" transform="translate(20.8 40)"/>
+    <def id="ATTACK_PARAM" xlink:href="#knob29" transform="translate(0 0)"/>
+    <def xlink:href="#dial" transform="translate(0 0)"/>
+    <def id="ATTACK_LIGHT" xlink:href="#light-tiny" transform="translate(20.8 40)"/>
   </g>
 
   <g transform="translate(0 82)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(13 0)">DEC</text>
-    <use id="DECAY_PARAM" xlink:href="#knob29" transform="translate(0 0)"/>
-    <use xlink:href="#dial" transform="translate(0 0)"/>
-    <use id="DECAY_LIGHT" xlink:href="#light-tiny" transform="translate(20.8 40)"/>
+    <def id="DECAY_PARAM" xlink:href="#knob29" transform="translate(0 0)"/>
+    <def xlink:href="#dial" transform="translate(0 0)"/>
+    <def id="DECAY_LIGHT" xlink:href="#light-tiny" transform="translate(20.8 40)"/>
   </g>
 
   <g transform="translate(0 139)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(13 0)">SUS</text>
-    <use id="SUSTAIN_PARAM" xlink:href="#knob29" transform="translate(0 0)"/>
+    <def id="SUSTAIN_PARAM" xlink:href="#knob29" transform="translate(0 0)"/>
     <use xlink:href="#dial-linear-adsr" transform="translate(0 0)"/>
-    <use id="SUSTAIN_LIGHT" xlink:href="#light-tiny" transform="translate(20.8 40)"/>
+    <def id="SUSTAIN_LIGHT" xlink:href="#light-tiny" transform="translate(20.8 40)"/>
   </g>
 
   <g transform="translate(0 196)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(13 0)">REL</text>
-    <use id="RELEASE_PARAM" xlink:href="#knob29" transform="translate(0 0)"/>
-    <use xlink:href="#dial" transform="translate(0 0)"/>
-    <use id="RELEASE_LIGHT" xlink:href="#light-tiny" transform="translate(20.8 40)"/>
+    <def id="RELEASE_PARAM" xlink:href="#knob29" transform="translate(0 0)"/>
+    <def xlink:href="#dial" transform="translate(0 0)"/>
+    <def id="RELEASE_LIGHT" xlink:href="#light-tiny" transform="translate(20.8 40)"/>
   </g>
 
   <g transform="translate(10.5 247)">
     <text font-size="5pt" letter-spacing="1px" transform="translate(0 6)">LIN</text>
-    <use id="LINEAR_PARAM" xlink:href="#button-small" transform="translate(15 -1)"/>
+    <def id="LINEAR_PARAM" xlink:href="#button-small" transform="translate(15 -1)"/>
   </g>
 
   <g transform="translate(0 262)">
     <g transform="translate(5.5 0)">
       <rect width="34" height="10" fill="#fafafa" transform="translate(0 28)"/>
       <rect width="34" height="35" rx="5" fill="#fafafa"/>
-      <use id="GATE_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <def id="GATE_INPUT" xlink:href="#input" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(5.5 35)">GATE</text>
     </g>
     <g transform="translate(5.5 41)">
       <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
       <rect width="34" height="35" rx="5" fill="#bbb"/>
-      <use id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
+      <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
     </g>
   </g>

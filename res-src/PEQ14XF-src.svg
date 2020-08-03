@@ -2,14 +2,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="75" height="380" viewBox="0 0 75 380">
   <style/>
 
-  <defs>
-    <import id="knob16"/>
-    <import id="dial-centertick"/>
-    <import id="dial-mintick"/>
-    <import id="input"/>
-    <import id="output"/>
-  </defs>
-
   <rect width="100%" height="100%" fill="#ddd"/>
   <polyline points="1,1 74,1 74,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
   <polyline points="0.5,0.5 74.5,0.5 74.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
@@ -22,54 +14,54 @@
   </g>
 
   <g transform="translate(-2.5 24)">
-    <use id="DAMP_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
-    <use xlink:href="#dial-mintick" transform="translate(2.5 -6)"/>
+    <def id="DAMP_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
+    <def xlink:href="#dial-mintick" transform="translate(2.5 -6)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(10 33)">DAMP</text>
     <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(7.5 36)"/>
-    <use id="DAMP_INPUT" xlink:href="#input" transform="translate(10.5 39)"/>
+    <def id="DAMP_INPUT" xlink:href="#input" transform="translate(10.5 39)"/>
   </g>
 
   <g transform="translate(32.5 23.5)">
-    <use id="GAIN_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
-    <use xlink:href="#dial-centertick" transform="translate(2.5 -6)"/>
+    <def id="GAIN_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
+    <def xlink:href="#dial-centertick" transform="translate(2.5 -6)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11.5 33)">GAIN</text>
     <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(7.5 36)"/>
-    <use id="GAIN_INPUT" xlink:href="#input" transform="translate(10.5 39)"/>
+    <def id="GAIN_INPUT" xlink:href="#input" transform="translate(10.5 39)"/>
   </g>
 
   <g transform="translate(5.5 108)">
     <rect width="64" height="260" rx="5" fill="#bbb" transform="translate(0 -10)"/>
 
     <text font-size="5pt" letter-spacing="2px" transform="translate(27 0)">EF</text>
-    <use id="EF1_OUTPUT" xlink:href="#output" transform="translate(5 3)"/>
+    <def id="EF1_OUTPUT" xlink:href="#output" transform="translate(5 3)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(15 35)">1</text>
-    <use id="EF2_OUTPUT" xlink:href="#output" transform="translate(5 38)"/>
+    <def id="EF2_OUTPUT" xlink:href="#output" transform="translate(5 38)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(15 70)">2</text>
-    <use id="EF3_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
+    <def id="EF3_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(15 105)">3</text>
-    <use id="EF4_OUTPUT" xlink:href="#output" transform="translate(5 108)"/>
+    <def id="EF4_OUTPUT" xlink:href="#output" transform="translate(5 108)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(15 140)">4</text>
-    <use id="EF5_OUTPUT" xlink:href="#output" transform="translate(5 143)"/>
+    <def id="EF5_OUTPUT" xlink:href="#output" transform="translate(5 143)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(15 175)">5</text>
-    <use id="EF6_OUTPUT" xlink:href="#output" transform="translate(5 178)"/>
+    <def id="EF6_OUTPUT" xlink:href="#output" transform="translate(5 178)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(15 210)">6</text>
-    <use id="EF7_OUTPUT" xlink:href="#output" transform="translate(5 213)"/>
+    <def id="EF7_OUTPUT" xlink:href="#output" transform="translate(5 213)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(15 245)">7</text>
 
     <g transform="translate(31 0)">
-      <use id="EF8_OUTPUT" xlink:href="#output" transform="translate(5 3)"/>
+      <def id="EF8_OUTPUT" xlink:href="#output" transform="translate(5 3)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(15 35)">8</text>
-      <use id="EF9_OUTPUT" xlink:href="#output" transform="translate(5 38)"/>
+      <def id="EF9_OUTPUT" xlink:href="#output" transform="translate(5 38)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(15 70)">9</text>
-      <use id="EF10_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
+      <def id="EF10_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">10</text>
-      <use id="EF11_OUTPUT" xlink:href="#output" transform="translate(5 108)"/>
+      <def id="EF11_OUTPUT" xlink:href="#output" transform="translate(5 108)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 140)">11</text>
-      <use id="EF12_OUTPUT" xlink:href="#output" transform="translate(5 143)"/>
+      <def id="EF12_OUTPUT" xlink:href="#output" transform="translate(5 143)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 175)">12</text>
-      <use id="EF13_OUTPUT" xlink:href="#output" transform="translate(5 178)"/>
+      <def id="EF13_OUTPUT" xlink:href="#output" transform="translate(5 178)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 210)">13</text>
-      <use id="EF14_OUTPUT" xlink:href="#output" transform="translate(5 213)"/>
+      <def id="EF14_OUTPUT" xlink:href="#output" transform="translate(5 213)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 245)">14</text>
     </g>
   </g>
