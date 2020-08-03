@@ -11,7 +11,7 @@
     <def id="switch"/>
     <def id="input"/>
     <def id="output"/>
-    <def id="light-small"/>
+    <def id="light-tiny"/>
   </defs>
 
   <rect width="100%" height="100%" fill="#ddd"/>

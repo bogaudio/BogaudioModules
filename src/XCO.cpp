@@ -319,7 +319,7 @@ struct XCOWidget : ModuleWidget {
 		auto frequencyParamPosition = Vec(40.0, 45.0);
 		auto fineParamPosition = Vec(47.0, 153.0);
 		auto slowParamPosition = Vec(112.0, 157.2);
-		auto fmParamPosition = Vec(55.0, 194.0);
+		auto fmDepthParamPosition = Vec(55.0, 194.0);
 		auto fmTypeParamPosition = Vec(101.5, 256.5);
 		auto squarePwParamPosition = Vec(147.0, 60.0);
 		auto squarePhaseParamPosition = Vec(147.0, 148.0);
@@ -361,7 +361,7 @@ struct XCOWidget : ModuleWidget {
 		addParam(createParam<Knob68>(frequencyParamPosition, module, XCO::FREQUENCY_PARAM));
 		addParam(createParam<Knob16>(fineParamPosition, module, XCO::FINE_PARAM));
 		addParam(createParam<IndicatorButtonGreen9>(slowParamPosition, module, XCO::SLOW_PARAM));
-		addParam(createParam<Knob38>(fmParamPosition, module, XCO::FM_DEPTH_PARAM));
+		addParam(createParam<Knob38>(fmDepthParamPosition, module, XCO::FM_DEPTH_PARAM));
 		addParam(createParam<SliderSwitch2State14>(fmTypeParamPosition, module, XCO::FM_TYPE_PARAM));
 		addParam(createParam<Knob16>(squarePwParamPosition, module, XCO::SQUARE_PW_PARAM));
 		addParam(createParam<Knob16>(squarePhaseParamPosition, module, XCO::SQUARE_PHASE_PARAM));

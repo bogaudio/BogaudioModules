@@ -140,8 +140,8 @@ text.brand {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </symbol>
-    <symbol id="light-small" viewBox="0 0 6.4px 6.4px">
-      <rect width="6.4" height="6.4" fill="#0f0"/>
+    <symbol id="light-tiny" viewBox="0 0 1.1px 1.1px">
+      <rect width="3.2" height="3.2" fill="#0f0"/>
     </symbol>
   </defs>
 
