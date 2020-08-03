@@ -3,11 +3,11 @@
   <style/>
 
   <defs>
-    <def id="knob29"/>
-    <def id="knob16"/>
-    <def id="input"/>
-    <def id="output"/>
-    <def id="light-small"/>
+    <import id="knob29"/>
+    <import id="knob16"/>
+    <import id="input"/>
+    <import id="output"/>
+    <import id="light-small"/>
 
     <symbol id="dial-time-edge" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">

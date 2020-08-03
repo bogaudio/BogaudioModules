@@ -3,10 +3,10 @@
   <style/>
 
   <defs>
-    <def id="knob16"/>
-    <def id="dial-centertick"/>
-    <def id="output"/>
-    <def id="light-tiny"/>
+    <import id="knob16"/>
+    <import id="dial-centertick"/>
+    <import id="output"/>
+    <import id="light-tiny"/>
   </defs>
 
   <rect width="100%" height="100%" fill="#ddd"/>

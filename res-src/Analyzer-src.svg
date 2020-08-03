@@ -3,11 +3,11 @@
   <style/>
 
   <defs>
-    <def id="knob38"/>
-    <def id="button-small"/>
-    <def id="input"/>
-    <def id="output"/>
-    <def id="light-small"/>
+    <import id="knob38"/>
+    <import id="button-small"/>
+    <import id="input"/>
+    <import id="output"/>
+    <import id="light-small"/>
 
     <symbol id="display-analyzer" viewBox="0 0 280px 230px">
       <rect cx="0" cy="0" width="280" height="230" fill="#222"/>

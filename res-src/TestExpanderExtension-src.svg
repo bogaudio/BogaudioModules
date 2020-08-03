@@ -3,8 +3,8 @@
   <style/>
 
   <defs>
-    <def id="output"/>
-    <def id="light-small"/>
+    <import id="output"/>
+    <import id="light-small"/>
   </defs>
 
   <rect width="100%" height="100%" fill="#ddd"/>

@@ -3,11 +3,11 @@
   <style/>
 
   <defs>
-    <def id="light-small"/>
-    <def id="knob26"/>
-    <def id="dial-linear"/>
-    <def id="input"/>
-    <def id="output"/>
+    <import id="light-small"/>
+    <import id="knob26"/>
+    <import id="dial-linear"/>
+    <import id="input"/>
+    <import id="output"/>
 
     <symbol id="compression-mono" viewBox="0 0 11px 75px">
       <!-- <rect width="11" height="75" x="0" y="0" rx="0" fill="#ccc" /> -->

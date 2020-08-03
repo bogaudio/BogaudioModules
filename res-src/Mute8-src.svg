@@ -3,10 +3,10 @@
   <style/>
 
   <defs>
-    <def id="button"/>
-    <def id="light-small"/>
-    <def id="input"/>
-    <def id="output"/>
+    <import id="button"/>
+    <import id="light-small"/>
+    <import id="input"/>
+    <import id="output"/>
   </defs>
 
   <rect width="100%" height="100%" fill="#ddd"/>

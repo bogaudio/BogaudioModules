@@ -3,8 +3,8 @@
   <style/>
 
   <defs>
-    <def id="input"/>
-    <def id="output"/>
+    <import id="input"/>
+    <import id="output"/>
 
     <symbol id="vu-vu" viewBox="0 0 18px 180px">
       <!-- <rect width="18" height="180" x="0" y="0" rx="0" fill="#ccc" /> -->

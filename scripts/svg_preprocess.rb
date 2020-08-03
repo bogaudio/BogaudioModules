@@ -210,18 +210,18 @@ def process(name)
   end
 
   doc = read_xml(fn)
-  doc.css('defs def').each do |n|
+  doc.css('defs import').each do |n|
     id = n.attribute('id').to_s
     if id
       d = $defs[id]
       if d
         n.replace(d)
       else
-        puts "WARN: no def for ID '#{id}' in #{fn}"
+        puts "WARN: no def for import ID '#{id}' in #{fn}"
         n.remove
       end
     else
-      puts "WARN: def without ID in #{fn}: #{n.to_s}"
+      puts "WARN: import without ID in #{fn}: #{n.to_s}"
       n.remove
     end
   end

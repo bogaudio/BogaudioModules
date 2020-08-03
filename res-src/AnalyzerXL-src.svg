@@ -3,7 +3,7 @@
   <style/>
 
   <defs>
-    <def id="input"/>
+    <import id="input"/>
     <symbol id="display-analyzerxl" viewBox="0 0 600px 380px">
       <rect cx="0" cy="0" width="600" height="380" fill="#222"/>
     </symbol>

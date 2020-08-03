@@ -3,10 +3,10 @@
   <style/>
 
   <defs>
-    <def id="knob26"/>
-    <def id="knob16"/>
-    <def id="input"/>
-    <def id="output"/>
+    <import id="knob26"/>
+    <import id="knob16"/>
+    <import id="input"/>
+    <import id="output"/>
 
     <symbol id="dial-time-slew" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">

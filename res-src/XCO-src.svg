@@ -3,16 +3,16 @@
   <style/>
 
   <defs>
-    <def id="knob68"/>
-    <def id="knob38"/>
-    <def id="knob16"/>
-    <def id="dial-frequency"/>
-    <def id="dial-centertick"/>
-    <def id="dial-mintick"/>
-    <def id="input"/>
-    <def id="output"/>
-    <def id="button-small"/>
-    <def id="switch"/>
+    <import id="knob68"/>
+    <import id="knob38"/>
+    <import id="knob16"/>
+    <import id="dial-frequency"/>
+    <import id="dial-centertick"/>
+    <import id="dial-mintick"/>
+    <import id="input"/>
+    <import id="output"/>
+    <import id="button-small"/>
+    <import id="switch"/>
 
     <symbol id="dial-fm-xco" viewBox="0 0 50px 50px">
       <g transform="translate(25 25)">

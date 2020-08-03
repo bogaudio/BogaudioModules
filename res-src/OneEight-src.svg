@@ -3,14 +3,14 @@
   <style/>
 
   <defs>
-    <def id="knob29"/>
-    <def id="dial-select"/>
-    <def id="knob16"/>
-    <def id="dial-steps"/>
-    <def id="switch"/>
-    <def id="light-small"/>
-    <def id="input"/>
-    <def id="output"/>
+    <import id="knob29"/>
+    <import id="dial-select"/>
+    <import id="knob16"/>
+    <import id="dial-steps"/>
+    <import id="switch"/>
+    <import id="light-small"/>
+    <import id="input"/>
+    <import id="output"/>
   </defs>
 
   <rect width="100%" height="100%" fill="#ddd"/>

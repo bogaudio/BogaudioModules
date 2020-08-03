@@ -3,8 +3,8 @@
   <style/>
 
   <defs>
-    <def id="knob26"/>
-    <def id="output"/>
+    <import id="knob26"/>
+    <import id="output"/>
 
     <symbol id="display-reftone" viewBox="0 0 45px 34px">
       <rect width="38" height="48" fill="#222" transform="translate(3.5 0)"/>

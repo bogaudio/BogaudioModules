@@ -3,12 +3,12 @@
   <style/>
 
   <defs>
-    <def id="knob29"/>
-    <def id="dial"/>
-    <def id="input"/>
-    <def id="output"/>
-    <def id="button-small"/>
-    <def id="light-tiny"/>
+    <import id="knob29"/>
+    <import id="dial"/>
+    <import id="input"/>
+    <import id="output"/>
+    <import id="button-small"/>
+    <import id="light-tiny"/>
   </defs>
 
   <rect width="100%" height="100%" fill="#ddd"/>

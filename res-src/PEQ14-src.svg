@@ -3,16 +3,16 @@
   <style/>
 
   <defs>
-    <def id="slider-151"/>
-    <def id="sliderdial-db-151"/>
-    <def id="knob16"/>
-    <def id="dial-centertick"/>
-    <def id="dial-mintick"/>
-    <def id="dial-frequency-16"/>
-    <def id="input"/>
-    <def id="output"/>
-    <def id="button-small"/>
-    <def id="light-small"/>
+    <import id="slider-151"/>
+    <import id="sliderdial-db-151"/>
+    <import id="knob16"/>
+    <import id="dial-centertick"/>
+    <import id="dial-mintick"/>
+    <import id="dial-frequency-16"/>
+    <import id="input"/>
+    <import id="output"/>
+    <import id="button-small"/>
+    <import id="light-small"/>
   </defs>
 
   <rect width="100%" height="100%" fill="#ddd"/>

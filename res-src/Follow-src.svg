@@ -3,9 +3,9 @@
   <style/>
 
   <defs>
-    <def id="knob29"/>
-    <def id="input"/>
-    <def id="output"/>
+    <import id="knob29"/>
+    <import id="input"/>
+    <import id="output"/>
 
     <symbol id="dial-response-follow" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">

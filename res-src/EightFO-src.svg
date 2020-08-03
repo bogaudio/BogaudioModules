@@ -3,15 +3,15 @@
   <style/>
 
   <defs>
-    <def id="knob68"/>
-    <def id="knob26"/>
-    <def id="knob16"/>
-    <def id="dial-frequency-lfo"/>
-    <def id="dial-attenuverter"/>
-    <def id="dial-linear"/>
-    <def id="input"/>
-    <def id="output"/>
-    <def id="button-small"/>
+    <import id="knob68"/>
+    <import id="knob26"/>
+    <import id="knob16"/>
+    <import id="dial-frequency-lfo"/>
+    <import id="dial-attenuverter"/>
+    <import id="dial-linear"/>
+    <import id="input"/>
+    <import id="output"/>
+    <import id="button-small"/>
 
     <symbol id="waves-eightfo" viewBox="0 0 70px 70px">
       <!-- <polyline points="0,0 0,70" stroke-width="1" stroke="#0f0" transform="translate(20 0)" /> -->

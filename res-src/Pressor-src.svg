@@ -3,12 +3,12 @@
   <style/>
 
   <defs>
-    <def id="knob38"/>
-    <def id="knob26"/>
-    <def id="dial-attenuverter"/>
-    <def id="switch"/>
-    <def id="input"/>
-    <def id="output"/>
+    <import id="knob38"/>
+    <import id="knob26"/>
+    <import id="dial-attenuverter"/>
+    <import id="switch"/>
+    <import id="input"/>
+    <import id="output"/>
 
     <symbol id="dial-ratio-pressor" viewBox="0 0 70px 70px">
       <g transform="translate(35 35)">

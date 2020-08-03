@@ -3,10 +3,10 @@
   <style/>
 
   <defs>
-    <def id="knob38"/>
-    <def id="input"/>
-    <def id="output"/>
-    <def id="button-small"/>
+    <import id="knob38"/>
+    <import id="input"/>
+    <import id="output"/>
+    <import id="button-small"/>
 
     <symbol id="dial-level-vcm" viewBox="0 0 60px 60px">
       <g transform="translate(30 30)">

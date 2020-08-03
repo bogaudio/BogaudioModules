@@ -3,11 +3,11 @@
   <style/>
 
   <defs>
-    <def id="knob38"/>
-    <def id="dial-threshold"/>
-    <def id="switch"/>
-    <def id="input"/>
-    <def id="output"/>
+    <import id="knob38"/>
+    <import id="dial-threshold"/>
+    <import id="switch"/>
+    <import id="input"/>
+    <import id="output"/>
 
     <symbol id="dial-ratio-nsgt" viewBox="0 0 70px 70px">
       <g transform="translate(35 35)">

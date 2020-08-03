@@ -3,10 +3,10 @@
   <style/>
 
   <defs>
-    <def id="knob16"/>
-    <def id="dial-channels-small"/>
-    <def id="input"/>
-    <def id="output"/>
+    <import id="knob16"/>
+    <import id="dial-channels-small"/>
+    <import id="input"/>
+    <import id="output"/>
   </defs>
 
   <rect width="100%" height="100%" fill="#ddd"/>

@@ -3,11 +3,11 @@
   <style/>
 
   <defs>
-    <def id="knob26"/>
-    <def id="dial-linear"/>
-    <def id="button-small"/>
-    <def id="input"/>
-    <def id="output"/>
+    <import id="knob26"/>
+    <import id="dial-linear"/>
+    <import id="button-small"/>
+    <import id="input"/>
+    <import id="output"/>
   </defs>
 
   <rect width="100%" height="100%" fill="#ddd"/>

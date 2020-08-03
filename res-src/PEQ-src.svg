@@ -3,14 +3,14 @@
   <style/>
 
   <defs>
-    <def id="knob29"/>
-    <def id="knob16"/>
-    <def id="dial-centertick"/>
-    <def id="dial-mintick"/>
-    <def id="button-small"/>
-    <def id="input"/>
-    <def id="output"/>
-    <def id="light-small"/>
+    <import id="knob29"/>
+    <import id="knob16"/>
+    <import id="dial-centertick"/>
+    <import id="dial-mintick"/>
+    <import id="button-small"/>
+    <import id="input"/>
+    <import id="output"/>
+    <import id="light-small"/>
 
     <symbol id="dial-frequency-peq" viewBox="0 0 61px 45px">
       <g transform="translate(25.5 22.5)">

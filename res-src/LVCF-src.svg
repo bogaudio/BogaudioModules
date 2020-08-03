@@ -3,13 +3,13 @@
   <style/>
 
   <defs>
-    <def id="knob26"/>
-    <def id="knob16"/>
-    <def id="dial-centertick"/>
-    <def id="input"/>
-    <def id="output"/>
-    <def id="button-small"/>
-    <def id="light-small"/>
+    <import id="knob26"/>
+    <import id="knob16"/>
+    <import id="dial-centertick"/>
+    <import id="input"/>
+    <import id="output"/>
+    <import id="button-small"/>
+    <import id="light-small"/>
 
     <symbol id="dial-cutoff-lvcf" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">

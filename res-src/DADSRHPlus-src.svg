@@ -3,15 +3,15 @@
   <style/>
 
   <defs>
-    <def id="knob38"/>
-    <def id="dial-sustain"/>
-    <def id="dial-exp"/>
-    <def id="button"/>
-    <def id="button-small"/>
-    <def id="switch"/>
-    <def id="input"/>
-    <def id="output"/>
-    <def id="light-tiny"/>
+    <import id="knob38"/>
+    <import id="dial-sustain"/>
+    <import id="dial-exp"/>
+    <import id="button"/>
+    <import id="button-small"/>
+    <import id="switch"/>
+    <import id="input"/>
+    <import id="output"/>
+    <import id="light-tiny"/>
   </defs>
 
   <rect width="100%" height="100%" fill="#ddd"/>

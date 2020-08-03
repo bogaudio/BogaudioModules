@@ -3,15 +3,15 @@
   <style/>
 
   <defs>
-    <def id="knob29"/>
-    <def id="knob16"/>
-    <def id="dial-change"/>
-    <def id="dial-centertick"/>
-    <def id="dial-mintick"/>
-    <def id="input"/>
-    <def id="output"/>
-    <def id="button-small"/>
-    <def id="light-small"/>
+    <import id="knob29"/>
+    <import id="knob16"/>
+    <import id="dial-change"/>
+    <import id="dial-centertick"/>
+    <import id="dial-mintick"/>
+    <import id="input"/>
+    <import id="output"/>
+    <import id="button-small"/>
+    <import id="light-small"/>
   </defs>
 
   <rect width="100%" height="100%" fill="#ddd"/>

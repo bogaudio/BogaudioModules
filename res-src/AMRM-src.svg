@@ -3,9 +3,9 @@
   <style/>
 
   <defs>
-    <def id="knob45"/>
-    <def id="input"/>
-    <def id="output"/>
+    <import id="knob45"/>
+    <import id="input"/>
+    <import id="output"/>
 
     <symbol id="dial-rectify-amrm" viewBox="0 0 90px 90px">
       <g transform="translate(45 45)">

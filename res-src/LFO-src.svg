@@ -3,17 +3,17 @@
   <style/>
 
   <defs>
-    <def id="knob68"/>
-    <def id="knob26"/>
-    <def id="knob16"/>
-    <def id="dial-frequency-lfo"/>
-    <def id="dial-attenuverter"/>
-    <def id="dial-linear"/>
-    <def id="dial-centertick"/>
-    <def id="dial-mintick"/>
-    <def id="input"/>
-    <def id="output"/>
-    <def id="button-small"/>
+    <import id="knob68"/>
+    <import id="knob26"/>
+    <import id="knob16"/>
+    <import id="dial-frequency-lfo"/>
+    <import id="dial-attenuverter"/>
+    <import id="dial-linear"/>
+    <import id="dial-centertick"/>
+    <import id="dial-mintick"/>
+    <import id="input"/>
+    <import id="output"/>
+    <import id="button-small"/>
   </defs>
 
   <rect width="100%" height="100%" fill="#ddd"/>

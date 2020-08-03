@@ -3,11 +3,11 @@
   <style/>
 
   <defs>
-    <def id="knob29"/>
-    <def id="knob16"/>
-    <def id="dial-window"/>
-    <def id="input"/>
-    <def id="output"/>
+    <import id="knob29"/>
+    <import id="knob16"/>
+    <import id="dial-window"/>
+    <import id="input"/>
+    <import id="output"/>
 
     <symbol id="dial-voltage-cmp" viewBox="0 0 90px 45px">
       <!-- <rect width="90" height="45" fill="#f003" transform="translate(0 0)" /> -->
