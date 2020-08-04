@@ -4,53 +4,53 @@
 
   <def xlink:href="#module6" var-name="8:1"/>
 
-  <g transform="translate(6.5 32)">
-    <rect width="34" height="337" rx="5" fill="#fafafa" transform="translate(0 -9)"/>
+  <g class="io-group" transform="translate(6.5 32)">
+    <rect class="input-background" width="34" height="337" rx="5" transform="translate(0 -9)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 0)">IN</text>
 
     <def id="IN1_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">1</text>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(11 35)">1</text>
     <def id="IN1_LIGHT" xlink:href="#light-small" transform="translate(17 29.5)"/>
 
     <def id="IN2_INPUT" xlink:href="#input" transform="translate(5 44.3)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(11 76.3)">2</text>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(11 76.3)">2</text>
     <def id="IN2_LIGHT" xlink:href="#light-small" transform="translate(17 70.8)"/>
 
     <def id="IN3_INPUT" xlink:href="#input" transform="translate(5 86.6)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(11 118.6)">3</text>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(11 118.6)">3</text>
     <def id="IN3_LIGHT" xlink:href="#light-small" transform="translate(17 113.1)"/>
 
     <def id="IN4_INPUT" xlink:href="#input" transform="translate(5 126.9)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(11 158.9)">4</text>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(11 158.9)">4</text>
     <def id="IN4_LIGHT" xlink:href="#light-small" transform="translate(17 153.4)"/>
 
     <def id="IN5_INPUT" xlink:href="#input" transform="translate(5 168.1)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(11 200.1)">5</text>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(11 200.1)">5</text>
     <def id="IN5_LIGHT" xlink:href="#light-small" transform="translate(17 194.6)"/>
 
     <def id="IN6_INPUT" xlink:href="#input" transform="translate(5 209.4)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(11 241.4)">6</text>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(11 241.4)">6</text>
     <def id="IN6_LIGHT" xlink:href="#light-small" transform="translate(17 235.9)"/>
 
     <def id="IN7_INPUT" xlink:href="#input" transform="translate(5 250.7)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(11 282.7)">7</text>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(11 282.7)">7</text>
     <def id="IN7_LIGHT" xlink:href="#light-small" transform="translate(17 277.2)"/>
 
     <def id="IN8_INPUT" xlink:href="#input" transform="translate(5 292)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(11 324)">8</text>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(11 324)">8</text>
     <def id="IN8_LIGHT" xlink:href="#light-small" transform="translate(17 318.5)"/>
   </g>
 
-  <g transform="translate(49.5 32)">
-    <rect width="34" height="39" rx="5" fill="#fafafa"/>
-    <rect width="34" height="10" fill="#fafafa" transform="translate(0 30)"/>
+  <g class="io-group" transform="translate(49.5 32)">
+    <rect class="input-background" width="34" height="39" rx="5"/>
+    <rect class="input-background-filler" width="34" height="10" transform="translate(0 30)"/>
     <def id="CLOCK_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-    <text font-size="5pt" letter-spacing="1px" transform="translate(4 35)">CLOCK</text>
+    <text class="input-label" font-size="5pt" letter-spacing="1px" transform="translate(4 35)">CLOCK</text>
   </g>
-  <g transform="translate(49.5 69)">
-    <rect width="34" height="39" rx="5" fill="#fafafa"/>
+  <g class="io-group" transform="translate(49.5 69)">
+    <rect class="input-background" width="34" height="39" rx="5"/>
     <def id="RESET_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-    <text font-size="5pt" letter-spacing="1px" transform="translate(5 35)">RESET</text>
+    <text class="input-label" font-size="5pt" letter-spacing="1px" transform="translate(5 35)">RESET</text>
   </g>
 
   <g transform="translate(44 121)">
@@ -71,17 +71,17 @@
     <text font-size="6pt" letter-spacing="1.5px" transform="translate(4.5 0)">SELECT</text>
     <def id="SELECT_PARAM" xlink:href="#knob29" transform="translate(0 2)"/>
     <def xlink:href="#dial-select" transform="translate(0 2)"/>
-    <g transform="translate(5.5 47)">
-      <rect width="34" height="39" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 47)">
+      <rect class="input-background" width="34" height="39" rx="5"/>
       <def id="SELECT_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(11.5 35)">CV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(11.5 35)">CV</text>
     </g>
   </g>
 
-  <g transform="translate(49.5 321)">
-    <rect width="34" height="39" rx="5" fill="#bbb"/>
+  <g class="io-group" transform="translate(49.5 321)">
+    <rect class="output-background" width="34" height="39" rx="5"/>
     <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 3)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(8 35)">OUT</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8 35)">OUT</text>
   </g>
 
   <!-- <polyline points="0,0 90,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(0 47)" /> -->

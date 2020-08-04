@@ -100,31 +100,31 @@
     <!-- <use id="HIGHPASS_LIGHT" xlink:href="#light-small" transform="translate(1 8.5)" /> -->
   </g>
 
-  <g transform="translate(28.5 278)">
-    <rect width="63" height="43" rx="5" fill="#fafafa"/>
-    <rect width="63" height="10" fill="#fafafa" transform="translate(0 33)"/>
+  <g class="io-group" transform="translate(28.5 278)">
+    <rect class="input-background" width="63" height="43" rx="5"/>
+    <rect class="input-background-filler" width="63" height="10" transform="translate(0 33)"/>
     <g transform="translate(1 0)">
       <def id="IN_INPUT" xlink:href="#input" transform="translate(3 4)"/>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(10 39)">IN</text>
+      <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(10 39)">IN</text>
     </g>
     <g transform="translate(32 0)">
       <def id="CV_INPUT" xlink:href="#input" transform="translate(3 4)"/>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(5.5 39)">FCV</text>
+      <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(5.5 39)">FCV</text>
     </g>
   </g>
-  <g transform="translate(13 320)">
-    <rect width="94" height="43" rx="5" fill="#bbb"/>
+  <g class="io-group" transform="translate(13 320)">
+    <rect class="output-background" width="94" height="43" rx="5"/>
     <g transform="translate(1 0)">
       <def id="ALL_OUTPUT" xlink:href="#output" transform="translate(3 4)"/>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(6 39)">ALL</text>
+      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(6 39)">ALL</text>
     </g>
     <g transform="translate(32 0)">
       <def id="ODD_OUTPUT" xlink:href="#output" transform="translate(3 4)"/>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(5 39)">ODD</text>
+      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(5 39)">ODD</text>
     </g>
     <g transform="translate(63 0)">
       <def id="EVEN_OUTPUT" xlink:href="#output" transform="translate(3 4)"/>
-      <text font-size="6pt" letter-spacing="1.5px" transform="translate(3 39)">EVEN</text>
+      <text class="output-label" font-size="6pt" letter-spacing="1.5px" transform="translate(3 39)">EVEN</text>
     </g>
   </g>
 </module>

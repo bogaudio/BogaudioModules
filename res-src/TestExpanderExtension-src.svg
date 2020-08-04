@@ -10,10 +10,10 @@
   </g>
 
   <g transform="translate(0 260)">
-    <g transform="translate(5.5 41)">
-      <rect width="34" height="38" rx="5" fill="#bbb" transform="translate(0 -3)"/>
+    <g class="io-group" transform="translate(5.5 41)">
+      <rect class="output-background" width="34" height="38" rx="5" transform="translate(0 -3)"/>
       <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
     </g>
   </g>
 </module>

@@ -5,11 +5,11 @@
   <def xlink:href="#module3" var-name="SWTCH"/>
 
   <g transform="translate(0 18)">
-    <g transform="translate(5.5 0)">
-      <rect width="34" height="62" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 0)">
+      <rect class="input-background" width="34" height="62" rx="5"/>
       <def id="GATE_PARAM" xlink:href="#button" transform="translate(8 4)"/>
       <def id="GATE_INPUT" xlink:href="#input" transform="translate(5 26)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(5.5 58)">GATE</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(5.5 58)">GATE</text>
     </g>
 
     <g transform="translate(4.5 67)">
@@ -18,11 +18,11 @@
     </g>
 
     <g transform="translate(0 79)">
-      <g transform="translate(5.5 0)">
-        <rect width="34" height="74" rx="5" fill="#fafafa"/>
-        <rect width="34" height="10" fill="#fafafa" transform="translate(0 64)"/>
+      <g class="io-group" transform="translate(5.5 0)">
+        <rect class="input-background" width="34" height="74" rx="5"/>
+        <rect class="input-background-filler" width="34" height="10" transform="translate(0 64)"/>
         <def id="HIGH1_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-        <text font-size="5pt" letter-spacing="1px" transform="translate(11.0 35)">HIGH</text>
+        <text class="input-label" font-size="5pt" letter-spacing="1px" transform="translate(11.0 35)">HIGH</text>
         <def id="HIGH1_LIGHT" xlink:href="#light-small" transform="translate(2 29.3)"/>
       </g>
       <g transform="translate(5.5 36)">
@@ -30,20 +30,20 @@
         <text font-size="5pt" letter-spacing="2px" transform="translate(11.0 35)">LOW</text>
         <def id="LOW1_LIGHT" xlink:href="#light-small" transform="translate(2 29.3)"/>
       </g>
-      <g transform="translate(5.5 77)">
-        <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
-        <rect width="34" height="35" rx="5" fill="#bbb"/>
+      <g class="io-group" transform="translate(5.5 77)">
+        <rect class="output-background-filler" width="34" height="10" transform="translate(0 -3)"/>
+        <rect class="output-background" width="34" height="35" rx="5"/>
         <def id="OUT1_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
-        <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
+        <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
       </g>
     </g>
 
     <g transform="translate(0 196)">
-      <g transform="translate(5.5 0)">
-        <rect width="34" height="74" rx="5" fill="#fafafa"/>
-        <rect width="34" height="10" fill="#fafafa" transform="translate(0 64)"/>
+      <g class="io-group" transform="translate(5.5 0)">
+        <rect class="input-background" width="34" height="74" rx="5"/>
+        <rect class="input-background-filler" width="34" height="10" transform="translate(0 64)"/>
         <def id="HIGH2_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-        <text font-size="5pt" letter-spacing="1px" transform="translate(11.0 35)">HIGH</text>
+        <text class="input-label" font-size="5pt" letter-spacing="1px" transform="translate(11.0 35)">HIGH</text>
         <def id="HIGH2_LIGHT" xlink:href="#light-small" transform="translate(2 29.3)"/>
       </g>
       <g transform="translate(5.5 36)">
@@ -51,11 +51,11 @@
         <text font-size="5pt" letter-spacing="2px" transform="translate(11.0 35)">LOW</text>
         <def id="LOW2_LIGHT" xlink:href="#light-small" transform="translate(2 29.3)"/>
       </g>
-      <g transform="translate(5.5 77)">
-        <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
-        <rect width="34" height="35" rx="5" fill="#bbb"/>
+      <g class="io-group" transform="translate(5.5 77)">
+        <rect class="output-background-filler" width="34" height="10" transform="translate(0 -3)"/>
+        <rect class="output-background" width="34" height="35" rx="5"/>
         <def id="OUT2_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
-        <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
+        <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
       </g>
     </g>
   </g>

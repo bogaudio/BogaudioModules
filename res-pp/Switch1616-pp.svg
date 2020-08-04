@@ -14,7 +14,10 @@ text.brand {
   font-weight: bold;
 }
 
-path, polyline {
+polyline {
+  stroke: #333;
+}
+path {
   stroke: #333;
 }
 
@@ -29,6 +32,24 @@ polyline.module-border-middle {
 }
 polyline.module-border-outer {
   stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background {
+  fill: #fafafa;
+}
+rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background {
+  fill: #bbb;
+}
+rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
 }
 </style>
 
@@ -48,11 +69,11 @@ polyline.module-border-outer {
       </g>
     
 
-  <rect width="56" height="302" rx="5" fill="#fafafa" transform="translate(5.5 9)"/>
-  <rect width="302" height="56" rx="5" fill="#bbb" transform="translate(22.5 302)"/>
-  <rect width="28" height="10" rx="5" fill="#fafafa" transform="translate(10.5 301)"/>
-  <rect width="10" height="5" fill="#fafafa" transform="translate(36.5 302)"/>
-  <rect width="28" height="10" rx="5" fill="#bbb" transform="translate(38.5 302)"/>
+  <rect class="input-background" width="56" height="302" rx="5" transform="translate(5.5 9)"/>
+  <rect class="output-background" width="302" height="56" rx="5" transform="translate(22.5 302)"/>
+  <rect class="input-background" width="28" height="10" rx="5" transform="translate(10.5 301)"/>
+  <rect class="input-background-filler" width="10" height="5" transform="translate(36.5 302)"/>
+  <rect class="output-background" width="28" height="10" rx="5" transform="translate(38.5 302)"/>
 
   <g transform="translate(5.5 9)">
     <g transform="translate(4 22)"><svg id="IN2_INPUT">

@@ -127,15 +127,15 @@
   <use xlink:href="#dial-fine-reftone" transform="translate(0 188)"/>
 
   <g transform="translate(0 235)">
-    <g transform="translate(0 0)">
-      <rect width="34" height="75" rx="5" fill="#bbb" transform="translate(5.5 0)"/>
+    <g class="io-group" transform="translate(0 0)">
+      <rect class="output-background" width="34" height="75" rx="5" transform="translate(5.5 0)"/>
       <g transform="translate(5.5 1)">
         <def id="CV_OUTPUT" xlink:href="#output" transform="translate(5 3)"/>
-        <text font-size="5pt" letter-spacing="2px" transform="translate(3 35)">V/OCT</text>
+        <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(3 35)">V/OCT</text>
       </g>
       <g transform="translate(5.5 39)">
         <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
-        <text font-size="5pt" letter-spacing="2px" transform="translate(6.5 32)">SINE</text>
+        <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(6.5 32)">SINE</text>
       </g>
     </g>
   </g>

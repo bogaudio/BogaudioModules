@@ -7,21 +7,21 @@
   <!-- <polyline points="0,0 315,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 24)" /> -->
   <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(22.5 0)" /> -->
 
-  <g transform="translate(0 40)">
+  <g class="io-group" transform="translate(0 40)">
     <!-- <rect width="37" height="66" fill="#f0f" transform="translate(0 0)" /> -->
     <def id="FREQUENCY_CV_PARAM" xlink:href="#knob16" transform="translate(14.5 7)"/>
     <def xlink:href="#dial-centertick" transform="translate(2.5 -5)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 33)">FCV</text>
-    <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(7.5 36)"/>
+    <rect class="input-background" width="30" height="30" rx="5" transform="translate(7.5 36)"/>
     <def id="FREQUENCY_CV_INPUT" xlink:href="#input" transform="translate(10.5 39)"/>
   </g>
 
-  <g transform="translate(0 124)">
+  <g class="io-group" transform="translate(0 124)">
     <!-- <rect width="37" height="66" fill="#f0f" transform="translate(0 0)" /> -->
     <def id="BANDWIDTH_PARAM" xlink:href="#knob16" transform="translate(14.5 5)"/>
     <def xlink:href="#dial-mintick" transform="translate(2.5 -7)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(16.5 33)">BW</text>
-    <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(7.5 36)"/>
+    <rect class="input-background" width="30" height="30" rx="5" transform="translate(7.5 36)"/>
     <def id="BANDWIDTH_INPUT" xlink:href="#input" transform="translate(10.5 39)"/>
   </g>
 
@@ -43,14 +43,14 @@
     <def id="FMOD_PARAM" xlink:href="#button-small" transform="translate(14 25)"/>
   </g>
 
-  <g transform="translate(5.5 287)">
-    <rect width="34" height="73" rx="5" fill="#bbb"/>
-    <rect width="34" height="36.5" rx="5" fill="#fafafa"/>
-    <rect width="34" height="10" fill="#fafafa" transform="translate(0 26.5)"/>
+  <g class="io-group" transform="translate(5.5 287)">
+    <rect class="output-background" width="34" height="73" rx="5"/>
+    <rect class="input-background" width="34" height="36.5" rx="5"/>
+    <rect class="input-background-filler" width="34" height="10" transform="translate(0 26.5)"/>
     <def id="IN_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
     <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 38)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(8 70)">OUT</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8 70)">OUT</text>
   </g>
 
   <g transform="translate(45 20)">
@@ -63,16 +63,16 @@
     <def id="FREQUENCY_CV1_PARAM" xlink:href="#knob16" transform="translate(14.5 204)"/>
     <def xlink:href="#dial-centertick" transform="translate(2.5 192)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb"/>
-      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="output-background" width="34" height="108" rx="5"/>
+      <rect class="input-background" width="34" height="71.5" rx="5"/>
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 61.5)"/>
       <def id="LEVEL1_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <def id="FREQUENCY_CV1_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
       <def id="OUT1_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
@@ -86,16 +86,16 @@
     <def id="FREQUENCY_CV2_PARAM" xlink:href="#knob16" transform="translate(14.5 204)"/>
     <def xlink:href="#dial-centertick" transform="translate(2.5 192)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb"/>
-      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="output-background" width="34" height="108" rx="5"/>
+      <rect class="input-background" width="34" height="71.5" rx="5"/>
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 61.5)"/>
       <def id="LEVEL2_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <def id="FREQUENCY_CV2_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
       <def id="OUT2_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
@@ -109,16 +109,16 @@
     <def id="FREQUENCY_CV3_PARAM" xlink:href="#knob16" transform="translate(14.5 204)"/>
     <def xlink:href="#dial-centertick" transform="translate(2.5 192)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb"/>
-      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="output-background" width="34" height="108" rx="5"/>
+      <rect class="input-background" width="34" height="71.5" rx="5"/>
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 61.5)"/>
       <def id="LEVEL3_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <def id="FREQUENCY_CV3_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
       <def id="OUT3_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
@@ -132,16 +132,16 @@
     <def id="FREQUENCY_CV4_PARAM" xlink:href="#knob16" transform="translate(14.5 204)"/>
     <def xlink:href="#dial-centertick" transform="translate(2.5 191)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb"/>
-      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="output-background" width="34" height="108" rx="5"/>
+      <rect class="input-background" width="34" height="71.5" rx="5"/>
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 61.5)"/>
       <def id="LEVEL4_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <def id="FREQUENCY_CV4_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
       <def id="OUT4_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
@@ -155,16 +155,16 @@
     <def id="FREQUENCY_CV5_PARAM" xlink:href="#knob16" transform="translate(14.5 204)"/>
     <def xlink:href="#dial-centertick" transform="translate(2.5 192)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb"/>
-      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="output-background" width="34" height="108" rx="5"/>
+      <rect class="input-background" width="34" height="71.5" rx="5"/>
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 61.5)"/>
       <def id="LEVEL5_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <def id="FREQUENCY_CV5_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
       <def id="OUT5_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
@@ -178,16 +178,16 @@
     <def id="FREQUENCY_CV6_PARAM" xlink:href="#knob16" transform="translate(14.5 204)"/>
     <def xlink:href="#dial-centertick" transform="translate(2.5 192)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb"/>
-      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="output-background" width="34" height="108" rx="5"/>
+      <rect class="input-background" width="34" height="71.5" rx="5"/>
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 61.5)"/>
       <def id="LEVEL6_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <def id="FREQUENCY_CV6_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
       <def id="OUT6_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 </module>

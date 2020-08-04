@@ -112,58 +112,58 @@
     <def id="PHASE_PARAM" xlink:href="#button-small" transform="translate(9 27)"/>
   </g>
 
-  <g transform="translate(0 269)">
-    <rect width="205" height="47" rx="5" fill="#bbb" transform="translate(10 44)"/>
-    <rect width="171" height="91" rx="5" fill="#fafafa" transform="translate(10 0)"/>
-    <rect width="10" height="10" fill="#fafafa" transform="translate(171 81)"/>
+  <g class="io-group" transform="translate(0 269)">
+    <rect class="output-background" width="205" height="47" rx="5" transform="translate(10 44)"/>
+    <rect class="input-background" width="171" height="91" rx="5" transform="translate(10 0)"/>
+    <rect class="input-background-filler" width="10" height="10" transform="translate(171 81)"/>
 
     <g transform="translate(10 0)">
       <g transform="translate(3 0)">
         <def id="SYNC_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(3 40)">SYNC</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(3 40)">SYNC</text>
       </g>
       <g transform="translate(37 0)">
         <def id="PARTIALS_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(0.5 40)">PRTLS</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(0.5 40)">PRTLS</text>
       </g>
       <g transform="translate(71 0)">
         <def id="WIDTH_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(0.5 40)">WIDTH</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(0.5 40)">WIDTH</text>
       </g>
       <g transform="translate(105 0)">
         <def id="ODD_SKEW_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(5 40)">OSK</text>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(5 40)">OSK</text>
       </g>
       <g transform="translate(139 0)">
         <def id="EVEN_SKEW_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(5.5 40)">ESK</text>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(5.5 40)">ESK</text>
       </g>
     </g>
 
     <g transform="translate(10 44)">
       <g transform="translate(3 0)">
         <def id="PITCH_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(1 40)">V/OCT</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(1 40)">V/OCT</text>
       </g>
       <g transform="translate(37 0)">
         <def id="GAIN_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(2 40)">GAIN</text>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(2 40)">GAIN</text>
       </g>
       <g transform="translate(71 0)">
         <def id="DECAY_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(1 40)">DECAY</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(1 40)">DECAY</text>
       </g>
       <g transform="translate(105 0)">
         <def id="BALANCE_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(5.5 40)">BAL</text>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(5.5 40)">BAL</text>
       </g>
       <g transform="translate(139 0)">
         <def id="FILTER_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(3 40)">FLTR</text>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(3 40)">FLTR</text>
       </g>
       <g transform="translate(173 0)">
         <def id="AUDIO_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(5 40)">OUT</text>
+        <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(5 40)">OUT</text>
       </g>
     </g>
   </g>

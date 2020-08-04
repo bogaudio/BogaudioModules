@@ -14,7 +14,10 @@ text.brand {
   font-weight: bold;
 }
 
-path, polyline {
+polyline {
+  stroke: #333;
+}
+path {
   stroke: #333;
 }
 
@@ -29,6 +32,24 @@ polyline.module-border-middle {
 }
 polyline.module-border-outer {
   stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background {
+  fill: #fafafa;
+}
+rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background {
+  fill: #bbb;
+}
+rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
 }
 </style>
 
@@ -204,9 +225,9 @@ polyline.module-border-outer {
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 210)">D</text>
     <g transform="translate(0 223)">
-      <g transform="translate(5.5 0)">
-        <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)"/>
-        <rect width="34" height="76" rx="5" fill="#fafafa" transform="translate(0 -3)"/>
+      <g class="io-group" transform="translate(5.5 0)">
+        <rect class="input-background-filler" width="34" height="10" transform="translate(0 63)"/>
+        <rect class="input-background" width="34" height="76" rx="5" transform="translate(0 -3)"/>
         <g transform="translate(13.8 2)"><svg id="SELECT1_LIGHT">
       <rect width="6.4" height="6.4" fill="#0f0"/>
     </svg></g>
@@ -221,11 +242,11 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-        <text font-size="5pt" letter-spacing="1px" transform="translate(2.5 69)">SELECT</text>
+        <text class="input-label" font-size="5pt" letter-spacing="1px" transform="translate(2.5 69)">SELECT</text>
       </g>
-      <g transform="translate(5.5 73)">
-        <rect width="34" height="10" fill="#bbb" transform="translate(0 0)"/>
-        <rect width="34" height="33" rx="5" fill="#bbb"/>
+      <g class="io-group" transform="translate(5.5 73)">
+        <rect class="output-background-filler" width="34" height="10" transform="translate(0 0)"/>
+        <rect class="output-background" width="34" height="33" rx="5"/>
         <g transform="translate(5 4)"><svg id="SELECT1_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
@@ -392,9 +413,9 @@ polyline.module-border-outer {
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 210)">D</text>
     <g transform="translate(0 223)">
-      <g transform="translate(5.5 0)">
-        <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)"/>
-        <rect width="34" height="76" rx="5" fill="#fafafa" transform="translate(0 -3)"/>
+      <g class="io-group" transform="translate(5.5 0)">
+        <rect class="input-background-filler" width="34" height="10" transform="translate(0 63)"/>
+        <rect class="input-background" width="34" height="76" rx="5" transform="translate(0 -3)"/>
         <g transform="translate(13.8 2)"><svg id="SELECT2_LIGHT">
       <rect width="6.4" height="6.4" fill="#0f0"/>
     </svg></g>
@@ -409,11 +430,11 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-        <text font-size="5pt" letter-spacing="1px" transform="translate(2.5 69)">SELECT</text>
+        <text class="input-label" font-size="5pt" letter-spacing="1px" transform="translate(2.5 69)">SELECT</text>
       </g>
-      <g transform="translate(5.5 73)">
-        <rect width="34" height="10" fill="#bbb" transform="translate(0 0)"/>
-        <rect width="34" height="33" rx="5" fill="#bbb"/>
+      <g class="io-group" transform="translate(5.5 73)">
+        <rect class="output-background-filler" width="34" height="10" transform="translate(0 0)"/>
+        <rect class="output-background" width="34" height="33" rx="5"/>
         <g transform="translate(5 4)"><svg id="SELECT2_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
@@ -580,9 +601,9 @@ polyline.module-border-outer {
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 210)">D</text>
     <g transform="translate(0 223)">
-      <g transform="translate(5.5 0)">
-        <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)"/>
-        <rect width="34" height="76" rx="5" fill="#fafafa" transform="translate(0 -3)"/>
+      <g class="io-group" transform="translate(5.5 0)">
+        <rect class="input-background-filler" width="34" height="10" transform="translate(0 63)"/>
+        <rect class="input-background" width="34" height="76" rx="5" transform="translate(0 -3)"/>
         <g transform="translate(13.8 2)"><svg id="SELECT3_LIGHT">
       <rect width="6.4" height="6.4" fill="#0f0"/>
     </svg></g>
@@ -597,11 +618,11 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-        <text font-size="5pt" letter-spacing="1px" transform="translate(2.5 69)">SELECT</text>
+        <text class="input-label" font-size="5pt" letter-spacing="1px" transform="translate(2.5 69)">SELECT</text>
       </g>
-      <g transform="translate(5.5 73)">
-        <rect width="34" height="10" fill="#bbb" transform="translate(0 0)"/>
-        <rect width="34" height="33" rx="5" fill="#bbb"/>
+      <g class="io-group" transform="translate(5.5 73)">
+        <rect class="output-background-filler" width="34" height="10" transform="translate(0 0)"/>
+        <rect class="output-background" width="34" height="33" rx="5"/>
         <g transform="translate(5 4)"><svg id="SELECT3_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
@@ -768,9 +789,9 @@ polyline.module-border-outer {
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 210)">D</text>
     <g transform="translate(0 223)">
-      <g transform="translate(5.5 0)">
-        <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)"/>
-        <rect width="34" height="76" rx="5" fill="#fafafa" transform="translate(0 -3)"/>
+      <g class="io-group" transform="translate(5.5 0)">
+        <rect class="input-background-filler" width="34" height="10" transform="translate(0 63)"/>
+        <rect class="input-background" width="34" height="76" rx="5" transform="translate(0 -3)"/>
         <g transform="translate(13.8 2)"><svg id="SELECT4_LIGHT">
       <rect width="6.4" height="6.4" fill="#0f0"/>
     </svg></g>
@@ -785,11 +806,11 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-        <text font-size="5pt" letter-spacing="1px" transform="translate(2.5 69)">SELECT</text>
+        <text class="input-label" font-size="5pt" letter-spacing="1px" transform="translate(2.5 69)">SELECT</text>
       </g>
-      <g transform="translate(5.5 73)">
-        <rect width="34" height="10" fill="#bbb" transform="translate(0 0)"/>
-        <rect width="34" height="33" rx="5" fill="#bbb"/>
+      <g class="io-group" transform="translate(5.5 73)">
+        <rect class="output-background-filler" width="34" height="10" transform="translate(0 0)"/>
+        <rect class="output-background" width="34" height="33" rx="5"/>
         <g transform="translate(5 4)"><svg id="SELECT4_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>

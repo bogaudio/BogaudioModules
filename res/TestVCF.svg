@@ -248,13 +248,13 @@
     </g>
     <g transform="translate(15,39)" id="g60854"/>
   </g>
-  <path d="m 50,315 h 48 c 2.77,0 5,2.23 5,5 v 30 c 0,2.77 -2.23,5 -5,5 H 50 c -2.77,0 -5,-2.23 -5,-5 v -30 c 0,-2.77 2.23,-5 5,-5 z" style="fill:#fafafa" id="rect60860"/>
-  <path d="m 88,315 h 40 c 2.77,0 5,2.23 5,5 v 30 c 0,2.77 -2.23,5 -5,5 H 88 c -2.77,0 -5,-2.23 -5,-5 v -30 c 0,-2.77 2.23,-5 5,-5 z" style="fill:#bbbbbb" id="rect60862"/>
-  <path d="m 74,315 h 20 v 40 H 74 Z" style="fill:#bbbbbb" id="rect60864"/>
+  <path class="input-background" d="m 50,315 h 48 c 2.77,0 5,2.23 5,5 v 30 c 0,2.77 -2.23,5 -5,5 H 50 c -2.77,0 -5,-2.23 -5,-5 v -30 c 0,-2.77 2.23,-5 5,-5 z" style="fill:#fafafa" id="rect60860"/>
+  <path class="output-background" d="m 88,315 h 40 c 2.77,0 5,2.23 5,5 v 30 c 0,2.77 -2.23,5 -5,5 H 88 c -2.77,0 -5,-2.23 -5,-5 v -30 c 0,-2.77 2.23,-5 5,-5 z" style="fill:#bbbbbb" id="rect60862"/>
+  <path class="output-background-filler" d="m 74,315 h 20 v 40 H 74 Z" style="fill:#bbbbbb" id="rect60864"/>
   <g transform="translate(47.5,318)" id="g60866"/>
   <g transform="translate(76.5,318)" id="g60868"/>
   <g transform="translate(105.5,318)" id="g60870"/>
-  <g style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text60872" aria-label="IN">
+  <g class="output-label" style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text60872" aria-label="IN">
     <path id="path61059" style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 56.753906,351 h -1.171875 v -5.6875 h 1.171875 z"/>
     <path id="path61061" style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 64.460937,351 h -1.171875 l -2.28125,-3.74219 V 351 h -1.171875 v -5.6875 h 1.171875 l 2.285157,3.75 v -3.75 h 1.167968 z"/>
   </g>

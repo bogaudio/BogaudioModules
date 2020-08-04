@@ -4,11 +4,11 @@
 
   <def xlink:href="#module" var-name="SWITCH1616"/>
 
-  <rect width="56" height="302" rx="5" fill="#fafafa" transform="translate(5.5 9)"/>
-  <rect width="302" height="56" rx="5" fill="#bbb" transform="translate(22.5 302)"/>
-  <rect width="28" height="10" rx="5" fill="#fafafa" transform="translate(10.5 301)"/>
-  <rect width="10" height="5" fill="#fafafa" transform="translate(36.5 302)"/>
-  <rect width="28" height="10" rx="5" fill="#bbb" transform="translate(38.5 302)"/>
+  <rect class="input-background" width="56" height="302" rx="5" transform="translate(5.5 9)"/>
+  <rect class="output-background" width="302" height="56" rx="5" transform="translate(22.5 302)"/>
+  <rect class="input-background" width="28" height="10" rx="5" transform="translate(10.5 301)"/>
+  <rect class="input-background-filler" width="10" height="5" transform="translate(36.5 302)"/>
+  <rect class="output-background" width="28" height="10" rx="5" transform="translate(38.5 302)"/>
 
   <g transform="translate(5.5 9)">
     <def id="IN2_INPUT" xlink:href="#input" transform="translate(4 22)"/>

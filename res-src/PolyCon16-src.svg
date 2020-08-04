@@ -114,13 +114,13 @@
     <def xlink:href="#dial-channels-small" transform="translate(0 0)"/>
   </g>
 
-  <g transform="translate(52 318)">
-    <rect width="60" height="40" rx="5" fill="#fafafa"/>
-    <rect width="24" height="40" rx="5" fill="#bbb" transform="translate(38)"/>
-    <rect width="20" height="40" fill="#bbb" transform="translate(31)"/>
+  <g class="io-group" transform="translate(52 318)">
+    <rect class="input-background" width="60" height="40" rx="5"/>
+    <rect class="output-background" width="24" height="40" rx="5" transform="translate(38)"/>
+    <rect class="output-background-filler" width="20" height="40" transform="translate(31)"/>
     <def id="CHANNELS_INPUT" xlink:href="#input" transform="translate(3.5 4)"/>
     <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(34.5 4)"/>
-    <text font-size="6pt" letter-spacing="1px" transform="translate(3 36)">CHAN</text>
+    <text class="output-label" font-size="6pt" letter-spacing="1px" transform="translate(3 36)">CHAN</text>
     <text font-size="6pt" letter-spacing="2px" transform="translate(36 36)">OUT</text>
   </g>
 </module>

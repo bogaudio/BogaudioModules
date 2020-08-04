@@ -116,10 +116,10 @@
     <path id="path28466" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 26.82292,247.02344 H 25.110679 L 24.785158,248 h -1.038412 l 1.764324,-4.73959 h 0.904948 L 28.190108,248 h -1.038412 z m -1.448569,-0.79102 h 1.184897 l -0.595704,-1.77409 z"/>
     <path id="path28468" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 34.493495,248 H 33.516932 L 31.61589,244.88151 V 248 h -0.976563 v -4.73959 h 0.976563 l 1.904297,3.12501 v -3.12501 h 0.973308 z"/>
   </g>
-  <g transform="translate(9.5,252)" id="g26481">
-    <path d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 98 c 0,2.77 -2.23,5 -5,5 H 5 c -2.77,0 -5,-2.23 -5,-5 V 5 C 0,2.23 2.23,0 5,0 Z" style="fill:#fafafa" id="rect26467"/>
+  <g class="io-group" transform="translate(9.5,252)" id="g26481">
+    <path class="input-background" d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 98 c 0,2.77 -2.23,5 -5,5 H 5 c -2.77,0 -5,-2.23 -5,-5 V 5 C 0,2.23 2.23,0 5,0 Z" style="fill:#fafafa" id="rect26467"/>
     <g transform="translate(5,3)" id="g26469"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26471" transform="translate(3.5,35)" aria-label="LEVEL">
+    <g class="input-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26471" transform="translate(3.5,35)" aria-label="LEVEL">
       <path id="path28441" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.3997403,-0.78450558 H 3.4733089 V 0 H 0.42317729 V -4.7395856 H 1.3997403 Z"/>
       <path id="path28443" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 8.8815136,-2.0540374 H 7.0065127 v 1.26953182 H 9.2070346 V 0 H 6.0299497 v -4.7395856 h 3.1705744 v 0.791016 H 7.0065127 v 1.1295578 h 1.8750009 z"/>
       <path id="path28445" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 13.531255,-1.1751308 1.074219,-3.5644548 h 1.08724 L 14.042322,0 h -1.01888 l -1.643881,-4.7395856 h 1.083985 z"/>
@@ -127,13 +127,13 @@
       <path id="path28449" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 24.868498,-0.78450558 h 2.073569 V 0 h -3.050132 v -4.7395856 h 0.976563 z"/>
     </g>
     <g transform="translate(5,38)" id="g26473"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26475" transform="translate(8.5,70)" aria-label="PAN">
+    <g class="input-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26475" transform="translate(8.5,70)" aria-label="PAN">
       <path id="path28452" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.3997403,-1.6699227 V 0 H 0.42317729 V -4.7395856 H 2.2721365 q 0.5338544,0 0.9375004,0.1953126 0.4069013,0.1953126 0.6250003,0.5566409 0.2180991,0.3580731 0.2180991,0.8170577 0,0.6966149 -0.4785158,1.1002609 -0.4752607,0.4003908 -1.31836,0.4003908 z m 0,-0.791016 h 0.8723962 q 0.38737,0 0.589193,-0.1822917 0.2050782,-0.1822918 0.2050782,-0.5208336 0,-0.3483075 -0.2050782,-0.5631513 Q 2.6562513,-3.9420592 2.294923,-3.9485696 H 1.3997403 Z"/>
       <path id="path28454" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 8.8229197,-0.97656297 H 7.1106793 L 6.7851583,0 H 5.7467464 L 7.5110701,-4.7395856 H 8.4160185 L 10.190108,0 H 9.1516959 Z M 7.3743513,-1.767579 H 8.5592477 L 7.9635443,-3.5416684 Z"/>
       <path id="path28456" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 16.493495,0 H 15.516932 L 13.61589,-3.1184911 V 0 h -0.976563 v -4.7395856 h 0.976563 l 1.904297,3.1250015 v -3.1250015 h 0.973308 z"/>
     </g>
     <g transform="translate(5,73)" id="g26477"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26479" transform="translate(12.5,105)" aria-label="IN">
+    <g class="input-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26479" transform="translate(12.5,105)" aria-label="IN">
       <path id="path28459" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.4615892,0 H 0.48502627 V -4.7395856 H 1.4615892 Z"/>
       <path id="path28461" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 8.2174508,0 H 7.2408878 L 5.3398452,-3.1184911 V 0 h -0.976563 v -4.7395856 h 0.976563 l 1.9042978,3.1250015 v -3.1250015 h 0.9733078 z"/>
     </g>
@@ -222,10 +222,10 @@
     <path id="path28372" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 70.82292,247.02344 H 69.110679 L 68.785158,248 h -1.038412 l 1.764324,-4.73959 h 0.904948 L 72.190108,248 h -1.038412 z m -1.448569,-0.79102 h 1.184897 l -0.595704,-1.77409 z"/>
     <path id="path28374" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 78.493495,248 H 77.516932 L 75.61589,244.88151 V 248 h -0.976563 v -4.73959 h 0.976563 l 1.904297,3.12501 v -3.12501 h 0.973308 z"/>
   </g>
-  <g transform="translate(53.5,252)" id="g26579">
-    <path d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 98 c 0,2.77 -2.23,5 -5,5 H 5 c -2.77,0 -5,-2.23 -5,-5 V 5 C 0,2.23 2.23,0 5,0 Z" style="fill:#fafafa" id="rect26565"/>
+  <g class="io-group" transform="translate(53.5,252)" id="g26579">
+    <path class="input-background" d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 98 c 0,2.77 -2.23,5 -5,5 H 5 c -2.77,0 -5,-2.23 -5,-5 V 5 C 0,2.23 2.23,0 5,0 Z" style="fill:#fafafa" id="rect26565"/>
     <g transform="translate(5,3)" id="g26567"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26569" transform="translate(3.5,35)" aria-label="LEVEL">
+    <g class="input-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26569" transform="translate(3.5,35)" aria-label="LEVEL">
       <path id="path28347" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.3997403,-0.78450558 H 3.4733089 V 0 H 0.42317729 V -4.7395856 H 1.3997403 Z"/>
       <path id="path28349" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 8.8815136,-2.0540374 H 7.0065127 v 1.26953182 H 9.2070346 V 0 H 6.0299497 v -4.7395856 h 3.1705744 v 0.791016 H 7.0065127 v 1.1295578 h 1.8750009 z"/>
       <path id="path28351" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 13.531255,-1.1751308 1.074219,-3.5644548 h 1.08724 L 14.042322,0 h -1.01888 l -1.643881,-4.7395856 h 1.083985 z"/>
@@ -233,13 +233,13 @@
       <path id="path28355" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 24.868498,-0.78450558 h 2.073569 V 0 h -3.050132 v -4.7395856 h 0.976563 z"/>
     </g>
     <g transform="translate(5,38)" id="g26571"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26573" transform="translate(8.5,70)" aria-label="PAN">
+    <g class="input-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26573" transform="translate(8.5,70)" aria-label="PAN">
       <path id="path28358" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.3997403,-1.6699227 V 0 H 0.42317729 V -4.7395856 H 2.2721365 q 0.5338544,0 0.9375004,0.1953126 0.4069013,0.1953126 0.6250003,0.5566409 0.2180991,0.3580731 0.2180991,0.8170577 0,0.6966149 -0.4785158,1.1002609 -0.4752607,0.4003908 -1.31836,0.4003908 z m 0,-0.791016 h 0.8723962 q 0.38737,0 0.589193,-0.1822917 0.2050782,-0.1822918 0.2050782,-0.5208336 0,-0.3483075 -0.2050782,-0.5631513 Q 2.6562513,-3.9420592 2.294923,-3.9485696 H 1.3997403 Z"/>
       <path id="path28360" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 8.8229197,-0.97656297 H 7.1106793 L 6.7851583,0 H 5.7467464 L 7.5110701,-4.7395856 H 8.4160185 L 10.190108,0 H 9.1516959 Z M 7.3743513,-1.767579 H 8.5592477 L 7.9635443,-3.5416684 Z"/>
       <path id="path28362" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 16.493495,0 H 15.516932 L 13.61589,-3.1184911 V 0 h -0.976563 v -4.7395856 h 0.976563 l 1.904297,3.1250015 v -3.1250015 h 0.973308 z"/>
     </g>
     <g transform="translate(5,73)" id="g26575"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26577" transform="translate(12.5,105)" aria-label="IN">
+    <g class="input-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26577" transform="translate(12.5,105)" aria-label="IN">
       <path id="path28365" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.4615892,0 H 0.48502627 V -4.7395856 H 1.4615892 Z"/>
       <path id="path28367" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 8.2174508,0 H 7.2408878 L 5.3398452,-3.1184911 V 0 h -0.976563 v -4.7395856 h 0.976563 l 1.9042978,3.1250015 v -3.1250015 h 0.9733078 z"/>
     </g>
@@ -328,10 +328,10 @@
     <path id="path28278" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 114.82292,247.02344 h -1.71224 L 112.78516,248 h -1.03841 l 1.76432,-4.73959 h 0.90495 L 116.19011,248 h -1.03841 z m -1.44857,-0.79102 h 1.1849 l -0.59571,-1.77409 z"/>
     <path id="path28280" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 122.4935,248 h -0.97657 l -1.90104,-3.11849 V 248 h -0.97656 v -4.73959 h 0.97656 l 1.9043,3.12501 v -3.12501 h 0.97331 z"/>
   </g>
-  <g transform="translate(97.5,252)" id="g26677">
-    <path d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 98 c 0,2.77 -2.23,5 -5,5 H 5 c -2.77,0 -5,-2.23 -5,-5 V 5 C 0,2.23 2.23,0 5,0 Z" style="fill:#fafafa" id="rect26663"/>
+  <g class="io-group" transform="translate(97.5,252)" id="g26677">
+    <path class="input-background" d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 98 c 0,2.77 -2.23,5 -5,5 H 5 c -2.77,0 -5,-2.23 -5,-5 V 5 C 0,2.23 2.23,0 5,0 Z" style="fill:#fafafa" id="rect26663"/>
     <g transform="translate(5,3)" id="g26665"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26667" transform="translate(3.5,35)" aria-label="LEVEL">
+    <g class="input-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26667" transform="translate(3.5,35)" aria-label="LEVEL">
       <path id="path28253" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.3997403,-0.78450558 H 3.4733089 V 0 H 0.42317729 V -4.7395856 H 1.3997403 Z"/>
       <path id="path28255" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 8.8815136,-2.0540374 H 7.0065127 v 1.26953182 H 9.2070346 V 0 H 6.0299497 v -4.7395856 h 3.1705744 v 0.791016 H 7.0065127 v 1.1295578 h 1.8750009 z"/>
       <path id="path28257" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 13.531255,-1.1751308 1.074219,-3.5644548 h 1.08724 L 14.042322,0 h -1.01888 l -1.643881,-4.7395856 h 1.083985 z"/>
@@ -339,13 +339,13 @@
       <path id="path28261" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 24.868498,-0.78450558 h 2.073569 V 0 h -3.050132 v -4.7395856 h 0.976563 z"/>
     </g>
     <g transform="translate(5,38)" id="g26669"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26671" transform="translate(8.5,70)" aria-label="PAN">
+    <g class="input-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26671" transform="translate(8.5,70)" aria-label="PAN">
       <path id="path28264" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.3997403,-1.6699227 V 0 H 0.42317729 V -4.7395856 H 2.2721365 q 0.5338544,0 0.9375004,0.1953126 0.4069013,0.1953126 0.6250003,0.5566409 0.2180991,0.3580731 0.2180991,0.8170577 0,0.6966149 -0.4785158,1.1002609 -0.4752607,0.4003908 -1.31836,0.4003908 z m 0,-0.791016 h 0.8723962 q 0.38737,0 0.589193,-0.1822917 0.2050782,-0.1822918 0.2050782,-0.5208336 0,-0.3483075 -0.2050782,-0.5631513 Q 2.6562513,-3.9420592 2.294923,-3.9485696 H 1.3997403 Z"/>
       <path id="path28266" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 8.8229197,-0.97656297 H 7.1106793 L 6.7851583,0 H 5.7467464 L 7.5110701,-4.7395856 H 8.4160185 L 10.190108,0 H 9.1516959 Z M 7.3743513,-1.767579 H 8.5592477 L 7.9635443,-3.5416684 Z"/>
       <path id="path28268" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 16.493495,0 H 15.516932 L 13.61589,-3.1184911 V 0 h -0.976563 v -4.7395856 h 0.976563 l 1.904297,3.1250015 v -3.1250015 h 0.973308 z"/>
     </g>
     <g transform="translate(5,73)" id="g26673"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26675" transform="translate(12.5,105)" aria-label="IN">
+    <g class="input-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26675" transform="translate(12.5,105)" aria-label="IN">
       <path id="path28271" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.4615892,0 H 0.48502627 V -4.7395856 H 1.4615892 Z"/>
       <path id="path28273" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 8.2174508,0 H 7.2408878 L 5.3398452,-3.1184911 V 0 h -0.976563 v -4.7395856 h 0.976563 l 1.9042978,3.1250015 v -3.1250015 h 0.9733078 z"/>
     </g>
@@ -434,10 +434,10 @@
     <path id="path28184" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 158.82292,247.02344 h -1.71224 L 156.78516,248 h -1.03841 l 1.76432,-4.73959 h 0.90495 L 160.19011,248 h -1.03841 z m -1.44857,-0.79102 h 1.1849 l -0.59571,-1.77409 z"/>
     <path id="path28186" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 166.4935,248 h -0.97657 l -1.90104,-3.11849 V 248 h -0.97656 v -4.73959 h 0.97656 l 1.9043,3.12501 v -3.12501 h 0.97331 z"/>
   </g>
-  <g transform="translate(141.5,252)" id="g26775">
-    <path d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 98 c 0,2.77 -2.23,5 -5,5 H 5 c -2.77,0 -5,-2.23 -5,-5 V 5 C 0,2.23 2.23,0 5,0 Z" style="fill:#fafafa" id="rect26761"/>
+  <g class="io-group" transform="translate(141.5,252)" id="g26775">
+    <path class="input-background" d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 98 c 0,2.77 -2.23,5 -5,5 H 5 c -2.77,0 -5,-2.23 -5,-5 V 5 C 0,2.23 2.23,0 5,0 Z" style="fill:#fafafa" id="rect26761"/>
     <g transform="translate(5,3)" id="g26763"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26765" transform="translate(3.5,35)" aria-label="LEVEL">
+    <g class="input-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26765" transform="translate(3.5,35)" aria-label="LEVEL">
       <path id="path28159" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.3997403,-0.78450558 H 3.4733089 V 0 H 0.42317729 V -4.7395856 H 1.3997403 Z"/>
       <path id="path28161" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 8.8815136,-2.0540374 H 7.0065127 v 1.26953182 H 9.2070346 V 0 H 6.0299497 v -4.7395856 h 3.1705744 v 0.791016 H 7.0065127 v 1.1295578 h 1.8750009 z"/>
       <path id="path28163" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 13.531255,-1.1751308 1.074219,-3.5644548 h 1.08724 L 14.042322,0 h -1.01888 l -1.643881,-4.7395856 h 1.083985 z"/>
@@ -445,13 +445,13 @@
       <path id="path28167" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 24.868498,-0.78450558 h 2.073569 V 0 h -3.050132 v -4.7395856 h 0.976563 z"/>
     </g>
     <g transform="translate(5,38)" id="g26767"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26769" transform="translate(8.5,70)" aria-label="PAN">
+    <g class="input-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26769" transform="translate(8.5,70)" aria-label="PAN">
       <path id="path28170" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.3997403,-1.6699227 V 0 H 0.42317729 V -4.7395856 H 2.2721365 q 0.5338544,0 0.9375004,0.1953126 0.4069013,0.1953126 0.6250003,0.5566409 0.2180991,0.3580731 0.2180991,0.8170577 0,0.6966149 -0.4785158,1.1002609 -0.4752607,0.4003908 -1.31836,0.4003908 z m 0,-0.791016 h 0.8723962 q 0.38737,0 0.589193,-0.1822917 0.2050782,-0.1822918 0.2050782,-0.5208336 0,-0.3483075 -0.2050782,-0.5631513 Q 2.6562513,-3.9420592 2.294923,-3.9485696 H 1.3997403 Z"/>
       <path id="path28172" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 8.8229197,-0.97656297 H 7.1106793 L 6.7851583,0 H 5.7467464 L 7.5110701,-4.7395856 H 8.4160185 L 10.190108,0 H 9.1516959 Z M 7.3743513,-1.767579 H 8.5592477 L 7.9635443,-3.5416684 Z"/>
       <path id="path28174" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 16.493495,0 H 15.516932 L 13.61589,-3.1184911 V 0 h -0.976563 v -4.7395856 h 0.976563 l 1.904297,3.1250015 v -3.1250015 h 0.973308 z"/>
     </g>
     <g transform="translate(5,73)" id="g26771"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26773" transform="translate(12.5,105)" aria-label="IN">
+    <g class="input-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26773" transform="translate(12.5,105)" aria-label="IN">
       <path id="path28177" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.4615892,0 H 0.48502627 V -4.7395856 H 1.4615892 Z"/>
       <path id="path28179" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 8.2174508,0 H 7.2408878 L 5.3398452,-3.1184911 V 0 h -0.976563 v -4.7395856 h 0.976563 l 1.9042978,3.1250015 v -3.1250015 h 0.9733078 z"/>
     </g>
@@ -540,10 +540,10 @@
     <path id="path28090" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 202.82292,247.02344 h -1.71224 L 200.78516,248 h -1.03841 l 1.76432,-4.73959 h 0.90495 L 204.19011,248 h -1.03841 z m -1.44857,-0.79102 h 1.1849 l -0.59571,-1.77409 z"/>
     <path id="path28092" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 210.4935,248 h -0.97657 l -1.90104,-3.11849 V 248 h -0.97656 v -4.73959 h 0.97656 l 1.9043,3.12501 v -3.12501 h 0.97331 z"/>
   </g>
-  <g transform="translate(185.5,252)" id="g26873">
-    <path d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 98 c 0,2.77 -2.23,5 -5,5 H 5 c -2.77,0 -5,-2.23 -5,-5 V 5 C 0,2.23 2.23,0 5,0 Z" style="fill:#fafafa" id="rect26859"/>
+  <g class="io-group" transform="translate(185.5,252)" id="g26873">
+    <path class="input-background" d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 98 c 0,2.77 -2.23,5 -5,5 H 5 c -2.77,0 -5,-2.23 -5,-5 V 5 C 0,2.23 2.23,0 5,0 Z" style="fill:#fafafa" id="rect26859"/>
     <g transform="translate(5,3)" id="g26861"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26863" transform="translate(3.5,35)" aria-label="LEVEL">
+    <g class="input-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26863" transform="translate(3.5,35)" aria-label="LEVEL">
       <path id="path28065" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.3997403,-0.78450558 H 3.4733089 V 0 H 0.42317729 V -4.7395856 H 1.3997403 Z"/>
       <path id="path28067" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 8.8815136,-2.0540374 H 7.0065127 v 1.26953182 H 9.2070346 V 0 H 6.0299497 v -4.7395856 h 3.1705744 v 0.791016 H 7.0065127 v 1.1295578 h 1.8750009 z"/>
       <path id="path28069" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 13.531255,-1.1751308 1.074219,-3.5644548 h 1.08724 L 14.042322,0 h -1.01888 l -1.643881,-4.7395856 h 1.083985 z"/>
@@ -551,13 +551,13 @@
       <path id="path28073" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 24.868498,-0.78450558 h 2.073569 V 0 h -3.050132 v -4.7395856 h 0.976563 z"/>
     </g>
     <g transform="translate(5,38)" id="g26865"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26867" transform="translate(8.5,70)" aria-label="PAN">
+    <g class="input-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26867" transform="translate(8.5,70)" aria-label="PAN">
       <path id="path28076" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.3997403,-1.6699227 V 0 H 0.42317729 V -4.7395856 H 2.2721365 q 0.5338544,0 0.9375004,0.1953126 0.4069013,0.1953126 0.6250003,0.5566409 0.2180991,0.3580731 0.2180991,0.8170577 0,0.6966149 -0.4785158,1.1002609 -0.4752607,0.4003908 -1.31836,0.4003908 z m 0,-0.791016 h 0.8723962 q 0.38737,0 0.589193,-0.1822917 0.2050782,-0.1822918 0.2050782,-0.5208336 0,-0.3483075 -0.2050782,-0.5631513 Q 2.6562513,-3.9420592 2.294923,-3.9485696 H 1.3997403 Z"/>
       <path id="path28078" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 8.8229197,-0.97656297 H 7.1106793 L 6.7851583,0 H 5.7467464 L 7.5110701,-4.7395856 H 8.4160185 L 10.190108,0 H 9.1516959 Z M 7.3743513,-1.767579 H 8.5592477 L 7.9635443,-3.5416684 Z"/>
       <path id="path28080" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 16.493495,0 H 15.516932 L 13.61589,-3.1184911 V 0 h -0.976563 v -4.7395856 h 0.976563 l 1.904297,3.1250015 v -3.1250015 h 0.973308 z"/>
     </g>
     <g transform="translate(5,73)" id="g26869"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26871" transform="translate(12.5,105)" aria-label="IN">
+    <g class="input-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26871" transform="translate(12.5,105)" aria-label="IN">
       <path id="path28083" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.4615892,0 H 0.48502627 V -4.7395856 H 1.4615892 Z"/>
       <path id="path28085" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 8.2174508,0 H 7.2408878 L 5.3398452,-3.1184911 V 0 h -0.976563 v -4.7395856 h 0.976563 l 1.9042978,3.1250015 v -3.1250015 h 0.9733078 z"/>
     </g>
@@ -646,10 +646,10 @@
     <path id="path27996" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 246.82292,247.02344 h -1.71224 L 244.78516,248 h -1.03841 l 1.76432,-4.73959 h 0.90495 L 248.19011,248 h -1.03841 z m -1.44857,-0.79102 h 1.1849 l -0.59571,-1.77409 z"/>
     <path id="path27998" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 254.4935,248 h -0.97657 l -1.90104,-3.11849 V 248 h -0.97656 v -4.73959 h 0.97656 l 1.9043,3.12501 v -3.12501 h 0.97331 z"/>
   </g>
-  <g transform="translate(229.5,252)" id="g26971">
-    <path d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 98 c 0,2.77 -2.23,5 -5,5 H 5 c -2.77,0 -5,-2.23 -5,-5 V 5 C 0,2.23 2.23,0 5,0 Z" style="fill:#fafafa" id="rect26957"/>
+  <g class="io-group" transform="translate(229.5,252)" id="g26971">
+    <path class="input-background" d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 98 c 0,2.77 -2.23,5 -5,5 H 5 c -2.77,0 -5,-2.23 -5,-5 V 5 C 0,2.23 2.23,0 5,0 Z" style="fill:#fafafa" id="rect26957"/>
     <g transform="translate(5,3)" id="g26959"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26961" transform="translate(3.5,35)" aria-label="LEVEL">
+    <g class="input-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26961" transform="translate(3.5,35)" aria-label="LEVEL">
       <path id="path27971" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.3997403,-0.78450558 H 3.4733089 V 0 H 0.42317729 V -4.7395856 H 1.3997403 Z"/>
       <path id="path27973" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 8.8815136,-2.0540374 H 7.0065127 v 1.26953182 H 9.2070346 V 0 H 6.0299497 v -4.7395856 h 3.1705744 v 0.791016 H 7.0065127 v 1.1295578 h 1.8750009 z"/>
       <path id="path27975" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 13.531255,-1.1751308 1.074219,-3.5644548 h 1.08724 L 14.042322,0 h -1.01888 l -1.643881,-4.7395856 h 1.083985 z"/>
@@ -657,13 +657,13 @@
       <path id="path27979" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 24.868498,-0.78450558 h 2.073569 V 0 h -3.050132 v -4.7395856 h 0.976563 z"/>
     </g>
     <g transform="translate(5,38)" id="g26963"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26965" transform="translate(8.5,70)" aria-label="PAN">
+    <g class="input-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26965" transform="translate(8.5,70)" aria-label="PAN">
       <path id="path27982" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.3997403,-1.6699227 V 0 H 0.42317729 V -4.7395856 H 2.2721365 q 0.5338544,0 0.9375004,0.1953126 0.4069013,0.1953126 0.6250003,0.5566409 0.2180991,0.3580731 0.2180991,0.8170577 0,0.6966149 -0.4785158,1.1002609 -0.4752607,0.4003908 -1.31836,0.4003908 z m 0,-0.791016 h 0.8723962 q 0.38737,0 0.589193,-0.1822917 0.2050782,-0.1822918 0.2050782,-0.5208336 0,-0.3483075 -0.2050782,-0.5631513 Q 2.6562513,-3.9420592 2.294923,-3.9485696 H 1.3997403 Z"/>
       <path id="path27984" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 8.8229197,-0.97656297 H 7.1106793 L 6.7851583,0 H 5.7467464 L 7.5110701,-4.7395856 H 8.4160185 L 10.190108,0 H 9.1516959 Z M 7.3743513,-1.767579 H 8.5592477 L 7.9635443,-3.5416684 Z"/>
       <path id="path27986" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 16.493495,0 H 15.516932 L 13.61589,-3.1184911 V 0 h -0.976563 v -4.7395856 h 0.976563 l 1.904297,3.1250015 v -3.1250015 h 0.973308 z"/>
     </g>
     <g transform="translate(5,73)" id="g26967"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26969" transform="translate(12.5,105)" aria-label="IN">
+    <g class="input-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text26969" transform="translate(12.5,105)" aria-label="IN">
       <path id="path27989" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.4615892,0 H 0.48502627 V -4.7395856 H 1.4615892 Z"/>
       <path id="path27991" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 8.2174508,0 H 7.2408878 L 5.3398452,-3.1184911 V 0 h -0.976563 v -4.7395856 h 0.976563 l 1.9042978,3.1250015 v -3.1250015 h 0.9733078 z"/>
     </g>
@@ -752,10 +752,10 @@
     <path id="path27902" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 290.82292,247.02344 h -1.71224 L 288.78516,248 h -1.03841 l 1.76432,-4.73959 h 0.90495 L 292.19011,248 h -1.03841 z m -1.44857,-0.79102 h 1.1849 l -0.59571,-1.77409 z"/>
     <path id="path27904" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 298.4935,248 h -0.97657 l -1.90104,-3.11849 V 248 h -0.97656 v -4.73959 h 0.97656 l 1.9043,3.12501 v -3.12501 h 0.97331 z"/>
   </g>
-  <g transform="translate(273.5,252)" id="g27069">
-    <path d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 98 c 0,2.77 -2.23,5 -5,5 H 5 c -2.77,0 -5,-2.23 -5,-5 V 5 C 0,2.23 2.23,0 5,0 Z" style="fill:#fafafa" id="rect27055"/>
+  <g class="io-group" transform="translate(273.5,252)" id="g27069">
+    <path class="input-background" d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 98 c 0,2.77 -2.23,5 -5,5 H 5 c -2.77,0 -5,-2.23 -5,-5 V 5 C 0,2.23 2.23,0 5,0 Z" style="fill:#fafafa" id="rect27055"/>
     <g transform="translate(5,3)" id="g27057"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text27059" transform="translate(3.5,35)" aria-label="LEVEL">
+    <g class="input-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text27059" transform="translate(3.5,35)" aria-label="LEVEL">
       <path id="path27877" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.3997403,-0.78450558 H 3.4733089 V 0 H 0.42317729 V -4.7395856 H 1.3997403 Z"/>
       <path id="path27879" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 8.8815136,-2.0540374 H 7.0065127 v 1.26953182 H 9.2070346 V 0 H 6.0299497 v -4.7395856 h 3.1705744 v 0.791016 H 7.0065127 v 1.1295578 h 1.8750009 z"/>
       <path id="path27881" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 13.531255,-1.1751308 1.074219,-3.5644548 h 1.08724 L 14.042322,0 h -1.01888 l -1.643881,-4.7395856 h 1.083985 z"/>
@@ -763,13 +763,13 @@
       <path id="path27885" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 24.868498,-0.78450558 h 2.073569 V 0 h -3.050132 v -4.7395856 h 0.976563 z"/>
     </g>
     <g transform="translate(5,38)" id="g27061"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text27063" transform="translate(8.5,70)" aria-label="PAN">
+    <g class="input-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text27063" transform="translate(8.5,70)" aria-label="PAN">
       <path id="path27888" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.3997403,-1.6699227 V 0 H 0.42317729 V -4.7395856 H 2.2721365 q 0.5338544,0 0.9375004,0.1953126 0.4069013,0.1953126 0.6250003,0.5566409 0.2180991,0.3580731 0.2180991,0.8170577 0,0.6966149 -0.4785158,1.1002609 -0.4752607,0.4003908 -1.31836,0.4003908 z m 0,-0.791016 h 0.8723962 q 0.38737,0 0.589193,-0.1822917 0.2050782,-0.1822918 0.2050782,-0.5208336 0,-0.3483075 -0.2050782,-0.5631513 Q 2.6562513,-3.9420592 2.294923,-3.9485696 H 1.3997403 Z"/>
       <path id="path27890" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 8.8229197,-0.97656297 H 7.1106793 L 6.7851583,0 H 5.7467464 L 7.5110701,-4.7395856 H 8.4160185 L 10.190108,0 H 9.1516959 Z M 7.3743513,-1.767579 H 8.5592477 L 7.9635443,-3.5416684 Z"/>
       <path id="path27892" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 16.493495,0 H 15.516932 L 13.61589,-3.1184911 V 0 h -0.976563 v -4.7395856 h 0.976563 l 1.904297,3.1250015 v -3.1250015 h 0.973308 z"/>
     </g>
     <g transform="translate(5,73)" id="g27065"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text27067" transform="translate(12.5,105)" aria-label="IN">
+    <g class="input-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text27067" transform="translate(12.5,105)" aria-label="IN">
       <path id="path27895" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.4615892,0 H 0.48502627 V -4.7395856 H 1.4615892 Z"/>
       <path id="path27897" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 8.2174508,0 H 7.2408878 L 5.3398452,-3.1184911 V 0 h -0.976563 v -4.7395856 h 0.976563 l 1.9042978,3.1250015 v -3.1250015 h 0.9733078 z"/>
     </g>
@@ -858,10 +858,10 @@
     <path id="path27808" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 334.82292,247.02344 h -1.71224 L 332.78516,248 h -1.03841 l 1.76432,-4.73959 h 0.90495 L 336.19011,248 h -1.03841 z m -1.44857,-0.79102 h 1.1849 l -0.59571,-1.77409 z"/>
     <path id="path27810" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 342.4935,248 h -0.97657 l -1.90104,-3.11849 V 248 h -0.97656 v -4.73959 h 0.97656 l 1.9043,3.12501 v -3.12501 h 0.97331 z"/>
   </g>
-  <g transform="translate(317.5,252)" id="g27167">
-    <path d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 98 c 0,2.77 -2.23,5 -5,5 H 5 c -2.77,0 -5,-2.23 -5,-5 V 5 C 0,2.23 2.23,0 5,0 Z" style="fill:#fafafa" id="rect27153"/>
+  <g class="io-group" transform="translate(317.5,252)" id="g27167">
+    <path class="input-background" d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 98 c 0,2.77 -2.23,5 -5,5 H 5 c -2.77,0 -5,-2.23 -5,-5 V 5 C 0,2.23 2.23,0 5,0 Z" style="fill:#fafafa" id="rect27153"/>
     <g transform="translate(5,3)" id="g27155"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text27157" transform="translate(3.5,35)" aria-label="LEVEL">
+    <g class="input-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text27157" transform="translate(3.5,35)" aria-label="LEVEL">
       <path id="path27783" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.3997403,-0.78450558 H 3.4733089 V 0 H 0.42317729 V -4.7395856 H 1.3997403 Z"/>
       <path id="path27785" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 8.8815136,-2.0540374 H 7.0065127 v 1.26953182 H 9.2070346 V 0 H 6.0299497 v -4.7395856 h 3.1705744 v 0.791016 H 7.0065127 v 1.1295578 h 1.8750009 z"/>
       <path id="path27787" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 13.531255,-1.1751308 1.074219,-3.5644548 h 1.08724 L 14.042322,0 h -1.01888 l -1.643881,-4.7395856 h 1.083985 z"/>
@@ -869,13 +869,13 @@
       <path id="path27791" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 24.868498,-0.78450558 h 2.073569 V 0 h -3.050132 v -4.7395856 h 0.976563 z"/>
     </g>
     <g transform="translate(5,38)" id="g27159"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text27161" transform="translate(8.5,70)" aria-label="PAN">
+    <g class="input-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text27161" transform="translate(8.5,70)" aria-label="PAN">
       <path id="path27794" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.3997403,-1.6699227 V 0 H 0.42317729 V -4.7395856 H 2.2721365 q 0.5338544,0 0.9375004,0.1953126 0.4069013,0.1953126 0.6250003,0.5566409 0.2180991,0.3580731 0.2180991,0.8170577 0,0.6966149 -0.4785158,1.1002609 -0.4752607,0.4003908 -1.31836,0.4003908 z m 0,-0.791016 h 0.8723962 q 0.38737,0 0.589193,-0.1822917 0.2050782,-0.1822918 0.2050782,-0.5208336 0,-0.3483075 -0.2050782,-0.5631513 Q 2.6562513,-3.9420592 2.294923,-3.9485696 H 1.3997403 Z"/>
       <path id="path27796" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 8.8229197,-0.97656297 H 7.1106793 L 6.7851583,0 H 5.7467464 L 7.5110701,-4.7395856 H 8.4160185 L 10.190108,0 H 9.1516959 Z M 7.3743513,-1.767579 H 8.5592477 L 7.9635443,-3.5416684 Z"/>
       <path id="path27798" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 16.493495,0 H 15.516932 L 13.61589,-3.1184911 V 0 h -0.976563 v -4.7395856 h 0.976563 l 1.904297,3.1250015 v -3.1250015 h 0.973308 z"/>
     </g>
     <g transform="translate(5,73)" id="g27163"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text27165" transform="translate(12.5,105)" aria-label="IN">
+    <g class="input-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text27165" transform="translate(12.5,105)" aria-label="IN">
       <path id="path27801" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.4615892,0 H 0.48502627 V -4.7395856 H 1.4615892 Z"/>
       <path id="path27803" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 8.2174508,0 H 7.2408878 L 5.3398452,-3.1184911 V 0 h -0.976563 v -4.7395856 h 0.976563 l 1.9042978,3.1250015 v -3.1250015 h 0.9733078 z"/>
     </g>
@@ -953,24 +953,24 @@
     <path id="path27715" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 378.29753,245 h -0.97656 v -4.73959 h 0.97656 z"/>
     <path id="path27717" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 382.47526,240.26041 1.21745,3.43751 1.21094,-3.43751 h 1.28255 V 245 h -0.97981 v -1.29557 l 0.0976,-2.23633 -1.2793,3.5319 h -0.67057 l -1.27604,-3.52865 0.0977,2.23308 V 245 h -0.97657 v -4.73959 z"/>
   </g>
-  <g transform="translate(361.5,249)" id="g27253">
-    <path d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 40 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,50 0,47.77 0,45 V 5 C 0,2.23 2.23,0 5,0 Z" style="fill:#fafafa" id="rect27235"/>
+  <g class="io-group" transform="translate(361.5,249)" id="g27253">
+    <path class="input-background" d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 40 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,50 0,47.77 0,45 V 5 C 0,2.23 2.23,0 5,0 Z" style="fill:#fafafa" id="rect27235"/>
     <g transform="translate(5,3)" id="g27237"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text27239" transform="translate(3.5,35)" aria-label="LEVEL">
+    <g class="input-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text27239" transform="translate(3.5,35)" aria-label="LEVEL">
       <path id="path27694" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.3997403,-0.78450558 H 3.4733089 V 0 H 0.42317729 V -4.7395856 H 1.3997403 Z"/>
       <path id="path27696" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 8.8815136,-2.0540374 H 7.0065127 v 1.26953182 H 9.2070346 V 0 H 6.0299497 v -4.7395856 h 3.1705744 v 0.791016 H 7.0065127 v 1.1295578 h 1.8750009 z"/>
       <path id="path27698" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 13.531255,-1.1751308 1.074219,-3.5644548 h 1.08724 L 14.042322,0 h -1.01888 l -1.643881,-4.7395856 h 1.083985 z"/>
       <path id="path27700" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 20.993497,-2.0540374 h -1.875001 v 1.26953182 h 2.200522 V 0 h -3.177085 v -4.7395856 h 3.170574 v 0.791016 h -2.194011 v 1.1295578 h 1.875001 z"/>
       <path id="path27702" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="m 24.868498,-0.78450558 h 2.073569 V 0 h -3.050132 v -4.7395856 h 0.976563 z"/>
     </g>
-    <path d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 63 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,73 0,70.77 0,68 V 5 C 0,2.23 2.23,0 5,0 Z" style="fill:#bbbbbb" transform="translate(0,38)" id="rect27241"/>
-    <path d="M 0,0 H 34 V 5 H 0 Z" style="fill:#bbbbbb" transform="translate(0,38)" id="rect27243"/>
+    <path class="output-background" d="m 5,0 h 24 c 2.77,0 5,2.23 5,5 v 63 c 0,2.77 -2.23,5 -5,5 H 5 C 2.23,73 0,70.77 0,68 V 5 C 0,2.23 2.23,0 5,0 Z" style="fill:#bbbbbb" transform="translate(0,38)" id="rect27241"/>
+    <path class="output-background-filler" d="M 0,0 H 34 V 5 H 0 Z" style="fill:#bbbbbb" transform="translate(0,38)" id="rect27243"/>
     <g transform="translate(5,41)" id="g27245"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text27247" transform="translate(15.5,73)" aria-label="L">
+    <g class="output-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text27247" transform="translate(15.5,73)" aria-label="L">
       <path id="path27707" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 1.3997403,-0.78450558 H 3.4733089 V 0 H 0.42317729 V -4.7395856 H 1.3997403 Z"/>
     </g>
     <g transform="translate(5,76)" id="g27249"/>
-    <g style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text27251" transform="translate(15,108)" aria-label="R">
+    <g class="output-label" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text27251" transform="translate(15,108)" aria-label="R">
       <path id="path27710" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" d="M 2.1777354,-1.7350269 H 1.3997403 V 0 H 0.42317729 V -4.7395856 H 2.1842458 q 0.8398442,0 1.2955736,0.3743491 0.4557294,0.3743492 0.4557294,1.0579433 0,0.4850262 -0.2115887,0.8105472 -0.2083334,0.3222658 -0.6347659,0.5143232 l 1.0253911,1.93684986 V 0 H 3.0664077 Z M 1.3997403,-2.5260429 H 2.187501 q 0.3678388,0 0.5696618,-0.1855469 0.201823,-0.1888022 0.201823,-0.5175784 0,-0.3352866 -0.1920574,-0.527344 Q 2.5781262,-3.9485696 2.1842458,-3.9485696 H 1.3997403 Z"/>
     </g>
   </g>

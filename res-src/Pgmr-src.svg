@@ -8,35 +8,35 @@
   <!-- <polyline points="0,0 225,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 135.5)" /> -->
   <!-- <polyline points="0,0 225,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 360)" /> -->
 
-  <g transform="translate(5.5 56)">
-    <rect width="34" height="155" rx="5" fill="#bbb" transform="translate(0 -10)"/>
+  <g class="io-group" transform="translate(5.5 56)">
+    <rect class="output-background" width="34" height="155" rx="5" transform="translate(0 -10)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 0)">OUT</text>
     <def id="A_OUTPUT" xlink:href="#output" transform="translate(5 3)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(15 35)">A</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(15 35)">A</text>
     <def id="B_OUTPUT" xlink:href="#output" transform="translate(5 38)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(15 70)">B</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(15 70)">B</text>
     <def id="C_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(15 105)">C</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(15 105)">C</text>
     <def id="D_OUTPUT" xlink:href="#output" transform="translate(5 108)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(15 140)">D</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(15 140)">D</text>
   </g>
 
   <g transform="translate(0 224)">
-    <g transform="translate(5.5 0)">
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 92)"/>
-      <rect width="34" height="102" rx="5" fill="#fafafa" transform="translate(0 -3)"/>
+    <g class="io-group" transform="translate(5.5 0)">
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 92)"/>
+      <rect class="input-background" width="34" height="102" rx="5" transform="translate(0 -3)"/>
       <def id="CLOCK_INPUT" xlink:href="#input" transform="translate(5 2)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(2.5 34)">CLOCK</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(2.5 34)">CLOCK</text>
       <text font-size="5pt" letter-spacing="1px" transform="translate(5 46.5)">FWD</text>
       <def id="DIRECTION_PARAM" xlink:href="#button-small" transform="translate(22.5 39.7)"/>
       <text font-size="5pt" letter-spacing="0.1px" transform="translate(2 60)">S.O.C.</text>
       <def id="SELECT_ON_CLOCK_PARAM" xlink:href="#button-small" transform="translate(22.5 53.2)"/>
       <def id="SELECT_INPUT" xlink:href="#input" transform="translate(5 66)"/>
-      <text font-size="5pt" letter-spacing="1px" transform="translate(2.5 98)">SELECT</text>
+      <text class="input-label" font-size="5pt" letter-spacing="1px" transform="translate(2.5 98)">SELECT</text>
     </g>
-    <g transform="translate(5.5 105)">
-      <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
-      <rect width="34" height="30" rx="5" fill="#bbb"/>
+    <g class="io-group" transform="translate(5.5 105)">
+      <rect class="output-background-filler" width="34" height="10" transform="translate(0 -3)"/>
+      <rect class="output-background" width="34" height="30" rx="5"/>
       <def id="SELECT_ALL_OUTPUT" xlink:href="#output" transform="translate(5 1)"/>
     </g>
   </g>
@@ -57,17 +57,17 @@
     <def xlink:href="#dial-pgmr" transform="translate(0 163)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 210)">D</text>
     <g transform="translate(0 223)">
-      <g transform="translate(5.5 0)">
-        <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)"/>
-        <rect width="34" height="76" rx="5" fill="#fafafa" transform="translate(0 -3)"/>
+      <g class="io-group" transform="translate(5.5 0)">
+        <rect class="input-background-filler" width="34" height="10" transform="translate(0 63)"/>
+        <rect class="input-background" width="34" height="76" rx="5" transform="translate(0 -3)"/>
         <def id="SELECT1_LIGHT" xlink:href="#light-small" transform="translate(13.8 2)"/>
         <def id="SELECT1_PARAM" xlink:href="#button" transform="translate(8 14)"/>
         <def id="SELECT1_INPUT" xlink:href="#input" transform="translate(5 37)"/>
-        <text font-size="5pt" letter-spacing="1px" transform="translate(2.5 69)">SELECT</text>
+        <text class="input-label" font-size="5pt" letter-spacing="1px" transform="translate(2.5 69)">SELECT</text>
       </g>
-      <g transform="translate(5.5 73)">
-        <rect width="34" height="10" fill="#bbb" transform="translate(0 0)"/>
-        <rect width="34" height="33" rx="5" fill="#bbb"/>
+      <g class="io-group" transform="translate(5.5 73)">
+        <rect class="output-background-filler" width="34" height="10" transform="translate(0 0)"/>
+        <rect class="output-background" width="34" height="33" rx="5"/>
         <def id="SELECT1_OUTPUT" xlink:href="#output" transform="translate(5 4)"/>
       </g>
     </g>
@@ -89,17 +89,17 @@
     <def xlink:href="#dial-pgmr" transform="translate(0 163)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 210)">D</text>
     <g transform="translate(0 223)">
-      <g transform="translate(5.5 0)">
-        <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)"/>
-        <rect width="34" height="76" rx="5" fill="#fafafa" transform="translate(0 -3)"/>
+      <g class="io-group" transform="translate(5.5 0)">
+        <rect class="input-background-filler" width="34" height="10" transform="translate(0 63)"/>
+        <rect class="input-background" width="34" height="76" rx="5" transform="translate(0 -3)"/>
         <def id="SELECT2_LIGHT" xlink:href="#light-small" transform="translate(13.8 2)"/>
         <def id="SELECT2_PARAM" xlink:href="#button" transform="translate(8 14)"/>
         <def id="SELECT2_INPUT" xlink:href="#input" transform="translate(5 37)"/>
-        <text font-size="5pt" letter-spacing="1px" transform="translate(2.5 69)">SELECT</text>
+        <text class="input-label" font-size="5pt" letter-spacing="1px" transform="translate(2.5 69)">SELECT</text>
       </g>
-      <g transform="translate(5.5 73)">
-        <rect width="34" height="10" fill="#bbb" transform="translate(0 0)"/>
-        <rect width="34" height="33" rx="5" fill="#bbb"/>
+      <g class="io-group" transform="translate(5.5 73)">
+        <rect class="output-background-filler" width="34" height="10" transform="translate(0 0)"/>
+        <rect class="output-background" width="34" height="33" rx="5"/>
         <def id="SELECT2_OUTPUT" xlink:href="#output" transform="translate(5 4)"/>
       </g>
     </g>
@@ -121,17 +121,17 @@
     <def xlink:href="#dial-pgmr" transform="translate(0 163)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 210)">D</text>
     <g transform="translate(0 223)">
-      <g transform="translate(5.5 0)">
-        <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)"/>
-        <rect width="34" height="76" rx="5" fill="#fafafa" transform="translate(0 -3)"/>
+      <g class="io-group" transform="translate(5.5 0)">
+        <rect class="input-background-filler" width="34" height="10" transform="translate(0 63)"/>
+        <rect class="input-background" width="34" height="76" rx="5" transform="translate(0 -3)"/>
         <def id="SELECT3_LIGHT" xlink:href="#light-small" transform="translate(13.8 2)"/>
         <def id="SELECT3_PARAM" xlink:href="#button" transform="translate(8 14)"/>
         <def id="SELECT3_INPUT" xlink:href="#input" transform="translate(5 37)"/>
-        <text font-size="5pt" letter-spacing="1px" transform="translate(2.5 69)">SELECT</text>
+        <text class="input-label" font-size="5pt" letter-spacing="1px" transform="translate(2.5 69)">SELECT</text>
       </g>
-      <g transform="translate(5.5 73)">
-        <rect width="34" height="10" fill="#bbb" transform="translate(0 0)"/>
-        <rect width="34" height="33" rx="5" fill="#bbb"/>
+      <g class="io-group" transform="translate(5.5 73)">
+        <rect class="output-background-filler" width="34" height="10" transform="translate(0 0)"/>
+        <rect class="output-background" width="34" height="33" rx="5"/>
         <def id="SELECT3_OUTPUT" xlink:href="#output" transform="translate(5 4)"/>
       </g>
     </g>
@@ -153,17 +153,17 @@
     <def xlink:href="#dial-pgmr" transform="translate(0 163)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.3 210)">D</text>
     <g transform="translate(0 223)">
-      <g transform="translate(5.5 0)">
-        <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)"/>
-        <rect width="34" height="76" rx="5" fill="#fafafa" transform="translate(0 -3)"/>
+      <g class="io-group" transform="translate(5.5 0)">
+        <rect class="input-background-filler" width="34" height="10" transform="translate(0 63)"/>
+        <rect class="input-background" width="34" height="76" rx="5" transform="translate(0 -3)"/>
         <def id="SELECT4_LIGHT" xlink:href="#light-small" transform="translate(13.8 2)"/>
         <def id="SELECT4_PARAM" xlink:href="#button" transform="translate(8 14)"/>
         <def id="SELECT4_INPUT" xlink:href="#input" transform="translate(5 37)"/>
-        <text font-size="5pt" letter-spacing="1px" transform="translate(2.5 69)">SELECT</text>
+        <text class="input-label" font-size="5pt" letter-spacing="1px" transform="translate(2.5 69)">SELECT</text>
       </g>
-      <g transform="translate(5.5 73)">
-        <rect width="34" height="10" fill="#bbb" transform="translate(0 0)"/>
-        <rect width="34" height="33" rx="5" fill="#bbb"/>
+      <g class="io-group" transform="translate(5.5 73)">
+        <rect class="output-background-filler" width="34" height="10" transform="translate(0 0)"/>
+        <rect class="output-background" width="34" height="33" rx="5"/>
         <def id="SELECT4_OUTPUT" xlink:href="#output" transform="translate(5 4)"/>
       </g>
     </g>Z

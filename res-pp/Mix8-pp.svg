@@ -14,7 +14,10 @@ text.brand {
   font-weight: bold;
 }
 
-path, polyline {
+polyline {
+  stroke: #333;
+}
+path {
   stroke: #333;
 }
 
@@ -29,6 +32,24 @@ polyline.module-border-middle {
 }
 polyline.module-border-outer {
   stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background {
+  fill: #fafafa;
+}
+rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background {
+  fill: #bbb;
+}
+rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
 }
 </style>
 
@@ -121,29 +142,29 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="input-background" width="34" height="108" rx="5"/>
       <g transform="translate(5 3)"><svg id="CV1_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <g transform="translate(5 38)"><svg id="PAN1_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
       <g transform="translate(5 73)"><svg id="IN1_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
     </g>
     
   </g>
@@ -221,29 +242,29 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="input-background" width="34" height="108" rx="5"/>
       <g transform="translate(5 3)"><svg id="CV2_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <g transform="translate(5 38)"><svg id="PAN2_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
       <g transform="translate(5 73)"><svg id="IN2_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
     </g>
     
   </g>
@@ -321,29 +342,29 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="input-background" width="34" height="108" rx="5"/>
       <g transform="translate(5 3)"><svg id="CV3_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <g transform="translate(5 38)"><svg id="PAN3_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
       <g transform="translate(5 73)"><svg id="IN3_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
     </g>
     
   </g>
@@ -421,29 +442,29 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="input-background" width="34" height="108" rx="5"/>
       <g transform="translate(5 3)"><svg id="CV4_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <g transform="translate(5 38)"><svg id="PAN4_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
       <g transform="translate(5 73)"><svg id="IN4_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
     </g>
     
   </g>
@@ -521,29 +542,29 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="input-background" width="34" height="108" rx="5"/>
       <g transform="translate(5 3)"><svg id="CV5_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <g transform="translate(5 38)"><svg id="PAN5_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
       <g transform="translate(5 73)"><svg id="IN5_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
     </g>
     
   </g>
@@ -621,29 +642,29 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="input-background" width="34" height="108" rx="5"/>
       <g transform="translate(5 3)"><svg id="CV6_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <g transform="translate(5 38)"><svg id="PAN6_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
       <g transform="translate(5 73)"><svg id="IN6_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
     </g>
     
   </g>
@@ -721,29 +742,29 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="input-background" width="34" height="108" rx="5"/>
       <g transform="translate(5 3)"><svg id="CV7_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <g transform="translate(5 38)"><svg id="PAN7_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
       <g transform="translate(5 73)"><svg id="IN7_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
     </g>
     
   </g>
@@ -821,29 +842,29 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="input-background" width="34" height="108" rx="5"/>
       <g transform="translate(5 3)"><svg id="CV8_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <g transform="translate(5 38)"><svg id="PAN8_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
       <g transform="translate(5 73)"><svg id="IN8_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
     </g>
     
   </g>
@@ -908,31 +929,31 @@ polyline.module-border-outer {
       </g>
     </svg></g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14.5 225)">DIM</text>
-    <g transform="translate(5.5 229)">
-      <rect width="34" height="50" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 229)">
+      <rect class="input-background" width="34" height="50" rx="5"/>
       <g transform="translate(5 3)"><svg id="MIX_CV_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <rect width="34" height="73" rx="5" fill="#bbb" transform="translate(0 38)"/>
-      <rect width="34" height="5" fill="#bbb" transform="translate(0 38)"/>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <rect class="output-background" width="34" height="73" rx="5" transform="translate(0 38)"/>
+      <rect class="output-background-filler" width="34" height="5" transform="translate(0 38)"/>
       <g transform="translate(5 41)"><svg id="L_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(15.5 73)">L</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(15.5 73)">L</text>
       <g transform="translate(5 76)"><svg id="R_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(15 108)">R</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(15 108)">R</text>
     </g>
   </g>
   

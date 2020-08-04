@@ -14,7 +14,10 @@ text.brand {
   font-weight: bold;
 }
 
-path, polyline {
+polyline {
+  stroke: #333;
+}
+path {
   stroke: #333;
 }
 
@@ -29,6 +32,24 @@ polyline.module-border-middle {
 }
 polyline.module-border-outer {
   stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background {
+  fill: #fafafa;
+}
+rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background {
+  fill: #bbb;
+}
+rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
 }
 </style>
 
@@ -48,7 +69,7 @@ polyline.module-border-outer {
       </g>
     
 
-  <g transform="translate(-2.5 24)">
+  <g class="io-group" transform="translate(-2.5 24)">
     <g transform="translate(14.5 6)"><svg id="DAMP_PARAM">
       <g transform="translate(8 8)">
         <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
@@ -68,7 +89,7 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(10 33)">DAMP</text>
-    <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(7.5 36)"/>
+    <rect class="input-background" width="30" height="30" rx="5" transform="translate(7.5 36)"/>
     <g transform="translate(10.5 39)"><svg id="DAMP_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
@@ -77,7 +98,7 @@ polyline.module-border-outer {
     </svg></g>
   </g>
 
-  <g transform="translate(32.5 23.5)">
+  <g class="io-group" transform="translate(32.5 23.5)">
     <g transform="translate(14.5 6)"><svg id="GAIN_PARAM">
       <g transform="translate(8 8)">
         <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
@@ -97,7 +118,7 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11.5 33)">GAIN</text>
-    <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(7.5 36)"/>
+    <rect class="input-background" width="30" height="30" rx="5" transform="translate(7.5 36)"/>
     <g transform="translate(10.5 39)"><svg id="GAIN_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
@@ -106,14 +127,14 @@ polyline.module-border-outer {
     </svg></g>
   </g>
 
-  <g transform="translate(20.5 318)">
-    <rect width="34" height="42" rx="5" fill="#bbb"/>
+  <g class="io-group" transform="translate(20.5 318)">
+    <rect class="output-background" width="34" height="42" rx="5"/>
     <g transform="translate(5 4)"><svg id="OUT_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 37)">OUT</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 37)">OUT</text>
   </g>
 </svg>

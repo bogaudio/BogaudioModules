@@ -14,7 +14,10 @@ text.brand {
   font-weight: bold;
 }
 
-path, polyline {
+polyline {
+  stroke: #333;
+}
+path {
   stroke: #333;
 }
 
@@ -29,6 +32,24 @@ polyline.module-border-middle {
 }
 polyline.module-border-outer {
   stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background {
+  fill: #fafafa;
+}
+rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background {
+  fill: #bbb;
+}
+rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
 }
 </style>
 
@@ -58,15 +79,15 @@ polyline.module-border-outer {
   </g>
 
   <g transform="translate(0 260)">
-    <g transform="translate(5.5 41)">
-      <rect width="34" height="38" rx="5" fill="#bbb" transform="translate(0 -3)"/>
+    <g class="io-group" transform="translate(5.5 41)">
+      <rect class="output-background" width="34" height="38" rx="5" transform="translate(0 -3)"/>
       <g transform="translate(5 0)"><svg id="OUT_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
     </g>
   </g>
 </svg>

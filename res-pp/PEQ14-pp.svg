@@ -14,7 +14,10 @@ text.brand {
   font-weight: bold;
 }
 
-path, polyline {
+polyline {
+  stroke: #333;
+}
+path {
   stroke: #333;
 }
 
@@ -29,6 +32,24 @@ polyline.module-border-middle {
 }
 polyline.module-border-outer {
   stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background {
+  fill: #fafafa;
+}
+rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background {
+  fill: #bbb;
+}
+rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
 }
 </style>
 
@@ -48,7 +69,7 @@ polyline.module-border-outer {
       </g>
     
 
-  <g transform="translate(6.5 48)">
+  <g class="io-group" transform="translate(6.5 48)">
     
     <g transform="translate(40.5 11)"><svg id="FREQUENCY_CV_PARAM">
       <g transform="translate(8 8)">
@@ -69,7 +90,7 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(40 37)">FCV</text>
-    <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(0 5)"/>
+    <rect class="input-background" width="30" height="30" rx="5" transform="translate(0 5)"/>
     <g transform="translate(3 8)"><svg id="FREQUENCY_CV_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
@@ -79,7 +100,7 @@ polyline.module-border-outer {
     
   </g>
 
-  <g transform="translate(6.5 113)">
+  <g class="io-group" transform="translate(6.5 113)">
     
     <g transform="translate(40.5 8)"><svg id="BANDWIDTH_PARAM">
       <g transform="translate(8 8)">
@@ -100,7 +121,7 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(42.5 37)">BW</text>
-    <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(0 5)"/>
+    <rect class="input-background" width="30" height="30" rx="5" transform="translate(0 5)"/>
     <g transform="translate(3 8)"><svg id="BANDWIDTH_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
@@ -146,39 +167,39 @@ polyline.module-border-outer {
     
   </g>
 
-  <g transform="translate(5.5 287)">
-    <rect width="64" height="73" rx="5" fill="#bbb"/>
-    <rect width="32" height="36.5" rx="5" fill="#fafafa"/>
-    <rect width="32" height="10" fill="#fafafa" transform="translate(0 26.5)"/>
-    <rect width="10" height="36.5" fill="#fafafa" transform="translate(22 0)"/>
+  <g class="io-group" transform="translate(5.5 287)">
+    <rect class="output-background" width="64" height="73" rx="5"/>
+    <rect class="input-background" width="32" height="36.5" rx="5"/>
+    <rect class="input-background-filler" width="32" height="10" transform="translate(0 26.5)"/>
+    <rect class="input-background-filler" width="10" height="36.5" transform="translate(22 0)"/>
     <g transform="translate(5 3)"><svg id="IN_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
     <g transform="translate(35 3)"><svg id="ODDS_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(38.5 35)">ODD</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(38.5 35)">ODD</text>
     <g transform="translate(5 38)"><svg id="OUT_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(8 70)">OUT</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8 70)">OUT</text>
     <g transform="translate(35 38)"><svg id="EVENS_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(36 70)">EVEN</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(36 70)">EVEN</text>
   </g>
 
   <g transform="translate(74 20)">
@@ -265,31 +286,31 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb"/>
-      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="output-background" width="34" height="108" rx="5"/>
+      <rect class="input-background" width="34" height="71.5" rx="5"/>
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 61.5)"/>
       <g transform="translate(5 3)"><svg id="LEVEL1_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <g transform="translate(5 38)"><svg id="FREQUENCY_CV1_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
       <g transform="translate(5 73)"><svg id="OUT1_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
@@ -377,31 +398,31 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb"/>
-      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="output-background" width="34" height="108" rx="5"/>
+      <rect class="input-background" width="34" height="71.5" rx="5"/>
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 61.5)"/>
       <g transform="translate(5 3)"><svg id="LEVEL2_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <g transform="translate(5 38)"><svg id="FREQUENCY_CV2_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
       <g transform="translate(5 73)"><svg id="OUT2_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
@@ -489,31 +510,31 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb"/>
-      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="output-background" width="34" height="108" rx="5"/>
+      <rect class="input-background" width="34" height="71.5" rx="5"/>
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 61.5)"/>
       <g transform="translate(5 3)"><svg id="LEVEL3_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <g transform="translate(5 38)"><svg id="FREQUENCY_CV3_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
       <g transform="translate(5 73)"><svg id="OUT3_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
@@ -601,31 +622,31 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb"/>
-      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="output-background" width="34" height="108" rx="5"/>
+      <rect class="input-background" width="34" height="71.5" rx="5"/>
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 61.5)"/>
       <g transform="translate(5 3)"><svg id="LEVEL4_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <g transform="translate(5 38)"><svg id="FREQUENCY_CV4_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
       <g transform="translate(5 73)"><svg id="OUT4_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
@@ -713,31 +734,31 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb"/>
-      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="output-background" width="34" height="108" rx="5"/>
+      <rect class="input-background" width="34" height="71.5" rx="5"/>
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 61.5)"/>
       <g transform="translate(5 3)"><svg id="LEVEL5_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <g transform="translate(5 38)"><svg id="FREQUENCY_CV5_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
       <g transform="translate(5 73)"><svg id="OUT5_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
@@ -825,31 +846,31 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb"/>
-      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="output-background" width="34" height="108" rx="5"/>
+      <rect class="input-background" width="34" height="71.5" rx="5"/>
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 61.5)"/>
       <g transform="translate(5 3)"><svg id="LEVEL6_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <g transform="translate(5 38)"><svg id="FREQUENCY_CV6_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
       <g transform="translate(5 73)"><svg id="OUT6_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
@@ -937,31 +958,31 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb"/>
-      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="output-background" width="34" height="108" rx="5"/>
+      <rect class="input-background" width="34" height="71.5" rx="5"/>
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 61.5)"/>
       <g transform="translate(5 3)"><svg id="LEVEL7_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <g transform="translate(5 38)"><svg id="FREQUENCY_CV7_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
       <g transform="translate(5 73)"><svg id="OUT7_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
@@ -1049,31 +1070,31 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb"/>
-      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="output-background" width="34" height="108" rx="5"/>
+      <rect class="input-background" width="34" height="71.5" rx="5"/>
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 61.5)"/>
       <g transform="translate(5 3)"><svg id="LEVEL8_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <g transform="translate(5 38)"><svg id="FREQUENCY_CV8_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
       <g transform="translate(5 73)"><svg id="OUT8_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
@@ -1161,31 +1182,31 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb"/>
-      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="output-background" width="34" height="108" rx="5"/>
+      <rect class="input-background" width="34" height="71.5" rx="5"/>
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 61.5)"/>
       <g transform="translate(5 3)"><svg id="LEVEL9_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <g transform="translate(5 38)"><svg id="FREQUENCY_CV9_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
       <g transform="translate(5 73)"><svg id="OUT9_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
@@ -1273,31 +1294,31 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb"/>
-      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="output-background" width="34" height="108" rx="5"/>
+      <rect class="input-background" width="34" height="71.5" rx="5"/>
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 61.5)"/>
       <g transform="translate(5 3)"><svg id="LEVEL10_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <g transform="translate(5 38)"><svg id="FREQUENCY_CV10_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
       <g transform="translate(5 73)"><svg id="OUT10_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
@@ -1385,31 +1406,31 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb"/>
-      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="output-background" width="34" height="108" rx="5"/>
+      <rect class="input-background" width="34" height="71.5" rx="5"/>
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 61.5)"/>
       <g transform="translate(5 3)"><svg id="LEVEL11_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <g transform="translate(5 38)"><svg id="FREQUENCY_CV11_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
       <g transform="translate(5 73)"><svg id="OUT11_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
@@ -1497,31 +1518,31 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb"/>
-      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="output-background" width="34" height="108" rx="5"/>
+      <rect class="input-background" width="34" height="71.5" rx="5"/>
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 61.5)"/>
       <g transform="translate(5 3)"><svg id="LEVEL12_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <g transform="translate(5 38)"><svg id="FREQUENCY_CV12_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
       <g transform="translate(5 73)"><svg id="OUT12_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
@@ -1609,31 +1630,31 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb"/>
-      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="output-background" width="34" height="108" rx="5"/>
+      <rect class="input-background" width="34" height="71.5" rx="5"/>
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 61.5)"/>
       <g transform="translate(5 3)"><svg id="LEVEL13_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <g transform="translate(5 38)"><svg id="FREQUENCY_CV13_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
       <g transform="translate(5 73)"><svg id="OUT13_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 
@@ -1721,31 +1742,31 @@ polyline.module-border-outer {
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#bbb"/>
-      <rect width="34" height="71.5" rx="5" fill="#fafafa"/>
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 61.5)"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="output-background" width="34" height="108" rx="5"/>
+      <rect class="input-background" width="34" height="71.5" rx="5"/>
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 61.5)"/>
       <g transform="translate(5 3)"><svg id="LEVEL14_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <g transform="translate(5 38)"><svg id="FREQUENCY_CV14_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">FCV</text>
       <g transform="translate(5 73)"><svg id="OUT14_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8 105)">OUT</text>
     </g>
   </g>
 </svg>

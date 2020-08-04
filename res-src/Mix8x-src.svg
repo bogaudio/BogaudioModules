@@ -25,12 +25,12 @@
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.4 241)">B</text>
     <text font-size="5pt" letter-spacing="1px" transform="translate(9 251)">PRE</text>
     <def id="PRE_B1_PARAM" xlink:href="#button-small" transform="translate(26 244)"/>
-    <g transform="translate(5.5 267)">
-      <rect width="34" height="73" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 267)">
+      <rect class="input-background" width="34" height="73" rx="5"/>
       <def id="A1_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6 35)">CV-A</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(6 35)">CV-A</text>
       <def id="B1_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6 70)">CV-B</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(6 70)">CV-B</text>
     </g>
   </g>
 
@@ -55,12 +55,12 @@
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.4 241)">B</text>
     <text font-size="5pt" letter-spacing="1px" transform="translate(9 251)">PRE</text>
     <def id="PRE_B2_PARAM" xlink:href="#button-small" transform="translate(26 244)"/>
-    <g transform="translate(5.5 267)">
-      <rect width="34" height="73" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 267)">
+      <rect class="input-background" width="34" height="73" rx="5"/>
       <def id="A2_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6 35)">CV-A</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(6 35)">CV-A</text>
       <def id="B2_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6 70)">CV-B</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(6 70)">CV-B</text>
     </g>
   </g>
 
@@ -85,12 +85,12 @@
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.4 241)">B</text>
     <text font-size="5pt" letter-spacing="1px" transform="translate(9 251)">PRE</text>
     <def id="PRE_B3_PARAM" xlink:href="#button-small" transform="translate(26 244)"/>
-    <g transform="translate(5.5 267)">
-      <rect width="34" height="73" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 267)">
+      <rect class="input-background" width="34" height="73" rx="5"/>
       <def id="A3_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6 35)">CV-A</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(6 35)">CV-A</text>
       <def id="B3_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6 70)">CV-B</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(6 70)">CV-B</text>
     </g>
   </g>
 
@@ -115,12 +115,12 @@
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.4 241)">B</text>
     <text font-size="5pt" letter-spacing="1px" transform="translate(9 251)">PRE</text>
     <def id="PRE_B4_PARAM" xlink:href="#button-small" transform="translate(26 244)"/>
-    <g transform="translate(5.5 267)">
-      <rect width="34" height="73" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 267)">
+      <rect class="input-background" width="34" height="73" rx="5"/>
       <def id="A4_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6 35)">CV-A</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(6 35)">CV-A</text>
       <def id="B4_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6 70)">CV-B</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(6 70)">CV-B</text>
     </g>
   </g>
 
@@ -145,12 +145,12 @@
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.4 241)">B</text>
     <text font-size="5pt" letter-spacing="1px" transform="translate(9 251)">PRE</text>
     <def id="PRE_B5_PARAM" xlink:href="#button-small" transform="translate(26 244)"/>
-    <g transform="translate(5.5 267)">
-      <rect width="34" height="73" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 267)">
+      <rect class="input-background" width="34" height="73" rx="5"/>
       <def id="A5_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6 35)">CV-A</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(6 35)">CV-A</text>
       <def id="B5_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6 70)">CV-B</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(6 70)">CV-B</text>
     </g>
   </g>
 
@@ -175,12 +175,12 @@
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.4 241)">B</text>
     <text font-size="5pt" letter-spacing="1px" transform="translate(9 251)">PRE</text>
     <def id="PRE_B6_PARAM" xlink:href="#button-small" transform="translate(26 244)"/>
-    <g transform="translate(5.5 267)">
-      <rect width="34" height="73" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 267)">
+      <rect class="input-background" width="34" height="73" rx="5"/>
       <def id="A6_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6 35)">CV-A</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(6 35)">CV-A</text>
       <def id="B6_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6 70)">CV-B</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(6 70)">CV-B</text>
     </g>
   </g>
 
@@ -205,12 +205,12 @@
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.4 241)">B</text>
     <text font-size="5pt" letter-spacing="1px" transform="translate(9 251)">PRE</text>
     <def id="PRE_B7_PARAM" xlink:href="#button-small" transform="translate(26 244)"/>
-    <g transform="translate(5.5 267)">
-      <rect width="34" height="73" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 267)">
+      <rect class="input-background" width="34" height="73" rx="5"/>
       <def id="A7_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6 35)">CV-A</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(6 35)">CV-A</text>
       <def id="B7_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6 70)">CV-B</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(6 70)">CV-B</text>
     </g>
   </g>
 
@@ -235,44 +235,44 @@
     <text font-size="5pt" letter-spacing="2px" transform="translate(20.4 241)">B</text>
     <text font-size="5pt" letter-spacing="1px" transform="translate(9 251)">PRE</text>
     <def id="PRE_B8_PARAM" xlink:href="#button-small" transform="translate(26 244)"/>
-    <g transform="translate(5.5 267)">
-      <rect width="34" height="73" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 267)">
+      <rect class="input-background" width="34" height="73" rx="5"/>
       <def id="A8_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6 35)">CV-A</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(6 35)">CV-A</text>
       <def id="B8_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6 70)">CV-B</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(6 70)">CV-B</text>
     </g>
   </g>
 
   <g transform="translate(356 20)">
     <!-- <rect width="39" height="344" fill="#ccc" transform="translate(3 0)" /> -->
-    <g transform="translate(5.5 1)">
-      <rect width="34" height="50" rx="5" fill="#bbb"/>
+    <g class="io-group" transform="translate(5.5 1)">
+      <rect class="output-background" width="34" height="50" rx="5"/>
       <def id="SEND_A_OUTPUT" xlink:href="#output" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(14.7 35)">A</text>
-      <rect width="34" height="146" rx="5" fill="#fafafa" transform="translate(0 38)"/>
-      <rect width="34" height="5" fill="#fafafa" transform="translate(0 38)"/>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(14.7 35)">A</text>
+      <rect class="input-background" width="34" height="146" rx="5" transform="translate(0 38)"/>
+      <rect class="input-background-filler" width="34" height="5" transform="translate(0 38)"/>
       <def id="L_A_INPUT" xlink:href="#input" transform="translate(5 41)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(15.3 73)">L</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(15.3 73)">L</text>
       <def id="R_A_INPUT" xlink:href="#input" transform="translate(5 76)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8 108)">R(L)</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8 108)">R(L)</text>
       <def id="LEVEL_A_PARAM" xlink:href="#knob16" transform="translate(9 117)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 145)">LEVEL</text>
       <def id="LEVEL_A_INPUT" xlink:href="#input" transform="translate(5 149)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(11 181)">CV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(11 181)">CV</text>
     </g>
     <def xlink:href="#dial-mintick" transform="translate(2.5 106)"/>
 
-    <g transform="translate(5.5 191)">
-      <rect width="34" height="50" rx="5" fill="#bbb"/>
+    <g class="io-group" transform="translate(5.5 191)">
+      <rect class="output-background" width="34" height="50" rx="5"/>
       <def id="SEND_B_OUTPUT" xlink:href="#output" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(14.8 35)">B</text>
-      <rect width="34" height="111" rx="5" fill="#fafafa" transform="translate(0 38)"/>
-      <rect width="34" height="5" fill="#fafafa" transform="translate(0 38)"/>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(14.8 35)">B</text>
+      <rect class="input-background" width="34" height="111" rx="5" transform="translate(0 38)"/>
+      <rect class="input-background-filler" width="34" height="5" transform="translate(0 38)"/>
       <def id="L_B_INPUT" xlink:href="#input" transform="translate(5 41)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(15.3 73)">L</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(15.3 73)">L</text>
       <def id="R_B_INPUT" xlink:href="#input" transform="translate(5 76)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8 108)">R(L)</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8 108)">R(L)</text>
       <def id="LEVEL_B_PARAM" xlink:href="#knob16" transform="translate(9 117)"/>
       <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 145)">LEVEL</text>
     </g>

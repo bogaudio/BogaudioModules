@@ -122,61 +122,61 @@
     </g>
   </g>
 
-  <g transform="translate(0 226)">
-    <rect width="130" height="134" rx="5" fill="#fafafa" transform="translate(10 0)"/>
-    <rect width="32.5" height="46" rx="5" fill="#bbb" transform="translate(107.5 88)"/>
-    <rect width="32.5" height="8" fill="#bbb" transform="translate(107.5 88)"/>
-    <rect width="8" height="46" fill="#bbb" transform="translate(107.5 88)"/>
+  <g class="io-group" transform="translate(0 226)">
+    <rect class="input-background" width="130" height="134" rx="5" transform="translate(10 0)"/>
+    <rect class="output-background" width="32.5" height="46" rx="5" transform="translate(107.5 88)"/>
+    <rect class="output-background-filler" width="32.5" height="8" transform="translate(107.5 88)"/>
+    <rect class="output-background-filler" width="8" height="46" transform="translate(107.5 88)"/>
 
     <g transform="translate(12 0)">
       <def id="A_LEVEL_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(3 40)">A-LVL</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(3 40)">A-LVL</text>
     </g>
     <g transform="translate(44 0)">
       <def id="B_LEVEL_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(1 40)">B-LVL</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(1 40)">B-LVL</text>
     </g>
     <g transform="translate(76 0)">
       <def id="C_LEVEL_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(2 40)">C-LVL</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(2 40)">C-LVL</text>
     </g>
     <g transform="translate(108 0)">
       <def id="ALL_CV_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(6 40)">FCV</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(6 40)">FCV</text>
     </g>
 
     <g transform="translate(12 44)">
       <def id="A_FREQUENCY_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(1 40)">A-FCV</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(1 40)">A-FCV</text>
     </g>
     <g transform="translate(44 44)">
       <def id="B_FREQUENCY_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(1 40)">B-FCV</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(1 40)">B-FCV</text>
     </g>
     <g transform="translate(76 44)">
       <def id="C_FREQUENCY_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(1 40)">C-FCV</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(1 40)">C-FCV</text>
     </g>
     <g transform="translate(108 44)">
       <def id="IN_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(10 40)">IN</text>
+      <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(10 40)">IN</text>
     </g>
 
     <g transform="translate(12 88)">
       <def id="A_BANDWIDTH_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(3 40)">A-BW</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(3 40)">A-BW</text>
     </g>
     <g transform="translate(44 88)">
       <def id="B_BANDWIDTH_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(2 40)">B-BW</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(2 40)">B-BW</text>
     </g>
     <g transform="translate(76 88)">
       <def id="C_BANDWIDTH_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(3 40)">C-BW</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(3 40)">C-BW</text>
     </g>
     <g transform="translate(108 88)">
       <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(5 40)">OUT</text>
+      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(5 40)">OUT</text>
     </g>
   </g>
 </module>

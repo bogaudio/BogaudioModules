@@ -75,43 +75,43 @@
   <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(290 0)" /> -->
   <!-- <polyline points="0,0 0,380" stroke="#f00" stroke-width="1" fill="none" transform="translate(150 0)" /> -->
   <g transform="translate(0 320)">
-    <g transform="translate(10 0)">
-      <rect width="62" height="40" rx="5" fill="#fafafa"/>
-      <rect width="23" height="40" rx="5" fill="#bbb" transform="translate(40)"/>
-      <rect width="20" height="40" fill="#bbb" transform="translate(31)"/>
+    <g class="io-group" transform="translate(10 0)">
+      <rect class="input-background" width="62" height="40" rx="5"/>
+      <rect class="output-background" width="23" height="40" rx="5" transform="translate(40)"/>
+      <rect class="output-background-filler" width="20" height="40" transform="translate(31)"/>
       <def id="SIGNALA_INPUT" xlink:href="#input" transform="translate(3.5 3)"/>
       <def id="SIGNALA_OUTPUT" xlink:href="#output" transform="translate(34.5 3)"/>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
+      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
       <text font-size="6pt" letter-spacing="2px" transform="translate(33.5 36)">THRU</text>
     </g>
 
-    <g transform="translate(82.5 0)">
-      <rect width="62" height="40" rx="5" fill="#fafafa"/>
-      <rect width="23" height="40" rx="5" fill="#bbb" transform="translate(40)"/>
-      <rect width="20" height="40" fill="#bbb" transform="translate(31)"/>
+    <g class="io-group" transform="translate(82.5 0)">
+      <rect class="input-background" width="62" height="40" rx="5"/>
+      <rect class="output-background" width="23" height="40" rx="5" transform="translate(40)"/>
+      <rect class="output-background-filler" width="20" height="40" transform="translate(31)"/>
       <def id="SIGNALB_INPUT" xlink:href="#input" transform="translate(3.5 3)"/>
       <def id="SIGNALB_OUTPUT" xlink:href="#output" transform="translate(34.5 3)"/>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
+      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
       <text font-size="6pt" letter-spacing="2px" transform="translate(33.5 36)">THRU</text>
     </g>
 
-    <g transform="translate(155 0)">
-      <rect width="62" height="40" rx="5" fill="#fafafa"/>
-      <rect width="23" height="40" rx="5" fill="#bbb" transform="translate(40)"/>
-      <rect width="20" height="40" fill="#bbb" transform="translate(31)"/>
+    <g class="io-group" transform="translate(155 0)">
+      <rect class="input-background" width="62" height="40" rx="5"/>
+      <rect class="output-background" width="23" height="40" rx="5" transform="translate(40)"/>
+      <rect class="output-background-filler" width="20" height="40" transform="translate(31)"/>
       <def id="SIGNALC_INPUT" xlink:href="#input" transform="translate(3.5 3)"/>
       <def id="SIGNALC_OUTPUT" xlink:href="#output" transform="translate(34.5 3)"/>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
+      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
       <text font-size="6pt" letter-spacing="2px" transform="translate(33.5 36)">THRU</text>
     </g>
 
-    <g transform="translate(227 0)">
-      <rect width="62" height="40" rx="5" fill="#fafafa"/>
-      <rect width="23" height="40" rx="5" fill="#bbb" transform="translate(40)"/>
-      <rect width="20" height="40" fill="#bbb" transform="translate(31)"/>
+    <g class="io-group" transform="translate(227 0)">
+      <rect class="input-background" width="62" height="40" rx="5"/>
+      <rect class="output-background" width="23" height="40" rx="5" transform="translate(40)"/>
+      <rect class="output-background-filler" width="20" height="40" transform="translate(31)"/>
       <def id="SIGNALD_INPUT" xlink:href="#input" transform="translate(3.5 3)"/>
       <def id="SIGNALD_OUTPUT" xlink:href="#output" transform="translate(34.5 3)"/>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
+      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
       <text font-size="6pt" letter-spacing="2px" transform="translate(33.5 36)">THRU</text>
     </g>
   </g>

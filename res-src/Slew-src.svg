@@ -56,8 +56,8 @@
     <use xlink:href="#dial-time-slew" transform="translate(0 -1)"/>
     <def id="RISE_SHAPE_PARAM" xlink:href="#knob16" transform="translate(14.5 51)"/>
     <use xlink:href="#dial-rise-shape-slew" transform="translate(2.5 39)"/>
-    <g transform="translate(7.5 77)">
-      <rect width="30" height="30" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(7.5 77)">
+      <rect class="input-background" width="30" height="30" rx="5"/>
       <def id="RISE_INPUT" xlink:href="#input" transform="translate(3 3)"/>
       <!-- <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text> -->
     </g>
@@ -69,25 +69,25 @@
     <use xlink:href="#dial-time-slew" transform="translate(0 -1)"/>
     <def id="FALL_SHAPE_PARAM" xlink:href="#knob16" transform="translate(14.5 51)"/>
     <use xlink:href="#dial-fall-shape-slew" transform="translate(2.5 39)"/>
-    <g transform="translate(7.5 77)">
-      <rect width="30" height="30" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(7.5 77)">
+      <rect class="input-background" width="30" height="30" rx="5"/>
       <def id="FALL_INPUT" xlink:href="#input" transform="translate(3 3)"/>
       <!-- <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text> -->
     </g>
   </g>
 
   <g transform="translate(0 260)">
-    <g transform="translate(5.5 0)">
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 28)"/>
-      <rect width="34" height="35" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 0)">
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 28)"/>
+      <rect class="input-background" width="34" height="35" rx="5"/>
       <def id="IN_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
     </g>
-    <g transform="translate(5.5 41)">
-      <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
-      <rect width="34" height="35" rx="5" fill="#bbb"/>
+    <g class="io-group" transform="translate(5.5 41)">
+      <rect class="output-background-filler" width="34" height="10" transform="translate(0 -3)"/>
+      <rect class="output-background" width="34" height="35" rx="5"/>
       <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
     </g>
   </g>
 </module>

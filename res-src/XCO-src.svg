@@ -56,17 +56,17 @@
       <def id="FM_DEPTH_PARAM" xlink:href="#knob38" transform="translate(20 0)"/>
     </g>
     <!-- <rect width="90" height="10" fill="#0f0" transform="translate(0 26)" /> -->
-    <g transform="translate(-19 52)">
-      <rect width="71" height="47" rx="5" fill="#fafafa" transform="translate(10 0)"/>
+    <g class="io-group" transform="translate(-19 52)">
+      <rect class="input-background" width="71" height="47" rx="5" transform="translate(10 0)"/>
       <g transform="translate(10 0)">
         <!-- <rect width="30" height="47" rx="5" fill="#fafafa" /> -->
         <def id="FM_INPUT" xlink:href="#input" transform="translate(7 5)"/>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(11 40)">FM</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(11 40)">FM</text>
       </g>
       <g transform="translate(47 0)">
         <!-- <rect width="30" height="47" rx="5" fill="#fafafa" /> -->
         <def id="FM_DEPTH_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(0 40)">DEPTH</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(0 40)">DEPTH</text>
       </g>
       <g transform="translate(82 0)">
         <!-- <rect width="30" height="47" rx="5" fill="#00c" /> -->
@@ -83,10 +83,10 @@
   <!-- <rect width="90" height="18" fill="#0f0" transform="translate(0 175)" /> -->
   <!-- <rect width="90" height="18" fill="#0f0" transform="translate(0 295)" /> -->
 
-  <rect width="193" height="47" rx="5" fill="#bbb" transform="translate(97 313)"/>
+  <rect class="output-background" width="193" height="47" rx="5" transform="translate(97 313)"/>
 
-  <g transform="translate(140 30)">
-    <rect width="30" height="330" rx="5" fill="#fafafa"/>
+  <g class="io-group" transform="translate(140 30)">
+    <rect class="input-background" width="30" height="330" rx="5"/>
     <!-- <polyline points="15,0 15,320" stroke="#0f0" stroke-width="1" fill="none" /> -->
     <!-- <rect width="30" height="20" fill="#0f0" transform="translate(0 90)" /> -->
     <!-- <rect width="30" height="20" fill="#0f0" transform="translate(0 177)" /> -->
@@ -111,12 +111,12 @@
       <text font-size="6pt" letter-spacing="2px" transform="translate(2.5 30)">MIX</text>
       <def id="SQUARE_MIX_INPUT" xlink:href="#input" transform="translate(0 35)"/>
     </g>
-    <g transform="translate(0 288)">
-      <rect width="32" height="5" fill="#bbb" transform="translate(-1 -5)"/>
-      <rect width="32" height="47" rx="5" fill="#bbb" transform="translate(-1 -5)"/>
+    <g class="io-group" transform="translate(0 288)">
+      <rect class="output-background-filler" width="32" height="5" transform="translate(-1 -5)"/>
+      <rect class="output-background" width="32" height="47" rx="5" transform="translate(-1 -5)"/>
       <g transform="translate(3 0)">
         <def id="SQUARE_OUTPUT" xlink:href="#output" transform="translate(0 0)"/>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(2 36)">OUT</text>
+        <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(2 36)">OUT</text>
       </g>
     </g>
   </g>
@@ -124,8 +124,8 @@
   <def xlink:href="#dial-centertick" transform="translate(135 136)"/>
   <def xlink:href="#dial-mintick" transform="translate(135 225)"/>
 
-  <g transform="translate(180 30)">
-    <rect width="30" height="330" rx="5" fill="#fafafa"/>
+  <g class="io-group" transform="translate(180 30)">
+    <rect class="input-background" width="30" height="330" rx="5"/>
     <!-- <polyline points="15,0 15,320" stroke="#0f0" stroke-width="1" fill="none" /> -->
     <!-- <rect width="30" height="20" fill="#0f0" transform="translate(0 90)" /> -->
     <!-- <rect width="30" height="20" fill="#0f0" transform="translate(0 177)" /> -->
@@ -150,12 +150,12 @@
       <text font-size="6pt" letter-spacing="2px" transform="translate(2.5 30)">MIX</text>
       <def id="SAW_MIX_INPUT" xlink:href="#input" transform="translate(0 35)"/>
     </g>
-    <g transform="translate(0 288)">
-      <rect width="32" height="5" fill="#bbb" transform="translate(-1 -5)"/>
-      <rect width="32" height="47" rx="5" fill="#bbb" transform="translate(-1 -5)"/>
+    <g class="io-group" transform="translate(0 288)">
+      <rect class="output-background-filler" width="32" height="5" transform="translate(-1 -5)"/>
+      <rect class="output-background" width="32" height="47" rx="5" transform="translate(-1 -5)"/>
       <g transform="translate(3 0)">
         <def id="SAW_OUTPUT" xlink:href="#output" transform="translate(0 0)"/>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(2 36)">OUT</text>
+        <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(2 36)">OUT</text>
       </g>
     </g>
   </g>
@@ -163,8 +163,8 @@
   <def xlink:href="#dial-centertick" transform="translate(175 136)"/>
   <def xlink:href="#dial-mintick" transform="translate(175 225)"/>
 
-  <g transform="translate(220 30)">
-    <rect width="30" height="330" rx="5" fill="#fafafa"/>
+  <g class="io-group" transform="translate(220 30)">
+    <rect class="input-background" width="30" height="330" rx="5"/>
     <!-- <polyline points="15,0 15,320" stroke="#0f0" stroke-width="1" fill="none" /> -->
     <!-- <rect width="30" height="20" fill="#0f0" transform="translate(0 90)" /> -->
     <!-- <rect width="30" height="20" fill="#0f0" transform="translate(0 177)" /> -->
@@ -189,12 +189,12 @@
       <text font-size="6pt" letter-spacing="2px" transform="translate(2.5 30)">MIX</text>
       <def id="TRIANGLE_MIX_INPUT" xlink:href="#input" transform="translate(0 35)"/>
     </g>
-    <g transform="translate(0 288)">
-      <rect width="32" height="5" fill="#bbb" transform="translate(-1 -5)"/>
-      <rect width="32" height="47" rx="5" fill="#bbb" transform="translate(-1 -5)"/>
+    <g class="io-group" transform="translate(0 288)">
+      <rect class="output-background-filler" width="32" height="5" transform="translate(-1 -5)"/>
+      <rect class="output-background" width="32" height="47" rx="5" transform="translate(-1 -5)"/>
       <g transform="translate(3 0)">
         <def id="TRIANGLE_OUTPUT" xlink:href="#output" transform="translate(0 0)"/>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(2 36)">OUT</text>
+        <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(2 36)">OUT</text>
       </g>
     </g>
   </g>
@@ -202,8 +202,8 @@
   <def xlink:href="#dial-centertick" transform="translate(215 136)"/>
   <def xlink:href="#dial-mintick" transform="translate(215 225)"/>
 
-  <g transform="translate(260 30)">
-    <rect width="30" height="330" rx="5" fill="#fafafa"/>
+  <g class="io-group" transform="translate(260 30)">
+    <rect class="input-background" width="30" height="330" rx="5"/>
     <!-- <polyline points="15,0 15,320" stroke="#0f0" stroke-width="1" fill="none" /> -->
     <!-- <rect width="30" height="20" fill="#0f0" transform="translate(0 90)" /> -->
     <!-- <rect width="30" height="20" fill="#0f0" transform="translate(0 177)" /> -->
@@ -229,12 +229,12 @@
       <text font-size="6pt" letter-spacing="2px" transform="translate(2.5 30)">MIX</text>
       <def id="SINE_MIX_INPUT" xlink:href="#input" transform="translate(0 35)"/>
     </g>
-    <g transform="translate(0 288)">
-      <rect width="31" height="5" fill="#bbb" transform="translate(-1 -5)"/>
-      <rect width="31" height="47" rx="5" fill="#bbb" transform="translate(-1 -5)"/>
+    <g class="io-group" transform="translate(0 288)">
+      <rect class="output-background-filler" width="31" height="5" transform="translate(-1 -5)"/>
+      <rect class="output-background" width="31" height="47" rx="5" transform="translate(-1 -5)"/>
       <g transform="translate(3 0)">
         <def id="SINE_OUTPUT" xlink:href="#output" transform="translate(0 0)"/>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(2 36)">OUT</text>
+        <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(2 36)">OUT</text>
       </g>
     </g>
   </g>
@@ -243,22 +243,22 @@
   <def xlink:href="#dial-mintick" transform="translate(255 225)"/>
 
   <!-- <rect width="30" height="10" fill="#0f0" transform="translate(0 303)" /> -->
-  <g transform="translate(0 313)">
-    <rect width="71" height="47" rx="5" fill="#fafafa" transform="translate(10 0)"/>
+  <g class="io-group" transform="translate(0 313)">
+    <rect class="input-background" width="71" height="47" rx="5" transform="translate(10 0)"/>
     <g transform="translate(10 0)">
       <!-- <rect width="30" height="47" rx="5" fill="#fafafa" /> -->
       <def id="PITCH_INPUT" xlink:href="#input" transform="translate(7 5)"/>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(5 40)">V/OCT</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(5 40)">V/OCT</text>
     </g>
     <g transform="translate(47 0)">
       <!-- <rect width="30" height="47" rx="5" fill="#fafafa" /> -->
       <def id="SYNC_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(3 40)">SYNC</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(3 40)">SYNC</text>
     </g>
     <g transform="translate(100 0)">
       <!-- <rect width="30" height="47" rx="5" fill="#bbb" transform="translate(0 0)" /> -->
       <def id="MIX_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(5 40)">MIX</text>
+      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(5 40)">MIX</text>
     </g>
   </g>
 </module>

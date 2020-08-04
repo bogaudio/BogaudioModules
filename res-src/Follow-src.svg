@@ -42,10 +42,10 @@
     <text font-size="6pt" letter-spacing="2.0px" transform="translate(8.5 0)">DAMP</text>
     <def id="RESPONSE_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
     <use xlink:href="#dial-response-follow" transform="translate(0 3)"/>
-    <g transform="translate(5.5 49)">
-      <rect width="34" height="39" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 49)">
+      <rect class="input-background" width="34" height="39" rx="5"/>
       <def id="RESPONSE_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
     </g>
   </g>
 
@@ -53,25 +53,25 @@
     <text font-size="6pt" letter-spacing="1px" transform="translate(11.5 0)">GAIN</text>
     <def id="GAIN_PARAM" xlink:href="#knob29" transform="translate(0 3)"/>
     <use xlink:href="#dial-scale-follow" transform="translate(0 3)"/>
-    <g transform="translate(5.5 49)">
-      <rect width="34" height="38" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 49)">
+      <rect class="input-background" width="34" height="38" rx="5"/>
       <def id="GAIN_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
     </g>
   </g>
 
   <g transform="translate(0 230)">
-    <g transform="translate(5.5 0)">
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 28)"/>
-      <rect width="34" height="35" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 0)">
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 28)"/>
+      <rect class="input-background" width="34" height="35" rx="5"/>
       <def id="IN_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
     </g>
-    <g transform="translate(5.5 41)">
-      <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
-      <rect width="34" height="35" rx="5" fill="#bbb"/>
+    <g class="io-group" transform="translate(5.5 41)">
+      <rect class="output-background-filler" width="34" height="10" transform="translate(0 -3)"/>
+      <rect class="output-background" width="34" height="35" rx="5"/>
       <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
     </g>
   </g>
 

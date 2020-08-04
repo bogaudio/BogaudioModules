@@ -164,44 +164,44 @@
     <use xlink:href="#dial-slope-vcf" transform="translate(18.5 -11)"/>
   </g>
 
-  <g transform="translate(0 269)">
-    <rect width="130" height="47" rx="5" fill="#bbb" transform="translate(10 44)"/>
-    <rect width="98" height="44" rx="5" fill="#fafafa" transform="translate(26 0)"/>
-    <rect width="98" height="10" fill="#fafafa" transform="translate(26 34)"/>
-    <rect width="97" height="47" rx="5" fill="#fafafa" transform="translate(10 44)"/>
-    <rect width="10" height="47" fill="#fafafa" transform="translate(97 44)"/>
+  <g class="io-group" transform="translate(0 269)">
+    <rect class="output-background" width="130" height="47" rx="5" transform="translate(10 44)"/>
+    <rect class="input-background" width="98" height="44" rx="5" transform="translate(26 0)"/>
+    <rect class="input-background-filler" width="98" height="10" transform="translate(26 34)"/>
+    <rect class="input-background" width="97" height="47" rx="5" transform="translate(10 44)"/>
+    <rect class="input-background-filler" width="10" height="47" transform="translate(97 44)"/>
 
     <g transform="translate(16 0)">
       <g transform="translate(12 0)">
         <def id="FREQUENCY_CV_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(9 40)">CV</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(9 40)">CV</text>
       </g>
       <g transform="translate(44 0)">
         <def id="PITCH_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(1 40)">V/OCT</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(1 40)">V/OCT</text>
       </g>
       <g transform="translate(76 0)">
         <def id="FM_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(9 40)">FM</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(9 40)">FM</text>
       </g>
     </g>
 
     <g transform="translate(10 44)">
       <g transform="translate(2 0)">
         <def id="IN_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(10.5 40)">IN</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(10.5 40)">IN</text>
       </g>
       <g transform="translate(34 0)">
         <def id="Q_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(3 40)">R/BW</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(3 40)">R/BW</text>
       </g>
       <g transform="translate(66 0)">
         <def id="SLOPE_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(7 40)">SLP</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(7 40)">SLP</text>
       </g>
       <g transform="translate(98 0)">
         <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(6 40)">OUT</text>
+        <text class="output-label" font-size="6pt" letter-spacing="1px" transform="translate(6 40)">OUT</text>
       </g>
     </g>
   </g>

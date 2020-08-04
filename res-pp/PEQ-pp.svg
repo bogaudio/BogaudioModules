@@ -14,7 +14,10 @@ text.brand {
   font-weight: bold;
 }
 
-path, polyline {
+polyline {
+  stroke: #333;
+}
+path {
   stroke: #333;
 }
 
@@ -29,6 +32,24 @@ polyline.module-border-middle {
 }
 polyline.module-border-outer {
   stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background {
+  fill: #fafafa;
+}
+rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background {
+  fill: #bbb;
+}
+rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
 }
 </style>
 
@@ -312,11 +333,11 @@ polyline.module-border-outer {
     </g>
   </g>
 
-  <g transform="translate(0 226)">
-    <rect width="130" height="134" rx="5" fill="#fafafa" transform="translate(10 0)"/>
-    <rect width="32.5" height="46" rx="5" fill="#bbb" transform="translate(107.5 88)"/>
-    <rect width="32.5" height="8" fill="#bbb" transform="translate(107.5 88)"/>
-    <rect width="8" height="46" fill="#bbb" transform="translate(107.5 88)"/>
+  <g class="io-group" transform="translate(0 226)">
+    <rect class="input-background" width="130" height="134" rx="5" transform="translate(10 0)"/>
+    <rect class="output-background" width="32.5" height="46" rx="5" transform="translate(107.5 88)"/>
+    <rect class="output-background-filler" width="32.5" height="8" transform="translate(107.5 88)"/>
+    <rect class="output-background-filler" width="8" height="46" transform="translate(107.5 88)"/>
 
     <g transform="translate(12 0)">
       <g transform="translate(3 5)"><svg id="A_LEVEL_INPUT">
@@ -325,7 +346,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(3 40)">A-LVL</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(3 40)">A-LVL</text>
     </g>
     <g transform="translate(44 0)">
       <g transform="translate(3 5)"><svg id="B_LEVEL_INPUT">
@@ -334,7 +355,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(1 40)">B-LVL</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(1 40)">B-LVL</text>
     </g>
     <g transform="translate(76 0)">
       <g transform="translate(3 5)"><svg id="C_LEVEL_INPUT">
@@ -343,7 +364,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(2 40)">C-LVL</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(2 40)">C-LVL</text>
     </g>
     <g transform="translate(108 0)">
       <g transform="translate(3 5)"><svg id="ALL_CV_INPUT">
@@ -352,7 +373,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(6 40)">FCV</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(6 40)">FCV</text>
     </g>
 
     <g transform="translate(12 44)">
@@ -362,7 +383,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(1 40)">A-FCV</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(1 40)">A-FCV</text>
     </g>
     <g transform="translate(44 44)">
       <g transform="translate(3 5)"><svg id="B_FREQUENCY_INPUT">
@@ -371,7 +392,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(1 40)">B-FCV</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(1 40)">B-FCV</text>
     </g>
     <g transform="translate(76 44)">
       <g transform="translate(3 5)"><svg id="C_FREQUENCY_INPUT">
@@ -380,7 +401,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(1 40)">C-FCV</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(1 40)">C-FCV</text>
     </g>
     <g transform="translate(108 44)">
       <g transform="translate(3 5)"><svg id="IN_INPUT">
@@ -389,7 +410,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(10 40)">IN</text>
+      <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(10 40)">IN</text>
     </g>
 
     <g transform="translate(12 88)">
@@ -399,7 +420,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(3 40)">A-BW</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(3 40)">A-BW</text>
     </g>
     <g transform="translate(44 88)">
       <g transform="translate(3 5)"><svg id="B_BANDWIDTH_INPUT">
@@ -408,7 +429,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(2 40)">B-BW</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(2 40)">B-BW</text>
     </g>
     <g transform="translate(76 88)">
       <g transform="translate(3 5)"><svg id="C_BANDWIDTH_INPUT">
@@ -417,7 +438,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(3 40)">C-BW</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(3 40)">C-BW</text>
     </g>
     <g transform="translate(108 88)">
       <g transform="translate(3 5)"><svg id="OUT_OUTPUT">
@@ -426,7 +447,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(5 40)">OUT</text>
+      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(5 40)">OUT</text>
     </g>
   </g>
 </svg>

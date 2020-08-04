@@ -11,11 +11,11 @@
         <def id="ATTACK_PARAM" xlink:href="#knob38" transform="translate(20 0)"/>
         <def id="ATTACK_LIGHT" xlink:href="#light-tiny" transform="translate(3 47)"/>
       </g>
-      <g transform="translate(74 4)">
-        <rect width="58" height="40" rx="5" fill="#fafafa"/>
+      <g class="io-group" transform="translate(74 4)">
+        <rect class="input-background" width="58" height="40" rx="5"/>
         <def id="TRIGGER_PARAM" xlink:href="#button" transform="translate(6 6) scale(0.18)"/>
         <def id="TRIGGER_INPUT" xlink:href="#input" transform="translate(31 3)"/>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(6 36)">TRIGGER</text>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(6 36)">TRIGGER</text>
       </g>
     </g>
 
@@ -53,10 +53,10 @@
         <def id="OFF_PARAM" xlink:href="#knob38" transform="translate(20 0)"/>
         <def id="OFF_LIGHT" xlink:href="#light-tiny" transform="translate(3 36)"/>
       </g>
-      <g transform="translate(102 4)">
-        <rect width="30" height="40" rx="5" fill="#bbb"/>
+      <g class="io-group" transform="translate(102 4)">
+        <rect class="output-background" width="30" height="40" rx="5"/>
         <def id="TRIGGER_OUTPUT" xlink:href="#output" transform="translate(3 3)"/>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(6 36)">END</text>
+        <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(6 36)">END</text>
       </g>
     </g>
 
@@ -65,11 +65,11 @@
         <text font-size="8pt" letter-spacing="2px" transform="translate(48 7.1) rotate(90)">ENV</text>
         <def id="ENV_PARAM" xlink:href="#knob38" transform="translate(-1.7 0)"/>
       </g>
-      <g transform="translate(0 4)">
-        <rect width="58" height="40" rx="5" fill="#bbb"/>
+      <g class="io-group" transform="translate(0 4)">
+        <rect class="output-background" width="58" height="40" rx="5"/>
         <def id="ENV_OUTPUT" xlink:href="#output" transform="translate(2.5 3)"/>
         <def id="INV_OUTPUT" xlink:href="#output" transform="translate(31.5 3)"/>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(6 36)">ENV</text>
+        <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(6 36)">ENV</text>
         <text font-size="6pt" letter-spacing="2px" transform="translate(35 36)">INV</text>
       </g>
     </g>
@@ -79,13 +79,13 @@
         <text font-size="8pt" letter-spacing="2px" transform="translate(48 -2.5) rotate(90)">SIGNAL</text>
         <def id="SIGNAL_PARAM" xlink:href="#knob38" transform="translate(-1.7 0)"/>
       </g>
-      <g transform="translate(0 4)">
-        <rect width="58" height="40" rx="5" fill="#fafafa"/>
-        <rect width="20" height="40" rx="5" fill="#bbb" transform="translate(38)"/>
-        <rect width="20" height="40" fill="#bbb" transform="translate(29)"/>
+      <g class="io-group" transform="translate(0 4)">
+        <rect class="input-background" width="58" height="40" rx="5"/>
+        <rect class="output-background" width="20" height="40" rx="5" transform="translate(38)"/>
+        <rect class="output-background-filler" width="20" height="40" transform="translate(29)"/>
         <def id="SIGNAL_INPUT" xlink:href="#input" transform="translate(2.5 3)"/>
         <def id="SIGNAL_OUTPUT" xlink:href="#output" transform="translate(31.5 3)"/>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(10 36)">IN</text>
+        <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(10 36)">IN</text>
         <text font-size="6pt" letter-spacing="2px" transform="translate(33 36)">OUT</text>
       </g>
     </g>

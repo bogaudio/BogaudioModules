@@ -148,8 +148,8 @@
     <use xlink:href="#dial-phase-eightfo" transform="translate(3 280) translate(12 12) rotate(90) translate(-20 -20)"/>
   </g>
 
-  <g transform="translate(176 32)">
-    <rect width="30" height="328" rx="5" fill="#fafafa"/>
+  <g class="io-group" transform="translate(176 32)">
+    <rect class="input-background" width="30" height="328" rx="5"/>
     <g transform="translate(3 4)">
       <def id="PHASE7_INPUT" xlink:href="#input" transform="translate(0 0)"/>
       <def id="PHASE6_INPUT" xlink:href="#input" transform="translate(0 40)"/>
@@ -164,8 +164,8 @@
     <text font-size="6pt" letter-spacing="2px" transform="translate(8 320)">CV</text>
   </g>
 
-  <g transform="translate(215 32)">
-    <rect width="30" height="328" rx="5" fill="#bbb"/>
+  <g class="io-group" transform="translate(215 32)">
+    <rect class="output-background" width="30" height="328" rx="5"/>
     <g transform="translate(3 4)">
       <def id="PHASE7_OUTPUT" xlink:href="#output" transform="translate(0 0)"/>
       <def id="PHASE6_OUTPUT" xlink:href="#output" transform="translate(0 40)"/>
@@ -183,34 +183,34 @@
   <!-- <polyline points="0,0 0,360" stroke="#0f0" stroke-width="1" fill="none" transform="translate(135 0)" /> -->
   <!-- <polyline points="0,0 270,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 360)" /> -->
   <!-- <rect width="230" height="10" fill="#0f0" transform="translate(0 263)" /> -->
-  <g transform="translate(0 313)">
-    <rect width="70" height="87" rx="5" fill="#fafafa" transform="translate(10 -40)"/>
-    <rect width="108" height="43" rx="5" fill="#fafafa" transform="translate(10 -40)"/>
+  <g class="io-group" transform="translate(0 313)">
+    <rect class="input-background" width="70" height="87" rx="5" transform="translate(10 -40)"/>
+    <rect class="input-background" width="108" height="43" rx="5" transform="translate(10 -40)"/>
     <!-- <rect width="300" height="7" fill="#f00" transform="translate(10 40)" /> -->
     <g transform="translate(10 -40)">
       <!-- <rect width="30" height="40" rx="5" fill="#fafafa" /> -->
       <def id="SAMPLE_PWM_INPUT" xlink:href="#input" transform="translate(4 4)"/>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(4 38)">S/PW</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(4 38)">S/PW</text>
     </g>
     <g transform="translate(50 -40)">
       <!-- <rect width="30" height="40" rx="5" fill="#fafafa" /> -->
       <def id="OFFSET_INPUT" xlink:href="#input" transform="translate(2 4)"/>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(4.5 38)">OFF</text>
+      <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(4.5 38)">OFF</text>
     </g>
     <g transform="translate(90 -40)">
       <!-- <rect width="30" height="40" rx="5" fill="#fafafa" /> -->
       <def id="SCALE_INPUT" xlink:href="#input" transform="translate(0 4)"/>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(2.5 38)">SCL</text>
+      <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(2.5 38)">SCL</text>
     </g>
     <g transform="translate(10 0)">
       <!-- <rect width="30" height="47" rx="5" fill="#fafafa" /> -->
       <def id="PITCH_INPUT" xlink:href="#input" transform="translate(4 5)"/>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(2 40)">V/OCT</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(2 40)">V/OCT</text>
     </g>
     <g transform="translate(50 0)">
       <!-- <rect width="30" height="47" rx="5" fill="#fafafa" /> -->
       <def id="RESET_INPUT" xlink:href="#input" transform="translate(2 5)"/>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(0 40)">RESET</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(0 40)">RESET</text>
     </g>
   </g>
 </module>

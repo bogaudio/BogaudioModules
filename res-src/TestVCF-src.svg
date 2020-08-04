@@ -122,14 +122,14 @@
     </g>
   </g>
 
-  <g transform="translate(45 315)">
-    <rect width="58" height="40" rx="5" fill="#fafafa"/>
-    <rect width="50" height="40" rx="5" fill="#bbb" transform="translate(38)"/>
-    <rect width="20" height="40" fill="#bbb" transform="translate(29)"/>
+  <g class="io-group" transform="translate(45 315)">
+    <rect class="input-background" width="58" height="40" rx="5"/>
+    <rect class="output-background" width="50" height="40" rx="5" transform="translate(38)"/>
+    <rect class="output-background-filler" width="20" height="40" transform="translate(29)"/>
     <def id="IN_INPUT" xlink:href="#input" transform="translate(2.5 3)"/>
     <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(31.5 3)"/>
     <def id="OUT_B_OUTPUT" xlink:href="#output" transform="translate(60.5 3)"/>
-    <text font-size="6pt" letter-spacing="2px" transform="translate(10 36)">IN</text>
+    <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(10 36)">IN</text>
     <text font-size="6pt" letter-spacing="2px" transform="translate(33 36)">OUT</text>
     <text font-size="6pt" letter-spacing="2px" transform="translate(70.5 36)">B</text>
   </g>

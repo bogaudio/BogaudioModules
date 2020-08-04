@@ -14,7 +14,10 @@ text.brand {
   font-weight: bold;
 }
 
-path, polyline {
+polyline {
+  stroke: #333;
+}
+path {
   stroke: #333;
 }
 
@@ -29,6 +32,24 @@ polyline.module-border-middle {
 }
 polyline.module-border-outer {
   stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background {
+  fill: #fafafa;
+}
+rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background {
+  fill: #bbb;
+}
+rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
 }
 </style>
 
@@ -51,9 +72,9 @@ polyline.module-border-outer {
     
 
   <g transform="translate(0 18)">
-    <g transform="translate(5.5 0)">
-      <rect width="34" height="113" rx="5" fill="#fafafa"/>
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 103)"/>
+    <g class="io-group" transform="translate(5.5 0)">
+      <rect class="input-background" width="34" height="113" rx="5"/>
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 103)"/>
       <g transform="translate(8 4)"><svg id="GATE1_PARAM">
       <g transform="translate(9 9)">
         <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
@@ -65,7 +86,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(5 58)">GATE</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(5 58)">GATE</text>
       <text font-size="5pt" letter-spacing="0.3px" transform="translate(1 71)">LATCH</text>
       <g transform="translate(24 64)"><svg id="LATCH1_PARAM">
       <g transform="translate(4.5 4.5)">
@@ -78,18 +99,18 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="1px" transform="translate(13 110)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="1px" transform="translate(13 110)">IN</text>
     </g>
-    <g transform="translate(5.5 113)">
-      <rect width="34" height="10" fill="#bbb" transform="translate(0 0)"/>
-      <rect width="34" height="39" rx="5" fill="#bbb"/>
+    <g class="io-group" transform="translate(5.5 113)">
+      <rect class="output-background-filler" width="34" height="10" transform="translate(0 0)"/>
+      <rect class="output-background" width="34" height="39" rx="5"/>
       <g transform="translate(5 3)"><svg id="OUT1_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="1px" transform="translate(14 35)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="1px" transform="translate(14 35)">OUT</text>
       <g transform="translate(5 29.3)"><svg id="LOW1_LIGHT">
       <rect width="6.4" height="6.4" fill="#0f0"/>
     </svg></g>
@@ -100,9 +121,9 @@ polyline.module-border-outer {
   </g>
 
   <g transform="translate(0 183)">
-    <g transform="translate(5.5 0)">
-      <rect width="34" height="113" rx="5" fill="#fafafa"/>
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 103)"/>
+    <g class="io-group" transform="translate(5.5 0)">
+      <rect class="input-background" width="34" height="113" rx="5"/>
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 103)"/>
       <g transform="translate(8 4)"><svg id="GATE2_PARAM">
       <g transform="translate(9 9)">
         <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
@@ -114,7 +135,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(5 58)">GATE</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(5 58)">GATE</text>
       <text font-size="5pt" letter-spacing="0.3px" transform="translate(1 71)">LATCH</text>
       <g transform="translate(24 64)"><svg id="LATCH2_PARAM">
       <g transform="translate(4.5 4.5)">
@@ -127,18 +148,18 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="1px" transform="translate(13 110)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="1px" transform="translate(13 110)">IN</text>
     </g>
-    <g transform="translate(5.5 113)">
-      <rect width="34" height="10" fill="#bbb" transform="translate(0 0)"/>
-      <rect width="34" height="39" rx="5" fill="#bbb"/>
+    <g class="io-group" transform="translate(5.5 113)">
+      <rect class="output-background-filler" width="34" height="10" transform="translate(0 0)"/>
+      <rect class="output-background" width="34" height="39" rx="5"/>
       <g transform="translate(5 3)"><svg id="OUT2_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="1px" transform="translate(14 35)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="1px" transform="translate(14 35)">OUT</text>
       <g transform="translate(5 29.3)"><svg id="LOW2_LIGHT">
       <rect width="6.4" height="6.4" fill="#0f0"/>
     </svg></g>

@@ -243,64 +243,64 @@
     </g>
   </g>
 
-  <g transform="translate(0 269)">
-    <rect width="205" height="91" rx="5" fill="#bbb" transform="translate(10 0)"/>
-    <rect width="137" height="91" rx="5" fill="#fafafa" transform="translate(10 0)"/>
-    <rect width="171" height="47" rx="5" fill="#fafafa" transform="translate(10 44)"/>
-    <rect width="10" height="10" fill="#fafafa" transform="translate(137 0)"/>
-    <rect width="10" height="10" fill="#fafafa" transform="translate(171 81)"/>
+  <g class="io-group" transform="translate(0 269)">
+    <rect class="output-background" width="205" height="91" rx="5" transform="translate(10 0)"/>
+    <rect class="input-background" width="137" height="91" rx="5" transform="translate(10 0)"/>
+    <rect class="input-background" width="171" height="47" rx="5" transform="translate(10 44)"/>
+    <rect class="input-background-filler" width="10" height="10" transform="translate(137 0)"/>
+    <rect class="input-background-filler" width="10" height="10" transform="translate(171 81)"/>
 
     <g transform="translate(10 0)">
       <g transform="translate(3 0)">
         <def id="LEFT_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(13 40)">L</text>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(13 40)">L</text>
       </g>
       <g transform="translate(37 0)">
         <def id="SIDECHAIN_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(3 40)">SIDE</text>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(3 40)">SIDE</text>
       </g>
       <g transform="translate(71 0)">
         <def id="THRESHOLD_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(1.5 40)">TRSH</text>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(1.5 40)">TRSH</text>
       </g>
       <g transform="translate(105 0)">
         <def id="RATIO_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(1.5 40)">RATIO</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(1.5 40)">RATIO</text>
       </g>
       <g transform="translate(139 0)">
         <def id="ENVELOPE_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(5.5 40)">ENV</text>
+        <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(5.5 40)">ENV</text>
       </g>
       <g transform="translate(173 0)">
         <def id="LEFT_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(13 40)">L</text>
+        <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(13 40)">L</text>
       </g>
     </g>
 
     <g transform="translate(10 44)">
       <g transform="translate(3 0)">
         <def id="RIGHT_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(13 40)">R</text>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(13 40)">R</text>
       </g>
       <g transform="translate(37 0)">
         <def id="ATTACK_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(5.5 40)">ATT</text>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(5.5 40)">ATT</text>
       </g>
       <g transform="translate(71 0)">
         <def id="RELEASE_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(5.4 40)">REL</text>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(5.4 40)">REL</text>
       </g>
       <g transform="translate(105 0)">
         <def id="INPUT_GAIN_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(5.3 40)">IGN</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(5.3 40)">IGN</text>
       </g>
       <g transform="translate(139 0)">
         <def id="OUTPUT_GAIN_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(5.3 40)">OGN</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(5.3 40)">OGN</text>
       </g>
       <g transform="translate(173 0)">
         <def id="RIGHT_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(12 40)">R</text>
+        <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(12 40)">R</text>
       </g>
     </g>
   </g>

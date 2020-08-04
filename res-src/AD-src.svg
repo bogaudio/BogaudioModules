@@ -35,23 +35,23 @@
   </g>
 
   <g transform="translate(0 160.5)">
-    <g transform="translate(5.5 0)">
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 98)"/>
-      <rect width="34" height="108" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 0)">
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 98)"/>
+      <rect class="input-background" width="34" height="108" rx="5"/>
       <def id="TRIGGER_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6.5 35)">TRIG</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(6.5 35)">TRIG</text>
       <def id="ATTACK_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="1px" transform="translate(2 70)">ATTACK</text>
+      <text class="input-label" font-size="5pt" letter-spacing="1px" transform="translate(2 70)">ATTACK</text>
       <def id="DECAY_INPUT" xlink:href="#input" transform="translate(5 73)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(2.5 105)">DECAY</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(2.5 105)">DECAY</text>
     </g>
-    <g transform="translate(5.5 111)">
-      <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
-      <rect width="34" height="70" rx="5" fill="#bbb"/>
+    <g class="io-group" transform="translate(5.5 111)">
+      <rect class="output-background-filler" width="34" height="10" transform="translate(0 -3)"/>
+      <rect class="output-background" width="34" height="70" rx="5"/>
       <def id="ENV_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 32)">ENV</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 32)">ENV</text>
       <def id="EOC_OUTPUT" xlink:href="#output" transform="translate(5 35)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 67)">EOC</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 67)">EOC</text>
     </g>
   </g>
 </module>

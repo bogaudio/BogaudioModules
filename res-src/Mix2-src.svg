@@ -15,25 +15,25 @@
   </g>
 
   <g transform="translate(0 240)">
-    <g transform="translate(5.5 0)">
-      <rect width="64" height="10" fill="#fafafa" transform="translate(0 66)"/>
-      <rect width="64" height="73" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 0)">
+      <rect class="input-background-filler" width="64" height="10" transform="translate(0 66)"/>
+      <rect class="input-background" width="64" height="73" rx="5"/>
       <def id="LEVEL_INPUT" xlink:href="#input" transform="translate(5 4)"/>
-      <text font-size="5pt" letter-spacing="1.5px" transform="translate(4.5 36)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="1.5px" transform="translate(4.5 36)">LEVEL</text>
       <def id="MUTE_INPUT" xlink:href="#input" transform="translate(35 4)"/>
-      <text font-size="5pt" letter-spacing="1.5px" transform="translate(35.5 36)">MUTE</text>
+      <text class="input-label" font-size="5pt" letter-spacing="1.5px" transform="translate(35.5 36)">MUTE</text>
       <def id="L_INPUT" xlink:href="#input" transform="translate(5 40)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(15 72)">L</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(15 72)">L</text>
       <def id="R_INPUT" xlink:href="#input" transform="translate(35 40)"/>
-      <text font-size="5pt" letter-spacing="0.5px" transform="translate(39 72)">R (L)</text>
+      <text class="input-label" font-size="5pt" letter-spacing="0.5px" transform="translate(39 72)">R (L)</text>
     </g>
-    <g transform="translate(5.5 79)">
-      <rect width="64" height="10" fill="#bbb" transform="translate(0 -3)"/>
-      <rect width="64" height="37" rx="5" fill="#bbb"/>
+    <g class="io-group" transform="translate(5.5 79)">
+      <rect class="output-background-filler" width="64" height="10" transform="translate(0 -3)"/>
+      <rect class="output-background" width="64" height="37" rx="5"/>
       <def id="L_OUTPUT" xlink:href="#output" transform="translate(5 1)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(15 33)">L</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(15 33)">L</text>
       <def id="R_OUTPUT" xlink:href="#output" transform="translate(35 1)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(45 33)">R</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(45 33)">R</text>
     </g>
   </g>
 </module>

@@ -307,12 +307,12 @@
       <path d="M 0,0 H 2.5" style="stroke:#333333;stroke-width:0.3" transform="rotate(40,-5,13.737387)" id="polyline47051"/>
     </g>
   </g>
-  <path d="m 57,318 h 50 c 2.77,0 5,2.23 5,5 v 30 c 0,2.77 -2.23,5 -5,5 H 57 c -2.77,0 -5,-2.23 -5,-5 v -30 c 0,-2.77 2.23,-5 5,-5 z" style="fill:#fafafa" id="rect47059"/>
-  <path d="m 95,318 h 14 c 2.77,0 5,2.23 5,5 v 30 c 0,2.77 -2.23,5 -5,5 H 95 c -2.77,0 -5,-2.23 -5,-5 v -30 c 0,-2.77 2.23,-5 5,-5 z" style="fill:#bbbbbb" id="rect47061"/>
-  <path d="m 83,318 h 20 v 40 H 83 Z" style="fill:#bbbbbb" id="rect47063"/>
+  <path class="input-background" d="m 57,318 h 50 c 2.77,0 5,2.23 5,5 v 30 c 0,2.77 -2.23,5 -5,5 H 57 c -2.77,0 -5,-2.23 -5,-5 v -30 c 0,-2.77 2.23,-5 5,-5 z" style="fill:#fafafa" id="rect47059"/>
+  <path class="output-background" d="m 95,318 h 14 c 2.77,0 5,2.23 5,5 v 30 c 0,2.77 -2.23,5 -5,5 H 95 c -2.77,0 -5,-2.23 -5,-5 v -30 c 0,-2.77 2.23,-5 5,-5 z" style="fill:#bbbbbb" id="rect47061"/>
+  <path class="output-background-filler" d="m 83,318 h 20 v 40 H 83 Z" style="fill:#bbbbbb" id="rect47063"/>
   <g transform="translate(55.5,322)" id="g47065"/>
   <g transform="translate(86.5,322)" id="g47067"/>
-  <g style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;letter-spacing:1px;fill:#333333" id="text47069" aria-label="CHAN">
+  <g class="output-label" style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;letter-spacing:1px;fill:#333333" id="text47069" aria-label="CHAN">
     <path id="path47279" style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;letter-spacing:1px;fill:#333333" d="m 59.972656,352.10547 q -0.06641,0.91797 -0.679687,1.44531 -0.609375,0.52734 -1.609375,0.52734 -1.09375,0 -1.722657,-0.73437 -0.625,-0.73828 -0.625,-2.02344 v -0.34765 q 0,-0.82032 0.289063,-1.44532 0.289062,-0.625 0.824219,-0.95703 0.539062,-0.33594 1.25,-0.33594 0.984375,0 1.585937,0.52735 0.601563,0.52734 0.695313,1.48047 h -1.171875 q -0.04297,-0.55078 -0.308594,-0.79688 -0.261719,-0.25 -0.800781,-0.25 -0.585938,0 -0.878907,0.42188 -0.289062,0.41797 -0.296875,1.30078 v 0.42969 q 0,0.92187 0.277344,1.34765 0.28125,0.42578 0.882813,0.42578 0.542968,0 0.808593,-0.24609 0.269532,-0.25 0.308594,-0.76953 z"/>
     <path id="path47281" style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;letter-spacing:1px;fill:#333333" d="m 66.371094,354 h -1.171875 v -2.4375 H 62.914062 V 354 h -1.171875 v -5.6875 h 1.171875 v 2.30469 h 2.285157 v -2.30469 h 1.171875 z"/>
     <path id="path47283" style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;letter-spacing:1px;fill:#333333" d="M 71.6875,352.82812 H 69.632812 L 69.242187,354 h -1.246093 l 2.117187,-5.6875 h 1.085938 L 73.328125,354 h -1.246094 z m -1.738281,-0.94921 h 1.421875 L 70.65625,349.75 Z"/>

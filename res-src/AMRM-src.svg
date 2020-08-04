@@ -55,25 +55,25 @@
   </g>
 
   <g transform="translate(11 240)">
-    <g transform="translate(0 0)">
-      <rect width="68" height="10" fill="#fafafa" transform="translate(0 66)"/>
-      <rect width="68" height="73" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(0 0)">
+      <rect class="input-background-filler" width="68" height="10" transform="translate(0 66)"/>
+      <rect class="input-background" width="68" height="73" rx="5"/>
       <def id="MODULATOR_INPUT" xlink:href="#input" transform="translate(5 4)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(7.5 36)">MOD</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(7.5 36)">MOD</text>
       <def id="CARRIER_INPUT" xlink:href="#input" transform="translate(39 4)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(42.5 36)">CAR</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(42.5 36)">CAR</text>
       <def id="RECTIFY_INPUT" xlink:href="#input" transform="translate(5 40)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(5.5 72)">RECT</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(5.5 72)">RECT</text>
       <def id="DRYWET_INPUT" xlink:href="#input" transform="translate(39 40)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(42 72)">D/W</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(42 72)">D/W</text>
     </g>
-    <g transform="translate(0 79)">
-      <rect width="68" height="10" fill="#bbb" transform="translate(0 -3)"/>
-      <rect width="68" height="37" rx="5" fill="#bbb"/>
+    <g class="io-group" transform="translate(0 79)">
+      <rect class="output-background-filler" width="68" height="10" transform="translate(0 -3)"/>
+      <rect class="output-background" width="68" height="37" rx="5"/>
       <def id="RECTIFY_OUTPUT" xlink:href="#output" transform="translate(5 1)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(5.5 33)">RECT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(5.5 33)">RECT</text>
       <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(39 1)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(42.5 33)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(42.5 33)">OUT</text>
     </g>
   </g>
 

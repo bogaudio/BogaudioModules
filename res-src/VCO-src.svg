@@ -86,20 +86,20 @@
 
   <!-- <rect width="150" height="7" fill="#0f0" transform="translate(10 262)" /> -->
 
-  <g transform="translate(0 269)">
-    <rect width="130" height="91" rx="5" fill="#bbb" transform="translate(10 0)"/>
+  <g class="io-group" transform="translate(0 269)">
+    <rect class="output-background" width="130" height="91" rx="5" transform="translate(10 0)"/>
     <!-- <rect width="97" height="91" rx="5" fill="#fafafa" transform="translate(10 0)" /> -->
-    <rect width="65" height="91" rx="5" fill="#fafafa" transform="translate(10 0)"/>
-    <rect width="10" height="8" fill="#fafafa" transform="translate(65 0)"/>
-    <rect width="10" height="8" fill="#fafafa" transform="translate(65 83)"/>
+    <rect class="input-background" width="65" height="91" rx="5" transform="translate(10 0)"/>
+    <rect class="input-background-filler" width="10" height="8" transform="translate(65 0)"/>
+    <rect class="input-background-filler" width="10" height="8" transform="translate(65 83)"/>
 
     <g transform="translate(12 0)">
       <def id="PW_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(8 40)">PW</text>
+      <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(8 40)">PW</text>
     </g>
     <g transform="translate(44 0)">
       <def id="FM_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(8 40)">FM</text>
+      <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(8 40)">FM</text>
     </g>
     <g transform="translate(76 0)">
       <def id="SQUARE_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
@@ -121,11 +121,11 @@
     <g transform="translate(10 44)">
       <g transform="translate(2 0)">
         <def id="PITCH_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(1 40)">V/OCT</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(1 40)">V/OCT</text>
       </g>
       <g transform="translate(34 0)">
         <def id="SYNC_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(3 40)">SYNC</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(3 40)">SYNC</text>
       </g>
       <g transform="translate(66 0)">
         <def id="TRIANGLE_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>

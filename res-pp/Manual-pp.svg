@@ -14,7 +14,10 @@ text.brand {
   font-weight: bold;
 }
 
-path, polyline {
+polyline {
+  stroke: #333;
+}
+path {
   stroke: #333;
 }
 
@@ -29,6 +32,24 @@ polyline.module-border-middle {
 }
 polyline.module-border-outer {
   stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background {
+  fill: #fafafa;
+}
+rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background {
+  fill: #bbb;
+}
+rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
 }
 </style>
 
@@ -52,9 +73,9 @@ polyline.module-border-outer {
 
   <g transform="translate(0 18)">
     <g transform="translate(0 0)">
-      <g transform="translate(5.5 0)">
-        <rect width="34" height="10" fill="#fafafa" transform="translate(0 25)"/>
-        <rect width="34" height="33" rx="5" fill="#fafafa"/>
+      <g class="io-group" transform="translate(5.5 0)">
+        <rect class="input-background-filler" width="34" height="10" transform="translate(0 25)"/>
+        <rect class="input-background" width="34" height="33" rx="5"/>
         <g transform="translate(8 4)"><svg id="TRIGGER_PARAM">
       <g transform="translate(9 9)">
         <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
@@ -65,9 +86,9 @@ polyline.module-border-outer {
     </g>
 
     <g transform="translate(0 37)">
-      <g transform="translate(5.5 0)">
-        <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
-        <rect width="34" height="250" rx="5" fill="#bbb"/>
+      <g class="io-group" transform="translate(5.5 0)">
+        <rect class="output-background-filler" width="34" height="10" transform="translate(0 -3)"/>
+        <rect class="output-background" width="34" height="250" rx="5"/>
 
         <g transform="translate(2 2)">
           <g transform="translate(3 0)"><svg id="OUT1_OUTPUT">
@@ -120,7 +141,7 @@ polyline.module-border-outer {
       </g>
     </svg></g>
 
-          <text font-size="5pt" letter-spacing="2px" transform="translate(6.5 244)">OUT</text>
+          <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(6.5 244)">OUT</text>
         </g>
       </g>
     </g>

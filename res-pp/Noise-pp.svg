@@ -14,7 +14,10 @@ text.brand {
   font-weight: bold;
 }
 
-path, polyline {
+polyline {
+  stroke: #333;
+}
+path {
   stroke: #333;
 }
 
@@ -29,6 +32,24 @@ polyline.module-border-middle {
 }
 polyline.module-border-outer {
   stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background {
+  fill: #fafafa;
+}
+rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background {
+  fill: #bbb;
+}
+rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
 }
 </style>
 
@@ -51,69 +72,69 @@ polyline.module-border-outer {
     
 
   <g transform="translate(0 18)">
-    <g transform="translate(7.5 0)">
-      <rect width="34" height="209" rx="5" fill="#bbb" transform="translate(-2 0)"/>
+    <g class="io-group" transform="translate(7.5 0)">
+      <rect class="output-background" width="34" height="209" rx="5" transform="translate(-2 0)"/>
       <g transform="translate(3 6)"><svg id="BLUE_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(4 39)">BLUE</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(4 39)">BLUE</text>
       <g transform="translate(3 47)"><svg id="WHITE_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(0.5 80)">WHITE</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(0.5 80)">WHITE</text>
       <g transform="translate(3 88)"><svg id="PINK_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(4.5 121)">PINK</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(4.5 121)">PINK</text>
       <g transform="translate(3 129)"><svg id="RED_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(7 162)">RED</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(7 162)">RED</text>
       <g transform="translate(3 170)"><svg id="GAUSS_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(0 203)">GAUSS</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(0 203)">GAUSS</text>
     </g>
   </g>
 
   <g transform="translate(0 250)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(13 -4)">ABS</text>
-    <g transform="translate(5.5 0)">
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 28)"/>
-      <rect width="34" height="35" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 0)">
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 28)"/>
+      <rect class="input-background" width="34" height="35" rx="5"/>
       <g transform="translate(5 3)"><svg id="ABS_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
     </g>
-    <g transform="translate(5.5 41)">
-      <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
-      <rect width="34" height="35" rx="5" fill="#bbb"/>
+    <g class="io-group" transform="translate(5.5 41)">
+      <rect class="output-background-filler" width="34" height="10" transform="translate(0 -3)"/>
+      <rect class="output-background" width="34" height="35" rx="5"/>
       <g transform="translate(5 0)"><svg id="ABS_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
     </g>
   </g>
 </svg>

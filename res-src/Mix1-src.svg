@@ -10,22 +10,22 @@
   </g>
 
   <g transform="translate(0 173)">
-    <g transform="translate(5.5 0)">
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 120)"/>
-      <rect width="34" height="127" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 0)">
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 120)"/>
+      <rect class="input-background" width="34" height="127" rx="5"/>
       <def id="MUTE_PARAM" xlink:href="#button" transform="translate(8 3)"/>
       <def id="MUTE_INPUT" xlink:href="#input" transform="translate(5 25)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(5 57)">MUTE</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(5 57)">MUTE</text>
       <def id="LEVEL_INPUT" xlink:href="#input" transform="translate(5 60)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 92)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 92)">LEVEL</text>
       <def id="IN_INPUT" xlink:href="#input" transform="translate(5 95)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 127)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 127)">IN</text>
     </g>
-    <g transform="translate(5.5 133)">
-      <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
-      <rect width="34" height="35" rx="5" fill="#bbb"/>
+    <g class="io-group" transform="translate(5.5 133)">
+      <rect class="output-background-filler" width="34" height="10" transform="translate(0 -3)"/>
+      <rect class="output-background" width="34" height="35" rx="5"/>
       <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
     </g>
   </g>
 </module>

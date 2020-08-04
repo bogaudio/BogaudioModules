@@ -114,64 +114,64 @@
     <def xlink:href="#dial-mintick" transform="translate(-12.5 -12)"/>
   </g>
 
-  <g transform="translate(0 225)">
-    <rect width="130" height="135" rx="5" fill="#fafafa" transform="translate(10 0)"/>
-    <rect width="65" height="91" rx="5" fill="#bbb" transform="translate(75 44)"/>
-    <rect width="10" height="8" fill="#bbb" transform="translate(75 44)"/>
-    <rect width="10" height="8" fill="#bbb" transform="translate(130 44)"/>
-    <rect width="10" height="8" fill="#bbb" transform="translate(75 127)"/>
+  <g class="io-group" transform="translate(0 225)">
+    <rect class="input-background" width="130" height="135" rx="5" transform="translate(10 0)"/>
+    <rect class="output-background" width="65" height="91" rx="5" transform="translate(75 44)"/>
+    <rect class="output-background-filler" width="10" height="8" transform="translate(75 44)"/>
+    <rect class="output-background-filler" width="10" height="8" transform="translate(130 44)"/>
+    <rect class="output-background-filler" width="10" height="8" transform="translate(75 127)"/>
 
     <g transform="translate(12 0)">
       <def id="GT_MIX_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(5 40)">GTM</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(5 40)">GTM</text>
     </g>
     <g transform="translate(44 0)">
       <def id="LT_MIX_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(6 40)">LTM</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(6 40)">LTM</text>
     </g>
     <g transform="translate(76 0)">
       <def id="WINDOW_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-      <text font-size="6pt" letter-spacing="0.5px" transform="translate(1.5 40)">WNDW</text>
+      <text class="input-label" font-size="6pt" letter-spacing="0.5px" transform="translate(1.5 40)">WNDW</text>
     </g>
     <g transform="translate(108 0)">
       <def id="DRY_WET_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(6 40)">D/W</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(6 40)">D/W</text>
     </g>
 
     <g transform="translate(0 44)">
       <g transform="translate(12 0)">
         <def id="A_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(5 40)">A IN</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(5 40)">A IN</text>
       </g>
       <g transform="translate(44 0)">
         <def id="A_SCALE_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(1.5 40)">A SCL</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(1.5 40)">A SCL</text>
       </g>
       <g transform="translate(76 0)">
         <def id="GT_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(8 40)">GT</text>
+        <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(8 40)">GT</text>
       </g>
       <g transform="translate(108 0)">
         <def id="LT_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(9.5 40)">LT</text>
+        <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(9.5 40)">LT</text>
       </g>
 
       <g transform="translate(10 44)">
         <g transform="translate(2 0)">
           <def id="B_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-          <text font-size="6pt" letter-spacing="1px" transform="translate(5 40)">B IN</text>
+          <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(5 40)">B IN</text>
         </g>
         <g transform="translate(34 0)">
           <def id="B_SCALE_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-          <text font-size="6pt" letter-spacing="1px" transform="translate(1.5 40)">B SCL</text>
+          <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(1.5 40)">B SCL</text>
         </g>
         <g transform="translate(66 0)">
           <def id="EQ_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
-          <text font-size="6pt" letter-spacing="2px" transform="translate(9 40)">EQ</text>
+          <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(9 40)">EQ</text>
         </g>
         <g transform="translate(98 0)">
           <def id="MIX_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
-          <text font-size="6pt" letter-spacing="2px" transform="translate(6 40)">MIX</text>
+          <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(6 40)">MIX</text>
         </g>
       </g>
     </g>

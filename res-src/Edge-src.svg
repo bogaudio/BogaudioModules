@@ -130,22 +130,22 @@
   </g>
 
   <g transform="translate(0 191)">
-    <g transform="translate(5.5 0)">
-      <rect width="34" height="38" rx="5" fill="#fafafa"/>
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 28)"/>
+    <g class="io-group" transform="translate(5.5 0)">
+      <rect class="input-background" width="34" height="38" rx="5"/>
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 28)"/>
       <def id="IN_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
     </g>
-    <g transform="translate(5.5 38)">
-      <rect width="34" height="10" fill="#bbb" transform="translate(0 0)"/>
-      <rect width="34" height="109" rx="5" fill="#bbb"/>
+    <g class="io-group" transform="translate(5.5 38)">
+      <rect class="output-background-filler" width="34" height="10" transform="translate(0 0)"/>
+      <rect class="output-background" width="34" height="109" rx="5"/>
       <def id="HIGH_OUTPUT" xlink:href="#output" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="1.2px" transform="translate(11 35)">HIGH</text>
+      <text class="output-label" font-size="5pt" letter-spacing="1.2px" transform="translate(11 35)">HIGH</text>
       <def id="HIGH_LIGHT" xlink:href="#light-small" transform="translate(2 29.3)"/>
       <def id="RISE_OUTPUT" xlink:href="#output" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6.9 70)">RISE</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(6.9 70)">RISE</text>
       <def id="FALL_OUTPUT" xlink:href="#output" transform="translate(5 73)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6.6 105)">FALL</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(6.6 105)">FALL</text>
     </g>
   </g>
 </module>

@@ -30,25 +30,25 @@
   </g>
 
   <g transform="translate(11 240)">
-    <g transform="translate(0 0)">
-      <rect width="68" height="10" fill="#fafafa" transform="translate(0 66)"/>
-      <rect width="68" height="73" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(0 0)">
+      <rect class="input-background-filler" width="68" height="10" transform="translate(0 66)"/>
+      <rect class="input-background" width="68" height="73" rx="5"/>
       <def id="LEFT_INPUT" xlink:href="#input" transform="translate(5 4)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(15.5 36)">L</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(15.5 36)">L</text>
       <def id="RIGHT_INPUT" xlink:href="#input" transform="translate(39 4)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(49 36)">R</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(49 36)">R</text>
       <def id="THRESHOLD_INPUT" xlink:href="#input" transform="translate(5 40)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(5.5 72)">TRSH</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(5.5 72)">TRSH</text>
       <def id="OUTPUT_GAIN_INPUT" xlink:href="#input" transform="translate(39 40)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(42 72)">OGN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(42 72)">OGN</text>
     </g>
-    <g transform="translate(0 79)">
-      <rect width="68" height="10" fill="#bbb" transform="translate(0 -3)"/>
-      <rect width="68" height="37" rx="5" fill="#bbb"/>
+    <g class="io-group" transform="translate(0 79)">
+      <rect class="output-background-filler" width="68" height="10" transform="translate(0 -3)"/>
+      <rect class="output-background" width="68" height="37" rx="5"/>
       <def id="LEFT_OUTPUT" xlink:href="#output" transform="translate(5 1)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(15.5 33)">L</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(15.5 33)">L</text>
       <def id="RIGHT_OUTPUT" xlink:href="#output" transform="translate(39 1)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(49 33)">R</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(49 33)">R</text>
     </g>
   </g>
 </module>

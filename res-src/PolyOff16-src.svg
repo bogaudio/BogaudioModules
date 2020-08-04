@@ -4,8 +4,8 @@
 
   <def xlink:href="#module" var-name="POLYOFF16"/>
 
-  <g transform="translate(5.5 24)">
-    <rect width="34" height="289" rx="5" fill="#fafafa" transform="translate(0 0)"/>
+  <g class="io-group" transform="translate(5.5 24)">
+    <rect class="input-background" width="34" height="289" rx="5" transform="translate(0 0)"/>
     <def id="CV1_INPUT" xlink:href="#input" transform="translate(5 5)"/>
     <def id="CV2_INPUT" xlink:href="#input" transform="translate(5 40)"/>
     <def id="CV3_INPUT" xlink:href="#input" transform="translate(5 75)"/>
@@ -14,11 +14,11 @@
     <def id="CV6_INPUT" xlink:href="#input" transform="translate(5 180)"/>
     <def id="CV7_INPUT" xlink:href="#input" transform="translate(5 215)"/>
     <def id="CV8_INPUT" xlink:href="#input" transform="translate(5 250)"/>
-    <text font-size="6pt" letter-spacing="1px" transform="translate(4 284)">IN/CV</text>
+    <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(4 284)">IN/CV</text>
   </g>
 
-  <g transform="translate(125.5 24)">
-    <rect width="34" height="289" rx="5" fill="#fafafa" transform="translate(0 0)"/>
+  <g class="io-group" transform="translate(125.5 24)">
+    <rect class="input-background" width="34" height="289" rx="5" transform="translate(0 0)"/>
     <def id="CV9_INPUT" xlink:href="#input" transform="translate(5 5)"/>
     <def id="CV10_INPUT" xlink:href="#input" transform="translate(5 40)"/>
     <def id="CV11_INPUT" xlink:href="#input" transform="translate(5 75)"/>
@@ -27,7 +27,7 @@
     <def id="CV14_INPUT" xlink:href="#input" transform="translate(5 180)"/>
     <def id="CV15_INPUT" xlink:href="#input" transform="translate(5 215)"/>
     <def id="CV16_INPUT" xlink:href="#input" transform="translate(5 250)"/>
-    <text font-size="6pt" letter-spacing="1px" transform="translate(4 284)">IN/CV</text>
+    <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(4 284)">IN/CV</text>
   </g>
 
   <g transform="translate(0 33)">
@@ -174,13 +174,13 @@
     <def xlink:href="#dial-channels-small" transform="translate(-2 0)"/>
   </g>
 
-  <g transform="translate(115 318)">
-    <rect width="60" height="40" rx="5" fill="#fafafa"/>
-    <rect width="24" height="40" rx="5" fill="#bbb" transform="translate(38)"/>
-    <rect width="20" height="40" fill="#bbb" transform="translate(31)"/>
+  <g class="io-group" transform="translate(115 318)">
+    <rect class="input-background" width="60" height="40" rx="5"/>
+    <rect class="output-background" width="24" height="40" rx="5" transform="translate(38)"/>
+    <rect class="output-background-filler" width="20" height="40" transform="translate(31)"/>
     <def id="IN_INPUT" xlink:href="#input" transform="translate(3.5 4)"/>
     <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(34.5 4)"/>
-    <text font-size="6pt" letter-spacing="1px" transform="translate(11 36)">IN</text>
+    <text class="output-label" font-size="6pt" letter-spacing="1px" transform="translate(11 36)">IN</text>
     <text font-size="6pt" letter-spacing="2px" transform="translate(36 36)">OUT</text>
   </g>
 </module>

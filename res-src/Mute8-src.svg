@@ -4,8 +4,8 @@
 
   <def xlink:href="#module" var-name="MUTE8"/>
 
-  <g transform="translate(8 32)">
-    <rect width="30" height="328" rx="5" fill="#fafafa"/>
+  <g class="io-group" transform="translate(8 32)">
+    <rect class="input-background" width="30" height="328" rx="5"/>
     <g transform="translate(3 4)">
       <def id="INPUT1_INPUT" xlink:href="#input" transform="translate(0 0)"/>
       <def id="INPUT2_INPUT" xlink:href="#input" transform="translate(0 40)"/>
@@ -20,8 +20,8 @@
     <text font-size="6pt" letter-spacing="2px" transform="translate(9.8 320)">IN</text>
   </g>
 
-  <g transform="translate(43 32)">
-    <rect width="30" height="328" rx="5" fill="#fafafa"/>
+  <g class="io-group" transform="translate(43 32)">
+    <rect class="input-background" width="30" height="328" rx="5"/>
     <g transform="translate(3 4)">
       <def id="MUTE1_INPUT" xlink:href="#input" transform="translate(0 0)"/>
       <def id="MUTE2_INPUT" xlink:href="#input" transform="translate(0 40)"/>
@@ -76,8 +76,8 @@
     <text font-size="6pt" letter-spacing="2px" transform="translate(1 320)">MUTE</text>
   </g>
 
-  <g transform="translate(112 32)">
-    <rect width="30" height="328" rx="5" fill="#bbb"/>
+  <g class="io-group" transform="translate(112 32)">
+    <rect class="output-background" width="30" height="328" rx="5"/>
     <g transform="translate(3 4)">
       <def id="OUTPUT1_OUTPUT" xlink:href="#output" transform="translate(0 0)"/>
       <def id="OUTPUT2_OUTPUT" xlink:href="#output" transform="translate(0 40)"/>

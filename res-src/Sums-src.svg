@@ -4,36 +4,36 @@
 
   <def xlink:href="#module3" var-name="SUMS"/>
 
-  <g transform="translate(7.5 18)">
-    <rect width="34" height="63.5" rx="5" fill="#fafafa" transform="translate(-2 0)"/>
-    <rect width="34" height="10" fill="#fafafa" transform="translate(-2 53.5)"/>
+  <g class="io-group" transform="translate(7.5 18)">
+    <rect class="input-background" width="34" height="63.5" rx="5" transform="translate(-2 0)"/>
+    <rect class="input-background-filler" width="34" height="10" transform="translate(-2 53.5)"/>
     <def id="A_INPUT" xlink:href="#input" transform="translate(3 5)"/>
     <def id="B_INPUT" xlink:href="#input" transform="translate(3 35)"/>
   </g>
-  <g transform="translate(7.5 82)">
-    <rect width="34" height="163" rx="5" fill="#bbb" transform="translate(-2 0)"/>
-    <rect width="34" height="10" fill="#bbb" transform="translate(-2 0)"/>
+  <g class="io-group" transform="translate(7.5 82)">
+    <rect class="output-background" width="34" height="163" rx="5" transform="translate(-2 0)"/>
+    <rect class="output-background-filler" width="34" height="10" transform="translate(-2 0)"/>
     <def id="SUM_OUTPUT" xlink:href="#output" transform="translate(3 4)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(6.3 37)">SUM</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(6.3 37)">SUM</text>
     <def id="DIFFERENCE_OUTPUT" xlink:href="#output" transform="translate(3 44)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(5 77)">DIFF</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(5 77)">DIFF</text>
     <def id="MAX_OUTPUT" xlink:href="#output" transform="translate(3 84)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(6.5 117)">MAX</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(6.5 117)">MAX</text>
     <def id="MIN_OUTPUT" xlink:href="#output" transform="translate(3 124)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(6.5 157)">MIN</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(6.5 157)">MIN</text>
   </g>
 
   <g transform="translate(0 258)">
-    <g transform="translate(5.5 0)">
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 22)"/>
-      <rect width="34" height="32" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 0)">
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 22)"/>
+      <rect class="input-background" width="34" height="32" rx="5"/>
       <def id="NEGATE_INPUT" xlink:href="#input" transform="translate(5 4)"/>
     </g>
-    <g transform="translate(5.5 35)">
-      <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
-      <rect width="34" height="39" rx="5" fill="#bbb"/>
+    <g class="io-group" transform="translate(5.5 35)">
+      <rect class="output-background-filler" width="34" height="10" transform="translate(0 -3)"/>
+      <rect class="output-background" width="34" height="39" rx="5"/>
       <def id="NEGATE_OUTPUT" xlink:href="#output" transform="translate(5 2)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 34)">NEG</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.3 34)">NEG</text>
     </g>
   </g>
 </module>

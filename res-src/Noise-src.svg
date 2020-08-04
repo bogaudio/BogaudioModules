@@ -5,34 +5,34 @@
   <def xlink:href="#module3" var-name="NOISE"/>
 
   <g transform="translate(0 18)">
-    <g transform="translate(7.5 0)">
-      <rect width="34" height="209" rx="5" fill="#bbb" transform="translate(-2 0)"/>
+    <g class="io-group" transform="translate(7.5 0)">
+      <rect class="output-background" width="34" height="209" rx="5" transform="translate(-2 0)"/>
       <def id="BLUE_OUTPUT" xlink:href="#output" transform="translate(3 6)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(4 39)">BLUE</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(4 39)">BLUE</text>
       <def id="WHITE_OUTPUT" xlink:href="#output" transform="translate(3 47)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(0.5 80)">WHITE</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(0.5 80)">WHITE</text>
       <def id="PINK_OUTPUT" xlink:href="#output" transform="translate(3 88)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(4.5 121)">PINK</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(4.5 121)">PINK</text>
       <def id="RED_OUTPUT" xlink:href="#output" transform="translate(3 129)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(7 162)">RED</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(7 162)">RED</text>
       <def id="GAUSS_OUTPUT" xlink:href="#output" transform="translate(3 170)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(0 203)">GAUSS</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(0 203)">GAUSS</text>
     </g>
   </g>
 
   <g transform="translate(0 250)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(13 -4)">ABS</text>
-    <g transform="translate(5.5 0)">
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 28)"/>
-      <rect width="34" height="35" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 0)">
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 28)"/>
+      <rect class="input-background" width="34" height="35" rx="5"/>
       <def id="ABS_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
     </g>
-    <g transform="translate(5.5 41)">
-      <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
-      <rect width="34" height="35" rx="5" fill="#bbb"/>
+    <g class="io-group" transform="translate(5.5 41)">
+      <rect class="output-background-filler" width="34" height="10" transform="translate(0 -3)"/>
+      <rect class="output-background" width="34" height="35" rx="5"/>
       <def id="ABS_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
     </g>
   </g>
 </module>

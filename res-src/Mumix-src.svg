@@ -5,9 +5,9 @@
   <def xlink:href="#module6" var-name="MUMIX"/>
 
   <g transform="translate(2 25)">
-    <g transform="translate(5.5 0)">
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 283)"/>
-      <rect width="34" height="293" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 0)">
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 283)"/>
+      <rect class="input-background" width="34" height="293" rx="5"/>
       <def id="IN1_INPUT" xlink:href="#input" transform="translate(5 5)"/>
       <def id="IN2_INPUT" xlink:href="#input" transform="translate(5 42)"/>
       <def id="IN3_INPUT" xlink:href="#input" transform="translate(5 79)"/>
@@ -17,11 +17,11 @@
       <def id="IN7_INPUT" xlink:href="#input" transform="translate(5 227)"/>
       <def id="IN8_INPUT" xlink:href="#input" transform="translate(5 264)"/>
     </g>
-    <g transform="translate(5.5 295)">
-      <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
-      <rect width="34" height="38" rx="5" fill="#bbb"/>
+    <g class="io-group" transform="translate(5.5 295)">
+      <rect class="output-background-filler" width="34" height="10" transform="translate(0 -3)"/>
+      <rect class="output-background" width="34" height="38" rx="5"/>
       <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 1)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 33)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 33)">OUT</text>
     </g>
   </g>
 

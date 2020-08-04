@@ -14,7 +14,10 @@ text.brand {
   font-weight: bold;
 }
 
-path, polyline {
+polyline {
+  stroke: #333;
+}
+path {
   stroke: #333;
 }
 
@@ -29,6 +32,24 @@ polyline.module-border-middle {
 }
 polyline.module-border-outer {
   stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background {
+  fill: #fafafa;
+}
+rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background {
+  fill: #bbb;
+}
+rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
 }
 </style>
 
@@ -94,8 +115,8 @@ polyline.module-border-outer {
     <text font-size="5pt" letter-spacing="1px" transform="translate(13 0)">GAIN</text>
   </g>
 
-  <g transform="translate(5.5 104)">
-    <rect width="34" height="225" rx="5" fill="#bbb" transform="translate(0 -10)"/>
+  <g class="io-group" transform="translate(5.5 104)">
+    <rect class="output-background" width="34" height="225" rx="5" transform="translate(0 -10)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 0)">EF</text>
     <g transform="translate(5 3)"><svg id="EF1_OUTPUT">
       <g transform="translate(12 12)">
@@ -103,41 +124,41 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(15 35)">1</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(15 35)">1</text>
     <g transform="translate(5 38)"><svg id="EF2_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(15 70)">2</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(15 70)">2</text>
     <g transform="translate(5 73)"><svg id="EF3_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(15 105)">3</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(15 105)">3</text>
     <g transform="translate(5 108)"><svg id="EF4_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(15 140)">4</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(15 140)">4</text>
     <g transform="translate(5 143)"><svg id="EF5_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(15 175)">5</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(15 175)">5</text>
     <g transform="translate(5 178)"><svg id="EF6_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(15 210)">6</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(15 210)">6</text>
   </g>
 </svg>

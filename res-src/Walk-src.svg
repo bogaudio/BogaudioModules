@@ -25,23 +25,23 @@
   </g>
 
   <g transform="translate(0 157)">
-    <g transform="translate(5.5 0)">
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 133)"/>
-      <rect width="34" height="140" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 0)">
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 133)"/>
+      <rect class="input-background" width="34" height="140" rx="5"/>
       <def id="RATE_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6 35)">RATE</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(6 35)">RATE</text>
       <def id="OFFSET_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="1.2px" transform="translate(2 70)">OFFSET</text>
+      <text class="input-label" font-size="5pt" letter-spacing="1.2px" transform="translate(2 70)">OFFSET</text>
       <def id="SCALE_INPUT" xlink:href="#input" transform="translate(5 73)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(2.5 105)">SCALE</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(2.5 105)">SCALE</text>
       <def id="JUMP_INPUT" xlink:href="#input" transform="translate(5 108)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(5 140)">JUMP</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(5 140)">JUMP</text>
     </g>
-    <g transform="translate(5.5 146)">
-      <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
-      <rect width="34" height="35" rx="5" fill="#bbb"/>
+    <g class="io-group" transform="translate(5.5 146)">
+      <rect class="output-background-filler" width="34" height="10" transform="translate(0 -3)"/>
+      <rect class="output-background" width="34" height="35" rx="5"/>
       <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
     </g>
   </g>
 </module>

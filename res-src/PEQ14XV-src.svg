@@ -23,28 +23,28 @@
 
   <text font-size="6pt" letter-spacing="1.5px" transform="translate(9 30)">FOLLOWERS</text>
 
-  <g transform="translate(-2.5 34)">
+  <g class="io-group" transform="translate(-2.5 34)">
     <def id="EF_DAMP_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
     <def xlink:href="#dial-mintick" transform="translate(2.5 -6)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(10 33)">DAMP</text>
-    <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(7.5 36)"/>
+    <rect class="input-background" width="30" height="30" rx="5" transform="translate(7.5 36)"/>
     <def id="EF_DAMP_INPUT" xlink:href="#input" transform="translate(10.5 39)"/>
   </g>
 
-  <g transform="translate(32.5 34)">
+  <g class="io-group" transform="translate(32.5 34)">
     <def id="EF_GAIN_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>
     <def xlink:href="#dial-centertick" transform="translate(2.5 -6)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11.5 33)">GAIN</text>
-    <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(7.5 36)"/>
+    <rect class="input-background" width="30" height="30" rx="5" transform="translate(7.5 36)"/>
     <def id="EF_GAIN_INPUT" xlink:href="#input" transform="translate(10.5 39)"/>
     <!-- <rect width="75" height="17" fill="#f0f" transform="translate(-32.5 66)" /> -->
   </g>
 
-  <g transform="translate(0 119)">
+  <g class="io-group" transform="translate(0 119)">
     <text font-size="6pt" letter-spacing="1.5px" transform="translate(8 2)">TRANSPOSE</text>
     <def id="TRANSPOSE_PARAM" xlink:href="#knob26" transform="translate(24.5 13)"/>
     <use xlink:href="#dial-transpose-peq14xv" transform="translate(15 3.5)"/>
-    <rect width="30" height="30" rx="5" fill="#fafafa" transform="translate(22.5 47)"/>
+    <rect class="input-background" width="30" height="30" rx="5" transform="translate(22.5 47)"/>
     <def id="TRANSPOSE_INPUT" xlink:href="#input" transform="translate(25.5 50)"/>
     <!-- <rect width="75" height="17" fill="#f0f" transform="translate(0 77)" /> -->
   </g>
@@ -73,19 +73,19 @@
     <!-- <rect width="75" height="17" fill="#f0f" transform="translate(0 56)" /> -->
   </g>
 
-  <g transform="translate(5.5 287)">
-    <rect width="64" height="73" rx="5" fill="#bbb"/>
-    <rect width="32" height="36.5" rx="5" fill="#fafafa"/>
-    <rect width="32" height="10" fill="#fafafa" transform="translate(0 26.5)"/>
-    <rect width="10" height="36.5" fill="#fafafa" transform="translate(22 0)"/>
+  <g class="io-group" transform="translate(5.5 287)">
+    <rect class="output-background" width="64" height="73" rx="5"/>
+    <rect class="input-background" width="32" height="36.5" rx="5"/>
+    <rect class="input-background-filler" width="32" height="10" transform="translate(0 26.5)"/>
+    <rect class="input-background-filler" width="10" height="36.5" transform="translate(22 0)"/>
     <def id="IN_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
     <def id="ODDS_OUTPUT" xlink:href="#output" transform="translate(35 3)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(38.5 35)">ODD</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(38.5 35)">ODD</text>
     <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 38)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(8 70)">OUT</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8 70)">OUT</text>
     <def id="EVENS_OUTPUT" xlink:href="#output" transform="translate(35 38)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(36 70)">EVEN</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(36 70)">EVEN</text>
   </g>
 
   <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(18.75 0)" /> -->

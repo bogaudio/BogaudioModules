@@ -14,7 +14,10 @@ text.brand {
   font-weight: bold;
 }
 
-path, polyline {
+polyline {
+  stroke: #333;
+}
+path {
   stroke: #333;
 }
 
@@ -29,6 +32,24 @@ polyline.module-border-middle {
 }
 polyline.module-border-outer {
   stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background {
+  fill: #fafafa;
+}
+rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background {
+  fill: #bbb;
+}
+rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
 }
 </style>
 
@@ -48,8 +69,8 @@ polyline.module-border-outer {
       </g>
     
 
-  <g transform="translate(8 32)">
-    <rect width="30" height="328" rx="5" fill="#fafafa"/>
+  <g class="io-group" transform="translate(8 32)">
+    <rect class="input-background" width="30" height="328" rx="5"/>
     <g transform="translate(3 4)">
       <g transform="translate(0 0)"><svg id="INPUT1_INPUT">
       <g transform="translate(12 12)">
@@ -104,8 +125,8 @@ polyline.module-border-outer {
     <text font-size="6pt" letter-spacing="2px" transform="translate(9.8 320)">IN</text>
   </g>
 
-  <g transform="translate(43 32)">
-    <rect width="30" height="328" rx="5" fill="#fafafa"/>
+  <g class="io-group" transform="translate(43 32)">
+    <rect class="input-background" width="30" height="328" rx="5"/>
     <g transform="translate(3 4)">
       <g transform="translate(0 0)"><svg id="MUTE1_INPUT">
       <g transform="translate(12 12)">
@@ -248,8 +269,8 @@ polyline.module-border-outer {
     <text font-size="6pt" letter-spacing="2px" transform="translate(1 320)">MUTE</text>
   </g>
 
-  <g transform="translate(112 32)">
-    <rect width="30" height="328" rx="5" fill="#bbb"/>
+  <g class="io-group" transform="translate(112 32)">
+    <rect class="output-background" width="30" height="328" rx="5"/>
     <g transform="translate(3 4)">
       <g transform="translate(0 0)"><svg id="OUTPUT1_OUTPUT">
       <g transform="translate(12 12)">

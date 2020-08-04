@@ -73,43 +73,43 @@
     <def xlink:href="#dial-mintick" transform="translate(2 -12)"/>
   </g>
 
-  <g transform="translate(7 281)">
-    <rect width="62" height="79" rx="5" fill="#fafafa"/>
-    <rect width="22" height="40" rx="5" fill="#bbb" transform="translate(40 39)"/>
-    <rect width="20" height="40" fill="#bbb" transform="translate(31 39)"/>
-    <rect width="31" height="20" fill="#bbb" transform="translate(31 39)"/>
+  <g class="io-group" transform="translate(7 281)">
+    <rect class="input-background" width="62" height="79" rx="5"/>
+    <rect class="output-background" width="22" height="40" rx="5" transform="translate(40 39)"/>
+    <rect class="output-background-filler" width="20" height="40" transform="translate(31 39)"/>
+    <rect class="output-background-filler" width="31" height="20" transform="translate(31 39)"/>
     <def id="OFFSET_X_INPUT" xlink:href="#input" transform="translate(3.5 3)"/>
     <def id="SCALE_X_INPUT" xlink:href="#input" transform="translate(34.5 3)"/>
-    <text font-size="6pt" letter-spacing="1.5px" transform="translate(6 36)">OFF</text>
+    <text class="input-label" font-size="6pt" letter-spacing="1.5px" transform="translate(6 36)">OFF</text>
     <text font-size="6pt" letter-spacing="1.5px" transform="translate(37.5 36)">SCL</text>
     <def id="RATE_X_INPUT" xlink:href="#input" transform="translate(3.5 42)"/>
     <def id="OUT_X_OUTPUT" xlink:href="#output" transform="translate(34.5 42)"/>
-    <text font-size="6pt" letter-spacing="1.5px" transform="translate(3.5 75)">RATE</text>
+    <text class="output-label" font-size="6pt" letter-spacing="1.5px" transform="translate(3.5 75)">RATE</text>
     <text font-size="6pt" letter-spacing="1.5px" transform="translate(37 75)">OUT</text>
   </g>
 
-  <g transform="translate(142 281)">
-    <rect width="62" height="79" rx="5" fill="#fafafa"/>
-    <rect width="22" height="40" rx="5" fill="#bbb" transform="translate(40 39)"/>
-    <rect width="20" height="40" fill="#bbb" transform="translate(31 39)"/>
-    <rect width="31" height="20" fill="#bbb" transform="translate(31 39)"/>
+  <g class="io-group" transform="translate(142 281)">
+    <rect class="input-background" width="62" height="79" rx="5"/>
+    <rect class="output-background" width="22" height="40" rx="5" transform="translate(40 39)"/>
+    <rect class="output-background-filler" width="20" height="40" transform="translate(31 39)"/>
+    <rect class="output-background-filler" width="31" height="20" transform="translate(31 39)"/>
     <def id="OFFSET_Y_INPUT" xlink:href="#input" transform="translate(3.5 3)"/>
     <def id="SCALE_Y_INPUT" xlink:href="#input" transform="translate(34.5 3)"/>
-    <text font-size="6pt" letter-spacing="1.5px" transform="translate(6 36)">OFF</text>
+    <text class="input-label" font-size="6pt" letter-spacing="1.5px" transform="translate(6 36)">OFF</text>
     <text font-size="6pt" letter-spacing="1.5px" transform="translate(37.5 36)">SCL</text>
     <def id="RATE_Y_INPUT" xlink:href="#input" transform="translate(3.5 42)"/>
     <def id="OUT_Y_OUTPUT" xlink:href="#output" transform="translate(34.5 42)"/>
-    <text font-size="6pt" letter-spacing="1.5px" transform="translate(3.5 75)">RATE</text>
+    <text class="output-label" font-size="6pt" letter-spacing="1.5px" transform="translate(3.5 75)">RATE</text>
     <text font-size="6pt" letter-spacing="1.5px" transform="translate(37 75)">OUT</text>
   </g>
 
-  <g transform="translate(74.5 288)">
-    <rect width="61" height="40" rx="5" fill="#fafafa"/>
-    <rect width="22" height="40" rx="5" fill="#bbb" transform="translate(40)"/>
-    <rect width="20" height="40" fill="#bbb" transform="translate(31)"/>
+  <g class="io-group" transform="translate(74.5 288)">
+    <rect class="input-background" width="61" height="40" rx="5"/>
+    <rect class="output-background" width="22" height="40" rx="5" transform="translate(40)"/>
+    <rect class="output-background-filler" width="20" height="40" transform="translate(31)"/>
     <def id="JUMP_INPUT" xlink:href="#input" transform="translate(3.5 3)"/>
     <def id="DISTANCE_OUTPUT" xlink:href="#output" transform="translate(34.5 3)"/>
-    <text font-size="6pt" letter-spacing="1.5px" transform="translate(4 36)">TRIG</text>
+    <text class="output-label" font-size="6pt" letter-spacing="1.5px" transform="translate(4 36)">TRIG</text>
     <text font-size="6pt" letter-spacing="1.5px" transform="translate(35.5 36)">DIST</text>
   </g>
 

@@ -6,18 +6,18 @@
 
   <g transform="translate(0 18)">
     <g transform="translate(0 0)">
-      <g transform="translate(5.5 0)">
-        <rect width="34" height="10" fill="#fafafa" transform="translate(0 25)"/>
-        <rect width="34" height="33" rx="5" fill="#fafafa"/>
+      <g class="io-group" transform="translate(5.5 0)">
+        <rect class="input-background-filler" width="34" height="10" transform="translate(0 25)"/>
+        <rect class="input-background" width="34" height="33" rx="5"/>
         <def id="TRIGGER_PARAM" xlink:href="#button" transform="translate(8 4)"/>
         <text font-size="5pt" letter-spacing="2px" transform="translate(6.6 30)">TRIG</text>
       </g>
     </g>
 
     <g transform="translate(0 37)">
-      <g transform="translate(5.5 0)">
-        <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
-        <rect width="34" height="250" rx="5" fill="#bbb"/>
+      <g class="io-group" transform="translate(5.5 0)">
+        <rect class="output-background-filler" width="34" height="10" transform="translate(0 -3)"/>
+        <rect class="output-background" width="34" height="250" rx="5"/>
 
         <g transform="translate(2 2)">
           <def id="OUT1_OUTPUT" xlink:href="#output" transform="translate(3 0)"/>
@@ -30,7 +30,7 @@
           <def id="OUT7_OUTPUT" xlink:href="#output" transform="translate(3 180)"/>
           <def id="OUT8_OUTPUT" xlink:href="#output" transform="translate(3 210)"/>
 
-          <text font-size="5pt" letter-spacing="2px" transform="translate(6.5 244)">OUT</text>
+          <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(6.5 244)">OUT</text>
         </g>
       </g>
     </g>

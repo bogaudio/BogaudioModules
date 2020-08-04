@@ -14,14 +14,14 @@
     <def id="PAN1_PARAM" xlink:href="#knob16" transform="translate(14.5 203)"/>
     <def xlink:href="#dial-centertick" transform="translate(2.5 191)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="input-background" width="34" height="108" rx="5"/>
       <def id="CV1_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <def id="PAN1_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
       <def id="IN1_INPUT" xlink:href="#input" transform="translate(5 73)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
     </g>
     <!-- <rect width="9" height="40" fill="#f00" transform="translate(39.5 300)" /> -->
   </g>
@@ -36,14 +36,14 @@
     <def id="PAN2_PARAM" xlink:href="#knob16" transform="translate(14.5 203)"/>
     <def xlink:href="#dial-centertick" transform="translate(2.5 191)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="input-background" width="34" height="108" rx="5"/>
       <def id="CV2_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <def id="PAN2_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
       <def id="IN2_INPUT" xlink:href="#input" transform="translate(5 73)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
     </g>
     <!-- <rect width="9" height="40" fill="#f00" transform="translate(39.5 300)" /> -->
   </g>
@@ -58,14 +58,14 @@
     <def id="PAN3_PARAM" xlink:href="#knob16" transform="translate(14.5 203)"/>
     <def xlink:href="#dial-centertick" transform="translate(2.5 191)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="input-background" width="34" height="108" rx="5"/>
       <def id="CV3_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <def id="PAN3_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
       <def id="IN3_INPUT" xlink:href="#input" transform="translate(5 73)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
     </g>
     <!-- <rect width="9" height="40" fill="#f00" transform="translate(39.5 300)" /> -->
   </g>
@@ -80,14 +80,14 @@
     <def id="PAN4_PARAM" xlink:href="#knob16" transform="translate(14.5 203)"/>
     <def xlink:href="#dial-centertick" transform="translate(2.5 191)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="input-background" width="34" height="108" rx="5"/>
       <def id="CV4_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <def id="PAN4_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
       <def id="IN4_INPUT" xlink:href="#input" transform="translate(5 73)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
     </g>
     <!-- <rect width="9" height="40" fill="#f00" transform="translate(39.5 300)" /> -->
   </g>
@@ -102,14 +102,14 @@
     <def id="PAN5_PARAM" xlink:href="#knob16" transform="translate(14.5 203)"/>
     <def xlink:href="#dial-centertick" transform="translate(2.5 191)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="input-background" width="34" height="108" rx="5"/>
       <def id="CV5_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <def id="PAN5_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
       <def id="IN5_INPUT" xlink:href="#input" transform="translate(5 73)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
     </g>
     <!-- <rect width="9" height="40" fill="#f00" transform="translate(39.5 300)" /> -->
   </g>
@@ -124,14 +124,14 @@
     <def id="PAN6_PARAM" xlink:href="#knob16" transform="translate(14.5 203)"/>
     <def xlink:href="#dial-centertick" transform="translate(2.5 191)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="input-background" width="34" height="108" rx="5"/>
       <def id="CV6_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <def id="PAN6_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
       <def id="IN6_INPUT" xlink:href="#input" transform="translate(5 73)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
     </g>
     <!-- <rect width="9" height="40" fill="#f00" transform="translate(39.5 300)" /> -->
   </g>
@@ -146,14 +146,14 @@
     <def id="PAN7_PARAM" xlink:href="#knob16" transform="translate(14.5 203)"/>
     <def xlink:href="#dial-centertick" transform="translate(2.5 191)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="input-background" width="34" height="108" rx="5"/>
       <def id="CV7_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <def id="PAN7_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
       <def id="IN7_INPUT" xlink:href="#input" transform="translate(5 73)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
     </g>
     <!-- <rect width="9" height="40" fill="#f00" transform="translate(39.5 300)" /> -->
   </g>
@@ -168,14 +168,14 @@
     <def id="PAN8_PARAM" xlink:href="#knob16" transform="translate(14.5 203)"/>
     <def xlink:href="#dial-centertick" transform="translate(2.5 191)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
-    <g transform="translate(5.5 232)">
-      <rect width="34" height="108" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="input-background" width="34" height="108" rx="5"/>
       <def id="CV8_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
       <def id="PAN8_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
       <def id="IN8_INPUT" xlink:href="#input" transform="translate(5 73)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
     </g>
     <!-- <rect width="9" height="40" fill="#f00" transform="translate(39.5 300)" /> -->
   </g>
@@ -189,16 +189,16 @@
     <text font-size="5pt" letter-spacing="2px" transform="translate(10 192)">MUTE</text>
     <def id="MIX_DIM_PARAM" xlink:href="#button" transform="translate(13.5 198)"/>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14.5 225)">DIM</text>
-    <g transform="translate(5.5 229)">
-      <rect width="34" height="50" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 229)">
+      <rect class="input-background" width="34" height="50" rx="5"/>
       <def id="MIX_CV_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
-      <rect width="34" height="73" rx="5" fill="#bbb" transform="translate(0 38)"/>
-      <rect width="34" height="5" fill="#bbb" transform="translate(0 38)"/>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <rect class="output-background" width="34" height="73" rx="5" transform="translate(0 38)"/>
+      <rect class="output-background-filler" width="34" height="5" transform="translate(0 38)"/>
       <def id="L_OUTPUT" xlink:href="#output" transform="translate(5 41)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(15.5 73)">L</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(15.5 73)">L</text>
       <def id="R_OUTPUT" xlink:href="#output" transform="translate(5 76)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(15 108)">R</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(15 108)">R</text>
     </g>
   </g>
   <!-- <polyline points="0,0 225,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 360)" /> -->

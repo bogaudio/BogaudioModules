@@ -14,7 +14,10 @@ text.brand {
   font-weight: bold;
 }
 
-path, polyline {
+polyline {
+  stroke: #333;
+}
+path {
   stroke: #333;
 }
 
@@ -29,6 +32,24 @@ polyline.module-border-middle {
 }
 polyline.module-border-outer {
   stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background {
+  fill: #fafafa;
+}
+rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background {
+  fill: #bbb;
+}
+rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
 }
 </style>
 
@@ -125,15 +146,15 @@ polyline.module-border-outer {
       </g>
     </svg></g>
     <use xlink:href="#dial-offset-cmp" transform="translate(0 3)" href="#dial-offset-cmp"/>
-    <g transform="translate(5.5 49)">
-      <rect width="34" height="38" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 49)">
+      <rect class="input-background" width="34" height="38" rx="5"/>
       <g transform="translate(5 3)"><svg id="A_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(13 35)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(13 35)">IN</text>
     </g>
   </g>
 
@@ -147,15 +168,15 @@ polyline.module-border-outer {
       </g>
     </svg></g>
     <use xlink:href="#dial-offset-cmp" transform="translate(0 3)" href="#dial-offset-cmp"/>
-    <g transform="translate(5.5 49)">
-      <rect width="34" height="38" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 49)">
+      <rect class="input-background" width="34" height="38" rx="5"/>
       <g transform="translate(5 3)"><svg id="B_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(13 35)">IN</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(13 35)">IN</text>
     </g>
   </g>
 
@@ -187,15 +208,15 @@ polyline.module-border-outer {
         <text font-size="5.0pt" transform="rotate(60) translate(20 0) rotate(-60) translate(-4 2.2)">10</text>
       </g>
     </g>
-    <g transform="translate(5.5 49)">
-      <rect width="34" height="38" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 49)">
+      <rect class="input-background" width="34" height="38" rx="5"/>
       <g transform="translate(5 3)"><svg id="WINDOW_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
     </g>
   </g>
 
@@ -209,15 +230,15 @@ polyline.module-border-outer {
       </g>
     </svg></g>
     <use xlink:href="#dial-lag-cmp" transform="translate(0 3)" href="#dial-lag-cmp"/>
-    <g transform="translate(5.5 49)">
-      <rect width="34" height="38" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 49)">
+      <rect class="input-background" width="34" height="38" rx="5"/>
       <g transform="translate(5 3)"><svg id="LAG_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text>
     </g>
   </g>
 
@@ -234,8 +255,8 @@ polyline.module-border-outer {
     <use xlink:href="#dial-voltage-cmp" transform="translate(0.5 -2.5)" href="#dial-voltage-cmp"/>
   </g>
 
-  <g transform="translate(11 279)">
-    <rect width="68" height="77" rx="5" fill="#bbb"/>
+  <g class="io-group" transform="translate(11 279)">
+    <rect class="output-background" width="68" height="77" rx="5"/>
     <g transform="translate(5 4)"><svg id="GREATER_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
@@ -264,13 +285,13 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(12 72)">EQ</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(12 72)">EQ</text>
     <g transform="translate(39 40)"><svg id="NOT_EQUAL_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(42 72)">NOT</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(42 72)">NOT</text>
   </g>
 </svg>

@@ -75,21 +75,21 @@
   </g>
 
   <g transform="translate(0 200)">
-    <g transform="translate(5.5 0)">
-      <rect width="34" height="10" fill="#fafafa" transform="translate(0 63)"/>
-      <rect width="34" height="70" rx="5" fill="#fafafa"/>
+    <g class="io-group" transform="translate(5.5 0)">
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 63)"/>
+      <rect class="input-background" width="34" height="70" rx="5"/>
       <def id="L_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(15 35)">L</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(15 35)">L</text>
       <def id="R_INPUT" xlink:href="#input" transform="translate(5 38)"/>
-      <text font-size="5pt" letter-spacing="0.5px" transform="translate(9 70)">R (L)</text>
+      <text class="input-label" font-size="5pt" letter-spacing="0.5px" transform="translate(9 70)">R (L)</text>
     </g>
-    <g transform="translate(5.5 76)">
-      <rect width="34" height="10" fill="#bbb" transform="translate(0 -3)"/>
-      <rect width="34" height="70" rx="5" fill="#bbb"/>
+    <g class="io-group" transform="translate(5.5 76)">
+      <rect class="output-background-filler" width="34" height="10" transform="translate(0 -3)"/>
+      <rect class="output-background" width="34" height="70" rx="5"/>
       <def id="L_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(15 32)">L</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(15 32)">L</text>
       <def id="R_OUTPUT" xlink:href="#output" transform="translate(5 35)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(15 67)">R</text>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(15 67)">R</text>
     </g>
   </g>
 </module>

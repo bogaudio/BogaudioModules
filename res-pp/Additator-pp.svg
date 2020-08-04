@@ -14,7 +14,10 @@ text.brand {
   font-weight: bold;
 }
 
-path, polyline {
+polyline {
+  stroke: #333;
+}
+path {
   stroke: #333;
 }
 
@@ -29,6 +32,24 @@ polyline.module-border-middle {
 }
 polyline.module-border-outer {
   stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background {
+  fill: #fafafa;
+}
+rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background {
+  fill: #bbb;
+}
+rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
 }
 </style>
 
@@ -521,10 +542,10 @@ polyline.module-border-outer {
     </svg></g>
   </g>
 
-  <g transform="translate(0 269)">
-    <rect width="205" height="47" rx="5" fill="#bbb" transform="translate(10 44)"/>
-    <rect width="171" height="91" rx="5" fill="#fafafa" transform="translate(10 0)"/>
-    <rect width="10" height="10" fill="#fafafa" transform="translate(171 81)"/>
+  <g class="io-group" transform="translate(0 269)">
+    <rect class="output-background" width="205" height="47" rx="5" transform="translate(10 44)"/>
+    <rect class="input-background" width="171" height="91" rx="5" transform="translate(10 0)"/>
+    <rect class="input-background-filler" width="10" height="10" transform="translate(171 81)"/>
 
     <g transform="translate(10 0)">
       <g transform="translate(3 0)">
@@ -534,7 +555,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(3 40)">SYNC</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(3 40)">SYNC</text>
       </g>
       <g transform="translate(37 0)">
         <g transform="translate(3 5)"><svg id="PARTIALS_INPUT">
@@ -543,7 +564,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(0.5 40)">PRTLS</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(0.5 40)">PRTLS</text>
       </g>
       <g transform="translate(71 0)">
         <g transform="translate(3 5)"><svg id="WIDTH_INPUT">
@@ -552,7 +573,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(0.5 40)">WIDTH</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(0.5 40)">WIDTH</text>
       </g>
       <g transform="translate(105 0)">
         <g transform="translate(3 5)"><svg id="ODD_SKEW_INPUT">
@@ -561,7 +582,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(5 40)">OSK</text>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(5 40)">OSK</text>
       </g>
       <g transform="translate(139 0)">
         <g transform="translate(3 5)"><svg id="EVEN_SKEW_INPUT">
@@ -570,7 +591,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(5.5 40)">ESK</text>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(5.5 40)">ESK</text>
       </g>
     </g>
 
@@ -582,7 +603,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(1 40)">V/OCT</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(1 40)">V/OCT</text>
       </g>
       <g transform="translate(37 0)">
         <g transform="translate(3 5)"><svg id="GAIN_INPUT">
@@ -591,7 +612,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(2 40)">GAIN</text>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(2 40)">GAIN</text>
       </g>
       <g transform="translate(71 0)">
         <g transform="translate(3 5)"><svg id="DECAY_INPUT">
@@ -600,7 +621,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(1 40)">DECAY</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(1 40)">DECAY</text>
       </g>
       <g transform="translate(105 0)">
         <g transform="translate(3 5)"><svg id="BALANCE_INPUT">
@@ -609,7 +630,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(5.5 40)">BAL</text>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(5.5 40)">BAL</text>
       </g>
       <g transform="translate(139 0)">
         <g transform="translate(3 5)"><svg id="FILTER_INPUT">
@@ -618,7 +639,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(3 40)">FLTR</text>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(3 40)">FLTR</text>
       </g>
       <g transform="translate(173 0)">
         <g transform="translate(3 5)"><svg id="AUDIO_OUTPUT">
@@ -627,7 +648,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(5 40)">OUT</text>
+        <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(5 40)">OUT</text>
       </g>
     </g>
   </g>

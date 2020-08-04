@@ -4,8 +4,8 @@
 
   <def xlink:href="#module" var-name="MATRIX88"/>
 
-  <g transform="translate(5.5 25)">
-    <rect width="34" height="293" rx="5" fill="#fafafa" transform="translate(0 0)"/>
+  <g class="io-group" transform="translate(5.5 25)">
+    <rect class="input-background" width="34" height="293" rx="5" transform="translate(0 0)"/>
     <def id="IN1_INPUT" xlink:href="#input" transform="translate(5 5)"/>
     <def id="IN2_INPUT" xlink:href="#input" transform="translate(5 42)"/>
     <def id="IN3_INPUT" xlink:href="#input" transform="translate(5 79)"/>
@@ -16,8 +16,8 @@
     <def id="IN8_INPUT" xlink:href="#input" transform="translate(5 264)"/>
   </g>
 
-  <g transform="translate(46.5 323)">
-    <rect width="278.5" height="34" rx="5" fill="#bbb" transform="translate(0 0)"/>
+  <g class="io-group" transform="translate(46.5 323)">
+    <rect class="output-background" width="278.5" height="34" rx="5" transform="translate(0 0)"/>
     <def id="OUT1_OUTPUT" xlink:href="#output" transform="translate(5 5)"/>
     <def id="OUT2_OUTPUT" xlink:href="#output" transform="translate(40 5)"/>
     <def id="OUT3_OUTPUT" xlink:href="#output" transform="translate(75 5)"/>

@@ -181,46 +181,46 @@
   <!-- <rect width="70" height="9" fill="#f0f" transform="translate(0 204)" /> -->
   <!-- <rect width="70" height="9" fill="#f0f" transform="translate(0 260)" /> -->
 
-  <g transform="translate(0 269)">
-    <rect width="130" height="91" rx="5" fill="#bbb" transform="translate(10 0)"/>
-    <rect width="97" height="91" rx="5" fill="#fafafa" transform="translate(10 0)"/>
-    <rect width="130" height="44" rx="5" fill="#fafafa" transform="translate(10 0)"/>
-    <rect width="10" height="10" fill="#fafafa" transform="translate(130 34)"/>
-    <rect width="10" height="10" fill="#fafafa" transform="translate(97 81)"/>
+  <g class="io-group" transform="translate(0 269)">
+    <rect class="output-background" width="130" height="91" rx="5" transform="translate(10 0)"/>
+    <rect class="input-background" width="97" height="91" rx="5" transform="translate(10 0)"/>
+    <rect class="input-background" width="130" height="44" rx="5" transform="translate(10 0)"/>
+    <rect class="input-background-filler" width="10" height="10" transform="translate(130 34)"/>
+    <rect class="input-background-filler" width="10" height="10" transform="translate(97 81)"/>
 
     <g transform="translate(12 0)">
       <def id="DEPTH_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(0.5 40)">DEPTH</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(0.5 40)">DEPTH</text>
     </g>
     <g transform="translate(44 0)">
       <def id="FEEDBACK_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(3.5 40)">FDBK</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(3.5 40)">FDBK</text>
     </g>
     <g transform="translate(76 0)">
       <def id="LEVEL_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(1.5 40)">LEVEL</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(1.5 40)">LEVEL</text>
     </g>
     <g transform="translate(108 0)">
       <def id="SUSTAIN_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-      <text font-size="6pt" letter-spacing="1px" transform="translate(6 40)">SUS</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(6 40)">SUS</text>
     </g>
 
     <g transform="translate(10 44)">
       <g transform="translate(2 0)">
         <def id="PITCH_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(1 40)">V/OCT</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(1 40)">V/OCT</text>
       </g>
       <g transform="translate(34 0)">
         <def id="FM_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(8.5 40)">FM</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(8.5 40)">FM</text>
       </g>
       <g transform="translate(66 0)">
         <def id="GATE_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(3 40)">GATE</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(3 40)">GATE</text>
       </g>
       <g transform="translate(98 0)">
         <def id="AUDIO_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
-        <text font-size="6pt" letter-spacing="1px" transform="translate(6 40)">OUT</text>
+        <text class="output-label" font-size="6pt" letter-spacing="1px" transform="translate(6 40)">OUT</text>
       </g>
     </g>
   </g>
