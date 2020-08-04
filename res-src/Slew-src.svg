@@ -25,9 +25,9 @@
         <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-165) translate(10 0)"/>
         <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-202.5) translate(10 0)"/>
 
-        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" fill="none" transform="rotate(60) translate(13 0) rotate(-60) translate(2 0) rotate(-45) translate(0 0)"/>
+        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#333" fill="none" transform="rotate(60) translate(13 0) rotate(-60) translate(2 0) rotate(-45) translate(0 0)"/>
         <polyline points="-3.5,0 3.5,0" stroke-width="1" fill="none" transform="rotate(-90) translate(13 0) rotate(90) rotate(-45) translate(0 0)"/>
-        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" fill="none" transform="rotate(-240) translate(13 0) rotate(240) translate(-2 0) rotate(135) translate(0 0)"/>
+        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#333" fill="none" transform="rotate(-240) translate(13 0) rotate(240) translate(-2 0) rotate(135) translate(0 0)"/>
       </g>
     </symbol>
 
@@ -41,9 +41,9 @@
         <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-165) translate(10 0)"/>
         <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-202.5) translate(10 0)"/>
 
-        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" fill="none" transform="rotate(60) translate(13 0) rotate(-60) translate(2 0) rotate(-135) translate(0 0)"/>
+        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#333" fill="none" transform="rotate(60) translate(13 0) rotate(-60) translate(2 0) rotate(-135) translate(0 0)"/>
         <polyline points="-3.5,0 3.5,0" stroke-width="1" fill="none" transform="rotate(-90) translate(13 0) rotate(90) rotate(45) translate(0 0)"/>
-        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" fill="none" transform="rotate(-240) translate(13 0) rotate(240) translate(-2 0) rotate(45) translate(0 0)"/>
+        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#333" fill="none" transform="rotate(-240) translate(13 0) rotate(240) translate(-2 0) rotate(45) translate(0 0)"/>
       </g>
     </symbol>
   </defs>

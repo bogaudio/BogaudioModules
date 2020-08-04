@@ -435,7 +435,7 @@
   </g>
   <g transform="translate(77,96)" id="g8684">
     <g transform="translate(5,5)" id="g8682">
-      <path d="M 1,1 Q 1,-6 8,-6" stroke-width="1" fill="none" id="path8680"/>
+      <path d="M 1,1 Q 1,-6 8,-6" stroke-width="1" stroke="#333" fill="none" id="path8680"/>
     </g>
   </g>
   <g transform="translate(77,106)" id="g8690">
@@ -445,14 +445,14 @@
   </g>
   <g transform="translate(77,116)" id="g8696">
     <g transform="translate(5,5)" id="g8694">
-      <path d="M 0,1 Q 7,1 8,-7" stroke-width="1" fill="none" id="path8692"/>
+      <path d="M 0,1 Q 7,1 8,-7" stroke-width="1" stroke="#333" fill="none" id="path8692"/>
     </g>
   </g>
   <g transform="translate(77,124)" id="g8698"/>
   <g transform="translate(77,152.5)" id="g8708">
     <g id="g8702"/>
     <g transform="translate(5)" id="g8706">
-      <path d="M 0.5,-1 Q 1,6 8,6" stroke-width="1" fill="none" id="path8704"/>
+      <path d="M 0.5,-1 Q 1,6 8,6" stroke-width="1" stroke="#333" fill="none" id="path8704"/>
     </g>
   </g>
   <g transform="translate(77,162.5)" id="g8714">
@@ -462,13 +462,13 @@
   </g>
   <g transform="translate(77,172.5)" id="g8720">
     <g transform="translate(5)" id="g8718">
-      <path d="M 0.5,-1 Q 6,0 7,6" stroke-width="1" fill="none" id="path8716"/>
+      <path d="M 0.5,-1 Q 6,0 7,6" stroke-width="1" stroke="#333" fill="none" id="path8716"/>
     </g>
   </g>
   <g transform="translate(77,180.5)" id="g8722"/>
   <g transform="translate(77,264.5)" id="g8730">
     <g transform="translate(5)" id="g8728">
-      <path d="M 0.5,-1 Q 1,6 8,6" stroke-width="1" fill="none" id="path8726"/>
+      <path d="M 0.5,-1 Q 1,6 8,6" stroke-width="1" stroke="#333" fill="none" id="path8726"/>
     </g>
   </g>
   <g transform="translate(77,274.5)" id="g8736">
@@ -478,7 +478,7 @@
   </g>
   <g transform="translate(77,284.5)" id="g8742">
     <g transform="translate(5)" id="g8740">
-      <path d="M 0.5,-1 Q 6,0 7,6" stroke-width="1" fill="none" id="path8738"/>
+      <path d="M 0.5,-1 Q 6,0 7,6" stroke-width="1" stroke="#333" fill="none" id="path8738"/>
     </g>
   </g>
   <g transform="translate(77,292.5)" id="g8744"/>

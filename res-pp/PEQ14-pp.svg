@@ -83,10 +83,10 @@ text.input-label, text.output-label {
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1"/>
         </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(40 37)">FCV</text>
@@ -114,10 +114,10 @@ text.input-label, text.output-label {
         <g transform="rotate(-240) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1"/>
         </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(42.5 37)">BW</text>
@@ -279,10 +279,10 @@ text.input-label, text.output-label {
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1"/>
         </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
@@ -391,10 +391,10 @@ text.input-label, text.output-label {
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1"/>
         </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
@@ -503,10 +503,10 @@ text.input-label, text.output-label {
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1"/>
         </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
@@ -615,10 +615,10 @@ text.input-label, text.output-label {
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1"/>
         </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
@@ -727,10 +727,10 @@ text.input-label, text.output-label {
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1"/>
         </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
@@ -839,10 +839,10 @@ text.input-label, text.output-label {
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1"/>
         </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
@@ -951,10 +951,10 @@ text.input-label, text.output-label {
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1"/>
         </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
@@ -1063,10 +1063,10 @@ text.input-label, text.output-label {
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1"/>
         </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
@@ -1175,10 +1175,10 @@ text.input-label, text.output-label {
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1"/>
         </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
@@ -1287,10 +1287,10 @@ text.input-label, text.output-label {
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1"/>
         </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
@@ -1399,10 +1399,10 @@ text.input-label, text.output-label {
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1"/>
         </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
@@ -1511,10 +1511,10 @@ text.input-label, text.output-label {
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1"/>
         </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
@@ -1623,10 +1623,10 @@ text.input-label, text.output-label {
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1"/>
         </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>
@@ -1735,10 +1735,10 @@ text.input-label, text.output-label {
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1"/>
         </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 229)">FCV</text>

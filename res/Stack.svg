@@ -87,10 +87,10 @@
         <g id="g55851" transform="rotate(60) translate(10 0)">
           <text id="text55849" transform="translate(2.5 0) rotate(-60) translate(-1.9 2.2)" font-size="5.0pt">+</text>
         </g>
-        <path id="path55853" transform="rotate(20)" fill="none" stroke-linecap="round" stroke-width="0.5" d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0"/>
-        <path id="path55855" transform="rotate(43)" fill="none" stroke-linecap="round" stroke-width="0.5" d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0"/>
-        <path id="path55857" transform="rotate(-20)" fill="none" stroke-linecap="round" stroke-width="0.5" d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0"/>
-        <path id="path55859" transform="rotate(-43)" fill="none" stroke-linecap="round" stroke-width="0.5" d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0"/>
+        <path id="path55853" transform="rotate(20)" fill="none" stroke="#333" stroke-linecap="round" stroke-width="0.5" d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0"/>
+        <path id="path55855" transform="rotate(43)" fill="none" stroke="#333" stroke-linecap="round" stroke-width="0.5" d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0"/>
+        <path id="path55857" transform="rotate(-20)" fill="none" stroke="#333" stroke-linecap="round" stroke-width="0.5" d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0"/>
+        <path id="path55859" transform="rotate(-43)" fill="none" stroke="#333" stroke-linecap="round" stroke-width="0.5" d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0"/>
       </g>
     </symbol>
   </defs>
@@ -235,10 +235,10 @@
           <path id="path56145" style="font-weight:bold;font-size:6.66667px;font-family:Roboto, sans-serif;fill:#333333" d="m 2.2591157,-2.6529961 h 1.1751307 v 0.8496098 H 2.2591157 v 1.32812566 H 1.3639329 V -1.8033863 H 0.18554696 V -2.6529961 H 1.3639329 v -1.272787 h 0.8951828 z"/>
         </g>
       </g>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)" id="path56081"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" id="path56083"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)" id="path56085"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" id="path56087"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)" id="path56081"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)" id="path56083"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)" id="path56085"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)" id="path56087"/>
     </g>
   </g>
   <path class="input-background" d="m 10.5,154 h 24 c 2.77,0 5,2.23 5,5 v 40 c 0,2.77 -2.23,5 -5,5 h -24 c -2.77,0 -5,-2.23 -5,-5 v -40 c 0,-2.77 2.23,-5 5,-5 z" style="fill:#fafafa" id="rect55908"/>

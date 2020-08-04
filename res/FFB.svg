@@ -347,10 +347,10 @@
       <g transform="rotate(-90,-5,-5)" id="g14936">
         <path d="M 0,0 H 4" style="stroke:#333333;stroke-width:1" id="polyline14934"/>
       </g>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)" id="path14938"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" id="path14940"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)" id="path14942"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" id="path14944"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)" id="path14938"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)" id="path14940"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)" id="path14942"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)" id="path14944"/>
     </g>
   </g>
   <g style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;letter-spacing:2px;fill:#333333" id="text14952" aria-label="HP">

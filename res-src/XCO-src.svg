@@ -211,8 +211,8 @@
     <!-- <text font-size="6pt" letter-spacing="2px" transform="translate(6.5 15)">SIN</text> -->
     <g transform="translate(9 6)">
       <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
-      <path d="M 0 4 A 2 3 0 0 1 6 4" stroke-width="1" fill="none"/>
-      <path d="M 6 4 A 2 3 0 0 0 12 4" stroke-width="1" fill="none"/>
+      <path d="M 0 4 A 2 3 0 0 1 6 4" stroke-width="1" stroke="#333" fill="none"/>
+      <path d="M 6 4 A 2 3 0 0 0 12 4" stroke-width="1" stroke="#333" fill="none"/>
     </g>
     <g transform="translate(3 30)">
       <def id="SINE_FEEDBACK_PARAM" xlink:href="#knob16" transform="translate(4 0)"/>

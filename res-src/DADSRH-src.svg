@@ -55,7 +55,7 @@
       <g transform="translate(0 0)">
         <def id="ATTACK_SHAPE1_LIGHT" xlink:href="#light-tiny"/>
         <g transform="translate(5 5)">
-          <path d="M 1 1 Q 1 -6, 8 -6" stroke-width="1" fill="none"/>
+          <path d="M 1 1 Q 1 -6, 8 -6" stroke-width="1" stroke="#333" fill="none"/>
         </g>
       </g>
       <g transform="translate(0 10)">
@@ -67,7 +67,7 @@
       <g transform="translate(0 20)">
         <def id="ATTACK_SHAPE3_LIGHT" xlink:href="#light-tiny"/>
         <g transform="translate(5 5)">
-          <path d="M 0 1 Q 7 1, 8 -7" stroke-width="1" fill="none"/>
+          <path d="M 0 1 Q 7 1, 8 -7" stroke-width="1" stroke="#333" fill="none"/>
         </g>
       </g>
       <g transform="translate(0 28)">
@@ -79,7 +79,7 @@
       <g transform="translate(0 0)">
         <def id="DECAY_SHAPE1_LIGHT" xlink:href="#light-tiny" transform="translate(0 0)"/>
         <g transform="translate(5 0)">
-          <path d="M 0.5 -1 Q 1 6, 8 6" stroke-width="1" fill="none"/>
+          <path d="M 0.5 -1 Q 1 6, 8 6" stroke-width="1" stroke="#333" fill="none"/>
         </g>
       </g>
       <g transform="translate(0 10)">
@@ -91,7 +91,7 @@
       <g transform="translate(0 20)">
         <def id="DECAY_SHAPE3_LIGHT" xlink:href="#light-tiny"/>
         <g transform="translate(5 0)">
-          <path d="M 0.5 -1 Q 6 0, 7 6" stroke-width="1" fill="none"/>
+          <path d="M 0.5 -1 Q 6 0, 7 6" stroke-width="1" stroke="#333" fill="none"/>
         </g>
       </g>
       <g transform="translate(0 28)">
@@ -103,7 +103,7 @@
       <g transform="translate(0 0)">
         <def id="RELEASE_SHAPE1_LIGHT" xlink:href="#light-tiny"/>
         <g transform="translate(5 0)">
-          <path d="M 0.5 -1 Q 1 6, 8 6" stroke-width="1" fill="none"/>
+          <path d="M 0.5 -1 Q 1 6, 8 6" stroke-width="1" stroke="#333" fill="none"/>
         </g>
       </g>
       <g transform="translate(0 10)">
@@ -115,7 +115,7 @@
       <g transform="translate(0 20)">
         <def id="RELEASE_SHAPE3_LIGHT" xlink:href="#light-tiny"/>
         <g transform="translate(5 0)">
-          <path d="M 0.5 -1 Q 6 0, 7 6" stroke-width="1" fill="none"/>
+          <path d="M 0.5 -1 Q 6 0, 7 6" stroke-width="1" stroke="#333" fill="none"/>
         </g>
       </g>
       <g transform="translate(0 28)">

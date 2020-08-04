@@ -55,8 +55,8 @@
         <def id="SINE_LIGHT" xlink:href="#light-small" transform="translate(-7.5 1)"/>
         <g transform="translate(1 1) scale(0.8)">
           <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#f0f" /> -->
-          <path d="M 0 4 A 2 3 0 0 1 6 4" stroke-width="1" fill="none"/>
-          <path d="M 6 4 A 2 3 0 0 0 12 4" stroke-width="1" fill="none"/>
+          <path d="M 0 4 A 2 3 0 0 1 6 4" stroke-width="1" stroke="#333" fill="none"/>
+          <path d="M 6 4 A 2 3 0 0 0 12 4" stroke-width="1" stroke="#333" fill="none"/>
         </g>
       </g>
 

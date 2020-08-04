@@ -60,10 +60,10 @@ text.input-label, text.output-label {
 
     <symbol id="dial-range-analyzer" viewBox="0 0 100px 100px">
       <g transform="translate(50.5 50.5)">
-        <path d="M 0 -32 A 32 32 0 0 1 32 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(15)"/>
-        <path d="M 0 -32 A 32 32 0 0 1 32 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(50)"/>
-        <path d="M 0 -32 A 32 32 0 0 0 -32 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-15)"/>
-        <path d="M 0 -32 A 32 32 0 0 0 -32 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-50)"/>
+        <path d="M 0 -32 A 32 32 0 0 1 32 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(15)"/>
+        <path d="M 0 -32 A 32 32 0 0 1 32 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(50)"/>
+        <path d="M 0 -32 A 32 32 0 0 0 -32 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-15)"/>
+        <path d="M 0 -32 A 32 32 0 0 0 -32 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-50)"/>
         <g transform="rotate(-90) translate(29 0)">
           <polyline points="0,0 6,0" stroke-width="1.5"/>
         </g>

@@ -526,7 +526,7 @@ text.input-label, text.output-label {
       <rect width="3.2" height="3.2" fill="#0f0"/>
     </svg>
         <g transform="translate(5 5)">
-          <path d="M 1 1 Q 1 -6, 8 -6" stroke-width="1" fill="none"/>
+          <path d="M 1 1 Q 1 -6, 8 -6" stroke-width="1" stroke="#333" fill="none"/>
         </g>
       </g>
       <g transform="translate(0 10)">
@@ -542,7 +542,7 @@ text.input-label, text.output-label {
       <rect width="3.2" height="3.2" fill="#0f0"/>
     </svg>
         <g transform="translate(5 5)">
-          <path d="M 0 1 Q 7 1, 8 -7" stroke-width="1" fill="none"/>
+          <path d="M 0 1 Q 7 1, 8 -7" stroke-width="1" stroke="#333" fill="none"/>
         </g>
       </g>
       <g transform="translate(0 28)">
@@ -560,7 +560,7 @@ text.input-label, text.output-label {
       <rect width="3.2" height="3.2" fill="#0f0"/>
     </svg>
         <g transform="translate(5 0)">
-          <path d="M 0.5 -1 Q 1 6, 8 6" stroke-width="1" fill="none"/>
+          <path d="M 0.5 -1 Q 1 6, 8 6" stroke-width="1" stroke="#333" fill="none"/>
         </g>
       </g>
       <g transform="translate(0 10)">
@@ -576,7 +576,7 @@ text.input-label, text.output-label {
       <rect width="3.2" height="3.2" fill="#0f0"/>
     </svg>
         <g transform="translate(5 0)">
-          <path d="M 0.5 -1 Q 6 0, 7 6" stroke-width="1" fill="none"/>
+          <path d="M 0.5 -1 Q 6 0, 7 6" stroke-width="1" stroke="#333" fill="none"/>
         </g>
       </g>
       <g transform="translate(0 28)">
@@ -594,7 +594,7 @@ text.input-label, text.output-label {
       <rect width="3.2" height="3.2" fill="#0f0"/>
     </svg>
         <g transform="translate(5 0)">
-          <path d="M 0.5 -1 Q 1 6, 8 6" stroke-width="1" fill="none"/>
+          <path d="M 0.5 -1 Q 1 6, 8 6" stroke-width="1" stroke="#333" fill="none"/>
         </g>
       </g>
       <g transform="translate(0 10)">
@@ -610,7 +610,7 @@ text.input-label, text.output-label {
       <rect width="3.2" height="3.2" fill="#0f0"/>
     </svg>
         <g transform="translate(5 0)">
-          <path d="M 0.5 -1 Q 6 0, 7 6" stroke-width="1" fill="none"/>
+          <path d="M 0.5 -1 Q 6 0, 7 6" stroke-width="1" stroke="#333" fill="none"/>
         </g>
       </g>
       <g transform="translate(0 28)">
