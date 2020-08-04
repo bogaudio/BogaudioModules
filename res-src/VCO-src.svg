@@ -27,8 +27,8 @@
     <!-- <polyline points="0,54 54,54" stroke="#0f0" stroke-width="1" fill="none" /> -->
     <!-- <polyline points="54,54 54,354" stroke="#0f0" stroke-width="1" fill="none" /> -->
     <def id="FREQUENCY_PARAM" xlink:href="#knob68" transform="translate(20 20)"/>
+    <def xlink:href="#dial-frequency" transform="translate(-1 0)"/>
   </g>
-  <def xlink:href="#dial-frequency" transform="translate(20 25)"/>
 
   <text font-size="6pt" letter-spacing="1px" transform="translate(30 135)">0V = C4 = 261.63HZ</text>
 

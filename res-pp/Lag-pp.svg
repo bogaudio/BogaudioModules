@@ -46,15 +46,15 @@ polyline.module-border-outer {
     </symbol>
   </defs>
 
-  <svg>
-      <svg>
+  
+      
       <rect class="module-background background-fill" width="45.0" height="380.0"/>
-    </svg>
-      <svg>
+    
+      
       <polyline class="module-border-inner" points="1,1 44.0,1 44.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
       <polyline class="module-border-middle" points="0.5,0.5 44.5,0.5 44.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
       <polyline class="module-border-outer" points="0,0 45.0,0 45.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
-    </svg>
+    
       <g transform="rotate(-90) translate(-376.0 13)">
         <text class="title" font-size="7pt" letter-spacing="2.5px">LAG</text>
         <g transform="translate(0 12)">
@@ -62,7 +62,7 @@ polyline.module-border-outer {
           <rect width="3.0" height="3" fill="#ddd" transform="translate(11.5 -5)"/>
         </g>
       </g>
-    </svg>
+    
 
   <g transform="translate(0 25)">
     <text font-size="6pt" letter-spacing="2.0px" transform="translate(9.5 0)">TIME</text>
@@ -73,7 +73,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(0 3)"><svg>
+    <g transform="translate(0 3)">
       <g transform="translate(22.5 22.5)">
         <text font-size="5.0pt" transform="rotate(-240) translate(20 0) rotate(240) translate(-2 2)">0</text>
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-210) translate(17 0)"/>
@@ -87,7 +87,7 @@ polyline.module-border-outer {
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(30) translate(17 0)"/>
         <text font-size="5.0pt" transform="rotate(60) translate(20 0) rotate(-60) translate(-2 2)">1</text>
       </g>
-    </svg></g>
+    </g>
     <g transform="translate(14.5 59)"><svg id="TIME_SCALE_PARAM">
       <g transform="translate(8 8)">
         <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
@@ -95,7 +95,7 @@ polyline.module-border-outer {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(0 44.5)"><svg>
+    <g transform="translate(0 44.5)">
       <g transform="translate(22.5 22.5)">
         <text font-size="5.0pt" transform="rotate(-135) translate(15 0) rotate(135) translate(-8 2)">0.1</text>
         <polyline points="0,0 2,0" stroke-width="1" stroke="#333" transform="rotate(-135) translate(9.5 0)"/>
@@ -104,7 +104,7 @@ polyline.module-border-outer {
         <text font-size="5.0pt" transform="rotate(-45) translate(15 0) rotate(45) translate(-2 2)">10</text>
         <polyline points="0,0 2,0" stroke-width="1" stroke="#333" transform="rotate(-45) translate(9.5 0)"/>
       </g>
-    </svg></g>
+    </g>
     <g transform="translate(5.5 79)">
       <rect width="34" height="39" rx="5" fill="#fafafa"/>
       <g transform="translate(5 3)"><svg id="TIME_INPUT">

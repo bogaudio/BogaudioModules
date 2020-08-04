@@ -28,26 +28,26 @@ polyline.module-border-outer {
 }
 </style>
 
-  <svg>
-      <svg>
+  
+      
       <rect class="module-background background-fill" width="405.0" height="380.0"/>
-    </svg>
-      <svg>
+    
+      
       <polyline class="module-border-inner" points="1,1 404.0,1 404.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
       <polyline class="module-border-middle" points="0.5,0.5 404.5,0.5 404.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
       <polyline class="module-border-outer" points="0,0 405.0,0 405.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
-    </svg>
+    
       <text class="title" font-size="12pt" letter-spacing="4px" text-anchor="middle" transform="translate(202.5 19)">MIX8</text>
       <g transform="translate(0 374)">
         <text class="brand" font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate(202.5 0)">BOGAUDIO</text>
         <rect class="background-fill" width="3" height="3" transform="translate(187.0 -5)"/>
       </g>
-    </svg>
+    
 
   <g transform="translate(4 20)">
     
     <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">CH1</text>
-    <g transform="translate(0 12)"><svg>
+    <g transform="translate(0 12)">
       <g transform="translate(0 6.5)">
         <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
         <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
@@ -81,7 +81,7 @@ polyline.module-border-outer {
         
         <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
       </g>
-    </svg></g>
+    </g>
     <g transform="translate(13.5 12)"><svg id="LEVEL1_PARAM">
       <rect width="18" height="151" fill="none"/>
       <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
@@ -105,7 +105,7 @@ polyline.module-border-outer {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(2.5 191)"><svg>
+    <g transform="translate(2.5 191)">
       <g transform="translate(20 20)">
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
@@ -115,7 +115,7 @@ polyline.module-border-outer {
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
     <g transform="translate(5.5 232)">
       <rect width="34" height="108" rx="5" fill="#fafafa"/>
@@ -147,7 +147,7 @@ polyline.module-border-outer {
   <g transform="translate(48 20)">
     
     <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">CH2</text>
-    <g transform="translate(0 12)"><svg>
+    <g transform="translate(0 12)">
       <g transform="translate(0 6.5)">
         <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
         <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
@@ -181,7 +181,7 @@ polyline.module-border-outer {
         
         <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
       </g>
-    </svg></g>
+    </g>
     <g transform="translate(13.5 12)"><svg id="LEVEL2_PARAM">
       <rect width="18" height="151" fill="none"/>
       <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
@@ -205,7 +205,7 @@ polyline.module-border-outer {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(2.5 191)"><svg>
+    <g transform="translate(2.5 191)">
       <g transform="translate(20 20)">
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
@@ -215,7 +215,7 @@ polyline.module-border-outer {
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
     <g transform="translate(5.5 232)">
       <rect width="34" height="108" rx="5" fill="#fafafa"/>
@@ -247,7 +247,7 @@ polyline.module-border-outer {
   <g transform="translate(92 20)">
     
     <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">CH3</text>
-    <g transform="translate(0 12)"><svg>
+    <g transform="translate(0 12)">
       <g transform="translate(0 6.5)">
         <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
         <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
@@ -281,7 +281,7 @@ polyline.module-border-outer {
         
         <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
       </g>
-    </svg></g>
+    </g>
     <g transform="translate(13.5 12)"><svg id="LEVEL3_PARAM">
       <rect width="18" height="151" fill="none"/>
       <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
@@ -305,7 +305,7 @@ polyline.module-border-outer {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(2.5 191)"><svg>
+    <g transform="translate(2.5 191)">
       <g transform="translate(20 20)">
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
@@ -315,7 +315,7 @@ polyline.module-border-outer {
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
     <g transform="translate(5.5 232)">
       <rect width="34" height="108" rx="5" fill="#fafafa"/>
@@ -347,7 +347,7 @@ polyline.module-border-outer {
   <g transform="translate(136 20)">
     
     <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">CH4</text>
-    <g transform="translate(0 12)"><svg>
+    <g transform="translate(0 12)">
       <g transform="translate(0 6.5)">
         <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
         <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
@@ -381,7 +381,7 @@ polyline.module-border-outer {
         
         <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
       </g>
-    </svg></g>
+    </g>
     <g transform="translate(13.5 12)"><svg id="LEVEL4_PARAM">
       <rect width="18" height="151" fill="none"/>
       <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
@@ -405,7 +405,7 @@ polyline.module-border-outer {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(2.5 191)"><svg>
+    <g transform="translate(2.5 191)">
       <g transform="translate(20 20)">
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
@@ -415,7 +415,7 @@ polyline.module-border-outer {
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
     <g transform="translate(5.5 232)">
       <rect width="34" height="108" rx="5" fill="#fafafa"/>
@@ -447,7 +447,7 @@ polyline.module-border-outer {
   <g transform="translate(180 20)">
     
     <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">CH5</text>
-    <g transform="translate(0 12)"><svg>
+    <g transform="translate(0 12)">
       <g transform="translate(0 6.5)">
         <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
         <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
@@ -481,7 +481,7 @@ polyline.module-border-outer {
         
         <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
       </g>
-    </svg></g>
+    </g>
     <g transform="translate(13.5 12)"><svg id="LEVEL5_PARAM">
       <rect width="18" height="151" fill="none"/>
       <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
@@ -505,7 +505,7 @@ polyline.module-border-outer {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(2.5 191)"><svg>
+    <g transform="translate(2.5 191)">
       <g transform="translate(20 20)">
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
@@ -515,7 +515,7 @@ polyline.module-border-outer {
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
     <g transform="translate(5.5 232)">
       <rect width="34" height="108" rx="5" fill="#fafafa"/>
@@ -547,7 +547,7 @@ polyline.module-border-outer {
   <g transform="translate(224 20)">
     
     <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">CH6</text>
-    <g transform="translate(0 12)"><svg>
+    <g transform="translate(0 12)">
       <g transform="translate(0 6.5)">
         <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
         <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
@@ -581,7 +581,7 @@ polyline.module-border-outer {
         
         <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
       </g>
-    </svg></g>
+    </g>
     <g transform="translate(13.5 12)"><svg id="LEVEL6_PARAM">
       <rect width="18" height="151" fill="none"/>
       <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
@@ -605,7 +605,7 @@ polyline.module-border-outer {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(2.5 191)"><svg>
+    <g transform="translate(2.5 191)">
       <g transform="translate(20 20)">
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
@@ -615,7 +615,7 @@ polyline.module-border-outer {
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
     <g transform="translate(5.5 232)">
       <rect width="34" height="108" rx="5" fill="#fafafa"/>
@@ -647,7 +647,7 @@ polyline.module-border-outer {
   <g transform="translate(268 20)">
     
     <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">CH7</text>
-    <g transform="translate(0 12)"><svg>
+    <g transform="translate(0 12)">
       <g transform="translate(0 6.5)">
         <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
         <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
@@ -681,7 +681,7 @@ polyline.module-border-outer {
         
         <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
       </g>
-    </svg></g>
+    </g>
     <g transform="translate(13.5 12)"><svg id="LEVEL7_PARAM">
       <rect width="18" height="151" fill="none"/>
       <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
@@ -705,7 +705,7 @@ polyline.module-border-outer {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(2.5 191)"><svg>
+    <g transform="translate(2.5 191)">
       <g transform="translate(20 20)">
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
@@ -715,7 +715,7 @@ polyline.module-border-outer {
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
     <g transform="translate(5.5 232)">
       <rect width="34" height="108" rx="5" fill="#fafafa"/>
@@ -747,7 +747,7 @@ polyline.module-border-outer {
   <g transform="translate(312 20)">
     
     <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">CH8</text>
-    <g transform="translate(0 12)"><svg>
+    <g transform="translate(0 12)">
       <g transform="translate(0 6.5)">
         <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
         <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
@@ -781,7 +781,7 @@ polyline.module-border-outer {
         
         <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
       </g>
-    </svg></g>
+    </g>
     <g transform="translate(13.5 12)"><svg id="LEVEL8_PARAM">
       <rect width="18" height="151" fill="none"/>
       <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
@@ -805,7 +805,7 @@ polyline.module-border-outer {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(2.5 191)"><svg>
+    <g transform="translate(2.5 191)">
       <g transform="translate(20 20)">
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
@@ -815,7 +815,7 @@ polyline.module-border-outer {
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
     <g transform="translate(5.5 232)">
       <rect width="34" height="108" rx="5" fill="#fafafa"/>
@@ -847,7 +847,7 @@ polyline.module-border-outer {
   <g transform="translate(356 20)">
     
     <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">MIX</text>
-    <g transform="translate(0 12)"><svg>
+    <g transform="translate(0 12)">
       <g transform="translate(0 6.5)">
         <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
         <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
@@ -881,7 +881,7 @@ polyline.module-border-outer {
         
         <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
       </g>
-    </svg></g>
+    </g>
     <g transform="translate(13.5 12)"><svg id="MIX_PARAM">
       <rect width="18" height="151" fill="none"/>
       <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>

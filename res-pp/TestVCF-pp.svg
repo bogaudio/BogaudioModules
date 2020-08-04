@@ -62,21 +62,21 @@ polyline.module-border-outer {
     </symbol>
   </defs>
 
-  <svg>
-      <svg>
+  
+      
       <rect class="module-background background-fill" width="180.0" height="380.0"/>
-    </svg>
-      <svg>
+    
+      
       <polyline class="module-border-inner" points="1,1 179.0,1 179.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
       <polyline class="module-border-middle" points="0.5,0.5 179.5,0.5 179.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
       <polyline class="module-border-outer" points="0,0 180.0,0 180.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
-    </svg>
+    
       <text class="title" font-size="12pt" letter-spacing="4px" text-anchor="middle" transform="translate(90.0 19)">VCF</text>
       <g transform="translate(0 374)">
         <text class="brand" font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate(90.0 0)">BOGAUDIO</text>
         <rect class="background-fill" width="3" height="3" transform="translate(74.5 -5)"/>
       </g>
-    </svg>
+    
 
   <g transform="translate(20 50)">
     

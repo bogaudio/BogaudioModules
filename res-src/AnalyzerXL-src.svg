@@ -1,6 +1,15 @@
 <?xml version="1.0"?>
 <module hp="42">
   <style/>
+  <localstyle>
+      text {
+        fill: #fff;
+        font-family: 'Comfortaa', sans-serif;
+        font-size: 7pt;
+        font-weight: bold;
+        letter-spacing: 2px;
+      }
+  </localstyle>
 
   <defs>
     <symbol id="display-analyzerxl" viewBox="0 0 600px 380px">
@@ -8,7 +17,7 @@
     </symbol>
   </defs>
 
-  <def xlink:href="#module-background"/>
+  <rect width="100%" height="100%" fill="#000"/>
   <g transform="translate(0 375) rotate(-90)">
     <text transform="translate(0 12.5)" letter-spacing="1">ANALYZER-XL</text>
     <text transform="translate(0 25.5)">BOGAUDIO</text>

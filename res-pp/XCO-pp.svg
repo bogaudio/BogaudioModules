@@ -46,21 +46,21 @@ polyline.module-border-outer {
     </symbol>
   </defs>
 
-  <svg>
-      <svg>
+  
+      
       <rect class="module-background background-fill" width="300.0" height="380.0"/>
-    </svg>
-      <svg>
+    
+      
       <polyline class="module-border-inner" points="1,1 299.0,1 299.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
       <polyline class="module-border-middle" points="0.5,0.5 299.5,0.5 299.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
       <polyline class="module-border-outer" points="0,0 300.0,0 300.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
-    </svg>
+    
       <text class="title" font-size="12pt" letter-spacing="4px" text-anchor="middle" transform="translate(150.0 19)">XCO</text>
       <g transform="translate(0 374)">
         <text class="brand" font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate(150.0 0)">BOGAUDIO</text>
         <rect class="background-fill" width="3" height="3" transform="translate(134.5 -5)"/>
       </g>
-    </svg>
+    
 
   <g transform="translate(20 25)">
     
@@ -74,7 +74,7 @@ polyline.module-border-outer {
       </g>
     </svg></g>
   </g>
-  <g transform="translate(20 25)"><svg>
+  <g transform="translate(20 25)">
       <g transform="translate(54 54)">
         <g transform="rotate(-240) translate(34 0)">
           <polyline points="0,0 5,0" stroke-width="1" stroke="#333" transform="translate(3 0)"/>
@@ -153,7 +153,7 @@ polyline.module-border-outer {
           <text font-size="7.0pt" transform="translate(14 0) rotate(-60) translate(-2.7 3)">6</text>
         </g>
       </g>
-    </svg></g>
+    </g>
 
   <text font-size="6pt" letter-spacing="1px" transform="translate(30 135)">0V = C4 = 261.63HZ</text>
   
@@ -173,7 +173,7 @@ polyline.module-border-outer {
     </svg></g>
     
   </g>
-  <g transform="translate(35 141)"><svg>
+  <g transform="translate(35 141)">
       <g transform="translate(20 20)">
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
@@ -183,7 +183,7 @@ polyline.module-border-outer {
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
 
   <g transform="translate(72 158.5)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(9 6.1)">SLOW</text>
@@ -322,7 +322,7 @@ polyline.module-border-outer {
       </g>
     </g>
   </g>
-  <g transform="translate(135 48)"><svg>
+  <g transform="translate(135 48)">
       <g transform="translate(20 20)">
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
@@ -332,8 +332,8 @@ polyline.module-border-outer {
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
-  <g transform="translate(135 136)"><svg>
+    </g>
+  <g transform="translate(135 136)">
       <g transform="translate(20 20)">
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
@@ -343,8 +343,8 @@ polyline.module-border-outer {
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
-  <g transform="translate(135 225)"><svg>
+    </g>
+  <g transform="translate(135 225)">
       <g transform="translate(20 20)">
         <g transform="rotate(-240) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
@@ -354,7 +354,7 @@ polyline.module-border-outer {
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
 
   <g transform="translate(180 30)">
     <rect width="30" height="330" rx="5" fill="#fafafa"/>
@@ -429,7 +429,7 @@ polyline.module-border-outer {
       </g>
     </g>
   </g>
-  <g transform="translate(175 48)"><svg>
+  <g transform="translate(175 48)">
       <g transform="translate(20 20)">
         <g transform="rotate(-240) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
@@ -439,8 +439,8 @@ polyline.module-border-outer {
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
-  <g transform="translate(175 136)"><svg>
+    </g>
+  <g transform="translate(175 136)">
       <g transform="translate(20 20)">
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
@@ -450,8 +450,8 @@ polyline.module-border-outer {
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
-  <g transform="translate(175 225)"><svg>
+    </g>
+  <g transform="translate(175 225)">
       <g transform="translate(20 20)">
         <g transform="rotate(-240) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
@@ -461,7 +461,7 @@ polyline.module-border-outer {
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
 
   <g transform="translate(220 30)">
     <rect width="30" height="330" rx="5" fill="#fafafa"/>
@@ -536,7 +536,7 @@ polyline.module-border-outer {
       </g>
     </g>
   </g>
-  <g transform="translate(215 48)"><svg>
+  <g transform="translate(215 48)">
       <g transform="translate(20 20)">
         <g transform="rotate(-240) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
@@ -546,8 +546,8 @@ polyline.module-border-outer {
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
-  <g transform="translate(215 136)"><svg>
+    </g>
+  <g transform="translate(215 136)">
       <g transform="translate(20 20)">
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
@@ -557,8 +557,8 @@ polyline.module-border-outer {
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
-  <g transform="translate(215 225)"><svg>
+    </g>
+  <g transform="translate(215 225)">
       <g transform="translate(20 20)">
         <g transform="rotate(-240) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
@@ -568,7 +568,7 @@ polyline.module-border-outer {
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
 
   <g transform="translate(260 30)">
     <rect width="30" height="330" rx="5" fill="#fafafa"/>
@@ -644,7 +644,7 @@ polyline.module-border-outer {
       </g>
     </g>
   </g>
-  <g transform="translate(255 48)"><svg>
+  <g transform="translate(255 48)">
       <g transform="translate(20 20)">
         <g transform="rotate(-240) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
@@ -654,8 +654,8 @@ polyline.module-border-outer {
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
-  <g transform="translate(255 136)"><svg>
+    </g>
+  <g transform="translate(255 136)">
       <g transform="translate(20 20)">
         <g transform="rotate(-90) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
@@ -665,8 +665,8 @@ polyline.module-border-outer {
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
-  <g transform="translate(255 225)"><svg>
+    </g>
+  <g transform="translate(255 225)">
       <g transform="translate(20 20)">
         <g transform="rotate(-240) translate(10 0)">
           <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
@@ -676,7 +676,7 @@ polyline.module-border-outer {
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(0)"/>
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
 
   
   <g transform="translate(0 313)">

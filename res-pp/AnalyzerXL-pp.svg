@@ -27,6 +27,15 @@ polyline.module-border-outer {
   stroke: #f2f2f2;
 }
 </style>
+  <style>
+      text {
+        fill: #fff;
+        font-family: 'Comfortaa', sans-serif;
+        font-size: 7pt;
+        font-weight: bold;
+        letter-spacing: 2px;
+      }
+  </style>
 
   <defs>
     <symbol id="display-analyzerxl" viewBox="0 0 600px 380px">
@@ -34,9 +43,7 @@ polyline.module-border-outer {
     </symbol>
   </defs>
 
-  <svg>
-      <rect class="module-background background-fill" width="630.0" height="380.0"/>
-    </svg>
+  <rect width="100%" height="100%" fill="#000"/>
   <g transform="translate(0 375) rotate(-90)">
     <text transform="translate(0 12.5)" letter-spacing="1">ANALYZER-XL</text>
     <text transform="translate(0 25.5)">BOGAUDIO</text>

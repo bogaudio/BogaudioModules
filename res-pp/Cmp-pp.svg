@@ -91,21 +91,21 @@ polyline.module-border-outer {
     </symbol>
   </defs>
 
-  <svg>
-      <svg>
+  
+      
       <rect class="module-background background-fill" width="90.0" height="380.0"/>
-    </svg>
-      <svg>
+    
+      
       <polyline class="module-border-inner" points="1,1 89.0,1 89.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
       <polyline class="module-border-middle" points="0.5,0.5 89.5,0.5 89.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
       <polyline class="module-border-outer" points="0,0 90.0,0 90.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
-    </svg>
+    
       <text class="title" font-size="9pt" letter-spacing="3px" text-anchor="end" transform="translate(83.0 17)">CMP</text>
       <g transform="translate(5.5 374)">
         <text class="brand" font-size="6.5pt" letter-spacing="2px">BOGAUDIO</text>
         <rect width="1.5" height="2" fill="#ddd" transform="translate(21 -4)"/>
       </g>
-    </svg>
+    
 
   
   
@@ -164,7 +164,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(0 3)"><svg>
+    <g transform="translate(0 3)">
       <g transform="translate(22.5 22.5)">
         <text font-size="5.0pt" transform="rotate(-240) translate(20 0) rotate(240) translate(-1.9 2.2)">0</text>
 
@@ -182,7 +182,7 @@ polyline.module-border-outer {
 
         <text font-size="5.0pt" transform="rotate(60) translate(20 0) rotate(-60) translate(-4 2.2)">10</text>
       </g>
-    </svg></g>
+    </g>
     <g transform="translate(5.5 49)">
       <rect width="34" height="38" rx="5" fill="#fafafa"/>
       <g transform="translate(5 3)"><svg id="WINDOW_INPUT">

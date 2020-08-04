@@ -28,21 +28,21 @@ polyline.module-border-outer {
 }
 </style>
 
-  <svg>
-      <svg>
+  
+      
       <rect class="module-background background-fill" width="225.0" height="380.0"/>
-    </svg>
-      <svg>
+    
+      
       <polyline class="module-border-inner" points="1,1 224.0,1 224.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
       <polyline class="module-border-middle" points="0.5,0.5 224.5,0.5 224.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
       <polyline class="module-border-outer" points="0,0 225.0,0 225.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
-    </svg>
+    
       <text class="title" font-size="12pt" letter-spacing="4px" text-anchor="middle" transform="translate(112.5 19)">DADSR(H)+</text>
       <g transform="translate(0 374)">
         <text class="brand" font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate(112.5 0)">BOGAUDIO</text>
         <rect class="background-fill" width="3" height="3" transform="translate(97.0 -5)"/>
       </g>
-    </svg>
+    
 
   <g transform="translate(149 26)">
     <rect width="30" height="323" rx="5" fill="#fafafa"/>
@@ -202,7 +202,7 @@ polyline.module-border-outer {
     </g>
   </g>
 
-  <g transform="scale(0.75) translate(11 19)"><svg>
+  <g transform="scale(0.75) translate(11 19)">
       <g transform="translate(50.5 50.5)">
         <g transform="rotate(-240) translate(30 0)">
           <g transform="translate(2 0) rotate(240)">
@@ -251,8 +251,8 @@ polyline.module-border-outer {
           </g>
         </g>
       </g>
-    </svg></g>
-  <g transform="scale(0.75) translate(11 94)"><svg>
+    </g>
+  <g transform="scale(0.75) translate(11 94)">
       <g transform="translate(50.5 50.5)">
         <g transform="rotate(-240) translate(30 0)">
           <g transform="translate(2 0) rotate(240)">
@@ -301,8 +301,8 @@ polyline.module-border-outer {
           </g>
         </g>
       </g>
-    </svg></g>
-  <g transform="scale(0.75) translate(11 169)"><svg>
+    </g>
+  <g transform="scale(0.75) translate(11 169)">
       <g transform="translate(50.5 50.5)">
         <g transform="rotate(-240) translate(30 0)">
           <g transform="translate(2 0) rotate(240)">
@@ -351,8 +351,8 @@ polyline.module-border-outer {
           </g>
         </g>
       </g>
-    </svg></g>
-  <g transform="scale(0.75) translate(11 243)"><svg>
+    </g>
+  <g transform="scale(0.75) translate(11 243)">
       <g transform="translate(50.5 50.5)">
         <g transform="rotate(-240) translate(30 0)">
           <g transform="translate(2 0) rotate(240)">
@@ -392,8 +392,8 @@ polyline.module-border-outer {
           </g>
         </g>
       </g>
-    </svg></g>
-  <g transform="scale(0.75) translate(11 318)"><svg>
+    </g>
+  <g transform="scale(0.75) translate(11 318)">
       <g transform="translate(50.5 50.5)">
         <g transform="rotate(-240) translate(30 0)">
           <g transform="translate(2 0) rotate(240)">
@@ -442,8 +442,8 @@ polyline.module-border-outer {
           </g>
         </g>
       </g>
-    </svg></g>
-  <g transform="scale(0.75) translate(85 392.5)"><svg>
+    </g>
+  <g transform="scale(0.75) translate(85 392.5)">
       <g transform="translate(50.5 50.5)">
         <g transform="rotate(-240) translate(30 0)">
           <g transform="translate(2 0) rotate(240)">
@@ -492,7 +492,7 @@ polyline.module-border-outer {
           </g>
         </g>
       </g>
-    </svg></g>
+    </g>
 
   
     <g transform="translate(77 96)">

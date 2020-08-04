@@ -28,21 +28,21 @@ polyline.module-border-outer {
 }
 </style>
 
-  <svg>
-      <svg>
+  
+      
       <rect class="module-background background-fill" width="120.0" height="380.0"/>
-    </svg>
-      <svg>
+    
+      
       <polyline class="module-border-inner" points="1,1 119.0,1 119.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
       <polyline class="module-border-middle" points="0.5,0.5 119.5,0.5 119.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
       <polyline class="module-border-outer" points="0,0 120.0,0 120.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
-    </svg>
+    
       <text class="title" font-size="9pt" letter-spacing="2px" text-anchor="middle" transform="translate(60.0 19)">POLYCON16</text>
       <g transform="translate(5.5 374)">
         <text class="brand" font-size="6.5pt" letter-spacing="2px">BOGAUDIO</text>
         <rect width="1.5" height="2" fill="#ddd" transform="translate(21 -4)"/>
       </g>
-    </svg>
+    
 
   
   
@@ -58,7 +58,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(-6.5 -2)"><svg>
+    <g transform="translate(-6.5 -2)">
       <g transform="translate(20 20)">
         <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
@@ -66,7 +66,7 @@ polyline.module-border-outer {
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
     <text font-size="5pt" letter-spacing="1px" transform="translate(-6.5 20.5)">1</text>
     <g transform="translate(12.25 30)"><svg id="CHANNEL1_LIGHT">
       <rect width="3.2" height="3.2" fill="#0f0"/>
@@ -80,7 +80,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(-6.5 -2)"><svg>
+    <g transform="translate(-6.5 -2)">
       <g transform="translate(20 20)">
         <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
@@ -88,7 +88,7 @@ polyline.module-border-outer {
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
     <text font-size="5pt" letter-spacing="1px" transform="translate(-7 20.5)">2</text>
     <g transform="translate(12.25 30)"><svg id="CHANNEL2_LIGHT">
       <rect width="3.2" height="3.2" fill="#0f0"/>
@@ -102,7 +102,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(-6.5 -2)"><svg>
+    <g transform="translate(-6.5 -2)">
       <g transform="translate(20 20)">
         <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
@@ -110,7 +110,7 @@ polyline.module-border-outer {
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
     <text font-size="5pt" letter-spacing="1px" transform="translate(-7 20.5)">3</text>
     <g transform="translate(12.25 30)"><svg id="CHANNEL3_LIGHT">
       <rect width="3.2" height="3.2" fill="#0f0"/>
@@ -124,7 +124,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(-6.5 -2)"><svg>
+    <g transform="translate(-6.5 -2)">
       <g transform="translate(20 20)">
         <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
@@ -132,7 +132,7 @@ polyline.module-border-outer {
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
     <text font-size="5pt" letter-spacing="1px" transform="translate(-7.2 20.5)">4</text>
     <g transform="translate(12.25 30)"><svg id="CHANNEL4_LIGHT">
       <rect width="3.2" height="3.2" fill="#0f0"/>
@@ -146,7 +146,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(-6.5 -2)"><svg>
+    <g transform="translate(-6.5 -2)">
       <g transform="translate(20 20)">
         <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
@@ -154,7 +154,7 @@ polyline.module-border-outer {
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
     <text font-size="5pt" letter-spacing="1px" transform="translate(-7.2 20.5)">5</text>
     <g transform="translate(12.25 30)"><svg id="CHANNEL5_LIGHT">
       <rect width="3.2" height="3.2" fill="#0f0"/>
@@ -168,7 +168,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(-6.5 -2)"><svg>
+    <g transform="translate(-6.5 -2)">
       <g transform="translate(20 20)">
         <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
@@ -176,7 +176,7 @@ polyline.module-border-outer {
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
     <text font-size="5pt" letter-spacing="1px" transform="translate(-7.2 20.5)">6</text>
     <g transform="translate(12.25 30)"><svg id="CHANNEL6_LIGHT">
       <rect width="3.2" height="3.2" fill="#0f0"/>
@@ -190,7 +190,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(-6.5 -2)"><svg>
+    <g transform="translate(-6.5 -2)">
       <g transform="translate(20 20)">
         <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
@@ -198,7 +198,7 @@ polyline.module-border-outer {
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
     <text font-size="5pt" letter-spacing="1px" transform="translate(-7.2 20.5)">7</text>
     <g transform="translate(12.25 30)"><svg id="CHANNEL7_LIGHT">
       <rect width="3.2" height="3.2" fill="#0f0"/>
@@ -212,7 +212,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(-6.5 -2)"><svg>
+    <g transform="translate(-6.5 -2)">
       <g transform="translate(20 20)">
         <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
@@ -220,7 +220,7 @@ polyline.module-border-outer {
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
     <text font-size="5pt" letter-spacing="1px" transform="translate(-7.2 20.5)">8</text>
     <g transform="translate(12.25 30)"><svg id="CHANNEL8_LIGHT">
       <rect width="3.2" height="3.2" fill="#0f0"/>
@@ -235,7 +235,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(-6.5 -2)"><svg>
+    <g transform="translate(-6.5 -2)">
       <g transform="translate(20 20)">
         <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
@@ -243,7 +243,7 @@ polyline.module-border-outer {
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
     <text font-size="5pt" letter-spacing="1px" transform="translate(31 20.5)">9</text>
     <g transform="translate(12.25 30)"><svg id="CHANNEL9_LIGHT">
       <rect width="3.2" height="3.2" fill="#0f0"/>
@@ -257,7 +257,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(-6.5 -2)"><svg>
+    <g transform="translate(-6.5 -2)">
       <g transform="translate(20 20)">
         <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
@@ -265,7 +265,7 @@ polyline.module-border-outer {
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
     <text font-size="5pt" letter-spacing="1px" transform="translate(30.5 20.5)">10</text>
     <g transform="translate(12.25 30)"><svg id="CHANNEL10_LIGHT">
       <rect width="3.2" height="3.2" fill="#0f0"/>
@@ -279,7 +279,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(-6.5 -2)"><svg>
+    <g transform="translate(-6.5 -2)">
       <g transform="translate(20 20)">
         <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
@@ -287,7 +287,7 @@ polyline.module-border-outer {
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
     <text font-size="5pt" letter-spacing="1px" transform="translate(30.5 20.5)">11</text>
     <g transform="translate(12.25 30)"><svg id="CHANNEL11_LIGHT">
       <rect width="3.2" height="3.2" fill="#0f0"/>
@@ -301,7 +301,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(-6.5 -2)"><svg>
+    <g transform="translate(-6.5 -2)">
       <g transform="translate(20 20)">
         <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
@@ -309,7 +309,7 @@ polyline.module-border-outer {
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
     <text font-size="5pt" letter-spacing="1px" transform="translate(30.5 20.5)">12</text>
     <g transform="translate(12.25 30)"><svg id="CHANNEL12_LIGHT">
       <rect width="3.2" height="3.2" fill="#0f0"/>
@@ -323,7 +323,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(-6.5 -2)"><svg>
+    <g transform="translate(-6.5 -2)">
       <g transform="translate(20 20)">
         <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
@@ -331,7 +331,7 @@ polyline.module-border-outer {
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
     <text font-size="5pt" letter-spacing="1px" transform="translate(30.5 20.5)">13</text>
     <g transform="translate(12.25 30)"><svg id="CHANNEL13_LIGHT">
       <rect width="3.2" height="3.2" fill="#0f0"/>
@@ -345,7 +345,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(-6.5 -2)"><svg>
+    <g transform="translate(-6.5 -2)">
       <g transform="translate(20 20)">
         <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
@@ -353,7 +353,7 @@ polyline.module-border-outer {
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
     <text font-size="5pt" letter-spacing="1px" transform="translate(30.5 20.5)">14</text>
     <g transform="translate(12.25 30)"><svg id="CHANNEL14_LIGHT">
       <rect width="3.2" height="3.2" fill="#0f0"/>
@@ -367,7 +367,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(-6.5 -2)"><svg>
+    <g transform="translate(-6.5 -2)">
       <g transform="translate(20 20)">
         <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
@@ -375,7 +375,7 @@ polyline.module-border-outer {
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
     <text font-size="5pt" letter-spacing="1px" transform="translate(30.5 20.5)">15</text>
     <g transform="translate(12.25 30)"><svg id="CHANNEL15_LIGHT">
       <rect width="3.2" height="3.2" fill="#0f0"/>
@@ -389,7 +389,7 @@ polyline.module-border-outer {
         <circle cx="0" cy="0" r="9.3" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(-6.5 -2)"><svg>
+    <g transform="translate(-6.5 -2)">
       <g transform="translate(20 20)">
         <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
@@ -397,7 +397,7 @@ polyline.module-border-outer {
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
         <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
-    </svg></g>
+    </g>
     <text font-size="5pt" letter-spacing="1px" transform="translate(30.5 20.5)">16</text>
     <g transform="translate(12.25 30)"><svg id="CHANNEL16_LIGHT">
       <rect width="3.2" height="3.2" fill="#0f0"/>
@@ -413,7 +413,7 @@ polyline.module-border-outer {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <g transform="translate(0 0)"><svg>
+    <g transform="translate(0 0)">
       <g transform="translate(20 20)">
         <text font-size="5pt" transform="rotate(-240) translate(14 0) rotate(240) translate(-2 2)">1</text>
         <text font-size="5pt" transform="rotate(-180) translate(14 0) rotate(180) translate(-2 2)">4</text>
@@ -433,7 +433,7 @@ polyline.module-border-outer {
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(20) translate(10 0)"/>
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(40) translate(10 0)"/>
       </g>
-    </svg></g>
+    </g>
   </g>
 
   <g transform="translate(52 318)">

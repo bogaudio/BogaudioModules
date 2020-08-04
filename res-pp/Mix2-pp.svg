@@ -28,24 +28,24 @@ polyline.module-border-outer {
 }
 </style>
 
-  <svg>
-      <svg>
+  
+      
       <rect class="module-background background-fill" width="75.0" height="380.0"/>
-    </svg>
-      <svg>
+    
+      
       <polyline class="module-border-inner" points="1,1 74.0,1 74.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
       <polyline class="module-border-middle" points="0.5,0.5 74.5,0.5 74.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
       <polyline class="module-border-outer" points="0,0 75.0,0 75.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
-    </svg>
+    
       <text class="title" font-size="9pt" letter-spacing="3px" text-anchor="end" transform="translate(68.0 17)">MIX2</text>
       <g transform="translate(25 374)">
         <text class="brand" font-size="6.5pt" letter-spacing="2px">BGA</text>
         <rect width="2" height="2" fill="#ddd" transform="translate(11.5 -4)"/>
       </g>
-    </svg>
+    
 
   <g transform="translate(0 32)">
-    <g transform="translate(15 0)"><svg>
+    <g transform="translate(15 0)">
       <g transform="translate(0 6.5)">
         <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
         <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
@@ -79,7 +79,7 @@ polyline.module-border-outer {
         
         <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
       </g>
-    </svg></g>
+    </g>
     <g transform="translate(28.5 0)"><svg id="LEVEL_PARAM">
       <rect width="18" height="151" fill="none"/>
       <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>

@@ -75,21 +75,21 @@ polyline.module-border-outer {
     </symbol>
   </defs>
 
-  <svg>
-      <svg>
+  
+      
       <rect class="module-background background-fill" width="255.0" height="380.0"/>
-    </svg>
-      <svg>
+    
+      
       <polyline class="module-border-inner" points="1,1 254.0,1 254.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
       <polyline class="module-border-middle" points="0.5,0.5 254.5,0.5 254.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
       <polyline class="module-border-outer" points="0,0 255.0,0 255.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
-    </svg>
+    
       <text class="title" font-size="12pt" letter-spacing="4px" text-anchor="middle" transform="translate(127.5 19)">8FO</text>
       <g transform="translate(0 374)">
         <text class="brand" font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate(127.5 0)">BOGAUDIO</text>
         <rect class="background-fill" width="3" height="3" transform="translate(112.0 -5)"/>
       </g>
-    </svg>
+    
 
   <g transform="translate(20 25)">
     
@@ -103,7 +103,7 @@ polyline.module-border-outer {
       </g>
     </svg></g>
   </g>
-  <g transform="translate(10 15)"><svg>
+  <g transform="translate(10 15)">
       <g transform="translate(64 64)">
         <g transform="rotate(-225.08) translate(34 0)">
           <polyline points="0,0 5,0" stroke-width="1" stroke="#333" transform="translate(3 0)"/>
@@ -155,7 +155,7 @@ polyline.module-border-outer {
         <polyline points="0,0 3,0" stroke-width="0.7" stroke="#333" transform="rotate(36.92) translate(37 0)"/>
         <polyline points="0,0 3,0" stroke-width="0.7" stroke="#333" transform="rotate(60) translate(37 0)"/>
       </g>
-    </svg></g>
+    </g>
 
   
   
@@ -197,7 +197,7 @@ polyline.module-border-outer {
       </g>
     </svg></g>
     </g>
-    <g transform="translate(80.5 -9.6)"><svg>
+    <g transform="translate(80.5 -9.6)">
       <g transform="translate(22.5 22.5)">
         <g transform="rotate(-240) translate(15 0)">
           <text font-size="9.0pt" transform="translate(3 0) rotate(240) translate(-2.2 3.6)">-</text>
@@ -233,7 +233,7 @@ polyline.module-border-outer {
           <text font-size="5.0pt" transform="translate(3 0) rotate(-60) translate(-2 2)">+</text>
         </g>
       </g>
-    </svg></g>
+    </g>
     <use xlink:href="#waves-eightfo" transform="translate(-2 -22)" href="#waves-eightfo"/>
   </g>
 
@@ -253,7 +253,7 @@ polyline.module-border-outer {
       </g>
     </svg></g>
     </g>
-    <g transform="translate(20.5 -9.6)"><svg>
+    <g transform="translate(20.5 -9.6)">
       <g transform="translate(22.5 22.5)">
         <g transform="rotate(-240) translate(15 0)">
           <text font-size="9.0pt" transform="translate(3 0) rotate(240) translate(-2.2 3.6)">-</text>
@@ -289,7 +289,7 @@ polyline.module-border-outer {
           <text font-size="5.0pt" transform="translate(3 0) rotate(-60) translate(-2 2)">+</text>
         </g>
       </g>
-    </svg></g>
+    </g>
     <g transform="translate(70 0)">
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 32) rotate(270)">SCALE</text>
       <g transform="translate(20 0)"><svg id="SCALE_PARAM">
@@ -300,7 +300,7 @@ polyline.module-border-outer {
       </g>
     </svg></g>
     </g>
-    <g transform="translate(80.5 -9.6)"><svg>
+    <g transform="translate(80.5 -9.6)">
       <g transform="translate(22.5 22.5)">
         <text font-size="5.0pt" transform="rotate(-240) translate(18 0) rotate(240) translate(-2 2)">0</text>
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-210) translate(15 0)"/>
@@ -314,7 +314,7 @@ polyline.module-border-outer {
         <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(30) translate(15 0)"/>
         <polyline points="0,0 3.5,0" stroke-width="1" stroke="#333" transform="rotate(60) translate(15 0)"/>
       </g>
-    </svg></g>
+    </g>
   </g>
 
   <g transform="translate(137 32)">

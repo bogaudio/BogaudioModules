@@ -193,15 +193,6 @@ def debug()
   puts
 end
 
-def write_output(name, doc, styles)
-  fn = File.join($pp_dir, "#{name}-pp.svg")
-  doc.css('style').each do |n|
-    n.content = styles
-  end
-  File.write(fn, doc.to_xml)
-  puts "Wrote #{fn}"
-end
-
 def process_def(doc, n)
   id = n.attribute('href').to_s
   if id
@@ -322,6 +313,20 @@ def process_variables(n, vars)
   vars.pop if pop
 end
 
+def write_output(name, doc, styles)
+  doc.css('style').each do |n|
+    n.content = styles
+  end
+
+  doc.css('localstyle').each do |n|
+    n.node_name = 'style'
+  end
+
+  fn = File.join($pp_dir, "#{name}-pp.svg")
+  File.write(fn, doc.to_xml)
+  puts "Wrote #{fn}"
+end
+
 def process(name)
   load_directories()
   load_styles()
@@ -383,6 +388,9 @@ def process(name)
   process_variables(doc.at_css(':root'), vars)
 
   doc.css('g').each do |n|
+    n.replace(n.children) if n.keys.empty?
+  end
+  doc.css('svg').each do |n|
     n.replace(n.children) if n.keys.empty?
   end
 
