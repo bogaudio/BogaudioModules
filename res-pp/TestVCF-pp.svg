@@ -13,6 +13,19 @@ text.brand {
   font-family: 'Audiowide', sans-serif;
   font-weight: bold;
 }
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
 </style>
 
   <defs>
@@ -49,19 +62,24 @@ text.brand {
     </symbol>
   </defs>
 
-  <rect width="100%" height="100%" fill="#ddd"/>
-  <polyline points="1,1 179,1 179,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
-  <polyline points="0.5,0.5 179.5,0.5 179.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
-  <polyline points="0,0 180,0 180,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none"/>
-
-  <text class="title" x="70" y="19" font-size="12pt" letter-spacing="4px">VCF</text>
-  <g transform="translate(50 374)">
-    <text class="brand" font-size="8pt" letter-spacing="2px">BOGAUDIO</text>
-    <rect width="3.0" height="3" fill="#ddd" transform="translate(24 -5)"/>
-  </g>
+  <svg>
+      <svg>
+      <rect class="module-background background-fill" width="180.0" height="380.0"/>
+    </svg>
+      <svg>
+      <polyline class="module-border-inner" points="1,1 179.0,1 179.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 179.5,0.5 179.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 180.0,0 180.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    </svg>
+      <text class="title" font-size="12pt" letter-spacing="4px" text-anchor="middle" transform="translate(90.0 19)">VCF</text>
+      <g transform="translate(0 374)">
+        <text class="brand" font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate(90.0 0)">BOGAUDIO</text>
+        <rect class="background-fill" width="3" height="3" transform="translate(74.5 -5)"/>
+      </g>
+    </svg>
 
   <g transform="translate(20 50)">
-    <!-- <polyline points="-50,0 100,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 19)" /> -->
+    
     <text font-size="8pt" letter-spacing="2px" transform="translate(9 45) rotate(270)">CUTOFF</text>
     <g transform="translate(20 0)"><svg id="CUTOFF_PARAM">
       <g transform="translate(19 19)">
@@ -70,11 +88,11 @@ text.brand {
         <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-cutoff-testvcf" transform="translate(14 -6)"/>
+    <use xlink:href="#dial-cutoff-testvcf" transform="translate(14 -6)" href="#dial-cutoff-testvcf"/>
   </g>
 
   <g transform="translate(20 120)">
-    <!-- <polyline points="-50,0 100,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 19)" /> -->
+    
     <text font-size="8pt" letter-spacing="1px" transform="translate(9 45) rotate(270)">RES/BW</text>
     <g transform="translate(20 0)"><svg id="Q_PARAM">
       <g transform="translate(19 19)">
@@ -83,11 +101,11 @@ text.brand {
         <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-resonance-testvcf" transform="translate(14 -6)"/>
+    <use xlink:href="#dial-resonance-testvcf" transform="translate(14 -6)" href="#dial-resonance-testvcf"/>
   </g>
 
   <g transform="translate(20 190)">
-    <!-- <polyline points="-50,0 100,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 19)" /> -->
+    
     <text font-size="8pt" letter-spacing="1px" transform="translate(9 39) rotate(270)">DRIVE</text>
     <g transform="translate(20 0)"><svg id="DRIVE_PARAM">
       <g transform="translate(19 19)">
@@ -96,11 +114,11 @@ text.brand {
         <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-resonance-testvcf" transform="translate(14 -6)"/>
+    <use xlink:href="#dial-resonance-testvcf" transform="translate(14 -6)" href="#dial-resonance-testvcf"/>
   </g>
 
   <g transform="translate(20 260)">
-    <!-- <polyline points="-50,0 100,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 19)" /> -->
+    
     <text font-size="8pt" letter-spacing="1px" transform="translate(9 36) rotate(270)">TOPO</text>
     <g transform="translate(20 0)"><svg id="TOPOLOGY_PARAM">
       <g transform="translate(19 19)">
@@ -109,11 +127,11 @@ text.brand {
         <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-resonance-testvcf" transform="translate(14 -6)"/>
+    <use xlink:href="#dial-resonance-testvcf" transform="translate(14 -6)" href="#dial-resonance-testvcf"/>
   </g>
 
   <g transform="translate(110 48)">
-    <!-- <polyline points="-50,0 100,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 19)" /> -->
+    
     <text font-size="8pt" letter-spacing="1px" transform="translate(9 40) rotate(270)">MODE</text>
     <g transform="translate(20 0)">
       <g transform="translate(0 10)">
@@ -149,7 +167,7 @@ text.brand {
   </g>
 
   <g transform="translate(110 117)">
-    <!-- <polyline points="-50,0 100,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 19)" /> -->
+    
     <text font-size="8pt" letter-spacing="1px" transform="translate(9 40) rotate(270)">POLES</text>
     <g transform="translate(20 0)">
       <g transform="translate(0 10)">

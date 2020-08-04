@@ -13,6 +13,19 @@ text.brand {
   font-family: 'Audiowide', sans-serif;
   font-weight: bold;
 }
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
 </style>
 
   <defs>
@@ -20,7 +33,7 @@ text.brand {
       <g transform="translate(35 35)">
         <text font-size="6.0pt" transform="rotate(-240) translate(25 0) rotate(240) translate(-2.5 2.5)">1</text>
         <text font-size="6.0pt" transform="rotate(-193.72) translate(25 0) rotate(193.72) translate(-8 2.5)">1.1</text>
-        <text font-size="6.0pt" transform="rotate(-149.70) translate(25 0) rotate(149.70) translate(-9 2.5)">1.3</text>
+        <text font-size="6.0pt" transform="rotate(-149.7) translate(25 0) rotate(149.7) translate(-9 2.5)">1.3</text>
         <text font-size="6.0pt" transform="rotate(-108.93) translate(25 0) rotate(108.93) translate(-9 2.5)">1.6</text>
         <text font-size="6.0pt" transform="rotate(-74.52) translate(25 0) rotate(74.52) translate(-2.3 2.5)">2</text>
         <text font-size="6.0pt" transform="rotate(-47.12) translate(25 0) rotate(47.12) translate(-2.3 2.5)">2.5</text>
@@ -120,7 +133,7 @@ text.brand {
     </symbol>
 
     <symbol id="compression-pressor" viewBox="0 0 11px 75px">
-      <!-- <rect width="11" height="75" x="0" y="0" rx="0" fill="#ccc" /> -->
+      
       <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(3 0)"/>
       <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(3 15)"/>
       <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(3 30)"/>
@@ -158,38 +171,28 @@ text.brand {
     </symbol>
   </defs>
 
-  <rect width="100%" height="100%" fill="#ddd"/>
-  <polyline points="1,1 224,1 224,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
-  <polyline points="0.5,0.5 224.5,0.5 224.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
-  <polyline points="0,0 225,0 225,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none"/>
-
-  <!-- <rect width="60" height="20" fill="#0f0" transform="translate(0 0)" /> -->
-  <!-- <rect width="60" height="20" fill="#0f0" transform="translate(165 0)" /> -->
-
-  <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(10 0)" /> -->
-  <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(215 0)" /> -->
-
-  <!-- <rect width="12" height="100" fill="#00f3" transform="translate(85 20)" /> -->
-  <!-- <rect width="12" height="100" fill="#00f3" transform="translate(174 20)" /> -->
-
-  <!-- <rect width="225" height="3" fill="#0f03" transform="translate(0 20)" /> -->
-  <!-- <rect width="225" height="30" fill="#f003" transform="translate(0 23)" /> -->
-  <!-- <rect width="225" height="50" fill="#f003" transform="translate(0 91)" /> -->
-  <!-- <rect width="225" height="50" fill="#f003" transform="translate(0 163)" /> -->
-  <!-- <rect width="225" height="30" fill="#f003" transform="translate(0 239)" /> -->
-
-  <text class="title" x="61" y="19" font-size="12pt" letter-spacing="4px">PRESSOR</text>
-  <g transform="translate(72.5 374)">
-    <text class="brand" font-size="8pt" letter-spacing="2px">BOGAUDIO</text>
-    <rect width="3.0" height="3" fill="#ddd" transform="translate(24 -5)"/>
-  </g>
+  <svg>
+      <svg>
+      <rect class="module-background background-fill" width="225.0" height="380.0"/>
+    </svg>
+      <svg>
+      <polyline class="module-border-inner" points="1,1 224.0,1 224.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 224.5,0.5 224.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 225.0,0 225.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    </svg>
+      <text class="title" font-size="12pt" letter-spacing="4px" text-anchor="middle" transform="translate(112.5 19)">PRESSOR</text>
+      <g transform="translate(0 374)">
+        <text class="brand" font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate(112.5 0)">BOGAUDIO</text>
+        <rect class="background-fill" width="3" height="3" transform="translate(97.0 -5)"/>
+      </g>
+    </svg>
 
   <g transform="translate(13 53)">
-    <!-- <polyline points="0,19 268,19" stroke="#0f0" stroke-width="1" fill="none" /> -->
-    <!-- <polyline points="42,-20 42,250" stroke="#0f0" stroke-width="1" fill="none" /> -->
-    <!-- <polyline points="0,0 270,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 -1)" /> -->
-    <!-- <polyline points="0,0 270,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 19)" /> -->
-    <!-- <polyline points="0,0 270,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 39)" /> -->
+    
+    
+    
+    
+    
     <text font-size="8pt" letter-spacing="1.5px" transform="translate(4 56.5) rotate(270)">THRESHOLD</text>
     <g transform="translate(23 0)"><svg id="THRESHOLD_PARAM">
       <g transform="translate(19 19)">
@@ -198,12 +201,12 @@ text.brand {
         <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-threshold-pressor" transform="translate(7 -16)"/>
+    <use xlink:href="#dial-threshold-pressor" transform="translate(7 -16)" href="#dial-threshold-pressor"/>
   </g>
 
   <g transform="translate(102 53)">
-    <!-- <polyline points="0,19 68,19" stroke="#0f0" stroke-width="1" fill="none" /> -->
-    <!-- <polyline points="42,-20 42,250" stroke="#0f0" stroke-width="1" fill="none" /> -->
+    
+    
     <text font-size="8pt" letter-spacing="2px" transform="translate(4 38.5) rotate(270)">RATIO</text>
     <g transform="translate(23 0)"><svg id="RATIO_PARAM">
       <g transform="translate(19 19)">
@@ -212,22 +215,22 @@ text.brand {
         <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-ratio-pressor" transform="translate(7 -16)"/>
+    <use xlink:href="#dial-ratio-pressor" transform="translate(7 -16)" href="#dial-ratio-pressor"/>
   </g>
 
   <g transform="translate(207 35)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(-15 75) rotate(270)">COMPRESSION</text>
-    <use id="COMPRESSION_WIDGET" xlink:href="#compression-pressor" transform="translate(0 -1)"/>
-    <use xlink:href="#guide-compression-pressor" transform="translate(-13 -11)"/>
+    <use id="COMPRESSION_WIDGET" xlink:href="#compression-pressor" transform="translate(0 -1)" href="#compression-pressor"/>
+    <use xlink:href="#guide-compression-pressor" transform="translate(-13 -11)" href="#guide-compression-pressor"/>
   </g>
 
   <g transform="translate(10 141)">
     <g transform="translate(13 0)">
-      <!-- <rect width="51" height="10" fill="#f003" transform="translate(8 -15)" /> -->
-      <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(29 -100)" /> -->
-      <!-- <polyline points="0,0 270,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 -7)" /> -->
-      <!-- <polyline points="0,0 270,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 13)" /> -->
-      <!-- <polyline points="0,0 270,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 33)" /> -->
+      
+      
+      
+      
+      
       <text font-size="8pt" letter-spacing="2px" transform="translate(6 38.5) rotate(270)">ATTACK</text>
       <g transform="translate(19 0)"><svg id="ATTACK_PARAM">
       <g transform="translate(13 13)">
@@ -237,10 +240,10 @@ text.brand {
       </g>
     </svg></g>
     </g>
-    <use xlink:href="#dial-attack-pressor" transform="translate(21.5 -9.5)"/>
+    <use xlink:href="#dial-attack-pressor" transform="translate(21.5 -9.5)" href="#dial-attack-pressor"/>
     <g transform="translate(102 0)">
-      <!-- <rect width="51" height="10" fill="#f003" transform="translate(8 -15)" /> -->
-      <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(29 -100)" /> -->
+      
+      
       <text font-size="8pt" letter-spacing="2px" transform="translate(6 42) rotate(270)">RELEASE</text>
       <g transform="translate(19 0)"><svg id="RELEASE_PARAM">
       <g transform="translate(13 13)">
@@ -250,16 +253,16 @@ text.brand {
       </g>
     </svg></g>
     </g>
-    <use xlink:href="#dial-release-pressor" transform="translate(111.5 -9.5)"/>
+    <use xlink:href="#dial-release-pressor" transform="translate(111.5 -9.5)" href="#dial-release-pressor"/>
   </g>
 
   <g transform="translate(10 213)">
     <g transform="translate(-1 0)">
-      <!-- <rect width="47" height="10" fill="#f003" transform="translate(8 -15)" /> -->
-      <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(29 -100)" /> -->
-      <!-- <polyline points="0,0 270,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 -7)" /> -->
-      <!-- <polyline points="0,0 270,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 13)" /> -->
-      <!-- <polyline points="0,0 270,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 33)" /> -->
+      
+      
+      
+      
+      
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 38.5) rotate(270)">IN GAIN</text>
       <g transform="translate(19 0)"><svg id="INPUT_GAIN_PARAM">
       <g transform="translate(13 13)">
@@ -269,10 +272,10 @@ text.brand {
       </g>
     </svg></g>
     </g>
-    <use xlink:href="#dial-inputgain-pressor" transform="translate(8.5 -9.5)"/>
+    <use xlink:href="#dial-inputgain-pressor" transform="translate(8.5 -9.5)" href="#dial-inputgain-pressor"/>
     <g transform="translate(60 0)">
-      <!-- <rect width="47" height="10" fill="#f003" transform="translate(8 -15)" /> -->
-      <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(29 -100)" /> -->
+      
+      
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 44.5) rotate(270)">OUT GAIN</text>
       <g transform="translate(19 0)"><svg id="OUTPUT_GAIN_PARAM">
       <g transform="translate(13 13)">
@@ -282,10 +285,10 @@ text.brand {
       </g>
     </svg></g>
     </g>
-    <use xlink:href="#dial-outputgain-pressor" transform="translate(69.5 -9.5)"/>
+    <use xlink:href="#dial-outputgain-pressor" transform="translate(69.5 -9.5)" href="#dial-outputgain-pressor"/>
     <g transform="translate(121 0)">
-      <!-- <rect width="47" height="10" fill="#f003" transform="translate(8 -15)" /> -->
-      <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(29 -100)" /> -->
+      
+      
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 38) rotate(270)">IN/SIDE</text>
       <g transform="translate(19 0)"><svg id="DETECTOR_MIX_PARAM">
       <g transform="translate(13 13)">
@@ -295,12 +298,12 @@ text.brand {
       </g>
     </svg></g>
     </g>
-    <use xlink:href="#dial-detectormix-pressor" transform="translate(130.5 -9.5)"/>
+    <use xlink:href="#dial-detectormix-pressor" transform="translate(130.5 -9.5)" href="#dial-detectormix-pressor"/>
   </g>
 
   <g transform="translate(199 128)">
     <g transform="translate(0 0)">
-      <!-- <rect width="5" height="24" fill="#0f0" transform="translate(-14 2)" /> -->
+      
       <text font-size="5pt" letter-spacing="1.5px" transform="translate(-8 25.5) rotate(270)">MODE</text>
       <text font-size="5pt" letter-spacing="2px" transform="translate(-5 -1)">COMP</text>
       <g transform="translate(0 2)"><svg id="MODE_PARAM">
@@ -310,7 +313,7 @@ text.brand {
       <text font-size="5pt" letter-spacing="2px" transform="translate(-4 34)">GATE</text>
     </g>
     <g transform="translate(0 49)">
-      <!-- <rect width="5" height="24" fill="#0f0" transform="translate(-14 2)" /> -->
+      
       <text font-size="5pt" letter-spacing="1.5px" transform="translate(-8 30) rotate(270)">DETECT</text>
       <text font-size="5pt" letter-spacing="2px" transform="translate(-2 -1)">RMS</text>
       <g transform="translate(0 2)"><svg id="DECTECTOR_MODE_PARAM">
@@ -320,7 +323,7 @@ text.brand {
       <text font-size="5pt" letter-spacing="2px" transform="translate(-4 34)">PEAK</text>
     </g>
     <g transform="translate(0 98)">
-      <!-- <rect width="5" height="24" fill="#0f0" transform="translate(-14 2)" /> -->
+      
       <text font-size="5pt" letter-spacing="2px" transform="translate(-8 25.5) rotate(270)">KNEE</text>
       <text font-size="5pt" letter-spacing="2px" transform="translate(-4 -1)">SOFT</text>
       <g transform="translate(0 2)"><svg id="KNEE_PARAM">

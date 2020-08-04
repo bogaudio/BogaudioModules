@@ -13,6 +13,19 @@ text.brand {
   font-family: 'Audiowide', sans-serif;
   font-weight: bold;
 }
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
 </style>
 
   <defs>
@@ -106,26 +119,26 @@ text.brand {
     </symbol>
   </defs>
 
-  <rect width="100%" height="100%" fill="#ddd"/>
-  <polyline points="1,1 149,1 149,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
-  <polyline points="0.5,0.5 149.5,0.5 149.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
-  <polyline points="0,0 150,0 150,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none"/>
-
-  <!-- <rect width="35" height="20" fill="#0f0" transform="translate(0 0)" /> -->
-  <!-- <rect width="35" height="20" fill="#0f0" transform="translate(115 0)" /> -->
-
-  <!-- <polyline points="0,50 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(120 0)" /> -->
-
-  <text class="title" x="39" y="19" font-size="12pt" letter-spacing="4px">FM-OP</text>
-  <g transform="translate(35.5 374)">
-    <text class="brand" font-size="8pt" letter-spacing="2px">BOGAUDIO</text>
-    <rect width="3.0" height="3" fill="#ddd" transform="translate(24 -5)"/>
-  </g>
+  <svg>
+      <svg>
+      <rect class="module-background background-fill" width="150.0" height="380.0"/>
+    </svg>
+      <svg>
+      <polyline class="module-border-inner" points="1,1 149.0,1 149.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 149.5,0.5 149.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 150.0,0 150.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    </svg>
+      <text class="title" font-size="12pt" letter-spacing="4px" text-anchor="middle" transform="translate(75.0 19)">FM-OP</text>
+      <g transform="translate(0 374)">
+        <text class="brand" font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate(75.0 0)">BOGAUDIO</text>
+        <rect class="background-fill" width="3" height="3" transform="translate(59.5 -5)"/>
+      </g>
+    </svg>
 
   <g transform="translate(10 25)">
-    <!-- <rect width="78" height="68" fill="none" stroke="#0f0" /> -->
+    
     <g transform="translate(0 20)">
-      <!-- <polyline points="0,0 0,354" stroke="#0f0" stroke-width="1" fill="none" transform="translate(39 0)" /> -->
+      
       <g transform="translate(20 0)"><svg id="RATIO_PARAM">
       <g transform="translate(19 19)">
         <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
@@ -134,7 +147,7 @@ text.brand {
       </g>
     </svg></g>
     </g>
-    <use xlink:href="#dial-ratio-fmop" transform="translate(-10 0)"/>
+    <use xlink:href="#dial-ratio-fmop" transform="translate(-10 0)" href="#dial-ratio-fmop"/>
     <g transform="translate(82 20)">
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 35) rotate(270)">FINE</text>
       <g transform="translate(20 12)"><svg id="FINE_PARAM">
@@ -144,7 +157,7 @@ text.brand {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-      <!-- <polyline points="0,50 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(28 -100)" /> -->
+      
     </g>
     <g transform="translate(90 20)"><svg>
       <g transform="translate(20 20)">
@@ -159,7 +172,7 @@ text.brand {
     </svg></g>
   </g>
 
-  <!-- <g transform="translate(87 90)"> -->
+  
   <g transform="translate(87 94)">
     <text font-size="8pt" letter-spacing="2px" transform="translate(8 25) rotate(270)">ATT</text>
     <g transform="translate(20 0)"><svg id="ATTACK_PARAM">
@@ -169,14 +182,14 @@ text.brand {
         <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <!-- <rect width="30" height="18" fill="#0f0" transform="translate(20 26)" /> -->
-    <use xlink:href="#dial-time-fmop" transform="translate(10.5 -9.5)"/>
+    
+    <use xlink:href="#dial-time-fmop" transform="translate(10.5 -9.5)" href="#dial-time-fmop"/>
     <g transform="translate(31.5 29)"><svg id="ATTACK_LIGHT">
       <rect width="3.2" height="3.2" fill="#0f0"/>
     </svg></g>
   </g>
   <g transform="translate(87 139)">
-    <!-- <polyline points="0,0 200,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(-140 -10)" /> -->
+    
     <text font-size="8pt" letter-spacing="2px" transform="translate(8 25) rotate(270)">DEC</text>
     <g transform="translate(20 0)"><svg id="DECAY_PARAM">
       <g transform="translate(13 13)">
@@ -185,14 +198,14 @@ text.brand {
         <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <!-- <rect width="30" height="18" fill="#0f0" transform="translate(20 26)" /> -->
-    <use xlink:href="#dial-time-fmop" transform="translate(10.5 -9.5)"/>
+    
+    <use xlink:href="#dial-time-fmop" transform="translate(10.5 -9.5)" href="#dial-time-fmop"/>
     <g transform="translate(31.5 29)"><svg id="DECAY_LIGHT">
       <rect width="3.2" height="3.2" fill="#0f0"/>
     </svg></g>
   </g>
   <g transform="translate(87 184)">
-    <!-- <polyline points="0,0 200,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(-140 -10)" /> -->
+    
     <text font-size="8pt" letter-spacing="2px" transform="translate(8 25) rotate(270)">SUS</text>
     <g transform="translate(20 0)"><svg id="SUSTAIN_PARAM">
       <g transform="translate(13 13)">
@@ -201,7 +214,7 @@ text.brand {
         <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <!-- <rect width="30" height="18" fill="#0f0" transform="translate(20 26)" /> -->
+    
     <g transform="translate(10.5 -9.5)"><svg>
       <g transform="translate(22.5 22.5)">
         <text font-size="5.0pt" transform="rotate(-240) translate(18 0) rotate(240) translate(-2 2)">0</text>
@@ -222,7 +235,7 @@ text.brand {
     </svg></g>
   </g>
   <g transform="translate(87 229)">
-    <!-- <polyline points="0,0 200,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(-140 -10)" /> -->
+    
     <text font-size="8pt" letter-spacing="2px" transform="translate(8 25) rotate(270)">REL</text>
     <g transform="translate(20 0)"><svg id="RELEASE_PARAM">
       <g transform="translate(13 13)">
@@ -231,17 +244,17 @@ text.brand {
         <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <!-- <rect width="30" height="18" fill="#0f0" transform="translate(20 26)" /> -->
-    <use xlink:href="#dial-time-fmop" transform="translate(10.5 -9.5)"/>
+    
+    <use xlink:href="#dial-time-fmop" transform="translate(10.5 -9.5)" href="#dial-time-fmop"/>
     <g transform="translate(31.5 29)"><svg id="RELEASE_LIGHT">
       <rect width="3.2" height="3.2" fill="#0f0"/>
     </svg></g>
   </g>
 
-  <!-- <rect width="70" height="8" fill="#ff0" transform="translate(80 126)" /> -->
-  <!-- <rect width="70" height="8" fill="#ff0" transform="translate(80 171)" /> -->
-  <!-- <rect width="70" height="8" fill="#ff0" transform="translate(80 216)" /> -->
-  <!-- <rect width="70" height="8" fill="#ff0" transform="translate(80 261)" /> -->
+  
+  
+  
+  
 
   <g transform="translate(16 106)">
     <text font-size="8pt" letter-spacing="1px" transform="translate(8 38) rotate(270)">DEPTH</text>
@@ -310,7 +323,7 @@ text.brand {
     </svg></g>
   </g>
   <g transform="translate(16 218)">
-    <!-- <polyline points="0,0 150,0" fill="none" stroke="#0f0" transform="translate(0 13)" /> -->
+    
     <text font-size="8pt" letter-spacing="2px" transform="translate(8 37.5) rotate(270)">LEVEL</text>
     <g transform="translate(20 0)"><svg id="LEVEL_PARAM">
       <g transform="translate(13 13)">
@@ -344,9 +357,9 @@ text.brand {
     </svg></g>
   </g>
 
-  <!-- <rect width="70" height="9" fill="#f0f" transform="translate(0 148)" /> -->
-  <!-- <rect width="70" height="9" fill="#f0f" transform="translate(0 204)" /> -->
-  <!-- <rect width="70" height="9" fill="#f0f" transform="translate(0 260)" /> -->
+  
+  
+  
 
   <g transform="translate(0 269)">
     <rect width="130" height="91" rx="5" fill="#bbb" transform="translate(10 0)"/>

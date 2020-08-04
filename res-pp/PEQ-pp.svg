@@ -13,6 +13,19 @@ text.brand {
   font-family: 'Audiowide', sans-serif;
   font-weight: bold;
 }
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
 </style>
 
   <defs>
@@ -51,24 +64,26 @@ text.brand {
     </symbol>
   </defs>
 
-  <rect width="100%" height="100%" fill="#ddd"/>
-  <polyline points="1,1 149,1 149,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
-  <polyline points="0.5,0.5 149.5,0.5 149.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
-  <polyline points="0,0 150,0 150,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none"/>
-
-  <!-- <rect width="50" height="20" fill="#0f0" transform="translate(0 0)" /> -->
-  <!-- <rect width="50" height="20" fill="#0f0" transform="translate(100 0)" /> -->
-
-  <text class="title" x="53" y="19" font-size="12pt" letter-spacing="4px">PEQ</text>
-  <g transform="translate(35.5 374)">
-    <text class="brand" font-size="8pt" letter-spacing="2px">BOGAUDIO</text>
-    <rect width="3.0" height="3" fill="#ddd" transform="translate(24 -5)"/>
-  </g>
+  <svg>
+      <svg>
+      <rect class="module-background background-fill" width="150.0" height="380.0"/>
+    </svg>
+      <svg>
+      <polyline class="module-border-inner" points="1,1 149.0,1 149.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 149.5,0.5 149.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 150.0,0 150.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    </svg>
+      <text class="title" font-size="12pt" letter-spacing="4px" text-anchor="middle" transform="translate(75.0 19)">PEQ</text>
+      <g transform="translate(0 374)">
+        <text class="brand" font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate(75.0 0)">BOGAUDIO</text>
+        <rect class="background-fill" width="3" height="3" transform="translate(59.5 -5)"/>
+      </g>
+    </svg>
 
   <g transform="translate(0 25)">
-    <!-- <rect width="150" height="60" fill="#0f0" transform="translate(0 0)" /> -->
-    <!-- <polyline points="0,30 150,30" stroke="#f00" stroke-width="1" fill="none" /> -->
-    <!-- <polyline points="0,0 150,0" stroke="#0ff" stroke-width="1" fill="none" transform="translate(0 26)" /> -->
+    
+    
+    
     <g transform="translate(5.5 18)"><svg id="A_LIGHT">
       <rect width="6.4" height="6.4" fill="#0f0"/>
     </svg></g>
@@ -82,7 +97,7 @@ text.brand {
         <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-level-peq" transform="translate(13 3.5)"/>
+    <use xlink:href="#dial-level-peq" transform="translate(13 3.5)" href="#dial-level-peq"/>
 
     <text font-size="6pt" letter-spacing="2px" transform="translate(69 58)">FREQ</text>
     <g transform="translate(59 3.5)"><svg id="A_FREQUENCY_PARAM">
@@ -92,7 +107,7 @@ text.brand {
         <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-frequency-peq" transform="translate(56 3.5)"/>
+    <use xlink:href="#dial-frequency-peq" transform="translate(56 3.5)" href="#dial-frequency-peq"/>
 
     <text font-size="6pt" letter-spacing="2px" transform="translate(113 19) rotate(270)">BW</text>
     <g transform="translate(122 4)"><svg id="A_BANDWIDTH_PARAM">
@@ -145,9 +160,9 @@ text.brand {
   </g>
 
   <g transform="translate(0 93)">
-    <!-- <rect width="150" height="60" fill="#0f0" transform="translate(0 0)" /> -->
-    <!-- <polyline points="0,30 150,30" stroke="#f00" stroke-width="1" fill="none" /> -->
-    <!-- <polyline points="0,0 150,0" stroke="#0ff" stroke-width="1" fill="none" transform="translate(0 26)" /> -->
+    
+    
+    
     <g transform="translate(5.5 18)"><svg id="B_LIGHT">
       <rect width="6.4" height="6.4" fill="#0f0"/>
     </svg></g>
@@ -161,7 +176,7 @@ text.brand {
         <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-level-peq" transform="translate(13 3.5)"/>
+    <use xlink:href="#dial-level-peq" transform="translate(13 3.5)" href="#dial-level-peq"/>
 
     <text font-size="6pt" letter-spacing="2px" transform="translate(69 58)">FREQ</text>
     <g transform="translate(59 3.5)"><svg id="B_FREQUENCY_PARAM">
@@ -171,7 +186,7 @@ text.brand {
         <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-frequency-peq" transform="translate(56 3.5)"/>
+    <use xlink:href="#dial-frequency-peq" transform="translate(56 3.5)" href="#dial-frequency-peq"/>
 
     <text font-size="6pt" letter-spacing="2px" transform="translate(113 22) rotate(270)">BW</text>
     <g transform="translate(122 7)"><svg id="B_BANDWIDTH_PARAM">
@@ -215,9 +230,9 @@ text.brand {
   </g>
 
   <g transform="translate(0 159)">
-    <!-- <rect width="150" height="60" fill="#0f0" transform="translate(0 0)" /> -->
-    <!-- <polyline points="0,30 150,30" stroke="#f00" stroke-width="1" fill="none" /> -->
-    <!-- <polyline points="0,0 150,0" stroke="#0ff" stroke-width="1" fill="none" transform="translate(0 26)" /> -->
+    
+    
+    
     <g transform="translate(5.5 18)"><svg id="C_LIGHT">
       <rect width="6.4" height="6.4" fill="#0f0"/>
     </svg></g>
@@ -231,7 +246,7 @@ text.brand {
         <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-level-peq" transform="translate(13 3.5)"/>
+    <use xlink:href="#dial-level-peq" transform="translate(13 3.5)" href="#dial-level-peq"/>
 
     <text font-size="6pt" letter-spacing="2px" transform="translate(69 58)">FREQ</text>
     <g transform="translate(59 3.5)"><svg id="C_FREQUENCY_PARAM">
@@ -241,7 +256,7 @@ text.brand {
         <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-frequency-peq" transform="translate(56 3.5)"/>
+    <use xlink:href="#dial-frequency-peq" transform="translate(56 3.5)" href="#dial-frequency-peq"/>
 
     <text font-size="6pt" letter-spacing="2px" transform="translate(113 19) rotate(270)">BW</text>
     <g transform="translate(122 4)"><svg id="C_BANDWIDTH_PARAM">

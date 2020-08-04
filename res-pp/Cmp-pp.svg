@@ -13,13 +13,26 @@ text.brand {
   font-family: 'Audiowide', sans-serif;
   font-weight: bold;
 }
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
 </style>
 
   <defs>
     <symbol id="dial-voltage-cmp" viewBox="0 0 90px 45px">
-      <!-- <rect width="90" height="45" fill="#f003" transform="translate(0 0)" /> -->
+      
       <g transform="translate(8 22.5)">
-        <text font-size="5.0pt" transform="rotate(-22.5) translate(14 0) rotate(22.5) translate(-1 2.6)">0-10V</text>
+        <text font-size="5.0pt" transform="rotate(-22.5) translate(14 0) rotate(22.5) translate(-1 2.6)">-10V</text>
         <polyline points="0,0 2,0" stroke-width="1" stroke="#333" transform="rotate(-22.5) translate(9.5 0)"/>
         <text font-size="5.0pt" transform="rotate(22.5) translate(14 0) rotate(-22.5) translate(-1 2.0)">+/-5V</text>
         <polyline points="0,0 2,0" stroke-width="1" stroke="#333" transform="rotate(22.5) translate(9.5 0)"/>
@@ -78,20 +91,25 @@ text.brand {
     </symbol>
   </defs>
 
-  <rect width="100%" height="100%" fill="#ddd"/>
-  <polyline points="1,1 89,1 89,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
-  <polyline points="0.5,0.5 89.5,0.5 89.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
-  <polyline points="0,0 90,0 90,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none"/>
+  <svg>
+      <svg>
+      <rect class="module-background background-fill" width="90.0" height="380.0"/>
+    </svg>
+      <svg>
+      <polyline class="module-border-inner" points="1,1 89.0,1 89.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 89.5,0.5 89.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 90.0,0 90.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    </svg>
+      <text class="title" font-size="9pt" letter-spacing="3px" text-anchor="end" transform="translate(83.0 17)">CMP</text>
+      <g transform="translate(5.5 374)">
+        <text class="brand" font-size="6.5pt" letter-spacing="2px">BOGAUDIO</text>
+        <rect width="1.5" height="2" fill="#ddd" transform="translate(21 -4)"/>
+      </g>
+    </svg>
 
-  <text class="title" x="45" y="17" font-size="9pt" letter-spacing="3px">CMP</text>
-  <g transform="translate(5.5 374)">
-    <text class="brand" font-size="6.5pt" letter-spacing="2px">BOGAUDIO</text>
-    <rect width="1.5" height="2" fill="#ddd" transform="translate(21 -4)"/>
-  </g>
-
-  <!-- <rect width="90" height="12" fill="#0f0" transform="translate(0 122)" /> -->
-  <!-- <rect width="90" height="12" fill="#0f0" transform="translate(0 228)" /> -->
-  <!-- <rect width="90" height="12" fill="#0f0" transform="translate(0 267)" /> -->
+  
+  
+  
 
   <g transform="translate(0 35)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(20 0)">A</text>
@@ -102,7 +120,7 @@ text.brand {
         <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-offset-cmp" transform="translate(0 3)"/>
+    <use xlink:href="#dial-offset-cmp" transform="translate(0 3)" href="#dial-offset-cmp"/>
     <g transform="translate(5.5 49)">
       <rect width="34" height="38" rx="5" fill="#fafafa"/>
       <g transform="translate(5 3)"><svg id="A_INPUT">
@@ -124,7 +142,7 @@ text.brand {
         <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-offset-cmp" transform="translate(0 3)"/>
+    <use xlink:href="#dial-offset-cmp" transform="translate(0 3)" href="#dial-offset-cmp"/>
     <g transform="translate(5.5 49)">
       <rect width="34" height="38" rx="5" fill="#fafafa"/>
       <g transform="translate(5 3)"><svg id="B_INPUT">
@@ -186,7 +204,7 @@ text.brand {
         <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-lag-cmp" transform="translate(0 3)"/>
+    <use xlink:href="#dial-lag-cmp" transform="translate(0 3)" href="#dial-lag-cmp"/>
     <g transform="translate(5.5 49)">
       <rect width="34" height="38" rx="5" fill="#fafafa"/>
       <g transform="translate(5 3)"><svg id="LAG_INPUT">
@@ -200,7 +218,7 @@ text.brand {
   </g>
 
   <g transform="translate(25 239)">
-    <!-- <rect width="40" height="32" fill="#0f03" transform="translate(0 0)" /> -->
+    
     <text font-size="6pt" letter-spacing="1px" transform="translate(1.5 7)">OUTPUT</text>
     <g transform="translate(0.5 12)"><svg id="OUTPUT_PARAM">
       <g transform="translate(8 8)">
@@ -209,7 +227,7 @@ text.brand {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-voltage-cmp" transform="translate(0.5 -2.5)"/>
+    <use xlink:href="#dial-voltage-cmp" transform="translate(0.5 -2.5)" href="#dial-voltage-cmp"/>
   </g>
 
   <g transform="translate(11 279)">

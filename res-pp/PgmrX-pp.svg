@@ -13,23 +13,39 @@ text.brand {
   font-family: 'Audiowide', sans-serif;
   font-weight: bold;
 }
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
 </style>
 
-  <rect width="100%" height="100%" fill="#ddd"/>
-  <polyline points="1,1 179,1 179,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
-  <polyline points="0.5,0.5 179.5,0.5 179.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
-  <polyline points="0,0 180,0 180,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none"/>
-
-  <!-- <rect width="50" height="20" fill="#0f0" transform="translate(0 0)" /> -->
-  <!-- <rect width="50" height="20" fill="#0f0" transform="translate(130 0)" /> -->
-  <text class="title" x="52" y="19" font-size="12pt" letter-spacing="4px">PGMRX</text>
-  <g transform="translate(50 374)">
-    <text class="brand" font-size="8pt" letter-spacing="2px">BOGAUDIO</text>
-    <rect width="3.0" height="3" fill="#ddd" transform="translate(24 -5)"/>
-  </g>
+  <svg>
+      <svg>
+      <rect class="module-background background-fill" width="180.0" height="380.0"/>
+    </svg>
+      <svg>
+      <polyline class="module-border-inner" points="1,1 179.0,1 179.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 179.5,0.5 179.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 180.0,0 180.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    </svg>
+      <text class="title" font-size="12pt" letter-spacing="4px" text-anchor="middle" transform="translate(90.0 19)">PGMRX</text>
+      <g transform="translate(0 374)">
+        <text class="brand" font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate(90.0 0)">BOGAUDIO</text>
+        <rect class="background-fill" width="3" height="3" transform="translate(74.5 -5)"/>
+      </g>
+    </svg>
 
   <g transform="translate(0 30)">
-    <!-- <rect width="34" height="330" fill="#ccc" transform="translate(5.5 0)" /> -->
+    
     <text font-size="5pt" letter-spacing="2px" transform="translate(18 -1)">+1</text>
     <g transform="translate(9.5 10.5)"><svg id="CVA1_PARAM">
       <g transform="translate(13 13)">
@@ -217,7 +233,7 @@ text.brand {
   </g>
 
   <g transform="translate(45 30)">
-    <!-- <rect width="34" height="330" fill="#ccc" transform="translate(5.5 0)" /> -->
+    
     <text font-size="5pt" letter-spacing="2px" transform="translate(18 -1)">+2</text>
     <g transform="translate(9.5 10.5)"><svg id="CVA2_PARAM">
       <g transform="translate(13 13)">
@@ -405,7 +421,7 @@ text.brand {
   </g>
 
   <g transform="translate(90 30)">
-    <!-- <rect width="34" height="330" fill="#ccc" transform="translate(5.5 0)" /> -->
+    
     <text font-size="5pt" letter-spacing="2px" transform="translate(18 -1)">+3</text>
     <g transform="translate(9.5 10.5)"><svg id="CVA3_PARAM">
       <g transform="translate(13 13)">
@@ -593,7 +609,7 @@ text.brand {
   </g>
 
   <g transform="translate(135 30)">
-    <!-- <rect width="34" height="330" fill="#ccc" transform="translate(5.5 0)" /> -->
+    
     <text font-size="5pt" letter-spacing="2px" transform="translate(17.5 -1)">+4</text>
     <g transform="translate(9.5 10.5)"><svg id="CVA4_PARAM">
       <g transform="translate(13 13)">

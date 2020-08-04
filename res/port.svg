@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:version="1.0 (4035a4f, 2020-05-01)" sodipodi:docname="svg_render_port-pp.svg" id="svg69778" viewBox="0 0 24 24" height="24" width="24" version="1.1">
-  <metadata id="metadata69784">
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:version="1.0 (4035a4f, 2020-05-01)" sodipodi:docname="svg_render_port-pp.svg" id="svg71305" viewBox="0 0 24 24" height="24" width="24" version="1.1">
+  <metadata id="metadata71311">
     <rdf:RDF>
       <cc:Work rdf:about="">
         <dc:format>image/svg+xml</dc:format>
@@ -8,13 +8,13 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <defs id="defs69782"/>
-  <sodipodi:namedview inkscape:current-layer="svg69778" inkscape:window-maximized="0" inkscape:window-y="23" inkscape:window-x="0" inkscape:cy="12" inkscape:cx="12" inkscape:zoom="27.875" showgrid="false" id="namedview69780" inkscape:window-height="480" inkscape:window-width="689" inkscape:pageshadow="2" inkscape:pageopacity="0" guidetolerance="10" gridtolerance="10" objecttolerance="10" borderopacity="1" bordercolor="#666666" pagecolor="#ffffff"/>
+  <defs id="defs71309"/>
+  <sodipodi:namedview inkscape:current-layer="svg71305" inkscape:window-maximized="0" inkscape:window-y="23" inkscape:window-x="0" inkscape:cy="12" inkscape:cx="12" inkscape:zoom="27.875" showgrid="false" id="namedview71307" inkscape:window-height="480" inkscape:window-width="689" inkscape:pageshadow="2" inkscape:pageopacity="0" guidetolerance="10" gridtolerance="10" objecttolerance="10" borderopacity="1" bordercolor="#666666" pagecolor="#ffffff"/>
   <!-- <rect width="24" height="24" fill="#0f0" /> -->
-  <path d="m 18,12 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6" style="fill:#222222;stroke:#222222;stroke-width:1" id="circle69764"/>
-  <path d="m 21,12 a 9,9 0 0 1 -9,9 9,9 0 0 1 -9,-9 9,9 0 0 1 9,-9 9,9 0 0 1 9,9" style="fill:none;stroke:#f0f0f0;stroke-width:4.5" id="circle69766"/>
-  <path d="m 18,12 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6" style="fill:none;stroke:#777777;stroke-width:0.5" id="circle69768"/>
-  <path d="M 18.5,12 A 6.5,6.5 0 0 1 12,18.5 6.5,6.5 0 0 1 5.5,12 6.5,6.5 0 0 1 12,5.5 6.5,6.5 0 0 1 18.5,12" style="fill:none;stroke:#aaaaaa;stroke-width:0.5" id="circle69770"/>
-  <path d="M 23.2,12 A 11.2,11.2 0 0 1 12,23.2 11.2,11.2 0 0 1 0.80000019,12 11.2,11.2 0 0 1 12,0.80000019 11.2,11.2 0 0 1 23.2,12" style="fill:none;stroke:#bbbbbb;stroke-width:0.5" id="circle69772"/>
-  <path d="M 23.7,12 A 11.7,11.7 0 0 1 12,23.7 11.7,11.7 0 0 1 0.30000019,12 11.7,11.7 0 0 1 12,0.30000019 11.7,11.7 0 0 1 23.7,12" style="fill:none;stroke:#888888;stroke-width:0.5" id="circle69774"/>
+  <path d="m 18,12 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6" style="fill:#222222;stroke:#222222;stroke-width:1" id="circle71291"/>
+  <path d="m 21,12 a 9,9 0 0 1 -9,9 9,9 0 0 1 -9,-9 9,9 0 0 1 9,-9 9,9 0 0 1 9,9" style="fill:none;stroke:#f0f0f0;stroke-width:4.5" id="circle71293"/>
+  <path d="m 18,12 a 6,6 0 0 1 -6,6 6,6 0 0 1 -6,-6 6,6 0 0 1 6,-6 6,6 0 0 1 6,6" style="fill:none;stroke:#777777;stroke-width:0.5" id="circle71295"/>
+  <path d="M 18.5,12 A 6.5,6.5 0 0 1 12,18.5 6.5,6.5 0 0 1 5.5,12 6.5,6.5 0 0 1 12,5.5 6.5,6.5 0 0 1 18.5,12" style="fill:none;stroke:#aaaaaa;stroke-width:0.5" id="circle71297"/>
+  <path d="M 23.2,12 A 11.2,11.2 0 0 1 12,23.2 11.2,11.2 0 0 1 0.80000019,12 11.2,11.2 0 0 1 12,0.80000019 11.2,11.2 0 0 1 23.2,12" style="fill:none;stroke:#bbbbbb;stroke-width:0.5" id="circle71299"/>
+  <path d="M 23.7,12 A 11.7,11.7 0 0 1 12,23.7 11.7,11.7 0 0 1 0.30000019,12 11.7,11.7 0 0 1 12,0.30000019 11.7,11.7 0 0 1 23.7,12" style="fill:none;stroke:#888888;stroke-width:0.5" id="circle71301"/>
 </svg>

@@ -13,6 +13,19 @@ text.brand {
   font-family: 'Audiowide', sans-serif;
   font-weight: bold;
 }
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
 </style>
 
   <defs>
@@ -33,32 +46,31 @@ text.brand {
     </symbol>
   </defs>
 
-  <rect width="100%" height="100%" fill="#ddd"/>
-  <polyline points="1,1 224,1 224,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
-  <polyline points="0.5,0.5 224.5,0.5 224.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
-  <polyline points="0,0 225,0 225,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none"/>
+  <svg>
+      <svg>
+      <rect class="module-background background-fill" width="225.0" height="380.0"/>
+    </svg>
+      <svg>
+      <polyline class="module-border-inner" points="1,1 224.0,1 224.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 224.5,0.5 224.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 225.0,0 225.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    </svg>
+      <text class="title" font-size="12pt" letter-spacing="4px" text-anchor="middle" transform="translate(112.5 19)">ADDITATOR</text>
+      <g transform="translate(0 374)">
+        <text class="brand" font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate(112.5 0)">BOGAUDIO</text>
+        <rect class="background-fill" width="3" height="3" transform="translate(97.0 -5)"/>
+      </g>
+    </svg>
 
-  <!-- <rect width="50" height="20" fill="#0f0" transform="translate(0 0)" /> -->
-  <!-- <rect width="50" height="20" fill="#0f0" transform="translate(175 0)" /> -->
-
-  <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(10 0)" /> -->
-  <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(215 0)" /> -->
-
-  <text class="title" x="49" y="19" font-size="12pt" letter-spacing="4px">ADDITATOR</text>
-  <g transform="translate(72.5 374)">
-    <text class="brand" font-size="8pt" letter-spacing="2px">BOGAUDIO</text>
-    <rect width="3.0" height="3" fill="#ddd" transform="translate(24 -5)"/>
-  </g>
-
-  <!-- <polyline points="0,0 225,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(0 135)" /> -->
-  <!-- <polyline points="0,0 225,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(0 269)" /> -->
-  <!-- <polyline points="0,0 225,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(0 180)" /> -->
-  <!-- <polyline points="0,0 225,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(0 224)" /> -->
+  
+  
+  
+  
 
   <g transform="translate(20 25)">
-    <!-- <rect width="108" height="98" fill="none" stroke="#0f0" /> -->
-    <!-- <polyline points="0,54 254,54" stroke="#0f0" stroke-width="1" fill="none" /> -->
-    <!-- <polyline points="54,54 54,354" stroke="#0f0" stroke-width="1" fill="none" /> -->
+    
+    
+    
     <g transform="translate(20 20)"><svg id="FREQUENCY_PARAM">
       <g transform="translate(34 34)">
         <polyline points="-10,0 10,0" stroke-width="1" stroke="#00f"/>
@@ -151,8 +163,8 @@ text.brand {
   <text font-size="6pt" letter-spacing="1px" transform="translate(30 135)">0V = C4 = 261.63HZ</text>
 
   <g transform="translate(144 60)">
-    <!-- <polyline points="0,19 68,19" stroke="#0f0" stroke-width="1" fill="none" /> -->
-    <!-- <polyline points="40,-20 40,50" stroke="#0f0" stroke-width="1" fill="none" /> -->
+    
+    
     <text font-size="8pt" letter-spacing="2px" transform="translate(4 50) rotate(270)">PARTIALS</text>
     <g transform="translate(21 0)"><svg id="PARTIALS_PARAM">
       <g transform="translate(19 19)">
@@ -161,15 +173,15 @@ text.brand {
         <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-partials-additator" transform="translate(5 -16)"/>
+    <use xlink:href="#dial-partials-additator" transform="translate(5 -16)" href="#dial-partials-additator"/>
   </g>
 
   <g transform="translate(10 155)">
     <g transform="translate(10 5)">
-      <!-- <polyline points="0,-5 70,-5" stroke="#0f0" stroke-width="1" fill="none" /> -->
-      <!-- <polyline points="0,8 70,8" stroke="#0f0" stroke-width="1" fill="none" /> -->
-      <!-- <polyline points="0,21 70,21" stroke="#0f0" stroke-width="1" fill="none" /> -->
-      <!-- <polyline points="21,-10 21,240" stroke="#0f0" stroke-width="1" fill="none" /> -->
+      
+      
+      
+      
       <text font-size="8pt" letter-spacing="2px" transform="translate(-3 22.5) rotate(270)">FINE</text>
       <g transform="translate(10 0)"><svg id="FINE_PARAM">
       <g transform="translate(8 8)">
@@ -178,7 +190,7 @@ text.brand {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-      <!-- <rect width="90" height="10" fill="#0f0" transform="translate(0 17)" /> -->
+      
     </g>
     <g transform="translate(8 -7)"><svg>
       <g transform="translate(20 20)">
@@ -192,7 +204,7 @@ text.brand {
       </g>
     </svg></g>
     <g transform="translate(53 0)">
-      <!-- <polyline points="-50,13 168,13" stroke="#0f0" stroke-width="1" fill="none" /> -->
+      
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 33) rotate(270)">WIDTH</text>
       <g transform="translate(16 0)"><svg id="WIDTH_PARAM">
       <g transform="translate(13 13)">
@@ -218,7 +230,7 @@ text.brand {
       </g>
     </svg></g>
     <g transform="translate(106 0)">
-      <!-- <polyline points="0,19 68,19" stroke="#0f0" stroke-width="1" fill="none" /> -->
+      
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 38) rotate(270)">O-SKEW</text>
       <g transform="translate(16 0)"><svg id="ODD_SKEW_PARAM">
       <g transform="translate(13 13)">
@@ -266,7 +278,7 @@ text.brand {
       </g>
     </svg></g>
     <g transform="translate(158 0)">
-      <!-- <polyline points="0,19 68,19" stroke="#0f0" stroke-width="1" fill="none" /> -->
+      
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 37.5) rotate(270)">E-SKEW</text>
       <g transform="translate(16 0)"><svg id="EVEN_SKEW_PARAM">
       <g transform="translate(13 13)">
@@ -317,8 +329,8 @@ text.brand {
 
   <g transform="translate(10 218)">
     <g transform="translate(-1 0)">
-      <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(29 -100)" /> -->
-      <!-- <polyline points="0,13 270,13" stroke="#0f0" stroke-width="1" fill="none" /> -->
+      
+      
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 28.5) rotate(270)">GAIN</text>
       <g transform="translate(16 0)"><svg id="GAIN_PARAM">
       <g transform="translate(13 13)">
@@ -344,7 +356,7 @@ text.brand {
       </g>
     </svg></g>
     <g transform="translate(53 0)">
-      <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(29 -100)" /> -->
+      
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 33.5) rotate(270)">DECAY</text>
       <g transform="translate(16 0)"><svg id="DECAY_PARAM">
       <g transform="translate(13 13)">
@@ -392,7 +404,7 @@ text.brand {
       </g>
     </svg></g>
     <g transform="translate(106 0)">
-      <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(29 -100)" /> -->
+      
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 43) rotate(270)">BALANCE</text>
       <g transform="translate(16 0)"><svg id="BALANCE_PARAM">
       <g transform="translate(13 13)">
@@ -440,7 +452,7 @@ text.brand {
       </g>
     </svg></g>
     <g transform="translate(158 0)">
-      <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(29 -100)" /> -->
+      
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 34.5) rotate(270)">FILTER</text>
       <g transform="translate(16 0)"><svg id="FILTER_PARAM">
       <g transform="translate(13 13)">

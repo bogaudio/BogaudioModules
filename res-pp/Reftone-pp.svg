@@ -13,6 +13,19 @@ text.brand {
   font-family: 'Audiowide', sans-serif;
   font-weight: bold;
 }
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
 </style>
 
   <defs>
@@ -93,15 +106,15 @@ text.brand {
     <symbol id="dial-fine-reftone" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <g transform="rotate(-240) translate(15 0)">
-          <!-- <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" /> -->
+          
           <text font-size="5.0pt" transform="translate(2.5 0) rotate(240) translate(-1.5 2.2)">-</text>
         </g>
         <g transform="rotate(-90) translate(15 0)">
-          <!-- <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" /> -->
+          
           <text font-size="5.0pt" transform="translate(2 0) rotate(90) translate(-1.9 2.2)">0</text>
         </g>
         <g transform="rotate(60) translate(15 0)">
-          <!-- <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" /> -->
+          
           <text font-size="5.0pt" transform="translate(2.5 0) rotate(-60) translate(-1.9 2.2)">+</text>
         </g>
         <path d="M 0 -17.5 A 17.5 17.5 0 0 1 17.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
@@ -112,27 +125,26 @@ text.brand {
     </symbol>
   </defs>
 
-  <rect width="100%" height="100%" fill="#ddd"/>
-  <polyline points="1,1 44,1 44,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
-  <polyline points="0.5,0.5 44.5,0.5 44.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
-  <polyline points="0,0 45,0 45,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none"/>
-
-  <!-- <polyline points="22.5,0 22.5,380" stroke-width="0.5" stroke="#0f0" /> -->
-  <!-- <rect width="45" height="8" fill="#0f0" transform="translate(0 66)" /> -->
-  <!-- <rect width="45" height="8" fill="#0f0" transform="translate(0 120)" /> -->
-  <!-- <rect width="45" height="8" fill="#0f0" transform="translate(0 174)" /> -->
-  <!-- <rect width="45" height="8" fill="#0f0" transform="translate(0 227)" /> -->
-
-  <g transform="rotate(-90) translate(-376 13)">
-    <text class="title" font-size="7pt" letter-spacing="2.5px">REFTONE</text>
-    <g transform="translate(0 12)">
-      <text class="brand" font-size="7pt" letter-spacing="2px">BGA</text>
-      <rect width="3.0" height="3" fill="#ddd" transform="translate(11.5 -5)"/>
-    </g>
-  </g>
+  <svg>
+      <svg>
+      <rect class="module-background background-fill" width="45.0" height="380.0"/>
+    </svg>
+      <svg>
+      <polyline class="module-border-inner" points="1,1 44.0,1 44.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 44.5,0.5 44.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 45.0,0 45.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    </svg>
+      <g transform="rotate(-90) translate(-376.0 13)">
+        <text class="title" font-size="7pt" letter-spacing="2.5px">REFTONE</text>
+        <g transform="translate(0 12)">
+          <text class="brand" font-size="7pt" letter-spacing="2px">BGA</text>
+          <rect width="3.0" height="3" fill="#ddd" transform="translate(11.5 -5)"/>
+        </g>
+      </g>
+    </svg>
 
   <g transform="translate(0 18)">
-    <use id="DISPLAY_WIDGET" xlink:href="#display-reftone"/>
+    <use id="DISPLAY_WIDGET" xlink:href="#display-reftone" href="#display-reftone"/>
 
     <g transform="translate(0 62)">
       <g transform="translate(0 0)">
@@ -170,9 +182,9 @@ text.brand {
     </g>
   </g>
 
-  <use xlink:href="#dial-pitch-reftone" transform="translate(0 80)"/>
-  <use xlink:href="#dial-octave-reftone" transform="translate(0 134)"/>
-  <use xlink:href="#dial-fine-reftone" transform="translate(0 188)"/>
+  <use xlink:href="#dial-pitch-reftone" transform="translate(0 80)" href="#dial-pitch-reftone"/>
+  <use xlink:href="#dial-octave-reftone" transform="translate(0 134)" href="#dial-octave-reftone"/>
+  <use xlink:href="#dial-fine-reftone" transform="translate(0 188)" href="#dial-fine-reftone"/>
 
   <g transform="translate(0 235)">
     <g transform="translate(0 0)">

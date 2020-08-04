@@ -13,6 +13,19 @@ text.brand {
   font-family: 'Audiowide', sans-serif;
   font-weight: bold;
 }
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
 </style>
 
   <defs>
@@ -63,22 +76,25 @@ text.brand {
     </symbol>
   </defs>
 
-  <rect width="100%" height="100%" fill="#ddd"/>
-  <polyline points="1,1 149,1 149,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
-  <polyline points="0.5,0.5 149.5,0.5 149.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
-  <polyline points="0,0 150,0 150,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none"/>
+  <svg>
+      <svg>
+      <rect class="module-background background-fill" width="150.0" height="380.0"/>
+    </svg>
+      <svg>
+      <polyline class="module-border-inner" points="1,1 149.0,1 149.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 149.5,0.5 149.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 150.0,0 150.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    </svg>
+      <text class="title" font-size="12pt" letter-spacing="4px" text-anchor="middle" transform="translate(75.0 19)">CMPDIST</text>
+      <g transform="translate(0 374)">
+        <text class="brand" font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate(75.0 0)">BOGAUDIO</text>
+        <rect class="background-fill" width="3" height="3" transform="translate(59.5 -5)"/>
+      </g>
+    </svg>
 
-  <!-- <rect width="30" height="20" fill="#0f0" transform="translate(0 0)" /> -->
-  <!-- <rect width="30" height="20" fill="#0f0" transform="translate(120 0)" /> -->
-  <text class="title" x="26" y="19" font-size="12pt" letter-spacing="3.5px">CMPDIST</text>
-  <g transform="translate(35.5 374)">
-    <text class="brand" font-size="8pt" letter-spacing="2px">BOGAUDIO</text>
-    <rect width="3.0" height="3" fill="#ddd" transform="translate(24 -5)"/>
-  </g>
-
-  <!-- <rect width="150" height="14" fill="#0f0" transform="translate(0 80)" /> -->
-  <!-- <rect width="150" height="14" fill="#0f0" transform="translate(0 145)" /> -->
-  <!-- <rect width="150" height="14" fill="#0f0" transform="translate(0 211)" /> -->
+  
+  
+  
 
   <g transform="translate(6 35)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(3.5 0)">A SCALE</text>
@@ -89,7 +105,7 @@ text.brand {
         <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-attenuverter-cmpdist" transform="translate(0 3)"/>
+    <use xlink:href="#dial-attenuverter-cmpdist" transform="translate(0 3)" href="#dial-attenuverter-cmpdist"/>
   </g>
 
   <g transform="translate(52.5 35)">
@@ -131,7 +147,7 @@ text.brand {
         <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-attenuverter-cmpdist" transform="translate(0 3)"/>
+    <use xlink:href="#dial-attenuverter-cmpdist" transform="translate(0 3)" href="#dial-attenuverter-cmpdist"/>
   </g>
 
   <g transform="translate(6 100)">
@@ -143,7 +159,7 @@ text.brand {
         <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-attenuverter-cmpdist" transform="translate(0 3)"/>
+    <use xlink:href="#dial-attenuverter-cmpdist" transform="translate(0 3)" href="#dial-attenuverter-cmpdist"/>
   </g>
 
   <g transform="translate(52.5 100)">
@@ -155,7 +171,7 @@ text.brand {
         <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-attenuverter-cmpdist" transform="translate(0 3)"/>
+    <use xlink:href="#dial-attenuverter-cmpdist" transform="translate(0 3)" href="#dial-attenuverter-cmpdist"/>
   </g>
 
   <g transform="translate(99 100)">
@@ -167,12 +183,12 @@ text.brand {
         <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-attenuverter-cmpdist" transform="translate(0 3)"/>
+    <use xlink:href="#dial-attenuverter-cmpdist" transform="translate(0 3)" href="#dial-attenuverter-cmpdist"/>
   </g>
 
-  <!-- <polyline points="0,0 0,350" stroke="#0f0" stroke-width="1" fill="none" transform="translate(28.5 0)" /> -->
-  <!-- <polyline points="0,0 0,350" stroke="#0f0" stroke-width="1" fill="none" transform="translate(121.5 0)" /> -->
-  <!-- <polyline points="0,0 150,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 190.5)" /> -->
+  
+  
+  
 
   <g transform="translate(52.5 165)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(2.5 0)">DRY/WET</text>
@@ -183,7 +199,7 @@ text.brand {
         <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-drywet-cmpdist" transform="translate(0 3)"/>
+    <use xlink:href="#dial-drywet-cmpdist" transform="translate(0 3)" href="#dial-drywet-cmpdist"/>
   </g>
 
   <g transform="translate(20.5 182.5)">

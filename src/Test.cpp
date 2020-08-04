@@ -502,9 +502,11 @@ float Test::index3() {
 
 
 struct TestWidget : ModuleWidget {
+	static constexpr int hp = 3;
+
 	TestWidget(Test* module) {
 		setModule(module);
-		box.size = Vec(RACK_GRID_WIDTH * 3, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SvgPanel *panel = new SvgPanel();

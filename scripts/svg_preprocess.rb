@@ -38,10 +38,14 @@ rescue => e
   exit 1
 end
 
-def read_xml(fn)
-  Nokogiri::XML(File.open(fn)) do |config|
+def parse_xml(s)
+  Nokogiri::XML(s) do |config|
     config.norecover.strict
   end
+end
+
+def read_xml(fn)
+  parse_xml(File.open(fn))
 end
 
 $src_dir = nil
@@ -115,9 +119,9 @@ def load_defs(force = false)
     if File.readable?(fn)
       doc = read_xml(fn)
       doc.css('defs symbol').each do |n|
-        id = n.at_css('@id').to_s
-        unless id
-          STDERR.puts("Symbol in #{fn} with missing ID: #{n.to_s}")
+        id = n['id'].to_s
+        unless id && !id.empty?
+          STDERR.puts "Symbol in #{fn} with missing ID: #{n.to_s}"
           exit 1
         end
         $defs[id] = n
@@ -198,6 +202,126 @@ def write_output(name, doc, styles)
   puts "Wrote #{fn}"
 end
 
+def process_def(doc, n)
+  id = n.attribute('href').to_s
+  if id
+    id.sub!(/^#/, '')
+    d = $defs[id]
+    if d
+      nn = d.dup
+      nn.node_name = 'svg'
+      nn.delete('viewBox')
+      nn.delete('id')
+
+      g = Nokogiri::XML::Node.new('g', doc)
+      g.add_child(nn)
+      n.replace(g)
+
+      n.each do |k, v|
+        case k
+        when 'id'
+          if !v.to_s.empty?
+            nn['id'] = v
+          end
+        when 'transform'
+          if !v.to_s.empty?
+            g['transform'] = v
+          end
+        when /^var-(\w+)$/
+          g[k] = v
+        end
+      end
+
+      nn.css('def').each do |dn|
+        process_def(doc, dn)
+      end
+    else
+      puts "WARN: no def defined for def ID '#{id}' in #{fn}"
+      n.remove
+    end
+  else
+    puts "WARN: def without ID in #{fn}: #{n.to_s}"
+    n.remove
+  end
+end
+
+def variable_value(k, vars, defaults)
+  v = nil
+  vars.reverse_each do |vs|
+    if vs.key?(k)
+      v = vs[k]
+      break
+    end
+  end
+
+  if v.nil?
+    if defaults.key?(k)
+      v = defaults[k]
+    else
+      v = 0.0
+    end
+  end
+
+  v
+end
+
+def eval_expressions(s, vars, defaults)
+  s.gsub!(/\$\{(\w+)\}/) do
+    variable_value($1, vars, defaults)
+  end
+
+  s.gsub!(/\$(\w+)/) do
+    variable_value($1, vars, defaults)
+  end
+
+  if s =~ /[\+\-\*\/]/
+    s.gsub!(/\d+(\.\d+)?([\+\-\*\/]\d+(\.\d+)?)*/) do |m|
+      eval(m)
+    end
+  end
+
+  s
+end
+
+def process_variables(n, vars)
+  default_vars = {}
+  n.each do |k, v|
+    if k =~ /^default-(\w+)$/
+      default_vars[$1] = v
+      n.delete(k)
+    end
+  end
+
+  n.each do |k, v|
+    n[k] = eval_expressions(v.to_s, vars, default_vars)
+  end
+
+  pop = false
+  case n.node_name
+  when 'g'
+    vs = {}
+    n.each do |k, v|
+      if k =~ /^var-(\w+)$/
+        vs[$1] = v
+        n.delete(k)
+      end
+    end
+    vars.push(vs)
+    pop = true
+  when 'text'
+    n.traverse do |t|
+      if t.text?
+        t.content = eval_expressions(t.content, vars, default_vars)
+      end
+    end
+  end
+
+  n.elements.each do |nn|
+    process_variables(nn, vars)
+  end
+  vars.pop if pop
+end
+
 def process(name)
   load_directories()
   load_styles()
@@ -210,11 +334,30 @@ def process(name)
   end
 
   doc = read_xml(fn)
+  hp = 3
+
+  root = doc.at_css(':root')
+  if root.node_name == 'module'
+    if root['hp'] && !root['hp'].to_s.empty?
+      hp = root['hp'].to_s.to_i
+    end
+    root.node_name = 'svg'
+    root['xmlns'] = 'http://www.w3.org/2000/svg'
+    root['xmlns:xlink'] = 'http://www.w3.org/1999/xlink'
+    root['version'] = '1.1'
+    root['width'] = (hp * 15).to_s
+    root['height'] = '380'
+    root['viewBox'] = "0 0 #{root['width']} #{root['height']}"
+    root.delete('hp')
+
+    doc = parse_xml(doc.to_xml)
+  end
+
   doc.css('defs import').each do |n|
     id = n.attribute('id').to_s
     if id
       d = $defs[id]
-      if d
+       if d
         n.replace(d)
       else
         puts "WARN: no def for import ID '#{id}' in #{fn}"
@@ -227,34 +370,20 @@ def process(name)
   end
 
   doc.css('def').each do |n|
-    id = n.attribute('href').to_s
-    if id
-      id.sub!(/^#/, '')
-      d = $defs[id]
-      if d
-        nn = d.dup
-        nn.node_name = 'svg'
-        if n['id'] && !n['id'].to_s.empty?
-          nn['id'] = n['id']
-        else
-          nn.delete('id')
-        end
-        nn.delete('viewBox')
-        if n['transform'] && !n['transform'].to_s.empty?
-          onn = nn
-          nn = Nokogiri::XML::Node.new('g', doc)
-          nn['transform'] = n['transform']
-          nn.add_child(onn)
-        end
-        n.replace(nn)
-      else
-        puts "WARN: no def defined for def ID '#{id}' in #{fn}"
-        n.remove
-      end
-    else
-      puts "WARN: def without ID in #{fn}: #{n.to_s}"
-      n.remove
-    end
+    process_def(doc, n)
+  end
+
+  doc.xpath('//comment()').each(&:remove)
+
+  globals = {}
+  globals['hp'] = hp
+  globals['width'] = hp * 15.0
+  globals['height'] = 380.0
+  vars = [globals]
+  process_variables(doc.at_css(':root'), vars)
+
+  doc.css('g').each do |n|
+    n.replace(n.children) if n.keys.empty?
   end
 
   name = widget_from_filename(fn)
@@ -308,7 +437,7 @@ def listen(prefixes)
           reprocess(prefixes)
         end
       rescue => e
-        STDERR.puts("Error processing #{fn}:\n#{e}")
+        STDERR.puts "Error processing #{fn}:\n#{e}"
       end
     end
 
@@ -323,7 +452,7 @@ def listen(prefixes)
           process(fn)
         end
       rescue => e
-        STDERR.puts("Error processing #{fn}:\n#{e}")
+        STDERR.puts "Error processing #{fn}:\n#{e}"
       end
     end
 
@@ -343,13 +472,12 @@ def listen(prefixes)
             begin
               f = File.join($pp_dir, f)
               File.unlink(f)
-              puts "Removed #{f}"
             rescue Errno::ENOENT => e
             end
           end
         end
       rescue => e
-        STDERR.puts("Error processing #{fn}:\n#{e}")
+        STDERR.puts "Error processing #{fn}:\n#{e}"
       end
     end
   end

@@ -1,22 +1,8 @@
 <?xml version="1.0"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="405" height="380" viewBox="0 0 405 380">
+<module hp="27">
   <style/>
 
-  <rect width="100%" height="100%" fill="#ddd"/>
-  <polyline points="1,1 404,1 404,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
-  <polyline points="0.5,0.5 404.5,0.5 404.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
-  <polyline points="0,0 405,0 405,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none"/>
-
-  <!-- <rect width="170" height="20" fill="#0f0" transform="translate(0 0)" /> -->
-  <!-- <rect width="170" height="20" fill="#0f0" transform="translate(235 0)" /> -->
-  <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(10 0)" /> -->
-  <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(395 0)" /> -->
-
-  <text class="title" x="168" y="19" font-size="12pt" letter-spacing="4px">MIX8X</text>
-  <g transform="translate(162.5 374)">
-    <text class="brand" font-size="8pt" letter-spacing="2px">BOGAUDIO</text>
-    <rect width="3.0" height="3" fill="#ddd" transform="translate(24 -5)"/>
-  </g>
+  <def xlink:href="#module" var-name="MIX8X"/>
 
   <g transform="translate(4 20)">
     <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">CH1</text>
@@ -293,4 +279,4 @@
     <def xlink:href="#dial-mintick" transform="translate(2.5 296)"/>
     <!-- <polyline points="0,0 0,350" stroke="#0f0" stroke-width="1" fill="none" transform="translate(22.5 0)" /> -->
   </g>
-</svg>
+</module>

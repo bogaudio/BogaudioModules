@@ -1,22 +1,8 @@
 <?xml version="1.0"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="225" height="380" viewBox="0 0 225 380">
+<module hp="15">
   <style/>
 
-  <rect width="100%" height="100%" fill="#ddd"/>
-  <polyline points="1,1 224,1 224,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
-  <polyline points="0.5,0.5 224.5,0.5 224.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
-  <polyline points="0,0 225,0 225,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none"/>
-
-  <!-- <rect width="85" height="20" fill="#0f0" transform="translate(0 0)" /> -->
-  <!-- <rect width="85" height="20" fill="#0f0" transform="translate(140 0)" /> -->
-  <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(10 0)" /> -->
-  <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(215 0)" /> -->
-
-  <text class="title" x="85" y="19" font-size="12pt" letter-spacing="4px">MIX4</text>
-  <g transform="translate(72.5 374)">
-    <text class="brand" font-size="8pt" letter-spacing="2px">BOGAUDIO</text>
-    <rect width="3.0" height="3" fill="#ddd" transform="translate(24 -5)"/>
-  </g>
+  <def xlink:href="#module" var-name="MIX4"/>
 
   <g transform="translate(4 20)">
     <!-- <rect width="39" height="344" fill="#ccc" transform="translate(3 0)" /> -->
@@ -128,4 +114,4 @@
     </g>
   </g>
   <!-- <polyline points="0,0 225,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 360)" /> -->
-</svg>
+</module>

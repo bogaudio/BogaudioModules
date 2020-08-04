@@ -13,6 +13,19 @@ text.brand {
   font-family: 'Audiowide', sans-serif;
   font-weight: bold;
 }
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
 </style>
 
   <defs>
@@ -61,20 +74,23 @@ text.brand {
     </symbol>
   </defs>
 
-  <rect width="100%" height="100%" fill="#ddd"/>
-  <polyline points="1,1 44,1 44,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
-  <polyline points="0.5,0.5 44.5,0.5 44.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
-  <polyline points="0,0 45,0 45,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none"/>
-
-  <!-- <polyline points="0,0 0,300" stroke="#0f0" stroke-width="1" fill="none" transform="translate(22.5 0)" /> -->
-
-  <g transform="rotate(-90) translate(-376 13)">
-    <text class="title" font-size="7pt" letter-spacing="2.5px">SLEW</text>
-    <g transform="translate(0 12)">
-      <text class="brand" font-size="7pt" letter-spacing="2px">BGA</text>
-      <rect width="3.0" height="3" fill="#ddd" transform="translate(11.5 -5)"/>
-    </g>
-  </g>
+  <svg>
+      <svg>
+      <rect class="module-background background-fill" width="45.0" height="380.0"/>
+    </svg>
+      <svg>
+      <polyline class="module-border-inner" points="1,1 44.0,1 44.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 44.5,0.5 44.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 45.0,0 45.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    </svg>
+      <g transform="rotate(-90) translate(-376.0 13)">
+        <text class="title" font-size="7pt" letter-spacing="2.5px">SLEW</text>
+        <g transform="translate(0 12)">
+          <text class="brand" font-size="7pt" letter-spacing="2px">BGA</text>
+          <rect width="3.0" height="3" fill="#ddd" transform="translate(11.5 -5)"/>
+        </g>
+      </g>
+    </svg>
 
   <g transform="translate(0 25)">
     <text font-size="6pt" letter-spacing="2.0px" transform="translate(11 0)">RISE</text>
@@ -85,7 +101,7 @@ text.brand {
         <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-time-slew" transform="translate(0 -1)"/>
+    <use xlink:href="#dial-time-slew" transform="translate(0 -1)" href="#dial-time-slew"/>
     <g transform="translate(14.5 51)"><svg id="RISE_SHAPE_PARAM">
       <g transform="translate(8 8)">
         <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
@@ -93,7 +109,7 @@ text.brand {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-rise-shape-slew" transform="translate(2.5 39)"/>
+    <use xlink:href="#dial-rise-shape-slew" transform="translate(2.5 39)" href="#dial-rise-shape-slew"/>
     <g transform="translate(7.5 77)">
       <rect width="30" height="30" rx="5" fill="#fafafa"/>
       <g transform="translate(3 3)"><svg id="RISE_INPUT">
@@ -102,7 +118,7 @@ text.brand {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <!-- <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text> -->
+      
     </g>
   </g>
 
@@ -115,7 +131,7 @@ text.brand {
         <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-time-slew" transform="translate(0 -1)"/>
+    <use xlink:href="#dial-time-slew" transform="translate(0 -1)" href="#dial-time-slew"/>
     <g transform="translate(14.5 51)"><svg id="FALL_SHAPE_PARAM">
       <g transform="translate(8 8)">
         <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
@@ -123,7 +139,7 @@ text.brand {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-fall-shape-slew" transform="translate(2.5 39)"/>
+    <use xlink:href="#dial-fall-shape-slew" transform="translate(2.5 39)" href="#dial-fall-shape-slew"/>
     <g transform="translate(7.5 77)">
       <rect width="30" height="30" rx="5" fill="#fafafa"/>
       <g transform="translate(3 3)"><svg id="FALL_INPUT">
@@ -132,7 +148,7 @@ text.brand {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <!-- <text font-size="5pt" letter-spacing="2px" transform="translate(11 35)">CV</text> -->
+      
     </g>
   </g>
 

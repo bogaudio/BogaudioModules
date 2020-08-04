@@ -13,26 +13,44 @@ text.brand {
   font-family: 'Audiowide', sans-serif;
   font-weight: bold;
 }
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
 </style>
 
-  <rect width="100%" height="100%" fill="#ddd"/>
-  <polyline points="1,1 44,1 44,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
-  <polyline points="0.5,0.5 44.5,0.5 44.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
-  <polyline points="0,0 45,0 45,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none"/>
+  <svg>
+      <svg>
+      <rect class="module-background background-fill" width="45.0" height="380.0"/>
+    </svg>
+      <svg>
+      <polyline class="module-border-inner" points="1,1 44.0,1 44.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 44.5,0.5 44.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 45.0,0 45.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    </svg>
+      <g transform="rotate(-90) translate(-376.0 13)">
+        <text class="title" font-size="7pt" letter-spacing="2.5px">ARP</text>
+        <g transform="translate(0 12)">
+          <text class="brand" font-size="7pt" letter-spacing="2px">BGA</text>
+          <rect width="3.0" height="3" fill="#ddd" transform="translate(11.5 -5)"/>
+        </g>
+      </g>
+    </svg>
 
-  <g transform="rotate(-90) translate(-376 13)">
-    <text class="title" font-size="7pt" letter-spacing="2.5px">ARP</text>
-    <g transform="translate(0 12)">
-      <text class="brand" font-size="7pt" letter-spacing="2px">BGA</text>
-      <rect width="3.0" height="3" fill="#ddd" transform="translate(11.5 -5)"/>
-    </g>
-  </g>
+  
+  
+  
 
-  <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(22.5 0)" /> -->
-  <!-- <polyline points="0,0 0,380" stroke="#f00" stroke-width="1" fill="none" transform="translate(3 0)" /> -->
-  <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(42 0)" /> -->
-
-  <!-- <rect width="20" height="24" fill="#0f0" transform="translate(0 0)" /> -->
+  
   <g transform="translate(3 18)">
     <text font-size="6pt" letter-spacing="2.0px" transform="translate(5 6)">MODE</text>
     <g transform="translate(0 10)">
@@ -104,7 +122,7 @@ text.brand {
         <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
     </svg></g>
-    <!-- <rect width="45" height="5" fill="#0f0" transform="translate(0 -11)" /> -->
+    
   </g>
 
   <g transform="translate(6 115)">
@@ -114,8 +132,8 @@ text.brand {
         <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
       </g>
     </svg></g>
-    <!-- <rect width="45" height="5" fill="#0f0" transform="translate(0 -6)" /> -->
-    <!-- <rect width="45" height="5" fill="#0f0" transform="translate(0 8)" /> -->
+    
+    
   </g>
 
   <g transform="translate(0 129)">

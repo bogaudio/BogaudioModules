@@ -105,9 +105,11 @@ void Test2::processChannel(const ProcessArgs& args, int _c) {
 
 
 struct Test2Widget : ModuleWidget {
+	static constexpr int hp = 6;
+
 	Test2Widget(Test2* module) {
 		setModule(module);
-		box.size = Vec(RACK_GRID_WIDTH * 6, RACK_GRID_HEIGHT);
+		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 
 		{
 			SvgPanel *panel = new SvgPanel();

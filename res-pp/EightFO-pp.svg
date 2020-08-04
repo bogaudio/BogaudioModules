@@ -13,13 +13,26 @@ text.brand {
   font-family: 'Audiowide', sans-serif;
   font-weight: bold;
 }
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
 </style>
 
   <defs>
     <symbol id="waves-eightfo" viewBox="0 0 70px 70px">
-      <!-- <polyline points="0,0 0,70" stroke-width="1" stroke="#0f0" transform="translate(20 0)" /> -->
+      
       <g transform="translate(20 35)">
-        <!-- <circle r="18" fill="none" stroke="#00f" /> -->
+        
         <polyline points="0,0 5,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11 0)"/>
         <polyline points="0,0 5,0" stroke-width="1" stroke="#333" transform="rotate(-45) translate(11 0)"/>
         <polyline points="0,0 5,0" stroke-width="1" stroke="#333" transform="rotate(0) translate(11 0)"/>
@@ -27,24 +40,24 @@ text.brand {
         <polyline points="0,0 5,0" stroke-width="1" stroke="#333" transform="rotate(90) translate(11 0)"/>
       </g>
       <g transform="translate(14 8)">
-        <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
+        
         <polyline points="0,8 12,0 12,8" stroke-width="1" stroke="#333" fill="none"/>
       </g>
       <g transform="translate(33.5 13.5)">
-        <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
+        
         <polyline points="0,8 0,0 12,8" stroke-width="1" stroke="#333" fill="none"/>
       </g>
       <g transform="translate(39 31)">
-        <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
+        
         <path d="M 0 4 A 2 3 0 0 1 6 4" stroke="#333" stroke-width="1" fill="none"/>
         <path d="M 6 4 A 2 3 0 0 0 12 4" stroke="#333" stroke-width="1" fill="none"/>
       </g>
       <g transform="translate(33.5 48.5)">
-        <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
+        
         <polyline points="0,4 3,0 9,8 12,4" stroke-width="1" stroke="#333" fill="none"/>
       </g>
       <g transform="translate(14 54)">
-        <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
+        
         <polyline points="0,4 0,0 6,0 6,8 12,8 12,4" stroke-width="1" stroke="#333" fill="none"/>
       </g>
     </symbol>
@@ -62,26 +75,26 @@ text.brand {
     </symbol>
   </defs>
 
-  <rect width="100%" height="100%" fill="#ddd"/>
-  <polyline points="1,1 254,1 254,379 1,379 1,1" stroke="#e4e4e4" stroke-width="0.5" fill="none"/>
-  <polyline points="0.5,0.5 254.5,0.5 254.5,379.5 0.5,379.5 0.5,0.5" stroke="#ebebeb" stroke-width="0.8" fill="none"/>
-  <polyline points="0,0 255,0 255,380 0,380 0,0" stroke="#f2f2f2" stroke-width="1" fill="none"/>
-
-  <!-- <rect width="110" height="20" fill="#0f0" transform="translate(0 0)" /> -->
-  <!-- <rect width="110" height="20" fill="#0f0" transform="translate(160 0)" /> -->
-  <!-- <rect width="95" height="20" fill="#0f0" transform="translate(0 360)" /> -->
-  <!-- <rect width="95" height="20" fill="#0f0" transform="translate(175 360)" /> -->
-
-  <text class="title" x="114" y="19" font-size="12pt" letter-spacing="4px">8FO</text>
-  <g transform="translate(95 374)">
-    <text class="brand" font-size="8pt" letter-spacing="2px">BOGAUDIO</text>
-    <rect width="3.0" height="3" fill="#ddd" transform="translate(24 -5)"/>
-  </g>
+  <svg>
+      <svg>
+      <rect class="module-background background-fill" width="255.0" height="380.0"/>
+    </svg>
+      <svg>
+      <polyline class="module-border-inner" points="1,1 254.0,1 254.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 254.5,0.5 254.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 255.0,0 255.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    </svg>
+      <text class="title" font-size="12pt" letter-spacing="4px" text-anchor="middle" transform="translate(127.5 19)">8FO</text>
+      <g transform="translate(0 374)">
+        <text class="brand" font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate(127.5 0)">BOGAUDIO</text>
+        <rect class="background-fill" width="3" height="3" transform="translate(112.0 -5)"/>
+      </g>
+    </svg>
 
   <g transform="translate(20 25)">
-    <!-- <rect width="108" height="108" fill="none" stroke="#0f0" /> -->
-    <!-- <polyline points="0,54 54,54" stroke="#0f0" stroke-width="1" fill="none" /> -->
-    <!-- <polyline points="54,54 54,354" stroke="#0f0" stroke-width="1" fill="none" /> -->
+    
+    
+    
     <g transform="translate(20 20)"><svg id="FREQUENCY_PARAM">
       <g transform="translate(34 34)">
         <polyline points="-10,0 10,0" stroke-width="1" stroke="#00f"/>
@@ -125,10 +138,10 @@ text.brand {
         <polyline points="0,0 3,0" stroke-width="0.7" stroke="#333" transform="rotate(-216.92) translate(37 0)"/>
 
         <polyline points="0,0 3,0" stroke-width="0.7" stroke="#333" transform="rotate(-193.85) translate(37 0)"/>
-        <!-- <polyline points="0,0 3,0" stroke-width="0.7" stroke="#333" transform="rotate(-170.77) translate(37 0)" /> -->
+        
 
         <polyline points="0,0 3,0" stroke-width="0.7" stroke="#333" transform="rotate(-147.69) translate(37 0)"/>
-        <!-- <polyline points="0,0 3,0" stroke-width="0.7" stroke="#333" transform="rotate(-124.62) translate(37 0)" /> -->
+        
 
         <polyline points="0,0 3,0" stroke-width="0.7" stroke="#333" transform="rotate(-101.54) translate(37 0)"/>
         <polyline points="0,0 3,0" stroke-width="0.7" stroke="#333" transform="rotate(-78.46) translate(37 0)"/>
@@ -144,8 +157,8 @@ text.brand {
       </g>
     </svg></g>
 
-  <!-- <rect width="20" height="10" fill="#0f0" transform="translate(20 130)" /> -->
-  <!-- <rect width="20" height="10" fill="#0f0" transform="translate(108 130)" /> -->
+  
+  
   <text font-size="6pt" letter-spacing="1px" transform="translate(34 133)">0V = C-3 = 2.04HZ</text>
 
   <g transform="translate(78 335)">
@@ -157,9 +170,9 @@ text.brand {
     </svg></g>
   </g>
 
-  <!-- <rect width="230" height="10" fill="#0f0" transform="translate(0 137)" /> -->
+  
   <g transform="translate(10 163)">
-    <!-- <polyline points="0,0 170,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(10 13)" /> -->
+    
     <g transform="translate(10 0)">
       <g transform="translate(0 5)"><svg id="WAVE_PARAM">
       <g transform="translate(8 8)">
@@ -168,13 +181,13 @@ text.brand {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-      <!-- <rect width="60" height="60" fill="none" stroke="#0f0" transform="translate(-10 -30) translate(8 13)" /> -->
+      
     </g>
     <g transform="translate(70 0)">
-      <!-- <polyline points="0,0 170,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(-10 -10)" /> -->
-      <!-- <polyline points="0,0 170,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(-10 13)" /> -->
-      <!-- <polyline points="0,0 0,170" stroke="#0f0" stroke-width="1" fill="none" transform="translate(33 -13)" /> -->
-      <!-- <polyline points="0,0 170,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(-10 33)" /> -->
+      
+      
+      
+      
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 38) rotate(270)">SAM/PW</text>
       <g transform="translate(20 0)"><svg id="SAMPLE_PWM_PARAM">
       <g transform="translate(13 13)">
@@ -221,15 +234,15 @@ text.brand {
         </g>
       </g>
     </svg></g>
-    <use xlink:href="#waves-eightfo" transform="translate(-2 -22)"/>
+    <use xlink:href="#waves-eightfo" transform="translate(-2 -22)" href="#waves-eightfo"/>
   </g>
 
-  <!-- <rect width="230" height="10" fill="#0f0" transform="translate(0 203)" /> -->
+  
   <g transform="translate(10 226)">
-    <!-- <polyline points="0,0 170,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(10 -10)" /> -->
-    <!-- <polyline points="0,0 170,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(10 13)" /> -->
-    <!-- <polyline points="0,0 0,170" stroke="#0f0" stroke-width="1" fill="none" transform="translate(43 -13)" /> -->
-    <!-- <polyline points="0,0 170,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(10 33)" /> -->
+    
+    
+    
+    
     <g transform="translate(10 0)">
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 36.5) rotate(270)">OFFSET</text>
       <g transform="translate(20 0)"><svg id="OFFSET_PARAM">
@@ -371,7 +384,7 @@ text.brand {
     </svg></g>
       </g>
       <g transform="translate(0 280)">
-        <!-- <polyline points="0,0 200,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 12)" /> -->
+        
         <g transform="translate(4 4)"><svg id="PHASE0_PARAM">
       <g transform="translate(8 8)">
         <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
@@ -384,15 +397,15 @@ text.brand {
   </g>
 
   <g transform="translate(137 36)">
-    <use xlink:href="#dial-phase-eightfo" transform="translate(3 0) translate(12 12) rotate(-225) translate(-20 -20)"/>
-    <use xlink:href="#dial-phase-eightfo" transform="translate(3 40) translate(12 12) rotate(-180) translate(-20 -20)"/>
-    <use xlink:href="#dial-phase-eightfo" transform="translate(3 80) translate(12 12) rotate(-135) translate(-20 -20)"/>
-    <use xlink:href="#dial-phase-eightfo" transform="translate(3 120) translate(12 12) rotate(-90) translate(-20 -20)"/>
+    <use xlink:href="#dial-phase-eightfo" transform="translate(3 0) translate(12 12) rotate(-225) translate(-20 -20)" href="#dial-phase-eightfo"/>
+    <use xlink:href="#dial-phase-eightfo" transform="translate(3 40) translate(12 12) rotate(-180) translate(-20 -20)" href="#dial-phase-eightfo"/>
+    <use xlink:href="#dial-phase-eightfo" transform="translate(3 80) translate(12 12) rotate(-135) translate(-20 -20)" href="#dial-phase-eightfo"/>
+    <use xlink:href="#dial-phase-eightfo" transform="translate(3 120) translate(12 12) rotate(-90) translate(-20 -20)" href="#dial-phase-eightfo"/>
 
-    <use xlink:href="#dial-phase-eightfo" transform="translate(3 160) translate(12 12) rotate(-45) translate(-20 -20)"/>
-    <use xlink:href="#dial-phase-eightfo" transform="translate(3 200) translate(12 12) rotate(0) translate(-20 -20)"/>
-    <use xlink:href="#dial-phase-eightfo" transform="translate(3 240) translate(12 12) rotate(45) translate(-20 -20)"/>
-    <use xlink:href="#dial-phase-eightfo" transform="translate(3 280) translate(12 12) rotate(90) translate(-20 -20)"/>
+    <use xlink:href="#dial-phase-eightfo" transform="translate(3 160) translate(12 12) rotate(-45) translate(-20 -20)" href="#dial-phase-eightfo"/>
+    <use xlink:href="#dial-phase-eightfo" transform="translate(3 200) translate(12 12) rotate(0) translate(-20 -20)" href="#dial-phase-eightfo"/>
+    <use xlink:href="#dial-phase-eightfo" transform="translate(3 240) translate(12 12) rotate(45) translate(-20 -20)" href="#dial-phase-eightfo"/>
+    <use xlink:href="#dial-phase-eightfo" transform="translate(3 280) translate(12 12) rotate(90) translate(-20 -20)" href="#dial-phase-eightfo"/>
   </g>
 
   <g transform="translate(176 32)">
@@ -507,15 +520,15 @@ text.brand {
     <text font-size="6pt" letter-spacing="2px" transform="translate(5 320)">OUT</text>
   </g>
 
-  <!-- <polyline points="0,0 0,360" stroke="#0f0" stroke-width="1" fill="none" transform="translate(135 0)" /> -->
-  <!-- <polyline points="0,0 270,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 360)" /> -->
-  <!-- <rect width="230" height="10" fill="#0f0" transform="translate(0 263)" /> -->
+  
+  
+  
   <g transform="translate(0 313)">
     <rect width="70" height="87" rx="5" fill="#fafafa" transform="translate(10 -40)"/>
     <rect width="108" height="43" rx="5" fill="#fafafa" transform="translate(10 -40)"/>
-    <!-- <rect width="300" height="7" fill="#f00" transform="translate(10 40)" /> -->
+    
     <g transform="translate(10 -40)">
-      <!-- <rect width="30" height="40" rx="5" fill="#fafafa" /> -->
+      
       <g transform="translate(4 4)"><svg id="SAMPLE_PWM_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
@@ -525,7 +538,7 @@ text.brand {
       <text font-size="6pt" letter-spacing="1px" transform="translate(4 38)">S/PW</text>
     </g>
     <g transform="translate(50 -40)">
-      <!-- <rect width="30" height="40" rx="5" fill="#fafafa" /> -->
+      
       <g transform="translate(2 4)"><svg id="OFFSET_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
@@ -535,7 +548,7 @@ text.brand {
       <text font-size="6pt" letter-spacing="2px" transform="translate(4.5 38)">OFF</text>
     </g>
     <g transform="translate(90 -40)">
-      <!-- <rect width="30" height="40" rx="5" fill="#fafafa" /> -->
+      
       <g transform="translate(0 4)"><svg id="SCALE_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
@@ -545,7 +558,7 @@ text.brand {
       <text font-size="6pt" letter-spacing="2px" transform="translate(2.5 38)">SCL</text>
     </g>
     <g transform="translate(10 0)">
-      <!-- <rect width="30" height="47" rx="5" fill="#fafafa" /> -->
+      
       <g transform="translate(4 5)"><svg id="PITCH_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
@@ -555,7 +568,7 @@ text.brand {
       <text font-size="6pt" letter-spacing="1px" transform="translate(2 40)">V/OCT</text>
     </g>
     <g transform="translate(50 0)">
-      <!-- <rect width="30" height="47" rx="5" fill="#fafafa" /> -->
+      
       <g transform="translate(2 5)"><svg id="RESET_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>

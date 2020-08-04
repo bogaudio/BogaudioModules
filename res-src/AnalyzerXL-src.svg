@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="630" height="380" viewBox="0 0 630 380">
+<module hp="42">
   <style/>
 
   <defs>
@@ -8,9 +8,9 @@
     </symbol>
   </defs>
 
-  <rect width="100%" height="100%" fill="#000"/>
+  <def xlink:href="#module-background"/>
   <g transform="translate(0 375) rotate(-90)">
-    <text transform="translate(0 12.5)">ANALYZER-XL</text>
+    <text transform="translate(0 12.5)" letter-spacing="1">ANALYZER-XL</text>
     <text transform="translate(0 25.5)">BOGAUDIO</text>
   </g>
 
@@ -27,4 +27,4 @@
 
   <use id="DISPLAY_WIDGET" xlink:href="#display-analyzerxl" transform="translate(30 0)"/>
   <!-- <rect cx="0" cy="0" width="600" height="380" fill="#555" transform="translate(30 0)" /> -->
-</svg>
+</module>

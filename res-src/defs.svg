@@ -1,6 +1,68 @@
 <?xml version="1.0"?>
-<svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
   <defs>
+    <symbol id="module-background">
+      <rect class="module-background background-fill" width="$width" height="$height"/>
+    </symbol>
+
+    <symbol id="module-border">
+      <polyline class="module-border-inner" points="1,1 $width-1,1 $width-1,$height-1 1,$height-1 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 $width-0.5,0.5 $width-0.5,$height-0.5 0.5,$height-0.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 $width,0 $width,$height 0,$height 0,0" stroke-width="1" fill="none"/>
+    </symbol>
+
+    <symbol id="module">
+      <def xlink:href="#module-background"/>
+      <def xlink:href="#module-border"/>
+      <text class="title" font-size="12pt" letter-spacing="${letterspacing}px" default-letterspacing="4" text-anchor="middle" transform="translate($width/2.0 19)">$name</text>
+      <g transform="translate(0 374)">
+        <text class="brand" font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate($width/2.0 0)">BOGAUDIO</text>
+        <rect class="background-fill" width="3" height="3" transform="translate($width/2.0-15.5 -5)"/>
+      </g>
+    </symbol>
+
+    <symbol id="module8">
+      <def xlink:href="#module-background"/>
+      <def xlink:href="#module-border"/>
+      <text class="title" font-size="9pt" letter-spacing="${letterspacing}px" default-letterspacing="3" text-anchor="middle" transform="translate($width/2.0 19)">$name</text>
+      <g transform="translate(5.5 374)">
+        <text class="brand" font-size="6.5pt" letter-spacing="2px">BOGAUDIO</text>
+        <rect width="1.5" height="2" fill="#ddd" transform="translate(21 -4)"/>
+      </g>
+    </symbol>
+
+    <symbol id="module6">
+      <def xlink:href="#module-background"/>
+      <def xlink:href="#module-border"/>
+      <text class="title" font-size="9pt" letter-spacing="${letterspacing}px" default-letterspacing="3" text-anchor="end" transform="translate($width-7.0 17)">$name</text>
+      <g transform="translate(5.5 374)">
+        <text class="brand" font-size="6.5pt" letter-spacing="2px">BOGAUDIO</text>
+        <rect width="1.5" height="2" fill="#ddd" transform="translate(21 -4)"/>
+      </g>
+    </symbol>
+
+    <symbol id="module5">
+      <def xlink:href="#module-background"/>
+      <def xlink:href="#module-border"/>
+      <text class="title" font-size="9pt" letter-spacing="${letterspacing}px" default-letterspacing="3" text-anchor="end" transform="translate($width-7.0 17)">$name</text>
+      <g transform="translate(25 374)">
+        <text class="brand" font-size="6.5pt" letter-spacing="2px">BGA</text>
+        <rect width="2" height="2" fill="#ddd" transform="translate(11.5 -4)"/>
+      </g>
+    </symbol>
+
+    <symbol id="module3">
+      <def xlink:href="#module-background"/>
+      <def xlink:href="#module-border"/>
+      <g transform="rotate(-90) translate(4-$height 13)">
+        <text class="title" font-size="7pt" letter-spacing="${letterspacing}px" default-letterspacing="2.5">$name</text>
+        <g transform="translate(0 12)">
+          <text class="brand" font-size="7pt" letter-spacing="2px">BGA</text>
+          <rect width="3.0" height="3" fill="#ddd" transform="translate(11.5 -5)"/>
+        </g>
+      </g>
+    </symbol>
+
     <symbol id="button" viewBox="0 0 18px 18px">
       <g transform="translate(9 9)">
         <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
