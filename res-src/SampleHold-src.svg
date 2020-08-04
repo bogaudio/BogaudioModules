@@ -6,7 +6,7 @@
 
   <g transform="translate(0 18)">
     <!-- <text font-size="6pt" letterspacing="2px" transform="translate(5.5 0)">1</text> -->
-    <!-- <polyline points="0,0 21,0" stroke-width="1" stroke="#333" transform="translate(14 -3)" /> -->
+    <!-- <polyline points="0,0 21,0" stroke-width="1" transform="translate(14 -3)" /> -->
     <g transform="translate(0 5)">
       <g transform="translate(5.5 0)">
         <rect width="34" height="10" fill="#fafafa" transform="translate(0 58)"/>

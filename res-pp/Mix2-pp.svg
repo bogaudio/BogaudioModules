@@ -14,6 +14,10 @@ text.brand {
   font-weight: bold;
 }
 
+path, polyline {
+  stroke: #333;
+}
+
 rect.module-background, .background-fill {
   fill: #ddd;
 }
@@ -47,32 +51,32 @@ polyline.module-border-outer {
   <g transform="translate(0 32)">
     <g transform="translate(15 0)">
       <g transform="translate(0 6.5)">
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
       </g>
       <g transform="translate(0 19.05)">
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
         <text font-size="6.0pt" transform="translate(7 0) rotate(0) translate(-2.5 2.6)">0</text>
       </g>
       <g transform="translate(0 32.86)">
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
         <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-4 2.2)">-6</text>
       </g>
       <g transform="translate(0 46.05)">
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
         <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-12</text>
       </g>
       <g transform="translate(0 72.41)">
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
         <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-24</text>
       </g>
       <g transform="translate(0 125.14)">
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(10.5 0)"/>
-        <polyline points="0,0 6.5,0" stroke="#333" fill="none" transform="translate(28 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
         <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-48</text>
       </g>
       <g transform="translate(0 151.5)">

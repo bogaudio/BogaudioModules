@@ -12,20 +12,20 @@
     <symbol id="guide-compression-mono" viewBox="0 0 20px 95px">
       <g transform="translate(0 10)">
         <g transform="translate(0 0)">
-          <polyline points="0,0 3,0" stroke="#333" fill="none" transform="translate(11 0)"/>
+          <polyline points="0,0 3,0" fill="none" transform="translate(11 0)"/>
           <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-4.5 2.2)">12+</text>
         </g>
         <g transform="translate(0 15)">
-          <polyline points="0,0 3,0" stroke="#333" fill="none" transform="translate(11 0)"/>
+          <polyline points="0,0 3,0" fill="none" transform="translate(11 0)"/>
           <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-2.5 2.2)">6</text>
         </g>
         <g transform="translate(0 30)">
-          <polyline points="0,0 3,0" stroke="#333" fill="none" transform="translate(11 0)"/>
+          <polyline points="0,0 3,0" fill="none" transform="translate(11 0)"/>
           <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-2.5 2.2)">0</text>
         </g>
 
         <g transform="translate(0 15)">
-          <!-- <polyline points="0,0 3,0" stroke="#333" fill="none" transform="translate(23 0)" /> -->
+          <!-- <polyline points="0,0 3,0" fill="none" transform="translate(23 0)" /> -->
           <text font-size="6.0pt" transform="translate(31 0) rotate(-90) translate(-4.5 2.2)">dB</text>
         </g>
       </g>

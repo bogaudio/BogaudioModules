@@ -14,38 +14,38 @@
     <symbol viewBox="0 0 45px 45px" id="dial-time-slew">
       <g id="g55413" transform="translate(22.5 22.5)">
         <text id="text55399" transform="rotate(-240) translate(18 0) rotate(240) translate(-1.9 2.2)" font-size="5.0pt">0</text>
-        <polyline id="polyline55401" transform="rotate(-172.92) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 1.5,0"/>
+        <polyline id="polyline55401" transform="rotate(-172.92) translate(15 0)" stroke-width="0.3" points="0,0 1.5,0"/>
         <text id="text55403" transform="rotate(-145.13) translate(17 0) rotate(145.13) translate(-2.5 2.2)" font-size="5.0pt">1</text>
-        <polyline id="polyline55405" transform="rotate(-75.68) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline55405" transform="rotate(-75.68) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
         <text id="text55407" transform="rotate(-27.87) translate(17 0) rotate(27.87) translate(-2 2.2)" font-size="5.0pt">5</text>
-        <polyline id="polyline55409" transform="rotate(19.81) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline55409" transform="rotate(19.81) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
         <text id="text55411" transform="rotate(60) translate(18 0) rotate(-60) translate(-1.9 2.2)" font-size="5.0pt">10</text>
       </g>
     </symbol>
     <symbol viewBox="0 0 45px 45px" id="dial-rise-shape-slew">
       <g id="g55434" transform="translate(20 20)">
-        <polyline id="polyline55416" transform="rotate(-52.5) translate(10 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline55418" transform="rotate(-15) translate(10 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline55420" transform="rotate(22.5) translate(10 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline55422" transform="rotate(-127.5) translate(10 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline55424" transform="rotate(-165) translate(10 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline55426" transform="rotate(-202.5) translate(10 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <path id="path55428" transform="rotate(60) translate(13 0) rotate(-60) translate(2 0) rotate(-45) translate(0 0)" fill="none" stroke-width="1" stroke="#333" d="M -3.5 0 Q 0 3.5, 3.5 0"/>
-        <polyline id="polyline55430" transform="rotate(-90) translate(13 0) rotate(90) rotate(-45) translate(0 0)" fill="none" stroke-width="1" stroke="#333" points="-3.5,0 3.5,0"/>
-        <path id="path55432" transform="rotate(-240) translate(13 0) rotate(240) translate(-2 0) rotate(135) translate(0 0)" fill="none" stroke-width="1" stroke="#333" d="M -3.5 0 Q 0 3.5, 3.5 0"/>
+        <polyline id="polyline55416" transform="rotate(-52.5) translate(10 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline55418" transform="rotate(-15) translate(10 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline55420" transform="rotate(22.5) translate(10 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline55422" transform="rotate(-127.5) translate(10 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline55424" transform="rotate(-165) translate(10 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline55426" transform="rotate(-202.5) translate(10 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <path id="path55428" transform="rotate(60) translate(13 0) rotate(-60) translate(2 0) rotate(-45) translate(0 0)" fill="none" stroke-width="1" d="M -3.5 0 Q 0 3.5, 3.5 0"/>
+        <polyline id="polyline55430" transform="rotate(-90) translate(13 0) rotate(90) rotate(-45) translate(0 0)" fill="none" stroke-width="1" points="-3.5,0 3.5,0"/>
+        <path id="path55432" transform="rotate(-240) translate(13 0) rotate(240) translate(-2 0) rotate(135) translate(0 0)" fill="none" stroke-width="1" d="M -3.5 0 Q 0 3.5, 3.5 0"/>
       </g>
     </symbol>
     <symbol viewBox="0 0 45px 45px" id="dial-fall-shape-slew">
       <g id="g55455" transform="translate(20 20)">
-        <polyline id="polyline55437" transform="rotate(-52.5) translate(10 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline55439" transform="rotate(-15) translate(10 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline55441" transform="rotate(22.5) translate(10 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline55443" transform="rotate(-127.5) translate(10 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline55445" transform="rotate(-165) translate(10 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline55447" transform="rotate(-202.5) translate(10 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <path id="path55449" transform="rotate(60) translate(13 0) rotate(-60) translate(2 0) rotate(-135) translate(0 0)" fill="none" stroke-width="1" stroke="#333" d="M -3.5 0 Q 0 3.5, 3.5 0"/>
-        <polyline id="polyline55451" transform="rotate(-90) translate(13 0) rotate(90) rotate(45) translate(0 0)" fill="none" stroke-width="1" stroke="#333" points="-3.5,0 3.5,0"/>
-        <path id="path55453" transform="rotate(-240) translate(13 0) rotate(240) translate(-2 0) rotate(45) translate(0 0)" fill="none" stroke-width="1" stroke="#333" d="M -3.5 0 Q 0 3.5, 3.5 0"/>
+        <polyline id="polyline55437" transform="rotate(-52.5) translate(10 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline55439" transform="rotate(-15) translate(10 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline55441" transform="rotate(22.5) translate(10 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline55443" transform="rotate(-127.5) translate(10 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline55445" transform="rotate(-165) translate(10 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline55447" transform="rotate(-202.5) translate(10 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <path id="path55449" transform="rotate(60) translate(13 0) rotate(-60) translate(2 0) rotate(-135) translate(0 0)" fill="none" stroke-width="1" d="M -3.5 0 Q 0 3.5, 3.5 0"/>
+        <polyline id="polyline55451" transform="rotate(-90) translate(13 0) rotate(90) rotate(45) translate(0 0)" fill="none" stroke-width="1" points="-3.5,0 3.5,0"/>
+        <path id="path55453" transform="rotate(-240) translate(13 0) rotate(240) translate(-2 0) rotate(45) translate(0 0)" fill="none" stroke-width="1" d="M -3.5 0 Q 0 3.5, 3.5 0"/>
       </g>
     </symbol>
   </defs>
@@ -103,9 +103,9 @@
       <path d="M 0,0 H 2.5" style="stroke:#333333;stroke-width:0.3" transform="rotate(-127.5,-5,-2.4657271)" id="polyline55596"/>
       <path d="M 0,0 H 2.5" style="stroke:#333333;stroke-width:0.3" transform="rotate(-165,-5,-0.65826249)" id="polyline55598"/>
       <path d="M 0,0 H 2.5" style="stroke:#333333;stroke-width:0.3" transform="rotate(157.5,-5,0.99456184)" id="polyline55600"/>
-      <path d="M -3.5,0 Q 0,3.5 3.5,0" stroke="#333333" stroke-width="1" fill="none" transform="rotate(-45,17.840007,-4.6312425)" id="path55602"/>
+      <path d="M -3.5,0 Q 0,3.5 3.5,0" stroke-width="1" fill="none" transform="rotate(-45,17.840007,-4.6312425)" id="path55602"/>
       <path d="m -3.5,0 h 7" style="fill:none;stroke:#333333;stroke-width:1" transform="rotate(-45,-15.692388,-6.5)" id="polyline55604"/>
-      <path d="M -3.5,0 Q 0,3.5 3.5,0" stroke="#333333" stroke-width="1" fill="none" transform="rotate(135,-6.5816765,3.8687575)" id="path55606"/>
+      <path d="M -3.5,0 Q 0,3.5 3.5,0" stroke-width="1" fill="none" transform="rotate(135,-6.5816765,3.8687575)" id="path55606"/>
     </g>
   </g>
   <g transform="translate(7.5,102)" id="g55492">
@@ -148,9 +148,9 @@
       <path d="M 0,0 H 2.5" style="stroke:#333333;stroke-width:0.3" transform="rotate(-127.5,-5,-2.4657271)" id="polyline55636"/>
       <path d="M 0,0 H 2.5" style="stroke:#333333;stroke-width:0.3" transform="rotate(-165,-5,-0.65826249)" id="polyline55638"/>
       <path d="M 0,0 H 2.5" style="stroke:#333333;stroke-width:0.3" transform="rotate(157.5,-5,0.99456184)" id="polyline55640"/>
-      <path d="M -3.5,0 Q 0,3.5 3.5,0" stroke="#333333" stroke-width="1" fill="none" transform="rotate(-135,6.5816765,3.8687575)" id="path55642"/>
+      <path d="M -3.5,0 Q 0,3.5 3.5,0" stroke-width="1" fill="none" transform="rotate(-135,6.5816765,3.8687575)" id="path55642"/>
       <path d="m -3.5,0 h 7" style="fill:none;stroke:#333333;stroke-width:1" transform="rotate(45,15.692388,-6.5)" id="polyline55644"/>
-      <path d="M -3.5,0 Q 0,3.5 3.5,0" stroke="#333333" stroke-width="1" fill="none" transform="rotate(45,-17.840007,-4.6312425)" id="path55646"/>
+      <path d="M -3.5,0 Q 0,3.5 3.5,0" stroke-width="1" fill="none" transform="rotate(45,-17.840007,-4.6312425)" id="path55646"/>
     </g>
   </g>
   <g transform="translate(7.5,223)" id="g55510">

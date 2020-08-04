@@ -14,12 +14,12 @@
     <symbol viewBox="0 0 45px 45px" id="dial-cutoff-lvcf">
       <g id="g19080" transform="translate(22.5 22.5)">
         <text id="text19062" transform="rotate(-240) translate(18 0) rotate(240) translate(-2 2)" font-size="5.0pt">0</text>
-        <polyline id="polyline19064" transform="rotate(-218.8) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 1.5,0"/>
-        <polyline id="polyline19066" transform="rotate(-192.6) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline19064" transform="rotate(-218.8) translate(15 0)" stroke-width="0.3" points="0,0 1.5,0"/>
+        <polyline id="polyline19066" transform="rotate(-192.6) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
         <text id="text19068" transform="rotate(-172.2) translate(18 0) rotate(172.2) translate(-1 2)" font-size="5.0pt">1</text>
-        <polyline id="polyline19070" transform="rotate(-90) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline19070" transform="rotate(-90) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
         <text id="text19072" transform="rotate(-27.9) translate(18 0) rotate(27.9) translate(-4 2)" font-size="5.0pt">10</text>
-        <polyline id="polyline19074" transform="rotate(19.8) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline19074" transform="rotate(19.8) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
         <text id="text19076" transform="rotate(60) translate(18 0) rotate(-60) translate(-2 2)" font-size="5.0pt">20</text>
         <text id="text19078" transform="rotate(90) translate(18 0) rotate(-90) translate(-5 2)" font-size="4.0pt">KHZ</text>
       </g>
@@ -27,16 +27,16 @@
     <symbol viewBox="0 0 45px 45px" id="dial-q-lvcf">
       <g id="g19105" transform="translate(22.5 22.5)">
         <text id="text19083" transform="rotate(-240) translate(18 0) rotate(240) translate(-2 2)" font-size="5.0pt">0</text>
-        <polyline id="polyline19085" transform="rotate(-210) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline19087" transform="rotate(-180) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline19089" transform="rotate(-150) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline19091" transform="rotate(-120) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline19093" transform="rotate(-90) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline19095" transform="rotate(-60) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline19097" transform="rotate(-30) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline19099" transform="rotate(0) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline19101" transform="rotate(30) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline19103" transform="rotate(60) translate(15 0)" stroke="#333" stroke-width="1" points="0,0 3.5,0"/>
+        <polyline id="polyline19085" transform="rotate(-210) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline19087" transform="rotate(-180) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline19089" transform="rotate(-150) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline19091" transform="rotate(-120) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline19093" transform="rotate(-90) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline19095" transform="rotate(-60) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline19097" transform="rotate(-30) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline19099" transform="rotate(0) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline19101" transform="rotate(30) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline19103" transform="rotate(60) translate(15 0)" stroke-width="1" points="0,0 3.5,0"/>
       </g>
     </symbol>
   </defs>
@@ -104,10 +104,10 @@
       <g transform="rotate(-90,-5,-5)" id="g19142">
         <path d="M 0,0 H 4" style="stroke:#333333;stroke-width:1" id="polyline19140"/>
       </g>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)" id="path19144"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" id="path19146"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)" id="path19148"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" id="path19150"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)" id="path19144"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" id="path19146"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)" id="path19148"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" id="path19150"/>
     </g>
   </g>
   <g style="font-weight:bold;font-size:8px;font-family:Roboto, sans-serif;letter-spacing:1px;fill:#333333" id="text19158" aria-label="RES/BW">

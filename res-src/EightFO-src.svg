@@ -7,44 +7,44 @@
       <!-- <polyline points="0,0 0,70" stroke-width="1" stroke="#0f0" transform="translate(20 0)" /> -->
       <g transform="translate(20 35)">
         <!-- <circle r="18" fill="none" stroke="#00f" /> -->
-        <polyline points="0,0 5,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11 0)"/>
-        <polyline points="0,0 5,0" stroke-width="1" stroke="#333" transform="rotate(-45) translate(11 0)"/>
-        <polyline points="0,0 5,0" stroke-width="1" stroke="#333" transform="rotate(0) translate(11 0)"/>
-        <polyline points="0,0 5,0" stroke-width="1" stroke="#333" transform="rotate(45) translate(11 0)"/>
-        <polyline points="0,0 5,0" stroke-width="1" stroke="#333" transform="rotate(90) translate(11 0)"/>
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-90) translate(11 0)"/>
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-45) translate(11 0)"/>
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(0) translate(11 0)"/>
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(45) translate(11 0)"/>
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(90) translate(11 0)"/>
       </g>
       <g transform="translate(14 8)">
         <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
-        <polyline points="0,8 12,0 12,8" stroke-width="1" stroke="#333" fill="none"/>
+        <polyline points="0,8 12,0 12,8" stroke-width="1" fill="none"/>
       </g>
       <g transform="translate(33.5 13.5)">
         <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
-        <polyline points="0,8 0,0 12,8" stroke-width="1" stroke="#333" fill="none"/>
+        <polyline points="0,8 0,0 12,8" stroke-width="1" fill="none"/>
       </g>
       <g transform="translate(39 31)">
         <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
-        <path d="M 0 4 A 2 3 0 0 1 6 4" stroke="#333" stroke-width="1" fill="none"/>
-        <path d="M 6 4 A 2 3 0 0 0 12 4" stroke="#333" stroke-width="1" fill="none"/>
+        <path d="M 0 4 A 2 3 0 0 1 6 4" stroke-width="1" fill="none"/>
+        <path d="M 6 4 A 2 3 0 0 0 12 4" stroke-width="1" fill="none"/>
       </g>
       <g transform="translate(33.5 48.5)">
         <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
-        <polyline points="0,4 3,0 9,8 12,4" stroke-width="1" stroke="#333" fill="none"/>
+        <polyline points="0,4 3,0 9,8 12,4" stroke-width="1" fill="none"/>
       </g>
       <g transform="translate(14 54)">
         <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
-        <polyline points="0,4 0,0 6,0 6,8 12,8 12,4" stroke-width="1" stroke="#333" fill="none"/>
+        <polyline points="0,4 0,0 6,0 6,8 12,8 12,4" stroke-width="1" fill="none"/>
       </g>
     </symbol>
 
     <symbol id="dial-phase-eightfo" viewBox="0 0 40px 40px">
       <g transform="translate(20 20)">
         <g transform="rotate(-90) translate(10 0)">
-          <polyline points="0,0 4,0" stroke-width="1" stroke="#333"/>
+          <polyline points="0,0 4,0" stroke-width="1"/>
         </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
     </symbol>
   </defs>

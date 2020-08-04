@@ -12,53 +12,53 @@
 
   <g transform="translate(5.5 9)">
     <def id="IN2_INPUT" xlink:href="#input" transform="translate(4 22)"/>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(31 34)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(31 34)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(37 36.5)">2</text>
     <def id="IN4_INPUT" xlink:href="#input" transform="translate(4 58)"/>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(31 70)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(31 70)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(37 72.5)">4</text>
     <def id="IN6_INPUT" xlink:href="#input" transform="translate(4 94)"/>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(31 106)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(31 106)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(37 108.5)">6</text>
     <def id="IN8_INPUT" xlink:href="#input" transform="translate(4 130)"/>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(31 142)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(31 142)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(37 144.5)">8</text>
     <def id="IN10_INPUT" xlink:href="#input" transform="translate(4 166)"/>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(31 178)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(31 178)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(37 180.5)">10</text>
     <def id="IN12_INPUT" xlink:href="#input" transform="translate(4 202)"/>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(31 214)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(31 214)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(37 216.5)">12</text>
     <def id="IN14_INPUT" xlink:href="#input" transform="translate(4 238)"/>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(31 250)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(31 250)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(37 252.5)">14</text>
     <def id="IN16_INPUT" xlink:href="#input" transform="translate(4 274)"/>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(31 286)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(31 286)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(37 288.5)">16</text>
 
     <def id="IN1_INPUT" xlink:href="#input" transform="translate(28 4)"/>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(22 16)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(22 16)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(16 18.5)">1</text>
     <def id="IN3_INPUT" xlink:href="#input" transform="translate(28 40)"/>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(22 52)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(22 52)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(16 54.5)">3</text>
     <def id="IN5_INPUT" xlink:href="#input" transform="translate(28 76)"/>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(22 88)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(22 88)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(16 90.5)">5</text>
     <def id="IN7_INPUT" xlink:href="#input" transform="translate(28 112)"/>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(22 124)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(22 124)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(16 126.5)">7</text>
     <def id="IN9_INPUT" xlink:href="#input" transform="translate(28 148)"/>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(22 160)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(22 160)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(16 162.5)">9</text>
     <def id="IN11_INPUT" xlink:href="#input" transform="translate(28 184)"/>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(22 196)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(22 196)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(11 198.5)">11</text>
     <def id="IN13_INPUT" xlink:href="#input" transform="translate(28 220)"/>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(22 232)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(22 232)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(11 234.5)">13</text>
     <def id="IN15_INPUT" xlink:href="#input" transform="translate(28 256)"/>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(22 268)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(22 268)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(11 270.5)">15</text>
 
     <!-- <polyline points="16,34 40,52" stroke="#ff0" stroke-width="1" fill="none" transform="translate(0 0)" /> -->
@@ -73,53 +73,53 @@
 
   <g transform="translate(22.5 302)">
     <def id="OUT1_OUTPUT" xlink:href="#output" transform="translate(4 28)"/>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(16 22)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(16 22)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(13.7 19)">A</text>
     <def id="OUT3_OUTPUT" xlink:href="#output" transform="translate(40 28)"/>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(52 22)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(52 22)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(49.7 19)">C</text>
     <def id="OUT5_OUTPUT" xlink:href="#output" transform="translate(76 28)"/>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(88 22)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(88 22)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(85.9 19)">E</text>
     <def id="OUT7_OUTPUT" xlink:href="#output" transform="translate(112 28)"/>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(124 22)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(124 22)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(121.7 19)">G</text>
     <def id="OUT9_OUTPUT" xlink:href="#output" transform="translate(148 28)"/>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(160 22)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(160 22)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(159 19)">I</text>
     <def id="OUT11_OUTPUT" xlink:href="#output" transform="translate(184 28)"/>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(196 22)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(196 22)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(193.8 19)">K</text>
     <def id="OUT13_OUTPUT" xlink:href="#output" transform="translate(220 28)"/>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(232 22)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(232 22)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(229.05 19)">M</text>
     <def id="OUT15_OUTPUT" xlink:href="#output" transform="translate(256 28)"/>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(268 22)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(268 22)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(265.7 19)">O</text>
 
     <def id="OUT2_OUTPUT" xlink:href="#output" transform="translate(22 4)"/>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(34 31)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(34 31)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(32 42)">B</text>
     <def id="OUT4_OUTPUT" xlink:href="#output" transform="translate(58 4)"/>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(70 31)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(70 31)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(68 42)">D</text>
     <def id="OUT6_OUTPUT" xlink:href="#output" transform="translate(94 4)"/>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(106 31)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(106 31)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(104 42)">F</text>
     <def id="OUT8_OUTPUT" xlink:href="#output" transform="translate(130 4)"/>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(142 31)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(142 31)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(139.65 42)">H</text>
     <def id="OUT10_OUTPUT" xlink:href="#output" transform="translate(166 4)"/>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(178 31)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(178 31)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(176 42)">J</text>
     <def id="OUT12_OUTPUT" xlink:href="#output" transform="translate(202 4)"/>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(214 31)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(214 31)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(212 42)">L</text>
     <def id="OUT14_OUTPUT" xlink:href="#output" transform="translate(238 4)"/>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(250 31)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(250 31)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(247.6 42)">N</text>
     <def id="OUT16_OUTPUT" xlink:href="#output" transform="translate(274 4)"/>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(286 31)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(286 31)"/>
     <text font-size="5pt" letter-spacing="1px" transform="translate(283.8 42)">P</text>
   </g>
 
@@ -434,69 +434,69 @@
     <!-- <polyline points="0,0 330,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 232.5)" /> -->
 
     <text font-size="6pt" letter-spacing="1px" transform="translate(10.5 10.5)">1</text>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(16.5 7.5)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(16.5 7.5)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(10.5 25.5)">2</text>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(16.5 22.5)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(16.5 22.5)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(10.5 40.5)">3</text>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(16.5 37.5)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(16.5 37.5)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(10.5 55.5)">4</text>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(16.5 52.5)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(16.5 52.5)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(10.5 70.5)">5</text>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(16.5 67.5)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(16.5 67.5)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(10.5 85.5)">6</text>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(16.5 82.5)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(16.5 82.5)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(10.5 100.5)">7</text>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(16.5 97.5)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(16.5 97.5)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(10.5 115.5)">8</text>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(16.5 112.5)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(16.5 112.5)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(10.5 130.5)">9</text>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(16.5 127.5)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(16.5 127.5)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(4 145.5)">10</text>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(16.5 142.5)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(16.5 142.5)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(4 160.5)">11</text>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(16.5 157.5)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(16.5 157.5)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(4 175.5)">12</text>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(16.5 172.5)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(16.5 172.5)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(4 190.5)">13</text>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(16.5 187.5)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(16.5 187.5)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(4 205.5)">14</text>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(16.5 202.5)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(16.5 202.5)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(4 220.5)">15</text>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(16.5 217.5)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(16.5 217.5)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(4 235.5)">16</text>
-    <polyline points="0,0 3,0" stroke="#333" stroke-width="1" fill="none" transform="translate(16.5 232.5)"/>
+    <polyline points="0,0 3,0" stroke-width="1" fill="none" transform="translate(16.5 232.5)"/>
 
     <text font-size="6pt" letter-spacing="1px" transform="translate(24.5 252)">A</text>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(27.5 240)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(27.5 240)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(39.9 252)">B</text>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(42.5 240)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(42.5 240)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(54.7 252)">C</text>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(57.7 240)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(57.7 240)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(69.8 252)">D</text>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(72.5 240)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(72.5 240)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(84.7 252)">E</text>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(87.5 240)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(87.5 240)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(99.8 252)">F</text>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(102.5 240)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(102.5 240)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(114.7 252)">G</text>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(117.5 240)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(117.5 240)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(129.6 252)">H</text>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(132.5 240)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(132.5 240)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(146.1 252)">I</text>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(147.5 240)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(147.5 240)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(159.8 252)">J</text>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(162.5 240)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(162.5 240)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(174.9 252)">K</text>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(177.5 240)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(177.5 240)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(190 252)">L</text>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(192.5 240)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(192.5 240)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(204.1 252)">M</text>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(207.5 240)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(207.5 240)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(219.5 252)">N</text>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(222.5 240)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(222.5 240)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(234.7 252)">O</text>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(237.5 240)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(237.5 240)"/>
     <text font-size="6pt" letter-spacing="1px" transform="translate(249.8 252)">P</text>
-    <polyline points="0,0 0,3" stroke="#333" stroke-width="1" fill="none" transform="translate(252.5 240)"/>
+    <polyline points="0,0 0,3" stroke-width="1" fill="none" transform="translate(252.5 240)"/>
   </g>
 </module>

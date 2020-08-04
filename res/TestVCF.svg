@@ -14,31 +14,31 @@
     <symbol viewBox="0 0 50px 50px" id="dial-cutoff-testvcf">
       <g id="g60706" transform="translate(25 25)">
         <text id="text60684" transform="rotate(-240) translate(24 0) rotate(240) translate(-4 3)" font-size="6.0pt">0</text>
-        <polyline id="polyline60686" transform="rotate(-210) translate(22 0)" stroke="#333" stroke-width="0.5" points="0,0 3,0"/>
-        <polyline id="polyline60688" transform="rotate(-180) translate(22 0)" stroke="#333" stroke-width="0.5" points="0,0 3,0"/>
-        <polyline id="polyline60690" transform="rotate(-150) translate(22 0)" stroke="#333" stroke-width="0.5" points="0,0 3,0"/>
-        <polyline id="polyline60692" transform="rotate(-120) translate(22 0)" stroke="#333" stroke-width="0.5" points="0,0 3,0"/>
-        <polyline id="polyline60694" transform="rotate(-90) translate(22 0)" stroke="#333" stroke-width="0.5" points="0,0 3,0"/>
-        <polyline id="polyline60696" transform="rotate(-60) translate(22 0)" stroke="#333" stroke-width="0.5" points="0,0 3,0"/>
-        <polyline id="polyline60698" transform="rotate(-30) translate(22 0)" stroke="#333" stroke-width="0.5" points="0,0 3,0"/>
-        <polyline id="polyline60700" transform="rotate(0) translate(22 0)" stroke="#333" stroke-width="0.5" points="0,0 3,0"/>
-        <polyline id="polyline60702" transform="rotate(30) translate(22 0)" stroke="#333" stroke-width="0.5" points="0,0 3,0"/>
-        <polyline id="polyline60704" transform="rotate(60) translate(22 0)" stroke="#333" stroke-width="1" points="0,0 4,0"/>
+        <polyline id="polyline60686" transform="rotate(-210) translate(22 0)" stroke-width="0.5" points="0,0 3,0"/>
+        <polyline id="polyline60688" transform="rotate(-180) translate(22 0)" stroke-width="0.5" points="0,0 3,0"/>
+        <polyline id="polyline60690" transform="rotate(-150) translate(22 0)" stroke-width="0.5" points="0,0 3,0"/>
+        <polyline id="polyline60692" transform="rotate(-120) translate(22 0)" stroke-width="0.5" points="0,0 3,0"/>
+        <polyline id="polyline60694" transform="rotate(-90) translate(22 0)" stroke-width="0.5" points="0,0 3,0"/>
+        <polyline id="polyline60696" transform="rotate(-60) translate(22 0)" stroke-width="0.5" points="0,0 3,0"/>
+        <polyline id="polyline60698" transform="rotate(-30) translate(22 0)" stroke-width="0.5" points="0,0 3,0"/>
+        <polyline id="polyline60700" transform="rotate(0) translate(22 0)" stroke-width="0.5" points="0,0 3,0"/>
+        <polyline id="polyline60702" transform="rotate(30) translate(22 0)" stroke-width="0.5" points="0,0 3,0"/>
+        <polyline id="polyline60704" transform="rotate(60) translate(22 0)" stroke-width="1" points="0,0 4,0"/>
       </g>
     </symbol>
     <symbol viewBox="0 0 50px 50px" id="dial-resonance-testvcf">
       <g id="g60731" transform="translate(25 25)">
         <text id="text60709" transform="rotate(-240) translate(24 0) rotate(240) translate(-4 3)" font-size="6.0pt">0</text>
-        <polyline id="polyline60711" transform="rotate(-210) translate(22 0)" stroke="#333" stroke-width="0.5" points="0,0 3,0"/>
-        <polyline id="polyline60713" transform="rotate(-180) translate(22 0)" stroke="#333" stroke-width="0.5" points="0,0 3,0"/>
-        <polyline id="polyline60715" transform="rotate(-150) translate(22 0)" stroke="#333" stroke-width="0.5" points="0,0 3,0"/>
-        <polyline id="polyline60717" transform="rotate(-120) translate(22 0)" stroke="#333" stroke-width="0.5" points="0,0 3,0"/>
-        <polyline id="polyline60719" transform="rotate(-90) translate(22 0)" stroke="#333" stroke-width="0.5" points="0,0 3,0"/>
-        <polyline id="polyline60721" transform="rotate(-60) translate(22 0)" stroke="#333" stroke-width="0.5" points="0,0 3,0"/>
-        <polyline id="polyline60723" transform="rotate(-30) translate(22 0)" stroke="#333" stroke-width="0.5" points="0,0 3,0"/>
-        <polyline id="polyline60725" transform="rotate(0) translate(22 0)" stroke="#333" stroke-width="0.5" points="0,0 3,0"/>
-        <polyline id="polyline60727" transform="rotate(30) translate(22 0)" stroke="#333" stroke-width="0.5" points="0,0 3,0"/>
-        <polyline id="polyline60729" transform="rotate(60) translate(22 0)" stroke="#333" stroke-width="1" points="0,0 4,0"/>
+        <polyline id="polyline60711" transform="rotate(-210) translate(22 0)" stroke-width="0.5" points="0,0 3,0"/>
+        <polyline id="polyline60713" transform="rotate(-180) translate(22 0)" stroke-width="0.5" points="0,0 3,0"/>
+        <polyline id="polyline60715" transform="rotate(-150) translate(22 0)" stroke-width="0.5" points="0,0 3,0"/>
+        <polyline id="polyline60717" transform="rotate(-120) translate(22 0)" stroke-width="0.5" points="0,0 3,0"/>
+        <polyline id="polyline60719" transform="rotate(-90) translate(22 0)" stroke-width="0.5" points="0,0 3,0"/>
+        <polyline id="polyline60721" transform="rotate(-60) translate(22 0)" stroke-width="0.5" points="0,0 3,0"/>
+        <polyline id="polyline60723" transform="rotate(-30) translate(22 0)" stroke-width="0.5" points="0,0 3,0"/>
+        <polyline id="polyline60725" transform="rotate(0) translate(22 0)" stroke-width="0.5" points="0,0 3,0"/>
+        <polyline id="polyline60727" transform="rotate(30) translate(22 0)" stroke-width="0.5" points="0,0 3,0"/>
+        <polyline id="polyline60729" transform="rotate(60) translate(22 0)" stroke-width="1" points="0,0 4,0"/>
       </g>
     </symbol>
   </defs>

@@ -14,6 +14,10 @@ text.brand {
   font-weight: bold;
 }
 
+path, polyline {
+  stroke: #333;
+}
+
 rect.module-background, .background-fill {
   fill: #ddd;
 }
@@ -32,44 +36,44 @@ polyline.module-border-outer {
     <symbol id="dial-mixab-xfade" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <text font-size="5.0pt" transform="rotate(-240) translate(20 0) rotate(240) translate(-2 2)">A</text>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-210) translate(17 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-180) translate(17 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-150) translate(17 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-120) translate(17 0)"/>
-        <polyline points="0,0 3.5,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(17 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-60) translate(17 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-30) translate(17 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(0) translate(17 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(30) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-210) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-180) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-150) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-120) translate(17 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="1" transform="rotate(-90) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-60) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-30) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(0) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(30) translate(17 0)"/>
         <text font-size="5.0pt" transform="rotate(60) translate(20 0) rotate(-60) translate(-2 2)">B</text>
       </g>
     </symbol>
 
     <symbol id="dial-curve-xfade" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
-        <polyline points="0,0 2,0" stroke-width="1" stroke="#333" transform="rotate(-180) translate(9.5 0)"/>
+        <polyline points="0,0 2,0" stroke-width="1" transform="rotate(-180) translate(9.5 0)"/>
         <g transform="rotate(-180) translate(16 0) rotate(180) translate(-2.5 -2.5)">
           
-          <polyline points="0,0 2.5,5" stroke-width="1" stroke="#333" stroke-linecap="round" fill="none" transform="translate(0 0)"/>
-          <polyline points="5,0 2.5,5" stroke-width="1" stroke="#333" stroke-linecap="round" fill="none" transform="translate(0 0)"/>
+          <polyline points="0,0 2.5,5" stroke-width="1" stroke-linecap="round" fill="none" transform="translate(0 0)"/>
+          <polyline points="5,0 2.5,5" stroke-width="1" stroke-linecap="round" fill="none" transform="translate(0 0)"/>
         </g>
 
-        <polyline points="0,0 2,0" stroke-width="0.3" stroke="#333" transform="rotate(-135) translate(9.5 0)"/>
+        <polyline points="0,0 2,0" stroke-width="0.3" transform="rotate(-135) translate(9.5 0)"/>
 
-        <polyline points="0,0 2,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(9.5 0)"/>
+        <polyline points="0,0 2,0" stroke-width="1" transform="rotate(-90) translate(9.5 0)"/>
         <g transform="rotate(-90) translate(16 0) rotate(90) translate(-2.5 -2.5)">
           
-          <polyline points="0,0 5,5" stroke-width="1" stroke="#333" stroke-linecap="round" fill="none" transform="translate(0 0)"/>
-          <polyline points="5,0 0,5" stroke-width="1" stroke="#333" stroke-linecap="round" fill="none" transform="translate(0 0)"/>
+          <polyline points="0,0 5,5" stroke-width="1" stroke-linecap="round" fill="none" transform="translate(0 0)"/>
+          <polyline points="5,0 0,5" stroke-width="1" stroke-linecap="round" fill="none" transform="translate(0 0)"/>
         </g>
 
-        <polyline points="0,0 2,0" stroke-width="0.3" stroke="#333" transform="rotate(-45) translate(9.5 0)"/>
+        <polyline points="0,0 2,0" stroke-width="0.3" transform="rotate(-45) translate(9.5 0)"/>
 
-        <polyline points="0,0 2,0" stroke-width="1" stroke="#333" transform="rotate(0) translate(9.5 0)"/>
+        <polyline points="0,0 2,0" stroke-width="1" transform="rotate(0) translate(9.5 0)"/>
         <g transform="rotate(0) translate(16 0) rotate(-0) translate(-2.5 -2.5)">
           
-          <polyline points="2.5,0 5,5" stroke-width="1" stroke="#333" stroke-linecap="round" fill="none" transform="translate(0 0)"/>
-          <polyline points="2.5,0 0,5" stroke-width="1" stroke="#333" stroke-linecap="round" fill="none" transform="translate(0 0)"/>
+          <polyline points="2.5,0 5,5" stroke-width="1" stroke-linecap="round" fill="none" transform="translate(0 0)"/>
+          <polyline points="2.5,0 0,5" stroke-width="1" stroke-linecap="round" fill="none" transform="translate(0 0)"/>
         </g>
       </g>
     </symbol>

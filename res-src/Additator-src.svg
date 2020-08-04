@@ -6,15 +6,15 @@
     <symbol id="dial-partials-additator" viewBox="0 0 70px 70px">
       <g transform="translate(35 35)">
         <text font-size="6.0pt" transform="rotate(-240) translate(25.5 0) rotate(240) translate(-2.5 2.5)">1</text>
-        <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" transform="rotate(-212.73) translate(21 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.3" transform="rotate(-212.73) translate(21 0)"/>
         <text font-size="6.0pt" transform="rotate(-182.42) translate(25 0) rotate(182.42) translate(-7 2.8)">20</text>
-        <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" transform="rotate(-152.12) translate(21 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.3" transform="rotate(-152.12) translate(21 0)"/>
         <text font-size="6.0pt" transform="rotate(-121.82) translate(25 0) rotate(121.82) translate(-7 2.5)">40</text>
-        <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" transform="rotate(-91.52) translate(21 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.3" transform="rotate(-91.52) translate(21 0)"/>
         <text font-size="6.0pt" transform="rotate(-61.21) translate(25 0) rotate(61.21) translate(-3 2.5)">60</text>
-        <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" transform="rotate(-30.91) translate(21 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.3" transform="rotate(-30.91) translate(21 0)"/>
         <text font-size="6.0pt" transform="rotate(-0.61) translate(25 0) rotate(0.61) translate(-2.5 2.8)">80</text>
-        <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333" transform="rotate(29.7) translate(21 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.3" transform="rotate(29.7) translate(21 0)"/>
         <text font-size="6.0pt" transform="rotate(60) translate(25.5 0) rotate(-60) translate(-2 2.5)">100</text>
       </g>
     </symbol>

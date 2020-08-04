@@ -27,15 +27,15 @@
     <symbol viewBox="0 0 70px 70px" id="dial-threshold-pressor">
       <g id="g50368" transform="translate(35 35)">
         <text id="text50344" transform="rotate(-240) translate(25 0) rotate(240) translate(-10 2.5)" font-size="6.0pt">-24</text>
-        <polyline id="polyline50346" transform="rotate(-210) translate(21 0)" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+        <polyline id="polyline50346" transform="rotate(-210) translate(21 0)" stroke-width="0.3" points="0,0 3,0"/>
         <text id="text50348" transform="rotate(-180) translate(25 0) rotate(180) translate(-10 2.5)" font-size="6.0pt">-18</text>
-        <polyline id="polyline50350" transform="rotate(-150) translate(21 0)" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+        <polyline id="polyline50350" transform="rotate(-150) translate(21 0)" stroke-width="0.3" points="0,0 3,0"/>
         <text id="text50352" transform="rotate(-120) translate(25 0) rotate(120) translate(-10 2.5)" font-size="6.0pt">-12</text>
-        <polyline id="polyline50354" transform="rotate(-90) translate(21 0)" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+        <polyline id="polyline50354" transform="rotate(-90) translate(21 0)" stroke-width="0.3" points="0,0 3,0"/>
         <text id="text50356" transform="rotate(-60) translate(25 0) rotate(60) translate(-2.3 2.5)" font-size="6.0pt">-6</text>
-        <polyline id="polyline50358" transform="rotate(-30) translate(21 0)" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+        <polyline id="polyline50358" transform="rotate(-30) translate(21 0)" stroke-width="0.3" points="0,0 3,0"/>
         <text id="text50360" transform="rotate(0) translate(25 0) rotate(0) translate(-2.3 2.5)" font-size="6.0pt">0</text>
-        <polyline id="polyline50362" transform="rotate(30) translate(21 0)" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+        <polyline id="polyline50362" transform="rotate(30) translate(21 0)" stroke-width="0.3" points="0,0 3,0"/>
         <text id="text50364" transform="rotate(60) translate(25 0) rotate(-60) translate(-2.3 2.5)" font-size="6.0pt">6</text>
         <text id="text50366" transform="rotate(90) translate(29 0) rotate(-90) translate(-4.7 2.2)" font-size="6.0pt">dB</text>
       </g>
@@ -43,11 +43,11 @@
     <symbol viewBox="0 0 45px 45px" id="dial-attack-pressor">
       <g id="g50387" transform="translate(22.5 22.5)">
         <text id="text50371" transform="rotate(-240) translate(18 0) rotate(240) translate(-1.9 2.2)" font-size="5.0pt">0</text>
-        <polyline id="polyline50373" transform="rotate(-172.92) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 1.5,0"/>
+        <polyline id="polyline50373" transform="rotate(-172.92) translate(15 0)" stroke-width="0.3" points="0,0 1.5,0"/>
         <text id="text50375" transform="rotate(-145.13) translate(17 0) rotate(145.13) translate(-5.7 2.2)" font-size="5.0pt">50</text>
-        <polyline id="polyline50377" transform="rotate(-75.68) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline50377" transform="rotate(-75.68) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
         <text id="text50379" transform="rotate(-27.87) translate(17 0) rotate(27.87) translate(-2.2 2.2)" font-size="5.0pt">250</text>
-        <polyline id="polyline50381" transform="rotate(19.81) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline50381" transform="rotate(19.81) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
         <text id="text50383" transform="rotate(60) translate(18 0) rotate(-60) translate(-1.9 2.2)" font-size="5.0pt">500</text>
         <text id="text50385" transform="rotate(90) translate(22 0) rotate(-90) translate(-4.4 2.2)" font-size="5.0pt">MS</text>
       </g>
@@ -55,11 +55,11 @@
     <symbol viewBox="0 0 45px 45px" id="dial-release-pressor">
       <g id="g50406" transform="translate(22.5 22.5)">
         <text id="text50390" transform="rotate(-240) translate(18 0) rotate(240) translate(-1.9 2.2)" font-size="5.0pt">0</text>
-        <polyline id="polyline50392" transform="rotate(-172.92) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 1.5,0"/>
+        <polyline id="polyline50392" transform="rotate(-172.92) translate(15 0)" stroke-width="0.3" points="0,0 1.5,0"/>
         <text id="text50394" transform="rotate(-145.13) translate(17 0) rotate(145.13) translate(-7.5 2.2)" font-size="5.0pt">0.2</text>
-        <polyline id="polyline50396" transform="rotate(-75.68) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline50396" transform="rotate(-75.68) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
         <text id="text50398" transform="rotate(-27.87) translate(17 0) rotate(27.87) translate(-2.2 2.2)" font-size="5.0pt">1</text>
-        <polyline id="polyline50400" transform="rotate(19.81) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline50400" transform="rotate(19.81) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
         <text id="text50402" transform="rotate(60) translate(18 0) rotate(-60) translate(-1.9 2.2)" font-size="5.0pt">2</text>
         <text id="text50404" transform="rotate(90) translate(22 0) rotate(-90) translate(-2 2.2)" font-size="5.0pt">S</text>
       </g>
@@ -67,28 +67,28 @@
     <symbol viewBox="0 0 45px 45px" id="dial-detectormix-pressor">
       <g id="g50431" transform="translate(22.5 22.5)">
         <text id="text50409" transform="rotate(-240) translate(18 0) rotate(240) translate(-4.2 2.2)" font-size="5.0pt">IN</text>
-        <polyline id="polyline50411" transform="rotate(-210) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline50413" transform="rotate(-180) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline50415" transform="rotate(-150) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline50417" transform="rotate(-120) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline50419" transform="rotate(-90) translate(15 0)" stroke="#333" stroke-width="1" points="0,0 3.5,0"/>
-        <polyline id="polyline50421" transform="rotate(-60) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline50423" transform="rotate(-30) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline50425" transform="rotate(0) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
-        <polyline id="polyline50427" transform="rotate(30) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline50411" transform="rotate(-210) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline50413" transform="rotate(-180) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline50415" transform="rotate(-150) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline50417" transform="rotate(-120) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline50419" transform="rotate(-90) translate(15 0)" stroke-width="1" points="0,0 3.5,0"/>
+        <polyline id="polyline50421" transform="rotate(-60) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline50423" transform="rotate(-30) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline50425" transform="rotate(0) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline50427" transform="rotate(30) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
         <text id="text50429" transform="rotate(60) translate(18 0) rotate(-60) translate(-2.1 2.5)" font-size="5.0pt">SD</text>
       </g>
     </symbol>
     <symbol viewBox="0 0 45px 45px" id="dial-inputgain-pressor">
       <g id="g50454" transform="translate(22.5 22.5)">
         <text id="text50434" transform="rotate(-240) translate(18 0) rotate(240) translate(-8 2.2)" font-size="5.0pt">-12</text>
-        <polyline id="polyline50436" transform="rotate(-202.5) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 1.5,0"/>
+        <polyline id="polyline50436" transform="rotate(-202.5) translate(15 0)" stroke-width="0.3" points="0,0 1.5,0"/>
         <text id="text50438" transform="rotate(-165) translate(17 0) rotate(165) translate(-4.5 2.2)" font-size="5.0pt">-6</text>
-        <polyline id="polyline50440" transform="rotate(-127.5) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline50440" transform="rotate(-127.5) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
         <text id="text50442" transform="rotate(-90) translate(17 0) rotate(90) translate(-1.9 2)" font-size="5.0pt">0</text>
-        <polyline id="polyline50444" transform="rotate(-52.5) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline50444" transform="rotate(-52.5) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
         <text id="text50446" transform="rotate(-15) translate(17 0) rotate(15) translate(-2 2.2)" font-size="5.0pt">6</text>
-        <polyline id="polyline50448" transform="rotate(22.5) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline50448" transform="rotate(22.5) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
         <text id="text50450" transform="rotate(60) translate(18 0) rotate(-60) translate(-1.9 2.2)" font-size="5.0pt">12</text>
         <text id="text50452" transform="rotate(90) translate(22 0) rotate(-90) translate(-4 2.2)" font-size="5.0pt">dB</text>
       </g>
@@ -96,13 +96,13 @@
     <symbol viewBox="0 0 45px 45px" id="dial-outputgain-pressor">
       <g id="g50477" transform="translate(22.5 22.5)">
         <text id="text50457" transform="rotate(-240) translate(18 0) rotate(240) translate(-1.9 2.2)" font-size="5.0pt">0</text>
-        <polyline id="polyline50459" transform="rotate(-202.5) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 1.5,0"/>
+        <polyline id="polyline50459" transform="rotate(-202.5) translate(15 0)" stroke-width="0.3" points="0,0 1.5,0"/>
         <text id="text50461" transform="rotate(-165) translate(17 0) rotate(165) translate(-2 2.2)" font-size="5.0pt">6</text>
-        <polyline id="polyline50463" transform="rotate(-127.5) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline50463" transform="rotate(-127.5) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
         <text id="text50465" transform="rotate(-90) translate(17 0) rotate(90) translate(-4 2)" font-size="5.0pt">12</text>
-        <polyline id="polyline50467" transform="rotate(-52.5) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline50467" transform="rotate(-52.5) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
         <text id="text50469" transform="rotate(-15) translate(17 0) rotate(15) translate(-3.5 2.2)" font-size="5.0pt">18</text>
-        <polyline id="polyline50471" transform="rotate(22.5) translate(15 0)" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
+        <polyline id="polyline50471" transform="rotate(22.5) translate(15 0)" stroke-width="0.3" points="0,0 2.5,0"/>
         <text id="text50473" transform="rotate(60) translate(18 0) rotate(-60) translate(-1.9 2.2)" font-size="5.0pt">24</text>
         <text id="text50475" transform="rotate(90) translate(22 0) rotate(-90) translate(-4 2.2)" font-size="5.0pt">dB</text>
       </g>
@@ -117,27 +117,27 @@
     <symbol viewBox="0 0 20px 95px" id="guide-compression-pressor">
       <g id="g50527" transform="translate(0 10)">
         <g id="g50495" transform="translate(0 0)">
-          <polyline id="polyline50491" transform="translate(11 0)" fill="none" stroke="#333" points="0,0 3,0"/>
+          <polyline id="polyline50491" transform="translate(11 0)" fill="none" points="0,0 3,0"/>
           <text id="text50493" transform="translate(7 0) rotate(-90) translate(-5.5 2.2)" font-size="6.0pt">30+</text>
         </g>
         <g id="g50501" transform="translate(0 15)">
-          <polyline id="polyline50497" transform="translate(11 0)" fill="none" stroke="#333" points="0,0 3,0"/>
+          <polyline id="polyline50497" transform="translate(11 0)" fill="none" points="0,0 3,0"/>
           <text id="text50499" transform="translate(7 0) rotate(-90) translate(-4 2.2)" font-size="6.0pt">24</text>
         </g>
         <g id="g50507" transform="translate(0 30)">
-          <polyline id="polyline50503" transform="translate(11 0)" fill="none" stroke="#333" points="0,0 3,0"/>
+          <polyline id="polyline50503" transform="translate(11 0)" fill="none" points="0,0 3,0"/>
           <text id="text50505" transform="translate(7 0) rotate(-90) translate(-4.5 2.2)" font-size="6.0pt">18</text>
         </g>
         <g id="g50513" transform="translate(0 45)">
-          <polyline id="polyline50509" transform="translate(11 0)" fill="none" stroke="#333" points="0,0 3,0"/>
+          <polyline id="polyline50509" transform="translate(11 0)" fill="none" points="0,0 3,0"/>
           <text id="text50511" transform="translate(7 0) rotate(-90) translate(-4.5 2.2)" font-size="6.0pt">12</text>
         </g>
         <g id="g50519" transform="translate(0 60)">
-          <polyline id="polyline50515" transform="translate(11 0)" fill="none" stroke="#333" points="0,0 3,0"/>
+          <polyline id="polyline50515" transform="translate(11 0)" fill="none" points="0,0 3,0"/>
           <text id="text50517" transform="translate(7 0) rotate(-90) translate(-2.5 2.2)" font-size="6.0pt">6</text>
         </g>
         <g id="g50525" transform="translate(0 75)">
-          <polyline id="polyline50521" transform="translate(11 0)" fill="none" stroke="#333" points="0,0 3,0"/>
+          <polyline id="polyline50521" transform="translate(11 0)" fill="none" points="0,0 3,0"/>
           <text id="text50523" transform="translate(7 0) rotate(-90) translate(-2.5 2.2)" font-size="6.0pt">0</text>
         </g>
       </g>

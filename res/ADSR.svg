@@ -18,16 +18,16 @@
             <text id="text455" transform="translate(-2.8 3.3)" font-size="6.5pt">0</text>
           </g>
         </g>
-        <polyline id="polyline461" transform="rotate(-210) translate(17 0)" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
-        <polyline id="polyline463" transform="rotate(-180) translate(17 0)" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
-        <polyline id="polyline465" transform="rotate(-150) translate(17 0)" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
-        <polyline id="polyline467" transform="rotate(-120) translate(17 0)" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
-        <polyline id="polyline469" transform="rotate(-90) translate(17 0)" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
-        <polyline id="polyline471" transform="rotate(-60) translate(17 0)" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
-        <polyline id="polyline473" transform="rotate(-30) translate(17 0)" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
-        <polyline id="polyline475" transform="rotate(0) translate(17 0)" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
-        <polyline id="polyline477" transform="rotate(30) translate(17 0)" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
-        <polyline id="polyline479" transform="rotate(60) translate(17 0)" stroke="#333" stroke-width="1" points="0,0 3.5,0"/>
+        <polyline id="polyline461" transform="rotate(-210) translate(17 0)" stroke-width="0.3" points="0,0 3,0"/>
+        <polyline id="polyline463" transform="rotate(-180) translate(17 0)" stroke-width="0.3" points="0,0 3,0"/>
+        <polyline id="polyline465" transform="rotate(-150) translate(17 0)" stroke-width="0.3" points="0,0 3,0"/>
+        <polyline id="polyline467" transform="rotate(-120) translate(17 0)" stroke-width="0.3" points="0,0 3,0"/>
+        <polyline id="polyline469" transform="rotate(-90) translate(17 0)" stroke-width="0.3" points="0,0 3,0"/>
+        <polyline id="polyline471" transform="rotate(-60) translate(17 0)" stroke-width="0.3" points="0,0 3,0"/>
+        <polyline id="polyline473" transform="rotate(-30) translate(17 0)" stroke-width="0.3" points="0,0 3,0"/>
+        <polyline id="polyline475" transform="rotate(0) translate(17 0)" stroke-width="0.3" points="0,0 3,0"/>
+        <polyline id="polyline477" transform="rotate(30) translate(17 0)" stroke-width="0.3" points="0,0 3,0"/>
+        <polyline id="polyline479" transform="rotate(60) translate(17 0)" stroke-width="1" points="0,0 3.5,0"/>
       </g>
     </symbol>
   </defs>

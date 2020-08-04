@@ -39,28 +39,28 @@
     </symbol>
     <symbol viewBox="0 0 20px 183px" id="guide-db-vu">
       <g id="g64998" transform="translate(0 15)">
-        <polyline id="polyline64994" transform="translate(11 0)" fill="none" stroke="#333" points="0,0 3,0"/>
+        <polyline id="polyline64994" transform="translate(11 0)" fill="none" points="0,0 3,0"/>
         <text id="text64996" transform="translate(7 0) rotate(0) translate(-2.5 2.6)" font-size="6.0pt">6</text>
       </g>
       <g id="g65004" transform="translate(0 30)">
-        <polyline id="polyline65000" transform="translate(11 0)" fill="none" stroke="#333" points="0,0 3,0"/>
+        <polyline id="polyline65000" transform="translate(11 0)" fill="none" points="0,0 3,0"/>
         <text id="text65002" transform="translate(7 0) rotate(0) translate(-2.5 2.6)" font-size="6.0pt">0</text>
       </g>
       <g id="g65010" transform="translate(0 45)">
-        <polyline id="polyline65006" transform="translate(11 0)" fill="none" stroke="#333" points="0,0 3,0"/>
+        <polyline id="polyline65006" transform="translate(11 0)" fill="none" points="0,0 3,0"/>
         <text id="text65008" transform="translate(7 0) rotate(-90) translate(-4 2.2)" font-size="6.0pt">-6</text>
       </g>
       <g id="g65016" transform="translate(0 60)">
-        <polyline id="polyline65012" transform="translate(11 0)" fill="none" stroke="#333" points="0,0 3,0"/>
+        <polyline id="polyline65012" transform="translate(11 0)" fill="none" points="0,0 3,0"/>
         <text id="text65014" transform="translate(7 0) rotate(-90) translate(-7 2.2)" font-size="6.0pt">-12</text>
       </g>
       <g id="g65022" transform="translate(0 90)">
-        <polyline id="polyline65018" transform="translate(11 0)" fill="none" stroke="#333" points="0,0 3,0"/>
+        <polyline id="polyline65018" transform="translate(11 0)" fill="none" points="0,0 3,0"/>
         <text id="text65020" transform="translate(7 0) rotate(-90) translate(-7 2.2)" font-size="6.0pt">-24</text>
       </g>
       <g id="g65024" transform="translate(0 120)"/>
       <g id="g65030" transform="translate(0 150)">
-        <polyline id="polyline65026" transform="translate(11 0)" fill="none" stroke="#333" points="0,0 3,0"/>
+        <polyline id="polyline65026" transform="translate(11 0)" fill="none" points="0,0 3,0"/>
         <text id="text65028" transform="translate(7 0) rotate(-90) translate(-7 2.2)" font-size="6.0pt">-48</text>
       </g>
       <g id="g65034" transform="translate(0 170)">

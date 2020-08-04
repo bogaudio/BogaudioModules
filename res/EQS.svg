@@ -14,15 +14,15 @@
     <symbol viewBox="0 0 70px 70px" id="dial-eq-eqs">
       <g id="g11813" transform="translate(35 35)">
         <text id="text11789" transform="rotate(-240) translate(25 0) rotate(240) translate(-10 2.5)" font-size="6.0pt">-36</text>
-        <polyline id="polyline11791" transform="rotate(-215) translate(21 0)" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+        <polyline id="polyline11791" transform="rotate(-215) translate(21 0)" stroke-width="0.3" points="0,0 3,0"/>
         <text id="text11793" transform="rotate(-190) translate(25 0) rotate(190) translate(-10 2.5)" font-size="6.0pt">-24</text>
-        <polyline id="polyline11795" transform="rotate(-165) translate(21 0)" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+        <polyline id="polyline11795" transform="rotate(-165) translate(21 0)" stroke-width="0.3" points="0,0 3,0"/>
         <text id="text11797" transform="rotate(-140) translate(25 0) rotate(140) translate(-10 2.5)" font-size="6.0pt">-12</text>
-        <polyline id="polyline11799" transform="rotate(-115) translate(21 0)" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+        <polyline id="polyline11799" transform="rotate(-115) translate(21 0)" stroke-width="0.3" points="0,0 3,0"/>
         <text id="text11801" transform="rotate(-90) translate(25 0) rotate(90) translate(-2.3 2.5)" font-size="6.0pt">0</text>
-        <polyline id="polyline11803" transform="rotate(-52.5) translate(21 0)" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+        <polyline id="polyline11803" transform="rotate(-52.5) translate(21 0)" stroke-width="0.3" points="0,0 3,0"/>
         <text id="text11805" transform="rotate(-15) translate(25 0) rotate(15) translate(-3 2.5)" font-size="6.0pt">6</text>
-        <polyline id="polyline11807" transform="rotate(22.5) translate(21 0)" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+        <polyline id="polyline11807" transform="rotate(22.5) translate(21 0)" stroke-width="0.3" points="0,0 3,0"/>
         <text id="text11809" transform="rotate(60) translate(25 0) rotate(-60) translate(-2.3 2.5)" font-size="6.0pt">12</text>
         <text id="text11811" transform="rotate(90) translate(29 0) rotate(-90) translate(-4.7 2.2)" font-size="6.0pt">dB</text>
       </g>

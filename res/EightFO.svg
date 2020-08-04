@@ -13,38 +13,38 @@
   <defs id="defs12900">
     <symbol viewBox="0 0 70px 70px" id="waves-eightfo">
       <g id="g12860" transform="translate(20 35)">
-        <polyline id="polyline12850" transform="rotate(-90) translate(11 0)" stroke="#333" stroke-width="1" points="0,0 5,0"/>
-        <polyline id="polyline12852" transform="rotate(-45) translate(11 0)" stroke="#333" stroke-width="1" points="0,0 5,0"/>
-        <polyline id="polyline12854" transform="rotate(0) translate(11 0)" stroke="#333" stroke-width="1" points="0,0 5,0"/>
-        <polyline id="polyline12856" transform="rotate(45) translate(11 0)" stroke="#333" stroke-width="1" points="0,0 5,0"/>
-        <polyline id="polyline12858" transform="rotate(90) translate(11 0)" stroke="#333" stroke-width="1" points="0,0 5,0"/>
+        <polyline id="polyline12850" transform="rotate(-90) translate(11 0)" stroke-width="1" points="0,0 5,0"/>
+        <polyline id="polyline12852" transform="rotate(-45) translate(11 0)" stroke-width="1" points="0,0 5,0"/>
+        <polyline id="polyline12854" transform="rotate(0) translate(11 0)" stroke-width="1" points="0,0 5,0"/>
+        <polyline id="polyline12856" transform="rotate(45) translate(11 0)" stroke-width="1" points="0,0 5,0"/>
+        <polyline id="polyline12858" transform="rotate(90) translate(11 0)" stroke-width="1" points="0,0 5,0"/>
       </g>
       <g id="g12864" transform="translate(14 8)">
-        <polyline id="polyline12862" fill="none" stroke="#333" stroke-width="1" points="0,8 12,0 12,8"/>
+        <polyline id="polyline12862" fill="none" stroke-width="1" points="0,8 12,0 12,8"/>
       </g>
       <g id="g12868" transform="translate(33.5 13.5)">
-        <polyline id="polyline12866" fill="none" stroke="#333" stroke-width="1" points="0,8 0,0 12,8"/>
+        <polyline id="polyline12866" fill="none" stroke-width="1" points="0,8 0,0 12,8"/>
       </g>
       <g id="g12874" transform="translate(39 31)">
-        <path id="path12870" fill="none" stroke-width="1" stroke="#333" d="M 0 4 A 2 3 0 0 1 6 4"/>
-        <path id="path12872" fill="none" stroke-width="1" stroke="#333" d="M 6 4 A 2 3 0 0 0 12 4"/>
+        <path id="path12870" fill="none" stroke-width="1" d="M 0 4 A 2 3 0 0 1 6 4"/>
+        <path id="path12872" fill="none" stroke-width="1" d="M 6 4 A 2 3 0 0 0 12 4"/>
       </g>
       <g id="g12878" transform="translate(33.5 48.5)">
-        <polyline id="polyline12876" fill="none" stroke="#333" stroke-width="1" points="0,4 3,0 9,8 12,4"/>
+        <polyline id="polyline12876" fill="none" stroke-width="1" points="0,4 3,0 9,8 12,4"/>
       </g>
       <g id="g12882" transform="translate(14 54)">
-        <polyline id="polyline12880" fill="none" stroke="#333" stroke-width="1" points="0,4 0,0 6,0 6,8 12,8 12,4"/>
+        <polyline id="polyline12880" fill="none" stroke-width="1" points="0,4 0,0 6,0 6,8 12,8 12,4"/>
       </g>
     </symbol>
     <symbol viewBox="0 0 40px 40px" id="dial-phase-eightfo">
       <g id="g12897" transform="translate(20 20)">
         <g id="g12887" transform="rotate(-90) translate(10 0)">
-          <polyline id="polyline12885" stroke="#333" stroke-width="1" points="0,0 4,0"/>
+          <polyline id="polyline12885" stroke-width="1" points="0,0 4,0"/>
         </g>
-        <path id="path12889" transform="rotate(20)" fill="none" stroke-linecap="round" stroke-width="0.5" stroke="#333" d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0"/>
-        <path id="path12891" transform="rotate(43)" fill="none" stroke-linecap="round" stroke-width="0.5" stroke="#333" d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0"/>
-        <path id="path12893" transform="rotate(-20)" fill="none" stroke-linecap="round" stroke-width="0.5" stroke="#333" d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0"/>
-        <path id="path12895" transform="rotate(-43)" fill="none" stroke-linecap="round" stroke-width="0.5" stroke="#333" d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0"/>
+        <path id="path12889" transform="rotate(20)" fill="none" stroke-linecap="round" stroke-width="0.5" d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0"/>
+        <path id="path12891" transform="rotate(43)" fill="none" stroke-linecap="round" stroke-width="0.5" d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0"/>
+        <path id="path12893" transform="rotate(-20)" fill="none" stroke-linecap="round" stroke-width="0.5" d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0"/>
+        <path id="path12895" transform="rotate(-43)" fill="none" stroke-linecap="round" stroke-width="0.5" d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0"/>
       </g>
     </symbol>
   </defs>
@@ -232,8 +232,8 @@
       <path d="M 0,8 V 0 l 12,8" style="fill:none;stroke:#333333;stroke-width:1" id="polyline13486"/>
     </g>
     <g transform="translate(39,31)" id="g13494">
-      <path d="M 0,4 A 3,4.5 0 0 1 6,4" stroke="#333333" stroke-width="1" fill="none" id="path13490"/>
-      <path d="m 6,4 a 3,4.5 0 0 0 6,0" stroke="#333333" stroke-width="1" fill="none" id="path13492"/>
+      <path d="M 0,4 A 3,4.5 0 0 1 6,4" stroke-width="1" fill="none" id="path13490"/>
+      <path d="m 6,4 a 3,4.5 0 0 0 6,0" stroke-width="1" fill="none" id="path13492"/>
     </g>
     <g transform="translate(33.5,48.5)" id="g13498">
       <path d="M 0,4 3,0 9,8 12,4" style="fill:none;stroke:#333333;stroke-width:1" id="polyline13496"/>
@@ -354,10 +354,10 @@
       <g transform="rotate(-90,-5,-5)" id="g13508">
         <path d="M 0,0 H 4" style="stroke:#333333;stroke-width:1" id="polyline13506"/>
       </g>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)" id="path13510"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" id="path13512"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)" id="path13514"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" id="path13516"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)" id="path13510"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" id="path13512"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)" id="path13514"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" id="path13516"/>
     </g>
   </g>
   <g transform="rotate(180,86,54)" id="use13188">
@@ -365,10 +365,10 @@
       <g transform="rotate(-90,-5,-5)" id="g13524">
         <path d="M 0,0 H 4" style="stroke:#333333;stroke-width:1" id="polyline13522"/>
       </g>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)" id="path13526"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" id="path13528"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)" id="path13530"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" id="path13532"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)" id="path13526"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" id="path13528"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)" id="path13530"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" id="path13532"/>
     </g>
   </g>
   <g transform="rotate(-135,108.36753,46.661905)" id="use13190">
@@ -376,10 +376,10 @@
       <g transform="rotate(-90,-5,-5)" id="g13540">
         <path d="M 0,0 H 4" style="stroke:#333333;stroke-width:1" id="polyline13538"/>
       </g>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)" id="path13542"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" id="path13544"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)" id="path13546"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" id="path13548"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)" id="path13542"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" id="path13544"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)" id="path13546"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" id="path13548"/>
     </g>
   </g>
   <g transform="rotate(-90,160,28)" id="use13192">
@@ -387,10 +387,10 @@
       <g transform="rotate(-90,-5,-5)" id="g13556">
         <path d="M 0,0 H 4" style="stroke:#333333;stroke-width:1" id="polyline13554"/>
       </g>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)" id="path13558"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" id="path13560"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)" id="path13562"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" id="path13564"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)" id="path13558"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" id="path13560"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)" id="path13562"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" id="path13564"/>
     </g>
   </g>
   <g transform="rotate(-45,312.93607,-45.338099)" id="use13194">
@@ -398,10 +398,10 @@
       <g transform="rotate(-90,-5,-5)" id="g13572">
         <path d="M 0,0 H 4" style="stroke:#333333;stroke-width:1" id="polyline13570"/>
       </g>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)" id="path13574"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" id="path13576"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)" id="path13578"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" id="path13580"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)" id="path13574"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" id="path13576"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)" id="path13578"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" id="path13580"/>
     </g>
   </g>
   <g transform="translate(132,228)" id="use13196">
@@ -409,10 +409,10 @@
       <g transform="rotate(-90,-5,-5)" id="g13588">
         <path d="M 0,0 H 4" style="stroke:#333333;stroke-width:1" id="polyline13586"/>
       </g>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)" id="path13590"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" id="path13592"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)" id="path13594"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" id="path13596"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)" id="path13590"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" id="path13592"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)" id="path13594"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" id="path13596"/>
     </g>
   </g>
   <g transform="rotate(45,-237.50461,313.3381)" id="use13198">
@@ -420,10 +420,10 @@
       <g transform="rotate(-90,-5,-5)" id="g13604">
         <path d="M 0,0 H 4" style="stroke:#333333;stroke-width:1" id="polyline13602"/>
       </g>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)" id="path13606"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" id="path13608"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)" id="path13610"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" id="path13612"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)" id="path13606"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" id="path13608"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)" id="path13610"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" id="path13612"/>
     </g>
   </g>
   <g transform="rotate(90,-68,240)" id="use13200">
@@ -431,10 +431,10 @@
       <g transform="rotate(-90,-5,-5)" id="g13620">
         <path d="M 0,0 H 4" style="stroke:#333333;stroke-width:1" id="polyline13618"/>
       </g>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)" id="path13622"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" id="path13624"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)" id="path13626"/>
-      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke="#333333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" id="path13628"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)" id="path13622"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 1 12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)" id="path13624"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)" id="path13626"/>
+      <path d="M 0,-12.5 A 12.5,12.5 0 0 0 -12.5,0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)" id="path13628"/>
     </g>
   </g>
   <path d="m 181,32 h 20 c 2.77,0 5,2.23 5,5 v 318 c 0,2.77 -2.23,5 -5,5 h -20 c -2.77,0 -5,-2.23 -5,-5 V 37 c 0,-2.77 2.23,-5 5,-5 z" style="fill:#fafafa" id="rect13204"/>

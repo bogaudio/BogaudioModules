@@ -6,15 +6,15 @@
     <symbol id="dial-panner-pan" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <text font-size="5.0pt" transform="rotate(-240) translate(18 0) rotate(240) translate(-1.8 2)">L</text>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-210) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-180) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-150) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-120) translate(15 0)"/>
-        <polyline points="0,0 3.5,0" stroke-width="1.0" stroke="#333" transform="rotate(-90) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-60) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-30) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(0) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(30) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-210) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-180) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-150) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-120) translate(15 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="1.0" transform="rotate(-90) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-60) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-30) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(0) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(30) translate(15 0)"/>
         <text font-size="5.0pt" transform="rotate(60) translate(18 0) rotate(-60) translate(-2.1 2)">R</text>
       </g>
     </symbol>

@@ -18,15 +18,15 @@
     <symbol viewBox="0 0 20px 95px" id="guide-compression-mono">
       <g id="g30920" transform="translate(0 10)">
         <g id="g30902" transform="translate(0 0)">
-          <polyline id="polyline30898" transform="translate(11 0)" fill="none" stroke="#333" points="0,0 3,0"/>
+          <polyline id="polyline30898" transform="translate(11 0)" fill="none" points="0,0 3,0"/>
           <text id="text30900" transform="translate(7 0) rotate(-90) translate(-4.5 2.2)" font-size="6.0pt">12+</text>
         </g>
         <g id="g30908" transform="translate(0 15)">
-          <polyline id="polyline30904" transform="translate(11 0)" fill="none" stroke="#333" points="0,0 3,0"/>
+          <polyline id="polyline30904" transform="translate(11 0)" fill="none" points="0,0 3,0"/>
           <text id="text30906" transform="translate(7 0) rotate(-90) translate(-2.5 2.2)" font-size="6.0pt">6</text>
         </g>
         <g id="g30914" transform="translate(0 30)">
-          <polyline id="polyline30910" transform="translate(11 0)" fill="none" stroke="#333" points="0,0 3,0"/>
+          <polyline id="polyline30910" transform="translate(11 0)" fill="none" points="0,0 3,0"/>
           <text id="text30912" transform="translate(7 0) rotate(-90) translate(-2.5 2.2)" font-size="6.0pt">0</text>
         </g>
         <g id="g30918" transform="translate(0 15)">

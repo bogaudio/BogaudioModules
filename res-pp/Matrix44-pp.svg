@@ -14,6 +14,10 @@ text.brand {
   font-weight: bold;
 }
 
+path, polyline {
+  stroke: #333;
+}
+
 rect.module-background, .background-fill {
   fill: #ddd;
 }
@@ -55,11 +59,11 @@ polyline.module-border-outer {
     </svg></g>
     <g transform="translate(-6.5 6)">
       <g transform="translate(20 20)">
-        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
   </g>
@@ -74,11 +78,11 @@ polyline.module-border-outer {
     </svg></g>
     <g transform="translate(-6.5 6)">
       <g transform="translate(20 20)">
-        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
   </g>
@@ -93,11 +97,11 @@ polyline.module-border-outer {
     </svg></g>
     <g transform="translate(-6.5 6)">
       <g transform="translate(20 20)">
-        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
   </g>
@@ -112,11 +116,11 @@ polyline.module-border-outer {
     </svg></g>
     <g transform="translate(-6.5 6)">
       <g transform="translate(20 20)">
-        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
   </g>
@@ -132,11 +136,11 @@ polyline.module-border-outer {
     </svg></g>
     <g transform="translate(-6.5 6)">
       <g transform="translate(20 20)">
-        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
   </g>
@@ -151,11 +155,11 @@ polyline.module-border-outer {
     </svg></g>
     <g transform="translate(-6.5 6)">
       <g transform="translate(20 20)">
-        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
   </g>
@@ -170,11 +174,11 @@ polyline.module-border-outer {
     </svg></g>
     <g transform="translate(-6.5 6)">
       <g transform="translate(20 20)">
-        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
   </g>
@@ -189,11 +193,11 @@ polyline.module-border-outer {
     </svg></g>
     <g transform="translate(-6.5 6)">
       <g transform="translate(20 20)">
-        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
   </g>
@@ -209,11 +213,11 @@ polyline.module-border-outer {
     </svg></g>
     <g transform="translate(-6.5 6)">
       <g transform="translate(20 20)">
-        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
   </g>
@@ -228,11 +232,11 @@ polyline.module-border-outer {
     </svg></g>
     <g transform="translate(-6.5 6)">
       <g transform="translate(20 20)">
-        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
   </g>
@@ -247,11 +251,11 @@ polyline.module-border-outer {
     </svg></g>
     <g transform="translate(-6.5 6)">
       <g transform="translate(20 20)">
-        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
   </g>
@@ -266,11 +270,11 @@ polyline.module-border-outer {
     </svg></g>
     <g transform="translate(-6.5 6)">
       <g transform="translate(20 20)">
-        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
   </g>
@@ -286,11 +290,11 @@ polyline.module-border-outer {
     </svg></g>
     <g transform="translate(-6.5 6)">
       <g transform="translate(20 20)">
-        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
   </g>
@@ -305,11 +309,11 @@ polyline.module-border-outer {
     </svg></g>
     <g transform="translate(-6.5 6)">
       <g transform="translate(20 20)">
-        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
   </g>
@@ -324,11 +328,11 @@ polyline.module-border-outer {
     </svg></g>
     <g transform="translate(-6.5 6)">
       <g transform="translate(20 20)">
-        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
   </g>
@@ -343,11 +347,11 @@ polyline.module-border-outer {
     </svg></g>
     <g transform="translate(-6.5 6)">
       <g transform="translate(20 20)">
-        <polyline points="0,0 4,0" stroke-width="1" stroke="#333" transform="rotate(-90) translate(11.5 0)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke="#333" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(11.5 0)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 1 13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -13.5 A 13.5 13.5 0 0 0 -13.5 0" stroke-width="0.5" stroke-linecap="round" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
   </g>

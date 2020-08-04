@@ -5,21 +5,21 @@
   <defs>
     <symbol id="dial-frequency-lvco" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
-        <polyline points="0,0 3.5,0" stroke-width="0.7" stroke="#333" transform="rotate(-240) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-206.67) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-173.33) translate(15 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-240) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-206.67) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-173.33) translate(15 0)"/>
 
         <g transform="rotate(-140) translate(14 0)">
-          <polyline points="0,0 2.5,0" stroke-width="1.0" stroke="#333" transform="translate(0 0)"/>
+          <polyline points="0,0 2.5,0" stroke-width="1.0" transform="translate(0 0)"/>
           <text font-size="5.0pt" transform="translate(5 0) rotate(140) translate(-5.5 0)">OV</text>
         </g>
 
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-106.67) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-73.33) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-40) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-6.67) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(26.67) translate(15 0)"/>
-        <polyline points="0,0 3.5,0" stroke-width="0.7" stroke="#333" transform="rotate(60) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-106.67) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-73.33) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-40) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-6.67) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(26.67) translate(15 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(60) translate(15 0)"/>
       </g>
     </symbol>
   </defs>
@@ -46,8 +46,8 @@
         <def id="SINE_LIGHT" xlink:href="#light-small" transform="translate(-7.5 1)"/>
         <g transform="translate(1 1) scale(0.8)">
           <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#f0f" /> -->
-          <path d="M 0 4 A 2 3 0 0 1 6 4" stroke="#333" stroke-width="1" fill="none"/>
-          <path d="M 6 4 A 2 3 0 0 0 12 4" stroke="#333" stroke-width="1" fill="none"/>
+          <path d="M 0 4 A 2 3 0 0 1 6 4" stroke-width="1" fill="none"/>
+          <path d="M 6 4 A 2 3 0 0 0 12 4" stroke-width="1" fill="none"/>
         </g>
       </g>
 
@@ -55,7 +55,7 @@
         <def id="SAW_LIGHT" xlink:href="#light-small" transform="translate(-7.5 1)"/>
         <g transform="translate(1 1) scale(0.8)">
           <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#f0f" /> -->
-          <polyline points="0,8 12,0 12,8" stroke-width="1" stroke="#333" fill="none"/>
+          <polyline points="0,8 12,0 12,8" stroke-width="1" fill="none"/>
         </g>
       </g>
 
@@ -63,7 +63,7 @@
         <def id="PULSE_25_LIGHT" xlink:href="#light-small" transform="translate(-7.5 1)"/>
         <g transform="translate(1 1) scale(0.8)">
           <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#f0f" /> -->
-          <polyline points="0,4 0,0 4.5,0 4.5,8 12,8 12,4" stroke-width="1" stroke="#333" fill="none"/>
+          <polyline points="0,4 0,0 4.5,0 4.5,8 12,8 12,4" stroke-width="1" fill="none"/>
         </g>
       </g>
     </g>
@@ -73,7 +73,7 @@
         <def id="TRIANGLE_LIGHT" xlink:href="#light-small" transform="translate(-7.5 1)"/>
         <g transform="translate(1 1) scale(0.8)">
           <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#f0f" /> -->
-          <polyline points="0,4 3,0 9,8 12,4" stroke-width="1" stroke="#333" fill="none"/>
+          <polyline points="0,4 3,0 9,8 12,4" stroke-width="1" fill="none"/>
         </g>
       </g>
 
@@ -81,7 +81,7 @@
         <def id="SQUARE_LIGHT" xlink:href="#light-small" transform="translate(-7.5 1)"/>
         <g transform="translate(1 1) scale(0.8)">
           <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#f0f" /> -->
-          <polyline points="0,4 0,0 6,0 6,8 12,8 12,4" stroke-width="1" stroke="#333" fill="none"/>
+          <polyline points="0,4 0,0 6,0 6,8 12,8 12,4" stroke-width="1" fill="none"/>
         </g>
       </g>
 
@@ -89,7 +89,7 @@
         <def id="PULSE_10_LIGHT" xlink:href="#light-small" transform="translate(-7.5 1)"/>
         <g transform="translate(1 1) scale(0.8)">
           <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#f0f" /> -->
-          <polyline points="0,4 0,0 3,0 3,8 12,8 12,4" stroke-width="1" stroke="#333" fill="none"/>
+          <polyline points="0,4 0,0 3,0 3,8 12,8 12,4" stroke-width="1" fill="none"/>
         </g>
       </g>
     </g>

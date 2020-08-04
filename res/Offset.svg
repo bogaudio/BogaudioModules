@@ -14,34 +14,34 @@
     <symbol viewBox="0 0 45px 45px" id="dial-offset-offset">
       <g id="g32610" transform="translate(22.5 22.5)">
         <g id="g32514" transform="rotate(-240) translate(17 0)">
-          <polyline id="polyline32512" stroke="#333" stroke-width="1.5" points="0,0 4,0"/>
+          <polyline id="polyline32512" stroke-width="1.5" points="0,0 4,0"/>
         </g>
         <g id="g32518" transform="rotate(-225) translate(17 0)">
-          <polyline id="polyline32516" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32516" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32522" transform="rotate(-210) translate(17 0)">
-          <polyline id="polyline32520" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32520" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32526" transform="rotate(-195) translate(17 0)">
-          <polyline id="polyline32524" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32524" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32530" transform="rotate(-180) translate(17 0)">
-          <polyline id="polyline32528" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32528" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32534" transform="rotate(-165) translate(17 0)">
-          <polyline id="polyline32532" stroke="#333" stroke-width="1.5" points="0,0 4,0"/>
+          <polyline id="polyline32532" stroke-width="1.5" points="0,0 4,0"/>
         </g>
         <g id="g32538" transform="rotate(-150) translate(17 0)">
-          <polyline id="polyline32536" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32536" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32542" transform="rotate(-135) translate(17 0)">
-          <polyline id="polyline32540" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32540" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32546" transform="rotate(-120) translate(17 0)">
-          <polyline id="polyline32544" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32544" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32550" transform="rotate(-105) translate(17 0)">
-          <polyline id="polyline32548" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32548" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32556" transform="rotate(-90) translate(17 0)">
           <g id="g32554" transform="translate(2.4 0) rotate(90)">
@@ -49,34 +49,34 @@
           </g>
         </g>
         <g id="g32560" transform="rotate(-75) translate(17 0)">
-          <polyline id="polyline32558" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32558" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32564" transform="rotate(-60) translate(17 0)">
-          <polyline id="polyline32562" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32562" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32568" transform="rotate(-45) translate(17 0)">
-          <polyline id="polyline32566" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32566" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32572" transform="rotate(-30) translate(17 0)">
-          <polyline id="polyline32570" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32570" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32576" transform="rotate(-15) translate(17 0)">
-          <polyline id="polyline32574" stroke="#333" stroke-width="1.5" points="0,0 4,0"/>
+          <polyline id="polyline32574" stroke-width="1.5" points="0,0 4,0"/>
         </g>
         <g id="g32580" transform="rotate(0) translate(17 0)">
-          <polyline id="polyline32578" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32578" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32584" transform="rotate(15) translate(17 0)">
-          <polyline id="polyline32582" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32582" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32588" transform="rotate(30) translate(17 0)">
-          <polyline id="polyline32586" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32586" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32592" transform="rotate(45) translate(17 0)">
-          <polyline id="polyline32590" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32590" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32596" transform="rotate(60) translate(17 0)">
-          <polyline id="polyline32594" stroke="#333" stroke-width="1.5" points="0,0 4,0"/>
+          <polyline id="polyline32594" stroke-width="1.5" points="0,0 4,0"/>
         </g>
         <g id="g32602" transform="rotate(-225) translate(22 0)">
           <g id="g32600" transform="translate(2.5 0) rotate(225)">
@@ -93,37 +93,37 @@
     <symbol viewBox="0 0 45px 45px" id="dial-exp-offset">
       <g id="g32719" transform="translate(22.5 22.5)">
         <g id="g32615" transform="rotate(-240) translate(17 0)">
-          <polyline id="polyline32613" stroke="#333" stroke-width="1.5" points="0,0 4,0"/>
+          <polyline id="polyline32613" stroke-width="1.5" points="0,0 4,0"/>
         </g>
         <g id="g32619" transform="rotate(-232.3) translate(17 0)">
-          <polyline id="polyline32617" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32617" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32623" transform="rotate(-224.2) translate(17 0)">
-          <polyline id="polyline32621" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32621" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32627" transform="rotate(-215.5) translate(17 0)">
-          <polyline id="polyline32625" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32625" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32631" transform="rotate(-206.2) translate(17 0)">
-          <polyline id="polyline32629" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32629" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32635" transform="rotate(-196.1) translate(17 0)">
-          <polyline id="polyline32633" stroke="#333" stroke-width="1.5" points="0,0 4,0"/>
+          <polyline id="polyline32633" stroke-width="1.5" points="0,0 4,0"/>
         </g>
         <g id="g32639" transform="rotate(-184.9) translate(17 0)">
-          <polyline id="polyline32637" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32637" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32643" transform="rotate(-172.2) translate(17 0)">
-          <polyline id="polyline32641" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32641" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32647" transform="rotate(-157.1) translate(17 0)">
-          <polyline id="polyline32645" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32645" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32651" transform="rotate(-137.4) translate(17 0)">
-          <polyline id="polyline32649" stroke="#333" stroke-width="1.5" points="0,0 4,0"/>
+          <polyline id="polyline32649" stroke-width="1.5" points="0,0 4,0"/>
         </g>
         <g id="g32655" transform="rotate(-123.5) translate(17 0)">
-          <polyline id="polyline32653" stroke="#333" stroke-width="0.3" points="0,0 1,0"/>
+          <polyline id="polyline32653" stroke-width="0.3" points="0,0 1,0"/>
         </g>
         <g id="g32661" transform="rotate(-90) translate(17 0)">
           <g id="g32659" transform="translate(2.4 0) rotate(90)">
@@ -131,37 +131,37 @@
           </g>
         </g>
         <g id="g32665" transform="rotate(-56.5) translate(17 0)">
-          <polyline id="polyline32663" stroke="#333" stroke-width="0.3" points="0,0 1,0"/>
+          <polyline id="polyline32663" stroke-width="0.3" points="0,0 1,0"/>
         </g>
         <g id="g32669" transform="rotate(-42.3) translate(17 0)">
-          <polyline id="polyline32667" stroke="#333" stroke-width="1.5" points="0,0 4,0"/>
+          <polyline id="polyline32667" stroke-width="1.5" points="0,0 4,0"/>
         </g>
         <g id="g32673" transform="rotate(-22.9) translate(17 0)">
-          <polyline id="polyline32671" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32671" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32677" transform="rotate(-7.8) translate(17 0)">
-          <polyline id="polyline32675" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32675" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32681" transform="rotate(4.8) translate(17 0)">
-          <polyline id="polyline32679" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32679" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32685" transform="rotate(16.1) translate(17 0)">
-          <polyline id="polyline32683" stroke="#333" stroke-width="1.5" points="0,0 4,0"/>
+          <polyline id="polyline32683" stroke-width="1.5" points="0,0 4,0"/>
         </g>
         <g id="g32689" transform="rotate(26.2) translate(17 0)">
-          <polyline id="polyline32687" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32687" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32693" transform="rotate(35.5) translate(17 0)">
-          <polyline id="polyline32691" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32691" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32697" transform="rotate(44.2) translate(17 0)">
-          <polyline id="polyline32695" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32695" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32701" transform="rotate(52.3) translate(17 0)">
-          <polyline id="polyline32699" stroke="#333" stroke-width="0.3" points="0,0 3,0"/>
+          <polyline id="polyline32699" stroke-width="0.3" points="0,0 3,0"/>
         </g>
         <g id="g32705" transform="rotate(60) translate(17 0)">
-          <polyline id="polyline32703" stroke="#333" stroke-width="1.5" points="0,0 4,0"/>
+          <polyline id="polyline32703" stroke-width="1.5" points="0,0 4,0"/>
         </g>
         <g id="g32711" transform="rotate(-225) translate(22 0)">
           <g id="g32709" transform="translate(2.5 0) rotate(225)">

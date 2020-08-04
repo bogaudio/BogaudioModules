@@ -14,6 +14,10 @@ text.brand {
   font-weight: bold;
 }
 
+path, polyline {
+  stroke: #333;
+}
+
 rect.module-background, .background-fill {
   fill: #ddd;
 }
@@ -32,34 +36,34 @@ polyline.module-border-outer {
     <symbol id="dial-offset-offset" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <g transform="rotate(-240) translate(17 0)">
-          <polyline points="0,0 4,0" stroke-width="1.5" stroke="#333"/>
+          <polyline points="0,0 4,0" stroke-width="1.5"/>
         </g>
         <g transform="rotate(-225) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(-210) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(-195) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(-180) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(-165) translate(17 0)">
-          <polyline points="0,0 4,0" stroke-width="1.5" stroke="#333"/>
+          <polyline points="0,0 4,0" stroke-width="1.5"/>
         </g>
         <g transform="rotate(-150) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(-135) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(-120) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(-105) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
 
         <g transform="rotate(-90) translate(17 0)">
@@ -70,34 +74,34 @@ polyline.module-border-outer {
         </g>
 
         <g transform="rotate(-75) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(-60) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(-45) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(-30) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(-15) translate(17 0)">
-          <polyline points="0,0 4,0" stroke-width="1.5" stroke="#333"/>
+          <polyline points="0,0 4,0" stroke-width="1.5"/>
         </g>
         <g transform="rotate(0) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(15) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(30) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(45) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(60) translate(17 0)">
-          <polyline points="0,0 4,0" stroke-width="1.5" stroke="#333"/>
+          <polyline points="0,0 4,0" stroke-width="1.5"/>
         </g>
 
         <g transform="rotate(-225) translate(22 0)">
@@ -118,37 +122,37 @@ polyline.module-border-outer {
     <symbol id="dial-exp-offset" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <g transform="rotate(-240) translate(17 0)">
-          <polyline points="0,0 4,0" stroke-width="1.5" stroke="#333"/>
+          <polyline points="0,0 4,0" stroke-width="1.5"/>
         </g>
         <g transform="rotate(-232.3) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(-224.2) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(-215.5) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(-206.2) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(-196.1) translate(17 0)">
-          <polyline points="0,0 4,0" stroke-width="1.5" stroke="#333"/>
+          <polyline points="0,0 4,0" stroke-width="1.5"/>
         </g>
         <g transform="rotate(-184.9) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(-172.2) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(-157.1) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(-137.4) translate(17 0)">
-          <polyline points="0,0 4,0" stroke-width="1.5" stroke="#333"/>
+          <polyline points="0,0 4,0" stroke-width="1.5"/>
         </g>
         <g transform="rotate(-123.5) translate(17 0)">
-          <polyline points="0,0 1,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 1,0" stroke-width="0.3"/>
         </g>
 
         <g transform="rotate(-90) translate(17 0)">
@@ -159,37 +163,37 @@ polyline.module-border-outer {
         </g>
 
         <g transform="rotate(-56.5) translate(17 0)">
-          <polyline points="0,0 1,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 1,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(-42.3) translate(17 0)">
-          <polyline points="0,0 4,0" stroke-width="1.5" stroke="#333"/>
+          <polyline points="0,0 4,0" stroke-width="1.5"/>
         </g>
         <g transform="rotate(-22.9) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(-7.8) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(4.8) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(16.1) translate(17 0)">
-          <polyline points="0,0 4,0" stroke-width="1.5" stroke="#333"/>
+          <polyline points="0,0 4,0" stroke-width="1.5"/>
         </g>
         <g transform="rotate(26.2) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(35.5) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(44.2) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(52.3) translate(17 0)">
-          <polyline points="0,0 3,0" stroke-width="0.3" stroke="#333"/>
+          <polyline points="0,0 3,0" stroke-width="0.3"/>
         </g>
         <g transform="rotate(60) translate(17 0)">
-          <polyline points="0,0 4,0" stroke-width="1.5" stroke="#333"/>
+          <polyline points="0,0 4,0" stroke-width="1.5"/>
         </g>
 
         <g transform="rotate(-225) translate(22 0)">

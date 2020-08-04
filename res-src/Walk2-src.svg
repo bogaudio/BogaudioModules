@@ -27,13 +27,13 @@
   <g transform="translate(0 227)">
     <g transform="translate(6 0)">
       <text font-size="8pt" transform="translate(45 0)">X</text>
-      <polyline points="0,0 30,0" stroke="#333" stroke-width="1" fill="none" transform="translate(13 -4)"/>
-      <polyline points="0,0 30,0" stroke="#333" stroke-width="1" fill="none" transform="translate(53 -4)"/>
+      <polyline points="0,0 30,0" stroke-width="1" fill="none" transform="translate(13 -4)"/>
+      <polyline points="0,0 30,0" stroke-width="1" fill="none" transform="translate(53 -4)"/>
     </g>
     <g transform="translate(111 0)">
       <text font-size="8pt" transform="translate(40 0)">Y</text>
-      <polyline points="0,0 30,0" stroke="#333" stroke-width="1" fill="none" transform="translate(8 -4)"/>
-      <polyline points="0,0 30,0" stroke="#333" stroke-width="1" fill="none" transform="translate(48 -4)"/>
+      <polyline points="0,0 30,0" stroke-width="1" fill="none" transform="translate(8 -4)"/>
+      <polyline points="0,0 30,0" stroke-width="1" fill="none" transform="translate(48 -4)"/>
     </g>
   </g>
 

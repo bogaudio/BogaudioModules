@@ -11,10 +11,10 @@
         <text font-size="5.0pt" transform="rotate(-15) translate(18 0) rotate(15) translate(-2 2)">1</text>
         <text font-size="5.0pt" transform="rotate(60) translate(18 0) rotate(-60) translate(-2 2)">2</text>
 
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-208.75) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-133.75) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(-46.25) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" stroke="#333" transform="rotate(28.75) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-208.75) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-133.75) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-46.25) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(28.75) translate(15 0)"/>
       </g>
     </symbol>
   </defs>

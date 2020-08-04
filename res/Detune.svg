@@ -17,31 +17,31 @@
           <text id="text11147" transform="translate(3 0) rotate(240) translate(-2.2 2.2)" font-size="5.0pt">0</text>
         </g>
         <g id="g11153" transform="rotate(-210) translate(15 0)">
-          <polyline id="polyline11151" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
+          <polyline id="polyline11151" stroke-width="0.3" points="0,0 2.5,0"/>
         </g>
         <g id="g11157" transform="rotate(-180) translate(15 0)">
-          <polyline id="polyline11155" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
+          <polyline id="polyline11155" stroke-width="0.3" points="0,0 2.5,0"/>
         </g>
         <g id="g11161" transform="rotate(-150) translate(15 0)">
-          <polyline id="polyline11159" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
+          <polyline id="polyline11159" stroke-width="0.3" points="0,0 2.5,0"/>
         </g>
         <g id="g11165" transform="rotate(-120) translate(15 0)">
-          <polyline id="polyline11163" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
+          <polyline id="polyline11163" stroke-width="0.3" points="0,0 2.5,0"/>
         </g>
         <g id="g11169" transform="rotate(-90) translate(15 0)">
-          <polyline id="polyline11167" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
+          <polyline id="polyline11167" stroke-width="0.3" points="0,0 2.5,0"/>
         </g>
         <g id="g11173" transform="rotate(-60) translate(15 0)">
-          <polyline id="polyline11171" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
+          <polyline id="polyline11171" stroke-width="0.3" points="0,0 2.5,0"/>
         </g>
         <g id="g11177" transform="rotate(-30) translate(15 0)">
-          <polyline id="polyline11175" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
+          <polyline id="polyline11175" stroke-width="0.3" points="0,0 2.5,0"/>
         </g>
         <g id="g11181" transform="rotate(0) translate(15 0)">
-          <polyline id="polyline11179" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
+          <polyline id="polyline11179" stroke-width="0.3" points="0,0 2.5,0"/>
         </g>
         <g id="g11185" transform="rotate(30) translate(15 0)">
-          <polyline id="polyline11183" stroke="#333" stroke-width="0.3" points="0,0 2.5,0"/>
+          <polyline id="polyline11183" stroke-width="0.3" points="0,0 2.5,0"/>
         </g>
         <g id="g11189" transform="rotate(60) translate(15 0)">
           <text id="text11187" transform="translate(3 0) rotate(-60) translate(-4 2.2)" font-size="5.0pt">50</text>
