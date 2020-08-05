@@ -36,41 +36,35 @@ polyline.module-border-outer {
 
 g.io-group {
 }
-rect.input-background {
+rect.input-background, rect.input-background-filler {
   fill: #fafafa;
 }
-rect.input-background-filler {
-  fill: #fafafa;
-}
-rect.output-background {
-  fill: #bbb;
-}
-rect.output-background-filler {
+rect.output-background, rect.output-background-filler {
   fill: #bbb;
 }
 text.input-label, text.output-label {
   /* font-size: 6pt; */
 }
+polyline.input-label, polyline.output-label {
+}
+path.input-label, path.output-label {
+}
 </style>
 
   <defs>
-    <symbol id="display-reftone" viewBox="0 0 45px 34px">
-      <rect width="38" height="48" fill="#222" transform="translate(3.5 0)"/>
-    </symbol>
-
     <symbol id="dial-pitch-reftone" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <g transform="rotate(-240) translate(15 0)">
           <text font-size="5.0pt" transform="translate(2 0) rotate(240) translate(-2.2 2.2)">C</text>
         </g>
         <g transform="rotate(-212.73) translate(15 0)">
-          <polyline points="0,0 2.5,0" stroke-width="0.3"/>
+          <polyline points="0,0 2.5,0" stroke-width="0.7"/>
         </g>
         <g transform="rotate(-185.45) translate(15 0)">
           <text font-size="5.0pt" transform="translate(2 0) rotate(185.45) translate(-2.2 2.2)">D</text>
         </g>
         <g transform="rotate(-158.18) translate(15 0)">
-          <polyline points="0,0 2.5,0" stroke-width="0.3"/>
+          <polyline points="0,0 2.5,0" stroke-width="0.7"/>
         </g>
         <g transform="rotate(-130.91) translate(15 0)">
           <text font-size="5.0pt" transform="translate(2 0) rotate(130.91) translate(-2.2 2.2)">E</text>
@@ -79,19 +73,19 @@ text.input-label, text.output-label {
           <text font-size="5.0pt" transform="translate(2 0) rotate(103.64) translate(-2.2 2.2)">F</text>
         </g>
         <g transform="rotate(-76.36) translate(15 0)">
-          <polyline points="0,0 2.5,0" stroke-width="0.3"/>
+          <polyline points="0,0 2.5,0" stroke-width="0.7"/>
         </g>
         <g transform="rotate(-49.09) translate(15 0)">
           <text font-size="5.0pt" transform="translate(2 0) rotate(49.09) translate(-2.2 2.2)">G</text>
         </g>
         <g transform="rotate(-21.82) translate(15 0)">
-          <polyline points="0,0 2.5,0" stroke-width="0.3"/>
+          <polyline points="0,0 2.5,0" stroke-width="0.7"/>
         </g>
         <g transform="rotate(5.45) translate(15 0)">
           <text font-size="5.0pt" transform="translate(2 0) rotate(-5.45) translate(-2.2 2.2)">A</text>
         </g>
         <g transform="rotate(32.73) translate(15 0)">
-          <polyline points="0,0 2.5,0" stroke-width="0.3"/>
+          <polyline points="0,0 2.5,0" stroke-width="0.7"/>
         </g>
         <g transform="rotate(60) translate(15 0)">
           <text font-size="5.0pt" transform="translate(2 0) rotate(-60) translate(-2.2 2.2)">B</text>
@@ -142,10 +136,10 @@ text.input-label, text.output-label {
           
           <text font-size="5.0pt" transform="translate(2.5 0) rotate(-60) translate(-1.9 2.2)">+</text>
         </g>
-        <path d="M 0 -17.5 A 17.5 17.5 0 0 1 17.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -17.5 A 17.5 17.5 0 0 1 17.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -17.5 A 17.5 17.5 0 0 0 -17.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -17.5 A 17.5 17.5 0 0 0 -17.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
+        <path d="M 0 -17.5 A 17.5 17.5 0 0 1 17.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -17.5 A 17.5 17.5 0 0 1 17.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -17.5 A 17.5 17.5 0 0 0 -17.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -17.5 A 17.5 17.5 0 0 0 -17.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
       </g>
     </symbol>
   </defs>
@@ -163,13 +157,15 @@ text.input-label, text.output-label {
         <text class="title" font-size="7pt" letter-spacing="2.5px">REFTONE</text>
         <g transform="translate(0 12)">
           <text class="brand" font-size="7pt" letter-spacing="2px">BGA</text>
-          <rect width="3.0" height="3" fill="#ddd" transform="translate(11.5 -5)"/>
+          <rect class="background-fill" width="3.0" height="3" fill="#ddd" transform="translate(11.5 -5)"/>
         </g>
       </g>
     
 
   <g transform="translate(0 18)">
-    <use id="DISPLAY_WIDGET" xlink:href="#display-reftone" href="#display-reftone"/>
+    <g transform="translate(3.5 0)"><svg id="DISPLAY_WIDGET">
+      <rect cx="0" cy="0" width="38" height="48" fill="#444"/>
+    </svg></g>
 
     <g transform="translate(0 62)">
       <g transform="translate(0 0)">

@@ -36,20 +36,18 @@ polyline.module-border-outer {
 
 g.io-group {
 }
-rect.input-background {
+rect.input-background, rect.input-background-filler {
   fill: #fafafa;
 }
-rect.input-background-filler {
-  fill: #fafafa;
-}
-rect.output-background {
-  fill: #bbb;
-}
-rect.output-background-filler {
+rect.output-background, rect.output-background-filler {
   fill: #bbb;
 }
 text.input-label, text.output-label {
   /* font-size: 6pt; */
+}
+polyline.input-label, polyline.output-label {
+}
+path.input-label, path.output-label {
 }
 </style>
 
@@ -62,10 +60,10 @@ text.input-label, text.output-label {
         <text font-size="5.0pt" transform="rotate(-15) translate(18 0) rotate(15) translate(-2 2)">1</text>
         <text font-size="5.0pt" transform="rotate(60) translate(18 0) rotate(-60) translate(-2 2)">2</text>
 
-        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-208.75) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-133.75) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-46.25) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(28.75) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-208.75) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-133.75) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-46.25) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(28.75) translate(15 0)"/>
       </g>
     </symbol>
   </defs>
@@ -79,10 +77,10 @@ text.input-label, text.output-label {
       <polyline class="module-border-middle" points="0.5,0.5 74.5,0.5 74.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
       <polyline class="module-border-outer" points="0,0 75.0,0 75.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
     
-      <text class="title" font-size="9pt" letter-spacing="3px" text-anchor="end" transform="translate(68.0 17)">PEQ14XV</text>
+      <text class="title" font-size="9pt" letter-spacing="3px" text-anchor="end" transform="translate(72.0 17)">PEQ14XV</text>
       <g transform="translate(25 374)">
         <text class="brand" font-size="6.5pt" letter-spacing="2px">BGA</text>
-        <rect width="2" height="2" fill="#ddd" transform="translate(11.5 -4)"/>
+        <rect class="background-fill" width="2" height="2" fill="#ddd" transform="translate(11.5 -4)"/>
       </g>
     
 
@@ -98,13 +96,11 @@ text.input-label, text.output-label {
     </svg></g>
     <g transform="translate(2.5 -6)">
       <g transform="translate(20 20)">
-        <g transform="rotate(-240) translate(10 0)">
-          <polyline points="0,0 4,0" stroke-width="1"/>
-        </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-240) translate(10 0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(10 33)">DAMP</text>
@@ -127,13 +123,11 @@ text.input-label, text.output-label {
     </svg></g>
     <g transform="translate(2.5 -6)">
       <g transform="translate(20 20)">
-        <g transform="rotate(-90) translate(10 0)">
-          <polyline points="0,0 4,0" stroke-width="1"/>
-        </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(10 0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11.5 33)">GAIN</text>
@@ -179,13 +173,11 @@ text.input-label, text.output-label {
     </svg></g>
     <g transform="translate(0 3)">
       <g transform="translate(20 20)">
-        <g transform="rotate(-240) translate(10 0)">
-          <polyline points="0,0 4,0" stroke-width="1"/>
-        </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-240) translate(10 0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(9 42)">GAIN</text>
@@ -199,13 +191,11 @@ text.input-label, text.output-label {
     </svg></g>
     <g transform="translate(35 3)">
       <g transform="translate(20 20)">
-        <g transform="rotate(-240) translate(10 0)">
-          <polyline points="0,0 4,0" stroke-width="1"/>
-        </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-240) translate(10 0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
       </g>
     </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(44 42)">B14D</text>

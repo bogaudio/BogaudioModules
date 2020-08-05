@@ -10,7 +10,7 @@
 
   <g class="io-group" transform="translate(5.5 56)">
     <rect class="output-background" width="34" height="155" rx="5" transform="translate(0 -10)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 0)">OUT</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 0)">OUT</text>
     <def id="A_OUTPUT" xlink:href="#output" transform="translate(5 3)"/>
     <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(15 35)">A</text>
     <def id="B_OUTPUT" xlink:href="#output" transform="translate(5 38)"/>
@@ -27,9 +27,9 @@
       <rect class="input-background" width="34" height="102" rx="5" transform="translate(0 -3)"/>
       <def id="CLOCK_INPUT" xlink:href="#input" transform="translate(5 2)"/>
       <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(2.5 34)">CLOCK</text>
-      <text font-size="5pt" letter-spacing="1px" transform="translate(5 46.5)">FWD</text>
+      <text class="input-label" font-size="5pt" letter-spacing="1px" transform="translate(5 46.5)">FWD</text>
       <def id="DIRECTION_PARAM" xlink:href="#button-small" transform="translate(22.5 39.7)"/>
-      <text font-size="5pt" letter-spacing="0.1px" transform="translate(2 60)">S.O.C.</text>
+      <text class="input-label" font-size="5pt" letter-spacing="0.1px" transform="translate(2 60)">S.O.C.</text>
       <def id="SELECT_ON_CLOCK_PARAM" xlink:href="#button-small" transform="translate(22.5 53.2)"/>
       <def id="SELECT_INPUT" xlink:href="#input" transform="translate(5 66)"/>
       <text class="input-label" font-size="5pt" letter-spacing="1px" transform="translate(2.5 98)">SELECT</text>

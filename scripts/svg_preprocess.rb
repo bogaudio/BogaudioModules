@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require 'css_parser'
 require 'listen'
 require 'nokogiri'
 require 'optparse'
@@ -322,6 +323,36 @@ def write_output(name, doc, styles)
     n.node_name = 'style'
   end
 
+  # hack to inline the path stroke on each path; rendering through Inkscape doesn't handle styles on paths correctly.
+  parser = CssParser::Parser.new
+  parser.load_string!(styles)
+
+  stroke = '#333'
+  if parser.find_by_selector('path').last =~ /stroke:\s+(#\w+);/
+    stroke = $1
+  end
+
+  input_stroke = '#333'
+  if parser.find_by_selector('path.input-label').last =~ /stroke:\s+(#\w+);/
+    input_stroke = $1
+  end
+
+  output_stroke = '#333'
+  if parser.find_by_selector('path.output-label').last =~ /stroke:\s+(#\w+);/
+    output_stroke = $1
+  end
+
+  doc.css('path').each do |n|
+    n['stroke'] = stroke
+  end
+  doc.css('path[@class="input-label"]').each do |n|
+    n['stroke'] = input_stroke
+  end
+  doc.css('path[@class="output-label"]').each do |n|
+    n['stroke'] = output_stroke
+  end
+  # end hack
+
   fn = File.join($pp_dir, "#{name}-pp.svg")
   File.write(fn, doc.to_xml)
   puts "Wrote #{fn}"
@@ -340,11 +371,15 @@ def process(name)
 
   doc = read_xml(fn)
   hp = 3
+  noskin = false
 
   root = doc.at_css(':root')
   if root.node_name == 'module'
     if root['hp'] && !root['hp'].to_s.empty?
       hp = root['hp'].to_s.to_i
+    end
+    if root['noskin'] && root['noskin'].to_s == 'true'
+      noskin = true
     end
     root.node_name = 'svg'
     root['xmlns'] = 'http://www.w3.org/2000/svg'
@@ -396,8 +431,10 @@ def process(name)
 
   name = widget_from_filename(fn)
   write_output(name, doc, $main_styles)
-  $skins.each do |skin_name, skin|
-    write_output("#{name}-#{skin_name}", doc, "#{$main_styles}\n\n#{skin[1]}")
+  unless noskin
+    $skins.each do |skin_name, skin|
+      write_output("#{name}-#{skin_name}", doc, "#{$main_styles}\n\n#{skin[1]}")
+    end
   end
 end
 

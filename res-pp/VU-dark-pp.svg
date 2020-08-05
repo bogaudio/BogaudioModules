@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="45" height="380" viewBox="0 0 45 380">
+  <style>text {
+  fill: #333;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+text.title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+}
+text.brand {
+  font-family: 'Audiowide', sans-serif;
+  font-weight: bold;
+}
+
+polyline {
+  stroke: #333;
+}
+path {
+  stroke: #333;
+}
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background, rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
+}
+polyline.input-label, polyline.output-label {
+}
+path.input-label, path.output-label {
+}
+
+
+text {
+  fill: #ddd;
+}
+
+polyline {
+  stroke: #ddd;
+}
+path {
+  stroke: #ddd;
+}
+
+rect.module-background, .background-fill {
+  fill: #222;
+}
+polyline.module-border-inner {
+  stroke: #191919;
+}
+polyline.module-border-middle {
+  stroke: #111;
+}
+polyline.module-border-outer {
+  stroke: #000;
+}
+
+rect.input-background, rect.input-background-filler {
+  fill: #aaa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #666;
+}
+text.input-label {
+  fill: #333;
+}
+polyline.input-label, path.input-label {
+  stroke: #333;
+}
+text.output-label {
+  fill: #ddd;
+}
+polyline.output-label, path.output-label {
+  stroke: #ddd;
+}
+</style>
+
+  <defs>
+    <symbol id="vu-vu" viewBox="0 0 18px 180px">
+      
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(3 0)"/>
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(10 0)"/>
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(3 15)"/>
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(10 15)"/>
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(3 30)"/>
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(10 30)"/>
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(3 45)"/>
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(10 45)"/>
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(3 60)"/>
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(10 60)"/>
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(3 75)"/>
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(10 75)"/>
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(3 90)"/>
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(10 90)"/>
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(3 105)"/>
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(10 105)"/>
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(3 120)"/>
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(10 120)"/>
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(3 135)"/>
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(10 135)"/>
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(3 150)"/>
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(10 150)"/>
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(3 165)"/>
+      <rect width="5" height="13" x="0" y="1" rx="0" fill="#aaa" transform="translate(10 165)"/>
+    </symbol>
+
+    <symbol id="guide-db-vu" viewBox="0 0 20px 183px">
+      <g transform="translate(0 15)">
+        <polyline points="0,0 3,0" fill="none" transform="translate(11 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(0) translate(-2.5 2.6)">6</text>
+      </g>
+      <g transform="translate(0 30)">
+        <polyline points="0,0 3,0" fill="none" transform="translate(11 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(0) translate(-2.5 2.6)">0</text>
+      </g>
+      <g transform="translate(0 45)">
+        <polyline points="0,0 3,0" fill="none" transform="translate(11 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-4 2.2)">-6</text>
+      </g>
+      <g transform="translate(0 60)">
+        <polyline points="0,0 3,0" fill="none" transform="translate(11 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-12</text>
+      </g>
+      <g transform="translate(0 90)">
+        <polyline points="0,0 3,0" fill="none" transform="translate(11 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-24</text>
+      </g>
+      <g transform="translate(0 120)">
+        
+        
+        
+      </g>
+      <g transform="translate(0 150)">
+        <polyline points="0,0 3,0" fill="none" transform="translate(11 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-48</text>
+      </g>
+      <g transform="translate(0 170)">
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-9 4.5)">dB</text>
+      </g>
+    </symbol>
+  </defs>
+
+  
+      
+      <rect class="module-background background-fill" width="45.0" height="380.0"/>
+    
+      
+      <polyline class="module-border-inner" points="1,1 44.0,1 44.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 44.5,0.5 44.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 45.0,0 45.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    
+      <g transform="rotate(-90) translate(-376.0 13)">
+        <text class="title" font-size="7pt" letter-spacing="2.5px">VU</text>
+        <g transform="translate(0 12)">
+          <text class="brand" font-size="7pt" letter-spacing="2px">BGA</text>
+          <rect class="background-fill" width="3.0" height="3" fill="#ddd" transform="translate(11.5 -5)"/>
+        </g>
+      </g>
+    
+
+  <g transform="translate(0 18)">
+    <use id="VU_WIDGET" xlink:href="#vu-vu" transform="translate(13.5 -1)" href="#vu-vu"/>
+    <use xlink:href="#guide-db-vu" transform="translate(0 -1)" href="#guide-db-vu"/>
+  </g>
+
+  <g transform="translate(0 200)">
+    <g class="io-group" transform="translate(5.5 0)">
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 63)"/>
+      <rect class="input-background" width="34" height="70" rx="5"/>
+      <g transform="translate(5 3)"><svg id="L_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(15 35)">L</text>
+      <g transform="translate(5 38)"><svg id="R_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="0.5px" transform="translate(9 70)">R (L)</text>
+    </g>
+    <g class="io-group" transform="translate(5.5 76)">
+      <rect class="output-background-filler" width="34" height="10" transform="translate(0 -3)"/>
+      <rect class="output-background" width="34" height="70" rx="5"/>
+      <g transform="translate(5 0)"><svg id="L_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(15 32)">L</text>
+      <g transform="translate(5 35)"><svg id="R_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(15 67)">R</text>
+    </g>
+  </g>
+</svg>

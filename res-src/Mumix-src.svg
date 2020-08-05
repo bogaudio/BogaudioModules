@@ -36,14 +36,14 @@
     <def id="MUTE8_PARAM" xlink:href="#button" transform="translate(1 268)"/>
   </g>
 
-  <!-- <polyline points="0,0 0,380" stroke-width="0.5" stroke="#0f0" transform="translate(24.5 0)" /> -->
-  <!-- <polyline points="0,0 0,380" stroke-width="0.5" stroke="#0f0" transform="translate(65.5 0)" /> -->
-  <!-- <polyline points="0,0 90,0" stroke-width="0.5" stroke="#0f0" transform="translate(0 42)" /> -->
-  <!-- <polyline points="0,0 90,0" stroke-width="0.5" stroke="#0f0" transform="translate(0 79)" /> -->
-  <!-- <polyline points="0,0 90,0" stroke-width="0.5" stroke="#0f0" transform="translate(0 116)" /> -->
-  <!-- <polyline points="0,0 90,0" stroke-width="0.5" stroke="#0f0" transform="translate(0 153)" /> -->
-  <!-- <polyline points="0,0 90,0" stroke-width="0.5" stroke="#0f0" transform="translate(0 190)" /> -->
-  <!-- <polyline points="0,0 90,0" stroke-width="0.5" stroke="#0f0" transform="translate(0 227)" /> -->
-  <!-- <polyline points="0,0 90,0" stroke-width="0.5" stroke="#0f0" transform="translate(0 264)" /> -->
-  <!-- <polyline points="0,0 90,0" stroke-width="0.5" stroke="#0f0" transform="translate(0 301)" /> -->
+  <!-- <polyline points="0,0 0,380" stroke-width="0.7" stroke="#0f0" transform="translate(24.5 0)" /> -->
+  <!-- <polyline points="0,0 0,380" stroke-width="0.7" stroke="#0f0" transform="translate(65.5 0)" /> -->
+  <!-- <polyline points="0,0 90,0" stroke-width="0.7" stroke="#0f0" transform="translate(0 42)" /> -->
+  <!-- <polyline points="0,0 90,0" stroke-width="0.7" stroke="#0f0" transform="translate(0 79)" /> -->
+  <!-- <polyline points="0,0 90,0" stroke-width="0.7" stroke="#0f0" transform="translate(0 116)" /> -->
+  <!-- <polyline points="0,0 90,0" stroke-width="0.7" stroke="#0f0" transform="translate(0 153)" /> -->
+  <!-- <polyline points="0,0 90,0" stroke-width="0.7" stroke="#0f0" transform="translate(0 190)" /> -->
+  <!-- <polyline points="0,0 90,0" stroke-width="0.7" stroke="#0f0" transform="translate(0 227)" /> -->
+  <!-- <polyline points="0,0 90,0" stroke-width="0.7" stroke="#0f0" transform="translate(0 264)" /> -->
+  <!-- <polyline points="0,0 90,0" stroke-width="0.7" stroke="#0f0" transform="translate(0 301)" /> -->
 </module>

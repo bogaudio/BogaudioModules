@@ -1,0 +1,317 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="150" height="380" viewBox="0 0 150 380">
+  <style>text {
+  fill: #333;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+text.title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+}
+text.brand {
+  font-family: 'Audiowide', sans-serif;
+  font-weight: bold;
+}
+
+polyline {
+  stroke: #333;
+}
+path {
+  stroke: #333;
+}
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background, rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
+}
+polyline.input-label, polyline.output-label {
+}
+path.input-label, path.output-label {
+}
+
+
+text {
+  fill: #ddd;
+}
+
+polyline {
+  stroke: #ddd;
+}
+path {
+  stroke: #ddd;
+}
+
+rect.module-background, .background-fill {
+  fill: #222;
+}
+polyline.module-border-inner {
+  stroke: #191919;
+}
+polyline.module-border-middle {
+  stroke: #111;
+}
+polyline.module-border-outer {
+  stroke: #000;
+}
+
+rect.input-background, rect.input-background-filler {
+  fill: #aaa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #666;
+}
+text.input-label {
+  fill: #333;
+}
+polyline.input-label, path.input-label {
+  stroke: #333;
+}
+text.output-label {
+  fill: #ddd;
+}
+polyline.output-label, path.output-label {
+  stroke: #ddd;
+}
+</style>
+
+  <defs>
+    <symbol id="dial-level-vcm" viewBox="0 0 60px 60px">
+      <g transform="translate(30 30)">
+        <text font-size="6.0pt" transform="rotate(-240) translate(25 0) rotate(240) translate(-2.3 2.5)">0</text>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-210) translate(22 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-180) translate(22 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-150) translate(22 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-120) translate(22 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-90) translate(22 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-60) translate(22 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-30) translate(22 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(0) translate(22 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(30) translate(22 0)"/>
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(60) translate(22 0)"/>
+      </g>
+    </symbol>
+  </defs>
+
+  
+      
+      <rect class="module-background background-fill" width="150.0" height="380.0"/>
+    
+      
+      <polyline class="module-border-inner" points="1,1 149.0,1 149.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 149.5,0.5 149.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 150.0,0 150.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    
+      <text class="title" font-size="12pt" letter-spacing="4px" text-anchor="middle" transform="translate(75.0 19)">VCM</text>
+      <g transform="translate(0 374)">
+        <text class="brand" font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate(75.0 0)">BOGAUDIO</text>
+        <rect class="background-fill" width="3" height="3" transform="translate(59.5 -5)"/>
+      </g>
+    
+
+  <g transform="translate(0 32)">
+    <g class="io-group" transform="translate(10 1)">
+      <rect class="input-background" width="63" height="43" rx="5"/>
+      <g transform="translate(1 0)">
+        <g transform="translate(3 4)"><svg id="IN1_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(10 39)">IN</text>
+      </g>
+      <g transform="translate(32 0)">
+        <g transform="translate(3 4)"><svg id="CV1_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(8.5 39)">CV</text>
+      </g>
+    </g>
+    
+    <g transform="translate(89.5 3.5)"><svg id="LEVEL1_PARAM">
+      <g transform="translate(19 19)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <use xlink:href="#dial-level-vcm" transform="translate(78.5 -7.5)" href="#dial-level-vcm"/>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(139 13.8) rotate(90)">CH1</text>
+  </g>
+
+  <g transform="translate(0 96)">
+    <g class="io-group" transform="translate(10 1)">
+      <rect class="input-background" width="63" height="43" rx="5"/>
+      <g transform="translate(1 0)">
+        <g transform="translate(3 4)"><svg id="IN2_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(10 39)">IN</text>
+      </g>
+      <g transform="translate(32 0)">
+        <g transform="translate(3 4)"><svg id="CV2_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(8.5 39)">CV</text>
+      </g>
+    </g>
+    
+    <g transform="translate(89.5 3.5)"><svg id="LEVEL2_PARAM">
+      <g transform="translate(19 19)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <use xlink:href="#dial-level-vcm" transform="translate(78.5 -7.5)" href="#dial-level-vcm"/>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(139 13.8) rotate(90)">CH2</text>
+  </g>
+
+  <g transform="translate(0 160)">
+    <g class="io-group" transform="translate(10 1)">
+      <rect class="input-background" width="63" height="43" rx="5"/>
+      <g transform="translate(1 0)">
+        <g transform="translate(3 4)"><svg id="IN3_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(10 39)">IN</text>
+      </g>
+      <g transform="translate(32 0)">
+        <g transform="translate(3 4)"><svg id="CV3_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(8.5 39)">CV</text>
+      </g>
+    </g>
+    
+    <g transform="translate(89.5 3.5)"><svg id="LEVEL3_PARAM">
+      <g transform="translate(19 19)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <use xlink:href="#dial-level-vcm" transform="translate(78.5 -7.5)" href="#dial-level-vcm"/>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(139 13.8) rotate(90)">CH3</text>
+  </g>
+
+  <g transform="translate(0 225)">
+    <g class="io-group" transform="translate(10 1)">
+      <rect class="input-background" width="63" height="43" rx="5"/>
+      <g transform="translate(1 0)">
+        <g transform="translate(3 4)"><svg id="IN4_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(10 39)">IN</text>
+      </g>
+      <g transform="translate(32 0)">
+        <g transform="translate(3 4)"><svg id="CV4_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(8.5 39)">CV</text>
+      </g>
+    </g>
+    
+    <g transform="translate(89.5 3.5)"><svg id="LEVEL4_PARAM">
+      <g transform="translate(19 19)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <use xlink:href="#dial-level-vcm" transform="translate(78.5 -7.5)" href="#dial-level-vcm"/>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(139 13.8) rotate(90)">CH4</text>
+  </g>
+
+  <g transform="translate(0 290)">
+    <text font-size="5pt" letter-spacing="2px" transform="translate(11 30.5) rotate(-90)">MIX</text>
+    <g transform="translate(22.5 3.5)"><svg id="MIX_PARAM">
+      <g transform="translate(19 19)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <use xlink:href="#dial-level-vcm" transform="translate(11.5 -7.5)" href="#dial-level-vcm"/>
+    <g class="io-group" transform="translate(77 0)">
+      <rect class="output-background" width="63" height="43" rx="5"/>
+      <rect class="input-background" width="31.5" height="43" rx="5"/>
+      <rect class="input-background-filler" width="5" height="43" transform="translate(26.5 0)"/>
+      <g transform="translate(1 0)">
+        <g transform="translate(3 4)"><svg id="MIX_CV_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(8.5 39)">CV</text>
+      </g>
+      <g transform="translate(32 0)">
+        <g transform="translate(3 4)"><svg id="MIX_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+        <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(5 39)">OUT</text>
+      </g>
+    </g>
+
+    <g transform="translate(42 54)">
+      <text font-size="6pt" letter-spacing="2px" transform="translate(9 6.1)">LINEAR</text>
+      <g transform="translate(49 -1.3)"><svg id="LINEAR_PARAM">
+      <g transform="translate(4.5 4.5)">
+        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    </g>
+  </g>
+
+  
+  
+  
+  
+  
+</svg>

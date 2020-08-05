@@ -2,7 +2,7 @@
 <module hp="3">
   <style/>
 
-  <def xlink:href="#module3" var-name="POLYCON8"/>
+  <def xlink:href="#module3" var-name="POLYCON8" var-letterspacing="1.3"/>
 
   <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(5 0)" /> -->
   <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(40 0)" /> -->

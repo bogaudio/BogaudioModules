@@ -1,0 +1,986 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="405" height="380" viewBox="0 0 405 380">
+  <style>text {
+  fill: #333;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+text.title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+}
+text.brand {
+  font-family: 'Audiowide', sans-serif;
+  font-weight: bold;
+}
+
+polyline {
+  stroke: #333;
+}
+path {
+  stroke: #333;
+}
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background, rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
+}
+polyline.input-label, polyline.output-label {
+}
+path.input-label, path.output-label {
+}
+
+
+text {
+  fill: #ddd;
+}
+
+polyline {
+  stroke: #ddd;
+}
+path {
+  stroke: #ddd;
+}
+
+rect.module-background, .background-fill {
+  fill: #222;
+}
+polyline.module-border-inner {
+  stroke: #191919;
+}
+polyline.module-border-middle {
+  stroke: #111;
+}
+polyline.module-border-outer {
+  stroke: #000;
+}
+
+rect.input-background, rect.input-background-filler {
+  fill: #aaa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #666;
+}
+text.input-label {
+  fill: #333;
+}
+polyline.input-label, path.input-label {
+  stroke: #333;
+}
+text.output-label {
+  fill: #ddd;
+}
+polyline.output-label, path.output-label {
+  stroke: #ddd;
+}
+</style>
+
+  
+      
+      <rect class="module-background background-fill" width="405.0" height="380.0"/>
+    
+      
+      <polyline class="module-border-inner" points="1,1 404.0,1 404.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 404.5,0.5 404.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 405.0,0 405.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    
+      <text class="title" font-size="12pt" letter-spacing="4px" text-anchor="middle" transform="translate(202.5 19)">MIX8</text>
+      <g transform="translate(0 374)">
+        <text class="brand" font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate(202.5 0)">BOGAUDIO</text>
+        <rect class="background-fill" width="3" height="3" transform="translate(187.0 -5)"/>
+      </g>
+    
+
+  <g transform="translate(4 20)">
+    
+    <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">CH1</text>
+    <g transform="translate(0 12)">
+      <g transform="translate(0 6.5)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+      </g>
+      <g transform="translate(0 19.05)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(0) translate(-2.5 2.6)">0</text>
+      </g>
+      <g transform="translate(0 32.86)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-4 2.2)">-6</text>
+      </g>
+      <g transform="translate(0 46.05)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-12</text>
+      </g>
+      <g transform="translate(0 72.41)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-24</text>
+      </g>
+      <g transform="translate(0 125.14)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-48</text>
+      </g>
+      <g transform="translate(0 151.5)">
+        
+        <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
+      </g>
+    </g>
+    <g transform="translate(13.5 12)"><svg id="LEVEL1_PARAM">
+      <rect width="18" height="151" fill="none"/>
+      <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
+      <g transform="translate(0 40)">
+        <rect width="18" height="13" rx="1.5" fill="#777"/>
+        <rect width="18" height="9" x="0" y="2" fill="#444"/>
+        <polyline points="0,6.5 18,6.5" stroke="#fafafa" stroke-width="1" fill="none"/>
+        <rect width="14" height="5" x="2" y="4" rx="1.0" fill="#ddd" transform="translate(0 0)"/>
+      </g>
+    </svg></g>
+    <g transform="translate(13.5 165)"><svg id="MUTE1_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(10 192)">MUTE</text>
+    <g transform="translate(14.5 203)"><svg id="PAN1_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 191)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(10 0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(-43)"/>
+      </g>
+    </g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="input-background" width="34" height="108" rx="5"/>
+      <g transform="translate(5 3)"><svg id="CV1_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <g transform="translate(5 38)"><svg id="PAN1_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
+      <g transform="translate(5 73)"><svg id="IN1_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
+    </g>
+    
+  </g>
+
+  <g transform="translate(48 20)">
+    
+    <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">CH2</text>
+    <g transform="translate(0 12)">
+      <g transform="translate(0 6.5)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+      </g>
+      <g transform="translate(0 19.05)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(0) translate(-2.5 2.6)">0</text>
+      </g>
+      <g transform="translate(0 32.86)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-4 2.2)">-6</text>
+      </g>
+      <g transform="translate(0 46.05)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-12</text>
+      </g>
+      <g transform="translate(0 72.41)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-24</text>
+      </g>
+      <g transform="translate(0 125.14)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-48</text>
+      </g>
+      <g transform="translate(0 151.5)">
+        
+        <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
+      </g>
+    </g>
+    <g transform="translate(13.5 12)"><svg id="LEVEL2_PARAM">
+      <rect width="18" height="151" fill="none"/>
+      <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
+      <g transform="translate(0 40)">
+        <rect width="18" height="13" rx="1.5" fill="#777"/>
+        <rect width="18" height="9" x="0" y="2" fill="#444"/>
+        <polyline points="0,6.5 18,6.5" stroke="#fafafa" stroke-width="1" fill="none"/>
+        <rect width="14" height="5" x="2" y="4" rx="1.0" fill="#ddd" transform="translate(0 0)"/>
+      </g>
+    </svg></g>
+    <g transform="translate(13.5 165)"><svg id="MUTE2_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(10 192)">MUTE</text>
+    <g transform="translate(14.5 203)"><svg id="PAN2_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 191)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(10 0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(-43)"/>
+      </g>
+    </g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="input-background" width="34" height="108" rx="5"/>
+      <g transform="translate(5 3)"><svg id="CV2_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <g transform="translate(5 38)"><svg id="PAN2_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
+      <g transform="translate(5 73)"><svg id="IN2_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
+    </g>
+    
+  </g>
+
+  <g transform="translate(92 20)">
+    
+    <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">CH3</text>
+    <g transform="translate(0 12)">
+      <g transform="translate(0 6.5)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+      </g>
+      <g transform="translate(0 19.05)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(0) translate(-2.5 2.6)">0</text>
+      </g>
+      <g transform="translate(0 32.86)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-4 2.2)">-6</text>
+      </g>
+      <g transform="translate(0 46.05)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-12</text>
+      </g>
+      <g transform="translate(0 72.41)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-24</text>
+      </g>
+      <g transform="translate(0 125.14)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-48</text>
+      </g>
+      <g transform="translate(0 151.5)">
+        
+        <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
+      </g>
+    </g>
+    <g transform="translate(13.5 12)"><svg id="LEVEL3_PARAM">
+      <rect width="18" height="151" fill="none"/>
+      <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
+      <g transform="translate(0 40)">
+        <rect width="18" height="13" rx="1.5" fill="#777"/>
+        <rect width="18" height="9" x="0" y="2" fill="#444"/>
+        <polyline points="0,6.5 18,6.5" stroke="#fafafa" stroke-width="1" fill="none"/>
+        <rect width="14" height="5" x="2" y="4" rx="1.0" fill="#ddd" transform="translate(0 0)"/>
+      </g>
+    </svg></g>
+    <g transform="translate(13.5 165)"><svg id="MUTE3_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(10 192)">MUTE</text>
+    <g transform="translate(14.5 203)"><svg id="PAN3_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 191)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(10 0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(-43)"/>
+      </g>
+    </g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="input-background" width="34" height="108" rx="5"/>
+      <g transform="translate(5 3)"><svg id="CV3_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <g transform="translate(5 38)"><svg id="PAN3_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
+      <g transform="translate(5 73)"><svg id="IN3_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
+    </g>
+    
+  </g>
+
+  <g transform="translate(136 20)">
+    
+    <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">CH4</text>
+    <g transform="translate(0 12)">
+      <g transform="translate(0 6.5)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+      </g>
+      <g transform="translate(0 19.05)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(0) translate(-2.5 2.6)">0</text>
+      </g>
+      <g transform="translate(0 32.86)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-4 2.2)">-6</text>
+      </g>
+      <g transform="translate(0 46.05)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-12</text>
+      </g>
+      <g transform="translate(0 72.41)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-24</text>
+      </g>
+      <g transform="translate(0 125.14)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-48</text>
+      </g>
+      <g transform="translate(0 151.5)">
+        
+        <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
+      </g>
+    </g>
+    <g transform="translate(13.5 12)"><svg id="LEVEL4_PARAM">
+      <rect width="18" height="151" fill="none"/>
+      <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
+      <g transform="translate(0 40)">
+        <rect width="18" height="13" rx="1.5" fill="#777"/>
+        <rect width="18" height="9" x="0" y="2" fill="#444"/>
+        <polyline points="0,6.5 18,6.5" stroke="#fafafa" stroke-width="1" fill="none"/>
+        <rect width="14" height="5" x="2" y="4" rx="1.0" fill="#ddd" transform="translate(0 0)"/>
+      </g>
+    </svg></g>
+    <g transform="translate(13.5 165)"><svg id="MUTE4_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(10 192)">MUTE</text>
+    <g transform="translate(14.5 203)"><svg id="PAN4_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 191)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(10 0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(-43)"/>
+      </g>
+    </g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="input-background" width="34" height="108" rx="5"/>
+      <g transform="translate(5 3)"><svg id="CV4_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <g transform="translate(5 38)"><svg id="PAN4_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
+      <g transform="translate(5 73)"><svg id="IN4_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
+    </g>
+    
+  </g>
+
+  <g transform="translate(180 20)">
+    
+    <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">CH5</text>
+    <g transform="translate(0 12)">
+      <g transform="translate(0 6.5)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+      </g>
+      <g transform="translate(0 19.05)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(0) translate(-2.5 2.6)">0</text>
+      </g>
+      <g transform="translate(0 32.86)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-4 2.2)">-6</text>
+      </g>
+      <g transform="translate(0 46.05)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-12</text>
+      </g>
+      <g transform="translate(0 72.41)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-24</text>
+      </g>
+      <g transform="translate(0 125.14)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-48</text>
+      </g>
+      <g transform="translate(0 151.5)">
+        
+        <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
+      </g>
+    </g>
+    <g transform="translate(13.5 12)"><svg id="LEVEL5_PARAM">
+      <rect width="18" height="151" fill="none"/>
+      <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
+      <g transform="translate(0 40)">
+        <rect width="18" height="13" rx="1.5" fill="#777"/>
+        <rect width="18" height="9" x="0" y="2" fill="#444"/>
+        <polyline points="0,6.5 18,6.5" stroke="#fafafa" stroke-width="1" fill="none"/>
+        <rect width="14" height="5" x="2" y="4" rx="1.0" fill="#ddd" transform="translate(0 0)"/>
+      </g>
+    </svg></g>
+    <g transform="translate(13.5 165)"><svg id="MUTE5_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(10 192)">MUTE</text>
+    <g transform="translate(14.5 203)"><svg id="PAN5_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 191)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(10 0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(-43)"/>
+      </g>
+    </g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="input-background" width="34" height="108" rx="5"/>
+      <g transform="translate(5 3)"><svg id="CV5_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <g transform="translate(5 38)"><svg id="PAN5_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
+      <g transform="translate(5 73)"><svg id="IN5_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
+    </g>
+    
+  </g>
+
+  <g transform="translate(224 20)">
+    
+    <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">CH6</text>
+    <g transform="translate(0 12)">
+      <g transform="translate(0 6.5)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+      </g>
+      <g transform="translate(0 19.05)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(0) translate(-2.5 2.6)">0</text>
+      </g>
+      <g transform="translate(0 32.86)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-4 2.2)">-6</text>
+      </g>
+      <g transform="translate(0 46.05)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-12</text>
+      </g>
+      <g transform="translate(0 72.41)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-24</text>
+      </g>
+      <g transform="translate(0 125.14)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-48</text>
+      </g>
+      <g transform="translate(0 151.5)">
+        
+        <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
+      </g>
+    </g>
+    <g transform="translate(13.5 12)"><svg id="LEVEL6_PARAM">
+      <rect width="18" height="151" fill="none"/>
+      <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
+      <g transform="translate(0 40)">
+        <rect width="18" height="13" rx="1.5" fill="#777"/>
+        <rect width="18" height="9" x="0" y="2" fill="#444"/>
+        <polyline points="0,6.5 18,6.5" stroke="#fafafa" stroke-width="1" fill="none"/>
+        <rect width="14" height="5" x="2" y="4" rx="1.0" fill="#ddd" transform="translate(0 0)"/>
+      </g>
+    </svg></g>
+    <g transform="translate(13.5 165)"><svg id="MUTE6_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(10 192)">MUTE</text>
+    <g transform="translate(14.5 203)"><svg id="PAN6_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 191)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(10 0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(-43)"/>
+      </g>
+    </g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="input-background" width="34" height="108" rx="5"/>
+      <g transform="translate(5 3)"><svg id="CV6_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <g transform="translate(5 38)"><svg id="PAN6_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
+      <g transform="translate(5 73)"><svg id="IN6_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
+    </g>
+    
+  </g>
+
+  <g transform="translate(268 20)">
+    
+    <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">CH7</text>
+    <g transform="translate(0 12)">
+      <g transform="translate(0 6.5)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+      </g>
+      <g transform="translate(0 19.05)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(0) translate(-2.5 2.6)">0</text>
+      </g>
+      <g transform="translate(0 32.86)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-4 2.2)">-6</text>
+      </g>
+      <g transform="translate(0 46.05)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-12</text>
+      </g>
+      <g transform="translate(0 72.41)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-24</text>
+      </g>
+      <g transform="translate(0 125.14)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-48</text>
+      </g>
+      <g transform="translate(0 151.5)">
+        
+        <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
+      </g>
+    </g>
+    <g transform="translate(13.5 12)"><svg id="LEVEL7_PARAM">
+      <rect width="18" height="151" fill="none"/>
+      <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
+      <g transform="translate(0 40)">
+        <rect width="18" height="13" rx="1.5" fill="#777"/>
+        <rect width="18" height="9" x="0" y="2" fill="#444"/>
+        <polyline points="0,6.5 18,6.5" stroke="#fafafa" stroke-width="1" fill="none"/>
+        <rect width="14" height="5" x="2" y="4" rx="1.0" fill="#ddd" transform="translate(0 0)"/>
+      </g>
+    </svg></g>
+    <g transform="translate(13.5 165)"><svg id="MUTE7_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(10 192)">MUTE</text>
+    <g transform="translate(14.5 203)"><svg id="PAN7_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 191)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(10 0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(-43)"/>
+      </g>
+    </g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="input-background" width="34" height="108" rx="5"/>
+      <g transform="translate(5 3)"><svg id="CV7_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <g transform="translate(5 38)"><svg id="PAN7_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
+      <g transform="translate(5 73)"><svg id="IN7_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
+    </g>
+    
+  </g>
+
+  <g transform="translate(312 20)">
+    
+    <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">CH8</text>
+    <g transform="translate(0 12)">
+      <g transform="translate(0 6.5)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+      </g>
+      <g transform="translate(0 19.05)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(0) translate(-2.5 2.6)">0</text>
+      </g>
+      <g transform="translate(0 32.86)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-4 2.2)">-6</text>
+      </g>
+      <g transform="translate(0 46.05)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-12</text>
+      </g>
+      <g transform="translate(0 72.41)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-24</text>
+      </g>
+      <g transform="translate(0 125.14)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-48</text>
+      </g>
+      <g transform="translate(0 151.5)">
+        
+        <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
+      </g>
+    </g>
+    <g transform="translate(13.5 12)"><svg id="LEVEL8_PARAM">
+      <rect width="18" height="151" fill="none"/>
+      <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
+      <g transform="translate(0 40)">
+        <rect width="18" height="13" rx="1.5" fill="#777"/>
+        <rect width="18" height="9" x="0" y="2" fill="#444"/>
+        <polyline points="0,6.5 18,6.5" stroke="#fafafa" stroke-width="1" fill="none"/>
+        <rect width="14" height="5" x="2" y="4" rx="1.0" fill="#ddd" transform="translate(0 0)"/>
+      </g>
+    </svg></g>
+    <g transform="translate(13.5 165)"><svg id="MUTE8_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(10 192)">MUTE</text>
+    <g transform="translate(14.5 203)"><svg id="PAN8_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 191)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(10 0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(-43)"/>
+      </g>
+    </g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(14 228)">PAN</text>
+    <g class="io-group" transform="translate(5.5 232)">
+      <rect class="input-background" width="34" height="108" rx="5"/>
+      <g transform="translate(5 3)"><svg id="CV8_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <g transform="translate(5 38)"><svg id="PAN8_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 70)">PAN</text>
+      <g transform="translate(5 73)"><svg id="IN8_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 105)">IN</text>
+    </g>
+    
+  </g>
+
+  <g transform="translate(356 20)">
+    
+    <text font-size="5pt" letter-spacing="2px" transform="translate(13.7 9)">MIX</text>
+    <g transform="translate(0 12)">
+      <g transform="translate(0 6.5)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+      </g>
+      <g transform="translate(0 19.05)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(0) translate(-2.5 2.6)">0</text>
+      </g>
+      <g transform="translate(0 32.86)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-4 2.2)">-6</text>
+      </g>
+      <g transform="translate(0 46.05)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-12</text>
+      </g>
+      <g transform="translate(0 72.41)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-24</text>
+      </g>
+      <g transform="translate(0 125.14)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-48</text>
+      </g>
+      <g transform="translate(0 151.5)">
+        
+        <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
+      </g>
+    </g>
+    <g transform="translate(13.5 12)"><svg id="MIX_PARAM">
+      <rect width="18" height="151" fill="none"/>
+      <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
+      <g transform="translate(0 40)">
+        <rect width="18" height="13" rx="1.5" fill="#777"/>
+        <rect width="18" height="9" x="0" y="2" fill="#444"/>
+        <polyline points="0,6.5 18,6.5" stroke="#fafafa" stroke-width="1" fill="none"/>
+        <rect width="14" height="5" x="2" y="4" rx="1.0" fill="#ddd" transform="translate(0 0)"/>
+      </g>
+    </svg></g>
+    <g transform="translate(13.5 165)"><svg id="MIX_MUTE_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(10 192)">MUTE</text>
+    <g transform="translate(13.5 198)"><svg id="MIX_DIM_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(14.5 225)">DIM</text>
+    <g class="io-group" transform="translate(5.5 229)">
+      <rect class="input-background" width="34" height="50" rx="5"/>
+      <g transform="translate(5 3)"><svg id="MIX_CV_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">LEVEL</text>
+      <rect class="output-background" width="34" height="73" rx="5" transform="translate(0 38)"/>
+      <rect class="output-background-filler" width="34" height="5" transform="translate(0 38)"/>
+      <g transform="translate(5 41)"><svg id="L_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(15.5 73)">L</text>
+      <g transform="translate(5 76)"><svg id="R_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(15 108)">R</text>
+    </g>
+  </g>
+  
+</svg>

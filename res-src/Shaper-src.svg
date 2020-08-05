@@ -68,9 +68,9 @@
       <g class="io-group" transform="translate(0 4)">
         <rect class="output-background" width="58" height="40" rx="5"/>
         <def id="ENV_OUTPUT" xlink:href="#output" transform="translate(2.5 3)"/>
-        <def id="INV_OUTPUT" xlink:href="#output" transform="translate(31.5 3)"/>
         <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(6 36)">ENV</text>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(35 36)">INV</text>
+        <def id="INV_OUTPUT" xlink:href="#output" transform="translate(31.5 3)"/>
+        <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(35 36)">INV</text>
       </g>
     </g>
 
@@ -84,9 +84,9 @@
         <rect class="output-background" width="20" height="40" rx="5" transform="translate(38)"/>
         <rect class="output-background-filler" width="20" height="40" transform="translate(29)"/>
         <def id="SIGNAL_INPUT" xlink:href="#input" transform="translate(2.5 3)"/>
+        <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(10 36)">IN</text>
         <def id="SIGNAL_OUTPUT" xlink:href="#output" transform="translate(31.5 3)"/>
-        <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(10 36)">IN</text>
-        <text font-size="6pt" letter-spacing="2px" transform="translate(33 36)">OUT</text>
+        <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(33 36)">OUT</text>
       </g>
     </g>
   </g>

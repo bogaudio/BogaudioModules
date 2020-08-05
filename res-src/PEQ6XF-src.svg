@@ -18,7 +18,7 @@
 
   <g class="io-group" transform="translate(5.5 104)">
     <rect class="output-background" width="34" height="225" rx="5" transform="translate(0 -10)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 0)">EF</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 0)">EF</text>
     <def id="EF1_OUTPUT" xlink:href="#output" transform="translate(5 3)"/>
     <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(15 35)">1</text>
     <def id="EF2_OUTPUT" xlink:href="#output" transform="translate(5 38)"/>

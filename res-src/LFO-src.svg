@@ -80,7 +80,7 @@
       <!-- <text font-size="6pt" letter-spacing="2px" transform="translate(4.5 40)">SAW</text> -->
       <g transform="translate(9 33.5)">
         <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
-        <polyline points="0,8 0,0 12,8" stroke-width="1" fill="none"/>
+        <polyline class="output-label" points="0,8 0,0 12,8" stroke-width="1" fill="none"/>
       </g>
     </g>
 
@@ -96,7 +96,7 @@
       <g transform="translate(76 0)">
         <def id="RAMP_UP_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
         <g transform="translate(9 33.5)">
-          <polyline points="0,8 12,0 12,8" stroke-width="1" fill="none"/>
+          <polyline class="output-label" points="0,8 12,0 12,8" stroke-width="1" fill="none"/>
         </g>
       </g>
       <g transform="translate(108 0)">
@@ -104,7 +104,7 @@
         <!-- <text font-size="6pt" letter-spacing="2px" transform="translate(5.5 40)">SQR</text> -->
         <g transform="translate(9 33.5)">
           <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
-          <polyline points="0,4 0,0 6,0 6,8 12,8 12,4" stroke-width="1" fill="none"/>
+          <polyline class="output-label" points="0,4 0,0 6,0 6,8 12,8 12,4" stroke-width="1" fill="none"/>
         </g>
       </g>
 
@@ -122,7 +122,7 @@
           <!-- <text font-size="6pt" letter-spacing="2px" transform="translate(7 40)">TRI</text> -->
           <g transform="translate(9 33.5)">
             <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
-            <polyline points="0,4 3,0 9,8 12,4" stroke-width="1" fill="none"/>
+            <polyline class="output-label" points="0,4 3,0 9,8 12,4" stroke-width="1" fill="none"/>
           </g>
         </g>
         <g transform="translate(98 0)">
@@ -130,8 +130,8 @@
           <!-- <text font-size="6pt" letter-spacing="2px" transform="translate(6.5 40)">SIN</text> -->
           <g transform="translate(9 33.5)">
             <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
-            <path d="M 0 4 A 2 3 0 0 1 6 4" stroke-width="1" stroke="#333" fill="none"/>
-            <path d="M 6 4 A 2 3 0 0 0 12 4" stroke-width="1" stroke="#333" fill="none"/>
+            <path class="output-label" d="M 0 4 A 2 3 0 0 1 6 4" stroke-width="1" stroke="#333" fill="none"/>
+            <path class="output-label" d="M 6 4 A 2 3 0 0 0 12 4" stroke-width="1" stroke="#333" fill="none"/>
           </g>
         </g>
       </g>

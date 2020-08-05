@@ -6,7 +6,7 @@
 
   <g class="io-group" transform="translate(6.5 32)">
     <rect class="input-background" width="34" height="337" rx="5" transform="translate(0 -9)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(12.5 0)">IN</text>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 0)">IN</text>
 
     <def id="IN1_INPUT" xlink:href="#input" transform="translate(5 3)"/>
     <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(11 35)">1</text>

@@ -3,16 +3,12 @@
   <style/>
 
   <defs>
-    <symbol id="display-analyzer" viewBox="0 0 280px 230px">
-      <rect cx="0" cy="0" width="280" height="230" fill="#222"/>
-    </symbol>
-
     <symbol id="dial-range-analyzer" viewBox="0 0 100px 100px">
       <g transform="translate(50.5 50.5)">
-        <path d="M 0 -32 A 32 32 0 0 1 32 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(15)"/>
-        <path d="M 0 -32 A 32 32 0 0 1 32 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(50)"/>
-        <path d="M 0 -32 A 32 32 0 0 0 -32 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-15)"/>
-        <path d="M 0 -32 A 32 32 0 0 0 -32 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-50)"/>
+        <path d="M 0 -32 A 32 32 0 0 1 32 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(15)"/>
+        <path d="M 0 -32 A 32 32 0 0 1 32 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(50)"/>
+        <path d="M 0 -32 A 32 32 0 0 0 -32 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-15)"/>
+        <path d="M 0 -32 A 32 32 0 0 0 -32 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-50)"/>
         <g transform="rotate(-90) translate(29 0)">
           <polyline points="0,0 6,0" stroke-width="1.5"/>
         </g>
@@ -27,31 +23,31 @@
           </g>
         </g>
         <g transform="rotate(-210) translate(30 0)">
-          <polyline points="0,0 4,0" stroke-width="0.5"/>
+          <polyline points="0,0 4,0" stroke-width="0.7"/>
         </g>
         <g transform="rotate(-180) translate(30 0)">
-          <polyline points="0,0 4,0" stroke-width="0.5"/>
+          <polyline points="0,0 4,0" stroke-width="0.7"/>
         </g>
         <g transform="rotate(-150) translate(30 0)">
-          <polyline points="0,0 5,0" stroke-width="0.5"/>
+          <polyline points="0,0 5,0" stroke-width="0.7"/>
         </g>
         <g transform="rotate(-120) translate(30 0)">
-          <polyline points="0,0 4,0" stroke-width="0.5"/>
+          <polyline points="0,0 4,0" stroke-width="0.7"/>
         </g>
         <g transform="rotate(-90) translate(30 0)">
-          <polyline points="0,0 4,0" stroke-width="0.5"/>
+          <polyline points="0,0 4,0" stroke-width="0.7"/>
         </g>
         <g transform="rotate(-60) translate(30 0)">
-          <polyline points="0,0 4,0" stroke-width="0.5"/>
+          <polyline points="0,0 4,0" stroke-width="0.7"/>
         </g>
         <g transform="rotate(-30) translate(30 0)">
-          <polyline points="0,0 4,0" stroke-width="0.5"/>
+          <polyline points="0,0 4,0" stroke-width="0.7"/>
         </g>
         <g transform="rotate(0) translate(30 0)">
-          <polyline points="0,0 4,0" stroke-width="0.5"/>
+          <polyline points="0,0 4,0" stroke-width="0.7"/>
         </g>
         <g transform="rotate(30) translate(30 0)">
-          <polyline points="0,0 4,0" stroke-width="0.5"/>
+          <polyline points="0,0 4,0" stroke-width="0.7"/>
         </g>
         <g transform="rotate(60) translate(31 0)">
           <g transform="translate(2 0) rotate(-60)">
@@ -65,7 +61,7 @@
   <def xlink:href="#module" var-name="ANALYZER"/>
 
   <g transform="translate(10 25)">
-    <use id="DISPLAY_WIDGET" xlink:href="#display-analyzer"/>
+    <def id="DISPLAY_WIDGET" xlink:href="#display" var-width="280" var-height="230"/>
   </g>
 
   <!-- <polyline points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(10 0)" /> -->
@@ -80,9 +76,9 @@
       <rect class="output-background" width="23" height="40" rx="5" transform="translate(40)"/>
       <rect class="output-background-filler" width="20" height="40" transform="translate(31)"/>
       <def id="SIGNALA_INPUT" xlink:href="#input" transform="translate(3.5 3)"/>
+      <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
       <def id="SIGNALA_OUTPUT" xlink:href="#output" transform="translate(34.5 3)"/>
-      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(33.5 36)">THRU</text>
+      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(33.5 36)">THRU</text>
     </g>
 
     <g class="io-group" transform="translate(82.5 0)">
@@ -90,9 +86,9 @@
       <rect class="output-background" width="23" height="40" rx="5" transform="translate(40)"/>
       <rect class="output-background-filler" width="20" height="40" transform="translate(31)"/>
       <def id="SIGNALB_INPUT" xlink:href="#input" transform="translate(3.5 3)"/>
+      <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
       <def id="SIGNALB_OUTPUT" xlink:href="#output" transform="translate(34.5 3)"/>
-      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(33.5 36)">THRU</text>
+      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(33.5 36)">THRU</text>
     </g>
 
     <g class="io-group" transform="translate(155 0)">
@@ -100,9 +96,9 @@
       <rect class="output-background" width="23" height="40" rx="5" transform="translate(40)"/>
       <rect class="output-background-filler" width="20" height="40" transform="translate(31)"/>
       <def id="SIGNALC_INPUT" xlink:href="#input" transform="translate(3.5 3)"/>
+      <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
       <def id="SIGNALC_OUTPUT" xlink:href="#output" transform="translate(34.5 3)"/>
-      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(33.5 36)">THRU</text>
+      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(33.5 36)">THRU</text>
     </g>
 
     <g class="io-group" transform="translate(227 0)">
@@ -110,9 +106,9 @@
       <rect class="output-background" width="23" height="40" rx="5" transform="translate(40)"/>
       <rect class="output-background-filler" width="20" height="40" transform="translate(31)"/>
       <def id="SIGNALD_INPUT" xlink:href="#input" transform="translate(3.5 3)"/>
+      <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
       <def id="SIGNALD_OUTPUT" xlink:href="#output" transform="translate(34.5 3)"/>
-      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(33.5 36)">THRU</text>
+      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(33.5 36)">THRU</text>
     </g>
   </g>
 

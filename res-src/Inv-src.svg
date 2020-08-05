@@ -11,7 +11,7 @@
       <def id="GATE1_PARAM" xlink:href="#button" transform="translate(8 4)"/>
       <def id="GATE1_INPUT" xlink:href="#input" transform="translate(5 26)"/>
       <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(5 58)">GATE</text>
-      <text font-size="5pt" letter-spacing="0.3px" transform="translate(1 71)">LATCH</text>
+      <text class="input-label" font-size="5pt" letter-spacing="0.3px" transform="translate(1 71)">LATCH</text>
       <def id="LATCH1_PARAM" xlink:href="#button-small" transform="translate(24 64)"/>
       <def id="IN1_INPUT" xlink:href="#input" transform="translate(5 78)"/>
       <text class="input-label" font-size="5pt" letter-spacing="1px" transform="translate(13 110)">IN</text>
@@ -33,7 +33,7 @@
       <def id="GATE2_PARAM" xlink:href="#button" transform="translate(8 4)"/>
       <def id="GATE2_INPUT" xlink:href="#input" transform="translate(5 26)"/>
       <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(5 58)">GATE</text>
-      <text font-size="5pt" letter-spacing="0.3px" transform="translate(1 71)">LATCH</text>
+      <text class="input-label" font-size="5pt" letter-spacing="0.3px" transform="translate(1 71)">LATCH</text>
       <def id="LATCH2_PARAM" xlink:href="#button-small" transform="translate(24 64)"/>
       <def id="IN2_INPUT" xlink:href="#input" transform="translate(5 78)"/>
       <text class="input-label" font-size="5pt" letter-spacing="1px" transform="translate(13 110)">IN</text>

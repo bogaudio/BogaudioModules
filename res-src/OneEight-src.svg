@@ -49,7 +49,7 @@
 
   <g class="io-group" transform="translate(49.5 32)">
     <rect class="output-background" width="34" height="337" rx="5" transform="translate(0 -9)"/>
-    <text font-size="5pt" letter-spacing="2px" transform="translate(8.5 0)">OUT</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 0)">OUT</text>
 
     <def id="OUT1_OUTPUT" xlink:href="#output" transform="translate(5 3)"/>
     <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(11 35)">1</text>

@@ -6,15 +6,15 @@
     <symbol id="dial-cutoff-testvcf" viewBox="0 0 50px 50px">
       <g transform="translate(25 25)">
         <text font-size="6.0pt" transform="rotate(-240) translate(24 0) rotate(240) translate(-4 3)">0</text>
-        <polyline points="0,0 3,0" stroke-width="0.5" transform="rotate(-210) translate(22 0)"/>
-        <polyline points="0,0 3,0" stroke-width="0.5" transform="rotate(-180) translate(22 0)"/>
-        <polyline points="0,0 3,0" stroke-width="0.5" transform="rotate(-150) translate(22 0)"/>
-        <polyline points="0,0 3,0" stroke-width="0.5" transform="rotate(-120) translate(22 0)"/>
-        <polyline points="0,0 3,0" stroke-width="0.5" transform="rotate(-90) translate(22 0)"/>
-        <polyline points="0,0 3,0" stroke-width="0.5" transform="rotate(-60) translate(22 0)"/>
-        <polyline points="0,0 3,0" stroke-width="0.5" transform="rotate(-30) translate(22 0)"/>
-        <polyline points="0,0 3,0" stroke-width="0.5" transform="rotate(0) translate(22 0)"/>
-        <polyline points="0,0 3,0" stroke-width="0.5" transform="rotate(30) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-210) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-180) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-150) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-120) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-90) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-60) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-30) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(0) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(30) translate(22 0)"/>
         <polyline points="0,0 4,0" stroke-width="1" transform="rotate(60) translate(22 0)"/>
       </g>
     </symbol>
@@ -22,15 +22,15 @@
     <symbol id="dial-resonance-testvcf" viewBox="0 0 50px 50px">
       <g transform="translate(25 25)">
         <text font-size="6.0pt" transform="rotate(-240) translate(24 0) rotate(240) translate(-4 3)">0</text>
-        <polyline points="0,0 3,0" stroke-width="0.5" transform="rotate(-210) translate(22 0)"/>
-        <polyline points="0,0 3,0" stroke-width="0.5" transform="rotate(-180) translate(22 0)"/>
-        <polyline points="0,0 3,0" stroke-width="0.5" transform="rotate(-150) translate(22 0)"/>
-        <polyline points="0,0 3,0" stroke-width="0.5" transform="rotate(-120) translate(22 0)"/>
-        <polyline points="0,0 3,0" stroke-width="0.5" transform="rotate(-90) translate(22 0)"/>
-        <polyline points="0,0 3,0" stroke-width="0.5" transform="rotate(-60) translate(22 0)"/>
-        <polyline points="0,0 3,0" stroke-width="0.5" transform="rotate(-30) translate(22 0)"/>
-        <polyline points="0,0 3,0" stroke-width="0.5" transform="rotate(0) translate(22 0)"/>
-        <polyline points="0,0 3,0" stroke-width="0.5" transform="rotate(30) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-210) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-180) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-150) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-120) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-90) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-60) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-30) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(0) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(30) translate(22 0)"/>
         <polyline points="0,0 4,0" stroke-width="1" transform="rotate(60) translate(22 0)"/>
       </g>
     </symbol>
@@ -127,10 +127,10 @@
     <rect class="output-background" width="50" height="40" rx="5" transform="translate(38)"/>
     <rect class="output-background-filler" width="20" height="40" transform="translate(29)"/>
     <def id="IN_INPUT" xlink:href="#input" transform="translate(2.5 3)"/>
+    <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(10 36)">IN</text>
     <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(31.5 3)"/>
+    <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(33 36)">OUT</text>
     <def id="OUT_B_OUTPUT" xlink:href="#output" transform="translate(60.5 3)"/>
-    <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(10 36)">IN</text>
-    <text font-size="6pt" letter-spacing="2px" transform="translate(33 36)">OUT</text>
-    <text font-size="6pt" letter-spacing="2px" transform="translate(70.5 36)">B</text>
+    <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(70.5 36)">B</text>
   </g>
 </module>

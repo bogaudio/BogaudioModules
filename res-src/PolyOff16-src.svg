@@ -179,8 +179,8 @@
     <rect class="output-background" width="24" height="40" rx="5" transform="translate(38)"/>
     <rect class="output-background-filler" width="20" height="40" transform="translate(31)"/>
     <def id="IN_INPUT" xlink:href="#input" transform="translate(3.5 4)"/>
+    <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(11 36)">IN</text>
     <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(34.5 4)"/>
-    <text class="output-label" font-size="6pt" letter-spacing="1px" transform="translate(11 36)">IN</text>
-    <text font-size="6pt" letter-spacing="2px" transform="translate(36 36)">OUT</text>
+    <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(36 36)">OUT</text>
   </g>
 </module>

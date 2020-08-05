@@ -1,0 +1,309 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="45" height="380" viewBox="0 0 45 380">
+  <style>text {
+  fill: #333;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+text.title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+}
+text.brand {
+  font-family: 'Audiowide', sans-serif;
+  font-weight: bold;
+}
+
+polyline {
+  stroke: #333;
+}
+path {
+  stroke: #333;
+}
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background, rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
+}
+polyline.input-label, polyline.output-label {
+}
+path.input-label, path.output-label {
+}
+
+
+text {
+  fill: #ddd;
+}
+
+polyline {
+  stroke: #ddd;
+}
+path {
+  stroke: #ddd;
+}
+
+rect.module-background, .background-fill {
+  fill: #222;
+}
+polyline.module-border-inner {
+  stroke: #191919;
+}
+polyline.module-border-middle {
+  stroke: #111;
+}
+polyline.module-border-outer {
+  stroke: #000;
+}
+
+rect.input-background, rect.input-background-filler {
+  fill: #aaa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #666;
+}
+text.input-label {
+  fill: #333;
+}
+polyline.input-label, path.input-label {
+  stroke: #333;
+}
+text.output-label {
+  fill: #ddd;
+}
+polyline.output-label, path.output-label {
+  stroke: #ddd;
+}
+</style>
+
+  
+      
+      <rect class="module-background background-fill" width="45.0" height="380.0"/>
+    
+      
+      <polyline class="module-border-inner" points="1,1 44.0,1 44.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 44.5,0.5 44.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 45.0,0 45.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    
+      <g transform="rotate(-90) translate(-376.0 13)">
+        <text class="title" font-size="7pt" letter-spacing="2.5px">AD</text>
+        <g transform="translate(0 12)">
+          <text class="brand" font-size="7pt" letter-spacing="2px">BGA</text>
+          <rect class="background-fill" width="3.0" height="3" fill="#ddd" transform="translate(11.5 -5)"/>
+        </g>
+      </g>
+    
+
+  <g transform="translate(0 25)">
+    <text font-size="6pt" letter-spacing="1.5px" transform="translate(3.5 0)">ATTACK</text>
+    <g transform="translate(0 0)"><svg id="ATTACK_PARAM">
+      <g transform="translate(22.5 22.5)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(0 0)">
+      <g transform="translate(22.5 22.5)">
+        <g transform="rotate(-240) translate(17 0)">
+          <g transform="translate(3 0) rotate(240)">
+            <text font-size="6.5pt" transform="translate(-2.8 3.3)">0</text>
+          </g>
+        </g>
+        <g transform="rotate(-172.92) translate(17 0)">
+          <polyline points="0,0 1.5,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(-145.13) translate(17 0)">
+          <g transform="translate(3 0) rotate(145.13)">
+            <text font-size="6.5pt" transform="translate(-2.8 3.3)">1</text>
+          </g>
+        </g>
+        <g transform="rotate(-105.84) translate(17 0)">
+          <polyline points="0,0 3,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(-75.68) translate(17 0)">
+          <polyline points="0,0 3,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(-50.26) translate(17 0)">
+          <polyline points="0,0 3,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(-27.87) translate(17 0)">
+          <g transform="translate(3 0) rotate(27.87)">
+            <text font-size="6.5pt" transform="translate(-2.8 3.3)">5</text>
+          </g>
+        </g>
+        <g transform="rotate(-7.62) translate(17 0)">
+          <polyline points="0,0 3,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(11) translate(17 0)">
+          <polyline points="0,0 3,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(28.33) translate(17 0)">
+          <polyline points="0,0 3,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(44.6) translate(17 0)">
+          <polyline points="0,0 3,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(60) translate(17 0)">
+          <polyline points="0,0 3,0" stroke-width="0.7"/>
+        </g>
+      </g>
+    </g>
+    <g transform="translate(20.8 40)"><svg id="ATTACK_LIGHT">
+      <rect width="3.2" height="3.2" fill="#0f0"/>
+    </svg></g>
+  </g>
+
+  <g transform="translate(0 82)">
+    <text font-size="6pt" letter-spacing="2px" transform="translate(6 0)">DECAY</text>
+    <g transform="translate(0 0)"><svg id="DECAY_PARAM">
+      <g transform="translate(22.5 22.5)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(0 0)">
+      <g transform="translate(22.5 22.5)">
+        <g transform="rotate(-240) translate(17 0)">
+          <g transform="translate(3 0) rotate(240)">
+            <text font-size="6.5pt" transform="translate(-2.8 3.3)">0</text>
+          </g>
+        </g>
+        <g transform="rotate(-172.92) translate(17 0)">
+          <polyline points="0,0 1.5,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(-145.13) translate(17 0)">
+          <g transform="translate(3 0) rotate(145.13)">
+            <text font-size="6.5pt" transform="translate(-2.8 3.3)">1</text>
+          </g>
+        </g>
+        <g transform="rotate(-105.84) translate(17 0)">
+          <polyline points="0,0 3,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(-75.68) translate(17 0)">
+          <polyline points="0,0 3,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(-50.26) translate(17 0)">
+          <polyline points="0,0 3,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(-27.87) translate(17 0)">
+          <g transform="translate(3 0) rotate(27.87)">
+            <text font-size="6.5pt" transform="translate(-2.8 3.3)">5</text>
+          </g>
+        </g>
+        <g transform="rotate(-7.62) translate(17 0)">
+          <polyline points="0,0 3,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(11) translate(17 0)">
+          <polyline points="0,0 3,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(28.33) translate(17 0)">
+          <polyline points="0,0 3,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(44.6) translate(17 0)">
+          <polyline points="0,0 3,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(60) translate(17 0)">
+          <polyline points="0,0 3,0" stroke-width="0.7"/>
+        </g>
+      </g>
+    </g>
+    <g transform="translate(20.8 40)"><svg id="DECAY_LIGHT">
+      <rect width="3.2" height="3.2" fill="#0f0"/>
+    </svg></g>
+  </g>
+
+  <g transform="translate(0 132.5)">
+    <g transform="translate(2.5 0)">
+      <text font-size="5pt" letter-spacing="0.5px" transform="translate(0 6)">RT</text>
+      <g transform="translate(9.5 -1)"><svg id="RETRIGGER_PARAM">
+      <g transform="translate(4.5 4.5)">
+        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    </g>
+    <g transform="translate(23.5 0)">
+      <text font-size="5pt" letter-spacing="0.5px" transform="translate(0.3 6)">LP</text>
+      <g transform="translate(9.5 -1)"><svg id="LOOP_PARAM">
+      <g transform="translate(4.5 4.5)">
+        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    </g>
+  </g>
+
+  <g transform="translate(11 147)">
+    <text font-size="5pt" letter-spacing="1.5px" transform="translate(-1 6)">LIN</text>
+    <g transform="translate(15 -1)"><svg id="LINEAR_PARAM">
+      <g transform="translate(4.5 4.5)">
+        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+
+  <g transform="translate(0 160.5)">
+    <g class="io-group" transform="translate(5.5 0)">
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 98)"/>
+      <rect class="input-background" width="34" height="108" rx="5"/>
+      <g transform="translate(5 3)"><svg id="TRIGGER_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(6.5 35)">TRIG</text>
+      <g transform="translate(5 38)"><svg id="ATTACK_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="1px" transform="translate(2 70)">ATTACK</text>
+      <g transform="translate(5 73)"><svg id="DECAY_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(2.5 105)">DECAY</text>
+    </g>
+    <g class="io-group" transform="translate(5.5 111)">
+      <rect class="output-background-filler" width="34" height="10" transform="translate(0 -3)"/>
+      <rect class="output-background" width="34" height="70" rx="5"/>
+      <g transform="translate(5 0)"><svg id="ENV_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 32)">ENV</text>
+      <g transform="translate(5 35)"><svg id="EOC_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 67)">EOC</text>
+    </g>
+  </g>
+</svg>

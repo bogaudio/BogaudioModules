@@ -36,20 +36,18 @@ polyline.module-border-outer {
 
 g.io-group {
 }
-rect.input-background {
+rect.input-background, rect.input-background-filler {
   fill: #fafafa;
 }
-rect.input-background-filler {
-  fill: #fafafa;
-}
-rect.output-background {
-  fill: #bbb;
-}
-rect.output-background-filler {
+rect.output-background, rect.output-background-filler {
   fill: #bbb;
 }
 text.input-label, text.output-label {
   /* font-size: 6pt; */
+}
+polyline.input-label, polyline.output-label {
+}
+path.input-label, path.output-label {
 }
 </style>
 
@@ -66,7 +64,7 @@ text.input-label, text.output-label {
         <text class="title" font-size="7pt" letter-spacing="2.5px">UMIX</text>
         <g transform="translate(0 12)">
           <text class="brand" font-size="7pt" letter-spacing="2px">BGA</text>
-          <rect width="3.0" height="3" fill="#ddd" transform="translate(11.5 -5)"/>
+          <rect class="background-fill" width="3.0" height="3" fill="#ddd" transform="translate(11.5 -5)"/>
         </g>
       </g>
     

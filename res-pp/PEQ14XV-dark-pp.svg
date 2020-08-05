@@ -1,0 +1,306 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="75" height="380" viewBox="0 0 75 380">
+  <style>text {
+  fill: #333;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+text.title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+}
+text.brand {
+  font-family: 'Audiowide', sans-serif;
+  font-weight: bold;
+}
+
+polyline {
+  stroke: #333;
+}
+path {
+  stroke: #333;
+}
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background, rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
+}
+polyline.input-label, polyline.output-label {
+}
+path.input-label, path.output-label {
+}
+
+
+text {
+  fill: #ddd;
+}
+
+polyline {
+  stroke: #ddd;
+}
+path {
+  stroke: #ddd;
+}
+
+rect.module-background, .background-fill {
+  fill: #222;
+}
+polyline.module-border-inner {
+  stroke: #191919;
+}
+polyline.module-border-middle {
+  stroke: #111;
+}
+polyline.module-border-outer {
+  stroke: #000;
+}
+
+rect.input-background, rect.input-background-filler {
+  fill: #aaa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #666;
+}
+text.input-label {
+  fill: #333;
+}
+polyline.input-label, path.input-label {
+  stroke: #333;
+}
+text.output-label {
+  fill: #ddd;
+}
+polyline.output-label, path.output-label {
+  stroke: #ddd;
+}
+</style>
+
+  <defs>
+    <symbol id="dial-transpose-peq14xv" viewBox="0 0 45px 45px">
+      <g transform="translate(22.5 22.5)">
+        <text font-size="5.0pt" transform="rotate(-240) translate(18 0) rotate(240) translate(-3.5 2)">-2</text>
+        <text font-size="5.0pt" transform="rotate(-165) translate(18 0) rotate(165) translate(-3 2)">-1</text>
+        <text font-size="5.0pt" transform="rotate(-90) translate(18 0) rotate(90) translate(-2 3)">0</text>
+        <text font-size="5.0pt" transform="rotate(-15) translate(18 0) rotate(15) translate(-2 2)">1</text>
+        <text font-size="5.0pt" transform="rotate(60) translate(18 0) rotate(-60) translate(-2 2)">2</text>
+
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-208.75) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-133.75) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-46.25) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(28.75) translate(15 0)"/>
+      </g>
+    </symbol>
+  </defs>
+
+  
+      
+      <rect class="module-background background-fill" width="75.0" height="380.0"/>
+    
+      
+      <polyline class="module-border-inner" points="1,1 74.0,1 74.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 74.5,0.5 74.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 75.0,0 75.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    
+      <text class="title" font-size="9pt" letter-spacing="3px" text-anchor="end" transform="translate(72.0 17)">PEQ14XV</text>
+      <g transform="translate(25 374)">
+        <text class="brand" font-size="6.5pt" letter-spacing="2px">BGA</text>
+        <rect class="background-fill" width="2" height="2" fill="#ddd" transform="translate(11.5 -4)"/>
+      </g>
+    
+
+  <text font-size="6pt" letter-spacing="1.5px" transform="translate(9 30)">FOLLOWERS</text>
+
+  <g class="io-group" transform="translate(-2.5 34)">
+    <g transform="translate(14.5 6)"><svg id="EF_DAMP_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 -6)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-240) translate(10 0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(-43)"/>
+      </g>
+    </g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(10 33)">DAMP</text>
+    <rect class="input-background" width="30" height="30" rx="5" transform="translate(7.5 36)"/>
+    <g transform="translate(10.5 39)"><svg id="EF_DAMP_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+  </g>
+
+  <g class="io-group" transform="translate(32.5 34)">
+    <g transform="translate(14.5 6)"><svg id="EF_GAIN_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 -6)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(10 0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(-43)"/>
+      </g>
+    </g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(11.5 33)">GAIN</text>
+    <rect class="input-background" width="30" height="30" rx="5" transform="translate(7.5 36)"/>
+    <g transform="translate(10.5 39)"><svg id="EF_GAIN_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    
+  </g>
+
+  <g class="io-group" transform="translate(0 119)">
+    <text font-size="6pt" letter-spacing="1.5px" transform="translate(8 2)">TRANSPOSE</text>
+    <g transform="translate(24.5 13)"><svg id="TRANSPOSE_PARAM">
+      <g transform="translate(13 13)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <use xlink:href="#dial-transpose-peq14xv" transform="translate(15 3.5)" href="#dial-transpose-peq14xv"/>
+    <rect class="input-background" width="30" height="30" rx="5" transform="translate(22.5 47)"/>
+    <g transform="translate(25.5 50)"><svg id="TRANSPOSE_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    
+  </g>
+
+  <g transform="translate(0 212)">
+    <text font-size="6pt" letter-spacing="1.5px" transform="translate(18 5)">OUTPUT</text>
+
+    <g transform="translate(12 15)"><svg id="OUTPUT_GAIN_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(0 3)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-240) translate(10 0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(-43)"/>
+      </g>
+    </g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(9 42)">GAIN</text>
+
+    <g transform="translate(47 15)"><svg id="BAND14_MIX_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(35 3)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-240) translate(10 0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(-43)"/>
+      </g>
+    </g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(44 42)">B14D</text>
+
+    <g transform="translate(10 51)">
+      <text font-size="5pt" letter-spacing="0.5px" transform="translate(0 6)">B1</text>
+      <g transform="translate(9.5 -1)"><svg id="BAND1_ENABLE_PARAM">
+      <g transform="translate(4.5 4.5)">
+        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    </g>
+
+    <g transform="translate(47.5 51)">
+      <text font-size="5pt" letter-spacing="0.5px" transform="translate(-5 6)">B14</text>
+      <g transform="translate(9.5 -1)"><svg id="BAND14_ENABLE_PARAM">
+      <g transform="translate(4.5 4.5)">
+        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    </g>
+
+    
+  </g>
+
+  <g class="io-group" transform="translate(5.5 287)">
+    <rect class="output-background" width="64" height="73" rx="5"/>
+    <rect class="input-background" width="32" height="36.5" rx="5"/>
+    <rect class="input-background-filler" width="32" height="10" transform="translate(0 26.5)"/>
+    <rect class="input-background-filler" width="10" height="36.5" transform="translate(22 0)"/>
+    <g transform="translate(5 3)"><svg id="IN_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
+    <g transform="translate(35 3)"><svg id="ODDS_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(38.5 35)">ODD</text>
+    <g transform="translate(5 38)"><svg id="OUT_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8 70)">OUT</text>
+    <g transform="translate(35 38)"><svg id="EVENS_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(36 70)">EVEN</text>
+  </g>
+
+  
+  
+  
+</svg>

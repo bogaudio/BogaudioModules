@@ -4,7 +4,7 @@
 
   <def xlink:href="#module3" var-name="UMIX"/>
 
-  <!-- <polyline points="22.5,0 22.5,380" stroke-width="0.5" stroke="#0f0" /> -->
+  <!-- <polyline points="22.5,0 22.5,380" stroke-width="0.7" stroke="#0f0" /> -->
 
   <g transform="translate(0 18)">
     <g class="io-group" transform="translate(5.5 0)">

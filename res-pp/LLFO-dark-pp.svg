@@ -1,0 +1,318 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="45" height="380" viewBox="0 0 45 380">
+  <style>text {
+  fill: #333;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+text.title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+}
+text.brand {
+  font-family: 'Audiowide', sans-serif;
+  font-weight: bold;
+}
+
+polyline {
+  stroke: #333;
+}
+path {
+  stroke: #333;
+}
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background, rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
+}
+polyline.input-label, polyline.output-label {
+}
+path.input-label, path.output-label {
+}
+
+
+text {
+  fill: #ddd;
+}
+
+polyline {
+  stroke: #ddd;
+}
+path {
+  stroke: #ddd;
+}
+
+rect.module-background, .background-fill {
+  fill: #222;
+}
+polyline.module-border-inner {
+  stroke: #191919;
+}
+polyline.module-border-middle {
+  stroke: #111;
+}
+polyline.module-border-outer {
+  stroke: #000;
+}
+
+rect.input-background, rect.input-background-filler {
+  fill: #aaa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #666;
+}
+text.input-label {
+  fill: #333;
+}
+polyline.input-label, path.input-label {
+  stroke: #333;
+}
+text.output-label {
+  fill: #ddd;
+}
+polyline.output-label, path.output-label {
+  stroke: #ddd;
+}
+</style>
+
+  <defs>
+    <symbol id="dial-frequency-llfo" viewBox="0 0 45px 45px">
+      <g transform="translate(22.5 22.5)">
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-240) translate(15 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(60) translate(15 0)"/>
+
+        <g transform="rotate(-202) translate(14 0)">
+          <polyline points="0,0 2.5,0" stroke-width="0.7" transform="translate(0 0)"/>
+          <text font-size="5.0pt" transform="translate(5 0) rotate(202) translate(3 9.5) rotate(-90)">0.2</text>
+        </g>
+
+        <g transform="rotate(-124.62) translate(14 0)">
+          <polyline points="0,0 2.5,0" stroke-width="1.0" transform="translate(0 0)"/>
+          <text font-size="5.0pt" transform="translate(5 0) rotate(124.62) translate(-7.5 2.3)">OV</text>
+        </g>
+
+        <g transform="rotate(-48.68) translate(14 0)">
+          <polyline points="0,0 2.5,0" stroke-width="0.7" transform="translate(0 0)"/>
+          <text font-size="5.0pt" transform="translate(5 0) rotate(48.68) translate(-1 2.3)">20</text>
+        </g>
+
+        <g transform="rotate(27.98) translate(14 0)">
+          <polyline points="0,0 2.5,0" stroke-width="0.7" transform="translate(0 0)"/>
+          <text font-size="5.0pt" transform="translate(5 0) rotate(-27.98) translate(-2.3 -0.5) rotate(90)">200</text>
+        </g>
+
+        <text font-size="5.0pt" transform="translate(-4.5 22)">HZ</text>
+      </g>
+    </symbol>
+  </defs>
+
+  
+      
+      <rect class="module-background background-fill" width="45.0" height="380.0"/>
+    
+      
+      <polyline class="module-border-inner" points="1,1 44.0,1 44.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 44.5,0.5 44.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 45.0,0 45.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    
+      <g transform="rotate(-90) translate(-376.0 13)">
+        <text class="title" font-size="7pt" letter-spacing="2.5px">LLFO</text>
+        <g transform="translate(0 12)">
+          <text class="brand" font-size="7pt" letter-spacing="2px">BGA</text>
+          <rect class="background-fill" width="3.0" height="3" fill="#ddd" transform="translate(11.5 -5)"/>
+        </g>
+      </g>
+    
+
+  
+
+  <g transform="translate(0 25)">
+    
+    <g transform="translate(9.5 2)"><svg id="FREQUENCY_PARAM">
+      <g transform="translate(13 13)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <use xlink:href="#dial-frequency-llfo" transform="translate(0 -7.5)" href="#dial-frequency-llfo"/>
+  </g>
+
+  <g transform="translate(0 72)">
+    <text font-size="6pt" letter-spacing="1px" transform="translate(4 6.1)">SLOW</text>
+    <g transform="translate(31 -1)"><svg id="SLOW_PARAM">
+      <g transform="translate(4.5 4.5)">
+        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+
+  <g transform="translate(0.5 88)">
+    
+    <g transform="translate(9 0)">
+      <g transform="translate(0 0)">
+        <g transform="translate(-7.5 1)"><svg id="SINE_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+        <g transform="translate(1 1) scale(0.8)">
+          
+          <path d="M 0 4 A 2 3 0 0 1 6 4" stroke-width="1" stroke="#ddd" fill="none"/>
+          <path d="M 6 4 A 2 3 0 0 0 12 4" stroke-width="1" stroke="#ddd" fill="none"/>
+        </g>
+      </g>
+
+      <g transform="translate(0 13)">
+        <g transform="translate(-7.5 1)"><svg id="RAMP_UP_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+        <g transform="translate(1 1) scale(0.8)">
+          
+          <polyline points="0,8 12,0 12,8" stroke-width="1" fill="none"/>
+        </g>
+      </g>
+
+      <g transform="translate(0 26)">
+        <g transform="translate(-7.5 1)"><svg id="SQUARE_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+        <g transform="translate(1 1) scale(0.8)">
+          
+          <polyline points="0,4 0,0 6,0 6,8 12,8 12,4" stroke-width="1" fill="none"/>
+        </g>
+      </g>
+    </g>
+
+    <g transform="translate(31 0)">
+      <g transform="translate(0 0)">
+        <g transform="translate(-7.5 1)"><svg id="TRIANGLE_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+        <g transform="translate(1 1) scale(0.8)">
+          
+          <polyline points="0,4 3,0 9,8 12,4" stroke-width="1" fill="none"/>
+        </g>
+      </g>
+
+      <g transform="translate(0 13)">
+        <g transform="translate(-7.5 1)"><svg id="RAMP_DOWN_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+        <g transform="translate(1 1) scale(0.8)">
+          
+          <polyline points="0,8 0,0 12,8" stroke-width="1" fill="none"/>
+        </g>
+      </g>
+
+      <g transform="translate(0 26)">
+        <g transform="translate(-7.5 1)"><svg id="PULSE_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+        <g transform="translate(1 1) scale(0.8)">
+          
+          <polyline points="0,4 0,0 3,0 3,8 12,8 12,4" stroke-width="1" fill="none"/>
+        </g>
+      </g>
+    </g>
+
+    <g transform="translate(17.5 38)"><svg id="WAVE_PARAM">
+      <g transform="translate(4.5 4.5)">
+        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+
+  <g transform="translate(0 149)">
+    
+    <text font-size="6pt" letter-spacing="2px" transform="translate(3 0)">OFFSET</text>
+    <g transform="translate(14.5 9.5)"><svg id="OFFSET_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.2 -2.5)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(10 0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(-43)"/>
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(0 190)">
+    
+    <text font-size="6pt" letter-spacing="2px" transform="translate(6.6 0)">SCALE</text>
+    <g transform="translate(14.5 9.5)"><svg id="SCALE_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.2 -2.5)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-240) translate(10 0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(0)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#ddd" fill="none" transform="rotate(-43)"/>
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(0 228)">
+    
+    <g class="io-group" transform="translate(5.5 0)">
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 63)"/>
+      <rect class="input-background" width="34" height="70" rx="5"/>
+      <g transform="translate(5 3)"><svg id="PITCH_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 35)">V/OCT</text>
+      <g transform="translate(5 38)"><svg id="RESET_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 70)">RESET</text>
+    </g>
+    <g class="io-group" transform="translate(5.5 76)">
+      <rect class="output-background-filler" width="34" height="10" transform="translate(0 -3)"/>
+      <rect class="output-background" width="34" height="35" rx="5"/>
+      <g transform="translate(5 0)"><svg id="OUT_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
+    </g>
+  </g>
+</svg>

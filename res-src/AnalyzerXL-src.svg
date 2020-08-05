@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<module hp="42">
+<module hp="42" noskin="true">
   <style/>
   <localstyle>
       text {
@@ -10,12 +10,6 @@
         letter-spacing: 2px;
       }
   </localstyle>
-
-  <defs>
-    <symbol id="display-analyzerxl" viewBox="0 0 600px 380px">
-      <rect cx="0" cy="0" width="600" height="380" fill="#222"/>
-    </symbol>
-  </defs>
 
   <rect width="100%" height="100%" fill="#000"/>
   <g transform="translate(0 375) rotate(-90)">
@@ -34,6 +28,6 @@
     <def id="SIGNALH_INPUT" xlink:href="#input" transform="translate(0 238)"/>
   </g>
 
-  <use id="DISPLAY_WIDGET" xlink:href="#display-analyzerxl" transform="translate(30 0)"/>
+  <def id="DISPLAY_WIDGET" xlink:href="#display" var-width="600" var-height="380" transform="translate(30 0)"/>
   <!-- <rect cx="0" cy="0" width="600" height="380" fill="#555" transform="translate(30 0)" /> -->
 </module>

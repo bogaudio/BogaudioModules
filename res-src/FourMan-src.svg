@@ -9,7 +9,7 @@
       <rect class="input-background-filler" width="34" height="10" transform="translate(0 25)"/>
       <rect class="input-background" width="34" height="33" rx="5"/>
       <def id="TRIGGER1_PARAM" xlink:href="#button" transform="translate(8 4)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6.6 30)">TRIG</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(6.6 30)">TRIG</text>
     </g>
 
     <g class="io-group" transform="translate(5.5 37)">
@@ -27,7 +27,7 @@
       <rect class="input-background-filler" width="34" height="10" transform="translate(0 25)"/>
       <rect class="input-background" width="34" height="33" rx="5"/>
       <def id="TRIGGER2_PARAM" xlink:href="#button" transform="translate(8 4)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6.6 30)">TRIG</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(6.6 30)">TRIG</text>
     </g>
 
     <g class="io-group" transform="translate(5.5 37)">
@@ -45,7 +45,7 @@
       <rect class="input-background-filler" width="34" height="10" transform="translate(0 25)"/>
       <rect class="input-background" width="34" height="33" rx="5"/>
       <def id="TRIGGER3_PARAM" xlink:href="#button" transform="translate(8 4)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6.6 30)">TRIG</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(6.6 30)">TRIG</text>
     </g>
 
     <g class="io-group" transform="translate(5.5 37)">
@@ -63,7 +63,7 @@
       <rect class="input-background-filler" width="34" height="10" transform="translate(0 25)"/>
       <rect class="input-background" width="34" height="33" rx="5"/>
       <def id="TRIGGER4_PARAM" xlink:href="#button" transform="translate(8 4)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(6.6 30)">TRIG</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(6.6 30)">TRIG</text>
     </g>
 
     <g class="io-group" transform="translate(5.5 37)">

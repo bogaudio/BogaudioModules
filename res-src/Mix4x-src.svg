@@ -137,7 +137,7 @@
       <def id="R_A_INPUT" xlink:href="#input" transform="translate(5 76)"/>
       <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8 108)">R(L)</text>
       <def id="LEVEL_A_PARAM" xlink:href="#knob16" transform="translate(9 117)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 145)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 145)">LEVEL</text>
       <def id="LEVEL_A_INPUT" xlink:href="#input" transform="translate(5 149)"/>
       <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(11 181)">CV</text>
       <!-- <g transform="translate(0 29.5)"> -->
@@ -146,7 +146,7 @@
         <!-- <text font-size="5pt" letter-spacing="2px" transform="translate(-1 40) rotate(-90)">AUX A</text> -->
       <!-- </g> -->
     </g>
-    <def xlink:href="#dial-mintick" transform="translate(2.5 106)"/>
+    <def xlink:href="#dial-mintick-input" transform="translate(2.5 106)"/>
 
     <g class="io-group" transform="translate(5.5 191)">
       <rect class="output-background" width="34" height="50" rx="5"/>
@@ -159,9 +159,9 @@
       <def id="R_B_INPUT" xlink:href="#input" transform="translate(5 76)"/>
       <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(8 108)">R(L)</text>
       <def id="LEVEL_B_PARAM" xlink:href="#knob16" transform="translate(9 117)"/>
-      <text font-size="5pt" letter-spacing="2px" transform="translate(3.5 145)">LEVEL</text>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 145)">LEVEL</text>
     </g>
-    <def xlink:href="#dial-mintick" transform="translate(2.5 296)"/>
+    <def xlink:href="#dial-mintick-input" transform="translate(2.5 296)"/>
     <!-- <polyline points="0,0 0,350" stroke="#0f0" stroke-width="1" fill="none" transform="translate(22.5 0)" /> -->
   </g>
 </module>

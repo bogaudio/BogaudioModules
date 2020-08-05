@@ -1,0 +1,310 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="180" height="380" viewBox="0 0 180 380">
+  <style>text {
+  fill: #333;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+text.title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+}
+text.brand {
+  font-family: 'Audiowide', sans-serif;
+  font-weight: bold;
+}
+
+polyline {
+  stroke: #333;
+}
+path {
+  stroke: #333;
+}
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background, rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
+}
+polyline.input-label, polyline.output-label {
+}
+path.input-label, path.output-label {
+}
+
+
+text {
+  fill: #ddd;
+}
+
+polyline {
+  stroke: #ddd;
+}
+path {
+  stroke: #ddd;
+}
+
+rect.module-background, .background-fill {
+  fill: #222;
+}
+polyline.module-border-inner {
+  stroke: #191919;
+}
+polyline.module-border-middle {
+  stroke: #111;
+}
+polyline.module-border-outer {
+  stroke: #000;
+}
+
+rect.input-background, rect.input-background-filler {
+  fill: #aaa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #666;
+}
+text.input-label {
+  fill: #333;
+}
+polyline.input-label, path.input-label {
+  stroke: #333;
+}
+text.output-label {
+  fill: #ddd;
+}
+polyline.output-label, path.output-label {
+  stroke: #ddd;
+}
+</style>
+
+  <defs>
+    <symbol id="dial-cutoff-testvcf" viewBox="0 0 50px 50px">
+      <g transform="translate(25 25)">
+        <text font-size="6.0pt" transform="rotate(-240) translate(24 0) rotate(240) translate(-4 3)">0</text>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-210) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-180) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-150) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-120) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-90) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-60) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-30) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(0) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(30) translate(22 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(60) translate(22 0)"/>
+      </g>
+    </symbol>
+
+    <symbol id="dial-resonance-testvcf" viewBox="0 0 50px 50px">
+      <g transform="translate(25 25)">
+        <text font-size="6.0pt" transform="rotate(-240) translate(24 0) rotate(240) translate(-4 3)">0</text>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-210) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-180) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-150) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-120) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-90) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-60) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-30) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(0) translate(22 0)"/>
+        <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(30) translate(22 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(60) translate(22 0)"/>
+      </g>
+    </symbol>
+  </defs>
+
+  
+      
+      <rect class="module-background background-fill" width="180.0" height="380.0"/>
+    
+      
+      <polyline class="module-border-inner" points="1,1 179.0,1 179.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 179.5,0.5 179.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 180.0,0 180.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    
+      <text class="title" font-size="12pt" letter-spacing="4px" text-anchor="middle" transform="translate(90.0 19)">VCF</text>
+      <g transform="translate(0 374)">
+        <text class="brand" font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate(90.0 0)">BOGAUDIO</text>
+        <rect class="background-fill" width="3" height="3" transform="translate(74.5 -5)"/>
+      </g>
+    
+
+  <g transform="translate(20 50)">
+    
+    <text font-size="8pt" letter-spacing="2px" transform="translate(9 45) rotate(270)">CUTOFF</text>
+    <g transform="translate(20 0)"><svg id="CUTOFF_PARAM">
+      <g transform="translate(19 19)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <use xlink:href="#dial-cutoff-testvcf" transform="translate(14 -6)" href="#dial-cutoff-testvcf"/>
+  </g>
+
+  <g transform="translate(20 120)">
+    
+    <text font-size="8pt" letter-spacing="1px" transform="translate(9 45) rotate(270)">RES/BW</text>
+    <g transform="translate(20 0)"><svg id="Q_PARAM">
+      <g transform="translate(19 19)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <use xlink:href="#dial-resonance-testvcf" transform="translate(14 -6)" href="#dial-resonance-testvcf"/>
+  </g>
+
+  <g transform="translate(20 190)">
+    
+    <text font-size="8pt" letter-spacing="1px" transform="translate(9 39) rotate(270)">DRIVE</text>
+    <g transform="translate(20 0)"><svg id="DRIVE_PARAM">
+      <g transform="translate(19 19)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <use xlink:href="#dial-resonance-testvcf" transform="translate(14 -6)" href="#dial-resonance-testvcf"/>
+  </g>
+
+  <g transform="translate(20 260)">
+    
+    <text font-size="8pt" letter-spacing="1px" transform="translate(9 36) rotate(270)">TOPO</text>
+    <g transform="translate(20 0)"><svg id="TOPOLOGY_PARAM">
+      <g transform="translate(19 19)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <use xlink:href="#dial-resonance-testvcf" transform="translate(14 -6)" href="#dial-resonance-testvcf"/>
+  </g>
+
+  <g transform="translate(110 48)">
+    
+    <text font-size="8pt" letter-spacing="1px" transform="translate(9 40) rotate(270)">MODE</text>
+    <g transform="translate(20 0)">
+      <g transform="translate(0 10)">
+        <g transform="translate(0 0)"><svg id="LOWPASS_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+        <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">LP</text>
+      </g>
+      <g transform="translate(21 10)">
+        <g transform="translate(0 0)"><svg id="HIGHPASS_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+        <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">HP</text>
+      </g>
+      <g transform="translate(0 20)">
+        <g transform="translate(0 0)"><svg id="BANDPASS_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+        <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">BP</text>
+      </g>
+      <g transform="translate(21 20)">
+        <g transform="translate(0 0)"><svg id="BAND_REJECT_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+        <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">BR</text>
+      </g>
+      <g transform="translate(15 29)"><svg id="MODE_PARAM">
+      <g transform="translate(4.5 4.5)">
+        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    </g>
+  </g>
+
+  <g transform="translate(110 117)">
+    
+    <text font-size="8pt" letter-spacing="1px" transform="translate(9 40) rotate(270)">POLES</text>
+    <g transform="translate(20 0)">
+      <g transform="translate(0 10)">
+        <g transform="translate(0 0)"><svg id="POLES_2_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+        <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">2</text>
+      </g>
+      <g transform="translate(21 10)">
+        <g transform="translate(0 0)"><svg id="POLES_4_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+        <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">4</text>
+      </g>
+      <g transform="translate(0 20)">
+        <g transform="translate(0 0)"><svg id="POLES_6_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+        <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">6</text>
+      </g>
+      <g transform="translate(21 20)">
+        <g transform="translate(0 0)"><svg id="POLES_8_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+        <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">8</text>
+      </g>
+      <g transform="translate(0 30)">
+        <g transform="translate(0 0)"><svg id="POLES_10_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+        <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">10</text>
+      </g>
+      <g transform="translate(21 30)">
+        <g transform="translate(0 0)"><svg id="POLES_12_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+        <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">12</text>
+      </g>
+      <g transform="translate(15 39)"><svg id="POLES_PARAM">
+      <g transform="translate(4.5 4.5)">
+        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    </g>
+  </g>
+
+  <g class="io-group" transform="translate(45 315)">
+    <rect class="input-background" width="58" height="40" rx="5"/>
+    <rect class="output-background" width="50" height="40" rx="5" transform="translate(38)"/>
+    <rect class="output-background-filler" width="20" height="40" transform="translate(29)"/>
+    <g transform="translate(2.5 3)"><svg id="IN_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(10 36)">IN</text>
+    <g transform="translate(31.5 3)"><svg id="OUT_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(33 36)">OUT</text>
+    <g transform="translate(60.5 3)"><svg id="OUT_B_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(70.5 36)">B</text>
+  </g>
+</svg>

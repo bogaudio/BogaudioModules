@@ -17,7 +17,7 @@
       <def id="INPUT7_INPUT" xlink:href="#input" transform="translate(0 240)"/>
       <def id="INPUT8_INPUT" xlink:href="#input" transform="translate(0 280)"/>
     </g>
-    <text font-size="6pt" letter-spacing="2px" transform="translate(9.8 320)">IN</text>
+    <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(9.8 320)">IN</text>
   </g>
 
   <g class="io-group" transform="translate(43 32)">
@@ -33,7 +33,7 @@
       <def id="MUTE7_INPUT" xlink:href="#input" transform="translate(0 240)"/>
       <def id="MUTE8_INPUT" xlink:href="#input" transform="translate(0 280)"/>
     </g>
-    <text font-size="6pt" letter-spacing="2px" transform="translate(8 320)">CV</text>
+    <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(8 320)">CV</text>
   </g>
 
   <g transform="translate(77.5 32)">
@@ -89,6 +89,6 @@
       <def id="OUTPUT7_OUTPUT" xlink:href="#output" transform="translate(0 240)"/>
       <def id="OUTPUT8_OUTPUT" xlink:href="#output" transform="translate(0 280)"/>
     </g>
-    <text font-size="6pt" letter-spacing="2px" transform="translate(5 320)">OUT</text>
+    <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(5 320)">OUT</text>
   </g>
 </module>

@@ -9,7 +9,7 @@
         <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(60) translate(15 0)"/>
 
         <g transform="rotate(-202) translate(14 0)">
-          <polyline points="0,0 2.5,0" stroke-width="0.3" transform="translate(0 0)"/>
+          <polyline points="0,0 2.5,0" stroke-width="0.7" transform="translate(0 0)"/>
           <text font-size="5.0pt" transform="translate(5 0) rotate(202) translate(3 9.5) rotate(-90)">0.2</text>
         </g>
 
@@ -19,12 +19,12 @@
         </g>
 
         <g transform="rotate(-48.68) translate(14 0)">
-          <polyline points="0,0 2.5,0" stroke-width="0.3" transform="translate(0 0)"/>
+          <polyline points="0,0 2.5,0" stroke-width="0.7" transform="translate(0 0)"/>
           <text font-size="5.0pt" transform="translate(5 0) rotate(48.68) translate(-1 2.3)">20</text>
         </g>
 
         <g transform="rotate(27.98) translate(14 0)">
-          <polyline points="0,0 2.5,0" stroke-width="0.3" transform="translate(0 0)"/>
+          <polyline points="0,0 2.5,0" stroke-width="0.7" transform="translate(0 0)"/>
           <text font-size="5.0pt" transform="translate(5 0) rotate(-27.98) translate(-2.3 -0.5) rotate(90)">200</text>
         </g>
 

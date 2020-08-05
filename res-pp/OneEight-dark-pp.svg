@@ -1,0 +1,311 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="90" height="380" viewBox="0 0 90 380">
+  <style>text {
+  fill: #333;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+text.title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+}
+text.brand {
+  font-family: 'Audiowide', sans-serif;
+  font-weight: bold;
+}
+
+polyline {
+  stroke: #333;
+}
+path {
+  stroke: #333;
+}
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background, rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
+}
+polyline.input-label, polyline.output-label {
+}
+path.input-label, path.output-label {
+}
+
+
+text {
+  fill: #ddd;
+}
+
+polyline {
+  stroke: #ddd;
+}
+path {
+  stroke: #ddd;
+}
+
+rect.module-background, .background-fill {
+  fill: #222;
+}
+polyline.module-border-inner {
+  stroke: #191919;
+}
+polyline.module-border-middle {
+  stroke: #111;
+}
+polyline.module-border-outer {
+  stroke: #000;
+}
+
+rect.input-background, rect.input-background-filler {
+  fill: #aaa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #666;
+}
+text.input-label {
+  fill: #333;
+}
+polyline.input-label, path.input-label {
+  stroke: #333;
+}
+text.output-label {
+  fill: #ddd;
+}
+polyline.output-label, path.output-label {
+  stroke: #ddd;
+}
+</style>
+
+  
+      
+      <rect class="module-background background-fill" width="90.0" height="380.0"/>
+    
+      
+      <polyline class="module-border-inner" points="1,1 89.0,1 89.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 89.5,0.5 89.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 90.0,0 90.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    
+      <text class="title" font-size="9pt" letter-spacing="3px" text-anchor="end" transform="translate(85.0 17)">1:8</text>
+      <g transform="translate(5.5 374)">
+        <text class="brand" font-size="6.5pt" letter-spacing="2px">BOGAUDIO</text>
+        <rect class="background-fill" width="1.5" height="2" fill="#ddd" transform="translate(21 -4)"/>
+      </g>
+    
+
+  <g class="io-group" transform="translate(6.5 32)">
+    <rect class="input-background" width="34" height="39" rx="5"/>
+    <rect class="input-background-filler" width="34" height="10" transform="translate(0 30)"/>
+    <g transform="translate(5 3)"><svg id="CLOCK_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="input-label" font-size="5pt" letter-spacing="1px" transform="translate(4 35)">CLOCK</text>
+  </g>
+  <g class="io-group" transform="translate(6.5 69)">
+    <rect class="input-background" width="34" height="39" rx="5"/>
+    <g transform="translate(5 3)"><svg id="RESET_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="input-label" font-size="5pt" letter-spacing="1px" transform="translate(5 35)">RESET</text>
+  </g>
+
+  <g transform="translate(1 121)">
+    <text font-size="6pt" letter-spacing="1.5px" transform="translate(7.5 0)">STEPS</text>
+    <g transform="translate(14.5 10.5)"><svg id="STEPS_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(2.5 -1)">
+      <g transform="translate(20 20)">
+        <text font-size="5.0pt" transform="rotate(-240) translate(13 0) rotate(240) translate(-2 2)">1</text>
+        <text font-size="5.0pt" transform="rotate(-197.1) translate(13 0) rotate(197.1) translate(-2 2)">2</text>
+        <text font-size="5.0pt" transform="rotate(-154.3) translate(13 0) rotate(154.3) translate(-2 2)">3</text>
+        <text font-size="5.0pt" transform="rotate(-111.4) translate(13 0) rotate(111.4) translate(-2 2)">4</text>
+        <text font-size="5.0pt" transform="rotate(-68.6) translate(13 0) rotate(68.6) translate(-2 2)">5</text>
+        <text font-size="5.0pt" transform="rotate(-25.7) translate(13 0) rotate(25.7) translate(-2 2)">6</text>
+        <text font-size="5.0pt" transform="rotate(17.1) translate(13 0) rotate(-17.1) translate(-2 2)">7</text>
+        <text font-size="5.0pt" transform="rotate(60) translate(13 0) rotate(-60) translate(-2 2)">8</text>
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(16.5 166)">
+    <text font-size="5pt" letter-spacing="2px" transform="translate(-1.8 -1)">FWD</text>
+    <g transform="translate(0 2)"><svg id="DIRECTION_PARAM">
+      <rect width="14px" height="24px" stroke-width="1" stroke="#000" fill="#ddd"/>
+      <rect width="14px" height="12px" stroke-width="0" fill="#000"/>
+    </svg></g>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(-1.3 34)">REV</text>
+  </g>
+
+  
+  
+  <g transform="translate(1 220)">
+    <text font-size="6pt" letter-spacing="1.5px" transform="translate(4.5 0)">SELECT</text>
+    <g transform="translate(0 2)"><svg id="SELECT_PARAM">
+      <g transform="translate(22.5 22.5)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(0 2)">
+      <g transform="translate(22.5 22.5)">
+        <text font-size="5.0pt" transform="rotate(-240) translate(19 0) rotate(240) translate(-2 2)">1</text>
+        <text font-size="5.0pt" transform="rotate(-197.1) translate(19 0) rotate(197.1) translate(-2 2)">2</text>
+        <text font-size="5.0pt" transform="rotate(-154.3) translate(19 0) rotate(154.3) translate(-2 2)">3</text>
+        <text font-size="5.0pt" transform="rotate(-111.4) translate(19 0) rotate(111.4) translate(-2 2)">4</text>
+        <text font-size="5.0pt" transform="rotate(-68.6) translate(19 0) rotate(68.6) translate(-2 2)">5</text>
+        <text font-size="5.0pt" transform="rotate(-25.7) translate(19 0) rotate(25.7) translate(-2 2)">6</text>
+        <text font-size="5.0pt" transform="rotate(17.1) translate(19 0) rotate(-17.1) translate(-2 2)">7</text>
+        <text font-size="5.0pt" transform="rotate(60) translate(19 0) rotate(-60) translate(-2 2)">8</text>
+      </g>
+    </g>
+    <g class="io-group" transform="translate(5.5 47)">
+      <rect class="input-background" width="34" height="39" rx="5"/>
+      <g transform="translate(5 3)"><svg id="SELECT_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(11.5 35)">CV</text>
+    </g>
+  </g>
+
+  <g class="io-group" transform="translate(6.5 321)">
+    <rect class="input-background" width="34" height="39" rx="5"/>
+    <g transform="translate(5 3)"><svg id="IN_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
+  </g>
+
+  <g class="io-group" transform="translate(49.5 32)">
+    <rect class="output-background" width="34" height="337" rx="5" transform="translate(0 -9)"/>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 0)">OUT</text>
+
+    <g transform="translate(5 3)"><svg id="OUT1_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(11 35)">1</text>
+    <g transform="translate(17 29.5)"><svg id="OUT1_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+
+    <g transform="translate(5 44.3)"><svg id="OUT2_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(11 76.3)">2</text>
+    <g transform="translate(17 70.8)"><svg id="OUT2_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+
+    <g transform="translate(5 86.6)"><svg id="OUT3_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(11 118.6)">3</text>
+    <g transform="translate(17 113.1)"><svg id="OUT3_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+
+    <g transform="translate(5 126.9)"><svg id="OUT4_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(11 158.9)">4</text>
+    <g transform="translate(17 153.4)"><svg id="OUT4_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+
+    <g transform="translate(5 168.1)"><svg id="OUT5_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(11 200.1)">5</text>
+    <g transform="translate(17 194.6)"><svg id="OUT5_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+
+    <g transform="translate(5 209.4)"><svg id="OUT6_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(11 241.4)">6</text>
+    <g transform="translate(17 235.9)"><svg id="OUT6_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+
+    <g transform="translate(5 250.7)"><svg id="OUT7_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(11 282.7)">7</text>
+    <g transform="translate(17 277.2)"><svg id="OUT7_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+
+    <g transform="translate(5 292)"><svg id="OUT8_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(11 324)">8</text>
+    <g transform="translate(17 318.5)"><svg id="OUT8_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+  </g>
+
+  
+  
+  
+  
+</svg>

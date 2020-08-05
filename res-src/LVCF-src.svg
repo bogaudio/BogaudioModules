@@ -6,14 +6,14 @@
     <symbol id="dial-cutoff-lvcf" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <text font-size="5.0pt" transform="rotate(-240) translate(18 0) rotate(240) translate(-2 2)">0</text>
-        <polyline points="0,0 1.5,0" stroke-width="0.3" transform="rotate(-218.8) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-192.6) translate(15 0)"/>
+        <polyline points="0,0 1.5,0" stroke-width="0.7" transform="rotate(-218.8) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-192.6) translate(15 0)"/>
 
         <text font-size="5.0pt" transform="rotate(-172.2) translate(18 0) rotate(172.2) translate(-1 2)">1</text>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-90) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-90) translate(15 0)"/>
 
         <text font-size="5.0pt" transform="rotate(-27.9) translate(18 0) rotate(27.9) translate(-4 2)">10</text>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(19.8) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(19.8) translate(15 0)"/>
 
         <text font-size="5.0pt" transform="rotate(60) translate(18 0) rotate(-60) translate(-2 2)">20</text>
 
@@ -24,15 +24,15 @@
     <symbol id="dial-q-lvcf" viewBox="0 0 45px 45px">
       <g transform="translate(22.5 22.5)">
         <text font-size="5.0pt" transform="rotate(-240) translate(18 0) rotate(240) translate(-2 2)">0</text>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-210) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-180) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-150) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-120) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-90) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-60) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(-30) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(0) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.3" transform="rotate(30) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-210) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-180) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-150) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-120) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-90) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-60) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-30) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(30) translate(15 0)"/>
         <polyline points="0,0 3.5,0" stroke-width="1" transform="rotate(60) translate(15 0)"/>
       </g>
     </symbol>

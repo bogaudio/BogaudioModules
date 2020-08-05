@@ -24,14 +24,14 @@ ARGV.each do |file|
   end
 
   name = nil
-  if File.basename(file) =~ /^(.*)-pp.svg$/
+  if File.basename(file) =~ /^(.*)(-\w+)?-pp.svg$/
     name = $1
   else
     STDERR.puts "Input file #{file} must be named *-pp.svg"
     exit 1
   end
 
-  Dir.glob(File.join(File.dirname(file), "#{name}*-pp.svg")).each do |fn|
+  Dir.glob(File.join(File.dirname(file), "#{name}-*pp.svg")).each do |fn|
     unless svg_filenames.key?(fn)
       svg_filenames[fn] = true
 

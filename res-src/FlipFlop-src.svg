@@ -2,7 +2,7 @@
 <module hp="3">
   <style/>
 
-  <def xlink:href="#module3" var-name="FLIPFLOP"/>
+  <def xlink:href="#module3" var-name="FLIPFLOP" var-letterspacing="1.5"/>
 
   <g transform="translate(0 18)">
     <g class="io-group" transform="translate(5.5 0)">

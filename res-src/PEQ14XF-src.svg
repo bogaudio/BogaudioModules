@@ -2,7 +2,7 @@
 <module hp="5">
   <style/>
 
-  <def xlink:href="#module5" var-name="PEQ14XF"/>
+  <def xlink:href="#module5" var-name="PEQ14XF" var-letterspacing="0.1"/>
 
   <g class="io-group" transform="translate(-2.5 24)">
     <def id="DAMP_PARAM" xlink:href="#knob16" transform="translate(14.5 6)"/>

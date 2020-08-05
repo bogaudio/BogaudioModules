@@ -36,34 +36,28 @@ polyline.module-border-outer {
 
 g.io-group {
 }
-rect.input-background {
+rect.input-background, rect.input-background-filler {
   fill: #fafafa;
 }
-rect.input-background-filler {
-  fill: #fafafa;
-}
-rect.output-background {
-  fill: #bbb;
-}
-rect.output-background-filler {
+rect.output-background, rect.output-background-filler {
   fill: #bbb;
 }
 text.input-label, text.output-label {
   /* font-size: 6pt; */
 }
+polyline.input-label, polyline.output-label {
+}
+path.input-label, path.output-label {
+}
 </style>
 
   <defs>
-    <symbol id="display-analyzer" viewBox="0 0 280px 230px">
-      <rect cx="0" cy="0" width="280" height="230" fill="#222"/>
-    </symbol>
-
     <symbol id="dial-range-analyzer" viewBox="0 0 100px 100px">
       <g transform="translate(50.5 50.5)">
-        <path d="M 0 -32 A 32 32 0 0 1 32 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(15)"/>
-        <path d="M 0 -32 A 32 32 0 0 1 32 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(50)"/>
-        <path d="M 0 -32 A 32 32 0 0 0 -32 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-15)"/>
-        <path d="M 0 -32 A 32 32 0 0 0 -32 0" stroke-width="0.5" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-50)"/>
+        <path d="M 0 -32 A 32 32 0 0 1 32 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(15)"/>
+        <path d="M 0 -32 A 32 32 0 0 1 32 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(50)"/>
+        <path d="M 0 -32 A 32 32 0 0 0 -32 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-15)"/>
+        <path d="M 0 -32 A 32 32 0 0 0 -32 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-50)"/>
         <g transform="rotate(-90) translate(29 0)">
           <polyline points="0,0 6,0" stroke-width="1.5"/>
         </g>
@@ -78,31 +72,31 @@ text.input-label, text.output-label {
           </g>
         </g>
         <g transform="rotate(-210) translate(30 0)">
-          <polyline points="0,0 4,0" stroke-width="0.5"/>
+          <polyline points="0,0 4,0" stroke-width="0.7"/>
         </g>
         <g transform="rotate(-180) translate(30 0)">
-          <polyline points="0,0 4,0" stroke-width="0.5"/>
+          <polyline points="0,0 4,0" stroke-width="0.7"/>
         </g>
         <g transform="rotate(-150) translate(30 0)">
-          <polyline points="0,0 5,0" stroke-width="0.5"/>
+          <polyline points="0,0 5,0" stroke-width="0.7"/>
         </g>
         <g transform="rotate(-120) translate(30 0)">
-          <polyline points="0,0 4,0" stroke-width="0.5"/>
+          <polyline points="0,0 4,0" stroke-width="0.7"/>
         </g>
         <g transform="rotate(-90) translate(30 0)">
-          <polyline points="0,0 4,0" stroke-width="0.5"/>
+          <polyline points="0,0 4,0" stroke-width="0.7"/>
         </g>
         <g transform="rotate(-60) translate(30 0)">
-          <polyline points="0,0 4,0" stroke-width="0.5"/>
+          <polyline points="0,0 4,0" stroke-width="0.7"/>
         </g>
         <g transform="rotate(-30) translate(30 0)">
-          <polyline points="0,0 4,0" stroke-width="0.5"/>
+          <polyline points="0,0 4,0" stroke-width="0.7"/>
         </g>
         <g transform="rotate(0) translate(30 0)">
-          <polyline points="0,0 4,0" stroke-width="0.5"/>
+          <polyline points="0,0 4,0" stroke-width="0.7"/>
         </g>
         <g transform="rotate(30) translate(30 0)">
-          <polyline points="0,0 4,0" stroke-width="0.5"/>
+          <polyline points="0,0 4,0" stroke-width="0.7"/>
         </g>
         <g transform="rotate(60) translate(31 0)">
           <g transform="translate(2 0) rotate(-60)">
@@ -130,7 +124,9 @@ text.input-label, text.output-label {
     
 
   <g transform="translate(10 25)">
-    <use id="DISPLAY_WIDGET" xlink:href="#display-analyzer" href="#display-analyzer"/>
+    <svg id="DISPLAY_WIDGET">
+      <rect cx="0" cy="0" width="280" height="230" fill="#444"/>
+    </svg>
   </g>
 
   
@@ -150,14 +146,14 @@ text.input-label, text.output-label {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
+      <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
       <g transform="translate(34.5 3)"><svg id="SIGNALA_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(33.5 36)">THRU</text>
+      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(33.5 36)">THRU</text>
     </g>
 
     <g class="io-group" transform="translate(82.5 0)">
@@ -170,14 +166,14 @@ text.input-label, text.output-label {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
+      <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
       <g transform="translate(34.5 3)"><svg id="SIGNALB_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(33.5 36)">THRU</text>
+      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(33.5 36)">THRU</text>
     </g>
 
     <g class="io-group" transform="translate(155 0)">
@@ -190,14 +186,14 @@ text.input-label, text.output-label {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
+      <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
       <g transform="translate(34.5 3)"><svg id="SIGNALC_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(33.5 36)">THRU</text>
+      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(33.5 36)">THRU</text>
     </g>
 
     <g class="io-group" transform="translate(227 0)">
@@ -210,14 +206,14 @@ text.input-label, text.output-label {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
+      <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
       <g transform="translate(34.5 3)"><svg id="SIGNALD_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
       </g>
     </svg></g>
-      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
-      <text font-size="6pt" letter-spacing="2px" transform="translate(33.5 36)">THRU</text>
+      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(33.5 36)">THRU</text>
     </g>
   </g>
 
