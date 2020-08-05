@@ -25,10 +25,14 @@ struct BGModule : Module {
 
 	void onReset() override;
 	void onSampleRateChange() override;
+	json_t* dataToJson() override;
+	void dataFromJson(json_t* root) override;
 	void process(const ProcessArgs& args) override;
 
 	virtual void reset() {}
 	virtual void sampleRateChange() {}
+	virtual json_t* toJson(json_t* root) { return root; }
+	virtual void fromJson(json_t* root) {}
 	virtual bool active() { return true; }
 	virtual int channels() { return 1; }
 	virtual void channelsChanged(int before, int after) {}

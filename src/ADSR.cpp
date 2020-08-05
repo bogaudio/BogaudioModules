@@ -24,13 +24,12 @@ void ADSR::sampleRateChange() {
 	}
 }
 
-json_t* ADSR::dataToJson() {
-	json_t* root = json_object();
+json_t* ADSR::toJson(json_t* root) {
 	json_object_set_new(root, INVERT, json_real(_invert));
 	return root;
 }
 
-void ADSR::dataFromJson(json_t* root) {
+void ADSR::fromJson(json_t* root) {
 	json_t* i = json_object_get(root, INVERT);
 	if (i) {
 		_invert = json_real_value(i);

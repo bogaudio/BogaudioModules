@@ -51,8 +51,8 @@ struct MixerChannel {
 struct DimmableMixerModule : BGModule {
 	float _dimDb = 12.0f;
 
-	json_t* dataToJson() override;
-	void dataFromJson(json_t* root) override;
+	json_t* toJson(json_t* root) override;
+	void fromJson(json_t* root) override;
 };
 
 struct DimmableMixerWidget : ModuleWidget {

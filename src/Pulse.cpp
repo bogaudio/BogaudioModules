@@ -3,14 +3,14 @@
 
 #define LINEAR_MODE "linear_mode"
 
-json_t* Pulse::dataToJson() {
-	json_t* root = VCOBase::dataToJson();
+json_t* Pulse::toJson(json_t* root) {
+	root = VCOBase::toJson(root);
 	json_object_set_new(root, LINEAR_MODE, json_boolean(_linearMode));
 	return root;
 }
 
-void Pulse::dataFromJson(json_t* root) {
-	VCOBase::dataFromJson(root);
+void Pulse::fromJson(json_t* root) {
+	VCOBase::fromJson(root);
 	json_t* l = json_object_get(root, LINEAR_MODE);
 	if (l) {
 		_linearMode = json_is_true(l);

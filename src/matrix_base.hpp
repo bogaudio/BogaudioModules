@@ -19,8 +19,8 @@ struct MatrixBaseModule : BGModule {
 	float _inputGainDb = 0.0f;
 	float _inputGainLevel = 1.0f;
 
-	json_t* dataToJson() override;
-	void dataFromJson(json_t* root) override;
+	json_t* toJson(json_t* root) override;
+	void fromJson(json_t* root) override;
 	void modulate() override;
 };
 
@@ -69,8 +69,8 @@ struct KnobMatrixModule : MatrixModule {
 	: MatrixModule(n, firstParamID, firstInputID, firstOutputID)
 	{}
 
-	json_t* dataToJson() override;
-	void dataFromJson(json_t* root) override;
+	json_t* toJson(json_t* root) override;
+	void fromJson(json_t* root) override;
 };
 
 struct KnobMatrixModuleWidget : MatrixBaseModuleWidget {
@@ -97,8 +97,8 @@ struct SwitchMatrixModule : MatrixModule {
 	: MatrixModule(n, firstParamID, firstInputID, firstOutputID)
 	{}
 
-	json_t* dataToJson() override;
-	void dataFromJson(json_t* root) override;
+	json_t* toJson(json_t* root) override;
+	void fromJson(json_t* root) override;
 	void setInverting(Inverting inverting);
 	void configSwitchParam(int id, const char* label);
 	void switchChanged(int id, float value);

@@ -10,8 +10,7 @@ void bogaudio::Switch::reset() {
 	}
 }
 
-json_t* bogaudio::Switch::dataToJson() {
-	json_t* root = json_object();
+json_t* bogaudio::Switch::toJson(json_t* root) {
 	json_object_set_new(root, SAVE_LATCHED_TO_PATCH, json_boolean(_saveLatchedToPatch));
 	if (_saveLatchedToPatch && _latch) {
 		json_t* a = json_array();
@@ -23,7 +22,7 @@ json_t* bogaudio::Switch::dataToJson() {
 	return root;
 }
 
-void bogaudio::Switch::dataFromJson(json_t* root) {
+void bogaudio::Switch::fromJson(json_t* root) {
 	json_t* sl = json_object_get(root, SAVE_LATCHED_TO_PATCH);
 	if (sl) {
 		_saveLatchedToPatch = json_is_true(sl);

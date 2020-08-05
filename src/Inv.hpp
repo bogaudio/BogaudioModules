@@ -51,8 +51,8 @@ struct Inv : BGModule {
 	}
 
 	void reset() override;
-	json_t* dataToJson() override;
-	void dataFromJson(json_t* root) override;
+	json_t* toJson(json_t* root) override;
+	void fromJson(json_t* root) override;
 	void modulate() override;
 	void processAll(const ProcessArgs& args) override;
 	void processDual(int i);

@@ -37,8 +37,8 @@ struct AnalyzerXL : AnalyzerBase {
 
 	void reset() override;
 	void sampleRateChange() override;
-	json_t* dataToJson() override;
-	void dataFromJson(json_t* root) override;
+	json_t* toJson(json_t* root) override;
+	void fromJson(json_t* root) override;
 	void modulate() override;
 	void processChannel(const ProcessArgs& args, int _c) override;
 };

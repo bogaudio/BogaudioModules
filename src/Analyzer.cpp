@@ -11,13 +11,12 @@ void Analyzer::sampleRateChange() {
 	_core.resetChannels();
 }
 
-json_t* Analyzer::dataToJson() {
-	json_t* root = json_object();
+json_t* Analyzer::toJson(json_t* root) {
 	json_object_set_new(root, RANGE_DB_KEY, json_real(_rangeDb));
 	return root;
 }
 
-void Analyzer::dataFromJson(json_t* root) {
+void Analyzer::fromJson(json_t* root) {
 	json_t* jrd = json_object_get(root, RANGE_DB_KEY);
 	if (jrd) {
 		_rangeDb = clamp(json_real_value(jrd), 80.0f, 140.0f);

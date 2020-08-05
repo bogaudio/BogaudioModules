@@ -24,8 +24,7 @@ void AddressableSequenceModule::sampleRateChange() {
 	}
 }
 
-json_t* AddressableSequenceModule::dataToJson() {
-	json_t* root = json_object();
+json_t* AddressableSequenceModule::toJson(json_t* root) {
 	json_object_set_new(root, POLY_INPUT, json_integer(_polyInputID));
 	json_object_set_new(root, SELECT_ON_CLOCK, json_boolean(_selectOnClock));
 	json_object_set_new(root, TRIGGERED_SELECT, json_boolean(_triggeredSelect));
@@ -33,7 +32,7 @@ json_t* AddressableSequenceModule::dataToJson() {
 	return root;
 }
 
-void AddressableSequenceModule::dataFromJson(json_t* root) {
+void AddressableSequenceModule::fromJson(json_t* root) {
 	json_t* p = json_object_get(root, POLY_INPUT);
 	if (p) {
 		_polyInputID = json_integer_value(p);

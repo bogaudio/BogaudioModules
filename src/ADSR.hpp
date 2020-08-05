@@ -67,8 +67,8 @@ struct ADSR : BGModule {
 
 	void reset() override;
 	void sampleRateChange() override;
-	json_t* dataToJson() override;
-	void dataFromJson(json_t* root) override;
+	json_t* toJson(json_t* root) override;
+	void fromJson(json_t* root) override;
 	bool active() override;
 	int channels() override;
 	void addChannel(int c) override;

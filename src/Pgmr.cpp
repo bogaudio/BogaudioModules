@@ -19,14 +19,14 @@ void Pgmr::sampleRateChange() {
 	_sampleTime = APP->engine->getSampleTime();
 }
 
-json_t* Pgmr::dataToJson() {
-	json_t* root = OutputRangeAddressableSequenceModule::dataToJson();
+json_t* Pgmr::toJson(json_t* root) {
+	root = OutputRangeAddressableSequenceModule::toJson(root);
 	json_object_set_new(root, SELECT_TRIGGERS, json_boolean(_selectTriggers));
 	return root;
 }
 
-void Pgmr::dataFromJson(json_t* root) {
-	OutputRangeAddressableSequenceModule::dataFromJson(root);
+void Pgmr::fromJson(json_t* root) {
+	OutputRangeAddressableSequenceModule::fromJson(root);
 	json_t* st = json_object_get(root, SELECT_TRIGGERS);
 	if (st) {
 		_selectTriggers = json_is_true(st);

@@ -23,8 +23,7 @@ void AnalyzerXL::sampleRateChange() {
 	_core.resetChannels();
 }
 
-json_t* AnalyzerXL::dataToJson() {
-	json_t* root = json_object();
+json_t* AnalyzerXL::toJson(json_t* root) {
 	json_object_set_new(root, RANGE_KEY, json_real(_range));
 	json_object_set_new(root, RANGE_DB_KEY, json_real(_rangeDb));
 	json_object_set_new(root, SMOOTH_KEY, json_real(_smooth));
@@ -59,7 +58,7 @@ json_t* AnalyzerXL::dataToJson() {
 	return root;
 }
 
-void AnalyzerXL::dataFromJson(json_t* root) {
+void AnalyzerXL::fromJson(json_t* root) {
 	json_t* jr = json_object_get(root, RANGE_KEY);
 	if (jr) {
 		_range = clamp(json_real_value(jr), -0.9f, 0.8f);

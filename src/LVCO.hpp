@@ -65,8 +65,8 @@ struct LVCO : VCOBase {
 		configParam(FM_DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "FM depth", "%", 0.0f, 100.0f);
 	}
 
-	json_t* dataToJson() override;
-	void dataFromJson(json_t* root) override;
+	json_t* toJson(json_t* root) override;
+	void fromJson(json_t* root) override;
 	bool active() override;
 	void modulate() override;
 	void modulateChannel(int c) override;

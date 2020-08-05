@@ -18,18 +18,15 @@ struct OutputRange {
 
 template<class BASE>
 struct OutputRangeModule : BASE, OutputRange {
-	json_t* dataToJson() override {
-		json_t* root = BASE::dataToJson();
-		if (!root) {
-			root = json_object();
-		}
+	json_t* toJson(json_t* root) override {
+		root = BASE::toJson(root);
 		json_object_set_new(root, "range_offset", json_real(_rangeOffset));
 		json_object_set_new(root, "range_scale", json_real(_rangeScale));
 		return root;
 	}
 
-	void dataFromJson(json_t* root) override {
-		BASE::dataFromJson(root);
+	void fromJson(json_t* root) override {
+		BASE::fromJson(root);
 
 		json_t* ro = json_object_get(root, "range_offset");
 		if (ro) {

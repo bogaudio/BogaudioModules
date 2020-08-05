@@ -14,6 +14,14 @@ void BGModule::onSampleRateChange() {
 	sampleRateChange();
 }
 
+json_t* BGModule::dataToJson() {
+	return toJson(json_object());
+}
+
+void BGModule::dataFromJson(json_t* root) {
+	fromJson(root);
+}
+
 void BGModule::process(const ProcessArgs& args) {
 	if (_steps < 0) {
 		onReset();

@@ -52,8 +52,8 @@ struct Switch : BGModule {
 	}
 
 	void reset() override;
-	json_t* dataToJson() override;
-	void dataFromJson(json_t* root) override;
+	json_t* toJson(json_t* root) override;
+	void fromJson(json_t* root) override;
 	int channels() override;
 	void channelsChanged(int before, int after) override;
 	void modulate() override;

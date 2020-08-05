@@ -8,13 +8,12 @@ const float Mute8::maxDecibels = 0.0f;
 const float Mute8::minDecibels = Amplifier::minDecibels;
 const float Mute8::slewTimeMS = 5.0f;
 
-json_t* Mute8::dataToJson() {
-	json_t* root = json_object();
+json_t* Mute8::toJson(json_t* root) {
 	json_object_set_new(root, LATCHING_CVS, json_boolean(_latchingCVs));
 	return root;
 }
 
-void Mute8::dataFromJson(json_t* root) {
+void Mute8::fromJson(json_t* root) {
 	json_t* l = json_object_get(root, LATCHING_CVS);
 	if (l) {
 		_latchingCVs = json_is_true(l);

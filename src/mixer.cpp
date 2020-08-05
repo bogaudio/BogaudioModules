@@ -40,13 +40,12 @@ void MixerChannel::next(float sample, bool solo, int c) {
 
 #define DIM_DB "dim_decibels"
 
-json_t* DimmableMixerModule::dataToJson() {
-	json_t* root = json_object();
+json_t* DimmableMixerModule::toJson(json_t* root) {
 	json_object_set_new(root, DIM_DB, json_real(_dimDb));
 	return root;
 }
 
-void DimmableMixerModule::dataFromJson(json_t* root) {
+void DimmableMixerModule::fromJson(json_t* root) {
 	json_t* o = json_object_get(root, DIM_DB);
 	if (o) {
 		_dimDb = json_real_value(o);

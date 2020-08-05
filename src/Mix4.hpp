@@ -96,8 +96,8 @@ struct Mix4 : ExpandableModule<Mix4ExpanderMessage, DimmableMixerModule> {
 		}
 	}
 
-	json_t* dataToJson() override;
-	void dataFromJson(json_t* root) override;
+	json_t* toJson(json_t* root) override;
+	void fromJson(json_t* root) override;
 	void sampleRateChange() override;
 	void processAll(const ProcessArgs& args) override;
 };

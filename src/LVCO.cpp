@@ -4,15 +4,15 @@
 #define FM_MODE "fm_mode"
 #define LINEAR_MODE "linear_mode"
 
-json_t* LVCO::dataToJson() {
-	json_t* root = VCOBase::dataToJson();
+json_t* LVCO::toJson(json_t* root) {
+	root = VCOBase::toJson(root);
 	json_object_set_new(root, FM_MODE, json_boolean(_fmLinearMode));
 	json_object_set_new(root, LINEAR_MODE, json_boolean(_linearMode));
 	return root;
 }
 
-void LVCO::dataFromJson(json_t* root) {
-	VCOBase::dataFromJson(root);
+void LVCO::fromJson(json_t* root) {
+	VCOBase::fromJson(root);
 
 	json_t* fm = json_object_get(root, FM_MODE);
 	if (fm) {

@@ -15,8 +15,7 @@ void SampleHold::reset() {
 	}
 }
 
-json_t* SampleHold::dataToJson() {
-	json_t* root = json_object();
+json_t* SampleHold::toJson(json_t* root) {
 	json_object_set_new(root, POLY_INPUT, json_integer(_polyInputID));
 	json_object_set_new(root, NOISE_TYPE, json_integer((int)_noiseType));
 	json_object_set_new(root, RANGE_OFFSET, json_real(_rangeOffset));
@@ -24,7 +23,7 @@ json_t* SampleHold::dataToJson() {
 	return root;
 }
 
-void SampleHold::dataFromJson(json_t* root) {
+void SampleHold::fromJson(json_t* root) {
 	json_t* p = json_object_get(root, POLY_INPUT);
 	if (p) {
 		_polyInputID = json_integer_value(p);

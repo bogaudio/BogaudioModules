@@ -75,13 +75,12 @@ void VCOBase::sampleRateChange() {
 	}
 }
 
-json_t* VCOBase::dataToJson() {
-	json_t* root = json_object();
+json_t* VCOBase::toJson(json_t* root) {
 	json_object_set_new(root, POLY_INPUT, json_integer(_polyInputID));
 	return root;
 }
 
-void VCOBase::dataFromJson(json_t* root) {
+void VCOBase::fromJson(json_t* root) {
 	json_t* p = json_object_get(root, POLY_INPUT);
 	if (p) {
 		_polyInputID = json_integer_value(p);

@@ -29,13 +29,12 @@ void AD::sampleRateChange() {
 	}
 }
 
-json_t* AD::dataToJson() {
-	json_t* root = json_object();
+json_t* AD::toJson(json_t* root) {
 	json_object_set_new(root, INVERT, json_real(_invert));
 	return root;
 }
 
-void AD::dataFromJson(json_t* root) {
+void AD::fromJson(json_t* root) {
 	json_t* i = json_object_get(root, INVERT);
 	if (i) {
 		_invert = json_real_value(i);

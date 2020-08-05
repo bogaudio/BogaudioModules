@@ -88,8 +88,8 @@ struct Mute8 : BGModule {
 		configParam(MUTE8_PARAM, 0.0f, 3.0f, 0.0f, "Mute 8");
 	}
 
-	json_t* dataToJson() override;
-	void dataFromJson(json_t* root) override;
+	json_t* toJson(json_t* root) override;
+	void fromJson(json_t* root) override;
 	void reset() override;
 	void sampleRateChange() override;
 	void processAll(const ProcessArgs& args) override;

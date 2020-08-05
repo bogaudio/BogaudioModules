@@ -8,14 +8,13 @@ using namespace bogaudio::dsp;
 #define CLIPPING_MODE "clipping_mode"
 #define INPUT_GAIN_DB "input_gain_db"
 
-json_t* MatrixBaseModule::dataToJson() {
-	json_t* root = json_object();
+json_t* MatrixBaseModule::toJson(json_t* root) {
 	json_object_set_new(root, CLIPPING_MODE, json_integer(_clippingMode));
 	json_object_set_new(root, INPUT_GAIN_DB, json_real(_inputGainDb));
 	return root;
 }
 
-void MatrixBaseModule::dataFromJson(json_t* root) {
+void MatrixBaseModule::fromJson(json_t* root) {
 	json_t* c = json_object_get(root, CLIPPING_MODE);
 	if (c) {
 		_clippingMode = (Clipping)json_integer_value(c);
@@ -106,14 +105,14 @@ void MatrixModule::processChannel(const ProcessArgs& args, int c) {
 
 #define INDICATOR_KNOBS "indicator_knobs"
 
-json_t* KnobMatrixModule::dataToJson() {
-	json_t* root = MatrixBaseModule::dataToJson();
+json_t* KnobMatrixModule::toJson(json_t* root) {
+	root = MatrixBaseModule::toJson(root);
 	json_object_set_new(root, INDICATOR_KNOBS, json_boolean(_indicatorKnobs));
 	return root;
 }
 
-void KnobMatrixModule::dataFromJson(json_t* root) {
-	MatrixBaseModule::dataFromJson(root);
+void KnobMatrixModule::fromJson(json_t* root) {
+	MatrixBaseModule::fromJson(root);
 	json_t* k = json_object_get(root, INDICATOR_KNOBS);
 	if (k) {
 		_indicatorKnobs = json_is_true(k);
@@ -156,8 +155,8 @@ void KnobMatrixModuleWidget::appendContextMenu(Menu* menu) {
 #define ROW_EXCLUSIVE "row_exclusive"
 #define COLUMN_EXCLUSIVE "column_exclusive"
 
-json_t* SwitchMatrixModule::dataToJson() {
-	json_t* root = MatrixBaseModule::dataToJson();
+json_t* SwitchMatrixModule::toJson(json_t* root) {
+	root = MatrixBaseModule::toJson(root);
 
 	switch (_inverting) {
 		case CLICK_INVERTING: {
@@ -180,8 +179,8 @@ json_t* SwitchMatrixModule::dataToJson() {
 	return root;
 }
 
-void SwitchMatrixModule::dataFromJson(json_t* root) {
-	MatrixBaseModule::dataFromJson(root);
+void SwitchMatrixModule::fromJson(json_t* root) {
+	MatrixBaseModule::fromJson(root);
 
 	json_t* i = json_object_get(root, INVERTING);
 	if (i) {
