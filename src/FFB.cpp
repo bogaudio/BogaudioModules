@@ -135,7 +135,7 @@ void FFB::processChannel(const ProcessArgs& args, int c) {
 	outputs[EVEN_OUTPUT].setVoltage(outEven, c);
 }
 
-struct FFBWidget : ModuleWidget {
+struct FFBWidget : BGModuleWidget {
 	static constexpr int hp = 8;
 
 	FFBWidget(FFB* module) {

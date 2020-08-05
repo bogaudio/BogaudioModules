@@ -34,7 +34,7 @@ void MatrixBaseModule::modulate() {
 }
 
 
-void MatrixBaseModuleWidget::appendContextMenu(Menu* menu) {
+void MatrixBaseModuleWidget::contextMenu(Menu* menu) {
 	auto m = dynamic_cast<MatrixBaseModule*>(module);
 	assert(m);
 	menu->addChild(new MenuLabel());
@@ -135,10 +135,10 @@ void KnobMatrixModuleWidget::redrawKnobs() {
 	}
 }
 
-void KnobMatrixModuleWidget::appendContextMenu(Menu* menu) {
+void KnobMatrixModuleWidget::contextMenu(Menu* menu) {
 	auto m = dynamic_cast<KnobMatrixModule*>(module);
 	assert(m);
-	MatrixBaseModuleWidget::appendContextMenu(menu);
+	MatrixBaseModuleWidget::contextMenu(menu);
 	menu->addChild(new OptionMenuItem(
 		"Indicator knobs",
 		[m]() { return m->_indicatorKnobs; },
@@ -297,10 +297,10 @@ void SwitchMatrixModule::setColumnExclusive(bool e) {
 }
 
 
-void SwitchMatrixModuleWidget::appendContextMenu(Menu* menu) {
+void SwitchMatrixModuleWidget::contextMenu(Menu* menu) {
 	auto m = dynamic_cast<SwitchMatrixModule*>(module);
 	assert(m);
-	MatrixBaseModuleWidget::appendContextMenu(menu);
+	MatrixBaseModuleWidget::contextMenu(menu);
 
 	OptionsMenuItem* i = new OptionsMenuItem("Inverting");
 	i->addItem(OptionMenuItem("By param entry (right-click)", [m]() { return m->_inverting == SwitchMatrixModule::PARAM_INVERTING; }, [m]() { m->setInverting(SwitchMatrixModule::PARAM_INVERTING); }));

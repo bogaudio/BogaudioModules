@@ -111,7 +111,7 @@ void ASR::postProcessAlways(const ProcessArgs& args) {
 	lights[RELEASE_LIGHT].value = _releaseLightSum * _inverseChannels;
 }
 
-struct ASRWidget : ModuleWidget {
+struct ASRWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	ASRWidget(ASR* module) {

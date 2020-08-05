@@ -17,7 +17,7 @@ void PolyCon8::processAll(const ProcessArgs& args) {
 	}
 }
 
-struct PolyCon8Widget : ModuleWidget {
+struct PolyCon8Widget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	PolyCon8Widget(PolyCon8* module) {
@@ -77,7 +77,7 @@ struct PolyCon8Widget : ModuleWidget {
 		addChild(createLight<TinyLight<GreenLight>>(channel8LightPosition, module, PolyCon8::CHANNEL8_LIGHT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
+	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<PolyCon8*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());

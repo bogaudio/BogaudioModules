@@ -16,7 +16,7 @@ void DisableOutputLimitModule::fromJson(json_t* root) {
 }
 
 
-void DisableOutputLimitModuleWidget::appendContextMenu(Menu* menu) {
+void DisableOutputLimitModuleWidget::contextMenu(Menu* menu) {
 	auto m = dynamic_cast<DisableOutputLimitModule*>(module);
 	assert(m);
 	menu->addChild(new MenuLabel());

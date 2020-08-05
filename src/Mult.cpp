@@ -23,7 +23,7 @@ void Mult::processChannel(const ProcessArgs& args, int _c) {
 	outputs[OUTB3_OUTPUT].writeVoltages(out);
 }
 
-struct MultWidget : ModuleWidget {
+struct MultWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	MultWidget(Mult* module) {

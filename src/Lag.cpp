@@ -42,7 +42,7 @@ void Lag::processChannel(const ProcessArgs& args, int _c) {
 	outputs[OUT_OUTPUT].setVoltage(_slew.next(inputs[IN_INPUT].getVoltageSum()));
 }
 
-struct LagWidget : ModuleWidget {
+struct LagWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	LagWidget(Lag* module) {

@@ -62,7 +62,7 @@ void Clpr::processChannel(const ProcessArgs& args, int c) {
 	}
 }
 
-struct ClprWidget : ModuleWidget {
+struct ClprWidget : BGModuleWidget {
 	static constexpr int hp = 6;
 
 	ClprWidget(Clpr* module) {

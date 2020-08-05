@@ -11,8 +11,8 @@ struct DisableOutputLimitModule : BGModule {
 	void fromJson(json_t* root) override;
 };
 
-struct DisableOutputLimitModuleWidget : ModuleWidget {
-	void appendContextMenu(Menu* menu) override;
+struct DisableOutputLimitModuleWidget : BGModuleWidget {
+	void contextMenu(Menu* menu) override;
 };
 
 } // namespace bogaudio

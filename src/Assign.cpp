@@ -105,7 +105,7 @@ void Assign::postProcess(const ProcessArgs& args) {
 	}
 }
 
-struct AssignWidget : ModuleWidget {
+struct AssignWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	AssignWidget(Assign* module) {

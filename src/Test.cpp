@@ -501,7 +501,7 @@ float Test::index3() {
 }
 
 
-struct TestWidget : ModuleWidget {
+struct TestWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	TestWidget(Test* module) {

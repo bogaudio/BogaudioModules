@@ -189,7 +189,7 @@ float ReftoneDisplay::textRenderWidth(const DrawArgs& args, const char* s, int s
 	return strlen(s) * (size / 2.1);
 }
 
-struct ReftoneWidget : ModuleWidget {
+struct ReftoneWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	ReftoneWidget(Reftone* module) {

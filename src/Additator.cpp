@@ -213,7 +213,7 @@ float Additator::cvValue(int c, Input& cv, bool dc) {
 	return clamp(cv.getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
 }
 
-struct AdditatorWidget : ModuleWidget {
+struct AdditatorWidget : BGModuleWidget {
 	static constexpr int hp = 15;
 
 	AdditatorWidget(Additator* module) {

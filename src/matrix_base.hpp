@@ -24,8 +24,8 @@ struct MatrixBaseModule : BGModule {
 	void modulate() override;
 };
 
-struct MatrixBaseModuleWidget : ModuleWidget {
-	void appendContextMenu(Menu* menu) override;
+struct MatrixBaseModuleWidget : BGModuleWidget {
+	void contextMenu(Menu* menu) override;
 };
 
 struct MatrixModule : MatrixBaseModule {
@@ -78,7 +78,7 @@ struct KnobMatrixModuleWidget : MatrixBaseModuleWidget {
 
 	void createKnob(math::Vec& position, KnobMatrixModule* module, int id);
 	void redrawKnobs();
-	void appendContextMenu(Menu* menu) override;
+	void contextMenu(Menu* menu) override;
 };
 
 struct SwitchMatrixModule : MatrixModule {
@@ -116,7 +116,7 @@ struct SwitchMatrixModuleWidget : MatrixBaseModuleWidget {
 		addParam(s);
 	}
 
-	void appendContextMenu(Menu* menu) override;
+	void contextMenu(Menu* menu) override;
 };
 
 } // namespace bogaudio

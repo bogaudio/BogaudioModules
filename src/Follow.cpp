@@ -30,7 +30,7 @@ void Follow::processChannel(const ProcessArgs& args, int c) {
 	outputs[OUT_OUTPUT].setVoltage(_saturator.next(e.gain.next(e.follower.next(inputs[IN_INPUT].getVoltage(c)))), c);
 }
 
-struct FollowWidget : ModuleWidget {
+struct FollowWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	FollowWidget(Follow* module) {

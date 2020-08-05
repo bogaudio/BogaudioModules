@@ -20,7 +20,7 @@ void TestExpanderBase::processChannel(const ProcessArgs& args, int c) {
 	}
 }
 
-struct TestExpanderBaseWidget : ModuleWidget {
+struct TestExpanderBaseWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	TestExpanderBaseWidget(TestExpanderBase* module) {
@@ -72,7 +72,7 @@ void TestExpanderExtension::processChannel(const ProcessArgs& args, int c) {
 	}
 }
 
-struct TestExpanderExtensionWidget : ModuleWidget {
+struct TestExpanderExtensionWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	TestExpanderExtensionWidget(TestExpanderExtension* module) {

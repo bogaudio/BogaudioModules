@@ -64,7 +64,7 @@ struct Blank6Display : OpaqueWidget {
 	}
 };
 
-struct Blank6Widget : ModuleWidget {
+struct Blank6Widget : BGModuleWidget {
 	static constexpr int hp = 6;
 
 	Blank6Widget(Blank6* module) {

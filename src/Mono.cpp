@@ -54,7 +54,7 @@ void Mono::processAll(const ProcessArgs& args) {
 	outputs[MONO_OUTPUT].setVoltage(out);
 }
 
-struct MonoWidget : ModuleWidget {
+struct MonoWidget : BGModuleWidget {
 	struct ChannelsDisplay : OpaqueWidget {
 		const NVGcolor inactiveBgColor = nvgRGBA(0xaa, 0xaa, 0xaa, 0xff);
 		const NVGcolor activeBgColor = nvgRGBA(0x66, 0x66, 0x66, 0xff);

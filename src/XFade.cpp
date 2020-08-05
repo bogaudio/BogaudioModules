@@ -43,7 +43,7 @@ void XFade::processChannel(const ProcessArgs& args, int c) {
 	outputs[OUT_OUTPUT].setVoltage(_mixer[c].next(inputs[A_INPUT].getVoltage(c), inputs[B_INPUT].getVoltage(c)), c);
 }
 
-struct XFadeWidget : ModuleWidget {
+struct XFadeWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	XFadeWidget(XFade* module) {

@@ -20,7 +20,7 @@ void PolyCon16::processAll(const ProcessArgs& args) {
 	}
 }
 
-struct PolyCon16Widget : ModuleWidget {
+struct PolyCon16Widget : BGModuleWidget {
 	static constexpr int hp = 8;
 
 	PolyCon16Widget(PolyCon16* module) {
@@ -122,7 +122,7 @@ struct PolyCon16Widget : ModuleWidget {
 		addChild(createLight<TinyLight<GreenLight>>(channel16LightPosition, module, PolyCon16::CHANNEL16_LIGHT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
+	void contextMenu(Menu* menu) override {
 		menu->addChild(new MenuLabel());
 		OutputRangeOptionMenuItem::addOutputRangeOptionsToMenu(module, menu);
 	}

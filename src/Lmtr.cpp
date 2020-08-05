@@ -84,7 +84,7 @@ void Lmtr::processChannel(const ProcessArgs& args, int c) {
 	}
 }
 
-struct LmtrWidget : ModuleWidget {
+struct LmtrWidget : BGModuleWidget {
 	static constexpr int hp = 6;
 
 	LmtrWidget(Lmtr* module) {

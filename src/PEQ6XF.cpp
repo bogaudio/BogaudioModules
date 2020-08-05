@@ -54,7 +54,7 @@ void PEQ6XF::processChannel(const ProcessArgs& args, int c) {
 	}
 }
 
-struct PEQ6XFWidget : ModuleWidget {
+struct PEQ6XFWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	PEQ6XFWidget(PEQ6XF* module) {

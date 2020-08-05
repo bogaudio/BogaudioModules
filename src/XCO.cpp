@@ -296,7 +296,7 @@ float XCO::level(int c, Param& param, Input& input) {
 	return v;
 }
 
-struct XCOWidget : ModuleWidget {
+struct XCOWidget : BGModuleWidget {
 	static constexpr int hp = 20;
 
 	XCOWidget(XCO* module) {

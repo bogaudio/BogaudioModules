@@ -89,7 +89,7 @@ void Mix8x::processAll(const ProcessArgs& args) {
 	}
 }
 
-struct Mix8xWidget : ModuleWidget {
+struct Mix8xWidget : BGModuleWidget {
 	static constexpr int hp = 27;
 
 	Mix8xWidget(Mix8x* module) {

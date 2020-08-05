@@ -134,7 +134,7 @@ void LFO::updateOutput(int c, Phasor& wave, bool useSample, bool invert, Output&
 	}
 }
 
-struct LFOWidget : ModuleWidget {
+struct LFOWidget : BGModuleWidget {
 	static constexpr int hp = 10;
 
 	LFOWidget(LFO* module) {

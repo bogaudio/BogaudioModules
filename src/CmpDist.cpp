@@ -118,7 +118,7 @@ void CmpDist::processChannel(const ProcessArgs& args, int c) {
 	outputs[MIX_OUTPUT].setVoltage(mix, c);
 }
 
-struct CmpDistWidget : ModuleWidget {
+struct CmpDistWidget : BGModuleWidget {
 	static constexpr int hp = 10;
 
 	CmpDistWidget(CmpDist* module) {

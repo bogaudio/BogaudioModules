@@ -94,7 +94,7 @@ void LLFO::processChannel(const ProcessArgs& args, int c) {
 	outputs[OUT_OUTPUT].setVoltage(sample, c);
 }
 
-struct LLFOWidget : ModuleWidget {
+struct LLFOWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	LLFOWidget(LLFO* module) {

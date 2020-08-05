@@ -124,7 +124,7 @@ void AnalyzerXL::processChannel(const ProcessArgs& args, int _c) {
 	}
 }
 
-struct AnalyzerXLWidget : ModuleWidget {
+struct AnalyzerXLWidget : BGModuleWidget {
 	static constexpr int hp = 42;
 
 	AnalyzerXLWidget(AnalyzerXL* module) {
@@ -168,7 +168,7 @@ struct AnalyzerXLWidget : ModuleWidget {
 		addInput(createInput<Port24>(signalhInputPosition, module, AnalyzerXL::SIGNALH_INPUT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
+	void contextMenu(Menu* menu) override {
 		auto a = dynamic_cast<AnalyzerXL*>(module);
 		assert(a);
 

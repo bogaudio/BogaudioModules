@@ -90,7 +90,7 @@ void Nsgt::processChannel(const ProcessArgs& args, int c) {
 	}
 }
 
-struct NsgtWidget : ModuleWidget {
+struct NsgtWidget : BGModuleWidget {
 	static constexpr int hp = 6;
 
 	NsgtWidget(Nsgt* module) {

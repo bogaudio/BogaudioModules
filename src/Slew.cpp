@@ -61,7 +61,7 @@ float Slew::shape(Param& param) {
 	return shape;
 }
 
-struct SlewWidget : ModuleWidget {
+struct SlewWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	SlewWidget(Slew* module) {

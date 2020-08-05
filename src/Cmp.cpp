@@ -150,7 +150,7 @@ void Cmp::stepChannel(
 	}
 }
 
-struct CmpWidget : ModuleWidget {
+struct CmpWidget : BGModuleWidget {
 	static constexpr int hp = 6;
 
 	CmpWidget(Cmp* module) {

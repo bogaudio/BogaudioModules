@@ -44,7 +44,7 @@ void VCA::channelStep(Input& input, Output& output, Param& knob, Input& cv, Ampl
 	}
 }
 
-struct VCAWidget : ModuleWidget {
+struct VCAWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	VCAWidget(VCA* module) {

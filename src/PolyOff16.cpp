@@ -38,7 +38,7 @@ void PolyOff16::processAll(const ProcessArgs& args) {
 	}
 }
 
-struct PolyOff16Widget : ModuleWidget {
+struct PolyOff16Widget : BGModuleWidget {
 	static constexpr int hp = 16;
 
 	PolyOff16Widget(PolyOff16* module) {
@@ -206,7 +206,7 @@ struct PolyOff16Widget : ModuleWidget {
 		addChild(createLight<TinyLight<GreenLight>>(channel16LightPosition, module, PolyOff16::CHANNEL16_LIGHT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
+	void contextMenu(Menu* menu) override {
 		menu->addChild(new MenuLabel());
 		OutputRangeOptionMenuItem::addOutputRangeOptionsToMenu(module, menu);
 	}

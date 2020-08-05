@@ -16,14 +16,14 @@ struct TriggerOnLoadModule : BGModule {
 	virtual bool shouldTriggerOnNextLoad() = 0;
 };
 
-struct TriggerOnLoadModuleWidget : ModuleWidget {
+struct TriggerOnLoadModuleWidget : BGModuleWidget {
 	std::string _menuItemLabel;
 
 	TriggerOnLoadModuleWidget(const char* menuItemLabel = "Resume loop on load")
 	: _menuItemLabel(menuItemLabel)
 	{}
 
-	void appendContextMenu(Menu* menu) override;
+	void contextMenu(Menu* menu) override;
 };
 
 } // namespace bogaudio

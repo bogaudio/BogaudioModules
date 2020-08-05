@@ -118,7 +118,7 @@ void bogaudio::Switch::postProcessAlways(const ProcessArgs& args) {
 	lights[LOW2_LIGHT].value = _low2LightSum * _inverseChannels;
 }
 
-struct SwitchWidget : ModuleWidget {
+struct SwitchWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	SwitchWidget(bogaudio::Switch* module) {
@@ -172,7 +172,7 @@ struct SwitchWidget : ModuleWidget {
 		addChild(createLight<SmallLight<GreenLight>>(low2LightPosition, module, bogaudio::Switch::LOW2_LIGHT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
+	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<bogaudio::Switch*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());

@@ -89,7 +89,7 @@ void Mute8::stepChannel(int i, bool solo) {
 	}
 }
 
-struct Mute8Widget : ModuleWidget {
+struct Mute8Widget : BGModuleWidget {
 	static constexpr int hp = 10;
 
 	Mute8Widget(Mute8* module) {
@@ -199,7 +199,7 @@ struct Mute8Widget : ModuleWidget {
 		addChild(createLight<SmallLight<GreenLight>>(mute8LightPosition, module, Mute8::MUTE8_LIGHT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
+	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<Mute8*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());

@@ -152,7 +152,7 @@ void Pressor::processChannel(const ProcessArgs& args, int c) {
 	}
 }
 
-struct PressorWidget : ModuleWidget {
+struct PressorWidget : BGModuleWidget {
 	struct CompressionDisplay : OpaqueWidget {
 		struct Level {
 			float db;

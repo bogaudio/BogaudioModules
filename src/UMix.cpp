@@ -106,10 +106,10 @@ struct UMixWidget : MatrixBaseModuleWidget {
 		addOutput(createOutput<Port24>(outOutputPosition, module, UMix::OUT_OUTPUT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
+	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<UMix*>(module);
 		assert(m);
-		MatrixBaseModuleWidget::appendContextMenu(menu);
+		MatrixBaseModuleWidget::contextMenu(menu);
 		menu->addChild(new OptionMenuItem("Average", [m]() { return !m->_sum; }, [m]() { m->_sum = !m->_sum; }));
 	}
 };

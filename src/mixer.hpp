@@ -55,8 +55,8 @@ struct DimmableMixerModule : BGModule {
 	void fromJson(json_t* root) override;
 };
 
-struct DimmableMixerWidget : ModuleWidget {
-	void appendContextMenu(Menu* menu) override;
+struct DimmableMixerWidget : BGModuleWidget {
+	void contextMenu(Menu* menu) override;
 };
 
 struct MuteButton : ToggleButton {

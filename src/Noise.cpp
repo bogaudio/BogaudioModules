@@ -36,7 +36,7 @@ void Noise::processAll(const ProcessArgs& args) {
 	}
 }
 
-struct NoiseWidget : ModuleWidget {
+struct NoiseWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	NoiseWidget(Noise* module) {
@@ -74,7 +74,7 @@ struct NoiseWidget : ModuleWidget {
 		addOutput(createOutput<Port24>(absOutputPosition, module, Noise::ABS_OUTPUT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
+	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<Noise*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());

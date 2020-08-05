@@ -115,8 +115,8 @@ struct AddrSeqWidget : AddressableSequenceModuleWidget {
 		addChild(createLight<SmallLight<GreenLight>>(out8LightPosition, module, AddrSeq::OUT8_LIGHT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
-		AddressableSequenceModuleWidget::appendContextMenu(menu);
+	void contextMenu(Menu* menu) override {
+		AddressableSequenceModuleWidget::contextMenu(menu);
 		OutputRangeOptionMenuItem::addOutputRangeOptionsToMenu(module, menu);
 	}
 };

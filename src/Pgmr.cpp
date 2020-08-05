@@ -241,8 +241,8 @@ struct PgmrWidget : AddressableSequenceBaseModuleWidget {
 		addChild(createLight<SmallLight<GreenLight>>(select4LightPosition, module, Pgmr::SELECT4_LIGHT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
-		AddressableSequenceBaseModuleWidget::appendContextMenu(menu);
+	void contextMenu(Menu* menu) override {
+		AddressableSequenceBaseModuleWidget::contextMenu(menu);
 
 		auto m = dynamic_cast<Pgmr*>(module);
 		assert(m);

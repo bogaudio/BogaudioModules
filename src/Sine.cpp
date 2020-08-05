@@ -98,7 +98,7 @@ void Sine::processChannel(const ProcessArgs& args, int c) {
 	outputs[OUT_OUTPUT].setVoltage(_outputScale * (e.squareOut + e.sawOut + e.triangleOut + e.sineOut), c);
 }
 
-struct SineWidget : ModuleWidget {
+struct SineWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	SineWidget(Sine* module) {
@@ -142,7 +142,7 @@ struct SineWidget : ModuleWidget {
 		addOutput(createOutput<Port24>(outOutputPosition, module, Sine::OUT_OUTPUT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
+	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<Sine*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());

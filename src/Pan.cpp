@@ -41,7 +41,7 @@ void Pan::processChannel(const ProcessArgs& args, int c) {
 	outputs[R_OUTPUT].setVoltage(_saturatorRight[c].next(r1 + r2), c);
 }
 
-struct PanWidget : ModuleWidget {
+struct PanWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	PanWidget(Pan* module) {

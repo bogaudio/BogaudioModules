@@ -39,7 +39,7 @@ void PgmrX::processAlways(const ProcessArgs& args) {
 	}
 }
 
-struct PgmrXWidget : ModuleWidget {
+struct PgmrXWidget : BGModuleWidget {
 	static constexpr int hp = 12;
 
 	PgmrXWidget(PgmrX* module) {

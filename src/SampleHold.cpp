@@ -126,7 +126,7 @@ float SampleHold::noise() {
 	}
 }
 
-struct SampleHoldWidget : ModuleWidget {
+struct SampleHoldWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	SampleHoldWidget(SampleHold* module) {
@@ -189,7 +189,7 @@ struct SampleHoldWidget : ModuleWidget {
 		{}
 	};
 
-	void appendContextMenu(Menu* menu) override {
+	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<SampleHold*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());

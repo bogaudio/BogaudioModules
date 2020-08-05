@@ -20,7 +20,7 @@ void PolyMult::processAll(const ProcessArgs& args) {
 	}
 }
 
-struct PolyMultWidget : ModuleWidget {
+struct PolyMultWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	PolyMultWidget(PolyMult* module) {

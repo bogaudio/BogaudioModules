@@ -58,7 +58,7 @@ void EQS::processChannel(const ProcessArgs& args, int c) {
 	outputs[RIGHT_OUTPUT].setVoltage(_engines[c]->_right.next(inputs[RIGHT_INPUT].getVoltage(c)), c);
 }
 
-struct EQSWidget : ModuleWidget {
+struct EQSWidget : BGModuleWidget {
 	static constexpr int hp = 6;
 
 	EQSWidget(EQS* module) {

@@ -82,7 +82,7 @@ void LVCO::processChannel(const ProcessArgs& args, int c) {
 	outputs[OUT_OUTPUT].setVoltage(e.squareOut + e.sawOut + e.triangleOut + e.sineOut, c);
 }
 
-struct LVCOWidget : ModuleWidget {
+struct LVCOWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	LVCOWidget(LVCO* module) {
@@ -138,7 +138,7 @@ struct LVCOWidget : ModuleWidget {
 		addChild(createLight<SmallLight<GreenLight>>(pulse10LightPosition, module, LVCO::PULSE_10_LIGHT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
+	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<LVCO*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());

@@ -155,7 +155,7 @@ void PEQ14XV::processChannel(const ProcessArgs& args, int c) {
 	}
 }
 
-struct PEQ14XVWidget : ModuleWidget {
+struct PEQ14XVWidget : BGModuleWidget {
 	static constexpr int hp = 5;
 
 	PEQ14XVWidget(PEQ14XV* module) {

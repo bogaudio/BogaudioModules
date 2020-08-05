@@ -150,7 +150,7 @@ void LVCF::processChannel(const ProcessArgs& args, int c) {
 	outputs[OUT_OUTPUT].setVoltage(_engines[c]->next(inputs[IN_INPUT].getVoltage(c)), c);
 }
 
-struct LVCFWidget : ModuleWidget {
+struct LVCFWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	LVCFWidget(LVCF* module) {
@@ -200,7 +200,7 @@ struct LVCFWidget : ModuleWidget {
 		addChild(createLight<SmallLight<GreenLight>>(bandrejectLightPosition, module, LVCF::BANDREJECT_LIGHT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
+	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<LVCF*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());

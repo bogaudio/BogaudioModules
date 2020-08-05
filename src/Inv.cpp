@@ -100,7 +100,7 @@ void Inv::processDual(int i) {
 	lights[LOW1_LIGHT + 2 * i].value = 1.0f - red;
 }
 
-struct InvWidget : ModuleWidget {
+struct InvWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	InvWidget(Inv* module) {
@@ -152,7 +152,7 @@ struct InvWidget : ModuleWidget {
 		addChild(createLight<SmallLight<GreenRedLight>>(low2LightPosition, module, Inv::LOW2_LIGHT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
+	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<Inv*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());

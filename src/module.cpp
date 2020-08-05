@@ -68,3 +68,8 @@ void BGModule::process(const ProcessArgs& args) {
 	}
 	postProcessAlways(args);
 }
+
+
+void BGModuleWidget::appendContextMenu(Menu* menu) {
+	contextMenu(menu);
+}

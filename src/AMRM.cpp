@@ -51,7 +51,7 @@ void AMRM::processChannel(const ProcessArgs& args, int c) {
 	outputs[OUT_OUTPUT].setVoltage(_saturator.next(modulator * inputs[CARRIER_INPUT].getPolyVoltage(c) * 0.2f), c);
 }
 
-struct AMRMWidget : ModuleWidget {
+struct AMRMWidget : BGModuleWidget {
 	static constexpr int hp = 6;
 
 	AMRMWidget(AMRM* module) {
@@ -93,7 +93,7 @@ struct AMRMWidget : ModuleWidget {
 		addOutput(createOutput<Port24>(outOutputPosition, module, AMRM::OUT_OUTPUT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
+	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<AMRM*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());

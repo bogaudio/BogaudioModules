@@ -47,4 +47,10 @@ struct BGModule : Module {
 	virtual void postProcessAlways(const ProcessArgs& args) {} // modulate() may not have been called.
 };
 
+struct BGModuleWidget : ModuleWidget {
+	void appendContextMenu(Menu* menu) override;
+
+	virtual void contextMenu(Menu* menu) {}
+};
+
 } // namespace bogaudio

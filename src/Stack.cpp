@@ -42,7 +42,7 @@ void Stack::processChannel(const ProcessArgs& args, int c) {
 	outputs[OUT_OUTPUT].setVoltage(_outCV[c], c);
 }
 
-struct StackWidget : ModuleWidget {
+struct StackWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	StackWidget(Stack* module) {

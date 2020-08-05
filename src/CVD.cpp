@@ -60,7 +60,7 @@ void CVD::processChannel(const ProcessArgs& args, int c) {
 	outputs[OUT_OUTPUT].setVoltage(e.mix.next(in, delayed), c);
 }
 
-struct CVDWidget : ModuleWidget {
+struct CVDWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	CVDWidget(CVD* module) {

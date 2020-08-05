@@ -100,7 +100,7 @@ void PEQ6::postProcessAlways(const ProcessArgs& args) {
 	lights[FMOD_FULL_LIGHT].value = _fullFrequencyMode;
 }
 
-struct PEQ6Widget : ModuleWidget {
+struct PEQ6Widget : BGModuleWidget {
 	static constexpr int hp = 21;
 
 	PEQ6Widget(PEQ6* module) {

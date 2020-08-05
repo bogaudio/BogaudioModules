@@ -53,7 +53,7 @@ void DimmableMixerModule::fromJson(json_t* root) {
 }
 
 
-void DimmableMixerWidget::appendContextMenu(Menu* menu) {
+void DimmableMixerWidget::contextMenu(Menu* menu) {
 	auto m = dynamic_cast<DimmableMixerModule*>(module);
 	assert(m);
 	menu->addChild(new MenuLabel());

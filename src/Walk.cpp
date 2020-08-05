@@ -125,7 +125,7 @@ void Walk::processChannel(const ProcessArgs& args, int c) {
 	outputs[OUT_OUTPUT].setVoltage(out, c);
 }
 
-struct WalkWidget : ModuleWidget {
+struct WalkWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	WalkWidget(Walk* module) {
@@ -167,7 +167,7 @@ struct WalkWidget : ModuleWidget {
 		addOutput(createOutput<Port24>(outOutputPosition, module, Walk::OUT_OUTPUT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
+	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<Walk*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());

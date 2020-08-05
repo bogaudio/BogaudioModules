@@ -183,7 +183,7 @@ void VCF::processChannel(const ProcessArgs& args, int c) {
 	outputs[OUT_OUTPUT].setVoltage(_engines[c]->next(inputs[IN_INPUT].getVoltage(c)), c);
 }
 
-struct VCFWidget : ModuleWidget {
+struct VCFWidget : BGModuleWidget {
 	static constexpr int hp = 10;
 
 	VCFWidget(VCF* module) {
@@ -246,7 +246,7 @@ struct VCFWidget : ModuleWidget {
 		addOutput(createOutput<Port24>(outOutputPosition, module, VCF::OUT_OUTPUT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
+	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<VCF*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());

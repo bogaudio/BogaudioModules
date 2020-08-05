@@ -34,7 +34,7 @@ void VCAmp::processAll(const ProcessArgs& args) {
 	}
 }
 
-struct VCAmpWidget : ModuleWidget {
+struct VCAmpWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	VCAmpWidget(VCAmp* module) {

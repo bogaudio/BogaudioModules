@@ -52,7 +52,7 @@ void VCO::processChannel(const ProcessArgs& args, int c) {
 	outputs[SINE_OUTPUT].setVoltage(e.sineOut, c);
 }
 
-struct VCOWidget : ModuleWidget {
+struct VCOWidget : BGModuleWidget {
 	static constexpr int hp = 10;
 
 	VCOWidget(VCO* module) {
@@ -110,7 +110,7 @@ struct VCOWidget : ModuleWidget {
 		addOutput(createOutput<Port24>(sineOutputPosition, module, VCO::SINE_OUTPUT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
+	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<VCO*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());

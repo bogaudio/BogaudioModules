@@ -20,7 +20,7 @@ void Bool::processAll(const ProcessArgs& args) {
 	}
 }
 
-struct BoolWidget : ModuleWidget {
+struct BoolWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	BoolWidget(Bool* module) {

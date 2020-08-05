@@ -53,7 +53,7 @@ void Pulse::processChannel(const ProcessArgs& args, int c) {
 	outputs[OUT_OUTPUT].setVoltage(_engines[c]->squareOut, c);
 }
 
-struct PulseWidget : ModuleWidget {
+struct PulseWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	PulseWidget(Pulse* module) {
@@ -95,7 +95,7 @@ struct PulseWidget : ModuleWidget {
 		addOutput(createOutput<Port24>(outOutputPosition, module, Pulse::OUT_OUTPUT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
+	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<Pulse*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());

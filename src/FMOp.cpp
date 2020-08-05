@@ -259,7 +259,7 @@ void FMOp::postProcessAlways(const ProcessArgs& args) {
 	lights[RELEASE_LIGHT].value = _releaseLightSum * _inverseChannels;
 }
 
-struct FMOpWidget : ModuleWidget {
+struct FMOpWidget : BGModuleWidget {
 	static constexpr int hp = 10;
 
 	FMOpWidget(FMOp* module) {
@@ -337,7 +337,7 @@ struct FMOpWidget : ModuleWidget {
 		addChild(createLight<TinyLight<GreenLight>>(releaseLightPosition, module, FMOp::RELEASE_LIGHT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
+	void contextMenu(Menu* menu) override {
 		auto fmop = dynamic_cast<FMOp*>(module);
 		assert(fmop);
 		menu->addChild(new MenuLabel());

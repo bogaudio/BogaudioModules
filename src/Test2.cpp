@@ -104,7 +104,7 @@ void Test2::processChannel(const ProcessArgs& args, int _c) {
 // }
 
 
-struct Test2Widget : ModuleWidget {
+struct Test2Widget : BGModuleWidget {
 	static constexpr int hp = 6;
 
 	Test2Widget(Test2* module) {

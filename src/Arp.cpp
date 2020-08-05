@@ -351,7 +351,7 @@ void Arp::dropAllNotes() {
 	}
 }
 
-struct ArpWidget : ModuleWidget {
+struct ArpWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	ArpWidget(Arp* module) {
@@ -411,7 +411,7 @@ struct ArpWidget : ModuleWidget {
 		addChild(createLight<SmallLight<GreenLight>>(shuffleLightPosition, module, Arp::SHUFFLE_LIGHT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
+	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<Arp*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());

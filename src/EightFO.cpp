@@ -192,7 +192,7 @@ void EightFO::updateOutput(int c, bool useSample, Output& output, Phasor::phase_
 	}
 }
 
-struct EightFOWidget : ModuleWidget {
+struct EightFOWidget : BGModuleWidget {
 	static constexpr int hp = 17;
 
 	EightFOWidget(EightFO* module) {

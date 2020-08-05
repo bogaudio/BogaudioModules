@@ -122,7 +122,7 @@ struct VUDisplay : OpaqueWidget {
 	}
 };
 
-struct VUWidget : ModuleWidget {
+struct VUWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	VUWidget(VU* module) {

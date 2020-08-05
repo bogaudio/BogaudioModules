@@ -94,7 +94,7 @@ void ADSR::postProcessAlways(const ProcessArgs& args) {
 	lights[RELEASE_LIGHT].value = _releaseLightSum * _inverseChannels;
 }
 
-struct ADSRWidget : ModuleWidget {
+struct ADSRWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	ADSRWidget(ADSR* module) {
@@ -144,7 +144,7 @@ struct ADSRWidget : ModuleWidget {
 		addChild(createLight<TinyLight<GreenLight>>(releaseLightPosition, module, ADSR::RELEASE_LIGHT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
+	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<ADSR*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());

@@ -94,7 +94,7 @@ void Edge::postProcessAlways(const ProcessArgs& args) {
 	lights[HIGH_LIGHT].value = _highLightSum * _inverseChannels;
 }
 
-struct EdgeWidget : ModuleWidget {
+struct EdgeWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	EdgeWidget(Edge* module) {

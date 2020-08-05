@@ -48,7 +48,7 @@ void Mix1::postProcessAlways(const ProcessArgs& args) {
 	_rms = _rmsSum * _inverseChannels;
 }
 
-struct Mix1Widget : ModuleWidget {
+struct Mix1Widget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	Mix1Widget(Mix1* module) {

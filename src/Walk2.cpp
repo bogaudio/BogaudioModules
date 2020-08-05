@@ -479,7 +479,7 @@ struct Walk2Display : TransparentWidget {
 	}
 };
 
-struct Walk2Widget : ModuleWidget {
+struct Walk2Widget : BGModuleWidget {
 	static constexpr int hp = 14;
 
 	Walk2Widget(Walk2* module) {
@@ -559,7 +559,7 @@ struct Walk2Widget : ModuleWidget {
 		addChild(createLight<SmallLight<GreenLight>>(trackholdLightPosition, module, Walk2::TRACKHOLD_LIGHT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
+	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<Walk2*>(module);
 		assert(m);
 

@@ -38,7 +38,7 @@ void PolyOff8::processAll(const ProcessArgs& args) {
 	}
 }
 
-struct PolyOff8Widget : ModuleWidget {
+struct PolyOff8Widget : BGModuleWidget {
 	static constexpr int hp = 8;
 
 	PolyOff8Widget(PolyOff8* module) {
@@ -140,7 +140,7 @@ struct PolyOff8Widget : ModuleWidget {
 		addChild(createLight<TinyLight<GreenLight>>(channel8LightPosition, module, PolyOff8::CHANNEL8_LIGHT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
+	void contextMenu(Menu* menu) override {
 		menu->addChild(new MenuLabel());
 		OutputRangeOptionMenuItem::addOutputRangeOptionsToMenu(module, menu);
 	}

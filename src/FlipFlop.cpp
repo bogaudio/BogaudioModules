@@ -77,7 +77,7 @@ void FlipFlop::channelStep(
 	}
 }
 
-struct FlipFlopWidget : ModuleWidget {
+struct FlipFlopWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	FlipFlopWidget(FlipFlop* module) {

@@ -124,7 +124,7 @@ void AD::postProcessAlways(const ProcessArgs& args) {
 	lights[DECAY_LIGHT].value = _decayLightSum * _inverseChannels;
 }
 
-struct ADWidget : ModuleWidget {
+struct ADWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	ADWidget(AD* module) {
@@ -176,7 +176,7 @@ struct ADWidget : ModuleWidget {
 		addChild(createLight<TinyLight<GreenLight>>(decayLightPosition, module, AD::DECAY_LIGHT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
+	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<AD*>(module);
 		assert(m);
 		menu->addChild(new MenuLabel());

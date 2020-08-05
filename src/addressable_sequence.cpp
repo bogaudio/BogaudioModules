@@ -121,7 +121,7 @@ int AddressableSequenceModule::setStep(int c, int i, int n) {
 }
 
 
-void AddressableSequenceBaseModuleWidget::appendContextMenu(Menu* menu) {
+void AddressableSequenceBaseModuleWidget::contextMenu(Menu* menu) {
 	auto m = dynamic_cast<AddressableSequenceModule*>(module);
 	assert(m);
 
@@ -136,8 +136,8 @@ void AddressableSequenceBaseModuleWidget::appendContextMenu(Menu* menu) {
 }
 
 
-void AddressableSequenceModuleWidget::appendContextMenu(Menu* menu) {
-	AddressableSequenceBaseModuleWidget::appendContextMenu(menu);
+void AddressableSequenceModuleWidget::contextMenu(Menu* menu) {
+	AddressableSequenceBaseModuleWidget::contextMenu(menu);
 
 	auto m = dynamic_cast<AddressableSequenceModule*>(module);
 	assert(m);

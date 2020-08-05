@@ -43,7 +43,7 @@ void Detune::processChannel(const ProcessArgs& args, int c) {
 	outputs[OUT_MINUS_OUTPUT].setVoltage(_minusCV[c], c);
 }
 
-struct DetuneWidget : ModuleWidget {
+struct DetuneWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	DetuneWidget(Detune* module) {

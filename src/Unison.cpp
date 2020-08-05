@@ -40,7 +40,7 @@ void Unison::processAll(const ProcessArgs& args) {
 	}
 }
 
-struct UnisonWidget : ModuleWidget {
+struct UnisonWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 
 	UnisonWidget(Unison* module) {

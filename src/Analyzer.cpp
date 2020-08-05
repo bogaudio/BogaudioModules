@@ -77,7 +77,7 @@ void Analyzer::processChannel(const ProcessArgs& args, int _c) {
 	lights[WINDOW_KAISER_LIGHT].value = _core._window == AnalyzerCore::WINDOW_KAISER;
 }
 
-struct AnalyzerWidget : ModuleWidget {
+struct AnalyzerWidget : BGModuleWidget {
 	static constexpr int hp = 20;
 
 	AnalyzerWidget(Analyzer* module) {
@@ -152,7 +152,7 @@ struct AnalyzerWidget : ModuleWidget {
 		addChild(createLight<SmallLight<GreenLight>>(windowKaiserLightPosition, module, Analyzer::WINDOW_KAISER_LIGHT));
 	}
 
-	void appendContextMenu(Menu* menu) override {
+	void contextMenu(Menu* menu) override {
 		auto a = dynamic_cast<Analyzer*>(module);
 		assert(a);
 

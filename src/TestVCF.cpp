@@ -826,7 +826,7 @@ void TestVCF::processAll(const ProcessArgs& args) {
 	}
 }
 
-struct TestVCFWidget : ModuleWidget {
+struct TestVCFWidget : BGModuleWidget {
 	static constexpr int hp = 12;
 
 	TestVCFWidget(TestVCF* module) {

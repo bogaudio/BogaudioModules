@@ -46,12 +46,12 @@ struct AddressableSequenceModule : BGModule {
 	int setStep(int c, int i, int n = 8);
 };
 
-struct AddressableSequenceBaseModuleWidget : ModuleWidget {
-	void appendContextMenu(Menu* menu) override;
+struct AddressableSequenceBaseModuleWidget : BGModuleWidget {
+	void contextMenu(Menu* menu) override;
 };
 
 struct AddressableSequenceModuleWidget : AddressableSequenceBaseModuleWidget {
-	void appendContextMenu(Menu* menu) override;
+	void contextMenu(Menu* menu) override;
 };
 
 typedef OutputRangeModule<AddressableSequenceModule> OutputRangeAddressableSequenceModule;

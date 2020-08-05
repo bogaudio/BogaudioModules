@@ -316,8 +316,8 @@ struct Mix8Widget : DimmableMixerWidget {
 		addParam(slider);
 	}
 
-	void appendContextMenu(Menu* menu) override {
-		DimmableMixerWidget::appendContextMenu(menu);
+	void contextMenu(Menu* menu) override {
+		DimmableMixerWidget::contextMenu(menu);
 		auto m = dynamic_cast<Mix8*>(module);
 		assert(m);
 		OptionsMenuItem* mi = new OptionsMenuItem("Input 1 poly spread");

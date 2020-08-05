@@ -89,7 +89,7 @@ void Mix4x::processAll(const ProcessArgs& args) {
 	}
 }
 
-struct Mix4xWidget : ModuleWidget {
+struct Mix4xWidget : BGModuleWidget {
 	static constexpr int hp = 15;
 
 	Mix4xWidget(Mix4x* module) {

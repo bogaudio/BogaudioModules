@@ -68,7 +68,7 @@ void PEQ::postProcessAlways(const ProcessArgs& args) {
 	lights[C_LIGHT].value = _rmsSums[2] * _inverseChannels;
 }
 
-struct PEQWidget : ModuleWidget {
+struct PEQWidget : BGModuleWidget {
 	static constexpr int hp = 10;
 
 	PEQWidget(PEQ* module) {
