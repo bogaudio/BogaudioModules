@@ -264,7 +264,7 @@ void AnalyzerDisplay::drawBackground(const DrawArgs& args) {
 	nvgFillColor(args.vg, nvgRGBA(0x00, 0x00, 0x00, 0xff));
 	nvgFill(args.vg);
 	if (_drawInset) {
-		nvgStrokeColor(args.vg, nvgRGBA(0xc0, 0xc0, 0xc0, 0xff));
+		nvgStrokeColor(args.vg, nvgRGBA(0x50, 0x50, 0x50, 0xff));
 		nvgStroke(args.vg);
 	}
 	nvgRestore(args.vg);

@@ -1,7 +1,9 @@
 #pragma once
 
-#include <functional>
 #include "rack.hpp"
+#include "module.hpp"
+#include <functional>
+#include <string>
 
 using namespace rack;
 
@@ -9,10 +11,18 @@ extern Plugin *pluginInstance;
 
 namespace bogaudio {
 
-struct BGKnob : RoundKnob {
-	BGKnob(const char* svg, int dim);
+struct SkinnableWidget : SkinChangeListener {
+	void skinChanged(const std::string& skin) override {}
+	std::string skinSVG(const std::string& base, const std::string& skin = "default");
+};
+
+struct BGKnob : RoundKnob, SkinnableWidget {
+	std::string _svgBase;
+
+	BGKnob(const char* svgBase, int dim);
 
 	void redraw();
+	void skinChanged(const std::string& skin) override;
 };
 
 struct Knob16 : BGKnob {
@@ -43,10 +53,12 @@ struct Knob68 : BGKnob {
 	Knob68();
 };
 
-struct IndicatorKnob : Knob {
+struct IndicatorKnob : Knob, SkinnableWidget {
 	struct IKWidget : widget::Widget {
 		float _angle = 0.0f;
 		NVGcolor _color = nvgRGBA(0x00, 0x00, 0x00, 0x00);
+		NVGcolor _rim = nvgRGBA(0x33, 0x33, 0x33, 0xff);
+		NVGcolor _center = nvgRGBA(0xee, 0xee, 0xee, 0xff);
 		std::function<bool()> _drawColorsCB;
 
 		void setAngle(float a);
@@ -62,17 +74,20 @@ struct IndicatorKnob : Knob {
 	void onChange(const event::Change& e) override;
 	inline void setDrawColorsCallback(std::function<bool()> fn) { w->_drawColorsCB = fn; }
 	void redraw();
+	void skinChanged(const std::string& skin) override;
 };
 
 struct IndicatorKnob19 : IndicatorKnob {
 	IndicatorKnob19() : IndicatorKnob(19) {}
 };
 
-struct Port24 : SvgPort {
+struct Port24 : SvgPort, SkinnableWidget {
 	Port24();
+
+	void skinChanged(const std::string& skin) override;
 };
 
-struct BlankPort24 : Port24 {
+struct BlankPort24 : SvgPort {
 	BlankPort24();
 };
 

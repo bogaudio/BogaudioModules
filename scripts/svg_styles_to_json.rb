@@ -18,6 +18,21 @@ def colors_for_styles(styles)
     out['path-stroke'] = $1
   end
 
+  out['knob-center'] = '#333'
+  if parser.find_by_selector('circle.knob-center').last =~ /fill:\s+(#\w+);/
+    out['knob-center'] = $1
+  end
+
+  out['knob-rim'] = '#eee'
+  if parser.find_by_selector('circle.knob-rim').last =~ /fill:\s+(#\w+);/
+    out['knob-rim'] = $1
+  end
+
+  out['knob-tick'] = '#fff'
+  if parser.find_by_selector('circle.knob-tick').last =~ /fill:\s+(#\w+);/
+    out['knob-tick'] = $1
+  end
+
   out
 end
 
@@ -37,6 +52,7 @@ if File.readable?(File.join(rsdir, 'styles.css'))
 end
 
 js = JSON.generate(js, indent: '  ', space: ' ', object_nl: "\n")
+# puts js
 outfn = File.absolute_path(File.join(File.dirname($0), '..', 'res', 'skin_css_values.json'))
 File.write(outfn, js + "\n")
 puts "Wrote #{outfn}..."

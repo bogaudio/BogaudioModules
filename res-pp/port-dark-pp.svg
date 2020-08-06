@@ -69,6 +69,70 @@ circle.knob-tick {
 polyline.knob-tick {
   stroke: #fff;
 }
+
+
+text {
+  fill: #ddd;
+}
+
+polyline {
+  stroke: #ddd;
+}
+path {
+  stroke: #ddd;
+}
+
+rect.module-background, .background-fill {
+  fill: #222;
+}
+polyline.module-border-inner {
+  stroke: #191919;
+}
+polyline.module-border-middle {
+  stroke: #111;
+}
+polyline.module-border-outer {
+  stroke: #000;
+}
+
+rect.input-background, rect.input-background-filler {
+  fill: #aaa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #666;
+}
+text.input-label {
+  fill: #333;
+}
+polyline.input-label, path.input-label {
+  stroke: #333;
+}
+text.output-label {
+  fill: #ddd;
+}
+polyline.output-label, path.output-label {
+  stroke: #ddd;
+}
+
+circle.port-rim {
+  stroke: #ddd;
+}
+circle.port-barrel {
+  stroke: #222;
+  fill: #222;
+}
+circle.knob-center {
+   fill: #bbb;
+}
+circle.knob-rim {
+   fill: #555;
+}
+circle.knob-tick {
+  fill: #fff;
+}
+polyline.knob-tick {
+  stroke: #fff;
+}
 </style>
 
   

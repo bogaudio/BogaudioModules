@@ -47,3 +47,23 @@ polyline.input-label, polyline.output-label {
 }
 path.input-label, path.output-label {
 }
+
+circle.port-rim {
+  stroke: #f0f0f0;
+}
+circle.port-barrel {
+  stroke: #222;
+  fill: #222;
+}
+circle.knob-center {
+   fill: #eee;
+}
+circle.knob-rim {
+   fill: #333;
+}
+circle.knob-tick {
+  fill: #fff;
+}
+polyline.knob-tick {
+  stroke: #fff;
+}

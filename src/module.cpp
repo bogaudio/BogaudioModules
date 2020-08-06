@@ -33,6 +33,9 @@ void BGModule::dataFromJson(json_t* root) {
 		if (s) {
 			setSkin(json_string_value(s));
 		}
+		else {
+			setSkin(_skin);
+		}
 	}
 
 	fromJson(root);
@@ -88,16 +91,52 @@ void BGModule::process(const ProcessArgs& args) {
 void BGModule::setSkin(std::string skin) {
 	if (skin == "default" || Skins::skins().validKey(skin)) {
 		_skin = skin;
-		if (_skinChangeListener) {
-			_skinChangeListener->skinChanged();
+		for (auto scl : _skinChangeListeners) {
+			scl->skinChanged(skin);
 		}
 	}
 }
 
-void BGModule::setSkinChangeListener(BGModuleWidget* widget) {
-	_skinChangeListener = widget;
+void BGModule::addSkinChangeListener(SkinChangeListener* listener) {
+	_skinChangeListeners.push_back(listener);
 }
 
+
+void BGModuleWidget::addParam(ParamWidget* param) {
+	ModuleWidget::addParam(param);
+	if (module) {
+		auto l = dynamic_cast<SkinChangeListener*>(param);
+		if (l) {
+			auto m = dynamic_cast<BGModule*>(module);
+			assert(m);
+			m->addSkinChangeListener(l);
+		}
+	}
+}
+
+void BGModuleWidget::addInput(PortWidget* input) {
+	ModuleWidget::addInput(input);
+	if (module) {
+		auto l = dynamic_cast<SkinChangeListener*>(input);
+		if (l) {
+			auto m = dynamic_cast<BGModule*>(module);
+			assert(m);
+			m->addSkinChangeListener(l);
+		}
+	}
+}
+
+void BGModuleWidget::addOutput(PortWidget* output) {
+	ModuleWidget::addOutput(output);
+	if (module) {
+		auto l = dynamic_cast<SkinChangeListener*>(output);
+		if (l) {
+			auto m = dynamic_cast<BGModule*>(module);
+			assert(m);
+			m->addSkinChangeListener(l);
+		}
+	}
+}
 
 void BGModuleWidget::appendContextMenu(Menu* menu) {
 	auto m = dynamic_cast<BGModule*>(module);
@@ -119,7 +158,7 @@ void BGModuleWidget::appendContextMenu(Menu* menu) {
 	contextMenu(menu);
 }
 
-void BGModuleWidget::skinChanged() {
+void BGModuleWidget::skinChanged(const std::string& skin) {
 	updatePanel();
 }
 
@@ -129,7 +168,7 @@ void BGModuleWidget::setPanel(Vec size, std::string slug) {
 	if (module) {
 		auto m = dynamic_cast<BGModule*>(module);
 		assert(m);
-		m->setSkinChangeListener(this);
+		m->addSkinChangeListener(this);
 	}
 	updatePanel();
 }
@@ -141,13 +180,14 @@ void BGModuleWidget::updatePanel() {
 		_panel = NULL;
 	}
 
-	std::string skin = Skins::skins().defaultKey();
+	const Skins& skins = Skins::skins();
+	std::string skin = skins.defaultKey();
 	if (module) {
 		auto m = dynamic_cast<BGModule*>(module);
 		assert(m);
 		skin = m->_skin;
 		if (skin == "default") {
-			skin = Skins::skins().defaultKey();
+			skin = skins.defaultKey();
 		}
 	}
 

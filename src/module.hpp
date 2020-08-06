@@ -2,12 +2,15 @@
 
 #include "rack.hpp"
 #include <string>
+#include <vector>
 
 using namespace rack;
 
 namespace bogaudio {
 
-struct BGModuleWidget;
+struct SkinChangeListener {
+	virtual void skinChanged(const std::string& skin) = 0;
+};
 
 struct BGModule : Module {
 	int _modulationSteps = 100;
@@ -19,7 +22,7 @@ struct BGModule : Module {
 
 	bool _skinnable = true;
 	std::string _skin = "default";
-	BGModuleWidget* _skinChangeListener = NULL;
+	std::vector<SkinChangeListener*> _skinChangeListeners;
 
 	BGModule() {
 	}
@@ -54,19 +57,22 @@ struct BGModule : Module {
 	virtual void postProcessAlways(const ProcessArgs& args) {} // modulate() may not have been called.
 
 	void setSkin(std::string skin);
-	void setSkinChangeListener(BGModuleWidget* widget);
+	void addSkinChangeListener(SkinChangeListener* listener);
 };
 
-struct BGModuleWidget : ModuleWidget {
+struct BGModuleWidget : ModuleWidget, SkinChangeListener {
 	SvgPanel* _panel = NULL;
 	Vec _size;
 	std::string _slug;
 
 	void appendContextMenu(Menu* menu) override;
+	void addParam(ParamWidget* param);
+	void addInput(PortWidget* input);
+	void addOutput(PortWidget* output);
 
 	virtual void contextMenu(Menu* menu) {}
 
-	void skinChanged();
+	void skinChanged(const std::string& skin) override;
 	void setPanel(Vec size, const std::string slug);
 	void updatePanel();
 };

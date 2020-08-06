@@ -1,9 +1,25 @@
 
 #include "widgets.hpp"
+#include "skins.hpp"
 #include "dsp/signal.hpp"
 
 using namespace bogaudio;
 using namespace bogaudio::dsp;
+
+std::string SkinnableWidget::skinSVG(const std::string& base, const std::string& skin) {
+	std::string s = skin;
+	if (s == "default") {
+		s = Skins::skins().defaultKey();
+	}
+	std::string svg = "res/" + base;
+	if (s != "light") {
+		svg += "-";
+		svg += s;
+	}
+	svg += ".svg";
+	return svg;
+}
+
 
 Button18::Button18() {
 	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_0.svg")));
@@ -13,8 +29,9 @@ Button18::Button18() {
 }
 
 
-BGKnob::BGKnob(const char* svg, int dim) {
-	setSvg(APP->window->loadSvg(asset::plugin(pluginInstance, svg)));
+BGKnob::BGKnob(const char* svgBase, int dim) {
+	_svgBase = svgBase;
+	setSvg(APP->window->loadSvg(asset::plugin(pluginInstance, skinSVG(_svgBase.c_str()).c_str())));
 	box.size = Vec(dim, dim);
 	shadow->blurRadius = 2.0;
 	// k->shadow->opacity = 0.15;
@@ -26,34 +43,38 @@ void BGKnob::redraw() {
 	onChange(c);
 }
 
+void BGKnob::skinChanged(const std::string& skin) {
+	setSvg(APP->window->loadSvg(asset::plugin(pluginInstance, skinSVG(_svgBase.c_str(), skin).c_str())));
+}
 
-Knob16::Knob16() : BGKnob("res/knob_16px.svg", 16) {
+
+Knob16::Knob16() : BGKnob("knob_16px", 16) {
 	shadow->box.pos = Vec(0.0, 2.5);
 }
 
 
-Knob19::Knob19() : BGKnob("res/knob_19px.svg", 19) {
+Knob19::Knob19() : BGKnob("knob_19px", 19) {
 	shadow->box.pos = Vec(0.0, 2.5);
 }
 
 
-Knob26::Knob26() : BGKnob("res/knob_26px.svg", 26) {
+Knob26::Knob26() : BGKnob("knob_26px", 26) {
 }
 
 
-Knob29::Knob29() : BGKnob("res/knob_29px.svg", 29) {
+Knob29::Knob29() : BGKnob("knob_29px", 29) {
 }
 
 
-Knob38::Knob38() : BGKnob("res/knob_38px.svg", 38) {
+Knob38::Knob38() : BGKnob("knob_38px", 38) {
 }
 
 
-Knob45::Knob45() : BGKnob("res/knob_45px.svg", 45) {
+Knob45::Knob45() : BGKnob("knob_45px", 45) {
 }
 
 
-Knob68::Knob68() : BGKnob("res/knob_68px.svg", 68) {
+Knob68::Knob68() : BGKnob("knob_68px", 68) {
 	shadow->box.pos = Vec(0.0, 4.0);
 }
 
@@ -87,13 +108,13 @@ void IndicatorKnob::IKWidget::draw(const DrawArgs& args) {
 	float r = c - 0.2f; // FIXME: need to scale everything if there is ever a dim != 19.
 	nvgBeginPath(args.vg);
 	nvgCircle(args.vg, c, c, r);
-	nvgFillColor(args.vg, nvgRGBA(0x33, 0x33, 0x33, 0xff));
+	nvgFillColor(args.vg, _rim);
 	nvgFill(args.vg);
 
 	r -= 2.0f;
 	nvgBeginPath(args.vg);
 	nvgCircle(args.vg, c, c, r);
-	nvgFillColor(args.vg, nvgRGBA(0xee, 0xee, 0xee, 0xff));
+	nvgFillColor(args.vg, _center);
 	nvgFill(args.vg);
 	if (!_drawColorsCB || _drawColorsCB()) {
 		nvgBeginPath(args.vg);
@@ -167,6 +188,8 @@ IndicatorKnob::IndicatorKnob(int dim) {
 	w->box.size = box.size;
 	w->box.pos = math::Vec(0, 0);
 	fb->addChild(w);
+
+	skinChanged("default");
 }
 
 void IndicatorKnob::onHover(const event::Hover& e) {
@@ -190,12 +213,27 @@ void IndicatorKnob::redraw() {
 	onChange(c);
 }
 
+void IndicatorKnob::skinChanged(const std::string& skin) {
+	const Skins& skins = Skins::skins();
+	const char* knobRim = skins.skinCssValue(skin, "knob-rim");
+	if (knobRim) {
+		w->_rim = Skins::cssColorToNVGColor(knobRim, w->_rim);
+	}
+	const char* knobCenter = skins.skinCssValue(skin, "knob-center");
+	if (knobCenter) {
+		w->_center = Skins::cssColorToNVGColor(knobCenter, w->_center);
+	}
+}
 
 Port24::Port24() {
-	setSvg(APP->window->loadSvg(asset::plugin(pluginInstance, "res/port.svg")));
+	setSvg(APP->window->loadSvg(asset::plugin(pluginInstance, skinSVG("port").c_str())));
 	box.size = Vec(24, 24);
 	shadow->blurRadius = 1.0;
 	shadow->box.pos = Vec(0.0, 1.5);
+}
+
+void Port24::skinChanged(const std::string& skin) {
+	setSvg(APP->window->loadSvg(asset::plugin(pluginInstance, skinSVG("port", skin).c_str())));
 }
 
 

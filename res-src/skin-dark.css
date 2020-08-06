@@ -40,3 +40,23 @@ text.output-label {
 polyline.output-label, path.output-label {
   stroke: #ddd;
 }
+
+circle.port-rim {
+  stroke: #ddd;
+}
+circle.port-barrel {
+  stroke: #222;
+  fill: #222;
+}
+circle.knob-center {
+   fill: #bbb;
+}
+circle.knob-rim {
+   fill: #555;
+}
+circle.knob-tick {
+  fill: #fff;
+}
+polyline.knob-tick {
+  stroke: #fff;
+}

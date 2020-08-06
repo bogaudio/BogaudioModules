@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:version="1.0 (4035a4f, 2020-05-01)" sodipodi:docname="svg_render_knob_68px-pp.svg" id="svg134636" viewBox="0 0 68 68" height="68" width="68" version="1.1">
-  <metadata id="metadata134642">
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:version="1.0 (4035a4f, 2020-05-01)" sodipodi:docname="svg_render_knob_68px-pp.svg" id="svg333" viewBox="0 0 68 68" height="68" width="68" version="1.1">
+  <metadata id="metadata339">
     <rdf:RDF>
       <cc:Work rdf:about="">
         <dc:format>image/svg+xml</dc:format>
@@ -8,9 +8,10 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <defs id="defs134640"/>
-  <sodipodi:namedview inkscape:current-layer="svg134636" inkscape:window-maximized="0" inkscape:window-y="23" inkscape:window-x="0" inkscape:cy="34" inkscape:cx="34" inkscape:zoom="9.8382353" showgrid="false" id="namedview134638" inkscape:window-height="480" inkscape:window-width="689" inkscape:pageshadow="2" inkscape:pageopacity="0" guidetolerance="10" gridtolerance="10" objecttolerance="10" borderopacity="1" bordercolor="#666666" pagecolor="#ffffff"/>
-  <path d="M 67.799999,34 A 33.799999,33.799999 0 0 1 34,67.799999 33.799999,33.799999 0 0 1 0.20000076,34 33.799999,33.799999 0 0 1 34,0.20000076 33.799999,33.799999 0 0 1 67.799999,34" style="fill:#333333" id="circle134628"/>
-  <path d="M 61,34 A 27,27 0 0 1 34,61 27,27 0 0 1 7,34 27,27 0 0 1 34,7 27,27 0 0 1 61,34" style="fill:#eeeeee" id="circle134630"/>
-  <path d="M 34,2 V 4.5" style="fill:none;stroke:#ffffff;stroke-width:3;stroke-linecap:round" id="polyline134634"/>
+  <defs id="defs337"/>
+  <sodipodi:namedview inkscape:current-layer="svg333" inkscape:window-maximized="0" inkscape:window-y="23" inkscape:window-x="0" inkscape:cy="34" inkscape:cx="34" inkscape:zoom="9.8382353" showgrid="false" id="namedview335" inkscape:window-height="480" inkscape:window-width="689" inkscape:pageshadow="2" inkscape:pageopacity="0" guidetolerance="10" gridtolerance="10" objecttolerance="10" borderopacity="1" bordercolor="#666666" pagecolor="#ffffff"/>
+  
+  <path class="knob-rim" d="M 67.799999,34 A 33.799999,33.799999 0 0 1 34,67.799999 33.799999,33.799999 0 0 1 0.20000076,34 33.799999,33.799999 0 0 1 34,0.20000076 33.799999,33.799999 0 0 1 67.799999,34" style="fill:#333333" id="circle325"/>
+  <path class="knob-center" d="M 61,34 A 27,27 0 0 1 34,61 27,27 0 0 1 7,34 27,27 0 0 1 34,7 27,27 0 0 1 61,34" style="fill:#eeeeee" id="circle327"/>
+  <path class="knob-tick" d="M 34,2 V 4.5" style="fill:none;stroke:#ffffff;stroke-width:3;stroke-linecap:round" id="polyline331"/>
 </svg>

@@ -135,22 +135,20 @@ def widget_from_filename(fn)
   File.basename(fn).sub(/^(.*)-src\.svg$/, '\1')
 end
 
-$module_names_loaded = false
-$module_names = []
-def load_module_names(force = false)
+$widget_names_loaded = false
+$widget_names = []
+def load_widget_names(force = false)
   if force
-    $module_names_loaded = false
-    $module_names = []
+    $widget_names_loaded = false
+    $widget_names = []
   end
 
-  unless $module_names_loaded
-    $module_names_loaded = true
+  unless $widget_names_loaded
+    $widget_names_loaded = true
 
     load_directories()
-    $module_names = Dir.glob(File.join($src_dir, '*-src.svg')).map do |fn|
+    $widget_names = Dir.glob(File.join($src_dir, '*-src.svg')).map do |fn|
       widget_from_filename(fn)
-    end.select do |name| # FIXME: figure out what to do about non-module widget sources.
-      name =~ /^[A-Z]/
     end.sort
   end
 end
@@ -186,9 +184,9 @@ def debug()
   end
   puts
 
-  load_module_names()
+  load_widget_names()
   puts "Modules:"
-  $module_names.each do |name|
+  $widget_names.each do |name|
     puts "  - #{name}"
   end
   puts
@@ -370,25 +368,57 @@ def process(name)
   end
 
   doc = read_xml(fn)
-  hp = 3
   noskin = false
+  globals = {}
 
   root = doc.at_css(':root')
   if root.node_name == 'module'
+    hp = 3
     if root['hp'] && !root['hp'].to_s.empty?
       hp = root['hp'].to_s.to_i
     end
+    root.delete('hp')
     if root['noskin'] && root['noskin'].to_s == 'true'
       noskin = true
     end
+    root.delete('noskin')
+    globals['hp'] = hp
+    globals['width'] = hp * 15.0
+    globals['height'] = 380.0
+
     root.node_name = 'svg'
     root['xmlns'] = 'http://www.w3.org/2000/svg'
     root['xmlns:xlink'] = 'http://www.w3.org/1999/xlink'
     root['version'] = '1.1'
-    root['width'] = (hp * 15).to_s
-    root['height'] = '380'
+    root['width'] = globals['width']
+    root['height'] = globals['height']
     root['viewBox'] = "0 0 #{root['width']} #{root['height']}"
-    root.delete('hp')
+
+    doc = parse_xml(doc.to_xml)
+  elsif root.node_name == 'widget'
+    if root['noskin'] && root['noskin'].to_s == 'true'
+      noskin = true
+    end
+    root.delete('noskin')
+
+    width = 30.0
+    if root['width'] && !root['width'].to_s.empty?
+      width = root['width'].to_f
+    end
+    height = 30.0
+    if root['height'] && !root['height'].to_s.empty?
+      height = root['height'].to_f
+    end
+    globals['width'] = width
+    globals['height'] = height
+
+    root.node_name = 'svg'
+    root['xmlns'] = 'http://www.w3.org/2000/svg'
+    root['xmlns:xlink'] = 'http://www.w3.org/1999/xlink'
+    root['version'] = '1.1'
+    root['width'] = globals['width']
+    root['height'] = globals['height']
+    root['viewBox'] = "0 0 #{root['width']} #{root['height']}"
 
     doc = parse_xml(doc.to_xml)
   end
@@ -415,10 +445,6 @@ def process(name)
 
   doc.xpath('//comment()').each(&:remove)
 
-  globals = {}
-  globals['hp'] = hp
-  globals['width'] = hp * 15.0
-  globals['height'] = 380.0
   vars = [globals]
   process_variables(doc.at_css(':root'), vars)
 
@@ -440,14 +466,14 @@ end
 
 def reprocess(prefixes)
   load_directories()
-  load_module_names()
+  load_widget_names()
 
   name_re = if prefixes.empty?
     /./
   else
     /^(#{prefixes.join('|')})/
   end
-  $module_names.each do |name|
+  $widget_names.each do |name|
     if name =~ name_re
       process("#{name}-src.svg")
     end
@@ -490,7 +516,7 @@ def listen(prefixes)
       begin
         bn = File.basename(fn)
         if bn =~ /-src\.svg$/
-          load_module_names(true)
+          load_widget_names(true)
         end
 
         if bn =~ name_re
@@ -505,7 +531,7 @@ def listen(prefixes)
       begin
         bn = File.basename(fn)
         if bn =~ /-src\.svg$/
-          load_module_names(true)
+          load_widget_names(true)
         end
 
         if bn =~ name_re

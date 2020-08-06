@@ -1,10 +1,16 @@
 {
   "light": {
     "background-fill": "#ddd",
-    "path-stroke": "#333"
+    "path-stroke": "#333",
+    "knob-center": "#eee",
+    "knob-rim": "#333",
+    "knob-tick": "#fff"
   },
   "dark": {
     "background-fill": "#222",
-    "path-stroke": "#ddd"
+    "path-stroke": "#ddd",
+    "knob-center": "#bbb",
+    "knob-rim": "#555",
+    "knob-tick": "#fff"
   }
 }
