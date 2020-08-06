@@ -5,13 +5,7 @@ struct ThreeHPWidget : BGModuleWidget {
 	ThreeHPWidget(Module* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * 3, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/ThreeHP.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "ThreeHP");
 
 		addChild(createWidget<ScrewSilver>(Vec(0, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 365)));
@@ -25,13 +19,7 @@ struct FiveHPWidget : BGModuleWidget {
 	FiveHPWidget(Module* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * 5, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/FiveHP.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "FiveHP");
 
 		addChild(createWidget<ScrewSilver>(Vec(0, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 365)));
@@ -45,13 +33,7 @@ struct SixHPWidget : BGModuleWidget {
 	SixHPWidget(Module* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * 6, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/SixHP.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "SixHP");
 
 		addChild(createWidget<ScrewSilver>(Vec(0, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 365)));
@@ -65,13 +47,7 @@ struct EightHPWidget : BGModuleWidget {
 	EightHPWidget(Module* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * 8, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/EightHP.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "EightHP");
 
 		addChild(createWidget<ScrewSilver>(Vec(0, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 365)));
@@ -85,13 +61,7 @@ struct TenHPWidget : BGModuleWidget {
 	TenHPWidget(Module* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * 10, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/TenHP.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "TenHP");
 
 		addChild(createWidget<ScrewSilver>(Vec(0, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 0)));
@@ -107,13 +77,7 @@ struct TwelveHPWidget : BGModuleWidget {
 	TwelveHPWidget(Module* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * 12, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/TwelveHP.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "TwelveHP");
 
 		addChild(createWidget<ScrewSilver>(Vec(0, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 0)));
@@ -129,13 +93,7 @@ struct ThirteenHPWidget : BGModuleWidget {
 	ThirteenHPWidget(Module* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * 13, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/ThirteenHP.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "ThirteenHP");
 
 		addChild(createWidget<ScrewSilver>(Vec(0, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 0)));
@@ -151,13 +109,7 @@ struct FifteenHPWidget : BGModuleWidget {
 	FifteenHPWidget(Module* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * 15, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/FifteenHP.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "FifteenHP");
 
 		addChild(createWidget<ScrewSilver>(Vec(15, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 0)));
@@ -173,13 +125,7 @@ struct SixteenHPWidget : BGModuleWidget {
 	SixteenHPWidget(Module* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * 16, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/SixteenHP.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "SixteenHP");
 
 		addChild(createWidget<ScrewSilver>(Vec(15, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 0)));
@@ -195,13 +141,7 @@ struct EighteenHPWidget : BGModuleWidget {
 	EighteenHPWidget(Module* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * 18, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/EighteenHP.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "EighteenHP");
 
 		addChild(createWidget<ScrewSilver>(Vec(15, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 0)));
@@ -217,13 +157,7 @@ struct TwentyHPWidget : BGModuleWidget {
 	TwentyHPWidget(Module* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * 20, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/TwentyHP.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "TwentyHP");
 
 		addChild(createWidget<ScrewSilver>(Vec(15, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 0)));
@@ -239,13 +173,7 @@ struct TwentyTwoHPWidget : BGModuleWidget {
 	TwentyTwoHPWidget(Module* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * 22, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/TwentyTwoHP.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "TwentyTwoHP");
 
 		addChild(createWidget<ScrewSilver>(Vec(15, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 0)));
@@ -261,13 +189,7 @@ struct TwentyFiveHPWidget : BGModuleWidget {
 	TwentyFiveHPWidget(Module* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * 25, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/TwentyFiveHP.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "TwentyFiveHP");
 
 		addChild(createWidget<ScrewSilver>(Vec(15, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 0)));
@@ -283,13 +205,7 @@ struct ThirtyHPWidget : BGModuleWidget {
 	ThirtyHPWidget(Module* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * 30, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/ThirtyHP.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "ThirtyHP");
 
 		addChild(createWidget<ScrewSilver>(Vec(15, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 0)));

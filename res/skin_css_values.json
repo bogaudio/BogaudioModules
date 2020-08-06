@@ -1,0 +1,10 @@
+{
+  "light": {
+    "background-fill": "#ddd",
+    "path-stroke": "#333"
+  },
+  "dark": {
+    "background-fill": "#222",
+    "path-stroke": "#ddd"
+  }
+}

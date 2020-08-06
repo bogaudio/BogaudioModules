@@ -83,13 +83,7 @@ struct AnalyzerWidget : BGModuleWidget {
 	AnalyzerWidget(Analyzer* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
-
-		{
-			auto panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Analyzer.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "Analyzer");
 
 		{
 			auto inset = Vec(10, 25);

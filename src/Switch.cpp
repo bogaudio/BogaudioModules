@@ -124,13 +124,7 @@ struct SwitchWidget : BGModuleWidget {
 	SwitchWidget(bogaudio::Switch* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Switch.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "Switch");
 
 		addChild(createWidget<ScrewSilver>(Vec(0, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 365)));

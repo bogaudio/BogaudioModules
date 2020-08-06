@@ -1,10 +1,13 @@
 #pragma once
 
 #include "rack.hpp"
+#include <string>
 
 using namespace rack;
 
 namespace bogaudio {
+
+struct BGModuleWidget;
 
 struct BGModule : Module {
 	int _modulationSteps = 100;
@@ -13,6 +16,10 @@ struct BGModule : Module {
 	static constexpr int maxChannels = PORT_MAX_CHANNELS;
 	int _channels = 0;
 	float _inverseChannels = 0.0f;
+
+	bool _skinnable = true;
+	std::string _skin = "default";
+	BGModuleWidget* _skinChangeListener = NULL;
 
 	BGModule() {
 	}
@@ -45,12 +52,23 @@ struct BGModule : Module {
 	virtual void processChannel(const ProcessArgs& args, int c) {}
 	virtual void postProcess(const ProcessArgs& args) {}
 	virtual void postProcessAlways(const ProcessArgs& args) {} // modulate() may not have been called.
+
+	void setSkin(std::string skin);
+	void setSkinChangeListener(BGModuleWidget* widget);
 };
 
 struct BGModuleWidget : ModuleWidget {
+	SvgPanel* _panel = NULL;
+	Vec _size;
+	std::string _slug;
+
 	void appendContextMenu(Menu* menu) override;
 
 	virtual void contextMenu(Menu* menu) {}
+
+	void skinChanged();
+	void setPanel(Vec size, const std::string slug);
+	void updatePanel();
 };
 
 } // namespace bogaudio

@@ -7,13 +7,7 @@ struct Matrix44Widget : KnobMatrixModuleWidget {
 	Matrix44Widget(Matrix44* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Matrix44.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "Matrix44");
 
 		addChild(createWidget<ScrewSilver>(Vec(0, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 0)));

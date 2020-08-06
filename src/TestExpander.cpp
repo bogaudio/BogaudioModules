@@ -26,13 +26,7 @@ struct TestExpanderBaseWidget : BGModuleWidget {
 	TestExpanderBaseWidget(TestExpanderBase* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/TestExpanderBase.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "TestExpanderBase");
 
 		addChild(createWidget<ScrewSilver>(Vec(0, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 365)));
@@ -78,13 +72,7 @@ struct TestExpanderExtensionWidget : BGModuleWidget {
 	TestExpanderExtensionWidget(TestExpanderExtension* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/TestExpanderExtension.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "TestExpanderExtension");
 
 		addChild(createWidget<ScrewSilver>(Vec(0, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 365)));

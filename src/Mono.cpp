@@ -133,13 +133,7 @@ struct MonoWidget : BGModuleWidget {
 	MonoWidget(Mono* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Mono.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "Mono");
 
 		{
 			auto display = new ChannelsDisplay(module);

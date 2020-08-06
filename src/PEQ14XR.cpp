@@ -89,13 +89,7 @@ struct PEQ14XRWidget : BGModuleWidget {
 	PEQ14XRWidget(PEQ14XR* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/PEQ14XR.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "PEQ14XR");
 
 		addChild(createWidget<ScrewSilver>(Vec(0, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 365)));

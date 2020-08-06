@@ -162,13 +162,7 @@ struct Mix4Widget : DimmableMixerWidget {
 	Mix4Widget(Mix4* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Mix4.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "Mix4");
 
 		addChild(createWidget<ScrewSilver>(Vec(15, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 0)));

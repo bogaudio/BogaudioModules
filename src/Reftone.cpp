@@ -195,13 +195,7 @@ struct ReftoneWidget : BGModuleWidget {
 	ReftoneWidget(Reftone* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Reftone.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "Reftone");
 
 		{
 			auto inset = Vec(3.5, 18);

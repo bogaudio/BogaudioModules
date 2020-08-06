@@ -24,6 +24,7 @@ struct Blank6 : BGModule {
 	};
 
 	RootMeanSquare _rms;
+	bool _haveLevel = false;
 	float _level = 0.0f;
 
 	Blank6() {

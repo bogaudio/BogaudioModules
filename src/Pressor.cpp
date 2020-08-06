@@ -201,13 +201,7 @@ struct PressorWidget : BGModuleWidget {
 	PressorWidget(Pressor* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Pressor.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "Pressor");
 
 		{
 			auto display = new CompressionDisplay(module);

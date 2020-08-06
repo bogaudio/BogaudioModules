@@ -33,7 +33,9 @@ struct AnalyzerXL : AnalyzerBase {
 	AnalyzerCore::Quality _quality = AnalyzerCore::QUALITY_GOOD;
 	AnalyzerCore::Window _window = AnalyzerCore::WINDOW_KAISER;
 
-	AnalyzerXL() : AnalyzerBase(8, NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {}
+	AnalyzerXL() : AnalyzerBase(8, NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {
+		_skinnable = false;
+	}
 
 	void reset() override;
 	void sampleRateChange() override;

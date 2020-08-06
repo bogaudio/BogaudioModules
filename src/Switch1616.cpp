@@ -7,13 +7,7 @@ struct Switch1616Widget : SwitchMatrixModuleWidget {
 	Switch1616Widget(Switch1616* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Switch1616.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "Switch1616");
 
 		addChild(createWidget<ScrewSilver>(Vec(15, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 0)));

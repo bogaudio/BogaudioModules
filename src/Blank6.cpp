@@ -1,5 +1,6 @@
 
 #include "Blank6.hpp"
+#include "skins.hpp"
 
 void Blank6::sampleRateChange() {
 	_rms.setSampleRate(APP->engine->getSampleRate());
@@ -7,17 +8,16 @@ void Blank6::sampleRateChange() {
 
 void Blank6::processChannel(const ProcessArgs& args, int _c) {
 	if (inputs[IN_INPUT].isConnected()) {
+		_haveLevel = true;
 		_level = _rms.next(inputs[IN_INPUT].getVoltageSum()) / 5.0f;
 	}
 	else {
-		_level = -1.0f;
+		_haveLevel = false;
+		_level = 0.0f;
 	}
 }
 
 struct Blank6Display : OpaqueWidget {
-	const NVGcolor textColor = nvgRGBA(0x33, 0x33, 0x33, 0xff);
-	const NVGcolor bgTextColor = nvgRGBA(0xaa, 0xaa, 0xaa, 0xff);
-	const NVGcolor bgColor = nvgRGBA(0xdd, 0xdd, 0xdd, 0xff);
 	Blank6* _module;
 	const char* _text;
 	std::shared_ptr<Font> _font;
@@ -30,10 +30,28 @@ struct Blank6Display : OpaqueWidget {
 	}
 
 	void draw(const DrawArgs& args) override {
-		float level = -1.0f;
+		const Skins& skins = Skins::skins();
+		std::string skin = skins.defaultKey();
+		bool haveLevel = false;
+		float level = 0.0f;
 		if (_module) {
+			haveLevel = _module->_level;
 			level = _module->_level;
+			skin = _module->_skin;
 		}
+
+		NVGcolor textColor = nvgRGBA(0x33, 0x33, 0x33, 0xff);
+		// NVGcolor bgTextColor = nvgRGBA(0xaa, 0xaa, 0xaa, 0xff);
+		NVGcolor bgColor = nvgRGBA(0xdd, 0xdd, 0xdd, 0xff);
+		const char* pathStroke = skins.skinCssValue(skin, "path-stroke");
+		if (pathStroke) {
+			textColor = Skins::cssColorToNVGColor(pathStroke, textColor);
+		}
+		const char* backgroundFill = skins.skinCssValue(skin, "background-fill");
+		if (backgroundFill) {
+			bgColor = Skins::cssColorToNVGColor(backgroundFill, bgColor);
+		}
+		NVGcolor bgTextColor = nvgRGBAf(0.5f * (textColor.r + bgColor.r), 0.5f * (textColor.g + bgColor.g), 0.5f * (textColor.b + bgColor.b), 1.0f);
 
 		float offsetX = box.size.x / 2.0f;
 		float offsetY = box.size.y / 2.0f;
@@ -44,7 +62,7 @@ struct Blank6Display : OpaqueWidget {
 		nvgFontSize(args.vg, 52.0f);
 		nvgFontFaceId(args.vg, _font->handle);
 		nvgTextLetterSpacing(args.vg, 9.0f);
-		if (level < 0.0f) {
+		if (!haveLevel) {
 			nvgFillColor(args.vg, textColor);
 			nvgText(args.vg, 0, 0, _text, NULL);
 		}
@@ -70,13 +88,7 @@ struct Blank6Widget : BGModuleWidget {
 	Blank6Widget(Blank6* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Blank6.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "Blank6");
 
 		{
 			auto display = new Blank6Display(module, "BOGAUDIO");

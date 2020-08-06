@@ -189,13 +189,7 @@ struct VCFWidget : BGModuleWidget {
 	VCFWidget(VCF* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
-
-		{
-			SvgPanel *panel = new SvgPanel();
-			panel->box.size = box.size;
-			panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, "res/VCF.svg")));
-			addChild(panel);
-		}
+		setPanel(box.size, "VCF");
 
 		addChild(createWidget<ScrewSilver>(Vec(0, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 0)));
