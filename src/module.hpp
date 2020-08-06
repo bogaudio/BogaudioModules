@@ -61,6 +61,7 @@ struct BGModule : Module {
 };
 
 struct BGModuleWidget : ModuleWidget, SkinChangeListener {
+	bool _skinnable = true;
 	SvgPanel* _panel = NULL;
 	Vec _size;
 	std::string _slug;
@@ -73,7 +74,7 @@ struct BGModuleWidget : ModuleWidget, SkinChangeListener {
 	virtual void contextMenu(Menu* menu) {}
 
 	void skinChanged(const std::string& skin) override;
-	void setPanel(Vec size, const std::string slug);
+	void setPanel(Vec size, const std::string slug, bool skinnable = true);
 	void updatePanel();
 };
 

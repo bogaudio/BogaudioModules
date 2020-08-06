@@ -130,7 +130,7 @@ struct AnalyzerXLWidget : BGModuleWidget {
 	AnalyzerXLWidget(AnalyzerXL* module) {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
-		setPanel(box.size, "AnalyzerXL");
+		setPanel(box.size, "AnalyzerXL", false);
 
 		{
 			auto inset = Vec(30, 1);

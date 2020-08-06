@@ -2,7 +2,6 @@
 #include "module.hpp"
 #include "bogaudio.hpp"
 #include "skins.hpp"
-#include <cstdio>
 
 using namespace bogaudio;
 
@@ -162,10 +161,11 @@ void BGModuleWidget::skinChanged(const std::string& skin) {
 	updatePanel();
 }
 
-void BGModuleWidget::setPanel(Vec size, std::string slug) {
+void BGModuleWidget::setPanel(Vec size, std::string slug, bool skinnable) {
 	_size = size;
 	_slug = slug;
-	if (module) {
+	_skinnable = skinnable;
+	if (module && _skinnable) {
 		auto m = dynamic_cast<BGModule*>(module);
 		assert(m);
 		m->addSkinChangeListener(this);
@@ -182,7 +182,10 @@ void BGModuleWidget::updatePanel() {
 
 	const Skins& skins = Skins::skins();
 	std::string skin = skins.defaultKey();
-	if (module) {
+	if (!_skinnable) {
+		skin = "light";
+	}
+	else if (module) {
 		auto m = dynamic_cast<BGModule*>(module);
 		assert(m);
 		skin = m->_skin;
@@ -191,14 +194,12 @@ void BGModuleWidget::updatePanel() {
 		}
 	}
 
-	const int n = 100;
-	char svg[n];
-	if (skin == "light") {
-		snprintf(svg, n, "res/%s.svg", _slug.c_str());
+	std::string svg = "res/" + _slug;
+	if (skin != "light") {
+		svg += "-";
+		svg += skin;
 	}
-	else {
-		snprintf(svg, n, "res/%s-%s.svg", _slug.c_str(), skin.c_str());
-	}
+	svg += ".svg";
 	_panel = new SvgPanel();
 	_panel->box.size = _size;
 	addChildBottom(_panel);
