@@ -244,7 +244,7 @@ A three-channel parametric EQ, which is a filter bank where the band frequencies
 
 The first channel may be configured as a lowpass filter, if the LP button is on.  The last channel can be highpass.  (And they are by default.)
 
-Each channel has a CV input for level; this is a unipolar (0-10V) CV, and correponding knob attenuates the CV if the CV is in use.
+Each channel has a CV input for level; this is a unipolar (0-10V) CV, and corresponding knob attenuates the CV if the CV is in use.
 
 Likewise each channel has an FCV input for frequency modulation, and additionally there is a global FCV input, which voltage effects all channels.  For each channel, the channel FCV and global FCV are summed, then attenuverted by the channel's FCV knob, and the result is added to the FREQ knob setting.  These CVs are bipolar (+/-5V), where +5V will send the frequency from 0 to its max value.
 
