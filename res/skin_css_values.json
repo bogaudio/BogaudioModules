@@ -9,8 +9,8 @@
   "dark": {
     "background-fill": "#111",
     "path-stroke": "#ccc",
-    "knob-center": "#bbb",
-    "knob-rim": "#555",
+    "knob-center": "#888",
+    "knob-rim": "#444",
     "knob-tick": "#fff"
   },
   "lowcontrast": {
