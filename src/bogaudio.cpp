@@ -102,7 +102,6 @@
 #include "Test2.hpp"
 #include "TestExpander.hpp"
 #include "TestVCF.hpp"
-#include "template_panels.hpp"
 
 //NEW_INCLUDES_HERE
 
@@ -230,21 +229,6 @@ void init(rack::Plugin *p) {
 	p->addModel(modelTestExpanderBase);
 	p->addModel(modelTestExpanderExtension);
 	p->addModel(modelTestVCF);
-
-	p->addModel(modelThreeHP);
-	p->addModel(modelFiveHP);
-	p->addModel(modelSixHP);
-	p->addModel(modelEightHP);
-	p->addModel(modelTenHP);
-	p->addModel(modelTwelveHP);
-	p->addModel(modelThirteenHP);
-	p->addModel(modelFifteenHP);
-	p->addModel(modelSixteenHP);
-	p->addModel(modelEighteenHP);
-	p->addModel(modelTwentyHP);
-	p->addModel(modelTwentyTwoHP);
-	p->addModel(modelTwentyFiveHP);
-	p->addModel(modelThirtyHP);
 #endif
 
 	//NEW_MODELS_HERE
