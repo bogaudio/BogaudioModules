@@ -54,6 +54,7 @@ void BGKnob::redraw() {
 
 void BGKnob::skinChanged(const std::string& skin) {
 	setSvg(APP->window->loadSvg(asset::plugin(pluginInstance, skinSVG(_svgBase.c_str(), skin).c_str())));
+	fb->dirty = true;
 }
 
 
@@ -232,6 +233,7 @@ void IndicatorKnob::skinChanged(const std::string& skin) {
 	if (knobCenter) {
 		w->_center = Skins::cssColorToNVGColor(knobCenter, w->_center);
 	}
+	fb->dirty = true;
 }
 
 Port24::Port24() {
@@ -243,6 +245,7 @@ Port24::Port24() {
 
 void Port24::skinChanged(const std::string& skin) {
 	setSvg(APP->window->loadSvg(asset::plugin(pluginInstance, skinSVG("port", skin).c_str())));
+	fb->dirty = true;
 }
 
 
