@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:version="1.0 (4035a4f, 2020-05-01)" sodipodi:docname="svg_render_Blank6-dark-pp.svg" id="svg11097" viewBox="0 0 90 380" height="380" width="90" version="1.1">
-  <metadata id="metadata11103">
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:version="1.0 (4035a4f, 2020-05-01)" sodipodi:docname="svg_render_Blank6-dark-pp.svg" id="svg5509" viewBox="0 0 90.0 380.0" height="380.0" width="90.0" version="1.1">
+  <metadata id="metadata5515">
     <rdf:RDF>
       <cc:Work rdf:about="">
         <dc:format>image/svg+xml</dc:format>
@@ -8,11 +8,11 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <defs id="defs11101"/>
-  <sodipodi:namedview inkscape:current-layer="svg11097" inkscape:window-maximized="0" inkscape:window-y="23" inkscape:window-x="0" inkscape:cy="190" inkscape:cx="45" inkscape:zoom="1.7605263" showgrid="false" id="namedview11099" inkscape:window-height="480" inkscape:window-width="689" inkscape:pageshadow="2" inkscape:pageopacity="0" guidetolerance="10" gridtolerance="10" objecttolerance="10" borderopacity="1" bordercolor="#666666" pagecolor="#ffffff"/>
+  <defs id="defs5513"/>
+  <sodipodi:namedview inkscape:current-layer="svg5509" inkscape:window-maximized="0" inkscape:window-y="23" inkscape:window-x="0" inkscape:cy="190" inkscape:cx="45" inkscape:zoom="1.7605263" showgrid="false" id="namedview5511" inkscape:window-height="480" inkscape:window-width="689" inkscape:pageshadow="2" inkscape:pageopacity="0" guidetolerance="10" gridtolerance="10" objecttolerance="10" borderopacity="1" bordercolor="#666666" pagecolor="#ffffff"/>
   
-  <path class="module-background background-fill" d="M 0,0 H 90 V 380 H 0 Z" style="fill:#222222" id="rect11089"/>
-  <path class="module-border-inner" d="M 1,1 H 89 V 379 H 1 V 1" style="fill:none;stroke:#191919;stroke-width:0.5" id="polyline11091"/>
-  <path class="module-border-middle" d="m 0.5,0.5 h 89 v 379 H 0.5 V 0.5" style="fill:none;stroke:#111111;stroke-width:0.8" id="polyline11093"/>
-  <path class="module-border-outer" d="M 0,0 H 90 V 380 H 0 V 0" style="fill:none;stroke:#000000;stroke-width:1" id="polyline11095"/>
+  <path class="module-background background-fill" d="M 0,0 H 90 V 380 H 0 Z" style="fill:#111111" id="rect5501"/>
+  <path class="module-border-inner" d="M 1,1 H 89 V 379 H 1 V 1" style="fill:none;stroke:#191919;stroke-width:0.5" id="polyline5503"/>
+  <path class="module-border-middle" d="m 0.5,0.5 h 89 v 379 H 0.5 V 0.5" style="fill:none;stroke:#111111;stroke-width:0.8" id="polyline5505"/>
+  <path class="module-border-outer" d="M 0,0 H 90 V 380 H 0 V 0" style="fill:none;stroke:#000000;stroke-width:1" id="polyline5507"/>
 </svg>

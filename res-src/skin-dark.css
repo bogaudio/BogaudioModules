@@ -1,16 +1,16 @@
 text {
-  fill: #ddd;
+  fill: #eee;
 }
 
 polyline {
-  stroke: #ddd;
+  stroke: #ccc;
 }
 path {
-  stroke: #ddd;
+  stroke: #ccc;
 }
 
 rect.module-background, .background-fill {
-  fill: #222;
+  fill: #111;
 }
 polyline.module-border-inner {
   stroke: #191919;
@@ -29,10 +29,10 @@ rect.output-background, rect.output-background-filler {
   fill: #666;
 }
 text.input-label {
-  fill: #333;
+  fill: #222;
 }
 polyline.input-label, path.input-label {
-  stroke: #333;
+  stroke: #222;
 }
 text.output-label {
   fill: #ddd;
@@ -42,7 +42,7 @@ polyline.output-label, path.output-label {
 }
 
 circle.port-rim {
-  stroke: #ddd;
+  stroke: #ccc;
 }
 circle.port-barrel {
   stroke: #222;
