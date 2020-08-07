@@ -47,7 +47,7 @@ void %MODULE%::sampleRateChange() {
 void %MODULE%::processChannel(const ProcessArgs& args, int c) {
 }
 
-struct %MODULE%Widget : ModuleWidget {
+struct %MODULE%Widget : BGModuleWidget {
 	static constexpr int hp = %HP%;
 
 	%MODULE%Widget(%MODULE%* module) {
