@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:version="1.0 (4035a4f, 2020-05-01)" sodipodi:docname="svg_render_knob_29px-lowcontrast-pp.svg" id="svg66130" viewBox="0 0 29.0 29.0" version="1.1" height="29.0" width="29.0">
-  <metadata id="metadata66136">
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:version="1.0 (4035a4f, 2020-05-01)" sodipodi:docname="svg_render_knob_29px-lowcontrast-pp.svg" id="svg267" viewBox="0 0 29.0 29.0" version="1.1" height="29.0" width="29.0">
+  <metadata id="metadata273">
     <rdf:RDF>
       <cc:Work rdf:about="">
         <dc:format>image/svg+xml</dc:format>
@@ -8,12 +8,12 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <defs id="defs66134"/>
-  <sodipodi:namedview inkscape:current-layer="svg66130" inkscape:window-maximized="0" inkscape:window-y="23" inkscape:window-x="0" inkscape:cy="14.5" inkscape:cx="14.5" inkscape:zoom="23.068966" showgrid="false" id="namedview66132" inkscape:window-height="480" inkscape:window-width="689" inkscape:pageshadow="2" inkscape:pageopacity="0" guidetolerance="10" gridtolerance="10" objecttolerance="10" borderopacity="1" bordercolor="#666666" pagecolor="#ffffff"/>
+  <defs id="defs271"/>
+  <sodipodi:namedview inkscape:current-layer="svg267" inkscape:window-maximized="0" inkscape:window-y="23" inkscape:window-x="0" inkscape:cy="14.5" inkscape:cx="14.5" inkscape:zoom="23.068966" showgrid="false" id="namedview269" inkscape:window-height="480" inkscape:window-width="689" inkscape:pageshadow="2" inkscape:pageopacity="0" guidetolerance="10" gridtolerance="10" objecttolerance="10" borderopacity="1" bordercolor="#666666" pagecolor="#ffffff"/>
   
-  <path class="knob-rim" d="M 28.8,14.5 A 14.3,14.3 0 0 1 14.5,28.8 14.3,14.3 0 0 1 0.19999981,14.5 14.3,14.3 0 0 1 14.5,0.19999981 14.3,14.3 0 0 1 28.8,14.5" style="fill:#555555" id="circle66118"/>
-  <path class="knob-center" d="M 25.4,14.5 A 10.9,10.9 0 0 1 14.5,25.4 10.9,10.9 0 0 1 3.6000004,14.5 10.9,10.9 0 0 1 14.5,3.6000004 10.9,10.9 0 0 1 25.4,14.5" style="fill:#bbbbbb" id="circle66120"/>
-  <path class="knob-tick" d="M 15.8,1.6 A 1.3,1.3 0 0 1 14.5,2.9 1.3,1.3 0 0 1 13.2,1.6 1.3,1.3 0 0 1 14.5,0.30000007 1.3,1.3 0 0 1 15.8,1.6" style="fill:#ffffff" id="circle66124"/>
-  <path class="knob-tick" d="M 15.8,1.9 A 1.3,1.3 0 0 1 14.5,3.1999999 1.3,1.3 0 0 1 13.2,1.9 1.3,1.3 0 0 1 14.5,0.60000002 1.3,1.3 0 0 1 15.8,1.9" style="fill:#ffffff" id="circle66126"/>
-  <path class="knob-tick" d="M 15.8,2.2 A 1.3,1.3 0 0 1 14.5,3.5 1.3,1.3 0 0 1 13.2,2.2 1.3,1.3 0 0 1 14.5,0.9000001 1.3,1.3 0 0 1 15.8,2.2" style="fill:#ffffff" id="circle66128"/>
+  <path class="knob-rim" d="M 28.8,14.5 A 14.3,14.3 0 0 1 14.5,28.8 14.3,14.3 0 0 1 0.19999981,14.5 14.3,14.3 0 0 1 14.5,0.19999981 14.3,14.3 0 0 1 28.8,14.5" style="fill:#555555" id="circle255"/>
+  <path class="knob-center" d="M 25.4,14.5 A 10.9,10.9 0 0 1 14.5,25.4 10.9,10.9 0 0 1 3.6000004,14.5 10.9,10.9 0 0 1 14.5,3.6000004 10.9,10.9 0 0 1 25.4,14.5" style="fill:#bbbbbb" id="circle257"/>
+  <path class="knob-tick" d="M 15.8,1.6 A 1.3,1.3 0 0 1 14.5,2.9 1.3,1.3 0 0 1 13.2,1.6 1.3,1.3 0 0 1 14.5,0.30000007 1.3,1.3 0 0 1 15.8,1.6" style="fill:#ffffff" id="circle261"/>
+  <path class="knob-tick" d="M 15.8,1.9 A 1.3,1.3 0 0 1 14.5,3.1999999 1.3,1.3 0 0 1 13.2,1.9 1.3,1.3 0 0 1 14.5,0.60000002 1.3,1.3 0 0 1 15.8,1.9" style="fill:#ffffff" id="circle263"/>
+  <path class="knob-tick" d="M 15.8,2.2 A 1.3,1.3 0 0 1 14.5,3.5 1.3,1.3 0 0 1 13.2,2.2 1.3,1.3 0 0 1 14.5,0.9000001 1.3,1.3 0 0 1 15.8,2.2" style="fill:#ffffff" id="circle265"/>
 </svg>

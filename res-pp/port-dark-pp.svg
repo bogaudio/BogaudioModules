@@ -115,17 +115,17 @@ polyline.output-label, path.output-label {
 }
 
 circle.port-rim {
-  stroke: #ccc;
+  stroke: #c0c0c0;
 }
 circle.port-barrel {
   stroke: #222;
   fill: #222;
 }
 circle.knob-center {
-   fill: #bbb;
+   fill: #888;
 }
 circle.knob-rim {
-   fill: #555;
+   fill: #444;
 }
 circle.knob-tick {
   fill: #fff;
