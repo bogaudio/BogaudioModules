@@ -2,6 +2,8 @@
 
 #include "rack.hpp"
 
+using namespace rack;
+
 namespace bogaudio {
 
 struct Trigger : rack::dsp::SchmittTrigger {
