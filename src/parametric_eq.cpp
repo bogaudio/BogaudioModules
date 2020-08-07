@@ -126,3 +126,26 @@ float PEQXFBase::scaleEF(float ef, float frequency, float bandwidth) {
 	scale = sqrtf(scale); // FIXME: someday prove this is correct.
 	return 2.0f * scale * ef;
 }
+
+
+#define BAND_EXCLUDE "band_exclude"
+
+json_t* BandExcludeModule::toJson(json_t* root) {
+	json_object_set_new(root, BAND_EXCLUDE, json_boolean(_bandExclude));
+	return root;
+}
+
+void BandExcludeModule::fromJson(json_t* root) {
+	json_t* be = json_object_get(root, BAND_EXCLUDE);
+	if (be) {
+		_bandExclude = json_is_true(be);
+	}
+}
+
+
+void BandExcludeModuleWidget::contextMenu(Menu* menu) {
+	auto m = dynamic_cast<BandExcludeModule*>(module);
+	assert(m);
+	menu->addChild(new MenuLabel());
+	menu->addChild(new BoolOptionMenuItem("Exclude direct-output bands from mix", [m]() { return &m->_bandExclude; }));
+}

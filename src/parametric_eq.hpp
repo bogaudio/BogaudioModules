@@ -149,4 +149,15 @@ struct PEQXFBase : FollowerBase {
 	float scaleEF(float ef, float frequency, float bandwidth);
 };
 
+struct BandExcludeModule : BGModule {
+	bool _bandExclude = false;
+
+	json_t* toJson(json_t* root) override;
+	void fromJson(json_t* root) override;
+};
+
+struct BandExcludeModuleWidget : BGModuleWidget {
+	void contextMenu(Menu* menu) override;
+};
+
 } // namespace bogaudio

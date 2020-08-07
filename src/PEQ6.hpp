@@ -4,7 +4,7 @@
 
 namespace bogaudio {
 
-struct PEQ6 : ExpandableModule<PEQ6ExpanderMessage, BGModule> {
+struct PEQ6 : ExpandableModule<PEQ6ExpanderMessage, BandExcludeModule> {
 	enum ParamsIds {
 		FREQUENCY_CV_PARAM,
 		BANDWIDTH_PARAM,

@@ -86,17 +86,35 @@ void PEQ14::processAlways(const ProcessArgs& args) {
 void PEQ14::processChannel(const ProcessArgs& args, int c) {
 	PEQEngine& e = *_engines[c];
 	float out = e.next(inputs[IN_INPUT].getVoltage(c), _rmsSums);
-	outputs[OUT_OUTPUT].setVoltage(out, c);
-
 	float oddOut = 0.0f;
 	float evenOut = 0.0f;
+	float beOut = 0.0f;
+	float beOddOut = 0.0f;
+	float beEvenOut = 0.0f;
 	for (int i = 0; i < 14; ++i) {
-		oddOut += e.outs[i] * (float)(i % 2 == 0 || (i == 13 && _highMode == MultimodeFilter::HIGHPASS_MODE));
-		evenOut += e.outs[i] * (float)(i % 2 == 1 || (i == 0 && _lowMode == MultimodeFilter::LOWPASS_MODE));
-		outputs[OUT1_OUTPUT + i].setVoltage(e.outs[i], c);
+		float odd = e.outs[i] * (float)(i % 2 == 0 || (i == 13 && _highMode == MultimodeFilter::HIGHPASS_MODE));
+		oddOut += odd;
+		float even = e.outs[i] * (float)(i % 2 == 1 || (i == 0 && _lowMode == MultimodeFilter::LOWPASS_MODE));
+		evenOut += even;
+		if (outputs[OUT1_OUTPUT + i].isConnected()) {
+			outputs[OUT1_OUTPUT + i].setVoltage(e.outs[i], c);
+		}
+		else {
+			beOut += e.outs[i];
+			beOddOut += odd;
+			beEvenOut += even;
+		}
 	}
-	outputs[ODDS_OUTPUT].setVoltage(oddOut, c);
-	outputs[EVENS_OUTPUT].setVoltage(evenOut, c);
+	if (_bandExclude) {
+		outputs[OUT_OUTPUT].setVoltage(beOut, c);
+		outputs[ODDS_OUTPUT].setVoltage(beOddOut, c);
+		outputs[EVENS_OUTPUT].setVoltage(beEvenOut, c);
+	}
+	else {
+		outputs[OUT_OUTPUT].setVoltage(out, c);
+		outputs[ODDS_OUTPUT].setVoltage(oddOut, c);
+		outputs[EVENS_OUTPUT].setVoltage(evenOut, c);
+	}
 
 	if (expanderConnected()) {
 		auto m = toExpander();
@@ -118,7 +136,7 @@ void PEQ14::postProcessAlways(const ProcessArgs& args) {
 	lights[FMOD_FULL_LIGHT].value = _fullFrequencyMode;
 }
 
-struct PEQ14Widget : BGModuleWidget {
+struct PEQ14Widget : BandExcludeModuleWidget {
 	static constexpr int hp = 46;
 
 	PEQ14Widget(PEQ14* module) {

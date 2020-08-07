@@ -79,9 +79,20 @@ void PEQ6::processAlways(const ProcessArgs& args) {
 void PEQ6::processChannel(const ProcessArgs& args, int c) {
 	PEQEngine& e = *_engines[c];
 	float out = e.next(inputs[IN_INPUT].getVoltage(c), _rmsSums);
-	outputs[OUT_OUTPUT].setVoltage(out, c);
+	float beOut = 0.0f;
 	for (int i = 0; i < 6; ++i) {
-		outputs[OUT1_OUTPUT + i].setVoltage(e.outs[i], c);
+		if (outputs[OUT1_OUTPUT + i].isConnected()) {
+			outputs[OUT1_OUTPUT + i].setVoltage(e.outs[i], c);
+		}
+		else {
+			beOut += e.outs[i];
+		}
+	}
+	if (_bandExclude) {
+		outputs[OUT_OUTPUT].setVoltage(beOut, c);
+	}
+	else {
+		outputs[OUT_OUTPUT].setVoltage(out, c);
 	}
 
 	if (_expanderMessage) {
@@ -100,7 +111,7 @@ void PEQ6::postProcessAlways(const ProcessArgs& args) {
 	lights[FMOD_FULL_LIGHT].value = _fullFrequencyMode;
 }
 
-struct PEQ6Widget : BGModuleWidget {
+struct PEQ6Widget : BandExcludeModuleWidget {
 	static constexpr int hp = 21;
 
 	PEQ6Widget(PEQ6* module) {
