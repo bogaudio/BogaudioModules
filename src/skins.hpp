@@ -33,7 +33,7 @@ public:
 	inline const std::string& defaultKey() const { return _default; }
 	bool validKey(const std::string& key) const;
 	const char* skinCssValue(const std::string& skinKey, const std::string& valueKey) const;
-	static NVGcolor cssColorToNVGColor(const char* color, NVGcolor& ifError);
+	static NVGcolor cssColorToNVGColor(const char* color, const NVGcolor& ifError);
 
 private:
 	void loadSkins();

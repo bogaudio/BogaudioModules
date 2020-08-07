@@ -16,6 +16,12 @@ struct SkinnableWidget : SkinChangeListener {
 	std::string skinSVG(const std::string& base, const std::string& skin = "default");
 };
 
+struct Screw : SvgScrew, SkinnableWidget {
+	Screw();
+
+	void skinChanged(const std::string& skin) override;
+};
+
 struct BGKnob : RoundKnob, SkinnableWidget {
 	std::string _svgBase;
 

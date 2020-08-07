@@ -89,6 +89,7 @@ struct Blank3Widget : BGModuleWidget {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 		setPanel(box.size, "Blank3");
+		createScrews();
 
 		{
 			auto display = new Blank3Display(module, "BGA");
@@ -96,9 +97,6 @@ struct Blank3Widget : BGModuleWidget {
 			display->box.size = Vec(30, 130);
 			addChild(display);
 		}
-
-		addChild(createWidget<ScrewSilver>(Vec(0, 0)));
-		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 365)));
 
 		addInput(createInput<BlankPort24>(Vec(10.5, 346), module, Blank3::IN_INPUT));
 	}

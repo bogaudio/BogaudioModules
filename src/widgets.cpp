@@ -20,12 +20,21 @@ std::string SkinnableWidget::skinSVG(const std::string& base, const std::string&
 	return svg;
 }
 
+Screw::Screw() {
+	skinChanged("default");
+}
 
-Button18::Button18() {
-	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_0.svg")));
-	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_1.svg")));
-	box.size = Vec(18, 18);
-	momentary = true;
+void Screw::skinChanged(const std::string& skin) {
+	const char* svg = "res/ComponentLibrary/ScrewSilver.svg";
+	const char* backgroundFill = Skins::skins().skinCssValue(skin, "background-fill");
+	if (backgroundFill) {
+		NVGcolor c = Skins::cssColorToNVGColor(backgroundFill, nvgRGBA(0xdd, 0xdd, 0xdd, 0xff));
+		if ((c.r + c.g + c.b) / 3.0f < 0.5f) {
+			svg = "res/ComponentLibrary/ScrewBlack.svg";
+		}
+	}
+	setSvg(APP->window->loadSvg(asset::system(svg)));
+	fb->dirty = true;
 }
 
 
@@ -256,6 +265,14 @@ SliderSwitch2State14::SliderSwitch2State14() {
 	shadow->box.size = Vec(14.0, 24.0);
 	shadow->blurRadius = 1.0;
 	shadow->box.pos = Vec(0.0, 7.0);
+}
+
+
+Button18::Button18() {
+	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_0.svg")));
+	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_1.svg")));
+	box.size = Vec(18, 18);
+	momentary = true;
 }
 
 

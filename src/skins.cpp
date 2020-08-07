@@ -43,7 +43,7 @@ const char* Skins::skinCssValue(const std::string& skinKey, const std::string& v
 	return value->second.c_str();
 }
 
-NVGcolor Skins::cssColorToNVGColor(const char* color, NVGcolor& ifError) {
+NVGcolor Skins::cssColorToNVGColor(const char* color, const NVGcolor& ifError) {
 	auto h2i = [](char h) {
 		switch (h) {
 			case '0': return 0;

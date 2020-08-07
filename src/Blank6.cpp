@@ -89,6 +89,7 @@ struct Blank6Widget : BGModuleWidget {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 		setPanel(box.size, "Blank6");
+		createScrews();
 
 		{
 			auto display = new Blank6Display(module, "BOGAUDIO");
@@ -96,9 +97,6 @@ struct Blank6Widget : BGModuleWidget {
 			display->box.size = Vec(30, 316);
 			addChild(display);
 		}
-
-		addChild(createWidget<ScrewSilver>(Vec(0, 0)));
-		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 365)));
 
 		addInput(createInput<BlankPort24>(Vec(33, 346), module, Blank6::IN_INPUT));
 	}

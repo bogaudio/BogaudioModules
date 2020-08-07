@@ -76,6 +76,7 @@ struct BGModuleWidget : ModuleWidget, SkinChangeListener {
 	void skinChanged(const std::string& skin) override;
 	void setPanel(Vec size, const std::string slug, bool skinnable = true);
 	void updatePanel();
+	void createScrews();
 };
 
 } // namespace bogaudio

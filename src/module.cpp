@@ -205,3 +205,30 @@ void BGModuleWidget::updatePanel() {
 	addChildBottom(_panel);
 	_panel->setBackground(APP->window->loadSvg(asset::plugin(pluginInstance, svg)));
 }
+
+void BGModuleWidget::createScrews() {
+	int hp = box.size.x / RACK_GRID_WIDTH;
+	BGModule* m = NULL;
+	if (_skinnable && module) {
+		m = dynamic_cast<BGModule*>(module);
+		assert(m);
+	}
+	auto screw = [m, this](Vec v) {
+		auto w = createWidget<Screw>(v);
+		if (m) {
+			m->addSkinChangeListener(w);
+		}
+		this->addChild(w);
+	};
+
+	if (hp > 8) {
+		screw(Vec(15, 0));
+		screw(Vec(box.size.x - 30, 0));
+		screw(Vec(15, 365));
+		screw(Vec(box.size.x - 30, 365));
+	}
+	else {
+		screw(Vec(0, 0));
+		screw(Vec(box.size.x - 15, 365));
+	}
+}
