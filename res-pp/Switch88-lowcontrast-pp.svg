@@ -1,0 +1,739 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="330.0" height="380.0" viewBox="0 0 330.0 380.0">
+  <style>text {
+  fill: #333;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+text.title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+}
+text.brand {
+  font-family: 'Audiowide', sans-serif;
+  font-weight: bold;
+}
+
+polyline {
+  stroke: #333;
+}
+path {
+  stroke: #333;
+}
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background, rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
+}
+polyline.input-label, polyline.output-label {
+}
+path.input-label, path.output-label {
+}
+
+circle.port-rim {
+  stroke: #f0f0f0;
+}
+circle.port-barrel {
+  stroke: #222;
+  fill: #222;
+}
+circle.knob-center {
+   fill: #eee;
+}
+circle.knob-rim {
+   fill: #333;
+}
+circle.knob-tick {
+  fill: #fff;
+}
+polyline.knob-tick {
+  stroke: #fff;
+}
+
+
+text {
+  fill: #b3b3b3;
+}
+
+polyline {
+  stroke: #b3b3b3;
+}
+path {
+  stroke: #b3b3b3;
+}
+
+rect.module-background, .background-fill {
+  fill: #333;
+}
+polyline.module-border-inner {
+  stroke: #191919;
+}
+polyline.module-border-middle {
+  stroke: #111;
+}
+polyline.module-border-outer {
+  stroke: #000;
+}
+
+rect.input-background, rect.input-background-filler {
+  fill: #b3b3b3;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #888;
+}
+text.input-label {
+  fill: #666;
+}
+polyline.input-label, path.input-label {
+  stroke: #666;
+}
+text.output-label {
+  fill: #ccc;
+}
+polyline.output-label, path.output-label {
+  stroke: #ccc;
+}
+
+circle.port-rim {
+  stroke: #ccc;
+}
+circle.port-barrel {
+  stroke: #222;
+  fill: #222;
+}
+circle.knob-center {
+   fill: #bbb;
+}
+circle.knob-rim {
+   fill: #555;
+}
+circle.knob-tick {
+  fill: #fff;
+}
+polyline.knob-tick {
+  stroke: #fff;
+}
+</style>
+
+  
+      
+      <rect class="module-background background-fill" width="330.0" height="380.0"/>
+    
+      
+      <polyline class="module-border-inner" points="1,1 329.0,1 329.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 329.5,0.5 329.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 330.0,0 330.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    
+      <text class="title" font-size="12pt" letter-spacing="4px" text-anchor="middle" transform="translate(165.0 19)">SWITCH88</text>
+      <g transform="translate(0 374)">
+        <text class="brand" font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate(165.0 0)">BOGAUDIO</text>
+        <rect class="background-fill" width="3" height="3" transform="translate(149.5 -5)"/>
+      </g>
+    
+
+  <g class="io-group" transform="translate(5.5 25)">
+    <rect class="input-background" width="34" height="293" rx="5" transform="translate(0 0)"/>
+    <g transform="translate(5 5)"><svg id="IN1_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(5 42)"><svg id="IN2_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(5 79)"><svg id="IN3_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(5 116)"><svg id="IN4_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(5 153)"><svg id="IN5_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(5 190)"><svg id="IN6_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(5 227)"><svg id="IN7_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(5 264)"><svg id="IN8_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+  </g>
+
+  <g class="io-group" transform="translate(46.5 323)">
+    <rect class="output-background" width="278.5" height="34" rx="5" transform="translate(0 0)"/>
+    <g transform="translate(5 5)"><svg id="OUT1_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(40 5)"><svg id="OUT2_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(75 5)"><svg id="OUT3_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(110 5)"><svg id="OUT4_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(145 5)"><svg id="OUT5_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(180 5)"><svg id="OUT6_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(215 5)"><svg id="OUT7_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(250 5)"><svg id="OUT8_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+  </g>
+
+  <g transform="translate(50 24)">
+    <g transform="translate(4.5 9)"><svg id="MIX11_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(50 61)">
+    <g transform="translate(4.5 9)"><svg id="MIX21_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(50 98)">
+    <g transform="translate(4.5 9)"><svg id="MIX31_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(50 135)">
+    <g transform="translate(4.5 9)"><svg id="MIX41_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(50 172)">
+    <g transform="translate(4.5 9)"><svg id="MIX51_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(50 209)">
+    <g transform="translate(4.5 9)"><svg id="MIX61_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(50 246)">
+    <g transform="translate(4.5 9)"><svg id="MIX71_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(50 283)">
+    <g transform="translate(4.5 9)"><svg id="MIX81_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+
+  <g transform="translate(85 24)">
+    <g transform="translate(4.5 9)"><svg id="MIX12_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(85 61)">
+    <g transform="translate(4.5 9)"><svg id="MIX22_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(85 98)">
+    <g transform="translate(4.5 9)"><svg id="MIX32_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(85 135)">
+    <g transform="translate(4.5 9)"><svg id="MIX42_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(85 172)">
+    <g transform="translate(4.5 9)"><svg id="MIX52_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(85 209)">
+    <g transform="translate(4.5 9)"><svg id="MIX62_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(85 246)">
+    <g transform="translate(4.5 9)"><svg id="MIX72_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(85 283)">
+    <g transform="translate(4.5 9)"><svg id="MIX82_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+
+  <g transform="translate(120 24)">
+    <g transform="translate(4.5 9)"><svg id="MIX13_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(120 61)">
+    <g transform="translate(4.5 9)"><svg id="MIX23_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(120 98)">
+    <g transform="translate(4.5 9)"><svg id="MIX33_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(120 135)">
+    <g transform="translate(4.5 9)"><svg id="MIX43_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(120 172)">
+    <g transform="translate(4.5 9)"><svg id="MIX53_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(120 209)">
+    <g transform="translate(4.5 9)"><svg id="MIX63_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(120 246)">
+    <g transform="translate(4.5 9)"><svg id="MIX73_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(120 283)">
+    <g transform="translate(4.5 9)"><svg id="MIX83_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+
+  <g transform="translate(155 24)">
+    <g transform="translate(4.5 9)"><svg id="MIX14_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(155 61)">
+    <g transform="translate(4.5 9)"><svg id="MIX24_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(155 98)">
+    <g transform="translate(4.5 9)"><svg id="MIX34_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(155 135)">
+    <g transform="translate(4.5 9)"><svg id="MIX44_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(155 172)">
+    <g transform="translate(4.5 9)"><svg id="MIX54_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(155 209)">
+    <g transform="translate(4.5 9)"><svg id="MIX64_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(155 246)">
+    <g transform="translate(4.5 9)"><svg id="MIX74_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(155 283)">
+    <g transform="translate(4.5 9)"><svg id="MIX84_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+
+  <g transform="translate(190 24)">
+    <g transform="translate(4.5 9)"><svg id="MIX15_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(190 61)">
+    <g transform="translate(4.5 9)"><svg id="MIX25_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(190 98)">
+    <g transform="translate(4.5 9)"><svg id="MIX35_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(190 135)">
+    <g transform="translate(4.5 9)"><svg id="MIX45_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(190 172)">
+    <g transform="translate(4.5 9)"><svg id="MIX55_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(190 209)">
+    <g transform="translate(4.5 9)"><svg id="MIX65_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(190 246)">
+    <g transform="translate(4.5 9)"><svg id="MIX75_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(190 283)">
+    <g transform="translate(4.5 9)"><svg id="MIX85_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+
+  <g transform="translate(225 24)">
+    <g transform="translate(4.5 9)"><svg id="MIX16_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(225 61)">
+    <g transform="translate(4.5 9)"><svg id="MIX26_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(225 98)">
+    <g transform="translate(4.5 9)"><svg id="MIX36_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(225 135)">
+    <g transform="translate(4.5 9)"><svg id="MIX46_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(225 172)">
+    <g transform="translate(4.5 9)"><svg id="MIX56_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(225 209)">
+    <g transform="translate(4.5 9)"><svg id="MIX66_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(225 246)">
+    <g transform="translate(4.5 9)"><svg id="MIX76_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(225 283)">
+    <g transform="translate(4.5 9)"><svg id="MIX86_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+
+  <g transform="translate(260 24)">
+    <g transform="translate(4.5 9)"><svg id="MIX17_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(260 61)">
+    <g transform="translate(4.5 9)"><svg id="MIX27_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(260 98)">
+    <g transform="translate(4.5 9)"><svg id="MIX37_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(260 135)">
+    <g transform="translate(4.5 9)"><svg id="MIX47_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(260 172)">
+    <g transform="translate(4.5 9)"><svg id="MIX57_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(260 209)">
+    <g transform="translate(4.5 9)"><svg id="MIX67_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(260 246)">
+    <g transform="translate(4.5 9)"><svg id="MIX77_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(260 283)">
+    <g transform="translate(4.5 9)"><svg id="MIX87_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+
+  <g transform="translate(295 24)">
+    <g transform="translate(4.5 9)"><svg id="MIX18_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(295 61)">
+    <g transform="translate(4.5 9)"><svg id="MIX28_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(295 98)">
+    <g transform="translate(4.5 9)"><svg id="MIX38_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(295 135)">
+    <g transform="translate(4.5 9)"><svg id="MIX48_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(295 172)">
+    <g transform="translate(4.5 9)"><svg id="MIX58_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(295 209)">
+    <g transform="translate(4.5 9)"><svg id="MIX68_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(295 246)">
+    <g transform="translate(4.5 9)"><svg id="MIX78_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+  <g transform="translate(295 283)">
+    <g transform="translate(4.5 9)"><svg id="MIX88_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+</svg>

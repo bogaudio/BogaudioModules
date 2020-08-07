@@ -1,0 +1,392 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="300.0" height="380.0" viewBox="0 0 300.0 380.0">
+  <style>text {
+  fill: #333;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+text.title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+}
+text.brand {
+  font-family: 'Audiowide', sans-serif;
+  font-weight: bold;
+}
+
+polyline {
+  stroke: #333;
+}
+path {
+  stroke: #333;
+}
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background, rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
+}
+polyline.input-label, polyline.output-label {
+}
+path.input-label, path.output-label {
+}
+
+circle.port-rim {
+  stroke: #f0f0f0;
+}
+circle.port-barrel {
+  stroke: #222;
+  fill: #222;
+}
+circle.knob-center {
+   fill: #eee;
+}
+circle.knob-rim {
+   fill: #333;
+}
+circle.knob-tick {
+  fill: #fff;
+}
+polyline.knob-tick {
+  stroke: #fff;
+}
+
+
+text {
+  fill: #b3b3b3;
+}
+
+polyline {
+  stroke: #b3b3b3;
+}
+path {
+  stroke: #b3b3b3;
+}
+
+rect.module-background, .background-fill {
+  fill: #333;
+}
+polyline.module-border-inner {
+  stroke: #191919;
+}
+polyline.module-border-middle {
+  stroke: #111;
+}
+polyline.module-border-outer {
+  stroke: #000;
+}
+
+rect.input-background, rect.input-background-filler {
+  fill: #b3b3b3;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #888;
+}
+text.input-label {
+  fill: #666;
+}
+polyline.input-label, path.input-label {
+  stroke: #666;
+}
+text.output-label {
+  fill: #ccc;
+}
+polyline.output-label, path.output-label {
+  stroke: #ccc;
+}
+
+circle.port-rim {
+  stroke: #ccc;
+}
+circle.port-barrel {
+  stroke: #222;
+  fill: #222;
+}
+circle.knob-center {
+   fill: #bbb;
+}
+circle.knob-rim {
+   fill: #555;
+}
+circle.knob-tick {
+  fill: #fff;
+}
+polyline.knob-tick {
+  stroke: #fff;
+}
+</style>
+
+  <defs>
+    <symbol id="dial-range-analyzer" viewBox="0 0 100px 100px">
+      <g transform="translate(50.5 50.5)">
+        <path d="M 0 -32 A 32 32 0 0 1 32 0" stroke-width="0.7" stroke-linecap="round" stroke="#b3b3b3" fill="none" transform="rotate(15)"/>
+        <path d="M 0 -32 A 32 32 0 0 1 32 0" stroke-width="0.7" stroke-linecap="round" stroke="#b3b3b3" fill="none" transform="rotate(50)"/>
+        <path d="M 0 -32 A 32 32 0 0 0 -32 0" stroke-width="0.7" stroke-linecap="round" stroke="#b3b3b3" fill="none" transform="rotate(-15)"/>
+        <path d="M 0 -32 A 32 32 0 0 0 -32 0" stroke-width="0.7" stroke-linecap="round" stroke="#b3b3b3" fill="none" transform="rotate(-50)"/>
+        <g transform="rotate(-90) translate(29 0)">
+          <polyline points="0,0 6,0" stroke-width="1.5"/>
+        </g>
+      </g>
+    </symbol>
+
+    <symbol id="dial-smooth-analyzer" viewBox="0 0 100px 100px">
+      <g transform="translate(50.5 50.5)">
+        <g transform="rotate(-240) translate(31 0)">
+          <g transform="translate(2 0) rotate(240)">
+            <text font-size="7pt" transform="translate(-4 4)">0</text>
+          </g>
+        </g>
+        <g transform="rotate(-210) translate(30 0)">
+          <polyline points="0,0 4,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(-180) translate(30 0)">
+          <polyline points="0,0 4,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(-150) translate(30 0)">
+          <polyline points="0,0 5,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(-120) translate(30 0)">
+          <polyline points="0,0 4,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(-90) translate(30 0)">
+          <polyline points="0,0 4,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(-60) translate(30 0)">
+          <polyline points="0,0 4,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(-30) translate(30 0)">
+          <polyline points="0,0 4,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(0) translate(30 0)">
+          <polyline points="0,0 4,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(30) translate(30 0)">
+          <polyline points="0,0 4,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(60) translate(31 0)">
+          <g transform="translate(2 0) rotate(-60)">
+            <text font-size="7pt" transform="translate(-6 4.3)">500ms</text>
+          </g>
+        </g>
+      </g>
+    </symbol>
+  </defs>
+
+  
+      
+      <rect class="module-background background-fill" width="300.0" height="380.0"/>
+    
+      
+      <polyline class="module-border-inner" points="1,1 299.0,1 299.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 299.5,0.5 299.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 300.0,0 300.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    
+      <text class="title" font-size="12pt" letter-spacing="4px" text-anchor="middle" transform="translate(150.0 19)">ANALYZER</text>
+      <g transform="translate(0 374)">
+        <text class="brand" font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate(150.0 0)">BOGAUDIO</text>
+        <rect class="background-fill" width="3" height="3" transform="translate(134.5 -5)"/>
+      </g>
+    
+
+  <g transform="translate(10 25)">
+    <svg id="DISPLAY_WIDGET">
+      <rect cx="0" cy="0" width="280" height="230" fill="#444"/>
+    </svg>
+  </g>
+
+  
+  
+  
+  
+  
+  
+  <g transform="translate(0 320)">
+    <g class="io-group" transform="translate(10 0)">
+      <rect class="input-background" width="62" height="40" rx="5"/>
+      <rect class="output-background" width="23" height="40" rx="5" transform="translate(40)"/>
+      <rect class="output-background-filler" width="20" height="40" transform="translate(31)"/>
+      <g transform="translate(3.5 3)"><svg id="SIGNALA_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
+      <g transform="translate(34.5 3)"><svg id="SIGNALA_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(33.5 36)">THRU</text>
+    </g>
+
+    <g class="io-group" transform="translate(82.5 0)">
+      <rect class="input-background" width="62" height="40" rx="5"/>
+      <rect class="output-background" width="23" height="40" rx="5" transform="translate(40)"/>
+      <rect class="output-background-filler" width="20" height="40" transform="translate(31)"/>
+      <g transform="translate(3.5 3)"><svg id="SIGNALB_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
+      <g transform="translate(34.5 3)"><svg id="SIGNALB_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(33.5 36)">THRU</text>
+    </g>
+
+    <g class="io-group" transform="translate(155 0)">
+      <rect class="input-background" width="62" height="40" rx="5"/>
+      <rect class="output-background" width="23" height="40" rx="5" transform="translate(40)"/>
+      <rect class="output-background-filler" width="20" height="40" transform="translate(31)"/>
+      <g transform="translate(3.5 3)"><svg id="SIGNALC_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
+      <g transform="translate(34.5 3)"><svg id="SIGNALC_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(33.5 36)">THRU</text>
+    </g>
+
+    <g class="io-group" transform="translate(227 0)">
+      <rect class="input-background" width="62" height="40" rx="5"/>
+      <rect class="output-background" width="23" height="40" rx="5" transform="translate(40)"/>
+      <rect class="output-background-filler" width="20" height="40" transform="translate(31)"/>
+      <g transform="translate(3.5 3)"><svg id="SIGNALD_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(10.5 36)">IN</text>
+      <g transform="translate(34.5 3)"><svg id="SIGNALD_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="output-label" font-size="6pt" letter-spacing="2px" transform="translate(33.5 36)">THRU</text>
+    </g>
+  </g>
+
+  <g transform="translate(0 271)">
+    <g transform="translate(30 0)">
+      <g transform="translate(0 0)"><svg id="RANGE2_PARAM">
+      <g transform="translate(19 19)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+      <text font-size="7pt" letter-spacing="2px" transform="rotate(-90) translate(-38 -11)">RANGE</text>
+    </g>
+
+    <g transform="translate(103 0)">
+      <g transform="translate(0 0)"><svg id="SMOOTH_PARAM">
+      <g transform="translate(19 19)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="18.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+      <text font-size="7pt" letter-spacing="2px" transform="rotate(-90) translate(-44 -11)">SMOOTH</text>
+    </g>
+
+    <g transform="translate(175 0)">
+      <g transform="translate(-5 -5)">
+        <g transform="translate(0 1)">
+          <g transform="translate(0 0)"><svg id="QUALITY_ULTRA_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+          <text font-size="6pt" letter-spacing="2px" transform="translate(9 6.1)">ULTRA</text>
+        </g>
+        <g transform="translate(0 15)">
+          <g transform="translate(0 0)"><svg id="QUALITY_HIGH_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+          <text font-size="6pt" letter-spacing="2px" transform="translate(9 6.1)">HIGH</text>
+        </g>
+        <g transform="translate(0 29)">
+          <g transform="translate(0 0)"><svg id="QUALITY_GOOD_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+          <text font-size="6pt" letter-spacing="2px" transform="translate(9 6.1)">GOOD</text>
+        </g>
+        <g transform="translate(9 40)">
+          <svg id="QUALITY_PARAM">
+      <g transform="translate(4.5 4.5)">
+        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg>
+        </g>
+      </g>
+      <text font-size="7pt" letter-spacing="2px" transform="rotate(-90) translate(-45 -11)">QUALITY</text>
+    </g>
+
+    <g transform="translate(247 0)">
+      <g transform="translate(-6 -5)">
+        <g transform="translate(0 1)">
+          <g transform="translate(0 0)"><svg id="WINDOW_NONE_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+          <text font-size="6pt" letter-spacing="2px" transform="translate(9 6.1)">NONE</text>
+        </g>
+        <g transform="translate(0 15)">
+          <g transform="translate(0 0)"><svg id="WINDOW_HAMMING_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+          <text font-size="6pt" letter-spacing="0.5px" transform="translate(9 6.1)">HAMMING</text>
+        </g>
+        <g transform="translate(0 29)">
+          <g transform="translate(0 0)"><svg id="WINDOW_KAISER_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+          <text font-size="6pt" letter-spacing="1px" transform="translate(9 6.1)">KAISER</text>
+        </g>
+        <g transform="translate(9 40)">
+          <svg id="WINDOW_PARAM">
+      <g transform="translate(4.5 4.5)">
+        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg>
+        </g>
+      </g>
+      <text font-size="7pt" letter-spacing="2px" transform="rotate(-90) translate(-43.5 -11)">WINDOW</text>
+    </g>
+  </g>
+
+  <use xlink:href="#dial-range-analyzer" transform=" translate(11.3 252) scale(0.75)" href="#dial-range-analyzer"/>
+  <use xlink:href="#dial-smooth-analyzer" transform=" translate(84.3 252) scale(0.75)" href="#dial-smooth-analyzer"/>
+</svg>

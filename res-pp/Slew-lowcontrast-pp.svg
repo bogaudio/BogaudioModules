@@ -1,0 +1,286 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="45.0" height="380.0" viewBox="0 0 45.0 380.0">
+  <style>text {
+  fill: #333;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+text.title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+}
+text.brand {
+  font-family: 'Audiowide', sans-serif;
+  font-weight: bold;
+}
+
+polyline {
+  stroke: #333;
+}
+path {
+  stroke: #333;
+}
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background, rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
+}
+polyline.input-label, polyline.output-label {
+}
+path.input-label, path.output-label {
+}
+
+circle.port-rim {
+  stroke: #f0f0f0;
+}
+circle.port-barrel {
+  stroke: #222;
+  fill: #222;
+}
+circle.knob-center {
+   fill: #eee;
+}
+circle.knob-rim {
+   fill: #333;
+}
+circle.knob-tick {
+  fill: #fff;
+}
+polyline.knob-tick {
+  stroke: #fff;
+}
+
+
+text {
+  fill: #b3b3b3;
+}
+
+polyline {
+  stroke: #b3b3b3;
+}
+path {
+  stroke: #b3b3b3;
+}
+
+rect.module-background, .background-fill {
+  fill: #333;
+}
+polyline.module-border-inner {
+  stroke: #191919;
+}
+polyline.module-border-middle {
+  stroke: #111;
+}
+polyline.module-border-outer {
+  stroke: #000;
+}
+
+rect.input-background, rect.input-background-filler {
+  fill: #b3b3b3;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #888;
+}
+text.input-label {
+  fill: #666;
+}
+polyline.input-label, path.input-label {
+  stroke: #666;
+}
+text.output-label {
+  fill: #ccc;
+}
+polyline.output-label, path.output-label {
+  stroke: #ccc;
+}
+
+circle.port-rim {
+  stroke: #ccc;
+}
+circle.port-barrel {
+  stroke: #222;
+  fill: #222;
+}
+circle.knob-center {
+   fill: #bbb;
+}
+circle.knob-rim {
+   fill: #555;
+}
+circle.knob-tick {
+  fill: #fff;
+}
+polyline.knob-tick {
+  stroke: #fff;
+}
+</style>
+
+  <defs>
+    <symbol id="dial-time-slew" viewBox="0 0 45px 45px">
+      <g transform="translate(22.5 22.5)">
+        <text font-size="5.0pt" transform="rotate(-240) translate(18 0) rotate(240) translate(-1.9 2.2)">0</text>
+        <polyline points="0,0 1.5,0" stroke-width="0.7" transform="rotate(-172.92) translate(15 0)"/>
+        <text font-size="5.0pt" transform="rotate(-145.13) translate(17 0) rotate(145.13) translate(-2.5 2.2)">1</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-75.68) translate(15 0)"/>
+        <text font-size="5.0pt" transform="rotate(-27.87) translate(17 0) rotate(27.87) translate(-2 2.2)">5</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(19.81) translate(15 0)"/>
+        <text font-size="5.0pt" transform="rotate(60) translate(18 0) rotate(-60) translate(-1.9 2.2)">10</text>
+      </g>
+    </symbol>
+
+    <symbol id="dial-rise-shape-slew" viewBox="0 0 45px 45px">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-52.5) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-15) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(22.5) translate(10 0)"/>
+
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-127.5) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-165) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-202.5) translate(10 0)"/>
+
+        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#b3b3b3" fill="none" transform="rotate(60) translate(13 0) rotate(-60) translate(2 0) rotate(-45) translate(0 0)"/>
+        <polyline points="-3.5,0 3.5,0" stroke-width="1" fill="none" transform="rotate(-90) translate(13 0) rotate(90) rotate(-45) translate(0 0)"/>
+        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#b3b3b3" fill="none" transform="rotate(-240) translate(13 0) rotate(240) translate(-2 0) rotate(135) translate(0 0)"/>
+      </g>
+    </symbol>
+
+    <symbol id="dial-fall-shape-slew" viewBox="0 0 45px 45px">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-52.5) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-15) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(22.5) translate(10 0)"/>
+
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-127.5) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-165) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-202.5) translate(10 0)"/>
+
+        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#b3b3b3" fill="none" transform="rotate(60) translate(13 0) rotate(-60) translate(2 0) rotate(-135) translate(0 0)"/>
+        <polyline points="-3.5,0 3.5,0" stroke-width="1" fill="none" transform="rotate(-90) translate(13 0) rotate(90) rotate(45) translate(0 0)"/>
+        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#b3b3b3" fill="none" transform="rotate(-240) translate(13 0) rotate(240) translate(-2 0) rotate(45) translate(0 0)"/>
+      </g>
+    </symbol>
+  </defs>
+
+  
+      
+      <rect class="module-background background-fill" width="45.0" height="380.0"/>
+    
+      
+      <polyline class="module-border-inner" points="1,1 44.0,1 44.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 44.5,0.5 44.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 45.0,0 45.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    
+      <g transform="rotate(-90) translate(-376.0 13)">
+        <text class="title" font-size="7pt" letter-spacing="2.5px">SLEW</text>
+        <g transform="translate(0 12)">
+          <text class="brand" font-size="7pt" letter-spacing="2px">BGA</text>
+          <rect class="background-fill" width="3.0" height="3" fill="#ddd" transform="translate(11.5 -5)"/>
+        </g>
+      </g>
+    
+
+  <g transform="translate(0 25)">
+    <text font-size="6pt" letter-spacing="2.0px" transform="translate(11 0)">RISE</text>
+    <g transform="translate(9.5 9)"><svg id="RISE_PARAM">
+      <g transform="translate(13 13)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <use xlink:href="#dial-time-slew" transform="translate(0 -1)" href="#dial-time-slew"/>
+    <g transform="translate(14.5 51)"><svg id="RISE_SHAPE_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <use xlink:href="#dial-rise-shape-slew" transform="translate(2.5 39)" href="#dial-rise-shape-slew"/>
+    <g class="io-group" transform="translate(7.5 77)">
+      <rect class="input-background" width="30" height="30" rx="5"/>
+      <g transform="translate(3 3)"><svg id="RISE_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      
+    </g>
+  </g>
+
+  <g transform="translate(0 146)">
+    <text font-size="6pt" letter-spacing="2.0px" transform="translate(11 0)">FALL</text>
+    <g transform="translate(9.5 9)"><svg id="FALL_PARAM">
+      <g transform="translate(13 13)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <use xlink:href="#dial-time-slew" transform="translate(0 -1)" href="#dial-time-slew"/>
+    <g transform="translate(14.5 51)"><svg id="FALL_SHAPE_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <use xlink:href="#dial-fall-shape-slew" transform="translate(2.5 39)" href="#dial-fall-shape-slew"/>
+    <g class="io-group" transform="translate(7.5 77)">
+      <rect class="input-background" width="30" height="30" rx="5"/>
+      <g transform="translate(3 3)"><svg id="FALL_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      
+    </g>
+  </g>
+
+  <g transform="translate(0 260)">
+    <g class="io-group" transform="translate(5.5 0)">
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 28)"/>
+      <rect class="input-background" width="34" height="35" rx="5"/>
+      <g transform="translate(5 3)"><svg id="IN_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 35)">IN</text>
+    </g>
+    <g class="io-group" transform="translate(5.5 41)">
+      <rect class="output-background-filler" width="34" height="10" transform="translate(0 -3)"/>
+      <rect class="output-background" width="34" height="35" rx="5"/>
+      <g transform="translate(5 0)"><svg id="OUT_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
+    </g>
+  </g>
+</svg>

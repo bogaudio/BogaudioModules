@@ -98,6 +98,7 @@ NVGcolor Skins::cssColorToNVGColor(const char* color, const NVGcolor& ifError) {
 void Skins::loadSkins() {
 	_available.push_back(Skin("light", "Light"));
 	_available.push_back(Skin("dark", "Dark"));
+	_available.push_back(Skin("lowcontrast", "Dark (low-contrast)"));
 	_default = "light";
 
 	std::string path = rack::asset::user("BogaudioModules.json");

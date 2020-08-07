@@ -1,0 +1,317 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="45.0" height="380.0" viewBox="0 0 45.0 380.0">
+  <style>text {
+  fill: #333;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+text.title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+}
+text.brand {
+  font-family: 'Audiowide', sans-serif;
+  font-weight: bold;
+}
+
+polyline {
+  stroke: #333;
+}
+path {
+  stroke: #333;
+}
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background, rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
+}
+polyline.input-label, polyline.output-label {
+}
+path.input-label, path.output-label {
+}
+
+circle.port-rim {
+  stroke: #f0f0f0;
+}
+circle.port-barrel {
+  stroke: #222;
+  fill: #222;
+}
+circle.knob-center {
+   fill: #eee;
+}
+circle.knob-rim {
+   fill: #333;
+}
+circle.knob-tick {
+  fill: #fff;
+}
+polyline.knob-tick {
+  stroke: #fff;
+}
+
+
+text {
+  fill: #b3b3b3;
+}
+
+polyline {
+  stroke: #b3b3b3;
+}
+path {
+  stroke: #b3b3b3;
+}
+
+rect.module-background, .background-fill {
+  fill: #333;
+}
+polyline.module-border-inner {
+  stroke: #191919;
+}
+polyline.module-border-middle {
+  stroke: #111;
+}
+polyline.module-border-outer {
+  stroke: #000;
+}
+
+rect.input-background, rect.input-background-filler {
+  fill: #b3b3b3;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #888;
+}
+text.input-label {
+  fill: #666;
+}
+polyline.input-label, path.input-label {
+  stroke: #666;
+}
+text.output-label {
+  fill: #ccc;
+}
+polyline.output-label, path.output-label {
+  stroke: #ccc;
+}
+
+circle.port-rim {
+  stroke: #ccc;
+}
+circle.port-barrel {
+  stroke: #222;
+  fill: #222;
+}
+circle.knob-center {
+   fill: #bbb;
+}
+circle.knob-rim {
+   fill: #555;
+}
+circle.knob-tick {
+  fill: #fff;
+}
+polyline.knob-tick {
+  stroke: #fff;
+}
+</style>
+
+  <defs>
+    <symbol id="dial-pitch-reftone" viewBox="0 0 45px 45px">
+      <g transform="translate(22.5 22.5)">
+        <g transform="rotate(-240) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(240) translate(-2.2 2.2)">C</text>
+        </g>
+        <g transform="rotate(-212.73) translate(15 0)">
+          <polyline points="0,0 2.5,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(-185.45) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(185.45) translate(-2.2 2.2)">D</text>
+        </g>
+        <g transform="rotate(-158.18) translate(15 0)">
+          <polyline points="0,0 2.5,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(-130.91) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(130.91) translate(-2.2 2.2)">E</text>
+        </g>
+        <g transform="rotate(-103.64) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(103.64) translate(-2.2 2.2)">F</text>
+        </g>
+        <g transform="rotate(-76.36) translate(15 0)">
+          <polyline points="0,0 2.5,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(-49.09) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(49.09) translate(-2.2 2.2)">G</text>
+        </g>
+        <g transform="rotate(-21.82) translate(15 0)">
+          <polyline points="0,0 2.5,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(5.45) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(-5.45) translate(-2.2 2.2)">A</text>
+        </g>
+        <g transform="rotate(32.73) translate(15 0)">
+          <polyline points="0,0 2.5,0" stroke-width="0.7"/>
+        </g>
+        <g transform="rotate(60) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(-60) translate(-2.2 2.2)">B</text>
+        </g>
+      </g>
+    </symbol>
+
+    <symbol id="dial-octave-reftone" viewBox="0 0 45px 45px">
+      <g transform="translate(22.5 22.5)">
+        <g transform="rotate(-240) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(240) translate(-2.2 2.2)">1</text>
+        </g>
+        <g transform="rotate(-197.14) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(197.14) translate(-2.2 2.2)">2</text>
+        </g>
+        <g transform="rotate(-154.29) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(154.29) translate(-2.2 2.2)">3</text>
+        </g>
+        <g transform="rotate(-111.43) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(111.43) translate(-2.2 2.2)">4</text>
+        </g>
+        <g transform="rotate(-68.57) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(68.57) translate(-2.2 2.2)">5</text>
+        </g>
+        <g transform="rotate(-25.71) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(25.71) translate(-2.2 2.2)">6</text>
+        </g>
+        <g transform="rotate(17.14) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(-17.14) translate(-2.2 2.2)">7</text>
+        </g>
+        <g transform="rotate(60) translate(15 0)">
+          <text font-size="5.0pt" transform="translate(2 0) rotate(-60) translate(-2.2 2.2)">8</text>
+        </g>
+      </g>
+    </symbol>
+
+    <symbol id="dial-fine-reftone" viewBox="0 0 45px 45px">
+      <g transform="translate(22.5 22.5)">
+        <g transform="rotate(-240) translate(15 0)">
+          
+          <text font-size="5.0pt" transform="translate(2.5 0) rotate(240) translate(-1.5 2.2)">-</text>
+        </g>
+        <g transform="rotate(-90) translate(15 0)">
+          
+          <text font-size="5.0pt" transform="translate(2 0) rotate(90) translate(-1.9 2.2)">0</text>
+        </g>
+        <g transform="rotate(60) translate(15 0)">
+          
+          <text font-size="5.0pt" transform="translate(2.5 0) rotate(-60) translate(-1.9 2.2)">+</text>
+        </g>
+        <path d="M 0 -17.5 A 17.5 17.5 0 0 1 17.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#b3b3b3" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -17.5 A 17.5 17.5 0 0 1 17.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#b3b3b3" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -17.5 A 17.5 17.5 0 0 0 -17.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#b3b3b3" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -17.5 A 17.5 17.5 0 0 0 -17.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#b3b3b3" fill="none" transform="rotate(-43)"/>
+      </g>
+    </symbol>
+  </defs>
+
+  
+      
+      <rect class="module-background background-fill" width="45.0" height="380.0"/>
+    
+      
+      <polyline class="module-border-inner" points="1,1 44.0,1 44.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 44.5,0.5 44.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 45.0,0 45.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    
+      <g transform="rotate(-90) translate(-376.0 13)">
+        <text class="title" font-size="7pt" letter-spacing="2.5px">REFTONE</text>
+        <g transform="translate(0 12)">
+          <text class="brand" font-size="7pt" letter-spacing="2px">BGA</text>
+          <rect class="background-fill" width="3.0" height="3" fill="#ddd" transform="translate(11.5 -5)"/>
+        </g>
+      </g>
+    
+
+  <g transform="translate(0 18)">
+    <g transform="translate(3.5 0)"><svg id="DISPLAY_WIDGET">
+      <rect cx="0" cy="0" width="38" height="48" fill="#444"/>
+    </svg></g>
+
+    <g transform="translate(0 62)">
+      <g transform="translate(0 0)">
+        <text font-size="6pt" letter-spacing="2px" transform="translate(7 0)">PITCH</text>
+        <g transform="translate(9.5 9.5)"><svg id="PITCH_PARAM">
+      <g transform="translate(13 13)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+      </g>
+
+      <g transform="translate(0 54)">
+        <text font-size="6pt" letter-spacing="2px" transform="translate(2.5 0)">OCTAVE</text>
+        <g transform="translate(9.5 9.5)"><svg id="OCTAVE_PARAM">
+      <g transform="translate(13 13)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+      </g>
+
+      <g transform="translate(0 108)">
+        <text font-size="6pt" letter-spacing="2px" transform="translate(11 0)">FINE</text>
+        <g transform="translate(9.5 9.5)"><svg id="FINE_PARAM">
+      <g transform="translate(13 13)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+      </g>
+    </g>
+  </g>
+
+  <use xlink:href="#dial-pitch-reftone" transform="translate(0 80)" href="#dial-pitch-reftone"/>
+  <use xlink:href="#dial-octave-reftone" transform="translate(0 134)" href="#dial-octave-reftone"/>
+  <use xlink:href="#dial-fine-reftone" transform="translate(0 188)" href="#dial-fine-reftone"/>
+
+  <g transform="translate(0 235)">
+    <g class="io-group" transform="translate(0 0)">
+      <rect class="output-background" width="34" height="75" rx="5" transform="translate(5.5 0)"/>
+      <g transform="translate(5.5 1)">
+        <g transform="translate(5 3)"><svg id="CV_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+        <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(3 35)">V/OCT</text>
+      </g>
+      <g transform="translate(5.5 39)">
+        <g transform="translate(5 0)"><svg id="OUT_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+        <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(6.5 32)">SINE</text>
+      </g>
+    </g>
+  </g>
+</svg>

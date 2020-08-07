@@ -7,8 +7,15 @@
     "knob-tick": "#fff"
   },
   "dark": {
-    "background-fill": "#222",
-    "path-stroke": "#ddd",
+    "background-fill": "#111",
+    "path-stroke": "#ccc",
+    "knob-center": "#bbb",
+    "knob-rim": "#555",
+    "knob-tick": "#fff"
+  },
+  "lowcontrast": {
+    "background-fill": "#333",
+    "path-stroke": "#b3b3b3",
     "knob-center": "#bbb",
     "knob-rim": "#555",
     "knob-tick": "#fff"

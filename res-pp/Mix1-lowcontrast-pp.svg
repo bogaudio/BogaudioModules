@@ -1,0 +1,247 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="45.0" height="380.0" viewBox="0 0 45.0 380.0">
+  <style>text {
+  fill: #333;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+text.title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+}
+text.brand {
+  font-family: 'Audiowide', sans-serif;
+  font-weight: bold;
+}
+
+polyline {
+  stroke: #333;
+}
+path {
+  stroke: #333;
+}
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background, rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
+}
+polyline.input-label, polyline.output-label {
+}
+path.input-label, path.output-label {
+}
+
+circle.port-rim {
+  stroke: #f0f0f0;
+}
+circle.port-barrel {
+  stroke: #222;
+  fill: #222;
+}
+circle.knob-center {
+   fill: #eee;
+}
+circle.knob-rim {
+   fill: #333;
+}
+circle.knob-tick {
+  fill: #fff;
+}
+polyline.knob-tick {
+  stroke: #fff;
+}
+
+
+text {
+  fill: #b3b3b3;
+}
+
+polyline {
+  stroke: #b3b3b3;
+}
+path {
+  stroke: #b3b3b3;
+}
+
+rect.module-background, .background-fill {
+  fill: #333;
+}
+polyline.module-border-inner {
+  stroke: #191919;
+}
+polyline.module-border-middle {
+  stroke: #111;
+}
+polyline.module-border-outer {
+  stroke: #000;
+}
+
+rect.input-background, rect.input-background-filler {
+  fill: #b3b3b3;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #888;
+}
+text.input-label {
+  fill: #666;
+}
+polyline.input-label, path.input-label {
+  stroke: #666;
+}
+text.output-label {
+  fill: #ccc;
+}
+polyline.output-label, path.output-label {
+  stroke: #ccc;
+}
+
+circle.port-rim {
+  stroke: #ccc;
+}
+circle.port-barrel {
+  stroke: #222;
+  fill: #222;
+}
+circle.knob-center {
+   fill: #bbb;
+}
+circle.knob-rim {
+   fill: #555;
+}
+circle.knob-tick {
+  fill: #fff;
+}
+polyline.knob-tick {
+  stroke: #fff;
+}
+</style>
+
+  
+      
+      <rect class="module-background background-fill" width="45.0" height="380.0"/>
+    
+      
+      <polyline class="module-border-inner" points="1,1 44.0,1 44.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 44.5,0.5 44.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 45.0,0 45.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    
+      <g transform="rotate(-90) translate(-376.0 13)">
+        <text class="title" font-size="7pt" letter-spacing="2.5px">MIX1</text>
+        <g transform="translate(0 12)">
+          <text class="brand" font-size="7pt" letter-spacing="2px">BGA</text>
+          <rect class="background-fill" width="3.0" height="3" fill="#ddd" transform="translate(11.5 -5)"/>
+        </g>
+      </g>
+    
+
+  <g transform="translate(0 18)">
+    <g transform="translate(0 0)">
+      <g transform="translate(0 6.5)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+      </g>
+      <g transform="translate(0 19.05)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(0) translate(-2.5 2.6)">0</text>
+      </g>
+      <g transform="translate(0 32.86)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-4 2.2)">-6</text>
+      </g>
+      <g transform="translate(0 46.05)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-12</text>
+      </g>
+      <g transform="translate(0 72.41)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-24</text>
+      </g>
+      <g transform="translate(0 125.14)">
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(10.5 0)"/>
+        <polyline points="0,0 6.5,0" fill="none" transform="translate(28 0)"/>
+        <text font-size="6.0pt" transform="translate(7 0) rotate(-90) translate(-7 2.2)">-48</text>
+      </g>
+      <g transform="translate(0 151.5)">
+        
+        <text font-size="6.0pt" transform="translate(7 -10) rotate(-90) translate(-9 4)">dB</text>
+      </g>
+    </g>
+    <g transform="translate(13.5 0)"><svg id="LEVEL_PARAM">
+      <rect width="18" height="151" fill="none"/>
+      <rect width="6" height="145" x="6" y="3" rx="2" stroke-width="1" stroke="#888" fill="#222"/>
+      <g transform="translate(0 40)">
+        <rect width="18" height="13" rx="1.5" fill="#777"/>
+        <rect width="18" height="9" x="0" y="2" fill="#444"/>
+        <polyline points="0,6.5 18,6.5" stroke="#fafafa" stroke-width="1" fill="none"/>
+        <rect width="14" height="5" x="2" y="4" rx="1.0" fill="#ddd" transform="translate(0 0)"/>
+      </g>
+    </svg></g>
+  </g>
+
+  <g transform="translate(0 173)">
+    <g class="io-group" transform="translate(5.5 0)">
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 120)"/>
+      <rect class="input-background" width="34" height="127" rx="5"/>
+      <g transform="translate(8 3)"><svg id="MUTE_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+      <g transform="translate(5 25)"><svg id="MUTE_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(5 57)">MUTE</text>
+      <g transform="translate(5 60)"><svg id="LEVEL_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(3.5 92)">LEVEL</text>
+      <g transform="translate(5 95)"><svg id="IN_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(12.5 127)">IN</text>
+    </g>
+    <g class="io-group" transform="translate(5.5 133)">
+      <rect class="output-background-filler" width="34" height="10" transform="translate(0 -3)"/>
+      <rect class="output-background" width="34" height="35" rx="5"/>
+      <g transform="translate(5 0)"><svg id="OUT_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
+    </g>
+  </g>
+</svg>
