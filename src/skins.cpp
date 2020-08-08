@@ -101,7 +101,7 @@ void Skins::loadSkins() {
 	_available.push_back(Skin("lowcontrast", "Dark (low-contrast)"));
 	_default = "light";
 
-	std::string path = rack::asset::user("BogaudioModules.json");
+	std::string path = rack::asset::user("Bogaudio.json");
 	if (access(path.c_str(), R_OK) != 0) {
 		return;
 	}
