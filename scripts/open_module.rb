@@ -3,16 +3,12 @@
 require 'optparse'
 
 options = {
-  skin: [],
-  skins_only: false
+  skins: false
 }
 option_parser = OptionParser.new do |opts|
   opts.banner = "Usage: #{$0} [options] [module slug, or any module .svg or source file]"
-  opts.on('--skin=[skin name]', 'Open the res-pp/ file for the given skin along with everything else') do |v|
-    options[:skin] << v if v
-  end
-  opts.on('-o', '--skins_only', 'Only open specified skins (not default)') do
-    options[:skins_only] = true
+  opts.on('--skins', 'Open the skin res-pp/ files along with everything else') do
+    options[:skins] = true
   end
   opts.on_tail('-h', '--help', 'Show this message') do
     puts opts
@@ -56,11 +52,11 @@ def open(d, f)
 end
 
 open('res-src', "#{slug}-src.svg")
-unless options[:skins_only]
-  open('res-pp', "#{slug}-pp.svg")
-end
-options[:skin].each do |skin|
-  open('res-pp', "#{slug}-#{skin}-pp.svg")
+open('res-pp', "#{slug}-pp.svg")
+if options[:skins]
+  Dir.glob(File.absolute_path(File.join(File.dirname($0), '..', 'res-pp', "#{slug}-*-pp.svg"))).each do |fn|
+    open('res-pp', File.basename(fn))
+  end
 end
 open('src', "#{slug}.hpp")
 open('src', "#{slug}.cpp")
