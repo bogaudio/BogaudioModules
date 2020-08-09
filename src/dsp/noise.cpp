@@ -14,7 +14,7 @@ Seeds::Seeds() {
   _generator.seed(time(0));
 #else
   std::random_device rd;
-  _generator.Seed(Rd());
+  _generator.seed(rd());
 #endif
 }
 
