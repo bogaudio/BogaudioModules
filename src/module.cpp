@@ -221,11 +221,17 @@ void BGModuleWidget::createScrews() {
 		this->addChild(w);
 	};
 
-	if (hp > 8) {
+	if (hp > 13) {
 		screw(Vec(15, 0));
 		screw(Vec(box.size.x - 30, 0));
 		screw(Vec(15, 365));
 		screw(Vec(box.size.x - 30, 365));
+	}
+	else if (hp > 8) {
+		screw(Vec(0, 0));
+		screw(Vec(box.size.x - 15, 0));
+		screw(Vec(0, 365));
+		screw(Vec(box.size.x - 15, 365));
 	}
 	else {
 		screw(Vec(0, 0));

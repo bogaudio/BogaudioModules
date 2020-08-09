@@ -27,7 +27,7 @@
       </g>
       <g transform="translate(5.5 36)">
         <def id="LOW1_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-        <text font-size="5pt" letter-spacing="2px" transform="translate(11.0 35)">LOW</text>
+        <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(11.0 35)">LOW</text>
         <def id="LOW1_LIGHT" xlink:href="#light-small" transform="translate(2 29.3)"/>
       </g>
       <g class="io-group" transform="translate(5.5 77)">
@@ -48,7 +48,7 @@
       </g>
       <g transform="translate(5.5 36)">
         <def id="LOW2_INPUT" xlink:href="#input" transform="translate(5 3)"/>
-        <text font-size="5pt" letter-spacing="2px" transform="translate(11.0 35)">LOW</text>
+        <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(11.0 35)">LOW</text>
         <def id="LOW2_LIGHT" xlink:href="#light-small" transform="translate(2 29.3)"/>
       </g>
       <g class="io-group" transform="translate(5.5 77)">

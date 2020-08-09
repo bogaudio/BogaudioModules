@@ -120,6 +120,7 @@ struct StatefulButton : ParamWidget {
 	void randomize() override;
 	void onDragStart(const event::DragStart& e) override;
 	void onDragEnd(const event::DragEnd& e) override;
+	void onDoubleClick(const event::DoubleClick& e) override {}
 };
 
 struct StatefulButton9 : StatefulButton {

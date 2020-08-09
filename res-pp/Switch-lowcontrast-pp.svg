@@ -201,7 +201,7 @@ polyline.knob-tick {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-        <text font-size="5pt" letter-spacing="2px" transform="translate(11.0 35)">LOW</text>
+        <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(11.0 35)">LOW</text>
         <g transform="translate(2 29.3)"><svg id="LOW1_LIGHT">
       <rect width="6.4" height="6.4" fill="#0f0"/>
     </svg></g>
@@ -241,7 +241,7 @@ polyline.knob-tick {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-        <text font-size="5pt" letter-spacing="2px" transform="translate(11.0 35)">LOW</text>
+        <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(11.0 35)">LOW</text>
         <g transform="translate(2 29.3)"><svg id="LOW2_LIGHT">
       <rect width="6.4" height="6.4" fill="#0f0"/>
     </svg></g>
