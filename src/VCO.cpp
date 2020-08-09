@@ -103,7 +103,6 @@ struct VCOWidget : BGModuleWidget {
 	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<VCO*>(module);
 		assert(m);
-		menu->addChild(new MenuLabel());
 		OptionsMenuItem* p = new OptionsMenuItem("Polyphony channels from");
 		p->addItem(OptionMenuItem("V/OCT input", [m]() { return m->_polyInputID == VCO::PITCH_INPUT; }, [m]() { m->_polyInputID = VCO::PITCH_INPUT; }));
 		p->addItem(OptionMenuItem("FM input", [m]() { return m->_polyInputID == VCO::FM_INPUT; }, [m]() { m->_polyInputID = VCO::FM_INPUT; }));

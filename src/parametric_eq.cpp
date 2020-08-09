@@ -146,6 +146,5 @@ void BandExcludeModule::fromJson(json_t* root) {
 void BandExcludeModuleWidget::contextMenu(Menu* menu) {
 	auto m = dynamic_cast<BandExcludeModule*>(module);
 	assert(m);
-	menu->addChild(new MenuLabel());
 	menu->addChild(new BoolOptionMenuItem("Exclude direct-output bands from mix", [m]() { return &m->_bandExclude; }));
 }

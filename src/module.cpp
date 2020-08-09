@@ -150,7 +150,7 @@ void BGModuleWidget::appendContextMenu(Menu* menu) {
 	if (m->_skinnable) {
 		Skins* skins = &Skins::skins();
 		if (skins->available().size() > 0) {
-			// menu->addChild(new MenuLabel());
+			menu->addChild(new MenuLabel());
 			OptionsMenuItem* s = new OptionsMenuItem("Panel");
 
 			s->addItem(OptionMenuItem("Default", [m]() { return m->_skin == "default"; }, [m]() { m->setSkin("default"); }));

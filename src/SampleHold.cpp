@@ -184,7 +184,6 @@ struct SampleHoldWidget : BGModuleWidget {
 	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<SampleHold*>(module);
 		assert(m);
-		menu->addChild(new MenuLabel());
 		{
 			OptionsMenuItem* p = new OptionsMenuItem("Polyphony channels from");
 			p->addItem(OptionMenuItem("GATE input", [m]() { return m->_polyInputID == SampleHold::TRIGGER1_INPUT; }, [m]() { m->_polyInputID = SampleHold::TRIGGER1_INPUT; }));

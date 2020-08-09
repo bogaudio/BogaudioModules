@@ -192,7 +192,6 @@ struct Mute8Widget : BGModuleWidget {
 	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<Mute8*>(module);
 		assert(m);
-		menu->addChild(new MenuLabel());
 		menu->addChild(new BoolOptionMenuItem("Latching CV triggers", [m]() { return &m->_latchingCVs; }));
 	}
 };

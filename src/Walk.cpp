@@ -162,7 +162,6 @@ struct WalkWidget : BGModuleWidget {
 	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<Walk*>(module);
 		assert(m);
-		menu->addChild(new MenuLabel());
 
 		OptionsMenuItem* p = new OptionsMenuItem("Polyphony channels from");
 		p->addItem(OptionMenuItem("RATE input", [m]() { return m->_polyInputID == Walk::RATE_INPUT; }, [m]() { m->_polyInputID = Walk::RATE_INPUT; }));

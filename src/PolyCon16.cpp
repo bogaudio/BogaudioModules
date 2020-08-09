@@ -115,7 +115,6 @@ struct PolyCon16Widget : BGModuleWidget {
 	}
 
 	void contextMenu(Menu* menu) override {
-		menu->addChild(new MenuLabel());
 		OutputRangeOptionMenuItem::addOutputRangeOptionsToMenu(module, menu);
 	}
 };

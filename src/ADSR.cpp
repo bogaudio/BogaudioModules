@@ -139,7 +139,6 @@ struct ADSRWidget : BGModuleWidget {
 	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<ADSR*>(module);
 		assert(m);
-		menu->addChild(new MenuLabel());
 		menu->addChild(new OptionMenuItem(
 			"Invert output",
 			[m]() { return m->_invert == -1.0f; },

@@ -37,7 +37,6 @@ void MatrixBaseModule::modulate() {
 void MatrixBaseModuleWidget::contextMenu(Menu* menu) {
 	auto m = dynamic_cast<MatrixBaseModule*>(module);
 	assert(m);
-	menu->addChild(new MenuLabel());
 
 	OptionsMenuItem* g = new OptionsMenuItem("Input gain");
 	g->addItem(OptionMenuItem("Unity", [m]() { return (int)m->_inputGainDb == 0; }, [m]() { m->_inputGainDb = 0.0f; }));

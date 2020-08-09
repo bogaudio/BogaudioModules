@@ -239,7 +239,6 @@ struct VCFWidget : BGModuleWidget {
 	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<VCF*>(module);
 		assert(m);
-		menu->addChild(new MenuLabel());
 		OptionsMenuItem* bwm = new OptionsMenuItem("Bandwidth mode");
 		bwm->addItem(OptionMenuItem("Pitched", [m]() { return m->_bandwidthMode == MultimodeFilter::PITCH_BANDWIDTH_MODE; }, [m]() { m->_bandwidthMode = MultimodeFilter::PITCH_BANDWIDTH_MODE; }));
 		bwm->addItem(OptionMenuItem("Linear", [m]() { return m->_bandwidthMode == MultimodeFilter::LINEAR_BANDWIDTH_MODE; }, [m]() { m->_bandwidthMode = MultimodeFilter::LINEAR_BANDWIDTH_MODE; }));

@@ -167,7 +167,6 @@ struct SwitchWidget : BGModuleWidget {
 	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<bogaudio::Switch*>(module);
 		assert(m);
-		menu->addChild(new MenuLabel());
 		menu->addChild(new BoolOptionMenuItem("Save latched state to patch", [m]() { return &m->_saveLatchedToPatch; }));
 	}
 };

@@ -56,7 +56,6 @@ void DimmableMixerModule::fromJson(json_t* root) {
 void DimmableMixerWidget::contextMenu(Menu* menu) {
 	auto m = dynamic_cast<DimmableMixerModule*>(module);
 	assert(m);
-	menu->addChild(new MenuLabel());
 	OptionsMenuItem* da = new OptionsMenuItem("Dim amount");
 	da->addItem(OptionMenuItem("-6 dB", [m]() { return m->_dimDb == 6.0f; }, [m]() { m->_dimDb = 6.0f; }));
 	da->addItem(OptionMenuItem("-12 dB", [m]() { return m->_dimDb == 12.0f; }, [m]() { m->_dimDb = 12.0f; }));

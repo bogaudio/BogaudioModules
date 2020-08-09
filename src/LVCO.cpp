@@ -133,7 +133,6 @@ struct LVCOWidget : BGModuleWidget {
 	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<LVCO*>(module);
 		assert(m);
-		menu->addChild(new MenuLabel());
 
 		OptionsMenuItem* fm = new OptionsMenuItem("FM mode");
 		fm->addItem(OptionMenuItem("Exponential", [m]() { return !m->_fmLinearMode; }, [m]() { m->_fmLinearMode = false; }));

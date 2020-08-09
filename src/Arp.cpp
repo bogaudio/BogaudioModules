@@ -406,7 +406,6 @@ struct ArpWidget : BGModuleWidget {
 	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<Arp*>(module);
 		assert(m);
-		menu->addChild(new MenuLabel());
 
 		OptionsMenuItem* ni = new OptionsMenuItem("Use new notes");
 		ni->addItem(OptionMenuItem("On arpeggio restart", [m]() { return !m->_notesImmediate; }, [m]() { m->_notesImmediate = false; }));

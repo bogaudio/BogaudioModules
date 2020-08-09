@@ -69,7 +69,6 @@ struct NoiseWidget : BGModuleWidget {
 	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<Noise*>(module);
 		assert(m);
-		menu->addChild(new MenuLabel());
 		menu->addChild(new PolyChannelsMenuItem(m));
 	}
 };

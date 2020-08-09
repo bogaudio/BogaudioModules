@@ -553,7 +553,6 @@ struct Walk2Widget : BGModuleWidget {
 		auto m = dynamic_cast<Walk2*>(module);
 		assert(m);
 
-		menu->addChild(new MenuLabel());
 		{
 			OptionsMenuItem* mi = new OptionsMenuItem("Display range");
 			mi->addItem(OptionMenuItem("+/-5V", [m]() { return m->_zoomOut == false; }, [m]() { m->_zoomOut = false; }));

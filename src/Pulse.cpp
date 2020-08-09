@@ -90,7 +90,6 @@ struct PulseWidget : BGModuleWidget {
 	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<Pulse*>(module);
 		assert(m);
-		menu->addChild(new MenuLabel());
 		menu->addChild(new BoolOptionMenuItem("Linear frequency mode", [m]() { return &m->_linearMode; }));
 	}
 };

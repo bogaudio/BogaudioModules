@@ -195,7 +195,6 @@ struct LVCFWidget : BGModuleWidget {
 	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<LVCF*>(module);
 		assert(m);
-		menu->addChild(new MenuLabel());
 
 		OptionsMenuItem* s = new OptionsMenuItem("Slope");
 		s->addItem(OptionMenuItem("1 pole", [m]() { return m->_polesSetting == 1; }, [m]() { m->_polesSetting = 1; }));

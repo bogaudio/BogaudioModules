@@ -137,7 +137,6 @@ struct SineWidget : BGModuleWidget {
 	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<Sine*>(module);
 		assert(m);
-		menu->addChild(new MenuLabel());
 
 		OptionsMenuItem* w = new OptionsMenuItem("Waveform");
 		w->addItem(OptionMenuItem("Sine", [m]() { return m->_wave == Sine::SINE_WAVE; }, [m]() { m->_wave = Sine::SINE_WAVE; }));

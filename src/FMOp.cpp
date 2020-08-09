@@ -330,7 +330,6 @@ struct FMOpWidget : BGModuleWidget {
 	void contextMenu(Menu* menu) override {
 		auto fmop = dynamic_cast<FMOp*>(module);
 		assert(fmop);
-		menu->addChild(new MenuLabel());
 		menu->addChild(new BoolOptionMenuItem("Linear level response", [fmop]() { return &fmop->_linearLevel; }));
 	}
 };

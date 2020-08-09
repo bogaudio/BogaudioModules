@@ -72,7 +72,6 @@ struct PolyCon8Widget : BGModuleWidget {
 	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<PolyCon8*>(module);
 		assert(m);
-		menu->addChild(new MenuLabel());
 		menu->addChild(new PolyChannelsMenuItem(m, 8));
 		OutputRangeOptionMenuItem::addOutputRangeOptionsToMenu(module, menu);
 	}

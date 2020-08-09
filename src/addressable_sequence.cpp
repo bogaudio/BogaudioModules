@@ -125,7 +125,6 @@ void AddressableSequenceBaseModuleWidget::contextMenu(Menu* menu) {
 	auto m = dynamic_cast<AddressableSequenceModule*>(module);
 	assert(m);
 
-	menu->addChild(new MenuLabel());
 	OptionsMenuItem* p = new OptionsMenuItem("Polyphony channels from");
 	p->addItem(OptionMenuItem("CLOCK input", [m]() { return m->_polyInputID == m->_clockInputID; }, [m]() { m->_polyInputID = m->_clockInputID; }));
 	p->addItem(OptionMenuItem("SELECT input", [m]() { return m->_polyInputID == m->_selectInputID; }, [m]() { m->_polyInputID = m->_selectInputID; }));

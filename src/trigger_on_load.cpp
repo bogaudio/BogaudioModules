@@ -27,6 +27,5 @@ void TriggerOnLoadModule::fromJson(json_t* root) {
 void TriggerOnLoadModuleWidget::contextMenu(Menu* menu) {
 	auto m = dynamic_cast<TriggerOnLoadModule*>(module);
 	assert(m);
-	menu->addChild(new MenuLabel());
 	menu->addChild(new BoolOptionMenuItem(_menuItemLabel.c_str(), [m]() { return &m->_triggerOnLoad; }));
 }
