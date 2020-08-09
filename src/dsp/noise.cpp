@@ -2,13 +2,20 @@
 #include <algorithm>
 
 #include "noise.hpp"
+#ifdef ARCH_WIN
+#include <ctime>
+#endif
 
 using namespace bogaudio::dsp;
 
 
 Seeds::Seeds() {
+#ifdef ARCH_WIN
+  _generator.seed(time(0));
+#else
   std::random_device rd;
-  _generator.seed(rd());
+  _generator.Seed(Rd());
+#endif
 }
 
 unsigned int Seeds::_next() {
