@@ -34,6 +34,12 @@ struct BoolOptionMenuItem : OptionMenuItem {
 	{}
 };
 
+struct SpacerOptionMenuItem : OptionMenuItem {
+	SpacerOptionMenuItem()
+	: OptionMenuItem("<spacer>", []() { return false; }, []() {})
+	{}
+};
+
 struct OptionsMenuItem : MenuItem {
 	std::vector<OptionMenuItem> _items;
 
@@ -42,18 +48,9 @@ struct OptionsMenuItem : MenuItem {
 		this->rightText = "▸";
 	}
 
-	void addItem(const OptionMenuItem& item) {
-		_items.push_back(item);
-	}
-
-	Menu* createChildMenu() override {
-		Menu* menu = new Menu;
-		for (const OptionMenuItem& item : _items) {
-			menu->addChild(new OptionMenuItem(item));
-		}
-		return menu;
-	}
-
+	void addItem(const OptionMenuItem& item);
+	void addSpacer();
+	Menu* createChildMenu() override;
 	static void addToMenu(OptionsMenuItem* item, Menu* menu);
 };
 

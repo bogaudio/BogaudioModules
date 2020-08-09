@@ -1,7 +1,6 @@
 
 #include "module.hpp"
 #include "bogaudio.hpp"
-#include "skins.hpp"
 
 using namespace bogaudio;
 
@@ -101,6 +100,14 @@ void BGModule::addSkinChangeListener(SkinChangeListener* listener) {
 }
 
 
+BGModuleWidget::BGModuleWidget() {
+	Skins::skins().registerDefaultSkinChangeListener(this);
+}
+
+BGModuleWidget::~BGModuleWidget() {
+	Skins::skins().deregisterDefaultSkinChangeListener(this);
+}
+
 void BGModuleWidget::addParam(ParamWidget* param) {
 	ModuleWidget::addParam(param);
 	if (module) {
@@ -141,15 +148,31 @@ void BGModuleWidget::appendContextMenu(Menu* menu) {
 	auto m = dynamic_cast<BGModule*>(module);
 	assert(m);
 	if (m->_skinnable) {
-		auto skins = Skins::skins().available();
-		if (skins.size() > 0) {
+		Skins* skins = &Skins::skins();
+		if (skins->available().size() > 0) {
 			// menu->addChild(new MenuLabel());
-			OptionsMenuItem* s = new OptionsMenuItem("Skin");
+			OptionsMenuItem* s = new OptionsMenuItem("Panel");
+
 			s->addItem(OptionMenuItem("Default", [m]() { return m->_skin == "default"; }, [m]() { m->setSkin("default"); }));
-			for (auto skin : skins) {
+			for (auto skin : skins->available()) {
 				std::string key = skin.key;
-				s->addItem(OptionMenuItem(skin.display.c_str(), [m, key]() { return m->_skin == key; }, [m, key]() { m->setSkin(key); }));
+				s->addItem(OptionMenuItem(
+					skin.display.c_str(),
+					[m, key]() { return m->_skin == key; },
+					[m, key]() { m->setSkin(key); }
+				));
 			}
+
+			s->addSpacer();
+			for (auto skin : skins->available()) {
+				std::string key = skin.key;
+				s->addItem(OptionMenuItem(
+					(std::string("Default to ") + skin.display).c_str(),
+					[key, skins]() { return skins->defaultKey() == key; },
+					[key, skins]() { skins->setDefaultSkin(key); }
+				));
+			}
+
 			OptionsMenuItem::addToMenu(s, menu);
 		}
 	}
@@ -159,6 +182,19 @@ void BGModuleWidget::appendContextMenu(Menu* menu) {
 
 void BGModuleWidget::skinChanged(const std::string& skin) {
 	updatePanel();
+}
+
+void BGModuleWidget::defaultSkinChanged(const std::string& skin) {
+	if (module) {
+		auto m = dynamic_cast<BGModule*>(module);
+		assert(m);
+		if (m->_skin == "default") {
+			m->setSkin("default");
+		}
+	}
+	else {
+		updatePanel();
+	}
 }
 
 void BGModuleWidget::setPanel(Vec size, std::string slug, bool skinnable) {

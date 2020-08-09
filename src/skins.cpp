@@ -2,10 +2,12 @@
 #include "skins.hpp"
 #include "bogaudio.hpp"
 #include <unistd.h>
+#include <fstream>
+#include <cstdio>
 
-const Skins& Skins::skins() {
+Skins& Skins::skins() {
 	static Skins instance;
-	std::lock_guard<std::mutex> lock(instance._lock);
+	std::lock_guard<std::mutex> lock(instance._instanceLock);
 	if (!instance._loaded) {
 		instance.loadSkins();
 		instance.loadCssValues();
@@ -93,6 +95,49 @@ NVGcolor Skins::cssColorToNVGColor(const char* color, const NVGcolor& ifError) {
 		}
 	}
 	return ifError;
+}
+
+void Skins::setDefaultSkin(std::string skinKey) {
+	if (skinKey == "default") {
+		skinKey = "light";
+	}
+	std::string path = rack::asset::user("Bogaudio.json");
+	std::string error;
+	if (!validKey(skinKey)) {
+		error = "invalid key: " + skinKey;
+	}
+	else {
+		std::ofstream f(path);
+		f << "{\n  \"skins\": {\n    \"default\": \"";
+		f << skinKey;
+		f << "\"\n  }\n}\n";
+		if (!f) {
+			error = "error writing \"" + path + "\": " + strerror(errno);
+		}
+	}
+
+	if (error.size() > 0) {
+		WARN("Bogaudio: setting default skin: %s\n", error.c_str());
+	}
+	else {
+		_default = skinKey;
+		INFO("Bogaudio: skin information written to %s\n", path.c_str());
+
+		std::lock_guard<std::mutex> lock(_defaultSkinListenersLock);
+		for (auto listener : _defaultSkinListeners) {
+			listener->defaultSkinChanged(_default);
+		}
+	}
+}
+
+void Skins::registerDefaultSkinChangeListener(DefaultSkinChangeListener* listener) {
+	std::lock_guard<std::mutex> lock(_defaultSkinListenersLock);
+	_defaultSkinListeners.insert(listener);
+}
+
+void Skins::deregisterDefaultSkinChangeListener(DefaultSkinChangeListener* listener) {
+	std::lock_guard<std::mutex> lock(_defaultSkinListenersLock);
+	_defaultSkinListeners.erase(listener);
 }
 
 void Skins::loadSkins() {

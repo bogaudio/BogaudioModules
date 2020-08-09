@@ -1,6 +1,7 @@
 #pragma once
 
 #include "rack.hpp"
+#include "skins.hpp"
 #include <string>
 #include <vector>
 
@@ -60,11 +61,14 @@ struct BGModule : Module {
 	void addSkinChangeListener(SkinChangeListener* listener);
 };
 
-struct BGModuleWidget : ModuleWidget, SkinChangeListener {
+struct BGModuleWidget : ModuleWidget, SkinChangeListener, DefaultSkinChangeListener {
 	bool _skinnable = true;
 	SvgPanel* _panel = NULL;
 	Vec _size;
 	std::string _slug;
+
+	BGModuleWidget();
+	virtual ~BGModuleWidget();
 
 	void appendContextMenu(Menu* menu) override;
 	void addParam(ParamWidget* param);
@@ -74,6 +78,7 @@ struct BGModuleWidget : ModuleWidget, SkinChangeListener {
 	virtual void contextMenu(Menu* menu) {}
 
 	void skinChanged(const std::string& skin) override;
+	void defaultSkinChanged(const std::string& skin) override;
 	void setPanel(Vec size, const std::string slug, bool skinnable = true);
 	void updatePanel();
 	void createScrews();
