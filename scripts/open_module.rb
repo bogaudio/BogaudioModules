@@ -42,12 +42,11 @@ def open(d, f)
   afn = File.absolute_path(File.join(File.dirname($0), '..', d, f))
   if File.readable?(afn)
     puts "Open #{File.join(d, f)}..."
-  end
-
-  out = `open #{afn}`
-  unless $?.success?
-    STDERR.puts "open failed:\n#{out}"
-    exit 1
+    out = `open #{afn}`
+    unless $?.success?
+      STDERR.puts "open failed:\n#{out}"
+      exit 1
+    end
   end
 end
 
