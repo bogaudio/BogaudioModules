@@ -42,7 +42,7 @@ polyline.output-label, path.output-label {
 }
 
 circle.port-rim {
-  stroke: #ccc;
+  stroke: #bbb;
 }
 circle.port-barrel {
   stroke: #222;
