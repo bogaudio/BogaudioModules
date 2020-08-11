@@ -99,8 +99,12 @@ void LVCF::removeChannel(int c) {
 	_engines[c] = NULL;
 }
 
+MultimodeFilter::Mode LVCF::modeParamValue() {
+	return (MultimodeFilter::Mode)(1 + clamp((int)params[MODE_PARAM].getValue(), 0, 4));
+}
+
 void LVCF::modulate() {
-	MultimodeFilter::Mode mode = (MultimodeFilter::Mode)(1 + clamp((int)params[MODE_PARAM].getValue(), 0, 4));
+	MultimodeFilter::Mode mode = modeParamValue();
 	if (_mode != mode || _poles != _polesSetting) {
 		_mode = mode;
 		_poles = _polesSetting;
@@ -136,10 +140,11 @@ void LVCF::modulateChannel(int c) {
 }
 
 void LVCF::processAlways(const ProcessArgs& args) {
-	lights[LOWPASS_LIGHT].value = _mode == MultimodeFilter::LOWPASS_MODE;
-	lights[HIGHPASS_LIGHT].value = _mode == MultimodeFilter::HIGHPASS_MODE;
-	lights[BANDPASS_LIGHT].value = _mode == MultimodeFilter::BANDPASS_MODE;
-	lights[BANDREJECT_LIGHT].value = _mode == MultimodeFilter::BANDREJECT_MODE;
+	MultimodeFilter::Mode mode = modeParamValue();
+	lights[LOWPASS_LIGHT].value = mode == MultimodeFilter::LOWPASS_MODE;
+	lights[HIGHPASS_LIGHT].value = mode == MultimodeFilter::HIGHPASS_MODE;
+	lights[BANDPASS_LIGHT].value = mode == MultimodeFilter::BANDPASS_MODE;
+	lights[BANDREJECT_LIGHT].value = mode == MultimodeFilter::BANDREJECT_MODE;
 }
 
 void LVCF::processAll(const ProcessArgs& args) {

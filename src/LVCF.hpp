@@ -83,6 +83,7 @@ struct LVCF : BGModule {
 	int channels() override;
 	void addChannel(int c) override;
 	void removeChannel(int c) override;
+	MultimodeFilter::Mode modeParamValue();
 	void modulate() override;
 	void modulateChannel(int c) override;
 	void processAlways(const ProcessArgs& args) override;
