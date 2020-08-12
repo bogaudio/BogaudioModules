@@ -1,6 +1,7 @@
 #pragma once
 
 #include "rack.hpp"
+#include <cmath>
 
 using namespace rack;
 
@@ -44,6 +45,24 @@ typedef ScaledSquaringParamQuantity<1> OneXSquaringParamQuantity;
 typedef ScaledSquaringParamQuantity<10> TenXSquaringParamQuantity;
 
 typedef TenXSquaringParamQuantity EnvelopeSegmentParamQuantity;
+
+template <class Base = ParamQuantity>
+struct RoundingParamQuantity : Base {
+	float getDisplayValue() override {
+		float v = Base::getDisplayValue();
+		if (!Base::module) {
+			return v;
+		}
+		return roundf(v);
+	}
+
+	void setDisplayValue(float displayValue) override {
+		if (!Base::module) {
+			return;
+		}
+		Base::setDisplayValue(roundf(displayValue));
+	}
+};
 
 struct AmplifierParamQuantity : ParamQuantity {
 	virtual bool isLinear();

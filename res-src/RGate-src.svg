@@ -1,0 +1,77 @@
+<module hp="5">
+  <style/>
+
+  <defs>
+    <symbol id="dial-length-rgate" viewBox="0 0 ${width}px ${width}px">
+      <g transform="translate($width/2.0 $width/2.0)">
+        <text font-size="7pt" transform="rotate(-240) translate(26 0) rotate(240) translate(-2 3)">0</text>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-210) translate(22 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-180) translate(22 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-150) translate(22 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-120) translate(22 0)"/>
+        <polyline points="0,0 5,0" stroke-width="1.5" transform="rotate(-90) translate(22 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-60) translate(22 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-30) translate(22 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(0) translate(22 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(30) translate(22 0)"/>
+        <polyline points="0,0 5,0" stroke-width="1.5" transform="rotate(60) translate(22 0)"/>
+      </g>
+    </symbol>
+
+    <symbol id="dial-clock-rgate" viewBox="0 0 ${width}px ${width}px">
+      <g transform="translate($width/2.0 $width/2.0)">
+        <text font-size="7pt" text-anchor="middle" var-r="-240" transform="rotate($r) translate(20 0) rotate(-1.0*$r) translate(0 3)">1</text>
+        <text font-size="7pt" text-anchor="middle" var-r="1.0**0.5/63.0**0.5*300.0-240.0" transform="rotate($r) translate(19 0) rotate(-1.0*$r) translate(0 3)">2</text>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(3.0**0.5/63.0**0.5*300.0-240.0) translate(16 0)"/>
+        <text font-size="7pt" text-anchor="middle" var-r="7.0**0.5/63.0**0.5*300.0-240.0" transform="rotate($r) translate(20 0) rotate(-1.0*$r) translate(0 3)">8</text>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(11.0**0.5/63.0**0.5*300.0-240.0) translate(16 0)"/>
+        <text font-size="7pt" text-anchor="middle" var-r="15.0**0.5/63.0**0.5*300.0-240.0" transform="rotate($r) translate(20 0) rotate(-1.0*$r) translate(0 3)">16</text>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(23.0**0.5/63.0**0.5*300.0-240.0) translate(16 0)"/>
+        <text font-size="7pt" text-anchor="middle" var-r="31.0**0.5/63.0**0.5*300.0-240.0" transform="rotate($r) translate(21 0) rotate(-1.0*$r) translate(0 3)">32</text>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(47.0**0.5/63.0**0.5*300.0-240.0) translate(16 0)"/>
+        <text font-size="7pt" text-anchor="middle" transform="rotate(60) translate(20 0) rotate(-60) translate(0 3)">64</text>
+      </g>
+    </symbol>
+  </defs>
+
+  <def xlink:href="#module5" var-name="RGATE"/>
+
+  <g transform="translate(0 35)" var-pad="13">
+    <text font-size="8pt" letter-spacing="1.5px" text-anchor="middle" transform="translate($width/2.0 0)">LENGTH</text>
+    <def id="LENGTH_PARAM" xlink:href="#knob38" transform="translate($width/2.0-19 $pad)"/>
+    <use xlink:href="#dial-length-rgate" transform="translate(0 $pad+19-$width/2.0)"/>
+  </g>
+
+  <g transform="translate(0 114)" var-pad="15">
+    <text font-size="8pt" letter-spacing="1.2px" text-anchor="middle" transform="translate($width/2.0 0)">CLK DIV</text>
+    <def id="CLOCK_DIVIDE_PARAM" xlink:href="#knob26" transform="translate($width/2.0-13.0 $pad)"/>
+    <use xlink:href="#dial-clock-rgate" transform="translate(0 $pad+13-$width/2.0)"/>
+  </g>
+
+  <g transform="translate(0 185)" var-pad="15">
+    <text font-size="8pt" letter-spacing="1.2px" text-anchor="middle" transform="translate($width/2 0)">CLK MUL</text>
+    <def id="CLOCK_MULTIPLY_PARAM" xlink:href="#knob26" transform="translate($width/2.0-13.0 $pad)"/>
+    <use xlink:href="#dial-clock-rgate" transform="translate(0 $pad+13-$width/2.0)"/>
+  </g>
+
+  <g transform="translate(0 248)">
+    <rect class="input-background" width="64" height="112" rx="5" transform="translate(5.5 0)" />
+    <def id="LENGTH_INPUT" xlink:href="#input" transform="translate(10.5 3)"/>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 35)">LEN</text>
+    <def id="CLOCK_DIVIDE_INPUT" xlink:href="#input" transform="translate(40.5 3)"/>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(52.5 35)">DIV</text>
+    <def id="RUN_INPUT" xlink:href="#input" transform="translate(10.5 40)"/>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 72)">RUN</text>
+    <def id="CLOCK_MULTIPLE_INPUT" xlink:href="#input" transform="translate(40.5 40)"/>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(52.5 72)">MUL</text>
+    <def id="CLOCK_INPUT" xlink:href="#input" transform="translate(10.5 77)"/>
+    <text class="input-label" font-size="5pt" letter-spacing="1px" text-anchor="middle" transform="translate(22.5 109)">CLOCK</text>
+    <g class="io-group" transform="translate(30 72)">
+      <rect class="output-background" width="32" height="38" rx="5" transform="translate(7.5 2)"/>
+      <rect class="output-background-filler" width="32" height="10" transform="translate(7.5 2)"/>
+      <rect class="output-background-filler" width="10" height="10" transform="translate(7.5 30)"/>
+      <def id="GATE_OUTPUT" xlink:href="#output" transform="translate(10.5 5)"/>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 37)">GATE</text>
+    </g>
+  </g>
+</module>

@@ -74,6 +74,7 @@
 #include "Pressor.hpp"
 #include "Pulse.hpp"
 #include "Reftone.hpp"
+#include "RGate.hpp"
 #include "SampleHold.hpp"
 #include "Shaper.hpp"
 #include "ShaperPlus.hpp"
@@ -142,6 +143,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelADSR);
 	p->addModel(modelFollow);
 	p->addModel(modelDGate);
+	p->addModel(modelRGate);
 	p->addModel(modelEdge);
 
 	p->addModel(modelNoise);

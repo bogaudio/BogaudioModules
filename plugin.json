@@ -308,6 +308,16 @@
       ]
     },
     {
+      "slug": "Bogaudio-RGate",
+      "name": "RGATE",
+      "description": "Clock-relative gate generator & clock divider/multiplier",
+      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#rgate",
+      "tags": [
+        "Clock modulator",
+        "Polyphonic"
+      ]
+    },
+    {
       "slug": "Bogaudio-Edge",
       "name": "EDGE",
       "description": "Edge detector, gate-to-trigger, comparator",
