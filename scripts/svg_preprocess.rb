@@ -192,7 +192,7 @@ def debug()
   puts
 end
 
-def process_def(doc, n)
+def process_def(fn, doc, n)
   id = n.attribute('href').to_s
   if id
     id.sub!(/^#/, '')
@@ -223,7 +223,7 @@ def process_def(doc, n)
       end
 
       nn.css('def').each do |dn|
-        process_def(doc, dn)
+        process_def(fn, doc, dn)
       end
     else
       puts "WARN: no def defined for def ID '#{id}' in #{fn}"
@@ -265,7 +265,7 @@ def eval_expressions(s, vars, defaults)
   end
 
   if s =~ /[\+\-\*\/]/
-    s.gsub!(/\d+(\.\d+)?([\+\-\*\/]\d+(\.\d+)?)*/) do |m|
+    s.gsub!(/\-?\d+(\.\d+)?([\+\-\*\%\/]+\d+(\.\d+)?)*/) do |m|
       eval(m)
     end
   end
@@ -274,6 +274,21 @@ def eval_expressions(s, vars, defaults)
 end
 
 def process_variables(n, vars)
+  n.each do |k, v|
+    if k =~ /^(var|default)-(\w+)$/
+      n[k] = eval_expressions(v.to_s, vars, {})
+    end
+  end
+
+  vs = {}
+  n.each do |k, v|
+    if k =~ /^var-(\w+)$/
+      vs[$1] = v
+      n.delete(k)
+    end
+  end
+  vars.push(vs)
+
   default_vars = {}
   n.each do |k, v|
     if k =~ /^default-(\w+)$/
@@ -286,18 +301,7 @@ def process_variables(n, vars)
     n[k] = eval_expressions(v.to_s, vars, default_vars)
   end
 
-  pop = false
   case n.node_name
-  when 'g'
-    vs = {}
-    n.each do |k, v|
-      if k =~ /^var-(\w+)$/
-        vs[$1] = v
-        n.delete(k)
-      end
-    end
-    vars.push(vs)
-    pop = true
   when 'text'
     n.traverse do |t|
       if t.text?
@@ -309,7 +313,8 @@ def process_variables(n, vars)
   n.elements.each do |nn|
     process_variables(nn, vars)
   end
-  vars.pop if pop
+
+  vars.pop
 end
 
 def write_output(name, doc, styles)
@@ -440,7 +445,7 @@ def process(name)
   end
 
   doc.css('def').each do |n|
-    process_def(doc, n)
+    process_def(fn, doc, n)
   end
 
   doc.xpath('//comment()').each(&:remove)
