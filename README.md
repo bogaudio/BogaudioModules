@@ -372,6 +372,33 @@ A trigger-to-gate utility, with gate duration up to 10 seconds, and an optional 
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the TRIG input.  Pressing the trigger button will trigger all channels.
 
+#### <a name="rgate"></a> RGATE
+
+RGATE is a "clock-relative" gate generator, which outputs gates that have a length that is a ratio of the period of the incoming clock.  It can also be used as a clock divider/multiplier.
+
+The LENGTH control sets the length of the output gate relative to the incoming clock period (time between two clock pulses).  The length may be varied from a minimum of 1ms to the full clock period, at maximum.  With the length at maximum, the output gate will simply stay high.  A LEN unipolor (0-10V) CV may be supplied, which if in use is attenuated by the LENGTH knob.
+
+CLK DIV and CLK MUL alter the frequency and length of gate outputs.  Increasing CLK DIV will set the number of clock pulses the clock period extends over, while CLK MUL will set how many gates will be emitted in that period.  For example, setting CLK DIV to 3 and CLK MUL to 2 yield an output of 2 gates for every three incoming clock pulses, with a maximum gate length of half of 3 times a single clock period.
+
+DIV and MUL are CV inputs for CLK DIV and CLK MUL respectively, each expecting a unipolar (0-10V) CV, and each attenuated by its corresponding knob.  For example, if CLK DIV is set to 4, then a 0-2.5V input at DIV will select a division of 1, an input of 2.5-5V will select a division of 2, and so on.
+
+*About determining the clock period:* the module continuously updates its measurement of the clock period on each clock pulse received, setting it to the time since the last clock was received.  With a steady and continuous incoming clock, this works just fine; otherwise there are some issues to consider:
+  1. When the module loads, it has seen no clocks yet, and needs to see two to establish the clock period.  To work around this, there is a default clock period which applies only after the first clock is received and until the second is.  This is configurable on the context menu, defaulting to 500ms (or 120 BPM).  
+  1. If the clock stops, the module plays out the current (divided, multiplied) clock period, and then output will stop.  When the clock starts again, RGate will have measured a very long clock period, and will output a long gate.  The RESET function described below can help with this.
+  1. An irregular or varying clock may cause odd or unpredictable behaviors.
+
+The RESET port allows resetting the state of RGate, with two modes, configurable on the context (right-click) menu:
+  - HARD, the default, resets the calculation of the clock period, and the internal counter that drives the clock divider.  On receipt of the next clock after a hard reset, the default clock period applies.
+  - SOFT resets only the clock divider.
+
+The output range of the module may be set on the context menu; it defaults to unipolar 0-10V.  It may be set to 0-5V, +/-10V or +/-5V.
+
+The module is usable as a general clock divider/multiplier; in this case it's advisable to set LENGTH to the minimum, as clocks usually output short trigger pulses.
+
+The module can also be used to generate pulse waves from incoming audio, where the output pitch is some ratio of the input, according to CLK DIV and CLK MUL.  For example, with CLK DIV set to 2, and CLK MUL to 1, and with a square wave input, the output will be a pulse wave tracking an octave below the input.  LENGTH becomes a pulse-width control in this case.  CLK MUL will multiply the increasing frequency to a point; at some point the output frequency would be faster than the internals of RGate update, and nothing happens.  If using the module this way, it makes sense to set the output to bipolar.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the CLOCK input, by default, or the LENGTH input, if so set on the context menu.
+
 #### <a name="edge"></a> EDGE
 
 A trigger-to-gate utility, comparator and rising/falling edge detector.  RISE and FALL set voltage levels: when the input goes above RISE, the module switches to "high" state and outputs a voltage at the HIGH output.  HOLD sets a minimum time that the module stays in the high state; this can be used to avoid jitter on the output if using high-frequency inputs.  1ms trigger pulses are output at RISE and FALL on the corresponding changes (note that if you switch the module state at audio rates, these will essentially always be high).

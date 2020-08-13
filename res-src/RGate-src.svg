@@ -60,8 +60,8 @@
     <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 35)">LEN</text>
     <def id="CLOCK_DIVIDE_INPUT" xlink:href="#input" transform="translate(40.5 3)"/>
     <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(52.5 35)">DIV</text>
-    <def id="RUN_INPUT" xlink:href="#input" transform="translate(10.5 40)"/>
-    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 72)">RUN</text>
+    <def id="RESET_INPUT" xlink:href="#input" transform="translate(10.5 40)"/>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 72)">RESET</text>
     <def id="CLOCK_MULTIPLE_INPUT" xlink:href="#input" transform="translate(40.5 40)"/>
     <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(52.5 72)">MUL</text>
     <def id="CLOCK_INPUT" xlink:href="#input" transform="translate(10.5 77)"/>

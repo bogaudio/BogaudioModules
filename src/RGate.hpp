@@ -1,12 +1,13 @@
 #pragma once
 
 #include "bogaudio.hpp"
+#include "output_range.hpp"
 
 extern Model* modelRGate;
 
 namespace bogaudio {
 
-struct RGate : BGModule {
+struct RGate : OutputRangeModule<BGModule> {
 	enum ParamsIds {
 		LENGTH_PARAM,
 		CLOCK_DIVIDE_PARAM,
@@ -17,7 +18,7 @@ struct RGate : BGModule {
 	enum InputsIds {
 		LENGTH_INPUT,
 		CLOCK_DIVIDE_INPUT,
-		RUN_INPUT,
+		RESET_INPUT,
 		CLOCK_MULTIPLE_INPUT,
 		CLOCK_INPUT,
 		NUM_INPUTS
@@ -28,23 +29,11 @@ struct RGate : BGModule {
 		NUM_OUTPUTS
 	};
 
-	enum RunMode {
-		GATED_RUN_RUNMODE,
-		GATED_RUN_RESET_SOFT_RUNMODE,
-		GATED_RUN_RESET_HARD_RUNMODE,
-		TRIGGERED_RUN_RUNMODE,
-		TRIGGERED_RUN_RESET_SOFT_RUNMODE,
-		TRIGGERED_RUN_RESET_HARD_RUNMODE,
-		RESET_SOFT_RUNMODE,
-		RESET_HARD_RUNMODE
+	enum ResetMode {
+		HARD_RESETMODE,
+		SOFT_RESETMODE
 	};
-	static constexpr RunMode defaultRunMode = TRIGGERED_RUN_RESET_HARD_RUNMODE;
-
-	enum Running {
-		UNKNOWN_RUNNING,
-		YES_RUNNING,
-		NO_RUNNING
-	};
+	static constexpr ResetMode defaultResetMode = HARD_RESETMODE;
 
 	struct Engine {
 		Trigger clockTrigger;
@@ -61,14 +50,15 @@ struct RGate : BGModule {
 		int dividerCount = 0;
 		float dividedProgressSeconds = 0.0f;
 
-		void reset(bool triggers = true, bool hard = true);
+		void reset(bool triggers, bool hard, float initialClock);
 	};
+
+	static constexpr float defaultInitialClockPeriod = 0.5f;
 
 	Engine* _engines[maxChannels] {};
 	float _sampleTime = 0.001f;
-	RunMode _runMode = defaultRunMode;
-	Running _running = UNKNOWN_RUNNING;
-	float _initialPulseSeconds = 0.2f;
+	ResetMode _resetMode = defaultResetMode;
+	float _initialClockPeriod = defaultInitialClockPeriod;
 	int _polyInputID = CLOCK_INPUT;
 
 	RGate() {
@@ -76,6 +66,9 @@ struct RGate : BGModule {
 		configParam(LENGTH_PARAM, 0.0f, 1.0f, 0.5f, "Gate length", "%", 0.0f, 100.0f);
 		configParam<RoundingParamQuantity<ScaledSquaringParamQuantity<63>>>(CLOCK_DIVIDE_PARAM, 0.0f, 1.0f, 0.0f, "Clock division", "", 0.0f, 1.0f, 1.0f);
 		configParam<RoundingParamQuantity<ScaledSquaringParamQuantity<63>>>(CLOCK_MULTIPLY_PARAM, 0.0f, 1.0f, 0.0f, "Clock multiplication", "", 0.0f, 1.0f, 1.0f);
+
+		_rangeOffset = 1.0f;
+		_rangeScale = 5.0f;
 	}
 
 	void reset() override;

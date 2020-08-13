@@ -1,11 +1,11 @@
 
 #include "RGate.hpp"
 
-#define RUN_MODE "run_mode"
-#define INITIAL_PULSE_SECONDS "initial_pulse_seconds"
+#define RESET_MODE "reset_mode"
+#define INITIAL_CLOCK_SECONDS "initial_clock_seconds"
 #define POLY_INPUT "poly_input"
 
-void RGate::Engine::reset(bool triggers, bool hard) {
+void RGate::Engine::reset(bool triggers, bool hard, float initialClock) {
 	if (triggers) {
 		clockTrigger.reset();
 		runTrigger.reset();
@@ -13,7 +13,7 @@ void RGate::Engine::reset(bool triggers, bool hard) {
 	}
 	if (hard) {
 		secondsSinceLastClock = -1.0f;
-		clockSeconds = -1.0f;
+		clockSeconds = initialClock;
 		dividedSeconds = -1.0f;
 		multipliedSeconds = -1.0f;
 		gateSeconds = 0.0f;
@@ -24,7 +24,7 @@ void RGate::Engine::reset(bool triggers, bool hard) {
 
 void RGate::reset() {
 	for (int c = 0; c < _channels; ++c) {
-		_engines[c]->reset();
+		_engines[c]->reset(true, true, _initialClockPeriod);
 	}
 }
 
@@ -33,37 +33,31 @@ void RGate::sampleRateChange() {
 }
 
 json_t* RGate::toJson(json_t* root) {
-	json_object_set_new(root, RUN_MODE, json_integer(_runMode));
-	json_object_set_new(root, INITIAL_PULSE_SECONDS, json_real(_initialPulseSeconds));
+	json_object_set_new(root, RESET_MODE, json_integer(_resetMode));
+	json_object_set_new(root, INITIAL_CLOCK_SECONDS, json_real(_initialClockPeriod));
 	json_object_set_new(root, POLY_INPUT, json_integer(_polyInputID));
 	return root;
 }
 
 void RGate::fromJson(json_t* root) {
-	json_t* rm = json_object_get(root, RUN_MODE);
+	json_t* rm = json_object_get(root, RESET_MODE);
 	if (rm) {
-		RunMode m = (RunMode)json_integer_value(rm);
+		ResetMode m = (ResetMode)json_integer_value(rm);
 		switch (m) {
-			case GATED_RUN_RUNMODE:
-			case GATED_RUN_RESET_SOFT_RUNMODE:
-			case GATED_RUN_RESET_HARD_RUNMODE:
-			case TRIGGERED_RUN_RUNMODE:
-			case TRIGGERED_RUN_RESET_SOFT_RUNMODE:
-			case TRIGGERED_RUN_RESET_HARD_RUNMODE:
-			case RESET_SOFT_RUNMODE:
-			case RESET_HARD_RUNMODE: {
-				_runMode = m;
+			case HARD_RESETMODE:
+			case SOFT_RESETMODE: {
+				_resetMode = m;
 				break;
 			}
 			default: {
-				_runMode = defaultRunMode;
+				_resetMode = defaultResetMode;
 			}
 		}
 	}
 
-	json_t* ips = json_object_get(root, INITIAL_PULSE_SECONDS);
-	if (ips) {
-		_initialPulseSeconds = std::max(0.0f, (float)json_real_value(ips));
+	json_t* ics = json_object_get(root, INITIAL_CLOCK_SECONDS);
+	if (ics) {
+		_initialClockPeriod = std::max(0.0f, (float)json_real_value(ics));
 	}
 
 	json_t* p = json_object_get(root, POLY_INPUT);
@@ -82,7 +76,7 @@ int RGate::channels() {
 
 void RGate::addChannel(int c) {
 	_engines[c] = new Engine();
-	_engines[c]->reset();
+	_engines[c]->reset(true, true, _initialClockPeriod);
 }
 
 void RGate::removeChannel(int c) {
@@ -120,90 +114,20 @@ void RGate::modulateChannel(int c) {
 void RGate::processChannel(const ProcessArgs& args, int c) {
 	Engine& e = *_engines[c];
 
-	bool runTriggered = e.runTrigger.process(inputs[RUN_INPUT].getPolyVoltage(c));
-	switch (_runMode) {
-		case GATED_RUN_RUNMODE: {
-			_running = e.runTrigger.isHigh() ? YES_RUNNING : NO_RUNNING;
-			break;
-		}
-		case GATED_RUN_RESET_SOFT_RUNMODE: {
-			_running = e.runTrigger.isHigh() ? YES_RUNNING : NO_RUNNING;
-			if (runTriggered) {
-				e.reset(false, false);
+	if (e.runTrigger.process(inputs[RESET_INPUT].getPolyVoltage(c))) {
+		switch (_resetMode) {
+			case HARD_RESETMODE: {
+				e.reset(false, true, _initialClockPeriod);
+				break;
 			}
-			break;
-		}
-		case GATED_RUN_RESET_HARD_RUNMODE: {
-			_running = e.runTrigger.isHigh() ? YES_RUNNING : NO_RUNNING;
-			if (runTriggered) {
-				e.reset(false, true);
+			case SOFT_RESETMODE: {
+				e.reset(false, false, _initialClockPeriod);
+				break;
 			}
-			break;
-		}
-		case TRIGGERED_RUN_RUNMODE: {
-			if (runTriggered) {
-				switch (_running) {
-					case UNKNOWN_RUNNING:
-					case NO_RUNNING: {
-						_running = YES_RUNNING;
-						break;
-					}
-					case YES_RUNNING: {
-						_running = NO_RUNNING;
-						break;
-					}
-				}
-			}
-			break;
-		}
-		case TRIGGERED_RUN_RESET_SOFT_RUNMODE: {
-			if (runTriggered) {
-				switch (_running) {
-					case UNKNOWN_RUNNING:
-					case NO_RUNNING: {
-						_running = YES_RUNNING;
-						break;
-					}
-					case YES_RUNNING: {
-						_running = NO_RUNNING;
-						break;
-					}
-				}
-				e.reset(false, false);
-			}
-			break;
-		}
-		case TRIGGERED_RUN_RESET_HARD_RUNMODE: {
-			if (runTriggered) {
-				switch (_running) {
-					case UNKNOWN_RUNNING:
-					case NO_RUNNING: {
-						_running = YES_RUNNING;
-						break;
-					}
-					case YES_RUNNING: {
-						_running = NO_RUNNING;
-						break;
-					}
-				}
-				e.reset(false, true);
-			}
-			break;
-		}
-		case RESET_SOFT_RUNMODE: {
-			if (runTriggered) {
-				e.reset(false, false);
-			}
-			break;
-		}
-		case RESET_HARD_RUNMODE: {
-			if (runTriggered) {
-				e.reset(false, true);
-			}
-			break;
 		}
 	}
 
+	float out = -1.0f;
 	bool clock = false;
 	if (inputs[CLOCK_INPUT].isConnected()) {
 		clock = e.clockTrigger.process(inputs[CLOCK_INPUT].getPolyVoltage(c));
@@ -212,55 +136,96 @@ void RGate::processChannel(const ProcessArgs& args, int c) {
 				e.clockSeconds = e.secondsSinceLastClock;
 			}
 			e.secondsSinceLastClock = 0.0f;
-
-			if (_running == UNKNOWN_RUNNING) {
-				_running = YES_RUNNING;
-			}
 		}
-		e.secondsSinceLastClock += _sampleTime;
-	}
 
-	float out = 0.0f;
-	if (e.clockSeconds > 0.0f) {
-		e.dividedSeconds = e.clockSeconds * (float)e.division;
-		e.multipliedSeconds = e.dividedSeconds / (float)e.multiplication;
-		e.gateSeconds = std::max(0.001f, e.multipliedSeconds * e.gatePercentage);
-
-		if (clock) {
-			if (e.dividerCount < 1) {
-				e.dividedProgressSeconds = 0.0f;
+		if (e.secondsSinceLastClock >= 0.0f) {
+			e.secondsSinceLastClock += _sampleTime;
+			e.dividedSeconds = e.clockSeconds * (float)e.division;
+			e.multipliedSeconds = e.dividedSeconds / (float)e.multiplication;
+			e.gateSeconds = std::max(0.001f, e.multipliedSeconds * e.gatePercentage);
+			if (clock) {
+				if (e.dividerCount < 1) {
+					e.dividedProgressSeconds = 0.0f;
+				}
+				else {
+					e.dividedProgressSeconds += _sampleTime;
+				}
+				++e.dividerCount;
+				if (e.dividerCount >= e.division) {
+					e.dividerCount = 0;
+				}
 			}
 			else {
 				e.dividedProgressSeconds += _sampleTime;
 			}
-			++e.dividerCount;
-			if (e.dividerCount >= e.division) {
-				e.dividerCount = 0;
+
+			if (e.dividedProgressSeconds < e.dividedSeconds) {
+				float multipliedProgressSeconds = e.dividedProgressSeconds / e.multipliedSeconds;
+				multipliedProgressSeconds -= (float)(int)multipliedProgressSeconds;
+				multipliedProgressSeconds *= e.multipliedSeconds;
+				out += 2.0f * (float)(multipliedProgressSeconds <= e.gateSeconds);
 			}
 		}
-		else {
-			e.dividedProgressSeconds += _sampleTime;
-		}
-
-		float multipliedProgressSeconds = e.dividedProgressSeconds / e.multipliedSeconds;
-		multipliedProgressSeconds -= (float)(int)multipliedProgressSeconds;
-		multipliedProgressSeconds *= e.multipliedSeconds;
-		out = (float)(multipliedProgressSeconds <= e.gateSeconds);
-	}
-	else {
-		if (clock) {
-			++e.dividerCount;
-			if (_initialPulseSeconds > 0.0f) {
-				e.initialGatePulseGen.trigger(_initialPulseSeconds);
-			}
-		}
-		e.dividedProgressSeconds += _sampleTime;
-		out = (float)e.initialGatePulseGen.process(_sampleTime);
 	}
 
+	out += _rangeOffset;
+	out *= _rangeScale;
 	outputs[GATE_OUTPUT].setChannels(_channels);
-	outputs[GATE_OUTPUT].setVoltage(out * (float)(_running == YES_RUNNING) * 10.0f, c);
+	outputs[GATE_OUTPUT].setVoltage(out, c);
 }
+
+struct IPQuantity : Quantity {
+	RGate* _module;
+
+	IPQuantity(RGate* m) : _module(m) {}
+
+	void setValue(float value) override {
+		value = clamp(value, getMinValue(), getMaxValue());
+		if (_module) {
+			_module->_initialClockPeriod = value;
+		}
+	}
+
+	float getValue() override {
+		if (_module) {
+			return _module->_initialClockPeriod;
+		}
+		return RGate::defaultInitialClockPeriod;
+	}
+
+	float getMinValue() override { return 0.0f; }
+	float getMaxValue() override { return 1.0; }
+	float getDefaultValue() override { return RGate::defaultInitialClockPeriod; }
+	float getDisplayValue() override { return getValue() * 1000.0f; }
+	void setDisplayValue(float displayValue) override { setValue(displayValue / 1000.0f); }
+	std::string getLabel() override { return "Initial clock"; }
+	std::string getUnit() override { return "ms"; }
+};
+
+struct IPSlider : ui::Slider {
+	IPSlider(RGate* module) {
+		quantity = new IPQuantity(module);
+		box.size.x = 200.0f;
+	}
+	virtual ~IPSlider() {
+		delete quantity;
+	}
+};
+
+struct IPMenuItem : MenuItem {
+	RGate* _module;
+
+	IPMenuItem(RGate* m) : _module(m) {
+		this->text = "Initial clock";
+		this->rightText = "▸";
+	}
+
+	Menu* createChildMenu() override {
+		Menu* menu = new Menu;
+		menu->addChild(new IPSlider(_module));
+		return menu;
+	}
+};
 
 struct RGateWidget : BGModuleWidget {
 	static constexpr int hp = 5;
@@ -278,7 +243,7 @@ struct RGateWidget : BGModuleWidget {
 
 		auto lengthInputPosition = Vec(10.5, 251.0);
 		auto clockDivideInputPosition = Vec(40.5, 251.0);
-		auto runInputPosition = Vec(10.5, 288.0);
+		auto resetInputPosition = Vec(10.5, 288.0);
 		auto clockMultipleInputPosition = Vec(40.5, 288.0);
 		auto clockInputPosition = Vec(10.5, 325.0);
 
@@ -291,7 +256,7 @@ struct RGateWidget : BGModuleWidget {
 
 		addInput(createInput<Port24>(lengthInputPosition, module, RGate::LENGTH_INPUT));
 		addInput(createInput<Port24>(clockDivideInputPosition, module, RGate::CLOCK_DIVIDE_INPUT));
-		addInput(createInput<Port24>(runInputPosition, module, RGate::RUN_INPUT));
+		addInput(createInput<Port24>(resetInputPosition, module, RGate::RESET_INPUT));
 		addInput(createInput<Port24>(clockMultipleInputPosition, module, RGate::CLOCK_MULTIPLE_INPUT));
 		addInput(createInput<Port24>(clockInputPosition, module, RGate::CLOCK_INPUT));
 
@@ -307,26 +272,19 @@ struct RGateWidget : BGModuleWidget {
 		p->addItem(OptionMenuItem("LEN input", [m]() { return m->_polyInputID == RGate::LENGTH_INPUT; }, [m]() { m->_polyInputID = RGate::LENGTH_INPUT; }));
 		OptionsMenuItem::addToMenu(p, menu);
 
-		OptionsMenuItem* r = new OptionsMenuItem("RUN port");
-		r->addItem(OptionMenuItem("Toggle run on trigger, hard reset on start", [m]() { return m->_runMode == RGate::TRIGGERED_RUN_RESET_HARD_RUNMODE; }, [m]() {  m->_runMode = RGate::TRIGGERED_RUN_RESET_HARD_RUNMODE; }));
-		r->addItem(OptionMenuItem("Toggle run on trigger, soft reset on start", [m]() { return m->_runMode == RGate::TRIGGERED_RUN_RESET_SOFT_RUNMODE; }, [m]() {  m->_runMode = RGate::TRIGGERED_RUN_RESET_SOFT_RUNMODE; }));
-		r->addItem(OptionMenuItem("Toggle run on trigger", [m]() { return m->_runMode == RGate::TRIGGERED_RUN_RUNMODE; }, [m]() {  m->_runMode = RGate::TRIGGERED_RUN_RUNMODE; }));
-		r->addItem(OptionMenuItem("Run when gate high, hard reset on rising edge", [m]() { return m->_runMode == RGate::GATED_RUN_RESET_HARD_RUNMODE; }, [m]() {  m->_runMode = RGate::GATED_RUN_RESET_HARD_RUNMODE; }));
-		r->addItem(OptionMenuItem("Run when gate high, soft reset on rising edge", [m]() { return m->_runMode == RGate::GATED_RUN_RESET_SOFT_RUNMODE; }, [m]() {  m->_runMode = RGate::GATED_RUN_RESET_SOFT_RUNMODE; }));
-		r->addItem(OptionMenuItem("Run when gate high", [m]() { return m->_runMode == RGate::GATED_RUN_RUNMODE; }, [m]() {  m->_runMode = RGate::GATED_RUN_RUNMODE; }));
-		r->addItem(OptionMenuItem("Hard reset on trigger", [m]() { return m->_runMode == RGate::RESET_HARD_RUNMODE; }, [m]() {  m->_runMode = RGate::RESET_HARD_RUNMODE; }));
-		r->addItem(OptionMenuItem("Soft reset on trigger", [m]() { return m->_runMode == RGate::RESET_SOFT_RUNMODE; }, [m]() {  m->_runMode = RGate::RESET_SOFT_RUNMODE; }));
+		OptionsMenuItem* r = new OptionsMenuItem("RESET mode");
+		r->addItem(OptionMenuItem("Hard: reset clock period and divider", [m]() { return m->_resetMode == RGate::HARD_RESETMODE; }, [m]() {  m->_resetMode = RGate::HARD_RESETMODE; }));
+		r->addItem(OptionMenuItem("Soft: reseet clock divider", [m]() { return m->_resetMode == RGate::SOFT_RESETMODE; }, [m]() {  m->_resetMode = RGate::SOFT_RESETMODE; }));
 		OptionsMenuItem::addToMenu(r, menu);
 
-		OptionsMenuItem* i = new OptionsMenuItem("Initial pulse duration");
-		i->addItem(OptionMenuItem("No pulse", [m]() { return m->_initialPulseSeconds == 0.0f; }, [m]() {  m->_initialPulseSeconds = 0.0f; }));
-		i->addItem(OptionMenuItem("1ms", [m]() { return m->_initialPulseSeconds == 0.001f; }, [m]() {  m->_initialPulseSeconds = 0.001f; }));
-		i->addItem(OptionMenuItem("100ms", [m]() { return m->_initialPulseSeconds == 0.1f; }, [m]() {  m->_initialPulseSeconds = 0.1f; }));
-		i->addItem(OptionMenuItem("200ms", [m]() { return m->_initialPulseSeconds == 0.2f; }, [m]() {  m->_initialPulseSeconds = 0.2f; }));
-		i->addItem(OptionMenuItem("300ms", [m]() { return m->_initialPulseSeconds == 0.3f; }, [m]() {  m->_initialPulseSeconds = 0.3f; }));
-		i->addItem(OptionMenuItem("400ms", [m]() { return m->_initialPulseSeconds == 0.4f; }, [m]() {  m->_initialPulseSeconds = 0.4f; }));
-		i->addItem(OptionMenuItem("500ms", [m]() { return m->_initialPulseSeconds == 0.5f; }, [m]() {  m->_initialPulseSeconds = 0.4f; }));
-		OptionsMenuItem::addToMenu(i, menu);
+		menu->addChild(new IPMenuItem(m));
+
+		OptionsMenuItem* mi = new OptionsMenuItem("Range");
+		mi->addItem(OutputRangeOptionMenuItem(m, "0V-10V", 1.0f, 5.0f));
+		mi->addItem(OutputRangeOptionMenuItem(m, "0V-5V", 1.0f, 2.5f));
+		mi->addItem(OutputRangeOptionMenuItem(m, "+/-10V", 0.0f, 10.0f));
+		mi->addItem(OutputRangeOptionMenuItem(m, "+/-5V", 0.0f, 5.0f));
+		OptionsMenuItem::addToMenu(mi, menu);
 	}
 };
 
