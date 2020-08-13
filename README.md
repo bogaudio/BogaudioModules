@@ -32,6 +32,13 @@ Some modules have expanders; see <a href="#expanders">notes on expanders</a>.
 
 ![modules screenshot](./doc/www/modules5.png)
 
+The modules have two <a href="#alternate_panels">alternate panel designs</a>, "Dark":
+
+![modules screenshot](./doc/www/skin-dark.png)
+
+And "Dark {low-contrast)":
+
+![modules screenshot](./doc/www/skin-lowcontrast.png)
 
 ## Builds/Releases
 
@@ -1087,6 +1094,23 @@ Rack allows left expanders as well as right, but to simplify things we've chosen
 
 Some expanders may be chainable: multiple instances can be added to continue expanding the base.  In this case, the expanders must all be to the right of the base, and all touching.
 
+
+## <a name="alternate_panels"></a> Alternate Panels
+
+![alternate panels image](doc/www/alternate_panels.png)
+
+There are three sets of alternate panels for the modules:
+  - Light
+  - Dark
+  - Dark (low-contrast)
+
+For nearly all modules (ANALYZER-XL is an exception), the panel to use can be set on the module's "Panel" context menu.  Also, a global default can be set for the plugin, with the "Default to..." panel menu options.
+
+When new modules are added to a patch, they are set to use the default panel design (which is Light, unless the default has been changed to something else).  When the default is changed, all modules set to use the default panels will update.  
+
+The default panel set is used when the modules are displayed in Rack's module browser (though, the module browser may not update immediately when the default changes; restarting Rack will force it to).
+
+When a new default panel set is selected, the module places a file named `Bogaudio.json` in your Rack user directory (e.g. `~/Documents/Rack` on Mac), to save the preference.
 
 ## Other Notes
 

@@ -1,9 +1,8 @@
 #!/usr/bin/env ruby
 
-# To reggenerate README screenshots:
-#  1. rm -rf ../../screenshots/Bogaudio/
-#  2. (cd ../.. && ./Rack -d -t 1 Bogaudio)
-#  3. ./scripts/make_screenshots.rb ../../screenshots/Bogaudio
+# To reggenerate screenshots:
+#  1. Extract module screenshots from Rack: ./scripts/make_module_screenshots.rb
+#  2. Make composite screenshots for README: ./scripts/make_screenshots.rb
 
 screens = [
   {
@@ -20,7 +19,7 @@ screens = [
     rows: [
       ['VCF', 'LVCF', 'FFB', 'EQ', 'EQS'],
       ['PEQ', 'PEQ6', 'PEQ6XF', 'PEQ14', 'PEQ14XF'],
-      ['DADSRH', 'DADSRHPlus', 'Shaper', 'ShaperPlus', 'AD', 'ASR', 'ADSR', 'Follow', 'DGate', 'Edge']
+      ['DADSRH', 'DADSRHPlus', 'Shaper', 'ShaperPlus', 'AD', 'ASR', 'ADSR', 'Follow', 'DGate', 'RGate', 'Edge']
     ]
   },
   {
@@ -49,6 +48,27 @@ screens = [
       ['Mono', 'Arp', 'Assign', 'Unison', 'PolyCon', 'PolyCon8', 'PolyOff16', 'PolyOff8', 'PolyMult', '-', 'Detune', 'Stack', 'Reftone'],
       ['Bool', 'Cmp', 'CVD', 'FlipFlop', 'Inv', 'Manual', 'FourMan', 'Mult', 'Offset', 'Slew', 'Sums', 'Switch', '-', 'Blank3', 'Blank6']
     ]
+  },
+
+  {
+    file: 'skin-dark.png',
+    crop: false,
+    rows: [
+      ['VCO', 'XCO', 'FMOp', 'Walk2', 'VCF', 'DADSRH', 'FFB', 'SampleHold', 'Pan'],
+      ['Mix4', 'AddrSeq', 'Pgmr', 'Switch44', 'Analyzer', 'Pressor', 'Offset', 'Blank6']
+    ],
+    skin: 'dark',
+    nopad: true
+  },
+  {
+    file: 'skin-lowcontrast.png',
+    crop: false,
+    rows: [
+      ['VCO', 'XCO', 'FMOp', 'Walk2', 'VCF', 'DADSRH', 'FFB', 'SampleHold', 'Pan'],
+      ['Mix4', 'AddrSeq', 'Pgmr', 'Switch44', 'Analyzer', 'Pressor', 'Offset', 'Blank6']
+    ],
+    skin: 'lowcontrast',
+    nopad: true
   },
 
   {
@@ -104,7 +124,7 @@ screens = [
     file: 'envelopes3.png',
     crop: true,
     rows: [
-      ['DGate', 'Edge']
+      ['DGate', 'RGate', 'Edge']
     ]
   },
   {
@@ -218,21 +238,22 @@ HP = 15
 PAD_EDGE = 1 * HP
 PAD_MODULE = 1 * HP
 PAD_GROUP = 3 * HP
-OUT_DIR = './doc/www'
 BACKGROUND_FILE = './doc/rack_background.png'
 
 # require 'chunky_png'
 require 'oily_png'
 require 'pp'
 
-screens_dir = ARGV[0]
-if screens_dir.nil?
-  STDERR.puts "Usage: #{$0}: <rack screenshot output directory for plugin>"
+base_dir = File.absolute_path(File.join(File.dirname($0), '..'))
+screens_dir = File.join(base_dir, 'doc', 'module_screenshots')
+unless Dir.exists?(screens_dir)
+  STDERR.puts "No screenshots directory: #{screens_dir}\nMake it with ./scripts/make_module_screenshots.rb"
   exit 1
 end
 
+out_dir = File.join(base_dir, 'doc', 'www')
 unless Dir.exists?(screens_dir)
-  STDERR.puts "No such screenshots directory: #{screens_dir}"
+  STDERR.puts "No output directory: #{out_dir}"
   exit 1
 end
 
@@ -253,6 +274,10 @@ end
 screens.each do |screen|
   next unless screen
 
+  unless screen.key?(:skin)
+    screen[:skin] = 'default'
+  end
+
   rows = screen[:rows]
   out = background_for_rows(rows.size)
   x = 0
@@ -260,22 +285,24 @@ screens.each do |screen|
     x = PAD_EDGE
     row.each_with_index do |item, j|
       if item == '-'
-        x += PAD_GROUP
-        x -= PAD_MODULE if j > 0
+        unless screen[:nopad]
+          x += PAD_GROUP
+          x -= PAD_MODULE if j > 0
+        end
       else
-        image = ChunkyPNG::Image.from_file(File.join(screens_dir, "Bogaudio-#{item}.png"))
+        image = ChunkyPNG::Image.from_file(File.join(screens_dir, screen[:skin], "#{item}.png"))
         out.compose!(image, x, i * $row_background.dimension.height)
         x += image.dimension.width
-        x += PAD_MODULE
+        x += PAD_MODULE unless screen[:nopad]
       end
     end
-    x -= PAD_MODULE if rows.last.size > 0
+    x -= PAD_MODULE if rows.last.size > 0 && !screen[:nopad]
     x += PAD_EDGE
   end
 
   out.crop!(0, 0, x, out.dimension.height) if screen[:crop]
 
-  file = File.join(OUT_DIR, screen[:file])
+  file = File.join(out_dir, screen[:file])
   out.save(file)
   puts "wrote #{file}"
   # system("open #{file}")
