@@ -264,7 +264,8 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the I
 A six channel parametric EQ.  It generally works as PEQ does, except:
   - The global FCV control has a knob, which becomes an attenuverter if a CV is provided.
   - There is a global BW paramter with CV, rather than per-channel bandwidth controls.
-  - The "FCV RNG" option controls the scaling of the frequency CV inputs; if set to OCTV, the full CV range will alter the band frquencies up to an octave in either direction; if set to FULL, the CV can run the frequencies over the full range, as on PEQ.
+  - The "FCV RNG" option controls the scaling of the frequency CV inputs; if set to OCTV, the full CV range will alter the band frequencies up to an octave in either direction; if set to FULL, the CV can run the frequencies over the full range, as on PEQ.
+  - On the context (right-click) menu, there is an option "Exclude direct-output bands from mix"; if this is enabled, any band that has its direct output in use (if something is patched to its output) does not get its output mixed into the main output.  Usually, the main output includes all bands.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
 
@@ -277,6 +278,8 @@ Expands PEQ6 with envelope follower outputs, per band.  The DAMP and GAIN knobs 
 A fourteen channel parametric EQ.  The control scheme is as with PEQ6.
 
 It adds ODD and EVEN outputs: these are mixes of the odd and even channels, respectively.  If the low channel is set to LOWPASS, its output will go to both ODD and EVEN.  Same for the high channel, if its set to HIGHPASS.
+
+The "Exclude direct-output bands..." option, if enabled, applies to ODD and EVEN as well as the main OUT.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
 
