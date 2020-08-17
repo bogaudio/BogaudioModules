@@ -14,7 +14,7 @@ endif
 DSP_SOURCES = $(wildcard src/dsp/*cpp src/dsp/filters/*cpp)
 SOURCES = $(wildcard src/*.cpp) $(DSP_SOURCES)
 
-DISTRIBUTABLES += $(wildcard LICENSE* README-dist.txt) res
+DISTRIBUTABLES += $(wildcard LICENSE*) res
 
 RACK_DIR ?= ../..
 include $(RACK_DIR)/plugin.mk
