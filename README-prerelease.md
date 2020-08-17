@@ -526,7 +526,9 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defin
 
 #### <a name="mumix"></a> MUMIX
 
-Essentially identical to UMIX, but with mute buttons for each input, and with no averaging mode.
+Essentially identical to UMIX, but with mute buttons for each input.
+
+If averaging mode is enabled, note that the averaging is based on how many inputs are connected and not muted.  For example, if three inputs are connected, and one is muted, the output will be the sum of the two unmuted channels, divided by two.
 
 _Polyphony:_ same as UMIX.
 

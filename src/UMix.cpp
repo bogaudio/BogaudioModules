@@ -1,22 +1,6 @@
 
 #include "UMix.hpp"
 
-#define SUM "sum"
-
-json_t* UMix::toJson(json_t* root) {
-	root = MatrixBaseModule::toJson(root);
-	json_object_set_new(root, SUM, json_boolean(_sum));
-	return root;
-}
-
-void UMix::fromJson(json_t* root) {
-	MatrixBaseModule::fromJson(root);
-	json_t* s = json_object_get(root, SUM);
-	if (s) {
-		_sum = json_is_true(s);
-	}
-}
-
 bool UMix::active() {
 	return outputs[OUT_OUTPUT].isConnected();
 }
@@ -64,7 +48,7 @@ void UMix::processChannel(const ProcessArgs& args, int c) {
 	}
 }
 
-struct UMixWidget : MatrixBaseModuleWidget {
+struct UMixWidget : SumAverageModuleWidget {
 	static constexpr int hp = 3;
 
 	UMixWidget(UMix* module) {
@@ -96,13 +80,6 @@ struct UMixWidget : MatrixBaseModuleWidget {
 		addInput(createInput<Port24>(in8InputPosition, module, UMix::IN8_INPUT));
 
 		addOutput(createOutput<Port24>(outOutputPosition, module, UMix::OUT_OUTPUT));
-	}
-
-	void contextMenu(Menu* menu) override {
-		auto m = dynamic_cast<UMix*>(module);
-		assert(m);
-		MatrixBaseModuleWidget::contextMenu(menu);
-		menu->addChild(new OptionMenuItem("Average", [m]() { return !m->_sum; }, [m]() { m->_sum = !m->_sum; }));
 	}
 };
 

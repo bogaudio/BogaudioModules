@@ -34,8 +34,19 @@ void Mumix::modulate() {
 }
 
 void Mumix::processAlways(const ProcessArgs& args) {
+	int active = 0;
 	for (int i = 0; i < 8; ++i) {
-		_amplifiers[i].setLevel(_slewLimiters[i].next(_muted[i] ? minDecibels : maxDecibels));
+		float level = _slewLimiters[i].next(_muted[i] ? minDecibels : maxDecibels);
+		_amplifiers[i].setLevel(level);
+		if (!_sum && inputs[IN1_INPUT + i].isConnected() && level > minDecibels + 1.0f) {
+			++active;
+		}
+	}
+	if (_sum) {
+		_invActive = 0.0f;
+	}
+	else {
+		_invActive = active > 0 ? 1.0f / (float)active : 0.0f;
 	}
 }
 
@@ -46,6 +57,9 @@ void Mumix::processChannel(const ProcessArgs& args, int c) {
 	for (int i = 0; i < 8; ++i) {
 		out += _inputGainLevel * _amplifiers[i].next(inputs[IN1_INPUT + i].getPolyVoltage(c));
 	}
+	if (!_sum && _invActive > 0.0f) {
+		out *= _invActive;
+	}
 	if (_clippingMode == HARD_CLIPPING) {
 		outputs[OUT_OUTPUT].setVoltage(clamp(out, -12.0f, 12.0f), c);
 	}
@@ -54,7 +68,7 @@ void Mumix::processChannel(const ProcessArgs& args, int c) {
 	}
 }
 
-struct MumixWidget : MatrixBaseModuleWidget {
+struct MumixWidget : SumAverageModuleWidget {
 	static constexpr int hp = 6;
 
 	MumixWidget(Mumix* module) {

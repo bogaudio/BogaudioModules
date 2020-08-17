@@ -1,7 +1,7 @@
 #pragma once
 
 #include "bogaudio.hpp"
-#include "matrix_base.hpp"
+#include "sum_average.hpp"
 #include "dsp/signal.hpp"
 
 using namespace bogaudio::dsp;
@@ -10,7 +10,7 @@ extern Model* modelMumix;
 
 namespace bogaudio {
 
-struct Mumix : MatrixBaseModule {
+struct Mumix : SumAverageModule {
 	enum ParamsIds {
 		MUTE1_PARAM,
 		MUTE2_PARAM,
@@ -48,6 +48,7 @@ struct Mumix : MatrixBaseModule {
 	Amplifier _amplifiers[maxChannels];
 	bogaudio::dsp::SlewLimiter _slewLimiters[maxChannels];
 	bool _muted[8] {};
+	float _invActive = 0.0f;
 
 	Mumix() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "bogaudio.hpp"
-#include "matrix_base.hpp"
+#include "sum_average.hpp"
 #include "dsp/signal.hpp"
 
 using namespace bogaudio::dsp;
@@ -10,7 +10,7 @@ extern Model* modelUMix;
 
 namespace bogaudio {
 
-struct UMix : MatrixBaseModule {
+struct UMix : SumAverageModule {
 	enum ParamsIds {
 		NUM_PARAMS
 	};
@@ -32,15 +32,12 @@ struct UMix : MatrixBaseModule {
 		NUM_OUTPUTS
 	};
 
-	bool _sum = true;
 	Saturator _saturator[maxChannels];
 
 	UMix() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 	}
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
 	bool active() override;
 	int channels() override;
 	void processChannel(const ProcessArgs& args, int c) override;
