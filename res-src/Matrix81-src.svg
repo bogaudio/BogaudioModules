@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<module hp="6">
+  <style/>
+
+  <def xlink:href="#module6" var-name="MATRIX81" var-letterspacing="0.7"/>
+
+  <g transform="translate(2 25)">
+    <g class="io-group" transform="translate(5.5 0)">
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 283)"/>
+      <rect class="input-background" width="34" height="293" rx="5"/>
+      <def id="IN1_INPUT" xlink:href="#input" transform="translate(5 5)"/>
+      <def id="IN2_INPUT" xlink:href="#input" transform="translate(5 42)"/>
+      <def id="IN3_INPUT" xlink:href="#input" transform="translate(5 79)"/>
+      <def id="IN4_INPUT" xlink:href="#input" transform="translate(5 116)"/>
+      <def id="IN5_INPUT" xlink:href="#input" transform="translate(5 153)"/>
+      <def id="IN6_INPUT" xlink:href="#input" transform="translate(5 190)"/>
+      <def id="IN7_INPUT" xlink:href="#input" transform="translate(5 227)"/>
+      <def id="IN8_INPUT" xlink:href="#input" transform="translate(5 264)"/>
+    </g>
+    <g class="io-group" transform="translate(5.5 295)">
+      <rect class="output-background-filler" width="34" height="10" transform="translate(0 -3)"/>
+      <rect class="output-background" width="34" height="38" rx="5"/>
+      <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 1)"/>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.5 33)">OUT</text>
+    </g>
+  </g>
+
+  <g transform="translate(52 0)">
+    <g transform="translate(0 24)">
+      <def id="MIX1_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
+      <def xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    </g>
+    <g transform="translate(0 61)">
+      <def id="MIX2_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
+      <def xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    </g>
+    <g transform="translate(0 98)">
+      <def id="MIX3_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
+      <def xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    </g>
+    <g transform="translate(0 135)">
+      <def id="MIX4_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
+      <def xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    </g>
+    <g transform="translate(0 172)">
+      <def id="MIX5_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
+      <def xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    </g>
+    <g transform="translate(0 209)">
+      <def id="MIX6_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
+      <def xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    </g>
+    <g transform="translate(0 246)">
+      <def id="MIX7_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
+      <def xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    </g>
+    <g transform="translate(0 283)">
+      <def id="MIX8_PARAM" xlink:href="#knob19" transform="translate(3.5 8)"/>
+      <def xlink:href="#dial-centertick-19" transform="translate(-6.5 -2)"/>
+    </g>
+  </g>
+
+  <!-- <polyline points="0,0 0,380" stroke-width="0.7" stroke="#0f0" transform="translate(24.5 0)" /> -->
+  <!-- <polyline points="0,0 0,380" stroke-width="0.7" stroke="#0f0" transform="translate(65.5 0)" /> -->
+  <!-- <polyline points="0,0 90,0" stroke-width="0.7" stroke="#0f0" transform="translate(0 42)" /> -->
+  <!-- <polyline points="0,0 90,0" stroke-width="0.7" stroke="#0f0" transform="translate(0 79)" /> -->
+  <!-- <polyline points="0,0 90,0" stroke-width="0.7" stroke="#0f0" transform="translate(0 116)" /> -->
+  <!-- <polyline points="0,0 90,0" stroke-width="0.7" stroke="#0f0" transform="translate(0 153)" /> -->
+  <!-- <polyline points="0,0 90,0" stroke-width="0.7" stroke="#0f0" transform="translate(0 190)" /> -->
+  <!-- <polyline points="0,0 90,0" stroke-width="0.7" stroke="#0f0" transform="translate(0 227)" /> -->
+  <!-- <polyline points="0,0 90,0" stroke-width="0.7" stroke="#0f0" transform="translate(0 264)" /> -->
+  <!-- <polyline points="0,0 90,0" stroke-width="0.7" stroke="#0f0" transform="translate(0 301)" /> -->
+</module>

@@ -44,7 +44,7 @@ struct Matrix44 : KnobMatrixModule {
 		NUM_OUTPUTS
 	};
 
-	Matrix44() : KnobMatrixModule(4, MIX11_PARAM, IN1_INPUT, OUT1_OUTPUT) {
+	Matrix44() : KnobMatrixModule(4, 4, MIX11_PARAM, IN1_INPUT, OUT1_OUTPUT) {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(MIX11_PARAM, -1.0f, 1.0f, 0.0f, "Mix 1A", "%", 0.0f, 100.0f);
 		configParam(MIX21_PARAM, -1.0f, 1.0f, 0.0f, "Mix 2A", "%", 0.0f, 100.0f);

@@ -68,8 +68,8 @@ struct MatrixModule : MatrixBaseModule {
 struct KnobMatrixModule : MatrixModule {
 	bool _indicatorKnobs = true;
 
-	KnobMatrixModule(int n, int firstParamID, int firstInputID, int firstOutputID)
-	: MatrixModule(n, n, firstParamID, firstInputID, firstOutputID)
+	KnobMatrixModule(int ins, int outs, int firstParamID, int firstInputID, int firstOutputID)
+	: MatrixModule(ins, outs, firstParamID, firstInputID, firstOutputID)
 	{}
 
 	json_t* toJson(json_t* root) override;

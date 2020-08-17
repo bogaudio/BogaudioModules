@@ -41,6 +41,7 @@
 #include "LVCO.hpp"
 #include "Manual.hpp"
 #include "Matrix44.hpp"
+#include "Matrix81.hpp"
 #include "Matrix88.hpp"
 #include "Mix1.hpp"
 #include "Mix2.hpp"
@@ -167,9 +168,10 @@ void init(rack::Plugin *p) {
 
 	p->addModel(modelUMix);
 	p->addModel(modelMumix);
-	p->addModel(modelSwitch81);
+	p->addModel(modelMatrix81);
 	p->addModel(modelMatrix44);
 	p->addModel(modelMatrix88);
+	p->addModel(modelSwitch81);
 	p->addModel(modelSwitch44);
 	p->addModel(modelSwitch88);
 	p->addModel(modelSwitch1616);

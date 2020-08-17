@@ -513,10 +513,10 @@
       ]
     },
     {
-      "slug": "Bogaudio-Switch81",
-      "name": "SWITCH81",
+      "slug": "Bogaudio-Matrix81",
+      "name": "MATRIX81",
       "description": "8-channel mixer",
-      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#switch81",
+      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#matrix81",
       "tags": [
         "Mixer",
         "Polyphonic"
@@ -537,6 +537,16 @@
       "name": "MATRIX88",
       "description": "8x8 matrix mixer",
       "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#matrix88",
+      "tags": [
+        "Mixer",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Bogaudio-Switch81",
+      "name": "SWITCH81",
+      "description": "8-channel mixer",
+      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#switch81",
       "tags": [
         "Mixer",
         "Polyphonic"
