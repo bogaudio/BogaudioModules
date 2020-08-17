@@ -85,6 +85,7 @@
 #include "Switch.hpp"
 #include "Switch1616.hpp"
 #include "Switch44.hpp"
+#include "Switch81.hpp"
 #include "Switch88.hpp"
 #include "UMix.hpp"
 #include "Unison.hpp"
@@ -166,6 +167,7 @@ void init(rack::Plugin *p) {
 
 	p->addModel(modelUMix);
 	p->addModel(modelMumix);
+	p->addModel(modelSwitch81);
 	p->addModel(modelMatrix44);
 	p->addModel(modelMatrix88);
 	p->addModel(modelSwitch44);

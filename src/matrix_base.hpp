@@ -30,7 +30,8 @@ struct MatrixBaseModuleWidget : BGModuleWidget {
 
 struct MatrixModule : MatrixBaseModule {
 	static constexpr int maxN = 16;
-	int _n;
+	int _ins;
+	int _outs;
 	int _firstParamID;
 	int _firstInputID;
 	int _firstOutputID;
@@ -39,16 +40,18 @@ struct MatrixModule : MatrixBaseModule {
 	bogaudio::dsp::SlewLimiter* _sls = NULL;
 	Saturator* _saturators = NULL;
 
-	MatrixModule(int n, int firstParamID, int firstInputID, int firstOutputID)
-	: _n(n)
+	MatrixModule(int ins, int outs, int firstParamID, int firstInputID, int firstOutputID)
+	: _ins(ins)
+	, _outs(outs)
 	, _firstParamID(firstParamID)
 	, _firstInputID(firstInputID)
 	, _firstOutputID(firstOutputID)
 	{
-		assert(_n <= maxN);
-		_paramValues = new float[_n * _n] {};
-		_sls = new bogaudio::dsp::SlewLimiter[_n * _n];
-		_saturators = new Saturator[_n * maxChannels];
+		assert(_ins <= maxN);
+		assert(_outs <= maxN);
+		_paramValues = new float[_ins * _outs] {};
+		_sls = new bogaudio::dsp::SlewLimiter[_ins * _outs];
+		_saturators = new Saturator[_outs * maxChannels];
 	}
 	virtual ~MatrixModule() {
 		delete[] _paramValues;
@@ -66,7 +69,7 @@ struct KnobMatrixModule : MatrixModule {
 	bool _indicatorKnobs = true;
 
 	KnobMatrixModule(int n, int firstParamID, int firstInputID, int firstOutputID)
-	: MatrixModule(n, firstParamID, firstInputID, firstOutputID)
+	: MatrixModule(n, n, firstParamID, firstInputID, firstOutputID)
 	{}
 
 	json_t* toJson(json_t* root) override;
@@ -93,8 +96,8 @@ struct SwitchMatrixModule : MatrixModule {
 	bool _columnExclusive = false;
 	std::vector<ParamQuantity*> _switchParamQuantities;
 
-	SwitchMatrixModule(int n, int firstParamID, int firstInputID, int firstOutputID)
-	: MatrixModule(n, firstParamID, firstInputID, firstOutputID)
+	SwitchMatrixModule(int ins, int outs, int firstParamID, int firstInputID, int firstOutputID)
+	: MatrixModule(ins, outs, firstParamID, firstInputID, firstOutputID)
 	{}
 
 	json_t* toJson(json_t* root) override;

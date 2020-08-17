@@ -54,7 +54,7 @@ void MatrixBaseModuleWidget::contextMenu(Menu* menu) {
 
 void MatrixModule::sampleRateChange() {
 	float sr = APP->engine->getSampleRate();
-	for (int i = 0, n = _n * _n; i < n; ++i) {
+	for (int i = 0, n = _ins * _outs; i < n; ++i) {
 		_sls[i].setParams(sr, 0.5f, 1.0f);
 	}
 }
@@ -65,9 +65,9 @@ int MatrixModule::channels() {
 
 void MatrixModule::modulate() {
 	MatrixBaseModule::modulate();
-	for (int i = 0; i < _n; ++i) {
-		for (int j = 0; j < _n; ++j) {
-			int ii = i * _n + j;
+	for (int i = 0; i < _ins; ++i) {
+		for (int j = 0; j < _outs; ++j) {
+			int ii = j * _outs + i;
 			_paramValues[ii] = _sls[ii].next(params[_firstParamID + ii].getValue());
 		}
 	}
@@ -76,25 +76,25 @@ void MatrixModule::modulate() {
 void MatrixModule::processChannel(const ProcessArgs& args, int c) {
 	bool inActive[maxN] {};
 	float in[maxN] {};
-	for (int i = 0; i < _n; ++i) {
+	for (int i = 0; i < _ins; ++i) {
 		inActive[i] = inputs[_firstInputID + i].isConnected();
 		if (inActive[i]) {
 			in[i] = inputs[_firstInputID + i].getPolyVoltage(c) * _inputGainLevel;
 		}
 	}
 
-	for (int i = 0; i < _n; ++i) {
+	for (int i = 0; i < _outs; ++i) {
 		if (!outputs[_firstOutputID + i].isConnected()) {
 			continue;
 		}
 		float out = 0.0f;
-		for (int j = 0; j < _n; ++j) {
+		for (int j = 0; j < _ins; ++j) {
 			if (inActive[j]) {
-				out += in[j] * _paramValues[i * _n + j];
+				out += in[j] * _paramValues[i * _outs + j];
 			}
 		}
 		if (_clippingMode != HARD_CLIPPING) {
-			out = _saturators[c * _n + i].next(out);
+			out = _saturators[c * _outs + i].next(out);
 		}
 		outputs[_firstOutputID + i].setChannels(_channels);
 		outputs[_firstOutputID + i].setVoltage(out, c);
@@ -236,24 +236,24 @@ void SwitchMatrixModule::configSwitchParam(int id, const char* label) {
 
 void SwitchMatrixModule::switchChanged(int id, float value) {
 	if (value != 0.0f) {
-		int row = (id - _firstParamID) % _n;
-		int col = (id - _firstParamID) / _n;
+		int row = (id - _firstParamID) % _ins;
+		int col = (id - _firstParamID) / _outs;
 
 		if (_rowExclusive) {
 			for (int i = 0; i < col; ++i) {
-				_switchParamQuantities[i * _n + row]->setValue(0.0f);
+				_switchParamQuantities[i * _ins + row]->setValue(0.0f);
 			}
-			for (int i = col + 1; i < _n; ++i) {
-				_switchParamQuantities[i * _n + row]->setValue(0.0f);
+			for (int i = col + 1; i < _outs; ++i) {
+				_switchParamQuantities[i * _ins + row]->setValue(0.0f);
 			}
 		}
 
 		if (_columnExclusive) {
 			for (int i = 0; i < row; ++i) {
-				_switchParamQuantities[col * _n + i]->setValue(0.0f);
+				_switchParamQuantities[col * _ins + i]->setValue(0.0f);
 			}
-			for (int i = row + 1; i < _n; ++i) {
-				_switchParamQuantities[col * _n + i]->setValue(0.0f);
+			for (int i = row + 1; i < _ins; ++i) {
+				_switchParamQuantities[col * _ins + i]->setValue(0.0f);
 			}
 		}
 	}
@@ -262,16 +262,16 @@ void SwitchMatrixModule::switchChanged(int id, float value) {
 void SwitchMatrixModule::setRowExclusive(bool e) {
 	_rowExclusive = e;
 	if (e) {
-		for (int i = 0; i < _n; ++i) {
+		for (int i = 0; i < _ins; ++i) {
 			int j = 0;
-			for (; j < _n; ++j) {
-				if (_switchParamQuantities[j * _n + i]->getValue() != 0.0f) {
+			for (; j < _outs; ++j) {
+				if (_switchParamQuantities[j * _ins + i]->getValue() != 0.0f) {
 					break;
 				}
 			}
 			++j;
-			for (; j < _n; ++j) {
-				_switchParamQuantities[j * _n + i]->setValue(0.0f);
+			for (; j < _outs; ++j) {
+				_switchParamQuantities[j * _ins + i]->setValue(0.0f);
 			}
 		}
 	}
@@ -280,16 +280,16 @@ void SwitchMatrixModule::setRowExclusive(bool e) {
 void SwitchMatrixModule::setColumnExclusive(bool e) {
 	_columnExclusive = e;
 	if (e) {
-		for (int i = 0; i < _n; ++i) {
+		for (int i = 0; i < _outs; ++i) {
 			int j = 0;
-			for (; j < _n; ++j) {
-				if (_switchParamQuantities[i * _n + j]->getValue() != 0.0f) {
+			for (; j < _ins; ++j) {
+				if (_switchParamQuantities[i * _ins + j]->getValue() != 0.0f) {
 					break;
 				}
 			}
 			++j;
-			for (; j < _n; ++j) {
-				_switchParamQuantities[i * _n + j]->setValue(0.0f);
+			for (; j < _ins; ++j) {
+				_switchParamQuantities[i * _ins + j]->setValue(0.0f);
 			}
 		}
 	}
@@ -307,6 +307,8 @@ void SwitchMatrixModuleWidget::contextMenu(Menu* menu) {
 	i->addItem(OptionMenuItem("Disabled", [m]() { return m->_inverting == SwitchMatrixModule::NO_INVERTING; }, [m]() { m->setInverting(SwitchMatrixModule::NO_INVERTING); }));
 	OptionsMenuItem::addToMenu(i, menu);
 
-	menu->addChild(new OptionMenuItem("Exclusive by rows", [m]() { return m->_rowExclusive; }, [m]() { m->setRowExclusive(!m->_rowExclusive); }));
-	menu->addChild(new OptionMenuItem("Exclusive by columns", [m]() { return m->_columnExclusive; }, [m]() { m->setColumnExclusive(!m->_columnExclusive); }));
+	if (m->_ins > 1 && m->_outs > 1) {
+		menu->addChild(new OptionMenuItem("Exclusive by rows", [m]() { return m->_rowExclusive; }, [m]() { m->setRowExclusive(!m->_rowExclusive); }));
+		menu->addChild(new OptionMenuItem("Exclusive by columns", [m]() { return m->_columnExclusive; }, [m]() { m->setColumnExclusive(!m->_columnExclusive); }));
+	}
 }

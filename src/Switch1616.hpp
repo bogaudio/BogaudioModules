@@ -308,7 +308,7 @@ struct Switch1616 : SwitchMatrixModule {
 		NUM_OUTPUTS
 	};
 
-	Switch1616() : SwitchMatrixModule(16, MIX_1_1_PARAM, IN1_INPUT, OUT1_OUTPUT) {
+	Switch1616() : SwitchMatrixModule(16, 16, MIX_1_1_PARAM, IN1_INPUT, OUT1_OUTPUT) {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 
 		configSwitchParam(MIX_1_1_PARAM, "Mix 1A");

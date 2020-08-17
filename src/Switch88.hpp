@@ -100,7 +100,7 @@ struct Switch88 : SwitchMatrixModule {
 		NUM_OUTPUTS
 	};
 
-	Switch88() : SwitchMatrixModule(8, MIX11_PARAM, IN1_INPUT, OUT1_OUTPUT) {
+	Switch88() : SwitchMatrixModule(8, 8, MIX11_PARAM, IN1_INPUT, OUT1_OUTPUT) {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configSwitchParam(MIX11_PARAM, "Mix 1A");
 		configSwitchParam(MIX21_PARAM, "Mix 2A");

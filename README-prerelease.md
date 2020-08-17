@@ -530,6 +530,8 @@ Essentially identical to UMIX, but with mute buttons for each input.
 
 If averaging mode is enabled, note that the averaging is based on how many inputs are connected and not muted.  For example, if three inputs are connected, and one is muted, the output will be the sum of the two unmuted channels, divided by two.
 
+See also <a href="switch81">SWITCH81</a>, which is similar to this, with options to attenuate or invert the inputs.
+
 _Polyphony:_ same as UMIX.
 
 #### <a name="matrix44"></a> MATRIX44
@@ -552,9 +554,17 @@ An 8x8 version of MATRIX44.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by the first/topmost input.
 
-#### <a name="switch44"></a> SWITCH44
+#### <a name="switch81"></a> SWITCH81
 
 ![Mixers screenshot](doc/www/mixers4.png)
+
+An eight input, one output version of <a href="#switch44">SWITCH44</a>, below.
+
+SWITCH81 is related to <a href="#mumix">MUMIX</a>, with the difference that a switch must be turned on to pass an input to the output, where on MUMIX the switches are mutes (they pass by default).  Also, this module has options for attenuating and inverting the inputs, as on SWITCH44.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, as on SWITCH44.
+
+#### <a name="switch44"></a> SWITCH44
 
 Identical to MATRIX44, but with switches instead of knobs.  All switches default to off, passing no signal.  Clicking a switch sets it to pass voltage with unity gain.  Another click sets the switch off (unless second-click inverting is on, as below).
 
