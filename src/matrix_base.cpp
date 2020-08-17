@@ -7,10 +7,12 @@ using namespace bogaudio::dsp;
 
 #define CLIPPING_MODE "clipping_mode"
 #define INPUT_GAIN_DB "input_gain_db"
+#define SUM "sum"
 
 json_t* MatrixBaseModule::toJson(json_t* root) {
 	json_object_set_new(root, CLIPPING_MODE, json_integer(_clippingMode));
 	json_object_set_new(root, INPUT_GAIN_DB, json_real(_inputGainDb));
+	json_object_set_new(root, SUM, json_boolean(_sum));
 	return root;
 }
 
@@ -26,6 +28,11 @@ void MatrixBaseModule::fromJson(json_t* root) {
 	json_t* g = json_object_get(root, INPUT_GAIN_DB);
 	if (g) {
 		_inputGainDb = clamp(json_real_value(g), -60.0f, 6.0f);
+	}
+
+	json_t* s = json_object_get(root, SUM);
+	if (s) {
+		_sum = json_is_true(s);
 	}
 }
 
@@ -49,6 +56,8 @@ void MatrixBaseModuleWidget::contextMenu(Menu* menu) {
 	c->addItem(OptionMenuItem("Soft/saturated (better for audio)", [m]() { return m->_clippingMode == MatrixBaseModule::SOFT_CLIPPING; }, [m]() { m->_clippingMode = MatrixBaseModule::SOFT_CLIPPING; }));
 	c->addItem(OptionMenuItem("Hard/clipped (better for CV)", [m]() { return m->_clippingMode == MatrixBaseModule::HARD_CLIPPING; }, [m]() { m->_clippingMode = MatrixBaseModule::HARD_CLIPPING; }));
 	OptionsMenuItem::addToMenu(c, menu);
+
+	menu->addChild(new OptionMenuItem("Average", [m]() { return !m->_sum; }, [m]() { m->_sum = !m->_sum; }));
 }
 
 
@@ -65,20 +74,27 @@ int MatrixModule::channels() {
 
 void MatrixModule::modulate() {
 	MatrixBaseModule::modulate();
+
+	int active = 0;
 	for (int i = 0; i < _ins; ++i) {
+		_inActive[i] = inputs[_firstInputID + i].isConnected();
+		if (_inActive[i]) {
+			++active;
+		}
+
 		for (int j = 0; j < _outs; ++j) {
 			int ii = j * _outs + i;
 			_paramValues[ii] = _sls[ii].next(params[_firstParamID + ii].getValue());
 		}
 	}
+
+	_invActive = (!_sum && active > 0) ? 1.0f / (float)active : 0.0f;
 }
 
 void MatrixModule::processChannel(const ProcessArgs& args, int c) {
-	bool inActive[maxN] {};
 	float in[maxN] {};
 	for (int i = 0; i < _ins; ++i) {
-		inActive[i] = inputs[_firstInputID + i].isConnected();
-		if (inActive[i]) {
+		if (_inActive[i]) {
 			in[i] = inputs[_firstInputID + i].getPolyVoltage(c) * _inputGainLevel;
 		}
 	}
@@ -89,11 +105,17 @@ void MatrixModule::processChannel(const ProcessArgs& args, int c) {
 		}
 		float out = 0.0f;
 		for (int j = 0; j < _ins; ++j) {
-			if (inActive[j]) {
+			if (_inActive[j]) {
 				out += in[j] * _paramValues[i * _outs + j];
 			}
 		}
-		if (_clippingMode != HARD_CLIPPING) {
+		if (!_sum && _invActive > 0.0f) {
+			out *= _invActive;
+		}
+		if (_clippingMode == HARD_CLIPPING) {
+			out = clamp(out, -12.0f, 12.0f);
+		}
+		else {
 			out = _saturators[c * _outs + i].next(out);
 		}
 		outputs[_firstOutputID + i].setChannels(_channels);

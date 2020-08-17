@@ -48,7 +48,7 @@ void UMix::processChannel(const ProcessArgs& args, int c) {
 	}
 }
 
-struct UMixWidget : SumAverageModuleWidget {
+struct UMixWidget : MatrixBaseModuleWidget {
 	static constexpr int hp = 3;
 
 	UMixWidget(UMix* module) {

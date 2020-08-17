@@ -18,6 +18,7 @@ struct MatrixBaseModule : BGModule {
 	Clipping _clippingMode = SOFT_CLIPPING;
 	float _inputGainDb = 0.0f;
 	float _inputGainLevel = 1.0f;
+	bool _sum = true;
 
 	json_t* toJson(json_t* root) override;
 	void fromJson(json_t* root) override;
@@ -39,6 +40,8 @@ struct MatrixModule : MatrixBaseModule {
 	float* _paramValues = NULL;
 	bogaudio::dsp::SlewLimiter* _sls = NULL;
 	Saturator* _saturators = NULL;
+	bool* _inActive = NULL;
+	float _invActive = 0.0f;
 
 	MatrixModule(int ins, int outs, int firstParamID, int firstInputID, int firstOutputID)
 	: _ins(ins)
@@ -52,11 +55,13 @@ struct MatrixModule : MatrixBaseModule {
 		_paramValues = new float[_ins * _outs] {};
 		_sls = new bogaudio::dsp::SlewLimiter[_ins * _outs];
 		_saturators = new Saturator[_outs * maxChannels];
+		_inActive = new bool[_ins] {};
 	}
 	virtual ~MatrixModule() {
 		delete[] _paramValues;
 		delete[] _sls;
 		delete[] _saturators;
+		delete[] _inActive;
 	}
 
 	void sampleRateChange() override;

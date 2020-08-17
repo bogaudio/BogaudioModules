@@ -528,11 +528,17 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defin
 
 Essentially identical to UMIX, but with mute buttons for each input.
 
-If averaging mode is enabled, note that the averaging is based on how many inputs are connected and not muted.  For example, if three inputs are connected, and one is muted, the output will be the sum of the two unmuted channels, divided by two.
+If averaging mode is enabled, note that the divisor for the average is the count of how many inputs are connected.  For example, if three inputs are connected, and one is muted, the output will be the sum of the two unmuted channels, divided by three.
 
 See also <a href="switch81">SWITCH81</a>, which is similar to this, with options to attenuate or invert the inputs.
 
 _Polyphony:_ same as UMIX.
+
+#### <a name="matrix81"></a> MATRIX81
+
+An eight input, one output version of <a href="#matrix44">MATRIX44</a>, below.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, as on MATRIX44.
 
 #### <a name="matrix44"></a> MATRIX44
 
@@ -543,6 +549,8 @@ An 4x4 channel matrix mixer.  Each input can be routed with an independent level
 Saturation (soft clipping) limits each output to +/-12V.  This can be changed to a hard clip at +/-12V on the context menu ("Output clipping") -- as described on UMIX, this is mode is better if you need to precisely sum CVs.
 
 Another context menu option allows the input gains to be reduced by up to 12db.
+
+Option "Average" sets the output to be the average of its inputs.  The divisor for the average is the number of inputs in use; for example, if three inputs are connected, each output will be the sum of those inputs, scaled by the corresponding knobs, and divided by three.
 
 The knobs visually indicate their values with green/orange colors.  This can be disabled on the context menu.
 
@@ -574,6 +582,8 @@ The signal inverting behavior may be set with the "Inverting" context menu optio
   - "By param entry" allows negative scale values to be set for a switch by the parameter-entry method, but clicks on a switch will just toggle between on and off.  This is the default.
   - "On second click" causes a click on a non-inverting but enabled switch to change to inverting; anotehr click turns it off.
   - "None" disables inverting entirely.  This option is handy if you want to map MIDI controller buttons/pads to switches.
+
+Option "Average" sets the output to be the average of its inputs.  The divisor for the average is the number of inputs in use; for example, if three inputs are connected, each output will be the sum of those inputs, scaled by the corresponding switch values, and divided by three.
 
 Two other options, "Exclusive by rows" and "Exclusive by columns", if enabled, allow only one switch to be non-zero in a row, or column, respectively.  Both may be on at once.  (These options do not work well with MIDI mapping via Rack's MIDI-MAP module; this is a known issue for which there is no good solution; but see the discussion [here](https://github.com/bogaudio/BogaudioModules/issues/112) for a potential workaround.  The same problem may apply to other parameter-mapping methods.)
 

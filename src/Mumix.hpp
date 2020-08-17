@@ -1,7 +1,7 @@
 #pragma once
 
 #include "bogaudio.hpp"
-#include "sum_average.hpp"
+#include "matrix_base.hpp"
 #include "dsp/signal.hpp"
 
 using namespace bogaudio::dsp;
@@ -10,7 +10,7 @@ extern Model* modelMumix;
 
 namespace bogaudio {
 
-struct Mumix : SumAverageModule {
+struct Mumix : MatrixBaseModule {
 	enum ParamsIds {
 		MUTE1_PARAM,
 		MUTE2_PARAM,
