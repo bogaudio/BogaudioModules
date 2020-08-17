@@ -1164,4 +1164,4 @@ Uses [FFTReal](https://github.com/cyrilcode/fft-real) under the DWTFYWT Public L
 
 The Github Actions auto-build scripts under [.github/](.github) are originally from [SubmarineFree](https://github.com/david-c14/SubmarineFree) -- thanks @david-c14 and @dewb -- find a detailed explanation [here](https://github.com/david-c14/SubmarineFree/wiki/Cross-compiling-using-github-actions).
 
-Thanks to @Eurikon for the low-contrast panel design, and all who contributed to the alternate-panels development on #47.
+Thanks to [@Eurikon](https://github.com/Eurikon) for the low-contrast panel design, and all who contributed to the alternate-panels development on [#47](https://github.com/bogaudio/BogaudioModules/issues/47).
