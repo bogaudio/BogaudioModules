@@ -66,6 +66,7 @@ struct BGModuleWidget : ModuleWidget, SkinChangeListener, DefaultSkinChangeListe
 	SvgPanel* _panel = NULL;
 	Vec _size;
 	std::string _slug;
+	std::string _loadedSkin;
 
 	BGModuleWidget();
 	virtual ~BGModuleWidget();

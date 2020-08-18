@@ -210,11 +210,6 @@ void BGModuleWidget::setPanel(Vec size, std::string slug, bool skinnable) {
 }
 
 void BGModuleWidget::updatePanel() {
-	if (_panel) {
-		_panel->requestDelete();
-		_panel = NULL;
-	}
-
 	const Skins& skins = Skins::skins();
 	std::string skin = skins.defaultKey();
 	if (!_skinnable) {
@@ -227,6 +222,15 @@ void BGModuleWidget::updatePanel() {
 		if (skin == "default") {
 			skin = skins.defaultKey();
 		}
+	}
+
+	if (_loadedSkin == skin) {
+		return;
+	}
+	_loadedSkin = skin;
+	if (_panel) {
+		_panel->requestDelete();
+		_panel = NULL;
 	}
 
 	std::string svg = "res/" + _slug;
