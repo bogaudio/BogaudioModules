@@ -1,0 +1,82 @@
+<module hp="5">
+  <style/>
+
+  <defs>
+    <symbol id="dial-time-chirp" viewBox="0 0 ${width}px ${width}px">
+      <g transform="translate($width/2.0 $width/2.0)" var-scale="10000.0-50.0">
+        <text font-size="7pt" text-anchor="middle" var-r="-240" transform="rotate($r) translate(27 0) rotate(-1.0*$r) translate(0 3)">50ms</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(250.0**0.5/$scale**0.5*300.0-240.0) translate(22 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(500.0**0.5/$scale**0.5*300.0-240.0) translate(22 0)"/>
+        <text font-size="7pt" text-anchor="middle" var-r="1000.0**0.5/$scale**0.5*300.0-240.0" transform="rotate($r) translate(26 0) rotate(-1.0*$r) translate(0 3)">1</text>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(2000.0**0.5/$scale**0.5*300.0-240.0) translate(22 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(3000.0**0.5/$scale**0.5*300.0-240.0) translate(22 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(4000.0**0.5/$scale**0.5*300.0-240.0) translate(22 0)"/>
+        <text font-size="7pt" text-anchor="middle" var-r="5000.0**0.5/$scale**0.5*300.0-240.0" transform="rotate($r) translate(26 0) rotate(-1.0*$r) translate(0 3)">5</text>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(6000.0**0.5/$scale**0.5*300.0-240.0) translate(22 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(7000.0**0.5/$scale**0.5*300.0-240.0) translate(22 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(8000.0**0.5/$scale**0.5*300.0-240.0) translate(22 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(9000.0**0.5/$scale**0.5*300.0-240.0) translate(22 0)"/>
+        <text font-size="7pt" text-anchor="middle" transform="rotate(60) translate(27 0) rotate(-60) translate(0 3)">10s</text>
+      </g>
+    </symbol>
+  </defs>
+
+  <def xlink:href="#module5" var-name="CHIRP"/>
+
+  <g transform="translate(0 35)" var-pad="11">
+    <text font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate($width/2.0 0)">TIME</text>
+    <def id="TIME_PARAM" xlink:href="#knob38" transform="translate($width/2.0-19 $pad)"/>
+    <use xlink:href="#dial-time-chirp" transform="translate(0 $pad+19-$width/2.0)"/>
+  </g>
+
+  <g transform="translate(0 111)" var-pad="11">
+    <text font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate($width/2.0 0)">FREQ 1</text>
+    <def id="FREQUENCY1_PARAM" xlink:href="#knob26" transform="translate($width/2.0-13.0 $pad)"/>
+    <def xlink:href="#dial-frequency-26" transform="translate($width/2.0-22.5 $pad-9.5)"/>
+  </g>
+
+  <g transform="translate(0 168)" var-pad="11">
+    <text font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate($width/2 0)">FREQ 2</text>
+    <def id="FREQUENCY2_PARAM" xlink:href="#knob26" transform="translate($width/2.0-13.0 $pad)"/>
+    <def xlink:href="#dial-frequency-26" transform="translate($width/2.0-22.5 $pad-9.5)"/>
+  </g>
+
+  <g transform="translate(0 220)">
+    <g transform="translate(10 -4)">
+      <def id="TRIGGER_PARAM" xlink:href="#button" transform="translate(0 0)"/>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(9 26)">TRIG</text>
+    </g>
+
+    <g transform="translate($width/2.0+7.0 0)">
+      <g transform="translate(0 -1)">
+        <text font-size="5pt" letter-spacing="1.5px" transform="translate(-3 6)">EXP</text>
+        <def id="EXPONENTIAL_PARAM" xlink:href="#button-small" transform="translate(15 -1)"/>
+      </g>
+      <g transform="translate(0 13)">
+        <text font-size="5pt" letter-spacing="1.5px" transform="translate(-9 6)">LOOP</text>
+        <def id="LOOP_PARAM" xlink:href="#button-small" transform="translate(15 -1)"/>
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(0 248)">
+    <rect class="input-background" width="64" height="112" rx="5" transform="translate(5.5 0)" />
+    <def id="FREQUENCY1_INPUT" xlink:href="#input" transform="translate(10.5 3)"/>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 35)">V/O1</text>
+    <def id="FREQUENCY2_INPUT" xlink:href="#input" transform="translate(40.5 3)"/>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(52.5 35)">V/O2</text>
+    <def id="TIME_INPUT" xlink:href="#input" transform="translate(10.5 40)"/>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 72)">TIME</text>
+    <def id="TRIGGER_INPUT" xlink:href="#input" transform="translate(10.5 77)"/>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 109)">TRIG</text>
+    <g class="io-group" transform="translate(30 36)">
+      <rect class="output-background" width="32" height="74" rx="5" transform="translate(7.5 2)"/>
+      <rect class="output-background-filler" width="32" height="10" transform="translate(7.5 2)"/>
+      <rect class="output-background-filler" width="10" height="10" transform="translate(7.5 66)"/>
+      <def id="EOC_OUTPUT" xlink:href="#output" transform="translate(10.5 4)"/>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 36)">EOC</text>
+      <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(10.5 41)"/>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 73)">OUT</text>
+    </g>
+  </g>
+</module>

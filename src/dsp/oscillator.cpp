@@ -323,36 +323,29 @@ void ChirpOscillator::setParams(float frequency1, float frequency2, float time, 
 		_f2 = frequency2;
 		_Time = time;
 		_linear = linear;
-		update();
+
+		_k = pow((double)(_f2 / _f1), 1.0f / (double)_Time);
 	}
 }
 
 void ChirpOscillator::_sampleRateChanged() {
+	_oscillator.setSampleRate(_sampleRate);
 	_sampleTime = 1.0f / _sampleRate;
-	update();
-}
-
-void ChirpOscillator::update() {
-	_Time = std::max(2.0f * _sampleTime, _Time);
-	_c = (double)(_f2 - _f1) / (double)_Time;
-	_k = pow((double)(_f2 / _f1), (double)(1.0f / _Time));
-	_invlogk = 1.0 / log(_k);
 }
 
 float ChirpOscillator::_next() {
-	float phase = 0.0f;
-	if (_linear) {
-		phase = 2.0 * M_PI * (0.5 * _c * (double)(_time * _time) + (double)(_f1 * _time));
-	}
-	else {
-		phase = 2.0 * M_PI * (double)_f1 * ((pow(_k, (double)_time) - 1.0) * _invlogk);
-	}
-
 	_time += _sampleTime;
+	_complete = false;
 	if (_time >= _Time) {
 		_time = 0.0f;
 		_complete = true;
 	}
 
-	return _phasor.nextForPhase(Phasor::radiansToPhase(phase));
+	if (_linear) {
+		_oscillator.setFrequency(_f1 + (_time / _Time) * (_f2 - _f1));
+	}
+	else {
+		_oscillator.setFrequency((double)_f1 * pow(_k, (double)_time));
+	}
+	return _oscillator.next();
 }

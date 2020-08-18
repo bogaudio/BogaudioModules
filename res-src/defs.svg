@@ -465,6 +465,26 @@
       </g>
     </symbol>
 
+    <symbol id="dial-frequency-26" viewBox="0 0 45px 45px">
+      <g transform="translate(22.5 22.5)">
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-240) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-206.67) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-173.33) translate(15 0)"/>
+
+        <g transform="rotate(-140) translate(14 0)">
+          <polyline points="0,0 2.5,0" stroke-width="1.0" transform="translate(0 0)"/>
+          <text font-size="5.0pt" transform="translate(5 0) rotate(140) translate(-5.5 0)">OV</text>
+        </g>
+
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-106.67) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-73.33) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-40) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-6.67) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(26.67) translate(15 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(60) translate(15 0)"/>
+      </g>
+    </symbol>
+
     <symbol id="dial-frequency-lfo" viewBox="0 0 128px 128px">
       <g transform="translate(64 64)">
         <g transform="rotate(-225.08) translate(34 0)">
@@ -546,23 +566,31 @@
       </g>
     </symbol>
 
+    <symbol id="dial-mintick-base">
+      <g>
+        <polyline points="0,0 $radius/3.0,0" stroke-width="1" transform="rotate(-240) translate($radius-2.5 0)"/>
+        <path class="$class" d="M 0 $radius*-1.0 A $radius $radius 0 0 1 $radius 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(0)"/>
+        <path class="$class" d="M 0 $radius*-1.0 A $radius $radius 0 0 1 $radius 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path class="$class" d="M 0 $radius*-1.0 A $radius $radius 0 0 0 $radius*-1.0 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(0)"/>
+        <path class="$class" d="M 0 $radius*-1.0 A $radius $radius 0 0 0 $radius*-1.0 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
+      </g>
+    </symbol>
+
     <symbol id="dial-mintick" viewBox="0 0 40px 40px">
       <g transform="translate(20 20)">
-        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-240) translate(10 0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
+        <def xlink:href="#dial-mintick-base" var-radius="12.5"/>
       </g>
     </symbol>
 
     <symbol id="dial-mintick-input" viewBox="0 0 40px 40px">
       <g transform="translate(20 20)">
-        <polyline class="input-label" points="0,0 4,0" stroke-width="1" transform="rotate(-240) translate(10 0)"/>
-        <path class="input-label" d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(0)"/>
-        <path class="input-label" d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
-        <path class="input-label" d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(0)"/>
-        <path class="input-label" d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
+        <def xlink:href="#dial-mintick-base" var-radius="12.5" class="input-label"/>
+      </g>
+    </symbol>
+
+    <symbol id="dial-mintick26" viewBox="0 0 40px 40px">
+      <g transform="translate(20 20)">
+        <def xlink:href="#dial-mintick-base" var-radius="19"/>
       </g>
     </symbol>
 

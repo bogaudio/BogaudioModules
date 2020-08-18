@@ -140,6 +140,18 @@ A sine-wave oscillator and simple synth voice designed to allow patching up the 
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
 
+#### <a name="chirp"></a> CHIRP
+
+Part VCO and part sound effect, CHIRP produces swept sine waves.  On each cycle, the output sine wave sweeps in frequency from FREQ1 to FREQ2, over the course of TIME.  If LOOP is enabled, the cycle repeats, otherwise it may be triggered manually with the TRIGGER button, or by CV at the TRIG input.  A pulse is emitted at output EOC each time a cycle ends.
+
+TIME takes a unipolar CV (0-10V), which is attenuated by the knob if in use.  FREQ1 and FREQ2 take bipolar (+/-5V) 1V/octave inputs at ports V/O1 and V/O2, which CVs are added to the corresponding knobs.
+
+The frequency sweep can be linear in time, or exponential, under the control of the EXP toggle.
+
+The sweep is upwards in frequency if FREQ1 is less than FREQ2, and downwards otherwise.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/O1 input.
+
 
 ### <a name="lfos"></a> LFOs
 

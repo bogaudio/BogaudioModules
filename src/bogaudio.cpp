@@ -14,6 +14,7 @@
 #include "Blank3.hpp"
 #include "Blank6.hpp"
 #include "Bool.hpp"
+#include "Chirp.hpp"
 #include "Clpr.hpp"
 #include "Cmp.hpp"
 #include "CmpDist.hpp"
@@ -120,6 +121,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelXCO);
 	p->addModel(modelAdditator);
 	p->addModel(modelFMOp);
+	p->addModel(modelChirp);
 
 	p->addModel(modelLFO);
 	p->addModel(modelEightFO);

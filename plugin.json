@@ -84,6 +84,16 @@
       ]
     },
     {
+      "slug": "Bogaudio-Chirp",
+      "name": "CHIRP",
+      "description": "Swept-sine oscillator",
+      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#chirp",
+      "tags": [
+        "Oscillator",
+        "Polyphonic"
+      ]
+    },
+    {
       "slug": "Bogaudio-LFO",
       "name": "LFO",
       "description": "Low frequency oscillator",
