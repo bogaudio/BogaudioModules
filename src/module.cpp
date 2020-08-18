@@ -211,8 +211,7 @@ void BGModuleWidget::setPanel(Vec size, std::string slug, bool skinnable) {
 
 void BGModuleWidget::updatePanel() {
 	if (_panel) {
-		removeChild(_panel);
-		delete _panel;
+		_panel->requestDelete();
 		_panel = NULL;
 	}
 
