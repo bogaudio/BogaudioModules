@@ -157,3 +157,21 @@ static void BM_Oscillator_SineBankOscillator15000(benchmark::State& state) {
 	}
 }
 BENCHMARK(BM_Oscillator_SineBankOscillator15000);
+
+static void BM_Oscillator_ChirpOscillatorLinear(benchmark::State& state) {
+	ChirpOscillator o(44100.0, 100.0f, 20000.0f, 1.0f, true);
+
+	for (auto _ : state) {
+		o.next();
+	}
+}
+BENCHMARK(BM_Oscillator_ChirpOscillatorLinear);
+
+static void BM_Oscillator_ChirpOscillatorExp(benchmark::State& state) {
+	ChirpOscillator o(44100.0, 100.0f, 20000.0f, 1.0f, false);
+
+	for (auto _ : state) {
+		o.next();
+	}
+}
+BENCHMARK(BM_Oscillator_ChirpOscillatorExp);

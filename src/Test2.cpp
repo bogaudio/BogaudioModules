@@ -93,6 +93,63 @@ void Test2::processChannel(const ProcessArgs& args, int _c) {
 	float scale = params[PARAM1B_PARAM].getValue() * 2.0f + 1.0f;
 	_limiter.setParams(shape, knee, limit, scale);
 	outputs[OUT_OUTPUT].setVoltage(_limiter.next(inputs[IN_INPUT].getVoltage()));
+
+#elif CHIRP
+	float sr = APP->engine->getSampleRate();
+	_phasor.setSampleRate(sr);
+
+	float f1 = params[PARAM1A_PARAM].getValue();
+	f1 *= f1;
+	f1 *= sr * 0.5f * std::min(f1, 0.99f);
+	f1 = std::max(10.0f, f1);
+	float f2 = params[PARAM1B_PARAM].getValue();
+	f2 *= f2;
+	f2 *= sr * 0.5f * std::min(f2, 0.99f);
+	f2 = std::max(10.0f, f2);
+	float T = std::max(0.001f, params[PARAM2A_PARAM].getValue()); // seconds
+	bool linear = params[PARAM2B_PARAM].getValue() < 0.5f;
+
+	_time = _time * (float)(_time < T);
+
+	// formulas from https://en.wikipedia.org/wiki/Chirp
+	float out = 0.0f;
+	if (linear) {
+		float c = (f2 - f1) / T;
+		float phase = 2.0f * M_PI * (0.5f * c * _time * _time + f1 * _time);
+		// out = sinf(phase);
+		out = _phasor.nextForPhase(Phasor::radiansToPhase(phase));
+	}
+	else {
+		float k = powf(f2 / f1, 1.0f / T);
+		float phase = 2.0f * M_PI * f1 * ((powf(k, _time) - 1.0f) / logf(k));
+		// out = sinf(phase);
+		out = _phasor.nextForPhase(Phasor::radiansToPhase(phase));
+	}
+	outputs[OUT_OUTPUT].setVoltage(out * 5.0f);
+
+	_time += 1.0f / sr;
+
+#elif CHIRP2
+	float sr = APP->engine->getSampleRate();
+	_chirp.setSampleRate(sr);
+
+	float f1 = params[PARAM1A_PARAM].getValue();
+	f1 *= f1;
+	f1 *= sr * 0.5f * std::min(f1, 0.99f);
+	f1 = std::max(10.0f, f1);
+	float f2 = params[PARAM1B_PARAM].getValue();
+	f2 *= f2;
+	f2 *= sr * 0.5f * std::min(f2, 0.99f);
+	f2 = std::max(10.0f, f2);
+	float T = ChirpOscillator::minTimeSeconds + params[PARAM2A_PARAM].getValue() * (10.0f - ChirpOscillator::minTimeSeconds);
+	bool linear = params[PARAM2B_PARAM].getValue() < 0.5f;
+	_chirp.setParams(f1, f2, T, linear);
+	outputs[OUT_OUTPUT].setVoltage(_chirp.next() * 5.0f);
+
+	if (_chirp.isCycleComplete()) {
+		_pulse.trigger(0.001f);
+	}
+	outputs[OUT2_OUTPUT].setVoltage(_pulse.process(1.0f / sr) * 5.0f);
 #endif
 }
 
@@ -148,6 +205,7 @@ struct Test2Widget : BGModuleWidget {
 		addInput(createInput<Port24>(inInputPosition, module, Test2::IN_INPUT));
 
 		addOutput(createOutput<Port24>(outOutputPosition, module, Test2::OUT_OUTPUT));
+		addOutput(createOutput<Port24>(Vec(outOutputPosition.x, outOutputPosition.y + 10), module, Test2::OUT2_OUTPUT));
 	}
 };
 

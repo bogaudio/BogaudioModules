@@ -7,7 +7,9 @@ extern Model* modelTest2;
 // #define COMPLEX_BIQUAD 1
 // #define MULTIPOLE 1
 // #define ADSR_ENVELOPE 1
-#define LIMITER 1
+// #define LIMITER 1
+// #define CHIRP 1
+#define CHIRP2 1
 
 #ifdef COMPLEX_BIQUAD
 #include "dsp/filters/filter.hpp"
@@ -17,6 +19,10 @@ extern Model* modelTest2;
 #include "dsp/envelope.hpp"
 #elif LIMITER
 #include "dsp/signal.hpp"
+#elif CHIRP
+#include "dsp/oscillator.hpp"
+#elif CHIRP2
+#include "dsp/oscillator.hpp"
 #elif
 #error what
 #endif
@@ -49,6 +55,7 @@ struct Test2 : BGModule {
 
 	enum OutputsIds {
 		OUT_OUTPUT,
+		OUT2_OUTPUT,
 		NUM_OUTPUTS
 	};
 
@@ -63,9 +70,19 @@ struct Test2 : BGModule {
 	Trigger _trigger;
 #elif LIMITER
 	Limiter _limiter;
+#elif CHIRP
+	TablePhasor _phasor;
+	float _time = 0.0f;
+#elif CHIRP2
+	ChirpOscillator _chirp;
+	rack::dsp::PulseGenerator _pulse;
 #endif
 
-	Test2() {
+	Test2()
+#ifdef CHIRP
+	: _phasor(StaticSineTable::table())
+#endif
+	{
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(PARAM1A_PARAM, 0.0f, 1.0f, 0.0f, "param1a");
 		configParam(PARAM2A_PARAM, 0.0f, 1.0f, 0.0f, "param2a");

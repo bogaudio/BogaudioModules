@@ -311,3 +311,48 @@ float SineBankOscillator::next(Phasor::phase_t phaseOffset) {
 	}
 	return next;
 }
+
+
+void ChirpOscillator::setParams(float frequency1, float frequency2, float time, bool linear) {
+	frequency1 = std::max(minFrequency, std::min(frequency1, 0.99f * 0.5f * _sampleRate));
+	frequency2 = std::max(minFrequency, std::min(frequency2, 0.99f * 0.5f * _sampleRate));
+	assert(time >= minTimeSeconds);
+
+	if (_f1 != frequency1 || _f2 != frequency2 || _Time != time || _linear != linear) {
+		_f1 = frequency1;
+		_f2 = frequency2;
+		_Time = time;
+		_linear = linear;
+		update();
+	}
+}
+
+void ChirpOscillator::_sampleRateChanged() {
+	_sampleTime = 1.0f / _sampleRate;
+	update();
+}
+
+void ChirpOscillator::update() {
+	_Time = std::max(2.0f * _sampleTime, _Time);
+	_c = (double)(_f2 - _f1) / (double)_Time;
+	_k = pow((double)(_f2 / _f1), (double)(1.0f / _Time));
+	_invlogk = 1.0 / log(_k);
+}
+
+float ChirpOscillator::_next() {
+	float phase = 0.0f;
+	if (_linear) {
+		phase = 2.0 * M_PI * (0.5 * _c * (double)(_time * _time) + (double)(_f1 * _time));
+	}
+	else {
+		phase = 2.0 * M_PI * (double)_f1 * ((pow(_k, (double)_time) - 1.0) * _invlogk);
+	}
+
+	_time += _sampleTime;
+	if (_time >= _Time) {
+		_time = 0.0f;
+		_complete = true;
+	}
+
+	return _phasor.nextForPhase(Phasor::radiansToPhase(phase));
+}
