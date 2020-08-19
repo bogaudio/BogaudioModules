@@ -70,7 +70,8 @@ struct AnalyzerCore {
 	enum Quality {
 		QUALITY_ULTRA,
 		QUALITY_HIGH,
-		QUALITY_GOOD
+		QUALITY_GOOD,
+		QUALITY_FIXED_16K
 	};
 
 	enum Window {
@@ -120,6 +121,7 @@ struct AnalyzerCore {
 	}
 	float getPeak(int channel);
 	void stepChannel(int channelIndex, Input& input);
+	void stepChannelSample(int channelIndex, float sample);
 };
 
 struct AnalyzerBase : BGModule {
@@ -134,6 +136,21 @@ struct AnalyzerBase : BGModule {
 };
 
 struct AnalyzerDisplay : TransparentWidget {
+	struct BinsReader {
+		AnalyzerBase* _base;
+
+		BinsReader(AnalyzerBase* base) : _base(base) {}
+		virtual ~BinsReader() {}
+		virtual float at(int i) = 0;
+	};
+
+	struct GenericBinsReader : BinsReader {
+		int _channel;
+
+		GenericBinsReader(AnalyzerBase* base, int channel) : BinsReader(base), _channel(channel) {}
+		float at(int i) override { return _base->_core.getBins(_channel)[i]; }
+	};
+
 	const int _insetAround = 2;
 	const int _insetLeft = _insetAround + 12;
 	const int _insetRight = _insetAround + 2;
@@ -166,6 +183,8 @@ struct AnalyzerDisplay : TransparentWidget {
 	bool _drawInset;
 	std::shared_ptr<Font> _font;
 	float _xAxisLogFactor = baseXAxisLogFactor;
+	BinsReader** _channelBinsReaders = NULL;
+	bool* _displayChannel = NULL;
 
 	AnalyzerDisplay(
 		AnalyzerBase* module,
@@ -178,15 +197,38 @@ struct AnalyzerDisplay : TransparentWidget {
 	, _drawInset(drawInset)
 	, _font(APP->window->loadFont(asset::plugin(pluginInstance, "res/fonts/inconsolata.ttf")))
 	{
+		if (_module) {
+			_channelBinsReaders = new BinsReader*[_module->_core._nChannels] {};
+			_displayChannel = new bool[_module->_core._nChannels] {};
+			std::fill_n(_displayChannel, _module->_core._nChannels, true);
+		}
+	}
+	~AnalyzerDisplay() {
+		if (_module) {
+			if (_channelBinsReaders) {
+				for (int i = 0; i < _module->_core._nChannels; ++i) {
+					if (_channelBinsReaders) {
+						delete _channelBinsReaders[i];
+					}
+				}
+				delete[] _channelBinsReaders;
+			}
+
+			if (_displayChannel) {
+				delete[] _displayChannel;
+			}
+		}
 	}
 
+	void setChannelBinsReader(int channel, BinsReader* br);
+	void displayChannel(int channel, bool display);
 	void draw(const DrawArgs& args) override;
 	void drawBackground(const DrawArgs& args);
 	void drawHeader(const DrawArgs& args);
 	void drawYAxis(const DrawArgs& args, float strokeWidth, float rangeDb);
 	void drawXAxis(const DrawArgs& args, float strokeWidth, float rangeMinHz, float rangeMaxHz);
 	void drawXAxisLine(const DrawArgs& args, float hz, float rangeMinHz, float rangeMaxHz);
-	void drawGraph(const DrawArgs& args, const float* bins, int binsN, NVGcolor color, float strokeWidth, float rangeMinHz, float rangeMaxHz, float rangeDb);
+	void drawGraph(const DrawArgs& args, BinsReader& bins, NVGcolor color, float strokeWidth, float rangeMinHz, float rangeMaxHz, float rangeDb);
 	void drawText(const DrawArgs& args, const char* s, float x, float y, float rotation = 0.0, const NVGcolor* color = NULL);
 	int binValueToHeight(float value, float rangeDb);
 };

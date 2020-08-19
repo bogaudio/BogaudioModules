@@ -116,6 +116,13 @@ void AnalyzerCore::resetChannels() {
 }
 
 SpectrumAnalyzer::Size AnalyzerCore::size() {
+	switch (_quality) {
+		case QUALITY_FIXED_16K: {
+			return SpectrumAnalyzer::SIZE_16384;
+		}
+		default:;
+	}
+
 	if (APP->engine->getSampleRate() < 96000.0f) {
 		switch (_quality) {
 			case QUALITY_ULTRA: {
@@ -188,21 +195,7 @@ void AnalyzerCore::stepChannel(int channelIndex, Input& input) {
 	assert(channelIndex < _nChannels);
 
 	if (input.isConnected()) {
-		if (!_channels[channelIndex]) {
-			std::lock_guard<std::mutex> lock(_channelsMutex);
-			_channels[channelIndex] = new ChannelAnalyzer(
-				_size,
-				_overlap,
-				window(),
-				APP->engine->getSampleRate(),
-				_averageN,
-				_binAverageN,
-				_outBufs + 2 * channelIndex * _outBufferN,
-				_outBufs + (2 * channelIndex + 1) * _outBufferN,
-				_currentOutBufs[channelIndex]
-			);
-		}
-		_channels[channelIndex]->step(input.getVoltageSum());
+		stepChannelSample(channelIndex, input.getVoltageSum());
 	}
 	else if (_channels[channelIndex]) {
 		std::lock_guard<std::mutex> lock(_channelsMutex);
@@ -211,6 +204,44 @@ void AnalyzerCore::stepChannel(int channelIndex, Input& input) {
 	}
 }
 
+void AnalyzerCore::stepChannelSample(int channelIndex, float sample) {
+	assert(channelIndex >= 0);
+	assert(channelIndex < _nChannels);
+
+	if (!_channels[channelIndex]) {
+		std::lock_guard<std::mutex> lock(_channelsMutex);
+		_channels[channelIndex] = new ChannelAnalyzer(
+			_size,
+			_overlap,
+			window(),
+			APP->engine->getSampleRate(),
+			_averageN,
+			_binAverageN,
+			_outBufs + 2 * channelIndex * _outBufferN,
+			_outBufs + (2 * channelIndex + 1) * _outBufferN,
+			_currentOutBufs[channelIndex]
+		);
+	}
+	_channels[channelIndex]->step(sample);
+}
+
+
+void AnalyzerDisplay::setChannelBinsReader(int channel, BinsReader* br) {
+	assert(_channelBinsReaders);
+	assert(_module);
+	assert(channel < _module->_core._nChannels);
+	if (_channelBinsReaders[channel]) {
+		delete _channelBinsReaders[channel];
+	}
+	_channelBinsReaders[channel] = br; // br now owned here.
+}
+
+void AnalyzerDisplay::displayChannel(int channel, bool display) {
+	assert(_displayChannel);
+	assert(_module);
+	assert(channel < _module->_core._nChannels);
+	_displayChannel[channel] = display;
+}
 
 void AnalyzerDisplay::draw(const DrawArgs& args) {
 	if (_module) {
@@ -245,8 +276,14 @@ void AnalyzerDisplay::draw(const DrawArgs& args) {
 	drawXAxis(args, strokeWidth, rangeMinHz, rangeMaxHz);
 	if (_module) {
 		for (int i = 0; i < _module->_core._nChannels; ++i) {
-			if (_module->_core._channels[i]) {
-				drawGraph(args, _module->_core.getBins(i), _module->_core._binsN, _channelColors[i % channelColorsN], strokeWidth, rangeMinHz, rangeMaxHz, rangeDb);
+			if (_displayChannel[i]) {
+				if (_module->_core._channels[i]) {
+					GenericBinsReader br(_module, i);
+					drawGraph(args, br, _channelColors[i % channelColorsN], strokeWidth, rangeMinHz, rangeMaxHz, rangeDb);
+				}
+				else if (_channelBinsReaders[i]) {
+					drawGraph(args, *_channelBinsReaders[i], _channelColors[i % channelColorsN], strokeWidth, rangeMinHz, rangeMaxHz, rangeDb);
+				}
 			}
 		}
 	}
@@ -499,8 +536,7 @@ void AnalyzerDisplay::drawXAxisLine(const DrawArgs& args, float hz, float rangeM
 
 void AnalyzerDisplay::drawGraph(
 	const DrawArgs& args,
-	const float* bins,
-	int binsN,
+	BinsReader& bins,
 	NVGcolor color,
 	float strokeWidth,
 	float rangeMinHz,
@@ -517,7 +553,7 @@ void AnalyzerDisplay::drawGraph(
 	nvgStrokeWidth(args.vg, strokeWidth);
 	nvgBeginPath(args.vg);
 	for (int i = 0; i < pointsN; ++i) {
-		int height = binValueToHeight(bins[pointsOffset + i], rangeDb);
+		int height = binValueToHeight(bins.at(pointsOffset + i), rangeDb);
 		if (i == 0) {
 			nvgMoveTo(args.vg, _insetLeft, _insetTop + (_graphSize.y - height));
 		}

@@ -334,11 +334,13 @@ void ChirpOscillator::_sampleRateChanged() {
 }
 
 float ChirpOscillator::_next() {
-	_time += _sampleTime;
 	_complete = false;
-	if (_time >= _Time) {
+	if (_time > _Time) {
 		_time = 0.0f;
 		_complete = true;
+	}
+	else {
+		_time += _sampleTime;
 	}
 
 	if (_linear) {
@@ -348,4 +350,60 @@ float ChirpOscillator::_next() {
 		_oscillator.setFrequency((double)_f1 * pow(_k, (double)_time));
 	}
 	return _oscillator.next();
+}
+
+void ChirpOscillator::reset() {
+	_time = 0.0f;
+}
+
+
+void PureChirpOscillator::setParams(float frequency1, float frequency2, float time, bool linear) {
+	frequency1 = std::max(minFrequency, std::min(frequency1, 0.99f * 0.5f * _sampleRate));
+	frequency2 = std::max(minFrequency, std::min(frequency2, 0.99f * 0.5f * _sampleRate));
+	assert(time >= minTimeSeconds);
+
+	if (_f1 != frequency1 || _f2 != frequency2 || _Time != time || _linear != linear) {
+		_f1 = frequency1;
+		_f2 = frequency2;
+		_Time = time;
+		_linear = linear;
+		update();
+	}
+}
+
+void PureChirpOscillator::_sampleRateChanged() {
+	_sampleTime = 1.0f / _sampleRate;
+	update();
+}
+
+void PureChirpOscillator::update() {
+	_Time = std::max(2.0f * _sampleTime, _Time);
+	_c = (double)(_f2 - _f1) / (double)_Time;
+	_k = pow((double)(_f2 / _f1), 1.0f / (double)_Time);
+	_invlogk = 1.0 / log(_k);
+}
+
+float PureChirpOscillator::_next() {
+	_complete = false;
+	if (_time > _Time) {
+		_time = 0.0f;
+		_complete = true;
+	}
+	else {
+		_time += _sampleTime;
+	}
+
+	// formulas from https://en.wikipedia.org/wiki/Chirp
+	float phase = 0.0f;
+	if (_linear) {
+		phase = 2.0 * M_PI * (0.5 * _c * (double)(_time * _time) + (double)(_f1 * _time));
+	}
+	else {
+		phase = 2.0 * M_PI * (double)_f1 * ((pow(_k, (double)_time) - 1.0) * _invlogk);
+	}
+	return _phasor.nextForPhase(Phasor::radiansToPhase(phase));
+}
+
+void PureChirpOscillator::reset() {
+	_time = 0.0f;
 }

@@ -708,6 +708,15 @@
       ]
     },
     {
+      "slug": "Bogaudio-VU",
+      "name": "VU",
+      "description": "Stereo signal meter",
+      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#vu",
+      "tags": [
+        "Visual"
+      ]
+    },
+    {
       "slug": "Bogaudio-Analyzer",
       "name": "ANALYZER",
       "description": "4-channel spectrum analyzer",
@@ -726,10 +735,10 @@
       ]
     },
     {
-      "slug": "Bogaudio-VU",
-      "name": "VU",
-      "description": "Stereo signal meter",
-      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#vu",
+      "slug": "Bogaudio-Ranalyzer",
+      "name": "RANALYZER",
+      "description": "Swept-sine frequency response analyzer",
+      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#ranalyzer",
       "tags": [
         "Visual"
       ]

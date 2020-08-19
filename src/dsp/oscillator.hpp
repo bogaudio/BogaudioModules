@@ -364,6 +364,45 @@ struct ChirpOscillator : OscillatorGenerator {
 	void setParams(float frequency1, float frequency2, float time, bool linear);
 	void _sampleRateChanged() override;
 	float _next() override;
+	void reset();
+};
+
+struct PureChirpOscillator : OscillatorGenerator {
+	static constexpr float minFrequency = 1.0f;
+	static constexpr float minTimeSeconds = 0.025f;
+
+	TablePhasor _phasor;
+	float _f1 = -1.0f;
+	float _f2 = -1.0f;
+	float _Time = -1.0f;
+	bool _linear = false;
+
+	float _sampleTime = 0.0f;
+	float _time = 0.0f;
+	bool _complete = false;
+	double _c = 0.0;
+	double _k = 0.0;
+	double _invlogk = 0.0;
+
+	PureChirpOscillator(
+		float sampleRate = 1000.0f,
+		float frequency1 = 100.0f,
+		float frequency2 = 300.0f,
+		float time = 1.0f,
+		bool linear = true
+	)
+	: _phasor(StaticSineTable::table(), sampleRate, frequency1)
+	{
+		setParams(frequency1, frequency2, time, linear);
+	}
+
+	inline bool isCycleComplete() { return _complete; }
+	inline bool isCycleNearlyComplete(float seconds) { return _time > _Time - seconds; }
+	void setParams(float frequency1, float frequency2, float time, bool linear);
+	void _sampleRateChanged() override;
+	void update();
+	float _next() override;
+	void reset();
 };
 
 } // namespace dsp

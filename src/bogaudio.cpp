@@ -75,6 +75,7 @@
 #include "PolyMult.hpp"
 #include "Pressor.hpp"
 #include "Pulse.hpp"
+#include "Ranalyzer.hpp"
 #include "Reftone.hpp"
 #include "RGate.hpp"
 #include "SampleHold.hpp"
@@ -191,9 +192,10 @@ void init(rack::Plugin *p) {
 	p->addModel(modelPgmr);
 	p->addModel(modelPgmrX);
 
+	p->addModel(modelVU);
 	p->addModel(modelAnalyzer);
 	p->addModel(modelAnalyzerXL);
-	p->addModel(modelVU);
+	p->addModel(modelRanalyzer);
 
 	p->addModel(modelDetune);
 	p->addModel(modelStack);

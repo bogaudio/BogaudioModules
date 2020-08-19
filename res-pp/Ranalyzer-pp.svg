@@ -1,0 +1,275 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="675.0" height="380.0" viewBox="0 0 675.0 380.0">
+  <style>text {
+  fill: #333;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+text.title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+}
+text.brand {
+  font-family: 'Audiowide', sans-serif;
+  font-weight: bold;
+}
+
+polyline {
+  stroke: #333;
+}
+polyline.guide {
+  stroke: #0f0;
+}
+path {
+  stroke: #333;
+}
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background, rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
+}
+polyline.input-label, polyline.output-label {
+}
+path.input-label, path.output-label {
+}
+
+circle.port-rim {
+  stroke: #f0f0f0;
+}
+circle.port-barrel {
+  stroke: #222;
+  fill: #222;
+}
+circle.knob-center {
+   fill: #eee;
+}
+circle.knob-rim {
+   fill: #333;
+}
+circle.knob-tick {
+  fill: #fff;
+}
+polyline.knob-tick {
+  stroke: #fff;
+}
+</style>
+  <style>
+      text {
+        fill: #fff;
+      }
+      text.name, text.brand {
+        font-family: 'Comfortaa', sans-serif;
+        font-size: 7pt;
+        font-weight: bold;
+      }
+
+      polyline {
+        stroke: #fff;
+      }
+      path {
+        stroke: #fff;
+      }
+
+      rect.input-background, rect.input-background-filler {
+        fill: #aaa;
+      }
+      rect.output-background, rect.output-background-filler {
+        fill: #666;
+      }
+      text.input-label {
+        fill: #222;
+      }
+      polyline.input-label, path.input-label {
+        stroke: #222;
+      }
+      text.output-label {
+        fill: #ddd;
+      }
+      polyline.output-label, path.output-label {
+        stroke: #ddd;
+      }
+  </style>
+
+  <defs>
+    <symbol id="dial-frequency-ranalyzer" viewbox="75 40">
+      <g transform="translate(37.5 20)">
+        <text font-size="6pt" text-anchor="middle" transform="rotate(-240) translate(21 0) rotate(240.0) translate(0 3)">1</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(-210.0) translate(16 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(-180.0) translate(16 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(-150.0) translate(16 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(-120.0) translate(16 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(-90.0) translate(16 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(-60.0) translate(16 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(-30.0) translate(16 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(0.0) translate(16 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(30.0) translate(16 0)"/>
+        <text font-size="6pt" text-anchor="middle" transform="rotate(60) translate(21 0) rotate(-60.0) translate(0 3)">NQ</text>
+      </g>
+    </symbol>
+
+    <symbol id="dial-delay-ranalyzer" viewbox="75 40">
+      <g transform="translate(37.5 20)">
+        <text font-size="6pt" text-anchor="middle" transform="rotate(-240) translate(16 0) rotate(240.0) translate(0 3)">2</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(-206.66666666666669) translate(11 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(-173.33333333333334) translate(11 0)"/>
+        <text font-size="6pt" text-anchor="middle" transform="rotate(-140.0) translate(16 0) rotate(140.0) translate(0 3)">8</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(-106.66666666666669) translate(11 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(-73.33333333333331) translate(11 0)"/>
+        <text font-size="6pt" text-anchor="middle" transform="rotate(-40.0) translate(16 0) rotate(40.0) translate(0 3)">14</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(-6.666666666666657) translate(11 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(26.66666666666663) translate(11 0)"/>
+        <text font-size="6pt" text-anchor="middle" transform="rotate(60) translate(16 0) rotate(-60.0) translate(0 3)">20</text>
+      </g>
+    </symbol>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#000"/>
+  <text class="name" transform="translate(2.5 11)" letter-spacing="1.3">RANALYZER</text>
+  <text class="brand" transform="translate(2.5 375)" letter-spacing="2">BOGAUDIO</text>
+
+  <g transform="translate(0 30)">
+    <text font-size="7pt" letter-spacing="2px" text-anchor="middle" transform="translate(37.5 0)">FREQ1</text>
+    <g transform="translate(24.5 12)"><svg id="FREQUENCY1_PARAM">
+      <g transform="translate(13 13)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <use xlink:href="#dial-frequency-ranalyzer" transform="translate(0 5)" href="#dial-frequency-ranalyzer"/>
+  </g>
+
+  <g transform="translate(0 91.5)">
+    <text font-size="7pt" letter-spacing="2px" text-anchor="middle" transform="translate(37.5 0)">FREQ2</text>
+    <g transform="translate(24.5 12)"><svg id="FREQUENCY2_PARAM">
+      <g transform="translate(13 13)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <use xlink:href="#dial-frequency-ranalyzer" transform="translate(0 5)" href="#dial-frequency-ranalyzer"/>
+  </g>
+
+  <g class="io-group" transform="translate(0 147)">
+    <rect class="input-background" width="62" height="32" rx="5" transform="translate(6.5 0)"/>
+    <g transform="translate(18 7)"><svg id="TRIGGER_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(40.5 4)"><svg id="TRIGGER_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(15 16) rotate(-90)">TRIG</text>
+
+    <g transform="translate(16 30)">
+      <rect class="input-background" width="43" height="32" rx="5" transform="translate(0 0)"/>
+      <rect class="input-background" width="43" height="10" transform="translate(0 0)"/>
+      <g transform="translate(14.5 4)"><svg id="TEST_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(10 16.5) rotate(-90)">TEST</text>
+    </g>
+
+    <g transform="translate(0 67)">
+      <g transform="translate(5 0)">
+        <text font-size="5pt" letter-spacing="1.5px" transform="translate(0 6)">EXP</text>
+        <g transform="translate(18 -1)"><svg id="EXPONENTIAL_PARAM">
+      <g transform="translate(4.5 4.5)">
+        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+      </g>
+      <g transform="translate(38 0)">
+        <text font-size="5pt" letter-spacing="1.5px" transform="translate(0 6)">LOOP</text>
+        <g transform="translate(24 -1)"><svg id="LOOP_PARAM">
+      <g transform="translate(4.5 4.5)">
+        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(0 237.5)">
+    <text font-size="7pt" letter-spacing="1.5px" text-anchor="middle" transform="translate(37.5 0)">R. DELAY</text>
+    <g transform="translate(29.5 12)"><svg id="DELAY_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <use xlink:href="#dial-delay-ranalyzer" transform="translate(0 0)" href="#dial-delay-ranalyzer"/>
+  </g>
+
+  <g class="io-group" transform="translate(0 283)">
+    <rect class="output-background" width="64" height="77" rx="5" transform="translate(5.5 0)"/>
+    <g transform="translate(10.5 3)"><svg id="TRIGGER_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 35)">TRIG</text>
+    <g transform="translate(40.5 3)"><svg id="EOC_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(52.5 35)">EOC</text>
+    <g transform="translate(10.5 40)"><svg id="SEND_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 72)">SEND</text>
+    <g transform="translate(30 36)">
+      <rect class="input-background" width="32" height="39" rx="5" transform="translate(7.5 2)"/>
+      <rect class="input-background-filler" width="32" height="10" transform="translate(7.5 2)"/>
+      <rect class="input-background-filler" width="10" height="10" transform="translate(7.5 31)"/>
+      <g transform="translate(10.5 4)"><svg id="RETURN_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="0.5px" text-anchor="middle" transform="translate(22.5 36)">RETURN</text>
+    </g>
+  </g>
+
+  <g transform="translate(75 0)"><svg id="DISPLAY_WIDGET">
+      <rect cx="0" cy="0" width="600" height="380" fill="#444"/>
+    </svg></g>
+
+  
+</svg>

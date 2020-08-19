@@ -40,6 +40,7 @@ json_t* AnalyzerXL::toJson(json_t* root) {
 			json_object_set_new(root, QUALITY_KEY, json_string(QUALITY_ULTRA_KEY));
 			break;
 		}
+		default:;
 	}
 	switch (_window) {
 		case AnalyzerCore::WINDOW_NONE: {

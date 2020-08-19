@@ -175,3 +175,21 @@ static void BM_Oscillator_ChirpOscillatorExp(benchmark::State& state) {
 	}
 }
 BENCHMARK(BM_Oscillator_ChirpOscillatorExp);
+
+static void BM_Oscillator_PureChirpOscillatorLinear(benchmark::State& state) {
+	PureChirpOscillator o(44100.0, 100.0f, 20000.0f, 1.0f, true);
+
+	for (auto _ : state) {
+		o.next();
+	}
+}
+BENCHMARK(BM_Oscillator_PureChirpOscillatorLinear);
+
+static void BM_Oscillator_PureChirpOscillatorExp(benchmark::State& state) {
+	PureChirpOscillator o(44100.0, 100.0f, 20000.0f, 1.0f, false);
+
+	for (auto _ : state) {
+		o.next();
+	}
+}
+BENCHMARK(BM_Oscillator_PureChirpOscillatorExp);
