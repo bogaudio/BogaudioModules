@@ -54,8 +54,7 @@ struct %MODULE%Widget : BGModuleWidget {
 		setModule(module);
 		box.size = Vec(RACK_GRID_WIDTH * hp, RACK_GRID_HEIGHT);
 		setPanel(box.size, "%MODULE%");
-
-%SCREWS%
+		createScrews();
 
 %POSITIONS%
 
@@ -285,29 +284,6 @@ def make_enums(widgets_by_type, comments, indent)
   s
 end
 
-def make_screws(hp, comments, indent)
-  i1 = indent ? "\t\t" : ''
-  ss = []
-  if hp <= 8
-    ss << 'addChild(createWidget<ScrewSilver>(Vec(0, 0)));'
-    ss << 'addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 365)));'
-  elsif hp <= 13
-    ss << 'addChild(createWidget<ScrewSilver>(Vec(0, 0)));'
-    ss << 'addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 0)));'
-    ss << 'addChild(createWidget<ScrewSilver>(Vec(0, 365)));'
-    ss << 'addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 365)));'
-  else
-    ss << 'addChild(createWidget<ScrewSilver>(Vec(15, 0)));'
-    ss << 'addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 0)));'
-    ss << 'addChild(createWidget<ScrewSilver>(Vec(15, 365)));'
-    ss << 'addChild(createWidget<ScrewSilver>(Vec(box.size.x - 30, 365)));'
-  end
-  ss = ss.map { |s| "#{i1}#{s}" }
-  s = ss.join("\n")
-  s = [make_comment(true, false), s, make_comment(false, false)].join("\n") if comments
-  s
-end
-
 def make_stub(widgets_by_type, template, options)
   comments = options[:comments]
   s = template
@@ -318,7 +294,6 @@ def make_stub(widgets_by_type, template, options)
   s.gsub!(/%MANUFACTURER%/, options[:manufacturer])
   s.gsub!(/%HP%/, options[:hp])
   s.gsub!(/%ENUMS%/, make_enums(widgets_by_type, false, true))
-  s.gsub!(/%SCREWS%/, make_screws(options[:hp].to_i, false, true))
   if widgets_by_type.empty?
     s.gsub!(/%POSITIONS%/, '')
     s.gsub!(/%CREATES%/, '')
