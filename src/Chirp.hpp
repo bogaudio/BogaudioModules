@@ -66,31 +66,6 @@ struct Chirp : BGModule {
 		}
 	};
 
-	struct FrequencyParamQuantity : ParamQuantity {
-		float getDisplayValue() override {
-			float v = getValue();
-			if (!module) {
-				return v;
-			}
-
-			float vv = v * v;
-			vv *= roundf(APP->engine->getSampleRate() * Chirp::maxFrequencyNyquistRatio) - Chirp::minFrequency;
-			vv += Chirp::minFrequency;
-			return vv;
-		}
-
-		void setDisplayValue(float displayValue) override {
-			if (!module) {
-				return;
-			}
-			displayValue -= Chirp::minFrequency;
-			displayValue = std::max(0.0f, displayValue);
-			float v = displayValue / (roundf(APP->engine->getSampleRate() * Chirp::maxFrequencyNyquistRatio) - Chirp::minFrequency);
-			v = powf(v, 0.5f);
-			setValue(v);
-		}
-	};
-
 	struct Engine {
 		ChirpOscillator chirp;
 		Trigger trigger;
