@@ -87,7 +87,7 @@ void Ranalyzer::processAll(const ProcessArgs& args) {
 			out = inputs[TEST_INPUT].getVoltage();
 		}
 		else {
-			out = _chirp.next() * 10.0f;
+			out = _chirp.next() * 5.0f;
 		}
 		_inputBuffer.push(out);
 		if (_bufferCount > 0) {
