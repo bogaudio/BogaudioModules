@@ -61,10 +61,12 @@ void Ranalyzer::modulate() {
 	_returnSampleDelay = clamp((int)roundf(params[DELAY_PARAM].getValue()), 2, maxResponseDelay);
 
 	_frequency1 = clamp(params[FREQUENCY1_PARAM].getValue(), 0.0f, 1.0f);
+	_frequency1 *= _frequency1;
 	_frequency1 *= _maxFrequency - minFrequency;
 	_frequency1 += minFrequency;
 
 	_frequency2 = clamp(params[FREQUENCY2_PARAM].getValue(), 0.0f, 1.0f);
+	_frequency2 *= _frequency2;
 	_frequency2 *= _maxFrequency - minFrequency;
 	_frequency2 += minFrequency;
 }
