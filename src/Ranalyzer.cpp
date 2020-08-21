@@ -1,6 +1,8 @@
 
 #include "Ranalyzer.hpp"
 
+// #define ANALYSIS_TRACE 1
+
 #define RANGE_KEY "range"
 #define RANGE_DB_KEY "range_db"
 #define DISPLAY_ALL "display_all"
@@ -25,7 +27,9 @@ void Ranalyzer::sampleRateChange() {
 json_t* Ranalyzer::toJson(json_t* root) {
 	json_object_set_new(root, RANGE_KEY, json_real(_range));
 	json_object_set_new(root, RANGE_DB_KEY, json_real(_rangeDb));
+#ifdef ANALYSIS_TRACE
 	json_object_set_new(root, DISPLAY_ALL, json_boolean(_displayAll));
+#endif
 	return root;
 }
 
@@ -40,10 +44,12 @@ void Ranalyzer::fromJson(json_t* root) {
 		_rangeDb = clamp(json_real_value(jrd), 80.0f, 140.0f);
 	}
 
+#ifdef ANALYSIS_TRACE
 	json_t* da = json_object_get(root, DISPLAY_ALL);
 	if (da) {
 		setDisplayAll(json_boolean_value(da));
 	}
+#endif
 }
 
 void Ranalyzer::modulate() {
@@ -181,10 +187,12 @@ struct RanalyzerWidget : BGModuleWidget {
 			auto display = new RanalyzerDisplay(module, size, false);
 			display->box.pos = inset;
 			display->box.size = size;
+#ifdef ANALYSIS_TRACE
 			if (module) {
 				display->setChannelBinsReader(2, new AnalysisBinsReader(module));
 				module->setChannelDisplayListener(display);
 			}
+#endif
 			addChild(display);
 		}
 
@@ -256,12 +264,14 @@ struct RanalyzerWidget : BGModuleWidget {
 			mi->addItem(OptionMenuItem("To -120dB", [a]() { return a->_rangeDb == 140.0f; }, [a]() { a->_rangeDb = 140.0f; }));
 			OptionsMenuItem::addToMenu(mi, menu);
 		}
+#ifdef ANALYSIS_TRACE
 		{
 			OptionsMenuItem* mi = new OptionsMenuItem("Display traces");
 			mi->addItem(OptionMenuItem("All", [a]() { return a->_displayAll; }, [a]() { a->setDisplayAll(true); }));
 			mi->addItem(OptionMenuItem("Analysis only", [a]() { return !a->_displayAll; }, [a]() { a->setDisplayAll(false); }));
 			OptionsMenuItem::addToMenu(mi, menu);
 		}
+#endif
 	}
 };
 
