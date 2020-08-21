@@ -84,7 +84,13 @@ void Chirp::processChannel(const ProcessArgs& args, int c) {
 	Engine& e = *_engines[c];
 
 	bool triggered = e.trigger.process(params[TRIGGER_PARAM].getValue()*5.0f + inputs[TRIGGER_INPUT].getPolyVoltage(c));
-	_run = _run || triggered || _loop;
+	if (!_run) {
+		if (triggered || _loop) {
+			_run = true;
+			e.chirp.reset();
+		}
+	}
+
 	float out = 0.0f;
 	if (_run) {
 		out = e.chirp.next() * 5.0f;

@@ -354,6 +354,7 @@ float ChirpOscillator::_next() {
 
 void ChirpOscillator::reset() {
 	_time = 0.0f;
+	_oscillator.resetPhase();
 }
 
 
