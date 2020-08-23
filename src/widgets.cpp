@@ -575,7 +575,7 @@ void VUSlider::draw(const DrawArgs& args) {
 			nvgFillColor(args.vg, decibelsToColor(amplitudeToDecibels(db)));
 			nvgFill(args.vg);
 		}
-		if (stereo) {
+		if (stereo && stereoDb > 0.0f) {
 			nvgBeginPath(args.vg);
 			nvgRoundedRect(args.vg, 9, 4, 7, 5, 1.0);
 			nvgFillColor(args.vg, decibelsToColor(amplitudeToDecibels(stereoDb)));
