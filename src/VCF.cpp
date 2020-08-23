@@ -13,7 +13,7 @@ void VCF::Engine::setParams(
 	float qbw,
 	MultimodeFilter::BandwidthMode bwm
 ) {
-	frequency = semitoneToFrequency(_frequencySL.next(frequencyToSemitone(frequency)));
+	frequency = clamp(semitoneToFrequency(_frequencySL.next(frequencyToSemitone(frequency))), VCF::minFrequency, VCF::maxFrequency);
 
 	int i = -1, j = -1;
 	std::fill(_gains, _gains + nFilters, 0.0f);

@@ -124,6 +124,7 @@ struct MultimodeDesigner : MultimodeTypes {
 	Pole _poles[maxPoles / 2];
 	int _nBiquads = 0;
 
+	float effectiveMinimumFrequency();
 	void setParams(
 		BiquadBank<T, N>& biquads,
 		float& outGain,
@@ -157,6 +158,7 @@ struct MultimodeBase : MultimodeFilter {
 	BiquadBank<T, N> _biquads;
 	float _outGain = 1.0f;
 
+	inline float effectiveMinimumFrequency() { return _designer.effectiveMinimumFrequency(); }
 	void setParams(
 		float sampleRate,
 		Type type,

@@ -15,6 +15,7 @@ void LVCF::Engine::setParams(
 	MultimodeFilter::BandwidthMode bwm
 ) {
 	frequency = semitoneToFrequency(_frequencySL.next(frequencyToSemitone(frequency)));
+	frequency = clamp(semitoneToFrequency(_frequencySL.next(frequencyToSemitone(frequency))), LVCF::minFrequency, LVCF::maxFrequency);
 
 	_filter.setParams(
 		_sampleRate,

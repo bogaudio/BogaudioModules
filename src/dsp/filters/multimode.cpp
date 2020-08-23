@@ -178,6 +178,10 @@ constexpr float MultimodeTypes::minBWPitch;
 constexpr float MultimodeTypes::maxBWPitch;
 
 
+template<int N> float MultimodeDesigner<N>::effectiveMinimumFrequency() {
+	return minFrequency * std::max(1.0f, roundf(_sampleRate / 44100.0f));
+}
+
 template<int N> void MultimodeDesigner<N>::setParams(
 	BiquadBank<T, N>& biquads,
 	float& outGain,
@@ -194,6 +198,7 @@ template<int N> void MultimodeDesigner<N>::setParams(
 	assert(poles >= minPoles && (poles <= N || (poles <= 2*N && (mode == LOWPASS_MODE || mode == HIGHPASS_MODE))));
 	assert(poles % modPoles == 0);
 	assert(frequency >= minFrequency - 0.00001f && frequency <= maxFrequency);
+	frequency = std::max(frequency, effectiveMinimumFrequency());
 	assert(qbw >= minQbw && qbw <= maxQbw);
 
 	bool repole = _type != type || _mode != mode || _nPoles != poles || (type == CHEBYSHEV_TYPE && (mode == LOWPASS_MODE || mode == HIGHPASS_MODE) && _qbw != qbw);
