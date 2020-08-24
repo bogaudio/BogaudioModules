@@ -743,7 +743,7 @@ Each channel may also be have its output inverted with the INV button.
 
 The GATE input on the lower section is normalled to GATE in the top section (but a press on the top button does not trigger the lower section).
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the GATE input, independently on the top and bottom sections of the module.  The polyphony port can be changed to IN on the context menu (this applies to both top and bottom sections of the module).
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the GATE input in each section.  If the bottom GATE is patched, the two sections will independently take their channels from their respective GATE inputs; if only the top GATE is patched, the bottom section normals to the top input and both sections have the same number of channels.  The polyphony port can be changed to IN on the context menu (this change applies to both top and bottom sections of the module; IN does not normal to the bottom section, and both sections will set their channels independently, from whatever is patched to their own IN).
 
 #### <a name="walk2"></a> WALK2
 

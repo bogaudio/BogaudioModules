@@ -81,8 +81,18 @@ void SampleHold::handleChannel(
 	float* value,
 	Output& out
 ) {
-	int n = std::max(1, _polyInputID == IN1_INPUT ? in.getChannels() : triggerInput.getChannels());
+	int n = 0;
+	if (_polyInputID == IN1_INPUT) {
+		n = in.getChannels();
+	}
+	else if (triggerInput.isConnected()) {
+		n = triggerInput.getChannels();
+	} else if (altTriggerInput) {
+		n = altTriggerInput->getChannels();
+	}
+	n = std::max(1, n);
 	out.setChannels(n);
+
 	for (int i = 0; i < n; ++i) {
 		float triggerIn = 0.0f;
 		if (triggerInput.isConnected()) {
