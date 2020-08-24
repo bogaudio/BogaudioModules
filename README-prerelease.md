@@ -709,12 +709,14 @@ The comparator calculates the following:
 
 The outputs GT, LT and EQ follow the state:
   - If GT, the GT output is +5V, and -5V otherwise.
-  - If LT, the LT output is +5V, and -5V otherwise.
+  - If LT, the LT output is -5V, and +5V otherwise (which is inverted from what it should logically be; this makes the output interesting).
   - If EQ, the EQ output is +5V, and -5V otherwise.
 
 The MIX output combines the other outputs according to the GT MIX, EQ MIX and LT MIX knobs, which are simply attenuverters (rather than proper VCAs).  GT MIX and LT mix have bipolar CVs.
 
 The MIX output is also subject to the DRY/WET setting, where the dry signal is comprised of the A and B scaled inputs, each processed by the A DRY and B DRY VCAs.  DRY/WET has a bipolar CV.
+
+**Note:** this module is intended for audio-rate use, as a distortion effect; if you want a proper window comparator for use with CV, take a look at <a href="#cmp">CMP</a>.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the A input.
 
