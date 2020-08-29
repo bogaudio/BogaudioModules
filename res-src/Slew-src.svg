@@ -14,38 +14,6 @@
         <text font-size="5.0pt" transform="rotate(60) translate(18 0) rotate(-60) translate(-1.9 2.2)">10</text>
       </g>
     </symbol>
-
-    <symbol id="dial-rise-shape-slew" viewBox="0 0 45px 45px">
-      <g transform="translate(20 20)">
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-52.5) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-15) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(22.5) translate(10 0)"/>
-
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-127.5) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-165) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-202.5) translate(10 0)"/>
-
-        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#333" fill="none" transform="rotate(60) translate(13 0) rotate(-60) translate(2 0) rotate(-45) translate(0 0)"/>
-        <polyline points="-3.5,0 3.5,0" stroke-width="1" fill="none" transform="rotate(-90) translate(13 0) rotate(90) rotate(-45) translate(0 0)"/>
-        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#333" fill="none" transform="rotate(-240) translate(13 0) rotate(240) translate(-2 0) rotate(135) translate(0 0)"/>
-      </g>
-    </symbol>
-
-    <symbol id="dial-fall-shape-slew" viewBox="0 0 45px 45px">
-      <g transform="translate(20 20)">
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-52.5) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-15) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(22.5) translate(10 0)"/>
-
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-127.5) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-165) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-202.5) translate(10 0)"/>
-
-        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#333" fill="none" transform="rotate(60) translate(13 0) rotate(-60) translate(2 0) rotate(-135) translate(0 0)"/>
-        <polyline points="-3.5,0 3.5,0" stroke-width="1" fill="none" transform="rotate(-90) translate(13 0) rotate(90) rotate(45) translate(0 0)"/>
-        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#333" fill="none" transform="rotate(-240) translate(13 0) rotate(240) translate(-2 0) rotate(45) translate(0 0)"/>
-      </g>
-    </symbol>
   </defs>
 
   <def xlink:href="#module3" var-name="SLEW"/>
@@ -55,7 +23,7 @@
     <def id="RISE_PARAM" xlink:href="#knob26" transform="translate(9.5 9)"/>
     <use xlink:href="#dial-time-slew" transform="translate(0 -1)"/>
     <def id="RISE_SHAPE_PARAM" xlink:href="#knob16" transform="translate(14.5 51)"/>
-    <use xlink:href="#dial-rise-shape-slew" transform="translate(2.5 39)"/>
+    <def xlink:href="#dial-shape-rise" transform="translate(2.5 39)"/>
     <g class="io-group" transform="translate(7.5 77)">
       <rect class="input-background" width="30" height="30" rx="5"/>
       <def id="RISE_INPUT" xlink:href="#input" transform="translate(3 3)"/>
@@ -68,7 +36,7 @@
     <def id="FALL_PARAM" xlink:href="#knob26" transform="translate(9.5 9)"/>
     <use xlink:href="#dial-time-slew" transform="translate(0 -1)"/>
     <def id="FALL_SHAPE_PARAM" xlink:href="#knob16" transform="translate(14.5 51)"/>
-    <use xlink:href="#dial-fall-shape-slew" transform="translate(2.5 39)"/>
+    <def xlink:href="#dial-shape-fall" transform="translate(2.5 39)"/>
     <g class="io-group" transform="translate(7.5 77)">
       <rect class="input-background" width="30" height="30" rx="5"/>
       <def id="FALL_INPUT" xlink:href="#input" transform="translate(3 3)"/>

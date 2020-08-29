@@ -299,6 +299,16 @@
       ]
     },
     {
+      "slug": "Bogaudio-Vish",
+      "name": "VISH",
+      "description": "Vactrol-ish envelope generator",
+      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#vish",
+      "tags": [
+        "Envelope generator",
+        "Polyphonic"
+      ]
+    },
+    {
       "slug": "Bogaudio-Follow",
       "name": "FOLLOW",
       "description": "Envelope follower",

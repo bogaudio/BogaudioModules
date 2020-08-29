@@ -1,9 +1,6 @@
 #pragma once
 
-#include "bogaudio.hpp"
-#include "dsp/signal.hpp"
-
-using namespace bogaudio::dsp;
+#include "slew_common.hpp"
 
 extern Model* modelSlew;
 
@@ -30,12 +27,7 @@ struct Slew : BGModule {
 		NUM_OUTPUTS
 	};
 
-	float _riseShape = 0.0f;
-	float _fallShape = 0.0f;
-	bool _rising[maxChannels];
-	float _last[maxChannels] {};
-	ShapedSlewLimiter _rise[maxChannels];
-	ShapedSlewLimiter _fall[maxChannels];
+	RiseFallShapedSlewLimiter _slew[maxChannels];
 
 	Slew() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
@@ -43,19 +35,12 @@ struct Slew : BGModule {
 		configParam(RISE_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "Rise shape");
 		configParam<EnvelopeSegmentParamQuantity>(FALL_PARAM, 0.0f, 1.0f, 0.31623f, "Fall", " s");
 		configParam(FALL_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "Fall shape");
-
-		for (int i = 0; i < maxChannels; ++i) {
-			_rising[i] = true;
-		}
 	}
 
 	bool active() override;
 	int channels() override;
-	void modulate() override;
 	void modulateChannel(int c) override;
 	void processChannel(const ProcessArgs& args, int c) override;
-	float time(Param& param, Input& input, int c);
-	float shape(Param& param);
 };
 
 } // namespace bogaudio

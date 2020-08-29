@@ -17,6 +17,9 @@ text.brand {
 polyline {
   stroke: #333;
 }
+polyline.guide {
+  stroke: #0f0;
+}
 path {
   stroke: #333;
 }
@@ -115,7 +118,7 @@ polyline.output-label, path.output-label {
 }
 
 circle.port-rim {
-  stroke: #ccc;
+  stroke: #bbb;
 }
 circle.port-barrel {
   stroke: #222;
@@ -145,38 +148,6 @@ polyline.knob-tick {
         <text font-size="5.0pt" transform="rotate(-27.87) translate(17 0) rotate(27.87) translate(-2 2.2)">5</text>
         <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(19.81) translate(15 0)"/>
         <text font-size="5.0pt" transform="rotate(60) translate(18 0) rotate(-60) translate(-1.9 2.2)">10</text>
-      </g>
-    </symbol>
-
-    <symbol id="dial-rise-shape-slew" viewBox="0 0 45px 45px">
-      <g transform="translate(20 20)">
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-52.5) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-15) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(22.5) translate(10 0)"/>
-
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-127.5) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-165) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-202.5) translate(10 0)"/>
-
-        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#b3b3b3" fill="none" transform="rotate(60) translate(13 0) rotate(-60) translate(2 0) rotate(-45) translate(0 0)"/>
-        <polyline points="-3.5,0 3.5,0" stroke-width="1" fill="none" transform="rotate(-90) translate(13 0) rotate(90) rotate(-45) translate(0 0)"/>
-        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#b3b3b3" fill="none" transform="rotate(-240) translate(13 0) rotate(240) translate(-2 0) rotate(135) translate(0 0)"/>
-      </g>
-    </symbol>
-
-    <symbol id="dial-fall-shape-slew" viewBox="0 0 45px 45px">
-      <g transform="translate(20 20)">
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-52.5) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-15) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(22.5) translate(10 0)"/>
-
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-127.5) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-165) translate(10 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-202.5) translate(10 0)"/>
-
-        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#b3b3b3" fill="none" transform="rotate(60) translate(13 0) rotate(-60) translate(2 0) rotate(-135) translate(0 0)"/>
-        <polyline points="-3.5,0 3.5,0" stroke-width="1" fill="none" transform="rotate(-90) translate(13 0) rotate(90) rotate(45) translate(0 0)"/>
-        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#b3b3b3" fill="none" transform="rotate(-240) translate(13 0) rotate(240) translate(-2 0) rotate(45) translate(0 0)"/>
       </g>
     </symbol>
   </defs>
@@ -216,7 +187,21 @@ polyline.knob-tick {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-rise-shape-slew" transform="translate(2.5 39)" href="#dial-rise-shape-slew"/>
+    <g transform="translate(2.5 39)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-52.5) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-15) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(22.5) translate(10 0)"/>
+
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-127.5) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-165) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-202.5) translate(10 0)"/>
+
+        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#b3b3b3" fill="none" transform="rotate(60) translate(13 0) rotate(-60) translate(2 0) rotate(-45) translate(0 0)"/>
+        <polyline points="-3.5,0 3.5,0" stroke-width="1" fill="none" transform="rotate(-90) translate(13 0) rotate(90) rotate(-45) translate(0 0)"/>
+        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#b3b3b3" fill="none" transform="rotate(-240) translate(13 0) rotate(240) translate(-2 0) rotate(135) translate(0 0)"/>
+      </g>
+    </g>
     <g class="io-group" transform="translate(7.5 77)">
       <rect class="input-background" width="30" height="30" rx="5"/>
       <g transform="translate(3 3)"><svg id="RISE_INPUT">
@@ -246,7 +231,21 @@ polyline.knob-tick {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-fall-shape-slew" transform="translate(2.5 39)" href="#dial-fall-shape-slew"/>
+    <g transform="translate(2.5 39)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-52.5) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-15) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(22.5) translate(10 0)"/>
+
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-127.5) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-165) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-202.5) translate(10 0)"/>
+
+        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#b3b3b3" fill="none" transform="rotate(60) translate(13 0) rotate(-60) translate(2 0) rotate(-135) translate(0 0)"/>
+        <polyline points="-3.5,0 3.5,0" stroke-width="1" fill="none" transform="rotate(-90) translate(13 0) rotate(90) rotate(45) translate(0 0)"/>
+        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#b3b3b3" fill="none" transform="rotate(-240) translate(13 0) rotate(240) translate(-2 0) rotate(45) translate(0 0)"/>
+      </g>
+    </g>
     <g class="io-group" transform="translate(7.5 77)">
       <rect class="input-background" width="30" height="30" rx="5"/>
       <g transform="translate(3 3)"><svg id="FALL_INPUT">

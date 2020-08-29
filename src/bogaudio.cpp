@@ -97,6 +97,7 @@
 #include "VCF.hpp"
 #include "VCM.hpp"
 #include "VCO.hpp"
+#include "Vish.hpp"
 #include "VU.hpp"
 #include "Walk.hpp"
 #include "Walk2.hpp"
@@ -146,6 +147,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelAD);
 	p->addModel(modelASR);
 	p->addModel(modelADSR);
+	p->addModel(modelVish);
 	p->addModel(modelFollow);
 	p->addModel(modelDGate);
 	p->addModel(modelRGate);

@@ -9,56 +9,24 @@ int Slew::channels() {
 	return inputs[IN_INPUT].getChannels();
 }
 
-void Slew::modulate() {
-	_riseShape = shape(params[RISE_SHAPE_PARAM]);
-	_fallShape = shape(params[FALL_SHAPE_PARAM]);
-}
-
 void Slew::modulateChannel(int c) {
-	float riseTime = time(params[RISE_PARAM], inputs[RISE_INPUT], c);
-	float fallTime = time(params[FALL_PARAM], inputs[FALL_INPUT], c);
-	_rise[c].setParams(APP->engine->getSampleRate(), riseTime, _riseShape);
-	_fall[c].setParams(APP->engine->getSampleRate(), fallTime, _fallShape);
+	_slew[c].modulate(
+		APP->engine->getSampleRate(),
+		params[RISE_PARAM],
+		inputs[RISE_INPUT],
+		10000.0f,
+		params[RISE_SHAPE_PARAM],
+		params[FALL_PARAM],
+		inputs[FALL_INPUT],
+		10000.0f,
+		params[FALL_SHAPE_PARAM],
+		c
+	);
 }
 
 void Slew::processChannel(const ProcessArgs& args, int c) {
-	float sample = inputs[IN_INPUT].getPolyVoltage(c);
-
 	outputs[OUT_OUTPUT].setChannels(_channels);
-	if (sample > _last[c]) {
-		if (!_rising[c]) {
-			_rising[c] = true;
-			_rise[c]._last = _last[c];
-		}
-		outputs[OUT_OUTPUT].setVoltage(_last[c] = _rise[c].next(sample), c);
-	}
-	else {
-		if (_rising[c]) {
-			_rising[c] = false;
-			_fall[c]._last = _last[c];
-		}
-		outputs[OUT_OUTPUT].setVoltage(_last[c] = _fall[c].next(sample), c);
-	}
-}
-
-float Slew::time(Param& param, Input& input, int c) {
-	float time = param.getValue();
-	if (input.isConnected()) {
-		time *= clamp(input.getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
-	}
-	return time * time * 10000.0f;
-}
-
-float Slew::shape(Param& param) {
-	float shape = param.getValue();
-	if (shape < 0.0) {
-		shape = 1.0f + shape;
-		shape = _rise[0].minShape + shape * (1.0f - _rise[0].minShape);
-	}
-	else {
-		shape += 1.0f;
-	}
-	return shape;
+	outputs[OUT_OUTPUT].setVoltage(_slew[c].next(inputs[IN_INPUT].getPolyVoltage(c)), c);
 }
 
 struct SlewWidget : BGModuleWidget {

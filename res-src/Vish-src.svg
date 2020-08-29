@@ -1,0 +1,112 @@
+<module hp="5">
+  <style/>
+
+  <defs>
+    <symbol id="dial-rise-time-vish" viewBox="0 0 45px 45px">
+      <g var-tt="19" transform="translate(22.5 22.5)">
+        <text font-size="5pt" text-anchor="middle" var-r="-240" transform="rotate($r) translate($tt+1.0 0) rotate(-1.0*$r) translate(0 3)">0MS</text>
+        <text font-size="5pt" text-anchor="middle" var-r="0.01**0.5/0.3**0.5*300.0-240.0" transform="rotate($r) translate($tt 0) rotate(-1.0*$r) translate(0 3)">10</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.025**0.5/0.3**0.5*300.0-240.0) translate(15 0)"/>
+        <text font-size="5pt" text-anchor="middle" var-r="0.05**0.5/0.3**0.5*300.0-240.0" transform="rotate($r) translate($tt 0) rotate(-1.0*$r) translate(0 3)">50</text>
+        <text font-size="5pt" text-anchor="middle" var-r="0.1**0.5/0.3**0.5*300.0-240.0" transform="rotate($r) translate($tt 0) rotate(-1.0*$r) translate(0 3)">100</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.15**0.5/0.3**0.5*300.0-240.0) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.2**0.5/0.3**0.5*300.0-240.0) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.25**0.5/0.3**0.5*300.0-240.0) translate(15 0)"/>
+        <text font-size="5pt" text-anchor="middle" var-r="60" transform="rotate($r) translate($tt+1.0 0) rotate(-1.0*$r) translate(0 3)">300</text>
+      </g>
+    </symbol>
+
+    <symbol id="dial-fall-time-vish" viewBox="0 0 45px 45px">
+      <g var-tt="20" transform="translate(22.5 22.5)">
+        <text font-size="5pt" text-anchor="middle" var-r="-240" transform="rotate($r) translate($tt-1.0 0) rotate(-1.0*$r) translate(0 3)">0S</text>
+        <polyline points="0,0 2,0" stroke-width="0.7" transform="rotate(0.01**0.5*300.0-240.0) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.05**0.5*300.0-240.0) translate(15 0)"/>
+        <text font-size="5pt" text-anchor="middle" var-r="0.1**0.5*300.0-240.0" transform="rotate($r) translate($tt 0) rotate(-1.0*$r) translate(0 3)">0.1</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.2**0.5*300.0-240.0) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.3**0.5*300.0-240.0) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.4**0.5*300.0-240.0) translate(15 0)"/>
+        <text font-size="5pt" text-anchor="middle" var-r="0.5**0.5*300.0-240.0" transform="rotate($r) translate($tt 0) rotate(-1.0*$r) translate(0 3)">0.5</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.6**0.5*300.0-240.0) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.7**0.5*300.0-240.0) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.8**0.5*300.0-240.0) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.9**0.5*300.0-240.0) translate(15 0)"/>
+        <text font-size="5pt" text-anchor="middle" var-r="60" transform="rotate($r) translate($tt-1.0 0) rotate(-1.0*$r) translate(0 3)">1</text>
+      </g>
+    </symbol>
+
+    <symbol id="dial-mingate-vish" viewBox="0 0 ${width}px ${width}px">
+      <g transform="translate($width/2.0 $width/2.0)">
+        <text font-size="6pt" text-anchor="middle" var-r="-240" transform="rotate($r) translate(21 0) rotate(-1.0*$r) translate(0 3)">0S</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.01**0.5*300.0-240.0) translate(17 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(0.05**0.5*300.0-240.0) translate(17 0)"/>
+        <text font-size="6pt" text-anchor="middle" var-r="0.1**0.5*300.0-240.0" transform="rotate($r) translate(23 0) rotate(-1.0*$r) translate(0 3)">0.1</text>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(0.2**0.5*300.0-240.0) translate(17 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(0.3**0.5*300.0-240.0) translate(17 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(0.4**0.5*300.0-240.0) translate(17 0)"/>
+        <text font-size="6pt" text-anchor="middle" var-r="0.5**0.5*300.0-240.0" transform="rotate($r) translate(23 0) rotate(-1.0*$r) translate(0 3)">0.5</text>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(0.6**0.5*300.0-240.0) translate(17 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(0.7**0.5*300.0-240.0) translate(17 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(0.8**0.5*300.0-240.0) translate(17 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(0.9**0.5*300.0-240.0) translate(17 0)"/>
+        <text font-size="6pt" text-anchor="middle" var-r="60" transform="rotate($r) translate(21 0) rotate(-1.0*$r) translate(0 3)">1</text>
+      </g>
+    </symbol>
+  </defs>
+
+  <def xlink:href="#module5" var-name="VISH"/>
+
+  <g transform="translate(0 35)" var-pad="3.0">
+    <!-- <polyline class="guide" points="0,0 $width,0" stroke-width="1" fill="none" transform="translate(0 $pad+22)"/> -->
+    <text font-size="8pt" letter-spacing="2.0px" text-anchor="middle" transform="translate($width/2.0 0)">RISE</text>
+    <def id="RISE_PARAM" xlink:href="#knob26" transform="translate(12.5 $pad+9)"/>
+    <use xlink:href="#dial-rise-time-vish" transform="translate(3 $pad-1)"/>
+    <def id="RISE_SHAPE_PARAM" xlink:href="#knob16" transform="translate(52 $pad+14)"/>
+    <def xlink:href="#dial-shape-rise" transform="translate(40 $pad+2)"/>
+  </g>
+
+  <g transform="translate(0 101)" var-pad="1.0">
+    <!-- <polyline class="guide" points="0,0 $width,0" stroke-width="1" fill="none" transform="translate(0 $pad+22)"/> -->
+    <text font-size="8pt" letter-spacing="2.0px" text-anchor="middle" transform="translate($width/2.0 0)">FALL</text>
+    <def id="FALL_PARAM" xlink:href="#knob26" transform="translate(12.5 $pad+9)"/>
+    <use xlink:href="#dial-fall-time-vish" transform="translate(3 $pad-1)"/>
+    <def id="FALL_SHAPE_PARAM" xlink:href="#knob16" transform="translate(52 $pad+14)"/>
+    <def xlink:href="#dial-shape-fall" transform="translate(40 $pad+2)"/>
+  </g>
+
+  <g transform="translate(0 164)" var-pad="3.0">
+    <text font-size="8pt" letter-spacing="1.5px" text-anchor="middle" transform="translate($width/2.0 0)">MIN GATE</text>
+    <def id="MINIMUM_GATE_PARAM" xlink:href="#knob29" transform="translate(15 $pad)"/>
+    <use xlink:href="#dial-mingate-vish" transform="translate(0 $pad+45.0/2.0-$width/2.0)"/>
+  </g>
+
+  <g transform="translate(-6 221)">
+    <text font-size="5pt" letter-spacing="1px" text-anchor="middle" transform="translate($width/2.0 6)">GT TO TRIG</text>
+    <def id="GATE_TO_TRIGGER_PARAM" xlink:href="#button-small" transform="translate(63 -1)"/>
+  </g>
+
+  <g transform="translate(-6 235)">
+    <text font-size="5pt" letter-spacing="1px" text-anchor="middle" transform="translate($width/2.0 6)">TIMES 10X</text>
+    <def id="TIMES_10X_PARAM" xlink:href="#button-small" transform="translate(61 -1)"/>
+  </g>
+
+  <g transform="translate(0 248)">
+    <rect class="input-background" width="64" height="112" rx="5" transform="translate(5.5 0)"/>
+    <def id="MINIMUM_GATE_INPUT" xlink:href="#input" transform="translate(10.5 3)"/>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 35)">MIN</text>
+    <def id="RISE_INPUT" xlink:href="#input" transform="translate(40.5 3)"/>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(52.5 35)">RISE</text>
+    <def id="VELOCITY_INPUT" xlink:href="#input" transform="translate(10.5 40)"/>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 72)">VELO</text>
+    <def id="FALL_INPUT" xlink:href="#input" transform="translate(40.5 40)"/>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(52.5 72)">FALL</text>
+    <def id="GATE_INPUT" xlink:href="#input" transform="translate(10.5 77)"/>
+    <text class="input-label" font-size="5pt" letter-spacing="1px" text-anchor="middle" transform="translate(22.5 109)">GATE</text>
+    <g class="io-group" transform="translate(30 72)">
+      <rect class="output-background" width="32" height="38" rx="5" transform="translate(7.5 2)"/>
+      <rect class="output-background-filler" width="32" height="10" transform="translate(7.5 2)"/>
+      <rect class="output-background-filler" width="10" height="10" transform="translate(7.5 30)"/>
+      <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(10.5 5)"/>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 37)">OUT</text>
+    </g>
+  </g>
+</module>

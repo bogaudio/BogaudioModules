@@ -371,6 +371,29 @@ By default, the attack, decay and release envelope segments have an exponential 
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the GATE input.
 
+#### <a name="vish"></a> VISH
+
+VISH ("vactrol-ish") is an envelope generator designed to simulate the voltage shapes produced by the [vactrol](https://en.wikipedia.org/wiki/Opto-isolator) control circuits of hardware LPGs (low pass gates).  It lends itself to percussive envelopes, though long envelopes are possible.
+
+It operates by generating an internal 10V square envelope, which is fed through a slew limiter.
+
+When a trigger is received at the GATE input, or if any rising edge is received and GT TO TRIG is enabled, the internal envelop triggers and runs for the time set by the MIN GATE knob.  This parameter may be controlled by CV at the MIN input, expecting a unipolar (0-10V) input, which is scaled by the knob position.
+
+When GT TO TRIG is not enabled, then a rising edge at GATE will trigger the internal envelope in the same way, but when the envelope completes, whatever voltage is at GATE is fed to the slew limiter.  This can be used several ways:
+  1. If the input is a full 10V, the output will sustain for as long as the GATE input remains high, with a minimum time set by MIN GATE.
+  2. If the input is less than 10V, there is an ADSR-like effect, where the output, subject to the slew, will go to 10V for the duration of MIN GATE, then fall to whatever the input is.
+  3. If MIN GATE is zero, the input is simply fed to the slew as-is.
+
+The slew limiter is controlled by the RISE and FALL controls, which behave exactly like they do on the <a href="#slew">SLEW</a> module.  The time knobs control how much the rise and fall of the internal envelope are slewed, while the shape knob control the shapes of each segment.  The time knobs have unipolar (0-10V) CVs.
+
+If the TIMES 10X option is enabled, the values of the rise and fall times, and MIN GATE, subject to their CVs, are multiplied by 10.  Thus fall and MIN GATE can go to a maximum of 10 seconds, and rise to 3 seconds.
+
+The VELO input provides control of the level of the final output.  It can be used to implement velocity from a MIDI controller, or to add accents, or otherwise manipulate the output.  It expects a 0-10V input voltage: when this 0, the output gain is -6dB (it is cut in half); when VELO is 10V the output is unchanged (a 0dB gain). Intermediate values will set the output gain linearly to values between -6dB and 0dB.
+
+The velocity-zero gain of -6dB can be set to other values on the context menu, to make the velocity response stronger (-12dB, -24dB) or weaker (-3dB).  It can also be set to -60dB, such that a 0V velocity input will completely cut the output.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the GATE input.
+
 #### <a name="follow"></a> FOLLOW
 
 An envelope follower (a utility that converts its input to a CV proportional to the level of the input's amplitude).  The DAMP knob and CV (0-10V) affect how quickly the output responds to changes in the input -- higher DAMP values effectively slow down and smooth out the response.

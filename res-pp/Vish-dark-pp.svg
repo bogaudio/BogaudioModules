@@ -1,0 +1,359 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="75.0" height="380.0" viewBox="0 0 75.0 380.0">
+  <style>text {
+  fill: #333;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+text.title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+}
+text.brand {
+  font-family: 'Audiowide', sans-serif;
+  font-weight: bold;
+}
+
+polyline {
+  stroke: #333;
+}
+polyline.guide {
+  stroke: #0f0;
+}
+path {
+  stroke: #333;
+}
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background, rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
+}
+polyline.input-label, polyline.output-label {
+}
+path.input-label, path.output-label {
+}
+
+circle.port-rim {
+  stroke: #f0f0f0;
+}
+circle.port-barrel {
+  stroke: #222;
+  fill: #222;
+}
+circle.knob-center {
+   fill: #eee;
+}
+circle.knob-rim {
+   fill: #333;
+}
+circle.knob-tick {
+  fill: #fff;
+}
+polyline.knob-tick {
+  stroke: #fff;
+}
+
+
+text {
+  fill: #eee;
+}
+
+polyline {
+  stroke: #ccc;
+}
+path {
+  stroke: #ccc;
+}
+
+rect.module-background, .background-fill {
+  fill: #111;
+}
+polyline.module-border-inner {
+  stroke: #191919;
+}
+polyline.module-border-middle {
+  stroke: #111;
+}
+polyline.module-border-outer {
+  stroke: #000;
+}
+
+rect.input-background, rect.input-background-filler {
+  fill: #aaa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #666;
+}
+text.input-label {
+  fill: #222;
+}
+polyline.input-label, path.input-label {
+  stroke: #222;
+}
+text.output-label {
+  fill: #ddd;
+}
+polyline.output-label, path.output-label {
+  stroke: #ddd;
+}
+
+circle.port-rim {
+  stroke: #c0c0c0;
+}
+circle.port-barrel {
+  stroke: #222;
+  fill: #222;
+}
+circle.knob-center {
+   fill: #888;
+}
+circle.knob-rim {
+   fill: #444;
+}
+circle.knob-tick {
+  fill: #fff;
+}
+polyline.knob-tick {
+  stroke: #fff;
+}
+</style>
+
+  <defs>
+    <symbol id="dial-rise-time-vish" viewBox="0 0 45px 45px">
+      <g transform="translate(22.5 22.5)">
+        <text font-size="5pt" text-anchor="middle" transform="rotate(-240) translate(20.0 0) rotate(240.0) translate(0 3)">0MS</text>
+        <text font-size="5pt" text-anchor="middle" transform="rotate(-185.22774424948338) translate(19 0) rotate(185.22774424948338) translate(0 3)">10</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-153.39745962155612) translate(15 0)"/>
+        <text font-size="5pt" text-anchor="middle" transform="rotate(-117.52551286084109) translate(19 0) rotate(117.52551286084109) translate(0 3)">50</text>
+        <text font-size="5pt" text-anchor="middle" transform="rotate(-66.79491924311225) translate(19 0) rotate(66.79491924311225) translate(0 3)">100</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-27.867965644035735) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(4.94897427831782) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(33.861278752583075) translate(15 0)"/>
+        <text font-size="5pt" text-anchor="middle" transform="rotate(60) translate(20.0 0) rotate(-60.0) translate(0 3)">300</text>
+      </g>
+    </symbol>
+
+    <symbol id="dial-fall-time-vish" viewBox="0 0 45px 45px">
+      <g transform="translate(22.5 22.5)">
+        <text font-size="5pt" text-anchor="middle" transform="rotate(-240) translate(19.0 0) rotate(240.0) translate(0 3)">0S</text>
+        <polyline points="0,0 2,0" stroke-width="0.7" transform="rotate(-210.0) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-172.91796067500633) translate(15 0)"/>
+        <text font-size="5pt" text-anchor="middle" transform="rotate(-145.1316701949486) translate(20 0) rotate(145.1316701949486) translate(0 3)">0.1</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-105.83592135001263) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-75.68323274845017) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-50.26334038989722) translate(15 0)"/>
+        <text font-size="5pt" text-anchor="middle" transform="rotate(-27.867965644035735) translate(20 0) rotate(27.867965644035735) translate(0 3)">0.5</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-7.620999227554989) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(10.99800796022268) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(28.328157299974748) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(44.60498941515414) translate(15 0)"/>
+        <text font-size="5pt" text-anchor="middle" transform="rotate(60) translate(19.0 0) rotate(-60.0) translate(0 3)">1</text>
+      </g>
+    </symbol>
+
+    <symbol id="dial-mingate-vish" viewBox="0 0 75.0px 75.0px">
+      <g transform="translate(37.5 37.5)">
+        <text font-size="6pt" text-anchor="middle" transform="rotate(-240) translate(21 0) rotate(240.0) translate(0 3)">0S</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-210.0) translate(17 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-172.91796067500633) translate(17 0)"/>
+        <text font-size="6pt" text-anchor="middle" transform="rotate(-145.1316701949486) translate(23 0) rotate(145.1316701949486) translate(0 3)">0.1</text>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-105.83592135001263) translate(17 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-75.68323274845017) translate(17 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-50.26334038989722) translate(17 0)"/>
+        <text font-size="6pt" text-anchor="middle" transform="rotate(-27.867965644035735) translate(23 0) rotate(27.867965644035735) translate(0 3)">0.5</text>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-7.620999227554989) translate(17 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(10.99800796022268) translate(17 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(28.328157299974748) translate(17 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(44.60498941515414) translate(17 0)"/>
+        <text font-size="6pt" text-anchor="middle" transform="rotate(60) translate(21 0) rotate(-60.0) translate(0 3)">1</text>
+      </g>
+    </symbol>
+  </defs>
+
+  
+      
+      <rect class="module-background background-fill" width="75.0" height="380.0"/>
+    
+      
+      <polyline class="module-border-inner" points="1,1 74.0,1 74.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 74.5,0.5 74.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 75.0,0 75.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    
+      <text class="title" font-size="9pt" letter-spacing="3px" text-anchor="end" transform="translate(72.0 17)">VISH</text>
+      <g transform="translate(25 374)">
+        <text class="brand" font-size="6.5pt" letter-spacing="2px">BGA</text>
+        <rect class="background-fill" width="2" height="2" fill="#ddd" transform="translate(11.5 -4)"/>
+      </g>
+    
+
+  <g transform="translate(0 35)">
+    
+    <text font-size="8pt" letter-spacing="2.0px" text-anchor="middle" transform="translate(37.5 0)">RISE</text>
+    <g transform="translate(12.5 12.0)"><svg id="RISE_PARAM">
+      <g transform="translate(13 13)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <use xlink:href="#dial-rise-time-vish" transform="translate(3 2.0)" href="#dial-rise-time-vish"/>
+    <g transform="translate(52 17.0)"><svg id="RISE_SHAPE_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(40 5.0)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-52.5) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-15) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(22.5) translate(10 0)"/>
+
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-127.5) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-165) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-202.5) translate(10 0)"/>
+
+        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#ccc" fill="none" transform="rotate(60) translate(13 0) rotate(-60) translate(2 0) rotate(-45) translate(0 0)"/>
+        <polyline points="-3.5,0 3.5,0" stroke-width="1" fill="none" transform="rotate(-90) translate(13 0) rotate(90) rotate(-45) translate(0 0)"/>
+        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#ccc" fill="none" transform="rotate(-240) translate(13 0) rotate(240) translate(-2 0) rotate(135) translate(0 0)"/>
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(0 101)">
+    
+    <text font-size="8pt" letter-spacing="2.0px" text-anchor="middle" transform="translate(37.5 0)">FALL</text>
+    <g transform="translate(12.5 10.0)"><svg id="FALL_PARAM">
+      <g transform="translate(13 13)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <use xlink:href="#dial-fall-time-vish" transform="translate(3 0.0)" href="#dial-fall-time-vish"/>
+    <g transform="translate(52 15.0)"><svg id="FALL_SHAPE_PARAM">
+      <g transform="translate(8 8)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(40 3.0)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-52.5) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-15) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(22.5) translate(10 0)"/>
+
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-127.5) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-165) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-202.5) translate(10 0)"/>
+
+        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#ccc" fill="none" transform="rotate(60) translate(13 0) rotate(-60) translate(2 0) rotate(-135) translate(0 0)"/>
+        <polyline points="-3.5,0 3.5,0" stroke-width="1" fill="none" transform="rotate(-90) translate(13 0) rotate(90) rotate(45) translate(0 0)"/>
+        <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#ccc" fill="none" transform="rotate(-240) translate(13 0) rotate(240) translate(-2 0) rotate(45) translate(0 0)"/>
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(0 164)">
+    <text font-size="8pt" letter-spacing="1.5px" text-anchor="middle" transform="translate(37.5 0)">MIN GATE</text>
+    <g transform="translate(15 3.0)"><svg id="MINIMUM_GATE_PARAM">
+      <g transform="translate(22.5 22.5)">
+        <polyline points="-5,0 5,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-5 0,5" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <use xlink:href="#dial-mingate-vish" transform="translate(0 -12.0)" href="#dial-mingate-vish"/>
+  </g>
+
+  <g transform="translate(-6 221)">
+    <text font-size="5pt" letter-spacing="1px" text-anchor="middle" transform="translate(37.5 6)">GT TO TRIG</text>
+    <g transform="translate(63 -1)"><svg id="GATE_TO_TRIGGER_PARAM">
+      <g transform="translate(4.5 4.5)">
+        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+
+  <g transform="translate(-6 235)">
+    <text font-size="5pt" letter-spacing="1px" text-anchor="middle" transform="translate(37.5 6)">TIMES 10X</text>
+    <g transform="translate(61 -1)"><svg id="TIMES_10X_PARAM">
+      <g transform="translate(4.5 4.5)">
+        <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+
+  <g transform="translate(0 248)">
+    <rect class="input-background" width="64" height="112" rx="5" transform="translate(5.5 0)"/>
+    <g transform="translate(10.5 3)"><svg id="MINIMUM_GATE_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 35)">MIN</text>
+    <g transform="translate(40.5 3)"><svg id="RISE_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(52.5 35)">RISE</text>
+    <g transform="translate(10.5 40)"><svg id="VELOCITY_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 72)">VELO</text>
+    <g transform="translate(40.5 40)"><svg id="FALL_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(52.5 72)">FALL</text>
+    <g transform="translate(10.5 77)"><svg id="GATE_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    <text class="input-label" font-size="5pt" letter-spacing="1px" text-anchor="middle" transform="translate(22.5 109)">GATE</text>
+    <g class="io-group" transform="translate(30 72)">
+      <rect class="output-background" width="32" height="38" rx="5" transform="translate(7.5 2)"/>
+      <rect class="output-background-filler" width="32" height="10" transform="translate(7.5 2)"/>
+      <rect class="output-background-filler" width="10" height="10" transform="translate(7.5 30)"/>
+      <g transform="translate(10.5 5)"><svg id="OUT_OUTPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#f00" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 37)">OUT</text>
+    </g>
+  </g>
+</svg>
