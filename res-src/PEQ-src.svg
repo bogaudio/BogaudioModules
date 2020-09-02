@@ -12,7 +12,6 @@
 
         <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(19.8) translate(17 0)"/>
         <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-27.9) translate(17 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-90) translate(17 0)"/>
         <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-133.9) translate(17 0)"/>
         <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-192.6) translate(17 0)"/>
       </g>
