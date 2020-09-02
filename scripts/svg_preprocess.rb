@@ -192,11 +192,12 @@ def debug()
   puts
 end
 
-def process_def(fn, doc, n)
+def process_def(fn, doc, n, local_defs)
   id = n.attribute('href').to_s
   if id
     id.sub!(/^#/, '')
-    d = $defs[id]
+    d = local_defs[id]
+    d = $defs[id] unless d
     if d
       nn = d.dup
       nn.node_name = 'svg'
@@ -223,7 +224,7 @@ def process_def(fn, doc, n)
       end
 
       nn.css('def').each do |dn|
-        process_def(fn, doc, dn)
+        process_def(fn, doc, dn, local_defs)
       end
     else
       puts "WARN: no def defined for def ID '#{id}' in #{fn}"
@@ -428,6 +429,16 @@ def process(name)
     doc = parse_xml(doc.to_xml)
   end
 
+  local_defs = {}
+  doc.css('defs symbol').each do |n|
+    id = n['id'].to_s
+    unless id && !id.empty?
+      STDERR.puts "Symbol in #{fn} with missing ID: #{n.to_s}"
+      exit 1
+    end
+    local_defs[id] = n
+  end
+
   doc.css('defs import').each do |n|
     id = n.attribute('id').to_s
     if id
@@ -445,7 +456,7 @@ def process(name)
   end
 
   doc.css('def').each do |n|
-    process_def(fn, doc, n)
+    process_def(fn, doc, n, local_defs)
   end
 
   doc.xpath('//comment()').each(&:remove)
