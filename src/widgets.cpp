@@ -299,7 +299,7 @@ StatefulButton::StatefulButton(const char* offSvgPath, const char* onSvgPath) {
 
 void StatefulButton::reset() {
 	if (paramQuantity) {
-		paramQuantity->setValue(paramQuantity->getMinValue());
+		paramQuantity->reset();
 	}
 }
 
