@@ -128,6 +128,9 @@ SpectrumAnalyzer::Size AnalyzerCore::size() {
 
 	if (APP->engine->getSampleRate() < 96000.0f) {
 		switch (_quality) {
+			case QUALITY_ULTRA_ULTRA: {
+				return SpectrumAnalyzer::SIZE_16384;
+			}
 			case QUALITY_ULTRA: {
 				return SpectrumAnalyzer::SIZE_8192;
 			}
@@ -141,6 +144,9 @@ SpectrumAnalyzer::Size AnalyzerCore::size() {
 	}
 	else {
 		switch (_quality) {
+			case QUALITY_ULTRA_ULTRA: {
+				return SpectrumAnalyzer::SIZE_32768;
+			}
 			case QUALITY_ULTRA: {
 				return SpectrumAnalyzer::SIZE_16384;
 			}

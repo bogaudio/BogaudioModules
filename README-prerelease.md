@@ -885,7 +885,7 @@ _Polyphony:_ Monophonic, with two exceptions:
 
 #### <a name="analyzerxl"></a> ANALYZER-XL
 
-An eight-channel, 42HP version of ANALYZER, with edge-to-edge-screen design.  Options corresponding to ANALYZER's panel controls are available on the context (right-click) menu.
+An eight-channel, 42HP version of ANALYZER, with edge-to-edge-screen design.  Options corresponding to ANALYZER's panel controls are available on the context (right-click) menu.  An extra "Quality" setting, "Ultra+" is available; this uses an FFT size of 16384 (or 32768 if Rack's sample rate is 96khz or higher).
 
 _Polyphony:_ Monophonic, but if an input is polyphonic, its channels are summed, and the spectra of the summed signal is displayed.
 

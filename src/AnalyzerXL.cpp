@@ -10,6 +10,7 @@
 #define QUALITY_GOOD_KEY "good"
 #define QUALITY_HIGH_KEY "high"
 #define QUALITY_ULTRA_KEY "ultra"
+#define QUALITY_ULTRA_ULTRA_KEY "ultra_ultra"
 #define WINDOW_KEY "window"
 #define WINDOW_NONE_KEY "none"
 #define WINDOW_HAMMING_KEY "hamming"
@@ -38,6 +39,10 @@ json_t* AnalyzerXL::toJson(json_t* root) {
 		}
 		case AnalyzerCore::QUALITY_ULTRA: {
 			json_object_set_new(root, QUALITY_KEY, json_string(QUALITY_ULTRA_KEY));
+			break;
+		}
+		case AnalyzerCore::QUALITY_ULTRA_ULTRA: {
+			json_object_set_new(root, QUALITY_KEY, json_string(QUALITY_ULTRA_ULTRA_KEY));
 			break;
 		}
 		default:;
@@ -86,6 +91,9 @@ void AnalyzerXL::fromJson(json_t* root) {
 		}
 		else if (strcmp(s, QUALITY_ULTRA_KEY) == 0) {
 			_quality = AnalyzerCore::QUALITY_ULTRA;
+		}
+		else if (strcmp(s, QUALITY_ULTRA_ULTRA_KEY) == 0) {
+			_quality = AnalyzerCore::QUALITY_ULTRA_ULTRA;
 		}
 	}
 
@@ -198,6 +206,7 @@ struct AnalyzerXLWidget : BGModuleWidget {
 			mi->addItem(OptionMenuItem("Good", [a]() { return a->_quality == AnalyzerCore::QUALITY_GOOD; }, [a]() { a->_quality = AnalyzerCore::QUALITY_GOOD; }));
 			mi->addItem(OptionMenuItem("High", [a]() { return a->_quality == AnalyzerCore::QUALITY_HIGH; }, [a]() { a->_quality = AnalyzerCore::QUALITY_HIGH; }));
 			mi->addItem(OptionMenuItem("Ultra", [a]() { return a->_quality == AnalyzerCore::QUALITY_ULTRA; }, [a]() { a->_quality = AnalyzerCore::QUALITY_ULTRA; }));
+			mi->addItem(OptionMenuItem("Ultra+", [a]() { return a->_quality == AnalyzerCore::QUALITY_ULTRA_ULTRA; }, [a]() { a->_quality = AnalyzerCore::QUALITY_ULTRA_ULTRA; }));
 			OptionsMenuItem::addToMenu(mi, menu);
 		}
 		{
