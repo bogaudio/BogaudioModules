@@ -334,7 +334,7 @@ struct SineBankOscillator : Oscillator {
 
 struct ChirpOscillator : OscillatorGenerator {
 	static constexpr float minFrequency = 1.0f;
-	static constexpr float minTimeSeconds = 0.025f;
+	static constexpr float minTimeSeconds = 0.01f;
 
 	SineTableOscillator _oscillator;
 	float _f1 = -1.0f;
@@ -369,16 +369,15 @@ struct ChirpOscillator : OscillatorGenerator {
 
 struct PureChirpOscillator : OscillatorGenerator {
 	static constexpr float minFrequency = 1.0f;
-	static constexpr float minTimeSeconds = 0.025f;
+	static constexpr float minTimeSeconds = 0.01f;
 
-	TablePhasor _phasor;
 	float _f1 = -1.0f;
 	float _f2 = -1.0f;
-	float _Time = -1.0f;
+	double _Time = -1.0;
 	bool _linear = false;
 
-	float _sampleTime = 0.0f;
-	float _time = 0.0f;
+	double _sampleTime = 0.0f;
+	double _time = 0.0f;
 	bool _complete = false;
 	double _c = 0.0;
 	double _k = 0.0;
@@ -391,14 +390,13 @@ struct PureChirpOscillator : OscillatorGenerator {
 		float time = 1.0f,
 		bool linear = true
 	)
-	: _phasor(StaticSineTable::table(), sampleRate, frequency1)
 	{
 		setParams(frequency1, frequency2, time, linear);
 	}
 
 	inline bool isCycleComplete() { return _complete; }
 	inline bool isCycleNearlyComplete(float seconds) { return _time > _Time - seconds; }
-	void setParams(float frequency1, float frequency2, float time, bool linear);
+	void setParams(float frequency1, float frequency2, double time, bool linear);
 	void _sampleRateChanged() override;
 	void update();
 	float _next() override;

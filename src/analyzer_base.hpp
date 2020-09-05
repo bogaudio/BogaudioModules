@@ -71,7 +71,8 @@ struct AnalyzerCore {
 		QUALITY_ULTRA,
 		QUALITY_HIGH,
 		QUALITY_GOOD,
-		QUALITY_FIXED_16K
+		QUALITY_FIXED_16K,
+		QUALITY_FIXED_32K
 	};
 
 	enum Window {

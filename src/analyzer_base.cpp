@@ -120,6 +120,9 @@ SpectrumAnalyzer::Size AnalyzerCore::size() {
 		case QUALITY_FIXED_16K: {
 			return SpectrumAnalyzer::SIZE_16384;
 		}
+		case QUALITY_FIXED_32K: {
+			return SpectrumAnalyzer::SIZE_32768;
+		}
 		default:;
 	}
 

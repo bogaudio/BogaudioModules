@@ -895,7 +895,7 @@ RANALYZER is a frequency response analyzer: it passes a test signal to another m
 
 **This module is primarily useful to plugin developers**, especially when developing filters.  Of course anyone may use it, to investigate the response of some module, or to tune a filter bank, or what have you.
 
-By default, will produce a one-shot test signal, emitted at SEND, upon receipt of a trigger (manual or CV) at the TRIG inputs.  The duration of the test signal is always 16384 samples; thus the duration in time will depend on Rack's current sample rate.  The same number of samples is collected from RETURN, if it is patched.  Both signals are converted to the frequency domain and displayed (test in green, response in magenta).
+By default, will produce a one-shot test signal, emitted at SEND, upon receipt of a trigger (manual or CV) at the TRIG inputs.  The duration of the test signal is always 16384 samples (32768 if Rack's sample rate is 192K or higher); thus the duration in time will depend on Rack's current sample rate.  The same number of samples is collected from RETURN, if it is patched.  Both signals are converted to the frequency domain and displayed (test in green, response in magenta).
 
 The test signal is a swept sine wave (or "chirp", see <a href="#chirp">CHIRP</a>), with an exponential (if the EXP toggle is on) or linear sweep.  The start and end frequencies for sine sweep are set by the FREQ1 and FREQ2 knobs, each with a range in hertz from 1 to the Nyquist rate (half the sampling rate); if FREQ1 is less than FREQ2 the sweep is upwards in frequency, downwards otherwise.  
 

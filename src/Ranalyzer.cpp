@@ -22,6 +22,12 @@ void Ranalyzer::sampleRateChange() {
 	_sampleTime = 1.0f / _sampleRate;
 	_maxFrequency = roundf(maxFrequencyNyquistRatio * _sampleRate);
 	_chirp.setSampleRate(_sampleRate);
+	if (_sampleRate >= 192000.0f) {
+		_core.setParams(1, AnalyzerCore::QUALITY_FIXED_32K, AnalyzerCore::WINDOW_NONE);
+	}
+	else {
+		_core.setParams(1, AnalyzerCore::QUALITY_FIXED_16K, AnalyzerCore::WINDOW_NONE);
+	}
 }
 
 json_t* Ranalyzer::toJson(json_t* root) {
@@ -84,7 +90,7 @@ void Ranalyzer::processAll(const ProcessArgs& args) {
 			_run = true;
 			_bufferCount = _currentReturnSampleDelay = _returnSampleDelay;
 			_chirp.reset();
-			_chirp.setParams(_frequency1, _frequency2, (float)_core.size() / _sampleRate, !_exponential);
+			_chirp.setParams(_frequency1, _frequency2, (double)_core.size() / (double)_sampleRate, !_exponential);
 			_triggerPulseGen.trigger(0.001f);
 		}
 	}

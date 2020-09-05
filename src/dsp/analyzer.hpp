@@ -117,6 +117,14 @@ struct FFT16384 {
 	void do_fft(float* out, float* in);
 };
 
+struct FFT32768 {
+	void* _fft = NULL;
+	FFT32768();
+	~FFT32768();
+
+	void do_fft(float* out, float* in);
+};
+
 struct SpectrumAnalyzer : OverlappingBuffer<float> {
 	enum Size {
 		SIZE_128 = 128,
@@ -126,9 +134,10 @@ struct SpectrumAnalyzer : OverlappingBuffer<float> {
 		SIZE_2048 = 2048,
 		SIZE_4096 = 4096,
 		SIZE_8192 = 8192,
-		SIZE_16384 = 16384
+		SIZE_16384 = 16384,
+		SIZE_32768 = 32768
 	};
-	static constexpr Size maxSize = SIZE_16384;
+	static constexpr Size maxSize = SIZE_32768;
 
 	enum Overlap {
 		OVERLAP_1 = 1,
@@ -150,6 +159,7 @@ struct SpectrumAnalyzer : OverlappingBuffer<float> {
 	FFT4096* _fft4096;
 	FFT8192* _fft8192;
 	FFT16384* _fft16384;
+	FFT32768* _fft32768;
 	Window* _window;
 	float* _windowOut;
 	float* _fftOut;
@@ -168,6 +178,7 @@ struct SpectrumAnalyzer : OverlappingBuffer<float> {
 	, _fft4096(NULL)
 	, _fft8192(NULL)
 	, _fft16384(NULL)
+	, _fft32768(NULL)
 	, _window(NULL)
 	, _windowOut(NULL)
 	, _fftOut(new float[_size])
@@ -190,6 +201,10 @@ struct SpectrumAnalyzer : OverlappingBuffer<float> {
 			}
 			case SIZE_16384: {
 				_fft16384 = new FFT16384();
+				break;
+			}
+			case SIZE_32768: {
+				_fft32768 = new FFT32768();
 				break;
 			}
 			default: {
@@ -235,6 +250,9 @@ struct SpectrumAnalyzer : OverlappingBuffer<float> {
 		if (_fft16384) {
 			delete _fft16384;
 		}
+		if (_fft32768) {
+			delete _fft32768;
+		}
 
 		if (_window) {
 			delete _window;
@@ -261,6 +279,9 @@ struct SpectrumAnalyzer : OverlappingBuffer<float> {
 		}
 		else if (_fft16384) {
 			_fft16384->do_fft(_fftOut, input);
+		}
+		else if (_fft32768) {
+			_fft32768->do_fft(_fftOut, input);
 		}
 		else {
 			_fft->do_fft(_fftOut, input);

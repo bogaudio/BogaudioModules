@@ -65,3 +65,18 @@ FFT16384::~FFT16384() {
 void FFT16384::do_fft(float* out, float* in) {
 	((FIXED_FFT16384*)_fft)->do_fft(out, in);
 }
+
+
+typedef ffft::FFTRealFixLen<15> FIXED_FFT32768;
+
+FFT32768::FFT32768() {
+	_fft = new FIXED_FFT32768();
+}
+
+FFT32768::~FFT32768() {
+	delete (FIXED_FFT32768*)_fft;
+}
+
+void FFT32768::do_fft(float* out, float* in) {
+	((FIXED_FFT32768*)_fft)->do_fft(out, in);
+}

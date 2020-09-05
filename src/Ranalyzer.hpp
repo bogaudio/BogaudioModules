@@ -101,7 +101,6 @@ struct Ranalyzer : AnalyzerBase {
 		configParam(DELAY_PARAM, 2.0f, (float)maxResponseDelay, 2.0f, "Return sample delay");
 
 		_skinnable = false;
-		_core.setParams(1, AnalyzerCore::QUALITY_FIXED_16K, AnalyzerCore::WINDOW_NONE);
 	}
 
 	void reset() override;

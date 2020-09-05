@@ -358,7 +358,7 @@ void ChirpOscillator::reset() {
 }
 
 
-void PureChirpOscillator::setParams(float frequency1, float frequency2, float time, bool linear) {
+void PureChirpOscillator::setParams(float frequency1, float frequency2, double time, bool linear) {
 	frequency1 = std::max(minFrequency, std::min(frequency1, 0.99f * 0.5f * _sampleRate));
 	frequency2 = std::max(minFrequency, std::min(frequency2, 0.99f * 0.5f * _sampleRate));
 	assert(time >= minTimeSeconds);
@@ -373,7 +373,7 @@ void PureChirpOscillator::setParams(float frequency1, float frequency2, float ti
 }
 
 void PureChirpOscillator::_sampleRateChanged() {
-	_sampleTime = 1.0f / _sampleRate;
+	_sampleTime = 1.0 / (double)_sampleRate;
 	update();
 }
 
@@ -386,7 +386,7 @@ void PureChirpOscillator::update() {
 
 float PureChirpOscillator::_next() {
 	_complete = false;
-	if (_time > _Time) {
+	if (_Time - _time < _sampleTime) {
 		_time = 0.0f;
 		_complete = true;
 	}
@@ -402,7 +402,7 @@ float PureChirpOscillator::_next() {
 	else {
 		phase = 2.0 * M_PI * (double)_f1 * ((pow(_k, (double)_time) - 1.0) * _invlogk);
 	}
-	return _phasor.nextForPhase(Phasor::radiansToPhase(phase));
+	return sinf(phase);
 }
 
 void PureChirpOscillator::reset() {
