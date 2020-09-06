@@ -138,58 +138,6 @@ polyline.knob-tick {
 }
 </style>
 
-  <defs>
-    <symbol id="dial-rise-time-vish" viewBox="0 0 45px 45px">
-      <g transform="translate(22.5 22.5)">
-        <text font-size="5pt" text-anchor="middle" transform="rotate(-240) translate(20.0 0) rotate(240.0) translate(0 3)">0MS</text>
-        <text font-size="5pt" text-anchor="middle" transform="rotate(-185.22774424948338) translate(19 0) rotate(185.22774424948338) translate(0 3)">10</text>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-153.39745962155612) translate(15 0)"/>
-        <text font-size="5pt" text-anchor="middle" transform="rotate(-117.52551286084109) translate(19 0) rotate(117.52551286084109) translate(0 3)">50</text>
-        <text font-size="5pt" text-anchor="middle" transform="rotate(-66.79491924311225) translate(19 0) rotate(66.79491924311225) translate(0 3)">100</text>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-27.867965644035735) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(4.94897427831782) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(33.861278752583075) translate(15 0)"/>
-        <text font-size="5pt" text-anchor="middle" transform="rotate(60) translate(20.0 0) rotate(-60.0) translate(0 3)">300</text>
-      </g>
-    </symbol>
-
-    <symbol id="dial-fall-time-vish" viewBox="0 0 45px 45px">
-      <g transform="translate(22.5 22.5)">
-        <text font-size="5pt" text-anchor="middle" transform="rotate(-240) translate(19.0 0) rotate(240.0) translate(0 3)">0S</text>
-        <polyline points="0,0 2,0" stroke-width="0.7" transform="rotate(-210.0) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-172.91796067500633) translate(15 0)"/>
-        <text font-size="5pt" text-anchor="middle" transform="rotate(-145.1316701949486) translate(20 0) rotate(145.1316701949486) translate(0 3)">0.1</text>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-105.83592135001263) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-75.68323274845017) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-50.26334038989722) translate(15 0)"/>
-        <text font-size="5pt" text-anchor="middle" transform="rotate(-27.867965644035735) translate(20 0) rotate(27.867965644035735) translate(0 3)">0.5</text>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-7.620999227554989) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(10.99800796022268) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(28.328157299974748) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(44.60498941515414) translate(15 0)"/>
-        <text font-size="5pt" text-anchor="middle" transform="rotate(60) translate(19.0 0) rotate(-60.0) translate(0 3)">1</text>
-      </g>
-    </symbol>
-
-    <symbol id="dial-mingate-vish" viewBox="0 0 75.0px 75.0px">
-      <g transform="translate(37.5 37.5)">
-        <text font-size="6pt" text-anchor="middle" transform="rotate(-240) translate(21 0) rotate(240.0) translate(0 3)">0S</text>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-210.0) translate(17 0)"/>
-        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-172.91796067500633) translate(17 0)"/>
-        <text font-size="6pt" text-anchor="middle" transform="rotate(-145.1316701949486) translate(23 0) rotate(145.1316701949486) translate(0 3)">0.1</text>
-        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-105.83592135001263) translate(17 0)"/>
-        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-75.68323274845017) translate(17 0)"/>
-        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-50.26334038989722) translate(17 0)"/>
-        <text font-size="6pt" text-anchor="middle" transform="rotate(-27.867965644035735) translate(23 0) rotate(27.867965644035735) translate(0 3)">0.5</text>
-        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(-7.620999227554989) translate(17 0)"/>
-        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(10.99800796022268) translate(17 0)"/>
-        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(28.328157299974748) translate(17 0)"/>
-        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(44.60498941515414) translate(17 0)"/>
-        <text font-size="6pt" text-anchor="middle" transform="rotate(60) translate(21 0) rotate(-60.0) translate(0 3)">1</text>
-      </g>
-    </symbol>
-  </defs>
-
   
       
       <rect class="module-background background-fill" width="75.0" height="380.0"/>
@@ -216,7 +164,21 @@ polyline.knob-tick {
         <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-rise-time-vish" transform="translate(3 2.0)" href="#dial-rise-time-vish"/>
+    <g transform="translate(3 2.0)">
+      <g transform="translate(22.5 22.5)">
+        <text font-size="5pt" text-anchor="middle" transform="rotate(-240) translate(20.0 0) rotate(240.0) translate(0 3)">0MS</text>
+        <text font-size="5pt" text-anchor="middle" transform="rotate(-185.22774424948338) translate(19 0) rotate(185.22774424948338) translate(0 3)">10</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-153.39745962155612) translate(15 0)"/>
+        <text font-size="5pt" text-anchor="middle" transform="rotate(-117.52551286084109) translate(19 0) rotate(117.52551286084109) translate(0 3)">50</text>
+        <text font-size="5pt" text-anchor="middle" transform="rotate(-66.79491924311225) translate(19 0) rotate(66.79491924311225) translate(0 3)">100</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-27.867965644035735) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(4.94897427831782) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(33.861278752583075) translate(15 0)"/>
+        <text font-size="5pt" text-anchor="middle" transform="rotate(60) translate(20.0 0) rotate(-60.0) translate(0 3)">300</text>
+        <polyline points="-3,0 3,0" stroke-width="1.0"/>
+        <polyline points="0,-3 0,3" stroke-width="1.0"/>
+      </g>
+    </g>
     <g transform="translate(52 17.0)"><svg id="RISE_SHAPE_PARAM">
       <g transform="translate(8 8)">
         <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
@@ -237,6 +199,9 @@ polyline.knob-tick {
         <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#b3b3b3" fill="none" transform="rotate(60) translate(13 0) rotate(-60) translate(2 0) rotate(-45) translate(0 0)"/>
         <polyline points="-3.5,0 3.5,0" stroke-width="1" fill="none" transform="rotate(-90) translate(13 0) rotate(90) rotate(-45) translate(0 0)"/>
         <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#b3b3b3" fill="none" transform="rotate(-240) translate(13 0) rotate(240) translate(-2 0) rotate(135) translate(0 0)"/>
+
+        <polyline points="-3,0 3,0" stroke-width="1.0"/>
+        <polyline points="0,-3 0,3" stroke-width="1.0"/>
       </g>
     </g>
   </g>
@@ -251,7 +216,25 @@ polyline.knob-tick {
         <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-fall-time-vish" transform="translate(3 0.0)" href="#dial-fall-time-vish"/>
+    <g transform="translate(3 0.0)">
+      <g transform="translate(22.5 22.5)">
+        <text font-size="5pt" text-anchor="middle" transform="rotate(-240) translate(19.0 0) rotate(240.0) translate(0 3)">0S</text>
+        <polyline points="0,0 2,0" stroke-width="0.7" transform="rotate(-210.0) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-172.91796067500633) translate(15 0)"/>
+        <text font-size="5pt" text-anchor="middle" transform="rotate(-145.1316701949486) translate(20 0) rotate(145.1316701949486) translate(0 3)">0.1</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-105.83592135001263) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-75.68323274845017) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-50.26334038989722) translate(15 0)"/>
+        <text font-size="5pt" text-anchor="middle" transform="rotate(-27.867965644035735) translate(20 0) rotate(27.867965644035735) translate(0 3)">0.5</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-7.620999227554989) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(10.99800796022268) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(28.328157299974748) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(44.60498941515414) translate(15 0)"/>
+        <text font-size="5pt" text-anchor="middle" transform="rotate(60) translate(19.0 0) rotate(-60.0) translate(0 3)">1</text>
+        <polyline points="-3,0 3,0" stroke-width="1.0"/>
+        <polyline points="0,-3 0,3" stroke-width="1.0"/>
+      </g>
+    </g>
     <g transform="translate(52 15.0)"><svg id="FALL_SHAPE_PARAM">
       <g transform="translate(8 8)">
         <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
@@ -272,6 +255,9 @@ polyline.knob-tick {
         <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#b3b3b3" fill="none" transform="rotate(60) translate(13 0) rotate(-60) translate(2 0) rotate(-135) translate(0 0)"/>
         <polyline points="-3.5,0 3.5,0" stroke-width="1" fill="none" transform="rotate(-90) translate(13 0) rotate(90) rotate(45) translate(0 0)"/>
         <path d="M -3.5 0 Q 0 3.5, 3.5 0" stroke-width="1" stroke="#b3b3b3" fill="none" transform="rotate(-240) translate(13 0) rotate(240) translate(-2 0) rotate(45) translate(0 0)"/>
+
+        <polyline points="-3,0 3,0" stroke-width="1.0"/>
+        <polyline points="0,-3 0,3" stroke-width="1.0"/>
       </g>
     </g>
   </g>
@@ -285,7 +271,25 @@ polyline.knob-tick {
         <circle cx="0" cy="0" r="14" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-mingate-vish" transform="translate(0 -12.0)" href="#dial-mingate-vish"/>
+    <g transform="translate(12.5 0.5)">
+      <g transform="translate(25 25)">
+        <text font-size="6pt" text-anchor="middle" transform="rotate(-240) translate(21 0) rotate(240.0) translate(0 3)">0S</text>
+        <polyline points="0,0 1.5,0" stroke-width="0.7" transform="rotate(-210.0) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-172.91796067500633) translate(17 0)"/>
+        <text font-size="6pt" text-anchor="middle" transform="rotate(-145.1316701949486) translate(23 0) rotate(145.1316701949486) translate(0 3)">0.1</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-105.83592135001263) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-75.68323274845017) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-50.26334038989722) translate(17 0)"/>
+        <text font-size="6pt" text-anchor="middle" transform="rotate(-27.867965644035735) translate(23 0) rotate(27.867965644035735) translate(0 3)">0.5</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-7.620999227554989) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(10.99800796022268) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(28.328157299974748) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(44.60498941515414) translate(17 0)"/>
+        <text font-size="6pt" text-anchor="middle" transform="rotate(60) translate(21 0) rotate(-60.0) translate(0 3)">1</text>
+        <polyline points="-3,0 3,0" stroke-width="1.0"/>
+        <polyline points="0,-3 0,3" stroke-width="1.0"/>
+      </g>
+    </g>
   </g>
 
   <g transform="translate(-6 221)">

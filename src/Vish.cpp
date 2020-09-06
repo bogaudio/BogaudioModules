@@ -1,8 +1,6 @@
 
 #include "Vish.hpp"
 
-#define VELOCITY_MINIMUM_DECIBELS "velocity_minimum_decibels"
-
 void Vish::Engine::reset() {
 	trigger.reset();
 	gatePulseGen.process(10.0);
@@ -26,18 +24,6 @@ void Vish::sampleRateChange() {
 	}
 }
 
-json_t* Vish::toJson(json_t* root) {
-	json_object_set_new(root, VELOCITY_MINIMUM_DECIBELS, json_real(_minVelocityDb));
-	return root;
-}
-
-void Vish::fromJson(json_t* root) {
-	json_t* mdb = json_object_get(root, VELOCITY_MINIMUM_DECIBELS);
-	if (mdb) {
-		_minVelocityDb = json_real_value(mdb);
-	}
-}
-
 bool Vish::active() {
 	return outputs[OUT_OUTPUT].isConnected();
 }
@@ -55,11 +41,6 @@ void Vish::addChannel(int c) {
 void Vish::removeChannel(int c) {
 	delete _engines[c];
 	_engines[c] = NULL;
-}
-
-void Vish::modulate() {
-	_gateToTrigger = params[GATE_TO_TRIGGER_PARAM].getValue() > 0.5f;
-	_timeScale = params[TIMES_10X_PARAM].getValue() > 0.5f ? 10.0f : 1.0f;
 }
 
 void Vish::modulateChannel(int c) {
@@ -121,7 +102,7 @@ void Vish::processChannel(const ProcessArgs& args, int c) {
 	outputs[OUT_OUTPUT].setVoltage(e.velocityAmp.next(e.slew.next(gate)), c);
 }
 
-struct VishWidget : BGModuleWidget {
+struct VishWidget : LPGEnvBaseWidget {
 	static constexpr int hp = 5;
 
 	VishWidget(Vish* module) {
@@ -163,18 +144,6 @@ struct VishWidget : BGModuleWidget {
 		addInput(createInput<Port24>(gateInputPosition, module, Vish::GATE_INPUT));
 
 		addOutput(createOutput<Port24>(outOutputPosition, module, Vish::OUT_OUTPUT));
-	}
-
-	void contextMenu(Menu* menu) override {
-		auto m = dynamic_cast<Vish*>(module);
-		assert(m);
-		OptionsMenuItem* mi = new OptionsMenuItem("Minimum velocity output gain");
-		mi->addItem(OptionMenuItem("-3db", [m]() { return m->_minVelocityDb == -3.0f; }, [m]() { m->_minVelocityDb = -3.0f; }));
-		mi->addItem(OptionMenuItem("-6db", [m]() { return m->_minVelocityDb == -6.0f; }, [m]() { m->_minVelocityDb = -6.0f; }));
-		mi->addItem(OptionMenuItem("-12db", [m]() { return m->_minVelocityDb == -12.0f; }, [m]() { m->_minVelocityDb = -12.0f; }));
-		mi->addItem(OptionMenuItem("-24db", [m]() { return m->_minVelocityDb == -24.0f; }, [m]() { m->_minVelocityDb = -24.0f; }));
-		mi->addItem(OptionMenuItem("-60db", [m]() { return m->_minVelocityDb == -60.0f; }, [m]() { m->_minVelocityDb = -60.0f; }));
-		OptionsMenuItem::addToMenu(mi, menu);
 	}
 };
 

@@ -44,6 +44,7 @@
 #include "Matrix44.hpp"
 #include "Matrix81.hpp"
 #include "Matrix88.hpp"
+#include "MegaGate.hpp"
 #include "Mix1.hpp"
 #include "Mix2.hpp"
 #include "Mix4.hpp"
@@ -134,6 +135,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelFFB);
 	p->addModel(modelEQ);
 	p->addModel(modelEQS);
+	p->addModel(modelMegaGate);
 	p->addModel(modelPEQ);
 	p->addModel(modelPEQ6);
 	p->addModel(modelPEQ6XF);

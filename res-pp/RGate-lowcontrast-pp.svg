@@ -17,6 +17,9 @@ text.brand {
 polyline {
   stroke: #333;
 }
+polyline.guide {
+  stroke: #0f0;
+}
 path {
   stroke: #333;
 }
@@ -220,7 +223,7 @@ polyline.knob-tick {
     <use xlink:href="#dial-clock-rgate" transform="translate(0 -9.5)" href="#dial-clock-rgate"/>
   </g>
 
-  <g transform="translate(0 248)">
+  <g class="io-group" transform="translate(0 248)">
     <rect class="input-background" width="64" height="112" rx="5" transform="translate(5.5 0)"/>
     <g transform="translate(10.5 3)"><svg id="LENGTH_INPUT">
       <g transform="translate(12 12)">
@@ -257,7 +260,7 @@ polyline.knob-tick {
       </g>
     </svg></g>
     <text class="input-label" font-size="5pt" letter-spacing="1px" text-anchor="middle" transform="translate(22.5 109)">CLOCK</text>
-    <g class="io-group" transform="translate(30 72)">
+    <g transform="translate(30 72)">
       <rect class="output-background" width="32" height="38" rx="5" transform="translate(7.5 2)"/>
       <rect class="output-background-filler" width="32" height="10" transform="translate(7.5 2)"/>
       <rect class="output-background-filler" width="10" height="10" transform="translate(7.5 30)"/>

@@ -1,13 +1,12 @@
 #pragma once
 
-#include "slew_common.hpp"
-#include "dsp/signal.hpp"
+#include "lpg_common.hpp"
 
 extern Model* modelVish;
 
 namespace bogaudio {
 
-struct Vish : BGModule {
+struct Vish : LPGEnvBaseModule {
 	enum ParamsIds {
 		RISE_PARAM,
 		RISE_SHAPE_PARAM,
@@ -33,23 +32,6 @@ struct Vish : BGModule {
 		NUM_OUTPUTS
 	};
 
-	template <int SCALE>
-	struct TimeParamQuantity : ScaledSquaringParamQuantity<SCALE> {
-		typedef ScaledSquaringParamQuantity<SCALE> Base;
-
-		float getDisplayValue() override {
-			auto m = dynamic_cast<Vish*>(Base::module);
-			assert(m);
-			return m->_timeScale * Base::getDisplayValue();
-		}
-
-		void setDisplayValue(float displayValue) override {
-			auto m = dynamic_cast<Vish*>(Base::module);
-			assert(m);
-			return Base::setDisplayValue(displayValue / m->_timeScale);
-		}
-	};
-
 	struct Engine {
 		Trigger trigger;
 		rack::dsp::PulseGenerator gatePulseGen;
@@ -66,12 +48,10 @@ struct Vish : BGModule {
 	Engine* _engines[maxChannels] {};
 	float _sampleRate = 0.0f;
 	float _sampleTime = 0.0f;
-	bool _gateToTrigger = false;
-	float _timeScale = 1.0f;
-	const float _maxVelocityDb = 0.0f;
-	float _minVelocityDb = -6.0f;
 
-	Vish() {
+	Vish()
+	: LPGEnvBaseModule(GATE_TO_TRIGGER_PARAM, TIMES_10X_PARAM)
+	{
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam<TimeParamQuantity<300>>(RISE_PARAM, 0.0f, 1.0f, 0.57735f, "Rise time", " ms");
 		configParam(RISE_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "Rise shape");
@@ -84,13 +64,10 @@ struct Vish : BGModule {
 
 	void reset() override;
 	void sampleRateChange() override;
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
 	bool active() override;
 	int channels() override;
 	void addChannel(int c) override;
 	void removeChannel(int c) override;
-	void modulate() override;
 	void modulateChannel(int c) override;
 	void processChannel(const ProcessArgs& args, int c) override;
 };

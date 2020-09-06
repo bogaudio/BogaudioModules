@@ -1,0 +1,299 @@
+<module hp="18">
+  <style/>
+
+  <defs>
+    <symbol id="dial-tilt-megagate" viewBox="0 0 50px 50px">
+      <g transform="translate(25 25)">
+        <text font-size="6pt" text-anchor="middle" var-r="-240" transform="rotate($r) translate(21 0) rotate(-1.0*$r) translate(0 3)">L</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-210) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-180) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-150) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-120) translate(17 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1.5" transform="rotate(-90) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-60) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-30) translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="translate(17 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(30) translate(17 0)"/>
+        <text font-size="6pt" text-anchor="middle" var-r="60" transform="rotate($r) translate(21 0) rotate(-1.0*$r) translate(0 3)">R</text>
+
+        <polyline points="-3,0 3,0" stroke-width="1.0"/>
+        <polyline points="0,-3 0,3" stroke-width="1.0"/>
+      </g>
+    </symbol>
+
+    <symbol id="dial-filtermix-megagate" viewBox="0 0 40px 40px">
+      <g transform="translate(20 20)">
+        <text font-size="5pt" text-anchor="middle" var-r="-240" transform="rotate($r) translate(15 0) rotate(-1.0*$r) translate(-2 3)">LPF</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-210) translate(11.5 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-180) translate(11.5 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-150) translate(11.5 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-120) translate(11.5 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-90) translate(12.5 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-60) translate(11.5 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-30) translate(11.5 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="translate(11.5 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(30) translate(11.5 0)"/>
+        <text font-size="5pt" text-anchor="middle" var-r="60" transform="rotate($r) translate(15 0) rotate(-1.0*$r) translate(2 3)">HPF</text>
+
+        <polyline points="-3,0 3,0" stroke-width="1.0"/>
+        <polyline points="0,-3 0,3" stroke-width="1.0"/>
+      </g>
+    </symbol>
+
+    <symbol id="single-input" viewBox="0 0 30px 28px">
+      <g class="io-group">
+        <rect class="input-background" width="30" height="28" rx="5"/>
+        <def id="$id" xlink:href="#input" transform="translate(3 2)"/>
+      </g>
+    </symbol>
+  </defs>
+
+  <def xlink:href="#module" var-name="MEGAGATE"/>
+
+  <!-- <polyline class="guide" points="0,0 0,380" stroke-width="1" fill="none" transform="translate(120 0)"/> -->
+  <!-- <rect width="$width-140-5" height="$height-48+4" fill="#0ff" transform="translate(140 24)"/> -->
+  <!-- <rect width="120-10" height="$height-48+4" fill="#ff0" transform="translate(5 24)"/> -->
+  <!-- <polyline class="guide" points="0,0 0,380" stroke-width="1" fill="none" transform="translate(110/4+5 0)"/> -->
+  <!-- <polyline class="guide" points="0,0 0,380" stroke-width="1" fill="none" transform="translate(3*110/4+5 0)"/> -->
+  <!-- <polyline class="guide" points="0,0 380,0" stroke-width="1" fill="none" transform="translate(0 $height-22)"/> -->
+
+  <g transform="translate(-10 0)">
+    <g transform="translate(0 31)" var-pad="3.0">
+      <!-- <polyline class="guide" points="0,0 $width,0" stroke-width="1" fill="none" transform="translate(0 $pad+22)"/> -->
+      <text font-size="7pt" letter-spacing="2.0px" text-anchor="middle" transform="translate(130/4+10 0)">RISE</text>
+      <def id="RISE_PARAM" xlink:href="#knob29x" transform="translate(130.0/4.0+10.0-29.0/2.0-0.5 $pad+7.5)"/>
+      <def xlink:href="#dial-rise-time-29" transform="translate(130.0/4.0+10.0-45.0/2.0-0.5 $pad-0.5)"/>
+      <def id="RISE_SHAPE_PARAM" xlink:href="#knob16" transform="translate(130.0/4.0+10.0-16.0/2.0-0.5 $pad+55)"/>
+      <def xlink:href="#dial-shape-rise" transform="translate(130.0/4.0+10.0-45.0/2.0+2.0 $pad+43)"/>
+      <def xlink:href="#single-input" var-id="RISE_INPUT" transform="translate(42.5-15 85)"/>
+    </g>
+
+    <g transform="translate(55 31)" var-pad="3.0">
+      <!-- <polyline class="guide" points="0,0 $width,0" stroke-width="1" fill="none" transform="translate(0 $pad+22)"/> -->
+      <text font-size="7pt" letter-spacing="2.0px" text-anchor="middle" transform="translate(130/4+10 0)">FALL</text>
+      <def id="FALL_PARAM" xlink:href="#knob29x" transform="translate(130.0/4.0+10.0-29.0/2.0-0.5 $pad+7.5)"/>
+      <def xlink:href="#dial-fall-time-29" transform="translate(130.0/4.0+10.0-45.0/2.0-0.5 $pad-0.5)"/>
+      <def id="FALL_SHAPE_PARAM" xlink:href="#knob16" transform="translate(130.0/4.0+10.0-16.0/2.0-0.5 $pad+55)"/>
+      <def xlink:href="#dial-shape-fall" transform="translate(130.0/4.0+10.0-45.0/2.0+2.0 $pad+43)"/>
+      <def xlink:href="#single-input" var-id="FALL_INPUT" transform="translate(42.5-15 85)"/>
+    </g>
+
+    <g transform="translate(0 165)" var-pad="3.0">
+      <text font-size="7pt" letter-spacing="0.5px" text-anchor="middle" transform="translate(42.5 0)">MIN GATE</text>
+      <def id="MINIMUM_GATE_PARAM" xlink:href="#knob29" transform="translate(19.5 $pad)"/>
+      <def xlink:href="#dial-mingate" transform="translate(17 $pad-2.5)"/>
+      <def xlink:href="#single-input" var-id="MINIMUM_GATE_INPUT" transform="translate(42.5-15 53)"/>
+    </g>
+
+    <g transform="translate(55 165)" var-pad="3.0">
+      <text font-size="7pt" letter-spacing="2.0px" text-anchor="middle" transform="translate(42.5 0)">TILT</text>
+      <def id="TILT_PARAM" xlink:href="#knob29" transform="translate(19.5 $pad)"/>
+      <use xlink:href="#dial-tilt-megagate" transform="translate(17 $pad-2.5)"/>
+      <def xlink:href="#single-input" var-id="TILT_INPUT" transform="translate(42.5-15 53)"/>
+    </g>
+
+    <g transform="translate(-10 256)">
+      <g transform="translate(40 0)">
+        <text font-size="5pt" letter-spacing="1px" transform="translate(12 6)">GT TO TRIG</text>
+        <def id="GATE_TO_TRIGGER_PARAM" xlink:href="#button-small" transform="translate(0 -1)"/>
+      </g>
+
+      <g transform="translate(40 14)">
+        <text font-size="5pt" letter-spacing="1px" transform="translate(12 6)">TIMES 10X</text>
+        <def id="TIMES_10X_PARAM" xlink:href="#button-small" transform="translate(0 -1)"/>
+      </g>
+    </g>
+
+    <g transform="translate(60 256)">
+      <g transform="translate(40 0)">
+        <text font-size="5pt" letter-spacing="1px" transform="translate(12 6)">FLTRS SER</text>
+        <def id="FILTERS_SERIAL_PARAM" xlink:href="#button-small" transform="translate(0 -1)"/>
+      </g>
+
+      <g transform="translate(40 14)">
+        <text font-size="5pt" letter-spacing="1px" transform="translate(12 6)">LIN VCA</text>
+        <def id="LINEAR_VCA_PARAM" xlink:href="#button-small" transform="translate(0 -1)"/>
+      </g>
+    </g>
+
+    <g class="io-group" transform="translate(8 284)">
+      <rect class="input-background" width="120" height="37.5" rx="5" transform="translate(7 0)" />
+      <rect class="input-background-filler" width="10" height="10" transform="translate(117 27.5)" />
+
+      <def id="GATE_INPUT" xlink:href="#input" transform="translate(10.5 3)"/>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 35)">GATE</text>
+      <def id="VELOCITY_INPUT" xlink:href="#input" transform="translate(40.5 3)"/>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(52.5 35)">VELO</text>
+      <def id="LEFT_INPUT" xlink:href="#input" transform="translate(70.5 3)"/>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(82.5 35)">L</text>
+      <def id="RIGHT_INPUT" xlink:href="#input" transform="translate(100.5 3)"/>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(112.5 35)">R(L)</text>
+
+      <g transform="translate(30, 0)">
+        <rect class="output-background" width="90" height="39" rx="5" transform="translate(7 37.5)"/>
+        <rect class="output-background-filler" width="90" height="10" transform="translate(7 37.5)"/>
+        <def id="ENV_OUTPUT" xlink:href="#output" transform="translate(10.5 40)"/>
+        <text class="output-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 72)">ENV</text>
+        <def id="LEFT_OUTPUT" xlink:href="#output" transform="translate(40.5 40)"/>
+        <text class="output-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(52.5 72)">L</text>
+        <def id="RIGHT_OUTPUT" xlink:href="#output" transform="translate(70.5 40)"/>
+        <text class="output-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(82.5 72)">R</text>
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(118 24)">
+    <!-- <rect width="179" height="110" fill="#f0f"/> -->
+    <text font-size="9pt" letter-spacing="2px" text-anchor="middle" transform="translate(10 55) rotate(-90)">LPF</text>
+
+    <g transform="translate(18 0)">
+      <g transform="translate(0 0)">
+        <!-- <rect width="36" height="78" fill="#0f0" transform="translate(-3 0)"/> -->
+        <g transform="translate(0.5 8)" var-pad="10.0">
+          <text font-size="7pt" letter-spacing="2px" text-anchor="middle" transform="translate(15 0)">ENV</text>
+          <def id="LPF_ENV_PARAM" xlink:href="#knob29x" transform="translate(0 $pad)"/>
+          <def xlink:href="#dial-attenuverter29" transform="translate(0 $pad)"/>
+        </g>
+        <g transform="translate(0 57)">
+          <def id="LPF_ENV_ATTENUATOR_PARAM" xlink:href="#knob16" transform="translate(15-8 0)"/>
+          <def xlink:href="#dial-centertick" transform="translate(-5 -12)"/>
+        </g>
+        <def xlink:href="#single-input" var-id="LPF_ENV_INPUT" transform="translate(0 80)"/>
+      </g>
+
+      <g transform="translate(50 0)">
+        <!-- <rect width="36" height="78" fill="#0f0" transform="translate(-3 0)"/> -->
+        <g transform="translate(0.5 8)" var-pad="10.0">
+          <text font-size="7pt" letter-spacing="2px" text-anchor="middle" transform="translate(15 0)">BIAS</text>
+          <def id="LPF_BIAS_PARAM" xlink:href="#knob29x" transform="translate(0 $pad)"/>
+          <def xlink:href="#dial-frequency-bias" transform="translate(-11 $pad-8)"/>
+        </g>
+        <g transform="translate(0 57)">
+          <def id="LPF_BIAS_ATTENUATOR_PARAM" xlink:href="#knob16" transform="translate(15-8 0)"/>
+          <def xlink:href="#dial-centertick" transform="translate(-5 -12)"/>
+        </g>
+        <def xlink:href="#single-input" var-id="LPF_BIAS_INPUT" transform="translate(0 80)"/>
+      </g>
+
+      <g transform="translate(95 0)">
+        <!-- <rect width="33" height="78" fill="#ff0" transform="translate(-3 0)"/> -->
+        <!-- <polyline class="guide" points="0,0 0,78" stroke-width="1" fill="none" transform="translate(16.5 0)"/> -->
+        <text font-size="7pt" letter-spacing="0.5px" text-anchor="middle" transform="translate(13 8)">POLES</text>
+        <g transform="translate(8 16)">
+          <g transform="translate(0 0)">
+            <def id="LPF_POLES_1_LIGHT" xlink:href="#light-small" transform="translate(0 0)"/>
+            <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">1</text>
+          </g>
+          <g transform="translate(0 12)">
+            <def id="LPF_POLES_2_LIGHT" xlink:href="#light-small" transform="translate(0 0)"/>
+            <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">2</text>
+          </g>
+          <g transform="translate(0 24)">
+            <def id="LPF_POLES_3_LIGHT" xlink:href="#light-small" transform="translate(0 0)"/>
+            <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">3</text>
+          </g>
+          <g transform="translate(0 36)">
+            <def id="LPF_POLES_4_LIGHT" xlink:href="#light-small" transform="translate(0 0)"/>
+            <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">4</text>
+          </g>
+          <def id="LPF_POLES_PARAM" xlink:href="#button-small" transform="translate(2 47)"/>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(118 139)">
+    <!-- <rect width="179" height="110" fill="#f0f"/> -->
+    <text font-size="9pt" letter-spacing="2px" text-anchor="middle" transform="translate(10 55) rotate(-90)">HPF</text>
+
+    <g transform="translate(18 0)">
+      <g transform="translate(0 0)">
+        <!-- <rect width="36" height="78" fill="#0f0" transform="translate(-3 0)"/> -->
+        <g transform="translate(0.5 8)" var-pad="10.0">
+          <text font-size="7pt" letter-spacing="2px" text-anchor="middle" transform="translate(15 0)">ENV</text>
+          <def id="HPF_ENV_PARAM" xlink:href="#knob29x" transform="translate(0 $pad)"/>
+          <def xlink:href="#dial-attenuverter29" transform="translate(0 $pad)"/>
+        </g>
+        <g transform="translate(0 57)">
+          <def id="HPF_ENV_ATTENUATOR_PARAM" xlink:href="#knob16" transform="translate(15-8 0)"/>
+          <def xlink:href="#dial-centertick" transform="translate(-5 -12)"/>
+        </g>
+        <def xlink:href="#single-input" var-id="HPF_ENV_INPUT" transform="translate(0 80)"/>
+      </g>
+
+      <g transform="translate(50 0)">
+        <!-- <rect width="36" height="78" fill="#0f0" transform="translate(-3 0)"/> -->
+        <g transform="translate(0.5 8)" var-pad="10.0">
+          <text font-size="7pt" letter-spacing="2px" text-anchor="middle" transform="translate(15 0)">BIAS</text>
+          <def id="HPF_BIAS_PARAM" xlink:href="#knob29x" transform="translate(0 $pad)"/>
+          <def xlink:href="#dial-frequency-bias" transform="translate(-11 $pad-8)"/>
+        </g>
+        <g transform="translate(0 57)">
+          <def id="HPF_BIAS_ATTENUATOR_PARAM" xlink:href="#knob16" transform="translate(15-8 0)"/>
+          <def xlink:href="#dial-centertick" transform="translate(-5 -12)"/>
+        </g>
+        <def xlink:href="#single-input" var-id="HPF_BIAS_INPUT" transform="translate(0 80)"/>
+      </g>
+
+      <g transform="translate(93 0)">
+        <!-- <rect width="33" height="78" fill="#ff0" transform="translate(-3 0)"/> -->
+        <!-- <polyline class="guide" points="0,0 0,78" stroke-width="1" fill="none" transform="translate(16.5 0)"/> -->
+        <text font-size="7pt" letter-spacing="0.5px" text-anchor="middle" transform="translate(13 8)">POLES</text>
+        <g transform="translate(8 16)">
+          <g transform="translate(0 0)">
+            <def id="HPF_POLES_1_LIGHT" xlink:href="#light-small" transform="translate(0 0)"/>
+            <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">1</text>
+          </g>
+          <g transform="translate(0 12)">
+            <def id="HPF_POLES_2_LIGHT" xlink:href="#light-small" transform="translate(0 0)"/>
+            <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">2</text>
+          </g>
+          <g transform="translate(0 24)">
+            <def id="HPF_POLES_3_LIGHT" xlink:href="#light-small" transform="translate(0 0)"/>
+            <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">3</text>
+          </g>
+          <g transform="translate(0 36)">
+            <def id="HPF_POLES_4_LIGHT" xlink:href="#light-small" transform="translate(0 0)"/>
+            <text font-size="5pt" letter-spacing="1px" transform="translate(8 5.7)">4</text>
+          </g>
+          <def id="HPF_POLES_PARAM" xlink:href="#button-small" transform="translate(2 47)"/>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(145 253)">
+    <!-- <rect width="100" height="110" fill="#f0f"/> -->
+    <text font-size="9pt" letter-spacing="2px" text-anchor="middle" transform="translate(10 55) rotate(-90)">VCA</text>
+
+    <g transform="translate(18 0)">
+      <g transform="translate(0 0)">
+        <!-- <rect width="36" height="78" fill="#0f0" transform="translate(-3 0)"/> -->
+        <g transform="translate(0.5 8)" var-pad="10.0">
+          <text font-size="7pt" letter-spacing="2px" text-anchor="middle" transform="translate(15 0)">ENV</text>
+          <def id="VCA_ENV_PARAM" xlink:href="#knob29x" transform="translate(0 $pad)"/>
+          <def xlink:href="#dial-attenuverter29" transform="translate(0 $pad)"/>
+        </g>
+        <g transform="translate(0 57)">
+          <def id="VCA_ENV_ATTENUATOR_PARAM" xlink:href="#knob16" transform="translate(15-8 0)"/>
+          <def xlink:href="#dial-centertick" transform="translate(-5 -12)"/>
+        </g>
+        <def xlink:href="#single-input" var-id="VCA_ENV_INPUT" transform="translate(0 80)"/>
+      </g>
+
+      <g transform="translate(50 0)">
+        <!-- <rect width="36" height="78" fill="#0f0" transform="translate(-3 0)"/> -->
+        <g transform="translate(0.5 8)" var-pad="10.0">
+          <text font-size="7pt" letter-spacing="2px" text-anchor="middle" transform="translate(15 0)">BIAS</text>
+          <def id="VCA_BIAS_PARAM" xlink:href="#knob29x" transform="translate(0 $pad)"/>
+          <def xlink:href="#dial-mintick-29" transform="translate(0 $pad)"/>
+        </g>
+        <g transform="translate(0 57)">
+          <def id="VCA_BIAS_ATTENUATOR_PARAM" xlink:href="#knob16" transform="translate(15-8 0)"/>
+          <def xlink:href="#dial-centertick" transform="translate(-5 -12)"/>
+        </g>
+        <def xlink:href="#single-input" var-id="VCA_BIAS_INPUT" transform="translate(0 80)"/>
+      </g>
+    </g>
+  </g>
+</module>

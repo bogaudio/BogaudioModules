@@ -1,65 +1,13 @@
 <module hp="5">
   <style/>
 
-  <defs>
-    <symbol id="dial-rise-time-vish" viewBox="0 0 45px 45px">
-      <g var-tt="19" transform="translate(22.5 22.5)">
-        <text font-size="5pt" text-anchor="middle" var-r="-240" transform="rotate($r) translate($tt+1.0 0) rotate(-1.0*$r) translate(0 3)">0MS</text>
-        <text font-size="5pt" text-anchor="middle" var-r="0.01**0.5/0.3**0.5*300.0-240.0" transform="rotate($r) translate($tt 0) rotate(-1.0*$r) translate(0 3)">10</text>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.025**0.5/0.3**0.5*300.0-240.0) translate(15 0)"/>
-        <text font-size="5pt" text-anchor="middle" var-r="0.05**0.5/0.3**0.5*300.0-240.0" transform="rotate($r) translate($tt 0) rotate(-1.0*$r) translate(0 3)">50</text>
-        <text font-size="5pt" text-anchor="middle" var-r="0.1**0.5/0.3**0.5*300.0-240.0" transform="rotate($r) translate($tt 0) rotate(-1.0*$r) translate(0 3)">100</text>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.15**0.5/0.3**0.5*300.0-240.0) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.2**0.5/0.3**0.5*300.0-240.0) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.25**0.5/0.3**0.5*300.0-240.0) translate(15 0)"/>
-        <text font-size="5pt" text-anchor="middle" var-r="60" transform="rotate($r) translate($tt+1.0 0) rotate(-1.0*$r) translate(0 3)">300</text>
-      </g>
-    </symbol>
-
-    <symbol id="dial-fall-time-vish" viewBox="0 0 45px 45px">
-      <g var-tt="20" transform="translate(22.5 22.5)">
-        <text font-size="5pt" text-anchor="middle" var-r="-240" transform="rotate($r) translate($tt-1.0 0) rotate(-1.0*$r) translate(0 3)">0S</text>
-        <polyline points="0,0 2,0" stroke-width="0.7" transform="rotate(0.01**0.5*300.0-240.0) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.05**0.5*300.0-240.0) translate(15 0)"/>
-        <text font-size="5pt" text-anchor="middle" var-r="0.1**0.5*300.0-240.0" transform="rotate($r) translate($tt 0) rotate(-1.0*$r) translate(0 3)">0.1</text>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.2**0.5*300.0-240.0) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.3**0.5*300.0-240.0) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.4**0.5*300.0-240.0) translate(15 0)"/>
-        <text font-size="5pt" text-anchor="middle" var-r="0.5**0.5*300.0-240.0" transform="rotate($r) translate($tt 0) rotate(-1.0*$r) translate(0 3)">0.5</text>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.6**0.5*300.0-240.0) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.7**0.5*300.0-240.0) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.8**0.5*300.0-240.0) translate(15 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.9**0.5*300.0-240.0) translate(15 0)"/>
-        <text font-size="5pt" text-anchor="middle" var-r="60" transform="rotate($r) translate($tt-1.0 0) rotate(-1.0*$r) translate(0 3)">1</text>
-      </g>
-    </symbol>
-
-    <symbol id="dial-mingate-vish" viewBox="0 0 ${width}px ${width}px">
-      <g transform="translate($width/2.0 $width/2.0)">
-        <text font-size="6pt" text-anchor="middle" var-r="-240" transform="rotate($r) translate(21 0) rotate(-1.0*$r) translate(0 3)">0S</text>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0.01**0.5*300.0-240.0) translate(17 0)"/>
-        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(0.05**0.5*300.0-240.0) translate(17 0)"/>
-        <text font-size="6pt" text-anchor="middle" var-r="0.1**0.5*300.0-240.0" transform="rotate($r) translate(23 0) rotate(-1.0*$r) translate(0 3)">0.1</text>
-        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(0.2**0.5*300.0-240.0) translate(17 0)"/>
-        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(0.3**0.5*300.0-240.0) translate(17 0)"/>
-        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(0.4**0.5*300.0-240.0) translate(17 0)"/>
-        <text font-size="6pt" text-anchor="middle" var-r="0.5**0.5*300.0-240.0" transform="rotate($r) translate(23 0) rotate(-1.0*$r) translate(0 3)">0.5</text>
-        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(0.6**0.5*300.0-240.0) translate(17 0)"/>
-        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(0.7**0.5*300.0-240.0) translate(17 0)"/>
-        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(0.8**0.5*300.0-240.0) translate(17 0)"/>
-        <polyline points="0,0 3.5,0" stroke-width="0.7" transform="rotate(0.9**0.5*300.0-240.0) translate(17 0)"/>
-        <text font-size="6pt" text-anchor="middle" var-r="60" transform="rotate($r) translate(21 0) rotate(-1.0*$r) translate(0 3)">1</text>
-      </g>
-    </symbol>
-  </defs>
-
   <def xlink:href="#module5" var-name="VISH"/>
 
   <g transform="translate(0 35)" var-pad="3.0">
     <!-- <polyline class="guide" points="0,0 $width,0" stroke-width="1" fill="none" transform="translate(0 $pad+22)"/> -->
     <text font-size="8pt" letter-spacing="2.0px" text-anchor="middle" transform="translate($width/2.0 0)">RISE</text>
     <def id="RISE_PARAM" xlink:href="#knob26" transform="translate(12.5 $pad+9)"/>
-    <use xlink:href="#dial-rise-time-vish" transform="translate(3 $pad-1)"/>
+    <def xlink:href="#dial-rise-time" transform="translate(3 $pad-1)"/>
     <def id="RISE_SHAPE_PARAM" xlink:href="#knob16" transform="translate(52 $pad+14)"/>
     <def xlink:href="#dial-shape-rise" transform="translate(40 $pad+2)"/>
   </g>
@@ -68,7 +16,7 @@
     <!-- <polyline class="guide" points="0,0 $width,0" stroke-width="1" fill="none" transform="translate(0 $pad+22)"/> -->
     <text font-size="8pt" letter-spacing="2.0px" text-anchor="middle" transform="translate($width/2.0 0)">FALL</text>
     <def id="FALL_PARAM" xlink:href="#knob26" transform="translate(12.5 $pad+9)"/>
-    <use xlink:href="#dial-fall-time-vish" transform="translate(3 $pad-1)"/>
+    <def xlink:href="#dial-fall-time" transform="translate(3 $pad-1)"/>
     <def id="FALL_SHAPE_PARAM" xlink:href="#knob16" transform="translate(52 $pad+14)"/>
     <def xlink:href="#dial-shape-fall" transform="translate(40 $pad+2)"/>
   </g>
@@ -76,7 +24,7 @@
   <g transform="translate(0 164)" var-pad="3.0">
     <text font-size="8pt" letter-spacing="1.5px" text-anchor="middle" transform="translate($width/2.0 0)">MIN GATE</text>
     <def id="MINIMUM_GATE_PARAM" xlink:href="#knob29" transform="translate(15 $pad)"/>
-    <use xlink:href="#dial-mingate-vish" transform="translate(0 $pad+45.0/2.0-$width/2.0)"/>
+    <def xlink:href="#dial-mingate" transform="translate($width/2.0-25 $pad-2.5)"/>
   </g>
 
   <g transform="translate(-6 221)">
