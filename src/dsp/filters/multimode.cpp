@@ -199,6 +199,7 @@ template<int N> void MultimodeDesigner<N>::setParams(
 	assert(poles % modPoles == 0);
 	assert(frequency >= minFrequency - 0.00001f && frequency <= maxFrequency);
 	frequency = std::max(frequency, effectiveMinimumFrequency());
+	frequency = std::min(frequency, 0.49f * sampleRate);
 	assert(qbw >= minQbw && qbw <= maxQbw);
 
 	bool repole = _type != type || _mode != mode || _nPoles != poles || (type == CHEBYSHEV_TYPE && (mode == LOWPASS_MODE || mode == HIGHPASS_MODE) && _qbw != qbw);
