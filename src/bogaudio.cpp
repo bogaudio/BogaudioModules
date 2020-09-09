@@ -38,6 +38,7 @@
 #include "LFO.hpp"
 #include "LLFO.hpp"
 #include "Lmtr.hpp"
+#include "LPG.hpp"
 #include "LVCF.hpp"
 #include "LVCO.hpp"
 #include "Manual.hpp"
@@ -135,6 +136,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelFFB);
 	p->addModel(modelEQ);
 	p->addModel(modelEQS);
+	p->addModel(modelLPG);
 	p->addModel(modelMegaGate);
 	p->addModel(modelPEQ);
 	p->addModel(modelPEQ6);

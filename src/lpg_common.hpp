@@ -5,14 +5,16 @@
 struct LPGEnvBaseModule : BGModule {
 	int _gateToTriggerParamID;
 	int _timeScaleParamID;
+	float _longTimeScale;
 	bool _gateToTrigger = false;
 	float _timeScale = 1.0f;
 	const float _maxVelocityDb = 0.0f;
 	float _minVelocityDb = -6.0f;
 
-	LPGEnvBaseModule(int gateToTriggerParamID, int timeScaleParamID)
+	LPGEnvBaseModule(int gateToTriggerParamID, int timeScaleParamID, float longTimeScale = 10.0f)
 	: _gateToTriggerParamID(gateToTriggerParamID)
 	, _timeScaleParamID(timeScaleParamID)
+	, _longTimeScale(longTimeScale)
 	{}
 
 	json_t* toJson(json_t* root) override;

@@ -1,0 +1,110 @@
+<module hp="8">
+  <style/>
+
+  <def xlink:href="#module8" var-name="LPG"/>
+
+  <!-- <polyline class="guide" points="0,0 0,380" stroke-width="1" fill="none" transform="translate(3.5*$width/10.0 0)"/> -->
+  <!-- <polyline class="guide" points="0,0 0,380" stroke-width="1" fill="none" transform="translate(5.5*$width/10.0 0)"/> -->
+  <!-- <polyline class="guide" points="0,0 0,380" stroke-width="1" fill="none" transform="translate(7.5*$width/10.0 0)"/> -->
+
+  <g transform="translate(0 40)" var-pad="10.0">
+    <text font-size="8pt" letter-spacing="0.5px" text-anchor="middle" transform="translate(42.5 0)">RESPONSE</text>
+    <def id="RESPONSE_PARAM" xlink:href="#knob45" transform="translate(-3 $pad-22.5)"/>
+    <def xlink:href="#dial-mintick-45" transform="translate(12 $pad-7.5)"/>
+
+    <g transform="translate(26 67)">
+      <text font-size="5pt" letter-spacing="1px" transform="translate(12 6)">LONG</text>
+      <def id="LONG_PARAM" xlink:href="#button-small" transform="translate(0 -1)"/>
+    </g>
+  </g>
+
+  <g transform="translate(88 40)" var-pad="3.0">
+    <g transform="translate(0 0)">
+      <text font-size="8pt" letter-spacing="0.5px" text-anchor="middle" transform="translate(8 0)">RISE</text>
+      <def id="RISE_SHAPE_PARAM" xlink:href="#knob16" transform="translate(0 10)"/>
+      <def xlink:href="#dial-shape-rise" transform="translate(-12 -2)"/>
+    </g>
+
+    <g transform="translate(0 45)">
+      <text font-size="7pt" letter-spacing="0.5px" text-anchor="middle" transform="translate(8 0)">FALL</text>
+      <def id="FALL_SHAPE_PARAM" xlink:href="#knob16" transform="translate(0 10)"/>
+      <def xlink:href="#dial-shape-fall" transform="translate(-12 -2)"/>
+    </g>
+  </g>
+
+  <g transform="translate(5 134)">
+    <!-- <rect width="$width" height="52" fill="#f0f" transform="translate(-5 0)"/> -->
+    <text font-size="9pt" letter-spacing="2px" text-anchor="middle" transform="translate(11 26) rotate(-90)">LPF</text>
+
+    <g transform="translate(18 0)">
+      <g transform="translate(3.5 0)">
+        <!-- <rect width="36" height="78" fill="#0f0" transform="translate(-3 0)"/> -->
+        <g transform="translate(0.5 8)" var-pad="10.0">
+          <text font-size="7pt" letter-spacing="2px" text-anchor="middle" transform="translate(15 0)">ENV</text>
+          <def id="LPF_ENV_PARAM" xlink:href="#knob29x" transform="translate(0 $pad)"/>
+          <def xlink:href="#dial-attenuverter29" transform="translate(0 $pad)"/>
+        </g>
+      </g>
+
+      <g transform="translate(52 0)">
+        <!-- <rect width="36" height="78" fill="#0f0" transform="translate(-3 0)"/> -->
+        <g transform="translate(0.5 8)" var-pad="10.0">
+          <text font-size="7pt" letter-spacing="2px" text-anchor="middle" transform="translate(15 0)">BIAS</text>
+          <def id="LPF_BIAS_PARAM" xlink:href="#knob29x" transform="translate(0 $pad)"/>
+          <def xlink:href="#dial-frequency-bias" transform="translate(-11 $pad-8)"/>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(5 201)">
+    <!-- <rect width="$width" height="68" fill="#f0f" transform="translate(-5 0)"/> -->
+    <text font-size="9pt" letter-spacing="2px" text-anchor="middle" transform="translate(11 34) rotate(-90)">VCA</text>
+
+    <g transform="translate(22 0)">
+      <g transform="translate(0 0)">
+        <!-- <rect width="36" height="78" fill="#0f0" transform="translate(-3 0)"/> -->
+        <g transform="translate(0.5 8)" var-pad="10.0">
+          <text font-size="7pt" letter-spacing="2px" text-anchor="middle" transform="translate(15 0)">ENV</text>
+          <def id="VCA_ENV_PARAM" xlink:href="#knob29x" transform="translate(0 $pad)"/>
+          <def xlink:href="#dial-attenuverter29" transform="translate(0 $pad)"/>
+        </g>
+      </g>
+
+      <g transform="translate(47.5 0)">
+        <!-- <rect width="36" height="78" fill="#0f0" transform="translate(-3 0)"/> -->
+        <g transform="translate(0.5 8)" var-pad="10.0">
+          <text font-size="7pt" letter-spacing="2px" text-anchor="middle" transform="translate(15 0)">BIAS</text>
+          <def id="VCA_BIAS_PARAM" xlink:href="#knob29x" transform="translate(0 $pad)"/>
+          <def xlink:href="#dial-mintick-29" transform="translate(0 $pad)"/>
+        </g>
+      </g>
+    </g>
+
+    <g transform="translate(40 58)">
+      <text font-size="5pt" letter-spacing="1px" transform="translate(12 6)">LINEAR</text>
+      <def id="LINEAR_VCA_PARAM" xlink:href="#button-small" transform="translate(0 -1)"/>
+    </g>
+  </g>
+
+  <g class="io-group" transform="translate(8 284)">
+    <rect class="input-background" width="90" height="75" rx="5" transform="translate(7 0)" />
+    <rect class="input-background-filler" width="10" height="10" transform="translate(117 27.5)" />
+
+    <def id="RESPONSE_INPUT" xlink:href="#input" transform="translate(10.5 3)"/>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 35)">RESP</text>
+    <def id="LPF_INPUT" xlink:href="#input" transform="translate(40.5 3)"/>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(52.5 35)">LPF</text>
+    <def id="VCA_INPUT" xlink:href="#input" transform="translate(70.5 3)"/>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(82.5 35)">VCA</text>
+
+    <rect class="output-background" width="30" height="39" rx="5" transform="translate(67 37.5)"/>
+    <rect class="output-background-filler" width="30" height="10" transform="translate(67 37.5)"/>
+    <def id="GATE_INPUT" xlink:href="#input" transform="translate(10.5 40)"/>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 72)">GATE</text>
+    <def id="IN_INPUT" xlink:href="#input" transform="translate(40.5 40)"/>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(52.5 72)">IN</text>
+    <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(70.5 40)"/>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(82.5 72)">OUT</text>
+  </g>
+</module>
