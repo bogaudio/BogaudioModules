@@ -5,7 +5,6 @@
 
 void LPG::Engine::reset() {
 	trigger.reset();
-	gatePulseGen.process(10.0);
 }
 
 void LPG::Engine::setSampleRate(float sr) {
@@ -62,11 +61,11 @@ void LPG::modulateChannel(int c) {
 	_engines[c]->slew.modulate(
 		_sampleRate,
 		params[RESPONSE_PARAM],
-		inputs[RESPONSE_INPUT],
+		&inputs[RESPONSE_INPUT],
 		300.0f * _timeScale,
 		params[RISE_SHAPE_PARAM],
 		params[RESPONSE_PARAM],
-		inputs[RESPONSE_INPUT],
+		&inputs[RESPONSE_INPUT],
 		1000.0f * _timeScale,
 		params[FALL_SHAPE_PARAM],
 		c

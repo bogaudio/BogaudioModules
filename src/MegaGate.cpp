@@ -53,11 +53,11 @@ void MegaGate::modulateChannel(int c) {
 	_engines[c]->slew.modulate(
 		_sampleRate,
 		params[RISE_PARAM],
-		inputs[RISE_INPUT],
+		&inputs[RISE_INPUT],
 		300.0f * _timeScale,
 		params[RISE_SHAPE_PARAM],
 		params[FALL_PARAM],
-		inputs[FALL_INPUT],
+		&inputs[FALL_INPUT],
 		1000.0f * _timeScale,
 		params[FALL_SHAPE_PARAM],
 		c

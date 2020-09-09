@@ -37,6 +37,7 @@
 #include "Lag.hpp"
 #include "LFO.hpp"
 #include "LLFO.hpp"
+#include "LLPG.hpp"
 #include "Lmtr.hpp"
 #include "LPG.hpp"
 #include "LVCF.hpp"
@@ -111,6 +112,7 @@
 #include "TestExpander.hpp"
 #include "TestVCF.hpp"
 
+#include "LLPG.hpp"
 //NEW_INCLUDES_HERE
 
 Plugin *pluginInstance;
@@ -137,6 +139,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelEQ);
 	p->addModel(modelEQS);
 	p->addModel(modelLPG);
+	p->addModel(modelLLPG);
 	p->addModel(modelMegaGate);
 	p->addModel(modelPEQ);
 	p->addModel(modelPEQ6);

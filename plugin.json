@@ -184,6 +184,16 @@
       ]
     },
     {
+      "slug": "Bogaudio-LLPG",
+      "name": "LLPG",
+      "description": "Low-pass gate",
+      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#llpg",
+      "tags": [
+        "Low-pass gate",
+        "Polyphonic"
+      ]
+    },
+    {
       "slug": "Bogaudio-MegaGate",
       "name": "MEGAGATE",
       "description": "Low- and high-pass gate",

@@ -13,11 +13,11 @@ void Slew::modulateChannel(int c) {
 	_slew[c].modulate(
 		APP->engine->getSampleRate(),
 		params[RISE_PARAM],
-		inputs[RISE_INPUT],
+		&inputs[RISE_INPUT],
 		10000.0f,
 		params[RISE_SHAPE_PARAM],
 		params[FALL_PARAM],
-		inputs[FALL_INPUT],
+		&inputs[FALL_INPUT],
 		10000.0f,
 		params[FALL_SHAPE_PARAM],
 		c

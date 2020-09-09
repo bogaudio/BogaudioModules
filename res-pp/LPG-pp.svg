@@ -361,15 +361,16 @@ polyline.knob-tick {
     </svg></g>
     <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(82.5 35)">VCA</text>
 
-    <rect class="output-background" width="30" height="39" rx="5" transform="translate(67 37.5)"/>
+    <rect class="output-background" width="30" height="37.5" rx="5" transform="translate(67 37.5)"/>
     <rect class="output-background-filler" width="30" height="10" transform="translate(67 37.5)"/>
+    <rect class="output-background-filler" width="10" height="10" transform="translate(67 65)"/>
     <g transform="translate(10.5 40)"><svg id="GATE_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-    <text class="output-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 72)">GATE</text>
+    <text class="output-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 72)">TRIG</text>
     <g transform="translate(40.5 40)"><svg id="IN_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>

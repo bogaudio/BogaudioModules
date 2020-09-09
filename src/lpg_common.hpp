@@ -11,7 +11,7 @@ struct LPGEnvBaseModule : BGModule {
 	const float _maxVelocityDb = 0.0f;
 	float _minVelocityDb = -6.0f;
 
-	LPGEnvBaseModule(int gateToTriggerParamID, int timeScaleParamID, float longTimeScale = 10.0f)
+	LPGEnvBaseModule(int gateToTriggerParamID = -1, int timeScaleParamID = -1, float longTimeScale = 10.0f)
 	: _gateToTriggerParamID(gateToTriggerParamID)
 	, _timeScaleParamID(timeScaleParamID)
 	, _longTimeScale(longTimeScale)

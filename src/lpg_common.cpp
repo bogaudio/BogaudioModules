@@ -17,7 +17,7 @@ void LPGEnvBaseModule::fromJson(json_t* root) {
 
 void LPGEnvBaseModule::modulate() {
 	_gateToTrigger = _gateToTriggerParamID >= 0 && params[_gateToTriggerParamID].getValue() > 0.5f;
-	_timeScale = params[_timeScaleParamID].getValue() > 0.5f ? _longTimeScale : 1.0f;
+	_timeScale = _timeScaleParamID >= 0 && params[_timeScaleParamID].getValue() > 0.5f ? _longTimeScale : 1.0f;
 }
 
 

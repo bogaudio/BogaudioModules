@@ -11,19 +11,20 @@ struct RiseFallShapedSlewLimiter {
 	ShapedSlewLimiter _rise;
 	ShapedSlewLimiter _fall;
 
-	float timeMS(Param& param, Input& input, float maxMS, int c);
-	float shape(Param& param);
+	float timeMS(Param& param, Input* input, float maxMS, int c);
+	float shape(Param& param, bool invert = false);
 	void modulate(
 		float sampleRate,
 		Param& riseParam,
-		Input& riseInput,
+		Input* riseInput,
 		float riseMaxMS,
 		Param& riseShapeParam,
 		Param& fallParam,
-		Input& fallInput,
+		Input* fallInput,
 		float fallMaxMS,
 		Param& fallShapeParam,
-		int c
+		int c,
+		bool invertRiseShape = false
 	);
 	float next(float sample);
 };

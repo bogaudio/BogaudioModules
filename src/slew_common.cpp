@@ -1,16 +1,19 @@
 
 #include "slew_common.hpp"
 
-float RiseFallShapedSlewLimiter::timeMS(Param& param, Input& input, float maxMS, int c) {
+float RiseFallShapedSlewLimiter::timeMS(Param& param, Input* input, float maxMS, int c) {
 	float time = clamp(param.getValue(), 0.0f, 1.0f);
-	if (input.isConnected()) {
-		time *= clamp(input.getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
+	if (input && input->isConnected()) {
+		time *= clamp(input->getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
 	return time * time * maxMS;
 }
 
-float RiseFallShapedSlewLimiter::shape(Param& param) {
+float RiseFallShapedSlewLimiter::shape(Param& param, bool invert) {
 	float shape = clamp(param.getValue(), -1.0f, 1.0f);
+	if (invert) {
+		shape *= -1.0f;
+	}
 	if (shape < 0.0) {
 		shape = 1.0f + shape;
 		shape = _rise.minShape + shape * (1.0f - _rise.minShape);
@@ -24,19 +27,20 @@ float RiseFallShapedSlewLimiter::shape(Param& param) {
 void RiseFallShapedSlewLimiter::modulate(
 	float sampleRate,
 	Param& riseParam,
-	Input& riseInput,
+	Input* riseInput,
 	float riseMaxMS,
 	Param& riseShapeParam,
 	Param& fallParam,
-	Input& fallInput,
+	Input* fallInput,
 	float fallMaxMS,
 	Param& fallShapeParam,
-	int c
+	int c,
+	bool invertRiseShape
 ) {
 	_rise.setParams(
 		sampleRate,
 		timeMS(riseParam, riseInput, riseMaxMS, c),
-		shape(riseShapeParam)
+		shape(riseShapeParam, invertRiseShape)
 	);
 	_fall.setParams(
 		sampleRate,
