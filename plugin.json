@@ -11,6 +11,7 @@
   "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md",
   "sourceUrl": "https://github.com/bogaudio/BogaudioModules",
   "donateUrl": "",
+  "changeLogUrl": "https://github.com/bogaudio/BogaudioModules/releases",
   "modules": [
     {
       "slug": "Bogaudio-VCO",
@@ -549,7 +550,7 @@
       "description": "Triple-CV VCA, for tremolo, MIDI velocity, etc",
       "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#velo",
       "tags": [
-        "Velo",
+        "VCA",
         "Polyphonic"
       ]
     },
