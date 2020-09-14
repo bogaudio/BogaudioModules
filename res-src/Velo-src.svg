@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<module hp="3">
+  <style/>
+
+  <defs>
+    <symbol id="dial-response-velo" viewBox="0 0 40px 40px">
+      <g transform="translate(20 20)">
+        <text font-size="5pt" text-anchor="middle" transform="rotate(-240) translate(14 0) rotate(240) translate(0 2)">0dB</text>
+        <text font-size="5pt" text-anchor="middle" var-r="3.0**0.5/60.0**0.5*300.0-240.0" transform="rotate($r) translate(13 0) rotate(-1.0*$r) translate(0 3)">-3</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(6.0**0.5/60.0**0.5*300.0-240.0) translate(10 0)"/>
+        <!-- <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(9.0**0.5/60.0**0.5*300.0-240.0) translate(10 0)"/> -->
+        <!-- <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(12.0**0.5/60.0**0.5*300.0-240.0) translate(10 0)"/> -->
+        <text font-size="5pt" text-anchor="middle" var-r="12.0**0.5/60.0**0.5*300.0-240.0" transform="rotate($r) translate(13 0) rotate(-1.0*$r) translate(0 3)">-12</text>
+        <text font-size="5pt" text-anchor="middle" var-r="24.0**0.5/60.0**0.5*300.0-240.0" transform="rotate($r) translate(14 0) rotate(-1.0*$r) translate(0 3)">-24</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(36.0**0.5/60.0**0.5*300.0-240.0) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(48.0**0.5/60.0**0.5*300.0-240.0) translate(10 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(60) translate(10 0)"/>
+        <polyline points="-3,0 3,0" stroke-width="1.0"/>
+        <polyline points="0,-3 0,3" stroke-width="1.0"/>
+      </g>
+    </symbol>
+  </defs>
+
+  <def xlink:href="#module3" var-name="VELO"/>
+
+  <g transform="translate(0 25)">
+    <text font-size="6pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 0)">LEVEL</text>
+    <def id="LEVEL_PARAM" xlink:href="#knob26" transform="translate(9.5 9.5)"/>
+    <def xlink:href="#dial-linear" transform="translate(0 0)"/>
+    <def id="LEVEL_ATTENUATOR_PARAM" xlink:href="#knob16" transform="translate(14.5 50)"/>
+    <def xlink:href="#dial-centertick" transform="translate(2.5 38)"/>
+  </g>
+
+  <g transform="translate(0 104)">
+    <text font-size="6pt" letter-spacing="1px" text-anchor="middle" transform="translate(22.5 0)">V. R.</text>
+    <def id="VELOCITY_PARAM" xlink:href="#knob16" transform="translate(14.5 11)"/>
+    <def xlink:href="#dial-response-velo" transform="translate(2.5 -1)"/>
+  </g>
+
+  <g transform="translate(10.5 144)">
+    <text font-size="5pt" letter-spacing="1px" transform="translate(0 6)">LIN</text>
+    <def id="LINEAR_PARAM" xlink:href="#button-small" transform="translate(15 -1)"/>
+  </g>
+
+  <g transform="translate(0 157)">
+    <g class="io-group" transform="translate(5.5 0)">
+      <rect class="input-background" width="34" height="140" rx="5"/>
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 133)"/>
+      <def id="LEVEL_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(17 35)">LEVEL</text>
+      <def id="CV_INPUT" xlink:href="#input" transform="translate(5 38)"/>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(17 70)">CV</text>
+      <def id="VELOCITY_INPUT" xlink:href="#input" transform="translate(5 73)"/>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(17 105)">VELO</text>
+      <def id="IN_INPUT" xlink:href="#input" transform="translate(5 108)"/>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(17 140)">IN</text>
+    </g>
+    <g class="io-group" transform="translate(5.5 146)">
+      <rect class="output-background-filler" width="34" height="10" transform="translate(0 -3)"/>
+      <rect class="output-background" width="34" height="35" rx="5"/>
+      <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
+      <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
+    </g>
+  </g>
+
+  <!-- <polyline points="0,0 0,380" stroke-width="0.7" stroke="#0f0" transform="translate(36.5 0)" /> -->
+  <!-- <polyline points="0,0 0,380" stroke-width="0.7" stroke="#0f0" transform="translate(8.5 0)" /> -->
+</module>

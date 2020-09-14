@@ -544,6 +544,16 @@
       ]
     },
     {
+      "slug": "Bogaudio-Velo",
+      "name": "VELO",
+      "description": "Triple-CV VCA, for tremolo, MIDI velocity, etc",
+      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#velo",
+      "tags": [
+        "Velo",
+        "Polyphonic"
+      ]
+    },
+    {
       "slug": "Bogaudio-UMix",
       "name": "UMIX",
       "description": "8-input unity mixer",

@@ -39,6 +39,7 @@
 #include "LLFO.hpp"
 #include "LLPG.hpp"
 #include "Lmtr.hpp"
+#include "LLPG.hpp"
 #include "LPG.hpp"
 #include "LVCF.hpp"
 #include "LVCO.hpp"
@@ -100,6 +101,7 @@
 #include "VCF.hpp"
 #include "VCM.hpp"
 #include "VCO.hpp"
+#include "Velo.hpp"
 #include "Vish.hpp"
 #include "VU.hpp"
 #include "Walk.hpp"
@@ -112,7 +114,6 @@
 #include "TestExpander.hpp"
 #include "TestVCF.hpp"
 
-#include "LLPG.hpp"
 //NEW_INCLUDES_HERE
 
 Plugin *pluginInstance;
@@ -177,6 +178,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelXFade);
 	p->addModel(modelVCA);
 	p->addModel(modelVCAmp);
+	p->addModel(modelVelo);
 
 	p->addModel(modelUMix);
 	p->addModel(modelMumix);

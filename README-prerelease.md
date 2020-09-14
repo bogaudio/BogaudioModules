@@ -663,6 +663,26 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the 
 
 ![Mixers screenshot](doc/www/dynamics.png)
 
+#### <a name="velo"></a> VELO
+
+A voltage-controlled amplifier with three CV inputs of three different types: a regular one, a bipolar one (good for tremolo), and one that is inverted and scaled (designed for implementing MIDI velocity, and the reason for the module's name).  
+
+The LEVEL knob and CV words as on <a href="#VCA">VCA</a>; the knob sets the base VCA level if the LEVEL input is not patched; if it is patched, it expects a unipolar (0-10V) signal, which sets the LEVEL up to the position of the knob (which is to say that the knob attenuates the CV).  The LEVEL input is the place to patch in an envelope.
+
+The CV input takes a bipolar (+/-5V) signal, subject to attenuversion by the smaller knob below the LEVEL knob.  The resulting value is scaled by whatever value was set by LEVEL (knob and CV) and then added to the LEVEL value (this coupling of CV to LEVEL is enabled is by default, but see below).  The CV input is a good place to patch in an LFO, to achieve tremolo.
+
+The VELO input, if in use, takes a unipolar (0-10V) signal, scales it according to the "V. R." (Velocity Range) knob, inverts it, and adds it to the value produced by the previous two knobs and CVs.  Thus, if the VELO input is 0V, whatever level the VCA would open to according to the values of the previous inputs is reduced by the number of decibels set by the V. R. knob.  When VELO is a full 10V, there is no reduction.  If V. R. is fully clockwise, a 0V VELO input will fully close the VCA.  The VELO input is designed to be patched to the VELO output of Rack's MIDI-CV module.
+
+The suggested patch inputs are meant as examples; of course any inputs can be used.
+
+The LIN toggle, if on, sets the VCA's to a linear-in-amplitude response; when off, the VCA's response to the controls and CVs is linear-in-decibles.
+
+The bipolar CV is optionally coupled to the LEVEL knob/input, but this coupling can be broken by disabling option "Level knob/CV scales bipolar CV" on the context menu.  When the option is enabled, the value of the bipolar CV is scaled by the value of LEVEL (knob and CV) before being added to LEVEL.  Otherwise, it is simply added to level.  In a patch with an envelope to LEVEL and an LFO to CV, having this option on means the LFO's effect will be proportional to the envelope, which is to say the LFO won't open the VCA when the envelope is off.
+
+Using the bipolar CV, it's possible to drive the VCA past unity gain, up to +12db (4x amplitude).  The module soft-clips at +/-12V, and driving the signal into the clipper will result in distortion.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the IN input.
+
 #### <a name="amrm"></a> AM/RM
 
 AM/RM is a ring- and amplitude-modulation effect and CV-controllable variable wave rectifier.

@@ -29,9 +29,9 @@ struct ScaledSquaringParamQuantity : ParamQuantity {
 			return;
 		}
 		displayValue -= displayOffset;
-		float v = fabsf(displayValue) / (float)scale;
+		float v = fabsf(displayValue) / (float)abs(scale);
 		v = powf(v, 0.5f);
-		if (displayValue < 0.0f) {
+		if (displayValue < 0.0f && scale > 0) {
 			setValue(-v);
 		}
 		else {
