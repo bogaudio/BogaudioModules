@@ -337,6 +337,7 @@
       "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#vish",
       "tags": [
         "Envelope generator",
+        "Slew Limiter",
         "Polyphonic"
       ]
     },

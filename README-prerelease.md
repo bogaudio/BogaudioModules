@@ -255,6 +255,55 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the I
 
 A stereo version of EQ.  The left and right inputs are processed by separate filters, but the filter parameters are set by the shared three knobs.
 
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the L input.
+
+#### <a name="lpg"></a> LPG
+
+LPG is a "low-pass gate", where an envelope generator, low-pass filter (LPF) and amplifier (VCA) are combined into a single sound-shaping unit.  It lends itself to percussive or plucked sounds, though longer notes are possible.
+
+LPG's envelope is a version of <a href="#vish">VISH</a>, with simplified controls.  On LPG, the single RESPONSE control (taking a unipolar 0-10V CV at RESP) sets the length and basic shape of the envelope (turning up RESPONSE is equivalent to turning up each of MIN GATE, RISE time and FALL time, proportionally, on VISH).  Enabling LONG rescales the knob for longer envelopes.  The RISE and FALL knobs set the shapes (curves) of the rising and falling envelope segments, as on VISH.  The envelope is triggered whenever LPG receives a rising edge at the TRIG input.
+
+The signal received at IN is processed by an LPF and VCA in series before being sent to OUT.  Each has a BIAS knob, which sets the base level of the cutoff of the LPF, and level of the VCA, when the envelope is off.  The ENV attenuverters control how the envelope affects the LPF and VCA respectively.  Each bias knob also has a CV input, marked LPF and VCA, expecting unipolar (0-10V) signals.
+
+If LINEAR is enabled, the VCA has a linear-in-amplitude response to its BIAS, CV and the envelope; otherwise it has a linear-in-decibels response.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the TRIG input.
+
+#### <a name="llpg"></a> LLPG
+
+LLPG is a compact, simplified version of <a href="#LPG">LPG</a>, where:
+  - There is only one shape knob, which affects both the rise and fall shapes simultaneously.
+  - There are no ENV knobs; the envelope applies in full to both the filter and VCA.
+  - There are no CV inputs, and no linear VCA mode.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the TRIG input.
+
+#### <a name="megagate"></a> MEGAGATE
+
+MEGAGATE generalizes the idea of a low-pass gate, not least by adding a high-pass filter (HPF).  It is also stereo, optionally velocity-sensitive, and has full CV inputs over the filter and VCA biases and envelope routing.  
+
+The envelope circuit is the complete "vactrol-ish" envelope available independently as <a href="#vish">VISH</a> -- see VISH for a description of the envelope controls and CVs on left side of MEGAGATE, aside from VELO and TILT, which further process the envelope before it is sent on to control the filters and VCA.
+
+The VELO input provides control of the level of the envelope before it is processed by TILT.  It is designed to be used to implement velocity from a MIDI controller, but may be used as a general CV.  It expects a 0-10V input voltage: when this 0, the envelope gain is -6dB (it is cut in half); when VELO is 10V the output is unchanged (a 0dB gain). Intermediate values will set the output gain linearly to values between -6dB and 0dB.
+
+The velocity-zero gain of -6dB can be set to other values on the context menu, to make the velocity response stronger (-12dB, -24dB) or weaker (-3dB).  It can also be set to -60dB, such that a 0V velocity input will completely cut the output -- allowing the input to be used as a full-range, though inverted, CV.
+
+TILT is essentially a panner for envelope, turning it into left and right channel envelopes.  Turning the knob towards L will reduce the gain of the right channel envelope, or vice versa.  TILT accepts a bipolar (+/-5V) CV, which attenuated by the knob when in use.
+
+The left and right signal inputs are processed by the LPF, HPF and VCA sections before being sent to their corresponding outputs.  There are independents sets of filters and VCAs for the left and right channels, each set controlled by the same knobs and CVs, but receiving different envelopes as set by TILT.
+
+By default the LPF and HPF filters process the input (whether left or right) in parallel, and their outputs are mixed together to send to the VCA.  If FILTER SER is enabled, the filters are processed serially, with the LPF's output being fed to the HPF, and HPF to the VCA.
+
+Each of the LPF, HPF and VCA sections has a BIAS knob, which sets the base cutoff (for the filters) or level (for the VCA).  Each bias control accepts a bipolar (+/-5V) CV, and each CV has an attenuverter.  Each CV, subject to its attenuverter, is added to its knob's position.
+
+Each section also has an ENV setting, controlling how much of the envelope is applied to the final cutoff or level setting.  Again, each ENV accepts a bipolar CV, with attenuversion, and the CV is added to the knob.
+
+The final cutoff and level settings are determined by scaling (multiplying) the envelope by the ENV value (including CV), and adding that to the BIAS value (including CV).  In no case can the envelope and CVs drive a parameter outside of its knob range.
+
+If LIN VCA is enabled, the VCA has a linear-in-amplitude response to its BIAS, CV and the evelope; otherwise it has a linear-in-decibels response.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the GATE input.
+
 ![Filters screenshot](doc/www/parametric_eqs.png)
 
 #### <a name="peq"></a> PEQ
@@ -373,7 +422,7 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the G
 
 #### <a name="vish"></a> VISH
 
-VISH ("vactrol-ish") is an envelope generator designed to simulate the voltage shapes produced by the [vactrol](https://en.wikipedia.org/wiki/Opto-isolator) control circuits of hardware LPGs (low pass gates).  It lends itself to percussive envelopes, though long envelopes are possible.
+VISH ("vactrol-ish") is an envelope generator designed to simulate the voltage shapes produced by the [vactrol](https://en.wikipedia.org/wiki/Opto-isolator) control circuits of hardware LPGs (low pass gates).  It lends itself to percussive envelopes, though long envelopes are possible.  It is also used as the envelope circuit in <a href="#megagate">MEGAGATE</a>, and in simplified form in <a href="#lpg">LPG</a> and <a href="#llpg">LLPG</a>.
 
 It operates by generating an internal 10V square envelope, which is fed through a slew limiter.
 
@@ -382,15 +431,11 @@ When a trigger is received at the GATE input, or if any rising edge is received 
 When GT TO TRIG is not enabled, then a rising edge at GATE will trigger the internal envelope in the same way, but when the envelope completes, whatever voltage is at GATE is fed to the slew limiter.  This can be used several ways:
   1. If the input is a full 10V, the output will sustain for as long as the GATE input remains high, with a minimum time set by MIN GATE.
   2. If the input is less than 10V, there is an ADSR-like effect, where the output, subject to the slew, will go to 10V for the duration of MIN GATE, then fall to whatever the input is.
-  3. If MIN GATE is zero, the input is simply fed to the slew as-is.
+  3. If MIN GATE is zero, the input is simply fed to the slew limiter as-is.
 
-The slew limiter is controlled by the RISE and FALL controls, which behave exactly like they do on the <a href="#slew">SLEW</a> module.  The time knobs control how much the rise and fall of the internal envelope are slewed, while the shape knob control the shapes of each segment.  The time knobs have unipolar (0-10V) CVs.
+The slew limiter is controlled by the RISE and FALL controls, which behave exactly like they do on the <a href="#slew">SLEW</a> module.  The time knobs control how much the rise and fall of the internal envelope are slewed, while the shape knob control the shapes of each segment.  The time knobs have unipolar (0-10V) CVs, while the shapes can be modulated by the single SHAPE CV input, which takes a bipolar CV (+/-5V), which is added to the value of the rise and fall shape knobs.  Context-menu settings allow the CV to be disabled, or applied inverted, for rise and fall separately.
 
 If the TIMES 10X option is enabled, the values of the rise and fall times, and MIN GATE, subject to their CVs, are multiplied by 10.  Thus fall and MIN GATE can go to a maximum of 10 seconds, and rise to 3 seconds.
-
-The VELO input provides control of the level of the final output.  It can be used to implement velocity from a MIDI controller, or to add accents, or otherwise manipulate the output.  It expects a 0-10V input voltage: when this 0, the output gain is -6dB (it is cut in half); when VELO is 10V the output is unchanged (a 0dB gain). Intermediate values will set the output gain linearly to values between -6dB and 0dB.
-
-The velocity-zero gain of -6dB can be set to other values on the context menu, to make the velocity response stronger (-12dB, -24dB) or weaker (-3dB).  It can also be set to -60dB, such that a 0V velocity input will completely cut the output.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the GATE input.
 

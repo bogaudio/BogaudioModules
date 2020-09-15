@@ -136,4 +136,4 @@ struct VishWidget : LPGEnvBaseWidget {
 	}
 };
 
-Model* modelVish = createModel<Vish, VishWidget>("Bogaudio-Vish", "VISH", "Vactrol-ish envelope generator", "Envelope generator", "Polyphonic");
+Model* modelVish = createModel<Vish, VishWidget>("Bogaudio-Vish", "VISH", "Vactrol-ish envelope generator", "Envelope generator", "Slew Limiter", "Polyphonic");
