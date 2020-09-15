@@ -39,14 +39,14 @@
 
   <g transform="translate(0 248)">
     <rect class="input-background" width="64" height="112" rx="5" transform="translate(5.5 0)"/>
-    <def id="MINIMUM_GATE_INPUT" xlink:href="#input" transform="translate(10.5 3)"/>
-    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 35)">MIN</text>
-    <def id="RISE_INPUT" xlink:href="#input" transform="translate(40.5 3)"/>
-    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(52.5 35)">RISE</text>
-    <def id="VELOCITY_INPUT" xlink:href="#input" transform="translate(10.5 40)"/>
-    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 72)">VELO</text>
-    <def id="FALL_INPUT" xlink:href="#input" transform="translate(40.5 40)"/>
-    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(52.5 72)">FALL</text>
+    <def id="RISE_INPUT" xlink:href="#input" transform="translate(10.5 3)"/>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 35)">RISE</text>
+    <def id="MINIMUM_GATE_INPUT" xlink:href="#input" transform="translate(40.5 3)"/>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(52.5 35)">MIN</text>
+    <def id="FALL_INPUT" xlink:href="#input" transform="translate(10.5 40)"/>
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 72)">FALL</text>
+    <def id="SHAPE_INPUT" xlink:href="#input" transform="translate(40.5 40)"/>
+    <text class="input-label" font-size="5pt" letter-spacing="1.5px" text-anchor="middle" transform="translate(52.5 72)">SHAPE</text>
     <def id="GATE_INPUT" xlink:href="#input" transform="translate(10.5 77)"/>
     <text class="input-label" font-size="5pt" letter-spacing="1px" text-anchor="middle" transform="translate(22.5 109)">GATE</text>
     <g class="io-group" transform="translate(30 72)">

@@ -41,10 +41,11 @@ struct MegaGate : LPGEnvBaseModule {
 		FALL_INPUT,
 		MINIMUM_GATE_INPUT,
 		TILT_INPUT,
-		GATE_INPUT,
 		VELOCITY_INPUT,
+		SHAPE_INPUT,
 		LEFT_INPUT,
 		RIGHT_INPUT,
+		GATE_INPUT,
 		LPF_ENV_INPUT,
 		LPF_BIAS_INPUT,
 		HPF_ENV_INPUT,
@@ -97,6 +98,8 @@ struct MegaGate : LPGEnvBaseModule {
 	Engine* _engines[maxChannels] {};
 	float _sampleRate = 0.0f;
 	float _sampleTime = 0.0f;
+	const float _maxVelocityDb = 0.0f;
+	float _minVelocityDb = -6.0f;
 
 	MegaGate()
 	: LPGEnvBaseModule(GATE_TO_TRIGGER_PARAM, TIMES_10X_PARAM)
@@ -130,6 +133,8 @@ struct MegaGate : LPGEnvBaseModule {
 
 	void reset() override;
 	void sampleRateChange() override;
+	json_t* toJson(json_t* root) override;
+	void fromJson(json_t* root) override;
 	bool active() override;
 	int channels() override;
 	void addChannel(int c) override;

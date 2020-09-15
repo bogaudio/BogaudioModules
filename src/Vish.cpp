@@ -6,10 +6,6 @@ void Vish::Engine::reset() {
 	gatePulseGen.process(10.0);
 }
 
-void Vish::Engine::setSampleRate(float sr) {
-	velocitySL.setParams(sr, 5.0f, 1.0f);
-}
-
 void Vish::reset() {
 	for (int c = 0; c < _channels; ++c) {
 		_engines[c]->reset();
@@ -19,9 +15,6 @@ void Vish::reset() {
 void Vish::sampleRateChange() {
 	_sampleRate = APP->engine->getSampleRate();
 	_sampleTime = APP->engine->getSampleTime();
-	for (int i = 0; i < _channels; ++i) {
-		_engines[i]->setSampleRate(_sampleRate);
-	}
 }
 
 bool Vish::active() {
@@ -35,7 +28,6 @@ int Vish::channels() {
 void Vish::addChannel(int c) {
 	_engines[c] = new Engine();
 	_engines[c]->reset();
-	_engines[c]->setSampleRate(_sampleRate);
 }
 
 void Vish::removeChannel(int c) {
@@ -54,7 +46,11 @@ void Vish::modulateChannel(int c) {
 		&inputs[FALL_INPUT],
 		1000.0f * _timeScale,
 		params[FALL_SHAPE_PARAM],
-		c
+		c,
+		false,
+		&inputs[SHAPE_INPUT],
+		_riseShapeMode,
+		_fallShapeMode
 	);
 }
 
@@ -91,15 +87,8 @@ void Vish::processChannel(const ProcessArgs& args, int c) {
 		gate = in;
 	}
 
-	float velocity = 1.0f;
-	if (inputs[VELOCITY_INPUT].isConnected()) {
-		velocity = clamp(inputs[VELOCITY_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
-	}
-	velocity = e.velocitySL.next(velocity);
-	e.velocityAmp.setLevel(_minVelocityDb + velocity * (_maxVelocityDb - _minVelocityDb));
-
 	outputs[OUT_OUTPUT].setChannels(_channels);
-	outputs[OUT_OUTPUT].setVoltage(e.velocityAmp.next(e.slew.next(gate)), c);
+	outputs[OUT_OUTPUT].setVoltage(e.slew.next(gate), c);
 }
 
 struct VishWidget : LPGEnvBaseWidget {
@@ -120,10 +109,10 @@ struct VishWidget : LPGEnvBaseWidget {
 		auto gateToTriggerParamPosition = Vec(57.0, 220.0);
 		auto times10xParamPosition = Vec(55.0, 234.0);
 
-		auto minimumGateInputPosition = Vec(10.5, 251.0);
-		auto riseInputPosition = Vec(40.5, 251.0);
-		auto velocityInputPosition = Vec(10.5, 288.0);
-		auto fallInputPosition = Vec(40.5, 288.0);
+		auto riseInputPosition = Vec(10.5, 251.0);
+		auto minimumGateInputPosition = Vec(40.5, 251.0);
+		auto fallInputPosition = Vec(10.5, 288.0);
+		auto shapeInputPosition = Vec(40.5, 288.0);
 		auto gateInputPosition = Vec(10.5, 325.0);
 
 		auto outOutputPosition = Vec(40.5, 325.0);
@@ -137,10 +126,10 @@ struct VishWidget : LPGEnvBaseWidget {
 		addParam(createParam<IndicatorButtonGreen9>(gateToTriggerParamPosition, module, Vish::GATE_TO_TRIGGER_PARAM));
 		addParam(createParam<IndicatorButtonGreen9>(times10xParamPosition, module, Vish::TIMES_10X_PARAM));
 
-		addInput(createInput<Port24>(minimumGateInputPosition, module, Vish::MINIMUM_GATE_INPUT));
 		addInput(createInput<Port24>(riseInputPosition, module, Vish::RISE_INPUT));
-		addInput(createInput<Port24>(velocityInputPosition, module, Vish::VELOCITY_INPUT));
+		addInput(createInput<Port24>(minimumGateInputPosition, module, Vish::MINIMUM_GATE_INPUT));
 		addInput(createInput<Port24>(fallInputPosition, module, Vish::FALL_INPUT));
+		addInput(createInput<Port24>(shapeInputPosition, module, Vish::SHAPE_INPUT));
 		addInput(createInput<Port24>(gateInputPosition, module, Vish::GATE_INPUT));
 
 		addOutput(createOutput<Port24>(outOutputPosition, module, Vish::OUT_OUTPUT));

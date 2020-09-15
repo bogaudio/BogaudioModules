@@ -8,8 +8,8 @@ struct LPGEnvBaseModule : BGModule {
 	float _longTimeScale;
 	bool _gateToTrigger = true;
 	float _timeScale = 1.0f;
-	const float _maxVelocityDb = 0.0f;
-	float _minVelocityDb = -6.0f;
+	RiseFallShapedSlewLimiter::ShapeCVMode _riseShapeMode = RiseFallShapedSlewLimiter::INVERTED_SCVM;
+	RiseFallShapedSlewLimiter::ShapeCVMode _fallShapeMode = RiseFallShapedSlewLimiter::ON_SCVM;
 
 	LPGEnvBaseModule(int gateToTriggerParamID = -1, int timeScaleParamID = -1, float longTimeScale = 10.0f)
 	: _gateToTriggerParamID(gateToTriggerParamID)

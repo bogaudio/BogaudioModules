@@ -19,10 +19,10 @@ struct Vish : LPGEnvBaseModule {
 	};
 
 	enum InputsIds {
-		MINIMUM_GATE_INPUT,
 		RISE_INPUT,
-		VELOCITY_INPUT,
+		MINIMUM_GATE_INPUT,
 		FALL_INPUT,
+		SHAPE_INPUT,
 		GATE_INPUT,
 		NUM_INPUTS
 	};
@@ -38,11 +38,8 @@ struct Vish : LPGEnvBaseModule {
 		float gateSeconds = 0.0f;
 		float gateElapsedSeconds = 0.0f;
 		RiseFallShapedSlewLimiter slew;
-		Amplifier velocityAmp;
-		bogaudio::dsp::SlewLimiter velocitySL;
 
 		void reset();
-		void setSampleRate(float sr);
 	};
 
 	Engine* _engines[maxChannels] {};

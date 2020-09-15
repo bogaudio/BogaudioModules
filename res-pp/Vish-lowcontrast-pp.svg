@@ -312,34 +312,34 @@ polyline.knob-tick {
 
   <g transform="translate(0 248)">
     <rect class="input-background" width="64" height="112" rx="5" transform="translate(5.5 0)"/>
-    <g transform="translate(10.5 3)"><svg id="MINIMUM_GATE_INPUT">
+    <g transform="translate(10.5 3)"><svg id="RISE_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 35)">MIN</text>
-    <g transform="translate(40.5 3)"><svg id="RISE_INPUT">
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 35)">RISE</text>
+    <g transform="translate(40.5 3)"><svg id="MINIMUM_GATE_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(52.5 35)">RISE</text>
-    <g transform="translate(10.5 40)"><svg id="VELOCITY_INPUT">
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(52.5 35)">MIN</text>
+    <g transform="translate(10.5 40)"><svg id="FALL_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 72)">VELO</text>
-    <g transform="translate(40.5 40)"><svg id="FALL_INPUT">
+    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 72)">FALL</text>
+    <g transform="translate(40.5 40)"><svg id="SHAPE_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-    <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(52.5 72)">FALL</text>
+    <text class="input-label" font-size="5pt" letter-spacing="1.5px" text-anchor="middle" transform="translate(52.5 72)">SHAPE</text>
     <g transform="translate(10.5 77)"><svg id="GATE_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>

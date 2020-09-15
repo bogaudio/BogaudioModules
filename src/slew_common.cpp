@@ -1,7 +1,7 @@
 
 #include "slew_common.hpp"
 
-float RiseFallShapedSlewLimiter::timeMS(Param& param, Input* input, float maxMS, int c) {
+float RiseFallShapedSlewLimiter::timeMS(int c, Param& param, Input* input, float maxMS) {
 	float time = clamp(param.getValue(), 0.0f, 1.0f);
 	if (input && input->isConnected()) {
 		time *= clamp(input->getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
@@ -9,10 +9,17 @@ float RiseFallShapedSlewLimiter::timeMS(Param& param, Input* input, float maxMS,
 	return time * time * maxMS;
 }
 
-float RiseFallShapedSlewLimiter::shape(Param& param, bool invert) {
-	float shape = clamp(param.getValue(), -1.0f, 1.0f);
+float RiseFallShapedSlewLimiter::shape(int c, Param& param, bool invert, Input* cv, ShapeCVMode mode) {
+	float shape = param.getValue();
 	if (invert) {
 		shape *= -1.0f;
+	}
+	if (cv && mode != OFF_SCVM) {
+		float v = cv->getPolyVoltage(c) / 5.0f;
+		if (mode == INVERTED_SCVM) {
+			v = -v;
+		}
+		shape = clamp(shape + v, -1.0f, 1.0f);
 	}
 	if (shape < 0.0) {
 		shape = 1.0f + shape;
@@ -35,17 +42,20 @@ void RiseFallShapedSlewLimiter::modulate(
 	float fallMaxMS,
 	Param& fallShapeParam,
 	int c,
-	bool invertRiseShape
+	bool invertRiseShape,
+	Input* shapeCV,
+	ShapeCVMode riseShapeMode,
+	ShapeCVMode fallShapeMode
 ) {
 	_rise.setParams(
 		sampleRate,
-		timeMS(riseParam, riseInput, riseMaxMS, c),
-		shape(riseShapeParam, invertRiseShape)
+		timeMS(c, riseParam, riseInput, riseMaxMS),
+		shape(c, riseShapeParam, invertRiseShape, shapeCV, riseShapeMode)
 	);
 	_fall.setParams(
 		sampleRate,
-		timeMS(fallParam, fallInput, fallMaxMS, c),
-		shape(fallShapeParam)
+		timeMS(c, fallParam, fallInput, fallMaxMS),
+		shape(c, fallShapeParam, false, shapeCV, fallShapeMode)
 	);
 }
 

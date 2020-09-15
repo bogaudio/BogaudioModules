@@ -1,17 +1,72 @@
 
 #include "lpg_common.hpp"
 
-#define VELOCITY_MINIMUM_DECIBELS "velocity_minimum_decibels"
+#define RISE_SHAPE_MODE "rise_shape_mode"
+#define FALL_SHAPE_MODE "fall_shape_mode"
+#define SHAPE_MODE_OFF "off"
+#define SHAPE_MODE_ON "on"
+#define SHAPE_MODE_INVERTED "inverted"
 
 json_t* LPGEnvBaseModule::toJson(json_t* root) {
-	json_object_set_new(root, VELOCITY_MINIMUM_DECIBELS, json_real(_minVelocityDb));
+	switch (_riseShapeMode) {
+		case RiseFallShapedSlewLimiter::OFF_SCVM: {
+			json_object_set_new(root, RISE_SHAPE_MODE, json_string(SHAPE_MODE_OFF));
+			break;
+		}
+		case RiseFallShapedSlewLimiter::ON_SCVM: {
+			json_object_set_new(root, RISE_SHAPE_MODE, json_string(SHAPE_MODE_ON));
+			break;
+		}
+		case RiseFallShapedSlewLimiter::INVERTED_SCVM: {
+			json_object_set_new(root, RISE_SHAPE_MODE, json_string(SHAPE_MODE_INVERTED));
+			break;
+		}
+		default:;
+	}
+	switch (_fallShapeMode) {
+		case RiseFallShapedSlewLimiter::OFF_SCVM: {
+			json_object_set_new(root, FALL_SHAPE_MODE, json_string(SHAPE_MODE_OFF));
+			break;
+		}
+		case RiseFallShapedSlewLimiter::ON_SCVM: {
+			json_object_set_new(root, FALL_SHAPE_MODE, json_string(SHAPE_MODE_ON));
+			break;
+		}
+		case RiseFallShapedSlewLimiter::INVERTED_SCVM: {
+			json_object_set_new(root, FALL_SHAPE_MODE, json_string(SHAPE_MODE_INVERTED));
+			break;
+		}
+		default:;
+	}
 	return root;
 }
 
 void LPGEnvBaseModule::fromJson(json_t* root) {
-	json_t* mdb = json_object_get(root, VELOCITY_MINIMUM_DECIBELS);
-	if (mdb) {
-		_minVelocityDb = json_real_value(mdb);
+	json_t* rsm = json_object_get(root, RISE_SHAPE_MODE);
+	if (rsm) {
+		std::string s = json_string_value(rsm);
+		if (s == SHAPE_MODE_OFF) {
+			_riseShapeMode = RiseFallShapedSlewLimiter::OFF_SCVM;
+		}
+		else if (s == SHAPE_MODE_ON) {
+			_riseShapeMode = RiseFallShapedSlewLimiter::ON_SCVM;
+		}
+		else if (s == SHAPE_MODE_INVERTED) {
+			_riseShapeMode = RiseFallShapedSlewLimiter::INVERTED_SCVM;
+		}
+	}
+	json_t* fsm = json_object_get(root, FALL_SHAPE_MODE);
+	if (fsm) {
+		std::string s = json_string_value(fsm);
+		if (s == SHAPE_MODE_OFF) {
+			_fallShapeMode = RiseFallShapedSlewLimiter::OFF_SCVM;
+		}
+		else if (s == SHAPE_MODE_ON) {
+			_fallShapeMode = RiseFallShapedSlewLimiter::ON_SCVM;
+		}
+		else if (s == SHAPE_MODE_INVERTED) {
+			_fallShapeMode = RiseFallShapedSlewLimiter::INVERTED_SCVM;
+		}
 	}
 }
 
@@ -24,11 +79,40 @@ void LPGEnvBaseModule::modulate() {
 void LPGEnvBaseWidget::contextMenu(Menu* menu) {
 	auto m = dynamic_cast<LPGEnvBaseModule*>(module);
 	assert(m);
-	OptionsMenuItem* mi = new OptionsMenuItem("Minimum velocity output gain");
-	mi->addItem(OptionMenuItem("-3db", [m]() { return m->_minVelocityDb == -3.0f; }, [m]() { m->_minVelocityDb = -3.0f; }));
-	mi->addItem(OptionMenuItem("-6db", [m]() { return m->_minVelocityDb == -6.0f; }, [m]() { m->_minVelocityDb = -6.0f; }));
-	mi->addItem(OptionMenuItem("-12db", [m]() { return m->_minVelocityDb == -12.0f; }, [m]() { m->_minVelocityDb = -12.0f; }));
-	mi->addItem(OptionMenuItem("-24db", [m]() { return m->_minVelocityDb == -24.0f; }, [m]() { m->_minVelocityDb = -24.0f; }));
-	mi->addItem(OptionMenuItem("-60db", [m]() { return m->_minVelocityDb == -60.0f; }, [m]() { m->_minVelocityDb = -60.0f; }));
-	OptionsMenuItem::addToMenu(mi, menu);
+
+	OptionsMenuItem* rm = new OptionsMenuItem("Rise shape CV");
+	rm->addItem(OptionMenuItem(
+		"Enable",
+		[m]() { return m->_riseShapeMode == RiseFallShapedSlewLimiter::ON_SCVM; },
+		[m]() { m->_riseShapeMode = RiseFallShapedSlewLimiter::ON_SCVM; }
+	));
+	rm->addItem(OptionMenuItem(
+		"Enable inverted",
+		[m]() { return m->_riseShapeMode == RiseFallShapedSlewLimiter::INVERTED_SCVM; },
+		[m]() { m->_riseShapeMode = RiseFallShapedSlewLimiter::INVERTED_SCVM; }
+	));
+	rm->addItem(OptionMenuItem(
+		"Disable",
+		[m]() { return m->_riseShapeMode == RiseFallShapedSlewLimiter::OFF_SCVM; },
+		[m]() { m->_riseShapeMode = RiseFallShapedSlewLimiter::OFF_SCVM; }
+	));
+	OptionsMenuItem::addToMenu(rm, menu);
+
+	OptionsMenuItem* fm = new OptionsMenuItem("Fall shape CV");
+	fm->addItem(OptionMenuItem(
+		"Enable",
+		[m]() { return m->_fallShapeMode == RiseFallShapedSlewLimiter::ON_SCVM; },
+		[m]() { m->_fallShapeMode = RiseFallShapedSlewLimiter::ON_SCVM; }
+	));
+	fm->addItem(OptionMenuItem(
+		"Enable inverted",
+		[m]() { return m->_fallShapeMode == RiseFallShapedSlewLimiter::INVERTED_SCVM; },
+		[m]() { m->_fallShapeMode = RiseFallShapedSlewLimiter::INVERTED_SCVM; }
+	));
+	fm->addItem(OptionMenuItem(
+		"Disable",
+		[m]() { return m->_fallShapeMode == RiseFallShapedSlewLimiter::OFF_SCVM; },
+		[m]() { m->_fallShapeMode = RiseFallShapedSlewLimiter::OFF_SCVM; }
+	));
+	OptionsMenuItem::addToMenu(fm, menu);
 }

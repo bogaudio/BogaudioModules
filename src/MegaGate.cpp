@@ -2,6 +2,8 @@
 #include "MegaGate.hpp"
 #include "dsp/pitch.hpp"
 
+#define VELOCITY_MINIMUM_DECIBELS "velocity_minimum_decibels"
+
 void MegaGate::Engine::reset() {
 	trigger.reset();
 	gatePulseGen.process(10.0);
@@ -27,6 +29,20 @@ void MegaGate::sampleRateChange() {
 	_sampleTime = APP->engine->getSampleTime();
 	for (int i = 0; i < _channels; ++i) {
 		_engines[i]->setSampleRate(_sampleRate);
+	}
+}
+
+json_t* MegaGate::toJson(json_t* root) {
+	root = LPGEnvBaseModule::toJson(root);
+	json_object_set_new(root, VELOCITY_MINIMUM_DECIBELS, json_real(_minVelocityDb));
+	return root;
+}
+
+void MegaGate::fromJson(json_t* root) {
+	LPGEnvBaseModule::fromJson(root);
+	json_t* mdb = json_object_get(root, VELOCITY_MINIMUM_DECIBELS);
+	if (mdb) {
+		_minVelocityDb = json_real_value(mdb);
 	}
 }
 
@@ -60,7 +76,11 @@ void MegaGate::modulateChannel(int c) {
 		&inputs[FALL_INPUT],
 		1000.0f * _timeScale,
 		params[FALL_SHAPE_PARAM],
-		c
+		c,
+		false,
+		&inputs[SHAPE_INPUT],
+		_riseShapeMode,
+		_fallShapeMode
 	);
 }
 
@@ -329,10 +349,11 @@ struct MegaGateWidget : LPGEnvBaseWidget {
 		auto fallInputPosition = Vec(75.5, 118.0);
 		auto minimumGateInputPosition = Vec(20.5, 220.0);
 		auto tiltInputPosition = Vec(75.5, 220.0);
-		auto gateInputPosition = Vec(8.5, 287.0);
-		auto velocityInputPosition = Vec(38.5, 287.0);
+		auto velocityInputPosition = Vec(8.5, 287.0);
+		auto shapeInputPosition = Vec(38.5, 287.0);
 		auto leftInputPosition = Vec(68.5, 287.0);
 		auto rightInputPosition = Vec(98.5, 287.0);
+		auto gateInputPosition = Vec(8.5, 324.0);
 		auto lpfEnvInputPosition = Vec(139.0, 106.0);
 		auto lpfBiasInputPosition = Vec(189.0, 106.0);
 		auto hpfEnvInputPosition = Vec(139.0, 221.0);
@@ -383,10 +404,11 @@ struct MegaGateWidget : LPGEnvBaseWidget {
 		addInput(createInput<Port24>(fallInputPosition, module, MegaGate::FALL_INPUT));
 		addInput(createInput<Port24>(minimumGateInputPosition, module, MegaGate::MINIMUM_GATE_INPUT));
 		addInput(createInput<Port24>(tiltInputPosition, module, MegaGate::TILT_INPUT));
-		addInput(createInput<Port24>(gateInputPosition, module, MegaGate::GATE_INPUT));
 		addInput(createInput<Port24>(velocityInputPosition, module, MegaGate::VELOCITY_INPUT));
+		addInput(createInput<Port24>(shapeInputPosition, module, MegaGate::SHAPE_INPUT));
 		addInput(createInput<Port24>(leftInputPosition, module, MegaGate::LEFT_INPUT));
 		addInput(createInput<Port24>(rightInputPosition, module, MegaGate::RIGHT_INPUT));
+		addInput(createInput<Port24>(gateInputPosition, module, MegaGate::GATE_INPUT));
 		addInput(createInput<Port24>(lpfEnvInputPosition, module, MegaGate::LPF_ENV_INPUT));
 		addInput(createInput<Port24>(lpfBiasInputPosition, module, MegaGate::LPF_BIAS_INPUT));
 		addInput(createInput<Port24>(hpfEnvInputPosition, module, MegaGate::HPF_ENV_INPUT));
@@ -406,6 +428,19 @@ struct MegaGateWidget : LPGEnvBaseWidget {
 		addChild(createLight<SmallLight<GreenLight>>(hpfPoles2LightPosition, module, MegaGate::HPF_POLES_2_LIGHT));
 		addChild(createLight<SmallLight<GreenLight>>(hpfPoles3LightPosition, module, MegaGate::HPF_POLES_3_LIGHT));
 		addChild(createLight<SmallLight<GreenLight>>(hpfPoles4LightPosition, module, MegaGate::HPF_POLES_4_LIGHT));
+	}
+
+	void contextMenu(Menu* menu) {
+		LPGEnvBaseWidget::contextMenu(menu);
+		auto m = dynamic_cast<MegaGate*>(module);
+		assert(m);
+		OptionsMenuItem* mi = new OptionsMenuItem("Minimum velocity output gain");
+		mi->addItem(OptionMenuItem("-3db", [m]() { return m->_minVelocityDb == -3.0f; }, [m]() { m->_minVelocityDb = -3.0f; }));
+		mi->addItem(OptionMenuItem("-6db", [m]() { return m->_minVelocityDb == -6.0f; }, [m]() { m->_minVelocityDb = -6.0f; }));
+		mi->addItem(OptionMenuItem("-12db", [m]() { return m->_minVelocityDb == -12.0f; }, [m]() { m->_minVelocityDb = -12.0f; }));
+		mi->addItem(OptionMenuItem("-24db", [m]() { return m->_minVelocityDb == -24.0f; }, [m]() { m->_minVelocityDb = -24.0f; }));
+		mi->addItem(OptionMenuItem("-60db", [m]() { return m->_minVelocityDb == -60.0f; }, [m]() { m->_minVelocityDb = -60.0f; }));
+		OptionsMenuItem::addToMenu(mi, menu);
 	}
 };
 

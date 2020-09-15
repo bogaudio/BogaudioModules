@@ -385,23 +385,23 @@ polyline.knob-tick {
     </g>
 
     <g class="io-group" transform="translate(8 284)">
-      <rect class="input-background" width="120" height="37.5" rx="5" transform="translate(7 0)"/>
+      <rect class="input-background" width="120" height="76.5" rx="5" transform="translate(7 0)"/>
       <rect class="input-background-filler" width="10" height="10" transform="translate(117 27.5)"/>
 
-      <g transform="translate(10.5 3)"><svg id="GATE_INPUT">
+      <g transform="translate(10.5 3)"><svg id="VELOCITY_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 35)">GATE</text>
-      <g transform="translate(40.5 3)"><svg id="VELOCITY_INPUT">
+      <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 35)">VELO</text>
+      <g transform="translate(40.5 3)"><svg id="SHAPE_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(52.5 35)">VELO</text>
+      <text class="input-label" font-size="5pt" letter-spacing="1.5px" text-anchor="middle" transform="translate(52.5 35)">SHAPE</text>
       <g transform="translate(70.5 3)"><svg id="LEFT_INPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
@@ -416,10 +416,18 @@ polyline.knob-tick {
       </g>
     </svg></g>
       <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(112.5 35)">R(L)</text>
+      <g transform="translate(10.5 40)"><svg id="GATE_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(22.5 72)">GATE</text>
 
       <g transform="translate(30, 0)">
         <rect class="output-background" width="90" height="39" rx="5" transform="translate(7 37.5)"/>
         <rect class="output-background-filler" width="90" height="10" transform="translate(7 37.5)"/>
+        <rect class="output-background-filler" width="10" height="10" transform="translate(7 66.5)"/>
         <g transform="translate(10.5 40)"><svg id="ENV_OUTPUT">
       <g transform="translate(12 12)">
         <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#f00" fill="#f00"/>
