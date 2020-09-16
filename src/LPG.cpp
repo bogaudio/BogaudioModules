@@ -62,11 +62,11 @@ void LPG::modulateChannel(int c) {
 		_sampleRate,
 		params[RESPONSE_PARAM],
 		&inputs[RESPONSE_INPUT],
-		300.0f * _timeScale,
+		100.0f * _timeScale,
 		params[RISE_SHAPE_PARAM],
 		params[RESPONSE_PARAM],
 		&inputs[RESPONSE_INPUT],
-		1000.0f * _timeScale,
+		2000.0f * _timeScale,
 		params[FALL_SHAPE_PARAM],
 		c
 	);
@@ -81,7 +81,7 @@ void LPG::processChannel(const ProcessArgs& args, int c) {
 			time *= clamp(inputs[RESPONSE_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 		}
 		time *= time;
-		time *= _timeScale * 0.5f;
+		time *= _timeScale * 0.1f;
 		time += 0.01f;
 		e.gateSeconds = time;
 

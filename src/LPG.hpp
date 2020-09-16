@@ -60,10 +60,10 @@ struct LPG : LPGEnvBaseModule {
 	: LPGEnvBaseModule(-1, LONG_PARAM, 5.0f)
 	{
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
-		configParam(RESPONSE_PARAM, 0.0f, 1.0f, 0.2f, "Response", "%", 0.0f, 100.0f);
+		configParam(RESPONSE_PARAM, 0.0f, 1.0f, 0.5f, "Response", "%", 0.0f, 100.0f);
 		configParam(LONG_PARAM, 0.0f, 1.0f, 0.0f, "Long mode");
 		configParam(RISE_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "Rise shape");
-		configParam(FALL_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "Fall shape");
+		configParam(FALL_SHAPE_PARAM, -1.0f, 1.0f, -0.5f, "Fall shape");
 		configParam(LPF_ENV_PARAM, -1.0f, 1.0f, 0.8f, "LPF envelope amount", "%", 0.0f, 100.0f);
 		configParam<ScaledSquaringParamQuantity<(int)maxFilterCutoff>>(LPF_BIAS_PARAM, 0.0f, 1.0f, 0.0f, "LPF cutoff", " HZ");
 		configParam(VCA_ENV_PARAM, -1.0f, 1.0f, 1.0f, "VCA envelope amount", "%", 0.0f, 100.0f);

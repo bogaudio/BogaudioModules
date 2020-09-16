@@ -48,8 +48,8 @@ struct LLPG : BGModule {
 
 	LLPG() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
-		configParam(RESPONSE_PARAM, 0.0f, 1.0f, 0.2f, "Response", "%", 0.0f, 100.0f);
-		configParam(SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "Shape");
+		configParam(RESPONSE_PARAM, 0.0f, 1.0f, 0.5f, "Response", "%", 0.0f, 100.0f);
+		configParam(SHAPE_PARAM, -1.0f, 1.0f, -0.25f, "Shape");
 		configParam<ScaledSquaringParamQuantity<(int)maxFilterCutoff>>(LPF_PARAM, 0.0f, 1.0f, 0.0f, "LPF cutoff", " HZ");
 		configParam(VCA_PARAM, 0.0f, 1.0f, 0.0f, "VCA level", "%", 0.0f, 100.0f);
 	}

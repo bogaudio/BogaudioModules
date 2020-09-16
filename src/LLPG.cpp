@@ -47,11 +47,11 @@ void LLPG::modulateChannel(int c) {
 		_sampleRate,
 		params[RESPONSE_PARAM],
 		NULL,
-		300.0f,
+		100.0f,
 		params[SHAPE_PARAM],
 		params[RESPONSE_PARAM],
 		NULL,
-		1000.0f,
+		2000.0f,
 		params[SHAPE_PARAM],
 		c,
 		true
@@ -64,6 +64,7 @@ void LLPG::processChannel(const ProcessArgs& args, int c) {
 	if (e.trigger.process(inputs[GATE_INPUT].getPolyVoltage(c))) {
 		float time = clamp(params[RESPONSE_PARAM].getValue(), 0.0f, 1.0f);
 		time *= time;
+		time *= 0.1f;
 		time += 0.01f;
 		e.gateSeconds = time;
 
@@ -103,7 +104,7 @@ void LLPG::processChannel(const ProcessArgs& args, int c) {
 	e.vca.setLevel(Amplifier::minDecibels * (1.0f - level));
 	out = e.vca.next(out);
 	outputs[OUT_OUTPUT].setChannels(_channels);
-	outputs[OUT_OUTPUT].setVoltage(env * 10.0f, c);
+	outputs[OUT_OUTPUT].setVoltage(out, c);
 }
 
 struct LLPGWidget : BGModuleWidget {
