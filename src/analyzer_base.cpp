@@ -597,3 +597,15 @@ int AnalyzerDisplay::binValueToHeight(float value, float rangeDb) {
 	value /= rangeDb;
 	return roundf(_graphSize.y * value);
 }
+
+float AnalyzerDisplay::binValueToDb(float value) {
+	value /= 10.0f; // arbitrarily use 5.0f as reference "maximum" baseline signal (e.g. raw output of an oscillator)...but signals are +/-5, so 10 total.
+	value = powf(value, 0.5f); // undoing magnitude scaling of levels back from the FFT?
+	return amplitudeToDecibels(value);
+}
+
+float AnalyzerDisplay::dbToBinValue(float db) {
+	db = decibelsToAmplitude(db);
+	db *= db;
+	return db * 10.0f;
+}

@@ -3,6 +3,7 @@
 #include "bogaudio.hpp"
 #include "analyzer_base.hpp"
 #include "dsp/oscillator.hpp"
+#include "dsp/signal.hpp"
 
 extern Model* modelRanalyzer;
 
@@ -37,6 +38,12 @@ struct Ranalyzer : AnalyzerBase {
 		EOC_OUTPUT,
 		SEND_OUTPUT,
 		NUM_OUTPUTS
+	};
+
+	enum Traces {
+		ALL_TRACES,
+		TEST_RETURN_TRACES,
+		ANALYSIS_TRACES
 	};
 
 	static constexpr float minFrequency = 1.0f;
@@ -86,8 +93,10 @@ struct Ranalyzer : AnalyzerBase {
 	int _bufferCount = 0;
 	HistoryBuffer<float> _inputBuffer;
 	float _range = 0.0f;
-	bool _displayAll = true;
+	Traces _displayTraces = ALL_TRACES;
 	ChannelDisplayListener* _channelDisplayListener = NULL;
+	bool _triggerOnLoad = true;
+	Timer* _initialDelay = NULL;
 
 	Ranalyzer()
 	: AnalyzerBase(3, NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS)
@@ -101,6 +110,12 @@ struct Ranalyzer : AnalyzerBase {
 		configParam(DELAY_PARAM, 2.0f, (float)maxResponseDelay, 2.0f, "Return sample delay");
 
 		_skinnable = false;
+		_initialDelay = new Timer(APP->engine->getSampleRate(), 0.01f);
+	}
+	virtual ~Ranalyzer() {
+		if (_initialDelay) {
+			delete _initialDelay;
+		}
 	}
 
 	void reset() override;
@@ -109,7 +124,7 @@ struct Ranalyzer : AnalyzerBase {
 	void fromJson(json_t* root) override;
 	void modulate() override;
 	void processAll(const ProcessArgs& args) override;
-	void setDisplayAll(bool displayAll);
+	void setDisplayTraces(Traces traces);
 	void setChannelDisplayListener(ChannelDisplayListener* listener);
 };
 

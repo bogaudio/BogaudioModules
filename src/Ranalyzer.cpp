@@ -1,11 +1,12 @@
 
 #include "Ranalyzer.hpp"
 
-// #define ANALYSIS_TRACE 1
-
 #define RANGE_KEY "range"
 #define RANGE_DB_KEY "range_db"
-#define DISPLAY_ALL "display_all"
+#define TRIGGER_ON_LOAD "triggerOnLoad"
+#define DISPLAY_TRACES "display_traces"
+#define DISPLAY_TRACES_TEST_RETURN "test_return"
+#define DISPLAY_TRACES_ANALYSIS "analysis"
 
 void Ranalyzer::reset() {
 	_trigger.reset();
@@ -33,9 +34,19 @@ void Ranalyzer::sampleRateChange() {
 json_t* Ranalyzer::toJson(json_t* root) {
 	json_object_set_new(root, RANGE_KEY, json_real(_range));
 	json_object_set_new(root, RANGE_DB_KEY, json_real(_rangeDb));
-#ifdef ANALYSIS_TRACE
-	json_object_set_new(root, DISPLAY_ALL, json_boolean(_displayAll));
-#endif
+	json_object_set_new(root, TRIGGER_ON_LOAD, json_boolean(_triggerOnLoad));
+
+	switch (_displayTraces) {
+		case ALL_TRACES: break;
+		case TEST_RETURN_TRACES: {
+			json_object_set_new(root, DISPLAY_TRACES, json_string(DISPLAY_TRACES_TEST_RETURN));
+			break;
+		}
+		case ANALYSIS_TRACES: {
+			json_object_set_new(root, DISPLAY_TRACES, json_string(DISPLAY_TRACES_ANALYSIS));
+			break;
+		}
+	}
 	return root;
 }
 
@@ -50,12 +61,21 @@ void Ranalyzer::fromJson(json_t* root) {
 		_rangeDb = clamp(json_real_value(jrd), 80.0f, 140.0f);
 	}
 
-#ifdef ANALYSIS_TRACE
-	json_t* da = json_object_get(root, DISPLAY_ALL);
-	if (da) {
-		setDisplayAll(json_boolean_value(da));
+	json_t* t = json_object_get(root, TRIGGER_ON_LOAD);
+	if (t) {
+		_triggerOnLoad = json_boolean_value(t);
 	}
-#endif
+
+	json_t* dt = json_object_get(root, DISPLAY_TRACES);
+	if (dt) {
+		std::string dts = json_string_value(dt);
+		if (dts == DISPLAY_TRACES_TEST_RETURN) {
+			setDisplayTraces(TEST_RETURN_TRACES);
+		}
+		else if (dts == DISPLAY_TRACES_ANALYSIS) {
+			setDisplayTraces(ANALYSIS_TRACES);
+		}
+	}
 }
 
 void Ranalyzer::modulate() {
@@ -84,9 +104,16 @@ void Ranalyzer::modulate() {
 }
 
 void Ranalyzer::processAll(const ProcessArgs& args) {
+	bool maybeTriggerOnLoad = false;
+	if (_initialDelay && !_initialDelay->next()) {
+		maybeTriggerOnLoad = true;
+		delete _initialDelay;
+		_initialDelay = NULL;
+	}
+
 	bool triggered = _trigger.process(params[TRIGGER_PARAM].getValue()*5.0f + inputs[TRIGGER_INPUT].getVoltage());
-	if (!_run) {
-		if (triggered || _loop) {
+	if (!_run && !_flush) {
+		if (triggered || _loop || (maybeTriggerOnLoad && _triggerOnLoad)) {
 			_run = true;
 			_bufferCount = _currentReturnSampleDelay = _returnSampleDelay;
 			_chirp.reset();
@@ -133,14 +160,22 @@ void Ranalyzer::processAll(const ProcessArgs& args) {
 	outputs[EOC_OUTPUT].setVoltage(_eocPulseGen.process(_sampleTime) * 5.0f);
 }
 
-void Ranalyzer::setDisplayAll(bool displayAll) {
-	_displayAll = displayAll;
+void Ranalyzer::setDisplayTraces(Traces traces) {
+	_displayTraces = traces;
 	if (_channelDisplayListener) {
-		if (_displayAll) {
-			_channelDisplayListener->displayChannels(true, true, true);
-		}
-		else {
-			_channelDisplayListener->displayChannels(false, false, true);
+		switch (_displayTraces) {
+			case ALL_TRACES: {
+				_channelDisplayListener->displayChannels(true, true, true);
+				break;
+			}
+			case TEST_RETURN_TRACES: {
+				_channelDisplayListener->displayChannels(true, true, false);
+				break;
+			}
+			case ANALYSIS_TRACES: {
+				_channelDisplayListener->displayChannels(false, false, true);
+				break;
+			}
 		}
 	}
 }
@@ -156,12 +191,9 @@ struct AnalysisBinsReader : AnalyzerDisplay::BinsReader {
 	float at(int i) override {
 		assert(_base->_core._nChannels == 3);
 
-		float test = _base->_core.getBins(0)[i];
-		float response = _base->_core.getBins(1)[i];
-		if (test > 0.0001f) {
-			return response / test;
-		}
-		return response;
+		float test = AnalyzerDisplay::binValueToDb(_base->_core.getBins(0)[i]);
+		float response = AnalyzerDisplay::binValueToDb(_base->_core.getBins(1)[i]);
+		return AnalyzerDisplay::dbToBinValue(response - test);
 	}
 };
 
@@ -175,6 +207,41 @@ struct RanalyzerDisplay : AnalyzerDisplay, ChannelDisplayListener {
 		displayChannel(0, c0);
 		displayChannel(1, c1);
 		displayChannel(2, c2);
+	}
+
+	void drawHeader(const DrawArgs& args) override {
+		nvgSave(args.vg);
+
+		const int textY = -4;
+		const int charPx = 5;
+		const int sLen = 100;
+		char s[sLen];
+		int x = _insetAround + 2;
+
+		int n = snprintf(s, sLen, "Bin width %0.1f HZ", APP->engine->getSampleRate() / (float)(_module->_core._size / _module->_core._binAverageN));
+		drawText(args, s, x, _insetTop + textY);
+		x += n * charPx + 20;
+
+		const char* labels[3] = { "TEST", "RESPONSE", "ANALYSIS" };
+		for (int i = 0; i < 3; ++i) {
+			auto color = _channelColors[i % channelColorsN];
+			nvgStrokeColor(args.vg, color);
+			nvgStrokeWidth(args.vg, std::max(1.0f, 3.0f - getZoom()));
+			nvgBeginPath(args.vg);
+			float lineY = _insetTop - 7.0f;
+			nvgMoveTo(args.vg, x, lineY);
+			x += 10.0f;
+			nvgLineTo(args.vg, x, lineY);
+			x += 3.0f;
+			nvgStroke(args.vg);
+
+			if (_displayChannel[i]) {
+				drawText(args, labels[i], x, _insetTop + textY, 0.0, &color);
+			}
+			x += strlen(labels[i]) * charPx + 20;
+		}
+
+		nvgRestore(args.vg);
 	}
 };
 
@@ -193,12 +260,10 @@ struct RanalyzerWidget : BGModuleWidget {
 			auto display = new RanalyzerDisplay(module, size, false);
 			display->box.pos = inset;
 			display->box.size = size;
-#ifdef ANALYSIS_TRACE
 			if (module) {
 				display->setChannelBinsReader(2, new AnalysisBinsReader(module));
 				module->setChannelDisplayListener(display);
 			}
-#endif
 			addChild(display);
 		}
 
@@ -270,14 +335,14 @@ struct RanalyzerWidget : BGModuleWidget {
 			mi->addItem(OptionMenuItem("To -120dB", [a]() { return a->_rangeDb == 140.0f; }, [a]() { a->_rangeDb = 140.0f; }));
 			OptionsMenuItem::addToMenu(mi, menu);
 		}
-#ifdef ANALYSIS_TRACE
 		{
 			OptionsMenuItem* mi = new OptionsMenuItem("Display traces");
-			mi->addItem(OptionMenuItem("All", [a]() { return a->_displayAll; }, [a]() { a->setDisplayAll(true); }));
-			mi->addItem(OptionMenuItem("Analysis only", [a]() { return !a->_displayAll; }, [a]() { a->setDisplayAll(false); }));
+			mi->addItem(OptionMenuItem("All", [a]() { return a->_displayTraces == Ranalyzer::ALL_TRACES; }, [a]() { a->setDisplayTraces(Ranalyzer::ALL_TRACES); }));
+			mi->addItem(OptionMenuItem("Analysis only", [a]() { return a->_displayTraces == Ranalyzer::ANALYSIS_TRACES; }, [a]() { a->setDisplayTraces(Ranalyzer::ANALYSIS_TRACES); }));
+			mi->addItem(OptionMenuItem("Test/return only", [a]() { return a->_displayTraces == Ranalyzer::TEST_RETURN_TRACES; }, [a]() { a->setDisplayTraces(Ranalyzer::TEST_RETURN_TRACES); }));
 			OptionsMenuItem::addToMenu(mi, menu);
 		}
-#endif
+		menu->addChild(new BoolOptionMenuItem("Trigger on load", [a]() { return &a->_triggerOnLoad; }));
 	}
 };
 

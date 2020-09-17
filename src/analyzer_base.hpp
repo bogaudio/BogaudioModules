@@ -226,13 +226,15 @@ struct AnalyzerDisplay : TransparentWidget {
 	void displayChannel(int channel, bool display);
 	void draw(const DrawArgs& args) override;
 	void drawBackground(const DrawArgs& args);
-	void drawHeader(const DrawArgs& args);
+	virtual void drawHeader(const DrawArgs& args);
 	void drawYAxis(const DrawArgs& args, float strokeWidth, float rangeDb);
 	void drawXAxis(const DrawArgs& args, float strokeWidth, float rangeMinHz, float rangeMaxHz);
 	void drawXAxisLine(const DrawArgs& args, float hz, float rangeMinHz, float rangeMaxHz);
 	void drawGraph(const DrawArgs& args, BinsReader& bins, NVGcolor color, float strokeWidth, float rangeMinHz, float rangeMaxHz, float rangeDb);
 	void drawText(const DrawArgs& args, const char* s, float x, float y, float rotation = 0.0, const NVGcolor* color = NULL);
 	int binValueToHeight(float value, float rangeDb);
+	static float binValueToDb(float value);
+	static float dbToBinValue(float db);
 };
 
 } // namespace bogaudio
