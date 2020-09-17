@@ -960,7 +960,7 @@ RANALYZER is a frequency response analyzer: it passes a test signal to another m
 
 **This module is primarily useful to plugin developers**, especially when developing filters.  Of course anyone may use it, to investigate the response of some module, or to tune a filter bank, or what have you.
 
-By default, will produce a one-shot test signal, emitted at SEND, upon receipt of a trigger (manual or CV) at the TRIG inputs.  The duration of the test signal is always 16384 samples (32768 if Rack's sample rate is 192K or higher); thus the duration in time will depend on Rack's current sample rate.  The same number of samples is collected from RETURN, if it is patched.  Both signals are converted to the frequency domain and displayed (test in green, response in magenta).
+By default, will produce a one-shot test signal, emitted at SEND, upon receipt of a trigger (manual or CV) at the TRIG inputs.  The duration of the test signal is always 16384 samples (32768 if Rack's sample rate is 192K or higher) -- the duration in time will depend on Rack's current sample rate.  The same number of samples is collected from RETURN, if it is patched.  Both signals are converted to the frequency domain and displayed (test in green, response in magenta), along with an analysis trace (orange), which shows the difference between the response and the test signals, in the frequency domain, in decibels.  The context-menu option "Display traces" controls which of the traces are displayed.
 
 The test signal is a swept sine wave (or "chirp", see <a href="#chirp">CHIRP</a>), with an exponential (if the EXP toggle is on) or linear sweep.  The start and end frequencies for sine sweep are set by the FREQ1 and FREQ2 knobs, each with a range in hertz from 1 to the Nyquist rate (half the sampling rate); if FREQ1 is less than FREQ2 the sweep is upwards in frequency, downwards otherwise.  
 
@@ -969,6 +969,8 @@ Patching an input to TEST overrides the swept sine generator; the TEST input is 
 If the LOOP toggle is enabled, the module continuously outputs, collects and displays signals, in 16384-sample blocks.  Regardless of whether the collection cycle is triggered or looped, a pulse is emitted at the TRIG output when the cycle begins, and at the EOC output when it ends.
 
 The R. DELAY (response delay) control allows sample-accurate alignment of the test and response signals for analysis.  When SEND is patched directly to the module to be analyzed, and that module's output is patched directly back to RETURN, and the analyzed module does not impose an internal sample delay, then the returned signal will be received by RANALYZER two samples later, relative to the test sample RANALYZER emits.  More complicated patches between SEND and RETURN, or modules under test which have internal sample delays, can increase this, in which case R. DELAY may be set to whatever this actual sample delay is.  In practice, getting this right will likely not be very important.
+
+The context-menu option "Trigger on load", if enabled, will auto-trigger the test cycle when the module loads or when the patch loads.  This has no effect if LOOP is enabled when the patch loads.
 
 The display's frequency and amplitude ranges can be set to a few different values on the context menu.
 

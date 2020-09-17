@@ -113,7 +113,7 @@ void Ranalyzer::processAll(const ProcessArgs& args) {
 
 	bool triggered = _trigger.process(params[TRIGGER_PARAM].getValue()*5.0f + inputs[TRIGGER_INPUT].getVoltage());
 	if (!_run && !_flush) {
-		if (triggered || _loop || (maybeTriggerOnLoad && _triggerOnLoad)) {
+		if (triggered || (!_initialDelay && _loop) || (maybeTriggerOnLoad && _triggerOnLoad)) {
 			_run = true;
 			_bufferCount = _currentReturnSampleDelay = _returnSampleDelay;
 			_chirp.reset();
