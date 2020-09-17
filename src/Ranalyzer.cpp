@@ -224,21 +224,21 @@ struct RanalyzerDisplay : AnalyzerDisplay, ChannelDisplayListener {
 
 		const char* labels[3] = { "TEST", "RESPONSE", "ANALYSIS" };
 		for (int i = 0; i < 3; ++i) {
-			auto color = _channelColors[i % channelColorsN];
-			nvgStrokeColor(args.vg, color);
-			nvgStrokeWidth(args.vg, std::max(1.0f, 3.0f - getZoom()));
-			nvgBeginPath(args.vg);
-			float lineY = _insetTop - 7.0f;
-			nvgMoveTo(args.vg, x, lineY);
-			x += 10.0f;
-			nvgLineTo(args.vg, x, lineY);
-			x += 3.0f;
-			nvgStroke(args.vg);
-
 			if (_displayChannel[i]) {
+				auto color = _channelColors[i % channelColorsN];
+				nvgStrokeColor(args.vg, color);
+				nvgStrokeWidth(args.vg, std::max(1.0f, 3.0f - getZoom()));
+				nvgBeginPath(args.vg);
+				float lineY = _insetTop - 7.0f;
+				nvgMoveTo(args.vg, x, lineY);
+				x += 10.0f;
+				nvgLineTo(args.vg, x, lineY);
+				x += 3.0f;
+				nvgStroke(args.vg);
+
 				drawText(args, labels[i], x, _insetTop + textY, 0.0, &color);
+				x += strlen(labels[i]) * charPx + 20;
 			}
-			x += strlen(labels[i]) * charPx + 20;
 		}
 
 		nvgRestore(args.vg);
