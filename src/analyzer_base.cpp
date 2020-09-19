@@ -188,15 +188,18 @@ float AnalyzerCore::getPeak(int channel) {
 
 	const int bandsPerBin = _size / _binsN;
 	const float fWidth = (APP->engine->getSampleRate() / 2.0f) / (float)(_size / bandsPerBin);
-	float sum = 0.0f;
-	float sumWeights = 0.0f;
-	int i = std::max(0, maxBin - 1);
-	int j = std::max(_binsN - 1, maxBin + 1);
-	for (; i <= j; ++i) {
-		sum += bins[i] * fWidth * i;
-		sumWeights += bins[i];
-	}
-	return sum / sumWeights;
+
+	return (maxBin + 0.5f)*fWidth;
+	// ??
+	// float sum = 0.0f;
+	// float sumWeights = 0.0f;
+	// int i = std::max(0, maxBin - 1);
+	// int j = std::max(_binsN - 1, maxBin + 1);
+	// for (; i <= j; ++i) {
+	// 	sum += bins[i] * fWidth * i;
+	// 	sumWeights += bins[i];
+	// }
+	// return sum / sumWeights;
 }
 
 void AnalyzerCore::stepChannel(int channelIndex, Input& input) {
