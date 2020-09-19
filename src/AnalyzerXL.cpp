@@ -3,8 +3,6 @@
 
 #include "AnalyzerXL.hpp"
 
-#define RANGE_KEY "range"
-#define RANGE_DB_KEY "range_db"
 #define SMOOTH_KEY "smooth"
 #define QUALITY_KEY "quality"
 #define QUALITY_GOOD_KEY "good"
@@ -25,9 +23,11 @@ void AnalyzerXL::sampleRateChange() {
 }
 
 json_t* AnalyzerXL::toJson(json_t* root) {
-	json_object_set_new(root, RANGE_KEY, json_real(_range));
-	json_object_set_new(root, RANGE_DB_KEY, json_real(_rangeDb));
+	frequencyPlotToJson(root);
+	frequencyRangeToJson(root);
+	amplitudePlotToJson(root);
 	json_object_set_new(root, SMOOTH_KEY, json_real(_smooth));
+
 	switch (_quality) {
 		case AnalyzerCore::QUALITY_GOOD: {
 			json_object_set_new(root, QUALITY_KEY, json_string(QUALITY_GOOD_KEY));
@@ -47,6 +47,7 @@ json_t* AnalyzerXL::toJson(json_t* root) {
 		}
 		default:;
 	}
+
 	switch (_window) {
 		case AnalyzerCore::WINDOW_NONE: {
 			json_object_set_new(root, WINDOW_KEY, json_string(WINDOW_NONE_KEY));
@@ -61,19 +62,14 @@ json_t* AnalyzerXL::toJson(json_t* root) {
 			break;
 		}
 	}
+
 	return root;
 }
 
 void AnalyzerXL::fromJson(json_t* root) {
-	json_t* jr = json_object_get(root, RANGE_KEY);
-	if (jr) {
-		_range = clamp(json_real_value(jr), -0.9f, 0.8f);
-	}
-
-	json_t* jrd = json_object_get(root, RANGE_DB_KEY);
-	if (jrd) {
-		_rangeDb = clamp(json_real_value(jrd), 80.0f, 140.0f);
-	}
+	frequencyPlotFromJson(root);
+	frequencyRangeFromJson(root);
+	amplitudePlotFromJson(root);
 
 	json_t* js = json_object_get(root, SMOOTH_KEY);
 	if (js) {
@@ -133,7 +129,7 @@ void AnalyzerXL::processChannel(const ProcessArgs& args, int _c) {
 	}
 }
 
-struct AnalyzerXLWidget : BGModuleWidget {
+struct AnalyzerXLWidget : AnalyzerBaseWidget {
 	static constexpr int hp = 42;
 
 	AnalyzerXLWidget(AnalyzerXL* module) {
@@ -176,21 +172,9 @@ struct AnalyzerXLWidget : BGModuleWidget {
 		assert(a);
 
 		menu->addChild(new MenuLabel());
-		{
-			OptionsMenuItem* mi = new OptionsMenuItem("Frequency range");
-			mi->addItem(OptionMenuItem("Lower 25%", [a]() { return a->_range == -0.75f; }, [a]() { a->_range = -0.75f; }));
-			mi->addItem(OptionMenuItem("Lower 50%", [a]() { return a->_range == -0.5f; }, [a]() { a->_range = -0.5f; }));
-			mi->addItem(OptionMenuItem("Full", [a]() { return a->_range == 0.0f; }, [a]() { a->_range = 0.0f; }));
-			mi->addItem(OptionMenuItem("Upper 50%", [a]() { return a->_range == 0.5f; }, [a]() { a->_range = 0.5f; }));
-			mi->addItem(OptionMenuItem("Upper 25%", [a]() { return a->_range == 0.75f; }, [a]() { a->_range = 0.75f; }));
-			OptionsMenuItem::addToMenu(mi, menu);
-		}
-		{
-			OptionsMenuItem* mi = new OptionsMenuItem("Amplitude range");
-			mi->addItem(OptionMenuItem("To -60dB", [a]() { return a->_rangeDb == 80.0f; }, [a]() { a->_rangeDb = 80.0f; }));
-			mi->addItem(OptionMenuItem("To -120dB", [a]() { return a->_rangeDb == 140.0f; }, [a]() { a->_rangeDb = 140.0f; }));
-			OptionsMenuItem::addToMenu(mi, menu);
-		}
+		addFrequencyPlotContextMenu(menu);
+		addFrequencyRangeContextMenu(menu);
+		addAmplitudePlotContextMenu(menu);
 		{
 			OptionsMenuItem* mi = new OptionsMenuItem("Smoothing");
 			mi->addItem(OptionMenuItem("None", [a]() { return a->_smooth == 0.0f; }, [a]() { a->_smooth = 0.0f; }));

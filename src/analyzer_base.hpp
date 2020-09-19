@@ -126,18 +126,46 @@ struct AnalyzerCore {
 	void stepChannelSample(int channelIndex, float sample);
 };
 
-struct AnalyzerBase : BGModule {
+struct AnalyzerTypes {
+	enum FrequencyPlot {
+		LOG_FP,
+		LINEAR_FP
+	};
+
+	enum AmplitudePlot {
+		DECIBELS_80_AP,
+		DECIBELS_140_AP,
+		PERCENTAGE_AP
+	};
+};
+
+struct AnalyzerBase : BGModule, AnalyzerTypes {
+	float _range = 0.0f;
 	float _rangeMinHz = 0.0;
 	float _rangeMaxHz = 0.0;
-	float _rangeDb = 80.0f;
+	FrequencyPlot _frequencyPlot = LOG_FP;
+	AmplitudePlot _amplitudePlot = DECIBELS_80_AP;
 	AnalyzerCore _core;
 
 	AnalyzerBase(int nChannels, int np, int ni, int no, int nl = 0) : _core(nChannels) {
 		config(np, ni, no, nl);
 	}
+
+	void frequencyPlotToJson(json_t* root);
+	void frequencyPlotFromJson(json_t* root);
+	void frequencyRangeToJson(json_t* root);
+	void frequencyRangeFromJson(json_t* root);
+	void amplitudePlotToJson(json_t* root);
+	void amplitudePlotFromJson(json_t* root);
 };
 
-struct AnalyzerDisplay : TransparentWidget {
+struct AnalyzerBaseWidget : BGModuleWidget {
+	void addFrequencyPlotContextMenu(Menu* menu);
+	void addFrequencyRangeContextMenu(Menu* menu);
+	void addAmplitudePlotContextMenu(Menu* menu);
+};
+
+struct AnalyzerDisplay : TransparentWidget, AnalyzerTypes {
 	struct BinsReader {
 		AnalyzerBase* _base;
 
@@ -161,6 +189,7 @@ struct AnalyzerDisplay : TransparentWidget {
 
 	// const float _displayDB = 140.0;
 	const float _positiveDisplayDB = 20.0;
+	const float _totalLinearAmplitude = 2.0;
 
 	const float baseXAxisLogFactor = 1 / 3.321; // magic number.
 
@@ -227,12 +256,13 @@ struct AnalyzerDisplay : TransparentWidget {
 	void draw(const DrawArgs& args) override;
 	void drawBackground(const DrawArgs& args);
 	virtual void drawHeader(const DrawArgs& args);
-	void drawYAxis(const DrawArgs& args, float strokeWidth, float rangeDb);
-	void drawXAxis(const DrawArgs& args, float strokeWidth, float rangeMinHz, float rangeMaxHz);
+	void drawYAxis(const DrawArgs& args, float strokeWidth, AmplitudePlot plot);
+	void drawXAxis(const DrawArgs& args, float strokeWidth, FrequencyPlot plot, float rangeMinHz, float rangeMaxHz);
 	void drawXAxisLine(const DrawArgs& args, float hz, float rangeMinHz, float rangeMaxHz);
-	void drawGraph(const DrawArgs& args, BinsReader& bins, NVGcolor color, float strokeWidth, float rangeMinHz, float rangeMaxHz, float rangeDb);
+	void drawGraph(const DrawArgs& args, BinsReader& bins, NVGcolor color, float strokeWidth, FrequencyPlot freqPlot, float rangeMinHz, float rangeMaxHz, AmplitudePlot ampPlot);
 	void drawText(const DrawArgs& args, const char* s, float x, float y, float rotation = 0.0, const NVGcolor* color = NULL);
-	int binValueToHeight(float value, float rangeDb);
+	int binValueToHeight(float value, AmplitudePlot plot);
+	static float binValueToAmplitude(float value);
 	static float binValueToDb(float value);
 	static float dbToBinValue(float db);
 };

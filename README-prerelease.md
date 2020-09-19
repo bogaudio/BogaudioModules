@@ -942,7 +942,8 @@ Features:
   - Quality setting: changes the FFT window size.  Higher settings yield finer frequency resolution, at a higher CPU cost.  The levels and sizes are: GOOD (1024 samples), HIGH (2048 samples) and ULTRA (4096 samples).  If Rack's sample rate is 96khz or higher, the sizes are doubled.
   - Window setting: sets the window function applied to the input to the FFT.  The options are Kaiser, Hamming and none/square.  The default, Kaiser, is probably best for most purposes.
   - Each channel has a THRU output, which passes the corresponding input through unchanged.
-  - On the context (right-click) menu, the display vertical (amplitude) range can be set to extend down to -120dB (the default is -60dB).
+  - On the context (right-click) menu, the display vertical (amplitude) range can be set to extend down to -120dB (the default is -60dB); alternately it can be set to to display linearly, with the amplitude expressed as a percentage, where 100% is equivalent to 0dB.
+  - By default the frequency axis has a logarithmic plot; this can be set to linear on the context menu.
 
 _Polyphony:_ Monophonic, with two exceptions:
   - If an input is polyphonic, its channels are summed, and the spectra of the summed signal is displayed.
@@ -972,7 +973,7 @@ The R. DELAY (response delay) control allows sample-accurate alignment of the te
 
 The context-menu option "Trigger on load", if enabled, will auto-trigger the test cycle when the module loads or when the patch loads.  This has no effect if LOOP is enabled when the patch loads.
 
-The display's frequency and amplitude ranges can be set to a few different values on the context menu.
+The display's frequency and amplitude ranges and plot types (logarithmic vs linear) can be set to a few different values on the context menu.
 
 _Polyphony:_ Monophonic.
 

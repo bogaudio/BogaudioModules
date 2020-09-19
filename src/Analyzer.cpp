@@ -1,8 +1,6 @@
 
 #include "Analyzer.hpp"
 
-#define RANGE_DB_KEY "range_db"
-
 void Analyzer::reset() {
 	_core.resetChannels();
 }
@@ -12,15 +10,14 @@ void Analyzer::sampleRateChange() {
 }
 
 json_t* Analyzer::toJson(json_t* root) {
-	json_object_set_new(root, RANGE_DB_KEY, json_real(_rangeDb));
+	frequencyPlotToJson(root);
+	amplitudePlotToJson(root);
 	return root;
 }
 
 void Analyzer::fromJson(json_t* root) {
-	json_t* jrd = json_object_get(root, RANGE_DB_KEY);
-	if (jrd) {
-		_rangeDb = clamp(json_real_value(jrd), 80.0f, 140.0f);
-	}
+	frequencyPlotFromJson(root);
+	amplitudePlotFromJson(root);
 }
 
 void Analyzer::modulate() {
@@ -77,7 +74,7 @@ void Analyzer::processChannel(const ProcessArgs& args, int _c) {
 	lights[WINDOW_KAISER_LIGHT].value = _core._window == AnalyzerCore::WINDOW_KAISER;
 }
 
-struct AnalyzerWidget : BGModuleWidget {
+struct AnalyzerWidget : AnalyzerBaseWidget {
 	static constexpr int hp = 20;
 
 	AnalyzerWidget(Analyzer* module) {
@@ -143,13 +140,8 @@ struct AnalyzerWidget : BGModuleWidget {
 	}
 
 	void contextMenu(Menu* menu) override {
-		auto a = dynamic_cast<Analyzer*>(module);
-		assert(a);
-
-		OptionsMenuItem* mi = new OptionsMenuItem("Amplitude range");
-		mi->addItem(OptionMenuItem("To -60dB", [a]() { return a->_rangeDb == 80.0f; }, [a]() { a->_rangeDb = 80.0f; }));
-		mi->addItem(OptionMenuItem("To -120dB", [a]() { return a->_rangeDb == 140.0f; }, [a]() { a->_rangeDb = 140.0f; }));
-		OptionsMenuItem::addToMenu(mi, menu);
+		addFrequencyPlotContextMenu(menu);
+		addAmplitudePlotContextMenu(menu);
 	}
 };
 

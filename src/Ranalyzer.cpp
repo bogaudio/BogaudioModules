@@ -1,8 +1,6 @@
 
 #include "Ranalyzer.hpp"
 
-#define RANGE_KEY "range"
-#define RANGE_DB_KEY "range_db"
 #define TRIGGER_ON_LOAD "triggerOnLoad"
 #define DISPLAY_TRACES "display_traces"
 #define DISPLAY_TRACES_TEST_RETURN "test_return"
@@ -32,8 +30,9 @@ void Ranalyzer::sampleRateChange() {
 }
 
 json_t* Ranalyzer::toJson(json_t* root) {
-	json_object_set_new(root, RANGE_KEY, json_real(_range));
-	json_object_set_new(root, RANGE_DB_KEY, json_real(_rangeDb));
+	frequencyPlotToJson(root);
+	frequencyRangeToJson(root);
+	amplitudePlotToJson(root);
 	json_object_set_new(root, TRIGGER_ON_LOAD, json_boolean(_triggerOnLoad));
 
 	switch (_displayTraces) {
@@ -51,15 +50,9 @@ json_t* Ranalyzer::toJson(json_t* root) {
 }
 
 void Ranalyzer::fromJson(json_t* root) {
-	json_t* jr = json_object_get(root, RANGE_KEY);
-	if (jr) {
-		_range = clamp(json_real_value(jr), -0.9f, 0.8f);
-	}
-
-	json_t* jrd = json_object_get(root, RANGE_DB_KEY);
-	if (jrd) {
-		_rangeDb = clamp(json_real_value(jrd), 80.0f, 140.0f);
-	}
+	frequencyPlotFromJson(root);
+	frequencyRangeFromJson(root);
+	amplitudePlotFromJson(root);
 
 	json_t* t = json_object_get(root, TRIGGER_ON_LOAD);
 	if (t) {
@@ -246,7 +239,7 @@ struct RanalyzerDisplay : AnalyzerDisplay, ChannelDisplayListener {
 };
 
 
-struct RanalyzerWidget : BGModuleWidget {
+struct RanalyzerWidget : AnalyzerBaseWidget {
 	static constexpr int hp = 45;
 
 	RanalyzerWidget(Ranalyzer* module) {
@@ -321,27 +314,15 @@ struct RanalyzerWidget : BGModuleWidget {
 
 		menu->addChild(new MenuLabel());
 		{
-			OptionsMenuItem* mi = new OptionsMenuItem("Frequency range");
-			mi->addItem(OptionMenuItem("Lower 25%", [a]() { return a->_range == -0.75f; }, [a]() { a->_range = -0.75f; }));
-			mi->addItem(OptionMenuItem("Lower 50%", [a]() { return a->_range == -0.5f; }, [a]() { a->_range = -0.5f; }));
-			mi->addItem(OptionMenuItem("Full", [a]() { return a->_range == 0.0f; }, [a]() { a->_range = 0.0f; }));
-			mi->addItem(OptionMenuItem("Upper 50%", [a]() { return a->_range == 0.5f; }, [a]() { a->_range = 0.5f; }));
-			mi->addItem(OptionMenuItem("Upper 25%", [a]() { return a->_range == 0.75f; }, [a]() { a->_range = 0.75f; }));
-			OptionsMenuItem::addToMenu(mi, menu);
-		}
-		{
-			OptionsMenuItem* mi = new OptionsMenuItem("Amplitude range");
-			mi->addItem(OptionMenuItem("To -60dB", [a]() { return a->_rangeDb == 80.0f; }, [a]() { a->_rangeDb = 80.0f; }));
-			mi->addItem(OptionMenuItem("To -120dB", [a]() { return a->_rangeDb == 140.0f; }, [a]() { a->_rangeDb = 140.0f; }));
-			OptionsMenuItem::addToMenu(mi, menu);
-		}
-		{
 			OptionsMenuItem* mi = new OptionsMenuItem("Display traces");
 			mi->addItem(OptionMenuItem("All", [a]() { return a->_displayTraces == Ranalyzer::ALL_TRACES; }, [a]() { a->setDisplayTraces(Ranalyzer::ALL_TRACES); }));
 			mi->addItem(OptionMenuItem("Analysis only", [a]() { return a->_displayTraces == Ranalyzer::ANALYSIS_TRACES; }, [a]() { a->setDisplayTraces(Ranalyzer::ANALYSIS_TRACES); }));
 			mi->addItem(OptionMenuItem("Test/return only", [a]() { return a->_displayTraces == Ranalyzer::TEST_RETURN_TRACES; }, [a]() { a->setDisplayTraces(Ranalyzer::TEST_RETURN_TRACES); }));
 			OptionsMenuItem::addToMenu(mi, menu);
 		}
+		addFrequencyPlotContextMenu(menu);
+		addFrequencyRangeContextMenu(menu);
+		addAmplitudePlotContextMenu(menu);
 		menu->addChild(new BoolOptionMenuItem("Trigger on load", [a]() { return &a->_triggerOnLoad; }));
 	}
 };

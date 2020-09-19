@@ -92,7 +92,6 @@ struct Ranalyzer : AnalyzerBase {
 	int _currentReturnSampleDelay = 0;
 	int _bufferCount = 0;
 	HistoryBuffer<float> _inputBuffer;
-	float _range = 0.0f;
 	Traces _displayTraces = ALL_TRACES;
 	ChannelDisplayListener* _channelDisplayListener = NULL;
 	bool _triggerOnLoad = true;
