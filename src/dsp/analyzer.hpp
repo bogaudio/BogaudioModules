@@ -24,25 +24,14 @@ struct Window {
 		delete[] _window;
 	}
 
-	float sum() {
+	inline float sum() {
 		return _sum;
 	}
-
-	void apply(float* in, float* out) {
-		for (int i = 0; i < _size; ++i) {
-			out[i] = in[i] * _window[i];
-		}
-	}
+	void apply(float* in, float* out);
 };
 
 struct HanningWindow : Window {
-	HanningWindow(int size, float alpha = 0.5) : Window(size) {
-		const float invAlpha = 1.0 - alpha;
-		const float twoPIEtc = 2.0 * M_PI / (float)size;
-		for (int i = 0; i < _size; ++i) {
-			_sum += _window[i] = invAlpha*cos(twoPIEtc*(float)i + M_PI) + alpha;
-		}
-	}
+	HanningWindow(int size, float alpha = 0.5);
 };
 
 struct HammingWindow : HanningWindow {
@@ -50,39 +39,9 @@ struct HammingWindow : HanningWindow {
 };
 
 struct KaiserWindow : Window {
-	KaiserWindow(int size, float alpha = 7.865f) : Window(size) {
-		float ii0a = 1.0f / i0(alpha);
-		float ism1 = 1.0f / (float)(size - 1);
-		for (int i = 0; i < _size; ++i) {
-			float x = i * 2.0f;
-			x *= ism1;
-			x -= 1.0f;
-			x *= x;
-			x = 1.0f - x;
-			x = sqrtf(x);
-			x *= alpha;
-			_sum += _window[i] = i0(x) * ii0a;
-		}
-	}
+	KaiserWindow(int size, float alpha = 7.865f);
 
-	// Rabiner, Gold: "The Theory and Application of Digital Signal Processing", 1975, page 103.
-	float i0(float x) {
-		assert(x >= 0.0f);
-		assert(x < 20.0f);
-		float y = 0.5f * x;
-		float t = .1e-8f;
-		float e = 1.0f;
-		float de = 1.0f;
-		for (int i = 1; i <= 25; ++i) {
-			de = de * y / (float)i;
-			float sde = de * de;
-			e += sde;
-			if (e * t - sde > 0.0f) {
-				break;
-			}
-		}
-		return e;
-	}
+	float i0(float x);
 };
 
 struct FFT1024 {
@@ -154,15 +113,15 @@ struct SpectrumAnalyzer : OverlappingBuffer<float> {
 	};
 
 	const float _sampleRate;
-	ffft::FFTReal<float>* _fft;
-	FFT1024* _fft1024;
-	FFT4096* _fft4096;
-	FFT8192* _fft8192;
-	FFT16384* _fft16384;
-	FFT32768* _fft32768;
-	Window* _window;
-	float* _windowOut;
-	float* _fftOut;
+	ffft::FFTReal<float>* _fft = NULL;
+	FFT1024* _fft1024 = NULL;
+	FFT4096* _fft4096 = NULL;
+	FFT8192* _fft8192 = NULL;
+	FFT16384* _fft16384 = NULL;
+	FFT32768* _fft32768 = NULL;
+	Window* _window = NULL;
+	float* _windowOut = NULL;
+	float* _fftOut = NULL;
 
 	SpectrumAnalyzer(
 		Size size,
@@ -170,153 +129,11 @@ struct SpectrumAnalyzer : OverlappingBuffer<float> {
 		WindowType windowType,
 		float sampleRate,
 		bool autoProcess = true
-	)
-	: OverlappingBuffer(size, overlap, autoProcess)
-	, _sampleRate(sampleRate)
-	, _fft(NULL)
-	, _fft1024(NULL)
-	, _fft4096(NULL)
-	, _fft8192(NULL)
-	, _fft16384(NULL)
-	, _fft32768(NULL)
-	, _window(NULL)
-	, _windowOut(NULL)
-	, _fftOut(new float[_size])
-	{
-		assert(size <= maxSize);
-		assert(_sampleRate > size);
+	);
+	virtual ~SpectrumAnalyzer();
 
-		switch (size) {
-			case SIZE_1024: {
-				_fft1024 = new FFT1024();
-				break;
-			}
-			case SIZE_4096: {
-				_fft4096 = new FFT4096();
-				break;
-			}
-			case SIZE_8192: {
-				_fft8192 = new FFT8192();
-				break;
-			}
-			case SIZE_16384: {
-				_fft16384 = new FFT16384();
-				break;
-			}
-			case SIZE_32768: {
-				_fft32768 = new FFT32768();
-				break;
-			}
-			default: {
-				_fft = new ffft::FFTReal<float>(size);
-			}
-		}
-
-		switch (windowType) {
-			case WINDOW_NONE: {
-				break;
-			}
-			case WINDOW_HANNING: {
-				_window = new HanningWindow(size);
-				_windowOut = new float[size];
-				break;
-			}
-			case WINDOW_HAMMING: {
-				_window = new HammingWindow(size);
-				_windowOut = new float[size];
-				break;
-			}
-			case WINDOW_KAISER: {
-				_window = new KaiserWindow(size);
-				_windowOut = new float[size];
-				break;
-			}
-		}
-	}
-
-	virtual ~SpectrumAnalyzer() {
-		if (_fft) {
-			delete _fft;
-		}
-		if (_fft1024) {
-			delete _fft1024;
-		}
-		if (_fft4096) {
-			delete _fft4096;
-		}
-		if (_fft8192) {
-			delete _fft8192;
-		}
-		if (_fft16384) {
-			delete _fft16384;
-		}
-		if (_fft32768) {
-			delete _fft32768;
-		}
-
-		if (_window) {
-			delete _window;
-			delete[] _windowOut;
-		}
-
-		delete[] _fftOut;
-	}
-
-	void processBuffer(float* samples) override {
-		float* input = samples;
-		if (_window) {
-			_window->apply(samples, _windowOut);
-			input = _windowOut;
-		}
-		if (_fft1024) {
-			_fft1024->do_fft(_fftOut, input);
-		}
-		else if (_fft4096) {
-			_fft4096->do_fft(_fftOut, input);
-		}
-		else if (_fft8192) {
-			_fft8192->do_fft(_fftOut, input);
-		}
-		else if (_fft16384) {
-			_fft16384->do_fft(_fftOut, input);
-		}
-		else if (_fft32768) {
-			_fft32768->do_fft(_fftOut, input);
-		}
-		else {
-			_fft->do_fft(_fftOut, input);
-		}
-	}
-
-	void getMagnitudes(float* bins, int nBins) {
-		assert(nBins <= _size / 2);
-		assert(_size % nBins == 0);
-
-		const int bands = _size / 2;
-		const int binWidth = bands / nBins;
-		const float invBinWidth = 1.0 / (float)binWidth;
-		const float normalization = 2.0 / powf(_window ? _window->sum() : _size, 2.0);
-		for (int bin = 0; bin < nBins; ++bin) {
-			float sum = 0.0;
-			int binEnd = bin * binWidth + binWidth;
-			for (int i = binEnd - binWidth; i < binEnd; ++i) {
-				sum += (_fftOut[i]*_fftOut[i] + _fftOut[i + bands]*_fftOut[i + bands]) * normalization;
-			}
-			bins[bin] = sum * invBinWidth;
-		}
-	}
-
-	// void getFrequencies(float* bins, int nBins) {
-	//   assert(nBins <= _size / 2);
-	//   assert(_size % nBins == 0);
-	//
-	//   const int bands = _size / 2;
-	//   const int binWidth = bands / nBins;
-	//   const float fundamental = _sampleRate / (float)_size;
-	//   for (int bin = 0; bin < nBins; ++bin) {
-	//     bins[bin] = roundf(bin*binWidth*fundamental + binWidth*fundamental/2.0);
-	//   }
-	// }
+	void processBuffer(float* samples) override;
+	void getMagnitudes(float* bins, int nBins);
 };
 
 } // namespace dsp
