@@ -963,11 +963,11 @@ RANALYZER is a frequency response analyzer: it passes a test signal to another m
 
 By default, will produce a one-shot test signal, emitted at SEND, upon receipt of a trigger (manual or CV) at the TRIG inputs.  The duration of the test signal is always 16384 samples (32768 if Rack's sample rate is 96K or higher) -- the duration in time will depend on Rack's current sample rate.  The same number of samples is collected from RETURN, if it is patched.  Both signals are converted to the frequency domain and displayed (test in green, response in magenta), along with an analysis trace (orange), which shows the difference between the response and the test signals, in the frequency domain, in decibels.  The context-menu option "Display traces" controls which of the traces are displayed.
 
+A window function is optionally applied to the signals as they are converted to the frequency domain; this cleans up noise that otherwise shows up in the signal plots as an artifact of the conversion.  It also slightly distorts the displayed signals.  The default "taper" window minimizes the distortion; Hamming and Kaiser windows are also available.  The window can be selected or disabled on the context menu.  The window is not applied to the test signal before it is emitted at SEND.
+
 The test signal is a swept sine wave (or "chirp", see <a href="#chirp">CHIRP</a>), with an exponential (if the EXP toggle is on) or linear sweep.  The start and end frequencies for sine sweep are set by the FREQ1 and FREQ2 knobs, each with a range in hertz from 1 to a bit less than the Nyquist rate (half the sampling rate); if FREQ1 is less than FREQ2 the sweep is upwards in frequency, downwards otherwise.
 
 Patching an input to TEST overrides the swept sine generator; the TEST input is used as the test signal.
-
-A window function is optionally applied to the test signal (whether the internally-generated one, or one being read from TEST) before it is emitted at SEND and before frequency domain conversion for the display.  The default "taper" window type applies a brief fade in and fade out to the test signal; this cleans up noise that otherwise shows up in the displayed plots, as an artifact of frequency domain conversion.  It also slightly distorts the test signal.  The window can be disabled  on the context window (or set to another type -- Hamming or Kaiser -- provided mostly as a curiosity).
 
 If the LOOP toggle is enabled, the module continuously outputs, collects and displays the test, response and analysis signals.  Regardless of whether the collection cycle is triggered or looped, a pulse is emitted at the TRIG output when the cycle begins, and at the EOC output when it ends.
 

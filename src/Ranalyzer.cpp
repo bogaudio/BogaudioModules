@@ -34,7 +34,9 @@ void Ranalyzer::sampleRateChange() {
 		_core.setParams(1, AnalyzerCore::QUALITY_FIXED_16K, AnalyzerCore::WINDOW_NONE);
 	}
 	setWindow(_windowType);
-	if (!_run && !_initialDelay) {
+	_run = false;
+	_flush = false;
+	if (!_initialDelay) {
 		_initialDelay = new Timer(_sampleRate, initialDelaySeconds);
 	}
 }
@@ -179,17 +181,15 @@ void Ranalyzer::processAll(const ProcessArgs& args) {
 		else {
 			out = _chirp.next() * 5.0f;
 		}
-		if (_window) {
-			out *= _window->at(_cycleI);
-		}
 
 		_inputBuffer.push(out);
 		if (_outBufferCount > 0) {
 			--_outBufferCount;
 		}
 		else {
-			_core.stepChannelSample(0, _inputBuffer.value(_currentReturnSampleDelay - 1));
-			_core.stepChannelSample(1, inputs[RETURN_INPUT].getVoltage());
+			float w = _window ? _window->at(_cycleI - _currentReturnSampleDelay) : 1.0f;
+			_core.stepChannelSample(0, w * _inputBuffer.value(_currentReturnSampleDelay - 1));
+			_core.stepChannelSample(1, w * inputs[RETURN_INPUT].getVoltage());
 		}
 
 		++_cycleI;
@@ -200,8 +200,9 @@ void Ranalyzer::processAll(const ProcessArgs& args) {
 		}
 	}
 	if (_flush) {
-		_core.stepChannelSample(0, _inputBuffer.value((_run ? _currentReturnSampleDelay : _analysisBufferCount) - 1));
-		_core.stepChannelSample(1, inputs[RETURN_INPUT].getVoltage());
+		float w = _window ? _window->at(_cycleN - _analysisBufferCount) : 1.0f;
+		_core.stepChannelSample(0, w * _inputBuffer.value((_run ? _currentReturnSampleDelay : _analysisBufferCount) - 1));
+		_core.stepChannelSample(1, w * inputs[RETURN_INPUT].getVoltage());
 		--_analysisBufferCount;
 		if (_analysisBufferCount < 1) {
 			_flush = false;
