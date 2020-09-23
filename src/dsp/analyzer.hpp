@@ -24,9 +24,9 @@ struct Window {
 		delete[] _window;
 	}
 
-	inline float sum() {
-		return _sum;
-	}
+	inline int size() { return _size; }
+	inline float at(int i) { assert(i >= 0 && i < _size); return _window[i]; }
+	inline float sum() { return _sum; }
 	void apply(float* in, float* out);
 };
 
@@ -42,6 +42,10 @@ struct KaiserWindow : Window {
 	KaiserWindow(int size, float alpha = 7.865f);
 
 	float i0(float x);
+};
+
+struct PlanckTaperWindow : Window {
+	PlanckTaperWindow(int size, int taperSamples);
 };
 
 struct FFT1024 {

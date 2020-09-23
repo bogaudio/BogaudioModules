@@ -353,14 +353,16 @@ void AnalyzerBaseWidget::addFrequencyRangeContextMenu(Menu* menu) {
 	OptionsMenuItem::addToMenu(mi, menu);
 }
 
-void AnalyzerBaseWidget::addAmplitudePlotContextMenu(Menu* menu) {
+void AnalyzerBaseWidget::addAmplitudePlotContextMenu(Menu* menu, bool linearOption) {
 	auto m = dynamic_cast<AnalyzerBase*>(module);
 	assert(m);
 
 	OptionsMenuItem* mi = new OptionsMenuItem("Amplitude plot");
 	mi->addItem(OptionMenuItem("Decibels to -60dB", [m]() { return m->_amplitudePlot == AnalyzerBase::DECIBELS_80_AP; }, [m]() { m->_amplitudePlot = AnalyzerBase::DECIBELS_80_AP; }));
 	mi->addItem(OptionMenuItem("Decibels To -120dB", [m]() { return m->_amplitudePlot == AnalyzerBase::DECIBELS_140_AP; }, [m]() { m->_amplitudePlot = AnalyzerBase::DECIBELS_140_AP; }));
-	mi->addItem(OptionMenuItem("Linear percentage", [m]() { return m->_amplitudePlot == AnalyzerBase::PERCENTAGE_AP; }, [m]() { m->_amplitudePlot = AnalyzerBase::PERCENTAGE_AP; }));
+	if (linearOption) {
+		mi->addItem(OptionMenuItem("Linear percentage", [m]() { return m->_amplitudePlot == AnalyzerBase::PERCENTAGE_AP; }, [m]() { m->_amplitudePlot = AnalyzerBase::PERCENTAGE_AP; }));
+	}
 	OptionsMenuItem::addToMenu(mi, menu);
 }
 

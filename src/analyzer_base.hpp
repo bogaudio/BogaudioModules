@@ -53,7 +53,7 @@ struct ChannelAnalyzer {
 	, _averagedBins(averageN == 1 ? NULL : new AveragingBuffer<float>(_binsN, averageN))
 	, _stepBufN(size / overlap)
 	, _stepBuf(new float[_stepBufN] {})
-	, _workerBufN(size)
+	, _workerBufN(size + 1)
 	, _workerBuf(new float[_workerBufN] {})
 	, _worker(&ChannelAnalyzer::work, this)
 	{
@@ -93,14 +93,15 @@ struct AnalyzerCore {
 	int _averageN = 1;
 	Quality _quality = QUALITY_GOOD;
 	Window _window = WINDOW_KAISER;
-	const SpectrumAnalyzer::Overlap _overlap = SpectrumAnalyzer::OVERLAP_2;
+	SpectrumAnalyzer::Overlap _overlap = SpectrumAnalyzer::OVERLAP_2;
 	std::mutex _channelsMutex;
 
-	AnalyzerCore(int nChannels)
+	AnalyzerCore(int nChannels, SpectrumAnalyzer::Overlap overlap = SpectrumAnalyzer::OVERLAP_2)
 	: _nChannels(nChannels)
 	, _channels(new ChannelAnalyzer*[_nChannels] {})
 	, _outBufs(new float[2 * nChannels * _outBufferN] {})
 	, _currentOutBufs(new std::atomic<float*>[nChannels])
+	, _overlap(overlap)
 	{
 		for (int i = 0; i < nChannels; ++i) {
 			_currentOutBufs[i] = _outBufs + 2 * i * _outBufferN;
@@ -147,7 +148,16 @@ struct AnalyzerBase : BGModule, AnalyzerTypes {
 	AmplitudePlot _amplitudePlot = DECIBELS_80_AP;
 	AnalyzerCore _core;
 
-	AnalyzerBase(int nChannels, int np, int ni, int no, int nl = 0) : _core(nChannels) {
+	AnalyzerBase(
+		int nChannels,
+		int np,
+		int ni,
+		int no,
+		int nl = 0,
+		SpectrumAnalyzer::Overlap overlap = SpectrumAnalyzer::OVERLAP_2
+	)
+	: _core(nChannels, overlap)
+	{
 		config(np, ni, no, nl);
 	}
 
@@ -162,7 +172,7 @@ struct AnalyzerBase : BGModule, AnalyzerTypes {
 struct AnalyzerBaseWidget : BGModuleWidget {
 	void addFrequencyPlotContextMenu(Menu* menu);
 	void addFrequencyRangeContextMenu(Menu* menu);
-	void addAmplitudePlotContextMenu(Menu* menu);
+	void addAmplitudePlotContextMenu(Menu* menu, bool linearOption = true);
 };
 
 struct AnalyzerDisplay : TransparentWidget, AnalyzerTypes {

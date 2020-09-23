@@ -46,9 +46,17 @@ struct Ranalyzer : AnalyzerBase {
 		ANALYSIS_TRACES
 	};
 
+	enum WindowType {
+		NONE_WINDOW_TYPE,
+		TAPER_WINDOW_TYPE,
+		HAMMING_WINDOW_TYPE,
+		KAISER_WINDOW_TYPE
+	};
+
 	static constexpr float minFrequency = 1.0f;
 	static constexpr float maxFrequencyNyquistRatio = 0.49f;
 	static constexpr int maxResponseDelay = 20;
+	static constexpr float initialDelaySeconds = 0.01f;
 
 	struct FrequencyParamQuantity : ParamQuantity {
 		float getDisplayValue() override {
@@ -92,13 +100,18 @@ struct Ranalyzer : AnalyzerBase {
 	int _currentReturnSampleDelay = 0;
 	int _bufferCount = 0;
 	HistoryBuffer<float> _inputBuffer;
+	int _cycleI = 0;
+	int _cycleN = 0;
+	bool _useTestInput = false;
 	Traces _displayTraces = ALL_TRACES;
 	ChannelDisplayListener* _channelDisplayListener = NULL;
 	bool _triggerOnLoad = true;
 	Timer* _initialDelay = NULL;
+	WindowType _windowType = TAPER_WINDOW_TYPE;
+	bogaudio::dsp::Window* _window = NULL;
 
 	Ranalyzer()
-	: AnalyzerBase(3, NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS)
+	: AnalyzerBase(3, NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, 0, SpectrumAnalyzer::OVERLAP_1)
 	, _inputBuffer(maxResponseDelay, 0.0f)
 	{
 		configParam<FrequencyParamQuantity>(FREQUENCY1_PARAM, 0.0f, 1.0f, 0.0f, "Frequency 1", " Hz");
@@ -109,11 +122,13 @@ struct Ranalyzer : AnalyzerBase {
 		configParam(DELAY_PARAM, 2.0f, (float)maxResponseDelay, 2.0f, "Return sample delay");
 
 		_skinnable = false;
-		_initialDelay = new Timer(APP->engine->getSampleRate(), 0.01f);
 	}
 	virtual ~Ranalyzer() {
 		if (_initialDelay) {
 			delete _initialDelay;
+		}
+		if (_window) {
+			delete _window;
 		}
 	}
 
@@ -125,6 +140,7 @@ struct Ranalyzer : AnalyzerBase {
 	void processAll(const ProcessArgs& args) override;
 	void setDisplayTraces(Traces traces);
 	void setChannelDisplayListener(ChannelDisplayListener* listener);
+	void setWindow(WindowType wt);
 };
 
 } // namespace bogaudio

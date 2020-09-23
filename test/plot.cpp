@@ -55,20 +55,25 @@ using namespace bogaudio::dsp;
 // 	return 0;
 // }
 
-const float sr = 10000.0f;
-float f1 = 100.0f;
-float f2 = sr / 2.0f * 0.1f;
-float T = 1.5f;
-float y(float t) {
-	float k = powf(f2 / f1, 1.0f / T);
-	return sinf(2.0f * M_PI * f1 * ((powf(k, t) - 1.0f) / logf(k)));
+// const float sr = 10000.0f;
+// float f1 = 100.0f;
+// float f2 = sr / 2.0f * 0.1f;
+// float T = 1.5f;
+// float y(float t) {
+// 	float k = powf(f2 / f1, 1.0f / T);
+// 	return sinf(2.0f * M_PI * f1 * ((powf(k, t) - 1.0f) / logf(k)));
+// }
+
+PlanckTaperWindow w(1024, 300);
+float y(float x) {
+  return w._window[(int)x];
 }
 
 int main() {
 	const float xMin = 0.0f;
-	// const float xMax = 1023.0f;
-	const float xMax = T;
-	const float samples = sr;
+	const float xMax = 1023.0f;
+	// const float xMax = T;
+	const float samples = 1024.0f;
 
 	const float delta = (xMax - xMin) / samples;
 	float x = xMin;

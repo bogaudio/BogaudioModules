@@ -3,8 +3,14 @@
 
 #define TRIGGER_ON_LOAD "triggerOnLoad"
 #define DISPLAY_TRACES "display_traces"
+#define DISPLAY_TRACES_ALL "all"
 #define DISPLAY_TRACES_TEST_RETURN "test_return"
 #define DISPLAY_TRACES_ANALYSIS "analysis"
+#define WINDOW_TYPE "window_type"
+#define WINDOW_TYPE_NONE "none"
+#define WINDOW_TYPE_TAPER "taper"
+#define WINDOW_TYPE_HAMMING "hamming"
+#define WINDOW_TYPE_KAISER "Kaiser"
 
 void Ranalyzer::reset() {
 	_trigger.reset();
@@ -27,6 +33,10 @@ void Ranalyzer::sampleRateChange() {
 	else {
 		_core.setParams(1, AnalyzerCore::QUALITY_FIXED_16K, AnalyzerCore::WINDOW_NONE);
 	}
+	setWindow(_windowType);
+	if (!_run && !_initialDelay) {
+		_initialDelay = new Timer(_sampleRate, initialDelaySeconds);
+	}
 }
 
 json_t* Ranalyzer::toJson(json_t* root) {
@@ -36,7 +46,10 @@ json_t* Ranalyzer::toJson(json_t* root) {
 	json_object_set_new(root, TRIGGER_ON_LOAD, json_boolean(_triggerOnLoad));
 
 	switch (_displayTraces) {
-		case ALL_TRACES: break;
+		case ALL_TRACES: {
+			json_object_set_new(root, DISPLAY_TRACES, json_string(DISPLAY_TRACES_ALL));
+			break;
+		}
 		case TEST_RETURN_TRACES: {
 			json_object_set_new(root, DISPLAY_TRACES, json_string(DISPLAY_TRACES_TEST_RETURN));
 			break;
@@ -46,6 +59,26 @@ json_t* Ranalyzer::toJson(json_t* root) {
 			break;
 		}
 	}
+
+	switch (_windowType) {
+		case NONE_WINDOW_TYPE: {
+			json_object_set_new(root, WINDOW_TYPE, json_string(WINDOW_TYPE_NONE));
+			break;
+		}
+		case TAPER_WINDOW_TYPE: {
+			json_object_set_new(root, WINDOW_TYPE, json_string(WINDOW_TYPE_TAPER));
+			break;
+		}
+		case HAMMING_WINDOW_TYPE: {
+			json_object_set_new(root, WINDOW_TYPE, json_string(WINDOW_TYPE_HAMMING));
+			break;
+		}
+		case KAISER_WINDOW_TYPE: {
+			json_object_set_new(root, WINDOW_TYPE, json_string(WINDOW_TYPE_KAISER));
+			break;
+		}
+	}
+
 	return root;
 }
 
@@ -62,11 +95,31 @@ void Ranalyzer::fromJson(json_t* root) {
 	json_t* dt = json_object_get(root, DISPLAY_TRACES);
 	if (dt) {
 		std::string dts = json_string_value(dt);
-		if (dts == DISPLAY_TRACES_TEST_RETURN) {
+		if (dts == DISPLAY_TRACES_ALL) {
+			setDisplayTraces(ALL_TRACES);
+		}
+		else if (dts == DISPLAY_TRACES_TEST_RETURN) {
 			setDisplayTraces(TEST_RETURN_TRACES);
 		}
 		else if (dts == DISPLAY_TRACES_ANALYSIS) {
 			setDisplayTraces(ANALYSIS_TRACES);
+		}
+	}
+
+	json_t* wt = json_object_get(root, WINDOW_TYPE);
+	if (wt) {
+		std::string wts = json_string_value(wt);
+		if (wts == WINDOW_TYPE_NONE) {
+			setWindow(NONE_WINDOW_TYPE);
+		}
+		else if (wts == WINDOW_TYPE_TAPER) {
+			setWindow(TAPER_WINDOW_TYPE);
+		}
+		else if (wts == WINDOW_TYPE_HAMMING) {
+			setWindow(HAMMING_WINDOW_TYPE);
+		}
+		else if (wts == WINDOW_TYPE_KAISER) {
+			setWindow(KAISER_WINDOW_TYPE);
 		}
 	}
 }
@@ -110,19 +163,26 @@ void Ranalyzer::processAll(const ProcessArgs& args) {
 			_run = true;
 			_bufferCount = _currentReturnSampleDelay = _returnSampleDelay;
 			_chirp.reset();
-			_chirp.setParams(_frequency1, _frequency2, (double)_core.size() / (double)_sampleRate, !_exponential);
+			_cycleN = _core.size();
+			_cycleI = 0;
+			_chirp.setParams(_frequency1, _frequency2, _core.size() / (double)_sampleRate, !_exponential);
 			_triggerPulseGen.trigger(0.001f);
+			_useTestInput = inputs[TEST_INPUT].isConnected();
 		}
 	}
 
 	float out = 0.0f;
 	if (_run) {
-		if (inputs[TEST_INPUT].isConnected()) {
+		if (_useTestInput) {
 			out = inputs[TEST_INPUT].getVoltage();
 		}
 		else {
-			out = _chirp.next() * 10.0f;
+			out = _chirp.next() * 5.0f;
 		}
+		if (_window) {
+			out *= _window->at(_cycleI);
+		}
+
 		_inputBuffer.push(out);
 		if (_bufferCount > 0) {
 			--_bufferCount;
@@ -132,14 +192,15 @@ void Ranalyzer::processAll(const ProcessArgs& args) {
 			_core.stepChannelSample(1, inputs[RETURN_INPUT].getVoltage());
 		}
 
-		if (_chirp.isCycleComplete()) {
+		++_cycleI;
+		if (_cycleI >= _cycleN) {
 			_run = false;
 			_flush = true;
 			_bufferCount = _currentReturnSampleDelay;
 		}
 	}
 	else if (_flush) {
-		_core.stepChannelSample(0, _inputBuffer.value(_currentReturnSampleDelay - 1));
+		_core.stepChannelSample(0, _inputBuffer.value((_run ? _currentReturnSampleDelay : _bufferCount) - 1));
 		_core.stepChannelSample(1, inputs[RETURN_INPUT].getVoltage());
 		--_bufferCount;
 		if (_bufferCount < 1) {
@@ -176,6 +237,33 @@ void Ranalyzer::setDisplayTraces(Traces traces) {
 void Ranalyzer::setChannelDisplayListener(ChannelDisplayListener* listener) {
 	_channelDisplayListener = listener;
 }
+
+void Ranalyzer::setWindow(WindowType wt) {
+	if (!_window || _windowType != wt || _window->size() != _core.size()) {
+		if (_window) {
+			delete _window;
+			_window = NULL;
+		}
+
+		_windowType = wt;
+		switch (_windowType) {
+			case NONE_WINDOW_TYPE: break;
+			case TAPER_WINDOW_TYPE: {
+				_window = new PlanckTaperWindow(_core.size(), (int)(_core.size() * 0.03f));
+				break;
+			}
+			case HAMMING_WINDOW_TYPE: {
+				_window = new HammingWindow(_core.size());
+				break;
+			}
+			case KAISER_WINDOW_TYPE: {
+				_window = new KaiserWindow(_core.size());
+				break;
+			}
+		}
+	}
+}
+
 
 
 struct AnalysisBinsReader : AnalyzerDisplay::BinsReader {
@@ -320,9 +408,17 @@ struct RanalyzerWidget : AnalyzerBaseWidget {
 			mi->addItem(OptionMenuItem("Test/return only", [a]() { return a->_displayTraces == Ranalyzer::TEST_RETURN_TRACES; }, [a]() { a->setDisplayTraces(Ranalyzer::TEST_RETURN_TRACES); }));
 			OptionsMenuItem::addToMenu(mi, menu);
 		}
+		{
+			OptionsMenuItem* mi = new OptionsMenuItem("Window");
+			mi->addItem(OptionMenuItem("None", [a]() { return a->_windowType == Ranalyzer::NONE_WINDOW_TYPE; }, [a]() { a->setWindow(Ranalyzer::NONE_WINDOW_TYPE); }));
+			mi->addItem(OptionMenuItem("Taper", [a]() { return a->_windowType == Ranalyzer::TAPER_WINDOW_TYPE; }, [a]() { a->setWindow(Ranalyzer::TAPER_WINDOW_TYPE); }));
+			mi->addItem(OptionMenuItem("Hamming", [a]() { return a->_windowType == Ranalyzer::HAMMING_WINDOW_TYPE; }, [a]() { a->setWindow(Ranalyzer::HAMMING_WINDOW_TYPE); }));
+			mi->addItem(OptionMenuItem("Kaiser", [a]() { return a->_windowType == Ranalyzer::KAISER_WINDOW_TYPE; }, [a]() { a->setWindow(Ranalyzer::KAISER_WINDOW_TYPE); }));
+			OptionsMenuItem::addToMenu(mi, menu);
+		}
 		addFrequencyPlotContextMenu(menu);
 		addFrequencyRangeContextMenu(menu);
-		addAmplitudePlotContextMenu(menu);
+		addAmplitudePlotContextMenu(menu, false);
 		menu->addChild(new BoolOptionMenuItem("Trigger on load", [a]() { return &a->_triggerOnLoad; }));
 	}
 };

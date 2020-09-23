@@ -57,6 +57,25 @@ float KaiserWindow::i0(float x) {
 }
 
 
+PlanckTaperWindow::PlanckTaperWindow(int size, int taperSamples) : Window(size) {
+	_window[0] = 0.0f;
+	_sum += _window[size - 1] = 1.0f;
+
+	for (int i = 1; i < taperSamples; ++i) {
+		float x = ((float)taperSamples / (float)i) - ((float)taperSamples / (float)(taperSamples - i));
+		x = 1.0f + exp(x);
+		x = 1.0f / x;
+		_sum += _window[i] = x;
+	}
+	int nOnes = size - 2 * taperSamples;
+	std::fill_n(_window + taperSamples, nOnes, 1.0f);
+	_sum += nOnes;
+	for (int i = 0; i < taperSamples; ++i) {
+		_sum += _window[size - 1 - i] = _window[i];
+	}
+}
+
+
 typedef ffft::FFTRealFixLen<10> FIXED_FFT1024;
 
 FFT1024::FFT1024() {

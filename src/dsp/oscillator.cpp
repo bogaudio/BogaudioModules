@@ -385,6 +385,15 @@ void PureChirpOscillator::update() {
 }
 
 float PureChirpOscillator::_next() {
+	// formulas from https://en.wikipedia.org/wiki/Chirp
+	double phase = 0.0f;
+	if (_linear) {
+		phase = 2.0 * M_PI * (0.5 * _c * (double)(_time * _time) + (double)(_f1 * _time));
+	}
+	else {
+		phase = 2.0 * M_PI * (double)_f1 * ((pow(_k, (double)_time) - 1.0) * _invlogk);
+	}
+
 	_complete = false;
 	if (_Time - _time < _sampleTime) {
 		_time = 0.0f;
@@ -394,15 +403,7 @@ float PureChirpOscillator::_next() {
 		_time += _sampleTime;
 	}
 
-	// formulas from https://en.wikipedia.org/wiki/Chirp
-	float phase = 0.0f;
-	if (_linear) {
-		phase = 2.0 * M_PI * (0.5 * _c * (double)(_time * _time) + (double)(_f1 * _time));
-	}
-	else {
-		phase = 2.0 * M_PI * (double)_f1 * ((pow(_k, (double)_time) - 1.0) * _invlogk);
-	}
-	return sinf(phase);
+	return sin(phase);
 }
 
 void PureChirpOscillator::reset() {
