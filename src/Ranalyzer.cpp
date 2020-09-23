@@ -158,10 +158,10 @@ void Ranalyzer::processAll(const ProcessArgs& args) {
 	}
 
 	bool triggered = _trigger.process(params[TRIGGER_PARAM].getValue()*5.0f + inputs[TRIGGER_INPUT].getVoltage());
-	if (!_run && !_flush) {
+	if (!_run) {
 		if (triggered || (!_initialDelay && _loop) || (maybeTriggerOnLoad && _triggerOnLoad)) {
 			_run = true;
-			_bufferCount = _currentReturnSampleDelay = _returnSampleDelay;
+			_outBufferCount = _currentReturnSampleDelay = _returnSampleDelay;
 			_chirp.reset();
 			_cycleN = _core.size();
 			_cycleI = 0;
@@ -184,8 +184,8 @@ void Ranalyzer::processAll(const ProcessArgs& args) {
 		}
 
 		_inputBuffer.push(out);
-		if (_bufferCount > 0) {
-			--_bufferCount;
+		if (_outBufferCount > 0) {
+			--_outBufferCount;
 		}
 		else {
 			_core.stepChannelSample(0, _inputBuffer.value(_currentReturnSampleDelay - 1));
@@ -196,14 +196,14 @@ void Ranalyzer::processAll(const ProcessArgs& args) {
 		if (_cycleI >= _cycleN) {
 			_run = false;
 			_flush = true;
-			_bufferCount = _currentReturnSampleDelay;
+			_analysisBufferCount = _currentReturnSampleDelay;
 		}
 	}
-	else if (_flush) {
-		_core.stepChannelSample(0, _inputBuffer.value((_run ? _currentReturnSampleDelay : _bufferCount) - 1));
+	if (_flush) {
+		_core.stepChannelSample(0, _inputBuffer.value((_run ? _currentReturnSampleDelay : _analysisBufferCount) - 1));
 		_core.stepChannelSample(1, inputs[RETURN_INPUT].getVoltage());
-		--_bufferCount;
-		if (_bufferCount < 1) {
+		--_analysisBufferCount;
+		if (_analysisBufferCount < 1) {
 			_flush = false;
 			_eocPulseGen.trigger(0.001f);
 		}

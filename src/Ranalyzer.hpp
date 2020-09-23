@@ -98,7 +98,8 @@ struct Ranalyzer : AnalyzerBase {
 	bool _flush = false;
 	int _returnSampleDelay = 2;
 	int _currentReturnSampleDelay = 0;
-	int _bufferCount = 0;
+	int _outBufferCount = 0;
+	int _analysisBufferCount = 0;
 	HistoryBuffer<float> _inputBuffer;
 	int _cycleI = 0;
 	int _cycleN = 0;
