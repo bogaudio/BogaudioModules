@@ -430,7 +430,7 @@ struct MegaGateWidget : LPGEnvBaseWidget {
 		addChild(createLight<SmallLight<GreenLight>>(hpfPoles4LightPosition, module, MegaGate::HPF_POLES_4_LIGHT));
 	}
 
-	void contextMenu(Menu* menu) {
+	void contextMenu(Menu* menu) override {
 		LPGEnvBaseWidget::contextMenu(menu);
 		auto m = dynamic_cast<MegaGate*>(module);
 		assert(m);
