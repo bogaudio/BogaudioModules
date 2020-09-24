@@ -8,7 +8,7 @@ env:
 jobs:
   buildLinux:
     name: Build Linux
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
     - name: Build Linux

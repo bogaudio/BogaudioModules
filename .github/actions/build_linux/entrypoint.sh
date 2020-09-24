@@ -10,4 +10,3 @@ unzip -o rack-sdk.zip
 rm rack-sdk.zip
 
 make dist
-gcc --version
