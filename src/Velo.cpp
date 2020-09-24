@@ -119,7 +119,7 @@ struct VeloWidget : BGModuleWidget {
 		addOutput(createOutput<Port24>(outOutputPosition, module, Velo::OUT_OUTPUT));
 	}
 
-	void contextMenu(Menu* menu) {
+	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<Velo*>(module);
 		assert(m);
 		menu->addChild(new BoolOptionMenuItem("Level knob/CV scales bipolar CV", [m]() { return &m->_levelScalesCV; }));

@@ -800,14 +800,14 @@ int AnalyzerDisplay::binValueToHeight(float value, AmplitudePlot plot) {
 			value /= rangeDb;
 			return roundf(_graphSize.y * value);
 		}
-
-		case PERCENTAGE_AP: {
-			value = binValueToAmplitude(value);
-			value = std::min(value, 2.0f);
-			value = std::max(value, 0.0f);
-			return roundf(_graphSize.y * value / _totalLinearAmplitude);
-		}
+		default:;
 	}
+
+	//case PERCENTAGE_AP:
+	value = binValueToAmplitude(value);
+	value = std::min(value, 2.0f);
+	value = std::max(value, 0.0f);
+	return roundf(_graphSize.y * value / _totalLinearAmplitude);
 }
 
 float AnalyzerDisplay::binValueToAmplitude(float value) {
