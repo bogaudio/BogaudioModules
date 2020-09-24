@@ -206,8 +206,9 @@ struct Walk2Display : TransparentWidget {
 	}
 
 	void onDragMove(const event::DragMove& e) override {
-		_dragLast.x += e.mouseDelta.x;
-		_dragLast.y += e.mouseDelta.y;
+		float zoom = APP->scene->rackScroll->zoomWidget->zoom;
+		_dragLast.x += e.mouseDelta.x / zoom;
+		_dragLast.y += e.mouseDelta.y / zoom;
 		maybeJump(_dragLast);
 	}
 
