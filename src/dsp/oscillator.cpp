@@ -313,6 +313,9 @@ float SineBankOscillator::next(Phasor::phase_t phaseOffset) {
 }
 
 
+constexpr float ChirpOscillator::minFrequency;
+constexpr float ChirpOscillator::minTimeSeconds;
+
 void ChirpOscillator::setParams(float frequency1, float frequency2, float time, bool linear) {
 	frequency1 = std::max(minFrequency, std::min(frequency1, 0.99f * 0.5f * _sampleRate));
 	frequency2 = std::max(minFrequency, std::min(frequency2, 0.99f * 0.5f * _sampleRate));
@@ -357,6 +360,9 @@ void ChirpOscillator::reset() {
 	_oscillator.resetPhase();
 }
 
+
+constexpr float PureChirpOscillator::minFrequency;
+constexpr float PureChirpOscillator::minTimeSeconds;
 
 void PureChirpOscillator::setParams(float frequency1, float frequency2, double time, bool linear) {
 	frequency1 = std::max(minFrequency, std::min(frequency1, 0.99f * 0.5f * _sampleRate));
