@@ -862,7 +862,7 @@ void AnalyzerDisplay::drawFreezeUnder(const DrawArgs& args, float lowHz, float h
 	nvgScissor(args.vg, _insetLeft, _insetTop, _graphSize.x, _graphSize.y);
 	nvgBeginPath(args.vg);
 	nvgRect(args.vg, _insetLeft + x1, _insetTop, x2 - x1, _size.y - _insetBottom);
-	nvgFillColor(args.vg, nvgRGBA(0xaa, 0xaa, 0xaa, 0xd0));
+	nvgFillColor(args.vg, nvgRGBA(0x00, 0xff, 0x00, 0xa0));
 	nvgFill(args.vg);
 	nvgRestore(args.vg);
 }
