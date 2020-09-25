@@ -813,10 +813,12 @@ void AnalyzerDisplay::drawGraph(
 	float rangeMaxHz,
 	AmplitudePlot ampPlot
 ) {
-	float range = (rangeMaxHz - rangeMinHz) / (0.5f * APP->engine->getSampleRate());
-	int pointsN = roundf(range * (_module->_core._size / 2));
-	range = rangeMinHz / (0.5f * APP->engine->getSampleRate());
-	int pointsOffset = roundf(range * (_module->_core._size / 2));
+	float nyquist = 0.5f * APP->engine->getSampleRate();
+	int binsN = _module->_core._size / _module->_core._binAverageN;
+	float binHz = nyquist / (float)binsN;
+	float range = (rangeMaxHz - rangeMinHz) / nyquist;
+	int pointsN = roundf(binsN * range);
+	int pointsOffset = roundf(binsN * (rangeMinHz / nyquist));
 	nvgSave(args.vg);
 	nvgScissor(args.vg, _insetLeft, _insetTop, _graphSize.x, _graphSize.y);
 	nvgStrokeColor(args.vg, color);
@@ -827,10 +829,9 @@ void AnalyzerDisplay::drawGraph(
 		if (i == 0) {
 			nvgMoveTo(args.vg, _insetLeft, _insetTop + (_graphSize.y - height));
 		}
-		else {
-			float x = _graphSize.x * powf(i / (float)pointsN, _xAxisLogFactor);
-			nvgLineTo(args.vg, _insetLeft + x, _insetTop + (_graphSize.y - height));
-		}
+		float hz = ((float)(pointsOffset + i) + 0.5f) * binHz;
+		float x = _graphSize.x * powf((hz - rangeMinHz) / (rangeMaxHz - rangeMinHz), _xAxisLogFactor);
+		nvgLineTo(args.vg, _insetLeft + x, _insetTop + (_graphSize.y - height));
 	}
 	nvgStroke(args.vg);
 	nvgRestore(args.vg);
