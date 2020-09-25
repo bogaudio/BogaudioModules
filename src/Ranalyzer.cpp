@@ -268,7 +268,9 @@ void Ranalyzer::setWindow(WindowType wt) {
 
 
 struct AnalysisBinsReader : AnalyzerDisplay::BinsReader {
-	AnalysisBinsReader(Ranalyzer* module) : AnalyzerDisplay::BinsReader(module) {}
+	AnalyzerBase* _base;
+
+	AnalysisBinsReader(AnalyzerBase* base) : _base(base) {}
 
 	float at(int i) override {
 		assert(_base->_core._nChannels == 3);
@@ -342,6 +344,9 @@ struct RanalyzerWidget : AnalyzerBaseWidget {
 			auto display = new RanalyzerDisplay(module, size, false);
 			display->box.pos = inset;
 			display->box.size = size;
+			display->channelLabel(0, "Test");
+			display->channelLabel(1, "Response");
+			display->channelLabel(2, "Analysis");
 			if (module) {
 				display->setChannelBinsReader(2, new AnalysisBinsReader(module));
 				module->setChannelDisplayListener(display);

@@ -944,6 +944,10 @@ Features:
   - Each channel has a THRU output, which passes the corresponding input through unchanged.
   - On the context (right-click) menu, the display vertical (amplitude) range can be set to extend down to -120dB (the default is -60dB); alternately it can be set to to display linearly, with the amplitude expressed as a percentage, where 100% is equivalent to 0dB.
   - By default the frequency axis has a logarithmic plot; this can be set to linear on the context menu.
+  - When one clicks and holds on the display, the display freezes, and:
+    - The frequency analysis bin under the mouse pointer is highlighted.
+    - An overlay box is displayed, with details about the bin number and frequency range, and the level in decibels for each signal at that frequency range.
+    - Dragging the mouse left and right will update the highlight and overlay.
 
 _Polyphony:_ Monophonic, with two exceptions:
   - If an input is polyphonic, its channels are summed, and the spectra of the summed signal is displayed.

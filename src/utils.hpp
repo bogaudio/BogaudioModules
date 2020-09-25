@@ -1,6 +1,7 @@
 #pragma once
 
 #include <atomic>
+#include <string>
 
 #include "rack.hpp"
 
@@ -31,5 +32,7 @@ struct SpinLock {
         locked.clear(std::memory_order_release);
     }
 };
+
+std::string format(const char* fmt, ...);
 
 } // namespace bogaudio

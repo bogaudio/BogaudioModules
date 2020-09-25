@@ -177,18 +177,15 @@ struct AnalyzerBaseWidget : BGModuleWidget {
 
 struct AnalyzerDisplay : TransparentWidget, AnalyzerTypes {
 	struct BinsReader {
-		AnalyzerBase* _base;
-
-		BinsReader(AnalyzerBase* base) : _base(base) {}
+		BinsReader() {}
 		virtual ~BinsReader() {}
 		virtual float at(int i) = 0;
 	};
 
 	struct GenericBinsReader : BinsReader {
-		int _channel;
-
-		GenericBinsReader(AnalyzerBase* base, int channel) : BinsReader(base), _channel(channel) {}
-		float at(int i) override { return _base->_core.getBins(_channel)[i]; }
+		float* _bins;
+		GenericBinsReader(float* bins) : _bins(bins) {}
+		float at(int i) override { return _bins[i]; }
 	};
 
 	const int _insetAround = 2;
@@ -226,6 +223,10 @@ struct AnalyzerDisplay : TransparentWidget, AnalyzerTypes {
 	float _xAxisLogFactor = baseXAxisLogFactor;
 	BinsReader** _channelBinsReaders = NULL;
 	bool* _displayChannel = NULL;
+	std::string* _channelLabels = NULL;
+	Vec _freezeMouse;
+	bool _freezeDraw = false;
+	float* _freezeBufs = NULL;
 
 	AnalyzerDisplay(
 		AnalyzerBase* module,
@@ -241,28 +242,29 @@ struct AnalyzerDisplay : TransparentWidget, AnalyzerTypes {
 		if (_module) {
 			_channelBinsReaders = new BinsReader*[_module->_core._nChannels] {};
 			_displayChannel = new bool[_module->_core._nChannels] {};
+			_channelLabels = new std::string[_module->_core._nChannels];
 			std::fill_n(_displayChannel, _module->_core._nChannels, true);
 		}
 	}
 	~AnalyzerDisplay() {
 		if (_module) {
-			if (_channelBinsReaders) {
-				for (int i = 0; i < _module->_core._nChannels; ++i) {
-					if (_channelBinsReaders) {
-						delete _channelBinsReaders[i];
-					}
+			for (int i = 0; i < _module->_core._nChannels; ++i) {
+				if (_channelBinsReaders) {
+					delete _channelBinsReaders[i];
 				}
-				delete[] _channelBinsReaders;
 			}
-
-			if (_displayChannel) {
-				delete[] _displayChannel;
-			}
+			delete[] _channelBinsReaders;
+			delete[] _displayChannel;
+			delete[] _channelLabels;
 		}
 	}
 
+	void onButton(const event::Button& e) override;
+	void onDragMove(const event::DragMove& e) override;
+	void onDragEnd(const event::DragEnd& e) override;
 	void setChannelBinsReader(int channel, BinsReader* br);
 	void displayChannel(int channel, bool display);
+	void channelLabel(int channel, std::string label);
 	void draw(const DrawArgs& args) override;
 	void drawBackground(const DrawArgs& args);
 	virtual void drawHeader(const DrawArgs& args);
@@ -270,7 +272,10 @@ struct AnalyzerDisplay : TransparentWidget, AnalyzerTypes {
 	void drawXAxis(const DrawArgs& args, float strokeWidth, FrequencyPlot plot, float rangeMinHz, float rangeMaxHz);
 	void drawXAxisLine(const DrawArgs& args, float hz, float rangeMinHz, float rangeMaxHz);
 	void drawGraph(const DrawArgs& args, BinsReader& bins, NVGcolor color, float strokeWidth, FrequencyPlot freqPlot, float rangeMinHz, float rangeMaxHz, AmplitudePlot ampPlot);
-	void drawText(const DrawArgs& args, const char* s, float x, float y, float rotation = 0.0, const NVGcolor* color = NULL);
+	void freezeValues(float rangeMinHz, float rangeMaxHz, int& binI, float& lowHz, float& highHz);
+	void drawFreezeUnder(const DrawArgs& args, float lowHz, float highHz, float rangeMinHz, float rangeMaxHz, float strokeWidth);
+	void drawFreezeOver(const DrawArgs& args, int binI, int binsN, float lowHz, float highHz, float strokeWidth);
+	void drawText(const DrawArgs& args, const char* s, float x, float y, float rotation = 0.0, const NVGcolor* color = NULL, int fontSize = 10);
 	int binValueToHeight(float value, AmplitudePlot plot);
 	static float binValueToAmplitude(float value);
 	static float binValueToDb(float value);

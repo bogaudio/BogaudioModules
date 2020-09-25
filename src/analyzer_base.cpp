@@ -1,6 +1,7 @@
 
 #include "analyzer_base.hpp"
 #include "dsp/signal.hpp"
+#include <vector>
 
 ChannelAnalyzer::~ChannelAnalyzer() {
 	{
@@ -367,10 +368,51 @@ void AnalyzerBaseWidget::addAmplitudePlotContextMenu(Menu* menu, bool linearOpti
 }
 
 
+void AnalyzerDisplay::onButton(const event::Button& e) {
+	if (!(e.action == GLFW_PRESS && e.button == GLFW_MOUSE_BUTTON_LEFT && (e.mods & RACK_MOD_MASK) == 0)) {
+		return;
+	}
+	e.consume(this);
+	_freezeMouse = e.pos;
+
+	if (_freezeBufs) {
+		delete[] _freezeBufs;
+	}
+	_freezeBufs = new float[_module->_core._nChannels * _module->_core._outBufferN];
+	for (int i = 0; i < _module->_core._nChannels; ++i) {
+		if (_channelBinsReaders[i]) {
+			float* dest = _freezeBufs + i * _module->_core._outBufferN;
+			for (int j = 0; j < _module->_core._outBufferN; ++j) {
+				*(dest + j) = _channelBinsReaders[i]->at(j);
+			}
+		}
+		else {
+			float* bins = _module->_core.getBins(i);
+			std::copy(bins, bins + _module->_core._outBufferN, _freezeBufs + i * _module->_core._outBufferN);
+		}
+	}
+}
+
+void AnalyzerDisplay::onDragMove(const event::DragMove& e) {
+	float zoom = APP->scene->rackScroll->zoomWidget->zoom;
+	_freezeMouse.x += e.mouseDelta.x / zoom;
+	_freezeMouse.y += e.mouseDelta.y / zoom;
+	_freezeDraw = _freezeMouse.x > _insetLeft && _freezeMouse.x < _size.x - _insetRight && _freezeMouse.y > _insetTop && _freezeMouse.y < _size.y - _insetBottom;
+}
+
+void AnalyzerDisplay::onDragEnd(const event::DragEnd& e) {
+	_freezeMouse = Vec(0, 0);
+	_freezeDraw = false;
+	if (_freezeBufs) {
+		delete[] _freezeBufs;
+		_freezeBufs = NULL;
+	}
+}
+
 void AnalyzerDisplay::setChannelBinsReader(int channel, BinsReader* br) {
 	assert(_channelBinsReaders);
 	assert(_module);
-	assert(channel < _module->_core._nChannels);
+	assert(channel >= 0 && channel < _module->_core._nChannels);
 	if (_channelBinsReaders[channel]) {
 		delete _channelBinsReaders[channel];
 	}
@@ -378,10 +420,16 @@ void AnalyzerDisplay::setChannelBinsReader(int channel, BinsReader* br) {
 }
 
 void AnalyzerDisplay::displayChannel(int channel, bool display) {
+	assert(channel >= 0 && channel < _module->_core._nChannels);
 	assert(_displayChannel);
 	assert(_module);
 	assert(channel < _module->_core._nChannels);
 	_displayChannel[channel] = display;
+}
+
+void AnalyzerDisplay::channelLabel(int channel, std::string label) {
+	assert(channel >= 0 && channel < _module->_core._nChannels);
+	_channelLabels[channel] = label;
 }
 
 void AnalyzerDisplay::draw(const DrawArgs& args) {
@@ -423,16 +471,28 @@ void AnalyzerDisplay::draw(const DrawArgs& args) {
 	drawYAxis(args, strokeWidth, amplitudePlot);
 	drawXAxis(args, strokeWidth, frequencyPlot, rangeMinHz, rangeMaxHz);
 	if (_module) {
+		int freezeBinI = 0;
+		float freezeLowHz = 0.0f;
+		float freezeHighHz = 0.0f;
+		if (_freezeDraw) {
+			freezeValues(rangeMinHz, rangeMaxHz, freezeBinI, freezeLowHz, freezeHighHz);
+			drawFreezeUnder(args, freezeLowHz, freezeHighHz, rangeMinHz, rangeMaxHz, strokeWidth);
+		}
+
 		for (int i = 0; i < _module->_core._nChannels; ++i) {
 			if (_displayChannel[i]) {
 				if (_module->_core._channels[i]) {
-					GenericBinsReader br(_module, i);
+					GenericBinsReader br(_freezeBufs ? _freezeBufs + i * _module->_core._outBufferN : _module->_core.getBins(i));
 					drawGraph(args, br, _channelColors[i % channelColorsN], strokeWidth, frequencyPlot, rangeMinHz, rangeMaxHz, amplitudePlot);
 				}
 				else if (_channelBinsReaders[i]) {
 					drawGraph(args, *_channelBinsReaders[i], _channelColors[i % channelColorsN], strokeWidth, frequencyPlot, rangeMinHz, rangeMaxHz, amplitudePlot);
 				}
 			}
+		}
+
+		if (_freezeDraw) {
+			drawFreezeOver(args, freezeBinI, _module->_core._size / _module->_core._binAverageN, freezeLowHz, freezeHighHz, strokeWidth);
 		}
 	}
 	nvgRestore(args.vg);
@@ -776,11 +836,146 @@ void AnalyzerDisplay::drawGraph(
 	nvgRestore(args.vg);
 }
 
-void AnalyzerDisplay::drawText(const DrawArgs& args, const char* s, float x, float y, float rotation, const NVGcolor* color) {
+void AnalyzerDisplay::freezeValues(float rangeMinHz, float rangeMaxHz, int& binI, float& lowHz, float& highHz) {
+	int binsN = _module->_core._size / _module->_core._binAverageN;
+	float binHz = (0.5f * APP->engine->getSampleRate()) / (float)binsN;
+	float mouseHz = powf((_freezeMouse.x - _insetLeft) / (float)_graphSize.x, 1.0f / _xAxisLogFactor);
+	mouseHz *= rangeMaxHz - rangeMinHz;
+	mouseHz += rangeMinHz;
+	binI = mouseHz / binHz;
+	lowHz = binI * binHz;
+	highHz = (binI + 1) * binHz;
+}
+
+void AnalyzerDisplay::drawFreezeUnder(const DrawArgs& args, float lowHz, float highHz, float rangeMinHz, float rangeMaxHz, float strokeWidth) {
+	float x1 = _graphSize.x * powf((lowHz - rangeMinHz) / (rangeMaxHz - rangeMinHz), _xAxisLogFactor);
+	float x2 = _graphSize.x * powf((highHz - rangeMinHz) / (rangeMaxHz - rangeMinHz), _xAxisLogFactor);
+	if (x2 - x1 < strokeWidth) {
+		float x = strokeWidth - (x2 - x1);
+		x /= 2.0f;
+		x1 -= x;
+		x2 += x;
+	}
+
+	nvgSave(args.vg);
+	nvgScissor(args.vg, _insetLeft, _insetTop, _graphSize.x, _graphSize.y);
+	nvgBeginPath(args.vg);
+	nvgRect(args.vg, _insetLeft + x1, _insetTop, x2 - x1, _size.y - _insetBottom);
+	nvgFillColor(args.vg, nvgRGBA(0xaa, 0xaa, 0xaa, 0xd0));
+	nvgFill(args.vg);
+	nvgRestore(args.vg);
+}
+
+void AnalyzerDisplay::drawFreezeOver(const DrawArgs& args, int binI, int binsN, float lowHz, float highHz, float strokeWidth) {
+	nvgSave(args.vg);
+	auto formatHz = [](float hz) -> std::string {
+		if (hz < 1000.0f) {
+			return format("%0.2f Hz", hz);
+		}
+		return format("%0.3f KHz", hz / 1000.0f);
+	};
+
+	std::vector<std::string> labels;
+	std::vector<std::string> values;
+	std::vector<const NVGcolor*> colors;
+	labels.push_back("Bin");
+	values.push_back(format("%d of %d", binI + 1, binsN));
+	colors.push_back(NULL);
+	labels.push_back("Bin Low Hz");
+	values.push_back(formatHz(lowHz));
+	colors.push_back(NULL);
+	labels.push_back("Bin High Hz");
+	values.push_back(formatHz(highHz));
+	colors.push_back(NULL);
+	for (int i = 0; i < _module->_core._nChannels; ++i) {
+		if (_displayChannel[i] && (_module->_core._channels[i] || _channelBinsReaders[i])) {
+			if (_channelLabels[i].empty()) {
+				labels.push_back(format("Channel %d", i + 1));
+			}
+			else {
+				labels.push_back(_channelLabels[i]);
+			}
+			float bv = *(_freezeBufs + i * _module->_core._outBufferN + binI);
+			values.push_back(format("%0.2f dB", binValueToDb(bv)));
+			colors.push_back(&_channelColors[i % channelColorsN]);
+		}
+	}
+	assert(labels.size() == values.size());
+
+	size_t maxLabel = 0;
+	for (auto& label : labels) {
+		if (label.size() > maxLabel) {
+			maxLabel = label.size();
+		}
+	}
+
+	std::vector<std::string> lines;
+	size_t maxLine = 0;
+	for (size_t i = 0; i < labels.size(); ++i) {
+		char spaces[maxLabel + 1];
+		int nSpaces = maxLabel - labels[i].size();
+		memset(spaces, ' ', nSpaces);
+		spaces[nSpaces] = '\0';
+		std::string line = format("%s%s: %s", spaces, labels[i].c_str(), values[i].c_str());
+		lines.push_back(line);
+		if (line.size() > maxLine) {
+			maxLine = line.size();
+		}
+	}
+
+	const float charWidth = 8.0f;
+	const float charHeight = 16.0f;
+	const float inset = 10.0f;
+	const float lineSep = 3.0f;
+	const float mousePad = 15.0f;
+	const float edgePad = 10.0f;
+	Vec boxDim(
+		maxLine * charWidth + 2 * inset,
+		lines.size() * charHeight + (lines.size() - 1) * lineSep + 2 * inset
+	);
+	Vec boxPos(
+		_freezeMouse.x + mousePad,
+		_freezeMouse.y - boxDim.y / 2.0f
+	);
+	if (boxPos.x + boxDim.x > _size.x - _insetRight) {
+		boxPos.x = _freezeMouse.x - mousePad - boxDim.x;
+	}
+	if (_freezeMouse.y - boxDim.y / 2.0f < _insetTop + edgePad) {
+		boxPos.y = _insetTop + edgePad;
+	}
+	if (_freezeMouse.y + boxDim.y / 2.0f > _size.y - _insetBottom - edgePad) {
+		boxPos.y = _size.y - _insetBottom - edgePad - boxDim.y;
+	}
+
+	nvgBeginPath(args.vg);
+	nvgRect(args.vg, boxPos.x, boxPos.y, boxDim.x, boxDim.y);
+	nvgFillColor(args.vg, nvgRGBA(0x00, 0x00, 0x00, 0xff));
+	nvgFill(args.vg);
+
+	nvgStrokeColor(args.vg, _axisColor); // nvgRGBA(0x00, 0xff, 0x00, 0xd0));
+	nvgStrokeWidth(args.vg, strokeWidth);
+	nvgBeginPath(args.vg);
+	nvgMoveTo(args.vg, boxPos.x, boxPos.y);
+	nvgLineTo(args.vg, boxPos.x + boxDim.x, boxPos.y);
+	nvgLineTo(args.vg, boxPos.x + boxDim.x, boxPos.y + boxDim.y);
+	nvgLineTo(args.vg, boxPos.x, boxPos.y + boxDim.y);
+	nvgLineTo(args.vg, boxPos.x, boxPos.y);
+	nvgStroke(args.vg);
+
+	float y = boxPos.y + inset;
+	for (size_t i = 0; i < labels.size(); ++i) {
+		drawText(args, lines[i].c_str(), boxPos.x + inset, y + 13.0f, 0.0f, colors[i], 16);
+		y += charHeight + lineSep;
+	}
+
+	nvgRestore(args.vg);
+}
+
+void AnalyzerDisplay::drawText(const DrawArgs& args, const char* s, float x, float y, float rotation, const NVGcolor* color, int fontSize) {
 	nvgSave(args.vg);
 	nvgTranslate(args.vg, x, y);
 	nvgRotate(args.vg, rotation);
-	nvgFontSize(args.vg, 10);
+	nvgFontSize(args.vg, fontSize);
 	nvgFontFaceId(args.vg, _font->handle);
 	nvgFillColor(args.vg, color ? *color : _textColor);
 	nvgText(args.vg, 0, 0, s, NULL);

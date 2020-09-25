@@ -14,6 +14,9 @@ inline float decibelsToAmplitude(float db) {
 }
 
 inline float amplitudeToDecibels(float amplitude) {
+	if (amplitude < 0.000001f) {
+		return -120.0f;
+	}
 	return 20.0f * log10f(amplitude);
 }
 
