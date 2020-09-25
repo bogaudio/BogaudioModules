@@ -880,18 +880,18 @@ void AnalyzerDisplay::drawFreezeOver(const DrawArgs& args, int binI, int binsN, 
 	std::vector<std::string> values;
 	std::vector<const NVGcolor*> colors;
 	labels.push_back("Bin");
-	values.push_back(format("%d of %d", binI + 1, binsN));
+	values.push_back(format("%d / %d", binI + 1, binsN));
 	colors.push_back(NULL);
-	labels.push_back("Bin Low Hz");
+	labels.push_back("Low");
 	values.push_back(formatHz(lowHz));
 	colors.push_back(NULL);
-	labels.push_back("Bin High Hz");
+	labels.push_back("High");
 	values.push_back(formatHz(highHz));
 	colors.push_back(NULL);
 	for (int i = 0; i < _module->_core._nChannels; ++i) {
 		if (_displayChannel[i] && (_module->_core._channels[i] || _channelBinsReaders[i])) {
 			if (_channelLabels[i].empty()) {
-				labels.push_back(format("Channel %d", i + 1));
+				labels.push_back(format("Ch. %d", i + 1));
 			}
 			else {
 				labels.push_back(_channelLabels[i]);
@@ -924,12 +924,12 @@ void AnalyzerDisplay::drawFreezeOver(const DrawArgs& args, int binI, int binsN, 
 		}
 	}
 
-	const float charWidth = 8.0f;
-	const float charHeight = 16.0f;
+	const float charWidth = 7.0f;
+	const float charHeight = 14.0f;
 	const float inset = 10.0f;
-	const float lineSep = 3.0f;
-	const float mousePad = 15.0f;
-	const float edgePad = 10.0f;
+	const float lineSep = 1.5f;
+	const float mousePad = 5.0f;
+	const float edgePad = 3.0f;
 	Vec boxDim(
 		maxLine * charWidth + 2 * inset,
 		lines.size() * charHeight + (lines.size() - 1) * lineSep + 2 * inset
@@ -965,7 +965,7 @@ void AnalyzerDisplay::drawFreezeOver(const DrawArgs& args, int binI, int binsN, 
 
 	float y = boxPos.y + inset;
 	for (size_t i = 0; i < labels.size(); ++i) {
-		drawText(args, lines[i].c_str(), boxPos.x + inset, y + 13.0f, 0.0f, colors[i], 16);
+		drawText(args, lines[i].c_str(), boxPos.x + inset, y + 11.0f, 0.0f, colors[i], 14);
 		y += charHeight + lineSep;
 	}
 
