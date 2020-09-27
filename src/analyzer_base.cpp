@@ -428,6 +428,7 @@ void AnalyzerDisplay::displayChannel(int channel, bool display) {
 }
 
 void AnalyzerDisplay::channelLabel(int channel, std::string label) {
+	assert(_module);
 	assert(channel >= 0 && channel < _module->_core._nChannels);
 	_channelLabels[channel] = label;
 }

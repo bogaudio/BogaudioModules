@@ -344,12 +344,12 @@ struct RanalyzerWidget : AnalyzerBaseWidget {
 			auto display = new RanalyzerDisplay(module, size, false);
 			display->box.pos = inset;
 			display->box.size = size;
-			display->channelLabel(0, "Test");
-			display->channelLabel(1, "Response");
-			display->channelLabel(2, "Analysis");
 			if (module) {
 				display->setChannelBinsReader(2, new AnalysisBinsReader(module));
 				module->setChannelDisplayListener(display);
+				display->channelLabel(0, "Test");
+				display->channelLabel(1, "Response");
+				display->channelLabel(2, "Analysis");
 			}
 			addChild(display);
 		}
