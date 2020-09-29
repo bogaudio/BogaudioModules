@@ -338,7 +338,9 @@ void AnalyzerBaseWidget::addFrequencyRangeContextMenu(Menu* menu) {
 	mi->addItem(OptionMenuItem("Lower 10%", [m]() { return m->_range == -0.9f; }, [m]() { m->_range = -0.9f; }));
 	mi->addItem(OptionMenuItem("Lower 25%", [m]() { return m->_range == -0.75f; }, [m]() { m->_range = -0.75f; }));
 	mi->addItem(OptionMenuItem("Lower 50%", [m]() { return m->_range == -0.5f; }, [m]() { m->_range = -0.5f; }));
+	mi->addItem(OptionMenuItem("Lower 75%", [m]() { return m->_range == -0.25f; }, [m]() { m->_range = -0.25f; }));
 	mi->addItem(OptionMenuItem("Full", [m]() { return m->_range == 0.0f; }, [m]() { m->_range = 0.0f; }));
+	mi->addItem(OptionMenuItem("Upper 75%", [m]() { return m->_range == 0.25f; }, [m]() { m->_range = 0.25f; }));
 	mi->addItem(OptionMenuItem("Upper 50%", [m]() { return m->_range == 0.5f; }, [m]() { m->_range = 0.5f; }));
 	mi->addItem(OptionMenuItem("Upper 25%", [m]() { return m->_range == 0.75f; }, [m]() { m->_range = 0.75f; }));
 	OptionsMenuItem::addToMenu(mi, menu);
@@ -682,11 +684,11 @@ void AnalyzerDisplay::drawXAxis(const DrawArgs& args, float strokeWidth, Frequen
 				}
 			}
 
-			if (rangeMinHz > 10000.0f) {
-				hz = 200000.0f;
-				float lastX = 0.0f;
-				while (hz < rangeMaxHz) {
-					if (rangeMinHz <= hz) {
+			auto extraLabels = [&](float increment) {
+				if (rangeMinHz > increment) {
+					float hz = 2.0f * increment;
+					float lastX = 0.0f;
+					while (hz < 10.0f * increment) {
 						float x = (hz - rangeMinHz) / (rangeMaxHz - rangeMinHz);
 						x = powf(x, _xAxisLogFactor);
 						if (x > lastX + 0.1f && x < 1.0f) {
@@ -697,29 +699,15 @@ void AnalyzerDisplay::drawXAxis(const DrawArgs& args, float strokeWidth, Frequen
 							snprintf(s, sLen, "%dk", (int)(hz / 1000.0f));
 							drawText(args, s, _insetLeft + x - 7, _size.y - 2);
 						}
+						hz += increment;
 					}
-					hz += 100000.0f;
+					return true;
 				}
-			}
-			else if (rangeMinHz > 1000.0f) {
-				hz = 20000.0f;
-				float lastX = 0.0f;
-				while (hz < 80000.0f) {
-					if (rangeMinHz <= hz) {
-						float x = (hz - rangeMinHz) / (rangeMaxHz - rangeMinHz);
-						x = powf(x, _xAxisLogFactor);
-						if (x > lastX + 0.1f && x < 1.0f) {
-							lastX = x;
-							x *= _graphSize.x;
-							const int sLen = 32;
-							char s[sLen];
-							snprintf(s, sLen, "%dk", (int)(hz / 1000.0f));
-							drawText(args, s, _insetLeft + x - 7, _size.y - 2);
-						}
-					}
-					hz += 10000.0f;
-				}
-			}
+				return false;
+			};
+			extraLabels(100000.0f) ||
+			extraLabels(10000.0f) ||
+			extraLabels(1000.0f);
 			break;
 		}
 
