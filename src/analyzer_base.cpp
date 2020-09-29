@@ -175,32 +175,22 @@ SpectrumAnalyzer::WindowType AnalyzerCore::window() {
 	}
 }
 
-float AnalyzerCore::getPeak(int channel) {
+float AnalyzerCore::getPeak(int channel, float minHz, float maxHz) {
 	assert(channel >= 0 && channel < _nChannels);
-	float max = 0.0f;
-	int maxBin = 0;
 	const float* bins = getBins(channel);
-	for (int bin = 0; bin < _binsN; ++bin) {
-		if (bins[bin] > max) {
-			max = bins[bin];
-			maxBin = bin;
-		}
-	}
-
 	const int bandsPerBin = _size / _binsN;
 	const float fWidth = (APP->engine->getSampleRate() / 2.0f) / (float)(_size / bandsPerBin);
-
+	float max = 0.0f;
+	int maxBin = 0;
+	int i = std::max(0, (int)(minHz / fWidth));
+	int n = std::min(_binsN, 1 + (int)(maxHz / fWidth));
+	for (; i < n; ++i) {
+		if (bins[i] > max) {
+			max = bins[i];
+			maxBin = i;
+		}
+	}
 	return (maxBin + 0.5f)*fWidth;
-	// ??
-	// float sum = 0.0f;
-	// float sumWeights = 0.0f;
-	// int i = std::max(0, maxBin - 1);
-	// int j = std::max(_binsN - 1, maxBin + 1);
-	// for (; i <= j; ++i) {
-	// 	sum += bins[i] * fWidth * i;
-	// 	sumWeights += bins[i];
-	// }
-	// return sum / sumWeights;
 }
 
 void AnalyzerCore::stepChannel(int channelIndex, Input& input) {
@@ -467,7 +457,7 @@ void AnalyzerDisplay::draw(const DrawArgs& args) {
 	nvgSave(args.vg);
 	nvgScissor(args.vg, _insetAround, _insetAround, _size.x - _insetAround, _size.y - _insetAround);
 	if (_module) {
-		drawHeader(args);
+		drawHeader(args, rangeMinHz, rangeMaxHz);
 	}
 	drawYAxis(args, strokeWidth, amplitudePlot);
 	drawXAxis(args, strokeWidth, frequencyPlot, rangeMinHz, rangeMaxHz);
@@ -516,7 +506,7 @@ void AnalyzerDisplay::drawBackground(const DrawArgs& args) {
 	nvgRestore(args.vg);
 }
 
-void AnalyzerDisplay::drawHeader(const DrawArgs& args) {
+void AnalyzerDisplay::drawHeader(const DrawArgs& args, float rangeMinHz, float rangeMaxHz) {
 	nvgSave(args.vg);
 
 	const int textY = -4;
@@ -536,7 +526,7 @@ void AnalyzerDisplay::drawHeader(const DrawArgs& args) {
 	}
 	for (int i = 0; i < _module->_core._nChannels; ++i) {
 		if (_module->_core._channels[i]) {
-			snprintf(s, sLen, "%c:%7.1f", 'A' + i, _module->_core.getPeak(i));
+			snprintf(s, sLen, "%c:%7.1f", 'A' + i, _module->_core.getPeak(i, rangeMinHz, rangeMaxHz));
 			drawText(args, s, x, _insetTop + textY, 0.0, &_channelColors[i % channelColorsN]);
 		}
 		x += 9 * charPx + spacing;

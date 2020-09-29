@@ -293,7 +293,7 @@ struct RanalyzerDisplay : AnalyzerDisplay, ChannelDisplayListener {
 		displayChannel(2, c2);
 	}
 
-	void drawHeader(const DrawArgs& args) override {
+	void drawHeader(const DrawArgs& args, float rangeMinHz, float rangeMaxHz) override {
 		nvgSave(args.vg);
 
 		const int textY = -4;

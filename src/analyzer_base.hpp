@@ -122,7 +122,7 @@ struct AnalyzerCore {
 		assert(i >= 0 && i < _nChannels);
 		return _currentOutBufs[i];
 	}
-	float getPeak(int channel);
+	float getPeak(int channel, float minHz, float maxHz);
 	void stepChannel(int channelIndex, Input& input);
 	void stepChannelSample(int channelIndex, float sample);
 };
@@ -267,7 +267,7 @@ struct AnalyzerDisplay : TransparentWidget, AnalyzerTypes {
 	void channelLabel(int channel, std::string label);
 	void draw(const DrawArgs& args) override;
 	void drawBackground(const DrawArgs& args);
-	virtual void drawHeader(const DrawArgs& args);
+	virtual void drawHeader(const DrawArgs& args, float rangeMinHz, float rangeMaxHz);
 	void drawYAxis(const DrawArgs& args, float strokeWidth, AmplitudePlot plot);
 	void drawXAxis(const DrawArgs& args, float strokeWidth, FrequencyPlot plot, float rangeMinHz, float rangeMaxHz);
 	void drawXAxisLine(const DrawArgs& args, float hz, float rangeMinHz, float rangeMaxHz);
