@@ -45,8 +45,8 @@ struct Mumix : MatrixBaseModule {
 	static const float slewTimeMS;
 
 	Saturator _saturator[maxChannels];
-	Amplifier _amplifiers[maxChannels];
-	bogaudio::dsp::SlewLimiter _slewLimiters[maxChannels];
+	Amplifier _amplifiers[8];
+	bogaudio::dsp::SlewLimiter _slewLimiters[8];
 	bool _muted[8] {};
 	float _invActive = 0.0f;
 

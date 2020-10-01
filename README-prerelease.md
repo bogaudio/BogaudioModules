@@ -209,7 +209,7 @@ The R/BW CV input expects a unipolar 0-10V input; when in use this input is atte
 SLOPE modulates the rate of transition between the pass and stop bands in each filter mode.  (For example, in lowpass mode, a higher slope means a faster/sharper change, at the cutoff frequency, from frequency passing through the filter to being suppressed by the filter.)  This ranges from a slow (at 1) to fast (at 12) transition.  It may be modulated by the SLP CV input, which expects 0-10V, and which is attenuated by the SLOPE knob.
 
 The context menu option "Bandwidth mode" controls how the bandwidth is calculated for a given center frequency and RES/BW setting:
-  - "Pitched" (the default): the upper and lower frequencies of the band are equally distant from the center frequency in pitch (octaves and semitones), with a maxmimum of 2 octaves.
+  - "Pitched" (the default): the upper and lower frequencies of the band are equally distant from the center frequency in pitch (octaves and semitones), with a maximum of 2 octaves.
   - "Linear": the upper and lower frequencies are equally distant in HZ from the center frequency, with a maximum of 2000HZ.
 
 Note: due to limitations in the filter's implementation, it has a couple workarounds in place to avoid problems:
@@ -324,7 +324,7 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the I
 
 A six channel parametric EQ.  It generally works as PEQ does, except:
   - The global FCV control has a knob, which becomes an attenuverter if a CV is provided.
-  - There is a global BW paramter with CV, rather than per-channel bandwidth controls.
+  - There is a global BW parameter with CV, rather than per-channel bandwidth controls.
   - The "FCV RNG" option controls the scaling of the frequency CV inputs; if set to OCTV, the full CV range will alter the band frequencies up to an octave in either direction; if set to FULL, the CV can run the frequencies over the full range, as on PEQ.
   - On the context (right-click) menu, there is an option "Exclude direct-output bands from mix"; if this is enabled, any band that has its direct output in use (if something is patched to its output) does not get its output mixed into the main output.  Usually, the main output includes all bands.
 
@@ -459,7 +459,7 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the T
 
 RGATE is a "clock-relative" gate generator, which outputs gates that have a length that is a ratio of the period of the incoming clock.  It can also be used as a clock divider/multiplier.
 
-The LENGTH control sets the length of the output gate relative to the incoming clock period (time between two clock pulses).  The length may be varied from a minimum of 1ms to the full clock period, at maximum.  With the length at maximum, the output gate will simply stay high.  A LEN unipolor (0-10V) CV may be supplied, which if in use is attenuated by the LENGTH knob.
+The LENGTH control sets the length of the output gate relative to the incoming clock period (time between two clock pulses).  The length may be varied from a minimum of 1ms to the full clock period, at maximum.  With the length at maximum, the output gate will simply stay high.  A LEN unipolar (0-10V) CV may be supplied, which if in use is attenuated by the LENGTH knob.
 
 CLK DIV and CLK MUL alter the frequency and length of gate outputs.  Increasing CLK DIV will set the number of clock pulses the clock period extends over, while CLK MUL will set how many gates will be emitted in that period.  For example, setting CLK DIV to 3 and CLK MUL to 2 yield an output of 2 gates for every three incoming clock pulses, with a maximum gate length of half of 3 times a single clock period.
 
@@ -624,7 +624,7 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, as on MATRIX44.
 
 An 4x4 channel matrix mixer.  Each input can be routed with an independent level to each of the eight output mixes.
 
-*Note that the matrix knobs are attenuvertors, and default to zero.*  That means there will be no output, regardless of the inputs, until some knobs are changed to non-zero values.
+*Note that the matrix knobs are attenuverters, and default to zero.*  That means there will be no output, regardless of the inputs, until some knobs are changed to non-zero values.
 
 Saturation (soft clipping) limits each output to +/-12V.  This can be changed to a hard clip at +/-12V on the context menu ("Output clipping") -- as described on UMIX, this is mode is better if you need to precisely sum CVs.
 
@@ -734,7 +734,7 @@ AM/RM is a ring- and amplitude-modulation effect and CV-controllable variable wa
 
   - With the default knob settings, the unit is a proper ring modulator: the MOD (modulator) and CAR (carrier) inputs are multiplied and the resulting wave is sent to the output.  MOD is passed unchanged to the RECT output.
   - As RECTIFY goes from 0 to fully clockwise, the negative portion of the MOD input is progressively folded to positive, until at the full value the wave is fully rectified.  The modified input is output at RECT; the modified input is multiplied with the carrier input and sent to the output.
-  - The DRY/WET control mixes the otuput of the mod/carrier multiplication with the unmodified carrier input.
+  - The DRY/WET control mixes the output of the mod/carrier multiplication with the unmodified carrier input.
 
 The RECT inputs expects a bipolar (+/-5V) CV, which is added to the RECTIFY knob.  The D/W input works the same for the DRY/WET knob.
 
@@ -840,9 +840,9 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the 
 WALK2 provides two channels of chaotic output, where the output voltage moves as a random walk.  The two outputs are drawn as a trace, in X and Y, on the display.  It may also be configured as an X/Y controller.
 
 For each channel:
- - RATE (knob and cv) controls how sedately, or wildly, the CV moves around.  If CV is in use, it is attenuated by the knob.
- - OFFSET (knob and cv) adds or subtracts up to 5V from the base +/-5V output.  If the offset CV is in use, it is attenuverted by the knob.
- - SCALE (knob and cv) attenuates the output; if CV is in use, it is attenuated by the knob.
+ - RATE (knob and CV) controls how sedately, or wildly, the CV moves around.  If CV is in use, it is attenuated by the knob.
+ - OFFSET (knob and CV) adds or subtracts up to 5V from the base +/-5V output.  If the offset CV is in use, it is attenuverted by the knob.
+ - SCALE (knob and CV) attenuates the output; if CV is in use, it is attenuated by the knob.
 
 DIST outputs a third CV, ranging over 0-10V, derived from X and Y channel outputs.  
 
@@ -887,7 +887,7 @@ On the context (right-click) menu, if option "Reverse step on negative clock" is
 
 If option "Select on clock mode" is selected, then the select value (knob and CV) is checked and used to modify the active step only when a clock is received, rather than continuously.
 
-Option "Triggered select mode" changes how the SELECT feature works, replacing the continuous voltage selection with a second internal sequence that offsets (adds to) the primary sequential switch step.  In this mode, the SELECT input exepcts trigger pulses, which advance the secondary sequence, while the SELECT knob sets the length of the secondary sequence (and a trigger at RESET will reset it). Thus different clocks and step lengths can be used to create complex output step patterns. "Select on clock mode" has no effect if "Triggered select mode" is enabled.
+Option "Triggered select mode" changes how the SELECT feature works, replacing the continuous voltage selection with a second internal sequence that offsets (adds to) the primary sequential switch step.  In this mode, the SELECT input expects trigger pulses, which advance the secondary sequence, while the SELECT knob sets the length of the secondary sequence (and a trigger at RESET will reset it). Thus different clocks and step lengths can be used to create complex output step patterns. "Select on clock mode" has no effect if "Triggered select mode" is enabled.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the CLOCK input.  This can be set to the SELECT CV input on the context menu.
 
