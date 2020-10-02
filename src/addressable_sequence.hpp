@@ -23,11 +23,7 @@ struct AddressableSequenceModule : BGModule {
 	bool _triggeredSelect = false;
 	bool _reverseOnNegativeClock = false;
 
-	void setInputIDs(int clockInputID, int selectInputID) {
-		_polyInputID = clockInputID;
-		_clockInputID = clockInputID;
-		_selectInputID = selectInputID;
-	}
+	void setInputIDs(int clockInputID, int selectInputID);
 	void reset() override;
 	void sampleRateChange() override;
 	json_t* toJson(json_t* root) override;

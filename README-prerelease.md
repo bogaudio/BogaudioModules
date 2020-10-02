@@ -899,11 +899,19 @@ _Polyphony:_ Same as 8:1.
 
 #### <a name="addrseq"></a> ADDR-SEQ
 
-ADDR-SEQ is an 8-step sequencer where the step values are set by 8 knobs (with default output range of +/-10V).  It has the same clocked or voltage-addressed control circuit as 8:1 and 1:8.
+ADDR-SEQ is an 8-step sequencer where the step values are set by 8 knobs (with default output range of +/-10V).  It has the same clocked or voltage-addressed control circuit as 8:1 and 1:8.  It can be expanded to more steps, 8 at a time, with <a href="#addrseqx">ASX</a>.
 
 The output range of the knobs may be set on the context (right-click) menu to a variety of bipolar (e.g. +/-5V) and unipolar ranges (e.g. 0-5V).
 
 _Polyphony:_ Same as 8:1.
+
+#### <a name="addrseqx"></a> ASX
+
+ASX is a chainable expander for <a href="addrseq">ADDR-SEQ</a>, adding 8 steps to the base sequence.
+
+When ASXs are added to an ADDR-SEQ, ADDR-SEQ's STEPS and SELECT knobs (and select CV input) work over the total number of steps, including the expanders.  The knob dials will still read 1-8, but the knob will set the step length (or step selection) over the full count of steps.  The parameter tooltips, if enabled, will show the real values.
+
+Each ASX in a chain must be positioned to the right of, and adjacent to, the previous ASX in the chain, or the base ADDR-SEQ module.  See <a href="#expanders">notes on expanders</a>.
 
 ![Sequencers screenshot](doc/www/sequencers2.png)
 

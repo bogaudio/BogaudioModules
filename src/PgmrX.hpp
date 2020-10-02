@@ -4,7 +4,9 @@
 
 namespace bogaudio {
 
-struct PgmrX : ExpanderModule<PgmrExpanderMessage, ExpandableModule<PgmrExpanderMessage, BGModule>>, PgmrBase, OutputRange {
+typedef ChainableExpanderModule<PgmrExpanderMessage, PgmrStep, 4, BGModule> PgmrXBase;
+
+struct PgmrX : PgmrXBase, OutputRange {
 	enum ParamsIds {
 		CVA1_PARAM,
 		CVB1_PARAM,
@@ -53,11 +55,7 @@ struct PgmrX : ExpanderModule<PgmrExpanderMessage, ExpandableModule<PgmrExpander
 		NUM_LIGHTS
 	};
 
-	bool _registered = false;
-	int _baseID = -1;
-	int _position = -1;
-
-	PgmrX() {
+	PgmrX() : PgmrXBase(PgmrRegistry::registry()) {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam<OutputRangeParamQuantity>(CVA1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1A", " V");
 		configParam<OutputRangeParamQuantity>(CVB1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1B", " V");
@@ -80,16 +78,14 @@ struct PgmrX : ExpanderModule<PgmrExpanderMessage, ExpandableModule<PgmrExpander
 		configParam<OutputRangeParamQuantity>(CVD4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4D", " V");
 		configParam<OutputRangeParamQuantity>(SELECT4_PARAM, 0.0f, 1.0f, 0.0f, "Select 4");
 
-		_localSteps[0] = new PgmrStep(params[CVA1_PARAM], params[CVB1_PARAM], params[CVC1_PARAM], params[CVD1_PARAM], lights[SELECT1_LIGHT], params[SELECT1_PARAM], inputs[SELECT1_INPUT], outputs[SELECT1_OUTPUT]);
-		_localSteps[1] = new PgmrStep(params[CVA2_PARAM], params[CVB2_PARAM], params[CVC2_PARAM], params[CVD2_PARAM], lights[SELECT2_LIGHT], params[SELECT2_PARAM], inputs[SELECT2_INPUT], outputs[SELECT2_OUTPUT]);
-		_localSteps[2] = new PgmrStep(params[CVA3_PARAM], params[CVB3_PARAM], params[CVC3_PARAM], params[CVD3_PARAM], lights[SELECT3_LIGHT], params[SELECT3_PARAM], inputs[SELECT3_INPUT], outputs[SELECT3_OUTPUT]);
-		_localSteps[3] = new PgmrStep(params[CVA4_PARAM], params[CVB4_PARAM], params[CVC4_PARAM], params[CVD4_PARAM], lights[SELECT4_LIGHT], params[SELECT4_PARAM], inputs[SELECT4_INPUT], outputs[SELECT4_OUTPUT]);
-
+		setLocalElements({
+			new PgmrStep(params[CVA1_PARAM], params[CVB1_PARAM], params[CVC1_PARAM], params[CVD1_PARAM], lights[SELECT1_LIGHT], params[SELECT1_PARAM], inputs[SELECT1_INPUT], outputs[SELECT1_OUTPUT]),
+			new PgmrStep(params[CVA2_PARAM], params[CVB2_PARAM], params[CVC2_PARAM], params[CVD2_PARAM], lights[SELECT2_LIGHT], params[SELECT2_PARAM], inputs[SELECT2_INPUT], outputs[SELECT2_OUTPUT]),
+			new PgmrStep(params[CVA3_PARAM], params[CVB3_PARAM], params[CVC3_PARAM], params[CVD3_PARAM], lights[SELECT3_LIGHT], params[SELECT3_PARAM], inputs[SELECT3_INPUT], outputs[SELECT3_OUTPUT]),
+			new PgmrStep(params[CVA4_PARAM], params[CVB4_PARAM], params[CVC4_PARAM], params[CVD4_PARAM], lights[SELECT4_LIGHT], params[SELECT4_PARAM], inputs[SELECT4_INPUT], outputs[SELECT4_OUTPUT])
+		});
 		setBaseModelPredicate([](Model* m) { return m == modelPgmr || m == modelPgmrX; });
 		setExpanderModelPredicate([](Model* m) { return m == modelPgmrX; });
-	}
-	virtual ~PgmrX() {
-		PgmrRegistry::registry().deregisterExpander(_baseID, _position);
 	}
 
 	void processAlways(const ProcessArgs& args) override;

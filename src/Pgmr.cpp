@@ -4,14 +4,14 @@
 #define SELECT_TRIGGERS "SELECT_TRIGGERS"
 
 void Pgmr::reset() {
-	std::lock_guard<SpinLock> lock(_stepsLock);
+	std::lock_guard<SpinLock> lock(_elementsLock);
 
 	for (int c = 0; c < maxChannels; ++c) {
 		_lastSteps[c] = -1;
 		_allPulseGens[c].process(1000.0f);
 	}
-	for (int i = 0, n = _steps.size(); i < n; ++i) {
-		_steps[i]->reset();
+	for (auto* element : _elements) {
+		element->reset();
 	}
 }
 
@@ -48,11 +48,13 @@ void Pgmr::processAlways(const ProcessArgs& args) {
 }
 
 void Pgmr::processChannel(const ProcessArgs& args, int c) {
-	std::lock_guard<SpinLock> lock(_stepsLock);
-	int steps = _steps.size();
+	std::lock_guard<SpinLock> lock(_elementsLock);
+	std::vector<PgmrStep*>& steps = _elements;
+	int stepsN = steps.size();
+
 	if (c == 0) {
-		for (int i = 0, n = _steps.size(); i < n; ++i) {
-			_steps[i]->lightSum = 0.0f;
+		for (int i = 0; i < stepsN; ++i) {
+			steps[i]->lightSum = 0.0f;
 		}
 	}
 
@@ -64,37 +66,37 @@ void Pgmr::processChannel(const ProcessArgs& args, int c) {
 		params[DIRECTION_PARAM],
 		NULL,
 		inputs[SELECT_INPUT],
-		steps
+		stepsN
 	);
-	for (int i = 0; i < steps; ++i) {
-		if (_steps[i]->triggers[c].process(_steps[i]->selectParam.getValue() + _steps[i]->selectInput.getPolyVoltage(c))) {
-			step = setStep(c, i, steps);
+	for (int i = 0; i < stepsN; ++i) {
+		if (steps[i]->triggers[c].process(steps[i]->selectParam.getValue() + steps[i]->selectInput.getPolyVoltage(c))) {
+			step = setStep(c, i, stepsN);
 		}
 	}
 
 	{
-		float out = _steps[step]->aParam.getValue();
+		float out = steps[step]->aParam.getValue();
 		out += _rangeOffset;
 		out *= _rangeScale;
 		outputs[A_OUTPUT].setChannels(_channels);
 		outputs[A_OUTPUT].setVoltage(out, c);
 	}
 	{
-		float out = _steps[step]->bParam.getValue();
+		float out = steps[step]->bParam.getValue();
 		out += _rangeOffset;
 		out *= _rangeScale;
 		outputs[B_OUTPUT].setChannels(_channels);
 		outputs[B_OUTPUT].setVoltage(out, c);
 	}
 	{
-		float out = _steps[step]->cParam.getValue();
+		float out = steps[step]->cParam.getValue();
 		out += _rangeOffset;
 		out *= _rangeScale;
 		outputs[C_OUTPUT].setChannels(_channels);
 		outputs[C_OUTPUT].setVoltage(out, c);
 	}
 	{
-		float out = _steps[step]->dParam.getValue();
+		float out = steps[step]->dParam.getValue();
 		out += _rangeOffset;
 		out *= _rangeScale;
 		outputs[D_OUTPUT].setChannels(_channels);
@@ -104,28 +106,23 @@ void Pgmr::processChannel(const ProcessArgs& args, int c) {
 	if (step != _lastSteps[c]) {
 		_lastSteps[c] = step;
 		_allPulseGens[c].trigger(0.001f);
-		_steps[step]->pulseGens[c].trigger(0.001f);
+		steps[step]->pulseGens[c].trigger(0.001f);
 	}
 	outputs[SELECT_ALL_OUTPUT].setChannels(_channels);
 	outputs[SELECT_ALL_OUTPUT].setVoltage(_allPulseGens[c].process(_sampleTime) * 5.0f, c);
 
-	for (int i = 0; i < steps; ++i) {
-		_steps[i]->selectedOutput.setChannels(_channels);
-		_steps[i]->selectedOutput.setVoltage((_steps[i]->pulseGens[c].process(_sampleTime) || (!_selectTriggers && step == i)) * 5.0f, c);
+	for (int i = 0; i < stepsN; ++i) {
+		steps[i]->selectedOutput.setChannels(_channels);
+		steps[i]->selectedOutput.setVoltage((steps[i]->pulseGens[c].process(_sampleTime) || (!_selectTriggers && step == i)) * 5.0f, c);
 
-		_steps[i]->lightSum += step == i;
+		steps[i]->lightSum += step == i;
 	}
 
 	if (c == _channels - 1) {
-		for (int i = 0, n = _steps.size(); i < n; ++i) {
-			_steps[i]->selectedLight.value = _steps[i]->lightSum * _inverseChannels;
+		for (int i = 0; i < stepsN; ++i) {
+			steps[i]->selectedLight.value = steps[i]->lightSum * _inverseChannels;
 		}
 	}
-}
-
-void Pgmr::setSteps(std::vector<PgmrStep*>& steps) {
-	std::lock_guard<SpinLock> lock(_stepsLock);
-	_steps = steps;
 }
 
 

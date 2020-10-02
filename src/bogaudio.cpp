@@ -5,6 +5,7 @@
 #include "ADSR.hpp"
 #include "Additator.hpp"
 #include "AddrSeq.hpp"
+#include "AddrSeqX.hpp"
 #include "AMRM.hpp"
 #include "Analyzer.hpp"
 #include "AnalyzerXL.hpp"
@@ -200,6 +201,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelOneEight);
 	p->addModel(modelEightOne);
 	p->addModel(modelAddrSeq);
+	p->addModel(modelAddrSeqX);
 	p->addModel(modelPgmr);
 	p->addModel(modelPgmrX);
 

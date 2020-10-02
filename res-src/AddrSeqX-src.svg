@@ -1,0 +1,49 @@
+<module hp="3">
+  <style/>
+
+  <def xlink:href="#module3h" var-name="ASX"/>
+
+  <!-- <polyline class="guide" points="0,0 0,380" stroke-width="1" fill="none" transform="translate($width/2.0 0)" /> -->
+
+  <g transform="translate(5.5 32)">
+    <def id="OUT1_PARAM" xlink:href="#knob16" transform="translate(9 4)"/>
+    <def xlink:href="#dial-bipolar-addrseq" transform="translate(-3 -8)"/>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(11 32)">1</text>
+    <def id="OUT1_LIGHT" xlink:href="#light-small" transform="translate(17 26.5)"/>
+
+    <def id="OUT2_PARAM" xlink:href="#knob16" transform="translate(9 45.3)"/>
+    <def xlink:href="#dial-bipolar-addrseq" transform="translate(-3 33.3)"/>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(11 73.3)">2</text>
+    <def id="OUT2_LIGHT" xlink:href="#light-small" transform="translate(17 67.8)"/>
+
+    <def id="OUT3_PARAM" xlink:href="#knob16" transform="translate(9 86.6)"/>
+    <def xlink:href="#dial-bipolar-addrseq" transform="translate(-3 74.6)"/>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(11 114.6)">3</text>
+    <def id="OUT3_LIGHT" xlink:href="#light-small" transform="translate(17 109.1)"/>
+
+    <def id="OUT4_PARAM" xlink:href="#knob16" transform="translate(9 127.9)"/>
+    <def xlink:href="#dial-bipolar-addrseq" transform="translate(-3 115.9)"/>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(11 155.9)">4</text>
+    <def id="OUT4_LIGHT" xlink:href="#light-small" transform="translate(17 150.4)"/>
+
+    <def id="OUT5_PARAM" xlink:href="#knob16" transform="translate(9 169.1)"/>
+    <def xlink:href="#dial-bipolar-addrseq" transform="translate(-3 157.1)"/>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(11 197.1)">5</text>
+    <def id="OUT5_LIGHT" xlink:href="#light-small" transform="translate(17 191.6)"/>
+
+    <def id="OUT6_PARAM" xlink:href="#knob16" transform="translate(9 210.4)"/>
+    <def xlink:href="#dial-bipolar-addrseq" transform="translate(-3 198.4)"/>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(11 238.4)">6</text>
+    <def id="OUT6_LIGHT" xlink:href="#light-small" transform="translate(17 232.9)"/>
+
+    <def id="OUT7_PARAM" xlink:href="#knob16" transform="translate(9 251.7)"/>
+    <def xlink:href="#dial-bipolar-addrseq" transform="translate(-3 239.7)"/>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(11 279.7)">7</text>
+    <def id="OUT7_LIGHT" xlink:href="#light-small" transform="translate(17 274.2)"/>
+
+    <def id="OUT8_PARAM" xlink:href="#knob16" transform="translate(9 293)"/>
+    <def xlink:href="#dial-bipolar-addrseq" transform="translate(-3 281)"/>
+    <text font-size="5pt" letter-spacing="2px" transform="translate(11 321)">8</text>
+    <def id="OUT8_LIGHT" xlink:href="#light-small" transform="translate(17 315.5)"/>
+  </g>
+</module>

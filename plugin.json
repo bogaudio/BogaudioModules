@@ -740,6 +740,17 @@
       ]
     },
     {
+      "slug": "Bogaudio-AddrSeqX",
+      "name": "ASX",
+      "description": "8-step chainable expander for ADDR-SEQ",
+      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#addrseqx",
+      "tags": [
+        "Sequencer",
+        "Expander",
+        "Polyphonic"
+      ]
+    },
+    {
       "slug": "Bogaudio-Pgmr",
       "name": "PGMR",
       "description": "4-step programmer and sequencer",

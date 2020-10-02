@@ -6,6 +6,12 @@
 #define TRIGGERED_SELECT "triggered_select"
 #define REVERSE_ON_NEGATIVE_CLOCK "reverse_on_negative_clock"
 
+void AddressableSequenceModule::setInputIDs(int clockInputID, int selectInputID) {
+	_polyInputID = clockInputID;
+	_clockInputID = clockInputID;
+	_selectInputID = selectInputID;
+}
+
 void AddressableSequenceModule::reset() {
 	for (int i = 0; i < maxChannels; ++i) {
 		_step[i] = 0;
@@ -85,7 +91,12 @@ int AddressableSequenceModule::nextStep(
 
 	int steps = n;
 	if (stepsParam) {
-		steps = clamp(stepsParam->getValue(), 1.0f, (float)n);
+		float s = clamp(stepsParam->getValue(), 1.0f, 8.0f);
+		s -= 1.0f;
+		s /= 7.0f;
+		s *= n - 1;
+		s += 1.0f;
+		steps = s;
 	}
 	int reverse = 1 - 2 * (directionParam.getValue() == 0.0f);
 	_step[c] = (_step[c] + reverse * clock + -reverse * negativeClock) % steps;
@@ -94,7 +105,8 @@ int AddressableSequenceModule::nextStep(
 
 	float select = n;
 	if (selectParam) {
-		select = clamp(selectParam->getValue(), 0.0f, (float)(n - 1));
+		float s = clamp(selectParam->getValue(), 0.0f, 7.0f) / 7.0f;
+		select = s * (n - 1);
 	}
 	if (_triggeredSelect) {
 		if (_selectTrigger[c].process(selectInput.getPolyVoltage(c))) {
@@ -103,7 +115,7 @@ int AddressableSequenceModule::nextStep(
 		_select[c] -= _select[c] * reset;
 	}
 	else {
-		select += clamp(selectInput.getPolyVoltage(c), -9.99f, 9.99f) * 0.1f * (float)n;
+		select += clamp(selectInput.getPolyVoltage(c), -10.0f, 10.0f) * 0.1f * (float)(n - 1);
 		if (!_selectOnClock || clock) {
 			_select[c] = select;
 		}

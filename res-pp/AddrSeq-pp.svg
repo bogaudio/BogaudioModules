@@ -17,6 +17,9 @@ text.brand {
 polyline {
   stroke: #333;
 }
+polyline.guide {
+  stroke: #0f0;
+}
 path {
   stroke: #333;
 }
@@ -70,36 +73,6 @@ polyline.knob-tick {
   stroke: #fff;
 }
 </style>
-
-  <defs>
-    <symbol id="dial-bipolar-addrseq" viewBox="0 0 40px 40px">
-      <g transform="translate(20 20)">
-          <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-240) translate(10 0)"/>
-          <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-225) translate(10 0)"/>
-          <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-210) translate(10 0)"/>
-          <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-195) translate(10 0)"/>
-          <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-180) translate(10 0)"/>
-          <polyline points="0,0 4.0,0" stroke-width="1.0" transform="rotate(-165) translate(10 0)"/>
-          <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-150) translate(10 0)"/>
-          <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-135) translate(10 0)"/>
-          <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-120) translate(10 0)"/>
-          <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-105) translate(10 0)"/>
-
-          <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-90) translate(10 0)"/>
-
-          <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-75) translate(10 0)"/>
-          <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-60) translate(10 0)"/>
-          <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-45) translate(10 0)"/>
-          <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-30) translate(10 0)"/>
-          <polyline points="0,0 4,0" stroke-width="1.0" transform="rotate(-15) translate(10 0)"/>
-          <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0) translate(10 0)"/>
-          <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(15) translate(10 0)"/>
-          <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(30) translate(10 0)"/>
-          <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(45) translate(10 0)"/>
-          <polyline points="0,0 4,0" stroke-width="1" transform="rotate(60) translate(10 0)"/>
-        </g>
-      </symbol>
-  </defs>
 
   
       
@@ -225,7 +198,33 @@ polyline.knob-tick {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-bipolar-addrseq" transform="translate(-3 -8)" href="#dial-bipolar-addrseq"/>
+    <g transform="translate(-3 -8)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-240) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-225) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-210) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-195) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-180) translate(10 0)"/>
+        <polyline points="0,0 4.0,0" stroke-width="1.0" transform="rotate(-165) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-150) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-135) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-120) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-105) translate(10 0)"/>
+
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-90) translate(10 0)"/>
+
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-75) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-60) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-45) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-30) translate(10 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1.0" transform="rotate(-15) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(15) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(30) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(45) translate(10 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(60) translate(10 0)"/>
+      </g>
+    </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 32)">1</text>
     <g transform="translate(17 26.5)"><svg id="OUT1_LIGHT">
       <rect width="6.4" height="6.4" fill="#0f0"/>
@@ -238,7 +237,33 @@ polyline.knob-tick {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-bipolar-addrseq" transform="translate(-3 33.3)" href="#dial-bipolar-addrseq"/>
+    <g transform="translate(-3 33.3)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-240) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-225) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-210) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-195) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-180) translate(10 0)"/>
+        <polyline points="0,0 4.0,0" stroke-width="1.0" transform="rotate(-165) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-150) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-135) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-120) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-105) translate(10 0)"/>
+
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-90) translate(10 0)"/>
+
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-75) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-60) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-45) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-30) translate(10 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1.0" transform="rotate(-15) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(15) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(30) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(45) translate(10 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(60) translate(10 0)"/>
+      </g>
+    </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 73.3)">2</text>
     <g transform="translate(17 67.8)"><svg id="OUT2_LIGHT">
       <rect width="6.4" height="6.4" fill="#0f0"/>
@@ -251,7 +276,33 @@ polyline.knob-tick {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-bipolar-addrseq" transform="translate(-3 74.6)" href="#dial-bipolar-addrseq"/>
+    <g transform="translate(-3 74.6)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-240) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-225) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-210) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-195) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-180) translate(10 0)"/>
+        <polyline points="0,0 4.0,0" stroke-width="1.0" transform="rotate(-165) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-150) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-135) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-120) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-105) translate(10 0)"/>
+
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-90) translate(10 0)"/>
+
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-75) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-60) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-45) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-30) translate(10 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1.0" transform="rotate(-15) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(15) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(30) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(45) translate(10 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(60) translate(10 0)"/>
+      </g>
+    </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 114.6)">3</text>
     <g transform="translate(17 109.1)"><svg id="OUT3_LIGHT">
       <rect width="6.4" height="6.4" fill="#0f0"/>
@@ -264,7 +315,33 @@ polyline.knob-tick {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-bipolar-addrseq" transform="translate(-3 115.9)" href="#dial-bipolar-addrseq"/>
+    <g transform="translate(-3 115.9)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-240) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-225) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-210) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-195) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-180) translate(10 0)"/>
+        <polyline points="0,0 4.0,0" stroke-width="1.0" transform="rotate(-165) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-150) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-135) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-120) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-105) translate(10 0)"/>
+
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-90) translate(10 0)"/>
+
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-75) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-60) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-45) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-30) translate(10 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1.0" transform="rotate(-15) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(15) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(30) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(45) translate(10 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(60) translate(10 0)"/>
+      </g>
+    </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 155.9)">4</text>
     <g transform="translate(17 150.4)"><svg id="OUT4_LIGHT">
       <rect width="6.4" height="6.4" fill="#0f0"/>
@@ -277,7 +354,33 @@ polyline.knob-tick {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-bipolar-addrseq" transform="translate(-3 157.1)" href="#dial-bipolar-addrseq"/>
+    <g transform="translate(-3 157.1)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-240) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-225) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-210) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-195) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-180) translate(10 0)"/>
+        <polyline points="0,0 4.0,0" stroke-width="1.0" transform="rotate(-165) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-150) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-135) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-120) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-105) translate(10 0)"/>
+
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-90) translate(10 0)"/>
+
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-75) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-60) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-45) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-30) translate(10 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1.0" transform="rotate(-15) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(15) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(30) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(45) translate(10 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(60) translate(10 0)"/>
+      </g>
+    </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 197.1)">5</text>
     <g transform="translate(17 191.6)"><svg id="OUT5_LIGHT">
       <rect width="6.4" height="6.4" fill="#0f0"/>
@@ -290,7 +393,33 @@ polyline.knob-tick {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-bipolar-addrseq" transform="translate(-3 198.4)" href="#dial-bipolar-addrseq"/>
+    <g transform="translate(-3 198.4)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-240) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-225) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-210) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-195) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-180) translate(10 0)"/>
+        <polyline points="0,0 4.0,0" stroke-width="1.0" transform="rotate(-165) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-150) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-135) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-120) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-105) translate(10 0)"/>
+
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-90) translate(10 0)"/>
+
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-75) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-60) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-45) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-30) translate(10 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1.0" transform="rotate(-15) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(15) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(30) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(45) translate(10 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(60) translate(10 0)"/>
+      </g>
+    </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 238.4)">6</text>
     <g transform="translate(17 232.9)"><svg id="OUT6_LIGHT">
       <rect width="6.4" height="6.4" fill="#0f0"/>
@@ -303,7 +432,33 @@ polyline.knob-tick {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-bipolar-addrseq" transform="translate(-3 239.7)" href="#dial-bipolar-addrseq"/>
+    <g transform="translate(-3 239.7)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-240) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-225) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-210) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-195) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-180) translate(10 0)"/>
+        <polyline points="0,0 4.0,0" stroke-width="1.0" transform="rotate(-165) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-150) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-135) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-120) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-105) translate(10 0)"/>
+
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-90) translate(10 0)"/>
+
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-75) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-60) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-45) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-30) translate(10 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1.0" transform="rotate(-15) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(15) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(30) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(45) translate(10 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(60) translate(10 0)"/>
+      </g>
+    </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 279.7)">7</text>
     <g transform="translate(17 274.2)"><svg id="OUT7_LIGHT">
       <rect width="6.4" height="6.4" fill="#0f0"/>
@@ -316,7 +471,33 @@ polyline.knob-tick {
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-bipolar-addrseq" transform="translate(-3 281)" href="#dial-bipolar-addrseq"/>
+    <g transform="translate(-3 281)">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-240) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-225) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-210) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-195) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-180) translate(10 0)"/>
+        <polyline points="0,0 4.0,0" stroke-width="1.0" transform="rotate(-165) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-150) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-135) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-120) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-105) translate(10 0)"/>
+
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-90) translate(10 0)"/>
+
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-75) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-60) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-45) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-30) translate(10 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1.0" transform="rotate(-15) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(15) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(30) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(45) translate(10 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(60) translate(10 0)"/>
+      </g>
+    </g>
     <text font-size="5pt" letter-spacing="2px" transform="translate(11 321)">8</text>
     <g transform="translate(17 315.5)"><svg id="OUT8_LIGHT">
       <rect width="6.4" height="6.4" fill="#0f0"/>

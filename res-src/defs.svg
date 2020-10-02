@@ -63,6 +63,18 @@
       </g>
     </symbol>
 
+    <symbol id="module3h">
+      <def xlink:href="#module-background"/>
+      <def xlink:href="#module-border"/>
+      <text class="title" font-size="7pt" letter-spacing="${letterspacing}px" default-letterspacing="2" text-anchor="end" transform="translate($width-5 13)">$name</text>
+      <g transform="translate(3 $height-17)">
+        <g transform="translate(0 12)">
+          <text class="brand" font-size="7pt" letter-spacing="1.5px">BGA</text>
+          <rect class="background-fill" width="3.0" height="3" fill="#ddd" transform="translate(10.5 -5)"/>
+        </g>
+      </g>
+    </symbol>
+
     <symbol id="button" viewBox="0 0 18px 18px">
       <g transform="translate(9 9)">
         <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
@@ -248,6 +260,34 @@
         <g transform="rotate(60) translate(15 0)">
           <text font-size="5.0pt" transform="translate(3 0) rotate(-60) translate(-2 2)">+</text>
         </g>
+      </g>
+    </symbol>
+
+    <symbol id="dial-bipolar-addrseq" viewBox="0 0 40px 40px">
+      <g transform="translate(20 20)">
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-240) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-225) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-210) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-195) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-180) translate(10 0)"/>
+        <polyline points="0,0 4.0,0" stroke-width="1.0" transform="rotate(-165) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-150) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-135) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-120) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-105) translate(10 0)"/>
+
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-90) translate(10 0)"/>
+
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-75) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-60) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-45) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-30) translate(10 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1.0" transform="rotate(-15) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(15) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(30) translate(10 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(45) translate(10 0)"/>
+        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(60) translate(10 0)"/>
       </g>
     </symbol>
 

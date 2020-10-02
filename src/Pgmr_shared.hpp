@@ -57,41 +57,6 @@ struct PgmrStep {
 	void reset();
 };
 
-struct PgmrBase {
-	PgmrStep* _localSteps[4] {};
-
-	virtual ~PgmrBase() {
-		for (int i = 0; i < 4; ++i) {
-			if (_localSteps[i]) {
-				delete _localSteps[i];
-			}
-		}
-	}
-};
-
-struct Pgmr;
-struct PgmrX;
-
-struct PgmrRegistry {
-private:
-	struct Base {
-		Pgmr& module;
-		std::vector<PgmrStep*> steps;
-
-		Base(Pgmr& b);
-	};
-
-	std::mutex _lock;
-	int _nextID = 1;
-	std::unordered_map<int, Base> _bases;
-
-public:
-	int registerBase(Pgmr& b);
-	void deregisterBase(int id);
-	void registerExpander(int baseID, int position, PgmrX& x);
-	void deregisterExpander(int baseID, int position);
-
-	static PgmrRegistry& registry();
-};
+typedef ChainableRegistry<PgmrStep, 4> PgmrRegistry;
 
 } // namespace bogaudio

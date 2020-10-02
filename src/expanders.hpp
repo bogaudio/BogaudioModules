@@ -107,4 +107,166 @@ struct ExpanderModule : BASE {
 	}
 };
 
+template<class E, int N>
+struct ChainableRegistry {
+public:
+	struct Chainable {
+		E* _localElements[N] {};
+
+		virtual ~Chainable() {
+			for (int i = 0; i < N; ++i) {
+				if (_localElements[i]) {
+					delete _localElements[i];
+				}
+			}
+		}
+
+		void setLocalElements(std::vector<E*> es) {
+			assert(es.size() == N);
+			for (int i = 0; i < N; ++i) {
+				_localElements[i] = es[i];
+			}
+		}
+	};
+
+	struct ChainableBase : Chainable {
+		SpinLock _elementsLock;
+		std::vector<E*> _elements;
+
+		void setElements(const std::vector<E*>& elements) {
+			std::lock_guard<SpinLock> lock(_elementsLock);
+			_elements = elements;
+		}
+	};
+
+	typedef Chainable ChainableExpander;
+
+private:
+	struct Base {
+		ChainableBase& module;
+		std::vector<E*> elements;
+
+		Base(ChainableBase& b) : module(b) {
+			std::copy(b._localElements, b._localElements + N, std::back_inserter(elements));
+		}
+	};
+
+	std::mutex _lock;
+	int _nextID = 1;
+	std::unordered_map<int, Base> _bases;
+
+public:
+	int registerBase(ChainableBase& b) {
+		std::lock_guard<std::mutex> lock(_lock);
+
+		int id = _nextID;
+		++_nextID;
+		auto p = _bases.emplace(id, Base(b));
+		b.setElements(p.first->second.elements);
+		return id;
+	}
+
+	void deregisterBase(int id) {
+		std::lock_guard<std::mutex> lock(_lock);
+		_bases.erase(id);
+	}
+
+	void registerExpander(int baseID, int position, ChainableExpander& x) {
+		std::lock_guard<std::mutex> lock(_lock);
+
+		assert(position > 0);
+		auto base = _bases.find(baseID);
+		if (base != _bases.end()) {
+			int i = N * position;
+			if (i < (int)base->second.elements.size()) {
+				assert(!base->second.elements[i]);
+				std::copy(x._localElements, x._localElements + N, base->second.elements.begin() + i);
+			}
+			else {
+				base->second.elements.resize(i + N, NULL);
+				std::copy(x._localElements, x._localElements + N, base->second.elements.begin() + i);
+			}
+			for (auto i = base->second.elements.begin(), n = base->second.elements.end(); i != n; ++i) {
+				if (!*i) {
+					return;
+				}
+			}
+			base->second.module.setElements(base->second.elements);
+		}
+	}
+
+	void deregisterExpander(int baseID, int position) {
+		std::lock_guard<std::mutex> lock(_lock);
+
+		auto base = _bases.find(baseID);
+		if (base != _bases.end()) {
+			int n = N * position;
+			if (n < (int)base->second.elements.size()) {
+				int i = 0;
+				for (; i < n; ++i) {
+					if (!base->second.elements[i]) {
+						break;
+					}
+				}
+				base->second.elements.resize(i);
+				base->second.module.setElements(base->second.elements);
+			}
+		}
+	}
+
+	static ChainableRegistry& registry() {
+		static ChainableRegistry<E, N> instance;
+		return instance;
+	}
+};
+
+template<class MESSAGE, class ELEMENT, int N, class BASE>
+struct ChainableExpandableModule
+: ExpandableModule<MESSAGE, BASE>
+, ChainableRegistry<ELEMENT, N>::ChainableBase
+{
+	ChainableRegistry<ELEMENT, N>& _registry;
+	int _id = -1;
+
+	ChainableExpandableModule(ChainableRegistry<ELEMENT, N>& registry) : _registry(registry) {}
+	virtual ~ChainableExpandableModule() {
+		_registry.deregisterBase(_id);
+	}
+
+	void registerBase() {
+		_id = _registry.registerBase(*this);
+	}
+};
+
+template<class MESSAGE, class ELEMENT, int N, class BASE>
+struct ChainableExpanderModule
+: ExpanderModule<MESSAGE, ExpandableModule<MESSAGE, BASE>>
+, ChainableRegistry<ELEMENT, N>::ChainableExpander
+{
+	ChainableRegistry<ELEMENT, N>& _registry;
+	bool _registered = false;
+	int _baseID = -1;
+	int _position = -1;
+
+	ChainableExpanderModule(ChainableRegistry<ELEMENT, N>& registry) : _registry(registry) {}
+	virtual ~ChainableExpanderModule() {
+		_registry.deregisterExpander(_baseID, _position);
+	}
+
+	void setBaseIDAndPosition(int baseID, int position) {
+		if (_registered && (position <= 0 || position != _position)) {
+			_registry.deregisterExpander(_baseID, _position);
+			_registered = false;
+			_baseID = 0;
+			_position = 0;
+		}
+		else if (!_registered && position > 0) {
+			_registered = true;
+			_baseID = baseID;
+			_position = position;
+			_registry.registerExpander(_baseID, _position, *this);
+		}
+	}
+};
+
 } // namespace bogaudio

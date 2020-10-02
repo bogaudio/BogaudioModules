@@ -11,25 +11,13 @@ void PgmrX::processAlways(const ProcessArgs& args) {
 		_rangeOffset = bm->rangeOffset;
 		_rangeScale = bm->rangeScale;
 	}
-
-	if (_registered && (position <= 0 || position != _position)) {
-		PgmrRegistry::registry().deregisterExpander(_baseID, _position);
-		_registered = false;
-		_baseID = 0;
-		_position = 0;
-	}
-	else if (!_registered && position > 0) {
-		_registered = true;
-		_baseID = baseID;
-		_position = position;
-		PgmrRegistry::registry().registerExpander(_baseID, _position, *this);
-	}
-
+	setBaseIDAndPosition(baseID, position);
 	if (_position < 1) {
 		for (int i = 0; i < 4; ++i) {
-			_localSteps[i]->selectedLight.value = 0.0f;
+			_localElements[i]->selectedLight.value = 0.0f;
 		}
 	}
+
 	if (expanderConnected()) {
 		PgmrExpanderMessage* te = toExpander();
 		te->baseID = _baseID;
