@@ -26,7 +26,6 @@ struct MatrixBaseModule : BGModule {
 };
 
 struct MatrixBaseModuleWidget : BGModuleWidget {
-	void contextMenu(Menu* menu) override;
 };
 
 struct MatrixModule : MatrixBaseModule {
@@ -70,6 +69,10 @@ struct MatrixModule : MatrixBaseModule {
 	void processChannel(const ProcessArgs& args, int c) override;
 };
 
+struct MatrixModuleWidget : MatrixBaseModuleWidget {
+	void contextMenu(Menu* menu) override;
+};
+
 struct KnobMatrixModule : MatrixModule {
 	bool _indicatorKnobs = true;
 
@@ -81,7 +84,7 @@ struct KnobMatrixModule : MatrixModule {
 	void fromJson(json_t* root) override;
 };
 
-struct KnobMatrixModuleWidget : MatrixBaseModuleWidget {
+struct KnobMatrixModuleWidget : MatrixModuleWidget {
 	std::vector<IndicatorKnob19*> _knobs;
 
 	void createKnob(math::Vec& position, KnobMatrixModule* module, int id);
@@ -114,7 +117,7 @@ struct SwitchMatrixModule : MatrixModule {
 	void setColumnExclusive(bool e);
 };
 
-struct SwitchMatrixModuleWidget : MatrixBaseModuleWidget {
+struct SwitchMatrixModuleWidget : MatrixModuleWidget {
 	template<class W> void createSwitch(math::Vec& position, SwitchMatrixModule* module, int id) {
 		auto s = dynamic_cast<W*>(createParam<W>(position, module, id));
 		if (module) {

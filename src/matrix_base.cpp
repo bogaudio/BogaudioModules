@@ -41,26 +41,6 @@ void MatrixBaseModule::modulate() {
 }
 
 
-void MatrixBaseModuleWidget::contextMenu(Menu* menu) {
-	auto m = dynamic_cast<MatrixBaseModule*>(module);
-	assert(m);
-
-	OptionsMenuItem* g = new OptionsMenuItem("Input gain");
-	g->addItem(OptionMenuItem("Unity", [m]() { return (int)m->_inputGainDb == 0; }, [m]() { m->_inputGainDb = 0.0f; }));
-	g->addItem(OptionMenuItem("-3db", [m]() { return (int)m->_inputGainDb == -3; }, [m]() { m->_inputGainDb = -3.0f; }));
-	g->addItem(OptionMenuItem("-6db", [m]() { return (int)m->_inputGainDb == -6; }, [m]() { m->_inputGainDb = -6.0f; }));
-	g->addItem(OptionMenuItem("-12db", [m]() { return (int)m->_inputGainDb == -12; }, [m]() { m->_inputGainDb = -12.0f; }));
-	OptionsMenuItem::addToMenu(g, menu);
-
-	OptionsMenuItem* c = new OptionsMenuItem("Output clipping");
-	c->addItem(OptionMenuItem("Soft/saturated (better for audio)", [m]() { return m->_clippingMode == MatrixBaseModule::SOFT_CLIPPING; }, [m]() { m->_clippingMode = MatrixBaseModule::SOFT_CLIPPING; }));
-	c->addItem(OptionMenuItem("Hard/clipped (better for CV)", [m]() { return m->_clippingMode == MatrixBaseModule::HARD_CLIPPING; }, [m]() { m->_clippingMode = MatrixBaseModule::HARD_CLIPPING; }));
-	OptionsMenuItem::addToMenu(c, menu);
-
-	menu->addChild(new OptionMenuItem("Average", [m]() { return !m->_sum; }, [m]() { m->_sum = !m->_sum; }));
-}
-
-
 void MatrixModule::sampleRateChange() {
 	float sr = APP->engine->getSampleRate();
 	for (int i = 0, n = _ins * _outs; i < n; ++i) {
@@ -83,7 +63,7 @@ void MatrixModule::modulate() {
 		}
 
 		for (int j = 0; j < _outs; ++j) {
-			int ii = j * _outs + i;
+			int ii = j * _ins + i;
 			_paramValues[ii] = _sls[ii].next(params[_firstParamID + ii].getValue());
 		}
 	}
@@ -106,7 +86,7 @@ void MatrixModule::processChannel(const ProcessArgs& args, int c) {
 		float out = 0.0f;
 		for (int j = 0; j < _ins; ++j) {
 			if (_inActive[j]) {
-				out += in[j] * _paramValues[i * _outs + j];
+				out += in[j] * _paramValues[i * _ins + j];
 			}
 		}
 		if (!_sum && _invActive > 0.0f) {
@@ -120,6 +100,28 @@ void MatrixModule::processChannel(const ProcessArgs& args, int c) {
 		}
 		outputs[_firstOutputID + i].setChannels(_channels);
 		outputs[_firstOutputID + i].setVoltage(out, c);
+	}
+}
+
+
+void MatrixModuleWidget::contextMenu(Menu* menu) {
+	auto m = dynamic_cast<MatrixModule*>(module);
+	assert(m);
+
+	if (m->_ins > 1) {
+		OptionsMenuItem* g = new OptionsMenuItem("Input gain");
+		g->addItem(OptionMenuItem("Unity", [m]() { return (int)m->_inputGainDb == 0; }, [m]() { m->_inputGainDb = 0.0f; }));
+		g->addItem(OptionMenuItem("-3db", [m]() { return (int)m->_inputGainDb == -3; }, [m]() { m->_inputGainDb = -3.0f; }));
+		g->addItem(OptionMenuItem("-6db", [m]() { return (int)m->_inputGainDb == -6; }, [m]() { m->_inputGainDb = -6.0f; }));
+		g->addItem(OptionMenuItem("-12db", [m]() { return (int)m->_inputGainDb == -12; }, [m]() { m->_inputGainDb = -12.0f; }));
+		OptionsMenuItem::addToMenu(g, menu);
+
+		OptionsMenuItem* c = new OptionsMenuItem("Output clipping");
+		c->addItem(OptionMenuItem("Soft/saturated (better for audio)", [m]() { return m->_clippingMode == MatrixBaseModule::SOFT_CLIPPING; }, [m]() { m->_clippingMode = MatrixBaseModule::SOFT_CLIPPING; }));
+		c->addItem(OptionMenuItem("Hard/clipped (better for CV)", [m]() { return m->_clippingMode == MatrixBaseModule::HARD_CLIPPING; }, [m]() { m->_clippingMode = MatrixBaseModule::HARD_CLIPPING; }));
+		OptionsMenuItem::addToMenu(c, menu);
+
+		menu->addChild(new OptionMenuItem("Average", [m]() { return !m->_sum; }, [m]() { m->_sum = !m->_sum; }));
 	}
 }
 
@@ -159,7 +161,7 @@ void KnobMatrixModuleWidget::redrawKnobs() {
 void KnobMatrixModuleWidget::contextMenu(Menu* menu) {
 	auto m = dynamic_cast<KnobMatrixModule*>(module);
 	assert(m);
-	MatrixBaseModuleWidget::contextMenu(menu);
+	MatrixModuleWidget::contextMenu(menu);
 	menu->addChild(new OptionMenuItem(
 		"Indicator knobs",
 		[m]() { return m->_indicatorKnobs; },
@@ -321,7 +323,7 @@ void SwitchMatrixModule::setColumnExclusive(bool e) {
 void SwitchMatrixModuleWidget::contextMenu(Menu* menu) {
 	auto m = dynamic_cast<SwitchMatrixModule*>(module);
 	assert(m);
-	MatrixBaseModuleWidget::contextMenu(menu);
+	MatrixModuleWidget::contextMenu(menu);
 
 	OptionsMenuItem* i = new OptionsMenuItem("Inverting");
 	i->addItem(OptionMenuItem("By param entry (right-click)", [m]() { return m->_inverting == SwitchMatrixModule::PARAM_INVERTING; }, [m]() { m->setInverting(SwitchMatrixModule::PARAM_INVERTING); }));
@@ -329,11 +331,18 @@ void SwitchMatrixModuleWidget::contextMenu(Menu* menu) {
 	i->addItem(OptionMenuItem("Disabled", [m]() { return m->_inverting == SwitchMatrixModule::NO_INVERTING; }, [m]() { m->setInverting(SwitchMatrixModule::NO_INVERTING); }));
 	OptionsMenuItem::addToMenu(i, menu);
 
-	if (m->_ins > 1 && m->_outs > 1) {
-		menu->addChild(new OptionMenuItem("Exclusive by rows", [m]() { return m->_rowExclusive; }, [m]() { m->setRowExclusive(!m->_rowExclusive); }));
-		menu->addChild(new OptionMenuItem("Exclusive by columns", [m]() { return m->_columnExclusive; }, [m]() { m->setColumnExclusive(!m->_columnExclusive); }));
+	if (m->_ins > 1) {
+		std::string label("Exclusive");
+		if (m->_outs > 1) {
+			label += " by rows";
+		}
+		menu->addChild(new OptionMenuItem(label.c_str(), [m]() { return m->_columnExclusive; }, [m]() { m->setColumnExclusive(!m->_columnExclusive); }));
 	}
-	else {
-		menu->addChild(new OptionMenuItem("Exclusive", [m]() { return m->_columnExclusive; }, [m]() { m->setColumnExclusive(!m->_columnExclusive); }));
+	if (m->_outs > 1) {
+		std::string label("Exclusive");
+		if (m->_ins > 1) {
+			label += " by columns";
+		}
+		menu->addChild(new OptionMenuItem(label.c_str(), [m]() { return m->_rowExclusive; }, [m]() { m->setRowExclusive(!m->_rowExclusive); }));
 	}
 }

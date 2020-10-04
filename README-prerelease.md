@@ -620,6 +620,12 @@ An eight input, one output version of <a href="#matrix44">MATRIX44</a>, below.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, as on MATRIX44.
 
+#### <a name="matrix18"></a> MATRIX18
+
+A one input, eight output version of <a href="#matrix44">MATRIX44</a>, below.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, as on MATRIX44.
+
 #### <a name="matrix44"></a> MATRIX44
 
 An 4x4 channel matrix mixer.  Each input can be routed with an independent level to each of the eight output mixes.
@@ -649,6 +655,16 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defin
 An eight input, one output version of <a href="#switch44">SWITCH44</a>, below.
 
 SWITCH81 is related to <a href="#mumix">MUMIX</a>, with the difference that a switch must be turned on to pass an input to the output, where on MUMIX the switches are mutes (they pass by default).  Also, this module has options for attenuating and inverting the inputs, as on SWITCH44.
+
+If the option "Exclusive" is enabled, on the context menu, then only one switch may be active at once.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, as on SWITCH44.
+
+#### <a name="switch18"></a> SWITCH18
+
+A one input, eight output version of <a href="#switch44">SWITCH44</a>, below.
+
+If the option "Exclusive" is enabled, on the context menu, then only one switch may be active at once.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, as on SWITCH44.
 

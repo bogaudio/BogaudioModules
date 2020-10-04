@@ -586,6 +586,16 @@
       ]
     },
     {
+      "slug": "Bogaudio-Matrix18",
+      "name": "MATRIX18",
+      "description": "8-way signal router with attenuverters",
+      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#matrix18",
+      "tags": [
+        "Switch",
+        "Polyphonic"
+      ]
+    },
+    {
       "slug": "Bogaudio-Matrix44",
       "name": "MATRIX44",
       "description": "4x4 matrix mixer",
@@ -612,6 +622,16 @@
       "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#switch81",
       "tags": [
         "Mixer",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Bogaudio-Switch18",
+      "name": "SWITCH18",
+      "description": "8-way signal router",
+      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#switch18",
+      "tags": [
+        "Switch",
         "Polyphonic"
       ]
     },

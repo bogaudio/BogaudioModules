@@ -1,0 +1,40 @@
+<module hp="6">
+  <style/>
+
+  <def xlink:href="#module6" var-name="SWITCH18" var-letterspacing="0.7"/>
+
+  <g transform="translate(14 24)">
+    <def id="MIX1_PARAM" xlink:href="#button" transform="translate(1 9)"/>
+    <def id="MIX2_PARAM" xlink:href="#button" transform="translate(1 46)"/>
+    <def id="MIX3_PARAM" xlink:href="#button" transform="translate(1 83)"/>
+    <def id="MIX4_PARAM" xlink:href="#button" transform="translate(1 120)"/>
+    <def id="MIX5_PARAM" xlink:href="#button" transform="translate(1 157)"/>
+    <def id="MIX6_PARAM" xlink:href="#button" transform="translate(1 194)"/>
+    <def id="MIX7_PARAM" xlink:href="#button" transform="translate(1 231)"/>
+    <def id="MIX8_PARAM" xlink:href="#button" transform="translate(1 268)"/>
+  </g>
+
+  <g transform="translate(43 25)">
+    <g class="io-group" transform="translate(5.5 0)">
+      <rect class="output-background-filler" width="34" height="10" transform="translate(0 283)"/>
+      <rect class="output-background" width="34" height="293" rx="5"/>
+      <def id="OUT1_OUTPUT" xlink:href="#output" transform="translate(5 5)"/>
+      <def id="OUT2_OUTPUT" xlink:href="#output" transform="translate(5 42)"/>
+      <def id="OUT3_OUTPUT" xlink:href="#output" transform="translate(5 79)"/>
+      <def id="OUT4_OUTPUT" xlink:href="#output" transform="translate(5 116)"/>
+      <def id="OUT5_OUTPUT" xlink:href="#output" transform="translate(5 153)"/>
+      <def id="OUT6_OUTPUT" xlink:href="#output" transform="translate(5 190)"/>
+      <def id="OUT7_OUTPUT" xlink:href="#output" transform="translate(5 227)"/>
+      <def id="OUT8_OUTPUT" xlink:href="#output" transform="translate(5 264)"/>
+    </g>
+    <g class="io-group" transform="translate(5.5 295)">
+      <rect class="input-background-filler" width="34" height="10" transform="translate(0 -3)"/>
+      <rect class="input-background" width="34" height="38" rx="5"/>
+      <def id="IN_INPUT" xlink:href="#input" transform="translate(5 1)"/>
+      <text class="input-label" font-size="5pt" letter-spacing="2px" text-anchor="middle" transform="translate(17 33)">IN</text>
+    </g>
+  </g>
+
+  <!-- <polyline class="guide" points="0,0 0,380" stroke-width="0.7" stroke="#0f0" transform="translate(24.5 0)" /> -->
+  <!-- <polyline class="guide" points="0,0 0,380" stroke-width="0.7" stroke="#0f0" transform="translate(65.5 0)" /> -->
+</module>
