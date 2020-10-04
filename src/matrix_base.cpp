@@ -259,7 +259,7 @@ void SwitchMatrixModule::configSwitchParam(int id, const char* label) {
 void SwitchMatrixModule::switchChanged(int id, float value) {
 	if (value != 0.0f) {
 		int row = (id - _firstParamID) % _ins;
-		int col = (id - _firstParamID) / _outs;
+		int col = (id - _firstParamID) / _ins;
 
 		if (_rowExclusive) {
 			for (int i = 0; i < col; ++i) {
@@ -332,5 +332,8 @@ void SwitchMatrixModuleWidget::contextMenu(Menu* menu) {
 	if (m->_ins > 1 && m->_outs > 1) {
 		menu->addChild(new OptionMenuItem("Exclusive by rows", [m]() { return m->_rowExclusive; }, [m]() { m->setRowExclusive(!m->_rowExclusive); }));
 		menu->addChild(new OptionMenuItem("Exclusive by columns", [m]() { return m->_columnExclusive; }, [m]() { m->setColumnExclusive(!m->_columnExclusive); }));
+	}
+	else {
+		menu->addChild(new OptionMenuItem("Exclusive", [m]() { return m->_columnExclusive; }, [m]() { m->setColumnExclusive(!m->_columnExclusive); }));
 	}
 }

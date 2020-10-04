@@ -679,7 +679,7 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defin
 
 #### <a name="switch1616"></a> SWITCH1616
 
-An 16x16 version of SWITCH44.
+A 16x16 version of SWITCH44.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by input 1.
 
