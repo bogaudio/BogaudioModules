@@ -1,13 +1,12 @@
 #pragma once
 
-#include "bogaudio.hpp"
-#include "matrix_base.hpp"
-
-extern Model* modelMatrix44;
+#include "Matrix44_shared.hpp"
 
 namespace bogaudio {
 
-struct Matrix44 : KnobMatrixModule {
+typedef ChainableExpandableModule<Matrix44ExpanderMessage, Matrix44Element, 1, KnobMatrixModule> Matrix44Base;
+
+struct Matrix44 : Matrix44Base {
 	enum ParamsIds {
 		MIX11_PARAM,
 		MIX21_PARAM,
@@ -44,8 +43,9 @@ struct Matrix44 : KnobMatrixModule {
 		NUM_OUTPUTS
 	};
 
-	Matrix44() : KnobMatrixModule(4, 4, MIX11_PARAM, IN1_INPUT, OUT1_OUTPUT) {
+	Matrix44() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
+		configMatrixModule(4, 4, MIX11_PARAM, IN1_INPUT, OUT1_OUTPUT);
 		configParam(MIX11_PARAM, -1.0f, 1.0f, 0.0f, "Mix 1A", "%", 0.0f, 100.0f);
 		configParam(MIX21_PARAM, -1.0f, 1.0f, 0.0f, "Mix 2A", "%", 0.0f, 100.0f);
 		configParam(MIX31_PARAM, -1.0f, 1.0f, 0.0f, "Mix 3A", "%", 0.0f, 100.0f);
@@ -62,7 +62,14 @@ struct Matrix44 : KnobMatrixModule {
 		configParam(MIX24_PARAM, -1.0f, 1.0f, 0.0f, "Mix 2D", "%", 0.0f, 100.0f);
 		configParam(MIX34_PARAM, -1.0f, 1.0f, 0.0f, "Mix 3D", "%", 0.0f, 100.0f);
 		configParam(MIX44_PARAM, -1.0f, 1.0f, 0.0f, "Mix 4D", "%", 0.0f, 100.0f);
+
+		setLocalElements({new Matrix44Element(NULL, NULL)});
+		registerBase();
+		setExpanderModelPredicate([](Model* m) { return m == modelMatrix44Cvm; });
 	}
+
+	void elementsChanged() override;
+	void processAlways(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

@@ -30,11 +30,13 @@ struct MatrixBaseModuleWidget : BGModuleWidget {
 
 struct MatrixModule : MatrixBaseModule {
 	static constexpr int maxN = 16;
-	int _ins;
-	int _outs;
-	int _firstParamID;
-	int _firstInputID;
-	int _firstOutputID;
+	int _ins = 0;
+	int _outs = 0;
+	int _firstParamID = 0;
+	int _firstInputID = 0;
+	int _firstOutputID = 0;
+	Input** _cvInputs = NULL; // owned elsewhere.
+	Param** _muteParams = NULL; // owned elsewhere.
 
 	float* _paramValues = NULL;
 	bogaudio::dsp::SlewLimiter* _sls = NULL;
@@ -42,19 +44,9 @@ struct MatrixModule : MatrixBaseModule {
 	bool* _inActive = NULL;
 	float _invActive = 0.0f;
 
-	MatrixModule(int ins, int outs, int firstParamID, int firstInputID, int firstOutputID)
-	: _ins(ins)
-	, _outs(outs)
-	, _firstParamID(firstParamID)
-	, _firstInputID(firstInputID)
-	, _firstOutputID(firstOutputID)
-	{
-		assert(_ins <= maxN);
-		assert(_outs <= maxN);
-		_paramValues = new float[_ins * _outs] {};
-		_sls = new bogaudio::dsp::SlewLimiter[_ins * _outs];
-		_saturators = new Saturator[_outs * maxChannels];
-		_inActive = new bool[_ins] {};
+	MatrixModule() {} // call configMatrixModule().
+	MatrixModule(int ins, int outs, int firstParamID, int firstInputID, int firstOutputID) {
+		configMatrixModule(ins, outs, firstParamID, firstInputID, firstOutputID);
 	}
 	virtual ~MatrixModule() {
 		delete[] _paramValues;
@@ -63,6 +55,9 @@ struct MatrixModule : MatrixBaseModule {
 		delete[] _inActive;
 	}
 
+	void configMatrixModule(int ins, int outs, int firstParamID, int firstInputID, int firstOutputID);
+	inline void setCVInputs(Input** cvs) { _cvInputs = cvs; }
+	inline void setMuteParams(Param** mutes) { _muteParams = mutes; }
 	void sampleRateChange() override;
 	int channels() override;
 	void modulate() override;
@@ -76,6 +71,7 @@ struct MatrixModuleWidget : MatrixBaseModuleWidget {
 struct KnobMatrixModule : MatrixModule {
 	bool _indicatorKnobs = true;
 
+	KnobMatrixModule() {} // call configMatrixModule()
 	KnobMatrixModule(int ins, int outs, int firstParamID, int firstInputID, int firstOutputID)
 	: MatrixModule(ins, outs, firstParamID, firstInputID, firstOutputID)
 	{}

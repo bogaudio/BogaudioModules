@@ -1,6 +1,31 @@
 
 #include "Matrix44.hpp"
 
+void Matrix44::elementsChanged() {
+	// base-class caller holds lock on _elements.
+	Input** cvs = NULL;
+	Param** mutes = NULL;
+	for (int i = 1, n = _elements.size(); i < n; ++i) {
+		auto e = _elements[i];
+		if (e->cvs) {
+			cvs = e->cvs;
+		}
+		if (e->mutes) {
+			mutes = e->mutes;
+		}
+	}
+	setCVInputs(cvs);
+	setMuteParams(mutes);
+}
+
+void Matrix44::processAlways(const ProcessArgs& args) {
+	if (expanderConnected()) {
+		Matrix44ExpanderMessage* te = toExpander();
+		te->baseID = _id;
+		te->position = 1;
+	}
+}
+
 struct Matrix44Widget : KnobMatrixModuleWidget {
 	static constexpr int hp = 10;
 

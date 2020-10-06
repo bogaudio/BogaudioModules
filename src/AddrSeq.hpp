@@ -114,7 +114,7 @@ struct AddrSeq : AddrSeqBase {
 		}
 	};
 
-	AddrSeq() : AddrSeqBase(AddrSeqRegistry::registry()) {
+	AddrSeq() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam<StepsParamQuantity>(STEPS_PARAM, 1.0f, 8.0f, 8.0f, "Steps");
 		configParam(DIRECTION_PARAM, 0.0f, 1.0f, 1.0f, "Direction");

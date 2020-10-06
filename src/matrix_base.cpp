@@ -41,6 +41,21 @@ void MatrixBaseModule::modulate() {
 }
 
 
+void MatrixModule::configMatrixModule(int ins, int outs, int firstParamID, int firstInputID, int firstOutputID) {
+	assert(!_paramValues && !_sls && !_saturators && !_inActive);
+	_ins = ins;
+	_outs = outs;
+	_firstParamID = firstParamID;
+	_firstInputID = firstInputID;
+	_firstOutputID = firstOutputID;
+	assert(_ins <= maxN);
+	assert(_outs <= maxN);
+	_paramValues = new float[_ins * _outs] {};
+	_sls = new bogaudio::dsp::SlewLimiter[_ins * _outs];
+	_saturators = new Saturator[_outs * maxChannels];
+	_inActive = new bool[_ins] {};
+}
+
 void MatrixModule::sampleRateChange() {
 	float sr = APP->engine->getSampleRate();
 	for (int i = 0, n = _ins * _outs; i < n; ++i) {
@@ -55,6 +70,16 @@ int MatrixModule::channels() {
 void MatrixModule::modulate() {
 	MatrixBaseModule::modulate();
 
+	bool solo = false;
+	if (_muteParams) {
+		for (int i = 0, n = _ins * _outs; i < n; ++i) {
+			if (_muteParams[i]->getValue() > 1.5f) {
+				solo = true;
+				break;
+			}
+		}
+	}
+
 	int active = 0;
 	for (int i = 0; i < _ins; ++i) {
 		_inActive[i] = inputs[_firstInputID + i].isConnected();
@@ -64,7 +89,12 @@ void MatrixModule::modulate() {
 
 		for (int j = 0; j < _outs; ++j) {
 			int ii = j * _ins + i;
-			_paramValues[ii] = _sls[ii].next(params[_firstParamID + ii].getValue());
+			float v = params[_firstParamID + ii].getValue();
+			if (_muteParams) {
+				bool muted = solo ? _muteParams[ii]->getValue() < 2.0f : _muteParams[ii]->getValue() > 0.5f;
+				v *= !muted;
+			}
+			_paramValues[ii] = _sls[ii].next(v);
 		}
 	}
 
@@ -86,7 +116,12 @@ void MatrixModule::processChannel(const ProcessArgs& args, int c) {
 		float out = 0.0f;
 		for (int j = 0; j < _ins; ++j) {
 			if (_inActive[j]) {
-				out += in[j] * _paramValues[i * _ins + j];
+				int ii = i * _ins + j;
+				float cv = 1.0f;
+				if (_cvInputs && _cvInputs[ii]->isConnected()) {
+					cv = clamp(_cvInputs[ii]->getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
+				}
+				out += in[j] * _paramValues[ii] * cv;
 			}
 		}
 		if (!_sum && _invActive > 0.0f) {

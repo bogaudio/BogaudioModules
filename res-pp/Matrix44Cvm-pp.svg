@@ -1,0 +1,296 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="150.0" height="380.0" viewBox="0 0 150.0 380.0">
+  <style>text {
+  fill: #333;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+text.title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+}
+text.brand {
+  font-family: 'Audiowide', sans-serif;
+  font-weight: bold;
+}
+
+polyline {
+  stroke: #333;
+}
+polyline.guide {
+  stroke: #0f0;
+}
+path {
+  stroke: #333;
+}
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background, rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
+}
+polyline.input-label, polyline.output-label {
+}
+path.input-label, path.output-label {
+}
+
+circle.port-rim {
+  stroke: #f0f0f0;
+}
+circle.port-barrel {
+  stroke: #222;
+  fill: #222;
+}
+circle.knob-center {
+   fill: #eee;
+}
+circle.knob-rim {
+   fill: #333;
+}
+circle.knob-tick {
+  fill: #fff;
+}
+polyline.knob-tick {
+  stroke: #fff;
+}
+</style>
+
+  
+      
+      <rect class="module-background background-fill" width="150.0" height="380.0"/>
+    
+      
+      <polyline class="module-border-inner" points="1,1 149.0,1 149.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 149.5,0.5 149.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 150.0,0 150.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    
+      <text class="title" font-size="12pt" letter-spacing="2.5px" text-anchor="middle" transform="translate(75.0 19)">MX44CVM</text>
+      <g transform="translate(0 374)">
+        <text class="brand" font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate(75.0 0)">BOGAUDIO</text>
+        <rect class="background-fill" width="3" height="3" transform="translate(59.5 -5)"/>
+      </g>
+    
+
+  
+  
+  
+
+  
+    <g transform="translate(10 54)">
+      <text font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate(65.0 -5)">MUTE</text>
+
+      <g transform="translate(6.75 6.75)"><svg id="MUTE11_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+      <g transform="translate(6.75 39.25)"><svg id="MUTE21_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+      <g transform="translate(6.75 71.75)"><svg id="MUTE31_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+      <g transform="translate(6.75 104.25)"><svg id="MUTE41_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+
+      <g transform="translate(39.25 6.75)"><svg id="MUTE12_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+      <g transform="translate(39.25 39.25)"><svg id="MUTE22_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+      <g transform="translate(39.25 71.75)"><svg id="MUTE32_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+      <g transform="translate(39.25 104.25)"><svg id="MUTE42_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+
+      <g transform="translate(71.75 6.75)"><svg id="MUTE13_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+      <g transform="translate(71.75 39.25)"><svg id="MUTE23_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+      <g transform="translate(71.75 71.75)"><svg id="MUTE33_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+      <g transform="translate(71.75 104.25)"><svg id="MUTE43_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+
+      <g transform="translate(104.25 6.75)"><svg id="MUTE14_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+      <g transform="translate(104.25 39.25)"><svg id="MUTE24_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+      <g transform="translate(104.25 71.75)"><svg id="MUTE34_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+      <g transform="translate(104.25 104.25)"><svg id="MUTE44_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    </g>
+
+    <g class="io-group" transform="translate(10 214)">
+      <text font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate(65.0 -8)">CV</text>
+      <rect class="input-background" width="130" height="130" rx="5" transform="translate(0 0)"/>
+
+      <g transform="translate(4.25 4.25)"><svg id="CV11_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <g transform="translate(4.25 36.75)"><svg id="CV21_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <g transform="translate(4.25 69.25)"><svg id="CV31_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <g transform="translate(4.25 101.75)"><svg id="CV41_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+
+      <g transform="translate(36.75 4.25)"><svg id="CV12_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <g transform="translate(36.75 36.75)"><svg id="CV22_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <g transform="translate(36.75 69.25)"><svg id="CV32_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <g transform="translate(36.75 101.75)"><svg id="CV42_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+
+      <g transform="translate(69.25 4.25)"><svg id="CV13_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <g transform="translate(69.25 36.75)"><svg id="CV23_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <g transform="translate(69.25 69.25)"><svg id="CV33_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <g transform="translate(69.25 101.75)"><svg id="CV43_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+
+      <g transform="translate(101.75 4.25)"><svg id="CV14_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <g transform="translate(101.75 36.75)"><svg id="CV24_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <g transform="translate(101.75 69.25)"><svg id="CV34_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <g transform="translate(101.75 101.75)"><svg id="CV44_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+    </g>
+
+    
+    
+    
+    
+  
+</svg>

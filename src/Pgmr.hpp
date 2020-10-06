@@ -69,7 +69,7 @@ struct Pgmr : PgmrBase {
 	int _lastSteps[maxChannels] {};
 	rack::dsp::PulseGenerator _allPulseGens[maxChannels];
 
-	Pgmr() : PgmrBase(PgmrRegistry::registry()) {
+	Pgmr() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(DIRECTION_PARAM, 0.0f, 1.0f, 1.0f, "Forward");
 		configParam(SELECT_ON_CLOCK_PARAM, 0.0f, 1.0f, 0.0f, "Select on clock");

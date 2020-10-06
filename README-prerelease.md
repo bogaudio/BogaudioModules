@@ -628,7 +628,7 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, as on MATRIX44.
 
 #### <a name="matrix44"></a> MATRIX44
 
-An 4x4 channel matrix mixer.  Each input can be routed with an independent level to each of the eight output mixes.
+A 4x4 channel matrix mixer.  Each input can be routed with an independent level to each of the eight output mixes.  MATRIX44 is expandable with <a href="matrix44cvm">MATRIX44CVM</a>.
 
 *Note that the matrix knobs are attenuverters, and default to zero.*  That means there will be no output, regardless of the inputs, until some knobs are changed to non-zero values.
 
@@ -641,6 +641,12 @@ Option "Average" sets the output to be the average of its inputs.  The divisor f
 The knobs visually indicate their values with green/orange colors.  This can be disabled on the context menu.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by input 1.
+
+#### <a name="matrix44cvm"></a> MX44CVM
+
+An expander for MATRIX44, adding CVs and mutes for each point in the mix matrix.  The CVs are bipolar (+/-5v), and each is attenuverted by its corresponding knob when in use.  The mute buttons will mute the corresponding mix point, overriding the knob and CV.  As <a href="mix8">MIX8</a> and others, the mute buttons can be right-clicked to solo that mix point -- all others will be muted.  A subsequent click on a soloed button restores the previous state, and other muted buttons retake effect.
+
+MX44CVM must be positioned to the right of, and adjacent to, the MATRIX44 module it will expand.  See <a href="#expanders">notes on expanders</a>.
 
 #### <a name="matrix88"></a> MATRIX88
 

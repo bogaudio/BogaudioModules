@@ -12,9 +12,7 @@ extern Model* modelPgmrX;
 
 namespace bogaudio {
 
-struct PgmrExpanderMessage : ExpanderMessage {
-	int baseID = -1;
-	int position = -1;
+struct PgmrExpanderMessage : ChainableExpanderMessage {
 	float rangeOffset = 0.0f;
 	float rangeScale = 10.0f;
 };

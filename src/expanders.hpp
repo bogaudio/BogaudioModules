@@ -136,7 +136,10 @@ public:
 		void setElements(const std::vector<E*>& elements) {
 			std::lock_guard<SpinLock> lock(_elementsLock);
 			_elements = elements;
+			elementsChanged();
 		}
+
+		virtual void elementsChanged() {}
 	};
 
 	typedef Chainable ChainableExpander;
@@ -220,6 +223,11 @@ public:
 	}
 };
 
+struct ChainableExpanderMessage : ExpanderMessage {
+	int baseID = -1;
+	int position = -1;
+};
+
 template<class MESSAGE, class ELEMENT, int N, class BASE>
 struct ChainableExpandableModule
 : ExpandableModule<MESSAGE, BASE>
@@ -228,7 +236,9 @@ struct ChainableExpandableModule
 	ChainableRegistry<ELEMENT, N>& _registry;
 	int _id = -1;
 
-	ChainableExpandableModule(ChainableRegistry<ELEMENT, N>& registry) : _registry(registry) {}
+	ChainableExpandableModule()
+	: _registry(ChainableRegistry<ELEMENT, N>::registry())
+	{}
 	virtual ~ChainableExpandableModule() {
 		_registry.deregisterBase(_id);
 	}
@@ -248,7 +258,9 @@ struct ChainableExpanderModule
 	int _baseID = -1;
 	int _position = -1;
 
-	ChainableExpanderModule(ChainableRegistry<ELEMENT, N>& registry) : _registry(registry) {}
+	ChainableExpanderModule()
+	: _registry(ChainableRegistry<ELEMENT, N>::registry())
+	{}
 	virtual ~ChainableExpanderModule() {
 		_registry.deregisterExpander(_baseID, _position);
 	}

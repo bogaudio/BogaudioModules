@@ -1,0 +1,65 @@
+<module hp="10">
+  <style/>
+
+  <def xlink:href="#module" var-name="MX44CVM" var-letterspacing="2.5"/>
+
+  <!-- <rect width="$width" height="20" fill="#0f0" transform="translate(0 20)"/> -->
+  <!-- <rect width="$width" height="20" fill="#0f0" transform="translate(0 178)"/> -->
+  <!-- <rect width="$width" height="20" fill="#0f0" transform="translate(0 345)"/> -->
+
+  <g var-w="130/4.0">
+    <g transform="translate(10 54)">
+      <text font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate($width/2.0-10 -5)">MUTE</text>
+
+      <def id="MUTE11_PARAM" xlink:href="#button" transform="translate(0*$w+$w/2.0-9.5 0*$w+$w/2.0-9.5)"/>
+      <def id="MUTE21_PARAM" xlink:href="#button" transform="translate(0*$w+$w/2.0-9.5 1*$w+$w/2.0-9.5)"/>
+      <def id="MUTE31_PARAM" xlink:href="#button" transform="translate(0*$w+$w/2.0-9.5 2*$w+$w/2.0-9.5)"/>
+      <def id="MUTE41_PARAM" xlink:href="#button" transform="translate(0*$w+$w/2.0-9.5 3*$w+$w/2.0-9.5)"/>
+
+      <def id="MUTE12_PARAM" xlink:href="#button" transform="translate(1*$w+$w/2.0-9.5 0*$w+$w/2.0-9.5)"/>
+      <def id="MUTE22_PARAM" xlink:href="#button" transform="translate(1*$w+$w/2.0-9.5 1*$w+$w/2.0-9.5)"/>
+      <def id="MUTE32_PARAM" xlink:href="#button" transform="translate(1*$w+$w/2.0-9.5 2*$w+$w/2.0-9.5)"/>
+      <def id="MUTE42_PARAM" xlink:href="#button" transform="translate(1*$w+$w/2.0-9.5 3*$w+$w/2.0-9.5)"/>
+
+      <def id="MUTE13_PARAM" xlink:href="#button" transform="translate(2*$w+$w/2.0-9.5 0*$w+$w/2.0-9.5)"/>
+      <def id="MUTE23_PARAM" xlink:href="#button" transform="translate(2*$w+$w/2.0-9.5 1*$w+$w/2.0-9.5)"/>
+      <def id="MUTE33_PARAM" xlink:href="#button" transform="translate(2*$w+$w/2.0-9.5 2*$w+$w/2.0-9.5)"/>
+      <def id="MUTE43_PARAM" xlink:href="#button" transform="translate(2*$w+$w/2.0-9.5 3*$w+$w/2.0-9.5)"/>
+
+      <def id="MUTE14_PARAM" xlink:href="#button" transform="translate(3*$w+$w/2.0-9.5 0*$w+$w/2.0-9.5)"/>
+      <def id="MUTE24_PARAM" xlink:href="#button" transform="translate(3*$w+$w/2.0-9.5 1*$w+$w/2.0-9.5)"/>
+      <def id="MUTE34_PARAM" xlink:href="#button" transform="translate(3*$w+$w/2.0-9.5 2*$w+$w/2.0-9.5)"/>
+      <def id="MUTE44_PARAM" xlink:href="#button" transform="translate(3*$w+$w/2.0-9.5 3*$w+$w/2.0-9.5)"/>
+    </g>
+
+    <g class="io-group" transform="translate(10 214)">
+      <text font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate($width/2.0-10 -8)">CV</text>
+      <rect class="input-background" width="130" height="130" rx="5" transform="translate(0 0)"/>
+
+      <def id="CV11_INPUT" xlink:href="#input" transform="translate(0*$w+$w/2.0-12.0 0*$w+$w/2.0-12.0)"/>
+      <def id="CV21_INPUT" xlink:href="#input" transform="translate(0*$w+$w/2.0-12.0 1*$w+$w/2.0-12.0)"/>
+      <def id="CV31_INPUT" xlink:href="#input" transform="translate(0*$w+$w/2.0-12.0 2*$w+$w/2.0-12.0)"/>
+      <def id="CV41_INPUT" xlink:href="#input" transform="translate(0*$w+$w/2.0-12.0 3*$w+$w/2.0-12.0)"/>
+
+      <def id="CV12_INPUT" xlink:href="#input" transform="translate(1*$w+$w/2.0-12.0 0*$w+$w/2.0-12.0)"/>
+      <def id="CV22_INPUT" xlink:href="#input" transform="translate(1*$w+$w/2.0-12.0 1*$w+$w/2.0-12.0)"/>
+      <def id="CV32_INPUT" xlink:href="#input" transform="translate(1*$w+$w/2.0-12.0 2*$w+$w/2.0-12.0)"/>
+      <def id="CV42_INPUT" xlink:href="#input" transform="translate(1*$w+$w/2.0-12.0 3*$w+$w/2.0-12.0)"/>
+
+      <def id="CV13_INPUT" xlink:href="#input" transform="translate(2*$w+$w/2.0-12.0 0*$w+$w/2.0-12.0)"/>
+      <def id="CV23_INPUT" xlink:href="#input" transform="translate(2*$w+$w/2.0-12.0 1*$w+$w/2.0-12.0)"/>
+      <def id="CV33_INPUT" xlink:href="#input" transform="translate(2*$w+$w/2.0-12.0 2*$w+$w/2.0-12.0)"/>
+      <def id="CV43_INPUT" xlink:href="#input" transform="translate(2*$w+$w/2.0-12.0 3*$w+$w/2.0-12.0)"/>
+
+      <def id="CV14_INPUT" xlink:href="#input" transform="translate(3*$w+$w/2.0-12.0 0*$w+$w/2.0-12.0)"/>
+      <def id="CV24_INPUT" xlink:href="#input" transform="translate(3*$w+$w/2.0-12.0 1*$w+$w/2.0-12.0)"/>
+      <def id="CV34_INPUT" xlink:href="#input" transform="translate(3*$w+$w/2.0-12.0 2*$w+$w/2.0-12.0)"/>
+      <def id="CV44_INPUT" xlink:href="#input" transform="translate(3*$w+$w/2.0-12.0 3*$w+$w/2.0-12.0)"/>
+    </g>
+
+    <!-- <polyline class="guide" points="0,0 0,380" stroke-width="1" stroke="#0f0" transform="translate(10+0*$w+$w/2.0 0)" /> -->
+    <!-- <polyline class="guide" points="0,0 0,380" stroke-width="1" stroke="#0f0" transform="translate(10+1*$w+$w/2.0 0)" /> -->
+    <!-- <polyline class="guide" points="0,0 0,380" stroke-width="1" stroke="#0f0" transform="translate(10+2*$w+$w/2.0 0)" /> -->
+    <!-- <polyline class="guide" points="0,0 0,380" stroke-width="1" stroke="#0f0" transform="translate(10+3*$w+$w/2.0 0)" /> -->
+  </g>
+</module>

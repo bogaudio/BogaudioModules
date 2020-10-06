@@ -55,7 +55,7 @@ struct PgmrX : PgmrXBase, OutputRange {
 		NUM_LIGHTS
 	};
 
-	PgmrX() : PgmrXBase(PgmrRegistry::registry()) {
+	PgmrX() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam<OutputRangeParamQuantity>(CVA1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1A", " V");
 		configParam<OutputRangeParamQuantity>(CVB1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1B", " V");

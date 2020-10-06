@@ -39,7 +39,7 @@ struct AddrSeqX : AddrSeqXBase, OutputRange {
 		NUM_LIGHTS
 	};
 
-	AddrSeqX() : AddrSeqXBase(AddrSeqRegistry::registry()) {
+	AddrSeqX() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam<OutputRangeParamQuantity>(OUT1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1", " V");
 		configParam<OutputRangeParamQuantity>(OUT2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2", " V");

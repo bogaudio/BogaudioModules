@@ -9,9 +9,7 @@ extern Model* modelAddrSeqX;
 
 namespace bogaudio {
 
-struct AddrSeqExpanderMessage : ExpanderMessage {
-	int baseID = -1;
-	int position = -1;
+struct AddrSeqExpanderMessage : ChainableExpanderMessage {
 	float rangeOffset = 0.0f;
 	float rangeScale = 10.0f;
 };
