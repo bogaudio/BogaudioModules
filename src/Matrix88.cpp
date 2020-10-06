@@ -1,6 +1,32 @@
 
 #include "Matrix88.hpp"
 
+void Matrix88::elementsChanged() {
+	// base-class caller holds lock on _elements.
+	Input** cvs = NULL;
+	Param** mutes = NULL;
+	for (int i = 1, n = std::min(3, (int)_elements.size()); i < n; ++i) {
+		auto e = _elements[i];
+		assert(e);
+		if (e->cvs) {
+			cvs = e->cvs;
+		}
+		if (e->mutes) {
+			mutes = e->mutes;
+		}
+	}
+	setCVInputs(cvs);
+	setMuteParams(mutes);
+}
+
+void Matrix88::processAlways(const ProcessArgs& args) {
+	if (expanderConnected()) {
+		Matrix88ExpanderMessage* te = toExpander();
+		te->baseID = _id;
+		te->position = 1;
+	}
+}
+
 struct Matrix88Widget : KnobMatrixModuleWidget {
 	static constexpr int hp = 22;
 

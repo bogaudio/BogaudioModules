@@ -1,0 +1,101 @@
+<module hp="20">
+  <style/>
+
+  <def xlink:href="#module" var-name="MX88M"/>
+
+  <!-- <def id="MIX11_PARAM" xlink:href="#button" transform="translate(4.5 9)"/> -->
+
+  <g transform="translate(27.5 42)" var-x="35" var-y="37">
+    <def id="MUTE11_PARAM" xlink:href="#button" transform="translate(0*$x-9 0*$y-9)"/>
+    <def id="MUTE21_PARAM" xlink:href="#button" transform="translate(0*$x-9 1*$y-9)"/>
+    <def id="MUTE31_PARAM" xlink:href="#button" transform="translate(0*$x-9 2*$y-9)"/>
+    <def id="MUTE41_PARAM" xlink:href="#button" transform="translate(0*$x-9 3*$y-9)"/>
+    <def id="MUTE51_PARAM" xlink:href="#button" transform="translate(0*$x-9 4*$y-9)"/>
+    <def id="MUTE61_PARAM" xlink:href="#button" transform="translate(0*$x-9 5*$y-9)"/>
+    <def id="MUTE71_PARAM" xlink:href="#button" transform="translate(0*$x-9 6*$y-9)"/>
+    <def id="MUTE81_PARAM" xlink:href="#button" transform="translate(0*$x-9 7*$y-9)"/>
+
+    <def id="MUTE12_PARAM" xlink:href="#button" transform="translate(1*$x-9 0*$y-9)"/>
+    <def id="MUTE22_PARAM" xlink:href="#button" transform="translate(1*$x-9 1*$y-9)"/>
+    <def id="MUTE32_PARAM" xlink:href="#button" transform="translate(1*$x-9 2*$y-9)"/>
+    <def id="MUTE42_PARAM" xlink:href="#button" transform="translate(1*$x-9 3*$y-9)"/>
+    <def id="MUTE52_PARAM" xlink:href="#button" transform="translate(1*$x-9 4*$y-9)"/>
+    <def id="MUTE62_PARAM" xlink:href="#button" transform="translate(1*$x-9 5*$y-9)"/>
+    <def id="MUTE72_PARAM" xlink:href="#button" transform="translate(1*$x-9 6*$y-9)"/>
+    <def id="MUTE82_PARAM" xlink:href="#button" transform="translate(1*$x-9 7*$y-9)"/>
+
+    <def id="MUTE13_PARAM" xlink:href="#button" transform="translate(2*$x-9 0*$y-9)"/>
+    <def id="MUTE23_PARAM" xlink:href="#button" transform="translate(2*$x-9 1*$y-9)"/>
+    <def id="MUTE33_PARAM" xlink:href="#button" transform="translate(2*$x-9 2*$y-9)"/>
+    <def id="MUTE43_PARAM" xlink:href="#button" transform="translate(2*$x-9 3*$y-9)"/>
+    <def id="MUTE53_PARAM" xlink:href="#button" transform="translate(2*$x-9 4*$y-9)"/>
+    <def id="MUTE63_PARAM" xlink:href="#button" transform="translate(2*$x-9 5*$y-9)"/>
+    <def id="MUTE73_PARAM" xlink:href="#button" transform="translate(2*$x-9 6*$y-9)"/>
+    <def id="MUTE83_PARAM" xlink:href="#button" transform="translate(2*$x-9 7*$y-9)"/>
+
+    <def id="MUTE14_PARAM" xlink:href="#button" transform="translate(3*$x-9 0*$y-9)"/>
+    <def id="MUTE24_PARAM" xlink:href="#button" transform="translate(3*$x-9 1*$y-9)"/>
+    <def id="MUTE34_PARAM" xlink:href="#button" transform="translate(3*$x-9 2*$y-9)"/>
+    <def id="MUTE44_PARAM" xlink:href="#button" transform="translate(3*$x-9 3*$y-9)"/>
+    <def id="MUTE54_PARAM" xlink:href="#button" transform="translate(3*$x-9 4*$y-9)"/>
+    <def id="MUTE64_PARAM" xlink:href="#button" transform="translate(3*$x-9 5*$y-9)"/>
+    <def id="MUTE74_PARAM" xlink:href="#button" transform="translate(3*$x-9 6*$y-9)"/>
+    <def id="MUTE84_PARAM" xlink:href="#button" transform="translate(3*$x-9 7*$y-9)"/>
+
+    <def id="MUTE15_PARAM" xlink:href="#button" transform="translate(4*$x-9 0*$y-9)"/>
+    <def id="MUTE25_PARAM" xlink:href="#button" transform="translate(4*$x-9 1*$y-9)"/>
+    <def id="MUTE35_PARAM" xlink:href="#button" transform="translate(4*$x-9 2*$y-9)"/>
+    <def id="MUTE45_PARAM" xlink:href="#button" transform="translate(4*$x-9 3*$y-9)"/>
+    <def id="MUTE55_PARAM" xlink:href="#button" transform="translate(4*$x-9 4*$y-9)"/>
+    <def id="MUTE65_PARAM" xlink:href="#button" transform="translate(4*$x-9 5*$y-9)"/>
+    <def id="MUTE75_PARAM" xlink:href="#button" transform="translate(4*$x-9 6*$y-9)"/>
+    <def id="MUTE85_PARAM" xlink:href="#button" transform="translate(4*$x-9 7*$y-9)"/>
+
+    <def id="MUTE16_PARAM" xlink:href="#button" transform="translate(5*$x-9 0*$y-9)"/>
+    <def id="MUTE26_PARAM" xlink:href="#button" transform="translate(5*$x-9 1*$y-9)"/>
+    <def id="MUTE36_PARAM" xlink:href="#button" transform="translate(5*$x-9 2*$y-9)"/>
+    <def id="MUTE46_PARAM" xlink:href="#button" transform="translate(5*$x-9 3*$y-9)"/>
+    <def id="MUTE56_PARAM" xlink:href="#button" transform="translate(5*$x-9 4*$y-9)"/>
+    <def id="MUTE66_PARAM" xlink:href="#button" transform="translate(5*$x-9 5*$y-9)"/>
+    <def id="MUTE76_PARAM" xlink:href="#button" transform="translate(5*$x-9 6*$y-9)"/>
+    <def id="MUTE86_PARAM" xlink:href="#button" transform="translate(5*$x-9 7*$y-9)"/>
+
+    <def id="MUTE17_PARAM" xlink:href="#button" transform="translate(6*$x-9 0*$y-9)"/>
+    <def id="MUTE27_PARAM" xlink:href="#button" transform="translate(6*$x-9 1*$y-9)"/>
+    <def id="MUTE37_PARAM" xlink:href="#button" transform="translate(6*$x-9 2*$y-9)"/>
+    <def id="MUTE47_PARAM" xlink:href="#button" transform="translate(6*$x-9 3*$y-9)"/>
+    <def id="MUTE57_PARAM" xlink:href="#button" transform="translate(6*$x-9 4*$y-9)"/>
+    <def id="MUTE67_PARAM" xlink:href="#button" transform="translate(6*$x-9 5*$y-9)"/>
+    <def id="MUTE77_PARAM" xlink:href="#button" transform="translate(6*$x-9 6*$y-9)"/>
+    <def id="MUTE87_PARAM" xlink:href="#button" transform="translate(6*$x-9 7*$y-9)"/>
+
+    <def id="MUTE18_PARAM" xlink:href="#button" transform="translate(7*$x-9 0*$y-9)"/>
+    <def id="MUTE28_PARAM" xlink:href="#button" transform="translate(7*$x-9 1*$y-9)"/>
+    <def id="MUTE38_PARAM" xlink:href="#button" transform="translate(7*$x-9 2*$y-9)"/>
+    <def id="MUTE48_PARAM" xlink:href="#button" transform="translate(7*$x-9 3*$y-9)"/>
+    <def id="MUTE58_PARAM" xlink:href="#button" transform="translate(7*$x-9 4*$y-9)"/>
+    <def id="MUTE68_PARAM" xlink:href="#button" transform="translate(7*$x-9 5*$y-9)"/>
+    <def id="MUTE78_PARAM" xlink:href="#button" transform="translate(7*$x-9 6*$y-9)"/>
+    <def id="MUTE88_PARAM" xlink:href="#button" transform="translate(7*$x-9 7*$y-9)"/>
+  </g>
+
+  <!-- <text font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate($width/2.0 330)">MUTE</text> -->
+
+  <!-- <polyline class="guide" points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(27.5 0)" />
+  <polyline class="guide" points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(62.5 0)" />
+  <polyline class="guide" points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(97.5 0)" />
+  <polyline class="guide" points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(132.5 0)" />
+  <polyline class="guide" points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(167.5 0)" />
+  <polyline class="guide" points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(202.5 0)" />
+  <polyline class="guide" points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(237.5 0)" />
+  <polyline class="guide" points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(273.5 0)" />
+
+  <polyline class="guide" points="0,0 $width,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 42)" />
+  <polyline class="guide" points="0,0 $width,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 79)" />
+  <polyline class="guide" points="0,0 $width,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 116)" />
+  <polyline class="guide" points="0,0 $width,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 153)" />
+  <polyline class="guide" points="0,0 $width,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 190)" />
+  <polyline class="guide" points="0,0 $width,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 227)" />
+  <polyline class="guide" points="0,0 $width,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 264)" />
+  <polyline class="guide" points="0,0 $width,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 301)" /> -->
+</module>

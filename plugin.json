@@ -627,6 +627,28 @@
       ]
     },
     {
+      "slug": "Bogaudio-Matrix88Cv",
+      "name": "MX88CV",
+      "description": "CV expander for MATRIX88",
+      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#matrix88cv",
+      "tags": [
+        "Mixer",
+        "Expander",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Bogaudio-Matrix88M",
+      "name": "MX88M",
+      "description": "Mutes expander for MATRIX88",
+      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#matrix88m",
+      "tags": [
+        "Mixer",
+        "Expander",
+        "Polyphonic"
+      ]
+    },
+    {
       "slug": "Bogaudio-Switch81",
       "name": "SWITCH81",
       "description": "8-channel mixer",

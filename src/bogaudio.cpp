@@ -50,6 +50,8 @@
 #include "Matrix44Cvm.hpp"
 #include "Matrix81.hpp"
 #include "Matrix88.hpp"
+#include "Matrix88Cv.hpp"
+#include "Matrix88M.hpp"
 #include "MegaGate.hpp"
 #include "Mix1.hpp"
 #include "Mix2.hpp"
@@ -191,6 +193,8 @@ void init(rack::Plugin *p) {
 	p->addModel(modelMatrix44);
 	p->addModel(modelMatrix44Cvm);
 	p->addModel(modelMatrix88);
+	p->addModel(modelMatrix88Cv);
+	p->addModel(modelMatrix88M);
 	p->addModel(modelSwitch81);
 	p->addModel(modelSwitch18);
 	p->addModel(modelSwitch44);

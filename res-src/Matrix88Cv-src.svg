@@ -1,0 +1,99 @@
+<module hp="20">
+  <style/>
+
+  <def xlink:href="#module" var-name="MX88CV"/>
+
+  <g transform="translate(27.5 42)" var-x="35" var-y="37">
+    <def id="CV11_INPUT" xlink:href="#input" transform="translate(0*$x-12 0*$y-12)"/>
+    <def id="CV21_INPUT" xlink:href="#input" transform="translate(0*$x-12 1*$y-12)"/>
+    <def id="CV31_INPUT" xlink:href="#input" transform="translate(0*$x-12 2*$y-12)"/>
+    <def id="CV41_INPUT" xlink:href="#input" transform="translate(0*$x-12 3*$y-12)"/>
+    <def id="CV51_INPUT" xlink:href="#input" transform="translate(0*$x-12 4*$y-12)"/>
+    <def id="CV61_INPUT" xlink:href="#input" transform="translate(0*$x-12 5*$y-12)"/>
+    <def id="CV71_INPUT" xlink:href="#input" transform="translate(0*$x-12 6*$y-12)"/>
+    <def id="CV81_INPUT" xlink:href="#input" transform="translate(0*$x-12 7*$y-12)"/>
+
+    <def id="CV12_INPUT" xlink:href="#input" transform="translate(1*$x-12 0*$y-12)"/>
+    <def id="CV22_INPUT" xlink:href="#input" transform="translate(1*$x-12 1*$y-12)"/>
+    <def id="CV32_INPUT" xlink:href="#input" transform="translate(1*$x-12 2*$y-12)"/>
+    <def id="CV42_INPUT" xlink:href="#input" transform="translate(1*$x-12 3*$y-12)"/>
+    <def id="CV52_INPUT" xlink:href="#input" transform="translate(1*$x-12 4*$y-12)"/>
+    <def id="CV62_INPUT" xlink:href="#input" transform="translate(1*$x-12 5*$y-12)"/>
+    <def id="CV72_INPUT" xlink:href="#input" transform="translate(1*$x-12 6*$y-12)"/>
+    <def id="CV82_INPUT" xlink:href="#input" transform="translate(1*$x-12 7*$y-12)"/>
+
+    <def id="CV13_INPUT" xlink:href="#input" transform="translate(2*$x-12 0*$y-12)"/>
+    <def id="CV23_INPUT" xlink:href="#input" transform="translate(2*$x-12 1*$y-12)"/>
+    <def id="CV33_INPUT" xlink:href="#input" transform="translate(2*$x-12 2*$y-12)"/>
+    <def id="CV43_INPUT" xlink:href="#input" transform="translate(2*$x-12 3*$y-12)"/>
+    <def id="CV53_INPUT" xlink:href="#input" transform="translate(2*$x-12 4*$y-12)"/>
+    <def id="CV63_INPUT" xlink:href="#input" transform="translate(2*$x-12 5*$y-12)"/>
+    <def id="CV73_INPUT" xlink:href="#input" transform="translate(2*$x-12 6*$y-12)"/>
+    <def id="CV83_INPUT" xlink:href="#input" transform="translate(2*$x-12 7*$y-12)"/>
+
+    <def id="CV14_INPUT" xlink:href="#input" transform="translate(3*$x-12 0*$y-12)"/>
+    <def id="CV24_INPUT" xlink:href="#input" transform="translate(3*$x-12 1*$y-12)"/>
+    <def id="CV34_INPUT" xlink:href="#input" transform="translate(3*$x-12 2*$y-12)"/>
+    <def id="CV44_INPUT" xlink:href="#input" transform="translate(3*$x-12 3*$y-12)"/>
+    <def id="CV54_INPUT" xlink:href="#input" transform="translate(3*$x-12 4*$y-12)"/>
+    <def id="CV64_INPUT" xlink:href="#input" transform="translate(3*$x-12 5*$y-12)"/>
+    <def id="CV74_INPUT" xlink:href="#input" transform="translate(3*$x-12 6*$y-12)"/>
+    <def id="CV84_INPUT" xlink:href="#input" transform="translate(3*$x-12 7*$y-12)"/>
+
+    <def id="CV15_INPUT" xlink:href="#input" transform="translate(4*$x-12 0*$y-12)"/>
+    <def id="CV25_INPUT" xlink:href="#input" transform="translate(4*$x-12 1*$y-12)"/>
+    <def id="CV35_INPUT" xlink:href="#input" transform="translate(4*$x-12 2*$y-12)"/>
+    <def id="CV45_INPUT" xlink:href="#input" transform="translate(4*$x-12 3*$y-12)"/>
+    <def id="CV55_INPUT" xlink:href="#input" transform="translate(4*$x-12 4*$y-12)"/>
+    <def id="CV65_INPUT" xlink:href="#input" transform="translate(4*$x-12 5*$y-12)"/>
+    <def id="CV75_INPUT" xlink:href="#input" transform="translate(4*$x-12 6*$y-12)"/>
+    <def id="CV85_INPUT" xlink:href="#input" transform="translate(4*$x-12 7*$y-12)"/>
+
+    <def id="CV16_INPUT" xlink:href="#input" transform="translate(5*$x-12 0*$y-12)"/>
+    <def id="CV26_INPUT" xlink:href="#input" transform="translate(5*$x-12 1*$y-12)"/>
+    <def id="CV36_INPUT" xlink:href="#input" transform="translate(5*$x-12 2*$y-12)"/>
+    <def id="CV46_INPUT" xlink:href="#input" transform="translate(5*$x-12 3*$y-12)"/>
+    <def id="CV56_INPUT" xlink:href="#input" transform="translate(5*$x-12 4*$y-12)"/>
+    <def id="CV66_INPUT" xlink:href="#input" transform="translate(5*$x-12 5*$y-12)"/>
+    <def id="CV76_INPUT" xlink:href="#input" transform="translate(5*$x-12 6*$y-12)"/>
+    <def id="CV86_INPUT" xlink:href="#input" transform="translate(5*$x-12 7*$y-12)"/>
+
+    <def id="CV17_INPUT" xlink:href="#input" transform="translate(6*$x-12 0*$y-12)"/>
+    <def id="CV27_INPUT" xlink:href="#input" transform="translate(6*$x-12 1*$y-12)"/>
+    <def id="CV37_INPUT" xlink:href="#input" transform="translate(6*$x-12 2*$y-12)"/>
+    <def id="CV47_INPUT" xlink:href="#input" transform="translate(6*$x-12 3*$y-12)"/>
+    <def id="CV57_INPUT" xlink:href="#input" transform="translate(6*$x-12 4*$y-12)"/>
+    <def id="CV67_INPUT" xlink:href="#input" transform="translate(6*$x-12 5*$y-12)"/>
+    <def id="CV77_INPUT" xlink:href="#input" transform="translate(6*$x-12 6*$y-12)"/>
+    <def id="CV87_INPUT" xlink:href="#input" transform="translate(6*$x-12 7*$y-12)"/>
+
+    <def id="CV18_INPUT" xlink:href="#input" transform="translate(7*$x-12 0*$y-12)"/>
+    <def id="CV28_INPUT" xlink:href="#input" transform="translate(7*$x-12 1*$y-12)"/>
+    <def id="CV38_INPUT" xlink:href="#input" transform="translate(7*$x-12 2*$y-12)"/>
+    <def id="CV48_INPUT" xlink:href="#input" transform="translate(7*$x-12 3*$y-12)"/>
+    <def id="CV58_INPUT" xlink:href="#input" transform="translate(7*$x-12 4*$y-12)"/>
+    <def id="CV68_INPUT" xlink:href="#input" transform="translate(7*$x-12 5*$y-12)"/>
+    <def id="CV78_INPUT" xlink:href="#input" transform="translate(7*$x-12 6*$y-12)"/>
+    <def id="CV88_INPUT" xlink:href="#input" transform="translate(7*$x-12 7*$y-12)"/>
+  </g>
+
+  <!-- <text font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate($width/2.0 330)">CV</text> -->
+
+  <!-- <polyline class="guide" points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(27.5 0)" />
+  <polyline class="guide" points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(62.5 0)" />
+  <polyline class="guide" points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(97.5 0)" />
+  <polyline class="guide" points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(132.5 0)" />
+  <polyline class="guide" points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(167.5 0)" />
+  <polyline class="guide" points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(202.5 0)" />
+  <polyline class="guide" points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(237.5 0)" />
+  <polyline class="guide" points="0,0 0,380" stroke="#0f0" stroke-width="1" fill="none" transform="translate(273.5 0)" />
+
+  <polyline class="guide" points="0,0 $width,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 42)" />
+  <polyline class="guide" points="0,0 $width,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 79)" />
+  <polyline class="guide" points="0,0 $width,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 116)" />
+  <polyline class="guide" points="0,0 $width,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 153)" />
+  <polyline class="guide" points="0,0 $width,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 190)" />
+  <polyline class="guide" points="0,0 $width,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 227)" />
+  <polyline class="guide" points="0,0 $width,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 264)" />
+  <polyline class="guide" points="0,0 $width,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 301)" /> -->
+</module>

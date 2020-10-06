@@ -5,8 +5,9 @@ void Matrix44::elementsChanged() {
 	// base-class caller holds lock on _elements.
 	Input** cvs = NULL;
 	Param** mutes = NULL;
-	for (int i = 1, n = _elements.size(); i < n; ++i) {
-		auto e = _elements[i];
+	if (_elements.size() > 1) {
+		auto e = _elements[1];
+		assert(e);
 		if (e->cvs) {
 			cvs = e->cvs;
 		}

@@ -1,0 +1,492 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="300.0" height="380.0" viewBox="0 0 300.0 380.0">
+  <style>text {
+  fill: #333;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+text.title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+}
+text.brand {
+  font-family: 'Audiowide', sans-serif;
+  font-weight: bold;
+}
+
+polyline {
+  stroke: #333;
+}
+polyline.guide {
+  stroke: #0f0;
+}
+path {
+  stroke: #333;
+}
+
+rect.module-background, .background-fill {
+  fill: #ddd;
+}
+polyline.module-border-inner {
+  stroke: #e4e4e4;
+}
+polyline.module-border-middle {
+  stroke: #ebebeb;
+}
+polyline.module-border-outer {
+  stroke: #f2f2f2;
+}
+
+g.io-group {
+}
+rect.input-background, rect.input-background-filler {
+  fill: #fafafa;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #bbb;
+}
+text.input-label, text.output-label {
+  /* font-size: 6pt; */
+}
+polyline.input-label, polyline.output-label {
+}
+path.input-label, path.output-label {
+}
+
+circle.port-rim {
+  stroke: #f0f0f0;
+}
+circle.port-barrel {
+  stroke: #222;
+  fill: #222;
+}
+circle.knob-center {
+   fill: #eee;
+}
+circle.knob-rim {
+   fill: #333;
+}
+circle.knob-tick {
+  fill: #fff;
+}
+polyline.knob-tick {
+  stroke: #fff;
+}
+
+
+text {
+  fill: #b3b3b3;
+}
+
+polyline {
+  stroke: #b3b3b3;
+}
+path {
+  stroke: #b3b3b3;
+}
+
+rect.module-background, .background-fill {
+  fill: #333;
+}
+polyline.module-border-inner {
+  stroke: #191919;
+}
+polyline.module-border-middle {
+  stroke: #111;
+}
+polyline.module-border-outer {
+  stroke: #000;
+}
+
+rect.input-background, rect.input-background-filler {
+  fill: #b3b3b3;
+}
+rect.output-background, rect.output-background-filler {
+  fill: #888;
+}
+text.input-label {
+  fill: #666;
+}
+polyline.input-label, path.input-label {
+  stroke: #666;
+}
+text.output-label {
+  fill: #ccc;
+}
+polyline.output-label, path.output-label {
+  stroke: #ccc;
+}
+
+circle.port-rim {
+  stroke: #bbb;
+}
+circle.port-barrel {
+  stroke: #222;
+  fill: #222;
+}
+circle.knob-center {
+   fill: #bbb;
+}
+circle.knob-rim {
+   fill: #555;
+}
+circle.knob-tick {
+  fill: #fff;
+}
+polyline.knob-tick {
+  stroke: #fff;
+}
+</style>
+
+  
+      
+      <rect class="module-background background-fill" width="300.0" height="380.0"/>
+    
+      
+      <polyline class="module-border-inner" points="1,1 299.0,1 299.0,379.0 1,379.0 1,1" stroke-width="0.5" fill="none"/>
+      <polyline class="module-border-middle" points="0.5,0.5 299.5,0.5 299.5,379.5 0.5,379.5 0.5,0.5" stroke-width="0.8" fill="none"/>
+      <polyline class="module-border-outer" points="0,0 300.0,0 300.0,380.0 0,380.0 0,0" stroke-width="1" fill="none"/>
+    
+      <text class="title" font-size="12pt" letter-spacing="4px" text-anchor="middle" transform="translate(150.0 19)">MX88M</text>
+      <g transform="translate(0 374)">
+        <text class="brand" font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate(150.0 0)">BOGAUDIO</text>
+        <rect class="background-fill" width="3" height="3" transform="translate(134.5 -5)"/>
+      </g>
+    
+
+  
+
+  <g transform="translate(27.5 42)">
+    <g transform="translate(-9 -9)"><svg id="MUTE11_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-9 28)"><svg id="MUTE21_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-9 65)"><svg id="MUTE31_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-9 102)"><svg id="MUTE41_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-9 139)"><svg id="MUTE51_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-9 176)"><svg id="MUTE61_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-9 213)"><svg id="MUTE71_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(-9 250)"><svg id="MUTE81_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+
+    <g transform="translate(26 -9)"><svg id="MUTE12_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(26 28)"><svg id="MUTE22_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(26 65)"><svg id="MUTE32_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(26 102)"><svg id="MUTE42_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(26 139)"><svg id="MUTE52_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(26 176)"><svg id="MUTE62_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(26 213)"><svg id="MUTE72_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(26 250)"><svg id="MUTE82_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+
+    <g transform="translate(61 -9)"><svg id="MUTE13_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(61 28)"><svg id="MUTE23_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(61 65)"><svg id="MUTE33_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(61 102)"><svg id="MUTE43_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(61 139)"><svg id="MUTE53_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(61 176)"><svg id="MUTE63_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(61 213)"><svg id="MUTE73_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(61 250)"><svg id="MUTE83_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+
+    <g transform="translate(96 -9)"><svg id="MUTE14_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(96 28)"><svg id="MUTE24_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(96 65)"><svg id="MUTE34_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(96 102)"><svg id="MUTE44_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(96 139)"><svg id="MUTE54_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(96 176)"><svg id="MUTE64_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(96 213)"><svg id="MUTE74_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(96 250)"><svg id="MUTE84_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+
+    <g transform="translate(131 -9)"><svg id="MUTE15_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(131 28)"><svg id="MUTE25_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(131 65)"><svg id="MUTE35_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(131 102)"><svg id="MUTE45_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(131 139)"><svg id="MUTE55_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(131 176)"><svg id="MUTE65_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(131 213)"><svg id="MUTE75_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(131 250)"><svg id="MUTE85_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+
+    <g transform="translate(166 -9)"><svg id="MUTE16_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(166 28)"><svg id="MUTE26_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(166 65)"><svg id="MUTE36_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(166 102)"><svg id="MUTE46_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(166 139)"><svg id="MUTE56_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(166 176)"><svg id="MUTE66_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(166 213)"><svg id="MUTE76_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(166 250)"><svg id="MUTE86_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+
+    <g transform="translate(201 -9)"><svg id="MUTE17_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(201 28)"><svg id="MUTE27_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(201 65)"><svg id="MUTE37_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(201 102)"><svg id="MUTE47_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(201 139)"><svg id="MUTE57_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(201 176)"><svg id="MUTE67_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(201 213)"><svg id="MUTE77_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(201 250)"><svg id="MUTE87_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+
+    <g transform="translate(236 -9)"><svg id="MUTE18_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(236 28)"><svg id="MUTE28_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(236 65)"><svg id="MUTE38_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(236 102)"><svg id="MUTE48_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(236 139)"><svg id="MUTE58_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(236 176)"><svg id="MUTE68_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(236 213)"><svg id="MUTE78_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+    <g transform="translate(236 250)"><svg id="MUTE88_PARAM">
+      <g transform="translate(9 9)">
+        <circle cx="0" cy="0" r="8.5" stroke-width="1" stroke="#00f" fill="#f00"/>
+      </g>
+    </svg></g>
+  </g>
+
+  
+
+  
+</svg>
