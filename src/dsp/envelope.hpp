@@ -3,18 +3,17 @@
 #include <stdlib.h>
 
 #include "base.hpp"
+#include "signal.hpp"
 
 namespace bogaudio {
 namespace dsp {
 
 struct EnvelopeGenerator : Generator {
-	float _sampleRate;
+	float _sampleRate = -1.0f;
 	float _sampleTime;
 
-	EnvelopeGenerator(float sampleRate = 1000.0f)
-	: _sampleRate(sampleRate > 1.0 ? sampleRate : 1.0)
-	, _sampleTime(1.0f / _sampleRate)
-	{
+	EnvelopeGenerator(float sampleRate = 1000.0f) {
+		setSampleRate(std::max(1.0f, sampleRate));
 	}
 
 	void setSampleRate(float sampleRate);

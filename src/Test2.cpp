@@ -82,7 +82,7 @@ void Test2::processChannel(const ProcessArgs& args, int _c) {
 			decayShape *= 2.0f;
 			decayShape += 1.0f;
 		}
-		_adsr.setShapes(attackShape, decayShape, decayShape);
+		_adsr.setShapes(attackShape, 1.0f / decayShape, 1.0f / decayShape); // FIXME: inversions here untested
 		outputs[OUT_OUTPUT].setVoltage(_adsr.next() * 10.0f);
 	}
 

@@ -8,12 +8,14 @@
 using namespace bogaudio::dsp;
 
 void EnvelopeGenerator::setSampleRate(float sampleRate) {
-	if (_sampleRate != sampleRate && sampleRate >= 1.0) {
+	assert(sampleRate >= 1.0f);
+	if (_sampleRate != sampleRate) {
 		_sampleRate = sampleRate;
 		_sampleTime = 1.0f / sampleRate;
 		_sampleRateChanged();
 	}
 }
+
 
 void ADSR::reset() {
 	_stage = STOPPED_STAGE;
@@ -51,7 +53,7 @@ void ADSR::setLinearShape(bool linear) {
 		setShapes(1.0f, 1.0f, 1.0f);
 	}
 	else {
-		setShapes(0.5f, 0.5f, 0.5f);
+		setShapes(0.5f, 2.0f, 2.0f);
 	}
 }
 
@@ -106,7 +108,7 @@ float ADSR::_next() {
 			}
 			case RELEASE_STAGE: {
 				_stage = ATTACK_STAGE;
-				_stageProgress = _attack * powf(_envelope, 1.0f / _releaseShape);
+				_stageProgress = _attack * powf(_envelope, _releaseShape);
 				break;
 			}
 		}
@@ -147,9 +149,9 @@ float ADSR::_next() {
 		case DECAY_STAGE: {
 			_stageProgress += _sampleTime;
 			_envelope = std::min(1.0f, _stageProgress / _decay);
-			_envelope = powf(_envelope, _decayShape);
+			_envelope = powf(1.0f - _envelope, _decayShape);
 			_envelope *= 1.0f - _sustain;
-			_envelope = 1.0f - _envelope;
+			_envelope += _sustain;
 			break;
 		}
 		case SUSTAIN_STAGE: {
@@ -159,9 +161,8 @@ float ADSR::_next() {
 		case RELEASE_STAGE: {
 			_stageProgress += _sampleTime;
 			_envelope = std::min(1.0f, _stageProgress / _release);
-			_envelope = powf(_envelope, _releaseShape);
+			_envelope = powf(1.0f - _envelope, _releaseShape);
 			_envelope *= _releaseLevel;
-			_envelope = _releaseLevel - _envelope;
 			break;
 		}
 	}

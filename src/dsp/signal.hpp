@@ -106,6 +106,7 @@ struct SlewLimiter {
 	}
 
 	void setParams(float sampleRate = 1000.0f, float milliseconds = 1.0f, float range = 10.0f);
+	inline void setLast(float last) { _last = last; }
 	inline float next(float sample) {
 		return _last = next(sample, _last);
 	}
