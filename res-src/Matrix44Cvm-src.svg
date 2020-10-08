@@ -8,7 +8,7 @@
   <!-- <rect width="$width" height="20" fill="#0f0" transform="translate(0 345)"/> -->
 
   <g var-w="130/4.0">
-    <g transform="translate(10 54)">
+    <g transform="translate(10 55)">
       <text font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate($width/2.0-10 -5)">MUTE</text>
 
       <def id="MUTE11_PARAM" xlink:href="#button" transform="translate(0*$w+$w/2.0-9.5 0*$w+$w/2.0-9.5)"/>
@@ -32,9 +32,8 @@
       <def id="MUTE44_PARAM" xlink:href="#button" transform="translate(3*$w+$w/2.0-9.5 3*$w+$w/2.0-9.5)"/>
     </g>
 
-    <g class="io-group" transform="translate(10 214)">
-      <text font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate($width/2.0-10 -8)">CV</text>
-      <rect class="input-background" width="130" height="130" rx="5" transform="translate(0 0)"/>
+    <g class="io-group" transform="translate(10 213)">
+      <text font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate($width/2.0-10 -5)">CV</text>
 
       <def id="CV11_INPUT" xlink:href="#input" transform="translate(0*$w+$w/2.0-12.0 0*$w+$w/2.0-12.0)"/>
       <def id="CV21_INPUT" xlink:href="#input" transform="translate(0*$w+$w/2.0-12.0 1*$w+$w/2.0-12.0)"/>

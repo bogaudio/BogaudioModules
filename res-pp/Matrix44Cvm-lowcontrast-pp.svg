@@ -159,7 +159,7 @@ polyline.knob-tick {
   
 
   
-    <g transform="translate(10 54)">
+    <g transform="translate(10 55)">
       <text font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate(65.0 -5)">MUTE</text>
 
       <g transform="translate(6.75 6.75)"><svg id="MUTE11_PARAM">
@@ -247,9 +247,8 @@ polyline.knob-tick {
     </svg></g>
     </g>
 
-    <g class="io-group" transform="translate(10 214)">
-      <text font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate(65.0 -8)">CV</text>
-      <rect class="input-background" width="130" height="130" rx="5" transform="translate(0 0)"/>
+    <g class="io-group" transform="translate(10 213)">
+      <text font-size="8pt" letter-spacing="2px" text-anchor="middle" transform="translate(65.0 -5)">CV</text>
 
       <g transform="translate(4.25 4.25)"><svg id="CV11_INPUT">
       <g transform="translate(12 12)">
