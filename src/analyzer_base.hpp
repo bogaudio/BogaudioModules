@@ -227,6 +227,8 @@ struct AnalyzerDisplay : TransparentWidget, AnalyzerTypes {
 	Vec _freezeMouse;
 	bool _freezeDraw = false;
 	float* _freezeBufs = NULL;
+	int _freezeNudgeBin = 0;
+	int _freezeLastBinI = -1;
 
 	AnalyzerDisplay(
 		AnalyzerBase* module,
@@ -262,6 +264,7 @@ struct AnalyzerDisplay : TransparentWidget, AnalyzerTypes {
 	void onButton(const event::Button& e) override;
 	void onDragMove(const event::DragMove& e) override;
 	void onDragEnd(const event::DragEnd& e) override;
+	void onHoverKey(const event::HoverKey &e) override;
 	void setChannelBinsReader(int channel, BinsReader* br);
 	void displayChannel(int channel, bool display);
 	void channelLabel(int channel, std::string label);

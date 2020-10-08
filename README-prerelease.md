@@ -994,6 +994,7 @@ Features:
     - The frequency analysis bin under the mouse pointer is highlighted.
     - An overlay box is displayed, with details about the bin number and frequency range, and the level in decibels for each signal at that frequency range.
     - Dragging the mouse left and right will update the highlight and overlay.
+    - While the mouse is held, the left and right keyboard keys can be used to change the analysis being displayed, up or down.  Moving the mouse resets any bin offset introduced this way.  This can be used to get to a specific bin in cases where the mouse tracking resolution is larger than the bin width (which can happen at higher frequencies).
 
 _Polyphony:_ Monophonic, with two exceptions:
   - If an input is polyphonic, its channels are summed, and the spectra of the summed signal is displayed.

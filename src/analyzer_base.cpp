@@ -366,6 +366,7 @@ void AnalyzerDisplay::onButton(const event::Button& e) {
 	}
 	e.consume(this);
 	_freezeMouse = e.pos;
+	_freezeLastBinI = -1;
 
 	if (_freezeBufs) {
 		delete[] _freezeBufs;
@@ -390,6 +391,9 @@ void AnalyzerDisplay::onDragMove(const event::DragMove& e) {
 	_freezeMouse.x += e.mouseDelta.x / zoom;
 	_freezeMouse.y += e.mouseDelta.y / zoom;
 	_freezeDraw = _freezeMouse.x > _insetLeft && _freezeMouse.x < _size.x - _insetRight && _freezeMouse.y > _insetTop && _freezeMouse.y < _size.y - _insetBottom;
+	if (e.mouseDelta.x != 0.0f) {
+		_freezeNudgeBin = 0;
+	}
 }
 
 void AnalyzerDisplay::onDragEnd(const event::DragEnd& e) {
@@ -398,6 +402,22 @@ void AnalyzerDisplay::onDragEnd(const event::DragEnd& e) {
 	if (_freezeBufs) {
 		delete[] _freezeBufs;
 		_freezeBufs = NULL;
+	}
+}
+
+void AnalyzerDisplay::onHoverKey(const event::HoverKey &e) {
+	if (e.key == GLFW_KEY_LEFT) {
+		e.consume(this);
+		if (_freezeLastBinI > 0 && (e.action == GLFW_PRESS || e.action == GLFW_REPEAT)) {
+			_freezeNudgeBin--;
+		}
+	}
+	else if (e.key == GLFW_KEY_RIGHT) {
+		e.consume(this);
+		int binsN = _module->_core._size / _module->_core._binAverageN;
+		if (_freezeLastBinI < binsN - 1 && (e.action == GLFW_PRESS || e.action == GLFW_REPEAT)) {
+			_freezeNudgeBin++;
+		}
 	}
 }
 
@@ -469,6 +489,7 @@ void AnalyzerDisplay::draw(const DrawArgs& args) {
 		float freezeHighHz = 0.0f;
 		if (_freezeDraw) {
 			freezeValues(rangeMinHz, rangeMaxHz, freezeBinI, freezeLowHz, freezeHighHz);
+			_freezeLastBinI = freezeBinI;
 			drawFreezeUnder(args, freezeLowHz, freezeHighHz, rangeMinHz, rangeMaxHz, strokeWidth);
 		}
 
@@ -823,6 +844,7 @@ void AnalyzerDisplay::freezeValues(float rangeMinHz, float rangeMaxHz, int& binI
 	mouseHz *= rangeMaxHz - rangeMinHz;
 	mouseHz += rangeMinHz;
 	binI = mouseHz / binHz;
+	binI = std::min(binsN - 1, std::max(0, binI + _freezeNudgeBin));
 	lowHz = binI * binHz;
 	highHz = (binI + 1) * binHz;
 }
