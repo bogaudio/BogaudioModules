@@ -95,7 +95,7 @@ struct SwitchMatrixModule : MatrixModule {
 		NO_INVERTING
 	};
 
-	Inverting _inverting = PARAM_INVERTING;
+	Inverting _inverting = NO_INVERTING;
 	bool _rowExclusive = false;
 	bool _columnExclusive = false;
 	std::vector<ParamQuantity*> _switchParamQuantities;

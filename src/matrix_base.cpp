@@ -361,22 +361,22 @@ void SwitchMatrixModuleWidget::contextMenu(Menu* menu) {
 	MatrixModuleWidget::contextMenu(menu);
 
 	OptionsMenuItem* i = new OptionsMenuItem("Inverting");
+	i->addItem(OptionMenuItem("Disabled", [m]() { return m->_inverting == SwitchMatrixModule::NO_INVERTING; }, [m]() { m->setInverting(SwitchMatrixModule::NO_INVERTING); }));
 	i->addItem(OptionMenuItem("By param entry (right-click)", [m]() { return m->_inverting == SwitchMatrixModule::PARAM_INVERTING; }, [m]() { m->setInverting(SwitchMatrixModule::PARAM_INVERTING); }));
 	i->addItem(OptionMenuItem("On second click", [m]() { return m->_inverting == SwitchMatrixModule::CLICK_INVERTING; }, [m]() { m->setInverting(SwitchMatrixModule::CLICK_INVERTING); }));
-	i->addItem(OptionMenuItem("Disabled", [m]() { return m->_inverting == SwitchMatrixModule::NO_INVERTING; }, [m]() { m->setInverting(SwitchMatrixModule::NO_INVERTING); }));
 	OptionsMenuItem::addToMenu(i, menu);
 
 	if (m->_ins > 1) {
 		std::string label("Exclusive switching");
 		if (m->_outs > 1) {
-			label += " by row";
+			label += " by rows";
 		}
 		menu->addChild(new OptionMenuItem(label.c_str(), [m]() { return m->_columnExclusive; }, [m]() { m->setColumnExclusive(!m->_columnExclusive); }));
 	}
 	if (m->_outs > 1) {
 		std::string label("Exclusive switching");
 		if (m->_ins > 1) {
-			label += " by column";
+			label += " by columns";
 		}
 		menu->addChild(new OptionMenuItem(label.c_str(), [m]() { return m->_rowExclusive; }, [m]() { m->setRowExclusive(!m->_rowExclusive); }));
 	}

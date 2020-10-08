@@ -693,9 +693,9 @@ Identical to MATRIX44, but with switches instead of knobs.  All switches default
 Note that you can pass attenuated values, by use of Rack's arbitrary parameter-entry feature: right-click a switch, and set its value from -100 to 100% (fractional percentages are allowed).  If inverting is disabled, as below, the entry is from 0 to 100%.
 
 The signal inverting behavior may be set with the "Inverting" context menu options:
-  - "By param entry" allows negative scale values to be set for a switch by the parameter-entry method, but clicks on a switch will just toggle between on and off.  This is the default.
-  - "On second click" causes a click on a non-inverting but enabled switch to change to inverting; anotehr click turns it off.
-  - "None" disables inverting entirely.  This option is handy if you want to map MIDI controller buttons/pads to switches.
+  - "Disabled" disables inverting entirely.  This option is the default.  It is best if you want to map MIDI controller buttons/pads to switches.
+  - "By param entry" allows negative scale values to be set for a switch by the parameter-entry method, but clicks on a switch will just toggle between on and off.
+  - "On second click" causes a click on a non-inverting but enabled switch to change to inverting; another click turns it off.
 
 Option "Average" sets the output to be the average of its inputs.  The divisor for the average is the number of inputs in use; for example, if three inputs are connected, each output will be the sum of those inputs, scaled by the corresponding switch values, and divided by three.
 
