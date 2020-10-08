@@ -367,16 +367,16 @@ void SwitchMatrixModuleWidget::contextMenu(Menu* menu) {
 	OptionsMenuItem::addToMenu(i, menu);
 
 	if (m->_ins > 1) {
-		std::string label("Exclusive");
+		std::string label("Exclusive switching");
 		if (m->_outs > 1) {
-			label += " by rows";
+			label += " by row";
 		}
 		menu->addChild(new OptionMenuItem(label.c_str(), [m]() { return m->_columnExclusive; }, [m]() { m->setColumnExclusive(!m->_columnExclusive); }));
 	}
 	if (m->_outs > 1) {
-		std::string label("Exclusive");
+		std::string label("Exclusive switching");
 		if (m->_ins > 1) {
-			label += " by columns";
+			label += " by column";
 		}
 		menu->addChild(new OptionMenuItem(label.c_str(), [m]() { return m->_rowExclusive; }, [m]() { m->setRowExclusive(!m->_rowExclusive); }));
 	}

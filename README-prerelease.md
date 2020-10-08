@@ -674,7 +674,7 @@ An eight input, one output version of <a href="#switch44">SWITCH44</a>, below.
 
 SWITCH81 is related to <a href="#mumix">MUMIX</a>, with the difference that a switch must be turned on to pass an input to the output, where on MUMIX the switches are mutes (they pass by default).  Also, this module has options for attenuating and inverting the inputs, as on SWITCH44.
 
-If the option "Exclusive" is enabled, on the context menu, then only one switch may be active at once.
+If the option "Exclusive switching" is enabled, on the context menu, then only one switch may be active at once (only one input will be routed to the output).
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, as on SWITCH44.
 
@@ -682,7 +682,7 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, as on SWITCH44.
 
 A one input, eight output version of <a href="#switch44">SWITCH44</a>, below.
 
-If the option "Exclusive" is enabled, on the context menu, then only one switch may be active at once.
+If the option "Exclusive switching" is enabled, on the context menu, then only one switch may be active at once (the input is only routed to one of the outputs).
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, as on SWITCH44.
 
@@ -699,7 +699,7 @@ The signal inverting behavior may be set with the "Inverting" context menu optio
 
 Option "Average" sets the output to be the average of its inputs.  The divisor for the average is the number of inputs in use; for example, if three inputs are connected, each output will be the sum of those inputs, scaled by the corresponding switch values, and divided by three.
 
-Two other options, "Exclusive by rows" and "Exclusive by columns", if enabled, allow only one switch to be non-zero in a row, or column, respectively.  Both may be on at once.  (These options do not work well with MIDI mapping via Rack's MIDI-MAP module; this is a known issue for which there is no good solution; but see the discussion [here](https://github.com/bogaudio/BogaudioModules/issues/112) for a potential workaround.  The same problem may apply to other parameter-mapping methods.)
+Two other options, "Exclusive switching by row" and "Exclusive switching by column", if enabled, allow only one switch to be enabled in a row, or column, respectively.  Both options may be enabled at once.  (These options do not work well with MIDI mapping via Rack's MIDI-MAP module; this is a known issue for which there is no good solution; but see the discussion [here](https://github.com/bogaudio/BogaudioModules/issues/112) for a potential workaround.  The same problem may apply to other parameter-mapping methods.)
 
 Every switch applies a bit of slew limitation when it changes values, as an anti-popping measure.
 
