@@ -5,6 +5,7 @@ void Matrix44::elementsChanged() {
 	// base-class caller holds lock on _elements.
 	Input** cvs = NULL;
 	Param** mutes = NULL;
+	bool* soloByColumns = NULL;
 	if (_elements.size() > 1) {
 		auto e = _elements[1];
 		assert(e);
@@ -14,9 +15,13 @@ void Matrix44::elementsChanged() {
 		if (e->mutes) {
 			mutes = e->mutes;
 		}
+		if (e->soloByColumns) {
+			soloByColumns = e->soloByColumns;
+		}
 	}
 	setCVInputs(cvs);
 	setMuteParams(mutes);
+	setSoloByColumns(soloByColumns);
 }
 
 void Matrix44::processAlways(const ProcessArgs& args) {

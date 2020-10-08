@@ -71,11 +71,20 @@ void MatrixModule::modulate() {
 	MatrixBaseModule::modulate();
 
 	bool solo = false;
+	bool soloColumn[maxN] {};
 	if (_muteParams) {
-		for (int i = 0, n = _ins * _outs; i < n; ++i) {
-			if (_muteParams[i]->getValue() > 1.5f) {
-				solo = true;
-				break;
+		bool soloByColumns = false;
+		if (_soloByColumns) {
+			soloByColumns = *_soloByColumns;
+		}
+
+		for (int i = 0; i < _outs; ++i) {
+			for (int j = 0; j < _ins; ++j) {
+				if (_muteParams[i * _ins + j]->getValue() > 1.5f) {
+					solo = !soloByColumns;
+					soloColumn[i] = soloByColumns;
+					break;
+				}
 			}
 		}
 	}
@@ -91,7 +100,7 @@ void MatrixModule::modulate() {
 			int ii = j * _ins + i;
 			float v = params[_firstParamID + ii].getValue();
 			if (_muteParams) {
-				bool muted = solo ? _muteParams[ii]->getValue() < 2.0f : _muteParams[ii]->getValue() > 0.5f;
+				bool muted = (solo || soloColumn[j]) ? _muteParams[ii]->getValue() < 2.0f : _muteParams[ii]->getValue() > 0.5f;
 				v *= !muted;
 			}
 			_paramValues[ii] = _sls[ii].next(v);
@@ -380,4 +389,26 @@ void SwitchMatrixModuleWidget::contextMenu(Menu* menu) {
 		}
 		menu->addChild(new OptionMenuItem(label.c_str(), [m]() { return m->_rowExclusive; }, [m]() { m->setRowExclusive(!m->_rowExclusive); }));
 	}
+}
+
+
+#define SOLO_BY_COLUMNS "solo_by_columns"
+
+json_t* MutesMatrixExpanderModule::toJson(json_t* root) {
+	json_object_set_new(root, SOLO_BY_COLUMNS, json_boolean(_soloByColumns));
+	return root;
+}
+
+void MutesMatrixExpanderModule::fromJson(json_t* root) {
+	json_t* sbc = json_object_get(root, SOLO_BY_COLUMNS);
+	if (sbc) {
+		_soloByColumns = json_is_true(sbc);
+	}
+}
+
+
+void MutesMatrixExpanderModuleWidget::contextMenu(Menu* menu) {
+	auto m = dynamic_cast<MutesMatrixExpanderModule*>(module);
+	assert(m);
+	menu->addChild(new BoolOptionMenuItem("Solo mutes by column", [m]() { return &m->_soloByColumns; }));
 }

@@ -4,7 +4,7 @@
 
 namespace bogaudio {
 
-typedef ChainableExpanderModule<Matrix44ExpanderMessage, Matrix44Element, 1, BGModule> Matrix44CvmBase;
+typedef ChainableExpanderModule<Matrix44ExpanderMessage, Matrix44Element, 1, MutesMatrixExpanderModule> Matrix44CvmBase;
 
 struct Matrix44Cvm : Matrix44CvmBase {
 	enum ParamsIds {
@@ -79,7 +79,7 @@ struct Matrix44Cvm : Matrix44CvmBase {
 			_mutes[i] = &params[MUTE11_PARAM + i];
 			_cvs[i] = &inputs[CV11_INPUT + i];
 		}
-		setLocalElements({new Matrix44Element(_mutes, _cvs)});
+		setLocalElements({new Matrix44Element(_mutes, _cvs, &_soloByColumns)});
 		setBaseModelPredicate([](Model* m) { return m == modelMatrix44; });
 	}
 	virtual ~Matrix44Cvm() {

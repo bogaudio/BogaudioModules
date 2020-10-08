@@ -646,6 +646,8 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defin
 
 An expander for MATRIX44, adding CVs and mutes for each point in the mix matrix.  The CVs are bipolar (+/-5v), and each is attenuverted by its corresponding knob when in use.  The mute buttons will mute the corresponding mix point, overriding the knob and CV.  As on <a href="mix8">MIX8</a> and others, the mute buttons can be right-clicked to solo that mix point -- all others will be muted.  A subsequent click on a soloed button restores the previous state, and other muted buttons retake effect.
 
+If the context menu option "Solo mutes by column" is enabled, the solo feature applies within the columns of mutes, which is to say soloing a mix point will only affect the output for that mix point, rather than all outputs.
+
 MX44CVM must be positioned to the right of, and adjacent to, the MATRIX44 module it will expand.  See <a href="#expanders">notes on expanders</a>.
 
 #### <a name="matrix88"></a> MATRIX88
@@ -663,6 +665,8 @@ MX88CV must be positioned to the right of, and adjacent to, the MATRIX88 module 
 #### <a name="matrix88cvm"></a> MX88CVM
 
 An expander for MATRIX88, adding mutes for each point in the mix matrix. The mute buttons will mute the corresponding mix point, overriding the knob (and CV if a MX88CV is in use).  As on <a href="mix8">MIX8</a> and others, the mute buttons can be right-clicked to solo that mix point -- all others will be muted.  A subsequent click on a soloed button restores the previous state, and other muted buttons retake effect.
+
+If the context menu option "Solo mutes by column" is enabled, the solo feature applies within the columns of mutes, which is to say soloing a mix point will only affect the output for that mix point, rather than all outputs.
 
 MX88M must be positioned to the right of, and adjacent to, the MATRIX88 module it will expand, or a MX88CV module that is itself expanding a MATRIX88.  See <a href="#expanders">notes on expanders</a>.
 

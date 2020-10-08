@@ -19,7 +19,7 @@ void Matrix88M::processAlways(const ProcessArgs& args) {
 	}
 }
 
-struct Matrix88MWidget : BGModuleWidget {
+struct Matrix88MWidget : MutesMatrixExpanderModuleWidget {
 	static constexpr int hp = 20;
 
 	Matrix88MWidget(Matrix88M* module) {

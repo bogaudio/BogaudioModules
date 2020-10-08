@@ -167,7 +167,7 @@ struct Matrix88 : Matrix88Base {
 		configParam(MIX78_PARAM, -1.0f, 1.0f, 0.0f, "Mix 7H", "%", 0.0f, 100.0f);
 		configParam(MIX88_PARAM, -1.0f, 1.0f, 0.0f, "Mix 8H", "%", 0.0f, 100.0f);
 
-		setLocalElements({new Matrix88Element(NULL, NULL)});
+		setLocalElements({new Matrix88Element(NULL, NULL, NULL)});
 		registerBase();
 		setExpanderModelPredicate([](Model* m) { return m == modelMatrix88Cv || m == modelMatrix88M; });
 	}

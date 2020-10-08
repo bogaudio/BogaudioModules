@@ -91,7 +91,7 @@ struct Matrix88Cv : Matrix88CvBase {
 		for (int i = 0; i < 64; ++i) {
 			_cvs[i] = &inputs[CV11_INPUT + i];
 		}
-		setLocalElements({new Matrix88Element(NULL, _cvs)});
+		setLocalElements({new Matrix88Element(NULL, _cvs, NULL)});
 		setBaseModelPredicate([](Model* m) { return m == modelMatrix88 || m == modelMatrix88M; });
 		setExpanderModelPredicate([](Model* m) { return m == modelMatrix88M; });
 	}

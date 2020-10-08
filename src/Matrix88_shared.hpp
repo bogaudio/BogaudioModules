@@ -15,13 +15,16 @@ typedef ChainableExpanderMessage Matrix88ExpanderMessage;
 struct Matrix88Element {
 	Param** mutes;
 	Input** cvs;
+	bool* soloByColumns;
 
 	Matrix88Element(
 		Param** mutes,
-		Input** cvs
+		Input** cvs,
+		bool* soloByColumns
 	)
 	: mutes(mutes)
 	, cvs(cvs)
+	, soloByColumns(soloByColumns)
 	{}
 };
 

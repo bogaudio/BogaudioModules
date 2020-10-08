@@ -5,6 +5,7 @@ void Matrix88::elementsChanged() {
 	// base-class caller holds lock on _elements.
 	Input** cvs = NULL;
 	Param** mutes = NULL;
+	bool* soloByColumns = NULL;
 	for (int i = 1, n = std::min(3, (int)_elements.size()); i < n; ++i) {
 		auto e = _elements[i];
 		assert(e);
@@ -14,9 +15,13 @@ void Matrix88::elementsChanged() {
 		if (e->mutes) {
 			mutes = e->mutes;
 		}
+		if (e->soloByColumns) {
+			soloByColumns = e->soloByColumns;
+		}
 	}
 	setCVInputs(cvs);
 	setMuteParams(mutes);
+	setSoloByColumns(soloByColumns);
 }
 
 void Matrix88::processAlways(const ProcessArgs& args) {

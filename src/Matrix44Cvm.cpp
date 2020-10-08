@@ -19,7 +19,7 @@ void Matrix44Cvm::processAlways(const ProcessArgs& args) {
 	}
 }
 
-struct Matrix44CvmWidget : BGModuleWidget {
+struct Matrix44CvmWidget : MutesMatrixExpanderModuleWidget {
 	static constexpr int hp = 10;
 
 	Matrix44CvmWidget(Matrix44Cvm* module) {

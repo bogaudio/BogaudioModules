@@ -4,7 +4,7 @@
 
 namespace bogaudio {
 
-typedef ChainableExpanderModule<Matrix88ExpanderMessage, Matrix88Element, 1, BGModule> Matrix88MBase;
+typedef ChainableExpanderModule<Matrix88ExpanderMessage, Matrix88Element, 1, MutesMatrixExpanderModule> Matrix88MBase;
 
 struct Matrix88M : Matrix88MBase {
 	enum ParamsIds {
@@ -163,7 +163,7 @@ struct Matrix88M : Matrix88MBase {
 		for (int i = 0; i < 64; ++i) {
 			_mutes[i] = &params[MUTE11_PARAM + i];
 		}
-		setLocalElements({new Matrix88Element(_mutes, NULL)});
+		setLocalElements({new Matrix88Element(_mutes, NULL, &_soloByColumns)});
 		setBaseModelPredicate([](Model* m) { return m == modelMatrix88 || m == modelMatrix88Cv; });
 		setExpanderModelPredicate([](Model* m) { return m == modelMatrix88Cv; });
 	}

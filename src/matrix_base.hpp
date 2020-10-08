@@ -35,8 +35,9 @@ struct MatrixModule : MatrixBaseModule {
 	int _firstParamID = 0;
 	int _firstInputID = 0;
 	int _firstOutputID = 0;
-	Input** _cvInputs = NULL; // owned elsewhere.
-	Param** _muteParams = NULL; // owned elsewhere.
+	Input** _cvInputs = NULL; // owned elsewhere
+	Param** _muteParams = NULL; // owned elsewhere
+	bool* _soloByColumns = NULL; // owned elsewhere
 
 	float* _paramValues = NULL;
 	bogaudio::dsp::SlewLimiter* _sls = NULL;
@@ -58,6 +59,7 @@ struct MatrixModule : MatrixBaseModule {
 	void configMatrixModule(int ins, int outs, int firstParamID, int firstInputID, int firstOutputID);
 	inline void setCVInputs(Input** cvs) { _cvInputs = cvs; }
 	inline void setMuteParams(Param** mutes) { _muteParams = mutes; }
+	inline void setSoloByColumns(bool* sbc) { _soloByColumns = sbc; }
 	void sampleRateChange() override;
 	int channels() override;
 	void modulate() override;
@@ -123,6 +125,17 @@ struct SwitchMatrixModuleWidget : MatrixModuleWidget {
 		addParam(s);
 	}
 
+	void contextMenu(Menu* menu) override;
+};
+
+struct MutesMatrixExpanderModule : BGModule {
+	bool _soloByColumns = false;
+
+	json_t* toJson(json_t* root) override;
+	void fromJson(json_t* root) override;
+};
+
+struct MutesMatrixExpanderModuleWidget : BGModuleWidget {
 	void contextMenu(Menu* menu) override;
 };
 
