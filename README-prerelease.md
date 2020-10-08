@@ -1003,6 +1003,8 @@ _Polyphony:_ Monophonic, with two exceptions:
 
 An eight-channel, 42HP version of ANALYZER, with edge-to-edge-screen design.  Options corresponding to ANALYZER's panel controls are available on the context (right-click) menu.  An extra "Quality" setting, "Ultra+" is available; this uses an FFT size of 16384 (or 32768 if Rack's sample rate is 96khz or higher).
 
+**Note:** Most of the surface of ANALYZER-XL is its display, and clicking the mouse on the display will trigger the freeze function described in the notes on <a href="analyzer">ANALYZER</a>.  This may be confusing if you're trying to click and drag on the module to move it.  To move the module, click near the left edge, for example on the module's name.
+
 _Polyphony:_ Monophonic, but if an input is polyphonic, its channels are summed, and the spectra of the summed signal is displayed.
 
 #### <a name="ranalyzer"></a> RANALYZER
@@ -1026,6 +1028,8 @@ The R. DELAY (response delay) control allows sample-accurate alignment of the te
 The context-menu option "Trigger on load", if enabled, will auto-trigger the test cycle when the module loads or when the patch loads.  This has no effect if LOOP is enabled when the patch loads.
 
 The display's frequency and amplitude ranges and plot types (logarithmic vs linear) can be set to a few different values on the context menu.
+
+**Note:** Most of the surface of RANALYZER is its display, and clicking the mouse on the display will trigger the freeze function described in the notes on <a href="analyzer">ANALYZER</a>.  This may be confusing if you're trying to click and drag on the module to move it.  To move the module, click near the left edge, for example on the module's name.
 
 _Polyphony:_ Monophonic.
 
