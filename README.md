@@ -140,6 +140,18 @@ A sine-wave oscillator and simple synth voice designed to allow patching up the 
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
 
+#### <a name="chirp"></a> CHIRP
+
+Part VCO and part sound effect, CHIRP produces swept sine waves.  On each cycle, the output sine wave sweeps in frequency from FREQ1 to FREQ2, over the course of TIME.  If LOOP is enabled, the cycle repeats, otherwise it may be triggered manually with the TRIGGER button, or by CV at the TRIG input.  A pulse is emitted at output EOC each time a cycle ends.
+
+TIME takes a unipolar CV (0-10V), which is attenuated by the knob if in use.  FREQ1 and FREQ2 take bipolar (+/-5V) 1V/octave inputs at ports V/O1 and V/O2, which CVs are added to the corresponding knobs.
+
+The frequency sweep can be linear in time, or exponential, under the control of the EXP toggle.
+
+The sweep is upwards in frequency if FREQ1 is less than FREQ2, and downwards otherwise.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/O1 input.
+
 
 ### <a name="lfos"></a> LFOs
 
@@ -197,7 +209,7 @@ The R/BW CV input expects a unipolar 0-10V input; when in use this input is atte
 SLOPE modulates the rate of transition between the pass and stop bands in each filter mode.  (For example, in lowpass mode, a higher slope means a faster/sharper change, at the cutoff frequency, from frequency passing through the filter to being suppressed by the filter.)  This ranges from a slow (at 1) to fast (at 12) transition.  It may be modulated by the SLP CV input, which expects 0-10V, and which is attenuated by the SLOPE knob.
 
 The context menu option "Bandwidth mode" controls how the bandwidth is calculated for a given center frequency and RES/BW setting:
-  - "Pitched" (the default): the upper and lower frequencies of the band are equally distant from the center frequency in pitch (octaves and semitones), with a maxmimum of 2 octaves.
+  - "Pitched" (the default): the upper and lower frequencies of the band are equally distant from the center frequency in pitch (octaves and semitones), with a maximum of 2 octaves.
   - "Linear": the upper and lower frequencies are equally distant in HZ from the center frequency, with a maximum of 2000HZ.
 
 Note: due to limitations in the filter's implementation, it has a couple workarounds in place to avoid problems:
@@ -243,6 +255,57 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the I
 
 A stereo version of EQ.  The left and right inputs are processed by separate filters, but the filter parameters are set by the shared three knobs.
 
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the L input.
+
+#### <a name="lpg"></a> LPG
+
+![Filters screenshot](doc/www/lpgs.png)
+
+LPG is a "low-pass gate", where an envelope generator, low-pass filter (LPF) and amplifier (VCA) are combined into a single sound-shaping unit.  It lends itself to percussive or plucked sounds, though longer notes are possible.
+
+LPG's envelope is a version of <a href="#vish">VISH</a>, with simplified controls.  On LPG, the single RESPONSE control (taking a unipolar 0-10V CV at RESP) sets the length and basic shape of the envelope (turning up RESPONSE is equivalent to turning up each of MIN GATE, RISE time and FALL time, proportionally, on VISH).  Enabling LONG rescales the knob for longer envelopes.  The RISE and FALL knobs set the shapes (curves) of the rising and falling envelope segments, as on VISH.  The envelope is triggered whenever LPG receives a rising edge at the TRIG input.
+
+The signal received at IN is processed by an LPF and VCA in series before being sent to OUT.  Each has a BIAS knob, which sets the base level of the cutoff of the LPF, and level of the VCA, when the envelope is off.  The ENV attenuverters control how the envelope affects the LPF and VCA respectively.  Each bias knob also has a CV input, marked LPF and VCA, expecting unipolar (0-10V) signals.
+
+If LINEAR is enabled, the VCA has a linear-in-amplitude response to its BIAS, CV and the envelope; otherwise it has a linear-in-decibels response.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the TRIG input.
+
+#### <a name="llpg"></a> LLPG
+
+LLPG is a compact, simplified version of <a href="#LPG">LPG</a>, where:
+  - There is only one shape knob, which affects both the rise and fall shapes simultaneously.
+  - There are no ENV knobs; the envelope applies in full to both the filter and VCA.
+  - There are no CV inputs, and no linear VCA mode.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the TRIG input.
+
+#### <a name="megagate"></a> MEGAGATE
+
+MEGAGATE generalizes the idea of a low-pass gate, not least by adding a high-pass filter (HPF).  It is also stereo, optionally velocity-sensitive, and has full CV inputs over the filter and VCA biases and envelope routing.  
+
+The envelope circuit is the complete "vactrol-ish" envelope available independently as <a href="#vish">VISH</a> -- see VISH for a description of the envelope controls and CVs on left side of MEGAGATE, aside from VELO and TILT, which further process the envelope before it is sent on to control the filters and VCA.
+
+The VELO input provides control of the level of the envelope before it is processed by TILT.  It is designed to be used to implement velocity from a MIDI controller, but may be used as a general CV.  It expects a 0-10V input voltage: when this 0, the envelope gain is -6dB (it is cut in half); when VELO is 10V the output is unchanged (a 0dB gain). Intermediate values will set the output gain linearly to values between -6dB and 0dB.
+
+The velocity-zero gain of -6dB can be set to other values on the context menu, to make the velocity response stronger (-12dB, -24dB) or weaker (-3dB).  It can also be set to -60dB, such that a 0V velocity input will completely cut the output -- allowing the input to be used as a full-range, though inverted, CV.
+
+TILT is essentially a panner for envelope, turning it into left and right channel envelopes.  Turning the knob towards L will reduce the gain of the right channel envelope, or vice versa.  TILT accepts a bipolar (+/-5V) CV, which attenuated by the knob when in use.
+
+The left and right signal inputs are processed by the LPF, HPF and VCA sections before being sent to their corresponding outputs.  There are independents sets of filters and VCAs for the left and right channels, each set controlled by the same knobs and CVs, but receiving different envelopes as set by TILT.
+
+By default the LPF and HPF filters process the input (whether left or right) in parallel, and their outputs are mixed together to send to the VCA.  If FILTER SER is enabled, the filters are processed serially, with the LPF's output being fed to the HPF, and HPF to the VCA.
+
+Each of the LPF, HPF and VCA sections has a BIAS knob, which sets the base cutoff (for the filters) or level (for the VCA).  Each bias control accepts a bipolar (+/-5V) CV, and each CV has an attenuverter.  Each CV, subject to its attenuverter, is added to its knob's position.
+
+Each section also has an ENV setting, controlling how much of the envelope is applied to the final cutoff or level setting.  Again, each ENV accepts a bipolar CV, with attenuversion, and the CV is added to the knob.
+
+The final cutoff and level settings are determined by scaling (multiplying) the envelope by the ENV value (including CV), and adding that to the BIAS value (including CV).  In no case can the envelope and CVs drive a parameter outside of its knob range.
+
+If LIN VCA is enabled, the VCA has a linear-in-amplitude response to its BIAS, CV and the evelope; otherwise it has a linear-in-decibels response.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the GATE input.
+
 ![Filters screenshot](doc/www/parametric_eqs.png)
 
 #### <a name="peq"></a> PEQ
@@ -263,7 +326,7 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the I
 
 A six channel parametric EQ.  It generally works as PEQ does, except:
   - The global FCV control has a knob, which becomes an attenuverter if a CV is provided.
-  - There is a global BW paramter with CV, rather than per-channel bandwidth controls.
+  - There is a global BW parameter with CV, rather than per-channel bandwidth controls.
   - The "FCV RNG" option controls the scaling of the frequency CV inputs; if set to OCTV, the full CV range will alter the band frequencies up to an octave in either direction; if set to FULL, the CV can run the frequencies over the full range, as on PEQ.
   - On the context (right-click) menu, there is an option "Exclude direct-output bands from mix"; if this is enabled, any band that has its direct output in use (if something is patched to its output) does not get its output mixed into the main output.  Usually, the main output includes all bands.
 
@@ -359,13 +422,24 @@ By default, the attack, decay and release envelope segments have an exponential 
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the GATE input.
 
-#### <a name="follow"></a> FOLLOW
+#### <a name="vish"></a> VISH
 
-An envelope follower (a utility that converts its input to a CV proportional to the level of the input's amplitude).  The DAMP knob and CV (0-10V) affect how quickly the output responds to changes in the input -- higher DAMP values effectively slow down and smooth out the response.
+VISH ("vactrol-ish") is an envelope generator designed to simulate the voltage shapes produced by the [vactrol](https://en.wikipedia.org/wiki/Opto-isolator) control circuits of hardware LPGs (low pass gates).  It lends itself to percussive envelopes, though long envelopes are possible.  It is also used as the envelope circuit in <a href="#megagate">MEGAGATE</a>, and in simplified form in <a href="#lpg">LPG</a> and <a href="#llpg">LLPG</a>.
 
-The GAIN knob and CV (+/-5V) can attenuate or amplify the output.  Turning the knob counter-clockwise form center will cut the output up to -36dB; turning it clockwise will amplify it up to +12dB.
+It operates by generating an internal 10V square envelope, which is fed through a slew limiter.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
+When a trigger is received at the GATE input, or if any rising edge is received and GT TO TRIG is enabled, the internal envelop triggers and runs for the time set by the MIN GATE knob.  This parameter may be controlled by CV at the MIN input, expecting a unipolar (0-10V) input, which is scaled by the knob position.
+
+When GT TO TRIG is not enabled, then a rising edge at GATE will trigger the internal envelope in the same way, but when the envelope completes, whatever voltage is at GATE is fed to the slew limiter.  This can be used several ways:
+  1. If the input is a full 10V, the output will sustain for as long as the GATE input remains high, with a minimum time set by MIN GATE.
+  2. If the input is less than 10V, there is an ADSR-like effect, where the output, subject to the slew, will go to 10V for the duration of MIN GATE, then fall to whatever the input is.
+  3. If MIN GATE is zero, the input is simply fed to the slew limiter as-is.
+
+The slew limiter is controlled by the RISE and FALL controls, which behave exactly like they do on the <a href="#slew">SLEW</a> module.  The time knobs control how much the rise and fall of the internal envelope are slewed, while the shape knob control the shapes of each segment.  The time knobs have unipolar (0-10V) CVs, while the shapes can be modulated by the single SHAPE CV input, which takes a bipolar CV (+/-5V), which is added to the value of the rise and fall shape knobs.  Context-menu settings allow the CV to be disabled, or applied inverted, for rise and fall separately.
+
+If the TIMES 10X option is enabled, the values of the rise and fall times, and MIN GATE, subject to their CVs, are multiplied by 10.  Thus fall and MIN GATE can go to a maximum of 10 seconds, and rise to 3 seconds.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the GATE input.
 
 #### <a name="dgate"></a> DGATE
 
@@ -379,7 +453,7 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the T
 
 RGATE is a "clock-relative" gate generator, which outputs gates that have a length that is a ratio of the period of the incoming clock.  It can also be used as a clock divider/multiplier.
 
-The LENGTH control sets the length of the output gate relative to the incoming clock period (time between two clock pulses).  The length may be varied from a minimum of 1ms to the full clock period, at maximum.  With the length at maximum, the output gate will simply stay high.  A LEN unipolor (0-10V) CV may be supplied, which if in use is attenuated by the LENGTH knob.
+The LENGTH control sets the length of the output gate relative to the incoming clock period (time between two clock pulses).  The length may be varied from a minimum of 1ms to the full clock period, at maximum.  With the length at maximum, the output gate will simply stay high.  A LEN unipolar (0-10V) CV may be supplied, which if in use is attenuated by the LENGTH knob.
 
 CLK DIV and CLK MUL alter the frequency and length of gate outputs.  Increasing CLK DIV will set the number of clock pulses the clock period extends over, while CLK MUL will set how many gates will be emitted in that period.  For example, setting CLK DIV to 3 and CLK MUL to 2 yield an output of 2 gates for every three incoming clock pulses, with a maximum gate length of half of 3 times a single clock period.
 
@@ -407,6 +481,15 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the C
 A trigger-to-gate utility, comparator and rising/falling edge detector.  RISE and FALL set voltage levels: when the input goes above RISE, the module switches to "high" state and outputs a voltage at the HIGH output.  HOLD sets a minimum time that the module stays in the high state; this can be used to avoid jitter on the output if using high-frequency inputs.  1ms trigger pulses are output at RISE and FALL on the corresponding changes (note that if you switch the module state at audio rates, these will essentially always be high).
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
+
+#### <a name="follow"></a> FOLLOW
+
+An envelope follower (a utility that converts its input to a CV proportional to the level of the input's amplitude).  The DAMP knob and CV (0-10V) affect how quickly the output responds to changes in the input -- higher DAMP values effectively slow down and smooth out the response.
+
+The GAIN knob and CV (+/-5V) can attenuate or amplify the output.  Turning the knob counter-clockwise form center will cut the output up to -36dB; turning it clockwise will amplify it up to +12dB.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
+
 
 ### <a name="mixers"></a> Mixers, Panners and VCAs
 
@@ -470,6 +553,37 @@ A stereo version of MIX1.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the L input.
 
+#### <a name="umix"></a> UMIX
+
+A 3HP unity mixer, usable with audio or CV (e.g. to combine triggers).  Up to 8 inputs are summed to the output.  The output is limited to +/-12V (with clipping modes as below).
+
+The context (right-click) menu has a few options:
+ - "Input gain" allows the input gain to be reduced up to -12dB.
+ - "Output clipping" sets the manner of output clipping: "Soft" applies saturation or soft clipping, which is better for audio, and which is the default; "Hard" simply clips the output at +/-12V.  "Hard" is better for CVs, as this mode will achieve precise summing of CVs; otherwise the saturator will slightly affect (reduce) the sums at all levels.
+ - "Average" causes the module to average, rather than sum, its inputs.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by the first/topmost input.
+
+#### <a name="mumix"></a> MUMIX
+
+Essentially identical to UMIX, but with mute buttons for each input.
+
+If averaging mode is enabled, note that the divisor for the average is the count of how many inputs are connected.  For example, if three inputs are connected, and one is muted, the output will be the sum of the two unmuted channels, divided by three.
+
+See also <a href="switch81">SWITCH81</a>, which is similar to this, with options to attenuate or invert the inputs.
+
+_Polyphony:_ same as UMIX.
+
+#### <a name="mute8"></a> MUTE8
+
+MUTE8 provides 8 independent manual or CV-controlled mutes. Each channel is muted if its button is toggled on or if there is a positive voltage at its CV input.  Otherwise the input is passed to the output.
+
+As with MIX4 and MIX8, a right-click on a mute button will solo that channel (pass that channel through while muting all others).  Right or left click clears this.
+
+If context menu option "Latching CV triggers" is enabled, triggers on the CV inputs toggle muting on and off.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, where each of the 8 channels may be independently polyphonic, as defined by the cable at the channel's input.
+
 #### <a name="vcm"></a> VCM
 
 A four-channel mixer in 10HP.
@@ -481,16 +595,6 @@ Features:
 By default, the output is hard clipped at +/-12V (this is a standard in Rack).  A context menu option allows this limit to be disabled.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by the first IN input.
-
-#### <a name="mute8"></a> MUTE8
-
-MUTE8 provides 8 independent manual or CV-controlled mutes. Each channel is muted if its button is toggled on or if there is a positive voltage at its CV input.  Otherwise the input is passed to the output.
-
-As with MIX4 and MIX8, a right-click on a mute button will solo that channel (pass that channel through while muting all others).  Right or left click clears this.
-
-If context menu option "Latching CV triggers" is enabled, triggers on the CV inputs toggle muting on and off.
-
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, where each of the 8 channels may be independently polyphonic, as defined by the cable at the channel's input.
 
 #### <a name="pan"></a> PAN
 
@@ -511,59 +615,100 @@ Linear mode (the LIN button) makes the level attenuation response of MIX linear 
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the A input.
 
-#### <a name="umix"></a> UMIX
+#### <a name="matrix81"></a> MATRIX81
 
 ![Mixers screenshot](doc/www/mixers3.png)
 
-A 3HP unity mixer, usable with audio or CV (e.g. to combine triggers).  Up to 8 inputs are summed to the output.  The output is limited to +/-12V (with clipping modes as below).
+An eight input, one output version of <a href="#matrix44">MATRIX44</a>, below.
 
-The context (right-click) menu has a few options:
- - "Input gain" allows the input gain to be reduced up to -12dB.
- - "Output clipping" sets the manner of output clipping: "Soft" applies saturation or soft clipping, which is better for audio, and which is the default; "Hard" simply clips the output at +/-12V.  "Hard" is better for CVs, as this mode will achieve precise summing of CVs; otherwise the saturator will slightly affect (reduce) the sums at all levels.
- - "Average" causes the module to average, rather than sum, its inputs.
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, as on MATRIX44.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by the first/topmost input.
+#### <a name="matrix18"></a> MATRIX18
 
-#### <a name="mumix"></a> MUMIX
+A one input, eight output version of <a href="#matrix44">MATRIX44</a>, below.
 
-Essentially identical to UMIX, but with mute buttons for each input, and with no averaging mode.
-
-_Polyphony:_ same as UMIX.
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, as on MATRIX44.
 
 #### <a name="matrix44"></a> MATRIX44
 
-An 4x4 channel matrix mixer.  Each input can be routed with an independent level to each of the eight output mixes.
+A 4x4 channel matrix mixer.  Each input can be routed with an independent level to each of the eight output mixes.  MATRIX44 is expandable with <a href="matrix44cvm">MX44CVM</a>.
 
-*Note that the matrix knobs are attenuvertors, and default to zero.*  That means there will be no output, regardless of the inputs, until some knobs are changed to non-zero values.
+*Note that the matrix knobs are attenuverters, and default to zero.*  That means there will be no output, regardless of the inputs, until some knobs are changed to non-zero values.
 
 Saturation (soft clipping) limits each output to +/-12V.  This can be changed to a hard clip at +/-12V on the context menu ("Output clipping") -- as described on UMIX, this is mode is better if you need to precisely sum CVs.
 
 Another context menu option allows the input gains to be reduced by up to 12db.
 
+Option "Average" sets the output to be the average of its inputs.  The divisor for the average is the number of inputs in use; for example, if three inputs are connected, each output will be the sum of those inputs, scaled by the corresponding knobs, and divided by three.
+
 The knobs visually indicate their values with green/orange colors.  This can be disabled on the context menu.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by input 1.
 
+#### <a name="matrix44cvm"></a> MX44CVM
+
+An expander for MATRIX44, adding CVs and mutes for each point in the mix matrix.  The CVs are bipolar (+/-5v), and each is attenuverted by its corresponding knob when in use.  The mute buttons will mute the corresponding mix point, overriding the knob and CV.  As on <a href="mix8">MIX8</a> and others, the mute buttons can be right-clicked to solo that mix point -- all others will be muted.  A subsequent click on a soloed button restores the previous state, and other muted buttons retake effect.
+
+If the context menu option "Solo mutes by column" is enabled, the solo feature applies within the columns of mutes, which is to say soloing a mix point will only affect the output for that mix point, rather than all outputs.
+
+MX44CVM must be positioned to the right of, and adjacent to, the MATRIX44 module it will expand.  See <a href="#expanders">notes on expanders</a>.
+
 #### <a name="matrix88"></a> MATRIX88
 
-An 8x8 version of MATRIX44.
+![Mixers screenshot](doc/www/mixers4.png)
+
+An 8x8 version of MATRIX44.  It is expanable with <a href="matrix88cv">MX88CV</a> and <a href="matrix88m">MX88M</a>.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by the first/topmost input.
 
-#### <a name="switch44"></a> SWITCH44
+#### <a name="matrix88cv"></a> MX88CV
 
-![Mixers screenshot](doc/www/mixers4.png)
+An expander for MATRIX88, adding CVs for each point in the mix matrix.  The CVs are bipolar (+/-5v), and each is attenuverted by its corresponding knob when in use.
+
+MX88CV must be positioned to the right of, and adjacent to, the MATRIX88 module it will expand, or a MX88M module that is itself expanding a MATRIX88.  See <a href="#expanders">notes on expanders</a>.
+
+#### <a name="matrix88cvm"></a> MX88CVM
+
+An expander for MATRIX88, adding mutes for each point in the mix matrix. The mute buttons will mute the corresponding mix point, overriding the knob (and CV if a MX88CV is in use).  As on <a href="mix8">MIX8</a> and others, the mute buttons can be right-clicked to solo that mix point -- all others will be muted.  A subsequent click on a soloed button restores the previous state, and other muted buttons retake effect.
+
+If the context menu option "Solo mutes by column" is enabled, the solo feature applies within the columns of mutes, which is to say soloing a mix point will only affect the output for that mix point, rather than all outputs.
+
+MX88M must be positioned to the right of, and adjacent to, the MATRIX88 module it will expand, or a MX88CV module that is itself expanding a MATRIX88.  See <a href="#expanders">notes on expanders</a>.
+
+#### <a name="switch81"></a> SWITCH81
+
+![Mixers screenshot](doc/www/mixers5.png)
+
+An eight input, one output version of <a href="#switch44">SWITCH44</a>, below.
+
+SWITCH81 is related to <a href="#mumix">MUMIX</a>, with the difference that a switch must be turned on to pass an input to the output, where on MUMIX the switches are mutes (they pass by default).  Also, this module has options for attenuating and inverting the inputs, as on SWITCH44.
+
+If the option "Exclusive switching" is enabled, on the context menu, then only one switch may be active at once (only one input will be routed to the output).
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, as on SWITCH44.
+
+#### <a name="switch18"></a> SWITCH18
+
+A one input, eight output version of <a href="#switch44">SWITCH44</a>, below.
+
+If the option "Exclusive switching" is enabled, on the context menu, then only one switch may be active at once (the input is only routed to one of the outputs).
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, as on SWITCH44.
+
+#### <a name="switch44"></a> SWITCH44
 
 Identical to MATRIX44, but with switches instead of knobs.  All switches default to off, passing no signal.  Clicking a switch sets it to pass voltage with unity gain.  Another click sets the switch off (unless second-click inverting is on, as below).
 
 Note that you can pass attenuated values, by use of Rack's arbitrary parameter-entry feature: right-click a switch, and set its value from -100 to 100% (fractional percentages are allowed).  If inverting is disabled, as below, the entry is from 0 to 100%.
 
 The signal inverting behavior may be set with the "Inverting" context menu options:
-  - "By param entry" allows negative scale values to be set for a switch by the parameter-entry method, but clicks on a switch will just toggle between on and off.  This is the default.
-  - "On second click" causes a click on a non-inverting but enabled switch to change to inverting; anotehr click turns it off.
-  - "None" disables inverting entirely.  This option is handy if you want to map MIDI controller buttons/pads to switches.
+  - "Disabled" disables inverting entirely.  This option is the default.  It is best if you want to map MIDI controller buttons/pads to switches.
+  - "By param entry" allows negative scale values to be set for a switch by the parameter-entry method, but clicks on a switch will just toggle between on and off.
+  - "On second click" causes a click on a non-inverting but enabled switch to change to inverting; another click turns it off.
 
-Two other options, "Exclusive by rows" and "Exclusive by columns", if enabled, allow only one switch to be non-zero in a row, or column, respectively.  Both may be on at once.  (These options do not work well with MIDI mapping via Rack's MIDI-MAP module; this is a known issue for which there is no good solution; but see the discussion [here](https://github.com/bogaudio/BogaudioModules/issues/112) for a potential workaround.  The same problem may apply to other parameter-mapping methods.)
+Option "Average" sets the output to be the average of its inputs.  The divisor for the average is the number of inputs in use; for example, if three inputs are connected, each output will be the sum of those inputs, scaled by the corresponding switch values, and divided by three.
+
+Two other options, "Exclusive switching by row" and "Exclusive switching by column", if enabled, allow only one switch to be enabled in a row, or column, respectively.  Both options may be enabled at once.  (These options do not work well with MIDI mapping via Rack's MIDI-MAP module; this is a known issue for which there is no good solution; but see the discussion [here](https://github.com/bogaudio/BogaudioModules/issues/112) for a potential workaround.  The same problem may apply to other parameter-mapping methods.)
 
 Every switch applies a bit of slew limitation when it changes values, as an anti-popping measure.
 
@@ -577,7 +722,7 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defin
 
 #### <a name="switch1616"></a> SWITCH1616
 
-An 16x16 version of SWITCH44.
+A 16x16 version of SWITCH44.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by input 1.
 
@@ -606,13 +751,33 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the 
 
 ![Mixers screenshot](doc/www/dynamics.png)
 
+#### <a name="velo"></a> VELO
+
+A voltage-controlled amplifier with three CV inputs of three different types: a regular one, a bipolar one (good for tremolo), and one that is inverted and scaled (designed for implementing MIDI velocity, and the reason for the module's name).  
+
+The LEVEL knob and CV words as on <a href="#VCA">VCA</a>; the knob sets the base VCA level if the LEVEL input is not patched; if it is patched, it expects a unipolar (0-10V) signal, which sets the LEVEL up to the position of the knob (which is to say that the knob attenuates the CV).  The LEVEL input is the place to patch in an envelope.
+
+The CV input takes a bipolar (+/-5V) signal, subject to attenuversion by the smaller knob below the LEVEL knob.  The resulting value is scaled by whatever value was set by LEVEL (knob and CV) and then added to the LEVEL value (this coupling of CV to LEVEL is enabled is by default, but see below).  The CV input is a good place to patch in an LFO, to achieve tremolo.
+
+The VELO input, if in use, takes a unipolar (0-10V) signal, scales it according to the "V. R." (Velocity Range) knob, inverts it, and adds it to the value produced by the previous two knobs and CVs.  Thus, if the VELO input is 0V, whatever level the VCA would open to according to the values of the previous inputs is reduced by the number of decibels set by the V. R. knob.  When VELO is a full 10V, there is no reduction.  If V. R. is fully clockwise, a 0V VELO input will fully close the VCA.  The VELO input is designed to be patched to the VELO output of Rack's MIDI-CV module.
+
+The suggested patch inputs are meant as examples; of course any inputs can be used.
+
+The LIN toggle, if on, sets the VCA's to a linear-in-amplitude response; when off, the VCA's response to the controls and CVs is linear-in-decibles.
+
+The bipolar CV is optionally coupled to the LEVEL knob/input, but this coupling can be broken by disabling option "Level knob/CV scales bipolar CV" on the context menu.  When the option is enabled, the value of the bipolar CV is scaled by the value of LEVEL (knob and CV) before being added to LEVEL.  Otherwise, it is simply added to level.  In a patch with an envelope to LEVEL and an LFO to CV, having this option on means the LFO's effect will be proportional to the envelope, which is to say the LFO won't open the VCA when the envelope is off.
+
+Using the bipolar CV, it's possible to drive the VCA past unity gain, up to +12db (4x amplitude).  The module soft-clips at +/-12V, and driving the signal into the clipper will result in distortion.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the IN input.
+
 #### <a name="amrm"></a> AM/RM
 
 AM/RM is a ring- and amplitude-modulation effect and CV-controllable variable wave rectifier.
 
   - With the default knob settings, the unit is a proper ring modulator: the MOD (modulator) and CAR (carrier) inputs are multiplied and the resulting wave is sent to the output.  MOD is passed unchanged to the RECT output.
   - As RECTIFY goes from 0 to fully clockwise, the negative portion of the MOD input is progressively folded to positive, until at the full value the wave is fully rectified.  The modified input is output at RECT; the modified input is multiplied with the carrier input and sent to the output.
-  - The DRY/WET control mixes the otuput of the mod/carrier multiplication with the unmodified carrier input.
+  - The DRY/WET control mixes the output of the mod/carrier multiplication with the unmodified carrier input.
 
 The RECT inputs expects a bipolar (+/-5V) CV, which is added to the RECTIFY knob.  The D/W input works the same for the DRY/WET knob.
 
@@ -675,12 +840,14 @@ The comparator calculates the following:
 
 The outputs GT, LT and EQ follow the state:
   - If GT, the GT output is +5V, and -5V otherwise.
-  - If LT, the LT output is +5V, and -5V otherwise.
+  - If LT, the LT output is -5V, and +5V otherwise (which is inverted from what it should logically be; this makes the output interesting).
   - If EQ, the EQ output is +5V, and -5V otherwise.
 
 The MIX output combines the other outputs according to the GT MIX, EQ MIX and LT MIX knobs, which are simply attenuverters (rather than proper VCAs).  GT MIX and LT mix have bipolar CVs.
 
 The MIX output is also subject to the DRY/WET setting, where the dry signal is comprised of the A and B scaled inputs, each processed by the A DRY and B DRY VCAs.  DRY/WET has a bipolar CV.
+
+**Note:** this module is intended for audio-rate use, as a distortion effect; if you want a proper window comparator for use with CV, take a look at <a href="#cmp">CMP</a>.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the A input.
 
@@ -709,16 +876,16 @@ Each channel may also be have its output inverted with the INV button.
 
 The GATE input on the lower section is normalled to GATE in the top section (but a press on the top button does not trigger the lower section).
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the GATE input, independently on the top and bottom sections of the module.  The polyphony port can be changed to IN on the context menu (this applies to both top and bottom sections of the module).
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the GATE input in each section.  If the bottom GATE is patched, the two sections will independently take their channels from their respective GATE inputs; if only the top GATE is patched, the bottom section normals to the top input and both sections have the same number of channels.  The polyphony port can be changed to IN on the context menu (this change applies to both top and bottom sections of the module; IN does not normal to the bottom section, and both sections will set their channels independently, from whatever is patched to their own IN).
 
 #### <a name="walk2"></a> WALK2
 
 WALK2 provides two channels of chaotic output, where the output voltage moves as a random walk.  The two outputs are drawn as a trace, in X and Y, on the display.  It may also be configured as an X/Y controller.
 
 For each channel:
- - RATE (knob and cv) controls how sedately, or wildly, the CV moves around.  If CV is in use, it is attenuated by the knob.
- - OFFSET (knob and cv) adds or subtracts up to 5V from the base +/-5V output.  If the offset CV is in use, it is attenuverted by the knob.
- - SCALE (knob and cv) attenuates the output; if CV is in use, it is attenuated by the knob.
+ - RATE (knob and CV) controls how sedately, or wildly, the CV moves around.  If CV is in use, it is attenuated by the knob.
+ - OFFSET (knob and CV) adds or subtracts up to 5V from the base +/-5V output.  If the offset CV is in use, it is attenuverted by the knob.
+ - SCALE (knob and CV) attenuates the output; if CV is in use, it is attenuated by the knob.
 
 DIST outputs a third CV, ranging over 0-10V, derived from X and Y channel outputs.  
 
@@ -763,7 +930,7 @@ On the context (right-click) menu, if option "Reverse step on negative clock" is
 
 If option "Select on clock mode" is selected, then the select value (knob and CV) is checked and used to modify the active step only when a clock is received, rather than continuously.
 
-Option "Triggered select mode" changes how the SELECT feature works, replacing the continuous voltage selection with a second internal sequence that offsets (adds to) the primary sequential switch step.  In this mode, the SELECT input exepcts trigger pulses, which advance the secondary sequence, while the SELECT knob sets the length of the secondary sequence (and a trigger at RESET will reset it). Thus different clocks and step lengths can be used to create complex output step patterns. "Select on clock mode" has no effect if "Triggered select mode" is enabled.
+Option "Triggered select mode" changes how the SELECT feature works, replacing the continuous voltage selection with a second internal sequence that offsets (adds to) the primary sequential switch step.  In this mode, the SELECT input expects trigger pulses, which advance the secondary sequence, while the SELECT knob sets the length of the secondary sequence (and a trigger at RESET will reset it). Thus different clocks and step lengths can be used to create complex output step patterns. "Select on clock mode" has no effect if "Triggered select mode" is enabled.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the CLOCK input.  This can be set to the SELECT CV input on the context menu.
 
@@ -775,11 +942,19 @@ _Polyphony:_ Same as 8:1.
 
 #### <a name="addrseq"></a> ADDR-SEQ
 
-ADDR-SEQ is an 8-step sequencer where the step values are set by 8 knobs (with default output range of +/-10V).  It has the same clocked or voltage-addressed control circuit as 8:1 and 1:8.
+ADDR-SEQ is an 8-step sequencer where the step values are set by 8 knobs (with default output range of +/-10V).  It has the same clocked or voltage-addressed control circuit as 8:1 and 1:8.  It can be expanded to more steps, 8 at a time, with <a href="#addrseqx">ASX</a>.
 
 The output range of the knobs may be set on the context (right-click) menu to a variety of bipolar (e.g. +/-5V) and unipolar ranges (e.g. 0-5V).
 
 _Polyphony:_ Same as 8:1.
+
+#### <a name="addrseqx"></a> ASX
+
+ASX is a chainable expander for <a href="addrseq">ADDR-SEQ</a>, adding 8 steps to the base sequence.
+
+When ASXs are added to an ADDR-SEQ, ADDR-SEQ's STEPS and SELECT knobs (and select CV input) work over the total number of steps, including the expanders.  The knob dials will still read 1-8, but the knob will set the step length (or step selection) over the full count of steps.  The parameter tooltips, if enabled, will show the real values.
+
+Each ASX in a chain must be positioned to the right of, and adjacent to, the previous ASX in the chain, or the base ADDR-SEQ module.  See <a href="#expanders">notes on expanders</a>.
 
 ![Sequencers screenshot](doc/www/sequencers2.png)
 
@@ -808,6 +983,12 @@ Each PGMRX in a chain must be positioned to the right of, and ajacent to, the pr
 
 ![Analyzer screenshot](doc/www/visualizers.png)
 
+#### <a name="vu"></a> VU
+
+A stereo signal level visualizer/meter.  The L channel is sent to both displays if if nothing is patched to R.  Inputs to L and R are copied to the L and R outputs.
+
+_Polyphony:_ Monophonic, but if an input is polyphonic, its channels are summed, and summed value is used to compute the level displayed (independently for the left and right inputs).
+
 #### <a name="analyzer"></a> ANALYZER
 
 A four-channel spectrum analyzer.
@@ -818,23 +999,55 @@ Features:
   - Quality setting: changes the FFT window size.  Higher settings yield finer frequency resolution, at a higher CPU cost.  The levels and sizes are: GOOD (1024 samples), HIGH (2048 samples) and ULTRA (4096 samples).  If Rack's sample rate is 96khz or higher, the sizes are doubled.
   - Window setting: sets the window function applied to the input to the FFT.  The options are Kaiser, Hamming and none/square.  The default, Kaiser, is probably best for most purposes.
   - Each channel has a THRU output, which passes the corresponding input through unchanged.
-  - On the context (right-click) menu, the display vertical (amplitude) range can be set to extend down to -120dB (the default is -60dB).
+  - On the context (right-click) menu, the display vertical (amplitude) range can be set to extend down to -120dB (the default is -60dB); alternately it can be set to to display linearly, with the amplitude expressed as a percentage, where 100% is equivalent to 0dB.
+  - By default the frequency axis has a logarithmic plot; this can be set to linear on the context menu.
+  - When one clicks and holds on the display, the display freezes, and:
+    - The frequency analysis bin under the mouse pointer is highlighted.
+    - An overlay box is displayed, with details about the bin number and frequency range, and the level in decibels for each signal at that frequency range.
+    - Dragging the mouse left and right will update the highlight and overlay.
+    - While the mouse is held, the left and right keyboard keys can be used to change the analysis being displayed, up or down.  Moving the mouse resets any bin offset introduced this way.  This can be used to get to a specific bin in cases where the mouse tracking resolution is larger than the bin width (which can happen at higher frequencies).
 
 _Polyphony:_ Monophonic, with two exceptions:
   - If an input is polyphonic, its channels are summed, and the spectra of the summed signal is displayed.
   - A polyphonic input is copied unchanged (channels intact) to THRU.
 
-#### <a name="analyxerxl"></a> ANALYZER-XL
+#### <a name="analyzerxl"></a> ANALYZER-XL
 
-An eight-channel, 42HP version of ANALYZER, with edge-to-edge-screen design.  Options corresponding to ANALYZER's panel controls are available on the context (right-click) menu.
+![Analyzer screenshot](doc/www/visualizers2.png)
+
+An eight-channel, 42HP version of ANALYZER, with edge-to-edge-screen design.  Options corresponding to ANALYZER's panel controls are available on the context (right-click) menu.  An extra "Quality" setting, "Ultra+" is available; this uses an FFT size of 16384 (or 32768 if Rack's sample rate is 96khz or higher).
+
+**Note:** Most of the surface of ANALYZER-XL is its display, and clicking the mouse on the display will trigger the freeze function described in the notes on <a href="analyzer">ANALYZER</a>.  This may be confusing if you're trying to click and drag on the module to move it.  To move the module, click near the left edge, for example on the module's name.
 
 _Polyphony:_ Monophonic, but if an input is polyphonic, its channels are summed, and the spectra of the summed signal is displayed.
 
-#### <a name="vu"></a> VU
+#### <a name="ranalyzer"></a> RANALYZER
 
-A stereo signal level visualizer/meter.  The L channel is sent to both displays if if nothing is patched to R.  Inputs to L and R are copied to the L and R outputs.
+![Analyzer screenshot](doc/www/visualizers3.png)
 
-_Polyphony:_ Monophonic, but if an input is polyphonic, its channels are summed, and summed value is used to compute the level displayed (independently for the left and right inputs).
+RANALYZER is a frequency response analyzer: it passes a test signal to another module, expecting the output of that module to be patched back, and then displays the frequency spectrum of the response relative to the test signal.
+
+**This module is primarily useful to plugin developers**, especially when developing filters.  Of course anyone may use it, to investigate the response of some module, or to tune a filter bank, or what have you.
+
+By default, will produce a one-shot test signal, emitted at SEND, upon receipt of a trigger (manual or CV) at the TRIG inputs.  The duration of the test signal is always 16384 samples (32768 if Rack's sample rate is 96K or higher) -- the duration in time will depend on Rack's current sample rate.  The same number of samples is collected from RETURN, if it is patched.  Both signals are converted to the frequency domain and displayed (test in green, response in magenta), along with an analysis trace (orange), which shows the difference between the response and the test signals, in the frequency domain, in decibels.  The context-menu option "Display traces" controls which of the traces are displayed.
+
+A window function is optionally applied to the signals as they are converted to the frequency domain; this cleans up noise that otherwise shows up in the signal plots as an artifact of the conversion.  It also slightly distorts the displayed signals.  The default "taper" window minimizes the distortion; Hamming and Kaiser windows are also available.  The window can be selected or disabled on the context menu.  The window is not applied to the test signal before it is emitted at SEND.
+
+The test signal is a swept sine wave (or "chirp", see <a href="#chirp">CHIRP</a>), with an exponential (if the EXP toggle is on) or linear sweep.  The start and end frequencies for sine sweep are set by the FREQ1 and FREQ2 knobs, each with a range in hertz from 1 to a bit less than the Nyquist rate (half the sampling rate); if FREQ1 is less than FREQ2 the sweep is upwards in frequency, downwards otherwise.
+
+Patching an input to TEST overrides the swept sine generator; the TEST input is used as the test signal.
+
+If the LOOP toggle is enabled, the module continuously outputs, collects and displays the test, response and analysis signals.  Regardless of whether the collection cycle is triggered or looped, a pulse is emitted at the TRIG output when the cycle begins, and at the EOC output when it ends.
+
+The R. DELAY (response delay) control allows sample-accurate alignment of the test and response signals for analysis.  When SEND is patched directly to the module to be analyzed, and that module's output is patched directly back to RETURN, and the analyzed module does not impose an internal sample delay, then the returned signal will be received by RANALYZER two samples later, relative to the test sample RANALYZER emits.  More complicated patches between SEND and RETURN, or modules under test which have internal sample delays, can increase this, in which case R. DELAY may be set to whatever this actual sample delay is.  In practice, getting this right will likely not be very important.
+
+The context-menu option "Trigger on load", if enabled, will auto-trigger the test cycle when the module loads or when the patch loads.  This has no effect if LOOP is enabled when the patch loads.
+
+The display's frequency and amplitude ranges and plot types (logarithmic vs linear) can be set to a few different values on the context menu.
+
+**Note:** Most of the surface of RANALYZER is its display, and clicking the mouse on the display will trigger the freeze function described in the notes on <a href="analyzer">ANALYZER</a>.  This may be confusing if you're trying to click and drag on the module to move it.  To move the module, click near the left edge, for example on the module's name.
+
+_Polyphony:_ Monophonic.
 
 
 ### <a name="poly"></a> Polyphony Utilities
