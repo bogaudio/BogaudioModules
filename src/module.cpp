@@ -40,7 +40,8 @@ void BGModule::dataFromJson(json_t* root) {
 }
 
 void BGModule::process(const ProcessArgs& args) {
-	if (_steps < 0) {
+	if (!_initialized) {
+		_initialized = true;
 		onReset();
 		onSampleRateChange();
 	}

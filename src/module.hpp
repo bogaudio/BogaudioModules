@@ -16,6 +16,7 @@ struct SkinChangeListener {
 struct BGModule : Module {
 	int _modulationSteps = 100;
 	int _steps = -1;
+	bool _initialized = false;
 
 	static constexpr int maxChannels = PORT_MAX_CHANNELS;
 	int _channels = 0;
