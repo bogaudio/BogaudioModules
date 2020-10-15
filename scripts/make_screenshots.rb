@@ -9,7 +9,7 @@ screens = [
     file: 'modules1.png',
     crop: false,
     rows: [
-      ['VCO', 'LVCO', 'Sine', 'Pulse', 'XCO', 'Additator', 'FMOp'],
+      ['VCO', 'LVCO', 'Sine', 'Pulse', 'XCO', 'Additator', 'FMOp', 'Chirp'],
       ['LFO', 'LLFO', 'EightFO']
     ]
   },
@@ -17,9 +17,9 @@ screens = [
     file: 'modules2.png',
     crop: false,
     rows: [
-      ['VCF', 'LVCF', 'FFB', 'EQ', 'EQS'],
+      ['VCF', 'LVCF', 'FFB', 'EQ', 'EQS', '-', 'LPG', 'LLPG', 'MegaGate'],
       ['PEQ', 'PEQ6', 'PEQ6XF', 'PEQ14', 'PEQ14XF'],
-      ['DADSRH', 'DADSRHPlus', 'Shaper', 'ShaperPlus', 'AD', 'ASR', 'ADSR', 'Follow', 'DGate', 'RGate', 'Edge']
+      ['DADSRH', 'DADSRHPlus', 'Shaper', 'ShaperPlus', 'AD', 'ASR', 'ADSR', 'Vish', 'DGate', 'RGate', 'Edge', 'Follow']
     ]
   },
   {
@@ -27,18 +27,20 @@ screens = [
     crop: false,
     rows: [
       ['Mix8', 'Mix8x', 'Mute8'],
-      ['Mix4', 'Mix4x', 'Mix1', 'Mix2', 'VCM', 'Pan', 'XFade'],
-      ['UMix', 'Mumix', 'Matrix44', 'Matrix88'],
-      ['Switch44', 'Switch88', 'Switch1616']
+      ['Mix4', 'Mix4x', 'Mix1', 'Mix2', 'UMix', 'Mumix', 'VCM', 'Pan', 'XFade'],
+      ['Matrix81', 'Matrix18', 'Matrix44', 'Matrix44Cvm'],
+      ['Matrix88', 'Matrix88Cv', 'Matrix88M'],
+      ['Switch81', 'Switch18', 'Switch44', 'Switch88', 'Switch1616']
     ]
   },
   {
     file: 'modules4.png',
     crop: false,
     rows: [
-      ['VCA', 'VCAmp', '-', 'AMRM', 'Pressor', 'Lmtr', 'Nsgt', 'CmpDist'],
-      ['Noise', 'SampleHold', 'Walk2', 'Walk', '-', 'EightOne', 'OneEight', 'AddrSeq', 'PGMR', 'PGMRX'],
-      ['VU', 'Analyzer', 'AnalyzerXL']
+      ['VCA', 'VCAmp', 'Velo', '-', 'AMRM', 'Pressor', 'Lmtr', 'Nsgt', 'CmpDist'],
+      ['Noise', 'SampleHold', 'Walk2', 'Walk', '-', 'EightOne', 'OneEight', 'AddrSeq', 'AddrSeqX', 'PGMR', 'PGMRX'],
+      ['VU', 'Analyzer', 'AnalyzerXL'],
+      ['Ranalyzer']
     ]
   },
   {
@@ -82,7 +84,7 @@ screens = [
     file: 'oscillators2.png',
     crop: true,
     rows: [
-      ['Additator', 'FMOp']
+      ['Additator', 'FMOp', 'Chirp']
     ]
   },
   {
@@ -97,6 +99,13 @@ screens = [
     crop: true,
     rows: [
       ['VCF', 'LVCF', 'FFB', 'EQ', 'EQS']
+    ]
+  },
+  {
+    file: 'lpgs.png',
+    crop: true,
+    rows: [
+      ['LPG', 'LLPG', 'MegaGAte']
     ]
   },
   {
@@ -117,14 +126,14 @@ screens = [
     file: 'envelopes2.png',
     crop: true,
     rows: [
-      ['Shaper', 'ShaperPlus', 'AD', 'ASR', 'ADSR', 'Follow']
+      ['Shaper', 'ShaperPlus', 'AD', 'ASR', 'ADSR', 'Vish']
     ]
   },
   {
     file: 'envelopes3.png',
     crop: true,
     rows: [
-      ['DGate', 'RGate', 'Edge']
+      ['DGate', 'RGate', 'Edge', 'Follow']
     ]
   },
   {
@@ -145,28 +154,35 @@ screens = [
     file: 'mixers2.png',
     crop: true,
     rows: [
-      ['Mix1', 'Mix2', 'VCM', 'Mute8', 'Pan', 'XFade']
+      ['Mix1', 'Mix2', 'UMix', 'Mumix', 'Mute8', 'VCM', 'Pan', 'XFade']
     ]
   },
   {
     file: 'mixers3.png',
     crop: true,
     rows: [
-      ['UMix', 'Mumix', 'Matrix44', 'Matrix88']
+      ['Matrix81', 'Matrix18', 'Matrix44', 'Matrix44Cvm']
     ]
   },
   {
     file: 'mixers4.png',
     crop: true,
     rows: [
-      ['Switch44', 'Switch88', 'Switch1616']
+      ['Matrix88', 'Matrix88Cv', 'Matrix88M']
+    ]
+  },
+  {
+    file: 'mixers5.png',
+    crop: true,
+    rows: [
+      ['Switch81', 'Switch18', 'Switch44', 'Switch88', 'Switch1616']
     ]
   },
   {
     file: 'vcas.png',
     crop: true,
     rows: [
-      ['VCA', 'VCAmp']
+      ['VCA', 'VCAmp', 'Velo']
     ]
   },
   {
@@ -180,7 +196,7 @@ screens = [
     file: 'sequencers1.png',
     crop: true,
     rows: [
-      ['EightOne', 'OneEight', 'AddrSeq']
+      ['EightOne', 'OneEight', 'AddrSeq', 'AddrSeqX']
     ]
   },
   {
@@ -194,7 +210,21 @@ screens = [
     file: 'visualizers.png',
     crop: true,
     rows: [
-      ['Analyzer', 'AnalyzerXL', 'VU']
+      ['VU', 'Analyzer']
+    ]
+  },
+  {
+    file: 'visualizers2.png',
+    crop: true,
+    rows: [
+      ['AnalyzerXL']
+    ]
+  },
+  {
+    file: 'visualizers3.png',
+    crop: true,
+    rows: [
+      ['Ranalyzer']
     ]
   },
   {

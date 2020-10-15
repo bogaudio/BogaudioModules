@@ -259,6 +259,8 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the L
 
 #### <a name="lpg"></a> LPG
 
+![Filters screenshot](doc/www/lpgs.png)
+
 LPG is a "low-pass gate", where an envelope generator, low-pass filter (LPF) and amplifier (VCA) are combined into a single sound-shaping unit.  It lends itself to percussive or plucked sounds, though longer notes are possible.
 
 LPG's envelope is a version of <a href="#vish">VISH</a>, with simplified controls.  On LPG, the single RESPONSE control (taking a unipolar 0-10V CV at RESP) sets the length and basic shape of the envelope (turning up RESPONSE is equivalent to turning up each of MIN GATE, RISE time and FALL time, proportionally, on VISH).  Enabling LONG rescales the knob for longer envelopes.  The RISE and FALL knobs set the shapes (curves) of the rising and falling envelope segments, as on VISH.  The envelope is triggered whenever LPG receives a rising edge at the TRIG input.
@@ -439,14 +441,6 @@ If the TIMES 10X option is enabled, the values of the rise and fall times, and M
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the GATE input.
 
-#### <a name="follow"></a> FOLLOW
-
-An envelope follower (a utility that converts its input to a CV proportional to the level of the input's amplitude).  The DAMP knob and CV (0-10V) affect how quickly the output responds to changes in the input -- higher DAMP values effectively slow down and smooth out the response.
-
-The GAIN knob and CV (+/-5V) can attenuate or amplify the output.  Turning the knob counter-clockwise form center will cut the output up to -36dB; turning it clockwise will amplify it up to +12dB.
-
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
-
 #### <a name="dgate"></a> DGATE
 
 ![Envelopes screenshot](doc/www/envelopes3.png)
@@ -487,6 +481,15 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the C
 A trigger-to-gate utility, comparator and rising/falling edge detector.  RISE and FALL set voltage levels: when the input goes above RISE, the module switches to "high" state and outputs a voltage at the HIGH output.  HOLD sets a minimum time that the module stays in the high state; this can be used to avoid jitter on the output if using high-frequency inputs.  1ms trigger pulses are output at RISE and FALL on the corresponding changes (note that if you switch the module state at audio rates, these will essentially always be high).
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
+
+#### <a name="follow"></a> FOLLOW
+
+An envelope follower (a utility that converts its input to a CV proportional to the level of the input's amplitude).  The DAMP knob and CV (0-10V) affect how quickly the output responds to changes in the input -- higher DAMP values effectively slow down and smooth out the response.
+
+The GAIN knob and CV (+/-5V) can attenuate or amplify the output.  Turning the knob counter-clockwise form center will cut the output up to -36dB; turning it clockwise will amplify it up to +12dB.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
+
 
 ### <a name="mixers"></a> Mixers, Panners and VCAs
 
@@ -550,50 +553,7 @@ A stereo version of MIX1.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the L input.
 
-#### <a name="vcm"></a> VCM
-
-A four-channel mixer in 10HP.
-
-Features:
-  - Four input channels and mono mix output with knob and CV control over level.  CVs expect 0-10V; when CV is in use, it is attenuated by the knob.
-  - Linear mode makes the knob/CV response linear in amplitude (this is good dialing in a CV mix); otherwise, and by default, the response is linear in decibels (and therefore exponential in amplitude).
-
-By default, the output is hard clipped at +/-12V (this is a standard in Rack).  A context menu option allows this limit to be disabled.
-
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by the first IN input.
-
-#### <a name="mute8"></a> MUTE8
-
-MUTE8 provides 8 independent manual or CV-controlled mutes. Each channel is muted if its button is toggled on or if there is a positive voltage at its CV input.  Otherwise the input is passed to the output.
-
-As with MIX4 and MIX8, a right-click on a mute button will solo that channel (pass that channel through while muting all others).  Right or left click clears this.
-
-If context menu option "Latching CV triggers" is enabled, triggers on the CV inputs toggle muting on and off.
-
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, where each of the 8 channels may be independently polyphonic, as defined by the cable at the channel's input.
-
-#### <a name="pan"></a> PAN
-
-A stereo panner with dual inputs channels.  Each channel's panner may be controlled with a +/-5 volt CV; when CV is in use, it is attenuverted the corresponding knob.  The output saturates (soft clips) to +/-12 volts.
-
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the first/top IN input.
-
-#### <a name="xfade"></a> XFADE
-
-A crossfader (or two-channel mixer, or way to patch a dry/wet knob into any signal chain).  The MIX knob sets the relative strength of inputs A and B.  MIX may be controlled with a +/-5 volt CV; when CV is in use, it is attenuverted the knob.
-
-The SHAPE knob affects the attenuation curves of the two channels as MIX changes:
-  - At the center position, SHAPE at produces a standard crossfader behavior.  A and B are attenuated by half; moving MIX to A or B brings that channel to full input level while cutting the opposite channel.  The attenuation is such that if the same signal is patched to both A and B, the same signal is produced at the output regardless of the setting of MIX.
-  - With SHAPE at the full counter-clockwise (left) position, there is no output when MIX is centered; moving MIX to A or B brings that channel to full level.
-  - With SHAPE at full clockwise (right) position, both channels are at full (unattenuated) level when MIX is centered; moving to A or B cuts the opposite channel.
-
-Linear mode (the LIN button) makes the level attenuation response of MIX linear in amplitude (useful when processing CV); otherwise and by default the response is linear in decibels (and therefore exponential in amplitude).
-
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the A input.
-
 #### <a name="umix"></a> UMIX
-
-![Mixers screenshot](doc/www/mixers3.png)
 
 A 3HP unity mixer, usable with audio or CV (e.g. to combine triggers).  Up to 8 inputs are summed to the output.  The output is limited to +/-12V (with clipping modes as below).
 
@@ -614,7 +574,50 @@ See also <a href="switch81">SWITCH81</a>, which is similar to this, with options
 
 _Polyphony:_ same as UMIX.
 
+#### <a name="mute8"></a> MUTE8
+
+MUTE8 provides 8 independent manual or CV-controlled mutes. Each channel is muted if its button is toggled on or if there is a positive voltage at its CV input.  Otherwise the input is passed to the output.
+
+As with MIX4 and MIX8, a right-click on a mute button will solo that channel (pass that channel through while muting all others).  Right or left click clears this.
+
+If context menu option "Latching CV triggers" is enabled, triggers on the CV inputs toggle muting on and off.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, where each of the 8 channels may be independently polyphonic, as defined by the cable at the channel's input.
+
+#### <a name="vcm"></a> VCM
+
+A four-channel mixer in 10HP.
+
+Features:
+  - Four input channels and mono mix output with knob and CV control over level.  CVs expect 0-10V; when CV is in use, it is attenuated by the knob.
+  - Linear mode makes the knob/CV response linear in amplitude (this is good dialing in a CV mix); otherwise, and by default, the response is linear in decibels (and therefore exponential in amplitude).
+
+By default, the output is hard clipped at +/-12V (this is a standard in Rack).  A context menu option allows this limit to be disabled.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by the first IN input.
+
+#### <a name="pan"></a> PAN
+
+A stereo panner with dual inputs channels.  Each channel's panner may be controlled with a +/-5 volt CV; when CV is in use, it is attenuverted the corresponding knob.  The output saturates (soft clips) to +/-12 volts.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the first/top IN input.
+
+#### <a name="xfade"></a> XFADE
+
+A crossfader (or two-channel mixer, or way to patch a dry/wet knob into any signal chain).  The MIX knob sets the relative strength of inputs A and B.  MIX may be controlled with a +/-5 volt CV; when CV is in use, it is attenuverted the knob.
+
+The SHAPE knob affects the attenuation curves of the two channels as MIX changes:
+  - At the center position, SHAPE at produces a standard crossfader behavior.  A and B are attenuated by half; moving MIX to A or B brings that channel to full input level while cutting the opposite channel.  The attenuation is such that if the same signal is patched to both A and B, the same signal is produced at the output regardless of the setting of MIX.
+  - With SHAPE at the full counter-clockwise (left) position, there is no output when MIX is centered; moving MIX to A or B brings that channel to full level.
+  - With SHAPE at full clockwise (right) position, both channels are at full (unattenuated) level when MIX is centered; moving to A or B cuts the opposite channel.
+
+Linear mode (the LIN button) makes the level attenuation response of MIX linear in amplitude (useful when processing CV); otherwise and by default the response is linear in decibels (and therefore exponential in amplitude).
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the A input.
+
 #### <a name="matrix81"></a> MATRIX81
+
+![Mixers screenshot](doc/www/mixers3.png)
 
 An eight input, one output version of <a href="#matrix44">MATRIX44</a>, below.
 
@@ -652,6 +655,8 @@ MX44CVM must be positioned to the right of, and adjacent to, the MATRIX44 module
 
 #### <a name="matrix88"></a> MATRIX88
 
+![Mixers screenshot](doc/www/mixers4.png)
+
 An 8x8 version of MATRIX44.  It is expanable with <a href="matrix88cv">MX88CV</a> and <a href="matrix88m">MX88M</a>.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by the first/topmost input.
@@ -672,7 +677,7 @@ MX88M must be positioned to the right of, and adjacent to, the MATRIX88 module i
 
 #### <a name="switch81"></a> SWITCH81
 
-![Mixers screenshot](doc/www/mixers4.png)
+![Mixers screenshot](doc/www/mixers5.png)
 
 An eight input, one output version of <a href="#switch44">SWITCH44</a>, below.
 
@@ -978,6 +983,12 @@ Each PGMRX in a chain must be positioned to the right of, and ajacent to, the pr
 
 ![Analyzer screenshot](doc/www/visualizers.png)
 
+#### <a name="vu"></a> VU
+
+A stereo signal level visualizer/meter.  The L channel is sent to both displays if if nothing is patched to R.  Inputs to L and R are copied to the L and R outputs.
+
+_Polyphony:_ Monophonic, but if an input is polyphonic, its channels are summed, and summed value is used to compute the level displayed (independently for the left and right inputs).
+
 #### <a name="analyzer"></a> ANALYZER
 
 A four-channel spectrum analyzer.
@@ -1002,6 +1013,8 @@ _Polyphony:_ Monophonic, with two exceptions:
 
 #### <a name="analyzerxl"></a> ANALYZER-XL
 
+![Analyzer screenshot](doc/www/visualizers2.png)
+
 An eight-channel, 42HP version of ANALYZER, with edge-to-edge-screen design.  Options corresponding to ANALYZER's panel controls are available on the context (right-click) menu.  An extra "Quality" setting, "Ultra+" is available; this uses an FFT size of 16384 (or 32768 if Rack's sample rate is 96khz or higher).
 
 **Note:** Most of the surface of ANALYZER-XL is its display, and clicking the mouse on the display will trigger the freeze function described in the notes on <a href="analyzer">ANALYZER</a>.  This may be confusing if you're trying to click and drag on the module to move it.  To move the module, click near the left edge, for example on the module's name.
@@ -1009,6 +1022,8 @@ An eight-channel, 42HP version of ANALYZER, with edge-to-edge-screen design.  Op
 _Polyphony:_ Monophonic, but if an input is polyphonic, its channels are summed, and the spectra of the summed signal is displayed.
 
 #### <a name="ranalyzer"></a> RANALYZER
+
+![Analyzer screenshot](doc/www/visualizers3.png)
 
 RANALYZER is a frequency response analyzer: it passes a test signal to another module, expecting the output of that module to be patched back, and then displays the frequency spectrum of the response relative to the test signal.
 
@@ -1033,12 +1048,6 @@ The display's frequency and amplitude ranges and plot types (logarithmic vs line
 **Note:** Most of the surface of RANALYZER is its display, and clicking the mouse on the display will trigger the freeze function described in the notes on <a href="analyzer">ANALYZER</a>.  This may be confusing if you're trying to click and drag on the module to move it.  To move the module, click near the left edge, for example on the module's name.
 
 _Polyphony:_ Monophonic.
-
-#### <a name="vu"></a> VU
-
-A stereo signal level visualizer/meter.  The L channel is sent to both displays if if nothing is patched to R.  Inputs to L and R are copied to the L and R outputs.
-
-_Polyphony:_ Monophonic, but if an input is polyphonic, its channels are summed, and summed value is used to compute the level displayed (independently for the left and right inputs).
 
 
 ### <a name="poly"></a> Polyphony Utilities
