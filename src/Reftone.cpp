@@ -70,17 +70,9 @@ void ReftoneDisplay::draw(const DrawArgs& args) {
 		mFrequency = _module->_frequency;
 	}
 
-	const int n = 20;
-	char octave[n];
-	snprintf(octave, n, "%d", mOctave);
-
-	char fine[n];
-	fine[0] = mFine < 0.0 ? '-' : '+';
-	snprintf(fine + 1, n - 1, "%02d", abs((int)(mFine * 100)));
-
-	char frequency[20];
-	snprintf(frequency, n, mFrequency >= 1000.0 ? "%0.0f" : "%0.1f", mFrequency);
-
+	std::string octave = std::to_string(mOctave);
+	std::string fine = format("%s%02d", mFine < 0.0 ? "-" : "+", abs((int)(mFine * 100)));
+	std::string frequency = format(mFrequency >= 1000.0 ? "%0.0f" : "%0.1f", mFrequency);
 	const char* pitch = NULL;
 	const char* sharpFlat = NULL;
 	switch (mPitch) {
@@ -143,15 +135,13 @@ void ReftoneDisplay::draw(const DrawArgs& args) {
 	if (sharpFlat) {
 		drawText(args, pitch, 3, 20, 28);
 		drawText(args, sharpFlat, 16, 12, 16);
-		drawText(args, octave, 22, 20, 28);
+		drawText(args, octave.c_str(), 22, 20, 28);
 	}
 	else {
-		char s[n];
-		snprintf(s, n, "%s%s", pitch, octave);
-		drawCenteredText(args, s, 20, 28);
+		drawCenteredText(args, (pitch + octave).c_str(), 20, 28);
 	}
-	drawCenteredText(args, fine, 32.5, 14);
-	drawCenteredText(args, frequency, 45, 14);
+	drawCenteredText(args, fine.c_str(), 32.5, 14);
+	drawCenteredText(args, frequency.c_str(), 45, 14);
 }
 
 void ReftoneDisplay::drawBackground(const DrawArgs& args) {

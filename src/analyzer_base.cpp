@@ -534,13 +534,11 @@ void AnalyzerDisplay::drawHeader(const DrawArgs& args, float rangeMinHz, float r
 
 	const int textY = -4;
 	const int charPx = 5;
-	const int sLen = 100;
-	char s[sLen];
 	int x = _insetAround + 2;
 
-	int n = snprintf(s, sLen, "Peaks (+/-%0.1f):", (APP->engine->getSampleRate() / 2.0f) / (float)(_module->_core._size / _module->_core._binAverageN));
-	drawText(args, s, x, _insetTop + textY);
-	x += n * charPx - 0;
+	std::string s = format("Peaks (+/-%0.1f):", (APP->engine->getSampleRate() / 2.0f) / (float)(_module->_core._size / _module->_core._binAverageN));
+	drawText(args, s.c_str(), x, _insetTop + textY);
+	x += s.size() * charPx - 0;
 
 	int spacing = 3;
 	if (_size.x > 300) {
@@ -549,8 +547,8 @@ void AnalyzerDisplay::drawHeader(const DrawArgs& args, float rangeMinHz, float r
 	}
 	for (int i = 0; i < _module->_core._nChannels; ++i) {
 		if (_module->_core._channels[i]) {
-			snprintf(s, sLen, "%c:%7.1f", 'A' + i, _module->_core.getPeak(i, rangeMinHz, rangeMaxHz));
-			drawText(args, s, x, _insetTop + textY, 0.0, &_channelColors[i % channelColorsN]);
+			s = format("%c:%7.1f", 'A' + i, _module->_core.getPeak(i, rangeMinHz, rangeMaxHz));
+			drawText(args, s.c_str(), x, _insetTop + textY, 0.0, &_channelColors[i % channelColorsN]);
 		}
 		x += 9 * charPx + spacing;
 	}
@@ -715,10 +713,8 @@ void AnalyzerDisplay::drawXAxis(const DrawArgs& args, float strokeWidth, Frequen
 						if (x > lastX + 0.1f && x < 1.0f) {
 							lastX = x;
 							x *= _graphSize.x;
-							const int sLen = 32;
-							char s[sLen];
-							snprintf(s, sLen, "%dk", (int)(hz / 1000.0f));
-							drawText(args, s, _insetLeft + x - 7, _size.y - 2);
+							std::string s = format("%dk", (int)(hz / 1000.0f));
+							drawText(args, s.c_str(), _insetLeft + x - 7, _size.y - 2);
 						}
 						hz += increment;
 					}
@@ -769,17 +765,15 @@ void AnalyzerDisplay::drawXAxis(const DrawArgs& args, float strokeWidth, Frequen
 					if (x > lastX + xMin && x < 0.99f) {
 						lastX = x;
 						x *= _graphSize.x;
-						const int sLen = 32;
-						char s[sLen];
 						float dhz = hz / divisor;
-						int n = 0;
+						std::string s;
 						if (dhz - (int)dhz < 0.0001f) {
-							n = snprintf(s, sLen, "%d%s", (int)dhz, suffix);
+							s = format("%d%s", (int)dhz, suffix);
 						}
 						else {
-							n = snprintf(s, sLen, "%0.1f%s", dhz, suffix);
+							s = format("%0.1f%s", dhz, suffix);
 						}
-						drawText(args, s, _insetLeft + x - (n <= 2 ? 5 : 8), _size.y - 2);
+						drawText(args, s.c_str(), _insetLeft + x - (s.size() <= 2 ? 5 : 8), _size.y - 2);
 					}
 				}
 				hz += spacing;

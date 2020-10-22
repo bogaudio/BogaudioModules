@@ -298,13 +298,11 @@ struct RanalyzerDisplay : AnalyzerDisplay, ChannelDisplayListener {
 
 		const int textY = -4;
 		const int charPx = 5;
-		const int sLen = 100;
-		char s[sLen];
 		int x = _insetAround + 2;
 
-		int n = snprintf(s, sLen, "Bin width %0.1f HZ", APP->engine->getSampleRate() / (float)(_module->_core._size / _module->_core._binAverageN));
-		drawText(args, s, x, _insetTop + textY);
-		x += n * charPx + 20;
+		std::string s = format("Bin width %0.1f HZ", APP->engine->getSampleRate() / (float)(_module->_core._size / _module->_core._binAverageN));
+		drawText(args, s.c_str(), x, _insetTop + textY);
+		x += s.size() * charPx + 20;
 
 		const char* labels[3] = { "TEST", "RESPONSE", "ANALYSIS" };
 		for (int i = 0; i < 3; ++i) {
