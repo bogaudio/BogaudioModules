@@ -12,10 +12,17 @@ int UMix::channels() {
 void UMix::processChannel(const ProcessArgs& args, int c) {
 	outputs[OUT_OUTPUT].setChannels(_channels);
 
-	if (_sum) {
-		float out = 0.0f;
-		for (int i = 0; i < 8; ++i) {
+	float out = 0.0f;
+	int active = 0;
+	for (int i = 0; i < NUM_INPUTS; i++) {
+		if (inputs[IN1_INPUT + i].isConnected()) {
 			out += _inputGainLevel * inputs[IN1_INPUT + i].getPolyVoltage(c);
+			++active;
+		}
+	}
+	if (active > 0) {
+		if (!_sum) {
+			out /= (float)active;
 		}
 		if (_clippingMode == HARD_CLIPPING) {
 			outputs[OUT_OUTPUT].setVoltage(clamp(out, -12.0f, 12.0f), c);
@@ -25,26 +32,7 @@ void UMix::processChannel(const ProcessArgs& args, int c) {
 		}
 	}
 	else {
-		float out = 0.0f;
-		int active = 0;
-		for (int i = 0; i < 8; ++i) {
-			if (inputs[IN1_INPUT + i].isConnected()) {
-				out += _inputGainLevel * inputs[IN1_INPUT + i].getPolyVoltage(c);
-				++active;
-			}
-		}
-		if (active > 0) {
-			out /= (float)active;
-			if (_clippingMode == HARD_CLIPPING) {
-				outputs[OUT_OUTPUT].setVoltage(clamp(out, -12.0f, 12.0f), c);
-			}
-			else {
-				outputs[OUT_OUTPUT].setVoltage(_saturator[c].next(out), c);
-			}
-		}
-		else {
-			outputs[OUT_OUTPUT].setVoltage(0.0f, c);
-		}
+		outputs[OUT_OUTPUT].setVoltage(0.0f, c);
 	}
 }
 

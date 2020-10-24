@@ -40,6 +40,24 @@ void MatrixBaseModule::modulate() {
 	_inputGainLevel = decibelsToAmplitude(_inputGainDb);
 }
 
+void MatrixBaseModuleWidget::contextMenu(Menu* menu) {
+	auto m = dynamic_cast<MatrixBaseModule*>(module);
+	assert(m);
+
+	OptionsMenuItem* g = new OptionsMenuItem("Input gain");
+	g->addItem(OptionMenuItem("Unity", [m]() { return (int)m->_inputGainDb == 0; }, [m]() { m->_inputGainDb = 0.0f; }));
+	g->addItem(OptionMenuItem("-3db", [m]() { return (int)m->_inputGainDb == -3; }, [m]() { m->_inputGainDb = -3.0f; }));
+	g->addItem(OptionMenuItem("-6db", [m]() { return (int)m->_inputGainDb == -6; }, [m]() { m->_inputGainDb = -6.0f; }));
+	g->addItem(OptionMenuItem("-12db", [m]() { return (int)m->_inputGainDb == -12; }, [m]() { m->_inputGainDb = -12.0f; }));
+	OptionsMenuItem::addToMenu(g, menu);
+
+	OptionsMenuItem* c = new OptionsMenuItem("Output clipping");
+	c->addItem(OptionMenuItem("Soft/saturated (better for audio)", [m]() { return m->_clippingMode == MatrixBaseModule::SOFT_CLIPPING; }, [m]() { m->_clippingMode = MatrixBaseModule::SOFT_CLIPPING; }));
+	c->addItem(OptionMenuItem("Hard/clipped (better for CV)", [m]() { return m->_clippingMode == MatrixBaseModule::HARD_CLIPPING; }, [m]() { m->_clippingMode = MatrixBaseModule::HARD_CLIPPING; }));
+	OptionsMenuItem::addToMenu(c, menu);
+
+	menu->addChild(new OptionMenuItem("Average", [m]() { return !m->_sum; }, [m]() { m->_sum = !m->_sum; }));
+}
 
 void MatrixModule::configMatrixModule(int ins, int outs, int firstParamID, int firstInputID, int firstOutputID) {
 	assert(!_paramValues && !_sls && !_saturators && !_inActive);
@@ -153,19 +171,7 @@ void MatrixModuleWidget::contextMenu(Menu* menu) {
 	assert(m);
 
 	if (m->_ins > 1) {
-		OptionsMenuItem* g = new OptionsMenuItem("Input gain");
-		g->addItem(OptionMenuItem("Unity", [m]() { return (int)m->_inputGainDb == 0; }, [m]() { m->_inputGainDb = 0.0f; }));
-		g->addItem(OptionMenuItem("-3db", [m]() { return (int)m->_inputGainDb == -3; }, [m]() { m->_inputGainDb = -3.0f; }));
-		g->addItem(OptionMenuItem("-6db", [m]() { return (int)m->_inputGainDb == -6; }, [m]() { m->_inputGainDb = -6.0f; }));
-		g->addItem(OptionMenuItem("-12db", [m]() { return (int)m->_inputGainDb == -12; }, [m]() { m->_inputGainDb = -12.0f; }));
-		OptionsMenuItem::addToMenu(g, menu);
-
-		OptionsMenuItem* c = new OptionsMenuItem("Output clipping");
-		c->addItem(OptionMenuItem("Soft/saturated (better for audio)", [m]() { return m->_clippingMode == MatrixBaseModule::SOFT_CLIPPING; }, [m]() { m->_clippingMode = MatrixBaseModule::SOFT_CLIPPING; }));
-		c->addItem(OptionMenuItem("Hard/clipped (better for CV)", [m]() { return m->_clippingMode == MatrixBaseModule::HARD_CLIPPING; }, [m]() { m->_clippingMode = MatrixBaseModule::HARD_CLIPPING; }));
-		OptionsMenuItem::addToMenu(c, menu);
-
-		menu->addChild(new OptionMenuItem("Average", [m]() { return !m->_sum; }, [m]() { m->_sum = !m->_sum; }));
+		MatrixBaseModuleWidget::contextMenu(menu);
 	}
 }
 
