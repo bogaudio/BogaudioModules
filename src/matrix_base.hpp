@@ -26,6 +26,7 @@ struct MatrixBaseModule : BGModule {
 };
 
 struct MatrixBaseModuleWidget : BGModuleWidget {
+	void contextMenu(Menu* menu) override;
 };
 
 struct MatrixModule : MatrixBaseModule {
