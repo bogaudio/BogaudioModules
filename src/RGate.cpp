@@ -33,6 +33,7 @@ void RGate::sampleRateChange() {
 }
 
 json_t* RGate::toJson(json_t* root) {
+	root = OutputRangeModule<BGModule>::toJson(root);
 	json_object_set_new(root, RESET_MODE, json_integer(_resetMode));
 	json_object_set_new(root, INITIAL_CLOCK_SECONDS, json_real(_initialClockPeriod));
 	json_object_set_new(root, POLY_INPUT, json_integer(_polyInputID));
@@ -40,6 +41,8 @@ json_t* RGate::toJson(json_t* root) {
 }
 
 void RGate::fromJson(json_t* root) {
+	OutputRangeModule<BGModule>::fromJson(root);
+
 	json_t* rm = json_object_get(root, RESET_MODE);
 	if (rm) {
 		ResetMode m = (ResetMode)json_integer_value(rm);
