@@ -447,7 +447,7 @@ float NoiseGate::compressionDb(float detectorDb, float thresholdDb, float ratio,
 	const float softKneeDb = 6.0f;
 
 	if (softKnee) {
-		// FIXME: this acheives nothing.
+		// FIXME: this achieves nothing.
 		float range = thresholdDb - Amplifier::minDecibels;
 		float ix = thresholdDb + softKneeDb;
 		float iy = 0;

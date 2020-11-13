@@ -1,7 +1,6 @@
 
 #include "Nsgt.hpp"
 
-
 void Nsgt::Engine::sampleRateChange() {
 	float sampleRate = APP->engine->getSampleRate();
 	detector.setSampleRate(sampleRate);
@@ -53,13 +52,13 @@ void Nsgt::modulateChannel(int c) {
 	}
 	if (e.ratioKnob != ratio) {
 		e.ratioKnob = ratio;
-		ratio = powf(e.ratioKnob, 1.5f);
+		ratio = powf(ratio, 1.5f);
 		ratio = 1.0f - ratio;
 		ratio *= M_PI;
 		ratio *= 0.25f;
 		ratio = tanf(ratio);
 		ratio = 1.0f / ratio;
-		e.ratioKnob = ratio;
+		e.ratio = ratio;
 	}
 }
 
