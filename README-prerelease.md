@@ -1120,7 +1120,7 @@ The behavior of DETUNE depends on the number of output channels:
 
 POLYCON16 allows fixed voltages to be sent directly to some number of channels, by channel number, of a polyphonic output.  The number of output channels is set the CHAN knob, unless an input is present at the CHAN input, in which case the channel count is taken from that input, and the knob is ignored.
 
-This can be used to introduce a bit fixed variation across the channels of a poly voice.
+This can be used to introduce a bit of fixed variation across the channels of a poly voice.
 
 The context menu option range allows the output voltages to be set from several bipolar and unipolar ranges.  Note that when a unipolar range is used, 0V will be output when the knob is fully counter-clockwise, even though the knobs are drawn with a bipolar dial (such that 0V is usually at noon).
 
@@ -1144,7 +1144,7 @@ With no input at IN:
 
 The module has the same "Range" content-menu options as POLYCON16.
 
-#### <a name="polyoff8"></a> POLYOFF16
+#### <a name="polyoff8"></a> POLYOFF8
 
 A half-width version of POLYCON16, that only works with polyphony channels 1-8.
 
