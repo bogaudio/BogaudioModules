@@ -1,0 +1,5 @@
+<module hp="20">
+  <style/>
+
+  <def xlink:href="#module" var-name="TESTGL"/>
+</module>
