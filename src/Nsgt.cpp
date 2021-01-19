@@ -1,16 +1,34 @@
 
 #include "Nsgt.hpp"
 
+#define ATTACK_MS "attack_ms"
+#define RELEASE_MS "release_ms"
+
 void Nsgt::Engine::sampleRateChange() {
-	float sampleRate = APP->engine->getSampleRate();
-	detector.setSampleRate(sampleRate);
-	attackSL.setParams(sampleRate, 150.0f);
-	releaseSL.setParams(sampleRate, 600.0f);
+	detector.setSampleRate(APP->engine->getSampleRate());
 }
 
 void Nsgt::sampleRateChange() {
 	for (int c = 0; c < _channels; ++c) {
 		_engines[c]->sampleRateChange();
+	}
+}
+
+json_t* Nsgt::toJson(json_t* root) {
+	json_object_set_new(root, ATTACK_MS, json_real(_attackMs));
+	json_object_set_new(root, RELEASE_MS, json_real(_releaseMs));
+	return root;
+}
+
+void Nsgt::fromJson(json_t* root) {
+	json_t* a = json_object_get(root, ATTACK_MS);
+	if (a) {
+		_attackMs = std::max(0.0f, (float)json_real_value(a));
+	}
+
+	json_t* r = json_object_get(root, RELEASE_MS);
+	if (r) {
+		_releaseMs = std::max(0.0f, (float)json_real_value(r));
 	}
 }
 
@@ -60,6 +78,10 @@ void Nsgt::modulateChannel(int c) {
 		ratio = 1.0f / ratio;
 		e.ratio = ratio;
 	}
+
+	float sr = APP->engine->getSampleRate();
+	e.attackSL.setParams(sr, _attackMs);
+	e.releaseSL.setParams(sr, _releaseMs);
 }
 
 void Nsgt::processChannel(const ProcessArgs& args, int c) {
@@ -88,6 +110,106 @@ void Nsgt::processChannel(const ProcessArgs& args, int c) {
 		outputs[RIGHT_OUTPUT].setVoltage(e.saturator.next(e.amplifier.next(rightInput)), c);
 	}
 }
+
+struct ARQuantity : Quantity {
+	typedef std::function<float&(Nsgt* m)> ValueRefFN;
+
+	Nsgt* _module;
+	std::string _label;
+	float _maxMs;
+	float _defaultMs;
+	ValueRefFN _moduleValueRef;
+
+	ARQuantity(
+		Nsgt* m,
+		const char* label,
+		float maxMs,
+		float defaultMs,
+		ValueRefFN moduleValueRef
+	)
+	: _module(m)
+	, _label(label)
+	, _maxMs(maxMs)
+	, _defaultMs(defaultMs)
+	, _moduleValueRef(moduleValueRef)
+	{}
+
+	void setValue(float value) override {
+		value = clamp(value, getMinValue(), getMaxValue());
+		if (_module) {
+			_moduleValueRef(_module) = valueToMs(value);
+		}
+	}
+
+	float getValue() override {
+		if (_module) {
+			return msToValue(_moduleValueRef(_module));
+		}
+		return getDefaultValue();
+	}
+
+	float getMinValue() override { return 0.0f; }
+	float getMaxValue() override { return msToValue(_maxMs); }
+	float getDefaultValue() override { return msToValue(_defaultMs); }
+	float getDisplayValue() override { return roundf(valueToMs(getValue())); }
+	void setDisplayValue(float displayValue) override { setValue(msToValue(displayValue)); }
+	std::string getLabel() override { return _label; }
+	std::string getUnit() override { return "ms"; }
+	float valueToMs(float v) { return v * v * _maxMs; }
+	float msToValue(float ms) { return sqrtf(ms / _maxMs); };
+};
+
+struct ARSlider : ui::Slider {
+	ARSlider(ARQuantity* q) {
+		quantity = q; // q now owned.
+		box.size.x = 200.0f;
+	}
+	virtual ~ARSlider() {
+		delete quantity;
+	}
+};
+
+struct AttackMenuItem : MenuItem {
+	Nsgt* _module;
+
+	AttackMenuItem(Nsgt* m) : _module(m) {
+		this->text = "Attack time";
+		this->rightText = "▸";
+	}
+
+	Menu* createChildMenu() override {
+		Menu* menu = new Menu;
+		menu->addChild(new ARSlider(new ARQuantity(
+			_module,
+			"Attack",
+			Nsgt::maxAttackMs,
+			Nsgt::defaultAttackMs,
+			[](Nsgt* m) -> float& { return m->_attackMs; }
+		)));
+		return menu;
+	}
+};
+
+struct ReleaseMenuItem : MenuItem {
+	Nsgt* _module;
+
+	ReleaseMenuItem(Nsgt* m) : _module(m) {
+		this->text = "Release time";
+		this->rightText = "▸";
+	}
+
+	Menu* createChildMenu() override {
+		Menu* menu = new Menu;
+		menu->addChild(new ARSlider(new ARQuantity(
+			_module,
+			"Release",
+			Nsgt::maxReleaseMs,
+			Nsgt::defaultReleaseMs,
+			[](Nsgt* m) -> float& { return m->_releaseMs; }
+		)));
+		return menu;
+	}
+};
 
 struct NsgtWidget : BGModuleWidget {
 	static constexpr int hp = 6;
@@ -123,6 +245,14 @@ struct NsgtWidget : BGModuleWidget {
 
 		addOutput(createOutput<Port24>(leftOutputPosition, module, Nsgt::LEFT_OUTPUT));
 		addOutput(createOutput<Port24>(rightOutputPosition, module, Nsgt::RIGHT_OUTPUT));
+	}
+
+	void contextMenu(Menu* menu) override {
+		auto m = dynamic_cast<Nsgt*>(module);
+		assert(m);
+
+		menu->addChild(new AttackMenuItem(m));
+		menu->addChild(new ReleaseMenuItem(m));
 	}
 };
 

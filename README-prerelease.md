@@ -825,7 +825,7 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the 
 
 #### <a name="nsgt"></a> NSGT
 
-NSGT is a compact (6HP) [noise gate](https://en.wikipedia.org/wiki/Noise_gate).  Its controls behave the same as the corresponding controls on PRESSOR.
+NSGT is a compact (6HP) [noise gate](https://en.wikipedia.org/wiki/Noise_gate).  Its controls behave the same as the corresponding controls on PRESSOR.  Controls for attack and release times are on the context menu.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the L input.
 

@@ -48,8 +48,15 @@ struct Nsgt : BGModule {
 		void sampleRateChange();
 	};
 
+	static constexpr float defaultAttackMs = 150.0f;
+	static constexpr float maxAttackMs = 500.0f;
+	static constexpr float defaultReleaseMs = 600.0f;
+	static constexpr float maxReleaseMs = 2000.0f;
+
 	Engine* _engines[maxChannels] {};
 	bool _softKnee = true;
+	float _attackMs = defaultAttackMs;
+	float _releaseMs = defaultReleaseMs;
 
 	Nsgt() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
@@ -59,6 +66,8 @@ struct Nsgt : BGModule {
 	}
 
 	void sampleRateChange() override;
+	json_t* toJson(json_t* root) override;
+	void fromJson(json_t* root) override;
 	bool active() override;
 	int channels() override;
 	void addChannel(int c) override;
