@@ -100,7 +100,7 @@ void Walk2::processAlways(const ProcessArgs& args) {
 	lights[TRACKHOLD_LIGHT].value = _jumpMode == Walk::TRACKHOLD_JUMPMODE;
 }
 
-void Walk2::processChannel(const ProcessArgs& args, int _c) {
+void Walk2::processAll(const ProcessArgs& args) {
 	Vec* jumpTo = _jumpTo;
 	if (jumpTo != NULL) {
 		_jumpTo = NULL;

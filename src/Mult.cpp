@@ -1,7 +1,7 @@
 
 #include "Mult.hpp"
 
-void Mult::processChannel(const ProcessArgs& args, int _c) {
+void Mult::processAll(const ProcessArgs& args) {
 	int n = inputs[INA_INPUT].getChannels();
 	float* out = inputs[INA_INPUT].getVoltages();
 	outputs[OUTA1_OUTPUT].setChannels(n);

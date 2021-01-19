@@ -40,7 +40,7 @@ struct Lag : BGModule {
 
 	bool active() override;
 	void modulate() override;
-	void processChannel(const ProcessArgs& args, int _c) override;
+	void processAll(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

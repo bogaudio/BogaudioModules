@@ -6,7 +6,7 @@ void Blank6::sampleRateChange() {
 	_rms.setSampleRate(APP->engine->getSampleRate());
 }
 
-void Blank6::processChannel(const ProcessArgs& args, int _c) {
+void Blank6::processAll(const ProcessArgs& args) {
 	if (inputs[IN_INPUT].isConnected()) {
 		_haveLevel = true;
 		_level = _rms.next(inputs[IN_INPUT].getVoltageSum()) / 5.0f;

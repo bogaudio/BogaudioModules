@@ -123,7 +123,7 @@ void AnalyzerXL::modulate() {
 	_core.setParams(averageN, _quality, _window);
 }
 
-void AnalyzerXL::processChannel(const ProcessArgs& args, int _c) {
+void AnalyzerXL::processAll(const ProcessArgs& args) {
 	for (int i = 0; i < 8; ++i) {
 		_core.stepChannel(i, inputs[SIGNALA_INPUT + i]);
 	}

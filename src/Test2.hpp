@@ -93,7 +93,7 @@ struct Test2 : BGModule {
 	}
 
 	void reset() override;
-	void processChannel(const ProcessArgs& args, int _c) override;
+	void processAll(const ProcessArgs& args) override;
 	// float oscillatorPitch1A();
 };
 

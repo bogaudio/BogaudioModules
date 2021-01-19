@@ -11,7 +11,7 @@ void VU::sampleRateChange() {
 	_rPeakSlew.setParams(sr, 750.0f, 1.0f);
 }
 
-void VU::processChannel(const ProcessArgs& args, int _c) {
+void VU::processAll(const ProcessArgs& args) {
 	float left = inputs[L_INPUT].getVoltageSum();
 	outputs[L_OUTPUT].setChannels(inputs[L_INPUT].getChannels());
 	outputs[L_OUTPUT].writeVoltages(inputs[L_INPUT].getVoltages());

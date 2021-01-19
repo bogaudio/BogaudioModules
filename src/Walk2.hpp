@@ -97,7 +97,7 @@ struct Walk2 : BGModule {
 	void fromJson(json_t* root) override;
 	void modulate() override;
 	void processAlways(const ProcessArgs& args) override;
-	void processChannel(const ProcessArgs& args, int _c) override;
+	void processAll(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

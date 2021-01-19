@@ -1,7 +1,7 @@
 
 #include "Reftone.hpp"
 
-void Reftone::processChannel(const ProcessArgs& args, int _c) {
+void Reftone::processAll(const ProcessArgs& args) {
 	// C4 -- the pitch.hpp reference frequency -- in knob values:
 	const float referencePitch = 0.0f;
 	const float referenceOctave = 4.0f;

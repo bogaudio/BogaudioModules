@@ -340,7 +340,7 @@ struct Test : BGModule {
 	}
 
 	void reset() override;
-	void processChannel(const ProcessArgs& args, int _c) override;
+	void processAll(const ProcessArgs& args) override;
 	float oscillatorPitch(float max = 10000.0);
 	float oscillatorPitch2(float max = 10000.0);
 	float ratio2();

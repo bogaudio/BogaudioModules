@@ -4,7 +4,7 @@
 void Test::reset() {
 }
 
-void Test::processChannel(const ProcessArgs& args, int _c) {
+void Test::processAll(const ProcessArgs& args) {
 	if (!(outputs[OUT_OUTPUT].isConnected() || outputs[OUT2_OUTPUT].isConnected())) {
 		return;
 	}

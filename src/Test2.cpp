@@ -8,7 +8,7 @@
 void Test2::reset() {
 }
 
-void Test2::processChannel(const ProcessArgs& args, int _c) {
+void Test2::processAll(const ProcessArgs& args) {
 	if (!outputs[OUT_OUTPUT].isConnected()) {
 		return;
 	}
