@@ -737,6 +737,7 @@
       "description": "Limiter",
       "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#lmtr",
       "tags": [
+        "Limiter",
         "Dynamics",
         "Polyphonic"
       ]

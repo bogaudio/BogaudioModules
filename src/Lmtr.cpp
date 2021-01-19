@@ -121,4 +121,4 @@ struct LmtrWidget : BGModuleWidget {
 	}
 };
 
-Model* modelLmtr = bogaudio::createModel<Lmtr, LmtrWidget>("Bogaudio-Lmtr", "LMTR", "Limiter", "Dynamics", "Polyphonic");
+Model* modelLmtr = bogaudio::createModel<Lmtr, LmtrWidget>("Bogaudio-Lmtr", "LMTR", "Limiter", "Limiter", "Dynamics", "Polyphonic");
