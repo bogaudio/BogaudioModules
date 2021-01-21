@@ -57,10 +57,16 @@ struct Nsgt : BGModule {
 	bool _softKnee = true;
 	float _attackMs = defaultAttackMs;
 	float _releaseMs = defaultReleaseMs;
+	float _thresholdRange = 1.0f;
+
+	struct ThresholdParamQuantity : ParamQuantity {
+		float getDisplayValue() override;
+		void setDisplayValue(float v) override;
+	};
 
 	Nsgt() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
-		configParam(THRESHOLD_PARAM, 0.0f, 1.0f, 0.8f, "Threshold", " dB", 0.0f, 30.0f, -24.0f);
+		configParam<ThresholdParamQuantity>(THRESHOLD_PARAM, 0.0f, 1.0f, 0.8f, "Threshold", " dB");
 		configParam<DynamicsRatioParamQuantity>(RATIO_PARAM, 0.0f, 1.0f, 0.55159f, "Ratio");
 		configParam(KNEE_PARAM, 0.0f, 1.0f, 1.0f, "Knee");
 	}

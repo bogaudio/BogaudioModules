@@ -1,6 +1,8 @@
 
 #include "Lmtr.hpp"
 
+#define THRESHOLD_RANGE "threshold_range"
+
 void Lmtr::Engine::sampleRateChange() {
 	float sampleRate = APP->engine->getSampleRate();
 	detector.setSampleRate(sampleRate);
@@ -8,9 +10,45 @@ void Lmtr::Engine::sampleRateChange() {
 	releaseSL.setParams(sampleRate, 600.0f);
 }
 
+float Lmtr::ThresholdParamQuantity::getDisplayValue() {
+	float v = getValue();
+	if (!module) {
+		return v;
+	}
+
+	v *= 30.0f;
+	v -= 24.0f;
+	v *= dynamic_cast<Lmtr*>(module)->_thresholdRange;
+	return v;
+}
+
+void Lmtr::ThresholdParamQuantity::setDisplayValue(float v) {
+	if (!module) {
+		return;
+	}
+	Lmtr* m = dynamic_cast<Lmtr*>(module);
+	v /= m->_thresholdRange;
+	v = clamp(v, -24.0f, 6.0f);
+	v += 24.0f;
+	v /= 30.0f;
+	setValue(v);
+}
+
 void Lmtr::sampleRateChange() {
 	for (int c = 0; c < _channels; ++c) {
 		_engines[c]->sampleRateChange();
+	}
+}
+
+json_t* Lmtr::toJson(json_t* root) {
+	json_object_set_new(root, THRESHOLD_RANGE, json_real(_thresholdRange));
+	return root;
+}
+
+void Lmtr::fromJson(json_t* root) {
+	json_t* tr = json_object_get(root, THRESHOLD_RANGE);
+	if (tr) {
+		_thresholdRange = std::max(0.0f, (float)json_real_value(tr));
 	}
 }
 
@@ -45,6 +83,7 @@ void Lmtr::modulateChannel(int c) {
 	}
 	e.thresholdDb *= 30.0f;
 	e.thresholdDb -= 24.0f;
+	e.thresholdDb *= _thresholdRange;
 
 	float outGain = params[OUTPUT_GAIN_PARAM].getValue();
 	if (inputs[OUTPUT_GAIN_INPUT].isConnected()) {
@@ -118,6 +157,16 @@ struct LmtrWidget : BGModuleWidget {
 
 		addOutput(createOutput<Port24>(leftOutputPosition, module, Lmtr::LEFT_OUTPUT));
 		addOutput(createOutput<Port24>(rightOutputPosition, module, Lmtr::RIGHT_OUTPUT));
+	}
+
+	void contextMenu(Menu* menu) override {
+		auto m = dynamic_cast<Lmtr*>(module);
+		assert(m);
+
+		OptionsMenuItem* tr = new OptionsMenuItem("Threshold range");
+		tr->addItem(OptionMenuItem("1x (-24dB to 6dB)", [m]() { return m->_thresholdRange == 1.0f; }, [m]() { m->_thresholdRange = 1.0f; }));
+		tr->addItem(OptionMenuItem("2x (-48dB to 12dB)", [m]() { return m->_thresholdRange == 2.0f; }, [m]() { m->_thresholdRange = 2.0f; }));
+		OptionsMenuItem::addToMenu(tr, menu);
 	}
 };
 

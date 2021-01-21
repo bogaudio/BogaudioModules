@@ -74,10 +74,16 @@ struct Pressor : BGModule {
 	bool _compressorMode = true;
 	bool _rmsDetector = true;
 	bool _softKnee = true;
+	float _thresholdRange = 1.0f;
+
+	struct ThresholdParamQuantity : ParamQuantity {
+		float getDisplayValue() override;
+		void setDisplayValue(float v) override;
+	};
 
 	Pressor() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
-		configParam(THRESHOLD_PARAM, 0.0f, 1.0f, 0.8f, "Threshold", " dB", 0.0f, 30.0f, -24.0f);
+		configParam<ThresholdParamQuantity>(THRESHOLD_PARAM, 0.0f, 1.0f, 0.8f, "Threshold", " dB");
 		configParam<DynamicsRatioParamQuantity>(RATIO_PARAM, 0.0f, 1.0f, 0.55159f, "Ratio");
 		configParam<ScaledSquaringParamQuantity<500>>(ATTACK_PARAM, 0.0f, 1.0f, 0.31623f, "Attack", " ms");
 		configParam<ScaledSquaringParamQuantity<2>>(RELEASE_PARAM, 0.0f, 1.0f, 0.31623f, "Release", " s");
@@ -90,6 +96,8 @@ struct Pressor : BGModule {
 	}
 
 	void sampleRateChange() override;
+	json_t* toJson(json_t* root) override;
+	void fromJson(json_t* root) override;
 	bool active() override;
 	int channels() override;
 	void addChannel(int c) override;

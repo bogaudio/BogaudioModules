@@ -3,9 +3,34 @@
 
 #define ATTACK_MS "attack_ms"
 #define RELEASE_MS "release_ms"
+#define THRESHOLD_RANGE "threshold_range"
 
 void Nsgt::Engine::sampleRateChange() {
 	detector.setSampleRate(APP->engine->getSampleRate());
+}
+
+float Nsgt::ThresholdParamQuantity::getDisplayValue() {
+	float v = getValue();
+	if (!module) {
+		return v;
+	}
+
+	v *= 30.0f;
+	v -= 24.0f;
+	v *= dynamic_cast<Nsgt*>(module)->_thresholdRange;
+	return v;
+}
+
+void Nsgt::ThresholdParamQuantity::setDisplayValue(float v) {
+	if (!module) {
+		return;
+	}
+	Nsgt* m = dynamic_cast<Nsgt*>(module);
+	v /= m->_thresholdRange;
+	v = clamp(v, -24.0f, 6.0f);
+	v += 24.0f;
+	v /= 30.0f;
+	setValue(v);
 }
 
 void Nsgt::sampleRateChange() {
@@ -17,6 +42,7 @@ void Nsgt::sampleRateChange() {
 json_t* Nsgt::toJson(json_t* root) {
 	json_object_set_new(root, ATTACK_MS, json_real(_attackMs));
 	json_object_set_new(root, RELEASE_MS, json_real(_releaseMs));
+	json_object_set_new(root, THRESHOLD_RANGE, json_real(_thresholdRange));
 	return root;
 }
 
@@ -29,6 +55,11 @@ void Nsgt::fromJson(json_t* root) {
 	json_t* r = json_object_get(root, RELEASE_MS);
 	if (r) {
 		_releaseMs = std::max(0.0f, (float)json_real_value(r));
+	}
+
+	json_t* tr = json_object_get(root, THRESHOLD_RANGE);
+	if (tr) {
+		_thresholdRange = std::max(0.0f, (float)json_real_value(tr));
 	}
 }
 
@@ -63,6 +94,7 @@ void Nsgt::modulateChannel(int c) {
 	}
 	e.thresholdDb *= 30.0f;
 	e.thresholdDb -= 24.0f;
+	e.thresholdDb *= _thresholdRange;
 
 	float ratio = params[RATIO_PARAM].getValue();
 	if (inputs[RATIO_INPUT].isConnected()) {
@@ -253,6 +285,11 @@ struct NsgtWidget : BGModuleWidget {
 
 		menu->addChild(new AttackMenuItem(m));
 		menu->addChild(new ReleaseMenuItem(m));
+
+		OptionsMenuItem* tr = new OptionsMenuItem("Threshold range");
+		tr->addItem(OptionMenuItem("1x (-24dB to 6dB)", [m]() { return m->_thresholdRange == 1.0f; }, [m]() { m->_thresholdRange = 1.0f; }));
+		tr->addItem(OptionMenuItem("2x (-48dB to 12dB)", [m]() { return m->_thresholdRange == 2.0f; }, [m]() { m->_thresholdRange = 2.0f; }));
+		OptionsMenuItem::addToMenu(tr, menu);
 	}
 };
 

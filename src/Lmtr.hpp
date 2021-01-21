@@ -50,15 +50,23 @@ struct Lmtr : BGModule {
 
 	Engine* _engines[maxChannels] {};
 	bool _softKnee = true;
+	float _thresholdRange = 1.0f;
+
+	struct ThresholdParamQuantity : ParamQuantity {
+		float getDisplayValue() override;
+		void setDisplayValue(float v) override;
+	};
 
 	Lmtr() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
-		configParam(THRESHOLD_PARAM, 0.0f, 1.0f, 0.8f, "Threshold", " dB", 0.0f, 30.0f, -24.0f);
+		configParam<ThresholdParamQuantity>(THRESHOLD_PARAM, 0.0f, 1.0f, 0.8f, "Threshold", " dB");
 		configParam(OUTPUT_GAIN_PARAM, 0.0f, 1.0f, 0.0f, "Output gain", " dB", 0.0f, 24.0f);
 		configParam(KNEE_PARAM, 0.0f, 1.0f, 0.0f, "Knee");
 	}
 
 	void sampleRateChange() override;
+	json_t* toJson(json_t* root) override;
+	void fromJson(json_t* root) override;
 	bool active() override;
 	int channels() override;
 	void addChannel(int c) override;

@@ -1,13 +1,51 @@
 
 #include "Pressor.hpp"
 
+#define THRESHOLD_RANGE "threshold_range"
+
 void Pressor::Engine::sampleRateChange() {
 	detectorRMS.setSampleRate(APP->engine->getSampleRate());
+}
+
+float Pressor::ThresholdParamQuantity::getDisplayValue() {
+	float v = getValue();
+	if (!module) {
+		return v;
+	}
+
+	v *= 30.0f;
+	v -= 24.0f;
+	v *= dynamic_cast<Pressor*>(module)->_thresholdRange;
+	return v;
+}
+
+void Pressor::ThresholdParamQuantity::setDisplayValue(float v) {
+	if (!module) {
+		return;
+	}
+	Pressor* m = dynamic_cast<Pressor*>(module);
+	v /= m->_thresholdRange;
+	v = clamp(v, -24.0f, 6.0f);
+	v += 24.0f;
+	v /= 30.0f;
+	setValue(v);
 }
 
 void Pressor::sampleRateChange() {
 	for (int c = 0; c < _channels; ++c) {
 		_engines[c]->sampleRateChange();
+	}
+}
+
+json_t* Pressor::toJson(json_t* root) {
+	json_object_set_new(root, THRESHOLD_RANGE, json_real(_thresholdRange));
+	return root;
+}
+
+void Pressor::fromJson(json_t* root) {
+	json_t* tr = json_object_get(root, THRESHOLD_RANGE);
+	if (tr) {
+		_thresholdRange = std::max(0.0f, (float)json_real_value(tr));
 	}
 }
 
@@ -51,6 +89,7 @@ void Pressor::modulateChannel(int c) {
 	}
 	e.thresholdDb *= 30.0f;
 	e.thresholdDb -= 24.0f;
+	e.thresholdDb *= _thresholdRange;
 
 	float ratio = params[RATIO_PARAM].getValue();
 	if (inputs[RATIO_INPUT].isConnected()) {
@@ -262,6 +301,16 @@ struct PressorWidget : BGModuleWidget {
 		addOutput(createOutput<Port24>(envelopeOutputPosition, module, Pressor::ENVELOPE_OUTPUT));
 		addOutput(createOutput<Port24>(leftOutputPosition, module, Pressor::LEFT_OUTPUT));
 		addOutput(createOutput<Port24>(rightOutputPosition, module, Pressor::RIGHT_OUTPUT));
+	}
+
+	void contextMenu(Menu* menu) override {
+		auto m = dynamic_cast<Pressor*>(module);
+		assert(m);
+
+		OptionsMenuItem* tr = new OptionsMenuItem("Threshold range");
+		tr->addItem(OptionMenuItem("1x (-24dB to 6dB)", [m]() { return m->_thresholdRange == 1.0f; }, [m]() { m->_thresholdRange = 1.0f; }));
+		tr->addItem(OptionMenuItem("2x (-48dB to 12dB)", [m]() { return m->_thresholdRange == 2.0f; }, [m]() { m->_thresholdRange = 2.0f; }));
+		OptionsMenuItem::addToMenu(tr, menu);
 	}
 };
 
