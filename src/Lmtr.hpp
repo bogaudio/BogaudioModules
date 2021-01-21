@@ -48,8 +48,15 @@ struct Lmtr : BGModule {
 		void sampleRateChange();
 	};
 
+	static constexpr float defaultAttackMs = 150.0f;
+	static constexpr float maxAttackMs = 5000.0f;
+	static constexpr float defaultReleaseMs = 600.0f;
+	static constexpr float maxReleaseMs = 20000.0f;
+
 	Engine* _engines[maxChannels] {};
 	bool _softKnee = true;
+	float _attackMs = defaultAttackMs;
+	float _releaseMs = defaultReleaseMs;
 	float _thresholdRange = 1.0f;
 
 	struct ThresholdParamQuantity : ParamQuantity {
