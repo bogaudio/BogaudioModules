@@ -27,6 +27,8 @@ void Ranalyzer::sampleRateChange() {
 	_sampleTime = 1.0f / _sampleRate;
 	_maxFrequency = roundf(maxFrequencyNyquistRatio * _sampleRate);
 	_chirp.setSampleRate(_sampleRate);
+	_rangeMinHz = 0.0f;
+	_rangeMaxHz = 0.5f * _sampleRate;
 	if (_sampleRate >= 96000.0f) {
 		_core.setParams(1, AnalyzerCore::QUALITY_FIXED_32K, AnalyzerCore::WINDOW_NONE);
 	}

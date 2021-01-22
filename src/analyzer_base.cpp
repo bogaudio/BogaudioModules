@@ -459,6 +459,8 @@ void AnalyzerDisplay::draw(const DrawArgs& args) {
 		amplitudePlot = _module->_amplitudePlot;
 		rangeMinHz = _module->_rangeMinHz;
 		rangeMaxHz = _module->_rangeMaxHz;
+		assert(rangeMaxHz <= 0.5f * APP->engine->getSampleRate());
+		assert(rangeMinHz < rangeMaxHz);
 	}
 	else {
 		rangeMaxHz = 0.5f * APP->engine->getSampleRate();
