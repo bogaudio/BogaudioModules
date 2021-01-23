@@ -84,6 +84,8 @@ struct FMOp : BGModule {
 	};
 
 	bool _linearLevel = false;
+	bool _antiAliasFeedback = true;
+	bool _antiAliasDepth = true;
 	bool _levelEnvelopeOn = false;
 	bool _feedbackEnvelopeOn = false;
 	bool _depthEnvelopeOn = false;

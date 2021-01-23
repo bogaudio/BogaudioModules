@@ -3,6 +3,8 @@
 #include "dsp/pitch.hpp"
 
 #define LINEAR_LEVEL "linearLevel"
+#define ANTIALIAS_FEEDBACK "antialias_feedback"
+#define ANTIALIAS_DEPTH "antialias_depth"
 
 float FMOp::RatioParamQuantity::getDisplayValue() {
 	float v = getValue();
@@ -56,6 +58,8 @@ void FMOp::Engine::sampleRateChange() {
 
 json_t* FMOp::toJson(json_t* root) {
 	json_object_set_new(root, LINEAR_LEVEL, json_boolean(_linearLevel));
+	json_object_set_new(root, ANTIALIAS_FEEDBACK, json_boolean(_antiAliasFeedback));
+	json_object_set_new(root, ANTIALIAS_DEPTH, json_boolean(_antiAliasDepth));
 	return root;
 }
 
@@ -63,6 +67,16 @@ void FMOp::fromJson(json_t* root) {
 	json_t* ll = json_object_get(root, LINEAR_LEVEL);
 	if (ll) {
 		_linearLevel = json_is_true(ll);
+	}
+
+	json_t* aaf = json_object_get(root, ANTIALIAS_FEEDBACK);
+	if (aaf) {
+		_antiAliasFeedback = json_is_true(aaf);
+	}
+
+	json_t* aad = json_object_get(root, ANTIALIAS_DEPTH);
+	if (aad) {
+		_antiAliasDepth = json_is_true(aad);
 	}
 }
 
@@ -196,18 +210,20 @@ void FMOp::processChannel(const ProcessArgs& args, int c) {
 		offset = feedback * e.feedbackDelayedSample;
 	}
 
+	bool depthOn = false;
 	if (inputs[FM_INPUT].isConnected()) {
 		float depth = e.depthSL.next(e.depth);
 		if (_depthEnvelopeOn) {
 			depth *= envelope;
 		}
 		offset += inputs[FM_INPUT].getPolyVoltage(c) * depth * 2.0f;
+		depthOn = depth > 0.001f;
 	}
 
 	float sample = 0.0f;
 	if (out > 0.0001f) {
 		Phasor::phase_delta_t o = Phasor::radiansToPhase(offset);
-		if (feedbackOn) {
+		if ((feedbackOn && _antiAliasFeedback) || (depthOn && _antiAliasDepth)) {
 			if (e.oversampleMix < 1.0f) {
 				e.oversampleMix += oversampleMixIncrement;
 			}
@@ -331,6 +347,9 @@ struct FMOpWidget : BGModuleWidget {
 		auto fmop = dynamic_cast<FMOp*>(module);
 		assert(fmop);
 		menu->addChild(new BoolOptionMenuItem("Linear level response", [fmop]() { return &fmop->_linearLevel; }));
+
+		menu->addChild(new BoolOptionMenuItem("Anti-alias feedback", [fmop]() { return &fmop->_antiAliasFeedback; }));
+		menu->addChild(new BoolOptionMenuItem("Anti-alias external FM", [fmop]() { return &fmop->_antiAliasDepth; }));
 	}
 };
 

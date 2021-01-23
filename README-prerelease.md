@@ -138,6 +138,8 @@ A sine-wave oscillator and simple synth voice designed to allow patching up the 
   - An on-board ADSR, controlled by the GATE input, with selectable routing to output level, feedback and depth, with CV control over the sustain level.
   - A main frequency knob calibrated for setting the frequency as a ratio of the frequency dictated by the V/OCT input - assuming a single V/OCT CV is routed to multiple FM-OPs, this allows the relative frequency of each operator to be set via ratios.
 
+Anti-aliasing techniques are applied when feedback or external FM are in use.  Either condition for anti-aliasing can be disabled on the context menu.  Prior to version 1.1.36, due to a long-standing bug, there was no anti-aliasing for external FM, unless feedback was also on.  To get that behavior back, **the true vintage FM-OP sound**, disable "Anti-alias external FM" on the menu.
+
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
 
 #### <a name="chirp"></a> CHIRP
