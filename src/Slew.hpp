@@ -12,6 +12,7 @@ struct Slew : BGModule {
 		RISE_SHAPE_PARAM,
 		FALL_PARAM,
 		FALL_SHAPE_PARAM,
+		SLOW_PARAM,
 		NUM_PARAMS
 	};
 
@@ -28,6 +29,7 @@ struct Slew : BGModule {
 	};
 
 	RiseFallShapedSlewLimiter _slew[maxChannels];
+	float _timeScale = 1.0f;
 
 	Slew() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
@@ -35,10 +37,12 @@ struct Slew : BGModule {
 		configParam(RISE_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "Rise shape");
 		configParam<EnvelopeSegmentParamQuantity>(FALL_PARAM, 0.0f, 1.0f, 0.31623f, "Fall", " s");
 		configParam(FALL_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "Fall shape");
+		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow mode");
 	}
 
 	bool active() override;
 	int channels() override;
+	void modulate() override;
 	void modulateChannel(int c) override;
 	void processChannel(const ProcessArgs& args, int c) override;
 };

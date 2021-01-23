@@ -1267,6 +1267,10 @@ The rising and falling slew rates and shapes are set independently.  The RISE an
 
 The RISE and FALL shape knobs affect the movement of the output as it catches up to the input (the shape it would draw on a scope). The shapes vary between log, linear and exponential curves.
 
+RISE and FALL each have a unipolar (0-10V) CV input affecting the corresponding slew rate.
+
+If SLOW is enabled, the slew rates for both RISE and FALL are 10x slower what they would otherwise be, based on the knobs and CVs.
+
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the channels of the IN input.
 
 #### <a name="sums"></a> SUMS
