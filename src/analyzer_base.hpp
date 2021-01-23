@@ -1,10 +1,11 @@
 
 #pragma once
 
-#include <thread>
-#include <mutex>
-#include <condition_variable>
 #include <atomic>
+#include <condition_variable>
+#include <memory>
+#include <mutex>
+#include <thread>
 
 #include "bogaudio.hpp"
 #include "dsp/analyzer.hpp"
@@ -90,6 +91,7 @@ struct AnalyzerCore {
 	int _binsN;
 	float* _outBufs;
 	std::atomic<float*>* _currentOutBufs;
+	float _sampleRate = 1000.0f;
 	int _averageN = 1;
 	Quality _quality = QUALITY_GOOD;
 	Window _window = WINDOW_KAISER;
@@ -114,8 +116,9 @@ struct AnalyzerCore {
 		delete[] _currentOutBufs;
 	}
 
-	void setParams(int averageN, Quality quality, Window window);
+	void setParams(float sampleRate, int averageN, Quality quality, Window window);
 	void resetChannels();
+	void resetChannelsLocked();
 	SpectrumAnalyzer::Size size();
 	SpectrumAnalyzer::WindowType window();
 	inline float* getBins(int i) {
@@ -188,6 +191,8 @@ struct AnalyzerDisplay : TransparentWidget, AnalyzerTypes {
 		float at(int i) override { return _bins[i]; }
 	};
 
+	typedef std::function<std::unique_ptr<BinsReader>(AnalyzerCore&)> BinsReaderFactory;
+
 	const int _insetAround = 2;
 	const int _insetLeft = _insetAround + 12;
 	const int _insetRight = _insetAround + 2;
@@ -221,7 +226,7 @@ struct AnalyzerDisplay : TransparentWidget, AnalyzerTypes {
 	bool _drawInset;
 	std::shared_ptr<Font> _font;
 	float _xAxisLogFactor = baseXAxisLogFactor;
-	BinsReader** _channelBinsReaders = NULL;
+	BinsReaderFactory* _channelBinsReaderFactories = NULL;
 	bool* _displayChannel = NULL;
 	std::string* _channelLabels = NULL;
 	Vec _freezeMouse;
@@ -242,7 +247,7 @@ struct AnalyzerDisplay : TransparentWidget, AnalyzerTypes {
 	, _font(APP->window->loadFont(asset::plugin(pluginInstance, "res/fonts/inconsolata.ttf")))
 	{
 		if (_module) {
-			_channelBinsReaders = new BinsReader*[_module->_core._nChannels] {};
+			_channelBinsReaderFactories = new BinsReaderFactory[_module->_core._nChannels] {};
 			_displayChannel = new bool[_module->_core._nChannels] {};
 			_channelLabels = new std::string[_module->_core._nChannels];
 			std::fill_n(_displayChannel, _module->_core._nChannels, true);
@@ -250,12 +255,7 @@ struct AnalyzerDisplay : TransparentWidget, AnalyzerTypes {
 	}
 	~AnalyzerDisplay() {
 		if (_module) {
-			for (int i = 0; i < _module->_core._nChannels; ++i) {
-				if (_channelBinsReaders) {
-					delete _channelBinsReaders[i];
-				}
-			}
-			delete[] _channelBinsReaders;
+			delete[] _channelBinsReaderFactories;
 			delete[] _displayChannel;
 			delete[] _channelLabels;
 		}
@@ -265,7 +265,7 @@ struct AnalyzerDisplay : TransparentWidget, AnalyzerTypes {
 	void onDragMove(const event::DragMove& e) override;
 	void onDragEnd(const event::DragEnd& e) override;
 	void onHoverKey(const event::HoverKey &e) override;
-	void setChannelBinsReader(int channel, BinsReader* br);
+	void setChannelBinsReaderFactory(int channel, BinsReaderFactory brf);
 	void displayChannel(int channel, bool display);
 	void channelLabel(int channel, std::string label);
 	void draw(const DrawArgs& args) override;

@@ -19,7 +19,7 @@ void AnalyzerXL::reset() {
 }
 
 void AnalyzerXL::sampleRateChange() {
-	_core.resetChannels();
+	_sampleRate = APP->engine->getSampleRate();
 }
 
 json_t* AnalyzerXL::toJson(json_t* root) {
@@ -110,7 +110,7 @@ void AnalyzerXL::fromJson(json_t* root) {
 
 void AnalyzerXL::modulate() {
 	_rangeMinHz = 0.0f;
-	_rangeMaxHz = 0.5f * APP->engine->getSampleRate();
+	_rangeMaxHz = 0.5f * _sampleRate;
 	if (_range < 0.0f) {
 		_rangeMaxHz *= 1.0f + _range;
 	}
@@ -118,9 +118,9 @@ void AnalyzerXL::modulate() {
 		_rangeMinHz = _range * _rangeMaxHz;
 	}
 
-	float smooth = _smooth / (_core.size() / (_core._overlap * APP->engine->getSampleRate()));
+	float smooth = _smooth / (_core.size() / (_core._overlap * _sampleRate));
 	int averageN = std::max(1, (int)roundf(smooth));
-	_core.setParams(averageN, _quality, _window);
+	_core.setParams(_sampleRate, averageN, _quality, _window);
 }
 
 void AnalyzerXL::processAll(const ProcessArgs& args) {

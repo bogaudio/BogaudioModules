@@ -84,8 +84,14 @@ void ChannelAnalyzer::work() {
 }
 
 
-void AnalyzerCore::setParams(int averageN, Quality quality, Window window) {
+void AnalyzerCore::setParams(float sampleRate, int averageN, Quality quality, Window window) {
+	std::lock_guard<std::mutex> lock(_channelsMutex);
+
 	bool reset = false;
+	if (_sampleRate != sampleRate) {
+		_sampleRate = sampleRate;
+		reset = true;
+	}
 	if (_averageN != averageN) {
 		_averageN = averageN;
 		reset = true;
@@ -99,15 +105,19 @@ void AnalyzerCore::setParams(int averageN, Quality quality, Window window) {
 		reset = true;
 	}
 	if (reset) {
-		resetChannels();
+		resetChannelsLocked();
 	}
 }
 
 void AnalyzerCore::resetChannels() {
+	std::lock_guard<std::mutex> lock(_channelsMutex);
+	resetChannelsLocked();
+}
+
+void AnalyzerCore::resetChannelsLocked() {
 	_size = size();
 	_binsN = _size / _binAverageN;
 
-	std::lock_guard<std::mutex> lock(_channelsMutex);
 	for (int i = 0; i < _nChannels; ++i) {
 		if (_channels[i]) {
 			delete _channels[i];
@@ -127,7 +137,7 @@ SpectrumAnalyzer::Size AnalyzerCore::size() {
 		default:;
 	}
 
-	if (APP->engine->getSampleRate() < 96000.0f) {
+	if (_sampleRate < 96000.0f) {
 		switch (_quality) {
 			case QUALITY_ULTRA_ULTRA: {
 				return SpectrumAnalyzer::SIZE_16384;
@@ -179,7 +189,7 @@ float AnalyzerCore::getPeak(int channel, float minHz, float maxHz) {
 	assert(channel >= 0 && channel < _nChannels);
 	const float* bins = getBins(channel);
 	const int bandsPerBin = _size / _binsN;
-	const float fWidth = (APP->engine->getSampleRate() / 2.0f) / (float)(_size / bandsPerBin);
+	const float fWidth = (_sampleRate / 2.0f) / (float)(_size / bandsPerBin);
 	float max = 0.0f;
 	int maxBin = 0;
 	int i = std::max(0, (int)(minHz / fWidth));
@@ -217,7 +227,7 @@ void AnalyzerCore::stepChannelSample(int channelIndex, float sample) {
 			_size,
 			_overlap,
 			window(),
-			APP->engine->getSampleRate(),
+			_sampleRate,
 			_averageN,
 			_binAverageN,
 			_outBufs + 2 * channelIndex * _outBufferN,
@@ -373,10 +383,11 @@ void AnalyzerDisplay::onButton(const event::Button& e) {
 	}
 	_freezeBufs = new float[_module->_core._nChannels * _module->_core._outBufferN];
 	for (int i = 0; i < _module->_core._nChannels; ++i) {
-		if (_channelBinsReaders[i]) {
+		if (_channelBinsReaderFactories[i]) {
+			std::unique_ptr<BinsReader> br = _channelBinsReaderFactories[i](_module->_core);
 			float* dest = _freezeBufs + i * _module->_core._outBufferN;
 			for (int j = 0; j < _module->_core._outBufferN; ++j) {
-				*(dest + j) = _channelBinsReaders[i]->at(j);
+				*(dest + j) = br->at(j);
 			}
 		}
 		else {
@@ -421,14 +432,11 @@ void AnalyzerDisplay::onHoverKey(const event::HoverKey &e) {
 	}
 }
 
-void AnalyzerDisplay::setChannelBinsReader(int channel, BinsReader* br) {
-	assert(_channelBinsReaders);
+void AnalyzerDisplay::setChannelBinsReaderFactory(int channel, BinsReaderFactory brf) {
+	assert(_channelBinsReaderFactories);
 	assert(_module);
 	assert(channel >= 0 && channel < _module->_core._nChannels);
-	if (_channelBinsReaders[channel]) {
-		delete _channelBinsReaders[channel];
-	}
-	_channelBinsReaders[channel] = br; // br now owned here.
+	_channelBinsReaderFactories[channel] = brf;
 }
 
 void AnalyzerDisplay::displayChannel(int channel, bool display) {
@@ -459,7 +467,7 @@ void AnalyzerDisplay::draw(const DrawArgs& args) {
 		amplitudePlot = _module->_amplitudePlot;
 		rangeMinHz = _module->_rangeMinHz;
 		rangeMaxHz = _module->_rangeMaxHz;
-		assert(rangeMaxHz <= 0.5f * APP->engine->getSampleRate());
+		assert(rangeMaxHz <= 0.5f * _module->_core._sampleRate);
 		assert(rangeMinHz < rangeMaxHz);
 	}
 	else {
@@ -501,8 +509,9 @@ void AnalyzerDisplay::draw(const DrawArgs& args) {
 					GenericBinsReader br(_freezeBufs ? _freezeBufs + i * _module->_core._outBufferN : _module->_core.getBins(i));
 					drawGraph(args, br, _channelColors[i % channelColorsN], strokeWidth, frequencyPlot, rangeMinHz, rangeMaxHz, amplitudePlot);
 				}
-				else if (_channelBinsReaders[i]) {
-					drawGraph(args, *_channelBinsReaders[i], _channelColors[i % channelColorsN], strokeWidth, frequencyPlot, rangeMinHz, rangeMaxHz, amplitudePlot);
+				else if (_channelBinsReaderFactories[i]) {
+					std::unique_ptr<BinsReader> br = _channelBinsReaderFactories[i](_module->_core);
+					drawGraph(args, *br, _channelColors[i % channelColorsN], strokeWidth, frequencyPlot, rangeMinHz, rangeMaxHz, amplitudePlot);
 				}
 			}
 		}
@@ -538,7 +547,7 @@ void AnalyzerDisplay::drawHeader(const DrawArgs& args, float rangeMinHz, float r
 	const int charPx = 5;
 	int x = _insetAround + 2;
 
-	std::string s = format("Peaks (+/-%0.1f):", (APP->engine->getSampleRate() / 2.0f) / (float)(_module->_core._size / _module->_core._binAverageN));
+	std::string s = format("Peaks (+/-%0.1f):", (_module->_core._sampleRate / 2.0f) / (float)(_module->_core._size / _module->_core._binAverageN));
 	drawText(args, s.c_str(), x, _insetTop + textY);
 	x += s.size() * charPx - 0;
 
@@ -809,7 +818,7 @@ void AnalyzerDisplay::drawGraph(
 	float rangeMaxHz,
 	AmplitudePlot ampPlot
 ) {
-	float nyquist = 0.5f * APP->engine->getSampleRate();
+	float nyquist = 0.5f * _module->_core._sampleRate;
 	int binsN = _module->_core._size / _module->_core._binAverageN;
 	float binHz = nyquist / (float)binsN;
 	float range = (rangeMaxHz - rangeMinHz) / nyquist;
@@ -821,7 +830,9 @@ void AnalyzerDisplay::drawGraph(
 	nvgStrokeWidth(args.vg, strokeWidth);
 	nvgBeginPath(args.vg);
 	for (int i = 0; i < pointsN; ++i) {
-		int height = binValueToHeight(bins.at(pointsOffset + i), ampPlot);
+		int oi = pointsOffset + i;
+		assert(oi < _module->_core._outBufferN);
+		int height = binValueToHeight(bins.at(oi), ampPlot);
 		if (i == 0) {
 			nvgMoveTo(args.vg, _insetLeft, _insetTop + (_graphSize.y - height));
 		}
@@ -835,7 +846,7 @@ void AnalyzerDisplay::drawGraph(
 
 void AnalyzerDisplay::freezeValues(float rangeMinHz, float rangeMaxHz, int& binI, float& lowHz, float& highHz) {
 	int binsN = _module->_core._size / _module->_core._binAverageN;
-	float binHz = (0.5f * APP->engine->getSampleRate()) / (float)binsN;
+	float binHz = (0.5f * _module->_core._sampleRate) / (float)binsN;
 	float mouseHz = powf((_freezeMouse.x - _insetLeft) / (float)_graphSize.x, 1.0f / _xAxisLogFactor);
 	mouseHz *= rangeMaxHz - rangeMinHz;
 	mouseHz += rangeMinHz;
@@ -886,7 +897,7 @@ void AnalyzerDisplay::drawFreezeOver(const DrawArgs& args, int binI, int binsN, 
 	values.push_back(formatHz(highHz));
 	colors.push_back(NULL);
 	for (int i = 0; i < _module->_core._nChannels; ++i) {
-		if (_displayChannel[i] && (_module->_core._channels[i] || _channelBinsReaders[i])) {
+		if (_displayChannel[i] && (_module->_core._channels[i] || _channelBinsReaderFactories[i])) {
 			if (_channelLabels[i].empty()) {
 				labels.push_back(format("Ch. %d", i + 1));
 			}

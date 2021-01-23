@@ -30,10 +30,10 @@ void Ranalyzer::sampleRateChange() {
 	_rangeMinHz = 0.0f;
 	_rangeMaxHz = 0.5f * _sampleRate;
 	if (_sampleRate >= 96000.0f) {
-		_core.setParams(1, AnalyzerCore::QUALITY_FIXED_32K, AnalyzerCore::WINDOW_NONE);
+		_core.setParams(_sampleRate, 1, AnalyzerCore::QUALITY_FIXED_32K, AnalyzerCore::WINDOW_NONE);
 	}
 	else {
-		_core.setParams(1, AnalyzerCore::QUALITY_FIXED_16K, AnalyzerCore::WINDOW_NONE);
+		_core.setParams(_sampleRate, 1, AnalyzerCore::QUALITY_FIXED_16K, AnalyzerCore::WINDOW_NONE);
 	}
 	setWindow(_windowType);
 	_run = false;
@@ -268,18 +268,21 @@ void Ranalyzer::setWindow(WindowType wt) {
 }
 
 
-
 struct AnalysisBinsReader : AnalyzerDisplay::BinsReader {
-	AnalyzerBase* _base;
+	float* _testBins;
+	float* _responseBins;
 
-	AnalysisBinsReader(AnalyzerBase* base) : _base(base) {}
+	AnalysisBinsReader(float* testBins, float* responseBins) : _testBins(testBins), _responseBins(responseBins) {}
 
 	float at(int i) override {
-		assert(_base->_core._nChannels == 3);
+		float test = AnalyzerDisplay::binValueToDb(_testBins[i]);
+		float response = AnalyzerDisplay::binValueToDb(_responseBins[i]);
+		return AnalyzerDisplay::dbToBinValue(response = test);
+	}
 
-		float test = AnalyzerDisplay::binValueToDb(_base->_core.getBins(0)[i]);
-		float response = AnalyzerDisplay::binValueToDb(_base->_core.getBins(1)[i]);
-		return AnalyzerDisplay::dbToBinValue(response - test);
+	static std::unique_ptr<BinsReader> factory(AnalyzerCore& core) {
+		assert(core._nChannels == 3);
+		return std::unique_ptr<BinsReader>(new AnalysisBinsReader(core.getBins(0), core.getBins(1)));
 	}
 };
 
@@ -345,7 +348,7 @@ struct RanalyzerWidget : AnalyzerBaseWidget {
 			display->box.pos = inset;
 			display->box.size = size;
 			if (module) {
-				display->setChannelBinsReader(2, new AnalysisBinsReader(module));
+				display->setChannelBinsReaderFactory(2, AnalysisBinsReader::factory);
 				module->setChannelDisplayListener(display);
 				display->channelLabel(0, "Test");
 				display->channelLabel(1, "Response");

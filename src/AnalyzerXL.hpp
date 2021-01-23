@@ -28,6 +28,7 @@ struct AnalyzerXL : AnalyzerBase {
 		NUM_OUTPUTS
 	};
 
+	float _sampleRate = 1000.0f;
 	float _smooth = 0.25f;
 	AnalyzerCore::Quality _quality = AnalyzerCore::QUALITY_GOOD;
 	AnalyzerCore::Window _window = AnalyzerCore::WINDOW_KAISER;
