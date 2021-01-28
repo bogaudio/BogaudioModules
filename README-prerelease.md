@@ -1132,19 +1132,21 @@ A compact version of POLYCON16, that only works with polyphony channels 1-8.  Th
 
 #### <a name="polyoff16"></a> POLYOFF16
 
-POLYOFF16 allows for the offset and scaling of voltages on each channel of a polyphonic signal.  It can also be used as a replacement for Rack's MERGE, or as a CV-controllable version of POLYCON16.
+POLYOFF16 allows for the independent offset and scaling of voltages on each channel of a polyphonic signal.  It can also be used as a replacement for Rack's MERGE, which combines monophonic signals into a polyphonic signal, but here with per-channel offset and scale controls.
 
 The mode of operation is determined by the presence of an input at IN.  With an input:
   - The number of output polyphony channels is set equal to the number of channels on the input, and the CHAN knob is ignored.
   - The voltage of each polyphony channel on the input is processed by the corresponding OFFSET and SCALE knobs.
-  - The offset for each channel may be CV-controlled by a (monophonic) input at at it's corresponding CV port; the CV inputs expect +/-5V and are attenuverted by the OFFSET knob.
+  - The offset for each channel may be CV-controlled by a (monophonic) input at at its corresponding CV port; the CV inputs expect +/-5V and are attenuverted by the OFFSET knob.
 
 With no input at IN:
   - The output channels are set by the CHAN knob.
-  - A monophonic voltage may be provided at each channel's IN port; this is processed by the channel's OFFSET and SCALE before being merged to the output.  You can also think of the input voltage as being a CV for the constant value set by the OFFSET knob -- it's the same thing.
-  - With no input to a channel, the output voltage is just set by the channel's OFFSET and SCALE knobs.
+  - A monophonic voltage may be provided at each channel's IN port; this is processed by the channel's OFFSET and SCALE before being merged into the polyphonic output.
+  - With no input to a channel, the output voltage is just set by the channel's knobs.
 
-The module has the same "Range" content-menu options as POLYCON16.
+The module has the same "Range" context-menu options as POLYCON16, here altering the OFFSET voltages.
+
+The context-menu option "Order of operations" sets the order in which OFFSET and SCALE are applied to each channel.  The default is to scale, then offset.  This behavior was the opposite prior to version 1.1.36.  See <a href="#offset">OFFSET</a> for more detail on this; the behavior is the same here.
 
 #### <a name="polyoff8"></a> POLYOFF8
 

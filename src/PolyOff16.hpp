@@ -91,6 +91,8 @@ struct PolyOff16 : OutputRangeModule<BGModule> {
 		NUM_LIGHTS
 	};
 
+	bool _offsetFirst = false;
+
 	PolyOff16() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam<OutputRangeParamQuantity>(OFFSET1_PARAM, -1.0f, 1.0f, 0.0f, "Channel 1 offset", " V");
@@ -128,6 +130,8 @@ struct PolyOff16 : OutputRangeModule<BGModule> {
 		configParam(CHANNELS_PARAM, 1.0f, 16.0f, 1.0f, "Polyphony channels");
 	}
 
+	json_t* toJson(json_t* root) override;
+	void fromJson(json_t* root) override;
 	void processAll(const ProcessArgs& args) override;
 };
 

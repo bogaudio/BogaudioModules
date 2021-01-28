@@ -1,6 +1,22 @@
 
 #include "PolyOff8.hpp"
 
+#define OFFSET_FIRST "offset_first"
+
+json_t* PolyOff8::toJson(json_t* root) {
+	root = OutputRangeModule<BGModule>::toJson(root);
+	json_object_set_new(root, OFFSET_FIRST, json_boolean(_offsetFirst));
+	return root;
+}
+
+void PolyOff8::fromJson(json_t* root) {
+	OutputRangeModule<BGModule>::fromJson(root);
+	json_t* of = json_object_get(root, OFFSET_FIRST);
+	if (of) {
+		_offsetFirst = json_boolean_value(of);
+	}
+}
+
 void PolyOff8::processAll(const ProcessArgs& args) {
 	int cn = 1;
 	if (inputs[IN_INPUT].isConnected()) {
@@ -8,14 +24,24 @@ void PolyOff8::processAll(const ProcessArgs& args) {
 		outputs[OUT_OUTPUT].setChannels(cn);
 
 		for (int c = 0; c < cn; ++c) {
-			float out = clamp(params[OFFSET1_PARAM + 2 * c].getValue(), -1.0f, 1.0f);
+			float offset = clamp(params[OFFSET1_PARAM + 2 * c].getValue(), -1.0f, 1.0f);
 			if (inputs[CV1_INPUT + c].isConnected()) {
-				out *= clamp(inputs[CV1_INPUT + c].getVoltage() / 5.0f, -1.0f, 1.0f);
+				offset *= clamp(inputs[CV1_INPUT + c].getVoltage() / 5.0f, -1.0f, 1.0f);
 			}
-			out += _rangeOffset;
-			out *= _rangeScale;
-			out += inputs[IN_INPUT].getPolyVoltage(c);
-			out *= clamp(params[SCALE1_PARAM + 2 * c].getValue(), -1.0f, 1.0f);
+			offset += _rangeOffset;
+			offset *= _rangeScale;
+
+			float scale = clamp(params[SCALE1_PARAM + 2 * c].getValue(), -1.0f, 1.0f);
+
+			float out = inputs[IN_INPUT].getPolyVoltage(c);
+			if (_offsetFirst) {
+				out += offset;
+				out *= scale;
+			}
+			else {
+				out *= scale;
+				out += offset;
+			}
 			outputs[OUT_OUTPUT].setVoltage(clamp(out, -12.0f, 12.0f), c);
 		}
 	}
@@ -24,11 +50,21 @@ void PolyOff8::processAll(const ProcessArgs& args) {
 		outputs[OUT_OUTPUT].setChannels(cn);
 
 		for (int c = 0; c < cn; ++c) {
-			float out = clamp(params[OFFSET1_PARAM + 2 * c].getValue(), -1.0f, 1.0f);
-			out += _rangeOffset;
-			out *= _rangeScale;
-			out += inputs[CV1_INPUT + c].getVoltage();
-			out *= clamp(params[SCALE1_PARAM + 2 * c].getValue(), -1.0f, 1.0f);
+			float offset = clamp(params[OFFSET1_PARAM + 2 * c].getValue(), -1.0f, 1.0f);
+			offset += _rangeOffset;
+			offset *= _rangeScale;
+
+			float scale = clamp(params[SCALE1_PARAM + 2 * c].getValue(), -1.0f, 1.0f);
+
+			float out = inputs[CV1_INPUT + c].getVoltage();
+			if (_offsetFirst) {
+				out += offset;
+				out *= scale;
+			}
+			else {
+				out *= scale;
+				out += offset;
+			}
 			outputs[OUT_OUTPUT].setVoltage(clamp(out, -12.0f, 12.0f), c);
 		}
 	}
@@ -134,6 +170,14 @@ struct PolyOff8Widget : BGModuleWidget {
 
 	void contextMenu(Menu* menu) override {
 		OutputRangeOptionMenuItem::addOutputRangeOptionsToMenu(module, menu);
+
+		auto m = dynamic_cast<PolyOff8*>(module);
+		assert(m);
+
+		OptionsMenuItem* ooo = new OptionsMenuItem("Order of operations");
+		ooo->addItem(OptionMenuItem("Scale, then offset", [m]() { return !m->_offsetFirst; }, [m]() { m->_offsetFirst = false; }));
+		ooo->addItem(OptionMenuItem("Offset, then scale", [m]() { return m->_offsetFirst; }, [m]() { m->_offsetFirst = true; }));
+		OptionsMenuItem::addToMenu(ooo, menu);
 	}
 };
 
