@@ -1,19 +1,43 @@
 
 #include "Offset.hpp"
 
+#define OFFSET_FIRST "offset_first"
+
+json_t* Offset::toJson(json_t* root) {
+	root = DisableOutputLimitModule::toJson(root);
+	json_object_set_new(root, OFFSET_FIRST, json_boolean(_offsetFirst));
+	return root;
+}
+
+void Offset::fromJson(json_t* root) {
+	DisableOutputLimitModule::fromJson(root);
+	json_t* of = json_object_get(root, OFFSET_FIRST);
+	if (of) {
+		_offsetFirst = json_boolean_value(of);
+	}
+}
+
 int Offset::channels() {
 	return inputs[IN_INPUT].getChannels();
 }
 
 void Offset::processChannel(const ProcessArgs& args, int c) {
 	float offset = knobValue(params[OFFSET_PARAM], inputs[OFFSET_INPUT], c);
+	offset *= 10.0f;
+
 	float scale = knobValue(params[SCALE_PARAM], inputs[SCALE_INPUT], c);
 	scale = scale < 0.0f ? -pow(scale, 2.0f) : pow(scale, 2.0f);
 	scale *= 10.0;
 
 	float out = inputs[IN_INPUT].getVoltage(c);
-	out += 10.0f * offset;
-	out *= scale;
+	if (_offsetFirst) {
+		out += offset;
+		out *= scale;
+	}
+	else {
+		out *= scale;
+		out += offset;
+	}
 	if (!_disableOutputLimit) {
 		out = clamp(out, -12.0f, 12.0f);
 	}
@@ -57,6 +81,18 @@ struct OffsetWidget : DisableOutputLimitModuleWidget {
 		addInput(createInput<Port24>(inInputPosition, module, Offset::IN_INPUT));
 
 		addOutput(createOutput<Port24>(outOutputPosition, module, Offset::OUT_OUTPUT));
+	}
+
+	void contextMenu(Menu* menu) override {
+		DisableOutputLimitModuleWidget::contextMenu(menu);
+
+		auto m = dynamic_cast<Offset*>(module);
+		assert(m);
+
+		OptionsMenuItem* ooo = new OptionsMenuItem("Order of operations");
+		ooo->addItem(OptionMenuItem("Scale, then offset", [m]() { return !m->_offsetFirst; }, [m]() { m->_offsetFirst = false; }));
+		ooo->addItem(OptionMenuItem("Offset, then scale", [m]() { return m->_offsetFirst; }, [m]() { m->_offsetFirst = true; }));
+		OptionsMenuItem::addToMenu(ooo, menu);
 	}
 };
 

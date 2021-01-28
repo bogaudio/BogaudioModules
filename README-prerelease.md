@@ -1255,11 +1255,17 @@ _Polyphony:_ Polyphonic inputs are duplicated (channels intact) at their corresp
 
 #### <a name="offset"></a> OFFSET
 
-An offset and scaler.  The OFFSET and SCALE knobs have CV inputs.  With an input signal, output is `(input + offset) * scale`.  With no input connected, the output is constant in the value of `offset * scale`.
+An offset and scaler.  The OFFSET and SCALE knobs have CV inputs (unipolar, 0-10V).  There are two operating modes, as set by the "Order of operations" context (right-click) menu option:
+
+  - Scale, then offset (the default): the output is `(input * scale) + output`.  With no input connected, the output is just `offset`.
+
+  - Offset, then scale: the output is `(input + offset) * scale`.  With no input connected, the output is `offset * scale`.
+
+Note that prior to version 1.1.36, there was no mode setting, and the behavior was to offset, then scale.  This behavior change might affect older patches.
 
 By default, the output is capped at +/-12 volts (this is a standard in Rack).  A context menu option allows this limit to be disabled.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the channels of IN input.
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the channels of the IN input.
 
 #### <a name="slew"></a> SLEW
 
