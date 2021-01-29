@@ -34,7 +34,7 @@ RUN SDK_VERSION=$OSXCROSS_SDK_VERSION                           \
     cd /opt &&                                                  \
     git clone https://github.com/tpoechtrager/osxcross.git &&   \
     cd osxcross &&                                              \
-    git checkout e0a171828a72a0d7ad4409489033536590008ebf &&    \
+    git checkout 7c090bd8cd4ad28cf332f1d02267630d8f333c19 &&    \
     sed -i -e 's|-march=native||g' ./build_clang.sh ./wrapper/build.sh && \
     ./tools/get_dependencies.sh &&                              \
     curl -L -o ./tarballs/MacOSX${OSXCROSS_SDK_VERSION}.sdk.tar.xz \
