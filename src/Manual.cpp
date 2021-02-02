@@ -1,6 +1,8 @@
 
 #include "Manual.hpp"
 
+#define OUTPUT_SCALE "output_scale"
+
 void Manual::reset() {
 	_trigger.reset();
 	_pulse.process(10.0f);
@@ -8,6 +10,20 @@ void Manual::reset() {
 
 void Manual::sampleRateChange() {
 	_sampleTime = APP->engine->getSampleTime();
+}
+
+json_t* Manual::toJson(json_t* root) {
+	root = TriggerOnLoadModule::toJson(root);
+	json_object_set_new(root, OUTPUT_SCALE, json_real(_outputScale));
+	return root;
+}
+
+void Manual::fromJson(json_t* root) {
+	TriggerOnLoadModule::fromJson(root);
+	json_t* os = json_object_get(root, OUTPUT_SCALE);
+	if (os) {
+		_outputScale = json_real_value(os);
+	}
 }
 
 void Manual::processAll(const ProcessArgs& args) {
@@ -24,7 +40,7 @@ void Manual::processAll(const ProcessArgs& args) {
 	}
 	high = _pulse.process(_sampleTime);
 
-	float out = high ? 5.0f : 0.0f;
+	float out = high ? (5.0f * _outputScale) : 0.0f;
 	outputs[OUT1_OUTPUT].setVoltage(out);
 	outputs[OUT2_OUTPUT].setVoltage(out);
 	outputs[OUT3_OUTPUT].setVoltage(out);
@@ -69,6 +85,18 @@ struct ManualWidget : TriggerOnLoadModuleWidget {
 		addOutput(createOutput<Port24>(out6OutputPosition, module, Manual::OUT6_OUTPUT));
 		addOutput(createOutput<Port24>(out7OutputPosition, module, Manual::OUT7_OUTPUT));
 		addOutput(createOutput<Port24>(out8OutputPosition, module, Manual::OUT8_OUTPUT));
+	}
+
+	void contextMenu(Menu* menu) override {
+		TriggerOnLoadModuleWidget::contextMenu(menu);
+
+		auto m = dynamic_cast<Manual*>(module);
+		assert(m);
+
+		OptionsMenuItem* o = new OptionsMenuItem("Output");
+		o->addItem(OptionMenuItem("+10V", [m]() { return m->_outputScale == 2.0f; }, [m]() { m->_outputScale = 2.0f; }));
+		o->addItem(OptionMenuItem("+5V", [m]() { return m->_outputScale == 1.0f; }, [m]() { m->_outputScale = 1.0f; }));
+		OptionsMenuItem::addToMenu(o, menu);
 	}
 };
 

@@ -1235,17 +1235,17 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the 
 
 #### <a name="manual"></a> MANUAL
 
-A manual trigger/gate with 8 outputs.  A constant high value is sent from each output for as long as the TRIG button is held.  
+A manual trigger/gate with 8 outputs.  A constant +5V is sent from each output for as long as the TRIG button is held; 0V is output otherwise.  The high output voltage may be set to +10V on the context menu.
 
-MANUAL may be set to output a trigger pulse (+5V for 10ms) on patch load (akin to a Max/Msp loadbang).  This is off by default; enable clicking "Trigger on Load" on the module's context (right-click) menu.  The pulse is emitted 100ms after the patch starts processing samples.
+MANUAL may be set to output a trigger pulse (the high output voltage for 10ms) on patch load (akin to a Max/Msp loadbang).  This is off by default; enable clicking "Trigger on Load" on the module's context (right-click) menu.  The pulse is emitted 100ms after the patch starts processing samples.
 
 _Polyphony:_ Monophonic.
 
-#### <a name="4man"></a> 4MAN
+#### <a name="fourman"></a> 4MAN
 
 A version of MANUAL with four independent trigger buttons with separate outputs.
 
-The "Trigger on load" option, as on MANUAL, applies to all four outputs if enabled.
+The "Trigger on load" and "Output" options, as on MANUAL, apply to all four outputs if enabled.
 
 _Polyphony:_ Monophonic.
 

@@ -34,6 +34,7 @@ struct Manual : TriggerOnLoadModule {
 	rack::dsp::PulseGenerator _pulse;
 	float _sampleTime;
 	bogaudio::dsp::Timer* _initialDelay = NULL;
+	float _outputScale = 1.0f;
 
 	Manual() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
@@ -49,6 +50,8 @@ struct Manual : TriggerOnLoadModule {
 
 	void reset() override;
 	void sampleRateChange() override;
+	json_t* toJson(json_t* root) override;
+	void fromJson(json_t* root) override;
 	void processAll(const ProcessArgs& args) override;
 	bool shouldTriggerOnNextLoad() override {
 		return true;

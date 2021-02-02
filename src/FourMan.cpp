@@ -1,6 +1,8 @@
 
 #include "FourMan.hpp"
 
+#define OUTPUT_SCALE "output_scale"
+
 void FourMan::reset() {
 	for (int i = 0; i < 4; i++) {
 		_trigger[i].reset();
@@ -10,6 +12,20 @@ void FourMan::reset() {
 
 void FourMan::sampleRateChange() {
 	_sampleTime = APP->engine->getSampleTime();
+}
+
+json_t* FourMan::toJson(json_t* root) {
+	root = TriggerOnLoadModule::toJson(root);
+	json_object_set_new(root, OUTPUT_SCALE, json_real(_outputScale));
+	return root;
+}
+
+void FourMan::fromJson(json_t* root) {
+	TriggerOnLoadModule::fromJson(root);
+	json_t* os = json_object_get(root, OUTPUT_SCALE);
+	if (os) {
+		_outputScale = json_real_value(os);
+	}
 }
 
 void FourMan::processAll(const ProcessArgs& args) {
@@ -27,7 +43,7 @@ void FourMan::processAll(const ProcessArgs& args) {
 		}
 		high = _pulse[i].process(_sampleTime);
 
-		outputs[OUT1_OUTPUT + i].setVoltage(high ? 5.0f : 0.0f);
+		outputs[OUT1_OUTPUT + i].setVoltage(high ? (5.0f * _outputScale) : 0.0f);
 	}
 }
 
@@ -63,6 +79,18 @@ struct FourManWidget : TriggerOnLoadModuleWidget {
 		addOutput(createOutput<Port24>(out2OutputPosition, module, FourMan::OUT2_OUTPUT));
 		addOutput(createOutput<Port24>(out3OutputPosition, module, FourMan::OUT3_OUTPUT));
 		addOutput(createOutput<Port24>(out4OutputPosition, module, FourMan::OUT4_OUTPUT));
+	}
+
+	void contextMenu(Menu* menu) override {
+		TriggerOnLoadModuleWidget::contextMenu(menu);
+
+		auto m = dynamic_cast<FourMan*>(module);
+		assert(m);
+
+		OptionsMenuItem* o = new OptionsMenuItem("Output");
+		o->addItem(OptionMenuItem("+10V", [m]() { return m->_outputScale == 2.0f; }, [m]() { m->_outputScale = 2.0f; }));
+		o->addItem(OptionMenuItem("+5V", [m]() { return m->_outputScale == 1.0f; }, [m]() { m->_outputScale = 1.0f; }));
+		OptionsMenuItem::addToMenu(o, menu);
 	}
 };
 

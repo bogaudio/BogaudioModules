@@ -33,6 +33,7 @@ struct FourMan : TriggerOnLoadModule {
 	rack::dsp::PulseGenerator _pulse[4];
 	float _sampleTime = 1.0f;
 	bogaudio::dsp::Timer* _initialDelay = NULL;
+	float _outputScale = 1.0f;
 
 	FourMan() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
@@ -51,6 +52,8 @@ struct FourMan : TriggerOnLoadModule {
 
 	void reset() override;
 	void sampleRateChange() override;
+	json_t* toJson(json_t* root) override;
+	void fromJson(json_t* root) override;
 	void processAll(const ProcessArgs& args) override;
 	bool shouldTriggerOnNextLoad() override {
 		return true;
