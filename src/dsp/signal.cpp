@@ -205,6 +205,18 @@ float ShapedSlewLimiter::next(float sample) {
 }
 
 
+void Integrator::setParams(float alpha) {
+	assert(alpha >= 0.0f);
+	assert(alpha <= 1.0f);
+	_alpha = alpha;
+}
+
+float Integrator::next(float sample) {
+	// "leaky integrator"
+	return _last = (1.0f - _alpha)*_last + _alpha*sample;
+}
+
+
 void CrossFader::setParams(float mix, float curve, bool linear) {
 	assert(mix >= -1.0f && mix <= 1.0f);
 	assert(curve >= -1.0f && curve <= 1.0f);

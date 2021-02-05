@@ -131,6 +131,18 @@ struct ShapedSlewLimiter {
 	float next(float sample);
 };
 
+struct Integrator {
+	float _alpha = 0.0f;
+	float _last = 0.0f;
+
+	Integrator(float alpha = 1.0f) {
+		setParams(alpha);
+	}
+
+	void setParams(float alpha);
+	float next(float sample);
+};
+
 struct CrossFader {
 	float _mix = 2.0f;
 	float _curve = 1.0f;

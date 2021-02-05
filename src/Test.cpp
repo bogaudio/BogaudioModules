@@ -1,6 +1,27 @@
 
 #include "Test.hpp"
 
+#ifdef LFO_SMOOTHER
+void Test::Smoother::setParams(float sampleRate, float frequency, float amount) {
+	if (_sampleRate != sampleRate || _frequency != frequency || _amount != amount) {
+		_sampleRate = sampleRate;
+		_frequency = frequency;
+		_amount = amount;
+
+		float millis = 1.0f / frequency;
+		millis /= 2.0f;
+		millis *= 1000.0f;
+		millis *= amount*amount * 25.0f;
+		_slewLimiter.setParams(_sampleRate, millis, 0.5f);
+		_integrator.setParams(clamp(0.1f - amount, 0.001f, 1.0f)); // FIXME!
+	}
+}
+
+float Test::Smoother::next(float sample) {
+	return _integrator.next(_slewLimiter.next(sample));
+}
+#endif
+
 void Test::reset() {
 }
 
@@ -443,12 +464,21 @@ void Test::processAll(const ProcessArgs& args) {
 		_last2 = 0.0f;
 	}
 
-	// // "leaky integrator"
-	// float alpha = params[PARAM1_PARAM].getValue();
-	// alpha = clamp(1.0f - alpha*alpha, 0.00001f, 1.0f);
-	// float sample = 5.0f * _noise1.next();
-	// _last1 = alpha*_last1 + (1.0f - alpha)*sample;
-	// outputs[OUT_OUTPUT].setVoltage(_last1);
+#elif INTEGRATOR
+	float alpha = params[PARAM1_PARAM].getValue();
+	alpha = clamp(alpha*alpha, 0.0f, 1.0f);
+	_integrator.setParams(alpha);
+
+	float sample = 0.0f;
+	if (inputs[IN_INPUT].isConnected()) {
+		sample = inputs[IN_INPUT].getVoltage();
+	}
+	else {
+		sample = 5.0f * _noise.next();
+	}
+
+	outputs[OUT_OUTPUT].setVoltage(_integrator.next(sample));
+	outputs[OUT2_OUTPUT].setVoltage(sample);
 
 #elif RANDOMWALK
 	float change = params[PARAM1_PARAM].getValue();
@@ -463,6 +493,23 @@ void Test::processAll(const ProcessArgs& args) {
 	float in = inputs[IN_INPUT].getVoltage();
 	outputs[OUT_OUTPUT].setVoltage(_filter.next(in));
 	outputs[OUT2_OUTPUT].setVoltage(in);
+
+#elif LFO_SMOOTHER
+	float frequency = params[PARAM1_PARAM].getValue();
+	frequency *= 2.0f;
+	frequency -= 1.0f;
+	frequency *= 5.0f;
+	frequency += inputs[CV1_INPUT].getVoltage();
+	frequency = clamp(frequency, -5.0f, 5.0f);
+	frequency -= 7.0f;
+	frequency = cvToFrequency(frequency);
+
+	float amount = params[PARAM2_PARAM].getValue();
+	// amount *= amount;
+
+	_smoother.setParams(APP->engine->getSampleRate(), frequency, amount);
+	float in = inputs[IN_INPUT].getVoltage();
+	outputs[OUT_OUTPUT].setVoltage(_smoother.next(in));
 
 #endif
 }

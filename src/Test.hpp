@@ -24,13 +24,15 @@ extern Model* modelTest;
 // #define EG 1
 // #define TABLES 1
 // #define SLEW 1
-#define RMS 1
+// #define RMS 1
 // #define FASTRMS 1
 // #define RAVG 1
 // #define SATURATOR 1
 // #define BROWNIAN 1
+// #define INTEGRATOR 1
 // #define RANDOMWALK 1
 // #define DCBLOCKER 1
+#define LFO_SMOOTHER 1
 
 #include "pitch.hpp"
 #ifdef LPF
@@ -96,10 +98,15 @@ extern Model* modelTest;
 #include "dsp/signal.hpp"
 #elif BROWNIAN
 #include "dsp/noise.hpp"
+#elif INTEGRATOR
+#include "dsp/noise.hpp"
 #elif RANDOMWALK
 #include "dsp/noise.hpp"
 #elif DCBLOCKER
 #include "dsp/filters/experiments.hpp"
+#elif LFO_SMOOTHER
+#include "dsp/signal.hpp"
+#include "dsp/pitch.hpp"
 #else
 #error what
 #endif
@@ -235,11 +242,26 @@ struct Test : BGModule {
 	LowPassFilter _filter2;
 	float _last1 = 0.0f;
 	float _last2 = 0.0f;
+#elif INTEGRATOR
+	WhiteNoiseGenerator _noise;
+	Integrator _integrator;
 #elif RANDOMWALK
 	RandomWalk _walk1;
 	RandomWalk _walk2;
 #elif DCBLOCKER
 	DCBlocker _filter;
+#elif LFO_SMOOTHER
+	struct Smoother {
+		float _sampleRate = 0.0f;
+		float _frequency = 0.0f;
+		float _amount = 0.0f;
+		ShapedSlewLimiter _slewLimiter;
+		Integrator _integrator;
+
+		void setParams(float sampleRate, float frequency, float amount);
+		float next(float sample);
+	};
+	Smoother _smoother;
 #endif
 
 	Test()
