@@ -285,7 +285,7 @@ Phasor::phase_delta_t XCO::phaseOffset(int c, Param& param, Input& input) {
 	if (input.isConnected()) {
 		v *= clamp(input.getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
 	}
-	return -v * Phasor::maxPhase / 2.0f;
+	return -v * Phasor::cyclePhase / 2.0f;
 }
 
 float XCO::level(int c, Param& param, Input& input) {

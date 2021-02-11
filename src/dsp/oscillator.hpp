@@ -56,9 +56,9 @@ struct OscillatorGenerator : Oscillator, Generator {
 };
 
 struct Phasor : OscillatorGenerator {
-	typedef uint32_t phase_t;
+	typedef uint64_t phase_t;
 	typedef int64_t phase_delta_t;
-	static constexpr phase_t maxPhase = UINT32_MAX;
+	static constexpr phase_t cyclePhase = 1L << 32;
 	static constexpr float twoPI = 2.0f * M_PI;
 	static constexpr float maxSampleWidth = 0.25f;
 
@@ -87,19 +87,18 @@ struct Phasor : OscillatorGenerator {
 	}
 
 	void setSampleWidth(float sw);
-	void resetPhase();
+	virtual void resetPhase();
 	void setPhase(float radians);
 	void syncPhase(const Phasor& phasor);
 	float nextFromPhasor(const Phasor& phasor, phase_delta_t offset = 0);
-	inline float nextForPhase(phase_t phase) { return _nextForPhase(phase); }
+	virtual float nextForPhase(phase_t phase);
 	virtual void _update();
 	inline void advancePhase() { _phase += _delta; }
 	inline void advancePhase(int n) { assert(n > 0); _phase += n * _delta; }
 	float _next() override final;
-	virtual float _nextForPhase(phase_t phase);
 
-	inline static phase_delta_t radiansToPhase(float radians) { return (radians / twoPI) * maxPhase; }
-	inline static float phaseToRadians(phase_t phase) { return (phase / (float)maxPhase) * twoPI; }
+	inline static phase_delta_t radiansToPhase(float radians) { return (radians / twoPI) * cyclePhase; }
+	inline static float phaseToRadians(phase_t phase) { return (phase / (float)cyclePhase) * twoPI; }
 };
 
 struct TablePhasor : Phasor {
@@ -117,7 +116,7 @@ struct TablePhasor : Phasor {
 	{
 	}
 
-	float _nextForPhase(phase_t phase) override;
+	float nextForPhase(phase_t phase) override;
 };
 
 struct SineOscillator : OscillatorGenerator {
@@ -168,7 +167,7 @@ struct SawOscillator : Phasor {
 	{
 	}
 
-	float _nextForPhase(phase_t phase) override;
+	float nextForPhase(phase_t phase) override;
 };
 
 struct SaturatingSawOscillator : SawOscillator {
@@ -187,14 +186,13 @@ struct SaturatingSawOscillator : SawOscillator {
 	}
 
 	void setSaturation(float saturation);
-
-	float _nextForPhase(phase_t phase) override;
+	float nextForPhase(phase_t phase) override;
 };
 
 struct BandLimitedSawOscillator : SaturatingSawOscillator {
 	int _quality;
 	const Table& _table;
-	phase_delta_t _qd = 0;
+	phase_t _qd = 0;
 	float _halfTableLen;
 
 	BandLimitedSawOscillator(
@@ -212,9 +210,8 @@ struct BandLimitedSawOscillator : SaturatingSawOscillator {
 	}
 
 	void setQuality(int quality);
-
 	void _update() override;
-	float _nextForPhase(phase_t phase) override;
+	float nextForPhase(phase_t phase) override;
 };
 
 struct SquareOscillator : Phasor {
@@ -222,7 +219,7 @@ struct SquareOscillator : Phasor {
 	static constexpr float maxPulseWidth = 1.0f - minPulseWidth;
 	static constexpr float defaultPulseWidth = 0.5f;
 	float _pulseWidthInput;
-	phase_t _pulseWidth = maxPhase * defaultPulseWidth;
+	phase_t _pulseWidth = cyclePhase * defaultPulseWidth;
 	bool positive = true;
 
 	SquareOscillator(
@@ -234,8 +231,7 @@ struct SquareOscillator : Phasor {
 	}
 
 	void setPulseWidth(float pw);
-
-	float _nextForPhase(phase_t phase) override;
+	float nextForPhase(phase_t phase) override;
 };
 
 struct BandLimitedSquareOscillator : BandLimitedSawOscillator {
@@ -257,13 +253,12 @@ struct BandLimitedSquareOscillator : BandLimitedSawOscillator {
 	}
 
 	void setPulseWidth(float pw);
-
-	float _nextForPhase(phase_t phase) override;
+	float nextForPhase(phase_t phase) override;
 };
 
 struct TriangleOscillator : Phasor {
-	const phase_t quarterMaxPhase = maxPhase * 0.25f;
-	const phase_t threeQuartersMaxPhase = maxPhase * 0.75f;
+	const phase_t quarterCyclePhase = cyclePhase * 0.25f;
+	const phase_t threeQuartersCyclePhase = cyclePhase * 0.75f;
 
 	TriangleOscillator(
 		float sampleRate = 1000.0f,
@@ -273,7 +268,24 @@ struct TriangleOscillator : Phasor {
 	{
 	}
 
-	float _nextForPhase(phase_t phase) override;
+	float nextForPhase(phase_t phase) override;
+};
+
+struct SteppedRandomOscillator : Phasor {
+	const phase_t _n;
+	const phase_t _k;
+	float* _t = NULL;
+	phase_t _seed;
+
+	SteppedRandomOscillator(
+		float sampleRate = 1000.0f,
+		float frequency = 100.0f,
+		phase_t seed = 0
+	);
+	~SteppedRandomOscillator();
+
+	void resetPhase() override;
+	float nextForPhase(phase_t phase) override;
 };
 
 struct SineBankOscillator : Oscillator {

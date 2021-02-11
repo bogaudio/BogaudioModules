@@ -90,7 +90,7 @@ void Sine::processChannel(const ProcessArgs& args, int c) {
 	if (inputs[PHASE_INPUT].isConnected()) {
 		phaseOffset *= clamp(inputs[PHASE_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
 	}
-	e.additionalPhaseOffset = -phaseOffset * 0.5f * Phasor::maxPhase;
+	e.additionalPhaseOffset = -phaseOffset * 0.5f * Phasor::cyclePhase;
 
 	VCOBase::processChannel(args, c);
 

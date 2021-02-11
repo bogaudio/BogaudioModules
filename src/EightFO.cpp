@@ -143,7 +143,7 @@ void EightFO::processChannel(const ProcessArgs& args, int c) {
 }
 
 Phasor::phase_delta_t EightFO::phaseOffset(int c, Param& p, Input& i, Phasor::phase_delta_t baseOffset) {
-	float o = p.getValue() * Phasor::maxPhase / 2.0f;
+	float o = p.getValue() * Phasor::cyclePhase / 2.0f;
 	if (i.isConnected()) {
 		o *= clamp(i.getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
 	}

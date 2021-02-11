@@ -511,6 +511,30 @@ void Test::processAll(const ProcessArgs& args) {
 	float in = inputs[IN_INPUT].getVoltage();
 	outputs[OUT_OUTPUT].setVoltage(_smoother.next(in));
 
+#elif STEPPED_RANDOM
+	const float octaves = 7.0f;
+	float frequency = params[PARAM1_PARAM].getValue();
+	frequency *= 2.0f;
+	frequency -= 1.0f;
+	frequency *= octaves;
+	frequency += inputs[CV1_INPUT].getVoltage();
+	frequency = clamp(frequency, -octaves, octaves);
+	// frequency -= 4.0f;
+	frequency = cvToFrequency(frequency);
+	frequency = std::min(frequency, 0.49f*APP->engine->getSampleRate());
+
+	_stepped.setSampleRate(APP->engine->getSampleRate());
+	_stepped.setFrequency(frequency);
+	if (_trigger.next(inputs[CV3_INPUT].getVoltage())) {
+		_stepped.resetPhase();
+	}
+	outputs[OUT_OUTPUT].setVoltage(_stepped.next() * 5.0f);
+
+	if ((_stepped._phase / SteppedRandomOscillator::cyclePhase) > (_lastPhase / SteppedRandomOscillator::cyclePhase)) {
+		_lastPhase = _stepped._phase;
+		_lastNoise = _noise.next() * 5.0f;
+	}
+	outputs[OUT2_OUTPUT].setVoltage(_lastNoise);
 #endif
 }
 

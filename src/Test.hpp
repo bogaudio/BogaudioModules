@@ -32,7 +32,8 @@ extern Model* modelTest;
 // #define INTEGRATOR 1
 // #define RANDOMWALK 1
 // #define DCBLOCKER 1
-#define LFO_SMOOTHER 1
+// #define LFO_SMOOTHER 1
+#define STEPPED_RANDOM 1
 
 #include "pitch.hpp"
 #ifdef LPF
@@ -107,6 +108,9 @@ extern Model* modelTest;
 #elif LFO_SMOOTHER
 #include "dsp/signal.hpp"
 #include "dsp/pitch.hpp"
+#elif STEPPED_RANDOM
+#include "dsp/oscillator.hpp"
+#include "dsp/noise.hpp"
 #else
 #error what
 #endif
@@ -262,6 +266,12 @@ struct Test : BGModule {
 		float next(float sample);
 	};
 	Smoother _smoother;
+#elif STEPPED_RANDOM
+	PositiveZeroCrossing _trigger;
+	SteppedRandomOscillator _stepped;
+	SteppedRandomOscillator::phase_t _lastPhase = 0;
+	WhiteNoiseGenerator _noise;
+	float _lastNoise = 0.0f;
 #endif
 
 	Test()
