@@ -148,4 +148,5 @@ struct ClprWidget : BGModuleWidget {
 	}
 };
 
-Model* modelClpr = bogaudio::createModel<Clpr, ClprWidget>("Bogaudio-Clpr", "CLPR", "Hard clipper and distortion", "Dynamics", "Distortion", "Polyphonic");
+// FIXME: HACK: remove " (Clipper)" from module name if Rack ever starts using descriptions in module search.  Or adds a "clipper" tag.
+Model* modelClpr = bogaudio::createModel<Clpr, ClprWidget>("Bogaudio-Clpr", "CLPR (Clipper)", "Hard clipper and distortion", "Dynamics", "Limiter", "Distortion", "Polyphonic");

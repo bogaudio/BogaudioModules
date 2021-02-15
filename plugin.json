@@ -722,11 +722,12 @@
     },
     {
       "slug": "Bogaudio-Clpr",
-      "name": "CLPR",
+      "name": "CLPR (Clipper)",
       "description": "Hard clipper and distortion",
       "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#clpr",
       "tags": [
         "Dynamics",
+        "Limiter",
         "Distortion",
         "Polyphonic"
       ]
