@@ -73,26 +73,46 @@ void EightFO::modulateChannel(int c) {
 
 	setFrequency(params[FREQUENCY_PARAM], inputs[PITCH_INPUT], e.phasor, c);
 
-	if (_wave == SQUARE_WAVE) {
-		float pw = params[SAMPLE_PWM_PARAM].getValue();
-		if (inputs[SAMPLE_PWM_INPUT].isConnected()) {
-			pw *= clamp(inputs[SAMPLE_PWM_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
+	switch (_wave) {
+		case SQUARE_WAVE: {
+			float pw = params[SAMPLE_PWM_PARAM].getValue();
+			if (inputs[SAMPLE_PWM_INPUT].isConnected()) {
+				pw *= clamp(inputs[SAMPLE_PWM_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
+			}
+			pw *= 1.0f - 2.0f * e.square.minPulseWidth;
+			pw *= 0.5f;
+			pw += 0.5f;
+			e.square.setPulseWidth(pw);
+			e.sampleSteps = 1;
+			break;
 		}
-		pw *= 1.0f - 2.0f * e.square.minPulseWidth;
-		pw *= 0.5f;
-		pw += 0.5f;
-		e.square.setPulseWidth(pw);
-		e.sampleSteps = 1;
-	}
-	else {
-		float sample = fabsf(params[SAMPLE_PWM_PARAM].getValue());
-		if (inputs[SAMPLE_PWM_INPUT].isConnected()) {
-			sample *= clamp(fabsf(inputs[SAMPLE_PWM_INPUT].getPolyVoltage(c)) / 5.0f, 0.0f, 1.0f);
+		case STEPPED_WAVE: {
+			e.sampleSteps = 1;
+			break;
 		}
-		float maxSampleSteps = (e.phasor._sampleRate / e.phasor._frequency) / 4.0f;
-		e.sampleSteps = clamp((int)(sample * maxSampleSteps), 1, (int)maxSampleSteps);
-		e.square.setPulseWidth(SquareOscillator::defaultPulseWidth);
+		default: {
+			float sample = fabsf(params[SAMPLE_PWM_PARAM].getValue());
+			if (inputs[SAMPLE_PWM_INPUT].isConnected()) {
+				sample *= clamp(fabsf(inputs[SAMPLE_PWM_INPUT].getPolyVoltage(c)) / 5.0f, 0.0f, 1.0f);
+			}
+			float maxSampleSteps = (e.phasor._sampleRate / e.phasor._frequency) / 4.0f;
+			e.sampleSteps = clamp((int)(sample * maxSampleSteps), 1, (int)maxSampleSteps);
+		}
 	}
+
+	float smooth = params[SMOOTH_PARAM].getValue();
+	if (inputs[SMOOTH_INPUT].isConnected()) {
+		smooth *= clamp(inputs[SMOOTH_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
+	}
+	float sr = APP->engine->getSampleRate();
+	e.phase7Smoother.setParams(sr, e.phasor._frequency, smooth);
+	e.phase6Smoother.setParams(sr, e.phasor._frequency, smooth);
+	e.phase5Smoother.setParams(sr, e.phasor._frequency, smooth);
+	e.phase4Smoother.setParams(sr, e.phasor._frequency, smooth);
+	e.phase3Smoother.setParams(sr, e.phasor._frequency, smooth);
+	e.phase2Smoother.setParams(sr, e.phasor._frequency, smooth);
+	e.phase1Smoother.setParams(sr, e.phasor._frequency, smooth);
+	e.phase0Smoother.setParams(sr, e.phasor._frequency, smooth);
 
 	e.offset = params[OFFSET_PARAM].getValue();
 	if (inputs[OFFSET_INPUT].isConnected()) {
@@ -132,14 +152,14 @@ void EightFO::processChannel(const ProcessArgs& args, int c) {
 			useSample = true;
 		}
 	}
-	updateOutput(c, useSample, outputs[PHASE7_OUTPUT], e.phase7Offset, e.phase7Sample, e.phase7Active);
-	updateOutput(c, useSample, outputs[PHASE6_OUTPUT], e.phase6Offset, e.phase6Sample, e.phase6Active);
-	updateOutput(c, useSample, outputs[PHASE5_OUTPUT], e.phase5Offset, e.phase5Sample, e.phase5Active);
-	updateOutput(c, useSample, outputs[PHASE4_OUTPUT], e.phase4Offset, e.phase4Sample, e.phase4Active);
-	updateOutput(c, useSample, outputs[PHASE3_OUTPUT], e.phase3Offset, e.phase3Sample, e.phase3Active);
-	updateOutput(c, useSample, outputs[PHASE2_OUTPUT], e.phase2Offset, e.phase2Sample, e.phase2Active);
-	updateOutput(c, useSample, outputs[PHASE1_OUTPUT], e.phase1Offset, e.phase1Sample, e.phase1Active);
-	updateOutput(c, useSample, outputs[PHASE0_OUTPUT], e.phase0Offset, e.phase0Sample, e.phase0Active);
+	updateOutput(c, useSample, outputs[PHASE7_OUTPUT], e.phase7Offset, e.phase7Sample, e.phase7Active, e.phase7Smoother);
+	updateOutput(c, useSample, outputs[PHASE6_OUTPUT], e.phase6Offset, e.phase6Sample, e.phase6Active, e.phase6Smoother);
+	updateOutput(c, useSample, outputs[PHASE5_OUTPUT], e.phase5Offset, e.phase5Sample, e.phase5Active, e.phase5Smoother);
+	updateOutput(c, useSample, outputs[PHASE4_OUTPUT], e.phase4Offset, e.phase4Sample, e.phase4Active, e.phase4Smoother);
+	updateOutput(c, useSample, outputs[PHASE3_OUTPUT], e.phase3Offset, e.phase3Sample, e.phase3Active, e.phase3Smoother);
+	updateOutput(c, useSample, outputs[PHASE2_OUTPUT], e.phase2Offset, e.phase2Sample, e.phase2Active, e.phase2Smoother);
+	updateOutput(c, useSample, outputs[PHASE1_OUTPUT], e.phase1Offset, e.phase1Sample, e.phase1Active, e.phase1Smoother);
+	updateOutput(c, useSample, outputs[PHASE0_OUTPUT], e.phase0Offset, e.phase0Sample, e.phase0Active, e.phase0Smoother);
 }
 
 Phasor::phase_delta_t EightFO::phaseOffset(int c, Param& p, Input& i, Phasor::phase_delta_t baseOffset) {
@@ -150,13 +170,10 @@ Phasor::phase_delta_t EightFO::phaseOffset(int c, Param& p, Input& i, Phasor::ph
 	return baseOffset - o;
 }
 
-void EightFO::updateOutput(int c, bool useSample, Output& output, Phasor::phase_delta_t& offset, float& sample, bool& active) {
+void EightFO::updateOutput(int c, bool useSample, Output& output, Phasor::phase_delta_t& offset, float& sample, bool& active, Smoother& smoother) {
 	if (output.isConnected()) {
 		output.setChannels(_channels);
-		if (useSample && active) {
-			output.setVoltage(sample, c);
-		}
-		else {
+		if (!useSample || !active) {
 			float v = 0.0f;
 			switch (_wave) {
 				case NO_WAVE: {
@@ -182,9 +199,14 @@ void EightFO::updateOutput(int c, bool useSample, Output& output, Phasor::phase_
 					v = _engines[c]->square.nextFromPhasor(_engines[c]->phasor, offset);
 					break;
 				}
+				case STEPPED_WAVE: {
+					v = _engines[c]->stepped.nextFromPhasor(_engines[c]->phasor, offset);
+					break;
+				}
 			}
-			output.setVoltage(sample = amplitude * _engines[c]->scale * v + _engines[c]->offset, c);
+			sample = amplitude * _engines[c]->scale * v + _engines[c]->offset;
 		}
+		output.setVoltage(smoother.next(sample), c);
 		active = true;
 	}
 	else {
@@ -203,11 +225,12 @@ struct EightFOWidget : BGModuleWidget {
 
 		// generated by svg_widgets.rb
 		auto frequencyParamPosition = Vec(40.0, 45.0);
-		auto slowParamPosition = Vec(118.0, 333.7);
-		auto waveParamPosition = Vec(20.0, 168.0);
-		auto samplePwmParamPosition = Vec(100.0, 163.0);
-		auto offsetParamPosition = Vec(40.0, 226.0);
-		auto scaleParamPosition = Vec(100.0, 226.0);
+		auto slowParamPosition = Vec(50.0, 139.7);
+		auto waveParamPosition = Vec(20.0, 178.0);
+		auto samplePwmParamPosition = Vec(100.0, 143.0);
+		auto smoothParamPosition = Vec(100.0, 190.0);
+		auto offsetParamPosition = Vec(40.0, 235.0);
+		auto scaleParamPosition = Vec(100.0, 235.0);
 		auto phase7ParamPosition = Vec(144.0, 40.0);
 		auto phase6ParamPosition = Vec(144.0, 80.0);
 		auto phase5ParamPosition = Vec(144.0, 120.0);
@@ -225,11 +248,12 @@ struct EightFOWidget : BGModuleWidget {
 		auto phase2InputPosition = Vec(179.0, 236.0);
 		auto phase1InputPosition = Vec(179.0, 276.0);
 		auto phase0InputPosition = Vec(179.0, 316.0);
-		auto samplePwmInputPosition = Vec(14.0, 277.0);
-		auto offsetInputPosition = Vec(52.0, 277.0);
-		auto scaleInputPosition = Vec(90.0, 277.0);
-		auto pitchInputPosition = Vec(14.0, 318.0);
-		auto resetInputPosition = Vec(52.0, 318.0);
+		auto samplePwmInputPosition = Vec(21.0, 277.0);
+		auto offsetInputPosition = Vec(59.0, 277.0);
+		auto scaleInputPosition = Vec(97.0, 277.0);
+		auto pitchInputPosition = Vec(21.0, 318.0);
+		auto resetInputPosition = Vec(59.0, 318.0);
+		auto smoothInputPosition = Vec(97.0, 318.0);
 
 		auto phase7OutputPosition = Vec(218.0, 36.0);
 		auto phase6OutputPosition = Vec(218.0, 76.0);
@@ -253,6 +277,7 @@ struct EightFOWidget : BGModuleWidget {
 		}
 		addParam(createParam<IndicatorButtonGreen9>(slowParamPosition, module, EightFO::SLOW_PARAM));
 		addParam(createParam<Knob26>(samplePwmParamPosition, module, EightFO::SAMPLE_PWM_PARAM));
+		addParam(createParam<Knob26>(smoothParamPosition, module, EightFO::SMOOTH_PARAM));
 		addParam(createParam<Knob26>(offsetParamPosition, module, EightFO::OFFSET_PARAM));
 		addParam(createParam<Knob26>(scaleParamPosition, module, EightFO::SCALE_PARAM));
 
@@ -278,6 +303,7 @@ struct EightFOWidget : BGModuleWidget {
 		addInput(createInput<Port24>(phase0InputPosition, module, EightFO::PHASE0_INPUT));
 		addInput(createInput<Port24>(pitchInputPosition, module, EightFO::PITCH_INPUT));
 		addInput(createInput<Port24>(resetInputPosition, module, EightFO::RESET_INPUT));
+		addInput(createInput<Port24>(smoothInputPosition, module, EightFO::SMOOTH_INPUT));
 
 		addOutput(createOutput<Port24>(phase7OutputPosition, module, EightFO::PHASE7_OUTPUT));
 		addOutput(createOutput<Port24>(phase6OutputPosition, module, EightFO::PHASE6_OUTPUT));
@@ -298,4 +324,4 @@ struct EightFOWidget : BGModuleWidget {
 	}
 };
 
-Model* modelEightFO = bogaudio::createModel<EightFO, EightFOWidget>("Bogaudio-EightFO", "8FO", "LFO with outputs at 8 different phases", "LFO", "Polyphonic");
+Model* modelEightFO = bogaudio::createModel<EightFO, EightFOWidget>("Bogaudio-EightFO", "8FO", "LFO with outputs at 8 different phases", "LFO", "Random", "Polyphonic");

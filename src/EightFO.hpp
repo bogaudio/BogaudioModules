@@ -25,6 +25,7 @@ struct EightFO : LFOBase {
 		SLOW_PARAM,
 		OFFSET_PARAM,
 		SCALE_PARAM,
+		SMOOTH_PARAM,
 		NUM_PARAMS
 	};
 
@@ -42,6 +43,7 @@ struct EightFO : LFOBase {
 		RESET_INPUT,
 		OFFSET_INPUT,
 		SCALE_INPUT,
+		SMOOTH_INPUT,
 		NUM_INPUTS
 	};
 
@@ -63,7 +65,8 @@ struct EightFO : LFOBase {
 		RAMP_DOWN_WAVE,
 		SINE_WAVE,
 		TRIANGLE_WAVE,
-		SQUARE_WAVE
+		SQUARE_WAVE,
+		STEPPED_WAVE
 	};
 
 	struct Engine {
@@ -78,6 +81,7 @@ struct EightFO : LFOBase {
 		TriangleOscillator triangle;
 		SawOscillator ramp;
 		SquareOscillator square;
+		SteppedRandomOscillator stepped;
 
 		Phasor::phase_delta_t phase7Offset = 0.0f;
 		Phasor::phase_delta_t phase6Offset = 0.0f;
@@ -106,6 +110,15 @@ struct EightFO : LFOBase {
 		bool phase1Active = false;
 		bool phase0Active = false;
 
+		Smoother phase7Smoother;
+		Smoother phase6Smoother;
+		Smoother phase5Smoother;
+		Smoother phase4Smoother;
+		Smoother phase3Smoother;
+		Smoother phase2Smoother;
+		Smoother phase1Smoother;
+		Smoother phase0Smoother;
+
 		void reset();
 		void sampleRateChange();
 	};
@@ -116,9 +129,10 @@ struct EightFO : LFOBase {
 
 	EightFO() : LFOBase(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {
 		configParam<LFOFrequencyParamQuantity>(FREQUENCY_PARAM, -5.0f, 8.0f, 0.0, "Frequency", " Hz");
-		configParam(WAVE_PARAM, 1.0, 5.0, 3.0, "Waveform");
+		configParam(WAVE_PARAM, 1.0, 6.0, 3.0, "Waveform");
 		configParam(SLOW_PARAM, 0.0, 1.0, 0.0, "Slow");
 		configParam(SAMPLE_PWM_PARAM, -1.0, 1.0, 0.0, "Width", "%", 0.0f, 100.0f);
+		configParam(SMOOTH_PARAM, 0.0f, 1.0f, 0.0f, "Smoothing", "%", 0.0f, 100.0f);
 		configParam(OFFSET_PARAM, -1.0, 1.0, 0.0, "Offset", " V", 0.0f, 5.0f);
 		configParam(SCALE_PARAM, 0.0, 1.0, 1.0, "Scale", "%", 0.0f, 100.0f);
 		configParam(PHASE7_PARAM, -1.0, 1.0, 0.0, "Phase 315", "º", 0.0f, 180.0f);
@@ -141,7 +155,7 @@ struct EightFO : LFOBase {
 	void modulateChannel(int c) override;
 	void processChannel(const ProcessArgs& args, int c) override;
 	Phasor::phase_delta_t phaseOffset(int c, Param& p, Input& i, Phasor::phase_delta_t baseOffset);
-	void updateOutput(int c, bool useSample, Output& output, Phasor::phase_delta_t& offset, float& sample, bool& active);
+	void updateOutput(int c, bool useSample, Output& output, Phasor::phase_delta_t& offset, float& sample, bool& active, Smoother& smoother);
 };
 
 } // namespace bogaudio

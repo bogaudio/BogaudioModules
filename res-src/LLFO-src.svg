@@ -75,6 +75,14 @@
           <polyline points="0,4 0,0 6,0 6,8 12,8 12,4" stroke-width="1" fill="none"/>
         </g>
       </g>
+
+      <g transform="translate(0 39)">
+        <def id="STEPPED_LIGHT" xlink:href="#light-small" transform="translate(-7.5 1)"/>
+        <g transform="translate(1 1) scale(0.8)">
+          <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#f0f" /> -->
+          <polyline points="0,0 0,5 12,5 12,8" stroke-width="1" fill="none"/>
+        </g>
+      </g>
     </g>
 
     <g transform="translate(31 0)">
@@ -103,7 +111,7 @@
       </g>
     </g>
 
-    <def id="WAVE_PARAM" xlink:href="#button-small" transform="translate(17.5 38)"/>
+    <def id="WAVE_PARAM" xlink:href="#button-small" transform="translate(29 38)"/>
   </g>
 
   <g transform="translate(0 149)">

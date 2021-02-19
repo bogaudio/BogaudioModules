@@ -197,7 +197,7 @@ struct IPQuantity : Quantity {
 	}
 
 	float getMinValue() override { return 0.0f; }
-	float getMaxValue() override { return 1.0; }
+	float getMaxValue() override { return 1.0f; }
 	float getDefaultValue() override { return RGate::defaultInitialClockPeriod; }
 	float getDisplayValue() override { return getValue() * 1000.0f; }
 	void setDisplayValue(float displayValue) override { setValue(displayValue / 1000.0f); }

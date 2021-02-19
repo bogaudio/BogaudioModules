@@ -101,6 +101,7 @@
       "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#lfo",
       "tags": [
         "LFO",
+        "Random",
         "Polyphonic"
       ]
     },
@@ -111,6 +112,7 @@
       "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#eightfo",
       "tags": [
         "LFO",
+        "Random",
         "Polyphonic"
       ]
     },
@@ -121,6 +123,7 @@
       "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#llfo",
       "tags": [
         "LFO",
+        "Random",
         "Polyphonic"
       ]
     },

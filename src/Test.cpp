@@ -1,27 +1,6 @@
 
 #include "Test.hpp"
 
-#ifdef LFO_SMOOTHER
-void Test::Smoother::setParams(float sampleRate, float frequency, float amount) {
-	if (_sampleRate != sampleRate || _frequency != frequency || _amount != amount) {
-		_sampleRate = sampleRate;
-		_frequency = frequency;
-		_amount = amount;
-
-		float millis = 1.0f / frequency;
-		millis /= 2.0f;
-		millis *= 1000.0f;
-		millis *= amount*amount * 25.0f;
-		_slewLimiter.setParams(_sampleRate, millis, 0.5f);
-		_integrator.setParams(clamp(0.1f - amount, 0.001f, 1.0f)); // FIXME!
-	}
-}
-
-float Test::Smoother::next(float sample) {
-	return _integrator.next(_slewLimiter.next(sample));
-}
-#endif
-
 void Test::reset() {
 }
 

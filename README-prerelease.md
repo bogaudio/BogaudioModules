@@ -162,26 +162,41 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V
 #### <a name="lfo"></a> LFO
 
 A standard LFO featuring:
-  - Simultaneous ramp-down, ramp-up (saw), square, triangle and sine wave outputs.
+  - Simultaneous ramp-down, ramp-up (saw), triangle, stepped random, square and sine wave outputs.
   - Knob and CV control of the pulse width of the square wave.
   - A CV-controllable "sample" modifier, which turns the output into a step function.
   - Onboard CV-controllable offset and scale of the output voltages.
+  - CV-controllable output smoothing (the CV input is shared with offset, see below).
   - Reset (hard sync) input.
   - Slow mode.
 
 LFO tracks pitch CVs at the V/OCT input seven octaves lower than a normal oscillator: with a 0V input, the output frequency is note C-3 (2.04HZ).  The frequency knob is calibrated in linear volts (the small ticks), and its value is added to the input V/OCT.  With no input, the frequency range is from approximately 0.1 to 400HZ; with CV the frequency may be driven up to 2000HZ or down to arbitrarily low values.  In slow mode, the output frequency tracks the controls four octaves lower than otherwise (11 octaves below a normal oscillator).  Output is `(lfo * scale / 100) + offset`.
 
+The stepped random output selects a new random value in the range +/-5V once each cycle, each time the oscillator phase crosses 0.  Triggering RESET will select a new value.
+
+The sampling feature is not used with the square and stepped outputs, but applies to the others.
+
+Output smoothing is applied to the signal last, after offset and scale.
+
+To save space, OFF and SMTH share a CV input port.  By default this will route CV to offset.  A context-menu option allows the CV to be routed to smoothing instead.
+
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
 
 #### <a name="llfo"></a> LLFO
 
-A 3HP LFO, with selectable waveform.  The features are a subset of LFO, with the addition of a sixth 10%-pulse waveform.
+A 3HP LFO, with selectable waveform.  The features are a subset of LFO.  There are separate square and pulse waveform options: square is fixed at a 50% duty cycle, while pulse defaults to 10% but may be adjusted with the "Pulse width" option on the context menu.
+
+Sampling and smoothing functions are available on the context menu.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
 
 #### <a name="eightfo"></a> 8FO
 
-An LFO with outputs at 8 different phases.  The phases may be set by knobs and CVs; by default they are 0, 45, 90, etc, degrees from the fundamental.  Otherwise, functionality is the same as with LFO, excepting that the wave shape is selectable, and all outputs are of the same (phase-shifted) wave.
+An LFO with outputs at 8 different phases.  The phases may be set by knobs and CVs; by default they are 0, 45, 90, etc, degrees from the fundamental.  Otherwise, functionality is the same as with LFO, except that:
+  - The wave shape is selectable, and all outputs are of the same (phase-shifted) wave.
+  - The sampling and pulse width knobs and CVs are combined, with their function depending on the selected wave.
+
+Note that with the stepped random output, each output will update its output when its phase crosses 0.  Each draws from the same random sequence, rather than separate ones -- the outputs only vary in phase.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
 

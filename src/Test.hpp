@@ -108,6 +108,7 @@ extern Model* modelTest;
 #elif LFO_SMOOTHER
 #include "dsp/signal.hpp"
 #include "dsp/pitch.hpp"
+#include "lfo_base.hpp"
 #elif STEPPED_RANDOM
 #include "dsp/oscillator.hpp"
 #include "dsp/noise.hpp"
@@ -255,17 +256,7 @@ struct Test : BGModule {
 #elif DCBLOCKER
 	DCBlocker _filter;
 #elif LFO_SMOOTHER
-	struct Smoother {
-		float _sampleRate = 0.0f;
-		float _frequency = 0.0f;
-		float _amount = 0.0f;
-		ShapedSlewLimiter _slewLimiter;
-		Integrator _integrator;
-
-		void setParams(float sampleRate, float frequency, float amount);
-		float next(float sample);
-	};
-	Smoother _smoother;
+	LFOBase::Smoother _smoother;
 #elif STEPPED_RANDOM
 	PositiveZeroCrossing _trigger;
 	SteppedRandomOscillator _stepped;

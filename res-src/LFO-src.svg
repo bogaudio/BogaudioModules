@@ -5,6 +5,8 @@
   <def xlink:href="#module" var-name="LFO"/>
 
   <!-- <polyline points="0,0 0,354" stroke="#0f0" stroke-width="1" fill="none" transform="translate(75 0)" /> -->
+  <!-- <polyline points="0,0 0,354" stroke="#0f0" stroke-width="1" fill="none" transform="translate(60 0)" /> -->
+  <!-- <polyline points="0,0 0,354" stroke="#0f0" stroke-width="1" fill="none" transform="translate(90 0)" /> -->
 
   <g transform="translate(21 25)">
     <!-- <rect width="108" height="108" fill="none" stroke="#0f0" /> -->
@@ -18,9 +20,9 @@
   <!-- <rect width="20" height="10" fill="#0f0" transform="translate(108 130)" /> -->
   <text font-size="6pt" letter-spacing="1px" transform="translate(34 133)">0V = C-3 = 2.04HZ</text>
 
-  <g transform="translate(110.5 238.5)">
+  <g transform="translate(14 133) rotate(-90)">
     <text font-size="6pt" letter-spacing="1px" transform="translate(0 6.1)">SLOW</text>
-    <def id="SLOW_PARAM" xlink:href="#button-small" transform="translate(26.5 -1)"/>
+    <def id="SLOW_PARAM" xlink:href="#button-small" transform="translate(27.5 -1.5)"/>
   </g>
 
   <g transform="translate(10 150)">
@@ -40,19 +42,25 @@
     <def xlink:href="#dial-attenuverter" transform="translate(82.5 -9.6)"/>
   </g>
 
-  <g transform="translate(10 196)">
-    <g transform="translate(7 0)">
-      <!-- <rect width="52" height="38" fill="none" stroke="#0f0" transform="translate(0 -7)" /> -->
+  <g transform="translate(0 196)">
+    <g transform="translate(10 0)">
+      <!-- <rect width="38" height="30" fill="none" stroke="#0f0" transform="translate(0 -9)" /> -->
+      <text font-size="8pt" letter-spacing="2px" transform="translate(8 16) rotate(270)">SM</text>
+      <def id="SMOOTH_PARAM" xlink:href="#knob16" transform="translate(17 0)"/>
+      <def xlink:href="#dial-mintick" transform="translate(5 -12)"/>
+    </g>
+    <g transform="translate(56 0)">
+      <!-- <rect width="38" height="30" fill="none" stroke="#0f0" transform="translate(0 -9)" /> -->
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 18) rotate(270)">OFF</text>
-      <def id="OFFSET_PARAM" xlink:href="#knob16" transform="translate(25 0)"/>
+      <def id="OFFSET_PARAM" xlink:href="#knob16" transform="translate(17 0)"/>
+      <def xlink:href="#dial-centertick" transform="translate(5 -12)"/>
     </g>
-    <def xlink:href="#dial-centertick" transform="translate(20 -12)"/>
-    <g transform="translate(72 0)">
-      <!-- <rect width="52" height="38" fill="none" stroke="#0f0" transform="translate(0 -7)" /> -->
+    <g transform="translate(102 0)">
+      <!-- <rect width="38" height="30" fill="none" stroke="#0f0" transform="translate(0 -9)" /> -->
       <text font-size="8pt" letter-spacing="2px" transform="translate(8 18) rotate(270)">SCL</text>
-      <def id="SCALE_PARAM" xlink:href="#knob16" transform="translate(25 0)"/>
+      <def id="SCALE_PARAM" xlink:href="#knob16" transform="translate(17 0)"/>
+      <def xlink:href="#dial-mintick" transform="translate(5 -12)"/>
     </g>
-    <def xlink:href="#dial-mintick" transform="translate(85 -12)"/>
   </g>
 
   <!-- <rect width="50" height="10" fill="#0f0" transform="translate(0 137)" /> -->
@@ -60,20 +68,18 @@
   <!-- <rect width="50" height="10" fill="#0f0" transform="translate(0 215)" /> -->
 
   <g class="io-group" transform="translate(0 225)">
-    <rect class="output-background" width="130" height="91" rx="5" transform="translate(10 44)"/>
-    <rect class="output-background" width="97.5" height="135" rx="5" transform="translate(10 0)"/>
+    <rect class="output-background" width="130" height="135" rx="5" transform="translate(10 0)"/>
     <rect class="input-background" width="65" height="135" rx="5" transform="translate(10 0)"/>
-    <rect class="input-background-filler" width="10" height="8" transform="translate(32.5 0)"/>
     <rect class="input-background-filler" width="10" height="8" transform="translate(65 0)"/>
     <rect class="input-background-filler" width="10" height="8" transform="translate(65 127)"/>
 
     <g transform="translate(12 0)">
       <def id="SAMPLE_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(5 40)">SAM</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" text-anchor="middle" transform="translate(15 40)">SAM</text>
     </g>
     <g transform="translate(44 0)">
       <def id="PW_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(8 40)">PW</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" text-anchor="middle" transform="translate(15 40)">PW</text>
     </g>
     <g transform="translate(76 0)">
       <def id="RAMP_DOWN_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
@@ -83,15 +89,23 @@
         <polyline class="output-label" points="0,8 0,0 12,8" stroke-width="1" fill="none"/>
       </g>
     </g>
+    <g transform="translate(108 0)">
+      <def id="STEPPED_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
+      <!-- <text font-size="6pt" letter-spacing="2px" transform="translate(5.5 40)">SQR</text> -->
+      <g transform="translate(9 33.5)">
+        <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
+        <polyline class="output-label" points="0,0 0,5 12,5 12,8" stroke-width="1" fill="none"/>
+      </g>
+    </g>
 
     <g transform="translate(0 44)">
       <g transform="translate(12 0)">
         <def id="OFFSET_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(6.5 40)">OFF</text>
+        <text class="input-label" font-size="6pt" letter-spacing="0.5px" text-anchor="middle" transform="translate(15 40)">OFF/SM</text>
       </g>
       <g transform="translate(44 0)">
         <def id="SCALE_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-        <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(6.5 40)">SCL</text>
+        <text class="input-label" font-size="6pt" letter-spacing="1px" text-anchor="middle" transform="translate(15 40)">SCL</text>
       </g>
       <g transform="translate(76 0)">
         <def id="RAMP_UP_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>
@@ -111,11 +125,11 @@
       <g transform="translate(10 44)">
         <g transform="translate(2 0)">
           <def id="PITCH_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-          <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(1 40)">V/OCT</text>
+          <text class="input-label" font-size="6pt" letter-spacing="0.7px" text-anchor="middle" transform="translate(15 40)">V/OCT</text>
         </g>
         <g transform="translate(34 0)">
           <def id="RESET_INPUT" xlink:href="#input" transform="translate(3 5)"/>
-          <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(0.7 40)">RESET</text>
+          <text class="input-label" font-size="6pt" letter-spacing="0.7px" text-anchor="middle" transform="translate(15 40)">RESET</text>
         </g>
         <g transform="translate(66 0)">
           <def id="TRIANGLE_OUTPUT" xlink:href="#output" transform="translate(3 5)"/>

@@ -14,6 +14,16 @@ struct PitchModeListener {
 };
 
 struct LFOBase : BGModule {
+	struct Smoother {
+		float _sampleRate = 0.0f;
+		float _frequency = 0.0f;
+		float _amount = 0.0f;
+		ShapedSlewLimiter _slewLimiter;
+
+		void setParams(float sampleRate, float frequency, float amount);
+		float next(float sample);
+	};
+
 	bool _slowMode = false;
 	PitchModeListener* _pitchModeListener = NULL;
 

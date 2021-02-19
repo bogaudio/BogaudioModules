@@ -17,6 +17,9 @@ text.brand {
 polyline {
   stroke: #333;
 }
+polyline.guide {
+  stroke: #0f0;
+}
 path {
   stroke: #333;
 }
@@ -115,7 +118,7 @@ polyline.output-label, path.output-label {
 }
 
 circle.port-rim {
-  stroke: #ccc;
+  stroke: #bbb;
 }
 circle.port-barrel {
   stroke: #222;
@@ -141,31 +144,36 @@ polyline.knob-tick {
       <g transform="translate(20 35)">
         
         <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-90) translate(11 0)"/>
-        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-45) translate(11 0)"/>
-        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(0) translate(11 0)"/>
-        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(45) translate(11 0)"/>
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-54) translate(11 0)"/>
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-18) translate(11 0)"/>
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(18) translate(11 0)"/>
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(54) translate(11 0)"/>
         <polyline points="0,0 5,0" stroke-width="1" transform="rotate(90) translate(11 0)"/>
       </g>
-      <g transform="translate(14 8)">
+      <g transform="translate(13 8)">
         
         <polyline points="0,8 12,0 12,8" stroke-width="1" fill="none"/>
       </g>
-      <g transform="translate(33.5 13.5)">
+      <g transform="translate(30 11)">
         
         <polyline points="0,8 0,0 12,8" stroke-width="1" fill="none"/>
       </g>
-      <g transform="translate(39 31)">
+      <g transform="translate(38 24)">
         
         <path d="M 0 4 A 2 3 0 0 1 6 4" stroke-width="1" stroke="#b3b3b3" fill="none"/>
         <path d="M 6 4 A 2 3 0 0 0 12 4" stroke-width="1" stroke="#b3b3b3" fill="none"/>
       </g>
-      <g transform="translate(33.5 48.5)">
+      <g transform="translate(38 38)">
         
         <polyline points="0,4 3,0 9,8 12,4" stroke-width="1" fill="none"/>
       </g>
-      <g transform="translate(14 54)">
+      <g transform="translate(30 51)">
         
         <polyline points="0,4 0,0 6,0 6,8 12,8 12,4" stroke-width="1" fill="none"/>
+      </g>
+      <g transform="translate(13 54)">
+        
+        <polyline points="0,0 0,5 12,5 12,8" stroke-width="1" fill="none"/>
       </g>
     </symbol>
 
@@ -199,6 +207,8 @@ polyline.knob-tick {
     
 
   <g transform="translate(20 25)">
+    
+    
     
     
     
@@ -266,9 +276,9 @@ polyline.knob-tick {
 
   
   
-  <text font-size="6pt" letter-spacing="1px" transform="translate(34 133)">0V = C-3 = 2.04HZ</text>
+  <text font-size="6pt" letter-spacing="1px" transform="translate(34 130)">0V = C-3 = 2.04HZ</text>
 
-  <g transform="translate(78 335)">
+  <g transform="translate(10 141)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(9 6.1)">SLOW</text>
     <g transform="translate(40 -1.3)"><svg id="SLOW_PARAM">
       <g transform="translate(4.5 4.5)">
@@ -277,34 +287,32 @@ polyline.knob-tick {
     </svg></g>
   </g>
 
-  
-  <g transform="translate(10 163)">
-    
-    <g transform="translate(10 0)">
-      <g transform="translate(0 5)"><svg id="WAVE_PARAM">
+  <g transform="translate(20 173)">
+    <g transform="translate(0 5)"><svg id="WAVE_PARAM">
       <g transform="translate(8 8)">
         <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
         <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-      
-    </g>
-    <g transform="translate(70 0)">
-      
-      
-      
-      
-      <text font-size="8pt" letter-spacing="2px" transform="translate(8 38) rotate(270)">SAM/PW</text>
-      <g transform="translate(20 0)"><svg id="SAMPLE_PWM_PARAM">
+    
+    <use xlink:href="#waves-eightfo" transform="translate(-12 -22)" href="#waves-eightfo"/>
+  </g>
+
+  <g transform="translate(80 143)">
+    
+    
+    
+    
+    <text font-size="8pt" letter-spacing="2px" transform="translate(8 30) rotate(270)">S/PW</text>
+    <g transform="translate(20 0)"><svg id="SAMPLE_PWM_PARAM">
       <g transform="translate(13 13)">
         <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
         <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
         <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    </g>
-    <g transform="translate(80.5 -9.6)">
+    <g transform="translate(10.5 -9.6)">
       <g transform="translate(22.5 22.5)">
         <g transform="rotate(-240) translate(15 0)">
           <text font-size="9.0pt" transform="translate(3 0) rotate(240) translate(-2.2 3.6)">-</text>
@@ -341,17 +349,46 @@ polyline.knob-tick {
         </g>
       </g>
     </g>
-    <use xlink:href="#waves-eightfo" transform="translate(-2 -22)" href="#waves-eightfo"/>
+  </g>
+
+  <g transform="translate(80 190)">
+    
+    
+    
+    
+    <text font-size="8pt" letter-spacing="2px" transform="translate(8 23) rotate(270)">SM</text>
+    <g transform="translate(20 0)"><svg id="SMOOTH_PARAM">
+      <g transform="translate(13 13)">
+        <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
+        <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
+        <circle cx="0" cy="0" r="12.5" stroke-width="1" stroke="#00f" fill="none"/>
+      </g>
+    </svg></g>
+    <g transform="translate(10.5 -9.6)">
+      <g transform="translate(22.5 22.5)">
+        <text font-size="5.0pt" transform="rotate(-240) translate(18 0) rotate(240) translate(-2 2)">0</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-210) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-180) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-150) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-120) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-90) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-60) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(-30) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(0) translate(15 0)"/>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" transform="rotate(30) translate(15 0)"/>
+        <polyline points="0,0 3.5,0" stroke-width="1" transform="rotate(60) translate(15 0)"/>
+      </g>
+    </g>
   </g>
 
   
-  <g transform="translate(10 226)">
+  <g transform="translate(10 235)">
     
     
     
     
     <g transform="translate(10 0)">
-      <text font-size="8pt" letter-spacing="2px" transform="translate(8 36.5) rotate(270)">OFFSET</text>
+      <text font-size="8pt" letter-spacing="1px" transform="translate(8 34.5) rotate(270)">OFFSET</text>
       <g transform="translate(20 0)"><svg id="OFFSET_PARAM">
       <g transform="translate(13 13)">
         <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
@@ -398,7 +435,7 @@ polyline.knob-tick {
       </g>
     </g>
     <g transform="translate(70 0)">
-      <text font-size="8pt" letter-spacing="2px" transform="translate(8 32) rotate(270)">SCALE</text>
+      <text font-size="8pt" letter-spacing="1px" transform="translate(8 32) rotate(270)">SCALE</text>
       <g transform="translate(20 0)"><svg id="SCALE_PARAM">
       <g transform="translate(13 13)">
         <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
@@ -630,9 +667,8 @@ polyline.knob-tick {
   
   
   
-  <g class="io-group" transform="translate(0 313)">
-    <rect class="input-background" width="70" height="87" rx="5" transform="translate(10 -40)"/>
-    <rect class="input-background" width="108" height="43" rx="5" transform="translate(10 -40)"/>
+  <g class="io-group" transform="translate(7 313)">
+    <rect class="input-background" width="108" height="87" rx="5" transform="translate(10 -40)"/>
     
     <g transform="translate(10 -40)">
       
@@ -683,6 +719,16 @@ polyline.knob-tick {
       </g>
     </svg></g>
       <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(0 40)">RESET</text>
+    </g>
+    <g transform="translate(90 0)">
+      
+      <g transform="translate(0 5)"><svg id="SMOOTH_INPUT">
+      <g transform="translate(12 12)">
+        <circle cx="0" cy="0" r="5" stroke-width="1" stroke="#0f0" fill="#0f0"/>
+        <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
+      </g>
+    </svg></g>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(5 40)">SM</text>
     </g>
   </g>
 </svg>

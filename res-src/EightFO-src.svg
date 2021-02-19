@@ -8,31 +8,36 @@
       <g transform="translate(20 35)">
         <!-- <circle r="18" fill="none" stroke="#00f" /> -->
         <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-90) translate(11 0)"/>
-        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-45) translate(11 0)"/>
-        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(0) translate(11 0)"/>
-        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(45) translate(11 0)"/>
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-54) translate(11 0)"/>
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-18) translate(11 0)"/>
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(18) translate(11 0)"/>
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(54) translate(11 0)"/>
         <polyline points="0,0 5,0" stroke-width="1" transform="rotate(90) translate(11 0)"/>
       </g>
-      <g transform="translate(14 8)">
+      <g transform="translate(13 8)">
         <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
         <polyline points="0,8 12,0 12,8" stroke-width="1" fill="none"/>
       </g>
-      <g transform="translate(33.5 13.5)">
+      <g transform="translate(30 11)">
         <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
         <polyline points="0,8 0,0 12,8" stroke-width="1" fill="none"/>
       </g>
-      <g transform="translate(39 31)">
+      <g transform="translate(38 24)">
         <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
         <path d="M 0 4 A 2 3 0 0 1 6 4" stroke-width="1" stroke="#333" fill="none"/>
         <path d="M 6 4 A 2 3 0 0 0 12 4" stroke-width="1" stroke="#333" fill="none"/>
       </g>
-      <g transform="translate(33.5 48.5)">
+      <g transform="translate(38 38)">
         <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
         <polyline points="0,4 3,0 9,8 12,4" stroke-width="1" fill="none"/>
       </g>
-      <g transform="translate(14 54)">
+      <g transform="translate(30 51)">
         <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
         <polyline points="0,4 0,0 6,0 6,8 12,8 12,4" stroke-width="1" fill="none"/>
+      </g>
+      <g transform="translate(13 54)">
+        <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
+        <polyline points="0,0 0,5 12,5 12,8" stroke-width="1" fill="none"/>
       </g>
     </symbol>
 
@@ -55,51 +60,60 @@
     <!-- <rect width="108" height="108" fill="none" stroke="#0f0" /> -->
     <!-- <polyline points="0,54 54,54" stroke="#0f0" stroke-width="1" fill="none" /> -->
     <!-- <polyline points="54,54 54,354" stroke="#0f0" stroke-width="1" fill="none" /> -->
+    <!-- <polyline points="40,54 40,354" stroke="#0f0" stroke-width="1" fill="none" /> -->
+    <!-- <polyline points="68,54 68,354" stroke="#0f0" stroke-width="1" fill="none" /> -->
     <def id="FREQUENCY_PARAM" xlink:href="#knob68" transform="translate(20 20)"/>
   </g>
   <def xlink:href="#dial-frequency-lfo" transform="translate(10 15)"/>
 
   <!-- <rect width="20" height="10" fill="#0f0" transform="translate(20 130)" /> -->
   <!-- <rect width="20" height="10" fill="#0f0" transform="translate(108 130)" /> -->
-  <text font-size="6pt" letter-spacing="1px" transform="translate(34 133)">0V = C-3 = 2.04HZ</text>
+  <text font-size="6pt" letter-spacing="1px" transform="translate(34 130)">0V = C-3 = 2.04HZ</text>
 
-  <g transform="translate(78 335)">
+  <g transform="translate(10 141)">
     <text font-size="6pt" letter-spacing="2px" transform="translate(9 6.1)">SLOW</text>
     <def id="SLOW_PARAM" xlink:href="#button-small" transform="translate(40 -1.3)"/>
   </g>
 
-  <!-- <rect width="230" height="10" fill="#0f0" transform="translate(0 137)" /> -->
-  <g transform="translate(10 163)">
-    <!-- <polyline points="0,0 170,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(10 13)" /> -->
-    <g transform="translate(10 0)">
-      <def id="WAVE_PARAM" xlink:href="#knob16" transform="translate(0 5)"/>
-      <!-- <rect width="60" height="60" fill="none" stroke="#0f0" transform="translate(-10 -30) translate(8 13)" /> -->
-    </g>
-    <g transform="translate(70 0)">
-      <!-- <polyline points="0,0 170,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(-10 -10)" /> -->
-      <!-- <polyline points="0,0 170,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(-10 13)" /> -->
-      <!-- <polyline points="0,0 0,170" stroke="#0f0" stroke-width="1" fill="none" transform="translate(33 -13)" /> -->
-      <!-- <polyline points="0,0 170,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(-10 33)" /> -->
-      <text font-size="8pt" letter-spacing="2px" transform="translate(8 38) rotate(270)">SAM/PW</text>
-      <def id="SAMPLE_PWM_PARAM" xlink:href="#knob26" transform="translate(20 0)"/>
-    </g>
-    <def xlink:href="#dial-attenuverter" transform="translate(80.5 -9.6)"/>
-    <use xlink:href="#waves-eightfo" transform="translate(-2 -22)"/>
+  <g transform="translate(20 173)">
+    <def id="WAVE_PARAM" xlink:href="#knob16" transform="translate(0 5)"/>
+    <!-- <rect width="60" height="60" fill="none" stroke="#0f0" transform="translate(-10 -30) translate(8 13)" /> -->
+    <use xlink:href="#waves-eightfo" transform="translate(-12 -22)"/>
+  </g>
+
+  <g transform="translate(80 143)">
+    <!-- <polyline points="0,0 170,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(-10 -10)" /> -->
+    <!-- <polyline points="0,0 170,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(-10 13)" /> -->
+    <!-- <polyline points="0,0 0,170" stroke="#0f0" stroke-width="1" fill="none" transform="translate(33 -13)" /> -->
+    <!-- <polyline points="0,0 170,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(-10 33)" /> -->
+    <text font-size="8pt" letter-spacing="2px" transform="translate(8 30) rotate(270)">S/PW</text>
+    <def id="SAMPLE_PWM_PARAM" xlink:href="#knob26" transform="translate(20 0)"/>
+    <def xlink:href="#dial-attenuverter" transform="translate(10.5 -9.6)"/>
+  </g>
+
+  <g transform="translate(80 190)">
+    <!-- <polyline points="0,0 170,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(-10 -10)" /> -->
+    <!-- <polyline points="0,0 170,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(-10 13)" /> -->
+    <!-- <polyline points="0,0 0,170" stroke="#0f0" stroke-width="1" fill="none" transform="translate(33 -13)" /> -->
+    <!-- <polyline points="0,0 170,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(-10 33)" /> -->
+    <text font-size="8pt" letter-spacing="2px" transform="translate(8 23) rotate(270)">SM</text>
+    <def id="SMOOTH_PARAM" xlink:href="#knob26" transform="translate(20 0)"/>
+    <def xlink:href="#dial-linear" transform="translate(10.5 -9.6)"/>
   </g>
 
   <!-- <rect width="230" height="10" fill="#0f0" transform="translate(0 203)" /> -->
-  <g transform="translate(10 226)">
+  <g transform="translate(10 235)">
     <!-- <polyline points="0,0 170,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(10 -10)" /> -->
     <!-- <polyline points="0,0 170,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(10 13)" /> -->
     <!-- <polyline points="0,0 0,170" stroke="#0f0" stroke-width="1" fill="none" transform="translate(43 -13)" /> -->
     <!-- <polyline points="0,0 170,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(10 33)" /> -->
     <g transform="translate(10 0)">
-      <text font-size="8pt" letter-spacing="2px" transform="translate(8 36.5) rotate(270)">OFFSET</text>
+      <text font-size="8pt" letter-spacing="1px" transform="translate(8 34.5) rotate(270)">OFFSET</text>
       <def id="OFFSET_PARAM" xlink:href="#knob26" transform="translate(20 0)"/>
     </g>
     <def xlink:href="#dial-attenuverter" transform="translate(20.5 -9.6)"/>
     <g transform="translate(70 0)">
-      <text font-size="8pt" letter-spacing="2px" transform="translate(8 32) rotate(270)">SCALE</text>
+      <text font-size="8pt" letter-spacing="1px" transform="translate(8 32) rotate(270)">SCALE</text>
       <def id="SCALE_PARAM" xlink:href="#knob26" transform="translate(20 0)"/>
     </g>
     <def xlink:href="#dial-linear" transform="translate(80.5 -9.6)"/>
@@ -183,9 +197,8 @@
   <!-- <polyline points="0,0 0,360" stroke="#0f0" stroke-width="1" fill="none" transform="translate(135 0)" /> -->
   <!-- <polyline points="0,0 270,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(0 360)" /> -->
   <!-- <rect width="230" height="10" fill="#0f0" transform="translate(0 263)" /> -->
-  <g class="io-group" transform="translate(0 313)">
-    <rect class="input-background" width="70" height="87" rx="5" transform="translate(10 -40)"/>
-    <rect class="input-background" width="108" height="43" rx="5" transform="translate(10 -40)"/>
+  <g class="io-group" transform="translate(7 313)">
+    <rect class="input-background" width="108" height="87" rx="5" transform="translate(10 -40)"/>
     <!-- <rect width="300" height="7" fill="#f00" transform="translate(10 40)" /> -->
     <g transform="translate(10 -40)">
       <!-- <rect width="30" height="40" rx="5" fill="#fafafa" /> -->
@@ -211,6 +224,11 @@
       <!-- <rect width="30" height="47" rx="5" fill="#fafafa" /> -->
       <def id="RESET_INPUT" xlink:href="#input" transform="translate(2 5)"/>
       <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(0 40)">RESET</text>
+    </g>
+    <g transform="translate(90 0)">
+      <!-- <rect width="30" height="47" rx="5" fill="#fafafa" /> -->
+      <def id="SMOOTH_INPUT" xlink:href="#input" transform="translate(0 5)"/>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(5 40)">SM</text>
     </g>
   </g>
 </module>

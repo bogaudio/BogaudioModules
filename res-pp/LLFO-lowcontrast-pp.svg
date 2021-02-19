@@ -17,6 +17,9 @@ text.brand {
 polyline {
   stroke: #333;
 }
+polyline.guide {
+  stroke: #0f0;
+}
 path {
   stroke: #333;
 }
@@ -115,7 +118,7 @@ polyline.output-label, path.output-label {
 }
 
 circle.port-rim {
-  stroke: #ccc;
+  stroke: #bbb;
 }
 circle.port-barrel {
   stroke: #222;
@@ -240,6 +243,16 @@ polyline.knob-tick {
           <polyline points="0,4 0,0 6,0 6,8 12,8 12,4" stroke-width="1" fill="none"/>
         </g>
       </g>
+
+      <g transform="translate(0 39)">
+        <g transform="translate(-7.5 1)"><svg id="STEPPED_LIGHT">
+      <rect width="6.4" height="6.4" fill="#0f0"/>
+    </svg></g>
+        <g transform="translate(1 1) scale(0.8)">
+          
+          <polyline points="0,0 0,5 12,5 12,8" stroke-width="1" fill="none"/>
+        </g>
+      </g>
     </g>
 
     <g transform="translate(31 0)">
@@ -274,7 +287,7 @@ polyline.knob-tick {
       </g>
     </g>
 
-    <g transform="translate(17.5 38)"><svg id="WAVE_PARAM">
+    <g transform="translate(29 38)"><svg id="WAVE_PARAM">
       <g transform="translate(4.5 4.5)">
         <circle r="4" stroke-width="1" stroke="#00f" fill="#f00"/>
       </g>
@@ -314,12 +327,14 @@ polyline.knob-tick {
     </svg></g>
     <g transform="translate(2.2 -2.5)">
       <g transform="translate(20 20)">
-        <polyline points="0,0 4,0" stroke-width="1" transform="rotate(-240) translate(10 0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#b3b3b3" fill="none" transform="rotate(0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#b3b3b3" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#b3b3b3" fill="none" transform="rotate(0)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#b3b3b3" fill="none" transform="rotate(-43)"/>
-      </g>
+      <polyline points="0,0 4.166666666666667,0" stroke-width="1" transform="rotate(-240) translate(10.0 0)"/>
+      <path class="0.0" d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#b3b3b3" fill="none" transform="rotate(0)"/>
+      <path class="0.0" d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#b3b3b3" fill="none" transform="rotate(43)"/>
+      <path class="0.0" d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#b3b3b3" fill="none" transform="rotate(0)"/>
+      <path class="0.0" d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#b3b3b3" fill="none" transform="rotate(-43)"/>
+      <polyline points="-3,0 3,0" stroke-width="1" fill="none"/>
+      <polyline points="0,-3 0,3" stroke-width="1" fill="none"/>
+    </g>
     </g>
   </g>
 
