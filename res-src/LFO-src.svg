@@ -45,7 +45,7 @@
   <g transform="translate(0 196)">
     <g transform="translate(10 0)">
       <!-- <rect width="38" height="30" fill="none" stroke="#0f0" transform="translate(0 -9)" /> -->
-      <text font-size="8pt" letter-spacing="2px" transform="translate(8 16) rotate(270)">SM</text>
+      <text font-size="8pt" letter-spacing="0.5px" transform="translate(8 23) rotate(270)">SMTH</text>
       <def id="SMOOTH_PARAM" xlink:href="#knob16" transform="translate(17 0)"/>
       <def xlink:href="#dial-mintick" transform="translate(5 -12)"/>
     </g>

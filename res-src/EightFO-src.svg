@@ -34,7 +34,7 @@
     <!-- <polyline points="0,0 170,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(-10 13)" /> -->
     <!-- <polyline points="0,0 0,170" stroke="#0f0" stroke-width="1" fill="none" transform="translate(33 -13)" /> -->
     <!-- <polyline points="0,0 170,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(-10 33)" /> -->
-    <text font-size="8pt" letter-spacing="2px" transform="translate(8 30) rotate(270)">S/PW</text>
+    <text font-size="8pt" letter-spacing="1px" transform="translate(8 29) rotate(270)">S/PW</text>
     <def id="SAMPLE_PWM_PARAM" xlink:href="#knob26" transform="translate(20 0)"/>
     <def xlink:href="#dial-attenuverter" transform="translate(10.5 -9.6)"/>
   </g>
@@ -44,7 +44,7 @@
     <!-- <polyline points="0,0 170,0" stroke="#0f0" stroke-width="1" fill="none" transform="translate(-10 13)" /> -->
     <!-- <polyline points="0,0 0,170" stroke="#0f0" stroke-width="1" fill="none" transform="translate(33 -13)" /> -->
     <!-- <polyline points="0,0 170,0" stroke="#f00" stroke-width="1" fill="none" transform="translate(-10 33)" /> -->
-    <text font-size="8pt" letter-spacing="2px" transform="translate(8 23) rotate(270)">SM</text>
+    <text font-size="8pt" letter-spacing="1px" transform="translate(8 31) rotate(270)">SMTH</text>
     <def id="SMOOTH_PARAM" xlink:href="#knob26" transform="translate(20 0)"/>
     <def xlink:href="#dial-linear" transform="translate(10.5 -9.6)"/>
   </g>
@@ -61,7 +61,7 @@
     </g>
     <def xlink:href="#dial-attenuverter" transform="translate(20.5 -9.6)"/>
     <g transform="translate(70 0)">
-      <text font-size="8pt" letter-spacing="1px" transform="translate(8 32) rotate(270)">SCALE</text>
+      <text font-size="8pt" letter-spacing="1px" transform="translate(8 33) rotate(270)">SCALE</text>
       <def id="SCALE_PARAM" xlink:href="#knob26" transform="translate(20 0)"/>
     </g>
     <def xlink:href="#dial-linear" transform="translate(80.5 -9.6)"/>
@@ -123,7 +123,7 @@
       <def id="PHASE1_INPUT" xlink:href="#input" transform="translate(0 240)"/>
       <def id="PHASE0_INPUT" xlink:href="#input" transform="translate(0 280)"/>
     </g>
-    <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(8 320)">CV</text>
+    <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(5 320)">PHS</text>
   </g>
 
   <g class="io-group" transform="translate(215 32)">
@@ -176,7 +176,7 @@
     <g transform="translate(90 0)">
       <!-- <rect width="30" height="47" rx="5" fill="#fafafa" /> -->
       <def id="SMOOTH_INPUT" xlink:href="#input" transform="translate(0 5)"/>
-      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(5 40)">SM</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(-1 40)">SMTH</text>
     </g>
   </g>
 </module>

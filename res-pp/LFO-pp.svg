@@ -255,7 +255,7 @@ polyline.knob-tick {
   <g transform="translate(0 196)">
     <g transform="translate(10 0)">
       
-      <text font-size="8pt" letter-spacing="2px" transform="translate(8 16) rotate(270)">SM</text>
+      <text font-size="8pt" letter-spacing="0.5px" transform="translate(8 23) rotate(270)">SMTH</text>
       <g transform="translate(17 0)"><svg id="SMOOTH_PARAM">
       <g transform="translate(8 8)">
         <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>

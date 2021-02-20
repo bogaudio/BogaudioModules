@@ -224,7 +224,7 @@ polyline.knob-tick {
     
     
     
-    <text font-size="8pt" letter-spacing="2px" transform="translate(8 30) rotate(270)">S/PW</text>
+    <text font-size="8pt" letter-spacing="1px" transform="translate(8 29) rotate(270)">S/PW</text>
     <g transform="translate(20 0)"><svg id="SAMPLE_PWM_PARAM">
       <g transform="translate(13 13)">
         <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
@@ -276,7 +276,7 @@ polyline.knob-tick {
     
     
     
-    <text font-size="8pt" letter-spacing="2px" transform="translate(8 23) rotate(270)">SM</text>
+    <text font-size="8pt" letter-spacing="1px" transform="translate(8 31) rotate(270)">SMTH</text>
     <g transform="translate(20 0)"><svg id="SMOOTH_PARAM">
       <g transform="translate(13 13)">
         <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
@@ -355,7 +355,7 @@ polyline.knob-tick {
       </g>
     </g>
     <g transform="translate(70 0)">
-      <text font-size="8pt" letter-spacing="1px" transform="translate(8 32) rotate(270)">SCALE</text>
+      <text font-size="8pt" letter-spacing="1px" transform="translate(8 33) rotate(270)">SCALE</text>
       <g transform="translate(20 0)"><svg id="SCALE_PARAM">
       <g transform="translate(13 13)">
         <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
@@ -605,7 +605,7 @@ polyline.knob-tick {
       </g>
     </svg></g>
     </g>
-    <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(8 320)">CV</text>
+    <text class="input-label" font-size="6pt" letter-spacing="2px" transform="translate(5 320)">PHS</text>
   </g>
 
   <g class="io-group" transform="translate(215 32)">
@@ -728,7 +728,7 @@ polyline.knob-tick {
         <circle cx="0" cy="0" r="10.5" stroke-width="3" stroke="#0f0" fill="none"/>
       </g>
     </svg></g>
-      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(5 40)">SM</text>
+      <text class="input-label" font-size="6pt" letter-spacing="1px" transform="translate(-1 40)">SMTH</text>
     </g>
   </g>
 </svg>
