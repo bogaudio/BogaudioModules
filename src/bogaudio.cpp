@@ -31,6 +31,7 @@
 #include "EQS.hpp"
 #include "FFB.hpp"
 #include "FMOp.hpp"
+#include "FourFO.hpp"
 #include "FourMan.hpp"
 #include "FlipFlop.hpp"
 #include "Follow.hpp"
@@ -138,8 +139,9 @@ void init(rack::Plugin *p) {
 	p->addModel(modelChirp);
 
 	p->addModel(modelLFO);
-	p->addModel(modelEightFO);
 	p->addModel(modelLLFO);
+	p->addModel(modelFourFO);
+	p->addModel(modelEightFO);
 
 	p->addModel(modelVCF);
 	p->addModel(modelLVCF);

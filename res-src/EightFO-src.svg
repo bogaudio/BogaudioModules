@@ -2,58 +2,6 @@
 <module hp="17">
   <style/>
 
-  <defs>
-    <symbol id="waves-eightfo" viewBox="0 0 70px 70px">
-      <!-- <polyline points="0,0 0,70" stroke-width="1" stroke="#0f0" transform="translate(20 0)" /> -->
-      <g transform="translate(20 35)">
-        <!-- <circle r="18" fill="none" stroke="#00f" /> -->
-        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-90) translate(11 0)"/>
-        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-54) translate(11 0)"/>
-        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-18) translate(11 0)"/>
-        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(18) translate(11 0)"/>
-        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(54) translate(11 0)"/>
-        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(90) translate(11 0)"/>
-      </g>
-      <g transform="translate(13 8)">
-        <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
-        <polyline points="0,8 12,0 12,8" stroke-width="1" fill="none"/>
-      </g>
-      <g transform="translate(30 11)">
-        <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
-        <polyline points="0,8 0,0 12,8" stroke-width="1" fill="none"/>
-      </g>
-      <g transform="translate(38 24)">
-        <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
-        <path d="M 0 4 A 2 3 0 0 1 6 4" stroke-width="1" stroke="#333" fill="none"/>
-        <path d="M 6 4 A 2 3 0 0 0 12 4" stroke-width="1" stroke="#333" fill="none"/>
-      </g>
-      <g transform="translate(38 38)">
-        <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
-        <polyline points="0,4 3,0 9,8 12,4" stroke-width="1" fill="none"/>
-      </g>
-      <g transform="translate(30 51)">
-        <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
-        <polyline points="0,4 0,0 6,0 6,8 12,8 12,4" stroke-width="1" fill="none"/>
-      </g>
-      <g transform="translate(13 54)">
-        <!-- <rect width="12" height="8" fill="none" stroke-width="1" stroke="#0f0" /> -->
-        <polyline points="0,0 0,5 12,5 12,8" stroke-width="1" fill="none"/>
-      </g>
-    </symbol>
-
-    <symbol id="dial-phase-eightfo" viewBox="0 0 40px 40px">
-      <g transform="translate(20 20)">
-        <g transform="rotate(-90) translate(10 0)">
-          <polyline points="0,0 4,0" stroke-width="1"/>
-        </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
-      </g>
-    </symbol>
-  </defs>
-
   <def xlink:href="#module" var-name="8FO"/>
 
   <g transform="translate(20 25)">
@@ -78,7 +26,7 @@
   <g transform="translate(20 173)">
     <def id="WAVE_PARAM" xlink:href="#knob16" transform="translate(0 5)"/>
     <!-- <rect width="60" height="60" fill="none" stroke="#0f0" transform="translate(-10 -30) translate(8 13)" /> -->
-    <use xlink:href="#waves-eightfo" transform="translate(-12 -22)"/>
+    <def xlink:href="#dial-waves" transform="translate(-12 -22)"/>
   </g>
 
   <g transform="translate(80 143)">
@@ -151,15 +99,15 @@
   </g>
 
   <g transform="translate(137 36)">
-    <use xlink:href="#dial-phase-eightfo" transform="translate(3 0) translate(12 12) rotate(-225) translate(-20 -20)"/>
-    <use xlink:href="#dial-phase-eightfo" transform="translate(3 40) translate(12 12) rotate(-180) translate(-20 -20)"/>
-    <use xlink:href="#dial-phase-eightfo" transform="translate(3 80) translate(12 12) rotate(-135) translate(-20 -20)"/>
-    <use xlink:href="#dial-phase-eightfo" transform="translate(3 120) translate(12 12) rotate(-90) translate(-20 -20)"/>
+    <def xlink:href="#dial-phase" transform="translate(3 0) translate(12 12) rotate(-225) translate(-20 -20)"/>
+    <def xlink:href="#dial-phase" transform="translate(3 40) translate(12 12) rotate(-180) translate(-20 -20)"/>
+    <def xlink:href="#dial-phase" transform="translate(3 80) translate(12 12) rotate(-135) translate(-20 -20)"/>
+    <def xlink:href="#dial-phase" transform="translate(3 120) translate(12 12) rotate(-90) translate(-20 -20)"/>
 
-    <use xlink:href="#dial-phase-eightfo" transform="translate(3 160) translate(12 12) rotate(-45) translate(-20 -20)"/>
-    <use xlink:href="#dial-phase-eightfo" transform="translate(3 200) translate(12 12) rotate(0) translate(-20 -20)"/>
-    <use xlink:href="#dial-phase-eightfo" transform="translate(3 240) translate(12 12) rotate(45) translate(-20 -20)"/>
-    <use xlink:href="#dial-phase-eightfo" transform="translate(3 280) translate(12 12) rotate(90) translate(-20 -20)"/>
+    <def xlink:href="#dial-phase" transform="translate(3 160) translate(12 12) rotate(-45) translate(-20 -20)"/>
+    <def xlink:href="#dial-phase" transform="translate(3 200) translate(12 12) rotate(0) translate(-20 -20)"/>
+    <def xlink:href="#dial-phase" transform="translate(3 240) translate(12 12) rotate(45) translate(-20 -20)"/>
+    <def xlink:href="#dial-phase" transform="translate(3 280) translate(12 12) rotate(90) translate(-20 -20)"/>
   </g>
 
   <g class="io-group" transform="translate(176 32)">

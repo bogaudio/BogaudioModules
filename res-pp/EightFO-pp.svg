@@ -74,58 +74,6 @@ polyline.knob-tick {
 }
 </style>
 
-  <defs>
-    <symbol id="waves-eightfo" viewBox="0 0 70px 70px">
-      
-      <g transform="translate(20 35)">
-        
-        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-90) translate(11 0)"/>
-        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-54) translate(11 0)"/>
-        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-18) translate(11 0)"/>
-        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(18) translate(11 0)"/>
-        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(54) translate(11 0)"/>
-        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(90) translate(11 0)"/>
-      </g>
-      <g transform="translate(13 8)">
-        
-        <polyline points="0,8 12,0 12,8" stroke-width="1" fill="none"/>
-      </g>
-      <g transform="translate(30 11)">
-        
-        <polyline points="0,8 0,0 12,8" stroke-width="1" fill="none"/>
-      </g>
-      <g transform="translate(38 24)">
-        
-        <path d="M 0 4 A 2 3 0 0 1 6 4" stroke-width="1" stroke="#333" fill="none"/>
-        <path d="M 6 4 A 2 3 0 0 0 12 4" stroke-width="1" stroke="#333" fill="none"/>
-      </g>
-      <g transform="translate(38 38)">
-        
-        <polyline points="0,4 3,0 9,8 12,4" stroke-width="1" fill="none"/>
-      </g>
-      <g transform="translate(30 51)">
-        
-        <polyline points="0,4 0,0 6,0 6,8 12,8 12,4" stroke-width="1" fill="none"/>
-      </g>
-      <g transform="translate(13 54)">
-        
-        <polyline points="0,0 0,5 12,5 12,8" stroke-width="1" fill="none"/>
-      </g>
-    </symbol>
-
-    <symbol id="dial-phase-eightfo" viewBox="0 0 40px 40px">
-      <g transform="translate(20 20)">
-        <g transform="rotate(-90) translate(10 0)">
-          <polyline points="0,0 4,0" stroke-width="1"/>
-        </g>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
-        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
-      </g>
-    </symbol>
-  </defs>
-
   
       
       <rect class="module-background background-fill" width="255.0" height="380.0"/>
@@ -232,7 +180,43 @@ polyline.knob-tick {
       </g>
     </svg></g>
     
-    <use xlink:href="#waves-eightfo" transform="translate(-12 -22)" href="#waves-eightfo"/>
+    <g transform="translate(-12 -22)">
+      
+      <g transform="translate(20 35)">
+        
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-90) translate(11 0)"/>
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-54) translate(11 0)"/>
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(-18) translate(11 0)"/>
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(18) translate(11 0)"/>
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(54) translate(11 0)"/>
+        <polyline points="0,0 5,0" stroke-width="1" transform="rotate(90) translate(11 0)"/>
+      </g>
+      <g transform="translate(13 8)">
+        
+        <polyline points="0,8 12,0 12,8" stroke-width="1" fill="none"/>
+      </g>
+      <g transform="translate(30 11)">
+        
+        <polyline points="0,8 0,0 12,8" stroke-width="1" fill="none"/>
+      </g>
+      <g transform="translate(38 24)">
+        
+        <path d="M 0 4 A 2 3 0 0 1 6 4" stroke-width="1" stroke="#333" fill="none"/>
+        <path d="M 6 4 A 2 3 0 0 0 12 4" stroke-width="1" stroke="#333" fill="none"/>
+      </g>
+      <g transform="translate(38 38)">
+        
+        <polyline points="0,4 3,0 9,8 12,4" stroke-width="1" fill="none"/>
+      </g>
+      <g transform="translate(30 51)">
+        
+        <polyline points="0,4 0,0 6,0 6,8 12,8 12,4" stroke-width="1" fill="none"/>
+      </g>
+      <g transform="translate(13 54)">
+        
+        <polyline points="0,0 0,5 12,5 12,8" stroke-width="1" fill="none"/>
+      </g>
+    </g>
   </g>
 
   <g transform="translate(80 143)">
@@ -477,15 +461,95 @@ polyline.knob-tick {
   </g>
 
   <g transform="translate(137 36)">
-    <use xlink:href="#dial-phase-eightfo" transform="translate(3 0) translate(12 12) rotate(-225) translate(-20 -20)" href="#dial-phase-eightfo"/>
-    <use xlink:href="#dial-phase-eightfo" transform="translate(3 40) translate(12 12) rotate(-180) translate(-20 -20)" href="#dial-phase-eightfo"/>
-    <use xlink:href="#dial-phase-eightfo" transform="translate(3 80) translate(12 12) rotate(-135) translate(-20 -20)" href="#dial-phase-eightfo"/>
-    <use xlink:href="#dial-phase-eightfo" transform="translate(3 120) translate(12 12) rotate(-90) translate(-20 -20)" href="#dial-phase-eightfo"/>
+    <g transform="translate(3 0) translate(12 12) rotate(-225) translate(-20 -20)">
+      <g transform="translate(20 20)">
+        <g transform="rotate(-90) translate(10 0)">
+          <polyline points="0,0 4,0" stroke-width="1"/>
+        </g>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
+      </g>
+    </g>
+    <g transform="translate(3 40) translate(12 12) rotate(-180) translate(-20 -20)">
+      <g transform="translate(20 20)">
+        <g transform="rotate(-90) translate(10 0)">
+          <polyline points="0,0 4,0" stroke-width="1"/>
+        </g>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
+      </g>
+    </g>
+    <g transform="translate(3 80) translate(12 12) rotate(-135) translate(-20 -20)">
+      <g transform="translate(20 20)">
+        <g transform="rotate(-90) translate(10 0)">
+          <polyline points="0,0 4,0" stroke-width="1"/>
+        </g>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
+      </g>
+    </g>
+    <g transform="translate(3 120) translate(12 12) rotate(-90) translate(-20 -20)">
+      <g transform="translate(20 20)">
+        <g transform="rotate(-90) translate(10 0)">
+          <polyline points="0,0 4,0" stroke-width="1"/>
+        </g>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
+      </g>
+    </g>
 
-    <use xlink:href="#dial-phase-eightfo" transform="translate(3 160) translate(12 12) rotate(-45) translate(-20 -20)" href="#dial-phase-eightfo"/>
-    <use xlink:href="#dial-phase-eightfo" transform="translate(3 200) translate(12 12) rotate(0) translate(-20 -20)" href="#dial-phase-eightfo"/>
-    <use xlink:href="#dial-phase-eightfo" transform="translate(3 240) translate(12 12) rotate(45) translate(-20 -20)" href="#dial-phase-eightfo"/>
-    <use xlink:href="#dial-phase-eightfo" transform="translate(3 280) translate(12 12) rotate(90) translate(-20 -20)" href="#dial-phase-eightfo"/>
+    <g transform="translate(3 160) translate(12 12) rotate(-45) translate(-20 -20)">
+      <g transform="translate(20 20)">
+        <g transform="rotate(-90) translate(10 0)">
+          <polyline points="0,0 4,0" stroke-width="1"/>
+        </g>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
+      </g>
+    </g>
+    <g transform="translate(3 200) translate(12 12) rotate(0) translate(-20 -20)">
+      <g transform="translate(20 20)">
+        <g transform="rotate(-90) translate(10 0)">
+          <polyline points="0,0 4,0" stroke-width="1"/>
+        </g>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
+      </g>
+    </g>
+    <g transform="translate(3 240) translate(12 12) rotate(45) translate(-20 -20)">
+      <g transform="translate(20 20)">
+        <g transform="rotate(-90) translate(10 0)">
+          <polyline points="0,0 4,0" stroke-width="1"/>
+        </g>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
+      </g>
+    </g>
+    <g transform="translate(3 280) translate(12 12) rotate(90) translate(-20 -20)">
+      <g transform="translate(20 20)">
+        <g transform="rotate(-90) translate(10 0)">
+          <polyline points="0,0 4,0" stroke-width="1"/>
+        </g>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 1 12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(43)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-20)"/>
+        <path d="M 0 -12.5 A 12.5 12.5 0 0 0 -12.5 0" stroke-width="0.7" stroke-linecap="round" stroke="#333" fill="none" transform="rotate(-43)"/>
+      </g>
+    </g>
   </g>
 
   <g class="io-group" transform="translate(176 32)">

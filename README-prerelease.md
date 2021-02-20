@@ -190,13 +190,19 @@ Sampling and smoothing functions are available on the context menu.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
 
-#### <a name="eightfo"></a> 8FO
+#### <a name="fourfo"></a> 4FO
 
-An LFO with outputs at 8 different phases.  The phases may be set by knobs and CVs; by default they are 0, 45, 90, etc, degrees from the fundamental.  Otherwise, functionality is the same as with LFO, except that:
+A quadrature LFO, with outputs at 4 different phases.  The phases may be set by knobs and CVs; by default they are 0, 90, 180 and 270 degrees from the fundamental.  Otherwise, functionality is the same as with LFO, except that:
   - The wave shape is selectable, and all outputs are of the same (phase-shifted) wave.
   - The sampling and pulse width knobs and CVs are combined, with their function depending on the selected wave.
 
 Note that with the stepped random output, each output will update its output when its phase crosses 0.  Each draws from the same random sequence, rather than separate ones -- the outputs only vary in phase.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
+
+#### <a name="eightfo"></a> 8FO
+
+An "octature" LFO, like 4FO, but with outputs at 8 phases.  By default the phases are 0, 45, 90, etc, degrees from the fundamental.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
 

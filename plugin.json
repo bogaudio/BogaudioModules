@@ -106,10 +106,10 @@
       ]
     },
     {
-      "slug": "Bogaudio-EightFO",
-      "name": "8FO",
-      "description": "LFO with outputs at 8 different phases",
-      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#eightfo",
+      "slug": "Bogaudio-LLFO",
+      "name": "LLFO",
+      "description": "Low frequency oscillator",
+      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#llfo",
       "tags": [
         "LFO",
         "Random",
@@ -117,10 +117,21 @@
       ]
     },
     {
-      "slug": "Bogaudio-LLFO",
-      "name": "LLFO",
-      "description": "Low frequency oscillator",
-      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#llfo",
+      "slug": "Bogaudio-FourFO",
+      "name": "4FO",
+      "description": "Quadrature LFO",
+      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#fourfo",
+      "tags": [
+        "LFO",
+        "Random",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Bogaudio-EightFO",
+      "name": "8FO",
+      "description": "LFO with outputs at 8 different phases",
+      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#eightfo",
       "tags": [
         "LFO",
         "Random",
