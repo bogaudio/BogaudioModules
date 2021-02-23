@@ -176,7 +176,11 @@ The stepped random output selects a new random value in the range +/-5V once eac
 
 The sampling feature is not used with the square and stepped outputs, but applies to the others.
 
-Output smoothing is applied to the signal last, after offset and scale.
+Output smoothing is applied to the signal last, after offset and scale.  Smoothing is implemented with a slew limiter (see <a href="#slew">SLEW</a>), where the rise/fall times are a function of both the LFO rate and the smoothing amount.  The effect of smoothing varies radically with the amount, the wave selected, and with use of sampling and pulse width.  Some examples:
+  - Smoothing will turn the stepped random "wave" into a random walk (similar to, but distinct from, the output of <a href="#walk">WALK</a>).
+  - The triangle output is unaffected by smoothing even at its maximum (unless sampling is turned up).
+  - Square waves can be rounded off to shark-fins.
+  - Asymmetric waves (saw, ramp, pulse) will seem to get a positive or negative offset with increased smoothing (which can be countered with the offset setting); sampling reduces this effect with saw and ramp.
 
 To save space, offset and smoothing share a CV input port.  By default this will route CV to offset.  A context-menu option allows the CV to be routed to smoothing instead.
 
@@ -193,10 +197,10 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V
 #### <a name="fourfo"></a> 4FO
 
 A quadrature LFO, with outputs at 4 different phases.  The phases may be set by knobs and CVs (marked PHS); by default they are 0, 90, 180 and 270 degrees from the fundamental.  Otherwise, functionality is the same as with LFO, except that:
-  - The wave shape is selectable, and all outputs are of the same (phase-shifted) wave.
+  - The wave shape is selectable, and all four outputs are of the same (phase-shifted) wave.
   - The sampling and pulse width knobs and CVs are combined, with their function depending on the selected wave.
 
-Note that with the stepped random output, each output will update its output when its phase crosses 0.  Each draws from the same random sequence, rather than separate ones -- the outputs only vary in phase.
+Note that with the stepped random output, each output will update its output when its phase crosses 0 degrees.  Each draws from the same random sequence, rather than separate ones -- the outputs only vary in phase.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
 
