@@ -58,7 +58,7 @@ struct OscillatorGenerator : Oscillator, Generator {
 struct Phasor : OscillatorGenerator {
 	typedef uint64_t phase_t;
 	typedef int64_t phase_delta_t;
-	static constexpr phase_t cyclePhase = 1L << 32;
+	static constexpr phase_t cyclePhase = UINT32_MAX;
 	static constexpr float twoPI = 2.0f * M_PI;
 	static constexpr float maxSampleWidth = 0.25f;
 
