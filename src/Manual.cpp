@@ -94,8 +94,8 @@ struct ManualWidget : TriggerOnLoadModuleWidget {
 		assert(m);
 
 		OptionsMenuItem* o = new OptionsMenuItem("Output");
-		o->addItem(OptionMenuItem("+10V", [m]() { return m->_outputScale == 2.0f; }, [m]() { m->_outputScale = 2.0f; }));
 		o->addItem(OptionMenuItem("+5V", [m]() { return m->_outputScale == 1.0f; }, [m]() { m->_outputScale = 1.0f; }));
+		o->addItem(OptionMenuItem("+10V", [m]() { return m->_outputScale == 2.0f; }, [m]() { m->_outputScale = 2.0f; }));
 		OptionsMenuItem::addToMenu(o, menu);
 	}
 };
