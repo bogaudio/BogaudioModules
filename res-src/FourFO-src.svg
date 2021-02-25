@@ -2,35 +2,35 @@
   <style/>
 
   <defs>
-    <symbol id="dial-frequency-fourfo" viewBox="0 0 72px 72px">
-      <g transform="translate(36 36)">
+    <symbol id="dial-frequency-fourfo" viewBox="0 0 92px 92px">
+      <g transform="translate(46 46)">
         <g transform="rotate(-225.08) translate(19 0)">
           <polyline points="0,0 5,0" stroke-width="1" transform="translate(3 0)"/>
-          <text font-size="6pt" transform="translate(14 0) rotate(225.08) translate(-10.5 3.5)">0.1</text>
+          <text font-size="6pt" transform="translate(12 0) rotate(225.08) translate(-10.5 3.5)">0.1</text>
         </g>
         <g transform="rotate(-171.49) translate(19 0)">
           <polyline points="0,0 5,0" stroke-width="1" transform="translate(3 0)"/>
-          <text font-size="6pt" transform="translate(14 0) rotate(171.49) translate(-11 3.5)">0.5</text>
-        </g>
-        <g transform="rotate(-71.76) translate(19 0)">
-          <polyline points="0,0 5,0" stroke-width="1" transform="translate(3 0)"/>
-          <text font-size="6pt" transform="translate(14 0) rotate(71.76) translate(-2 3.5)">10</text>
+          <text font-size="6pt" transform="translate(12 0) rotate(171.49) translate(-9 3.5)">0.5</text>
         </g>
         <g transform="rotate(-124.62) translate(19 0)">
           <polyline points="0,0 5,0" stroke-width="1" transform="translate(3 0)"/>
-          <text font-size="6pt" letter-spacing="1px" transform="translate(14 0) rotate(124.62) translate(-10 3.5)">0V</text>
+          <text font-size="6pt" letter-spacing="1px" transform="translate(12 0) rotate(124.62) translate(-9 2.5)">0V</text>
+        </g>
+        <g transform="rotate(-71.76) translate(19 0)">
+          <polyline points="0,0 5,0" stroke-width="1" transform="translate(3 0)"/>
+          <text font-size="6pt" transform="translate(12 0) rotate(71.76) translate(-2 2.5)">10</text>
         </g>
         <g transform="rotate(-18.17) translate(19 0)">
           <polyline points="0,0 5,0" stroke-width="1" transform="translate(3 0)"/>
-          <text font-size="6pt" transform="translate(14 0) rotate(18.17) translate(-2 3.5)">50</text>
+          <text font-size="6pt" transform="translate(12 0) rotate(18.17) translate(-2 3.5)">50</text>
         </g>
         <g transform="rotate(27.98) translate(19 0)">
           <polyline points="0,0 5,0" stroke-width="1" transform="translate(3 0)"/>
-          <text font-size="6pt" transform="translate(14 0) rotate(-27.98) translate(-2 3.5)">200</text>
+          <text font-size="6pt" transform="translate(12 0) rotate(-27.98) translate(-2 1.5)">200</text>
         </g>
         <g transform="rotate(51.05) translate(19 0)">
           <polyline points="0,0 5,0" stroke-width="1" transform="translate(3 0)"/>
-          <text font-size="6pt" transform="translate(14 0) rotate(-51.05) translate(-2 3.5)">400</text>
+          <text font-size="6pt" transform="translate(12 0) rotate(-51.05) translate(-2 3.5)">400</text>
         </g>
 
         <polyline points="0,0 3,0" stroke-width="0.7" transform="rotate(-240) translate(22 0)"/>
@@ -62,7 +62,7 @@
   <g transform="translate(6 25)">
     <!-- <rect width="72" height="72" fill="none" stroke="#0f0" /> -->
     <def id="FREQUENCY_PARAM" xlink:href="#knob38" transform="translate(17 17)"/>
-    <use xlink:href="#dial-frequency-fourfo" transform="translate(0 0)"/>
+    <use xlink:href="#dial-frequency-fourfo" transform="translate(-10 -10)"/>
     <text font-size="6pt" letter-spacing="1px" text-anchor="middle" transform="translate(36 75)">0V = 2.04HZ</text>
   </g>
 
