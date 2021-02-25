@@ -138,6 +138,8 @@ A sine-wave oscillator and simple synth voice designed to allow patching up the 
   - An on-board ADSR, controlled by the GATE input, with selectable routing to output level, feedback and depth, with CV control over the sustain level.
   - A main frequency knob calibrated for setting the frequency as a ratio of the frequency dictated by the V/OCT input - assuming a single V/OCT CV is routed to multiple FM-OPs, this allows the relative frequency of each operator to be set via ratios.
 
+Anti-aliasing techniques are applied when feedback or external FM are in use.  Either condition for anti-aliasing can be disabled on the context menu.  Prior to version 1.1.36, due to a long-standing bug, there was no anti-aliasing for external FM, unless feedback was also on.  To get that behavior back, **the true vintage FM-OP sound**, disable "Anti-alias external FM" on the menu.
+
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
 
 #### <a name="chirp"></a> CHIRP
@@ -160,26 +162,51 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V
 #### <a name="lfo"></a> LFO
 
 A standard LFO featuring:
-  - Simultaneous ramp-down, ramp-up (saw), square, triangle and sine wave outputs.
+  - Simultaneous ramp-down, ramp-up (saw), triangle, stepped random, square and sine wave outputs.
   - Knob and CV control of the pulse width of the square wave.
   - A CV-controllable "sample" modifier, which turns the output into a step function.
   - Onboard CV-controllable offset and scale of the output voltages.
+  - CV-controllable output smoothing (the CV input is shared with offset, see below).
   - Reset (hard sync) input.
   - Slow mode.
 
-LFO tracks pitch CVs at the V/OCT input seven octaves lower than a normal oscillator: with a 0V input, the output frequency is note C-3 (2.04HZ).  The frequency knob is calibrated in linear volts (the small ticks), and its value is added to the input V/OCT.  With no input, the frequency range is from approximately 0.1 to 400HZ; with CV the frequency may be driven up to 2000HZ or down to arbitrarily low values.  In slow mode, the output frequency tracks the controls four octaves lower than otherwise (11 octaves below a normal oscillator). Output is `(lfo * scale / 100) + offset`.
+LFO tracks pitch CVs at the V/OCT input seven octaves lower than a normal oscillator: with a 0V input, the output frequency is note C-3 (2.04HZ).  The frequency knob is calibrated in linear volts (the small ticks), and its value is added to the input V/OCT.  With no input, the frequency range is from approximately 0.1 to 400HZ; with CV the frequency may be driven up to 2000HZ or down to arbitrarily low values.  In slow mode, the output frequency tracks the controls four octaves lower than otherwise (11 octaves below a normal oscillator).  Output is `(lfo * scale / 100) + offset`.
+
+The stepped random output selects a new random value in the range +/-5V once each cycle, each time the oscillator phase crosses 0.  Triggering RESET will select a new value.
+
+The sampling feature is not used with the square and stepped outputs, but applies to the others.
+
+Output smoothing is applied to the signal last, after offset and scale.  Smoothing is implemented with a slew limiter (see <a href="#slew">SLEW</a>), where the rise/fall times are a function of both the LFO rate and the smoothing amount.  The effect of smoothing varies radically with the amount, the wave selected, and with use of sampling and pulse width.  Some examples:
+  - Smoothing will turn the stepped random "wave" into a random walk (similar to, but distinct from, the output of <a href="#walk">WALK</a>).
+  - The triangle output is unaffected by smoothing even at its maximum (unless sampling is turned up).
+  - Square waves can be rounded off to shark-fins.
+  - Asymmetric waves (saw, ramp, pulse) will seem to get a positive or negative offset with increased smoothing (which can be countered with the offset setting); sampling reduces this effect with saw and ramp.
+
+To save space, offset and smoothing share a CV input port.  By default this will route CV to offset.  A context-menu option allows the CV to be routed to smoothing instead.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
 
 #### <a name="llfo"></a> LLFO
 
-A 3HP LFO, with selectable waveform.  The features are a subset of LFO, with the addition of a sixth 10%-pulse waveform.
+A 3HP LFO, with selectable waveform.  The features are a subset of LFO.  There are separate square and pulse waveform options: square is fixed at a 50% duty cycle, while pulse defaults to 10% but may be adjusted with the "Pulse width" option on the context menu.
+
+Sampling and smoothing functions are available on the context menu.
+
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
+
+#### <a name="fourfo"></a> 4FO
+
+A quadrature LFO, with outputs at 4 different phases.  The phases may be set by knobs and CVs (marked PHS); by default they are 0, 90, 180 and 270 degrees from the fundamental.  Otherwise, functionality is the same as with LFO, except that:
+  - The wave shape is selectable, and all four outputs are of the same (phase-shifted) wave.
+  - The sampling and pulse width knobs and CVs are combined, with their function depending on the selected wave.
+
+Note that with the stepped random output, each output will update its output when its phase crosses 0 degrees.  Each draws from the same random sequence, rather than separate ones -- the outputs only vary in phase.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
 
 #### <a name="eightfo"></a> 8FO
 
-An LFO with outputs at 8 different phases.  The phases may be set by knobs and CVs; by default they are 0, 45, 90, etc, degrees from the fundamental.  Otherwise, functionality is the same as with LFO, excepting that the wave shape is selectable, and all outputs are of the same (phase-shifted) wave.
+An "octature" LFO, like 4FO, but with outputs at 8 phases.  By default the phases are 0, 45, 90, etc, degrees from the fundamental.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
 
@@ -793,7 +820,7 @@ The module's signal path has two main components: a detector, and the compressor
 
 The various controls and ports work as follows:
   - The MODE switch sets whether the module works as a compressor (COMP) or noise gate (GATE).
-  - THRESHOLD sets the threshold in decibels.  The default 0dB setting corresponds to the 10V peak-to-peak output level of a standard oscillator.  The TRSH input expects a unipolar (+10V) input; if in use this is attenuated by the knob.
+  - THRESHOLD sets the threshold in decibels.  The default 0dB setting corresponds to the 10V peak-to-peak output level of a standard oscillator.  The TRSH input expects a unipolar (+10V) input; if in use this is attenuated by the knob.  The knob's range is -24dB to +6dB; menu option "Threshold range" allows this to be doubled to -48dB to 12dB.
   - RATIO sets the degree of attenuation applied to a signal.  In compressor mode, higher settings attenuate the signal more as the detector output goes above the threshold; at the maximum setting, the compressor becomes a limiter.  In noise gate mode, higher ratios more completely attenuate inputs below the threshold.  The RATIO CV input is unipolar (0-10V), attenuated by the knob
   - The COMPRESSION meter provides a visual indication of the amount of attenuation being applied to the input at any given moment, and is proportional to the CV output at ENV.
   - ATACK and DECAY control lag times in the the movement of the detector signal as the input changes.  Each has a corresponding unipolar (+10V) CV attenuated by the corresponding knob.
@@ -817,7 +844,7 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the 
 
 #### <a name="lmtr"></a> LMTR
 
-LMTR is a compact (6HP) [limiter](https://en.wikipedia.org/wiki/Dynamic_range_compression).  Its controls behave the same as the corresponding controls on PRESSOR.
+LMTR is a compact (6HP) [limiter](https://en.wikipedia.org/wiki/Dynamic_range_compression).  Its controls behave the same as the corresponding controls on PRESSOR.  Controls for attack and release times are on the context menu.
 
 In contrast to CLPR, LMTR does not distort the signal very much; it just reduces the amplitude of the signal to keep it below the threshold.
 
@@ -825,7 +852,7 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the 
 
 #### <a name="nsgt"></a> NSGT
 
-NSGT is a compact (6HP) [noise gate](https://en.wikipedia.org/wiki/Noise_gate).  Its controls behave the same as the corresponding controls on PRESSOR.
+NSGT is a compact (6HP) [noise gate](https://en.wikipedia.org/wiki/Noise_gate).  Its controls behave the same as the corresponding controls on PRESSOR.  Controls for attack and release times are on the context menu.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the L input.
 
@@ -1120,7 +1147,7 @@ The behavior of DETUNE depends on the number of output channels:
 
 POLYCON16 allows fixed voltages to be sent directly to some number of channels, by channel number, of a polyphonic output.  The number of output channels is set the CHAN knob, unless an input is present at the CHAN input, in which case the channel count is taken from that input, and the knob is ignored.
 
-This can be used to introduce a bit fixed variation across the channels of a poly voice.
+This can be used to introduce a bit of fixed variation across the channels of a poly voice.
 
 The context menu option range allows the output voltages to be set from several bipolar and unipolar ranges.  Note that when a unipolar range is used, 0V will be output when the knob is fully counter-clockwise, even though the knobs are drawn with a bipolar dial (such that 0V is usually at noon).
 
@@ -1130,21 +1157,23 @@ A compact version of POLYCON16, that only works with polyphony channels 1-8.  Th
 
 #### <a name="polyoff16"></a> POLYOFF16
 
-POLYOFF16 allows for the offset and scaling of voltages on each channel of a polyphonic signal.  It can also be used as a replacement for Rack's MERGE, or as a CV-controllable version of POLYCON16.
+POLYOFF16 allows for the independent offset and scaling of voltages on each channel of a polyphonic signal.  It can also be used as a replacement for Rack's MERGE, which combines monophonic signals into a polyphonic signal, but here with per-channel offset and scale controls.
 
 The mode of operation is determined by the presence of an input at IN.  With an input:
   - The number of output polyphony channels is set equal to the number of channels on the input, and the CHAN knob is ignored.
   - The voltage of each polyphony channel on the input is processed by the corresponding OFFSET and SCALE knobs.
-  - The offset for each channel may be CV-controlled by a (monophonic) input at at it's corresponding CV port; the CV inputs expect +/-5V and are attenuverted by the OFFSET knob.
+  - The offset for each channel may be CV-controlled by a (monophonic) input at at its corresponding CV port; the CV inputs expect +/-5V and are attenuverted by the OFFSET knob.
 
 With no input at IN:
   - The output channels are set by the CHAN knob.
-  - A monophonic voltage may be provided at each channel's IN port; this is processed by the channel's OFFSET and SCALE before being merged to the output.  You can also think of the input voltage as being a CV for the constant value set by the OFFSET knob -- it's the same thing.
-  - With no input to a channel, the output voltage is just set by the channel's OFFSET and SCALE knobs.
+  - A monophonic voltage may be provided at each channel's IN port; this is processed by the channel's OFFSET and SCALE before being merged into the polyphonic output.
+  - With no input to a channel, the output voltage is just set by the channel's knobs.
 
-The module has the same "Range" content-menu options as POLYCON16.
+The module has the same "Range" context-menu options as POLYCON16, here altering the OFFSET voltages.
 
-#### <a name="polyoff8"></a> POLYOFF16
+The context-menu option "Order of operations" sets the order in which OFFSET and SCALE are applied to each channel.  The default is to scale, then offset.  This behavior was the opposite prior to version 1.1.36.  See <a href="#offset">OFFSET</a> for more detail on this; the behavior is the same here.
+
+#### <a name="polyoff8"></a> POLYOFF8
 
 A half-width version of POLYCON16, that only works with polyphony channels 1-8.
 
@@ -1231,17 +1260,17 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the 
 
 #### <a name="manual"></a> MANUAL
 
-A manual trigger/gate with 8 outputs.  A constant high value is sent from each output for as long as the TRIG button is held.  
+A manual trigger/gate with 8 outputs.  A constant +5V is sent from each output for as long as the TRIG button is held; 0V is output otherwise.  The high output voltage may be set to +10V on the context menu.
 
-MANUAL may be set to output a trigger pulse (+5V for 10ms) on patch load (akin to a Max/Msp loadbang).  This is off by default; enable clicking "Trigger on Load" on the module's context (right-click) menu.  The pulse is emitted 100ms after the patch starts processing samples.
+MANUAL may be set to output a trigger pulse (the high output voltage for 10ms) on patch load (akin to a Max/Msp loadbang).  This is off by default; enable clicking "Trigger on Load" on the module's context (right-click) menu.  The pulse is emitted 100ms after the patch starts processing samples.
 
 _Polyphony:_ Monophonic.
 
-#### <a name="4man"></a> 4MAN
+#### <a name="fourman"></a> 4MAN
 
 A version of MANUAL with four independent trigger buttons with separate outputs.
 
-The "Trigger on load" option, as on MANUAL, applies to all four outputs if enabled.
+The "Trigger on load" and "Output" options, as on MANUAL, apply to all four outputs if enabled.
 
 _Polyphony:_ Monophonic.
 
@@ -1253,11 +1282,17 @@ _Polyphony:_ Polyphonic inputs are duplicated (channels intact) at their corresp
 
 #### <a name="offset"></a> OFFSET
 
-An offset and scaler.  The OFFSET and SCALE knobs have CV inputs.  With an input signal, output is `(input + offset) * scale`.  With no input connected, the output is constant in the value of `offset * scale`.
+An offset and scaler.  The OFFSET and SCALE knobs have CV inputs (unipolar, 0-10V).  There are two operating modes, as set by the "Order of operations" context (right-click) menu option:
+
+  - Scale, then offset (the default): the output is `(input * scale) + output`.  With no input connected, the output is just `offset`.
+
+  - Offset, then scale: the output is `(input + offset) * scale`.  With no input connected, the output is `offset * scale`.
+
+Note that prior to version 1.1.36, there was no mode setting, and the behavior was to offset, then scale.  This behavior change might affect older patches.
 
 By default, the output is capped at +/-12 volts (this is a standard in Rack).  A context menu option allows this limit to be disabled.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the channels of IN input.
+_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the channels of the IN input.
 
 #### <a name="slew"></a> SLEW
 
@@ -1266,6 +1301,10 @@ A slew limiter - when the input changes rapidly, the output changes less rapidly
 The rising and falling slew rates and shapes are set independently.  The RISE and FALL time knobs are calibrated to set the time the output would need to catch up to a 10V change in the input.
 
 The RISE and FALL shape knobs affect the movement of the output as it catches up to the input (the shape it would draw on a scope). The shapes vary between log, linear and exponential curves.
+
+RISE and FALL each have a unipolar (0-10V) CV input affecting the corresponding slew rate.
+
+If SLOW is enabled, the slew rates for both RISE and FALL are 10x slower what they would otherwise be, based on the knobs and CVs.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the channels of the IN input.
 

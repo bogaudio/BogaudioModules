@@ -10,7 +10,7 @@ screens = [
     crop: false,
     rows: [
       ['VCO', 'LVCO', 'Sine', 'Pulse', 'XCO', 'Additator', 'FMOp', 'Chirp'],
-      ['LFO', 'LLFO', 'EightFO']
+      ['LFO', 'LLFO', 'FourFO', 'EightFO']
     ]
   },
   {
@@ -91,7 +91,7 @@ screens = [
     file: 'lfos.png',
     crop: true,
     rows: [
-      ['LFO', 'LLFO', 'EightFO']
+      ['LFO', 'LLFO', 'FourFO', 'EightFO']
     ]
   },
   {
