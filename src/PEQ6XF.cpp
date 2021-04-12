@@ -40,11 +40,13 @@ void PEQ6XF::processChannel(const ProcessArgs& args, int c) {
 	if (_baseMessage) {
 		Engine& e = *_engines[c];
 		for (int i = 0; i < 6; ++i) {
-			float out = e.efs[i].next(_baseMessage->outs[c][i]);
-			out = scaleEF(out, _baseMessage->frequencies[c][i], _baseMessage->bandwidths[c]);
-			out = _gain.next(out);
-			out = _saturator.next(out);
-			outputs[EF1_OUTPUT + i].setVoltage(out, c);
+			if (outputs[EF1_OUTPUT + i].isConnected()) {
+				float out = e.efs[i].next(_baseMessage->outs[c][i]);
+				out = scaleEF(out, _baseMessage->frequencies[c][i], _baseMessage->bandwidths[c]);
+				out = _gain.next(out);
+				out = _saturator.next(out);
+				outputs[EF1_OUTPUT + i].setVoltage(out, c);
+			}
 		}
 	}
 	else {

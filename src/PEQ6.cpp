@@ -16,7 +16,8 @@ bool PEQ6::active() {
 		outputs[OUT3_OUTPUT].isConnected() ||
 		outputs[OUT4_OUTPUT].isConnected() ||
 		outputs[OUT5_OUTPUT].isConnected() ||
-		outputs[OUT6_OUTPUT].isConnected();
+		outputs[OUT6_OUTPUT].isConnected() ||
+		expanderConnected();
 }
 
 int PEQ6::channels() {
