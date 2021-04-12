@@ -375,7 +375,8 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the I
 
 #### <a name="peq14xf"></a> PEQ14XF
 
-Expands PEQ6 with envelope follower outputs, per band.  The DAMP and GAIN knobs control the followers; see the description of the <a href="#follow">FOLLOW</a> module for a description of how these work.  DAMP has a unipolar (0-10V) CV; GAIN has a bipolar (+/-5V) CV.
+Expands PEQ14 with envelope follower outputs, per band.  The DAMP and GAIN knobs control the followers; see the description of the <a href="#follow">FOLLOW</a> module for a description of how these work.  DAMP has a unipolar (0-10V) CV; GAIN has a bipolar (+/-5V) CV.
+
 
 ### <a name="envelopes"></a> Envelopes and Envelope Utilities
 
