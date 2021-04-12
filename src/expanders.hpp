@@ -52,6 +52,11 @@ struct ExpandableModule : BASE {
 	void process(const BGModule::ProcessArgs& args) override {
 		BASE::process(args);
 		if (BGModule::rightExpander.module) {
+			auto m = toExpander();
+			if (m) {
+				m->channels = BASE::_channels;
+			}
+
 			BGModule::rightExpander.module->leftExpander.messageFlipRequested = true;
 		}
 	}
