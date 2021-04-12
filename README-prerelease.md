@@ -1239,9 +1239,11 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the 
 
 #### <a name="cvd"></a> CVD
 
-A simple delay designed for use with CV (though it works fine with audio).  Use it to delay triggers or gates, create a flip-flop that resets itself after a time, make a sequence run for a while then stop, to double up an envelope, or what have you.
+A simple delay designed for use with CV (though it works fine with audio).  Use it to delay triggers or gates, create a flip-flop that resets itself after a time, make a sequence run for a while then stop, double up an envelope, or what have you.
 
-The large TIME knob sets the delay time, as scaled by the small knob (up to 0.1, 1 or 10 seconds); TIME takes a 0-10V CV, attenuated by the knob.  Reducing time truncates the internal delay buffer.  The DRY/WET knob sets the mix of the original and delayed signals at the output, with a +/-5V CV input.
+The large TIME knob sets the delay time, in seconds, as scaled by the small knob (up to 0.1, 1 or 10 seconds); TIME takes a 0-10V CV, attenuated by the knob.  Reducing time truncates the internal delay buffer.  The DRY/WET knob sets the mix of the original and delayed signals at the output, with a +/-5V CV input.
+
+CVD may be used for lag/latency correction; using parameter entry (by right-clicking the TIME knob) is handy here, to set a precise delay.  You can get sample-accurate delays by dividing the desired number of delay samples by Rack's current sample rate, and setting TIME to that number (leave the time scale knob at 1).
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the IN input.
 
