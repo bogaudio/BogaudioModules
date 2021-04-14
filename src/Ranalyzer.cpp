@@ -277,7 +277,7 @@ struct AnalysisBinsReader : AnalyzerDisplay::BinsReader {
 	float at(int i) override {
 		float test = AnalyzerDisplay::binValueToDb(_testBins[i]);
 		float response = AnalyzerDisplay::binValueToDb(_responseBins[i]);
-		return AnalyzerDisplay::dbToBinValue(response = test);
+		return AnalyzerDisplay::dbToBinValue(response - test);
 	}
 
 	static std::unique_ptr<BinsReader> factory(AnalyzerCore& core) {
