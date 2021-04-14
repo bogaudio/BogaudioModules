@@ -325,6 +325,7 @@ def write_output(name, doc, styles)
 
   doc.css('localstyle').each do |n|
     n.node_name = 'style'
+    styles += n.content
   end
 
   # hack to inline the path stroke on each path; rendering through Inkscape doesn't handle styles on paths correctly.
