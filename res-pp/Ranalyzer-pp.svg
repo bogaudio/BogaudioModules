@@ -130,15 +130,14 @@ polyline.knob-tick {
     <symbol id="dial-delay-ranalyzer" viewbox="75 40">
       <g transform="translate(37.5 20)">
         <text font-size="6pt" text-anchor="middle" transform="rotate(-240) translate(16 0) rotate(240.0) translate(0 3)">2</text>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(-206.66666666666669) translate(11 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(-173.33333333333334) translate(11 0)"/>
-        <text font-size="6pt" text-anchor="middle" transform="rotate(-140.0) translate(16 0) rotate(140.0) translate(0 3)">8</text>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(-106.66666666666669) translate(11 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(-73.33333333333331) translate(11 0)"/>
-        <text font-size="6pt" text-anchor="middle" transform="rotate(-40.0) translate(16 0) rotate(40.0) translate(0 3)">14</text>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(-6.666666666666657) translate(11 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(26.66666666666663) translate(11 0)"/>
-        <text font-size="6pt" text-anchor="middle" transform="rotate(60) translate(16 0) rotate(-60.0) translate(0 3)">20</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(-194.54545454545456) translate(11 0)"/>
+        <text font-size="6pt" text-anchor="middle" transform="rotate(-158.1818181818182) translate(16 0) rotate(158.1818181818182) translate(-0.5 3)">18</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(-121.81818181818183) translate(11 0)"/>
+        <text font-size="6pt" text-anchor="middle" transform="rotate(-85.45454545454547) translate(16 0) rotate(85.45454545454547) translate(0 3.5)">34</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(-49.09090909090909) translate(11 0)"/>
+        <text font-size="6pt" text-anchor="middle" transform="rotate(-12.72727272727272) translate(16 0) rotate(12.72727272727272) translate(0.5 3)">50</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(23.636363636363626) translate(11 0)"/>
+        <text font-size="6pt" text-anchor="middle" transform="rotate(60) translate(16 0) rotate(-60.0) translate(0 3)">66</text>
       </g>
     </symbol>
   </defs>
@@ -220,14 +219,14 @@ polyline.knob-tick {
 
   <g transform="translate(0 237.5)">
     <text font-size="7pt" letter-spacing="1.5px" text-anchor="middle" transform="translate(37.5 0)">R. DELAY</text>
-    <g transform="translate(29.5 12)"><svg id="DELAY_PARAM">
+    <g transform="translate(29.5 15)"><svg id="DELAY_PARAM">
       <g transform="translate(8 8)">
         <polyline points="-3,0 3,0" stroke-width="1" stroke="#00f"/>
         <polyline points="0,-3 0,3" stroke-width="1" stroke="#00f"/>
         <circle r="7.5" stroke-width="1" stroke="#00f" fill="none"/>
       </g>
     </svg></g>
-    <use xlink:href="#dial-delay-ranalyzer" transform="translate(0 0)" href="#dial-delay-ranalyzer"/>
+    <use xlink:href="#dial-delay-ranalyzer" transform="translate(0 3)" href="#dial-delay-ranalyzer"/>
   </g>
 
   <g class="io-group" transform="translate(0 283)">

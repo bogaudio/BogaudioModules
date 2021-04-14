@@ -55,7 +55,7 @@ struct Ranalyzer : AnalyzerBase {
 
 	static constexpr float minFrequency = 1.0f;
 	static constexpr float maxFrequencyNyquistRatio = 0.49f;
-	static constexpr int maxResponseDelay = 20;
+	static constexpr int maxResponseDelay = 66;
 	static constexpr float initialDelaySeconds = 0.01f;
 
 	struct FrequencyParamQuantity : ParamQuantity {

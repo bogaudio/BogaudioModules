@@ -55,17 +55,16 @@
     </symbol>
 
     <symbol id="dial-delay-ranalyzer" viewbox="75 40">
-      <g transform="translate(37.5 20)" var-scale="18.0">
+      <g transform="translate(37.5 20)" var-scale="66.0">
         <text font-size="6pt" text-anchor="middle" var-r="-240" transform="rotate($r) translate(16 0) rotate(-1.0*$r) translate(0 3)">2</text>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(2.0/$scale*300.0-240.0) translate(11 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(4.0/$scale*300.0-240.0) translate(11 0)"/>
-        <text font-size="6pt" text-anchor="middle" var-r="6.0/$scale*300.0-240.0" transform="rotate($r) translate(16 0) rotate(-1.0*$r) translate(0 3)">8</text>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(8.0/$scale*300.0-240.0) translate(11 0)"/>
         <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(10.0/$scale*300.0-240.0) translate(11 0)"/>
-        <text font-size="6pt" text-anchor="middle" var-r="12.0/$scale*300.0-240.0" transform="rotate($r) translate(16 0) rotate(-1.0*$r) translate(0 3)">14</text>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(14.0/$scale*300.0-240.0) translate(11 0)"/>
-        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(16.0/$scale*300.0-240.0) translate(11 0)"/>
-        <text font-size="6pt" text-anchor="middle" var-r="60" transform="rotate($r) translate(16 0) rotate(-1.0*$r) translate(0 3)">20</text>
+        <text font-size="6pt" text-anchor="middle" var-r="18.0/$scale*300.0-240.0" transform="rotate($r) translate(16 0) rotate(-1.0*$r) translate(-0.5 3)">18</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(26.0/$scale*300.0-240.0) translate(11 0)"/>
+        <text font-size="6pt" text-anchor="middle" var-r="34.0/$scale*300.0-240.0" transform="rotate($r) translate(16 0) rotate(-1.0*$r) translate(0 3.5)">34</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(42.0/$scale*300.0-240.0) translate(11 0)"/>
+        <text font-size="6pt" text-anchor="middle" var-r="50.0/$scale*300.0-240.0" transform="rotate($r) translate(16 0) rotate(-1.0*$r) translate(0.5 3)">50</text>
+        <polyline points="0,0 2.5,0" stroke-width="0.7" fill="none" transform="rotate(58.0/$scale*300.0-240.0) translate(11 0)"/>
+        <text font-size="6pt" text-anchor="middle" var-r="60" transform="rotate($r) translate(16 0) rotate(-1.0*$r) translate(0 3)">66</text>
       </g>
     </symbol>
   </defs>
@@ -113,8 +112,8 @@
 
   <g transform="translate(0 237.5)">
     <text font-size="7pt" letter-spacing="1.5px" text-anchor="middle" transform="translate(37.5 0)">R. DELAY</text>
-    <def id="DELAY_PARAM" xlink:href="#knob16" transform="translate(37.5-8.0 12)"/>
-    <use xlink:href="#dial-delay-ranalyzer" transform="translate(0 0)"/>
+    <def id="DELAY_PARAM" xlink:href="#knob16" transform="translate(37.5-8.0 15)"/>
+    <use xlink:href="#dial-delay-ranalyzer" transform="translate(0 3)"/>
   </g>
 
   <g class="io-group" transform="translate(0 283)">
