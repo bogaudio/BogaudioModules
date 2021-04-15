@@ -1,0 +1,76 @@
+<module hp="3">
+  <style/>
+
+  <def xlink:href="#module3" var-name="LGSW"/>
+
+  <g transform="translate(0 18)">
+    <g class="io-group" transform="translate(5.5 0)">
+      <rect class="input-background" width="34" height="82" rx="5"/>
+      <def id="GATE_PARAM" xlink:href="#button" transform="translate(8 4)"/>
+      <def id="GATE_A_INPUT" xlink:href="#input" transform="translate(5 26)"/>
+      <def id="GATE_B_INPUT" xlink:href="#input" transform="translate(5 54)"/>
+    </g>
+
+    <g transform="translate(4.5 88)">
+      <text font-size="5pt" letter-spacing="1px" transform="translate(0 6)">LATCH</text>
+      <def id="LATCH_PARAM" xlink:href="#button-small" transform="translate(27 -1)"/>
+    </g>
+
+    <g transform="translate(0 102)" var-leftpad="15">
+      <g transform="translate($leftpad 0)" var-spacing="12">
+        <g transform="translate(0 0)">
+          <def id="LOGIC_OR_LIGHT" xlink:href="#light-small" transform="translate(-7.5 1)"/>
+          <text font-size="5pt" letter-spacing="0.5px" transform="translate(1 6.7)">OR</text>
+        </g>
+
+        <g transform="translate(0 $spacing)">
+          <def id="LOGIC_AND_LIGHT" xlink:href="#light-small" transform="translate(-7.5 1)"/>
+          <text font-size="5pt" letter-spacing="0.5px" transform="translate(1 6.7)">AND</text>
+        </g>
+
+        <g transform="translate(0 $spacing*2)">
+          <def id="LOGIC_XOR_LIGHT" xlink:href="#light-small" transform="translate(-7.5 1)"/>
+          <text font-size="5pt" letter-spacing="0.5px" transform="translate(1 6.7)">XOR</text>
+        </g>
+
+        <g transform="translate(0 $spacing*3)">
+          <def id="LOGIC_NOR_LIGHT" xlink:href="#light-small" transform="translate(-7.5 1)"/>
+          <text font-size="5pt" letter-spacing="0.5px" transform="translate(1 6.7)">NOR</text>
+        </g>
+
+        <g transform="translate(0 $spacing*4)">
+          <def id="LOGIC_NAND_LIGHT" xlink:href="#light-small" transform="translate(-7.5 1)"/>
+          <text font-size="5pt" letter-spacing="0.5px" transform="translate(1 6.7)">NAND</text>
+        </g>
+
+        <def id="LOGIC_MODE_PARAM" xlink:href="#button-small" transform="translate(1 $spacing*5-2)"/>
+
+        <g class="io-group" transform="translate(7.5-$leftpad $spacing*6-2)">
+          <rect class="input-background" width="30" height="30" rx="5"/>
+          <def id="LOGIC_MODE_INPUT" xlink:href="#input" transform="translate(3 3)"/>
+        </g>
+      </g>
+    </g>
+
+    <g transform="translate(0 209)">
+      <g class="io-group" transform="translate(5.5 0)">
+        <rect class="input-background" width="34" height="74" rx="5"/>
+        <rect class="input-background-filler" width="34" height="10" transform="translate(0 64)"/>
+        <def id="HIGH_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+        <text class="input-label" font-size="5pt" letter-spacing="1px" transform="translate(11.0 35)">HIGH</text>
+        <def id="HIGH_LIGHT" xlink:href="#light-small" transform="translate(2 29.3)"/>
+      </g>
+      <g transform="translate(5.5 36)">
+        <def id="LOW_INPUT" xlink:href="#input" transform="translate(5 3)"/>
+        <text class="input-label" font-size="5pt" letter-spacing="2px" transform="translate(11.0 35)">LOW</text>
+        <def id="LOW_LIGHT" xlink:href="#light-small" transform="translate(2 29.3)"/>
+      </g>
+      <g class="io-group" transform="translate(5.5 77)">
+        <rect class="output-background-filler" width="34" height="10" transform="translate(0 -3)"/>
+        <rect class="output-background" width="34" height="35" rx="5"/>
+        <def id="OUT_OUTPUT" xlink:href="#output" transform="translate(5 0)"/>
+        <text class="output-label" font-size="5pt" letter-spacing="2px" transform="translate(8.3 32)">OUT</text>
+      </g>
+    </g>
+  </g>
+</module>

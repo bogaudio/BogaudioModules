@@ -38,6 +38,7 @@
 #include "Inv.hpp"
 #include "Lag.hpp"
 #include "LFO.hpp"
+#include "Lgsw.hpp"
 #include "LLFO.hpp"
 #include "LLPG.hpp"
 #include "Lmtr.hpp"
@@ -249,6 +250,7 @@ void init(rack::Plugin *p) {
 	p->addModel(modelSlew);
 	p->addModel(modelSums);
 	p->addModel(modelSwitch);
+	p->addModel(modelLgsw);
 
 	p->addModel(modelBlank3);
 	p->addModel(modelBlank6);

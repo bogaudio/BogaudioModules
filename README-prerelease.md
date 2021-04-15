@@ -1329,6 +1329,31 @@ If the context menu option "Save latched state to patch" is enabled, and latchin
 
 _Polyphony:_ If polyphonic input is present at GATE, then the module is polyphonic in the standard way, independently switching the independent polyphonic channels on the high/low inputs (the button will switch all channels).  Additionally, if the input at GATE is not present or monophonic, but polyphonic cables are are present at any high/low inputs, and such an input is switched to the output, it is duplicated to the output with channels intact.
 
+#### <a name="lgsw"></a> LGSW
+
+LGSW is a version of <a href="#switch">SWITCH</a> with two gate inputs and onboard logic.
+
+If nothing is patched to either of the gate inputs, or if just one is patched (either one), the behavior of the module is identical to SWITCH (the logic section has no effect).
+
+If both gate inputs are in use, then the logic will evaluate to true according to the gate states and the logic mode:
+  - OR: true if either gate is high.
+  - AND: true if both gates are high.
+  - XOR: true if exactly one of the gates is high.
+  - NOR: true if neither of the gates is high.
+  - NAND: true if both gates are low.
+
+When LATCH is off, and both gates are in use, the module outputs the HIGH input whenever the logic is true or the button is held.
+
+When LATCH is on, and both gates are in use, the latch will toggle when the logic state changes, or when the button is pressed.
+
+The logic mode can be set by CV.  Using a CV for the logic overrides whatever selection was made with the small mode-select button.  A O-5V CV will select the mode as:
+  - OR: less than 1V.
+  - AND: 1V but less than 2V.
+  - XOR: 2V but less than 3V.
+  - NOR: 3V but less than 4V.
+  - NAND: 4V or more.
+
+_Polyphony:_ Same as <a href="#switch">SWITCH</a>, except that the polyphony channel count is set by the topmost gate input only.
 
 ### <a name="misc"></a> Miscellaneous
 

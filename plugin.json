@@ -1109,6 +1109,17 @@
       ]
     },
     {
+      "slug": "Bogaudio-Lgsw",
+      "name": "LGSW",
+      "description": "2-way signal router with logic",
+      "manualUrl": "https://github.com/bogaudio/BogaudioModules/blob/master/README.md#lgsw",
+      "tags": [
+        "Switch",
+        "Logic",
+        "Polyphonic"
+      ]
+    },
+    {
       "slug": "Bogaudio-Blank3",
       "name": "BLANK3",
       "description": "3HP blank panel",

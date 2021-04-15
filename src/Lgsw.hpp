@@ -3,52 +3,67 @@
 #include "bogaudio.hpp"
 #include "save_latch_to_patch.hpp"
 
-extern Model* modelSwitch;
+extern Model* modelLgsw;
 
 namespace bogaudio {
 
-struct Switch : SaveLatchToPatchModule {
+struct Lgsw : SaveLatchToPatchModule {
 	enum ParamsIds {
 		GATE_PARAM,
 		LATCH_PARAM,
+		LOGIC_MODE_PARAM,
 		NUM_PARAMS
 	};
 
 	enum InputsIds {
-		GATE_INPUT,
-		HIGH1_INPUT,
-		LOW1_INPUT,
-		HIGH2_INPUT,
-		LOW2_INPUT,
+		GATE_A_INPUT,
+		GATE_B_INPUT,
+		LOGIC_MODE_INPUT,
+		HIGH_INPUT,
+		LOW_INPUT,
 		NUM_INPUTS
 	};
 
 	enum OutputsIds {
-		OUT1_OUTPUT,
-		OUT2_OUTPUT,
+		OUT_OUTPUT,
 		NUM_OUTPUTS
 	};
 
 	enum LightsIds {
-		HIGH1_LIGHT,
-		LOW1_LIGHT,
-		HIGH2_LIGHT,
-		LOW2_LIGHT,
+		LOGIC_OR_LIGHT,
+		LOGIC_AND_LIGHT,
+		LOGIC_XOR_LIGHT,
+		LOGIC_NOR_LIGHT,
+		LOGIC_NAND_LIGHT,
+		HIGH_LIGHT,
+		LOW_LIGHT,
 		NUM_LIGHTS
 	};
 
-	Trigger _trigger[maxChannels];
-	int _high1LightSum = 0;
-	int _low1LightSum = 0;
-	int _high2LightSum = 0;
-	int _low2LightSum = 0;
+	enum Logic {
+		OR_LOGIC,
+		AND_LOGIC,
+		XOR_LOGIC,
+		NOR_LOGIC,
+		NAND_LOGIC
+	};
 
-	Switch() {
+	Trigger _buttonTriggers[maxChannels];
+	Trigger _aTriggers[maxChannels];
+	Trigger _bTriggers[maxChannels];
+	bool _lastLogicTrue[maxChannels] {};
+	int _highLightSum = 0;
+	int _lowLightSum = 0;
+	Logic _logic = OR_LOGIC;
+
+	Lgsw() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(GATE_PARAM, 0.0f, 10.0f, 0.0f, "Gate");
 		configParam(LATCH_PARAM, 0.0f, 1.0f, 0.0f, "Latch");
+		configParam(LOGIC_MODE_PARAM, 0.0f, 4.0f, 0.0f, "Logic");
 	}
 
+	void resetChannel(int c);
 	void reset() override;
 	int channels() override;
 	void channelsChanged(int before, int after) override;
