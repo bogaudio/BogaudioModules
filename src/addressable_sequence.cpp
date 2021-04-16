@@ -5,6 +5,7 @@
 #define SELECT_ON_CLOCK "select_on_clock"
 #define TRIGGERED_SELECT "triggered_select"
 #define REVERSE_ON_NEGATIVE_CLOCK "reverse_on_negative_clock"
+#define WRAP_SELECT_AT_STEPS "wrap_select_at_steps"
 
 void AddressableSequenceModule::setInputIDs(int clockInputID, int selectInputID) {
 	_polyInputID = clockInputID;
@@ -35,6 +36,7 @@ json_t* AddressableSequenceModule::toJson(json_t* root) {
 	json_object_set_new(root, SELECT_ON_CLOCK, json_boolean(_selectOnClock));
 	json_object_set_new(root, TRIGGERED_SELECT, json_boolean(_triggeredSelect));
 	json_object_set_new(root, REVERSE_ON_NEGATIVE_CLOCK, json_boolean(_reverseOnNegativeClock));
+	json_object_set_new(root, WRAP_SELECT_AT_STEPS, json_boolean(_wrapSelectAtSteps));
 	return root;
 }
 
@@ -57,6 +59,11 @@ void AddressableSequenceModule::fromJson(json_t* root) {
 	json_t* r = json_object_get(root, REVERSE_ON_NEGATIVE_CLOCK);
 	if (r) {
 		_reverseOnNegativeClock = json_is_true(r);
+	}
+
+	json_t* w = json_object_get(root, WRAP_SELECT_AT_STEPS);
+	if (w) {
+		_wrapSelectAtSteps = json_is_true(w);
 	}
 }
 
@@ -116,12 +123,13 @@ int AddressableSequenceModule::nextStep(
 	}
 	else {
 		select += clamp(selectInput.getPolyVoltage(c), -10.0f, 10.0f) * 0.1f * (float)(n - 1);
+		// select += (clamp(selectInput.getPolyVoltage(c), -9.99f, 9.99f) / 10.f) * (float)n;
 		if (!_selectOnClock || clock) {
 			_select[c] = select;
 		}
 	}
 
-	int s = (_step[c] + (int)_select[c]) % n;
+	int s = (_step[c] + (int)_select[c]) % (_wrapSelectAtSteps ? steps : n);
 	if (s < 0) {
 		return n + s;
 	}
@@ -144,6 +152,7 @@ void AddressableSequenceBaseModuleWidget::contextMenu(Menu* menu) {
 
 	menu->addChild(new BoolOptionMenuItem("Reverse step on negative clock", [m]() { return &m->_reverseOnNegativeClock; }));
 	menu->addChild(new BoolOptionMenuItem("Triggered select mode", [m]() { return &m->_triggeredSelect; }));
+	menu->addChild(new BoolOptionMenuItem("Wrap select at steps", [m]() { return &m->_wrapSelectAtSteps; }));
 }
 
 

@@ -22,6 +22,7 @@ struct AddressableSequenceModule : BGModule {
 	bool _selectOnClock = false;
 	bool _triggeredSelect = false;
 	bool _reverseOnNegativeClock = false;
+	bool _wrapSelectAtSteps = false;
 
 	void setInputIDs(int clockInputID, int selectInputID);
 	void reset() override;
