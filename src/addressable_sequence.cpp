@@ -122,8 +122,7 @@ int AddressableSequenceModule::nextStep(
 		_select[c] -= _select[c] * reset;
 	}
 	else {
-		select += clamp(selectInput.getPolyVoltage(c), -10.0f, 10.0f) * 0.1f * (float)(n - 1);
-		// select += (clamp(selectInput.getPolyVoltage(c), -9.99f, 9.99f) / 10.f) * (float)n;
+		select += (clamp(selectInput.getPolyVoltage(c), -9.99f, 9.99f) / 10.f) * (float)n;
 		if (!_selectOnClock || clock) {
 			_select[c] = select;
 		}
