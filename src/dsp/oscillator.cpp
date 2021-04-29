@@ -60,14 +60,17 @@ float Phasor::nextForPhase(phase_t phase) {
 
 
 float TablePhasor::nextForPhase(phase_t phase) {
+	phase %= cyclePhase;
 	if (_tableLength >= 1024) {
 		int i = (((((uint64_t)phase) << 16) / cyclePhase) * _tableLength) >> 16;
 		i %= _tableLength;
 		return _table.value(i);
 	}
 
-	float fi = (phase / (float)cyclePhase) * _tableLength;
-	int i = (int)fi % _tableLength;
+	float fi = phase / (float)cyclePhase;
+	assert(fi >= 0.0f && fi < 1.0f);
+	fi *= _tableLength;
+	int i = fi;
 	float v1 = _table.value(i);
 	float v2 = _table.value(i + 1 == _tableLength ? 0 : i + 1);
 	return v1 + (fi - i)*(v2 - v1);
