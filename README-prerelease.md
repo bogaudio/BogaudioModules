@@ -78,6 +78,8 @@ The main frequency knob is calibrated in volts, from -4 to +6, corresponding to 
 
 In linear mode, the frequency 1000HZ times the pitch voltage (as determined by the knob plus V/OCT CV) -- at 0V, the frequency is zero, and the oscillator stops.  In slow mode, it tracks at 1HZ times the pitch voltage.  Negative voltages will realize the same output frequency as the corresponding positive voltage (the oscillator runs backwards).  Use with with an FM input to create strange waveforms.
 
+The context menu option "DC offset correction", on by default, removes DC offset from the outputs.  Presently, this only affects the square output when the pulse width is set to anything besides 50%.  When this is enabled, and viewing the output on a scope, the waveform will move up and down relative to 0V as the pulse width is changed -- this is the DC offset removal in action.  When disabled, the waveform stays centered on 0V, which is useful if using the output as CV.
+
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.  The poly port can be changed to the FM input on the context menu.
 
 #### <a name="lvco"></a> LVCO
@@ -109,6 +111,8 @@ Includes all the features of VCO, adding:
     - A phase knob/CV controlling the phase of the wave in the mix.
     - A mix knob/CV to control the level of the wave in the mix (waves are output at full level at their individual outputs).  The mix knob/CV responses are linear in amplitude.
   - A CV input for FM depth.
+
+The context menu option "DC offset correction" works as documented on <a href="#vco">VCO</a>.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
 

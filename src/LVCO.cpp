@@ -43,17 +43,17 @@ void LVCO::modulateChannel(int c) {
 	switch (_wave) {
 		case SQUARE_WAVE: {
 			e.squareActive = true;
-			e.square.setPulseWidth(e.squarePulseWidthSL.next(0.5f));
+			e.square.setPulseWidth(e.squarePulseWidthSL.next(0.5f), _dcCorrection);
 			break;
 		}
 		case PULSE_25_WAVE: {
 			e.squareActive = true;
-			e.square.setPulseWidth(e.squarePulseWidthSL.next(0.25f));
+			e.square.setPulseWidth(e.squarePulseWidthSL.next(0.25f), _dcCorrection);
 			break;
 		}
 		case PULSE_10_WAVE: {
 			e.squareActive = true;
-			e.square.setPulseWidth(e.squarePulseWidthSL.next(0.1f));
+			e.square.setPulseWidth(e.squarePulseWidthSL.next(0.1f), _dcCorrection);
 			break;
 		}
 		default: {
@@ -82,7 +82,7 @@ void LVCO::processChannel(const ProcessArgs& args, int c) {
 	outputs[OUT_OUTPUT].setVoltage(e.squareOut + e.sawOut + e.triangleOut + e.sineOut, c);
 }
 
-struct LVCOWidget : BGModuleWidget {
+struct LVCOWidget : VCOBaseModuleWidget {
 	static constexpr int hp = 3;
 
 	LVCOWidget(LVCO* module) {
@@ -145,6 +145,8 @@ struct LVCOWidget : BGModuleWidget {
 		p->addItem(OptionMenuItem("V/OCT input", [m]() { return m->_polyInputID == LVCO::PITCH_INPUT; }, [m]() { m->_polyInputID = LVCO::PITCH_INPUT; }));
 		p->addItem(OptionMenuItem("FM input", [m]() { return m->_polyInputID == LVCO::FM_INPUT; }, [m]() { m->_polyInputID = LVCO::FM_INPUT; }));
 		OptionsMenuItem::addToMenu(p, menu);
+
+		VCOBaseModuleWidget::contextMenu(menu);
 	}
 };
 

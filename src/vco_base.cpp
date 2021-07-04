@@ -2,6 +2,7 @@
 #include "dsp/pitch.hpp"
 
 #define POLY_INPUT "poly_input"
+#define DC_CORRECTION "dc_correction"
 
 float VCOBase::VCOFrequencyParamQuantity::offset() {
 	auto vco = dynamic_cast<VCOBase*>(module);
@@ -77,6 +78,7 @@ void VCOBase::sampleRateChange() {
 
 json_t* VCOBase::toJson(json_t* root) {
 	json_object_set_new(root, POLY_INPUT, json_integer(_polyInputID));
+	json_object_set_new(root, DC_CORRECTION, json_boolean(_dcCorrection));
 	return root;
 }
 
@@ -84,6 +86,11 @@ void VCOBase::fromJson(json_t* root) {
 	json_t* p = json_object_get(root, POLY_INPUT);
 	if (p) {
 		_polyInputID = json_integer_value(p);
+	}
+
+	json_t* dc = json_object_get(root, DC_CORRECTION);
+	if (dc) {
+		_dcCorrection = json_boolean_value(dc);
 	}
 }
 
@@ -208,4 +215,11 @@ void VCOBase::processChannel(const ProcessArgs& args, int c) {
 	}
 
 	e.sineOut = e.sineActive ? (amplitude * e.sine.nextFromPhasor(e.phasor, phaseOffset + e.additionalPhaseOffset)) : 0.0f;
+}
+
+
+void VCOBaseModuleWidget::contextMenu(Menu* menu) {
+	auto m = dynamic_cast<VCOBase*>(module);
+	assert(m);
+	menu->addChild(new BoolOptionMenuItem("DC offset correction", [m]() { return &m->_dcCorrection; }));
 }

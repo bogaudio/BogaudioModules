@@ -63,17 +63,17 @@ void Sine::modulateChannel(int c) {
 		}
 		case SQUARE_WAVE: {
 			e.squareActive = true;
-			e.square.setPulseWidth(e.squarePulseWidthSL.next(0.5f));
+			e.square.setPulseWidth(e.squarePulseWidthSL.next(0.5f), _dcCorrection);
 			break;
 		}
 		case PULSE_25_WAVE: {
 			e.squareActive = true;
-			e.square.setPulseWidth(e.squarePulseWidthSL.next(0.25f));
+			e.square.setPulseWidth(e.squarePulseWidthSL.next(0.25f), _dcCorrection);
 			break;
 		}
 		case PULSE_10_WAVE: {
 			e.squareActive = true;
-			e.square.setPulseWidth(e.squarePulseWidthSL.next(0.1f));
+			e.square.setPulseWidth(e.squarePulseWidthSL.next(0.1f), _dcCorrection);
 			break;
 		}
 		default: {
@@ -98,7 +98,7 @@ void Sine::processChannel(const ProcessArgs& args, int c) {
 	outputs[OUT_OUTPUT].setVoltage(_outputScale * (e.squareOut + e.sawOut + e.triangleOut + e.sineOut), c);
 }
 
-struct SineWidget : BGModuleWidget {
+struct SineWidget : VCOBaseModuleWidget {
 	static constexpr int hp = 3;
 
 	SineWidget(Sine* module) {
@@ -159,6 +159,8 @@ struct SineWidget : BGModuleWidget {
 		p->addItem(OptionMenuItem("V/OCT input", [m]() { return m->_polyInputID == Sine::PITCH_INPUT; }, [m]() { m->_polyInputID = Sine::PITCH_INPUT; }));
 		p->addItem(OptionMenuItem("FM input", [m]() { return m->_polyInputID == Sine::FM_INPUT; }, [m]() { m->_polyInputID = Sine::FM_INPUT; }));
 		OptionsMenuItem::addToMenu(p, menu);
+
+		VCOBaseModuleWidget::contextMenu(menu);
 	}
 };
 

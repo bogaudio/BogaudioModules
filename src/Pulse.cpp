@@ -43,7 +43,7 @@ void Pulse::modulateChannel(int c) {
 	pw *= 1.0f - 2.0f * e.square.minPulseWidth;
 	pw *= 0.5f;
 	pw += 0.5f;
-	e.square.setPulseWidth(e.squarePulseWidthSL.next(pw));
+	e.square.setPulseWidth(e.squarePulseWidthSL.next(pw), _dcCorrection);
 }
 
 void Pulse::processChannel(const ProcessArgs& args, int c) {
@@ -53,7 +53,7 @@ void Pulse::processChannel(const ProcessArgs& args, int c) {
 	outputs[OUT_OUTPUT].setVoltage(_engines[c]->squareOut, c);
 }
 
-struct PulseWidget : BGModuleWidget {
+struct PulseWidget : VCOBaseModuleWidget {
 	static constexpr int hp = 3;
 
 	PulseWidget(Pulse* module) {
@@ -91,6 +91,8 @@ struct PulseWidget : BGModuleWidget {
 		auto m = dynamic_cast<Pulse*>(module);
 		assert(m);
 		menu->addChild(new BoolOptionMenuItem("Linear frequency mode", [m]() { return &m->_linearMode; }));
+
+		VCOBaseModuleWidget::contextMenu(menu);
 	}
 };
 

@@ -123,6 +123,7 @@ struct XCO : BGModule {
 	float _oversampleThreshold = 0.0f;
 	bool _slowMode = false;
 	bool _fmLinearMode = false;
+	bool _dcCorrection = true;
 	Engine* _engines[maxChannels] {};
 
 	struct XCOFrequencyParamQuantity : FrequencyParamQuantity {
@@ -152,6 +153,8 @@ struct XCO : BGModule {
 
 	void reset() override;
 	void sampleRateChange() override;
+	json_t* toJson(json_t* root) override;
+	void fromJson(json_t* root) override;
 	bool active() override;
 	int channels() override;
 	void addChannel(int c) override;

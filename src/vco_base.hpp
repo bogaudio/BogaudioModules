@@ -64,6 +64,7 @@ struct VCOBase : BGModule {
 	int _syncInputID;
 	int _fmInputID;
 	int _polyInputID;
+	bool _dcCorrection = true;
 
 	struct VCOFrequencyParamQuantity : FrequencyParamQuantity {
 		float offset() override;
@@ -90,6 +91,10 @@ struct VCOBase : BGModule {
 	void removeChannel(int c) override;
 	void modulateChannel(int c) override;
 	void processChannel(const ProcessArgs& args, int c) override;
+};
+
+struct VCOBaseModuleWidget : BGModuleWidget {
+	void contextMenu(Menu* menu) override;
 };
 
 } // namespace bogaudio

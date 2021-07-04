@@ -34,7 +34,7 @@ void VCO::modulateChannel(int c) {
 		pw *= 1.0f - 2.0f * e.square.minPulseWidth;
 		pw *= 0.5f;
 		pw += 0.5f;
-		e.square.setPulseWidth(e.squarePulseWidthSL.next(pw));
+		e.square.setPulseWidth(e.squarePulseWidthSL.next(pw), _dcCorrection);
 	}
 }
 
@@ -52,7 +52,7 @@ void VCO::processChannel(const ProcessArgs& args, int c) {
 	outputs[SINE_OUTPUT].setVoltage(e.sineOut, c);
 }
 
-struct VCOWidget : BGModuleWidget {
+struct VCOWidget : VCOBaseModuleWidget {
 	static constexpr int hp = 10;
 
 	VCOWidget(VCO* module) {
@@ -107,6 +107,8 @@ struct VCOWidget : BGModuleWidget {
 		p->addItem(OptionMenuItem("V/OCT input", [m]() { return m->_polyInputID == VCO::PITCH_INPUT; }, [m]() { m->_polyInputID = VCO::PITCH_INPUT; }));
 		p->addItem(OptionMenuItem("FM input", [m]() { return m->_polyInputID == VCO::FM_INPUT; }, [m]() { m->_polyInputID = VCO::FM_INPUT; }));
 		OptionsMenuItem::addToMenu(p, menu);
+
+		VCOBaseModuleWidget::contextMenu(menu);
 	}
 };
 

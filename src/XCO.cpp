@@ -2,6 +2,8 @@
 #include "XCO.hpp"
 #include "dsp/pitch.hpp"
 
+#define DC_CORRECTION "dc_correction"
+
 float XCO::XCOFrequencyParamQuantity::offset() {
 	auto xco = dynamic_cast<XCO*>(module);
 	return xco->_slowMode ? xco->_slowModeOffset : 0.0f;
@@ -53,6 +55,18 @@ void XCO::sampleRateChange() {
 
 	for (int c = 0; c < _channels; ++c) {
 		_engines[c]->sampleRateChange(sampleRate);
+	}
+}
+
+json_t* XCO::toJson(json_t* root) {
+	json_object_set_new(root, DC_CORRECTION, json_boolean(_dcCorrection));
+	return root;
+}
+
+void XCO::fromJson(json_t* root) {
+	json_t* dc = json_object_get(root, DC_CORRECTION);
+	if (dc) {
+		_dcCorrection = json_boolean_value(dc);
 	}
 }
 
@@ -109,7 +123,7 @@ void XCO::modulateChannel(int c) {
 	pw *= 1.0f - 2.0f * e.square.minPulseWidth;
 	pw *= 0.5f;
 	pw += 0.5f;
-	e.square.setPulseWidth(e.squarePulseWidthSL.next(pw));
+	e.square.setPulseWidth(e.squarePulseWidthSL.next(pw), _dcCorrection);
 
 	float saturation = params[SAW_SATURATION_PARAM].getValue();
 	if (inputs[SAW_SATURATION_INPUT].isConnected()) {
@@ -388,6 +402,12 @@ struct XCOWidget : BGModuleWidget {
 		addOutput(createOutput<Port24>(triangleOutputPosition, module, XCO::TRIANGLE_OUTPUT));
 		addOutput(createOutput<Port24>(sineOutputPosition, module, XCO::SINE_OUTPUT));
 		addOutput(createOutput<Port24>(mixOutputPosition, module, XCO::MIX_OUTPUT));
+	}
+
+	void contextMenu(Menu* menu) override {
+		auto m = dynamic_cast<XCO*>(module);
+		assert(m);
+		menu->addChild(new BoolOptionMenuItem("DC offset correction", [m]() { return &m->_dcCorrection; }));
 	}
 };
 
