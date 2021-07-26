@@ -541,6 +541,7 @@ Features:
   - Right-clicking a mute buttons solos that channel (un-mutes that channel and temporarily mutes all others).  Right or left click will un-solo, restoring the old state.  Multiple channels can be "soloed" at once.
   - The fader handles contain lights indicating the signal level out of that channel.
   - The master output has MUTE and DIM controls (DIM is a partial mute, with a value configurable on the context menu; it defaults to -12dB).
+  - When context menu option "Linear level CV response" is enabled, level CV inputs on each channel and on the master output affect the corresponding level linearly in amplitude (that is, a 5V input would cut the level set by the slider by half); by default they respond in decibels.
   - The output saturates (soft clips) at +/-12 volts.
 
 _Polyphony:_ The module is monophonic: if a polyphonic cable is present at an input, its channels will be summed.

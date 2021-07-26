@@ -7,6 +7,7 @@ const float MixerChannel::levelSlewTimeMS = 5.0f;
 
 void MixerChannel::setSampleRate(float sampleRate) {
 	_levelSL.setParams(sampleRate, levelSlewTimeMS, maxDecibels - minDecibels);
+	_levelCVSL.setParams(sampleRate, levelSlewTimeMS, 1.0f);
 	_rms.setSampleRate(sampleRate);
 }
 
@@ -14,7 +15,12 @@ void MixerChannel::reset() {
 	out = rms = 0.0f;
 }
 
-void MixerChannel::next(float sample, bool solo, int c) {
+void MixerChannel::next(float sample, bool solo, int c, bool linearCV) {
+	float cv = 1.0f;
+	if (_levelInput.isConnected()) {
+		cv = clamp(_levelInput.getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
+	}
+
 	float mute = _muteParam.getValue();
 	if (_muteInput) {
 		mute += clamp(_muteInput->getPolyVoltage(c), 0.0f, 10.0f);
@@ -25,8 +31,8 @@ void MixerChannel::next(float sample, bool solo, int c) {
 	}
 	else {
 		float level = clamp(_levelParam.getValue(), 0.0f, 1.0f);
-		if (_levelInput.isConnected()) {
-			level *= clamp(_levelInput.getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
+		if (!linearCV) {
+			level *= cv;
 		}
 		level *= maxDecibels - minDecibels;
 		level += minDecibels;
@@ -34,18 +40,45 @@ void MixerChannel::next(float sample, bool solo, int c) {
 	}
 
 	out = _amplifier.next(sample);
+	if (linearCV) {
+		out *= _levelCVSL.next(cv);
+	}
 	rms = _rms.next(out / 5.0f);
+}
+
+
+#define LINEAR_CV "linear_cv"
+
+json_t* LinearCVMixerModule::toJson(json_t* root) {
+	json_object_set_new(root, LINEAR_CV, json_boolean(_linearCV));
+	return root;
+}
+
+void LinearCVMixerModule::fromJson(json_t* root) {
+	json_t* l = json_object_get(root, LINEAR_CV);
+	if (l) {
+		_linearCV = json_boolean_value(l);
+	}
+}
+
+
+void LinearCVMixerWidget::contextMenu(Menu* menu) {
+	auto m = dynamic_cast<LinearCVMixerModule*>(module);
+	assert(m);
+	menu->addChild(new BoolOptionMenuItem("Linear level CV response", [m]() { return &m->_linearCV; }));
 }
 
 
 #define DIM_DB "dim_decibels"
 
 json_t* DimmableMixerModule::toJson(json_t* root) {
+	root = LinearCVMixerModule::toJson(root);
 	json_object_set_new(root, DIM_DB, json_real(_dimDb));
 	return root;
 }
 
 void DimmableMixerModule::fromJson(json_t* root) {
+	LinearCVMixerModule::fromJson(root);
 	json_t* o = json_object_get(root, DIM_DB);
 	if (o) {
 		_dimDb = json_real_value(o);
@@ -54,6 +87,7 @@ void DimmableMixerModule::fromJson(json_t* root) {
 
 
 void DimmableMixerWidget::contextMenu(Menu* menu) {
+	LinearCVMixerWidget::contextMenu(menu);
 	auto m = dynamic_cast<DimmableMixerModule*>(module);
 	assert(m);
 	OptionsMenuItem* da = new OptionsMenuItem("Dim amount");

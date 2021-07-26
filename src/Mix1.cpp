@@ -38,7 +38,7 @@ void Mix1::processAlways(const ProcessArgs& args) {
 
 void Mix1::processChannel(const ProcessArgs& args, int c) {
 	MixerChannel& e = *_engines[c];
-	e.next(inputs[IN_INPUT].getVoltage(c), false, c);
+	e.next(inputs[IN_INPUT].getVoltage(c), false, c, _linearCV);
 	_rmsSum += e.rms;
 	outputs[OUT_OUTPUT].setChannels(_channels);
 	outputs[OUT_OUTPUT].setVoltage(e.out, c);
@@ -48,7 +48,7 @@ void Mix1::postProcessAlways(const ProcessArgs& args) {
 	_rms = _rmsSum * _inverseChannels;
 }
 
-struct Mix1Widget : BGModuleWidget {
+struct Mix1Widget : LinearCVMixerWidget {
 	static constexpr int hp = 3;
 
 	Mix1Widget(Mix1* module) {

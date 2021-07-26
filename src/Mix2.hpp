@@ -10,7 +10,7 @@ extern Model* modelMix2;
 
 namespace bogaudio {
 
-struct Mix2 : BGModule {
+struct Mix2 : LinearCVMixerModule {
 	enum ParamsIds {
 		LEVEL_PARAM,
 		MUTE_PARAM,

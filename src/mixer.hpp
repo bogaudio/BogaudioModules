@@ -17,6 +17,7 @@ struct MixerChannel {
 
 	Amplifier _amplifier;
 	bogaudio::dsp::SlewLimiter _levelSL;
+	bogaudio::dsp::SlewLimiter _levelCVSL;
 	RootMeanSquare _rms;
 
 	Param& _levelParam;
@@ -45,17 +46,28 @@ struct MixerChannel {
 
 	void setSampleRate(float sampleRate);
 	void reset();
-	void next(float sample, bool solo, int c = 0); // outputs on members out, rms.
+	void next(float sample, bool solo, int c = 0, bool linearCV = false); // outputs on members out, rms.
 };
 
-struct DimmableMixerModule : BGModule {
+struct LinearCVMixerModule : BGModule {
+	bool _linearCV = false;
+
+	json_t* toJson(json_t* root) override;
+	void fromJson(json_t* root) override;
+};
+
+struct LinearCVMixerWidget : BGModuleWidget {
+	void contextMenu(Menu* menu) override;
+};
+
+struct DimmableMixerModule : LinearCVMixerModule {
 	float _dimDb = 12.0f;
 
 	json_t* toJson(json_t* root) override;
 	void fromJson(json_t* root) override;
 };
 
-struct DimmableMixerWidget : BGModuleWidget {
+struct DimmableMixerWidget : LinearCVMixerWidget {
 	void contextMenu(Menu* menu) override;
 };
 

@@ -24,6 +24,7 @@ void Mix4::sampleRateChange() {
 		_panSLs[i].setParams(sr, MIXER_PAN_SLEW_MS, 2.0f);
 	}
 	_slewLimiter.setParams(sr, MixerChannel::levelSlewTimeMS, MixerChannel::maxDecibels - MixerChannel::minDecibels);
+	_levelCVSL.setParams(sr, MixerChannel::levelSlewTimeMS, 1.0f);
 	_rms.setSampleRate(sr);
 }
 
@@ -68,7 +69,7 @@ void Mix4::processAll(const ProcessArgs& args) {
 		} else {
 			sample = inputs[IN1_INPUT].getVoltageSum();
 		}
-		_channels[0]->next(sample, solo);
+		_channels[0]->next(sample, solo, 0, _linearCV);
 		toExp->preFader[0] = sample;
 		toExp->active[0] = inputs[IN1_INPUT].isConnected();
 
@@ -76,12 +77,12 @@ void Mix4::processAll(const ProcessArgs& args) {
 			float sample = 0.0f;
 			if (inputs[IN1_INPUT + 3 * i].isConnected()) {
 				sample = inputs[IN1_INPUT + 3 * i].getVoltageSum();
-				_channels[i]->next(sample, solo);
+				_channels[i]->next(sample, solo, 0, _linearCV);
 				_channelActive[i] = true;
 			}
 			else if (_polyChannelOffset >= 0) {
 				sample = inputs[IN1_INPUT].getPolyVoltage(_polyChannelOffset + i);
-				_channels[i]->next(sample, solo);
+				_channels[i]->next(sample, solo, 0, _linearCV);
 				_channelActive[i] = true;
 			}
 			else if (_channelActive[i]) {
@@ -93,11 +94,15 @@ void Mix4::processAll(const ProcessArgs& args) {
 		}
 	}
 
+	float levelCV = 1.0f;
+	if (inputs[MIX_CV_INPUT].isConnected()) {
+		levelCV = clamp(inputs[MIX_CV_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+	}
 	float level = Amplifier::minDecibels;
 	if (params[MIX_MUTE_PARAM].getValue() < 0.5f) {
 		level = params[MIX_PARAM].getValue();
-		if (inputs[MIX_CV_INPUT].isConnected()) {
-			level *= clamp(inputs[MIX_CV_INPUT].getVoltage() / 10.0f, 0.0f, 1.0f);
+		if (!_linearCV) {
+			level *= levelCV;
 		}
 		level *= MixerChannel::maxDecibels - MixerChannel::minDecibels;
 		level += MixerChannel::minDecibels;
@@ -106,6 +111,7 @@ void Mix4::processAll(const ProcessArgs& args) {
 		}
 	}
 	_amplifier.setLevel(_slewLimiter.next(level));
+	levelCV = _levelCVSL.next(levelCV);
 
 	float outs[4];
 	for (int i = 0; i < 4; ++i) {
@@ -126,6 +132,9 @@ void Mix4::processAll(const ProcessArgs& args) {
 		mono += outs[i];
 	}
 	mono = _amplifier.next(mono);
+	if (_linearCV) {
+		mono *= levelCV;
+	}
 	mono = _saturator.next(mono);
 	_rmsLevel = _rms.next(mono) / 5.0f;
 
@@ -143,10 +152,16 @@ void Mix4::processAll(const ProcessArgs& args) {
 		}
 
 		left = _amplifier.next(left);
+		if (_linearCV) {
+			left *= levelCV;
+		}
 		left = _saturator.next(left);
 		outputs[L_OUTPUT].setVoltage(left);
 
 		right = _amplifier.next(right);
+		if (_linearCV) {
+			right *= levelCV;
+		}
 		right = _saturator.next(right);
 		outputs[R_OUTPUT].setVoltage(right);
 	}

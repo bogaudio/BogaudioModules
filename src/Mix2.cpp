@@ -40,7 +40,7 @@ void Mix2::processChannel(const ProcessArgs& args, int c) {
 	Engine& e = *_engines[c];
 
 	float left = inputs[L_INPUT].getVoltage(c);
-	e.left.next(left, false, c);
+	e.left.next(left, false, c, _linearCV);
 	_leftRmsSum += e.left.rms;
 	outputs[L_OUTPUT].setChannels(_channels);
 	outputs[L_OUTPUT].setVoltage(e.left.out, c);
@@ -49,7 +49,7 @@ void Mix2::processChannel(const ProcessArgs& args, int c) {
 	if (inputs[R_INPUT].isConnected()) {
 		right = inputs[R_INPUT].getVoltage(c);
 	}
-	e.right.next(right, false, c);
+	e.right.next(right, false, c, _linearCV);
 	_rightRmsSum += e.right.rms;
 	outputs[R_OUTPUT].setChannels(_channels);
 	outputs[R_OUTPUT].setVoltage(e.right.out, c);
@@ -60,7 +60,7 @@ void Mix2::postProcessAlways(const ProcessArgs& args) {
 	_rightRms = _rightRmsSum * _inverseChannels;
 }
 
-struct Mix2Widget : BGModuleWidget {
+struct Mix2Widget : LinearCVMixerWidget {
 	static constexpr int hp = 5;
 
 	Mix2Widget(Mix2* module) {

@@ -85,6 +85,7 @@ struct Mix8 : ExpandableModule<Mix8ExpanderMessage, DimmableMixerModule> {
 	float _rmsLevel = 0.0f;
 	Mix8ExpanderMessage _dummyExpanderMessage;
 	int _wasActive = 0;
+	bogaudio::dsp::SlewLimiter _levelCVSL;
 
 	Mix8() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);

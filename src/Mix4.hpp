@@ -61,6 +61,7 @@ struct Mix4 : ExpandableModule<Mix4ExpanderMessage, DimmableMixerModule> {
 	float _rmsLevel = 0.0f;
 	Mix4ExpanderMessage _dummyExpanderMessage;
 	int _wasActive = 0;
+	bogaudio::dsp::SlewLimiter _levelCVSL;
 
 	Mix4() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
