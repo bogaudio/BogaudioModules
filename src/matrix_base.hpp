@@ -73,6 +73,7 @@ struct MatrixModuleWidget : MatrixBaseModuleWidget {
 
 struct KnobMatrixModule : MatrixModule {
 	bool _indicatorKnobs = true;
+	bool _unipolar = false;
 
 	KnobMatrixModule() {} // call configMatrixModule()
 	KnobMatrixModule(int ins, int outs, int firstParamID, int firstInputID, int firstOutputID)
@@ -81,6 +82,7 @@ struct KnobMatrixModule : MatrixModule {
 
 	json_t* toJson(json_t* root) override;
 	void fromJson(json_t* root) override;
+	void updateParamMinimumValues();
 };
 
 struct KnobMatrixModuleWidget : MatrixModuleWidget {

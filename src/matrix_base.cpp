@@ -177,18 +177,40 @@ void MatrixModuleWidget::contextMenu(Menu* menu) {
 
 
 #define INDICATOR_KNOBS "indicator_knobs"
+#define UNIPOLAR "unipolar"
 
 json_t* KnobMatrixModule::toJson(json_t* root) {
 	root = MatrixBaseModule::toJson(root);
 	json_object_set_new(root, INDICATOR_KNOBS, json_boolean(_indicatorKnobs));
+	json_object_set_new(root, UNIPOLAR, json_boolean(_unipolar));
 	return root;
 }
 
 void KnobMatrixModule::fromJson(json_t* root) {
 	MatrixBaseModule::fromJson(root);
+
 	json_t* k = json_object_get(root, INDICATOR_KNOBS);
 	if (k) {
 		_indicatorKnobs = json_is_true(k);
+	}
+
+	json_t* u = json_object_get(root, UNIPOLAR);
+	if (u) {
+		_unipolar = json_is_true(u);
+		updateParamMinimumValues();
+	}
+}
+
+void KnobMatrixModule::updateParamMinimumValues() {
+	if (_unipolar) {
+		for (int i = 0, n = _ins * _outs; i < n; ++i) {
+			paramQuantities[i]->minValue = 0.0f;
+			params[i].value = std::max(params[i].value, 0.0f);
+		}
+	} else {
+		for (int i = 0, n = _ins * _outs; i < n; ++i) {
+			paramQuantities[i]->minValue = -1.0f;
+		}
 	}
 }
 
@@ -197,6 +219,7 @@ void KnobMatrixModuleWidget::createKnob(math::Vec& position, KnobMatrixModule* m
 	auto knob = dynamic_cast<IndicatorKnob19*>(createParam<IndicatorKnob19>(position, module, id));
 	if (module) {
 		knob->setDrawColorsCallback([module]() { return module->_indicatorKnobs; });
+		knob->setUnipolarCallback([module]() { return module->_unipolar; });
 	}
 	addParam(knob);
 	_knobs.push_back(knob);
@@ -216,6 +239,11 @@ void KnobMatrixModuleWidget::contextMenu(Menu* menu) {
 		"Indicator knobs",
 		[m]() { return m->_indicatorKnobs; },
 		[m, this]() { m->_indicatorKnobs = !m->_indicatorKnobs; this->redrawKnobs(); }
+	));
+	menu->addChild(new OptionMenuItem(
+		"Unipolar",
+		[m]() { return m->_unipolar; },
+		[m, this]() { m->_unipolar = !m->_unipolar; m->updateParamMinimumValues(); this->redrawKnobs(); }
 	));
 }
 

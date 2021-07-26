@@ -66,6 +66,7 @@ struct IndicatorKnob : Knob, SkinnableWidget {
 		NVGcolor _rim = nvgRGBA(0x33, 0x33, 0x33, 0xff);
 		NVGcolor _center = nvgRGBA(0xee, 0xee, 0xee, 0xff);
 		std::function<bool()> _drawColorsCB;
+		std::function<bool()> _unipolarCB;
 
 		void setAngle(float a);
 		void draw(const DrawArgs& args) override;
@@ -79,6 +80,7 @@ struct IndicatorKnob : Knob, SkinnableWidget {
 	void onHover(const event::Hover& e) override;
 	void onChange(const event::Change& e) override;
 	inline void setDrawColorsCallback(std::function<bool()> fn) { w->_drawColorsCB = fn; }
+	inline void setUnipolarCallback(std::function<bool()> fn) { w->_unipolarCB = fn; }
 	void redraw();
 	void skinChanged(const std::string& skin) override;
 };

@@ -665,7 +665,7 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, as on MATRIX44.
 
 A 4x4 channel matrix mixer.  Each input can be routed with an independent level to each of the eight output mixes.  MATRIX44 is expandable with <a href="matrix44cvm">MX44CVM</a>.
 
-*Note that the matrix knobs are attenuverters, and default to zero.*  That means there will be no output, regardless of the inputs, until some knobs are changed to non-zero values.
+*Note that the matrix knobs are attenuverters, and default to zero.*  That means there will be no output, regardless of the inputs, until some knobs are changed to non-zero values.  The knobs can be set to unipolar mode, as below; they still default to zero.
 
 Saturation (soft clipping) limits each output to +/-12V.  This can be changed to a hard clip at +/-12V on the context menu ("Output clipping") -- as described on UMIX, this is mode is better if you need to precisely sum CVs.
 
@@ -674,6 +674,8 @@ Another context menu option allows the input gains to be reduced by up to 12db.
 Option "Average" sets the output to be the average of its inputs.  The divisor for the average is the number of inputs in use; for example, if three inputs are connected, each output will be the sum of those inputs, scaled by the corresponding knobs, and divided by three.
 
 The knobs visually indicate their values with green/orange colors.  This can be disabled on the context menu.
+
+Option "Unipolar" sets the knobs to travel from zero to 100% over their full travel (which is to say that they can no longer be set to invert the input).  The panel does not update; the tick at noon for each knob indicates 50% in this mode.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by input 1.
 

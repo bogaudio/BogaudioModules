@@ -92,7 +92,11 @@ Knob68::Knob68() : BGKnob("knob_68px", 68) {
 void IndicatorKnob::IKWidget::setAngle(float a) {
 	assert(a >= -1.0f && a <= 1.0f);
 
-	_angle = a * 0.83f * M_PI;
+	const float range = 0.83f * M_PI;
+	_angle = a * range;
+	if (_unipolarCB && _unipolarCB()) {
+		_angle = 2.0f * _angle - range;
+	}
 	if (a < 0.0f) {
 		_color.r = 1.0f; // 0xff
 		_color.g = 0.6f; // 0x99
