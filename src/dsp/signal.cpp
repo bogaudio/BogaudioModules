@@ -177,7 +177,7 @@ void ShapedSlewLimiter::setParams(float sampleRate, float milliseconds, float sh
 	assert(shape >= minShape);
 	assert(shape <= maxShape);
 	_sampleTime = 1.0f / sampleRate;
-  _time	= milliseconds / 1000.0f;
+	_time = milliseconds / 1000.0f;
 	_shapeExponent = (shape > -0.05f && shape < 0.05f) ? 0.0f : shape;
 	_inverseShapeExponent = 1.0f / _shapeExponent;
 }

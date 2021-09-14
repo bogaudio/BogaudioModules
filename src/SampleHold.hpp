@@ -41,6 +41,8 @@ struct SampleHold : BGModule {
 		RED_NOISE_TYPE
 	};
 
+	static constexpr float maxSmoothMS = 10000.0f;
+
 	Trigger _trigger1[maxChannels];
 	Trigger _trigger2[maxChannels];
 	float _value1[maxChannels] {};
@@ -53,6 +55,9 @@ struct SampleHold : BGModule {
 	float _rangeOffset = 1.0f;
 	float _rangeScale = 5.0f;
 	int _polyInputID = TRIGGER1_INPUT;
+	float _smoothMS = 0.0f;
+	SlewLimiter _outputSL1[maxChannels];
+	SlewLimiter _outputSL2[maxChannels];
 
 	SampleHold() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
@@ -67,6 +72,7 @@ struct SampleHold : BGModule {
 	void reset() override;
 	json_t* toJson(json_t* root) override;
 	void fromJson(json_t* root) override;
+	void modulateChannel(int c) override;
 	void processAll(const ProcessArgs& args) override;
 	void handleChannel(
 		Param& trackParam,
@@ -77,6 +83,7 @@ struct SampleHold : BGModule {
 		Input* altTriggerInput,
 		Input& in,
 		float* value,
+		SlewLimiter* _outputSL,
 		Output& out
 	);
 	float noise();

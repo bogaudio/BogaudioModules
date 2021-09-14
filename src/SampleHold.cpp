@@ -5,6 +5,7 @@
 #define NOISE_TYPE "noise_type"
 #define RANGE_OFFSET "range_offset"
 #define RANGE_SCALE "range_scale"
+#define SMOOTHING_MS "smoothing_ms"
 
 void SampleHold::reset() {
 	for (int i = 0; i < maxChannels; ++i) {
@@ -20,6 +21,7 @@ json_t* SampleHold::toJson(json_t* root) {
 	json_object_set_new(root, NOISE_TYPE, json_integer((int)_noiseType));
 	json_object_set_new(root, RANGE_OFFSET, json_real(_rangeOffset));
 	json_object_set_new(root, RANGE_SCALE, json_real(_rangeScale));
+	json_object_set_new(root, SMOOTHING_MS, json_real(_smoothMS));
 	return root;
 }
 
@@ -43,6 +45,16 @@ void SampleHold::fromJson(json_t* root) {
 	if (rs) {
 		_rangeScale = json_real_value(rs);
 	}
+
+	json_t* s = json_object_get(root, SMOOTHING_MS);
+	if (s) {
+		_smoothMS = json_real_value(s);
+	}
+}
+
+void SampleHold::modulateChannel(int c) {
+	_outputSL1[c].setParams(APP->engine->getSampleRate(), _smoothMS, 10.0f);
+	_outputSL2[c].setParams(APP->engine->getSampleRate(), _smoothMS, 10.0f);
 }
 
 void SampleHold::processAll(const ProcessArgs& args) {
@@ -55,6 +67,7 @@ void SampleHold::processAll(const ProcessArgs& args) {
 		NULL,
 		inputs[IN1_INPUT],
 		_value1,
+		_outputSL1,
 		outputs[OUT1_OUTPUT]
 	);
 	handleChannel(
@@ -66,6 +79,7 @@ void SampleHold::processAll(const ProcessArgs& args) {
 		&inputs[TRIGGER1_INPUT],
 		inputs[IN2_INPUT],
 		_value2,
+		_outputSL2,
 		outputs[OUT2_OUTPUT]
 	);
 }
@@ -79,6 +93,7 @@ void SampleHold::handleChannel(
 	Input* altTriggerInput,
 	Input& in,
 	float* value,
+	SlewLimiter* outputSL,
 	Output& out
 ) {
 	int n = 0;
@@ -101,8 +116,9 @@ void SampleHold::handleChannel(
 			triggerIn = altTriggerInput->getPolyVoltage(i);
 		}
 
+		bool track = trackParam.getValue() > 0.5f;
 		bool triggered = trigger[i].process(triggerParam.getValue() + triggerIn);
-		if (trackParam.getValue() > 0.5f ? trigger[i].isHigh() : triggered) {
+		if (track ? trigger[i].isHigh() : triggered) {
 			if (in.isConnected()) {
 				value[i] = in.getPolyVoltage(i);
 			}
@@ -114,6 +130,9 @@ void SampleHold::handleChannel(
 		float o = value[i];
 		if (invertParam.getValue() > 0.5f) {
 			o = -o;
+		}
+		if (!track) {
+			o = outputSL[i].next(o);
 		}
 		out.setVoltage(o, i);
 	}
@@ -191,6 +210,61 @@ struct SampleHoldWidget : BGModuleWidget {
 		{}
 	};
 
+	struct SmoothQuantity : Quantity {
+		SampleHold* _module;
+
+		SmoothQuantity(SampleHold* m) : _module(m) {}
+
+		void setValue(float value) override {
+			value = clamp(value, getMinValue(), getMaxValue());
+			if (_module) {
+				_module->_smoothMS = valueToMs(value);
+			}
+		}
+
+		float getValue() override {
+			if (_module) {
+				return msToValue(_module->_smoothMS);
+			}
+			return getDefaultValue();
+		}
+
+		float getMinValue() override { return 0.0f; }
+		float getMaxValue() override { return 1.0f; }
+		float getDefaultValue() override { return getMinValue(); }
+		float getDisplayValue() override { return roundf(valueToMs(getValue())); }
+		void setDisplayValue(float displayValue) override { setValue(msToValue(displayValue)); }
+		std::string getLabel() override { return "Smoothing"; }
+		std::string getUnit() override { return "ms"; }
+		float valueToMs(float v) { return v * v * SampleHold::maxSmoothMS; }
+		float msToValue(float ms) { return sqrtf(ms / SampleHold::maxSmoothMS); };
+	};
+
+	struct SmoothSlider : ui::Slider {
+		SmoothSlider(SmoothQuantity* q) {
+			quantity = q; // q now owned.
+			box.size.x = 200.0f;
+		}
+		virtual ~SmoothSlider() {
+			delete quantity;
+		}
+	};
+
+	struct SmoothMenuItem : MenuItem {
+		SampleHold* _module;
+
+		SmoothMenuItem(SampleHold* m) : _module(m) {
+			this->text = "Glide";
+			this->rightText = "▸";
+		}
+
+		Menu* createChildMenu() override {
+			Menu* menu = new Menu;
+			menu->addChild(new SmoothSlider(new SmoothQuantity(_module)));
+			return menu;
+		}
+	};
+
 	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<SampleHold*>(module);
 		assert(m);
@@ -220,6 +294,7 @@ struct SampleHoldWidget : BGModuleWidget {
 			mi->addItem(RangeOptionMenuItem(m, "0V-1V", 1.0f, 0.5f));
 			OptionsMenuItem::addToMenu(mi, menu);
 		}
+		menu->addChild(new SmoothMenuItem(m));
 	}
 };
 
