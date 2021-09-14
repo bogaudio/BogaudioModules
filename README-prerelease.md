@@ -702,7 +702,7 @@ An expander for MATRIX88, adding CVs for each point in the mix matrix.  The CVs 
 
 MX88CV must be positioned to the right of, and adjacent to, the MATRIX88 module it will expand, or a MX88M module that is itself expanding a MATRIX88.  See <a href="#expanders">notes on expanders</a>.
 
-#### <a name="matrix88cvm"></a> MX88CVM
+#### <a name="matrix88m"></a> MX88M
 
 An expander for MATRIX88, adding mutes for each point in the mix matrix. The mute buttons will mute the corresponding mix point, overriding the knob (and CV if a MX88CV is in use).  As on <a href="mix8">MIX8</a> and others, the mute buttons can be right-clicked to solo that mix point -- all others will be muted.  A subsequent click on a soloed button restores the previous state, and other muted buttons retake effect.
 
