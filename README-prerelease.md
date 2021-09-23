@@ -196,6 +196,8 @@ A 3HP LFO, with selectable waveform.  The features are a subset of LFO.  There a
 
 Sampling and smoothing functions are available on the context menu.
 
+Context menu option "Reset phase on wave change", if enabled, causes the waveform phase to be set to zero when the waveform is changed.  By default the continues to advance from wherever it was.  In either case, the output will typically jump to a new value, which may cause clicks or other undesirable effects depending on how the output is used; adding a bit of smoothing may help.
+
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
 
 #### <a name="fourfo"></a> 4FO

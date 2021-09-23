@@ -4,6 +4,7 @@
 #define OUTPUT_SAMPLING "output_sampling"
 #define PULSE_WIDTH "pulse_width"
 #define SMOOTHING "smoothing"
+#define RESET_ON_WAVE_CHANGE "reset_on_wave_change"
 
 void LLFO::reset() {
 	for (int c = 0; c < maxChannels; ++c) {
@@ -21,6 +22,7 @@ json_t* LLFO::toJson(json_t* root) {
 	json_object_set_new(root, OUTPUT_SAMPLING, json_real(_sample));
 	json_object_set_new(root, PULSE_WIDTH, json_real(_pulseWidth));
 	json_object_set_new(root, SMOOTHING, json_real(_smooth));
+	json_object_set_new(root, RESET_ON_WAVE_CHANGE, json_boolean(_resetOnWaveChange));
 	return root;
 }
 
@@ -38,6 +40,11 @@ void LLFO::fromJson(json_t* root) {
 	json_t* s = json_object_get(root, SMOOTHING);
 	if (s) {
 		_smooth = json_real_value(s);
+	}
+
+	json_t* rowc = json_object_get(root, RESET_ON_WAVE_CHANGE);
+	if (rowc) {
+		_resetOnWaveChange = json_boolean_value(rowc);
 	}
 }
 
@@ -59,8 +66,17 @@ void LLFO::modulate() {
 	_slowMode = params[SLOW_PARAM].getValue() > 0.5f;
 
 	_invert = false;
-	Wave wave = (Wave)params[WAVE_PARAM].getValue();
-	switch (wave) {
+	Wave wave = (Wave)(1 + (int)params[WAVE_PARAM].getValue());
+	if (_wave != wave) {
+		_wave = wave;
+		if (_resetOnWaveChange) {
+			for (int c = 0; c < _channels; c++) {
+				_phasor[c].setPhase(0.0f);
+			}
+		}
+	}
+	switch (_wave) {
+		case UNINITIALIZED_WAVE:
 		case SINE_WAVE: {
 			_oscillator = &_sine;
 			_samplingEnabled = true;
@@ -125,14 +141,13 @@ void LLFO::modulateChannel(int c) {
 }
 
 void LLFO::processAlways(const ProcessArgs& args) {
-	Wave wave = (Wave)params[WAVE_PARAM].getValue();
-	lights[SINE_LIGHT].value = wave == SINE_WAVE;
-	lights[TRIANGLE_LIGHT].value = wave == TRIANGLE_WAVE;
-	lights[RAMP_UP_LIGHT].value = wave == RAMP_UP_WAVE;
-	lights[RAMP_DOWN_LIGHT].value = wave == RAMP_DOWN_WAVE;
-	lights[SQUARE_LIGHT].value = wave == SQUARE_WAVE;
-	lights[PULSE_LIGHT].value = wave == PULSE_WAVE;
-	lights[STEPPED_LIGHT].value = wave == STEPPED_WAVE;
+	lights[SINE_LIGHT].value = _wave == SINE_WAVE;
+	lights[TRIANGLE_LIGHT].value = _wave == TRIANGLE_WAVE;
+	lights[RAMP_UP_LIGHT].value = _wave == RAMP_UP_WAVE;
+	lights[RAMP_DOWN_LIGHT].value = _wave == RAMP_DOWN_WAVE;
+	lights[SQUARE_LIGHT].value = _wave == SQUARE_WAVE;
+	lights[PULSE_LIGHT].value = _wave == PULSE_WAVE;
+	lights[STEPPED_LIGHT].value = _wave == STEPPED_WAVE;
 }
 
 void LLFO::processChannel(const ProcessArgs& args, int c) {
@@ -331,6 +346,7 @@ struct LLFOWidget : BGModuleWidget {
 		menu->addChild(new LLFOSliderMenuItem<SampleQuantity>(m, "Output sampling"));
 		menu->addChild(new LLFOSliderMenuItem<PWQuantity>(m, "Pulse width"));
 		menu->addChild(new LLFOSliderMenuItem<SmoothQuantity>(m, "Smoothing"));
+		menu->addChild(new BoolOptionMenuItem("Reset phase on wave change", [m]() { return &m->_resetOnWaveChange; }));
 	}
 };
 

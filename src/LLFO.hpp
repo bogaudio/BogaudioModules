@@ -42,6 +42,7 @@ struct LLFO : LFOBase {
 	};
 
 	enum Wave {
+		UNINITIALIZED_WAVE,
 		SINE_WAVE,
 		TRIANGLE_WAVE,
 		RAMP_UP_WAVE,
@@ -55,11 +56,14 @@ struct LLFO : LFOBase {
 	static constexpr float defaultSample = 0.0f;
 	static constexpr float defaultPulseWidth = -0.8510638; // 10% pulse.
 	static constexpr float defaultSmooth = 0.0f;
+
+	Wave _wave = UNINITIALIZED_WAVE;
 	float _offset = 0.0f;
 	float _scale = 0.0f;
 	float _sample = defaultSample;
 	float _pulseWidth = defaultPulseWidth;
 	float _smooth = defaultSmooth;
+	bool _resetOnWaveChange = false;
 
 	PositiveZeroCrossing _resetTrigger[maxChannels];
 	Phasor _phasor[maxChannels];
