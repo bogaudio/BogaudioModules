@@ -3,11 +3,13 @@
 
 #define FM_MODE "fm_mode"
 #define LINEAR_MODE "linear_mode"
+#define RESET_ON_WAVE_CHANGE "reset_on_wave_change"
 
 json_t* LVCO::toJson(json_t* root) {
 	root = VCOBase::toJson(root);
 	json_object_set_new(root, FM_MODE, json_boolean(_fmLinearMode));
 	json_object_set_new(root, LINEAR_MODE, json_boolean(_linearMode));
+	json_object_set_new(root, RESET_ON_WAVE_CHANGE, json_boolean(_resetOnWaveChange));
 	return root;
 }
 
@@ -23,6 +25,11 @@ void LVCO::fromJson(json_t* root) {
 	if (l) {
 		_linearMode = json_is_true(l);
 	}
+
+	json_t* rowc = json_object_get(root, RESET_ON_WAVE_CHANGE);
+	if (rowc) {
+		_resetOnWaveChange = json_boolean_value(rowc);
+	}
 }
 
 bool LVCO::active() {
@@ -31,8 +38,17 @@ bool LVCO::active() {
 
 void LVCO::modulate() {
 	_slowMode = params[SLOW_PARAM].getValue() > 0.5f;
-	_wave = (Wave)params[WAVE_PARAM].getValue();
 	_fmDepth = params[FM_DEPTH_PARAM].getValue();
+
+	Wave wave = (Wave)(1 + (int)params[WAVE_PARAM].getValue());
+	if (_wave != wave) {
+		_wave = wave;
+		if (_resetOnWaveChange) {
+			for (int c = 0; c < _channels; c++) {
+				_engines[c]->phasor.setPhase(0.0f);
+			}
+		}
+	}
 }
 
 void LVCO::modulateChannel(int c) {
@@ -65,13 +81,12 @@ void LVCO::modulateChannel(int c) {
 }
 
 void LVCO::processAlways(const ProcessArgs& args) {
-	Wave wave = (Wave)params[WAVE_PARAM].getValue();
-	lights[SINE_LIGHT].value = wave == SINE_WAVE;
-	lights[TRIANGLE_LIGHT].value = wave == TRIANGLE_WAVE;
-	lights[SAW_LIGHT].value = wave == SAW_WAVE;
-	lights[SQUARE_LIGHT].value = wave == SQUARE_WAVE;
-	lights[PULSE_25_LIGHT].value = wave == PULSE_25_WAVE;
-	lights[PULSE_10_LIGHT].value = wave == PULSE_10_WAVE;
+	lights[SINE_LIGHT].value = _wave == SINE_WAVE;
+	lights[TRIANGLE_LIGHT].value = _wave == TRIANGLE_WAVE;
+	lights[SAW_LIGHT].value = _wave == SAW_WAVE;
+	lights[SQUARE_LIGHT].value = _wave == SQUARE_WAVE;
+	lights[PULSE_25_LIGHT].value = _wave == PULSE_25_WAVE;
+	lights[PULSE_10_LIGHT].value = _wave == PULSE_10_WAVE;
 }
 
 void LVCO::processChannel(const ProcessArgs& args, int c) {
@@ -140,6 +155,8 @@ struct LVCOWidget : VCOBaseModuleWidget {
 		OptionsMenuItem::addToMenu(fm, menu);
 
 		menu->addChild(new BoolOptionMenuItem("Linear frequency mode", [m]() { return &m->_linearMode; }));
+
+		menu->addChild(new BoolOptionMenuItem("Reset phase on wave change", [m]() { return &m->_resetOnWaveChange; }));
 
 		OptionsMenuItem* p = new OptionsMenuItem("Polyphony channels from");
 		p->addItem(OptionMenuItem("V/OCT input", [m]() { return m->_polyInputID == LVCO::PITCH_INPUT; }, [m]() { m->_polyInputID = LVCO::PITCH_INPUT; }));

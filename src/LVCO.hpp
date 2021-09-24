@@ -39,6 +39,7 @@ struct LVCO : VCOBase {
 	};
 
 	enum Wave {
+		UNINITIALIZED_WAVE,
 		SINE_WAVE,
 		TRIANGLE_WAVE,
 		SAW_WAVE,
@@ -47,7 +48,8 @@ struct LVCO : VCOBase {
 		PULSE_10_WAVE
 	};
 
-	Wave _wave = SINE_WAVE;
+	Wave _wave = UNINITIALIZED_WAVE;
+	bool _resetOnWaveChange = false;
 
 	LVCO()
 	: VCOBase(

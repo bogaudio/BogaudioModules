@@ -86,6 +86,8 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V
 
 A 3HP subset of VCO, designed as a compact general-purpose oscillator.  The waveform is selectable between sine, triangle, saw, square and 25% and 10% duty-cycle pulses.  FM and linear modes are selectable on the context menu.
 
+Context menu option "Reset phase on wave change", if enabled, causes the waveform phase to be set to zero when the waveform is changed.  By default the continues to advance from wherever it was.
+
 _Polyphony:_ Same as VCO.
 
 #### <a name="sine"></a> SINE
