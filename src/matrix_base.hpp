@@ -20,8 +20,8 @@ struct MatrixBaseModule : BGModule {
 	float _inputGainLevel = 1.0f;
 	bool _sum = true;
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	void modulate() override;
 };
 
@@ -80,8 +80,8 @@ struct KnobMatrixModule : MatrixModule {
 	: MatrixModule(ins, outs, firstParamID, firstInputID, firstOutputID)
 	{}
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	void updateParamMinimumValues();
 };
 
@@ -109,8 +109,8 @@ struct SwitchMatrixModule : MatrixModule {
 	: MatrixModule(ins, outs, firstParamID, firstInputID, firstOutputID)
 	{}
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	void setInverting(Inverting inverting);
 	void configSwitchParam(int id, const char* label);
 	void switchChanged(int id, float value);
@@ -134,8 +134,8 @@ struct SwitchMatrixModuleWidget : MatrixModuleWidget {
 struct MutesMatrixExpanderModule : BGModule {
 	bool _soloByColumns = false;
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 };
 
 struct MutesMatrixExpanderModuleWidget : BGModuleWidget {

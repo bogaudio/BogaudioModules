@@ -3,12 +3,12 @@
 
 #define POLY_INPUT "poly_input"
 
-json_t* AMRM::toJson(json_t* root) {
+json_t* AMRM::saveToJson(json_t* root) {
 	json_object_set_new(root, POLY_INPUT, json_integer(_polyInputID));
 	return root;
 }
 
-void AMRM::fromJson(json_t* root) {
+void AMRM::loadFromJson(json_t* root) {
 	json_t* p = json_object_get(root, POLY_INPUT);
 	if (p) {
 		_polyInputID = json_integer_value(p);

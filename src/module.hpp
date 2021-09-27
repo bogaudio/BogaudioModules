@@ -43,8 +43,8 @@ struct BGModule : Module {
 
 	virtual void reset() {}
 	virtual void sampleRateChange() {}
-	virtual json_t* toJson(json_t* root) { return root; }
-	virtual void fromJson(json_t* root) {}
+	virtual json_t* saveToJson(json_t* root) { return root; }
+	virtual void loadFromJson(json_t* root) {}
 	virtual bool active() { return true; }
 	virtual int channels() { return 1; }
 	virtual void channelsChanged(int before, int after) {}

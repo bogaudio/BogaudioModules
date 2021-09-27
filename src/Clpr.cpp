@@ -27,12 +27,12 @@ void Clpr::ThresholdParamQuantity::setDisplayValue(float v) {
 	setValue(v);
 }
 
-json_t* Clpr::toJson(json_t* root) {
+json_t* Clpr::saveToJson(json_t* root) {
 	json_object_set_new(root, THRESHOLD_RANGE, json_real(_thresholdRange));
 	return root;
 }
 
-void Clpr::fromJson(json_t* root) {
+void Clpr::loadFromJson(json_t* root) {
 	json_t* tr = json_object_get(root, THRESHOLD_RANGE);
 	if (tr) {
 		_thresholdRange = std::max(0.0f, (float)json_real_value(tr));

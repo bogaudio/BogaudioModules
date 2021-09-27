@@ -5,16 +5,16 @@
 #define FM_MODE "fm_mode"
 #define LINEAR_MODE "linear_mode"
 
-json_t* Sine::toJson(json_t* root) {
-	root = VCOBase::toJson(root);
+json_t* Sine::saveToJson(json_t* root) {
+	root = VCOBase::saveToJson(root);
 	json_object_set_new(root, WAVE, json_integer((int)_wave));
 	json_object_set_new(root, FM_MODE, json_boolean(_fmLinearMode));
 	json_object_set_new(root, LINEAR_MODE, json_boolean(_linearMode));
 	return root;
 }
 
-void Sine::fromJson(json_t* root) {
-	VCOBase::fromJson(root);
+void Sine::loadFromJson(json_t* root) {
+	VCOBase::loadFromJson(root);
 
 	json_t* w = json_object_get(root, WAVE);
 	if (w) {

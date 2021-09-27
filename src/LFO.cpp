@@ -25,12 +25,12 @@ void LFO::sampleRateChange() {
 	}
 }
 
-json_t* LFO::toJson(json_t* root) {
+json_t* LFO::saveToJson(json_t* root) {
 	json_object_set_new(root, OFFSET_CV_TO_SMOOTHING, json_boolean(_useOffsetCvForSmooth));
 	return root;
 }
 
-void LFO::fromJson(json_t* root) {
+void LFO::loadFromJson(json_t* root) {
 	json_t* ocv = json_object_get(root, OFFSET_CV_TO_SMOOTHING);
 	if (ocv) {
 		_useOffsetCvForSmooth = json_boolean_value(ocv);

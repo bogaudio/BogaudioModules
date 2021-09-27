@@ -58,8 +58,8 @@ struct Sine : VCOBase {
 		configParam(PHASE_PARAM, -1.0f, 1.0f, 0.0f, "Phase offset", "º", 0.0f, 180.0f);
 	}
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	bool active() override;
 	void modulate() override;
 	void modulateChannel(int c) override;

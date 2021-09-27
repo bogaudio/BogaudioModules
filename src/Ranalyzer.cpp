@@ -43,7 +43,7 @@ void Ranalyzer::sampleRateChange() {
 	}
 }
 
-json_t* Ranalyzer::toJson(json_t* root) {
+json_t* Ranalyzer::saveToJson(json_t* root) {
 	frequencyPlotToJson(root);
 	frequencyRangeToJson(root);
 	amplitudePlotToJson(root);
@@ -86,7 +86,7 @@ json_t* Ranalyzer::toJson(json_t* root) {
 	return root;
 }
 
-void Ranalyzer::fromJson(json_t* root) {
+void Ranalyzer::loadFromJson(json_t* root) {
 	frequencyPlotFromJson(root);
 	frequencyRangeFromJson(root);
 	amplitudePlotFromJson(root);

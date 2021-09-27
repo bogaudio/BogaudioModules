@@ -229,13 +229,13 @@ void Arp::sampleRateChange() {
 	_sampleTime = APP->engine->getSampleTime();
 }
 
-json_t* Arp::toJson(json_t* root) {
+json_t* Arp::saveToJson(json_t* root) {
 	json_object_set_new(root, NOTES_IMMEDIATE_MODE, json_boolean(_notesImmediate));
 	json_object_set_new(root, FIXED_GATE_MODE, json_boolean(_fixedGate));
 	return root;
 }
 
-void Arp::fromJson(json_t* root) {
+void Arp::loadFromJson(json_t* root) {
 	json_t* ni = json_object_get(root, NOTES_IMMEDIATE_MODE);
 	if (ni) {
 		_notesImmediate = json_is_true(ni);

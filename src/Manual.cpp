@@ -12,14 +12,14 @@ void Manual::sampleRateChange() {
 	_sampleTime = APP->engine->getSampleTime();
 }
 
-json_t* Manual::toJson(json_t* root) {
-	root = TriggerOnLoadModule::toJson(root);
+json_t* Manual::saveToJson(json_t* root) {
+	root = TriggerOnLoadModule::saveToJson(root);
 	json_object_set_new(root, OUTPUT_SCALE, json_real(_outputScale));
 	return root;
 }
 
-void Manual::fromJson(json_t* root) {
-	TriggerOnLoadModule::fromJson(root);
+void Manual::loadFromJson(json_t* root) {
+	TriggerOnLoadModule::loadFromJson(root);
 	json_t* os = json_object_get(root, OUTPUT_SCALE);
 	if (os) {
 		_outputScale = json_real_value(os);

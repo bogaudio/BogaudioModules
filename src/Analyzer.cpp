@@ -9,13 +9,13 @@ void Analyzer::sampleRateChange() {
 	_sampleRate = APP->engine->getSampleRate();
 }
 
-json_t* Analyzer::toJson(json_t* root) {
+json_t* Analyzer::saveToJson(json_t* root) {
 	frequencyPlotToJson(root);
 	amplitudePlotToJson(root);
 	return root;
 }
 
-void Analyzer::fromJson(json_t* root) {
+void Analyzer::loadFromJson(json_t* root) {
 	frequencyPlotFromJson(root);
 	amplitudePlotFromJson(root);
 }

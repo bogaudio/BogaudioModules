@@ -3,14 +3,14 @@
 
 #define POLY_OFFSET "poly_channel_offset"
 
-json_t* Mix4::toJson(json_t* root) {
-	root = DimmableMixerModule::toJson(root);
+json_t* Mix4::saveToJson(json_t* root) {
+	root = DimmableMixerModule::saveToJson(root);
 	json_object_set_new(root, POLY_OFFSET, json_integer(_polyChannelOffset));
 	return root;
 }
 
-void Mix4::fromJson(json_t* root) {
-	DimmableMixerModule::fromJson(root);
+void Mix4::loadFromJson(json_t* root) {
+	DimmableMixerModule::loadFromJson(root);
 	json_t* o = json_object_get(root, POLY_OFFSET);
 	if (o) {
 		_polyChannelOffset = json_integer_value(o);

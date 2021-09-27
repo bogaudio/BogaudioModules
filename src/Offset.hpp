@@ -34,8 +34,8 @@ struct Offset : DisableOutputLimitModule {
 		configParam<TenXSquaringParamQuantity>(SCALE_PARAM, -1.0f, 1.0f, 0.31623f, "Scale", "x");
 	}
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	int channels() override;
 	void processChannel(const ProcessArgs& args, int c) override;
 	float knobValue(Param& knob, Input& cv, int c) const;

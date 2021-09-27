@@ -52,8 +52,8 @@ struct MixerChannel {
 struct LinearCVMixerModule : BGModule {
 	bool _linearCV = false;
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 };
 
 struct LinearCVMixerWidget : BGModuleWidget {
@@ -63,8 +63,8 @@ struct LinearCVMixerWidget : BGModuleWidget {
 struct DimmableMixerModule : LinearCVMixerModule {
 	float _dimDb = 12.0f;
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 };
 
 struct DimmableMixerWidget : LinearCVMixerWidget {

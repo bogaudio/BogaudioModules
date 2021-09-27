@@ -5,16 +5,16 @@
 #define LINEAR_MODE "linear_mode"
 #define RESET_ON_WAVE_CHANGE "reset_on_wave_change"
 
-json_t* LVCO::toJson(json_t* root) {
-	root = VCOBase::toJson(root);
+json_t* LVCO::saveToJson(json_t* root) {
+	root = VCOBase::saveToJson(root);
 	json_object_set_new(root, FM_MODE, json_boolean(_fmLinearMode));
 	json_object_set_new(root, LINEAR_MODE, json_boolean(_linearMode));
 	json_object_set_new(root, RESET_ON_WAVE_CHANGE, json_boolean(_resetOnWaveChange));
 	return root;
 }
 
-void LVCO::fromJson(json_t* root) {
-	VCOBase::fromJson(root);
+void LVCO::loadFromJson(json_t* root) {
+	VCOBase::loadFromJson(root);
 
 	json_t* fm = json_object_get(root, FM_MODE);
 	if (fm) {

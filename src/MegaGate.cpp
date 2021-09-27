@@ -32,14 +32,14 @@ void MegaGate::sampleRateChange() {
 	}
 }
 
-json_t* MegaGate::toJson(json_t* root) {
-	root = LPGEnvBaseModule::toJson(root);
+json_t* MegaGate::saveToJson(json_t* root) {
+	root = LPGEnvBaseModule::saveToJson(root);
 	json_object_set_new(root, VELOCITY_MINIMUM_DECIBELS, json_real(_minVelocityDb));
 	return root;
 }
 
-void MegaGate::fromJson(json_t* root) {
-	LPGEnvBaseModule::fromJson(root);
+void MegaGate::loadFromJson(json_t* root) {
+	LPGEnvBaseModule::loadFromJson(root);
 	json_t* mdb = json_object_get(root, VELOCITY_MINIMUM_DECIBELS);
 	if (mdb) {
 		_minVelocityDb = json_real_value(mdb);

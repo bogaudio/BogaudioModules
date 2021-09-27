@@ -9,14 +9,14 @@ using namespace bogaudio::dsp;
 #define INPUT_GAIN_DB "input_gain_db"
 #define SUM "sum"
 
-json_t* MatrixBaseModule::toJson(json_t* root) {
+json_t* MatrixBaseModule::saveToJson(json_t* root) {
 	json_object_set_new(root, CLIPPING_MODE, json_integer(_clippingMode));
 	json_object_set_new(root, INPUT_GAIN_DB, json_real(_inputGainDb));
 	json_object_set_new(root, SUM, json_boolean(_sum));
 	return root;
 }
 
-void MatrixBaseModule::fromJson(json_t* root) {
+void MatrixBaseModule::loadFromJson(json_t* root) {
 	json_t* c = json_object_get(root, CLIPPING_MODE);
 	if (c) {
 		_clippingMode = (Clipping)json_integer_value(c);
@@ -179,15 +179,15 @@ void MatrixModuleWidget::contextMenu(Menu* menu) {
 #define INDICATOR_KNOBS "indicator_knobs"
 #define UNIPOLAR "unipolar"
 
-json_t* KnobMatrixModule::toJson(json_t* root) {
-	root = MatrixBaseModule::toJson(root);
+json_t* KnobMatrixModule::saveToJson(json_t* root) {
+	root = MatrixBaseModule::saveToJson(root);
 	json_object_set_new(root, INDICATOR_KNOBS, json_boolean(_indicatorKnobs));
 	json_object_set_new(root, UNIPOLAR, json_boolean(_unipolar));
 	return root;
 }
 
-void KnobMatrixModule::fromJson(json_t* root) {
-	MatrixBaseModule::fromJson(root);
+void KnobMatrixModule::loadFromJson(json_t* root) {
+	MatrixBaseModule::loadFromJson(root);
 
 	json_t* k = json_object_get(root, INDICATOR_KNOBS);
 	if (k) {
@@ -256,8 +256,8 @@ void KnobMatrixModuleWidget::contextMenu(Menu* menu) {
 #define ROW_EXCLUSIVE "row_exclusive"
 #define COLUMN_EXCLUSIVE "column_exclusive"
 
-json_t* SwitchMatrixModule::toJson(json_t* root) {
-	root = MatrixBaseModule::toJson(root);
+json_t* SwitchMatrixModule::saveToJson(json_t* root) {
+	root = MatrixBaseModule::saveToJson(root);
 
 	switch (_inverting) {
 		case CLICK_INVERTING: {
@@ -280,8 +280,8 @@ json_t* SwitchMatrixModule::toJson(json_t* root) {
 	return root;
 }
 
-void SwitchMatrixModule::fromJson(json_t* root) {
-	MatrixBaseModule::fromJson(root);
+void SwitchMatrixModule::loadFromJson(json_t* root) {
+	MatrixBaseModule::loadFromJson(root);
 
 	json_t* i = json_object_get(root, INVERTING);
 	if (i) {
@@ -428,12 +428,12 @@ void SwitchMatrixModuleWidget::contextMenu(Menu* menu) {
 
 #define SOLO_BY_COLUMNS "solo_by_columns"
 
-json_t* MutesMatrixExpanderModule::toJson(json_t* root) {
+json_t* MutesMatrixExpanderModule::saveToJson(json_t* root) {
 	json_object_set_new(root, SOLO_BY_COLUMNS, json_boolean(_soloByColumns));
 	return root;
 }
 
-void MutesMatrixExpanderModule::fromJson(json_t* root) {
+void MutesMatrixExpanderModule::loadFromJson(json_t* root) {
 	json_t* sbc = json_object_get(root, SOLO_BY_COLUMNS);
 	if (sbc) {
 		_soloByColumns = json_is_true(sbc);

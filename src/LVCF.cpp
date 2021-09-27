@@ -42,7 +42,7 @@ float LVCF::Engine::next(float sample) {
 	return _finalHP.next(_filter.next(sample));
 }
 
-json_t* LVCF::toJson(json_t* root) {
+json_t* LVCF::saveToJson(json_t* root) {
 	json_object_set_new(root, POLES_KEY, json_integer(_polesSetting));
 
 	switch (_bandwidthMode) {
@@ -60,7 +60,7 @@ json_t* LVCF::toJson(json_t* root) {
 	return root;
 }
 
-void LVCF::fromJson(json_t* root) {
+void LVCF::loadFromJson(json_t* root) {
 	json_t* p = json_object_get(root, POLES_KEY);
 	if (p) {
 		_polesSetting = clamp(json_integer_value(p), 1, 12);

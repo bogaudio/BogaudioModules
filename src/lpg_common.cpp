@@ -7,7 +7,7 @@
 #define SHAPE_MODE_ON "on"
 #define SHAPE_MODE_INVERTED "inverted"
 
-json_t* LPGEnvBaseModule::toJson(json_t* root) {
+json_t* LPGEnvBaseModule::saveToJson(json_t* root) {
 	switch (_riseShapeMode) {
 		case RiseFallShapedSlewLimiter::OFF_SCVM: {
 			json_object_set_new(root, RISE_SHAPE_MODE, json_string(SHAPE_MODE_OFF));
@@ -41,7 +41,7 @@ json_t* LPGEnvBaseModule::toJson(json_t* root) {
 	return root;
 }
 
-void LPGEnvBaseModule::fromJson(json_t* root) {
+void LPGEnvBaseModule::loadFromJson(json_t* root) {
 	json_t* rsm = json_object_get(root, RISE_SHAPE_MODE);
 	if (rsm) {
 		std::string s = json_string_value(rsm);

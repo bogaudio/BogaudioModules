@@ -29,12 +29,12 @@ void ASR::sampleRateChange() {
 	}
 }
 
-json_t* ASR::toJson(json_t* root) {
+json_t* ASR::saveToJson(json_t* root) {
 	json_object_set_new(root, INVERT, json_real(_invert));
 	return root;
 }
 
-void ASR::fromJson(json_t* root) {
+void ASR::loadFromJson(json_t* root) {
 	json_t* i = json_object_get(root, INVERT);
 	if (i) {
 		_invert = json_real_value(i);

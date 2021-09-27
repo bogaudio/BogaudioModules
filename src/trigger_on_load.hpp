@@ -10,8 +10,8 @@ struct TriggerOnLoadModule : BGModule {
 	bool _triggerOnLoad = true;
 	bool _shouldTriggerOnLoad = true;
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 
 	virtual bool shouldTriggerOnNextLoad() = 0;
 };

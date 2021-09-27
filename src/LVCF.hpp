@@ -76,8 +76,8 @@ struct LVCF : BGModule {
 		configParam(MODE_PARAM, 0.0f, 3.0f, 0.0f, "Mode");
 	}
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	void sampleRateChange() override;
 	bool active() override;
 	int channels() override;

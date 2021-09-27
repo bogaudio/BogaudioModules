@@ -130,8 +130,8 @@ struct PolyOff16 : OutputRangeModule<BGModule> {
 		configParam(CHANNELS_PARAM, 1.0f, 16.0f, 1.0f, "Polyphony channels");
 	}
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	void processAll(const ProcessArgs& args) override;
 };
 

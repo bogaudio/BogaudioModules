@@ -26,12 +26,12 @@ void LPG::sampleRateChange() {
 	}
 }
 
-json_t* LPG::toJson(json_t* root) {
+json_t* LPG::saveToJson(json_t* root) {
 	json_object_set_new(root, LPF_POLES, json_integer(_lpfPoles));
 	return root;
 }
 
-void LPG::fromJson(json_t* root) {
+void LPG::loadFromJson(json_t* root) {
 	json_t* p = json_object_get(root, LPF_POLES);
 	if (p) {
 		_lpfPoles = json_integer_value(p);

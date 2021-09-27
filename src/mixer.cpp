@@ -49,12 +49,12 @@ void MixerChannel::next(float sample, bool solo, int c, bool linearCV) {
 
 #define LINEAR_CV "linear_cv"
 
-json_t* LinearCVMixerModule::toJson(json_t* root) {
+json_t* LinearCVMixerModule::saveToJson(json_t* root) {
 	json_object_set_new(root, LINEAR_CV, json_boolean(_linearCV));
 	return root;
 }
 
-void LinearCVMixerModule::fromJson(json_t* root) {
+void LinearCVMixerModule::loadFromJson(json_t* root) {
 	json_t* l = json_object_get(root, LINEAR_CV);
 	if (l) {
 		_linearCV = json_boolean_value(l);
@@ -71,14 +71,14 @@ void LinearCVMixerWidget::contextMenu(Menu* menu) {
 
 #define DIM_DB "dim_decibels"
 
-json_t* DimmableMixerModule::toJson(json_t* root) {
-	root = LinearCVMixerModule::toJson(root);
+json_t* DimmableMixerModule::saveToJson(json_t* root) {
+	root = LinearCVMixerModule::saveToJson(root);
 	json_object_set_new(root, DIM_DB, json_real(_dimDb));
 	return root;
 }
 
-void DimmableMixerModule::fromJson(json_t* root) {
-	LinearCVMixerModule::fromJson(root);
+void DimmableMixerModule::loadFromJson(json_t* root) {
+	LinearCVMixerModule::loadFromJson(root);
 	json_t* o = json_object_get(root, DIM_DB);
 	if (o) {
 		_dimDb = json_real_value(o);

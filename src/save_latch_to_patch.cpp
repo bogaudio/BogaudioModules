@@ -3,7 +3,7 @@
 #define SAVE_LATCHED_TO_PATCH "save_latched_to_patch"
 #define LATCHED_STATE "latched_state"
 
-json_t* SaveLatchToPatchModule::toJson(json_t* root) {
+json_t* SaveLatchToPatchModule::saveToJson(json_t* root) {
 	json_object_set_new(root, SAVE_LATCHED_TO_PATCH, json_boolean(_saveLatchedToPatch));
 	if (_saveLatchedToPatch && _latch) {
 		json_t* a = json_array();
@@ -15,7 +15,7 @@ json_t* SaveLatchToPatchModule::toJson(json_t* root) {
 	return root;
 }
 
-void SaveLatchToPatchModule::fromJson(json_t* root) {
+void SaveLatchToPatchModule::loadFromJson(json_t* root) {
 	json_t* sl = json_object_get(root, SAVE_LATCHED_TO_PATCH);
 	if (sl) {
 		_saveLatchedToPatch = json_is_true(sl);

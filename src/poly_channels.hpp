@@ -9,8 +9,8 @@ namespace bogaudio {
 struct PolyChannelsModule : BGModule {
 	int _polyChannels = 1;
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 };
 
 struct PolyChannelsMenuItem : MenuItem {

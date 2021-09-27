@@ -15,12 +15,12 @@ void Velo::sampleRateChange() {
 	}
 }
 
-json_t* Velo::toJson(json_t* root) {
+json_t* Velo::saveToJson(json_t* root) {
 	json_object_set_new(root, LEVEL_SCALES_CV, json_boolean(_levelScalesCV));
 	return root;
 }
 
-void Velo::fromJson(json_t* root) {
+void Velo::loadFromJson(json_t* root) {
 	json_t* s = json_object_get(root, LEVEL_SCALES_CV);
 	if (s) {
 		_levelScalesCV = json_boolean_value(s);

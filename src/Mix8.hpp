@@ -137,8 +137,8 @@ struct Mix8 : ExpandableModule<Mix8ExpanderMessage, DimmableMixerModule> {
 		}
 	}
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	void sampleRateChange() override;
 	void processAll(const ProcessArgs& args) override;
 };

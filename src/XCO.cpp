@@ -58,12 +58,12 @@ void XCO::sampleRateChange() {
 	}
 }
 
-json_t* XCO::toJson(json_t* root) {
+json_t* XCO::saveToJson(json_t* root) {
 	json_object_set_new(root, DC_CORRECTION, json_boolean(_dcCorrection));
 	return root;
 }
 
-void XCO::fromJson(json_t* root) {
+void XCO::loadFromJson(json_t* root) {
 	json_t* dc = json_object_get(root, DC_CORRECTION);
 	if (dc) {
 		_dcCorrection = json_boolean_value(dc);

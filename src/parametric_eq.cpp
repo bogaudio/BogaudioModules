@@ -130,12 +130,12 @@ float PEQXFBase::scaleEF(float ef, float frequency, float bandwidth) {
 
 #define BAND_EXCLUDE "band_exclude"
 
-json_t* BandExcludeModule::toJson(json_t* root) {
+json_t* BandExcludeModule::saveToJson(json_t* root) {
 	json_object_set_new(root, BAND_EXCLUDE, json_boolean(_bandExclude));
 	return root;
 }
 
-void BandExcludeModule::fromJson(json_t* root) {
+void BandExcludeModule::loadFromJson(json_t* root) {
 	json_t* be = json_object_get(root, BAND_EXCLUDE);
 	if (be) {
 		_bandExclude = json_is_true(be);

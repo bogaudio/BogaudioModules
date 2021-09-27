@@ -18,7 +18,7 @@ void LLFO::sampleRateChange() {
 	}
 }
 
-json_t* LLFO::toJson(json_t* root) {
+json_t* LLFO::saveToJson(json_t* root) {
 	json_object_set_new(root, OUTPUT_SAMPLING, json_real(_sample));
 	json_object_set_new(root, PULSE_WIDTH, json_real(_pulseWidth));
 	json_object_set_new(root, SMOOTHING, json_real(_smooth));
@@ -26,7 +26,7 @@ json_t* LLFO::toJson(json_t* root) {
 	return root;
 }
 
-void LLFO::fromJson(json_t* root) {
+void LLFO::loadFromJson(json_t* root) {
 	json_t* os = json_object_get(root, OUTPUT_SAMPLING);
 	if (os) {
 		_sample = json_real_value(os);

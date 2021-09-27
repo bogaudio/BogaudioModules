@@ -53,8 +53,8 @@ struct Velo : BGModule {
 
 	inline bool isLinear() { return params[LINEAR_PARAM].getValue() > 0.5f; }
 	void sampleRateChange() override;
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	bool active() override;
 	void modulate() override;
 	void processAll(const ProcessArgs& args) override;

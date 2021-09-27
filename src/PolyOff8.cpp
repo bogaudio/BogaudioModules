@@ -3,14 +3,14 @@
 
 #define OFFSET_FIRST "offset_first"
 
-json_t* PolyOff8::toJson(json_t* root) {
-	root = OutputRangeModule<BGModule>::toJson(root);
+json_t* PolyOff8::saveToJson(json_t* root) {
+	root = OutputRangeModule<BGModule>::saveToJson(root);
 	json_object_set_new(root, OFFSET_FIRST, json_boolean(_offsetFirst));
 	return root;
 }
 
-void PolyOff8::fromJson(json_t* root) {
-	OutputRangeModule<BGModule>::fromJson(root);
+void PolyOff8::loadFromJson(json_t* root) {
+	OutputRangeModule<BGModule>::loadFromJson(root);
 	json_t* of = json_object_get(root, OFFSET_FIRST);
 	if (of) {
 		_offsetFirst = json_boolean_value(of);
