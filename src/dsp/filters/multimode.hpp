@@ -5,7 +5,7 @@
 #include "filters/filter.hpp"
 
 #ifdef RACK_SIMD
-#include "simd/vector.hpp"
+#include "simd/Vector.hpp"
 using rack::simd::float_4;
 #endif
 

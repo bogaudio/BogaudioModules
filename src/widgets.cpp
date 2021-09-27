@@ -216,8 +216,8 @@ void IndicatorKnob::onHover(const event::Hover& e) {
 
 void IndicatorKnob::onChange(const event::Change& e) {
 	fb->dirty = true;
-	if (paramQuantity) {
-		w->setAngle(paramQuantity->getValue());
+	if (getParamQuantity()) {
+		w->setAngle(getParamQuantity()->getValue());
 	}
 	Knob::onChange(e);
 }
@@ -301,29 +301,30 @@ StatefulButton::StatefulButton(const char* offSvgPath, const char* onSvgPath) {
 	shadow->box.pos = Vec(0.0, 1.0);
 }
 
-void StatefulButton::reset() {
-	if (paramQuantity) {
-		paramQuantity->reset();
-	}
-}
-
-void StatefulButton::randomize() {
-	if (paramQuantity) {
-		float min = paramQuantity->getMinValue();
-		float max = paramQuantity->getMaxValue();
-		float value = roundf(min + (max - min) * random::uniform());
-		paramQuantity->setValue(value);
-	}
-}
+// FIXME: these callbacks removed in rack2.
+// void StatefulButton::reset() {
+// 	if (getParamQuantity()) {
+// 		getParamQuantity()->reset();
+// 	}
+// }
+//
+// void StatefulButton::randomize() {
+// 	if (getParamQuantity()) {
+// 		float min = getParamQuantity()->getMinValue();
+// 		float max = getParamQuantity()->getMaxValue();
+// 		float value = roundf(min + (max - min) * random::uniform());
+// 		getParamQuantity()->setValue(value);
+// 	}
+// }
 
 void StatefulButton::onDragStart(const event::DragStart& e) {
-	if (paramQuantity) {
+	if (getParamQuantity()) {
 		_svgWidget->setSvg(_frames[1]);
-		if (paramQuantity->getValue() >= paramQuantity->getMaxValue()) {
-			paramQuantity->setValue(paramQuantity->getMinValue());
+		if (getParamQuantity()->getValue() >= getParamQuantity()->getMaxValue()) {
+			getParamQuantity()->setValue(getParamQuantity()->getMinValue());
 		}
 		else {
-			paramQuantity->setValue(paramQuantity->getValue() + 1.0);
+			getParamQuantity()->setValue(getParamQuantity()->getValue() + 1.0);
 		}
 	}
 }
@@ -448,17 +449,18 @@ InvertingIndicatorButton::InvertingIndicatorButton(int dim) {
 	fb->addChild(w);
 }
 
-void InvertingIndicatorButton::reset() {
-	if (paramQuantity) {
-		paramQuantity->reset();
-	}
-}
-
-void InvertingIndicatorButton::randomize() {
-	if (paramQuantity) {
-		paramQuantity->setValue(roundf(2.0f * random::uniform()) - 1.0f);
-	}
-}
+// FIXME: these callbacks removed in rack2.
+// void InvertingIndicatorButton::reset() {
+// 	if (getParamQuantity()) {
+// 		getParamQuantity()->reset();
+// 	}
+// }
+//
+// void InvertingIndicatorButton::randomize() {
+// 	if (getParamQuantity()) {
+// 		getParamQuantity()->setValue(roundf(2.0f * random::uniform()) - 1.0f);
+// 	}
+// }
 
 void InvertingIndicatorButton::onHover(const event::Hover& e) {
 	math::Vec c = box.size.div(2);
@@ -470,32 +472,32 @@ void InvertingIndicatorButton::onHover(const event::Hover& e) {
 
 void InvertingIndicatorButton::onButton(const event::Button& e) {
 	ParamWidget::onButton(e);
-	if (!paramQuantity || !(e.action == GLFW_PRESS && (e.mods & RACK_MOD_MASK) == 0) || e.button == GLFW_MOUSE_BUTTON_RIGHT) {
+	if (!getParamQuantity() || !(e.action == GLFW_PRESS && (e.mods & RACK_MOD_MASK) == 0) || e.button == GLFW_MOUSE_BUTTON_RIGHT) {
 		return;
 	}
 
-	float value = paramQuantity->getValue();
+	float value = getParamQuantity()->getValue();
 	if (value <= -1.0f) {
-		paramQuantity->setValue(0.0f);
+		getParamQuantity()->setValue(0.0f);
 	}
 	else if (value < 1.0f) {
-		paramQuantity->setValue(1.0f);
+		getParamQuantity()->setValue(1.0f);
 	}
-	else if (paramQuantity->minValue < 0.0f && (!clickToInvertCB || clickToInvertCB())) {
-		paramQuantity->setValue(-1.0f);
+	else if (getParamQuantity()->minValue < 0.0f && (!clickToInvertCB || clickToInvertCB())) {
+		getParamQuantity()->setValue(-1.0f);
 	}
 	else {
-		paramQuantity->setValue(0.0f);
+		getParamQuantity()->setValue(0.0f);
 	}
 }
 
 void InvertingIndicatorButton::onChange(const event::Change& e) {
 	fb->dirty = true;
-	if (paramQuantity) {
-		float v = paramQuantity->getValue();
+	if (getParamQuantity()) {
+		float v = getParamQuantity()->getValue();
 		w->setValue(v);
 		if (onChangeCB) {
-			onChangeCB(paramQuantity->paramId, v);
+			onChangeCB(getParamQuantity()->paramId, v);
 		}
 	}
 	ParamWidget::onChange(e);
@@ -518,8 +520,8 @@ NVGcolor bogaudio::decibelsToColor(float db) {
 
 void VUSlider::draw(const DrawArgs& args) {
 	float level = 0.0f;
-	if (paramQuantity) {
-		level = paramQuantity->getValue();
+	if (getParamQuantity()) {
+		level = getParamQuantity()->getValue();
 	}
 	else {
 		float minDb = -60.0f;

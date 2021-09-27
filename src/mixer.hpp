@@ -80,7 +80,7 @@ struct MuteButton : ToggleButton {
 	}
 
 	inline void setRandomize(bool randomize) { _randomize = randomize; }
-	void randomize() override;
+	// void randomize() override;
 	void onButton(const event::Button& e) override;
 };
 
@@ -90,8 +90,8 @@ struct SoloMuteButton : ParamWidget {
 	CircularShadow* shadow = NULL;
 
 	SoloMuteButton();
-	void reset() override;
-	void randomize() override;
+	// void reset() override;
+	// void randomize() override;
 	void onButton(const event::Button& e) override;
 	void onChange(const event::Change& e) override;
 };

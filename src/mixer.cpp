@@ -99,11 +99,12 @@ void DimmableMixerWidget::contextMenu(Menu* menu) {
 }
 
 
-void MuteButton::randomize() {
-	if (_randomize) {
-		ToggleButton::randomize();
-	}
-}
+// FIXME: this callback removed in rack2.
+// void MuteButton::randomize() {
+// 	if (_randomize) {
+// 		ToggleButton::randomize();
+// 	}
+// }
 
 void MuteButton::onButton(const event::Button& e) {
 	if (!(e.action == GLFW_PRESS && (e.mods & RACK_MOD_MASK) == 0)) {
@@ -139,33 +140,34 @@ SoloMuteButton::SoloMuteButton() {
 	shadow->box.pos = Vec(0.0, 1.0);
 }
 
-void SoloMuteButton::reset() {
-	if (paramQuantity) {
-		paramQuantity->setValue(0.0f);
-	}
-}
-
-void SoloMuteButton::randomize() {
-	if (paramQuantity) {
-		paramQuantity->setValue(random::uniform() > 0.5f ? 1.0f : 0.0f);
-	}
-}
+// FIXME: these callbacks removed in rack2.
+// void SoloMuteButton::reset() {
+// 	if (paramQuantity) {
+// 		getParamQuantity()->setValue(0.0f);
+// 	}
+// }
+//
+// void SoloMuteButton::randomize() {
+// 	if (paramQuantity) {
+// 		getParamQuantity()->setValue(random::uniform() > 0.5f ? 1.0f : 0.0f);
+// 	}
+// }
 
 void SoloMuteButton::onButton(const event::Button& e) {
-	if (!paramQuantity || !(e.action == GLFW_PRESS && (e.mods & RACK_MOD_MASK) == 0)) {
+	if (!getParamQuantity() || !(e.action == GLFW_PRESS && (e.mods & RACK_MOD_MASK) == 0)) {
 		ParamWidget::onButton(e);
 		return;
 	}
 
-	float value = paramQuantity->getValue();
+	float value = getParamQuantity()->getValue();
 	if (value >= 2.0f) {
-		paramQuantity->setValue(value - 2.0f);
+		getParamQuantity()->setValue(value - 2.0f);
 	}
 	else if (e.button == GLFW_MOUSE_BUTTON_RIGHT) {
-		paramQuantity->setValue(value + 2.0f);
+		getParamQuantity()->setValue(value + 2.0f);
 	}
 	else {
-		paramQuantity->setValue(value > 0.5f ? 0.0f : 1.0f);
+		getParamQuantity()->setValue(value > 0.5f ? 0.0f : 1.0f);
 	}
 
 	if (e.button == GLFW_MOUSE_BUTTON_RIGHT) {
@@ -177,8 +179,8 @@ void SoloMuteButton::onButton(const event::Button& e) {
 
 void SoloMuteButton::onChange(const event::Change& e) {
 	assert(_frames.size() == 4);
-	if (paramQuantity) {
-		float value = paramQuantity->getValue();
+	if (getParamQuantity()) {
+		float value = getParamQuantity()->getValue();
 		assert(value >= 0.0f && value <= 3.0f);
 		_svgWidget->setSvg(_frames[(int)value]);
 	}
