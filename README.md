@@ -78,11 +78,15 @@ The main frequency knob is calibrated in volts, from -4 to +6, corresponding to 
 
 In linear mode, the frequency 1000HZ times the pitch voltage (as determined by the knob plus V/OCT CV) -- at 0V, the frequency is zero, and the oscillator stops.  In slow mode, it tracks at 1HZ times the pitch voltage.  Negative voltages will realize the same output frequency as the corresponding positive voltage (the oscillator runs backwards).  Use with with an FM input to create strange waveforms.
 
+The context menu option "DC offset correction", on by default, removes DC offset from the outputs.  Presently, this only affects the square output when the pulse width is set to anything besides 50%.  When this is enabled, and viewing the output on a scope, the waveform will move up and down relative to 0V as the pulse width is changed -- this is the DC offset removal in action.  When disabled, the waveform stays centered on 0V, which is useful if using the output as CV.
+
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.  The poly port can be changed to the FM input on the context menu.
 
 #### <a name="lvco"></a> LVCO
 
 A 3HP subset of VCO, designed as a compact general-purpose oscillator.  The waveform is selectable between sine, triangle, saw, square and 25% and 10% duty-cycle pulses.  FM and linear modes are selectable on the context menu.
+
+Context menu option "Reset phase on wave change", if enabled, causes the waveform phase to be set to zero when the waveform is changed.  By default the continues to advance from wherever it was.
 
 _Polyphony:_ Same as VCO.
 
@@ -109,6 +113,8 @@ Includes all the features of VCO, adding:
     - A phase knob/CV controlling the phase of the wave in the mix.
     - A mix knob/CV to control the level of the wave in the mix (waves are output at full level at their individual outputs).  The mix knob/CV responses are linear in amplitude.
   - A CV input for FM depth.
+
+The context menu option "DC offset correction" works as documented on <a href="#vco">VCO</a>.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
 
@@ -191,6 +197,8 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V
 A 3HP LFO, with selectable waveform.  The features are a subset of LFO.  There are separate square and pulse waveform options: square is fixed at a 50% duty cycle, while pulse defaults to 10% but may be adjusted with the "Pulse width" option on the context menu.
 
 Sampling and smoothing functions are available on the context menu.
+
+Context menu option "Reset phase on wave change", if enabled, causes the waveform phase to be set to zero when the waveform is changed.  By default the continues to advance from wherever it was.  In either case, the output will typically jump to a new value, which may cause clicks or other undesirable effects depending on how the output is used; adding a bit of smoothing may help.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
 
@@ -375,7 +383,8 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the I
 
 #### <a name="peq14xf"></a> PEQ14XF
 
-Expands PEQ6 with envelope follower outputs, per band.  The DAMP and GAIN knobs control the followers; see the description of the <a href="#follow">FOLLOW</a> module for a description of how these work.  DAMP has a unipolar (0-10V) CV; GAIN has a bipolar (+/-5V) CV.
+Expands PEQ14 with envelope follower outputs, per band.  The DAMP and GAIN knobs control the followers; see the description of the <a href="#follow">FOLLOW</a> module for a description of how these work.  DAMP has a unipolar (0-10V) CV; GAIN has a bipolar (+/-5V) CV.
+
 
 ### <a name="envelopes"></a> Envelopes and Envelope Utilities
 
@@ -536,6 +545,7 @@ Features:
   - Right-clicking a mute buttons solos that channel (un-mutes that channel and temporarily mutes all others).  Right or left click will un-solo, restoring the old state.  Multiple channels can be "soloed" at once.
   - The fader handles contain lights indicating the signal level out of that channel.
   - The master output has MUTE and DIM controls (DIM is a partial mute, with a value configurable on the context menu; it defaults to -12dB).
+  - When context menu option "Linear level CV response" is enabled, level CV inputs on each channel and on the master output affect the corresponding level linearly in amplitude (that is, a 5V input would cut the level set by the slider by half); by default they respond in decibels.
   - The output saturates (soft clips) at +/-12 volts.
 
 _Polyphony:_ The module is monophonic: if a polyphonic cable is present at an input, its channels will be summed.
@@ -660,7 +670,7 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, as on MATRIX44.
 
 A 4x4 channel matrix mixer.  Each input can be routed with an independent level to each of the eight output mixes.  MATRIX44 is expandable with <a href="matrix44cvm">MX44CVM</a>.
 
-*Note that the matrix knobs are attenuverters, and default to zero.*  That means there will be no output, regardless of the inputs, until some knobs are changed to non-zero values.
+*Note that the matrix knobs are attenuverters, and default to zero.*  That means there will be no output, regardless of the inputs, until some knobs are changed to non-zero values.  The knobs can be set to unipolar mode, as below; they still default to zero.
 
 Saturation (soft clipping) limits each output to +/-12V.  This can be changed to a hard clip at +/-12V on the context menu ("Output clipping") -- as described on UMIX, this is mode is better if you need to precisely sum CVs.
 
@@ -669,6 +679,8 @@ Another context menu option allows the input gains to be reduced by up to 12db.
 Option "Average" sets the output to be the average of its inputs.  The divisor for the average is the number of inputs in use; for example, if three inputs are connected, each output will be the sum of those inputs, scaled by the corresponding knobs, and divided by three.
 
 The knobs visually indicate their values with green/orange colors.  This can be disabled on the context menu.
+
+Option "Unipolar" sets the knobs to travel from zero to 100% over their full travel (which is to say that they can no longer be set to invert the input).  The panel does not update; the tick at noon for each knob indicates 50% in this mode.
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by input 1.
 
@@ -903,6 +915,8 @@ Each channel may also be have its output inverted with the INV button.
 
 The GATE input on the lower section is normalled to GATE in the top section (but a press on the top button does not trigger the lower section).
 
+The GLIDE context menu option applies linear glide (slew limitation, smoothing) to the outputs.  The time value, which defaults to 0, determines how long the output will take to change (slew) 10V.  This option is ignored in track-and-hold mode.
+
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the GATE input in each section.  If the bottom GATE is patched, the two sections will independently take their channels from their respective GATE inputs; if only the top GATE is patched, the bottom section normals to the top input and both sections have the same number of channels.  The polyphony port can be changed to IN on the context menu (this change applies to both top and bottom sections of the module; IN does not normal to the bottom section, and both sections will set their channels independently, from whatever is patched to their own IN).
 
 #### <a name="walk2"></a> WALK2
@@ -951,9 +965,9 @@ As a sequential switch, a trigger at the clock input advances the input selectio
 
 As a multiplexer, it routes an input to the output under control of the SELECT knob and CV.  A -10-10V CV, divided into 16 equal divisions of 1.25V, controls the input selection.  A CV between +/-1.25V does nothing; a voltage of 1.25-2.49V will add 1 step to the selection, a voltage between -1.25V and -2.49V will subtract one step, and so on.  This value is summed with the knob setting; for example, setting the knob to 4 and inputting a 2.6V CV will send input 6 to the output.  When the knob-plus-CV value exceeds 8, it wraps around.
 
-Both functions may be used simultaneously: the SELECT+CV value is added to the sequential/clocked value, wrapping around.  Note that the STEPS value only affects the sequential value; for example, using a clock input and setting STEPS to 2 will yield an alternation between two adjacent inputs, but this pair can be selected with the SELECT knob or CV.
+Both functions may be used simultaneously: the SELECT+CV value is added to the sequential/clocked value, wrapping around.  Note that by default the STEPS value only affects the sequential value; for example, using a clock input and setting STEPS to 2 will yield an alternation between two adjacent inputs, but this pair can be selected with the SELECT knob or CV.  The context (right-click) menu option "Wrap select at steps" changes this, such that the SELECT+CV value wraps at the value of STEPS.  In this case, for example, if STEPS is 2 and SELECT+CV is 1, the sequence will alternate between steps 1 and 2, but on a reset, the sequence will reset to step 2.
 
-On the context (right-click) menu, if option "Reverse step on negative clock" is enabled, negative or inverted clock pulses (e.g. a pulse from 0V to -5V) will step backwards.  This is still affected by the FWD/REV switch; if the switch is at REV, then a positive clock steps backwards and a negative clock forwards.  This negative-clock behavior can be used to achieve voltage control over the sequence direction (the utility module <a href="#inv">INV</a> can help here).
+If option "Reverse step on negative clock" is enabled, negative or inverted clock pulses (e.g. a pulse from 0V to -5V) will step backwards.  This is still affected by the FWD/REV switch; if the switch is at REV, then a positive clock steps backwards and a negative clock forwards.  This negative-clock behavior can be used to achieve voltage control over the sequence direction (the utility module <a href="#inv">INV</a> can help here).
 
 If option "Select on clock mode" is selected, then the select value (knob and CV) is checked and used to modify the active step only when a clock is received, rather than continuously.
 
@@ -1060,13 +1074,13 @@ By default, will produce a one-shot test signal, emitted at SEND, upon receipt o
 
 A window function is optionally applied to the signals as they are converted to the frequency domain; this cleans up noise that otherwise shows up in the signal plots as an artifact of the conversion.  It also slightly distorts the displayed signals.  The default "taper" window minimizes the distortion; Hamming and Kaiser windows are also available.  The window can be selected or disabled on the context menu.  The window is not applied to the test signal before it is emitted at SEND.
 
-The test signal is a swept sine wave (or "chirp", see <a href="#chirp">CHIRP</a>), with an exponential (if the EXP toggle is on) or linear sweep.  The start and end frequencies for sine sweep are set by the FREQ1 and FREQ2 knobs, each with a range in hertz from 1 to a bit less than the Nyquist rate (half the sampling rate); if FREQ1 is less than FREQ2 the sweep is upwards in frequency, downwards otherwise.
+The test signal is a swept sine wave (or "chirp", see also <a href="#chirp">CHIRP</a>), with an exponential (if the EXP toggle is on) or linear sweep.  The start and end frequencies for sine sweep are set by the FREQ1 and FREQ2 knobs, each with a range in hertz from 1 to a bit less than the Nyquist rate (half the sampling rate); if FREQ1 is less than FREQ2 the sweep is upwards in frequency, downwards otherwise.
 
 Patching an input to TEST overrides the swept sine generator; the TEST input is used as the test signal.
 
 If the LOOP toggle is enabled, the module continuously outputs, collects and displays the test, response and analysis signals.  Regardless of whether the collection cycle is triggered or looped, a pulse is emitted at the TRIG output when the cycle begins, and at the EOC output when it ends.
 
-The R. DELAY (response delay) control allows sample-accurate alignment of the test and response signals for analysis.  When SEND is patched directly to the module to be analyzed, and that module's output is patched directly back to RETURN, and the analyzed module does not impose an internal sample delay, then the returned signal will be received by RANALYZER two samples later, relative to the test sample RANALYZER emits.  More complicated patches between SEND and RETURN, or modules under test which have internal sample delays, can increase this, in which case R. DELAY may be set to whatever this actual sample delay is.  In practice, getting this right will likely not be very important.
+The R. DELAY (response delay) control allows sample-accurate alignment of the test and response signals for analysis.  When SEND is patched directly to the module to be analyzed, and that module's output is patched directly back to RETURN, and the analyzed module does not impose an internal sample delay, then the returned signal will be received by RANALYZER two samples later, relative to the test sample RANALYZER emits.  More complicated patches between SEND and RETURN, or modules under test which have internal sample delays, can increase this, in which case R. DELAY may be set to whatever this actual sample delay is.  In practice, getting this exactly right will likely not be very important.
 
 The context-menu option "Trigger on load", if enabled, will auto-trigger the test cycle when the module loads or when the patch loads.  This has no effect if LOOP is enabled when the patch loads.
 
@@ -1238,9 +1252,11 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the 
 
 #### <a name="cvd"></a> CVD
 
-A simple delay designed for use with CV (though it works fine with audio).  Use it to delay triggers or gates, create a flip-flop that resets itself after a time, make a sequence run for a while then stop, to double up an envelope, or what have you.
+A simple delay designed for use with CV (though it works fine with audio).  Use it to delay triggers or gates, create a flip-flop that resets itself after a time, make a sequence run for a while then stop, double up an envelope, or what have you.
 
-The large TIME knob sets the delay time, as scaled by the small knob (up to 0.1, 1 or 10 seconds); TIME takes a 0-10V CV, attenuated by the knob.  Reducing time truncates the internal delay buffer.  The DRY/WET knob sets the mix of the original and delayed signals at the output, with a +/-5V CV input.
+The large TIME knob sets the delay time, in seconds, as scaled by the small knob (up to 0.1, 1 or 10 seconds); TIME takes a 0-10V CV, attenuated by the knob.  Reducing time truncates the internal delay buffer.  The DRY/WET knob sets the mix of the original and delayed signals at the output, with a +/-5V CV input.
+
+CVD may be used for lag/latency correction; using parameter entry (by right-clicking the TIME knob) is handy here, to set a precise delay.  You can get sample-accurate delays by dividing the desired number of delay samples by Rack's current sample rate, and setting TIME to that number (leave the time scale knob at 1).
 
 _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the IN input.
 
@@ -1326,6 +1342,31 @@ If the context menu option "Save latched state to patch" is enabled, and latchin
 
 _Polyphony:_ If polyphonic input is present at GATE, then the module is polyphonic in the standard way, independently switching the independent polyphonic channels on the high/low inputs (the button will switch all channels).  Additionally, if the input at GATE is not present or monophonic, but polyphonic cables are are present at any high/low inputs, and such an input is switched to the output, it is duplicated to the output with channels intact.
 
+#### <a name="lgsw"></a> LGSW
+
+LGSW is a version of <a href="#switch">SWITCH</a> with two gate inputs and onboard logic.
+
+If nothing is patched to either of the gate inputs, or if just one is patched (either one), the behavior of the module is identical to SWITCH (the logic section has no effect).
+
+If both gate inputs are in use, then the logic will evaluate to true according to the gate states and the logic mode:
+  - OR: true if either gate is high.
+  - AND: true if both gates are high.
+  - XOR: true if exactly one of the gates is high.
+  - NOR: true if neither of the gates is high.
+  - NAND: true if both gates are low.
+
+When LATCH is off, and both gates are in use, the module outputs the HIGH input whenever the logic is true or the button is held.
+
+When LATCH is on, and both gates are in use, the latch will toggle when the logic state changes, or when the button is pressed.
+
+The logic mode can be set by CV.  Using a CV for the logic overrides whatever selection was made with the small mode-select button.  A O-5V CV will select the mode as:
+  - OR: less than 1V.
+  - AND: 1V but less than 2V.
+  - XOR: 2V but less than 3V.
+  - NOR: 3V but less than 4V.
+  - NAND: 4V or more.
+
+_Polyphony:_ Same as <a href="#switch">SWITCH</a>, except that the polyphony channel count is set by the topmost gate input only.
 
 ### <a name="misc"></a> Miscellaneous
 

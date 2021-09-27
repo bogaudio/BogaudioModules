@@ -48,7 +48,7 @@ screens = [
     crop: false,
     rows: [
       ['Mono', 'Arp', 'Assign', 'Unison', 'PolyCon', 'PolyCon8', 'PolyOff16', 'PolyOff8', 'PolyMult', '-', 'Detune', 'Stack', 'Reftone'],
-      ['Bool', 'Cmp', 'CVD', 'FlipFlop', 'Inv', 'Manual', 'FourMan', 'Mult', 'Offset', 'Slew', 'Sums', 'Switch', '-', 'Blank3', 'Blank6']
+      ['Bool', 'Cmp', 'CVD', 'FlipFlop', 'Inv', 'Manual', 'FourMan', 'Mult', 'Offset', 'Slew', 'Sums', 'Switch', 'Lgsw', '-', 'Blank3', 'Blank6']
     ]
   },
 
@@ -252,7 +252,7 @@ screens = [
     file: 'utilities.png',
     crop: true,
     rows: [
-      ['Bool', 'Cmp', 'CVD', 'FlipFlop', 'Inv', 'Manual', 'FourMan', 'Mult', 'Offset', 'Slew', 'Sums', 'Switch']
+      ['Bool', 'Cmp', 'CVD', 'FlipFlop', 'Inv', 'Manual', 'FourMan', 'Mult', 'Offset', 'Slew', 'Sums', 'Switch', 'Lgsw']
     ]
   },
   {
