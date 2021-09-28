@@ -219,6 +219,7 @@ struct PressorWidget : BGModuleWidget {
 			}
 
 			nvgSave(args.vg);
+			nvgGlobalTint(args.vg, color::WHITE);
 			for (int i = 0; i < 80; i += 5) {
 				const Level& l = _levels.at(i / 5);
 

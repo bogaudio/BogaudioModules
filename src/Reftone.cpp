@@ -131,6 +131,8 @@ void ReftoneDisplay::draw(const DrawArgs& args) {
 		}
 	}
 
+	nvgSave(args.vg);
+	nvgGlobalTint(args.vg, color::WHITE);
 	drawBackground(args);
 	if (sharpFlat) {
 		drawText(args, pitch, 3, 20, 28);
@@ -142,6 +144,7 @@ void ReftoneDisplay::draw(const DrawArgs& args) {
 	}
 	drawCenteredText(args, fine.c_str(), 32.5, 14);
 	drawCenteredText(args, frequency.c_str(), 45, 14);
+	nvgRestore(args.vg);
 }
 
 void ReftoneDisplay::drawBackground(const DrawArgs& args) {

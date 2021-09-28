@@ -69,6 +69,7 @@ struct Blank6Display : OpaqueWidget {
 			nvgText(args.vg, 0, 0, _text, NULL);
 		}
 		else {
+			nvgGlobalTint(args.vg, color::WHITE);
 			nvgFillColor(args.vg, bgTextColor);
 			nvgText(args.vg, 0, 0, _text, NULL);
 			if (level > 0.0001f) {

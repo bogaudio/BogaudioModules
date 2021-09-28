@@ -474,8 +474,6 @@ void AnalyzerDisplay::draw(const DrawArgs& args) {
 		rangeMaxHz = 0.5f * APP->engine->getSampleRate();
 	}
 
-	drawBackground(args);
-
 	float strokeWidth = std::max(1.0f, 3.0f - getZoom());
 	if (frequencyPlot == LINEAR_FP) {
 		_xAxisLogFactor = 1.0f;
@@ -487,6 +485,8 @@ void AnalyzerDisplay::draw(const DrawArgs& args) {
 	}
 
 	nvgSave(args.vg);
+	nvgGlobalTint(args.vg, color::WHITE);
+	drawBackground(args);
 	nvgScissor(args.vg, _insetAround, _insetAround, _size.x - _insetAround, _size.y - _insetAround);
 	if (_module) {
 		drawHeader(args, rangeMinHz, rangeMaxHz);

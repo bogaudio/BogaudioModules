@@ -65,6 +65,7 @@ struct MonoWidget : BGModuleWidget {
 
 		void draw(const DrawArgs& args) override {
 			nvgSave(args.vg);
+			nvgGlobalTint(args.vg, color::WHITE);
 			for (int i = 0; i < _module->maxChannels; ++i) {
 				nvgBeginPath(args.vg);
 				if (!_module || i >= _module->_activeChannels) {
@@ -112,6 +113,7 @@ struct MonoWidget : BGModuleWidget {
 			}
 
 			nvgSave(args.vg);
+			nvgGlobalTint(args.vg, color::WHITE);
 			for (int i = 0; i < 35; i += 5) {
 				const Level& l = _levels.at(i / 5);
 

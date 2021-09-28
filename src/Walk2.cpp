@@ -228,8 +228,9 @@ struct Walk2Display : TransparentWidget {
 	void draw(const DrawArgs& args) override {
 		float strokeWidth = std::max(1.0f, 3.0f - getZoom());
 
-		drawBackground(args);
 		nvgSave(args.vg);
+		nvgGlobalTint(args.vg, color::WHITE);
+		drawBackground(args);
 		nvgScissor(args.vg, _insetAround, _insetAround, _drawSize.x / 2, _drawSize.y / 2);
 		if (_module && _module->_zoomOut) {
 			nvgScale(args.vg, 0.5f, 0.5f);

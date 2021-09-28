@@ -89,6 +89,7 @@ struct VUDisplay : OpaqueWidget {
 		}
 
 		nvgSave(args.vg);
+		nvgGlobalTint(args.vg, color::WHITE);
 		for (int i = 0; i < 180; i += 5) {
 			const Level& l = _levels.at(i / 5);
 
