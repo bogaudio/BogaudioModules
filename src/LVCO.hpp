@@ -70,6 +70,7 @@ struct LVCO : VCOBase {
 	json_t* toJson(json_t* root) override;
 	void fromJson(json_t* root) override;
 	bool active() override;
+	void modulateAlways() override;
 	void modulate() override;
 	void modulateChannel(int c) override;
 	void processAlways(const ProcessArgs& args) override;

@@ -50,6 +50,7 @@ struct BGModule : Module {
 	virtual void channelsChanged(int before, int after) {}
 	virtual void addChannel(int c) {}
 	virtual void removeChannel(int c) {}
+	virtual void modulateAlways() {}
 	virtual void processAlways(const ProcessArgs& args) {} // called before modulate()!
 	virtual void modulate() {}
 	virtual void modulateChannel(int c) {}

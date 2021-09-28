@@ -62,10 +62,7 @@ void LLFO::addChannel(int c) {
 	}
 }
 
-void LLFO::modulate() {
-	_slowMode = params[SLOW_PARAM].getValue() > 0.5f;
-
-	_invert = false;
+void LLFO::modulateAlways() {
 	Wave wave = (Wave)(1 + (int)params[WAVE_PARAM].getValue());
 	if (_wave != wave) {
 		_wave = wave;
@@ -75,6 +72,12 @@ void LLFO::modulate() {
 			}
 		}
 	}
+}
+
+void LLFO::modulate() {
+	_slowMode = params[SLOW_PARAM].getValue() > 0.5f;
+
+	_invert = false;
 	switch (_wave) {
 		case UNINITIALIZED_WAVE:
 		case SINE_WAVE: {
