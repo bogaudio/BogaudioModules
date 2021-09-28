@@ -100,6 +100,7 @@ struct LLFO : LFOBase {
 	bool active() override;
 	int channels() override;
 	void addChannel(int c) override;
+	void modulateAlways() override;
 	void modulate() override;
 	void modulateChannel(int c) override;
 	void processAlways(const ProcessArgs& args) override;

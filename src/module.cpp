@@ -46,12 +46,17 @@ void BGModule::process(const ProcessArgs& args) {
 		onSampleRateChange();
 	}
 
+	bool modulateNow = false;
+	++_steps;
+	if (_steps >= _modulationSteps) {
+		_steps = 0;
+		modulateNow = true;
+		modulateAlways();
+	}
+
 	processAlways(args);
 	if (active()) {
-		++_steps;
-		if (_steps >= _modulationSteps) {
-			_steps = 0;
-
+		if (modulateNow) {
 			int channelsBefore = _channels;
 			int channelsNow = std::max(1, channels());
 			if (channelsBefore != channelsNow) {

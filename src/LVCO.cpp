@@ -36,10 +36,7 @@ bool LVCO::active() {
 	return outputs[OUT_OUTPUT].isConnected();
 }
 
-void LVCO::modulate() {
-	_slowMode = params[SLOW_PARAM].getValue() > 0.5f;
-	_fmDepth = params[FM_DEPTH_PARAM].getValue();
-
+void LVCO::modulateAlways() {
 	Wave wave = (Wave)(1 + (int)params[WAVE_PARAM].getValue());
 	if (_wave != wave) {
 		_wave = wave;
@@ -49,6 +46,11 @@ void LVCO::modulate() {
 			}
 		}
 	}
+}
+
+void LVCO::modulate() {
+	_slowMode = params[SLOW_PARAM].getValue() > 0.5f;
+	_fmDepth = params[FM_DEPTH_PARAM].getValue();
 }
 
 void LVCO::modulateChannel(int c) {
