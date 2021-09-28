@@ -219,7 +219,6 @@ struct PressorWidget : BGModuleWidget {
 			}
 
 			nvgSave(args.vg);
-			nvgGlobalTint(args.vg, color::WHITE);
 			for (int i = 0; i < 80; i += 5) {
 				const Level& l = _levels.at(i / 5);
 
@@ -228,8 +227,11 @@ struct PressorWidget : BGModuleWidget {
 				nvgFillColor(args.vg, bgColor);
 				nvgFill(args.vg);
 				if (compressionDb > l.db) {
+					nvgSave(args.vg);
+					nvgGlobalTint(args.vg, color::WHITE);
 					nvgFillColor(args.vg, l.color);
 					nvgFill(args.vg);
+					nvgRestore(args.vg);
 				}
 			}
 			nvgRestore(args.vg);

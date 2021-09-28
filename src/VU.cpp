@@ -89,7 +89,6 @@ struct VUDisplay : OpaqueWidget {
 		}
 
 		nvgSave(args.vg);
-		nvgGlobalTint(args.vg, color::WHITE);
 		for (int i = 0; i < 180; i += 5) {
 			const Level& l = _levels.at(i / 5);
 
@@ -98,12 +97,18 @@ struct VUDisplay : OpaqueWidget {
 			nvgFillColor(args.vg, bgColor);
 			nvgFill(args.vg);
 			if (lPeakDb > l.db && lPeakDb < l.db + 2.0f) {
+				nvgSave(args.vg);
+				nvgGlobalTint(args.vg, color::WHITE);
 				nvgFillColor(args.vg, nvgRGBA(0x00, 0xdd, 0xff, 0xff));
 				nvgFill(args.vg);
+				nvgRestore(args.vg);
 			}
 			if (lDb > l.db) {
+				nvgSave(args.vg);
+				nvgGlobalTint(args.vg, color::WHITE);
 				nvgFillColor(args.vg, l.color);
 				nvgFill(args.vg);
+				nvgRestore(args.vg);
 			}
 
 			nvgBeginPath(args.vg);
@@ -111,12 +116,18 @@ struct VUDisplay : OpaqueWidget {
 			nvgFillColor(args.vg, bgColor);
 			nvgFill(args.vg);
 			if (rPeakDb > l.db && rPeakDb < l.db + 2.0f) {
+				nvgSave(args.vg);
+				nvgGlobalTint(args.vg, color::WHITE);
 				nvgFillColor(args.vg, nvgRGBA(0x00, 0xdd, 0xff, 0xff));
 				nvgFill(args.vg);
+				nvgRestore(args.vg);
 			}
 			if (rDb > l.db) {
+				nvgSave(args.vg);
+				nvgGlobalTint(args.vg, color::WHITE);
 				nvgFillColor(args.vg, l.color);
 				nvgFill(args.vg);
+				nvgRestore(args.vg);
 			}
 		}
 		nvgRestore(args.vg);

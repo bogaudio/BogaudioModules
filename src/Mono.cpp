@@ -65,21 +65,26 @@ struct MonoWidget : BGModuleWidget {
 
 		void draw(const DrawArgs& args) override {
 			nvgSave(args.vg);
-			nvgGlobalTint(args.vg, color::WHITE);
 			for (int i = 0; i < _module->maxChannels; ++i) {
 				nvgBeginPath(args.vg);
 				if (!_module || i >= _module->_activeChannels) {
 					nvgFillColor(args.vg, inactiveBgColor);
 				}
 				else {
+					nvgSave(args.vg);
+					nvgGlobalTint(args.vg, color::WHITE);
 					nvgFillColor(args.vg, activeBgColor);
+					nvgRestore(args.vg);
 				}
 				nvgCircle(args.vg, (i % 4) * 10 + 5.0f, (i / 4) * 10 + 5.0f, 3.2f);
 				nvgFill(args.vg);
 
 				if (_module && _module->_channelLevels[i] > 0.0f) {
+					nvgSave(args.vg);
+					nvgGlobalTint(args.vg, color::WHITE);
 					nvgFillColor(args.vg, decibelsToColor(amplitudeToDecibels(_module->_channelLevels[i])));
 					nvgFill(args.vg);
+					nvgRestore(args.vg);
 				}
 			}
 			nvgRestore(args.vg);
@@ -113,7 +118,6 @@ struct MonoWidget : BGModuleWidget {
 			}
 
 			nvgSave(args.vg);
-			nvgGlobalTint(args.vg, color::WHITE);
 			for (int i = 0; i < 35; i += 5) {
 				const Level& l = _levels.at(i / 5);
 
@@ -122,8 +126,11 @@ struct MonoWidget : BGModuleWidget {
 				nvgFillColor(args.vg, bgColor);
 				nvgFill(args.vg);
 				if (compressionDb > l.db) {
+					nvgSave(args.vg);
+					nvgGlobalTint(args.vg, color::WHITE);
 					nvgFillColor(args.vg, l.color);
 					nvgFill(args.vg);
+					nvgRestore(args.vg);
 				}
 			}
 			nvgRestore(args.vg);
