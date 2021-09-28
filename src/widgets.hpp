@@ -118,8 +118,6 @@ struct StatefulButton : ParamWidget {
 	CircularShadow* shadow = NULL;
 
 	StatefulButton(const char* offSvgPath, const char* onSvgPath);
-	// void reset() override;
-	// void randomize() override;
 	void onDragStart(const event::DragStart& e) override;
 	void onDragEnd(const event::DragEnd& e) override;
 	void onDoubleClick(const event::DoubleClick& e) override {}
@@ -165,8 +163,6 @@ struct InvertingIndicatorButton : ParamWidget {
 
 	inline void setClickToInvertCallback(std::function<bool()> fn) { clickToInvertCB = fn; }
 	inline void setOnChangeCallback(std::function<void(int, float)> fn) { onChangeCB = fn; }
-	// void reset() override;
-	// void randomize() override;
 	void onHover(const event::Hover& e) override;
 	void onDoubleClick(const event::DoubleClick& e) override {}
 	void onButton(const event::Button& e) override;

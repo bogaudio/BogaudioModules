@@ -99,13 +99,6 @@ void DimmableMixerWidget::contextMenu(Menu* menu) {
 }
 
 
-// FIXME: this callback removed in rack2.
-// void MuteButton::randomize() {
-// 	if (_randomize) {
-// 		ToggleButton::randomize();
-// 	}
-// }
-
 void MuteButton::onButton(const event::Button& e) {
 	if (!(e.action == GLFW_PRESS && (e.mods & RACK_MOD_MASK) == 0)) {
 		return;
@@ -139,19 +132,6 @@ SoloMuteButton::SoloMuteButton() {
 	shadow->blurRadius = 1.0;
 	shadow->box.pos = Vec(0.0, 1.0);
 }
-
-// FIXME: these callbacks removed in rack2.
-// void SoloMuteButton::reset() {
-// 	if (paramQuantity) {
-// 		getParamQuantity()->setValue(0.0f);
-// 	}
-// }
-//
-// void SoloMuteButton::randomize() {
-// 	if (paramQuantity) {
-// 		getParamQuantity()->setValue(random::uniform() > 0.5f ? 1.0f : 0.0f);
-// 	}
-// }
 
 void SoloMuteButton::onButton(const event::Button& e) {
 	if (!getParamQuantity() || !(e.action == GLFW_PRESS && (e.mods & RACK_MOD_MASK) == 0)) {

@@ -301,22 +301,6 @@ StatefulButton::StatefulButton(const char* offSvgPath, const char* onSvgPath) {
 	shadow->box.pos = Vec(0.0, 1.0);
 }
 
-// FIXME: these callbacks removed in rack2.
-// void StatefulButton::reset() {
-// 	if (getParamQuantity()) {
-// 		getParamQuantity()->reset();
-// 	}
-// }
-//
-// void StatefulButton::randomize() {
-// 	if (getParamQuantity()) {
-// 		float min = getParamQuantity()->getMinValue();
-// 		float max = getParamQuantity()->getMaxValue();
-// 		float value = roundf(min + (max - min) * random::uniform());
-// 		getParamQuantity()->setValue(value);
-// 	}
-// }
-
 void StatefulButton::onDragStart(const event::DragStart& e) {
 	if (getParamQuantity()) {
 		_svgWidget->setSvg(_frames[1]);
@@ -448,19 +432,6 @@ InvertingIndicatorButton::InvertingIndicatorButton(int dim) {
 	// w->box.pos = math::Vec(0, 0);
 	fb->addChild(w);
 }
-
-// FIXME: these callbacks removed in rack2.
-// void InvertingIndicatorButton::reset() {
-// 	if (getParamQuantity()) {
-// 		getParamQuantity()->reset();
-// 	}
-// }
-//
-// void InvertingIndicatorButton::randomize() {
-// 	if (getParamQuantity()) {
-// 		getParamQuantity()->setValue(roundf(2.0f * random::uniform()) - 1.0f);
-// 	}
-// }
 
 void InvertingIndicatorButton::onHover(const event::Hover& e) {
 	math::Vec c = box.size.div(2);
