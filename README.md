@@ -42,7 +42,7 @@ And "Dark {low-contrast)":
 
 ## Builds/Releases
 
-Mac, Linux and Windows builds of the latest version are available through [Rack's Plugin Manager](https://vcvrack.com/plugins.html).  Find release notes on the [releases page](https://github.com/bogaudio/BogaudioModules/releases).
+Mac, Linux and Windows builds of the latest version are available through the [VCV Rack Library](https://library.vcvrack.com).  Find release notes on the [releases page](https://github.com/bogaudio/BogaudioModules/releases).
 
 
 ## Building
@@ -55,7 +55,7 @@ You'll need to be set up to build [VCV Rack](https://github.com/VCVRack/Rack) it
   make
   ```
 
-The master branch of this module currently builds against Rack 1.1.x.
+The master branch of this module currently builds against Rack 2.0.x.
 
 
 ## Modules
