@@ -224,7 +224,7 @@ struct AnalyzerDisplay : TransparentWidget, AnalyzerTypes {
 	const Vec _size;
 	const Vec _graphSize;
 	bool _drawInset;
-	std::shared_ptr<Font> _font;
+	std::string _fontPath;
 	float _xAxisLogFactor = baseXAxisLogFactor;
 	BinsReaderFactory* _channelBinsReaderFactories = NULL;
 	bool* _displayChannel = NULL;
@@ -244,7 +244,7 @@ struct AnalyzerDisplay : TransparentWidget, AnalyzerTypes {
 	, _size(size)
 	, _graphSize(_size.x - _insetLeft - _insetRight, _size.y - _insetTop - _insetBottom)
 	, _drawInset(drawInset)
-	, _font(APP->window->loadFont(asset::plugin(pluginInstance, "res/fonts/inconsolata.ttf")))
+	, _fontPath(asset::plugin(pluginInstance, "res/fonts/inconsolata.ttf"))
 	{
 		if (_module) {
 			_channelBinsReaderFactories = new BinsReaderFactory[_module->_core._nChannels] {};

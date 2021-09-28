@@ -39,7 +39,7 @@ struct ReftoneDisplay : TransparentWidget {
 
 	Reftone* _module;
 	const Vec _size;
-	std::shared_ptr<Font> _font;
+	std::string _fontPath;
 
 	ReftoneDisplay(
 		Reftone* module,
@@ -47,7 +47,7 @@ struct ReftoneDisplay : TransparentWidget {
 	)
 	: _module(module)
 	, _size(size)
-	, _font(APP->window->loadFont(asset::plugin(pluginInstance, "res/fonts/inconsolata-bold.ttf")))
+	, _fontPath(asset::plugin(pluginInstance, "res/fonts/inconsolata-bold.ttf"))
 	{
 	}
 
@@ -156,10 +156,11 @@ void ReftoneDisplay::drawBackground(const DrawArgs& args) {
 }
 
 void ReftoneDisplay::drawText(const DrawArgs& args, const char* s, float x, float y, int size) {
+	std::shared_ptr<Font> font = APP->window->loadFont(_fontPath);
 	nvgSave(args.vg);
 	nvgTranslate(args.vg, x, y);
 	nvgFontSize(args.vg, size);
-	nvgFontFaceId(args.vg, _font->handle);
+	nvgFontFaceId(args.vg, font->handle);
 	nvgFillColor(args.vg, _textColor);
 	nvgText(args.vg, 0, 0, s, NULL);
 	nvgRestore(args.vg);

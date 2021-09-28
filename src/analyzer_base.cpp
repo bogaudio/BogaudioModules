@@ -981,11 +981,12 @@ void AnalyzerDisplay::drawFreezeOver(const DrawArgs& args, int binI, int binsN, 
 }
 
 void AnalyzerDisplay::drawText(const DrawArgs& args, const char* s, float x, float y, float rotation, const NVGcolor* color, int fontSize) {
+	std::shared_ptr<Font> font = APP->window->loadFont(_fontPath);
 	nvgSave(args.vg);
 	nvgTranslate(args.vg, x, y);
 	nvgRotate(args.vg, rotation);
 	nvgFontSize(args.vg, fontSize);
-	nvgFontFaceId(args.vg, _font->handle);
+	nvgFontFaceId(args.vg, font->handle);
 	nvgFillColor(args.vg, color ? *color : _textColor);
 	nvgText(args.vg, 0, 0, s, NULL);
 	nvgRestore(args.vg);

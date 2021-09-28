@@ -179,7 +179,6 @@ struct Walk2Display : TransparentWidget {
 	const Vec _size;
 	const Vec _drawSize;
 	int _midX, _midY;
-	std::shared_ptr<Font> _font;
 	NVGcolor _traceColor = _defaultTraceColor;
 	Vec _dragLast;
 
@@ -192,7 +191,6 @@ struct Walk2Display : TransparentWidget {
 	, _drawSize(2 * (_size.x - 2 * _insetAround), 2 * (_size.y - 2 * _insetAround))
 	, _midX(_insetAround + _drawSize.x/2)
 	, _midY(_insetAround + _drawSize.y/2)
-	, _font(APP->window->loadFont(asset::plugin(pluginInstance, "res/fonts/inconsolata.ttf")))
 	{
 	}
 

@@ -20,16 +20,18 @@ void Blank6::processAll(const ProcessArgs& args) {
 struct Blank6Display : OpaqueWidget {
 	Blank6* _module;
 	const char* _text;
-	std::shared_ptr<Font> _font;
+	std::string _fontPath;
 
 	Blank6Display(Blank6* module, const char* text)
 	: _module(module)
 	, _text(text)
-	, _font(APP->window->loadFont(asset::plugin(pluginInstance, "res/fonts/audiowide.ttf")))
+	, _fontPath(asset::plugin(pluginInstance, "res/fonts/audiowide.ttf"))
 	{
 	}
 
 	void draw(const DrawArgs& args) override {
+		std::shared_ptr<Font> font = APP->window->loadFont(_fontPath);
+
 		const Skins& skins = Skins::skins();
 		std::string skin = skins.defaultKey();
 		bool haveLevel = false;
@@ -60,7 +62,7 @@ struct Blank6Display : OpaqueWidget {
 		nvgRotate(args.vg, M_PI/2.0f);
 		nvgTranslate(args.vg, -offsetY, offsetX);
 		nvgFontSize(args.vg, 52.0f);
-		nvgFontFaceId(args.vg, _font->handle);
+		nvgFontFaceId(args.vg, font->handle);
 		nvgTextLetterSpacing(args.vg, 9.0f);
 		if (!haveLevel) {
 			nvgFillColor(args.vg, textColor);
