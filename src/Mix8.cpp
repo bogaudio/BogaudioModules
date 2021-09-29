@@ -3,6 +3,13 @@
 
 #define POLY_OFFSET "poly_channel_offset"
 
+void Mix8::onRandomize(const RandomizeEvent& e) {
+	Module::onRandomize(e);
+	for (int i = 0; i < 8; ++i) {
+		getParamQuantity(MUTE1_PARAM + 3*i)->setValue(random::uniform() > 0.5f);
+	}
+}
+
 json_t* Mix8::saveToJson(json_t* root) {
 	root = DimmableMixerModule::saveToJson(root);
 	json_object_set_new(root, POLY_OFFSET, json_integer(_polyChannelOffset));
@@ -272,16 +279,8 @@ struct Mix8Widget : DimmableMixerWidget {
 		addParam(createParam<SoloMuteButton>(mute8ParamPosition, module, Mix8::MUTE8_PARAM));
 		addParam(createParam<Knob16>(pan8ParamPosition, module, Mix8::PAN8_PARAM));
 		addSlider(mixParamPosition, module, Mix8::MIX_PARAM, module ? &module->_rmsLevel : NULL);
-		{
-			auto b = createParam<MuteButton>(mixMuteParamPosition, module, Mix8::MIX_MUTE_PARAM);
-			b->setRandomize(false);
-			addParam(b);
-		}
-		{
-			auto b = createParam<MuteButton>(mixDimParamPosition, module, Mix8::MIX_DIM_PARAM);
-			b->setRandomize(false);
-			addParam(b);
-		}
+		addParam(createParam<MuteButton>(mixMuteParamPosition, module, Mix8::MIX_MUTE_PARAM));
+		addParam(createParam<MuteButton>(mixDimParamPosition, module, Mix8::MIX_DIM_PARAM));
 
 		addInput(createInput<Port24>(cv1InputPosition, module, Mix8::CV1_INPUT));
 		addInput(createInput<Port24>(pan1InputPosition, module, Mix8::PAN1_INPUT));

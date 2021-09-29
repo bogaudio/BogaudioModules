@@ -72,14 +72,11 @@ struct DimmableMixerWidget : LinearCVMixerWidget {
 };
 
 struct MuteButton : ToggleButton {
-	bool _randomize = true;
-
 	MuteButton() {
 		addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_0.svg")));
 		addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_1_orange.svg")));
 	}
 
-	inline void setRandomize(bool randomize) { _randomize = randomize; }
 	void onButton(const event::Button& e) override;
 	void draw(const DrawArgs& args) override;
 };

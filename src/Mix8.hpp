@@ -117,6 +117,16 @@ struct Mix8 : ExpandableModule<Mix8ExpanderMessage, DimmableMixerModule> {
 		configParam(MIX_PARAM, 0.0f, 1.0f, levelDefault, "Master level", " dB", 0.0f, MixerChannel::maxDecibels - MixerChannel::minDecibels, MixerChannel::minDecibels);
 		configParam(MIX_MUTE_PARAM, 0.0f, 1.0f, 0.0f, "Master mute");
 		configParam(MIX_DIM_PARAM, 0.0f, 1.0f, 0.0f, "Master dim");
+		getParamQuantity(MUTE1_PARAM)->randomizeEnabled = false;
+		getParamQuantity(MUTE2_PARAM)->randomizeEnabled = false;
+		getParamQuantity(MUTE3_PARAM)->randomizeEnabled = false;
+		getParamQuantity(MUTE4_PARAM)->randomizeEnabled = false;
+		getParamQuantity(MUTE5_PARAM)->randomizeEnabled = false;
+		getParamQuantity(MUTE6_PARAM)->randomizeEnabled = false;
+		getParamQuantity(MUTE7_PARAM)->randomizeEnabled = false;
+		getParamQuantity(MUTE8_PARAM)->randomizeEnabled = false;
+		getParamQuantity(MIX_MUTE_PARAM)->randomizeEnabled = false;
+		getParamQuantity(MIX_DIM_PARAM)->randomizeEnabled = false;
 
 		_channels[0] = new MixerChannel(params[LEVEL1_PARAM], params[MUTE1_PARAM], inputs[CV1_INPUT]);
 		_channels[1] = new MixerChannel(params[LEVEL2_PARAM], params[MUTE2_PARAM], inputs[CV2_INPUT]);
@@ -137,6 +147,7 @@ struct Mix8 : ExpandableModule<Mix8ExpanderMessage, DimmableMixerModule> {
 		}
 	}
 
+	void onRandomize(const RandomizeEvent& e) override;
 	json_t* saveToJson(json_t* root) override;
 	void loadFromJson(json_t* root) override;
 	void sampleRateChange() override;
