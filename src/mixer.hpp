@@ -81,6 +81,7 @@ struct MuteButton : ToggleButton {
 
 	inline void setRandomize(bool randomize) { _randomize = randomize; }
 	void onButton(const event::Button& e) override;
+	void draw(const DrawArgs& args) override;
 };
 
 struct SoloMuteButton : ParamWidget {
@@ -91,6 +92,7 @@ struct SoloMuteButton : ParamWidget {
 	SoloMuteButton();
 	void onButton(const event::Button& e) override;
 	void onChange(const event::Change& e) override;
+	void draw(const DrawArgs& args) override;
 };
 
 } // namespace bogaudio

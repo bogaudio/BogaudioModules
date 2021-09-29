@@ -227,6 +227,18 @@ void IndicatorKnob::redraw() {
 	onChange(c);
 }
 
+void IndicatorKnob::draw(const DrawArgs& args) {
+	nvgSave(args.vg);
+	if (getParamQuantity() &&
+		(getParamQuantity()->getValue() < -0.01f || getParamQuantity()->getValue() > 0.01f) &&
+		(!w->_drawColorsCB || w->_drawColorsCB()))
+	{
+		nvgGlobalTint(args.vg, color::WHITE);
+	}
+	Knob::draw(args);
+	nvgRestore(args.vg);
+}
+
 void IndicatorKnob::skinChanged(const std::string& skin) {
 	const Skins& skins = Skins::skins();
 	const char* knobRim = skins.skinCssValue(skin, "knob-rim");
@@ -335,6 +347,15 @@ ToggleButton18::ToggleButton18() {
 IndicatorButtonGreen9::IndicatorButtonGreen9() {
 	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_9px_0.svg")));
 	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_9px_1_green.svg")));
+}
+
+void IndicatorButtonGreen9::draw(const DrawArgs& args) {
+	nvgSave(args.vg);
+	if (getParamQuantity() && getParamQuantity()->getValue() > 0.0f) {
+		nvgGlobalTint(args.vg, color::WHITE);
+	}
+	SvgSwitch::draw(args);
+	nvgRestore(args.vg);
 }
 
 
@@ -474,6 +495,15 @@ void InvertingIndicatorButton::onChange(const event::Change& e) {
 	ParamWidget::onChange(e);
 }
 
+void InvertingIndicatorButton::draw(const DrawArgs& args) {
+	nvgSave(args.vg);
+	if (getParamQuantity() && (getParamQuantity()->getValue() < -0.01f || getParamQuantity()->getValue() > 0.01f)) {
+		nvgGlobalTint(args.vg, color::WHITE);
+	}
+	ParamWidget::draw(args);
+	nvgRestore(args.vg);
+}
+
 
 NVGcolor bogaudio::decibelsToColor(float db) {
 	if (db < -80.0f) {
@@ -542,6 +572,8 @@ void VUSlider::draw(const DrawArgs& args) {
 			stereoDb = *_stereoVuLevel;
 		}
 		if (db > 0.0f) {
+			nvgSave(args.vg);
+			nvgGlobalTint(args.vg, color::WHITE);
 			nvgBeginPath(args.vg);
 			if (stereo) {
 				nvgRoundedRect(args.vg, 2, 4, stereo ? 7 : 14, 5, 1.0);
@@ -551,12 +583,16 @@ void VUSlider::draw(const DrawArgs& args) {
 			}
 			nvgFillColor(args.vg, decibelsToColor(amplitudeToDecibels(db)));
 			nvgFill(args.vg);
+			nvgRestore(args.vg);
 		}
 		if (stereo && stereoDb > 0.0f) {
+			nvgSave(args.vg);
+			nvgGlobalTint(args.vg, color::WHITE);
 			nvgBeginPath(args.vg);
 			nvgRoundedRect(args.vg, 9, 4, 7, 5, 1.0);
 			nvgFillColor(args.vg, decibelsToColor(amplitudeToDecibels(stereoDb)));
 			nvgFill(args.vg);
+			nvgRestore(args.vg);
 		}
 	}
 	nvgRestore(args.vg);

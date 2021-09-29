@@ -112,6 +112,15 @@ void MuteButton::onButton(const event::Button& e) {
 	}
 }
 
+void MuteButton::draw(const DrawArgs& args) {
+	nvgSave(args.vg);
+	if (getParamQuantity() && getParamQuantity()->getValue() > 0.0f) {
+		nvgGlobalTint(args.vg, color::WHITE);
+	}
+	ToggleButton::draw(args);
+	nvgRestore(args.vg);
+}
+
 
 SoloMuteButton::SoloMuteButton() {
 	shadow = new CircularShadow();
@@ -165,4 +174,13 @@ void SoloMuteButton::onChange(const event::Change& e) {
 		_svgWidget->setSvg(_frames[(int)value]);
 	}
 	ParamWidget::onChange(e);
+}
+
+void SoloMuteButton::draw(const DrawArgs& args) {
+	nvgSave(args.vg);
+	if (getParamQuantity() && getParamQuantity()->getValue() > 0.0f) {
+		nvgGlobalTint(args.vg, color::WHITE);
+	}
+	ParamWidget::draw(args);
+	nvgRestore(args.vg);
 }

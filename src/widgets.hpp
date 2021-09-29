@@ -82,6 +82,7 @@ struct IndicatorKnob : Knob, SkinnableWidget {
 	inline void setDrawColorsCallback(std::function<bool()> fn) { w->_drawColorsCB = fn; }
 	inline void setUnipolarCallback(std::function<bool()> fn) { w->_unipolarCB = fn; }
 	void redraw();
+	void draw(const DrawArgs& args) override;
 	void skinChanged(const std::string& skin) override;
 };
 
@@ -140,6 +141,7 @@ struct ToggleButton18 : ToggleButton {
 
 struct IndicatorButtonGreen9 : SvgSwitch {
 	IndicatorButtonGreen9();
+	void draw(const DrawArgs& args) override;
 };
 
 struct InvertingIndicatorButton : ParamWidget {
@@ -167,6 +169,7 @@ struct InvertingIndicatorButton : ParamWidget {
 	void onDoubleClick(const event::DoubleClick& e) override {}
 	void onButton(const event::Button& e) override;
 	void onChange(const event::Change& e) override;
+	void draw(const DrawArgs& args) override;
 };
 
 struct InvertingIndicatorButton9 : InvertingIndicatorButton {
