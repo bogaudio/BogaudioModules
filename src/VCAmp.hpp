@@ -38,6 +38,7 @@ struct VCAmp : BGModule {
 	VCAmp() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(LEVEL_PARAM, 0.0f, 1.0f, fabs(minDecibels) / (maxDecibels - minDecibels), "Level", " dB", 0.0f, maxDecibels - minDecibels, minDecibels);
+		configBypass(IN_INPUT, OUT_OUTPUT);
 
 		sampleRateChange();
 		for (int c = 0; c < maxChannels; ++c) {

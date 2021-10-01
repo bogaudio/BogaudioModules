@@ -42,6 +42,17 @@ void Stack::processChannel(const ProcessArgs& args, int c) {
 	outputs[OUT_OUTPUT].setVoltage(_outCV[c], c);
 }
 
+void Stack::processBypass(const ProcessArgs& args) {
+	int cn = channels();
+	outputs[THRU_OUTPUT].setChannels(cn);
+	outputs[OUT_OUTPUT].setChannels(cn);
+	for (int c = 0; c < cn; ++c) {
+		float out = inputs[IN_INPUT].getVoltage(c);
+		outputs[THRU_OUTPUT].setVoltage(out, c);
+		outputs[OUT_OUTPUT].setVoltage(out, c);
+	}
+}
+
 struct StackWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 

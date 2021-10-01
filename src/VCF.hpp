@@ -77,6 +77,7 @@ struct VCF : BGModule {
 		configParam(Q_PARAM, 0.0f, 1.0f, 0.0f, "Resonance / bandwidth", "%", 0.0f, 100.0f);
 		configParam(MODE_PARAM, 0.0f, 3.0f, 0.0f, "Mode");
 		configParam<ScaledSquaringParamQuantity<Engine::maxPoles - Engine::minPoles>>(SLOPE_PARAM, 0.0f, 1.0f, 0.522233f, "Slope", " poles", 0.0f, 1.0f, Engine::minPoles);
+		configBypass(IN_INPUT, OUT_OUTPUT);
 	}
 
 	json_t* saveToJson(json_t* root) override;

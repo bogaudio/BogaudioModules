@@ -43,6 +43,8 @@ struct VU : BGModule {
 
 	VU() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
+		configBypass(L_INPUT, L_OUTPUT);
+		configBypass(R_INPUT, R_OUTPUT);
 		sampleRateChange();
 		_lRms.setSensitivity(1.0f);
 		_rRms.setSensitivity(1.0f);

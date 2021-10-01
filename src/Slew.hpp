@@ -38,6 +38,7 @@ struct Slew : BGModule {
 		configParam<EnvelopeSegmentParamQuantity>(FALL_PARAM, 0.0f, 1.0f, 0.31623f, "Fall", " s");
 		configParam(FALL_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "Fall shape");
 		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow mode");
+		configBypass(IN_INPUT, OUT_OUTPUT);
 	}
 
 	bool active() override;

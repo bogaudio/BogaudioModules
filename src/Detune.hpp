@@ -48,6 +48,7 @@ struct Detune : BGModule {
 	int channels() override;
 	void modulateChannel(int c) override;
 	void processChannel(const ProcessArgs& args, int c) override;
+	void processBypass(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

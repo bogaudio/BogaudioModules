@@ -58,6 +58,7 @@ struct OneEight : AddressableSequenceModule {
 		configParam(DIRECTION_PARAM, 0.0f, 1.0f, 1.0f, "Direction");
 		configParam(SELECT_PARAM, 0.0f, 7.0f, 0.0f, "Select step");
 		setInputIDs(CLOCK_INPUT, SELECT_INPUT);
+		configBypass(IN_INPUT, OUT1_OUTPUT);
 	}
 
 	void processAlways(const ProcessArgs& args) override;

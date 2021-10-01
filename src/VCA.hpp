@@ -45,6 +45,8 @@ struct VCA : BGModule {
 		configParam<LevelParamQuantity>(LEVEL1_PARAM, 0.0f, 1.0f, 0.8f, "Level 1");
 		configParam<LevelParamQuantity>(LEVEL2_PARAM, 0.0f, 1.0f, 0.8f, "Level 2");
 		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear");
+		configBypass(IN1_INPUT, OUT1_OUTPUT);
+		configBypass(IN2_INPUT, OUT2_OUTPUT);
 
 		sampleRateChange();
 	}

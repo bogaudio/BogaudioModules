@@ -69,6 +69,8 @@ struct Lmtr : BGModule {
 		configParam<ThresholdParamQuantity>(THRESHOLD_PARAM, 0.0f, 1.0f, 0.8f, "Threshold", " dB");
 		configParam(OUTPUT_GAIN_PARAM, 0.0f, 1.0f, 0.0f, "Output gain", " dB", 0.0f, 24.0f);
 		configParam(KNEE_PARAM, 0.0f, 1.0f, 0.0f, "Knee");
+		configBypass(LEFT_INPUT, LEFT_OUTPUT);
+		configBypass(RIGHT_INPUT, RIGHT_OUTPUT);
 	}
 
 	void sampleRateChange() override;

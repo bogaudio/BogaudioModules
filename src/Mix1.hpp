@@ -37,6 +37,7 @@ struct Mix1 : LinearCVMixerModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(LEVEL_PARAM, 0.0f, 1.0f, fabsf(MixerChannel::minDecibels) / (MixerChannel::maxDecibels - MixerChannel::minDecibels), "Level", "dB", 0.0f, MixerChannel::maxDecibels - MixerChannel::minDecibels, MixerChannel::minDecibels);
 		configParam(MUTE_PARAM, 0.0f, 1.0f, 0.0f, "Mute");
+		configBypass(IN_INPUT, OUT_OUTPUT);
 	}
 
 	void sampleRateChange() override;

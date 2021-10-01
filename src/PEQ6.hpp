@@ -100,6 +100,7 @@ struct PEQ6 : ExpandableModule<PEQ6ExpanderMessage, BandExcludeModule> {
 		configParam(LEVEL6_PARAM, 0.0f, 1.0f, levelDefault, "Channel 6 level", " dB", 0.0f, PEQChannel::maxDecibels - PEQChannel::minDecibels, PEQChannel::minDecibels);
 		configParam<ScaledSquaringParamQuantity<(int)PEQChannel::maxFrequency>>(FREQUENCY6_PARAM, 0.0f, 1.0f, 0.3535534f, "Channel 6 frequency", " HZ");
 		configParam(FREQUENCY_CV6_PARAM, -1.0f, 1.0f, 1.0f, "Channel 6 frequency CV attenuation", "%", 0.0f, 100.0f);
+		configBypass(IN_INPUT, OUT_OUTPUT);
 
 		setExpanderModelPredicate([](Model* m) { return m == modelPEQ6XF; });
 	}

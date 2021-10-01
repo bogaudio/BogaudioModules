@@ -48,6 +48,8 @@ struct Inv : BGModule {
 		configParam(LATCH1_PARAM, 0.0f, 1.0f, 0.0f, "Channel 1 latch");
 		configParam(GATE2_PARAM, 0.0f, 1.0f, 0.0f, "Channel 2 gate");
 		configParam(LATCH2_PARAM, 0.0f, 1.0f, 0.0f, "Channle 2 latch");
+		configBypass(IN1_INPUT, OUT1_OUTPUT);
+		configBypass(IN2_INPUT, OUT2_OUTPUT);
 	}
 
 	void reset() override;

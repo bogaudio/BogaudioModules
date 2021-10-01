@@ -43,6 +43,19 @@ void Detune::processChannel(const ProcessArgs& args, int c) {
 	outputs[OUT_MINUS_OUTPUT].setVoltage(_minusCV[c], c);
 }
 
+void Detune::processBypass(const ProcessArgs& args) {
+	int cn = channels();
+	outputs[THRU_OUTPUT].setChannels(cn);
+	outputs[OUT_PLUS_OUTPUT].setChannels(cn);
+	outputs[OUT_MINUS_OUTPUT].setChannels(cn);
+	for (int c = 0; c < cn; ++c) {
+		float out = inputs[IN_INPUT].getVoltage(c);
+		outputs[THRU_OUTPUT].setVoltage(out, c);
+		outputs[OUT_PLUS_OUTPUT].setVoltage(out, c);
+		outputs[OUT_MINUS_OUTPUT].setVoltage(out, c);
+	}
+}
+
 struct DetuneWidget : BGModuleWidget {
 	static constexpr int hp = 3;
 

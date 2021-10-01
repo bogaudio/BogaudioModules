@@ -70,6 +70,7 @@ struct Mix2 : LinearCVMixerModule {
 	void processAlways(const ProcessArgs& args) override;
 	void processChannel(const ProcessArgs& args, int c) override;
 	void postProcessAlways(const ProcessArgs& args) override;
+	void processBypass(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

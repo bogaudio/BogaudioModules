@@ -20,7 +20,9 @@ Modules for [VCV Rack](https://github.com/VCVRack/Rack), an open-source Eurorack
 
 Most Bogaudio modules support VCV Rack's polyphony feature; see <a href="#polyphony">Note on Polyphony</a>.
 
-Some modules have expanders; see <a href="#expanders">notes on expanders</a>.
+Some modules have expanders; see <a href="#expanders">Note on Expanders</a>.
+
+Many modules support bypassing in a non-default way; see <a href="#bypassing">Note on Bypassing</a>.
 
 ![modules screenshot](./doc/www/modules1.png)
 
@@ -36,9 +38,10 @@ The modules have two <a href="#alternate_panels">alternate panel designs</a>, "D
 
 ![modules screenshot](./doc/www/skin-dark.png)
 
-And "Dark {low-contrast)":
+And "Dark (low-contrast)":
 
 ![modules screenshot](./doc/www/skin-lowcontrast.png)
+
 
 ## Builds/Releases
 
@@ -80,7 +83,9 @@ In linear mode, the frequency 1000HZ times the pitch voltage (as determined by t
 
 The context menu option "DC offset correction", on by default, removes DC offset from the outputs.  Presently, this only affects the square output when the pulse width is set to anything besides 50%.  When this is enabled, and viewing the output on a scope, the waveform will move up and down relative to 0V as the pulse width is changed -- this is the DC offset removal in action.  When disabled, the waveform stays centered on 0V, which is useful if using the output as CV.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.  The poly port can be changed to the FM input on the context menu.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the V/OCT input.  The poly port can be changed to the FM input on the context menu.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="lvco"></a> LVCO
 
@@ -90,6 +95,8 @@ Context menu option "Reset phase on wave change", if enabled, causes the wavefor
 
 _Polyphony:_ Same as VCO.
 
+_When <a href="#bypassing">bypassed</a>:_ no output.
+
 #### <a name="sine"></a> SINE
 
 A 3HP subset of VCO, designed in particular for use making synth drums.  The waveform defaults to sine but is selectable on the context menu, with the same options as LVCO, with the addition of a ramp (inverse saw) wave.
@@ -98,11 +105,15 @@ Additionally, there is a phase control with CV borrowed from XCO (if CV is used,
 
 _Polyphony:_ Same as VCO.
 
+_When <a href="#bypassing">bypassed</a>:_ no output.
+
 #### <a name="pulse"></a> PULSE
 
 A 3HP subset of VCO, oriented toward pulse-width modulation.  The only output waveform is square/pulse, and there is no FM.  However, the PWM CV input has a dedicated attenuverter, and unlike VCO, the result CV value is summed with the PW knob position.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the V/OCT input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="xco"></a> XCO
 
@@ -116,7 +127,9 @@ Includes all the features of VCO, adding:
 
 The context menu option "DC offset correction" works as documented on <a href="#vco">VCO</a>.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the V/OCT input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="additator"></a> ADDITATOR
 
@@ -132,7 +145,9 @@ An additive oscillator, where the output is the sum of up to 100 individual sine
   - BALANCE: cuts the amplitudes of the odd or even partials.
   - FILTER: manipulates the partial amplitudes to simulate low or high-pass filter effects.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the V/OCT input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="fmop"></a> FM-OP
 
@@ -146,7 +161,9 @@ A sine-wave oscillator and simple synth voice designed to allow patching up the 
 
 Anti-aliasing techniques are applied when feedback or external FM are in use.  Either condition for anti-aliasing can be disabled on the context menu.  Prior to version 1.1.36, due to a long-standing bug, there was no anti-aliasing for external FM, unless feedback was also on.  To get that behavior back, **the true vintage FM-OP sound**, disable "Anti-alias external FM" on the menu.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the V/OCT input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="chirp"></a> CHIRP
 
@@ -158,7 +175,9 @@ The frequency sweep can be linear in time, or exponential, under the control of 
 
 The sweep is upwards in frequency if FREQ1 is less than FREQ2, and downwards otherwise.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/O1 input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the V/O1 input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 
 ### <a name="lfos"></a> LFOs
@@ -190,7 +209,9 @@ Output smoothing is applied to the signal last, after offset and scale.  Smoothi
 
 To save space, offset and smoothing share a CV input port.  By default this will route CV to offset.  A context-menu option allows the CV to be routed to smoothing instead.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the V/OCT input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="llfo"></a> LLFO
 
@@ -200,7 +221,9 @@ Sampling and smoothing functions are available on the context menu.
 
 Context menu option "Reset phase on wave change", if enabled, causes the waveform phase to be set to zero when the waveform is changed.  By default the continues to advance from wherever it was.  In either case, the output will typically jump to a new value, which may cause clicks or other undesirable effects depending on how the output is used; adding a bit of smoothing may help.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the V/OCT input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="fourfo"></a> 4FO
 
@@ -210,13 +233,17 @@ A quadrature LFO, with outputs at 4 different phases.  The phases may be set by 
 
 Note that with the stepped random output, each output will update its output when its phase crosses 0 degrees.  Each draws from the same random sequence, rather than separate ones -- the outputs only vary in phase.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the V/OCT input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="eightfo"></a> 8FO
 
 An "octature" LFO, like 4FO, but with outputs at 8 phases.  By default the phases are 0, 45, 90, etc, degrees from the fundamental.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the V/OCT input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the V/OCT input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 
 ### <a name="filters"></a> Filters
@@ -252,13 +279,17 @@ Note: due to limitations in the filter's implementation, it has a couple workaro
   - There is a fixed two-pole highpass filter on the filter output, at a cutoff of 80hz.
   - While the module's frequency knob goes to zero, the filter's cutoff won't actually go below 3hz.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the IN input.
+
+_When <a href="#bypassing">bypassed</a>:_ passes IN unmodified to OUT.
 
 #### <a name="lvcf"></a> LVCF
 
 A compact version of VCF.  The filter slope may be set on the context menu.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the IN input.
+
+_When <a href="#bypassing">bypassed</a>:_ passes IN unmodified to OUT.
 
 #### <a name="ffb"></a> FFB
 
@@ -273,7 +304,9 @@ There are three outputs:
   - ODD: a mix of the LP, HP, and odd-numbered band filters (125HZ, 250 HZ, etc).
   - EVEN: a mix of the LP, HP, and even-numbered band filters (175HZ, 350 HZ, etc).
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the IN input.
+
+_When <a href="#bypassing">bypassed</a>:_ passes IN unmodified to each of ALL, ODD and EVEN.
 
 #### <a name="eq"></a> EQ
 
@@ -284,13 +317,17 @@ The cutoff/center frequencies of the three filters are:
   - MID: 350HZ
   - HIGH: 1000HZ
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the IN input.
+
+_When <a href="#bypassing">bypassed</a>:_ passes IN unmodified to OUT.
 
 #### <a name="eqs"></a> EQS
 
 A stereo version of EQ.  The left and right inputs are processed by separate filters, but the filter parameters are set by the shared three knobs.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the L input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the L input.
+
+_When <a href="#bypassing">bypassed</a>:_ passes left and right inputs unmodified to the corresponding outputs.
 
 #### <a name="lpg"></a> LPG
 
@@ -304,7 +341,9 @@ The signal received at IN is processed by an LPF and VCA in series before being 
 
 If LINEAR is enabled, the VCA has a linear-in-amplitude response to its BIAS, CV and the envelope; otherwise it has a linear-in-decibels response.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the TRIG input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the TRIG input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="llpg"></a> LLPG
 
@@ -313,7 +352,9 @@ LLPG is a compact, simplified version of <a href="#LPG">LPG</a>, where:
   - There are no ENV knobs; the envelope applies in full to both the filter and VCA.
   - There are no CV inputs, and no linear VCA mode.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the TRIG input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the TRIG input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="megagate"></a> MEGAGATE
 
@@ -339,7 +380,9 @@ The final cutoff and level settings are determined by scaling (multiplying) the 
 
 If LIN VCA is enabled, the VCA has a linear-in-amplitude response to its BIAS, CV and the evelope; otherwise it has a linear-in-decibels response.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the GATE input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the GATE input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 ![Filters screenshot](doc/www/parametric_eqs.png)
 
@@ -355,7 +398,9 @@ Likewise each channel has an FCV input for frequency modulation, and additionall
 
 Finally, each channel has a BW (bandwidth) setting, that applies if the channel is a bandpass filter, and controls the width of the filter's frequency response.  These have unipolar CVs per channel.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the IN input.
+
+_When <a href="#bypassing">bypassed</a>:_ passes IN unmodified to OUT.
 
 #### <a name="peq6"></a> PEQ6
 
@@ -365,7 +410,9 @@ A six channel parametric EQ.  It generally works as PEQ does, except:
   - The "FCV RNG" option controls the scaling of the frequency CV inputs; if set to OCTV, the full CV range will alter the band frequencies up to an octave in either direction; if set to FULL, the CV can run the frequencies over the full range, as on PEQ.
   - On the context (right-click) menu, there is an option "Exclude direct-output bands from mix"; if this is enabled, any band that has its direct output in use (if something is patched to its output) does not get its output mixed into the main output.  Usually, the main output includes all bands.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the IN input.
+
+_When <a href="#bypassing">bypassed</a>:_ passes IN unmodified to OUT.
 
 #### <a name="peq6xf"></a> PEQ6XF
 
@@ -379,7 +426,9 @@ It adds ODD and EVEN outputs: these are mixes of the odd and even channels, resp
 
 The "Exclude direct-output bands..." option, if enabled, applies to ODD and EVEN as well as the main OUT.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the IN input.
+
+_When <a href="#bypassing">bypassed</a>:_ passes IN unmodified to each of OUT, ODD and EVEN.
 
 #### <a name="peq14xf"></a> PEQ14XF
 
@@ -402,13 +451,17 @@ Features:
   - Toggles allow selection of linear, exponential or inverse-exponential shapes for the attack, decay and release stages.
   - The RETRIG switch controls the retrigger behavior (when a new gate or trigger happens while the envelope is running): ATT immediately attacks from the current envelope value (this is the typical behavior with many ADSRs), while RST causes a full reset of the envelope (restarting it at the delay stage).
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the TRIGGER input.  Pressing the trigger button will trigger all channels.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the TRIGGER input.  Pressing the trigger button will trigger all channels.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="dadsrhplus"></a> DADSRH+
 
 DADSRH+ is a DADSRH, with the addition of CV inputs for each knob, and gate outputs for each stage (a stage's gate output will be high for the duration of the stage).
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the TRIGGER input.  Pressing the trigger button will trigger all channels.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the TRIGGER input.  Pressing the trigger button will trigger all channels.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="shaper"></a> SHAPER
 
@@ -422,13 +475,17 @@ Features:
   - Audio input at port IN is sent through the internal VCA -- controlled by knob SIGNAL and the envelope -- to port OUT.  Turning up the SIGNAL knob can dramatically amplify the signal.  [This is actually a design error, but enough people have used it this way that we leave it be.]
   - A trigger CV at the TRIGGER port, or a press of the TRIGGER button, will start the envelope cycle.  When the off stage completes, a trigger is emitted at port END.  If the CYCLE switch is set to LOOP, the envelope restarts immediately.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the TRIGGER input.  Pressing the trigger button will trigger all channels.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the TRIGGER input.  Pressing the trigger button will trigger all channels.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="shaperplus"></a> SHAPER+
 
 SHAPER+ is a SHAPER, with the addition of CV inputs for each knob, and gate outputs for each stage (a stage's gate output will be high for the duration of the stage).
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the TRIGGER input.  Pressing the trigger button will trigger all channels.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the TRIGGER input.  Pressing the trigger button will trigger all channels.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="ad"></a> AD
 
@@ -442,13 +499,17 @@ If the LP (loop) toggle is enabled, the envelope cycles continuously (it doesn't
 
 By default, the attack and decay envelope segments have an exponential curve -- in linear mode (the LIN toggle), the segments are linear.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the TRIG input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the TRIG input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="asr"></a> ASR
 
 ASR is AR (if triggered) or ASR (Attack, Sustain, Release -- if gated) envelope generator.  It has CV inputs for the attack and release times (if CVs are used, they are attenuated by the corresponding knob values).  The sustain level may be set by the small knob marked S.  The attack and release segments have an exponential shape by default, but can be made linear with the LIN toggle.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the TRIG input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the TRIG input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="adsr"></a> ADSR
 
@@ -456,7 +517,9 @@ A standard ADSR (Attack, Decay, Sustain, Release) envelope generator in 3HP.  Th
 
 By default, the attack, decay and release envelope segments have an exponential curve -- in linear mode (the LIN button), the segments are linear.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the GATE input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the GATE input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="vish"></a> VISH
 
@@ -475,7 +538,9 @@ The slew limiter is controlled by the RISE and FALL controls, which behave exact
 
 If the TIMES 10X option is enabled, the values of the rise and fall times, and MIN GATE, subject to their CVs, are multiplied by 10.  Thus fall and MIN GATE can go to a maximum of 10 seconds, and rise to 3 seconds.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the GATE input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the GATE input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="dgate"></a> DGATE
 
@@ -483,7 +548,9 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the G
 
 A trigger-to-gate utility, with gate duration up to 10 seconds, and an optional pre-delay of up to 10 seconds.  A trigger pulse is emitted at END when a delay/gate cycle ends.  If the STOP/LOOP switch is set to LOOP, or if the trigger is high when the cycle ends, the cycle repeats.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the TRIG input.  Pressing the trigger button will trigger all channels.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the TRIG input.  Pressing the trigger button will trigger all channels.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="rgate"></a> RGATE
 
@@ -510,13 +577,17 @@ The module is usable as a general clock divider/multiplier; in this case it's ad
 
 The module can also be used to generate pulse waves from incoming audio, where the output pitch is some ratio of the input, according to CLK DIV and CLK MUL.  For example, with CLK DIV set to 2, and CLK MUL to 1, and with a square wave input, the output will be a pulse wave tracking an octave below the input.  LENGTH becomes a pulse-width control in this case.  CLK MUL will multiply the increasing frequency to a point; at some point the output frequency would be faster than the internals of RGate update, and nothing happens.  If using the module this way, it makes sense to set the output to bipolar.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the CLOCK input, by default, or the LENGTH input, if so set on the context menu.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the CLOCK input, by default, or the LENGTH input, if so set on the context menu.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="edge"></a> EDGE
 
 A trigger-to-gate utility, comparator and rising/falling edge detector.  RISE and FALL set voltage levels: when the input goes above RISE, the module switches to "high" state and outputs a voltage at the HIGH output.  HOLD sets a minimum time that the module stays in the high state; this can be used to avoid jitter on the output if using high-frequency inputs.  1ms trigger pulses are output at RISE and FALL on the corresponding changes (note that if you switch the module state at audio rates, these will essentially always be high).
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the IN input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="follow"></a> FOLLOW
 
@@ -524,7 +595,9 @@ An envelope follower (a utility that converts its input to a CV proportional to 
 
 The GAIN knob and CV (+/-5V) can attenuate or amplify the output.  Turning the knob counter-clockwise form center will cut the output up to -36dB; turning it clockwise will amplify it up to +12dB.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the IN input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 
 ### <a name="mixers"></a> Mixers, Panners and VCAs
@@ -552,6 +625,8 @@ _Polyphony:_ The module is monophonic: if a polyphonic cable is present at an in
 
 However, there is a non-standard polyphonic feature: on the context (right-click) menu, there are options to "spread" a polyphonic input connected to input channel 1 (only) across the mixer's inputs, as if the poly input had been split into eight mono inputs and each connected to the mixer.  This can be applied to channels 1-8 of the input, or channels 9-16.  Any input patched to an input other than input 1 will override the spread signal.
 
+_When <a href="#bypassing">bypassed</a>:_ no output.
+
 #### <a name="mix8x"></a> MIX8X
 
 An expander for MIX8, adding an EQ for each mixer channel, and two sends and stereo returns.
@@ -572,6 +647,8 @@ A four-channel version of MIX8 with the same features.
 
 _Polyphony:_ As with MIX8, this is a monophonic module, but with the same non-standard "spread" feature (in groups of four channels).
 
+_When <a href="#bypassing">bypassed</a>:_ no output.
+
 #### <a name="mix4x"></a> MIX4X
 
 An expander for MIX4, with functionality identical to what MIX8X adds to MIX8.
@@ -582,13 +659,17 @@ An expander for MIX4, with functionality identical to what MIX8X adds to MIX8.
 
 A 3HP fader/VCA, with mute.  
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the IN input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the IN input.
+
+_When <a href="#bypassing">bypassed</a>:_ passes IN unmodified to OUT.
 
 #### <a name="mix2"></a> MIX2
 
-A stereo version of MIX1.
+A stereo version of MIX1.  The left input is normalled to the right.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with channels defined by the L input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the L input.
+
+_When <a href="#bypassing">bypassed</a>:_ passes left and right inputs unmodified to the corresponding outputs; left is passed to right if right is unpatched.
 
 #### <a name="umix"></a> UMIX
 
@@ -599,7 +680,9 @@ The context (right-click) menu has a few options:
  - "Output clipping" sets the manner of output clipping: "Soft" applies saturation or soft clipping, which is better for audio, and which is the default; "Hard" simply clips the output at +/-12V.  "Hard" is better for CVs, as this mode will achieve precise summing of CVs; otherwise the saturator will slightly affect (reduce) the sums at all levels.
  - "Average" causes the module to average, rather than sum, its inputs.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by the first/topmost input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphonic channels defined by the first/topmost input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="mumix"></a> MUMIX
 
@@ -611,6 +694,8 @@ See also <a href="switch81">SWITCH81</a>, which is similar to this, with options
 
 _Polyphony:_ same as UMIX.
 
+_When <a href="#bypassing">bypassed</a>:_ no output.
+
 #### <a name="mute8"></a> MUTE8
 
 MUTE8 provides 8 independent manual or CV-controlled mutes. Each channel is muted if its button is toggled on or if there is a positive voltage at its CV input.  Otherwise the input is passed to the output.
@@ -619,7 +704,9 @@ As with MIX4 and MIX8, a right-click on a mute button will solo that channel (pa
 
 If context menu option "Latching CV triggers" is enabled, triggers on the CV inputs toggle muting on and off.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, where each of the 8 channels may be independently polyphonic, as defined by the cable at the channel's input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, where each of the 8 channels may be independently polyphonic, as defined by the cable at the channel's input.
+
+_When <a href="#bypassing">bypassed</a>:_ passes each input unmodified to the corresponding output.
 
 #### <a name="vcm"></a> VCM
 
@@ -631,13 +718,17 @@ Features:
 
 By default, the output is hard clipped at +/-12V (this is a standard in Rack).  A context menu option allows this limit to be disabled.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by the first IN input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphonic channels defined by the first IN input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="pan"></a> PAN
 
-A stereo panner with dual inputs channels.  Each channel's panner may be controlled with a +/-5 volt CV; when CV is in use, it is attenuverted the corresponding knob.  The output saturates (soft clips) to +/-12 volts.
+A stereo panner with dual input channels.  Each channel's panner may be controlled with a +/-5 volt CV; when CV is in use, it is attenuverted by the corresponding knob.  The output saturates (soft clips) to +/-12 volts.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the first/top IN input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the first/top IN input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="xfade"></a> XFADE
 
@@ -650,7 +741,9 @@ The SHAPE knob affects the attenuation curves of the two channels as MIX changes
 
 Linear mode (the LIN button) makes the level attenuation response of MIX linear in amplitude (useful when processing CV); otherwise and by default the response is linear in decibels (and therefore exponential in amplitude).
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the A input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the A input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="matrix81"></a> MATRIX81
 
@@ -658,13 +751,17 @@ _Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the 
 
 An eight input, one output version of <a href="#matrix44">MATRIX44</a>, below.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, as on MATRIX44.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, as on MATRIX44.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="matrix18"></a> MATRIX18
 
 A one input, eight output version of <a href="#matrix44">MATRIX44</a>, below.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, as on MATRIX44.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, as on MATRIX44.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="matrix44"></a> MATRIX44
 
@@ -682,7 +779,9 @@ The knobs visually indicate their values with green/orange colors.  This can be 
 
 Option "Unipolar" sets the knobs to travel from zero to 100% over their full travel (which is to say that they can no longer be set to invert the input).  The panel does not update; the tick at noon for each knob indicates 50% in this mode.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by input 1.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphonic channels defined by input 1.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="matrix44cvm"></a> MX44CVM
 
@@ -698,7 +797,9 @@ MX44CVM must be positioned to the right of, and adjacent to, the MATRIX44 module
 
 An 8x8 version of MATRIX44.  It is expanable with <a href="matrix88cv">MX88CV</a> and <a href="matrix88m">MX88M</a>.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by the first/topmost input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphonic channels defined by the first/topmost input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="matrix88cv"></a> MX88CV
 
@@ -724,7 +825,9 @@ SWITCH81 is related to <a href="#mumix">MUMIX</a>, with the difference that a sw
 
 If the option "Exclusive switching" is enabled, on the context menu, then only one switch may be active at once (only one input will be routed to the output).
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, as on SWITCH44.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, as on SWITCH44.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="switch18"></a> SWITCH18
 
@@ -732,7 +835,9 @@ A one input, eight output version of <a href="#switch44">SWITCH44</a>, below.
 
 If the option "Exclusive switching" is enabled, on the context menu, then only one switch may be active at once (the input is only routed to one of the outputs).
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, as on SWITCH44.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, as on SWITCH44.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="switch44"></a> SWITCH44
 
@@ -751,19 +856,25 @@ Two other options, "Exclusive switching by row" and "Exclusive switching by colu
 
 Every switch applies a bit of slew limitation when it changes values, as an anti-popping measure.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by input 1.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphonic channels defined by input 1.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="switch88"></a> SWITCH88
 
 An 8x8 version of SWITCH44.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by the first/topmost input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphonic channels defined by the first/topmost input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="switch1616"></a> SWITCH1616
 
 A 16x16 version of SWITCH44.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphonic channels defined by input 1.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphonic channels defined by input 1.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 
 ### <a name="dynamics"></a> VCAs and Dynamics
@@ -778,7 +889,9 @@ Each channel's level may be controlled with a 0-10V CV; when CV is in use, it is
 
 In linear mode (the LIN button), the knob/CV response is linear in amplitude (useful when processing CV); otherwise and by default the response is linear in decibels (and therefore exponential in amplitude).
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the IN input, independently for the top and bottom sections of the module.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the IN input, independently for the top and bottom sections of the module.
+
+_When <a href="#bypassing">bypassed</a>:_ passes IN unmodified to OUT independently in each channel.
 
 #### <a name="vcamp"></a> VCAMP
 
@@ -786,9 +899,9 @@ A voltage-controlled amplifier, capable of adding 12 decibels gain to the input.
 
 The level may be controlled with a 0-10V CV -- when CV is in use, it is attenuated by the corresponding slider.  The slider's toggle has a light indicating the output signal level.  The output saturates (soft clips) to +/-12V.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the IN input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the IN input.
 
-![Mixers screenshot](doc/www/dynamics.png)
+_When <a href="#bypassing">bypassed</a>:_ passes IN unmodified to OUT.
 
 #### <a name="velo"></a> VELO
 
@@ -808,7 +921,11 @@ The bipolar CV is optionally coupled to the LEVEL knob/input, but this coupling 
 
 Using the bipolar CV, it's possible to drive the VCA past unity gain, up to +12db (4x amplitude).  The module soft-clips at +/-12V, and driving the signal into the clipper will result in distortion.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the IN input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the IN input.
+
+_When <a href="#bypassing">bypassed</a>:_ passes IN unmodified to OUT.
+
+![Mixers screenshot](doc/www/dynamics.png)
 
 #### <a name="amrm"></a> AM/RM
 
@@ -822,7 +939,9 @@ The RECT inputs expects a bipolar (+/-5V) CV, which is added to the RECTIFY knob
 
 Note: AM/RM is calibrated to expect +/-5V, 10V peak-to-peak signals (i.e. the output of a typical oscillator).  A modulator signal with a negative value in excess of -5V will be affected by the rectifier circuit even if the RECTIFY is zero.  To avoid this effect, you may need to attenuate a hot signal you wish to use as the modulator.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the CAR input.  The polyphony input can be switched to MOD on the context menu.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the CAR input.  The polyphony input can be switched to MOD on the context menu.
+
+_When <a href="#bypassing">bypassed</a>:_ passes the CAR (carrier) input unmodified to OUT; the RECT output is 0V.
 
 #### <a name="pressor"></a> PRESSOR
 
@@ -844,7 +963,9 @@ The various controls and ports work as follows:
 
 Several of the settings can take fairly extreme values (e.g. OUT GAIN); this allows the module to be used as a distortion effect.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the L input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the L input.
+
+_When <a href="#bypassing">bypassed</a>:_ passes left and right inputs unmodified to the corresponding outputs.
 
 #### <a name="clpr"></a> CLPR
 
@@ -852,7 +973,9 @@ CLPR is a compact (6HP) [clipper](https://en.wikipedia.org/wiki/Clipping_%28audi
 
 In contrast to LMTR, CLPR chops a signal at a voltage threshold corresponding to the selected amplitude, significantly distorting the signal.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the L input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the L input.
+
+_When <a href="#bypassing">bypassed</a>:_ passes left and right inputs unmodified to the corresponding outputs.
 
 #### <a name="lmtr"></a> LMTR
 
@@ -860,13 +983,17 @@ LMTR is a compact (6HP) [limiter](https://en.wikipedia.org/wiki/Dynamic_range_co
 
 In contrast to CLPR, LMTR does not distort the signal very much; it just reduces the amplitude of the signal to keep it below the threshold.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the L input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the L input.
+
+_When <a href="#bypassing">bypassed</a>:_ passes left and right inputs unmodified to the corresponding outputs.
 
 #### <a name="nsgt"></a> NSGT
 
 NSGT is a compact (6HP) [noise gate](https://en.wikipedia.org/wiki/Noise_gate).  Its controls behave the same as the corresponding controls on PRESSOR.  Controls for attack and release times are on the context menu.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the L input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the L input.
+
+_When <a href="#bypassing">bypassed</a>:_ passes left and right inputs unmodified to the corresponding outputs.
 
 #### <a name="cmpdist"></a> CMPDIST
 
@@ -888,7 +1015,9 @@ The MIX output is also subject to the DRY/WET setting, where the dry signal is c
 
 **Note:** this module is intended for audio-rate use, as a distortion effect; if you want a proper window comparator for use with CV, take a look at <a href="#cmp">CMP</a>.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the A input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the A input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 
 ### <a name="random"></a> Noise/Random, Sample and Hold
@@ -902,6 +1031,8 @@ A noise source, in types blue (f), white, pink (1/f), red (aka brown, 1/f^2) and
 Additionally, NOISE has an absolute value circuit.  Patch audio into ABS to get positive CV.  For example, patch white noise into ABS to get uniform values in the range 0-10V.
 
 _Polyphony:_ For the noise outputs, the number of polyphonic channels is set on the context (right-click) menu.  Independently, the ABS circuit is <a href="#polyphony">polyphonic</a>, with polyphony defined by the IN input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="samplehold"></a> S&H
 
@@ -917,7 +1048,9 @@ The GATE input on the lower section is normalled to GATE in the top section (but
 
 The GLIDE context menu option applies linear glide (slew limitation, smoothing) to the outputs.  The time value, which defaults to 0, determines how long the output will take to change (slew) 10V.  This option is ignored in track-and-hold mode.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the GATE input in each section.  If the bottom GATE is patched, the two sections will independently take their channels from their respective GATE inputs; if only the top GATE is patched, the bottom section normals to the top input and both sections have the same number of channels.  The polyphony port can be changed to IN on the context menu (this change applies to both top and bottom sections of the module; IN does not normal to the bottom section, and both sections will set their channels independently, from whatever is patched to their own IN).
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the GATE input in each section.  If the bottom GATE is patched, the two sections will independently take their channels from their respective GATE inputs; if only the top GATE is patched, the bottom section normals to the top input and both sections have the same number of channels.  The polyphony port can be changed to IN on the context menu (this change applies to both top and bottom sections of the module; IN does not normal to the bottom section, and both sections will set their channels independently, from whatever is patched to their own IN).
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="walk2"></a> WALK2
 
@@ -946,11 +1079,15 @@ Various options on the context (right-click) menu allow customization of the dis
 
 _Polyphony:_ The module is monophonic (note that WALK is polyphonic).
 
+_When <a href="#bypassing">bypassed</a>:_ no output.
+
 #### <a name="walk"></a> WALK
 
 WALK is a single-channel random walk, identical to one channel of WALK2, in 3HP.  It has a JUMP input rather than a TRIG input, but the same S&H and T&H modes are available on the context menu.  
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the RATE input.  The polyphony port can be changed to OFFSET, SCALE or JUMP on the context menu.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the RATE input.  The polyphony port can be changed to OFFSET, SCALE or JUMP on the context menu.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 
 ### <a name="sequencers"></a> Sequential Switches and Sequencers
@@ -973,13 +1110,17 @@ If option "Select on clock mode" is selected, then the select value (knob and CV
 
 Option "Triggered select mode" changes how the SELECT feature works, replacing the continuous voltage selection with a second internal sequence that offsets (adds to) the primary sequential switch step.  In this mode, the SELECT input expects trigger pulses, which advance the secondary sequence, while the SELECT knob sets the length of the secondary sequence (and a trigger at RESET will reset it). Thus different clocks and step lengths can be used to create complex output step patterns. "Select on clock mode" has no effect if "Triggered select mode" is enabled.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the CLOCK input.  This can be set to the SELECT CV input on the context menu.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the CLOCK input.  This can be set to the SELECT CV input on the context menu.
+
+_When <a href="#bypassing">bypassed</a>:_ passes input 1 unmodified to the output.
 
 #### <a name="oneeight"></a> 1:8
 
 1:8 is the opposite of 8:1 -- it routes a single input to 1 of 8 outputs.  The control circuit behavior (CLOCK, SELECT, etc) is the same.
 
 _Polyphony:_ Same as 8:1.
+
+_When <a href="#bypassing">bypassed</a>:_ passes the input unmodified to output 1.
 
 #### <a name="addrseq"></a> ADDR-SEQ
 
@@ -988,6 +1129,8 @@ ADDR-SEQ is an 8-step sequencer where the step values are set by 8 knobs (with d
 The output range of the knobs may be set on the context (right-click) menu to a variety of bipolar (e.g. +/-5V) and unipolar ranges (e.g. 0-5V).
 
 _Polyphony:_ Same as 8:1.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="addrseqx"></a> ASX
 
@@ -1011,7 +1154,9 @@ The current step can be selected many ways:
 
 Any PGMRX expanders must be positioned to the right of, and ajacent to, the base PGMR module, or the previous PGMRX in the chain.  See <a href="#expanders">notes on expanders</a>.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the CLOCK input.  This can be set to the SELECT CV input on the context menu.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the CLOCK input.  This can be set to the SELECT CV input on the context menu.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="pgmrx"></a> PGMRX
 
@@ -1029,6 +1174,8 @@ Each PGMRX in a chain must be positioned to the right of, and ajacent to, the pr
 A stereo signal level visualizer/meter.  The L channel is sent to both displays if if nothing is patched to R.  Inputs to L and R are copied to the L and R outputs.
 
 _Polyphony:_ Monophonic, but if an input is polyphonic, its channels are summed, and summed value is used to compute the level displayed (independently for the left and right inputs).
+
+_When <a href="#bypassing">bypassed</a>:_ passes left and right inputs unmodified to the corresponding outputs.
 
 #### <a name="analyzer"></a> ANALYZER
 
@@ -1099,6 +1246,8 @@ _Polyphony:_ Monophonic.
 
 MONO mixes down the channels of a polyphonic cable to a single-channel mono output.  It is an alternative to the SUM module that comes with VCV Rack, but adds a basic onboard compressor, to even out the level differences when only a few, or many, channels on the input are sounding.  The COMP control sets the amount of compression; at zero there is no effect and the behavior of this module is essentially equivalent to Rack's SUM.  As with SUM, the LEVEL control simply attenuates the output.  The output, post-LEVEL, is saturated (soft-clipped) at +/-12V.
 
+_When <a href="#bypassing">bypassed</a>:_ no output.
+
 #### <a name="arp"></a> ARP
 
 ARP is a performance-oriented arpeggiator, where the arpeggiated notes come from polyphonic pitch and gate inputs.  It is designed to patched directly to Rack's MIDI-CV (with polyphony enabled) and be played with a MIDI keyboard.  As below, it can be controlled by other modules as well, though this needs to be done carefully.
@@ -1132,6 +1281,8 @@ The outputs are always monophonic -- patch ARP into ASSIGN to play an arpeggio t
 
 Note that the HOLD toggle and "Use new notes" menu setting still apply however you control ARP.  If not playing from a keyboard, it will usually make sense to toggle HOLD on and set "Use new notes" to "Immediately".  
 
+_When <a href="#bypassing">bypassed</a>:_ no output.
+
 #### <a name="assign"></a> ASSIGN
 
 ASSIGN is a mono-to-poly voice assigner and poly-to-poly voice reassigner (where the in and out channel counts may be different).  Mono vs poly operation is defined the poly channel count on the GATE input.
@@ -1141,6 +1292,8 @@ One use of the module is to play a (monophonic) sequence through a polyphonic vo
 With mono inputs, on each gate received at GATE, the current pitch at V/OCT is assigned to a poly channel at the V/OCT output, and a gate is output on the same channel at the GATE output.  (The output gate will drop when the input gate does.)  Voices are assigned by increasing channel number, up to the number of channels set by the CHAN knob, at which point channels are reused in order starting with channel 1.  A trigger at the RESET input resets the next assignment to channel 1.
 
 With polyphonic inputs, when a gate goes high on an input channel, the gate and corresponding pitch are assigned to an output channel.  Up to the number of channels defined by the CHAN knob may be output at once.  The module attempts to reuse free channels; if none are free the oldest assignment is replaced.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="unison"></a> UNISON
 
@@ -1155,19 +1308,25 @@ The behavior of DETUNE depends on the number of output channels:
   - With four channels, a channel gets each of: up and down the full amount and up and down half the amount.
   - And so on, such that the detune amounts are evenly spread, and one channel gets the unaltered pitch if and only if the channel count is odd.
 
+_When <a href="#bypassing">bypassed</a>:_ no output.
+
 ![Polyphony utilities screenshot](doc/www/poly2.png)
 
 #### <a name="polycon"></a> POLYCON16
 
-POLYCON16 allows fixed voltages to be sent directly to some number of channels, by channel number, of a polyphonic output.  The number of output channels is set the CHAN knob, unless an input is present at the CHAN input, in which case the channel count is taken from that input, and the knob is ignored.
+POLYCON16 allows fixed voltages to be sent directly to some number of channels, by channel number, of a polyphonic output.  The number of output channels is set by the CHAN knob, unless an input is present at the CHAN input, in which case the channel count is taken from that input, and the knob is ignored.
 
 This can be used to introduce a bit of fixed variation across the channels of a poly voice.
 
 The context menu option range allows the output voltages to be set from several bipolar and unipolar ranges.  Note that when a unipolar range is used, 0V will be output when the knob is fully counter-clockwise, even though the knobs are drawn with a bipolar dial (such that 0V is usually at noon).
 
+_When <a href="#bypassing">bypassed</a>:_ no output.
+
 #### <a name="polycon8"></a> POLYCON8
 
 A compact version of POLYCON16, that only works with polyphony channels 1-8.  The channel count must be set on the context (right-click) menu.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="polyoff16"></a> POLYOFF16
 
@@ -1187,15 +1346,21 @@ The module has the same "Range" context-menu options as POLYCON16, here altering
 
 The context-menu option "Order of operations" sets the order in which OFFSET and SCALE are applied to each channel.  The default is to scale, then offset.  This behavior was the opposite prior to version 1.1.36.  See <a href="#offset">OFFSET</a> for more detail on this; the behavior is the same here.
 
+_When <a href="#bypassing">bypassed</a>:_ no output.
+
 #### <a name="polyoff8"></a> POLYOFF8
 
 A half-width version of POLYCON16, that only works with polyphony channels 1-8.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="polymult"></a> POLYMULT
 
 POLYMULT will turn a mono signal into a polyphonic signal, with a given number of channels, where each channel gets a copy of the input voltage.  The number of channels is set by the CHAN knob, unless an input is present at the CHAN input, in which case the channel count is taken from that input, and the knob is ignored.  Each OUT output is identical.
 
 To simply make copies of an already-polyphonic signal, use the regular <a href="#mult">MULT</a> module.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 
 ### <a name="pitch"></a> Pitch CV Utilities
@@ -1208,7 +1373,9 @@ Utilities related to processing pitch CVs (1 volt / octave CVs, for controlling 
 
 A 1V/octave pitch processor, for controlling a detuned oscillator pair.  A reference pitch in raised and lowered by the number of cents (hundredths of a semitone) specified by the knob and CV, and emitted at OUT+ and OUT-.  The input pitch is emitted at THRU.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the V/OCT input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the V/OCT input.
+
+_When <a href="#bypassing">bypassed</a>:_ passes V/OCT unmodified to each of the three outputs.
 
 #### <a name="stack"></a> STACK
 
@@ -1216,13 +1383,17 @@ A 1V/octave pitch processor for stacking oscillators.  The SEMIS, OCTAVE and FIN
 
 The CV input expects +/-5V; the value modifies the interval set by the knobs in the amount of one semitone per tenth volt.  If QZ (quantize) is active, the CV-controlled interval is quantized to the nearest semitone.  This specialized CV is output at the THRU port, with a value set by the knobs and CV in, when there is no input pitch.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the V/OCT input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the V/OCT input.
+
+_When <a href="#bypassing">bypassed</a>:_ passes V/OCT unmodified to both THRU and OUT.
 
 #### <a name="reftone"></a> REFTONE
 
 A tuner that outputs a selectable (Western, chromatic) pitch as CV (1V/octave, for controlling an oscillator) or as a pure sine tone.  The base pitch is selected with the PITCH and OCTAVE knobs, while the FINE knob allows the output to be fine-tuned up or down a full semitone.  The LED-style display indicates the selected pitch, octave and fine tuning (in cents), and the corresponding frequency (in hertz).
 
 _Polyphony:_ Monophonic.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 
 ### <a name="utilities"></a> Utilities
@@ -1233,7 +1404,9 @@ _Polyphony:_ Monophonic.
 
 A boolean logic utility.  Inputs are considered true if the input voltage is greater than 1V.  The top section takes two inputs and computes AND, OR and XOR at the outputs.  The lower section computes the negation of its input.  Output is 5V if an output is true, 0V otherwise.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the first/topmost input. The NOT circuit is independently polyphonic based on its input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the first/topmost input. The NOT circuit is independently polyphonic based on its input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="cmp"></a> CMP
 
@@ -1248,7 +1421,9 @@ The WINDOW knob specifies the window voltage.  LAG specifies a time of up to one
 
 The OUTPUT switch sets the high and low voltage values for the outputs: 0V low/+10V high, or -5V low/+5V high.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the A input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the A input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="cvd"></a> CVD
 
@@ -1258,13 +1433,17 @@ The large TIME knob sets the delay time, in seconds, as scaled by the small knob
 
 CVD may be used for lag/latency correction; using parameter entry (by right-clicking the TIME knob) is handy here, to set a precise delay.  You can get sample-accurate delays by dividing the desired number of delay samples by Rack's current sample rate, and setting TIME to that number (leave the time scale knob at 1).
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the IN input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the IN input.
+
+_When <a href="#bypassing">bypassed</a>:_ passes IN unmodified to OUT.
 
 #### <a name="flipflop"></a> FLIPFLOP
 
 A boolean memory utility with two independent channels.  A high voltage at TRIGGER will cause the state of a channel to change from A to B.  A subsequent trigger will flip it back.  Output is 5V at whichever of A and B is selected, 0V at the other.  A trigger voltage at RESET sets the channel back to state A.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the channels at the TRIG input, independently for the two sections of the module.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the channels at the TRIG input, independently for the two sections of the module.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="inv"></a> INV
 
@@ -1272,15 +1451,19 @@ A dual signal inverter, with CV or manual control, and optional latching.  In ea
 
 If LATCH is enabled, a button press or high voltage toggles the state of the inverter.  A context menu option "Save latched state to patch" will, if latching is enabled, save the latched state to the patch and restore it on patch load.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the channels at the IN input, independently for the two sections of the module.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the channels at the IN input, independently for the two sections of the module.
+
+_When <a href="#bypassing">bypassed</a>:_ passes IN unmodified to OUT independently in each channel.
 
 #### <a name="manual"></a> MANUAL
 
 A manual trigger/gate with 8 outputs.  A constant +5V is sent from each output for as long as the TRIG button is held; 0V is output otherwise.  The high output voltage may be set to +10V on the context menu.
 
-MANUAL may be set to output a trigger pulse (the high output voltage for 10ms) on patch load (akin to a Max/Msp loadbang).  This is off by default; enable clicking "Trigger on Load" on the module's context (right-click) menu.  The pulse is emitted 100ms after the patch starts processing samples.
+MANUAL may be set to output a trigger pulse (the high output voltage for 10ms) on patch load (akin to a Max/Msp loadbang).  This is off by default; enable clicking "Trigger on load" on the module's context (right-click) menu.  The pulse is emitted 100ms after the patch starts processing samples.
 
 _Polyphony:_ Monophonic.
+
+_When <a href="#bypassing">bypassed</a>:_ no output; disables "Trigger on load".
 
 #### <a name="fourman"></a> 4MAN
 
@@ -1290,11 +1473,15 @@ The "Trigger on load" and "Output" options, as on MANUAL, apply to all four outp
 
 _Polyphony:_ Monophonic.
 
+_When <a href="#bypassing">bypassed</a>:_ no output.
+
 #### <a name="mult"></a> MULT
 
 A 3 HP multiple (signal splitter or duplicator).  There are two 1-to-3 channels.  There is also a 1-to-6 mode: if nothing is patched to the second channel's input, the input to the first channel is copied to all six outputs.
 
 _Polyphony:_ Polyphonic inputs are duplicated (channels intact) at their corresponding outputs.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="offset"></a> OFFSET
 
@@ -1308,7 +1495,9 @@ Note that prior to version 1.1.36, there was no mode setting, and the behavior w
 
 By default, the output is capped at +/-12 volts (this is a standard in Rack).  A context menu option allows this limit to be disabled.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the channels of the IN input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the channels of the IN input.
+
+_When <a href="#bypassing">bypassed</a>:_ passes IN unmodified to OUT.
 
 #### <a name="slew"></a> SLEW
 
@@ -1322,7 +1511,9 @@ RISE and FALL each have a unipolar (0-10V) CV input affecting the corresponding 
 
 If SLOW is enabled, the slew rates for both RISE and FALL are 10x slower what they would otherwise be, based on the knobs and CVs.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the channels of the IN input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the channels of the IN input.
+
+_When <a href="#bypassing">bypassed</a>:_ passes IN unmodified to OUT.
 
 #### <a name="sums"></a> SUMS
 
@@ -1330,7 +1521,9 @@ An arithmetic logic utility.  The top section outputs the sum, difference, maxim
 
 By default, the output is capped at +/-12 volts (this is a standard in Rack).  A context menu option allows this limit to be disabled.
 
-_Polyphony:_ <a href="#polyphony">Polyphonic</a>, with polyphony defined by the first/topmost input.  The NEG circuit is independently polyphonic based on its input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the first/topmost input.  The NEG circuit is independently polyphonic based on its input.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="switch"></a> SWITCH
 
@@ -1341,6 +1534,8 @@ If LATCH is enabled, a button click or trigger pulse at GATE will toggle the out
 If the context menu option "Save latched state to patch" is enabled, and latching is on, the latched state will be preserved in the patch and restored on patch load.  Otherwise the module be in LOW state on patch load.
 
 _Polyphony:_ If polyphonic input is present at GATE, then the module is polyphonic in the standard way, independently switching the independent polyphonic channels on the high/low inputs (the button will switch all channels).  Additionally, if the input at GATE is not present or monophonic, but polyphonic cables are are present at any high/low inputs, and such an input is switched to the output, it is duplicated to the output with channels intact.
+
+_When <a href="#bypassing">bypassed</a>:_  passes LOW unmodified to OUT independently in each channel.
 
 #### <a name="lgsw"></a> LGSW
 
@@ -1367,6 +1562,8 @@ The logic mode can be set by CV.  Using a CV for the logic overrides whatever se
   - NAND: 4V or more.
 
 _Polyphony:_ Same as <a href="#switch">SWITCH</a>, except that the polyphony channel count is set by the topmost gate input only.
+
+_When <a href="#bypassing">bypassed</a>:_ no output.
 
 ### <a name="misc"></a> Miscellaneous
 
@@ -1416,6 +1613,17 @@ To pair an expander with its base, the expander **must** be positioned **to the 
 Rack allows left expanders as well as right, but to simplify things we've chosen not to use them, allowing only right expansion.  Rack doesn't support expanders above or below the expanded module.
 
 Some expanders may be chainable: multiple instances can be added to continue expanding the base.  In this case, the expanders must all be to the right of the base, and all touching.
+
+
+## <a name="bypassing"></a> Note on Bypassing
+
+Rack adds a "Bypass" option to the context (right-click) menu on every module.  By default, this fully disables the module (while allowing it to remain patched), such that the module produces no output (or more precisely, constantly outputs 0V).  For some modules, however, it makes more sense to pass the module's unmodified input to the output.
+
+Most Bogaudio modules implement bypassing according these general rules:
+  - Modules that generate a signal (VCOs, LFOs, noise/random generators, envelope generators), or combine signals (mixers, logic), typically produce no output.
+  - Modules that modify a signal (filters, effects, VCAs, attenuators) typically pass their input to the output.
+
+There are various exceptions and special or ambiguous cases; see the documentation for each module for details on that module's behavior.
 
 
 ## <a name="alternate_panels"></a> Alternate Panels

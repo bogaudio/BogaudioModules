@@ -49,6 +49,7 @@ struct Velo : BGModule {
 		configParam(LEVEL_ATTENUATOR_PARAM, -1.0f, 1.0f, 0.0f, "Level CV");
 		configParam<ScaledSquaringParamQuantity<-60>>(VELOCITY_PARAM, 0.0f, 1.0f, 0.3162278f, "Velocity range", " dB");
 		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear");
+		configBypass(IN_INPUT, OUT_OUTPUT);
 	}
 
 	inline bool isLinear() { return params[LINEAR_PARAM].getValue() > 0.5f; }

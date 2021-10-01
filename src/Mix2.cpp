@@ -60,6 +60,19 @@ void Mix2::postProcessAlways(const ProcessArgs& args) {
 	_rightRms = _rightRmsSum * _inverseChannels;
 }
 
+void Mix2::processBypass(const ProcessArgs& args) {
+	outputs[L_OUTPUT].setChannels(inputs[L_INPUT].getChannels());
+	outputs[L_OUTPUT].writeVoltages(inputs[L_INPUT].getVoltages());
+	if (inputs[R_INPUT].isConnected()) {
+		outputs[R_OUTPUT].setChannels(inputs[R_INPUT].getChannels());
+		outputs[R_OUTPUT].writeVoltages(inputs[R_INPUT].getVoltages());
+	}
+	else {
+		outputs[R_OUTPUT].setChannels(inputs[L_INPUT].getChannels());
+		outputs[R_OUTPUT].writeVoltages(inputs[L_INPUT].getVoltages());
+	}
+}
+
 struct Mix2Widget : LinearCVMixerWidget {
 	static constexpr int hp = 5;
 

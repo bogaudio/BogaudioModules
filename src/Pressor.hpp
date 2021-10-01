@@ -93,6 +93,8 @@ struct Pressor : BGModule {
 		configParam(MODE_PARAM, 0.0f, 1.0f, 1.0f, "Mode");
 		configParam(DECTECTOR_MODE_PARAM, 0.0f, 1.0f, 1.0f, "Dectector mode");
 		configParam(KNEE_PARAM, 0.0f, 1.0f, 1.0f, "Knee");
+		configBypass(LEFT_INPUT, LEFT_OUTPUT);
+		configBypass(RIGHT_INPUT, RIGHT_OUTPUT);
 	}
 
 	void sampleRateChange() override;

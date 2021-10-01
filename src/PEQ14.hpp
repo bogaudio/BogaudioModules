@@ -175,6 +175,9 @@ struct PEQ14 : ExpandableModule<PEQ14ExpanderMessage, BandExcludeModule> {
 		configParam(LEVEL14_PARAM, 0.0f, 1.0f, levelDefault, "Channel 14 level", " dB", 0.0f, PEQChannel::maxDecibels - PEQChannel::minDecibels, PEQChannel::minDecibels);
 		configParam<ScaledSquaringParamQuantity<(int)PEQChannel::maxFrequency>>(FREQUENCY14_PARAM, 0.0f, 1.0f, 0.5873670f, "Channel 14 frequency", " HZ");
 		configParam(FREQUENCY_CV14_PARAM, -1.0f, 1.0f, 1.0f, "Channel 14 frequency CV attenuation", "%", 0.0f, 100.0f);
+		configBypass(IN_INPUT, OUT_OUTPUT);
+		configBypass(IN_INPUT, ODDS_OUTPUT);
+		configBypass(IN_INPUT, EVENS_OUTPUT);
 
 		setExpanderModelPredicate([](Model* m) { return m == modelPEQ14XF || m == modelPEQ14XR || m == modelPEQ14XV; });
 	}

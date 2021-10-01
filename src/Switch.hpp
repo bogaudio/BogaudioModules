@@ -47,6 +47,8 @@ struct Switch : SaveLatchToPatchModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(GATE_PARAM, 0.0f, 10.0f, 0.0f, "Gate");
 		configParam(LATCH_PARAM, 0.0f, 1.0f, 0.0f, "Latch");
+		configBypass(LOW1_INPUT, OUT1_OUTPUT);
+		configBypass(LOW2_INPUT, OUT2_OUTPUT);
 	}
 
 	void reset() override;

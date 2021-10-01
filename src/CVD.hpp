@@ -44,6 +44,7 @@ struct CVD : BGModule {
 		configParam(TIME_PARAM, 0.0f, 1.0f, 0.5f, "Time base", " s");
 		configParam(TIME_SCALE_PARAM, 0.0f, 2.0f, 1.0f, "Time scale", "", 10.0f, 0.1f);
 		configParam(MIX_PARAM, -1.0f, 1.0f, 0.0f, "Dry wet mix", "%", 0.0f, 100.0f);
+		configBypass(IN_INPUT, OUT_OUTPUT);
 	}
 
 	void sampleRateChange() override;

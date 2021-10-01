@@ -86,6 +86,15 @@ struct Mute8 : BGModule {
 		configParam(MUTE6_PARAM, 0.0f, 3.0f, 0.0f, "Mute 6");
 		configParam(MUTE7_PARAM, 0.0f, 3.0f, 0.0f, "Mute 7");
 		configParam(MUTE8_PARAM, 0.0f, 3.0f, 0.0f, "Mute 8");
+
+		configBypass(INPUT1_INPUT, OUTPUT1_OUTPUT);
+		configBypass(INPUT2_INPUT, OUTPUT2_OUTPUT);
+		configBypass(INPUT3_INPUT, OUTPUT3_OUTPUT);
+		configBypass(INPUT4_INPUT, OUTPUT4_OUTPUT);
+		configBypass(INPUT5_INPUT, OUTPUT5_OUTPUT);
+		configBypass(INPUT6_INPUT, OUTPUT6_OUTPUT);
+		configBypass(INPUT7_INPUT, OUTPUT7_OUTPUT);
+		configBypass(INPUT8_INPUT, OUTPUT8_OUTPUT);
 	}
 
 	json_t* saveToJson(json_t* root) override;
