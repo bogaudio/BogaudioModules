@@ -281,8 +281,8 @@ struct AdditatorWidget : BGModuleWidget {
 
 		addOutput(createOutput<Port24>(audioOutputPosition, module, Additator::AUDIO_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(sineLightPosition, module, Additator::SINE_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(cosineLightPosition, module, Additator::COSINE_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(sineLightPosition, module, Additator::SINE_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(cosineLightPosition, module, Additator::COSINE_LIGHT));
 	}
 };
 

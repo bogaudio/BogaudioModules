@@ -872,16 +872,16 @@ struct TestVCFWidget : BGModuleWidget {
 		addOutput(createOutput<Port24>(outOutputPosition, module, TestVCF::OUT_OUTPUT));
 		addOutput(createOutput<Port24>(outBOutputPosition, module, TestVCF::OUT_B_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(lowpassLightPosition, module, TestVCF::LOWPASS_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(highpassLightPosition, module, TestVCF::HIGHPASS_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(bandpassLightPosition, module, TestVCF::BANDPASS_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(bandRejectLightPosition, module, TestVCF::BAND_REJECT_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(poles2LightPosition, module, TestVCF::POLES_2_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(poles4LightPosition, module, TestVCF::POLES_4_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(poles6LightPosition, module, TestVCF::POLES_6_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(poles8LightPosition, module, TestVCF::POLES_8_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(poles10LightPosition, module, TestVCF::POLES_10_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(poles12LightPosition, module, TestVCF::POLES_12_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(lowpassLightPosition, module, TestVCF::LOWPASS_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(highpassLightPosition, module, TestVCF::HIGHPASS_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(bandpassLightPosition, module, TestVCF::BANDPASS_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(bandRejectLightPosition, module, TestVCF::BAND_REJECT_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(poles2LightPosition, module, TestVCF::POLES_2_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(poles4LightPosition, module, TestVCF::POLES_4_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(poles6LightPosition, module, TestVCF::POLES_6_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(poles8LightPosition, module, TestVCF::POLES_8_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(poles10LightPosition, module, TestVCF::POLES_10_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(poles12LightPosition, module, TestVCF::POLES_12_LIGHT));
 	}
 };
 

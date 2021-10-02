@@ -141,9 +141,9 @@ struct PEQWidget : BGModuleWidget {
 
 		addOutput(createOutput<Port24>(outOutputPosition, module, PEQ::OUT_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(aLightPosition, module, PEQ::A_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(bLightPosition, module, PEQ::B_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(cLightPosition, module, PEQ::C_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(aLightPosition, module, PEQ::A_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(bLightPosition, module, PEQ::B_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(cLightPosition, module, PEQ::C_LIGHT));
 	}
 };
 

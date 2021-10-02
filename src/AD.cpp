@@ -164,8 +164,8 @@ struct ADWidget : BGModuleWidget {
 		addOutput(createOutput<Port24>(envOutputPosition, module, AD::ENV_OUTPUT));
 		addOutput(createOutput<Port24>(eocOutputPosition, module, AD::EOC_OUTPUT));
 
-		addChild(createLight<TinyLight<GreenLight>>(attackLightPosition, module, AD::ATTACK_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(decayLightPosition, module, AD::DECAY_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(attackLightPosition, module, AD::ATTACK_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(decayLightPosition, module, AD::DECAY_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

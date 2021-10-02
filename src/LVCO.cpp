@@ -139,12 +139,12 @@ struct LVCOWidget : VCOBaseModuleWidget {
 
 		addOutput(createOutput<Port24>(outOutputPosition, module, LVCO::OUT_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(sineLightPosition, module, LVCO::SINE_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(sawLightPosition, module, LVCO::SAW_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(pulse25LightPosition, module, LVCO::PULSE_25_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(triangleLightPosition, module, LVCO::TRIANGLE_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(squareLightPosition, module, LVCO::SQUARE_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(pulse10LightPosition, module, LVCO::PULSE_10_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(sineLightPosition, module, LVCO::SINE_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(sawLightPosition, module, LVCO::SAW_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(pulse25LightPosition, module, LVCO::PULSE_25_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(triangleLightPosition, module, LVCO::TRIANGLE_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(squareLightPosition, module, LVCO::SQUARE_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(pulse10LightPosition, module, LVCO::PULSE_10_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

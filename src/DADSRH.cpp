@@ -171,20 +171,20 @@ struct DADSRHWidget : TriggerOnLoadModuleWidget {
 		addOutput(createOutput<Port24>(invOutputPosition, module, DADSRH::INV_OUTPUT));
 		addOutput(createOutput<Port24>(triggerOutputPosition, module, DADSRH::TRIGGER_OUTPUT));
 
-		addChild(createLight<TinyLight<GreenLight>>(delayLightPosition, module, DADSRH::DELAY_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(attackLightPosition, module, DADSRH::ATTACK_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(decayLightPosition, module, DADSRH::DECAY_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(sustainLightPosition, module, DADSRH::SUSTAIN_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(releaseLightPosition, module, DADSRH::RELEASE_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(attackShape1LightPosition, module, DADSRH::ATTACK_SHAPE1_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(attackShape2LightPosition, module, DADSRH::ATTACK_SHAPE2_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(attackShape3LightPosition, module, DADSRH::ATTACK_SHAPE3_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(decayShape1LightPosition, module, DADSRH::DECAY_SHAPE1_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(decayShape2LightPosition, module, DADSRH::DECAY_SHAPE2_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(decayShape3LightPosition, module, DADSRH::DECAY_SHAPE3_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(releaseShape1LightPosition, module, DADSRH::RELEASE_SHAPE1_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(releaseShape2LightPosition, module, DADSRH::RELEASE_SHAPE2_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(releaseShape3LightPosition, module, DADSRH::RELEASE_SHAPE3_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(delayLightPosition, module, DADSRH::DELAY_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(attackLightPosition, module, DADSRH::ATTACK_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(decayLightPosition, module, DADSRH::DECAY_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(sustainLightPosition, module, DADSRH::SUSTAIN_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(releaseLightPosition, module, DADSRH::RELEASE_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(attackShape1LightPosition, module, DADSRH::ATTACK_SHAPE1_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(attackShape2LightPosition, module, DADSRH::ATTACK_SHAPE2_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(attackShape3LightPosition, module, DADSRH::ATTACK_SHAPE3_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(decayShape1LightPosition, module, DADSRH::DECAY_SHAPE1_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(decayShape2LightPosition, module, DADSRH::DECAY_SHAPE2_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(decayShape3LightPosition, module, DADSRH::DECAY_SHAPE3_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(releaseShape1LightPosition, module, DADSRH::RELEASE_SHAPE1_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(releaseShape2LightPosition, module, DADSRH::RELEASE_SHAPE2_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(releaseShape3LightPosition, module, DADSRH::RELEASE_SHAPE3_LIGHT));
 	}
 };
 

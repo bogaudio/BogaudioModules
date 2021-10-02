@@ -65,14 +65,14 @@ struct AddrSeqXWidget : BGModuleWidget {
 		addParam(createParam<Knob16>(out7ParamPosition, module, AddrSeqX::OUT7_PARAM));
 		addParam(createParam<Knob16>(out8ParamPosition, module, AddrSeqX::OUT8_PARAM));
 
-		addChild(createLight<SmallLight<GreenLight>>(out1LightPosition, module, AddrSeqX::OUT1_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(out2LightPosition, module, AddrSeqX::OUT2_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(out3LightPosition, module, AddrSeqX::OUT3_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(out4LightPosition, module, AddrSeqX::OUT4_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(out5LightPosition, module, AddrSeqX::OUT5_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(out6LightPosition, module, AddrSeqX::OUT6_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(out7LightPosition, module, AddrSeqX::OUT7_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(out8LightPosition, module, AddrSeqX::OUT8_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(out1LightPosition, module, AddrSeqX::OUT1_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(out2LightPosition, module, AddrSeqX::OUT2_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(out3LightPosition, module, AddrSeqX::OUT3_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(out4LightPosition, module, AddrSeqX::OUT4_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(out5LightPosition, module, AddrSeqX::OUT5_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(out6LightPosition, module, AddrSeqX::OUT6_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(out7LightPosition, module, AddrSeqX::OUT7_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(out8LightPosition, module, AddrSeqX::OUT8_LIGHT));
 	}
 };
 

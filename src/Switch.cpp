@@ -127,10 +127,10 @@ struct SwitchWidget : SaveLatchToPatchModuleWidget {
 		addOutput(createOutput<Port24>(out1OutputPosition, module, bogaudio::Switch::OUT1_OUTPUT));
 		addOutput(createOutput<Port24>(out2OutputPosition, module, bogaudio::Switch::OUT2_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(high1LightPosition, module, bogaudio::Switch::HIGH1_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(low1LightPosition, module, bogaudio::Switch::LOW1_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(high2LightPosition, module, bogaudio::Switch::HIGH2_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(low2LightPosition, module, bogaudio::Switch::LOW2_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(high1LightPosition, module, bogaudio::Switch::HIGH1_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(low1LightPosition, module, bogaudio::Switch::LOW1_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(high2LightPosition, module, bogaudio::Switch::HIGH2_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(low2LightPosition, module, bogaudio::Switch::LOW2_LIGHT));
 	}
 };
 

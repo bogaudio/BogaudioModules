@@ -337,10 +337,10 @@ struct FMOpWidget : BGModuleWidget {
 
 		addOutput(createOutput<Port24>(audioOutputPosition, module, FMOp::AUDIO_OUTPUT));
 
-		addChild(createLight<TinyLight<GreenLight>>(attackLightPosition, module, FMOp::ATTACK_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(decayLightPosition, module, FMOp::DECAY_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(sustainLightPosition, module, FMOp::SUSTAIN_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(releaseLightPosition, module, FMOp::RELEASE_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(attackLightPosition, module, FMOp::ATTACK_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(decayLightPosition, module, FMOp::DECAY_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(sustainLightPosition, module, FMOp::SUSTAIN_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(releaseLightPosition, module, FMOp::RELEASE_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

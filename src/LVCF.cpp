@@ -192,10 +192,10 @@ struct LVCFWidget : BGModuleWidget {
 
 		addOutput(createOutput<Port24>(outOutputPosition, module, LVCF::OUT_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(lowpassLightPosition, module, LVCF::LOWPASS_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(bandpassLightPosition, module, LVCF::BANDPASS_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(highpassLightPosition, module, LVCF::HIGHPASS_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(bandrejectLightPosition, module, LVCF::BANDREJECT_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(lowpassLightPosition, module, LVCF::LOWPASS_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(bandpassLightPosition, module, LVCF::BANDPASS_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(highpassLightPosition, module, LVCF::HIGHPASS_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(bandrejectLightPosition, module, LVCF::BANDREJECT_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

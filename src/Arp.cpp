@@ -394,13 +394,13 @@ struct ArpWidget : BGModuleWidget {
 		addOutput(createOutput<Port24>(pitchOutputPosition, module, Arp::PITCH_OUTPUT));
 		addOutput(createOutput<Port24>(gateOutputPosition, module, Arp::GATE_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(upLightPosition, module, Arp::UP_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(downLightPosition, module, Arp::DOWN_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(upDownLightPosition, module, Arp::UP_DOWN_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(upDownRepeatLightPosition, module, Arp::UP_DOWN_REPEAT_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(inOrderLightPosition, module, Arp::IN_ORDER_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(randomLightPosition, module, Arp::RANDOM_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(shuffleLightPosition, module, Arp::SHUFFLE_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(upLightPosition, module, Arp::UP_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(downLightPosition, module, Arp::DOWN_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(upDownLightPosition, module, Arp::UP_DOWN_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(upDownRepeatLightPosition, module, Arp::UP_DOWN_REPEAT_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(inOrderLightPosition, module, Arp::IN_ORDER_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(randomLightPosition, module, Arp::RANDOM_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(shuffleLightPosition, module, Arp::SHUFFLE_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

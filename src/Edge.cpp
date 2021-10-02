@@ -127,7 +127,7 @@ struct EdgeWidget : BGModuleWidget {
 		addOutput(createOutput<Port24>(riseOutputPosition, module, Edge::RISE_OUTPUT));
 		addOutput(createOutput<Port24>(fallOutputPosition, module, Edge::FALL_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(highLightPosition, module, Edge::HIGH_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(highLightPosition, module, Edge::HIGH_LIGHT));
 	}
 };
 

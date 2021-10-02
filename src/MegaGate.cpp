@@ -420,14 +420,14 @@ struct MegaGateWidget : LPGEnvBaseWidget {
 		addOutput(createOutput<Port24>(leftOutputPosition, module, MegaGate::LEFT_OUTPUT));
 		addOutput(createOutput<Port24>(rightOutputPosition, module, MegaGate::RIGHT_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(lpfPoles1LightPosition, module, MegaGate::LPF_POLES_1_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(lpfPoles2LightPosition, module, MegaGate::LPF_POLES_2_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(lpfPoles3LightPosition, module, MegaGate::LPF_POLES_3_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(lpfPoles4LightPosition, module, MegaGate::LPF_POLES_4_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(hpfPoles1LightPosition, module, MegaGate::HPF_POLES_1_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(hpfPoles2LightPosition, module, MegaGate::HPF_POLES_2_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(hpfPoles3LightPosition, module, MegaGate::HPF_POLES_3_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(hpfPoles4LightPosition, module, MegaGate::HPF_POLES_4_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(lpfPoles1LightPosition, module, MegaGate::LPF_POLES_1_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(lpfPoles2LightPosition, module, MegaGate::LPF_POLES_2_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(lpfPoles3LightPosition, module, MegaGate::LPF_POLES_3_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(lpfPoles4LightPosition, module, MegaGate::LPF_POLES_4_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(hpfPoles1LightPosition, module, MegaGate::HPF_POLES_1_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(hpfPoles2LightPosition, module, MegaGate::HPF_POLES_2_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(hpfPoles3LightPosition, module, MegaGate::HPF_POLES_3_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(hpfPoles4LightPosition, module, MegaGate::HPF_POLES_4_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

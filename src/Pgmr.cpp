@@ -222,10 +222,10 @@ struct PgmrWidget : AddressableSequenceBaseModuleWidget {
 		addOutput(createOutput<Port24>(select3OutputPosition, module, Pgmr::SELECT3_OUTPUT));
 		addOutput(createOutput<Port24>(select4OutputPosition, module, Pgmr::SELECT4_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(select1LightPosition, module, Pgmr::SELECT1_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(select2LightPosition, module, Pgmr::SELECT2_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(select3LightPosition, module, Pgmr::SELECT3_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(select4LightPosition, module, Pgmr::SELECT4_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(select1LightPosition, module, Pgmr::SELECT1_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(select2LightPosition, module, Pgmr::SELECT2_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(select3LightPosition, module, Pgmr::SELECT3_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(select4LightPosition, module, Pgmr::SELECT4_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

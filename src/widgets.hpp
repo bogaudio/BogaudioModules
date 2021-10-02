@@ -204,4 +204,34 @@ struct VUSlider151 : VUSlider {
 	VUSlider151() : VUSlider(151.0f) {}
 };
 
+template <typename TBase>
+struct BGTinyLight : TinyLight<TBase> {
+	void drawLight(const typename TinyLight<TBase>::DrawArgs& args) override {
+		if (!TinyLight<TBase>::module || !TinyLight<TBase>::module->isBypassed()) {
+			TinyLight<TBase>::drawLight(args);
+		}
+	}
+
+	void drawHalo(const typename TinyLight<TBase>::DrawArgs& args) override {
+		if (!TinyLight<TBase>::module || !TinyLight<TBase>::module->isBypassed()) {
+			TinyLight<TBase>::drawHalo(args);
+		}
+	}
+};
+
+template <typename TBase>
+struct BGSmallLight : SmallLight<TBase> {
+	void drawLight(const typename SmallLight<TBase>::DrawArgs& args) override {
+		if (!SmallLight<TBase>::module || !SmallLight<TBase>::module->isBypassed()) {
+			SmallLight<TBase>::drawLight(args);
+		}
+	}
+
+	void drawHalo(const typename SmallLight<TBase>::DrawArgs& args) override {
+		if (!SmallLight<TBase>::module || !SmallLight<TBase>::module->isBypassed()) {
+			SmallLight<TBase>::drawHalo(args);
+		}
+	}
+};
+
 } // namespace bogaudio

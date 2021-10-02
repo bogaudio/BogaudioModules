@@ -333,13 +333,13 @@ struct LLFOWidget : BGModuleWidget {
 
 		addOutput(createOutput<Port24>(outOutputPosition, module, LLFO::OUT_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(sineLightPosition, module, LLFO::SINE_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(rampUpLightPosition, module, LLFO::RAMP_UP_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(squareLightPosition, module, LLFO::SQUARE_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(steppedLightPosition, module, LLFO::STEPPED_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(triangleLightPosition, module, LLFO::TRIANGLE_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(rampDownLightPosition, module, LLFO::RAMP_DOWN_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(pulseLightPosition, module, LLFO::PULSE_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(sineLightPosition, module, LLFO::SINE_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(rampUpLightPosition, module, LLFO::RAMP_UP_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(squareLightPosition, module, LLFO::SQUARE_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(steppedLightPosition, module, LLFO::STEPPED_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(triangleLightPosition, module, LLFO::TRIANGLE_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(rampDownLightPosition, module, LLFO::RAMP_DOWN_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(pulseLightPosition, module, LLFO::PULSE_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

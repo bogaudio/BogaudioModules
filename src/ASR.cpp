@@ -149,8 +149,8 @@ struct ASRWidget : BGModuleWidget {
 		addOutput(createOutput<Port24>(envOutputPosition, module, ASR::ENV_OUTPUT));
 		addOutput(createOutput<Port24>(eocOutputPosition, module, ASR::EOC_OUTPUT));
 
-		addChild(createLight<TinyLight<GreenLight>>(attackLightPosition, module, ASR::ATTACK_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(releaseLightPosition, module, ASR::RELEASE_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(attackLightPosition, module, ASR::ATTACK_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(releaseLightPosition, module, ASR::RELEASE_LIGHT));
 	}
 };
 

@@ -101,14 +101,14 @@ struct EightOneWidget : AddressableSequenceModuleWidget {
 
 		addOutput(createOutput<Port24>(outOutputPosition, module, EightOne::OUT_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(in1LightPosition, module, EightOne::IN1_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(in2LightPosition, module, EightOne::IN2_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(in3LightPosition, module, EightOne::IN3_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(in4LightPosition, module, EightOne::IN4_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(in5LightPosition, module, EightOne::IN5_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(in6LightPosition, module, EightOne::IN6_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(in7LightPosition, module, EightOne::IN7_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(in8LightPosition, module, EightOne::IN8_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(in1LightPosition, module, EightOne::IN1_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(in2LightPosition, module, EightOne::IN2_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(in3LightPosition, module, EightOne::IN3_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(in4LightPosition, module, EightOne::IN4_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(in5LightPosition, module, EightOne::IN5_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(in6LightPosition, module, EightOne::IN6_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(in7LightPosition, module, EightOne::IN7_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(in8LightPosition, module, EightOne::IN8_LIGHT));
 	}
 };
 

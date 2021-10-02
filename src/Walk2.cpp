@@ -546,9 +546,9 @@ struct Walk2Widget : BGModuleWidget {
 		addOutput(createOutput<Port24>(outYOutputPosition, module, Walk2::OUT_Y_OUTPUT));
 		addOutput(createOutput<Port24>(distanceOutputPosition, module, Walk2::DISTANCE_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(jumpLightPosition, module, Walk2::JUMP_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(sampleholdLightPosition, module, Walk2::SAMPLEHOLD_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(trackholdLightPosition, module, Walk2::TRACKHOLD_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(jumpLightPosition, module, Walk2::JUMP_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(sampleholdLightPosition, module, Walk2::SAMPLEHOLD_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(trackholdLightPosition, module, Walk2::TRACKHOLD_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

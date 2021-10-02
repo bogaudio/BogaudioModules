@@ -179,14 +179,14 @@ struct Mute8Widget : BGModuleWidget {
 		addOutput(createOutput<Port24>(output7OutputPosition, module, Mute8::OUTPUT7_OUTPUT));
 		addOutput(createOutput<Port24>(output8OutputPosition, module, Mute8::OUTPUT8_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(mute1LightPosition, module, Mute8::MUTE1_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(mute2LightPosition, module, Mute8::MUTE2_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(mute3LightPosition, module, Mute8::MUTE3_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(mute4LightPosition, module, Mute8::MUTE4_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(mute5LightPosition, module, Mute8::MUTE5_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(mute6LightPosition, module, Mute8::MUTE6_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(mute7LightPosition, module, Mute8::MUTE7_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(mute8LightPosition, module, Mute8::MUTE8_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(mute1LightPosition, module, Mute8::MUTE1_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(mute2LightPosition, module, Mute8::MUTE2_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(mute3LightPosition, module, Mute8::MUTE3_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(mute4LightPosition, module, Mute8::MUTE4_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(mute5LightPosition, module, Mute8::MUTE5_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(mute6LightPosition, module, Mute8::MUTE6_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(mute7LightPosition, module, Mute8::MUTE7_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(mute8LightPosition, module, Mute8::MUTE8_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

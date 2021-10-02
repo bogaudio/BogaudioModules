@@ -130,10 +130,10 @@ struct ADSRWidget : BGModuleWidget {
 
 		addOutput(createOutput<Port24>(outOutputPosition, module, ADSR::OUT_OUTPUT));
 
-		addChild(createLight<TinyLight<GreenLight>>(attackLightPosition, module, ADSR::ATTACK_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(decayLightPosition, module, ADSR::DECAY_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(sustainLightPosition, module, ADSR::SUSTAIN_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(releaseLightPosition, module, ADSR::RELEASE_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(attackLightPosition, module, ADSR::ATTACK_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(decayLightPosition, module, ADSR::DECAY_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(sustainLightPosition, module, ADSR::SUSTAIN_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(releaseLightPosition, module, ADSR::RELEASE_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

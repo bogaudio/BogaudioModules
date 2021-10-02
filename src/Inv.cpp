@@ -140,8 +140,8 @@ struct InvWidget : BGModuleWidget {
 		addOutput(createOutput<Port24>(out1OutputPosition, module, Inv::OUT1_OUTPUT));
 		addOutput(createOutput<Port24>(out2OutputPosition, module, Inv::OUT2_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenRedLight>>(low1LightPosition, module, Inv::LOW1_LIGHT));
-		addChild(createLight<SmallLight<GreenRedLight>>(low2LightPosition, module, Inv::LOW2_LIGHT));
+		addChild(createLight<BGSmallLight<GreenRedLight>>(low1LightPosition, module, Inv::LOW1_LIGHT));
+		addChild(createLight<BGSmallLight<GreenRedLight>>(low2LightPosition, module, Inv::LOW2_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

@@ -348,8 +348,8 @@ struct PEQ14Widget : BandExcludeModuleWidget {
 		addOutput(createOutput<Port24>(out13OutputPosition, module, PEQ14::OUT13_OUTPUT));
 		addOutput(createOutput<Port24>(out14OutputPosition, module, PEQ14::OUT14_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(fmodRelativeLightPosition, module, PEQ14::FMOD_RELATIVE_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(fmodFullLightPosition, module, PEQ14::FMOD_FULL_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(fmodRelativeLightPosition, module, PEQ14::FMOD_RELATIVE_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(fmodFullLightPosition, module, PEQ14::FMOD_FULL_LIGHT));
 	}
 
 	void addSlider(Vec position, PEQ14* module, int id, float* rms) {

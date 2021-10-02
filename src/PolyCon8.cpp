@@ -59,14 +59,14 @@ struct PolyCon8Widget : BGModuleWidget {
 
 		addOutput(createOutput<Port24>(outOutputPosition, module, PolyCon8::OUT_OUTPUT));
 
-		addChild(createLight<TinyLight<GreenLight>>(channel1LightPosition, module, PolyCon8::CHANNEL1_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(channel2LightPosition, module, PolyCon8::CHANNEL2_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(channel3LightPosition, module, PolyCon8::CHANNEL3_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(channel4LightPosition, module, PolyCon8::CHANNEL4_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(channel5LightPosition, module, PolyCon8::CHANNEL5_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(channel6LightPosition, module, PolyCon8::CHANNEL6_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(channel7LightPosition, module, PolyCon8::CHANNEL7_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(channel8LightPosition, module, PolyCon8::CHANNEL8_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(channel1LightPosition, module, PolyCon8::CHANNEL1_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(channel2LightPosition, module, PolyCon8::CHANNEL2_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(channel3LightPosition, module, PolyCon8::CHANNEL3_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(channel4LightPosition, module, PolyCon8::CHANNEL4_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(channel5LightPosition, module, PolyCon8::CHANNEL5_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(channel6LightPosition, module, PolyCon8::CHANNEL6_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(channel7LightPosition, module, PolyCon8::CHANNEL7_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(channel8LightPosition, module, PolyCon8::CHANNEL8_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {
