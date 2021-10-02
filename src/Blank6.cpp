@@ -36,7 +36,7 @@ struct Blank6Display : OpaqueWidget {
 		std::string skin = skins.defaultKey();
 		bool haveLevel = false;
 		float level = 0.0f;
-		if (_module) {
+		if (_module && !_module->isBypassed()) {
 			haveLevel = _module->_level;
 			level = _module->_level;
 			skin = _module->_skin;

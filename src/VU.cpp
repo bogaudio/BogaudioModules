@@ -81,7 +81,7 @@ struct VUDisplay : OpaqueWidget {
 		float rDb = -100.0f;
 		float lPeakDb = -100.0f;
 		float rPeakDb = -100.0f;
-		if (_module) {
+		if (_module && !_module->isBypassed()) {
 			lDb = amplitudeToDecibels(_module->_lLevel);
 			rDb = amplitudeToDecibels(_module->_rLevel);
 			lPeakDb = amplitudeToDecibels(_module->_lPeakLevel);

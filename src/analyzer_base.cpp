@@ -488,12 +488,14 @@ void AnalyzerDisplay::draw(const DrawArgs& args) {
 	nvgGlobalTint(args.vg, color::WHITE);
 	drawBackground(args);
 	nvgScissor(args.vg, _insetAround, _insetAround, _size.x - _insetAround, _size.y - _insetAround);
-	if (_module) {
-		drawHeader(args, rangeMinHz, rangeMaxHz);
+	if (!_module || _module->isBypassed()) {
+		drawYAxis(args, strokeWidth, amplitudePlot);
+		drawXAxis(args, strokeWidth, frequencyPlot, rangeMinHz, rangeMaxHz);
 	}
-	drawYAxis(args, strokeWidth, amplitudePlot);
-	drawXAxis(args, strokeWidth, frequencyPlot, rangeMinHz, rangeMaxHz);
-	if (_module) {
+	else {
+		drawHeader(args, rangeMinHz, rangeMaxHz);
+		drawYAxis(args, strokeWidth, amplitudePlot);
+		drawXAxis(args, strokeWidth, frequencyPlot, rangeMinHz, rangeMaxHz);
 		int freezeBinI = 0;
 		float freezeLowHz = 0.0f;
 		float freezeHighHz = 0.0f;

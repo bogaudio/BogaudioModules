@@ -132,18 +132,23 @@ void ReftoneDisplay::draw(const DrawArgs& args) {
 	}
 
 	nvgSave(args.vg);
-	nvgGlobalTint(args.vg, color::WHITE);
-	drawBackground(args);
-	if (sharpFlat) {
-		drawText(args, pitch, 3, 20, 28);
-		drawText(args, sharpFlat, 16, 12, 16);
-		drawText(args, octave.c_str(), 22, 20, 28);
+	if (_module && _module->isBypassed()) {
+		drawBackground(args);
 	}
 	else {
-		drawCenteredText(args, (pitch + octave).c_str(), 20, 28);
+		nvgGlobalTint(args.vg, color::WHITE);
+		drawBackground(args);
+		if (sharpFlat) {
+			drawText(args, pitch, 3, 20, 28);
+			drawText(args, sharpFlat, 16, 12, 16);
+			drawText(args, octave.c_str(), 22, 20, 28);
+		}
+		else {
+			drawCenteredText(args, (pitch + octave).c_str(), 20, 28);
+		}
+		drawCenteredText(args, fine.c_str(), 32.5, 14);
+		drawCenteredText(args, frequency.c_str(), 45, 14);
 	}
-	drawCenteredText(args, fine.c_str(), 32.5, 14);
-	drawCenteredText(args, frequency.c_str(), 45, 14);
 	nvgRestore(args.vg);
 }
 

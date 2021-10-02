@@ -67,7 +67,7 @@ struct MonoWidget : BGModuleWidget {
 			nvgSave(args.vg);
 			for (int i = 0; i < _module->maxChannels; ++i) {
 				nvgBeginPath(args.vg);
-				if (!_module || i >= _module->_activeChannels) {
+				if (!_module || _module->isBypassed() || i >= _module->_activeChannels) {
 					nvgFillColor(args.vg, inactiveBgColor);
 				}
 				else {
@@ -79,7 +79,7 @@ struct MonoWidget : BGModuleWidget {
 				nvgCircle(args.vg, (i % 4) * 10 + 5.0f, (i / 4) * 10 + 5.0f, 3.2f);
 				nvgFill(args.vg);
 
-				if (_module && _module->_channelLevels[i] > 0.0f) {
+				if (_module && !_module->isBypassed() && _module->_channelLevels[i] > 0.0f) {
 					nvgSave(args.vg);
 					nvgGlobalTint(args.vg, color::WHITE);
 					nvgFillColor(args.vg, decibelsToColor(amplitudeToDecibels(_module->_channelLevels[i])));
@@ -113,7 +113,7 @@ struct MonoWidget : BGModuleWidget {
 
 		void draw(const DrawArgs& args) override {
 			float compressionDb = 0.0f;
-			if (_module) {
+			if (_module && !_module->isBypassed()) {
 				compressionDb = _module->_compressionDb;
 			}
 

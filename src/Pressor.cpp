@@ -214,7 +214,7 @@ struct PressorWidget : BGModuleWidget {
 
 		void draw(const DrawArgs& args) override {
 			float compressionDb = 0.0f;
-			if (_module) {
+			if (_module && !_module->isBypassed()) {
 				compressionDb = _module->_compressionDb;
 			}
 

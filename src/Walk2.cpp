@@ -229,7 +229,9 @@ struct Walk2Display : TransparentWidget {
 		float strokeWidth = std::max(1.0f, 3.0f - getZoom());
 
 		nvgSave(args.vg);
-		nvgGlobalTint(args.vg, color::WHITE);
+		if (_module && !_module->isBypassed()) {
+			nvgGlobalTint(args.vg, color::WHITE);
+		}
 		drawBackground(args);
 		nvgScissor(args.vg, _insetAround, _insetAround, _drawSize.x / 2, _drawSize.y / 2);
 		if (_module && _module->_zoomOut) {
@@ -247,7 +249,7 @@ struct Walk2Display : TransparentWidget {
 		}
 		drawAxes(args, strokeWidth);
 
-		if (_module) {
+		if (_module && !_module->isBypassed()) {
 			switch (_module->_traceColor) {
 				case Walk2::ORANGE_TRACE_COLOR: {
 					_traceColor = nvgRGBA(0xff, 0x80, 0x00, 0xee);

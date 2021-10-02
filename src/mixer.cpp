@@ -114,7 +114,7 @@ void MuteButton::onButton(const event::Button& e) {
 
 void MuteButton::draw(const DrawArgs& args) {
 	nvgSave(args.vg);
-	if (getParamQuantity() && getParamQuantity()->getValue() > 0.0f) {
+	if (module && !module->isBypassed() && getParamQuantity() && getParamQuantity()->getValue() > 0.0f) {
 		nvgGlobalTint(args.vg, color::WHITE);
 	}
 	ToggleButton::draw(args);
@@ -178,7 +178,7 @@ void SoloMuteButton::onChange(const event::Change& e) {
 
 void SoloMuteButton::draw(const DrawArgs& args) {
 	nvgSave(args.vg);
-	if (getParamQuantity() && getParamQuantity()->getValue() > 0.0f) {
+	if (module && !module->isBypassed() && getParamQuantity() && getParamQuantity()->getValue() > 0.0f) {
 		nvgGlobalTint(args.vg, color::WHITE);
 	}
 	ParamWidget::draw(args);

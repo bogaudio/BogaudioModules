@@ -229,7 +229,7 @@ void IndicatorKnob::redraw() {
 
 void IndicatorKnob::draw(const DrawArgs& args) {
 	nvgSave(args.vg);
-	if (getParamQuantity() &&
+	if (module && !module->isBypassed() && getParamQuantity() &&
 		(getParamQuantity()->getValue() < -0.01f || getParamQuantity()->getValue() > 0.01f) &&
 		(!w->_drawColorsCB || w->_drawColorsCB()))
 	{
@@ -351,7 +351,7 @@ IndicatorButtonGreen9::IndicatorButtonGreen9() {
 
 void IndicatorButtonGreen9::draw(const DrawArgs& args) {
 	nvgSave(args.vg);
-	if (getParamQuantity() && getParamQuantity()->getValue() > 0.0f) {
+	if (module && !module->isBypassed() && getParamQuantity() && getParamQuantity()->getValue() > 0.0f) {
 		nvgGlobalTint(args.vg, color::WHITE);
 	}
 	SvgSwitch::draw(args);
@@ -497,7 +497,9 @@ void InvertingIndicatorButton::onChange(const event::Change& e) {
 
 void InvertingIndicatorButton::draw(const DrawArgs& args) {
 	nvgSave(args.vg);
-	if (getParamQuantity() && (getParamQuantity()->getValue() < -0.01f || getParamQuantity()->getValue() > 0.01f)) {
+	if (module && !module->isBypassed() && getParamQuantity() &&
+		(getParamQuantity()->getValue() < -0.01f || getParamQuantity()->getValue() > 0.01f))
+	{
 		nvgGlobalTint(args.vg, color::WHITE);
 	}
 	ParamWidget::draw(args);
@@ -571,28 +573,30 @@ void VUSlider::draw(const DrawArgs& args) {
 			stereo = true;
 			stereoDb = *_stereoVuLevel;
 		}
-		if (db > 0.0f) {
-			nvgSave(args.vg);
-			nvgGlobalTint(args.vg, color::WHITE);
-			nvgBeginPath(args.vg);
-			if (stereo) {
-				nvgRoundedRect(args.vg, 2, 4, stereo ? 7 : 14, 5, 1.0);
+		if (module && !module->isBypassed()) {
+			if (db > 0.0f) {
+				nvgSave(args.vg);
+				nvgGlobalTint(args.vg, color::WHITE);
+				nvgBeginPath(args.vg);
+				if (stereo) {
+					nvgRoundedRect(args.vg, 2, 4, stereo ? 7 : 14, 5, 1.0);
+				}
+				else {
+					nvgRoundedRect(args.vg, 2, 4, 14, 5, 1.0);
+				}
+				nvgFillColor(args.vg, decibelsToColor(amplitudeToDecibels(db)));
+				nvgFill(args.vg);
+				nvgRestore(args.vg);
 			}
-			else {
-				nvgRoundedRect(args.vg, 2, 4, 14, 5, 1.0);
+			if (stereo && stereoDb > 0.0f) {
+				nvgSave(args.vg);
+				nvgGlobalTint(args.vg, color::WHITE);
+				nvgBeginPath(args.vg);
+				nvgRoundedRect(args.vg, 9, 4, 7, 5, 1.0);
+				nvgFillColor(args.vg, decibelsToColor(amplitudeToDecibels(stereoDb)));
+				nvgFill(args.vg);
+				nvgRestore(args.vg);
 			}
-			nvgFillColor(args.vg, decibelsToColor(amplitudeToDecibels(db)));
-			nvgFill(args.vg);
-			nvgRestore(args.vg);
-		}
-		if (stereo && stereoDb > 0.0f) {
-			nvgSave(args.vg);
-			nvgGlobalTint(args.vg, color::WHITE);
-			nvgBeginPath(args.vg);
-			nvgRoundedRect(args.vg, 9, 4, 7, 5, 1.0);
-			nvgFillColor(args.vg, decibelsToColor(amplitudeToDecibels(stereoDb)));
-			nvgFill(args.vg);
-			nvgRestore(args.vg);
 		}
 	}
 	nvgRestore(args.vg);
