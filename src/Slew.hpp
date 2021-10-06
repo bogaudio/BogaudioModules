@@ -37,7 +37,7 @@ struct Slew : BGModule {
 		configParam(RISE_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "Rise shape");
 		configParam<EnvelopeSegmentParamQuantity>(FALL_PARAM, 0.0f, 1.0f, 0.31623f, "Fall", " s");
 		configParam(FALL_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "Fall shape");
-		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow mode");
+		configSwitch(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow mode", {"Disabled", "Enabled"});
 		configBypass(IN_INPUT, OUT_OUTPUT);
 	}
 

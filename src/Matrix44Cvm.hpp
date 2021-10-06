@@ -55,23 +55,24 @@ struct Matrix44Cvm : Matrix44CvmBase {
 	Input** _cvs = NULL;
 
 	Matrix44Cvm() {
+		const std::vector<std::string> muteLabels = {"Unmuted", "Muted", "Soloed", "Soloed"};
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
-		configParam(MUTE11_PARAM, 0.0f, 3.0f, 0.0f, "Mute 1A");
-		configParam(MUTE21_PARAM, 0.0f, 3.0f, 0.0f, "Mute 2A");
-		configParam(MUTE31_PARAM, 0.0f, 3.0f, 0.0f, "Mute 3A");
-		configParam(MUTE41_PARAM, 0.0f, 3.0f, 0.0f, "Mute 4A");
-		configParam(MUTE12_PARAM, 0.0f, 3.0f, 0.0f, "Mute 1B");
-		configParam(MUTE22_PARAM, 0.0f, 3.0f, 0.0f, "Mute 2B");
-		configParam(MUTE32_PARAM, 0.0f, 3.0f, 0.0f, "Mute 3B");
-		configParam(MUTE42_PARAM, 0.0f, 3.0f, 0.0f, "Mute 4B");
-		configParam(MUTE13_PARAM, 0.0f, 3.0f, 0.0f, "Mute 1C");
-		configParam(MUTE23_PARAM, 0.0f, 3.0f, 0.0f, "Mute 2C");
-		configParam(MUTE33_PARAM, 0.0f, 3.0f, 0.0f, "Mute 3C");
-		configParam(MUTE43_PARAM, 0.0f, 3.0f, 0.0f, "Mute 4C");
-		configParam(MUTE14_PARAM, 0.0f, 3.0f, 0.0f, "Mute 1D");
-		configParam(MUTE24_PARAM, 0.0f, 3.0f, 0.0f, "Mute 2D");
-		configParam(MUTE34_PARAM, 0.0f, 3.0f, 0.0f, "Mute 3D");
-		configParam(MUTE44_PARAM, 0.0f, 3.0f, 0.0f, "Mute 4D");
+		configSwitch(MUTE11_PARAM, 0.0f, 3.0f, 0.0f, "Mute 1A", muteLabels);
+		configSwitch(MUTE21_PARAM, 0.0f, 3.0f, 0.0f, "Mute 2A", muteLabels);
+		configSwitch(MUTE31_PARAM, 0.0f, 3.0f, 0.0f, "Mute 3A", muteLabels);
+		configSwitch(MUTE41_PARAM, 0.0f, 3.0f, 0.0f, "Mute 4A", muteLabels);
+		configSwitch(MUTE12_PARAM, 0.0f, 3.0f, 0.0f, "Mute 1B", muteLabels);
+		configSwitch(MUTE22_PARAM, 0.0f, 3.0f, 0.0f, "Mute 2B", muteLabels);
+		configSwitch(MUTE32_PARAM, 0.0f, 3.0f, 0.0f, "Mute 3B", muteLabels);
+		configSwitch(MUTE42_PARAM, 0.0f, 3.0f, 0.0f, "Mute 4B", muteLabels);
+		configSwitch(MUTE13_PARAM, 0.0f, 3.0f, 0.0f, "Mute 1C", muteLabels);
+		configSwitch(MUTE23_PARAM, 0.0f, 3.0f, 0.0f, "Mute 2C", muteLabels);
+		configSwitch(MUTE33_PARAM, 0.0f, 3.0f, 0.0f, "Mute 3C", muteLabels);
+		configSwitch(MUTE43_PARAM, 0.0f, 3.0f, 0.0f, "Mute 4C", muteLabels);
+		configSwitch(MUTE14_PARAM, 0.0f, 3.0f, 0.0f, "Mute 1D", muteLabels);
+		configSwitch(MUTE24_PARAM, 0.0f, 3.0f, 0.0f, "Mute 2D", muteLabels);
+		configSwitch(MUTE34_PARAM, 0.0f, 3.0f, 0.0f, "Mute 3D", muteLabels);
+		configSwitch(MUTE44_PARAM, 0.0f, 3.0f, 0.0f, "Mute 4D", muteLabels);
 
 		_mutes = new Param*[16];
 		_cvs = new Input*[16];

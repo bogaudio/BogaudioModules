@@ -35,6 +35,7 @@ struct Lag : BGModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(TIME_PARAM, 0.0f, 1.0f, 0.5f, "time");
 		configParam(TIME_SCALE_PARAM, 0.0f, 2.0f, 1.0f, "time_scale");
+		paramQuantities[TIME_SCALE_PARAM]->snapEnabled = true;
 		configParam(SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "shape");
 	}
 

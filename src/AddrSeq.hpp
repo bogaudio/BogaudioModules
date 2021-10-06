@@ -117,7 +117,7 @@ struct AddrSeq : AddrSeqBase {
 	AddrSeq() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam<StepsParamQuantity>(STEPS_PARAM, 1.0f, 8.0f, 8.0f, "Steps");
-		configParam(DIRECTION_PARAM, 0.0f, 1.0f, 1.0f, "Direction");
+		configSwitch(DIRECTION_PARAM, 0.0f, 1.0f, 1.0f, "Direction", {"Reverse", "Forward"});
 		configParam<SelectParamQuantity>(SELECT_PARAM, 0.0f, 7.0f, 0.0f, "Select step");
 		configParam<OutputRangeParamQuantity>(OUT1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1", " V");
 		configParam<OutputRangeParamQuantity>(OUT2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2", " V");

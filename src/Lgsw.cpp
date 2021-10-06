@@ -35,7 +35,7 @@ void Lgsw::processAlways(const ProcessArgs& args) {
 }
 
 void Lgsw::processChannel(const ProcessArgs& args, int c) {
-	bool buttonTriggered = _buttonTriggers[c].process(params[GATE_PARAM].getValue());
+	bool buttonTriggered = _buttonTriggers[c].process(10.0f*params[GATE_PARAM].getValue());
 	bool aTriggered = _aTriggers[c].process(inputs[GATE_A_INPUT].getVoltage(c));
 	bool bTriggered = _bTriggers[c].process(inputs[GATE_B_INPUT].getVoltage(c));
 

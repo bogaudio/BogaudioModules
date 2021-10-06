@@ -78,14 +78,14 @@ struct Mute8 : BGModule {
 
 	Mute8() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(MUTE1_PARAM, 0.0f, 3.0f, 0.0f, "Mute 1");
-		configParam(MUTE2_PARAM, 0.0f, 3.0f, 0.0f, "Mute 2");
-		configParam(MUTE3_PARAM, 0.0f, 3.0f, 0.0f, "Mute 3");
-		configParam(MUTE4_PARAM, 0.0f, 3.0f, 0.0f, "Mute 4");
-		configParam(MUTE5_PARAM, 0.0f, 3.0f, 0.0f, "Mute 5");
-		configParam(MUTE6_PARAM, 0.0f, 3.0f, 0.0f, "Mute 6");
-		configParam(MUTE7_PARAM, 0.0f, 3.0f, 0.0f, "Mute 7");
-		configParam(MUTE8_PARAM, 0.0f, 3.0f, 0.0f, "Mute 8");
+		configSwitch(MUTE1_PARAM, 0.0f, 3.0f, 0.0f, "Mute 1", {"Unmuted", "Muted", "Soloed", "Soloed"});
+		configSwitch(MUTE2_PARAM, 0.0f, 3.0f, 0.0f, "Mute 2", {"Unmuted", "Muted", "Soloed", "Soloed"});
+		configSwitch(MUTE3_PARAM, 0.0f, 3.0f, 0.0f, "Mute 3", {"Unmuted", "Muted", "Soloed", "Soloed"});
+		configSwitch(MUTE4_PARAM, 0.0f, 3.0f, 0.0f, "Mute 4", {"Unmuted", "Muted", "Soloed", "Soloed"});
+		configSwitch(MUTE5_PARAM, 0.0f, 3.0f, 0.0f, "Mute 5", {"Unmuted", "Muted", "Soloed", "Soloed"});
+		configSwitch(MUTE6_PARAM, 0.0f, 3.0f, 0.0f, "Mute 6", {"Unmuted", "Muted", "Soloed", "Soloed"});
+		configSwitch(MUTE7_PARAM, 0.0f, 3.0f, 0.0f, "Mute 7", {"Unmuted", "Muted", "Soloed", "Soloed"});
+		configSwitch(MUTE8_PARAM, 0.0f, 3.0f, 0.0f, "Mute 8", {"Unmuted", "Muted", "Soloed", "Soloed"});
 
 		configBypass(INPUT1_INPUT, OUTPUT1_OUTPUT);
 		configBypass(INPUT2_INPUT, OUTPUT2_OUTPUT);

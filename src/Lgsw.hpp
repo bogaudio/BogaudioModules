@@ -58,9 +58,9 @@ struct Lgsw : SaveLatchToPatchModule {
 
 	Lgsw() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(GATE_PARAM, 0.0f, 10.0f, 0.0f, "Gate");
-		configParam(LATCH_PARAM, 0.0f, 1.0f, 0.0f, "Latch");
-		configParam(LOGIC_MODE_PARAM, 0.0f, 4.0f, 0.0f, "Logic");
+		configButton(GATE_PARAM, "Gate");
+		configSwitch(LATCH_PARAM, 0.0f, 1.0f, 0.0f, "Latch", {"Disabled", "Enabled"});
+		configSwitch(LOGIC_MODE_PARAM, 0.0f, 4.0f, 0.0f, "Logic", {"OR", "AND", "XOR", "NOR", "NAND"});
 	}
 
 	void resetChannel(int c);

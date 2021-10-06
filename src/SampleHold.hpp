@@ -61,12 +61,12 @@ struct SampleHold : BGModule {
 
 	SampleHold() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
-		configParam(TRIGGER1_PARAM, 0.0f, 10.0f, 0.0f, "Trigger 1");
-		configParam(TRIGGER2_PARAM, 0.0f, 10.0f, 0.0f, "Trigger 2");
-		configParam(TRACK1_PARAM, 0.0f, 1.0f, 0.0f, "Track 1");
-		configParam(TRACK2_PARAM, 0.0f, 1.0f, 0.0f, "Track 2");
-		configParam(INVERT1_PARAM, 0.0f, 1.0f, 0.0f, "Invert 1");
-		configParam(INVERT2_PARAM, 0.0f, 1.0f, 0.0f, "Invert 2");
+		configButton(TRIGGER1_PARAM, "Trigger 1");
+		configButton(TRIGGER2_PARAM, "Trigger 2");
+		configSwitch(TRACK1_PARAM, 0.0f, 1.0f, 0.0f, "Track 1", {"Disabled", "Enabled"});
+		configSwitch(TRACK2_PARAM, 0.0f, 1.0f, 0.0f, "Track 2", {"Disabled", "Enabled"});
+		configSwitch(INVERT1_PARAM, 0.0f, 1.0f, 0.0f, "Invert 1", {"Disabled", "Enabled"});
+		configSwitch(INVERT2_PARAM, 0.0f, 1.0f, 0.0f, "Invert 2", {"Disabled", "Enabled"});
 	}
 
 	void reset() override;

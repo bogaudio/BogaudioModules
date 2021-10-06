@@ -30,7 +30,7 @@ void bogaudio::Switch::processAlways(const ProcessArgs& args) {
 }
 
 void bogaudio::Switch::processChannel(const ProcessArgs& args, int c) {
-	bool triggered = _trigger[c].process(params[GATE_PARAM].getValue() + inputs[GATE_INPUT].getVoltage(c));
+	bool triggered = _trigger[c].process(10.0f*params[GATE_PARAM].getValue() + inputs[GATE_INPUT].getVoltage(c));
 	if (_latch) {
 		if (triggered) {
 			_latchedHigh[c] = !_latchedHigh[c];

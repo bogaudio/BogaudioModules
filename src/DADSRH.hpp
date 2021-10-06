@@ -72,14 +72,14 @@ struct DADSRH : TriggerOnLoadModule {
 		configParam(SUSTAIN_PARAM, 0.0f, 1.0f, 0.5f, "Sustain", "%", 0.0f, 100.0f);
 		configParam<EnvelopeSegmentParamQuantity>(RELEASE_PARAM, 0.0f, 1.0f, 0.31623f, "Release", " s");
 		configParam<EnvelopeSegmentParamQuantity>(HOLD_PARAM, 0.0f, 1.0f, 0.44721f, "Hold", " s");
-		configParam(ATTACK_SHAPE_PARAM, 1.0f, 3.0f, 1.0f, "Attack shape");
-		configParam(DECAY_SHAPE_PARAM, 1.0f, 3.0f, 1.0f, "Decay shape");
-		configParam(RELEASE_SHAPE_PARAM, 1.0f, 3.0f, 1.0f, "Release shape");
-		configParam(TRIGGER_PARAM, 0.0f, 1.0f, 0.0f, "Trigger");
-		configParam(MODE_PARAM, 0.0f, 1.0f, 1.0f, "Mode");
-		configParam(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "Loop");
-		configParam(SPEED_PARAM, 0.0f, 1.0f, 1.0f, "Speed");
-		configParam(RETRIGGER_PARAM, 0.0f, 1.0f, 1.0f, "Retrigger");
+		configSwitch(ATTACK_SHAPE_PARAM, 1.0f, 3.0f, 1.0f, "Attack shape", {"Logarithmic", "Linear", "Exponential"});
+		configSwitch(DECAY_SHAPE_PARAM, 1.0f, 3.0f, 1.0f, "Decay shape", {"Exponential", "Linear", "Logarithmic"});
+		configSwitch(RELEASE_SHAPE_PARAM, 1.0f, 3.0f, 1.0f, "Release shape", {"Exponential", "Linear", "Logarithmic"});
+		configButton(TRIGGER_PARAM, "Trigger");
+		configSwitch(MODE_PARAM, 0.0f, 1.0f, 1.0f, "Mode", {"Triggered", "Gated"});
+		configSwitch(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "Loop", {"Loop", "Stop"});
+		configSwitch(SPEED_PARAM, 0.0f, 1.0f, 1.0f, "Speed", {"Slow", "Normal"});
+		configSwitch(RETRIGGER_PARAM, 0.0f, 1.0f, 1.0f, "Retrigger", {"Reset", "Resume attack"});
 	}
 
 	void reset() override;

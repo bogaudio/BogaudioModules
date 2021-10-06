@@ -136,7 +136,7 @@ struct Arp : BGModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(MODE_PARAM, 0.0f, 6.0f, 0.0f, "Playback mode");
 		configParam<GateLengthParamQuantity>(GATE_LENGTH_PARAM, 0.0f, 1.0f, 0.5f, "Gate length");
-		configParam(HOLD_PARAM, 0.0f, 1.0f, 0.0f, "Hold/latch");
+		configSwitch(HOLD_PARAM, 0.0f, 1.0f, 0.0f, "Hold/latch", {"Disabled", "Enabled"});
 
 		_currentNotes = new NoteSet();
 		_playbackNotes = new NoteSet(_currentNotes);

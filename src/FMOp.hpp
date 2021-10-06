@@ -115,9 +115,9 @@ struct FMOp : BGModule {
 		configParam(DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "FM depth", "%", 0.0f, 100.0f);
 		configParam(FEEDBACK_PARAM, 0.0f, 1.0f, 0.0f, "Feedback", "%", 0.0f, 100.0f);
 		configParam<LevelParamQuantity>(LEVEL_PARAM, 0.0f, 1.0f, 1.0f, "Level");
-		configParam(ENV_TO_LEVEL_PARAM, 0.0f, 1.0f, 0.0f, "Level follows envelope");
-		configParam(ENV_TO_FEEDBACK_PARAM, 0.0f, 1.0f, 0.0f, "Feedback follows envelope");
-		configParam(ENV_TO_DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "FM depth follows envelope");
+		configButton(ENV_TO_LEVEL_PARAM, "Level follows envelope");
+		configButton(ENV_TO_FEEDBACK_PARAM, "Feedback follows envelope");
+		configButton(ENV_TO_DEPTH_PARAM, "FM depth follows envelope");
 	}
 
 	void reset() override;

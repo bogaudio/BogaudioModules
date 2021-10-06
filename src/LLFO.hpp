@@ -87,8 +87,8 @@ struct LLFO : LFOBase {
 	, _oscillator(&_sine)
 	{
 		configParam<LFOFrequencyParamQuantity>(FREQUENCY_PARAM, -5.0f, 8.0f, 0.0f, "Frequency", " Hz");
-		configParam(WAVE_PARAM, 0.0f, 6.0f, 0.0f, "Waveform");
-		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow mode");
+		configSwitch(WAVE_PARAM, 0.0f, 6.0f, 0.0f, "Waveform", {"Sine", "Triangle", "Ramp up", "Ramp down", "Square", "Pulse", "Stepped"});
+		configButton(SLOW_PARAM, "Slow mode");
 		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "Offset", " V", 0.0f, 5.0f);
 		configParam(SCALE_PARAM, 0.0f, 1.0f, 1.0f, "Scale", "%", 0.0f, 100.0f);
 	}

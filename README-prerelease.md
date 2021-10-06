@@ -448,7 +448,8 @@ Features:
   - When MODE is TRIG, a trigger CV or press of the TRIGGER button will start a normal DADSR cycle, but controlled by an internal gate CV.  The internal gate persists for the time set by the HOLD knob.
   - The envelope is output as a 0-10 signal at port ENV.  Its inverse (10V - ENV) is output at INV.  When a release stage completes, a trigger is emitted at END.
   - When MODE is TRIGGER, the CYCLE switch controls whether the envelope loops or not upon completion of a release stage.
-  - Toggles allow selection of linear, exponential or inverse-exponential shapes for the attack, decay and release stages.
+  - Toggles allow selection of linear, exponential or inverse-exponential ("logarithmic", more or less) shapes for the attack, decay and release stages.
+  - The SPEED switch slows down the timing of segments by 10x.
   - The RETRIG switch controls the retrigger behavior (when a new gate or trigger happens while the envelope is running): ATT immediately attacks from the current envelope value (this is the typical behavior with many ADSRs), while RST causes a full reset of the envelope (restarting it at the delay stage).
 
 _Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the TRIGGER input.  Pressing the trigger button will trigger all channels.
@@ -474,6 +475,7 @@ Features:
   - The trapezoid envelope is output as a 0-10V control signal at port ENV, subject to attenuation by the ENV knob.  (INV outputs 10V - ENV.)
   - Audio input at port IN is sent through the internal VCA -- controlled by knob SIGNAL and the envelope -- to port OUT.  Turning up the SIGNAL knob can dramatically amplify the signal.  [This is actually a design error, but enough people have used it this way that we leave it be.]
   - A trigger CV at the TRIGGER port, or a press of the TRIGGER button, will start the envelope cycle.  When the off stage completes, a trigger is emitted at port END.  If the CYCLE switch is set to LOOP, the envelope restarts immediately.
+  - The SPEED switch slows down the timing of segments by 10x.
 
 _Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the TRIGGER input.  Pressing the trigger button will trigger all channels.
 
@@ -497,7 +499,7 @@ If the RT (retrigger) toggle is enabled, if TRIG receives a new trigger while th
 
 If the LP (loop) toggle is enabled, the envelope cycles continuously (it doesn't need a trigger to start it).  If RT is also enabled, triggers at TRIG will restart the cycle (this is similar to syncing an LFO).
 
-By default, the attack and decay envelope segments have an exponential curve -- in linear mode (the LIN toggle), the segments are linear.
+By default, the attack and decay envelope segments have a logarithmic (more or less) curve -- in linear mode (the LIN toggle), the segments are linear.
 
 _Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the TRIG input.
 
@@ -505,7 +507,7 @@ _When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="asr"></a> ASR
 
-ASR is AR (if triggered) or ASR (Attack, Sustain, Release -- if gated) envelope generator.  It has CV inputs for the attack and release times (if CVs are used, they are attenuated by the corresponding knob values).  The sustain level may be set by the small knob marked S.  The attack and release segments have an exponential shape by default, but can be made linear with the LIN toggle.
+ASR is AR (if triggered) or ASR (Attack, Sustain, Release -- if gated) envelope generator.  It has CV inputs for the attack and release times (if CVs are used, they are attenuated by the corresponding knob values).  The sustain level may be set by the small knob marked S.  The attack and release segments are curved by default, but can be made linear with the LIN toggle.
 
 _Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the TRIG input.
 
@@ -515,7 +517,7 @@ _When <a href="#bypassing">bypassed</a>:_ no output.
 
 A standard ADSR (Attack, Decay, Sustain, Release) envelope generator in 3HP.  The attack, decay and release knobs are exponentially scaled with durations up to 10 seconds.  The sustain knob is linearly scaled, setting the sustain level from 0 to 10 volts.  Lights below each stage knob indicate which stage is active.
 
-By default, the attack, decay and release envelope segments have an exponential curve -- in linear mode (the LIN button), the segments are linear.
+By default, the attack, decay and release envelope segments have a curve -- in linear mode (the LIN button), the segments are linear.
 
 _Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the GATE input.
 

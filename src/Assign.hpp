@@ -41,6 +41,7 @@ struct Assign : BGModule {
 	Assign() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(CHANNELS_PARAM, 1.0f, 16.0f, 0.0f, "Channels");
+		paramQuantities[CHANNELS_PARAM]->snapEnabled = true;
 	}
 
 	void reset() override;

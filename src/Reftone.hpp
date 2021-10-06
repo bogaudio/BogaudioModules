@@ -38,7 +38,9 @@ struct Reftone : BGModule {
 	Reftone() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(PITCH_PARAM, 0.0f, 11.0f, 9.0f, "Pitch");
+		paramQuantities[PITCH_PARAM]->snapEnabled = true;
 		configParam(OCTAVE_PARAM, 1.0f, 8.0f, 4.0f, "Octave");
+		paramQuantities[OCTAVE_PARAM]->snapEnabled = true;
 		configParam(FINE_PARAM, -0.99f, 0.99f, 0.0f, "Fine tune", " cents", 0.0f, 100.0f);
 
 		sampleRateChange();

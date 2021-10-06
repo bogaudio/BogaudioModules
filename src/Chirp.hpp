@@ -89,9 +89,9 @@ struct Chirp : BGModule {
 		configParam<TimeParamQuantity>(TIME_PARAM, 0.0f, 1.0f, 0.30899415, "Time", "s");
 		configParam<FrequencyParamQuantity>(FREQUENCY1_PARAM, -3.0f, 6.0f, -3.0f, "Frequency 1", " Hz");
 		configParam<FrequencyParamQuantity>(FREQUENCY2_PARAM, -3.0f, 6.0f, 6.0f, "Frequency 2", " Hz");
-		configParam(TRIGGER_PARAM, 0.0f, 1.0f, 0.0f, "Trigger");
-		configParam(EXPONENTIAL_PARAM, 0.0f, 1.0f, 1.0f, "Exponential");
-		configParam(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "Loop");
+		configButton(TRIGGER_PARAM, "Trigger");
+		configButton(EXPONENTIAL_PARAM, "Exponential");
+		configButton(LOOP_PARAM, "Loop");
 	}
 
 	void reset() override;

@@ -129,8 +129,9 @@ struct EightFO : LFOBase {
 
 	EightFO() : LFOBase(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {
 		configParam<LFOFrequencyParamQuantity>(FREQUENCY_PARAM, -5.0f, 8.0f, 0.0, "Frequency", " Hz");
-		configParam(WAVE_PARAM, 1.0, 6.0, 3.0, "Waveform");
-		configParam(SLOW_PARAM, 0.0, 1.0, 0.0, "Slow");
+		configSwitch(WAVE_PARAM, 1.0, 6.0, 3.0, "Waveform", {"Ramp up", "Ramp down", "Sine", "Triangle", "Square", "Stepped"});
+		paramQuantities[WAVE_PARAM]->snapEnabled = true;
+		configButton(SLOW_PARAM, "Slow");
 		configParam(SAMPLE_PWM_PARAM, -1.0, 1.0, 0.0, "Width", "%", 0.0f, 100.0f);
 		configParam(SMOOTH_PARAM, 0.0f, 1.0f, 0.0f, "Smoothing", "%", 0.0f, 100.0f);
 		configParam(OFFSET_PARAM, -1.0, 1.0, 0.0, "Offset", " V", 0.0f, 5.0f);

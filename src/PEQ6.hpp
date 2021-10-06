@@ -79,9 +79,9 @@ struct PEQ6 : ExpandableModule<PEQ6ExpanderMessage, BandExcludeModule> {
 		float levelDefault = fabsf(PEQChannel::minDecibels) / (PEQChannel::maxDecibels - PEQChannel::minDecibels);
 		configParam(FREQUENCY_CV_PARAM, -1.0f, 1.0f, 0.0f, "Global frequency CV attenuation", "%", 0.0f, 100.0f);
 		configParam(BANDWIDTH_PARAM, 0.0f, 1.0f, 0.33f, "Bandwidth", "%", 0.0f, 100.0f);
-		configParam(LP_PARAM, 0.0f, 1.0f, 1.0f, "Channel 1 LP/BP");
-		configParam(HP_PARAM, 0.0f, 1.0f, 1.0f, "Channel 6 HP/BP");
-		configParam(FMOD_PARAM, 0.0f, 1.0f, 0.0f, "Frequency modulation range");
+		configSwitch(LP_PARAM, 0.0f, 1.0f, 1.0f, "Channel 1 LP/BP", {"Bandpass", "Lowpass"});
+		configSwitch(HP_PARAM, 0.0f, 1.0f, 1.0f, "Channel 6 HP/BP", {"Bandpass", "Highpass"});
+		configSwitch(FMOD_PARAM, 0.0f, 1.0f, 0.0f, "Frequency modulation range", {"Octave", "Full"});
 		configParam(LEVEL1_PARAM, 0.0f, 1.0f, levelDefault, "Channel 1 level", " dB", 0.0f, PEQChannel::maxDecibels - PEQChannel::minDecibels, PEQChannel::minDecibels);
 		configParam<ScaledSquaringParamQuantity<(int)PEQChannel::maxFrequency>>(FREQUENCY1_PARAM, 0.0f, 1.0f, 0.0707107f, "Channel 1 frequency", " HZ");
 		configParam(FREQUENCY_CV1_PARAM, -1.0f, 1.0f, 1.0f, "Channel 1 frequency CV attenuation", "%", 0.0f, 100.0f);

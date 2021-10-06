@@ -55,8 +55,8 @@ struct Vish : LPGEnvBaseModule {
 		configParam<TimeParamQuantity<1>>(FALL_PARAM, 0.0f, 1.0f, 0.5477226f, "Fall time", " s");
 		configParam(FALL_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "Fall shape");
 		configParam<TimeParamQuantity<1>>(MINIMUM_GATE_PARAM, 0.0f, 1.0f, 0.3162278f, "Minimum gate", " s");
-		configParam(GATE_TO_TRIGGER_PARAM, 0.0f, 1.0f, 1.0f, "Gate to trigger mode");
-		configParam(TIMES_10X_PARAM, 0.0f, 1.0f, 0.0f, "Timings 10X mode");
+		configSwitch(GATE_TO_TRIGGER_PARAM, 0.0f, 1.0f, 1.0f, "Gate to trigger mode", {"Disabled (input pass-through)", "Enabled"});
+		configSwitch(TIMES_10X_PARAM, 0.0f, 1.0f, 0.0f, "Timings 10X mode", {"Disabled (normal)", "Enabled"});
 	}
 
 	void reset() override;

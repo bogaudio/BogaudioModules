@@ -134,9 +134,9 @@ struct XCO : BGModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam<XCOFrequencyParamQuantity>(FREQUENCY_PARAM, -3.0f, 6.0f, 0.0f, "Frequency", " Hz");
 		configParam(FINE_PARAM, -1.0f, 1.0f, 0.0f, "Fine tune", " cents", 0.0f, 100.0f);
-		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow mode");
+		configButton(SLOW_PARAM, "Slow mode");
 		configParam(FM_DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "FM depth", "%", 0.0f, 100.0f);
-		configParam(FM_TYPE_PARAM, 0.0f, 1.0f, 1.0f, "FM mode");
+		configSwitch(FM_TYPE_PARAM, 0.0f, 1.0f, 1.0f, "FM mode", {"Linear FM", "Exponential FM"});
 		configParam(SQUARE_PW_PARAM, -0.97f, 0.97f, 0.0f, "Square wave pulse width", "%", 0.0f, 100.0f);
 		configParam(SQUARE_PHASE_PARAM, -1.0f, 1.0f, 0.0f, "Square wave phase", "º", 0.0f, 180.0f);
 		configParam(SQUARE_MIX_PARAM, 0.0f, 1.0f, 1.0f, "Square wave mix", "%", 0.0f, 100.0f);

@@ -88,7 +88,7 @@ struct Walk2 : BGModule {
 		configParam(OFFSET_Y_PARAM, -1.0f, 1.0f, 0.0f, "Offset Y", " V", 0.0f, 5.0f);
 		configParam(SCALE_X_PARAM, 0.0f, 1.0f, 1.0f, "Scale X", "%", 0.0f, 100.0f);
 		configParam(SCALE_Y_PARAM, 0.0f, 1.0f, 1.0f, "Scale Y", "%", 0.0f, 100.0f);
-		configParam(JUMP_MODE_PARAM, 0.0f, 2.0f, 0.0f, "TRIG action");
+		configSwitch(JUMP_MODE_PARAM, 0.0f, 2.0f, 0.0f, "TRIG action", {"Jump", "Sample & hold", "Track & hold"});
 	}
 
 	void reset() override;

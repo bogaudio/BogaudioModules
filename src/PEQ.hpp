@@ -63,7 +63,7 @@ struct PEQ : BGModule {
 		configParam<ScaledSquaringParamQuantity<(int)PEQChannel::maxFrequency>>(A_FREQUENCY_PARAM, 0.0f, 1.0f, 0.0707107f, "Channel A frequency", " HZ");
 		configParam(A_BANDWIDTH_PARAM, 0.0f, 1.0f, 0.5f, "Channel A bandwidth", "%", 0.0f, 100.0f);
 		configParam(A_CV_PARAM, -1.0f, 1.0f, 0.0f, "Channel A frequency CV attenuation", "%", 0.0f, 100.0f);
-		configParam(A_MODE_PARAM, 0.0f, 1.0f, 1.0f, "Channel A LP/BP");
+		configSwitch(A_MODE_PARAM, 0.0f, 1.0f, 1.0f, "Channel A LP/BP", {"Bandpass", "Lowpass"});
 		configParam(B_LEVEL_PARAM, 0.0f, 1.0f, levelDefault, "Channel B level", " dB", 0.0f, PEQChannel::maxDecibels - PEQChannel::minDecibels, PEQChannel::minDecibels);
 		configParam<ScaledSquaringParamQuantity<(int)PEQChannel::maxFrequency>>(B_FREQUENCY_PARAM, 0.0f, 1.0f, 0.1322876f, "Channel B frequency", " HZ");
 		configParam(B_BANDWIDTH_PARAM, 0.0f, 1.0f, 0.66f, "Channel B bandwidth", "%", 0.0f, 100.0f);
@@ -72,7 +72,7 @@ struct PEQ : BGModule {
 		configParam<ScaledSquaringParamQuantity<(int)PEQChannel::maxFrequency>>(C_FREQUENCY_PARAM, 0.0f, 1.0f, 0.223607f, "Channel C frequency", " HZ");
 		configParam(C_BANDWIDTH_PARAM, 0.0f, 1.0f, 0.5f, "Channel C bandwidth", "%", 0.0f, 100.0f);
 		configParam(C_CV_PARAM, -1.0f, 1.0f, 0.0f, "Channel C frequency CV attenuation", "%", 0.0f, 100.0f);
-		configParam(C_MODE_PARAM, 0.0f, 1.0f, 1.0f, "Channel C HP/BP");
+		configSwitch(C_MODE_PARAM, 0.0f, 1.0f, 1.0f, "Channel C HP/BP", {"Bandpass", "Highpass"});
 		configBypass(IN_INPUT, OUT_OUTPUT);
 	}
 

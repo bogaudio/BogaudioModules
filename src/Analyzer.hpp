@@ -50,8 +50,8 @@ struct Analyzer : AnalyzerBase {
 	Analyzer() : AnalyzerBase(4, NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 		configParam(RANGE2_PARAM, -1.0f, 1.0f, 0.0f, "Range");
 		configParam(SMOOTH_PARAM, 0.0f, 1.0f, 0.5f, "Smoothing", " ms", 0.0f, 500.0f);
-		configParam(QUALITY_PARAM, 1.0f, 3.0f, 1.0f, "Analysis quality");
-		configParam(WINDOW_PARAM, 1.0f, 3.0f, 1.0f, "Analysis window type");
+		configSwitch(QUALITY_PARAM, 1.0f, 3.0f, 1.0f, "Analysis quality", {"Good", "High", "Ultra"});
+		configSwitch(WINDOW_PARAM, 1.0f, 3.0f, 1.0f, "Analysis window type", {"Kaiser", "Hamming", "None"});
 	}
 	virtual ~Analyzer() {
 		reset();

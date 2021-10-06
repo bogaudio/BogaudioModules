@@ -71,28 +71,28 @@ struct Pgmr : PgmrBase {
 
 	Pgmr() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(DIRECTION_PARAM, 0.0f, 1.0f, 1.0f, "Forward");
-		configParam(SELECT_ON_CLOCK_PARAM, 0.0f, 1.0f, 0.0f, "Select on clock");
+		configSwitch(DIRECTION_PARAM, 0.0f, 1.0f, 1.0f, "Direction", {"Reverse", "Forward"});
+		configSwitch(SELECT_ON_CLOCK_PARAM, 0.0f, 1.0f, 0.0f, "Select on clock", {"Disabled", "Enabled"});
 		configParam<OutputRangeParamQuantity>(CVA1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1A", " V");
 		configParam<OutputRangeParamQuantity>(CVB1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1B", " V");
 		configParam<OutputRangeParamQuantity>(CVC1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1C", " V");
 		configParam<OutputRangeParamQuantity>(CVD1_PARAM, -1.0f, 1.0f, 0.0f, "Step 1D", " V");
-		configParam(SELECT1_PARAM, 0.0f, 1.0f, 0.0f, "Select 1");
+		configButton(SELECT1_PARAM, "Select 1");
 		configParam<OutputRangeParamQuantity>(CVA2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2A", " V");
 		configParam<OutputRangeParamQuantity>(CVB2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2B", " V");
 		configParam<OutputRangeParamQuantity>(CVC2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2C", " V");
 		configParam<OutputRangeParamQuantity>(CVD2_PARAM, -1.0f, 1.0f, 0.0f, "Step 2D", " V");
-		configParam(SELECT2_PARAM, 0.0f, 1.0f, 0.0f, "Select 2");
+		configButton(SELECT2_PARAM, "Select 2");
 		configParam<OutputRangeParamQuantity>(CVA3_PARAM, -1.0f, 1.0f, 0.0f, "Step 3A", " V");
 		configParam<OutputRangeParamQuantity>(CVB3_PARAM, -1.0f, 1.0f, 0.0f, "Step 3B", " V");
 		configParam<OutputRangeParamQuantity>(CVC3_PARAM, -1.0f, 1.0f, 0.0f, "Step 3C", " V");
 		configParam<OutputRangeParamQuantity>(CVD3_PARAM, -1.0f, 1.0f, 0.0f, "Step 3D", " V");
-		configParam(SELECT3_PARAM, 0.0f, 1.0f, 0.0f, "Select 3");
+		configButton(SELECT3_PARAM, "Select 3");
 		configParam<OutputRangeParamQuantity>(CVA4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4A", " V");
 		configParam<OutputRangeParamQuantity>(CVB4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4B", " V");
 		configParam<OutputRangeParamQuantity>(CVC4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4C", " V");
 		configParam<OutputRangeParamQuantity>(CVD4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4D", " V");
-		configParam(SELECT4_PARAM, 0.0f, 1.0f, 0.0f, "Select 4");
+		configButton(SELECT4_PARAM, "Select 4");
 		setInputIDs(CLOCK_INPUT, SELECT_INPUT);
 
 		setLocalElements({

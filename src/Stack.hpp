@@ -42,9 +42,11 @@ struct Stack : BGModule {
 	Stack() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(SEMIS_PARAM, 0.0f, 11.0f, 0.0f, "Semitones");
+		paramQuantities[SEMIS_PARAM]->snapEnabled = true;
 		configParam(OCTAVE_PARAM, -3.0f, 3.0f, 0.0f, "Octaves");
+		paramQuantities[OCTAVE_PARAM]->snapEnabled = true;
 		configParam(FINE_PARAM, -0.99f, 0.99f, 0.0f, "Fine tune", " cents", 0.0f, 100.0f);
-		configParam(QUANTIZE_PARAM, 0.0f, 1.0f, 1.0f, "Quantize");
+		configSwitch(QUANTIZE_PARAM, 0.0f, 1.0f, 1.0f, "Quantize", {"Disabled", "Enabled"});
 
 		for (int i = 0; i < maxChannels; ++i) {
 			_lastSemitones[i] = -1000.0f;

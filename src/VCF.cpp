@@ -217,7 +217,6 @@ struct VCFWidget : BGModuleWidget {
 		{
 			auto w = createParam<Knob16>(modeParamPosition, module, VCF::MODE_PARAM);
 			auto k = dynamic_cast<SvgKnob*>(w);
-			k->snap = true;
 			float a = (22.5 / 180.0) * M_PI;
 			k->minAngle = a;
 			k->maxAngle = M_PI - a;

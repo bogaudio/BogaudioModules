@@ -55,8 +55,10 @@ struct EightOne : AddressableSequenceModule {
 	EightOne() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(STEPS_PARAM, 1.0f, 8.0f, 8.0f, "Steps");
-		configParam(DIRECTION_PARAM, 0.0f, 1.0f, 1.0f, "Direction");
+		paramQuantities[STEPS_PARAM]->snapEnabled = true;
+		configSwitch(DIRECTION_PARAM, 0.0f, 1.0f, 1.0f, "Direction", {"Reverse", "Forward"});
 		configParam(SELECT_PARAM, 0.0f, 7.0f, 0.0f, "Select step");
+		paramQuantities[SELECT_PARAM]->snapEnabled = true;
 		setInputIDs(CLOCK_INPUT, SELECT_INPUT);
 		configBypass(IN1_INPUT, OUT_OUTPUT);
 	}

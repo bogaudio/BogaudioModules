@@ -61,14 +61,14 @@ struct LPG : LPGEnvBaseModule {
 	{
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(RESPONSE_PARAM, 0.0f, 1.0f, 0.5f, "Response", "%", 0.0f, 100.0f);
-		configParam(LONG_PARAM, 0.0f, 1.0f, 0.0f, "Long mode");
+		configButton(LONG_PARAM, "Long mode");
 		configParam(RISE_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "Rise shape");
 		configParam(FALL_SHAPE_PARAM, -1.0f, 1.0f, -0.5f, "Fall shape");
 		configParam(LPF_ENV_PARAM, -1.0f, 1.0f, 0.8f, "LPF envelope amount", "%", 0.0f, 100.0f);
 		configParam<ScaledSquaringParamQuantity<(int)maxFilterCutoff>>(LPF_BIAS_PARAM, 0.0f, 1.0f, 0.0f, "LPF cutoff", " HZ");
 		configParam(VCA_ENV_PARAM, -1.0f, 1.0f, 1.0f, "VCA envelope amount", "%", 0.0f, 100.0f);
 		configParam(VCA_BIAS_PARAM, 0.0f, 1.0f, 0.0f, "VCA level", "%", 0.0f, 100.0f);
-		configParam(LINEAR_VCA_PARAM, 0.0f, 1.0f, 0.0f, "Linear VCA mode");
+		configButton(LINEAR_VCA_PARAM, "Linear VCA mode");
 	}
 
 	void reset() override;

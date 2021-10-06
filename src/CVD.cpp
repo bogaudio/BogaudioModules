@@ -85,7 +85,6 @@ struct CVDWidget : BGModuleWidget {
 		{
 			auto w = createParam<Knob16>(timeScaleParamPosition, module, CVD::TIME_SCALE_PARAM);
 			auto k = dynamic_cast<SvgKnob*>(w);
-			k->snap = true;
 			k->minAngle = -M_PI / 4.0f;
 			k->maxAngle = M_PI / 4.0f;
 			k->speed = 3.0;

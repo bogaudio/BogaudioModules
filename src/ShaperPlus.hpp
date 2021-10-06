@@ -68,9 +68,9 @@ struct ShaperPlus : TriggerOnLoadModule {
 		configParam<EnvelopeSegmentParamQuantity>(OFF_PARAM, 0.0f, 1.0f, 0.07071f, "Off", " s");
 		configParam(ENV_PARAM, 0.0f, 1.0f, 1.0f, "Env", "%", 0.0f, 100.0f);
 		configParam(SIGNAL_PARAM, 0.0f, 1.0f, 0.1f, "Signal", "x", 10.0f);
-		configParam(TRIGGER_PARAM, 0.0f, 1.0f, 0.0f, "Trigger");
-		configParam(SPEED_PARAM, 0.0f, 1.0f, 1.0f, "Speed");
-		configParam(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "Loop");
+		configButton(TRIGGER_PARAM, "Trigger");
+		configSwitch(SPEED_PARAM, 0.0f, 1.0f, 1.0f, "Speed", {"Slow", "Normal"});
+		configSwitch(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "Loop", {"Loop", "Stop"});
 	}
 
 	void reset() override;

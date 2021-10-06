@@ -62,8 +62,8 @@ struct LVCO : VCOBase {
 	{
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam<VCOFrequencyParamQuantity>(FREQUENCY_PARAM, -3.0f, 6.0f, 0.0f, "Frequency", " Hz");
-		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow mode");
-		configParam(WAVE_PARAM, 0.0f, 5.0f, 0.0f, "Waveform");
+		configButton(SLOW_PARAM, "Slow mode");
+		configSwitch(WAVE_PARAM, 0.0f, 5.0f, 0.0f, "Waveform", {"Sine", "Triangle", "Saw", "Square", "25% Pulse", "10% Pulse"});
 		configParam(FM_DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "FM depth", "%", 0.0f, 100.0f);
 	}
 

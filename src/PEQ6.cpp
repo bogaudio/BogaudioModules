@@ -108,8 +108,9 @@ void PEQ6::postProcessAlways(const ProcessArgs& args) {
 		_rms[i] = _rmsSums[i] * _inverseChannels;
 	}
 
-	lights[FMOD_RELATIVE_LIGHT].value = !_fullFrequencyMode;
-	lights[FMOD_FULL_LIGHT].value = _fullFrequencyMode;
+	bool ffm = params[FMOD_PARAM].getValue() > 0.5f;
+	lights[FMOD_RELATIVE_LIGHT].value = !ffm;
+	lights[FMOD_FULL_LIGHT].value = ffm;
 }
 
 struct PEQ6Widget : BandExcludeModuleWidget {

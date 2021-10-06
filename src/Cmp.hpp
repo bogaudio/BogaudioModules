@@ -53,7 +53,8 @@ struct Cmp : BGModule {
 		configParam(B_PARAM, -1.0f, 1.0f, 0.0f, "B", " V", 0.0f, 10.0f);
 		configParam(WINDOW_PARAM, 0.0f, 1.0f, 0.5f, "Window", " V", 0.0f, 10.0f);
 		configParam<ScaledSquaringParamQuantity<1>>(LAG_PARAM, 0.0f, 1.0f, 0.1f, "Lag", " s");
-		configParam(OUTPUT_PARAM, 0.0f, 1.0f, 0.0f, "Output");
+		configSwitch(OUTPUT_PARAM, 0.0f, 1.0f, 0.0f, "Output", {"+10V", "+/-5V"});
+		paramQuantities[OUTPUT_PARAM]->snapEnabled = true;
 	}
 
 	void reset() override;

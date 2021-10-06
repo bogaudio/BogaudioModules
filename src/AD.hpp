@@ -69,9 +69,9 @@ struct AD : BGModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam<EnvelopeSegmentParamQuantity>(ATTACK_PARAM, 0.0f, 1.0f, 0.141421f, "Attack", " s");
 		configParam<EnvelopeSegmentParamQuantity>(DECAY_PARAM, 0.0f, 1.0f, 0.31623f, "Decay", " s");
-		configParam(LOOP_PARAM, 0.0f, 1.0f, 0.0f, "Loop");
-		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear");
-		configParam(RETRIGGER_PARAM, 0.0f, 1.0f, 1.0f, "Retrigger");
+		configSwitch(LOOP_PARAM, 0.0f, 1.0f, 0.0f, "Loop", {"Disabled (stop)", "Enabled"});
+		configSwitch(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear", {"Disabled (logarithmic)", "Enabled"});
+		configSwitch(RETRIGGER_PARAM, 0.0f, 1.0f, 1.0f, "Retrigger", {"Disabled (finish cycle)", "Enabled"});
 	}
 
 	void reset() override;

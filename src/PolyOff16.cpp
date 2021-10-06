@@ -188,11 +188,7 @@ struct PolyOff16Widget : BGModuleWidget {
 		addParam(createParam<Knob16>(scale15ParamPosition, module, PolyOff16::SCALE15_PARAM));
 		addParam(createParam<Knob16>(offset16ParamPosition, module, PolyOff16::OFFSET16_PARAM));
 		addParam(createParam<Knob16>(scale16ParamPosition, module, PolyOff16::SCALE16_PARAM));
-		{
-			auto w = createParam<Knob16>(channelsParamPosition, module, PolyOff16::CHANNELS_PARAM);
-			dynamic_cast<Knob*>(w)->snap = true;
-			addParam(w);
-		}
+		addParam(createParam<Knob16>(channelsParamPosition, module, PolyOff16::CHANNELS_PARAM));
 
 		addInput(createInput<Port24>(cv1InputPosition, module, PolyOff16::CV1_INPUT));
 		addInput(createInput<Port24>(cv2InputPosition, module, PolyOff16::CV2_INPUT));

@@ -128,6 +128,7 @@ struct PolyOff16 : OutputRangeModule<BGModule> {
 		configParam<OutputRangeParamQuantity>(OFFSET16_PARAM, -1.0f, 1.0f, 0.0f, "Channel 16 offset", " V");
 		configParam(SCALE16_PARAM, -1.0f, 1.0f, 1.0f, "Channel 16 scale", "%", 0.0f, 100.0f);
 		configParam(CHANNELS_PARAM, 1.0f, 16.0f, 1.0f, "Polyphony channels");
+		paramQuantities[CHANNELS_PARAM]->snapEnabled = true;
 	}
 
 	json_t* saveToJson(json_t* root) override;

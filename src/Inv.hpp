@@ -45,9 +45,9 @@ struct Inv : BGModule {
 	Inv() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(GATE1_PARAM, 0.0f, 1.0f, 0.0f, "Channel 1 gate");
-		configParam(LATCH1_PARAM, 0.0f, 1.0f, 0.0f, "Channel 1 latch");
+		configSwitch(LATCH1_PARAM, 0.0f, 1.0f, 0.0f, "Channel 1 latch", {"Disabled", "Enabled"});
 		configParam(GATE2_PARAM, 0.0f, 1.0f, 0.0f, "Channel 2 gate");
-		configParam(LATCH2_PARAM, 0.0f, 1.0f, 0.0f, "Channle 2 latch");
+		configSwitch(LATCH2_PARAM, 0.0f, 1.0f, 0.0f, "Channle 2 latch", {"Disabled", "Enabled"});
 		configBypass(IN1_INPUT, OUT1_OUTPUT);
 		configBypass(IN2_INPUT, OUT2_OUTPUT);
 	}
