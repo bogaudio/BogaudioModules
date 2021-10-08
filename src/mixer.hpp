@@ -92,4 +92,8 @@ struct SoloMuteButton : ParamWidget {
 	void draw(const DrawArgs& args) override;
 };
 
+struct DimSwitchQuantity : SwitchQuantity {
+	std::string getDisplayValueString() override;
+};
+
 } // namespace bogaudio

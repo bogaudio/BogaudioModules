@@ -184,3 +184,13 @@ void SoloMuteButton::draw(const DrawArgs& args) {
 	ParamWidget::draw(args);
 	nvgRestore(args.vg);
 }
+
+
+std::string DimSwitchQuantity::getDisplayValueString() {
+	if (!module || getValue() < 1.0f) {
+		return SwitchQuantity::getDisplayValueString();
+	}
+	auto* m = static_cast<DimmableMixerModule*>(module);
+	assert(labels.size() == 2);
+	return format("%s (-%ddB)", labels[1].c_str(), (int)m->_dimDb);
+}

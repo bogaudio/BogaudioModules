@@ -116,7 +116,7 @@ struct Mix8 : ExpandableModule<Mix8ExpanderMessage, DimmableMixerModule> {
 		configSwitch(MUTE8_PARAM, 0.0f, 3.0f, 0.0f, "Channel 8 mute", {"Unmuted", "Muted", "Soloed", "Soloed"});
 		configParam(MIX_PARAM, 0.0f, 1.0f, levelDefault, "Master level", " dB", 0.0f, MixerChannel::maxDecibels - MixerChannel::minDecibels, MixerChannel::minDecibels);
 		configSwitch(MIX_MUTE_PARAM, 0.0f, 1.0f, 0.0f, "Master mute", {"Unmuted", "Muted"});
-		configSwitch(MIX_DIM_PARAM, 0.0f, 1.0f, 0.0f, "Master dim", {"Disabled", "Enabled"});
+		configSwitch<DimSwitchQuantity>(MIX_DIM_PARAM, 0.0f, 1.0f, 0.0f, "Master dim", {"Disabled", "Enabled"});
 		getParamQuantity(MUTE1_PARAM)->randomizeEnabled = false;
 		getParamQuantity(MUTE2_PARAM)->randomizeEnabled = false;
 		getParamQuantity(MUTE3_PARAM)->randomizeEnabled = false;
