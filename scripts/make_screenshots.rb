@@ -37,7 +37,7 @@ screens = [
     file: 'modules4.png',
     crop: false,
     rows: [
-      ['VCA', 'VCAmp', 'Velo', '-', 'AMRM', 'Pressor', 'Lmtr', 'Nsgt', 'CmpDist'],
+      ['VCA', 'VCAmp', 'Velo', '-', 'AMRM', 'Pressor', 'Clpr', 'Lmtr', 'Nsgt', 'CmpDist'],
       ['Noise', 'SampleHold', 'Walk2', 'Walk', '-', 'EightOne', 'OneEight', 'AddrSeq', 'AddrSeqX', 'PGMR', 'PGMRX'],
       ['VU', 'Analyzer', 'AnalyzerXL'],
       ['Ranalyzer']
@@ -109,10 +109,17 @@ screens = [
     ]
   },
   {
-    file: 'parametric_eqs.png',
+    file: 'parametric_eqs1.png',
     crop: true,
     rows: [
-      ['PEQ', 'PEQ6', 'PEQ6XF', 'PEQ14', 'PEQ14XF']
+      ['PEQ', 'PEQ6', 'PEQ6XF']
+    ]
+  },
+  {
+    file: 'parametric_eqs2.png',
+    crop: true,
+    rows: [
+      ['PEQ14', 'PEQ14XF']
     ]
   },
   {
@@ -147,32 +154,39 @@ screens = [
     file: 'mixers1.png',
     crop: true,
     rows: [
-      ['Mix8', 'Mix8x', 'Mix4', 'Mix4x']
+      ['Mix8', 'Mix8x']
     ]
   },
   {
     file: 'mixers2.png',
     crop: true,
     rows: [
-      ['Mix1', 'Mix2', 'UMix', 'Mumix', 'Mute8', 'VCM', 'Pan', 'XFade']
+      ['Mix4', 'Mix4x']
     ]
   },
   {
     file: 'mixers3.png',
     crop: true,
     rows: [
-      ['Matrix81', 'Matrix18', 'Matrix44', 'Matrix44Cvm']
+      ['Mix1', 'Mix2', 'UMix', 'Mumix', 'Mute8', 'VCM', 'Pan', 'XFade']
     ]
   },
   {
     file: 'mixers4.png',
     crop: true,
     rows: [
-      ['Matrix88', 'Matrix88Cv', 'Matrix88M']
+      ['Matrix81', 'Matrix18', 'Matrix44', 'Matrix44Cvm']
     ]
   },
   {
     file: 'mixers5.png',
+    crop: true,
+    rows: [
+      ['Matrix88', 'Matrix88Cv', 'Matrix88M']
+    ]
+  },
+  {
+    file: 'mixers6.png',
     crop: true,
     rows: [
       ['Switch81', 'Switch18', 'Switch44', 'Switch88', 'Switch1616']
@@ -189,7 +203,7 @@ screens = [
     file: 'dynamics.png',
     crop: true,
     rows: [
-      ['AMRM', 'Pressor', 'Lmtr', 'Nsgt', 'CmpDist']
+      ['AMRM', 'Pressor', 'Clpr', 'Lmtr', 'Nsgt', 'CmpDist']
     ]
   },
   {

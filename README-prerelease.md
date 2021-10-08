@@ -24,23 +24,23 @@ Some modules have expanders; see <a href="#expanders">Note on Expanders</a>.
 
 Many modules support bypassing in a non-default way; see <a href="#bypassing">Note on Bypassing</a>.
 
-![modules screenshot](./doc/www/modules1.png)
+![modules screenshot 1](./doc/www/modules1.png)
 
-![modules screenshot](./doc/www/modules2.png)
+![modules screenshot 2](./doc/www/modules2.png)
 
-![modules screenshot](./doc/www/modules3.png)
+![modules screenshot 3](./doc/www/modules3.png)
 
-![modules screenshot](./doc/www/modules4.png)
+![modules screenshot 4](./doc/www/modules4.png)
 
-![modules screenshot](./doc/www/modules5.png)
+![modules screenshot 5](./doc/www/modules5.png)
 
 The modules have two <a href="#alternate_panels">alternate panel designs</a>, "Dark":
 
-![modules screenshot](./doc/www/skin-dark.png)
+![Dark alternate panels screenshot](./doc/www/skin-dark.png)
 
 And "Dark (low-contrast)":
 
-![modules screenshot](./doc/www/skin-lowcontrast.png)
+![Dark (low-contrast) modules screenshot](./doc/www/skin-lowcontrast.png)
 
 
 ## Builds/Releases
@@ -65,7 +65,7 @@ The master branch of this module currently builds against Rack 2.0.x.
 
 ### <a name="oscillators"></a> Oscillators
 
-![Oscillators screenshot](doc/www/oscillators1.png)
+![Oscillators screenshot 1](doc/www/oscillators1.png)
 
 #### <a name="vco"></a> VCO
 
@@ -133,7 +133,7 @@ _When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="additator"></a> ADDITATOR
 
-![Oscillators screenshot](doc/www/oscillators2.png)
+![Oscillators screenshot 2](doc/www/oscillators2.png)
 
 An additive oscillator, where the output is the sum of up to 100 individual sine/cosine waves (partials).  Various parameter knobs/CVs allow control over the number, frequencies and amplitudes of the partials:
   - PARTIALS: sets the partial count.
@@ -331,7 +331,7 @@ _When <a href="#bypassing">bypassed</a>:_ passes left and right inputs unmodifie
 
 #### <a name="lpg"></a> LPG
 
-![Filters screenshot](doc/www/lpgs.png)
+![LPGs screenshot](doc/www/lpgs.png)
 
 LPG is a "low-pass gate", where an envelope generator, low-pass filter (LPF) and amplifier (VCA) are combined into a single sound-shaping unit.  It lends itself to percussive or plucked sounds, though longer notes are possible.
 
@@ -384,7 +384,7 @@ _Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the G
 
 _When <a href="#bypassing">bypassed</a>:_ no output.
 
-![Filters screenshot](doc/www/parametric_eqs.png)
+![Parameteric EQs screenshot 1](doc/www/parametric_eqs1.png)
 
 #### <a name="peq"></a> PEQ
 
@@ -418,6 +418,8 @@ _When <a href="#bypassing">bypassed</a>:_ passes IN unmodified to OUT.
 
 Expands PEQ6 with envelope follower outputs, per band.  The DAMP and GAIN knobs control the followers; see the description of the <a href="#follow">FOLLOW</a> module for a description of how these work.
 
+![Parameteric EQs screenshot 2](doc/www/parametric_eqs2.png)
+
 #### <a name="peq14"></a> PEQ14
 
 A fourteen channel parametric EQ.  The control scheme is as with PEQ6.
@@ -441,7 +443,7 @@ Expands PEQ14 with envelope follower outputs, per band.  The DAMP and GAIN knobs
 
 DADSRH (Delay, Attack, Decay, Sustain, Release, Hold) is an envelope generator, augmenting a standard ADSR design with a delay stage and a self-gating (hold) mode.
 
-![Envelopes screenshot](doc/www/envelopes1.png)
+![Envelopes screenshot 1](doc/www/envelopes1.png)
 
 Features:
   - When the MODE switch is set to GATE, DADSRH is a more-or-less standard ADSR envelope generator, with an additional pre-attack delay stage.  The envelope is controlled by a gate CV at the trigger port, or by holding the TRIGGER button.
@@ -468,7 +470,7 @@ _When <a href="#bypassing">bypassed</a>:_ no output.
 
 SHAPER emulates the function of the Envelope Generator section of the classic [EMS VC3](https://en.wikipedia.org/wiki/EMS_VCS_3) and related synths.  It combines an envelope with a VCA.  Unlike an ADSR, the envelope stages are attack, on, decay and off, producing a signature trapezoidal envelope shape.
 
-![Envelopes screenshot](doc/www/envelopes2.png)
+![Envelopes screenshot 2](doc/www/envelopes2.png)
 
 Features:
   - The ATTACK, ON, DECAY and OFF knobs specify times from nearly zero to 10 seconds.  The SPEED switch allows these times to be multiplied by 10.
@@ -546,7 +548,7 @@ _When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="dgate"></a> DGATE
 
-![Envelopes screenshot](doc/www/envelopes3.png)
+![Envelopes screenshot 3](doc/www/envelopes3.png)
 
 A trigger-to-gate utility, with gate duration up to 10 seconds, and an optional pre-delay of up to 10 seconds.  A trigger pulse is emitted at END when a delay/gate cycle ends.  If the STOP/LOOP switch is set to LOOP, or if the trigger is high when the cycle ends, the cycle repeats.
 
@@ -608,7 +610,7 @@ _When <a href="#bypassing">bypassed</a>:_ no output.
 
 An eight-channel mixer/panner with mutes.
 
-![Mixers screenshot](doc/www/mixers1.png)
+![Mixers screenshot 1](doc/www/mixers1.png)
 
 Features:
   - Eight input channels with decibel-calibrated level faders.
@@ -643,6 +645,8 @@ Return A and B are each stereo, with the right input being normalled to the left
 
 MIX8X must be positioned to the right of, and ajacent to, the base MIX8 module it will pair with.  See <a href="#expanders">notes on expanders</a>.
 
+![Mixers screenshot 2](doc/www/mixers2.png)
+
 #### <a name="mix4"></a> MIX4
 
 A four-channel version of MIX8 with the same features.
@@ -655,7 +659,7 @@ _When <a href="#bypassing">bypassed</a>:_ no output.
 
 An expander for MIX4, with functionality identical to what MIX8X adds to MIX8.
 
-![Mixers screenshot](doc/www/mixers2.png)
+![Mixers screenshot 3](doc/www/mixers3.png)
 
 #### <a name="mix1"></a> MIX1
 
@@ -749,7 +753,7 @@ _When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="matrix81"></a> MATRIX81
 
-![Mixers screenshot](doc/www/mixers3.png)
+![Mixers screenshot 4](doc/www/mixers4.png)
 
 An eight input, one output version of <a href="#matrix44">MATRIX44</a>, below.
 
@@ -795,7 +799,7 @@ MX44CVM must be positioned to the right of, and adjacent to, the MATRIX44 module
 
 #### <a name="matrix88"></a> MATRIX88
 
-![Mixers screenshot](doc/www/mixers4.png)
+![Mixers screenshot 5](doc/www/mixers5.png)
 
 An 8x8 version of MATRIX44.  It is expanable with <a href="matrix88cv">MX88CV</a> and <a href="matrix88m">MX88M</a>.
 
@@ -819,7 +823,7 @@ MX88M must be positioned to the right of, and adjacent to, the MATRIX88 module i
 
 #### <a name="switch81"></a> SWITCH81
 
-![Mixers screenshot](doc/www/mixers5.png)
+![Mixers screenshot 6](doc/www/mixers6.png)
 
 An eight input, one output version of <a href="#switch44">SWITCH44</a>, below.
 
@@ -883,7 +887,7 @@ _When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="vca"></a> VCA
 
-![Mixers screenshot](doc/www/vcas.png)
+![VCAs screenshot](doc/www/vcas.png)
 
 A two-channel voltage-controlled attenuator.  (An attenuator can only reduce a signal.)
 
@@ -927,7 +931,7 @@ _Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the 
 
 _When <a href="#bypassing">bypassed</a>:_ passes IN unmodified to OUT.
 
-![Mixers screenshot](doc/www/dynamics.png)
+![Dynamics processors screenshot](doc/www/dynamics.png)
 
 #### <a name="amrm"></a> AM/RM
 
@@ -1094,7 +1098,7 @@ _When <a href="#bypassing">bypassed</a>:_ no output.
 
 ### <a name="sequencers"></a> Sequential Switches and Sequencers
 
-![Sequencers screenshot](doc/www/sequencers1.png)
+![Sequencers screenshot 1](doc/www/sequencers1.png)
 
 #### <a name="eightone"></a> 8:1
 
@@ -1142,7 +1146,7 @@ When ASXs are added to an ADDR-SEQ, ADDR-SEQ's STEPS and SELECT knobs (and selec
 
 Each ASX in a chain must be positioned to the right of, and adjacent to, the previous ASX in the chain, or the base ADDR-SEQ module.  See <a href="#expanders">notes on expanders</a>.
 
-![Sequencers screenshot](doc/www/sequencers2.png)
+![Sequencers screenshot 2](doc/www/sequencers2.png)
 
 #### <a name="pgmr"></a> PGMR
 
@@ -1169,7 +1173,7 @@ Each PGMRX in a chain must be positioned to the right of, and ajacent to, the pr
 
 ### <a name="visualizers"></a> Visualizers
 
-![Analyzer screenshot](doc/www/visualizers.png)
+![ANALYZER screenshot](doc/www/visualizers.png)
 
 #### <a name="vu"></a> VU
 
@@ -1203,7 +1207,7 @@ _Polyphony:_ Monophonic, with two exceptions:
 
 #### <a name="analyzerxl"></a> ANALYZER-XL
 
-![Analyzer screenshot](doc/www/visualizers2.png)
+![ANALYZER-XL screenshot](doc/www/visualizers2.png)
 
 An eight-channel, 42HP version of ANALYZER, with edge-to-edge-screen design.  Options corresponding to ANALYZER's panel controls are available on the context (right-click) menu.  An extra "Quality" setting, "Ultra+" is available; this uses an FFT size of 16384 (or 32768 if Rack's sample rate is 96khz or higher).
 
@@ -1213,7 +1217,7 @@ _Polyphony:_ Monophonic, but if an input is polyphonic, its channels are summed,
 
 #### <a name="ranalyzer"></a> RANALYZER
 
-![Analyzer screenshot](doc/www/visualizers3.png)
+![RANALYZER screenshot](doc/www/visualizers3.png)
 
 RANALYZER is a frequency response analyzer: it passes a test signal to another module, expecting the output of that module to be patched back, and then displays the frequency spectrum of the response relative to the test signal.
 
@@ -1242,7 +1246,7 @@ _Polyphony:_ Monophonic.
 
 ### <a name="poly"></a> Polyphony Utilities
 
-![Polyphony utilities screenshot](doc/www/poly1.png)
+![Polyphony utilities screenshot 1](doc/www/poly1.png)
 
 #### <a name="mono"></a> MONO
 
@@ -1312,7 +1316,7 @@ The behavior of DETUNE depends on the number of output channels:
 
 _When <a href="#bypassing">bypassed</a>:_ no output.
 
-![Polyphony utilities screenshot](doc/www/poly2.png)
+![Polyphony utilities screenshot 2](doc/www/poly2.png)
 
 #### <a name="polycon"></a> POLYCON16
 
@@ -1569,7 +1573,7 @@ _When <a href="#bypassing">bypassed</a>:_ no output.
 
 ### <a name="misc"></a> Miscellaneous
 
-![Miscellaneous screenshot](doc/www/misc.png)
+![Miscellaneous modules screenshot](doc/www/misc.png)
 
 #### <a name="blank3"></a> BLANK3
 

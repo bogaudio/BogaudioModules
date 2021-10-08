@@ -48,7 +48,7 @@ skins.each do |skin|
   end
 
   FileUtils.cd(rack_dir)
-  out = `./Rack -d -t 1 Bogaudio 2>&1`
+  out = `./Rack -d -t 1 2>&1`
   unless $?.success?
     STDERR.puts "Calling Rack failed:\n#{out}"
     exit 1
