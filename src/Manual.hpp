@@ -39,6 +39,16 @@ struct Manual : TriggerOnLoadModule {
 	Manual() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configButton(TRIGGER_PARAM, "Trigger");
+
+		configOutput(OUT1_OUTPUT, "OUT1");
+		configOutput(OUT2_OUTPUT, "OUT2");
+		configOutput(OUT3_OUTPUT, "OUT3");
+		configOutput(OUT4_OUTPUT, "OUT4");
+		configOutput(OUT5_OUTPUT, "OUT5");
+		configOutput(OUT6_OUTPUT, "OUT6");
+		configOutput(OUT7_OUTPUT, "OUT7");
+		configOutput(OUT8_OUTPUT, "OUT8");
+
 		_triggerOnLoad = false;
 		_initialDelay = new bogaudio::dsp::Timer(APP->engine->getSampleRate(), 0.01f);
 	}

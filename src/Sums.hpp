@@ -30,6 +30,16 @@ struct Sums : DisableOutputLimitModule {
 
 	Sums() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
+
+		configInput(A_INPUT, "A");
+		configInput(B_INPUT, "B");
+		configInput(NEGATE_INPUT, "NEGATE");
+
+		configOutput(SUM_OUTPUT, "SUM");
+		configOutput(DIFFERENCE_OUTPUT, "DIFFERENCE");
+		configOutput(MAX_OUTPUT, "MAX");
+		configOutput(MIN_OUTPUT, "MIN");
+		configOutput(NEGATE_OUTPUT, "NEGATE");
 	}
 
 	void processAll(const ProcessArgs& args) override;

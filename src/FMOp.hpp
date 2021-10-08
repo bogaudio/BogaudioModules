@@ -118,6 +118,16 @@ struct FMOp : BGModule {
 		configButton(ENV_TO_LEVEL_PARAM, "Level follows envelope");
 		configButton(ENV_TO_FEEDBACK_PARAM, "Feedback follows envelope");
 		configButton(ENV_TO_DEPTH_PARAM, "FM depth follows envelope");
+
+		configInput(SUSTAIN_INPUT, "SUSTAIN");
+		configInput(DEPTH_INPUT, "DEPTH");
+		configInput(FEEDBACK_INPUT, "FEEDBACK");
+		configInput(LEVEL_INPUT, "LEVEL");
+		configInput(PITCH_INPUT, "PITCH");
+		configInput(GATE_INPUT, "GATE");
+		configInput(FM_INPUT, "FM");
+
+		configOutput(AUDIO_OUTPUT, "AUDIO");
 	}
 
 	void reset() override;

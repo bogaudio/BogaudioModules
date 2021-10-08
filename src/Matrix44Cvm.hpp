@@ -74,6 +74,23 @@ struct Matrix44Cvm : Matrix44CvmBase {
 		configSwitch(MUTE34_PARAM, 0.0f, 3.0f, 0.0f, "Mute 3D", muteLabels);
 		configSwitch(MUTE44_PARAM, 0.0f, 3.0f, 0.0f, "Mute 4D", muteLabels);
 
+		configInput(CV11_INPUT, "CV11");
+		configInput(CV21_INPUT, "CV21");
+		configInput(CV31_INPUT, "CV31");
+		configInput(CV41_INPUT, "CV41");
+		configInput(CV12_INPUT, "CV12");
+		configInput(CV22_INPUT, "CV22");
+		configInput(CV32_INPUT, "CV32");
+		configInput(CV42_INPUT, "CV42");
+		configInput(CV13_INPUT, "CV13");
+		configInput(CV23_INPUT, "CV23");
+		configInput(CV33_INPUT, "CV33");
+		configInput(CV43_INPUT, "CV43");
+		configInput(CV14_INPUT, "CV14");
+		configInput(CV24_INPUT, "CV24");
+		configInput(CV34_INPUT, "CV34");
+		configInput(CV44_INPUT, "CV44");
+
 		_mutes = new Param*[16];
 		_cvs = new Input*[16];
 		for (int i = 0; i < 16; ++i) {

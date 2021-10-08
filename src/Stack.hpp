@@ -48,6 +48,12 @@ struct Stack : BGModule {
 		configParam(FINE_PARAM, -0.99f, 0.99f, 0.0f, "Fine tune", " cents", 0.0f, 100.0f);
 		configSwitch(QUANTIZE_PARAM, 0.0f, 1.0f, 1.0f, "Quantize", {"Disabled", "Enabled"});
 
+		configInput(CV_INPUT, "CV");
+		configInput(IN_INPUT, "IN");
+
+		configOutput(THRU_OUTPUT, "THRU");
+		configOutput(OUT_OUTPUT, "OUT");
+
 		for (int i = 0; i < maxChannels; ++i) {
 			_lastSemitones[i] = -1000.0f;
 			_lastInCV[i] = -1000.0f;

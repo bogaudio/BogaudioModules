@@ -38,6 +38,12 @@ struct Mix1 : LinearCVMixerModule {
 		configParam(LEVEL_PARAM, 0.0f, 1.0f, fabsf(MixerChannel::minDecibels) / (MixerChannel::maxDecibels - MixerChannel::minDecibels), "Level", "dB", 0.0f, MixerChannel::maxDecibels - MixerChannel::minDecibels, MixerChannel::minDecibels);
 		configSwitch(MUTE_PARAM, 0.0f, 1.0f, 0.0f, "Mute", {"Unmuted", "Muted"});
 		configBypass(IN_INPUT, OUT_OUTPUT);
+
+		configInput(MUTE_INPUT, "MUTE");
+		configInput(LEVEL_INPUT, "LEVEL");
+		configInput(IN_INPUT, "IN");
+
+		configOutput(OUT_OUTPUT, "OUT");
 	}
 
 	void sampleRateChange() override;

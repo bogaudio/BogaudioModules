@@ -90,6 +90,17 @@ struct Test2 : BGModule {
 		configParam(PARAM1B_PARAM, 0.0f, 1.0f, 0.0f, "param1b");
 		configParam(PARAM2B_PARAM, 0.0f, 1.0f, 0.0f, "param2b");
 		configParam(PARAM3B_PARAM, 0.0f, 1.0f, 0.0f, "param3b");
+
+		configInput(CV1A_INPUT, "CV1A");
+		configInput(CV2A_INPUT, "CV2A");
+		configInput(CV3A_INPUT, "CV3A");
+		configInput(CV1B_INPUT, "CV1B");
+		configInput(CV2B_INPUT, "CV2B");
+		configInput(CV3B_INPUT, "CV3B");
+		configInput(IN_INPUT, "IN");
+
+		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT2_OUTPUT, "OUT2");
 	}
 
 	void reset() override;

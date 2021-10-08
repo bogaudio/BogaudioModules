@@ -43,6 +43,9 @@ struct Reftone : BGModule {
 		paramQuantities[OCTAVE_PARAM]->snapEnabled = true;
 		configParam(FINE_PARAM, -0.99f, 0.99f, 0.0f, "Fine tune", " cents", 0.0f, 100.0f);
 
+		configOutput(CV_OUTPUT, "CV");
+		configOutput(OUT_OUTPUT, "OUT");
+
 		sampleRateChange();
 	}
 

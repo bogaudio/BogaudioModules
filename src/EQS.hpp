@@ -44,6 +44,12 @@ struct EQS : BGModule {
 		configParam<EQParamQuantity>(HIGH_PARAM, -1.0f, 1.0f, 0.0f, "High", " dB");
 		configBypass(LEFT_INPUT, LEFT_OUTPUT);
 		configBypass(RIGHT_INPUT, RIGHT_OUTPUT);
+
+		configInput(LEFT_INPUT, "LEFT");
+		configInput(RIGHT_INPUT, "RIGHT");
+
+		configOutput(LEFT_OUTPUT, "LEFT");
+		configOutput(RIGHT_OUTPUT, "RIGHT");
 	}
 
 	bool active() override;

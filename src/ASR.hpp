@@ -67,6 +67,13 @@ struct ASR : BGModule {
 		configParam<EnvelopeSegmentParamQuantity>(RELEASE_PARAM, 0.0f, 1.0f, 0.31623f, "Release", " s");
 		configParam(SUSTAIN_PARAM, 0.0f, 1.0f, 1.0f, "Sustain", "", 0.0f, 10.0f);
 		configSwitch(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear", {"Disabled (logarithmic)", "Enabled"});
+
+		configInput(TRIGGER_INPUT, "TRIGGER");
+		configInput(ATTACK_INPUT, "ATTACK");
+		configInput(RELEASE_INPUT, "RELEASE");
+
+		configOutput(ENV_OUTPUT, "ENV");
+		configOutput(EOC_OUTPUT, "EOC");
 	}
 
 	void reset() override;

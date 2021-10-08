@@ -61,6 +61,20 @@ struct OneEight : AddressableSequenceModule {
 		paramQuantities[SELECT_PARAM]->snapEnabled = true;
 		setInputIDs(CLOCK_INPUT, SELECT_INPUT);
 		configBypass(IN_INPUT, OUT1_OUTPUT);
+
+		configInput(CLOCK_INPUT, "CLOCK");
+		configInput(RESET_INPUT, "RESET");
+		configInput(SELECT_INPUT, "SELECT");
+		configInput(IN_INPUT, "IN");
+
+		configOutput(OUT1_OUTPUT, "OUT1");
+		configOutput(OUT2_OUTPUT, "OUT2");
+		configOutput(OUT3_OUTPUT, "OUT3");
+		configOutput(OUT4_OUTPUT, "OUT4");
+		configOutput(OUT5_OUTPUT, "OUT5");
+		configOutput(OUT6_OUTPUT, "OUT6");
+		configOutput(OUT7_OUTPUT, "OUT7");
+		configOutput(OUT8_OUTPUT, "OUT8");
 	}
 
 	void processAlways(const ProcessArgs& args) override;

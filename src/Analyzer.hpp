@@ -52,6 +52,16 @@ struct Analyzer : AnalyzerBase {
 		configParam(SMOOTH_PARAM, 0.0f, 1.0f, 0.5f, "Smoothing", " ms", 0.0f, 500.0f);
 		configSwitch(QUALITY_PARAM, 1.0f, 3.0f, 1.0f, "Analysis quality", {"Good", "High", "Ultra"});
 		configSwitch(WINDOW_PARAM, 1.0f, 3.0f, 1.0f, "Analysis window type", {"Kaiser", "Hamming", "None"});
+
+		configInput(SIGNALA_INPUT, "SIGNALA");
+		configInput(SIGNALB_INPUT, "SIGNALB");
+		configInput(SIGNALC_INPUT, "SIGNALC");
+		configInput(SIGNALD_INPUT, "SIGNALD");
+
+		configOutput(SIGNALA_OUTPUT, "SIGNALA");
+		configOutput(SIGNALB_OUTPUT, "SIGNALB");
+		configOutput(SIGNALC_OUTPUT, "SIGNALC");
+		configOutput(SIGNALD_OUTPUT, "SIGNALD");
 	}
 	virtual ~Analyzer() {
 		reset();

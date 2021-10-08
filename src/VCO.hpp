@@ -52,6 +52,16 @@ struct VCO : VCOBase {
 		configParam(FM_PARAM, 0.0f, 1.0f, 0.0f, "FM depth", "%", 0.0f, 100.0f);
 		configSwitch(FM_TYPE_PARAM, 0.0f, 1.0f, 1.0f, "FM mode", {"Linear FM", "Exponential FM"});
 		configButton(LINEAR_PARAM, "Linear frequency");
+
+		configInput(PITCH_INPUT, "Pitch (1V/octave)");
+		configInput(SYNC_INPUT, "Sync");
+		configInput(PW_INPUT, "Pulse width");
+		configInput(FM_INPUT, "Frequency modulation");
+
+		configOutput(SQUARE_OUTPUT, "Square wave");
+		configOutput(SAW_OUTPUT, "Saw wave");
+		configOutput(TRIANGLE_OUTPUT, "Triangle wave");
+		configOutput(SINE_OUTPUT, "Sine wave");
 	}
 
 	bool active() override;

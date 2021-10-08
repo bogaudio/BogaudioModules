@@ -65,6 +65,12 @@ struct LVCO : VCOBase {
 		configButton(SLOW_PARAM, "Slow mode");
 		configSwitch(WAVE_PARAM, 0.0f, 5.0f, 0.0f, "Waveform", {"Sine", "Triangle", "Saw", "Square", "25% Pulse", "10% Pulse"});
 		configParam(FM_DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "FM depth", "%", 0.0f, 100.0f);
+
+		configInput(PITCH_INPUT, "PITCH");
+		configInput(FM_INPUT, "FM");
+		configInput(SYNC_INPUT, "SYNC");
+
+		configOutput(OUT_OUTPUT, "OUT");
 	}
 
 	json_t* saveToJson(json_t* root) override;

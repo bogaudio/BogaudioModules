@@ -95,6 +95,20 @@ struct Pressor : BGModule {
 		configSwitch(KNEE_PARAM, 0.0f, 1.0f, 1.0f, "Knee", {"Hard", "Soft"});
 		configBypass(LEFT_INPUT, LEFT_OUTPUT);
 		configBypass(RIGHT_INPUT, RIGHT_OUTPUT);
+
+		configInput(LEFT_INPUT, "LEFT");
+		configInput(SIDECHAIN_INPUT, "SIDECHAIN");
+		configInput(THRESHOLD_INPUT, "THRESHOLD");
+		configInput(RATIO_INPUT, "RATIO");
+		configInput(RIGHT_INPUT, "RIGHT");
+		configInput(ATTACK_INPUT, "ATTACK");
+		configInput(RELEASE_INPUT, "RELEASE");
+		configInput(INPUT_GAIN_INPUT, "INPUT_GAIN");
+		configInput(OUTPUT_GAIN_INPUT, "OUTPUT_GAIN");
+
+		configOutput(ENVELOPE_OUTPUT, "ENVELOPE");
+		configOutput(LEFT_OUTPUT, "LEFT");
+		configOutput(RIGHT_OUTPUT, "RIGHT");
 	}
 
 	void sampleRateChange() override;

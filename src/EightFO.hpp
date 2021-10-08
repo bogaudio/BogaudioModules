@@ -144,6 +144,30 @@ struct EightFO : LFOBase {
 		configParam(PHASE2_PARAM, -1.0, 1.0, 0.0, "Phase 90", "º", 0.0f, 180.0f);
 		configParam(PHASE1_PARAM, -1.0, 1.0, 0.0, "Phase 45", "º", 0.0f, 180.0f);
 		configParam(PHASE0_PARAM, -1.0, 1.0, 0.0f, "Phase 0", "º", 0.0f, 180.0f);
+
+		configInput(SAMPLE_PWM_INPUT, "SAMPLE_PWM");
+		configInput(PHASE7_INPUT, "PHASE7");
+		configInput(PHASE6_INPUT, "PHASE6");
+		configInput(PHASE5_INPUT, "PHASE5");
+		configInput(PHASE4_INPUT, "PHASE4");
+		configInput(PHASE3_INPUT, "PHASE3");
+		configInput(PHASE2_INPUT, "PHASE2");
+		configInput(PHASE1_INPUT, "PHASE1");
+		configInput(PHASE0_INPUT, "PHASE0");
+		configInput(PITCH_INPUT, "PITCH");
+		configInput(RESET_INPUT, "RESET");
+		configInput(OFFSET_INPUT, "OFFSET");
+		configInput(SCALE_INPUT, "SCALE");
+		configInput(SMOOTH_INPUT, "SMOOTH");
+
+		configOutput(PHASE7_OUTPUT, "PHASE7");
+		configOutput(PHASE6_OUTPUT, "PHASE6");
+		configOutput(PHASE5_OUTPUT, "PHASE5");
+		configOutput(PHASE4_OUTPUT, "PHASE4");
+		configOutput(PHASE3_OUTPUT, "PHASE3");
+		configOutput(PHASE2_OUTPUT, "PHASE2");
+		configOutput(PHASE1_OUTPUT, "PHASE1");
+		configOutput(PHASE0_OUTPUT, "PHASE0");
 	}
 
 	void reset() override;

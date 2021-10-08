@@ -40,6 +40,13 @@ struct PEQ6XF : ExpanderModule<PEQ6ExpanderMessage, PEQXFBase> {
 		configParam(DAMP_PARAM, 0.0f, 1.0f, 0.3f, "Envelope follower smoothing", "%", 0.0f, 100.0f);
 		configParam<EFGainParamQuantity>(GAIN_PARAM, -1.0f, 1.0f, 0.0f, "Envelope follower gain", " dB");
 
+		configOutput(EF1_OUTPUT, "EF1");
+		configOutput(EF2_OUTPUT, "EF2");
+		configOutput(EF3_OUTPUT, "EF3");
+		configOutput(EF4_OUTPUT, "EF4");
+		configOutput(EF5_OUTPUT, "EF5");
+		configOutput(EF6_OUTPUT, "EF6");
+
 		setBaseModelPredicate([](Model* m) { return m == modelPEQ6; });
 	}
 

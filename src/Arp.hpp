@@ -138,6 +138,14 @@ struct Arp : BGModule {
 		configParam<GateLengthParamQuantity>(GATE_LENGTH_PARAM, 0.0f, 1.0f, 0.5f, "Gate length");
 		configSwitch(HOLD_PARAM, 0.0f, 1.0f, 0.0f, "Hold/latch", {"Disabled", "Enabled"});
 
+		configInput(CLOCK_INPUT, "CLOCK");
+		configInput(RESET_INPUT, "RESET");
+		configInput(PITCH_INPUT, "PITCH");
+		configInput(GATE_INPUT, "GATE");
+
+		configOutput(PITCH_OUTPUT, "PITCH");
+		configOutput(GATE_OUTPUT, "GATE");
+
 		_currentNotes = new NoteSet();
 		_playbackNotes = new NoteSet(_currentNotes);
 	}

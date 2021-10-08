@@ -47,6 +47,17 @@ struct Switch18 : SwitchMatrixModule {
 		configSwitchParam(MIX6_PARAM, "Route 6");
 		configSwitchParam(MIX7_PARAM, "Route 7");
 		configSwitchParam(MIX8_PARAM, "Route 8");
+
+		configInput(IN_INPUT, "IN");
+
+		configOutput(OUT1_OUTPUT, "OUT1");
+		configOutput(OUT2_OUTPUT, "OUT2");
+		configOutput(OUT3_OUTPUT, "OUT3");
+		configOutput(OUT4_OUTPUT, "OUT4");
+		configOutput(OUT5_OUTPUT, "OUT5");
+		configOutput(OUT6_OUTPUT, "OUT6");
+		configOutput(OUT7_OUTPUT, "OUT7");
+		configOutput(OUT8_OUTPUT, "OUT8");
 	}
 };
 

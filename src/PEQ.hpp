@@ -74,6 +74,20 @@ struct PEQ : BGModule {
 		configParam(C_CV_PARAM, -1.0f, 1.0f, 0.0f, "Channel C frequency CV attenuation", "%", 0.0f, 100.0f);
 		configSwitch(C_MODE_PARAM, 0.0f, 1.0f, 1.0f, "Channel C HP/BP", {"Bandpass", "Highpass"});
 		configBypass(IN_INPUT, OUT_OUTPUT);
+
+		configInput(A_LEVEL_INPUT, "A_LEVEL");
+		configInput(B_LEVEL_INPUT, "B_LEVEL");
+		configInput(C_LEVEL_INPUT, "C_LEVEL");
+		configInput(A_FREQUENCY_INPUT, "A_FREQUENCY");
+		configInput(B_FREQUENCY_INPUT, "B_FREQUENCY");
+		configInput(C_FREQUENCY_INPUT, "C_FREQUENCY");
+		configInput(A_BANDWIDTH_INPUT, "A_BANDWIDTH");
+		configInput(B_BANDWIDTH_INPUT, "B_BANDWIDTH");
+		configInput(C_BANDWIDTH_INPUT, "C_BANDWIDTH");
+		configInput(ALL_CV_INPUT, "ALL_CV");
+		configInput(IN_INPUT, "IN");
+
+		configOutput(OUT_OUTPUT, "OUT");
 	}
 
 	void sampleRateChange() override;

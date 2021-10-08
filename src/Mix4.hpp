@@ -88,6 +88,23 @@ struct Mix4 : ExpandableModule<Mix4ExpanderMessage, DimmableMixerModule> {
 		getParamQuantity(MIX_MUTE_PARAM)->randomizeEnabled = false;
 		getParamQuantity(MIX_DIM_PARAM)->randomizeEnabled = false;
 
+		configInput(CV1_INPUT, "CV1");
+		configInput(PAN1_INPUT, "PAN1");
+		configInput(IN1_INPUT, "IN1");
+		configInput(CV2_INPUT, "CV2");
+		configInput(PAN2_INPUT, "PAN2");
+		configInput(IN2_INPUT, "IN2");
+		configInput(CV3_INPUT, "CV3");
+		configInput(PAN3_INPUT, "PAN3");
+		configInput(IN3_INPUT, "IN3");
+		configInput(CV4_INPUT, "CV4");
+		configInput(PAN4_INPUT, "PAN4");
+		configInput(IN4_INPUT, "IN4");
+		configInput(MIX_CV_INPUT, "MIX_CV");
+
+		configOutput(L_OUTPUT, "L");
+		configOutput(R_OUTPUT, "R");
+
 		_channels[0] = new MixerChannel(params[LEVEL1_PARAM], params[MUTE1_PARAM], inputs[CV1_INPUT]);
 		_channels[1] = new MixerChannel(params[LEVEL2_PARAM], params[MUTE2_PARAM], inputs[CV2_INPUT]);
 		_channels[2] = new MixerChannel(params[LEVEL3_PARAM], params[MUTE3_PARAM], inputs[CV3_INPUT]);

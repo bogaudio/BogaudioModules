@@ -63,6 +63,17 @@ struct Matrix44 : Matrix44Base {
 		configParam(MIX34_PARAM, -1.0f, 1.0f, 0.0f, "Mix 3D", "%", 0.0f, 100.0f);
 		configParam(MIX44_PARAM, -1.0f, 1.0f, 0.0f, "Mix 4D", "%", 0.0f, 100.0f);
 
+		configInput(IN1_INPUT, "IN1");
+		configInput(IN2_INPUT, "IN2");
+		configInput(IN3_INPUT, "IN3");
+		configInput(IN4_INPUT, "IN4");
+
+		configOutput(OUT1_OUTPUT, "OUT1");
+		configOutput(OUT2_OUTPUT, "OUT2");
+		configOutput(OUT3_OUTPUT, "OUT3");
+		configOutput(OUT4_OUTPUT, "OUT4");
+
+
 		setLocalElements({new Matrix44Element(NULL, NULL, NULL)});
 		registerBase();
 		setExpanderModelPredicate([](Model* m) { return m == modelMatrix44Cvm; });

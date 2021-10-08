@@ -69,6 +69,14 @@ struct LPG : LPGEnvBaseModule {
 		configParam(VCA_ENV_PARAM, -1.0f, 1.0f, 1.0f, "VCA envelope amount", "%", 0.0f, 100.0f);
 		configParam(VCA_BIAS_PARAM, 0.0f, 1.0f, 0.0f, "VCA level", "%", 0.0f, 100.0f);
 		configButton(LINEAR_VCA_PARAM, "Linear VCA mode");
+
+		configInput(RESPONSE_INPUT, "RESPONSE");
+		configInput(LPF_INPUT, "LPF");
+		configInput(VCA_INPUT, "VCA");
+		configInput(GATE_INPUT, "GATE");
+		configInput(IN_INPUT, "IN");
+
+		configOutput(OUT_OUTPUT, "OUT");
 	}
 
 	void reset() override;

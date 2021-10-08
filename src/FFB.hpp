@@ -88,6 +88,13 @@ struct FFB : BGModule {
 		configBypass(IN_INPUT, ALL_OUTPUT);
 		configBypass(IN_INPUT, ODD_OUTPUT);
 		configBypass(IN_INPUT, EVEN_OUTPUT);
+
+		configInput(IN_INPUT, "IN");
+		configInput(CV_INPUT, "CV");
+
+		configOutput(ALL_OUTPUT, "ALL");
+		configOutput(ODD_OUTPUT, "ODD");
+		configOutput(EVEN_OUTPUT, "EVEN");
 	}
 
 	void sampleRateChange() override;

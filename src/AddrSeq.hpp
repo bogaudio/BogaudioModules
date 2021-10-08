@@ -127,8 +127,14 @@ struct AddrSeq : AddrSeqBase {
 		configParam<OutputRangeParamQuantity>(OUT6_PARAM, -1.0f, 1.0f, 0.0f, "Step 6", " V");
 		configParam<OutputRangeParamQuantity>(OUT7_PARAM, -1.0f, 1.0f, 0.0f, "Step 7", " V");
 		configParam<OutputRangeParamQuantity>(OUT8_PARAM, -1.0f, 1.0f, 0.0f, "Step 8", " V");
-		setInputIDs(CLOCK_INPUT, SELECT_INPUT);
 
+		configInput(CLOCK_INPUT, "CLOCK");
+		configInput(RESET_INPUT, "RESET");
+		configInput(SELECT_INPUT, "SELECT");
+
+		configOutput(OUT_OUTPUT, "OUT");
+
+		setInputIDs(CLOCK_INPUT, SELECT_INPUT);
 		setLocalElements({
 			new AddrSeqStep(params[OUT1_PARAM], lights[OUT1_LIGHT]),
 			new AddrSeqStep(params[OUT2_PARAM], lights[OUT2_LIGHT]),

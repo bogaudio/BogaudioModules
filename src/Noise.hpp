@@ -38,6 +38,15 @@ struct Noise : PolyChannelsModule {
 
 	Noise() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
+
+		configInput(ABS_INPUT, "ABS");
+
+		configOutput(WHITE_OUTPUT, "WHITE");
+		configOutput(PINK_OUTPUT, "PINK");
+		configOutput(RED_OUTPUT, "RED");
+		configOutput(GAUSS_OUTPUT, "GAUSS");
+		configOutput(ABS_OUTPUT, "ABS");
+		configOutput(BLUE_OUTPUT, "BLUE");
 	}
 
 	void processAll(const ProcessArgs& args) override;

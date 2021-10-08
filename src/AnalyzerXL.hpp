@@ -34,6 +34,15 @@ struct AnalyzerXL : AnalyzerBase {
 	AnalyzerCore::Window _window = AnalyzerCore::WINDOW_KAISER;
 
 	AnalyzerXL() : AnalyzerBase(8, NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {
+		configInput(SIGNALA_INPUT, "SIGNALA");
+		configInput(SIGNALB_INPUT, "SIGNALB");
+		configInput(SIGNALC_INPUT, "SIGNALC");
+		configInput(SIGNALD_INPUT, "SIGNALD");
+		configInput(SIGNALE_INPUT, "SIGNALA");
+		configInput(SIGNALF_INPUT, "SIGNALB");
+		configInput(SIGNALG_INPUT, "SIGNALC");
+		configInput(SIGNALH_INPUT, "SIGNALD");
+
 		_skinnable = false;
 	}
 

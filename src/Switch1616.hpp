@@ -582,6 +582,40 @@ struct Switch1616 : SwitchMatrixModule {
 		configSwitchParam(MIX_16_14_PARAM, "Mix 14P");
 		configSwitchParam(MIX_16_15_PARAM, "Mix 15P");
 		configSwitchParam(MIX_16_16_PARAM, "Mix 16P");
+
+		configInput(IN1_INPUT, "IN1");
+		configInput(IN2_INPUT, "IN2");
+		configInput(IN3_INPUT, "IN3");
+		configInput(IN4_INPUT, "IN4");
+		configInput(IN5_INPUT, "IN5");
+		configInput(IN6_INPUT, "IN6");
+		configInput(IN7_INPUT, "IN7");
+		configInput(IN8_INPUT, "IN8");
+		configInput(IN9_INPUT, "IN9");
+		configInput(IN10_INPUT, "IN10");
+		configInput(IN11_INPUT, "IN11");
+		configInput(IN12_INPUT, "IN12");
+		configInput(IN13_INPUT, "IN13");
+		configInput(IN14_INPUT, "IN14");
+		configInput(IN15_INPUT, "IN15");
+		configInput(IN16_INPUT, "IN16");
+
+		configOutput(OUT1_OUTPUT, "OUT1");
+		configOutput(OUT2_OUTPUT, "OUT2");
+		configOutput(OUT3_OUTPUT, "OUT3");
+		configOutput(OUT4_OUTPUT, "OUT4");
+		configOutput(OUT5_OUTPUT, "OUT5");
+		configOutput(OUT6_OUTPUT, "OUT6");
+		configOutput(OUT7_OUTPUT, "OUT7");
+		configOutput(OUT8_OUTPUT, "OUT8");
+		configOutput(OUT9_OUTPUT, "OUT9");
+		configOutput(OUT10_OUTPUT, "OUT10");
+		configOutput(OUT11_OUTPUT, "OUT11");
+		configOutput(OUT12_OUTPUT, "OUT12");
+		configOutput(OUT13_OUTPUT, "OUT13");
+		configOutput(OUT14_OUTPUT, "OUT14");
+		configOutput(OUT15_OUTPUT, "OUT15");
+		configOutput(OUT16_OUTPUT, "OUT16");
 	}
 };
 

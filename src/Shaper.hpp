@@ -9,7 +9,7 @@ extern Model* modelShaper;
 namespace bogaudio {
 
 struct Shaper : TriggerOnLoadModule {
-	enum ParamIds {
+	enum ParamsIds {
 		ATTACK_PARAM,
 		ON_PARAM,
 		DECAY_PARAM,
@@ -22,13 +22,13 @@ struct Shaper : TriggerOnLoadModule {
 		NUM_PARAMS
 	};
 
-	enum InputIds {
+	enum InputsIds {
 		SIGNAL_INPUT,
 		TRIGGER_INPUT,
 		NUM_INPUTS
 	};
 
-	enum OutputIds {
+	enum OutputsIds {
 		SIGNAL_OUTPUT,
 		ENV_OUTPUT,
 		INV_OUTPUT,
@@ -36,7 +36,7 @@ struct Shaper : TriggerOnLoadModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightIds {
+	enum LightsIds {
 		ATTACK_LIGHT,
 		ON_LIGHT,
 		DECAY_LIGHT,
@@ -61,6 +61,14 @@ struct Shaper : TriggerOnLoadModule {
 		configButton(TRIGGER_PARAM, "Trigger");
 		configSwitch(SPEED_PARAM, 0.0f, 1.0f, 1.0f, "Speed", {"Slow", "Normal"});
 		configSwitch(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "Loop", {"Loop", "Stop"});
+
+		configInput(SIGNAL_INPUT, "SIGNAL");
+		configInput(TRIGGER_INPUT, "TRIGGER");
+
+		configOutput(SIGNAL_OUTPUT, "SIGNAL");
+		configOutput(ENV_OUTPUT, "ENV");
+		configOutput(INV_OUTPUT, "INV");
+		configOutput(TRIGGER_OUTPUT, "TRIGGER");
 	}
 
 	void reset() override;

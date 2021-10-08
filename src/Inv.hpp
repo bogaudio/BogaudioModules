@@ -50,6 +50,14 @@ struct Inv : BGModule {
 		configSwitch(LATCH2_PARAM, 0.0f, 1.0f, 0.0f, "Channle 2 latch", {"Disabled", "Enabled"});
 		configBypass(IN1_INPUT, OUT1_OUTPUT);
 		configBypass(IN2_INPUT, OUT2_OUTPUT);
+
+		configInput(GATE1_INPUT, "GATE1");
+		configInput(IN1_INPUT, "IN1");
+		configInput(GATE2_INPUT, "GATE2");
+		configInput(IN2_INPUT, "IN2");
+
+		configOutput(OUT1_OUTPUT, "OUT1");
+		configOutput(OUT2_OUTPUT, "OUT2");
 	}
 
 	void reset() override;

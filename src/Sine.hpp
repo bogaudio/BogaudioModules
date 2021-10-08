@@ -56,6 +56,13 @@ struct Sine : VCOBase {
 		configButton(SLOW_PARAM, "Slow mode");
 		configParam(FM_DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "FM depth", "%", 0.0f, 100.0f);
 		configParam(PHASE_PARAM, -1.0f, 1.0f, 0.0f, "Phase offset", "º", 0.0f, 180.0f);
+
+		configInput(PITCH_INPUT, "PITCH");
+		configInput(FM_INPUT, "FM");
+		configInput(PHASE_INPUT, "PHASE");
+		configInput(SYNC_INPUT, "SYNC");
+
+		configOutput(OUT_OUTPUT, "OUT");
 	}
 
 	json_t* saveToJson(json_t* root) override;

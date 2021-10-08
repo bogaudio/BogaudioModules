@@ -67,6 +67,11 @@ struct SampleHold : BGModule {
 		configSwitch(TRACK2_PARAM, 0.0f, 1.0f, 0.0f, "Track 2", {"Disabled", "Enabled"});
 		configSwitch(INVERT1_PARAM, 0.0f, 1.0f, 0.0f, "Invert 1", {"Disabled", "Enabled"});
 		configSwitch(INVERT2_PARAM, 0.0f, 1.0f, 0.0f, "Invert 2", {"Disabled", "Enabled"});
+
+		configInput(TRIGGER1_INPUT, "TRIGGER1");
+		configInput(IN1_INPUT, "IN1");
+		configInput(TRIGGER2_INPUT, "TRIGGER2");
+		configInput(IN2_INPUT, "IN2");
 	}
 
 	void reset() override;

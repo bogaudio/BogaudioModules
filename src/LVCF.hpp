@@ -75,6 +75,11 @@ struct LVCF : BGModule {
 		configParam(Q_PARAM, 0.0f, 1.0f, 0.0f, "Resonance / bandwidth", "%", 0.0f, 100.0f);
 		configSwitch(MODE_PARAM, 0.0f, 3.0f, 0.0f, "Mode", {"Lowpass", "Highpass", "Bandpass", "Band reject"});
 		configBypass(IN_INPUT, OUT_OUTPUT);
+
+		configInput(IN_INPUT, "IN");
+		configInput(FREQUENCY_CV_INPUT, "FREQUENCY_CV");
+
+		configOutput(OUT_OUTPUT, "OUT");
 	}
 
 	json_t* saveToJson(json_t* root) override;

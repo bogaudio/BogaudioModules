@@ -57,6 +57,14 @@ struct Clpr : BGModule {
 		configSwitch(KNEE_PARAM, 0.0f, 1.0f, 1.0f, "Knee", {"Hard", "Soft"});
 		configBypass(LEFT_INPUT, LEFT_OUTPUT);
 		configBypass(RIGHT_INPUT, RIGHT_OUTPUT);
+
+		configInput(LEFT_INPUT, "LEFT");
+		configInput(RIGHT_INPUT, "RIGHT");
+		configInput(THRESHOLD_INPUT, "THRESHOLD");
+		configInput(OUTPUT_GAIN_INPUT, "OUTPUT_GAIN");
+
+		configOutput(LEFT_OUTPUT, "LEFT");
+		configOutput(RIGHT_OUTPUT, "RIGHT");
 	}
 
 	json_t* saveToJson(json_t* root) override;

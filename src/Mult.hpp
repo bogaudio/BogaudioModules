@@ -29,6 +29,16 @@ struct Mult : BGModule {
 
 	Mult() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
+
+		configInput(INA_INPUT, "INA");
+		configInput(INB_INPUT, "INB");
+
+		configOutput(OUTA1_OUTPUT, "OUTA1");
+		configOutput(OUTA2_OUTPUT, "OUTA2");
+		configOutput(OUTA3_OUTPUT, "OUTA3");
+		configOutput(OUTB1_OUTPUT, "OUTB1");
+		configOutput(OUTB2_OUTPUT, "OUTB2");
+		configOutput(OUTB3_OUTPUT, "OUTB3");
 	}
 
 	void processAll(const ProcessArgs& args) override;

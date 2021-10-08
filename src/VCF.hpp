@@ -79,6 +79,15 @@ struct VCF : BGModule {
 		paramQuantities[MODE_PARAM]->snapEnabled = true;
 		configParam<ScaledSquaringParamQuantity<Engine::maxPoles - Engine::minPoles>>(SLOPE_PARAM, 0.0f, 1.0f, 0.522233f, "Slope", " poles", 0.0f, 1.0f, Engine::minPoles);
 		configBypass(IN_INPUT, OUT_OUTPUT);
+
+		configInput(FREQUENCY_CV_INPUT, "FREQUENCY_CV");
+		configInput(FM_INPUT, "FM");
+		configInput(PITCH_INPUT, "PITCH");
+		configInput(IN_INPUT, "IN");
+		configInput(Q_INPUT, "Q");
+		configInput(SLOPE_INPUT, "SLOPE");
+
+		configOutput(OUT_OUTPUT, "OUT");
 	}
 
 	json_t* saveToJson(json_t* root) override;

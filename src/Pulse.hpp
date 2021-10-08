@@ -42,6 +42,12 @@ struct Pulse : VCOBase {
 		configButton(SLOW_PARAM, "Slow mode");
 		configParam(PW_PARAM, -1.0f, 1.0f, 0.0f, "Pulse width", "%", 0.0f, 100.0f*0.5f*(1.0f - 2.0f * SquareOscillator::minPulseWidth), 50.0f);
 		configParam(PWM_PARAM, -1.0f, 1.0f, 0.0f, "Pulse width CV amount");
+
+		configInput(PITCH_INPUT, "PITCH");
+		configInput(PWM_INPUT, "PWM");
+		configInput(SYNC_INPUT, "SYNC");
+
+		configOutput(OUT_OUTPUT, "OUT");
 	}
 
 	json_t* saveToJson(json_t* root) override;

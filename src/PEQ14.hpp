@@ -179,6 +179,56 @@ struct PEQ14 : ExpandableModule<PEQ14ExpanderMessage, BandExcludeModule> {
 		configBypass(IN_INPUT, ODDS_OUTPUT);
 		configBypass(IN_INPUT, EVENS_OUTPUT);
 
+		configInput(FREQUENCY_CV_INPUT, "FREQUENCY_CV");
+		configInput(BANDWIDTH_INPUT, "BANDWIDTH");
+		configInput(IN_INPUT, "IN");
+		configInput(LEVEL1_INPUT, "LEVEL1");
+		configInput(FREQUENCY_CV1_INPUT, "FREQUENCY_CV1");
+		configInput(LEVEL2_INPUT, "LEVEL2");
+		configInput(FREQUENCY_CV2_INPUT, "FREQUENCY_CV2");
+		configInput(LEVEL3_INPUT, "LEVEL3");
+		configInput(FREQUENCY_CV3_INPUT, "FREQUENCY_CV3");
+		configInput(LEVEL4_INPUT, "LEVEL4");
+		configInput(FREQUENCY_CV4_INPUT, "FREQUENCY_CV4");
+		configInput(LEVEL5_INPUT, "LEVEL5");
+		configInput(FREQUENCY_CV5_INPUT, "FREQUENCY_CV5");
+		configInput(LEVEL6_INPUT, "LEVEL6");
+		configInput(FREQUENCY_CV6_INPUT, "FREQUENCY_CV6");
+		configInput(LEVEL7_INPUT, "LEVEL7");
+		configInput(FREQUENCY_CV7_INPUT, "FREQUENCY_CV7");
+		configInput(LEVEL8_INPUT, "LEVEL8");
+		configInput(FREQUENCY_CV8_INPUT, "FREQUENCY_CV8");
+		configInput(LEVEL9_INPUT, "LEVEL9");
+		configInput(FREQUENCY_CV9_INPUT, "FREQUENCY_CV9");
+		configInput(LEVEL10_INPUT, "LEVEL10");
+		configInput(FREQUENCY_CV10_INPUT, "FREQUENCY_CV10");
+		configInput(LEVEL11_INPUT, "LEVEL11");
+		configInput(FREQUENCY_CV11_INPUT, "FREQUENCY_CV11");
+		configInput(LEVEL12_INPUT, "LEVEL12");
+		configInput(FREQUENCY_CV12_INPUT, "FREQUENCY_CV12");
+		configInput(LEVEL13_INPUT, "LEVEL13");
+		configInput(FREQUENCY_CV13_INPUT, "FREQUENCY_CV13");
+		configInput(LEVEL14_INPUT, "LEVEL14");
+		configInput(FREQUENCY_CV14_INPUT, "FREQUENCY_CV14");
+
+		configOutput(ODDS_OUTPUT, "ODDS");
+		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(EVENS_OUTPUT, "EVENS");
+		configOutput(OUT1_OUTPUT, "OUT1");
+		configOutput(OUT2_OUTPUT, "OUT2");
+		configOutput(OUT3_OUTPUT, "OUT3");
+		configOutput(OUT4_OUTPUT, "OUT4");
+		configOutput(OUT5_OUTPUT, "OUT5");
+		configOutput(OUT6_OUTPUT, "OUT6");
+		configOutput(OUT7_OUTPUT, "OUT7");
+		configOutput(OUT8_OUTPUT, "OUT8");
+		configOutput(OUT9_OUTPUT, "OUT9");
+		configOutput(OUT10_OUTPUT, "OUT10");
+		configOutput(OUT11_OUTPUT, "OUT11");
+		configOutput(OUT12_OUTPUT, "OUT12");
+		configOutput(OUT13_OUTPUT, "OUT13");
+		configOutput(OUT14_OUTPUT, "OUT14");
+
 		setExpanderModelPredicate([](Model* m) { return m == modelPEQ14XF || m == modelPEQ14XR || m == modelPEQ14XV; });
 	}
 

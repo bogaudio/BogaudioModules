@@ -40,6 +40,11 @@ struct VCAmp : BGModule {
 		configParam(LEVEL_PARAM, 0.0f, 1.0f, fabs(minDecibels) / (maxDecibels - minDecibels), "Level", " dB", 0.0f, maxDecibels - minDecibels, minDecibels);
 		configBypass(IN_INPUT, OUT_OUTPUT);
 
+		configInput(CV_INPUT, "CV");
+		configInput(IN_INPUT, "IN");
+
+		configOutput(OUT_OUTPUT, "OUT");
+
 		sampleRateChange();
 		for (int c = 0; c < maxChannels; ++c) {
 			_rms[c].setSensitivity(0.05f);

@@ -91,6 +91,23 @@ struct DADSRHPlus : TriggerOnLoadModule {
 		configSwitch(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "Loop", {"Loop", "Stop"});
 		configSwitch(SPEED_PARAM, 0.0f, 1.0f, 1.0f, "Speed", {"Slow", "Normal"});
 		configSwitch(RETRIGGER_PARAM, 0.0f, 1.0f, 1.0f, "Retrigger", {"Reset", "Resume attack"});
+
+		configInput(DELAY_INPUT, "DELAY");
+		configInput(ATTACK_INPUT, "ATTACK");
+		configInput(DECAY_INPUT, "DECAY");
+		configInput(SUSTAIN_INPUT, "SUSTAIN");
+		configInput(RELEASE_INPUT, "RELEASE");
+		configInput(HOLD_INPUT, "HOLD");
+		configInput(TRIGGER_INPUT, "TRIGGER");
+
+		configOutput(DELAY_OUTPUT, "DELAY");
+		configOutput(ATTACK_OUTPUT, "ATTACK");
+		configOutput(DECAY_OUTPUT, "DECAY");
+		configOutput(SUSTAIN_OUTPUT, "SUSTAIN");
+		configOutput(RELEASE_OUTPUT, "RELEASE");
+		configOutput(ENV_OUTPUT, "ENV");
+		configOutput(INV_OUTPUT, "INV");
+		configOutput(TRIGGER_OUTPUT, "TRIGGER");
 	}
 
 	void reset() override;

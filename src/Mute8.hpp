@@ -95,6 +95,32 @@ struct Mute8 : BGModule {
 		configBypass(INPUT6_INPUT, OUTPUT6_OUTPUT);
 		configBypass(INPUT7_INPUT, OUTPUT7_OUTPUT);
 		configBypass(INPUT8_INPUT, OUTPUT8_OUTPUT);
+
+		configInput(INPUT1_INPUT, "INPUT1");
+		configInput(INPUT2_INPUT, "INPUT2");
+		configInput(INPUT3_INPUT, "INPUT3");
+		configInput(INPUT4_INPUT, "INPUT4");
+		configInput(INPUT5_INPUT, "INPUT5");
+		configInput(INPUT6_INPUT, "INPUT6");
+		configInput(INPUT7_INPUT, "INPUT7");
+		configInput(INPUT8_INPUT, "INPUT8");
+		configInput(MUTE1_INPUT, "MUTE1");
+		configInput(MUTE2_INPUT, "MUTE2");
+		configInput(MUTE3_INPUT, "MUTE3");
+		configInput(MUTE4_INPUT, "MUTE4");
+		configInput(MUTE5_INPUT, "MUTE5");
+		configInput(MUTE6_INPUT, "MUTE6");
+		configInput(MUTE7_INPUT, "MUTE7");
+		configInput(MUTE8_INPUT, "MUTE8");
+
+		configOutput(OUTPUT1_OUTPUT, "OUTPUT1");
+		configOutput(OUTPUT2_OUTPUT, "OUTPUT2");
+		configOutput(OUTPUT3_OUTPUT, "OUTPUT3");
+		configOutput(OUTPUT4_OUTPUT, "OUTPUT4");
+		configOutput(OUTPUT5_OUTPUT, "OUTPUT5");
+		configOutput(OUTPUT6_OUTPUT, "OUTPUT6");
+		configOutput(OUTPUT7_OUTPUT, "OUTPUT7");
+		configOutput(OUTPUT8_OUTPUT, "OUTPUT8");
 	}
 
 	json_t* saveToJson(json_t* root) override;

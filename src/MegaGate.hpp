@@ -129,6 +129,26 @@ struct MegaGate : LPGEnvBaseModule {
 		configParam(VCA_ENV_ATTENUATOR_PARAM, -1.0f, 1.0f, 0.0f, "VCA envelope amount CV", "%", 0.0f, 100.0f);
 		configParam(VCA_BIAS_PARAM, 0.0f, 1.0f, 0.0f, "VCA level", "%", 0.0f, 100.0f);
 		configParam(VCA_BIAS_ATTENUATOR_PARAM, -1.0f, 1.0f, 0.0f, "VCA level CV", "%", 0.0f, 100.0f);
+
+		configInput(RISE_INPUT, "RISE");
+		configInput(FALL_INPUT, "FALL");
+		configInput(MINIMUM_GATE_INPUT, "MINIMUM_GATE");
+		configInput(TILT_INPUT, "TILT");
+		configInput(VELOCITY_INPUT, "VELOCITY");
+		configInput(SHAPE_INPUT, "SHAPE");
+		configInput(LEFT_INPUT, "LEFT");
+		configInput(RIGHT_INPUT, "RIGHT");
+		configInput(GATE_INPUT, "GATE");
+		configInput(LPF_ENV_INPUT, "LPF_ENV");
+		configInput(LPF_BIAS_INPUT, "LPF_BIAS");
+		configInput(HPF_ENV_INPUT, "HPF_ENV");
+		configInput(HPF_BIAS_INPUT, "HPF_BIAS");
+		configInput(VCA_ENV_INPUT, "VCA_ENV");
+		configInput(VCA_BIAS_INPUT, "VCA_BIAS");
+
+		configOutput(ENV_OUTPUT, "ENV");
+		configOutput(LEFT_OUTPUT, "LEFT");
+		configOutput(RIGHT_OUTPUT, "RIGHT");
 	}
 
 	void reset() override;

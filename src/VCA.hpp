@@ -48,6 +48,14 @@ struct VCA : BGModule {
 		configBypass(IN1_INPUT, OUT1_OUTPUT);
 		configBypass(IN2_INPUT, OUT2_OUTPUT);
 
+		configInput(CV1_INPUT, "CV1");
+		configInput(IN1_INPUT, "IN1");
+		configInput(CV2_INPUT, "CV2");
+		configInput(IN2_INPUT, "IN2");
+
+		configOutput(OUT1_OUTPUT, "OUT1");
+		configOutput(OUT2_OUTPUT, "OUT2");
+
 		sampleRateChange();
 	}
 

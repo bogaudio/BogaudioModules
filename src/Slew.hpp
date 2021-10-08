@@ -39,6 +39,12 @@ struct Slew : BGModule {
 		configParam(FALL_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "Fall shape");
 		configSwitch(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow mode", {"Disabled", "Enabled"});
 		configBypass(IN_INPUT, OUT_OUTPUT);
+
+		configInput(RISE_INPUT, "RISE");
+		configInput(FALL_INPUT, "FALL");
+		configInput(IN_INPUT, "IN");
+
+		configOutput(OUT_OUTPUT, "OUT");
 	}
 
 	bool active() override;

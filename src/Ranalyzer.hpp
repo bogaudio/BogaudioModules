@@ -123,6 +123,14 @@ struct Ranalyzer : AnalyzerBase {
 		configParam(DELAY_PARAM, 2.0f, (float)maxResponseDelay, 2.0f, "Return sample delay");
 		paramQuantities[DELAY_PARAM]->snapEnabled = true;
 
+		configInput(TRIGGER_INPUT, "TRIGGER");
+		configInput(RETURN_INPUT, "RETURN");
+		configInput(TEST_INPUT, "TEST");
+
+		configOutput(TRIGGER_OUTPUT, "TRIGGER");
+		configOutput(EOC_OUTPUT, "EOC");
+		configOutput(SEND_OUTPUT, "SEND");
+
 		_skinnable = false;
 	}
 	virtual ~Ranalyzer() {

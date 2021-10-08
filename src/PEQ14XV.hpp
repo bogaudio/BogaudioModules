@@ -63,6 +63,15 @@ struct PEQ14XV : ExpanderModule<PEQ14ExpanderMessage, ExpandableModule<PEQ14Expa
 		configParam(BAND1_ENABLE_PARAM, 0.0f, 1.0f, 1.0f, "Band 1 enable");
 		configParam(BAND14_ENABLE_PARAM, 0.0f, 1.0f, 1.0f, "Band 14 enable");
 
+		configInput(EF_DAMP_INPUT, "EF_DAMP");
+		configInput(EF_GAIN_INPUT, "EF_GAIN");
+		configInput(TRANSPOSE_INPUT, "TRANSPOSE");
+		configInput(IN_INPUT, "IN");
+
+		configOutput(ODDS_OUTPUT, "ODDS");
+		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(EVENS_OUTPUT, "EVENS");
+
 		setBaseModelPredicate([](Model* m) { return m == modelPEQ14 || m == modelPEQ14XF || m == modelPEQ14XR || m == modelPEQ14XV; });
 		setExpanderModelPredicate([](Model* m) { return m == modelPEQ14XF || m == modelPEQ14XR || m == modelPEQ14XV; });
 	}

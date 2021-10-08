@@ -92,6 +92,14 @@ struct Chirp : BGModule {
 		configButton(TRIGGER_PARAM, "Trigger");
 		configButton(EXPONENTIAL_PARAM, "Exponential");
 		configButton(LOOP_PARAM, "Loop");
+
+		configInput(FREQUENCY1_INPUT, "FREQUENCY1");
+		configInput(FREQUENCY2_INPUT, "FREQUENCY2");
+		configInput(TIME_INPUT, "TIME");
+		configInput(TRIGGER_INPUT, "TRIGGER");
+
+		configOutput(EOC_OUTPUT, "EOC");
+		configOutput(OUT_OUTPUT, "OUT");
 	}
 
 	void reset() override;

@@ -81,6 +81,18 @@ struct PolyOff8 : OutputRangeModule<BGModule> {
 		configParam(SCALE8_PARAM, -1.0f, 1.0f, 1.0f, "Channel 8 scale", "%", 0.0f, 100.0f);
 		configParam(CHANNELS_PARAM, 1.0f, 8.0f, 1.0f, "Polyphony channels");
 		paramQuantities[CHANNELS_PARAM]->snapEnabled = true;
+
+		configInput(CV1_INPUT, "CV1");
+		configInput(CV2_INPUT, "CV2");
+		configInput(CV3_INPUT, "CV3");
+		configInput(CV4_INPUT, "CV4");
+		configInput(CV5_INPUT, "CV5");
+		configInput(CV6_INPUT, "CV6");
+		configInput(CV7_INPUT, "CV7");
+		configInput(CV8_INPUT, "CV8");
+		configInput(IN_INPUT, "IN");
+
+		configOutput(OUT_OUTPUT, "OUT");
 	}
 
 	json_t* saveToJson(json_t* root) override;

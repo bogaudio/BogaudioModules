@@ -39,6 +39,13 @@ struct Detune : BGModule {
 		configParam(CENTS_PARAM, 0.0f, 50.0f, 0.0f, "Cents");
 		paramQuantities[CENTS_PARAM]->snapEnabled = true;
 
+		configInput(CV_INPUT, "CV");
+		configInput(IN_INPUT, "IN");
+
+		configOutput(THRU_OUTPUT, "THRU");
+		configOutput(OUT_PLUS_OUTPUT, "OUT_PLUS");
+		configOutput(OUT_MINUS_OUTPUT, "OUT_MINUS");
+
 		for (int i = 0; i < maxChannels; ++i) {
 			_lastCents[i] = -1.0f;
 			_lastInCV[i] = -1000.0f;

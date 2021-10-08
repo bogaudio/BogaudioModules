@@ -42,6 +42,14 @@ struct Pan : BGModule {
 		configParam(PAN1_PARAM, -1.0f, 1.0f, 0.0f, "Panning 1", "%", 0.0f, 100.0f);
 		configParam(PAN2_PARAM, -1.0f, 1.0f, 0.0f, "Panning 2", "%", 0.0f, 100.0f);
 
+		configInput(CV1_INPUT, "CV1");
+		configInput(IN1_INPUT, "IN1");
+		configInput(CV2_INPUT, "CV2");
+		configInput(IN2_INPUT, "IN2");
+
+		configOutput(L_OUTPUT, "L");
+		configOutput(R_OUTPUT, "R");
+
 		sampleRateChange();
 	}
 

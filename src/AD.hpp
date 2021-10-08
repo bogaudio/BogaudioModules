@@ -72,6 +72,13 @@ struct AD : BGModule {
 		configSwitch(LOOP_PARAM, 0.0f, 1.0f, 0.0f, "Loop", {"Disabled (stop)", "Enabled"});
 		configSwitch(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear", {"Disabled (logarithmic)", "Enabled"});
 		configSwitch(RETRIGGER_PARAM, 0.0f, 1.0f, 1.0f, "Retrigger", {"Disabled (finish cycle)", "Enabled"});
+
+		configInput(TRIGGER_INPUT, "TRIGGER");
+		configInput(ATTACK_INPUT, "ATTACK");
+		configInput(DECAY_INPUT, "DECAY");
+
+		configOutput(ENV_OUTPUT, "ENV");
+		configOutput(EOC_OUTPUT, "EOC");
 	}
 
 	void reset() override;

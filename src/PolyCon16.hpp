@@ -79,6 +79,10 @@ struct PolyCon16 : OutputRangeModule<BGModule> {
 		configParam<OutputRangeParamQuantity>(CHANNEL14_PARAM, -1.0f, 1.0f, 0.0f, "Channel 14", " V");
 		configParam<OutputRangeParamQuantity>(CHANNEL15_PARAM, -1.0f, 1.0f, 0.0f, "Channel 15", " V");
 		configParam<OutputRangeParamQuantity>(CHANNEL16_PARAM, -1.0f, 1.0f, 0.0f, "Channel 16", " V");
+
+		configInput(CHANNELS_INPUT, "CHANNELS");
+
+		configOutput(OUT_OUTPUT, "OUT");
 	}
 
 	void processAll(const ProcessArgs& args) override;

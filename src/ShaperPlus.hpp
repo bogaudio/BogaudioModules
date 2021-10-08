@@ -9,7 +9,7 @@ extern Model* modelShaperPlus;
 namespace bogaudio {
 
 struct ShaperPlus : TriggerOnLoadModule {
-	enum ParamIds {
+	enum ParamsIds {
 		ATTACK_PARAM,
 		ON_PARAM,
 		DECAY_PARAM,
@@ -22,7 +22,7 @@ struct ShaperPlus : TriggerOnLoadModule {
 		NUM_PARAMS
 	};
 
-	enum InputIds {
+	enum InputsIds {
 		SIGNAL_INPUT,
 		TRIGGER_INPUT,
 		ATTACK_INPUT,
@@ -34,7 +34,7 @@ struct ShaperPlus : TriggerOnLoadModule {
 		NUM_INPUTS
 	};
 
-	enum OutputIds {
+	enum OutputsIds {
 		SIGNAL_OUTPUT,
 		ENV_OUTPUT,
 		INV_OUTPUT,
@@ -46,7 +46,7 @@ struct ShaperPlus : TriggerOnLoadModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightIds {
+	enum LightsIds {
 		ATTACK_LIGHT,
 		ON_LIGHT,
 		DECAY_LIGHT,
@@ -71,6 +71,24 @@ struct ShaperPlus : TriggerOnLoadModule {
 		configButton(TRIGGER_PARAM, "Trigger");
 		configSwitch(SPEED_PARAM, 0.0f, 1.0f, 1.0f, "Speed", {"Slow", "Normal"});
 		configSwitch(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "Loop", {"Loop", "Stop"});
+
+		configInput(SIGNAL_INPUT, "SIGNAL");
+		configInput(TRIGGER_INPUT, "TRIGGER");
+		configInput(ATTACK_INPUT, "ATTACK");
+		configInput(ON_INPUT, "ON");
+		configInput(DECAY_INPUT, "DECAY");
+		configInput(OFF_INPUT, "OFF");
+		configInput(ENV_INPUT, "ENV");
+		configInput(SIGNALCV_INPUT, "SIGNALCV");
+
+		configOutput(SIGNAL_OUTPUT, "SIGNAL");
+		configOutput(ENV_OUTPUT, "ENV");
+		configOutput(INV_OUTPUT, "INV");
+		configOutput(TRIGGER_OUTPUT, "TRIGGER");
+		configOutput(ATTACK_OUTPUT, "ATTACK");
+		configOutput(ON_OUTPUT, "ON");
+		configOutput(DECAY_OUTPUT, "DECAY");
+		configOutput(OFF_OUTPUT, "OFF");
 	}
 
 	void reset() override;

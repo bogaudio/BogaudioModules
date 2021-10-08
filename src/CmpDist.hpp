@@ -68,6 +68,20 @@ struct CmpDist : BGModule {
 		configParam(DRY_WET_PARAM, -1.0f, 1.0f, 0.0f, "Dry/wet mix", "%", 0.0f, 100.0f);
 		configParam<AmplifierParamQuantity>(A_DRY_PARAM, 0.0f, 1.0f, 1.0f, "A dry level");
 		configParam<AmplifierParamQuantity>(B_DRY_PARAM, 0.0f, 1.0f, 1.0f, "B dry level");
+
+		configInput(GT_MIX_INPUT, "GT_MIX");
+		configInput(LT_MIX_INPUT, "LT_MIX");
+		configInput(WINDOW_INPUT, "WINDOW");
+		configInput(DRY_WET_INPUT, "DRY_WET");
+		configInput(A_INPUT, "A");
+		configInput(A_SCALE_INPUT, "A_SCALE");
+		configInput(B_INPUT, "B");
+		configInput(B_SCALE_INPUT, "B_SCALE");
+
+		configOutput(GT_OUTPUT, "GT");
+		configOutput(LT_OUTPUT, "LT");
+		configOutput(EQ_OUTPUT, "EQ");
+		configOutput(MIX_OUTPUT, "MIX");
 	}
 
 	bool active() override;

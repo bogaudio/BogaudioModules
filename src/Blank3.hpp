@@ -29,6 +29,9 @@ struct Blank3 : BGModule {
 
 	Blank3() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
+
+		configInput(IN_INPUT, "IN");
+
 		sampleRateChange();
 	}
 

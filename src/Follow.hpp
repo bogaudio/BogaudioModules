@@ -42,6 +42,12 @@ struct Follow : FollowerBase {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(RESPONSE_PARAM, 0.0f, 1.0f, 0.3f, "Smoothing", "%", 0.0f, 100.0f);
 		configParam<EFGainParamQuantity>(GAIN_PARAM, -1.0f, 1.0f, 0.0f, "Gain", " dB");
+
+		configInput(RESPONSE_INPUT, "RESPONSE");
+		configInput(GAIN_INPUT, "GAIN");
+		configInput(IN_INPUT, "IN");
+
+		configOutput(OUT_OUTPUT, "OUT");
 	}
 
 	bool active() override;

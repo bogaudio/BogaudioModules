@@ -92,6 +92,20 @@ struct LFO : LFOBase {
 		configParam(SMOOTH_PARAM, 0.0f, 1.0f, 0.0f, "Smoothing", "%", 0.0f, 100.0f);
 		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "Offset", " V", 0.0f, 5.0f);
 		configParam(SCALE_PARAM, 0.0f, 1.0f, 1.0f, "Scale", "%", 0.0f, 100.0f);
+
+		configInput(SAMPLE_INPUT, "SAMPLE");
+		configInput(PW_INPUT, "PW");
+		configInput(OFFSET_INPUT, "OFFSET");
+		configInput(SCALE_INPUT, "SCALE");
+		configInput(PITCH_INPUT, "PITCH");
+		configInput(RESET_INPUT, "RESET");
+
+		configOutput(RAMP_UP_OUTPUT, "RAMP_UP");
+		configOutput(RAMP_DOWN_OUTPUT, "RAMP_DOWN");
+		configOutput(SQUARE_OUTPUT, "SQUARE");
+		configOutput(TRIANGLE_OUTPUT, "TRIANGLE");
+		configOutput(SINE_OUTPUT, "SINE");
+		configOutput(STEPPED_OUTPUT, "STEPPED");
 	}
 
 	void reset() override;

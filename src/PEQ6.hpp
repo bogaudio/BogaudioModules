@@ -102,6 +102,30 @@ struct PEQ6 : ExpandableModule<PEQ6ExpanderMessage, BandExcludeModule> {
 		configParam(FREQUENCY_CV6_PARAM, -1.0f, 1.0f, 1.0f, "Channel 6 frequency CV attenuation", "%", 0.0f, 100.0f);
 		configBypass(IN_INPUT, OUT_OUTPUT);
 
+		configInput(FREQUENCY_CV_INPUT, "FREQUENCY_CV");
+		configInput(BANDWIDTH_INPUT, "BANDWIDTH");
+		configInput(IN_INPUT, "IN");
+		configInput(LEVEL1_INPUT, "LEVEL1");
+		configInput(FREQUENCY_CV1_INPUT, "FREQUENCY_CV1");
+		configInput(LEVEL2_INPUT, "LEVEL2");
+		configInput(FREQUENCY_CV2_INPUT, "FREQUENCY_CV2");
+		configInput(LEVEL3_INPUT, "LEVEL3");
+		configInput(FREQUENCY_CV3_INPUT, "FREQUENCY_CV3");
+		configInput(LEVEL4_INPUT, "LEVEL4");
+		configInput(FREQUENCY_CV4_INPUT, "FREQUENCY_CV4");
+		configInput(LEVEL5_INPUT, "LEVEL5");
+		configInput(FREQUENCY_CV5_INPUT, "FREQUENCY_CV5");
+		configInput(LEVEL6_INPUT, "LEVEL6");
+		configInput(FREQUENCY_CV6_INPUT, "FREQUENCY_CV6");
+
+		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT1_OUTPUT, "OUT1");
+		configOutput(OUT2_OUTPUT, "OUT2");
+		configOutput(OUT3_OUTPUT, "OUT3");
+		configOutput(OUT4_OUTPUT, "OUT4");
+		configOutput(OUT5_OUTPUT, "OUT5");
+		configOutput(OUT6_OUTPUT, "OUT6");
+
 		setExpanderModelPredicate([](Model* m) { return m == modelPEQ6XF; });
 	}
 

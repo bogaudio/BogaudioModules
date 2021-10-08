@@ -113,6 +113,19 @@ struct Additator : BGModule {
 		configParam(BALANCE_PARAM, -1.0f, 1.0f, 0.0f, "Balance", "%", 0.0f, 100.0f);
 		configParam(FILTER_PARAM, minFilter, maxFilter, (maxFilter - minFilter) / 2.0 + minFilter, "Filter");
 		configSwitch(PHASE_PARAM, 1.0f, 2.0f, 1.0f, "Phase", {"Sine", "Cosine"});
+
+		configInput(PITCH_INPUT, "PITCH");
+		configInput(SYNC_INPUT, "SYNC");
+		configInput(PARTIALS_INPUT, "PARTIALS");
+		configInput(WIDTH_INPUT, "WIDTH");
+		configInput(ODD_SKEW_INPUT, "ODD_SKEW");
+		configInput(EVEN_SKEW_INPUT, "EVEN_SKEW");
+		configInput(GAIN_INPUT, "GAIN");
+		configInput(DECAY_INPUT, "DECAY");
+		configInput(BALANCE_INPUT, "BALANCE");
+		configInput(FILTER_INPUT, "FILTER");
+
+		configOutput(AUDIO_OUTPUT, "AUDIO");
 	}
 
 	void reset() override;

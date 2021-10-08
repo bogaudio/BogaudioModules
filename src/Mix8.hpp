@@ -128,6 +128,35 @@ struct Mix8 : ExpandableModule<Mix8ExpanderMessage, DimmableMixerModule> {
 		getParamQuantity(MIX_MUTE_PARAM)->randomizeEnabled = false;
 		getParamQuantity(MIX_DIM_PARAM)->randomizeEnabled = false;
 
+		configInput(CV1_INPUT, "CV1");
+		configInput(PAN1_INPUT, "PAN1");
+		configInput(IN1_INPUT, "IN1");
+		configInput(CV2_INPUT, "CV2");
+		configInput(PAN2_INPUT, "PAN2");
+		configInput(IN2_INPUT, "IN2");
+		configInput(CV3_INPUT, "CV3");
+		configInput(PAN3_INPUT, "PAN3");
+		configInput(IN3_INPUT, "IN3");
+		configInput(CV4_INPUT, "CV4");
+		configInput(PAN4_INPUT, "PAN4");
+		configInput(IN4_INPUT, "IN4");
+		configInput(CV5_INPUT, "CV5");
+		configInput(PAN5_INPUT, "PAN5");
+		configInput(IN5_INPUT, "IN5");
+		configInput(CV6_INPUT, "CV6");
+		configInput(PAN6_INPUT, "PAN6");
+		configInput(IN6_INPUT, "IN6");
+		configInput(CV7_INPUT, "CV7");
+		configInput(PAN7_INPUT, "PAN7");
+		configInput(IN7_INPUT, "IN7");
+		configInput(CV8_INPUT, "CV8");
+		configInput(PAN8_INPUT, "PAN8");
+		configInput(IN8_INPUT, "IN8");
+		configInput(MIX_CV_INPUT, "MIX_CV");
+
+		configOutput(L_OUTPUT, "L");
+		configOutput(R_OUTPUT, "R");
+
 		_channels[0] = new MixerChannel(params[LEVEL1_PARAM], params[MUTE1_PARAM], inputs[CV1_INPUT]);
 		_channels[1] = new MixerChannel(params[LEVEL2_PARAM], params[MUTE2_PARAM], inputs[CV2_INPUT]);
 		_channels[2] = new MixerChannel(params[LEVEL3_PARAM], params[MUTE3_PARAM], inputs[CV3_INPUT]);

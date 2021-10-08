@@ -28,6 +28,15 @@ struct Bool : BGModule {
 
 	Bool() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
+
+		configInput(A_INPUT, "A");
+		configInput(B_INPUT, "B");
+		configInput(NOT_INPUT, "NOT");
+
+		configOutput(AND_OUTPUT, "AND");
+		configOutput(OR_OUTPUT, "OR");
+		configOutput(XOR_OUTPUT, "XOR");
+		configOutput(NOT_OUTPUT, "NOT");
 	}
 
 	void processAll(const ProcessArgs& args) override;

@@ -166,6 +166,31 @@ struct Mix8x : ExpanderModule<Mix8ExpanderMessage, BGModule> {
 		configParam<AmplifierParamQuantity>(LEVEL_A_PARAM, 0.0f, 1.0f, 0.8f, "A return level");
 		configParam<AmplifierParamQuantity>(LEVEL_B_PARAM, 0.0f, 1.0f, 0.8f, "B return level");
 
+		configInput(A1_INPUT, "A1");
+		configInput(B1_INPUT, "B1");
+		configInput(A2_INPUT, "A2");
+		configInput(B2_INPUT, "B2");
+		configInput(A3_INPUT, "A3");
+		configInput(B3_INPUT, "B3");
+		configInput(A4_INPUT, "A4");
+		configInput(B4_INPUT, "B4");
+		configInput(A5_INPUT, "A5");
+		configInput(B5_INPUT, "B5");
+		configInput(A6_INPUT, "A6");
+		configInput(B6_INPUT, "B6");
+		configInput(A7_INPUT, "A7");
+		configInput(B7_INPUT, "B7");
+		configInput(A8_INPUT, "A8");
+		configInput(B8_INPUT, "B8");
+		configInput(L_A_INPUT, "L_A");
+		configInput(R_A_INPUT, "R_A");
+		configInput(LEVEL_A_INPUT, "LEVEL_A");
+		configInput(L_B_INPUT, "L_B");
+		configInput(R_B_INPUT, "R_B");
+
+		configOutput(SEND_A_OUTPUT, "SEND_A");
+		configOutput(SEND_B_OUTPUT, "SEND_B");
+
 		_channels[0] = new MixerExpanderChannel(params[LOW1_PARAM], params[MID1_PARAM], params[HIGH1_PARAM], params[A1_PARAM], params[B1_PARAM], params[PRE_A1_PARAM], params[PRE_B1_PARAM], inputs[A1_INPUT], inputs[B1_INPUT]);
 		_channels[1] = new MixerExpanderChannel(params[LOW2_PARAM], params[MID2_PARAM], params[HIGH2_PARAM], params[A2_PARAM], params[B2_PARAM], params[PRE_A2_PARAM], params[PRE_B2_PARAM], inputs[A2_INPUT], inputs[B2_INPUT]);
 		_channels[2] = new MixerExpanderChannel(params[LOW3_PARAM], params[MID3_PARAM], params[HIGH3_PARAM], params[A3_PARAM], params[B3_PARAM], params[PRE_A3_PARAM], params[PRE_B3_PARAM], inputs[A3_INPUT], inputs[B3_INPUT]);

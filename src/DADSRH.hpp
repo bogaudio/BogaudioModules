@@ -80,6 +80,12 @@ struct DADSRH : TriggerOnLoadModule {
 		configSwitch(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "Loop", {"Loop", "Stop"});
 		configSwitch(SPEED_PARAM, 0.0f, 1.0f, 1.0f, "Speed", {"Slow", "Normal"});
 		configSwitch(RETRIGGER_PARAM, 0.0f, 1.0f, 1.0f, "Retrigger", {"Reset", "Resume attack"});
+
+		configInput(TRIGGER_INPUT, "TRIGGER");
+
+		configOutput(ENV_OUTPUT, "ENV");
+		configOutput(INV_OUTPUT, "INV");
+		configOutput(TRIGGER_OUTPUT, "TRIGGER");
 	}
 
 	void reset() override;

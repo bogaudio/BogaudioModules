@@ -44,6 +44,10 @@ struct Mono : BGModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(COMPRESSION_PARAM, 0.0f, 1.0f, 0.2f, "Compression", "", 0.0f, 10.0f);
 		configParam<AmplifierParamQuantity>(LEVEL_PARAM, 0.0f, 1.0f, 1.0f, "Output level");
+
+		configInput(POLY_INPUT, "POLY");
+
+		configOutput(MONO_OUTPUT, "MONO");
 	}
 
 	void sampleRateChange() override;

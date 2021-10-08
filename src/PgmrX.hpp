@@ -78,6 +78,16 @@ struct PgmrX : PgmrXBase, OutputRange {
 		configParam<OutputRangeParamQuantity>(CVD4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4D", " V");
 		configButton(SELECT4_PARAM, "Select 4");
 
+		configInput(SELECT1_INPUT, "SELECT1");
+		configInput(SELECT2_INPUT, "SELECT2");
+		configInput(SELECT3_INPUT, "SELECT3");
+		configInput(SELECT4_INPUT, "SELECT4");
+
+		configOutput(SELECT1_OUTPUT, "SELECT1");
+		configOutput(SELECT2_OUTPUT, "SELECT2");
+		configOutput(SELECT3_OUTPUT, "SELECT3");
+		configOutput(SELECT4_OUTPUT, "SELECT4");
+
 		setLocalElements({
 			new PgmrStep(params[CVA1_PARAM], params[CVB1_PARAM], params[CVC1_PARAM], params[CVD1_PARAM], lights[SELECT1_LIGHT], params[SELECT1_PARAM], inputs[SELECT1_INPUT], outputs[SELECT1_OUTPUT]),
 			new PgmrStep(params[CVA2_PARAM], params[CVB2_PARAM], params[CVC2_PARAM], params[CVD2_PARAM], lights[SELECT2_LIGHT], params[SELECT2_PARAM], inputs[SELECT2_INPUT], outputs[SELECT2_OUTPUT]),
