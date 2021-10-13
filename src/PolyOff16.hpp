@@ -130,23 +130,23 @@ struct PolyOff16 : OutputRangeModule<BGModule> {
 		configParam(CHANNELS_PARAM, 1.0f, 16.0f, 1.0f, "Polyphony channels");
 		paramQuantities[CHANNELS_PARAM]->snapEnabled = true;
 
-		configInput(CV1_INPUT, "CV1");
-		configInput(CV2_INPUT, "CV2");
-		configInput(CV3_INPUT, "CV3");
-		configInput(CV4_INPUT, "CV4");
-		configInput(CV5_INPUT, "CV5");
-		configInput(CV6_INPUT, "CV6");
-		configInput(CV7_INPUT, "CV7");
-		configInput(CV8_INPUT, "CV8");
-		configInput(CV9_INPUT, "CV9");
-		configInput(CV10_INPUT, "CV10");
-		configInput(CV11_INPUT, "CV11");
-		configInput(CV12_INPUT, "CV12");
-		configInput(CV13_INPUT, "CV13");
-		configInput(CV14_INPUT, "CV14");
-		configInput(CV15_INPUT, "CV15");
-		configInput(CV16_INPUT, "CV16");
-		configInput(IN_INPUT, "IN");
+		configInput(CV1_INPUT, "Channel 1");
+		configInput(CV2_INPUT, "Channel 2");
+		configInput(CV3_INPUT, "Channel 3");
+		configInput(CV4_INPUT, "Channel 4");
+		configInput(CV5_INPUT, "Channel 5");
+		configInput(CV6_INPUT, "Channel 6");
+		configInput(CV7_INPUT, "Channel 7");
+		configInput(CV8_INPUT, "Channel 8");
+		configInput(CV9_INPUT, "Channel 9");
+		configInput(CV10_INPUT, "Channel 10");
+		configInput(CV11_INPUT, "Channel 11");
+		configInput(CV12_INPUT, "Channel 12");
+		configInput(CV13_INPUT, "Channel 13");
+		configInput(CV14_INPUT, "Channel 14");
+		configInput(CV15_INPUT, "Channel 15");
+		configInput(CV16_INPUT, "Channel 16");
+		configInput(IN_INPUT, "Signal");
 
 		configOutput(OUT_OUTPUT, "OUT");
 	}

@@ -40,8 +40,8 @@ struct VCAmp : BGModule {
 		configParam(LEVEL_PARAM, 0.0f, 1.0f, fabs(minDecibels) / (maxDecibels - minDecibels), "Level", " dB", 0.0f, maxDecibels - minDecibels, minDecibels);
 		configBypass(IN_INPUT, OUT_OUTPUT);
 
-		configInput(CV_INPUT, "CV");
-		configInput(IN_INPUT, "IN");
+		configInput(CV_INPUT, "Level CV");
+		configInput(IN_INPUT, "Signal");
 
 		configOutput(OUT_OUTPUT, "OUT");
 

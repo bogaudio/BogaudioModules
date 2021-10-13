@@ -47,9 +47,9 @@ struct CVD : BGModule {
 		configParam(MIX_PARAM, -1.0f, 1.0f, 0.0f, "Dry wet mix", "%", 0.0f, 100.0f);
 		configBypass(IN_INPUT, OUT_OUTPUT);
 
-		configInput(TIME_INPUT, "TIME");
-		configInput(MIX_INPUT, "MIX");
-		configInput(IN_INPUT, "IN");
+		configInput(TIME_INPUT, "Time CV");
+		configInput(MIX_INPUT, "Dry/wet CV");
+		configInput(IN_INPUT, "Signal");
 
 		configOutput(OUT_OUTPUT, "OUT");
 	}

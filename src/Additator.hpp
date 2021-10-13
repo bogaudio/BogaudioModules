@@ -114,16 +114,16 @@ struct Additator : BGModule {
 		configParam(FILTER_PARAM, minFilter, maxFilter, (maxFilter - minFilter) / 2.0 + minFilter, "Filter");
 		configSwitch(PHASE_PARAM, 1.0f, 2.0f, 1.0f, "Phase", {"Sine", "Cosine"});
 
-		configInput(PITCH_INPUT, "PITCH");
-		configInput(SYNC_INPUT, "SYNC");
-		configInput(PARTIALS_INPUT, "PARTIALS");
-		configInput(WIDTH_INPUT, "WIDTH");
-		configInput(ODD_SKEW_INPUT, "ODD_SKEW");
-		configInput(EVEN_SKEW_INPUT, "EVEN_SKEW");
-		configInput(GAIN_INPUT, "GAIN");
-		configInput(DECAY_INPUT, "DECAY");
-		configInput(BALANCE_INPUT, "BALANCE");
-		configInput(FILTER_INPUT, "FILTER");
+		configInput(PITCH_INPUT, "Pitch (1V/octave)");
+		configInput(SYNC_INPUT, "Sync");
+		configInput(PARTIALS_INPUT, "Partials CV");
+		configInput(WIDTH_INPUT, "Width CV");
+		configInput(ODD_SKEW_INPUT, "Odd skew CV");
+		configInput(EVEN_SKEW_INPUT, "Even skew CV");
+		configInput(GAIN_INPUT, "Gain CV");
+		configInput(DECAY_INPUT, "Decay CV");
+		configInput(BALANCE_INPUT, "Balance CV");
+		configInput(FILTER_INPUT, "Filter CV");
 
 		configOutput(AUDIO_OUTPUT, "AUDIO");
 	}

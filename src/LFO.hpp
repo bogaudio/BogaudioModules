@@ -93,12 +93,12 @@ struct LFO : LFOBase {
 		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "Offset", " V", 0.0f, 5.0f);
 		configParam(SCALE_PARAM, 0.0f, 1.0f, 1.0f, "Scale", "%", 0.0f, 100.0f);
 
-		configInput(SAMPLE_INPUT, "SAMPLE");
-		configInput(PW_INPUT, "PW");
-		configInput(OFFSET_INPUT, "OFFSET");
-		configInput(SCALE_INPUT, "SCALE");
-		configInput(PITCH_INPUT, "PITCH");
-		configInput(RESET_INPUT, "RESET");
+		configInput(SAMPLE_INPUT, "Sample CV");
+		configInput(PW_INPUT, "Pulse width CV");
+		configInput(OFFSET_INPUT, "Offset CV");
+		configInput(SCALE_INPUT, "Scale CV");
+		configInput(PITCH_INPUT, "Pitch (1V/octave)");
+		configInput(RESET_INPUT, "Reset");
 
 		configOutput(RAMP_UP_OUTPUT, "RAMP_UP");
 		configOutput(RAMP_DOWN_OUTPUT, "RAMP_DOWN");

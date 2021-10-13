@@ -62,8 +62,8 @@ struct Shaper : TriggerOnLoadModule {
 		configSwitch(SPEED_PARAM, 0.0f, 1.0f, 1.0f, "Speed", {"Slow", "Normal"});
 		configSwitch(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "Loop", {"Loop", "Stop"});
 
-		configInput(SIGNAL_INPUT, "SIGNAL");
-		configInput(TRIGGER_INPUT, "TRIGGER");
+		configInput(SIGNAL_INPUT, "Signal");
+		configInput(TRIGGER_INPUT, "Trigger");
 
 		configOutput(SIGNAL_OUTPUT, "SIGNAL");
 		configOutput(ENV_OUTPUT, "ENV");

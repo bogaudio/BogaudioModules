@@ -62,17 +62,17 @@ struct EightOne : AddressableSequenceModule {
 		setInputIDs(CLOCK_INPUT, SELECT_INPUT);
 		configBypass(IN1_INPUT, OUT_OUTPUT);
 
-		configInput(IN1_INPUT, "IN1");
-		configInput(IN2_INPUT, "IN2");
-		configInput(IN3_INPUT, "IN3");
-		configInput(IN4_INPUT, "IN4");
-		configInput(IN5_INPUT, "IN5");
-		configInput(IN6_INPUT, "IN6");
-		configInput(IN7_INPUT, "IN7");
-		configInput(IN8_INPUT, "IN8");
-		configInput(CLOCK_INPUT, "CLOCK");
-		configInput(RESET_INPUT, "RESET");
-		configInput(SELECT_INPUT, "SELECT");
+		configInput(IN1_INPUT, "Signal 1");
+		configInput(IN2_INPUT, "Signal 2");
+		configInput(IN3_INPUT, "Signal 3");
+		configInput(IN4_INPUT, "Signal 4");
+		configInput(IN5_INPUT, "Signal 5");
+		configInput(IN6_INPUT, "Signal 6");
+		configInput(IN7_INPUT, "Signal 7");
+		configInput(IN8_INPUT, "Signal 8");
+		configInput(CLOCK_INPUT, "Clock");
+		configInput(RESET_INPUT, "Reset");
+		configInput(SELECT_INPUT, "Select CV");
 
 		configOutput(OUT_OUTPUT, "OUT");
 	}

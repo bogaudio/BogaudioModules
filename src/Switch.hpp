@@ -50,11 +50,11 @@ struct Switch : SaveLatchToPatchModule {
 		configBypass(LOW1_INPUT, OUT1_OUTPUT);
 		configBypass(LOW2_INPUT, OUT2_OUTPUT);
 
-		configInput(GATE_INPUT, "GATE");
-		configInput(HIGH1_INPUT, "HIGH1");
-		configInput(LOW1_INPUT, "LOW1");
-		configInput(HIGH2_INPUT, "HIGH2");
-		configInput(LOW2_INPUT, "LOW2");
+		configInput(GATE_INPUT, "Gate");
+		configInput(HIGH1_INPUT, "High 1 signal");
+		configInput(LOW1_INPUT, "Low 1 signal");
+		configInput(HIGH2_INPUT, "Hight 2 signal");
+		configInput(LOW2_INPUT, "Low 2 signal");
 
 		configOutput(OUT1_OUTPUT, "OUT1");
 		configOutput(OUT2_OUTPUT, "OUT2");

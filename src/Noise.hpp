@@ -39,7 +39,7 @@ struct Noise : PolyChannelsModule {
 	Noise() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 
-		configInput(ABS_INPUT, "ABS");
+		configInput(ABS_INPUT, "Absolute value");
 
 		configOutput(WHITE_OUTPUT, "WHITE");
 		configOutput(PINK_OUTPUT, "PINK");

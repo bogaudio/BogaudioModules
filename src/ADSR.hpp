@@ -64,7 +64,7 @@ struct ADSR : BGModule {
 		configParam<EnvelopeSegmentParamQuantity>(RELEASE_PARAM, 0.0f, 1.0f, 0.31623f, "Release", " s");
 		configSwitch(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear", {"Disabled (logarithmic)", "Enabled"});
 
-		configInput(GATE_INPUT, "GATE");
+		configInput(GATE_INPUT, "Gate");
 
 		configOutput(OUT_OUTPUT, "OUT");
 	}

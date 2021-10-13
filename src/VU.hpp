@@ -46,8 +46,8 @@ struct VU : BGModule {
 		configBypass(L_INPUT, L_OUTPUT);
 		configBypass(R_INPUT, R_OUTPUT);
 
-		configInput(L_INPUT, "L");
-		configInput(R_INPUT, "R");
+		configInput(L_INPUT, "Left");
+		configInput(R_INPUT, "Right");
 
 		configOutput(L_OUTPUT, "L");
 		configOutput(R_OUTPUT, "R");

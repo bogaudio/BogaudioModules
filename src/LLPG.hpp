@@ -53,8 +53,8 @@ struct LLPG : BGModule {
 		configParam<ScaledSquaringParamQuantity<(int)maxFilterCutoff>>(LPF_PARAM, 0.0f, 1.0f, 0.0f, "LPF cutoff", " HZ");
 		configParam(VCA_PARAM, 0.0f, 1.0f, 0.0f, "VCA level", "%", 0.0f, 100.0f);
 
-		configInput(GATE_INPUT, "GATE");
-		configInput(IN_INPUT, "IN");
+		configInput(GATE_INPUT, "Gate");
+		configInput(IN_INPUT, "Signal");
 
 		configOutput(OUT_OUTPUT, "OUT");
 	}

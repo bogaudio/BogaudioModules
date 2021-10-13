@@ -93,10 +93,10 @@ struct Chirp : BGModule {
 		configButton(EXPONENTIAL_PARAM, "Exponential");
 		configButton(LOOP_PARAM, "Loop");
 
-		configInput(FREQUENCY1_INPUT, "FREQUENCY1");
-		configInput(FREQUENCY2_INPUT, "FREQUENCY2");
-		configInput(TIME_INPUT, "TIME");
-		configInput(TRIGGER_INPUT, "TRIGGER");
+		configInput(FREQUENCY1_INPUT, "Frequency 1 (1V/octave)");
+		configInput(FREQUENCY2_INPUT, "Frequency 2 (1V/octave)");
+		configInput(TIME_INPUT, "Time CV");
+		configInput(TRIGGER_INPUT, "Trigger");
 
 		configOutput(EOC_OUTPUT, "EOC");
 		configOutput(OUT_OUTPUT, "OUT");

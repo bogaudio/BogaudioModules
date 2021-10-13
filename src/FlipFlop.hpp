@@ -40,10 +40,10 @@ struct FlipFlop : BGModule {
 	FlipFlop() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 
-		configInput(IN1_INPUT, "IN1");
-		configInput(RESET1_INPUT, "RESET1");
-		configInput(IN2_INPUT, "IN2");
-		configInput(RESET2_INPUT, "RESET2");
+		configInput(IN1_INPUT, "Trigger 1");
+		configInput(RESET1_INPUT, "Reset 1");
+		configInput(IN2_INPUT, "Trigger 2");
+		configInput(RESET2_INPUT, "Reset 2");
 
 		configOutput(A1_OUTPUT, "A1");
 		configOutput(B1_OUTPUT, "B1");

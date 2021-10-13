@@ -76,8 +76,8 @@ struct LVCF : BGModule {
 		configSwitch(MODE_PARAM, 0.0f, 3.0f, 0.0f, "Mode", {"Lowpass", "Highpass", "Bandpass", "Band reject"});
 		configBypass(IN_INPUT, OUT_OUTPUT);
 
-		configInput(IN_INPUT, "IN");
-		configInput(FREQUENCY_CV_INPUT, "FREQUENCY_CV");
+		configInput(IN_INPUT, "Signal");
+		configInput(FREQUENCY_CV_INPUT, "Cutoff CV");
 
 		configOutput(OUT_OUTPUT, "OUT");
 	}

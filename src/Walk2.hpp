@@ -90,13 +90,13 @@ struct Walk2 : BGModule {
 		configParam(SCALE_Y_PARAM, 0.0f, 1.0f, 1.0f, "Scale Y", "%", 0.0f, 100.0f);
 		configSwitch(JUMP_MODE_PARAM, 0.0f, 2.0f, 0.0f, "TRIG action", {"Jump", "Sample & hold", "Track & hold"});
 
-		configInput(OFFSET_X_INPUT, "OFFSET_X");
-		configInput(SCALE_X_INPUT, "SCALE_X");
-		configInput(RATE_X_INPUT, "RATE_X");
-		configInput(OFFSET_Y_INPUT, "OFFSET_Y");
-		configInput(SCALE_Y_INPUT, "SCALE_Y");
-		configInput(RATE_Y_INPUT, "RATE_Y");
-		configInput(JUMP_INPUT, "JUMP");
+		configInput(OFFSET_X_INPUT, "Offset X CV");
+		configInput(SCALE_X_INPUT, "Scale X CV");
+		configInput(RATE_X_INPUT, "Rate X CV");
+		configInput(OFFSET_Y_INPUT, "Offset Y CV");
+		configInput(SCALE_Y_INPUT, "Scale Y CV");
+		configInput(RATE_Y_INPUT, "Rate Y CV");
+		configInput(JUMP_INPUT, "Trigger");
 
 		configOutput(OUT_X_OUTPUT, "OUT_X");
 		configOutput(OUT_Y_OUTPUT, "OUT_Y");

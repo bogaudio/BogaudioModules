@@ -82,15 +82,15 @@ struct PolyOff8 : OutputRangeModule<BGModule> {
 		configParam(CHANNELS_PARAM, 1.0f, 8.0f, 1.0f, "Polyphony channels");
 		paramQuantities[CHANNELS_PARAM]->snapEnabled = true;
 
-		configInput(CV1_INPUT, "CV1");
-		configInput(CV2_INPUT, "CV2");
-		configInput(CV3_INPUT, "CV3");
-		configInput(CV4_INPUT, "CV4");
-		configInput(CV5_INPUT, "CV5");
-		configInput(CV6_INPUT, "CV6");
-		configInput(CV7_INPUT, "CV7");
-		configInput(CV8_INPUT, "CV8");
-		configInput(IN_INPUT, "IN");
+		configInput(CV1_INPUT, "Channel 1");
+		configInput(CV2_INPUT, "Channel 2");
+		configInput(CV3_INPUT, "Channel 3");
+		configInput(CV4_INPUT, "Channel 4");
+		configInput(CV5_INPUT, "Channel 5");
+		configInput(CV6_INPUT, "Channel 6");
+		configInput(CV7_INPUT, "Channel 7");
+		configInput(CV8_INPUT, "Channel 8");
+		configInput(IN_INPUT, "Signal");
 
 		configOutput(OUT_OUTPUT, "OUT");
 	}

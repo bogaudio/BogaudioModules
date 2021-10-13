@@ -62,10 +62,10 @@ struct OneEight : AddressableSequenceModule {
 		setInputIDs(CLOCK_INPUT, SELECT_INPUT);
 		configBypass(IN_INPUT, OUT1_OUTPUT);
 
-		configInput(CLOCK_INPUT, "CLOCK");
-		configInput(RESET_INPUT, "RESET");
-		configInput(SELECT_INPUT, "SELECT");
-		configInput(IN_INPUT, "IN");
+		configInput(CLOCK_INPUT, "Clock");
+		configInput(RESET_INPUT, "Reset");
+		configInput(SELECT_INPUT, "Select CV");
+		configInput(IN_INPUT, "Signal");
 
 		configOutput(OUT1_OUTPUT, "OUT1");
 		configOutput(OUT2_OUTPUT, "OUT2");

@@ -138,10 +138,10 @@ struct Arp : BGModule {
 		configParam<GateLengthParamQuantity>(GATE_LENGTH_PARAM, 0.0f, 1.0f, 0.5f, "Gate length");
 		configSwitch(HOLD_PARAM, 0.0f, 1.0f, 0.0f, "Hold/latch", {"Disabled", "Enabled"});
 
-		configInput(CLOCK_INPUT, "CLOCK");
-		configInput(RESET_INPUT, "RESET");
-		configInput(PITCH_INPUT, "PITCH");
-		configInput(GATE_INPUT, "GATE");
+		configInput(CLOCK_INPUT, "Clock");
+		configInput(RESET_INPUT, "Reset");
+		configInput(PITCH_INPUT, "Pitch (1V/octave)");
+		configInput(GATE_INPUT, "Gate");
 
 		configOutput(PITCH_OUTPUT, "PITCH");
 		configOutput(GATE_OUTPUT, "GATE");

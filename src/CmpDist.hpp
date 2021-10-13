@@ -69,14 +69,14 @@ struct CmpDist : BGModule {
 		configParam<AmplifierParamQuantity>(A_DRY_PARAM, 0.0f, 1.0f, 1.0f, "A dry level");
 		configParam<AmplifierParamQuantity>(B_DRY_PARAM, 0.0f, 1.0f, 1.0f, "B dry level");
 
-		configInput(GT_MIX_INPUT, "GT_MIX");
-		configInput(LT_MIX_INPUT, "LT_MIX");
-		configInput(WINDOW_INPUT, "WINDOW");
-		configInput(DRY_WET_INPUT, "DRY_WET");
-		configInput(A_INPUT, "A");
-		configInput(A_SCALE_INPUT, "A_SCALE");
-		configInput(B_INPUT, "B");
-		configInput(B_SCALE_INPUT, "B_SCALE");
+		configInput(GT_MIX_INPUT, "Greater-than mix CV");
+		configInput(LT_MIX_INPUT, "Less-than mix CV");
+		configInput(WINDOW_INPUT, "Window CV");
+		configInput(DRY_WET_INPUT, "Dry/wet CV");
+		configInput(A_INPUT, "Signal A");
+		configInput(A_SCALE_INPUT, "Scale A CV");
+		configInput(B_INPUT, "Signal B");
+		configInput(B_SCALE_INPUT, "Scale B CV");
 
 		configOutput(GT_OUTPUT, "GT");
 		configOutput(LT_OUTPUT, "LT");

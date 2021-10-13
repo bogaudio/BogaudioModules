@@ -113,16 +113,16 @@ struct FourFO : LFOBase {
 		configParam(PHASE1_PARAM, -1.0, 1.0, 0.0, "Phase 90", "º", 0.0f, 180.0f);
 		configParam(PHASE0_PARAM, -1.0, 1.0, 0.0f, "Phase 0", "º", 0.0f, 180.0f);
 
-		configInput(SAMPLE_PWM_INPUT, "SAMPLE_PWM");
-		configInput(SMOOTH_INPUT, "SMOOTH");
-		configInput(OFFSET_INPUT, "OFFSET");
-		configInput(SCALE_INPUT, "SCALE");
-		configInput(PITCH_INPUT, "PITCH");
-		configInput(RESET_INPUT, "RESET");
-		configInput(PHASE0_INPUT, "PHASE0");
-		configInput(PHASE1_INPUT, "PHASE1");
-		configInput(PHASE2_INPUT, "PHASE2");
-		configInput(PHASE3_INPUT, "PHASE3");
+		configInput(SAMPLE_PWM_INPUT, "Sample/PWM CV");
+		configInput(SMOOTH_INPUT, "Smoothing CV");
+		configInput(OFFSET_INPUT, "Offset CV");
+		configInput(SCALE_INPUT, "Scale CV");
+		configInput(PITCH_INPUT, "Pitch (1V/octave)");
+		configInput(RESET_INPUT, "Reset");
+		configInput(PHASE0_INPUT, "Phase 0 CV");
+		configInput(PHASE1_INPUT, "Phase 1 CV");
+		configInput(PHASE2_INPUT, "Phase 2 CV");
+		configInput(PHASE3_INPUT, "Phase 3 CV");
 
 		configOutput(PHASE0_OUTPUT, "PHASE0");
 		configOutput(PHASE1_OUTPUT, "PHASE1");

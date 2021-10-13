@@ -31,8 +31,8 @@ struct PolyMult : BGModule {
 		configParam(CHANNELS_PARAM, 1.0f, 16.0f, 1.0f, "Polyphony channels");
 		paramQuantities[CHANNELS_PARAM]->snapEnabled = true;
 
-		configInput(CHANNELS_INPUT, "CHANNELS");
-		configInput(IN_INPUT, "IN");
+		configInput(CHANNELS_INPUT, "Channels CV");
+		configInput(IN_INPUT, "Signal");
 
 		configOutput(OUT1_OUTPUT, "OUT1");
 		configOutput(OUT2_OUTPUT, "OUT2");

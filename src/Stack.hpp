@@ -48,8 +48,8 @@ struct Stack : BGModule {
 		configParam(FINE_PARAM, -0.99f, 0.99f, 0.0f, "Fine tune", " cents", 0.0f, 100.0f);
 		configSwitch(QUANTIZE_PARAM, 0.0f, 1.0f, 1.0f, "Quantize", {"Disabled", "Enabled"});
 
-		configInput(CV_INPUT, "CV");
-		configInput(IN_INPUT, "IN");
+		configInput(CV_INPUT, "Interval CV");
+		configInput(IN_INPUT, "Signal");
 
 		configOutput(THRU_OUTPUT, "THRU");
 		configOutput(OUT_OUTPUT, "OUT");

@@ -51,10 +51,10 @@ struct Inv : BGModule {
 		configBypass(IN1_INPUT, OUT1_OUTPUT);
 		configBypass(IN2_INPUT, OUT2_OUTPUT);
 
-		configInput(GATE1_INPUT, "GATE1");
-		configInput(IN1_INPUT, "IN1");
-		configInput(GATE2_INPUT, "GATE2");
-		configInput(IN2_INPUT, "IN2");
+		configInput(GATE1_INPUT, "Gate 1");
+		configInput(IN1_INPUT, "Signal 1");
+		configInput(GATE2_INPUT, "Gate 2");
+		configInput(IN2_INPUT, "Signal 2");
 
 		configOutput(OUT1_OUTPUT, "OUT1");
 		configOutput(OUT2_OUTPUT, "OUT2");

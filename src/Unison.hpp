@@ -36,9 +36,9 @@ struct Unison : BGModule {
 		paramQuantities[CHANNELS_PARAM]->snapEnabled = true;
 		configParam(DETUNE_PARAM, 0.0f, maxDetuneCents, 0.0f, "Detune");
 
-		configInput(DETUNE_INPUT, "DETUNE");
-		configInput(PITCH_INPUT, "PITCH");
-		configInput(GATE_INPUT, "GATE");
+		configInput(DETUNE_INPUT, "Detune CV");
+		configInput(PITCH_INPUT, "Pitch (1V/octave)");
+		configInput(GATE_INPUT, "Gate");
 
 		configOutput(PITCH_OUTPUT, "PITCH");
 		configOutput(GATE_OUTPUT, "GATE");

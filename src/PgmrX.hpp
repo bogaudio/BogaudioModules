@@ -78,10 +78,10 @@ struct PgmrX : PgmrXBase, OutputRange {
 		configParam<OutputRangeParamQuantity>(CVD4_PARAM, -1.0f, 1.0f, 0.0f, "Step 4D", " V");
 		configButton(SELECT4_PARAM, "Select 4");
 
-		configInput(SELECT1_INPUT, "SELECT1");
-		configInput(SELECT2_INPUT, "SELECT2");
-		configInput(SELECT3_INPUT, "SELECT3");
-		configInput(SELECT4_INPUT, "SELECT4");
+		configInput(SELECT1_INPUT, "Select 1 trigger");
+		configInput(SELECT2_INPUT, "Select 2 trigger");
+		configInput(SELECT3_INPUT, "Select 3 trigger");
+		configInput(SELECT4_INPUT, "Select 4 trigger");
 
 		configOutput(SELECT1_OUTPUT, "SELECT1");
 		configOutput(SELECT2_OUTPUT, "SELECT2");

@@ -39,9 +39,9 @@ struct Mix1 : LinearCVMixerModule {
 		configSwitch(MUTE_PARAM, 0.0f, 1.0f, 0.0f, "Mute", {"Unmuted", "Muted"});
 		configBypass(IN_INPUT, OUT_OUTPUT);
 
-		configInput(MUTE_INPUT, "MUTE");
-		configInput(LEVEL_INPUT, "LEVEL");
-		configInput(IN_INPUT, "IN");
+		configInput(MUTE_INPUT, "Mute CV");
+		configInput(LEVEL_INPUT, "Level CV");
+		configInput(IN_INPUT, "Signal");
 
 		configOutput(OUT_OUTPUT, "OUT");
 	}

@@ -72,14 +72,14 @@ struct ShaperPlus : TriggerOnLoadModule {
 		configSwitch(SPEED_PARAM, 0.0f, 1.0f, 1.0f, "Speed", {"Slow", "Normal"});
 		configSwitch(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "Loop", {"Loop", "Stop"});
 
-		configInput(SIGNAL_INPUT, "SIGNAL");
-		configInput(TRIGGER_INPUT, "TRIGGER");
-		configInput(ATTACK_INPUT, "ATTACK");
-		configInput(ON_INPUT, "ON");
-		configInput(DECAY_INPUT, "DECAY");
-		configInput(OFF_INPUT, "OFF");
-		configInput(ENV_INPUT, "ENV");
-		configInput(SIGNALCV_INPUT, "SIGNALCV");
+		configInput(SIGNAL_INPUT, "Signal");
+		configInput(TRIGGER_INPUT, "Trigger");
+		configInput(ATTACK_INPUT, "Attack CV");
+		configInput(ON_INPUT, "On CV");
+		configInput(DECAY_INPUT, "Decay CV");
+		configInput(OFF_INPUT, "Off CV");
+		configInput(ENV_INPUT, "Envelope level CV");
+		configInput(SIGNALCV_INPUT, "Output signal level CV");
 
 		configOutput(SIGNAL_OUTPUT, "SIGNAL");
 		configOutput(ENV_OUTPUT, "ENV");

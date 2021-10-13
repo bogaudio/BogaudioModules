@@ -55,7 +55,7 @@ struct VCO : VCOBase {
 
 		configInput(PITCH_INPUT, "Pitch (1V/octave)");
 		configInput(SYNC_INPUT, "Sync");
-		configInput(PW_INPUT, "Pulse width");
+		configInput(PW_INPUT, "Pulse width CV");
 		configInput(FM_INPUT, "Frequency modulation");
 
 		configOutput(SQUARE_OUTPUT, "Square wave");

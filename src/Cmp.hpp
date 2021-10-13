@@ -56,10 +56,10 @@ struct Cmp : BGModule {
 		configSwitch(OUTPUT_PARAM, 0.0f, 1.0f, 0.0f, "Output", {"+10V", "+/-5V"});
 		paramQuantities[OUTPUT_PARAM]->snapEnabled = true;
 
-		configInput(A_INPUT, "A");
-		configInput(B_INPUT, "B");
-		configInput(WINDOW_INPUT, "WINDOW");
-		configInput(LAG_INPUT, "LAG");
+		configInput(A_INPUT, "Signal A");
+		configInput(B_INPUT, "Signal B");
+		configInput(WINDOW_INPUT, "Window CV");
+		configInput(LAG_INPUT, "Lag CV");
 
 		configOutput(GREATER_OUTPUT, "GREATER");
 		configOutput(LESS_OUTPUT, "LESS");

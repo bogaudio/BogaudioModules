@@ -145,20 +145,20 @@ struct EightFO : LFOBase {
 		configParam(PHASE1_PARAM, -1.0, 1.0, 0.0, "Phase 45", "º", 0.0f, 180.0f);
 		configParam(PHASE0_PARAM, -1.0, 1.0, 0.0f, "Phase 0", "º", 0.0f, 180.0f);
 
-		configInput(SAMPLE_PWM_INPUT, "SAMPLE_PWM");
-		configInput(PHASE7_INPUT, "PHASE7");
-		configInput(PHASE6_INPUT, "PHASE6");
-		configInput(PHASE5_INPUT, "PHASE5");
-		configInput(PHASE4_INPUT, "PHASE4");
-		configInput(PHASE3_INPUT, "PHASE3");
-		configInput(PHASE2_INPUT, "PHASE2");
-		configInput(PHASE1_INPUT, "PHASE1");
-		configInput(PHASE0_INPUT, "PHASE0");
-		configInput(PITCH_INPUT, "PITCH");
-		configInput(RESET_INPUT, "RESET");
-		configInput(OFFSET_INPUT, "OFFSET");
-		configInput(SCALE_INPUT, "SCALE");
-		configInput(SMOOTH_INPUT, "SMOOTH");
+		configInput(SAMPLE_PWM_INPUT, "Sample/PWM CV");
+		configInput(PHASE7_INPUT, "Phase 7 CV");
+		configInput(PHASE6_INPUT, "Phase 6 CV");
+		configInput(PHASE5_INPUT, "Phase 5 CV");
+		configInput(PHASE4_INPUT, "Phase 4 CV");
+		configInput(PHASE3_INPUT, "Phase 3 CV");
+		configInput(PHASE2_INPUT, "Phase 2 CV");
+		configInput(PHASE1_INPUT, "Phase 1 CV");
+		configInput(PHASE0_INPUT, "Phase 0 CV");
+		configInput(PITCH_INPUT, "Pitch (1V/octave)");
+		configInput(RESET_INPUT, "Reset");
+		configInput(OFFSET_INPUT, "Offset CV");
+		configInput(SCALE_INPUT, "Scale CV");
+		configInput(SMOOTH_INPUT, "Smoothing CV");
 
 		configOutput(PHASE7_OUTPUT, "PHASE7");
 		configOutput(PHASE6_OUTPUT, "PHASE6");

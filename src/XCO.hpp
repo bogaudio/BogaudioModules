@@ -150,22 +150,22 @@ struct XCO : BGModule {
 		configParam(SINE_PHASE_PARAM, -1.0f, 1.0f, 0.0f, "Sine wave phase", "º", 0.0f, 180.0f);
 		configParam(SINE_MIX_PARAM, 0.0f, 1.0f, 1.0f, "Sine wave mix", "%", 0.0f, 100.0f);
 
-		configInput(FM_INPUT, "FM");
-		configInput(FM_DEPTH_INPUT, "FM_DEPTH");
-		configInput(SQUARE_PW_INPUT, "SQUARE_PW");
-		configInput(SQUARE_PHASE_INPUT, "SQUARE_PHASE");
-		configInput(SQUARE_MIX_INPUT, "SQUARE_MIX");
-		configInput(SAW_SATURATION_INPUT, "SAW_SATURATION");
-		configInput(SAW_PHASE_INPUT, "SAW_PHASE");
-		configInput(SAW_MIX_INPUT, "SAW_MIX");
-		configInput(TRIANGLE_SAMPLE_INPUT, "TRIANGLE_SAMPLE");
-		configInput(TRIANGLE_PHASE_INPUT, "TRIANGLE_PHASE");
-		configInput(TRIANGLE_MIX_INPUT, "TRIANGLE_MIX");
-		configInput(SINE_FEEDBACK_INPUT, "SINE_FEEDBACK");
-		configInput(SINE_PHASE_INPUT, "SINE_PHASE");
-		configInput(SINE_MIX_INPUT, "SINE_MIX");
-		configInput(PITCH_INPUT, "PITCH");
-		configInput(SYNC_INPUT, "SYNC");
+		configInput(FM_INPUT, "Frequency modulation");
+		configInput(FM_DEPTH_INPUT, "FM depth CV");
+		configInput(SQUARE_PW_INPUT, "Square pulse width CV");
+		configInput(SQUARE_PHASE_INPUT, "Square phase CV");
+		configInput(SQUARE_MIX_INPUT, "Square mix CV");
+		configInput(SAW_SATURATION_INPUT, "Saw saturation CV");
+		configInput(SAW_PHASE_INPUT, "Saw phase CV");
+		configInput(SAW_MIX_INPUT, "Saw mix CV");
+		configInput(TRIANGLE_SAMPLE_INPUT, "Triangle sample CV");
+		configInput(TRIANGLE_PHASE_INPUT, "Triangle phase CV");
+		configInput(TRIANGLE_MIX_INPUT, "Triangle mix CV");
+		configInput(SINE_FEEDBACK_INPUT, "Sine feedback CV");
+		configInput(SINE_PHASE_INPUT, "Sine phase CV");
+		configInput(SINE_MIX_INPUT, "Sine mix CV");
+		configInput(PITCH_INPUT, "Pitch (1V/octave)");
+		configInput(SYNC_INPUT, "Sync");
 
 		configOutput(SQUARE_OUTPUT, "SQUARE");
 		configOutput(SAW_OUTPUT, "SAW");

@@ -40,9 +40,9 @@ struct Slew : BGModule {
 		configSwitch(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow mode", {"Disabled", "Enabled"});
 		configBypass(IN_INPUT, OUT_OUTPUT);
 
-		configInput(RISE_INPUT, "RISE");
-		configInput(FALL_INPUT, "FALL");
-		configInput(IN_INPUT, "IN");
+		configInput(RISE_INPUT, "Rise CV");
+		configInput(FALL_INPUT, "Fall CV");
+		configInput(IN_INPUT, "Signal");
 
 		configOutput(OUT_OUTPUT, "OUT");
 	}

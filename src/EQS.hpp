@@ -45,8 +45,8 @@ struct EQS : BGModule {
 		configBypass(LEFT_INPUT, LEFT_OUTPUT);
 		configBypass(RIGHT_INPUT, RIGHT_OUTPUT);
 
-		configInput(LEFT_INPUT, "LEFT");
-		configInput(RIGHT_INPUT, "RIGHT");
+		configInput(LEFT_INPUT, "Left");
+		configInput(RIGHT_INPUT, "Right");
 
 		configOutput(LEFT_OUTPUT, "LEFT");
 		configOutput(RIGHT_OUTPUT, "RIGHT");

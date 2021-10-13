@@ -103,19 +103,19 @@ struct Mix4x : ExpanderModule<Mix4ExpanderMessage, BGModule> {
 		configParam<AmplifierParamQuantity>(LEVEL_A_PARAM, 0.0f, 1.0f, 0.8f, "A return level");
 		configParam<AmplifierParamQuantity>(LEVEL_B_PARAM, 0.0f, 1.0f, 0.8f, "B return level");
 
-		configInput(A1_INPUT, "A1");
-		configInput(B1_INPUT, "B1");
-		configInput(A2_INPUT, "A2");
-		configInput(B2_INPUT, "B2");
-		configInput(A3_INPUT, "A3");
-		configInput(B3_INPUT, "B3");
-		configInput(A4_INPUT, "A4");
-		configInput(B4_INPUT, "B4");
-		configInput(L_A_INPUT, "L_A");
-		configInput(R_A_INPUT, "R_A");
-		configInput(LEVEL_A_INPUT, "LEVEL_A");
-		configInput(L_B_INPUT, "L_B");
-		configInput(R_B_INPUT, "R_B");
+		configInput(A1_INPUT, "Channel 1 send A CV");
+		configInput(B1_INPUT, "Channel 1 send B CV");
+		configInput(A2_INPUT, "Channel 2 send A CV");
+		configInput(B2_INPUT, "Channel 2 send B CV");
+		configInput(A3_INPUT, "Channel 3 send A CV");
+		configInput(B3_INPUT, "Channel 3 send B CV");
+		configInput(A4_INPUT, "Channel 4 send A CV");
+		configInput(B4_INPUT, "Channel 4 send B CV");
+		configInput(L_A_INPUT, "Return A left");
+		configInput(R_A_INPUT, "Return A right");
+		configInput(LEVEL_A_INPUT, "Return A level CV");
+		configInput(L_B_INPUT, "Return B left");
+		configInput(R_B_INPUT, "Return B right");
 
 		configOutput(SEND_A_OUTPUT, "SEND_A");
 		configOutput(SEND_B_OUTPUT, "SEND_B");

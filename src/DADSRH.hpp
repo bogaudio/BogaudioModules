@@ -81,7 +81,7 @@ struct DADSRH : TriggerOnLoadModule {
 		configSwitch(SPEED_PARAM, 0.0f, 1.0f, 1.0f, "Speed", {"Slow", "Normal"});
 		configSwitch(RETRIGGER_PARAM, 0.0f, 1.0f, 1.0f, "Retrigger", {"Reset", "Resume attack"});
 
-		configInput(TRIGGER_INPUT, "TRIGGER");
+		configInput(TRIGGER_INPUT, "Trigger");
 
 		configOutput(ENV_OUTPUT, "ENV");
 		configOutput(INV_OUTPUT, "INV");

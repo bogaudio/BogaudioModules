@@ -74,22 +74,22 @@ struct Matrix44Cvm : Matrix44CvmBase {
 		configSwitch(MUTE34_PARAM, 0.0f, 3.0f, 0.0f, "Mute 3D", muteLabels);
 		configSwitch(MUTE44_PARAM, 0.0f, 3.0f, 0.0f, "Mute 4D", muteLabels);
 
-		configInput(CV11_INPUT, "CV11");
-		configInput(CV21_INPUT, "CV21");
-		configInput(CV31_INPUT, "CV31");
-		configInput(CV41_INPUT, "CV41");
-		configInput(CV12_INPUT, "CV12");
-		configInput(CV22_INPUT, "CV22");
-		configInput(CV32_INPUT, "CV32");
-		configInput(CV42_INPUT, "CV42");
-		configInput(CV13_INPUT, "CV13");
-		configInput(CV23_INPUT, "CV23");
-		configInput(CV33_INPUT, "CV33");
-		configInput(CV43_INPUT, "CV43");
-		configInput(CV14_INPUT, "CV14");
-		configInput(CV24_INPUT, "CV24");
-		configInput(CV34_INPUT, "CV34");
-		configInput(CV44_INPUT, "CV44");
+		configInput(CV11_INPUT, "Level 1A CV");
+		configInput(CV21_INPUT, "Level 2A CV");
+		configInput(CV31_INPUT, "Level 3A CV");
+		configInput(CV41_INPUT, "Level 4A CV");
+		configInput(CV12_INPUT, "Level 1B CV");
+		configInput(CV22_INPUT, "Level 2B CV");
+		configInput(CV32_INPUT, "Level 3B CV");
+		configInput(CV42_INPUT, "Level 4B CV");
+		configInput(CV13_INPUT, "Level 1C CV");
+		configInput(CV23_INPUT, "Level 2C CV");
+		configInput(CV33_INPUT, "Level 3C CV");
+		configInput(CV43_INPUT, "Level 4C CV");
+		configInput(CV14_INPUT, "Level 1D CV");
+		configInput(CV24_INPUT, "Level 2D CV");
+		configInput(CV34_INPUT, "Level 3D CV");
+		configInput(CV44_INPUT, "Level 4D CV");
 
 		_mutes = new Param*[16];
 		_cvs = new Input*[16];

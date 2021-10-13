@@ -30,8 +30,8 @@ struct Mult : BGModule {
 	Mult() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 
-		configInput(INA_INPUT, "INA");
-		configInput(INB_INPUT, "INB");
+		configInput(INA_INPUT, "Signal A");
+		configInput(INB_INPUT, "Signal B");
 
 		configOutput(OUTA1_OUTPUT, "OUTA1");
 		configOutput(OUTA2_OUTPUT, "OUTA2");

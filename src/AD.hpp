@@ -73,9 +73,9 @@ struct AD : BGModule {
 		configSwitch(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear", {"Disabled (logarithmic)", "Enabled"});
 		configSwitch(RETRIGGER_PARAM, 0.0f, 1.0f, 1.0f, "Retrigger", {"Disabled (finish cycle)", "Enabled"});
 
-		configInput(TRIGGER_INPUT, "TRIGGER");
-		configInput(ATTACK_INPUT, "ATTACK");
-		configInput(DECAY_INPUT, "DECAY");
+		configInput(TRIGGER_INPUT, "Trigger");
+		configInput(ATTACK_INPUT, "Attack CV");
+		configInput(DECAY_INPUT, "Decay CV");
 
 		configOutput(ENV_OUTPUT, "ENV");
 		configOutput(EOC_OUTPUT, "EOC");

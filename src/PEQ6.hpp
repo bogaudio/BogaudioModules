@@ -102,21 +102,21 @@ struct PEQ6 : ExpandableModule<PEQ6ExpanderMessage, BandExcludeModule> {
 		configParam(FREQUENCY_CV6_PARAM, -1.0f, 1.0f, 1.0f, "Channel 6 frequency CV attenuation", "%", 0.0f, 100.0f);
 		configBypass(IN_INPUT, OUT_OUTPUT);
 
-		configInput(FREQUENCY_CV_INPUT, "FREQUENCY_CV");
-		configInput(BANDWIDTH_INPUT, "BANDWIDTH");
-		configInput(IN_INPUT, "IN");
-		configInput(LEVEL1_INPUT, "LEVEL1");
-		configInput(FREQUENCY_CV1_INPUT, "FREQUENCY_CV1");
-		configInput(LEVEL2_INPUT, "LEVEL2");
-		configInput(FREQUENCY_CV2_INPUT, "FREQUENCY_CV2");
-		configInput(LEVEL3_INPUT, "LEVEL3");
-		configInput(FREQUENCY_CV3_INPUT, "FREQUENCY_CV3");
-		configInput(LEVEL4_INPUT, "LEVEL4");
-		configInput(FREQUENCY_CV4_INPUT, "FREQUENCY_CV4");
-		configInput(LEVEL5_INPUT, "LEVEL5");
-		configInput(FREQUENCY_CV5_INPUT, "FREQUENCY_CV5");
-		configInput(LEVEL6_INPUT, "LEVEL6");
-		configInput(FREQUENCY_CV6_INPUT, "FREQUENCY_CV6");
+		configInput(FREQUENCY_CV_INPUT, "Frequency CV");
+		configInput(BANDWIDTH_INPUT, "Bandwidth CV");
+		configInput(IN_INPUT, "Signal");
+		configInput(LEVEL1_INPUT, "Channel 1 level CV");
+		configInput(FREQUENCY_CV1_INPUT, "Channel 1 frequency CV");
+		configInput(LEVEL2_INPUT, "Channel 2 level CV");
+		configInput(FREQUENCY_CV2_INPUT, "Channel 2 frequency CV");
+		configInput(LEVEL3_INPUT, "Channel 3 level CV");
+		configInput(FREQUENCY_CV3_INPUT, "Channel 3 frequency CV");
+		configInput(LEVEL4_INPUT, "Channel 4 level CV");
+		configInput(FREQUENCY_CV4_INPUT, "Channel 4 frequency CV");
+		configInput(LEVEL5_INPUT, "Channel 5 level CV");
+		configInput(FREQUENCY_CV5_INPUT, "Channel 5 frequency CV");
+		configInput(LEVEL6_INPUT, "Channel 6 level CV");
+		configInput(FREQUENCY_CV6_INPUT, "Channel 6 frequency CV");
 
 		configOutput(OUT_OUTPUT, "OUT");
 		configOutput(OUT1_OUTPUT, "OUT1");

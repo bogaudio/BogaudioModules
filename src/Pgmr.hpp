@@ -95,12 +95,12 @@ struct Pgmr : PgmrBase {
 		configButton(SELECT4_PARAM, "Select 4");
 		setInputIDs(CLOCK_INPUT, SELECT_INPUT);
 
-		configInput(CLOCK_INPUT, "CLOCK");
-		configInput(SELECT_INPUT, "SELECT");
-		configInput(SELECT1_INPUT, "SELECT1");
-		configInput(SELECT2_INPUT, "SELECT2");
-		configInput(SELECT3_INPUT, "SELECT3");
-		configInput(SELECT4_INPUT, "SELECT4");
+		configInput(CLOCK_INPUT, "Clock");
+		configInput(SELECT_INPUT, "Select CV");
+		configInput(SELECT1_INPUT, "Select 1 trigger");
+		configInput(SELECT2_INPUT, "Select 2 trigger");
+		configInput(SELECT3_INPUT, "Select 3 trigger");
+		configInput(SELECT4_INPUT, "Select 4 trigger");
 
 		configOutput(A_OUTPUT, "A");
 		configOutput(B_OUTPUT, "B");

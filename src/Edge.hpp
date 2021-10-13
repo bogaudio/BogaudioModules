@@ -56,7 +56,7 @@ struct Edge : BGModule {
 		configParam(FALL_PARAM, -1.0f, 1.0f, 0.01f, "Falling threshold", " V", 0.0f, 10.0f);
 		configParam<ScaledSquaringParamQuantity<1000>>(HOLD_PARAM, 0.0f, 1.0f, 0.031623f, "Hold/reset time", " ms");
 
-		configInput(IN_INPUT, "IN");
+		configInput(IN_INPUT, "Signal");
 
 		configOutput(HIGH_OUTPUT, "HIGH");
 		configOutput(RISE_OUTPUT, "RISE");

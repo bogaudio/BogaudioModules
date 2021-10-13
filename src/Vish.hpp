@@ -58,11 +58,11 @@ struct Vish : LPGEnvBaseModule {
 		configSwitch(GATE_TO_TRIGGER_PARAM, 0.0f, 1.0f, 1.0f, "Gate to trigger mode", {"Disabled (input pass-through)", "Enabled"});
 		configSwitch(TIMES_10X_PARAM, 0.0f, 1.0f, 0.0f, "Timings 10X mode", {"Disabled (normal)", "Enabled"});
 
-		configInput(RISE_INPUT, "RISE");
-		configInput(MINIMUM_GATE_INPUT, "MINIMUM_GATE");
-		configInput(FALL_INPUT, "FALL");
-		configInput(SHAPE_INPUT, "SHAPE");
-		configInput(GATE_INPUT, "GATE");
+		configInput(RISE_INPUT, "Rise CV");
+		configInput(MINIMUM_GATE_INPUT, "Minimum gate CV");
+		configInput(FALL_INPUT, "Fall CV");
+		configInput(SHAPE_INPUT, "Shape CV");
+		configInput(GATE_INPUT, "Gate");
 
 		configOutput(OUT_OUTPUT, "OUT");
 	}

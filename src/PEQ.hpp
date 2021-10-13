@@ -75,17 +75,17 @@ struct PEQ : BGModule {
 		configSwitch(C_MODE_PARAM, 0.0f, 1.0f, 1.0f, "Channel C HP/BP", {"Bandpass", "Highpass"});
 		configBypass(IN_INPUT, OUT_OUTPUT);
 
-		configInput(A_LEVEL_INPUT, "A_LEVEL");
-		configInput(B_LEVEL_INPUT, "B_LEVEL");
-		configInput(C_LEVEL_INPUT, "C_LEVEL");
-		configInput(A_FREQUENCY_INPUT, "A_FREQUENCY");
-		configInput(B_FREQUENCY_INPUT, "B_FREQUENCY");
-		configInput(C_FREQUENCY_INPUT, "C_FREQUENCY");
-		configInput(A_BANDWIDTH_INPUT, "A_BANDWIDTH");
-		configInput(B_BANDWIDTH_INPUT, "B_BANDWIDTH");
-		configInput(C_BANDWIDTH_INPUT, "C_BANDWIDTH");
-		configInput(ALL_CV_INPUT, "ALL_CV");
-		configInput(IN_INPUT, "IN");
+		configInput(A_LEVEL_INPUT, "Channel A level CV");
+		configInput(B_LEVEL_INPUT, "Channel B level CV");
+		configInput(C_LEVEL_INPUT, "Channel C level CV");
+		configInput(A_FREQUENCY_INPUT, "Channel A frequency CV");
+		configInput(B_FREQUENCY_INPUT, "Channel B frequency CV");
+		configInput(C_FREQUENCY_INPUT, "Channel C frequency CV");
+		configInput(A_BANDWIDTH_INPUT, "Channel A bandwidth CV");
+		configInput(B_BANDWIDTH_INPUT, "Channel B bandwidth CV");
+		configInput(C_BANDWIDTH_INPUT, "Channel C bandwidth CV");
+		configInput(ALL_CV_INPUT, "All-channels frequency CV");
+		configInput(IN_INPUT, "Signal");
 
 		configOutput(OUT_OUTPUT, "OUT");
 	}

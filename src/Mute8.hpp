@@ -96,22 +96,22 @@ struct Mute8 : BGModule {
 		configBypass(INPUT7_INPUT, OUTPUT7_OUTPUT);
 		configBypass(INPUT8_INPUT, OUTPUT8_OUTPUT);
 
-		configInput(INPUT1_INPUT, "INPUT1");
-		configInput(INPUT2_INPUT, "INPUT2");
-		configInput(INPUT3_INPUT, "INPUT3");
-		configInput(INPUT4_INPUT, "INPUT4");
-		configInput(INPUT5_INPUT, "INPUT5");
-		configInput(INPUT6_INPUT, "INPUT6");
-		configInput(INPUT7_INPUT, "INPUT7");
-		configInput(INPUT8_INPUT, "INPUT8");
-		configInput(MUTE1_INPUT, "MUTE1");
-		configInput(MUTE2_INPUT, "MUTE2");
-		configInput(MUTE3_INPUT, "MUTE3");
-		configInput(MUTE4_INPUT, "MUTE4");
-		configInput(MUTE5_INPUT, "MUTE5");
-		configInput(MUTE6_INPUT, "MUTE6");
-		configInput(MUTE7_INPUT, "MUTE7");
-		configInput(MUTE8_INPUT, "MUTE8");
+		configInput(INPUT1_INPUT, "Signal 1");
+		configInput(INPUT2_INPUT, "Signal 2");
+		configInput(INPUT3_INPUT, "Signal 3");
+		configInput(INPUT4_INPUT, "Signal 4");
+		configInput(INPUT5_INPUT, "Signal 5");
+		configInput(INPUT6_INPUT, "Signal 6");
+		configInput(INPUT7_INPUT, "Signal 7");
+		configInput(INPUT8_INPUT, "Signal 8");
+		configInput(MUTE1_INPUT, "Mute 1 CV");
+		configInput(MUTE2_INPUT, "Mute 2 CV");
+		configInput(MUTE3_INPUT, "Mute 3 CV");
+		configInput(MUTE4_INPUT, "Mute 4 CV");
+		configInput(MUTE5_INPUT, "Mute 5 CV");
+		configInput(MUTE6_INPUT, "Mute 6 CV");
+		configInput(MUTE7_INPUT, "Mute 7 CV");
+		configInput(MUTE8_INPUT, "Mute 8 CV");
 
 		configOutput(OUTPUT1_OUTPUT, "OUTPUT1");
 		configOutput(OUTPUT2_OUTPUT, "OUTPUT2");

@@ -39,10 +39,10 @@ struct AMRM : BGModule {
 		configParam(DRYWET_PARAM, 0.0f, 1.0f, 1.0f, "Wet mix", "%", 0.0f, 100.0f);
 		configBypass(CARRIER_INPUT, OUT_OUTPUT);
 
-		configInput(MODULATOR_INPUT, "MODULATOR");
-		configInput(CARRIER_INPUT, "CARRIER");
-		configInput(RECTIFY_INPUT, "RECTIFY");
-		configInput(DRYWET_INPUT, "DRYWET");
+		configInput(MODULATOR_INPUT, "Modulator signal");
+		configInput(CARRIER_INPUT, "Carrier signal");
+		configInput(RECTIFY_INPUT, "Rectify CV");
+		configInput(DRYWET_INPUT, "Dry/wet CV");
 
 		configOutput(OUT_OUTPUT, "OUT");
 		configOutput(RECTIFY_OUTPUT, "RECTIFY");

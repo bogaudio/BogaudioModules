@@ -61,10 +61,10 @@ struct Mix2 : LinearCVMixerModule {
 		configParam(LEVEL_PARAM, 0.0f, 1.0f, fabsf(MixerChannel::minDecibels) / (MixerChannel::maxDecibels - MixerChannel::minDecibels), "Level", "dB", 0.0f, MixerChannel::maxDecibels - MixerChannel::minDecibels, MixerChannel::minDecibels);
 		configSwitch(MUTE_PARAM, 0.0f, 1.0f, 0.0f, "Mute", {"Unmuted", "Muted"});
 
-		configInput(LEVEL_INPUT, "LEVEL");
-		configInput(MUTE_INPUT, "MUTE");
-		configInput(L_INPUT, "L");
-		configInput(R_INPUT, "R");
+		configInput(LEVEL_INPUT, "Level CV");
+		configInput(MUTE_INPUT, "Mute CV");
+		configInput(L_INPUT, "Left");
+		configInput(R_INPUT, "Right");
 
 		configOutput(L_OUTPUT, "L");
 		configOutput(R_OUTPUT, "R");

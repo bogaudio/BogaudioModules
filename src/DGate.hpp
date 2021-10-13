@@ -60,7 +60,7 @@ struct DGate : TriggerOnLoadModule {
 		configSwitch(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "Loop", {"Loop", "Stop"});
 		configButton(TRIGGER_PARAM, "Trigger");
 
-		configInput(TRIGGER_INPUT, "TRIGGER");
+		configInput(TRIGGER_INPUT, "Trigger");
 
 		configOutput(GATE_OUTPUT, "GATE");
 		configOutput(END_OUTPUT, "END");

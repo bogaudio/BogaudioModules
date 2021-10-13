@@ -72,10 +72,10 @@ struct Nsgt : BGModule {
 		configBypass(LEFT_INPUT, LEFT_OUTPUT);
 		configBypass(RIGHT_INPUT, RIGHT_OUTPUT);
 
-		configInput(LEFT_INPUT, "LEFT");
-		configInput(RIGHT_INPUT, "RIGHT");
-		configInput(THRESHOLD_INPUT, "THRESHOLD");
-		configInput(RATIO_INPUT, "RATIO");
+		configInput(LEFT_INPUT, "Left");
+		configInput(RIGHT_INPUT, "Right");
+		configInput(THRESHOLD_INPUT, "Threshold CV");
+		configInput(RATIO_INPUT, "Ratio CV");
 
 		configOutput(LEFT_OUTPUT, "LEFT");
 		configOutput(RIGHT_OUTPUT, "RIGHT");

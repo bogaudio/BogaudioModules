@@ -62,11 +62,11 @@ struct Lgsw : SaveLatchToPatchModule {
 		configSwitch(LATCH_PARAM, 0.0f, 1.0f, 0.0f, "Latch", {"Disabled", "Enabled"});
 		configSwitch(LOGIC_MODE_PARAM, 0.0f, 4.0f, 0.0f, "Logic", {"OR", "AND", "XOR", "NOR", "NAND"});
 
-		configInput(GATE_A_INPUT, "GATE_A");
-		configInput(GATE_B_INPUT, "GATE_B");
-		configInput(LOGIC_MODE_INPUT, "LOGIC_MODE");
-		configInput(HIGH_INPUT, "HIGH");
-		configInput(LOW_INPUT, "LOW");
+		configInput(GATE_A_INPUT, "Gate A");
+		configInput(GATE_B_INPUT, "Gate B");
+		configInput(LOGIC_MODE_INPUT, "Logic CV");
+		configInput(HIGH_INPUT, "High signal");
+		configInput(LOW_INPUT, "Low signal");
 
 		configOutput(OUT_OUTPUT, "OUT");
 	}

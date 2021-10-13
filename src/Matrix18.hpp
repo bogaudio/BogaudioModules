@@ -48,7 +48,7 @@ struct Matrix18 : KnobMatrixModule {
 		configParam(MIX7_PARAM, -1.0f, 1.0f, 0.0f, "Route 7", "%", 0.0f, 100.0f);
 		configParam(MIX8_PARAM, -1.0f, 1.0f, 0.0f, "Route 8", "%", 0.0f, 100.0f);
 
-		configInput(IN_INPUT, "IN");
+		configInput(IN_INPUT, "Signal");
 
 		configOutput(OUT1_OUTPUT, "OUT1");
 		configOutput(OUT2_OUTPUT, "OUT2");

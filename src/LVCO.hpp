@@ -66,9 +66,9 @@ struct LVCO : VCOBase {
 		configSwitch(WAVE_PARAM, 0.0f, 5.0f, 0.0f, "Waveform", {"Sine", "Triangle", "Saw", "Square", "25% Pulse", "10% Pulse"});
 		configParam(FM_DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "FM depth", "%", 0.0f, 100.0f);
 
-		configInput(PITCH_INPUT, "PITCH");
-		configInput(FM_INPUT, "FM");
-		configInput(SYNC_INPUT, "SYNC");
+		configInput(PITCH_INPUT, "Pitch (1V/octave)");
+		configInput(FM_INPUT, "Frequency modulation");
+		configInput(SYNC_INPUT, "Sync");
 
 		configOutput(OUT_OUTPUT, "OUT");
 	}

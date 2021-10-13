@@ -67,11 +67,11 @@ struct RGate : OutputRangeModule<BGModule> {
 		configParam<RoundingParamQuantity<ScaledSquaringParamQuantity<63>>>(CLOCK_DIVIDE_PARAM, 0.0f, 1.0f, 0.0f, "Clock division", "", 0.0f, 1.0f, 1.0f);
 		configParam<RoundingParamQuantity<ScaledSquaringParamQuantity<63>>>(CLOCK_MULTIPLY_PARAM, 0.0f, 1.0f, 0.0f, "Clock multiplication", "", 0.0f, 1.0f, 1.0f);
 
-		configInput(LENGTH_INPUT, "LENGTH");
-		configInput(CLOCK_DIVIDE_INPUT, "CLOCK_DIVIDE");
-		configInput(RESET_INPUT, "RESET");
-		configInput(CLOCK_MULTIPLE_INPUT, "CLOCK_MULTIPLE");
-		configInput(CLOCK_INPUT, "CLOCK");
+		configInput(LENGTH_INPUT, "Length CV");
+		configInput(CLOCK_DIVIDE_INPUT, "Clock divider CV");
+		configInput(RESET_INPUT, "Reset");
+		configInput(CLOCK_MULTIPLE_INPUT, "Clock multiplier CV");
+		configInput(CLOCK_INPUT, "Clock");
 
 		configOutput(GATE_OUTPUT, "GATE");
 

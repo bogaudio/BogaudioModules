@@ -43,9 +43,9 @@ struct Follow : FollowerBase {
 		configParam(RESPONSE_PARAM, 0.0f, 1.0f, 0.3f, "Smoothing", "%", 0.0f, 100.0f);
 		configParam<EFGainParamQuantity>(GAIN_PARAM, -1.0f, 1.0f, 0.0f, "Gain", " dB");
 
-		configInput(RESPONSE_INPUT, "RESPONSE");
-		configInput(GAIN_INPUT, "GAIN");
-		configInput(IN_INPUT, "IN");
+		configInput(RESPONSE_INPUT, "Response CV");
+		configInput(GAIN_INPUT, "Gain CV");
+		configInput(IN_INPUT, "Signal");
 
 		configOutput(OUT_OUTPUT, "OUT");
 	}

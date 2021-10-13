@@ -57,15 +57,15 @@ struct VCM : DisableOutputLimitModule {
 		configParam<LevelParamQuantity>(MIX_PARAM, 0.0f, 1.0f, 0.8f, "Mix level");
 		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear");
 
-		configInput(IN1_INPUT, "IN1");
-		configInput(CV1_INPUT, "CV1");
-		configInput(IN2_INPUT, "IN2");
-		configInput(CV2_INPUT, "CV2");
-		configInput(IN3_INPUT, "IN3");
-		configInput(CV3_INPUT, "CV3");
-		configInput(IN4_INPUT, "IN4");
-		configInput(CV4_INPUT, "CV4");
-		configInput(MIX_CV_INPUT, "MIX_CV");
+		configInput(IN1_INPUT, "Signal 1");
+		configInput(CV1_INPUT, "Level 1 CV");
+		configInput(IN2_INPUT, "Signal 2");
+		configInput(CV2_INPUT, "Level 2 CV");
+		configInput(IN3_INPUT, "Signal 3");
+		configInput(CV3_INPUT, "Level 3 CV");
+		configInput(IN4_INPUT, "Signal 4");
+		configInput(CV4_INPUT, "Level 4 CV");
+		configInput(MIX_CV_INPUT, "Mix level CV");
 
 		configOutput(MIX_OUTPUT, "MIX");
 	}

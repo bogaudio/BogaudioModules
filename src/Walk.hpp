@@ -52,10 +52,10 @@ struct Walk : BGModule {
 		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "Offset", " V", 0.0f, 5.0f);
 		configParam(SCALE_PARAM, 0.0f, 1.0f, 1.0f, "Scale", "%", 0.0f, 100.0f);
 
-		configInput(RATE_INPUT, "RATE");
-		configInput(OFFSET_INPUT, "OFFSET");
-		configInput(SCALE_INPUT, "SCALE");
-		configInput(JUMP_INPUT, "JUMP");
+		configInput(RATE_INPUT, "Rate CV");
+		configInput(OFFSET_INPUT, "Offset CV");
+		configInput(SCALE_INPUT, "Scale CV");
+		configInput(JUMP_INPUT, "Trigger");
 
 		configOutput(OUT_OUTPUT, "OUT");
 	}

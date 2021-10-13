@@ -63,10 +63,10 @@ struct Matrix44 : Matrix44Base {
 		configParam(MIX34_PARAM, -1.0f, 1.0f, 0.0f, "Mix 3D", "%", 0.0f, 100.0f);
 		configParam(MIX44_PARAM, -1.0f, 1.0f, 0.0f, "Mix 4D", "%", 0.0f, 100.0f);
 
-		configInput(IN1_INPUT, "IN1");
-		configInput(IN2_INPUT, "IN2");
-		configInput(IN3_INPUT, "IN3");
-		configInput(IN4_INPUT, "IN4");
+		configInput(IN1_INPUT, "Signal 1");
+		configInput(IN2_INPUT, "Signal 2");
+		configInput(IN3_INPUT, "Signal 3");
+		configInput(IN4_INPUT, "Signal 4");
 
 		configOutput(OUT1_OUTPUT, "OUT1");
 		configOutput(OUT2_OUTPUT, "OUT2");

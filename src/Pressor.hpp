@@ -96,15 +96,15 @@ struct Pressor : BGModule {
 		configBypass(LEFT_INPUT, LEFT_OUTPUT);
 		configBypass(RIGHT_INPUT, RIGHT_OUTPUT);
 
-		configInput(LEFT_INPUT, "LEFT");
-		configInput(SIDECHAIN_INPUT, "SIDECHAIN");
-		configInput(THRESHOLD_INPUT, "THRESHOLD");
-		configInput(RATIO_INPUT, "RATIO");
-		configInput(RIGHT_INPUT, "RIGHT");
-		configInput(ATTACK_INPUT, "ATTACK");
-		configInput(RELEASE_INPUT, "RELEASE");
-		configInput(INPUT_GAIN_INPUT, "INPUT_GAIN");
-		configInput(OUTPUT_GAIN_INPUT, "OUTPUT_GAIN");
+		configInput(LEFT_INPUT, "Left");
+		configInput(SIDECHAIN_INPUT, "Sidechain");
+		configInput(THRESHOLD_INPUT, "Threshold CV");
+		configInput(RATIO_INPUT, "Ratio CV");
+		configInput(RIGHT_INPUT, "Right");
+		configInput(ATTACK_INPUT, "Attack CV");
+		configInput(RELEASE_INPUT, "Release CV");
+		configInput(INPUT_GAIN_INPUT, "Input gain CV");
+		configInput(OUTPUT_GAIN_INPUT, "Output gain CV");
 
 		configOutput(ENVELOPE_OUTPUT, "ENVELOPE");
 		configOutput(LEFT_OUTPUT, "LEFT");

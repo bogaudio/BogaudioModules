@@ -92,8 +92,8 @@ struct LLFO : LFOBase {
 		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "Offset", " V", 0.0f, 5.0f);
 		configParam(SCALE_PARAM, 0.0f, 1.0f, 1.0f, "Scale", "%", 0.0f, 100.0f);
 
-		configInput(PITCH_INPUT, "PITCH");
-		configInput(RESET_INPUT, "RESET");
+		configInput(PITCH_INPUT, "Pitch (1V/octave)");
+		configInput(RESET_INPUT, "Reset");
 
 		configOutput(OUT_OUTPUT, "OUT");
 	}

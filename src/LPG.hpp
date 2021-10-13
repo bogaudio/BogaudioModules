@@ -70,11 +70,11 @@ struct LPG : LPGEnvBaseModule {
 		configParam(VCA_BIAS_PARAM, 0.0f, 1.0f, 0.0f, "VCA level", "%", 0.0f, 100.0f);
 		configButton(LINEAR_VCA_PARAM, "Linear VCA mode");
 
-		configInput(RESPONSE_INPUT, "RESPONSE");
-		configInput(LPF_INPUT, "LPF");
-		configInput(VCA_INPUT, "VCA");
-		configInput(GATE_INPUT, "GATE");
-		configInput(IN_INPUT, "IN");
+		configInput(RESPONSE_INPUT, "Response CV");
+		configInput(LPF_INPUT, "LPF envelope response CV");
+		configInput(VCA_INPUT, "VCA envelope response CV");
+		configInput(GATE_INPUT, "Gate");
+		configInput(IN_INPUT, "Signal");
 
 		configOutput(OUT_OUTPUT, "OUT");
 	}

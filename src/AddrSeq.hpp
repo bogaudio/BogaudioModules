@@ -128,9 +128,9 @@ struct AddrSeq : AddrSeqBase {
 		configParam<OutputRangeParamQuantity>(OUT7_PARAM, -1.0f, 1.0f, 0.0f, "Step 7", " V");
 		configParam<OutputRangeParamQuantity>(OUT8_PARAM, -1.0f, 1.0f, 0.0f, "Step 8", " V");
 
-		configInput(CLOCK_INPUT, "CLOCK");
-		configInput(RESET_INPUT, "RESET");
-		configInput(SELECT_INPUT, "SELECT");
+		configInput(CLOCK_INPUT, "Clock");
+		configInput(RESET_INPUT, "Reset");
+		configInput(SELECT_INPUT, "Select CV");
 
 		configOutput(OUT_OUTPUT, "OUT");
 

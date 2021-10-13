@@ -68,9 +68,9 @@ struct ASR : BGModule {
 		configParam(SUSTAIN_PARAM, 0.0f, 1.0f, 1.0f, "Sustain", "", 0.0f, 10.0f);
 		configSwitch(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear", {"Disabled (logarithmic)", "Enabled"});
 
-		configInput(TRIGGER_INPUT, "TRIGGER");
-		configInput(ATTACK_INPUT, "ATTACK");
-		configInput(RELEASE_INPUT, "RELEASE");
+		configInput(TRIGGER_INPUT, "Trigger");
+		configInput(ATTACK_INPUT, "Attack CV");
+		configInput(RELEASE_INPUT, "Release CV");
 
 		configOutput(ENV_OUTPUT, "ENV");
 		configOutput(EOC_OUTPUT, "EOC");

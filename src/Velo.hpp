@@ -51,10 +51,10 @@ struct Velo : BGModule {
 		configSwitch(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear", {"Disabled", "Enabled"});
 		configBypass(IN_INPUT, OUT_OUTPUT);
 
-		configInput(LEVEL_INPUT, "LEVEL");
-		configInput(CV_INPUT, "CV");
-		configInput(VELOCITY_INPUT, "VELOCITY");
-		configInput(IN_INPUT, "IN");
+		configInput(LEVEL_INPUT, "Level unipolar CV");
+		configInput(CV_INPUT, "Level bipolar CV");
+		configInput(VELOCITY_INPUT, "Velocity CV");
+		configInput(IN_INPUT, "Signal");
 
 		configOutput(OUT_OUTPUT, "OUT");
 	}

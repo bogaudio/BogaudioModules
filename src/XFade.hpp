@@ -41,9 +41,9 @@ struct XFade : BGModule {
 		configParam(CURVE_PARAM, 0.0f, 1.0f, 0.5f, "Curve");
 		configSwitch(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear", {"Decibels", "Amplitude"});
 
-		configInput(MIX_INPUT, "MIX");
-		configInput(A_INPUT, "A");
-		configInput(B_INPUT, "B");
+		configInput(MIX_INPUT, "Mix CV");
+		configInput(A_INPUT, "Signal A");
+		configInput(B_INPUT, "Signal B");
 
 		configOutput(OUT_OUTPUT, "OUT");
 

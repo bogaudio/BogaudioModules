@@ -57,10 +57,10 @@ struct Sine : VCOBase {
 		configParam(FM_DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "FM depth", "%", 0.0f, 100.0f);
 		configParam(PHASE_PARAM, -1.0f, 1.0f, 0.0f, "Phase offset", "º", 0.0f, 180.0f);
 
-		configInput(PITCH_INPUT, "PITCH");
-		configInput(FM_INPUT, "FM");
-		configInput(PHASE_INPUT, "PHASE");
-		configInput(SYNC_INPUT, "SYNC");
+		configInput(PITCH_INPUT, "Pitch (1V/octave)");
+		configInput(FM_INPUT, "Frequency modulation");
+		configInput(PHASE_INPUT, "Phase CV");
+		configInput(SYNC_INPUT, "Sync");
 
 		configOutput(OUT_OUTPUT, "OUT");
 	}

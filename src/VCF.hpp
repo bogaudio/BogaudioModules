@@ -80,12 +80,12 @@ struct VCF : BGModule {
 		configParam<ScaledSquaringParamQuantity<Engine::maxPoles - Engine::minPoles>>(SLOPE_PARAM, 0.0f, 1.0f, 0.522233f, "Slope", " poles", 0.0f, 1.0f, Engine::minPoles);
 		configBypass(IN_INPUT, OUT_OUTPUT);
 
-		configInput(FREQUENCY_CV_INPUT, "FREQUENCY_CV");
-		configInput(FM_INPUT, "FM");
-		configInput(PITCH_INPUT, "PITCH");
-		configInput(IN_INPUT, "IN");
-		configInput(Q_INPUT, "Q");
-		configInput(SLOPE_INPUT, "SLOPE");
+		configInput(FREQUENCY_CV_INPUT, "Cutoff CV");
+		configInput(FM_INPUT, "Cutoff FM");
+		configInput(PITCH_INPUT, "Cutoff pitch (1V/octave)");
+		configInput(IN_INPUT, "Signal");
+		configInput(Q_INPUT, "Resonance CV");
+		configInput(SLOPE_INPUT, "Slope CV");
 
 		configOutput(OUT_OUTPUT, "OUT");
 	}

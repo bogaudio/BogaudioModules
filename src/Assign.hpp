@@ -43,9 +43,9 @@ struct Assign : BGModule {
 		configParam(CHANNELS_PARAM, 1.0f, 16.0f, 0.0f, "Channels");
 		paramQuantities[CHANNELS_PARAM]->snapEnabled = true;
 
-		configInput(PITCH_INPUT, "PITCH");
-		configInput(GATE_INPUT, "GATE");
-		configInput(RESET_INPUT, "RESET");
+		configInput(PITCH_INPUT, "Pitch (1V/octave)");
+		configInput(GATE_INPUT, "Gate");
+		configInput(RESET_INPUT, "Reset");
 
 		configOutput(PITCH_OUTPUT, "PITCH");
 		configOutput(GATE_OUTPUT, "GATE");

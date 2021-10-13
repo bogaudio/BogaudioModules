@@ -43,9 +43,9 @@ struct Pulse : VCOBase {
 		configParam(PW_PARAM, -1.0f, 1.0f, 0.0f, "Pulse width", "%", 0.0f, 100.0f*0.5f*(1.0f - 2.0f * SquareOscillator::minPulseWidth), 50.0f);
 		configParam(PWM_PARAM, -1.0f, 1.0f, 0.0f, "Pulse width CV amount");
 
-		configInput(PITCH_INPUT, "PITCH");
-		configInput(PWM_INPUT, "PWM");
-		configInput(SYNC_INPUT, "SYNC");
+		configInput(PITCH_INPUT, "Pitch (1V/octave)");
+		configInput(PWM_INPUT, "Pulse width CV");
+		configInput(SYNC_INPUT, "Sync");
 
 		configOutput(OUT_OUTPUT, "OUT");
 	}

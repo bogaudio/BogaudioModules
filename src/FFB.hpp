@@ -89,8 +89,8 @@ struct FFB : BGModule {
 		configBypass(IN_INPUT, ODD_OUTPUT);
 		configBypass(IN_INPUT, EVEN_OUTPUT);
 
-		configInput(IN_INPUT, "IN");
-		configInput(CV_INPUT, "CV");
+		configInput(IN_INPUT, "Signal");
+		configInput(CV_INPUT, "Frequency CV");
 
 		configOutput(ALL_OUTPUT, "ALL");
 		configOutput(ODD_OUTPUT, "ODD");

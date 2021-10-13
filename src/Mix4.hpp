@@ -88,19 +88,19 @@ struct Mix4 : ExpandableModule<Mix4ExpanderMessage, DimmableMixerModule> {
 		getParamQuantity(MIX_MUTE_PARAM)->randomizeEnabled = false;
 		getParamQuantity(MIX_DIM_PARAM)->randomizeEnabled = false;
 
-		configInput(CV1_INPUT, "CV1");
-		configInput(PAN1_INPUT, "PAN1");
-		configInput(IN1_INPUT, "IN1");
-		configInput(CV2_INPUT, "CV2");
-		configInput(PAN2_INPUT, "PAN2");
-		configInput(IN2_INPUT, "IN2");
-		configInput(CV3_INPUT, "CV3");
-		configInput(PAN3_INPUT, "PAN3");
-		configInput(IN3_INPUT, "IN3");
-		configInput(CV4_INPUT, "CV4");
-		configInput(PAN4_INPUT, "PAN4");
-		configInput(IN4_INPUT, "IN4");
-		configInput(MIX_CV_INPUT, "MIX_CV");
+		configInput(CV1_INPUT, "Channel 1 level CV");
+		configInput(PAN1_INPUT, "Channel 1 pan CV");
+		configInput(IN1_INPUT, "Channel 1");
+		configInput(CV2_INPUT, "Channel 2 level CV");
+		configInput(PAN2_INPUT, "Channel 2 pan CV");
+		configInput(IN2_INPUT, "Channel 2");
+		configInput(CV3_INPUT, "Channel 3 level CV");
+		configInput(PAN3_INPUT, "Channel 3 pan CV");
+		configInput(IN3_INPUT, "Channel 3");
+		configInput(CV4_INPUT, "Channel 4 level CV");
+		configInput(PAN4_INPUT, "Channel 4 pan CV");
+		configInput(IN4_INPUT, "Channel 4");
+		configInput(MIX_CV_INPUT, "Mix level CV");
 
 		configOutput(L_OUTPUT, "L");
 		configOutput(R_OUTPUT, "R");

@@ -34,14 +34,14 @@ struct AnalyzerXL : AnalyzerBase {
 	AnalyzerCore::Window _window = AnalyzerCore::WINDOW_KAISER;
 
 	AnalyzerXL() : AnalyzerBase(8, NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {
-		configInput(SIGNALA_INPUT, "SIGNALA");
-		configInput(SIGNALB_INPUT, "SIGNALB");
-		configInput(SIGNALC_INPUT, "SIGNALC");
-		configInput(SIGNALD_INPUT, "SIGNALD");
-		configInput(SIGNALE_INPUT, "SIGNALA");
-		configInput(SIGNALF_INPUT, "SIGNALB");
-		configInput(SIGNALG_INPUT, "SIGNALC");
-		configInput(SIGNALH_INPUT, "SIGNALD");
+		configInput(SIGNALA_INPUT, "Signal A");
+		configInput(SIGNALB_INPUT, "Signal B");
+		configInput(SIGNALC_INPUT, "Signal C");
+		configInput(SIGNALD_INPUT, "Signal D");
+		configInput(SIGNALE_INPUT, "Signal E");
+		configInput(SIGNALF_INPUT, "Signal F");
+		configInput(SIGNALG_INPUT, "Signal G");
+		configInput(SIGNALH_INPUT, "Signal H");
 
 		_skinnable = false;
 	}

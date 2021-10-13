@@ -53,10 +53,10 @@ struct Analyzer : AnalyzerBase {
 		configSwitch(QUALITY_PARAM, 1.0f, 3.0f, 1.0f, "Analysis quality", {"Good", "High", "Ultra"});
 		configSwitch(WINDOW_PARAM, 1.0f, 3.0f, 1.0f, "Analysis window type", {"Kaiser", "Hamming", "None"});
 
-		configInput(SIGNALA_INPUT, "SIGNALA");
-		configInput(SIGNALB_INPUT, "SIGNALB");
-		configInput(SIGNALC_INPUT, "SIGNALC");
-		configInput(SIGNALD_INPUT, "SIGNALD");
+		configInput(SIGNALA_INPUT, "Signal A");
+		configInput(SIGNALB_INPUT, "Signal B");
+		configInput(SIGNALC_INPUT, "Signal C");
+		configInput(SIGNALD_INPUT, "Signal D");
 
 		configOutput(SIGNALA_OUTPUT, "SIGNALA");
 		configOutput(SIGNALB_OUTPUT, "SIGNALB");

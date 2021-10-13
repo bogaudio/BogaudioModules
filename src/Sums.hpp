@@ -31,9 +31,9 @@ struct Sums : DisableOutputLimitModule {
 	Sums() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 
-		configInput(A_INPUT, "A");
-		configInput(B_INPUT, "B");
-		configInput(NEGATE_INPUT, "NEGATE");
+		configInput(A_INPUT, "Signal A");
+		configInput(B_INPUT, "Signal B");
+		configInput(NEGATE_INPUT, "Negative signal");
 
 		configOutput(SUM_OUTPUT, "SUM");
 		configOutput(DIFFERENCE_OUTPUT, "DIFFERENCE");
