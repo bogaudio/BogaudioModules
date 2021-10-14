@@ -56,8 +56,8 @@ struct Switch : SaveLatchToPatchModule {
 		configInput(HIGH2_INPUT, "Hight 2 signal");
 		configInput(LOW2_INPUT, "Low 2 signal");
 
-		configOutput(OUT1_OUTPUT, "OUT1");
-		configOutput(OUT2_OUTPUT, "OUT2");
+		configOutput(OUT1_OUTPUT, "Signal 1");
+		configOutput(OUT2_OUTPUT, "Signal 2");
 	}
 
 	void reset() override;

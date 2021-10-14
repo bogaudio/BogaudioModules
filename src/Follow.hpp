@@ -47,7 +47,7 @@ struct Follow : FollowerBase {
 		configInput(GAIN_INPUT, "Gain CV");
 		configInput(IN_INPUT, "Signal");
 
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT_OUTPUT, "Envelope");
 	}
 
 	bool active() override;

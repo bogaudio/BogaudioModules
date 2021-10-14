@@ -62,8 +62,8 @@ struct DGate : TriggerOnLoadModule {
 
 		configInput(TRIGGER_INPUT, "Trigger");
 
-		configOutput(GATE_OUTPUT, "GATE");
-		configOutput(END_OUTPUT, "END");
+		configOutput(GATE_OUTPUT, "Gate");
+		configOutput(END_OUTPUT, "End-of-cycle trigger");
 	}
 
 	void reset() override;

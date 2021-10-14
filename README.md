@@ -1158,6 +1158,8 @@ The current step can be selected many ways:
   - By pressing the button, or sending a trigger to the SELECT input, for a given step.
   - By inputs to CLOCK and/or SELECT, subject to the FWD and S.O.C. ("Select On Clock") toggles.  The behavior of these is the same as it is on <a href="#eightone">8:1</a> (and 1:8 and ADDR-SEQ), with the exception that the voltage range to the SELECT input is divided by the number of steps present on PGMR and all its connected PGMRX instances (where the division is always by 8 -- 16 if you consider negative voltages -- on 8:1).
 
+The leftmost bottom output emits a trigger whenever the step changes.  The outputs below each channel selector emit a trigger when that step is selected.
+
 Any PGMRX expanders must be positioned to the right of, and ajacent to, the base PGMR module, or the previous PGMRX in the chain.  See <a href="#expanders">notes on expanders</a>.
 
 _Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the CLOCK input.  This can be set to the SELECT CV input on the context menu.

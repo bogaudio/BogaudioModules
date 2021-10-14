@@ -68,10 +68,10 @@ struct Switch44 : SwitchMatrixModule {
 		configInput(IN3_INPUT, "Signal 3");
 		configInput(IN4_INPUT, "Signal 4");
 
-		configOutput(OUT1_OUTPUT, "OUT1");
-		configOutput(OUT2_OUTPUT, "OUT2");
-		configOutput(OUT3_OUTPUT, "OUT3");
-		configOutput(OUT4_OUTPUT, "OUT4");
+		configOutput(OUT1_OUTPUT, "Signal A");
+		configOutput(OUT2_OUTPUT, "Signal B");
+		configOutput(OUT3_OUTPUT, "Signal C");
+		configOutput(OUT4_OUTPUT, "Signal D");
 	}
 };
 

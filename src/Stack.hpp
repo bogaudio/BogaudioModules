@@ -49,10 +49,10 @@ struct Stack : BGModule {
 		configSwitch(QUANTIZE_PARAM, 0.0f, 1.0f, 1.0f, "Quantize", {"Disabled", "Enabled"});
 
 		configInput(CV_INPUT, "Interval CV");
-		configInput(IN_INPUT, "Signal");
+		configInput(IN_INPUT, "Pitch (1V/octave)");
 
-		configOutput(THRU_OUTPUT, "THRU");
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(THRU_OUTPUT, "Pitch through (1V/octave)");
+		configOutput(OUT_OUTPUT, "Pitch transposed (1V/octave)");
 
 		for (int i = 0; i < maxChannels; ++i) {
 			_lastSemitones[i] = -1000.0f;

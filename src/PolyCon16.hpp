@@ -82,7 +82,7 @@ struct PolyCon16 : OutputRangeModule<BGModule> {
 
 		configInput(CHANNELS_INPUT, "Channels CV");
 
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
 	void processAll(const ProcessArgs& args) override;

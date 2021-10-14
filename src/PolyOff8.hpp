@@ -92,7 +92,7 @@ struct PolyOff8 : OutputRangeModule<BGModule> {
 		configInput(CV8_INPUT, "Channel 8");
 		configInput(IN_INPUT, "Signal");
 
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
 	json_t* saveToJson(json_t* root) override;

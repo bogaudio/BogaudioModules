@@ -34,10 +34,10 @@ struct PolyMult : BGModule {
 		configInput(CHANNELS_INPUT, "Channels CV");
 		configInput(IN_INPUT, "Signal");
 
-		configOutput(OUT1_OUTPUT, "OUT1");
-		configOutput(OUT2_OUTPUT, "OUT2");
-		configOutput(OUT3_OUTPUT, "OUT3");
-		configOutput(OUT4_OUTPUT, "OUT4");
+		configOutput(OUT1_OUTPUT, "Signal");
+		configOutput(OUT2_OUTPUT, "Signal");
+		configOutput(OUT3_OUTPUT, "Signal");
+		configOutput(OUT4_OUTPUT, "Signal");
 	}
 
 	void processAll(const ProcessArgs& args) override;

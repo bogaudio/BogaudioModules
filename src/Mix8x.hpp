@@ -188,8 +188,8 @@ struct Mix8x : ExpanderModule<Mix8ExpanderMessage, BGModule> {
 		configInput(L_B_INPUT, "Return B left");
 		configInput(R_B_INPUT, "Return B right");
 
-		configOutput(SEND_A_OUTPUT, "SEND_A");
-		configOutput(SEND_B_OUTPUT, "SEND_B");
+		configOutput(SEND_A_OUTPUT, "Send A");
+		configOutput(SEND_B_OUTPUT, "Send B");
 
 		_channels[0] = new MixerExpanderChannel(params[LOW1_PARAM], params[MID1_PARAM], params[HIGH1_PARAM], params[A1_PARAM], params[B1_PARAM], params[PRE_A1_PARAM], params[PRE_B1_PARAM], inputs[A1_INPUT], inputs[B1_INPUT]);
 		_channels[1] = new MixerExpanderChannel(params[LOW2_PARAM], params[MID2_PARAM], params[HIGH2_PARAM], params[A2_PARAM], params[B2_PARAM], params[PRE_A2_PARAM], params[PRE_B2_PARAM], inputs[A2_INPUT], inputs[B2_INPUT]);

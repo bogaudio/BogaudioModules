@@ -56,8 +56,8 @@ struct Inv : BGModule {
 		configInput(GATE2_INPUT, "Gate 2");
 		configInput(IN2_INPUT, "Signal 2");
 
-		configOutput(OUT1_OUTPUT, "OUT1");
-		configOutput(OUT2_OUTPUT, "OUT2");
+		configOutput(OUT1_OUTPUT, "Signal 1");
+		configOutput(OUT2_OUTPUT, "Signal 2");
 	}
 
 	void reset() override;

@@ -47,8 +47,8 @@ struct Pan : BGModule {
 		configInput(CV2_INPUT, "Pan 2 CV");
 		configInput(IN2_INPUT, "Signal 2");
 
-		configOutput(L_OUTPUT, "L");
-		configOutput(R_OUTPUT, "R");
+		configOutput(L_OUTPUT, "Left signal");
+		configOutput(R_OUTPUT, "Right signal");
 
 		sampleRateChange();
 	}

@@ -100,14 +100,14 @@ struct DADSRHPlus : TriggerOnLoadModule {
 		configInput(HOLD_INPUT, "Hold CV");
 		configInput(TRIGGER_INPUT, "Trigger");
 
-		configOutput(DELAY_OUTPUT, "DELAY");
-		configOutput(ATTACK_OUTPUT, "ATTACK");
-		configOutput(DECAY_OUTPUT, "DECAY");
-		configOutput(SUSTAIN_OUTPUT, "SUSTAIN");
-		configOutput(RELEASE_OUTPUT, "RELEASE");
-		configOutput(ENV_OUTPUT, "ENV");
-		configOutput(INV_OUTPUT, "INV");
-		configOutput(TRIGGER_OUTPUT, "TRIGGER");
+		configOutput(DELAY_OUTPUT, "Delay stage gate");
+		configOutput(ATTACK_OUTPUT, "Attack stage gate");
+		configOutput(DECAY_OUTPUT, "Decay stage gate");
+		configOutput(SUSTAIN_OUTPUT, "Sustain stage gate");
+		configOutput(RELEASE_OUTPUT, "Release stage gate");
+		configOutput(ENV_OUTPUT, "Envelope");
+		configOutput(INV_OUTPUT, "Inverted envelope");
+		configOutput(TRIGGER_OUTPUT, "End-of-cycle trigger");
 	}
 
 	void reset() override;

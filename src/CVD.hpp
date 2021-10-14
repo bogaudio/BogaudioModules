@@ -51,7 +51,7 @@ struct CVD : BGModule {
 		configInput(MIX_INPUT, "Dry/wet CV");
 		configInput(IN_INPUT, "Signal");
 
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
 	void sampleRateChange() override;

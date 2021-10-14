@@ -63,11 +63,11 @@ struct Mix2 : LinearCVMixerModule {
 
 		configInput(LEVEL_INPUT, "Level CV");
 		configInput(MUTE_INPUT, "Mute CV");
-		configInput(L_INPUT, "Left");
-		configInput(R_INPUT, "Right");
+		configInput(L_INPUT, "Left signal");
+		configInput(R_INPUT, "Right signal");
 
-		configOutput(L_OUTPUT, "L");
-		configOutput(R_OUTPUT, "R");
+		configOutput(L_OUTPUT, "Left signal");
+		configOutput(R_OUTPUT, "Right signal");
 	}
 
 	void sampleRateChange() override;

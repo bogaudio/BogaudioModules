@@ -87,7 +87,7 @@ struct PEQ : BGModule {
 		configInput(ALL_CV_INPUT, "All-channels frequency CV");
 		configInput(IN_INPUT, "Signal");
 
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
 	void sampleRateChange() override;

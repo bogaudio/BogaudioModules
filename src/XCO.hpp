@@ -167,11 +167,11 @@ struct XCO : BGModule {
 		configInput(PITCH_INPUT, "Pitch (1V/octave)");
 		configInput(SYNC_INPUT, "Sync");
 
-		configOutput(SQUARE_OUTPUT, "SQUARE");
-		configOutput(SAW_OUTPUT, "SAW");
-		configOutput(TRIANGLE_OUTPUT, "TRIANGLE");
-		configOutput(SINE_OUTPUT, "SINE");
-		configOutput(MIX_OUTPUT, "MIX");
+		configOutput(SQUARE_OUTPUT, "Square signal");
+		configOutput(SAW_OUTPUT, "Saw signal");
+		configOutput(TRIANGLE_OUTPUT, "Triangle signal");
+		configOutput(SINE_OUTPUT, "Sine signal");
+		configOutput(MIX_OUTPUT, "Mixed signal");
 	}
 
 	void reset() override;

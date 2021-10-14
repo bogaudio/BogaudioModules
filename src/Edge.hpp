@@ -58,9 +58,9 @@ struct Edge : BGModule {
 
 		configInput(IN_INPUT, "Signal");
 
-		configOutput(HIGH_OUTPUT, "HIGH");
-		configOutput(RISE_OUTPUT, "RISE");
-		configOutput(FALL_OUTPUT, "FALL");
+		configOutput(HIGH_OUTPUT, "High gate");
+		configOutput(RISE_OUTPUT, "Rising trigger");
+		configOutput(FALL_OUTPUT, "Falling trigger");
 	}
 
 	void reset() override;

@@ -102,15 +102,15 @@ struct Pgmr : PgmrBase {
 		configInput(SELECT3_INPUT, "Select 3 trigger");
 		configInput(SELECT4_INPUT, "Select 4 trigger");
 
-		configOutput(A_OUTPUT, "A");
-		configOutput(B_OUTPUT, "B");
-		configOutput(C_OUTPUT, "C");
-		configOutput(D_OUTPUT, "D");
-		configOutput(SELECT_ALL_OUTPUT, "SELECT_ALL");
-		configOutput(SELECT1_OUTPUT, "SELECT1");
-		configOutput(SELECT2_OUTPUT, "SELECT2");
-		configOutput(SELECT3_OUTPUT, "SELECT3");
-		configOutput(SELECT4_OUTPUT, "SELECT4");
+		configOutput(A_OUTPUT, "Sequence A");
+		configOutput(B_OUTPUT, "Sequence B");
+		configOutput(C_OUTPUT, "Sequence C");
+		configOutput(D_OUTPUT, "Sequence D");
+		configOutput(SELECT_ALL_OUTPUT, "Step change trigger");
+		configOutput(SELECT1_OUTPUT, "Select 1 trigger");
+		configOutput(SELECT2_OUTPUT, "Select 2 trigger");
+		configOutput(SELECT3_OUTPUT, "Select 3 trigger");
+		configOutput(SELECT4_OUTPUT, "Select 4 trigger");
 
 		setLocalElements({
 			new PgmrStep(params[CVA1_PARAM], params[CVB1_PARAM], params[CVC1_PARAM], params[CVD1_PARAM], lights[SELECT1_LIGHT], params[SELECT1_PARAM], inputs[SELECT1_INPUT], outputs[SELECT1_OUTPUT]),

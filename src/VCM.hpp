@@ -67,7 +67,7 @@ struct VCM : DisableOutputLimitModule {
 		configInput(CV4_INPUT, "Level 4 CV");
 		configInput(MIX_CV_INPUT, "Mix level CV");
 
-		configOutput(MIX_OUTPUT, "MIX");
+		configOutput(MIX_OUTPUT, "Signal");
 	}
 
 	inline bool isLinear() { return params[LINEAR_PARAM].getValue() > 0.5f; }

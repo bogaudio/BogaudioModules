@@ -143,8 +143,8 @@ struct Arp : BGModule {
 		configInput(PITCH_INPUT, "Pitch (1V/octave)");
 		configInput(GATE_INPUT, "Gate");
 
-		configOutput(PITCH_OUTPUT, "PITCH");
-		configOutput(GATE_OUTPUT, "GATE");
+		configOutput(PITCH_OUTPUT, "Pitch (1V/octave)");
+		configOutput(GATE_OUTPUT, "Gate");
 
 		_currentNotes = new NoteSet();
 		_playbackNotes = new NoteSet(_currentNotes);

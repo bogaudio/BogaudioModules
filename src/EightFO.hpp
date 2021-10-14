@@ -160,14 +160,14 @@ struct EightFO : LFOBase {
 		configInput(SCALE_INPUT, "Scale CV");
 		configInput(SMOOTH_INPUT, "Smoothing CV");
 
-		configOutput(PHASE7_OUTPUT, "PHASE7");
-		configOutput(PHASE6_OUTPUT, "PHASE6");
-		configOutput(PHASE5_OUTPUT, "PHASE5");
-		configOutput(PHASE4_OUTPUT, "PHASE4");
-		configOutput(PHASE3_OUTPUT, "PHASE3");
-		configOutput(PHASE2_OUTPUT, "PHASE2");
-		configOutput(PHASE1_OUTPUT, "PHASE1");
-		configOutput(PHASE0_OUTPUT, "PHASE0");
+		configOutput(PHASE7_OUTPUT, "Phase 7");
+		configOutput(PHASE6_OUTPUT, "Phase 6");
+		configOutput(PHASE5_OUTPUT, "Phase 5");
+		configOutput(PHASE4_OUTPUT, "Phase 4");
+		configOutput(PHASE3_OUTPUT, "Phase 3");
+		configOutput(PHASE2_OUTPUT, "Phase 2");
+		configOutput(PHASE1_OUTPUT, "Phase 1");
+		configOutput(PHASE0_OUTPUT, "Phase 0");
 	}
 
 	void reset() override;

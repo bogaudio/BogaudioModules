@@ -98,9 +98,9 @@ struct Walk2 : BGModule {
 		configInput(RATE_Y_INPUT, "Rate Y CV");
 		configInput(JUMP_INPUT, "Trigger");
 
-		configOutput(OUT_X_OUTPUT, "OUT_X");
-		configOutput(OUT_Y_OUTPUT, "OUT_Y");
-		configOutput(DISTANCE_OUTPUT, "DISTANCE");
+		configOutput(OUT_X_OUTPUT, "X signal");
+		configOutput(OUT_Y_OUTPUT, "Y signal");
+		configOutput(DISTANCE_OUTPUT, "X/Y distance signal");
 	}
 
 	void reset() override;

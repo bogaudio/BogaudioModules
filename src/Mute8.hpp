@@ -113,14 +113,14 @@ struct Mute8 : BGModule {
 		configInput(MUTE7_INPUT, "Mute 7 CV");
 		configInput(MUTE8_INPUT, "Mute 8 CV");
 
-		configOutput(OUTPUT1_OUTPUT, "OUTPUT1");
-		configOutput(OUTPUT2_OUTPUT, "OUTPUT2");
-		configOutput(OUTPUT3_OUTPUT, "OUTPUT3");
-		configOutput(OUTPUT4_OUTPUT, "OUTPUT4");
-		configOutput(OUTPUT5_OUTPUT, "OUTPUT5");
-		configOutput(OUTPUT6_OUTPUT, "OUTPUT6");
-		configOutput(OUTPUT7_OUTPUT, "OUTPUT7");
-		configOutput(OUTPUT8_OUTPUT, "OUTPUT8");
+		configOutput(OUTPUT1_OUTPUT, "Signal 1");
+		configOutput(OUTPUT2_OUTPUT, "Signal 2");
+		configOutput(OUTPUT3_OUTPUT, "Signal 3");
+		configOutput(OUTPUT4_OUTPUT, "Signal 4");
+		configOutput(OUTPUT5_OUTPUT, "Signal 5");
+		configOutput(OUTPUT6_OUTPUT, "Signal 6");
+		configOutput(OUTPUT7_OUTPUT, "Signal 7");
+		configOutput(OUTPUT8_OUTPUT, "Signal 8");
 	}
 
 	json_t* saveToJson(json_t* root) override;

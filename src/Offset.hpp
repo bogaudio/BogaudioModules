@@ -38,7 +38,7 @@ struct Offset : DisableOutputLimitModule {
 		configInput(SCALE_INPUT, "Scale CV");
 		configInput(IN_INPUT, "Signal");
 
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
 	json_t* saveToJson(json_t* root) override;

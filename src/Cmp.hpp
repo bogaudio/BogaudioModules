@@ -61,10 +61,10 @@ struct Cmp : BGModule {
 		configInput(WINDOW_INPUT, "Window CV");
 		configInput(LAG_INPUT, "Lag CV");
 
-		configOutput(GREATER_OUTPUT, "GREATER");
-		configOutput(LESS_OUTPUT, "LESS");
-		configOutput(EQUAL_OUTPUT, "EQUAL");
-		configOutput(NOT_EQUAL_OUTPUT, "NOT_EQUAL");
+		configOutput(GREATER_OUTPUT, "Greater than");
+		configOutput(LESS_OUTPUT, "Less than");
+		configOutput(EQUAL_OUTPUT, "Equal");
+		configOutput(NOT_EQUAL_OUTPUT, "Not equal");
 	}
 
 	void reset() override;

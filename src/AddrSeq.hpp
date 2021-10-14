@@ -132,7 +132,7 @@ struct AddrSeq : AddrSeqBase {
 		configInput(RESET_INPUT, "Reset");
 		configInput(SELECT_INPUT, "Select CV");
 
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT_OUTPUT, "Sequence");
 
 		setInputIDs(CLOCK_INPUT, SELECT_INPUT);
 		setLocalElements({

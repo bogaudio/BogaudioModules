@@ -48,16 +48,16 @@ struct Matrix81 : KnobMatrixModule {
 		configParam(MIX7_PARAM, -1.0f, 1.0f, 0.0f, "Mix 7", "%", 0.0f, 100.0f);
 		configParam(MIX8_PARAM, -1.0f, 1.0f, 0.0f, "Mix 8", "%", 0.0f, 100.0f);
 
-		configInput(IN1_INPUT, "Signal 1");
-		configInput(IN2_INPUT, "Signal 2");
-		configInput(IN3_INPUT, "Signal 3");
-		configInput(IN4_INPUT, "Signal 4");
-		configInput(IN5_INPUT, "Signal 5");
-		configInput(IN6_INPUT, "Signal 6");
-		configInput(IN7_INPUT, "Signal 7");
-		configInput(IN8_INPUT, "Signal 8");
+		configInput(IN1_INPUT, "Signal A");
+		configInput(IN2_INPUT, "Signal B");
+		configInput(IN3_INPUT, "Signal C");
+		configInput(IN4_INPUT, "Signal D");
+		configInput(IN5_INPUT, "Signal E");
+		configInput(IN6_INPUT, "Signal F");
+		configInput(IN7_INPUT, "Signal G");
+		configInput(IN8_INPUT, "Signal H");
 
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 };
 

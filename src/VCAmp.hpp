@@ -43,7 +43,7 @@ struct VCAmp : BGModule {
 		configInput(CV_INPUT, "Level CV");
 		configInput(IN_INPUT, "Signal");
 
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT_OUTPUT, "Signal");
 
 		sampleRateChange();
 		for (int c = 0; c < maxChannels; ++c) {

@@ -78,10 +78,10 @@ struct CmpDist : BGModule {
 		configInput(B_INPUT, "Signal B");
 		configInput(B_SCALE_INPUT, "Scale B CV");
 
-		configOutput(GT_OUTPUT, "GT");
-		configOutput(LT_OUTPUT, "LT");
-		configOutput(EQ_OUTPUT, "EQ");
-		configOutput(MIX_OUTPUT, "MIX");
+		configOutput(GT_OUTPUT, "Greater than");
+		configOutput(LT_OUTPUT, "Less than");
+		configOutput(EQ_OUTPUT, "Equal");
+		configOutput(MIX_OUTPUT, "Mix");
 	}
 
 	bool active() override;

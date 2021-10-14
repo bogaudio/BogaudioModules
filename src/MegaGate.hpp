@@ -136,8 +136,8 @@ struct MegaGate : LPGEnvBaseModule {
 		configInput(TILT_INPUT, "Tilt CV");
 		configInput(VELOCITY_INPUT, "Velocity CV");
 		configInput(SHAPE_INPUT, "Shape CV");
-		configInput(LEFT_INPUT, "Left");
-		configInput(RIGHT_INPUT, "Right");
+		configInput(LEFT_INPUT, "Left signal");
+		configInput(RIGHT_INPUT, "Right signal");
 		configInput(GATE_INPUT, "Gate");
 		configInput(LPF_ENV_INPUT, "LPF envelope response CV");
 		configInput(LPF_BIAS_INPUT, "LPF bias CV");
@@ -146,9 +146,9 @@ struct MegaGate : LPGEnvBaseModule {
 		configInput(VCA_ENV_INPUT, "VCA envelope response CV");
 		configInput(VCA_BIAS_INPUT, "VCA bias CV");
 
-		configOutput(ENV_OUTPUT, "ENV");
-		configOutput(LEFT_OUTPUT, "LEFT");
-		configOutput(RIGHT_OUTPUT, "RIGHT");
+		configOutput(ENV_OUTPUT, "Envelope");
+		configOutput(LEFT_OUTPUT, "Left signal");
+		configOutput(RIGHT_OUTPUT, "Right signal");
 	}
 
 	void reset() override;

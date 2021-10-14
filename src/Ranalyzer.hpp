@@ -127,9 +127,9 @@ struct Ranalyzer : AnalyzerBase {
 		configInput(RETURN_INPUT, "Return signal");
 		configInput(TEST_INPUT, "Test signal");
 
-		configOutput(TRIGGER_OUTPUT, "TRIGGER");
-		configOutput(EOC_OUTPUT, "EOC");
-		configOutput(SEND_OUTPUT, "SEND");
+		configOutput(TRIGGER_OUTPUT, "Trigger");
+		configOutput(EOC_OUTPUT, "End-of-cycle trigger");
+		configOutput(SEND_OUTPUT, "Send signal");
 
 		_skinnable = false;
 	}

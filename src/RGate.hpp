@@ -73,7 +73,7 @@ struct RGate : OutputRangeModule<BGModule> {
 		configInput(CLOCK_MULTIPLE_INPUT, "Clock multiplier CV");
 		configInput(CLOCK_INPUT, "Clock");
 
-		configOutput(GATE_OUTPUT, "GATE");
+		configOutput(GATE_OUTPUT, "Gate");
 
 		_rangeOffset = 1.0f;
 		_rangeScale = 5.0f;

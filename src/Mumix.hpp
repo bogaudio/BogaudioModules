@@ -70,7 +70,7 @@ struct Mumix : MatrixBaseModule {
 		configInput(IN7_INPUT, "Signal 7");
 		configInput(IN8_INPUT, "Signal 8");
 
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
 	void sampleRateChange() override;

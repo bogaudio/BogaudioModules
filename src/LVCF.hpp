@@ -79,7 +79,7 @@ struct LVCF : BGModule {
 		configInput(IN_INPUT, "Signal");
 		configInput(FREQUENCY_CV_INPUT, "Cutoff CV");
 
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
 	json_t* saveToJson(json_t* root) override;

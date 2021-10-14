@@ -58,10 +58,10 @@ struct Analyzer : AnalyzerBase {
 		configInput(SIGNALC_INPUT, "Signal C");
 		configInput(SIGNALD_INPUT, "Signal D");
 
-		configOutput(SIGNALA_OUTPUT, "SIGNALA");
-		configOutput(SIGNALB_OUTPUT, "SIGNALB");
-		configOutput(SIGNALC_OUTPUT, "SIGNALC");
-		configOutput(SIGNALD_OUTPUT, "SIGNALD");
+		configOutput(SIGNALA_OUTPUT, "Signal A");
+		configOutput(SIGNALB_OUTPUT, "Signal B");
+		configOutput(SIGNALC_OUTPUT, "Signal C");
+		configOutput(SIGNALD_OUTPUT, "Signal D");
 	}
 	virtual ~Analyzer() {
 		reset();

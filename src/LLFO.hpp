@@ -95,7 +95,7 @@ struct LLFO : LFOBase {
 		configInput(PITCH_INPUT, "Pitch (1V/octave)");
 		configInput(RESET_INPUT, "Reset");
 
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
 	void reset() override;

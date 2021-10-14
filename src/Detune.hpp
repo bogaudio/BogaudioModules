@@ -40,11 +40,11 @@ struct Detune : BGModule {
 		paramQuantities[CENTS_PARAM]->snapEnabled = true;
 
 		configInput(CV_INPUT, "Detune CV");
-		configInput(IN_INPUT, "Signal");
+		configInput(IN_INPUT, "Pitch (1V/octave)");
 
-		configOutput(THRU_OUTPUT, "THRU");
-		configOutput(OUT_PLUS_OUTPUT, "OUT_PLUS");
-		configOutput(OUT_MINUS_OUTPUT, "OUT_MINUS");
+		configOutput(THRU_OUTPUT, "Pitch through (1V/octave)");
+		configOutput(OUT_PLUS_OUTPUT, "Raised pitch (1V/octave)");
+		configOutput(OUT_MINUS_OUTPUT, "Lowered pitch (1V/octave)");
 
 		for (int i = 0; i < maxChannels; ++i) {
 			_lastCents[i] = -1.0f;

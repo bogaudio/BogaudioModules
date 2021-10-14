@@ -176,14 +176,14 @@ struct Matrix88 : Matrix88Base {
 		configInput(IN7_INPUT, "Signal 7");
 		configInput(IN8_INPUT, "Signal 8");
 
-		configOutput(OUT1_OUTPUT, "OUT1");
-		configOutput(OUT2_OUTPUT, "OUT2");
-		configOutput(OUT3_OUTPUT, "OUT3");
-		configOutput(OUT4_OUTPUT, "OUT4");
-		configOutput(OUT5_OUTPUT, "OUT5");
-		configOutput(OUT6_OUTPUT, "OUT6");
-		configOutput(OUT7_OUTPUT, "OUT7");
-		configOutput(OUT8_OUTPUT, "OUT8");
+		configOutput(OUT1_OUTPUT, "Signal A");
+		configOutput(OUT2_OUTPUT, "Signal B");
+		configOutput(OUT3_OUTPUT, "Signal C");
+		configOutput(OUT4_OUTPUT, "Signal D");
+		configOutput(OUT5_OUTPUT, "Signal E");
+		configOutput(OUT6_OUTPUT, "Signal F");
+		configOutput(OUT7_OUTPUT, "Signal G");
+		configOutput(OUT8_OUTPUT, "Signal H");
 
 		setLocalElements({new Matrix88Element(NULL, NULL, NULL)});
 		registerBase();

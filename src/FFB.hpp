@@ -92,9 +92,9 @@ struct FFB : BGModule {
 		configInput(IN_INPUT, "Signal");
 		configInput(CV_INPUT, "Frequency CV");
 
-		configOutput(ALL_OUTPUT, "ALL");
-		configOutput(ODD_OUTPUT, "ODD");
-		configOutput(EVEN_OUTPUT, "EVEN");
+		configOutput(ALL_OUTPUT, "All filters mix");
+		configOutput(ODD_OUTPUT, "Odd filters mix");
+		configOutput(EVEN_OUTPUT, "Even filters mix");
 	}
 
 	void sampleRateChange() override;

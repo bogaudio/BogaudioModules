@@ -53,8 +53,8 @@ struct VCA : BGModule {
 		configInput(CV2_INPUT, "Level 2 CV");
 		configInput(IN2_INPUT, "Signal 2");
 
-		configOutput(OUT1_OUTPUT, "OUT1");
-		configOutput(OUT2_OUTPUT, "OUT2");
+		configOutput(OUT1_OUTPUT, "Signal 1");
+		configOutput(OUT2_OUTPUT, "Signal 2");
 
 		sampleRateChange();
 	}

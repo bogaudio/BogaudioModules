@@ -35,11 +35,11 @@ struct Sums : DisableOutputLimitModule {
 		configInput(B_INPUT, "Signal B");
 		configInput(NEGATE_INPUT, "Negative signal");
 
-		configOutput(SUM_OUTPUT, "SUM");
-		configOutput(DIFFERENCE_OUTPUT, "DIFFERENCE");
-		configOutput(MAX_OUTPUT, "MAX");
-		configOutput(MIN_OUTPUT, "MIN");
-		configOutput(NEGATE_OUTPUT, "NEGATE");
+		configOutput(SUM_OUTPUT, "Sum");
+		configOutput(DIFFERENCE_OUTPUT, "Difference");
+		configOutput(MAX_OUTPUT, "Max");
+		configOutput(MIN_OUTPUT, "Min");
+		configOutput(NEGATE_OUTPUT, "Negative signal");
 	}
 
 	void processAll(const ProcessArgs& args) override;

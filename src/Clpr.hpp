@@ -58,13 +58,13 @@ struct Clpr : BGModule {
 		configBypass(LEFT_INPUT, LEFT_OUTPUT);
 		configBypass(RIGHT_INPUT, RIGHT_OUTPUT);
 
-		configInput(LEFT_INPUT, "Left");
-		configInput(RIGHT_INPUT, "Right");
+		configInput(LEFT_INPUT, "Left signal");
+		configInput(RIGHT_INPUT, "Right signal");
 		configInput(THRESHOLD_INPUT, "Threshold CV");
 		configInput(OUTPUT_GAIN_INPUT, "Output gain CV");
 
-		configOutput(LEFT_OUTPUT, "LEFT");
-		configOutput(RIGHT_OUTPUT, "RIGHT");
+		configOutput(LEFT_OUTPUT, "Left signal");
+		configOutput(RIGHT_OUTPUT, "Right signal");
 	}
 
 	json_t* saveToJson(json_t* root) override;

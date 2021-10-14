@@ -102,8 +102,8 @@ struct Mix4 : ExpandableModule<Mix4ExpanderMessage, DimmableMixerModule> {
 		configInput(IN4_INPUT, "Channel 4");
 		configInput(MIX_CV_INPUT, "Mix level CV");
 
-		configOutput(L_OUTPUT, "L");
-		configOutput(R_OUTPUT, "R");
+		configOutput(L_OUTPUT, "Left signal");
+		configOutput(R_OUTPUT, "Right signal");
 
 		_channels[0] = new MixerChannel(params[LEVEL1_PARAM], params[MUTE1_PARAM], inputs[CV1_INPUT]);
 		_channels[1] = new MixerChannel(params[LEVEL2_PARAM], params[MUTE2_PARAM], inputs[CV2_INPUT]);

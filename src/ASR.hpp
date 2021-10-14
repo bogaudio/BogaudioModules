@@ -72,8 +72,8 @@ struct ASR : BGModule {
 		configInput(ATTACK_INPUT, "Attack CV");
 		configInput(RELEASE_INPUT, "Release CV");
 
-		configOutput(ENV_OUTPUT, "ENV");
-		configOutput(EOC_OUTPUT, "EOC");
+		configOutput(ENV_OUTPUT, "Envelope");
+		configOutput(EOC_OUTPUT, "End-of-cycle trigger");
 	}
 
 	void reset() override;

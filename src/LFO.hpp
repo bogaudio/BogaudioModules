@@ -100,12 +100,12 @@ struct LFO : LFOBase {
 		configInput(PITCH_INPUT, "Pitch (1V/octave)");
 		configInput(RESET_INPUT, "Reset");
 
-		configOutput(RAMP_UP_OUTPUT, "RAMP_UP");
-		configOutput(RAMP_DOWN_OUTPUT, "RAMP_DOWN");
-		configOutput(SQUARE_OUTPUT, "SQUARE");
-		configOutput(TRIANGLE_OUTPUT, "TRIANGLE");
-		configOutput(SINE_OUTPUT, "SINE");
-		configOutput(STEPPED_OUTPUT, "STEPPED");
+		configOutput(RAMP_UP_OUTPUT, "Ramp up");
+		configOutput(RAMP_DOWN_OUTPUT, "Ramp down");
+		configOutput(SQUARE_OUTPUT, "Square");
+		configOutput(TRIANGLE_OUTPUT, "Triangle");
+		configOutput(SINE_OUTPUT, "Sine");
+		configOutput(STEPPED_OUTPUT, "Stepped");
 	}
 
 	void reset() override;

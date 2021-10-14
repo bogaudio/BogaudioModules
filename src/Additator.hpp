@@ -125,7 +125,7 @@ struct Additator : BGModule {
 		configInput(BALANCE_INPUT, "Balance CV");
 		configInput(FILTER_INPUT, "Filter CV");
 
-		configOutput(AUDIO_OUTPUT, "AUDIO");
+		configOutput(AUDIO_OUTPUT, "Signal");
 	}
 
 	void reset() override;

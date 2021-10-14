@@ -45,11 +45,11 @@ struct EQS : BGModule {
 		configBypass(LEFT_INPUT, LEFT_OUTPUT);
 		configBypass(RIGHT_INPUT, RIGHT_OUTPUT);
 
-		configInput(LEFT_INPUT, "Left");
-		configInput(RIGHT_INPUT, "Right");
+		configInput(LEFT_INPUT, "Left signal");
+		configInput(RIGHT_INPUT, "Right signal");
 
-		configOutput(LEFT_OUTPUT, "LEFT");
-		configOutput(RIGHT_OUTPUT, "RIGHT");
+		configOutput(LEFT_OUTPUT, "Left signal");
+		configOutput(RIGHT_OUTPUT, "Right signal");
 	}
 
 	bool active() override;

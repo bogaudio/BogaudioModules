@@ -87,7 +87,7 @@ struct VCF : BGModule {
 		configInput(Q_INPUT, "Resonance CV");
 		configInput(SLOPE_INPUT, "Slope CV");
 
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
 	json_t* saveToJson(json_t* root) override;

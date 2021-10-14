@@ -45,10 +45,10 @@ struct FlipFlop : BGModule {
 		configInput(IN2_INPUT, "Trigger 2");
 		configInput(RESET2_INPUT, "Reset 2");
 
-		configOutput(A1_OUTPUT, "A1");
-		configOutput(B1_OUTPUT, "B1");
-		configOutput(A2_OUTPUT, "A2");
-		configOutput(B2_OUTPUT, "B2");
+		configOutput(A1_OUTPUT, "A1 gate");
+		configOutput(B1_OUTPUT, "B1 gate");
+		configOutput(A2_OUTPUT, "A2 gate");
+		configOutput(B2_OUTPUT, "B2 gate");
 	}
 
 	void reset() override;

@@ -41,7 +41,7 @@ struct EQ : BGModule {
 
 		configInput(IN_INPUT, "Signal");
 
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
 	bool active() override;

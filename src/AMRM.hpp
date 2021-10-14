@@ -44,8 +44,8 @@ struct AMRM : BGModule {
 		configInput(RECTIFY_INPUT, "Rectify CV");
 		configInput(DRYWET_INPUT, "Dry/wet CV");
 
-		configOutput(OUT_OUTPUT, "OUT");
-		configOutput(RECTIFY_OUTPUT, "RECTIFY");
+		configOutput(OUT_OUTPUT, "Modulated carrier signal");
+		configOutput(RECTIFY_OUTPUT, "Rectified modulator signal");
 	}
 
 	json_t* saveToJson(json_t* root) override;

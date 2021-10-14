@@ -56,7 +56,7 @@ struct LLPG : BGModule {
 		configInput(GATE_INPUT, "Gate");
 		configInput(IN_INPUT, "Signal");
 
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
 	void reset() override;

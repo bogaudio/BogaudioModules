@@ -65,10 +65,10 @@ struct Shaper : TriggerOnLoadModule {
 		configInput(SIGNAL_INPUT, "Signal");
 		configInput(TRIGGER_INPUT, "Trigger");
 
-		configOutput(SIGNAL_OUTPUT, "SIGNAL");
-		configOutput(ENV_OUTPUT, "ENV");
-		configOutput(INV_OUTPUT, "INV");
-		configOutput(TRIGGER_OUTPUT, "TRIGGER");
+		configOutput(SIGNAL_OUTPUT, "Signal");
+		configOutput(ENV_OUTPUT, "Envelope");
+		configOutput(INV_OUTPUT, "Inverted envelope");
+		configOutput(TRIGGER_OUTPUT, "Trigger");
 	}
 
 	void reset() override;

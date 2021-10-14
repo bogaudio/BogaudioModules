@@ -41,12 +41,12 @@ struct Noise : PolyChannelsModule {
 
 		configInput(ABS_INPUT, "Absolute value");
 
-		configOutput(WHITE_OUTPUT, "WHITE");
-		configOutput(PINK_OUTPUT, "PINK");
-		configOutput(RED_OUTPUT, "RED");
-		configOutput(GAUSS_OUTPUT, "GAUSS");
-		configOutput(ABS_OUTPUT, "ABS");
-		configOutput(BLUE_OUTPUT, "BLUE");
+		configOutput(WHITE_OUTPUT, "White noise");
+		configOutput(PINK_OUTPUT, "Pink noise");
+		configOutput(RED_OUTPUT, "Red noise");
+		configOutput(GAUSS_OUTPUT, "Gaussian noise");
+		configOutput(ABS_OUTPUT, "Absolute value");
+		configOutput(BLUE_OUTPUT, "Blue noise");
 	}
 
 	void processAll(const ProcessArgs& args) override;

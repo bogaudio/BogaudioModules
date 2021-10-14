@@ -81,14 +81,14 @@ struct ShaperPlus : TriggerOnLoadModule {
 		configInput(ENV_INPUT, "Envelope level CV");
 		configInput(SIGNALCV_INPUT, "Output signal level CV");
 
-		configOutput(SIGNAL_OUTPUT, "SIGNAL");
-		configOutput(ENV_OUTPUT, "ENV");
-		configOutput(INV_OUTPUT, "INV");
-		configOutput(TRIGGER_OUTPUT, "TRIGGER");
-		configOutput(ATTACK_OUTPUT, "ATTACK");
-		configOutput(ON_OUTPUT, "ON");
-		configOutput(DECAY_OUTPUT, "DECAY");
-		configOutput(OFF_OUTPUT, "OFF");
+		configOutput(SIGNAL_OUTPUT, "Signal");
+		configOutput(ENV_OUTPUT, "Envelope");
+		configOutput(INV_OUTPUT, "Inverted envelope");
+		configOutput(TRIGGER_OUTPUT, "Trigger");
+		configOutput(ATTACK_OUTPUT, "Attack stage gate");
+		configOutput(ON_OUTPUT, "On stage gate");
+		configOutput(DECAY_OUTPUT, "Decay stage gate");
+		configOutput(OFF_OUTPUT, "Off stage gate");
 	}
 
 	void reset() override;

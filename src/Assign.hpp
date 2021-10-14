@@ -47,8 +47,8 @@ struct Assign : BGModule {
 		configInput(GATE_INPUT, "Gate");
 		configInput(RESET_INPUT, "Reset");
 
-		configOutput(PITCH_OUTPUT, "PITCH");
-		configOutput(GATE_OUTPUT, "GATE");
+		configOutput(PITCH_OUTPUT, "Pitch (1V/octave)");
+		configOutput(GATE_OUTPUT, "Gate");
 	}
 
 	void reset() override;

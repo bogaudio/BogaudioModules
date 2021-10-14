@@ -74,7 +74,7 @@ struct EightOne : AddressableSequenceModule {
 		configInput(RESET_INPUT, "Reset");
 		configInput(SELECT_INPUT, "Select CV");
 
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
 	void processAlways(const ProcessArgs& args) override;

@@ -98,8 +98,8 @@ struct Chirp : BGModule {
 		configInput(TIME_INPUT, "Time CV");
 		configInput(TRIGGER_INPUT, "Trigger");
 
-		configOutput(EOC_OUTPUT, "EOC");
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(EOC_OUTPUT, "End-of-cycle trigger");
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
 	void reset() override;

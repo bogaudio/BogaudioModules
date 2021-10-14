@@ -66,7 +66,7 @@ struct ADSR : BGModule {
 
 		configInput(GATE_INPUT, "Gate");
 
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT_OUTPUT, "Envelope");
 	}
 
 	void reset() override;

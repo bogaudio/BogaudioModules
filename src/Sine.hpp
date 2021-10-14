@@ -62,7 +62,7 @@ struct Sine : VCOBase {
 		configInput(PHASE_INPUT, "Phase CV");
 		configInput(SYNC_INPUT, "Sync");
 
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
 	json_t* saveToJson(json_t* root) override;

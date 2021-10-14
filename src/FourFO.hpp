@@ -124,10 +124,10 @@ struct FourFO : LFOBase {
 		configInput(PHASE2_INPUT, "Phase 2 CV");
 		configInput(PHASE3_INPUT, "Phase 3 CV");
 
-		configOutput(PHASE0_OUTPUT, "PHASE0");
-		configOutput(PHASE1_OUTPUT, "PHASE1");
-		configOutput(PHASE2_OUTPUT, "PHASE2");
-		configOutput(PHASE3_OUTPUT, "PHASE3");
+		configOutput(PHASE0_OUTPUT, "Phase 0");
+		configOutput(PHASE1_OUTPUT, "Phase 1");
+		configOutput(PHASE2_OUTPUT, "Phase 2");
+		configOutput(PHASE3_OUTPUT, "Phase 3");
 	}
 
 	void reset() override;

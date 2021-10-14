@@ -33,12 +33,12 @@ struct Mult : BGModule {
 		configInput(INA_INPUT, "Signal A");
 		configInput(INB_INPUT, "Signal B");
 
-		configOutput(OUTA1_OUTPUT, "OUTA1");
-		configOutput(OUTA2_OUTPUT, "OUTA2");
-		configOutput(OUTA3_OUTPUT, "OUTA3");
-		configOutput(OUTB1_OUTPUT, "OUTB1");
-		configOutput(OUTB2_OUTPUT, "OUTB2");
-		configOutput(OUTB3_OUTPUT, "OUTB3");
+		configOutput(OUTA1_OUTPUT, "Signal A");
+		configOutput(OUTA2_OUTPUT, "Signal A");
+		configOutput(OUTA3_OUTPUT, "Signal A");
+		configOutput(OUTB1_OUTPUT, "Signal B");
+		configOutput(OUTB2_OUTPUT, "Signal B");
+		configOutput(OUTB3_OUTPUT, "Signal B");
 	}
 
 	void processAll(const ProcessArgs& args) override;

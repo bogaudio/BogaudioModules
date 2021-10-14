@@ -68,7 +68,7 @@ struct Lgsw : SaveLatchToPatchModule {
 		configInput(HIGH_INPUT, "High signal");
 		configInput(LOW_INPUT, "Low signal");
 
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
 	void resetChannel(int c);

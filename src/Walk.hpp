@@ -57,7 +57,7 @@ struct Walk : BGModule {
 		configInput(SCALE_INPUT, "Scale CV");
 		configInput(JUMP_INPUT, "Trigger");
 
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
 	void reset() override;

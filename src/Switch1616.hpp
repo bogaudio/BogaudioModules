@@ -600,22 +600,22 @@ struct Switch1616 : SwitchMatrixModule {
 		configInput(IN15_INPUT, "Signal 15");
 		configInput(IN16_INPUT, "Signal 16");
 
-		configOutput(OUT1_OUTPUT, "OUT1");
-		configOutput(OUT2_OUTPUT, "OUT2");
-		configOutput(OUT3_OUTPUT, "OUT3");
-		configOutput(OUT4_OUTPUT, "OUT4");
-		configOutput(OUT5_OUTPUT, "OUT5");
-		configOutput(OUT6_OUTPUT, "OUT6");
-		configOutput(OUT7_OUTPUT, "OUT7");
-		configOutput(OUT8_OUTPUT, "OUT8");
-		configOutput(OUT9_OUTPUT, "OUT9");
-		configOutput(OUT10_OUTPUT, "OUT10");
-		configOutput(OUT11_OUTPUT, "OUT11");
-		configOutput(OUT12_OUTPUT, "OUT12");
-		configOutput(OUT13_OUTPUT, "OUT13");
-		configOutput(OUT14_OUTPUT, "OUT14");
-		configOutput(OUT15_OUTPUT, "OUT15");
-		configOutput(OUT16_OUTPUT, "OUT16");
+		configOutput(OUT1_OUTPUT, "Signal A");
+		configOutput(OUT2_OUTPUT, "Signal B");
+		configOutput(OUT3_OUTPUT, "Signal C");
+		configOutput(OUT4_OUTPUT, "Signal D");
+		configOutput(OUT5_OUTPUT, "Signal E");
+		configOutput(OUT6_OUTPUT, "Signal F");
+		configOutput(OUT7_OUTPUT, "Signal G");
+		configOutput(OUT8_OUTPUT, "Signal H");
+		configOutput(OUT9_OUTPUT, "Signal I");
+		configOutput(OUT10_OUTPUT, "Signal J");
+		configOutput(OUT11_OUTPUT, "Signal K");
+		configOutput(OUT12_OUTPUT, "Signal L");
+		configOutput(OUT13_OUTPUT, "Signal M");
+		configOutput(OUT14_OUTPUT, "Signal N");
+		configOutput(OUT15_OUTPUT, "Signal O");
+		configOutput(OUT16_OUTPUT, "Signal P");
 	}
 };
 

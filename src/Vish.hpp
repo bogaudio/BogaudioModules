@@ -64,7 +64,7 @@ struct Vish : LPGEnvBaseModule {
 		configInput(SHAPE_INPUT, "Shape CV");
 		configInput(GATE_INPUT, "Gate");
 
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT_OUTPUT, "Envelope");
 	}
 
 	void reset() override;

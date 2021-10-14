@@ -42,10 +42,10 @@ struct FourMan : TriggerOnLoadModule {
 		configButton(TRIGGER3_PARAM, "Trigger 3");
 		configButton(TRIGGER4_PARAM, "Trigger 4");
 
-		configOutput(OUT1_OUTPUT, "OUT1");
-		configOutput(OUT2_OUTPUT, "OUT2");
-		configOutput(OUT3_OUTPUT, "OUT3");
-		configOutput(OUT4_OUTPUT, "OUT4");
+		configOutput(OUT1_OUTPUT, "Trigger 1");
+		configOutput(OUT2_OUTPUT, "Trigger 2");
+		configOutput(OUT3_OUTPUT, "Trigger 3");
+		configOutput(OUT4_OUTPUT, "Trigger 4");
 
 		_triggerOnLoad = false;
 		_initialDelay = new bogaudio::dsp::Timer(APP->engine->getSampleRate(), 0.01f);

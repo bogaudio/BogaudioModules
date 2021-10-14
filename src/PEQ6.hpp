@@ -118,13 +118,13 @@ struct PEQ6 : ExpandableModule<PEQ6ExpanderMessage, BandExcludeModule> {
 		configInput(LEVEL6_INPUT, "Channel 6 level CV");
 		configInput(FREQUENCY_CV6_INPUT, "Channel 6 frequency CV");
 
-		configOutput(OUT_OUTPUT, "OUT");
-		configOutput(OUT1_OUTPUT, "OUT1");
-		configOutput(OUT2_OUTPUT, "OUT2");
-		configOutput(OUT3_OUTPUT, "OUT3");
-		configOutput(OUT4_OUTPUT, "OUT4");
-		configOutput(OUT5_OUTPUT, "OUT5");
-		configOutput(OUT6_OUTPUT, "OUT6");
+		configOutput(OUT_OUTPUT, "All channels mix");
+		configOutput(OUT1_OUTPUT, "Channel 1");
+		configOutput(OUT2_OUTPUT, "Channel 2");
+		configOutput(OUT3_OUTPUT, "Channel 3");
+		configOutput(OUT4_OUTPUT, "Channel 4");
+		configOutput(OUT5_OUTPUT, "Channel 5");
+		configOutput(OUT6_OUTPUT, "Channel 6");
 
 		setExpanderModelPredicate([](Model* m) { return m == modelPEQ6XF; });
 	}

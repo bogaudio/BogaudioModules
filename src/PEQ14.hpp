@@ -211,23 +211,23 @@ struct PEQ14 : ExpandableModule<PEQ14ExpanderMessage, BandExcludeModule> {
 		configInput(LEVEL14_INPUT, "Channel 14 level CV");
 		configInput(FREQUENCY_CV14_INPUT, "Channel 14 frequency CV");
 
-		configOutput(ODDS_OUTPUT, "ODDS");
-		configOutput(OUT_OUTPUT, "OUT");
-		configOutput(EVENS_OUTPUT, "EVENS");
-		configOutput(OUT1_OUTPUT, "OUT1");
-		configOutput(OUT2_OUTPUT, "OUT2");
-		configOutput(OUT3_OUTPUT, "OUT3");
-		configOutput(OUT4_OUTPUT, "OUT4");
-		configOutput(OUT5_OUTPUT, "OUT5");
-		configOutput(OUT6_OUTPUT, "OUT6");
-		configOutput(OUT7_OUTPUT, "OUT7");
-		configOutput(OUT8_OUTPUT, "OUT8");
-		configOutput(OUT9_OUTPUT, "OUT9");
-		configOutput(OUT10_OUTPUT, "OUT10");
-		configOutput(OUT11_OUTPUT, "OUT11");
-		configOutput(OUT12_OUTPUT, "OUT12");
-		configOutput(OUT13_OUTPUT, "OUT13");
-		configOutput(OUT14_OUTPUT, "OUT14");
+		configOutput(ODDS_OUTPUT, "Odd channels mix");
+		configOutput(OUT_OUTPUT, "All channels mix");
+		configOutput(EVENS_OUTPUT, "Even channels mix");
+		configOutput(OUT1_OUTPUT, "Channel 1");
+		configOutput(OUT2_OUTPUT, "Channel 2");
+		configOutput(OUT3_OUTPUT, "Channel 3");
+		configOutput(OUT4_OUTPUT, "Channel 4");
+		configOutput(OUT5_OUTPUT, "Channel 5");
+		configOutput(OUT6_OUTPUT, "Channel 6");
+		configOutput(OUT7_OUTPUT, "Channel 7");
+		configOutput(OUT8_OUTPUT, "Channel 8");
+		configOutput(OUT9_OUTPUT, "Channel 9");
+		configOutput(OUT10_OUTPUT, "Channel 10");
+		configOutput(OUT11_OUTPUT, "Channel 11");
+		configOutput(OUT12_OUTPUT, "Channel 12");
+		configOutput(OUT13_OUTPUT, "Channel 13");
+		configOutput(OUT14_OUTPUT, "Channel 14");
 
 		setExpanderModelPredicate([](Model* m) { return m == modelPEQ14XF || m == modelPEQ14XR || m == modelPEQ14XV; });
 	}

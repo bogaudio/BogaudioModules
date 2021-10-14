@@ -45,7 +45,7 @@ struct XFade : BGModule {
 		configInput(A_INPUT, "Signal A");
 		configInput(B_INPUT, "Signal B");
 
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT_OUTPUT, "Signal");
 
 		sampleRateChange();
 		for (int c = 0; c < maxChannels; ++c) {

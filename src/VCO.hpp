@@ -58,10 +58,10 @@ struct VCO : VCOBase {
 		configInput(PW_INPUT, "Pulse width CV");
 		configInput(FM_INPUT, "Frequency modulation");
 
-		configOutput(SQUARE_OUTPUT, "Square wave");
-		configOutput(SAW_OUTPUT, "Saw wave");
-		configOutput(TRIANGLE_OUTPUT, "Triangle wave");
-		configOutput(SINE_OUTPUT, "Sine wave");
+		configOutput(SQUARE_OUTPUT, "Square signal");
+		configOutput(SAW_OUTPUT, "Saw signal");
+		configOutput(TRIANGLE_OUTPUT, "Triangle signal");
+		configOutput(SINE_OUTPUT, "Sine signal");
 	}
 
 	bool active() override;

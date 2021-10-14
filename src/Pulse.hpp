@@ -47,7 +47,7 @@ struct Pulse : VCOBase {
 		configInput(PWM_INPUT, "Pulse width CV");
 		configInput(SYNC_INPUT, "Sync");
 
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT_OUTPUT, "Pulse");
 	}
 
 	json_t* saveToJson(json_t* root) override;

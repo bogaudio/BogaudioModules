@@ -68,9 +68,9 @@ struct PEQ14XV : ExpanderModule<PEQ14ExpanderMessage, ExpandableModule<PEQ14Expa
 		configInput(TRANSPOSE_INPUT, "Transpose (1V/octave)");
 		configInput(IN_INPUT, "Signal");
 
-		configOutput(ODDS_OUTPUT, "ODDS");
-		configOutput(OUT_OUTPUT, "OUT");
-		configOutput(EVENS_OUTPUT, "EVENS");
+		configOutput(ODDS_OUTPUT, "Odd channels mix");
+		configOutput(OUT_OUTPUT, "All channels mix");
+		configOutput(EVENS_OUTPUT, "Even channels mix");
 
 		setBaseModelPredicate([](Model* m) { return m == modelPEQ14 || m == modelPEQ14XF || m == modelPEQ14XR || m == modelPEQ14XV; });
 		setExpanderModelPredicate([](Model* m) { return m == modelPEQ14XF || m == modelPEQ14XR || m == modelPEQ14XV; });

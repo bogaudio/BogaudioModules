@@ -56,7 +56,7 @@ struct Velo : BGModule {
 		configInput(VELOCITY_INPUT, "Velocity CV");
 		configInput(IN_INPUT, "Signal");
 
-		configOutput(OUT_OUTPUT, "OUT");
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
 	inline bool isLinear() { return params[LINEAR_PARAM].getValue() > 0.5f; }

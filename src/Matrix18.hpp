@@ -50,14 +50,14 @@ struct Matrix18 : KnobMatrixModule {
 
 		configInput(IN_INPUT, "Signal");
 
-		configOutput(OUT1_OUTPUT, "OUT1");
-		configOutput(OUT2_OUTPUT, "OUT2");
-		configOutput(OUT3_OUTPUT, "OUT3");
-		configOutput(OUT4_OUTPUT, "OUT4");
-		configOutput(OUT5_OUTPUT, "OUT5");
-		configOutput(OUT6_OUTPUT, "OUT6");
-		configOutput(OUT7_OUTPUT, "OUT7");
-		configOutput(OUT8_OUTPUT, "OUT8");
+		configOutput(OUT1_OUTPUT, "Signal 1");
+		configOutput(OUT2_OUTPUT, "Signal 2");
+		configOutput(OUT3_OUTPUT, "Signal 3");
+		configOutput(OUT4_OUTPUT, "Signal 4");
+		configOutput(OUT5_OUTPUT, "Signal 5");
+		configOutput(OUT6_OUTPUT, "Signal 6");
+		configOutput(OUT7_OUTPUT, "Signal 7");
+		configOutput(OUT8_OUTPUT, "Signal 8");
 	}
 };
 

@@ -127,7 +127,7 @@ struct FMOp : BGModule {
 		configInput(GATE_INPUT, "Gate");
 		configInput(FM_INPUT, "Frequency modulation");
 
-		configOutput(AUDIO_OUTPUT, "AUDIO");
+		configOutput(AUDIO_OUTPUT, "Signal");
 	}
 
 	void reset() override;
