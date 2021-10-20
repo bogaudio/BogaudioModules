@@ -55,7 +55,7 @@ void Mono::processAll(const ProcessArgs& args) {
 }
 
 struct MonoWidget : BGModuleWidget {
-	struct ChannelsDisplay : OpaqueWidget {
+	struct ChannelsDisplay : LightEmittingWidget<OpaqueWidget> {
 		const NVGcolor inactiveBgColor = nvgRGBA(0xaa, 0xaa, 0xaa, 0xff);
 		const NVGcolor activeBgColor = nvgRGBA(0x66, 0x66, 0x66, 0xff);
 		Mono* _module;
@@ -63,35 +63,42 @@ struct MonoWidget : BGModuleWidget {
 		ChannelsDisplay(Mono* module) : _module(module) {
 		}
 
+		bool isLit() override {
+			return _module && !_module->isBypassed();
+		}
+
 		void draw(const DrawArgs& args) override {
 			nvgSave(args.vg);
 			for (int i = 0; i < _module->maxChannels; ++i) {
 				nvgBeginPath(args.vg);
-				if (!_module || _module->isBypassed() || i >= _module->_activeChannels) {
+				if (i >= _module->_activeChannels) {
+					nvgCircle(args.vg, (i % 4) * 10 + 5.0f, (i / 4) * 10 + 5.0f, 3.2f);
 					nvgFillColor(args.vg, inactiveBgColor);
-				}
-				else {
-					nvgSave(args.vg);
-					nvgGlobalTint(args.vg, color::WHITE);
-					nvgFillColor(args.vg, activeBgColor);
-					nvgRestore(args.vg);
-				}
-				nvgCircle(args.vg, (i % 4) * 10 + 5.0f, (i / 4) * 10 + 5.0f, 3.2f);
-				nvgFill(args.vg);
-
-				if (_module && !_module->isBypassed() && _module->_channelLevels[i] > 0.0f) {
-					nvgSave(args.vg);
-					nvgGlobalTint(args.vg, color::WHITE);
-					nvgFillColor(args.vg, decibelsToColor(amplitudeToDecibels(_module->_channelLevels[i])));
 					nvgFill(args.vg);
-					nvgRestore(args.vg);
+				}
+			}
+			nvgRestore(args.vg);
+		}
+
+		void drawLit(const DrawArgs& args) override {
+			nvgSave(args.vg);
+			for (int i = 0; i < _module->maxChannels; ++i) {
+				nvgBeginPath(args.vg);
+				if (i < _module->_activeChannels) {
+					nvgCircle(args.vg, (i % 4) * 10 + 5.0f, (i / 4) * 10 + 5.0f, 3.2f);
+					nvgFillColor(args.vg, activeBgColor);
+					nvgFill(args.vg);
+					if (_module->_channelLevels[i] > 0.0f) {
+						nvgFillColor(args.vg, decibelsToColor(amplitudeToDecibels(_module->_channelLevels[i])));
+						nvgFill(args.vg);
+					}
 				}
 			}
 			nvgRestore(args.vg);
 		}
 	};
 
-	struct CompressionDisplay : OpaqueWidget {
+	struct CompressionDisplay : LightEmittingWidget<OpaqueWidget> {
 		struct Level {
 			float db;
 			NVGcolor color;
@@ -111,7 +118,21 @@ struct MonoWidget : BGModuleWidget {
 			}
 		}
 
+		bool isLit() override {
+			return _module && !_module->isBypassed();
+		}
+
 		void draw(const DrawArgs& args) override {
+			nvgSave(args.vg);
+			for (int i = 0; i < 35; i += 5) {
+				drawBox(args, i);
+				nvgFillColor(args.vg, bgColor);
+				nvgFill(args.vg);
+			}
+			nvgRestore(args.vg);
+		}
+
+		void drawLit(const DrawArgs& args) override {
 			float compressionDb = 0.0f;
 			if (_module && !_module->isBypassed()) {
 				compressionDb = _module->_compressionDb;
@@ -120,20 +141,18 @@ struct MonoWidget : BGModuleWidget {
 			nvgSave(args.vg);
 			for (int i = 0; i < 35; i += 5) {
 				const Level& l = _levels.at(i / 5);
-
-				nvgBeginPath(args.vg);
-				nvgRect(args.vg, 3, i + 1, 5, 4);
-				nvgFillColor(args.vg, bgColor);
-				nvgFill(args.vg);
 				if (compressionDb > l.db) {
-					nvgSave(args.vg);
-					nvgGlobalTint(args.vg, color::WHITE);
+					drawBox(args, i);
 					nvgFillColor(args.vg, l.color);
 					nvgFill(args.vg);
-					nvgRestore(args.vg);
 				}
 			}
 			nvgRestore(args.vg);
+		}
+
+		void drawBox(const DrawArgs& args, int offset) {
+			nvgBeginPath(args.vg);
+			nvgRect(args.vg, 3, offset + 1, 5, 4);
 		}
 	};
 

@@ -112,13 +112,18 @@ void MuteButton::onButton(const event::Button& e) {
 	}
 }
 
+bool MuteButton::isLit() {
+	return module && !module->isBypassed() && getParamQuantity() && getParamQuantity()->getValue() > 0.0f;
+}
+
 void MuteButton::draw(const DrawArgs& args) {
-	nvgSave(args.vg);
-	if (module && !module->isBypassed() && getParamQuantity() && getParamQuantity()->getValue() > 0.0f) {
-		nvgGlobalTint(args.vg, color::WHITE);
+	if (!isLit()) {
+		ToggleButton::draw(args);
 	}
+}
+
+void MuteButton::drawLit(const DrawArgs& args) {
 	ToggleButton::draw(args);
-	nvgRestore(args.vg);
 }
 
 
@@ -176,13 +181,20 @@ void SoloMuteButton::onChange(const event::Change& e) {
 	ParamWidget::onChange(e);
 }
 
+bool SoloMuteButton::isLit() {
+	return module && !module->isBypassed() && getParamQuantity() && getParamQuantity()->getValue() > 0.0f;
+}
+
 void SoloMuteButton::draw(const DrawArgs& args) {
-	nvgSave(args.vg);
-	if (module && !module->isBypassed() && getParamQuantity() && getParamQuantity()->getValue() > 0.0f) {
-		nvgGlobalTint(args.vg, color::WHITE);
+	if (!isLit() || !getParamQuantity() || getParamQuantity()->getValue() < 1.0f) {
+		ParamWidget::draw(args);
 	}
-	ParamWidget::draw(args);
-	nvgRestore(args.vg);
+}
+
+void SoloMuteButton::drawLit(const DrawArgs& args) {
+	if (getParamQuantity() && getParamQuantity()->getValue() >= 1.0f) {
+		ParamWidget::draw(args);
+	}
 }
 
 

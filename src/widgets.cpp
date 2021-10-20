@@ -6,6 +6,30 @@
 using namespace bogaudio;
 using namespace bogaudio::dsp;
 
+DisplayWidget::DisplayWidget(Module* module) : _module(module) {
+}
+
+bool DisplayWidget::isLit() {
+	return _module && !_module->isBypassed();
+}
+
+bool DisplayWidget::isScreenshot() {
+	return !_module;
+}
+
+void DisplayWidget::draw(const DrawArgs& args) {
+	if (!isLit()) {
+		drawOnce(args, isScreenshot(), false);
+	}
+}
+
+void DisplayWidget::drawLit(const DrawArgs& args) {
+	if (isLit()) {
+		drawOnce(args, false, true);
+	}
+}
+
+
 std::string SkinnableWidget::skinSVG(const std::string& base, const std::string& skin) {
 	std::string s = skin;
 	if (s == "default") {
@@ -19,6 +43,7 @@ std::string SkinnableWidget::skinSVG(const std::string& base, const std::string&
 	svg += ".svg";
 	return svg;
 }
+
 
 Screw::Screw() {
 	skinChanged("default");
@@ -227,16 +252,20 @@ void IndicatorKnob::redraw() {
 	onChange(c);
 }
 
-void IndicatorKnob::draw(const DrawArgs& args) {
-	nvgSave(args.vg);
-	if (module && !module->isBypassed() && getParamQuantity() &&
+bool IndicatorKnob::isLit() {
+	return module && !module->isBypassed() && getParamQuantity() &&
 		(getParamQuantity()->getValue() < -0.01f || getParamQuantity()->getValue() > 0.01f) &&
-		(!w->_drawColorsCB || w->_drawColorsCB()))
-	{
-		nvgGlobalTint(args.vg, color::WHITE);
+		(!w->_drawColorsCB || w->_drawColorsCB());
+}
+
+void IndicatorKnob::draw(const DrawArgs& args) {
+	if (!isLit()) {
+		Knob::draw(args);
 	}
+}
+
+void IndicatorKnob::drawLit(const DrawArgs& args) {
 	Knob::draw(args);
-	nvgRestore(args.vg);
 }
 
 void IndicatorKnob::skinChanged(const std::string& skin) {
@@ -251,6 +280,7 @@ void IndicatorKnob::skinChanged(const std::string& skin) {
 	}
 	fb->dirty = true;
 }
+
 
 Port24::Port24() {
 	setSvg(APP->window->loadSvg(asset::plugin(pluginInstance, skinSVG("port").c_str())));
@@ -349,13 +379,18 @@ IndicatorButtonGreen9::IndicatorButtonGreen9() {
 	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_9px_1_green.svg")));
 }
 
+bool IndicatorButtonGreen9::isLit() {
+	return module && !module->isBypassed() && getParamQuantity() && getParamQuantity()->getValue() > 0.0f;
+}
+
 void IndicatorButtonGreen9::draw(const DrawArgs& args) {
-	nvgSave(args.vg);
-	if (module && !module->isBypassed() && getParamQuantity() && getParamQuantity()->getValue() > 0.0f) {
-		nvgGlobalTint(args.vg, color::WHITE);
+	if (!isLit()) {
+		SvgSwitch::draw(args);
 	}
+}
+
+void IndicatorButtonGreen9::drawLit(const DrawArgs& args) {
 	SvgSwitch::draw(args);
-	nvgRestore(args.vg);
 }
 
 
@@ -495,15 +530,19 @@ void InvertingIndicatorButton::onChange(const event::Change& e) {
 	ParamWidget::onChange(e);
 }
 
+bool InvertingIndicatorButton::isLit() {
+	return module && !module->isBypassed() && getParamQuantity() &&
+		(getParamQuantity()->getValue() < -0.01f || getParamQuantity()->getValue() > 0.01f);
+}
+
 void InvertingIndicatorButton::draw(const DrawArgs& args) {
-	nvgSave(args.vg);
-	if (module && !module->isBypassed() && getParamQuantity() &&
-		(getParamQuantity()->getValue() < -0.01f || getParamQuantity()->getValue() > 0.01f))
-	{
-		nvgGlobalTint(args.vg, color::WHITE);
+	if (!isLit()) {
+		ParamWidget::draw(args);
 	}
+}
+
+void InvertingIndicatorButton::drawLit(const DrawArgs& args) {
 	ParamWidget::draw(args);
-	nvgRestore(args.vg);
 }
 
 
@@ -521,16 +560,18 @@ NVGcolor bogaudio::decibelsToColor(float db) {
 }
 
 
+bool VUSlider::isLit() {
+	float db = _vuLevel ? *_vuLevel : 0.0f;
+	bool stereo = false;
+	float stereoDb = 0.0f;
+	if (_stereoVuLevel) {
+		stereo = true;
+		stereoDb = *_stereoVuLevel;
+	}
+	return module && !module->isBypassed() && (db > 0.0f || (stereo && stereoDb > 0.0f));
+}
+
 void VUSlider::draw(const DrawArgs& args) {
-	float level = 0.0f;
-	if (getParamQuantity()) {
-		level = getParamQuantity()->getValue();
-	}
-	else {
-		float minDb = -60.0f;
-		float maxDb = 6.0f;
-		level = fabsf(minDb) / (maxDb - minDb);
-	}
 
 	nvgSave(args.vg);
 	{
@@ -545,7 +586,7 @@ void VUSlider::draw(const DrawArgs& args) {
 
 	nvgSave(args.vg);
 	{
-		nvgTranslate(args.vg, 0, (box.size.y - 13.0f) * (1.0f - level));
+		drawTranslate(args);
 		nvgBeginPath(args.vg);
 		nvgRoundedRect(args.vg, 0, 0, 18, 13, 1.5);
 		nvgFillColor(args.vg, nvgRGBA(0x77, 0x77, 0x77, 0xff));
@@ -565,39 +606,54 @@ void VUSlider::draw(const DrawArgs& args) {
 		nvgRoundedRect(args.vg, 2, 4, 14, 5, 1.0);
 		nvgFillColor(args.vg, nvgRGBA(0xaa, 0xaa, 0xaa, 0xff));
 		nvgFill(args.vg);
-
-		float db = _vuLevel ? *_vuLevel : 0.0f;
-		bool stereo = false;
-		float stereoDb = 0.0f;
-		if (_stereoVuLevel) {
-			stereo = true;
-			stereoDb = *_stereoVuLevel;
-		}
-		if (module && !module->isBypassed()) {
-			if (db > 0.0f) {
-				nvgSave(args.vg);
-				nvgGlobalTint(args.vg, color::WHITE);
-				nvgBeginPath(args.vg);
-				if (stereo) {
-					nvgRoundedRect(args.vg, 2, 4, stereo ? 7 : 14, 5, 1.0);
-				}
-				else {
-					nvgRoundedRect(args.vg, 2, 4, 14, 5, 1.0);
-				}
-				nvgFillColor(args.vg, decibelsToColor(amplitudeToDecibels(db)));
-				nvgFill(args.vg);
-				nvgRestore(args.vg);
-			}
-			if (stereo && stereoDb > 0.0f) {
-				nvgSave(args.vg);
-				nvgGlobalTint(args.vg, color::WHITE);
-				nvgBeginPath(args.vg);
-				nvgRoundedRect(args.vg, 9, 4, 7, 5, 1.0);
-				nvgFillColor(args.vg, decibelsToColor(amplitudeToDecibels(stereoDb)));
-				nvgFill(args.vg);
-				nvgRestore(args.vg);
-			}
-		}
 	}
 	nvgRestore(args.vg);
+}
+
+void VUSlider::drawLit(const DrawArgs& args) {
+	float db = _vuLevel ? *_vuLevel : 0.0f;
+	bool stereo = false;
+	float stereoDb = 0.0f;
+	if (_stereoVuLevel) {
+		stereo = true;
+		stereoDb = *_stereoVuLevel;
+	}
+
+	nvgSave(args.vg);
+	drawTranslate(args);
+	if (db > 0.0f) {
+		nvgSave(args.vg);
+		nvgBeginPath(args.vg);
+		if (stereo) {
+			nvgRoundedRect(args.vg, 2, 4, stereo ? 7 : 14, 5, 1.0);
+		}
+		else {
+			nvgRoundedRect(args.vg, 2, 4, 14, 5, 1.0);
+		}
+		nvgFillColor(args.vg, decibelsToColor(amplitudeToDecibels(db)));
+		nvgFill(args.vg);
+		nvgRestore(args.vg);
+	}
+	if (stereo && stereoDb > 0.0f) {
+		nvgSave(args.vg);
+		nvgBeginPath(args.vg);
+		nvgRoundedRect(args.vg, 9, 4, 7, 5, 1.0);
+		nvgFillColor(args.vg, decibelsToColor(amplitudeToDecibels(stereoDb)));
+		nvgFill(args.vg);
+		nvgRestore(args.vg);
+	}
+	nvgRestore(args.vg);
+}
+
+void VUSlider::drawTranslate(const DrawArgs& args) {
+	float level = 0.0f;
+	if (getParamQuantity()) {
+		level = getParamQuantity()->getValue();
+	}
+	else {
+		float minDb = -60.0f;
+		float maxDb = 6.0f;
+		level = fabsf(minDb) / (maxDb - minDb);
+	}
+	nvgTranslate(args.vg, 0, (box.size.y - 13.0f) * (1.0f - level));
 }

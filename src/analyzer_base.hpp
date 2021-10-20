@@ -178,7 +178,7 @@ struct AnalyzerBaseWidget : BGModuleWidget {
 	void addAmplitudePlotContextMenu(Menu* menu, bool linearOption = true);
 };
 
-struct AnalyzerDisplay : TransparentWidget, AnalyzerTypes {
+struct AnalyzerDisplay : DisplayWidget, AnalyzerTypes {
 	struct BinsReader {
 		BinsReader() {}
 		virtual ~BinsReader() {}
@@ -240,7 +240,8 @@ struct AnalyzerDisplay : TransparentWidget, AnalyzerTypes {
 		Vec size,
 		bool drawInset
 	)
-	: _module(module)
+	: DisplayWidget(module)
+	, _module(module)
 	, _size(size)
 	, _graphSize(_size.x - _insetLeft - _insetRight, _size.y - _insetTop - _insetBottom)
 	, _drawInset(drawInset)
@@ -268,7 +269,7 @@ struct AnalyzerDisplay : TransparentWidget, AnalyzerTypes {
 	void setChannelBinsReaderFactory(int channel, BinsReaderFactory brf);
 	void displayChannel(int channel, bool display);
 	void channelLabel(int channel, std::string label);
-	void draw(const DrawArgs& args) override;
+	void drawOnce(const DrawArgs& args, bool screenshot, bool lit) override;
 	void drawBackground(const DrawArgs& args);
 	virtual void drawHeader(const DrawArgs& args, float rangeMinHz, float rangeMaxHz);
 	void drawYAxis(const DrawArgs& args, float strokeWidth, AmplitudePlot plot);

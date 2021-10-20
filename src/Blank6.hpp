@@ -30,7 +30,7 @@ struct Blank6 : BGModule {
 	Blank6() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 
-		configInput(IN_INPUT, "Signal");
+		configInput(IN_INPUT, "Easter egg");
 
 		sampleRateChange();
 	}

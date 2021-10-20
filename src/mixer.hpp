@@ -71,17 +71,19 @@ struct DimmableMixerWidget : LinearCVMixerWidget {
 	void contextMenu(Menu* menu) override;
 };
 
-struct MuteButton : ToggleButton {
+struct MuteButton : LightEmittingWidget<ToggleButton> {
 	MuteButton() {
 		addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_0.svg")));
 		addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_1_orange.svg")));
 	}
 
 	void onButton(const event::Button& e) override;
+	bool isLit() override;
 	void draw(const DrawArgs& args) override;
+	void drawLit(const DrawArgs& args) override;
 };
 
-struct SoloMuteButton : ParamWidget {
+struct SoloMuteButton : LightEmittingWidget<ParamWidget> {
 	std::vector<std::shared_ptr<Svg>> _frames;
 	SvgWidget* _svgWidget; // deleted elsewhere.
 	CircularShadow* shadow = NULL;
@@ -89,7 +91,9 @@ struct SoloMuteButton : ParamWidget {
 	SoloMuteButton();
 	void onButton(const event::Button& e) override;
 	void onChange(const event::Change& e) override;
+	bool isLit() override;
 	void draw(const DrawArgs& args) override;
+	void drawLit(const DrawArgs& args) override;
 };
 
 struct DimSwitchQuantity : SwitchQuantity {

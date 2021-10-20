@@ -58,7 +58,7 @@ void VU::processAll(const ProcessArgs& args) {
 	_rPeakLevel = rPeak;
 }
 
-struct VUDisplay : OpaqueWidget {
+struct VUDisplay : LightEmittingWidget<OpaqueWidget> {
 	struct Level {
 		float db;
 		NVGcolor color;
@@ -76,61 +76,63 @@ struct VUDisplay : OpaqueWidget {
 		}
 	}
 
+	bool isLit() override {
+		return _module && !_module->isBypassed();
+	}
+
 	void draw(const DrawArgs& args) override {
-		float lDb = -100.0f;
-		float rDb = -100.0f;
-		float lPeakDb = -100.0f;
-		float rPeakDb = -100.0f;
-		if (_module && !_module->isBypassed()) {
-			lDb = amplitudeToDecibels(_module->_lLevel);
-			rDb = amplitudeToDecibels(_module->_rLevel);
-			lPeakDb = amplitudeToDecibels(_module->_lPeakLevel);
-			rPeakDb = amplitudeToDecibels(_module->_rPeakLevel);
+		nvgSave(args.vg);
+		for (int i = 0; i < 180; i += 5) {
+			drawBox(args, i, true);
+			nvgFillColor(args.vg, bgColor);
+			nvgFill(args.vg);
+
+			drawBox(args, i, false);
+			nvgFillColor(args.vg, bgColor);
+			nvgFill(args.vg);
 		}
+		nvgRestore(args.vg);
+	}
+
+	void drawLit(const DrawArgs& args) override {
+		assert(_module);
+		float lDb = amplitudeToDecibels(_module->_lLevel);
+		float rDb = amplitudeToDecibels(_module->_rLevel);
+		float lPeakDb = amplitudeToDecibels(_module->_lPeakLevel);
+		float rPeakDb = amplitudeToDecibels(_module->_rPeakLevel);
 
 		nvgSave(args.vg);
 		for (int i = 0; i < 180; i += 5) {
 			const Level& l = _levels.at(i / 5);
 
-			nvgBeginPath(args.vg);
-			nvgRect(args.vg, 3, i + 1, 5, 4);
-			nvgFillColor(args.vg, bgColor);
-			nvgFill(args.vg);
 			if (lPeakDb > l.db && lPeakDb < l.db + 2.0f) {
-				nvgSave(args.vg);
-				nvgGlobalTint(args.vg, color::WHITE);
+				drawBox(args, i, true);
 				nvgFillColor(args.vg, nvgRGBA(0x00, 0xdd, 0xff, 0xff));
 				nvgFill(args.vg);
-				nvgRestore(args.vg);
 			}
 			if (lDb > l.db) {
-				nvgSave(args.vg);
-				nvgGlobalTint(args.vg, color::WHITE);
+				drawBox(args, i, true);
 				nvgFillColor(args.vg, l.color);
 				nvgFill(args.vg);
-				nvgRestore(args.vg);
 			}
 
-			nvgBeginPath(args.vg);
-			nvgRect(args.vg, 10, i + 1, 5, 4);
-			nvgFillColor(args.vg, bgColor);
-			nvgFill(args.vg);
 			if (rPeakDb > l.db && rPeakDb < l.db + 2.0f) {
-				nvgSave(args.vg);
-				nvgGlobalTint(args.vg, color::WHITE);
+				drawBox(args, i, false);
 				nvgFillColor(args.vg, nvgRGBA(0x00, 0xdd, 0xff, 0xff));
 				nvgFill(args.vg);
-				nvgRestore(args.vg);
 			}
 			if (rDb > l.db) {
-				nvgSave(args.vg);
-				nvgGlobalTint(args.vg, color::WHITE);
+				drawBox(args, i, false);
 				nvgFillColor(args.vg, l.color);
 				nvgFill(args.vg);
-				nvgRestore(args.vg);
 			}
 		}
 		nvgRestore(args.vg);
+	}
+
+	void drawBox(const DrawArgs& args, int offset, bool left) {
+		nvgBeginPath(args.vg);
+		nvgRect(args.vg, left ? 3 : 10, offset + 1, 5, 4);
 	}
 };
 

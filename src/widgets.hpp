@@ -11,6 +11,32 @@ extern Plugin *pluginInstance;
 
 namespace bogaudio {
 
+template <class BASE>
+struct LightEmittingWidget : BASE {
+	virtual bool isLit() = 0;
+
+	void drawLayer(const typename BASE::DrawArgs& args, int layer) override {
+		if (layer == 1 && isLit()) {
+			drawLit(args);
+		}
+		BASE::drawLayer(args, layer);
+	}
+
+	virtual void drawLit(const typename BASE::DrawArgs& args) {}
+};
+
+struct DisplayWidget : LightEmittingWidget<OpaqueWidget> {
+	Module* _module = NULL;
+
+	DisplayWidget(Module* module);
+
+	bool isLit() override;
+	virtual bool isScreenshot();
+	void draw(const DrawArgs& args) override;
+	void drawLit(const DrawArgs& args) override;
+	virtual void drawOnce(const DrawArgs& args, bool screenshot, bool lit) = 0;
+};
+
 struct SkinnableWidget : SkinChangeListener {
 	void skinChanged(const std::string& skin) override {}
 	std::string skinSVG(const std::string& base, const std::string& skin = "default");
@@ -59,7 +85,7 @@ struct Knob68 : BGKnob {
 	Knob68();
 };
 
-struct IndicatorKnob : Knob, SkinnableWidget {
+struct IndicatorKnob : LightEmittingWidget<Knob>, SkinnableWidget {
 	struct IKWidget : widget::Widget {
 		float _angle = 0.0f;
 		NVGcolor _color = nvgRGBA(0x00, 0x00, 0x00, 0x00);
@@ -82,7 +108,9 @@ struct IndicatorKnob : Knob, SkinnableWidget {
 	inline void setDrawColorsCallback(std::function<bool()> fn) { w->_drawColorsCB = fn; }
 	inline void setUnipolarCallback(std::function<bool()> fn) { w->_unipolarCB = fn; }
 	void redraw();
+	bool isLit() override;
 	void draw(const DrawArgs& args) override;
+	void drawLit(const DrawArgs& args) override;
 	void skinChanged(const std::string& skin) override;
 };
 
@@ -139,12 +167,15 @@ struct ToggleButton18 : ToggleButton {
 	ToggleButton18();
 };
 
-struct IndicatorButtonGreen9 : SvgSwitch {
+struct IndicatorButtonGreen9 : LightEmittingWidget<SvgSwitch> {
 	IndicatorButtonGreen9();
+
+	bool isLit() override;
 	void draw(const DrawArgs& args) override;
+	void drawLit(const DrawArgs& args) override;
 };
 
-struct InvertingIndicatorButton : ParamWidget {
+struct InvertingIndicatorButton : LightEmittingWidget<ParamWidget> {
 	struct IIBWidget : widget::Widget {
 		int _dim;
 		NVGcolor _color = nvgRGBA(0x00, 0x00, 0x00, 0x00);
@@ -169,7 +200,9 @@ struct InvertingIndicatorButton : ParamWidget {
 	void onDoubleClick(const event::DoubleClick& e) override {}
 	void onButton(const event::Button& e) override;
 	void onChange(const event::Change& e) override;
+	bool isLit() override;
 	void draw(const DrawArgs& args) override;
+	void drawLit(const DrawArgs& args) override;
 };
 
 struct InvertingIndicatorButton9 : InvertingIndicatorButton {
@@ -182,7 +215,7 @@ struct InvertingIndicatorButton18 : InvertingIndicatorButton {
 
 NVGcolor decibelsToColor(float db);
 
-struct VUSlider : SliderKnob {
+struct VUSlider : LightEmittingWidget<SliderKnob> {
 	const float slideHeight = 13.0f;
 	float* _vuLevel = NULL;
 	float* _stereoVuLevel = NULL;
@@ -197,7 +230,10 @@ struct VUSlider : SliderKnob {
 	inline void setStereoVULevel(float* level) {
 		_stereoVuLevel = level;
 	}
+	bool isLit() override;
 	void draw(const DrawArgs& args) override;
+	void drawLit(const DrawArgs& args) override;
+	void drawTranslate(const DrawArgs& args);
 };
 
 struct VUSlider151 : VUSlider {

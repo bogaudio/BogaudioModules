@@ -17,47 +17,52 @@ void Blank6::processAll(const ProcessArgs& args) {
 	}
 }
 
-struct Blank6Display : OpaqueWidget {
+struct Blank6Display : DisplayWidget {
 	Blank6* _module;
 	const char* _text;
 	std::string _fontPath;
 
 	Blank6Display(Blank6* module, const char* text)
-	: _module(module)
+	: DisplayWidget(module)
+	, _module(module)
 	, _text(text)
 	, _fontPath(asset::plugin(pluginInstance, "res/fonts/audiowide.ttf"))
 	{
 	}
 
-	void draw(const DrawArgs& args) override {
-		std::shared_ptr<Font> font = APP->window->loadFont(_fontPath);
-
+	void drawOnce(const DrawArgs& args, bool screenshot, bool lit) override {
 		const Skins& skins = Skins::skins();
 		std::string skin = skins.defaultKey();
 		bool haveLevel = false;
 		float level = 0.0f;
-		if (_module && !_module->isBypassed()) {
+		if (lit) {
 			haveLevel = _module->_level;
 			level = _module->_level;
 			skin = _module->_skin;
 		}
 
 		NVGcolor textColor = nvgRGBA(0x33, 0x33, 0x33, 0xff);
-		// NVGcolor bgTextColor = nvgRGBA(0xaa, 0xaa, 0xaa, 0xff);
 		NVGcolor bgColor = nvgRGBA(0xdd, 0xdd, 0xdd, 0xff);
 		const char* pathStroke = skins.skinCssValue(skin, "path-stroke");
 		if (pathStroke) {
 			textColor = Skins::cssColorToNVGColor(pathStroke, textColor);
 		}
-		const char* backgroundFill = skins.skinCssValue(skin, "background-fill");
-		if (backgroundFill) {
-			bgColor = Skins::cssColorToNVGColor(backgroundFill, bgColor);
-		}
 		NVGcolor bgTextColor = nvgRGBAf(0.5f * (textColor.r + bgColor.r), 0.5f * (textColor.g + bgColor.g), 0.5f * (textColor.b + bgColor.b), 1.0f);
 
+		const int split = 107;
+		drawText(args, 0, 0, box.size.x, split - 10, haveLevel, level, textColor, bgTextColor);
+		drawText(args, 0, split, box.size.x, box.size.y, haveLevel, level, textColor, bgTextColor);
+		drawText(args, 0, split - 10, box.size.x / 2 - 5, 10, haveLevel, level, textColor, bgTextColor);
+		drawText(args, box.size.x / 2 + 5, split - 10, box.size.x, 10, haveLevel, level, textColor, bgTextColor);
+	}
+
+	void drawText(const DrawArgs& args, int sx, int sy, int sw, int sh, bool haveLevel, float level, const NVGcolor& textColor, const NVGcolor& bgTextColor) {
+		std::shared_ptr<Font> font = APP->window->loadFont(_fontPath);
 		float offsetX = box.size.x / 2.0f;
 		float offsetY = box.size.y / 2.0f;
 		nvgSave(args.vg);
+		nvgScissor(args.vg, 0, 0, box.size.x, box.size.y);
+		nvgIntersectScissor(args.vg, sx, sy, sw, sh);
 		nvgTranslate(args.vg, offsetX, offsetY);
 		nvgRotate(args.vg, M_PI/2.0f);
 		nvgTranslate(args.vg, -offsetY, offsetX);
@@ -69,7 +74,6 @@ struct Blank6Display : OpaqueWidget {
 			nvgText(args.vg, 0, 0, _text, NULL);
 		}
 		else {
-			nvgGlobalTint(args.vg, color::WHITE);
 			nvgFillColor(args.vg, bgTextColor);
 			nvgText(args.vg, 0, 0, _text, NULL);
 			if (level > 0.0001f) {
@@ -77,10 +81,6 @@ struct Blank6Display : OpaqueWidget {
 				nvgText(args.vg, 0, 0, _text, NULL);
 			}
 		}
-		nvgBeginPath(args.vg);
-		nvgRect(args.vg, 97, -20, 10, 10);
-		nvgFillColor(args.vg, bgColor);
-		nvgFill(args.vg);
 		nvgRestore(args.vg);
 	}
 };

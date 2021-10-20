@@ -192,7 +192,7 @@ void Pressor::processChannel(const ProcessArgs& args, int c) {
 }
 
 struct PressorWidget : BGModuleWidget {
-	struct CompressionDisplay : OpaqueWidget {
+	struct CompressionDisplay : LightEmittingWidget<OpaqueWidget> {
 		struct Level {
 			float db;
 			NVGcolor color;
@@ -212,7 +212,21 @@ struct PressorWidget : BGModuleWidget {
 			}
 		}
 
+		bool isLit() override {
+			return _module && !_module->isBypassed();
+		}
+
 		void draw(const DrawArgs& args) override {
+			nvgSave(args.vg);
+			for (int i = 0; i < 80; i += 5) {
+				drawBox(args, i);
+				nvgFillColor(args.vg, bgColor);
+				nvgFill(args.vg);
+			}
+			nvgRestore(args.vg);
+		}
+
+		void drawLit(const DrawArgs& args) override {
 			float compressionDb = 0.0f;
 			if (_module && !_module->isBypassed()) {
 				compressionDb = _module->_compressionDb;
@@ -221,20 +235,18 @@ struct PressorWidget : BGModuleWidget {
 			nvgSave(args.vg);
 			for (int i = 0; i < 80; i += 5) {
 				const Level& l = _levels.at(i / 5);
-
-				nvgBeginPath(args.vg);
-				nvgRect(args.vg, 3, i + 1, 5, 4);
-				nvgFillColor(args.vg, bgColor);
-				nvgFill(args.vg);
 				if (compressionDb > l.db) {
-					nvgSave(args.vg);
-					nvgGlobalTint(args.vg, color::WHITE);
+					drawBox(args, i);
 					nvgFillColor(args.vg, l.color);
 					nvgFill(args.vg);
-					nvgRestore(args.vg);
 				}
 			}
 			nvgRestore(args.vg);
+		}
+
+		void drawBox(const DrawArgs& args, int offset) {
+			nvgBeginPath(args.vg);
+			nvgRect(args.vg, 3, offset + 1, 5, 4);
 		}
 	};
 

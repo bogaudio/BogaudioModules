@@ -34,7 +34,7 @@ void Reftone::processAll(const ProcessArgs& args) {
 	}
 }
 
-struct ReftoneDisplay : TransparentWidget {
+struct ReftoneDisplay : DisplayWidget {
 	const NVGcolor _textColor = nvgRGBA(0x00, 0xff, 0x00, 0xee);
 
 	Reftone* _module;
@@ -45,13 +45,16 @@ struct ReftoneDisplay : TransparentWidget {
 		Reftone* module,
 		Vec size
 	)
-	: _module(module)
+	: DisplayWidget(module)
+	, _module(module)
 	, _size(size)
 	, _fontPath(asset::plugin(pluginInstance, "res/fonts/inconsolata-bold.ttf"))
 	{
 	}
 
 	void draw(const DrawArgs& args) override;
+	void drawLit(const DrawArgs& args) override;
+	void drawOnce(const DrawArgs& args, bool screenshot, bool lit) override;
 	void drawBackground(const DrawArgs& args);
 	void drawText(const DrawArgs& args, const char* s, float x, float y, int size);
 	void drawCenteredText(const DrawArgs& args, const char* s, float y, int size);
@@ -59,11 +62,23 @@ struct ReftoneDisplay : TransparentWidget {
 };
 
 void ReftoneDisplay::draw(const DrawArgs& args) {
+	if (!isLit()) {
+		drawOnce(args, isScreenshot(), false);
+	}
+}
+
+void ReftoneDisplay::drawLit(const DrawArgs& args) {
+	if (isLit()) {
+		drawOnce(args, false, true);
+	}
+}
+
+void ReftoneDisplay::drawOnce(const DrawArgs& args, bool screenshot, bool lit) {
 	int mPitch = 9;
 	int mOctave = 4;
 	float mFine = 0.0f;
 	float mFrequency = 440.0f;
-	if (_module) {
+	if (!screenshot) {
 		mPitch = _module->_pitch;
 		mOctave = _module->_octave;
 		mFine = _module->_fine;
@@ -132,11 +147,10 @@ void ReftoneDisplay::draw(const DrawArgs& args) {
 	}
 
 	nvgSave(args.vg);
-	if (_module && _module->isBypassed()) {
+	if (!screenshot && !lit) {
 		drawBackground(args);
 	}
 	else {
-		nvgGlobalTint(args.vg, color::WHITE);
 		drawBackground(args);
 		if (sharpFlat) {
 			drawText(args, pitch, 3, 20, 28);

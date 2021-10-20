@@ -453,8 +453,9 @@ void AnalyzerDisplay::channelLabel(int channel, std::string label) {
 	_channelLabels[channel] = label;
 }
 
-void AnalyzerDisplay::draw(const DrawArgs& args) {
-	if (_module) {
+void AnalyzerDisplay::drawOnce(const DrawArgs& args, bool screenshot, bool lit) {
+	if (!screenshot) {
+		assert(_module);
 		_module->_core._channelsMutex.lock();
 	}
 
@@ -462,7 +463,7 @@ void AnalyzerDisplay::draw(const DrawArgs& args) {
 	AmplitudePlot amplitudePlot = DECIBELS_80_AP;
 	float rangeMinHz = 0.0f;
 	float rangeMaxHz = 0.0f;
-	if (_module) {
+	if (!screenshot) {
 		frequencyPlot = _module->_frequencyPlot;
 		amplitudePlot = _module->_amplitudePlot;
 		rangeMinHz = _module->_rangeMinHz;
@@ -485,10 +486,9 @@ void AnalyzerDisplay::draw(const DrawArgs& args) {
 	}
 
 	nvgSave(args.vg);
-	nvgGlobalTint(args.vg, color::WHITE);
 	drawBackground(args);
 	nvgScissor(args.vg, _insetAround, _insetAround, _size.x - _insetAround, _size.y - _insetAround);
-	if (!_module || _module->isBypassed()) {
+	if (isScreenshot() || !lit) {
 		drawYAxis(args, strokeWidth, amplitudePlot);
 		drawXAxis(args, strokeWidth, frequencyPlot, rangeMinHz, rangeMaxHz);
 	}
@@ -524,7 +524,7 @@ void AnalyzerDisplay::draw(const DrawArgs& args) {
 	}
 	nvgRestore(args.vg);
 
-	if (_module) {
+	if (!screenshot) {
 		_module->_core._channelsMutex.unlock();
 	}
 }

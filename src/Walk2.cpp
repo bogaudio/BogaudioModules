@@ -169,7 +169,7 @@ void Walk2::processAll(const ProcessArgs& args) {
 	_historyStep %= _historySteps;
 }
 
-struct Walk2Display : TransparentWidget {
+struct Walk2Display : DisplayWidget {
 	const int _insetAround = 4;
 
 	const NVGcolor _axisColor = nvgRGBA(0xff, 0xff, 0xff, 0x70);
@@ -186,7 +186,8 @@ struct Walk2Display : TransparentWidget {
 		Walk2* module,
 		Vec size
 	)
-	: _module(module)
+	: DisplayWidget(module)
+	, _module(module)
 	, _size(size)
 	, _drawSize(2 * (_size.x - 2 * _insetAround), 2 * (_size.y - 2 * _insetAround))
 	, _midX(_insetAround + _drawSize.x/2)
@@ -225,13 +226,10 @@ struct Walk2Display : TransparentWidget {
 		}
 	}
 
-	void draw(const DrawArgs& args) override {
+	void drawOnce(const DrawArgs& args, bool screenshot, bool lit) override {
 		float strokeWidth = std::max(1.0f, 3.0f - getZoom());
 
 		nvgSave(args.vg);
-		if (_module && !_module->isBypassed()) {
-			nvgGlobalTint(args.vg, color::WHITE);
-		}
 		drawBackground(args);
 		nvgScissor(args.vg, _insetAround, _insetAround, _drawSize.x / 2, _drawSize.y / 2);
 		if (_module && _module->_zoomOut) {
@@ -249,7 +247,7 @@ struct Walk2Display : TransparentWidget {
 		}
 		drawAxes(args, strokeWidth);
 
-		if (_module && !_module->isBypassed()) {
+		if (lit) {
 			switch (_module->_traceColor) {
 				case Walk2::ORANGE_TRACE_COLOR: {
 					_traceColor = nvgRGBA(0xff, 0x80, 0x00, 0xee);
