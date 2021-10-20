@@ -48,6 +48,7 @@ struct Blank3Display : DisplayWidget {
 			textColor = Skins::cssColorToNVGColor(pathStroke, textColor);
 		}
 		NVGcolor bgTextColor = nvgRGBAf(0.5f * (textColor.r + bgColor.r), 0.5f * (textColor.g + bgColor.g), 0.5f * (textColor.b + bgColor.b), 1.0f);
+
 		const int split = 65;
 		drawText(args, 0, 0, box.size.x, split - 10, haveLevel, level, textColor, bgTextColor);
 		drawText(args, 0, split, box.size.x, box.size.y, haveLevel, level, textColor, bgTextColor);
