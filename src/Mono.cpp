@@ -68,10 +68,15 @@ struct MonoWidget : BGModuleWidget {
 		}
 
 		void draw(const DrawArgs& args) override {
+			int active = 0;
+			if (_module) {
+				active = _module->_activeChannels;
+			}
+
 			nvgSave(args.vg);
-			for (int i = 0; i < _module->maxChannels; ++i) {
+			for (int i = 0; i < Mono::maxChannels; ++i) {
 				nvgBeginPath(args.vg);
-				if (i >= _module->_activeChannels) {
+				if (i >= active) {
 					nvgCircle(args.vg, (i % 4) * 10 + 5.0f, (i / 4) * 10 + 5.0f, 3.2f);
 					nvgFillColor(args.vg, inactiveBgColor);
 					nvgFill(args.vg);
@@ -81,8 +86,9 @@ struct MonoWidget : BGModuleWidget {
 		}
 
 		void drawLit(const DrawArgs& args) override {
+			assert(_module);
 			nvgSave(args.vg);
-			for (int i = 0; i < _module->maxChannels; ++i) {
+			for (int i = 0; i < Mono::maxChannels; ++i) {
 				nvgBeginPath(args.vg);
 				if (i < _module->_activeChannels) {
 					nvgCircle(args.vg, (i % 4) * 10 + 5.0f, (i / 4) * 10 + 5.0f, 3.2f);
