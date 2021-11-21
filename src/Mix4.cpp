@@ -3,14 +3,21 @@
 
 #define POLY_OFFSET "poly_channel_offset"
 
-json_t* Mix4::toJson(json_t* root) {
-	root = DimmableMixerModule::toJson(root);
+void Mix4::onRandomize(const RandomizeEvent& e) {
+	Module::onRandomize(e);
+	for (int i = 0; i < 4; ++i) {
+		getParamQuantity(MUTE1_PARAM + 3*i)->setValue(random::uniform() > 0.5f);
+	}
+}
+
+json_t* Mix4::saveToJson(json_t* root) {
+	root = DimmableMixerModule::saveToJson(root);
 	json_object_set_new(root, POLY_OFFSET, json_integer(_polyChannelOffset));
 	return root;
 }
 
-void Mix4::fromJson(json_t* root) {
-	DimmableMixerModule::fromJson(root);
+void Mix4::loadFromJson(json_t* root) {
+	DimmableMixerModule::loadFromJson(root);
 	json_t* o = json_object_get(root, POLY_OFFSET);
 	if (o) {
 		_polyChannelOffset = json_integer_value(o);
@@ -228,16 +235,8 @@ struct Mix4Widget : DimmableMixerWidget {
 		addParam(createParam<Knob16>(pan4ParamPosition, module, Mix4::PAN4_PARAM));
 		addParam(createParam<SoloMuteButton>(mute4ParamPosition, module, Mix4::MUTE4_PARAM));
 		addSlider(mixParamPosition, module, Mix4::MIX_PARAM, module ? &module->_rmsLevel : NULL);
-		{
-			auto b = createParam<MuteButton>(mixMuteParamPosition, module, Mix4::MIX_MUTE_PARAM);
-			b->setRandomize(false);
-			addParam(b);
-		}
-		{
-			auto b = createParam<MuteButton>(mixDimParamPosition, module, Mix4::MIX_DIM_PARAM);
-			b->setRandomize(false);
-			addParam(b);
-		}
+		addParam(createParam<MuteButton>(mixMuteParamPosition, module, Mix4::MIX_MUTE_PARAM));
+		addParam(createParam<MuteButton>(mixDimParamPosition, module, Mix4::MIX_DIM_PARAM));
 
 		addInput(createInput<Port24>(cv1InputPosition, module, Mix4::CV1_INPUT));
 		addInput(createInput<Port24>(pan1InputPosition, module, Mix4::PAN1_INPUT));

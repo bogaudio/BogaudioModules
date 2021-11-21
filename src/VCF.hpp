@@ -75,12 +75,23 @@ struct VCF : BGModule {
 		configParam(FREQUENCY_CV_PARAM, -1.0f, 1.0f, 0.0f, "Frequency CV attenuation", "%", 0.0f, 100.0f);
 		configParam(FM_PARAM, 0.0f, 1.0f, 0.0f, "FM", "%", 0.0f, 100.0f);
 		configParam(Q_PARAM, 0.0f, 1.0f, 0.0f, "Resonance / bandwidth", "%", 0.0f, 100.0f);
-		configParam(MODE_PARAM, 0.0f, 3.0f, 0.0f, "Mode");
+		configSwitch(MODE_PARAM, 0.0f, 3.0f, 0.0f, "Mode", {"Lowpass", "Highpass", "Bandpass", "Band reject"});
+		paramQuantities[MODE_PARAM]->snapEnabled = true;
 		configParam<ScaledSquaringParamQuantity<Engine::maxPoles - Engine::minPoles>>(SLOPE_PARAM, 0.0f, 1.0f, 0.522233f, "Slope", " poles", 0.0f, 1.0f, Engine::minPoles);
+		configBypass(IN_INPUT, OUT_OUTPUT);
+
+		configInput(FREQUENCY_CV_INPUT, "Cutoff CV");
+		configInput(FM_INPUT, "Cutoff FM");
+		configInput(PITCH_INPUT, "Cutoff pitch (1V/octave)");
+		configInput(IN_INPUT, "Signal");
+		configInput(Q_INPUT, "Resonance CV");
+		configInput(SLOPE_INPUT, "Slope CV");
+
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	void sampleRateChange() override;
 	bool active() override;
 	int channels() override;

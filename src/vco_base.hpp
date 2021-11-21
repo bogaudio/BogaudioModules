@@ -84,8 +84,8 @@ struct VCOBase : BGModule {
 	inline float linearModeVoltsToHertz(float v) { return _slowMode ? v : 1000.0f * v; }
 	void reset() override;
 	void sampleRateChange() override;
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	int channels() override;
 	void addChannel(int c) override;
 	void removeChannel(int c) override;

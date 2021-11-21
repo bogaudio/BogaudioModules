@@ -22,7 +22,7 @@ void AnalyzerXL::sampleRateChange() {
 	_sampleRate = APP->engine->getSampleRate();
 }
 
-json_t* AnalyzerXL::toJson(json_t* root) {
+json_t* AnalyzerXL::saveToJson(json_t* root) {
 	frequencyPlotToJson(root);
 	frequencyRangeToJson(root);
 	amplitudePlotToJson(root);
@@ -66,7 +66,7 @@ json_t* AnalyzerXL::toJson(json_t* root) {
 	return root;
 }
 
-void AnalyzerXL::fromJson(json_t* root) {
+void AnalyzerXL::loadFromJson(json_t* root) {
 	frequencyPlotFromJson(root);
 	frequencyRangeFromJson(root);
 	amplitudePlotFromJson(root);

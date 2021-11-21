@@ -50,8 +50,18 @@ struct Analyzer : AnalyzerBase {
 	Analyzer() : AnalyzerBase(4, NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 		configParam(RANGE2_PARAM, -1.0f, 1.0f, 0.0f, "Range");
 		configParam(SMOOTH_PARAM, 0.0f, 1.0f, 0.5f, "Smoothing", " ms", 0.0f, 500.0f);
-		configParam(QUALITY_PARAM, 1.0f, 3.0f, 1.0f, "Analysis quality");
-		configParam(WINDOW_PARAM, 1.0f, 3.0f, 1.0f, "Analysis window type");
+		configSwitch(QUALITY_PARAM, 1.0f, 3.0f, 1.0f, "Analysis quality", {"Good", "High", "Ultra"});
+		configSwitch(WINDOW_PARAM, 1.0f, 3.0f, 1.0f, "Analysis window type", {"Kaiser", "Hamming", "None"});
+
+		configInput(SIGNALA_INPUT, "Signal A");
+		configInput(SIGNALB_INPUT, "Signal B");
+		configInput(SIGNALC_INPUT, "Signal C");
+		configInput(SIGNALD_INPUT, "Signal D");
+
+		configOutput(SIGNALA_OUTPUT, "Signal A");
+		configOutput(SIGNALB_OUTPUT, "Signal B");
+		configOutput(SIGNALC_OUTPUT, "Signal C");
+		configOutput(SIGNALD_OUTPUT, "Signal D");
 	}
 	virtual ~Analyzer() {
 		reset();
@@ -59,8 +69,8 @@ struct Analyzer : AnalyzerBase {
 
 	void reset() override;
 	void sampleRateChange() override;
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	void modulate() override;
 	void processAll(const ProcessArgs& args) override;
 };

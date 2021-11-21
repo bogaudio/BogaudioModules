@@ -6,6 +6,30 @@
 using namespace bogaudio;
 using namespace bogaudio::dsp;
 
+DisplayWidget::DisplayWidget(Module* module) : _module(module) {
+}
+
+bool DisplayWidget::isLit() {
+	return _module && !_module->isBypassed();
+}
+
+bool DisplayWidget::isScreenshot() {
+	return !_module;
+}
+
+void DisplayWidget::draw(const DrawArgs& args) {
+	if (!isLit()) {
+		drawOnce(args, isScreenshot(), false);
+	}
+}
+
+void DisplayWidget::drawLit(const DrawArgs& args) {
+	if (isLit()) {
+		drawOnce(args, false, true);
+	}
+}
+
+
 std::string SkinnableWidget::skinSVG(const std::string& base, const std::string& skin) {
 	std::string s = skin;
 	if (s == "default") {
@@ -19,6 +43,7 @@ std::string SkinnableWidget::skinSVG(const std::string& base, const std::string&
 	svg += ".svg";
 	return svg;
 }
+
 
 Screw::Screw() {
 	skinChanged("default");
@@ -216,8 +241,8 @@ void IndicatorKnob::onHover(const event::Hover& e) {
 
 void IndicatorKnob::onChange(const event::Change& e) {
 	fb->dirty = true;
-	if (paramQuantity) {
-		w->setAngle(paramQuantity->getValue());
+	if (getParamQuantity()) {
+		w->setAngle(getParamQuantity()->getValue());
 	}
 	Knob::onChange(e);
 }
@@ -225,6 +250,22 @@ void IndicatorKnob::onChange(const event::Change& e) {
 void IndicatorKnob::redraw() {
 	event::Change c;
 	onChange(c);
+}
+
+bool IndicatorKnob::isLit() {
+	return module && !module->isBypassed() && getParamQuantity() &&
+		(getParamQuantity()->getValue() < -0.01f || getParamQuantity()->getValue() > 0.01f) &&
+		(!w->_drawColorsCB || w->_drawColorsCB());
+}
+
+void IndicatorKnob::draw(const DrawArgs& args) {
+	if (!isLit()) {
+		Knob::draw(args);
+	}
+}
+
+void IndicatorKnob::drawLit(const DrawArgs& args) {
+	Knob::draw(args);
 }
 
 void IndicatorKnob::skinChanged(const std::string& skin) {
@@ -239,6 +280,7 @@ void IndicatorKnob::skinChanged(const std::string& skin) {
 	}
 	fb->dirty = true;
 }
+
 
 Port24::Port24() {
 	setSvg(APP->window->loadSvg(asset::plugin(pluginInstance, skinSVG("port").c_str())));
@@ -301,29 +343,14 @@ StatefulButton::StatefulButton(const char* offSvgPath, const char* onSvgPath) {
 	shadow->box.pos = Vec(0.0, 1.0);
 }
 
-void StatefulButton::reset() {
-	if (paramQuantity) {
-		paramQuantity->reset();
-	}
-}
-
-void StatefulButton::randomize() {
-	if (paramQuantity) {
-		float min = paramQuantity->getMinValue();
-		float max = paramQuantity->getMaxValue();
-		float value = roundf(min + (max - min) * random::uniform());
-		paramQuantity->setValue(value);
-	}
-}
-
 void StatefulButton::onDragStart(const event::DragStart& e) {
-	if (paramQuantity) {
+	if (getParamQuantity()) {
 		_svgWidget->setSvg(_frames[1]);
-		if (paramQuantity->getValue() >= paramQuantity->getMaxValue()) {
-			paramQuantity->setValue(paramQuantity->getMinValue());
+		if (getParamQuantity()->getValue() >= getParamQuantity()->getMaxValue()) {
+			getParamQuantity()->setValue(getParamQuantity()->getMinValue());
 		}
 		else {
-			paramQuantity->setValue(paramQuantity->getValue() + 1.0);
+			getParamQuantity()->setValue(getParamQuantity()->getValue() + 1.0);
 		}
 	}
 }
@@ -350,6 +377,20 @@ ToggleButton18::ToggleButton18() {
 IndicatorButtonGreen9::IndicatorButtonGreen9() {
 	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_9px_0.svg")));
 	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_9px_1_green.svg")));
+}
+
+bool IndicatorButtonGreen9::isLit() {
+	return module && !module->isBypassed() && getParamQuantity() && getParamQuantity()->getValue() > 0.0f;
+}
+
+void IndicatorButtonGreen9::draw(const DrawArgs& args) {
+	if (!isLit()) {
+		SvgSwitch::draw(args);
+	}
+}
+
+void IndicatorButtonGreen9::drawLit(const DrawArgs& args) {
+	SvgSwitch::draw(args);
 }
 
 
@@ -448,18 +489,6 @@ InvertingIndicatorButton::InvertingIndicatorButton(int dim) {
 	fb->addChild(w);
 }
 
-void InvertingIndicatorButton::reset() {
-	if (paramQuantity) {
-		paramQuantity->reset();
-	}
-}
-
-void InvertingIndicatorButton::randomize() {
-	if (paramQuantity) {
-		paramQuantity->setValue(roundf(2.0f * random::uniform()) - 1.0f);
-	}
-}
-
 void InvertingIndicatorButton::onHover(const event::Hover& e) {
 	math::Vec c = box.size.div(2);
 	float dist = e.pos.minus(c).norm();
@@ -470,35 +499,50 @@ void InvertingIndicatorButton::onHover(const event::Hover& e) {
 
 void InvertingIndicatorButton::onButton(const event::Button& e) {
 	ParamWidget::onButton(e);
-	if (!paramQuantity || !(e.action == GLFW_PRESS && (e.mods & RACK_MOD_MASK) == 0) || e.button == GLFW_MOUSE_BUTTON_RIGHT) {
+	if (!getParamQuantity() || !(e.action == GLFW_PRESS && (e.mods & RACK_MOD_MASK) == 0) || e.button == GLFW_MOUSE_BUTTON_RIGHT) {
 		return;
 	}
 
-	float value = paramQuantity->getValue();
+	float value = getParamQuantity()->getValue();
 	if (value <= -1.0f) {
-		paramQuantity->setValue(0.0f);
+		getParamQuantity()->setValue(0.0f);
 	}
 	else if (value < 1.0f) {
-		paramQuantity->setValue(1.0f);
+		getParamQuantity()->setValue(1.0f);
 	}
-	else if (paramQuantity->minValue < 0.0f && (!clickToInvertCB || clickToInvertCB())) {
-		paramQuantity->setValue(-1.0f);
+	else if (getParamQuantity()->minValue < 0.0f && (!clickToInvertCB || clickToInvertCB())) {
+		getParamQuantity()->setValue(-1.0f);
 	}
 	else {
-		paramQuantity->setValue(0.0f);
+		getParamQuantity()->setValue(0.0f);
 	}
 }
 
 void InvertingIndicatorButton::onChange(const event::Change& e) {
 	fb->dirty = true;
-	if (paramQuantity) {
-		float v = paramQuantity->getValue();
+	if (getParamQuantity()) {
+		float v = getParamQuantity()->getValue();
 		w->setValue(v);
 		if (onChangeCB) {
-			onChangeCB(paramQuantity->paramId, v);
+			onChangeCB(getParamQuantity()->paramId, v);
 		}
 	}
 	ParamWidget::onChange(e);
+}
+
+bool InvertingIndicatorButton::isLit() {
+	return module && !module->isBypassed() && getParamQuantity() &&
+		(getParamQuantity()->getValue() < -0.01f || getParamQuantity()->getValue() > 0.01f);
+}
+
+void InvertingIndicatorButton::draw(const DrawArgs& args) {
+	if (!isLit()) {
+		ParamWidget::draw(args);
+	}
+}
+
+void InvertingIndicatorButton::drawLit(const DrawArgs& args) {
+	ParamWidget::draw(args);
 }
 
 
@@ -516,16 +560,18 @@ NVGcolor bogaudio::decibelsToColor(float db) {
 }
 
 
+bool VUSlider::isLit() {
+	float db = _vuLevel ? *_vuLevel : 0.0f;
+	bool stereo = false;
+	float stereoDb = 0.0f;
+	if (_stereoVuLevel) {
+		stereo = true;
+		stereoDb = *_stereoVuLevel;
+	}
+	return module && !module->isBypassed() && (db > 0.0f || (stereo && stereoDb > 0.0f));
+}
+
 void VUSlider::draw(const DrawArgs& args) {
-	float level = 0.0f;
-	if (paramQuantity) {
-		level = paramQuantity->getValue();
-	}
-	else {
-		float minDb = -60.0f;
-		float maxDb = 6.0f;
-		level = fabsf(minDb) / (maxDb - minDb);
-	}
 
 	nvgSave(args.vg);
 	{
@@ -540,7 +586,7 @@ void VUSlider::draw(const DrawArgs& args) {
 
 	nvgSave(args.vg);
 	{
-		nvgTranslate(args.vg, 0, (box.size.y - 13.0f) * (1.0f - level));
+		drawTranslate(args);
 		nvgBeginPath(args.vg);
 		nvgRoundedRect(args.vg, 0, 0, 18, 13, 1.5);
 		nvgFillColor(args.vg, nvgRGBA(0x77, 0x77, 0x77, 0xff));
@@ -560,31 +606,54 @@ void VUSlider::draw(const DrawArgs& args) {
 		nvgRoundedRect(args.vg, 2, 4, 14, 5, 1.0);
 		nvgFillColor(args.vg, nvgRGBA(0xaa, 0xaa, 0xaa, 0xff));
 		nvgFill(args.vg);
-
-		float db = _vuLevel ? *_vuLevel : 0.0f;
-		bool stereo = false;
-		float stereoDb = 0.0f;
-		if (_stereoVuLevel) {
-			stereo = true;
-			stereoDb = *_stereoVuLevel;
-		}
-		if (db > 0.0f) {
-			nvgBeginPath(args.vg);
-			if (stereo) {
-				nvgRoundedRect(args.vg, 2, 4, stereo ? 7 : 14, 5, 1.0);
-			}
-			else {
-				nvgRoundedRect(args.vg, 2, 4, 14, 5, 1.0);
-			}
-			nvgFillColor(args.vg, decibelsToColor(amplitudeToDecibels(db)));
-			nvgFill(args.vg);
-		}
-		if (stereo && stereoDb > 0.0f) {
-			nvgBeginPath(args.vg);
-			nvgRoundedRect(args.vg, 9, 4, 7, 5, 1.0);
-			nvgFillColor(args.vg, decibelsToColor(amplitudeToDecibels(stereoDb)));
-			nvgFill(args.vg);
-		}
 	}
 	nvgRestore(args.vg);
+}
+
+void VUSlider::drawLit(const DrawArgs& args) {
+	float db = _vuLevel ? *_vuLevel : 0.0f;
+	bool stereo = false;
+	float stereoDb = 0.0f;
+	if (_stereoVuLevel) {
+		stereo = true;
+		stereoDb = *_stereoVuLevel;
+	}
+
+	nvgSave(args.vg);
+	drawTranslate(args);
+	if (db > 0.0f) {
+		nvgSave(args.vg);
+		nvgBeginPath(args.vg);
+		if (stereo) {
+			nvgRoundedRect(args.vg, 2, 4, stereo ? 7 : 14, 5, 1.0);
+		}
+		else {
+			nvgRoundedRect(args.vg, 2, 4, 14, 5, 1.0);
+		}
+		nvgFillColor(args.vg, decibelsToColor(amplitudeToDecibels(db)));
+		nvgFill(args.vg);
+		nvgRestore(args.vg);
+	}
+	if (stereo && stereoDb > 0.0f) {
+		nvgSave(args.vg);
+		nvgBeginPath(args.vg);
+		nvgRoundedRect(args.vg, 9, 4, 7, 5, 1.0);
+		nvgFillColor(args.vg, decibelsToColor(amplitudeToDecibels(stereoDb)));
+		nvgFill(args.vg);
+		nvgRestore(args.vg);
+	}
+	nvgRestore(args.vg);
+}
+
+void VUSlider::drawTranslate(const DrawArgs& args) {
+	float level = 0.0f;
+	if (getParamQuantity()) {
+		level = getParamQuantity()->getValue();
+	}
+	else {
+		float minDb = -60.0f;
+		float maxDb = 6.0f;
+		level = fabsf(minDb) / (maxDb - minDb);
+	}
+	nvgTranslate(args.vg, 0, (box.size.y - 13.0f) * (1.0f - level));
 }

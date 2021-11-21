@@ -55,9 +55,26 @@ struct OneEight : AddressableSequenceModule {
 	OneEight() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(STEPS_PARAM, 1.0f, 8.0f, 8.0f, "Steps");
-		configParam(DIRECTION_PARAM, 0.0f, 1.0f, 1.0f, "Direction");
+		paramQuantities[STEPS_PARAM]->snapEnabled = true;
+		configSwitch(DIRECTION_PARAM, 0.0f, 1.0f, 1.0f, "Direction", {"Reverse", "Forward"});
 		configParam(SELECT_PARAM, 0.0f, 7.0f, 0.0f, "Select step");
+		paramQuantities[SELECT_PARAM]->snapEnabled = true;
 		setInputIDs(CLOCK_INPUT, SELECT_INPUT);
+		configBypass(IN_INPUT, OUT1_OUTPUT);
+
+		configInput(CLOCK_INPUT, "Clock");
+		configInput(RESET_INPUT, "Reset");
+		configInput(SELECT_INPUT, "Select CV");
+		configInput(IN_INPUT, "Signal");
+
+		configOutput(OUT1_OUTPUT, "Signal 1");
+		configOutput(OUT2_OUTPUT, "Signal 2");
+		configOutput(OUT3_OUTPUT, "Signal 3");
+		configOutput(OUT4_OUTPUT, "Signal 4");
+		configOutput(OUT5_OUTPUT, "Signal 5");
+		configOutput(OUT6_OUTPUT, "Signal 6");
+		configOutput(OUT7_OUTPUT, "Signal 7");
+		configOutput(OUT8_OUTPUT, "Signal 8");
 	}
 
 	void processAlways(const ProcessArgs& args) override;

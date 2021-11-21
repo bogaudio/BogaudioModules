@@ -3,14 +3,14 @@
 
 #define OFFSET_FIRST "offset_first"
 
-json_t* PolyOff8::toJson(json_t* root) {
-	root = OutputRangeModule<BGModule>::toJson(root);
+json_t* PolyOff8::saveToJson(json_t* root) {
+	root = OutputRangeModule<BGModule>::saveToJson(root);
 	json_object_set_new(root, OFFSET_FIRST, json_boolean(_offsetFirst));
 	return root;
 }
 
-void PolyOff8::fromJson(json_t* root) {
-	OutputRangeModule<BGModule>::fromJson(root);
+void PolyOff8::loadFromJson(json_t* root) {
+	OutputRangeModule<BGModule>::loadFromJson(root);
 	json_t* of = json_object_get(root, OFFSET_FIRST);
 	if (of) {
 		_offsetFirst = json_boolean_value(of);
@@ -140,11 +140,7 @@ struct PolyOff8Widget : BGModuleWidget {
 		addParam(createParam<Knob16>(scale7ParamPosition, module, PolyOff8::SCALE7_PARAM));
 		addParam(createParam<Knob16>(offset8ParamPosition, module, PolyOff8::OFFSET8_PARAM));
 		addParam(createParam<Knob16>(scale8ParamPosition, module, PolyOff8::SCALE8_PARAM));
-		{
-			auto w = createParam<Knob16>(channelsParamPosition, module, PolyOff8::CHANNELS_PARAM);
-			dynamic_cast<Knob*>(w)->snap = true;
-			addParam(w);
-		}
+		addParam(createParam<Knob16>(channelsParamPosition, module, PolyOff8::CHANNELS_PARAM));
 
 		addInput(createInput<Port24>(cv1InputPosition, module, PolyOff8::CV1_INPUT));
 		addInput(createInput<Port24>(cv2InputPosition, module, PolyOff8::CV2_INPUT));
@@ -158,14 +154,14 @@ struct PolyOff8Widget : BGModuleWidget {
 
 		addOutput(createOutput<Port24>(outOutputPosition, module, PolyOff8::OUT_OUTPUT));
 
-		addChild(createLight<TinyLight<GreenLight>>(channel1LightPosition, module, PolyOff8::CHANNEL1_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(channel2LightPosition, module, PolyOff8::CHANNEL2_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(channel3LightPosition, module, PolyOff8::CHANNEL3_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(channel4LightPosition, module, PolyOff8::CHANNEL4_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(channel5LightPosition, module, PolyOff8::CHANNEL5_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(channel6LightPosition, module, PolyOff8::CHANNEL6_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(channel7LightPosition, module, PolyOff8::CHANNEL7_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(channel8LightPosition, module, PolyOff8::CHANNEL8_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(channel1LightPosition, module, PolyOff8::CHANNEL1_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(channel2LightPosition, module, PolyOff8::CHANNEL2_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(channel3LightPosition, module, PolyOff8::CHANNEL3_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(channel4LightPosition, module, PolyOff8::CHANNEL4_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(channel5LightPosition, module, PolyOff8::CHANNEL5_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(channel6LightPosition, module, PolyOff8::CHANNEL6_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(channel7LightPosition, module, PolyOff8::CHANNEL7_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(channel8LightPosition, module, PolyOff8::CHANNEL8_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

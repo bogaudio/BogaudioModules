@@ -66,13 +66,20 @@ struct ASR : BGModule {
 		configParam<EnvelopeSegmentParamQuantity>(ATTACK_PARAM, 0.0f, 1.0f, 0.141421f, "Attack", " s");
 		configParam<EnvelopeSegmentParamQuantity>(RELEASE_PARAM, 0.0f, 1.0f, 0.31623f, "Release", " s");
 		configParam(SUSTAIN_PARAM, 0.0f, 1.0f, 1.0f, "Sustain", "", 0.0f, 10.0f);
-		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear");
+		configSwitch(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear", {"Disabled (logarithmic)", "Enabled"});
+
+		configInput(TRIGGER_INPUT, "Trigger");
+		configInput(ATTACK_INPUT, "Attack CV");
+		configInput(RELEASE_INPUT, "Release CV");
+
+		configOutput(ENV_OUTPUT, "Envelope");
+		configOutput(EOC_OUTPUT, "End-of-cycle trigger");
 	}
 
 	void reset() override;
 	void sampleRateChange() override;
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	bool active() override;
 	int channels() override;
 	void addChannel(int c) override;

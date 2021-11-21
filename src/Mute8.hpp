@@ -78,18 +78,53 @@ struct Mute8 : BGModule {
 
 	Mute8() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(MUTE1_PARAM, 0.0f, 3.0f, 0.0f, "Mute 1");
-		configParam(MUTE2_PARAM, 0.0f, 3.0f, 0.0f, "Mute 2");
-		configParam(MUTE3_PARAM, 0.0f, 3.0f, 0.0f, "Mute 3");
-		configParam(MUTE4_PARAM, 0.0f, 3.0f, 0.0f, "Mute 4");
-		configParam(MUTE5_PARAM, 0.0f, 3.0f, 0.0f, "Mute 5");
-		configParam(MUTE6_PARAM, 0.0f, 3.0f, 0.0f, "Mute 6");
-		configParam(MUTE7_PARAM, 0.0f, 3.0f, 0.0f, "Mute 7");
-		configParam(MUTE8_PARAM, 0.0f, 3.0f, 0.0f, "Mute 8");
+		configSwitch(MUTE1_PARAM, 0.0f, 3.0f, 0.0f, "Mute 1", {"Unmuted", "Muted", "Soloed", "Soloed"});
+		configSwitch(MUTE2_PARAM, 0.0f, 3.0f, 0.0f, "Mute 2", {"Unmuted", "Muted", "Soloed", "Soloed"});
+		configSwitch(MUTE3_PARAM, 0.0f, 3.0f, 0.0f, "Mute 3", {"Unmuted", "Muted", "Soloed", "Soloed"});
+		configSwitch(MUTE4_PARAM, 0.0f, 3.0f, 0.0f, "Mute 4", {"Unmuted", "Muted", "Soloed", "Soloed"});
+		configSwitch(MUTE5_PARAM, 0.0f, 3.0f, 0.0f, "Mute 5", {"Unmuted", "Muted", "Soloed", "Soloed"});
+		configSwitch(MUTE6_PARAM, 0.0f, 3.0f, 0.0f, "Mute 6", {"Unmuted", "Muted", "Soloed", "Soloed"});
+		configSwitch(MUTE7_PARAM, 0.0f, 3.0f, 0.0f, "Mute 7", {"Unmuted", "Muted", "Soloed", "Soloed"});
+		configSwitch(MUTE8_PARAM, 0.0f, 3.0f, 0.0f, "Mute 8", {"Unmuted", "Muted", "Soloed", "Soloed"});
+
+		configBypass(INPUT1_INPUT, OUTPUT1_OUTPUT);
+		configBypass(INPUT2_INPUT, OUTPUT2_OUTPUT);
+		configBypass(INPUT3_INPUT, OUTPUT3_OUTPUT);
+		configBypass(INPUT4_INPUT, OUTPUT4_OUTPUT);
+		configBypass(INPUT5_INPUT, OUTPUT5_OUTPUT);
+		configBypass(INPUT6_INPUT, OUTPUT6_OUTPUT);
+		configBypass(INPUT7_INPUT, OUTPUT7_OUTPUT);
+		configBypass(INPUT8_INPUT, OUTPUT8_OUTPUT);
+
+		configInput(INPUT1_INPUT, "Signal 1");
+		configInput(INPUT2_INPUT, "Signal 2");
+		configInput(INPUT3_INPUT, "Signal 3");
+		configInput(INPUT4_INPUT, "Signal 4");
+		configInput(INPUT5_INPUT, "Signal 5");
+		configInput(INPUT6_INPUT, "Signal 6");
+		configInput(INPUT7_INPUT, "Signal 7");
+		configInput(INPUT8_INPUT, "Signal 8");
+		configInput(MUTE1_INPUT, "Mute 1 CV");
+		configInput(MUTE2_INPUT, "Mute 2 CV");
+		configInput(MUTE3_INPUT, "Mute 3 CV");
+		configInput(MUTE4_INPUT, "Mute 4 CV");
+		configInput(MUTE5_INPUT, "Mute 5 CV");
+		configInput(MUTE6_INPUT, "Mute 6 CV");
+		configInput(MUTE7_INPUT, "Mute 7 CV");
+		configInput(MUTE8_INPUT, "Mute 8 CV");
+
+		configOutput(OUTPUT1_OUTPUT, "Signal 1");
+		configOutput(OUTPUT2_OUTPUT, "Signal 2");
+		configOutput(OUTPUT3_OUTPUT, "Signal 3");
+		configOutput(OUTPUT4_OUTPUT, "Signal 4");
+		configOutput(OUTPUT5_OUTPUT, "Signal 5");
+		configOutput(OUTPUT6_OUTPUT, "Signal 6");
+		configOutput(OUTPUT7_OUTPUT, "Signal 7");
+		configOutput(OUTPUT8_OUTPUT, "Signal 8");
 	}
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	void reset() override;
 	void sampleRateChange() override;
 	void processAll(const ProcessArgs& args) override;

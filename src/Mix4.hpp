@@ -68,19 +68,42 @@ struct Mix4 : ExpandableModule<Mix4ExpanderMessage, DimmableMixerModule> {
 		float levelDefault = fabsf(MixerChannel::minDecibels) / (MixerChannel::maxDecibels - MixerChannel::minDecibels);
 		configParam(LEVEL1_PARAM, 0.0f, 1.0f, levelDefault, "Channel 1 level", " dB", 0.0f, MixerChannel::maxDecibels - MixerChannel::minDecibels, MixerChannel::minDecibels);
 		configParam(PAN1_PARAM, -1.0f, 1.0f, 0.0f, "Channel 1 panning", "%", 0.0f, 100.0f);
-		configParam(MUTE1_PARAM, 0.0f, 3.0f, 0.0f, "Channel 1 mute");
+		configSwitch(MUTE1_PARAM, 0.0f, 3.0f, 0.0f, "Channel 1 mute", {"Unmuted", "Muted", "Soloed", "Soloed"});
 		configParam(LEVEL2_PARAM, 0.0f, 1.0f, levelDefault, "Channel 2 level", " dB", 0.0f, MixerChannel::maxDecibels - MixerChannel::minDecibels, MixerChannel::minDecibels);
 		configParam(PAN2_PARAM, -1.0f, 1.0f, 0.0f, "Channel 2 panning", "%", 0.0f, 100.0f);
-		configParam(MUTE2_PARAM, 0.0f, 3.0f, 0.0f, "Channel 2 mute");
+		configSwitch(MUTE2_PARAM, 0.0f, 3.0f, 0.0f, "Channel 2 mute", {"Unmuted", "Muted", "Soloed", "Soloed"});
 		configParam(LEVEL3_PARAM, 0.0f, 1.0f, levelDefault, "Channel 3 level", " dB", 0.0f, MixerChannel::maxDecibels - MixerChannel::minDecibels, MixerChannel::minDecibels);
 		configParam(PAN3_PARAM, -1.0f, 1.0f, 0.0f, "Channel 3 panning", "%", 0.0f, 100.0f);
-		configParam(MUTE3_PARAM, 0.0f, 3.0f, 0.0f, "Channel 3 mute");
+		configSwitch(MUTE3_PARAM, 0.0f, 3.0f, 0.0f, "Channel 3 mute", {"Unmuted", "Muted", "Soloed", "Soloed"});
 		configParam(LEVEL4_PARAM, 0.0f, 1.0f, levelDefault, "Channel 4 level", " dB", 0.0f, MixerChannel::maxDecibels - MixerChannel::minDecibels, MixerChannel::minDecibels);
 		configParam(PAN4_PARAM, -1.0f, 1.0f, 0.0f, "Channel 4 panning", "%", 0.0f, 100.0f);
-		configParam(MUTE4_PARAM, 0.0f, 3.0f, 0.0f, "Channel 4 mute");
+		configSwitch(MUTE4_PARAM, 0.0f, 3.0f, 0.0f, "Channel 4 mute", {"Unmuted", "Muted", "Soloed", "Soloed"});
 		configParam(MIX_PARAM, 0.0f, 1.0f, levelDefault, "Master level", " dB", 0.0f, MixerChannel::maxDecibels - MixerChannel::minDecibels, MixerChannel::minDecibels);
-		configParam(MIX_MUTE_PARAM, 0.0f, 1.0f, 0.0f, "Master mute");
-		configParam(MIX_DIM_PARAM, 0.0f, 1.0f, 0.0f, "Master dim");
+		configSwitch(MIX_MUTE_PARAM, 0.0f, 1.0f, 0.0f, "Master mute", {"Unmuted", "Muted"});
+		configSwitch<DimSwitchQuantity>(MIX_DIM_PARAM, 0.0f, 1.0f, 0.0f, "Master dim", {"Disabled", "Enabled"});
+		getParamQuantity(MUTE1_PARAM)->randomizeEnabled = false;
+		getParamQuantity(MUTE2_PARAM)->randomizeEnabled = false;
+		getParamQuantity(MUTE3_PARAM)->randomizeEnabled = false;
+		getParamQuantity(MUTE4_PARAM)->randomizeEnabled = false;
+		getParamQuantity(MIX_MUTE_PARAM)->randomizeEnabled = false;
+		getParamQuantity(MIX_DIM_PARAM)->randomizeEnabled = false;
+
+		configInput(CV1_INPUT, "Channel 1 level CV");
+		configInput(PAN1_INPUT, "Channel 1 pan CV");
+		configInput(IN1_INPUT, "Channel 1");
+		configInput(CV2_INPUT, "Channel 2 level CV");
+		configInput(PAN2_INPUT, "Channel 2 pan CV");
+		configInput(IN2_INPUT, "Channel 2");
+		configInput(CV3_INPUT, "Channel 3 level CV");
+		configInput(PAN3_INPUT, "Channel 3 pan CV");
+		configInput(IN3_INPUT, "Channel 3");
+		configInput(CV4_INPUT, "Channel 4 level CV");
+		configInput(PAN4_INPUT, "Channel 4 pan CV");
+		configInput(IN4_INPUT, "Channel 4");
+		configInput(MIX_CV_INPUT, "Mix level CV");
+
+		configOutput(L_OUTPUT, "Left signal");
+		configOutput(R_OUTPUT, "Right signal");
 
 		_channels[0] = new MixerChannel(params[LEVEL1_PARAM], params[MUTE1_PARAM], inputs[CV1_INPUT]);
 		_channels[1] = new MixerChannel(params[LEVEL2_PARAM], params[MUTE2_PARAM], inputs[CV2_INPUT]);
@@ -97,8 +120,9 @@ struct Mix4 : ExpandableModule<Mix4ExpanderMessage, DimmableMixerModule> {
 		}
 	}
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	void onRandomize(const RandomizeEvent& e) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	void sampleRateChange() override;
 	void processAll(const ProcessArgs& args) override;
 };

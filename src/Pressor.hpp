@@ -90,14 +90,30 @@ struct Pressor : BGModule {
 		configParam(OUTPUT_GAIN_PARAM, 0.0f, 1.0f, 0.0f, "Output gain", " dB", 0.0f, 24.0f);
 		configParam(INPUT_GAIN_PARAM, -1.0f, 1.0f, 0.0f, "Input gain", " dB", 0.0f, 12.0f);
 		configParam(DETECTOR_MIX_PARAM, -1.0f, 1.0f, 0.0f, "Detector mix", "%", 0.0f, 100.0f);
-		configParam(MODE_PARAM, 0.0f, 1.0f, 1.0f, "Mode");
-		configParam(DECTECTOR_MODE_PARAM, 0.0f, 1.0f, 1.0f, "Dectector mode");
-		configParam(KNEE_PARAM, 0.0f, 1.0f, 1.0f, "Knee");
+		configSwitch(MODE_PARAM, 0.0f, 1.0f, 1.0f, "Mode", {"Noise gate", "Compressor"});
+		configSwitch(DECTECTOR_MODE_PARAM, 0.0f, 1.0f, 1.0f, "Dectector mode", {"Peak", "RMS"});
+		configSwitch(KNEE_PARAM, 0.0f, 1.0f, 1.0f, "Knee", {"Hard", "Soft"});
+		configBypass(LEFT_INPUT, LEFT_OUTPUT);
+		configBypass(RIGHT_INPUT, RIGHT_OUTPUT);
+
+		configInput(LEFT_INPUT, "Left signal");
+		configInput(SIDECHAIN_INPUT, "Sidechain");
+		configInput(THRESHOLD_INPUT, "Threshold CV");
+		configInput(RATIO_INPUT, "Ratio CV");
+		configInput(RIGHT_INPUT, "Right signal");
+		configInput(ATTACK_INPUT, "Attack CV");
+		configInput(RELEASE_INPUT, "Release CV");
+		configInput(INPUT_GAIN_INPUT, "Input gain CV");
+		configInput(OUTPUT_GAIN_INPUT, "Output gain CV");
+
+		configOutput(ENVELOPE_OUTPUT, "Envelope");
+		configOutput(LEFT_OUTPUT, "Left signal");
+		configOutput(RIGHT_OUTPUT, "Right signal");
 	}
 
 	void sampleRateChange() override;
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	bool active() override;
 	int channels() override;
 	void addChannel(int c) override;

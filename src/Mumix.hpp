@@ -52,14 +52,25 @@ struct Mumix : MatrixBaseModule {
 
 	Mumix() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
-		configParam(MUTE1_PARAM, 0.0f, 3.0f, 0.0f, "Mute 1");
-		configParam(MUTE2_PARAM, 0.0f, 3.0f, 0.0f, "Mute 2");
-		configParam(MUTE3_PARAM, 0.0f, 3.0f, 0.0f, "Mute 3");
-		configParam(MUTE4_PARAM, 0.0f, 3.0f, 0.0f, "Mute 4");
-		configParam(MUTE5_PARAM, 0.0f, 3.0f, 0.0f, "Mute 5");
-		configParam(MUTE6_PARAM, 0.0f, 3.0f, 0.0f, "Mute 6");
-		configParam(MUTE7_PARAM, 0.0f, 3.0f, 0.0f, "Mute 7");
-		configParam(MUTE8_PARAM, 0.0f, 3.0f, 0.0f, "Mute 8");
+		configSwitch(MUTE1_PARAM, 0.0f, 3.0f, 0.0f, "Mute 1", {"Unmuted", "Muted", "Soloed", "Soloed"});
+		configSwitch(MUTE2_PARAM, 0.0f, 3.0f, 0.0f, "Mute 2", {"Unmuted", "Muted", "Soloed", "Soloed"});
+		configSwitch(MUTE3_PARAM, 0.0f, 3.0f, 0.0f, "Mute 3", {"Unmuted", "Muted", "Soloed", "Soloed"});
+		configSwitch(MUTE4_PARAM, 0.0f, 3.0f, 0.0f, "Mute 4", {"Unmuted", "Muted", "Soloed", "Soloed"});
+		configSwitch(MUTE5_PARAM, 0.0f, 3.0f, 0.0f, "Mute 5", {"Unmuted", "Muted", "Soloed", "Soloed"});
+		configSwitch(MUTE6_PARAM, 0.0f, 3.0f, 0.0f, "Mute 6", {"Unmuted", "Muted", "Soloed", "Soloed"});
+		configSwitch(MUTE7_PARAM, 0.0f, 3.0f, 0.0f, "Mute 7", {"Unmuted", "Muted", "Soloed", "Soloed"});
+		configSwitch(MUTE8_PARAM, 0.0f, 3.0f, 0.0f, "Mute 8", {"Unmuted", "Muted", "Soloed", "Soloed"});
+
+		configInput(IN1_INPUT, "Signal 1");
+		configInput(IN2_INPUT, "Signal 2");
+		configInput(IN3_INPUT, "Signal 3");
+		configInput(IN4_INPUT, "Signal 4");
+		configInput(IN5_INPUT, "Signal 5");
+		configInput(IN6_INPUT, "Signal 6");
+		configInput(IN7_INPUT, "Signal 7");
+		configInput(IN8_INPUT, "Signal 8");
+
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
 	void sampleRateChange() override;

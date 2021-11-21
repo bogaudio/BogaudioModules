@@ -39,14 +39,14 @@ void Lmtr::sampleRateChange() {
 	}
 }
 
-json_t* Lmtr::toJson(json_t* root) {
+json_t* Lmtr::saveToJson(json_t* root) {
 	json_object_set_new(root, ATTACK_MS, json_real(_attackMs));
 	json_object_set_new(root, RELEASE_MS, json_real(_releaseMs));
 	json_object_set_new(root, THRESHOLD_RANGE, json_real(_thresholdRange));
 	return root;
 }
 
-void Lmtr::fromJson(json_t* root) {
+void Lmtr::loadFromJson(json_t* root) {
 	json_t* a = json_object_get(root, ATTACK_MS);
 	if (a) {
 		_attackMs = std::max(0.0f, (float)json_real_value(a));

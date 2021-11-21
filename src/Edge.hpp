@@ -55,6 +55,12 @@ struct Edge : BGModule {
 		configParam(RISE_PARAM, -1.0f, 1.0f, 0.1f, "Rising threshold", " V", 0.0f, 10.0f);
 		configParam(FALL_PARAM, -1.0f, 1.0f, 0.01f, "Falling threshold", " V", 0.0f, 10.0f);
 		configParam<ScaledSquaringParamQuantity<1000>>(HOLD_PARAM, 0.0f, 1.0f, 0.031623f, "Hold/reset time", " ms");
+
+		configInput(IN_INPUT, "Signal");
+
+		configOutput(HIGH_OUTPUT, "High gate");
+		configOutput(RISE_OUTPUT, "Rising trigger");
+		configOutput(FALL_OUTPUT, "Falling trigger");
 	}
 
 	void reset() override;

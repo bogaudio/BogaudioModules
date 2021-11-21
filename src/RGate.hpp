@@ -67,14 +67,22 @@ struct RGate : OutputRangeModule<BGModule> {
 		configParam<RoundingParamQuantity<ScaledSquaringParamQuantity<63>>>(CLOCK_DIVIDE_PARAM, 0.0f, 1.0f, 0.0f, "Clock division", "", 0.0f, 1.0f, 1.0f);
 		configParam<RoundingParamQuantity<ScaledSquaringParamQuantity<63>>>(CLOCK_MULTIPLY_PARAM, 0.0f, 1.0f, 0.0f, "Clock multiplication", "", 0.0f, 1.0f, 1.0f);
 
+		configInput(LENGTH_INPUT, "Length CV");
+		configInput(CLOCK_DIVIDE_INPUT, "Clock divider CV");
+		configInput(RESET_INPUT, "Reset");
+		configInput(CLOCK_MULTIPLE_INPUT, "Clock multiplier CV");
+		configInput(CLOCK_INPUT, "Clock");
+
+		configOutput(GATE_OUTPUT, "Gate");
+
 		_rangeOffset = 1.0f;
 		_rangeScale = 5.0f;
 	}
 
 	void reset() override;
 	void sampleRateChange() override;
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	bool active() override;
 	int channels() override;
 	void addChannel(int c) override;

@@ -105,10 +105,10 @@ struct PgmrXWidget : BGModuleWidget {
 		addOutput(createOutput<Port24>(select3OutputPosition, module, PgmrX::SELECT3_OUTPUT));
 		addOutput(createOutput<Port24>(select4OutputPosition, module, PgmrX::SELECT4_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(select1LightPosition, module, PgmrX::SELECT1_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(select2LightPosition, module, PgmrX::SELECT2_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(select3LightPosition, module, PgmrX::SELECT3_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(select4LightPosition, module, PgmrX::SELECT4_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(select1LightPosition, module, PgmrX::SELECT1_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(select2LightPosition, module, PgmrX::SELECT2_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(select3LightPosition, module, PgmrX::SELECT3_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(select4LightPosition, module, PgmrX::SELECT4_LIGHT));
 	}
 };
 

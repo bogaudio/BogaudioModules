@@ -37,10 +37,19 @@ struct AMRM : BGModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(RECTIFY_PARAM, 0.0f, 1.0f, 0.0f, "Rectification", "%", 0.0f, 100.0f);
 		configParam(DRYWET_PARAM, 0.0f, 1.0f, 1.0f, "Wet mix", "%", 0.0f, 100.0f);
+		configBypass(CARRIER_INPUT, OUT_OUTPUT);
+
+		configInput(MODULATOR_INPUT, "Modulator signal");
+		configInput(CARRIER_INPUT, "Carrier signal");
+		configInput(RECTIFY_INPUT, "Rectify CV");
+		configInput(DRYWET_INPUT, "Dry/wet CV");
+
+		configOutput(OUT_OUTPUT, "Modulated carrier signal");
+		configOutput(RECTIFY_OUTPUT, "Rectified modulator signal");
 	}
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	bool active() override;
 	int channels() override;
 	void processChannel(const ProcessArgs& args, int c) override;

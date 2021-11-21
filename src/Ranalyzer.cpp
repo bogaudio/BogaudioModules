@@ -43,7 +43,7 @@ void Ranalyzer::sampleRateChange() {
 	}
 }
 
-json_t* Ranalyzer::toJson(json_t* root) {
+json_t* Ranalyzer::saveToJson(json_t* root) {
 	frequencyPlotToJson(root);
 	frequencyRangeToJson(root);
 	amplitudePlotToJson(root);
@@ -86,7 +86,7 @@ json_t* Ranalyzer::toJson(json_t* root) {
 	return root;
 }
 
-void Ranalyzer::fromJson(json_t* root) {
+void Ranalyzer::loadFromJson(json_t* root) {
 	frequencyPlotFromJson(root);
 	frequencyRangeFromJson(root);
 	amplitudePlotFromJson(root);
@@ -389,12 +389,7 @@ struct RanalyzerWidget : AnalyzerBaseWidget {
 		addParam(createParam<Button18>(triggerParamPosition, module, Ranalyzer::TRIGGER_PARAM));
 		addParam(createParam<IndicatorButtonGreen9>(exponentialParamPosition, module, Ranalyzer::EXPONENTIAL_PARAM));
 		addParam(createParam<IndicatorButtonGreen9>(loopParamPosition, module, Ranalyzer::LOOP_PARAM));
-		{
-			auto w = createParam<Knob16>(delayParamPosition, module, Ranalyzer::DELAY_PARAM);
-			auto k = dynamic_cast<SvgKnob*>(w);
-			k->snap = true;
-			addParam(w);
-		}
+		addParam(createParam<Knob16>(delayParamPosition, module, Ranalyzer::DELAY_PARAM));
 
 		addInput(createInput<Port24>(triggerInputPosition, module, Ranalyzer::TRIGGER_INPUT));
 		addInput(createInput<Port24>(testInputPosition, module, Ranalyzer::TEST_INPUT));

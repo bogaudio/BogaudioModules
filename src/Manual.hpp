@@ -38,7 +38,17 @@ struct Manual : TriggerOnLoadModule {
 
 	Manual() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
-		configParam(TRIGGER_PARAM, 0.0f, 1.0f, 0.0f, "Trigger");
+		configButton(TRIGGER_PARAM, "Trigger");
+
+		configOutput(OUT1_OUTPUT, "Trigger");
+		configOutput(OUT2_OUTPUT, "Trigger");
+		configOutput(OUT3_OUTPUT, "Trigger");
+		configOutput(OUT4_OUTPUT, "Trigger");
+		configOutput(OUT5_OUTPUT, "Trigger");
+		configOutput(OUT6_OUTPUT, "Trigger");
+		configOutput(OUT7_OUTPUT, "Trigger");
+		configOutput(OUT8_OUTPUT, "Trigger");
+
 		_triggerOnLoad = false;
 		_initialDelay = new bogaudio::dsp::Timer(APP->engine->getSampleRate(), 0.01f);
 	}
@@ -50,8 +60,8 @@ struct Manual : TriggerOnLoadModule {
 
 	void reset() override;
 	void sampleRateChange() override;
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	void processAll(const ProcessArgs& args) override;
 	bool shouldTriggerOnNextLoad() override {
 		return true;

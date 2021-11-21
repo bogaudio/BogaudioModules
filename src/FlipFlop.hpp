@@ -39,6 +39,16 @@ struct FlipFlop : BGModule {
 
 	FlipFlop() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
+
+		configInput(IN1_INPUT, "Trigger 1");
+		configInput(RESET1_INPUT, "Reset 1");
+		configInput(IN2_INPUT, "Trigger 2");
+		configInput(RESET2_INPUT, "Reset 2");
+
+		configOutput(A1_OUTPUT, "A1 gate");
+		configOutput(B1_OUTPUT, "B1 gate");
+		configOutput(A2_OUTPUT, "A2 gate");
+		configOutput(B2_OUTPUT, "B2 gate");
 	}
 
 	void reset() override;

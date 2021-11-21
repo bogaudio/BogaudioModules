@@ -41,7 +41,7 @@ struct TestExpanderBaseWidget : BGModuleWidget {
 
 		addOutput(createOutput<Port24>(outOutputPosition, module, TestExpanderBase::OUT_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(comLightPosition, module, TestExpanderBase::COM_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(comLightPosition, module, TestExpanderBase::COM_LIGHT));
 	}
 };
 
@@ -81,7 +81,7 @@ struct TestExpanderExtensionWidget : BGModuleWidget {
 
 		addOutput(createOutput<Port24>(outOutputPosition, module, TestExpanderExtension::OUT_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(comLightPosition, module, TestExpanderExtension::COM_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(comLightPosition, module, TestExpanderExtension::COM_LIGHT));
 	}
 };
 

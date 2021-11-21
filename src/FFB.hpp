@@ -85,6 +85,16 @@ struct FFB : BGModule {
 		configParam<AmplifierParamQuantity>(LOWPASS_PARAM, 0.0f, 1.0f, 1.0f, "Lowpass level");
 		configParam(CV_PARAM, -1.0f, 1.0f, 0.0f, "Frequency offset", " semitones", 0.0f, 12.0f);
 		configParam<AmplifierParamQuantity>(HIGHPASS_PARAM, 0.0f, 1.0f, 1.0f, "Highpass level");
+		configBypass(IN_INPUT, ALL_OUTPUT);
+		configBypass(IN_INPUT, ODD_OUTPUT);
+		configBypass(IN_INPUT, EVEN_OUTPUT);
+
+		configInput(IN_INPUT, "Signal");
+		configInput(CV_INPUT, "Frequency CV");
+
+		configOutput(ALL_OUTPUT, "All filters mix");
+		configOutput(ODD_OUTPUT, "Odd filters mix");
+		configOutput(EVEN_OUTPUT, "Even filters mix");
 	}
 
 	void sampleRateChange() override;

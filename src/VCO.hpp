@@ -47,11 +47,21 @@ struct VCO : VCOBase {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam<VCOFrequencyParamQuantity>(FREQUENCY_PARAM, -3.0f, 6.0f, 0.0f, "Frequency", " Hz");
 		configParam(FINE_PARAM, -1.0f, 1.0f, 0.0f, "Fine tune", " cents", 0.0f, 100.0f);
-		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow mode");
+		configButton(SLOW_PARAM, "Slow mode");
 		configParam(PW_PARAM, -1.0f, 1.0f, 0.0f, "Pulse width", "%", 0.0f, 100.0f*0.5f*(1.0f - 2.0f * SquareOscillator::minPulseWidth), 50.0f);
 		configParam(FM_PARAM, 0.0f, 1.0f, 0.0f, "FM depth", "%", 0.0f, 100.0f);
-		configParam(FM_TYPE_PARAM, 0.0f, 1.0f, 1.0f, "FM mode");
-		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear Freq");
+		configSwitch(FM_TYPE_PARAM, 0.0f, 1.0f, 1.0f, "FM mode", {"Linear FM", "Exponential FM"});
+		configButton(LINEAR_PARAM, "Linear frequency");
+
+		configInput(PITCH_INPUT, "Pitch (1V/octave)");
+		configInput(SYNC_INPUT, "Sync");
+		configInput(PW_INPUT, "Pulse width CV");
+		configInput(FM_INPUT, "Frequency modulation");
+
+		configOutput(SQUARE_OUTPUT, "Square signal");
+		configOutput(SAW_OUTPUT, "Saw signal");
+		configOutput(TRIANGLE_OUTPUT, "Triangle signal");
+		configOutput(SINE_OUTPUT, "Sine signal");
 	}
 
 	bool active() override;

@@ -9,13 +9,13 @@ void Analyzer::sampleRateChange() {
 	_sampleRate = APP->engine->getSampleRate();
 }
 
-json_t* Analyzer::toJson(json_t* root) {
+json_t* Analyzer::saveToJson(json_t* root) {
 	frequencyPlotToJson(root);
 	amplitudePlotToJson(root);
 	return root;
 }
 
-void Analyzer::fromJson(json_t* root) {
+void Analyzer::loadFromJson(json_t* root) {
 	frequencyPlotFromJson(root);
 	amplitudePlotFromJson(root);
 }
@@ -131,12 +131,12 @@ struct AnalyzerWidget : AnalyzerBaseWidget {
 		addOutput(createOutput<Port24>(signalcOutputPosition, module, Analyzer::SIGNALC_OUTPUT));
 		addOutput(createOutput<Port24>(signaldOutputPosition, module, Analyzer::SIGNALD_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(qualityUltraLightPosition, module, Analyzer::QUALITY_ULTRA_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(qualityHighLightPosition, module, Analyzer::QUALITY_HIGH_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(qualityGoodLightPosition, module, Analyzer::QUALITY_GOOD_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(windowNoneLightPosition, module, Analyzer::WINDOW_NONE_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(windowHammingLightPosition, module, Analyzer::WINDOW_HAMMING_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(windowKaiserLightPosition, module, Analyzer::WINDOW_KAISER_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(qualityUltraLightPosition, module, Analyzer::QUALITY_ULTRA_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(qualityHighLightPosition, module, Analyzer::QUALITY_HIGH_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(qualityGoodLightPosition, module, Analyzer::QUALITY_GOOD_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(windowNoneLightPosition, module, Analyzer::WINDOW_NONE_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(windowHammingLightPosition, module, Analyzer::WINDOW_HAMMING_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(windowKaiserLightPosition, module, Analyzer::WINDOW_KAISER_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

@@ -49,12 +49,12 @@ void MixerChannel::next(float sample, bool solo, int c, bool linearCV) {
 
 #define LINEAR_CV "linear_cv"
 
-json_t* LinearCVMixerModule::toJson(json_t* root) {
+json_t* LinearCVMixerModule::saveToJson(json_t* root) {
 	json_object_set_new(root, LINEAR_CV, json_boolean(_linearCV));
 	return root;
 }
 
-void LinearCVMixerModule::fromJson(json_t* root) {
+void LinearCVMixerModule::loadFromJson(json_t* root) {
 	json_t* l = json_object_get(root, LINEAR_CV);
 	if (l) {
 		_linearCV = json_boolean_value(l);
@@ -71,14 +71,14 @@ void LinearCVMixerWidget::contextMenu(Menu* menu) {
 
 #define DIM_DB "dim_decibels"
 
-json_t* DimmableMixerModule::toJson(json_t* root) {
-	root = LinearCVMixerModule::toJson(root);
+json_t* DimmableMixerModule::saveToJson(json_t* root) {
+	root = LinearCVMixerModule::saveToJson(root);
 	json_object_set_new(root, DIM_DB, json_real(_dimDb));
 	return root;
 }
 
-void DimmableMixerModule::fromJson(json_t* root) {
-	LinearCVMixerModule::fromJson(root);
+void DimmableMixerModule::loadFromJson(json_t* root) {
+	LinearCVMixerModule::loadFromJson(root);
 	json_t* o = json_object_get(root, DIM_DB);
 	if (o) {
 		_dimDb = json_real_value(o);
@@ -99,12 +99,6 @@ void DimmableMixerWidget::contextMenu(Menu* menu) {
 }
 
 
-void MuteButton::randomize() {
-	if (_randomize) {
-		ToggleButton::randomize();
-	}
-}
-
 void MuteButton::onButton(const event::Button& e) {
 	if (!(e.action == GLFW_PRESS && (e.mods & RACK_MOD_MASK) == 0)) {
 		return;
@@ -116,6 +110,20 @@ void MuteButton::onButton(const event::Button& e) {
 	else {
 		ToggleButton::onButton(e);
 	}
+}
+
+bool MuteButton::isLit() {
+	return module && !module->isBypassed() && getParamQuantity() && getParamQuantity()->getValue() > 0.0f;
+}
+
+void MuteButton::draw(const DrawArgs& args) {
+	if (!isLit()) {
+		ToggleButton::draw(args);
+	}
+}
+
+void MuteButton::drawLit(const DrawArgs& args) {
+	ToggleButton::draw(args);
 }
 
 
@@ -139,33 +147,21 @@ SoloMuteButton::SoloMuteButton() {
 	shadow->box.pos = Vec(0.0, 1.0);
 }
 
-void SoloMuteButton::reset() {
-	if (paramQuantity) {
-		paramQuantity->setValue(0.0f);
-	}
-}
-
-void SoloMuteButton::randomize() {
-	if (paramQuantity) {
-		paramQuantity->setValue(random::uniform() > 0.5f ? 1.0f : 0.0f);
-	}
-}
-
 void SoloMuteButton::onButton(const event::Button& e) {
-	if (!paramQuantity || !(e.action == GLFW_PRESS && (e.mods & RACK_MOD_MASK) == 0)) {
+	if (!getParamQuantity() || !(e.action == GLFW_PRESS && (e.mods & RACK_MOD_MASK) == 0)) {
 		ParamWidget::onButton(e);
 		return;
 	}
 
-	float value = paramQuantity->getValue();
+	float value = getParamQuantity()->getValue();
 	if (value >= 2.0f) {
-		paramQuantity->setValue(value - 2.0f);
+		getParamQuantity()->setValue(value - 2.0f);
 	}
 	else if (e.button == GLFW_MOUSE_BUTTON_RIGHT) {
-		paramQuantity->setValue(value + 2.0f);
+		getParamQuantity()->setValue(value + 2.0f);
 	}
 	else {
-		paramQuantity->setValue(value > 0.5f ? 0.0f : 1.0f);
+		getParamQuantity()->setValue(value > 0.5f ? 0.0f : 1.0f);
 	}
 
 	if (e.button == GLFW_MOUSE_BUTTON_RIGHT) {
@@ -177,10 +173,36 @@ void SoloMuteButton::onButton(const event::Button& e) {
 
 void SoloMuteButton::onChange(const event::Change& e) {
 	assert(_frames.size() == 4);
-	if (paramQuantity) {
-		float value = paramQuantity->getValue();
+	if (getParamQuantity()) {
+		float value = getParamQuantity()->getValue();
 		assert(value >= 0.0f && value <= 3.0f);
 		_svgWidget->setSvg(_frames[(int)value]);
 	}
 	ParamWidget::onChange(e);
+}
+
+bool SoloMuteButton::isLit() {
+	return module && !module->isBypassed() && getParamQuantity() && getParamQuantity()->getValue() > 0.0f;
+}
+
+void SoloMuteButton::draw(const DrawArgs& args) {
+	if (!isLit() || !getParamQuantity() || getParamQuantity()->getValue() < 1.0f) {
+		ParamWidget::draw(args);
+	}
+}
+
+void SoloMuteButton::drawLit(const DrawArgs& args) {
+	if (getParamQuantity() && getParamQuantity()->getValue() >= 1.0f) {
+		ParamWidget::draw(args);
+	}
+}
+
+
+std::string DimSwitchQuantity::getDisplayValueString() {
+	if (!module || getValue() < 1.0f) {
+		return SwitchQuantity::getDisplayValueString();
+	}
+	auto* m = static_cast<DimmableMixerModule*>(module);
+	assert(labels.size() == 2);
+	return format("%s (-%ddB)", labels[1].c_str(), (int)m->_dimDb);
 }

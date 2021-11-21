@@ -167,6 +167,24 @@ struct Matrix88 : Matrix88Base {
 		configParam(MIX78_PARAM, -1.0f, 1.0f, 0.0f, "Mix 7H", "%", 0.0f, 100.0f);
 		configParam(MIX88_PARAM, -1.0f, 1.0f, 0.0f, "Mix 8H", "%", 0.0f, 100.0f);
 
+		configInput(IN1_INPUT, "Signal 1");
+		configInput(IN2_INPUT, "Signal 2");
+		configInput(IN3_INPUT, "Signal 3");
+		configInput(IN4_INPUT, "Signal 4");
+		configInput(IN5_INPUT, "Signal 5");
+		configInput(IN6_INPUT, "Signal 6");
+		configInput(IN7_INPUT, "Signal 7");
+		configInput(IN8_INPUT, "Signal 8");
+
+		configOutput(OUT1_OUTPUT, "Signal A");
+		configOutput(OUT2_OUTPUT, "Signal B");
+		configOutput(OUT3_OUTPUT, "Signal C");
+		configOutput(OUT4_OUTPUT, "Signal D");
+		configOutput(OUT5_OUTPUT, "Signal E");
+		configOutput(OUT6_OUTPUT, "Signal F");
+		configOutput(OUT7_OUTPUT, "Signal G");
+		configOutput(OUT8_OUTPUT, "Signal H");
+
 		setLocalElements({new Matrix88Element(NULL, NULL, NULL)});
 		registerBase();
 		setExpanderModelPredicate([](Model* m) { return m == modelMatrix88Cv || m == modelMatrix88M; });

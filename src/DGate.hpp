@@ -57,8 +57,13 @@ struct DGate : TriggerOnLoadModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam<EnvelopeSegmentParamQuantity>(DELAY_PARAM, 0.0f, 1.0f, 0.0f, "Delay", " s");
 		configParam<EnvelopeSegmentParamQuantity>(GATE_PARAM, 0.0f, 1.0f, 0.31623f, "Gate", " s");
-		configParam(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "Loop");
-		configParam(TRIGGER_PARAM, 0.0f, 1.0f, 0.0f, "Trigger");
+		configSwitch(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "Loop", {"Loop", "Stop"});
+		configButton(TRIGGER_PARAM, "Trigger");
+
+		configInput(TRIGGER_INPUT, "Trigger");
+
+		configOutput(GATE_OUTPUT, "Gate");
+		configOutput(END_OUTPUT, "End-of-cycle trigger");
 	}
 
 	void reset() override;

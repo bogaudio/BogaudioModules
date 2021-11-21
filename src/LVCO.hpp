@@ -62,13 +62,19 @@ struct LVCO : VCOBase {
 	{
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam<VCOFrequencyParamQuantity>(FREQUENCY_PARAM, -3.0f, 6.0f, 0.0f, "Frequency", " Hz");
-		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow mode");
-		configParam(WAVE_PARAM, 0.0f, 5.0f, 0.0f, "Waveform");
+		configButton(SLOW_PARAM, "Slow mode");
+		configSwitch(WAVE_PARAM, 0.0f, 5.0f, 0.0f, "Waveform", {"Sine", "Triangle", "Saw", "Square", "25% Pulse", "10% Pulse"});
 		configParam(FM_DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "FM depth", "%", 0.0f, 100.0f);
+
+		configInput(PITCH_INPUT, "Pitch (1V/octave)");
+		configInput(FM_INPUT, "Frequency modulation");
+		configInput(SYNC_INPUT, "Sync");
+
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	bool active() override;
 	void modulateAlways() override;
 	void modulate() override;

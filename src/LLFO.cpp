@@ -18,7 +18,7 @@ void LLFO::sampleRateChange() {
 	}
 }
 
-json_t* LLFO::toJson(json_t* root) {
+json_t* LLFO::saveToJson(json_t* root) {
 	json_object_set_new(root, OUTPUT_SAMPLING, json_real(_sample));
 	json_object_set_new(root, PULSE_WIDTH, json_real(_pulseWidth));
 	json_object_set_new(root, SMOOTHING, json_real(_smooth));
@@ -26,7 +26,7 @@ json_t* LLFO::toJson(json_t* root) {
 	return root;
 }
 
-void LLFO::fromJson(json_t* root) {
+void LLFO::loadFromJson(json_t* root) {
 	json_t* os = json_object_get(root, OUTPUT_SAMPLING);
 	if (os) {
 		_sample = json_real_value(os);
@@ -333,13 +333,13 @@ struct LLFOWidget : BGModuleWidget {
 
 		addOutput(createOutput<Port24>(outOutputPosition, module, LLFO::OUT_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(sineLightPosition, module, LLFO::SINE_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(rampUpLightPosition, module, LLFO::RAMP_UP_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(squareLightPosition, module, LLFO::SQUARE_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(steppedLightPosition, module, LLFO::STEPPED_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(triangleLightPosition, module, LLFO::TRIANGLE_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(rampDownLightPosition, module, LLFO::RAMP_DOWN_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(pulseLightPosition, module, LLFO::PULSE_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(sineLightPosition, module, LLFO::SINE_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(rampUpLightPosition, module, LLFO::RAMP_UP_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(squareLightPosition, module, LLFO::SQUARE_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(steppedLightPosition, module, LLFO::STEPPED_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(triangleLightPosition, module, LLFO::TRIANGLE_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(rampDownLightPosition, module, LLFO::RAMP_DOWN_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(pulseLightPosition, module, LLFO::PULSE_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

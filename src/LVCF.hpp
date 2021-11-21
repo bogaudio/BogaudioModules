@@ -73,11 +73,17 @@ struct LVCF : BGModule {
 		configParam<ScaledSquaringParamQuantity<(int)maxFrequency>>(FREQUENCY_PARAM, 0.0f, 1.0f, 0.22361f, "Center/cutoff frequency", " HZ");
 		configParam(FREQUENCY_CV_PARAM, -1.0f, 1.0f, 0.0f, "Frequency CV attenuation", "%", 0.0f, 100.0f);
 		configParam(Q_PARAM, 0.0f, 1.0f, 0.0f, "Resonance / bandwidth", "%", 0.0f, 100.0f);
-		configParam(MODE_PARAM, 0.0f, 3.0f, 0.0f, "Mode");
+		configSwitch(MODE_PARAM, 0.0f, 3.0f, 0.0f, "Mode", {"Lowpass", "Highpass", "Bandpass", "Band reject"});
+		configBypass(IN_INPUT, OUT_OUTPUT);
+
+		configInput(IN_INPUT, "Signal");
+		configInput(FREQUENCY_CV_INPUT, "Cutoff CV");
+
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	void sampleRateChange() override;
 	bool active() override;
 	int channels() override;

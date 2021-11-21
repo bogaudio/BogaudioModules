@@ -101,8 +101,9 @@ struct FourFO : LFOBase {
 
 	FourFO() : LFOBase(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {
 		configParam<LFOFrequencyParamQuantity>(FREQUENCY_PARAM, -5.0f, 8.0f, 0.0, "Frequency", " Hz");
-		configParam(WAVE_PARAM, 1.0, 6.0, 3.0, "Waveform");
-		configParam(SLOW_PARAM, 0.0, 1.0, 0.0, "Slow");
+		configSwitch(WAVE_PARAM, 1.0, 6.0, 3.0, "Waveform", {"Ramp up", "Ramp down", "Sine", "Triangle", "Square", "Stepped"});
+		paramQuantities[WAVE_PARAM]->snapEnabled = true;
+		configButton(SLOW_PARAM, "Slow");
 		configParam(SAMPLE_PWM_PARAM, -1.0, 1.0, 0.0, "Width", "%", 0.0f, 100.0f);
 		configParam(SMOOTH_PARAM, 0.0f, 1.0f, 0.0f, "Smoothing", "%", 0.0f, 100.0f);
 		configParam(OFFSET_PARAM, -1.0, 1.0, 0.0, "Offset", " V", 0.0f, 5.0f);
@@ -111,6 +112,22 @@ struct FourFO : LFOBase {
 		configParam(PHASE2_PARAM, -1.0, 1.0, 0.0, "Phase 180", "º", 0.0f, 180.0f);
 		configParam(PHASE1_PARAM, -1.0, 1.0, 0.0, "Phase 90", "º", 0.0f, 180.0f);
 		configParam(PHASE0_PARAM, -1.0, 1.0, 0.0f, "Phase 0", "º", 0.0f, 180.0f);
+
+		configInput(SAMPLE_PWM_INPUT, "Sample/PWM CV");
+		configInput(SMOOTH_INPUT, "Smoothing CV");
+		configInput(OFFSET_INPUT, "Offset CV");
+		configInput(SCALE_INPUT, "Scale CV");
+		configInput(PITCH_INPUT, "Pitch (1V/octave)");
+		configInput(RESET_INPUT, "Reset");
+		configInput(PHASE0_INPUT, "Phase 0 CV");
+		configInput(PHASE1_INPUT, "Phase 1 CV");
+		configInput(PHASE2_INPUT, "Phase 2 CV");
+		configInput(PHASE3_INPUT, "Phase 3 CV");
+
+		configOutput(PHASE0_OUTPUT, "Phase 0");
+		configOutput(PHASE1_OUTPUT, "Phase 1");
+		configOutput(PHASE2_OUTPUT, "Phase 2");
+		configOutput(PHASE3_OUTPUT, "Phase 3");
 	}
 
 	void reset() override;

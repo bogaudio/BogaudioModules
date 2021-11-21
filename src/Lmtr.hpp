@@ -68,12 +68,22 @@ struct Lmtr : BGModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam<ThresholdParamQuantity>(THRESHOLD_PARAM, 0.0f, 1.0f, 0.8f, "Threshold", " dB");
 		configParam(OUTPUT_GAIN_PARAM, 0.0f, 1.0f, 0.0f, "Output gain", " dB", 0.0f, 24.0f);
-		configParam(KNEE_PARAM, 0.0f, 1.0f, 0.0f, "Knee");
+		configSwitch(KNEE_PARAM, 0.0f, 1.0f, 1.0f, "Knee", {"Hard", "Soft"});
+		configBypass(LEFT_INPUT, LEFT_OUTPUT);
+		configBypass(RIGHT_INPUT, RIGHT_OUTPUT);
+
+		configInput(LEFT_INPUT, "Left signal");
+		configInput(RIGHT_INPUT, "Right signal");
+		configInput(THRESHOLD_INPUT, "Threshold CV");
+		configInput(OUTPUT_GAIN_INPUT, "Output gain CV");
+
+		configOutput(LEFT_OUTPUT, "Left signal");
+		configOutput(RIGHT_OUTPUT, "Right signal");
 	}
 
 	void sampleRateChange() override;
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	bool active() override;
 	int channels() override;
 	void addChannel(int c) override;

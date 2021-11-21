@@ -88,13 +88,25 @@ struct Walk2 : BGModule {
 		configParam(OFFSET_Y_PARAM, -1.0f, 1.0f, 0.0f, "Offset Y", " V", 0.0f, 5.0f);
 		configParam(SCALE_X_PARAM, 0.0f, 1.0f, 1.0f, "Scale X", "%", 0.0f, 100.0f);
 		configParam(SCALE_Y_PARAM, 0.0f, 1.0f, 1.0f, "Scale Y", "%", 0.0f, 100.0f);
-		configParam(JUMP_MODE_PARAM, 0.0f, 2.0f, 0.0f, "TRIG action");
+		configSwitch(JUMP_MODE_PARAM, 0.0f, 2.0f, 0.0f, "TRIG action", {"Jump", "Sample & hold", "Track & hold"});
+
+		configInput(OFFSET_X_INPUT, "Offset X CV");
+		configInput(SCALE_X_INPUT, "Scale X CV");
+		configInput(RATE_X_INPUT, "Rate X CV");
+		configInput(OFFSET_Y_INPUT, "Offset Y CV");
+		configInput(SCALE_Y_INPUT, "Scale Y CV");
+		configInput(RATE_Y_INPUT, "Rate Y CV");
+		configInput(JUMP_INPUT, "Trigger");
+
+		configOutput(OUT_X_OUTPUT, "X signal");
+		configOutput(OUT_Y_OUTPUT, "Y signal");
+		configOutput(DISTANCE_OUTPUT, "X/Y distance signal");
 	}
 
 	void reset() override;
 	void sampleRateChange() override;
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	void modulate() override;
 	void processAlways(const ProcessArgs& args) override;
 	void processAll(const ProcessArgs& args) override;

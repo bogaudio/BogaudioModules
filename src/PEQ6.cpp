@@ -108,8 +108,9 @@ void PEQ6::postProcessAlways(const ProcessArgs& args) {
 		_rms[i] = _rmsSums[i] * _inverseChannels;
 	}
 
-	lights[FMOD_RELATIVE_LIGHT].value = !_fullFrequencyMode;
-	lights[FMOD_FULL_LIGHT].value = _fullFrequencyMode;
+	bool ffm = params[FMOD_PARAM].getValue() > 0.5f;
+	lights[FMOD_RELATIVE_LIGHT].value = !ffm;
+	lights[FMOD_FULL_LIGHT].value = ffm;
 }
 
 struct PEQ6Widget : BandExcludeModuleWidget {
@@ -222,8 +223,8 @@ struct PEQ6Widget : BandExcludeModuleWidget {
 		addOutput(createOutput<Port24>(out5OutputPosition, module, PEQ6::OUT5_OUTPUT));
 		addOutput(createOutput<Port24>(out6OutputPosition, module, PEQ6::OUT6_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(fmodFullLightPosition, module, PEQ6::FMOD_FULL_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(fmodRelativeLightPosition, module, PEQ6::FMOD_RELATIVE_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(fmodFullLightPosition, module, PEQ6::FMOD_FULL_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(fmodRelativeLightPosition, module, PEQ6::FMOD_RELATIVE_LIGHT));
 	}
 
 	void addSlider(Vec position, PEQ6* module, int id, float* rms) {

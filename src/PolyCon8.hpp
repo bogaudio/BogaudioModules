@@ -52,6 +52,8 @@ struct PolyCon8 : OutputRangeModule<PolyChannelsModule> {
 		configParam<OutputRangeParamQuantity>(CHANNEL6_PARAM, -1.0f, 1.0f, 0.0f, "Channel 6", " V");
 		configParam<OutputRangeParamQuantity>(CHANNEL7_PARAM, -1.0f, 1.0f, 0.0f, "Channel 7", " V");
 		configParam<OutputRangeParamQuantity>(CHANNEL8_PARAM, -1.0f, 1.0f, 0.0f, "Channel 8", " V");
+
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
 	void processAll(const ProcessArgs& args) override;

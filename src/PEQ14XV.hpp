@@ -63,6 +63,15 @@ struct PEQ14XV : ExpanderModule<PEQ14ExpanderMessage, ExpandableModule<PEQ14Expa
 		configParam(BAND1_ENABLE_PARAM, 0.0f, 1.0f, 1.0f, "Band 1 enable");
 		configParam(BAND14_ENABLE_PARAM, 0.0f, 1.0f, 1.0f, "Band 14 enable");
 
+		configInput(EF_DAMP_INPUT, "Envelope follower damp CV");
+		configInput(EF_GAIN_INPUT, "Envelope follower gain CV");
+		configInput(TRANSPOSE_INPUT, "Transpose (1V/octave)");
+		configInput(IN_INPUT, "Signal");
+
+		configOutput(ODDS_OUTPUT, "Odd channels mix");
+		configOutput(OUT_OUTPUT, "All channels mix");
+		configOutput(EVENS_OUTPUT, "Even channels mix");
+
 		setBaseModelPredicate([](Model* m) { return m == modelPEQ14 || m == modelPEQ14XF || m == modelPEQ14XR || m == modelPEQ14XV; });
 		setExpanderModelPredicate([](Model* m) { return m == modelPEQ14XF || m == modelPEQ14XR || m == modelPEQ14XV; });
 	}

@@ -104,14 +104,14 @@ struct AddrSeqWidget : AddressableSequenceModuleWidget {
 
 		addOutput(createOutput<Port24>(outOutputPosition, module, AddrSeq::OUT_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(out1LightPosition, module, AddrSeq::OUT1_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(out2LightPosition, module, AddrSeq::OUT2_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(out3LightPosition, module, AddrSeq::OUT3_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(out4LightPosition, module, AddrSeq::OUT4_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(out5LightPosition, module, AddrSeq::OUT5_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(out6LightPosition, module, AddrSeq::OUT6_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(out7LightPosition, module, AddrSeq::OUT7_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(out8LightPosition, module, AddrSeq::OUT8_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(out1LightPosition, module, AddrSeq::OUT1_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(out2LightPosition, module, AddrSeq::OUT2_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(out3LightPosition, module, AddrSeq::OUT3_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(out4LightPosition, module, AddrSeq::OUT4_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(out5LightPosition, module, AddrSeq::OUT5_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(out6LightPosition, module, AddrSeq::OUT6_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(out7LightPosition, module, AddrSeq::OUT7_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(out8LightPosition, module, AddrSeq::OUT8_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

@@ -56,6 +56,11 @@ struct PEQ14XR : ExpanderModule<PEQ14ExpanderMessage, ExpandableModule<PEQ14Expa
 		configParam(DAMP_PARAM, 0.0f, 1.0f, 0.3f, "Envelope follower smoothing", "%", 0.0f, 100.0f);
 		configParam<EFGainParamQuantity>(GAIN_PARAM, -1.0f, 1.0f, 0.0f, "Envelope follower gain", " dB");
 
+		configInput(DAMP_INPUT, "Damp CV");
+		configInput(GAIN_INPUT, "Gain CV");
+
+		configOutput(OUT_OUTPUT, "Signal");
+
 		setBaseModelPredicate([](Model* m) { return m == modelPEQ14 || m == modelPEQ14XF || m == modelPEQ14XR || m == modelPEQ14XV; });
 		setExpanderModelPredicate([](Model* m) { return m == modelPEQ14XF || m == modelPEQ14XR || m == modelPEQ14XV; });
 	}

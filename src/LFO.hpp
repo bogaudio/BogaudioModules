@@ -86,18 +86,32 @@ struct LFO : LFOBase {
 
 	LFO() : LFOBase(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {
 		configParam<LFOFrequencyParamQuantity>(FREQUENCY_PARAM, -5.0f, 8.0f, 0.0f, "Frequency", " Hz");
-		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow");
+		configButton(SLOW_PARAM, "Slow");
 		configParam(SAMPLE_PARAM, 0.0f, 1.0f, 0.0f, "Output sampling", "%", 0.0f, 100.0f);
 		configParam(PW_PARAM, -1.0f, 1.0f, 0.0f, "Pulse width", "%", 0.0f, 100.0f*0.5f*(1.0f - 2.0f * SquareOscillator::minPulseWidth), 50.0f);
 		configParam(SMOOTH_PARAM, 0.0f, 1.0f, 0.0f, "Smoothing", "%", 0.0f, 100.0f);
 		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "Offset", " V", 0.0f, 5.0f);
 		configParam(SCALE_PARAM, 0.0f, 1.0f, 1.0f, "Scale", "%", 0.0f, 100.0f);
+
+		configInput(SAMPLE_INPUT, "Sample CV");
+		configInput(PW_INPUT, "Pulse width CV");
+		configInput(OFFSET_INPUT, "Offset CV");
+		configInput(SCALE_INPUT, "Scale CV");
+		configInput(PITCH_INPUT, "Pitch (1V/octave)");
+		configInput(RESET_INPUT, "Reset");
+
+		configOutput(RAMP_UP_OUTPUT, "Ramp up");
+		configOutput(RAMP_DOWN_OUTPUT, "Ramp down");
+		configOutput(SQUARE_OUTPUT, "Square");
+		configOutput(TRIANGLE_OUTPUT, "Triangle");
+		configOutput(SINE_OUTPUT, "Sine");
+		configOutput(STEPPED_OUTPUT, "Stepped");
 	}
 
 	void reset() override;
 	void sampleRateChange() override;
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	bool active() override;
 	int channels() override;
 	void addChannel(int c) override;

@@ -39,13 +39,19 @@ struct Pulse : VCOBase {
 	{
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam<VCOFrequencyParamQuantity>(FREQUENCY_PARAM, -3.0f, 6.0f, 0.0f, "Frequency", " Hz");
-		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow mode");
+		configButton(SLOW_PARAM, "Slow mode");
 		configParam(PW_PARAM, -1.0f, 1.0f, 0.0f, "Pulse width", "%", 0.0f, 100.0f*0.5f*(1.0f - 2.0f * SquareOscillator::minPulseWidth), 50.0f);
 		configParam(PWM_PARAM, -1.0f, 1.0f, 0.0f, "Pulse width CV amount");
+
+		configInput(PITCH_INPUT, "Pitch (1V/octave)");
+		configInput(PWM_INPUT, "Pulse width CV");
+		configInput(SYNC_INPUT, "Sync");
+
+		configOutput(OUT_OUTPUT, "Pulse");
 	}
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	bool active() override;
 	void addChannel(int c) override;
 	void modulate() override;

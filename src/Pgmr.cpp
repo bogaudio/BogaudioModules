@@ -19,14 +19,14 @@ void Pgmr::sampleRateChange() {
 	_sampleTime = APP->engine->getSampleTime();
 }
 
-json_t* Pgmr::toJson(json_t* root) {
-	root = OutputRangeAddressableSequenceModule::toJson(root);
+json_t* Pgmr::saveToJson(json_t* root) {
+	root = OutputRangeAddressableSequenceModule::saveToJson(root);
 	json_object_set_new(root, SELECT_TRIGGERS, json_boolean(_selectTriggers));
 	return root;
 }
 
-void Pgmr::fromJson(json_t* root) {
-	OutputRangeAddressableSequenceModule::fromJson(root);
+void Pgmr::loadFromJson(json_t* root) {
+	OutputRangeAddressableSequenceModule::loadFromJson(root);
 	json_t* st = json_object_get(root, SELECT_TRIGGERS);
 	if (st) {
 		_selectTriggers = json_is_true(st);
@@ -222,10 +222,10 @@ struct PgmrWidget : AddressableSequenceBaseModuleWidget {
 		addOutput(createOutput<Port24>(select3OutputPosition, module, Pgmr::SELECT3_OUTPUT));
 		addOutput(createOutput<Port24>(select4OutputPosition, module, Pgmr::SELECT4_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(select1LightPosition, module, Pgmr::SELECT1_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(select2LightPosition, module, Pgmr::SELECT2_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(select3LightPosition, module, Pgmr::SELECT3_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(select4LightPosition, module, Pgmr::SELECT4_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(select1LightPosition, module, Pgmr::SELECT1_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(select2LightPosition, module, Pgmr::SELECT2_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(select3LightPosition, module, Pgmr::SELECT3_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(select4LightPosition, module, Pgmr::SELECT4_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

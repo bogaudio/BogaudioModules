@@ -29,12 +29,12 @@ void AD::sampleRateChange() {
 	}
 }
 
-json_t* AD::toJson(json_t* root) {
+json_t* AD::saveToJson(json_t* root) {
 	json_object_set_new(root, INVERT, json_real(_invert));
 	return root;
 }
 
-void AD::fromJson(json_t* root) {
+void AD::loadFromJson(json_t* root) {
 	json_t* i = json_object_get(root, INVERT);
 	if (i) {
 		_invert = json_real_value(i);
@@ -164,8 +164,8 @@ struct ADWidget : BGModuleWidget {
 		addOutput(createOutput<Port24>(envOutputPosition, module, AD::ENV_OUTPUT));
 		addOutput(createOutput<Port24>(eocOutputPosition, module, AD::EOC_OUTPUT));
 
-		addChild(createLight<TinyLight<GreenLight>>(attackLightPosition, module, AD::ATTACK_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(decayLightPosition, module, AD::DECAY_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(attackLightPosition, module, AD::ATTACK_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(decayLightPosition, module, AD::DECAY_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

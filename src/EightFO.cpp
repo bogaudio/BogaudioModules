@@ -269,7 +269,6 @@ struct EightFOWidget : BGModuleWidget {
 		{
 			auto w = createParam<Knob16>(waveParamPosition, module, EightFO::WAVE_PARAM);
 			auto k = dynamic_cast<SvgKnob*>(w);
-			k->snap = true;
 			k->minAngle = 0.0;
 			k->maxAngle = M_PI;
 			k->speed = 3.0;

@@ -42,7 +42,7 @@ float LVCF::Engine::next(float sample) {
 	return _finalHP.next(_filter.next(sample));
 }
 
-json_t* LVCF::toJson(json_t* root) {
+json_t* LVCF::saveToJson(json_t* root) {
 	json_object_set_new(root, POLES_KEY, json_integer(_polesSetting));
 
 	switch (_bandwidthMode) {
@@ -60,7 +60,7 @@ json_t* LVCF::toJson(json_t* root) {
 	return root;
 }
 
-void LVCF::fromJson(json_t* root) {
+void LVCF::loadFromJson(json_t* root) {
 	json_t* p = json_object_get(root, POLES_KEY);
 	if (p) {
 		_polesSetting = clamp(json_integer_value(p), 1, 12);
@@ -192,10 +192,10 @@ struct LVCFWidget : BGModuleWidget {
 
 		addOutput(createOutput<Port24>(outOutputPosition, module, LVCF::OUT_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(lowpassLightPosition, module, LVCF::LOWPASS_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(bandpassLightPosition, module, LVCF::BANDPASS_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(highpassLightPosition, module, LVCF::HIGHPASS_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(bandrejectLightPosition, module, LVCF::BANDREJECT_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(lowpassLightPosition, module, LVCF::LOWPASS_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(bandpassLightPosition, module, LVCF::BANDPASS_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(highpassLightPosition, module, LVCF::HIGHPASS_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(bandrejectLightPosition, module, LVCF::BANDREJECT_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

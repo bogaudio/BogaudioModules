@@ -69,15 +69,22 @@ struct AD : BGModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam<EnvelopeSegmentParamQuantity>(ATTACK_PARAM, 0.0f, 1.0f, 0.141421f, "Attack", " s");
 		configParam<EnvelopeSegmentParamQuantity>(DECAY_PARAM, 0.0f, 1.0f, 0.31623f, "Decay", " s");
-		configParam(LOOP_PARAM, 0.0f, 1.0f, 0.0f, "Loop");
-		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear");
-		configParam(RETRIGGER_PARAM, 0.0f, 1.0f, 1.0f, "Retrigger");
+		configSwitch(LOOP_PARAM, 0.0f, 1.0f, 0.0f, "Loop", {"Disabled (stop)", "Enabled"});
+		configSwitch(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear", {"Disabled (logarithmic)", "Enabled"});
+		configSwitch(RETRIGGER_PARAM, 0.0f, 1.0f, 1.0f, "Retrigger", {"Disabled (finish cycle)", "Enabled"});
+
+		configInput(TRIGGER_INPUT, "Trigger");
+		configInput(ATTACK_INPUT, "Attack CV");
+		configInput(DECAY_INPUT, "Decay CV");
+
+		configOutput(ENV_OUTPUT, "Envelope");
+		configOutput(EOC_OUTPUT, "End-of-cycle trigger");
 	}
 
 	void reset() override;
 	void sampleRateChange() override;
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	bool active() override;
 	int channels() override;
 	void addChannel(int c) override;

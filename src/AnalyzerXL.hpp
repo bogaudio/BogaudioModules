@@ -34,13 +34,22 @@ struct AnalyzerXL : AnalyzerBase {
 	AnalyzerCore::Window _window = AnalyzerCore::WINDOW_KAISER;
 
 	AnalyzerXL() : AnalyzerBase(8, NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {
+		configInput(SIGNALA_INPUT, "Signal A");
+		configInput(SIGNALB_INPUT, "Signal B");
+		configInput(SIGNALC_INPUT, "Signal C");
+		configInput(SIGNALD_INPUT, "Signal D");
+		configInput(SIGNALE_INPUT, "Signal E");
+		configInput(SIGNALF_INPUT, "Signal F");
+		configInput(SIGNALG_INPUT, "Signal G");
+		configInput(SIGNALH_INPUT, "Signal H");
+
 		_skinnable = false;
 	}
 
 	void reset() override;
 	void sampleRateChange() override;
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	void modulate() override;
 	void processAll(const ProcessArgs& args) override;
 };

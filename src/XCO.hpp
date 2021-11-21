@@ -134,9 +134,9 @@ struct XCO : BGModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam<XCOFrequencyParamQuantity>(FREQUENCY_PARAM, -3.0f, 6.0f, 0.0f, "Frequency", " Hz");
 		configParam(FINE_PARAM, -1.0f, 1.0f, 0.0f, "Fine tune", " cents", 0.0f, 100.0f);
-		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow mode");
+		configButton(SLOW_PARAM, "Slow mode");
 		configParam(FM_DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "FM depth", "%", 0.0f, 100.0f);
-		configParam(FM_TYPE_PARAM, 0.0f, 1.0f, 1.0f, "FM mode");
+		configSwitch(FM_TYPE_PARAM, 0.0f, 1.0f, 1.0f, "FM mode", {"Linear FM", "Exponential FM"});
 		configParam(SQUARE_PW_PARAM, -0.97f, 0.97f, 0.0f, "Square wave pulse width", "%", 0.0f, 100.0f);
 		configParam(SQUARE_PHASE_PARAM, -1.0f, 1.0f, 0.0f, "Square wave phase", "º", 0.0f, 180.0f);
 		configParam(SQUARE_MIX_PARAM, 0.0f, 1.0f, 1.0f, "Square wave mix", "%", 0.0f, 100.0f);
@@ -149,12 +149,35 @@ struct XCO : BGModule {
 		configParam(SINE_FEEDBACK_PARAM, 0.0f, 1.0f, 0.0f, "Sine wave feedback", "%", 0.0f, 100.0f);
 		configParam(SINE_PHASE_PARAM, -1.0f, 1.0f, 0.0f, "Sine wave phase", "º", 0.0f, 180.0f);
 		configParam(SINE_MIX_PARAM, 0.0f, 1.0f, 1.0f, "Sine wave mix", "%", 0.0f, 100.0f);
+
+		configInput(FM_INPUT, "Frequency modulation");
+		configInput(FM_DEPTH_INPUT, "FM depth CV");
+		configInput(SQUARE_PW_INPUT, "Square pulse width CV");
+		configInput(SQUARE_PHASE_INPUT, "Square phase CV");
+		configInput(SQUARE_MIX_INPUT, "Square mix CV");
+		configInput(SAW_SATURATION_INPUT, "Saw saturation CV");
+		configInput(SAW_PHASE_INPUT, "Saw phase CV");
+		configInput(SAW_MIX_INPUT, "Saw mix CV");
+		configInput(TRIANGLE_SAMPLE_INPUT, "Triangle sample CV");
+		configInput(TRIANGLE_PHASE_INPUT, "Triangle phase CV");
+		configInput(TRIANGLE_MIX_INPUT, "Triangle mix CV");
+		configInput(SINE_FEEDBACK_INPUT, "Sine feedback CV");
+		configInput(SINE_PHASE_INPUT, "Sine phase CV");
+		configInput(SINE_MIX_INPUT, "Sine mix CV");
+		configInput(PITCH_INPUT, "Pitch (1V/octave)");
+		configInput(SYNC_INPUT, "Sync");
+
+		configOutput(SQUARE_OUTPUT, "Square signal");
+		configOutput(SAW_OUTPUT, "Saw signal");
+		configOutput(TRIANGLE_OUTPUT, "Triangle signal");
+		configOutput(SINE_OUTPUT, "Sine signal");
+		configOutput(MIX_OUTPUT, "Mixed signal");
 	}
 
 	void reset() override;
 	void sampleRateChange() override;
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	bool active() override;
 	int channels() override;
 	void addChannel(int c) override;

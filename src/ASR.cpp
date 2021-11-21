@@ -29,12 +29,12 @@ void ASR::sampleRateChange() {
 	}
 }
 
-json_t* ASR::toJson(json_t* root) {
+json_t* ASR::saveToJson(json_t* root) {
 	json_object_set_new(root, INVERT, json_real(_invert));
 	return root;
 }
 
-void ASR::fromJson(json_t* root) {
+void ASR::loadFromJson(json_t* root) {
 	json_t* i = json_object_get(root, INVERT);
 	if (i) {
 		_invert = json_real_value(i);
@@ -149,8 +149,8 @@ struct ASRWidget : BGModuleWidget {
 		addOutput(createOutput<Port24>(envOutputPosition, module, ASR::ENV_OUTPUT));
 		addOutput(createOutput<Port24>(eocOutputPosition, module, ASR::EOC_OUTPUT));
 
-		addChild(createLight<TinyLight<GreenLight>>(attackLightPosition, module, ASR::ATTACK_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(releaseLightPosition, module, ASR::RELEASE_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(attackLightPosition, module, ASR::ATTACK_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(releaseLightPosition, module, ASR::RELEASE_LIGHT));
 	}
 };
 

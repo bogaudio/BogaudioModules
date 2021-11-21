@@ -37,6 +37,11 @@ struct EQ : BGModule {
 		configParam<EQParamQuantity>(LOW_PARAM, -1.0f, 1.0f, 0.0f, "Low", " dB");
 		configParam<EQParamQuantity>(MID_PARAM, -1.0f, 1.0f, 0.0f, "Mid", " dB");
 		configParam<EQParamQuantity>(HIGH_PARAM, -1.0f, 1.0f, 0.0f, "High", " dB");
+		configBypass(IN_INPUT, OUT_OUTPUT);
+
+		configInput(IN_INPUT, "Signal");
+
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
 	bool active() override;

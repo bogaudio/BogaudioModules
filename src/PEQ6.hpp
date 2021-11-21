@@ -79,9 +79,9 @@ struct PEQ6 : ExpandableModule<PEQ6ExpanderMessage, BandExcludeModule> {
 		float levelDefault = fabsf(PEQChannel::minDecibels) / (PEQChannel::maxDecibels - PEQChannel::minDecibels);
 		configParam(FREQUENCY_CV_PARAM, -1.0f, 1.0f, 0.0f, "Global frequency CV attenuation", "%", 0.0f, 100.0f);
 		configParam(BANDWIDTH_PARAM, 0.0f, 1.0f, 0.33f, "Bandwidth", "%", 0.0f, 100.0f);
-		configParam(LP_PARAM, 0.0f, 1.0f, 1.0f, "Channel 1 LP/BP");
-		configParam(HP_PARAM, 0.0f, 1.0f, 1.0f, "Channel 6 HP/BP");
-		configParam(FMOD_PARAM, 0.0f, 1.0f, 0.0f, "Frequency modulation range");
+		configSwitch(LP_PARAM, 0.0f, 1.0f, 1.0f, "Channel 1 LP/BP", {"Bandpass", "Lowpass"});
+		configSwitch(HP_PARAM, 0.0f, 1.0f, 1.0f, "Channel 6 HP/BP", {"Bandpass", "Highpass"});
+		configSwitch(FMOD_PARAM, 0.0f, 1.0f, 0.0f, "Frequency modulation range", {"Octave", "Full"});
 		configParam(LEVEL1_PARAM, 0.0f, 1.0f, levelDefault, "Channel 1 level", " dB", 0.0f, PEQChannel::maxDecibels - PEQChannel::minDecibels, PEQChannel::minDecibels);
 		configParam<ScaledSquaringParamQuantity<(int)PEQChannel::maxFrequency>>(FREQUENCY1_PARAM, 0.0f, 1.0f, 0.0707107f, "Channel 1 frequency", " HZ");
 		configParam(FREQUENCY_CV1_PARAM, -1.0f, 1.0f, 1.0f, "Channel 1 frequency CV attenuation", "%", 0.0f, 100.0f);
@@ -100,6 +100,31 @@ struct PEQ6 : ExpandableModule<PEQ6ExpanderMessage, BandExcludeModule> {
 		configParam(LEVEL6_PARAM, 0.0f, 1.0f, levelDefault, "Channel 6 level", " dB", 0.0f, PEQChannel::maxDecibels - PEQChannel::minDecibels, PEQChannel::minDecibels);
 		configParam<ScaledSquaringParamQuantity<(int)PEQChannel::maxFrequency>>(FREQUENCY6_PARAM, 0.0f, 1.0f, 0.3535534f, "Channel 6 frequency", " HZ");
 		configParam(FREQUENCY_CV6_PARAM, -1.0f, 1.0f, 1.0f, "Channel 6 frequency CV attenuation", "%", 0.0f, 100.0f);
+		configBypass(IN_INPUT, OUT_OUTPUT);
+
+		configInput(FREQUENCY_CV_INPUT, "Frequency CV");
+		configInput(BANDWIDTH_INPUT, "Bandwidth CV");
+		configInput(IN_INPUT, "Signal");
+		configInput(LEVEL1_INPUT, "Channel 1 level CV");
+		configInput(FREQUENCY_CV1_INPUT, "Channel 1 frequency CV");
+		configInput(LEVEL2_INPUT, "Channel 2 level CV");
+		configInput(FREQUENCY_CV2_INPUT, "Channel 2 frequency CV");
+		configInput(LEVEL3_INPUT, "Channel 3 level CV");
+		configInput(FREQUENCY_CV3_INPUT, "Channel 3 frequency CV");
+		configInput(LEVEL4_INPUT, "Channel 4 level CV");
+		configInput(FREQUENCY_CV4_INPUT, "Channel 4 frequency CV");
+		configInput(LEVEL5_INPUT, "Channel 5 level CV");
+		configInput(FREQUENCY_CV5_INPUT, "Channel 5 frequency CV");
+		configInput(LEVEL6_INPUT, "Channel 6 level CV");
+		configInput(FREQUENCY_CV6_INPUT, "Channel 6 frequency CV");
+
+		configOutput(OUT_OUTPUT, "All channels mix");
+		configOutput(OUT1_OUTPUT, "Channel 1");
+		configOutput(OUT2_OUTPUT, "Channel 2");
+		configOutput(OUT3_OUTPUT, "Channel 3");
+		configOutput(OUT4_OUTPUT, "Channel 4");
+		configOutput(OUT5_OUTPUT, "Channel 5");
+		configOutput(OUT6_OUTPUT, "Channel 6");
 
 		setExpanderModelPredicate([](Model* m) { return m == modelPEQ6XF; });
 	}

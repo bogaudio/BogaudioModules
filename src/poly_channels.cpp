@@ -5,12 +5,12 @@ using namespace bogaudio;
 
 #define POLY_CHANNELS "poly_channels"
 
-json_t* PolyChannelsModule::toJson(json_t* root) {
+json_t* PolyChannelsModule::saveToJson(json_t* root) {
 	json_object_set_new(root, POLY_CHANNELS, json_integer(_polyChannels));
 	return root;
 }
 
-void PolyChannelsModule::fromJson(json_t* root) {
+void PolyChannelsModule::loadFromJson(json_t* root) {
 	json_t* pc = json_object_get(root, POLY_CHANNELS);
 	if (!pc) {
 		pc = json_object_get(root, "noise_channels"); // backward compatibility hack.

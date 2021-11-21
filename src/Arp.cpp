@@ -229,13 +229,13 @@ void Arp::sampleRateChange() {
 	_sampleTime = APP->engine->getSampleTime();
 }
 
-json_t* Arp::toJson(json_t* root) {
+json_t* Arp::saveToJson(json_t* root) {
 	json_object_set_new(root, NOTES_IMMEDIATE_MODE, json_boolean(_notesImmediate));
 	json_object_set_new(root, FIXED_GATE_MODE, json_boolean(_fixedGate));
 	return root;
 }
 
-void Arp::fromJson(json_t* root) {
+void Arp::loadFromJson(json_t* root) {
 	json_t* ni = json_object_get(root, NOTES_IMMEDIATE_MODE);
 	if (ni) {
 		_notesImmediate = json_is_true(ni);
@@ -394,13 +394,13 @@ struct ArpWidget : BGModuleWidget {
 		addOutput(createOutput<Port24>(pitchOutputPosition, module, Arp::PITCH_OUTPUT));
 		addOutput(createOutput<Port24>(gateOutputPosition, module, Arp::GATE_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(upLightPosition, module, Arp::UP_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(downLightPosition, module, Arp::DOWN_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(upDownLightPosition, module, Arp::UP_DOWN_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(upDownRepeatLightPosition, module, Arp::UP_DOWN_REPEAT_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(inOrderLightPosition, module, Arp::IN_ORDER_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(randomLightPosition, module, Arp::RANDOM_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(shuffleLightPosition, module, Arp::SHUFFLE_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(upLightPosition, module, Arp::UP_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(downLightPosition, module, Arp::DOWN_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(upDownLightPosition, module, Arp::UP_DOWN_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(upDownRepeatLightPosition, module, Arp::UP_DOWN_REPEAT_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(inOrderLightPosition, module, Arp::IN_ORDER_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(randomLightPosition, module, Arp::RANDOM_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(shuffleLightPosition, module, Arp::SHUFFLE_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

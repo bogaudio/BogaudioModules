@@ -128,10 +128,31 @@ struct PolyOff16 : OutputRangeModule<BGModule> {
 		configParam<OutputRangeParamQuantity>(OFFSET16_PARAM, -1.0f, 1.0f, 0.0f, "Channel 16 offset", " V");
 		configParam(SCALE16_PARAM, -1.0f, 1.0f, 1.0f, "Channel 16 scale", "%", 0.0f, 100.0f);
 		configParam(CHANNELS_PARAM, 1.0f, 16.0f, 1.0f, "Polyphony channels");
+		paramQuantities[CHANNELS_PARAM]->snapEnabled = true;
+
+		configInput(CV1_INPUT, "Channel 1");
+		configInput(CV2_INPUT, "Channel 2");
+		configInput(CV3_INPUT, "Channel 3");
+		configInput(CV4_INPUT, "Channel 4");
+		configInput(CV5_INPUT, "Channel 5");
+		configInput(CV6_INPUT, "Channel 6");
+		configInput(CV7_INPUT, "Channel 7");
+		configInput(CV8_INPUT, "Channel 8");
+		configInput(CV9_INPUT, "Channel 9");
+		configInput(CV10_INPUT, "Channel 10");
+		configInput(CV11_INPUT, "Channel 11");
+		configInput(CV12_INPUT, "Channel 12");
+		configInput(CV13_INPUT, "Channel 13");
+		configInput(CV14_INPUT, "Channel 14");
+		configInput(CV15_INPUT, "Channel 15");
+		configInput(CV16_INPUT, "Channel 16");
+		configInput(IN_INPUT, "Signal");
+
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	void processAll(const ProcessArgs& args) override;
 };
 

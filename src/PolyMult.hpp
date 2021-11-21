@@ -29,6 +29,15 @@ struct PolyMult : BGModule {
 	PolyMult() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(CHANNELS_PARAM, 1.0f, 16.0f, 1.0f, "Polyphony channels");
+		paramQuantities[CHANNELS_PARAM]->snapEnabled = true;
+
+		configInput(CHANNELS_INPUT, "Channels CV");
+		configInput(IN_INPUT, "Signal");
+
+		configOutput(OUT1_OUTPUT, "Signal");
+		configOutput(OUT2_OUTPUT, "Signal");
+		configOutput(OUT3_OUTPUT, "Signal");
+		configOutput(OUT4_OUTPUT, "Signal");
 	}
 
 	void processAll(const ProcessArgs& args) override;

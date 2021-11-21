@@ -22,7 +22,7 @@ json_t* BGModule::dataToJson() {
 	if (_skinnable && _skin != "default") {
 		json_object_set_new(root, SKIN, json_string(_skin.c_str()));
 	}
-	return toJson(root);
+	return saveToJson(root);
 }
 
 void BGModule::dataFromJson(json_t* root) {
@@ -36,7 +36,7 @@ void BGModule::dataFromJson(json_t* root) {
 		}
 	}
 
-	fromJson(root);
+	loadFromJson(root);
 }
 
 void BGModule::process(const ProcessArgs& args) {

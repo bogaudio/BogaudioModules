@@ -115,15 +115,25 @@ struct FMOp : BGModule {
 		configParam(DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "FM depth", "%", 0.0f, 100.0f);
 		configParam(FEEDBACK_PARAM, 0.0f, 1.0f, 0.0f, "Feedback", "%", 0.0f, 100.0f);
 		configParam<LevelParamQuantity>(LEVEL_PARAM, 0.0f, 1.0f, 1.0f, "Level");
-		configParam(ENV_TO_LEVEL_PARAM, 0.0f, 1.0f, 0.0f, "Level follows envelope");
-		configParam(ENV_TO_FEEDBACK_PARAM, 0.0f, 1.0f, 0.0f, "Feedback follows envelope");
-		configParam(ENV_TO_DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "FM depth follows envelope");
+		configButton(ENV_TO_LEVEL_PARAM, "Level follows envelope");
+		configButton(ENV_TO_FEEDBACK_PARAM, "Feedback follows envelope");
+		configButton(ENV_TO_DEPTH_PARAM, "FM depth follows envelope");
+
+		configInput(SUSTAIN_INPUT, "Sustain CV");
+		configInput(DEPTH_INPUT, "Depth CV");
+		configInput(FEEDBACK_INPUT, "Feedback CV");
+		configInput(LEVEL_INPUT, "Level CV");
+		configInput(PITCH_INPUT, "Pitch (1V/octave)");
+		configInput(GATE_INPUT, "Gate");
+		configInput(FM_INPUT, "Frequency modulation");
+
+		configOutput(AUDIO_OUTPUT, "Signal");
 	}
 
 	void reset() override;
 	void sampleRateChange() override;
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	bool active() override;
 	int channels() override;
 	void addChannel(int c) override;

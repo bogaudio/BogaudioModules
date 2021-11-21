@@ -9,7 +9,7 @@ extern Model* modelShaperPlus;
 namespace bogaudio {
 
 struct ShaperPlus : TriggerOnLoadModule {
-	enum ParamIds {
+	enum ParamsIds {
 		ATTACK_PARAM,
 		ON_PARAM,
 		DECAY_PARAM,
@@ -22,7 +22,7 @@ struct ShaperPlus : TriggerOnLoadModule {
 		NUM_PARAMS
 	};
 
-	enum InputIds {
+	enum InputsIds {
 		SIGNAL_INPUT,
 		TRIGGER_INPUT,
 		ATTACK_INPUT,
@@ -34,7 +34,7 @@ struct ShaperPlus : TriggerOnLoadModule {
 		NUM_INPUTS
 	};
 
-	enum OutputIds {
+	enum OutputsIds {
 		SIGNAL_OUTPUT,
 		ENV_OUTPUT,
 		INV_OUTPUT,
@@ -46,7 +46,7 @@ struct ShaperPlus : TriggerOnLoadModule {
 		NUM_OUTPUTS
 	};
 
-	enum LightIds {
+	enum LightsIds {
 		ATTACK_LIGHT,
 		ON_LIGHT,
 		DECAY_LIGHT,
@@ -68,9 +68,27 @@ struct ShaperPlus : TriggerOnLoadModule {
 		configParam<EnvelopeSegmentParamQuantity>(OFF_PARAM, 0.0f, 1.0f, 0.07071f, "Off", " s");
 		configParam(ENV_PARAM, 0.0f, 1.0f, 1.0f, "Env", "%", 0.0f, 100.0f);
 		configParam(SIGNAL_PARAM, 0.0f, 1.0f, 0.1f, "Signal", "x", 10.0f);
-		configParam(TRIGGER_PARAM, 0.0f, 1.0f, 0.0f, "Trigger");
-		configParam(SPEED_PARAM, 0.0f, 1.0f, 1.0f, "Speed");
-		configParam(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "Loop");
+		configButton(TRIGGER_PARAM, "Trigger");
+		configSwitch(SPEED_PARAM, 0.0f, 1.0f, 1.0f, "Speed", {"Slow", "Normal"});
+		configSwitch(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "Loop", {"Loop", "Stop"});
+
+		configInput(SIGNAL_INPUT, "Signal");
+		configInput(TRIGGER_INPUT, "Trigger");
+		configInput(ATTACK_INPUT, "Attack CV");
+		configInput(ON_INPUT, "On CV");
+		configInput(DECAY_INPUT, "Decay CV");
+		configInput(OFF_INPUT, "Off CV");
+		configInput(ENV_INPUT, "Envelope level CV");
+		configInput(SIGNALCV_INPUT, "Output signal level CV");
+
+		configOutput(SIGNAL_OUTPUT, "Signal");
+		configOutput(ENV_OUTPUT, "Envelope");
+		configOutput(INV_OUTPUT, "Inverted envelope");
+		configOutput(TRIGGER_OUTPUT, "Trigger");
+		configOutput(ATTACK_OUTPUT, "Attack stage gate");
+		configOutput(ON_OUTPUT, "On stage gate");
+		configOutput(DECAY_OUTPUT, "Decay stage gate");
+		configOutput(OFF_OUTPUT, "Off stage gate");
 	}
 
 	void reset() override;

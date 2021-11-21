@@ -19,7 +19,7 @@ void Walk::sampleRateChange() {
 	}
 }
 
-json_t* Walk::toJson(json_t* root) {
+json_t* Walk::saveToJson(json_t* root) {
 	json_object_set_new(root, POLY_INPUT, json_integer(_polyInputID));
 	switch (_jumpMode) {
 		case JUMP_JUMPMODE: {
@@ -38,7 +38,7 @@ json_t* Walk::toJson(json_t* root) {
 	return root;
 }
 
-void Walk::fromJson(json_t* root) {
+void Walk::loadFromJson(json_t* root) {
 	json_t* p = json_object_get(root, POLY_INPUT);
 	if (p) {
 		_polyInputID = json_integer_value(p);

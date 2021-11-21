@@ -59,7 +59,15 @@ struct Mix2 : LinearCVMixerModule {
 	Mix2() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(LEVEL_PARAM, 0.0f, 1.0f, fabsf(MixerChannel::minDecibels) / (MixerChannel::maxDecibels - MixerChannel::minDecibels), "Level", "dB", 0.0f, MixerChannel::maxDecibels - MixerChannel::minDecibels, MixerChannel::minDecibels);
-		configParam(MUTE_PARAM, 0.0f, 1.0f, 0.0f, "Mute");
+		configSwitch(MUTE_PARAM, 0.0f, 1.0f, 0.0f, "Mute", {"Unmuted", "Muted"});
+
+		configInput(LEVEL_INPUT, "Level CV");
+		configInput(MUTE_INPUT, "Mute CV");
+		configInput(L_INPUT, "Left signal");
+		configInput(R_INPUT, "Right signal");
+
+		configOutput(L_OUTPUT, "Left signal");
+		configOutput(R_OUTPUT, "Right signal");
 	}
 
 	void sampleRateChange() override;
@@ -70,6 +78,7 @@ struct Mix2 : LinearCVMixerModule {
 	void processAlways(const ProcessArgs& args) override;
 	void processChannel(const ProcessArgs& args, int c) override;
 	void postProcessAlways(const ProcessArgs& args) override;
+	void processBypass(const ProcessArgs& args) override;
 };
 
 } // namespace bogaudio

@@ -12,7 +12,7 @@ void Inv::reset() {
 	}
 }
 
-json_t* Inv::toJson(json_t* root) {
+json_t* Inv::saveToJson(json_t* root) {
 	json_object_set_new(root, SAVE_LATCHED_TO_PATCH, json_boolean(_saveLatchedToPatch));
 	if (_saveLatchedToPatch) {
 		if (_latch[0]) {
@@ -34,7 +34,7 @@ json_t* Inv::toJson(json_t* root) {
 	return root;
 }
 
-void Inv::fromJson(json_t* root) {
+void Inv::loadFromJson(json_t* root) {
 	json_t* sl = json_object_get(root, SAVE_LATCHED_TO_PATCH);
 	if (sl) {
 		_saveLatchedToPatch = json_is_true(sl);
@@ -140,8 +140,8 @@ struct InvWidget : BGModuleWidget {
 		addOutput(createOutput<Port24>(out1OutputPosition, module, Inv::OUT1_OUTPUT));
 		addOutput(createOutput<Port24>(out2OutputPosition, module, Inv::OUT2_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenRedLight>>(low1LightPosition, module, Inv::LOW1_LIGHT));
-		addChild(createLight<SmallLight<GreenRedLight>>(low2LightPosition, module, Inv::LOW2_LIGHT));
+		addChild(createLight<BGSmallLight<GreenRedLight>>(low1LightPosition, module, Inv::LOW1_LIGHT));
+		addChild(createLight<BGSmallLight<GreenRedLight>>(low2LightPosition, module, Inv::LOW2_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

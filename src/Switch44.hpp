@@ -62,6 +62,16 @@ struct Switch44 : SwitchMatrixModule {
 		configSwitchParam(MIX24_PARAM, "Mix 2D");
 		configSwitchParam(MIX34_PARAM, "Mix 3D");
 		configSwitchParam(MIX44_PARAM, "Mix 4D");
+
+		configInput(IN1_INPUT, "Signal 1");
+		configInput(IN2_INPUT, "Signal 2");
+		configInput(IN3_INPUT, "Signal 3");
+		configInput(IN4_INPUT, "Signal 4");
+
+		configOutput(OUT1_OUTPUT, "Signal A");
+		configOutput(OUT2_OUTPUT, "Signal B");
+		configOutput(OUT3_OUTPUT, "Signal C");
+		configOutput(OUT4_OUTPUT, "Signal D");
 	}
 };
 

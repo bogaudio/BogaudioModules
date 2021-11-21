@@ -51,12 +51,19 @@ struct Walk : BGModule {
 		configParam(RATE_PARAM, 0.0f, 1.0f, 0.1f, "Rate", "%", 0.0f, 100.0f);
 		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "Offset", " V", 0.0f, 5.0f);
 		configParam(SCALE_PARAM, 0.0f, 1.0f, 1.0f, "Scale", "%", 0.0f, 100.0f);
+
+		configInput(RATE_INPUT, "Rate CV");
+		configInput(OFFSET_INPUT, "Offset CV");
+		configInput(SCALE_INPUT, "Scale CV");
+		configInput(JUMP_INPUT, "Trigger");
+
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
 	void reset() override;
 	void sampleRateChange() override;
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	int channels() override;
 	void modulateChannel(int c) override;
 	void processChannel(const ProcessArgs& args, int c) override;

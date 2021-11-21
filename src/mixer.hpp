@@ -52,8 +52,8 @@ struct MixerChannel {
 struct LinearCVMixerModule : BGModule {
 	bool _linearCV = false;
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 };
 
 struct LinearCVMixerWidget : BGModuleWidget {
@@ -63,37 +63,41 @@ struct LinearCVMixerWidget : BGModuleWidget {
 struct DimmableMixerModule : LinearCVMixerModule {
 	float _dimDb = 12.0f;
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 };
 
 struct DimmableMixerWidget : LinearCVMixerWidget {
 	void contextMenu(Menu* menu) override;
 };
 
-struct MuteButton : ToggleButton {
-	bool _randomize = true;
-
+struct MuteButton : LightEmittingWidget<ToggleButton> {
 	MuteButton() {
 		addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_0.svg")));
 		addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/button_18px_1_orange.svg")));
 	}
 
-	inline void setRandomize(bool randomize) { _randomize = randomize; }
-	void randomize() override;
 	void onButton(const event::Button& e) override;
+	bool isLit() override;
+	void draw(const DrawArgs& args) override;
+	void drawLit(const DrawArgs& args) override;
 };
 
-struct SoloMuteButton : ParamWidget {
+struct SoloMuteButton : LightEmittingWidget<ParamWidget> {
 	std::vector<std::shared_ptr<Svg>> _frames;
 	SvgWidget* _svgWidget; // deleted elsewhere.
 	CircularShadow* shadow = NULL;
 
 	SoloMuteButton();
-	void reset() override;
-	void randomize() override;
 	void onButton(const event::Button& e) override;
 	void onChange(const event::Change& e) override;
+	bool isLit() override;
+	void draw(const DrawArgs& args) override;
+	void drawLit(const DrawArgs& args) override;
+};
+
+struct DimSwitchQuantity : SwitchQuantity {
+	std::string getDisplayValueString() override;
 };
 
 } // namespace bogaudio

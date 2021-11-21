@@ -48,13 +48,21 @@ struct Velo : BGModule {
 		configParam<LevelParamQuantity>(LEVEL_PARAM, 0.0f, 1.0f, 0.8f, "level");
 		configParam(LEVEL_ATTENUATOR_PARAM, -1.0f, 1.0f, 0.0f, "Level CV");
 		configParam<ScaledSquaringParamQuantity<-60>>(VELOCITY_PARAM, 0.0f, 1.0f, 0.3162278f, "Velocity range", " dB");
-		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear");
+		configSwitch(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear", {"Disabled", "Enabled"});
+		configBypass(IN_INPUT, OUT_OUTPUT);
+
+		configInput(LEVEL_INPUT, "Level unipolar CV");
+		configInput(CV_INPUT, "Level bipolar CV");
+		configInput(VELOCITY_INPUT, "Velocity CV");
+		configInput(IN_INPUT, "Signal");
+
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
 	inline bool isLinear() { return params[LINEAR_PARAM].getValue() > 0.5f; }
 	void sampleRateChange() override;
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	bool active() override;
 	void modulate() override;
 	void processAll(const ProcessArgs& args) override;

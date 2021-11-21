@@ -24,12 +24,12 @@ void ADSR::sampleRateChange() {
 	}
 }
 
-json_t* ADSR::toJson(json_t* root) {
+json_t* ADSR::saveToJson(json_t* root) {
 	json_object_set_new(root, INVERT, json_real(_invert));
 	return root;
 }
 
-void ADSR::fromJson(json_t* root) {
+void ADSR::loadFromJson(json_t* root) {
 	json_t* i = json_object_get(root, INVERT);
 	if (i) {
 		_invert = json_real_value(i);
@@ -130,10 +130,10 @@ struct ADSRWidget : BGModuleWidget {
 
 		addOutput(createOutput<Port24>(outOutputPosition, module, ADSR::OUT_OUTPUT));
 
-		addChild(createLight<TinyLight<GreenLight>>(attackLightPosition, module, ADSR::ATTACK_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(decayLightPosition, module, ADSR::DECAY_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(sustainLightPosition, module, ADSR::SUSTAIN_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(releaseLightPosition, module, ADSR::RELEASE_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(attackLightPosition, module, ADSR::ATTACK_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(decayLightPosition, module, ADSR::DECAY_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(sustainLightPosition, module, ADSR::SUSTAIN_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(releaseLightPosition, module, ADSR::RELEASE_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

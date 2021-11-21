@@ -56,14 +56,14 @@ void FMOp::Engine::sampleRateChange() {
 	sustainSL.setParams(sampleRate, 1.0f, 1.0f);
 }
 
-json_t* FMOp::toJson(json_t* root) {
+json_t* FMOp::saveToJson(json_t* root) {
 	json_object_set_new(root, LINEAR_LEVEL, json_boolean(_linearLevel));
 	json_object_set_new(root, ANTIALIAS_FEEDBACK, json_boolean(_antiAliasFeedback));
 	json_object_set_new(root, ANTIALIAS_DEPTH, json_boolean(_antiAliasDepth));
 	return root;
 }
 
-void FMOp::fromJson(json_t* root) {
+void FMOp::loadFromJson(json_t* root) {
 	json_t* ll = json_object_get(root, LINEAR_LEVEL);
 	if (ll) {
 		_linearLevel = json_is_true(ll);
@@ -337,10 +337,10 @@ struct FMOpWidget : BGModuleWidget {
 
 		addOutput(createOutput<Port24>(audioOutputPosition, module, FMOp::AUDIO_OUTPUT));
 
-		addChild(createLight<TinyLight<GreenLight>>(attackLightPosition, module, FMOp::ATTACK_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(decayLightPosition, module, FMOp::DECAY_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(sustainLightPosition, module, FMOp::SUSTAIN_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(releaseLightPosition, module, FMOp::RELEASE_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(attackLightPosition, module, FMOp::ATTACK_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(decayLightPosition, module, FMOp::DECAY_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(sustainLightPosition, module, FMOp::SUSTAIN_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(releaseLightPosition, module, FMOp::RELEASE_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

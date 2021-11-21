@@ -453,8 +453,9 @@ void AnalyzerDisplay::channelLabel(int channel, std::string label) {
 	_channelLabels[channel] = label;
 }
 
-void AnalyzerDisplay::draw(const DrawArgs& args) {
-	if (_module) {
+void AnalyzerDisplay::drawOnce(const DrawArgs& args, bool screenshot, bool lit) {
+	if (!screenshot) {
+		assert(_module);
 		_module->_core._channelsMutex.lock();
 	}
 
@@ -462,7 +463,7 @@ void AnalyzerDisplay::draw(const DrawArgs& args) {
 	AmplitudePlot amplitudePlot = DECIBELS_80_AP;
 	float rangeMinHz = 0.0f;
 	float rangeMaxHz = 0.0f;
-	if (_module) {
+	if (!screenshot) {
 		frequencyPlot = _module->_frequencyPlot;
 		amplitudePlot = _module->_amplitudePlot;
 		rangeMinHz = _module->_rangeMinHz;
@@ -473,8 +474,6 @@ void AnalyzerDisplay::draw(const DrawArgs& args) {
 	else {
 		rangeMaxHz = 0.5f * APP->engine->getSampleRate();
 	}
-
-	drawBackground(args);
 
 	float strokeWidth = std::max(1.0f, 3.0f - getZoom());
 	if (frequencyPlot == LINEAR_FP) {
@@ -487,13 +486,16 @@ void AnalyzerDisplay::draw(const DrawArgs& args) {
 	}
 
 	nvgSave(args.vg);
+	drawBackground(args);
 	nvgScissor(args.vg, _insetAround, _insetAround, _size.x - _insetAround, _size.y - _insetAround);
-	if (_module) {
-		drawHeader(args, rangeMinHz, rangeMaxHz);
+	if (isScreenshot() || !lit) {
+		drawYAxis(args, strokeWidth, amplitudePlot);
+		drawXAxis(args, strokeWidth, frequencyPlot, rangeMinHz, rangeMaxHz);
 	}
-	drawYAxis(args, strokeWidth, amplitudePlot);
-	drawXAxis(args, strokeWidth, frequencyPlot, rangeMinHz, rangeMaxHz);
-	if (_module) {
+	else {
+		drawHeader(args, rangeMinHz, rangeMaxHz);
+		drawYAxis(args, strokeWidth, amplitudePlot);
+		drawXAxis(args, strokeWidth, frequencyPlot, rangeMinHz, rangeMaxHz);
 		int freezeBinI = 0;
 		float freezeLowHz = 0.0f;
 		float freezeHighHz = 0.0f;
@@ -522,7 +524,7 @@ void AnalyzerDisplay::draw(const DrawArgs& args) {
 	}
 	nvgRestore(args.vg);
 
-	if (_module) {
+	if (!screenshot) {
 		_module->_core._channelsMutex.unlock();
 	}
 }
@@ -981,11 +983,12 @@ void AnalyzerDisplay::drawFreezeOver(const DrawArgs& args, int binI, int binsN, 
 }
 
 void AnalyzerDisplay::drawText(const DrawArgs& args, const char* s, float x, float y, float rotation, const NVGcolor* color, int fontSize) {
+	std::shared_ptr<Font> font = APP->window->loadFont(_fontPath);
 	nvgSave(args.vg);
 	nvgTranslate(args.vg, x, y);
 	nvgRotate(args.vg, rotation);
 	nvgFontSize(args.vg, fontSize);
-	nvgFontFaceId(args.vg, _font->handle);
+	nvgFontFaceId(args.vg, font->handle);
 	nvgFillColor(args.vg, color ? *color : _textColor);
 	nvgText(args.vg, 0, 0, s, NULL);
 	nvgRestore(args.vg);

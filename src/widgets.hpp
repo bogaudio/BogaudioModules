@@ -11,6 +11,32 @@ extern Plugin *pluginInstance;
 
 namespace bogaudio {
 
+template <class BASE>
+struct LightEmittingWidget : BASE {
+	virtual bool isLit() = 0;
+
+	void drawLayer(const typename BASE::DrawArgs& args, int layer) override {
+		if (layer == 1 && isLit()) {
+			drawLit(args);
+		}
+		BASE::drawLayer(args, layer);
+	}
+
+	virtual void drawLit(const typename BASE::DrawArgs& args) {}
+};
+
+struct DisplayWidget : LightEmittingWidget<OpaqueWidget> {
+	Module* _module = NULL;
+
+	DisplayWidget(Module* module);
+
+	bool isLit() override;
+	virtual bool isScreenshot();
+	void draw(const DrawArgs& args) override;
+	void drawLit(const DrawArgs& args) override;
+	virtual void drawOnce(const DrawArgs& args, bool screenshot, bool lit) = 0;
+};
+
 struct SkinnableWidget : SkinChangeListener {
 	void skinChanged(const std::string& skin) override {}
 	std::string skinSVG(const std::string& base, const std::string& skin = "default");
@@ -59,7 +85,7 @@ struct Knob68 : BGKnob {
 	Knob68();
 };
 
-struct IndicatorKnob : Knob, SkinnableWidget {
+struct IndicatorKnob : LightEmittingWidget<Knob>, SkinnableWidget {
 	struct IKWidget : widget::Widget {
 		float _angle = 0.0f;
 		NVGcolor _color = nvgRGBA(0x00, 0x00, 0x00, 0x00);
@@ -82,6 +108,9 @@ struct IndicatorKnob : Knob, SkinnableWidget {
 	inline void setDrawColorsCallback(std::function<bool()> fn) { w->_drawColorsCB = fn; }
 	inline void setUnipolarCallback(std::function<bool()> fn) { w->_unipolarCB = fn; }
 	void redraw();
+	bool isLit() override;
+	void draw(const DrawArgs& args) override;
+	void drawLit(const DrawArgs& args) override;
 	void skinChanged(const std::string& skin) override;
 };
 
@@ -118,8 +147,6 @@ struct StatefulButton : ParamWidget {
 	CircularShadow* shadow = NULL;
 
 	StatefulButton(const char* offSvgPath, const char* onSvgPath);
-	void reset() override;
-	void randomize() override;
 	void onDragStart(const event::DragStart& e) override;
 	void onDragEnd(const event::DragEnd& e) override;
 	void onDoubleClick(const event::DoubleClick& e) override {}
@@ -140,11 +167,15 @@ struct ToggleButton18 : ToggleButton {
 	ToggleButton18();
 };
 
-struct IndicatorButtonGreen9 : SvgSwitch {
+struct IndicatorButtonGreen9 : LightEmittingWidget<SvgSwitch> {
 	IndicatorButtonGreen9();
+
+	bool isLit() override;
+	void draw(const DrawArgs& args) override;
+	void drawLit(const DrawArgs& args) override;
 };
 
-struct InvertingIndicatorButton : ParamWidget {
+struct InvertingIndicatorButton : LightEmittingWidget<ParamWidget> {
 	struct IIBWidget : widget::Widget {
 		int _dim;
 		NVGcolor _color = nvgRGBA(0x00, 0x00, 0x00, 0x00);
@@ -165,12 +196,13 @@ struct InvertingIndicatorButton : ParamWidget {
 
 	inline void setClickToInvertCallback(std::function<bool()> fn) { clickToInvertCB = fn; }
 	inline void setOnChangeCallback(std::function<void(int, float)> fn) { onChangeCB = fn; }
-	void reset() override;
-	void randomize() override;
 	void onHover(const event::Hover& e) override;
 	void onDoubleClick(const event::DoubleClick& e) override {}
 	void onButton(const event::Button& e) override;
 	void onChange(const event::Change& e) override;
+	bool isLit() override;
+	void draw(const DrawArgs& args) override;
+	void drawLit(const DrawArgs& args) override;
 };
 
 struct InvertingIndicatorButton9 : InvertingIndicatorButton {
@@ -183,7 +215,7 @@ struct InvertingIndicatorButton18 : InvertingIndicatorButton {
 
 NVGcolor decibelsToColor(float db);
 
-struct VUSlider : SliderKnob {
+struct VUSlider : LightEmittingWidget<SliderKnob> {
 	const float slideHeight = 13.0f;
 	float* _vuLevel = NULL;
 	float* _stereoVuLevel = NULL;
@@ -198,11 +230,44 @@ struct VUSlider : SliderKnob {
 	inline void setStereoVULevel(float* level) {
 		_stereoVuLevel = level;
 	}
+	bool isLit() override;
 	void draw(const DrawArgs& args) override;
+	void drawLit(const DrawArgs& args) override;
+	void drawTranslate(const DrawArgs& args);
 };
 
 struct VUSlider151 : VUSlider {
 	VUSlider151() : VUSlider(151.0f) {}
+};
+
+template <typename TBase>
+struct BGTinyLight : TinyLight<TBase> {
+	void drawLight(const typename TinyLight<TBase>::DrawArgs& args) override {
+		if (!TinyLight<TBase>::module || !TinyLight<TBase>::module->isBypassed()) {
+			TinyLight<TBase>::drawLight(args);
+		}
+	}
+
+	void drawHalo(const typename TinyLight<TBase>::DrawArgs& args) override {
+		if (!TinyLight<TBase>::module || !TinyLight<TBase>::module->isBypassed()) {
+			TinyLight<TBase>::drawHalo(args);
+		}
+	}
+};
+
+template <typename TBase>
+struct BGSmallLight : SmallLight<TBase> {
+	void drawLight(const typename SmallLight<TBase>::DrawArgs& args) override {
+		if (!SmallLight<TBase>::module || !SmallLight<TBase>::module->isBypassed()) {
+			SmallLight<TBase>::drawLight(args);
+		}
+	}
+
+	void drawHalo(const typename SmallLight<TBase>::DrawArgs& args) override {
+		if (!SmallLight<TBase>::module || !SmallLight<TBase>::module->isBypassed()) {
+			SmallLight<TBase>::drawHalo(args);
+		}
+	}
 };
 
 } // namespace bogaudio

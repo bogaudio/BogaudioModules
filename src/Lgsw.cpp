@@ -35,7 +35,7 @@ void Lgsw::processAlways(const ProcessArgs& args) {
 }
 
 void Lgsw::processChannel(const ProcessArgs& args, int c) {
-	bool buttonTriggered = _buttonTriggers[c].process(params[GATE_PARAM].getValue());
+	bool buttonTriggered = _buttonTriggers[c].process(10.0f*params[GATE_PARAM].getValue());
 	bool aTriggered = _aTriggers[c].process(inputs[GATE_A_INPUT].getVoltage(c));
 	bool bTriggered = _bTriggers[c].process(inputs[GATE_B_INPUT].getVoltage(c));
 
@@ -200,13 +200,13 @@ struct LgswWidget : SaveLatchToPatchModuleWidget {
 
 		addOutput(createOutput<Port24>(out1OutputPosition, module, Lgsw::OUT_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(logicOrLightPosition, module, Lgsw::LOGIC_OR_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(logicAndLightPosition, module, Lgsw::LOGIC_AND_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(logicXorLightPosition, module, Lgsw::LOGIC_XOR_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(logicNorLightPosition, module, Lgsw::LOGIC_NOR_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(logicNandLightPosition, module, Lgsw::LOGIC_NAND_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(high1LightPosition, module, Lgsw::HIGH_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(low1LightPosition, module, Lgsw::LOW_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(logicOrLightPosition, module, Lgsw::LOGIC_OR_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(logicAndLightPosition, module, Lgsw::LOGIC_AND_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(logicXorLightPosition, module, Lgsw::LOGIC_XOR_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(logicNorLightPosition, module, Lgsw::LOGIC_NOR_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(logicNandLightPosition, module, Lgsw::LOGIC_NAND_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(high1LightPosition, module, Lgsw::HIGH_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(low1LightPosition, module, Lgsw::LOW_LIGHT));
 	}
 };
 

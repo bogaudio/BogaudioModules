@@ -45,14 +45,24 @@ struct Inv : BGModule {
 	Inv() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(GATE1_PARAM, 0.0f, 1.0f, 0.0f, "Channel 1 gate");
-		configParam(LATCH1_PARAM, 0.0f, 1.0f, 0.0f, "Channel 1 latch");
+		configSwitch(LATCH1_PARAM, 0.0f, 1.0f, 0.0f, "Channel 1 latch", {"Disabled", "Enabled"});
 		configParam(GATE2_PARAM, 0.0f, 1.0f, 0.0f, "Channel 2 gate");
-		configParam(LATCH2_PARAM, 0.0f, 1.0f, 0.0f, "Channle 2 latch");
+		configSwitch(LATCH2_PARAM, 0.0f, 1.0f, 0.0f, "Channle 2 latch", {"Disabled", "Enabled"});
+		configBypass(IN1_INPUT, OUT1_OUTPUT);
+		configBypass(IN2_INPUT, OUT2_OUTPUT);
+
+		configInput(GATE1_INPUT, "Gate 1");
+		configInput(IN1_INPUT, "Signal 1");
+		configInput(GATE2_INPUT, "Gate 2");
+		configInput(IN2_INPUT, "Signal 2");
+
+		configOutput(OUT1_OUTPUT, "Signal 1");
+		configOutput(OUT2_OUTPUT, "Signal 2");
 	}
 
 	void reset() override;
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	void modulate() override;
 	void processAll(const ProcessArgs& args) override;
 	void processDual(int i);

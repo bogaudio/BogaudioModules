@@ -37,10 +37,16 @@ struct FourMan : TriggerOnLoadModule {
 
 	FourMan() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
-		configParam(TRIGGER1_PARAM, 0.0f, 1.0f, 0.0f, "Trigger 1");
-		configParam(TRIGGER2_PARAM, 0.0f, 1.0f, 0.0f, "Trigger 2");
-		configParam(TRIGGER3_PARAM, 0.0f, 1.0f, 0.0f, "Trigger 3");
-		configParam(TRIGGER4_PARAM, 0.0f, 1.0f, 0.0f, "Trigger 4");
+		configButton(TRIGGER1_PARAM, "Trigger 1");
+		configButton(TRIGGER2_PARAM, "Trigger 2");
+		configButton(TRIGGER3_PARAM, "Trigger 3");
+		configButton(TRIGGER4_PARAM, "Trigger 4");
+
+		configOutput(OUT1_OUTPUT, "Trigger 1");
+		configOutput(OUT2_OUTPUT, "Trigger 2");
+		configOutput(OUT3_OUTPUT, "Trigger 3");
+		configOutput(OUT4_OUTPUT, "Trigger 4");
+
 		_triggerOnLoad = false;
 		_initialDelay = new bogaudio::dsp::Timer(APP->engine->getSampleRate(), 0.01f);
 	}
@@ -52,8 +58,8 @@ struct FourMan : TriggerOnLoadModule {
 
 	void reset() override;
 	void sampleRateChange() override;
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	void processAll(const ProcessArgs& args) override;
 	bool shouldTriggerOnNextLoad() override {
 		return true;

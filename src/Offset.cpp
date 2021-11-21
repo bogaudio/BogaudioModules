@@ -3,14 +3,14 @@
 
 #define OFFSET_FIRST "offset_first"
 
-json_t* Offset::toJson(json_t* root) {
-	root = DisableOutputLimitModule::toJson(root);
+json_t* Offset::saveToJson(json_t* root) {
+	root = DisableOutputLimitModule::saveToJson(root);
 	json_object_set_new(root, OFFSET_FIRST, json_boolean(_offsetFirst));
 	return root;
 }
 
-void Offset::fromJson(json_t* root) {
-	DisableOutputLimitModule::fromJson(root);
+void Offset::loadFromJson(json_t* root) {
+	DisableOutputLimitModule::loadFromJson(root);
 	json_t* of = json_object_get(root, OFFSET_FIRST);
 	if (of) {
 		_offsetFirst = json_boolean_value(of);

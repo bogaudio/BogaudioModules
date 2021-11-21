@@ -166,6 +166,24 @@ struct Switch88 : SwitchMatrixModule {
 		configSwitchParam(MIX68_PARAM, "Mix 6H");
 		configSwitchParam(MIX78_PARAM, "Mix 7H");
 		configSwitchParam(MIX88_PARAM, "Mix 8H");
+
+		configInput(IN1_INPUT, "Signal 1");
+		configInput(IN2_INPUT, "Signal 2");
+		configInput(IN3_INPUT, "Signal 3");
+		configInput(IN4_INPUT, "Signal 4");
+		configInput(IN5_INPUT, "Signal 5");
+		configInput(IN6_INPUT, "Signal 6");
+		configInput(IN7_INPUT, "Signal 7");
+		configInput(IN8_INPUT, "Signal 8");
+
+		configOutput(OUT1_OUTPUT, "Signal A");
+		configOutput(OUT2_OUTPUT, "Signal B");
+		configOutput(OUT3_OUTPUT, "Signal C");
+		configOutput(OUT4_OUTPUT, "Signal D");
+		configOutput(OUT5_OUTPUT, "Signal E");
+		configOutput(OUT6_OUTPUT, "Signal F");
+		configOutput(OUT7_OUTPUT, "Signal G");
+		configOutput(OUT8_OUTPUT, "Signal H");
 	}
 };
 

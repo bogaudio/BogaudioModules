@@ -184,7 +184,6 @@ struct CmpWidget : BGModuleWidget {
 		{
 			auto w = createParam<Knob16>(outputParamPosition, module, Cmp::OUTPUT_PARAM);
 			auto k = dynamic_cast<SvgKnob*>(w);
-			k->snap = true;
 			k->minAngle = 3.0f * (M_PI / 8.0f);
 			k->maxAngle = 5.0f * (M_PI / 8.0f);
 			k->speed = 3.0;

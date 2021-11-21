@@ -117,10 +117,19 @@ struct Ranalyzer : AnalyzerBase {
 	{
 		configParam<FrequencyParamQuantity>(FREQUENCY1_PARAM, 0.0f, 1.0f, 0.0f, "Frequency 1", " Hz");
 		configParam<FrequencyParamQuantity>(FREQUENCY2_PARAM, 0.0f, 1.0f, 1.0f, "Frequency 2", " Hz");
-		configParam(TRIGGER_PARAM, 0.0f, 1.0f, 0.0f, "Trigger");
-		configParam(EXPONENTIAL_PARAM, 0.0f, 1.0f, 1.0f, "Exponential");
-		configParam(LOOP_PARAM, 0.0f, 1.0f, 0.0f, "Loop");
+		configButton(TRIGGER_PARAM, "Trigger");
+		configSwitch(EXPONENTIAL_PARAM, 0.0f, 1.0f, 1.0f, "Sweep", {"Linear", "Exponential"});
+		configSwitch(LOOP_PARAM, 0.0f, 1.0f, 0.0f, "Loop", {"Disabled", "Enabled"});
 		configParam(DELAY_PARAM, 2.0f, (float)maxResponseDelay, 2.0f, "Return sample delay");
+		paramQuantities[DELAY_PARAM]->snapEnabled = true;
+
+		configInput(TRIGGER_INPUT, "Trigger");
+		configInput(RETURN_INPUT, "Return signal");
+		configInput(TEST_INPUT, "Test signal");
+
+		configOutput(TRIGGER_OUTPUT, "Trigger");
+		configOutput(EOC_OUTPUT, "End-of-cycle trigger");
+		configOutput(SEND_OUTPUT, "Send signal");
 
 		_skinnable = false;
 	}
@@ -135,8 +144,8 @@ struct Ranalyzer : AnalyzerBase {
 
 	void reset() override;
 	void sampleRateChange() override;
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	void modulate() override;
 	void processAll(const ProcessArgs& args) override;
 	void setDisplayTraces(Traces traces);

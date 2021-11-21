@@ -140,10 +140,10 @@ struct ShaperWidget : TriggerOnLoadModuleWidget {
 		addInput(createInput<Port24>(signalInputPosition, module, Shaper::SIGNAL_INPUT));
 		addOutput(createOutput<Port24>(signalOutputPosition, module, Shaper::SIGNAL_OUTPUT));
 
-		addChild(createLight<TinyLight<GreenLight>>(attackLightPosition, module, Shaper::ATTACK_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(onLightPosition, module, Shaper::ON_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(decayLightPosition, module, Shaper::DECAY_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(offLightPosition, module, Shaper::OFF_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(attackLightPosition, module, Shaper::ATTACK_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(onLightPosition, module, Shaper::ON_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(decayLightPosition, module, Shaper::DECAY_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(offLightPosition, module, Shaper::OFF_LIGHT));
 	}
 };
 

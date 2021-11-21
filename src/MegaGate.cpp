@@ -32,14 +32,14 @@ void MegaGate::sampleRateChange() {
 	}
 }
 
-json_t* MegaGate::toJson(json_t* root) {
-	root = LPGEnvBaseModule::toJson(root);
+json_t* MegaGate::saveToJson(json_t* root) {
+	root = LPGEnvBaseModule::saveToJson(root);
 	json_object_set_new(root, VELOCITY_MINIMUM_DECIBELS, json_real(_minVelocityDb));
 	return root;
 }
 
-void MegaGate::fromJson(json_t* root) {
-	LPGEnvBaseModule::fromJson(root);
+void MegaGate::loadFromJson(json_t* root) {
+	LPGEnvBaseModule::loadFromJson(root);
 	json_t* mdb = json_object_get(root, VELOCITY_MINIMUM_DECIBELS);
 	if (mdb) {
 		_minVelocityDb = json_real_value(mdb);
@@ -420,14 +420,14 @@ struct MegaGateWidget : LPGEnvBaseWidget {
 		addOutput(createOutput<Port24>(leftOutputPosition, module, MegaGate::LEFT_OUTPUT));
 		addOutput(createOutput<Port24>(rightOutputPosition, module, MegaGate::RIGHT_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(lpfPoles1LightPosition, module, MegaGate::LPF_POLES_1_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(lpfPoles2LightPosition, module, MegaGate::LPF_POLES_2_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(lpfPoles3LightPosition, module, MegaGate::LPF_POLES_3_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(lpfPoles4LightPosition, module, MegaGate::LPF_POLES_4_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(hpfPoles1LightPosition, module, MegaGate::HPF_POLES_1_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(hpfPoles2LightPosition, module, MegaGate::HPF_POLES_2_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(hpfPoles3LightPosition, module, MegaGate::HPF_POLES_3_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(hpfPoles4LightPosition, module, MegaGate::HPF_POLES_4_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(lpfPoles1LightPosition, module, MegaGate::LPF_POLES_1_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(lpfPoles2LightPosition, module, MegaGate::LPF_POLES_2_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(lpfPoles3LightPosition, module, MegaGate::LPF_POLES_3_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(lpfPoles4LightPosition, module, MegaGate::LPF_POLES_4_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(hpfPoles1LightPosition, module, MegaGate::HPF_POLES_1_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(hpfPoles2LightPosition, module, MegaGate::HPF_POLES_2_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(hpfPoles3LightPosition, module, MegaGate::HPF_POLES_3_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(hpfPoles4LightPosition, module, MegaGate::HPF_POLES_4_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

@@ -44,7 +44,17 @@ struct VCA : BGModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam<LevelParamQuantity>(LEVEL1_PARAM, 0.0f, 1.0f, 0.8f, "Level 1");
 		configParam<LevelParamQuantity>(LEVEL2_PARAM, 0.0f, 1.0f, 0.8f, "Level 2");
-		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear");
+		configSwitch(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear", {"Disabled", "Enabled"});
+		configBypass(IN1_INPUT, OUT1_OUTPUT);
+		configBypass(IN2_INPUT, OUT2_OUTPUT);
+
+		configInput(CV1_INPUT, "Level 1 CV");
+		configInput(IN1_INPUT, "Signal 1");
+		configInput(CV2_INPUT, "Level 2 CV");
+		configInput(IN2_INPUT, "Signal 2");
+
+		configOutput(OUT1_OUTPUT, "Signal 1");
+		configOutput(OUT2_OUTPUT, "Signal 2");
 
 		sampleRateChange();
 	}

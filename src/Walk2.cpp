@@ -15,14 +15,14 @@ void Walk2::sampleRateChange() {
 	_historySteps = (historySeconds * APP->engine->getSampleRate()) / historyPoints;
 }
 
-json_t* Walk2::toJson(json_t* root) {
+json_t* Walk2::saveToJson(json_t* root) {
 	json_object_set_new(root, ZOOM_OUT_KEY, json_boolean(_zoomOut));
 	json_object_set_new(root, GRID_KEY, json_boolean(_drawGrid));
 	json_object_set_new(root, COLOR_KEY, json_integer(_traceColor));
 	return root;
 }
 
-void Walk2::fromJson(json_t* root) {
+void Walk2::loadFromJson(json_t* root) {
 	json_t* zo = json_object_get(root, ZOOM_OUT_KEY);
 	if (zo) {
 		_zoomOut = json_is_true(zo);
@@ -169,7 +169,7 @@ void Walk2::processAll(const ProcessArgs& args) {
 	_historyStep %= _historySteps;
 }
 
-struct Walk2Display : TransparentWidget {
+struct Walk2Display : DisplayWidget {
 	const int _insetAround = 4;
 
 	const NVGcolor _axisColor = nvgRGBA(0xff, 0xff, 0xff, 0x70);
@@ -179,7 +179,6 @@ struct Walk2Display : TransparentWidget {
 	const Vec _size;
 	const Vec _drawSize;
 	int _midX, _midY;
-	std::shared_ptr<Font> _font;
 	NVGcolor _traceColor = _defaultTraceColor;
 	Vec _dragLast;
 
@@ -187,12 +186,12 @@ struct Walk2Display : TransparentWidget {
 		Walk2* module,
 		Vec size
 	)
-	: _module(module)
+	: DisplayWidget(module)
+	, _module(module)
 	, _size(size)
 	, _drawSize(2 * (_size.x - 2 * _insetAround), 2 * (_size.y - 2 * _insetAround))
 	, _midX(_insetAround + _drawSize.x/2)
 	, _midY(_insetAround + _drawSize.y/2)
-	, _font(APP->window->loadFont(asset::plugin(pluginInstance, "res/fonts/inconsolata.ttf")))
 	{
 	}
 
@@ -227,11 +226,11 @@ struct Walk2Display : TransparentWidget {
 		}
 	}
 
-	void draw(const DrawArgs& args) override {
+	void drawOnce(const DrawArgs& args, bool screenshot, bool lit) override {
 		float strokeWidth = std::max(1.0f, 3.0f - getZoom());
 
-		drawBackground(args);
 		nvgSave(args.vg);
+		drawBackground(args);
 		nvgScissor(args.vg, _insetAround, _insetAround, _drawSize.x / 2, _drawSize.y / 2);
 		if (_module && _module->_zoomOut) {
 			nvgScale(args.vg, 0.5f, 0.5f);
@@ -248,7 +247,7 @@ struct Walk2Display : TransparentWidget {
 		}
 		drawAxes(args, strokeWidth);
 
-		if (_module) {
+		if (lit) {
 			switch (_module->_traceColor) {
 				case Walk2::ORANGE_TRACE_COLOR: {
 					_traceColor = nvgRGBA(0xff, 0x80, 0x00, 0xee);
@@ -545,9 +544,9 @@ struct Walk2Widget : BGModuleWidget {
 		addOutput(createOutput<Port24>(outYOutputPosition, module, Walk2::OUT_Y_OUTPUT));
 		addOutput(createOutput<Port24>(distanceOutputPosition, module, Walk2::DISTANCE_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(jumpLightPosition, module, Walk2::JUMP_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(sampleholdLightPosition, module, Walk2::SAMPLEHOLD_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(trackholdLightPosition, module, Walk2::TRACKHOLD_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(jumpLightPosition, module, Walk2::JUMP_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(sampleholdLightPosition, module, Walk2::SAMPLEHOLD_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(trackholdLightPosition, module, Walk2::TRACKHOLD_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

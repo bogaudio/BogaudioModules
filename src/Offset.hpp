@@ -8,20 +8,20 @@ extern Model* modelOffset;
 namespace bogaudio {
 
 struct Offset : DisableOutputLimitModule {
-	enum ParamIds {
+	enum ParamsIds {
 		OFFSET_PARAM,
 		SCALE_PARAM,
 		NUM_PARAMS
 	};
 
-	enum InputIds {
+	enum InputsIds {
 		OFFSET_INPUT,
 		SCALE_INPUT,
 		IN_INPUT,
 		NUM_INPUTS
 	};
 
-	enum OutputIds {
+	enum OutputsIds {
 		OUT_OUTPUT,
 		NUM_OUTPUTS
 	};
@@ -32,10 +32,17 @@ struct Offset : DisableOutputLimitModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "Offset", " V", 0.0f, 10.0f);
 		configParam<TenXSquaringParamQuantity>(SCALE_PARAM, -1.0f, 1.0f, 0.31623f, "Scale", "x");
+		configBypass(IN_INPUT, OUT_OUTPUT);
+
+		configInput(OFFSET_INPUT, "Offset CV");
+		configInput(SCALE_INPUT, "Scale CV");
+		configInput(IN_INPUT, "Signal");
+
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	int channels() override;
 	void processChannel(const ProcessArgs& args, int c) override;
 	float knobValue(Param& knob, Input& cv, int c) const;

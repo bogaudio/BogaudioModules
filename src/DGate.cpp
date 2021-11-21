@@ -149,8 +149,8 @@ struct DGateWidget : TriggerOnLoadModuleWidget {
 		addOutput(createOutput<Port24>(gateOutputPosition, module, DGate::GATE_OUTPUT));
 		addOutput(createOutput<Port24>(endOutputPosition, module, DGate::END_OUTPUT));
 
-		addChild(createLight<TinyLight<GreenLight>>(delayLightPosition, module, DGate::DELAY_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(gateLightPosition, module, DGate::GATE_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(delayLightPosition, module, DGate::DELAY_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(gateLightPosition, module, DGate::GATE_LIGHT));
 	}
 };
 

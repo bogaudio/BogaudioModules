@@ -56,6 +56,18 @@ struct VCM : DisableOutputLimitModule {
 		configParam<LevelParamQuantity>(LEVEL4_PARAM, 0.0f, 1.0f, 0.8f, "Level 4");
 		configParam<LevelParamQuantity>(MIX_PARAM, 0.0f, 1.0f, 0.8f, "Mix level");
 		configParam(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear");
+
+		configInput(IN1_INPUT, "Signal 1");
+		configInput(CV1_INPUT, "Level 1 CV");
+		configInput(IN2_INPUT, "Signal 2");
+		configInput(CV2_INPUT, "Level 2 CV");
+		configInput(IN3_INPUT, "Signal 3");
+		configInput(CV3_INPUT, "Level 3 CV");
+		configInput(IN4_INPUT, "Signal 4");
+		configInput(CV4_INPUT, "Level 4 CV");
+		configInput(MIX_CV_INPUT, "Mix level CV");
+
+		configOutput(MIX_OUTPUT, "Signal");
 	}
 
 	inline bool isLinear() { return params[LINEAR_PARAM].getValue() > 0.5f; }

@@ -43,7 +43,15 @@ struct CVD : BGModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(TIME_PARAM, 0.0f, 1.0f, 0.5f, "Time base", " s");
 		configParam(TIME_SCALE_PARAM, 0.0f, 2.0f, 1.0f, "Time scale", "", 10.0f, 0.1f);
+		paramQuantities[TIME_SCALE_PARAM]->snapEnabled = true;
 		configParam(MIX_PARAM, -1.0f, 1.0f, 0.0f, "Dry wet mix", "%", 0.0f, 100.0f);
+		configBypass(IN_INPUT, OUT_OUTPUT);
+
+		configInput(TIME_INPUT, "Time CV");
+		configInput(MIX_INPUT, "Dry/wet CV");
+		configInput(IN_INPUT, "Signal");
+
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
 	void sampleRateChange() override;

@@ -136,7 +136,15 @@ struct Arp : BGModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(MODE_PARAM, 0.0f, 6.0f, 0.0f, "Playback mode");
 		configParam<GateLengthParamQuantity>(GATE_LENGTH_PARAM, 0.0f, 1.0f, 0.5f, "Gate length");
-		configParam(HOLD_PARAM, 0.0f, 1.0f, 0.0f, "Hold/latch");
+		configSwitch(HOLD_PARAM, 0.0f, 1.0f, 0.0f, "Hold/latch", {"Disabled", "Enabled"});
+
+		configInput(CLOCK_INPUT, "Clock");
+		configInput(RESET_INPUT, "Reset");
+		configInput(PITCH_INPUT, "Pitch (1V/octave)");
+		configInput(GATE_INPUT, "Gate");
+
+		configOutput(PITCH_OUTPUT, "Pitch (1V/octave)");
+		configOutput(GATE_OUTPUT, "Gate");
 
 		_currentNotes = new NoteSet();
 		_playbackNotes = new NoteSet(_currentNotes);
@@ -148,8 +156,8 @@ struct Arp : BGModule {
 
 	void reset() override;
 	void sampleRateChange() override;
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	int channels() override;
 	void addChannel(int c) override;
 	void removeChannel(int c) override;

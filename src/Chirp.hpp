@@ -89,9 +89,17 @@ struct Chirp : BGModule {
 		configParam<TimeParamQuantity>(TIME_PARAM, 0.0f, 1.0f, 0.30899415, "Time", "s");
 		configParam<FrequencyParamQuantity>(FREQUENCY1_PARAM, -3.0f, 6.0f, -3.0f, "Frequency 1", " Hz");
 		configParam<FrequencyParamQuantity>(FREQUENCY2_PARAM, -3.0f, 6.0f, 6.0f, "Frequency 2", " Hz");
-		configParam(TRIGGER_PARAM, 0.0f, 1.0f, 0.0f, "Trigger");
-		configParam(EXPONENTIAL_PARAM, 0.0f, 1.0f, 1.0f, "Exponential");
-		configParam(LOOP_PARAM, 0.0f, 1.0f, 1.0f, "Loop");
+		configButton(TRIGGER_PARAM, "Trigger");
+		configButton(EXPONENTIAL_PARAM, "Exponential");
+		configButton(LOOP_PARAM, "Loop");
+
+		configInput(FREQUENCY1_INPUT, "Frequency 1 (1V/octave)");
+		configInput(FREQUENCY2_INPUT, "Frequency 2 (1V/octave)");
+		configInput(TIME_INPUT, "Time CV");
+		configInput(TRIGGER_INPUT, "Trigger");
+
+		configOutput(EOC_OUTPUT, "End-of-cycle trigger");
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
 	void reset() override;

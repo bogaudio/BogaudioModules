@@ -8,12 +8,12 @@ const float Mute8::maxDecibels = 0.0f;
 const float Mute8::minDecibels = Amplifier::minDecibels;
 const float Mute8::slewTimeMS = 5.0f;
 
-json_t* Mute8::toJson(json_t* root) {
+json_t* Mute8::saveToJson(json_t* root) {
 	json_object_set_new(root, LATCHING_CVS, json_boolean(_latchingCVs));
 	return root;
 }
 
-void Mute8::fromJson(json_t* root) {
+void Mute8::loadFromJson(json_t* root) {
 	json_t* l = json_object_get(root, LATCHING_CVS);
 	if (l) {
 		_latchingCVs = json_is_true(l);
@@ -179,14 +179,14 @@ struct Mute8Widget : BGModuleWidget {
 		addOutput(createOutput<Port24>(output7OutputPosition, module, Mute8::OUTPUT7_OUTPUT));
 		addOutput(createOutput<Port24>(output8OutputPosition, module, Mute8::OUTPUT8_OUTPUT));
 
-		addChild(createLight<SmallLight<GreenLight>>(mute1LightPosition, module, Mute8::MUTE1_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(mute2LightPosition, module, Mute8::MUTE2_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(mute3LightPosition, module, Mute8::MUTE3_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(mute4LightPosition, module, Mute8::MUTE4_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(mute5LightPosition, module, Mute8::MUTE5_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(mute6LightPosition, module, Mute8::MUTE6_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(mute7LightPosition, module, Mute8::MUTE7_LIGHT));
-		addChild(createLight<SmallLight<GreenLight>>(mute8LightPosition, module, Mute8::MUTE8_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(mute1LightPosition, module, Mute8::MUTE1_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(mute2LightPosition, module, Mute8::MUTE2_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(mute3LightPosition, module, Mute8::MUTE3_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(mute4LightPosition, module, Mute8::MUTE4_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(mute5LightPosition, module, Mute8::MUTE5_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(mute6LightPosition, module, Mute8::MUTE6_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(mute7LightPosition, module, Mute8::MUTE7_LIGHT));
+		addChild(createLight<BGSmallLight<GreenLight>>(mute8LightPosition, module, Mute8::MUTE8_LIGHT));
 	}
 
 	void contextMenu(Menu* menu) override {

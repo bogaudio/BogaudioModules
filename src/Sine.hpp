@@ -53,13 +53,20 @@ struct Sine : VCOBase {
 	{
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam<VCOFrequencyParamQuantity>(FREQUENCY_PARAM, -3.0f, 6.0f, 0.0f, "Frequency", " Hz");
-		configParam(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow mode");
+		configButton(SLOW_PARAM, "Slow mode");
 		configParam(FM_DEPTH_PARAM, 0.0f, 1.0f, 0.0f, "FM depth", "%", 0.0f, 100.0f);
 		configParam(PHASE_PARAM, -1.0f, 1.0f, 0.0f, "Phase offset", "º", 0.0f, 180.0f);
+
+		configInput(PITCH_INPUT, "Pitch (1V/octave)");
+		configInput(FM_INPUT, "Frequency modulation");
+		configInput(PHASE_INPUT, "Phase CV");
+		configInput(SYNC_INPUT, "Sync");
+
+		configOutput(OUT_OUTPUT, "Signal");
 	}
 
-	json_t* toJson(json_t* root) override;
-	void fromJson(json_t* root) override;
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	bool active() override;
 	void modulate() override;
 	void modulateChannel(int c) override;

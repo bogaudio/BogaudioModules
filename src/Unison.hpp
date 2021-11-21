@@ -33,7 +33,15 @@ struct Unison : BGModule {
 	Unison() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(CHANNELS_PARAM, 1.0f, 16.0f, 1.0f, "Channels");
+		paramQuantities[CHANNELS_PARAM]->snapEnabled = true;
 		configParam(DETUNE_PARAM, 0.0f, maxDetuneCents, 0.0f, "Detune");
+
+		configInput(DETUNE_INPUT, "Detune CV");
+		configInput(PITCH_INPUT, "Pitch (1V/octave)");
+		configInput(GATE_INPUT, "Gate");
+
+		configOutput(PITCH_OUTPUT, "Pitch (1V/octave)");
+		configOutput(GATE_OUTPUT, "Gate");
 	}
 
 	void modulate() override;

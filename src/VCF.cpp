@@ -75,7 +75,7 @@ float VCF::Engine::next(float sample) {
 	return _finalHP.next(out);
 }
 
-json_t* VCF::toJson(json_t* root) {
+json_t* VCF::saveToJson(json_t* root) {
 	switch (_bandwidthMode) {
 		case MultimodeFilter::LINEAR_BANDWIDTH_MODE: {
 			json_object_set_new(root, BANDWIDTH_MODE_KEY, json_string(LINEAR_BANDWIDTH_MODE_KEY));
@@ -90,7 +90,7 @@ json_t* VCF::toJson(json_t* root) {
 	return root;
 }
 
-void VCF::fromJson(json_t* root) {
+void VCF::loadFromJson(json_t* root) {
 	json_t* bwm = json_object_get(root, BANDWIDTH_MODE_KEY);
 	if (bwm) {
 		if (strcmp(json_string_value(bwm), LINEAR_BANDWIDTH_MODE_KEY) == 0) {
@@ -217,7 +217,6 @@ struct VCFWidget : BGModuleWidget {
 		{
 			auto w = createParam<Knob16>(modeParamPosition, module, VCF::MODE_PARAM);
 			auto k = dynamic_cast<SvgKnob*>(w);
-			k->snap = true;
 			float a = (22.5 / 180.0) * M_PI;
 			k->minAngle = a;
 			k->maxAngle = M_PI - a;

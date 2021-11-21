@@ -162,10 +162,10 @@ struct ShaperPlusWidget : TriggerOnLoadModuleWidget {
 		addOutput(createOutput<Port24>(decayOutputPosition, module, ShaperPlus::DECAY_OUTPUT));
 		addOutput(createOutput<Port24>(offOutputPosition, module, ShaperPlus::OFF_OUTPUT));
 
-		addChild(createLight<TinyLight<GreenLight>>(attackLightPosition, module, ShaperPlus::ATTACK_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(onLightPosition, module, ShaperPlus::ON_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(decayLightPosition, module, ShaperPlus::DECAY_LIGHT));
-		addChild(createLight<TinyLight<GreenLight>>(offLightPosition, module, ShaperPlus::OFF_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(attackLightPosition, module, ShaperPlus::ATTACK_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(onLightPosition, module, ShaperPlus::ON_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(decayLightPosition, module, ShaperPlus::DECAY_LIGHT));
+		addChild(createLight<BGTinyLight<GreenLight>>(offLightPosition, module, ShaperPlus::OFF_LIGHT));
 	}
 };
 
