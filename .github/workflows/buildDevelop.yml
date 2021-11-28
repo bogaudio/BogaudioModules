@@ -14,10 +14,10 @@ jobs:
     - uses: actions/checkout@master
     - name: Build Linux
       uses: ./.github/actions/build_linux
-  buildWindows:
-    name: Build Windows
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - name: Build Windows
-      uses: ./.github/actions/build_win
+  # buildWindows:
+  #   name: Build Windows
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@master
+  #   - name: Build Windows
+  #     uses: ./.github/actions/build_win
