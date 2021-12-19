@@ -14,3 +14,4 @@ unzip -o rack-sdk.zip
 rm rack-sdk.zip
 
 make dist
+chmod 755 dist/*vcvplugin

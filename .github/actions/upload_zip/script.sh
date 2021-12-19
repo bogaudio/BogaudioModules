@@ -16,8 +16,6 @@ UPLOAD_URL=$(jq -r .upload_url release.json)
 
 ASSET_PATH=$(ls dist/*.vcvplugin)
 ls -l "${ASSET_PATH}"
-chmod 755 "${ASSET_PATH}"
-ls -l "${ASSET_PATH}"
 
 curl --silent --show-error --fail -i \
     --header "Authorization: token ${GITHUB_TOKEN}" \
