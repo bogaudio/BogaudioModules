@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -eu
+set -eux
 
 GITHUB_API_URL=https://api.github.com
 
@@ -15,6 +15,7 @@ curl -o release.json \
 UPLOAD_URL=$(jq -r .upload_url release.json)
 
 ASSET_PATH=$(ls dist/*.vcvplugin)
+ls -l "${ASSET_PATH}"
 
 curl -i \
     --header "Authorization: token ${GITHUB_TOKEN}" \
