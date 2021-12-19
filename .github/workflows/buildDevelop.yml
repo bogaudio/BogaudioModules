@@ -5,7 +5,7 @@ on:
     - build_scripts_test
 name: Develop
 env:
-  RACK_SDK_VERSION: 2.beta.1
+  RACK_SDK_VERSION: 2.0.4
 jobs:
   buildLinux:
     name: Build Linux

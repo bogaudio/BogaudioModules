@@ -3,7 +3,7 @@ on:
     types: [published]
 name: Release
 env:
-  RACK_SDK_VERSION: 1.1.6
+  RACK_SDK_VERSION: 2.0.4
 jobs:
   buildLinux:
     name: Build Linux
