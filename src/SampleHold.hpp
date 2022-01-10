@@ -77,9 +77,20 @@ struct SampleHold : BGModule {
 	void reset() override;
 	json_t* saveToJson(json_t* root) override;
 	void loadFromJson(json_t* root) override;
-	void modulateChannel(int c) override;
+	void modulate() override;
 	void processAll(const ProcessArgs& args) override;
-	void handleChannel(
+	int sectionChannels(
+		Input& triggerInput,
+		Input* altTriggerInput,
+		Input& in
+	);
+	void modulateSection(
+		Input& triggerInput,
+		Input* altTriggerInput,
+		Input& in,
+		SlewLimiter* _outputSL
+	);
+	void processSection(
 		Param& trackParam,
 		Param& invertParam,
 		Trigger* trigger,

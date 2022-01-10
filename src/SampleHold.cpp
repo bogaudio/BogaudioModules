@@ -52,13 +52,23 @@ void SampleHold::loadFromJson(json_t* root) {
 	}
 }
 
-void SampleHold::modulateChannel(int c) {
-	_outputSL1[c].setParams(APP->engine->getSampleRate(), _smoothMS, 10.0f);
-	_outputSL2[c].setParams(APP->engine->getSampleRate(), _smoothMS, 10.0f);
+void SampleHold::modulate() {
+	modulateSection(
+		inputs[TRIGGER1_INPUT],
+		NULL,
+		inputs[IN1_INPUT],
+		_outputSL1
+	);
+	modulateSection(
+		inputs[TRIGGER2_INPUT],
+		&inputs[TRIGGER1_INPUT],
+		inputs[IN2_INPUT],
+		_outputSL2
+	);
 }
 
 void SampleHold::processAll(const ProcessArgs& args) {
-	handleChannel(
+	processSection(
 		params[TRACK1_PARAM],
 		params[INVERT1_PARAM],
 		_trigger1,
@@ -70,7 +80,7 @@ void SampleHold::processAll(const ProcessArgs& args) {
 		_outputSL1,
 		outputs[OUT1_OUTPUT]
 	);
-	handleChannel(
+	processSection(
 		params[TRACK2_PARAM],
 		params[INVERT2_PARAM],
 		_trigger2,
@@ -84,7 +94,36 @@ void SampleHold::processAll(const ProcessArgs& args) {
 	);
 }
 
-void SampleHold::handleChannel(
+int SampleHold::sectionChannels(
+	Input& triggerInput,
+	Input* altTriggerInput,
+	Input& in
+) {
+	int n = 1;
+	if (_polyInputID == IN1_INPUT) {
+		n = in.getChannels();
+	}
+	else if (triggerInput.isConnected()) {
+		n = triggerInput.getChannels();
+	} else if (altTriggerInput) {
+		n = altTriggerInput->getChannels();
+	}
+	return n;
+}
+
+void SampleHold::modulateSection(
+	Input& triggerInput,
+	Input* altTriggerInput,
+	Input& in,
+	SlewLimiter* outputSL
+) {
+	int n = sectionChannels(triggerInput, altTriggerInput, in);
+	for (int i = 0; i < n; ++i) {
+		outputSL[i].setParams(APP->engine->getSampleRate(), _smoothMS, 10.0f);
+	}
+}
+
+void SampleHold::processSection(
 	Param& trackParam,
 	Param& invertParam,
 	Trigger* trigger,
@@ -96,16 +135,7 @@ void SampleHold::handleChannel(
 	SlewLimiter* outputSL,
 	Output& out
 ) {
-	int n = 0;
-	if (_polyInputID == IN1_INPUT) {
-		n = in.getChannels();
-	}
-	else if (triggerInput.isConnected()) {
-		n = triggerInput.getChannels();
-	} else if (altTriggerInput) {
-		n = altTriggerInput->getChannels();
-	}
-	n = std::max(1, n);
+	int n = sectionChannels(triggerInput, altTriggerInput, in);
 	out.setChannels(n);
 
 	for (int i = 0; i < n; ++i) {
