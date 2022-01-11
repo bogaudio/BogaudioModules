@@ -5,15 +5,29 @@
 #include <fstream>
 #include <cstdio>
 
+Skins globalSkins;
+std::mutex globalSkinsLock;
+
 Skins& Skins::skins() {
-	static Skins instance;
-	std::lock_guard<std::mutex> lock(instance._instanceLock);
-	if (!instance._loaded) {
-		instance.loadSkins();
-		instance.loadCssValues();
-		instance._loaded = true;
+	// Hacky/blind attempt to fix https://github.com/bogaudio/BogaudioModules/issues/195.
+	// Replace this totally correct scoped static instance with a global,
+	// on the chance it will be handled more simply by the compiler.
+	// static Skins instance;
+	// std::lock_guard<std::mutex> lock(instance._instanceLock);
+	// if (!instance._loaded) {
+	// 	instance.loadSkins();
+	// 	instance.loadCssValues();
+	// 	instance._loaded = true;
+	// }
+	// return instance;
+
+	std::lock_guard<std::mutex> lock(globalSkins._instanceLock);
+	if (!globalSkins._loaded) {
+		globalSkins.loadSkins();
+		globalSkins.loadCssValues();
+		globalSkins._loaded = true;
 	}
-	return instance;
+	return globalSkins;
 }
 
 bool Skins::validKey(const std::string& key) const {
