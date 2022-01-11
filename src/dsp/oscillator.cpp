@@ -171,10 +171,15 @@ void SquareOscillator::setPulseWidth(float pw) {
 	else if (pw <= minPulseWidth) {
 		pw = minPulseWidth;
 	}
-	_pulseWidth = cyclePhase * pw;
+	_nextPulseWidth = cyclePhase * pw;
 }
 
 float SquareOscillator::nextForPhase(phase_t phase) {
+	phase_t cycle = phase / cyclePhase;
+	if (_lastCycle != cycle) {
+		_lastCycle = cycle;
+		_pulseWidth = _nextPulseWidth;
+	}
 	phase %= cyclePhase;
 
 	if (positive) {
@@ -205,19 +210,27 @@ void BandLimitedSquareOscillator::setPulseWidth(float pw, bool dcCorrection) {
 	else if (pw <= minPulseWidth) {
 		pw = minPulseWidth;
 	}
-	_pulseWidth = cyclePhase * pw;
+	_nextPulseWidth = cyclePhase * pw;
 
 	if (pw > 0.5) {
-		_offset = 2.0f * pw - 1.0f;
+		_nextOffset = 2.0f * pw - 1.0f;
 	}
 	else {
-		_offset = -(1.0f - 2.0f * pw);
+		_nextOffset = -(1.0f - 2.0f * pw);
 	}
 
-	_dcOffset = _dcCorrection ? 1.0f - 2.0f * pw : 0.0f;
+	_nextDcOffset = _dcCorrection ? 1.0f - 2.0f * pw : 0.0f;
 }
 
 float BandLimitedSquareOscillator::nextForPhase(phase_t phase) {
+	phase_t cycle = phase / cyclePhase;
+	if (_lastCycle != cycle) {
+		_lastCycle = cycle;
+		_pulseWidth = _nextPulseWidth;
+		_offset = _nextOffset;
+		_dcOffset = _nextDcOffset;
+	}
+
 	float sample = -BandLimitedSawOscillator::nextForPhase(phase);
 	sample += BandLimitedSawOscillator::nextForPhase(phase - _pulseWidth);
 	return sample + _offset + _dcOffset;
