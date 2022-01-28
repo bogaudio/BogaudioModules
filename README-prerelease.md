@@ -1160,6 +1160,8 @@ The current step can be selected many ways:
 
 The leftmost bottom output emits a trigger whenever the step changes.  The outputs below each channel selector emit a trigger when that step is selected.
 
+If context-menu option "Save last selected step to patch" is enabled, PGMR will remember the last selected step in the patch, and restore it on patch load.  This is the last step selected by pressing a step button, or triggering a step -- any effect from CLOCK or SELECT always follows the current state of the patch as it runs.
+
 Any PGMRX expanders must be positioned to the right of, and ajacent to, the base PGMR module, or the previous PGMRX in the chain.  See <a href="#expanders">notes on expanders</a>.
 
 _Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphony defined by the CLOCK input.  This can be set to the SELECT CV input on the context menu.

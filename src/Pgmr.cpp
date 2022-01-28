@@ -2,6 +2,9 @@
 #include "Pgmr.hpp"
 
 #define SELECT_TRIGGERS "SELECT_TRIGGERS"
+#define SAVE_LAST_TRIGGERED_TO_PATCH "save_last_triggered_to_patch"
+#define LAST_TRIGGERED_STEP "last_triggered_step"
+#define LAST_TRIGGERED_ELEMENTS_COUNT "last_triggered_elements_count"
 
 void Pgmr::reset() {
 	std::lock_guard<SpinLock> lock(_elementsLock);
@@ -22,14 +25,48 @@ void Pgmr::sampleRateChange() {
 json_t* Pgmr::saveToJson(json_t* root) {
 	root = OutputRangeAddressableSequenceModule::saveToJson(root);
 	json_object_set_new(root, SELECT_TRIGGERS, json_boolean(_selectTriggers));
+	json_object_set_new(root, SAVE_LAST_TRIGGERED_TO_PATCH, json_boolean(_saveLastTriggeredToPatch));
+	if (_saveLastTriggeredToPatch) {
+		json_t* a = json_array();
+		for (int c = 0; c < maxChannels; ++c) {
+			json_array_append_new(a, json_integer(_step[c]));
+		}
+		json_object_set_new(root, LAST_TRIGGERED_STEP, a);
+		json_object_set_new(root, LAST_TRIGGERED_ELEMENTS_COUNT, json_integer(_elements.size()));
+	}
 	return root;
 }
 
 void Pgmr::loadFromJson(json_t* root) {
 	OutputRangeAddressableSequenceModule::loadFromJson(root);
+
 	json_t* st = json_object_get(root, SELECT_TRIGGERS);
 	if (st) {
 		_selectTriggers = json_is_true(st);
+	}
+
+	json_t* sl = json_object_get(root, SAVE_LAST_TRIGGERED_TO_PATCH);
+	if (sl) {
+		_saveLastTriggeredToPatch = json_is_true(sl);
+		if (_saveLastTriggeredToPatch) {
+			json_t* a = json_object_get(root, LAST_TRIGGERED_STEP);
+			json_t* sz = json_object_get(root, LAST_TRIGGERED_ELEMENTS_COUNT);
+			if (a && json_array_size(a) == maxChannels && sz) {
+				_restoreLastTriggeredExpectedElementsN = json_integer_value(sz);
+				std::vector<int> restoreSteps(maxChannels);
+				for (int c = 0; c < maxChannels; ++c) {
+					json_t* s = json_array_get(a, c);
+					if (s) {
+						restoreSteps[c] = json_integer_value(s);
+					}
+				}
+				_restoreLastTriggered = new std::function<void()>([this, restoreSteps]() {
+					for (int c = 0; c < maxChannels; ++c) {
+						setStep(c, restoreSteps[c], _elements.size());
+					}
+				});
+			}
+		}
 	}
 }
 
@@ -122,6 +159,14 @@ void Pgmr::processChannel(const ProcessArgs& args, int c) {
 		for (int i = 0; i < stepsN; ++i) {
 			steps[i]->selectedLight.value = steps[i]->lightSum * _inverseChannels;
 		}
+	}
+}
+
+void Pgmr::elementsChanged() {
+	if (_restoreLastTriggered && (int)_elements.size() == _restoreLastTriggeredExpectedElementsN) {
+		(*_restoreLastTriggered)();
+		delete _restoreLastTriggered;
+		_restoreLastTriggered = NULL;
 	}
 }
 
@@ -237,6 +282,8 @@ struct PgmrWidget : AddressableSequenceBaseModuleWidget {
 		so->addItem(OptionMenuItem("Gate", [m]() { return !m->_selectTriggers; }, [m]() { m->_selectTriggers = false; }));
 		so->addItem(OptionMenuItem("Trigger", [m]() { return m->_selectTriggers; }, [m]() { m->_selectTriggers = true; }));
 		OptionsMenuItem::addToMenu(so, menu);
+
+		menu->addChild(new BoolOptionMenuItem("Save last selected step to patch", [m]() { return &m->_saveLastTriggeredToPatch; }));
 
 		OutputRangeOptionMenuItem::addOutputRangeOptionsToMenu(module, menu);
 	}

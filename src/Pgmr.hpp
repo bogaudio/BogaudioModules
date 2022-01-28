@@ -1,6 +1,7 @@
 #pragma once
 
 #include <algorithm>
+#include <functional>
 
 #include "Pgmr_shared.hpp"
 
@@ -70,6 +71,9 @@ struct Pgmr : PgmrBase {
 	bool _selectTriggers = false;
 	int _lastSteps[maxChannels] {};
 	rack::dsp::PulseGenerator _allPulseGens[maxChannels];
+	bool _saveLastTriggeredToPatch = false;
+	std::function<void()>* _restoreLastTriggered = NULL;
+	int _restoreLastTriggeredExpectedElementsN = 0;
 
 	Pgmr() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
@@ -123,7 +127,12 @@ struct Pgmr : PgmrBase {
 		registerBase();
 		setExpanderModelPredicate([](Model* m) { return m == modelPgmrX; });
 
-		std::fill_n(_lastSteps, maxChannels, -1);
+		std::fill_n(_lastSteps, maxChannels, 0);
+	}
+	virtual ~Pgmr() {
+		if (_restoreLastTriggered) {
+			delete _restoreLastTriggered;
+		}
 	}
 
 	void reset() override;
@@ -133,6 +142,7 @@ struct Pgmr : PgmrBase {
 	void modulate() override;
 	void processAlways(const ProcessArgs& args) override;
 	void processChannel(const ProcessArgs& args, int c) override;
+	void elementsChanged() override;
 };
 
 } // namespace bogaudio
