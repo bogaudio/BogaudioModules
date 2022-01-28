@@ -17,7 +17,7 @@ struct AddressableSequenceModule : BGModule {
 	Trigger _reset[maxChannels];
 	Trigger _selectTrigger[maxChannels];
 	bogaudio::dsp::Timer _timer[maxChannels];
-	int _step[maxChannels];
+	int _step[maxChannels] {};
 	float _select[maxChannels] {};
 	bool _selectOnClock = false;
 	bool _triggeredSelect = false;

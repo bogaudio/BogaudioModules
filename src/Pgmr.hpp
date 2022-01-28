@@ -1,5 +1,7 @@
 #pragma once
 
+#include <algorithm>
+
 #include "Pgmr_shared.hpp"
 
 namespace bogaudio {
@@ -120,6 +122,8 @@ struct Pgmr : PgmrBase {
 		});
 		registerBase();
 		setExpanderModelPredicate([](Model* m) { return m == modelPgmrX; });
+
+		std::fill_n(_lastSteps, maxChannels, -1);
 	}
 
 	void reset() override;
