@@ -55,6 +55,7 @@ struct Mix2 : LinearCVMixerModule {
 	float _leftRms = 0.0f;
 	float _rightRmsSum = 0.0f;
 	float _rightRms = 0.0f;
+	int _polyChannelOffset = -1;
 
 	Mix2() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
@@ -70,6 +71,8 @@ struct Mix2 : LinearCVMixerModule {
 		configOutput(R_OUTPUT, "Right signal");
 	}
 
+	json_t* saveToJson(json_t* root) override;
+	void loadFromJson(json_t* root) override;
 	void sampleRateChange() override;
 	bool active() override;
 	int channels() override;

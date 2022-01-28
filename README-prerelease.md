@@ -673,9 +673,9 @@ _When <a href="#bypassing">bypassed</a>:_ passes IN unmodified to OUT.
 
 A stereo version of MIX1.  The left input is normalled to the right.
 
-_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the L input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the L input.  However, as on MIX8 there is a poly spread feature -- if this is enabled, the module becomes monophonic, and will get the left and right inputs from a pair of polyphonic channels (channels 1 and 2, 3 and 4, etc) on the input L.
 
-_When <a href="#bypassing">bypassed</a>:_ passes left and right inputs unmodified to the corresponding outputs; left is passed to right if right is unpatched.
+_When <a href="#bypassing">bypassed</a>:_ passes left and right inputs unmodified to the corresponding outputs; left is passed to right if the right input is unpatched.
 
 #### <a name="umix"></a> UMIX
 

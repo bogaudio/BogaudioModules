@@ -1,6 +1,20 @@
 
 #include "Mix2.hpp"
 
+#define POLY_OFFSET "poly_channel_offset"
+
+json_t* Mix2::saveToJson(json_t* root) {
+	json_object_set_new(root, POLY_OFFSET, json_integer(_polyChannelOffset));
+	return root;
+}
+
+void Mix2::loadFromJson(json_t* root) {
+	json_t* o = json_object_get(root, POLY_OFFSET);
+	if (o) {
+		_polyChannelOffset = json_integer_value(o);
+	}
+}
+
 void Mix2::sampleRateChange() {
 	float sr = APP->engine->getSampleRate();
 	for (int c = 0; c < _channels; ++c) {
@@ -14,6 +28,9 @@ bool Mix2::active() {
 }
 
 int Mix2::channels() {
+	if (_polyChannelOffset >= 0) {
+		return 1;
+	}
 	return inputs[L_INPUT].getChannels();
 }
 
@@ -39,7 +56,13 @@ void Mix2::processAlways(const ProcessArgs& args) {
 void Mix2::processChannel(const ProcessArgs& args, int c) {
 	Engine& e = *_engines[c];
 
-	float left = inputs[L_INPUT].getVoltage(c);
+	float left = 0.0f;
+	if (_polyChannelOffset >= 0) {
+		left = inputs[L_INPUT].getPolyVoltage(_polyChannelOffset);
+	}
+	else {
+		left = inputs[L_INPUT].getVoltage(c);
+	}
 	e.left.next(left, false, c, _linearCV);
 	_leftRmsSum += e.left.rms;
 	outputs[L_OUTPUT].setChannels(_channels);
@@ -48,6 +71,9 @@ void Mix2::processChannel(const ProcessArgs& args, int c) {
 	float right = left;
 	if (inputs[R_INPUT].isConnected()) {
 		right = inputs[R_INPUT].getVoltage(c);
+	}
+	else if (_polyChannelOffset >= 0) {
+		right = inputs[L_INPUT].getPolyVoltage(_polyChannelOffset + 1);
 	}
 	e.right.next(right, false, c, _linearCV);
 	_rightRmsSum += e.right.rms;
@@ -111,7 +137,24 @@ struct Mix2Widget : LinearCVMixerWidget {
 		addInput(createInput<Port24>(rInputPosition, module, Mix2::R_INPUT));
 
 		addOutput(createOutput<Port24>(lOutputPosition, module, Mix2::L_OUTPUT));
-		addOutput(createOutput<Port24>(rOutputPosition, module, Mix2::R_OUTPUT));	}
+		addOutput(createOutput<Port24>(rOutputPosition, module, Mix2::R_OUTPUT));
+	}
+
+	void contextMenu(Menu* menu) override {
+		auto m = dynamic_cast<Mix2*>(module);
+		assert(m);
+		OptionsMenuItem* mi = new OptionsMenuItem("Input 1 poly spread");
+		mi->addItem(OptionMenuItem("None (normal polyphonic)", [m]() { return m->_polyChannelOffset == -1; }, [m]() { m->_polyChannelOffset = -1; }));
+		mi->addItem(OptionMenuItem("Channels 1-2", [m]() { return m->_polyChannelOffset == 0; }, [m]() { m->_polyChannelOffset = 0; }));
+		mi->addItem(OptionMenuItem("Channels 3-4", [m]() { return m->_polyChannelOffset == 2; }, [m]() { m->_polyChannelOffset = 2; }));
+		mi->addItem(OptionMenuItem("Channels 5-6", [m]() { return m->_polyChannelOffset == 4; }, [m]() { m->_polyChannelOffset = 4; }));
+		mi->addItem(OptionMenuItem("Channels 7-8", [m]() { return m->_polyChannelOffset == 6; }, [m]() { m->_polyChannelOffset = 6; }));
+		mi->addItem(OptionMenuItem("Channels 9-10", [m]() { return m->_polyChannelOffset == 8; }, [m]() { m->_polyChannelOffset = 8; }));
+		mi->addItem(OptionMenuItem("Channels 11-12", [m]() { return m->_polyChannelOffset == 10; }, [m]() { m->_polyChannelOffset = 10; }));
+		mi->addItem(OptionMenuItem("Channels 13-14", [m]() { return m->_polyChannelOffset == 12; }, [m]() { m->_polyChannelOffset = 12; }));
+		mi->addItem(OptionMenuItem("Channels 15-16", [m]() { return m->_polyChannelOffset == 14; }, [m]() { m->_polyChannelOffset = 14; }));
+		OptionsMenuItem::addToMenu(mi, menu);
+	}
 };
 
 Model* modelMix2 = createModel<Mix2, Mix2Widget>("Bogaudio-Mix2", "MIX2", "Stereo fader/amplifier with CV-controllable mute", "VCA", "Polyphonic");
