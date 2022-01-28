@@ -127,7 +127,7 @@ struct Pgmr : PgmrBase {
 		registerBase();
 		setExpanderModelPredicate([](Model* m) { return m == modelPgmrX; });
 
-		std::fill_n(_lastSteps, maxChannels, 0);
+		std::fill_n(_lastSteps, maxChannels, -1);
 	}
 	virtual ~Pgmr() {
 		if (_restoreLastTriggered) {
