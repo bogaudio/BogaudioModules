@@ -218,7 +218,7 @@ struct SquareOscillator : Phasor {
 	static constexpr float minPulseWidth = 0.03f;
 	static constexpr float maxPulseWidth = 1.0f - minPulseWidth;
 	static constexpr float defaultPulseWidth = 0.5f;
-	float _pulseWidthInput;
+	float _pulseWidthInput = -1.0f;
 	phase_t _lastCycle = -1;
 	phase_t _pulseWidth = cyclePhase * defaultPulseWidth, _nextPulseWidth = cyclePhase * defaultPulseWidth;
 	bool positive = true;
@@ -238,7 +238,7 @@ struct SquareOscillator : Phasor {
 struct BandLimitedSquareOscillator : BandLimitedSawOscillator {
 	const float minPulseWidth = 0.03f;
 	const float maxPulseWidth = 1.0f - minPulseWidth;
-	float _pulseWidthInput= -1.0f;
+	float _pulseWidthInput = -1.0f;
 	bool _dcCorrection = false;
 	phase_t _lastCycle = -1;
 	phase_delta_t _pulseWidth = 0, _nextPulseWidth = 0;
