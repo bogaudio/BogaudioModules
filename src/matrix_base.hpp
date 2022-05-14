@@ -12,7 +12,8 @@ namespace bogaudio {
 struct MatrixBaseModule : BGModule {
 	enum Clipping {
 		SOFT_CLIPPING,
-		HARD_CLIPPING
+		HARD_CLIPPING,
+		NO_CLIPPING
 	};
 
 	Clipping _clippingMode = SOFT_CLIPPING;

@@ -775,7 +775,7 @@ A 4x4 channel matrix mixer.  Each input can be routed with an independent level 
 
 *Note that the matrix knobs are attenuverters, and default to zero.*  That means there will be no output, regardless of the inputs, until some knobs are changed to non-zero values.  The knobs can be set to unipolar mode, as below; they still default to zero.
 
-Saturation (soft clipping) limits each output to +/-12V.  This can be changed to a hard clip at +/-12V on the context menu ("Output clipping") -- as described on UMIX, this is mode is better if you need to precisely sum CVs.
+Saturation (soft clipping) limits each output to +/-12V.  This can be changed to a hard clip at +/-12V on the context menu ("Output clipping") -- as described on UMIX, this is mode is better if you need to precisely sum CVs.  Clipping may also be disabled entirely by setting "Output clipping" to "None".
 
 Another context menu option allows the input gains to be reduced by up to 12db.
 

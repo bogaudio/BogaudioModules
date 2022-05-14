@@ -20,7 +20,7 @@ void MatrixBaseModule::loadFromJson(json_t* root) {
 	json_t* c = json_object_get(root, CLIPPING_MODE);
 	if (c) {
 		_clippingMode = (Clipping)json_integer_value(c);
-		if (_clippingMode != HARD_CLIPPING) {
+		if (_clippingMode != HARD_CLIPPING && _clippingMode != NO_CLIPPING) {
 			_clippingMode = SOFT_CLIPPING;
 		}
 	}
@@ -54,6 +54,7 @@ void MatrixBaseModuleWidget::contextMenu(Menu* menu) {
 	OptionsMenuItem* c = new OptionsMenuItem("Output clipping");
 	c->addItem(OptionMenuItem("Soft/saturated (better for audio)", [m]() { return m->_clippingMode == MatrixBaseModule::SOFT_CLIPPING; }, [m]() { m->_clippingMode = MatrixBaseModule::SOFT_CLIPPING; }));
 	c->addItem(OptionMenuItem("Hard/clipped (better for CV)", [m]() { return m->_clippingMode == MatrixBaseModule::HARD_CLIPPING; }, [m]() { m->_clippingMode = MatrixBaseModule::HARD_CLIPPING; }));
+	c->addItem(OptionMenuItem("None", [m]() { return m->_clippingMode == MatrixBaseModule::NO_CLIPPING; }, [m]() { m->_clippingMode = MatrixBaseModule::NO_CLIPPING; }));
 	OptionsMenuItem::addToMenu(c, menu);
 
 	menu->addChild(new OptionMenuItem("Average", [m]() { return !m->_sum; }, [m]() { m->_sum = !m->_sum; }));
@@ -154,11 +155,11 @@ void MatrixModule::processChannel(const ProcessArgs& args, int c) {
 		if (!_sum && _invActive > 0.0f) {
 			out *= _invActive;
 		}
-		if (_clippingMode == HARD_CLIPPING) {
-			out = clamp(out, -12.0f, 12.0f);
-		}
-		else {
+		if (_clippingMode == SOFT_CLIPPING) {
 			out = _saturators[c * _outs + i].next(out);
+		}
+		else if (_clippingMode == HARD_CLIPPING) {
+			out = clamp(out, -12.0f, 12.0f);
 		}
 		outputs[_firstOutputID + i].setChannels(_channels);
 		outputs[_firstOutputID + i].setVoltage(out, c);
