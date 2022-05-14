@@ -235,8 +235,13 @@ void IndicatorKnob::onHover(const event::Hover& e) {
 	math::Vec c = box.size.div(2);
 	float dist = e.pos.minus(c).norm();
 	if (dist <= c.x) {
-		ParamWidget::onHover(e);
+		Knob::onHover(e);
 	}
+}
+
+void IndicatorKnob::onLeave(const LeaveEvent& e) {
+	Knob::onLeave(e);
+	redraw();
 }
 
 void IndicatorKnob::onChange(const event::Change& e) {

@@ -104,6 +104,7 @@ struct IndicatorKnob : LightEmittingWidget<Knob>, SkinnableWidget {
 
 	IndicatorKnob(int dim);
 	void onHover(const event::Hover& e) override;
+	void onLeave(const LeaveEvent& e) override;
 	void onChange(const event::Change& e) override;
 	inline void setDrawColorsCallback(std::function<bool()> fn) { w->_drawColorsCB = fn; }
 	inline void setUnipolarCallback(std::function<bool()> fn) { w->_unipolarCB = fn; }
