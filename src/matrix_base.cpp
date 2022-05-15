@@ -249,6 +249,50 @@ void KnobMatrixModuleWidget::contextMenu(Menu* menu) {
 }
 
 
+float SwitchMatrixModule::randomSwitchParamValue(bool allowZero) {
+	switch (_inverting) {
+		case NO_INVERTING: {
+			if (allowZero) {
+				return (float)(random::u32() % 2);
+			}
+			return 1.0f;
+		}
+		default: {
+			if (allowZero) {
+				return (float)(random::u32() % 3) - 1.0f;
+			}
+			return random::u32() % 2 == 0 ? -1.0f : 1.0f;
+		}
+	}
+}
+
+void SwitchMatrixModule::onRandomize(const RandomizeEvent& e) {
+	if (_rowExclusive || _columnExclusive) {
+		for (ParamQuantity* pq : _switchParamQuantities) {
+			pq->setValue(0.0f);
+		}
+
+		if (_rowExclusive && _columnExclusive) {
+			_switchParamQuantities[random::u32() % (_ins * _outs)]->setValue(randomSwitchParamValue(false));
+		}
+		else if (_rowExclusive) {
+			for (int row = 0; row < _ins; ++row) {
+				_switchParamQuantities[row + ((random::u32() % _outs) * _ins)]->setValue(randomSwitchParamValue(false));
+			}
+		}
+		else {
+			for (int col = 0; col < _outs; ++col) {
+				_switchParamQuantities[col * _ins + (random::u32() % _ins)]->setValue(randomSwitchParamValue(false));
+			}
+		}
+	}
+	else {
+		for (ParamQuantity* pq : _switchParamQuantities) {
+			pq->setValue(randomSwitchParamValue());
+		}
+	}
+}
+
 #define INVERTING "inverting"
 #define INVERTING_CLICK "click"
 #define INVERTING_PARAM "param"
@@ -410,19 +454,19 @@ void SwitchMatrixModuleWidget::contextMenu(Menu* menu) {
 	i->addItem(OptionMenuItem("On second click", [m]() { return m->_inverting == SwitchMatrixModule::CLICK_INVERTING; }, [m]() { m->setInverting(SwitchMatrixModule::CLICK_INVERTING); }));
 	OptionsMenuItem::addToMenu(i, menu);
 
-	if (m->_ins > 1) {
-		std::string label("Exclusive switching");
-		if (m->_outs > 1) {
-			label += " by rows";
-		}
-		menu->addChild(new OptionMenuItem(label.c_str(), [m]() { return m->_columnExclusive; }, [m]() { m->setColumnExclusive(!m->_columnExclusive); }));
-	}
 	if (m->_outs > 1) {
 		std::string label("Exclusive switching");
 		if (m->_ins > 1) {
-			label += " by columns";
+			label += " by rows";
 		}
 		menu->addChild(new OptionMenuItem(label.c_str(), [m]() { return m->_rowExclusive; }, [m]() { m->setRowExclusive(!m->_rowExclusive); }));
+	}
+	if (m->_ins > 1) {
+		std::string label("Exclusive switching");
+		if (m->_outs > 1) {
+			label += " by columns";
+		}
+		menu->addChild(new OptionMenuItem(label.c_str(), [m]() { return m->_columnExclusive; }, [m]() { m->setColumnExclusive(!m->_columnExclusive); }));
 	}
 }
 

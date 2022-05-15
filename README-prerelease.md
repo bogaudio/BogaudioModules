@@ -860,6 +860,11 @@ Option "Average" sets the output to be the average of its inputs.  The divisor f
 
 Two other options, "Exclusive switching by row" and "Exclusive switching by column", if enabled, allow only one switch to be enabled in a row, or column, respectively.  Both options may be enabled at once.  (These options do not work well with MIDI mapping via Rack's MIDI-MAP module; this is a known issue for which there is no good solution; but see the discussion [here](https://github.com/bogaudio/BogaudioModules/issues/112) for a potential workaround.  The same problem may apply to other parameter-mapping methods.)
 
+When randomizing the module from the context menu, the behavior changes based on the options:
+  - If neither "Exclusive" option is set, then randomizing the module sets each switch to 0% or 100% with equal probability (0%, 100%, and -100%, if inverting is enabled).
+  - If one "Exclusive" option is set, but not both, then on randomization exactly one switch per row (or column) is set to 100% (or -100% if inverting is enabled), all others 0%.
+  - If both exclusive options are set, on randomization one switch on the entire module is set to 100% (or -100%, if inverting is enabled), all others 0%.
+
 Every switch applies a bit of slew limitation when it changes values, as an anti-popping measure.
 
 _Polyphony:_ <a href="#polyphony">polyphonic</a>, with polyphonic channels defined by input 1.

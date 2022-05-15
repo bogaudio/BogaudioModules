@@ -110,6 +110,8 @@ struct SwitchMatrixModule : MatrixModule {
 	: MatrixModule(ins, outs, firstParamID, firstInputID, firstOutputID)
 	{}
 
+	float randomSwitchParamValue(bool allowZero = true);
+	void onRandomize(const RandomizeEvent& e) override;
 	json_t* saveToJson(json_t* root) override;
 	void loadFromJson(json_t* root) override;
 	void setInverting(Inverting inverting);
