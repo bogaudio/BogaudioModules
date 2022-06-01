@@ -26,11 +26,13 @@ void LFO::sampleRateChange() {
 }
 
 json_t* LFO::saveToJson(json_t* root) {
+	root = LFOBase::saveToJson(root);
 	json_object_set_new(root, OFFSET_CV_TO_SMOOTHING, json_boolean(_useOffsetCvForSmooth));
 	return root;
 }
 
 void LFO::loadFromJson(json_t* root) {
+	LFOBase::loadFromJson(root);
 	json_t* ocv = json_object_get(root, OFFSET_CV_TO_SMOOTHING);
 	if (ocv) {
 		_useOffsetCvForSmooth = json_boolean_value(ocv);
@@ -107,6 +109,7 @@ void LFO::modulateChannel(int c) {
 	if (!_useOffsetCvForSmooth && inputs[OFFSET_INPUT].isConnected()) {
 		e.offset *= clamp(inputs[OFFSET_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
 	}
+	e.offset *= _offsetScale;
 	e.offset *= 5.0f;
 
 	e.scale = params[SCALE_PARAM].getValue();
@@ -151,7 +154,7 @@ void LFO::updateOutput(int c, Phasor& wave, bool useSample, bool invert, Output&
 			}
 			sample += _engines[c]->offset;
 		}
-		output.setVoltage(smoother.next(sample), c);
+		output.setVoltage(clamp(smoother.next(sample), -12.0f, 12.0f), c);
 		active = true;
 	}
 	else {
@@ -159,7 +162,7 @@ void LFO::updateOutput(int c, Phasor& wave, bool useSample, bool invert, Output&
 	}
 }
 
-struct LFOWidget : BGModuleWidget {
+struct LFOWidget : LFOBaseModuleWidget {
 	static constexpr int hp = 10;
 
 	LFOWidget(LFO* module) {
@@ -218,6 +221,7 @@ struct LFOWidget : BGModuleWidget {
 	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<LFO*>(module);
 		assert(m);
+		LFOBaseModuleWidget::contextMenu(menu);
 
 		OptionsMenuItem* uo = new OptionsMenuItem("OFF/SM input routing");
 		uo->addItem(OptionMenuItem("To offset (OFF)", [m]() { return !m->_useOffsetCvForSmooth; }, [m]() { m->_useOffsetCvForSmooth = false; }));

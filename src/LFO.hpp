@@ -90,7 +90,7 @@ struct LFO : LFOBase {
 		configParam(SAMPLE_PARAM, 0.0f, 1.0f, 0.0f, "Output sampling", "%", 0.0f, 100.0f);
 		configParam(PW_PARAM, -1.0f, 1.0f, 0.0f, "Pulse width", "%", 0.0f, 100.0f*0.5f*(1.0f - 2.0f * SquareOscillator::minPulseWidth), 50.0f);
 		configParam(SMOOTH_PARAM, 0.0f, 1.0f, 0.0f, "Smoothing", "%", 0.0f, 100.0f);
-		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "Offset", " V", 0.0f, 5.0f);
+		configParam<OffsetParamQuantity>(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "Offset", " V", 0.0f, 5.0f);
 		configParam(SCALE_PARAM, 0.0f, 1.0f, 1.0f, "Scale", "%", 0.0f, 100.0f);
 
 		configInput(SAMPLE_INPUT, "Sample CV");

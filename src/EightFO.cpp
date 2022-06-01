@@ -118,6 +118,7 @@ void EightFO::modulateChannel(int c) {
 	if (inputs[OFFSET_INPUT].isConnected()) {
 		e.offset *= clamp(inputs[OFFSET_INPUT].getPolyVoltage(c) / 5.0f, -1.0f, 1.0f);
 	}
+	e.offset *= _offsetScale;
 	e.offset *= 5.0f;
 	e.scale = params[SCALE_PARAM].getValue();
 	if (inputs[SCALE_INPUT].isConnected()) {
@@ -206,7 +207,7 @@ void EightFO::updateOutput(int c, bool useSample, Output& output, Phasor::phase_
 			}
 			sample = amplitude * _engines[c]->scale * v + _engines[c]->offset;
 		}
-		output.setVoltage(smoother.next(sample), c);
+		output.setVoltage(clamp(smoother.next(sample), -12.0f, 12.0f), c);
 		active = true;
 	}
 	else {
@@ -214,7 +215,7 @@ void EightFO::updateOutput(int c, bool useSample, Output& output, Phasor::phase_
 	}
 }
 
-struct EightFOWidget : BGModuleWidget {
+struct EightFOWidget : LFOBaseModuleWidget {
 	static constexpr int hp = 17;
 
 	EightFOWidget(EightFO* module) {

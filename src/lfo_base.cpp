@@ -52,3 +52,28 @@ void LFOBase::setFrequency(Param& frequency, Input& pitch, Phasor& phasor, int c
 	}
 	phasor.setFrequency(f);
 }
+
+#define OFFSET_SCALE "offset_scale"
+
+json_t* LFOBase::saveToJson(json_t* root) {
+	json_object_set_new(root, OFFSET_SCALE, json_real(_offsetScale));
+	return root;
+}
+
+void LFOBase::loadFromJson(json_t* root) {
+	json_t* os = json_object_get(root, OFFSET_SCALE);
+	if (os) {
+		_offsetScale = clamp(json_real_value(os), 1.0f, 2.0f);
+	}
+}
+
+
+void LFOBaseModuleWidget::contextMenu(Menu* menu) {
+	auto m = dynamic_cast<LFOBase*>(module);
+	assert(m);
+
+	OptionsMenuItem* o = new OptionsMenuItem("Offset range");
+	o->addItem(OptionMenuItem("+/-5V", [m]() { return (int)m->_offsetScale == 1; }, [m]() { m->_offsetScale = 1.0f; }));
+	o->addItem(OptionMenuItem("+/-10V", [m]() { return (int)m->_offsetScale == 2; }, [m]() { m->_offsetScale = 2.0f; }));
+	OptionsMenuItem::addToMenu(o, menu);
+}

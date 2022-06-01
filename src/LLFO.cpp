@@ -19,6 +19,7 @@ void LLFO::sampleRateChange() {
 }
 
 json_t* LLFO::saveToJson(json_t* root) {
+	root = LFOBase::saveToJson(root);
 	json_object_set_new(root, OUTPUT_SAMPLING, json_real(_sample));
 	json_object_set_new(root, PULSE_WIDTH, json_real(_pulseWidth));
 	json_object_set_new(root, SMOOTHING, json_real(_smooth));
@@ -27,6 +28,8 @@ json_t* LLFO::saveToJson(json_t* root) {
 }
 
 void LLFO::loadFromJson(json_t* root) {
+	LFOBase::loadFromJson(root);
+
 	json_t* os = json_object_get(root, OUTPUT_SAMPLING);
 	if (os) {
 		_sample = json_real_value(os);
@@ -125,7 +128,7 @@ void LLFO::modulate() {
 		}
 	}
 
-	_offset = params[OFFSET_PARAM].getValue() * 5.0f;
+	_offset = params[OFFSET_PARAM].getValue() * _offsetScale * 5.0f;
 	_scale = params[SCALE_PARAM].getValue();
 }
 
@@ -178,7 +181,7 @@ void LLFO::processChannel(const ProcessArgs& args, int c) {
 	}
 
 	outputs[OUT_OUTPUT].setChannels(_channels);
-	outputs[OUT_OUTPUT].setVoltage(_smoother[c].next(_currentSample[c]), c);
+	outputs[OUT_OUTPUT].setVoltage(clamp(_smoother[c].next(_currentSample[c]), -12.0f, 12.0f), c);
 }
 
 struct SampleQuantity : Quantity {
@@ -292,7 +295,7 @@ struct LLFOSliderMenuItem : MenuItem {
 	}
 };
 
-struct LLFOWidget : BGModuleWidget {
+struct LLFOWidget : LFOBaseModuleWidget {
 	static constexpr int hp = 3;
 
 	LLFOWidget(LLFO* module) {
@@ -345,6 +348,7 @@ struct LLFOWidget : BGModuleWidget {
 	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<LLFO*>(module);
 		assert(m);
+		LFOBaseModuleWidget::contextMenu(menu);
 
 		menu->addChild(new LLFOSliderMenuItem<SampleQuantity>(m, "Output sampling"));
 		menu->addChild(new LLFOSliderMenuItem<PWQuantity>(m, "Pulse width"));

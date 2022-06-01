@@ -201,6 +201,8 @@ The stepped random output selects a new random value in the range +/-5V once eac
 
 The sampling feature is not used with the square and stepped outputs, but applies to the others.
 
+By default OFFSET varies from -5 to +5V.  The "Offset range" context-menu item allows this range to be set to +/-10V.  Note that the output is clipped to +/-12V.  SCALE is applied to the output before the offset is added.
+
 Output smoothing is applied to the signal last, after offset and scale.  Smoothing is implemented with a slew limiter (see <a href="#slew">SLEW</a>), where the rise/fall times are a function of both the LFO rate and the smoothing amount.  The effect of smoothing varies radically with the amount, the wave selected, and with use of sampling and pulse width.  Some examples:
   - Smoothing will turn the stepped random "wave" into a random walk (similar to, but distinct from, the output of <a href="#walk">WALK</a>).
   - The triangle output is unaffected by smoothing even at its maximum (unless sampling is turned up).
