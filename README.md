@@ -201,6 +201,8 @@ The stepped random output selects a new random value in the range +/-5V once eac
 
 The sampling feature is not used with the square and stepped outputs, but applies to the others.
 
+By default OFFSET varies from -5 to +5V.  The "Offset range" context-menu item allows this range to be set to +/-10V.  Note that the output is clipped to +/-12V.  SCALE is applied to the output before the offset is added.
+
 Output smoothing is applied to the signal last, after offset and scale.  Smoothing is implemented with a slew limiter (see <a href="#slew">SLEW</a>), where the rise/fall times are a function of both the LFO rate and the smoothing amount.  The effect of smoothing varies radically with the amount, the wave selected, and with use of sampling and pulse width.  Some examples:
   - Smoothing will turn the stepped random "wave" into a random walk (similar to, but distinct from, the output of <a href="#walk">WALK</a>).
   - The triangle output is unaffected by smoothing even at its maximum (unless sampling is turned up).
@@ -673,9 +675,9 @@ _When <a href="#bypassing">bypassed</a>:_ passes IN unmodified to OUT.
 
 A stereo version of MIX1.  The left input is normalled to the right.
 
-_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the L input.
+_Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the L input.  However, as on MIX8 there is a poly spread feature -- if this is enabled, the module becomes monophonic, and will get the left and right inputs from a pair of polyphonic channels (channels 1 and 2, 3 and 4, etc) on the input L.
 
-_When <a href="#bypassing">bypassed</a>:_ passes left and right inputs unmodified to the corresponding outputs; left is passed to right if right is unpatched.
+_When <a href="#bypassing">bypassed</a>:_ passes left and right inputs unmodified to the corresponding outputs; left is passed to right if the right input is unpatched.
 
 #### <a name="umix"></a> UMIX
 
@@ -775,7 +777,7 @@ A 4x4 channel matrix mixer.  Each input can be routed with an independent level 
 
 *Note that the matrix knobs are attenuverters, and default to zero.*  That means there will be no output, regardless of the inputs, until some knobs are changed to non-zero values.  The knobs can be set to unipolar mode, as below; they still default to zero.
 
-Saturation (soft clipping) limits each output to +/-12V.  This can be changed to a hard clip at +/-12V on the context menu ("Output clipping") -- as described on UMIX, this is mode is better if you need to precisely sum CVs.
+Saturation (soft clipping) limits each output to +/-12V.  This can be changed to a hard clip at +/-12V on the context menu ("Output clipping") -- as described on UMIX, this is mode is better if you need to precisely sum CVs.  Clipping may also be disabled entirely by setting "Output clipping" to "None".
 
 Another context menu option allows the input gains to be reduced by up to 12db.
 
@@ -859,6 +861,11 @@ The signal inverting behavior may be set with the "Inverting" context menu optio
 Option "Average" sets the output to be the average of its inputs.  The divisor for the average is the number of inputs in use; for example, if three inputs are connected, each output will be the sum of those inputs, scaled by the corresponding switch values, and divided by three.
 
 Two other options, "Exclusive switching by row" and "Exclusive switching by column", if enabled, allow only one switch to be enabled in a row, or column, respectively.  Both options may be enabled at once.  (These options do not work well with MIDI mapping via Rack's MIDI-MAP module; this is a known issue for which there is no good solution; but see the discussion [here](https://github.com/bogaudio/BogaudioModules/issues/112) for a potential workaround.  The same problem may apply to other parameter-mapping methods.)
+
+When randomizing the module from the context menu, the behavior changes based on the options:
+  - If neither "Exclusive" option is set, then randomizing the module sets each switch to 0% or 100% with equal probability (0%, 100%, and -100%, if inverting is enabled).
+  - If one "Exclusive" option is set, but not both, then on randomization exactly one switch per row (or column) is set to 100% (or -100% if inverting is enabled), all others 0%.
+  - If both exclusive options are set, on randomization one switch on the entire module is set to 100% (or -100%, if inverting is enabled), all others 0%.
 
 Every switch applies a bit of slew limitation when it changes values, as an anti-popping measure.
 
@@ -1159,6 +1166,8 @@ The current step can be selected many ways:
   - By inputs to CLOCK and/or SELECT, subject to the FWD and S.O.C. ("Select On Clock") toggles.  The behavior of these is the same as it is on <a href="#eightone">8:1</a> (and 1:8 and ADDR-SEQ), with the exception that the voltage range to the SELECT input is divided by the number of steps present on PGMR and all its connected PGMRX instances (where the division is always by 8 -- 16 if you consider negative voltages -- on 8:1).
 
 The leftmost bottom output emits a trigger whenever the step changes.  The outputs below each channel selector emit a trigger when that step is selected.
+
+If context-menu option "Save last selected step to patch" is enabled, PGMR will remember the last selected step in the patch, and restore it on patch load.  This is the last step selected by pressing a step button, or triggering a step -- any effect from CLOCK or SELECT always follows the current state of the patch as it runs.
 
 Any PGMRX expanders must be positioned to the right of, and ajacent to, the base PGMR module, or the previous PGMRX in the chain.  See <a href="#expanders">notes on expanders</a>.
 
