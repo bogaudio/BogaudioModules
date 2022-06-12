@@ -157,12 +157,15 @@ void VCF::modulateChannel(int c) {
 	}
 	f *= f;
 	f *= maxFrequency;
-	if (inputs[PITCH_INPUT].isConnected() || inputs[FM_INPUT].isConnected()) {
+	if (inputs[PITCH_INPUT].isConnected()) {
+		float pitch = clamp(inputs[PITCH_INPUT].getPolyVoltage(c), -5.0f, 5.0f);
+		f += cvToFrequency(pitch);
+	}
+	if (inputs[FM_INPUT].isConnected()) {
 		float fm = inputs[FM_INPUT].getPolyVoltage(c);
 		fm *= clamp(params[FM_PARAM].getValue(), 0.0f, 1.0f);
-		float pitch = clamp(inputs[PITCH_INPUT].getPolyVoltage(c), -5.0f, 5.0f);
-		pitch += fm;
-		f += cvToFrequency(pitch);
+		float pitchCV = frequencyToCV(std::max(minFrequency, f));
+		f = cvToFrequency(pitchCV + fm);
 	}
 	f = clamp(f, minFrequency, maxFrequency);
 

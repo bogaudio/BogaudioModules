@@ -259,10 +259,10 @@ A general-purpose filter with a selectable lowpass, highpass, bandpass or bandre
   - Smoothly modulatable bandwidth in bandpass and bandreject modes.
   - Very accurate V/OCT tracking.
 
-The large knob sets the filter's base cutoff frequency (for lowpass and highpass modes) or center frequency (for bandpass and bandreject).  There are three CV inputs that affect the cutoff; each input is converted to a HZ value and added to the base value set by the knob:
+The large knob sets the filter's base cutoff frequency (for lowpass and highpass modes) or center frequency (for bandpass and bandreject).  There are three CV inputs that affect the cutoff, in this order:
   - CV: a general, linear input expecting bipolar +/-5V signals. The input is attenuverted by the CV knob.
-  - V/OCT: an input here is interpreted as a pitch CV.  Use this and set the main knob to 0HZ for accurate key tracking.
-  - FM: an exponential FM input; the input here is attenuated by the FM knob, then added to the V/OCT input (which normals to 0V) before being converted to HZ.
+  - V/OCT: an input here is interpreted as a pitch CV; if connected, the input voltage is interpreted as a frequency and added to the cutoff.  Use this and set the main knob to 0HZ for accurate key tracking.
+  - FM: an exponential FM input; the input here is attenuated by the FM knob.  It is implemented by converting the cutoff to a V/Octave pitch CV, adding the attenuated FM signal to that, and converting back to frequency.
 
 The RES/BW knob has two functions, depending on mode:
   - In lowpass and highpass modes, it controls the resonance of the filter at the cutoff frequency.  The filter does not self-resonate.
