@@ -127,6 +127,12 @@ Includes all the features of VCO, adding:
 
 The context menu option "DC offset correction" works as documented on <a href="#vco">VCO</a>.
 
+The context menu option "Mix output processing" sets how the mix output is scaled or clipped.  VCV Rack modules generally [should not output signals exceeding +/-12 volts](https://vcvrack.com/manual/VoltageStandards#Output-Saturation), and oscillators typically output +/-5 volts.  However, XCO's mix output combines four oscillators, and can easily exceed these values.  "Mix output processing" sets how to deal with this:
+  - "Scaled to +/-5V" (default): the output is directly scaled down to +/-5V (like a regular oscillator) when it would otherwise exceed that range (it will not scale up; it is possible to reduce the output below this range with the MIX controls).  The scaling is updated once per oscillator cycle, and abrupt parameter changes can confuse it; in this case hard clipping takes over.
+  - "Saturated": a saturator (soft clipper) keeps the output within +/-12V.
+  - "Hard clipped": the output is simply clipped at +/-12V.
+  - "None": no scaling or limiting is applied to the output, ignoring the voltage standards.  This was how XCO always behaved prior to version 2.*.41.  Older patches should restore this mode if affected by the addition of these options.
+
 _Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the V/OCT input.
 
 _When <a href="#bypassing">bypassed</a>:_ no output.

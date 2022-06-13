@@ -62,6 +62,13 @@ struct XCO : BGModule {
 		NUM_OUTPUTS
 	};
 
+	enum Clipping {
+		NO_CLIPPING = 0,
+		COMP_CLIPPING,
+		SOFT_CLIPPING,
+		HARD_CLIPPING
+	};
+
 	struct Engine {
 		static constexpr int oversample = 8;
 
@@ -81,6 +88,10 @@ struct XCO : BGModule {
 		float sawMix = 1.0f;
 		float triangleMix = 1.0f;
 		float sineMix = 1.0f;
+		float lastCycle = 0.0f;
+		float minMix = 0.0f;
+		float maxMix = 0.0f;
+		float mixScale = 0.25;
 
 		Phasor phasor;
 		BandLimitedSquareOscillator square;
@@ -96,6 +107,7 @@ struct XCO : BGModule {
 		float triangleBuffer[oversample];
 		float sineBuffer[oversample];
 		PositiveZeroCrossing syncTrigger;
+		Saturator saturator;
 
 		bogaudio::dsp::SlewLimiter fmDepthSL;
 		bogaudio::dsp::SlewLimiter squarePulseWidthSL;
@@ -124,6 +136,7 @@ struct XCO : BGModule {
 	bool _slowMode = false;
 	bool _fmLinearMode = false;
 	bool _dcCorrection = true;
+	Clipping _clippingMode = COMP_CLIPPING;
 	Engine* _engines[maxChannels] {};
 
 	struct XCOFrequencyParamQuantity : FrequencyParamQuantity {

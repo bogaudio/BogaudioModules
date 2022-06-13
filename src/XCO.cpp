@@ -3,6 +3,7 @@
 #include "dsp/pitch.hpp"
 
 #define DC_CORRECTION "dc_correction"
+#define CLIPPING_MODE "clipping_mode"
 
 float XCO::XCOFrequencyParamQuantity::offset() {
 	auto xco = dynamic_cast<XCO*>(module);
@@ -60,6 +61,7 @@ void XCO::sampleRateChange() {
 
 json_t* XCO::saveToJson(json_t* root) {
 	json_object_set_new(root, DC_CORRECTION, json_boolean(_dcCorrection));
+	json_object_set_new(root, CLIPPING_MODE, json_integer(_clippingMode));
 	return root;
 }
 
@@ -67,6 +69,14 @@ void XCO::loadFromJson(json_t* root) {
 	json_t* dc = json_object_get(root, DC_CORRECTION);
 	if (dc) {
 		_dcCorrection = json_boolean_value(dc);
+	}
+
+	json_t* c = json_object_get(root, CLIPPING_MODE);
+	if (c) {
+		_clippingMode = (Clipping)json_integer_value(c);
+		if (_clippingMode != SOFT_CLIPPING && _clippingMode != HARD_CLIPPING && _clippingMode != NO_CLIPPING) {
+			_clippingMode = COMP_CLIPPING;
+		}
 	}
 }
 
@@ -289,6 +299,37 @@ void XCO::processChannel(const ProcessArgs& args, int c) {
 		mix += e.sawMixSL.next(e.sawMix) * sawOut;
 		mix += e.triangleMixSL.next(e.triangleMix) * triangleOut;
 		mix += e.sineMixSL.next(e.sineMix) * sineOut;
+
+		switch (_clippingMode) {
+			case COMP_CLIPPING: {
+				Phasor::phase_t cycle = e.phasor._phase / Phasor::cyclePhase;
+				if (e.lastCycle != cycle) {
+					e.lastCycle = cycle;
+					e.mixScale = 1.0f / ((-e.minMix + e.maxMix) / 10.0f);
+					e.minMix = 0.0f;
+					e.maxMix = 0.0f;
+				} else if (mix < e.minMix) {
+					e.minMix = mix;
+				} else if (mix > e.maxMix) {
+					e.maxMix = mix;
+				}
+				if (e.mixScale < 1.0f) {
+					mix *= e.mixScale;
+				}
+				mix = clamp(mix, -12.0f, 12.0f);
+				break;
+			}
+			case SOFT_CLIPPING: {
+				mix = e.saturator.next(mix);
+				break;
+			}
+			case HARD_CLIPPING: {
+				mix = clamp(mix, -12.0f, 12.0f);
+				break;
+			}
+			case NO_CLIPPING:;
+		}
+
 		outputs[MIX_OUTPUT].setChannels(_channels);
 		outputs[MIX_OUTPUT].setVoltage(mix, c);
 	}
@@ -407,7 +448,15 @@ struct XCOWidget : BGModuleWidget {
 	void contextMenu(Menu* menu) override {
 		auto m = dynamic_cast<XCO*>(module);
 		assert(m);
+
 		menu->addChild(new BoolOptionMenuItem("DC offset correction", [m]() { return &m->_dcCorrection; }));
+
+		OptionsMenuItem* c = new OptionsMenuItem("Mix output processing");
+		c->addItem(OptionMenuItem("Scaled to 10Vpp", [m]() { return m->_clippingMode == XCO::COMP_CLIPPING; }, [m]() { m->_clippingMode = XCO::COMP_CLIPPING; }));
+		c->addItem(OptionMenuItem("Saturated", [m]() { return m->_clippingMode == XCO::SOFT_CLIPPING; }, [m]() { m->_clippingMode = XCO::SOFT_CLIPPING; }));
+		c->addItem(OptionMenuItem("Hard clipped", [m]() { return m->_clippingMode == XCO::HARD_CLIPPING; }, [m]() { m->_clippingMode = XCO::HARD_CLIPPING; }));
+		c->addItem(OptionMenuItem("None", [m]() { return m->_clippingMode == XCO::NO_CLIPPING; }, [m]() { m->_clippingMode = XCO::NO_CLIPPING; }));
+		OptionsMenuItem::addToMenu(c, menu);
 	}
 };
 
