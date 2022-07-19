@@ -452,7 +452,7 @@ struct XCOWidget : BGModuleWidget {
 		menu->addChild(new BoolOptionMenuItem("DC offset correction", [m]() { return &m->_dcCorrection; }));
 
 		OptionsMenuItem* c = new OptionsMenuItem("Mix output processing");
-		c->addItem(OptionMenuItem("Scaled to 10Vpp", [m]() { return m->_clippingMode == XCO::COMP_CLIPPING; }, [m]() { m->_clippingMode = XCO::COMP_CLIPPING; }));
+		c->addItem(OptionMenuItem("Scaled to +/-5V", [m]() { return m->_clippingMode == XCO::COMP_CLIPPING; }, [m]() { m->_clippingMode = XCO::COMP_CLIPPING; }));
 		c->addItem(OptionMenuItem("Saturated", [m]() { return m->_clippingMode == XCO::SOFT_CLIPPING; }, [m]() { m->_clippingMode = XCO::SOFT_CLIPPING; }));
 		c->addItem(OptionMenuItem("Hard clipped", [m]() { return m->_clippingMode == XCO::HARD_CLIPPING; }, [m]() { m->_clippingMode = XCO::HARD_CLIPPING; }));
 		c->addItem(OptionMenuItem("None", [m]() { return m->_clippingMode == XCO::NO_CLIPPING; }, [m]() { m->_clippingMode = XCO::NO_CLIPPING; }));
