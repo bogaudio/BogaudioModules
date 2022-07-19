@@ -179,7 +179,7 @@ public:
 		_bases.erase(id);
 	}
 
-	void registerExpander(int baseID, int position, ChainableExpander& x) {
+	bool registerExpander(int baseID, int position, ChainableExpander& x) {
 		std::lock_guard<std::mutex> lock(_lock);
 
 		assert(position > 0);
@@ -187,20 +187,23 @@ public:
 		if (base != _bases.end()) {
 			int i = N * position;
 			if (i < (int)base->second.elements.size()) {
-				assert(!base->second.elements[i]);
-				std::copy(x._localElements, x._localElements + N, base->second.elements.begin() + i);
+				if (base->second.elements[i]) {
+					return false;
+				}
 			}
 			else {
 				base->second.elements.resize(i + N, NULL);
-				std::copy(x._localElements, x._localElements + N, base->second.elements.begin() + i);
 			}
+			std::copy(x._localElements, x._localElements + N, base->second.elements.begin() + i);
+
 			for (auto i = base->second.elements.begin(), n = base->second.elements.end(); i != n; ++i) {
 				if (!*i) {
-					return;
+					return true;
 				}
 			}
 			base->second.module.setElements(base->second.elements);
 		}
+		return true;
 	}
 
 	void deregisterExpander(int baseID, int position) {
@@ -277,11 +280,10 @@ struct ChainableExpanderModule
 			_baseID = 0;
 			_position = 0;
 		}
-		else if (!_registered && position > 0) {
+		else if (!_registered && position > 0 && _registry.registerExpander(baseID, position, *this)) {
 			_registered = true;
 			_baseID = baseID;
 			_position = position;
-			_registry.registerExpander(_baseID, _position, *this);
 		}
 	}
 };
