@@ -101,7 +101,7 @@ _When <a href="#bypassing">bypassed</a>:_ no output.
 
 A 3HP subset of VCO, designed in particular for use making synth drums.  The waveform defaults to sine but is selectable on the context menu, with the same options as LVCO, with the addition of a ramp (inverse saw) wave.
 
-Additionally, there is a phase control, with CV borrowed from XCO. The PHASE knob attenuverts PHASE CV, which is useful for phase modulation. The PHASE knob also sets the initial position (i.e. phase) of the wave when the module is synced (if you're not using sync, changing the phase won't meaningfully alter the output).  This can be used to alter the harmonic content of sync sounds, and for transient shaping for drum synthesis.
+The phase controls on SINE are like those in the XCO oscillator module. The PHASE knob sets the initial position (i.e. phase) of the wave and attenuverts the PHASE CV. Phase controls can be used to alter the harmonic content of sync sounds, and for transient shaping for drum synthesis.
 
 _Polyphony:_ Same as VCO.
 
