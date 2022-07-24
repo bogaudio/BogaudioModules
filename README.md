@@ -398,7 +398,7 @@ By default, channel A is configured as a lowpass filter, and channel C is config
 
 Each channel has a CV input for level; this is a unipolar (0-10V) CV, and corresponding knob attenuates the CV if the CV is in use.
 
-Likewise, each channel has an FCV input for controlling the channel's band frequency. Additionally, there is a global FCV input, whose voltage effects the band frequency of all channels.  For each channel, the channel FCV and global FCV are summed, then attenuverted by the channel's FCV knob, and the result is added to the FREQ knob setting.  These CVs are bipolar (+/-5V), where +5V will send the frequency from 0 to its max value.
+Likewise, each channel has an FCV input for controlling the channel's band frequency. Additionally, there is a global FCV input, whose voltage affects the band frequency of all channels.  For each channel, the channel FCV and global FCV are summed, then attenuverted by the channel's FCV knob, and the result is added to the FREQ knob setting.  These CVs are bipolar (+/-5V), where +5V will send the frequency from 0 to its max value.
 
 Finally, each channel has a BW (bandwidth) setting, that applies if the channel is a bandpass filter, and controls the width of the filter's frequency response.  These have unipolar CVs per channel.
 
