@@ -1051,7 +1051,7 @@ _When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="samplehold"></a> S&H
 
-A dual sample-and-hold and track-and-hold. Both channels default to sample-and-hold mode, and can be independently toggled into track-and-hold mode with the corresponding TRK button. Sampling/tracking is triggered by the GATE inputs, or the buttons above the GATE inputs.
+A dual sample-and-hold and track-and-hold. Both channels default to sample-and-hold mode, and can be independently toggled into track-and-hold mode with the corresponding TRK button. Sampling/tracking is triggered by the GATE inputs or the buttons above the GATE inputs.
 
 In sample-and-hold mode, when a rising edge is detected on the GATE input or the corresponding Trigger button is clicked, the IN input is sampled to OUT where it is held at a constant voltage.
 
