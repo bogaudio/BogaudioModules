@@ -4,10 +4,16 @@
 void PolyMult::processAll(const ProcessArgs& args) {
 	int cn = clamp(params[CHANNELS_PARAM].getValue(), 1.0f, 16.0f);
 	if (inputs[CHANNELS_INPUT].isConnected()) {
-		cn = inputs[CHANNELS_INPUT].getChannels();
+		int channels = inputs[CHANNELS_INPUT].getChannels();
+		if (channels == 1) {
+			cn = clamp(roundf(inputs[CHANNELS_INPUT].getVoltage() / 10.0f * cn), 1.0f, 16.0f);
+		}
+		else {
+			cn = channels;
+		}
 	}
 
-	float out = inputs[IN_INPUT].getVoltageSum();
+	float out = inputs[IN_INPUT].getVoltage();
 	outputs[OUT1_OUTPUT].setChannels(cn);
 	outputs[OUT2_OUTPUT].setChannels(cn);
 	outputs[OUT3_OUTPUT].setChannels(cn);
