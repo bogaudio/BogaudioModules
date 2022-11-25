@@ -59,10 +59,12 @@ struct OutputRangeOptionMenuItem : OptionMenuItem {
 		mi->addItem(OutputRangeOptionMenuItem(m, "+/-10V", 0.0f, 10.0f));
 		mi->addItem(OutputRangeOptionMenuItem(m, "+/-5V", 0.0f, 5.0f));
 		mi->addItem(OutputRangeOptionMenuItem(m, "+/-3V", 0.0f, 3.0f));
+		mi->addItem(OutputRangeOptionMenuItem(m, "+/-2V", 0.0f, 2.0f));
 		mi->addItem(OutputRangeOptionMenuItem(m, "+/-1V", 0.0f, 1.0f));
 		mi->addItem(OutputRangeOptionMenuItem(m, "0V-10V", 1.0f, 5.0f));
 		mi->addItem(OutputRangeOptionMenuItem(m, "0V-5V", 1.0f, 2.5f));
 		mi->addItem(OutputRangeOptionMenuItem(m, "0V-3V", 1.0f, 1.5f));
+		mi->addItem(OutputRangeOptionMenuItem(m, "0V-2V", 1.0f, 1.0f));
 		mi->addItem(OutputRangeOptionMenuItem(m, "0V-1V", 1.0f, 0.5f));
 		OptionsMenuItem::addToMenu(mi, menu);
 	}
