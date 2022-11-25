@@ -44,12 +44,14 @@ void MatrixBaseModuleWidget::contextMenu(Menu* menu) {
 	auto m = dynamic_cast<MatrixBaseModule*>(module);
 	assert(m);
 
-	OptionsMenuItem* g = new OptionsMenuItem("Input gain");
-	g->addItem(OptionMenuItem("Unity", [m]() { return (int)m->_inputGainDb == 0; }, [m]() { m->_inputGainDb = 0.0f; }));
-	g->addItem(OptionMenuItem("-3db", [m]() { return (int)m->_inputGainDb == -3; }, [m]() { m->_inputGainDb = -3.0f; }));
-	g->addItem(OptionMenuItem("-6db", [m]() { return (int)m->_inputGainDb == -6; }, [m]() { m->_inputGainDb = -6.0f; }));
-	g->addItem(OptionMenuItem("-12db", [m]() { return (int)m->_inputGainDb == -12; }, [m]() { m->_inputGainDb = -12.0f; }));
-	OptionsMenuItem::addToMenu(g, menu);
+	if (!m->_singleInput) {
+		OptionsMenuItem* g = new OptionsMenuItem("Input gain");
+		g->addItem(OptionMenuItem("Unity", [m]() { return (int)m->_inputGainDb == 0; }, [m]() { m->_inputGainDb = 0.0f; }));
+		g->addItem(OptionMenuItem("-3db", [m]() { return (int)m->_inputGainDb == -3; }, [m]() { m->_inputGainDb = -3.0f; }));
+		g->addItem(OptionMenuItem("-6db", [m]() { return (int)m->_inputGainDb == -6; }, [m]() { m->_inputGainDb = -6.0f; }));
+		g->addItem(OptionMenuItem("-12db", [m]() { return (int)m->_inputGainDb == -12; }, [m]() { m->_inputGainDb = -12.0f; }));
+		OptionsMenuItem::addToMenu(g, menu);
+	}
 
 	OptionsMenuItem* c = new OptionsMenuItem("Output clipping");
 	c->addItem(OptionMenuItem("Soft/saturated (better for audio)", [m]() { return m->_clippingMode == MatrixBaseModule::SOFT_CLIPPING; }, [m]() { m->_clippingMode = MatrixBaseModule::SOFT_CLIPPING; }));
@@ -57,7 +59,9 @@ void MatrixBaseModuleWidget::contextMenu(Menu* menu) {
 	c->addItem(OptionMenuItem("None", [m]() { return m->_clippingMode == MatrixBaseModule::NO_CLIPPING; }, [m]() { m->_clippingMode = MatrixBaseModule::NO_CLIPPING; }));
 	OptionsMenuItem::addToMenu(c, menu);
 
-	menu->addChild(new OptionMenuItem("Average", [m]() { return !m->_sum; }, [m]() { m->_sum = !m->_sum; }));
+	if (!m->_singleInput) {
+		menu->addChild(new OptionMenuItem("Average", [m]() { return !m->_sum; }, [m]() { m->_sum = !m->_sum; }));
+	}
 }
 
 void MatrixModule::configMatrixModule(int ins, int outs, int firstParamID, int firstInputID, int firstOutputID) {
@@ -73,6 +77,7 @@ void MatrixModule::configMatrixModule(int ins, int outs, int firstParamID, int f
 	_sls = new bogaudio::dsp::SlewLimiter[_ins * _outs];
 	_saturators = new Saturator[_outs * maxChannels];
 	_inActive = new bool[_ins] {};
+	_singleInput = _ins <= 1;
 }
 
 void MatrixModule::sampleRateChange() {
@@ -163,16 +168,6 @@ void MatrixModule::processChannel(const ProcessArgs& args, int c) {
 		}
 		outputs[_firstOutputID + i].setChannels(_channels);
 		outputs[_firstOutputID + i].setVoltage(out, c);
-	}
-}
-
-
-void MatrixModuleWidget::contextMenu(Menu* menu) {
-	auto m = dynamic_cast<MatrixModule*>(module);
-	assert(m);
-
-	if (m->_ins > 1) {
-		MatrixBaseModuleWidget::contextMenu(menu);
 	}
 }
 

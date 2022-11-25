@@ -20,6 +20,7 @@ struct MatrixBaseModule : BGModule {
 	float _inputGainDb = 0.0f;
 	float _inputGainLevel = 1.0f;
 	bool _sum = true;
+	bool _singleInput = false;
 
 	json_t* saveToJson(json_t* root) override;
 	void loadFromJson(json_t* root) override;
@@ -69,7 +70,6 @@ struct MatrixModule : MatrixBaseModule {
 };
 
 struct MatrixModuleWidget : MatrixBaseModuleWidget {
-	void contextMenu(Menu* menu) override;
 };
 
 struct KnobMatrixModule : MatrixModule {
