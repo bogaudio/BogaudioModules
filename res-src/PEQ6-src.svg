@@ -29,7 +29,7 @@
     <!-- <rect width="40" height="23" fill="#f0f" transform="translate(2.5 0)" /> -->
     <text font-size="5pt" letter-spacing="1px" transform="translate(2.5 8.5)">CH1-LP</text>
     <def id="LP_PARAM" xlink:href="#button-small" transform="translate(33.5 1)"/>
-    <text font-size="5pt" letter-spacing="0.8px" transform="translate(2.5 20.5)">CH8-HP</text>
+    <text font-size="5pt" letter-spacing="0.8px" transform="translate(2.5 20.5)">CH6-HP</text>
     <def id="HP_PARAM" xlink:href="#button-small" transform="translate(33.5 13)"/>
   </g>
 
