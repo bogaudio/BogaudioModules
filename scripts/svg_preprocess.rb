@@ -54,7 +54,7 @@ $pp_dir = nil
 def load_directories()
   unless $src_dir
     $src_dir = File.absolute_path(File.join(File.dirname($0), '..', 'res-src'))
-    unless Dir.exists?($src_dir)
+    unless Dir.exist?($src_dir)
       STDERR.puts "Source directory doesn't exist: #{$src_dir}"
       exit 1
     end
@@ -62,7 +62,7 @@ def load_directories()
 
   unless $pp_dir
     $pp_dir = File.absolute_path(File.join(File.dirname($0), '..', 'res-pp'))
-    unless Dir.exists?($pp_dir)
+    unless Dir.exist?($pp_dir)
       STDERR.puts "Preprocess directory doesn't exist: #{$pp_dir}"
       exit 1
     end
