@@ -121,7 +121,7 @@ struct ShapedSlewLimiter {
 	float _time;
 	float _shapeExponent;
 	float _inverseShapeExponent;
-	float _last = 0.0;
+	double _last = 0.0;
 
 	ShapedSlewLimiter(float sampleRate = 1000.0f, float milliseconds = 1.0f, float shape = 1.0f) {
 		setParams(sampleRate, milliseconds, shape);

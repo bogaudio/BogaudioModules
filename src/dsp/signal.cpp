@@ -183,25 +183,25 @@ void ShapedSlewLimiter::setParams(float sampleRate, float milliseconds, float sh
 }
 
 float ShapedSlewLimiter::next(float sample) {
-	float difference = sample - _last;
-	float ttg = fabsf(difference) / range;
-	if (_time < 0.0001f || ttg < 0.0001f) {
+	double difference = sample - _last;
+	double ttg = fabs(difference) / range;
+	if (_time < 0.0001f) {
 		return _last = sample;
 	}
 	if (_shapeExponent != 0.0f) {
-		ttg = powf(ttg, _shapeExponent);
+		ttg = pow(ttg, _shapeExponent);
 	}
 	ttg *= _time;
-	ttg = std::max(0.0f, ttg - _sampleTime);
+	ttg = std::max(0.0, ttg - _sampleTime);
 	ttg /= _time;
 	if (_shapeExponent != 0.0f) {
-		ttg = powf(ttg, _inverseShapeExponent);
+		ttg = pow(ttg, _inverseShapeExponent);
 	}
-	float y = fabsf(difference) - ttg * range;
+	double y = fabs(difference) - ttg * range;
 	if (difference < 0.0f) {
-		return _last = std::max(_last - y, sample);
+		return _last = std::max(_last - y, (double)sample);
 	}
-	return _last = std::min(_last + y, sample);
+	return _last = std::min(_last + y, (double)sample);
 }
 
 
