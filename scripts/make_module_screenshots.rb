@@ -75,6 +75,8 @@ skins.each do |skin|
   puts "...copied #{count}"
 end
 
-puts "Restoring #{prefs_file}, deleting backup..."
-File.write(prefs_file, File.read(backup_prefs_file))
-FileUtils.rm_f(backup_prefs_file)
+if File.exist?(backup_prefs_file)
+  puts "Restoring #{prefs_file}, deleting backup..."
+  File.write(prefs_file, File.read(backup_prefs_file))
+  FileUtils.rm_f(backup_prefs_file)
+end

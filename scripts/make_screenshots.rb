@@ -290,13 +290,13 @@ require 'pp'
 
 base_dir = File.absolute_path(File.join(File.dirname($0), '..'))
 screens_dir = File.join(base_dir, 'doc', 'module_screenshots')
-unless Dir.exists?(screens_dir)
+unless Dir.exist?(screens_dir)
   STDERR.puts "No screenshots directory: #{screens_dir}\nMake it with ./scripts/make_module_screenshots.rb"
   exit 1
 end
 
 out_dir = File.join(base_dir, 'doc', 'www')
-unless Dir.exists?(screens_dir)
+unless Dir.exist?(screens_dir)
   STDERR.puts "No output directory: #{out_dir}"
   exit 1
 end
