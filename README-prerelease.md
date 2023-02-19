@@ -1,6 +1,6 @@
 # BogaudioModules
 
-![build badge](https://img.shields.io/github/workflow/status/bogaudio/BogaudioModules/Develop?label=build) ![version badge](https://img.shields.io/github/v/release/bogaudio/BogaudioModules)
+![build badge](https://img.shields.io/github/actions/workflow/status/bogaudio/BogaudioModules/buildDevelop.yml?label=build) ![version badge](https://img.shields.io/github/v/release/bogaudio/BogaudioModules)
 
 Modules for [VCV Rack](https://github.com/VCVRack/Rack), an open-source Eurorack-style virtual modular synthesizer:
 
