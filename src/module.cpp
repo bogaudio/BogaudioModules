@@ -103,6 +103,7 @@ void BGModule::setSkin(std::string skin) {
 
 void BGModule::addSkinChangeListener(SkinChangeListener* listener) {
 	_skinChangeListeners.push_back(listener);
+	listener->skinChanged(_skin);
 }
 
 
