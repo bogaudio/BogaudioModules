@@ -99,7 +99,7 @@ int SampleHold::sectionChannels(
 	Input* altTriggerInput,
 	Input& in
 ) {
-	int n = 1;
+	int n = 0;
 	if (_polyInputID == IN1_INPUT) {
 		n = in.getChannels();
 	}
@@ -108,7 +108,7 @@ int SampleHold::sectionChannels(
 	} else if (altTriggerInput) {
 		n = altTriggerInput->getChannels();
 	}
-	return n;
+	return std::max(1, n);
 }
 
 void SampleHold::modulateSection(
