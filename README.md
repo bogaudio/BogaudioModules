@@ -1379,9 +1379,11 @@ _When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="polymult"></a> POLYMULT
 
-POLYMULT will turn a mono signal into a polyphonic signal, with a given number of channels, where each channel gets a copy of the input voltage.  The number of channels is set by the CHAN knob, unless an input is present at the CHAN input, in which case the channel count is taken from that input, and the knob is ignored.  Each OUT output is identical.
+POLYMULT will turn a mono signal into a polyphonic signal, with a given number of channels, where each channel gets a copy of the input voltage.  The number of channels is set by the CHAN knob, unless an input is present at the CHAN input, in which case:
+  - If the signal at CHAN is polyphonic, the channel count is taken from that signal, and the knob is ignored.
+  - If the signal at CHAN is monophonic, it acts as a CV (0-10V), selecting the channel count up to the maximum set by the knob.
 
-To simply make copies of an already-polyphonic signal, use the regular <a href="#mult">MULT</a> module.
+Each OUT output is identical.  To simply make copies of an already-polyphonic signal, use the regular <a href="#mult">MULT</a> module.  If the input is a polyphonic singal, only the first channel is used to produce the outputs.
 
 _When <a href="#bypassing">bypassed</a>:_ no output.
 
