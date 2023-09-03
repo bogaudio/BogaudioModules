@@ -28,6 +28,4 @@ struct Matrix88Element {
 	{}
 };
 
-typedef ChainableRegistry<Matrix88Element, 1> Matrix88Registry;
-
 } // namespace bogaudio

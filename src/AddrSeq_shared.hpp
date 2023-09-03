@@ -28,6 +28,4 @@ struct AddrSeqStep {
 	{}
 };
 
-typedef ChainableRegistry<AddrSeqStep, 8> AddrSeqRegistry;
-
 } // namespace bogaudio

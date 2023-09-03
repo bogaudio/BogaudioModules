@@ -55,6 +55,4 @@ struct PgmrStep {
 	void reset();
 };
 
-typedef ChainableRegistry<PgmrStep, 4> PgmrRegistry;
-
 } // namespace bogaudio
