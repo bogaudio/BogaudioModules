@@ -202,8 +202,11 @@ public:
 				}
 			}
 			base->second.module.setElements(base->second.elements);
+
+			return true;
 		}
-		return true;
+
+		return false;
 	}
 
 	void deregisterExpander(int baseID, int position) {
