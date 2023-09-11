@@ -1,5 +1,6 @@
 
 #include "Arp.hpp"
+#include <unordered_set>
 
 #define NOTES_IMMEDIATE_MODE "notes_immediate"
 #define FIXED_GATE_MODE "fixed_gate"
@@ -134,28 +135,38 @@ void Arp::NoteSet::resetSequence() {
 }
 
 void Arp::NoteSet::addNote(int c, float pitch) {
-	Note n;
-	n.pitch = pitch;
-	n.channel = c;
-	int i = 0;
-	while (n.pitch >= _notesByPitch[i].pitch && i < _noteCount) {
-		if (n.pitch == _notesByPitch[i].pitch) {
+	for (int i = 0; i < _noteCount; ++i) {
+		if (_notesByPitch[i].pitch == pitch) {
 			return;
 		}
-		++i;
 	}
-	assert(i <= _noteCount);
 
 	dropNote(c);
 	_noteOn[c] = true;
 	_notesDirty = true;
 
-	shuffleUp(_notesByPitch, i);
+	Note n;
+	n.pitch = pitch;
+	n.channel = c;
+	int i = 0;
+	while (n.pitch >= _notesByPitch[i].pitch && i < _noteCount) {
+		++i;
+	}
+	assert(i <= maxChannels);
+
+	if (i >= maxChannels) {
+		i = maxChannels - 1;
+	}
+	else {
+		shuffleUp(_notesByPitch, i);
+	}
 	_notesByPitch[i] = n;
 
 	_notesAsPlayed[_noteCount] = n;
 	++_noteCount;
 	assert(_noteCount <= maxChannels);
+	assert(uniqueChannelsCount(_notesAsPlayed) == _noteCount);
+	assert(uniqueChannelsCount(_notesByPitch) == _noteCount);
 }
 
 void Arp::NoteSet::dropNote(int c) {
@@ -165,13 +176,14 @@ void Arp::NoteSet::dropNote(int c) {
 	_noteOn[c] = false;
 	_notesDirty = true;
 
+	assert(_noteCount > 0);
 	int i = 0;
 	while (_notesAsPlayed[i].channel != c && i < _noteCount) {
 		++i;
 	}
 	assert(i < _noteCount);
 	shuffleDown(_notesAsPlayed, i);
-	_notesAsPlayed[_noteCount].reset();
+	_notesAsPlayed[_noteCount - 1].reset();
 
 	i = 0;
 	while (_notesByPitch[i].channel != c && i < _noteCount) {
@@ -179,10 +191,12 @@ void Arp::NoteSet::dropNote(int c) {
 	}
 	assert(i < _noteCount);
 	shuffleDown(_notesByPitch, i);
-	_notesByPitch[_noteCount].reset();
+	_notesByPitch[_noteCount - 1].reset();
 
 	--_noteCount;
 	assert(_noteCount >= 0);
+	assert(uniqueChannelsCount(_notesAsPlayed) == _noteCount);
+	assert(uniqueChannelsCount(_notesByPitch) == _noteCount);
 }
 
 void Arp::NoteSet::shuffleUp(Note* notes, int index) {
@@ -208,6 +222,16 @@ void Arp::NoteSet::sync() {
 	std::copy(_syncTo->_notesAsPlayed, _syncTo->_notesAsPlayed + _noteCount, _notesAsPlayed);
 	std::copy(_syncTo->_notesByPitch, _syncTo->_notesByPitch + _noteCount, _notesByPitch);
 	_syncTo->_notesDirty = false;
+}
+
+int Arp::NoteSet::uniqueChannelsCount(Note* notes) {
+	std::unordered_set<int> channels;
+	for (int i = 0; i < maxChannels; ++i) {
+		if (notes[i].channel >= 0) {
+			channels.insert(notes[i].channel);
+		}
+	}
+	return channels.size();
 }
 
 void Arp::reset() {

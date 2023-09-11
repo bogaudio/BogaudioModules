@@ -61,7 +61,6 @@ struct Arp : BGModule {
 			void reset();
 		};
 
-
 		bool _noteOn[maxChannels] {};
 		int _noteCount = 0;
 		Note _notesAsPlayed[maxChannels];
@@ -84,6 +83,7 @@ struct Arp : BGModule {
 		void shuffleUp(Note* notes, int index);
 		void shuffleDown(Note* notes, int index);
 		void sync();
+		int uniqueChannelsCount(Note* notes);
 	};
 
 	struct GateLengthParamQuantity : ParamQuantity {
