@@ -36,8 +36,6 @@ void Edge::processAll(const ProcessArgs& args) {
 }
 
 void Edge::processChannel(const ProcessArgs& args, int c) {
-	static int i = 0;
-	++i;
 	float in = inputs[IN_INPUT].getPolyVoltage(c);
 
 	switch (_state[c]) {
