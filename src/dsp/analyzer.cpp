@@ -25,7 +25,7 @@ HanningWindow::HanningWindow(int size, float alpha) : Window(size) {
 KaiserWindow::KaiserWindow(int size, float alpha) : Window(size) {
 	float ii0a = 1.0f / i0(alpha);
 	float ism1 = 1.0f / (float)(size - 1);
-	for (int i = 0; i < _size; ++i) {
+	for (int i = 0, n = _size - 1; i < n; ++i) {
 		float x = i * 2.0f;
 		x *= ism1;
 		x -= 1.0f;
@@ -35,6 +35,7 @@ KaiserWindow::KaiserWindow(int size, float alpha) : Window(size) {
 		x *= alpha;
 		_sum += _window[i] = i0(x) * ii0a;
 	}
+	_window[_size - 1] = 0;
 }
 
 // Rabiner, Gold: "The Theory and Application of Digital Signal Processing", 1975, page 103.
