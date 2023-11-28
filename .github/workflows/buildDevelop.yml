@@ -5,7 +5,7 @@ on:
     - build_scripts_test
 name: Develop
 env:
-  RACK_SDK_VERSION: 2.0.4
+  RACK_SDK_VERSION: 2.4.1
 jobs:
   buildLinux:
     name: Build Linux
@@ -14,10 +14,3 @@ jobs:
     - uses: actions/checkout@master
     - name: Build Linux
       uses: ./.github/actions/build_linux
-  # buildWindows:
-  #   name: Build Windows
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - uses: actions/checkout@master
-  #   - name: Build Windows
-  #     uses: ./.github/actions/build_win
