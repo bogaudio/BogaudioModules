@@ -109,7 +109,7 @@ struct MegaGate : LPGEnvBaseModule {
 		configParam(RISE_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "Rise shape");
 		configParam<TimeParamQuantity<1>>(FALL_PARAM, 0.0f, 1.0f, 0.5477226f, "Fall time", " s");
 		configParam(FALL_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "Fall shape");
-		configParam<TimeParamQuantity<1>>(MINIMUM_GATE_PARAM, 0.0f, 1.0f, 0.3162278f, "Minimum gate", " s");
+		configParam<TimeParamQuantity<1>>(MINIMUM_GATE_PARAM, 0.0f, 1.0f, SQUARE_ROOT_ONE_TENTH, "Minimum gate", " s");
 		configParam(TILT_PARAM, -1.0f, 1.0f, 0.0f, "Tilt", "%", 0.0f, 100.0f);
 		configButton(GATE_TO_TRIGGER_PARAM, "Gate to trigger mode");
 		configButton(TIMES_10X_PARAM, "Timings 10X mode");

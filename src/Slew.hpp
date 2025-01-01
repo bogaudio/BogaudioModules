@@ -33,9 +33,9 @@ struct Slew : BGModule {
 
 	Slew() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
-		configParam<EnvelopeSegmentParamQuantity>(RISE_PARAM, 0.0f, 1.0f, 0.31623f, "Rise", " s");
+		configParam<EnvelopeSegmentParamQuantity>(RISE_PARAM, 0.0f, 1.0f, SQUARE_ROOT_ONE_TENTH, "Rise", " s");
 		configParam(RISE_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "Rise shape");
-		configParam<EnvelopeSegmentParamQuantity>(FALL_PARAM, 0.0f, 1.0f, 0.31623f, "Fall", " s");
+		configParam<EnvelopeSegmentParamQuantity>(FALL_PARAM, 0.0f, 1.0f, SQUARE_ROOT_ONE_TENTH, "Fall", " s");
 		configParam(FALL_SHAPE_PARAM, -1.0f, 1.0f, 0.0f, "Fall shape");
 		configSwitch(SLOW_PARAM, 0.0f, 1.0f, 0.0f, "Slow mode", {"Disabled", "Enabled"});
 		configBypass(IN_INPUT, OUT_OUTPUT);

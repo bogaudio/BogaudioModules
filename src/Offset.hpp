@@ -31,7 +31,7 @@ struct Offset : DisableOutputLimitModule {
 	Offset() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam(OFFSET_PARAM, -1.0f, 1.0f, 0.0f, "Offset", " V", 0.0f, 10.0f);
-		configParam<TenXSquaringParamQuantity>(SCALE_PARAM, -1.0f, 1.0f, 0.31623f, "Scale", "x");
+		configParam<TenXSquaringParamQuantity>(SCALE_PARAM, -1.0f, 1.0f, SQUARE_ROOT_ONE_TENTH, "Scale", "x");
 		configBypass(IN_INPUT, OUT_OUTPUT);
 
 		configInput(OFFSET_INPUT, "Offset CV");

@@ -5,6 +5,8 @@
 
 using namespace rack;
 
+#define SQUARE_ROOT_ONE_TENTH 0.31622776601683794
+
 namespace bogaudio {
 
 template <int scale>

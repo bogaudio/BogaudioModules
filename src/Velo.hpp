@@ -47,7 +47,7 @@ struct Velo : BGModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam<LevelParamQuantity>(LEVEL_PARAM, 0.0f, 1.0f, 0.8f, "level");
 		configParam(LEVEL_ATTENUATOR_PARAM, -1.0f, 1.0f, 0.0f, "Level CV");
-		configParam<ScaledSquaringParamQuantity<-60>>(VELOCITY_PARAM, 0.0f, 1.0f, 0.3162278f, "Velocity range", " dB");
+		configParam<ScaledSquaringParamQuantity<-60>>(VELOCITY_PARAM, 0.0f, 1.0f, SQUARE_ROOT_ONE_TENTH, "Velocity range", " dB");
 		configSwitch(LINEAR_PARAM, 0.0f, 1.0f, 0.0f, "Linear", {"Disabled", "Enabled"});
 		configBypass(IN_INPUT, OUT_OUTPUT);
 

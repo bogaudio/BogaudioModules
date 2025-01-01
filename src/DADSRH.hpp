@@ -68,9 +68,9 @@ struct DADSRH : TriggerOnLoadModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam<EnvelopeSegmentParamQuantity>(DELAY_PARAM, 0.0f, 1.0f, 0.0f, "Delay", " s");
 		configParam<EnvelopeSegmentParamQuantity>(ATTACK_PARAM, 0.0f, 1.0f, 0.14142f, "Attack", " s");
-		configParam<EnvelopeSegmentParamQuantity>(DECAY_PARAM, 0.0f, 1.0f, 0.31623f, "Decay", " s");
+		configParam<EnvelopeSegmentParamQuantity>(DECAY_PARAM, 0.0f, 1.0f, SQUARE_ROOT_ONE_TENTH, "Decay", " s");
 		configParam(SUSTAIN_PARAM, 0.0f, 1.0f, 0.5f, "Sustain", "%", 0.0f, 100.0f);
-		configParam<EnvelopeSegmentParamQuantity>(RELEASE_PARAM, 0.0f, 1.0f, 0.31623f, "Release", " s");
+		configParam<EnvelopeSegmentParamQuantity>(RELEASE_PARAM, 0.0f, 1.0f, SQUARE_ROOT_ONE_TENTH, "Release", " s");
 		configParam<EnvelopeSegmentParamQuantity>(HOLD_PARAM, 0.0f, 1.0f, 0.44721f, "Hold", " s");
 		configSwitch(ATTACK_SHAPE_PARAM, 1.0f, 3.0f, 1.0f, "Attack shape", {"Logarithmic", "Linear", "Exponential"});
 		configSwitch(DECAY_SHAPE_PARAM, 1.0f, 3.0f, 1.0f, "Decay shape", {"Exponential", "Linear", "Logarithmic"});

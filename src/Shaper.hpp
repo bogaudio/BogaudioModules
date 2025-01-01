@@ -53,8 +53,8 @@ struct Shaper : TriggerOnLoadModule {
 	Shaper() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam<EnvelopeSegmentParamQuantity>(ATTACK_PARAM, 0.0f, 1.0f, 0.14142f, "Attack", " s");
-		configParam<EnvelopeSegmentParamQuantity>(ON_PARAM, 0.0f, 1.0f, 0.31623f, "On", " s");
-		configParam<EnvelopeSegmentParamQuantity>(DECAY_PARAM, 0.0f, 1.0f, 0.31623f, "Decay", " s");
+		configParam<EnvelopeSegmentParamQuantity>(ON_PARAM, 0.0f, 1.0f, SQUARE_ROOT_ONE_TENTH, "On", " s");
+		configParam<EnvelopeSegmentParamQuantity>(DECAY_PARAM, 0.0f, 1.0f, SQUARE_ROOT_ONE_TENTH, "Decay", " s");
 		configParam<EnvelopeSegmentParamQuantity>(OFF_PARAM, 0.0f, 1.0f, 0.07071f, "Off", " s");
 		configParam(ENV_PARAM, 0.0f, 1.0f, 1.0f, "Env", "%", 0.0f, 100.0f);
 		configParam(SIGNAL_PARAM, 0.0f, 1.0f, 0.1f, "Signal", "x", 10.0f);

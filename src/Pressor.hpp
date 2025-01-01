@@ -85,8 +85,8 @@ struct Pressor : BGModule {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 		configParam<ThresholdParamQuantity>(THRESHOLD_PARAM, 0.0f, 1.0f, 0.8f, "Threshold", " dB");
 		configParam<DynamicsRatioParamQuantity>(RATIO_PARAM, 0.0f, 1.0f, 0.55159f, "Ratio");
-		configParam<ScaledSquaringParamQuantity<500>>(ATTACK_PARAM, 0.0f, 1.0f, 0.31623f, "Attack", " ms");
-		configParam<ScaledSquaringParamQuantity<2>>(RELEASE_PARAM, 0.0f, 1.0f, 0.31623f, "Release", " s");
+		configParam<ScaledSquaringParamQuantity<500>>(ATTACK_PARAM, 0.0f, 1.0f, SQUARE_ROOT_ONE_TENTH, "Attack", " ms");
+		configParam<ScaledSquaringParamQuantity<2>>(RELEASE_PARAM, 0.0f, 1.0f, SQUARE_ROOT_ONE_TENTH, "Release", " s");
 		configParam(OUTPUT_GAIN_PARAM, 0.0f, 1.0f, 0.0f, "Output gain", " dB", 0.0f, 24.0f);
 		configParam(INPUT_GAIN_PARAM, -1.0f, 1.0f, 0.0f, "Input gain", " dB", 0.0f, 12.0f);
 		configParam(DETECTOR_MIX_PARAM, -1.0f, 1.0f, 0.0f, "Detector mix", "%", 0.0f, 100.0f);

@@ -161,7 +161,7 @@ struct PEQ14 : ExpandableModule<PEQ14ExpanderMessage, BandExcludeModule> {
 		configParam<ScaledSquaringParamQuantity<(int)PEQChannel::maxFrequency>>(FREQUENCY9_PARAM, 0.0f, 1.0f, 0.2645751f, "Channel 9 frequency", " HZ");
 		configParam(FREQUENCY_CV9_PARAM, -1.0f, 1.0f, 1.0f, "Channel 9 frequency CV attenuation", "%", 0.0f, 100.0f);
 		configParam(LEVEL10_PARAM, 0.0f, 1.0f, levelDefault, "Channel 10 level", " dB", 0.0f, PEQChannel::maxDecibels - PEQChannel::minDecibels, PEQChannel::minDecibels);
-		configParam<ScaledSquaringParamQuantity<(int)PEQChannel::maxFrequency>>(FREQUENCY10_PARAM, 0.0f, 1.0f, 0.3162278f, "Channel 10 frequency", " HZ");
+		configParam<ScaledSquaringParamQuantity<(int)PEQChannel::maxFrequency>>(FREQUENCY10_PARAM, 0.0f, 1.0f, SQUARE_ROOT_ONE_TENTH, "Channel 10 frequency", " HZ");
 		configParam(FREQUENCY_CV10_PARAM, -1.0f, 1.0f, 1.0f, "Channel 10 frequency CV attenuation", "%", 0.0f, 100.0f);
 		configParam(LEVEL11_PARAM, 0.0f, 1.0f, levelDefault, "Channel 11 level", " dB", 0.0f, PEQChannel::maxDecibels - PEQChannel::minDecibels, PEQChannel::minDecibels);
 		configParam<ScaledSquaringParamQuantity<(int)PEQChannel::maxFrequency>>(FREQUENCY11_PARAM, 0.0f, 1.0f, 0.3741657f, "Channel 11 frequency", " HZ");
