@@ -3,32 +3,10 @@
 using namespace bogaudio;
 
 bool Trigger::process(float in) {
-	if (state) {
-		if (in <= _lowThreshold) {
-			state = false;
-		}
-	}
-	else {
-		if (in >= _highThreshold) {
-			state = true;
-			return true;
-		}
-	}
-	return false;
+	return rack::dsp::SchmittTrigger::process(in, _lowThreshold, _highThreshold);
 }
 
 
 bool NegativeTrigger::process(float in) {
-	if (state) {
-		if (in >= _lowThreshold) {
-			state = false;
-		}
-	}
-	else {
-		if (in <= _highThreshold) {
-			state = true;
-			return true;
-		}
-	}
-	return false;
+	return Trigger::process(-in);
 }
