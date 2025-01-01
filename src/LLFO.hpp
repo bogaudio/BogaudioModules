@@ -76,7 +76,7 @@ struct LLFO : LFOBase {
 	TriangleOscillator _triangle;
 	SawOscillator _ramp;
 	SquareOscillator _square;
-	SteppedRandomOscillator _stepped;
+	SteppedRandomOscillator _stepped[maxChannels];
 	bool _invert;
 	Phasor* _oscillator;
 	bool _samplingEnabled = false;

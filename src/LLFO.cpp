@@ -122,7 +122,7 @@ void LLFO::modulate() {
 			break;
 		}
 		case STEPPED_WAVE: {
-			_oscillator = &_stepped;
+			_oscillator = NULL;
 			_samplingEnabled = false;
 			break;
 		}
@@ -173,7 +173,12 @@ void LLFO::processChannel(const ProcessArgs& args, int c) {
 		}
 	}
 	if (!useSample) {
-		_currentSample[c] = _oscillator->nextFromPhasor(_phasor[c]) * amplitude * _scale;
+		Phasor* oscillator = _oscillator;
+		if (!oscillator) {
+			assert(_wave == STEPPED_WAVE);
+			oscillator = &_stepped[c];
+		}
+		_currentSample[c] = oscillator->nextFromPhasor(_phasor[c]) * amplitude * _scale;
 		if (_invert) {
 			_currentSample[c] = -_currentSample[c];
 		}
