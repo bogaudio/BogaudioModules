@@ -102,19 +102,30 @@ struct Phasor : OscillatorGenerator {
 };
 
 struct TablePhasor : Phasor {
+	enum Interpolation {
+		INTERPOLATION_DEFAULT,
+		INTERPOLATION_ON,
+		INTERPOLATION_OFF
+	};
+
 	const Table& _table;
 	int _tableLength;
+	Interpolation _interpolation;
 
 	TablePhasor(
 		const Table& table,
 		double sampleRate = 1000.0f,
-		double frequency = 100.0f
+		double frequency = 100.0f,
+		Interpolation interpolation = INTERPOLATION_DEFAULT
 	)
 	: Phasor(sampleRate, frequency)
 	, _table(table)
 	, _tableLength(table.length())
+	, _interpolation(interpolation)
 	{
 	}
+
+	void setInterpolation(Interpolation interpolation);
 
 	float nextForPhase(phase_t phase) override;
 };
@@ -151,9 +162,10 @@ struct SineOscillator : OscillatorGenerator {
 struct SineTableOscillator : TablePhasor {
 	SineTableOscillator(
 		float sampleRate = 1000.0f,
-		float frequency = 100.0f
+		float frequency = 100.0f,
+		Interpolation interpolation = INTERPOLATION_ON
 	)
-	: TablePhasor(StaticSineTable::table(), sampleRate, frequency)
+	: TablePhasor(StaticSineTable::table(), sampleRate, frequency, interpolation)
 	{
 	}
 };

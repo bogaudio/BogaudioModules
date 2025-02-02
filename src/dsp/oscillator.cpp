@@ -59,9 +59,13 @@ float Phasor::nextForPhase(phase_t phase) {
 }
 
 
+void TablePhasor::setInterpolation(Interpolation interpolation) {
+	_interpolation = interpolation;
+}
+
 float TablePhasor::nextForPhase(phase_t phase) {
 	phase %= cyclePhase;
-	if (_tableLength >= 1024) {
+	if (_interpolation == INTERPOLATION_OFF || (_interpolation == INTERPOLATION_DEFAULT && _tableLength >= 1024)) {
 		int i = (((((uint64_t)phase) << 16) / cyclePhase) * _tableLength) >> 16;
 		i %= _tableLength;
 		return _table.value(i);

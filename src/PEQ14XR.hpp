@@ -27,8 +27,6 @@ struct PEQ14XR : ExpanderModule<PEQ14ExpanderMessage, ExpandableModule<PEQ14Expa
 		struct BandOscillator {
 			Phasor _phasor;
 			TriangleOscillator _oscillator;
-			// SineTableOscillator _oscillator;
-			// BandLimitedSawOscillator _oscillator;
 
 			inline void setSampleRate(float sr) { _phasor.setSampleRate(sr); }
 			inline void setFrequency(float f) { _phasor.setFrequency(f); }

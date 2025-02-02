@@ -2,6 +2,9 @@
 #include "FMOp.hpp"
 #include "dsp/pitch.hpp"
 
+#define INTERPOLATION "interpolation"
+#define INTERPOLATION_VALUE_ON "on"
+#define INTERPOLATION_VALUE_OFF "off"
 #define LINEAR_LEVEL "linearLevel"
 #define ANTIALIAS_FEEDBACK "antialias_feedback"
 #define ANTIALIAS_DEPTH "antialias_depth"
@@ -57,6 +60,7 @@ void FMOp::Engine::sampleRateChange() {
 }
 
 json_t* FMOp::saveToJson(json_t* root) {
+	json_object_set_new(root, INTERPOLATION, json_string(_interpolation == SineTableOscillator::INTERPOLATION_ON ? INTERPOLATION_VALUE_ON : INTERPOLATION_VALUE_OFF));
 	json_object_set_new(root, LINEAR_LEVEL, json_boolean(_linearLevel));
 	json_object_set_new(root, ANTIALIAS_FEEDBACK, json_boolean(_antiAliasFeedback));
 	json_object_set_new(root, ANTIALIAS_DEPTH, json_boolean(_antiAliasDepth));
@@ -64,6 +68,14 @@ json_t* FMOp::saveToJson(json_t* root) {
 }
 
 void FMOp::loadFromJson(json_t* root) {
+	json_t* i = json_object_get(root, INTERPOLATION);
+	if (i) {
+		const char *s = json_string_value(i);
+		if (strcmp(s, INTERPOLATION_VALUE_ON) == 0) {
+			_interpolation = SineTableOscillator::INTERPOLATION_ON;
+		}
+	}
+
 	json_t* ll = json_object_get(root, LINEAR_LEVEL);
 	if (ll) {
 		_linearLevel = json_is_true(ll);
@@ -174,6 +186,8 @@ void FMOp::modulateChannel(int c) {
 	if (inputs[LEVEL_INPUT].isConnected()) {
 		e.level *= clamp(inputs[LEVEL_INPUT].getPolyVoltage(c) / 10.0f, 0.0f, 1.0f);
 	}
+
+	e.sineTable.setInterpolation(_interpolation);
 }
 
 void FMOp::processAlways(const ProcessArgs& args) {
@@ -346,6 +360,12 @@ struct FMOpWidget : BGModuleWidget {
 	void contextMenu(Menu* menu) override {
 		auto fmop = dynamic_cast<FMOp*>(module);
 		assert(fmop);
+
+		OptionsMenuItem* om = new OptionsMenuItem("Oscillator mode");
+		om->addItem(OptionMenuItem("Classic (extra harmonics)", [fmop]() { return fmop->_interpolation == SineTableOscillator::INTERPOLATION_OFF; }, [fmop]() { fmop->_interpolation = SineTableOscillator::INTERPOLATION_OFF; }));
+		om->addItem(OptionMenuItem("Clean (pure sine)", [fmop]() { return fmop->_interpolation == SineTableOscillator::INTERPOLATION_ON; }, [fmop]() { fmop->_interpolation = SineTableOscillator::INTERPOLATION_ON; }));
+		OptionsMenuItem::addToMenu(om, menu);
+
 		menu->addChild(new BoolOptionMenuItem("Linear level response", [fmop]() { return &fmop->_linearLevel; }));
 
 		menu->addChild(new BoolOptionMenuItem("Anti-alias feedback", [fmop]() { return &fmop->_antiAliasFeedback; }));

@@ -83,6 +83,7 @@ struct FMOp : BGModule {
 		void sampleRateChange();
 	};
 
+	SineTableOscillator::Interpolation _interpolation = SineTableOscillator::INTERPOLATION_OFF;
 	bool _linearLevel = false;
 	bool _antiAliasFeedback = true;
 	bool _antiAliasDepth = true;
