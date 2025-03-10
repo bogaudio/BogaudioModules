@@ -6,6 +6,13 @@ using namespace bogaudio;
 
 #define SKIN "skin"
 
+void BGModule::onRemove() {
+	while (_channels >= 1) {
+		removeChannel(_channels - 1);
+		--_channels;
+	}
+}
+
 void BGModule::onReset() {
 	_steps = _modulationSteps;
 	reset();

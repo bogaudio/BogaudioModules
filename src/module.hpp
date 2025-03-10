@@ -26,15 +26,10 @@ struct BGModule : Module {
 	std::string _skin = "default";
 	std::vector<SkinChangeListener*> _skinChangeListeners;
 
-	BGModule() {
-	}
-	virtual ~BGModule() {
-		while (_channels >= 1) {
-			removeChannel(_channels - 1);
-			--_channels;
-		}
-	}
+	BGModule() {}
+	virtual ~BGModule() {}
 
+	void onRemove() override;
 	void onReset() override;
 	void onSampleRateChange() override;
 	json_t* dataToJson() override;
