@@ -167,6 +167,10 @@ A sine-wave oscillator and simple synth voice designed to allow patching up the 
 
 Anti-aliasing techniques are applied when feedback or external FM are in use.  Either condition for anti-aliasing can be disabled on the context menu.  Prior to version 1.1.36, due to a long-standing bug, there was no anti-aliasing for external FM, unless feedback was also on.  To get that behavior back, **the true vintage FM-OP sound**, disable "Anti-alias external FM" on the menu.
 
+As of version 2.6.46, menu option "Oscillator mode" sets the quality of the oscillator's output sine wave:
+  - Option "Classic", the default, is the classic FM-OP sound. The sine is produced from a wavetable, without interpolation. This adds small extra harmonics to the output.
+  - Option "Clean" enables interpolation, yielding a nearly-pure sine wave.
+
 _Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the V/OCT input.
 
 _When <a href="#bypassing">bypassed</a>:_ no output.
