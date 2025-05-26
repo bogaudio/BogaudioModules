@@ -53,7 +53,7 @@ struct Switch : SaveLatchToPatchModule {
 		configInput(GATE_INPUT, "Gate");
 		configInput(HIGH1_INPUT, "High 1 signal");
 		configInput(LOW1_INPUT, "Low 1 signal");
-		configInput(HIGH2_INPUT, "Hight 2 signal");
+		configInput(HIGH2_INPUT, "High 2 signal");
 		configInput(LOW2_INPUT, "Low 2 signal");
 
 		configOutput(OUT1_OUTPUT, "Signal 1");
