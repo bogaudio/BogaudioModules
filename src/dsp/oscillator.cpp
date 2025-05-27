@@ -71,10 +71,12 @@ float TablePhasor::nextForPhase(phase_t phase) {
 		return _table.value(i);
 	}
 
-	float fi = phase / (float)cyclePhase;
-	assert(fi >= 0.0f && fi < 1.0f);
+	double fi = phase / (double)cyclePhase;
 	fi *= _tableLength;
 	int i = fi;
+	if (i >= _tableLength) {
+		i = 0;
+	}
 	float v1 = _table.value(i);
 	float v2 = _table.value(i + 1 == _tableLength ? 0 : i + 1);
 	return v1 + (fi - i)*(v2 - v1);
