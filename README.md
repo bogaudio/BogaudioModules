@@ -72,14 +72,14 @@ The master branch of this module currently builds against Rack 2.0.x.
 A standard VCO featuring:
   - Simultaneous square, saw, triangle and sine wave outputs.
   - Traditional exponential and linear through-zero FM.
-  - Pulse width modulation of the square wave.
+  - Pulse width modulation knob and CV, which only affect the square wave output.
   - Hard sync.
   - Slow (LFO) mode.
   - Antialiasing by a CPU-efficient combination of band limiting and oversampling.
 
 The main frequency knob is calibrated in volts, from -4 to +6, corresponding to notes from C0 to C6.  The default "0V" position corresponds to C4 (261.63HZ).  Any pitch CV input at the V/OCT port is added to the knob value to determine the oscillator frequency.  With CV input, the pitch can be driven as high as 95% of the Nyquist frequency (so, over 20KHZ at Rack's default sample rate).  The FINE knob allows an additional adjustment of up to +/-1 semitone (100 cents, 1/12 volt).  In slow mode, the output frequency is 7 octaves lower than in normal mode with the same knob/CV values.
 
-In linear mode, the frequency 1000HZ times the pitch voltage (as determined by the knob plus V/OCT CV) -- at 0V, the frequency is zero, and the oscillator stops.  In slow mode, it tracks at 1HZ times the pitch voltage.  Negative voltages will realize the same output frequency as the corresponding positive voltage (the oscillator runs backwards).  Use with with an FM input to create strange waveforms.
+In linear mode, the frequency is 1000HZ times the pitch voltage. Therefore, the default "0V" position corresponds to 0HZ, and the oscillator stops. In slow mode, it tracks at 1HZ times the pitch voltage. Another feature of linear mode is that negative voltages will realize the same output frequency as the corresponding positive voltage (the oscillator runs backwards). Use with an FM input to create strange waveforms. 
 
 The context menu option "DC offset correction", on by default, removes DC offset from the outputs.  Presently, this only affects the square output when the pulse width is set to anything besides 50%.  When this is enabled, and viewing the output on a scope, the waveform will move up and down relative to 0V as the pulse width is changed -- this is the DC offset removal in action.  When disabled, the waveform stays centered on 0V, which is useful if using the output as CV.
 
@@ -89,7 +89,7 @@ _When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="lvco"></a> LVCO
 
-A 3HP subset of VCO, designed as a compact general-purpose oscillator.  The waveform is selectable between sine, triangle, saw, square and 25% and 10% duty-cycle pulses.  FM and linear modes are selectable on the context menu.
+A 3HP ([HP means Horizontal Pitch](https://learningmodular.com/glossary/hp/)) subset of VCO, designed as a compact general-purpose oscillator.  The waveform is selectable between sine, triangle, saw, square and 25% and 10% duty-cycle pulses.  FM and linear modes are selectable on the context menu.
 
 Context menu option "Reset phase on wave change", if enabled, causes the waveform phase to be set to zero when the waveform is changed.  By default the continues to advance from wherever it was.
 
@@ -101,7 +101,7 @@ _When <a href="#bypassing">bypassed</a>:_ no output.
 
 A 3HP subset of VCO, designed in particular for use making synth drums.  The waveform defaults to sine but is selectable on the context menu, with the same options as LVCO, with the addition of a ramp (inverse saw) wave.
 
-Additionally, there is a phase control with CV borrowed from XCO (if CV is used, the input is attenuverted by the PHASE knob).  This sets the initial position of the wave when the module is synced (if you're not using sync, changing the phase won't meaningfully alter the output).  This can be used to alter the harmonic content of sync sounds, and for transient shaping for drum synthesis.
+The phase controls on SINE are like those in the XCO oscillator module. The PHASE knob sets the initial position (i.e. phase) of the wave and attenuverts the PHASE CV. Phase controls can be used to alter the harmonic content of sync sounds, and for transient shaping for drum synthesis.
 
 _Polyphony:_ Same as VCO.
 
@@ -159,10 +159,10 @@ _When <a href="#bypassing">bypassed</a>:_ no output.
 
 A sine-wave oscillator and simple synth voice designed to allow patching up the classic FM algorithms (using multiple instances).  Features:
   - Linear through-zero FM response.
-  - CV-controllable FM depth.
-  - CV-controllable FM self-feedback.
+  - CV-controllable FM depth (DEPTH).
+  - CV-controllable FM self-feedback (FDBK).
   - CV-controllable output level.  The LEVEL knob and CV have a linear-in-decibels (exponential in amplitude) response; a context-menu setting makes this linear in amplitude.
-  - An on-board ADSR, controlled by the GATE input, with selectable routing to output level, feedback and depth, with CV control over the sustain level.
+  - An on-board ADSR, controlled by the GATE input. This ADSR can be routed to output level, FM self-feedback and FM depth. The SUS input modulates the ADSR's sustain.
   - A main frequency knob calibrated for setting the frequency as a ratio of the frequency dictated by the V/OCT input - assuming a single V/OCT CV is routed to multiple FM-OPs, this allows the relative frequency of each operator to be set via ratios.
 
 Anti-aliasing techniques are applied when feedback or external FM are in use.  Either condition for anti-aliasing can be disabled on the context menu.  Prior to version 1.1.36, due to a long-standing bug, there was no anti-aliasing for external FM, unless feedback was also on.  To get that behavior back, **the true vintage FM-OP sound**, disable "Anti-alias external FM" on the menu.
@@ -345,9 +345,11 @@ _When <a href="#bypassing">bypassed</a>:_ passes left and right inputs unmodifie
 
 ![LPGs screenshot](doc/www/lpgs.png)
 
-LPG is a "low-pass gate", where an envelope generator, low-pass filter (LPF) and amplifier (VCA) are combined into a single sound-shaping unit.  It lends itself to percussive or plucked sounds, though longer notes are possible.
+LPG is a "low-pass gate", where an envelope generator, low-pass filter (LPF) and amplifier (VCA) are combined into a single sound-shaping unit. The generated envelope modulates the filter cutoff frequency and the VCA level. The module lends itself to percussive or plucked sounds, though longer notes are possible.
 
-LPG's envelope is a version of <a href="#vish">VISH</a>, with simplified controls.  On LPG, the single RESPONSE control (taking a unipolar 0-10V CV at RESP) sets the length and basic shape of the envelope (turning up RESPONSE is equivalent to turning up each of MIN GATE, RISE time and FALL time, proportionally, on VISH).  Enabling LONG rescales the knob for longer envelopes.  The RISE and FALL knobs set the shapes (curves) of the rising and falling envelope segments, as on VISH.  The envelope is triggered whenever LPG receives a rising edge at the TRIG input.
+LPG's envelope is triggered whenever a rising edge is detected at the TRIG input. 
+
+LPG's envelope generator is a version of <a href="#vish">VISH</a>, with simplified controls. On LPG, the single RESPONSE control (taking a unipolar 0-10V CV at RESP) sets the length and basic shape of the envelope (turning up RESPONSE is equivalent to turning up each of MIN GATE, RISE time and FALL time, proportionally, on VISH).  Enabling LONG rescales the knob for longer envelopes.  The RISE and FALL knobs set the shapes (curves) of the rising and falling envelope segments, as on VISH.  
 
 The signal received at IN is processed by an LPF and VCA in series before being sent to OUT.  Each has a BIAS knob, which sets the base level of the cutoff of the LPF, and level of the VCA, when the envelope is off.  The ENV attenuverters control how the envelope affects the LPF and VCA respectively.  Each bias knob also has a CV input, marked LPF and VCA, expecting unipolar (0-10V) signals.
 
@@ -402,11 +404,11 @@ _When <a href="#bypassing">bypassed</a>:_ no output.
 
 A three-channel parametric EQ, which is a filter bank where the band frequencies are controllable.  Each channel gets the input from IN and applies a bandpass filter with center frequency set by FREQ, where the filter's output is sent through a VCA controlled by LEVEL.  The outputs of each channel are mixed to OUT.
 
-The first channel may be configured as a lowpass filter, if the LP button is on.  The last channel can be highpass.  (And they are by default.)
+By default, channel A is configured as a lowpass filter, and channel C is configured as a highpass filter. These can be switched to bandpass filters by untoggling the LP button or the HP button, respectively. 
 
 Each channel has a CV input for level; this is a unipolar (0-10V) CV, and corresponding knob attenuates the CV if the CV is in use.
 
-Likewise each channel has an FCV input for frequency modulation, and additionally there is a global FCV input, which voltage effects all channels.  For each channel, the channel FCV and global FCV are summed, then attenuverted by the channel's FCV knob, and the result is added to the FREQ knob setting.  These CVs are bipolar (+/-5V), where +5V will send the frequency from 0 to its max value.
+Likewise, each channel has an FCV input for controlling the channel's band frequency. Additionally, there is a global FCV input, whose voltage affects the band frequency of all channels.  For each channel, the channel FCV and global FCV are summed, then attenuverted by the channel's FCV knob, and the result is added to the FREQ knob setting.  These CVs are bipolar (+/-5V), where +5V will send the frequency from 0 to its max value.
 
 Finally, each channel has a BW (bandwidth) setting, that applies if the channel is a bandpass filter, and controls the width of the filter's frequency response.  These have unipolar CVs per channel.
 
@@ -419,7 +421,7 @@ _When <a href="#bypassing">bypassed</a>:_ passes IN unmodified to OUT.
 A six channel parametric EQ.  It generally works as PEQ does, except:
   - The global FCV control has a knob, which becomes an attenuverter if a CV is provided.
   - There is a global BW parameter with CV, rather than per-channel bandwidth controls.
-  - The "FCV RNG" option controls the scaling of the frequency CV inputs; if set to OCTV, the full CV range will alter the band frequencies up to an octave in either direction; if set to FULL, the CV can run the frequencies over the full range, as on PEQ.
+  - The "FCV RNG" (Filter Control Voltage Range) option controls the scaling of the frequency CV inputs; if set to OCTV, the full CV range will alter the band frequencies up to an octave in either direction; if set to FULL, the CV can run the frequencies over the full range, as on PEQ.
   - On the context (right-click) menu, there is an option "Exclude direct-output bands from mix"; if this is enabled, any band that has its direct output in use (if something is patched to its output) does not get its output mixed into the main output.  Usually, the main output includes all bands.
 
 _Polyphony:_ <a href="#polyphony">polyphonic</a>, with channels defined by the IN input.
@@ -458,10 +460,10 @@ DADSRH (Delay, Attack, Decay, Sustain, Release, Hold) is an envelope generator, 
 ![Envelopes screenshot 1](doc/www/envelopes1.png)
 
 Features:
-  - When the MODE switch is set to GATE, DADSRH is a more-or-less standard ADSR envelope generator, with an additional pre-attack delay stage.  The envelope is controlled by a gate CV at the trigger port, or by holding the TRIGGER button.
-  - When MODE is TRIG, a trigger CV or press of the TRIGGER button will start a normal DADSR cycle, but controlled by an internal gate CV.  The internal gate persists for the time set by the HOLD knob.
+  - When the MODE switch is set to GATE, DADSRH is a more-or-less standard ADSR envelope generator, with an additional pre-attack delay stage.  The envelope is controlled by a gate CV at the trigger port, or by holding the TRIGGER button. The HOLD knob does nothing in this mode.
+  - When the MODE switch is set to TRIG, a trigger CV or press of the TRIGGER button will start a normal DADSR cycle, but controlled by an internal gate CV.  The internal gate persists for the time set by the HOLD knob.
   - The envelope is output as a 0-10 signal at port ENV.  Its inverse (10V - ENV) is output at INV.  When a release stage completes, a trigger is emitted at END.
-  - When MODE is TRIGGER, the CYCLE switch controls whether the envelope loops or not upon completion of a release stage.
+  - When the MODE switch is set to TRIG, the CYCLE switch controls whether the envelope loops or not upon completion of a release stage.
   - Toggles allow selection of linear, exponential or inverse-exponential ("logarithmic", more or less) shapes for the attack, decay and release stages.
   - The SPEED switch slows down the timing of segments by 10x.
   - The RETRIG switch controls the retrigger behavior (when a new gate or trigger happens while the envelope is running): ATT immediately attacks from the current envelope value (this is the typical behavior with many ADSRs), while RST causes a full reset of the envelope (restarting it at the delay stage).
@@ -783,7 +785,7 @@ _When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="matrix44"></a> MATRIX44
 
-A 4x4 channel matrix mixer.  Each input can be routed with an independent level to each of the eight output mixes.  MATRIX44 is expandable with <a href="matrix44cvm">MX44CVM</a>.
+A 4x4 channel matrix mixer.  Each of the four inputs can be routed with an independent level to each of the four output mixes.  MATRIX44 is expandable with <a href="matrix44cvm">MX44CVM</a>.
 
 *Note that the matrix knobs are attenuverters, and default to zero.*  That means there will be no output, regardless of the inputs, until some knobs are changed to non-zero values.  The knobs can be set to unipolar mode, as below; they still default to zero.
 
@@ -928,9 +930,9 @@ _When <a href="#bypassing">bypassed</a>:_ passes IN unmodified to OUT.
 
 #### <a name="velo"></a> VELO
 
-A voltage-controlled amplifier with three CV inputs of three different types: a regular one, a bipolar one (good for tremolo), and one that is inverted and scaled (designed for implementing MIDI velocity, and the reason for the module's name).  
+A voltage-controlled amplifier with three CV inputs of three different types: a regular one - LEVEL, a bipolar one - CV (good for tremolo), and one that is inverted and scaled - VELO (designed for implementing MIDI velocity, and the reason for the module's name).  
 
-The LEVEL knob and CV words as on <a href="#VCA">VCA</a>; the knob sets the base VCA level if the LEVEL input is not patched; if it is patched, it expects a unipolar (0-10V) signal, which sets the LEVEL up to the position of the knob (which is to say that the knob attenuates the CV).  The LEVEL input is the place to patch in an envelope.
+The LEVEL knob and the LEVEL CV work like the knob and the CV on <a href="#VCA">VCA</a>. The LEVEL knob sets the base VCA level if the LEVEL input is not patched; if it is patched, it expects a unipolar (0-10V) signal, which sets the LEVEL up to the position of the knob (which is to say that the knob attenuates the CV).  The LEVEL input is the place to patch in an envelope.
 
 The CV input takes a bipolar (+/-5V) signal, subject to attenuversion by the smaller knob below the LEVEL knob.  The resulting value is scaled by whatever value was set by LEVEL (knob and CV) and then added to the LEVEL value (this coupling of CV to LEVEL is enabled is by default, but see below).  The CV input is a good place to patch in an LFO, to achieve tremolo.
 
@@ -954,11 +956,11 @@ _When <a href="#bypassing">bypassed</a>:_ passes IN unmodified to OUT.
 
 AM/RM is a ring- and amplitude-modulation effect and CV-controllable variable wave rectifier.
 
-  - With the default knob settings, the unit is a proper ring modulator: the MOD (modulator) and CAR (carrier) inputs are multiplied and the resulting wave is sent to the output.  MOD is passed unchanged to the RECT output.
-  - As RECTIFY goes from 0 to fully clockwise, the negative portion of the MOD input is progressively folded to positive, until at the full value the wave is fully rectified.  The modified input is output at RECT; the modified input is multiplied with the carrier input and sent to the output.
+  - With the default knob settings, the unit is a proper ring modulator: the MOD (modulator) and CAR (carrier) inputs are multiplied and the resulting wave is sent to the OUT output.  MOD is passed unchanged to the RECT output.
+  - As RECTIFY goes from 0 to fully clockwise, the negative portion of the MOD input is progressively folded to positive, until at the full value the wave is fully positive, i.e. rectified.  The modified input is output at RECT; the modified input is multiplied with the carrier input and sent to the output.
   - The DRY/WET control mixes the output of the mod/carrier multiplication with the unmodified carrier input.
 
-The RECT inputs expects a bipolar (+/-5V) CV, which is added to the RECTIFY knob.  The D/W input works the same for the DRY/WET knob.
+The RECT input expects a bipolar (+/-5V) CV, which is added to the RECTIFY knob.  The D/W input works the same for the DRY/WET knob.
 
 Note: AM/RM is calibrated to expect +/-5V, 10V peak-to-peak signals (i.e. the output of a typical oscillator).  A modulator signal with a negative value in excess of -5V will be affected by the rectifier circuit even if the RECTIFY is zero.  To avoid this effect, you may need to attenuate a hot signal you wish to use as the modulator.
 
@@ -977,7 +979,7 @@ The various controls and ports work as follows:
   - THRESHOLD sets the threshold in decibels.  The default 0dB setting corresponds to the 10V peak-to-peak output level of a standard oscillator.  The TRSH input expects a unipolar (+10V) input; if in use this is attenuated by the knob.  The knob's range is -24dB to +6dB; menu option "Threshold range" allows this to be doubled to -48dB to 12dB.
   - RATIO sets the degree of attenuation applied to a signal.  In compressor mode, higher settings attenuate the signal more as the detector output goes above the threshold; at the maximum setting, the compressor becomes a limiter.  In noise gate mode, higher ratios more completely attenuate inputs below the threshold.  The RATIO CV input is unipolar (0-10V), attenuated by the knob
   - The COMPRESSION meter provides a visual indication of the amount of attenuation being applied to the input at any given moment, and is proportional to the CV output at ENV.
-  - ATACK and DECAY control lag times in the the movement of the detector signal as the input changes.  Each has a corresponding unipolar (+10V) CV attenuated by the corresponding knob.
+  - The ATTACK and RELEASE knobs control the lag times in the movement of the detector signal as the input changes.  Each has a corresponding unipolar (+10V) CV attenuated by the corresponding knob.
   - The DECTECT switch toggles the detector between RMS and peak level analyzers; RMS averages the input over a short window whereas PEAK uses the instantaneous level.
   - KNEE toggles between a slightly softer or harder response as the attenuation turns on or off as the signal crosses the threshold.
   - IN GAIN attenuates (up to -12db) or amplifies (up to +12db) the left and right inputs.  (It does not apply to the sidechain input.)  The modified input is sent to the detector and the compressor/gate.  The IGN CV input expects a bipolar (+/-5V) signal which is added to the knob position.
@@ -1049,9 +1051,9 @@ _When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="noise"></a> NOISE
 
-A noise source, in types blue (f), white, pink (1/f), red (aka brown, 1/f^2) and Gauss (normal with mean 0 and variance 1).
+A noise source, in types blue (f), white, pink (1/f), red (aka brown, 1/f^2) and Gauss (normal with mean 0 and variance 1). Blue, pink, and red noise are types of colored noise, meaning that some frequency ranges are louder than others. For example, "blue (f)" means that higher-pitched frequencies are louder, and "pink (1/f)" means that higher-pitched frequencies are quieter. White and Gaussian noise are not colored. The noise sources are all bipolar, with white and pink noise being +/-10V, red noise being approximately +/-5V, and Gaussian noise being approximately +/-3.5V.
 
-Additionally, NOISE has an absolute value circuit.  Patch audio into ABS to get positive CV.  For example, patch white noise into ABS to get uniform values in the range 0-10V.
+Additionally, NOISE has an absolute value circuit. Patch audio into ABS to get positive CV.  For example, patch white noise into ABS to get uniform values in the range 0-10V. 
 
 _Polyphony:_ For the noise outputs, the number of polyphonic channels is set on the context (right-click) menu.  Independently, the ABS circuit is <a href="#polyphony">polyphonic</a>, with polyphony defined by the IN input.
 
@@ -1059,11 +1061,13 @@ _When <a href="#bypassing">bypassed</a>:_ no output.
 
 #### <a name="samplehold"></a> S&H
 
-A dual sample-and-hold and trigger-and-hold.  Sampling may be triggered by CV (on the rising edge of a trigger or gate) or button press.
+A dual sample-and-hold and track-and-hold. Both channels default to sample-and-hold mode, and can be independently toggled into track-and-hold mode with the corresponding TRK button. Sampling/tracking is triggered by the GATE inputs or the buttons above the GATE inputs.
 
-If nothing is connected to an IN port, sampling for that channel is normalled to an internal white noise source with range 0-10V. Alternative options for the normal source noise type and range are available on the context (right-click) menu.  The normal source selection applies to both channels.
+In sample-and-hold mode, when a rising edge is detected on the GATE input or the corresponding Trigger button is clicked, the IN input is sampled to OUT where it is held at a constant voltage.
 
-Each channel can be independently toggled into track-and-hold mode with the corresponding TRK button.  In this mode, when the input at GATE is high, or the button is held, the input is copied to the output.  When the gate goes low, the input is sampled and held until the next gate.
+In track-and-hold mode, when the GATE input is high or the corresponding Trigger button is pressed down, the IN signal is copied to OUT, i.e. OUT tracks IN. When the gate goes low or the button is released, the IN signal is sampled to OUT where it is held at a constant voltage.
+
+If nothing is connected to an IN port, sampling for that channel is normalled (connected by default) to an internal white noise source with range 0-10V. Alternative options for the normal source noise type and range are available on the context (right-click) menu.  The normal source selection applies to both channels.
 
 Each channel may also be have its output inverted with the INV button.
 
